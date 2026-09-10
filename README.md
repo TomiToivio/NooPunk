@@ -1,11 +1,12 @@
 # NoöPunk
 
-**NoöPunk is a speculative science-fiction genre combining cyberpunk with the Noösphere:** humans, AI, language, networks, altered states, collective intelligence, high strangeness and futures that blur the boundary between technology and mind.
+**NoöPunk = Noösphere + Cyberpunk.**
 
-Its aesthetic draws especially from **1970s psychedelic science fiction, 1980s proto-cyberpunk and 1990s cyberdelia**.
+NoöPunk is a speculative science-fiction genre about networked minds, artificial intelligence, human-machine assemblages and the emergence of a technological Noösphere.
 
-This repository is an experiment in turning NoöPunk into a **playable RPG and simulation**. The setting, rules and software will evolve iteratively through human and AI-assisted worldbuilding, roleplay and simulation.
+This repository is an **RPG / simulation experiment** for exploring NoöPunk as a playable and simulated world.
 
-For now, the project is intentionally minimal.
+- **RPG:** homebrew rules and setting material built on **Eclipse Phase**.
+- **Simulation:** agent-based and generative social simulation using **Concordia**.
 
-> **The future arrives one generation behind the vision. Keep pedalling.**
+The project is intentionally minimal and experimental. Rules, setting and simulation models will evolve through play, worldbuilding and computational experiments.
