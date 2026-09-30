@@ -13,9 +13,10 @@ Two kinds of check:
    (setting, megacorps, NPCs, GM tool text), and pin the fact that the reading
    mirror is unofficial — so "I couldn't find it on the mirror" cannot be read as
    permission.
-2. **Restraint guards.** #19 is policy only, and the easiest way to "complete" it
-   while breaking it is to adopt a subsystem. The strongest check parses the review
-   status table and asserts that exactly one row is decided.
+2. **Restraint guards.** #19 established the chassis policy. Later author tasks may
+   deliberately resolve individual subsystem rows, but unreviewed rows must remain
+   DEFER. The strongest check parses the review-status table and pins the set of
+   author-decided rows.
 
 Run: python3 -m unittest discover -s tests -p 'test_*.py'
 """
@@ -158,8 +159,8 @@ class RestraintTests(unittest.TestCase):
                     f"author decision",
                 )
 
-    def test_only_the_attribute_row_is_decided(self) -> None:
-        """Exactly one subsystem may be decided, and it predates the chassis."""
+    def test_only_author_decided_rows_are_resolved(self) -> None:
+        """Only subsystems explicitly decided by the author may leave DEFER."""
         text = _text(POLICY)
         status = text[text.index("### Review status"):text.index("## NoöPunk decisions")]
         decided = {}
@@ -178,7 +179,7 @@ class RestraintTests(unittest.TestCase):
                 decided[label] = decision
         self.assertEqual(
             decided, DECIDED_ROWS,
-            "the set of decided subsystems changed; #19 must not resolve a DEFER row",
+            "the set of decided subsystems changed without the expected author decision",
         )
 
     def test_unreviewed_rows_still_read_defer(self) -> None:
