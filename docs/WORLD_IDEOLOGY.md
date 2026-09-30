@@ -260,6 +260,29 @@ an academic model.
 hegemonic struggle; polarisation; paradigm narratives; the accelerationist / doomer /
 critical conflict; regional divergence; faction realignment after events.
 
+> **Provenance note on the second list.** These are the *simulation targets* named by
+> [issue #8](https://github.com/TomiToivio/NooPunk/issues/8), not a claim that the
+> LaclauGPT Phase 1 paper formalises all of them. Checking the paper's own vocabulary
+> against this list, some of it is the paper's and some is the issue's framing:
+>
+> - **The paper's own relational vocabulary** is "equivalential chain", "chains of
+>   equivalence and difference", "formations" and "political projects". It does **not**
+>   use "discourse coalition", so that term is a simulation target here rather than a
+>   LaclauGPT concept — the game may find a coalition more useful than a chain, but
+>   should not attribute the term to the paper.
+> - **"Polarisation"** is likewise not defined or operationalised by the paper.
+> - **Regional divergence and post-event realignment** are *not* modelled by the paper:
+>   it treats geography as a **sampling decision** ("rather than a claim that these
+>   regions represent global AI politics") and states that actors "can move between
+>   formations" without specifying how a major event moves them. NoöPunk's event
+>   realignments in `data/world/ideology.json` are therefore a *game* system built on
+>   the paper's political framing, not an application of a LaclauGPT model.
+>
+> This distinction matters for provenance, not for play: the mechanics below are
+> legitimate NoöPunk designs either way. It is recorded so that a later reader does not
+> go looking for a formalised LaclauGPT realignment model that does not exist, and does
+> not present NoöPunk's invention as the research project's output.
+
 **From PCM** — distributed human–AI collectives; technological participants;
 collective memory; participant identity and continuity; shared decision-making;
 dissent; AI refusal; faction coordination; collective intelligence; cyborg / AI /
