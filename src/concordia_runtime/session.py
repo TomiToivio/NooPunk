@@ -5,23 +5,22 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any
 
-from .participants import LLMAgentSpec
+from .participants import GameMasterSpec, HumanPlayer, LLMAgentSpec
 
 
 @dataclass(frozen=True, slots=True)
 class SessionSpec:
     """Minimal, deliberately non-canonical session description."""
 
-    gm_name: str = "placeholder_gm"
+    gm: GameMasterSpec = field(default_factory=GameMasterSpec)
     llm_agents: tuple[LLMAgentSpec, ...] = field(default_factory=tuple)
+    human_player: HumanPlayer | None = None
     premise: str = (
         "placeholder_premise: no canonical world state has been specified."
     )
     max_steps: int = 1
 
     def __post_init__(self) -> None:
-        if not self.gm_name.strip():
-            raise ValueError("GM name must not be empty.")
         if self.max_steps < 1:
             raise ValueError("max_steps must be at least 1.")
 
@@ -31,6 +30,10 @@ def build_concordia_config(spec: SessionSpec) -> Any:
 
     This builds configuration only. It does not run an LLM, define RPG rules,
     create character statistics, or generate canonical world content.
+
+    Human input is deliberately not converted into an LLM entity here. The
+    HumanPlayer adapter remains an explicit orchestration seam until a
+    human-control integration is specified and validated against Concordia.
     """
     try:
         from concordia.prefabs import entity as entity_prefabs
@@ -59,7 +62,7 @@ def build_concordia_config(spec: SessionSpec) -> Any:
         prefab_lib.InstanceConfig(
             prefab="generic__GameMaster",
             role=prefab_lib.Role.GAME_MASTER,
-            params={"name": spec.gm_name},
+            params={"name": spec.gm.name},
         )
     )
 
@@ -77,11 +80,7 @@ def build_simulation(
     model: Any,
     embedder: Any,
 ) -> Any:
-    """Build Concordia's generic Simulation using injected runtime services.
-
-    The embedder is intentionally injected rather than silently choosing a
-    semantic model for the project.
-    """
+    """Build Concordia's generic Simulation using injected runtime services."""
     if embedder is None:
         raise ValueError("A text embedder must be supplied explicitly.")
 
