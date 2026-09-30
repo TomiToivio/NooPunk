@@ -22,11 +22,27 @@ game is expected to diverge substantially from CWN.
 
 Primary SRD reference: <https://cwn.quadrifons.com/>
 
+**Read it, but do not cite it as the licence.** That mirror is an unofficial,
+third-party copy of the SRD. Its own site states that it is maintained by an
+individual, that it has **left sections out** (including the optional rules and the
+Antagonists & NPCs section), and that transcription errors are probably the
+maintainer's rather than the author's.
+
+The authoritative document is **Sine Nomine Publishing's own SRD file**, available
+free from the publisher. When the legal boundary is at stake, that file is what to
+check:
+
+- the mirror is a convenience for reading and for locating a section;
+- **an absence from the mirror is not an absence from the SRD**, and must never be
+  read as permission to reuse something;
+- a section the mirror omits may still be legitimately reusable, and a section it
+  paraphrases may differ in wording from the licensed text.
+
 ## What the SRD is, and why it is the chassis
 
-The CWN SRD is a free, open, public-domain system reference document that describes
-the rules and mechanics of Kevin Crawford's cyberpunk tabletop RPG *Cities Without
-Number*. It is intended for reuse and modification.
+The CWN SRD is a free, open system reference document that describes the rules and
+mechanics of Kevin Crawford's cyberpunk tabletop RPG *Cities Without Number*. It is
+intended for reuse and modification.
 
 Using it gives NoöPunk a coherent, reasonably lightweight cyberpunk baseline so the
 project does not have to reinvent every generic RPG subsystem from zero. That is the
@@ -34,6 +50,37 @@ whole value proposition: a playable skeleton, not a finished game.
 
 The SRD is a **rules** source. It is not a setting source, and the full commercial
 *Cities Without Number* book is not a source at all.
+
+### The licence, and what it covers
+
+The SRD is released under a **Creative Commons Zero (CC0) waiver** by its author.
+
+In Kevin Crawford's own description of the SRD file, it is "provided under a
+Creative Commons 0 waiver allowing downloaders to copy, modify, reproduce, or
+otherwise use it for both personal and commercial purposes", and:
+
+> "The contents of the SRD include the mechanics of the game and trivially-derived
+> content such as weapon damage dice, gear names, and other necessary material for
+> reproduction and use. It does not include the specific setting of the game,
+> particular megacorps, individual NPCs, GM tool text, or other creative
+> intellectual property not included in this document. Use of that IP is still
+> reserved."
+
+That splits cleanly into what may be reused and what may not:
+
+| usable, because it is in the SRD | not usable, because it is reserved |
+|---|---|
+| the mechanics of the game | the specific setting of the game |
+| trivially-derived content (weapon damage dice, gear names) | particular megacorps |
+| other material the SRD itself actually contains | individual NPCs, GM tool text |
+| | anything else not actually present in the SRD |
+
+CC0 requires no attribution. NoöPunk nonetheless does not claim compatibility with
+Cities Without Number, is not a Sine Nomine product, and is not presented as
+official or sanctioned.
+
+*This section records the project's reading of the boundary so contributors can act
+on it. It is not legal advice.*
 
 ## Legal / source boundary
 
