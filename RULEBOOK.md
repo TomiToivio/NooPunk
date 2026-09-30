@@ -87,8 +87,8 @@ A general tie procedure for opposed tests that involve no player character is no
 
 These two cases apply to a character who **does not possess** the relevant skill. Unskilled is not a skill level: it is the absence of one (section 5.3).
 
-1. **Unskilled attempt allowed:** apply **-1** to the skill check, applied exactly once. This is the **-1 unskilled modifier**.
-2. **Training required:** sufficiently technical or esoteric tasks may be impossible to attempt without the relevant skill. This is a **blocked attempt**, not a failed roll. The attempt is blocked before rolling: no dice are rolled, and additional modifiers cannot bypass the requirement.
+1. **Unskilled attempt allowed:** apply **-1** to the skill check.
+2. **Training required:** sufficiently technical or esoteric tasks may be impossible to attempt without the relevant skill. This is a **blocked attempt**, not a failed roll. No dice are rolled.
 
 A character who possesses the skill uses the numbered level normally, from level-0 (+0) through level-4 (+4).
 

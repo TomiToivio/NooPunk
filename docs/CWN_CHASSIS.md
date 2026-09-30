@@ -149,17 +149,17 @@ plan, and it is **not** a claim that any of these subsystems are ready.
 
 Three subsystems now have an author decision: the attribute layer, which NoöPunk
 replaced before adopting CWN as a chassis; skills, which were reviewed under the
-chassis and set to MODIFY; and core checks, converted under the chassis and set to
-MODIFY. Hacking / cyberspace was returned to DEFER. Everything else is unreviewed
-and stays DEFER.
+chassis and set to MODIFY; and core checks, which issue #25 sets to MODIFY.
+Hacking / cyberspace is explicitly returned to DEFER pending a later CWN-derived
+hacking review. Everything else remains unreviewed and stays DEFER.
 
 | Subsystem | Decision | Note |
 |---|---|---|
 | Attributes | **REPLACE** | NoöPunk's own six attributes, already author-specified |
 | Attribute generation / modifier scale | **DEFER** | NoöPunk's own 3d6 generation and −3..+3 range are canonical; the comparison with CWN is unreviewed |
 | Skills | **MODIFY** | NoöPunk adopts the CWN level-0..4 trained-skill structure and the standard skill list as a starting point, with: unskilled remaining outside the numbered levels at -1 / BLOCKED; **Heal renamed Medical**; **Know renamed Science**; specialization mechanics deferred; further skill-list changes expected later. See `RULEBOOK.md` §5.3 |
-| Core checks | **MODIFY** | NoöPunk adopts the CWN `2d6 + skill level + attribute modifier` engine and its `6 / 8 / 10 / 12 / 14+` ladder, while keeping its own six attributes and its wider −3..+3 ordinary-human modifier range. See `RULEBOOK.md` §4 and the section below |
-| Hacking / cyberspace | **DEFER** | The issue #17 BCI / Compute / Connection / Infosec modifier tables are withdrawn from active canon; the subsystem will be reconsidered later against the CWN hacking rules. See the section below |
+| Core checks | **MODIFY** | Adopt CWN's 2d6 + skill + attribute structure and 6 / 8 / 10 / 12 / 14+ skill-check difficulty ladder; retain NoöPunk's six attributes and wider −3..+3 ordinary-human modifier range. See `RULEBOOK.md` §4 |
+| Hacking / cyberspace | **DEFER** | Earlier BCI / Compute / Connection / Infosec modifier tables are withdrawn from active canon pending a later CWN hacking conversion |
 | All other subsystems | **DEFER** | not yet reviewed; remain undefined (see `RULEBOOK.md` §19) |
 
 Every row not marked otherwise stays **DEFER** until the author decides it. A DEFER

@@ -101,9 +101,9 @@ class UnskilledRulesTests(unittest.TestCase):
 
     def test_unskilled_penalty_and_blocking(self) -> None:
         text = _flat(RULEBOOK)
-        self.assertIn("-1 unskilled modifier", text)
-        self.assertIn("applied exactly once", text)
-        self.assertIn("blocked before rolling", text)
+        self.assertIn("unskilled attempt allowed", text)
+        self.assertIn("apply **-1**", text)
+        self.assertIn("blocked attempt", text)
 
     def test_core_json_still_carries_the_unskilled_contract(self) -> None:
         canon = json.loads(_text(CORE_JSON))
