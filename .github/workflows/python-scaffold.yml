@@ -18,7 +18,7 @@ jobs:
           python-version: "3.12"
       - name: Validate Godot scaffold
         run: python tests/validate_scaffold.py
-      - name: Test Concordia runtime scaffold
-        run: python -m unittest tests/test_concordia_runtime.py
+      - name: Test shared rules and Concordia runtime
+        run: python -m unittest discover -s tests -p "test_*.py"
       - name: Smoke-check neutral Concordia session
         run: python scripts/concordia_smoke.py
