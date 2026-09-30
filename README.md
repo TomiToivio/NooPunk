@@ -25,7 +25,7 @@ Three of these are the setting's **defining Noösphere paradigm shifts**: UFO / 
 NoöPunk is built on **three design balances** that are project-level invariants, not loose inspirations:
 
 1. **Gamism / Narrativism / Simulationism** — anchored on **CY_BORG** (challenge), **Cyberpunk 2020** (reality), and **The Sprawl** (story). No pole may overwhelm the others.
-2. **Tabletop / Godot / Concordia** — one RPG with three runtimes: same world, same rules, same mechanics wherever possible. Scenarios and presentation may diverge.
+2. **Tabletop / Godot / Concordia** — one RPG developed in sequence: **tabletop first**, then Godot and Concordia as later ports. The tabletop rulebook/worldbook is the canonical design source; digital runtimes inherit the same world, rules, and mechanics wherever possible. Scenarios and presentation may diverge.
 3. **Cyberpunk / Noösphere** — neither half swallows the other. The cyberpunk side grows from plausible near-future technology; the Noösphere rests on UFO / UAP Disclosure, Psionics, and Panpsychism.
 
 > **CY_BORG for challenge. Cyberpunk 2020 for reality. The Sprawl for story.**
@@ -89,7 +89,7 @@ NoöPunk has two connected purposes:
    - NHI becoming part of social and political reality
    - emergence of the Noösphere
 
-The tabletop, Godot, and Concordia versions should share the same conceptual rules and world model wherever practical. Godot is the conventional computer-RPG runtime; Concordia is the agent-based simulation/RPG runtime. Neither runtime should redefine the canonical rules.
+Development is now explicitly **tabletop-first**. The tabletop RPG rules/worldbook are the canonical design source. Current Godot and Concordia scaffolds are preserved, but substantive digital implementation follows only after the relevant tabletop rules and world material are coherent and stable enough to port. Godot is the conventional computer-RPG runtime; Concordia is the agent-based simulation/RPG runtime. Neither runtime should redefine the canonical rules.
 
 ## Development principle: build slowly
 
@@ -99,7 +99,15 @@ The initial Godot work should create only a clean, minimal RPG foundation. Major
 
 See [RULEBOOK.md](RULEBOOK.md) for the intentionally incomplete rules framework and [AGENTS.md](AGENTS.md) for mandatory agent constraints.
 
-The rule is simple: **scaffold first, canon later**.
+The rule is simple: **design the tabletop game first; implement the software second**.
+
+### Development order
+
+1. **Tabletop design:** define and playtest the RPG rules, worldbook, terminology, procedures, and scenario structure in human-readable form.
+2. **Tabletop stabilization:** resolve ambiguities and edge cases in the tabletop source before software encodes them.
+3. **Digital conversion:** port stable systems incrementally: tabletop rule → digital specification → Godot implementation → Concordia implementation.
+
+Existing Godot and Concordia code is not discarded. It remains preserved infrastructure and later-stage implementation material.
 
 
 ## Godot scaffold
