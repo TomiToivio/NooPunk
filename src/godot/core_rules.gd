@@ -43,6 +43,12 @@ func generate_human_attributes(rng: RandomNumberGenerator) -> Dictionary:
         modifiers[attribute_id] = human_modifier(rolled)
     return {"raw_rolls": raw, "modifiers": modifiers}
 
+func difficulty_names() -> Array[String]:
+    var names: Array[String] = []
+    for name in canon.get("difficulties", {}).keys():
+        names.append(str(name))
+    return names
+
 func difficulty_target(name: String) -> int:
     return int(canon["difficulties"][name])
 
@@ -52,7 +58,8 @@ func resolve_check(
     target: int,
     extra_modifiers: Array[int] = [],
     has_skill: bool = true,
-    trained_only: bool = false
+    trained_only: bool = false,
+    dice_total_override: Variant = null
 ) -> Dictionary:
     if trained_only and not has_skill:
         return {
@@ -68,6 +75,10 @@ func resolve_check(
         unskilled_modifier = int(canon["unskilled_penalty"])
 
     var dice_total := roll_3d6(rng)
+    if dice_total_override != null:
+        dice_total = int(dice_total_override)
+        assert(dice_total >= 3 and dice_total <= 18, "A 3d6 check roll must be in 3..18.")
+
     var extras_total := 0
     for modifier in extra_modifiers:
         extras_total += modifier
