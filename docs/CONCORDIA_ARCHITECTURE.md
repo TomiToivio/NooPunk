@@ -148,7 +148,7 @@ Canonical mechanics and lore must not be smuggled into prompts.
 
 The Concordia runtime now consumes the canonical six attributes and deterministic core 3d6 resolution from shared code. It still does not define:
 
-- skills or a skill list
+- skill levels (specified for tabletop in RULEBOOK.md §5.3; not yet ported) or a skill list
 - character creation
 - combat
 - health, damage, armor, wounds, or initiative

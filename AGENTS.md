@@ -56,12 +56,12 @@ Existing Godot and Concordia scaffolds must be preserved, not deleted, but they 
 
 ### 4. Current reserved design areas
 
-The six attributes (FIT, REF, INT, CHA, CYB, PSY), ordinary-human 3d6 generation, core 3d6 checks, canonical difficulties, opposed comparison, unskilled -1, and trained-only blocking are now author-specified in RULEBOOK.md and data/rules/core.json. Agents must preserve them exactly.
+The six attributes (FIT, REF, INT, CHA, CYB, PSY), ordinary-human 3d6 generation, core 3d6 checks, canonical difficulties, opposed comparison, unskilled -1, trained-only blocking, and the four canonical skill levels (0 Unskilled, 1 Basic, 2 Advanced, 3 Expert) are now author-specified in RULEBOOK.md. Agents must preserve them exactly.
 
 Until explicitly specified, do not define:
 - additional attributes or derived statistics
-- skills or a skill list
-- character creation
+- a skill list or skill catalog, or which skills are unskilled-allowed versus trained-only (the four skill levels themselves are specified in RULEBOOK.md §5.3)
+- character creation or starting skill levels
 - character classes or archetypes
 - combat resolution
 - damage, health, wounds, armor, or initiative

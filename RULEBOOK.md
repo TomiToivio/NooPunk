@@ -43,10 +43,16 @@ The setting is approximately a 2045-like future extrapolated from 2026, without 
 The basic NoöPunk check is:
 
 ~~~text
-3d6 + relevant attribute modifier + skill/advantage/disadvantage/cybernetic/situational modifiers
+total = 3d6 + relevant attribute modifier + skill modifier + other applicable modifiers
+success = total >= difficulty target
 ~~~
 
-Compare the final total against a difficulty rating. A check succeeds when the final total **meets or exceeds** the target.
+A **3d6** roll is three six-sided dice summed, giving 3..18. The **skill
+modifier** is the character's skill level modifier, defined in section 5.3; at
+skill level 0 it is either the unskilled -1 or a blocked attempt, per section 4.2.
+"Other applicable modifiers" are summed, whether positive or negative.
+
+Compare the final total against a difficulty rating. A check succeeds when the final total **meets or exceeds** the target; a total one below the target fails.
 
 | Difficulty | Target |
 |---|---:|
@@ -77,10 +83,13 @@ If the final totals are tied, the result is explicitly unresolved. No tie-breake
 
 ### 4.2 Unskilled and trained-only checks
 
-Skill use has two representable categories:
+Skill use has two representable categories. Both are the two cases of skill **level 0** (section 5.3):
 
-1. **Unskilled attempt allowed:** the action may be attempted without the skill, with an additional **-1 unskilled modifier**.
+1. **Unskilled attempt allowed:** the action may be attempted without the skill, with an additional **-1 unskilled modifier**, applied exactly once.
 2. **Skill required / trained-only:** the action cannot be attempted without the required skill. This is a **blocked attempt**, not a failed roll. No dice are rolled and additional modifiers cannot bypass the requirement.
+
+At skill levels 1–3 the character has the skill, so neither case applies; the
+level's own **+1/+2/+3** modifier is used instead.
 
 Which future skills use which category is not yet specified.
 
@@ -92,10 +101,13 @@ These examples are normative examples of the same check formula used by Tabletop
 - **Easiest, -1 modifier:** a raw check roll of 3 with a -1 modifier totals 2 and fails.
 - **Impossible:** a raw check roll of 18 with no modifiers against target 18 totals 18 and succeeds. "Impossible" therefore does not mean "unrollable."
 - **Unskilled allowed:** a raw check roll of 10 with no attribute modifier and the -1 unskilled modifier totals 9, succeeding against Easy (9). The unskilled penalty is applied exactly once.
+- **Basic skill (+1):** a raw check roll of 8 with no attribute modifier and a Basic skill totals 9, succeeding against Easy (9).
+- **Expert skill (+3):** a raw check roll of 11 with a -1 attribute modifier and an Expert skill totals 13, succeeding against Normal (12).
+- **Skill required, level 0:** the attempt is blocked before rolling. No dice are rolled and no total is produced, however large the other modifiers are.
 
 ## 5. Characters
 
-Most character systems remain unspecified. The six canonical attributes and ordinary-human attribute generation are now defined.
+Most character systems remain unspecified. The six canonical attributes, ordinary-human attribute generation, and the four canonical skill levels are now defined.
 
 ### 5.1 Attributes
 
@@ -140,9 +152,39 @@ Where useful, preserve both the raw 3d6 generation roll and the resulting modifi
 
 ### 5.3 Skills
 
-**UNSPECIFIED.**
+Skill **levels** are canonical. The skill **catalog** is not: no skill list,
+skill names, or skill-to-attribute assignments are defined yet.
 
-No skill list, skill ratings, or skill progression rules are currently canonical. Only the unskilled/trained-only distinction in section 4.2 is defined.
+A character has exactly one of four levels in a given skill:
+
+| Level | Name | Modifier | Meaning |
+|---:|---|---:|---|
+| 0 | Unskilled | special | The character does not possess the skill. |
+| 1 | Basic | +1 | Basic competence in the skill. |
+| 2 | Advanced | +2 | Advanced competence in the skill. |
+| 3 | Expert | +3 | Expert competence in the skill. |
+
+**Level 0 is the absence of the skill, not ordinary trained competence.** It has
+two cases, taken from section 4.2:
+
+1. **Unskilled allowed** — the action may be attempted with an additional **-1**, applied exactly once.
+2. **Skill required / trained-only** — the attempt is **blocked before rolling**. No dice are rolled, and no modifier can bypass the requirement.
+
+Levels 1–3 contribute their listed positive modifier to the check in section 4.
+
+These are the only ordinary skill levels. There is no level above 3 and no
+fractional or partial level. The level range is intentionally small: 0 = no
+skill, 1 = basic, 2 = advanced, 3 = expert.
+
+The following are **not defined** and must not be inferred: a skill catalog, which
+skills are unskilled-allowed versus trained-only, XP costs, progression speed,
+training time, specialties, prerequisites, skill groups, defaulting chains,
+critical-success rules, and any advancement mechanic. See section 5.6.
+
+Levels 1–3 have no numeric representation in `data/rules/core.json` yet; that
+file remains the canonical runtime data for the attributes, human generation,
+difficulty targets, unskilled penalty, and opposed-check semantics specified
+above.
 
 ### 5.4 Derived statistics
 
@@ -150,7 +192,7 @@ No skill list, skill ratings, or skill progression rules are currently canonical
 
 ### 5.5 Character creation
 
-Only ordinary-human attribute generation in section 5.2 is currently defined. All other character-creation procedures are reserved for later specification.
+Only ordinary-human attribute generation in section 5.2 and the four skill levels in section 5.3 are currently defined. All other character-creation procedures, including starting skill levels, are reserved for later specification.
 
 ### 5.6 Advancement
 
@@ -223,6 +265,10 @@ Concordia may reason about context and describe outcomes, but dice, attribute va
 The three supported forms are tabletop RPG, Godot RPG, and Concordia RPG / simulation. The tabletop form is the canonical first implementation and design authority; digital runtimes follow after the relevant tabletop system is stable enough to port.
 
 They use the same canonical attribute identifiers, human-generation table, difficulty targets, check semantics, unskilled penalty, trained-only representation, and opposed-check semantics.
+
+The four skill levels in section 5.3 are **tabletop-first and not yet ported**. They
+are canonical tabletop rules; Godot and Concordia do not implement them yet, and
+porting them is a separate later task after the tabletop version is stable.
 
 Runtime-specific adapters may differ, but they must not redefine canonical rules.
 
