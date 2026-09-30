@@ -33,5 +33,5 @@ horizontal_alignment = 1
 
 [node name="Note" type="Label" parent="Center/Stack"]
 layout_mode = 2
-text = "Rules and world systems are intentionally unspecified."
+text = "Core attributes/checks specified; other systems remain intentionally unresolved."
 horizontal_alignment = 1
