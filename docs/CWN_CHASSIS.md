@@ -94,6 +94,19 @@ Do not copy or adapt:
 - protected text, setting material, terminology, factions, characters, or
   proprietary creative content from any other RPG.
 
+## Attribution / provenance
+
+NoöPunk's core tabletop mechanics are derived from and substantially modify the
+**Cities Without Number SRD**, released under **CC0**. NoöPunk is an independent
+project and is **not affiliated with or endorsed by Sine Nomine Publishing**.
+
+CC0 needs no attribution, but the provenance is stated anyway so the derivation is
+honest and checkable rather than silently implied.
+
+**This is the one place the full licensing position lives.** `RULEBOOK.md` §18.1
+carries a one-sentence version that points here; do not scatter legal boilerplate
+across the repository.
+
 Cyberpunk 2020, Eclipse Phase, Shadowrun, The Sprawl, and CY_BORG are **design
 references only**. They are influences and comparisons, never sources to copy from.
 
