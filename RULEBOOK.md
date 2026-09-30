@@ -43,10 +43,16 @@ The setting is approximately a 2045-like future extrapolated from 2026, without 
 The basic NoöPunk check is:
 
 ~~~text
-3d6 + relevant attribute modifier + skill modifier + other applicable modifiers
+total = 3d6 + relevant attribute modifier + skill modifier + other applicable modifiers
+success = total >= difficulty target
 ~~~
 
-Compare the final total against a difficulty rating. A check succeeds when the final total **meets or exceeds** the target.
+A **3d6** roll is three six-sided dice summed, giving 3..18. The **skill
+modifier** is the character's skill level modifier, defined in section 5.3; at
+skill level 0 it is either the unskilled -1 or a blocked attempt, per section 4.2.
+"Other applicable modifiers" are summed, whether positive or negative.
+
+Compare the final total against a difficulty rating. A check succeeds when the final total **meets or exceeds** the target; a total one below the target fails.
 
 | Difficulty | Target |
 |---|---:|
@@ -57,9 +63,7 @@ Compare the final total against a difficulty rating. A check succeeds when the f
 | Hard | 15 |
 | Impossible | 18 |
 
-Additional modifiers may later come from advantages, disadvantages, cybernetics, equipment, conditions, circumstances, or other author-defined systems. Positive and negative modifiers are summed normally.
-
-The **skill modifier** is determined by the character's skill level — see section 4.3. Skill levels are now canonical; the *list* of which skills exist is not (section 5.3).
+Additional modifiers may later come from skills, advantages, disadvantages, cybernetics, equipment, conditions, circumstances, or other author-defined systems. Positive and negative modifiers are summed normally.
 
 "Impossible" is the canonical name for target 18. It is still a numeric difficulty, not a prohibition on attempting the check. There is no automatic failure on a natural 3 and no automatic success on a natural 18.
 
@@ -77,44 +81,19 @@ The side with the higher final total wins.
 
 If the final totals are tied, the result is explicitly unresolved. No tie-breaker rule is currently canonical.
 
-### 4.3 Skill levels
+### 4.2 Unskilled and trained-only checks
 
-Skill competence has exactly **four** levels:
+Skill use has two representable categories. Both are the two cases of skill **level 0** (section 5.3):
 
-| Level | Name | Modifier | Meaning |
-|---:|---|---:|---|
-| 0 | Unskilled | special | The character does **not have** the skill. See the two cases below. |
-| 1 | Basic | +1 | Basic competence in the skill. |
-| 2 | Advanced | +2 | Advanced competence in the skill. |
-| 3 | Expert | +3 | Expert competence in the skill. |
+1. **Unskilled attempt allowed:** the action may be attempted without the skill, with an additional **-1 unskilled modifier**, applied exactly once.
+2. **Skill required / trained-only:** the action cannot be attempted without the required skill. This is a **blocked attempt**, not a failed roll. No dice are rolled and additional modifiers cannot bypass the requirement.
 
-**Level 0 means no skill.** It is not a low grade of trained competence, and it does not mean "beginner" — the character simply does not possess the skill. Levels 1–3 contribute their listed positive modifier to the check.
+At skill levels 1–3 the character has the skill, so neither case applies; the
+level's own **+1/+2/+3** modifier is used instead.
 
-These are the only ordinary skill levels. No further ordinary levels are canonical, and no skill catalog, rating scale, or progression rule is defined here (section 5.3).
+Which future skills use which category is not yet specified.
 
-Interaction with the check formula:
-
-~~~text
-total = 3d6 + relevant attribute modifier + skill modifier + other applicable modifiers
-~~~
-
-- level 1 → **+1**
-- level 2 → **+2**
-- level 3 → **+3**
-- level 0 → either **-1** (if unskilled use is allowed) or **blocked** (if the skill is required)
-
-### 4.4 Unskilled and trained-only checks
-
-Level 0 has two distinct cases. Which case applies is a property of the *action*, not of the character:
-
-1. **Unskilled attempt allowed:** a character at level 0 may attempt the action, with an additional **-1 unskilled modifier**. The penalty is applied **exactly once**.
-2. **Skill required / trained-only:** a character at level 0 cannot attempt the action. This is a **blocked attempt**, not a failed roll. No dice are rolled and additional modifiers cannot bypass the requirement.
-
-The -1 is the level-0 contribution to the check formula, so it is not added on top of a skill modifier — a level-0 character has no skill modifier, only this penalty or a block.
-
-Which skills and actions use which category is **not yet specified** (section 5.3).
-
-### 4.5 Worked checks
+### 4.3 Worked checks
 
 These examples are normative examples of the same check formula used by Tabletop, Godot, and Concordia:
 
@@ -122,20 +101,13 @@ These examples are normative examples of the same check formula used by Tabletop
 - **Easiest, -1 modifier:** a raw check roll of 3 with a -1 modifier totals 2 and fails.
 - **Impossible:** a raw check roll of 18 with no modifiers against target 18 totals 18 and succeeds. "Impossible" therefore does not mean "unrollable."
 - **Unskilled allowed:** a raw check roll of 10 with no attribute modifier and the -1 unskilled modifier totals 9, succeeding against Easy (9). The unskilled penalty is applied exactly once.
-
-Skill levels in the same formula:
-
-- **Basic (level 1):** a raw check roll of 10 with no attribute modifier and a +1 skill modifier totals 11, failing against Normal (12) and succeeding against Easy (9).
-- **Advanced (level 2):** the same roll with +2 totals 12, succeeding against Normal (12) on the boundary.
-- **Expert (level 3):** the same roll with +3 totals 13, succeeding against Normal (12).
-- **Unskilled (level 0), unskilled use allowed:** the same roll with the -1 unskilled modifier totals 9, failing against Normal (12).
-- **Unskilled (level 0), skill required:** the attempt is blocked. No dice are rolled, there is no total, and no combination of modifiers permits the attempt.
-
-The level-1/2/3 examples differ from each other by exactly the skill modifier, which is the property that makes the four levels a ladder of competence rather than a second attribute.
+- **Basic skill (+1):** a raw check roll of 8 with no attribute modifier and a Basic skill totals 9, succeeding against Easy (9).
+- **Expert skill (+3):** a raw check roll of 11 with a -1 attribute modifier and an Expert skill totals 13, succeeding against Normal (12).
+- **Skill required, level 0:** the attempt is blocked before rolling. No dice are rolled and no total is produced, however large the other modifiers are.
 
 ## 5. Characters
 
-Most character systems remain unspecified. The six canonical attributes and ordinary-human attribute generation are now defined.
+Most character systems remain unspecified. The six canonical attributes, ordinary-human attribute generation, and the four canonical skill levels are now defined.
 
 ### 5.1 Attributes
 
@@ -180,19 +152,39 @@ Where useful, preserve both the raw 3d6 generation roll and the resulting modifi
 
 ### 5.3 Skills
 
-**Skill levels are canonical; the skill list is not.**
+Skill **levels** are canonical. The skill **catalog** is not: no skill list,
+skill names, or skill-to-attribute assignments are defined yet.
 
-The four canonical skill levels are defined in section 4.3: 0 Unskilled, 1 Basic (+1), 2 Advanced (+2), 3 Expert (+3).
+A character has exactly one of four levels in a given skill:
 
-Still **UNSPECIFIED**:
+| Level | Name | Modifier | Meaning |
+|---:|---|---:|---|
+| 0 | Unskilled | special | The character does not possess the skill. |
+| 1 | Basic | +1 | Basic competence in the skill. |
+| 2 | Advanced | +2 | Advanced competence in the skill. |
+| 3 | Expert | +3 | Expert competence in the skill. |
 
-- the skill list — which skills exist;
-- which skills are unskilled-allowed versus skill-required;
-- any skill's governing attribute;
-- skill progression, XP costs, training time, specialties, prerequisites, skill groups, or defaulting chains;
-- any skill ratings beyond the four levels above.
+**Level 0 is the absence of the skill, not ordinary trained competence.** It has
+two cases, taken from section 4.2:
 
-The four levels are a *scale*. A character's sheet has a level per skill; what skills the character may have is not yet defined.
+1. **Unskilled allowed** — the action may be attempted with an additional **-1**, applied exactly once.
+2. **Skill required / trained-only** — the attempt is **blocked before rolling**. No dice are rolled, and no modifier can bypass the requirement.
+
+Levels 1–3 contribute their listed positive modifier to the check in section 4.
+
+These are the only ordinary skill levels. There is no level above 3 and no
+fractional or partial level. The level range is intentionally small: 0 = no
+skill, 1 = basic, 2 = advanced, 3 = expert.
+
+The following are **not defined** and must not be inferred: a skill catalog, which
+skills are unskilled-allowed versus trained-only, XP costs, progression speed,
+training time, specialties, prerequisites, skill groups, defaulting chains,
+critical-success rules, and any advancement mechanic. See section 5.6.
+
+Levels 1–3 have no numeric representation in `data/rules/core.json` yet; that
+file remains the canonical runtime data for the attributes, human generation,
+difficulty targets, unskilled penalty, and opposed-check semantics specified
+above.
 
 ### 5.4 Derived statistics
 
@@ -200,7 +192,7 @@ The four levels are a *scale*. A character's sheet has a level per skill; what s
 
 ### 5.5 Character creation
 
-Only ordinary-human attribute generation in section 5.2 is currently defined. All other character-creation procedures are reserved for later specification.
+Only ordinary-human attribute generation in section 5.2 and the four skill levels in section 5.3 are currently defined. All other character-creation procedures, including starting skill levels, are reserved for later specification.
 
 ### 5.6 Advancement
 
@@ -272,11 +264,13 @@ Concordia may reason about context and describe outcomes, but dice, attribute va
 
 The three supported forms are tabletop RPG, Godot RPG, and Concordia RPG / simulation. The tabletop form is the canonical first implementation and design authority; digital runtimes follow after the relevant tabletop system is stable enough to port.
 
-They use the same canonical attribute identifiers, human-generation table, difficulty targets, check semantics, skill levels and their modifiers, unskilled penalty, trained-only representation, and opposed-check semantics.
+They use the same canonical attribute identifiers, human-generation table, difficulty targets, check semantics, unskilled penalty, trained-only representation, and opposed-check semantics.
+
+The four skill levels in section 5.3 are **tabletop-first and not yet ported**. They
+are canonical tabletop rules; Godot and Concordia do not implement them yet, and
+porting them is a separate later task after the tabletop version is stable.
 
 Runtime-specific adapters may differ, but they must not redefine canonical rules.
-
-**Digital skill-level implementation is deferred.** Skill levels are canonical in the tabletop rules (sections 4.3–4.4) but are **not** implemented in Godot or Concordia by this rulebook change, and `data/rules/core.json` does not yet carry a skill-level table. Porting them is a separate, later task once the tabletop rule is stable; a digital runtime must not invent a skill-level representation of its own in the meantime.
 
 ## 18. Canon and change control
 
@@ -288,8 +282,7 @@ Examples, prototypes, test values, genre conventions, and temporary implementati
 
 The following remain intentionally unresolved:
 
-- skill list (which skills exist), and which of them are unskilled-allowed vs skill-required
-- skill progression / training / advancement mechanics (the four skill *levels* are canonical; how a character reaches them is not)
+- skill list and skill progression
 - derived statistics
 - detailed character creation beyond ordinary-human attributes
 - combat

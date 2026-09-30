@@ -56,14 +56,12 @@ Existing Godot and Concordia scaffolds must be preserved, not deleted, but they 
 
 ### 4. Current reserved design areas
 
-The six attributes (FIT, REF, INT, CHA, CYB, PSY), ordinary-human 3d6 generation, core 3d6 checks, canonical difficulties, opposed comparison, unskilled -1, trained-only blocking, and the four canonical skill levels (0 Unskilled, 1 Basic +1, 2 Advanced +2, 3 Expert +3) are now author-specified in RULEBOOK.md. The attributes, generation, checks, difficulties, unskilled penalty and trained-only representation are also in data/rules/core.json; the skill levels are **RULEBOOK-only for now**. Agents must preserve them exactly.
-
-**Skill levels are tabletop-canonical but not yet ported.** Do not add a skill-level table to `data/rules/core.json`, and do not implement skill levels in Godot or Concordia, until a separate author task ports them after the tabletop rule is stable. Until then a digital runtime must not invent its own skill-level representation.
+The six attributes (FIT, REF, INT, CHA, CYB, PSY), ordinary-human 3d6 generation, core 3d6 checks, canonical difficulties, opposed comparison, unskilled -1, trained-only blocking, and the four canonical skill levels (0 Unskilled, 1 Basic, 2 Advanced, 3 Expert) are now author-specified in RULEBOOK.md. Agents must preserve them exactly.
 
 Until explicitly specified, do not define:
 - additional attributes or derived statistics
-- skills or a skill list
-- character creation
+- a skill list or skill catalog, or which skills are unskilled-allowed versus trained-only (the four skill levels themselves are specified in RULEBOOK.md §5.3)
+- character creation or starting skill levels
 - character classes or archetypes
 - combat resolution
 - damage, health, wounds, armor, or initiative

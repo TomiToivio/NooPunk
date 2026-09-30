@@ -79,7 +79,7 @@ The current canonical difficulty names are **Easiest 3, Easier 6, Easy 9, Normal
 
 It still does not choose:
 
-- skills or a skill list
+- skill levels (specified for tabletop in RULEBOOK.md §5.3; not yet ported) or a skill list
 - derived statistics
 - character creation
 - combat
