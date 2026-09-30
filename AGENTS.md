@@ -124,3 +124,34 @@ At this stage:
 - make changes easy to replace after later design decisions.
 
 When uncertain, choose the smaller implementation.
+
+
+### 11. One RPG, three runtimes
+
+NoöPunk is one RPG rules/world model intended to run in three forms:
+
+- tabletop RPG
+- Godot RPG
+- Concordia RPG / simulation
+
+These are implementations of the same game, not separate rule systems.
+
+Concordia-specific agents must not invent alternate mechanics, lore, statistics, or canonical facts to make simulation easier. If a shared rule or world concept is undefined, leave it undefined or use clearly non-canonical fixtures.
+
+Godot and Concordia may have different adapters and runtime plumbing, but canonical rules/data should remain shared or convertible wherever practical.
+
+### 12. Concordia and Ollama constraints
+
+When implementing the Concordia runtime:
+
+- use Google DeepMind Concordia as the agent-based simulation/RPG framework;
+- design for local Ollama-served LLMs for GM and NPC agents;
+- allow an optional human-controlled player to participate alongside LLM agents;
+- keep the LLM provider behind a replaceable adapter/configuration boundary;
+- do not hard-code a particular Ollama model as canon unless the author specifies one;
+- do not create NPC personalities, factions, plots, psionic abilities, skills, attributes, or world facts unless explicitly specified;
+- do not let prompts silently become canon;
+- keep prompts/configuration separate from canonical RPG rules and world data;
+- preserve the same tabletop ↔ Godot ↔ Concordia rule semantics wherever practical.
+
+The first Concordia implementation should be infrastructure only: runnable simulation plumbing, agent/GM interfaces, Ollama connection boundaries, optional human input, and empty world/rule hooks. Do not advance into substantive simulation design without a separate author task.
