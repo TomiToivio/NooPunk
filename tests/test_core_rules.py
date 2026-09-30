@@ -8,8 +8,10 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
+from concordia_runtime import resolve_structured_check
 
 from rules import (
+    ATTRIBUTE_DEFINITIONS,
     ATTRIBUTE_IDS,
     DIFFICULTIES,
     UNSKILLED_PENALTY,
@@ -44,6 +46,19 @@ class CoreRulesTests(unittest.TestCase):
     def test_six_attribute_identifiers(self) -> None:
         self.assertEqual(ATTRIBUTE_IDS, ("FIT", "REF", "INT", "CHA", "CYB", "PSY"))
 
+    def test_attribute_meanings_match_author_specification(self) -> None:
+        self.assertEqual(
+            {item["id"]: item["description"] for item in ATTRIBUTE_DEFINITIONS},
+            {
+                "FIT": "Your health, fitness and constitution.",
+                "REF": "Your dexterity, agility and coordination.",
+                "INT": "How smart, educated and knowledgeable you are.",
+                "CHA": "Your social skills, attractiveness and leadership skills.",
+                "CYB": "Your cyborg side; how technical you are; your proficiency in cyberspace, programming and cybernetics.",
+                "PSY": "Your consciousness, intuition, empathy and psionics. Used in astral projection and for psionics.",
+            },
+        )
+
     def test_every_human_3d6_modifier_boundary_and_value(self) -> None:
         for raw, expected in EXPECTED_MODIFIERS.items():
             with self.subTest(raw=raw):
@@ -63,12 +78,32 @@ class CoreRulesTests(unittest.TestCase):
     def test_canonical_difficulties(self) -> None:
         self.assertEqual(
             DIFFICULTIES,
-            {"Easiest": 3, "Easier": 6, "Easy": 9, "Hard": 12, "Harder": 15, "Hardest": 18},
+            {"Easiest": 3, "Easier": 6, "Easy": 9, "Normal": 12, "Hard": 15, "Impossible": 18},
         )
 
     def test_meeting_target_succeeds_and_below_fails(self) -> None:
         self.assertTrue(resolve_check(attribute_modifier=0, target=9, dice_total=9).success)
         self.assertFalse(resolve_check(attribute_modifier=0, target=10, dice_total=9).success)
+
+    def test_easiest_and_impossible_are_numeric_difficulties(self) -> None:
+        easiest_success = resolve_check(attribute_modifier=0, target=DIFFICULTIES["Easiest"], dice_total=3)
+        easiest_failure = resolve_check(
+            attribute_modifier=0,
+            target=DIFFICULTIES["Easiest"],
+            dice_total=3,
+            extra_modifiers=(-1,),
+        )
+        impossible_success = resolve_check(
+            attribute_modifier=0,
+            target=DIFFICULTIES["Impossible"],
+            dice_total=18,
+        )
+        self.assertTrue(easiest_success.success)
+        self.assertEqual(easiest_success.total, 3)
+        self.assertFalse(easiest_failure.success)
+        self.assertEqual(easiest_failure.total, 2)
+        self.assertTrue(impossible_success.success)
+        self.assertEqual(impossible_success.total, 18)
 
     def test_positive_and_negative_extra_modifiers(self) -> None:
         positive = resolve_check(attribute_modifier=1, target=12, dice_total=9, extra_modifiers=(2,))
@@ -112,9 +147,31 @@ class CoreRulesTests(unittest.TestCase):
         self.assertEqual(attributes["CYB"], 7)
         self.assertEqual(attributes["PSY"], -9)
 
-    def test_godot_adapter_reads_shared_canon(self) -> None:
+    def test_concordia_structured_check_matches_shared_resolution(self) -> None:
+        attributes = AttributeSet({"FIT": 1, "REF": 0, "INT": 0, "CHA": 0, "CYB": 0, "PSY": 0})
+        shared = resolve_check(
+            attribute_modifier=attributes["FIT"],
+            target=DIFFICULTIES["Normal"],
+            dice_total=12,
+            extra_modifiers=(-1,),
+        )
+        concordia = resolve_structured_check(
+            attributes=attributes,
+            attribute_id="FIT",
+            target=DIFFICULTIES["Normal"],
+            dice_total=12,
+            extra_modifiers=(-1,),
+        )
+        self.assertEqual(concordia["dice_total"], shared.dice_total)
+        self.assertEqual(concordia["total"], shared.total)
+        self.assertEqual(concordia["success"], shared.success)
+
+    def test_godot_adapter_reads_shared_canon_and_supports_deterministic_checks(self) -> None:
         source = (ROOT / "src" / "godot" / "core_rules.gd").read_text(encoding="utf-8")
         self.assertIn('res://data/rules/core.json', source)
+        self.assertIn("func difficulty_names()", source)
+        self.assertIn("dice_total_override", source)
+        self.assertIn("total >= target", source)
         for attribute_id in ATTRIBUTE_IDS:
             self.assertNotIn('"' + attribute_id + '":', source)
 
