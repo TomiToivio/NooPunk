@@ -223,6 +223,82 @@ def test_world_document_stays_gameable_not_a_paper() -> None:
         assert section in doc, f"world document lost its gameable section: {section}"
 
 
+def test_pcm_has_external_relationships() -> None:
+    """Issue #8 §6: PCM's relationship with the Noöspheric order, not just a stance.
+
+    The first pass modelled PCM's positions but not its relationships, so the
+    deliverable that lists governments, corporations, NHI contact groups,
+    psionics organisations, anti-AI movements, ecological movements, security
+    services, religious movements, anarchists and public institutions had no
+    data behind it.
+    """
+    model = load()
+    pcm = next(f for f in model["factions"] if f["id"] == "pcm")
+    assert "external_relationships" in pcm, "PCM has no external relationships"
+    relations = pcm["external_relationships"]
+    required = {
+        "noospheric_infrastructure",
+        "human_communities",
+        "ai_agents",
+        "governments",
+        "corporations",
+        "nhi_contact_groups",
+        "psionic_organisations",
+        "transhumanists",
+        "anti_ai_movements",
+        "ecological_movements",
+        "security_services",
+        "religious_movements",
+        "anarchists_autonomists",
+        "public_institutions",
+    }
+    missing = required - set(relations)
+    assert not missing, f"PCM relationships missing: {sorted(missing)}"
+    for target, relation in relations.items():
+        if target.startswith("$"):
+            continue
+        assert isinstance(relation, str) and len(relation) > 40, (
+            f"PCM's relationship with {target} is a label, not a relationship"
+        )
+
+
+def test_every_event_says_how_it_realigns_factions() -> None:
+    """Issue #8 §8: events must actually move factions, not just name an axis.
+
+    `primary_axis` records which paradigm an event belongs to; on its own it does
+    not say that anything REACTS to it, which is the deliverable ("After such
+    events, factions should split, merge, radicalize, moderate, or change
+    alliances").
+    """
+    model = load()
+    kinds = {"split", "merge", "radicalise", "moderate", "realign"}
+    for event in model["paradigm_shift_events"]:
+        moves = event.get("realignments")
+        assert moves, f"event {event['id']} realigns nothing"
+        assert len(moves) >= 2, f"event {event['id']} moves fewer than two factions"
+        for move in moves:
+            assert move["kind"] in kinds, (
+                f"event {event['id']} uses unknown realignment kind {move['kind']!r}"
+            )
+            assert move.get("who"), f"event {event['id']} names no faction it moves"
+            assert move.get("what"), f"event {event['id']} does not say what changes"
+
+
+def test_realignments_do_not_all_push_one_direction() -> None:
+    """An event that moves everyone the same way is a reset button, not history.
+
+    The model's whole point is that an event moves ITS OWN axis and leaves others
+    alone, so the realignments across the set must include opposite directions.
+    """
+    model = load()
+    kinds = [m["kind"] for e in model["paradigm_shift_events"]
+             for m in e.get("realignments", [])]
+    assert "split" in kinds and "radicalise" in kinds, (
+        "realignments must include both splitting and radicalising"
+    )
+    assert len(set(kinds)) >= 3, "realignments are not using the range of outcomes"
+
+
 if __name__ == "__main__":  # pragma: no cover - manual run convenience
     import sys
 
