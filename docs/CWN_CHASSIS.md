@@ -147,15 +147,15 @@ plan, and it is **not** a claim that any of these subsystems are ready.
 
 ### Review status
 
-Nothing above is reviewed yet except where NoöPunk **already** has an author
-decision. The only such case is the attribute layer, which NoöPunk replaced before
-adopting CWN as a chassis:
+Only two subsystems have an author decision: the attribute layer, which NoöPunk
+replaced before adopting CWN as a chassis, and skills, which were reviewed under the
+chassis and set to MODIFY. Everything else is unreviewed and stays DEFER.
 
 | Subsystem | Decision | Note |
 |---|---|---|
 | Attributes | **REPLACE** | NoöPunk's own six attributes, already author-specified |
 | Attribute generation / modifier scale | **DEFER** | NoöPunk's own 3d6 generation and −3..+3 range are canonical; the comparison with CWN is unreviewed |
-| Skills | **DEFER** | NoöPunk's four levels are canonical; the catalog and the comparison with CWN are unreviewed |
+| Skills | **MODIFY** | NoöPunk adopts the CWN level-0..4 trained-skill structure and the standard skill list as a starting point, with: unskilled remaining outside the numbered levels at -1 / BLOCKED; **Heal renamed Medical**; **Know renamed Science**; specialization mechanics deferred; further skill-list changes expected later. See `RULEBOOK.md` §5.3 |
 | All other subsystems | **DEFER** | not yet reviewed; remain undefined (see `RULEBOOK.md` §19) |
 
 Every row not marked otherwise stays **DEFER** until the author decides it. A DEFER
@@ -174,7 +174,7 @@ That includes, but is not limited to:
 - the −3..+3 ordinary-human modifier range
 - 3d6 core resolution
 - the difficulty ladder
-- skill levels 0–3
+- the skill list and the level-0..4 trained skill scale
 - the tabletop-first development order
 - the current cyberspace modifier work
 

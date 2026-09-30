@@ -102,7 +102,7 @@ Development is now explicitly **tabletop-first**. The tabletop RPG rules/worldbo
 
 The project must **not** fill gaps by inventing mechanics or lore.
 
-The initial Godot work should create only a clean, minimal RPG foundation. Major design areas such as combat, psionics, NHI, factions, character creation, equipment, economy, progression, world geography, quests, and detailed simulation rules are reserved for later specification by the author. Attributes, core 3d6 checks, and the four tabletop skill levels are specified in [RULEBOOK.md](RULEBOOK.md); skill levels are tabletop-first and not yet ported to Godot or Concordia.
+The initial Godot work should create only a clean, minimal RPG foundation. Major design areas such as combat, psionics, NHI, factions, character creation, equipment, economy, progression, world geography, quests, and detailed simulation rules are reserved for later specification by the author. Attributes, core 3d6 checks, the skill list, and the level-0..4 skill scale are specified in [RULEBOOK.md](RULEBOOK.md); skills are tabletop-first and not yet ported to Godot or Concordia.
 
 See [RULEBOOK.md](RULEBOOK.md) for the intentionally incomplete rules framework and [AGENTS.md](AGENTS.md) for mandatory agent constraints.
 

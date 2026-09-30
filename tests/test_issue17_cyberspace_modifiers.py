@@ -273,16 +273,26 @@ class NoInventedSubsystemTests(unittest.TestCase):
 class ExistingRulesPreservedTests(unittest.TestCase):
     """#17 must not change the core rules it builds on."""
 
-    def test_five_step_skill_levels_are_unchanged(self) -> None:
+    def test_skill_scale_is_the_current_canon(self) -> None:
+        """#17 must not change the skill rules it builds on.
+
+        #17 originally pinned the then-current four-step scale. #22 later
+        replaced that scale with the CWN-style level-0..4 model, so this guard
+        now pins the current canon instead of a withdrawn one.
+        """
         flat = _flat(RULEBOOK)
-        for level, name, modifier in (
-            ("0", "unskilled", "special"),
-            ("1", "basic", "+1"),
-            ("2", "advanced", "+2"),
-            ("3", "expert", "+3"),
+        for level, meaning in (
+            ("level-0", "+0"),
+            ("level-1", "+1"),
+            ("level-2", "+2"),
+            ("level-3", "+3"),
+            ("level-4", "+4"),
         ):
             with self.subTest(level=level):
-                self.assertRegex(flat, rf"\| {level} \| {name} \| {re.escape(modifier)} \|")
+                self.assertRegex(flat, rf"\| \*\*{level}\*\* \| [^|]+\|")
+                self.assertIn(f"{level}:", flat)
+                self.assertIn(meaning, flat)
+        self.assertIn("unskilled is not level-0", flat)
 
     def test_difficulty_ladder_is_unchanged(self) -> None:
         flat = _flat(RULEBOOK)
