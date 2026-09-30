@@ -158,3 +158,35 @@ When implementing the Concordia runtime:
 - preserve the same tabletop ↔ Godot ↔ Concordia rule semantics wherever practical.
 
 The first Concordia implementation should be infrastructure only: runnable simulation plumbing, agent/GM interfaces, Ollama connection boundaries, optional human input, and empty world/rule hooks. Do not advance into substantive simulation design without a separate author task.
+
+### 13. The three design balances are invariants
+
+NoöPunk holds three balances deliberately. They are project-level invariants, not loose inspirations, and agents must preserve them. The full canonical explanation lives in [docs/DESIGN_PRINCIPLES.md](docs/DESIGN_PRINCIPLES.md) — treat it as the source of truth and do not restate its reasoning elsewhere.
+
+**Creative agenda balance — Gamism / Narrativism / Simulationism**
+
+- **Gamism:** CY_BORG — challenge, danger, meaningful choices, resource pressure, emergent problem solving, fast playable rules.
+- **Simulationism:** Cyberpunk 2020 — coherent world rules, material consequences, cybernetics and technology that matter mechanically.
+- **Narrativism:** The Sprawl — fiction-forward consequences, relationships and factions, failures and partial successes that change the situation.
+
+Do not let one agenda become the default that overwhelms the others. Gamism does not mean combat-focused or optimization-heavy: hacking, psionics, infiltration, investigation, social engineering and exploration are all gamist challenge spaces.
+
+**Implementation balance — Tabletop / Godot / Concordia**
+
+Same world, same rules, same mechanics wherever possible. All three runtimes share rules, mechanics, character model, world model, setting canon, core systems and balance. **Scenarios, missions, maps, encounters, presentation, UI, pacing, procedural generation and medium-specific implementation details may and probably should diverge.** See rule 11 and rule 3. Where duplicate rule implementations exist, prefer extracting a shared specification so divergence becomes easier to detect.
+
+**Genre balance — Cyberpunk / Noösphere**
+
+Neither half may swallow the other. The cyberpunk side stays technological, political, economic and social. The Noösphere is the anomalous layer and is based specifically on three speculative paradigm shifts: **UFO / UAP Disclosure**, **Psionics**, and **Panpsychism**. The Noösphere must not become generic fantasy magic.
+
+**Comparative influences, not templates**
+
+**Shadowrun** and **Eclipse Phase** are the nearest structural neighbours — Shadowrun for mixing cyberpunk with an anomalous layer, Eclipse Phase where cyberpunk and anomalous/posthuman themes meet. They are comparative influences only. NoöPunk must not be presented as an Eclipse Phase homebrew, expansion or rules variant, or as a Shadowrun derivative, and no protected setting material, terminology, characters, factions, mechanics or text may be copied.
+
+**Changing a balance**
+
+Do not silently redesign any of these balances. If an implementation appears to require a departure, document the reason explicitly in the issue or document that forced it, and prefer a neutral placeholder or TODO over a quiet reinterpretation. Examples, prototypes, test fixtures and genre convention are not authority to change a balance.
+
+### 14. Keep design guidance in one place
+
+Do not duplicate the three balances across documents. `docs/DESIGN_PRINCIPLES.md` is the canonical explanation; other documents carry short references to it. If a balance's meaning needs to change, change it there and nowhere else. If an existing design-principles document already covers a topic, extend it rather than creating a competing source of truth.

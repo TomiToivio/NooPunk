@@ -59,6 +59,8 @@ When rules are eventually specified:
 
 This is an architectural direction, not a current rules implementation.
 
+This contract is one instance of the project's implementation balance — the same world, rules and mechanics across tabletop, Godot and Concordia — which is documented canonically in [DESIGN_PRINCIPLES.md](DESIGN_PRINCIPLES.md) §2. Godot may freely diverge in scenarios, presentation, UI and pacing; it may not diverge in rules, mechanics, character model, world model or balance.
+
 ## Intentionally undefined
 
 The scaffold now implements the author-specified attributes and core 3d6 resolution only. It still does not choose:

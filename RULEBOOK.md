@@ -14,11 +14,15 @@ NoöPunk is one RPG rules model with three runtimes:
 
 Where practical, canonical game rules remain independent of runtime-specific UI, scenes, prompts, animation, rendering, or input code.
 
+This is one of three deliberate NoöPunk design balances. All three are documented canonically in [docs/DESIGN_PRINCIPLES.md](docs/DESIGN_PRINCIPLES.md).
+
 ## 2. Genre premise
 
 **NoöPunk = Noösphere + Cyberpunk.**
 
 The setting explores a cyberpunk technological and social transformation together with speculative paradigm shifts involving consciousness, psionics, non-human intelligence, and the emergence of a Noösphere.
+
+Neither half is meant to swallow the other, and the Noösphere rests specifically on three paradigm shifts: UFO / UAP Disclosure, Psionics, and Panpsychism. That genre balance is documented canonically in [docs/DESIGN_PRINCIPLES.md](docs/DESIGN_PRINCIPLES.md) §3.
 
 The detailed setting is not defined in this document yet. See README.md and TIMELINE.md for the current high-level framing.
 
@@ -200,6 +204,8 @@ The three supported forms are tabletop RPG, Godot RPG, and Concordia RPG / simul
 They use the same canonical attribute identifiers, human-generation table, difficulty targets, check semantics, unskilled penalty, trained-only representation, and opposed-check semantics.
 
 Runtime-specific adapters may differ, but they must not redefine canonical rules.
+
+This contract is the runtime instance of the project's **tabletop / Godot / Concordia balance**: same world, same rules, same mechanics wherever possible, while scenarios and medium-specific presentation may diverge. The canonical explanation of that balance, and of the two other NoöPunk design balances, is [docs/DESIGN_PRINCIPLES.md](docs/DESIGN_PRINCIPLES.md).
 
 ## 18. Canon and change control
 

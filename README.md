@@ -69,6 +69,17 @@ See [RULEBOOK.md](RULEBOOK.md) for the intentionally incomplete rules framework 
 The rule is simple: **scaffold first, canon later**.
 
 
+## Three design balances
+
+NoöPunk holds three deliberate balances, documented once in [docs/DESIGN_PRINCIPLES.md](docs/DESIGN_PRINCIPLES.md):
+
+1. **Gamism / Narrativism / Simulationism** — the creative agendas, anchored on **CY_BORG** (challenge), **Cyberpunk 2020** (reality) and **The Sprawl** (story).
+2. **Tabletop / Godot / Concordia** — same world, same rules, same mechanics wherever possible; scenarios and presentation may diverge.
+3. **Cyberpunk / Noösphere** — neither half swallows the other; the Noösphere rests on UFO/UAP Disclosure, Psionics and Panpsychism.
+
+**Shadowrun** and **Eclipse Phase** are important comparative influences, not templates. NoöPunk is not an Eclipse Phase homebrew or expansion.
+
+
 ## Godot scaffold
 
 A minimal **Godot 4** project now lives in this repository.

@@ -14,6 +14,8 @@ NoöPunk is intended to use one conceptual rules and world model across:
 
 `RULEBOOK.md` is the human-readable rules counterpart. Shared rules and canonical data belong outside runtime-specific code.
 
+This is the runtime-side instance of the project's implementation balance — same world, rules and mechanics across tabletop, Godot and Concordia — documented canonically in [DESIGN_PRINCIPLES.md](DESIGN_PRINCIPLES.md) §2. Concordia may freely diverge in scenarios, missions, pacing and procedural generation; it may not diverge in rules, mechanics, character model or balance.
+
 ## Why Concordia
 
 Google DeepMind Concordia is built around entities, Game Masters, components, and a simulation engine. This fits the intended NoöPunk simulation role, where a GM can mediate a world populated by LLM-driven agents and, later, human-controlled participants.
