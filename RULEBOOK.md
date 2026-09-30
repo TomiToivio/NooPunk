@@ -43,11 +43,15 @@ Compare the final total against a difficulty rating. A check succeeds when the f
 | Easiest | 3 |
 | Easier | 6 |
 | Easy | 9 |
-| Hard | 12 |
-| Harder | 15 |
-| Hardest | 18 |
+| Normal | 12 |
+| Hard | 15 |
+| Impossible | 18 |
 
-Additional modifiers may later come from skills, advantages, disadvantages, cybernetics, equipment, conditions, circumstances, or other author-defined systems.
+Additional modifiers may later come from skills, advantages, disadvantages, cybernetics, equipment, conditions, circumstances, or other author-defined systems. Positive and negative modifiers are summed normally.
+
+"Impossible" is the canonical name for target 18. It is still a numeric difficulty, not a prohibition on attempting the check. There is no automatic failure on a natural 3 and no automatic success on a natural 18.
+
+These names supersede the earlier labels `Hard = 12`, `Harder = 15`, and `Hardest = 18`. The current mapping is `Normal = 12`, `Hard = 15`, and `Impossible = 18`. At the time of this rename there was no canonical save-data schema or runtime caller persisting the old difficulty names, so no legacy aliases are retained. In particular, old `Hard` must not silently continue to mean target 12.
 
 ### 4.1 Opposed checks
 
@@ -66,9 +70,18 @@ If the final totals are tied, the result is explicitly unresolved. No tie-breake
 Skill use has two representable categories:
 
 1. **Unskilled attempt allowed:** the action may be attempted without the skill, with an additional **-1 unskilled modifier**.
-2. **Trained-only:** the action cannot be attempted without the required skill.
+2. **Skill required / trained-only:** the action cannot be attempted without the required skill. This is a **blocked attempt**, not a failed roll. No dice are rolled and additional modifiers cannot bypass the requirement.
 
 Which future skills use which category is not yet specified.
+
+### 4.3 Worked checks
+
+These examples are normative examples of the same check formula used by Tabletop, Godot, and Concordia:
+
+- **Easiest, no modifiers:** a raw check roll of 3 against target 3 totals 3 and succeeds.
+- **Easiest, -1 modifier:** a raw check roll of 3 with a -1 modifier totals 2 and fails.
+- **Impossible:** a raw check roll of 18 with no modifiers against target 18 totals 18 and succeeds. "Impossible" therefore does not mean "unrollable."
+- **Unskilled allowed:** a raw check roll of 10 with no attribute modifier and the -1 unskilled modifier totals 9, succeeding against Easy (9). The unskilled penalty is applied exactly once.
 
 ## 5. Characters
 
@@ -78,12 +91,12 @@ Most character systems remain unspecified. The six canonical attributes and ordi
 
 The canonical attributes are:
 
-- **Fitness (FIT):** your health, fitness, stamina, physical robustness, and constitution.
-- **Reflexes (REF):** your dexterity, agility, coordination, reaction speed, and bodily precision.
-- **Intelligence (INT):** how smart, educated, knowledgeable, analytical, and generally intellectually capable you are.
-- **Charisma (CHA):** your social skills, attractiveness, presence, persuasion, and leadership ability.
-- **Cybernetics (CYB):** your cyborg / technological side: technical aptitude, proficiency in cyberspace, programming, cybernetics, and related human-machine capabilities.
-- **Psyche (PSY):** your consciousness, intuition, empathy, and psionic aptitude. PSY is used for consciousness-related and psionic actions, including astral projection when those systems are later defined.
+- **Fitness (FIT):** your health, fitness and constitution.
+- **Reflexes (REF):** your dexterity, agility and coordination.
+- **Intelligence (INT):** how smart, educated and knowledgeable you are.
+- **Charisma (CHA):** your social skills, attractiveness and leadership skills.
+- **Cybernetics (CYB):** your cyborg side; how technical you are; your proficiency in cyberspace, programming and cybernetics.
+- **Psyche (PSY):** your consciousness, intuition, empathy and psionics. Used in astral projection and for psionics.
 
 Do not add alternate names or additional attributes without author specification.
 
@@ -105,9 +118,11 @@ Convert each raw 3d6 result into an attribute modifier:
 
 Interpretation:
 
-- +3 is approximately the normal upper human limit.
-- Values above +3 are transhuman / superhuman.
-- Values below -3 represent an effectively nonfunctional or near-dead state.
+- +3 is the ordinary human upper end represented by this generation table.
+- Values above +3 are **transhuman**.
+- Values below -3 are **basically dead**.
+
+These statements describe attribute modifiers, not raw 3d6 generation rolls. They do not define any additional death, injury, augmentation, resurrection, or recovery mechanic.
 
 The data model must permit values outside the ordinary-human -3..+3 range. Future transhumans, AI entities, NHI, cybernetic beings, injuries, or other cases may use explicitly assigned values when their rules are later defined.
 
