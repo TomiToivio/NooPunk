@@ -36,12 +36,17 @@ The canonical explanation is [docs/DESIGN_PRINCIPLES.md](docs/DESIGN_PRINCIPLES.
 
 NoöPunk keeps the technological, political, urban, and economic core of old-school cyberpunk.
 
+NoöPunk's **open mechanical chassis** is the **[Cities Without Number SRD](https://cwn.quadrifons.com/)** (public domain). NoöPunk starts from that SRD, then goes through the system **subsystem by subsystem** and deliberately decides what to KEEP, MODIFY, REPLACE, OMIT, or DEFER. NoöPunk is **not** a CWN clone and is expected to diverge substantially from it. Existing NoöPunk author decisions take precedence over CWN defaults. See [docs/CWN_CHASSIS.md](docs/CWN_CHASSIS.md).
+
 Major RPG influences include:
 
+- **Cities Without Number SRD** — the open mechanical chassis and main starting point
 - **Cyberpunk 2013 / 2020 / RED** — the Simulationism reference (`Cyberpunk 2020`)
 - **CY_BORG** — the Gamism reference
 - **The Sprawl** — the Narrativism reference
 - **Shadowrun** and **Eclipse Phase** — comparative influences, not templates
+
+Only material actually present in the Cities Without Number **SRD** may be directly reused. Protected material from the full CWN book, and protected text or setting material from Cyberpunk 2020, Eclipse Phase, Shadowrun, The Sprawl, or CY_BORG, must not be copied. Those games are design references only.
 
 A rough analogy is **Shadowrun with the cyberpunk left as cyberpunk, while the urban-fantasy layer is replaced by the Noösphere, NHI, psionics, and consciousness-fundamental metaphysics**. Unlike Shadowrun, the anomalous layer comes from UFO / UAP Disclosure, psionics, and panpsychism rather than fantasy races and magic. Eclipse Phase is the closest comparison where cyberpunk and anomalous / posthuman themes meet.
 

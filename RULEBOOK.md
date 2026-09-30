@@ -278,6 +278,14 @@ A rule becomes canonical only when explicitly specified by the author or incorpo
 
 Examples, prototypes, test values, genre conventions, and temporary implementation details are **not canon**.
 
+### 18.1 Open mechanical chassis
+
+NoöPunk's main open mechanical starting point is the **Cities Without Number SRD**. This rulebook describes NoöPunk's own tabletop rules. Where a subsystem is still unresolved, the CWN SRD is the reference point for *reviewing* that subsystem, not an automatic source of the rule.
+
+Every CWN subsystem gets one explicit author decision: **KEEP**, **MODIFY**, **REPLACE**, **OMIT**, or **DEFER**. Nothing is assumed to survive unchanged, and an unresolved subsystem stays **DEFER** (see section 19). Existing NoöPunk rules in this rulebook take precedence over CWN defaults.
+
+Only material actually present in the CWN **SRD** may be directly reused. See [docs/CWN_CHASSIS.md](docs/CWN_CHASSIS.md) for the policy, the legal boundary, and the subsystem review order.
+
 ## 19. Future design sections
 
 The following remain intentionally unresolved:
@@ -304,3 +312,5 @@ The following remain intentionally unresolved:
 - simulation model
 
 This list is a roadmap of questions, not a specification.
+
+Any subsystem that the Cities Without Number SRD also covers is additionally subject to the chassis review in section 18.1 and stays **DEFER** until the author decides it.

@@ -183,6 +183,7 @@ NoöPunk's canonical design invariants are documented once in [`docs/DESIGN_PRIN
 6. Treat **UFO Disclosure, Psionics and Panpsychism** as the defining Noösphere paradigm shifts.
 7. Treat **Shadowrun** and **Eclipse Phase** as comparative influences, not templates to copy.
 8. Do not silently redesign these balances. If an implementation requires a departure, document the reason explicitly.
+9. Treat the **Cities Without Number SRD** as the open mechanical chassis (see §15), reviewed and modified **subsystem by subsystem**, with existing NoöPunk author decisions taking precedence over CWN defaults.
 
 Practical consequences:
 
@@ -207,3 +208,22 @@ Before implementing or extending a substantive Godot or Concordia gameplay syste
 Platform-specific differences must be documented as adaptations. They must not silently become new canonical rules.
 
 Scenarios, UI, pacing, maps, presentation, automation, and other medium-specific features may diverge where appropriate. Core rules, mechanics, terminology, and world canon should not.
+
+### 15. Cities Without Number SRD is the open chassis
+
+NoöPunk's main open mechanical starting point is the **Cities Without Number SRD**, documented once in [`docs/CWN_CHASSIS.md`](docs/CWN_CHASSIS.md). NoöPunk is **not** a CWN clone: it starts from that SRD and then modifies the system **subsystem by subsystem**.
+
+When working on any subsystem that CWN also has:
+
+1. review the CWN SRD version of it;
+2. decide explicitly: **KEEP**, **MODIFY**, **REPLACE**, **OMIT**, or **DEFER**;
+3. when the decision is missing, leave it **DEFER** — do not assume CWN's version survives, and do not assume it is dropped.
+
+**NoöPunk decisions take precedence.** Existing author-specified NoöPunk rules are canonical and are not overridden by CWN defaults. Do not redesign them back toward CWN — in particular, the six attributes (FIT, REF, INT, CHA, CYB, PSY), the 3d6 ordinary-human generation, the −3..+3 ordinary-human modifier range, the 3d6 core resolution, the difficulty ladder, and skill levels 0–3.
+
+**Source boundary.** Direct reuse is limited to material actually present in the Cities Without Number **SRD**. Do not import setting material, megacorps, NPCs, places, or events from the full CWN book. Do not copy protected text, setting material, terminology, or faction content from Cyberpunk 2020, Eclipse Phase, Shadowrun, The Sprawl, or CY_BORG: those are **design references only**. When unsure whether something is in the SRD, treat it as not in the SRD and write original wording.
+
+Adopting the chassis is a **policy and roadmap**, not a conversion. Do not mass-port CWN mechanics, and do not advance Godot or Concordia ahead of the tabletop rules.
+
+Subsystem decisions belong to the author. A DEFER is an open question, not permission for an agent to choose.
+
