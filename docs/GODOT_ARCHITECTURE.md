@@ -1,6 +1,8 @@
 # Godot RPG Architecture
 
-This document describes only the current technical scaffold. It does **not** define NoöPunk mechanics or lore.
+This document describes only the preserved technical scaffold. It does **not** define NoöPunk mechanics or lore.
+
+> **Development status:** Godot is a later-stage port. Substantive gameplay work waits until the corresponding tabletop rules/world material are defined and stable in `RULEBOOK.md` and the canonical tabletop/world documentation. Existing Godot infrastructure is preserved rather than discarded.
 
 ## Runtime
 
@@ -46,13 +48,15 @@ Reserved for author-defined canonical world/content data.
 
 Reserved for author-defined simulation parameters and data.
 
-## Tabletop ↔ Godot contract
+## Tabletop → Godot contract
+
+The tabletop RPG is the canonical first implementation. Godot receives stable tabletop systems as a later conversion; it does not co-design unfinished rules.
 
 The long-term goal is for the tabletop RPG and Godot RPG to share the same conceptual rules.
 
 The core resolution mechanic and the six canonical attributes are now specified. The contract they follow:
 
-1. `RULEBOOK.md` remains the human-readable rules reference.
+1. `RULEBOOK.md` is the canonical human-readable rules source and is updated first.
 2. The canonical constants live once in `data/rules/core.json` and are consumed by the shared Python layer in `src/rules/core.py`.
 3. The Godot runtime reads that same data through `src/godot/core_rules.gd`; scenes and UI should consume those concepts through adapters rather than redefine them.
 4. World content and simulation logic remain separate from presentation code.
@@ -104,3 +108,16 @@ These are waiting for separate author-driven design steps.
 - **Code architecture:** no framework, autoload, plugin, inheritance hierarchy, or gameplay singleton has been introduced.
 
 These choices are intentionally easy to revise.
+
+
+## Porting gate
+
+Before adding a substantive Godot gameplay system:
+
+1. confirm the tabletop rule/world concept exists;
+2. confirm it is coherent enough for tabletop play;
+3. resolve rule ambiguity in the tabletop source;
+4. derive a digital specification;
+5. implement the Godot adapter without redefining the rule.
+
+The preferred path is **tabletop rule → digital specification → Godot**. Concordia follows the same shared specification later. Platform-specific presentation may differ, but a hidden rules fork is a defect.
