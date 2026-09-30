@@ -1,10 +1,12 @@
 # Concordia RPG / Simulation Architecture
 
-This document describes the **infrastructure-only** Concordia runtime for NoöPunk.
+This document describes the preserved **infrastructure-only** Concordia runtime for NoöPunk.
+
+> **Development status:** Concordia is a later-stage port/simulation runtime. Substantive NoöPunk mechanics, world systems, scenarios, and agent behavior should not advance ahead of the canonical tabletop rules/worldbook. Existing Concordia infrastructure is preserved for later conversion work.
 
 It consumes the author-defined core attributes and 3d6 mechanics, but does not define additional characters, factions, world facts, skills, combat, or simulation theory.
 
-## One RPG, three runtimes
+## One RPG, three runtimes, tabletop first
 
 NoöPunk is intended to use one conceptual rules and world model across:
 
@@ -12,7 +14,7 @@ NoöPunk is intended to use one conceptual rules and world model across:
 2. Godot RPG
 3. Concordia RPG / generative social simulation
 
-`RULEBOOK.md` is the human-readable rules counterpart. Shared rules and canonical data belong outside runtime-specific code.
+`RULEBOOK.md` is the canonical human-readable rules source. Shared rules and canonical data belong outside runtime-specific code, and the tabletop definition is stabilized before Concordia receives the system.
 
 Per [`DESIGN_PRINCIPLES.md`](DESIGN_PRINCIPLES.md) §2, the runtimes share the same rules, mechanics, character model, world model, and terminology, and may diverge only in scenarios, presentation, UI, pacing, and medium-specific implementation details. Concordia may not fork a rule to make simulation easier: if a shared rule is undefined, leave it undefined or use clearly non-canonical fixtures.
 
@@ -181,3 +183,12 @@ Those remain separate author-driven design tasks.
 - No cloud LLM fallback has been added.
 
 The adapter boundary is intended to absorb future Concordia API changes without altering canonical NoöPunk rules.
+
+
+## Porting gate
+
+Concordia work follows the sequence **tabletop rule → digital specification → Godot implementation → Concordia implementation** unless an author-approved task explicitly changes the order.
+
+Before adding a substantive Concordia system, verify that the corresponding tabletop mechanic/world concept is explicitly defined and coherent. If simulation work exposes ambiguity, repair the tabletop source first rather than resolving it only in prompts, components, or agent logic.
+
+Concordia-specific simulation plumbing may remain as preserved infrastructure while tabletop design proceeds.
