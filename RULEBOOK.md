@@ -38,144 +38,90 @@ Future dates are written as **20XX** unless explicitly specified otherwise.
 
 The setting is approximately a 2045-like future extrapolated from 2026, without committing the fiction to an exact canonical year.
 
-## 4. Core resolution system: skill checks
+## 4. Core resolution system
 
-> **This section supersedes the earlier 3d6 core check and its
-> `3 / 6 / 9 / 12 / 15 / 18` difficulty ladder.** NoöPunk's skill checks now use the
-> **Cities Without Number SRD** model (section 18.1, decision **Core checks →
-> MODIFY**), keeping NoöPunk's own six attributes and its wider **−3..+3**
-> ordinary-human attribute range.
+NoöPunk uses the **Cities Without Number SRD skill-check engine**, modified for NoöPunk's own six attributes and wider ordinary-human attribute range.
 
-The basic NoöPunk skill check is:
+The basic skill check is:
 
 ~~~text
-total = 2d6 + relevant skill level + relevant attribute modifier + other applicable modifiers
+total = 2d6 + relevant skill level + relevant attribute modifier
 success = total >= difficulty
 ~~~
 
-A **2d6** roll is two six-sided dice summed, giving 2..12. The **skill level** term
-is the character's level in the relevant skill (section 5.3): **+0..+4** for a
-trained skill at level-0 through level-4. A character who does not possess the skill
-either takes the **unskilled -1** or is **blocked**, per section 4.2.
+Roll two six-sided dice and add the character's relevant trained skill level and the attribute modifier that best fits the action. A level-0 skill contributes +0, level-1 contributes +1, and so on through level-4 at +4. A character with no relevant skill is **unskilled**, which is outside the numbered skill levels and uses section 4.2.
 
-The **attribute modifier** is the modifier of whatever attribute is relevant to the
-action (section 4.4). NoöPunk's ordinary-human range is **−3..+3** (section 5.2).
+NoöPunk keeps its own attribute modifiers, including the ordinary-human **-3..+3** range in section 5.2. This is an intentional divergence from the narrower CWN attribute range.
 
-A check succeeds when the final total **meets or exceeds** the difficulty; a total
-one below fails.
-
-On a failure the character either cannot accomplish the feat at all, suffers bad
-luck, or achieves it at the cost of a further complication. **The GM decides the
-specific consequence of a failure.** No failure table is canonical.
-
-### 4.1 Difficulty ladder
+The GM calls for a skill check when the outcome is meaningfully uncertain and beyond ordinary routine competence. Anything easier than difficulty 6 generally should not require a roll.
 
 | Difficulty | Meaning |
 |---:|---|
-| **6** | A relatively simple task that is still more than the character would usually be expected to manage in their regular background. |
-| **8** | A significant challenge to a competent professional, that they would still succeed at more often than not. |
-| **10** | Something too difficult to be expected of anyone but a skilled expert, and even they might fail. |
-| **12** | Only a true master could expect to carry this off with any degree of reliability. |
-| **14+** | Only a true master has any chance of achieving this at all, and even they will probably fail. |
+| **6** | Relatively simple task that is still beyond ordinary routine |
+| **8** | Significant challenge to a competent professional |
+| **10** | Difficult task expected mainly of a skilled expert |
+| **12** | Master-level challenge |
+| **14+** | Extreme task where even a true master will probably fail |
 
-Anything easier than difficulty 6 **is not worth a skill check** and should be
-resolved by ordinary competence or narrated directly.
+The player describes what the character is doing. The GM selects the relevant skill and attribute from that description. Skills are **not** permanently bound to one attribute. If more than one combination is genuinely plausible, the player may use a plausible favorable combination. A combination that is only marginally relevant may take a **-1 or -2** penalty at the GM's discretion.
 
-These five ratings supersede the earlier NoöPunk ladder `Easiest 3, Easier 6,
-Easy 9, Normal 12, Hard 15, Impossible 18`. That ladder is **no longer canonical for
-skill checks**, and its names are not retained as aliases: the old `Easy 9` and the
-new `6` or `8` are different questions, so silently re-pointing a name would change
-what an old note meant. **Difficulty 6 keeps its number but changes meaning** — under
-the old ladder it was the second-easiest rung (`Easier`); it is now the *hardest
-thing still not worth rolling for*. There is no automatic failure on a natural 2 and
-no automatic success on a natural 12.
+Helpful or hostile circumstances generally produce a combined situational modifier within **-2..+2**. Exceptional subsystem-specific equipment, cyberware, software, or other effects may later define their own rules. Do not assign modifiers to every fictional detail.
 
-### 4.2 Unskilled and trained-only checks
+This section supersedes the earlier NoöPunk **3d6 skill-check engine** and its **3 / 6 / 9 / 12 / 15 / 18** difficulty ladder. The old numbers remain relevant only to historical repository versions and to the still-unported digital runtime described in section 17.
 
-These two cases apply to a character who **does not possess** the skill. Unskilled
-is not a skill level: it is the absence of one (section 5.3).
+### 4.1 Opposed skill checks
 
-1. **Unskilled attempt allowed:** the action may be attempted without the skill, with an additional **-1 unskilled modifier**, applied exactly once.
-2. **Skill required / trained-only:** the action cannot be attempted without the required skill. This is a **blocked attempt**, not a failed roll. No dice are rolled and additional modifiers cannot bypass the requirement.
-
-A character who possesses the skill is trained, and uses their skill level's
-**+0..+4** modifier instead (section 5.3).
-
-Which skills use which category is not yet specified. The **technical or esoteric**
-test is deliberately left to the GM and is not enumerated: some sufficiently
-technical or esoteric tasks may be impossible to attempt untrained.
-
-### 4.3 Opposed checks
-
-For opposed **skill checks**, each side rolls:
+For an opposed skill check, both sides roll:
 
 ~~~text
 2d6 + relevant skill level + relevant attribute modifier
 ~~~
 
-The side with the higher final total wins. **On a tie, the player character wins.**
+The side with the higher total wins.
 
-This supersedes the earlier NoöPunk rule that an opposed tie is "unresolved". It
-applies to opposed **skill checks**. Where an opposed test involves no player
-character, use the smallest coherent reading — the GM resolves it as an ordinary
-contest between two NPC totals (section 4.5) — and treat any deeper procedure as
-future design. Do not invent an elaborate tie ladder.
+If a player character is involved and the totals tie, **the player character wins the tie**.
 
-### 4.4 Calling for a skill check
+A general tie procedure for opposed tests that involve no player character is not defined here. Do not invent an additional subsystem for it.
 
-The GM calls for a skill check when the outcome is meaningfully uncertain **and**
-beyond ordinary competence. The order is:
+### 4.2 Unskilled and trained-only checks
 
-1. The player describes what the character attempts.
-2. The GM names the skill and attribute combination to roll.
-3. If more than one combination is genuinely plausible, **the player may pick the one most favourable to them.**
-4. If a combination is only marginally relevant but still reasonably plausible, it may suffer a **−1 or −2** penalty, at the GM's discretion.
+These two cases apply to a character who **does not possess** the relevant skill. Unskilled is not a skill level: it is the absence of one (section 5.3).
 
-**Skill-to-attribute bindings are deliberately not fixed.** Do not build a table
-mapping each skill to one attribute: the same skill may plausibly use different
-attributes depending on what the character is actually doing (for example, a
-technical action and a social one may both draw on CYB and CHA in different ways).
-The relevant attribute comes from the described action, every time.
+1. **Unskilled attempt allowed:** apply **-1** to the skill check.
+2. **Training required:** sufficiently technical or esoteric tasks may be impossible to attempt without the relevant skill. This is a **blocked attempt**, not a failed roll. No dice are rolled.
 
-### 4.5 Situational modifiers, aid, and NPCs
+A character who possesses the skill uses the numbered level normally, from level-0 (+0) through level-4 (+4).
 
-**Helpful or hostile circumstances** modify a skill check by **−2 to +2**. Normally
-no combination of situational modifiers should alter the roll by more than this, or
-else it becomes a near-foregone conclusion. Do not turn every fictional detail into
-a modifier. This band does **not** cover modifiers from gear mods, cyberware, or PC
-aid, which may later have their own rules where explicitly defined.
+Which tasks require training remains contextual unless a later subsystem specifies it.
 
-**Aiding a skill check.** To aid a comrade:
+### 4.3 Aiding another character
 
-1. The helper explains what their character is doing to help.
-2. If the GM agrees it is plausible, the helper rolls a **relevant skill + attribute check against the same difficulty** as the check they are aiding.
-3. On success, the acting character gains **+1**.
-4. On failure there is normally no additional penalty.
-5. Multiple characters may aid when their actions are plausible, but **the total aid bonus is capped at +1**.
+A character may help another character when the fiction makes the assistance plausible.
 
-Aiding is usually done in a way that lets the helper leverage their own talents: a
-character with no Sneak might instead use Perform to create a distraction.
+1. The helper explains how they are helping.
+2. The helper rolls a relevant skill + attribute check against the same difficulty.
+3. On success, the acting character receives **+1**.
+4. On failure, there is normally no additional penalty.
+5. Multiple helpers may roll when plausible, but the total aid bonus is capped at **+1**.
 
-**NPC skill checks.** When an NPC needs a skill check, roll **2d6 + their listed
-skill modifier** if the action is something they ought reasonably to be good at. If
-it is not, use **+0**, or **−1** if it is something they would be particularly bad
-at. An NPC detailed enough to have real attribute scores and skill levels uses those
-normally instead. This is lightweight guidance, **not** an NPC-generation system.
+### 4.4 NPC skill checks
 
-### 4.6 Worked skill checks
+Ordinary NPCs use the lightweight CWN-derived approach:
 
-These examples are normative examples of the same check formula used by Tabletop,
-Godot, and Concordia:
+- for something they should reasonably be competent at, roll **2d6 + the NPC's listed or relevant skill modifier**;
+- use **+0** for ordinary unrelated competence;
+- use **-1** when the NPC is particularly bad at the task;
+- unusually detailed NPCs that actually have attributes and skill levels may use the full player-character procedure.
 
-- **Competent professional:** a raw 2d6 roll of 7 with a level-1 skill (+1) and a +1 attribute modifier totals 9, failing against difficulty 10 and succeeding against 8.
-- **True master:** a raw 2d6 roll of 9 with a level-4 skill (+4) and a +1 attribute modifier totals 14, succeeding against 14+.
-- **Wider NoöPunk attribute range:** a raw 2d6 roll of 6 with a level-2 skill (+2) and a **+3** attribute modifier totals 11, succeeding against 10. Under CWN's narrower attribute range the same character would have totalled less; NoöPunk keeps **−3..+3** deliberately (section 5.2).
-- **Unskilled allowed:** a raw 2d6 roll of 8 with a +0 attribute modifier and the −1 unskilled modifier totals 7, succeeding against 6. The penalty is applied exactly once.
-- **Level-0 skill:** a raw 2d6 roll of 6 with a +0 attribute modifier and a level-0 skill totals 6, succeeding against 6.
-- **Marginally relevant combination:** a raw 2d6 roll of 8 with a +1 skill and a +0 attribute modifier, at the GM's −2 for marginal relevance, totals 7, failing against 8.
-- **Aided check:** a raw 2d6 roll of 6 with a +1 skill and a +0 attribute modifier totals 7 and fails against 8; a successful aid from a comrade adds +1, making 8 and succeeding. A second successful aid does **not** add another +1.
-- **Opposed, PC wins the tie:** the PC totals 9 and the NPC totals 9; the **player character wins**.
-- **Skill required, unskilled:** the attempt is blocked before rolling. No dice are rolled and no total is produced, however large the other modifiers are.
+This is not a complete NPC-generation system.
+
+### 4.5 Worked checks
+
+- **Difficulty 6, level-0, attribute +0:** a roll of 6 totals 6 and succeeds.
+- **Difficulty 8, unskilled, attribute +1:** a roll of 8 with +1 attribute and -1 unskilled totals 8 and succeeds.
+- **Difficulty 10, level-2, attribute +1:** a roll of 7 +2 +1 totals 10 and succeeds.
+- **Difficulty 12, level-4, attribute -1:** a roll of 9 +4 -1 totals 12 and succeeds.
+- **Training required, unskilled:** the attempt is blocked before rolling.
 
 ## 5. Characters
 
@@ -256,10 +202,10 @@ level-3:   +3
 level-4:   +4
 ~~~
 
-So the normal skill check in section 4 is:
+So the normal check in section 4 stays conceptually:
 
 ~~~text
-2d6 + relevant skill level + relevant attribute modifier + other applicable modifiers
+2d6 + relevant skill level + relevant attribute modifier
 ~~~
 
 This wording is deliberately provisional. The scale and the skill list are a first
@@ -308,11 +254,7 @@ per-skill attribute bindings; training time; prerequisites; skill groups;
 defaulting chains; critical-success rules; and any advancement mechanic
 (section 5.6).
 
-Skill levels have **no numeric representation in `data/rules/core.json`** yet; that
-file remains the canonical runtime data for the attributes, human generation,
-difficulty targets, unskilled penalty, and opposed-check semantics — and, as section
-17.1 records, it still carries the **superseded 3d6-era** values pending the port.
-The skill list and levels are tabletop-first and not yet ported.
+Skill levels have **no numeric representation in `data/rules/core.json`** yet. The current runtime data and adapters still implement the superseded pre-#25 3d6 check engine; they are retained temporarily as digital-port debt and are **not** the tabletop source of truth. Skill levels and the skill list are tabletop-first and not yet ported (section 17).
 
 #### Specialties: deferred
 
@@ -385,55 +327,21 @@ No detailed social subsystem is canonical yet.
 
 ## 12. Networks, hacking and AI systems
 
-**Hacking is UNSPECIFIED and deferred.** CYB is the governing attribute for
-technical, programming, cyberspace, cybernetics and hacking actions. No hacking
-subsystem, tool catalog, target-security model, or cyberspace skill list is defined.
+**Hacking / cyberspace is DEFERRED.**
 
-An earlier revision defined a situational modifier framework for cyberspace actions
-(BCI, Compute, Connection, Infosec). **That framework has been withdrawn** and
-hacking is now **DEFER** under the chassis policy; see section 12.1 for the
-withdrawal and what it does and does not mean.
+The earlier tabletop experiment from issue #17 introduced separate **BCI, Compute, Connection, and Infosec defence modifiers** for human cyberspace users. Those modifiers are now **withdrawn from active canon** while NoöPunk's hacking subsystem is reconsidered against the Cities Without Number SRD.
 
-### 12.1 Cyberspace and hacking modifiers: withdrawn
+The concepts are not rejected. BCI quality, local compute, connection quality, and infosec hardening may return later inside a redesigned CWN-derived hacking/cyberspace system.
 
-> **The earlier BCI / Compute / Connection / Infosec modifier framework has been
-> withdrawn from active canonical rules.**
+For now:
 
-An earlier revision of this section (issue #17) specified a stack of situational
-modifiers for human cyberspace actions: **BCI** (interface quality), **Compute**
-(local compute), **Connection** (link quality and proximity), and **Infosec**
-(defensive hardening), applied on top of the core check.
+- CYB remains the canonical attribute for cybernetic, technical, programming, and cyberspace aptitude where relevant;
+- **Program** remains a skill in section 5.3, but this section does not declare that every cyberspace action uses Program;
+- no BCI / Compute / Connection / Infosec modifier tables are active rules;
+- no hacking subsystem, cyberdeck rules, ICE, tracing, target-security model, brain-hacking consequences, or AI-native cyberspace mechanics are defined;
+- AI-native entities, uploaded humans, and autonomous software agents remain a separate later design problem.
 
-That framework is **no longer canonical**. NoöPunk is now much closer to the Cities
-Without Number mechanical chassis, and the hacking/cyberspace subsystem should be
-reconsidered against **CWN's own hacking rules** rather than carrying an early
-parallel modifier stack forward. See [docs/CWN_CHASSIS.md](docs/CWN_CHASSIS.md):
-**Hacking / cyberspace is DEFER.**
-
-**This is a withdrawal from active canon, not a rejection of the ideas.** BCI
-quality, compute, connection quality, and infosec defence may return later inside a
-redesigned, CWN-derived hacking/cyberspace system. They remain available as **future
-design ideas**. The earlier wording is preserved in git history for reference; it is
-not a rule and must not be applied to a check.
-
-What this means in practice:
-
-- Do **not** add BCI, Compute, Connection, or Infosec modifiers to a skill check.
-- Do **not** reintroduce them into `data/rules/core.json` or any runtime adapter.
-- Do **not** treat their withdrawal as an author decision that hacking is solved —
-  hacking itself remains **UNSPECIFIED** and is deferred to its own future task.
-
-CYB remains the governing attribute for technical, programming, cyberspace,
-cybernetics and hacking actions, as stated at the head of this section. When hacking
-is designed, it will follow this section's own guidance: the relevant attribute and
-skill come from the described action (sections 4.4 and 5.3), not from a fixed table.
-
-#### Deferred: non-human cyberspace participants
-
-Cyberspace rules for **AI-native entities, uploaded humans, autonomous software
-agents and other non-human participants** are **explicitly deferred** to a separate
-future design task. They were never covered by the withdrawn human-user modifiers
-and must not be inferred from them.
+The next hacking/cyberspace task should review the CWN SRD hacking subsystem under the KEEP / MODIFY / REPLACE / OMIT / DEFER process before restoring or replacing any of the earlier modifier concepts.
 
 ## 13. Equipment and economy
 
@@ -459,19 +367,15 @@ Concordia may reason about context and describe outcomes, but dice, attribute va
 
 The three supported forms are tabletop RPG, Godot RPG, and Concordia RPG / simulation. The tabletop form is the canonical first implementation and design authority; digital runtimes follow after the relevant tabletop system is stable enough to port.
 
-### 17.1 Known port debt: the digital runtimes still implement the superseded 3d6 system
+The **tabletop skill-check canon is now the 2d6 CWN-derived engine in section 4**. The existing `data/rules/core.json`, shared Python rules, Godot adapter, and Concordia adapter still implement the superseded 3d6 check engine and old difficulty ladder. They are retained temporarily as **explicit digital-port debt**, not as competing canon.
 
-**The digital runtimes have not yet been ported to the 2d6 skill-check model in section 4.** As of this revision:
+A later porting task must convert the stable tabletop rule into a shared digital specification and then update Godot and Concordia consistently. Until that task is done, runtime tests may verify the legacy implementation as legacy behavior, but documentation must not describe it as the current canonical tabletop mechanic.
 
-- `data/rules/core.json` still carries the **superseded** 3d6-era constants: the `3 / 6 / 9 / 12 / 15 / 18` `difficulties` map, the `opposed_tie` value `unresolved`, and the attribute-generation table.
-- `src/rules/core.py`, `src/godot/core_rules.gd`, and `src/concordia_runtime/mechanics.py` still roll **3d6** and resolve against the old ladder.
-- The Godot and Concordia scaffolds are therefore **stale with respect to section 4**, and the skill list and level-0..4 scale in section 5.3 remain unported.
+The skill list and the level-0..4 trained skill scale in section 5.3 are also tabletop-first and not yet ported.
 
-**This is a known, deliberate, explicitly-tracked debt.** It is not a second canon: where a runtime and this rulebook disagree, **this rulebook is authoritative**, and the runtime is wrong. Porting is a separate later task after the tabletop rules are stable (section 14 of `AGENTS.md`). A runtime must not be extended to match the old rules, and a runtime must not invent the new ones either — the port is its own issue.
+The former issue #17 BCI / Compute / Connection / Infosec modifier framework is no longer an active tabletop rule and must not be ported. Hacking/cyberspace is DEFERRED pending a later CWN-based subsystem review.
 
-The attribute identifiers, the ordinary-human generation procedure, the `-3..+3` modifier range, the unskilled penalty, and the trained-only representation are **unchanged** by section 4 and remain shared between tabletop and the runtimes.
-
-Runtime-specific adapters may differ, but they must not redefine canonical rules.
+Runtime-specific adapters may differ in plumbing, but once ported they must not redefine canonical rules.
 
 ## 18. Canon and change control
 
@@ -485,19 +389,7 @@ NoöPunk's main open mechanical starting point is the **Cities Without Number SR
 
 Every CWN subsystem gets one explicit author decision: **KEEP**, **MODIFY**, **REPLACE**, **OMIT**, or **DEFER**. Nothing is assumed to survive unchanged, and an unresolved subsystem stays **DEFER** (see section 19). Existing NoöPunk rules in this rulebook take precedence over CWN defaults.
 
-Only material actually present in the CWN **SRD** may be directly reused. See [docs/CWN_CHASSIS.md](docs/CWN_CHASSIS.md) for the policy, the legal boundary, and the subsystem review order.
-
-### 18.2 Provenance
-
-**NoöPunk's core tabletop mechanics are derived from and substantially modify the
-Cities Without Number SRD, released under CC0. NoöPunk is an independent project and
-is not affiliated with or endorsed by Sine Nomine Publishing.**
-
-Provenance is kept short here **by design**. The licence, the exact reuse boundary,
-what the CC0 waiver does and does not cover, and the authoritative source are all
-explained once in [docs/CWN_CHASSIS.md](docs/CWN_CHASSIS.md) — do not restate the
-full licensing argument in this rulebook or scatter legal boilerplate across the
-docs.
+Only material actually present in the CWN **SRD** may be directly reused. NoöPunk's core tabletop mechanics are derived from and substantially modify the Cities Without Number SRD, released under CC0. NoöPunk is an independent project and is not affiliated with or endorsed by Sine Nomine Publishing. See [docs/CWN_CHASSIS.md](docs/CWN_CHASSIS.md) for the detailed policy, legal boundary, and subsystem review order.
 
 ## 19. Future design sections
 
@@ -513,7 +405,7 @@ The following remain intentionally unresolved:
 - damage and armor
 - advancement / XP
 - cyberware rules and catalog
-- hacking rules (the withdrawn human-user cyberspace modifier framework is not a rule; the subsystem is **DEFER** and will be redesigned on CWN's hacking chassis — tools, target security, ICE, tracing, stealth, brain-hacking consequences)
+- hacking / cyberspace rules, including whether any BCI, Compute, Connection, or Infosec modifiers return in the later CWN-derived design
 - cyberspace rules for AI-native entities, uploaded humans and autonomous agents
 - detailed network topology, bandwidth and latency models
 - psionic powers
@@ -521,7 +413,6 @@ The following remain intentionally unresolved:
 - detailed social subsystem mechanics
 - AI / NHI mechanical differences
 - transhuman augmentation rules
-- opposed skill checks that involve no player character (the PC-wins-tie rule in section 4.3 covers opposed skill checks generally; a fuller procedure is future design)
 - equipment and economy
 - world building
 - factions

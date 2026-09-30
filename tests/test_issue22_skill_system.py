@@ -118,17 +118,14 @@ class SkillScaleTests(unittest.TestCase):
     def test_unskilled_keeps_minus_one_and_blocking(self) -> None:
         flat = _flat(RULEBOOK)
         self.assertIn("-1 if the attempt is allowed, otherwise blocked", flat)
-        self.assertIn("-1 unskilled modifier", flat)
-        self.assertIn("applied exactly once", flat)
-        self.assertIn("blocked before rolling", flat)
+        self.assertIn("unskilled attempt allowed", flat)
+        self.assertIn("apply -1", flat)
+        self.assertIn("blocked attempt", flat)
         self.assertIn("no dice are rolled", flat)
 
     def test_check_structure_names_attribute_plus_skill(self) -> None:
-        """#25 later converted the die: 2d6, skill level, then attribute."""
         flat = _flat(RULEBOOK)
-        self.assertIn(
-            "2d6 + relevant skill level + relevant attribute modifier", flat
-        )
+        self.assertIn("2d6 + relevant skill level + relevant attribute modifier", flat)
 
 
 class SkillListTests(unittest.TestCase):
@@ -291,23 +288,20 @@ class UnchangedSystemsTests(unittest.TestCase):
         self.assertIn("| 3 | -3 |", flat)
         self.assertIn("| 18 | +3 |", flat)
 
-    def test_difficulty_ladder_is_the_cwn_ladder(self) -> None:
-        """#22 pinned the old ladder; #25 superseded it for skill checks."""
+    def test_issue25_supersedes_only_the_check_engine(self) -> None:
         flat = _flat(RULEBOOK)
-        for target in (6, 8, 10, 12):
-            with self.subTest(difficulty=target):
-                self.assertIn(f"| {target} |", flat)
-        self.assertIn("14+", flat)
-        self.assertIn("total = 2d6", flat)
+        self.assertIn("total = 2d6 + relevant skill level + relevant attribute modifier", flat)
+        for target in ("6", "8", "10", "12", "14+"):
+            self.assertIn(f"| {target} |", flat.replace("**", ""))
 
-    def test_the_cyberspace_framework_is_now_withdrawn(self) -> None:
-        """#22 pinned #17's modifiers as live. #25 withdrew them, so this guard
-        now pins the withdrawal instead of the framework."""
+    def test_cyberspace_framework_is_withdrawn_pending_later_review(self) -> None:
         flat = _flat(RULEBOOK)
-        for modifier in ("bci", "compute", "connection", "infosec"):
-            with self.subTest(modifier=modifier):
-                self.assertIn(modifier, flat)
-        self.assertIn("withdrawn from active canonical rules", flat)
+        self.assertIn("hacking / cyberspace is deferred", flat)
+        self.assertIn("concepts are not rejected", flat)
+        for heading in ("#### bci modifier", "#### compute modifier",
+                        "#### connection modifier", "#### infosec defence modifier"):
+            with self.subTest(heading=heading):
+                self.assertNotIn(heading, flat)
 
     def test_core_json_gained_no_skill_schema(self) -> None:
         """The two pre-existing unskilled keys are #11's, not a #22 skill schema."""

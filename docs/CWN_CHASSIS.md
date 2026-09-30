@@ -100,19 +100,6 @@ references only**. They are influences and comparisons, never sources to copy fr
 When in doubt about whether a piece of text is in the SRD, treat it as **not** in
 the SRD and write NoöPunk's own wording.
 
-### Attribution / provenance
-
-NoöPunk's core tabletop mechanics are derived from and substantially modify the
-**Cities Without Number SRD**, released under **CC0**. NoöPunk is an independent
-project and is **not affiliated with or endorsed by Sine Nomine Publishing**.
-
-CC0 needs no attribution, but the provenance is stated anyway so the derivation is
-honest and checkable rather than silently implied.
-
-**This is the one place the full licensing position lives.** The rulebook carries a
-short version (`RULEBOOK.md` §18.2) that points here; do not scatter legal
-boilerplate across the repository.
-
 ## Working method: subsystem by subsystem
 
 For every major subsystem, make one explicit decision:
@@ -160,18 +147,19 @@ plan, and it is **not** a claim that any of these subsystems are ready.
 
 ### Review status
 
-Four subsystems now have an author decision: the attribute layer, which NoöPunk
-replaced before adopting CWN as a chassis; skills and core checks, which were
-reviewed under the chassis and set to MODIFY; and hacking / cyberspace, which was
-returned to DEFER. Everything else is unreviewed and stays DEFER.
+Three subsystems now have an author decision: the attribute layer, which NoöPunk
+replaced before adopting CWN as a chassis; skills, which were reviewed under the
+chassis and set to MODIFY; and core checks, which issue #25 sets to MODIFY.
+Hacking / cyberspace is explicitly returned to DEFER pending a later CWN-derived
+hacking review. Everything else remains unreviewed and stays DEFER.
 
 | Subsystem | Decision | Note |
 |---|---|---|
 | Attributes | **REPLACE** | NoöPunk's own six attributes, already author-specified |
 | Attribute generation / modifier scale | **DEFER** | NoöPunk's own 3d6 generation and −3..+3 range are canonical; the comparison with CWN is unreviewed |
 | Skills | **MODIFY** | NoöPunk adopts the CWN level-0..4 trained-skill structure and the standard skill list as a starting point, with: unskilled remaining outside the numbered levels at -1 / BLOCKED; **Heal renamed Medical**; **Know renamed Science**; specialization mechanics deferred; further skill-list changes expected later. See `RULEBOOK.md` §5.3 |
-| Core checks | **MODIFY** | NoöPunk adopts CWN's `2d6 + skill level + attribute modifier` structure, the `6 / 8 / 10 / 12 / 14+` difficulty ladder, the GM-calls procedure, the −2..+2 situational band, aiding (+1, capped), the PC-wins-ties opposed rule, and the lightweight NPC guidance. NoöPunk keeps its **own six attributes** and its **wider −3..+3 ordinary-human modifier range**, which CWN does not have. See `RULEBOOK.md` §4 |
-| Hacking / cyberspace | **DEFER** | The earlier custom **BCI / Compute / Connection / Infosec** modifier framework (#17) is **withdrawn from active canon**; hacking will be reconsidered later using CWN's own hacking subsystem as the starting chassis. Not a rejection of the concepts. See `RULEBOOK.md` §12.1 |
+| Core checks | **MODIFY** | Adopt CWN's 2d6 + skill + attribute structure and 6 / 8 / 10 / 12 / 14+ skill-check difficulty ladder; retain NoöPunk's six attributes and wider −3..+3 ordinary-human modifier range. See `RULEBOOK.md` §4 |
+| Hacking / cyberspace | **DEFER** | Earlier BCI / Compute / Connection / Infosec modifier tables are withdrawn from active canon pending a later CWN hacking conversion |
 | All other subsystems | **DEFER** | not yet reviewed; remain undefined (see `RULEBOOK.md` §19) |
 
 Every row not marked otherwise stays **DEFER** until the author decides it. A DEFER
@@ -188,14 +176,11 @@ That includes, but is not limited to:
 - the six attributes: **FIT**, **REF**, **INT**, **CHA**, **CYB**, **PSY**
 - 3d6 ordinary-human attribute generation
 - the −3..+3 ordinary-human modifier range
-- the 2d6 skill check and its `6 / 8 / 10 / 12 / 14+` difficulty ladder
+- the CWN-derived **2d6 skill-check engine**
+- the CWN-style skill-check difficulty ladder
 - the skill list and the level-0..4 trained skill scale
 - the tabletop-first development order
-
-Note that core checks are **no longer** on the "do not redesign" list in their old
-form: they were deliberately redesigned toward CWN by issue #25, and only the
-attribute layer and the wider modifier range are NoöPunk-specific divergences there.
-The withdrawn cyberspace modifier framework is likewise no longer protected work.
+- hacking / cyberspace is currently **DEFERRED**; the earlier BCI / Compute / Connection / Infosec modifier experiment is retained only as design history
 
 ### The first known divergence: attributes
 
@@ -216,6 +201,25 @@ than CWN's narrower ordinary modifier scale. This difference is deliberate.
 
 A wider ordinary modifier range is not a balance problem to be corrected by
 importing CWN's scale: it is part of how NoöPunk's checks work.
+
+
+### Core checks: MODIFY
+
+Issue #25 adopts the CWN SRD skill-check engine as NoöPunk's tabletop baseline:
+
+- roll **2d6 + relevant skill level + relevant attribute modifier**;
+- use the CWN-style **6 / 8 / 10 / 12 / 14+** difficulty ladder;
+- keep NoöPunk's own six attributes and ordinary-human **−3..+3** attribute range;
+- keep unskilled outside the numbered skill levels at **−1** when an attempt is allowed, or **BLOCKED** when training is required;
+- use CWN-derived opposed checks, aid, contextual skill/attribute selection, and normal situational modifiers.
+
+This supersedes NoöPunk's earlier 3d6 skill-check engine and 3 / 6 / 9 / 12 / 15 / 18 difficulty ladder. **3d6 still remains the ordinary-human attribute-generation roll.**
+
+The digital runtime has not yet been ported to this tabletop change. Existing runtime 3d6 check code is temporary implementation debt, not a second source of canon.
+
+### Hacking / cyberspace: returned to DEFER
+
+Issue #25 withdraws the issue #17 BCI / Compute / Connection / Infosec modifier tables from active canon. The concepts are not rejected, but they must be reconsidered later against the CWN hacking subsystem before any are restored or replaced.
 
 ## Tabletop first
 

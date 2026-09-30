@@ -1,5 +1,4 @@
 {
-  "_superseded_note": "SUPERSEDED (RULEBOOK.md section 4, issue #25): the `difficulties` map, `opposed_tie`, and the 3d6 core check in the runtimes are the withdrawn 3d6-era canon. Tabletop is now 2d6 + skill level + attribute modifier against 6/8/10/12/14+, and an opposed skill-check tie is won by the player character. This file is UNPORTED runtime data pending the later port (RULEBOOK.md section 17.1); RULEBOOK.md is authoritative where they disagree. Do not add CWN 2d6 values here without the port.",
   "attributes": [
     {"id": "FIT", "name": "Fitness", "description": "Your health, fitness and constitution."},
     {"id": "REF", "name": "Reflexes", "description": "Your dexterity, agility and coordination."},
