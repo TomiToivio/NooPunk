@@ -41,7 +41,10 @@ CONCORDIA_MECHANICS = ROOT / "src" / "concordia_runtime" / "mechanics.py"
 #: The decisions author work has actually recorded in the review-status table.
 #: `attributes` predates the chassis (#19); `skills` was reviewed under it (#22).
 #: Everything else must still read DEFER.
-DECIDED_ROWS = {"attributes": "REPLACE", "skills": "MODIFY"}
+#: Non-DEFER rows only — the parser below collects decided rows and treats DEFER as
+#: "still open". `core_checks` joined after #25 (MODIFY). Hacking was returned to
+#: DEFER by #25, so it is correctly absent here; tests/test_issue17 pins that row.
+DECIDED_ROWS = {"attributes": "REPLACE", "skills": "MODIFY", "core checks": "MODIFY"}
 
 
 def _text(path: Path) -> str:
@@ -158,8 +161,12 @@ class RestraintTests(unittest.TestCase):
                     f"author decision",
                 )
 
-    def test_only_the_attribute_row_is_decided(self) -> None:
-        """Exactly one subsystem may be decided, and it predates the chassis."""
+    def test_only_the_author_decided_rows_are_decided(self) -> None:
+        """No row may show a decision the author has not made.
+
+        Attributes predates the chassis; skills followed in #22; core checks in
+        #25. Everything else must still read DEFER.
+        """
         text = _text(POLICY)
         status = text[text.index("### Review status"):text.index("## NoöPunk decisions")]
         decided = {}
@@ -238,18 +245,36 @@ class PrecedenceTests(unittest.TestCase):
         self.assertIn("| 18 | +3 |", flat)
         self.assertIn("ordinary-human -3..+3 range", flat)
 
-    def test_cwn_core_mechanic_did_not_leak_into_canon(self) -> None:
-        """CWN's 2d6 core check must not appear as a NoöPunk rule."""
-        self.assertNotIn("2d6", _text(RULEBOOK))
-        self.assertNotIn("2d6", _text(CORE_JSON))
+    def test_the_core_check_is_now_the_cwn_2d6_structure(self) -> None:
+        """#25 adopted CWN's 2d6 core check deliberately.
 
-    def test_difficulty_ladder_and_3d6_core_are_preserved(self) -> None:
+        #19 guarded against CWN's 2d6 leaking into canon *before* an author
+        decision. That decision has since been made (Core checks -> MODIFY), so
+        the guard is inverted: canon must now carry 2d6, and the runtime's stale
+        3d6 must be marked as unported rather than presented as canon.
+        """
+        self.assertIn("2d6", _text(RULEBOOK))
+        self.assertIn("_superseded_note", _text(CORE_JSON))
+
+    def test_difficulty_ladder_is_the_cwn_ladder(self) -> None:
+        """The old 3/6/9/12/15/18 ladder was superseded by #25."""
         flat = _flat(RULEBOOK)
+        for target in (6, 8, 10, 12):
+            with self.subTest(difficulty=target):
+                self.assertIn(f"| {target} |", flat)
+        self.assertIn("| 14+ |", flat)
         for name, target in (("easiest", 3), ("easier", 6), ("easy", 9),
                              ("normal", 12), ("hard", 15), ("impossible", 18)):
-            with self.subTest(difficulty=name):
-                self.assertRegex(flat, rf"\| {name} \| {target} \|")
-        self.assertIn("total = 3d6", flat)
+            with self.subTest(withdrawn=name):
+                self.assertNotRegex(flat, rf"\| {name} \| {target} \|")
+        self.assertIn("total = 2d6", flat)
+
+    def test_the_modifier_range_survives_the_conversion(self) -> None:
+        """The point of #25: CWN's engine, NoöPunk's wider attribute range."""
+        flat = _flat(RULEBOOK)
+        self.assertIn("| 3 | -3 |", flat)
+        self.assertIn("| 18 | +3 |", flat)
+        self.assertIn("\u22123..+3", flat)
 
 
 class TabletopFirstTests(unittest.TestCase):

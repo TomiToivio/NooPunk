@@ -89,11 +89,12 @@ class CurrentScaleTests(unittest.TestCase):
 
     def test_check_formula_still_carries_the_skill_term(self) -> None:
         text = _flat(RULEBOOK)
+        # #25 converted the core check to 2d6 + skill level + attribute modifier
         self.assertIn(
-            "total = 3d6 + relevant attribute modifier + skill modifier + other applicable modifiers",
+            "total = 2d6 + relevant skill level + relevant attribute modifier + other applicable modifiers",
             text,
         )
-        self.assertIn("success = total >= difficulty target", text)
+        self.assertIn("success = total >= difficulty", text)
 
 
 class UnskilledRulesTests(unittest.TestCase):
@@ -129,9 +130,12 @@ class UnskilledRulesTests(unittest.TestCase):
 
 class TabletopScopeTests(unittest.TestCase):
     def test_tabletop_first_deferral_is_explicit(self) -> None:
+        """#22 said "not yet ported"; #25 made the debt explicit. The guarantee
+        (tabletop is canonical, the runtimes are not) is what must survive."""
         text = _flat(RULEBOOK)
-        self.assertIn("tabletop-first and not yet ported", text)
-        self.assertIn("godot and concordia do not implement them yet", text)
+        self.assertIn("port debt", text)
+        self.assertIn("still implement the superseded 3d6 system", text)
+        self.assertIn("this rulebook is authoritative", text)
 
     def test_agents_preserve_tabletop_first_scope(self) -> None:
         text = _flat(AGENTS)

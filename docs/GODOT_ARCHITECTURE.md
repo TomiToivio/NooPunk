@@ -10,7 +10,7 @@ This document describes only the preserved technical scaffold. It does **not** d
 - `scenes/main.tscn` is the bootstrap scene.
 - The bootstrap scene displays only a neutral project-status message.
 
-The first canonical gameplay layer is now implemented: the six attributes and core 3d6 check mechanics. No UI or broader gameplay subsystem has been added.
+The first canonical gameplay layer is implemented: the six attributes and a core check. **That check is the superseded 3d6 system** (RULEBOOK.md §17.1) — it has not yet been ported to the canonical 2d6 skill check. No UI or broader gameplay subsystem has been added.
 
 ## Separation of concerns
 
@@ -22,7 +22,7 @@ Canonical rules should not live here.
 
 ### `src/rules/`
 
-Contains the engine-independent Python reference implementation of the author-specified attribute and core 3d6 rules. Canonical numeric data is loaded from data/rules/core.json.
+Contains the engine-independent Python reference implementation of the author-specified attributes and a core check. **The check is the superseded 3d6 system and awaits the port** (RULEBOOK.md §17.1). Canonical numeric data is loaded from data/rules/core.json, which likewise still carries the withdrawn 3d6-era values.
 
 ### `src/world/`
 
@@ -73,9 +73,11 @@ A presentation difference between the tabletop and Godot versions of a scenario 
 
 ## Intentionally undefined
 
-The scaffold now implements the author-specified attributes and core 3d6 resolution only. The Godot adapter reads the canonical difficulty names and targets directly from `data/rules/core.json`, and its check resolver accepts an optional deterministic dice-total override for parity tests. Production checks still roll 3d6 when no override is supplied.
+The scaffold implements the author-specified attributes and a core check only. The Godot adapter reads the difficulty names and targets directly from `data/rules/core.json`, and its check resolver accepts an optional deterministic dice-total override for parity tests. Production checks still roll 3d6 when no override is supplied.
 
-The current canonical difficulty names are **Easiest 3, Easier 6, Easy 9, Normal 12, Hard 15, Impossible 18**. Earlier Hard/Harder/Hardest labels are not retained as runtime aliases because doing so would make `Hard` ambiguous after its target changed from 12 to 15.
+**This is stale with respect to the canonical rule.** `RULEBOOK.md` §4 now specifies `2d6 + skill level + attribute modifier` against a `6 / 8 / 10 / 12 / 14+` ladder, with opposed ties won by the player character. The adapter has not been ported; doing so is a separate later task (RULEBOOK.md §17.1). Do not treat the adapter's behaviour as canon.
+
+The difficulty names currently in `data/rules/core.json` are **Easiest 3, Easier 6, Easy 9, Normal 12, Hard 15, Impossible 18**. These are **superseded**: they are the withdrawn 3d6 ladder, not the canonical skill-check ladder (RULEBOOK.md §4.1, now `6 / 8 / 10 / 12 / 14+`). Earlier Hard/Harder/Hardest labels are not retained as runtime aliases because doing so would make `Hard` ambiguous after its target changed from 12 to 15. The CWN-derived ladder deliberately does **not** reuse these names: difficulty 6 keeps its number but changes meaning, so re-pointing a name would silently change what an old note meant.
 
 It still does not choose:
 

@@ -100,6 +100,19 @@ references only**. They are influences and comparisons, never sources to copy fr
 When in doubt about whether a piece of text is in the SRD, treat it as **not** in
 the SRD and write NoöPunk's own wording.
 
+### Attribution / provenance
+
+NoöPunk's core tabletop mechanics are derived from and substantially modify the
+**Cities Without Number SRD**, released under **CC0**. NoöPunk is an independent
+project and is **not affiliated with or endorsed by Sine Nomine Publishing**.
+
+CC0 needs no attribution, but the provenance is stated anyway so the derivation is
+honest and checkable rather than silently implied.
+
+**This is the one place the full licensing position lives.** The rulebook carries a
+short version (`RULEBOOK.md` §18.2) that points here; do not scatter legal
+boilerplate across the repository.
+
 ## Working method: subsystem by subsystem
 
 For every major subsystem, make one explicit decision:
@@ -147,15 +160,18 @@ plan, and it is **not** a claim that any of these subsystems are ready.
 
 ### Review status
 
-Only two subsystems have an author decision: the attribute layer, which NoöPunk
-replaced before adopting CWN as a chassis, and skills, which were reviewed under the
-chassis and set to MODIFY. Everything else is unreviewed and stays DEFER.
+Four subsystems now have an author decision: the attribute layer, which NoöPunk
+replaced before adopting CWN as a chassis; skills and core checks, which were
+reviewed under the chassis and set to MODIFY; and hacking / cyberspace, which was
+returned to DEFER. Everything else is unreviewed and stays DEFER.
 
 | Subsystem | Decision | Note |
 |---|---|---|
 | Attributes | **REPLACE** | NoöPunk's own six attributes, already author-specified |
 | Attribute generation / modifier scale | **DEFER** | NoöPunk's own 3d6 generation and −3..+3 range are canonical; the comparison with CWN is unreviewed |
 | Skills | **MODIFY** | NoöPunk adopts the CWN level-0..4 trained-skill structure and the standard skill list as a starting point, with: unskilled remaining outside the numbered levels at -1 / BLOCKED; **Heal renamed Medical**; **Know renamed Science**; specialization mechanics deferred; further skill-list changes expected later. See `RULEBOOK.md` §5.3 |
+| Core checks | **MODIFY** | NoöPunk adopts CWN's `2d6 + skill level + attribute modifier` structure, the `6 / 8 / 10 / 12 / 14+` difficulty ladder, the GM-calls procedure, the −2..+2 situational band, aiding (+1, capped), the PC-wins-ties opposed rule, and the lightweight NPC guidance. NoöPunk keeps its **own six attributes** and its **wider −3..+3 ordinary-human modifier range**, which CWN does not have. See `RULEBOOK.md` §4 |
+| Hacking / cyberspace | **DEFER** | The earlier custom **BCI / Compute / Connection / Infosec** modifier framework (#17) is **withdrawn from active canon**; hacking will be reconsidered later using CWN's own hacking subsystem as the starting chassis. Not a rejection of the concepts. See `RULEBOOK.md` §12.1 |
 | All other subsystems | **DEFER** | not yet reviewed; remain undefined (see `RULEBOOK.md` §19) |
 
 Every row not marked otherwise stays **DEFER** until the author decides it. A DEFER
@@ -172,11 +188,14 @@ That includes, but is not limited to:
 - the six attributes: **FIT**, **REF**, **INT**, **CHA**, **CYB**, **PSY**
 - 3d6 ordinary-human attribute generation
 - the −3..+3 ordinary-human modifier range
-- 3d6 core resolution
-- the difficulty ladder
+- the 2d6 skill check and its `6 / 8 / 10 / 12 / 14+` difficulty ladder
 - the skill list and the level-0..4 trained skill scale
 - the tabletop-first development order
-- the current cyberspace modifier work
+
+Note that core checks are **no longer** on the "do not redesign" list in their old
+form: they were deliberately redesigned toward CWN by issue #25, and only the
+attribute layer and the wider modifier range are NoöPunk-specific divergences there.
+The withdrawn cyberspace modifier framework is likewise no longer protected work.
 
 ### The first known divergence: attributes
 

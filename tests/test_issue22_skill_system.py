@@ -124,8 +124,11 @@ class SkillScaleTests(unittest.TestCase):
         self.assertIn("no dice are rolled", flat)
 
     def test_check_structure_names_attribute_plus_skill(self) -> None:
+        """#25 later converted the die: 2d6, skill level, then attribute."""
         flat = _flat(RULEBOOK)
-        self.assertIn("3d6 + relevant attribute modifier + relevant skill level", flat)
+        self.assertIn(
+            "2d6 + relevant skill level + relevant attribute modifier", flat
+        )
 
 
 class SkillListTests(unittest.TestCase):
@@ -288,20 +291,23 @@ class UnchangedSystemsTests(unittest.TestCase):
         self.assertIn("| 3 | -3 |", flat)
         self.assertIn("| 18 | +3 |", flat)
 
-    def test_difficulty_ladder_and_core_check_unchanged(self) -> None:
+    def test_difficulty_ladder_is_the_cwn_ladder(self) -> None:
+        """#22 pinned the old ladder; #25 superseded it for skill checks."""
         flat = _flat(RULEBOOK)
-        for name, target in (("easiest", 3), ("easier", 6), ("easy", 9),
-                             ("normal", 12), ("hard", 15), ("impossible", 18)):
-            with self.subTest(difficulty=name):
-                self.assertIn(f"| {name} | {target} |", flat)
-        self.assertIn("total = 3d6", flat)
+        for target in (6, 8, 10, 12):
+            with self.subTest(difficulty=target):
+                self.assertIn(f"| {target} |", flat)
+        self.assertIn("14+", flat)
+        self.assertIn("total = 2d6", flat)
 
-    def test_cyberspace_framework_unchanged(self) -> None:
+    def test_the_cyberspace_framework_is_now_withdrawn(self) -> None:
+        """#22 pinned #17's modifiers as live. #25 withdrew them, so this guard
+        now pins the withdrawal instead of the framework."""
         flat = _flat(RULEBOOK)
-        for modifier in ("bci modifier", "compute modifier", "connection modifier",
-                         "infosec"):
+        for modifier in ("bci", "compute", "connection", "infosec"):
             with self.subTest(modifier=modifier):
                 self.assertIn(modifier, flat)
+        self.assertIn("withdrawn from active canonical rules", flat)
 
     def test_core_json_gained_no_skill_schema(self) -> None:
         """The two pre-existing unskilled keys are #11's, not a #22 skill schema."""

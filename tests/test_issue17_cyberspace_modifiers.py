@@ -1,23 +1,26 @@
 # -*- coding: utf-8 -*-
-"""Issue #17 — the human-user cyberspace and hacking modifier framework.
+"""Issue #17 — the human-user cyberspace modifier framework, as **withdrawn**.
 
-Documentation-only and tabletop-only, so the risks worth guarding are about what
-the document must and must not say:
+#17 specified a situational modifier stack for human cyberspace actions: **BCI**,
+**Compute**, **Connection** and **Infosec**. Issue #25 **withdrew that framework
+from active canon** and returned hacking / cyberspace to **DEFER**, pending a later
+conversion onto CWN's own hacking subsystem.
 
-1. **The four modifier categories, with the exact values the author specified.**
-   BCI and Compute and Infosec are `-1 / +0 / +1..+3`; Connection is `-1 / +0 / +1`
-   and must NOT be given a `+2..+3` tier, because the author explicitly reserved
-   further connection tiers.
-2. **The framework staying a framework.** "A complete hacking subsystem" is the
-   thing the issue forbids, so it is checked for: no ICE catalogs, no intrusion
-   tables, no target-security model, no tool list, no cyberspace skill list.
-3. **The character assumption staying human.** These modifiers are for human users;
-   AI-native entities and uploaded humans are deferred. A test pins the deferral so
-   it cannot be quietly absorbed into the general framework.
-4. **Not every modifier applying to every check.** The single most likely way to
-   misread the framework is as a fixed sum of four terms.
-5. **No digital port.** No runtime schema, no Godot/Concordia implementation, and
-   nothing added to `data/rules/core.json`.
+The guards are therefore inverted rather than removed. Deleting the file that
+noticed the stack would be how a withdrawn rule quietly comes back, so what is
+pinned here is:
+
+1. **The withdrawal exists and is explicit.** The rulebook must still *name* the four
+   categories — as withdrawn — rather than silently dropping them, so a reader
+   arriving from #17 learns what happened instead of assuming the rules never
+   existed.
+2. **It is a withdrawal, not a rejection.** The concepts are explicitly kept
+   available as future design ideas.
+3. **Hacking is DEFER, not solved.** The withdrawal must not be misread as an author
+   decision that hacking is designed.
+4. **The modifiers cannot come back silently** — not into a check, not into
+   `data/rules/core.json`, not into any adapter.
+5. **The non-human deferral survives**, independent of the human-user stack.
 
 Run: python3 -m unittest discover -s tests -p 'test_*.py'
 """
@@ -25,7 +28,6 @@ Run: python3 -m unittest discover -s tests -p 'test_*.py'
 from __future__ import annotations
 
 import json
-import re
 import unittest
 from pathlib import Path
 
@@ -33,19 +35,17 @@ ROOT = Path(__file__).resolve().parents[1]
 
 RULEBOOK = ROOT / "RULEBOOK.md"
 AGENTS = ROOT / "AGENTS.md"
+POLICY = ROOT / "docs" / "CWN_CHASSIS.md"
 CORE_JSON = ROOT / "data" / "rules" / "core.json"
 GODOT_ADAPTER = ROOT / "src" / "godot" / "core_rules.gd"
 CONCORDIA_MECHANICS = ROOT / "src" / "concordia_runtime" / "mechanics.py"
+CORE_PY = ROOT / "src" / "rules" / "core.py"
 
-#: The four categories, with the values the issue specifies. The third element is
-#: the set of allowed modifier tiers and is asserted exactly, because Connection
-#: deliberately has fewer tiers than the others.
-CATEGORIES = {
-    "bci": ("BCI modifier", -1, 0, 3),
-    "compute": ("Compute modifier", -1, 0, 3),
-    "connection": ("Connection modifier", -1, 0, 1),
-    "infosec": ("Infosec defence modifier", -1, 0, 3),
-}
+#: The four categories #17 introduced. They must still be *named* in the withdrawal.
+CATEGORIES = ("bci", "compute", "connection", "infosec")
+
+#: Terms that would indicate the withdrawn tier tables were re-canonised.
+WITHDRAWN_TIER_TERMS = ("**+1 to +3**", "quality | modifier", "poor / obsolete")
 
 
 def _text(path: Path) -> str:
@@ -53,313 +53,172 @@ def _text(path: Path) -> str:
 
 
 def _flat(path: Path) -> str:
-    return " ".join(_text(path).split()).lower()
+    """Lowercased, whitespace-collapsed, emphasis stripped.
+
+    Emphasis must go: the withdrawal writes phrases like \"is **no longer**
+    canonical\", and a naive substring search misses the sentence carrying the rule.
+    """
+    return " ".join(_text(path).replace("*", "").split()).lower()
 
 
-def _section(heading: str) -> str:
-    """Return the body of a `####` subsection of 12.1, flattened and lowercased."""
+def _section_12_1() -> str:
     text = _text(RULEBOOK)
-    start = text.index(heading)
-    # next `####` heading, or the end of the section
-    rest = text[start + len(heading):]
-    match = re.search(r"\n#### ", rest)
-    body = rest[: match.start()] if match else rest
-    return " ".join(body.split()).lower()
+    start = text.index("### 12.1")
+    end = text.index("## 13.")
+    return " ".join(text[start:end].replace("*", "").split()).lower()
 
 
-class CategoryTests(unittest.TestCase):
-    def test_all_four_categories_are_documented(self) -> None:
+class WithdrawalTests(unittest.TestCase):
+    """The framework must be documented as withdrawn, by name."""
+
+    def test_the_withdrawal_is_stated(self) -> None:
         flat = _flat(RULEBOOK)
-        for key, (heading, *_rest) in CATEGORIES.items():
-            with self.subTest(category=key):
-                self.assertIn(
-                    heading.lower(), flat,
-                    f"RULEBOOK does not document the {key} category",
-                )
+        self.assertIn("withdrawn", flat)
+        self.assertIn("no longer canonical", flat)
 
-    def test_bci_uses_minus_one_zero_and_plus_one_to_three(self) -> None:
-        body = _section("#### BCI modifier")
-        self.assertIn("**-1**", body)
-        self.assertIn("**+0**", body)
-        self.assertIn("**+1 to +3**", body)
+    def test_every_category_is_still_named(self) -> None:
+        """A reader arriving from #17 must learn what happened to the four categories."""
+        section = _section_12_1()
+        for category in CATEGORIES:
+            with self.subTest(category=category):
+                self.assertIn(category, section)
 
-    def test_compute_uses_minus_one_zero_and_plus_one_to_three(self) -> None:
-        body = _section("#### Compute modifier")
-        self.assertIn("**-1**", body)
-        self.assertIn("**+0**", body)
-        self.assertIn("**+1 to +3**", body)
+    def test_the_section_heading_marks_it_withdrawn(self) -> None:
+        self.assertIn("withdrawn", _text(RULEBOOK)[
+            _text(RULEBOOK).index("### 12.1"):_text(RULEBOOK).index("## 13.")
+        ].lower())
 
-    def test_connection_uses_minus_one_zero_and_plus_one_only(self) -> None:
-        """Connection deliberately has no +2/+3 tier in this issue.
+    def test_the_original_issue_is_referenced(self) -> None:
+        self.assertIn("#17", _text(RULEBOOK))
 
-        The author reserved further connection tiers (fiber, satellite, mesh,
-        tactical radio, air-gapped bridging, quantum) for later specification, so
-        an invented +2/+3 tier would exceed the task.
-        """
-        body = _section("#### Connection modifier")
-        self.assertIn("**-1**", body)
-        self.assertIn("**+0**", body)
-        self.assertIn("**+1**", body)
-        self.assertNotIn("**+2", body)
-        self.assertNotIn("**+3", body)
-        self.assertNotIn("+1 to +3", body)
+    def test_the_withdrawn_tier_tables_are_gone(self) -> None:
+        """The tier tables were the operative part; they must not survive."""
+        section = _text(RULEBOOK)[
+            _text(RULEBOOK).index("### 12.1"):_text(RULEBOOK).index("## 13.")
+        ]
+        for term in WITHDRAWN_TIER_TERMS:
+            with self.subTest(term=term):
+                self.assertNotIn(term, section)
 
-    def test_infosec_uses_minus_one_zero_and_plus_one_to_three(self) -> None:
-        body = _section("#### Infosec defence modifier")
-        self.assertIn("**-1**", body)
-        self.assertIn("**+0**", body)
-        self.assertIn("**+1 to +3**", body)
-
-
-class CheckStructureTests(unittest.TestCase):
-    def test_the_check_structure_combines_cyb_skill_and_modifiers(self) -> None:
+    def test_no_check_still_combines_the_four_modifiers(self) -> None:
+        """The withdrawn formula must not survive as an active check structure."""
         flat = _flat(RULEBOOK)
-        self.assertIn("+ cyb attribute modifier", flat)
-        self.assertIn("+ relevant skill modifier", flat)
-        for _key, (heading, *_rest) in CATEGORIES.items():
-            with self.subTest(category=heading):
-                first_word = heading.split()[0].lower()
-                self.assertIn(f"+ {first_word} modifier", flat)
+        for term in ("+ bci modifier", "+ compute modifier",
+                     "+ connection modifier", "+ infosec modifier"):
+            with self.subTest(term=term):
+                self.assertNotIn(term, flat)
 
-    def test_the_structure_keeps_the_existing_formula_terms(self) -> None:
+
+class NotRejectionTests(unittest.TestCase):
+    """Withdrawn from canon, but explicitly available as future design."""
+
+    def test_concepts_are_kept_as_future_design(self) -> None:
+        section = _section_12_1()
+        self.assertIn("future design", section)
+        self.assertIn("not a rejection", section)
+
+    def test_the_concepts_are_named_as_possible_returnees(self) -> None:
+        section = _section_12_1()
+        self.assertIn("may return later", section)
+
+    def test_the_withdrawal_names_where_the_old_wording_lives(self) -> None:
+        """The history is kept in git, and the doc says so."""
+        self.assertIn("git history", _section_12_1())
+
+
+class HackingStillDeferredTests(unittest.TestCase):
+    """Withdrawing the stack is not deciding hacking."""
+
+    def test_hacking_is_still_unspecified(self) -> None:
         flat = _flat(RULEBOOK)
-        self.assertIn("total = 3d6", flat)
-        self.assertIn("success = total >= difficulty target", flat)
+        self.assertIn("hacking is unspecified", flat)
 
-    def test_not_every_category_applies_to_every_check(self) -> None:
-        flat = _flat(RULEBOOK)
-        self.assertIn("not every category applies to every check", flat)
+    def test_hacking_is_marked_defer(self) -> None:
+        policy = _flat(POLICY)
+        self.assertIn("hacking", policy)
+        self.assertIn("defer", policy)
 
-    def test_infosec_is_described_as_primarily_defensive(self) -> None:
-        flat = _flat(RULEBOOK)
-        self.assertIn("primarily **defensive**", flat)
+    def test_the_chassis_matrix_has_a_hacking_row(self) -> None:
+        text = _text(POLICY)
+        status = text[text.index("### Review status"):text.index("## NoöPunk decisions")]
+        rows = {}
+        for line in status.splitlines():
+            line = line.strip()
+            if not line.startswith("|"):
+                continue
+            cells = [c.strip().replace("*", "") for c in line.strip("|").split("|")]
+            if len(cells) >= 2 and cells[0]:
+                rows[cells[0].lower()] = cells[1].upper()
+        hacking = {k: v for k, v in rows.items() if "hacking" in k}
+        self.assertEqual(len(hacking), 1, f"expected one hacking row, got {hacking}")
+        self.assertEqual(next(iter(hacking.values())), "DEFER")
 
-    def test_the_issue_named_examples_are_present_for_each_category(self) -> None:
-        """Spot-check the author's own examples, not invented ones."""
-        flat = _flat(RULEBOOK)
-        for example in (
-            "keyboard and monitor",       # BCI -1
-            "mobile phone",               # BCI -1
-            "cyberdeck",                  # Compute
-            "cell phone",                 # Compute +0
-            "mobile network",             # Connection -1
-            "wlan",                       # Connection +0
-            "physically wired",           # Connection +1
-            "firewall",                   # Infosec -1
-            "sandboxing",                 # Infosec -1
-        ):
-            with self.subTest(example=example):
-                self.assertIn(example, flat)
+    def test_the_chassis_row_records_the_withdrawal(self) -> None:
+        flat = _flat(POLICY)
+        self.assertIn("withdrawn from active canon", flat)
+        self.assertIn("bci", flat)
+
+    def test_hacking_is_not_claimed_as_designed(self) -> None:
+        section = _section_12_1()
+        self.assertIn("hacking itself remains", section)
 
 
-class HumanOnlyTests(unittest.TestCase):
-    def test_the_character_assumption_is_a_human_user(self) -> None:
-        flat = _flat(RULEBOOK)
-        self.assertIn("human characters operating in cyberspace", flat)
+class NonHumanDeferralTests(unittest.TestCase):
+    """The non-human deferral is separate from the human-user stack."""
 
-    def test_non_human_participants_are_explicitly_deferred(self) -> None:
+    def test_deferral_heading_survives(self) -> None:
         self.assertIn("deferred: non-human cyberspace participants", _flat(RULEBOOK))
 
-    def test_the_deferral_names_the_categories_the_issue_lists(self) -> None:
+    def test_the_deferral_names_the_participants(self) -> None:
         flat = _flat(RULEBOOK)
-        for participant in (
-            "ai-native entities",
-            "uploaded humans",
-            "autonomous software agents",
-        ):
+        for participant in ("ai-native entities", "uploaded humans",
+                            "autonomous software agents"):
             with self.subTest(participant=participant):
                 self.assertIn(participant, flat)
 
-    def test_the_deferral_is_not_inferable_from_the_human_rules(self) -> None:
-        flat = _flat(RULEBOOK)
-        self.assertIn("must not be inferred from, the human-user modifiers", flat)
-
-    def test_no_sentence_applies_the_modifiers_to_non_human_participants(self) -> None:
-        """The gap sabotage found: presence of the deferral is not the property.
-
-        Asserting only that the deferral sentence EXISTS lets a contradicting
-        sentence sit next to it -- "These modifiers also apply to AI-native
-        entities" passed every other test in this file.
-
-        The check must be SENTENCE-scoped, not window-scoped: a 260-character
-        window reaches back into the preceding deferral sentence, picks up its
-        "not"/"deferred", and clears a contradictory sentence that follows it. That
-        is exactly how the first version of this test failed to bite.
-        """
-        flat = _flat(RULEBOOK)
-        section = flat[flat.index("### 12.1"):]
-        section = section[: section.index("## 13.")]
-        # Strip markdown emphasis first: the deferral sentence reads
-        # "...are **not** generalized...", so a bare "not " marker misses it and
-        # the test reports a correct sentence as a violation.
-        section = section.replace("*", "")
-        sentences = re.split(r"(?<=[.;]) ", section)
-        markers = ("not ", "deferred", "separate future design task",
-                   "must not be inferred", "does not", "do not", "no ")
-        for participant in ("ai-native", "uploaded human", "autonomous software agent"):
-            with self.subTest(participant=participant):
-                mentions = [s_ for s_ in sentences if participant in s_]
-                self.assertTrue(mentions, f"{participant!r} is never mentioned in 12.1")
-                for sentence in mentions:
-                    self.assertTrue(
-                        any(m in sentence for m in markers),
-                        f"a sentence mentions {participant!r} without deferral or "
-                        f"negation, which claims the framework for it:\n  {sentence!r}",
-                    )
+    def test_the_deferral_is_not_inferable(self) -> None:
+        self.assertIn("must not be inferred", _section_12_1())
 
 
-class NoInventedSubsystemTests(unittest.TestCase):
-    """Acceptance: no complete hacking subsystem, no cyberspace skill catalog."""
+class NoReEntryTests(unittest.TestCase):
+    """The withdrawn modifiers must not reappear in canon or a runtime."""
 
-    #: Terms that would indicate an invented subsystem rather than a framework.
-    BANNED_DEFINED_TERMS = (
-        "ice catalog",
-        "intrusion table",
-        "target-system security",
-        "target system security",
-        "trace attempt",
-        "neural malware",
-        "brain damage",
-        "mental status",
-        "firewall product",
-        "bandwidth value",
-        "latency number",
-        "flops",
-    )
-
-    def test_no_subsystem_content_is_defined(self) -> None:
-        """These terms may appear ONLY in the explicit "not defined" lists."""
-        raw = _text(RULEBOOK)
-        flat = _flat(RULEBOOK)
-        for term in self.BANNED_DEFINED_TERMS:
-            with self.subTest(term=term):
-                for match in re.finditer(re.escape(term), flat):
-                    window = flat[max(0, match.start() - 400):match.end() + 120]
-                    undeclared = any(
-                        marker in window
-                        for marker in (
-                            "not defined here",
-                            "deliberately left undefined",
-                            "not to be inferred",
-                            "remain for later author specification",
-                            "later author specification",
-                            "separate design pass",
-                            "separate future design task",
-                            "unspecified",
-                            "do not invent",
-                            "deferred",
-                        )
-                    )
-                    self.assertTrue(
-                        undeclared,
-                        f"{raw.count(term)}x {term!r} is stated without a "
-                        f"'not defined' context:\n...{window!r}",
-                    )
-
-    def test_no_cyberspace_skill_list_is_invented(self) -> None:
-        flat = _flat(RULEBOOK)
-        # the document states it as a list of things that are NOT defined
-        self.assertIn("cyberspace skill list is defined", flat)
-        self.assertIn("no hacking subsystem, tool catalog", flat)
-        for invented in ("hacking skill", "cybercombat skill", "netrunning skill"):
-            with self.subTest(invented=invented):
-                self.assertNotIn(invented, flat)
-
-    def test_cyberware_catalog_is_still_unresolved(self) -> None:
-        flat = _flat(RULEBOOK)
-        self.assertIn("cyberware rules and catalog", flat)
-
-
-class ExistingRulesPreservedTests(unittest.TestCase):
-    """#17 must not change the core rules it builds on."""
-
-    def test_skill_scale_is_the_current_canon(self) -> None:
-        """#17 must not change the skill rules it builds on.
-
-        #17 originally pinned the then-current four-step scale. #22 later
-        replaced that scale with the CWN-style level-0..4 model, so this guard
-        now pins the current canon instead of a withdrawn one.
-        """
-        flat = _flat(RULEBOOK)
-        for level, meaning in (
-            ("level-0", "+0"),
-            ("level-1", "+1"),
-            ("level-2", "+2"),
-            ("level-3", "+3"),
-            ("level-4", "+4"),
-        ):
-            with self.subTest(level=level):
-                self.assertRegex(flat, rf"\| \*\*{level}\*\* \| [^|]+\|")
-                self.assertIn(f"{level}:", flat)
-                self.assertIn(meaning, flat)
-        self.assertIn("unskilled is not level-0", flat)
-
-    def test_difficulty_ladder_is_unchanged(self) -> None:
-        flat = _flat(RULEBOOK)
-        for name, target in (("easiest", 3), ("easier", 6), ("easy", 9),
-                             ("normal", 12), ("hard", 15), ("impossible", 18)):
-            with self.subTest(difficulty=name):
-                self.assertRegex(flat, rf"\| {name} \| {target} \|")
-
-    def test_core_json_is_untouched(self) -> None:
-        canon = json.loads(_text(CORE_JSON))
-        self.assertEqual(
-            canon["difficulties"],
-            {"Easiest": 3, "Easier": 6, "Easy": 9,
-             "Normal": 12, "Hard": 15, "Impossible": 18},
-        )
-        self.assertEqual(canon["unskilled_penalty"], -1)
-        self.assertEqual(canon["trained_only_without_skill"], "blocked")
-        self.assertEqual(canon["opposed_rule"], "higher_total_wins")
-
-    def test_opposed_checks_unchanged(self) -> None:
-        flat = _flat(RULEBOOK)
-        self.assertIn("higher final total wins", flat)
-        self.assertIn("no tie-breaker rule is currently canonical", flat)
-
-
-class NoDigitalPortTests(unittest.TestCase):
-    """Acceptance: no runtime schema, no Godot/Concordia implementation."""
-
-    def test_core_json_gains_no_modifier_or_cyberspace_schema(self) -> None:
+    def test_core_json_has_no_cyberspace_modifier_schema(self) -> None:
         canon = json.loads(_text(CORE_JSON))
         for key in canon:
             with self.subTest(key=key):
                 lowered = key.lower()
-                for forbidden in ("cyber", "hack", "bci", "infosec",
-                                  "connection_modifier", "compute_modifier"):
-                    self.assertNotIn(
-                        forbidden, lowered,
-                        f"data/rules/core.json gained {key!r}; #17 is tabletop only",
-                    )
-        flat = _text(CORE_JSON).lower()
-        for tier in ("+1 to +3", "cyberdeck"):
-            with self.subTest(tier=tier):
-                self.assertNotIn(tier, flat)
+                for forbidden in ("bci", "compute", "connection", "infosec"):
+                    self.assertNotIn(forbidden, lowered)
 
-    def test_godot_adapter_does_not_implement_the_modifiers(self) -> None:
-        flat = _flat(GODOT_ADAPTER)
-        for term in ("bci_modifier", "compute_modifier", "connection_modifier",
-                     "infosec", "cyberspace"):
-            with self.subTest(term=term):
-                self.assertNotIn(term, flat)
+    def test_no_runtime_implements_the_modifiers(self) -> None:
+        for path in (GODOT_ADAPTER, CONCORDIA_MECHANICS, CORE_PY):
+            with self.subTest(path=path.name):
+                flat = _flat(path)
+                for forbidden in ("bci", "infosec"):
+                    self.assertNotIn(forbidden, flat,
+                                     f"{path.name} implements a withdrawn modifier")
 
-    def test_concordia_mechanics_do_not_implement_the_modifiers(self) -> None:
-        flat = _flat(CONCORDIA_MECHANICS)
-        for term in ("bci_modifier", "compute_modifier", "connection_modifier",
-                     "infosec", "cyberspace"):
-            with self.subTest(term=term):
-                self.assertNotIn(term, flat)
-
-    def test_rulebook_defers_the_digital_port_explicitly(self) -> None:
-        flat = _flat(RULEBOOK)
-        self.assertIn("cyberspace and hacking modifiers in section 12.1", flat)
-        self.assertIn("there is no runtime schema, modifier table", flat)
-
-    def test_agents_md_records_the_deferral(self) -> None:
+    def test_agents_rules_forbid_reintroduction(self) -> None:
         flat = _flat(AGENTS)
-        self.assertIn("cyberspace modifiers are tabletop-first and not yet ported", flat)
-        self.assertIn("§5.3 and §12.1", flat)
+        self.assertIn("withdrawn", flat)
+        self.assertIn("do not add those modifiers", flat)
+
+    def test_the_withdrawal_forbids_runtime_reintroduction(self) -> None:
+        section = _section_12_1()
+        self.assertIn("do not", section)
+        self.assertIn("reintroduce", section)
+
+
+class PortDebtTests(unittest.TestCase):
+    """#17's old 'not yet ported' guarantee is replaced by explicit port debt."""
+
+    def test_rulebook_records_the_port_debt(self) -> None:
+        flat = _flat(RULEBOOK)
+        self.assertIn("port debt", flat)
+
+    def test_agents_records_the_port_debt(self) -> None:
+        self.assertIn("port debt", _flat(AGENTS))
 
 
 if __name__ == "__main__":
