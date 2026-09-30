@@ -44,9 +44,11 @@ Do not define those rules before the author specifies them.
 
 ### 4. Current reserved design areas
 
+The six attributes (FIT, REF, INT, CHA, CYB, PSY), ordinary-human 3d6 generation, core 3d6 checks, canonical difficulties, opposed comparison, unskilled -1, and trained-only blocking are now author-specified in RULEBOOK.md and data/rules/core.json. Agents must preserve them exactly.
+
 Until explicitly specified, do not define:
-- attributes or derived statistics
-- skills
+- additional attributes or derived statistics
+- skills or a skill list
 - character creation
 - character classes or archetypes
 - combat resolution
@@ -149,7 +151,8 @@ When implementing the Concordia runtime:
 - allow an optional human-controlled player to participate alongside LLM agents;
 - keep the LLM provider behind a replaceable adapter/configuration boundary;
 - do not hard-code a particular Ollama model as canon unless the author specifies one;
-- do not create NPC personalities, factions, plots, psionic abilities, skills, attributes, or world facts unless explicitly specified;
+- do not create NPC personalities, factions, plots, psionic abilities, skills, additional attributes, or world facts unless explicitly specified;
+- use deterministic shared code for dice and numeric resolution when available; never ask the LLM to invent dice outcomes or canonical numeric mechanics;
 - do not let prompts silently become canon;
 - keep prompts/configuration separate from canonical RPG rules and world data;
 - preserve the same tabletop ↔ Godot ↔ Concordia rule semantics wherever practical.
