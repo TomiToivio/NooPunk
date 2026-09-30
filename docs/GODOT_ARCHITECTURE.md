@@ -53,8 +53,8 @@ The long-term goal is for the tabletop RPG and Godot RPG to share the same conce
 The core resolution mechanic and the six canonical attributes are now specified. The contract they follow:
 
 1. `RULEBOOK.md` remains the human-readable rules reference.
-2. The canonical constants live once in `data/rules/core_rules.json`, generated from the shared Python layer in `src/rules/core_rules.py`.
-3. The Godot runtime reads that data through `src/rules/core_rules.gd`; scenes and UI should consume those concepts through adapters rather than redefine them.
+2. The canonical constants live once in `data/rules/core.json` and are consumed by the shared Python layer in `src/rules/core.py`.
+3. The Godot runtime reads that same data through `src/godot/core_rules.gd`; scenes and UI should consume those concepts through adapters rather than redefine them.
 4. World content and simulation logic remain separate from presentation code.
 5. Nothing outside the specified mechanic and attributes may be added without explicit author instruction.
 
@@ -69,7 +69,11 @@ A presentation difference between the tabletop and Godot versions of a scenario 
 
 ## Intentionally undefined
 
-The scaffold now implements the author-specified attributes and core 3d6 resolution only. It still does not choose:
+The scaffold now implements the author-specified attributes and core 3d6 resolution only. The Godot adapter reads the canonical difficulty names and targets directly from `data/rules/core.json`, and its check resolver accepts an optional deterministic dice-total override for parity tests. Production checks still roll 3d6 when no override is supplied.
+
+The current canonical difficulty names are **Easiest 3, Easier 6, Easy 9, Normal 12, Hard 15, Impossible 18**. Earlier Hard/Harder/Hardest labels are not retained as runtime aliases because doing so would make `Hard` ambiguous after its target changed from 12 to 15.
+
+It still does not choose:
 
 - skills or a skill list
 - derived statistics
