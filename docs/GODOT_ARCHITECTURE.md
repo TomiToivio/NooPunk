@@ -8,7 +8,7 @@ This document describes only the current technical scaffold. It does **not** def
 - `scenes/main.tscn` is the bootstrap scene.
 - The bootstrap scene displays only a neutral project-status message.
 
-There is currently no gameplay code.
+The first canonical gameplay layer is now implemented: the six attributes and core 3d6 check mechanics. No UI or broader gameplay subsystem has been added.
 
 ## Separation of concerns
 
@@ -20,9 +20,7 @@ Canonical rules should not live here.
 
 ### `src/rules/`
 
-Reserved for future engine-independent RPG rule logic.
-
-This directory is intentionally empty because the core mechanic, attributes, skills, combat, psionics, and other rules have not yet been specified.
+Contains the engine-independent Python reference implementation of the author-specified attribute and core 3d6 rules. Canonical numeric data is loaded from data/rules/core.json.
 
 ### `src/world/`
 
@@ -38,7 +36,7 @@ No agent behavior, equations, causal model, or simulation assumptions are curren
 
 ### `data/rules/`
 
-Reserved for author-defined machine-readable rule data that can correspond to human-readable material in `RULEBOOK.md`.
+Contains author-defined machine-readable rule data corresponding to RULEBOOK.md. data/rules/core.json is the canonical runtime data for attributes, human generation, difficulty targets, unskilled penalty, and opposed-check semantics.
 
 ### `data/world/`
 
@@ -63,11 +61,9 @@ This is an architectural direction, not a current rules implementation.
 
 ## Intentionally undefined
 
-The scaffold does not choose:
+The scaffold now implements the author-specified attributes and core 3d6 resolution only. It still does not choose:
 
-- dice or randomization system
-- attributes
-- skills
+- skills or a skill list
 - derived statistics
 - character creation
 - combat
