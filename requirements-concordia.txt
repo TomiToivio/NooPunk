@@ -1,0 +1,3 @@
+# Optional Concordia runtime dependencies.
+# Concordia currently exposes Ollama support as an optional extra.
+gdm-concordia[ollama]
