@@ -1,6 +1,10 @@
 # Godot 4 generated files
 .godot/
 
+# Python bytecode
+__pycache__/
+*.py[cod]
+
 # Editor / OS noise
 .DS_Store
 Thumbs.db
