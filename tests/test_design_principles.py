@@ -96,9 +96,9 @@ class CanonicalDocumentTests(unittest.TestCase):
         text = normalised(CANONICAL_DOC)
         self.assertIn("same world, same rules, same mechanics", text)
 
-    def test_carries_all_eight_invariants(self) -> None:
+    def test_carries_all_nine_invariants(self) -> None:
         text = normalised(CANONICAL_DOC)
-        for number in range(1, 9):
+        for number in range(1, 10):
             with self.subTest(invariant=number):
                 self.assertRegex(text, rf"\b{number}\. ")
 
@@ -110,8 +110,20 @@ class AgentRulesTests(unittest.TestCase):
         text = normalised("AGENTS.md")
         self.assertIn("three design balances", text)
 
-    def test_agents_md_carries_all_eight_invariants(self) -> None:
-        text = normalised("AGENTS.md")
+    def test_agents_md_carries_all_nine_invariants(self) -> None:
+        """§13 must list all nine, not just mention the chassis somewhere else.
+
+        Scoping to the §13 block matters: AGENTS.md also names the chassis in
+        §15, so a document-wide substring check would pass even with invariant 9
+        deleted from the invariant list.
+        """
+        section = re.search(
+            r"(?ms)^### 13\. Preserve the three design balances.*?(?=\n### |\Z)",
+            read("AGENTS.md"),
+        )
+        self.assertIsNotNone(section, "AGENTS.md §13 not found")
+        assert section is not None
+        text = " ".join(section.group(0).split()).lower()
         for fragment in (
             "gamism / narrativism / simulationism",
             "cy_borg",
@@ -124,9 +136,21 @@ class AgentRulesTests(unittest.TestCase):
             "shadowrun",
             "eclipse phase",
             "not templates to copy",
+            "cities without number srd",
         ):
             with self.subTest(fragment=fragment):
                 self.assertIn(fragment, text)
+
+    def test_agents_md_invariant_list_is_numbered_one_to_nine(self) -> None:
+        """The list itself, not just its content, must run 1..9."""
+        section = re.search(
+            r"(?ms)^### 13\. Preserve the three design balances.*?(?=\n### |\Z)",
+            read("AGENTS.md"),
+        )
+        self.assertIsNotNone(section, "AGENTS.md §13 not found")
+        assert section is not None
+        numbers = re.findall(r"(?m)^(\d+)\. ", section.group(0))
+        self.assertEqual(numbers, [str(n) for n in range(1, 10)])
 
     def test_agents_md_links_the_canonical_document(self) -> None:
         self.assertIn(CANONICAL_DOC, read("AGENTS.md"))
