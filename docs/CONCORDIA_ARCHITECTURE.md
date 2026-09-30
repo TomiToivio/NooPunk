@@ -74,6 +74,20 @@ They intentionally contain no attributes, skills, personality model, equipment, 
 
 The embedder is not chosen automatically because semantic memory is a technical/research choice that should remain explicit.
 
+## Concordia dependency contract
+
+The runtime currently targets Concordia APIs that are available on upstream GitHub `main`, including `concordia.prefabs`, `concordia.typing.prefab`, and `concordia.contrib.language_models.ollama`.
+
+The PyPI release that originally satisfied `gdm-concordia[ollama]` did not contain those modules. Therefore `requirements-concordia.txt` intentionally installs Concordia from a **pinned upstream commit**, not from an unpinned PyPI release or moving Git branch.
+
+Verified upstream revision:
+
+```
+405584db8e09e001da6deb147a6389f7a7f44e28
+```
+
+When updating Concordia, inspect the upstream API first, update the pin deliberately, and run the Concordia smoke check. Do not replace the pinned Git dependency with `gdm-concordia[ollama]` unless a released package has been verified to provide the exact APIs the runtime imports.
+
 ## Ollama
 
 Install optional dependencies:
@@ -100,11 +114,13 @@ The neutral scaffold can be checked without installing Concordia or contacting O
 python scripts/concordia_smoke.py
 ```
 
-After installing Concordia, its current prefab translation can also be checked:
+After installing the pinned Concordia dependency, its prefab translation can also be checked:
 
 ```bash
 python scripts/concordia_smoke.py --build-concordia-config
 ```
+
+The flag is important: the default smoke command validates only NoöPunk's neutral scaffold, while `--build-concordia-config` proves that the installed Concordia API matches the adapter imports.
 
 Neither command generates NoöPunk lore.
 
@@ -158,6 +174,7 @@ Those remain separate author-driven design tasks.
 
 - Python runtime for Concordia integration.
 - Current Concordia prefab API is isolated behind NoöPunk adapter functions.
+- Concordia is pinned to a verified upstream Git commit because the required prefab/contrib API is not assumed to exist in PyPI releases.
 - Local Ollama is the configured LLM backend for this runtime.
 - A text embedder must be supplied explicitly before creating a real simulation.
 - No third-party NoöPunk-specific agent framework has been added.
