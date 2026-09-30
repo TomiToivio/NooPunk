@@ -12,8 +12,10 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from concordia_runtime.config import ConcordiaRuntimeConfig
+from concordia_runtime.mechanics import resolve_structured_check, resolve_structured_opposed
 from concordia_runtime.participants import GameMasterSpec, HumanPlayer, LLMAgentSpec
 from concordia_runtime.session import SessionSpec
+from rules import AttributeSet, SkillAccess
 
 
 class ConcordiaRuntimeTests(unittest.TestCase):
@@ -48,6 +50,38 @@ class ConcordiaRuntimeTests(unittest.TestCase):
     def test_llm_agent_requires_only_runtime_identity(self) -> None:
         agent = LLMAgentSpec(name="placeholder_actor")
         self.assertEqual(agent.name, "placeholder_actor")
+
+    def test_participant_can_carry_structured_canonical_attributes(self) -> None:
+        attributes = AttributeSet({"FIT": 0, "REF": 1, "INT": 2, "CHA": -1, "CYB": 3, "PSY": 0})
+        agent = LLMAgentSpec(name="placeholder_actor", attributes=attributes)
+        self.assertEqual(agent.attributes["CYB"], 3)
+
+    def test_structured_mechanics_are_code_resolved(self) -> None:
+        attributes = AttributeSet({"FIT": 0, "REF": 1, "INT": 2, "CHA": -1, "CYB": 3, "PSY": 0})
+        result = resolve_structured_check(
+            attributes=attributes,
+            attribute_id="CYB",
+            target=15,
+            extra_modifiers=(1,),
+            dice_total=11,
+        )
+        self.assertEqual(result["total"], 15)
+        self.assertTrue(result["success"])
+        opposed = resolve_structured_opposed(15, 15)
+        self.assertTrue(opposed["unresolved_tie"])
+        self.assertIsNone(opposed["winner"])
+
+    def test_structured_trained_only_action_is_blocked(self) -> None:
+        attributes = AttributeSet({"FIT": 0, "REF": 0, "INT": 0, "CHA": 0, "CYB": 0, "PSY": 0})
+        result = resolve_structured_check(
+            attributes=attributes,
+            attribute_id="INT",
+            target=9,
+            skill_access=SkillAccess.TRAINED_ONLY,
+            has_skill=False,
+        )
+        self.assertFalse(result["attempted"])
+        self.assertEqual(result["blocked_reason"], "trained_only_without_skill")
 
     def test_human_player_is_an_injected_input_boundary(self) -> None:
         player = HumanPlayer(
