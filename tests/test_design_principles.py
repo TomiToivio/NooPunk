@@ -164,6 +164,30 @@ class ReferencingDocsTests(unittest.TestCase):
                         phrase, text, f"{doc} contradicts the specified rules"
                     )
 
+    def test_no_document_presents_a_comparative_influence_as_a_template(self) -> None:
+        """A comparative influence must not be advertised as NoöPunk's base system.
+
+        The principles record Shadowrun and Eclipse Phase as comparisons, not
+        templates. The published site previously described NoöPunk as an "Eclipse
+        Phase homebrew", which says the opposite; nothing checked the site, so it
+        survived the first pass of the design-principles work.
+        """
+        for doc in REFERRING_DOCS + ("docs/index.html",):
+            text = normalised(doc)
+            for phrase in (
+                "eclipse phase homebrew",
+                "homebrew for eclipse phase",
+                "based on eclipse phase",
+                "shadowrun homebrew",
+                "based on shadowrun",
+            ):
+                with self.subTest(doc=doc, phrase=phrase):
+                    self.assertNotIn(
+                        phrase,
+                        text,
+                        f"{doc} presents a comparative influence as NoöPunk's base system",
+                    )
+
     def test_architecture_docs_state_the_parity_rule(self) -> None:
         for doc in ("docs/GODOT_ARCHITECTURE.md", "docs/CONCORDIA_ARCHITECTURE.md"):
             with self.subTest(doc=doc):
