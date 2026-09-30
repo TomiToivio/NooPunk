@@ -76,9 +76,11 @@ poles**. Use them to check that no pole has quietly swallowed the others.
 
 ## 2. Tabletop / Godot / Concordia balance
 
-NoöPunk is **one RPG with three runtimes**. The target principle is:
+NoöPunk is **one RPG with three runtimes**, but development is deliberately sequential rather than parallel.
 
-> **Same world, same rules, same mechanics wherever possible.**
+> **Tabletop first. Same world, same rules, same mechanics wherever possible.**
+
+The **tabletop RPG rules/worldbook are the canonical design source**. A system is designed and stabilized for tabletop play before substantive Godot or Concordia implementation begins.
 
 The tabletop and computer versions should share the same underlying:
 
@@ -98,6 +100,12 @@ The tabletop and computer versions should share the same underlying:
 The computer versions are **implementations of the tabletop rules, not
 reinterpretations of them**. Do not create separate tabletop and digital game
 systems unless that is technically unavoidable.
+
+The required conversion path is:
+
+**tabletop rule → digital specification → Godot implementation → Concordia implementation**
+
+If implementation reveals an ambiguity, resolve it in the tabletop source first. Existing digital scaffolds are preserved, but unfinished tabletop design must not be completed implicitly inside software.
 
 ### Shared
 
@@ -214,7 +222,7 @@ mechanics, or text from either work, and do not silently import their assumption
 
 1. Preserve the **Gamism / Narrativism / Simulationism balance**.
 2. Use **CY_BORG**, **Cyberpunk 2020**, and **The Sprawl** as the canonical reference poles.
-3. Preserve **rules/mechanics parity** between Tabletop, Godot, and Concordia wherever possible.
+3. Preserve **rules/mechanics parity** between Tabletop, Godot, and Concordia wherever possible, with **Tabletop as the canonical first implementation**.
 4. Allow scenarios and medium-specific presentation to diverge.
 5. Preserve the **Cyberpunk / Noösphere balance**.
 6. Treat **UFO Disclosure, Psionics, and Panpsychism** as the defining Noösphere paradigm shifts.
