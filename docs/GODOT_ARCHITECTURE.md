@@ -10,7 +10,7 @@ This document describes only the preserved technical scaffold. It does **not** d
 - `scenes/main.tscn` is the bootstrap scene.
 - The bootstrap scene displays only a neutral project-status message.
 
-The first canonical gameplay layer is now implemented: the six attributes and core 3d6 check mechanics. No UI or broader gameplay subsystem has been added.
+The first canonical gameplay layer is now implemented: the six attributes and legacy 3d6 runtime check mechanics pending the #25 digital port. No UI or broader gameplay subsystem has been added.
 
 ## Separation of concerns
 
@@ -22,7 +22,7 @@ Canonical rules should not live here.
 
 ### `src/rules/`
 
-Contains the engine-independent Python reference implementation of the author-specified attribute and core 3d6 rules. Canonical numeric data is loaded from data/rules/core.json.
+Contains the engine-independent Python implementation of the canonical attributes plus the superseded pre-#25 3d6 runtime check rules. Canonical numeric data is loaded from data/rules/core.json.
 
 ### `src/world/`
 
