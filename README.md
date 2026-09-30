@@ -8,17 +8,19 @@ The project is grounded aesthetically and socially in **cyberpunk**, but its "ot
 
 ## The core idea
 
-NoöPunk combines several layers:
+NoöPunk has a **three-layer world structure**:
 
-- **Cyberpunk:** AI, automation, corporate and state power, surveillance, networks, cybercrime, inequality, biotechnology, brain-computer interfaces, and cyborgification.
-- **Noösphere:** the emergence of a planetary layer of connected intelligence inspired by **Pierre Teilhard de Chardin**, expanded into a world of humans, AIs, networks, BCIs, culture, and potentially non-local forms of consciousness.
-- **Quantum panpsychism / consciousness:** inspired in part by **Alexander Wendt's _Quantum Mind and Social Science_**, **Federico Faggin's quantum-information-oriented panpsychism**, and **Donald Hoffman's Conscious Realism**.
-- **NHI / UFOs:** inspired in part by **Alexander Wendt's work on UFOs and state sovereignty** and **Jacques Vallée's Interdimensional Hypothesis**. In the NoöPunk scenario, NHI cannot be reduced to extraterrestrial biology and technology alone; the phenomenon may be stranger and consciousness-related.
-- **Psionics:** inspired by the experimental research tradition associated with **Dean Radin**, treated inside the fictional scenario as a future scientific and technological domain.
+1. **Cyberpunk — material transformation.** A relatively realistic cyberpunk future extrapolated from present-day trends: AI, automation, corporate and state power, surveillance, networks, cybercrime, inequality, biotechnology, BCI, and cyborgification. Tonally it leans more toward **Philip K. Dick than William Gibson**, with extra emphasis on unstable reality, synthetic persons, identity, memory, paranoia, and institutions that define what is real.
+2. **Noösphere — ontological transformation.** The setting's science-fictional "urban fantasy" layer, based on speculative paradigm shifts involving consciousness, quantum panpsychism, UFO / UAP disclosure, psionics, NHI, and the emergence of a Noösphere. **Alexander Wendt** is an important inspiration for the paired consciousness / disclosure shift; **Jacques Vallée** contributes the possibility that the phenomenon remains stranger than a clean extraterrestrial explanation.
+3. **Politics / ideology / sociology — social struggle over both.** NoöPunk is also a sociological simulation of a world undergoing several simultaneous paradigm shifts. States, corporations, movements, media, science, religions, security institutions, subcultures, and collective identities struggle over what the transformations mean, who controls them, who benefits, and what new political formations emerge.
+
+The third layer shares conceptual territory with **LaclauGPT** and **Panpsychic Cyborg Multitude (PCM)**, while remaining a fictional game world rather than an academic model.
+
+See [docs/THREE_LAYERS.md](docs/THREE_LAYERS.md) for the canonical explanation.
 
 These inspirations are not presented here as proof that the speculative claims are established science. They are inputs to the setting and simulation.
 
-Three of these are the setting's **defining Noösphere paradigm shifts**: UFO / UAP Disclosure, Psionics, and Panpsychism. They are what replaces the urban-fantasy layer of a Shadowrun-like setting, and they must stay science-fictional rather than becoming generic fantasy magic.
+The defining Noösphere paradigm shifts remain **UFO / UAP Disclosure, Psionics, and Panpsychism**. They replace the urban-fantasy layer of a Shadowrun-like setting, while staying science-fictional rather than becoming generic fantasy magic.
 
 ## Design principles
 
