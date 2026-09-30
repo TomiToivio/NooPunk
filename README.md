@@ -90,3 +90,37 @@ python tests/validate_scaffold.py
 ```
 
 Future mechanics and worldbuilding must continue to follow [AGENTS.md](AGENTS.md) and be specified incrementally in [RULEBOOK.md](RULEBOOK.md).
+
+
+## Concordia scaffold
+
+The repository also contains a minimal **Google DeepMind Concordia** runtime for the simulation/RPG form of NoöPunk.
+
+It is deliberately infrastructure-only:
+
+- Concordia GM boundary
+- generic LLM-controlled agent boundary
+- optional human-player input boundary
+- local Ollama provider
+- no cloud fallback
+- no invented rules, NPCs, factions, or simulation model
+
+Install the optional runtime dependencies with:
+
+```bash
+pip install -r requirements-concordia.txt
+```
+
+Choose an Ollama model explicitly:
+
+```bash
+export NOOPUNK_OLLAMA_MODEL=your_local_model
+```
+
+Run the dependency-free neutral smoke check:
+
+```bash
+python scripts/concordia_smoke.py
+```
+
+See [docs/CONCORDIA_ARCHITECTURE.md](docs/CONCORDIA_ARCHITECTURE.md) for the runtime contract.
