@@ -48,8 +48,9 @@ success = total >= difficulty target
 ~~~
 
 A **3d6** roll is three six-sided dice summed, giving 3..18. The **skill
-modifier** is the character's skill level modifier, defined in section 5.3; at
-skill level 0 it is either the unskilled -1 or a blocked attempt, per section 4.2.
+modifier** is the character's skill level (section 5.3): **+0..+4** for a trained
+skill at level-0 through level-4, and for a character with no skill either the
+**unskilled -1** or a **blocked** attempt, per section 4.2.
 "Other applicable modifiers" are summed, whether positive or negative.
 
 Compare the final total against a difficulty rating. A check succeeds when the final total **meets or exceeds** the target; a total one below the target fails.
@@ -83,15 +84,16 @@ If the final totals are tied, the result is explicitly unresolved. No tie-breake
 
 ### 4.2 Unskilled and trained-only checks
 
-Skill use has two representable categories. Both are the two cases of skill **level 0** (section 5.3):
+These two cases apply to a character who **does not possess** the skill. Unskilled
+is not a skill level: it is the absence of one (section 5.3).
 
 1. **Unskilled attempt allowed:** the action may be attempted without the skill, with an additional **-1 unskilled modifier**, applied exactly once.
 2. **Skill required / trained-only:** the action cannot be attempted without the required skill. This is a **blocked attempt**, not a failed roll. No dice are rolled and additional modifiers cannot bypass the requirement.
 
-At skill levels 1–3 the character has the skill, so neither case applies; the
-level's own **+1/+2/+3** modifier is used instead.
+A character who possesses the skill is trained, and uses their skill level's
+**+0..+4** modifier instead (section 5.3).
 
-Which future skills use which category is not yet specified.
+Which skills use which category is not yet specified.
 
 ### 4.3 Worked checks
 
@@ -101,13 +103,14 @@ These examples are normative examples of the same check formula used by Tabletop
 - **Easiest, -1 modifier:** a raw check roll of 3 with a -1 modifier totals 2 and fails.
 - **Impossible:** a raw check roll of 18 with no modifiers against target 18 totals 18 and succeeds. "Impossible" therefore does not mean "unrollable."
 - **Unskilled allowed:** a raw check roll of 10 with no attribute modifier and the -1 unskilled modifier totals 9, succeeding against Easy (9). The unskilled penalty is applied exactly once.
-- **Basic skill (+1):** a raw check roll of 8 with no attribute modifier and a Basic skill totals 9, succeeding against Easy (9).
-- **Expert skill (+3):** a raw check roll of 11 with a -1 attribute modifier and an Expert skill totals 13, succeeding against Normal (12).
-- **Skill required, level 0:** the attempt is blocked before rolling. No dice are rolled and no total is produced, however large the other modifiers are.
+- **Level-0 skill (+0):** a raw check roll of 9 with no attribute modifier and a level-0 skill totals 9, succeeding against Easy (9).
+- **Level-2 skill (+2):** a raw check roll of 8 with no attribute modifier and a level-2 skill totals 10, succeeding against Easy (9).
+- **Level-4 skill (+4):** a raw check roll of 9 with a -1 attribute modifier and a level-4 skill totals 12, succeeding against Normal (12).
+- **Skill required, unskilled:** the attempt is blocked before rolling. No dice are rolled and no total is produced, however large the other modifiers are.
 
 ## 5. Characters
 
-Most character systems remain unspecified. The six canonical attributes, ordinary-human attribute generation, and the four canonical skill levels are now defined.
+Most character systems remain unspecified. The six canonical attributes, ordinary-human attribute generation, the skill list, and the level-0..4 trained skill scale are now defined.
 
 ### 5.1 Attributes
 
@@ -152,39 +155,115 @@ Where useful, preserve both the raw 3d6 generation roll and the resulting modifi
 
 ### 5.3 Skills
 
-Skill **levels** are canonical. The skill **catalog** is not: no skill list,
-skill names, or skill-to-attribute assignments are defined yet.
+> **This section supersedes the earlier four-step skill model** in which level 0
+> meant "unskilled" and levels 1–3 gave +1/+2/+3. That model is withdrawn. Under the
+> Cities Without Number chassis (section 18.1), the decision for this subsystem is
+> **MODIFY**, and NoöPunk now uses a **trained skill scale of level-0 through
+> level-4**, with unskilled sitting **outside** the numbered levels.
 
-A character has exactly one of four levels in a given skill:
+**Unskilled is not level-0.** A character who does not possess a skill is
+*unskilled*, which is not a numbered level at all. It has the two cases in section
+4.2: an unskilled attempt is either allowed with **-1**, or **blocked** when training
+is required.
 
-| Level | Name | Modifier | Meaning |
-|---:|---|---:|---|
-| 0 | Unskilled | special | The character does not possess the skill. |
-| 1 | Basic | +1 | Basic competence in the skill. |
-| 2 | Advanced | +2 | Advanced competence in the skill. |
-| 3 | Expert | +3 | Expert competence in the skill. |
+A character who possesses a skill has exactly one level in it:
 
-**Level 0 is the absence of the skill, not ordinary trained competence.** It has
-two cases, taken from section 4.2:
+| Skill level | Meaning for now |
+|---:|---|
+| **Level-0** | Basic competence, such as an ordinary practitioner would have |
+| **Level-1** | Experienced professional, clearly better than most |
+| **Level-2** | Veteran expert, respected even by those with considerable experience |
+| **Level-3** | Master of the skill, likely one of the best in the city |
+| **Level-4** | Superlative expertise, one of the best in the world |
 
-1. **Unskilled allowed** — the action may be attempted with an additional **-1**, applied exactly once.
-2. **Skill required / trained-only** — the attempt is **blocked before rolling**. No dice are rolled, and no modifier can bypass the requirement.
+For now, a trained skill contributes its numeric level to a normal skill check:
 
-Levels 1–3 contribute their listed positive modifier to the check in section 4.
+~~~text
+unskilled: -1 if the attempt is allowed, otherwise BLOCKED
+level-0:   +0
+level-1:   +1
+level-2:   +2
+level-3:   +3
+level-4:   +4
+~~~
 
-These are the only ordinary skill levels. There is no level above 3 and no
-fractional or partial level. The level range is intentionally small: 0 = no
-skill, 1 = basic, 2 = advanced, 3 = expert.
+So the normal check in section 4 stays conceptually:
 
-The following are **not defined** and must not be inferred: a skill catalog, which
-skills are unskilled-allowed versus trained-only, XP costs, progression speed,
-training time, specialties, prerequisites, skill groups, defaulting chains,
-critical-success rules, and any advancement mechanic. See section 5.6.
+~~~text
+3d6 + relevant attribute modifier + relevant skill level + other applicable modifiers
+~~~
 
-Levels 1–3 have no numeric representation in `data/rules/core.json` yet; that
+This wording is deliberately provisional. The scale and the skill list are a first
+pass under the chassis review; the author expects to revisit individual skills,
+specialties, advancement, attribute interactions, and professions later.
+
+#### Skill list
+
+The initial NoöPunk skill list is the **Cities Without Number SRD standard skill
+list** as a starting point, with two author-specified renames: **Heal → Medical**
+and **Know → Science**.
+
+- **Administer** — manage an organization, handle paperwork, analyze records, and keep an institution functioning. Bureaucratic expertise, organizational management, legal knowledge, government agencies, and how corporations really work.
+- **Connect** — find people who can be helpful and get them to cooperate. Useful connections, people you know, where to get illicit goods and services, foreign cultures and languages. Can stand in for Talk when persuading people found through this skill.
+- **Drive** — drive vehicles, sail ships, fly planes, pilot drones, and perform maintenance and basic repairs on such devices.
+- **Exert** — apply trained speed, strength, or stamina: run, jump, lift, swim, climb, throw. Usable as a combat skill when throwing things, but not otherwise.
+- **Fix** — create and repair devices both simple and complex; build things, fix things, and identify what something is supposed to do.
+- **Medical** — medical and psychological treatment for the injured or disturbed. Cure diseases, stabilize the critically injured, treat psychological disorders, diagnose illnesses, and the medical care of cyberware where later rules make that relevant. Inherits the role of CWN **Heal**.
+- **Science** — facts about academic or scientific fields. Understand academic topics, recall relevant history, solve science mysteries, and know basic facts about rare or esoteric topics. Inherits the role of CWN **Know**.
+- **Lead** — convince others to do whatever it is you are trying to do, even when they think it is a bad idea. Lead troops in combat, inspire loyalty, maintain morale and discipline.
+- **Notice** — spot anomalies or interesting facts about the environment. Search places, detect ambushes, spot things, and read the emotional state of other people.
+- **Perform** — exhibit a performance skill: dance, sing, orate, act, or otherwise put on a convincing or emotionally moving performance.
+- **Program** — operate or hack computing and communications hardware. Program or hack computers, control computer-operated hardware, operate communications tech, decrypt things.
+- **Punch** — the combat skill for fighting unarmed.
+- **Shoot** — the combat skill for ranged weaponry: thrown weapons, bows, gunlinked pistols, combat rifles, heavy artillery.
+- **Sneak** — move without drawing notice. Stealth, disguise, infiltration, manual legerdemain, pickpocketing, and physically defeating security measures such as electronic locks.
+- **Stab** — the combat skill for melee weapons, primitive or complex. Also usable when throwing weapons.
+- **Survive** — street smarts and urban survival, or outlands bushcraft and wilderness living, depending on background. Practice can generalize it.
+- **Talk** — convince other people of the facts you want them to believe: persuade, charm, or deceive others in conversation.
+- **Trade** — find what you need on the market and sell what you have. Sell or buy things, find hard-to-get or illicit goods, deal with customs agents, run a business.
+- **Work** — a catch-all for professions not represented by other skills. **The profession mechanism is not yet canonical NoöPunk specialization mechanics** (see below): for now this is a broad skill, and how it is narrowed is deferred.
+
+Do **not** casually rename, split, merge, or add other skills. The author will review
+the list bit by bit later.
+
+#### Skills are not bound to a fixed attribute
+
+Do not assign every skill to a fixed attribute. NoöPunk checks use the attribute
+**relevant to the action** and to later rules, not a fixed skill-to-attribute table.
+
+#### Not defined
+
+The following are **not defined** and must not be inferred: which skills are
+unskilled-allowed versus trained-only; a skill catalog beyond the list above;
+per-skill attribute bindings; training time; prerequisites; skill groups;
+defaulting chains; critical-success rules; and any advancement mechanic
+(section 5.6).
+
+Skill levels have **no numeric representation in `data/rules/core.json`** yet; that
 file remains the canonical runtime data for the attributes, human generation,
-difficulty targets, unskilled penalty, and opposed-check semantics specified
-above.
+difficulty targets, unskilled penalty, and opposed-check semantics. Skill levels and
+the skill list are tabletop-first and not yet ported (section 17).
+
+#### Specialties: deferred
+
+The author expects some broad skills eventually to support specialties, such as
+`Science (Biotech)` or `Work (Lawyer)`. This is **future design, not a rule**.
+
+Explicitly **not** decided, and not to be inferred:
+
+- whether specialties are mandatory or optional;
+- whether they give modifiers;
+- whether they restrict what a broad skill can do;
+- whether Work always requires a profession;
+- whether Science always requires a field;
+- how specialties are bought or advanced;
+- whether specialties have their own levels;
+- whether other skills use specialties.
+
+In particular, CWN's treatment of Work as *"pick a particular profession"* is **not**
+automatically canonical NoöPunk specialization mechanics. The broad Work skill stands
+for now, and the exact specialty/subtype mechanism is deferred until the author
+decides it.
 
 ### 5.4 Derived statistics
 
@@ -192,7 +271,7 @@ above.
 
 ### 5.5 Character creation
 
-Only ordinary-human attribute generation in section 5.2 and the four skill levels in section 5.3 are currently defined. All other character-creation procedures, including starting skill levels, are reserved for later specification.
+Only ordinary-human attribute generation in section 5.2 and the skill list and levels in section 5.3 are currently defined. All other character-creation procedures, including how many skills a starting character has and at what levels, are reserved for later specification.
 
 ### 5.6 Advancement
 
@@ -310,6 +389,18 @@ Defensive hardening protecting the user, especially the BCI and connected person
 | **+0** | Standard infosec: normal baseline defensive hardening, nothing exceptional. |
 | **+1 to +3** | Advanced infosec: progressively stronger defensive hardening. |
 
+#### The relevant skill is not fixed
+
+The **"relevant skill modifier"** term is the character's level in whatever skill
+the action actually calls for (section 5.3). No skill is bound to cyberspace by
+this framework.
+
+**Program** is an obvious candidate for many computing and hacking actions, since it
+has that role in the Cities Without Number SRD. That is an observation, not a rule:
+this framework does **not** create a hacking subsystem and does **not** decide that
+every cyberspace action uses Program. Which skill applies, and when, remains for
+later author specification.
+
 #### Not defined here
 
 Deliberately left undefined, and not to be inferred: named implants or brands, bandwidth or latency numbers, hardware tiers, FLOPS, model sizes, RAM, accelerators, power consumption, device catalogs, prices, surgery rules, costs, humanity mechanics, medical side effects, brain-damage mechanics, neural malware, intrusion tables, ICE catalogs, firewall product classes, mental-status consequences, a complete hacking subsystem, and a cyberspace skill list.
@@ -346,9 +437,10 @@ The three supported forms are tabletop RPG, Godot RPG, and Concordia RPG / simul
 
 They use the same canonical attribute identifiers, human-generation table, difficulty targets, check semantics, unskilled penalty, trained-only representation, and opposed-check semantics.
 
-The four skill levels in section 5.3 are **tabletop-first and not yet ported**. They
-are canonical tabletop rules; Godot and Concordia do not implement them yet, and
-porting them is a separate later task after the tabletop version is stable.
+The skill list and the level-0..4 trained skill scale in section 5.3 are
+**tabletop-first and not yet ported**. They are canonical tabletop rules; Godot and
+Concordia do not implement them yet, and porting them is a separate later task after
+the tabletop version is stable.
 
 The cyberspace and hacking modifiers in section 12.1 are **tabletop-first and not
 yet ported** in the same way. There is no runtime schema, modifier table or
@@ -375,7 +467,8 @@ Only material actually present in the CWN **SRD** may be directly reused. See [d
 
 The following remain intentionally unresolved:
 
-- skill list and skill progression
+- skill specialties and skill progression
+- skill-to-attribute bindings
 - derived statistics
 - detailed character creation beyond ordinary-human attributes
 - combat

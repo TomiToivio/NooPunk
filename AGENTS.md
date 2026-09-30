@@ -56,14 +56,18 @@ Existing Godot and Concordia scaffolds must be preserved, not deleted, but they 
 
 ### 4. Current reserved design areas
 
-The six attributes (FIT, REF, INT, CHA, CYB, PSY), ordinary-human 3d6 generation, core 3d6 checks, canonical difficulties, opposed comparison, unskilled -1, trained-only blocking, the four canonical skill levels (0 Unskilled, 1 Basic, 2 Advanced, 3 Expert), and the human-user cyberspace situational modifier framework (BCI, Compute, Connection, Infosec defence) are now author-specified in RULEBOOK.md. Agents must preserve them exactly.
+The six attributes (FIT, REF, INT, CHA, CYB, PSY), ordinary-human 3d6 generation, core 3d6 checks, canonical difficulties, opposed comparison, unskilled -1, trained-only blocking, the skill list, the level-0..4 trained skill scale, and the human-user cyberspace situational modifier framework (BCI, Compute, Connection, Infosec defence) are now author-specified in RULEBOOK.md. Agents must preserve them exactly.
 
-**Skill levels and the cyberspace modifiers are tabletop-first and not yet ported.** They are canonical tabletop rules stated in `RULEBOOK.md` only — §5.3 and §12.1. Do not add them to `data/rules/core.json`, and do not implement them in Godot or Concordia, until a separate task ports them after the tabletop rules are stable. Until then a digital runtime must not invent its own representation of either.
+**The skill list, skill levels, and the cyberspace modifiers are tabletop-first and not yet ported.** They are canonical tabletop rules stated in `RULEBOOK.md` only — §5.3 and §12.1. Do not add them to `data/rules/core.json`, and do not implement them in Godot or Concordia, until a separate task ports them after the tabletop rules are stable. Until then a digital runtime must not invent its own representation of either.
 
 Until explicitly specified, do not define:
 - additional attributes or derived statistics
-- a skill list or skill catalog, or which skills are unskilled-allowed versus trained-only (the four skill levels themselves are specified in RULEBOOK.md §5.3)
-- character creation or starting skill levels
+- additional skills, or a rename/split/merge of the ones in RULEBOOK.md §5.3
+- which skills are unskilled-allowed versus trained-only
+- skill specialties or the mechanism by which a broad skill is narrowed (the profession mechanism in particular is deferred)
+- how many skills a starting character has, or at what levels
+- skill-to-attribute bindings (checks use the attribute relevant to the action)
+- character creation
 - character classes or archetypes
 - combat resolution
 - damage, health, wounds, armor, or initiative
@@ -221,7 +225,9 @@ When working on any subsystem that CWN also has:
 2. decide explicitly: **KEEP**, **MODIFY**, **REPLACE**, **OMIT**, or **DEFER**;
 3. when the decision is missing, leave it **DEFER** — do not assume CWN's version survives, and do not assume it is dropped.
 
-**NoöPunk decisions take precedence.** Existing author-specified NoöPunk rules are canonical and are not overridden by CWN defaults. Do not redesign them back toward CWN — in particular, the six attributes (FIT, REF, INT, CHA, CYB, PSY), the 3d6 ordinary-human generation, the −3..+3 ordinary-human modifier range, the 3d6 core resolution, the difficulty ladder, and skill levels 0–3.
+**NoöPunk decisions take precedence.** Existing author-specified NoöPunk rules are canonical and are not overridden by CWN defaults. Do not redesign them back toward CWN — in particular, the six attributes (FIT, REF, INT, CHA, CYB, PSY), the 3d6 ordinary-human generation, the −3..+3 ordinary-human modifier range, the 3d6 core resolution, the difficulty ladder, and the skill list and level-0..4 trained skill scale.
+
+Where CWN is the starting point for a subsystem, NoöPunk's modification of it is the rule. The skills subsystem is **MODIFY**: NoöPunk adopts the CWN level-0..4 structure and standard list, but unskilled stays outside the numbered levels (at -1 or blocked), Heal is renamed **Medical**, Know is renamed **Science**, and specialization is deferred.
 
 **Source boundary.** Direct reuse is limited to material actually present in the Cities Without Number **SRD**. Do not import setting material, megacorps, NPCs, places, or events from the full CWN book. Do not copy protected text, setting material, terminology, or faction content from Cyberpunk 2020, Eclipse Phase, Shadowrun, The Sprawl, or CY_BORG: those are **design references only**. When unsure whether something is in the SRD, treat it as not in the SRD and write original wording.
 

@@ -38,9 +38,10 @@ CORE_JSON = ROOT / "data" / "rules" / "core.json"
 GODOT_ADAPTER = ROOT / "src" / "godot" / "core_rules.gd"
 CONCORDIA_MECHANICS = ROOT / "src" / "concordia_runtime" / "mechanics.py"
 
-#: The only decision main's review-status table may carry, from author work that
-#: predates #19. Everything else must still read DEFER.
-DECIDED_ROWS = {"attributes": "REPLACE"}
+#: The decisions author work has actually recorded in the review-status table.
+#: `attributes` predates the chassis (#19); `skills` was reviewed under it (#22).
+#: Everything else must still read DEFER.
+DECIDED_ROWS = {"attributes": "REPLACE", "skills": "MODIFY"}
 
 
 def _text(path: Path) -> str:

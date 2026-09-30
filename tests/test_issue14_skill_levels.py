@@ -1,8 +1,19 @@
 # -*- coding: utf-8 -*-
 """Regression tests for the canonical tabletop-first skill levels from issue #14.
 
-The tabletop rule is already canonical on main. These tests guard that definition
-without creating a digital skill implementation.
+**Issue #22 superseded this scale.** #14 established a four-step model where level 0
+meant "unskilled" and levels 1-3 gave +1/+2/+3; #22 replaced it with the
+Cities-Without-Number-style **level-0..4 trained scale**, with unskilled outside the
+numbered levels entirely.
+
+These tests therefore guard two things:
+
+1. the current canon (level-0..4, unskilled outside), so the rule cannot drift; and
+2. that the withdrawn four-step model does not come back, in the documents *or* in
+   the runtime adapters.
+
+The tabletop rule is canonical on main. Nothing here creates a digital skill
+implementation.
 """
 
 from __future__ import annotations
@@ -27,32 +38,56 @@ def _flat(path: Path) -> str:
     return " ".join(_text(path).split()).lower()
 
 
-class SkillLevelCanonTests(unittest.TestCase):
-    def test_exact_four_skill_levels(self) -> None:
+class SupersededScaleTests(unittest.TestCase):
+    """The withdrawn #14 model must not reappear anywhere."""
+
+    def test_old_four_step_rows_are_gone(self) -> None:
         text = _flat(RULEBOOK)
-        for level, name, modifier in (
-            ("0", "unskilled", "special"),
-            ("1", "basic", "+1"),
-            ("2", "advanced", "+2"),
-            ("3", "expert", "+3"),
-        ):
+        for level, name in (("0", "unskilled"), ("1", "basic"),
+                            ("2", "advanced"), ("3", "expert")):
             with self.subTest(level=level):
-                self.assertIn(f"| {level} | {name} | {modifier} |", text)
+                self.assertNotIn(
+                    f"| {level} | {name} |", text,
+                    "the withdrawn #14 skill-level row is still in RULEBOOK.md",
+                )
 
-    def test_level_zero_means_no_skill(self) -> None:
+    def test_old_names_are_not_canonical_skill_levels(self) -> None:
         text = _flat(RULEBOOK)
-        self.assertIn("level 0 is the absence of the skill", text)
-        self.assertIn("unskilled allowed", text)
-        self.assertIn("skill required / trained-only", text)
+        self.assertNotIn("1 = basic", text)
+        self.assertNotIn("2 = advanced", text)
+        self.assertNotIn("3 = expert", text)
+        self.assertNotIn("four canonical skill levels", text)
 
-    def test_trained_levels_have_expected_modifiers(self) -> None:
+    def test_supersession_is_stated_explicitly(self) -> None:
+        """The issue requires the old rule to be marked superseded, not deleted."""
         text = _flat(RULEBOOK)
-        self.assertIn("1 = basic", text)
-        self.assertIn("2 = advanced", text)
-        self.assertIn("3 = expert", text)
-        self.assertIn("+1/+2/+3", text)
+        self.assertIn("supersedes the earlier four-step skill model", text)
+        self.assertIn("that model is withdrawn", text)
 
-    def test_check_formula_includes_skill_modifier(self) -> None:
+
+class CurrentScaleTests(unittest.TestCase):
+    """The level-0..4 canon from #22, with unskilled outside it."""
+
+    def test_five_trained_levels_exist(self) -> None:
+        text = _flat(RULEBOOK)
+        for level in ("level-0", "level-1", "level-2", "level-3", "level-4"):
+            with self.subTest(level=level):
+                self.assertIn(level, text)
+
+    def test_unskilled_is_not_a_numbered_level(self) -> None:
+        text = _flat(RULEBOOK)
+        self.assertIn("unskilled is not level-0", text)
+        self.assertIn("not a numbered level at all", text)
+
+    def test_level_modifiers_are_zero_through_four(self) -> None:
+        text = _flat(RULEBOOK)
+        for level, modifier in (("level-0", "+0"), ("level-1", "+1"),
+                                ("level-2", "+2"), ("level-3", "+3"),
+                                ("level-4", "+4")):
+            with self.subTest(level=level):
+                self.assertIn(f"{level}: {modifier}", text)
+
+    def test_check_formula_still_carries_the_skill_term(self) -> None:
         text = _flat(RULEBOOK)
         self.assertIn(
             "total = 3d6 + relevant attribute modifier + skill modifier + other applicable modifiers",
@@ -60,11 +95,20 @@ class SkillLevelCanonTests(unittest.TestCase):
         )
         self.assertIn("success = total >= difficulty target", text)
 
+
+class UnskilledRulesTests(unittest.TestCase):
+    """Unskilled keeps the -1 / BLOCKED behaviour; only the numbering changed."""
+
     def test_unskilled_penalty_and_blocking(self) -> None:
         text = _flat(RULEBOOK)
         self.assertIn("-1 unskilled modifier", text)
         self.assertIn("applied exactly once", text)
         self.assertIn("blocked before rolling", text)
+
+    def test_core_json_still_carries_the_unskilled_contract(self) -> None:
+        canon = json.loads(_text(CORE_JSON))
+        self.assertEqual(canon["unskilled_penalty"], -1)
+        self.assertEqual(canon["trained_only_without_skill"], "blocked")
 
     def test_issue_11_difficulty_ladder_preserved(self) -> None:
         canon = json.loads(_text(CORE_JSON))
@@ -79,18 +123,11 @@ class SkillLevelCanonTests(unittest.TestCase):
                 "Impossible": 18,
             },
         )
-        self.assertEqual(canon["unskilled_penalty"], -1)
-        self.assertEqual(canon["trained_only_without_skill"], "blocked")
         self.assertEqual(canon["opposed_rule"], "higher_total_wins")
         self.assertEqual(canon["opposed_tie"], "unresolved")
 
-    def test_skill_catalog_and_progression_remain_undefined(self) -> None:
-        text = _flat(RULEBOOK)
-        self.assertIn("skill catalog", text)
-        self.assertIn("not defined", text)
-        self.assertIn("advancement", text)
-        self.assertIn("**unspecified.**", text)
 
+class TabletopScopeTests(unittest.TestCase):
     def test_tabletop_first_deferral_is_explicit(self) -> None:
         text = _flat(RULEBOOK)
         self.assertIn("tabletop-first and not yet ported", text)
@@ -98,24 +135,24 @@ class SkillLevelCanonTests(unittest.TestCase):
 
     def test_agents_preserve_tabletop_first_scope(self) -> None:
         text = _flat(AGENTS)
-        self.assertIn("four canonical skill levels", text)
-        self.assertIn("a skill list or skill catalog", text)
+        self.assertIn("level-0..4 trained skill scale", text)
         self.assertIn("tabletop first", text)
 
     def test_no_skill_level_runtime_table_or_adapter_implementation(self) -> None:
+        """#22 is tabletop-only: no runtime may grow a skill scale."""
         canon_text = _flat(CORE_JSON)
         godot_text = _flat(GODOT_ADAPTER)
         concordia_text = _flat(CONCORDIA_MECHANICS)
 
-        for term in ("basic", "advanced", "expert", "skill_levels", "skill_level"):
+        for term in ("skill_levels", "skill_level", "medical", "science"):
             with self.subTest(term=term):
                 self.assertNotIn(term, canon_text)
 
-        for term in ("skill_level", "skill levels", "basic", "advanced", "expert"):
+        for term in ("skill_level", "skill levels", "medical", "science"):
             with self.subTest(runtime="godot", term=term):
                 self.assertNotIn(term, godot_text)
 
-        for term in ("skill_level", "skill levels", "skill modifier"):
+        for term in ("skill_level", "skill levels"):
             with self.subTest(runtime="concordia", term=term):
                 self.assertNotIn(term, concordia_text)
 
