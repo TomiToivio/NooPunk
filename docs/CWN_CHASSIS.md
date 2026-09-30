@@ -172,11 +172,11 @@ That includes, but is not limited to:
 - the six attributes: **FIT**, **REF**, **INT**, **CHA**, **CYB**, **PSY**
 - 3d6 ordinary-human attribute generation
 - the −3..+3 ordinary-human modifier range
-- 3d6 core resolution
-- the difficulty ladder
+- the CWN-derived **2d6 skill-check engine**
+- the CWN-style skill-check difficulty ladder
 - the skill list and the level-0..4 trained skill scale
 - the tabletop-first development order
-- the current cyberspace modifier work
+- hacking / cyberspace is currently **DEFERRED**; the earlier BCI / Compute / Connection / Infosec modifier experiment is retained only as design history
 
 ### The first known divergence: attributes
 
@@ -197,6 +197,25 @@ than CWN's narrower ordinary modifier scale. This difference is deliberate.
 
 A wider ordinary modifier range is not a balance problem to be corrected by
 importing CWN's scale: it is part of how NoöPunk's checks work.
+
+
+### Core checks: MODIFY
+
+Issue #25 adopts the CWN SRD skill-check engine as NoöPunk's tabletop baseline:
+
+- roll **2d6 + relevant skill level + relevant attribute modifier**;
+- use the CWN-style **6 / 8 / 10 / 12 / 14+** difficulty ladder;
+- keep NoöPunk's own six attributes and ordinary-human **−3..+3** attribute range;
+- keep unskilled outside the numbered skill levels at **−1** when an attempt is allowed, or **BLOCKED** when training is required;
+- use CWN-derived opposed checks, aid, contextual skill/attribute selection, and normal situational modifiers.
+
+This supersedes NoöPunk's earlier 3d6 skill-check engine and 3 / 6 / 9 / 12 / 15 / 18 difficulty ladder. **3d6 still remains the ordinary-human attribute-generation roll.**
+
+The digital runtime has not yet been ported to this tabletop change. Existing runtime 3d6 check code is temporary implementation debt, not a second source of canon.
+
+### Hacking / cyberspace: returned to DEFER
+
+Issue #25 withdraws the issue #17 BCI / Compute / Connection / Infosec modifier tables from active canon. The concepts are not rejected, but they must be reconsidered later against the CWN hacking subsystem before any are restored or replaced.
 
 ## Tabletop first
 
