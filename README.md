@@ -55,6 +55,24 @@ It is approximately the author's imagined **2045-like future**, extrapolated fro
 
 See [TIMELINE.md](TIMELINE.md) for the current speculative scenario.
 
+## The world: ideology and paradigm shifts
+
+Every paradigm shift in the setting — AI, NHI contact, psionics, panpsychism,
+BCI/cyborgization, and the Noösphere — generates **its own** accelerationists,
+doomers, critical/regulatory camps, believers, skeptics and hybrids. Positions on
+different shifts are **separable**, so the world is a cross-product of intersecting
+struggles rather than a single pro-technology versus anti-technology axis.
+
+The **Panpsychic Cyborg Multitude** (PCM, "the Multitude") is a major Noöspheric
+faction in that world: an assemblage rather than an organisation, and internally
+contested rather than ideologically unified.
+
+- Canonical positions and the reusable multi-axis model: [data/world/ideology.json](data/world/ideology.json)
+- How it plays: [docs/WORLD_IDEOLOGY.md](docs/WORLD_IDEOLOGY.md)
+
+The ideological model is setting material only; no numeric ideology mechanics are
+defined.
+
 ## RPG + simulation
 
 NoöPunk has two connected purposes:
