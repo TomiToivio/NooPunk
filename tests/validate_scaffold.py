@@ -11,10 +11,14 @@ REQUIRED = [
     "AGENTS.md",
     "RULEBOOK.md",
     "src/godot/.gitkeep",
+    "src/godot/core_rules.gd",
     "src/rules/.gitkeep",
+    "src/rules/__init__.py",
+    "src/rules/core.py",
     "src/world/.gitkeep",
     "src/simulation/.gitkeep",
     "data/rules/.gitkeep",
+    "data/rules/core.json",
     "data/world/.gitkeep",
     "data/simulation/.gitkeep",
 ]
@@ -28,7 +32,7 @@ if 'run/main_scene="res://scenes/main.tscn"' not in project:
     raise SystemExit("project.godot does not point to the bootstrap scene")
 
 scene = (ROOT / "scenes/main.tscn").read_text(encoding="utf-8")
-if "Rules and world systems are intentionally unspecified." not in scene:
-    raise SystemExit("bootstrap scene lost its non-canon placeholder notice")
+if "Core attributes/checks specified; other systems remain intentionally unresolved." not in scene:
+    raise SystemExit("bootstrap scene lost its scoped rules-status notice")
 
 print("NoöPunk Godot scaffold validation passed.")
