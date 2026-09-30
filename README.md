@@ -2,15 +2,65 @@
 
 **NoöPunk = Noösphere + Cyberpunk.**
 
-NoöPunk is a speculative science-fiction genre about networked minds, artificial intelligence, human-machine assemblages and the emergence of a technological Noösphere.
+NoöPunk is an original speculative science-fiction genre, RPG setting, and simulation project. It asks what a cyberpunk future becomes when the familiar technological transformation of AI, networks, corporations, surveillance, cybernetics, and human augmentation is joined by more radical paradigm shifts concerning consciousness and non-human intelligence.
 
-This repository is an **RPG / simulation experiment** for exploring NoöPunk as a playable and simulated world.
+The project is grounded aesthetically and socially in **cyberpunk**, but its "other world" is not urban fantasy. Instead, NoöPunk explores a future shaped by the **Noösphere**, consciousness, psionics, non-human intelligences, and consciousness-fundamental metaphysics.
 
-- **RPG:** homebrew rules and setting material built on **Eclipse Phase**.
-- **Simulation:** agent-based and generative social simulation using **Concordia**.
+## The core idea
 
-The project is intentionally minimal and experimental. Rules, setting and simulation models will evolve through play, worldbuilding and computational experiments.
+NoöPunk combines several layers:
 
-## Setting
+- **Cyberpunk:** AI, automation, corporate and state power, surveillance, networks, cybercrime, inequality, biotechnology, brain-computer interfaces, and cyborgification.
+- **Noösphere:** the emergence of a planetary layer of connected intelligence inspired by **Pierre Teilhard de Chardin**, expanded into a world of humans, AIs, networks, BCIs, culture, and potentially non-local forms of consciousness.
+- **Quantum panpsychism / consciousness:** inspired in part by **Alexander Wendt's _Quantum Mind and Social Science_**, **Federico Faggin's quantum-information-oriented panpsychism**, and **Donald Hoffman's Conscious Realism**.
+- **NHI / UFOs:** inspired in part by **Alexander Wendt's work on UFOs and state sovereignty** and **Jacques Vallée's Interdimensional Hypothesis**. In the NoöPunk scenario, NHI cannot be reduced to extraterrestrial biology and technology alone; the phenomenon may be stranger and consciousness-related.
+- **Psionics:** inspired by the experimental research tradition associated with **Dean Radin**, treated inside the fictional scenario as a future scientific and technological domain.
 
-- [Predicted Timeline](TIMELINE.md) — speculative NoöPunk scenario beats for approximately 2026–2045, with all dates intentionally written as **20XX**.
+These inspirations are not presented here as proof that the speculative claims are established science. They are inputs to the setting and simulation.
+
+## Genre and influences
+
+NoöPunk keeps the technological, political, urban, and economic core of old-school cyberpunk.
+
+Major RPG influences include:
+
+- **Cyberpunk 2013 / 2020 / RED**
+- **Shadowrun**
+- **Eclipse Phase**
+
+A rough analogy is **Shadowrun with the cyberpunk left as cyberpunk, while the urban-fantasy layer is replaced by the Noösphere, NHI, psionics, and consciousness-fundamental metaphysics**.
+
+Other important tonal influences include **Philip K. Dick** and 1970s space psychedelia, including **Hawkwind**. The intended result is simultaneously near-future and retrocyberpunk: recognizably descended from the world of 2026, but filtered through older visions of technological futures.
+
+## Time and scenario
+
+The setting uses dates written as **20XX**.
+
+It is approximately the author's imagined **2045-like future**, extrapolated from the situation in 2026, without fixing the fiction to a single canonical calendar year.
+
+See [TIMELINE.md](TIMELINE.md) for the current speculative scenario.
+
+## RPG + simulation
+
+NoöPunk has two connected purposes:
+
+1. **RPG:** a computer RPG implemented in **Godot**, with rules designed so the same underlying system can also be used as a tabletop RPG.
+2. **Simulation:** an experimental model for exploring the social consequences of several interacting paradigm shifts:
+   - AI and cyberpunk technological transformation
+   - cyborgification and human-machine integration
+   - consciousness as a scientific and metaphysical problem
+   - scientifically validated psionics within the scenario
+   - NHI becoming part of social and political reality
+   - emergence of the Noösphere
+
+The computer game and tabletop rules should share the same conceptual model wherever practical.
+
+## Development principle: build slowly
+
+The project must **not** fill gaps by inventing mechanics or lore.
+
+The initial Godot work should create only a clean, minimal RPG foundation. Major design areas such as attributes, skills, combat, psionics, NHI, factions, character creation, equipment, economy, progression, world geography, quests, and detailed simulation rules are reserved for later specification by the author.
+
+See [RULEBOOK.md](RULEBOOK.md) for the intentionally incomplete rules framework and [AGENTS.md](AGENTS.md) for mandatory agent constraints.
+
+The rule is simple: **scaffold first, canon later**.
