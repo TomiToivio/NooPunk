@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
+import re
 import sys
 import unittest
 
@@ -59,6 +60,27 @@ class ConcordiaRuntimeTests(unittest.TestCase):
         player = HumanPlayer(read_action=lambda prompt: "  ")
         with self.assertRaises(ValueError):
             player.choose_action("placeholder_prompt")
+
+    def test_concordia_dependency_is_pinned_to_verified_git_commit(self) -> None:
+        requirement = (
+            ROOT / "requirements-concordia.txt"
+        ).read_text(encoding="utf-8")
+        dependency_lines = [
+            line.strip()
+            for line in requirement.splitlines()
+            if line.strip() and not line.lstrip().startswith("#")
+        ]
+        self.assertEqual(len(dependency_lines), 1)
+
+        dependency = dependency_lines[0]
+        self.assertRegex(
+            dependency,
+            re.compile(
+                r"^git\+https://github\.com/google-deepmind/concordia\.git"
+                r"@[0-9a-f]{40}#egg=gdm-concordia\[ollama\]$"
+            ),
+        )
+        self.assertNotEqual(dependency, "gdm-concordia[ollama]")
 
 
 if __name__ == "__main__":
