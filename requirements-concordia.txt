@@ -1,3 +1,7 @@
 # Optional Concordia runtime dependencies.
-# Concordia currently exposes Ollama support as an optional extra.
-gdm-concordia[ollama]
+#
+# The NoöPunk runtime uses Concordia prefab/contrib APIs that are present in
+# upstream main but are not available in the older PyPI release that originally
+# satisfied "gdm-concordia[ollama]". Keep this git dependency pinned to the exact
+# upstream revision whose API was verified by NoöPunk.
+git+https://github.com/google-deepmind/concordia.git@405584db8e09e001da6deb147a6389f7a7f44e28#egg=gdm-concordia[ollama]
