@@ -13,6 +13,22 @@
 
 ---
 
+## World structure: the social layer crosses the other two
+
+NoöPunk's overall world structure is documented in [THREE_LAYERS.md](THREE_LAYERS.md):
+
+- **Cyberpunk** is the material transformation.
+- **Noösphere** is the ontological transformation.
+- **Politics / ideology / sociology** is the social struggle over both.
+
+This document develops the **third layer**. It treats NoöPunk as a sociological
+simulation of a world undergoing several interacting paradigm shifts, without
+turning play into academic exposition. The ideological map exists to generate
+factions, institutions, laws, conflicts, coalitions, missions, and historical
+realignments in response to technological and ontological change.
+
+---
+
 ## 1. The one idea that structures the world
 
 > **Every major paradigm shift generates its own accelerationists, doomers,
