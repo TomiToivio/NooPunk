@@ -44,7 +44,10 @@ See [TIMELINE.md](TIMELINE.md) for the current speculative scenario.
 
 NoöPunk has two connected purposes:
 
-1. **RPG:** a computer RPG implemented in **Godot**, with rules designed so the same underlying system can also be used as a tabletop RPG.
+1. **RPG:** one shared ruleset usable in three runtimes:
+   - **Tabletop RPG**
+   - **Godot RPG**
+   - **Concordia RPG / cyberpunk simulation**, using local **Ollama** LLMs for a GM and NPC agents, with support for adding a human-controlled player.
 2. **Simulation:** an experimental model for exploring the social consequences of several interacting paradigm shifts:
    - AI and cyberpunk technological transformation
    - cyborgification and human-machine integration
@@ -53,7 +56,7 @@ NoöPunk has two connected purposes:
    - NHI becoming part of social and political reality
    - emergence of the Noösphere
 
-The computer game and tabletop rules should share the same conceptual model wherever practical.
+The tabletop, Godot, and Concordia versions should share the same conceptual rules and world model wherever practical. Godot is the conventional computer-RPG runtime; Concordia is the agent-based simulation/RPG runtime. Neither runtime should redefine the canonical rules.
 
 ## Development principle: build slowly
 
