@@ -1,0 +1,8 @@
+# Godot 4 generated files
+.godot/
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
