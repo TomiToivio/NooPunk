@@ -236,9 +236,89 @@ No detailed social subsystem is canonical yet.
 
 ## 12. Networks, hacking and AI systems
 
-**UNSPECIFIED.**
+**Hacking is UNSPECIFIED.** CYB is the governing attribute for technical, programming, cyberspace, cybernetics and hacking actions, and **section 12.1 defines the situational modifier framework** that applies to those actions. No hacking subsystem, tool catalog, target-security model, or cyberspace skill list is defined.
 
-CYB may be the relevant attribute for future technical, programming, cyberspace, cybernetics, or hacking actions, but no hacking or network subsystem is defined.
+### 12.1 Cyberspace and hacking modifiers (human users)
+
+This is the starting framework for **human characters operating in cyberspace**. It is deliberately small and simulationist: actual hardware, interface quality, compute, connectivity and defensive preparation matter mechanically, without becoming a bookkeeping system.
+
+**The character assumption is a human user.** These modifiers are **not** generalized to AI-native entities, uploaded humans, other cyberspace-native beings, non-human intelligence, or autonomous software agents. Their relationship to interface, compute, embodiment and connectivity may be fundamentally different, and they need a separate design pass — see the deferral note at the end of this section.
+
+The check structure:
+
+~~~text
+total = 3d6
+      + CYB attribute modifier
+      + relevant skill modifier
+      + BCI modifier
+      + Compute modifier
+      + Connection modifier
+      + Infosec modifier, where it applies
+      + other future software / hardware / situational modifiers
+success = total >= difficulty target
+~~~
+
+**Not every category applies to every check.** Each modifier is included only where it logically affects the action. A check made with no relevant equipment, for instance, simply has fewer terms — the framework describes what *can* apply, not a fixed sum.
+
+All four categories use the same small scale, matching the rest of the system:
+
+| Quality | Modifier |
+|---|---:|
+| Poor / obsolete | -1 |
+| Standard | +0 |
+| Advanced | +1 to +3 |
+
+#### BCI modifier
+
+The quality and immediacy of the human user's interface into cyberspace.
+
+| Modifier | Interface |
+|---:|---|
+| **-1** | Legacy / non-BCI interface: keyboard and monitor, voice commands, mobile phone, or another slow or awkward conventional interface. Appropriate for people who refuse invasive or non-invasive brain-computer interfaces. |
+| **+0** | Standard BCI: non-invasive or invasive, cheap and common. The baseline human cyberspace interface. |
+| **+1 to +3** | Advanced invasive BCI: progressively more advanced state-of-the-art invasive interfaces. |
+
+#### Compute modifier
+
+Local or personal compute available for intelligence augmentation and cyberspace operations, whether integrated into an implant or carried in an external cyberdeck.
+
+| Modifier | Compute |
+|---:|---|
+| **-1** | No meaningful augmentation compute: nothing useful in implant or deck for intelligence augmentation. |
+| **+0** | Standard compute: normal consumer-grade personal compute, roughly the setting-equivalent of an ordinary cell phone or standard personal device. |
+| **+1 to +3** | Advanced compute: progressively stronger intelligence augmentation or local compute. |
+
+#### Connection modifier
+
+The quality and proximity of the connection to the target system.
+
+| Modifier | Connection |
+|---:|---|
+| **-1** | Global wireless / mobile-network connection: the ordinary wide-area mobile network. Poor bandwidth and latency for demanding cyberspace activity — enough for limited remote access, not ideal for heavy operations. |
+| **+0** | Local WLAN / local network: suitable for augmented reality and for interacting with or hacking local IoT devices. |
+| **+1** | Direct wired connection: physically wired into the target or target network, or a direct server/network connection. |
+
+These are the only connection tiers. Fiber quality, satellite links, mesh relays, tactical radios, air-gapped bridging and quantum networking remain for later author specification.
+
+#### Infosec defence modifier
+
+Defensive hardening protecting the user, especially the BCI and connected personal systems. This matters because an invasive BCI creates the possibility that hostile cyberspace activity can threaten brain-connected systems — which is why this category exists from the beginning, and why it is primarily **defensive**: it is applied where it logically affects the action, not to every check.
+
+| Modifier | Defence |
+|---:|---|
+| **-1** | Unhardened / disabled infosec: no meaningful firewall, hardening, filtering, sandboxing or equivalent defence, or protections are disabled for some reason. Especially dangerous when using an invasive BCI. |
+| **+0** | Standard infosec: normal baseline defensive hardening, nothing exceptional. |
+| **+1 to +3** | Advanced infosec: progressively stronger defensive hardening. |
+
+#### Not defined here
+
+Deliberately left undefined, and not to be inferred: named implants or brands, bandwidth or latency numbers, hardware tiers, FLOPS, model sizes, RAM, accelerators, power consumption, device catalogs, prices, surgery rules, costs, humanity mechanics, medical side effects, brain-damage mechanics, neural malware, intrusion tables, ICE catalogs, firewall product classes, mental-status consequences, a complete hacking subsystem, and a cyberspace skill list.
+
+Those belong to later author specification. The framework above is a starting point; further modifier categories may be added later.
+
+#### Deferred: non-human cyberspace participants
+
+Cyberspace rules for **AI-native entities, uploaded humans, autonomous software agents and other non-human participants** are **explicitly deferred** to a separate future design task. They are not covered by, and must not be inferred from, the human-user modifiers in this section.
 
 ## 13. Equipment and economy
 
@@ -270,6 +350,11 @@ The four skill levels in section 5.3 are **tabletop-first and not yet ported**. 
 are canonical tabletop rules; Godot and Concordia do not implement them yet, and
 porting them is a separate later task after the tabletop version is stable.
 
+The cyberspace and hacking modifiers in section 12.1 are **tabletop-first and not
+yet ported** in the same way. There is no runtime schema, modifier table or
+`data/rules/core.json` entry for them, and Godot and Concordia do not implement
+them. Porting them is a separate later task after the tabletop framework is stable.
+
 Runtime-specific adapters may differ, but they must not redefine canonical rules.
 
 ## 18. Canon and change control
@@ -299,7 +384,9 @@ The following remain intentionally unresolved:
 - damage and armor
 - advancement / XP
 - cyberware rules and catalog
-- hacking rules
+- hacking rules (beyond the human-user situational modifier framework in section 12.1: tools, target security, ICE, tracing, stealth, brain-hacking consequences)
+- cyberspace rules for AI-native entities, uploaded humans and autonomous agents
+- detailed network topology, bandwidth and latency models
 - psionic powers
 - astral projection mechanics beyond PSY being its future governing attribute
 - detailed social subsystem mechanics

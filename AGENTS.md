@@ -56,7 +56,9 @@ Existing Godot and Concordia scaffolds must be preserved, not deleted, but they 
 
 ### 4. Current reserved design areas
 
-The six attributes (FIT, REF, INT, CHA, CYB, PSY), ordinary-human 3d6 generation, core 3d6 checks, canonical difficulties, opposed comparison, unskilled -1, trained-only blocking, and the four canonical skill levels (0 Unskilled, 1 Basic, 2 Advanced, 3 Expert) are now author-specified in RULEBOOK.md. Agents must preserve them exactly.
+The six attributes (FIT, REF, INT, CHA, CYB, PSY), ordinary-human 3d6 generation, core 3d6 checks, canonical difficulties, opposed comparison, unskilled -1, trained-only blocking, the four canonical skill levels (0 Unskilled, 1 Basic, 2 Advanced, 3 Expert), and the human-user cyberspace situational modifier framework (BCI, Compute, Connection, Infosec defence) are now author-specified in RULEBOOK.md. Agents must preserve them exactly.
+
+**Skill levels and the cyberspace modifiers are tabletop-first and not yet ported.** They are canonical tabletop rules stated in `RULEBOOK.md` only — §5.3 and §12.1. Do not add them to `data/rules/core.json`, and do not implement them in Godot or Concordia, until a separate task ports them after the tabletop rules are stable. Until then a digital runtime must not invent its own representation of either.
 
 Until explicitly specified, do not define:
 - additional attributes or derived statistics
@@ -226,4 +228,3 @@ When working on any subsystem that CWN also has:
 Adopting the chassis is a **policy and roadmap**, not a conversion. Do not mass-port CWN mechanics, and do not advance Godot or Concordia ahead of the tabletop rules.
 
 Subsystem decisions belong to the author. A DEFER is an open question, not permission for an agent to choose.
-
