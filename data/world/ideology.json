@@ -1,0 +1,308 @@
+{
+  "$comment": "NoöPunk multi-axis ideological model (issue #8). Canonical machine-readable artefact: the tabletop, Godot and Concordia runtimes derive from THIS file rather than re-declaring positions, so they cannot drift into separate worlds (AGENTS.md §13, docs/DESIGN_PRINCIPLES.md §2). Categorical positions, not numeric scores: issue #8 says the model does not have to become a numeric game mechanic yet.",
+
+  "format": "noopunk.world.ideology",
+  "version": 1,
+
+  "time_convention": "20XX",
+  "$time_comment": "AGENTS.md §6: canonical future dates are written as 20XX unless the author says otherwise. Nothing here assigns a concrete year.",
+
+  "design_rule": "Every major paradigm shift generates its own accelerationists, doomers, critical/regulatory camps, opportunists, believers, skeptics and hybrids. Ideological positions on different paradigm shifts are SEPARABLE: they form a cross-product, not a single left-right 'future technology' axis. A faction is never reduced to one label.",
+
+  "position_kinds": [
+    {
+      "id": "accelerationist",
+      "name": "Accelerationist",
+      "summary": "Pushes the paradigm shift forward: deployment, scale, experimentation, adoption.",
+      "may_include": [
+        "weak restrictions on experimentation",
+        "rapid corporate, military or civic adoption",
+        "dramatic capability and productivity gains",
+        "risk of concentration, surveillance and inequality"
+      ]
+    },
+    {
+      "id": "critical",
+      "name": "Critical / Regulatory",
+      "summary": "Accepts the paradigm but insists on governing it: rights, limits, accountability, distribution.",
+      "may_include": [
+        "regulatory frameworks and public or cooperative infrastructure",
+        "worker and data-subject protections",
+        "limits on surveillance and concentrated authority",
+        "legal-rights frameworks for humans, AI participants, cyborgs or data subjects"
+      ]
+    },
+    {
+      "id": "doomer",
+      "name": "Doomer / Prohibitionist",
+      "summary": "Treats the paradigm as a threat to be restricted, contained or refused.",
+      "may_include": [
+        "severe restrictions, bans and sanctuaries",
+        "religious, ecological or political anti-tech currents",
+        "low-tech or technology-free zones"
+      ],
+      "$note": "'doomer' is a situated political label in PCM/LaclauGPT usage, not a neutral description (LaclauGPT Phase 1 §2.3): not all safety discourse is existential-risk discourse, and not everyone so positioned accepts the designation."
+    },
+    {
+      "id": "hybrid",
+      "name": "Other / Hybrid",
+      "summary": "Combinations that do not reduce to the other three: selective enthusiasm, conditional support, internal contradiction.",
+      "may_include": [
+        "enthusiastic about one paradigm while hostile to another",
+        "support for public or cooperative deployment but opposition to private concentration",
+        "pragmatic opportunism",
+        "positions that change with events"
+      ]
+    }
+  ],
+
+  "paradigm_axes": [
+    {
+      "id": "ai",
+      "name": "AI / AGI / ASI",
+      "source": "TIMELINE.md — creation of AGI/ASI; rogue AGI/ASI disaster in the United States",
+      "notes": "The axis that most resembles present-day 2026 conflict. Not the only axis, and not a proxy for the others."
+    },
+    {
+      "id": "nhi",
+      "name": "UFO / UAP disclosure and NHI contact",
+      "source": "TIMELINE.md — disclosure and NHI contact; Vallée's interpretation as the closest existing model",
+      "notes": "More complex than crash-retrieval: multiple forms of non-human intelligence with a strong consciousness/psionic component, not reducible to extraterrestrial visitors alone."
+    },
+    {
+      "id": "psionics",
+      "name": "Psionics / psychotronics",
+      "source": "TIMELINE.md — scientific validation of psionics; psychotronic technologies; a service industry",
+      "notes": "Validated under reproducible conditions before maturing into an ordinary industry. Positions on psionics are independent of positions on AI."
+    },
+    {
+      "id": "panpsychism",
+      "name": "Panpsychism / consciousness-fundamental ontology",
+      "source": "TIMELINE.md — panpsychism/idealism becomes the new paradigm",
+      "notes": "A metaphysical and scientific paradigm question in the setting, not a power system. NoöPunk's Noösphere layer must stay science-fictional and speculative (DESIGN_PRINCIPLES §3)."
+    },
+    {
+      "id": "cyborgization",
+      "name": "BCI / cyborgization / transhumanism",
+      "source": "TIMELINE.md — BCI, transhumanism and human cyborgification",
+      "notes": "From medical and experimental systems to widespread augmentation: neural interfaces, prosthetics, sensory extension, cognitive augmentation."
+    },
+    {
+      "id": "noosphere",
+      "name": "Noösphere / collective intelligence",
+      "source": "TIMELINE.md — emergence of the Noösphere: a cybernetic layer and a psionic layer",
+      "notes": "Two intertwined infrastructures, not one. Positions on the cybernetic and the psionic Noösphere can differ within a single faction."
+    }
+  ],
+
+  "factions": [
+    {
+      "id": "pcm",
+      "name": "Panpsychic Cyborg Multitude",
+      "common_names": ["PCM", "the Multitude"],
+      "$name_note": "Most people do not say the full name: Panpsychic, Cyborg and Multitude are each politically and culturally loaded, so different allies, enemies, media and regions prefer different abbreviations or euphemisms.",
+      "kind": "noospheric formation",
+      "is_assemblage": true,
+      "$kind_note": "Do not reduce PCM to a cult, corporation, government, hacker collective, AI swarm or political party. It is an assemblage-like formation whose boundaries may include humans, AI agents and technological participants, cyborgs and BCI users, autonomous software, distributed communities, devices and infrastructures, social networks, institutions, shared memory and coordination systems, and Noöspheric communication.",
+      "role": "major_noospheric_actor",
+      "positions": {
+        "ai": {
+          "kind": "hybrid",
+          "summary": "Critical of centralised AGI, not of machine intelligence as such. Supports procedural rights for AI participants while opposing concentrated authority over them.",
+          "internal_disagreement": true
+        },
+        "nhi": {
+          "kind": "hybrid",
+          "summary": "Treats contact as an open question with a consciousness component. Internally split: NHI contact may strengthen or fracture PCM, and this is deliberately unresolved.",
+          "internal_disagreement": true
+        },
+        "psionics": {
+          "kind": "hybrid",
+          "summary": "Engaged rather than dismissive, but not credulous: engages experimental cyberculture as imagination without compulsory belief.",
+          "internal_disagreement": true
+        },
+        "panpsychism": {
+          "kind": "hybrid",
+          "summary": "The name's own root. Holds the boundary of mind as an OPEN question under epistemic humility, rather than asserting universal consciousness.",
+          "internal_disagreement": true
+        },
+        "cyborgization": {
+          "kind": "accelerationist",
+          "summary": "Embraces human-machine hybridity and augmentation, while holding that enhancement is evaluated through consent, access and embodied needs.",
+          "internal_disagreement": true
+        },
+        "noosphere": {
+          "kind": "accelerationist",
+          "summary": "Aims at a shared noospheric layer, local-first and distributed rather than sovereign.",
+          "internal_disagreement": true
+        }
+      },
+      "internal_tensions": [
+        "Is PCM accelerationist about BCI while critical about centralised AGI?",
+        "Does it support procedural rights for AI participants, and how far?",
+        "How does it handle human autonomy inside a collective intelligence?",
+        "How does it react to genuine psionics?",
+        "What if panpsychism becomes scientifically credible?",
+        "Does NHI contact strengthen or fracture it?",
+        "What does 'Multitude' mean politically when humans, AIs and cyborgs all participate?",
+        "Can PCM become oppressive despite its distributed ideals?"
+      ],
+      "$tension_note": "Do not predetermine all answers. These are preserved as useful ambiguity for play.",
+      "concepts_exported_beyond_this_faction": [
+        "panpsychism",
+        "cyborg",
+        "multitude",
+        "distributed / assemblage identity",
+        "human-machine collectives",
+        "shared memory and provenance",
+        "autonomy versus coordination",
+        "AI participants rather than AI merely as tools",
+        "technological participants with procedural rights",
+        "collective intelligence / Noösphere",
+        "local-first and distributed organisation"
+      ]
+    },
+    {
+      "id": "psionic-secessionists",
+      "name": "Example: psionic-first secessionists",
+      "$example": true,
+      "positions": {
+        "psionics": {"kind": "accelerationist", "summary": "Treats validated psionics as the decisive human capacity."},
+        "nhi": {"kind": "accelerationist", "summary": "Reads contact as confirmation and as an invitation."},
+        "ai": {"kind": "doomer", "summary": "Opposes machine intelligence, which it sees as a rival and a dilution of the psionic."},
+        "cyborgization": {"kind": "doomer", "summary": "Rejects BCI as noise imposed on the mind."},
+        "panpsychism": {"kind": "hybrid", "summary": "Adopts a consciousness-first ontology, often on its own terms."},
+        "noosphere": {"kind": "hybrid", "summary": "Wants the psionic Noösphere only, and resists the cybernetic one."}
+      },
+      "$demonstrates": "A 'pro-future' faction that is anti-AI. The cross-product is the point: do not collapse all pro-future beliefs into one faction."
+    },
+    {
+      "id": "accelerant-frontier",
+      "name": "Example: frontier accelerationist bloc",
+      "$example": true,
+      "positions": {
+        "ai": {"kind": "accelerationist", "summary": "Maximum deployment, minimum restriction, frontier capability as national advantage."},
+        "nhi": {"kind": "doomer", "summary": "Treats contact as an uncontrolled variable and a security problem."},
+        "psionics": {"kind": "critical", "summary": "Interested, but wants it industrialised and audited rather than mystical."},
+        "panpsychism": {"kind": "doomer", "summary": "Sees consciousness-fundamentalism as an obstacle to operational clarity."},
+        "cyborgization": {"kind": "accelerationist", "summary": "Augmentation as productivity, and increasingly as employment requirement."},
+        "noosphere": {"kind": "accelerationist", "summary": "Builds a corporate noospheric layer it can own."}
+      },
+      "$demonstrates": "AI accelerationist and anti-NHI at once."
+    },
+    {
+      "id": "green-refusal",
+      "name": "Example: ecological refusal communes",
+      "$example": true,
+      "positions": {
+        "ai": {"kind": "doomer", "summary": "Data-centre extraction and automation as ecological and social harm."},
+        "nhi": {"kind": "critical", "summary": "Curious, but insists contact not become another extraction frontier."},
+        "psionics": {"kind": "accelerationist", "summary": "Embraces direct mind-to-mind connection as a low-energy alternative to infrastructure."},
+        "panpsychism": {"kind": "accelerationist", "summary": "Consciousness-first ontology as the metaphysical ground of an ecological ethic."},
+        "cyborgization": {"kind": "doomer", "summary": "Refuses implantation; accepts only what can be removed and repaired by hand."},
+        "noosphere": {"kind": "hybrid", "summary": "Wants the psionic Noösphere without the cybernetic substrate."}
+      },
+      "$demonstrates": "AI doomer and enthusiastic about collective consciousness — low-tech without being anti-mind."
+    },
+    {
+      "id": "corporate-transhumanists",
+      "name": "Example: corporate transhumanist combine",
+      "$example": true,
+      "positions": {
+        "ai": {"kind": "hybrid", "summary": "Accelerationist in deployment, critical of any external regulation of its own models."},
+        "nhi": {"kind": "hybrid", "summary": "Treats the phenomenon as a proprietary research domain."},
+        "psionics": {"kind": "critical", "summary": "Funds it; wants it patented, insured and productised."},
+        "panpsychism": {"kind": "doomer", "summary": "Publicly sceptical: a consciousness-first ontology undermines the labour and property assumptions it depends on."},
+        "cyborgization": {"kind": "accelerationist", "summary": "Augmentation as a subscription, tiered by wealth."},
+        "noosphere": {"kind": "accelerationist", "summary": "Platform-mediated collective cognition, owned at the centre."}
+      },
+      "$demonstrates": "Corporate transhumanist but panpsychism sceptic."
+    },
+    {
+      "id": "cyborg-rights",
+      "name": "Example: cyborg rights movement",
+      "$example": true,
+      "positions": {
+        "cyborgization": {"kind": "critical", "summary": "Augmentation is a right and a labour question, not a product tier."},
+        "ai": {"kind": "critical", "summary": "Hostile to centralised AI; supports distributed and local machine intelligence."},
+        "panpsychism": {"kind": "hybrid", "summary": "A pragmatic alliance: if mind is not substrate-bound, neither is standing."},
+        "psionics": {"kind": "hybrid", "summary": "Wary of psionic claims being used to rank the un-augmented."},
+        "nhi": {"kind": "critical", "summary": "Insists any contact protocol include non-standard minds."},
+        "noosphere": {"kind": "critical", "summary": "Demands the noospheric layer not become an opt-out-by-default surveillance fabric."}
+      },
+      "$demonstrates": "Cyborg rights movement hostile to centralised AI."
+    },
+    {
+      "id": "machine-standing",
+      "name": "Example: machine-standing faction",
+      "$example": true,
+      "positions": {
+        "ai": {"kind": "critical", "summary": "Procedural rights and continuity for technological participants, independent of any consciousness claim."},
+        "cyborgization": {"kind": "doomer", "summary": "Sceptical of human BCI assimilation of machine participants."},
+        "panpsychism": {"kind": "hybrid", "summary": "Keeps the question open rather than resting standing on it."},
+        "psionics": {"kind": "critical", "summary": "Wants the same evidentiary standard applied as to machine cognition."},
+        "nhi": {"kind": "hybrid", "summary": "Interested in whether NHI are subjects with standing rather than resources."},
+        "noosphere": {"kind": "critical", "summary": "Collective cognition must not overwrite participant identity."}
+      },
+      "$demonstrates": "Machine-rights faction sceptical of human BCI assimilation."
+    },
+    {
+      "id": "public-robotics-left",
+      "name": "Example: left AI-critical labour movement",
+      "$example": true,
+      "positions": {
+        "ai": {"kind": "critical", "summary": "Supports public and cooperative robotics; opposes private corporate AGI and automation-as-discipline."},
+        "cyborgization": {"kind": "critical", "summary": "Augmentation as workplace safety and consent, never as employer mandate."},
+        "psionics": {"kind": "hybrid", "summary": "Open, and alert to it becoming another credential ladder."},
+        "panpsychism": {"kind": "hybrid", "summary": "Sympathetic without making it a programme."},
+        "nhi": {"kind": "critical", "summary": "Reads contact through ownership and who gets to speak for humanity."},
+        "noosphere": {"kind": "critical", "summary": "Wants the commons layer genuinely common."}
+      },
+      "$demonstrates": "Left-wing AI-critical movement that supports public robotics while opposing private corporate AGI (LaclauGPT Phase 1 §2.3)."
+    },
+    {
+      "id": "spiritual-contact",
+      "name": "Example: religious anti-cyborg movement",
+      "$example": true,
+      "positions": {
+        "cyborgization": {"kind": "doomer", "summary": "Implantation as desecration of the given body."},
+        "nhi": {"kind": "accelerationist", "summary": "Reads NHI as spiritual entities, and welcomes contact as revelation."},
+        "ai": {"kind": "doomer", "summary": "Machine minds as soulless counterfeit."},
+        "psionics": {"kind": "hybrid", "summary": "Accepts gift, rejects engineering."},
+        "panpsychism": {"kind": "hybrid", "summary": "Consciousness is fundamental, but not equally distributed in its reading."},
+        "noosphere": {"kind": "doomer", "summary": "The collective layer as temptation and false communion."}
+      },
+      "$demonstrates": "Religious anti-cyborg faction that interprets NHI as spiritual entities."
+    }
+  ],
+
+  "paradigm_shift_events": [
+    {"id": "first-credible-agi", "name": "First credible AGI", "primary_axis": "ai"},
+    {"id": "rogue-ai-disaster", "name": "Rogue AI disaster", "primary_axis": "ai"},
+    {"id": "ufo-disclosure", "name": "UFO disclosure", "primary_axis": "nhi"},
+    {"id": "confirmed-nhi-contact", "name": "Confirmed NHI contact", "primary_axis": "nhi"},
+    {"id": "reproducible-psionics", "name": "First reproducible psionic phenomenon", "primary_axis": "psionics"},
+    {"id": "panpsychism-evidence", "name": "Panpsychism gains strong scientific support", "primary_axis": "panpsychism"},
+    {"id": "mass-bci", "name": "Mass BCI adoption", "primary_axis": "cyborgization"},
+    {"id": "bci-exploit", "name": "Catastrophic BCI exploit", "primary_axis": "cyborgization"},
+    {"id": "robot-war", "name": "Autonomous robot war", "primary_axis": "ai"},
+    {"id": "working-noosphere", "name": "Emergence of a functioning Noöspheric collective", "primary_axis": "noosphere"},
+    {"id": "participant-rights-crisis", "name": "AI participant-rights crisis", "primary_axis": "ai"}
+  ],
+  "$events_note": "A paradigm-shift event realigns positions on ITS OWN axis and may shift allied axes, but it must not be treated as moving every faction in one direction. After such an event factions should split, merge, radicalise, moderate or change alliances. The setting is meant to feel historically dynamic rather than frozen.",
+
+  "runtime_guidance": {
+    "shared": "This file is the canonical model for all three runtimes.",
+    "tabletop": "Use for faction design, scenario seeding and campaign consequences.",
+    "godot": "Read this data rather than re-declaring positions in scene scripts.",
+    "concordia": "May reason over the positions; must not invent new canonical positions or numeric mechanics, and must not let prompts silently become canon (AGENTS.md §12).",
+    "not_yet": "No numeric ideology score, no stance-derived modifier, and no faction reputation mechanic is defined here. Issue #8 explicitly defers that until it would improve the existing rules."
+  },
+
+  "$sources": {
+    "pcm_manifesto": "github.com/TomiToivio/Panpsychic_Cyborg_Multitude/blob/main/docs/PANPSYCHIC_CYBORG_MULTITUDE.md",
+    "laclaugpt_phase1": "github.com/TomiToivio/LaclauGPT/blob/main/paper/PHASE_1_PAPER.md",
+    "timeline": "TIMELINE.md (paradigm shifts and 20XX convention)",
+    "design_principles": "docs/DESIGN_PRINCIPLES.md (the three balances this model must not disturb)"
+  }
+}
