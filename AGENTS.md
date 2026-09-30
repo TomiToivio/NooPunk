@@ -35,17 +35,24 @@ For each task:
 
 A base RPG scaffold is not permission to create a game system.
 
-### 3. Godot and tabletop must share the same rules model
+### 3. Tabletop first; Godot and Concordia are later ports
 
-The intended RPG rules must be usable both:
-- in the Godot computer RPG, and
-- as a tabletop RPG.
+The **tabletop RPG rules/worldbook are the canonical design source** for NoöPunk.
 
-Game logic should therefore be data-driven and engine-independent where practical.
+Development order is binding:
 
-Do not bury canonical rules inside scene scripts or UI code. Prefer separable domain data / rule definitions that can later be documented in RULEBOOK.md and represented in Godot.
+1. define and refine the tabletop rule or world concept;
+2. stabilize it through documentation and playtestable procedures;
+3. only then convert it into a digital specification;
+4. implement that specification in Godot and Concordia.
 
-Do not define those rules before the author specifies them.
+If a mechanic is unclear, incomplete, or internally inconsistent, fix the tabletop rule first. Do not let Godot, Concordia, UI code, prompts, or platform architecture accidentally invent the missing rule.
+
+The intended RPG rules must ultimately be usable in tabletop, Godot, and Concordia. Game logic should therefore remain data-driven and engine-independent where practical.
+
+Do not bury canonical rules inside scene scripts or UI code. Prefer separable domain data / rule definitions derived from RULEBOOK.md and the worldbook material.
+
+Existing Godot and Concordia scaffolds must be preserved, not deleted, but they are later-stage implementation material until the relevant tabletop systems are stable.
 
 ### 4. Current reserved design areas
 
@@ -133,7 +140,7 @@ At this stage:
 When uncertain, choose the smaller implementation.
 
 
-### 11. One RPG, three runtimes
+### 11. One RPG, three runtimes, developed in sequence
 
 NoöPunk is one RPG rules/world model intended to run in three forms:
 
@@ -141,7 +148,7 @@ NoöPunk is one RPG rules/world model intended to run in three forms:
 - Godot RPG
 - Concordia RPG / simulation
 
-These are implementations of the same game, not separate rule systems.
+These are implementations of the same game, not separate rule systems, but they are **not developed in parallel by default**. The tabletop version comes first and acts as the executable human specification. Godot and Concordia follow as staged conversions after the relevant tabletop systems are stable.
 
 Concordia-specific agents must not invent alternate mechanics, lore, statistics, or canonical facts to make simulation easier. If a shared rule or world concept is undefined, leave it undefined or use clearly non-canonical fixtures.
 
@@ -170,7 +177,7 @@ NoöPunk's canonical design invariants are documented once in [`docs/DESIGN_PRIN
 
 1. Preserve the **Gamism / Narrativism / Simulationism balance**.
 2. Use **CY_BORG** (Gamism), **Cyberpunk 2020** (Simulationism), and **The Sprawl** (Narrativism) as the canonical reference poles.
-3. Preserve **rules/mechanics parity** between Tabletop, Godot and Concordia wherever possible.
+3. Preserve **rules/mechanics parity** between Tabletop, Godot and Concordia wherever possible, while developing them in the order **Tabletop → Godot/Concordia** rather than in parallel.
 4. Allow scenarios and medium-specific presentation to diverge.
 5. Preserve the **Cyberpunk / Noösphere balance**.
 6. Treat **UFO Disclosure, Psionics and Panpsychism** as the defining Noösphere paradigm shifts.
@@ -185,3 +192,18 @@ Practical consequences:
 - Where a shared specification already exists (for example `data/rules/core.json` over `src/rules/core.py`), consume it rather than re-declaring the same values in a second runtime.
 
 `tests/test_design_principles.py` fails the build if these invariants, the canonical document, or the documents that reference it drift out of agreement.
+
+
+### 14. Tabletop-first porting gate
+
+Before implementing or extending a substantive Godot or Concordia gameplay system, agents must check:
+
+1. Is the mechanic or world concept explicitly defined in the tabletop rules/worldbook?
+2. Is its terminology and procedure coherent enough to play without software?
+3. Are important edge cases documented or consciously left unresolved?
+4. If not, stop at the tabletop layer and improve that source first.
+5. If yes, convert it as **tabletop rule → digital specification → Godot implementation → Concordia implementation**.
+
+Platform-specific differences must be documented as adaptations. They must not silently become new canonical rules.
+
+Scenarios, UI, pacing, maps, presentation, automation, and other medium-specific features may diverge where appropriate. Core rules, mechanics, terminology, and world canon should not.
