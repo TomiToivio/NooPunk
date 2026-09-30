@@ -64,3 +64,26 @@ The initial Godot work should create only a clean, minimal RPG foundation. Major
 See [RULEBOOK.md](RULEBOOK.md) for the intentionally incomplete rules framework and [AGENTS.md](AGENTS.md) for mandatory agent constraints.
 
 The rule is simple: **scaffold first, canon later**.
+
+
+## Godot scaffold
+
+A minimal **Godot 4** project now lives in this repository.
+
+To open it:
+
+1. install Godot 4;
+2. import or open this repository's `project.godot`;
+3. run the project.
+
+The current scene is deliberately only a neutral bootstrap screen. It contains no game mechanics or canonical world content.
+
+Architecture notes: [docs/GODOT_ARCHITECTURE.md](docs/GODOT_ARCHITECTURE.md)
+
+A lightweight static scaffold check is available with:
+
+```bash
+python tests/validate_scaffold.py
+```
+
+Future mechanics and worldbuilding must continue to follow [AGENTS.md](AGENTS.md) and be specified incrementally in [RULEBOOK.md](RULEBOOK.md).
