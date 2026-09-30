@@ -2,7 +2,7 @@
 
 This document describes the **infrastructure-only** Concordia runtime for NoöPunk.
 
-It does not define NoöPunk mechanics, characters, factions, world facts, or simulation theory.
+It consumes the author-defined core attributes and 3d6 mechanics, but does not define additional characters, factions, world facts, skills, combat, or simulation theory.
 
 ## One RPG, three runtimes
 
@@ -54,7 +54,7 @@ Contains neutral runtime interfaces:
 - `LLMAgentSpec`
 - `HumanPlayer`
 
-They intentionally contain no attributes, skills, personality model, equipment, faction, ideology, goals, psionics, or other canonical RPG content.
+LLM and human participant specs may now carry an optional structured AttributeSet with the six canonical modifiers. They still contain no skills, personality model, equipment, faction, ideology, goals, psionics, or other unrequested RPG content.
 
 `HumanPlayer` is currently only an input adapter. It is not silently converted into an LLM-controlled Concordia entity.
 
@@ -142,11 +142,9 @@ Canonical mechanics and lore must not be smuggled into prompts.
 
 ## Intentionally undefined
 
-The Concordia runtime does not define:
+The Concordia runtime now consumes the canonical six attributes and deterministic core 3d6 resolution from shared code. It still does not define:
 
-- attributes
-- skills
-- core resolution mechanic
+- skills or a skill list
 - character creation
 - combat
 - health, damage, armor, wounds, or initiative
