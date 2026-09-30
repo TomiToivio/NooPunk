@@ -63,6 +63,8 @@ The GM calls for a skill check when the outcome is meaningfully uncertain and be
 | **12** | Master-level challenge |
 | **14+** | Extreme task where even a true master will probably fail |
 
+These five ratings replace the earlier NoöPunk ladder `Easiest 3 / Easier 6 / Easy 9 / Normal 12 / Hard 15 / Impossible 18`, which is **no longer canonical for skill checks**. The old difficulty names are **not retained as aliases**: the old `Hard` must not silently continue to mean 15, and old `Easy` must not mean 9. Difficulty **6** keeps its number but changes its meaning — under the old ladder it was the second-easiest rung, and it is now the hardest task still not worth rolling for. There is **no automatic failure on a natural 2** and **no automatic success on a natural 12**; a 2 or a 12 is only ever a low or high die result.
+
 The player describes what the character is doing. The GM selects the relevant skill and attribute from that description. Skills are **not** permanently bound to one attribute. If more than one combination is genuinely plausible, the player may use a plausible favorable combination. A combination that is only marginally relevant may take a **-1 or -2** penalty at the GM's discretion.
 
 Helpful or hostile circumstances generally produce a combined situational modifier within **-2..+2**. Exceptional subsystem-specific equipment, cyberware, software, or other effects may later define their own rules. Do not assign modifiers to every fictional detail.
@@ -367,11 +369,15 @@ Concordia may reason about context and describe outcomes, but dice, attribute va
 
 The three supported forms are tabletop RPG, Godot RPG, and Concordia RPG / simulation. The tabletop form is the canonical first implementation and design authority; digital runtimes follow after the relevant tabletop system is stable enough to port.
 
-The **tabletop skill-check canon is now the 2d6 CWN-derived engine in section 4**. The existing `data/rules/core.json`, shared Python rules, Godot adapter, and Concordia adapter still implement the superseded 3d6 check engine and old difficulty ladder. They are retained temporarily as **explicit digital-port debt**, not as competing canon.
+### 17.1 Known port debt: the digital runtimes still implement the superseded 3d6 system
+
+The **tabletop skill-check canon is now the 2d6 CWN-derived engine in section 4**. The existing `data/rules/core.json`, shared Python rules, Godot adapter, and Concordia adapter still implement the superseded 3d6 check engine and old difficulty ladder. They are retained temporarily as **explicit digital-port debt**, not as competing canon. Where a runtime and this rulebook disagree, **this rulebook is authoritative** and the runtime is wrong. `data/rules/core.json` carries a `_superseded_note` key recording this in the runtime data itself.
 
 A later porting task must convert the stable tabletop rule into a shared digital specification and then update Godot and Concordia consistently. Until that task is done, runtime tests may verify the legacy implementation as legacy behavior, but documentation must not describe it as the current canonical tabletop mechanic.
 
 The skill list and the level-0..4 trained skill scale in section 5.3 are also tabletop-first and not yet ported.
+
+The attribute identifiers, ordinary-human 3d6 generation, the -3..+3 modifier range, the unskilled penalty, and the trained-only representation are **unchanged** by section 4 and remain shared between tabletop and the runtimes.
 
 The former issue #17 BCI / Compute / Connection / Infosec modifier framework is no longer an active tabletop rule and must not be ported. Hacking/cyberspace is DEFERRED pending a later CWN-based subsystem review.
 
