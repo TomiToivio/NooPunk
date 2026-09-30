@@ -4,7 +4,7 @@ This document describes the preserved **infrastructure-only** Concordia runtime 
 
 > **Development status:** Concordia is a later-stage port/simulation runtime. Substantive NoöPunk mechanics, world systems, scenarios, and agent behavior should not advance ahead of the canonical tabletop rules/worldbook. Existing Concordia infrastructure is preserved for later conversion work.
 
-It consumes the author-defined core attributes and 3d6 mechanics, but does not define additional characters, factions, world facts, skills, combat, or simulation theory.
+It consumes the author-defined core attributes and legacy 3d6 runtime mechanics pending the #25 digital port, but does not define additional characters, factions, world facts, skills, combat, or simulation theory.
 
 ## One RPG, three runtimes, tabletop first
 
@@ -146,7 +146,7 @@ Canonical mechanics and lore must not be smuggled into prompts.
 
 ## Intentionally undefined
 
-The Concordia runtime now consumes the canonical six attributes and deterministic core 3d6 resolution from shared code. It still does not define:
+The Concordia runtime now consumes the canonical six attributes; its deterministic check runtime still uses the superseded 3d6 resolution pending the #25 digital port from shared code. It still does not define:
 
 - skill levels and the skill list (specified for tabletop in RULEBOOK.md §5.3; not yet ported)
 - character creation
