@@ -2,17 +2,27 @@
 
 > **Status:** foundation / intentionally incomplete.
 >
-> This document is the shared human-readable rules reference for the NoöPunk tabletop, Godot, and Concordia runtimes. Undefined sections are reserved for later author specification. Do not fill them automatically from genre conventions or other RPG systems.
+> This document is the **canonical design source for NoöPunk game rules**. The tabletop RPG is designed and stabilized here first; Godot and Concordia are later ports of stable tabletop systems. Undefined sections are reserved for later author specification. Do not fill them automatically from genre conventions or other RPG systems.
 
 ## 1. Design goal
 
-NoöPunk is one RPG rules model with three runtimes:
+NoöPunk is one RPG rules model with three runtimes, developed **tabletop first**:
 
 - **Tabletop RPG:** human-readable rules usable with players, a game master, character sheets, and ordinary tabletop procedures.
 - **Godot RPG:** the same concepts represented in software and data.
 - **Concordia RPG / simulation:** the same canonical mechanics exposed to deterministic simulation logic and LLM agents.
 
 Where practical, canonical game rules remain independent of runtime-specific UI, scenes, prompts, animation, rendering, or input code.
+
+The development sequence is:
+
+1. define the tabletop rule in human-readable form;
+2. make it coherent and playable at the table;
+3. resolve important ambiguities and edge cases;
+4. derive a digital specification;
+5. port that specification to Godot and Concordia.
+
+If software exposes an unclear rule, the correction belongs here first.
 
 ## 2. Genre premise
 
@@ -210,7 +220,7 @@ Concordia may reason about context and describe outcomes, but dice, attribute va
 
 ## 17. Runtime implementation contract
 
-The three supported forms are tabletop RPG, Godot RPG, and Concordia RPG / simulation.
+The three supported forms are tabletop RPG, Godot RPG, and Concordia RPG / simulation. The tabletop form is the canonical first implementation and design authority; digital runtimes follow after the relevant tabletop system is stable enough to port.
 
 They use the same canonical attribute identifiers, human-generation table, difficulty targets, check semantics, unskilled penalty, trained-only representation, and opposed-check semantics.
 
