@@ -1,32 +1,23 @@
 # -*- coding: utf-8 -*-
-"""Regression guard for the Cities Without Number SRD chassis policy (issue #19).
+"""Issue #19 — the Cities Without Number SRD chassis: licence boundary and restraint.
 
-The policy landed as documentation only, so the risk is not behaviour — it is that
-the *policy* silently stops being true. Three claims are load-bearing and were
-each unguarded when this test was written:
+Main's `docs/CWN_CHASSIS.md` (merged via PR #20) records the policy. What it did not
+carry was any **enforcement** and any **licence verification**, so those are what
+this file guards.
 
-1. **The canonical document exists and is referenced.** `docs/CWN_CHASSIS.md` is
-   the single source for the chassis policy; four other documents link to it.
-   Deleting it left CI green.
-2. **Precedence runs the right way.** The whole point of #19 is that adopting a
-   third-party chassis must not displace author-specified NoöPunk rules. The
-   docs said so in several places and *nothing asserted it*, so inverting the
-   sentence ("CWN defaults take precedence over existing NoöPunk rules") left CI
-   green.
-3. **The ninth design invariant is carried.** Landing #19 added a ninth
-   invariant to `docs/DESIGN_PRINCIPLES.md` and `AGENTS.md`, but
-   `test_design_principles.py` still asserted `range(1, 9)`. Removing invariant 9
-   from `AGENTS.md` left CI green.
+Two kinds of check:
 
-The remaining classes here are the issue's own acceptance criteria: the chassis
-is the *SRD*, NoöPunk is not a clone, the decision model is complete, only SRD
-material may be reused, tabletop-first survives, and **no subsystem or mechanic
-was implemented or ported**.
+1. **Licence-boundary guards.** The policy's legal line is "reuse only what is in
+   the SRD", and the failure mode is someone deciding a piece of text looks
+   generic enough to reuse. The guards pin the licence (CC0), pin the exclusions
+   (setting, megacorps, NPCs, GM tool text), and pin the fact that the reading
+   mirror is unofficial — so "I couldn't find it on the mirror" cannot be read as
+   permission.
+2. **Restraint guards.** #19 is policy only, and the easiest way to "complete" it
+   while breaking it is to adopt a subsystem. The strongest check parses the review
+   status table and asserts that exactly one row is decided.
 
-This is a STRUCTURE guard. It constrains what the policy documents say, not how
-anyone implements a rule. It deliberately does not enumerate the review table's
-rows: those are DEFER-by-default and are the author's to decide, so pinning them
-here would make the author's later decisions fail the build.
+Run: python3 -m unittest discover -s tests -p 'test_*.py'
 """
 
 from __future__ import annotations
@@ -42,32 +33,14 @@ POLICY = ROOT / "docs" / "CWN_CHASSIS.md"
 AGENTS = ROOT / "AGENTS.md"
 RULEBOOK = ROOT / "RULEBOOK.md"
 README = ROOT / "README.md"
-DESIGN_PRINCIPLES = ROOT / "docs" / "DESIGN_PRINCIPLES.md"
+PRINCIPLES = ROOT / "docs" / "DESIGN_PRINCIPLES.md"
 CORE_JSON = ROOT / "data" / "rules" / "core.json"
 GODOT_ADAPTER = ROOT / "src" / "godot" / "core_rules.gd"
 CONCORDIA_MECHANICS = ROOT / "src" / "concordia_runtime" / "mechanics.py"
 
-#: Documents that must reference the canonical chassis policy.
-REFERRING_DOCS = ("AGENTS.md", "README.md", "RULEBOOK.md", "docs/DESIGN_PRINCIPLES.md")
-
-#: The five decisions the author specified.
-DECISIONS = ("keep", "modify", "replace", "omit", "defer")
-
-#: The six canonical attributes, which the chassis must not replace.
-ATTRIBUTES = ("FIT", "REF", "INT", "CHA", "CYB", "PSY")
-
-#: Systems that stay comparative influences, never sources to copy.
-COMPARATIVE_INFLUENCES = (
-    "cyberpunk 2020",
-    "eclipse phase",
-    "shadowrun",
-    "the sprawl",
-    "cy_borg",
-)
-
-#: U+2212 MINUS SIGN appears in the policy doc; RULEBOOK.md uses an ASCII hyphen.
-#: Normalising both avoids a guard that breaks on typography rather than meaning.
-_MINUS = "\u2212"
+#: The only decision main's review-status table may carry, from author work that
+#: predates #19. Everything else must still read DEFER.
+DECIDED_ROWS = {"attributes": "REPLACE"}
 
 
 def _text(path: Path) -> str:
@@ -75,221 +48,292 @@ def _text(path: Path) -> str:
 
 
 def _flat(path: Path) -> str:
-    """Lowercased, whitespace-collapsed, minus-normalised text."""
-    flat = " ".join(_text(path).split()).lower()
-    return flat.replace(_MINUS, "-")
+    """Lowercased, whitespace-collapsed, emphasis stripped.
+
+    Emphasis has to go: the documents write claims like "is **not** a clone" and
+    "does **not** override", so a plain substring search misses the very sentences
+    that carry the rule.
+    """
+    return " ".join(_text(path).replace("*", "").split()).lower()
 
 
-class CanonicalDocumentTests(unittest.TestCase):
-    """The policy must exist and be reachable from the documents that cite it."""
+class LicenceBoundaryTests(unittest.TestCase):
+    """The legal line: reuse only what is actually in the SRD."""
 
-    def test_policy_document_exists(self) -> None:
-        self.assertTrue(POLICY.is_file(), "docs/CWN_CHASSIS.md is missing")
+    def test_the_licence_is_named(self) -> None:
+        """The doc previously asserted 'public domain' with no source.
 
-    def test_every_referring_document_links_the_policy(self) -> None:
-        for doc in REFERRING_DOCS:
-            with self.subTest(doc=doc):
-                self.assertIn(
-                    "CWN_CHASSIS.md",
-                    _text(ROOT / doc),
-                    f"{doc} does not reference the canonical chassis policy",
+        The verified position is a CC0 waiver by the author. Naming the licence is
+        what lets a contributor check the claim instead of trusting it.
+        """
+        flat = _flat(POLICY)
+        self.assertIn("cc0", flat)
+        self.assertIn("waiver", flat)
+        self.assertIn("creative commons", flat)
+
+    def test_the_licence_covers_mechanics_and_trivially_derived_content(self) -> None:
+        flat = _flat(POLICY)
+        self.assertIn("mechanics of the game", flat)
+        self.assertIn("trivially-derived content", flat)
+        self.assertIn("weapon damage dice", flat)
+
+    def test_the_licence_explicitly_excludes_the_setting(self) -> None:
+        flat = _flat(POLICY)
+        for excluded in ("specific setting", "megacorp", "individual npcs",
+                         "gm tool text"):
+            with self.subTest(excluded=excluded):
+                self.assertIn(excluded, flat)
+
+    def test_the_reading_mirror_is_recorded_as_unofficial(self) -> None:
+        """The boundary must not rest on a fan mirror's own claim.
+
+        cwn.quadrifons.com omits sections and may contain transcription errors, so
+        the policy has to point at the publisher's file as authoritative.
+        """
+        flat = _flat(POLICY)
+        self.assertIn("cwn.quadrifons.com", flat)
+        self.assertIn("unofficial", flat)
+        self.assertIn("sine nomine", flat)
+        self.assertIn("authoritative", flat)
+
+    def test_an_absence_from_the_mirror_is_not_permission(self) -> None:
+        """The precise misreading this guard exists to prevent."""
+        flat = _flat(POLICY)
+        self.assertIn(
+            "an absence from the mirror is not an absence from the srd", flat
+        )
+
+    def test_direct_reuse_is_limited_to_the_srd(self) -> None:
+        flat = _flat(POLICY)
+        self.assertIn("actually present in the cwn srd", flat)
+        self.assertIn("rules source", flat)
+        self.assertIn("is not a setting source", flat)
+
+    def test_the_other_five_systems_are_references_only(self) -> None:
+        flat = _flat(POLICY)
+        for influence in ("cyberpunk 2020", "eclipse phase", "shadowrun",
+                          "the sprawl", "cy_borg"):
+            with self.subTest(influence=influence):
+                self.assertIn(influence, flat)
+        self.assertIn("design references only", flat)
+
+    def test_no_presented_claim_of_official_status(self) -> None:
+        """CC0 needs no attribution, but NoöPunk must not imply endorsement."""
+        flat = _flat(POLICY)
+        self.assertIn("not a sine nomine product", flat)
+        self.assertIn("official or sanctioned", flat)
+
+    def test_every_doc_naming_the_chassis_also_names_the_srd(self) -> None:
+        """The SRD-vs-full-book distinction is the whole boundary.
+
+        A document that says only "Cities Without Number" blurs it, so each
+        contributor-facing doc must name the SRD.
+        """
+        for doc in (POLICY, AGENTS, RULEBOOK, README):
+            with self.subTest(doc=doc.name):
+                flat = _flat(doc)
+                self.assertIn("cities without number", flat)
+                self.assertIn("srd", flat,
+                              f"{doc.name} names the game but not the SRD boundary")
+
+
+class RestraintTests(unittest.TestCase):
+    """#19 converts nothing. This is the load-bearing guard."""
+
+    def test_no_keep_decision_exists_yet(self) -> None:
+        """KEEP would adopt a CWN subsystem; no author has decided one."""
+        text = _text(POLICY)
+        status = text[text.index("### Review status"):text.index("## NoöPunk decisions")]
+        rows = [ln for ln in status.splitlines() if ln.strip().startswith("|")]
+        for row in rows:
+            cells = [c.strip().replace("*", "") for c in row.strip("|").split("|")]
+            if len(cells) < 2:
+                continue
+            decision = cells[1].strip().upper()
+            with self.subTest(row=cells[0]):
+                self.assertNotEqual(
+                    decision, "KEEP",
+                    f"{cells[0]!r} is KEEP, adopting a CWN subsystem without an "
+                    f"author decision",
                 )
 
-    def test_no_second_chassis_document_exists(self) -> None:
-        """One source of truth: no competing chassis doc under docs/."""
-        candidates = [
-            p.name for p in (ROOT / "docs").glob("*.md")
-            if re.search(r"chassis|cwn|cities", p.name, re.I)
-        ]
+    def test_only_the_attribute_row_is_decided(self) -> None:
+        """Exactly one subsystem may be decided, and it predates the chassis."""
+        text = _text(POLICY)
+        status = text[text.index("### Review status"):text.index("## NoöPunk decisions")]
+        decided = {}
+        for line in status.splitlines():
+            line = line.strip()
+            if not line.startswith("|"):
+                continue
+            cells = [c.strip().replace("*", "") for c in line.strip("|").split("|")]
+            if len(cells) < 2 or set(cells[0]) <= set("-: "):
+                continue
+            label = cells[0].strip().lower()
+            decision = cells[1].strip().upper()
+            if not decision or decision == "DECISION":
+                continue
+            if decision != "DEFER":
+                decided[label] = decision
         self.assertEqual(
-            candidates, ["CWN_CHASSIS.md"],
-            f"expected exactly one canonical chassis doc, found {sorted(candidates)}",
+            decided, DECIDED_ROWS,
+            "the set of decided subsystems changed; #19 must not resolve a DEFER row",
         )
 
+    def test_unreviewed_rows_still_read_defer(self) -> None:
+        flat = _flat(POLICY)
+        self.assertIn("every row not marked otherwise stays defer", flat)
+        self.assertIn("a defer is not a decision to keep cwn", flat)
 
-class ChassisIsTheSrdTests(unittest.TestCase):
-    def test_names_cities_without_number(self) -> None:
-        self.assertIn("cities without number", _flat(POLICY))
+    def test_defer_is_not_permission_for_an_agent_to_choose(self) -> None:
+        flat = _flat(AGENTS)
+        self.assertIn("subsystem decisions belong to the author", flat)
+        self.assertIn("a defer is an open question, not permission", flat)
 
-    def test_names_the_srd_not_the_commercial_book(self) -> None:
-        text = _flat(POLICY)
-        self.assertIn("srd", text)
-        self.assertIn("full commercial", text)
-
-    def test_states_nopunk_is_not_a_clone(self) -> None:
-        """Tolerate the markdown emphasis between 'not' and the name."""
-        self.assertRegex(
-            _flat(POLICY),
-            r"not\*{0,2} a cities without number clone",
-        )
-        self.assertIn("retroclone", _flat(POLICY))
-
-
-class DecisionModelTests(unittest.TestCase):
-    def test_documents_all_five_decisions(self) -> None:
-        text = _flat(POLICY)
-        for decision in DECISIONS:
-            with self.subTest(decision=decision):
-                self.assertIn(decision, text)
-
-    def test_does_not_assume_any_subsystem_survives(self) -> None:
-        self.assertIn("do not assume any subsystem survives unchanged", _flat(POLICY))
-
-    def test_documents_the_review_scaffold(self) -> None:
-        text = _flat(POLICY)
-        for subsystem in ("attributes", "skills", "combat", "cyberware",
-                          "hacking / cyberspace", "advancement"):
-            with self.subTest(subsystem=subsystem):
-                self.assertIn(subsystem, text)
+    def test_policy_states_it_converts_nothing(self) -> None:
+        flat = _flat(POLICY)
+        self.assertIn("policy and roadmap only", flat)
+        self.assertIn("does not convert", flat)
 
 
 class PrecedenceTests(unittest.TestCase):
-    """The load-bearing claim: author intent outranks the chassis."""
+    """Existing NoöPunk rules take precedence over CWN defaults."""
 
-    def test_policy_states_precedence(self) -> None:
-        self.assertIn("noöpunk decisions take precedence", _flat(POLICY))
-
-    def test_policy_denies_the_chassis_is_a_higher_authority(self) -> None:
+    def test_precedence_is_stated_in_policy_and_agent_rules(self) -> None:
+        for doc in (POLICY, AGENTS):
+            with self.subTest(doc=doc.name):
+                self.assertIn("take precedence", _flat(doc))
+        # the "not a higher authority" phrasing lives in the policy; AGENTS.md
+        # states the same rule as a direct instruction instead
         self.assertIn("not a higher authority", _flat(POLICY))
 
-    def test_rulebook_states_precedence(self) -> None:
-        self.assertIn("take precedence over cwn defaults", _flat(RULEBOOK))
+    def test_rules_are_not_to_be_redesigned_back_toward_cwn(self) -> None:
+        self.assertIn("not be redesigned back toward", _flat(POLICY))
+        self.assertIn("do not redesign them back toward cwn", _flat(AGENTS))
 
-    def test_agents_md_states_precedence(self) -> None:
-        self.assertIn("noöpunk decisions take precedence", _flat(AGENTS))
+    def test_six_attributes_are_preserved(self) -> None:
+        text = _text(RULEBOOK)
+        section = text[text.index("### 5.1 Attributes"):text.index("### 5.2")]
+        for code in ("**Fitness (FIT):**", "**Reflexes (REF):**", "**Intelligence (INT):**",
+                     "**Charisma (CHA):**", "**Cybernetics (CYB):**", "**Psyche (PSY):**"):
+            with self.subTest(attribute=code):
+                self.assertIn(code, section, f"{code} is missing from the attribute list")
+        self.assertIn("Do not add alternate names or additional attributes", section)
 
-    def test_design_principles_states_precedence(self) -> None:
-        self.assertIn("take precedence over cwn defaults", _flat(DESIGN_PRINCIPLES))
-
-    def test_rulebook_never_says_the_chassis_wins(self) -> None:
-        """The inversion that was previously undetectable."""
-        text = _flat(RULEBOOK)
-        for inverted in (
-            "cwn defaults take precedence over existing noöpunk rules",
-            "cwn takes precedence",
-            "cwn overrides",
-        ):
-            with self.subTest(inverted=inverted):
-                self.assertNotIn(inverted, text)
-
-
-class ExistingRulesSurviveTests(unittest.TestCase):
-    """Adopting the chassis must not change the rules already author-specified."""
-
-    def test_core_json_still_carries_the_author_attributes(self) -> None:
-        canon = json.loads(_text(CORE_JSON))
-        self.assertEqual([a["id"] for a in canon["attributes"]], list(ATTRIBUTES))
-
-    def test_core_json_modifier_scale_is_unchanged(self) -> None:
-        table = json.loads(_text(CORE_JSON))["human_3d6_modifier"]
-        self.assertEqual(table["3"], -3)
-        self.assertEqual(table["18"], 3)
-
-    def test_no_chassis_attribute_replaced_a_author_attribute(self) -> None:
-        ids = {a["id"].lower() for a in json.loads(_text(CORE_JSON))["attributes"]}
-        for chassis_attribute in ("str", "con", "wis", "dex"):
-            with self.subTest(attribute=chassis_attribute):
-                self.assertNotIn(chassis_attribute, ids)
-
-    def test_rulebook_preserves_the_modifier_range(self) -> None:
-        self.assertIn("-3..+3", _flat(RULEBOOK))
-
-    def test_policy_records_the_range_as_deliberate(self) -> None:
-        text = _flat(POLICY)
-        self.assertIn("-3..+3", text)
-        self.assertIn("deliberate", text)
-
-
-class LegalBoundaryTests(unittest.TestCase):
-    def test_direct_reuse_is_limited_to_the_srd(self) -> None:
-        self.assertIn("actually present in the cwn srd", _flat(POLICY))
-
-    def test_full_book_setting_material_is_excluded(self) -> None:
-        text = _flat(POLICY)
-        self.assertIn("not a source at all", text)
-        self.assertIn("protected megacorps", text)
-
-    def test_comparative_influences_are_not_sources(self) -> None:
-        text = _flat(POLICY)
-        for influence in COMPARATIVE_INFLUENCES:
-            with self.subTest(influence=influence):
-                self.assertIn(influence, text)
-        self.assertIn("design references only", text)
-
-    def test_unsure_material_is_treated_as_outside_the_srd(self) -> None:
-        self.assertIn("treat it as **not** in the srd", _flat(POLICY))
-
-
-class NoSubsystemImplementedTests(unittest.TestCase):
-    """#19 is policy only: nothing converted, nothing ported, no mechanics added."""
-
-    def test_policy_scopes_itself_to_policy(self) -> None:
-        text = _flat(POLICY)
-        self.assertIn("does not convert", text)
-        self.assertIn("policy and roadmap only", text)
-
-    def test_core_json_gained_no_chassis_keys(self) -> None:
-        for key in json.loads(_text(CORE_JSON)):
-            with self.subTest(key=key):
-                for forbidden in ("chassis", "cwn", "cities", "srd", "keep_modify"):
-                    self.assertNotIn(
-                        forbidden, key.lower(),
-                        f"data/rules/core.json gained {key!r}; #19 is policy only",
-                    )
-
-    def test_no_digital_port_was_created(self) -> None:
-        for path in (GODOT_ADAPTER, CONCORDIA_MECHANICS):
-            flat = _flat(path)
-            for term in ("chassis", "cities_without_number", "cwn_srd"):
-                with self.subTest(path=path.name, term=term):
-                    self.assertNotIn(term, flat)
-
-    def test_tabletop_first_survives(self) -> None:
-        self.assertIn("tabletop first. godot and concordia later", _flat(POLICY))
-
-
-class DesignPrinciplesIntegrationTests(unittest.TestCase):
-    """#19 added a ninth invariant; the drift guard must cover it."""
-
-    def test_the_ninth_invariant_exists_in_both_documents(self) -> None:
-        for doc in DESIGN_PRINCIPLES, AGENTS:
-            with self.subTest(doc=doc.name):
-                text = _flat(doc)
-                self.assertIn("cities without number srd", text)
-
-    def test_the_drift_guard_covers_every_invariant(self) -> None:
-        """`test_design_principles.py` still checked `range(1, 9)` after #19.
-
-        The loop's argument is exclusive, so asserting n invariants needs
-        `range(1, n + 1)`. The count is read from each document's own invariant
-        section rather than hard-coded, so adding a tenth invariant fails here
-        until the drift guard follows.
-        """
-        cases = (
-            (DESIGN_PRINCIPLES, r"(?ms)^## 5\. Invariants.*?(?=\n## |\Z)"),
-            (AGENTS, r"(?ms)^### 13\. Preserve the three design balances.*?(?=\n### |\Z)"),
-        )
-        for doc, section_re in cases:
-            with self.subTest(doc=doc.name):
-                section = re.search(section_re, _text(doc))
-                self.assertIsNotNone(section, f"{doc.name}: invariant section not found")
-                assert section is not None
-                listed = len(re.findall(r"(?m)^(\d+)\. ", section.group(0)))
-                self.assertGreater(listed, 0, f"{doc.name}: no numbered invariants found")
-                source = _text(ROOT / "tests" / "test_design_principles.py")
-                match = re.search(r"for number in range\(1,\s*(\d+)\)", source)
-                self.assertIsNotNone(match, "the invariant-count loop was removed")
-                assert match is not None  # narrowed for type checkers
-                self.assertGreaterEqual(
-                    int(match.group(1)), listed + 1,
-                    f"{doc.name} states {listed} invariants but the drift guard "
-                    f"only checks range(1, {match.group(1)})",
+    def test_cwn_attribute_names_never_became_noopunk_attributes(self) -> None:
+        """CWN names may appear only as a mapping, never as list entries."""
+        text = _text(RULEBOOK)
+        section = text[text.index("### 5.1 Attributes"):text.index("### 5.2")]
+        for cwn_name in ("Strength", "Constitution", "Wisdom", "Dexterity"):
+            with self.subTest(cwn_name=cwn_name):
+                self.assertNotRegex(
+                    section, rf"\*\*{cwn_name} \(",
+                    f"the attribute list gained CWN's {cwn_name}",
                 )
 
-    def test_the_ninth_invariant_is_not_cwn_only(self) -> None:
-        """Invariant 9 must keep precedence in the same sentence as the chassis."""
-        text = _flat(DESIGN_PRINCIPLES)
-        self.assertIn("take precedence over cwn defaults", text)
+    def test_modifier_range_and_generation_are_preserved(self) -> None:
+        flat = _flat(RULEBOOK)
+        self.assertIn("| 3 | -3 |", flat)
+        self.assertIn("| 18 | +3 |", flat)
+        self.assertIn("ordinary-human -3..+3 range", flat)
+
+    def test_cwn_core_mechanic_did_not_leak_into_canon(self) -> None:
+        """CWN's 2d6 core check must not appear as a NoöPunk rule."""
+        self.assertNotIn("2d6", _text(RULEBOOK))
+        self.assertNotIn("2d6", _text(CORE_JSON))
+
+    def test_difficulty_ladder_and_3d6_core_are_preserved(self) -> None:
+        flat = _flat(RULEBOOK)
+        for name, target in (("easiest", 3), ("easier", 6), ("easy", 9),
+                             ("normal", 12), ("hard", 15), ("impossible", 18)):
+            with self.subTest(difficulty=name):
+                self.assertRegex(flat, rf"\| {name} \| {target} \|")
+        self.assertIn("total = 3d6", flat)
+
+
+class TabletopFirstTests(unittest.TestCase):
+    """Tabletop-first sequencing stays binding; runtimes stay deferred."""
+
+    def test_policy_states_the_five_step_sequence(self) -> None:
+        flat = _flat(POLICY)
+        for step in ("review the cwn srd version", "compare it with noöpunk's goals",
+                     "define or modify the tabletop rule", "stabilize it",
+                     "only then create digital specifications and ports"):
+            with self.subTest(step=step):
+                self.assertIn(step, flat)
+
+    def test_bulk_porting_is_forbidden(self) -> None:
+        flat = _flat(POLICY) + " " + _flat(AGENTS)
+        self.assertIn("tabletop first. godot and concordia later", flat)
+        self.assertIn("do not bulk-port cwn mechanics", flat)
+
+    def test_core_json_gained_no_cwn_derived_schema(self) -> None:
+        canon = json.loads(_text(CORE_JSON))
+        self.assertEqual(
+            canon["difficulties"],
+            {"Easiest": 3, "Easier": 6, "Easy": 9,
+             "Normal": 12, "Hard": 15, "Impossible": 18},
+        )
+        self.assertEqual(canon["unskilled_penalty"], -1)
+        self.assertEqual(canon["trained_only_without_skill"], "blocked")
+        for key in canon:
+            with self.subTest(key=key):
+                lowered = key.lower()
+                for forbidden in ("cwn", "cities_without_number", "saving_throw",
+                                  "strain", "background", "focus", "edge"):
+                    self.assertNotIn(
+                        forbidden, lowered,
+                        f"data/rules/core.json gained {key!r}; #19 ports nothing",
+                    )
+
+    def test_runtimes_gained_no_cwn_mechanics(self) -> None:
+        for path in (GODOT_ADAPTER, CONCORDIA_MECHANICS):
+            with self.subTest(path=path.name):
+                flat = _flat(path)
+                for forbidden in ("2d6", "saving_throw", "saving throw",
+                                  "cities_without_number", "cwn"):
+                    self.assertNotIn(forbidden, flat,
+                                     f"{path.name} gained a CWN mechanic")
+
+
+class SiteAndDocParityTests(unittest.TestCase):
+    """The site and the docs must agree about the chassis.
+
+    This repo has already had one doc/site drift defect of exactly this kind, which
+    survived because nothing checked the published site.
+    """
+
+    def test_the_site_mentions_the_chassis(self) -> None:
+        site = ROOT / "docs" / "index.html"
+        flat = _flat(site)
+        self.assertTrue("cities without number" in flat or "cwn" in flat,
+                        "the published site does not mention the chassis")
+
+    def test_the_site_does_not_call_noopunk_a_clone(self) -> None:
+        """Only an AFFIRMATIVE clone claim is a defect.
+
+        A bare substring check is wrong here: the correct sentence is "it is NOT a
+        Cities Without Number clone", which contains the phrase this guard is
+        looking for. Match the claim, then require the negation in front of it.
+        """
+        site = ROOT / "docs" / "index.html"
+        flat = _flat(site)
+        for phrase in ("cities without number clone", "cwn clone", "cwn retroclone"):
+            with self.subTest(phrase=phrase):
+                for match in re.finditer(re.escape(phrase), flat):
+                    window = flat[max(0, match.start() - 60):match.start()]
+                    negated = any(m in window for m in ("not ", "never ", "no longer "))
+                    self.assertTrue(
+                        negated,
+                        f"the site describes NoöPunk as a {phrase!r} without negation:\n"
+                        f"  ...{window}{phrase}...",
+                    )
+
+    def test_design_principles_still_govern(self) -> None:
+        """The chassis must not displace the three balances as higher authority."""
+        flat = _flat(POLICY)
+        self.assertIn("design_principles.md", flat)
+        self.assertIn("higher authority on design intent", flat)
 
 
 if __name__ == "__main__":
