@@ -115,9 +115,14 @@ class CoreRulesTests(unittest.TestCase):
 
     def test_unskilled_penalty_is_minus_one(self) -> None:
         self.assertEqual(UNSKILLED_PENALTY, -1)
-        result = resolve_check(attribute_modifier=0, target=8, dice_total=9, has_skill=False)
+        result = resolve_check(
+            attribute_modifier=0,
+            target=DIFFICULTIES["Easy"],
+            dice_total=10,
+            has_skill=False,
+        )
         self.assertEqual(result.unskilled_modifier, -1)
-        self.assertEqual(result.total, 8)
+        self.assertEqual(result.total, 9)
         self.assertTrue(result.success)
 
     def test_trained_only_attempt_is_blocked_without_skill(self) -> None:
@@ -127,6 +132,7 @@ class CoreRulesTests(unittest.TestCase):
             skill_access=SkillAccess.TRAINED_ONLY,
             has_skill=False,
             dice_total=18,
+            extra_modifiers=(100,),
         )
         self.assertFalse(result.attempted)
         self.assertIsNone(result.total)
