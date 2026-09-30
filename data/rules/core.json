@@ -29,9 +29,27 @@
     "Easiest": 3,
     "Easier": 6,
     "Easy": 9,
-    "Hard": 12,
-    "Harder": 15,
-    "Hardest": 18
+    "Normal": 12,
+    "Hard": 15,
+    "Impossible": 18
+  },
+  "difficulty_meanings": {
+    "Easiest": "Can only fail with negative modifiers.",
+    "Easier": "Trivial for a capable character.",
+    "Easy": "Routine.",
+    "Normal": "The default challenge.",
+    "Hard": "Demanding.",
+    "Impossible": "The author's name for target 18, not a prohibition on rolling. Resolved with the same numeric formula; there is NO automatic failure on a natural 3 and no automatic success on a natural 18."
+  },
+  "difficulty_notes": [
+    "These labels supersede the earlier table in which target 12 was named 'Hard'. Target 12 is now 'Normal'; the label 'Hard' now means 15.",
+    "Migration warning: the string 'Hard' changed target from 12 to 15. Data that stored the LABEL rather than the number must be migrated deliberately, not silently reinterpreted. See the migration note in RULEBOOK.md.",
+    "Use these exact names and targets in rulebooks, canonical data, runtime displays, APIs, examples and tests."
+  ],
+  "human_attribute_interpretation": {
+    "above_plus_3": "Transhuman.",
+    "below_minus_3": "Basically dead.",
+    "$note": "These refer to attribute MODIFIERS, not raw generation rolls. The data model must accept explicitly assigned values outside -3..+3 without clamping, and no death, injury, augmentation or resurrection mechanics are defined by this interpretation."
   },
   "unskilled_penalty": -1,
   "trained_only_without_skill": "blocked",

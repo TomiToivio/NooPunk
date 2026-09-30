@@ -38,16 +38,31 @@ The basic NoöPunk check is:
 
 Compare the final total against a difficulty rating. A check succeeds when the final total **meets or exceeds** the target.
 
-| Difficulty | Target |
-|---|---:|
-| Easiest | 3 |
-| Easier | 6 |
-| Easy | 9 |
-| Hard | 12 |
-| Harder | 15 |
-| Hardest | 18 |
+| Difficulty | Target | Meaning |
+|---|---:|---|
+| Easiest | 3 | Can only fail with negative modifiers. |
+| Easier | 6 | Trivial for a capable character. |
+| Easy | 9 | Routine. |
+| Normal | 12 | The default challenge. |
+| Hard | 15 | Demanding. |
+| Impossible | 18 | The hardest target, resolved with the same formula. |
 
-Additional modifiers may later come from skills, advantages, disadvantages, cybernetics, equipment, conditions, circumstances, or other author-defined systems.
+> **These labels supersede an earlier table.** In the previous version target 12 was
+> named **Hard** and targets 15/18 were named **Harder/Hardest**. Under the
+> author-specified table above, target 12 is **Normal**, the label **Hard** now means
+> **15**, and **Harder/Hardest are no longer canonical names**.
+>
+> **Migration warning.** The string `Hard` has changed target from **12 to 15**. Any
+> stored or external data that recorded the *label* rather than the number must be
+> migrated deliberately. Neither rulebook nor runtimes may silently reinterpret an old
+> `Hard` as 15; a saved artifact carrying `"Hard": 12` should be treated as an old
+> **Normal**. The difficulty data is versioned in `data/rules/core.json`.
+
+**"Impossible" is a name, not a prohibition.** It is the author's name for target 18
+and is resolved with the same numeric formula as every other target. There is **no
+automatic failure on a natural 3** and **no automatic success on a natural 18**.
+
+Additional modifiers may later come from skills, advantages, disadvantages, cybernetics, equipment, conditions, circumstances, or other author-defined systems. Positive and negative contributions are summed; no values, catalogs or progression systems are defined here.
 
 ### 4.1 Opposed checks
 
@@ -109,7 +124,7 @@ Interpretation:
 - Values above +3 are transhuman / superhuman.
 - Values below -3 represent an effectively nonfunctional or near-dead state.
 
-The data model must permit values outside the ordinary-human -3..+3 range. Future transhumans, AI entities, NHI, cybernetic beings, injuries, or other cases may use explicitly assigned values when their rules are later defined.
+These refer to **attribute modifiers**, not raw generation rolls. The data model must permit values outside the ordinary-human -3..+3 range, and explicitly assigned values are used as-is without clamping. This interpretation defines **no** death, injury, augmentation or resurrection mechanics; those remain reserved for later author specification.
 
 Where useful, preserve both the raw 3d6 generation roll and the resulting modifier.
 

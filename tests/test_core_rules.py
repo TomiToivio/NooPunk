@@ -12,6 +12,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from rules import (
     ATTRIBUTE_IDS,
     DIFFICULTIES,
+    difficulty_target,
     UNSKILLED_PENALTY,
     AttributeSet,
     SkillAccess,
@@ -61,10 +62,18 @@ class CoreRulesTests(unittest.TestCase):
             self.assertEqual(generated.modifiers[attribute_id], human_modifier(raw))
 
     def test_canonical_difficulties(self) -> None:
+        """Author-specified table (#11). Supersedes the Hard=12 version."""
         self.assertEqual(
             DIFFICULTIES,
-            {"Easiest": 3, "Easier": 6, "Easy": 9, "Hard": 12, "Harder": 15, "Hardest": 18},
+            {"Easiest": 3, "Easier": 6, "Easy": 9, "Normal": 12, "Hard": 15, "Impossible": 18},
         )
+
+    def test_the_old_harder_and_hardest_names_are_gone(self) -> None:
+        """#11 removed them; the label 'Hard' now means 15, not 12."""
+        self.assertNotIn("Harder", DIFFICULTIES)
+        self.assertNotIn("Hardest", DIFFICULTIES)
+        self.assertEqual(difficulty_target("Hard"), 15)
+        self.assertEqual(difficulty_target("Normal"), 12)
 
     def test_meeting_target_succeeds_and_below_fails(self) -> None:
         self.assertTrue(resolve_check(attribute_modifier=0, target=9, dice_total=9).success)

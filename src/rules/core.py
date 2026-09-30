@@ -24,8 +24,46 @@ _CANON = json.loads(_CANON_PATH.read_text(encoding="utf-8"))
 ATTRIBUTE_DEFINITIONS = tuple(_CANON["attributes"])
 ATTRIBUTE_IDS = tuple(item["id"] for item in ATTRIBUTE_DEFINITIONS)
 DIFFICULTIES = dict(_CANON["difficulties"])
+#: Why each difficulty carries its name. Data, not prose, so the three runtimes
+#: cannot describe the same target differently (issue #11).
+DIFFICULTY_MEANINGS = dict(_CANON.get("difficulty_meanings", {}))
+#: The author's reading of modifier values outside the ordinary-human range.
+HUMAN_ATTRIBUTE_INTERPRETATION = dict(_CANON.get("human_attribute_interpretation", {}))
 UNSKILLED_PENALTY = int(_CANON["unskilled_penalty"])
+#: Sentinel for "the attempt could not be made", distinct from a failed roll.
+BLOCKED_TRAINED_ONLY = str(_CANON.get("trained_only_without_skill", "blocked"))
 _HUMAN_MODIFIERS = {int(k): int(v) for k, v in _CANON["human_3d6_modifier"].items()}
+
+
+class UnknownDifficulty(KeyError):
+    """A difficulty name that is not in the canonical table (issue #11).
+
+    Raised instead of a bare KeyError or a silent default, because the label
+    'Hard' changed meaning (12 -> 15) and silently falling back to a number
+    would reinterpret old data without telling anyone.
+    """
+
+
+def difficulty_target(name: str) -> int:
+    """The canonical target for a named difficulty.
+
+    This is the single lookup the runtimes share. It exists so that no runtime
+    re-declares the name-to-target mapping (the Godot adapter previously read the
+    JSON inline, which allowed a rename to be applied in one runtime only).
+    """
+    try:
+        return int(DIFFICULTIES[name])
+    except KeyError as exc:
+        raise UnknownDifficulty(
+            f"unknown difficulty {name!r}; canonical difficulties are "
+            f"{', '.join(DIFFICULTIES)}"
+        ) from exc
+
+
+def difficulty_meaning(name: str) -> str:
+    """The canonical one-line meaning for a named difficulty."""
+    difficulty_target(name)  # validates the name, raising UnknownDifficulty
+    return DIFFICULTY_MEANINGS.get(name, "")
 
 
 class SkillAccess(str, Enum):

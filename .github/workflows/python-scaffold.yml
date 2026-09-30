@@ -31,3 +31,20 @@ jobs:
         run: python -m unittest discover -s tests -p "test_*.py"
       - name: Smoke-check neutral Concordia session
         run: python scripts/concordia_smoke.py
+  # Separate job: the Godot runtime cannot be exercised without a Godot binary,
+  # and the Python suite only checks the .gd source textually. This job runs the
+  # real engine headless so the Godot adapter is verified against the same
+  # canonical data the other two runtimes read (issue #11).
+  godot-parity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download Godot
+        run: |
+          curl -sSL -o godot.zip \
+            "https://github.com/godotengine/godot/releases/download/4.4-stable/Godot_v4.4-stable_linux.x86_64.zip"
+          unzip -q godot.zip
+          mv Godot_v4.4-stable_linux.x86_64 godot
+          chmod +x godot
+      - name: Check Godot rules parity against shared canon
+        run: ./godot --headless --path . --script scripts/godot_rules_parity.gd
