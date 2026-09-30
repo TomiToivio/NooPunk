@@ -1,11 +1,11 @@
 {
   "attributes": [
-    {"id": "FIT", "name": "Fitness", "description": "Your health, fitness, stamina, physical robustness, and constitution."},
-    {"id": "REF", "name": "Reflexes", "description": "Your dexterity, agility, coordination, reaction speed, and bodily precision."},
-    {"id": "INT", "name": "Intelligence", "description": "How smart, educated, knowledgeable, analytical, and generally intellectually capable you are."},
-    {"id": "CHA", "name": "Charisma", "description": "Your social skills, attractiveness, presence, persuasion, and leadership ability."},
-    {"id": "CYB", "name": "Cybernetics", "description": "Your cyborg / technological side: technical aptitude, proficiency in cyberspace, programming, cybernetics, and related human-machine capabilities."},
-    {"id": "PSY", "name": "Psyche", "description": "Your consciousness, intuition, empathy, and psionic aptitude. PSY is used for consciousness-related and psionic actions, including astral projection when those systems are later defined."}
+    {"id": "FIT", "name": "Fitness", "description": "Your health, fitness and constitution."},
+    {"id": "REF", "name": "Reflexes", "description": "Your dexterity, agility and coordination."},
+    {"id": "INT", "name": "Intelligence", "description": "How smart, educated and knowledgeable you are."},
+    {"id": "CHA", "name": "Charisma", "description": "Your social skills, attractiveness and leadership skills."},
+    {"id": "CYB", "name": "Cybernetics", "description": "Your cyborg side; how technical you are; your proficiency in cyberspace, programming and cybernetics."},
+    {"id": "PSY", "name": "Psyche", "description": "Your consciousness, intuition, empathy and psionics. Used in astral projection and for psionics."}
   ],
   "human_3d6_modifier": {
     "3": -3,
@@ -29,9 +29,9 @@
     "Easiest": 3,
     "Easier": 6,
     "Easy": 9,
-    "Hard": 12,
-    "Harder": 15,
-    "Hardest": 18
+    "Normal": 12,
+    "Hard": 15,
+    "Impossible": 18
   },
   "unskilled_penalty": -1,
   "trained_only_without_skill": "blocked",
