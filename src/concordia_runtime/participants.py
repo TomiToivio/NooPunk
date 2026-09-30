@@ -1,9 +1,11 @@
-"""Neutral participant specifications for the Concordia runtime."""
+"""Participant specifications for the Concordia runtime."""
 
 from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Callable
+
+from rules import AttributeSet
 
 
 @dataclass(frozen=True, slots=True)
@@ -19,9 +21,10 @@ class GameMasterSpec:
 
 @dataclass(frozen=True, slots=True)
 class LLMAgentSpec:
-    """Non-canonical runtime identity for an LLM-controlled participant."""
+    """Runtime identity plus optional structured canonical attributes."""
 
     name: str
+    attributes: AttributeSet | None = None
 
     def __post_init__(self) -> None:
         if not self.name.strip():
@@ -34,6 +37,7 @@ class HumanPlayer:
 
     name: str = "placeholder_human"
     read_action: Callable[[str], str] = input
+    attributes: AttributeSet | None = None
 
     def __post_init__(self) -> None:
         if not self.name.strip():
