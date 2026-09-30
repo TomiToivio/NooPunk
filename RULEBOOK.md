@@ -152,17 +152,27 @@ Agents must not populate these categories without explicit author instruction.
 
 NoöPunk is also intended as a simulation of interacting social and technological paradigm shifts. The simulation should eventually be compatible with the RPG's conceptual world model, but simulation entities, variables, causal rules, agent behavior, and calibration are not yet defined.
 
-## 17. Godot implementation contract
+## 17. Runtime implementation contract
 
-The Godot implementation should eventually map author-defined rules into engine-independent data and logic.
+The Godot and Concordia implementations should eventually map the same author-defined rules into engine-independent data and logic.
 
-Initial implementation may create placeholders for:
+The three supported forms are:
+
+- tabletop RPG
+- Godot RPG
+- Concordia RPG / simulation
+
+Runtime-specific adapters may differ, but they must not redefine canonical rules.
+
+Initial implementations may create placeholders for:
 - rule data
 - character data
 - world data
 - simulation data
 - serialization
-- UI adapters
+- Godot UI / scene adapters
+- Concordia GM / agent / human-player adapters
+- LLM provider configuration
 
 These placeholders must remain semantically empty until the corresponding rules are specified.
 
