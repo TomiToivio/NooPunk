@@ -56,9 +56,11 @@ Existing Godot and Concordia scaffolds must be preserved, not deleted, but they 
 
 ### 4. Current reserved design areas
 
-The six attributes (FIT, REF, INT, CHA, CYB, PSY), ordinary-human 3d6 generation, core 3d6 checks, canonical difficulties, opposed comparison, unskilled -1, trained-only blocking, the skill list, the level-0..4 trained skill scale, and the human-user cyberspace situational modifier framework (BCI, Compute, Connection, Infosec defence) are now author-specified in RULEBOOK.md. Agents must preserve them exactly.
+The six attributes (FIT, REF, INT, CHA, CYB, PSY), ordinary-human 3d6 attribute generation, the CWN-derived **2d6 skill-check engine**, CWN-style skill-check difficulties, opposed skill checks with player-character tie priority, unskilled -1 / trained-only blocking, the skill list, and the level-0..4 trained skill scale are now author-specified in RULEBOOK.md. Agents must preserve them exactly.
 
-**The skill list, skill levels, and the cyberspace modifiers are tabletop-first and not yet ported.** They are canonical tabletop rules stated in `RULEBOOK.md` only — §5.3 and §12.1. Do not add them to `data/rules/core.json`, and do not implement them in Godot or Concordia, until a separate task ports them after the tabletop rules are stable. Until then a digital runtime must not invent its own representation of either.
+**The current skill list, level-0..4 scale, and 2d6 skill-check engine are tabletop-first.** The existing digital runtime still contains the superseded 3d6 check engine and old difficulty ladder. Treat that as explicit porting debt, not as competing canon. Do not partially port #25 into one runtime; a later task must derive the shared digital specification and update Godot and Concordia consistently.
+
+The earlier issue #17 BCI / Compute / Connection / Infosec cyberspace modifier framework is **withdrawn from active canon**. Do not port it. Hacking / cyberspace is DEFERRED until a later CWN-based subsystem review.
 
 Until explicitly specified, do not define:
 - additional attributes or derived statistics
@@ -82,7 +84,7 @@ Until explicitly specified, do not define:
 - detailed geography
 - quests or canonical plot
 - social mechanics
-- hacking mechanics
+- hacking / cyberspace mechanics, including whether the withdrawn BCI / Compute / Connection / Infosec concepts return
 - vehicles
 - magic or supernatural systems
 - detailed simulation mechanics
@@ -225,9 +227,9 @@ When working on any subsystem that CWN also has:
 2. decide explicitly: **KEEP**, **MODIFY**, **REPLACE**, **OMIT**, or **DEFER**;
 3. when the decision is missing, leave it **DEFER** — do not assume CWN's version survives, and do not assume it is dropped.
 
-**NoöPunk decisions take precedence.** Existing author-specified NoöPunk rules are canonical and are not overridden by CWN defaults. Do not redesign them back toward CWN — in particular, the six attributes (FIT, REF, INT, CHA, CYB, PSY), the 3d6 ordinary-human generation, the −3..+3 ordinary-human modifier range, the 3d6 core resolution, the difficulty ladder, and the skill list and level-0..4 trained skill scale.
+**NoöPunk decisions take precedence.** Existing author-specified NoöPunk rules are canonical and are not overridden by CWN defaults. Current author decisions include the six attributes (FIT, REF, INT, CHA, CYB, PSY), 3d6 ordinary-human **attribute generation**, the −3..+3 ordinary-human modifier range, the CWN-derived **2d6 skill-check engine**, CWN-style skill-check difficulties, and the skill list and level-0..4 trained skill scale. Do not restore the superseded 3d6 skill-check engine or old difficulty ladder.
 
-Where CWN is the starting point for a subsystem, NoöPunk's modification of it is the rule. The skills subsystem is **MODIFY**: NoöPunk adopts the CWN level-0..4 structure and standard list, but unskilled stays outside the numbered levels (at -1 or blocked), Heal is renamed **Medical**, Know is renamed **Science**, and specialization is deferred.
+Where CWN is the starting point for a subsystem, NoöPunk's modification of it is the rule. The skills subsystem is **MODIFY**: NoöPunk adopts the CWN level-0..4 structure and standard list, but unskilled stays outside the numbered levels (at -1 or blocked), Heal is renamed **Medical**, Know is renamed **Science**, and specialization is deferred. The core skill-check subsystem is also **MODIFY**: NoöPunk adopts CWN's 2d6 + skill + attribute structure and difficulty ladder while retaining NoöPunk's six attributes and wider -3..+3 ordinary-human attribute range.
 
 **Source boundary.** Direct reuse is limited to material actually present in the Cities Without Number **SRD**. Do not import setting material, megacorps, NPCs, places, or events from the full CWN book. Do not copy protected text, setting material, terminology, or faction content from Cyberpunk 2020, Eclipse Phase, Shadowrun, The Sprawl, or CY_BORG: those are **design references only**. When unsure whether something is in the SRD, treat it as not in the SRD and write original wording.
 
