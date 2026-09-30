@@ -20,6 +20,13 @@ jobs:
         run: python tests/validate_scaffold.py
       - name: Check design-principles invariants
         run: python -m unittest discover -s tests -p "test_design_principles.py"
+      # test_world_ideology.py defines module-level test functions rather than
+      # TestCase classes, so `unittest discover` does NOT collect it (the pattern
+      # matches the file, but there are no TestCases inside to run). It carries
+      # its own runner. Without this step the whole data/world/ideology.json
+      # artifact is unguarded in CI -- the checks existed but never executed.
+      - name: Check world ideology model
+        run: python tests/test_world_ideology.py
       - name: Test shared rules and Concordia runtime
         run: python -m unittest discover -s tests -p "test_*.py"
       - name: Smoke-check neutral Concordia session
