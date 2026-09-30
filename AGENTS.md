@@ -4,6 +4,11 @@
 
 These rules are mandatory for coding and documentation agents working in this repository.
 
+**Design invariants.** NoöPunk has three core design balances, documented once in
+[`docs/DESIGN_PRINCIPLES.md`](docs/DESIGN_PRINCIPLES.md). They are project-level
+invariants and are restated as binding rules in §13 below. Read that document
+before changing rules, mechanics, or setting material.
+
 ### 1. Author intent is canon
 
 Do not invent NoöPunk rules, mechanics, lore, history, factions, technologies, metaphysics, organizations, locations, character classes, archetypes, species, NHI categories, psionic powers, skills, attributes, combat systems, progression systems, equipment lists, economies, or world events unless the author has explicitly specified them.
@@ -158,3 +163,25 @@ When implementing the Concordia runtime:
 - preserve the same tabletop ↔ Godot ↔ Concordia rule semantics wherever practical.
 
 The first Concordia implementation should be infrastructure only: runnable simulation plumbing, agent/GM interfaces, Ollama connection boundaries, optional human input, and empty world/rule hooks. Do not advance into substantive simulation design without a separate author task.
+
+### 13. Preserve the three design balances
+
+NoöPunk's canonical design invariants are documented once in [`docs/DESIGN_PRINCIPLES.md`](docs/DESIGN_PRINCIPLES.md). Every contributing agent must preserve them:
+
+1. Preserve the **Gamism / Narrativism / Simulationism balance**.
+2. Use **CY_BORG** (Gamism), **Cyberpunk 2020** (Simulationism), and **The Sprawl** (Narrativism) as the canonical reference poles.
+3. Preserve **rules/mechanics parity** between Tabletop, Godot and Concordia wherever possible.
+4. Allow scenarios and medium-specific presentation to diverge.
+5. Preserve the **Cyberpunk / Noösphere balance**.
+6. Treat **UFO Disclosure, Psionics and Panpsychism** as the defining Noösphere paradigm shifts.
+7. Treat **Shadowrun** and **Eclipse Phase** as comparative influences, not templates to copy.
+8. Do not silently redesign these balances. If an implementation requires a departure, document the reason explicitly.
+
+Practical consequences:
+
+- Prefer noösphere content that stays science-fictional, philosophical and speculative; do not let it become generic fantasy magic.
+- Do not let one creative agenda become the default that overwhelms the other two, and do not add mechanics that only serve one of them.
+- A scenario, mission, map, or presentation difference between Tabletop, Godot and Concordia is expected and permitted. A **rules** difference is a defect: extract a shared specification rather than fork the rule.
+- Where a shared specification already exists (for example `data/rules/core.json` over `src/rules/core.py`), consume it rather than re-declaring the same values in a second runtime.
+
+`tests/test_design_principles.py` fails the build if these invariants, the canonical document, or the documents that reference it drift out of agreement.

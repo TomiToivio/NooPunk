@@ -50,14 +50,22 @@ Reserved for author-defined simulation parameters and data.
 
 The long-term goal is for the tabletop RPG and Godot RPG to share the same conceptual rules.
 
-When rules are eventually specified:
+The core resolution mechanic and the six canonical attributes are now specified. The contract they follow:
 
 1. `RULEBOOK.md` remains the human-readable rules reference.
-2. Engine-independent rule concepts should live in `src/rules/` and/or `data/rules/`.
-3. Godot scenes and UI should consume those concepts through adapters rather than redefine them.
-4. World content and simulation logic should remain separate from presentation code.
+2. The canonical constants live once in `data/rules/core_rules.json`, generated from the shared Python layer in `src/rules/core_rules.py`.
+3. The Godot runtime reads that data through `src/rules/core_rules.gd`; scenes and UI should consume those concepts through adapters rather than redefine them.
+4. World content and simulation logic remain separate from presentation code.
+5. Nothing outside the specified mechanic and attributes may be added without explicit author instruction.
 
-This is an architectural direction, not a current rules implementation.
+### Parity and permitted divergence
+
+NoöPunk's design principles require **the same world, same rules, same mechanics** across Tabletop, Godot, and Concordia (see [`DESIGN_PRINCIPLES.md`](DESIGN_PRINCIPLES.md) §2). For this runtime that means:
+
+- **Shared (must not diverge):** attributes, skills, dice/probability model, combat, hacking, psionics, cybernetics, progression, equipment logic, world assumptions, terminology, and core balance values.
+- **May diverge:** scenarios, missions, maps, encounters, presentation, UI, pacing, procedural generation, and implementation details required by the medium.
+
+A presentation difference between the tabletop and Godot versions of a scenario is expected. A **rule** difference is a defect: extract or extend the shared specification rather than forking the rule in GDScript.
 
 ## Intentionally undefined
 

@@ -18,17 +18,32 @@ NoöPunk combines several layers:
 
 These inspirations are not presented here as proof that the speculative claims are established science. They are inputs to the setting and simulation.
 
+Three of these are the setting's **defining Noösphere paradigm shifts**: UFO / UAP Disclosure, Psionics, and Panpsychism. They are what replaces the urban-fantasy layer of a Shadowrun-like setting, and they must stay science-fictional rather than becoming generic fantasy magic.
+
+## Design principles
+
+NoöPunk is built on **three design balances** that are project-level invariants, not loose inspirations:
+
+1. **Gamism / Narrativism / Simulationism** — anchored on **CY_BORG** (challenge), **Cyberpunk 2020** (reality), and **The Sprawl** (story). No pole may overwhelm the others.
+2. **Tabletop / Godot / Concordia** — one RPG with three runtimes: same world, same rules, same mechanics wherever possible. Scenarios and presentation may diverge.
+3. **Cyberpunk / Noösphere** — neither half swallows the other. The cyberpunk side grows from plausible near-future technology; the Noösphere rests on UFO / UAP Disclosure, Psionics, and Panpsychism.
+
+> **CY_BORG for challenge. Cyberpunk 2020 for reality. The Sprawl for story.**
+
+The canonical explanation is [docs/DESIGN_PRINCIPLES.md](docs/DESIGN_PRINCIPLES.md); the binding agent rules are [AGENTS.md](AGENTS.md) §13. Nothing here should restate that document in detail.
+
 ## Genre and influences
 
 NoöPunk keeps the technological, political, urban, and economic core of old-school cyberpunk.
 
 Major RPG influences include:
 
-- **Cyberpunk 2013 / 2020 / RED**
-- **Shadowrun**
-- **Eclipse Phase**
+- **Cyberpunk 2013 / 2020 / RED** — the Simulationism reference (`Cyberpunk 2020`)
+- **CY_BORG** — the Gamism reference
+- **The Sprawl** — the Narrativism reference
+- **Shadowrun** and **Eclipse Phase** — comparative influences, not templates
 
-A rough analogy is **Shadowrun with the cyberpunk left as cyberpunk, while the urban-fantasy layer is replaced by the Noösphere, NHI, psionics, and consciousness-fundamental metaphysics**.
+A rough analogy is **Shadowrun with the cyberpunk left as cyberpunk, while the urban-fantasy layer is replaced by the Noösphere, NHI, psionics, and consciousness-fundamental metaphysics**. Unlike Shadowrun, the anomalous layer comes from UFO / UAP Disclosure, psionics, and panpsychism rather than fantasy races and magic. Eclipse Phase is the closest comparison where cyberpunk and anomalous / posthuman themes meet.
 
 Other important tonal influences include **Philip K. Dick** and 1970s space psychedelia, including **Hawkwind**. The intended result is simultaneously near-future and retrocyberpunk: recognizably descended from the world of 2026, but filtered through older visions of technological futures.
 
