@@ -1,6 +1,22 @@
 # Cities Without Number SRD as NoöPunk's open mechanical chassis
 
-> **Status:** author-specified design policy (issue #19).
+> **⚠️ SUPERSEDED DIRECTION (author, issue #32, 2026-10-01).** NoöPunk no longer
+> treats any existing game, including the Cities Without Number SRD, as its
+> mechanical chassis. The project is backtracking to an **original rules system**
+> grown from four Luhmannian systems — Social / Physical / Psychic / Cybernetic.
+> See [`RULES_RESET_MEMO.md`](RULES_RESET_MEMO.md).
+>
+> This document is **retained for reference and licensing clarity** (the SRD/CC0
+> legal boundary below still applies to any material already derived from the
+> SRD). It is **no longer the roadmap for new rules work**.
+>
+> **Unresolved with the author:** CWN-as-chassis is currently also a *build-enforced
+> project invariant* in `AGENTS.md` §4/§13/§15 and `DESIGN_PRINCIPLES.md` §9. That
+> invariant is in direct tension with #32 and must be revised by the author; until
+> then this document records the new direction without deleting the old policy.
+
+> **Status:** author-specified design policy (issue #19); superseded in direction
+> by issue #32 — see the header above.
 >
 > This file is the **single canonical explanation** of how NoöPunk relates to the
 > Cities Without Number SRD. Other documents should *reference* it rather than

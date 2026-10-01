@@ -38,17 +38,33 @@ The canonical explanation is [docs/DESIGN_PRINCIPLES.md](docs/DESIGN_PRINCIPLES.
 
 NoöPunk keeps the technological, political, urban, and economic core of old-school cyberpunk.
 
-NoöPunk's **open mechanical chassis** is the **[Cities Without Number SRD](https://cwn.quadrifons.com/)** (public domain). NoöPunk starts from that SRD, then goes through the system **subsystem by subsystem** and deliberately decides what to KEEP, MODIFY, REPLACE, OMIT, or DEFER. NoöPunk is **not** a CWN clone and is expected to diverge substantially from it. Existing NoöPunk author decisions take precedence over CWN defaults. See [docs/CWN_CHASSIS.md](docs/CWN_CHASSIS.md).
+## Rules direction
+
+> **Current direction (author, issue #32, 2026-10-01): NoöPunk is developing its
+> own original rules system.** The Cities Without Number inheritance has been
+> removed from the active design direction, and no existing RPG is being adopted as
+> a replacement chassis. The system is backtracking to first principles and growing
+> outward from **four Luhmannian systems**: **Social / Physical / Psychic /
+> Cybernetic**. See [docs/RULES_RESET_MEMO.md](docs/RULES_RESET_MEMO.md).
+
+The reset is deliberately slow, and most of the game is still unspecified. The
+rules currently *in force* (the six attributes and the skill/check system in
+[RULEBOOK.md](RULEBOOK.md)) are retained until the author revises them; the reset
+changes where new rules grow from, not what exists today.
+
+NoöPunk's earlier **open mechanical chassis** was the **[Cities Without Number SRD](https://cwn.quadrifons.com/)** (public domain): the project started from that SRD and reviewed it subsystem by subsystem with an explicit KEEP, MODIFY, REPLACE, OMIT, or DEFER decision at each step. That policy is **superseded by #32** and is retained only for reference and licensing clarity — see [docs/CWN_CHASSIS.md](docs/CWN_CHASSIS.md).
+
+**Licensing still applies.** No protected material from any existing game — including the full Cities Without Number book, Cyberpunk 2020, Eclipse Phase, Shadowrun, The Sprawl, or CY_BORG — may be copied. Those games are design references only.
 
 Major RPG influences include:
 
-- **Cities Without Number SRD** — the open mechanical chassis and main starting point
+- **Cities Without Number SRD** — *formerly* the open mechanical chassis; superseded by #32 and retained as a reference only
 - **Cyberpunk 2013 / 2020 / RED** — the Simulationism reference (`Cyberpunk 2020`)
 - **CY_BORG** — the Gamism reference
 - **The Sprawl** — the Narrativism reference
 - **Shadowrun** and **Eclipse Phase** — comparative influences, not templates
 
-Only material actually present in the Cities Without Number **SRD** may be directly reused. Protected material from the full CWN book, and protected text or setting material from Cyberpunk 2020, Eclipse Phase, Shadowrun, The Sprawl, or CY_BORG, must not be copied. Those games are design references only.
+No protected material from any existing game — including the full Cities Without Number book, Cyberpunk 2020, Eclipse Phase, Shadowrun, The Sprawl, or CY_BORG — may be copied. Those games are design references only.
 
 A rough analogy is **Shadowrun with the cyberpunk left as cyberpunk, while the urban-fantasy layer is replaced by the Noösphere, NHI, psionics, and consciousness-fundamental metaphysics**. Unlike Shadowrun, the anomalous layer comes from UFO / UAP Disclosure, psionics, and panpsychism rather than fantasy races and magic. Eclipse Phase is the closest comparison where cyberpunk and anomalous / posthuman themes meet.
 

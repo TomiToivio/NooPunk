@@ -1,5 +1,20 @@
 # NoöPunk Rulebook
 
+> **⚠️ STATUS — SUPERSEDED DIRECTION (author, issue #32, 2026-10-01).**
+>
+> NoöPunk is **backtracking to an original rules system** grown from four
+> Luhmannian systems (Social / Physical / Psychic / Cybernetic). The
+> **Cities Without Number** inheritance — its chassis role, terminology,
+> stat structures, skill structures and balance logic — is **removed from the
+> active design direction**. See [`docs/RULES_RESET_MEMO.md`](RULES_RESET_MEMO.md)
+> and [`docs/CWN_CHASSIS.md`](CWN_CHASSIS.md).
+>
+> **Nothing in this document is deleted, and sections 4–5 (the six attributes,
+> the 2d6 skill check, the skill list and levels) remain the rules currently in
+> force** until the author revises them. This header records a *direction*, not a
+> new ruleset. The reset is a deliberate backtrack: do not build new rules on the
+> CWN-derived sections, and do not fill any unresolved section by inference.
+
 > **Status:** foundation / intentionally incomplete.
 >
 > This document is the **canonical design source for NoöPunk game rules**. The tabletop RPG is designed and stabilized here first; Godot and Concordia are later ports of stable tabletop systems. Undefined sections are reserved for later author specification. Do not fill them automatically from genre conventions or other RPG systems.
