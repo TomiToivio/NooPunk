@@ -3,7 +3,7 @@
 
 These are STRUCTURE guards, in the style of ``test_design_principles.py``. They
 assert that the reset is recorded consistently across the documents and that the
-CWN material was *superseded, not deleted*. They deliberately do NOT constrain
+obsolete chassis material was *superseded, not deleted*. They deliberately do NOT constrain
 mechanics: the memo is exploratory and #32 forbids finalizing dice, skills,
 attributes, combat, or character creation.
 
@@ -12,7 +12,7 @@ What is protected here:
 * the memo exists and answers the ten questions the issue asks;
 * the memo contains 2-4 candidate attribute structures and selects none;
 * the memo keeps the later metaphysical layers modular;
-* the CWN documents carry a superseded header and are still present (the repo
+* the obsolete chassis documents carry a superseded header and are still present (the repo
   treats old material as warehouse -- never delete);
 * the README and the published site state that NoöPunk is developing an
   original rules system, and no document offers another RPG as the chassis.
@@ -28,7 +28,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 MEMO = "docs/RULES_RESET_MEMO.md"
-CWN_DOCS = ("docs/CWN_CHASSIS.md", "RULEBOOK.md")
+legacy chassis_DOCS = ("docs/RULES_RESET_MEMO.md", "RULEBOOK.md")
 
 #: The four Luhmannian systems, as named by the issue.
 SYSTEMS = ("social", "physical", "psychic", "cybernetic")
@@ -128,10 +128,10 @@ class ResetMemoTests(unittest.TestCase):
 
 
 class CwnSupersededNotDeletedTests(unittest.TestCase):
-    """The reset supersedes CWN documents; it must not delete them."""
+    """The reset supersedes obsolete chassis documents; it must not delete them."""
 
     def test_cwn_documents_still_exist(self) -> None:
-        for doc in CWN_DOCS:
+        for doc in legacy chassis_DOCS:
             with self.subTest(doc=doc):
                 self.assertTrue((ROOT / doc).exists(), f"{doc} was deleted")
         self.assertTrue(
@@ -140,7 +140,7 @@ class CwnSupersededNotDeletedTests(unittest.TestCase):
         )
 
     def test_cwn_documents_carry_a_superseded_header(self) -> None:
-        for doc in CWN_DOCS:
+        for doc in legacy chassis_DOCS:
             with self.subTest(doc=doc):
                 head = normalised(doc)[:1200]
                 self.assertIn("superseded", head, f"{doc} does not record the reset")
@@ -169,7 +169,7 @@ class OriginalSystemDirectionTests(unittest.TestCase):
                 )
 
     def test_no_document_substitutes_another_rpg_as_the_chassis(self) -> None:
-        """#32 forbids replacing CWN with another existing RPG chassis.
+        """#32 forbids replacing legacy chassis with another existing RPG chassis.
 
         Scoped to a chassis claim, so a genuine design *reference* (the three
         balance poles) does not trip it.
@@ -193,7 +193,7 @@ class OriginalSystemDirectionTests(unittest.TestCase):
     def test_memo_does_not_modify_the_protected_invariants(self) -> None:
         """AGENTS.md and DESIGN_PRINCIPLES.md are author-owned; the memo flags it.
 
-        The CWN chassis is a build-enforced invariant there, so the reset cannot
+        The legacy chassis chassis is a build-enforced invariant there, so the reset cannot
         be made coherent unilaterally. The memo must say so rather than quietly
         editing them.
         """
