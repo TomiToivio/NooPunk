@@ -54,6 +54,19 @@ A rough analogy is **Shadowrun with the cyberpunk left as cyberpunk, while the u
 
 Other important tonal influences include **Philip K. Dick** and 1970s space psychedelia, including **Hawkwind**. The intended result is simultaneously near-future and retrocyberpunk: recognizably descended from the world of 2026, but filtered through older visions of technological futures.
 
+## Kindred NoöPunks
+
+NoöPunk is bigger than this repository. Independent writers and researchers have arrived at strikingly similar territory under the same name, and this project treats them as **kindred branches of a shared NoöPunk constellation**, not as rival definitions.
+
+- **[Exeunt — “Noöpunk: Toward Economic Experiments with the Carnival of Minds”](https://paragraph.com/@exeunt/no-punk)** develops Noöpunk as an aesthetic and experimental practice of **distributed cognition, nested and entangled minds, cybernetics, cognitive assemblages, nonhuman intelligence, biosemiotics, open networks and plural forms of agency**. Exeunt later presented this line publicly as **“Underground Cybernetics: Noöpunk Experiments in Distributed Intelligence”** at the American Society for Cybernetics.
+- **[Vudú Postcapitalista / #noopunk](https://noopunk.wordpress.com/)** develops NooPunk through **distributed intelligence, posthuman subjectivity, machinic assemblages, Deleuze and Guattari, mycelial semiotics, AI, speculative ontology, theory-fiction and experimental technological culture**.
+
+These currents meet this NoöPunk project on the same conceptual terrain: minds are not cleanly bounded individuals; intelligence can emerge through relations among humans, machines, organisms, infrastructures, languages, networks and environments; cyberpunk's human/machine boundary opens into a wider ecology of cognition; and the punk move is to explore these assemblages experimentally rather than accept inherited categories of mind, agency, technology or reality.
+
+This repository therefore uses **NoöPunk as an open umbrella and meeting point** for these converging ideas. Exeunt's carnival of minds, underground cybernetics and diverse intelligence, the #noopunk work on machinic and mycelial cognition, and this project's Noösphere + Cyberpunk RPG/simulation can be read as parts of the same expanding NoöPunk world.
+
+Shoutout and respect to the other NoöPunks. 🧠🌐
+
 ## Time and scenario
 
 The setting uses dates written as **20XX**.
@@ -118,7 +131,6 @@ The rule is simple: **design the tabletop game first; implement the software sec
 
 Existing Godot and Concordia code is not discarded. It remains preserved infrastructure and later-stage implementation material.
 
-
 ## Godot scaffold
 
 A minimal **Godot 4** project now lives in this repository.
@@ -140,7 +152,6 @@ python tests/validate_scaffold.py
 ```
 
 Future mechanics and worldbuilding must continue to follow [AGENTS.md](AGENTS.md) and be specified incrementally in [RULEBOOK.md](RULEBOOK.md).
-
 
 ## Concordia scaffold
 
