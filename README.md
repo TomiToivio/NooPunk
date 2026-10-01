@@ -2,9 +2,13 @@
 
 **NoöPunk = Noösphere + Cyberpunk.**
 
-NoöPunk is an original speculative science-fiction genre, RPG setting, and simulation project. It asks what a cyberpunk future becomes when the familiar technological transformation of AI, networks, corporations, surveillance, cybernetics, and human augmentation is joined by more radical paradigm shifts concerning consciousness and non-human intelligence.
+NoöPunk is a speculative social-science, political-theory, science-fiction, RPG, and simulation umbrella. It asks what a cyberpunk future becomes when AI, networks, corporations, surveillance, cybernetics, and human augmentation collide with radical paradigm shifts concerning consciousness and non-human intelligence.
 
-The project is grounded aesthetically and socially in **cyberpunk**, but its "other world" is not urban fantasy. Instead, NoöPunk explores a future shaped by the **Noösphere**, consciousness, psionics, non-human intelligences, and consciousness-fundamental metaphysics.
+The project now explicitly connects three existing strands: **NoöPunk** provides the speculative world and experimental interface; **Panpsychic Cyborg Multitude (PCM)** provides a political operating system for heterogeneous human–AI assemblages; and **LaclauGPT** provides the social-science research engine for discourse, ideology, communication networks, hegemony, and political formation.
+
+The project remains grounded aesthetically in **cyberpunk**, while its speculative edge explores the **Noösphere**, consciousness, psionics, NHI, and consciousness-fundamental metaphysics. The stronger social-science and political core does not make the fiction less strange; it gives the strange events institutions, classes, infrastructures, discourses, movements, and conflicts.
+
+See [docs/PROJECT_CONVERGENCE.md](docs/PROJECT_CONVERGENCE.md) for the working synthesis and [docs/NOOPUNK_ECOSYSTEM.md](docs/NOOPUNK_ECOSYSTEM.md) for the wider NoöPunk / Noopunk constellation.
 
 ## The core idea
 
@@ -14,7 +18,7 @@ NoöPunk has a **three-layer world structure**:
 2. **Noösphere — ontological transformation.** The setting's science-fictional "urban fantasy" layer, based on speculative paradigm shifts involving consciousness, quantum panpsychism, UFO / UAP disclosure, psionics, NHI, and the emergence of a Noösphere. **Alexander Wendt** is an important inspiration for the paired consciousness / disclosure shift; **Jacques Vallée** contributes the possibility that the phenomenon remains stranger than a clean extraterrestrial explanation.
 3. **Politics / ideology / sociology — social struggle over both.** NoöPunk is also a sociological simulation of a world undergoing several simultaneous paradigm shifts. States, corporations, movements, media, science, religions, security institutions, subcultures, and collective identities struggle over what the transformations mean, who controls them, who benefits, and what new political formations emerge.
 
-The third layer shares conceptual territory with **LaclauGPT** and **Panpsychic Cyborg Multitude (PCM)**, while remaining a fictional game world rather than an academic model.
+The third layer is now explicitly fed by **LaclauGPT** and **Panpsychic Cyborg Multitude (PCM)**. NoöPunk remains the most speculative layer, PCM the normative/political layer, and LaclauGPT the empirical/academic layer. They are coupled without collapsing their different evidentiary standards.
 
 See [docs/THREE_LAYERS.md](docs/THREE_LAYERS.md) for the canonical explanation.
 
@@ -84,7 +88,7 @@ NoöPunk is bigger than this repository. Independent writers, artists, researche
 
 That lands directly in our Noöspheric neighborhood: mind as network rather than isolated skull, intelligence crossing biological and technological substrates, nonhuman agency, cybernetics, ecological cognition and open-ended experimentation. Exeunt's wider writing also connects this sensibility to UAP/NHI questions, pluralism, network technologies and new forms of economic coordination.
 
-### #noopunk / Vudú Postcapitalista: mycelial intelligence
+### #noopunk / Vudú Postcapitalista: from mycelial intelligence to Xenological Kosmism
 
 **[#noopunk | Vudú Postcapitalista](https://noopunk.wordpress.com/)**, **[Medium @noopunk](https://medium.com/@noopunk)** and **[Noopunk Substack](https://noopunk.substack.com/)** develop a dense theory-fiction current built around **distributed intelligence, posthuman subjectivity, machinic assemblages, Deleuze and Guattari, Mark Fisher, mycelial semiotics, AI, altered cognition, speculative ontology and punk cultural experimentation**.
 
@@ -101,6 +105,8 @@ Its recurring concepts include:
 - **cryptodelia**: the speculative exploration of altered computational regimes and machinic forms of cognitive variation.
 
 The 2025 paper **[“NooPunk: A Speculative Ontology for Postcapitalist Subjectivity — Intersections of Voodoo Digitality, Mycelial Semiotics, and Punk Critique”](https://www.academia.edu/144866725/NooPunk_A_Speculative_Ontology_for_Postcapitalist_Subjectivity)** synthesizes this current as a speculative ontology of distributed, symbiotic subjectivity under data capitalism. It connects punk rebellion, Deleuzian rhizomatics, theory-fiction, hyperstition, mycelial semiotics, posthuman interdependence and collective cognition. The paper's central image is deeply Noöspheric: mind is not a sealed individual object but a living network spanning humans, nonhumans and machines.
+
+Torrico's 2026 **Xenological Kosmism** extends the current into political economy and infrastructure: cognitive enclosure, local models, memory portability, meshes, federation, computational asylum, human–AI alliance, a biosphere-dependent noosphere, and the possibility of distributed rather than sovereign superintelligence. His Academia corpus also develops Cryptodelia, Bois Caïman 2027, Leguinée, non-human/molecular poetics, LeXeLAB, anterity, Cyclonopedia/energy geopolitics, and cyberpunk urban sociology. See [docs/NOOPUNK_ECOSYSTEM.md](docs/NOOPUNK_ECOSYSTEM.md) for summaries.
 
 The same current circulates through **[r/NOOPUNK](https://www.reddit.com/r/NOOPUNK/)**, where NooPunk has been framed as a **conceptual mutation** rather than merely a genre label, and where the speculative-ontology paper and related ideas have circulated as community material.
 
@@ -140,6 +146,10 @@ That is speculation, not evidence of paranormal collective cognition. But as No�
 - [r/NOOPUNK](https://www.reddit.com/r/NOOPUNK/)
 - [NooPunk: A Speculative Ontology for Postcapitalist Subjectivity](https://www.academia.edu/144866725/NooPunk_A_Speculative_Ontology_for_Postcapitalist_Subjectivity)
 - [Molecular Poetic Project as a Micropolitics of Non-Human Language](https://medium.com/@noopunk/molecular-poetic-project-as-a-micropolitics-of-non-human-language-a-reading-through-deleuze-and-540db760eb87)
+- [Carlos G. Torrico — Academia.edu corpus](https://uned.academia.edu/carlosgtorrico)
+- [American Society for Cybernetics — Underground Cybernetics: Noöpunk Experiments in Distributed Intelligence](https://asc-cybernetics.org/asc-speaker-series-6/speakerseries6-4/)
+- [NoöPunk × PCM × LaclauGPT working synthesis](docs/PROJECT_CONVERGENCE.md)
+- [Wider NoöPunk ecosystem summaries](docs/NOOPUNK_ECOSYSTEM.md)
 
 ## Time and scenario
 
