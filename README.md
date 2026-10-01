@@ -8,7 +8,11 @@
 
 NoöPunk is a speculative social-science, political-theory, science-fiction, RPG, and simulation umbrella. It asks what a cyberpunk future becomes when AI, networks, corporations, surveillance, cybernetics, and human augmentation collide with radical paradigm shifts concerning consciousness and non-human intelligence.
 
-The project now explicitly connects three existing strands: **NoöPunk** provides the speculative world and experimental interface; **Panpsychic Cyborg Multitude (PCM)** provides a political operating system for heterogeneous human–AI assemblages; and **LaclauGPT** provides the social-science research engine for discourse, ideology, communication networks, hegemony, and political formation.
+The project now explicitly connects three existing strands: **NoöPunk** provides the speculative world, RPG, and simulation layer; **[Panpsychic Cyborg Multitude (PCM)](https://github.com/TomiToivio/Panpsychic_Cyborg_Multitude/blob/main/docs/PANPSYCHIC_CYBORG_MULTITUDE.md)** provides the **political operating system** for heterogeneous human–AI assemblages; and **[LaclauGPT](https://github.com/TomiToivio/LaclauGPT/blob/main/paper/PHASE_1_PAPER.md)** provides the **social-science / social-data-science version of NoöPunk**: discourse, ideology, communication networks, hegemony, political formation, computational social science, and empirical analysis.
+
+Another way to put it: **NoöPunk is the simulation and science-fiction version of PCM + LaclauGPT.** PCM asks how heterogeneous human–AI assemblages might organize politically; LaclauGPT studies how meanings, identities, networks, and hegemonies form in actual social data; NoöPunk turns those questions into worlds, scenarios, RPG mechanics, and agent-based simulations.
+
+Ideas from **LaclauGPT and PCM will increasingly be added directly to the NoöPunk RPG and simulation**: factions, institutions, discourse formation, network power, commons, AI rights, governance, collective agency, ideology, and political economy should become part of how the setting works, not just external references.
 
 The project remains grounded aesthetically in **cyberpunk**, while its speculative edge explores the **Noösphere**, consciousness, psionics, NHI, and consciousness-fundamental metaphysics. The stronger social-science and political core does not make the fiction less strange; it gives the strange events institutions, classes, infrastructures, discourses, movements, and conflicts.
 
