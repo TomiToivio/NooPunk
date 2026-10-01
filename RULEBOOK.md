@@ -153,6 +153,41 @@ This four-group division is canonical. It is the first application of the rulebo
 
 The exact individual statistics contained within these four groups are **not yet finalized**. The six attributes below are retained temporarily as legacy/currently implemented values while the original NoöPunk system is redesigned; they must not be treated as the final four-group architecture.
 
+### Theoretical architecture of the four groups
+
+This subsection states *why* the four groups exist and where NoöPunk departs from its source. It is the theoretical treatment required by section 18.2; it defines no statistics and creates no mechanics. The full source registry entry is in [`docs/THEORETICAL_SOURCES.md`](docs/THEORETICAL_SOURCES.md#luhmannian-four-system-character-architecture). It is unnumbered so that the legacy-attribute subsections below keep their existing numbers.
+
+**Source.** Baraldi, Corsi, Esposito & Walker, *Unlocking Luhmann* (2021). Luhmann does not describe a human being as one undifferentiated unit. He distinguishes operationally closed systems on the basis of what they reproduce: living systems reproduce life, psychic systems reproduce thoughts, social systems reproduce communication. Each is **autopoietic** — it produces its own operations in its own medium — and none can perform another's operations. A social system in particular is constituted by **communication**, not by the people in it, and emerges from the problem of **double contingency**.
+
+**NoöPunk's reading.** A character can be read as participating simultaneously in living, psychic and social systems. The rulebook's four groups are the game-design translation of that distinction, one group per domain of participation.
+
+**Our extension.** NoöPunk adds **Cybernetic** as a fourth domain. The design hypothesis is that Luhmann had no reason to treat machine systems as a comparable autopoietic domain because the technology of his time was not autonomous enough to be one; in **20XX**, networked computation, autonomous software and machine-to-machine communication are imagined as behaving enough like an operational domain of their own to be modelled beside the other three. This is a **NoöPunk extension and is not attributed to Luhmann**.
+
+**Where NoöPunk disagrees.** Although the four-group division follows Luhmann's distinctions, NoöPunk does **not** adopt a clean separation of the systems as an ontological truth. The setting treats the psychic, physical, social and cybernetic domains as continuously **entangled** — coupled, interpenetrating and mutually constitutive. Their separation is an *analytical* device that earns its place because it makes the rules legible; it is not a claim that the systems are actually separate in the fiction. The disagreement is recorded here rather than left implicit.
+
+**Nested participation.** Each group also names a larger system the character participates in, and the four nested systems are not equally well established:
+
+| Group | The character participates in | Status of the claim |
+|---|---|---|
+| Physical | the **biosphere** and physical spacetime | ordinary setting premise |
+| Social | wider systems of **social communication**, especially language-mediated communication | ordinary setting premise |
+| Cybernetic | **cyberspace**, the Internet and machine networks | ordinary setting premise for 20XX |
+| Psychic | a larger **conscious field** / quantum-information substrate | **speculative setting metaphysics** |
+
+Only the last row is metaphysical. It is stated as a premise of the setting, not as an established result of physics or neuroscience.
+
+**Psychic as fundamental.** The four groups are **not** ontologically equal. NoöPunk is ultimately a panpsychic / idealist science-fantasy setting, and its metaphysical direction is that the **Psychic** domain is fundamental while the other domains arise from, are embedded in, or are expressions of a deeper conscious/informational reality. The working speculative concept is **Quantum Information Panpsychism**: an ultimate substrate that can be imagined as something like a universal conscious quantum-information system. This belongs to **NoöPunk setting metaphysics**. It is not settled physics, and it carries no mechanics here — grounding it in specific sources (panpsychism, idealism, Donald Hoffman, quantum-information interpretations) is later work.
+
+**Why "Physical".** The category is named **Physical** rather than "biological" or "living" as a deliberate **game-design simplification** of Luhmann's living-system category. It is the player-facing term, and it covers both the human organism as a living biological subsystem of the biosphere and the character's embodiment and location in physical spacetime.
+
+**Cybernetic is a domain, not a programming skill.** The group records that in NoöPunk humans have **always been cyborgs in a broad sense** — extending themselves through tools, media, writing, machines, networks and computation. In 20XX that extension becomes deep enough that the cybernetic subsystem deserves equal standing with the physical, social and psychic domains. It therefore represents participation in machine and network systems and must **not** be reduced to "computer skill" or to a cyberware statistic.
+
+**Social is a domain, not charisma.** The group represents participation in **communication systems**. Language, institutions, discourse, organizations, collective meaning and communication networks belong here. It is not a measure of personality, attractiveness or force of character, and social conflict is not combat with different words.
+
+**Extended, not sealed.** Taken together, the four groups describe a human character who is not a sealed individual unit but an **extended, coupled entity** distributed across a body/biosphere/spacetime, a consciousness, communication networks and technological networks. This connects the character model to extended-mind and distributed-cognition thinking; those literatures are later sources, not yet cited entries in the registry.
+
+**Mechanical consequence.** The only mechanical consequence specified so far is the **four-group division itself**. The individual statistics inside each group, their scales, dice mechanics, coupling rules and derived values remain unspecified, and this subsection does not invent them.
+
 ### 5.1 Legacy/current attributes pending four-group redesign
 
 The canonical attributes are:
