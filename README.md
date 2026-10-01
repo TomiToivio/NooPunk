@@ -34,6 +34,10 @@ NoöPunk is built on **three design balances** that are project-level invariants
 
 The canonical explanation is [docs/DESIGN_PRINCIPLES.md](docs/DESIGN_PRINCIPLES.md); the binding agent rules are [AGENTS.md](AGENTS.md) §13. Nothing here should restate that document in detail.
 
+### Theoretical grounding
+
+Every canonical rule is expected to have an explicit theoretical source, model, or research tradition behind it, recorded in [docs/THEORETICAL_SOURCES.md](docs/THEORETICAL_SOURCES.md). The registry states, per entry, what the source actually argues, what NoöPunk interprets or extends, where NoöPunk deliberately disagrees, and the concrete mechanical consequence. The first entry is the four-group character architecture (Physical / Social / Psychic / Cybernetic) in [RULEBOOK.md](RULEBOOK.md) §5.
+
 ## Genre and influences
 
 NoöPunk keeps the technological, political, urban, and economic core of old-school cyberpunk.

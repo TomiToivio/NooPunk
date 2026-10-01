@@ -59,6 +59,18 @@ def _flat(path: Path) -> str:
     return " ".join(_text(path).replace("*", "").split()).lower()
 
 
+def _rulebook_section(number: str, next_number: str) -> str:
+    """Return a rulebook subsection by its number, not by its prose title.
+
+    Matching a heading's *title* broke the build when the Luhmannian reset
+    renamed `### 5.1 Attributes` (issue #34). A section number is the stable
+    part; the title is author-facing text that the author is free to rewrite.
+    """
+    text = _text(RULEBOOK)
+    start = text.index(f"### {number} ")
+    return text[start:text.index(f"### {next_number} ")]
+
+
 class LicenceBoundaryTests(unittest.TestCase):
     """The legal line: reuse only what is actually in the SRD."""
 
@@ -214,8 +226,7 @@ class PrecedenceTests(unittest.TestCase):
         self.assertIn("do not redesign them back toward cwn", _flat(AGENTS))
 
     def test_six_attributes_are_preserved(self) -> None:
-        text = _text(RULEBOOK)
-        section = text[text.index("### 5.1 Attributes"):text.index("### 5.2")]
+        section = _rulebook_section("5.1", "5.2")
         for code in ("**Fitness (FIT):**", "**Reflexes (REF):**", "**Intelligence (INT):**",
                      "**Charisma (CHA):**", "**Cybernetics (CYB):**", "**Psyche (PSY):**"):
             with self.subTest(attribute=code):
@@ -224,8 +235,7 @@ class PrecedenceTests(unittest.TestCase):
 
     def test_cwn_attribute_names_never_became_noopunk_attributes(self) -> None:
         """CWN names may appear only as a mapping, never as list entries."""
-        text = _text(RULEBOOK)
-        section = text[text.index("### 5.1 Attributes"):text.index("### 5.2")]
+        section = _rulebook_section("5.1", "5.2")
         for cwn_name in ("Strength", "Constitution", "Wisdom", "Dexterity"):
             with self.subTest(cwn_name=cwn_name):
                 self.assertNotRegex(
