@@ -72,16 +72,70 @@ Other important tonal influences include **Philip K. Dick** and 1970s space psyc
 
 ## Kindred NoöPunks
 
-NoöPunk is bigger than this repository. Independent writers and researchers have arrived at strikingly similar territory under the same name, and this project treats them as **kindred branches of a shared NoöPunk constellation**, not as rival definitions.
+NoöPunk is bigger than this repository. Independent writers, artists, researchers and online communities have arrived at strikingly similar territory under the same name. This project treats them as **kindred branches of one expanding NoöPunk constellation**. The point here is convergence, not ownership.
 
-- **[Exeunt — “Noöpunk: Toward Economic Experiments with the Carnival of Minds”](https://paragraph.com/@exeunt/no-punk)** develops Noöpunk as an aesthetic and experimental practice of **distributed cognition, nested and entangled minds, cybernetics, cognitive assemblages, nonhuman intelligence, biosemiotics, open networks and plural forms of agency**. Exeunt later presented this line publicly as **“Underground Cybernetics: Noöpunk Experiments in Distributed Intelligence”** at the American Society for Cybernetics.
-- **[Vudú Postcapitalista / #noopunk](https://noopunk.wordpress.com/)** develops NooPunk through **distributed intelligence, posthuman subjectivity, machinic assemblages, Deleuze and Guattari, mycelial semiotics, AI, speculative ontology, theory-fiction and experimental technological culture**.
+### Exeunt: the carnival of minds
 
-These currents meet this NoöPunk project on the same conceptual terrain: minds are not cleanly bounded individuals; intelligence can emerge through relations among humans, machines, organisms, infrastructures, languages, networks and environments; cyberpunk's human/machine boundary opens into a wider ecology of cognition; and the punk move is to explore these assemblages experimentally rather than accept inherited categories of mind, agency, technology or reality.
+**[Exeunt — “Noöpunk: Toward Economic Experiments with the Carnival of Minds”](https://paragraph.com/@exeunt/no-punk)** describes Noöpunk as a world of **nested and entangled cognitive assemblages**. Cognition is distributed across organisms, ecosystems, material processes and socio-technical networks. Its intellectual family includes distributed cognition, Varela and Maturana, Deleuze and Guattari, diverse intelligence, biosemiotics, nonhuman minds, experimental art and decentralized coordination.
 
-This repository therefore uses **NoöPunk as an open umbrella and meeting point** for these converging ideas. Exeunt's carnival of minds, underground cybernetics and diverse intelligence, the #noopunk work on machinic and mycelial cognition, and this project's Noösphere + Cyberpunk RPG/simulation can be read as parts of the same expanding NoöPunk world.
+That lands directly in our Noöspheric neighborhood: mind as network rather than isolated skull, intelligence crossing biological and technological substrates, nonhuman agency, cybernetics, ecological cognition and open-ended experimentation. Exeunt's wider writing also connects this sensibility to UAP/NHI questions, pluralism, network technologies and new forms of economic coordination.
 
-Shoutout and respect to the other NoöPunks. 🧠🌐
+### #noopunk / Vudú Postcapitalista: mycelial intelligence
+
+**[#noopunk | Vudú Postcapitalista](https://noopunk.wordpress.com/)**, **[Medium @noopunk](https://medium.com/@noopunk)** and **[Noopunk Substack](https://noopunk.substack.com/)** develop a dense theory-fiction current built around **distributed intelligence, posthuman subjectivity, machinic assemblages, Deleuze and Guattari, Mark Fisher, mycelial semiotics, AI, altered cognition, speculative ontology and punk cultural experimentation**.
+
+Its recurring concepts include:
+
+- **mycelial semiotics**: meaning propagates like spores through living networks rather than traveling as a fixed package;
+- **postcapitalist voodoo**: ritual and symbolic reappropriation as tools for collective agency and resistance;
+- **anterity**: imagined futures pressing back into the present through expectation, desire and collective action;
+- **isophrenia**: intentional voids in saturated informational environments that make room for new intensities;
+- **TekSuDŌ**: a philosophical martial art for displacing and reconstructing subjectivity;
+- **Ontogram / hyperstition**: conceptual devices where circulating fictions can reorganize social reality;
+- **Leguinée**: the urban periphery as a liminal archive of memory, migration, community and political possibility;
+- **molecular / non-human poetics**: language production distributed through humans, LLMs and other nonhuman agencies;
+- **cryptodelia**: the speculative exploration of altered computational regimes and machinic forms of cognitive variation.
+
+The 2025 paper **[“NooPunk: A Speculative Ontology for Postcapitalist Subjectivity — Intersections of Voodoo Digitality, Mycelial Semiotics, and Punk Critique”](https://www.academia.edu/144866725/NooPunk_A_Speculative_Ontology_for_Postcapitalist_Subjectivity)** synthesizes this current as a speculative ontology of distributed, symbiotic subjectivity under data capitalism. It connects punk rebellion, Deleuzian rhizomatics, theory-fiction, hyperstition, mycelial semiotics, posthuman interdependence and collective cognition. The paper's central image is deeply Noöspheric: mind is not a sealed individual object but a living network spanning humans, nonhumans and machines.
+
+The same current circulates through **[r/NOOPUNK](https://www.reddit.com/r/NOOPUNK/)**, where NooPunk has been framed as a **conceptual mutation** rather than merely a genre label, and where the speculative-ontology paper and related ideas have circulated as community material.
+
+### One constellation
+
+Across these NoöPunks, the shared signal is loud:
+
+- intelligence is relational, distributed and capable of appearing in many substrates;
+- humans, machines, organisms, languages, infrastructures and environments form cognitive assemblages;
+- cyberpunk's human/machine boundary opens into a wider ecology of minds;
+- the Noösphere is better understood as an emergent field of interacting intelligences than as a single centralized supermind;
+- punk means experimenting without waiting for inherited categories or institutions to grant permission;
+- theory, fiction, art, software, ritual, games and networks can all become laboratories for new forms of subjectivity and collective intelligence.
+
+This repository therefore uses **NoöPunk as an open umbrella, meeting point and invitation**. Exeunt's carnival of minds, the Vudú Postcapitalista mycelium, r/NOOPUNK, Medium/Substack Noopunk, and this project's Noösphere + Cyberpunk RPG/simulation are welcome nodes in the same strange network.
+
+### Did the Noösphere invent “NoöPunk” more than once?
+
+Maybe. 😄
+
+The sober explanation is convergent invention: once AI, distributed cognition, posthumanism, cyberpunk, network culture, consciousness research and nonhuman intelligence all become culturally salient at the same time, **NoöPunk** is an unusually natural word for several people to reach independently.
+
+The more NoöPunk explanation is that the concept behaves exactly like the thing it describes: a distributed idea finding several minds and media at once. Call it a **Noöspheric coincidence**, a memetic attractor, hyperstition, morphic cultural weather, or simply the Internet doing what a planetary nervous system does best.
+
+That is speculation, not evidence of paranormal collective cognition. But as NoöPunk mythology goes, it is almost suspiciously on-brand.
+
+**Shoutout and respect to every other NoöPunk node out there. If you are building under the name, you are part of the signal. 🧠🌐🍄⚡**
+
+### Sources / nodes to follow
+
+- [Exeunt — Noöpunk: Toward Economic Experiments with the Carnival of Minds](https://paragraph.com/@exeunt/no-punk)
+- [Exeunt publication](https://paragraph.com/@exeunt)
+- [#noopunk | Vudú Postcapitalista](https://noopunk.wordpress.com/)
+- [#noopunk archive](https://noopunk.wordpress.com/blog/)
+- [Medium @noopunk](https://medium.com/@noopunk)
+- [Noopunk Substack](https://noopunk.substack.com/)
+- [r/NOOPUNK](https://www.reddit.com/r/NOOPUNK/)
+- [NooPunk: A Speculative Ontology for Postcapitalist Subjectivity](https://www.academia.edu/144866725/NooPunk_A_Speculative_Ontology_for_Postcapitalist_Subjectivity)
+- [Molecular Poetic Project as a Micropolitics of Non-Human Language](https://medium.com/@noopunk/molecular-poetic-project-as-a-micropolitics-of-non-human-language-a-reading-through-deleuze-and-540db760eb87)
 
 ## Time and scenario
 
