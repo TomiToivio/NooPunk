@@ -79,6 +79,25 @@ class TheoreticalGroundingPrincipleTests(unittest.TestCase):
         self.assertIn("source", text)
         self.assertIn("noöpunk interpretation", text)
 
+    def test_design_principles_points_at_the_registry(self) -> None:
+        """#34 asks whether the design-principles doc should link the framework.
+
+        It should. `DESIGN_PRINCIPLES.md` names Panpsychism as one of the three
+        Noosphere paradigm shifts, so a reader there is one step away from the
+        speculative layer this issue grounds — and the invariant list is where a
+        contributor looks before changing rules. Without the link, the registry
+        is reachable only from the rulebook and the README.
+
+        The link is relative because the document lives in `docs/` alongside the
+        registry, so match the filename rather than the repo-relative path.
+        """
+        text = read("docs/DESIGN_PRINCIPLES.md")
+        self.assertIn(
+            "THEORETICAL_SOURCES.md", text,
+            "DESIGN_PRINCIPLES.md no longer links the source registry",
+        )
+        self.assertIn("canonical rule", " ".join(text.split()), "the link lost its rationale")
+
     def test_registry_separates_source_from_interpretation(self) -> None:
         """The issue requires the parts to be distinguishable, not blended."""
         text = flat(REGISTRY)

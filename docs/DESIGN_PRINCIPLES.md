@@ -233,3 +233,22 @@ mechanics, or text from either work, and do not silently import their assumption
 `AGENTS.md` carries the same list as binding agent rules. `tests/test_design_principles.py`
 enforces that this document, the agent rules, and the referring documents stay
 consistent, so the invariants cannot be dropped by accident.
+
+## 6. Where the theory lives
+
+These balances say what NoöPunk is trying to be. They are not the theoretical
+grounding of individual rules — that is recorded separately, per rule, in
+[`THEORETICAL_SOURCES.md`](THEORETICAL_SOURCES.md).
+
+`RULEBOOK.md` §18.2 states the requirement: **every canonical rule should have an
+explicit theoretical source, model, or research tradition behind it.** The
+registry carries one entry per grounded rule, and each entry separates what the
+source actually argues from NoöPunk's interpretation, from NoöPunk's own
+speculative or game-design extension, and from the concrete mechanical
+consequence.
+
+The first entry is the four-group character architecture in `RULEBOOK.md` §5
+(Physical / Social / Psychic / Cybernetic), grounded in Luhmannian systems theory.
+The paradigm shifts named in §3 above — in particular **Panpsychism** — are
+setting metaphysics and belong to that speculative layer; naming one as a design
+paradigm here does not make it an established result of physics or neuroscience.
