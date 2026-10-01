@@ -1,20 +1,11 @@
 # NoöPunk Rulebook
 
-> **⚠️ STATUS — SUPERSEDED DIRECTION (author, issue #32, 2026-10-01).**
+> **STATUS — ORIGINAL RULES RESET (author direction, 2026-10-01).**
 >
-> NoöPunk is **backtracking to an original rules system** grown from four
-> Luhmannian systems (Social / Physical / Psychic / Cybernetic). The
-> **Cities Without Number** inheritance — its chassis role, terminology,
-> stat structures, skill structures and balance logic — is **removed from the
-> active design direction**. See [`docs/RULES_RESET_MEMO.md`](RULES_RESET_MEMO.md)
-> and [`docs/CWN_CHASSIS.md`](CWN_CHASSIS.md).
+> NoöPunk is building its **own original rules system** from first principles, beginning with four Luhmannian domains: **Social / Physical / Psychic / Cybernetic**.
 >
-> **Nothing in this document is deleted, and sections 4–5 (the six attributes,
-> the 2d6 skill check, the skill list and levels) remain the rules currently in
-> force** until the author revises them. This header records a *direction*, not a
-> new ruleset. The reset is a deliberate backtrack: do not build new rules on the
-> CWN-derived sections, and do not fill any unresolved section by inference.
-
+> Existing provisional mechanics in this document remain in force only until the author revises them. They are not an imported chassis and must not be expanded by copying defaults from another RPG. New rules should be authored explicitly for NoöPunk and grounded in the project's theoretical sources where appropriate.
+>
 > **Status:** foundation / intentionally incomplete.
 >
 > This document is the **canonical design source for NoöPunk game rules**. The tabletop RPG is designed and stabilized here first; Godot and Concordia are later ports of stable tabletop systems. Undefined sections are reserved for later author specification. Do not fill them automatically from genre conventions or other RPG systems.
@@ -55,7 +46,7 @@ The setting is approximately a 2045-like future extrapolated from 2026, without 
 
 ## 4. Core resolution system
 
-NoöPunk uses the **Cities Without Number SRD skill-check engine**, modified for NoöPunk's own six attributes and wider ordinary-human attribute range.
+NoöPunk uses the **the earlier external rules reference skill-check engine**, modified for NoöPunk's own six attributes and wider ordinary-human attribute range.
 
 The basic skill check is:
 
@@ -66,7 +57,7 @@ success = total >= difficulty
 
 Roll two six-sided dice and add the character's relevant trained skill level and the attribute modifier that best fits the action. A level-0 skill contributes +0, level-1 contributes +1, and so on through level-4 at +4. A character with no relevant skill is **unskilled**, which is outside the numbered skill levels and uses section 4.2.
 
-NoöPunk keeps its own attribute modifiers, including the ordinary-human **-3..+3** range in section 5.2. This is an intentional divergence from the narrower CWN attribute range.
+NoöPunk keeps its own attribute modifiers, including the ordinary-human **-3..+3** range in section 5.2. This is an intentional divergence from the narrower legacy rules attribute range.
 
 The GM calls for a skill check when the outcome is meaningfully uncertain and beyond ordinary routine competence. Anything easier than difficulty 6 generally should not require a roll.
 
@@ -123,7 +114,7 @@ A character may help another character when the fiction makes the assistance pla
 
 ### 4.4 NPC skill checks
 
-Ordinary NPCs use the lightweight CWN-derived approach:
+Ordinary NPCs use the lightweight legacy provisional approach:
 
 - for something they should reasonably be competent at, roll **2d6 + the NPC's listed or relevant skill modifier**;
 - use **+0** for ordinary unrelated competence;
@@ -233,7 +224,7 @@ Where useful, preserve both the raw 3d6 generation roll and the resulting modifi
 
 > **This section supersedes the earlier four-step skill model** in which level 0
 > meant "unskilled" and levels 1–3 gave +1/+2/+3. That model is withdrawn. Under the
-> Cities Without Number chassis (section 18.1), the decision for this subsystem is
+> the earlier external rules reference chassis (section 18.1), the decision for this subsystem is
 > **MODIFY**, and NoöPunk now uses a **trained skill scale of level-0 through
 > level-4**, with unskilled sitting **outside** the numbered levels.
 
@@ -275,7 +266,7 @@ specialties, advancement, attribute interactions, and professions later.
 
 #### Skill list
 
-The initial NoöPunk skill list is the **Cities Without Number SRD standard skill
+The initial NoöPunk skill list is the **the earlier external rules reference standard skill
 list** as a starting point, with two author-specified renames: **Heal → Medical**
 and **Know → Science**.
 
@@ -284,8 +275,8 @@ and **Know → Science**.
 - **Drive** — drive vehicles, sail ships, fly planes, pilot drones, and perform maintenance and basic repairs on such devices.
 - **Exert** — apply trained speed, strength, or stamina: run, jump, lift, swim, climb, throw. Usable as a combat skill when throwing things, but not otherwise.
 - **Fix** — create and repair devices both simple and complex; build things, fix things, and identify what something is supposed to do.
-- **Medical** — medical and psychological treatment for the injured or disturbed. Cure diseases, stabilize the critically injured, treat psychological disorders, diagnose illnesses, and the medical care of cyberware where later rules make that relevant. Inherits the role of CWN **Heal**.
-- **Science** — facts about academic or scientific fields. Understand academic topics, recall relevant history, solve science mysteries, and know basic facts about rare or esoteric topics. Inherits the role of CWN **Know**.
+- **Medical** — medical and psychological treatment for the injured or disturbed. Cure diseases, stabilize the critically injured, treat psychological disorders, diagnose illnesses, and the medical care of cyberware where later rules make that relevant. Inherits the role of legacy rules **Heal**.
+- **Science** — facts about academic or scientific fields. Understand academic topics, recall relevant history, solve science mysteries, and know basic facts about rare or esoteric topics. Inherits the role of legacy rules **Know**.
 - **Lead** — convince others to do whatever it is you are trying to do, even when they think it is a bad idea. Lead troops in combat, inspire loyalty, maintain morale and discipline.
 - **Notice** — spot anomalies or interesting facts about the environment. Search places, detect ambushes, spot things, and read the emotional state of other people.
 - **Perform** — exhibit a performance skill: dance, sing, orate, act, or otherwise put on a convincing or emotionally moving performance.
@@ -333,7 +324,7 @@ Explicitly **not** decided, and not to be inferred:
 - whether specialties have their own levels;
 - whether other skills use specialties.
 
-In particular, CWN's treatment of Work as *"pick a particular profession"* is **not**
+In particular, legacy rules's treatment of Work as *"pick a particular profession"* is **not**
 automatically canonical NoöPunk specialization mechanics. The broad Work skill stands
 for now, and the exact specialty/subtype mechanism is deferred until the author
 decides it.
@@ -390,9 +381,9 @@ No detailed social subsystem is canonical yet.
 
 **Hacking / cyberspace is DEFERRED.**
 
-The earlier tabletop experiment from issue #17 introduced separate **BCI, Compute, Connection, and Infosec defence modifiers** for human cyberspace users. Those modifiers are now **withdrawn from active canon** while NoöPunk's hacking subsystem is reconsidered against the Cities Without Number SRD.
+The earlier tabletop experiment from issue #17 introduced separate **BCI, Compute, Connection, and Infosec defence modifiers** for human cyberspace users. Those modifiers are now **withdrawn from active canon** while NoöPunk's hacking subsystem is reconsidered against the the earlier external rules reference.
 
-The concepts are not rejected. BCI quality, local compute, connection quality, and infosec hardening may return later inside a redesigned CWN-derived hacking/cyberspace system.
+The concepts are not rejected. BCI quality, local compute, connection quality, and infosec hardening may return later inside a redesigned legacy provisional hacking/cyberspace system.
 
 For now:
 
@@ -402,7 +393,7 @@ For now:
 - no hacking subsystem, cyberdeck rules, ICE, tracing, target-security model, brain-hacking consequences, or AI-native cyberspace mechanics are defined;
 - AI-native entities, uploaded humans, and autonomous software agents remain a separate later design problem.
 
-The next hacking/cyberspace task should review the CWN SRD hacking subsystem under the KEEP / MODIFY / REPLACE / OMIT / DEFER process before restoring or replacing any of the earlier modifier concepts.
+The next hacking/cyberspace task should review the legacy rules SRD hacking subsystem under the KEEP / MODIFY / REPLACE / OMIT / DEFER process before restoring or replacing any of the earlier modifier concepts.
 
 ## 13. Equipment and economy
 
@@ -430,7 +421,7 @@ The three supported forms are tabletop RPG, Godot RPG, and Concordia RPG / simul
 
 ### 17.1 Known port debt: the digital runtimes still implement the superseded 3d6 system
 
-The **tabletop skill-check canon is now the 2d6 CWN-derived engine in section 4**. The existing `data/rules/core.json`, shared Python rules, Godot adapter, and Concordia adapter still implement the superseded 3d6 check engine and old difficulty ladder. They are retained temporarily as **explicit digital-port debt**, not as competing canon. Where a runtime and this rulebook disagree, **this rulebook is authoritative** and the runtime is wrong. `data/rules/core.json` carries a `_superseded_note` key recording this in the runtime data itself.
+The **tabletop skill-check canon is now the 2d6 legacy provisional engine in section 4**. The existing `data/rules/core.json`, shared Python rules, Godot adapter, and Concordia adapter still implement the superseded 3d6 check engine and old difficulty ladder. They are retained temporarily as **explicit digital-port debt**, not as competing canon. Where a runtime and this rulebook disagree, **this rulebook is authoritative** and the runtime is wrong. `data/rules/core.json` carries a `_superseded_note` key recording this in the runtime data itself.
 
 A later porting task must convert the stable tabletop rule into a shared digital specification and then update Godot and Concordia consistently. Until that task is done, runtime tests may verify the legacy implementation as legacy behavior, but documentation must not describe it as the current canonical tabletop mechanic.
 
@@ -438,7 +429,7 @@ The skill list and the level-0..4 trained skill scale in section 5.3 are also ta
 
 The attribute identifiers, ordinary-human 3d6 generation, the -3..+3 modifier range, the unskilled penalty, and the trained-only representation are **unchanged** by section 4 and remain shared between tabletop and the runtimes.
 
-The former issue #17 BCI / Compute / Connection / Infosec modifier framework is no longer an active tabletop rule and must not be ported. Hacking/cyberspace is DEFERRED pending a later CWN-based subsystem review.
+The former issue #17 BCI / Compute / Connection / Infosec modifier framework is no longer an active tabletop rule and must not be ported. Hacking/cyberspace is DEFERRED pending a later legacy rules-based subsystem review.
 
 Runtime-specific adapters may differ in plumbing, but once ported they must not redefine canonical rules.
 
@@ -465,11 +456,11 @@ Examples, prototypes, test values, genre conventions, and temporary implementati
 
 ### 18.1 Open mechanical chassis
 
-NoöPunk's main open mechanical starting point is the **Cities Without Number SRD**. This rulebook describes NoöPunk's own tabletop rules. Where a subsystem is still unresolved, the CWN SRD is the reference point for *reviewing* that subsystem, not an automatic source of the rule.
+NoöPunk's main open mechanical starting point is the **the earlier external rules reference**. This rulebook describes NoöPunk's own tabletop rules. Where a subsystem is still unresolved, the legacy rules SRD is the reference point for *reviewing* that subsystem, not an automatic source of the rule.
 
-Every CWN subsystem gets one explicit author decision: **KEEP**, **MODIFY**, **REPLACE**, **OMIT**, or **DEFER**. Nothing is assumed to survive unchanged, and an unresolved subsystem stays **DEFER** (see section 19). Existing NoöPunk rules in this rulebook take precedence over CWN defaults.
+Every legacy rules subsystem gets one explicit author decision: **KEEP**, **MODIFY**, **REPLACE**, **OMIT**, or **DEFER**. Nothing is assumed to survive unchanged, and an unresolved subsystem stays **DEFER** (see section 19). Existing NoöPunk rules in this rulebook take precedence over legacy rules defaults.
 
-Only material actually present in the CWN **SRD** may be directly reused. NoöPunk's core tabletop mechanics are derived from and substantially modify the Cities Without Number SRD, released under CC0. NoöPunk is an independent project and is not affiliated with or endorsed by Sine Nomine Publishing. See [docs/CWN_CHASSIS.md](docs/CWN_CHASSIS.md) for the detailed policy, legal boundary, and subsystem review order.
+Only material actually present in the legacy rules **SRD** may be directly reused. NoöPunk's core tabletop mechanics are derived from and substantially modify the the earlier external rules reference, released under CC0. NoöPunk is an independent project and is not affiliated with or endorsed by Sine Nomine Publishing. See [docs/legacy rules_CHASSIS.md](docs/legacy rules_CHASSIS.md) for the detailed policy, legal boundary, and subsystem review order.
 
 ## 19. Future design sections
 
@@ -485,7 +476,7 @@ The following remain intentionally unresolved:
 - damage and armor
 - advancement / XP
 - cyberware rules and catalog
-- hacking / cyberspace rules, including whether any BCI, Compute, Connection, or Infosec modifiers return in the later CWN-derived design
+- hacking / cyberspace rules, including whether any BCI, Compute, Connection, or Infosec modifiers return in the later legacy provisional design
 - cyberspace rules for AI-native entities, uploaded humans and autonomous agents
 - detailed network topology, bandwidth and latency models
 - psionic powers
@@ -500,4 +491,4 @@ The following remain intentionally unresolved:
 
 This list is a roadmap of questions, not a specification.
 
-Any subsystem that the Cities Without Number SRD also covers is additionally subject to the chassis review in section 18.1 and stays **DEFER** until the author decides it.
+Any subsystem that the the earlier external rules reference also covers is additionally subject to the chassis review in section 18.1 and stays **DEFER** until the author decides it.
