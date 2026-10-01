@@ -56,11 +56,11 @@ Existing Godot and Concordia scaffolds must be preserved, not deleted, but they 
 
 ### 4. Current reserved design areas
 
-The six attributes (FIT, REF, INT, CHA, CYB, PSY), ordinary-human 3d6 attribute generation, the CWN-derived **2d6 skill-check engine**, CWN-style skill-check difficulties, opposed skill checks with player-character tie priority, unskilled -1 / trained-only blocking, the skill list, and the level-0..4 trained skill scale are now author-specified in RULEBOOK.md. Agents must preserve them exactly.
+The six attributes (FIT, REF, INT, CHA, CYB, PSY), ordinary-human 3d6 attribute generation, the current provisional **2d6 skill-check engine**, its difficulty ladder, opposed skill checks with player-character tie priority, unskilled -1 / trained-only blocking, the skill list, and the level-0..4 trained skill scale are author-specified in RULEBOOK.md for now. Agents must preserve them until the author explicitly revises them.
 
 **The current skill list, level-0..4 scale, and 2d6 skill-check engine are tabletop-first.** The existing digital runtime still contains the superseded 3d6 check engine and old difficulty ladder. Treat that as explicit porting debt, not as competing canon. Do not partially port #25 into one runtime; a later task must derive the shared digital specification and update Godot and Concordia consistently.
 
-The earlier issue #17 BCI / Compute / Connection / Infosec cyberspace modifier framework is **withdrawn from active canon**. Do not port it. Hacking / cyberspace is DEFERRED until a later CWN-based subsystem review.
+The earlier issue #17 BCI / Compute / Connection / Infosec cyberspace modifier framework is **withdrawn from active canon**. Do not port it. Hacking / cyberspace is DEFERRED until the author defines an original NoöPunk subsystem.
 
 Until explicitly specified, do not define:
 - additional attributes or derived statistics
@@ -191,7 +191,7 @@ NoöPunk's canonical design invariants are documented once in [`docs/DESIGN_PRIN
 6. Treat **UFO Disclosure, Psionics and Panpsychism** as the defining Noösphere paradigm shifts.
 7. Treat **Shadowrun** and **Eclipse Phase** as comparative influences, not templates to copy.
 8. Do not silently redesign these balances. If an implementation requires a departure, document the reason explicitly.
-9. Treat the **Cities Without Number SRD** as the open mechanical chassis (see §15), reviewed and modified **subsystem by subsystem**, with existing NoöPunk author decisions taking precedence over CWN defaults.
+9. Treat NoöPunk as an **original rules system**. Existing RPGs are comparative references only and never provide default mechanics or a chassis.
 
 Practical consequences:
 
@@ -217,22 +217,16 @@ Platform-specific differences must be documented as adaptations. They must not s
 
 Scenarios, UI, pacing, maps, presentation, automation, and other medium-specific features may diverge where appropriate. Core rules, mechanics, terminology, and world canon should not.
 
-### 15. Cities Without Number SRD is the open chassis
+### 15. Original NoöPunk rules only
 
-NoöPunk's main open mechanical starting point is the **Cities Without Number SRD**, documented once in [`docs/CWN_CHASSIS.md`](docs/CWN_CHASSIS.md). NoöPunk is **not** a CWN clone: it starts from that SRD and then modifies the system **subsystem by subsystem**.
+No existing RPG is the mechanical chassis for NoöPunk.
 
-When working on any subsystem that CWN also has:
+When adding or revising mechanics:
 
-1. review the CWN SRD version of it;
-2. decide explicitly: **KEEP**, **MODIFY**, **REPLACE**, **OMIT**, or **DEFER**;
-3. when the decision is missing, leave it **DEFER** — do not assume CWN's version survives, and do not assume it is dropped.
+1. begin from the author's explicit design direction and the four domains **Social / Physical / Psychic / Cybernetic**;
+2. connect rules to the project's theoretical sources where appropriate;
+3. write original NoöPunk procedures and terminology;
+4. treat other RPGs only as comparative design references;
+5. leave unresolved systems unresolved rather than importing defaults.
 
-**NoöPunk decisions take precedence.** Existing author-specified NoöPunk rules are canonical and are not overridden by CWN defaults. Do not redesign them back toward CWN after the author has explicitly modified or replaced them. Current author decisions include the six attributes (FIT, REF, INT, CHA, CYB, PSY), 3d6 ordinary-human **attribute generation**, the −3..+3 ordinary-human modifier range, the CWN-derived **2d6 skill-check engine**, CWN-style skill-check difficulties, and the skill list and level-0..4 trained skill scale. Do not restore the superseded 3d6 skill-check engine or old difficulty ladder.
-
-Where CWN is the starting point for a subsystem, NoöPunk's modification of it is the rule. The skills subsystem is **MODIFY**: NoöPunk adopts the CWN level-0..4 structure and standard list, but unskilled stays outside the numbered levels (at -1 or blocked), Heal is renamed **Medical**, Know is renamed **Science**, and specialization is deferred. The core skill-check subsystem is also **MODIFY**: NoöPunk adopts CWN's 2d6 + skill + attribute structure and difficulty ladder while retaining NoöPunk's six attributes and wider -3..+3 ordinary-human attribute range.
-
-**Source boundary.** Direct reuse is limited to material actually present in the Cities Without Number **SRD**. Do not import setting material, megacorps, NPCs, places, or events from the full CWN book. Do not copy protected text, setting material, terminology, or faction content from Cyberpunk 2020, Eclipse Phase, Shadowrun, The Sprawl, or CY_BORG: those are **design references only**. When unsure whether something is in the SRD, treat it as not in the SRD and write original wording.
-
-Adopting the chassis is a **policy and roadmap**, not a conversion. Do not mass-port CWN mechanics, and do not advance Godot or Concordia ahead of the tabletop rules.
-
-Subsystem decisions belong to the author. A DEFER is an open question, not permission for an agent to choose.
+Existing provisional rules remain canonical only until the author explicitly revises them. The project is intentionally rebuilding the rules slowly from first principles.
