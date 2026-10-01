@@ -7,8 +7,7 @@
 > that a later author decision can build on.
 >
 > **Direction (author, #32):** NoöPunk develops an **original** rules system.
-> Existing games, including Cities Without Number, may be consulted as references
-> but no longer define the chassis. The system grows outward from the four
+> Existing games may be consulted as comparative references, but none defines the chassis or supplies default mechanics. The system grows outward from the four
 > Luhmannian systems below.
 
 ---
@@ -350,11 +349,11 @@ the "small core, strange consequences" target and the modularity the issue asks 
 
 ## 13. What this memo does not do
 
-- It does not remove or replace `RULEBOOK.md`. The CWN-based rules currently in
+- It does not remove or replace `RULEBOOK.md`. The legacy rules currently in
   force remain in force until the author revises them.
 - It does not select an attribute structure, a dice mechanic, or a skill list.
 - It does not import mechanics from any existing game.
 - It does not modify `AGENTS.md` or `docs/DESIGN_PRINCIPLES.md`, which currently
-  name the CWN SRD as a project invariant. That invariant is in direct tension
+  name the legacy chassis SRD as a project invariant. That invariant is in direct tension
   with #32 and needs an author decision (§ see the issue claim comment).
 - It does not touch the Godot or Concordia runtimes.
