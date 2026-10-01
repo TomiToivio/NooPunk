@@ -228,7 +228,7 @@ mechanics, or text from either work, and do not silently import their assumption
 6. Treat **UFO Disclosure, Psionics, and Panpsychism** as the defining Noösphere paradigm shifts.
 7. Treat **Shadowrun** and **Eclipse Phase** as comparative influences, not templates to copy.
 8. Do not silently redesign these balances. If an implementation requires a departure, document the reason explicitly.
-9. Treat the **Cities Without Number SRD** as the open mechanical chassis, reviewed and modified **subsystem by subsystem** (KEEP / MODIFY / REPLACE / OMIT / DEFER). Existing NoöPunk author decisions take precedence over CWN defaults, and direct reuse is limited to material actually present in the **SRD**. See [`CWN_CHASSIS.md`](CWN_CHASSIS.md).
+9. Treat NoöPunk as an **original rules system**. Existing games may be comparative references, but no game supplies default mechanics or a chassis.
 
 `AGENTS.md` carries the same list as binding agent rules. `tests/test_design_principles.py`
 enforces that this document, the agent rules, and the referring documents stay
