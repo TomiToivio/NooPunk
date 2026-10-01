@@ -142,9 +142,18 @@ This is not a complete NPC-generation system.
 
 ## 5. Characters
 
-Most character systems remain unspecified. The six canonical attributes, ordinary-human attribute generation, the skill list, and the level-0..4 trained skill scale are now defined.
+Most character systems remain unspecified. The character's **basic statistics are now organized into four theoretical groups** derived from the Luhmannian systems-theory foundation of NoöPunk:
 
-### 5.1 Attributes
+1. **Social** — communication and participation in social systems.
+2. **Physical** — biological embodiment, bodily processes and material action.
+3. **Psychic** — consciousness and psychic operations.
+4. **Cybernetic** — machine-mediated, computational and networked operations.
+
+This four-group division is canonical. It is the first application of the rulebook's theoretical-grounding requirement in section 18.2 and is grounded in Luhmannian systems theory, especially the distinction among social, biological and psychic systems. NoöPunk adds **Cybernetic** as an explicit fourth design category for the contemporary setting. See [Theoretical Sources](docs/THEORETICAL_SOURCES.md#luhmannian-four-system-character-architecture).
+
+The exact individual statistics contained within these four groups are **not yet finalized**. The six attributes below are retained temporarily as legacy/currently implemented values while the original NoöPunk system is redesigned; they must not be treated as the final four-group architecture.
+
+### 5.1 Legacy/current attributes pending four-group redesign
 
 The canonical attributes are:
 
@@ -401,6 +410,21 @@ Runtime-specific adapters may differ in plumbing, but once ported they must not 
 ## 18. Canon and change control
 
 A rule becomes canonical only when explicitly specified by the author or incorporated into this rulebook through an author-approved task.
+
+### 18.2 Theoretical grounding
+
+NoöPunk's rules are designed so that **every canonical rule should have an explicit theoretical source, model, or research tradition behind it**. The theory is not decorative flavor: the rulebook should record how a theory motivates a mechanical distinction, procedure, constraint, or model.
+
+The source registry lives in [`docs/THEORETICAL_SOURCES.md`](docs/THEORETICAL_SOURCES.md). When a new rule is made canonical, add or update its theoretical source entry and point from the relevant rulebook section to that entry.
+
+The first canonical theory-to-rule mapping is the character-stat architecture in section 5: the division into **Social, Physical, Psychic and Cybernetic** groups is derived from the Luhmannian distinction among social, biological and psychic systems, with Cybernetic added by NoöPunk as a contemporary extension.
+
+This requirement does **not** mean that a theory mechanically dictates a rule. The rulebook must distinguish:
+
+- what the cited theory actually claims;
+- what NoöPunk interprets or adapts from it;
+- what NoöPunk adds as its own speculative or game-design extension.
+
 
 Examples, prototypes, test values, genre conventions, and temporary implementation details are **not canon**.
 
