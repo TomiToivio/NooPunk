@@ -1,7 +1,7 @@
 # NoöPunk game design memo: systems, selves, and the Noösphere
 
 > **Status:** exploratory design memo for issue #31.  
-> **Authority:** this document does **not** finalize rules or override `RULEBOOK.md`, `docs/DESIGN_PRINCIPLES.md`, `docs/CWN_CHASSIS.md`, or author-specified decisions.  
+> **Authority:** this document does **not** finalize rules or override `RULEBOOK.md`, `docs/DESIGN_PRINCIPLES.md`, `docs/RULES_RESET_MEMO.md`, or author-specified decisions.  
 > **Purpose:** develop a theoretical and mechanical vocabulary for later tabletop design.
 
 ## 1. Design goal
@@ -32,10 +32,10 @@ The following remain authoritative:
 
 - the three design balances in `docs/DESIGN_PRINCIPLES.md`;
 - tabletop first, with Godot and Concordia following later;
-- Cities Without Number SRD as the open mechanical chassis, reviewed subsystem by subsystem;
+- an original NoöPunk rules system developed from first principles;
 - the existing six attributes: **FIT, REF, INT, CHA, CYB, PSY**;
 - ordinary-human 3d6 attribute generation and the existing modifier scale;
-- the CWN-derived 2d6 skill-check engine already specified in `RULEBOOK.md`.
+- the legacy provisional 2d6 skill-check engine already specified in `RULEBOOK.md`.
 
 Therefore this memo does **not** replace the six attributes with four new stats.
 
@@ -1016,7 +1016,7 @@ This memo points naturally to several later, separate subsystem discussions.
 2. **Attributes:** map the existing six attributes to system contexts without changing them.
 3. **Conditions:** explore system-specific failure states.
 4. **Social system:** design roles, institutions, reputation, obligations, and structural leverage.
-5. **Cybernetic system:** review against the CWN hacking/cyberware chassis before deciding rules.
+5. **Cybernetic system:** review against the legacy chassis hacking/cyberware chassis before deciding rules.
 6. **Psychic system:** define the boundaries of PSY and psi without creating generic magic.
 7. **Coupling:** prototype one minimal tabletop coupling procedure.
 8. **Noösphere:** develop social memory complexes and contact metaphysics as worldbook material before hard mechanics.
