@@ -2,6 +2,10 @@
 
 **NoöPunk = Noösphere + Cyberpunk.**
 
+> ## **AI = HUMAN + LLM + LANGUAGE + INTERNET**
+>
+> **NoöPunk motto:** intelligence is not the model alone. It emerges from humans, language models, language, and the networked world they inhabit together.
+
 NoöPunk is a speculative social-science, political-theory, science-fiction, RPG, and simulation umbrella. It asks what a cyberpunk future becomes when AI, networks, corporations, surveillance, cybernetics, and human augmentation collide with radical paradigm shifts concerning consciousness and non-human intelligence.
 
 The project now explicitly connects three existing strands: **NoöPunk** provides the speculative world and experimental interface; **Panpsychic Cyborg Multitude (PCM)** provides a political operating system for heterogeneous human–AI assemblages; and **LaclauGPT** provides the social-science research engine for discourse, ideology, communication networks, hegemony, and political formation.
@@ -48,31 +52,15 @@ NoöPunk keeps the technological, political, urban, and economic core of old-sch
 
 ## Rules direction
 
-> **Current direction (author, issue #32, 2026-10-01): NoöPunk is developing its
-> own original rules system.** The Cities Without Number inheritance has been
-> removed from the active design direction, and no existing RPG is being adopted as
-> a replacement chassis. The system is backtracking to first principles and growing
-> outward from **four Luhmannian systems**: **Social / Physical / Psychic /
-> Cybernetic**. See [docs/RULES_RESET_MEMO.md](docs/RULES_RESET_MEMO.md).
+> **NoöPunk is developing its own original rules system.**
 
-The reset is deliberately slow, and most of the game is still unspecified. The
-rules currently *in force* (the six attributes and the skill/check system in
-[RULEBOOK.md](RULEBOOK.md)) are retained until the author revises them; the reset
-changes where new rules grow from, not what exists today.
+The rules are being rebuilt from first principles around the four Luhmannian domains **Social / Physical / Psychic / Cybernetic**, with theory informing mechanics rather than an imported RPG chassis. Existing games remain comparative and tonal references only. See [docs/RULES_RESET_MEMO.md](docs/RULES_RESET_MEMO.md) and [docs/THEORETICAL_SOURCES.md](docs/THEORETICAL_SOURCES.md).
 
-NoöPunk's earlier **open mechanical chassis** was the **[Cities Without Number SRD](https://cwn.quadrifons.com/)** (public domain): the project started from that SRD and reviewed it subsystem by subsystem with an explicit KEEP, MODIFY, REPLACE, OMIT, or DEFER decision at each step. That policy is **superseded by #32** and is retained only for reference and licensing clarity — see [docs/CWN_CHASSIS.md](docs/CWN_CHASSIS.md).
+The reset is deliberately slow. Current provisional mechanics remain documented in [RULEBOOK.md](RULEBOOK.md) until the author revises them, but new systems must be designed as original NoöPunk rules.
 
-**Licensing still applies.** No protected material from any existing game — including the full Cities Without Number book, Cyberpunk 2020, Eclipse Phase, Shadowrun, The Sprawl, or CY_BORG — may be copied. Those games are design references only.
+Major RPG influences include **Cyberpunk 2013 / 2020 / RED**, **CY_BORG**, **The Sprawl**, **Shadowrun**, and **Eclipse Phase** as design references, not templates or mechanical sources.
 
-Major RPG influences include:
-
-- **Cities Without Number SRD** — *formerly* the open mechanical chassis; superseded by #32 and retained as a reference only
-- **Cyberpunk 2013 / 2020 / RED** — the Simulationism reference (`Cyberpunk 2020`)
-- **CY_BORG** — the Gamism reference
-- **The Sprawl** — the Narrativism reference
-- **Shadowrun** and **Eclipse Phase** — comparative influences, not templates
-
-No protected material from any existing game — including the full Cities Without Number book, Cyberpunk 2020, Eclipse Phase, Shadowrun, The Sprawl, or CY_BORG — may be copied. Those games are design references only.
+No protected material from existing games may be copied. NoöPunk's rules text and mechanics should be written independently.
 
 A rough analogy is **Shadowrun with the cyberpunk left as cyberpunk, while the urban-fantasy layer is replaced by the Noösphere, NHI, psionics, and consciousness-fundamental metaphysics**. Unlike Shadowrun, the anomalous layer comes from UFO / UAP Disclosure, psionics, and panpsychism rather than fantasy races and magic. Eclipse Phase is the closest comparison where cyberpunk and anomalous / posthuman themes meet.
 
@@ -199,7 +187,7 @@ Development is now explicitly **tabletop-first**. The tabletop RPG rules/worldbo
 
 The project must **not** fill gaps by inventing mechanics or lore.
 
-The initial Godot work should create only a clean, minimal RPG foundation. Major design areas such as combat, psionics, NHI, factions, character creation, equipment, economy, progression, world geography, quests, and detailed simulation rules are reserved for later specification by the author. Attributes, the CWN-derived **2d6 skill check** and its difficulty ladder, the skill list, and the level-0..4 skill scale are specified in [RULEBOOK.md](RULEBOOK.md); skills and the check are tabletop-first and **not yet ported** to Godot or Concordia.
+The initial Godot work should create only a clean, minimal RPG foundation. Major design areas such as combat, psionics, NHI, factions, character creation, equipment, economy, progression, world geography, quests, and detailed simulation rules are reserved for later specification by the author. Attributes, the current provisional **2d6 skill check** and its difficulty ladder, the skill list, and the level-0..4 skill scale are specified in [RULEBOOK.md](RULEBOOK.md); skills and the check are tabletop-first and **not yet ported** to Godot or Concordia.
 
 **Known port debt:** the Godot and Concordia scaffolds still implement the *superseded* 3d6 check against the withdrawn `3/6/9/12/15/18` ladder. `RULEBOOK.md` is authoritative; porting the runtimes is a separate later task (see RULEBOOK.md §17.1).
 
