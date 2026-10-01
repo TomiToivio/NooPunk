@@ -73,3 +73,59 @@ Add new theory-to-rule mappings here as the rules develop. Candidate domains
 include resolution mechanics, coupling between systems, social interaction,
 combat, injury, cybernetics, networks, psionics, the Noösphere, collective
 intelligence, identity, institutions, power, economy and advancement.
+
+---
+
+## Wider NoöPunk / Noopunk constellation
+
+These sources are not treated as authorities over this project. They are kindred
+independent formulations that help reveal convergent concepts.
+
+### Carlos G. Torrico / #noopunk
+
+Primary public corpus:
+- https://uned.academia.edu/carlosgtorrico
+- https://noopunk.wordpress.com/
+- https://noopunk.substack.com/
+
+Useful concepts for this project include mycelial semiotics, postcapitalist
+voodoo, Leguinée, anterity, non-human poetics, Cryptodelia, and especially the
+2026 *Xenological Kosmism* framework: heterogeneous intelligences, distributed
+cognitive infrastructure, human–AI alliance, federation, commons, biosphere /
+noosphere interdependence, and non-sovereign distributed intelligence.
+
+These are conceptual and theory-fiction inputs, not evidence that speculative
+claims about machine consciousness, retrocausality, or future ASI are
+established facts.
+
+### Exeunt / Noöpunk
+
+Primary public corpus:
+- https://paragraph.com/@exeunt/no-punk
+- https://exeuntisunderground.substack.com/
+- https://asc-cybernetics.org/asc-speaker-series-6/speakerseries6-4/
+
+Useful concepts include diverse intelligence, distributed cognition, Varela and
+Maturana, Deleuze and Guattari, biosemiotics, underground cybernetics, open
+protocols, mutualist economics, direct democracy, plural value, and the
+treatment of nonhuman and collective minds as participants in social and
+economic systems.
+
+See [NOOPUNK_ECOSYSTEM.md](NOOPUNK_ECOSYSTEM.md) for the maintained synthesis.
+
+---
+
+## Cross-project theory architecture
+
+NoöPunk now explicitly treats three projects as coupled layers:
+
+- **NoöPunk:** speculative/theory-fiction/game layer.
+- **Panpsychic Cyborg Multitude:** normative political and institutional layer.
+- **LaclauGPT:** empirical social-science and computational research layer.
+
+The layers must not silently substitute for one another. Fiction does not
+establish empirical claims; normative political design is not an empirical
+result; empirical LaclauGPT analysis does not automatically become canonical
+fiction.
+
+See [PROJECT_CONVERGENCE.md](PROJECT_CONVERGENCE.md).
