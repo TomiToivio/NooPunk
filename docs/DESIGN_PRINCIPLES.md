@@ -76,11 +76,19 @@ poles**. Use them to check that no pole has quietly swallowed the others.
 
 ## 2. Tabletop / Godot / Concordia balance
 
-NoöPunk is **one RPG with three runtimes**, but development is deliberately sequential rather than parallel.
+NoöPunk is **one computer RPG/simulation** (#48 — see
+[`NOOPUNK_AS_ONE_GAME.md`](NOOPUNK_AS_ONE_GAME.md)), not separate tabletop,
+simulation and videogame products.
+
+The tabletop / Godot / Concordia distinction below is therefore about **notation and
+runtime sequence**, not about maintaining three products: the same rules are written
+to read like tabletop rules, exercised by deterministic Python and Concordia agents,
+and potentially presented by a future graphical frontend. Development is
+deliberately sequential rather than parallel.
 
 > **Tabletop first. Same world, same rules, same mechanics wherever possible.**
 
-The **tabletop RPG rules/worldbook are the canonical design source**. A system is designed and stabilized for tabletop play before substantive Godot or Concordia implementation begins.
+The **tabletop-style rules and worldbook are the canonical design source**. A system is written and stabilized in human-readable, playable form before substantive Concordia implementation begins.
 
 The tabletop and computer versions should share the same underlying:
 
