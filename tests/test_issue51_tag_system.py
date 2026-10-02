@@ -28,10 +28,15 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from rules import (  # noqa: E402
+    FOUR_SYSTEMS,
     HUMAN_ATTRIBUTE_MAX,
     HUMAN_ATTRIBUTE_MIN,
     PROTOTYPE_ATTRIBUTE_SYSTEMS,
     PROTOTYPE_MAX_CONTRIBUTING_TAGS,
+    RESOLVED,
+    UNRESOLVED_ABSENT_SYSTEM,
+    AbsentSystemResult,
+    SystemPresence,
     Tag,
     TagError,
     TranshumanTag,
@@ -399,6 +404,112 @@ class AntiInventionTests(unittest.TestCase):
         """#51 says do not lock the final names; RULEBOOK §5 keeps them unfinalized."""
         text = " ".join((ROOT / "RULEBOOK.md").read_text(encoding="utf-8").split()).lower()
         self.assertIn("not yet finalized", text)
+
+
+class AbsentSystemTests(unittest.TestCase):
+    """RULEBOOK §5.2: a system can be absent, and absence is not a low score.
+
+    The reconciliation made this canonical in prose. These tests are the mechanism
+    behind that sentence: without them the rulebook required something no code did.
+    """
+
+    def test_presence_defaults_to_all_four_systems(self) -> None:
+        presence = SystemPresence()
+        for system in FOUR_SYSTEMS:
+            with self.subTest(system=system):
+                self.assertTrue(presence.has(system))
+        self.assertEqual(presence.absent(), ())
+
+    def test_absent_systems_helper_names_the_rulebook_cases(self) -> None:
+        # A non-conscious AI: no meaningful Psychic participation.
+        self.assertEqual(SystemPresence.absent_systems("psychic").absent(), ("psychic",))
+        # A disembodied/noetic entity: no meaningful Physical participation.
+        self.assertEqual(SystemPresence.absent_systems("physical").absent(), ("physical",))
+        # An AI operating only in VR: Social and Cybernetic without local Physical.
+        vr = SystemPresence.absent_systems("physical")
+        self.assertTrue(vr.has("social"))
+        self.assertTrue(vr.has("cybernetic"))
+        self.assertFalse(vr.has("physical"))
+
+    def test_presence_round_trips_through_a_dict(self) -> None:
+        presence = SystemPresence.absent_systems("psychic", "physical")
+        self.assertEqual(SystemPresence.from_dict(presence.as_dict()), presence)
+
+    def test_unknown_system_in_presence_is_rejected(self) -> None:
+        with self.assertRaises(TagError):
+            SystemPresence({"magical": True})
+        with self.assertRaises(TagError):
+            SystemPresence().has("magical")
+
+    def test_absent_system_refuses_instead_of_rolling_at_a_penalty(self) -> None:
+        """A -3 roll would assert a capability the entity does not have."""
+        ai = SystemPresence.absent_systems("psychic")
+        result, composed = resolve_tag_check(
+            [_attr("PSY", 1)],
+            attribute="PSY", difficulty=10, presence=ai, dice_total=7,
+        )
+        self.assertIsInstance(result, AbsentSystemResult)
+        self.assertEqual(composed.outcome, UNRESOLVED_ABSENT_SYSTEM)
+        self.assertFalse(composed.resolved)
+        self.assertEqual(composed.absent_system, "psychic")
+
+    def test_a_perfect_roll_cannot_override_absence(self) -> None:
+        """Presence is a precondition, not a modifier."""
+        noetic = SystemPresence.absent_systems("physical")
+        result, composed = resolve_tag_check(
+            [_attr("FIT", 0)],
+            attribute="FIT", difficulty=6, presence=noetic, dice_total=12,
+        )
+        self.assertIsInstance(result, AbsentSystemResult)
+        self.assertFalse(composed.resolved)
+        self.assertFalse(hasattr(result, "success"),
+                         "there is no success to read; nothing was rolled")
+
+    def test_a_present_but_very_low_attribute_still_rolls(self) -> None:
+        """The distinction §5.2 draws, asserted directly: -3 rolls, absence does not."""
+        frail = SystemPresence()
+        result, composed = resolve_tag_check(
+            [_attr("FIT", -3)],
+            attribute="FIT", difficulty=8, presence=frail, dice_total=7,
+        )
+        self.assertEqual(composed.outcome, RESOLVED)
+        self.assertTrue(hasattr(result, "total"))
+        # ...whereas the same action for an entity with no Physical participation
+        # does not resolve at all.
+        absent, composed_absent = resolve_tag_check(
+            [_attr("FIT", 0)],
+            attribute="FIT", difficulty=8,
+            presence=SystemPresence.absent_systems("physical"), dice_total=7,
+        )
+        self.assertIsInstance(absent, AbsentSystemResult)
+        self.assertEqual(composed_absent.outcome, UNRESOLVED_ABSENT_SYSTEM)
+
+    def test_an_entity_can_still_act_in_the_systems_it_has(self) -> None:
+        ai = SystemPresence.absent_systems("psychic")
+        result, composed = resolve_tag_check(
+            [_attr("CYB", 2)],
+            attribute="CYB", difficulty=10, presence=ai, dice_total=7,
+        )
+        self.assertEqual(composed.outcome, RESOLVED)
+        self.assertTrue(hasattr(result, "success"))
+
+    def test_the_action_system_can_be_named_explicitly(self) -> None:
+        """Useful when the attribute lives in one system but the action is in another."""
+        ai = SystemPresence.absent_systems("psychic")
+        result, composed = resolve_tag_check(
+            [_attr("CYB", 2)],
+            attribute="CYB", difficulty=10, presence=ai, system="psychic", dice_total=7,
+        )
+        self.assertIsInstance(result, AbsentSystemResult)
+        self.assertEqual(composed.absent_system, "psychic")
+
+    def test_presence_is_optional_so_existing_callers_are_unaffected(self) -> None:
+        result, composed = resolve_tag_check(
+            [_attr("REF", 2)],
+            attribute="REF", difficulty=10, dice_total=7,
+        )
+        self.assertEqual(composed.outcome, RESOLVED)
+        self.assertTrue(hasattr(result, "success"))
 
 
 if __name__ == "__main__":
