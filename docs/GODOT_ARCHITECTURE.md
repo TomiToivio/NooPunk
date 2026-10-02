@@ -10,7 +10,7 @@ This document describes only the preserved technical scaffold. It does **not** d
 - `scenes/main.tscn` is the bootstrap scene.
 - The bootstrap scene displays only a neutral project-status message.
 
-The first canonical gameplay layer is now implemented: the six attributes and a core check. **That check is the superseded 3d6 system** (RULEBOOK.md §17.1) — it has not yet been ported to the canonical legacy provisional **2d6 skill check**. No UI or broader gameplay subsystem has been added.
+The first canonical gameplay layer is now implemented: the six attributes and the core skill check. **That check is the canonical 2d6 engine** (`2d6 + skill level + attribute modifier` against `6 / 8 / 10 / 12 / 14+`, RULEBOOK.md §4); the 3d6 port debt recorded in §17.1 is retired for this runtime. No UI or broader gameplay subsystem has been added.
 
 ## Separation of concerns
 
@@ -22,7 +22,7 @@ Canonical rules should not live here.
 
 ### `src/rules/`
 
-Contains the engine-independent Python implementation of the canonical attributes plus a core check. **The check is the superseded 3d6 system and awaits the port** (RULEBOOK.md §17.1). Canonical numeric data is loaded from data/rules/core.json, which likewise still carries the withdrawn 3d6-era values and is marked `_superseded_note`.
+Contains the engine-independent Python implementation of the canonical attributes plus the core skill check. **The check is the canonical 2d6 engine** (RULEBOOK.md §4); the §17.1 port debt is retired. Canonical numeric data is loaded from data/rules/core.json, which now carries the 2d6-era values and the `_canon_revision: "2d6-port"` marker; its former `_superseded_note` is removed because the port it described is done.
 
 ### `src/world/`
 
@@ -73,11 +73,11 @@ A presentation difference between the tabletop and Godot versions of a scenario 
 
 ## Intentionally undefined
 
-The scaffold implements the author-specified attributes and a core check only. The Godot adapter reads the difficulty names and targets directly from `data/rules/core.json`, and its check resolver accepts an optional deterministic dice-total override for parity tests. Production checks still roll 3d6 when no override is supplied.
+The scaffold implements the author-specified attributes and the core skill check only. The Godot adapter reads the difficulty ladder and targets directly from `data/rules/core.json`, and its check resolver accepts an optional deterministic dice-total override for parity tests. Production checks roll **2d6** when no override is supplied.
 
-**This is stale with respect to the canonical rule.** `RULEBOOK.md` §4 now specifies `2d6 + skill level + attribute modifier` against a `6 / 8 / 10 / 12 / 14+` ladder, with opposed ties won by the player character. The adapter has not been ported; doing so is a separate later task (RULEBOOK.md §17.1). Do not treat the adapter's behaviour as canon.
+**This now matches the canonical rule.** `RULEBOOK.md` §4 specifies `2d6 + skill level + attribute modifier` against the `6 / 8 / 10 / 12 / 14+` ladder, with opposed ties won by the player character. The adapter, the shared Python rules and `data/rules/core.json` were ported together so the three runtimes agree; the §17.1 port debt is retired.
 
-The difficulty names currently in `data/rules/core.json` are **Easiest 3, Easier 6, Easy 9, Normal 12, Hard 15, Impossible 18**. These are **superseded** — they are the withdrawn 3d6 ladder, not the canonical skill-check ladder (RULEBOOK.md §4, now `6 / 8 / 10 / 12 / 14+`). Earlier Hard/Harder/Hardest labels are not retained as runtime aliases because doing so would make `Hard` ambiguous after its target changed from 12 to 15. The legacy provisional ladder deliberately does **not** reuse the old names either: difficulty 6 keeps its number but changes meaning, so re-pointing a name would silently change what an old note meant.
+The difficulty ladder in `data/rules/core.json` is now **6 relatively simple / 8 significant / 10 difficult / 12 master-level / 14 extreme** (RULEBOOK.md §4). The withdrawn ladder — Easiest 3, Easier 6, Easy 9, Normal 12, Hard 15, Impossible 18 — is **not** retained and its names are not aliases: difficulty 6 keeps its number but changed meaning, so re-pointing a name would silently change what an old note meant. Targets above 14 are expressed as an explicit higher target rather than as a sixth rung, because §4 writes the top rung as "14+".
 
 It still does not choose:
 

@@ -4,7 +4,7 @@ This document describes the preserved **infrastructure-only** Concordia runtime 
 
 > **Development status:** Concordia is a later-stage port/simulation runtime. Substantive NoöPunk mechanics, world systems, scenarios, and agent behavior should not advance ahead of the canonical tabletop rules/worldbook. Existing Concordia infrastructure is preserved for later conversion work.
 
-It consumes the author-defined core attributes and a core check — **the superseded 3d6 system, not yet ported** to the canonical legacy provisional 2d6 skill check (RULEBOOK.md §17.1). It does not define additional characters, factions, world facts, skills, combat, or simulation theory.
+It consumes the author-defined core attributes and the core skill check from shared code. **The check is now the canonical 2d6 engine** (`2d6 + skill level + attribute modifier` against `6 / 8 / 10 / 12 / 14+`, RULEBOOK.md §4) — the 3d6 port debt recorded in RULEBOOK.md §17.1 has been retired for this runtime. It does not define additional characters, factions, world facts, skills, combat, or simulation theory.
 
 ## One RPG, three runtimes, tabletop first
 
@@ -146,7 +146,7 @@ Canonical mechanics and lore must not be smuggled into prompts.
 
 ## Intentionally undefined
 
-The Concordia runtime consumes the canonical six attributes and deterministic resolution from shared code. **That resolution is the superseded 3d6 check and awaits the port** (RULEBOOK.md §17.1); the shared `resolve_check` in `src/rules/core.py` still rolls 3d6 against the withdrawn ladder. It still does not define:
+The Concordia runtime consumes the canonical six attributes and deterministic resolution from shared code. **That resolution is now the canonical 2d6 skill check** (RULEBOOK.md §4): the shared `resolve_check` in `src/rules/core.py` rolls 2d6 and adds skill level and the attribute modifier against the `6 / 8 / 10 / 12 / 14+` ladder, and the §17.1 port debt is retired for this runtime. It still does not define:
 
 - skill levels and the skill list (specified for tabletop in RULEBOOK.md §5.3; not yet ported)
 - character creation
