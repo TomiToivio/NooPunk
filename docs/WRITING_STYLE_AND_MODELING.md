@@ -389,7 +389,118 @@ exists to prevent.
 
 ---
 
-## 9. Conventions for describing a model
+## 9. Modelling systems above the individual
+
+Character-level checks are not the whole of NoöPunk. The setting's paradigm shifts
+are *social* events, so the rules must be able to describe systems larger than one
+person: a network, an institution, a discourse, a market, a faction, a population.
+
+**This section defines how such a model is written down. It defines no model.** The
+mechanics that would drive any of it are unresolved — `AGENTS.md` §4 leaves social
+mechanics, factions, economy and detailed simulation mechanics explicitly
+undecided — so what follows is the convention a future author-specified model would
+follow, not a design.
+
+### 9.1 The rule
+
+> **Every system-level model must be introduced as a model, with its assumptions
+> and its limits stated before its results are used.**
+
+A claim about a population is not the same kind of claim as a claim about a
+character, and the difference must be visible on the page. The
+[§10](#10-conventions-for-describing-a-model) six-part description applies in full;
+what is added here is that a *system-level* model needs its **unit of analysis** and
+its **scope** named explicitly, because those are the two things readers silently
+assume.
+
+State, for every such model:
+
+1. **Unit of analysis** — the individual, the message, the institution, the
+   network edge, the population. A model of "belief" means nothing until this is
+   fixed.
+2. **What is aggregated away** — the individual variation the model deliberately
+   discards. Aggregation is always a lossy choice, and naming the loss prevents the
+   model being read as a description of every member.
+3. **Scope limit** — the domain and scale the model is claimed to hold for.
+   A diffusion model fitted to a small sample does not speak for a society.
+4. **Whether the model is descriptive or normative** — that a network *is*
+   centralised is a different claim from one about whether it *should* be. NoöPunk
+   contains a normative political layer (PCM), so this distinction will be
+   tempting to blur.
+
+### 9.2 What a system-level model may be about
+
+The issue lists the candidate domains. Recording them here defines the *vocabulary
+of the modelling conversation*, not the models:
+
+- **communication and diffusion** — information diffusion, memetic and ideological
+  change, technological adoption;
+- **formation and alignment** — belief and discourse formation, political
+  alignment, collective action;
+- **structure and power** — network centrality, institutional power, faction
+  behaviour;
+- **material conditions** — markets and scarcity, trust and reputation;
+- **agents** — AI agents, human–AI assemblages;
+- **anomalous coupling** — psionic or anomalous phenomena, **only in scenarios
+  where those setting assumptions are explicitly enabled**.
+
+Each of these is a place where a real statistical, social-scientific, cybernetic,
+network or agent-based model can be identified and cited. Where no source can be
+named, the claim belongs in fiction, where it needs no citation
+([§2.3](#23-traceable-not-arbitrary)).
+
+### 9.3 Theory owns a question, not a vocabulary
+
+This is the convention that keeps a system-level model from becoming a theory soup.
+Each source is written down as owning **one question**, phrased so it is falsifiable:
+
+| Source | Owns the question | Not responsible for |
+|---|---|---|
+| Laclau | how demands articulate into equivalential chains and antagonisms | network structure |
+| Castells | communication networks and network power | evaluating that power |
+| Luhmann | how communication reproduces itself into a system | the content communicated |
+| Deleuze / DeLanda | what heterogeneous components are bound together, and how stably | counting edges |
+| network science / SNA | the measurable structure of whatever graph exists | what the structure means |
+| statistics / social simulation | how a population-level quantity is estimated | whether the fiction is true |
+| PCM | governance mechanics for heterogeneous human/AI collectives | declaring an outcome correct |
+
+This mirrors the question-ownership convention already adopted in
+[`SIMULATION_ARCHITECTURE_SPEC.md`](SIMULATION_ARCHITECTURE_SPEC.md) §8.2; that
+document proposes it for the state model, and this one requires it for any
+system-level claim in the prose. **"Owns the question" is deliberately falsifiable
+in a way a vocabulary mapping is not.**
+
+The failure mode being prevented: an assemblage is **not** the same thing as a
+network community. Graph properties are one measurable aspect of a binding, not its
+definition. Writing them as synonyms would collapse two theories into one and lose
+the distinction the project needs.
+
+### 9.4 The same model in the rulebook and the simulation
+
+A system-level rule and a simulation of it follow [§8](#8-the-dice--simulation-relationship):
+
+- the **simulation** may report aggregates the tabletop never computes — a diffusion
+  curve, a centrality ranking, a distribution of outcomes over many runs;
+- the **tabletop** exposes only the interface a person can use at a table — a
+  modifier, a threshold, a consequence;
+- neither may change the model, and approximation must not silently become canon.
+
+A model that exists only in the simulation is not a NoöPunk rule. It is a research
+instrument, and should be documented as one — which is exactly what the
+LaclauGPT/PCM coupling is for: **an empirical layer that does not thereby become
+canonical fiction** ([`PROJECT_CONVERGENCE.md`](PROJECT_CONVERGENCE.md)).
+
+### 9.5 Why this is a writing convention and not a mechanic
+
+Agents may not invent social mechanics (`AGENTS.md` §1, §4, §13). What they *can*
+do is refuse to let an unspecified system be described as though it were settled.
+This section therefore constrains **how a claim is worded** — its unit of analysis,
+its scope, its source, its status — and constrains nothing about what the
+mechanics should be.
+
+---
+
+## 10. Conventions for describing a model
 
 When a model is introduced — statistical, network-theoretic, agent-based — describe
 it in this order:
@@ -407,7 +518,7 @@ A model described without step 4 will be treated as explaining more than it does
 
 ---
 
-## 10. Worked example: one event, two modes
+## 11. Worked example: one event, two modes
 
 A single event resolved in tabletop mode and simulation mode, using only the
 canonical engine. This is the issue's acceptance criterion, and it demonstrates
@@ -417,7 +528,7 @@ canonical engine. This is the issue's acceptance criterion, and it demonstrates
 to talk a hostile functionary into releasing a record. The GM judges this a
 **significant challenge to a competent professional**: difficulty **8**.
 
-### 10.1 Tabletop mode
+### 11.1 Tabletop mode
 
 ```text
 total = 2d6 + skill 2 + attribute +1
@@ -427,7 +538,7 @@ success = total >= 8
 The player rolls 2d6 and gets 9. Total = 9 + 2 + 1 = **12** ≥ 8 → success. The table
 sees one number and a yes.
 
-### 10.2 Simulation mode
+### 11.2 Simulation mode
 
 The simulation does not re-derive a rule; it samples the same model. The modifier
 is +3, so success needs 2d6 ≥ 5: outcomes 5..12, i.e. 4+5+6+5+4+3+2+1 = 30 of 36
@@ -440,7 +551,7 @@ P(success) = 30/36 = 0.8333
 Sampling 100,000 trials from the identical 36-outcome distribution returns
 approximately 0.833 — the same model, evaluated rather than rolled.
 
-### 10.3 What this example demonstrates
+### 11.3 What this example demonstrates
 
 - The probability is a **property of the canonical rule**, not a new mechanic.
 - The tabletop and the simulation share one model, so a balance change is one edit.
@@ -449,7 +560,7 @@ approximately 0.833 — the same model, evaluated rather than rolled.
 
 ---
 
-## 11. Worldbuilding workflow
+## 12. Worldbuilding workflow
 
 The desired rhythm, from the issue:
 
@@ -459,7 +570,7 @@ Concretely:
 
 1. **Theory** — name a real source and what it argues.
 2. **Model** — state how the project reads it, with assumptions and limits
-   ([§9](#9-conventions-for-describing-a-model)).
+   ([§10](#10-conventions-for-describing-a-model)).
 3. **Strange consequence** — the extrapolation, marked **NOÖPUNK:**. This is where
    the fiction is allowed to be strange; it is not where the evidence is
    strengthened.
@@ -472,7 +583,7 @@ convention.
 
 ---
 
-## 12. Design constraint: do not write a textbook
+## 13. Design constraint: do not write a textbook
 
 The academic apparatus supports the fiction **beneath the floorboards**. It must
 not sit on the player's chest.
@@ -493,12 +604,12 @@ expository passage that cannot be acted on has failed the playability test.
 
 ---
 
-## 13. Examples
+## 14. Examples
 
 Each example demonstrates one convention. They are **illustrative, not canon** —
 none of them establishes a setting fact or a rule.
 
-### 13.1 A setting paragraph (artefact, not lore dump)
+### 14.1 A setting paragraph (artefact, not lore dump)
 
 > **FROM THE 20XX MINUTES OF THE MUNICIPAL RECORDS BOARD**
 >
@@ -512,7 +623,7 @@ none of them establishes a setting fact or a rule.
 No exposition, no narrator, and the institutional absurdity is in the procedure
 rather than in a joke. Status: **NoöPunk extrapolation**.
 
-### 13.2 A mechanic write-up (expository register)
+### 14.2 A mechanic write-up (expository register)
 
 > **Contested Records.** When a character petitions an institution to release a
 > record that has been classified *unresolved*, the GM calls an opposed check. The
@@ -525,7 +636,7 @@ The mechanic is stated, the procedure is playable, and the flavour is in the
 consequence. This follows `RULEBOOK.md` §4.1's opposed-check procedure and the
 player-character tie rule; it does not add a subsystem.
 
-### 13.3 A sidebar (the apparatus, out of the way)
+### 14.3 A sidebar (the apparatus, out of the way)
 
 > **Designer note — why "reclassified" instead of "refused".**
 >
@@ -536,7 +647,7 @@ player-character tie rule; it does not add a subsystem.
 > **NOÖPUNK:** In 20XX, records can be reclassified faster than they can be
 > appealed.
 
-### 13.4 A citation block
+### 14.4 A citation block
 
 ```text
 Castells, M. (2009). Communication Power. Oxford University Press.
@@ -552,7 +663,7 @@ Not used for: any claim about the empirical power of any specific NoöPunk facti
 The "not used for" line is the part that keeps a citation from doing more work than
 it can bear.
 
-### 13.5 A fictional vignette (PKD register, no pastiche)
+### 14.5 A fictional vignette (PKD register, no pastiche)
 
 > The building had been a hospital, then a data centre, then a church, then
 > whatever it was now. Meri worked on the fourth floor answering complaints about
@@ -569,7 +680,7 @@ Dick sentence is imitated.
 
 ---
 
-## 14. Follow-ups (not in this task)
+## 15. Follow-ups (not in this task)
 
 The issue lists items to *consider later*. They are recorded here so they are not
 lost, and deliberately not built:
