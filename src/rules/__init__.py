@@ -1,10 +1,9 @@
-"""Canonical, engine-independent NoöPunk RPG rules.
+"""Engine-independent NoöPunk RPG rules.
 
-RULEBOOK.md is the source of truth; this package consumes the authored values from
-``data/rules/core.json`` rather than re-declaring them.
-
-The skill-check engine is **2d6 + skill level + attribute modifier** against
-6/8/10/12/14+ (RULEBOOK §4). The earlier 3d6 skill-check engine is withdrawn.
+RULEBOOK.md is the source of truth. The existing core module still carries the
+legacy six-attribute digital specification as explicit porting debt; issue #51 adds
+the new generic four-system typed-tag model in rules.tags without inventing the
+final attribute list.
 """
 
 from .core import (
@@ -65,4 +64,31 @@ __all__ = [
     "roll_2d6",
     "roll_3d6",
     "roll_check_dice",
+]
+
+
+# Issue #51 typed-tag API. Imported after the legacy core exports so callers can
+# migrate incrementally without pretending the old AttributeSet is final canon.
+from .tags import (
+    EntityState,
+    SystemDomain,
+    SystemState,
+    Tag,
+    TagCategory,
+    TagStack,
+    absent_system,
+    present_system,
+    stack_relevant_tags,
+)
+
+__all__ += [
+    "EntityState",
+    "SystemDomain",
+    "SystemState",
+    "Tag",
+    "TagCategory",
+    "TagStack",
+    "absent_system",
+    "present_system",
+    "stack_relevant_tags",
 ]
