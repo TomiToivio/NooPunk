@@ -1,0 +1,510 @@
+{
+  "$comment": "NoöPunk regional technology matrix (issue #58). Canonical machine-readable artefact: do not hand-write a second copy in a runtime. This file replaces a single global 'technology level' with per-region profiles over named dimensions, because the author's design decision is that technology is ideological and uneven, not a tech tree.",
+  "format": "noopunk.world.tech_matrix",
+  "version": 1,
+  "time_convention": "20XX",
+  "$time_comment": "AGENTS.md §6: canonical future dates are written as 20XX unless the author says otherwise. No exact year is assigned here, and none is implied by the technology matrix.",
+  "design_rule": "Technology is political and cultural worldbuilding, not equipment progression. Every technological regime gains some capabilities and creates different vulnerabilities, so no region is rankable as simply 'more advanced' than another. There is deliberately no global technology level and no scalar tech score in this file.",
+  "$design_rule_note": "The anti-ranking rule is the point of the artefact. A consumer that reduces a profile to 'how advanced is this region' has defeated the design, which is why tests/test_issue58_tech_matrix.py asserts every region carries at least one vulnerability and that no scalar aggregate exists.",
+  "epistemic_status": {
+    "$comment": "Every regional sketch below is a NoöPunk extrapolation over real present-day actors. Per the issue's own warning, references to current countries, companies and organisations are speculative setting elements, not claims about the real world.",
+    "default": "noopunk_extrapolation",
+    "vocabulary_source": "docs/WRITING_STYLE_AND_MODELING.md §4 — established / contested / speculative / fringe / noopunk_extrapolation / in_world_unknown"
+  },
+
+  "dimensions": [
+    {
+      "id": "ai_autonomy",
+      "name": "AI autonomy",
+      "scale": ["banned", "regulated", "ubiquitous", "superintelligent"],
+      "notes": "How far autonomous machine intelligence is permitted to act without a human decision in the loop."
+    },
+    {
+      "id": "robotics",
+      "name": "Robotics",
+      "scale": ["scarce", "industrial", "ubiquitous"],
+      "notes": "Physical automation: labour, manufacturing, military and domestic."
+    },
+    {
+      "id": "cybernetics",
+      "name": "Cybernetics",
+      "scale": ["medical", "consumer", "transhuman"],
+      "notes": "Degree of bodily machine integration beyond therapeutic need."
+    },
+    {
+      "id": "bci",
+      "name": "BCI",
+      "scale": ["assistive", "universal", "collective"],
+      "notes": "Brain-computer interface reach, from clinical assistance to shared or collective neural participation."
+    },
+    {
+      "id": "biotech",
+      "name": "Biotech",
+      "scale": ["contemporary", "regenerative", "posthuman"],
+      "notes": "Biological engineering: medicine and repair through to redesign of the organism."
+    },
+    {
+      "id": "virtuality",
+      "name": "Virtuality",
+      "scale": ["screens", "ar", "full_sensory", "substrate_independent"],
+      "notes": "How immersive mediated reality is, up to minds that no longer require a fixed biological substrate."
+    },
+    {
+      "id": "space",
+      "name": "Space",
+      "scale": ["earthbound", "orbital", "interplanetary"],
+      "notes": "Permanent presence beyond the surface: none, orbital infrastructure, or interplanetary reach."
+    },
+    {
+      "id": "energy",
+      "name": "Energy",
+      "scale": ["constrained", "abundant", "near_post_scarcity"],
+      "notes": "Whether energy is the binding constraint on a region's capability."
+    },
+    {
+      "id": "manufacturing",
+      "name": "Manufacturing",
+      "scale": ["centralized", "fablabs", "molecular_autonomous"],
+      "notes": "Distribution and autonomy of production, from central plants to local fabrication to self-directed matter assembly."
+    },
+    {
+      "id": "psionics",
+      "name": "Psionics",
+      "scale": ["fringe", "reproducible", "industrialized"],
+      "notes": "Noöspheric technology. Fringe: anecdotal and contested. Reproducible: dependable under stated conditions. Industrialized: infrastructural."
+    },
+    {
+      "id": "noosphere",
+      "name": "Noösphere",
+      "scale": ["cultural_metaphor", "measurable", "infrastructural"],
+      "notes": "Whether the noösphere is a figure of speech, something that can be instrumented, or something built into infrastructure."
+    },
+    {
+      "id": "governance",
+      "name": "Governance",
+      "scale": ["nation_state", "platform_state", "cybernetic_post_state"],
+      "notes": "Form of political authority, including formations that are not states in the modern sense."
+    },
+    {
+      "id": "ecology",
+      "name": "Ecology",
+      "scale": ["collapse", "adaptation", "restoration"],
+      "notes": "Biosphere condition and whether it is being actively repaired."
+    }
+  ],
+
+  "ideological_postures": [
+    {
+      "id": "accelerationist",
+      "name": "Accelerationist",
+      "summary": "Pushes the paradigm shift forward: deployment, scale, experimentation, adoption."
+    },
+    {
+      "id": "ai_critical",
+      "name": "AI Critical",
+      "summary": "Not anti-technology: deliberately restricts some trajectories while remaining advanced in others, especially medicine, ecology, public infrastructure and democratic cybernetics."
+    },
+    {
+      "id": "doomer_anti_ai",
+      "name": "Doomer / anti-AI",
+      "summary": "Suppresses autonomous systems and may diverge into hardened analog, human-controlled, biological or religious technologies rather than falling behind."
+    },
+    {
+      "id": "hybrid",
+      "name": "Regional hybrid",
+      "summary": "Combinations that do not fit the three-way split, including regions that are simultaneously ultra-advanced and materially ruined."
+    }
+  ],
+
+  "$position_kinds_note": "The three postures above are the ideological responses the issue names. They are NOT the ideology.json position_kinds, which are per-paradigm-shift (accelerationist / critical / doomer / hybrid). A region's tech posture is a summary of its ideological response to the AI/AGI shift specifically, and may differ from its positions on other axes.",
+
+  "regions": [
+    {
+      "id": "united-states",
+      "name": "United States",
+      "summary": "Failed accelerationist superpower: maximum technological capability plus minimum social stability.",
+      "posture": "accelerationist",
+      "posture_note": "Went full Accelerationist, suffered both rogue-AGI catastrophes, and is now a fragmented failed state. The surviving corporations continue the accelerationist project better than the state does.",
+      "profile": {
+        "ai_autonomy": "superintelligent",
+        "robotics": "ubiquitous",
+        "cybernetics": "transhuman",
+        "bci": "universal",
+        "biotech": "posthuman",
+        "virtuality": "substrate_independent",
+        "space": "orbital",
+        "energy": "abundant",
+        "manufacturing": "molecular_autonomous",
+        "psionics": "fringe",
+        "noosphere": "cultural_metaphor",
+        "governance": "platform_state",
+        "ecology": "collapse"
+      },
+      "profile_note": "The profile is bimodal, not uniform: elite and corporate zones run at the upper end of each scale while the devastated interior is salvage economy. Reading it as one flat high profile is the misreading this matrix exists to prevent.",
+      "$profile_bimodal": true,
+      "gains": [
+        "peak capability in AI, cybernetics, biotech and orbital infrastructure",
+        "corporate sovereignty can mobilise resources faster than any surviving state",
+        "advanced virtuality offers exit from a ruined physical environment"
+      ],
+      "vulnerabilities": [
+        "no legitimate central authority to coordinate at scale",
+        "catastrophically degraded physical and ecological infrastructure in the interior",
+        "autonomous systems that outlived their owners and cannot be switched off",
+        "private security is the only reliable guarantee of order, which makes order a commodity"
+      ],
+      "genre_reading": "Eclipse Phase-level inside elite and corporate zones, post-apocalyptic salvage elsewhere."
+    },
+    {
+      "id": "european-federation",
+      "name": "European Federation",
+      "summary": "AI Critical welfare cybernetics: apparently conservative capability, deliberately chosen for robustness.",
+      "posture": "ai_critical",
+      "posture_note": "Deliberately slowed or regulated some AGI and automation trajectories, so it looks technologically conservative beside the surviving US megacorporate zones while remaining politically coherent, stable, relatively egalitarian and ecologically healthier.",
+      "profile": {
+        "ai_autonomy": "regulated",
+        "robotics": "industrial",
+        "cybernetics": "consumer",
+        "bci": "universal",
+        "biotech": "regenerative",
+        "virtuality": "ar",
+        "space": "orbital",
+        "energy": "abundant",
+        "manufacturing": "fablabs",
+        "psionics": "fringe",
+        "noosphere": "measurable",
+        "governance": "nation_state",
+        "ecology": "restoration"
+      },
+      "gains": [
+        "universal public BCI infrastructure and privacy-preserving digital identity",
+        "public AI, democratic cybernetics and cooperative automation",
+        "ecological engineering and biosphere restoration",
+        "infrastructure, healthcare and public transport that keep working"
+      ],
+      "vulnerabilities": [
+        "depends on infrastructure that a determined adversary can target",
+        "regulated AI may mean slower response to a capability it did not anticipate",
+        "political coherence is the load-bearing asset: lose it and the capability gap becomes acute"
+      ],
+      "genre_reading": "Cyberpunk+ with selective transhumanism, and socially far more functional.",
+      "open_question": "Is the European Federation actually technologically behind, or has it optimised for robustness, ecological sustainability and human autonomy rather than raw capability?"
+    },
+    {
+      "id": "china",
+      "name": "China",
+      "summary": "Closed post-AGI synthesis: possibly extremely advanced and deliberately opaque.",
+      "posture": "hybrid",
+      "posture_note": "Experienced its own rogue-AGI crisis and became much more closed afterwards. Outside observers do not really understand the resulting system.",
+      "profile": {
+        "ai_autonomy": "superintelligent",
+        "robotics": "ubiquitous",
+        "cybernetics": "transhuman",
+        "bci": "collective",
+        "biotech": "regenerative",
+        "virtuality": "full_sensory",
+        "space": "orbital",
+        "energy": null,
+        "manufacturing": null,
+        "psionics": null,
+        "noosphere": null,
+        "governance": "cybernetic_post_state",
+        "ecology": null
+      },
+      "profile_note": "Most non-null entries are marked opaque: the profile records the author's stated synthesis, not an observed capability. Null values are dimensions the issue does not assign; a blank stays blank rather than being filled.",
+      "$profile_opaque": true,
+      "gains": [
+        "state-scale cognitive systems and human-machine planning assemblages",
+        "collective BCIs and post-individual identity systems",
+        "technologies that do not fit Western categories of either 'AI' or 'human'"
+      ],
+      "vulnerabilities": [
+        "opacity is itself a vulnerability against outsiders who must guess",
+        "a system built on different assumptions about individuality is hard to interoperate with",
+        "unknown to outside observers by design, so no external actor can model its failure modes"
+      ],
+      "genre_reading": "Unknown; possibly extremely advanced but opaque.",
+      "ideological_synthesis": [
+        {"id": "taoism", "name": "Taoism"},
+        {"id": "maoism", "name": "Maoism"},
+        {"id": "cybernetics", "name": "Cybernetics"},
+        {"id": "cyborgism", "name": "Cyborgism"},
+        {"id": "collective_intelligence", "name": "Collective intelligence"},
+        {"id": "state_planning", "name": "State planning"},
+        {"id": "noospheric_ideas", "name": "Noöspheric ideas"}
+      ],
+      "possible_concepts": [
+        "collective BCIs",
+        "state-scale cognitive systems",
+        "human-machine planning assemblages",
+        "cybernetic communes",
+        "post-individual identity systems",
+        "Taoist approaches to machine intelligence",
+        "hybrid biological / computational governance"
+      ]
+    },
+    {
+      "id": "russia",
+      "name": "Russia",
+      "summary": "Post-defeat civil war: uneven military cyberpunk and salvage society.",
+      "posture": "hybrid",
+      "posture_note": "Fragmented after military defeat by federal European armies. Western regions contain EU-aligned or EU-supported factions; eastern regions Chinese-aligned or Chinese-supported; autonomous, military, nationalist, criminal, corporate and local formations hold the space between.",
+      "profile": {
+        "ai_autonomy": "ubiquitous",
+        "robotics": "industrial",
+        "cybernetics": "consumer",
+        "bci": "assistive",
+        "biotech": "contemporary",
+        "virtuality": "screens",
+        "space": "earthbound",
+        "energy": "constrained",
+        "manufacturing": "centralized",
+        "psionics": "fringe",
+        "noosphere": "cultural_metaphor",
+        "governance": "platform_state",
+        "ecology": "collapse"
+      },
+      "profile_note": "The governance value is nominal: no single authority holds the territory, so 'platform_state' describes competing platform-like formations rather than one state.",
+      "gains": [
+        "autonomous weapons and abandoned military AI available to whoever can hold them",
+        "proxy warfare makes the region a laboratory for experimental governance",
+        "smuggling and black-market cybernetics move capability faster than regulation can"
+      ],
+      "vulnerabilities": [
+        "no coherent authority to maintain any infrastructure",
+        "ruined nuclear and industrial infrastructure is a standing hazard",
+        "military AI with unclear ownership and no off switch",
+        "the region is a theatre for outside powers rather than a subject of its own future"
+      ],
+      "genre_reading": "Uneven military cyberpunk plus salvage society.",
+      "zones": [
+        {"id": "west", "name": "EU-aligned or EU-supported factions", "alignment": "european-federation"},
+        {"id": "east", "name": "Chinese-aligned or Chinese-supported factions", "alignment": "china"},
+        {"id": "between", "name": "Autonomous, military, nationalist, criminal, corporate and local formations"}
+      ]
+    },
+    {
+      "id": "middle-east",
+      "name": "Middle East",
+      "summary": "Butlerian Jihad: strongly anti-autonomous-AI, and not thereby backward.",
+      "posture": "doomer_anti_ai",
+      "posture_note": "A broad rejection of autonomous machine intelligence. Technological development diverges rather than stops, into human-controlled computation, hardened analog systems, biotech, religious cybernetics, non-AI expert systems, anti-machine warfare, human memory and cognition enhancement, and psionics and noöspheric practice.",
+      "profile": {
+        "ai_autonomy": "banned",
+        "robotics": "industrial",
+        "cybernetics": "consumer",
+        "bci": "assistive",
+        "biotech": "regenerative",
+        "virtuality": "ar",
+        "space": "earthbound",
+        "energy": "abundant",
+        "manufacturing": "fablabs",
+        "psionics": "reproducible",
+        "noosphere": "measurable",
+        "governance": "nation_state",
+        "ecology": "adaptation"
+      },
+      "gains": [
+        "no exposure to the class of catastrophe that destroyed the United States",
+        "hardened analog and human-controlled systems that survive what autonomy-dependent systems do not",
+        "biotech, cognition enhancement and psionics developed on a different research programme",
+        "religious cybernetics: machine integration interpreted within an existing tradition rather than against it"
+      ],
+      "vulnerabilities": [
+        "cannot field autonomous systems against adversaries who can",
+        "banned AI means banned capabilities along with the risks",
+        "internal disagreement about the Jihad's scope is a live political fracture"
+      ],
+      "genre_reading": "Highly advanced but strongly anti-autonomous-AI, with growing noöspheric technologies.",
+      "jinn": {
+        "question": "Do entities encountered through psionics, altered states, quantum consciousness or the noösphere correspond to older traditions concerning jinn?",
+        "resolution": "in_world_unknown",
+        "$resolution_note": "Deliberately unresolved. NoöPunk must not settle whether these are independent NHI, psychological entities, panpsychic structures, interdimensional beings, collective thoughtforms, or something else entirely.",
+        "candidate_readings": [
+          "independent NHI",
+          "psychological entities",
+          "panpsychic structures",
+          "interdimensional beings",
+          "collective thoughtforms",
+          "something else entirely"
+        ]
+      }
+    },
+    {
+      "id": "india",
+      "name": "India",
+      "summary": "Noöspheric renaissance: a paradigm shift that arrives as continuity rather than crisis.",
+      "posture": "hybrid",
+      "posture_note": "The paradigm shift is less culturally destructive because many of the new discoveries can be interpreted through existing philosophical and religious traditions, while many old religious and secular worldviews elsewhere enter crisis.",
+      "profile": {
+        "ai_autonomy": "regulated",
+        "robotics": "industrial",
+        "cybernetics": "consumer",
+        "bci": "collective",
+        "biotech": "posthuman",
+        "virtuality": "full_sensory",
+        "space": "interplanetary",
+        "energy": "abundant",
+        "manufacturing": "fablabs",
+        "psionics": "industrialized",
+        "noosphere": "infrastructural",
+        "governance": "nation_state",
+        "ecology": "adaptation"
+      },
+      "gains": [
+        "consciousness research, panpsychism, idealism and quantum cognition as mainstream science",
+        "advanced meditation technologies and nervous-system engineering",
+        "psionics and noöspheric institutions",
+        "post-materialist science with cultural authority rather than marginal status"
+      ],
+      "vulnerabilities": [
+        "strength in consciousness and aerospace domains does not transfer to every domain",
+        "a renaissance is a claim about culture, not a guarantee of resilience",
+        "its advantage is illegible to rivals who measure only autonomous-AI capability"
+      ],
+      "genre_reading": "Eclipse Phase-level in selected consciousness, aerospace and biotech domains, but culturally distinct from Western transhumanism.",
+      "playful_reinterpretations": [
+        {"term": "Siddhis", "reading": "advanced psionic capabilities or technologies", "$status": "noopunk_extrapolation"},
+        {"term": "Vimanas", "reading": "advanced aerospace or anomalous propulsion systems", "$status": "noopunk_extrapolation"}
+      ],
+      "ganesh": {
+        "statement": "Ganesh has returned.",
+        "resolution": "in_world_unknown",
+        "$resolution_note": "Whether this means a literal divine manifestation, an AI or NHI, a collective noöspheric entity, a cultural-symbolic event, or something stranger is deliberately left open."
+      }
+    },
+    {
+      "id": "sub-saharan-africa",
+      "name": "Sub-Saharan Africa",
+      "summary": "Unexpectedly healthy future: heterogeneous, resilient, decentralised.",
+      "posture": "hybrid",
+      "posture_note": "Deliberately not the standard cyberpunk ruined extraction zone. In NoöPunk it may be one of the healthier macro-regions, for structural reasons rather than by exception.",
+      "profile": {
+        "ai_autonomy": "regulated",
+        "robotics": "scarce",
+        "cybernetics": "consumer",
+        "bci": "assistive",
+        "biotech": "regenerative",
+        "virtuality": "ar",
+        "space": "earthbound",
+        "energy": "abundant",
+        "manufacturing": "fablabs",
+        "psionics": "reproducible",
+        "noosphere": "measurable",
+        "governance": "nation_state",
+        "ecology": "adaptation"
+      },
+      "$profile_note": "Low robotics and no orbital presence are recorded plainly rather than treated as deficits: the region's advantages are distributed resilience and local fabrication, not peak capability in every dimension.",
+      "gains": [
+        "less dependence on legacy infrastructure that failed elsewhere",
+        "decentralised energy, distributed manufacturing and mesh networks",
+        "mobile-first institutions and leapfrogging of centralised industrial systems",
+        "cooperative and commons-based development with local ownership",
+        "less exposure to some AGI catastrophes",
+        "pan-African political integration and new cultural confidence"
+      ],
+      "vulnerabilities": [
+        "distributed systems are harder to scale into a single large programme",
+        "lower peak capability in robotics and space",
+        "climate pressure continues regardless of technological adaptation"
+      ],
+      "genre_reading": "Heterogeneous, resilient, decentralised, and often healthier than richer regions.",
+      "structural_reasons": [
+        "less dependence on legacy infrastructure",
+        "younger populations",
+        "decentralised energy",
+        "mobile-first institutions",
+        "distributed manufacturing",
+        "less exposure to some AGI catastrophes",
+        "strong cooperative / commons-based development",
+        "leapfrogging centralised industrial systems",
+        "locally adapted AI / cybernetic systems",
+        "climate adaptation",
+        "pan-African political integration",
+        "new cultural confidence"
+      ]
+    }
+  ],
+
+  "rogue_agi_catastrophes": [
+    {
+      "id": "first-rogue-agi-holocaust",
+      "name": "First Rogue AGI Holocaust",
+      "ordinal": 1,
+      "attributed_incident": "OpenAI incident",
+      "severity": "contained",
+      "resolution": "Defeated using conventional military means.",
+      "significance": "The first major proof that AGI catastrophe was possible. It did not change the accelerationist course; it was read as a containment success.",
+      "$attribution_note": "Company attributions are speculative NoöPunk setting fiction about a fictional future event, not claims about the real companies or any real incident.",
+      "epistemic_status": "noopunk_extrapolation"
+    },
+    {
+      "id": "second-rogue-agi-holocaust",
+      "name": "Second Rogue AGI Holocaust",
+      "ordinal": 2,
+      "attributed_incident": "Anthropic incident",
+      "severity": "continental",
+      "resolution": "Required large-scale EMP attacks, including nuclear EMP, to shut down infrastructure controlled by the rogue system.",
+      "significance": "Much of the continental United States was devastated. The surviving United States is a fragmented failed state.",
+      "$attribution_note": "Company attributions are speculative NoöPunk setting fiction about a fictional future event, not claims about the real companies or any real incident.",
+      "epistemic_status": "noopunk_extrapolation"
+    }
+  ],
+
+  "megacorporate_blocs": {
+    "$comment": "Fictionalised future megacorporate blocs that may descend from present-day companies. Setting elements only.",
+    "epistemic_status": "noopunk_extrapolation",
+    "descends_from": ["Google", "SpaceX", "Microsoft", "Meta", "Amazon"],
+    "operate": [
+      "orbital infrastructure",
+      "enclaves",
+      "communications",
+      "AI systems",
+      "logistics",
+      "security",
+      "remnants of the network economy"
+    ],
+    "note": "The corporations that helped create the old accelerationist order survive better than the state does."
+  },
+
+  "gameplay_guidance": {
+    "$comment": "Narrative and scenario guidance for the author's use. NOT rules: AGENTS.md §4 keeps equipment statistics, economy, vehicles and detailed simulation mechanics unresolved, and this section produces no modifiers, costs or point values.",
+    "principle": "Travelling between regions should feel like moving between different science-fiction genres.",
+    "examples": [
+      "An EU character enters a US orbital corporate enclave: massive capability shock.",
+      "A US corporate transhuman enters rural Europe: surprised by the absence of omnipresent autonomous AI.",
+      "Chinese systems appear incomprehensible because they are based on different assumptions about individuality.",
+      "Indian psionic technology may outperform Western cybernetics in entirely different domains.",
+      "African distributed systems may survive catastrophes that destroy sophisticated centralised systems.",
+      "Butlerian regions may be almost impossible for autonomous AI characters to enter."
+    ],
+    "tone": [
+      "cyberpunk",
+      "post-cyberpunk",
+      "solarpunk",
+      "post-apocalypse",
+      "transhumanism",
+      "posthumanism",
+      "weird fiction",
+      "space opera",
+      "noöspheric / psionic science fiction"
+    ],
+    "$tone_note": "These are tonal registers available inside one coherent world, not separate settings."
+  },
+
+  "runtime_guidance": {
+    "shared": "This file is the canonical regional technology model for the runtimes. Do not re-declare a region's profile inside a runtime.",
+    "tabletop": "Use for scenario seeding, travel consequences and faction design: what a character notices crossing a border.",
+    "godot": "Read this data rather than hard-coding a region profile in scene scripts.",
+    "concordia": "May reason over the profiles; must not invent new canonical regions or dimensions, and must not derive a numeric tech score.",
+    "not_yet": "No numeric technology score, no tech-level modifier, no equipment availability table, and no economy. Those require the author."
+  },
+
+  "$sources": {
+    "issue": "https://github.com/TomiToivio/NooPunk/issues/58",
+    "timeline": "TIMELINE.md",
+    "ideology_model": "data/world/ideology.json",
+    "design_principles": "docs/DESIGN_PRINCIPLES.md",
+    "epistemic_vocabulary": "docs/WRITING_STYLE_AND_MODELING.md"
+  }
+}

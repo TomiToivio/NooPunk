@@ -173,6 +173,24 @@ contested rather than ideologically unified.
 The ideological model is setting material only; no numeric ideology mechanics are
 defined.
 
+## The world: regional technology
+
+NoöPunk has **no global technology level**. Technology is ideological and uneven: the
+same paradigm shift produced several incompatible futures occupying one planet, so
+Cybernetic regions, welfare-cybernetic AI-critical regions, Butlerian regions,
+post-catastrophe salvage zones and noöspheric renaissance regions all coexist.
+
+The governing rule is that **every technological regime gains some capabilities and
+creates different vulnerabilities**, so no region is rankable as simply "more
+advanced" than another. The question "is this Cyberpunk 2020 or Eclipse Phase?" is
+answered with *both, in different places*.
+
+- Canonical regional matrix and the two rogue-AGI catastrophes: [data/world/tech_matrix.json](data/world/tech_matrix.json)
+- How to read a region profile: [docs/TECH_MATRIX.md](docs/TECH_MATRIX.md)
+
+There is deliberately no scalar tech score, no tech-level modifier and no derived
+equipment table.
+
 ## One game, not three products
 
 NoöPunk is **one computer RPG/social simulation** — one ruleset, one world model, one

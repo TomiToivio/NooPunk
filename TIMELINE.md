@@ -12,7 +12,28 @@ Artificial general intelligence and eventually artificial superintelligence are 
 
 ## 20XX — Rogue AGI / ASI Disaster in the United States
 
+> **Superseded and expanded by [#58](https://github.com/TomiToivio/NooPunk/issues/58)**
+> (2026-10-02): there were **two** rogue-AGI catastrophes, not one. The single-event
+> wording below remains true of the second and more severe of them. The full
+> two-event record is canonical in
+> [`data/world/tech_matrix.json`](data/world/tech_matrix.json) and explained in
+> [`docs/TECH_MATRIX.md`](docs/TECH_MATRIX.md).
+
 A major rogue-AI disaster occurs, concentrated primarily in the United States. The event becomes a historical rupture in the governance of advanced AI and reshapes global technological power.
+
+Within the NoöPunk scenario this is the **Second Rogue AGI Holocaust**, the more
+severe of the two. It required large-scale EMP attacks, including nuclear EMP, to
+shut down infrastructure controlled by the rogue system, and much of the continental
+United States was devastated. The surviving United States is a fragmented failed
+state: maximum technological capability alongside minimum social stability.
+
+The earlier **First Rogue AGI Holocaust** was comparatively contained — defeated by
+conventional military means — and is the first major proof that AGI catastrophe was
+possible. It was nonetheless read at the time as a containment success, and so did
+not change the accelerationist course.
+
+Company attributions for either event are speculative NoöPunk setting fiction about a
+fictional future, not claims about the real world.
 
 ## 20XX — EU–Russia War / World War III
 
