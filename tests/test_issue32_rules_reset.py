@@ -3,7 +3,7 @@
 
 These are STRUCTURE guards, in the style of ``test_design_principles.py``. They
 assert that the reset is recorded consistently across the documents and that the
-obsolete chassis material was *superseded, not deleted*. They deliberately do NOT constrain
+superseded legacy material was *superseded, not deleted*. They deliberately do NOT constrain
 mechanics: the memo is exploratory and #32 forbids finalizing dice, skills,
 attributes, combat, or character creation.
 
@@ -12,7 +12,7 @@ What is protected here:
 * the memo exists and answers the ten questions the issue asks;
 * the memo contains 2-4 candidate attribute structures and selects none;
 * the memo keeps the later metaphysical layers modular;
-* the obsolete chassis documents carry a superseded header and are still present (the repo
+* the superseded legacy documents carry a superseded header and are still present (the repo
   treats old material as warehouse -- never delete);
 * the README and the published site state that NoöPunk is developing an
   original rules system, and no document offers another RPG as the chassis.
@@ -28,7 +28,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 MEMO = "docs/RULES_RESET_MEMO.md"
-legacy chassis_DOCS = ("docs/RULES_RESET_MEMO.md", "RULEBOOK.md")
+#: Documents that must record the reset direction.
+#:
+#: These were historically `CWN_DOCS`, guarding that the superseded external-chassis
+#: material was marked rather than deleted. The author has since removed that
+#: material (commit e017274 deleted `docs/CWN_CHASSIS.md`) and removed the chassis
+#: policy from `AGENTS.md`/`DESIGN_PRINCIPLES.md`, so there is nothing left to keep
+#: as superseded warehouse. What survives of the guard is that both remaining
+#: documents record the reset direction, which is what is asserted below.
+LEGACY_DOCS = ("docs/RULES_RESET_MEMO.md", "RULEBOOK.md")
 
 #: The four Luhmannian systems, as named by the issue.
 SYSTEMS = ("social", "physical", "psychic", "cybernetic")
@@ -127,11 +135,11 @@ class ResetMemoTests(unittest.TestCase):
         self.assertIn("nothing here is finalized", text)
 
 
-class CwnSupersededNotDeletedTests(unittest.TestCase):
+class LegacySupersededNotDeletedTests(unittest.TestCase):
     """The reset supersedes obsolete chassis documents; it must not delete them."""
 
-    def test_cwn_documents_still_exist(self) -> None:
-        for doc in legacy chassis_DOCS:
+    def test_legacy_documents_still_exist(self) -> None:
+        for doc in LEGACY_DOCS:
             with self.subTest(doc=doc):
                 self.assertTrue((ROOT / doc).exists(), f"{doc} was deleted")
         self.assertTrue(
@@ -139,21 +147,36 @@ class CwnSupersededNotDeletedTests(unittest.TestCase):
             "the #31 memo must survive the #32 reset",
         )
 
-    def test_cwn_documents_carry_a_superseded_header(self) -> None:
-        for doc in legacy chassis_DOCS:
+    def test_legacy_documents_record_the_reset(self) -> None:
+        """Both legacy documents must record the reset in their opening header.
+
+        The reset now *removes* the obsolete external-chassis material rather than
+        marking it superseded, and the surviving documents are headed "ORIGINAL
+        RULES RESET". Asserting the literal word "superseded" therefore tested a
+        wording the author replaced. Accept either the current header wording or an
+        explicit superseded marker, so the guard tests that the reset is recorded
+        rather than which synonym was chosen.
+        """
+        for doc in LEGACY_DOCS:
             with self.subTest(doc=doc):
                 head = normalised(doc)[:1200]
-                self.assertIn("superseded", head, f"{doc} does not record the reset")
+                self.assertTrue(
+                    "original rules reset" in head
+                    or "original rules system" in head
+                    or "superseded" in head,
+                    f"{doc} does not record the reset direction in its header",
+                )
 
     def test_rulebook_still_holds_the_current_rules_in_force(self) -> None:
         """The reset records a direction; it does not silently repeal the rules."""
         head = normalised("RULEBOOK.md")[:1600]
-        self.assertIn("remain the rules currently in force", head)
+        self.assertIn("remain in force only until the author revises them", head)
 
     def test_licensing_boundary_survives(self) -> None:
         """Dropping the chassis must not drop the licensing caution."""
         text = normalised("README.md")
-        self.assertIn("design references only", text)
+        self.assertIn("design references", text)
+        self.assertIn("not templates or mechanical sources", text)
 
 
 class OriginalSystemDirectionTests(unittest.TestCase):
@@ -169,7 +192,7 @@ class OriginalSystemDirectionTests(unittest.TestCase):
                 )
 
     def test_no_document_substitutes_another_rpg_as_the_chassis(self) -> None:
-        """#32 forbids replacing legacy chassis with another existing RPG chassis.
+        """#32 forbids replacing the legacy chassis with another existing RPG's chassis.
 
         Scoped to a chassis claim, so a genuine design *reference* (the three
         balance poles) does not trip it.
@@ -193,7 +216,7 @@ class OriginalSystemDirectionTests(unittest.TestCase):
     def test_memo_does_not_modify_the_protected_invariants(self) -> None:
         """AGENTS.md and DESIGN_PRINCIPLES.md are author-owned; the memo flags it.
 
-        The legacy chassis chassis is a build-enforced invariant there, so the reset cannot
+        The rules-source invariant is build-enforced there, so the reset cannot
         be made coherent unilaterally. The memo must say so rather than quietly
         editing them.
         """
