@@ -4,7 +4,7 @@ This document describes the preserved **infrastructure-only** Concordia runtime 
 
 > **Development status:** Concordia is a later-stage port/simulation runtime. Substantive NoöPunk mechanics, world systems, scenarios, and agent behavior should not advance ahead of the canonical tabletop rules/worldbook. Existing Concordia infrastructure is preserved for later conversion work.
 
-It consumes the author-defined core attributes and the core skill check from shared code. **The check is now the canonical 2d6 engine** (`2d6 + skill level + attribute modifier` against `6 / 8 / 10 / 12 / 14+`, RULEBOOK.md §4) — the 3d6 port debt recorded in RULEBOOK.md §17.1 has been retired for this runtime. It does not define additional characters, factions, world facts, skills, combat, or simulation theory.
+It currently still consumes the **legacy six-attribute digital model** plus the canonical 2d6 skill check from shared code. Issue #51 revises the tabletop character model to typed tags distributed across the four Physical / Social / Psychic / Cybernetic systems, so the six-attribute adapter is now explicit porting debt rather than final canon. The runtime must not invent the final attribute list while that author decision remains open.
 
 ## One RPG, three runtimes, tabletop first
 
@@ -58,7 +58,7 @@ Contains neutral runtime interfaces:
 - `LLMAgentSpec`
 - `HumanPlayer`
 
-LLM and human participant specs may now carry an optional structured AttributeSet with the six canonical modifiers. They still contain no skills, personality model, equipment, faction, ideology, goals, psionics, or other unrequested RPG content.
+LLM and human participant specs may currently carry the legacy structured AttributeSet only for backward compatibility. Future migration should use the engine-independent typed-tag state from `src/rules/tags.py`, including explicit system presence/absence. Participant specs still contain no invented skills, personality model, equipment, faction, ideology, goals, psionics, or other unrequested RPG content.
 
 `HumanPlayer` is currently only an input adapter. It is not silently converted into an LLM-controlled Concordia entity.
 
@@ -192,3 +192,69 @@ Concordia work follows the sequence **tabletop rule → digital specification �
 Before adding a substantive Concordia system, verify that the corresponding tabletop mechanic/world concept is explicitly defined and coherent. If simulation work exposes ambiguity, repair the tabletop source first rather than resolving it only in prompts, components, or agent logic.
 
 Concordia-specific simulation plumbing may remain as preserved infrastructure while tabletop design proceeds.
+
+## Issue #51 agent ecology
+
+NoöPunk should not spend LLM inference on every simulated person. The intended architecture is hierarchical:
+
+1. **Aggregate/environmental state** — crowds, traffic, public mood, markets, diffusion and other non-individual processes.
+2. **Mesa / rule agents** — cheap background agents with structured tags, location, faction/network position, resources and limited actions.
+3. **Lightweight interactive NPCs** — simulation-driven NPCs that can invoke an LLM temporarily when a human starts a meaningful conversation.
+4. **Persistent Concordia / LLM agents** — major recurring characters with memory, beliefs, goals, relationships, motivations and open-ended natural-language interaction.
+
+The same base entity/tag representation should be usable across tiers so an NPC can be promoted when it becomes narratively salient. Promotion changes the controller, not the character's identity or history.
+
+No automatic promotion threshold is canonical yet. Do not invent one in runtime code without an author-approved rule.
+
+### Mesa role
+
+Mesa is appropriate for large populations of limited agents whose interaction vocabulary can remain structured, for example movement, avoidance, trade, reporting, joining/leaving groups, information sharing or other explicitly authored actions. Mesa agents can still participate in Social-system networks without pretending to have unrestricted dialogue.
+
+The current repository does **not** yet add Mesa as a dependency. This section records the architecture approved by issue #51; implementation waits for a focused task so dependency choice, scheduler semantics and population rules are not silently invented.
+
+## Human multiplayer direction
+
+NoöPunk should be architected so multiple human players can participate in one authoritative simulation state.
+
+Conceptually:
+
+```text
+Human A ─┐
+Human B ─┤
+Human C ─┤
+         ▼
+ authoritative NoöPunk server
+         │
+ rules + world state + event log
+         │
+ ┌───────┼────────┐
+ ▼       ▼        ▼
+Mesa   LLM NPCs  Concordia GM
+agents
+```
+
+Human and AI-controlled participants should submit compatible **intent/action envelopes** into the same rules/simulation layer wherever practical. Deterministic mechanics remain authoritative regardless of who supplied the intent.
+
+### UI/server sequence
+
+The first multiplayer UI may be **Streamlit** because the project is Python-first and Streamlit is sufficient for a small prototype with character sheets, chat, logs, maps, network views and admin/debug controls.
+
+Streamlit must remain a client/presentation layer rather than owning canonical simulation state.
+
+For richer real-time multiplayer, the likely later architecture is:
+
+```text
+FastAPI + WebSockets
+        │
+authoritative Python simulation
+        │
+Mesa + Concordia + persistence
+        │
+Streamlit prototype UI
+        │
+optional later JavaScript client
+```
+
+This is an architecture direction, not a requirement to add FastAPI, WebSockets or Streamlit now.
+
+> **The UI is a client. The NoöPunk simulation is the game.**
