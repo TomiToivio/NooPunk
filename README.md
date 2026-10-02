@@ -66,6 +66,8 @@ The rules are being rebuilt from first principles around the four Luhmannian dom
 
 The reset is deliberately slow. Current provisional mechanics remain documented in [RULEBOOK.md](RULEBOOK.md) until the author revises them, but new systems must be designed as original NoöPunk rules.
 
+A working **prototype** of the unified tag engine — the design in which "attributes are tags too", with one stackable tag structure across the Social / Physical / Psychic / Cybernetic systems — lives in [docs/TAG_ENGINE_PROTOTYPE.md](docs/TAG_ENGINE_PROTOTYPE.md) with code in `src/tags/`. It is a prototype on the non-canonical `fixture:` route, not canon: `RULEBOOK.md` §5 makes the four systems canonical while leaving the statistics inside them unfinalized.
+
 Major RPG influences include **Cyberpunk 2013 / 2020 / RED**, **CY_BORG**, **The Sprawl**, **Shadowrun**, and **Eclipse Phase** as design references, not templates or mechanical sources.
 
 No protected material from existing games may be copied. NoöPunk's rules text and mechanics should be written independently.
