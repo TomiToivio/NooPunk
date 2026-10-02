@@ -177,48 +177,61 @@ Only the last row is metaphysical. It is stated as a premise of the setting, not
 
 **Extended, not sealed.** Taken together, the four groups describe a human character who is not a sealed individual unit but an **extended, coupled entity** distributed across a body/biosphere/spacetime, a consciousness, communication networks and technological networks. This connects the character model to extended-mind and distributed-cognition thinking; those literatures are later sources, not yet cited entries in the registry.
 
-**Mechanical consequence.** The only mechanical consequence specified so far is the **four-group division itself**. The individual statistics inside each group, their scales, dice mechanics, coupling rules and derived values remain unspecified, and this subsection does not invent them.
+**Mechanical consequence.** The four-group division is canonical. Issue #51 further specifies that **attributes are tags** inside that four-system model, ordinary-human attribute-tag values use the **-3..+3** band, and an entity may explicitly lack meaningful participation in a system. Final attribute names/counts, generation procedure, automatic tag applicability, coupling rules and derived values remain unresolved.
 
-### 5.1 Legacy/current attributes pending four-group redesign
+### 5.1 Unified attribute-tag model
 
-The canonical attributes are:
+NoöPunk uses one unified tag model. **Attributes are tags**, not a separate subsystem.
 
-- **Fitness (FIT):** your health, fitness and constitution.
-- **Reflexes (REF):** your dexterity, agility and coordination.
-- **Intelligence (INT):** how smart, educated and knowledgeable you are.
-- **Charisma (CHA):** your social skills, attractiveness and leadership skills.
-- **Cybernetics (CYB):** your cyborg side; how technical you are; your proficiency in cyberspace, programming and cybernetics.
-- **Psyche (PSY):** your consciousness, intuition, empathy and psionics. Used in astral projection and for psionics.
+Attribute tags are broad, persistent capability descriptors attached to one of the four system domains. Skill, specialization, equipment, cyberware, relationship, condition, injury, reputation, faction, ideology and other tags use the same general representation but differ in category, scope and persistence.
 
-Do not add alternate names or additional attributes without author specification.
+Each domain should contain **multiple attribute tags**. The final names and exact count are not yet locked. FIT / REF / INT / CHA / CYB / PSY are therefore legacy/prototype identifiers, not the final architecture.
 
-### 5.2 Human attribute generation
+### 5.2 Attribute-tag scale and system presence
 
-For an ordinary human character, roll **3d6 independently for each of the six attributes**.
+For an ordinary human, starting attribute tags use **-3 to +3**:
 
-Convert each raw 3d6 result into an attribute modifier:
+- **-3** extremely poor
+- **-2** poor
+- **-1** below average
+- **0** ordinary human baseline
+- **+1** above average
+- **+2** exceptional
+- **+3** peak / extraordinary human
 
-| 3d6 roll | Modifier |
-|---|---:|
-| 3 | -3 |
-| 4-5 | -2 |
-| 6-8 | -1 |
-| 9-12 | 0 |
-| 13-15 | +1 |
-| 16-17 | +2 |
-| 18 | +3 |
+Values above +3 may represent transhuman/posthuman capability when later rules permit them.
 
-Interpretation:
+A system can also be **absent / not applicable**. Absence is not the same as a low score. A physically present but extremely weak entity may have a Physical attribute at -3; a disembodied/noetic entity may have no meaningful Physical participation at all. A non-conscious AI may have no meaningful Psychic participation. An AI operating only in VR may have Social and Cybernetic participation without direct local Physical participation.
 
-- +3 is the ordinary human upper end represented by this generation table.
-- Values above +3 are **transhuman**.
-- Values below -3 are **basically dead**.
+### 5.2.1 Tag stacking
 
-These statements describe attribute modifiers, not raw 3d6 generation rolls. They do not define any additional death, injury, augmentation, resurrection, or recovery mechanic.
+Relevant tags stack when they represent distinct applicable causes. The attribute tag is one tag in the same stack.
 
-The data model must permit values outside the ordinary-human -3..+3 range. Future transhumans, AI entities, NHI, cybernetic beings, injuries, or other cases may use explicitly assigned values when their rules are later defined.
+Conceptually:
 
-Where useful, preserve both the raw 3d6 generation roll and the resulting modifier.
+~~~text
+relevant attribute tag
++ relevant skill/specialization tags
++ relevant gear/cyberware tags
++/- relevant condition and situational tags
+= total relevant tag modifier
+~~~
+
+Duplicate/synonymous tags must not stack merely because they are phrased differently. Exact applicability and stack limits remain prototype questions in `src/rules/tags.py`.
+
+### 5.2.2 Narrative flags
+
+Beliefs, goals, loyalties, relationships, fears, identity, motivations and directives are structured **narrative/social flags**. They are not automatically bonuses on every roll. They tell the GM/Concordia layer what matters to a character and which situations are dramatically relevant.
+
+> **Simulationism establishes what is true and what causally changes. Narrativism identifies what among those truths matters to the characters and what questions are explored through play.**
+
+### 5.2.3 Cross-system consequences
+
+The four systems are analytically distinct but causally entangled. Physical events may alter Psychic state; Psychic state may affect Social behavior; Social sanctions may alter Cybernetic access; Cybernetic compromise may alter Physical capability. No universal conversion table is defined yet.
+
+### 5.2.4 Digital migration status
+
+Issue #51 introduced the prototype unified tag engine in `src/rules/tags.py`. Final attribute names/counts and generation remain open, so existing six-attribute data in older shared-runtime paths must not be mistaken for final canon.
 
 ### 5.3 Skills
 
