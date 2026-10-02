@@ -77,6 +77,26 @@ def flat(relative: str) -> str:
     return normalised(relative)
 
 
+def numbered_items(heading: str, *, relative: str = STYLE_DOC) -> str:
+    """Return only the ``1. ...``/``2. ...`` numbered-list lines of a section.
+
+    Needed because a required phrase can also occur in the section's prose, so a
+    section-scoped assertion is still satisfied after the list item is deleted.
+    Sabotage-testing found exactly that: removing the "Unit of analysis" list item
+    left the phrase present in the surrounding prose and the guard still passed.
+    """
+    text = read(relative)
+    pattern = re.compile(rf"^##\s+{re.escape(heading)}\s*$", re.MULTILINE)
+    match = pattern.search(text)
+    if match is None:
+        return ""
+    rest = text[match.end():]
+    nxt = re.search(r"^##\s+", rest, re.MULTILINE)
+    body = rest[: nxt.start()] if nxt else rest
+    lines = [line for line in body.splitlines() if re.match(r"^\s*\d+\.\s", line)]
+    return " ".join(re.sub(r"[*_`]", "", line) for line in lines).lower()
+
+
 def section(heading: str, *, relative: str = STYLE_DOC) -> str:
     """Return the normalised body of one ``##`` section, heading excluded.
 
@@ -248,7 +268,7 @@ class CitationConventionTests(unittest.TestCase):
         Anchoring each marker to two named sections is what makes removal fail.
         """
         citation = section("5. Citation conventions")
-        examples = section("13. Examples")
+        examples = section("14. Examples")
         self.assertTrue(examples, "the examples section is missing")
         for marker in MARKERS:
             with self.subTest(marker=marker):
@@ -310,10 +330,10 @@ class WorkedExampleTests(unittest.TestCase):
     """The issue requires one event resolved in tabletop and simulation modes."""
 
     def test_both_modes_are_shown_as_actual_worked_subsections(self) -> None:
-        body = section("10. Worked example: one event, two modes")
+        body = section("11. Worked example: one event, two modes")
         self.assertTrue(body, "the worked-example section is missing")
-        self.assertIn("10.1 tabletop mode", body)
-        self.assertIn("10.2 simulation mode", body)
+        self.assertIn("11.1 tabletop mode", body)
+        self.assertIn("11.2 simulation mode", body)
         # and the simulation half must carry the numbers, not just a heading
         self.assertIn("p(success)", body)
         self.assertIn("0.8333", body)
@@ -434,6 +454,131 @@ class WorkedMathIsCorrectTests(unittest.TestCase):
         var = sum((k - mu) ** 2 * v for k, v in c.items()) / 36
         self.assertAlmostEqual(mu, 7.0, places=6)
         self.assertAlmostEqual(var, 5.833, places=3)
+
+
+class SystemLevelModellingTests(unittest.TestCase):
+    """#41 §5: systems above the individual must be *considered*, not only skill checks.
+
+    This class exists because the first version of the guide claimed this criterion
+    while covering almost none of it: the system-level targets the issue lists were
+    absent from the document. The guard now pins them.
+    """
+
+    def test_the_system_level_section_exists(self) -> None:
+        body = section("9. Modelling systems above the individual")
+        self.assertTrue(body, "the system-level modelling section is missing")
+
+    def test_the_four_required_statements_are_list_items(self) -> None:
+        """They must be in the numbered list, not merely somewhere in the prose."""
+        items = numbered_items("9. Modelling systems above the individual")
+        self.assertTrue(items, "the numbered requirement list is missing")
+        for required in ("unit of analysis", "aggregated away", "scope limit",
+                         "descriptive or normative"):
+            with self.subTest(required=required):
+                self.assertIn(required, items)
+
+    def test_the_list_has_at_least_the_four_required_items(self) -> None:
+        raw = numbered_items("9. Modelling systems above the individual")
+        # numbered_items joins the matches, so count the ``N. `` markers instead
+        count = len(re.findall(r"\b\d+\. ", " . " + raw))
+        self.assertGreaterEqual(count, 4, f"only {count} numbered items found")
+
+    def test_names_the_system_level_domains_the_issue_lists(self) -> None:
+        body = section("9. Modelling systems above the individual")
+        for domain in ("information diffusion", "discourse formation",
+                       "institutional power", "network centrality", "faction",
+                       "collective action", "markets", "scarcity", "trust",
+                       "reputation", "political alignment",
+                       "technological adoption", "memetic", "agents",
+                       "assemblage", "psionic"):
+            with self.subTest(domain=domain):
+                self.assertIn(domain.split()[0], body)
+        # and the specific phrases, not just their first words
+        for phrase in ("information diffusion", "collective action",
+                       "network centrality", "institutional power",
+                       "markets and scarcity", "trust and reputation",
+                       "political alignment", "technological adoption"):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, body)
+
+    def test_anomalous_coupling_is_gated_on_enabled_scenarios(self) -> None:
+        """Psi/anomalous modelling may not be assumed on by default."""
+        body = section("9. Modelling systems above the individual")
+        self.assertIn("explicitly enabled", body)
+
+    def test_uses_question_ownership_instead_of_vocabulary_mapping(self) -> None:
+        body = section("9. Modelling systems above the individual")
+        self.assertIn("owns the question", body)
+        self.assertIn("falsifiable", body)
+
+    def test_an_assemblage_is_not_equated_with_a_network_community(self) -> None:
+        """Assert the *negation*, not the words separately.
+
+        Asserting ``assemblage`` / ``not`` / ``network community`` independently is
+        satisfied by any sentence containing those tokens; the mutation that removed
+        the negation still passed. Anchor the whole claim.
+        """
+        body = section("9. Modelling systems above the individual")
+        self.assertRegex(
+            body,
+            r"assemblage is \*\*not\*\* the same thing as a\s+network community"
+            r"|assemblage is not the same thing as a\s+network community",
+        )
+        self.assertIn("not its definition", body)
+
+    def test_theory_ownership_table_names_the_expected_sources(self) -> None:
+        body = section("9. Modelling systems above the individual")
+        for source in ("laclau", "castells", "luhmann", "deleuze", "sna",
+                       "pcm", "statistics"):
+            with self.subTest(source=source):
+                self.assertIn(source, body)
+
+    def test_a_simulation_only_model_is_not_a_rule(self) -> None:
+        body = section("9. Modelling systems above the individual")
+        self.assertIn("not a noöpunk rule", body)
+
+    def test_it_does_not_define_social_mechanics(self) -> None:
+        """The section is a writing convention; AGENTS.md forbids inventing them."""
+        body = section("9. Modelling systems above the individual")
+        self.assertIn("defines no model", body)
+
+
+class NumberingConsistencyTests(unittest.TestCase):
+    """Section numbering must be contiguous, because cross-references break silently.
+
+    Renumbering the guide for the §5 insertion left two guard sections pointing at
+    headings that no longer existed. That is exactly the drift this pins.
+    """
+
+    def test_sections_are_numbered_without_gaps(self) -> None:
+        headings = re.findall(r"^## (\d+)\.", read(STYLE_DOC), re.MULTILINE)
+        numbers = [int(n) for n in headings]
+        self.assertEqual(numbers, list(range(len(numbers))),
+                         f"section numbering is not contiguous: {numbers}")
+
+    def test_every_internal_anchor_resolves_to_a_heading(self) -> None:
+        text = read(STYLE_DOC)
+        computed = set()
+        for heading in re.findall(r"^#{2,3}\s+(.+)$", text, re.MULTILINE):
+            slug = re.sub(r"[^\w\s-]", "", heading.strip().lower())
+            # GitHub collapses runs of spaces to a single hyphen, so '↔' between two
+            # spaces yields a double hyphen and must be preserved.
+            slug = re.sub(r"\s", "-", slug)
+            computed.add(slug)
+        for ref in set(re.findall(r"\]\(#([^)]+)\)", text)):
+            with self.subTest(anchor=ref):
+                self.assertIn(ref, computed, f"broken internal link: #{ref}")
+
+    def test_sibling_document_links_resolve(self) -> None:
+        """A link to a doc that only exists on another branch is a silent 404."""
+        text = read(STYLE_DOC)
+        parent = (ROOT / STYLE_DOC).parent
+        for target in sorted(set(re.findall(r"\]\((?!http|#)([A-Za-z0-9_./-]+\.md)\)", text))):
+            with self.subTest(target=target):
+                self.assertTrue(
+                    (parent / target).exists() or (ROOT / target).exists(),
+                    f"{target} is linked but does not exist",
+                )
 
 
 if __name__ == "__main__":
