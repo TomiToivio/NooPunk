@@ -1,8 +1,8 @@
 # NoöPunk game design memo: systems, selves, and the Noösphere
 
-> **Status:** exploratory design memo for issue #31.  
-> **Authority:** this document does **not** finalize rules or override `RULEBOOK.md`, `docs/DESIGN_PRINCIPLES.md`, `docs/RULES_RESET_MEMO.md`, or author-specified decisions.  
-> **Purpose:** develop a theoretical and mechanical vocabulary for later tabletop design.
+> **Status:** exploratory design memo for issue #31, partially superseded by issue #51.  
+> **Authority:** this document does **not** finalize rules or override `RULEBOOK.md`, `docs/DESIGN_PRINCIPLES.md`, `docs/RULES_RESET_MEMO.md`, issue #51, or author-specified decisions.  
+> **Purpose:** preserve the theoretical vocabulary that led to the four-system model. Where this memo assumes the old fixed six-attribute architecture, issue #51 and `RULEBOOK.md` now win.
 
 ## 1. Design goal
 
@@ -33,13 +33,14 @@ The following remain authoritative:
 - the three design balances in `docs/DESIGN_PRINCIPLES.md`;
 - tabletop first, with Godot and Concordia following later;
 - an original NoöPunk rules system developed from first principles;
-- the existing six attributes: **FIT, REF, INT, CHA, CYB, PSY**;
-- ordinary-human 3d6 attribute generation and the existing modifier scale;
+- the canonical four systems: **Physical / Social / Psychic / Cybernetic**;
+- issue #51's unified typed-tag direction in which attributes are tags;
+- the ordinary-human attribute-tag modifier band **-3..+3**, while final attribute names/counts and generation remain open;
 - the legacy provisional 2d6 skill-check engine already specified in `RULEBOOK.md`.
 
-Therefore this memo does **not** replace the six attributes with four new stats.
+Issue #51 has now explicitly retired the old six-attribute architecture as final canon. This memo therefore no longer protects FIT / REF / INT / CHA / CYB / PSY as a fixed list.
 
-Instead, it explores a deeper character architecture in which the six attributes may operate **inside or across four systems**:
+The deeper architecture remains the four systems:
 
 1. biological / physical;
 2. psychic / consciousness;
@@ -207,9 +208,9 @@ Possible mechanical contents:
 
 A corporate executive with embedded decision-support systems, a swarm operator, an uploaded human, a street hacker, and a cyborg athlete may all possess high CYB for very different reasons.
 
-## 5. The six attributes inside the four-system model
+## 5. Legacy six-attribute mapping (historical design note)
 
-A provisional mapping can help think without changing canon.
+The table below is retained only to document the path that led to issue #51. It is no longer the final character model. New design work should use multiple attribute tags per system without assuming these six identifiers exhaust the space.
 
 | Attribute | Strongest affinity | Important secondary roles |
 |---|---|---|
@@ -239,9 +240,9 @@ This suggests that future actions may be described by three layers:
 
 The existing 2d6 + skill + attribute check can therefore survive while the fiction gains a richer systems layer.
 
-## 6. Recommended direction: systems as tracks and contexts, not four replacement stats
+## 6. Superseded recommendation: systems as tracks and contexts
 
-**Recommendation:** do not add four large numerical attributes on top of the existing six.
+**Superseded by issue #51:** the author has now chosen a unified tag architecture with multiple attribute tags distributed across the four systems. The old recommendation below is historical context, not current canon.
 
 That would create redundant bookkeeping and undermine the already specified attribute system.
 
