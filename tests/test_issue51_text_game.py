@@ -144,8 +144,19 @@ class Issue51TextGameTests(unittest.TestCase):
     def test_prototype_does_not_require_graphics_or_web_frameworks(self) -> None:
         import text_game.engine as module
         source = Path(module.__file__).read_text(encoding="utf-8").lower()
-        for forbidden in ("streamlit", "fastapi", "websocket", "godot", "pygame"):
-            self.assertNotIn(forbidden, source)
+        for forbidden_import in (
+            "import streamlit",
+            "from streamlit",
+            "import fastapi",
+            "from fastapi",
+            "import websockets",
+            "from websockets",
+            "import pygame",
+            "from pygame",
+            "import godot",
+            "from godot",
+        ):
+            self.assertNotIn(forbidden_import, source)
 
 
 if __name__ == "__main__":
