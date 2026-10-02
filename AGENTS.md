@@ -37,7 +37,12 @@ The RPG scaffold and the reserved-area list are not permission to create a game 
 
 ### 3. Tabletop first; Godot and Concordia are later ports
 
-The **tabletop RPG rules/worldbook are the canonical design source** for NoöPunk.
+NoöPunk is **one computer RPG/simulation**, not separate tabletop, simulation and
+videogame products ([`docs/NOOPUNK_AS_ONE_GAME.md`](docs/NOOPUNK_AS_ONE_GAME.md),
+#48). The tabletop / Godot / Concordia distinction in this section is about notation
+and runtime sequence, not about maintaining three products.
+
+The **tabletop-style RPG rules/worldbook are the canonical design source** for NoöPunk.
 
 Development order is binding:
 
@@ -150,11 +155,14 @@ When uncertain, choose the smaller implementation.
 
 ### 11. One RPG, three runtimes, developed in sequence
 
-NoöPunk is one RPG rules/world model intended to run in three forms:
+NoöPunk is one RPG rules/world model. It is developed as **one computer
+RPG/simulation**, and the three headings below are notation/runtime choices within
+that single game rather than three products to maintain
+([`docs/NOOPUNK_AS_ONE_GAME.md`](docs/NOOPUNK_AS_ONE_GAME.md), #48):
 
-- tabletop RPG
-- Godot RPG
-- Concordia RPG / simulation
+- tabletop-style notation — how the rules are written and read
+- Concordia — the generative-agent / Game Master runtime
+- Godot — a possible *future* frontend, not a planned parallel runtime
 
 These are implementations of the same game, not separate rule systems, but they are **not developed in parallel by default**. The tabletop version comes first and acts as the executable human specification. Godot and Concordia follow as staged conversions after the relevant tabletop systems are stable.
 

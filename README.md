@@ -169,6 +169,15 @@ contested rather than ideologically unified.
 The ideological model is setting material only; no numeric ideology mechanics are
 defined.
 
+## One game, not three products
+
+NoöPunk is **one computer RPG/social simulation** — one ruleset, one world model, one
+evolving state — whose first user interface is text. It is not a tabletop RPG plus a
+simulator plus a computer game. The rules read like tabletop rules (human-readable,
+explicit, testable) but there is no separate tabletop implementation to maintain,
+and a graphical frontend is explicitly deferred rather than planned as a parallel
+product. See [docs/NOOPUNK_AS_ONE_GAME.md](docs/NOOPUNK_AS_ONE_GAME.md).
+
 ## RPG + simulation
 
 NoöPunk has two connected purposes:
