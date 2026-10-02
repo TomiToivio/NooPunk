@@ -54,6 +54,17 @@ class ConcordiaTextController:
         )
         return self._sample(prompt)
 
+    def interpret_intent(self, *, actor_id: str, intent: str, context: str) -> Action:
+        prompt = (
+            "Translate the human intent into exactly one valid text command. Do not "
+            "narrate or invent rules. Allowed verbs: look, go <direction>, inventory, "
+            "take <item-id>, drop <item-id>, talk <actor-id> <message>, say <message>, "
+            "use <item-id> [target], stats.\n"
+            f"Actor: {actor_id}\nContext: {context}\nIntent: {intent}"
+        )
+        raw = self._sample(prompt).splitlines()[0].strip()
+        return parse_command(actor_id, raw, source="system")
+
     def narrate(self, *, context: str) -> str:
         prompt = (
             "You are the NoöPunk Game Master narrator. Describe only the supplied "
