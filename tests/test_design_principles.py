@@ -111,9 +111,9 @@ class AgentRulesTests(unittest.TestCase):
         self.assertIn("three design balances", text)
 
     def test_agents_md_carries_all_nine_invariants(self) -> None:
-        """§13 must list all nine, not just mention the chassis somewhere else.
+        """§13 must list all nine, not just mention the rules-source rule somewhere else.
 
-        Scoping to the §13 block matters: AGENTS.md also names the chassis in
+        Scoping to the §13 block matters: AGENTS.md also names the rules source in
         §15, so a document-wide substring check would pass even with invariant 9
         deleted from the invariant list.
         """
@@ -136,7 +136,8 @@ class AgentRulesTests(unittest.TestCase):
             "shadowrun",
             "eclipse phase",
             "not templates to copy",
-            "cities without number srd",
+            "original rules system",
+            "never provide default mechanics or a chassis",
         ):
             with self.subTest(fragment=fragment):
                 self.assertIn(fragment, text)
