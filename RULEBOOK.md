@@ -177,48 +177,172 @@ Only the last row is metaphysical. It is stated as a premise of the setting, not
 
 **Extended, not sealed.** Taken together, the four groups describe a human character who is not a sealed individual unit but an **extended, coupled entity** distributed across a body/biosphere/spacetime, a consciousness, communication networks and technological networks. This connects the character model to extended-mind and distributed-cognition thinking; those literatures are later sources, not yet cited entries in the registry.
 
-**Mechanical consequence.** The only mechanical consequence specified so far is the **four-group division itself**. The individual statistics inside each group, their scales, dice mechanics, coupling rules and derived values remain unspecified, and this subsection does not invent them.
+**Mechanical consequence.** The four-group division is canonical, attributes are now a special class of typed tags, ordinary-human attribute tags use the -3..+3 modifier band, and an entity may explicitly lack meaningful participation in a system. Final attribute names/counts, generation procedure, automatic tag applicability, cross-system conversion rules and derived values remain unresolved.
 
-### 5.1 Legacy/current attributes pending four-group redesign
+### 5.1 Unified attribute-tag model
 
-The canonical attributes are:
+NoöPunk uses one unified tag model. **Attributes are tags.** There is no separate
+attribute subsystem underneath the tag system.
 
-- **Fitness (FIT):** your health, fitness and constitution.
-- **Reflexes (REF):** your dexterity, agility and coordination.
-- **Intelligence (INT):** how smart, educated and knowledgeable you are.
-- **Charisma (CHA):** your social skills, attractiveness and leadership skills.
-- **Cybernetics (CYB):** your cyborg side; how technical you are; your proficiency in cyberspace, programming and cybernetics.
-- **Psyche (PSY):** your consciousness, intuition, empathy and psionics. Used in astral projection and for psionics.
+An **attribute tag** is a broad, persistent capability descriptor attached to one
+of the four system domains. Skill, specialization, equipment, cyberware,
+relationship, condition, injury, reputation, faction, ideology and other tags use
+the same general representation, but differ in category, scope and persistence.
 
-Do not add alternate names or additional attributes without author specification.
+The four system domains are:
 
-### 5.2 Human attribute generation
+1. **Physical**
+2. **Social**
+3. **Psychic**
+4. **Cybernetic**
 
-For an ordinary human character, roll **3d6 independently for each of the six attributes**.
+Each domain should contain **multiple attribute tags**. The final names and exact
+count are not yet locked. The older six values FIT / REF / INT / CHA / CYB / PSY
+are therefore **legacy implementation placeholders**, not the final character
+architecture.
 
-Convert each raw 3d6 result into an attribute modifier:
+A provisional design vocabulary for playtesting may include examples such as:
 
-| 3d6 roll | Modifier |
-|---|---:|
-| 3 | -3 |
-| 4-5 | -2 |
-| 6-8 | -1 |
-| 9-12 | 0 |
-| 13-15 | +1 |
-| 16-17 | +2 |
-| 18 | +3 |
+- **Physical:** FIT, REF
+- **Social:** interpersonal presence plus social/institutional competence
+- **Psychic:** cognition, will/psychic integrity, and where applicable psionic/noetic capability
+- **Cybernetic:** machine/interface integration plus network/software competence
 
-Interpretation:
+Only FIT / REF / INT / CHA / CYB / PSY have historical names in the current code.
+Do not treat the unnamed examples above as finalized attribute names until the
+author specifies them.
 
-- +3 is the ordinary human upper end represented by this generation table.
-- Values above +3 are **transhuman**.
-- Values below -3 are **basically dead**.
+### 5.2 Attribute-tag scale and system presence
 
-These statements describe attribute modifiers, not raw 3d6 generation rolls. They do not define any additional death, injury, augmentation, resurrection, or recovery mechanic.
+For an ordinary human, starting **attribute tags** use the modifier range **-3 to +3**:
 
-The data model must permit values outside the ordinary-human -3..+3 range. Future transhumans, AI entities, NHI, cybernetic beings, injuries, or other cases may use explicitly assigned values when their rules are later defined.
+| Modifier | Ordinary-human interpretation |
+|---:|---|
+| -3 | extremely poor |
+| -2 | poor |
+| -1 | below average |
+| 0 | ordinary human baseline |
+| +1 | above average |
+| +2 | exceptional |
+| +3 | peak / extraordinary human |
 
-Where useful, preserve both the raw 3d6 generation roll and the resulting modifier.
+Values above +3 may represent transhuman, cybernetic, posthuman, psionic,
+AGI-mediated or otherwise superhuman capability when later author-defined rules
+permit them.
+
+An entity can also be **absent from a system domain**. Absence is not the same as a
+low attribute score.
+
+Examples:
+
+- a physically present but extremely weak entity may have a Physical attribute tag at -3;
+- a disembodied/noetic entity may have **no meaningful Physical participation** at all;
+- a non-conscious AI may have no meaningful **Psychic** participation;
+- an AI operating only in VR may have Social and Cybernetic participation without
+  direct Physical participation in the local scene.
+
+The data model must therefore distinguish:
+
+```text
+Physical present, attribute -3
+```
+
+from:
+
+```text
+Physical absent / not applicable
+```
+
+This distinction is canonical for the four-system architecture.
+
+### 5.2.1 Tag stacking
+
+Relevant tags stack when they represent distinct applicable causes.
+
+Conceptually:
+
+```text
+relevant attribute tag
++ relevant skill/specialization tags
++ relevant gear/cyberware tags
++ relevant social/psychic/cybernetic tags
++/- condition and situational tags
+= total relevant tag modifier
+```
+
+Example only:
+
+```text
+REF +1
+Pistol +2
+Smartlink +1
+Ambush position +1
+Injured arm -1
+----------------
+total +4
+```
+
+This example demonstrates stacking only. It does not finalize Pistol, Smartlink,
+Ambush or Injured arm as canonical NoöPunk tags.
+
+Only directly relevant tags count. Duplicate or synonymous tags should not stack
+merely because they are phrased differently. Automatic semantic relevance,
+duplicate detection and any maximum stack size remain implementation/design
+questions.
+
+### 5.2.2 Narrative and social flags
+
+NoöPunk also uses structured character information that is important to
+Narrativist play but is **not automatically a numeric bonus on every roll**.
+
+Examples of flag categories include:
+
+- beliefs;
+- goals;
+- loyalties;
+- relationships;
+- fears;
+- identity;
+- motivations;
+- directives.
+
+These tell the GM/Concordia layer **what matters to the character** and which
+situations are dramatically relevant. They are distinct from capability tags even
+when represented by the same generic tag/state infrastructure.
+
+The working principle is:
+
+> Simulationism establishes what is true and what causally changes. Narrativism
+> identifies what among those truths matters to the characters and what questions
+> are explored through play.
+
+### 5.2.3 Cross-system consequences
+
+The four systems are distinct for analysis and rules, but events can propagate
+across them.
+
+Examples:
+
+- Physical injury can alter Psychic state;
+- Psychic fear or obsession can alter Social behavior;
+- Social sanctions can revoke Cybernetic access;
+- Cybernetic compromise can disable Physical capability.
+
+No universal cross-system conversion table is defined yet. The important rule is
+that the four layers remain distinct while being causally entangled.
+
+### 5.2.4 Current digital porting debt
+
+The current shared digital rules files still contain the older six-attribute model
+and 3d6 generation table. They are preserved temporarily as **legacy porting debt**
+so existing tests/runtimes do not silently break while the tabletop model is being
+redesigned.
+
+New code must not treat those six legacy identifiers as the final NoöPunk
+attribute architecture. Issue #51 introduces the engine-independent typed-tag model
+in `src/rules/tags.py`; later work must migrate the shared digital specification and
+runtime check engine only after the author locks the final attribute-tag list and
+generation procedure.
 
 ### 5.3 Skills
 
