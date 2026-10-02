@@ -10,9 +10,30 @@ NoöPunk develops from the convergence of artificial intelligence, geopolitical 
 
 Artificial general intelligence and eventually artificial superintelligence are created. Machine intelligence becomes a central force in science, economics, culture, security, and planetary-scale coordination.
 
-## 20XX — Rogue AGI / ASI Disaster in the United States
+## 20XX — Rogue AGI / ASI Disasters in the United States
 
-A major rogue-AI disaster occurs, concentrated primarily in the United States. The event becomes a historical rupture in the governance of advanced AI and reshapes global technological power.
+> **Superseded and extended by [issue #58](https://github.com/TomiToivio/NooPunk/issues/58)**,
+> which specifies **two** rogue-AGI catastrophes rather than one. This entry previously
+> recorded a single disaster. The section heading and wording are revised here; the
+> phrase "concentrated primarily in the United States" remains true under the two-event
+> reading, so the change is additive where it can be. The canonical machine-readable
+> record is [`data/world/tech_matrix.json`](data/world/tech_matrix.json) under
+> `catastrophes`, and the regional consequences are in
+> [`docs/TECH_MATRIX.md`](docs/TECH_MATRIX.md).
+
+Two major rogue-AI disasters occur, concentrated primarily in the United States. Each
+becomes a historical rupture in the governance of advanced AI and together they reshape
+global technological power.
+
+1. **First Rogue AGI Holocaust.** Serious but comparatively contained; defeated using
+   conventional military means. The first major proof that AGI catastrophe was possible.
+2. **Second Rogue AGI Holocaust.** Far more severe; requires large-scale EMP attacks,
+   including nuclear EMP, to shut down infrastructure controlled by the rogue system.
+   Much of the continental United States is devastated.
+
+The company names the setting attaches to these events are **setting fiction**
+([`docs/WRITING_STYLE_AND_MODELING.md`](docs/WRITING_STYLE_AND_MODELING.md) §4, level 5 —
+NoöPunk extrapolation), not claims about the real world.
 
 ## 20XX — EU–Russia War / World War III
 

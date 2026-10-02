@@ -1,0 +1,492 @@
+{
+  "$comment": "NoöPunk regional technology matrix (issue #58). Canonical machine-readable artefact: the tabletop, Godot and Concordia runtimes derive from THIS file rather than re-declaring technological capability per region, so they cannot drift into separate worlds (AGENTS.md §13, docs/DESIGN_PRINCIPLES.md §2). Categorical positions only: there is deliberately NO numeric technology score and NO derived modifier anywhere in this file, for the same reason data/world/ideology.json carries no numeric ideology score - a single scalar would collapse the issue's central claim that technological regimes are incomparable rather than ranked. Every dimension x region cell is either STATED in issue #58's own text or marked unassigned with a reason; cells that extrapolate from a qualitative sentence carry \"$example\": true so the author can cut them without touching what the issue actually says.",
+  "format": "noopunk.world.tech_matrix",
+  "version": 1,
+  "time_convention": "20XX",
+  "$time_comment": "AGENTS.md §6: canonical future dates are written 20XX unless the author says otherwise. This file assigns no year to any event; the issue asks to fix an approximate era and that remains an author decision (see open_questions_unassigned).",
+  "design_rule": "Technological capability is a product of ideological struggle, political economy, catastrophe, culture and infrastructure, not of a single global tech level. No region is simply more advanced than another: every profile carries both gains and vulnerabilities, and the same planet contains Cyberpunk and Eclipse Phase conditions simultaneously.",
+  "$dimensions_comment": "The thirteen dimensions are the issue's own list, kept in its order and wording. Each carries an OPEN ordered vocabulary rather than a closed enum: the order is meaningful (later = more capable) but the scale is not a number, and a region may hold a value that is not adjacent to another region's. Per AGENTS.md §10 this stays reversible if the author revises the ladder.",
+  "dimensions": [
+    {
+      "id": "ai_autonomy",
+      "name": "AI autonomy",
+      "ladder": [
+        "banned",
+        "regulated",
+        "ubiquitous",
+        "superintelligent"
+      ],
+      "$note": "The issue's own example ladder, from banned to superintelligent. A 'banned' region is not thereby low-technology: see butlerian regions, which the issue describes as highly advanced by other routes."
+    },
+    {
+      "id": "robotics",
+      "name": "Robotics",
+      "ladder": [
+        "scarce",
+        "industrial",
+        "ubiquitous"
+      ]
+    },
+    {
+      "id": "cybernetics",
+      "name": "Cybernetics",
+      "ladder": [
+        "medical",
+        "consumer",
+        "transhuman"
+      ]
+    },
+    {
+      "id": "bci",
+      "name": "BCI",
+      "ladder": [
+        "assistive",
+        "universal",
+        "collective"
+      ]
+    },
+    {
+      "id": "biotech",
+      "name": "Biotech",
+      "ladder": [
+        "contemporary",
+        "regenerative",
+        "posthuman"
+      ]
+    },
+    {
+      "id": "virtuality",
+      "name": "Virtuality",
+      "ladder": [
+        "screens",
+        "ar",
+        "full_sensory",
+        "substrate_independent"
+      ],
+      "$note": "The issue lists 'screens -> AR -> full sensory / substrate-independent'; the last two are treated as separate rungs because the issue treats substrate independence as its own claim rather than a degree of sensory fidelity."
+    },
+    {
+      "id": "space",
+      "name": "Space",
+      "ladder": [
+        "earthbound",
+        "orbital",
+        "interplanetary"
+      ]
+    },
+    {
+      "id": "energy",
+      "name": "Energy",
+      "ladder": [
+        "constrained",
+        "abundant",
+        "near_post_scarcity"
+      ]
+    },
+    {
+      "id": "manufacturing",
+      "name": "Manufacturing",
+      "ladder": [
+        "centralized",
+        "fablabs",
+        "molecular_autonomous"
+      ]
+    },
+    {
+      "id": "psionics",
+      "name": "Psionics",
+      "ladder": [
+        "fringe",
+        "reproducible",
+        "industrialized"
+      ]
+    },
+    {
+      "id": "noosphere",
+      "name": "Noösphere",
+      "ladder": [
+        "cultural_metaphor",
+        "measurable",
+        "infrastructural"
+      ]
+    },
+    {
+      "id": "governance",
+      "name": "Governance",
+      "ladder": [
+        "nation_state",
+        "platform_state",
+        "cybernetic_post_state"
+      ]
+    },
+    {
+      "id": "ecology",
+      "name": "Ecology",
+      "ladder": [
+        "collapse",
+        "adaptation",
+        "restoration"
+      ]
+    }
+  ],
+  "$regions_comment": "Seven regions, matching the issue's own section headings. 'posture' records the ideological response the issue names. 'gains' and 'vulnerabilities' are required as a pair by the issue's tone rule: 'every technological regime gains some capabilities and creates different vulnerabilities'. A region without a vulnerability would be a ranking, which the issue forbids.",
+  "regions": [
+    {
+      "id": "united-states",
+      "name": "United States",
+      "posture": "accelerationist",
+      "$posture_note": "The issue: 'The United States went full Accelerationist.'",
+      "profile": {
+        "ai_autonomy": "superintelligent",
+        "robotics": "ubiquitous",
+        "cybernetics": "transhuman",
+        "bci": "universal",
+        "biotech": "posthuman",
+        "virtuality": "substrate_independent",
+        "space": "orbital",
+        "energy": "abundant",
+        "manufacturing": "molecular_autonomous",
+        "psionics": "unassigned",
+        "noosphere": "unassigned",
+        "governance": "platform_state",
+        "ecology": "collapse"
+      },
+      "$cell_sources": {
+        "ai_autonomy": "stated: 'full Accelerationist'; elite/corporate zones described as running 'extremely advanced AI'.",
+        "space": "stated: 'orbital cities'; 'They operate orbital infrastructure'.",
+        "cybernetics": "stated: 'high-end transhumanism', 'extremely advanced cybernetics'.",
+        "ecology": "stated: 'Mad Max-style wasteland', 'dead infrastructure', 'much of the continental United States was devastated'.",
+        "governance": "stated: 'corporate sovereignty', 'gated arcologies', 'fragmented failed state'. Recorded as platform_state because the issue describes corporate blocs exercising sovereign functions; the fragmentation is captured under vulnerabilities rather than as a separate rung.",
+        "biotech": "$example: extrapolated from 'high-end transhumanism'; the issue does not name biotech specifically for the US.",
+        "manufacturing": "$example: extrapolated from 'post-scarcity infrastructure' being listed as an affected area and from abandoned smart-city industry.",
+        "robotics": "$example: extrapolated from 'autonomous ruins' and 'scavenged military systems'.",
+        "bci": "$example: extrapolated from 'high-end transhumanism' and 'virtual economies'.",
+        "virtuality": "$example: extrapolated from 'virtual economies' and 'substrate-independent' being a listed dimension; the issue does not name US virtuality explicitly.",
+        "energy": "$example: extrapolated from elite enclave described as extremely advanced while the continental interior is ruined.",
+        "psionics": "unassigned: the issue describes no US psionic posture.",
+        "noosphere": "unassigned: the issue describes no US Noöspheric posture."
+      },
+      "gains": [
+        "Maximum technological capability of any region in the setting",
+        "Corporate blocs operating orbital infrastructure and en masse autonomous systems",
+        "Elite zones at Eclipse Phase capability: transhumanism, virtual economies, advanced cybernetics"
+      ],
+      "vulnerabilities": [
+        "Minimum social stability: a fragmented failed state",
+        "Continental interior devastated by EMP attacks and rogue-AGI catastrophe",
+        "Abandoned autonomous infrastructure that still functions and is not controlled",
+        "Capability concentrated in enclaves; most inhabitants live in the salvage economy"
+      ],
+      "$genre_mix": "The issue: 'Half Mad Max-style wasteland ... Half extreme libertarian cyberpunk enclave capitalism'. Both halves are simultaneously present and adjacent."
+    },
+    {
+      "id": "european-federation",
+      "name": "European Federation",
+      "posture": "ai_critical",
+      "$posture_note": "The issue: 'The EU followed an AI Critical path. It deliberately slowed or regulated some AGI / automation trajectories'.",
+      "profile": {
+        "ai_autonomy": "regulated",
+        "robotics": "industrial",
+        "cybernetics": "medical",
+        "bci": "universal",
+        "biotech": "regenerative",
+        "virtuality": "ar",
+        "space": "unassigned",
+        "energy": "abundant",
+        "manufacturing": "unassigned",
+        "psionics": "unassigned",
+        "noosphere": "unassigned",
+        "governance": "nation_state",
+        "ecology": "restoration"
+      },
+      "$cell_sources": {
+        "ai_autonomy": "stated: 'deliberately slowed or regulated some AGI / automation trajectories'.",
+        "bci": "stated: 'universal public BCI infrastructure'.",
+        "governance": "stated: 'politically coherent', 'federal political entity'. Recorded as nation_state because the issue describes a functioning federal state, not a platform or post-state.",
+        "ecology": "stated: 'ecologically healthier', 'ecological engineering', 'biosphere restoration', 'renewable energy'.",
+        "energy": "stated: 'renewable energy'.",
+        "cybernetics": "stated: 'democratic cybernetics', 'advanced healthcare', 'universal public BCI infrastructure'. Recorded as medical because the issue frames EU augmentation as public health infrastructure rather than consumer or transhuman.",
+        "biotech": "stated: 'advanced healthcare' + biosphere restoration.",
+        "virtuality": "$example: extrapolated from 'privacy-preserving digital identity' implying an augmented but not immersive public digital layer.",
+        "robotics": "$example: extrapolated from 'cooperative automation', which the issue lists as a strength.",
+        "space": "unassigned: the issue names no European space posture.",
+        "manufacturing": "unassigned: the issue names no European manufacturing posture.",
+        "psionics": "unassigned.",
+        "noosphere": "unassigned."
+      },
+      "gains": [
+        "Politically coherent and socially stable; relatively egalitarian",
+        "Universal public BCI infrastructure and privacy-preserving digital identity",
+        "Public AI and democratic cybernetics",
+        "Ecological restoration, renewable energy and advanced healthcare"
+      ],
+      "vulnerabilities": [
+        "Apparent technological lag against US corporate zones is partly real and partly chosen",
+        "Deliberately restricted AI autonomy may cost capability in sectors where autonomy is decisive",
+        "Depends on institutional coherence, so internal political stress is a systemic risk"
+      ],
+      "$setting_question": "The issue leaves this open and it stays open here: 'Is the EU actually technologically behind, or has it optimized for robustness, ecological sustainability, and human autonomy rather than raw capability?'"
+    },
+    {
+      "id": "china",
+      "name": "China",
+      "posture": "closed_post_agi_synthesis",
+      "$posture_note": "The issue: 'China experienced its own rogue-AGI crisis and became much more closed afterward. Outside observers do not really understand the resulting system.'",
+      "profile": {
+        "ai_autonomy": "unassigned",
+        "robotics": "unassigned",
+        "cybernetics": "unassigned",
+        "bci": "collective",
+        "biotech": "unassigned",
+        "virtuality": "unassigned",
+        "space": "unassigned",
+        "energy": "unassigned",
+        "manufacturing": "unassigned",
+        "psionics": "unassigned",
+        "noosphere": "unassigned",
+        "governance": "cybernetic_post_state",
+        "ecology": "unassigned"
+      },
+      "$cell_sources": {
+        "governance": "$example: extrapolated from 'state-scale cognitive systems', 'human-machine planning assemblages', 'hybrid biological / computational governance'. The issue lists these as concepts China 'may have developed', so the value is provisional.",
+        "bci": "$example: extrapolated from 'collective BCIs' and 'post-individual identity systems', which the issue lists as possible concepts rather than stated facts."
+      },
+      "gains": [
+        "Possible technologies that fit neither 'AI' nor 'human' as Western categories frame them",
+        "Collective BCIs and state-scale cognitive systems",
+        "A synthesis the issue names as combining Taoism, Maoism, cybernetics, cyborgism and collective intelligence"
+      ],
+      "vulnerabilities": [
+        "Opaque to outside observers, so capability cannot be assessed from within the fiction",
+        "A closed post-AGI system may be brittle precisely where it is unobserved"
+      ],
+      "$opacity_rule": "The issue asks to preserve mystery here. This profile is therefore deliberately sparse: the majority of its cells are unassigned rather than inferred, and no cell asserts a capability the issue describes only as possible. Filling these in would destroy the setting effect the issue asks for.",
+      "$genre_note": "The issue: 'Chinese systems appear incomprehensible because they are based on different assumptions about individuality.' That is a narrative property of the region, not a matrix cell."
+    },
+    {
+      "id": "russia",
+      "name": "Russia",
+      "posture": "post_defeat_fragmentation",
+      "$posture_note": "The issue: 'Russia remains fragmented after military defeat by the federal European armies.'",
+      "profile": {
+        "ai_autonomy": "ubiquitous",
+        "robotics": "industrial",
+        "cybernetics": "consumer",
+        "bci": "unassigned",
+        "biotech": "unassigned",
+        "virtuality": "unassigned",
+        "space": "unassigned",
+        "energy": "unassigned",
+        "manufacturing": "unassigned",
+        "psionics": "unassigned",
+        "noosphere": "unassigned",
+        "governance": "platform_state",
+        "ecology": "collapse"
+      },
+      "$cell_sources": {
+        "ai_autonomy": "$example: extrapolated from 'autonomous weapons' and 'abandoned military AI', plus 'proxy warfare' between EU- and Chinese-aligned factions.",
+        "governance": "$example: extrapolated from 'large autonomous, military, nationalist, criminal, corporate, and local formations'. Recorded as platform_state because the issue describes competing sovereign formations rather than one state.",
+        "cybernetics": "$example: extrapolated from 'black-market cybernetics'.",
+        "robotics": "$example: extrapolated from 'autonomous weapons' and 'mercenary factions'.",
+        "ecology": "$example: extrapolated from 'ruined nuclear / industrial infrastructure'."
+      },
+      "gains": [
+        "Sanctuary and marketplace for experimental governance of every kind",
+        "Autonomous weapons, mercenary factions and military AI available to whoever can pay or take them",
+        "Smuggling and black-market cybernetics: capability without institutions"
+      ],
+      "vulnerabilities": [
+        "Fragmented between EU-aligned western and Chinese-aligned eastern factions",
+        "Ruined nuclear and industrial infrastructure",
+        "No central authority able to enforce restraint on autonomous systems",
+        "Uncontrolled military AI from the war period"
+      ],
+      "$proxy_note": "The issue: 'This can become a major zone for proxy warfare'. Recorded here as a regional property, since the matrix describes capability rather than conflict, and no war mechanic is defined."
+    },
+    {
+      "id": "middle-east",
+      "name": "Middle East (Butlerian regions)",
+      "posture": "butlerian_jihad",
+      "$posture_note": "The issue: 'Parts of the Middle East undergo a broad Butlerian Jihad against autonomous machine intelligence.'",
+      "profile": {
+        "ai_autonomy": "banned",
+        "robotics": "unassigned",
+        "cybernetics": "unassigned",
+        "bci": "unassigned",
+        "biotech": "regenerative",
+        "virtuality": "unassigned",
+        "space": "unassigned",
+        "energy": "unassigned",
+        "manufacturing": "unassigned",
+        "psionics": "reproducible",
+        "noosphere": "unassigned",
+        "governance": "unassigned",
+        "ecology": "unassigned"
+      },
+      "$cell_sources": {
+        "ai_autonomy": "stated: 'a broad Butlerian Jihad against autonomous machine intelligence'.",
+        "biotech": "$example: extrapolated from the issue's 'biotech' divergence list.",
+        "psionics": "$example: extrapolated from 'psionics and noospheric practices' listed as a divergence route.",
+        "cybernetics": "unassigned deliberately: the issue distinguishes 'religious cybernetics' as a route but does not say how far it goes, and recording it as consumer would misstate a deliberate divergence.",
+        "bci": "unassigned: the issue lists 'human memory / cognition enhancement' without a BCI position.",
+        "robotics": "unassigned: a Butlerian region may still use non-autonomous machinery, but the issue does not say, so no value is asserted."
+      },
+      "gains": [
+        "Technological development along routes that do not require autonomous machine intelligence",
+        "Hardened analog systems and human-controlled computation",
+        "Non-AI expert systems, biotech and religious cybernetics",
+        "Anti-machine warfare capability and cognition enhancement",
+        "Psionic and Noöspheric practice treated as serious technology"
+      ],
+      "vulnerabilities": [
+        "Excludes autonomous systems, which may be decisive in sectors the issue does not enumerate",
+        "Divergence into many parallel routes risks internal incoherence between regions"
+      ],
+      "$jinn_note": "IN-WORLD UNKNOWN (WRITING_STYLE_AND_MODELING.md §4, level 6). The issue asks whether entities encountered through psionics, altered states, quantum consciousness or the Noösphere correspond to older traditions concerning jinn, and explicitly asks to keep it ambiguous. This file therefore records no mechanism, no origin and no answer. The refusal is the canon: a later contributor must not resolve it. The issue's own candidate readings - independent NHI, psychological entities, panpsychic structures, interdimensional beings, collective thoughtforms - are listed in docs/TECH_MATRIX.md as open readings, not ranked or selected."
+    },
+    {
+      "id": "india",
+      "name": "India",
+      "posture": "noospheric_renaissance",
+      "$posture_note": "The issue: 'India becomes a major cultural and intellectual superpower ... India undergoes a new renaissance.'",
+      "profile": {
+        "ai_autonomy": "unassigned",
+        "robotics": "unassigned",
+        "cybernetics": "unassigned",
+        "bci": "universal",
+        "biotech": "regenerative",
+        "virtuality": "unassigned",
+        "space": "interplanetary",
+        "energy": "unassigned",
+        "manufacturing": "unassigned",
+        "psionics": "reproducible",
+        "noosphere": "measurable",
+        "governance": "unassigned",
+        "ecology": "unassigned"
+      },
+      "$cell_sources": {
+        "psionics": "$example: extrapolated from 'psionics' and 'advanced meditation technologies' listed as developments. Kept at reproducible rather than industrialized because the issue describes a renaissance of capability, not a service industry.",
+        "noosphere": "$example: extrapolated from 'noospheric institutions' and 'post-materialist science'.",
+        "bci": "$example: extrapolated from 'BCI / nervous-system engineering'.",
+        "biotech": "$example: extrapolated from 'consciousness research' and 'nervous-system engineering' rather than from a stated biotech programme.",
+        "space": "$example: extrapolated from 'Vimanas = advanced aerospace / anomalous propulsion systems'. Marked provisional because the issue presents Vimanas as a playful reinterpretation, and the status of the underlying phenomena is deliberately open.",
+        "ai_autonomy": "unassigned: the issue names no Indian AI posture.",
+        "governance": "unassigned: the issue names no Indian political form."
+      },
+      "gains": [
+        "Noöspheric and consciousness-domain capability that may outperform Western cybernetics in different domains",
+        "Existing philosophical and religious traditions absorb the paradigm shift, so the transition is less culturally destructive",
+        "Cognitive, aerospace and biotech domains at Eclipse Phase-like capability"
+      ],
+      "vulnerabilities": [
+        "Culturally distinct from Western transhumanism, so capability may not transfer or interoperate",
+        "A renaissance concentrated in intellectual and Noöspheric domains says nothing about material resilience",
+        "Anomalous-propulsion claims rest on phenomena the setting deliberately leaves unexplained"
+      ],
+      "$open_reading": "The issue asks that 'Ganesh has returned' remain open as to whether it means a literal divine manifestation, an AI / NHI, a collective Noöspheric entity, a cultural-symbolic event, or something stranger. IN-WORLD UNKNOWN (§4 level 6); recorded as unresolved, not decided.",
+      "$terminology_note": "The issue playfully reinterprets Siddhis as advanced psionic capabilities or technologies and Vimanas as advanced aerospace or anomalous propulsion systems. Both are recorded in docs/TECH_MATRIX.md as the author's framing, with no mechanism attached."
+    },
+    {
+      "id": "sub-saharan-africa",
+      "name": "Sub-Saharan Africa",
+      "posture": "decentralized_commons",
+      "$posture_note": "The issue: 'Sub-Saharan Africa should avoid the standard cyberpunk trope of being merely a ruined extraction zone. In NoöPunk it may be one of the healthier macro-regions.'",
+      "profile": {
+        "ai_autonomy": "regulated",
+        "robotics": "unassigned",
+        "cybernetics": "consumer",
+        "bci": "assistive",
+        "biotech": "unassigned",
+        "virtuality": "unassigned",
+        "space": "unassigned",
+        "energy": "near_post_scarcity",
+        "manufacturing": "fablabs",
+        "psionics": "unassigned",
+        "noosphere": "unassigned",
+        "governance": "platform_state",
+        "ecology": "adaptation"
+      },
+      "$cell_sources": {
+        "ai_autonomy": "$example: extrapolated from 'locally adapted AI / cybernetic systems', implying adoption rather than restriction or abandonment.",
+        "cybernetics": "$example: extrapolated from 'selective cybernetics'.",
+        "bci": "$example: extrapolated from 'selective cybernetics' and 'mobile-first institutions', which suggests assistive rather than universal uptake.",
+        "energy": "$example: extrapolated from 'solar abundance' and 'decentralized energy'.",
+        "manufacturing": "$example: extrapolated from 'distributed manufacturing', 'local fabrication', 'open-source technology'.",
+        "governance": "$example: extrapolated from 'mobile-first institutions', 'cooperative / commons-based development', 'pan-African political integration'. Recorded as platform_state because the issue describes distributed coordination across polities rather than one federal state.",
+        "ecology": "$example: extrapolated from 'climate adaptation'. Kept at adaptation rather than restoration because the issue says adaptation, not restoration.",
+        "robotics": "unassigned: the issue names no robotics posture.",
+        "biotech": "unassigned: the issue names 'local fabrication' rather than biotech.",
+        "virtuality": "unassigned: the issue names 'mesh networks', which is connectivity rather than a virtuality regime."
+      },
+      "gains": [
+        "Resilient and decentralized: the issue's explicit contrast with centralized fragility",
+        "Solar abundance and local fabrication; cooperative ownership and open-source technology",
+        "Mobile-first institutions and mesh networks suited to leapfrogging centralized industry",
+        "Potential to survive catastrophes that destroy sophisticated centralized systems"
+      ],
+      "vulnerabilities": [
+        "Decentralized systems may lack the concentrated capability an Eclipse Phase-level sector needs",
+        "Resilience against catastrophe is not the same as capability in domains the issue does not name",
+        "Heterogeneity across regions is a coordination burden"
+      ],
+      "$anti_trope_note": "This region exists in the matrix specifically to contradict the extraction-zone trope the issue names. Its vulnerabilities are therefore not material ruin; they are the costs of decentralization."
+    }
+  ],
+  "$unassigned_summary": "A blank cell is an author decision that has not been made, not an omission. 49 of the 91 dimension x region cells are unassigned, because issue #58 states a regional position for only some dimensions and this file asserts nothing beyond its text. The remaining 42 carry a value the issue states or a marked extrapolation ($example: true).",
+  "catastrophes": [
+    {
+      "id": "first-rogue-agi-holocaust",
+      "ordinal": "first",
+      "name": "First Rogue AGI Holocaust",
+      "$name_note": "The issue's term. The issue also calls it the 'OpenAI incident', using a real company name; it is listed under $company_attribution_note.",
+      "severity": "contained",
+      "resolution": "defeated_using_conventional_military_means",
+      "$significance": "The issue: 'first major proof that AGI catastrophe was possible'.",
+      "supersedes": null
+    },
+    {
+      "id": "second-rogue-agi-holocaust",
+      "ordinal": "second",
+      "name": "Second Rogue AGI Holocaust",
+      "$name_note": "The issue's term. The issue also calls it the 'Anthropic incident', using a real company name; it is listed under $company_attribution_note.",
+      "severity": "severe",
+      "resolution": "large_scale_emp_attacks_including_nuclear_emp",
+      "$significance": "The issue: 'much of the continental United States was devastated'.",
+      "supersedes": {
+        "target_file": "TIMELINE.md",
+        "target_section": "20XX - Rogue AGI / ASI Disaster in the United States",
+        "reason": "TIMELINE.md records a single rogue-AGI disaster. Issue #58 specifies two, with different severities and resolutions. Recorded as an explicit supersession, dated and naming #58, rather than a silent rewrite of a timeline fact.",
+        "compatibility": "The existing entry's phrase 'concentrated primarily in the United States' remains true under the two-event reading, so the change is additive where it can be."
+      }
+    }
+  ],
+  "$company_attribution_note": "SETTING FICTION (WRITING_STYLE_AND_MODELING.md §4, level 5 - NoöPunk extrapolation). Issue #58 explicitly warns that 'references to current countries, companies, and organizations are speculative setting elements, not claims about the real world'. The real-world names it uses - OpenAI, Anthropic, Google, SpaceX, Microsoft, Meta, Amazon - are therefore recorded as fictional setting elements and MUST NOT be presented as claims about those organisations, their conduct or their future. NoöPunk makes no assertion about any real company's safety record, intentions or capability.",
+  "$megacorp_note": "The issue: 'Major fictionalized future megacorporate blocs can descend from companies such as: Google, SpaceX, Microsoft, Meta, Amazon.' Recorded here as the issue's own list of antecedents only. No corporation is named, characterised, given a territory or assigned a capability, because AGENTS.md §1 forbids inventing organisations and the issue sketches these as one-line possibilities rather than entities.",
+  "runtime_guidance": {
+    "shared": "Runtimes read regional technology profiles from this file rather than re-declaring them, so tabletop, Godot and Concordia cannot drift into separate worlds (docs/DESIGN_PRINCIPLES.md §2). No runtime may derive a numeric technology score or a blanket modifier from a profile: cross-region comparison is an authorial and narrative judgement, not an arithmetic one.",
+    "tabletop": "Use a profile to describe what is ordinary, restricted or unavailable in a region, and use the gains/vulnerabilities pair to keep regions incomparable. A travel scene between regions is a genre transition; present it through what characters notice as absent or as normal, not through a capability rating.",
+    "concordia": "A region's profile constrains what agents may attempt rather than how well they roll: an autonomous AI actor entering a Butlerian region is refused by the region's posture, not penalised. Keep the refusal explicit and typed, mirroring the absent-system treatment in the rules layer, so a refusal cannot be read as a failed attempt.",
+    "godot": "Presentation only. Region differences may drive environment, ambient systems and available interfaces. Do not store a scalar tech level for a region, and do not gate content on one.",
+    "not_yet": "The following are author decisions and are NOT derivable from this file: the approximate era, which technologies are globally mature, which are region-specific, which areas reach Eclipse Phase-like capability, and which remain close to Cyberpunk 2020/RED. See open_questions_unassigned."
+  },
+  "open_questions_unassigned": [
+    "Approximate NoöPunk date / era - AGENTS.md §6 keeps all dates as 20XX and assigning a decade is an author decision",
+    "What technologies are globally mature - requires a baseline the issue does not state",
+    "Which technologies are region-specific - requires the baseline above before it can be answered",
+    "Which areas reach Eclipse Phase-like capabilities and which stay near Cyberpunk 2020/RED - the issue's own open question; profiles here are relative, not calibrated to either reference game",
+    "Defining the two rogue-AGI catastrophes further - severity, resolution and ordinal are recorded from the issue; dates, actors and mechanisms are not",
+    "The European Federation's AI Critical model - the issue states its shape and its strengths; its institutions are not specified",
+    "China's post-AGI system - deliberately left opaque per the issue",
+    "The Butlerian Jihad and the treatment of jinn - the jinn question is IN-WORLD UNKNOWN and must stay unresolved",
+    "India's noöspheric renaissance, Siddhis and Vimanas - the issue frames these playfully; no mechanism is defined",
+    "Sub-Saharan African trajectories - stated as possibilities in the issue; the matrix records them as examples",
+    "How regional differences reach RPG mechanics - AGENTS.md §4 keeps equipment, economy and detailed simulation mechanics unresolved; the issue's gameplay section is narrative guidance"
+  ],
+  "$sources": {
+    "timeline": "TIMELINE.md - the two catastrophic events supersede and extend its single rogue-AGI entry",
+    "ideology": "data/world/ideology.json - the ideological postures here reference its positions and factions",
+    "issue": "TomiToivio/NooPunk issue #58 - the regional sketches, dimension list and tone rule are the author's",
+    "writing_style": "docs/WRITING_STYLE_AND_MODELING.md §4 - the epistemic-status levels used in $cell_sources",
+    "design_principles": "docs/DESIGN_PRINCIPLES.md - one world across three runtimes; AGENTS.md §1 (author intent is canon) and §4 (reserved design areas)"
+  }
+}

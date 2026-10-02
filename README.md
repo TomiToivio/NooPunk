@@ -169,9 +169,13 @@ contested rather than ideologically unified.
 
 - Canonical positions and the reusable multi-axis model: [data/world/ideology.json](data/world/ideology.json)
 - How it plays: [docs/WORLD_IDEOLOGY.md](docs/WORLD_IDEOLOGY.md)
+- Regional technology: [docs/TECH_MATRIX.md](docs/TECH_MATRIX.md) and the canonical
+  [data/world/tech_matrix.json](data/world/tech_matrix.json)
 
-The ideological model is setting material only; no numeric ideology mechanics are
-defined.
+The ideological model and the regional technology matrix are setting material only;
+no numeric ideology score and no numeric technology score are defined. Technology is
+uneven by design — different ideological responses to the paradigm shift produced
+different futures, and no region is simply more advanced than another.
 
 ## One game, not three products
 
