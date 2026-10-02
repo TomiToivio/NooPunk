@@ -37,6 +37,30 @@ from .core import (
     roll_check_dice,
 )
 
+# The unified tag prototype (issue #51). `tags` does not import this package at
+# module scope, so there is no circular import and the canonical core stays
+# independent of the prototype.
+from .tags import (  # noqa: E402
+    ATTRIBUTE_CATEGORY,
+    FOUR_SYSTEMS,
+    HUMAN_ATTRIBUTE_MAX,
+    HUMAN_ATTRIBUTE_MIN,
+    PROTOTYPE_ATTRIBUTE_SYSTEMS,
+    PROTOTYPE_ATTRIBUTE_TAGS,
+    PROTOTYPE_MAX_CONTRIBUTING_TAGS,
+    TAG_RATING_MAX,
+    TAG_RATING_MIN,
+    Tag,
+    TagCheckInput,
+    TagError,
+    TagStack,
+    TranshumanTag,
+    build_stack,
+    compose_check,
+    resolve_tag_check,
+    transhuman_attribute,
+)
+
 __all__ = [
     "AID_BONUS_CAP",
     "ATTRIBUTE_DEFINITIONS",
@@ -65,4 +89,22 @@ __all__ = [
     "roll_2d6",
     "roll_3d6",
     "roll_check_dice",
+    "ATTRIBUTE_CATEGORY",
+    "FOUR_SYSTEMS",
+    "HUMAN_ATTRIBUTE_MAX",
+    "HUMAN_ATTRIBUTE_MIN",
+    "PROTOTYPE_ATTRIBUTE_SYSTEMS",
+    "PROTOTYPE_ATTRIBUTE_TAGS",
+    "PROTOTYPE_MAX_CONTRIBUTING_TAGS",
+    "TAG_RATING_MAX",
+    "TAG_RATING_MIN",
+    "Tag",
+    "TagCheckInput",
+    "TagError",
+    "TagStack",
+    "TranshumanTag",
+    "build_stack",
+    "compose_check",
+    "resolve_tag_check",
+    "transhuman_attribute",
 ]
