@@ -261,3 +261,14 @@ python scripts/concordia_smoke.py
 ```
 
 See [docs/CONCORDIA_ARCHITECTURE.md](docs/CONCORDIA_ARCHITECTURE.md) for the runtime contract.
+
+## Simulation architecture (specification)
+
+The shared state/event model that the tabletop game, Godot and Concordia are all
+views over is specified — as an interface document, not an implementation — in
+[docs/SIMULATION_ARCHITECTURE_SPEC.md](docs/SIMULATION_ARCHITECTURE_SPEC.md). It
+answers issue #40's Phase A items (state model, event format, simulation-vs-empirical
+separation, Concordia API review) and records every decision it deliberately leaves
+to the author in its DEFER register. It defines no rules or mechanics: per
+`AGENTS.md` §4 those remain author-specified, and the specification is written so
+that implementing it cannot quietly invent them.
