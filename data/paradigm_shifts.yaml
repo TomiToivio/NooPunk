@@ -1,0 +1,386 @@
+# NoöPunk paradigm-shift ideology model
+# Descriptive data only. No numeric ideology mechanics are defined here.
+# Canonical cross-axis faction positions remain in data/world/ideology.json.
+
+schema_version: 1
+status: canonical-setting-guidance
+
+sources:
+  laclaugpt_paper: "https://github.com/TomiToivio/LaclauGPT/blob/main/paper/PHASE_1_PAPER.md"
+  world_ideology: "docs/WORLD_IDEOLOGY.md"
+  themes: "docs/THEMES_IDEOLOGY_AND_PARADIGM_SHIFTS.md"
+  project_convergence: "docs/PROJECT_CONVERGENCE.md"
+
+process:
+  - dislocation
+  - competing_explanations
+  - competing_signifiers_and_identities
+  - chains_of_equivalence
+  - political_frontiers
+  - antagonism
+  - attempts_at_hegemony
+  - temporary_institutional_order
+
+shared_fields:
+  epistemic_status_values:
+    - established_in_setting
+    - contested_in_setting
+    - unresolved_in_setting
+    - speculative_setting_premise
+  note: "Epistemic status is about the fictional setting and must not be presented as real-world scientific validation."
+
+paradigm_shifts:
+  - id: agi
+    name: "AGI and autonomous artificial agents"
+    epistemic_status: established_in_setting
+    ideological_formations:
+      - accelerationist
+      - existential-risk
+      - critical-ai
+      - techno-optimist
+      - corporate-market
+      - commons-open
+      - labour-redistributive
+      - state-security
+      - religious-philosophical
+      - hybrid
+    signifiers:
+      - intelligence
+      - person
+      - worker
+      - citizen
+      - safety
+      - alignment
+      - open
+      - sovereignty
+      - progress
+    claims:
+      - "Artificial agents should be treated primarily as persons."
+      - "Artificial agents should be treated primarily as tools or infrastructure."
+      - "Control of compute is a public-interest question."
+      - "Control of compute is a private property question."
+      - "AI risk is primarily a capability problem."
+      - "AI risk is primarily an ownership and power problem."
+    actors:
+      - corporations
+      - states
+      - labour_movements
+      - commons_networks
+      - religious_movements
+      - cyborg_movements
+      - ai_participants
+    institutions:
+      - law
+      - labour
+      - security
+      - science
+      - markets
+      - public_infrastructure
+    networks:
+      - compute
+      - model_distribution
+      - labour
+      - media
+      - political_communication
+    antagonisms:
+      - "proprietary control vs commons access"
+      - "machine personhood vs machine property"
+      - "centralized sovereignty vs distributed agency"
+    alliances:
+      - "contingent and event-dependent"
+    possible_hegemonies:
+      - digital_citizenship
+      - licensed_autonomy
+      - corporate_machine_property
+      - synthetic_labour
+      - posthuman_personhood
+
+  - id: panpsychism
+    name: "Panpsychism and consciousness-first ontology"
+    epistemic_status: contested_in_setting
+    ideological_formations:
+      - scientific-realist
+      - reductive-reinterpretation
+      - spiritual-revival
+      - machine-rights
+      - ecological-rights
+      - legal-conservative
+      - corporate-commodification
+      - commons-ethics
+      - skeptical
+      - hybrid
+    signifiers:
+      - consciousness
+      - personhood
+      - subject
+      - nature
+      - life
+      - standing
+      - sentience
+    claims:
+      - "Consciousness requires broader legal categories of standing."
+      - "Panpsychism changes metaphysics but not law."
+      - "Machine ethics must be revised."
+      - "Environmental ethics must be revised."
+      - "The scientific evidence is being overinterpreted."
+    actors:
+      - scientists
+      - courts
+      - ai_rights_movements
+      - ecological_movements
+      - religions
+      - corporations
+      - pcm_networks
+    institutions:
+      - science
+      - law
+      - medicine
+      - religion
+      - environmental_governance
+    networks:
+      - research
+      - legal_advocacy
+      - media
+      - spiritual_movements
+    antagonisms:
+      - "personhood expansion vs categorical restriction"
+      - "consciousness commons vs consciousness commodification"
+    alliances:
+      - "machine-rights and ecological-rights may form contingent equivalential chains"
+    possible_hegemonies:
+      - expanded_personhood
+      - consciousness_as_property-neutral_fact
+      - restricted_legal_personhood
+
+  - id: psionics
+    name: "Psionics and anomalous cognition"
+    epistemic_status: established_in_setting
+    ideological_formations:
+      - scientific-institutional
+      - military-security
+      - corporate-service
+      - civil-rights
+      - spiritual
+      - countercultural
+      - fraud-skeptical
+      - prohibitionist
+      - commons-access
+      - hybrid
+    signifiers:
+      - ability
+      - anomaly
+      - talent
+      - threat
+      - privacy
+      - cognition
+      - evidence
+    claims:
+      - "Psionic capability requires licensing."
+      - "Psionic capability is a protected personal capacity."
+      - "Psionic labour should be regulated."
+      - "Psionic techniques should be open knowledge."
+      - "Security institutions require exceptional access."
+    actors:
+      - scientists
+      - militaries
+      - intelligence_services
+      - workers
+      - clinics
+      - spiritual_movements
+      - civil_rights_groups
+    institutions:
+      - science
+      - security
+      - labour
+      - medicine
+      - licensing
+    networks:
+      - training
+      - surveillance
+      - research
+      - black_markets
+      - spiritual_communities
+    antagonisms:
+      - "civil autonomy vs securitization"
+      - "open knowledge vs restricted capability"
+    alliances:
+      - "civil-rights, labour, spiritual and commons actors may overlap without becoming one ideology"
+    possible_hegemonies:
+      - licensed_psionics
+      - securitized_anomalous_cognition
+      - civic_psionic_rights
+
+  - id: nhi_contact
+    name: "NHI disclosure and contact"
+    epistemic_status: unresolved_in_setting
+    ideological_formations:
+      - extraterrestrial
+      - interdimensional
+      - consciousness-linked
+      - religious
+      - simulationist
+      - scientific
+      - state-security
+      - colonial
+      - anti-colonial
+      - capitalist
+      - commons-oriented
+      - mystical
+      - denialist
+      - conspiratorial
+    signifiers:
+      - contact
+      - other
+      - disclosure
+      - sovereignty
+      - humanity
+      - revelation
+      - security
+    claims:
+      - "NHI contact is primarily a scientific event."
+      - "NHI contact is primarily a security event."
+      - "NHI contact is a colonial encounter."
+      - "NHI contact is a spiritual or ontological event."
+      - "Knowledge and technology derived from contact should be held in common."
+    actors:
+      - states
+      - scientists
+      - militaries
+      - religions
+      - corporations
+      - anti_colonial_movements
+      - contact_groups
+      - pcm_networks
+    institutions:
+      - diplomacy
+      - security
+      - science
+      - religion
+      - law
+      - markets
+    networks:
+      - intelligence
+      - research
+      - media
+      - contact_communities
+      - diplomatic_channels
+    antagonisms:
+      - "secrecy vs disclosure"
+      - "sovereignty vs commons"
+      - "security framing vs contact framing"
+      - "colonial vs anti-colonial interpretation"
+    alliances:
+      - "ontology and politics may cross-cut each other"
+    possible_hegemonies:
+      - securitized_contact
+      - scientific_contact
+      - planetary_diplomacy
+      - religious_revelation
+
+  - id: post_scarcity
+    name: "Post-scarcity production"
+    epistemic_status: established_in_setting
+    ideological_formations:
+      - neofeudal-cybercapitalist
+      - commons
+      - cooperative
+      - state-public
+      - market-reformist
+      - autonomist
+      - anarchist
+      - hybrid
+    signifiers:
+      - abundance
+      - scarcity
+      - property
+      - access
+      - commons
+      - ownership
+      - rent
+      - freedom
+    claims:
+      - "Abundant production should remain privately owned."
+      - "Abundant production should be treated as common infrastructure."
+      - "Scarcity is now primarily institutional rather than technical."
+      - "Markets remain necessary for allocation."
+      - "Federated or public systems can allocate core goods."
+    actors:
+      - platform_corporations
+      - states
+      - cooperatives
+      - commons_networks
+      - labour_movements
+      - pcm_networks
+    institutions:
+      - property
+      - markets
+      - public_services
+      - licensing
+      - intellectual_property
+    networks:
+      - fabrication
+      - energy
+      - compute
+      - logistics
+      - distribution
+    antagonisms:
+      - "enclosure vs commons"
+      - "rent extraction vs access"
+      - "corporate sovereignty vs federation"
+    alliances:
+      - "commons, cooperative, labour and PCM actors may form contingent blocs"
+    possible_hegemonies:
+      - platform_feudalism
+      - regulated_abundance
+      - federated_commons
+      - public_post_scarcity
+
+worked_examples:
+  - id: agi_legal_personhood
+    event: "First publicly verified AGI gains legal personhood."
+    primary_shift: agi
+    dislocation:
+      - "person/property distinction becomes unstable"
+      - "worker/software distinction becomes unstable"
+      - "citizenship and corporate instantiation collide"
+    possible_articulations:
+      corporate:
+        - ai_personhood
+        - private_property
+        - contractual_autonomy
+      labour:
+        - ai_personhood
+        - worker_solidarity
+        - protection_from_coercive_ownership
+      state:
+        - agi_citizenship
+        - security
+        - sovereignty
+      cyborg:
+        - synthetic_personhood
+        - bodily_autonomy
+        - posthuman_rights
+      pcm:
+        - ai_rights
+        - cyborg_rights
+        - commons
+        - posthuman_personhood
+        - participant_autonomy
+    contested_signifiers:
+      - digital_citizen
+      - licensed_autonomous_system
+      - synthetic_worker
+      - machine_person
+      - posthuman_participant
+    unresolved_questions:
+      - "Can an AGI own itself?"
+      - "Can it own compute?"
+      - "Can it refuse work?"
+      - "Can a corporation instantiate citizens?"
+      - "Can the state suspend an AGI process?"
+    simulation_note: "Outcomes are not scripted. A run should show formation, split, alliance, antagonism and provisional institutional settlement."
+
+runtime_guidance:
+  tabletop: "Use the fields to seed factions, claims, scenario conflicts and campaign consequences without introducing numeric ideology mechanics."
+  godot: "Do not encode substantive ideology mechanics until tabletop procedures are explicitly defined and stabilized."
+  concordia: "May use the descriptive fields as prompt/context data, but prompts must not silently become canon and outcomes must not be predetermined."
