@@ -1,8 +1,16 @@
 from __future__ import annotations
 
 from pathlib import Path
+import sys
 import tempfile
 import unittest
+
+# Put src/ on sys.path explicitly. Every other test module in this repository does
+# this; without it this file only imports when an *earlier-collected* module has
+# already done so, so it passes under `unittest discover` and fails when run on its
+# own -- a real isolation defect masked by collection order.
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
 
 from simulation.sqlite_store import connect, list_events
 from text_game.actions import parse_command
