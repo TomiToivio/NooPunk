@@ -18,7 +18,7 @@ class PatrolController:
 
     route: Mapping[str, str]
 
-    def choose_action(self, actor: ActorState, world: World) -> Action | None:
+    def choose_action(self, actor: ActorState, world: World, context: str = "") -> Action | None:
         direction = self.route.get(actor.room_id)
         if not direction:
             return None
@@ -51,6 +51,14 @@ class ConcordiaTextController:
             "context. Do not invent rules, rolls, numeric outcomes or canon.\n"
             f"Actor: {actor.label}\nContext: {context}\nHuman says: {message}\n"
             "Reply briefly in character."
+        )
+        return self._sample(prompt)
+
+    def narrate(self, *, context: str) -> str:
+        prompt = (
+            "You are the NoöPunk Game Master narrator. Describe only the supplied "
+            "resolved state/result. Do not invent rules, rolls, modifiers, canon or "
+            "new facts. Keep it brief.\nContext: " + context
         )
         return self._sample(prompt)
 
