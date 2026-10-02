@@ -38,7 +38,7 @@ The defining Noösphere paradigm shifts remain **UFO / UAP Disclosure, Psionics,
 
 NoöPunk is built on **three design balances** that are project-level invariants, not loose inspirations:
 
-1. **Gamism / Narrativism / Simulationism** — anchored on **CY_BORG** (challenge), **Cyberpunk 2020** (reality), and **The Sprawl** (story). No pole may overwhelm the others.
+1. **Gamism / Narrativism / Simulationism** — anchored on **CY_BORG** (challenge), **Cyberpunk 2020** (reality), and **The Sprawl** (story), with **The Veil** as a complementary Narrativist reference. Current direction: **Narrativist experience + Simulationist world + Gamist friction**.
 2. **Tabletop / Godot / Concordia** — one RPG developed in sequence: **tabletop first**, then Godot and Concordia as later ports. The tabletop rulebook/worldbook is the canonical design source; digital runtimes inherit the same world, rules, and mechanics wherever possible. Scenarios and presentation may diverge.
 3. **Cyberpunk / Noösphere** — neither half swallows the other. The cyberpunk side grows from plausible near-future technology; the Noösphere rests on UFO / UAP Disclosure, Psionics, and Panpsychism.
 
@@ -64,9 +64,7 @@ NoöPunk keeps the technological, political, urban, and economic core of old-sch
 
 The rules are being rebuilt from first principles around the four Luhmannian domains **Social / Physical / Psychic / Cybernetic**, with theory informing mechanics rather than an imported RPG chassis. Existing games remain comparative and tonal references only. See [docs/RULES_RESET_MEMO.md](docs/RULES_RESET_MEMO.md) and [docs/THEORETICAL_SOURCES.md](docs/THEORETICAL_SOURCES.md).
 
-The reset is deliberately slow. Current provisional mechanics remain documented in [RULEBOOK.md](RULEBOOK.md) until the author revises them, but new systems must be designed as original NoöPunk rules.
-
-A working **prototype** of the unified tag engine — the design in which "attributes are tags too", with one stackable tag structure across the Social / Physical / Psychic / Cybernetic systems — lives in [docs/TAG_ENGINE_PROTOTYPE.md](docs/TAG_ENGINE_PROTOTYPE.md) with code in `src/tags/`. It is a prototype on the non-canonical `fixture:` route, not canon: `RULEBOOK.md` §5 makes the four systems canonical while leaving the statistics inside them unfinalized.
+The reset is deliberately slow. Issue #51 now makes the four-system unified tag model explicit: **attributes are tags**, distributed across Physical / Social / Psychic / Cybernetic domains, with final attribute names/counts still open. Current provisional mechanics remain documented in [RULEBOOK.md](RULEBOOK.md) until the author revises them.
 
 Major RPG influences include **Cyberpunk 2013 / 2020 / RED**, **CY_BORG**, **The Sprawl**, **Shadowrun**, and **Eclipse Phase** as design references, not templates or mechanical sources.
 
