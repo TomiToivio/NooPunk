@@ -442,9 +442,14 @@ plausible default ([§7.4](#74-the-mandatory-resolver-seam)).
 
 Stated so the boundary is auditable rather than implied:
 
-- **Phase B** (deterministic core: SQLite + event log, reducer, graph, replay/branch,
-  tests) is implementable once DEFER-1/2/3 are answered, because it can use a
-  clearly non-canonical fixture vocabulary in the meantime.
+- **Phase B** (deterministic core: SQLite + event log, reducer, replay/branch,
+  tests) — **implemented**: `src/simulation/` (`events.py`, `sqlite_store.py`,
+  `world_state.py`, `engine.py`), 43 behaviour tests in
+  `tests/test_issue40_simulation_core.py`. It uses a clearly non-canonical
+  `fixture:` vocabulary, which is exactly the route this section predicted, so
+  DEFER-1/2/3 need not be answered first. What Phase B deliberately does **not**
+  contain: any social mechanic, and the graph/assemblage layer (`src/simulation/`
+  has no graph module yet — assemblages are DEFER-7 territory).
 - **Phase C** (Concordia prototype) depends on DEFER-6 and on a specified tabletop
   turn rule.
 - **Phase D** (LaclauGPT + PCM adapters) depends on DEFER-8.

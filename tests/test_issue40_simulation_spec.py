@@ -333,6 +333,27 @@ class DeferRegisterTests(unittest.TestCase):
         self.assertIn("defer-9", text)
         self.assertIn("social mechanics are in", text)
 
+    def test_spec_records_that_phase_b_is_implemented(self) -> None:
+        """The spec must not still claim Phase B is unbuilt once it exists.
+
+        A specification that drifts from the code is how a reader ends up
+        implementing something that already exists — the duplicate-work failure the
+        repository's own workflow warns about.
+        """
+        text = normalised(SPEC)
+        self.assertIn("implemented", text)
+        self.assertIn("src/simulation/", text)
+        # normalised() strips underscores (they are markdown emphasis here), so
+        # compare against the normalised filenames rather than the literal ones.
+        for module in ("events.py", "sqlite_store.py", "world_state.py", "engine.py"):
+            with self.subTest(module=module):
+                self.assertIn(module.replace("_", ""), text)
+
+    def test_phase_b_status_is_not_overstated(self) -> None:
+        """It must say what Phase B does NOT contain, not just that it landed."""
+        text = normalised(SPEC)
+        self.assertIn("no graph module yet", text)
+
     def test_phase_dependencies_are_stated(self) -> None:
         text = normalised(SPEC)
         for dependency in ("phase b", "phase c", "phase e"):

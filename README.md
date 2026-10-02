@@ -272,3 +272,9 @@ separation, Concordia API review) and records every decision it deliberately lea
 to the author in its DEFER register. It defines no rules or mechanics: per
 `AGENTS.md` §4 those remain author-specified, and the specification is written so
 that implementing it cannot quietly invent them.
+
+**Phase B — the deterministic core — is implemented** in `src/simulation/` (event
+log, world-state reducer, replay and branching), with 43 behaviour tests and
+[matching documentation](docs/SIMULATION_CORE.md). It holds no game rules: social
+mechanics, factions and entity/relation vocabularies stay author-specified, and the
+core stores no derived quantity.
