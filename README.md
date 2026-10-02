@@ -50,6 +50,10 @@ The canonical explanation is [docs/DESIGN_PRINCIPLES.md](docs/DESIGN_PRINCIPLES.
 
 Every canonical rule is expected to have an explicit theoretical source, model, or research tradition behind it, recorded in [docs/THEORETICAL_SOURCES.md](docs/THEORETICAL_SOURCES.md). The registry states, per entry, what the source actually argues, what NoöPunk interprets or extends, where NoöPunk deliberately disagrees, and the concrete mechanical consequence. The first entry is the four-group character architecture (Physical / Social / Psychic / Cybernetic) in [RULEBOOK.md](RULEBOOK.md) §5.
 
+### Writing style and modelling conventions
+
+How NoöPunk material is written, cited, and labelled is defined in [docs/WRITING_STYLE_AND_MODELING.md](docs/WRITING_STYLE_AND_MODELING.md): the four writing registers, the rule that worldbuilding starts from a real source, the six-level epistemic-status vocabulary (**Established / Contested / Speculative / Fringe / NoöPunk extrapolation / In-world unknown**), the `REAL:` / `MODEL:` / `NOÖPUNK:` citation markers, the PKD tonal reference and its no-pastiche rule, and the relationship between the tabletop dice and simulation sampling of the same canonical check. The statistical reading of the core rules is documented there as an **investigation**, not as canon.
+
 ## Genre and influences
 
 NoöPunk keeps the technological, political, urban, and economic core of old-school cyberpunk.
