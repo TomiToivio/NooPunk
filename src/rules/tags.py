@@ -81,6 +81,86 @@ PROTOTYPE_MAX_CONTRIBUTING_TAGS = 5
 ATTRIBUTE_CATEGORY = "attribute"
 
 
+# --------------------------------------------------------------------------- #
+# System presence (RULEBOOK.md §5.2)
+# --------------------------------------------------------------------------- #
+
+@dataclass(frozen=True, slots=True)
+class SystemPresence:
+    """Which of the four systems an entity meaningfully participates in.
+
+    ``RULEBOOK.md`` §5.2 is explicit that a system can be **absent / not applicable**
+    and that "absence is not the same as a low score": a physically present but frail
+    entity may hold a Physical attribute of -3, while a disembodied/noetic entity has
+    **no meaningful Physical participation at all**, and a non-conscious AI has **no
+    meaningful Psychic participation**.
+
+    Without this, the only thing an entity could express is a very low rating, which
+    collapses those two very different statements into one. Presence is therefore a
+    fact about the entity, not a tag rating and not a modifier:
+
+    * an absent system is **not rollable**, and the resolver says so explicitly
+      rather than resolving at a penalty (a "-3 roll" would assert a capability the
+      entity does not have);
+    * it does **not** force an attribute value for a system the entity lacks.
+
+    Default is full participation in all four systems, so an ordinary character is
+    unaffected and older call sites keep working.
+    """
+
+    participation: Mapping[str, bool] = field(
+        default_factory=lambda: {system: True for system in FOUR_SYSTEMS}
+    )
+
+    def __post_init__(self) -> None:
+        unknown = set(self.participation) - set(FOUR_SYSTEMS)
+        if unknown:
+            raise TagError(
+                f"unknown system(s) {sorted(unknown)}; the four canonical groups are "
+                f"{list(FOUR_SYSTEMS)}"
+            )
+        for system, value in self.participation.items():
+            if not isinstance(value, bool):
+                raise TagError(f"presence for {system!r} must be a bool, got {value!r}")
+
+    def has(self, system: str) -> bool:
+        """Whether the entity meaningfully participates in ``system``."""
+        wanted = _text(system).casefold()
+        if wanted not in FOUR_SYSTEMS:
+            raise TagError(f"unknown system {system!r}")
+        return bool(self.participation.get(wanted, True))
+
+    def absent(self) -> tuple[str, ...]:
+        """The systems this entity does not participate in, in canonical order."""
+        return tuple(system for system in FOUR_SYSTEMS if not self.has(system))
+
+    def as_dict(self) -> dict[str, bool]:
+        return {system: self.has(system) for system in FOUR_SYSTEMS}
+
+    @classmethod
+    def from_dict(cls, payload: Mapping[str, Any]) -> SystemPresence:
+        return cls({system: bool(payload.get(system, True)) for system in FOUR_SYSTEMS})
+
+    @classmethod
+    def absent_systems(cls, *systems: str) -> SystemPresence:
+        """Presence with the named systems absent and the rest participating.
+
+        Convenience for the cases §5.2 names: ``SystemPresence.absent_systems("psychic")``
+        is a non-conscious AI, ``absent_systems("physical")`` is a noetic entity.
+        """
+        missing = {_text(system).casefold() for system in systems}
+        unknown = missing - set(FOUR_SYSTEMS)
+        if unknown:
+            raise TagError(f"unknown system(s) {sorted(unknown)}")
+        return cls({system: system not in missing for system in FOUR_SYSTEMS})
+
+
+#: How an action resolved, including the case where it could not.
+RESOLVED = "resolved"
+#: The action sits in a system this entity does not participate in (RULEBOOK §5.2).
+UNRESOLVED_ABSENT_SYSTEM = "unresolved_absent_system"
+
+
 class TagError(ValueError):
     """A tag is malformed, or a tag stack violates the prototype contract."""
 
@@ -305,12 +385,24 @@ def attribute_modifier(tags: Sequence[Tag], attribute: str) -> int:
 
 @dataclass(frozen=True, slots=True)
 class TagCheckInput:
-    """The values the canonical resolver needs, derived from a tag stack."""
+    """The values the canonical resolver needs, derived from a tag stack.
+
+    ``outcome`` is ``"resolved"`` for an ordinary check and
+    ``"unresolved_absent_system"`` when the entity does not participate in the
+    action's system (RULEBOOK §5.2); in the latter case ``absent_system`` names it and
+    the numeric fields are zeroed because nothing was rolled.
+    """
 
     attribute_modifier: int
     skill_level: int
     extra_modifiers: tuple[int, ...]
     stack: TagStack
+    outcome: str = RESOLVED
+    absent_system: str = ""
+
+    @property
+    def resolved(self) -> bool:
+        return self.outcome == RESOLVED
 
     def explain(self) -> list[str]:
         return [
@@ -378,6 +470,8 @@ def resolve_tag_check(
     action_scopes: Iterable[str] = (),
     has_skill: bool = True,
     max_contributing: int = PROTOTYPE_MAX_CONTRIBUTING_TAGS,
+    presence: SystemPresence | None = None,
+    system: str = "",
     rng: Any = None,
     dice_total: int | None = None,
 ) -> tuple[Any, TagCheckInput]:
@@ -386,8 +480,27 @@ def resolve_tag_check(
     Returns ``(CheckResult, TagCheckInput)`` so a caller can see both the mechanical
     outcome and the tag audit that produced it. Dice are supplied by the deterministic
     layer, never by an LLM (#51 principle 9).
+
+    ``presence`` (RULEBOOK §5.2) guards the case where the entity does not participate
+    in the action's system. The action's system is ``system`` when given, and otherwise
+    the system of the nominated attribute tag. When the system is absent the engine
+    refuses: the result carries ``outcome="unresolved_absent_system"`` and no check is
+    rolled, because rolling at a penalty would assert a capability the entity does not
+    have. ``CheckResult`` has no outcome field, so the outcome is attached to the
+    returned object and the refusal is reported through the audit input.
     """
-    from rules import resolve_check  # imported lazily: keeps this module import-light
+    if presence is not None:
+        target_system = _text(system).casefold() or _system_of_attribute(tags, attribute)
+        if target_system and not presence.has(target_system):
+            composed = TagCheckInput(
+                attribute_modifier=0,
+                skill_level=0,
+                extra_modifiers=(),
+                stack=TagStack(contributed=()),
+                outcome=UNRESOLVED_ABSENT_SYSTEM,
+                absent_system=target_system,
+            )
+            return AbsentSystemResult(system=target_system), composed
 
     composed = compose_check(
         tags,
@@ -396,6 +509,8 @@ def resolve_tag_check(
         action_scopes=action_scopes,
         max_contributing=max_contributing,
     )
+    from rules import resolve_check  # imported lazily: keeps this module import-light
+
     result = resolve_check(
         attribute_modifier=composed.attribute_modifier,
         target=difficulty,
@@ -406,3 +521,25 @@ def resolve_tag_check(
         dice_total=dice_total,
     )
     return result, composed
+
+
+def _system_of_attribute(tags: Sequence[Tag], attribute: str) -> str:
+    """The four-system domain of the named attribute tag, or "" when not found."""
+    wanted = _text(attribute)
+    for tag in tags:
+        if tag.is_attribute and tag.name.casefold() == wanted.casefold():
+            return tag.system
+    return ""
+
+
+@dataclass(frozen=True, slots=True)
+class AbsentSystemResult:
+    """The refusal returned when an action sits in a system the entity does not have.
+
+    It is deliberately **not** a ``CheckResult``: there is no dice total, no target and
+    no success, because nothing was rolled. A caller that wants one number for "did it
+    work" must handle absence explicitly instead of reading a default.
+    """
+
+    system: str
+    outcome: str = UNRESOLVED_ABSENT_SYSTEM
