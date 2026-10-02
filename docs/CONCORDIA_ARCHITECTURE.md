@@ -58,7 +58,7 @@ Contains neutral runtime interfaces:
 - `LLMAgentSpec`
 - `HumanPlayer`
 
-LLM and human participant specs may now carry an optional structured AttributeSet with the six canonical modifiers. They still contain no skills, personality model, equipment, faction, ideology, goals, psionics, or other unrequested RPG content.
+LLM and human participant specs currently still expose the older AttributeSet for compatibility. Issue #51's target model is the unified four-system tag representation; runtime migration must follow the canonical rulebook rather than treating the old six identifiers as final canon.
 
 `HumanPlayer` is currently only an input adapter. It is not silently converted into an LLM-controlled Concordia entity.
 
@@ -146,7 +146,7 @@ Canonical mechanics and lore must not be smuggled into prompts.
 
 ## Intentionally undefined
 
-The Concordia runtime consumes the canonical six attributes and deterministic resolution from shared code. **That resolution is now the canonical 2d6 skill check** (RULEBOOK.md §4): the shared `resolve_check` in `src/rules/core.py` rolls 2d6 and adds skill level and the attribute modifier against the `6 / 8 / 10 / 12 / 14+` ladder, and the §17.1 port debt is retired for this runtime. It still does not define:
+The Concordia runtime currently consumes legacy six-attribute compatibility data plus deterministic resolution from shared code. Issue #51 defines the future participant model as four-system typed tags; final attribute names/counts remain author-owned. **That resolution is now the canonical 2d6 skill check** (RULEBOOK.md §4): the shared `resolve_check` in `src/rules/core.py` rolls 2d6 and adds skill level and the attribute modifier against the `6 / 8 / 10 / 12 / 14+` ladder, and the §17.1 port debt is retired for this runtime. It still does not define:
 
 - skill levels and the skill list (specified for tabletop in RULEBOOK.md §5.3; not yet ported)
 - character creation
@@ -192,3 +192,50 @@ Concordia work follows the sequence **tabletop rule → digital specification �
 Before adding a substantive Concordia system, verify that the corresponding tabletop mechanic/world concept is explicitly defined and coherent. If simulation work exposes ambiguity, repair the tabletop source first rather than resolving it only in prompts, components, or agent logic.
 
 Concordia-specific simulation plumbing may remain as preserved infrastructure while tabletop design proceeds.
+
+
+## Issue #51 agent ecology
+
+NoöPunk should not run every simulated person as a persistent LLM.
+
+Use a hierarchy:
+
+1. **Aggregate/environmental processes** for crowds, traffic, public mood, markets and other non-individual state.
+2. **Mesa / rule agents** for background individuals with structured state and limited action vocabularies.
+3. **Lightweight interactive NPCs** that remain simulation-driven but may invoke an LLM temporarily when a meaningful conversation begins.
+4. **Persistent Concordia / LLM agents** for major recurring characters with memory, beliefs, goals, relationships, motivations and unrestricted natural-language interaction.
+
+All tiers should share the same underlying entity/tag representation so an NPC can be promoted when it becomes narratively salient without being recreated from scratch.
+
+No promotion threshold, scheduler, Mesa dependency or population rule is canonical yet. Those require a focused implementation task.
+
+## Human multiplayer direction
+
+The architecture should support multiple humans sharing one authoritative simulation state.
+
+~~~text
+Human A ─┐
+Human B ─┤
+Human C ─┤
+         ▼
+ authoritative NoöPunk server
+         │
+ rules + world state + event log
+         │
+ ┌───────┼──────────┐
+ ▼       ▼          ▼
+Mesa   LLM NPCs  Concordia GM
+agents
+~~~
+
+Human and AI-controlled participants should submit compatible intent/action envelopes into the same deterministic rules/simulation layer.
+
+### Web UI sequence
+
+A **Streamlit** interface is suitable for an early small-group prototype because the project is Python-first and needs character sheets, dialogue, logs, maps/network views and debug/admin controls more than a high-performance graphical client.
+
+Streamlit should remain a client/presentation layer, not the owner of canonical game state.
+
+If richer real-time multiplayer is later needed, prefer an authoritative Python server with **FastAPI + WebSockets**, while keeping Streamlit as a prototype/admin UI and optionally adding a JavaScript client later.
+
+> **The UI is a client. The NoöPunk simulation is the game.**
