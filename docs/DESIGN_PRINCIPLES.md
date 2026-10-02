@@ -18,8 +18,23 @@ another.
 
 ## 1. Gamism / Narrativism / Simulationism balance
 
-NoöPunk aims for a deliberate balance between three creative agendas. None of them
-is the default that may overwhelm the others.
+NoöPunk uses all three creative agendas, but issue #51 makes the balance
+**deliberately asymmetric** rather than equal.
+
+The current design direction is:
+
+- **Narrativism** in the foreground: social interaction, relationships, beliefs,
+  motives, ideological conflict and emergent story;
+- **Simulationism** as the substrate: persistent world state, causal coherence,
+  four-system character ontology, institutions, networks and material constraints;
+- **Gamism** as pressure: risk, scarcity, failure, tactical choices and meaningful
+  mechanical consequences.
+
+A compact formulation is:
+
+> **Narrativist experience + Simulationist world + Gamist friction.**
+
+This is a design priority, not a literal percentage split.
 
 The canonical reference points are three tabletop RPGs, one per pole:
 
@@ -57,20 +72,38 @@ Cyberpunk 2020 is the main reference for:
 Simulation should make the setting feel internally consistent without turning every
 subsystem into unnecessary bookkeeping.
 
-### Narrativism — The Sprawl
+### Narrativism — The Sprawl and The Veil
 
-The Sprawl is the main reference for:
+The Sprawl remains the canonical reference pole for:
 
 - fiction-forward consequences
 - story-generating mechanics
-- relationships, factions, and corporations
+- relationships, factions, corporations and offscreen pressure
+- directives / flags that tell the GM what the player wants explored
 - failures and partial successes that change the situation
 - mechanics that push the narrative forward rather than merely returning pass/fail
 
+**The Veil** is a complementary Narrativist reference, especially for beliefs,
+motivations, interpersonal play, fictional positioning, internal state and the idea
+that rules identify what matters rather than pre-script an ending. NoöPunk does not
+copy its emotion-as-stat mechanic.
+
 ### On the references
 
-NoöPunk is not a clone of these systems. They are **design anchors for the three
-poles**. Use them to check that no pole has quietly swallowed the others.
+NoöPunk is not a clone of these systems. They are **design anchors**, not
+mechanical templates.
+
+A broader rough map of current references is:
+
+- **Gamism-heavy:** CY_BORG
+- **Simulationism-heavy:** Cyberpunk 2020, Eclipse Phase, Shadowrun
+- **Narrativism-heavy:** The Veil, The Sprawl, :Otherscape, Neon City Overdrive
+
+Most of these games mix agendas. The categories only identify which design lessons
+NoöPunk currently finds most useful in each.
+
+The target is not to maximize all three independently. Narrativism and
+Simulationism form the core; Gamism constrains them with consequential play.
 
 ---
 
@@ -228,8 +261,8 @@ mechanics, or text from either work, and do not silently import their assumption
 
 ## 5. Invariants for agents and contributors
 
-1. Preserve the **Gamism / Narrativism / Simulationism balance**.
-2. Use **CY_BORG**, **Cyberpunk 2020**, and **The Sprawl** as the canonical reference poles.
+1. Preserve the **Gamism / Narrativism / Simulationism balance**, with the current issue #51 priority: **Narrativist experience + Simulationist world + Gamist friction**.
+2. Use **CY_BORG**, **Cyberpunk 2020**, and **The Sprawl** as the canonical reference poles; use **The Veil** as a complementary Narrativist reference.
 3. Preserve **rules/mechanics parity** between Tabletop, Godot, and Concordia wherever possible, with **Tabletop as the canonical first implementation**.
 4. Allow scenarios and medium-specific presentation to diverge.
 5. Preserve the **Cyberpunk / Noösphere balance**.
