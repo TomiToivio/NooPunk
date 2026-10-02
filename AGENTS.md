@@ -33,7 +33,7 @@ For each task:
 4. do not turn examples into canon;
 5. do not infer mechanics from genre conventions.
 
-A base RPG scaffold is not permission to create a game system.
+The RPG scaffold and the reserved-area list are not permission to create a game system.
 
 ### 3. Tabletop first; Godot and Concordia are later ports
 

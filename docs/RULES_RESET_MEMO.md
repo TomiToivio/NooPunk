@@ -353,7 +353,8 @@ the "small core, strange consequences" target and the modularity the issue asks 
   force remain in force until the author revises them.
 - It does not select an attribute structure, a dice mechanic, or a skill list.
 - It does not import mechanics from any existing game.
-- It does not modify `AGENTS.md` or `docs/DESIGN_PRINCIPLES.md`, which currently
-  name the legacy chassis SRD as a project invariant. That invariant is in direct tension
-  with #32 and needs an author decision (§ see the issue claim comment).
+- It did not modify `AGENTS.md` or `docs/DESIGN_PRINCIPLES.md` at the time of writing.
+  That tension has since been **resolved by the author**: invariant 9 and `AGENTS.md` §15
+  are now "Original NoöPunk rules only", so no external game supplies default mechanics
+  or a chassis. This memo no longer needs an author decision on that point.
 - It does not touch the Godot or Concordia runtimes.
