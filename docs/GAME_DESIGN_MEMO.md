@@ -1,8 +1,8 @@
 # NoöPunk game design memo: systems, selves, and the Noösphere
 
-> **Status:** exploratory design memo for issue #31.  
-> **Authority:** this document does **not** finalize rules or override `RULEBOOK.md`, `docs/DESIGN_PRINCIPLES.md`, `docs/RULES_RESET_MEMO.md`, or author-specified decisions.  
-> **Purpose:** develop a theoretical and mechanical vocabulary for later tabletop design.
+> **Status:** exploratory design memo for issue #31, partially superseded by issue #51.  
+> **Authority:** this document does **not** finalize rules or override `RULEBOOK.md`, `docs/DESIGN_PRINCIPLES.md`, `docs/RULES_RESET_MEMO.md`, issue #51, or author-specified decisions.  
+> **Purpose:** preserve the theoretical vocabulary that led to the four-system model. Where this memo assumes a fixed six-attribute architecture, issue #51 and `RULEBOOK.md` now win.
 
 ## 1. Design goal
 
@@ -33,11 +33,12 @@ The following remain authoritative:
 - the three design balances in `docs/DESIGN_PRINCIPLES.md`;
 - tabletop first, with Godot and Concordia following later;
 - an original NoöPunk rules system developed from first principles;
-- the existing six attributes: **FIT, REF, INT, CHA, CYB, PSY**;
-- ordinary-human 3d6 attribute generation and the existing modifier scale;
+- the canonical four systems: **Physical / Social / Psychic / Cybernetic**;
+- issue #51's unified typed-tag direction in which attributes are tags;
+- the ordinary-human attribute-tag band **-3..+3**, while final attribute names/counts and generation remain open;
 - the legacy provisional 2d6 skill-check engine already specified in `RULEBOOK.md`.
 
-Therefore this memo does **not** replace the six attributes with four new stats.
+Issue #51 has now explicitly retired the old six-attribute architecture as final canon. This memo therefore no longer protects FIT / REF / INT / CHA / CYB / PSY as a fixed list.
 
 Instead, it explores a deeper character architecture in which the six attributes may operate **inside or across four systems**:
 

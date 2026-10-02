@@ -61,14 +61,16 @@ Existing Godot and Concordia scaffolds must be preserved, not deleted, but they 
 
 ### 4. Current reserved design areas
 
-The six attributes (FIT, REF, INT, CHA, CYB, PSY), ordinary-human 3d6 attribute generation, the current provisional **2d6 skill-check engine**, its difficulty ladder, opposed skill checks with player-character tie priority, unskilled -1 / trained-only blocking, the skill list, and the level-0..4 trained skill scale are author-specified in RULEBOOK.md for now. Agents must preserve them until the author explicitly revises them.
+Issue #51 explicitly revises the earlier six-attribute reservation. The canonical character direction is now a **four-system unified tag model**: Physical / Social / Psychic / Cybernetic, with attributes represented as typed attribute tags rather than a separate subsystem. Ordinary-human attribute-tag values use the -3..+3 band, but the final attribute names/counts and generation procedure are not yet locked. The old FIT / REF / INT / CHA / CYB / PSY model and its 3d6 generator remain in the digital runtime only as documented porting debt.
+
+The current provisional **2d6 skill-check engine**, its difficulty ladder, opposed skill checks with player-character tie priority, unskilled -1 / trained-only blocking, the skill list, and the level-0..4 trained skill scale remain author-specified in RULEBOOK.md for now. Agents must preserve them until the author explicitly revises them.
 
 **The current skill list, level-0..4 scale, and 2d6 skill-check engine are tabletop-first.** The existing digital runtime still contains the superseded 3d6 check engine and old difficulty ladder. Treat that as explicit porting debt, not as competing canon. Do not partially port #25 into one runtime; a later task must derive the shared digital specification and update Godot and Concordia consistently.
 
 The earlier issue #17 BCI / Compute / Connection / Infosec cyberspace modifier framework is **withdrawn from active canon**. Do not port it. Hacking / cyberspace is DEFERRED until the author defines an original NoöPunk subsystem.
 
 Until explicitly specified, do not define:
-- additional attributes or derived statistics
+- final attribute names/counts inside the four systems, or derived statistics
 - additional skills, or a rename/split/merge of the ones in RULEBOOK.md §5.3
 - which skills are unskilled-allowed versus trained-only
 - skill specialties or the mechanism by which a broad skill is narrowed (the profession mechanism in particular is deferred)
@@ -191,8 +193,8 @@ The first Concordia implementation should be infrastructure only: runnable simul
 
 NoöPunk's canonical design invariants are documented once in [`docs/DESIGN_PRINCIPLES.md`](docs/DESIGN_PRINCIPLES.md). Every contributing agent must preserve them:
 
-1. Preserve the **Gamism / Narrativism / Simulationism balance**.
-2. Use **CY_BORG** (Gamism), **Cyberpunk 2020** (Simulationism), and **The Sprawl** (Narrativism) as the canonical reference poles.
+1. Preserve the **Gamism / Narrativism / Simulationism balance**, with issue #51's current priority: **Narrativist experience + Simulationist world + Gamist friction**.
+2. Use **CY_BORG** (Gamism), **Cyberpunk 2020** (Simulationism), and **The Sprawl** (Narrativism) as the canonical reference poles; use **The Veil** as a complementary Narrativist reference.
 3. Preserve **rules/mechanics parity** between Tabletop, Godot and Concordia wherever possible, while developing them in the order **Tabletop → Godot/Concordia** rather than in parallel.
 4. Allow scenarios and medium-specific presentation to diverge.
 5. Preserve the **Cyberpunk / Noösphere balance**.
@@ -204,7 +206,7 @@ NoöPunk's canonical design invariants are documented once in [`docs/DESIGN_PRIN
 Practical consequences:
 
 - Prefer noösphere content that stays science-fictional, philosophical and speculative; do not let it become generic fantasy magic.
-- Do not let one creative agenda become the default that overwhelms the other two, and do not add mechanics that only serve one of them.
+- Do not collapse the game into a single creative agenda. Narrativism is the foreground experience, Simulationism supplies persistent causal grounding, and Gamism supplies pressure and consequential choice.
 - A scenario, mission, map, or presentation difference between Tabletop, Godot and Concordia is expected and permitted. A **rules** difference is a defect: extract a shared specification rather than fork the rule.
 - Where a shared specification already exists (for example `data/rules/core.json` over `src/rules/core.py`), consume it rather than re-declaring the same values in a second runtime.
 
