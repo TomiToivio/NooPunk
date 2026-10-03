@@ -100,7 +100,9 @@ These may be represented only by clearly empty extension points when needed by t
 
 ### 5. Setting constraints
 
-Treat NoöPunk as an original genre combining Noösphere + Cyberpunk.
+Treat NoöPunk as an **alternate Eclipse Phase timeline set before the Fall**, combining Noösphere + Cyberpunk inside that transhuman setting.
+
+Canonical anchors are: **20XX**, **Earth still exists**, **the Fall has not happened**, and **the technology level is broadly Eclipse Phase-level**.
 
 The cyberpunk layer remains technological, political, economic, and social cyberpunk. Do not convert it into fantasy.
 
@@ -116,9 +118,9 @@ The world is approximately a 2045-like extrapolation from the 2026 situation, bu
 
 ### 7. Retrocyberpunk tone is not a license to add lore
 
-Recognized influences include old-school Cyberpunk, Shadowrun, Eclipse Phase, Philip K. Dick, Hawkwind, and 1970s space psychedelia.
+Recognized influences include old-school Cyberpunk, Shadowrun, Philip K. Dick, Hawkwind, and 1970s space psychedelia.
 
-Use these only as high-level tonal references. Do not copy protected setting material, terminology, characters, factions, mechanics, or text. Do not silently import assumptions from those games or works.
+Those remain tonal/comparative references. **Eclipse Phase is different:** it is now the licensed parent continuity, technology baseline, and EP2 mechanical foundation for NoöPunk. Use EP material only within the applicable licensing and attribution boundaries, and document timeline divergences rather than renaming concepts merely to appear original.
 
 ### 8. Minimal Godot foundation
 
@@ -199,9 +201,9 @@ NoöPunk's canonical design invariants are documented once in [`docs/DESIGN_PRIN
 4. Allow scenarios and medium-specific presentation to diverge.
 5. Preserve the **Cyberpunk / Noösphere balance**.
 6. Treat **UFO Disclosure, Psionics and Panpsychism** as the defining Noösphere paradigm shifts.
-7. Treat **Shadowrun** and **Eclipse Phase** as comparative influences, not templates to copy.
+7. Treat **Shadowrun** as a comparative influence. Treat **Eclipse Phase** as the licensed parent continuity / technology baseline / EP2 rules foundation, subject to provenance and attribution.
 8. Do not silently redesign these balances. If an implementation requires a departure, document the reason explicitly.
-9. Treat NoöPunk as an **original rules system**. Existing RPGs are comparative references only and never provide default mechanics or a chassis.
+9. Treat **EP2 as the current mechanical chassis**. NoöPunk may simplify or replace subsystems deliberately, but agents must not revert the project to an original-rules-only premise unless the author explicitly changes direction again.
 
 Practical consequences:
 
@@ -227,16 +229,17 @@ Platform-specific differences must be documented as adaptations. They must not s
 
 Scenarios, UI, pacing, maps, presentation, automation, and other medium-specific features may diverge where appropriate. Core rules, mechanics, terminology, and world canon should not.
 
-### 15. Original NoöPunk rules only
+### 15. Eclipse Phase 2E chassis and alternate-timeline rule
 
-No existing RPG is the mechanical chassis for NoöPunk.
+**Eclipse Phase 2E is the current mechanical chassis and Eclipse Phase is the parent continuity.**
 
 When adding or revising mechanics:
 
-1. begin from the author's explicit design direction and the four domains **Social / Physical / Psychic / Cybernetic**;
-2. connect rules to the project's theoretical sources where appropriate;
-3. write original NoöPunk procedures and terminology;
-4. treat other RPGs only as comparative design references;
-5. leave unresolved systems unresolved rather than importing defaults.
+1. begin from the current author direction in issue #60 and `RULEBOOK.md`;
+2. preserve EP2 mechanics and terminology when they work, rather than replacing them for originality's sake;
+3. simplify or modify subsystems only when NoöPunk or Concordia has a clear reason;
+4. connect NoöPunk additions to the project's theoretical sources where appropriate;
+5. record whether material is EP-derived, modified EP, or NoöPunk-native, including licensing/provenance;
+6. keep unresolved systems unresolved rather than inventing unsupported canon.
 
-Existing provisional rules remain canonical only until the author explicitly revises them. The project is intentionally rebuilding the rules slowly from first principles.
+Setting work must preserve the anchors **20XX / pre-Fall / Earth intact / Eclipse Phase technology level** unless the author explicitly revises them.
