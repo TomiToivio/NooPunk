@@ -782,6 +782,7 @@ Use this table to track major mechanical mutations.
 | 2026-10-03 | Overall chassis | Original-from-scratch NoöPunk rules reset | EP2 homebrew foundation with evolutionary replacement | **Current direction.** Issue #60 supersedes the archived reset for active development. |
 | 2026-10-03 | Runtime priority | Tabletop-first staged ports | Concordia-first playable RPG/simulation using tabletop-readable rules | **Current direction.** The rulebook remains canonical documentation, while Concordia is the immediate playable target. |
 | 2026-10-03 | Setting continuity | Separate NoöPunk world progressively replacing Eclipse Phase | **Alternate Eclipse Phase timeline before the Fall; year 20XX; Earth intact; EP technology baseline** | **Current direction.** Preserve EP concepts by default and document deliberate timeline divergences. |
+| 2026-10-03 | Layer ontology | Four layers treated implicitly across §15–§19 | **Explicit four-layer ontology with structural couplings (§34)** | Issue #78. Couplings made explicit because the interfaces are where the gameplay is; no mechanics defined. |
 
 Add rows whenever a major subsystem is replaced or substantially reskinned.
 
@@ -1178,6 +1179,64 @@ incomprehensible, or internally divided.
 
 The consequences include diplomacy, trade, migration, espionage, religious change,
 scientific exchange, xenophobia, cults, conflict and hybrid communities.
+
+---
+
+## 34. Structural coupling between the four layers
+
+**Status: NOÖPUNK NATIVE ONTOLOGY. No mechanics are defined here.**
+
+The four layers are **not four disconnected databases**. They are operationally
+distinct systems that are structurally coupled, and much of the interesting
+gameplay happens at their interfaces rather than inside any one of them.
+
+The couplings:
+
+- **Physical ↔ Psychic** — embodiment, anaesthesia, drugs, injury, neural substrate.
+  The state of a body conditions the state of a consciousness.
+- **Psychic ↔ Social** — thought and communication, ideology, persuasion, language.
+  Consciousness does not communicate directly; it participates in communication.
+- **Social ↔ Cybernetic** — algorithmic governance, platforms, corporations
+  controlling AGIs, AGIs participating in organizations.
+- **Cybernetic ↔ Physical** — robots, sensors, infrastructure, morphs. Machine
+  systems act on matter.
+- **Psychic ↔ Cybernetic** — BCI, uploaded minds, and the open question of AI
+  consciousness.
+- **Psychic ↔ Psychic** — PSI, telepathy, remote perception, non-local entanglement.
+  See §16: psychic accessibility follows entanglement and coupling, not distance.
+- **All four** — NHI artifacts, cyber-psi interfaces, collective intelligence, and
+  Noösphere phenomena.
+
+### 34.1 A note on what coupling does not mean
+
+Coupling is not collapse. The layers remain operationally distinct:
+
+- the **Psychic** and **Social** layers stay separate even though they depend on each
+  other — consciousness and communication are different operations (see §17);
+- **language is not a separate layer**; it belongs to the Social layer as a medium of
+  communication and a structural coupling between psychic and social systems;
+- cybernetic connectivity is **not** psychic entanglement — a character may be
+  cybernetically disconnected yet psychically entangled, or connected to millions of
+  systems with no psychic relationship at all (see §15).
+
+### 34.2 Candidate simulation representations
+
+The ontology is theoretically rich but should stay computationally simple at first.
+A provisional mapping, to be prototyped rather than finalized:
+
+| Layer | Main representation |
+|---|---|
+| Physical | spatial map / location graph |
+| Social | social / rhizomatic communication graph |
+| Psychic | internal state plus a non-local noetic / entanglement graph or hypergraph |
+| Cybernetic | computer / network graph plus autonomous software agents |
+
+The **Psychic** layer must not use physical distance as its fundamental metric. Where
+PSI requires coupling with a target, psychic accessibility is a function of
+entanglement, coherence, resonance, shared history or symbolic linkage rather than
+kilometres (see §16.2).
+
+These representations are candidates for prototype, not settled mechanics.
 
 ---
 
