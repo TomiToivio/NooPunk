@@ -1,23 +1,31 @@
 # NoöPunk Rulebook
 
-> **STATUS: LIVING RULEBOOK / EP2 HOMEBREW FOUNDATION**
+> **STATUS: LIVING RULEBOOK / PRE-FALL ECLIPSE PHASE ALTERNATE TIMELINE**
 >
 > This is the canonical human-readable rules document for the NoöPunk Concordia RPG/Simulation.
 >
-> NoöPunk currently begins from **Eclipse Phase 2nd Edition (EP2)** as a playable mechanical foundation and will progressively **modify, simplify, reskin, replace, and eventually outgrow** those rules.
+> NoöPunk is an **alternate Eclipse Phase timeline set before the Fall**. It uses **Eclipse Phase 2nd Edition (EP2)** as its rules and technology baseline.
+>
+> Canonical world anchors:
+>
+> - the year is **20XX**;
+> - **the Fall has not happened**;
+> - **Earth still exists** and remains inhabited and politically central;
+> - the technology level is broadly the **same transhuman technology level as Eclipse Phase**;
+> - the timeline diverges through NoöPunk's Noösphere, panpsychism, psionics, NHI/UAP contact, ideological conflicts, political economy, and alternate AI history.
 >
 > The development path is:
 >
 > ```text
-> Eclipse Phase 2E
+> Eclipse Phase 2E rules + transhuman technology
 >         ↓
-> EP2 homebrew Concordia prototype
+> alternate pre-Fall timeline (20XX, Earth intact)
 >         ↓
-> NoöPunk reskin + world replacement
+> NoöPunk historical + noöspheric divergence
 >         ↓
-> simplified EP-derived mechanics
+> Concordia RPG / social simulation
 >         ↓
-> native NoöPunk RPG / simulation rules
+> selective rules simplification and modification where useful
 > ```
 >
 > **Issue #60 is the current design mandate for this rules direction.** Earlier archived documents describing an "original rules only" reset are historical design records and do not override this file.
@@ -55,11 +63,9 @@ For the current development phase, describe the game as:
 
 > **NoöPunk: Eclipse Phase 2nd Edition homebrew / Concordia RPG-Simulation**
 
-This is intentionally temporary.
+This is the current canonical setting relationship.
 
-NoöPunk has its own:
-
-- world and history,
+NoöPunk shares the Eclipse Phase technological and transhuman baseline, but follows an **alternate pre-Fall history**. It has its own divergences in:
 - ideological conflicts,
 - factions and political economies,
 - AI / AGI / NHI framing,
@@ -71,7 +77,7 @@ NoöPunk has its own:
 - LaclauGPT-inspired ideological contestation,
 - Panpsychic Cyborg Multitude themes.
 
-Eclipse Phase supplies a starting rules engine, not the final identity of the game.
+Eclipse Phase supplies both the **rules/technology baseline and parent continuity**. NoöPunk's identity comes from the alternate timeline, its social simulation, and its Noösphere-side paradigm shifts.
 
 ---
 
@@ -440,7 +446,7 @@ For the first playable version:
 - test whether each item has a meaningful simulation role;
 - reskin/rewrite setting-specific descriptions.
 
-NoöPunk technology levels vary by society, ideology, political economy, catastrophe, infrastructure, and history. There is no single global technology level.
+The **global technology baseline is Eclipse Phase-level transhuman technology**. Access, infrastructure, legality, wealth, ideology, and local development may vary sharply between societies and locations, especially because Earth is still intact and planetary institutions remain central.
 
 ---
 
@@ -648,6 +654,7 @@ Use this table to track major mechanical mutations.
 | --- | --- | --- | --- | --- |
 | 2026-10-03 | Overall chassis | Original-from-scratch NoöPunk rules reset | EP2 homebrew foundation with evolutionary replacement | **Current direction.** Issue #60 supersedes the archived reset for active development. |
 | 2026-10-03 | Runtime priority | Tabletop-first staged ports | Concordia-first playable RPG/simulation using tabletop-readable rules | **Current direction.** The rulebook remains canonical documentation, while Concordia is the immediate playable target. |
+| 2026-10-03 | Setting continuity | Separate NoöPunk world progressively replacing Eclipse Phase | **Alternate Eclipse Phase timeline before the Fall; year 20XX; Earth intact; EP technology baseline** | **Current direction.** Preserve EP concepts by default and document deliberate timeline divergences. |
 
 Add rows whenever a major subsystem is replaced or substantially reskinned.
 
@@ -699,6 +706,6 @@ If the answer requires spelunking through old commits, Discord-like issue archae
 
 NoöPunk should remain playable throughout its transformation.
 
-The destination is not "Eclipse Phase with different nouns."
+The destination is **not a separate setting wearing borrowed EP mechanics**.
 
-The destination is a NoöPunk RPG/social simulation whose rules emerged through use, mutation, and deliberate replacement, with a visible evolutionary record preserved here.
+The destination is a playable **alternate pre-Fall Eclipse Phase timeline** in which NoöPunk's paradigm shifts reshape an intact Earth and wider transhuman civilization. Rules may still mutate through use, but the Eclipse Phase continuity and technology baseline are now intentional parts of the premise.
