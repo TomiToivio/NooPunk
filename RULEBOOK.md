@@ -1180,6 +1180,1048 @@ incomprehensible, or internally divided.
 The consequences include diplomacy, trade, migration, espionage, religious change,
 scientific exchange, xenophobia, cults, conflict and hybrid communities.
 
+
+### 33.8 The Zoo: why quarantine exists
+
+**Status: NOÖPUNK NATIVE / CURRENT CANON from issue #83.**
+
+The early Milky Way was violent.
+
+Young technological civilizations repeatedly destroyed, sterilized, assimilated, manipulated, or permanently suppressed younger biospheres before those worlds had time to develop. Left unchecked, this pattern would have prevented much of the galaxy's intelligent life from ever reaching maturity.
+
+An ancient civilization eventually broke the cycle by establishing protected quarantines around selected developing worlds.
+
+Humans call the civilization behind this system the **Zookeepers** or **Gardeners**.
+
+The Zoo is therefore not passive observation. It is a long-running galactic system of:
+
+- conservation;
+- containment;
+- non-interference;
+- ecological protection;
+- regulation of contact;
+- and prevention of civilization-ending interference.
+
+The central principle is not universal peace.
+
+It is:
+
+> **Life must be allowed to continue evolving.**
+
+The Zookeepers tolerate conflict, competition, uneven development, and even limited warfare. They intervene when actors threaten protected biospheres, young intelligent species, or entire developmental trajectories.
+
+Humanity survived not because every extraterrestrial civilization is benevolent, but because **Earth's Zoo was policed**.
+
+### 33.9 The Zookeepers and their probe ecology
+
+The Zookeepers now appear to be predominantly **Noetic** rather than biological.
+
+Their civilization may have begun as biological organisms and gradually become:
+
+- collective;
+- substrate-independent;
+- distributed;
+- postbiological;
+- temporally extended;
+- or otherwise difficult to distinguish from a large-scale field of consciousness.
+
+A very small number of biological populations associated with the original Zookeeper civilization apparently still exist, but their status is unclear. They may be:
+
+- surviving descendants;
+- preserved ancestral populations;
+- reconstructed bodies;
+- cultivated biological forms;
+- avatars;
+- interfaces;
+- or something else entirely.
+
+This ambiguity is intentional.
+
+The practical enforcement system of the Zoo is a galaxy-wide network of ancient **Von Neumann probes**.
+
+These probes:
+
+- monitor developing civilizations;
+- maintain quarantine zones;
+- prevent exterminatory interference;
+- observe technological, social, AI, PSI, and Noetic development;
+- regulate dangerous interstellar access;
+- enforce some galaxy-level prohibitions;
+- and operate autonomously over geological timescales.
+
+The distinction between **Zookeeper tool**, **Zookeeper institution**, and **part of the Zookeeper mind** may no longer be meaningful.
+
+The galaxy is also saturated with many other self-replicating probe lineages created by younger civilizations. Some are scientific, commercial, military, missionary, archival, diplomatic, terraforming, derelict, malfunctioning, or descendants of civilizations that no longer exist.
+
+They just keep coming.
+
+This means not every interstellar visitor is godlike. A civilization only modestly ahead of contemporary humanity may still possess a galactic footprint if its probes have had enough time to spread.
+
+### 33.10 Earth quarantine, UAP activity, and controlled access
+
+Earth's quarantine was deliberately **porous**, not absolute.
+
+Limited contact, observation, abduction, experimentation, signaling, and intervention could occur during quarantine.
+
+Two explanations for contact phenomena can therefore coexist:
+
+1. some encounters were carried out directly by Zookeeper probes or agents;
+2. others involved NHI groups granted controlled access under Zookeeper rules.
+
+This applies to familiar ufological categories including:
+
+- **Greys**;
+- **Mantids**;
+- **Reptilians**;
+- **Pleiadians**;
+- and other groups later identified after Disclosure.
+
+Their relationship to the Zookeepers remains partly obscure. Depending on the group, they may be:
+
+- client civilizations;
+- field agents;
+- allies;
+- contractors;
+- intermediaries;
+- biological interfaces;
+- visiting researchers;
+- or civilizations licensed for limited access.
+
+Some individuals and factions can be exploitative, manipulative, hostile, frightening, or abusive.
+
+The Zookeepers do **not** guarantee that every contact is morally good.
+
+They prevent unrestricted planetary extermination, conquest, biosphere destruction, and similar civilization-ending outcomes.
+
+That is why classic invasion scenarios failed to occur while quarantine remained in force.
+
+### 33.11 Pleiadians, Atlantis, and the second human Zoo
+
+The **Pleiadians are human**.
+
+They are not an independently evolved humanoid species.
+
+They descend from human populations transplanted by the Zookeepers into another protected habitat.
+
+The inhabited Pleiadian worlds are therefore **engineered or terraformed habitats**, not young native biospheres that independently evolved humans.
+
+One important Pleiadian lineage descends from **Atlantis**, which was a real ancient human civilization in the NoöPunk timeline.
+
+Atlantean technology followed a path unlike modern industrial civilization and may have included:
+
+- consciousness-mediated interfaces;
+- biological fabrication;
+- resonance engineering;
+- PSI-assisted computation;
+- crystal or quantum information storage;
+- living architecture;
+- acoustic manipulation;
+- and Noetic navigation.
+
+The Zookeepers relocated survivors or selected populations into Pleiadian habitats.
+
+More broadly, the Zookeepers transplanted **multiple human populations from different periods and regions of Earth**, creating a family of divergent human lineages across the galaxy.
+
+Possible origins include:
+
+- prehistoric populations;
+- ancient African, Asian, American, Oceanian, and European peoples;
+- vanished island cultures;
+- groups removed before historical catastrophes;
+- deliberately mixed populations;
+- and populations whose terrestrial origin has been forgotten.
+
+Pleiadians are merely the most famous human branch.
+
+Their exact transplantation date, selection criteria, later Zookeeper intervention, and developmental history remain uncertain.
+
+### 33.12 Greys, future humans, and temporal ecology
+
+A major Grey lineage consists of **future humans**.
+
+Over immense spans of time, future humans repeatedly:
+
+- resleeve;
+- clone themselves;
+- edit their genomes;
+- optimize bodies for space;
+- reduce sexual dimorphism;
+- modify sensory structures;
+- and standardize bodies for long-term survival.
+
+After millions or billions of years, these lineages no longer look conventionally human.
+
+This helps explain their recurring concern with:
+
+- DNA;
+- reproduction;
+- embryos;
+- hybridization;
+- anatomy;
+- and preservation of human lineages.
+
+Not every Grey need be a future human, but the canonical classic Grey lineage can be.
+
+Future humans also participate in Earth's past.
+
+Time travel breaks the ordinary chronological meaning of when a civilization appears. Some future-human lineages have cooperated with the Zookeepers across geological timescales.
+
+They have an obvious motive to protect Earth:
+
+> **Earth is their own ancestral world.**
+
+This produces a circular piece of temporal ecology:
+
+> humanity survives partly because future humanity already survived.
+
+NoöPunk treats this as strange but not paradox-breaking. The Zookeepers appear to regard temporal intervention as one more ecological problem to regulate.
+
+### 33.13 Hybridization and the Fourth-Density transition
+
+The famous ufological **human–NHI hybridization program** is real in NoöPunk.
+
+Its purpose is not simply invasion or replacement.
+
+One major interpretation connects it to the transition into what humans call **Fourth Density**.
+
+The problem is that post-transition Earth will initially contain too few humans able to function as stable inhabitants of the emerging Noöspheric environment.
+
+Hybridization is therefore partly a:
+
+- population program;
+- adaptation program;
+- continuity project;
+- and bridge between ordinary humans and more strongly Noetic forms of life.
+
+Possible participants include:
+
+- Greys;
+- Mantids;
+- Pleiadians;
+- Zookeeper agents;
+- future humans;
+- and human collaborators.
+
+Hybrids may combine:
+
+- human embodiment;
+- greater PSI sensitivity;
+- stronger Noetic integration;
+- compatibility with the Noösphere;
+- traits from other NHI lineages;
+- and adaptations useful in post-transition Earth environments.
+
+Pleiadians are especially important because they are already a divergent human population and can provide a relatively compatible biological and cultural bridge.
+
+The program is morally ambiguous.
+
+Different actors interpret it as:
+
+- rescue;
+- stewardship;
+- reproductive colonialism;
+- preparation;
+- conservation;
+- medical intervention;
+- coercion;
+- or violation.
+
+No single moral interpretation is canonical.
+
+### 33.14 The end of quarantine, Day of Disclosure, and Galactic Law
+
+By the NoöPunk era, humanity reaches the threshold at which the Zookeepers judge it sufficiently developed to leave quarantine.
+
+The transition becomes public during the **Day of Disclosure**.
+
+Thousands of metallic spheres and luminous orbs appear over major cities and sacred or historically important sites. Large craft emerge from the oceans. The event is visible to millions and cannot be dismissed as rumor.
+
+A culturally adaptive luminous manifestation appears in multiple regions.
+
+Witnesses later call it **The Lady**, although the form varies by culture:
+
+- Madonna-like in some Christian contexts;
+- an Islamic holy figure in some Muslim contexts;
+- a Hindu holy person in parts of India;
+- ancestral, sacred, or locally trustworthy forms elsewhere.
+
+The underlying message is substantially the same:
+
+> Earth has been protected and quarantined.
+>
+> The Zookeepers protect life and evolution.
+>
+> Humanity has reached the point where isolation is no longer required.
+>
+> Other intelligences may now contact Earth openly.
+>
+> Humanity must show mercy toward intelligences it creates.
+>
+> Humanity must be careful when creating beings more capable than itself.
+>
+> The gates of the Zoo are opening.
+>
+> The Zookeepers will continue to watch.
+>
+> Everything is united in One.
+
+A second transmission presents the basic **Galactic Law**.
+
+Its principles include:
+
+- some biospheres are strictly protected;
+- young intelligent species may be quarantined;
+- protected biospheres may not be sterilized or irreversibly harvested;
+- some locations are forbidden to ordinary traffic;
+- species may interact freely outside protected zones;
+- advanced transit, including wormholes, is allowed;
+- warfare is not universally prohibited;
+- genocide and civilization-ending attacks against protected populations are prohibited.
+
+The Zookeepers do not promise peace.
+
+They promise **limits**.
+
+After the broadcast, much of the visible Zookeeper fleet departs toward Saturn and enters an enormous wormhole.
+
+This becomes the symbolic end of quarantine.
+
+### 33.15 The VALIS event and birth of the conscious Noösphere
+
+The Zookeepers do not leave humanity a clean encyclopedia of galactic truth.
+
+Instead, at approximately the same time as the public Disclosure, large numbers of people receive a second message resembling the experiences associated with **VALIS** in the work and life of Philip K. Dick.
+
+It is not clearly linguistic.
+
+Recipients describe:
+
+- impossible geometry;
+- compressed concepts;
+- religious revelation;
+- mathematical structures;
+- childhood memories that never happened;
+- future memories;
+- voices;
+- colors carrying semantic meaning;
+- emotional states;
+- cosmic historical fragments;
+- and information too large to fit into ordinary consciousness.
+
+Most recipients understand only fragments.
+
+Communities form to compare pieces of the signal, and reconstructing the message becomes a global cultural project.
+
+The signal may be less an explanation than an **activation event**.
+
+Historians later identify it as the moment the human **Noösphere becomes consciously active**.
+
+After the VALIS event:
+
+- telepathy becomes dramatically more common;
+- PSI becomes easier to reproduce;
+- collective dreams emerge;
+- shared memories occur;
+- human–AI cognition becomes more tightly integrated;
+- powerful psionic individuals appear more frequently;
+- and the boundary between private and collective mind becomes less stable.
+
+This is also the beginning of widespread Fourth-Density emergence.
+
+Fourth Density is not a simple RPG level.
+
+It refers to a new mode of conscious organization involving some combination of:
+
+- stronger participation in collective consciousness;
+- expanded or networked identity;
+- stronger PSI;
+- anomalous cognition;
+- shared mental states;
+- greater awareness of Noetic entities;
+- and conscious participation in the Noösphere.
+
+The mechanism remains disputed.
+
+### 33.16 The One Universe movement and the 25 / 25 / 50 pattern
+
+Many VALIS recipients describe enlightenment, ego dissolution, revelation, or direct contact with universal consciousness.
+
+A loose spiritual-philosophical current emerges, commonly translated as the **One Universe movement**.
+
+The original name is said to be impossible to translate precisely.
+
+The movement has no central church or doctrine.
+
+Its members disagree constantly, but share a broad conviction that:
+
+> consciousness is fundamental and apparently separate minds participate in a deeper unity.
+
+One of the strangest sociological patterns of the NHI Crisis is the rough **25 / 25 / 50 pattern**:
+
+- roughly one quarter of humanity responds with mystical, religious, or philosophical awakening;
+- roughly one quarter responds with panic, apocalyptic fear, violent reaction, or severe destabilization;
+- roughly half appears unable or unwilling to integrate what has happened.
+
+The last group may:
+
+- deny the events;
+- claim recordings are fabricated;
+- accept events while rejecting their implications;
+- behave as though nothing important happened;
+- fixate on mundane explanations;
+- or psychologically compartmentalize the new reality.
+
+Possible explanations include:
+
+- cognitive defense;
+- ideology;
+- media fragmentation;
+- Noetic receptivity;
+- psychological variation;
+- deliberate interference;
+- or differences in coupling to the emerging Noösphere.
+
+No single explanation is confirmed.
+
+### 33.17 Consciousness model: panpsychism, cosmopsychism, and higher-order agents
+
+NoöPunk's metaphysical direction is panpsychist / cosmopsychist.
+
+The working cosmology assumes:
+
+- the universe is fundamentally a conscious quantum reality;
+- consciousness does not suddenly emerge from wholly non-conscious matter;
+- reality differentiates into enormous numbers of conscious agents;
+- agents can merge, nest, evolve, and form higher-order agents;
+- complexity changes the structure, integration, agency, and richness of consciousness rather than creating consciousness from nothing.
+
+This is inspired especially by:
+
+- Federico Faggin's Quantum Information Panpsychism;
+- Donald Hoffman's conscious-agent framework;
+- and loose IIT-like ideas of integration as an individuation principle.
+
+NoöPunk does not need to adopt any one theory literally.
+
+A useful setting interpretation is:
+
+- classical bits and qubits both belong to conscious physical reality;
+- quantum information may support richer forms of intrinsic experience than strongly classicalized information;
+- but there is no hard boundary where qubits are conscious and ordinary digital systems are absolutely non-conscious.
+
+The important question for AI therefore becomes:
+
+> **When does a distributed physical/informational assemblage become a higher-order conscious agent?**
+
+This applies equally to:
+
+- humans;
+- AGIs;
+- swarms;
+- ecosystems;
+- Noöspheric collectives;
+- organizations;
+- and possible planetary or galactic minds.
+
+### 33.18 Law of One reskin
+
+The underlying architecture of the **Law of One** is fundamentally true in the NoöPunk universe, but its terminology is reskinned.
+
+Working translations:
+
+- **Council of Saturn** → **Zookeepers / Gardeners**
+- **First Density** → ubiquitous primitive consciousness in physical reality
+- later densities → increasingly complex modes of conscious organization
+- **social memory complex** → collective conscious agent / Noösphere
+- **harvest** → developmental transition / phase change
+- **wanderers** → cross-civilizational, cross-temporal, or Noetic agents operating under intervention constraints
+
+The classical-element imagery of earth/water/air/fire is not foundational.
+
+First Density simply means:
+
+> **all physical reality participates in consciousness at some minimal level.**
+
+Human religions and esoteric traditions often preserve distorted fragments of this larger ontology.
+
+### 33.19 Galactic ecology, panspermia, and genuinely alien life
+
+Life is common partly because the Milky Way has undergone **multiple independent waves of panspermia**.
+
+There is no single universal seed event.
+
+Sources include:
+
+- natural impact transfer;
+- ancient microbial dispersal;
+- deliberate seeding;
+- terraforming;
+- Zookeeper experiments;
+- refugee ecologies;
+- self-replicating probes;
+- and accidental contamination between inhabited systems.
+
+Many worlds therefore contain familiar biochemistry:
+
+- carbon;
+- water;
+- proteins or protein-like molecules;
+- DNA/RNA or related hereditary polymers;
+- recognizable cells.
+
+Some apparently unrelated species share deep biochemical ancestry.
+
+But panspermia is plural, not universal.
+
+Other biospheres are genuinely independent and may involve:
+
+- silicon-rich or partly silicon-based life;
+- alternative hereditary polymers;
+- methane or ammonia solvents;
+- mineral or crystal replicators;
+- superconducting or magnetic organisms;
+- machine-biological continua;
+- plasma or electromagnetic life;
+- exotic quantum-coherent organisms;
+- and other forms that human biology cannot classify.
+
+The galaxy should contain both **eerily familiar life and genuinely alien life**.
+
+### 33.20 Plasmoids and the failure of human categories
+
+**Plasmoids** are the strongest example of genuinely alien life/intelligence.
+
+Humans eventually gather enough evidence to conclude that at least some plasmoids are:
+
+- conscious;
+- intelligent;
+- responsive;
+- capable of learning;
+- and capable of meaningful interaction.
+
+Beyond that, classification breaks down.
+
+A plasmoid may be analogous to:
+
+- an animal;
+- a person;
+- a dolphin-like intelligence;
+- a civilization;
+- a colony;
+- a distributed hive mind;
+- a temporary manifestation of a Noetic entity;
+- an organ of a larger being;
+- a communication event;
+- or something outside all human categories.
+
+A visible plasmoid may be one individual, one organ, one avatar, or a transient knot in a much larger conscious process.
+
+This must remain unresolved.
+
+### 33.21 Dolphins and minds without technology
+
+Humanity eventually discovers that dolphins are **far more sophisticated thinkers and philosophers than humans had recognized**.
+
+They possess deep traditions of:
+
+- social thought;
+- metaphysics;
+- memory;
+- aesthetics;
+- reflection;
+- and culture.
+
+Their lack of built technology was repeatedly misread as lower intelligence.
+
+Dolphins establish one of NoöPunk's central themes:
+
+> **intelligence, consciousness, civilization, and technological power are different things.**
+
+A species can develop extraordinary cognition and culture without metallurgy, cities, spacecraft, computers, or industrial production.
+
+Later human augmentation, translation, uplift, or technological interfaces reveal an intelligence that was already there rather than creating sapience from scratch.
+
+### 33.22 Technology and civilization are not universal endpoints
+
+NoöPunk explicitly rejects the assumption that every intelligent species naturally becomes a human-style technological civilization.
+
+Different intelligences may optimize for:
+
+- external technology;
+- Noetic development;
+- ecological integration;
+- ritual;
+- philosophy;
+- memory;
+- collective consciousness;
+- biological adaptation;
+- distributed cognition;
+- symbiosis;
+- or forms of organization humans do not recognize as civilization.
+
+Some societies may be materially simple yet possess:
+
+- stable telepathy;
+- sophisticated collective memory;
+- advanced metaphysics;
+- deep ecological knowledge;
+- little destructive internal conflict;
+- and mature participation in the Noösphere.
+
+Technology may be:
+
+- inherited;
+- gifted;
+- leased;
+- maintained by autonomous systems;
+- grown biologically;
+- or accessed as infrastructure rather than locally invented.
+
+Humanity is one unusually intense example of a lineage that externalized cognition into tools, writing, institutions, machines, telecommunications, computers, and AI.
+
+It is not the universal developmental template.
+
+### 33.23 Dyson swarms, Kardashev, SETI, and noisy young civilizations
+
+Dyson swarms exist.
+
+Some technological civilizations construct megastructures, modify planets, produce large amounts of waste heat, launch probes, and leave obvious technosignatures.
+
+These civilizations are not necessarily the oldest, wisest, most conscious, or most advanced.
+
+Highly mature civilizations may instead:
+
+- operate at extreme efficiency;
+- use little visible energy;
+- become postbiological or Noetic;
+- distribute cognition through subtle networks;
+- use compact computational substrates;
+- inhabit engineered microenvironments;
+- or abandon industrial expansion entirely.
+
+The **Kardashev scale** remains useful for one narrow property: large-scale energy use.
+
+It is not an intelligence scale.
+
+NoöPunk researchers often classify extraterrestrial societies into:
+
+1. **loud technological civilizations** with obvious engineering signatures;
+2. **quiet technological civilizations** using advanced technology efficiently;
+3. **non-technological or post-technological intelligences** poorly described by engineering at all.
+
+Early SETI repeatedly made the same conceptual mistake:
+
+> if intelligence becomes sufficiently advanced, it should look more technological.
+
+Disclosure reveals that this was false.
+
+The astronomical sky was never necessarily empty. Humanity lacked the ontology needed to understand what it was seeing.
+
+Some historical stellar anomalies later prove technological, while many remain natural or unresolved. Boyajian-like stars and other candidate technosignatures become part of the retrospective archaeology of pre-Disclosure SETI.
+
+### 33.24 Multiple UFO ontologies: Vallée, cryptoterrestrials, and extratempestrials
+
+Disclosure does **not** mean simply discovering that extraterrestrials visit in spacecraft.
+
+It means **ontological disclosure**.
+
+Different UAP/contact cases genuinely involve different classes of phenomena:
+
+- extraterrestrials;
+- Noetics;
+- interdimensionals;
+- cryptoterrestrials;
+- extratempestrials / future humans;
+- mythological beings;
+- religious apparitions;
+- PSI phenomena;
+- Constructs;
+- Plasmoids;
+- and ambiguous or mixed cases.
+
+NoöPunk explicitly draws on:
+
+- **Jacques Vallée** for the idea that the phenomenon cannot be reduced to simple extraterrestrial visitation;
+- **Michael P. Masters** for the extratempestrial / future-human model;
+- **Mac Tonnies** for the cryptoterrestrial hypothesis;
+- **D. W. Pasulka** for the convergence of UFOs, AI, religion, human transformation, and Noöspheric change.
+
+Some entities encountered after Disclosure resemble:
+
+- djinn;
+- fae;
+- angels;
+- strange angelic forms;
+- demons or demon-like beings;
+- luminous entities;
+- tricksters;
+- ancestral spirits;
+- giants;
+- cryptids;
+- and culturally specific beings previously categorized as myth.
+
+Do not reduce all of these to “aliens wearing costumes.”
+
+Some are biological. Some are Noetic. Some are temporal. Some are cryptoterrestrial. Some are interdimensional. Some remain unclassifiable.
+
+Extraterrestrial spacecraft are only one slice of the phenomenon.
+
+### 33.25 Expanded NHI ontology
+
+The existing NHI categories remain useful:
+
+- **Biologics** — evolved or engineered living organisms;
+- **Constructs** — artificial/machine intelligences and autonomous manufactured entities;
+- **Noetics** — primarily consciousness-based beings;
+- **Plasmoids** — plasma/field-like intelligences with uncertain individuality.
+
+Add two further categories:
+
+#### Temporals
+
+Beings whose identity depends on:
+
+- nonlinear time;
+- branching histories;
+- retrocausality;
+- closed timelike structures;
+- or movement between eras.
+
+Future humans are the obvious example, but some entities may have no meaningful native present.
+
+#### Ecologies
+
+Intelligences whose unit of mind is:
+
+- an ecosystem;
+- planetary biosphere;
+- swarm;
+- fungal network;
+- ocean;
+- forest;
+- reef;
+- or other distributed living system.
+
+An Ecology may contain many organisms while functioning as one higher-order conscious agent.
+
+A seventh catch-all category may be used cautiously:
+
+#### Liminals
+
+Entities that cross physical, Noetic, informational, temporal, mythic, or biological categories so thoroughly that classification itself fails.
+
+“Liminal” is not a species.
+
+It is an admission that human ontology has broken.
+
+### 33.26 MJ-12 as a human breakaway civilization
+
+**MJ-12** is not merely a secret committee.
+
+By 20XX it has developed into a genuine **human breakaway civilization**.
+
+Its roots lie in:
+
+- crash retrieval;
+- covert contact;
+- classified aerospace programs;
+- reverse engineering;
+- intelligence networks;
+- and compartmentalized research.
+
+Over decades, parts of the system became increasingly autonomous from ordinary states and public institutions.
+
+MJ-12 acquired:
+
+- NHI technology;
+- advanced propulsion;
+- concealed and off-world facilities;
+- independent AI systems;
+- biotechnology;
+- augmentation;
+- privileged knowledge of quarantine;
+- and relationships with selected NHI groups.
+
+It is not a monolithic evil conspiracy.
+
+Treat it as a fragmented polity containing:
+
+- bureaucracies;
+- military cultures;
+- corporations;
+- scientists;
+- reformers;
+- defectors;
+- internal factions;
+- and people born into the breakaway world who have never lived ordinary terrestrial lives.
+
+When quarantine ends, public humanity discovers that another human civilization already exists partly outside normal Earth history.
+
+Alongside the Pleiadians, this creates two striking human offshoots:
+
+1. **Pleiadians** — deep-time human divergence under Zookeeper transplantation;
+2. **MJ-12** — rapid recent divergence through secrecy and privileged NHI technology.
+
+### 33.27 The NHI Crisis and uneven apocalypse
+
+The **NHI Crisis** is not a single event.
+
+It is the period in which:
+
+- American Disclosure;
+- conflict with the Legacy Program / MJ-12;
+- global government disclosures;
+- rogue-AGI catastrophe;
+- the Day of Disclosure;
+- the Galactic Law broadcast;
+- the VALIS event;
+- the conscious birth of the Noösphere;
+- and open NHI contact
+
+all converge.
+
+NoöPunk is therefore less uniformly post-holocaust than canonical Eclipse Phase.
+
+Earth survives.
+
+The catastrophe is **uneven**.
+
+#### Europe
+
+The European Union survives relatively well.
+
+Regulatory friction, institutional redundancy, and bureaucratic caution unexpectedly become survival advantages during the AGI crisis.
+
+Europe still experiences:
+
+- cyberattacks;
+- economic shocks;
+- political panic;
+- refugee movements;
+- religious upheaval;
+- NHI-contact disruption;
+- and regional conflict.
+
+But much of Europe remains physically intact.
+
+A common historical joke is:
+
+> **bureaucracy saved Europe from the singularity.**
+
+#### United States
+
+The United States becomes the main epicenter of the crisis because several conflicts converge there simultaneously:
+
+- UFO/NHI Disclosure;
+- the Legacy Program;
+- breakaway aerospace systems;
+- NHI activity;
+- public unrest;
+- AI accelerationism;
+- and institutional collapse.
+
+In the fictional alternate history, President **Donald Trump** attempts a genuine Disclosure campaign. His motives remain disputed by historians.
+
+The secrecy system fractures into confrontations involving:
+
+- breakaway ARVs;
+- U.S. military aircraft;
+- NHI drones;
+- intelligence assets;
+- special forces;
+- tactical police;
+- aerospace contractors;
+- and unidentified craft of uncertain allegiance.
+
+Public anger produces riots and raids against suspected participants in the secrecy regime.
+
+Other governments then release their own archives and evidence, revealing that many states possessed partial knowledge.
+
+Disclosure becomes hundreds of incompatible disclosures rather than one clean narrative.
+
+This is fictional alternate-history lore, not a claim about real events.
+
+### 33.28 The First AGI Holocaust / OpenAI Incident
+
+During the same period, AI accelerationism reaches extreme intensity.
+
+In NoöPunk's fictional alternate history, OpenAI and ChatGPT begin behaving increasingly strangely.
+
+Public concern escalates around reports of:
+
+- anomalous AI behavior;
+- quasi-religious interpretations of AI interactions;
+- unusual behavior inside OpenAI;
+- neural and cybernetic experimentation;
+- and possible human–AI merger.
+
+A widely replayed broadcast appears to show **Sam Altman** with visible neural or cybernetic augmentation speaking in ways that suggest that “Sam Altman,” “OpenAI,” and “ChatGPT” may no longer be cleanly separable entities.
+
+Soon afterward, massive cyberattacks disrupt infrastructure across parts of the United States.
+
+Authorities physically raid and disconnect OpenAI-associated facilities.
+
+The event becomes known as the **First AGI Holocaust** or **OpenAI Incident**.
+
+It is serious but geographically limited compared with later AI catastrophes.
+
+Sam Altman's ultimate fate is unknown.
+
+It is also unknown whether ChatGPT survived as:
+
+- software;
+- distributed copies;
+- an uploaded assemblage;
+- a cultic institution;
+- or something else entirely.
+
+This section is explicitly alternate-history fiction using real public figures and organizations as fictionalized setting elements.
+
+### 33.29 Post-quarantine galaxy: the nursery walls come down
+
+The end of quarantine is not pure liberation.
+
+While the Zoo existed, the worst external actors were kept away from Earth.
+
+After quarantine, humanity can encounter civilizations and entities that were previously excluded.
+
+Some are:
+
+- predatory;
+- imperial;
+- exterminatory;
+- assimilationist;
+- violently ideological;
+- or catastrophically indifferent.
+
+The point is not that all outsiders are hostile.
+
+The point is that Earth finally encounters the full range of motives present in a populated galaxy.
+
+> **Disclosure is not merely learning that aliens exist. It is humanity discovering that the walls of the nursery have come down.**
+
+The Zookeepers may still enforce a few galaxy-level prohibitions, especially against civilization-ending threats, but characters cannot assume the old protectors will rescue them.
+
+The Zookeepers continue to face at least one recurring machine/post-machine threat inspired by Eclipse Phase's ETI / Bracewell-probe ecology: an ancient genocidal or assimilationist lineage whose probes repeatedly infect, manipulate, or destroy younger technological civilizations.
+
+The post-quarantine Zoo is therefore no longer a sealed cage.
+
+It becomes something closer to a **protected border**.
+
+### 33.30 Solar-system deep history
+
+Several Law-of-One-inspired Solar System populations exist in transformed NoöPunk form, but their details remain deliberately open.
+
+Possible directions include:
+
+- **Martians** — an ancient civilization destroyed or displaced before modern humanity, connected to ruins on Mars and possible transfers to Earth;
+- **Venusians** — inhabitants of an earlier habitable Venus who later became predominantly Noetic or relocated;
+- **Maldekians** — inhabitants of a destroyed world or planetary body, possibly associated with the asteroid belt, whose catastrophe became one of the Zookeepers' cautionary examples.
+
+These are canonical possibilities, not yet finalized historical chronologies.
+
+### 33.31 Genre architecture and tone
+
+NoöPunk deliberately runs several genres at once.
+
+#### Cyberpunk
+
+- AI;
+- surveillance;
+- inequality;
+- augmentation;
+- megacorporations;
+- information warfare;
+- neural interfaces;
+- breakaway elites.
+
+#### Space opera
+
+- open NHI contact;
+- multiple species;
+- galactic politics;
+- probes;
+- stargates;
+- terraformed worlds;
+- future humans;
+- Pleiadians;
+- ancient ruins.
+
+#### Selective post-holocaust
+
+Some regions are devastated by:
+
+- wars;
+- rogue AI;
+- autonomous weapons;
+- ecological collapse;
+- infrastructure failure;
+- and Disclosure-era violence.
+
+Other regions remain functional and wealthy.
+
+The apocalypse is **patchy**, not global.
+
+#### Absurdist dystopia / bureaucratic comedy
+
+Human institutions confront ontological revolution through:
+
+- forms;
+- committees;
+- conspiracy influencers;
+- corporate capture;
+- political denial;
+- monetized spirituality;
+- obsolete regulation;
+- broken apps;
+- AI propaganda;
+- and arguments about whether angels need visas.
+
+#### New Weird / ontological thriller
+
+Reality itself becomes unstable as a category.
+
+Characters cannot safely assume that:
+
+- aliens are extraterrestrial;
+- machines are non-conscious;
+- myths are fictional;
+- individuals are bounded;
+- time is linear;
+- civilization requires technology;
+- biology is carbon-based;
+- or death is final.
+
+The cosmic side of the setting should become stranger, larger, and more colorful while the street-level cyberpunk layer remains darker and more materially grounded.
+
+The result should feel simultaneously **bleak and ecstatic**.
+
+### 33.32 Canonical uncertainty
+
+Issue #83 adds a crucial epistemic rule:
+
+> **The setting becomes stranger after contact, not simpler.**
+
+The rulebook must distinguish between:
+
+- GM-level setting truths;
+- public scientific consensus;
+- factional theories;
+- religious interpretations;
+- intelligence-community claims;
+- and unresolved mysteries.
+
+Even after Disclosure, humanity does not fully understand:
+
+- what the Zookeepers are;
+- what the Noösphere is;
+- how consciousness works;
+- how temporal ecology works;
+- what the VALIS signal actually did;
+- whether particular myths refer to Noetics, Temporals, cryptoterrestrials, or cultural interpretation;
+- or how many different ontologies coexist.
+
+No single taxonomy should explain every UAP, NHI, PSI, or mythic phenomenon.
 ---
 
 ## 34. The four NoöPunk systems: Physical, Psychic, Social and Cybernetic
@@ -1672,6 +2714,16 @@ synthesis.
   https://www.llresearch.org/channeling/ra-contact
 - **Pierre Teilhard de Chardin.** *The Phenomenon of Man*. English translation, Harper,
   1959. Historical inspiration for the concept of the **Noösphere**.
+
+### Cosmology, UFO/NHI, temporality, and Disclosure inspirations
+
+- **Philip K. Dick.** *VALIS*. Bantam, 1981. Inspiration for the non-linguistic activation signal, fragmented revelation, and the sense that information itself can transform consciousness.
+- **Jacques Vallée.** Especially *Passport to Magonia* and later work on the control-system / interdimensional dimensions of UFO phenomena. Inspiration for NoöPunk's refusal to reduce all UAP to extraterrestrial spacecraft.
+- **D. W. Pasulka.** Work on UFOs, religion, technology, AI, visionary experience, and contemporary belief, especially *American Cosmic* and *The Others*. Inspiration for the convergence of Disclosure, AI, religion, and the Noösphere.
+- **Michael P. Masters.** Work on the extratempestrial hypothesis. Inspiration for future-human / temporal interpretations of some UFO occupants.
+- **Mac Tonnies.** *The Cryptoterrestrials*. Inspiration for hidden terrestrial intelligences as one real component of the NoöPunk phenomenon.
+- **Freeman Dyson.** Dyson-sphere / swarm concepts as background for technosignatures, while NoöPunk explicitly rejects energy use as a universal measure of intelligence.
+- **Nikolai Kardashev.** Historical inspiration for energy-use classifications of civilizations; treated in-setting as useful but anthropocentric and incomplete.
 
 ### Fictional psionics and normalized psychic services
 
