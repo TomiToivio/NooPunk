@@ -35,7 +35,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-SPEC = "docs/SIMULATION_ARCHITECTURE_SPEC.md"
+SPEC = "docs/archive/SIMULATION_ARCHITECTURE_SPEC.md"
 README = "README.md"
 
 #: Fields the architecture depends on, with the reason recorded in the spec.

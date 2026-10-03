@@ -36,8 +36,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MATRIX = "data/world/tech_matrix.json"
-DOC = "docs/TECH_MATRIX.md"
-TIMELINE = "TIMELINE.md"
+DOC = "docs/archive/TECH_MATRIX.md"
+TIMELINE = "rulebook/7_TIMELINE.md"
 
 #: The issue's own regional section headings.
 REGIONS = (

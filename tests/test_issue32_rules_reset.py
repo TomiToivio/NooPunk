@@ -27,7 +27,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-MEMO = "docs/RULES_RESET_MEMO.md"
+MEMO = "docs/archive/RULES_RESET_MEMO.md"
 #: Documents that must record the reset direction.
 #:
 #: These were historically `CWN_DOCS`, guarding that the superseded external-chassis
@@ -36,7 +36,7 @@ MEMO = "docs/RULES_RESET_MEMO.md"
 #: policy from `AGENTS.md`/`DESIGN_PRINCIPLES.md`, so there is nothing left to keep
 #: as superseded warehouse. What survives of the guard is that both remaining
 #: documents record the reset direction, which is what is asserted below.
-LEGACY_DOCS = ("docs/RULES_RESET_MEMO.md", "RULEBOOK.md")
+LEGACY_DOCS = ("docs/archive/RULES_RESET_MEMO.md", "docs/archive/RULEBOOK.md")
 
 #: The four Luhmannian systems, as named by the issue.
 SYSTEMS = ("social", "physical", "psychic", "cybernetic")
@@ -143,7 +143,7 @@ class LegacySupersededNotDeletedTests(unittest.TestCase):
             with self.subTest(doc=doc):
                 self.assertTrue((ROOT / doc).exists(), f"{doc} was deleted")
         self.assertTrue(
-            (ROOT / "docs/GAME_DESIGN_MEMO.md").exists(),
+            (ROOT / "docs/archive/GAME_DESIGN_MEMO.md").exists(),
             "the #31 memo must survive the #32 reset",
         )
 
@@ -169,27 +169,30 @@ class LegacySupersededNotDeletedTests(unittest.TestCase):
 
     def test_rulebook_still_holds_the_current_rules_in_force(self) -> None:
         """The reset records a direction; it does not silently repeal the rules."""
-        head = normalised("RULEBOOK.md")[:1600]
+        head = normalised("docs/archive/RULEBOOK.md")[:1600]
         self.assertIn("remain in force only until the author revises them", head)
 
     def test_licensing_boundary_survives(self) -> None:
         """Dropping the chassis must not drop the licensing caution."""
         text = normalised("README.md")
         self.assertIn("design references", text)
-        self.assertIn("not templates or mechanical sources", text)
+        self.assertIn("attribution-noncommercial-sharealike", text)
+        self.assertIn("not affiliated with or endorsed by posthuman studios", text)
 
 
 class OriginalSystemDirectionTests(unittest.TestCase):
-    def test_documents_state_an_original_rules_system(self) -> None:
-        for doc in DIRECTION_DOCS:
-            with self.subTest(doc=doc):
-                text = normalised(doc)
-                self.assertIn("original", text)
-                self.assertRegex(
-                    text,
-                    r"original rules system|own rules system",
-                    f"{doc} does not state the original-rules direction",
-                )
+    def test_documents_state_the_current_rules_direction(self) -> None:
+        """The original-rules-only direction was superseded by #60/#63.
+
+        This guard previously asserted that the README and the site stated an
+        "original rules system". `RULEBOOK.md` now records that direction as
+        superseded and makes EP2 the current chassis, so asserting the retired
+        wording would test a policy the author reversed. What still matters is
+        that the public documents point at the direction actually in force.
+        """
+        self.assertIn("eclipse phase 2nd edition homebrew", normalised("README.md"))
+        with self.subTest(doc="docs/index.html"):
+            self.assertIn("rulebook", normalised("docs/index.html"))
 
     def test_no_document_substitutes_another_rpg_as_the_chassis(self) -> None:
         """#32 forbids replacing the legacy chassis with another existing RPG's chassis.

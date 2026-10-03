@@ -41,10 +41,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-STYLE_DOC = "docs/WRITING_STYLE_AND_MODELING.md"
+STYLE_DOC = "docs/archive/WRITING_STYLE_AND_MODELING.md"
 RULEBOOK = "RULEBOOK.md"
-REGISTRY = "docs/THEORETICAL_SOURCES.md"
-DESIGN_PRINCIPLES = "docs/DESIGN_PRINCIPLES.md"
+REGISTRY = "docs/archive/THEORETICAL_SOURCES.md"
+DESIGN_PRINCIPLES = "docs/archive/DESIGN_PRINCIPLES.md"
 AGENTS = "AGENTS.md"
 
 #: The six epistemic statuses the issue requires, by their distinguishing word.
@@ -158,7 +158,7 @@ class AcademicWorldbuildingTests(unittest.TestCase):
     def test_points_at_the_existing_registry_rather_than_forking_it(self) -> None:
         """The per-rule grounding lives in THEORETICAL_SOURCES.md; the style guide
         must reference it, not become a second registry."""
-        self.assertIn(REGISTRY, read(STYLE_DOC))
+        self.assertIn("THEORETICAL_SOURCES.md", read(STYLE_DOC))
 
     def test_references_design_principles_without_restating_them(self) -> None:
         """The doc lives in docs/, so its sibling link is relative, not `docs/...`."""

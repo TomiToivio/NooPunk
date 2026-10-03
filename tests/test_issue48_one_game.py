@@ -30,10 +30,10 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 
-CANON = "docs/NOOPUNK_AS_ONE_GAME.md"
+CANON = "docs/archive/NOOPUNK_AS_ONE_GAME.md"
 
 #: Documents that must now defer to the canonical statement.
-REFERRING = ("README.md", "AGENTS.md", "docs/DESIGN_PRINCIPLES.md")
+REFERRING = ("README.md", "AGENTS.md", "docs/archive/DESIGN_PRINCIPLES.md")
 
 
 def read(relative: str) -> str:
@@ -117,7 +117,7 @@ class GodotDeferralTests(unittest.TestCase):
 
     def test_does_not_delete_the_runtime_words_elsewhere(self) -> None:
         """The design-principles guard requires all three words; deferral is not removal."""
-        text = normalised("docs/DESIGN_PRINCIPLES.md")
+        text = normalised("docs/archive/DESIGN_PRINCIPLES.md")
         for runtime in ("tabletop", "godot", "concordia"):
             with self.subTest(runtime=runtime):
                 self.assertIn(runtime, text)
@@ -144,7 +144,7 @@ class ReferringDocsTests(unittest.TestCase):
         self.assertIn("rather than three products", text)
 
     def test_design_principles_balance_two_is_reframed(self) -> None:
-        text = normalised("docs/DESIGN_PRINCIPLES.md")
+        text = normalised("docs/archive/DESIGN_PRINCIPLES.md")
         self.assertIn("not about maintaining three products", text)
 
 
@@ -176,7 +176,7 @@ class AntiInventionTests(unittest.TestCase):
 
     def test_existing_rulebook_is_not_rewritten_here(self) -> None:
         """Phase 1 is documentation reconciliation, not a rulebook edit."""
-        text = normalised("RULEBOOK.md")
+        text = normalised("docs/archive/RULEBOOK.md")
         self.assertIn("intentionally incomplete", text)
 
 

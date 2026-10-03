@@ -19,14 +19,14 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 
-CANONICAL_DOC = "docs/DESIGN_PRINCIPLES.md"
+CANONICAL_DOC = "docs/archive/DESIGN_PRINCIPLES.md"
 
 #: Documents required to point at the canonical principles document.
 REFERRING_DOCS = (
     "AGENTS.md",
     "README.md",
-    "docs/GODOT_ARCHITECTURE.md",
-    "docs/CONCORDIA_ARCHITECTURE.md",
+    "docs/archive/GODOT_ARCHITECTURE.md",
+    "docs/archive/CONCORDIA_ARCHITECTURE.md",
 )
 
 #: The three reference poles, by creative agenda.
@@ -135,9 +135,9 @@ class AgentRulesTests(unittest.TestCase):
             "panpsychism",
             "shadowrun",
             "eclipse phase",
-            "not templates to copy",
-            "original rules system",
-            "never provide default mechanics or a chassis",
+            "the veil",
+            "ep2 as the current mechanical chassis",
+            "must not revert the project to an original-rules-only premise",
         ):
             with self.subTest(fragment=fragment):
                 self.assertIn(fragment, text)
@@ -214,7 +214,7 @@ class ReferencingDocsTests(unittest.TestCase):
                     )
 
     def test_architecture_docs_state_the_parity_rule(self) -> None:
-        for doc in ("docs/GODOT_ARCHITECTURE.md", "docs/CONCORDIA_ARCHITECTURE.md"):
+        for doc in ("docs/archive/GODOT_ARCHITECTURE.md", "docs/archive/CONCORDIA_ARCHITECTURE.md"):
             with self.subTest(doc=doc):
                 text = normalised(doc)
                 self.assertIn("design_principles.md", text)
@@ -229,7 +229,8 @@ class SingleSourceOfTruthTests(unittest.TestCase):
 
     def test_no_second_principles_document_exists(self) -> None:
         candidates = [
-            p for p in (ROOT / "docs").glob("*.md")
+            p for p in list((ROOT / "docs").glob("*.md"))
+            + list((ROOT / "docs" / "archive").glob("*.md"))
             if re.search(r"principl|design.?principles", p.name, re.I)
         ]
         names = {p.name for p in candidates}

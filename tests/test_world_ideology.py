@@ -191,7 +191,7 @@ def test_runtime_guidance_names_all_three_runtimes() -> None:
 
 def test_world_document_references_the_data_artefact() -> None:
     """The doc must point at the canonical data rather than restate it."""
-    doc = (ROOT / "docs" / "WORLD_IDEOLOGY.md").read_text(encoding="utf-8")
+    doc = (ROOT / "docs" / "archive" / "WORLD_IDEOLOGY.md").read_text(encoding="utf-8")
     assert "data/world/ideology.json" in doc, (
         "WORLD_IDEOLOGY.md must reference the canonical data artefact"
     )
@@ -204,7 +204,7 @@ def test_the_three_name_words_are_concepts_in_their_own_right() -> None:
     A world where only PCM uses these three words has failed the integration, so
     the document must treat each as a general concept, not as the faction's name.
     """
-    doc = (ROOT / "docs" / "WORLD_IDEOLOGY.md").read_text(encoding="utf-8").lower()
+    doc = (ROOT / "docs" / "archive" / "WORLD_IDEOLOGY.md").read_text(encoding="utf-8").lower()
     for word in ("panpsychism", "cyborg", "multitude"):
         assert word in doc, f"{word} is not treated anywhere in the world document"
     # the export list must name the three words as separate concepts
@@ -218,7 +218,7 @@ def test_the_three_name_words_are_concepts_in_their_own_right() -> None:
 
 def test_world_document_stays_gameable_not_a_paper() -> None:
     """Issue #8 §9: translate theory into play, not into exposition."""
-    doc = (ROOT / "docs" / "WORLD_IDEOLOGY.md").read_text(encoding="utf-8")
+    doc = (ROOT / "docs" / "archive" / "WORLD_IDEOLOGY.md").read_text(encoding="utf-8")
     for section in ("Playing it", "Simulation hooks", "Events change the map"):
         assert section in doc, f"world document lost its gameable section: {section}"
 
