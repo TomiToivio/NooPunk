@@ -1,0 +1,575 @@
+{
+  "_note": "EP2 -> NoöPunk conversion matrix (issue #60, work package B). Canonical machine-readable record of which Eclipse Phase 2E subsystem NoöPunk currently inherits, modifies, replaces or defers -- and, per subsystem, whether code exists. This file RECORDS status; it does not decide canon. Every 'implemented' verdict was measured by inspecting src/ on 2026-10-03, not asserted. Where a question is the author's to settle, the row says so and stays unsettled.",
+  "_source_of_truth": "Issue #60 is canon. RULEBOOK.md is the living rules ledger; where this file and the rulebook disagree, the rulebook wins and this file is stale.",
+  "_labels": "Status values are RULEBOOK.md section 3's five provenance labels, verbatim: EP2 BASELINE / MODIFIED EP2 / NOÖPUNK NATIVE / EXPERIMENTAL / DEFERRED. 'NOT YET MAPPED' is used where the EP2 source has not been read and guessing would be fabrication.",
+  "_measurement": "'implemented' is a code verdict (grep of src/), not a design verdict. A subsystem can be implemented and still DEFERRED as design (e.g. psionics), or specified and not implemented.",
+  "format": "noopunk.rules.conversion_matrix",
+  "version": 1,
+  "generated": "2026-10-03",
+  "ep2_rules_reference": {
+    "_note": "Authoritative EP2 rules locations. The online rules site serves the full English text; these chapter paths were read from the site's own navigation on 2026-10-03, not recalled.",
+    "online_rules": "https://eclipsephase.github.io/en/01/00-infamy.html",
+    "how_to_play": "https://eclipsephase.github.io/en/03/01-how-to-play.html",
+    "licence": "https://eclipsephase.com/cclicense/",
+    "licence_status": "CC BY-NC-SA 4.0 for the online rules and Quick-Start (audited in docs/sources/EXTERNAL_SOURCE_LICENSES.md)",
+    "chapters": {
+      "02": "Starting Out",
+      "03": "Game Mechanics",
+      "04": "Making Characters",
+      "05": "Sample Characters",
+      "06": "How It Came To Be (setting history)",
+      "07": "The Accelerated Future",
+      "08": "Transhuman Culture",
+      "09": "The New Political Economy",
+      "10": "Factions",
+      "11": "System Gazetteer",
+      "12": "Action and Combat",
+      "13": "The Mesh",
+      "14": "Psi",
+      "15": "Transhuman Tech",
+      "16": "Gear",
+      "17": "Running the Game",
+      "18": "Threats and X-Risks",
+      "19": "Appendices"
+    }
+  },
+  "status_values": [
+    {
+      "id": "EP2 BASELINE",
+      "meaning": "Inherited from EP2 with no important intended mechanical change."
+    },
+    {
+      "id": "MODIFIED EP2",
+      "meaning": "Derived from EP2 but simplified, renamed, rescaled, combined or otherwise changed."
+    },
+    {
+      "id": "NOÖPUNK NATIVE",
+      "meaning": "Designed for NoöPunk, not intended to reproduce an EP2 mechanic."
+    },
+    {
+      "id": "EXPERIMENTAL",
+      "meaning": "Being tested and may be discarded."
+    },
+    {
+      "id": "DEFERRED",
+      "meaning": "Intentionally not defined yet."
+    },
+    {
+      "id": "NOT YET MAPPED",
+      "meaning": "The EP2 source has not been read; recording a status would be fabrication."
+    }
+  ],
+  "subsystems": [
+    {
+      "id": "action-resolution",
+      "name": "Action resolution (d100 roll-under tests)",
+      "ep2_reference": "ch03 Game Mechanics: how-to-play, types-of-tests",
+      "ep2_covered": true,
+      "rulebook_section": "10",
+      "status": "EP2 BASELINE",
+      "implemented": true,
+      "code": [
+        "src/eclipse_phase_homebrew/core.py:resolve_test",
+        "src/concordia_runtime/resolver.py"
+      ],
+      "conversion_target": "keep",
+      "conversion_note": "Percentile roll-under with a target number. No intended mechanical change.",
+      "rationale": "RULEBOOK section 10 is marked EP2 BASELINE. The kernel implements roll-under directly."
+    },
+    {
+      "id": "superior-results",
+      "name": "Superior results (33/66 rule)",
+      "ep2_reference": "ch03 Game Mechanics: how-to-play",
+      "ep2_covered": true,
+      "rulebook_section": "10",
+      "status": "EP2 BASELINE",
+      "implemented": true,
+      "code": [
+        "src/eclipse_phase_homebrew/core.py (superior_successes / superior_failures)"
+      ],
+      "conversion_target": "reskin-candidate",
+      "conversion_note": "The mechanic is inherited; the naming may eventually be re-skinned.",
+      "rationale": "EP2 'How to Play' states the 33/66 rule; the kernel implements the two-tier superior bands."
+    },
+    {
+      "id": "criticals",
+      "name": "Critical doubles (incl. 00/99 absolutes)",
+      "ep2_reference": "ch03 Game Mechanics: how-to-play (Criticals)",
+      "ep2_covered": true,
+      "rulebook_section": "10",
+      "status": "EP2 BASELINE",
+      "implemented": true,
+      "code": [
+        "src/eclipse_phase_homebrew/core.py (_is_double, critical_success, critical_failure)"
+      ],
+      "conversion_target": "keep",
+      "conversion_note": "Doubles are criticals; 00 and 99 behave as absolutes.",
+      "rationale": "EP2 source states doubles are critical successes/failures with 00/99 absolutes."
+    },
+    {
+      "id": "defaulting",
+      "name": "Defaulting (to aptitude, or to a related skill)",
+      "ep2_reference": "ch03 Game Mechanics: how-to-play (Defaulting)",
+      "ep2_covered": true,
+      "rulebook_section": "10",
+      "status": "EP2 BASELINE",
+      "implemented": true,
+      "code": [
+        "src/eclipse_phase_homebrew/core.py (defaulted suppresses critical_success)"
+      ],
+      "conversion_target": "keep",
+      "conversion_note": "No modifier for defaulting; critical successes are ignored. Related-skill defaulting carries a negative modifier.",
+      "rationale": "EP2 states defaulting has no modifier but ignores critical successes."
+    },
+    {
+      "id": "modifier-cap",
+      "name": "Modifier cap (+/-60)",
+      "ep2_reference": "ch03 Game Mechanics: how-to-play (Difficulty and Modifiers)",
+      "ep2_covered": true,
+      "rulebook_section": "10",
+      "status": "EP2 BASELINE",
+      "implemented": true,
+      "code": [
+        "src/eclipse_phase_homebrew/core.py (net_modifier = max(-60, min(60, modifier)))"
+      ],
+      "conversion_target": "keep",
+      "conversion_note": "EP2 states no set of multiple modifiers should impact a test by more than +/-60.",
+      "rationale": "Direct match to the EP2 rule text."
+    },
+    {
+      "id": "pools",
+      "name": "Pools (Insight / Moxie / Vigor / Flex)",
+      "ep2_reference": "ch03 Game Mechanics: pools",
+      "ep2_covered": true,
+      "rulebook_section": "11",
+      "status": "EP2 BASELINE",
+      "implemented": true,
+      "code": [
+        "src/eclipse_phase_homebrew/core.py (PoolKind, EP2PoolState, short_recharge, long_recharge)"
+      ],
+      "conversion_target": "keep",
+      "conversion_note": "Four pool categories with maximum/current state and recharge. Declared EP2 BASELINE / EXPERIMENTAL FOR CONCORDIA.",
+      "rationale": "RULEBOOK section 11 status line; the kernel implements spend and recharge."
+    },
+    {
+      "id": "pool-spends",
+      "name": "Common pool test manipulations",
+      "ep2_reference": "ch03 Game Mechanics: pools",
+      "ep2_covered": true,
+      "rulebook_section": "11",
+      "status": "EP2 BASELINE",
+      "implemented": true,
+      "code": [
+        "src/eclipse_phase_homebrew/core.py (PoolSpend: ADD_20, IGNORE_MODIFIERS, FLIP_FLOP, UPGRADE_SUCCESS, DOWNGRADE_CRITICAL_FAILURE)"
+      ],
+      "conversion_target": "keep",
+      "conversion_note": "+20, ignore modifiers, flip-flop, upgrade success, downgrade critical failure.",
+      "rationale": "The five manipulations named in docs/sources/EP2_HOME_BREW_SOURCES.md are implemented."
+    },
+    {
+      "id": "opposed-tests",
+      "name": "Opposed tests",
+      "ep2_reference": "ch03 Game Mechanics: types-of-tests",
+      "ep2_covered": true,
+      "rulebook_section": "10",
+      "status": "EP2 BASELINE",
+      "implemented": true,
+      "code": [
+        "src/eclipse_phase_homebrew/interactions.py:resolve_opposed_test",
+        "src/concordia_runtime/mechanics.py:resolve_structured_opposed"
+      ],
+      "conversion_target": "keep",
+      "conversion_note": "Implemented with an explicit result ranking.",
+      "rationale": "Implemented and exercised by the playable slice and the #74 scenario."
+    },
+    {
+      "id": "combat",
+      "name": "Combat",
+      "ep2_reference": "ch12 Action and Combat: resolving-combat",
+      "ep2_covered": true,
+      "rulebook_section": "13",
+      "status": "EP2 BASELINE",
+      "implemented": true,
+      "code": [
+        "src/eclipse_phase_homebrew/interactions.py:resolve_combat_attack"
+      ],
+      "conversion_target": "simplify",
+      "conversion_note": "RULEBOOK section 13 declares it 'intentionally minimal'. A single attack resolution, not the full EP2 combat sequence (ranged/melee/beam/spray/thrown weapon distinctions are not implemented).",
+      "rationale": "One attack function exists; EP2 ch12 has 30 sections of combat detail, so most of it is deliberately not ported.",
+      "not_implemented": [
+        "melee vs ranged distinction",
+        "weapon categories (beam / spray / thrown / kinetic / seeker)",
+        "armor rules",
+        "weapon traits and accessories",
+        "special attacks",
+        "vehicle movement and combat"
+      ]
+    },
+    {
+      "id": "harm",
+      "name": "Physical harm, wounds and stress",
+      "ep2_reference": "ch12 Action and Combat: physical-health, mental-health, disorders",
+      "ep2_covered": true,
+      "rulebook_section": "12",
+      "status": "EP2 BASELINE",
+      "implemented": true,
+      "code": [
+        "src/eclipse_phase_homebrew/interactions.py:EP2HarmState"
+      ],
+      "conversion_target": "keep",
+      "conversion_note": "Harm state with wound threshold. EP2's full damage-track, healing, repair and psychosurgery procedures are not implemented.",
+      "rationale": "Harm state exists and survives a save/load round trip; the detailed tracks are deliberately absent.",
+      "not_implemented": [
+        "damage tracks",
+        "healing and repair",
+        "mental healing",
+        "psychosurgery",
+        "disorders"
+      ]
+    },
+    {
+      "id": "social",
+      "name": "Social interaction",
+      "ep2_reference": "ch12 Action and Combat: social-actions",
+      "ep2_covered": true,
+      "rulebook_section": "17",
+      "status": "EP2 BASELINE",
+      "implemented": true,
+      "code": [
+        "src/eclipse_phase_homebrew/interactions.py:resolve_social_action"
+      ],
+      "conversion_target": "expand-then-simplify",
+      "conversion_note": "RULEBOOK section 17 declares 'EP2 BASELINE + NOÖPUNK SIMULATION EXPANSION'. The NoöPunk social-simulation layer (section 21) is the intended expansion and is NOT implemented.",
+      "rationale": "A social action resolves; the social-science simulation layer is separate and native."
+    },
+    {
+      "id": "mesh-hacking",
+      "name": "Mesh / hacking",
+      "ep2_reference": "ch13 The Mesh: mesh-actions, authentication-and-encryption, devices-apps-and-links",
+      "ep2_covered": true,
+      "rulebook_section": "15",
+      "status": "EP2 BASELINE",
+      "implemented": true,
+      "code": [
+        "src/eclipse_phase_homebrew/interactions.py:resolve_hack_action"
+      ],
+      "conversion_target": "reskin-or-replace",
+      "conversion_note": "RULEBOOK section 15 declares it 'a major NoöPunk reskin/replacement target'. One hack action resolves; EP2's mesh topology, encryption, apps/links and mesh-insert stack are not ported.",
+      "rationale": "Status is the rulebook's own; only a single action exists in code.",
+      "not_implemented": [
+        "mesh topology",
+        "authentication and encryption",
+        "devices/apps/links",
+        "mesh inserts",
+        "online research"
+      ]
+    },
+    {
+      "id": "embodiment",
+      "name": "Embodiment / morphs",
+      "ep2_reference": "ch04 Making Characters: morphs; ch15 Transhuman Tech: resleeving, acquiring morphs",
+      "ep2_covered": true,
+      "rulebook_section": "14",
+      "status": "EP2 BASELINE",
+      "implemented": true,
+      "code": [
+        "src/eclipse_phase_homebrew/embodiment.py:EP2Embodiment",
+        "src/concordia_runtime/ep2_session.py"
+      ],
+      "conversion_target": "expand",
+      "conversion_note": "RULEBOOK section 14 calls this 'a core NoöPunk subsystem'. Embodiment is represented compactly; resleeving, forking/merging, backups and morphology catalogs are not implemented.",
+      "rationale": "A compact embodiment object exists; the EP2 catalogs are deliberately not imported.",
+      "not_implemented": [
+        "biomorph/pod/synthmorph/uplift catalogs",
+        "resleeving",
+        "forking and merging",
+        "backups and uploading",
+        "morph acquisition"
+      ]
+    },
+    {
+      "id": "gear-inventory",
+      "name": "Gear and inventory",
+      "ep2_reference": "ch16 Gear: gear-rules, acquiring-gear, nanofabrication, common-tech-and-ware",
+      "ep2_covered": true,
+      "rulebook_section": "18",
+      "status": "EP2 BASELINE",
+      "implemented": true,
+      "code": [
+        "src/eclipse_phase_homebrew/embodiment.py:EP2GearItem, EP2Inventory"
+      ],
+      "conversion_target": "keep-data-defer-economy",
+      "conversion_note": "RULEBOOK section 18: 'EP2 BASELINE DATA, selectively imported'. Inventory mechanics exist; the gear catalogue is not imported and no economy is defined.",
+      "rationale": "Stack-safe add/remove exists; no item catalogue and no economy."
+    },
+    {
+      "id": "character-sheet",
+      "name": "Character representation (sheet, aptitudes, skills)",
+      "ep2_reference": "ch04 Making Characters: character-stats, skills, active-skill-list",
+      "ep2_covered": true,
+      "rulebook_section": "9",
+      "status": "EP2 BASELINE",
+      "implemented": true,
+      "code": [
+        "src/text_game/sheet.py:CharacterSheet",
+        "src/eclipse_phase_homebrew/core.py:EP2Character"
+      ],
+      "conversion_target": "keep",
+      "conversion_note": "A character carries name, aptitudes, skills, pools, harm and embodiment. EP2's character-creation pipeline (13 steps, templates, gear packs, traits) is NOT implemented.",
+      "rationale": "RULEBOOK section 9 is 'EP2 BASELINE -> expected heavy NoöPunk conversion'. The sheet is EP2-shaped; creation is absent.",
+      "not_implemented": [
+        "the 13-step creation pipeline",
+        "background/career/interest/faction steps",
+        "aptitude templates",
+        "gear packs",
+        "traits",
+        "motivations"
+      ]
+    },
+    {
+      "id": "character-creation",
+      "name": "Character creation",
+      "ep2_reference": "ch04 Making Characters: character-creation-overview (steps 1-13)",
+      "ep2_covered": true,
+      "rulebook_section": "9",
+      "status": "DEFERRED",
+      "implemented": false,
+      "code": [],
+      "conversion_target": "defer",
+      "conversion_note": "Not implemented, and #60 does not require it for the first playable milestone. Recorded as DEFERRED rather than guessed.",
+      "rationale": "Measured: no creation code exists in src/. The playable scenarios hand-author their actors."
+    },
+    {
+      "id": "skills-list",
+      "name": "The skill list",
+      "ep2_reference": "ch04 Making Characters: active-skill-list, know-skills",
+      "ep2_covered": true,
+      "rulebook_section": "9",
+      "status": "EP2 BASELINE",
+      "implemented": true,
+      "code": [
+        "src/text_game/sheet.py:CharacterSheet (carries name/rating skill pairs)",
+        "src/eclipse_phase_homebrew/core.py:EP2Character (skills mapping)"
+      ],
+      "conversion_target": "keep-as-open-vocabulary",
+      "conversion_note": "No closed skill list is enforced anywhere; checks name a skill and the kernel resolves it. EP2's Active Skill List and Know Skills are not transcribed.",
+      "rationale": "Deliberate: transcribing EP2's skill list would import a large catalogue the project has not adopted."
+    },
+    {
+      "id": "reputation",
+      "name": "Reputation networks",
+      "ep2_reference": "ch15 Transhuman Tech: reputation, networking",
+      "ep2_covered": true,
+      "rulebook_section": "17",
+      "status": "DEFERRED",
+      "implemented": false,
+      "code": [],
+      "conversion_target": "defer",
+      "conversion_note": "RULEBOOK section 17 names it, but no reputation mechanic is implemented. No numeric reputation is defined.",
+      "rationale": "Measured: only fixture text mentions reputation; no mechanic exists."
+    },
+    {
+      "id": "psionics",
+      "name": "Psi / psionics",
+      "ep2_reference": "ch14 Psi: psi-overview, watts-macleod-sub-strains, psi-sleight-summaries, influence-effects",
+      "ep2_covered": true,
+      "rulebook_section": "16",
+      "status": "DEFERRED",
+      "implemented": false,
+      "code": [],
+      "conversion_target": "defer",
+      "conversion_note": "RULEBOOK section 16 marks it EP2 BASELINE FOR PROTOTYPE with NoöPunk replacement expected. Both #74 and the rulebook state psionics stay MECHANICALLY DEFERRED: setting lore is not a licence to invent a psi subsystem.",
+      "rationale": "EP2 source is available (ch14), but implementing it would pre-empt an author decision on a subsystem the project explicitly expects to replace.",
+      "explicitly_deferred": true
+    },
+    {
+      "id": "ai-agents",
+      "name": "AI, AGI, infomorphs and non-human agents",
+      "ep2_reference": "ch13 The Mesh: ais-and-muses, infomorphs; ch02 Starting Out: core-concepts",
+      "ep2_covered": true,
+      "rulebook_section": "19",
+      "status": "MODIFIED EP2",
+      "implemented": true,
+      "code": [
+        "src/text_game/actors.py",
+        "src/concordia_runtime/participants.py",
+        "src/concordia_runtime/providers.py"
+      ],
+      "conversion_target": "expand",
+      "conversion_note": "RULEBOOK section 19: 'MODIFIED EP2 / NOÖPUNK NATIVE DIRECTION'. LLM-capable and scripted NPCs coexist; the LLM provider sits behind a replaceable adapter.",
+      "rationale": "Implemented and demonstrated: the #74 scenario runs with a scripted NPC and an optional LLM actor."
+    },
+    {
+      "id": "npc-tiers",
+      "name": "Important vs background NPCs",
+      "ep2_reference": "no direct EP2 analogue",
+      "ep2_covered": false,
+      "rulebook_section": "20",
+      "status": "NOÖPUNK NATIVE",
+      "implemented": true,
+      "code": [
+        "src/text_game/actors.py",
+        "src/concordia_runtime/participants.py"
+      ],
+      "conversion_target": "keep",
+      "conversion_note": "RULEBOOK section 20: 'NOÖPUNK NATIVE ARCHITECTURE'. Deliberately not an EP2 conversion; EP2 has no equivalent tiering.",
+      "rationale": "The coexistence of dumb and LLM agents is a NoöPunk design decision, verified working in #74."
+    },
+    {
+      "id": "social-science-simulation",
+      "name": "Social-science simulation layer",
+      "ep2_reference": "no direct EP2 analogue",
+      "ep2_covered": false,
+      "rulebook_section": "21",
+      "status": "NOÖPUNK NATIVE",
+      "implemented": false,
+      "code": [],
+      "conversion_target": "later",
+      "conversion_note": "RULEBOOK section 21 declares it NOÖPUNK NATIVE and explicitly says the RPG rules must not be made responsible for it. Specified as direction; not implemented.",
+      "rationale": "Out of EP2's scope entirely; flagged so the matrix does not imply EP2 covers it."
+    },
+    {
+      "id": "structured-actions",
+      "name": "Structured actions for Concordia",
+      "ep2_reference": "no direct EP2 analogue",
+      "ep2_covered": false,
+      "rulebook_section": "22",
+      "status": "NOÖPUNK NATIVE",
+      "implemented": true,
+      "code": [
+        "src/concordia_runtime/resolver.py:resolve_structured_check",
+        "src/concordia_runtime/mechanics.py",
+        "src/concordia_runtime/ep2_adapter.py"
+      ],
+      "conversion_target": "keep",
+      "conversion_note": "The intent -> structured action -> deterministic resolution -> observation seam. NOÖPUNK NATIVE architecture wrapping EP2 mechanics.",
+      "rationale": "Implemented and used by the playable slices."
+    },
+    {
+      "id": "persistence",
+      "name": "Persistence and reproducibility",
+      "ep2_reference": "no direct EP2 analogue",
+      "ep2_covered": false,
+      "rulebook_section": "23",
+      "status": "NOÖPUNK NATIVE",
+      "implemented": true,
+      "code": [
+        "src/simulation/sqlite_store.py",
+        "src/text_game/persistence.py",
+        "src/concordia_runtime/ep2_session.py"
+      ],
+      "conversion_target": "keep",
+      "conversion_note": "Event log, save/load, seeded determinism. Native architecture; EP2 is a tabletop game and has no analogue.",
+      "rationale": "Implemented; round trips are covered by tests."
+    },
+    {
+      "id": "rules-adapter",
+      "name": "Rules adapter contract",
+      "ep2_reference": "no direct EP2 analogue",
+      "ep2_covered": false,
+      "rulebook_section": "25",
+      "status": "NOÖPUNK NATIVE",
+      "implemented": true,
+      "code": [
+        "src/concordia_runtime/__init__.py (ResolverSeam, resolve_proposal, UNRESOLVED_REASONS)"
+      ],
+      "conversion_target": "keep",
+      "conversion_note": "RULEBOOK section 25: 'NOÖPUNK NATIVE ARCHITECTURE'. Concordia talks to an abstract interface, so the engine can move EP2 -> simplified -> mixed -> native without rewriting the simulation.",
+      "rationale": "This is the mechanism that makes the rest of this matrix safe to act on incrementally."
+    },
+    {
+      "id": "reputation-economy",
+      "name": "Economy",
+      "ep2_reference": "ch09 The New Political Economy; ch16 Gear: acquiring-gear",
+      "ep2_covered": true,
+      "rulebook_section": "18",
+      "status": "DEFERRED",
+      "implemented": false,
+      "code": [],
+      "conversion_target": "defer",
+      "conversion_note": "No economy, currency or price model is implemented or defined. Deliberately deferred in #60's reserved list.",
+      "rationale": "Measured: no economy code. Not in scope for the first playable milestone."
+    },
+    {
+      "id": "vehicles",
+      "name": "Vehicles",
+      "ep2_reference": "ch12 Action and Combat: vehicle-movement",
+      "ep2_covered": true,
+      "rulebook_section": "13",
+      "status": "DEFERRED",
+      "implemented": false,
+      "code": [],
+      "conversion_target": "defer",
+      "conversion_note": "Deliberately deferred; #60's reserved list names vehicles.",
+      "rationale": "Measured: no vehicle code."
+    },
+    {
+      "id": "advancement",
+      "name": "Advancement / XP",
+      "ep2_reference": "ch17 Running the Game (advancement guidance)",
+      "ep2_covered": true,
+      "rulebook_section": "DEFERRED",
+      "status": "DEFERRED",
+      "implemented": false,
+      "code": [],
+      "conversion_target": "defer",
+      "conversion_note": "Deliberately deferred in #60's reserved list.",
+      "rationale": "Measured: only an unrelated comment token matches."
+    },
+    {
+      "id": "setting-factions",
+      "name": "Setting factions",
+      "ep2_reference": "ch10 Factions; ch11 System Gazetteer",
+      "ep2_covered": true,
+      "rulebook_section": "33",
+      "status": "NOÖPUNK NATIVE",
+      "implemented": false,
+      "code": [],
+      "conversion_target": "replace",
+      "conversion_note": "NoöPunk uses its own pre-Fall alternate setting. EP2's canon factions and gazetteer are NOT imported; only concepts are preserved where useful, per RULEBOOK section 33.",
+      "rationale": "RULEBOOK section 33 is the canonical world lore and is NoöPunk's own; the matrix must not imply EP2 factions are in use."
+    },
+    {
+      "id": "lighter-rules-alternatives",
+      "name": "Lighter rules alternatives (Fate / Neon City Overdrive / PbtA)",
+      "ep2_reference": "third-party conversions, not EP2",
+      "ep2_covered": false,
+      "rulebook_section": "24",
+      "status": "EXPERIMENTAL",
+      "implemented": false,
+      "code": [],
+      "conversion_target": "compare-only",
+      "conversion_note": "RULEBOOK section 24: 'EXPERIMENTAL REFERENCES'. Escape hatches if a subsystem proves too heavy for Concordia. Not imported; the licence audit records that the PbtA conversion could not be verified and the three attached conversions are not present on disk.",
+      "rationale": "Recorded so a later agent does not mistake these for available sources."
+    }
+  ],
+  "unresolved_questions": [
+    {
+      "id": "four-system-vs-ep2-chassis",
+      "question": "Is the issue #51 four-system unified tag model (Physical / Social / Psychic / Cybernetic, attributes as typed tags) still the CHARACTER canon alongside the EP2 mechanical chassis, or has it been retired in favour of an EP2-shaped character layer?",
+      "evidence": "AGENTS.md section 4 still states the four-system tag model is the canonical character direction. AGENTS.md section 13.9 and section 15 were rewritten by issue #60/#63 to make EP2 the mechanical chassis. RULEBOOK.md section 9 declares character identity EP2 BASELINE with an expected heavy NoöPunk conversion. The superseded four-system text also survives in docs/archive/RULEBOOK.md and docs/archive/DESIGN_PRINCIPLES.md.",
+      "why_unresolved": "Two binding documents currently say different things, and both were written by the author at different times. Picking one is an author decision; the matrix records the disagreement rather than resolving it (issue #60 is canon, but it does not state which layer wins for characters).",
+      "owner": "author",
+      "blocks": [
+        "character sheet finalisation",
+        "skills list finalisation",
+        "the #51-tag prototypes' status"
+      ]
+    },
+    {
+      "id": "ep2-sub-subsystem-depth",
+      "question": "How much of EP2's depth is wanted in the end state: which of the deliberately unported subsystems (full combat weapon classes, armor, damage tracks, mesh topology, morph catalogues, reputation networks) should eventually be ported, simplified, or dropped?",
+      "evidence": "This matrix lists them under each row's not_implemented. RULEBOOK section 8 says everything beyond the smallest playable kernel may remain deferred until play shows it is needed.",
+      "why_unresolved": "RULEBOOK section 8 already states the policy (defer until play demonstrates a need), so this is answered procedurally rather than by fiat -- but the depth of any given subsystem is still an author call when play reaches it.",
+      "owner": "author (on evidence from play)",
+      "blocks": []
+    }
+  ],
+  "$sources": {
+    "issue": "https://github.com/TomiToivio/NoöPunk/issues/60",
+    "rulebook": "RULEBOOK.md",
+    "ep2_sources_record": "docs/sources/EP2_HOME_BREW_SOURCES.md",
+    "licence_audit": "docs/sources/EXTERNAL_SOURCE_LICENSES.md",
+    "ep2_online_rules": "https://eclipsephase.github.io/en/01/00-infamy.html"
+  }
+}

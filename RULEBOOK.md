@@ -637,7 +637,12 @@ Every meaningful mechanical change should follow this sequence:
 2. **Mark its provenance:** EP2 baseline, modified EP2, NoöPunk native, experimental, or deferred.
 3. **Write the new human-readable rule in RULEBOOK.md.**
 4. **Record what it replaces.**
-5. **Update structured data/code.**
+5. **Update structured data/code.** The per-subsystem status record for this step is
+   [`data/rules/conversion_matrix.json`](data/rules/conversion_matrix.json), explained
+   in [`docs/rules/EP2_CONVERSION_MATRIX.md`](docs/rules/EP2_CONVERSION_MATRIX.md):
+   update the row for the subsystem you changed, so the inherited / modified /
+   replaced / deferred picture stays readable in one place rather than only in this
+   ledger's prose.
 6. **Add or update deterministic tests.**
 7. **Update Concordia adapters/prompts only after the rule is stable enough to execute.**
 8. **Record licensing/provenance if EP-derived material or external data is involved.**
