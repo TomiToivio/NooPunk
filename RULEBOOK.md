@@ -1220,3 +1220,33 @@ These categories remain scientifically and politically contested in the setting.
 **not** be silently folded into the official civilization count, and the count of seven must
 not be inflated by treating a disputed category as settled. This is a live in-setting
 dispute, not a gap for an implementer to resolve.
+
+
+---
+
+## 34. Issue #74 Concordia / EP2 experiment
+
+**Status: EXPERIMENTAL.**
+
+Issue #74 adds a deliberately tiny playable proof of concept rather than another rules subsystem. The scenario lives in `src/text_game/issue74.py` and is launched with:
+
+```bash
+python scripts/noopunk_text.py --scenario issue74
+python scripts/noopunk_text.py --scenario issue74 --ollama --llm-gm
+```
+
+The experiment reinforces the current architecture:
+
+- **deterministic Python owns mechanics and state**: legal actions, ratings, dice, modifiers, opposed checks, harm/stress, inventory and objective completion;
+- **Concordia/LLMs own bounded agency and language**: dialogue, natural-language intent translation, high-level choice among legal actions and narration of already-resolved facts;
+- **simple scripted/background NPCs may coexist with LLM NPCs** in the same world;
+- the first useful EP2 subset is small: percentile skill tests, a few opposed tests, inspectable character state and explicit world-state changes;
+- large catalogs and detailed subsystems should not be imported merely because EP2 contains them. Add them only when a playable scenario demonstrates a need;
+- **psionics remain mechanically deferred** in this prototype. Existing setting lore is not a license for an implementer to invent a psi rules subsystem.
+
+A practical design rule follows:
+
+> Concordia is the agency and narrative layer around the RPG kernel, not the authority that decides the rules.
+
+The worked experiment, example playthrough and licensing note are documented in
+`docs/scenarios/ISSUE74_CONCORDIA_EP2_POC.md`.
