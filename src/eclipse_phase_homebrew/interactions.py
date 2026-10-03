@@ -183,8 +183,13 @@ def resolve_combat_attack(
     )
 
 
-def resolve_social_action(**kwargs: int) -> EP2InteractionResult:
-    """Resolve a social contest without inventing narrative consequences."""
+def resolve_social_action(**kwargs) -> EP2InteractionResult:
+    """Resolve a social contest without inventing narrative consequences.
+
+    ``kwargs`` forwards to :func:`resolve_opposed_test`, whose roll parameters accept
+    ``None`` to mean "roll it"; a narrower ``int`` annotation here would be wrong and
+    would reject a legitimate caller passing an injected-or-random roll.
+    """
     opposed = resolve_opposed_test(**kwargs)
     return EP2InteractionResult(
         kind="social",
@@ -193,7 +198,7 @@ def resolve_social_action(**kwargs: int) -> EP2InteractionResult:
     )
 
 
-def resolve_hack_action(**kwargs: int) -> EP2InteractionResult:
+def resolve_hack_action(**kwargs) -> EP2InteractionResult:
     """Resolve an attacker-vs-system/operator mesh contest."""
     opposed = resolve_opposed_test(**kwargs)
     return EP2InteractionResult(

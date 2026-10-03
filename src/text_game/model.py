@@ -75,6 +75,11 @@ class ActorState:
     controller: str = "scripted"
     inventory: list[str] = field(default_factory=list)
     dialogue: dict[str, str] = field(default_factory=dict)
+    #: Optional EP2-derived mechanics (#60 milestone items 4-11). ``None`` means the
+    #: actor participates exactly as before, so fixture/scripted actors without a
+    #: sheet are unaffected. Stored as a plain dict so this module keeps defining
+    #: storage shape only and stays free of rules imports.
+    sheet: dict[str, Any] | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -84,10 +89,12 @@ class ActorState:
             "controller": self.controller,
             "inventory": list(self.inventory),
             "dialogue": dict(self.dialogue),
+            "sheet": dict(self.sheet) if self.sheet is not None else None,
         }
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> "ActorState":
+        sheet = data.get("sheet")
         return cls(
             actor_id=str(data["actor_id"]),
             label=str(data["label"]),
@@ -95,6 +102,7 @@ class ActorState:
             controller=str(data.get("controller", "scripted")),
             inventory=[str(x) for x in data.get("inventory", [])],
             dialogue={str(k): str(v) for k, v in dict(data.get("dialogue", {})).items()},
+            sheet=dict(sheet) if sheet else None,
         )
 
 
@@ -165,8 +173,13 @@ class World:
         return world
 
 
-def fixture_world() -> World:
-    """Small non-canonical adventure fixture with two routes to one objective."""
+def fixture_world(*, with_sheets: bool = True) -> World:
+    """Small non-canonical adventure fixture with two routes to one objective.
+
+    ``with_sheets`` attaches the non-canonical fixture character sheets (#60
+    milestone items 4-11) to the actors. Passing ``False`` yields the original
+    sheet-free world, which is what the earlier #51 tests exercise.
+    """
 
     hub = FIXTURE_PREFIX + "hub"
     side = FIXTURE_PREFIX + "side"
@@ -227,5 +240,15 @@ def fixture_world() -> World:
         },
         adventure=AdventureState(FIXTURE_PREFIX + "adventure", objective_item_id=token),
     )
+    if with_sheets:
+        # Imported lazily so this module keeps defining storage shape only and the
+        # #51 tests that use a sheet-free world do not pull in the rules kernel.
+        from .sheet import fixture_sheets
+
+        sheets = fixture_sheets()
+        for actor_id, actor in world.actors.items():
+            sheet = sheets.get(actor_id)
+            if sheet is not None:
+                actor.sheet = sheet.to_dict()
     world.validate()
     return world
