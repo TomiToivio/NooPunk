@@ -36,6 +36,12 @@ external code. It calls the EP-derived adapter documented in
 homebrew adapter under the same noncommercial attribution/ShareAlike boundary
 as [the existing EP prototype](../licenses/ECLIPSE_PHASE_HOMEBREW.md).
 
-Remaining: actual Concordia/Ollama orchestration, CLI scenario, private agent
-memory, opposed checks, health/stress/combat, inventory, full mesh and social
-world effects, and playtesting. Keep the umbrella issue open.
+Private agent memory is now implemented alongside the shared event log:
+`concordia_runtime.memory.MemoryStore` keeps per-actor notes durable and private,
+and `MemoryObserver` records a session's committed events into one actor's own
+store, so two agents in one session build two separate memories. A memory carries
+no mechanics (no dice, ratings or resolution), per `AGENTS.md` §1.
+
+Remaining: actual Concordia/Ollama orchestration, CLI scenario, opposed checks,
+health/stress/combat, inventory, full mesh and social world effects, and
+playtesting. Keep the umbrella issue open.
