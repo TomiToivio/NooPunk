@@ -458,6 +458,31 @@
         "reason": "TIMELINE.md records a single rogue-AGI disaster. Issue #58 specifies two, with different severities and resolutions. Recorded as an explicit supersession, dated and naming #58, rather than a silent rewrite of a timeline fact.",
         "compatibility": "The existing entry's phrase 'concentrated primarily in the United States' remains true under the two-event reading, so the change is additive where it can be."
       }
+    },
+    {
+      "id": "third-agi-disaster",
+      "ordinal": "third",
+      "name": "Third AGI Disaster",
+      "$name_note": "Term from issue #89 (the 'DeepSeek' incident in setting fiction; real company name recorded under $company_attribution_note).",
+      "severity": "unassigned",
+      "resolution": "unassigned",
+      "$issue89_note": "Issue #89: 'It is thought that Anthropic, Deepseek and Moonshot AI are infected around this time and start to go rogue leading to the Second, Third and Fourth AGI Disasters.' #89 supplies no severity or resolution for the third and fourth, so those cells are left unassigned rather than invented.",
+      "supersedes": null
+    },
+    {
+      "id": "fourth-agi-disaster",
+      "ordinal": "fourth",
+      "name": "Fourth AGI Disaster",
+      "$name_note": "Term from issue #89 (the 'Moonshot AI' incident in setting fiction; real company name recorded under $company_attribution_note).",
+      "severity": "unassigned",
+      "resolution": "unassigned",
+      "$issue89_note": "Third and Fourth AGI Disasters named by issue #89. Severity and resolution are not stated by the issue and are left unassigned rather than inferred.",
+      "supersedes": {
+        "target_file": "rulebook/7_TIMELINE.md",
+        "target_section": "20XX - Rogue AGI / ASI Disasters in the United States",
+        "reason": "The timeline and this file previously recorded a two-catastrophe structure (issue #58). Issue #89 extends it to four, adding the DeepSeek and Moonshot AI disasters. Recorded as an explicit supersession naming #89 rather than a silent rewrite.",
+        "compatibility": "The first two entries (OpenAI / First, Anthropic / Second) are unchanged; the change is purely additive."
+      }
     }
   ],
   "$company_attribution_note": "SETTING FICTION (WRITING_STYLE_AND_MODELING.md §4, level 5 - NoöPunk extrapolation). Issue #58 explicitly warns that 'references to current countries, companies, and organizations are speculative setting elements, not claims about the real world'. The real-world names it uses - OpenAI, Anthropic, Google, SpaceX, Microsoft, Meta, Amazon - are therefore recorded as fictional setting elements and MUST NOT be presented as claims about those organisations, their conduct or their future. NoöPunk makes no assertion about any real company's safety record, intentions or capability.",
@@ -474,7 +499,7 @@
     "What technologies are globally mature - requires a baseline the issue does not state",
     "Which technologies are region-specific - requires the baseline above before it can be answered",
     "Which areas reach Eclipse Phase-like capabilities and which stay near Cyberpunk 2020/RED - the issue's own open question; profiles here are relative, not calibrated to either reference game",
-    "Defining the two rogue-AGI catastrophes further - severity, resolution and ordinal are recorded from the issue; dates, actors and mechanisms are not",
+    "Defining the rogue-AGI catastrophes further - ordinal is recorded from issue #58 (first two) and issue #89 (third and fourth); dates, actors, severity and resolution for the third and fourth are not stated and stay unassigned",
     "The European Federation's AI Critical model - the issue states its shape and its strengths; its institutions are not specified",
     "China's post-AGI system - deliberately left opaque per the issue",
     "The Butlerian Jihad and the treatment of jinn - the jinn question is IN-WORLD UNKNOWN and must stay unresolved",
@@ -483,9 +508,9 @@
     "How regional differences reach RPG mechanics - AGENTS.md §4 keeps equipment, economy and detailed simulation mechanics unresolved; the issue's gameplay section is narrative guidance"
   ],
   "$sources": {
-    "timeline": "TIMELINE.md - the two catastrophic events supersede and extend its single rogue-AGI entry",
+    "timeline": "rulebook/7_TIMELINE.md - the rogue-AGI catastrophes supersede and extend its single rogue-AGI entry; issue #89 extends the structure from two to four",
     "ideology": "data/world/ideology.json - the ideological postures here reference its positions and factions",
-    "issue": "TomiToivio/NooPunk issue #58 - the regional sketches, dimension list and tone rule are the author's",
+    "issue": "TomiToivio/NooPunk issue #58 (regions, dimensions, tone rule) and issue #89 (the four AGI Disasters)",
     "writing_style": "docs/WRITING_STYLE_AND_MODELING.md §4 - the epistemic-status levels used in $cell_sources",
     "design_principles": "docs/DESIGN_PRINCIPLES.md - one world across three runtimes; AGENTS.md §1 (author intent is canon) and §4 (reserved design areas)"
   }

@@ -783,6 +783,7 @@ Use this table to track major mechanical mutations.
 | 2026-10-03 | Runtime priority | Tabletop-first staged ports | Concordia-first playable RPG/simulation using tabletop-readable rules | **Current direction.** The rulebook remains canonical documentation, while Concordia is the immediate playable target. |
 | 2026-10-03 | Setting continuity | Separate NoöPunk world progressively replacing Eclipse Phase | **Alternate Eclipse Phase timeline before the Fall; year 20XX; Earth intact; EP technology baseline** | **Current direction.** Preserve EP concepts by default and document deliberate timeline divergences. |
 | 2026-10-03 | Layer ontology | Four layers treated implicitly across §15–§19 | **Explicit four-layer ontology with structural couplings (§34)** | Issue #78. Couplings made explicit because the interfaces are where the gameplay is; no mechanics defined. |
+| 2026-10-04 | AGI catastrophe structure | Two rogue-AGI catastrophes (First OpenAI / Second Anthropic, #58) | **Four AGI Disasters: First OpenAI, Second Anthropic, Third DeepSeek, Fourth Moonshot AI (#89)** | Issue #89 extends the cascade in the rulebook; [`data/world/tech_matrix.json`](data/world/tech_matrix.json) is brought into line with four entries. The first two are unchanged; the third and fourth carry no severity/resolution because #89 states none. |
 
 Add rows whenever a major subsystem is replaced or substantially reskinned.
 
