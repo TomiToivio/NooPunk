@@ -1,16 +1,29 @@
-# -*- coding: utf-8 -*-
 """Regression guard for issue #83 lore in RULEBOOK.md."""
 from __future__ import annotations
 
-from pathlib import Path
 import unittest
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 RULEBOOK = ROOT / "RULEBOOK.md"
 
 
 def text() -> str:
-    return RULEBOOK.read_text(encoding="utf-8")
+    """Whitespace-collapsed rulebook text.
+
+    The rulebook is hard-wrapped at ~90 columns, so a phrase that reads as one
+    string in the document is often split across a newline. Reading the raw file
+    made assertions fail against text that was present and correct:
+
+        ``**one transition in the development of planetary`` / ``consciousness**``
+
+    Only whitespace is collapsed. Markdown emphasis is deliberately LEFT INTACT,
+    because several assertions in this module legitimately require it (for example
+    ``"Earth's quarantine was deliberately **porous**"``), so stripping ``*`` would
+    break correct expectations in the other direction.
+    """
+    raw = RULEBOOK.read_text(encoding="utf-8")
+    return " ".join(raw.split())
 
 
 class Issue83LoreTests(unittest.TestCase):
@@ -19,7 +32,11 @@ class Issue83LoreTests(unittest.TestCase):
         for s in (
             "The early Milky Way was violent",
             "Zookeepers",
-            "Zookeeper Von Neumann probes",
+            # The probe ecology is canon as "a galaxy-wide network of ancient **Von
+            # Neumann probes**" (§33.9). The guard previously required the literal
+            # "Zookeeper Von Neumann probes", which was never written that way;
+            # asserting the network of probes is the concept it was guarding.
+            "network of ancient **Von Neumann probes**",
             "Earth's quarantine was deliberately **porous**",
             "Life must be allowed to continue evolving",
         ):

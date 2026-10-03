@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Regression guard for issue #78: the four NoöPunk systems ontology.
 
 These are STRUCTURE guards, in the style of ``test_issue34_theory_grounding.py`` and
@@ -204,10 +203,29 @@ class AntiInventionTests(unittest.TestCase):
         self.assertIn("adds no mechanics", text)
 
     def test_the_section_invents_no_dice_or_statistics(self) -> None:
-        text = flat()
+        """The ONTOLOGY invents no mechanics -- excluding the status subsection.
+
+        §34.10 is a status note recording what the separate #74 prototype does
+        ("deterministic Python owns mechanics and state: legal actions, ratings,
+        dice, modifiers..."). That sentence *describes* the prototype's scope; it
+        is not the ontology authoring a statistic, which is what this guard is
+        for. Forbidding the word anywhere in §34 therefore failed on text that
+        obeys the rule, so the check is scoped to the ontology itself and §34.10
+        is excluded by name.
+        """
+        body = section()
+        marker = re.search(r"(?m)^#{3,4} 34\.10", body)
+        ontology = body[: marker.start()] if marker else body
+        text = " ".join(re.sub(r"[>*_`]", " ", ontology).split()).lower()
         for mechanic in ("2d6", "dice", "initiative", "hit point", "armour", "armor"):
             with self.subTest(mechanic=mechanic):
                 self.assertNotIn(mechanic, text)
+        # and the exclusion must stay meaningful: the prototype note is still there
+        self.assertRegex(
+            body,
+            r"(?m)^#{3,4} 34\.10",
+            "the §34.10 status subsection this exclusion names has moved or been removed",
+        )
 
     def test_no_concrete_future_dates(self) -> None:
         offenders = [m.group(0) for m in _YEAR_RE.finditer(section())]
