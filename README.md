@@ -234,6 +234,14 @@ Active canonical documents:
 
 Documents under [`docs/archive/`](docs/archive/) are historical design records. They are useful provenance, but they are **not automatically active canon** and do not override the current rulebook or explicit current author direction.
 
+### Design references
+
+These archived documents remain important design and architecture references even when they are not active canon:
+
+- [`docs/archive/DESIGN_PRINCIPLES.md`](docs/archive/DESIGN_PRINCIPLES.md) — project-level design balances and invariants.
+- [`docs/archive/SIMULATION_ARCHITECTURE_SPEC.md`](docs/archive/SIMULATION_ARCHITECTURE_SPEC.md) — simulation state, event-log and resolver architecture.
+- [`docs/archive/NOOPUNK_AS_ONE_GAME.md`](docs/archive/NOOPUNK_AS_ONE_GAME.md) — the single-game / single-rule-model direction.
+
 ## Development and architecture
 
 The runtime is split deliberately:
