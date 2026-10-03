@@ -2638,6 +2638,240 @@ These are explicitly **alternate-history fictional uses of real people, organiza
 countries**, not claims about real-world conduct or events.
 ---
 
+### 33.27a The Kapustin Jar auction and the global disclosure cascade
+
+While the American and Chinese announcements dominated the news, Disclosure was already
+becoming something stranger: a cascade in which every state released a different *kind* of
+evidence, and no two of the stories fitted together.
+
+#### The Kapustin Jar auction
+
+The most improbable figure of the Disclosure years was **Colonel Daniyar Saparov**, the
+accidental military dictator of the newly independent **republic of Astrakhan**.
+
+Saparov was an eccentric, goofy and charismatic Kazakh officer who looked like a comic
+impersonation of a Central Asian strongman and carried himself with the aura of a desert
+demagogue. His reputation, in-setting, was that of a war criminal, a trigger-happy
+executioner, a sex tourist, a cocaine user and an alcoholic. Local media adored him: his
+speeches were flamboyant, entertaining, and given while visibly drunk or high. The press
+noticed when he turned aside to sniff cocaine discreetly. He did not care.
+
+He had become president by accident. The only reason he held power rather than **General
+Almazbek** was that he had whimsically shot Almazbek in the head during an argument,
+because he could not stop himself; the general's head, in the accounts, popped like a melon.
+With Almazbek dead, Saparov commanded the most powerful formation in Astrakhan, the **73rd
+Guards Motor Rifle Division**, a unit of fierce Kazakh and Chechen fighters. He gave himself
+about a week more in office and did not appear to mind.
+
+Then he announced that the glorious republic of Astrakhan had inherited the alien technology
+of the Soviet Union. The Soviet treasures had simply been left behind in a secret laboratory
+in a bunker at **Kapustin Jar** — the launch site known in UFO folklore as the **Russian
+Roswell** — and Kapustin Jar was in Astrakhan, which now belonged to Colonel Saparov.
+
+Armed soldiers escorted the press into the bunker. Inside was a collection of crashed and
+reverse-engineered craft and other exotic technology. The Soviet-era scientists who had
+worked there looked utterly horrified. Saparov boasted that Astrakhan held more
+reverse-engineered alien technology than the United States and China combined, and offered
+to sell some of it to the American president "so he can get his own alien tech."
+
+The press conference became farce. Saparov cut a hole through a wall with a laser, put a
+psionic headband on his own head and levitated a resisting scientist, then forced the same
+scientist to demonstrate an antigravity belt. The man flew into the walls and the ceiling
+while the colonel laughed. Saparov mentioned his phone number several times on air and
+offered the collection to the highest bidder.
+
+The interview went viral within hours and his phone began ringing continuously. Buyers
+arrived at Kapustin Jar by private aircraft from Europe. The first three visitors bought the
+entire Soviet collection, and Saparov was suddenly **37.5 billion dollars** richer. Further
+bidders kept arriving over the next day, but by then he had already left. The collection
+passed to a **Swedish aerospace company**, a **German intelligence agency** and a **wealthy
+Austrian investor**; the old Soviet scientists were hired along with it.
+
+#### The raid on the Legacy Program
+
+The American president was not pleased. The United States had still not obtained the
+reverse-engineered extraterrestrial technology it most wanted to display, and had ordered
+the FBI, Special Forces units and SWAT teams to raid the facilities of **Lockheed Martin**
+and **Northrop Grumman**, certain secret underground laboratories of defence contractors,
+and specific offices of the CIA and the Department of Energy — all shown on live television
+for dramatic effect. What remained was the target that mattered.
+
+**David Grusch** and **Lue Elizondo** had indicated that a **Deep Underground Military
+Base** was the most important objective: a research facility operated by Lockheed Martin as
+the contractor of an unacknowledged Special Access Program for the Department of Energy.
+Intelligence described it as the nerve centre of the legacy program, a direct descendant of
+**MJ-12**, and the heart of the breakaway civilization.
+
+The operation was planned personally by the president and **Pete Hegseth**, who supplied the
+military expertise, the unit selection and the tactics, while the president planned the media
+event around it. Grusch and Elizondo travelled with the party to supply UFO expertise.
+Marine One carried press and Secret Service personnel over a perimeter held by Nevada State
+Police, the FBI and the 75th Ranger Regiment.
+
+The president worked the cameras on arrival. Asked by a reporter what the operation was, he
+described himself as the **Disclosure President** and framed the raid as taking the alien
+technology back for the American people from the deep state and the legacy program. Asked
+whether China's technology was real, he deferred to Grusch, who stated that both China and
+Russia had long possessed acquired alien technology and reverse-engineering programmes, with
+the extent of their progress unknown. Asked how China could display such secrets when even
+the American president lacked access, the answer was that the previous administrations had
+been weak and that the swamp would now be drained.
+
+Then the **60th Special Operations Aviation Regiment** Black Hawks carrying **Delta Force**
+flew over the mesa, accompanied by FBI agents, SWAT teams and combat engineers. The FBI would
+serve the search warrant; the engineers would blow the base open if necessary.
+
+The helicopters landed at the door of the base. Delta Force and the FBI SWAT team took
+positions. The FBI agents walked to the door to serve the warrants. Nothing happened for
+several minutes. The agents shrugged. The combat engineers began to set up explosives.
+
+#### Brazil: the darkest disclosure
+
+Brazil's disclosure was the darkest of them all, because it focused on **UAPs attacking
+humans**.
+
+The Brazilian government acknowledged numerous cases in which the phenomenon had injured
+people, the most famous being **Colares**, and a smaller number of human mutilation cases.
+It could offer no explanation for why the NHI appeared violent over Brazil while remaining
+largely peaceful elsewhere. It verified the **Varginha** crash and the capture of a living
+humanoid.
+
+Brazil's presentation also covered the alien-related traditions of the Amazonian peoples and
+the similarity between shamanic practice, dimethyltryptamine experience, and NHI encounters —
+its disclosure explicitly treated the Amazonian traditions as data rather than as folklore.
+Brazilian scientists stated that there was evidence of both biologics and technology, but
+that the connection between abductions and the DMT experience pointed to a
+consciousness-based phenomenon. The official conclusion was therefore that the phenomenon
+was *both* consciousness-related and physical technology, without settling which was prior.
+
+The **Chupa-Chupa**, a phenomenon unique to Brazil, was classified as more likely
+cryptozoological than a technologically advanced extraterrestrial.
+
+#### Peru: the Tridactyls
+
+Peru disclosed something of a different kind. Its government had known for a long time that
+the **Nazca mummies** — the **Tridactyls** — were real and thousands of years old.
+
+Their DNA was non-human and did not appear to be terrestrial in origin; some of the beings
+carried DNA from humans or from other Earth animals. Several subspecies were recognised, and
+genetic manipulation or hybridisation appeared likely in some cases. The Tridactyl-type
+beings possessed some advanced technology, such as metal implants, but their technology
+otherwise appeared limited. Numerous underground Tridactyl cities had been found, at least a
+thousand years old.
+
+Peru was not certain whether the species was extinct. The DNA pointed to a non-terran origin,
+but the fact that the beings had hidden underground and gone undetected placed them among the
+**cryptoterrestrials**. The official classification was therefore NHI biologics, categorised
+as cryptoterrestrial rather than extraterrestrial.
+
+#### The Nordic disclosure
+
+Five Nordic states — Finland, Sweden, Norway, Denmark and Iceland — made a joint official
+disclosure, presented by their heads of government:
+
+- **Finland** — President **Alexander Stubb**;
+- **Sweden** — Prime Minister **Ulf Kristersson**;
+- **Norway** — Prime Minister **Jonas Gahr Støre**;
+- **Denmark** — Prime Minister **Mette Fredriksen**;
+- **Iceland** — Prime Minister **Kristrún Frostadóttir**.
+
+The Nordic countries had collaborated on UAP research since the **Ghost Fliers** of the 1930s
+and had held hard physical evidence of extraterrestrial UAPs since the **Ghost Rockets** of
+1946 — that is, they knew before Roswell. The **Nordic NHI/PSI Team** had existed informally
+since the 1930s. Disclosure made it public, together with its scientific counterpart.
+
+The security team was presented as:
+
+- Finland — Dr./Inspector **Harri S. Romppainen**, Supo, PhD in psychology;
+- Sweden — Dr./Inspector **Ingrid Falk**, Säpo, PhD in cognitive neuroscience;
+- Norway — Dr./Inspector **Eirik Haugland**, PST, PhD in physics;
+- Denmark — Dr./Inspector **Mette Vestergaard**, PET, PhD in anthropology;
+- Iceland — Dr./Inspector **Jónas Þórðarson**, National Police Commissioner security and
+  analysis division, PhD in atmospheric science.
+
+The scientific team was:
+
+- Dr. **Beatriz Villarroel**;
+- Dr. **Etzel Cardena**;
+- Dr. **Adrian Parker**;
+- Dr. **David Marcusson-Clavertz**.
+
+The heads of government noted that the Nordic countries had no single dramatic event
+comparable to Roswell, Varginha or Colares, and were nevertheless convinced of UAP reality on
+the strength of accumulated physical evidence.
+
+**Ghost Fliers** were the first UAP phenomenon the Nordic countries investigated, during the
+1930s. Physical evidence — tracks at landing sites, and observed manoeuvres — pointed to
+performance impossible for the aircraft of the day. There were no crash retrievals, so no
+isotope evidence, but the researchers concluded that the Ghost Fliers were also UAPs. They
+transmitted strange radio communications and appeared to be conducting reconnaissance, shaped
+to look like aeroplanes in order not to attract attention.
+
+The **Ghost Rockets** of 1946 produced actual crash retrievals. The Nordic states pooled
+resources to analyse the recovered materials together. Isotope ratios proved that the objects
+did not originate in the solar system, and the materials were unusual for 1940s technology.
+The Ghost Rockets were technologically superior to human rockets: manoeuvrable enough to
+descend into lakes, transmedium, and usually able to survive impact with water. The
+researchers' consensus was that they were transmedium UAPs that entered lakes with extreme
+precision and continued their journeys underwater; the few that broke up on impact supplied
+the retrieved material. A further hypothesis held that their purpose might have been the
+delivery of biological micro-organisms — directed panspermia, bioweapons, nanotechnology, or
+something else designed to survive the break-up. This evidence had been shared discreetly
+with other governments long before it was made public.
+
+The **Hessdalen Lights** of Norway had been monitored continuously since 1983. The
+researchers' opinion was that they are **plasmoids** that appear alive, intelligent and
+conscious. The team argued that the evidence supported **Biologics, Constructs, Noetics and
+Plasmoids**, and that the phenomenon has both psychic and technological aspects, frequently
+perceived at the same time. That was the reason it was an *NHI/PSI* team: the Nordic countries
+disclosed that they had also become convinced of the reality of PSI.
+
+So-called **mystery drones** had been sighted in all the Nordic countries. Russian drones
+were a genuine problem, but some of the objects were far too advanced to be human technology,
+and secrecy was becoming dangerous precisely because the public was conflating UAPs with
+Russian drones. The team presented video and radar data of the anomalous objects, including
+attempts to bring them down with methods that would have destroyed any Russian drone.
+
+**Beatriz Villarroel** presented her findings, which the heads of government described as hard
+evidence for anomalous objects in Earth orbit during the 1950s.
+
+The Nordic states agreed to establish equivalent security and scientific groups at European
+Union level and, globally, under the United Nations, and noted that several countries had
+already agreed to join. The scientific team, the security team and the heads of state jointly
+stated that both NHI and PSI must be studied, because the technological and the psychic
+aspects appear in the phenomenon together. **Etzel Cardena**, **Adrian Parker** and **David
+Marcusson-Clavertz** presented results they described as strong statistical proof for PSI.
+
+The Nordic countries published their case data. The Ghost Rocket case in particular was judged
+to move the needle: it was hard to explain away.
+
+#### Egypt, India and France
+
+**Egypt** published something different again: archaeological findings. The **Hall of
+Records** beneath the pyramids had already been excavated. It contained an ancient craft and
+numerous ancient papyrus scrolls.
+
+**India** disclosed a large body of archaeological evidence for the reality of the
+**Vimanas**, together with yogis demonstrating **siddhis**.
+
+**France** released scientific evidence.
+
+#### The cascade does not harmonise
+
+The cascade produced no single human Disclosure narrative. Each state released the kind of
+evidence its own institutions happened to hold — propulsion and materials from some,
+traumatic medical cases from others, archaeological and textual material from others again —
+and the disclosures contradicted one another wherever they overlapped.
+
+That plurality is itself canon. No later in-world authority ever harmonised the cascade into
+one account, and NoöPunk does not do so either.
+
+This entire section is **fictional alternate-history lore**. Real people, governments,
+companies and institutions are used as fictionalized setting elements; the events described
+here are not claims about real-world history or evidence.
+
+---
+
 ## 34. The four NoöPunk systems: Physical, Psychic, Social and Cybernetic
 
 **Status: NOÖPUNK NATIVE THEORETICAL ONTOLOGY; author-specified in issue #78.**
