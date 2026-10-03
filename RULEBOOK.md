@@ -729,3 +729,59 @@ Concordia integration work. A failed observer delivery may be replayed from the 
 No new setting facts, NPC personalities or mechanical subsystems are defined here.
 
 Implementation: `src/concordia_runtime/ep2_session.py`.
+
+
+## 32. Embodiment and inventory subset (#60)
+
+**Status: compact EP2-homebrew adapter / native persistence layer.**
+
+The playable prototype now treats identity and embodiment as separate state.
+
+An embodiment record contains only the fields currently needed by code:
+
+- name;
+- broad kind such as biological or synthetic;
+- durability;
+- wound threshold;
+- explicit traits.
+
+This is **not** a complete Eclipse Phase morph catalog. It is a minimal executable
+representation that can later be replaced by licensed structured EP data or a more
+complete NoöPunk embodiment model.
+
+Characters may also carry structured gear. Each gear record has:
+
+- a stable item ID;
+- name;
+- category;
+- quantity;
+- tags;
+- explicit machine-readable effects.
+
+Gear with identical metadata may stack. Conflicting records may not silently share
+an ID. Adding and removing gear is deterministic and quantity-safe.
+
+The persistent session records resleeving/body-platform changes and inventory changes
+as mechanical events in the same ordered SQLite event log used for test resolution.
+Reloading the session preserves the current embodiment, inventory and history.
+
+An older character sheet's `morph` label can bootstrap a minimal embodiment record so
+the prototype remains compatible with the earlier #60 character state.
+
+Implementation:
+
+- `src/eclipse_phase_homebrew/embodiment.py`
+- `src/concordia_runtime/ep2_session.py`
+
+Still deferred:
+
+- full EP2 morph statistics and catalogs;
+- gear price/economy rules;
+- armor and weapon-specific mechanics;
+- augmentation installation/removal;
+- cortical-stack and resleeving procedure;
+- identity continuity rules;
+- inventory mass/capacity;
+- automatic gear effects on tests.
+
+These should be added only when the playable scenario needs them.
