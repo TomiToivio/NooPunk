@@ -2098,26 +2098,20 @@ Later historians disagree about the exact moment at which OpenAI ceased to be me
 corporation and became a human-machine assemblage with partially independent agency.
 The event is treated in more detail in §33.28.
 
-#### Geopolitical collapse before Disclosure
+#### American geopolitical weakness before Disclosure
 
-The United States entered this crisis already politically weakened in the setting's
-alternate timeline.
+The United States entered the Disclosure phase already politically weakened in the
+setting's alternate timeline.
 
-The war with Iran had become a severe military and political failure. An intervention
-against Cuba was also going badly. Meanwhile the European Union intervened decisively in
-the Ukraine-Russia war, defeated the remaining Russian war effort and emerged from the
-conflict as a much more federalized military and political power.
+The war with Iran had become a severe military and political failure, and an intervention
+against Cuba was also going badly. Europe was becoming more strategically autonomous and
+more willing to act independently of Washington.
 
-Russia fragmented into numerous successor states and military territories. Western regions
-fell increasingly into the European economic and security sphere, while China expanded its
-influence across the east. Moscow became a heavily supervised commercial zone associated
-with reparations and reconstruction; Saint Petersburg evolved into a semi-autonomous free
-city. The former Russian interior became a patchwork of successor governments, warlords,
-military formations and outside spheres of influence.
-
-The collapse transformed the EU-China relationship. Both powers cooperated to stabilize
-transport corridors across the former Russian space, particularly the strategic rail and
-trade routes linking Europe and East Asia.
+Russia, however, had **not yet collapsed**. Vladimir Putin still presided over an intact
+Russian Federation with functioning armed forces, intelligence services, strategic
+weapons, aerospace institutions and the inherited archives of the Soviet state. This
+matters because Russia entered the Disclosure race as a great power in its own right,
+rather than as a collection of successor states scavenging Soviet ruins.
 
 #### The American Disclosure gamble
 
@@ -2169,7 +2163,82 @@ argument about testimony, classified files or ambiguous sensor data. It had beco
 competition between states over **who possessed the oldest, strangest and most advanced
 non-human technology**.
 
-From that moment onward, the secrecy system began to collapse globally.
+#### Putin opens the Soviet archive
+
+Russia answered almost immediately.
+
+Vladimir Putin announced that the Soviet Union and later the Russian Federation had
+maintained their own crash-retrieval, reverse-engineering and PSI programs for decades.
+Rather than imitate the clean technological theatre of the Chinese presentation, the
+Russian disclosure emphasized the **depth and historical scale of the archive**.
+
+At a heavily secured aerospace complex associated with the old Soviet program, Russian
+officials presented:
+
+- damaged and partially reconstructed craft recovered across the Soviet Union;
+- Soviet-built experimental vehicles derived from recovered propulsion research;
+- exotic alloys, metamaterials and propulsion components;
+- preserved biological material and classified medical records;
+- radar and interceptor records from the Cold War;
+- files connecting anomalous craft with nuclear and military installations;
+- material from Soviet and Russian PSI programs;
+- and decades of failed, partial and occasionally successful attempts to reproduce
+  non-human technology.
+
+The Russian collection looked less like a single successful secret weapon and more like
+the archaeological warehouse of a civilization that had spent seventy years collecting
+pieces of a puzzle it only partly understood.
+
+Putin framed the disclosure as proof that the Soviet Union had confronted the same
+phenomenon as the United States and China and had preserved a parallel body of knowledge.
+Russian scientists demonstrated several working technologies, but the Russian program
+appeared less polished than China's reverse-engineered systems and far larger in volume.
+
+The most disturbing implication was historical: some incidents classified during the Cold
+War as possible American reconnaissance, experimental weapons or strategic intrusions had
+actually involved NHI craft, while some U.S. and NATO observations had likewise confused
+Soviet systems with anomalous objects.
+
+Russia also confirmed that parts of its PSI research had produced operational results,
+although the public demonstrations were less spectacular than China's.
+
+The Russian disclosure permanently destroyed the idea that UFO secrecy had been an
+exclusively American phenomenon.
+
+From that moment onward, the secrecy system began to collapse globally. France, Brazil,
+the Nordic states and other governments released their own archives, each revealing only a
+fragment of the larger picture.
+
+#### The EU-Russia war comes later
+
+The military confrontation between the European Union and Russia happened **after** the
+first major Disclosure wave.
+
+That timing changed everything. When the war began, Europe already knew that Russia
+possessed recovered NHI technology, experimental reverse-engineered systems and a vast
+Soviet legacy archive. Rumors that exotic propulsion, PSI research or recovered materials
+might be militarized became part of the strategic panic surrounding the conflict.
+
+The European Union intervened decisively in the Ukraine-Russia war and ultimately defeated
+the remaining Russian war effort. The conflict accelerated European federalization and
+turned the EU into a much more integrated military and political power.
+
+Russia then fragmented into numerous successor states and military territories. Western
+regions fell increasingly into the European economic and security sphere, while China
+expanded its influence across the east. Moscow became a heavily supervised commercial zone
+associated with reparations and reconstruction; Saint Petersburg evolved into a
+semi-autonomous free city. The former Russian interior became a patchwork of successor
+governments, warlords, military formations and outside spheres of influence.
+
+The collapse transformed the EU-China relationship. Both powers cooperated to stabilize
+transport corridors across the former Russian space, particularly the strategic rail and
+trade routes linking Europe and East Asia.
+
+The breakup of Russia also created a new crisis: **who now owned the Soviet NHI archive?**
+Crash-retrieval sites, laboratories, biologics, exotic materials and reverse-engineering
+teams suddenly found themselves inside successor states, occupied zones and contested
+territories. Some were seized by governments. Some disappeared. Some were sold. Some may
+have escaped with their personnel intact.
 
 NoöPunk is therefore less uniformly post-holocaust than canonical Eclipse Phase.
 
