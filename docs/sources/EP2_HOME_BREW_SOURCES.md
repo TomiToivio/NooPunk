@@ -23,6 +23,15 @@ These external projects are references only until their individual licenses and
 provenance have been checked. No external code or large data set is imported by
 the initial issue #60 implementation.
 
+**That check has now been carried out**: see
+[`EXTERNAL_SOURCE_LICENSES.md`](EXTERNAL_SOURCE_LICENSES.md) (machine-readable record in
+[`data/sources/external_sources.json`](../../data/sources/external_sources.json)). Headline
+results: the EP2 online rules and Quick-Start are importable as EP-derived material;
+`ralfbiedert/eclipse-phase-2-tools` and the Eclipse Helper generator are **not** (no license
+found and split terms respectively); the PbtA conversion could not be verified and is
+neither importable nor cleared; the four attached conversions named by the issue are not
+present on disk.
+
 ## Initial implemented rules provenance
 
 The first kernel is a compact reimplementation of public EP2 rules concepts rather
