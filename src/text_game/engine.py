@@ -279,7 +279,7 @@ class GameEngine:
         if objective and objective in actor.inventory and not self.world.adventure.completed_by:
             self.world.adventure.completed_by = actor.actor_id
             self._event(actor=actor.actor_id, action_type="complete", target=self.world.adventure.adventure_id, source="system")
-            text += "\nFixture adventure complete."
+            text += "\nAdventure complete."
 
         completed = bool(self.world.adventure.completed_by)
         self.turn += 1
