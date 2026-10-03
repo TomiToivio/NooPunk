@@ -8,7 +8,13 @@ import random
 import sqlite3
 from typing import Any, Mapping, Protocol
 
-from eclipse_phase_homebrew import EP2Character, EP2PoolState
+from eclipse_phase_homebrew import (
+    EP2Character,
+    EP2Embodiment,
+    EP2GearItem,
+    EP2Inventory,
+    EP2PoolState,
+)
 from .ep2_adapter import resolve_ep2_action
 
 
@@ -45,17 +51,109 @@ class EP2Session:
         self.db.execute("INSERT OR REPLACE INTO state VALUES (1, ?)", (json.dumps(self.state),))
         self.db.commit()
 
+    def _record_event(self, event: dict[str, Any]) -> dict[str, Any]:
+        """Atomically persist current state and one already-resolved event."""
+        self.state["rng"] = self.rng.getstate()
+        with self.db:
+            cursor = self.db.execute(
+                "INSERT INTO events(payload) VALUES (?)",
+                (json.dumps(event),),
+            )
+            self.db.execute(
+                "UPDATE state SET payload=? WHERE id=1",
+                (json.dumps(self.state),),
+            )
+        return {**event, "id": cursor.lastrowid}
+
     def close(self):
         self.db.close()
 
-    def add_character(self, actor: str, character: EP2Character, pools: EP2PoolState):
+    def add_character(
+        self,
+        actor: str,
+        character: EP2Character,
+        pools: EP2PoolState,
+        *,
+        embodiment: EP2Embodiment | None = None,
+        inventory: EP2Inventory | None = None,
+    ):
         if not actor or actor in self.state["characters"]:
             raise ValueError("Actor ID must be nonempty and unique.")
+        active_embodiment = embodiment
+        if active_embodiment is None and character.morph:
+            active_embodiment = EP2Embodiment(
+                name=character.morph,
+                durability=character.durability or 30,
+                wound_threshold=character.wound_threshold or 6,
+            )
         self.state["characters"][actor] = {
-            "sheet": asdict(character), "maximum": dict(pools.maximum),
+            "sheet": asdict(character),
+            "maximum": dict(pools.maximum),
             "current": dict(pools.current),
+            "embodiment": asdict(active_embodiment) if active_embodiment else None,
+            "inventory": {
+                item_id: asdict(item)
+                for item_id, item in (inventory or EP2Inventory()).items.items()
+            },
         }
         self._save()
+
+    def character_state(self, actor: str) -> dict[str, Any]:
+        if actor not in self.state["characters"]:
+            raise ValueError("Unknown actor.")
+        return self.state["characters"][actor]
+
+    def inventory(self, actor: str) -> EP2Inventory:
+        stored = self.character_state(actor)
+        return EP2Inventory(
+            items={
+                item_id: EP2GearItem(**payload)
+                for item_id, payload in stored.get("inventory", {}).items()
+            }
+        )
+
+    def set_embodiment(self, actor: str, embodiment: EP2Embodiment) -> dict[str, Any]:
+        """Persist a resleeve/body-platform change as an explicit world event."""
+        stored = self.character_state(actor)
+        previous = stored.get("embodiment")
+        stored["embodiment"] = asdict(embodiment)
+        event = {
+            "actor": actor,
+            "action": "set_embodiment",
+            "result": {
+                "previous": previous,
+                "current": asdict(embodiment),
+            },
+        }
+        return self._record_event(event)
+
+    def add_gear(self, actor: str, item: EP2GearItem) -> dict[str, Any]:
+        stored = self.character_state(actor)
+        inventory = self.inventory(actor)
+        inventory.add(item)
+        stored["inventory"] = {
+            item_id: asdict(gear) for item_id, gear in inventory.items.items()
+        }
+        event = {
+            "actor": actor,
+            "action": "add_gear",
+            "result": asdict(item),
+        }
+        return self._record_event(event)
+
+    def remove_gear(self, actor: str, item_id: str, quantity: int = 1) -> dict[str, Any]:
+        stored = self.character_state(actor)
+        inventory = self.inventory(actor)
+        removed = inventory.remove(item_id, quantity)
+        stored["inventory"] = {
+            gear_id: asdict(gear) for gear_id, gear in inventory.items.items()
+        }
+        event = {
+            "actor": actor,
+            "action": "remove_gear",
+            "result": asdict(removed),
+        }
+        return self._record_event(event)
 
     def offer_action(self, actor: str, action_id: str, test: Mapping[str, Any]):
         """The GM supplies trusted mechanics, never the agent's free text."""
@@ -89,19 +187,15 @@ class EP2Session:
         event = {"actor": actor, "action": action_id, "result": result}
         old_current = stored["current"]
         stored["current"] = dict(pools.current)
-        self.state["rng"] = self.rng.getstate()
         try:
-            with self.db:
-                cursor = self.db.execute("INSERT INTO events(payload) VALUES (?)", (json.dumps(event),))
-                self.db.execute("UPDATE state SET payload=? WHERE id=1", (json.dumps(self.state),))
+            committed = self._record_event(event)
         except Exception:
             stored["current"] = old_current
             self.rng.setstate(rng_before)
             raise
-        event["id"] = cursor.lastrowid
         for observer in observers:
-            observer.observe(json.dumps(event, ensure_ascii=False))
-        return event
+            observer.observe(json.dumps(committed, ensure_ascii=False))
+        return committed
 
     def memories(self) -> list[dict]:
         return [{**json.loads(payload), "id": event_id}
