@@ -20,6 +20,11 @@ from text_game.actions import parse_command
 from text_game.actors import PatrolController, build_ollama_controller_from_env
 from text_game.engine import GameEngine
 from text_game.model import FIXTURE_PREFIX, fixture_world
+from text_game.issue74 import (
+    ANALYST_ID as ISSUE74_ANALYST_ID,
+    HUMAN_ID as ISSUE74_HUMAN_ID,
+    issue74_world,
+)
 from text_game.prefall import (
     HUMAN_ID as PREFALL_HUMAN_ID,
     MARS_ARCHIVE_ID,
@@ -67,6 +72,12 @@ def _build_engine(args: argparse.Namespace) -> tuple[GameEngine, object | None, 
         if llm is not None:
             controllers[LLM_CONTACT_ID] = llm
             controllers[LLM_PLAYER_ID] = llm
+    elif args.scenario == "issue74":
+        human_id = ISSUE74_HUMAN_ID
+        world = issue74_world()
+        controllers = {}
+        if llm is not None:
+            controllers[ISSUE74_ANALYST_ID] = llm
     else:
         human_id = PREFALL_HUMAN_ID
         world = prefall_world()
@@ -96,9 +107,9 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="NoöPunk local text RPG/Simulation")
     parser.add_argument(
         "--scenario",
-        choices=("prefall", "fixture"),
+        choices=("prefall", "issue74", "fixture"),
         default="prefall",
-        help="Scenario to run (default: canonical pre-Fall issue #60 slice)",
+        help="Scenario to run (issue74 is the tiny Concordia/EP2 proof of concept)",
     )
     parser.add_argument("--db", default="", help="SQLite event-log path (default: in-memory)")
     parser.add_argument("--load", default="", help="Load JSON save")
@@ -115,6 +126,8 @@ def main() -> int:
     print("NoöPunk local text RPG/Simulation")
     if args.scenario == "prefall":
         print("Scenario: alternate Eclipse Phase timeline, pre-Fall, 20XX, Earth intact.")
+    elif args.scenario == "issue74":
+        print("Scenario: issue #74 Concordia + EP2 proof of concept, 20XX.")
     else:
         print("Scenario: non-canonical regression fixture.")
     print(
