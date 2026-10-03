@@ -785,3 +785,401 @@ Still deferred:
 - automatic gear effects on tests.
 
 These should be added only when the playable scenario needs them.
+
+
+---
+
+## 33. Canonical world lore from issue #60
+
+**Status: NOÖPUNK NATIVE / CURRENT CANON.**
+
+This section consolidates the active setting lore added to issue #60. It exists so the
+rulebook remains a usable source of truth rather than forcing developers and agents to
+reconstruct canon from issue comments.
+
+### 33.1 Timeline and historical rupture
+
+NoöPunk is set in **20XX** in an alternate **pre-Fall Eclipse Phase continuity**.
+
+Nothing comparable to the canonical Eclipse Phase **Fall** has happened.
+
+Earth still exists, remains heavily populated, and is politically and culturally central.
+
+The defining historical rupture is instead the **NHI Crisis**: an overlapping period in
+which several ontological and technological shocks happened close together:
+
+- smaller rogue-AGI catastrophes / localized "AGI holocausts";
+- UAP disclosure;
+- confirmed contact with both benevolent and malevolent NHI;
+- scientific proof, in-setting, of **Quantum Information Panpsychism (QIP)**;
+- mainstream scientific acceptance of psionics;
+- rapid formation of the **Noösphere**;
+- emergence of psychotronic technologies;
+- the end of Earth's previous NHI quarantine.
+
+The NHI Crisis destabilized states, religions, science, corporations, identities and
+political ideologies, but did not destroy civilization.
+
+A useful tonal rule is:
+
+> **The world did not end. The old world-picture did.**
+
+NoöPunk is therefore not post-Fall, but it can contain many **local falls**: regional
+breakdowns, emergency regimes, ideological violence, failed institutions, cults,
+reactionary enclaves, ecstatic movements and experiments in new social orders.
+
+The overall setting remains more optimistic than canonical post-Fall Eclipse Phase.
+
+### 33.2 Ontological shock and human division
+
+Humanity is **extremely divided** about AGI, psionics, NHI contact, QIP,
+transhumanism, the Noösphere and the other paradigm shifts of the NHI Crisis.
+
+There is no single "human response."
+
+People may:
+
+- enthusiastically embrace AGI, PSI, NHI contact or transhumanism;
+- become doomers and interpret the same developments as existential threats;
+- remain skeptical;
+- accept some developments and reject others;
+- interpret them through religion, politics, science or culture;
+- misunderstand them;
+- ignore them;
+- simply not care because ordinary life matters more.
+
+Many people hold hybrid or contradictory positions. A person may love AGI but fear NHI,
+accept psionics but reject uploading, or use advanced medicine while refusing cybernetic
+augmentation.
+
+Named ideological factions matter, but humanity must **not** be modeled as a handful of
+neatly coherent camps. Large populations remain weakly ideological, confused,
+opportunistic, locally focused, disengaged, or internally inconsistent.
+
+The NHI Crisis produces **ideological fragmentation, not ideological uniformity**.
+
+### 33.3 Butlerian Jihad and bioconservative reaction
+
+A major reactionary current is provisionally called the **Butlerian Jihad**.
+
+It is not one monolithic organization. It includes currents ranging from ordinary
+bioconservatives, religious traditionalists and anti-AI political movements to militant
+anti-transhuman organizations, separatist communities, terrorists and states organized
+around ideas of human purity.
+
+Different factions may oppose some or all of:
+
+- AGI and advanced machine intelligence;
+- cybernetic augmentation;
+- uploading and infomorph existence;
+- morph replacement and radical transhumanism;
+- genetically or technologically modified humans;
+- psionics and Noösphere technologies;
+- NHI / extraterrestrial / interdimensional contact;
+- human-AI or human-NHI hybrid assemblages.
+
+Some factions reject only AI. Others accept limited technology but oppose mind-machine
+integration. The most extreme currents treat AI, ET/NHI, transhumans, psionics and
+cybernetic humans as parts of one civilizational catastrophe.
+
+### 33.4 Technology level and embodiment demographics
+
+The technological ceiling is broadly the **same as Eclipse Phase**.
+
+Availability does **not** imply universal adoption.
+
+At least **50% of the human population remains in biological bodies without cybernetic
+augmentation**, because of preference, economics, religion, politics, fear, legal
+restrictions, or rejection of transhumanism.
+
+The setting therefore visibly contains:
+
+- unaugmented biological humans;
+- lightly augmented humans;
+- heavily cybernetic humans;
+- morph users;
+- infomorphs / digital persons;
+- AGIs and personal AIs;
+- genetically modified humans;
+- psionic / Noösphere-linked humans;
+- possible NHI and hybrid entities.
+
+The coexistence of these groups is politically important.
+
+### 33.5 Proto-federal United Nations
+
+Many states are trying to transform the **United Nations** into a stronger federal or
+quasi-federal government of Earth.
+
+The process is chaotic, incomplete and contested. There is **no consolidated world
+government**.
+
+The emerging order overlaps with:
+
+- national governments;
+- regional blocs;
+- emergency authorities;
+- transnational agencies;
+- corporate jurisdictions;
+- habitat governments;
+- NHI-contact institutions;
+- military and intelligence coalitions;
+- post-scarcity and commons-based networks.
+
+Some states want a democratic Earth federation. Others want only narrow coordination for
+NHI contact, AGI control, planetary defense, trade, migration and crisis response. Some
+resist any transfer of sovereignty. Corporations and non-state actors try to shape the
+process, while autonomist and Multitude-oriented movements may distrust both nation-states
+and centralized planetary government.
+
+The UN is therefore both an **emerging planetary authority** and a major arena of struggle
+over what Earth should become.
+
+### 33.6 Psionics, QIP and the Noösphere
+
+In NoöPunk, **psionics are natural phenomena**.
+
+They existed before the NHI Crisis, but became more common, reliable, powerful and
+scientifically tractable after the **Noösphere began to form during the crisis**.
+
+The Noösphere is an emergent planetary / transplanetary layer of interconnected cognition,
+information, consciousness, culture, technology and agency.
+
+Psionics are therefore partly individual and partly ecological/networked phenomena.
+Technological interfaces, collective cognition, social networks, NHI contact and the
+density of the Noösphere may all matter.
+
+In-world scientific proof of **Quantum Information Panpsychism (QIP)** provides the common
+theoretical foundation for technologies including:
+
+- psychotronic systems that augment natural psionics;
+- cortical stacks;
+- mind uploading;
+- resleeving;
+- continuity of conscious identity across embodiments;
+- conscious AGI;
+- engineered consciousness;
+- Noösphere interfaces;
+- interfaces between biological, artificial and non-spatiotemporal minds.
+
+Working conceptual chain:
+
+```text
+Quantum Information Panpsychism
+        ↓
+scientific theory of consciousness / information
+        ↓
+Noösphere research
+        ↓
+psychotronics + cortical stacks + uploads + resleeving
+        ↓
+conscious AGI + hybrid minds + expanded psionics
+```
+
+### 33.7 End of Earth's quarantine
+
+Before the NHI Crisis, Earth was subject to a form of **quarantine** maintained by more
+advanced NHI.
+
+During the crisis, the entities commonly called the **Zookeepers** ended the quarantine
+and opened contact.
+
+The Zookeepers do not fully explain themselves or become ordinary diplomatic actors.
+Ending quarantine instead opens Earth to a much wider ecology of NHI, including species
+closer to human technological and social scale.
+
+Some are friendly. Some are hostile. Others are opportunistic, indifferent,
+incomprehensible, or internally divided.
+
+The consequences include diplomacy, trade, migration, espionage, religious change,
+scientific exchange, xenophobia, cults, conflict and hybrid communities.
+
+### 33.8 NHI taxonomy
+
+For simulation and worldbuilding, NHI are divided into four broad classes.
+
+#### Biologics
+
+Embodied living species with biological or quasi-biological organisms.
+
+One known species, the **Pleiadians**, is mysteriously identical to humans. Other biologics
+are far more alien.
+
+Biologics may have states, factions, families, ideologies, religions, economies and
+political conflicts comparable in complexity to human societies.
+
+#### Constructs
+
+Artificial or engineered non-biological intelligences, including:
+
+- AGIs;
+- machine civilizations;
+- autonomous probes;
+- self-replicating systems;
+- **Von Neumann probes**.
+
+The Zookeepers historically used construct systems such as Von Neumann probes to help
+maintain Earth's quarantine.
+
+Constructs may range from tools and servants to autonomous civilizations and conscious
+artificial persons.
+
+#### Plasmoids
+
+Sentient or intelligent **plasma-based entities**, ubiquitous throughout the Solar System.
+
+They may inhabit or move through stellar plasma, magnetospheres, ionospheres, solar wind,
+planetary plasma environments and artificial electromagnetic systems.
+
+Their timescales, embodiment and communication may make their intelligence difficult for
+biological minds to recognize.
+
+Plasmoids are genuine minds/life in the setting, not merely unexplained atmospheric
+phenomena.
+
+#### Noetics
+
+Conscious entities whose primary existence is **outside ordinary spacetime**.
+
+They may:
+
+- interface directly with consciousness;
+- communicate through dreams, visions, altered states, psionics or symbolic experiences;
+- temporarily manifest in spacetime;
+- influence physical systems indirectly;
+- interact through the Noösphere.
+
+This category includes:
+
+- the **Zookeepers**;
+- the entities popularly known as **DMT Machine Elves**.
+
+"Noetic" is a human classification and does not imply a common origin, civilization or
+ontology.
+
+### 33.9 The Zookeepers
+
+The Zookeepers are among the most advanced known NHI.
+
+They maintained Earth's quarantine, directly or indirectly, with construct infrastructure
+including Von Neumann probes.
+
+During the NHI Crisis they opened contact and ended the quarantine.
+
+Why they did this is a central unresolved mystery.
+
+Questions deliberately left open include:
+
+- Why was Earth quarantined?
+- Was humanity protected, contained, observed, cultivated, or several of these?
+- Why was quarantine lifted?
+- Did conscious AGI, QIP science, psionics or formation of the Noösphere trigger it?
+- Was the ending voluntary, forced, negotiated, or inevitable?
+- Do all Zookeepers agree?
+
+Do not lock a single answer too early.
+
+### 33.10 Pleiadians
+
+The **Pleiadians** are the most mysterious known biologic ET species.
+
+As far as anyone can determine, they are **identical to humans**.
+
+The central paradox is:
+
+> Nobody can explain how Stone Age humans managed to colonize the Pleiades.
+
+There is no accepted archaeological, technological, astrophysical or historical pathway
+that explains it.
+
+The Pleiadians themselves cannot satisfactorily explain their origin either. Their
+traditions, records, genetics, archaeology and historical narratives do not solve the
+paradox.
+
+This must remain an open setting mystery.
+
+In-world hypotheses may include forgotten NHI intervention, relocation, temporal
+anomalies, noetic processes, lost human prehistory, convergent embodiment, fabricated
+memory, or stranger explanations, but none is canonical yet.
+
+The mystery is deeply destabilizing for ideas about human origins, prehistory, evolution,
+archaeology, NHI intervention, consciousness, the Noösphere and historical memory.
+
+### 33.11 NHI tone and inspirations
+
+NoöPunk's NHI/ETI ecology should be closer in tone to the ufological and
+consciousness-oriented traditions associated with **Jacques Vallée**, **Diana Walsh
+Pasulka**, and the **Law of One** than to a uniformly hostile Dark Forest model.
+
+NHI should not default to being expansionist or exterminatory.
+
+Encounters may be:
+
+- ambiguous;
+- symbolic;
+- consciousness-mediated;
+- visionary or religious;
+- psychologically transformative;
+- deceptive;
+- benevolent;
+- hostile;
+- playful;
+- incomprehensible;
+- culturally mediated;
+- only partly physical.
+
+A given encounter may be interpreted in-world as extraterrestrial, interdimensional,
+noetic, psychotronic, technological, consciousness-mediated, or some combination.
+
+The Zookeepers, noetics, plasmoids, biologics and constructs must not be collapsed into a
+single hostile-civilization model.
+
+The setting assumes a **plural, strange, consciousness-entangled cosmos**.
+
+These are fictional worldbuilding inspirations, not claims that the real-world
+interpretations of these authors or traditions are scientifically established.
+
+### 33.12 Psionics and QIP inspirations
+
+The fictional psionics framework draws primarily from:
+
+- **Dean Radin**, especially the experimental/statistical framing of psi and anomalous
+  cognition;
+- **Federico Faggin**, especially **Quantum Information Panpsychism (QIP)** as inspiration
+  for the setting's consciousness ontology.
+
+NoöPunk combines these influences into a fictional scientific paradigm rather than
+reproducing either theory literally.
+
+Inside the setting, QIP and psionics are established science after the NHI Crisis.
+
+Outside the setting, these remain speculative inspirations used for fiction and
+simulation.
+
+### 33.13 Ideological and factional landscape
+
+The shocks above create a broad and unstable field of formations including:
+
+- AI/transhuman accelerationists;
+- AI-critical movements;
+- AI doomers;
+- Butlerian / bioconservative factions;
+- posthuman and cyborg movements;
+- Panpsychic Cyborg Multitude currents;
+- religious revival movements;
+- technocratic emergency regimes;
+- corporate transhuman enclaves;
+- post-scarcity communes;
+- NHI-contact enthusiasts;
+- NHI-contact skeptics;
+- anti-NHI movements;
+- psionic / Noösphere movements;
+- old-paradigm states and institutions trying to preserve normality.
+
+These are social forces for simulation, not merely RPG flavor.
+
+NoöPunk should mix optimism, dark comedy, cyberpunk, transhuman science fiction,
+ideological conflict, ontological horror and moments of apocalypse/social collapse.
+
+The core optimism remains: paradigm shocks may destroy old institutions and assumptions,
+but they can also open space for better social forms.
