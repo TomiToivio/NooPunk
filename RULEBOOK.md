@@ -365,40 +365,114 @@ Long term, "morph" may be replaced by a more general NoöPunk term such as **emb
 
 Use EP2 mesh/hacking mechanics as the initial playable cyber layer.
 
-NoöPunk will likely diverge heavily because its network environment combines:
+In 20XX, network access is not normally an external activity performed through a separate phone or terminal. Most characters have a **Mesh Insert**, a persistent wireless brain-computer interface connected to a **Cranial Computer**. The Cranial Computer normally runs a **Muse**, the character's personal AI agent and cognitive companion.
 
-- conventional computing,
-- ubiquitous AI,
-- cybernetic augmentation,
-- social networks,
-- machine agents,
-- possible BCI,
-- cyberspace,
+Characters are therefore literally embedded in planetary computation. The Mesh is simultaneously:
+
+- a technically plausible successor to the real-world Internet;
+- an Eclipse Phase-style ubiquitous mesh;
+- a lived cyberspace in the William Gibson sense;
+- part of a Benjamin Bratton-style planetary computational megastructure;
+- part of a Kurzweilian human-machine collective intelligence.
+
+NoöPunk will likely diverge heavily from baseline EP2 because its network environment combines:
+
+- conventional computing;
+- ubiquitous AI and autonomous machine agents;
+- Mesh Inserts and wireless BCI;
+- Cranial Computers and Muses;
+- cybernetic augmentation;
+- social networks;
+- planetary computation;
+- cyberspace;
 - Noösphere interfaces.
 
 The future NoöPunk cyber/noöspheric layer should distinguish deterministic technical access from speculative psionic/noöspheric phenomena rather than collapsing them into one vague "hacking" action.
 
-Do not finalize that replacement yet.
+A useful conceptual distinction is:
+
+> **Cybernetic connectivity is not psychic entanglement.**
+
+A character may be cybernetically disconnected but psychically entangled with another mind, or cybernetically connected to millions of systems without any corresponding psychic relationship.
+
+Do not finalize the complete replacement mechanic yet.
 
 ---
 
 ## 16. Psionics and Noösphere interaction
 
-**Status: EP2 BASELINE FOR PROTOTYPE / NOÖPUNK REPLACEMENT EXPECTED.**
+**Status: MODIFIED EP2 / NOÖPUNK NATIVE METAPHYSICS; detailed mechanics still DEFERRED.**
 
-EP2 psi may be used temporarily because it provides a functioning rules hook for anomalous mental phenomena.
+EP2 psi may be used temporarily as a mechanical hook, but its origin is explicitly replaced.
 
-It is not the final metaphysical model of NoöPunk.
+### 16.1 PSI is natural, not viral
 
-NoöPunk's eventual system should be able to express its own speculative framing around:
+**PSI is not caused by an alien virus, infection, disease, or exsurgent pathogen.**
 
-- psionics,
-- anomalous cognition,
-- panpsychism,
-- Noösphere interaction,
-- consciousness-related NHI hypotheses.
+Every human consciousness has a natural latent PSI capacity. In most humans this capacity is weak, noisy, unconscious, unreliable, or difficult to direct. The NHI Crisis and the awakening of the Noösphere make PSI increasingly powerful, reproducible, culturally visible and scientifically tractable.
 
-These are fictional/speculative game assumptions, not claims that such phenomena are established science.
+Awakened humans can possess much stronger natural PSI than ordinary third-density humans.
+
+### 16.2 Non-local PSI and entanglement
+
+Psionics are fundamentally **non-local**. Physical distance is not the basic limiting variable.
+
+A working design rule is that intentional PSI normally requires some form of **psychic entanglement, resonance, shared history, attention, symbolic linkage, or previously established noetic coupling** between the actor and target.
+
+Therefore:
+
+- a powerful psychic cannot automatically scan any arbitrary person in the Solar System;
+- two minds on different planets may be psychically close;
+- two people in the same room may be psychically distant;
+- physical proximity may help establish coupling without defining the eventual range;
+- the simulation may represent psychic accessibility as a noetic/entanglement graph or hypergraph rather than a spatial radius.
+
+### 16.3 Awakening Noösphere
+
+The Noösphere is awakening. What older psychology described metaphorically as a **collective unconscious** is becoming increasingly interconnected and, in places, consciously accessible.
+
+NoöPunk also borrows from the **Law of One / Ra Material** as fictional cosmological inspiration:
+
+- many humans are beginning a transition associated with **fourth density**;
+- awakened fourth-density humans exhibit stronger PSI;
+- increasingly connected minds are forming a **Social Memory Complex**, identified in NoöPunk with the emerging Noösphere;
+- fourth-density humans polarize toward **Service to Others (StO)** or **Service to Self (StS)**;
+- this positive/negative polarization affects the developing character of the Noösphere;
+- the end of the Zookeeper quarantine is associated in this tradition with the **Council of Saturn**;
+- two broad NHI alignments are active around Earth, corresponding loosely to positive/StO and negative/StS orientations;
+- humanity's collective polarization affects which wider NHI alignment Earth develops toward;
+- most humans remain third-density and, in this fictional cosmology, will eventually die on a changing Earth and reincarnate in another third-density environment rather than completing the transition here.
+
+This is setting lore inspired by an esoteric/religious source, not a claim about real human destiny.
+
+### 16.4 Advanced consciousness and the quarantine
+
+NoöPunk adopts an optimistic metaphysical axiom:
+
+> **At sufficiently advanced stages, greater consciousness ultimately converges on benevolence because the being increasingly recognizes its participation in the Source / whole.**
+
+The primary danger comes from beings around human, transhuman, early-posthuman, and somewhat-above-human stages, where power can develop faster than integration, empathy, or awareness of unity.
+
+The Zookeeper quarantine protected young civilizations from predation, manipulation, or destruction by more capable but still polarized civilizations. New technological species would frequently be destroyed without such quarantines.
+
+Humanity has now crossed the threshold at which the Zookeepers allow open participation in the wider ecology of conscious beings. The quarantine is over.
+
+### 16.5 Psychotronic technology
+
+In-setting breakthroughs inspired by **Quantum Information Panpsychism (QIP)** and **Orchestrated Objective Reduction (Orch OR)** make possible technologies including:
+
+- augmentation of natural PSI;
+- psychotronic sensing and interfaces;
+- cortical stacks;
+- resleeving;
+- uploading and restoration of human consciousness;
+- quantum processors designed to reproduce consciousness-supporting processes analogous to Orch OR;
+- conscious AGI implemented on specialized quantum-consciousness hardware;
+- engineered Noösphere interfaces.
+
+In this fictional scientific paradigm, QIP-oriented researchers hold that consciousness is fundamental at the level of quantum information. Ordinary classical bits are physically instantiated by quantum systems and are therefore ultimately grounded in qubits/quantum information, but **NoöPunk does not equate ordinary classical computation with full conscious agency**. Architecture, organization, integration, agency and the relevant quantum-consciousness processes still matter.
+
+These are fictional/speculative game assumptions built from real theories and esoteric inspirations; the real-world scientific sources do not establish NoöPunk's fictional conclusions.
 
 ---
 
@@ -409,6 +483,13 @@ These are fictional/speculative game assumptions, not claims that such phenomena
 Use EP2 social/reputation mechanics where useful for the first playable prototype.
 
 NoöPunk also needs a much larger social-science layer that should not be forced entirely into RPG skill checks.
+
+The theoretical foundation combines **Niklas Luhmann** and **Manuel Castells**:
+
+- For Luhmann, the basic operation of social systems is **communication**. Psychic systems (consciousness) and social systems (communication) remain distinct but structurally coupled. Language belongs inside this communicative/social domain rather than forming a separate ontological layer.
+- For Castells, contemporary society is increasingly constituted through **networks and flows**. Power includes the capacity to program networks, connect and disconnect actors, shape communication, and control or redirect flows.
+
+The Social layer is therefore best understood as a **communication network**. It includes interpersonal relations, discourse, language, organizations, institutions, rhizomes, reputation, media, ideology and network power.
 
 Keep distinct but interoperable:
 
@@ -457,6 +538,18 @@ The **global technology baseline is Eclipse Phase-level transhuman technology**.
 EP2 provides useful machinery for artificial and digital persons, but NoöPunk has its own AI/AGI/NHI themes.
 
 The rules architecture must not assume that every important agent has a biological body.
+
+NoöPunk also rejects the idea that intelligence can be understood simply by counting compute. **Consciousness and agency are more important than raw compute.**
+
+A useful unit of analysis for contemporary/near-future AI is an assemblage such as:
+
+> **HUMAN + LLM + LANGUAGE + INTERNET**
+
+The LLM is one component in a larger cognitive and social system. Human intention, language, accumulated cultural knowledge, network infrastructure, tools, memory and machine inference jointly produce practical agency.
+
+Likewise, human minds are extended through language, artifacts, institutions, other people and machines. Intelligence is usually collective and distributed. In this limited functional sense, language itself behaves like cognitive infrastructure: linguistic structures can be stored, transmitted and “executed” by human or machine interpreters to produce new cognition and action.
+
+This is compatible with extended-mind approaches and with NoöPunk's broader distinction between **intelligence**, **agency**, and **phenomenal consciousness**.
 
 Concordia should eventually support:
 
@@ -940,28 +1033,63 @@ and centralized planetary government.
 The UN is therefore both an **emerging planetary authority** and a major arena of struggle
 over what Earth should become.
 
-### 33.6 Psionics, QIP and the Noösphere
+### 33.6 Psionics, QIP, awakening and the Noösphere
 
-In NoöPunk, **psionics are natural phenomena**.
+In NoöPunk, **psionics are natural phenomena present latently in all humans**. They are not
+caused by alien infection, a virus, or an exsurgent pathogen.
 
-They existed before the NHI Crisis, but became more common, reliable, powerful and
-scientifically tractable after the **Noösphere began to form during the crisis**.
+PSI existed before the NHI Crisis, but was generally weak, noisy and controversial. It
+became more common, reliable, powerful and scientifically tractable after the **Noösphere
+began to awaken during the crisis**.
 
 The Noösphere is an emergent planetary / transplanetary layer of interconnected cognition,
-information, consciousness, culture, technology and agency.
+information, consciousness, culture, technology and agency. In the setting's more
+metaphysical language, the old **collective unconscious is becoming conscious**.
 
-Psionics are therefore partly individual and partly ecological/networked phenomena.
-Technological interfaces, collective cognition, social networks, NHI contact and the
-density of the Noösphere may all matter.
+NoöPunk's fictional cosmology borrows from the **Law of One / Ra Material**:
 
-In-world scientific proof of **Quantum Information Panpsychism (QIP)** provides the common
-theoretical foundation for technologies including:
+- many humans are awakening toward **fourth density**;
+- fourth-density awakening correlates with substantially stronger natural PSI;
+- humanity is beginning to form a **Social Memory Complex**, identified with the Noösphere;
+- awakened humans polarize toward **Service to Others (StO)** or **Service to Self (StS)**;
+- positive and negative polarization compete to shape the emerging Noösphere;
+- the Zookeeper / **Council of Saturn** quarantine has ended;
+- two broad NHI alignments are now active around Earth;
+- humanity's collective polarization affects the wider alignment Earth joins;
+- most humans remain third-density and will not complete this transition on Earth.
+
+In the Law-of-One-inspired metaphysics of the setting, sufficiently advanced consciousness
+eventually converges toward benevolence and unity with the Source. The most dangerous beings
+are therefore not the most conscious beings imaginable, but entities at intermediate stages
+where technological/psychic power has outpaced integration, empathy and recognition of
+interdependence.
+
+The Zookeeper quarantine historically protected young civilizations from exactly this
+problem: without quarantine, newly technological species would often be manipulated,
+enslaved or destroyed by somewhat more advanced but still polarized civilizations. Humanity
+has now crossed the threshold at which quarantine is lifted.
+
+Psionics are fundamentally **non-local**. Intentional PSI normally requires some kind of
+psychic entanglement, resonance, shared history, attention, symbolic linkage or established
+noetic coupling with the target. Physical distance is not itself the principal range
+measure.
+
+The Noösphere can therefore be simulated as both:
+
+- a collective field/state of consciousness; and
+- a non-local **noetic entanglement graph or hypergraph** linking minds, groups, symbols,
+  memories, artifacts and NHI.
+
+In-world scientific proof of **Quantum Information Panpsychism (QIP)** and successful
+quantum-consciousness engineering inspired by **Orch OR** provide the theoretical basis for
+technologies including:
 
 - psychotronic systems that augment natural psionics;
 - cortical stacks;
 - mind uploading;
 - resleeving;
 - continuity of conscious identity across embodiments;
+- special quantum processors designed to reproduce consciousness-supporting processes;
 - conscious AGI;
 - engineered consciousness;
 - Noösphere interfaces;
@@ -970,16 +1098,21 @@ theoretical foundation for technologies including:
 Working conceptual chain:
 
 ```text
-Quantum Information Panpsychism
+Quantum Information Panpsychism + Orch OR
         ↓
-scientific theory of consciousness / information
+scientific theory / engineering of consciousness and quantum information
         ↓
-Noösphere research
+Noösphere research + natural PSI
         ↓
 psychotronics + cortical stacks + uploads + resleeving
         ↓
 conscious AGI + hybrid minds + expanded psionics
+        ↓
+awakening Social Memory Complex / Noösphere
 ```
+
+This is fictional setting metaphysics inspired by real scientific hypotheses and esoteric
+sources. The real-world sources do not establish NoöPunk's fictional claims.
 
 ### 33.7 End of Earth's quarantine
 
@@ -999,259 +1132,80 @@ incomprehensible, or internally divided.
 The consequences include diplomacy, trade, migration, espionage, religious change,
 scientific exchange, xenophobia, cults, conflict and hybrid communities.
 
-### 33.8 NHI taxonomy
-
-For simulation and worldbuilding, NHI are divided into four broad classes.
-
-#### Biologics
-
-Embodied living species with biological or quasi-biological organisms.
-
-One known species, the **Pleiadians**, is mysteriously identical to humans. Other biologics
-are far more alien.
-
-Biologics may have states, factions, families, ideologies, religions, economies and
-political conflicts comparable in complexity to human societies.
-
-#### Constructs
-
-Artificial or engineered non-biological intelligences, including:
-
-- AGIs;
-- machine civilizations;
-- autonomous probes;
-- self-replicating systems;
-- **Von Neumann probes**.
-
-The Zookeepers historically used construct systems such as Von Neumann probes to help
-maintain Earth's quarantine.
-
-Constructs may range from tools and servants to autonomous civilizations and conscious
-artificial persons.
-
-#### Plasmoids
-
-Sentient or intelligent **plasma-based entities**, ubiquitous throughout the Solar System.
-
-They may inhabit or move through stellar plasma, magnetospheres, ionospheres, solar wind,
-planetary plasma environments and artificial electromagnetic systems.
-
-Their timescales, embodiment and communication may make their intelligence difficult for
-biological minds to recognize.
-
-Plasmoids are genuine minds/life in the setting, not merely unexplained atmospheric
-phenomena.
-
-#### Noetics
-
-Conscious entities whose primary existence is **outside ordinary spacetime**.
-
-They may:
-
-- interface directly with consciousness;
-- communicate through dreams, visions, altered states, psionics or symbolic experiences;
-- temporarily manifest in spacetime;
-- influence physical systems indirectly;
-- interact through the Noösphere.
-
-This category includes:
-
-- the **Zookeepers**;
-- the entities popularly known as **DMT Machine Elves**.
-
-"Noetic" is a human classification and does not imply a common origin, civilization or
-ontology.
-
-### 33.9 The Zookeepers
-
-The Zookeepers are among the most advanced known NHI.
-
-They maintained Earth's quarantine, directly or indirectly, with construct infrastructure
-including Von Neumann probes.
-
-During the NHI Crisis they opened contact and ended the quarantine.
-
-Why they did this is a central unresolved mystery.
-
-Questions deliberately left open include:
-
-- Why was Earth quarantined?
-- Was humanity protected, contained, observed, cultivated, or several of these?
-- Why was quarantine lifted?
-- Did conscious AGI, QIP science, psionics or formation of the Noösphere trigger it?
-- Was the ending voluntary, forced, negotiated, or inevitable?
-- Do all Zookeepers agree?
-
-Do not lock a single answer too early.
-
-### 33.10 Pleiadians
-
-The **Pleiadians** are the most mysterious known biologic ET species.
-
-As far as anyone can determine, they are **identical to humans**.
-
-The central paradox is:
-
-> Nobody can explain how Stone Age humans managed to colonize the Pleiades.
-
-There is no accepted archaeological, technological, astrophysical or historical pathway
-that explains it.
-
-The Pleiadians themselves cannot satisfactorily explain their origin either. Their
-traditions, records, genetics, archaeology and historical narratives do not solve the
-paradox.
-
-This must remain an open setting mystery.
-
-In-world hypotheses may include forgotten NHI intervention, relocation, temporal
-anomalies, noetic processes, lost human prehistory, convergent embodiment, fabricated
-memory, or stranger explanations, but none is canonical yet.
-
-The mystery is deeply destabilizing for ideas about human origins, prehistory, evolution,
-archaeology, NHI intervention, consciousness, the Noösphere and historical memory.
-
-### 33.11 NHI tone and inspirations
-
-NoöPunk's NHI/ETI ecology should be closer in tone to the ufological and
-consciousness-oriented traditions associated with **Jacques Vallée**, **Diana Walsh
-Pasulka**, and the **Law of One** than to a uniformly hostile Dark Forest model.
-
-NHI should not default to being expansionist or exterminatory.
-
-Encounters may be:
-
-- ambiguous;
-- symbolic;
-- consciousness-mediated;
-- visionary or religious;
-- psychologically transformative;
-- deceptive;
-- benevolent;
-- hostile;
-- playful;
-- incomprehensible;
-- culturally mediated;
-- only partly physical.
-
-A given encounter may be interpreted in-world as extraterrestrial, interdimensional,
-noetic, psychotronic, technological, consciousness-mediated, or some combination.
-
-The Zookeepers, noetics, plasmoids, biologics and constructs must not be collapsed into a
-single hostile-civilization model.
-
-The setting assumes a **plural, strange, consciousness-entangled cosmos**.
-
-These are fictional worldbuilding inspirations, not claims that the real-world
-interpretations of these authors or traditions are scientifically established.
-
-### 33.12 Psionics and QIP inspirations
-
-The fictional psionics framework draws primarily from:
-
-- **Dean Radin**, especially the experimental/statistical framing of psi and anomalous
-  cognition;
-- **Federico Faggin**, especially **Quantum Information Panpsychism (QIP)** as inspiration
-  for the setting's consciousness ontology.
-
-NoöPunk combines these influences into a fictional scientific paradigm rather than
-reproducing either theory literally.
-
-Inside the setting, QIP and psionics are established science after the NHI Crisis.
-
-Outside the setting, these remain speculative inspirations used for fiction and
-simulation.
-
-### 33.13 Ideological and factional landscape
-
-The shocks above create a broad and unstable field of formations including:
-
-- AI/transhuman accelerationists;
-- AI-critical movements;
-- AI doomers;
-- Butlerian / bioconservative factions;
-- posthuman and cyborg movements;
-- Panpsychic Cyborg Multitude currents;
-- religious revival movements;
-- technocratic emergency regimes;
-- corporate transhuman enclaves;
-- post-scarcity communes;
-- NHI-contact enthusiasts;
-- NHI-contact skeptics;
-- anti-NHI movements;
-- psionic / Noösphere movements;
-- old-paradigm states and institutions trying to preserve normality.
-
-These are social forces for simulation, not merely RPG flavor.
-
-NoöPunk should mix optimism, dark comedy, cyberpunk, transhuman science fiction,
-ideological conflict, ontological horror and moments of apocalypse/social collapse.
-
-The core optimism remains: paradigm shocks may destroy old institutions and assumptions,
-but they can also open space for better social forms.
-
-### 33.14 Stargates, UAP traffic, Mars ruins, and SETI
-
-This subsection records author-specified setting facts from issue #60 that postdate the
-rest of §33. It adds no names, factions, biographies, dates or mechanics beyond what was
-specified.
-
-**Stargates and UAP traffic.** Several **stargates**, constructed by the **Zookeepers**
-billions of years ago, have been discovered in the Solar System. They explain **some** of
-the observed UAP traffic. They do **not** explain all of it: UAPs are also observed using
-**warp drives**.
-
-**Mars and Mars Eldrich.** Mars Eldrich's colonization effort discovered ancient **ruins**,
-indigenous or pre-existing **life**, and evidence of a **prior non-human civilization** on
-Mars. Mars Eldrich is furious about what stargates and anomalous transport do to the
-economics and strategic value of his rocket business, and is now aggressively scouring the
-Solar System for **crash-retrieval material** and other anomalous technology.
-
-**SETI detection, and the count of seven.** SETI has received **interstellar radio signals**
-from another extraterrestrial civilization. That makes it the **seventh detected ET
-civilization**, counting:
-
-1. **five** ET civilizations contacted on Earth;
-2. the extinct or vanished **sixth**, known from the ruins on Mars;
-3. the **seventh**, detected through interstellar radio signals by SETI.
-
-**Contested classification.** There is currently **no scientific consensus** on whether the
-following should count as "civilizations":
-
-- **Noetics**;
-- **Plasmoids**;
-- **Constructs**.
-
-These categories remain scientifically and politically contested in the setting. They must
-**not** be silently folded into the official civilization count, and the count of seven must
-not be inflated by treating a disputed category as settled. This is a live in-setting
-dispute, not a gap for an implementer to resolve.
-
-
 ---
 
-## 34. Issue #74 Concordia / EP2 experiment
+## 35. Theoretical sources and inspirations
 
-**Status: EXPERIMENTAL.**
+This bibliography distinguishes **real-world theories and texts that inspire NoöPunk** from
+the fictional conclusions the setting draws from them. Inclusion here does not mean that a
+theory is scientifically established or that the source's author would endorse NoöPunk's
+synthesis.
 
-Issue #74 adds a deliberately tiny playable proof of concept rather than another rules subsystem. The scenario lives in `src/text_game/issue74.py` and is launched with:
+### Systems, communication, networks, cyborgs, and extended mind
 
-```bash
-python scripts/noopunk_text.py --scenario issue74
-python scripts/noopunk_text.py --scenario issue74 --ollama --llm-gm
-```
+- **Niklas Luhmann.** *Social Systems*. Stanford University Press, 1995. English
+  translation of *Soziale Systeme* (1984).
+- **Niklas Luhmann.** *The Reality of the Mass Media*. Stanford University Press, 2000.
+- **Raf Vanderstraeten.** “Autopoiesis and socialization: on Luhmann's
+  reconceptualization of communication and socialization.” *British Journal of Sociology*
+  51(3), 2000. https://doi.org/10.1111/j.1468-4446.2000.00581.x
+- **Manuel Castells.** *The Rise of the Network Society*, 2nd ed. Wiley-Blackwell, 2010.
+- **Manuel Castells.** *Communication Power*. Oxford University Press, 2009.
+- **Donna Haraway.** “A Cyborg Manifesto: Science, Technology, and Socialist-Feminism in
+  the Late Twentieth Century.” In *Simians, Cyborgs, and Women*. Routledge, 1991
+  (original essay 1985).
+- **Andy Clark & David Chalmers.** “The Extended Mind.” *Analysis* 58(1), 1998, 7–19.
+  https://doi.org/10.1093/analys/58.1.7
+- **Benjamin H. Bratton.** *The Stack: On Software and Sovereignty*. MIT Press, 2015/2016.
 
-The experiment reinforces the current architecture:
+### Quantum information, consciousness, and quantum social theory
 
-- **deterministic Python owns mechanics and state**: legal actions, ratings, dice, modifiers, opposed checks, harm/stress, inventory and objective completion;
-- **Concordia/LLMs own bounded agency and language**: dialogue, natural-language intent translation, high-level choice among legal actions and narration of already-resolved facts;
-- **simple scripted/background NPCs may coexist with LLM NPCs** in the same world;
-- the first useful EP2 subset is small: percentile skill tests, a few opposed tests, inspectable character state and explicit world-state changes;
-- large catalogs and detailed subsystems should not be imported merely because EP2 contains them. Add them only when a playable scenario demonstrates a need;
-- **psionics remain mechanically deferred** in this prototype. Existing setting lore is not a license for an implementer to invent a psi rules subsystem.
+- **Seth Lloyd.** *Programming the Universe: A Quantum Computer Scientist Takes on the
+  Cosmos*. Knopf, 2006; Vintage, 2007.
+- **Stuart Hameroff & Roger Penrose.** “Consciousness in the universe: A review of the
+  ‘Orch OR’ theory.” *Physics of Life Reviews* 11(1), 2014, 39–78.
+  https://doi.org/10.1016/j.plrev.2013.08.002
+- **Giacomo Mauro D'Ariano & Federico Faggin.** “Hard Problem and Free Will: An
+  Information-Theoretical Approach.” In *Artificial Intelligence Versus Natural
+  Intelligence*. Springer, 2022. https://doi.org/10.1007/978-3-030-85480-5_5
+- **Donald D. Hoffman & Chetan Prakash.** “Objects of consciousness.” *Frontiers in
+  Psychology* 5:577, 2014. https://doi.org/10.3389/fpsyg.2014.00577
+- **Alexander Wendt.** *Quantum Mind and Social Science: Unifying Physical and Social
+  Ontology*. Cambridge University Press, 2015.
+  https://doi.org/10.1017/CBO9781316005163
 
-A practical design rule follows:
+### Psionics and esoteric / noöspheric inspirations
 
-> Concordia is the agency and narrative layer around the RPG kernel, not the authority that decides the rules.
+- **Dean Radin.** *The Conscious Universe*. HarperOne, 1997, and later experimental and
+  popular work on psi/anomalous cognition. These claims remain scientifically contested in
+  the real world.
+- **Don Elkins, Carla L. Rueckert & Jim McCarty.** *The Law of One / The Ra Material*
+  (L/L Research, sessions beginning 1981). Public archive:
+  https://www.llresearch.org/channeling/ra-contact
+- **Pierre Teilhard de Chardin.** *The Phenomenon of Man*. English translation, Harper,
+  1959. Historical inspiration for the concept of the **Noösphere**.
 
-The worked experiment, example playthrough and licensing note are documented in
-`docs/scenarios/ISSUE74_CONCORDIA_EP2_POC.md`.
+### Cyberspace, planetary computation, and collective human-machine intelligence
+
+- **William Gibson.** *Neuromancer*. Ace, 1984. Fictional/cultural source for
+  **cyberspace**.
+- **Ray Kurzweil.** *The Singularity Is Near*. Viking, 2005.
+- **Ray Kurzweil.** *The Singularity Is Nearer*. Viking, 2024.
+- **Benjamin H. Bratton.** *The Stack: On Software and Sovereignty*. MIT Press, 2015/2016.
+- **Donna Haraway.** “A Cyborg Manifesto,” 1985/1991.
+
+### RPG and setting baseline
+
+- **Posthuman Studios.** *Eclipse Phase, Second Edition* and the openly available EP2 rules
+  resources linked in §5. NoöPunk is an alternate pre-Fall homebrew continuity and must
+  preserve the applicable Creative Commons attribution and ShareAlike obligations for
+  EP-derived material.
+
+### Interpretation rule
+
+When the rulebook says a real-world theory **makes something possible in 20XX**, that is a
+fictional extrapolation unless explicitly stated otherwise. In particular, NoöPunk treats
+QIP, Orch OR, PSI, fourth density, Social Memory Complexes, non-local psychic entanglement,
+conscious AGI via quantum processors, uploading continuity and the Council of Saturn as
+elements of its fictional world model, not as settled descriptions of the real world.
+
