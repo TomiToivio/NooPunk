@@ -59,7 +59,8 @@ class ConcordiaTextController:
             "Translate the human intent into exactly one valid text command. Do not "
             "narrate or invent rules. Allowed verbs: look, go <direction>, inventory, "
             "take <item-id>, drop <item-id>, talk <actor-id> <message>, say <message>, "
-            "use <item-id> [target], stats.\n"
+            "use <item-id> [target], stats, sheet, test skill <skill>, " \
+            "test social|mesh <skill> vs <actor>, test combat <skill> vs <actor>.\n"
             f"Actor: {actor_id}\nContext: {context}\nIntent: {intent}"
         )
         raw = self._sample(prompt).splitlines()[0].strip()
@@ -77,7 +78,8 @@ class ConcordiaTextController:
         prompt = (
             "Choose exactly one valid text command for this actor. Do not narrate. "
             "Allowed verbs: look, go <direction>, inventory, take <item-id>, "
-            "drop <item-id>, talk <actor-id> <message>, say <message>.\n"
+            "drop <item-id>, talk <actor-id> <message>, say <message>, sheet, " \
+            "test skill <skill>, test social|mesh <skill> vs <actor>.\n"
             f"Actor: {actor.actor_id}\nRoom: {actor.room_id}\nContext: {context}"
         )
         raw = self._sample(prompt).splitlines()[0].strip()
