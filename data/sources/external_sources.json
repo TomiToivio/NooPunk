@@ -1,0 +1,170 @@
+{
+  "$comment": "Machine-readable provenance record for the external sources that issue #60 names, plus the character-generator resource the author added in the issue thread. Purpose: decide what MAY later be imported into NooPunk and under what terms. This file records LICENSE FINDINGS ONLY. No external code or data has been imported by any of these records; see 'imported' on every entry, which is false throughout. NoöPunk is an unofficial fan/homebrew project and is not affiliated with or endorsed by Posthuman Studios.",
+  "format": "noopunk.sources.external_licenses",
+  "version": 1,
+  "issue": "https://github.com/TomiToivio/NooPunk/issues/60",
+  "retrieved": "2026-10-03",
+  "$retrieved_convention": "The 'retrieved' and 'license_checked' dates are real-world metadata dates, NOT in-world canon dates. AGENTS.md section 6 limits in-world future dates to 20XX; this file makes no in-world claims, so a real date here does not violate that rule.",
+  "license_basis": {
+    "statement": "Unless noted otherwise, Eclipse Phase releases (print books, digital PDFs/ebooks, text, artwork, audio files, and the website) by Posthuman Studios are licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 (CC BY-NC-SA 4.0).",
+    "url": "https://eclipsephase.com/cclicense/",
+    "verified": "2026-10-03",
+    "conditions": [
+      "noncommercial purposes only",
+      "attribute Posthuman Studios, LLC and link https://eclipsephase.com",
+      "license any derivative under the same license (ShareAlike)"
+    ],
+    "attribution_line": "Eclipse Phase (c) Posthuman Studios, LLC, https://eclipsephase.com - CC BY-NC-SA 4.0"
+  },
+  "decision_vocabulary": {
+    "importable-ep-derived": "EP-derived material whose license is established. NonCommercial and ShareAlike bind any file that mixes it in.",
+    "unclear-do-not-import": "License could not be established. Do not copy code, data or text from this source.",
+    "unverified-do-not-import": "The source could not be reached or read, so nothing is known about its terms.",
+    "not-present": "Named by the issue as supplied material, but not found in the repository or on this machine."
+  },
+  "governing_statement": {
+    "id": "eclipse-phase-license-page",
+    "source": "Eclipse Phase Creative Commons license information",
+    "url": "https://eclipsephase.com/cclicense/",
+    "kind": "publisher-license-statement",
+    "importable": null,
+    "importable_reason": "This is the license statement itself, not material to import. It governs every entry in 'sources' below.",
+    "license_checked": "2026-10-03",
+    "notes": "Verified directly from the publisher page on 2026-10-03. The page explicitly encourages fan fiction, campaign websites, house rules, netbooks and crossover systems, which is the use case NooPunk is in."
+  },
+  "sources": [
+    {
+      "id": "ep2-online-rules",
+      "source": "Eclipse Phase 2E online rules (the machine-readable rules reference the issue names)",
+      "url": "https://eclipsephase.github.io/en/01/00-infamy.html",
+      "repository": "https://github.com/eclipsephase/eclipsephase.github.io",
+      "kind": "rules-reference",
+      "edition": "Eclipse Phase 2nd Edition",
+      "license": "CC BY-NC-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "attribution": "Eclipse Phase (c) Posthuman Studios, LLC, https://eclipsephase.com - CC BY-NC-SA 4.0",
+      "importable": "importable-ep-derived",
+      "importable_reason": "A LICENSE file in the repository root carries the full CC BY-NC-SA 4.0 legal text. Binds to noncommercial and ShareAlike.",
+      "license_checked": "2026-10-03",
+      "notes": "The GitHub license API reports this repository's license as NOASSERTION ('Other'), which under-reports it: the LICENSE file is the standard CC BY-NC-SA 4.0 text, read directly. The repository description says 'Traducao para Portugues' (Portuguese translation), but it serves BOTH docs/en/ and docs/pt_br/, so the English rules URL the issue names is served from this repository. Reuse compact rule summaries and structured data only; the issue forbids mirroring rulebook prose. Any file mixing this material becomes CC BY-NC-SA."
+    },
+    {
+      "id": "ep2-quickstart-rules",
+      "source": "Eclipse Phase 2E Quick-Start Rules (Acrimony)",
+      "url": "https://eclipsephase.com/wp-content/uploads/2024/02/PS10001_EclipsePhaseSecondEdition_QuickStartRulesAcrimony_Nov2023.pdf",
+      "kind": "rules-reference",
+      "edition": "Eclipse Phase 2nd Edition",
+      "license": "CC BY-NC-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "attribution": "Eclipse Phase (c) Posthuman Studios, LLC, https://eclipsephase.com - CC BY-NC-SA 4.0",
+      "importable": "importable-ep-derived",
+      "importable_reason": "An official Posthuman Studios release, so the publisher's general CC BY-NC-SA 4.0 statement covers it.",
+      "license_checked": "2026-10-03",
+      "redistributable_pdf": false,
+      "notes": "Read for the minimum viable rules kernel. The PDF is NOT committed to this repository and must not be: it is a hosted third-party file. Verified that no PDF exists in the working tree or anywhere in the repository history."
+    },
+    {
+      "id": "artemystra-eclipsephase",
+      "source": "Artemystra/eclipsephase - Eclipse Phase 2nd Edition system for FoundryVTT (character data, ware, morphs, traits, gear)",
+      "url": "https://github.com/Artemystra/eclipsephase",
+      "kind": "third-party-code-and-data",
+      "edition": "Eclipse Phase 2nd Edition",
+      "license": "CC BY-NC-SA (version 3.0 URL in the README)",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
+      "attribution": "Posthuman Studios, LLC (EP material); the FoundryVTT system authors for their own additions",
+      "importable": "importable-ep-derived",
+      "importable_reason": "The README 'Legal' section declares the rules and non-registered trademarks to be CC BY-NC-SA and states that this also covers additions and code written by the developer. EP-derived and NonCommercial/ShareAlike binding.",
+      "license_checked": "2026-10-03",
+      "notes": "There is NO LICENSE file at the repository root and the GitHub license API reports NONE, so the only license evidence is the README prose. That prose cites the 3.0 URL while the current EP release is 4.0; record both and prefer the stricter reading. Because the site also uses EP trademarks 'with permission', a granted permission that applies to THAT project does not transfer to NooPunk. Import only with explicit provenance per dataset, never wholesale."
+    },
+    {
+      "id": "ralfbiedert-eclipse-phase-2-tools",
+      "source": "ralfbiedert/eclipse-phase-2-tools - tools and cheat sheet for Eclipse Phase 2nd Edition",
+      "url": "https://github.com/ralfbiedert/eclipse-phase-2-tools",
+      "kind": "third-party-code-and-data",
+      "edition": "Eclipse Phase 2nd Edition",
+      "license": "NONE FOUND",
+      "license_url": null,
+      "attribution": "unknown",
+      "importable": "unclear-do-not-import",
+      "importable_reason": "No LICENSE file and no license statement anywhere in the repository. The GitHub license API reports NONE. Absent a grant, no code or data may be copied from it.",
+      "license_checked": "2026-10-03",
+      "notes": "The README is a download page linking Excel and PDF tools hosted on OneDrive; it contains no license section. Architecture and data-model ideas may still be read as implementation reference, which is what the issue suggests ('Even when code is not directly reused, its architecture may be useful as implementation reference'), but nothing may be copied."
+    },
+    {
+      "id": "eclipsehelper",
+      "source": "Eclipse Phase 2E Helper character generator (added by the author in the issue thread as a character-generation reference)",
+      "url": "https://arokha.com/eclipsehelper/chargen/1",
+      "related_repositories": [
+        "https://github.com/Arokha/EP2-Data",
+        "https://github.com/Arokha/ep2-helper"
+      ],
+      "kind": "third-party-tool-and-data",
+      "edition": "Eclipse Phase 2nd Edition",
+      "license": "EP-derived data under CC BY-NC-SA 4.0; the site's own code unspecified",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "attribution": "Eclipse Phase (c) Posthuman Studios, LLC, https://eclipsephase.com - CC BY-NC-SA 4.0",
+      "importable": "unclear-do-not-import",
+      "importable_reason": "Split terms, so neither half is clean. The site footer states the data and text come from the Eclipse Phase books under CC BY-NC-SA 4.0, while the code is 'the same license where possible (libraries are under their own licenses)' - a hedge, not a grant. Both backing GitHub repositories report NO license.",
+      "license_checked": "2026-10-03",
+      "notes": "Useful to READ as a comparison for EP2 character-creation flow, which is what the issue thread asks for. Do not scrape its character or gear data into NooPunk: the data is EP-derived and the repositories carry no license of their own. Its own MIT-licensed bundled library is a third-party dependency and does not license the generator."
+    },
+    {
+      "id": "pbtA-conversion",
+      "source": "Eclipse Phase Apocalypse - a Powered by the Apocalypse conversion",
+      "url": "https://eclipse-phase-apocalypse.obsidianportal.com/wikis/main-page",
+      "kind": "third-party-conversion",
+      "edition": "conversion of Eclipse Phase to PbtA",
+      "license": "UNVERIFIED",
+      "license_url": null,
+      "attribution": "unknown",
+      "importable": "unverified-do-not-import",
+      "importable_reason": "The page could not be fetched. HTTP 403 with no content read, so no license finding is possible. Nothing may be imported, and no claim may be made about its terms either way.",
+      "license_checked": "2026-10-03",
+      "notes": "Recorded as a blocked verification, not as a negative result. It remains a design-comparison candidate only, and the issue already says not to switch to it wholesale."
+    },
+    {
+      "id": "ep1-pdf-links",
+      "source": "Rob Boyle's Eclipse Phase PDF index (first-edition material)",
+      "url": "https://robboyle.wordpress.com/eclipse-phase-pdfs/",
+      "kind": "links-index",
+      "edition": "Eclipse Phase 1st Edition",
+      "license": "links to Posthuman Studios releases covered by the publisher's CC BY-NC-SA statement",
+      "license_url": "https://eclipsephase.com/cclicense/",
+      "attribution": "Eclipse Phase (c) Posthuman Studios, LLC, https://eclipsephase.com - CC BY-NC-SA 4.0",
+      "importable": "importable-ep-derived",
+      "importable_reason": "A convenience index that links to official EP releases rather than hosting them; the linked PDFs are Posthuman Studios releases under the publisher's license.",
+      "license_checked": "2026-10-03",
+      "redistributable_pdf": false,
+      "notes": "This page is an index, not a license grant. It grants nothing by itself, and copying the linked PDFs into this repository would redistribute third-party-hosted files. The issue's instruction not to commit third-party PDFs applies."
+    },
+    {
+      "id": "attached-fate-and-nco-conversions",
+      "source": "Transhumanity's Fate, Fate Core, the Neon City Overdrive EP conversion, and the 2E Morphs and Traits conversion",
+      "url": null,
+      "kind": "third-party-conversion",
+      "edition": "various",
+      "license": "NOT ESTABLISHED",
+      "license_url": null,
+      "attribution": "unknown",
+      "importable": "not-present",
+      "importable_reason": "The issue names these as attached files, but none of them exists in the repository or anywhere on this machine. Their terms cannot be recorded because the material itself is absent.",
+      "license_checked": "2026-10-03",
+      "notes": "Looked for by filename across the repository, the shared workspace and the author's home directory and found nothing. If the author supplies them, each needs its own entry before any of its content is used: Fate Core is published by Evil Hat Productions under its own Creative Commons terms, which are NOT Eclipse Phase's, and the two EP conversions are community works whose terms are unknown. Do not assume any of them is importable."
+    }
+  ],
+  "current_imports": {
+    "summary": "None. No external code, data or text from any source above has been imported into NooPunk.",
+    "verification": "The initial issue #60 kernel under src/eclipse_phase_homebrew/ is a compact reimplementation of public EP2 rules concepts - percentile roll-under tests, the 33/66 superior-result rule, critical doubles, defaulting, the +/-60 modifier cap, and the common pool spend options - rather than copied rulebook prose. No PDF, no third-party dataset and no third-party source file is present in the working tree or in the repository history.",
+    "checked": "2026-10-03"
+  },
+  "boundary": {
+    "ep_derived_code_paths": [
+      "src/eclipse_phase_homebrew/",
+      "src/concordia_runtime/ep2_adapter.py"
+    ],
+    "noopunk_original": "NooPunk-original setting material, world data and the native rules are separate from Eclipse Phase-derived material unless a file explicitly says otherwise.",
+    "noncommercial": "While any file mixes in EP-derived material, the project is noncommercial. Commercial reuse would require strictly separating NooPunk's own content from EP-derived material.",
+    "sharealike": "A derivative of EP material must be licensed under compatible ShareAlike terms. Do not relicense EP-derived text, code or data under an incompatible license."
+  }
+}
