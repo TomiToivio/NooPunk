@@ -76,12 +76,10 @@ class CanonicalDocumentTests(unittest.TestCase):
                 self.assertIn(shift.lower(), text)
         self.assertIn("paradigm shift", text)
 
-    def test_names_the_comparative_influences(self) -> None:
+    def test_names_the_reference_influences_and_ep_baseline(self) -> None:
         text = normalised(CANONICAL_DOC)
-        for influence in ("shadowrun", "eclipse phase"):
-            with self.subTest(influence=influence):
-                self.assertIn(influence, text)
-        self.assertIn("not templates to copy", text)
+        self.assertIn("shadowrun", text)
+        self.assertIn("eclipse phase", text)
 
     def test_separates_shared_from_divergent(self) -> None:
         text = normalised(CANONICAL_DOC)
@@ -135,9 +133,7 @@ class AgentRulesTests(unittest.TestCase):
             "panpsychism",
             "shadowrun",
             "eclipse phase",
-            "not templates to copy",
-            "original rules system",
-            "never provide default mechanics or a chassis",
+            "ep2 as the current mechanical chassis",
         ):
             with self.subTest(fragment=fragment):
                 self.assertIn(fragment, text)
@@ -189,28 +185,16 @@ class ReferencingDocsTests(unittest.TestCase):
                         phrase, text, f"{doc} contradicts the specified rules"
                     )
 
-    def test_no_document_presents_a_comparative_influence_as_a_template(self) -> None:
-        """A comparative influence must not be advertised as NoöPunk's base system.
-
-        The principles record Shadowrun and Eclipse Phase as comparisons, not
-        templates. The published site previously described NoöPunk as an "Eclipse
-        Phase homebrew", which says the opposite; nothing checked the site, so it
-        survived the first pass of the design-principles work.
-        """
+    def test_shadowrun_remains_comparative(self) -> None:
+        """Shadowrun remains a comparison; Eclipse Phase is now the licensed baseline."""
         for doc in REFERRING_DOCS + ("docs/index.html",):
             text = normalised(doc)
-            for phrase in (
-                "eclipse phase homebrew",
-                "homebrew for eclipse phase",
-                "based on eclipse phase",
-                "shadowrun homebrew",
-                "based on shadowrun",
-            ):
+            for phrase in ("shadowrun homebrew", "based on shadowrun"):
                 with self.subTest(doc=doc, phrase=phrase):
                     self.assertNotIn(
                         phrase,
                         text,
-                        f"{doc} presents a comparative influence as NoöPunk's base system",
+                        f"{doc} presents Shadowrun as NoöPunk's base system",
                     )
 
     def test_architecture_docs_state_the_parity_rule(self) -> None:
