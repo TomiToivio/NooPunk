@@ -230,8 +230,29 @@ Working mapping:
 | mesh | cyberspace / network layer / possible Noösphere interface |
 | psi | psionics / Noösphere interaction |
 | reputation network | social / network capital |
+| Firewall | **deliberately undecided** — see below |
+| TITANs | **deliberately undecided** — see below |
 
 These are **working mappings**, not final terminology.
+
+Two EP2 concepts are carried as **explicitly undecided** rather than mapped, because
+the alternate timeline's divergence point falls inside them. Recording them as open is
+the decision; a later contributor must not "helpfully" resolve them by inventing an
+organisation, a history, or a mechanic.
+
+**Firewall.** EP2's cross-faction conspiracy may **exist differently, emerge
+differently, or not yet exist**, depending on where NoöPunk's divergence lands. The
+setting does not currently state which. Nothing is established about its membership,
+reach, methods, or whether it has formed at all. (Note a wording trap: the phrase
+"Great Firewall" does appear in §33.27, where it refers to the Chinese state's internet
+controls — an unrelated use of the words, not this organisation.)
+
+**TITANs.** NoöPunk is **pre-Fall**: nothing comparable to the canonical Eclipse Phase
+Fall has occurred (§33.1), and the setting must **not** assume that it has. NoöPunk's
+rogue-AGI history is real and specific — the localized "AGI holocausts" of the NHI
+Crisis, recorded in §33.28 and §33.28b — but whether it is a *TITAN* trajectory, a
+different one, or no trajectory at all is **not decided**. These are separate questions
+and the answer to the second does not follow from the first.
 
 NoöPunk may ultimately replace EP2's character architecture substantially. The conceptual distinction between identity and embodiment is useful enough to retain during the prototype.
 
@@ -987,6 +1008,13 @@ opportunistic, locally focused, disengaged, or internally inconsistent.
 
 The NHI Crisis produces **ideological fragmentation, not ideological uniformity**.
 
+NoöPunk draws this specifically from **Alexander Wendt's** work on the politics of UFO
+disclosure: there is no single shared human reaction to contact, and the social response
+is a problem of political theory rather than a single public "reveal". Wendt's *Quantum
+Mind and Social Science* is also one of the setting's consciousness-theory inspirations
+(§34.5, §33.17). His work is an inspiration for this **fictional** worldbuilding; the
+setting does not present his arguments as established science.
+
 ### 33.3 Butlerian Jihad and bioconservative reaction
 
 A major reactionary current is provisionally called the **Butlerian Jihad**.
@@ -1063,6 +1091,14 @@ and centralized planetary government.
 
 The UN is therefore both an **emerging planetary authority** and a major arena of struggle
 over what Earth should become.
+
+Running beneath the institutional question is a **political-economic** one. The core
+contested axis of the NHI Crisis era is **neofeudal cybercapitalism versus the Multitude**:
+concentrated platform, corporate and habitat power that converts crisis into new forms of
+private sovereignty, against commons-based, cooperative and autonomist formations that
+organize from below. This is a live struggle, not a settled outcome, and it is one of the
+setting's central themes — the same axis is stated in
+`docs/PRE_FALL_ALTERNATE_TIMELINE.md` and `data/paradigm_shifts.yaml`.
 
 ### 33.6 Psionics, QIP, awakening and the Noösphere
 
