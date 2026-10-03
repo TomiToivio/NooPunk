@@ -69,14 +69,13 @@ def layer_text() -> str:
     return " ".join(flat(d) for d in LAYER_DOCS)
 
 
-def section(number: int) -> str:
-    """The body of `## <number>. ...`, up to the next `## `."""
+def section_by_heading(heading: str) -> str:
+    """Return a markdown subsection by stable heading text."""
     body = read(RULEBOOK)
-    match = re.search(rf"(?m)^## {number}\.\s", body)
-    assert match, f"RULEBOOK section {number} not found"
-    rest = body[match.end():]
-    nxt = re.search(r"(?m)^## \d+\.\s", rest)
-    return rest[: nxt.start()] if nxt else rest
+    pattern = rf"(?ms)^###\s+[^\n]*{re.escape(heading)}[^\n]*\n(.*?)(?=^###\s+|^##\s+|\Z)"
+    match = re.search(pattern, body, re.I)
+    assert match, f"RULEBOOK subsection {heading!r} not found"
+    return match.group(1)
 
 
 class FourLayersAreDefined(unittest.TestCase):
@@ -195,21 +194,22 @@ class PsychicAndSocialStaySeparate(unittest.TestCase):
 
 
 def coupling_entries() -> list[str]:
-    """The bolded coupling labels in §34, e.g. "Physical <-> Psychic".
-
-    Extracted structurally rather than by substring: a document-wide search for
-    "psychic ... psychic" still matches after a row is deleted, because §34.1 also
-    discusses the psychic/social relation. Reading the list items is what makes a
-    deleted or renamed row detectable.
-    """
-    body = section(34)
-    entries = re.findall(r"(?m)^-\s+\*\*(.+?)\*\*\s*(?:—|--|-)", body)
-    return [" ".join(e.split()) for e in entries]
+    """Extract coupling labels from the §34.7 markdown table."""
+    body = section_by_heading("Structural coupling between the layers")
+    entries: list[str] = []
+    for line in body.splitlines():
+        line = line.strip()
+        if not line.startswith("|") or "Interface" in line or "---" in line:
+            continue
+        cells = [cell.strip() for cell in line.strip("|").split("|")]
+        if cells and cells[0]:
+            entries.append(" ".join(cells[0].split()))
+    return entries
 
 
 class CouplingTests(unittest.TestCase):
     def test_the_couplings_section_exists(self) -> None:
-        body = section(34)
+        body = section_by_heading("Structural coupling between the layers")
         self.assertIn("coupl", body.lower())
 
     def test_the_coupling_list_has_the_expected_rows(self) -> None:
@@ -217,7 +217,7 @@ class CouplingTests(unittest.TestCase):
         entries = coupling_entries()
         self.assertGreaterEqual(
             len(entries), 7,
-            f"§34 lists only {len(entries)} couplings; the issue enumerates seven: {entries}",
+            f"couplings section lists only {len(entries)} couplings; the issue enumerates seven: {entries}",
         )
 
     def test_every_layer_pair_is_enumerated(self) -> None:
@@ -227,7 +227,7 @@ class CouplingTests(unittest.TestCase):
             with self.subTest(pair=f"{a}<->{b}"):
                 self.assertIn(
                     f"{a.lower()} ↔ {b.lower()}", entries,
-                    f"the {a} <-> {b} coupling row is not present; §34 lists: {entries}",
+                    f"the {a} <-> {b} coupling row is not present; couplings section lists: {entries}",
                 )
 
     def test_no_linguistic_layer_replaces_a_psychic_coupling(self) -> None:
@@ -237,11 +237,11 @@ class CouplingTests(unittest.TestCase):
 
     def test_the_all_four_case_is_present(self) -> None:
         """The issue lists an all-four coupling, not only pairwise ones."""
-        body = " ".join(section(34).split()).lower()
+        body = " ".join(section_by_heading("Structural coupling between the layers").split()).lower()
         self.assertRegex(body, r"all four", "the all-four coupling is missing")
 
     def test_the_interface_rationale_is_recorded(self) -> None:
-        body = " ".join(section(34).split()).lower()
+        body = " ".join(section_by_heading("Structural coupling between the layers").split()).lower()
         self.assertRegex(
             body,
             r"interfaces?|at their interface",
@@ -250,7 +250,7 @@ class CouplingTests(unittest.TestCase):
 
     def test_the_couplings_define_no_mechanics(self) -> None:
         """This is ontology; §16 keeps psi mechanics deferred."""
-        body = section(34).lower()
+        body = section_by_heading("Structural coupling between the layers").lower()
         for forbidden in ("dice", "modifier", "point cost", "roll "):
             with self.subTest(forbidden=forbidden):
                 self.assertNotIn(forbidden, body)
@@ -264,18 +264,18 @@ class PsychicMetricTests(unittest.TestCase):
         §16.2 independently says PSI is non-local. The claim under test is the one in the
         couplings section, so assert against that section.
         """
-        body = " ".join(section(34).split()).lower()
+        body = " ".join(section_by_heading("Structural coupling between the layers").split()).lower()
         self.assertRegex(
             body,
             r"must not use physical distance|not use physical distance"
             r"|rather than kilometres|rather than kilometers",
-            "§34.2 does not state that the Psychic layer is non-spatial",
+            "couplings section does not state that the Psychic layer is non-spatial",
         )
         # and the inverted form must be absent
         self.assertNotRegex(
             body,
             r"psychic\*\*? layer uses physical distance|uses physical distance as its fundamental",
-            "§34.2 gives the Psychic layer a spatial metric",
+            "couplings section gives the Psychic layer a spatial metric",
         )
 
 
