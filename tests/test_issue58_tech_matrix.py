@@ -18,8 +18,10 @@ What is protected:
   would collapse it;
 * **every region carries a gains/vulnerabilities pair, with at least one
   vulnerability** — that is the issue's anti-ranking rule;
-* the two rogue-AGI catastrophes exist, in order, and the second carries an explicit
+* the rogue-AGI catastrophes exist, in order, and the second carries an explicit
   supersession of the single-event `TIMELINE.md` wording rather than a silent rewrite;
+  issue #89 extends the structure from two to four, recorded as a further explicit
+  supersession;
 * the open metaphysical readings the issue says to keep ambiguous are recorded as
   unresolved and are not decided;
 * dates stay at 20XX (AGENTS.md §6);
@@ -173,13 +175,15 @@ class NoRankingTests(unittest.TestCase):
 
 
 class CatastropheTests(unittest.TestCase):
-    def test_two_catastrophes_in_order(self) -> None:
+    def test_catastrophes_in_order(self) -> None:
+        """The structure is four: #58 specified two, and issue #89 extended it."""
         cats = load()["catastrophes"]
-        self.assertEqual(len(cats), 2)
-        self.assertEqual([c["ordinal"] for c in cats], ["first", "second"])
+        self.assertEqual(len(cats), 4)
+        self.assertEqual([c["ordinal"] for c in cats],
+                         ["first", "second", "third", "fourth"])
 
-    def test_severity_and_resolution_differ(self) -> None:
-        first, second = load()["catastrophes"]
+    def test_the_original_two_retain_their_severity_and_resolution(self) -> None:
+        first, second = load()["catastrophes"][:2]
         self.assertNotEqual(first["severity"], second["severity"])
         self.assertNotEqual(first["resolution"], second["resolution"])
 
@@ -188,6 +192,20 @@ class CatastropheTests(unittest.TestCase):
         second = load()["catastrophes"][1]
         self.assertIsInstance(second.get("supersedes"), dict)
         self.assertEqual(second["supersedes"]["target_file"], "TIMELINE.md")
+
+    def test_the_fourth_records_the_issue_89_extension(self) -> None:
+        """#89 extended the two-event structure to four; the extension must be recorded."""
+        fourth = load()["catastrophes"][3]
+        self.assertIsInstance(fourth.get("supersedes"), dict)
+        self.assertIn("#89", fourth["supersedes"]["reason"])
+
+    def test_the_third_and_fourth_do_not_invent_severity(self) -> None:
+        """#89 states no severity or resolution for the third and fourth."""
+        third, fourth = load()["catastrophes"][2:4]
+        for cat in (third, fourth):
+            with self.subTest(cat=cat["id"]):
+                self.assertEqual(cat["severity"], "unassigned")
+                self.assertEqual(cat["resolution"], "unassigned")
 
     def test_the_timeline_records_the_two_event_structure(self) -> None:
         text = read(TIMELINE)
