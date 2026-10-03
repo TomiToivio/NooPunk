@@ -709,3 +709,23 @@ NoöPunk should remain playable throughout its transformation.
 The destination is **not a separate setting wearing borrowed EP mechanics**.
 
 The destination is a playable **alternate pre-Fall Eclipse Phase timeline** in which NoöPunk's paradigm shifts reshape an intact Earth and wider transhuman civilization. Rules may still mutate through use, but the Eclipse Phase continuity and technology baseline are now intentional parts of the premise.
+
+## 31. Persistent EP2 test-session subset (#60)
+
+**Status: native orchestration around the existing EP2 homebrew test kernel.**
+
+A GM supplies each actor's legal test IDs and trusted skill/aptitude, modifier and
+pool choice. The player or agent chooses an offered ID; it cannot supply a roll,
+rating or numeric outcome. Python rolls 00–99 and invokes the existing EP2 test
+adapter. The pool update, random-generator state and result are committed together
+to SQLite before agents observe the result. Rejected actions spend no resources
+and create no memory. Saved sessions resume their random sequence, character
+sheets, morph labels, remaining pools and ordered shared event log.
+
+This is a test-resolution subset: social and mesh skill checks may use it, but
+it does not yet grant access, inflict damage or implement full hacking/combat.
+The event log is shared mechanical memory; private cognition and retrieval remain
+Concordia integration work. A failed observer delivery may be replayed from the log.
+No new setting facts, NPC personalities or mechanical subsystems are defined here.
+
+Implementation: `src/concordia_runtime/ep2_session.py`.
