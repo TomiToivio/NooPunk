@@ -42,42 +42,11 @@ def _admin(engine: GameEngine, raw: str) -> str:
     return "GM commands: gm state | gm events | gm actors"
 
 
-def _build_engine(args: argparse.Namespace) -> tuple[GameEngine, object | None]:
-    connection = connect(args.db) if args.db else connect(":memory:")
-    llm = build_ollama_controller_from_env() if args.ollama else None
-
-    controllers = {
-        WANDERER_ID: PatrolController(
-            route={
-                FIXTURE_PREFIX + "hub": "east",
-                FIXTURE_PREFIX + "side": "west",
-            }
-        )
-    }
-    if llm is not None:
-        controllers[LLM_CONTACT_ID] = llm
-        controllers[LLM_PLAYER_ID] = llm
-
-    if args.load:
-        engine = load_game(
-            args.load,
-            connection=connection,
-            controllers=controllers,
-            gm_controller=llm if args.llm_gm else None,
-        )
-    else:
-        engine = GameEngine(
-            world=fixture_world(),
-            connection=connection,
-            controllers=controllers,
-            gm_controller=llm if args.llm_gm else None,
-        )
-    return engine, llm
-
+def _build_engine(args: argparse.Namespace) -> tuple[GameEngine, object | None, str]:\n    connection = connect(args.db) if args.db else connect(":memory:")\n    llm = build_ollama_controller_from_env() if args.ollama else None\n\n    if args.scenario == "fixture":\n        human_id = FIXTURE_HUMAN_ID\n        world = fixture_world()\n        controllers = {\n            WANDERER_ID: PatrolController(\n                route={\n                    FIXTURE_PREFIX + "hub": "east",\n                    FIXTURE_PREFIX + "side": "west",\n                }\n            )\n        }\n        if llm is not None:\n            controllers[LLM_CONTACT_ID] = llm\n            controllers[LLM_PLAYER_ID] = llm\n    else:\n        human_id = PREFALL_HUMAN_ID\n        world = prefall_world()\n        controllers = {}\n        if llm is not None:\n            controllers[STARGATE_ANALYST_ID] = llm\n            controllers[MARS_ARCHIVE_ID] = llm\n\n    if args.load:\n        engine = load_game(\n            args.load,\n            connection=connection,\n            controllers=controllers,\n            gm_controller=llm if args.llm_gm else None,\n        )\n    else:\n        engine = GameEngine(\n            world=world,\n            connection=connection,\n            controllers=controllers,\n            gm_controller=llm if args.llm_gm else None,\n        )\n    return engine, llm, human_id
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="NoöPunk local text RPG prototype")
-    parser.add_argument("--db", default="", help="SQLite event-log path (default: in-memory)")
+    parser.add_argument(\n        "--scenario",\n        choices=("prefall", "fixture"),\n        default="prefall",\n        help="Scenario to run (default: canonical pre-Fall issue #60 slice)",\n    )\n    parser.add_argument("--db", default="", help="SQLite event-log path (default: in-memory)")
     parser.add_argument("--load", default="", help="Load JSON save")
     parser.add_argument("--save", default="noopunk-save.json", help="Default JSON save path")
     parser.add_argument("--ollama", action="store_true", help="Enable optional Ollama/Concordia actors")
@@ -87,7 +56,7 @@ def main() -> int:
     if args.llm_gm and not args.ollama:
         parser.error("--llm-gm requires --ollama")
 
-    engine, llm = _build_engine(args)
+    engine, llm, human_id = _build_engine(args)
 
     print("NoöPunk local text prototype")
     print("Fixture scenario only; no bundled content is canon.")
@@ -96,7 +65,7 @@ def main() -> int:
     if not args.ollama:
         print("LLM disabled. Classical scripted/dumb NPCs remain active.")
     print()
-    print(engine.describe_room(HUMAN_ID))
+    print(engine.describe_room(human_id))
 
     while True:
         try:
@@ -130,11 +99,11 @@ def main() -> int:
                 gm_controller=engine.gm_controller,
             )
             print(f"Loaded: {path}")
-            print(engine.describe_room(HUMAN_ID))
+            print(engine.describe_room(human_id))
             continue
 
         try:
-            action = parse_command(HUMAN_ID, raw, source="system")
+            action = parse_command(human_id, raw, source="system")
             result = engine.execute(action)
         except ValueError as exc:
             if llm is None:
@@ -142,9 +111,9 @@ def main() -> int:
                 continue
             try:
                 action = llm.interpret_intent(
-                    actor_id=HUMAN_ID,
+                    actor_id=human_id,
                     intent=raw,
-                    context=engine.context_for(HUMAN_ID),
+                    context=engine.context_for(human_id),
                 )
                 print(f"[intent → {action.raw}]")
                 result = engine.execute(action)
