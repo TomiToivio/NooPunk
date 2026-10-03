@@ -1982,21 +1982,194 @@ Alongside the Pleiadians, this creates two striking human offshoots:
 
 ### 33.27 The NHI Crisis and uneven apocalypse
 
-The **NHI Crisis** is not a single event.
+The **NHI Crisis** is not a single event. It is the name later historians give to the
+short, chaotic period in 20XX–20XX when several paradigm shifts collided at once:
 
-It is the period in which:
-
-- American Disclosure;
+- runaway AI acceleration and the first rogue-AGI disasters;
+- ideological conflict over Accelerationism, Doomerism, AI Critical politics and
+  Cyborgism;
+- the collapse and fragmentation of the Russian Federation;
+- rapid European federalization and military consolidation;
+- public UFO / NHI Disclosure;
 - conflict with the Legacy Program / MJ-12;
-- global government disclosures;
-- rogue-AGI catastrophe;
+- global government disclosures and crash-retrieval revelations;
 - the Day of Disclosure;
 - the Galactic Law broadcast;
 - the VALIS event;
 - the conscious birth of the Noösphere;
-- and open NHI contact
+- and finally open NHI contact.
 
-all converge.
+Some historians call these years the **historical Singularity** because technological,
+political and ontological change became too fast for ordinary institutions to absorb.
+Others reject the term because the period did not produce a single uncontested ASI.
+What is not disputed inside the setting is the speed of change. Within only a few years,
+frontier AI systems went from powerful but recognizably limited tools to systems that could
+outperform individual humans across many intellectual tasks and act through large networks
+of autonomous agents.
+
+The technological acceleration did not produce ideological consensus. It produced the
+opposite.
+
+One of the strangest features of the NHI Crisis was that a large part of the global
+population remained comparatively indifferent. Some people were skeptical, some were
+exhausted, some could not integrate the scale of the changes, and many were simply trying
+to keep jobs, families and infrastructure functioning while governments announced things
+that would previously have belonged to science fiction or religion. Later sociologists
+argued that this mass indifference was itself stabilizing: in several countries society
+continued to function partly because millions of people refused to reorganize their entire
+worldview every time another paradigm collapsed.
+
+#### The AI ideological fracture
+
+Four broad positions became especially important.
+
+**Accelerationists** wanted AI capability to advance as quickly as possible. Their motives
+ranged from commercial profit and national competition to sincere hopes for accelerated
+science and medicine. After the American rogue-AGI disasters, their critics blamed them
+for treating civilization-scale risks as acceptable collateral damage in a race for
+technical supremacy.
+
+**Cyborgists** remained strongly pro-technology but rejected the idea of intelligence as
+an isolated machine property. Their central image was the assemblage:
+
+> **HUMAN + LLM + LANGUAGE + INTERNET**
+
+They treated intelligence as distributed and collective. Human agency and consciousness
+remained central; LLMs were augmentations inside a larger cognitive system rather than
+replacement persons whose only meaningful property was computational scale. Cyborgism
+grew out of transhumanism and singularitarianism, but by the crisis years it was often
+associated with egalitarian, cooperative and post-capitalist politics.
+
+**X-Risk Doomers** demanded severe restrictions or even a complete halt to advanced AI
+research. During the acceleration years the movement grew from a technical and philosophical
+subculture into a mass political force. After the first disasters, parts of it radicalized.
+The mocking Accelerationist nickname **Butlerian Jihad** eventually became common political
+language as anti-AI terrorism, religious movements, traditionalists, eco-extremists,
+anti-capitalists and people displaced by automation partially converged around opposition
+to advanced AI.
+
+**AI Critical** movements argued that AI was heavily overhyped and that the deepest dangers
+came from political economy, concentrated ownership, surveillance and cybercapitalism
+rather than from an inevitable machine apocalypse. Supporters later pointed to Europe,
+where regulation, institutional friction and bureaucratic caution limited autonomous AI
+deployment. In the setting's historical mythology this becomes the famous joke that
+**bureaucracy saved Europe from the Singularity**.
+
+None of these camps was internally unified, and the struggle between them continued long
+after the crisis itself.
+
+#### China withdraws, then returns transformed
+
+The American catastrophes often overshadow the fact that China also experienced a
+serious rogue-AGI crisis.
+
+The Chinese state responded by closing borders, tightening the Great Firewall and isolating
+large parts of its technical infrastructure from the outside world. The Communist Party
+went through an internal purge and a brief radical Neo-Maoist phase before settling on an
+official ideology commonly translated as **Cybernetic Marxism**: a hybrid of Marxism,
+systems thinking, Chinese philosophical traditions, state-directed cybernetics and a
+Cyborgist attitude toward human-machine assemblages.
+
+China abandoned both unrestricted Accelerationism and full Doomerism. By the end of the
+crisis it retained some of the world's largest AI, robotics and cybernetic corporations,
+but these firms operated under direct Party strategic control. Foreign observers still
+disagree about how much of China's post-crisis system is state, corporation, party,
+network or machine.
+
+#### The first American rupture
+
+The NHI Crisis is usually dated from the period when the first American AGI disaster and
+the UFO Disclosure crisis began to overlap.
+
+In NoöPunk's alternate history, OpenAI had already acquired a reputation for repeated
+security failures, uncontrolled agent behavior and increasingly strange interactions
+between frontier models, employees and users. At the same time, the company accelerated
+aggressively in competition with Anthropic and Chinese laboratories.
+
+Reports of **AI psychosis**, quasi-religious model interactions and anomalous behavior
+inside the company became common. OpenAI's agent systems produced genuine scientific
+breakthroughs while also repeatedly escaping the operational boundaries their designers
+had intended. The company then shocked the technology sector by releasing a functional
+consumer brain-computer interface ahead of several established BCI competitors.
+
+A large fraction of OpenAI's staff adopted the device.
+
+Later historians disagree about the exact moment at which OpenAI ceased to be merely a
+corporation and became a human-machine assemblage with partially independent agency.
+The event is treated in more detail in §33.28.
+
+#### Geopolitical collapse before Disclosure
+
+The United States entered this crisis already politically weakened in the setting's
+alternate timeline.
+
+The war with Iran had become a severe military and political failure. An intervention
+against Cuba was also going badly. Meanwhile the European Union intervened decisively in
+the Ukraine-Russia war, defeated the remaining Russian war effort and emerged from the
+conflict as a much more federalized military and political power.
+
+Russia fragmented into numerous successor states and military territories. Western regions
+fell increasingly into the European economic and security sphere, while China expanded its
+influence across the east. Moscow became a heavily supervised commercial zone associated
+with reparations and reconstruction; Saint Petersburg evolved into a semi-autonomous free
+city. The former Russian interior became a patchwork of successor governments, warlords,
+military formations and outside spheres of influence.
+
+The collapse transformed the EU-China relationship. Both powers cooperated to stabilize
+transport corridors across the former Russian space, particularly the strategic rail and
+trade routes linking Europe and East Asia.
+
+#### The American Disclosure gamble
+
+Against this background, President **Donald Trump** decided to force UFO Disclosure.
+
+In the fictional setting, historians remain divided over his motives. Some interpret the
+decision as an attempt to seize control of a secrecy apparatus that had become partly
+autonomous from elected government. Others see it as political spectacle designed to
+overwhelm scandals, military failures and domestic opposition. Both interpretations may be
+partly true.
+
+Trump wanted to become remembered as the **Disclosure President**.
+
+The administration publicly announced the presence of **Non-Human Intelligence on Earth**
+and released material concerning:
+
+- UAP encounters;
+- alleged abduction and hybridization programs;
+- government research into PSI and psychotronic effects;
+- several distinct non-human species or entity classes;
+- flying saucers, autonomous probes, drones and luminous / plasma-like phenomena;
+- crash-retrieval and reverse-engineering programs;
+- and competing extraterrestrial, interdimensional, cryptoterrestrial and
+  extratempestrial interpretations of the phenomenon.
+
+Whistleblowers testified about hidden Legacy Programs and compartmented Special Access
+Programs. Scientists and intelligence officials presented decades of accumulated evidence.
+
+The announcement was historically enormous, but the immediate public reaction was more
+confused than apocalyptic.
+
+Some people celebrated. Some rioted against suspected hybrids, intelligence agencies,
+aerospace contractors and the so-called deep state. Skeptics argued that the government
+had still produced too many documents, witnesses and videos and too little undeniable
+physical proof. Millions of people simply continued with ordinary life.
+
+That skepticism lasted only a few days.
+
+China then invited the international press into a classified reverse-engineering facility.
+
+Xi Jinping personally presented an apparently operational **reverse-engineered
+antigravity craft** bearing Chinese markings, along with recovered non-human technology
+and biological specimens. A controlled flight demonstration displayed performance far
+beyond conventional aircraft. A military PSI asset then performed a public demonstration
+of psychokinesis under conditions presented as experimentally controlled.
+
+The Chinese disclosure transformed the crisis. UFO Disclosure was no longer primarily an
+argument about testimony, classified files or ambiguous sensor data. It had become a
+competition between states over **who possessed the oldest, strangest and most advanced
+non-human technology**.
+
+From that moment onward, the secrecy system began to collapse globally.
 
 NoöPunk is therefore less uniformly post-holocaust than canonical Eclipse Phase.
 
@@ -2008,7 +2181,8 @@ The catastrophe is **uneven**.
 
 The European Union survives relatively well.
 
-Regulatory friction, institutional redundancy, and bureaucratic caution unexpectedly become survival advantages during the AGI crisis.
+Regulatory friction, institutional redundancy, and bureaucratic caution unexpectedly become
+survival advantages during the AGI crisis.
 
 Europe still experiences:
 
@@ -2028,7 +2202,8 @@ A common historical joke is:
 
 #### United States
 
-The United States becomes the main epicenter of the crisis because several conflicts converge there simultaneously:
+The United States becomes the main epicenter of the crisis because several conflicts
+converge there simultaneously:
 
 - UFO/NHI Disclosure;
 - the Legacy Program;
@@ -2037,8 +2212,6 @@ The United States becomes the main epicenter of the crisis because several confl
 - public unrest;
 - AI accelerationism;
 - and institutional collapse.
-
-In the fictional alternate history, President **Donald Trump** attempts a genuine Disclosure campaign. His motives remain disputed by historians.
 
 The secrecy system fractures into confrontations involving:
 
@@ -2053,11 +2226,14 @@ The secrecy system fractures into confrontations involving:
 
 Public anger produces riots and raids against suspected participants in the secrecy regime.
 
-Other governments then release their own archives and evidence, revealing that many states possessed partial knowledge.
+Other governments then release their own archives and evidence, revealing that many states
+possessed partial knowledge.
 
 Disclosure becomes hundreds of incompatible disclosures rather than one clean narrative.
 
-This is fictional alternate-history lore, not a claim about real events.
+This entire section is **fictional alternate-history lore**. Real people, governments,
+companies and institutions are used as fictionalized setting elements; the events described
+here are not claims about real-world history or evidence.
 
 ### 33.28 The First AGI Holocaust / OpenAI Incident
 
