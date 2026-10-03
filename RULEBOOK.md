@@ -1335,6 +1335,15 @@ Pleiadians are merely the most famous human branch.
 
 Their exact transplantation date, selection criteria, later Zookeeper intervention, and developmental history remain uncertain.
 
+**The "Nazi Zookeepers" reading is an in-setting false theory.** The idea that the Zookeepers are literally twentieth-century Nazis who filled the galaxy with blond humans is **not** the cosmology's truth. In-setting it survives only as:
+
+- an extremist human interpretation of Pleiadian contact;
+- propaganda created by a breakaway human faction;
+- a rogue eugenicist Zookeeper sub-project;
+- or a historical scandal involving one transplanted human lineage.
+
+It explains why some contact lore is obsessed with blond "Nordics" without making the actual cosmic order endorse twentieth-century racial mythology. NoöPunk can contain a bizarre eugenicist offshoot that embarrasses everybody else — but that offshoot is never the truth of the cosmology, and the existence of uniform "Nordic" aliens is a biased human sample, one particular Pleiadian lineage, or the result of selective contact rather than evidence that the Zookeepers preferred one human phenotype.
+
 ### 33.12 Greys, future humans, and temporal ecology
 
 A major Grey lineage consists of **future humans**.
@@ -1781,6 +1790,8 @@ Humanity is one unusually intense example of a lineage that externalized cogniti
 
 It is not the universal developmental template.
 
+A population humans would classify as "**Stone Age**" may already be a mature member of the galactic club — possessing stable telepathy, sophisticated collective memory, advanced metaphysics, low destructive internal conflict, deep ecological knowledge, or mature Noöspheric participation — and may be contacted and given access to mature galactic technology without ever reproducing the human sequence from metallurgy to spaceflight. Humans initially find this incomprehensible because they equate invention with ownership and technology with civilization.
+
 ### 33.23 Dyson swarms, Kardashev, SETI, and noisy young civilizations
 
 Dyson swarms exist.
@@ -1817,7 +1828,14 @@ Disclosure reveals that this was false.
 
 The astronomical sky was never necessarily empty. Humanity lacked the ontology needed to understand what it was seeing.
 
-Some historical stellar anomalies later prove technological, while many remain natural or unresolved. Boyajian-like stars and other candidate technosignatures become part of the retrospective archaeology of pre-Disclosure SETI.
+Some historical stellar anomalies later prove technological, while many remain natural or unresolved. Candidate technosignatures become part of the retrospective archaeology of pre-Disclosure SETI:
+
+- **Boyajian's / Tabby's Star (KIC 8462852)** and its famous irregular dimming;
+- searches for stars with similar low-frequency dipping behaviour (the so-called **"slow dippers"**);
+- the reported spatial clustering of some slow-dipper candidates, noted as making them attractive SETI targets;
+- and unusual infrared excesses investigated as possible partial **Dyson-swarm** signatures.
+
+Most astronomers reasonably prefer natural explanations, and many individual anomalies do have natural causes. The important in-setting point is that **a subset of the anomalous population eventually proves technological.**
 
 ### 33.24 Multiple UFO ontologies: Vallée, cryptoterrestrials, and extratempestrials
 
@@ -2107,6 +2125,16 @@ The Zookeepers continue to face at least one recurring machine/post-machine thre
 The post-quarantine Zoo is therefore no longer a sealed cage.
 
 It becomes something closer to a **protected border**.
+
+### 33.29a Eclipse Phase alien archetypes: the Factors and the ETI
+
+NoöPunk may adapt useful alien archetypes from Eclipse Phase without importing its galactic hierarchy wholesale. Two are especially useful.
+
+**Ameboid / slime-mold-like starfaring species (a "Factors" analogue).** A patient, non-humanoid biological intelligence that is living proof that biological minds need not resemble vertebrates, primates, or even conventional animals. Such a species can be traders, diplomats, information brokers, or long-horizon ecological strategists. It is a *biological* counterweight to the assumption that the galaxy's serious actors must all be Noetic, machine, or human-shaped.
+
+**The machine / post-machine lineage (an "ETI" analogue).** Eclipse Phase's ETI and its Bracewell-probe ecology supply the model for the recurring machine threat above — but in NoöPunk it does **not** dominate the galaxy. It is one of the Zookeepers' worst recurring problems rather than the setting's supreme power.
+
+Together these archetypes keep the galaxy populated by intelligences recognizably *not us* without making any one of them the hidden master of everything.
 
 ### 33.30 Solar-system deep history
 
