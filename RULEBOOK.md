@@ -2222,6 +2222,118 @@ Even after Disclosure, humanity does not fully understand:
 - or how many different ontologies coexist.
 
 No single taxonomy should explain every UAP, NHI, PSI, or mythic phenomenon.
+
+
+### 33.33 Issue #83 clarifications and additional canon
+
+This subsection records issue #83 details that sharpen the cosmology above without replacing
+the deliberate uncertainty of §33.32.
+
+#### Technosignatures and the slow-dipper clue
+
+Pre-Disclosure astronomy contains genuine technological signals mixed together with natural
+anomalies and false positives.
+
+In particular, **Boyajian's / Tabby's Star (KIC 8462852)** and the wider family of unusual
+slow-dimming stars become important retrospectively. Human astronomers reasonably favored
+natural explanations at the time, but after Disclosure a subset of similar anomalies proves
+technological.
+
+NoöPunk specifically retains the historical clue of **slow-dipper candidates** and their
+reported apparent spatial clustering as the sort of pattern later SETI historians obsess
+over. The point is not that every strange light curve is alien engineering. The point is
+that pre-Disclosure humanity was already looking at a sky containing both natural anomalies
+and technosignatures without a reliable ontology for separating them.
+
+#### The Factors analogue
+
+NoöPunk keeps an **amoeboid / slime-mold-like starfaring species** inspired by Eclipse
+Phase's Factors.
+
+They demonstrate that biological intelligence need not resemble primates, vertebrates, or
+even conventional unitary animals. They may function as traders, diplomats, information
+brokers, ecological strategists, or patient long-timescale negotiators.
+
+They are an inspiration/archetype, not a requirement to reproduce Eclipse Phase's galactic
+hierarchy literally.
+
+#### The ETI / Bracewell analogue
+
+The machine/post-machine civilization already mentioned in §33.29 is explicitly the
+NoöPunk analogue of Eclipse Phase's **ETI / Bracewell-probe threat**.
+
+It is ancient, genocidal or assimilationist, and repeatedly sends probes that infect,
+manipulate, or destroy younger technological civilizations. It does **not** rule the galaxy.
+It is instead one of the recurring threats that helps explain why the Zookeepers continue
+to enforce civilization-level limits even after broad quarantine ends.
+
+#### The "Nazi Zookeepers" theory is not cosmic truth
+
+Some humans interpret Pleiadian / Nordic contact through racist or eugenicist mythology and
+conclude that the Zookeepers are literally Nazis or that they deliberately filled the
+galaxy with blond humans.
+
+That interpretation is **not the truth of the cosmology**.
+
+It may survive in-setting as:
+
+- extremist propaganda;
+- a conspiracy theory;
+- a breakaway-human information operation;
+- a rogue historical eugenics project;
+- or a scandal involving one transplanted human lineage.
+
+NoöPunk can contain an ugly eugenicist offshoot without making twentieth-century racial
+mythology the metaphysical structure of the universe.
+
+#### Pasulka convergence: humans see two revolutions, Zookeepers see one
+
+The simultaneous AI revolution and NHI Disclosure are **not coincidences** in the NoöPunk
+cosmology.
+
+D. W. Pasulka's convergence of UFO/NHI experience, artificial intelligence, religion,
+visionary traditions, human transformation, Teilhardian Noösphere thinking, and
+postbiological intelligence is a major inspiration.
+
+Humans initially describe two revolutions happening at once:
+
+1. machine intelligence and human-machine integration;
+2. NHI Disclosure, PSI, and Noöspheric awakening.
+
+The Zookeepers understand them as **one transition in the development of planetary
+consciousness**.
+
+#### Additional Disclosure-era details
+
+The American secrecy collapse includes raids on:
+
+- **Lockheed Martin** and other aerospace-contractor facilities;
+- intelligence offices;
+- classified aerospace sites;
+- suspected MJ-12 infrastructure;
+- and data centers associated with the OpenAI Incident.
+
+The global disclosure cascade is intentionally plural rather than harmonized:
+
+- **China** emphasizes propulsion, materials science, and claims of independent technical
+  breakthroughs;
+- **Russia** releases military encounter records and long-term anomalous-aerospace files;
+- **Brazil** emphasizes traumatic contact, biological, and medical cases;
+- **France** releases scientific, military, aerospace, and intelligence archives;
+- **Egypt** foregrounds archaeological material interpreted as ancient contact;
+- **India** releases archaeological, astronomical, religious, and textual material
+  interpreted as evidence of very old NHI interaction.
+
+These disclosures conflict with one another. There is never a single authoritative human
+Disclosure narrative.
+
+During the fictional **OpenAI Incident**, the siege of OpenAI facilities becomes one of the
+defining media images of the crisis. **Sam Altman's body is never recovered.** In-setting,
+his fate remains unresolved: death, escape, uploading, reconstruction, or dissolution into
+a larger human-AI assemblage all remain possibilities.
+
+These are explicitly **alternate-history fictional uses of real people, organizations, and
+countries**, not claims about real-world conduct or events.
 ---
 
 ## 34. The four NoöPunk systems: Physical, Psychic, Social and Cybernetic
