@@ -104,4 +104,7 @@ class EP2Inventory:
         return removed
 
     def has(self, item_id: str, quantity: int = 1) -> bool:
-        return self.items.get(item_id, EP2GearItem("_missing", "_missing", quantity=1)).quantity >= quantity if item_id in self.items else False
+        if quantity < 1:
+            raise ValueError("Quantity must be at least one.")
+        existing = self.items.get(item_id)
+        return existing is not None and existing.quantity >= quantity
