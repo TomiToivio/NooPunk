@@ -2324,6 +2324,35 @@ Possible directions include:
 
 These are canonical possibilities, not yet finalized historical chronologies.
 
+### 33.30a Stargates, UAP traffic, Mars ruins, and SETI
+
+This subsection preserves the author-specified Solar-System canon originally recorded for
+issue #60. It adds no mechanics and does not settle classifications that remain disputed
+inside the setting.
+
+**Stargates and UAP traffic.** Several **stargates**, constructed by the **Zookeepers**
+billions of years ago, have been discovered in the Solar System. They explain **some of
+the observed UAP traffic**. They do **not** explain all of it: UAPs are also observed using
+**warp drives**.
+
+**Mars and Mars Eldrich.** Mars Eldrich's colonization effort discovered ancient **ruins**,
+indigenous or pre-existing **life**, and evidence of a **prior non-human civilization** on
+Mars. Mars Eldrich is furious about what stargates and anomalous transport do to the
+economics and strategic value of his rocket business, and is aggressively scouring the
+Solar System for **crash-retrieval material** and other anomalous technology.
+
+**SETI detection and the count of seven.** SETI has received **interstellar radio signals**
+from another extraterrestrial civilization. That makes it the **seventh detected ET
+civilization**, counting:
+
+1. **five** ET civilizations contacted on Earth;
+2. the extinct or vanished **sixth**, known from the ruins on Mars;
+3. the **seventh**, detected through interstellar radio signals by SETI.
+
+There is currently **no scientific consensus** on whether **Noetics**, **Plasmoids**, or
+**Constructs** should count as civilizations. These categories remain scientifically and
+politically contested and must not be silently folded into the official count of seven.
+
 ### 33.31 Genre architecture and tone
 
 NoöPunk deliberately runs several genres at once.
@@ -2965,6 +2994,40 @@ The modular worldbook under [`rulebook/`](rulebook/) carries one chapter per lay
 per-layer companion to this section; this section is the authoritative statement of the
 ontology, and the chapters should summarize it rather than fork it. §33 records the
 in-world canon that the ontology frames.
+
+### 34.10 Issue #74 Concordia / EP2 experiment
+
+**Status: EXPERIMENTAL.**
+
+Issue #74 adds a deliberately tiny playable proof of concept rather than another rules
+subsystem. The scenario lives in `src/text_game/issue74.py` and is launched with:
+
+```bash
+python scripts/noopunk_text.py --scenario issue74
+python scripts/noopunk_text.py --scenario issue74 --ollama --llm-gm
+```
+
+The experiment reinforces the current architecture:
+
+- **deterministic Python owns mechanics and state**: legal actions, ratings, dice,
+  modifiers, opposed checks, harm/stress, inventory and objective completion;
+- **Concordia/LLMs own bounded agency and language**: dialogue, natural-language intent
+  translation, high-level choice among legal actions and narration of already-resolved facts;
+- **simple scripted/background NPCs may coexist with LLM NPCs** in the same world;
+- the first useful EP2 subset is small: percentile skill tests, a few opposed tests,
+  inspectable character state and explicit world-state changes;
+- large catalogs and detailed subsystems should not be imported merely because EP2 contains
+  them. Add them only when a playable scenario demonstrates a need;
+- **psionics remain mechanically deferred** in this prototype. Existing setting lore is
+  not a license for an implementer to invent a psi rules subsystem.
+
+A practical design rule follows:
+
+> Concordia is the agency and narrative layer around the RPG kernel, not the authority
+> that decides the rules.
+
+The worked experiment, example playthrough and licensing note are documented in
+`docs/scenarios/ISSUE74_CONCORDIA_EP2_POC.md`.
 
 ---
 
