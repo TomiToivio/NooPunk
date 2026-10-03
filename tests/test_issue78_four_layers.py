@@ -73,7 +73,7 @@ def section_by_heading(heading: str) -> str:
     """Return a markdown subsection by stable heading text."""
     body = read(RULEBOOK)
     pattern = rf"(?ms)^###\s+[^\n]*{re.escape(heading)}[^\n]*\n(.*?)(?=^###\s+|^##\s+|\Z)"
-    match = re.search(pattern, body, re.I)
+    match = re.search(pattern, body, re.IGNORECASE)
     assert match, f"RULEBOOK subsection {heading!r} not found"
     return match.group(1)
 
@@ -144,12 +144,48 @@ class NoLinguisticLayerTests(unittest.TestCase):
     """The issue is emphatic: language belongs to Social, not to its own layer."""
 
     def test_no_linguistic_layer_is_defined(self) -> None:
+        """Assert the ASSERTION of a linguistic layer, not the words in its denial.
+
+        The rulebook states the rule three times, each time *negating* it -- a table
+        row "no separate Linguistic layer", the heading "No separate Linguistic
+        layer.", and the instruction "Do not create a separate Linguistic layer".
+        A bare ``assertNotRegex("separate linguistic")`` therefore failed precisely
+        because the document obeys it.
+
+        What must be absent is a claim that such a layer EXISTS. Each occurrence is
+        therefore judged on its OWN clause, not on a window around it: a negation in
+        a neighbouring sentence must not launder an assertion ("The Linguistic layer
+        is a fifth domain." is not made acceptable by "Do not create a separate
+        Linguistic layer." appearing two lines later -- which is exactly what a
+        90-character window did, as sabotage testing showed).
+        """
         text = flat(RULEBOOK)
-        self.assertNotRegex(
-            text,
-            r"linguistic layer|fifth layer|separate linguistic|languistic layer",
-            "a Linguistic layer appeared; language belongs to the Social layer",
-        )
+        for pattern in (
+            r"(?:a|the|its own|separate|fifth|parallel)\s+linguistic\s+layer",
+            r"fifth\s+layer",
+        ):
+            for match in re.finditer(pattern, text):
+                # Bound the clause on BOTH sides. Only looking backwards let a
+                # "not" from the previous paragraph launder an assertion in the next
+                # sentence, which is how the first version of this repair passed a
+                # mutation that plainly asserted a fifth layer (found by sabotage).
+                end = m_end = match.end()
+                for sep in (". ", "; ", "| ", ": ", "! ", "? "):
+                    nxt = text.find(sep, m_end)
+                    if nxt != -1:
+                        end = min(end, nxt + 1)
+                start = max(
+                    text.rfind(sep, 0, match.start())
+                    for sep in (". ", "; ", "| ", ": ", "! ", "? ")
+                ) + 1
+                clause = text[start:end]
+                self.assertTrue(
+                    re.search(r"\bno\b|\bnot\b|\bnever\b|\bdo not\b|"
+                              r"\brather than\b|\bisn't\b|\bmust not\b",
+                              clause),
+                    "a Linguistic layer is asserted as existing in its own clause: "
+                    f"...{clause.strip()}...",
+                )
 
     def test_language_is_placed_inside_social(self) -> None:
         text = flat(RULEBOOK)
@@ -258,24 +294,46 @@ class CouplingTests(unittest.TestCase):
 
 class PsychicMetricTests(unittest.TestCase):
     def test_the_psychic_layer_is_not_spatial(self) -> None:
-        """Scoped to §34.2.
+        """The ontology must not give the Psychic layer a spatial metric.
 
-        A document-wide check passes even when the §34.2 statement is inverted, because
-        §16.2 independently says PSI is non-local. The claim under test is the one in the
-        couplings section, so assert against that section.
+        The claim is made across two adjacent subsections: §34.7 "Coupling is not
+        collapse" states that cybernetic connectivity is not psychic entanglement,
+        and §34.8 states the Psychic layer should not use physical distance as its
+        fundamental metric. Checking only one of them misses the statement, so both
+        are read. The inverted form must be absent from both.
         """
-        body = " ".join(section_by_heading("Structural coupling between the layers").split()).lower()
+        coupling = " ".join(
+            section_by_heading("Structural coupling between the layers").split()
+        ).lower()
+        representations = " ".join(
+            section_by_heading("Candidate simulation representations").split()
+        ).lower()
+        # §34.8 carries the operative rule; §34.7 carries the coupling form. Require
+        # the operative rule itself, then require that the coupling subsection does
+        # not contradict it. Asserting a broad alternation across both let one
+        # surviving phrase satisfy the check after another was mutated (found by
+        # sabotage), so each is asserted where it belongs.
         self.assertRegex(
-            body,
-            r"must not use physical distance|not use physical distance"
-            r"|rather than kilometres|rather than kilometers",
-            "couplings section does not state that the Psychic layer is non-spatial",
+            representations,
+            r"psychic layer should \*{0,2}not\*{0,2} use physical distance"
+            r"|not use physical distance as its fundamental metric",
+            "§34.8 does not state that the Psychic layer is non-spatial",
         )
-        # and the inverted form must be absent
+        self.assertRegex(
+            representations,
+            r"rather than kilometres|rather than kilometers",
+            "§34.8 does not give the psychic metric a non-spatial basis",
+        )
+        self.assertRegex(
+            coupling,
+            r"not\*{0,2}\s+psychic entanglement|is \*{0,2}not\*{0,2} psychic entanglement",
+            "§34.7 does not state that connectivity is not psychic entanglement",
+        )
+        # and the inverted form must be absent from the section as a whole
         self.assertNotRegex(
-            body,
-            r"psychic\*\*? layer uses physical distance|uses physical distance as its fundamental",
-            "couplings section gives the Psychic layer a spatial metric",
+            coupling + " " + representations,
+            r"psychic\*{0,2}? layer uses physical distance|uses physical distance as its fundamental",
+            "the Psychic layer is given a spatial metric",
         )
 
 
