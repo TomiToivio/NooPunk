@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Run the local NoöPunk text/MUD prototype from issue #51.
+"""Run the local NoöPunk text RPG/Simulation.
 
-The bundled scenario is fixture-only and non-canonical. LLM use is optional:
-without --ollama the game remains fully playable with classical game logic.
+The default scenario is the small canonical pre-Fall issue #60 vertical slice.
+The earlier fixture scenario remains available with --scenario fixture for
+regression testing. LLM use is optional.
 """
 
 from __future__ import annotations
@@ -19,10 +20,16 @@ from text_game.actions import parse_command
 from text_game.actors import PatrolController, build_ollama_controller_from_env
 from text_game.engine import GameEngine
 from text_game.model import FIXTURE_PREFIX, fixture_world
+from text_game.prefall import (
+    HUMAN_ID as PREFALL_HUMAN_ID,
+    MARS_ARCHIVE_ID,
+    STARGATE_ANALYST_ID,
+    prefall_world,
+)
 from text_game.persistence import load_game, save_game
 
 
-HUMAN_ID = FIXTURE_PREFIX + "human"
+FIXTURE_HUMAN_ID = FIXTURE_PREFIX + "human"
 WANDERER_ID = FIXTURE_PREFIX + "wanderer"
 LLM_CONTACT_ID = FIXTURE_PREFIX + "llm-contact"
 LLM_PLAYER_ID = FIXTURE_PREFIX + "llm-player"
@@ -42,11 +49,58 @@ def _admin(engine: GameEngine, raw: str) -> str:
     return "GM commands: gm state | gm events | gm actors"
 
 
-def _build_engine(args: argparse.Namespace) -> tuple[GameEngine, object | None, str]:\n    connection = connect(args.db) if args.db else connect(":memory:")\n    llm = build_ollama_controller_from_env() if args.ollama else None\n\n    if args.scenario == "fixture":\n        human_id = FIXTURE_HUMAN_ID\n        world = fixture_world()\n        controllers = {\n            WANDERER_ID: PatrolController(\n                route={\n                    FIXTURE_PREFIX + "hub": "east",\n                    FIXTURE_PREFIX + "side": "west",\n                }\n            )\n        }\n        if llm is not None:\n            controllers[LLM_CONTACT_ID] = llm\n            controllers[LLM_PLAYER_ID] = llm\n    else:\n        human_id = PREFALL_HUMAN_ID\n        world = prefall_world()\n        controllers = {}\n        if llm is not None:\n            controllers[STARGATE_ANALYST_ID] = llm\n            controllers[MARS_ARCHIVE_ID] = llm\n\n    if args.load:\n        engine = load_game(\n            args.load,\n            connection=connection,\n            controllers=controllers,\n            gm_controller=llm if args.llm_gm else None,\n        )\n    else:\n        engine = GameEngine(\n            world=world,\n            connection=connection,\n            controllers=controllers,\n            gm_controller=llm if args.llm_gm else None,\n        )\n    return engine, llm, human_id
+def _build_engine(args: argparse.Namespace) -> tuple[GameEngine, object | None, str]:
+    connection = connect(args.db) if args.db else connect(":memory:")
+    llm = build_ollama_controller_from_env() if args.ollama else None
+
+    if args.scenario == "fixture":
+        human_id = FIXTURE_HUMAN_ID
+        world = fixture_world()
+        controllers = {
+            WANDERER_ID: PatrolController(
+                route={
+                    FIXTURE_PREFIX + "hub": "east",
+                    FIXTURE_PREFIX + "side": "west",
+                }
+            )
+        }
+        if llm is not None:
+            controllers[LLM_CONTACT_ID] = llm
+            controllers[LLM_PLAYER_ID] = llm
+    else:
+        human_id = PREFALL_HUMAN_ID
+        world = prefall_world()
+        controllers = {}
+        if llm is not None:
+            controllers[STARGATE_ANALYST_ID] = llm
+            controllers[MARS_ARCHIVE_ID] = llm
+
+    if args.load:
+        engine = load_game(
+            args.load,
+            connection=connection,
+            controllers=controllers,
+            gm_controller=llm if args.llm_gm else None,
+        )
+    else:
+        engine = GameEngine(
+            world=world,
+            connection=connection,
+            controllers=controllers,
+            gm_controller=llm if args.llm_gm else None,
+        )
+    return engine, llm, human_id
+
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="NoöPunk local text RPG prototype")
-    parser.add_argument(\n        "--scenario",\n        choices=("prefall", "fixture"),\n        default="prefall",\n        help="Scenario to run (default: canonical pre-Fall issue #60 slice)",\n    )\n    parser.add_argument("--db", default="", help="SQLite event-log path (default: in-memory)")
+    parser = argparse.ArgumentParser(description="NoöPunk local text RPG/Simulation")
+    parser.add_argument(
+        "--scenario",
+        choices=("prefall", "fixture"),
+        default="prefall",
+        help="Scenario to run (default: canonical pre-Fall issue #60 slice)",
+    )
+    parser.add_argument("--db", default="", help="SQLite event-log path (default: in-memory)")
     parser.add_argument("--load", default="", help="Load JSON save")
     parser.add_argument("--save", default="noopunk-save.json", help="Default JSON save path")
     parser.add_argument("--ollama", action="store_true", help="Enable optional Ollama/Concordia actors")
@@ -58,12 +112,18 @@ def main() -> int:
 
     engine, llm, human_id = _build_engine(args)
 
-    print("NoöPunk local text prototype")
-    print("Fixture scenario only; no bundled content is canon.")
-    print("Commands: look, go <direction>, n/s/e/w, inventory, take, drop, talk, say, use, stats")
+    print("NoöPunk local text RPG/Simulation")
+    if args.scenario == "prefall":
+        print("Scenario: alternate Eclipse Phase timeline, pre-Fall, 20XX, Earth intact.")
+    else:
+        print("Scenario: non-canonical regression fixture.")
+    print(
+        "Commands: look, go <direction>, n/s/e/w, inventory, take, drop, talk, say, "
+        "use, stats, sheet, test skill|social|mesh|combat ..."
+    )
     print("Meta: save [path], load <path>, gm state|events|actors, quit")
     if not args.ollama:
-        print("LLM disabled. Classical scripted/dumb NPCs remain active.")
+        print("LLM disabled. Scripted contacts remain active; optional LLM contacts are inert.")
     print()
     print(engine.describe_room(human_id))
 
@@ -135,7 +195,7 @@ def main() -> int:
             save_game(engine, args.save)
 
         if result.completed:
-            print("Demo objective completed. You may keep exploring or type quit.")
+            print("Scenario objective completed. You may keep exploring or type quit.")
 
     if args.save:
         save_game(engine, args.save)
