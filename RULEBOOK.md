@@ -2043,7 +2043,9 @@ history, **David Grusch** and **Lue Elizondo** assist President **Donald Trump**
 Secretary of Defense **Pete Hegseth** in attempts to force open the Legacy Program.
 Federal law enforcement and military units raid or seize facilities associated with
 elements of the breakaway system, including factions connected to major aerospace
-contractors, intelligence organizations and Department of Energy programs.
+contractors such as **Lockheed-Martin**, **Northrop-Grumman** and the **MITRE
+Corporation**, intelligence organizations including elements of the **CIA**, and
+**Department of Energy** programs.
 
 The deeper the raids go, the stranger the revelations become.
 
@@ -2056,8 +2058,8 @@ the already formidable Chinese and Russian programs revealed during the Disclosu
 Public order deteriorates as citizens riot against the so-called deep state, suspected
 hybrid infiltration and institutions associated with the secrecy regime. Rumors and real
 operations become almost impossible to distinguish. U.S. Air Force aircraft chase ARVs;
-ARVs attract the attention of Zookeeper probe systems; rival human and NHI craft begin
-shadowing one another.
+ARVs attract the attention of the **Zookeeper Sphere Network** (see §33.9); rival human
+and NHI craft begin shadowing one another.
 
 The resulting airspace has been summarized by later popular histories with the deliberately
 absurd chain:
