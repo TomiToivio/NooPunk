@@ -1,4 +1,4 @@
-"""Guard for the newest author-specified setting canon (§33.14, issue #60).
+"""Guard for the newest author-specified setting canon (issue #60).
 
 `317805f` consolidated §33 from issue #60 ten minutes after the author posted the
 stargate / SETI / Mars-ruins canon, and missed it. The scenario module recorded the
@@ -96,44 +96,40 @@ def has_concept(text: str, concept: str) -> bool:
     return any(re.search(pattern, text) for pattern in FACTS[concept])
 
 
-def section_after(relative: str, marker: str) -> str:
-    """The text after ``marker``, or a clean assertion failure naming the loss.
-
-    A guard must FAIL when its subject disappears, not crash: `split(marker, 1)[1]`
-    raises IndexError, which reads as a broken test rather than a missing section and
-    hides what actually regressed. This was a real defect in the first version of
-    this guard — the §33.14 section was removed by a later rulebook rewrite and the
-    suite reported ten opaque IndexErrors instead of one clear failure.
-    """
-    text = normalised(relative)
-    if marker not in text:
+def section_by_heading(relative: str, heading: str) -> str:
+    """Return one markdown subsection by stable heading text, not by section number."""
+    raw = (ROOT / relative).read_text(encoding="utf-8")
+    pattern = rf"(?ms)^###\s+[^\n]*{re.escape(heading)}[^\n]*\n(.*?)(?=^###\s+|^##\s+|\Z)"
+    match = re.search(pattern, raw, re.I)
+    if not match:
         raise AssertionError(
-            f"{relative} no longer contains {marker!r}; the recorded canon was removed "
-            "or renumbered. Re-record it, or update this guard deliberately."
+            f"{relative} no longer contains subsection {heading!r}; "
+            "the recorded canon was removed or renamed."
         )
-    return text.split(marker, 1)[1]
+    text = re.sub(r"[*\x60]", "", match.group(1))
+    return " ".join(text.split()).casefold()
 
 
 class RulebookRecordsTheCanonTests(unittest.TestCase):
     def setUp(self) -> None:
         self.text = normalised(RULEBOOK)
-        self.section = section_after(RULEBOOK, "33.14")
+        self.section = section_by_heading(RULEBOOK, "Stargates, UAP traffic, Mars ruins, and SETI")
 
     def test_the_newest_canon_subsection_exists(self) -> None:
-        self.assertIn("33.14", self.text)
+        self.assertIn("stargates, uap traffic, mars ruins, and seti", self.text)
 
     def test_every_author_specified_fact_is_recorded(self) -> None:
         for concept in FACTS:
             with self.subTest(concept=concept):
                 self.assertTrue(
                     has_concept(self.section, concept),
-                    f"RULEBOOK.md §33.14 does not record: {concept}",
+                    f"RULEBOOK.md stargate/SETI canon does not record: {concept}",
                 )
 
     def test_no_dates_beyond_20xx_are_assigned(self) -> None:
         """AGENTS.md §6: the year is 20XX unless the author says otherwise."""
         offenders = [m.group(0) for m in _YEAR_RE.finditer(self.section)]
-        self.assertEqual(offenders, [], f"§33.14 assigns concrete years: {offenders}")
+        self.assertEqual(offenders, [], f"stargate/SETI canon assigns concrete years: {offenders}")
 
     def test_the_count_is_seven_and_not_inflated(self) -> None:
         self.assertIn("seventh", self.section)
@@ -147,7 +143,7 @@ class RulebookAndScenarioAgreeTests(unittest.TestCase):
     """A fact recorded in only one place is the drift that actually happened."""
 
     def setUp(self) -> None:
-        self.rulebook_section = section_after(RULEBOOK, "33.14")
+        self.rulebook_section = section_by_heading(RULEBOOK, "Stargates, UAP traffic, Mars ruins, and SETI")
         self.scenario = scenario_text()
 
     def test_shared_facts_appear_in_both_documents(self) -> None:
@@ -155,7 +151,7 @@ class RulebookAndScenarioAgreeTests(unittest.TestCase):
             with self.subTest(concept=concept):
                 self.assertTrue(
                     has_concept(self.rulebook_section, concept),
-                    f"missing from rulebook §33.14: {concept}",
+                    f"missing from rulebook stargate/SETI canon: {concept}",
                 )
                 self.assertTrue(
                     has_concept(self.scenario, concept),
@@ -179,7 +175,7 @@ class AntiInventionTests(unittest.TestCase):
     """The addition records canon; it must not author more of it."""
 
     def setUp(self) -> None:
-        self.section = section_after(RULEBOOK, "33.14")
+        self.section = section_by_heading(RULEBOOK, "Stargates, UAP traffic, Mars ruins, and SETI")
 
     def test_no_new_named_entities_were_introduced(self) -> None:
         for invented in ("federation", "empire", "republic", "the council", "directorate"):
