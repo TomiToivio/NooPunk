@@ -96,10 +96,28 @@ def has_concept(text: str, concept: str) -> bool:
     return any(re.search(pattern, text) for pattern in FACTS[concept])
 
 
+def section_after(relative: str, marker: str) -> str:
+    """The text after ``marker``, or a clean assertion failure naming the loss.
+
+    A guard must FAIL when its subject disappears, not crash: `split(marker, 1)[1]`
+    raises IndexError, which reads as a broken test rather than a missing section and
+    hides what actually regressed. This was a real defect in the first version of
+    this guard — the §33.14 section was removed by a later rulebook rewrite and the
+    suite reported ten opaque IndexErrors instead of one clear failure.
+    """
+    text = normalised(relative)
+    if marker not in text:
+        raise AssertionError(
+            f"{relative} no longer contains {marker!r}; the recorded canon was removed "
+            "or renumbered. Re-record it, or update this guard deliberately."
+        )
+    return text.split(marker, 1)[1]
+
+
 class RulebookRecordsTheCanonTests(unittest.TestCase):
     def setUp(self) -> None:
         self.text = normalised(RULEBOOK)
-        self.section = self.text.split("33.14", 1)[1]
+        self.section = section_after(RULEBOOK, "33.14")
 
     def test_the_newest_canon_subsection_exists(self) -> None:
         self.assertIn("33.14", self.text)
@@ -129,7 +147,7 @@ class RulebookAndScenarioAgreeTests(unittest.TestCase):
     """A fact recorded in only one place is the drift that actually happened."""
 
     def setUp(self) -> None:
-        self.rulebook_section = normalised(RULEBOOK).split("33.14", 1)[1]
+        self.rulebook_section = section_after(RULEBOOK, "33.14")
         self.scenario = scenario_text()
 
     def test_shared_facts_appear_in_both_documents(self) -> None:
@@ -161,7 +179,7 @@ class AntiInventionTests(unittest.TestCase):
     """The addition records canon; it must not author more of it."""
 
     def setUp(self) -> None:
-        self.section = normalised(RULEBOOK).split("33.14", 1)[1]
+        self.section = section_after(RULEBOOK, "33.14")
 
     def test_no_new_named_entities_were_introduced(self) -> None:
         for invented in ("federation", "empire", "republic", "the council", "directorate"):
