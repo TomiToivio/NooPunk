@@ -1183,3 +1183,40 @@ ideological conflict, ontological horror and moments of apocalypse/social collap
 
 The core optimism remains: paradigm shocks may destroy old institutions and assumptions,
 but they can also open space for better social forms.
+
+### 33.14 Stargates, UAP traffic, Mars ruins, and SETI
+
+This subsection records author-specified setting facts from issue #60 that postdate the
+rest of §33. It adds no names, factions, biographies, dates or mechanics beyond what was
+specified.
+
+**Stargates and UAP traffic.** Several **stargates**, constructed by the **Zookeepers**
+billions of years ago, have been discovered in the Solar System. They explain **some** of
+the observed UAP traffic. They do **not** explain all of it: UAPs are also observed using
+**warp drives**.
+
+**Mars and Mars Eldrich.** Mars Eldrich's colonization effort discovered ancient **ruins**,
+indigenous or pre-existing **life**, and evidence of a **prior non-human civilization** on
+Mars. Mars Eldrich is furious about what stargates and anomalous transport do to the
+economics and strategic value of his rocket business, and is now aggressively scouring the
+Solar System for **crash-retrieval material** and other anomalous technology.
+
+**SETI detection, and the count of seven.** SETI has received **interstellar radio signals**
+from another extraterrestrial civilization. That makes it the **seventh detected ET
+civilization**, counting:
+
+1. **five** ET civilizations contacted on Earth;
+2. the extinct or vanished **sixth**, known from the ruins on Mars;
+3. the **seventh**, detected through interstellar radio signals by SETI.
+
+**Contested classification.** There is currently **no scientific consensus** on whether the
+following should count as "civilizations":
+
+- **Noetics**;
+- **Plasmoids**;
+- **Constructs**.
+
+These categories remain scientifically and politically contested in the setting. They must
+**not** be silently folded into the official civilization count, and the count of seven must
+not be inflated by treating a disputed category as settled. This is a live in-setting
+dispute, not a gap for an implementer to resolve.
