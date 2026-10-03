@@ -1,0 +1,10 @@
+# NoöPunk runtime dependencies
+#
+# The deterministic text RPG itself uses only the Python standard library.
+# Concordia is included here because it is the current agent/narrative runtime
+# used by the optional Ollama mode and by the Concordia integration smoke test.
+#
+# Pinned to the upstream revision whose prefab/contrib APIs are verified by
+# NoöPunk. The [ollama] extra installs Concordia's Python-side Ollama client
+# support; the Ollama service itself must be installed separately.
+git+https://github.com/google-deepmind/concordia.git@405584db8e09e001da6deb147a6389f7a7f44e28#egg=gdm-concordia[ollama]
