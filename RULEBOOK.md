@@ -782,7 +782,7 @@ Use this table to track major mechanical mutations.
 | 2026-10-03 | Overall chassis | Original-from-scratch NoöPunk rules reset | EP2 homebrew foundation with evolutionary replacement | **Current direction.** Issue #60 supersedes the archived reset for active development. |
 | 2026-10-03 | Runtime priority | Tabletop-first staged ports | Concordia-first playable RPG/simulation using tabletop-readable rules | **Current direction.** The rulebook remains canonical documentation, while Concordia is the immediate playable target. |
 | 2026-10-03 | Setting continuity | Separate NoöPunk world progressively replacing Eclipse Phase | **Alternate Eclipse Phase timeline before the Fall; year 20XX; Earth intact; EP technology baseline** | **Current direction.** Preserve EP concepts by default and document deliberate timeline divergences. |
-| 2026-10-03 | Layer ontology | Four layers implicit across §15–§19 | **Explicit four-layer ontology with structural couplings (§34)** | Issue #78. Couplings and simulation representations made explicit because the interfaces are where the gameplay is; no mechanics defined. |
+| 2026-10-03 | Layer ontology | Four layers treated implicitly across §15–§19 | **Explicit four-layer ontology with structural couplings (§34)** | Issue #78. Couplings made explicit because the interfaces are where the gameplay is; no mechanics defined. |
 
 Add rows whenever a major subsystem is replaced or substantially reskinned.
 
