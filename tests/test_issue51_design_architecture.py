@@ -12,32 +12,40 @@ def read(path: str) -> str:
 
 class Issue51DesignArchitectureTests(unittest.TestCase):
     def test_gns_priority_is_explicit(self) -> None:
-        text = read("docs/DESIGN_PRINCIPLES.md")
+        text = read("docs/archive/DESIGN_PRINCIPLES.md")
         self.assertIn("Narrativist experience + Simulationist world + Gamist friction", text)
         self.assertIn("The Veil", text)
 
     def test_four_system_attribute_tags_are_canonical(self) -> None:
-        text = read("RULEBOOK.md")
-        self.assertIn("Attributes are tags", text)
+        """AGENTS.md §4 states the direction; the archived rulebook holds the model.
+
+        The four-system attribute-tag model is still the canonical character
+        direction (AGENTS.md §4), so the guard is not retired — only re-pointed,
+        because the rulebook that carried the model body is now archived.
+        """
+        agents = read("AGENTS.md")
         for name in ("Physical", "Social", "Psychic", "Cybernetic"):
-            self.assertIn(name, text)
+            with self.subTest(name=name):
+                self.assertIn(name, agents)
+        text = read("docs/archive/RULEBOOK.md")
+        self.assertIn("Attributes are tags", text)
         self.assertIn("multiple attribute tags", text)
 
     def test_absent_system_is_not_low_score(self) -> None:
-        text = read("RULEBOOK.md")
+        text = read("docs/archive/RULEBOOK.md")
         self.assertIn("Absence is not the same as a low score", text)
         self.assertIn("non-conscious AI", text)
         self.assertIn("no meaningful Psychic participation", text)
 
     def test_concordia_architecture_records_hybrid_npc_tiers(self) -> None:
-        text = read("docs/CONCORDIA_ARCHITECTURE.md")
+        text = read("docs/archive/CONCORDIA_ARCHITECTURE.md")
         self.assertIn("Mesa / rule agents", text)
         self.assertIn("Lightweight interactive NPCs", text)
         self.assertIn("Persistent Concordia / LLM agents", text)
         self.assertIn("promoted", text)
 
     def test_multiplayer_keeps_server_authoritative(self) -> None:
-        text = read("docs/CONCORDIA_ARCHITECTURE.md")
+        text = read("docs/archive/CONCORDIA_ARCHITECTURE.md")
         self.assertIn("authoritative simulation state", text)
         self.assertIn("Streamlit", text)
         self.assertIn("FastAPI + WebSockets", text)

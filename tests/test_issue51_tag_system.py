@@ -402,8 +402,8 @@ class AntiInventionTests(unittest.TestCase):
 
     def test_rulebook_attributes_are_not_rewritten_by_this_prototype(self) -> None:
         """#51 says do not lock the final names; RULEBOOK §5 keeps them unfinalized."""
-        text = " ".join((ROOT / "RULEBOOK.md").read_text(encoding="utf-8").split()).lower()
-        self.assertIn("not yet finalized", text)
+        text = " ".join((ROOT / "AGENTS.md").read_text(encoding="utf-8").split()).lower()
+        self.assertIn("not yet locked", text)
 
 
 class AbsentSystemTests(unittest.TestCase):

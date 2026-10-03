@@ -44,6 +44,23 @@ The rules will be modified, reskinned and simplified heavily. The final NoöPunk
 
 For development tracking, see the long-running umbrella issue: [#60 — Build NoöPunk Concordia RPG/Simulation from Eclipse Phase 2E homebrew](https://github.com/TomiToivio/NooPunk/issues/60).
 
+## Canonical documents
+
+The living rules document is [`RULEBOOK.md`](RULEBOOK.md). The continuity boundary is
+[`docs/PRE_FALL_ALTERNATE_TIMELINE.md`](docs/PRE_FALL_ALTERNATE_TIMELINE.md).
+
+The design canon that the build guards is preserved under [`docs/archive/`](docs/archive/)
+after the #60/#63 reset. These are the referenced originals, kept as records rather than
+as active canon:
+
+- design invariants: [`docs/archive/DESIGN_PRINCIPLES.md`](docs/archive/DESIGN_PRINCIPLES.md)
+- one-game architecture: [`docs/archive/NOOPUNK_AS_ONE_GAME.md`](docs/archive/NOOPUNK_AS_ONE_GAME.md)
+- simulation specification: [`docs/archive/SIMULATION_ARCHITECTURE_SPEC.md`](docs/archive/SIMULATION_ARCHITECTURE_SPEC.md)
+- theoretical-sources registry: [`docs/archive/THEORETICAL_SOURCES.md`](docs/archive/THEORETICAL_SOURCES.md)
+- world ideology: [`docs/archive/WORLD_IDEOLOGY.md`](docs/archive/WORLD_IDEOLOGY.md)
+- regional technology matrix: [`docs/archive/TECH_MATRIX.md`](docs/archive/TECH_MATRIX.md)
+- writing style and modeling: [`docs/archive/WRITING_STYLE_AND_MODELING.md`](docs/archive/WRITING_STYLE_AND_MODELING.md)
+
 ## Eclipse Phase sources and license
 
 Eclipse Phase is created by **Posthuman Studios**. Eclipse Phase-derived material in this repository must follow the applicable Eclipse Phase Creative Commons terms and attribution requirements.

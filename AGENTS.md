@@ -5,7 +5,7 @@
 These rules are mandatory for coding and documentation agents working in this repository.
 
 **Design invariants.** NoöPunk has three core design balances, documented once in
-[`docs/DESIGN_PRINCIPLES.md`](docs/DESIGN_PRINCIPLES.md). They are project-level
+[`docs/archive/DESIGN_PRINCIPLES.md`](docs/archive/DESIGN_PRINCIPLES.md). They are project-level
 invariants and are restated as binding rules in §13 below. Read that document
 before changing rules, mechanics, or setting material.
 
@@ -38,7 +38,7 @@ The RPG scaffold and the reserved-area list are not permission to create a game 
 ### 3. Tabletop first; Godot and Concordia are later ports
 
 NoöPunk is **one computer RPG/simulation**, not separate tabletop, simulation and
-videogame products ([`docs/NOOPUNK_AS_ONE_GAME.md`](docs/NOOPUNK_AS_ONE_GAME.md),
+videogame products ([`docs/archive/NOOPUNK_AS_ONE_GAME.md`](docs/archive/NOOPUNK_AS_ONE_GAME.md),
 #48). The tabletop / Godot / Concordia distinction in this section is about notation
 and runtime sequence, not about maintaining three products.
 
@@ -162,7 +162,7 @@ When uncertain, choose the smaller implementation.
 NoöPunk is one RPG rules/world model. It is developed as **one computer
 RPG/simulation**, and the three headings below are notation/runtime choices within
 that single game rather than three products to maintain
-([`docs/NOOPUNK_AS_ONE_GAME.md`](docs/NOOPUNK_AS_ONE_GAME.md), #48):
+([`docs/archive/NOOPUNK_AS_ONE_GAME.md`](docs/archive/NOOPUNK_AS_ONE_GAME.md), #48):
 
 - tabletop-style notation — how the rules are written and read
 - Concordia — the generative-agent / Game Master runtime
@@ -193,7 +193,7 @@ The first Concordia implementation should be infrastructure only: runnable simul
 
 ### 13. Preserve the three design balances
 
-NoöPunk's canonical design invariants are documented once in [`docs/DESIGN_PRINCIPLES.md`](docs/DESIGN_PRINCIPLES.md). Every contributing agent must preserve them:
+NoöPunk's canonical design invariants are documented once in [`docs/archive/DESIGN_PRINCIPLES.md`](docs/archive/DESIGN_PRINCIPLES.md). Every contributing agent must preserve them:
 
 1. Preserve the **Gamism / Narrativism / Simulationism balance**, with issue #51's current priority: **Narrativist experience + Simulationist world + Gamist friction**.
 2. Use **CY_BORG** (Gamism), **Cyberpunk 2020** (Simulationism), and **The Sprawl** (Narrativism) as the canonical reference poles; use **The Veil** as a complementary Narrativist reference.
