@@ -31,7 +31,7 @@ class OllamaProvider:
         except ImportError as exc:
             raise RuntimeError(
                 "Concordia Ollama support is not installed. "
-                "Install dependencies from requirements-concordia.txt."
+                "Install dependencies from requirements.txt."
             ) from exc
 
         # Concordia's current Ollama adapter uses ollama.Client(), whose host is
