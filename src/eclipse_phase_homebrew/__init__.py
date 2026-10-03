@@ -6,6 +6,7 @@ Posthuman Studios. See docs/licenses/ECLIPSE_PHASE_HOMEBREW.md.
 """
 
 from .core import EP2Character, EP2PoolState, EP2TestResult, PoolKind, PoolSpend, resolve_test
+from .embodiment import EP2Embodiment, EP2GearItem, EP2Inventory
 from .interactions import (
     EP2HarmState,
     EP2InteractionResult,
@@ -23,6 +24,9 @@ __all__ = [
     "PoolKind",
     "PoolSpend",
     "resolve_test",
+    "EP2Embodiment",
+    "EP2GearItem",
+    "EP2Inventory",
     "EP2HarmState",
     "EP2InteractionResult",
     "EP2OpposedResult",
