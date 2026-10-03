@@ -474,6 +474,35 @@ In this fictional scientific paradigm, QIP-oriented researchers hold that consci
 
 These are fictional/speculative game assumptions built from real theories and esoteric inspirations; the real-world scientific sources do not establish NoöPunk's fictional conclusions.
 
+### 16.6 Professional PSI, entanglement, and magic
+
+Dean Radin's *Entangled Minds: Extrasensory Experiences in a Quantum Reality* is an important inspiration for how NoöPunk connects quantum-consciousness ideas to practical psionics.
+
+Radin uses quantum entanglement as a conceptual model for PSI and anomalous cognition. NoöPunk fictionalizes this into a mature science of **non-local noetic coupling**: consciousness can become entangled or resonant with another mind, object, symbol, place, memory, or NHI, and that coupling provides a channel through which PSI can operate.
+
+By 20XX, PSI is sufficiently understood, trainable, measurable, and augmentable that **psionic work is a normal professional service in many societies**.
+
+The tone should partly resemble Philip K. Dick's *Ubik*, where psychic abilities are mundane enough to be commercialized. Depending on jurisdiction and culture, professional services may include:
+
+- telepaths;
+- precognitives;
+- remote viewers;
+- anti-psi / counter-psi specialists;
+- psychic security;
+- noetic investigators;
+- psychotronic technicians;
+- PSI therapists;
+- intelligence and military PSI operators;
+- ritual specialists whose cultural vocabulary describes the same underlying phenomena differently.
+
+Radin's *Real Magic* and *The Science of Magic* also inspire a core NoöPunk interpretation:
+
+> **PSI and magic are different cultural vocabularies for overlapping consciousness-based phenomena.**
+
+A laboratory parapsychologist, ritual magician, fourth-density adept, noetic engineer, or religious mystic may use different symbols and explanatory frameworks while interacting with the same underlying noetic reality.
+
+This does not mean every magical claim is true in-setting. Traditions may contain useful techniques, symbolic interfaces, placebo, superstition, fraud, cultural interpretation, and genuine PSI in varying proportions. The underlying phenomena are real in NoöPunk; human explanations remain plural and contested.
+
 ---
 
 ## 17. Social interaction and reputation
@@ -1111,8 +1140,26 @@ conscious AGI + hybrid minds + expanded psionics
 awakening Social Memory Complex / Noösphere
 ```
 
-This is fictional setting metaphysics inspired by real scientific hypotheses and esoteric
-sources. The real-world sources do not establish NoöPunk's fictional claims.
+Professional PSI is therefore part of ordinary social and economic life. A character might
+hire a precognitive, counter-psi consultant, telepathic mediator, noetic investigator, or
+psychotronic technician much as they might hire a hacker, lawyer, doctor, or engineer. This
+everyday commercialization of psychic labor is explicitly inspired by **Philip K. Dick's
+*Ubik***.
+
+Dean Radin's *Entangled Minds* is a major in-world precursor for theories connecting
+quantum entanglement with PSI. His *Real Magic* and *The Science of Magic* inspire the
+setting's view that **PSI and magic are overlapping cultural vocabularies for
+consciousness-based phenomena**. A ritual, scientific protocol, meditative practice, or
+psychotronic interface may therefore target the same noetic mechanisms through very
+different symbolic systems.
+
+This does not make every magical tradition literally correct. In 20XX, researchers still
+distinguish genuine PSI from superstition, fraud, cultural interpretation, placebo,
+symbolic technique, and poorly understood noetic effects.
+
+This is fictional setting metaphysics inspired by real scientific hypotheses, contested
+parapsychological claims, fiction, and esoteric sources. The real-world sources do not
+establish NoöPunk's fictional claims.
 
 ### 33.7 End of Earth's quarantine
 
@@ -1179,11 +1226,25 @@ synthesis.
 - **Dean Radin.** *The Conscious Universe*. HarperOne, 1997, and later experimental and
   popular work on psi/anomalous cognition. These claims remain scientifically contested in
   the real world.
+- **Dean Radin.** *Entangled Minds: Extrasensory Experiences in a Quantum Reality*.
+  Paraview Pocket Books / Simon & Schuster, 2006. Inspiration for NoöPunk's
+  entanglement-based model of PSI.
+- **Dean Radin.** *Real Magic: Ancient Wisdom, Modern Science, and a Guide to the Secret
+  Power of the Universe*. Harmony, 2018. Inspiration for treating magic and PSI as
+  overlapping cultural descriptions of anomalous consciousness phenomena.
+- **Dean Radin.** *The Science of Magic*. 2025. Further inspiration for NoöPunk's
+  integration of PSI, ritual, intention, and noetic phenomena.
 - **Don Elkins, Carla L. Rueckert & Jim McCarty.** *The Law of One / The Ra Material*
   (L/L Research, sessions beginning 1981). Public archive:
   https://www.llresearch.org/channeling/ra-contact
 - **Pierre Teilhard de Chardin.** *The Phenomenon of Man*. English translation, Harper,
   1959. Historical inspiration for the concept of the **Noösphere**.
+
+### Fictional psionics and normalized psychic services
+
+- **Philip K. Dick.** *Ubik*. Doubleday, 1969. Primary fictional inspiration for a society
+  in which psychic abilities, counter-psi, and paranormal professional services are
+  commercialized and mundane.
 
 ### Cyberspace, planetary computation, and collective human-machine intelligence
 
