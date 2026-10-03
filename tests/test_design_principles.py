@@ -233,10 +233,10 @@ class SingleSourceOfTruthTests(unittest.TestCase):
             + list((ROOT / "docs" / "archive").glob("*.md"))
             if re.search(r"principl|design.?principles", p.name, re.I)
         ]
-        names = {p.name for p in candidates}
+        found = {p.relative_to(ROOT).as_posix() for p in candidates}
         self.assertEqual(
-            names, {"DESIGN_PRINCIPLES.md"},
-            f"expected exactly one canonical principles doc, found {sorted(names)}",
+            found, {CANONICAL_DOC},
+            f"expected exactly one canonical principles doc, found {sorted(found)}",
         )
 
     def test_no_competing_top_level_principles_doc(self) -> None:
