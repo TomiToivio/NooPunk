@@ -26,21 +26,25 @@ The first playable NoöPunk RPG prototype is being built as an **Eclipse Phase 2
 
 Eclipse Phase 2E is the initial mechanical chassis because it already contains many systems that are useful for NoöPunk: transhuman bodies and morphs, AGIs and infomorphs, mesh networking and hacking, reputation systems, psychosocial stress, advanced augmentation, artificial minds, psi and post-scarcity or post-capitalist social arrangements.
 
-NoöPunk is **not intended to remain an Eclipse Phase setting conversion**. Its world, history, factions, metaphysics and ideological conflicts are separate and will increasingly diverge from Eclipse Phase. The current development path is deliberately evolutionary:
+NoöPunk is an **alternate Eclipse Phase timeline set before the Fall**. The year is **20XX**, **Earth still exists**, and the setting uses broadly the **same transhuman technology level as Eclipse Phase**.
+
+The timeline diverges through NoöPunk's own paradigm shifts and conflicts: AI/AGI ideology, Noösphere formation, panpsychism, psionics, NHI/UAP contact, cyborgification, political-economic transformation, and the struggle between cybercapitalist/neofeudal formations and the Multitude. The canonical Eclipse Phase Fall has **not** happened and is not assumed to be inevitable.
+
+The current development path is:
 
 ```
-Eclipse Phase 2E
+Eclipse Phase 2E rules + transhuman technology
         ↓
-EP2 homebrew Concordia prototype
+alternate pre-Fall timeline (20XX, Earth intact)
         ↓
-NoöPunk reskin and world replacement
+NoöPunk historical / noöspheric divergence
         ↓
-simplified EP-derived mechanics
+Concordia RPG + social simulation
         ↓
-native NoöPunk RPG / simulation rules
+selective rules simplification where useful
 ```
 
-The rules will be modified, reskinned and simplified heavily. The final NoöPunk system may eventually be mechanically very different from Eclipse Phase. Alternative lighter conversions, including Transhumanity's Fate, Neon City Overdrive-style conversions and Powered by the Apocalypse approaches, may also be used as design references where full EP2 rules are too heavy for Concordia.
+See [the pre-Fall alternate timeline note](docs/PRE_FALL_ALTERNATE_TIMELINE.md) for the continuity boundary.
 
 For development tracking, see the long-running umbrella issue: [#60 — Build NoöPunk Concordia RPG/Simulation from Eclipse Phase 2E homebrew](https://github.com/TomiToivio/NooPunk/issues/60).
 
