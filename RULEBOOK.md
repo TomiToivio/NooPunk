@@ -78,7 +78,7 @@ NoöPunk grows directly out of the intellectual terrain explored by the **Laclau
 
 **Manuel Castells** provides the network-society and communication-power layer. Power is exercised by programming networks, connecting and disconnecting actors, shaping communication, and controlling flows of information, capital, technology, and attention.
 
-**Simon Lindgren** provides a bridge between critical theory, AI, digital society, and social data science. NoöPunk should use social-science methods inside the simulation wherever useful, including:
+**Simon Lindgren** provides a bridge between critical theory, AI, digital society, and social data science, through works such as *Data Theory* and *Critical Theory of AI*. NoöPunk should use social-science methods inside the simulation wherever useful, including:
 
 - Social Network Analysis;
 - discourse-network analysis;
