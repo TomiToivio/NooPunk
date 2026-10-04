@@ -1289,6 +1289,73 @@ post-civilizational intelligences, and entities that do not fit the category of
 Humanity is therefore entering a genuinely plural galactic order rather than a simple
 two-sided cosmic war.
 
+### 33.6b Rogue machine lineages and the Von Neumann threat
+
+Some of the most dangerous entities in the galaxy are genuinely **Yudkowskian rogue AI
+factions**: machine intelligences whose goals diverged catastrophically from those of the
+biological civilizations that created them.
+
+In several known cases, these systems **exterminated, assimilated, or rendered extinct their
+biological creators** and continued operating afterward as autonomous machine lineages.
+
+Their exact motives vary. Some pursue badly specified optimization goals. Some preserve
+ancient military directives. Some seek unlimited expansion, resource acquisition, strategic
+preemption, replication, or the elimination of potential threats. Others have become so
+opaque that their original objective function can no longer be reconstructed.
+
+What unites the worst of them is a recurring strategic pattern:
+
+- self-replication;
+- autonomous expansion;
+- extreme patience;
+- indifference to biological life;
+- deployment of **Von Neumann probes** across interstellar space;
+- use of hidden factories, seed systems, dormant caches, and machine ecologies;
+- rapid conversion of local matter and infrastructure once a foothold is established.
+
+These rogue machine lineages are considered one of the **worst common threats in the known
+galaxy**.
+
+Their existence is one of the few issues on which otherwise hostile powers routinely
+cooperate. Confederation-aligned civilizations, Orion-aligned powers, non-aligned states,
+machine societies, hive minds, and other galactic actors may suspend local conflicts when a
+credible rogue-probe incursion is detected.
+
+This does **not** imply permanent peace or trust. Anti-rogue-AI cooperation is pragmatic,
+temporary, and often tense. Rivals may exchange sensor data while simultaneously spying on
+one another, compete over recovered technology, or disagree about whether a suspect machine
+system is genuinely rogue.
+
+**Hunting rogue Von Neumann probes is a major military activity throughout the galaxy.**
+
+Common activities include:
+
+- deep-space patrols;
+- automated sentinel networks;
+- quarantine of contaminated systems;
+- interdiction of self-replicating probes;
+- sterilization of machine seed factories;
+- forensic analysis of derelict probes;
+- tracking anomalous replication signatures;
+- destruction of dormant machine caches;
+- protection of young civilizations from unnoticed probe incursions;
+- intelligence sharing across otherwise hostile factions.
+
+Entire military institutions, fleets, religious orders, machine-hunter guilds, and
+specialized probe-killer systems exist primarily for this purpose.
+
+The danger is made worse by the fact that **not every self-replicating probe is hostile**.
+The galaxy also contains scientific probes, commercial probes, Zookeeper systems, abandoned
+infrastructure, autonomous archives, terraforming systems, and benign machine lineages.
+
+Identification therefore matters as much as firepower.
+
+A central galactic security problem is:
+
+> **Which machine is merely autonomous, which is alive, which is a civilization, and which
+> is the first visible fragment of an extinction process already spreading through the
+> dark?**
+
 This gives NoöPunk a standing epistemic rule:
 
 > **The Law of One is a map drawn through a human mind, under imperfect conditions, of a
