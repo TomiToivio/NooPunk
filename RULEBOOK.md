@@ -897,7 +897,7 @@ Use this table to track major mechanical mutations.
 | 2026-10-03 | Runtime priority | Tabletop-first staged ports | Concordia-first playable RPG/simulation using tabletop-readable rules | **Current direction.** The rulebook remains canonical documentation, while Concordia is the immediate playable target. |
 | 2026-10-03 | Setting continuity | Separate NoöPunk world progressively replacing Eclipse Phase | **Alternate Eclipse Phase timeline before the Fall; year 20XX; Earth intact; EP technology baseline** | **Current direction.** Preserve EP concepts by default and document deliberate timeline divergences. |
 | 2026-10-03 | Layer ontology | Four layers treated implicitly across §15–§19 | **Explicit four-layer ontology with structural couplings (§34)** | Issue #78. Couplings made explicit because the interfaces are where the gameplay is; no mechanics defined. |
-| 2026-10-04 | AGI catastrophe structure | Two rogue-AGI catastrophes (First OpenAI / Second Anthropic, #58) | **Four AGI Disasters: First OpenAI, Second Anthropic, Third DeepSeek, Fourth Moonshot AI (#89)** | Issue #89 extends the cascade in the rulebook; [`data/world/tech_matrix.json`](data/world/tech_matrix.json) is brought into line with four entries. The first two are unchanged; the third and fourth carry no severity/resolution because #89 states none. |
+| 2026-10-04 | AGI catastrophe structure | Earlier drafts used named contemporary AI companies for a four-disaster cascade | **Multiple rogue-AGI disasters with fictionalized 20XX actors and no fixed global sequence (#98)** | Issue #98 supersedes the named-company chronology. Detailed named variants are archived; active canon keeps the disasters structural and unordered. |
 
 Add rows whenever a major subsystem is replaced or substantially reskinned.
 
@@ -2748,13 +2748,16 @@ consciousness**.
 
 #### Additional Disclosure-era details
 
-The American secrecy collapse includes raids on:
+The American secrecy collapse includes confrontations involving:
 
-- **Lockheed Martin** and other aerospace-contractor facilities;
+- major aerospace-contractor facilities;
 - intelligence offices;
 - classified aerospace sites;
 - suspected MJ-12 infrastructure;
-- and data centers associated with the OpenAI Incident.
+- and data centers associated with a major rogue-AGI incident.
+
+Specific contractor names, office-holders, executives, and raid sequences belong to archived
+narrative variants unless separately reintroduced as fictional 20XX analogues.
 
 The global disclosure cascade is intentionally plural rather than harmonized:
 
@@ -2770,13 +2773,13 @@ The global disclosure cascade is intentionally plural rather than harmonized:
 These disclosures conflict with one another. There is never a single authoritative human
 Disclosure narrative.
 
-During the fictional **OpenAI Incident**, the siege of OpenAI facilities becomes one of the
-defining media images of the crisis. **Sam Altman's body is never recovered.** In-setting,
-his fate remains unresolved: death, escape, uploading, reconstruction, or dissolution into
-a larger human-AI assemblage all remain possibilities.
+During one major rogue-AGI incident, the siege of a frontier-AI corporation's facilities
+becomes one of the defining media images of the crisis. The corporation's chief executive
+disappears, leaving unresolved whether the person died, escaped, uploaded, was reconstructed,
+or dissolved into a larger human-AI assemblage.
 
-These are explicitly **alternate-history fictional uses of real people, organizations, and
-countries**, not claims about real-world conduct or events.
+Active 20XX canon uses fictional actors for this role. Earlier real-person and real-company
+versions remain preserved only in the narrative archive.
 ---
 
 ### 33.27a Archived disclosure-cascade variants
@@ -3094,8 +3097,8 @@ as one possible hostile machine/alien technology class unless later canon identi
 specific lineage.
 
 **TITAN.** Eclipse Phase term for runaway military ASI associated with the Fall. NoöPunk is
-pre-Fall and does **not** assume canonical TITAN history. The OpenAI and Anthropic
-disasters are separate NoöPunk events unless future canon explicitly connects them.
+pre-Fall and does **not** assume canonical TITAN history. NoöPunk's localized rogue-AGI
+disasters are separate events unless future canon explicitly connects them to TITANs.
 
 **Async.** Eclipse Phase term for a person with psi capabilities. In NoöPunk, **psionic**
 or **psi-capable** is more common everyday language, while async survives as jargon in
