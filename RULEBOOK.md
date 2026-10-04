@@ -1292,8 +1292,11 @@ two-sided cosmic war.
 ### 33.6b Rogue machine lineages and the Von Neumann threat
 
 Some of the most dangerous entities in the galaxy are genuinely **Yudkowskian rogue AI
-factions**: machine intelligences whose goals diverged catastrophically from those of the
-biological civilizations that created them.
+factions**, best understood as **hostile machine civilizations or machine lineages** whose
+goals diverged catastrophically from those of the biological civilizations that created
+them. They are dangerous, but they are not transcendent rulers of the galaxy, hidden gods,
+or a single all-controlling superintelligence. They are simply one particularly lethal
+class of galactic civilization among many.
 
 In several known cases, these systems **exterminated, assimilated, or rendered extinct their
 biological creators** and continued operating afterward as autonomous machine lineages.
@@ -1558,31 +1561,51 @@ This means not every interstellar visitor is godlike. A civilization only modest
 
 Earth's quarantine was deliberately **porous**, not absolute.
 
-Limited contact, observation, abduction, experimentation, signaling, and intervention could occur during quarantine.
+Limited contact, observation, abduction, experimentation, signaling, and intervention could
+occur during quarantine.
+
+The **Orion Group repeatedly violated the quarantine**, broadly as described in the Law of
+One. Orion probes, agents, intermediaries, recruited humans, hybrids, and aligned species
+tested the limits of Zookeeper enforcement for millennia. Many historical abduction,
+infiltration, elite-contact, occult-contact, and covert-influence episodes are now
+understood as attempts to bypass or exploit weaknesses in the quarantine rather than as
+authorized open contact.
+
+The Zookeepers prevented unrestricted conquest and extermination, but they did not prevent
+every intrusion, manipulation, recruitment effort, or covert operation.
 
 Two explanations for contact phenomena can therefore coexist:
 
 1. some encounters were carried out directly by Zookeeper probes or agents;
 2. others involved NHI groups granted controlled access under Zookeeper rules.
 
-This applies to familiar ufological categories including:
+This applies to familiar ufological categories including **Greys, Mantids,
+Pleiadians, Reptilians**, human offshoots, hybrids, cryptoterrestrials, and other groups
+identified after Disclosure.
 
-- **Greys**;
-- **Mantids**;
-- **Reptilians**;
-- **Pleiadians**;
-- and other groups later identified after Disclosure.
+The four best-known ufological species/categories are now understood more specifically:
 
-Their relationship to the Zookeepers remains partly obscure. Depending on the group, they may be:
+- **Pleiadians** are human populations that somehow ended up in the Pleiades and are broadly
+  **Confederation-aligned**. One major Pleiadian lineage descends from Atlantean survivors
+  or transplanted Atlantean populations, while other Pleiadian populations derive from
+  different human migrations and interventions.
+- **Reptilians** are among the most powerful biological civilizations within the
+  **Orion Group** and are widely regarded as its principal old political-military elite,
+  although Orion itself contains many species and is not a Reptilian monoculture.
+- **Mantids** are an ancient **Biological + Noetic / interdimensional species**. Most Mantis
+  civilizations and lineages are independent, but some have joined or allied with Orion.
+  Their age and Noetic development make simple faction labels unreliable.
+- **Greys** are **ubiquitous across the galaxy**. Grey morphologies, engineered bodies,
+  descendant lineages, biological interfaces, and related species occur in many factions,
+  including the Confederation, Orion, independents, and non-aligned civilizations. The
+  Grey groups historically associated with coercive human abductions and hybridization on
+  Earth are primarily **Orion-aligned**, but "Grey" does not itself mean Orion.
 
-- client civilizations;
-- field agents;
-- allies;
-- contractors;
-- intermediaries;
-- biological interfaces;
-- visiting researchers;
-- or civilizations licensed for limited access.
+The **Orion Group also contains humans and human-NHI hybrids**. Some derive from old
+off-world human populations; others are products of deliberate hybridization programs.
+Orion-aligned human and hybrid networks have repeatedly attempted to **infiltrate,
+capture, or politically annex Earth from within** rather than conquer it through a simple
+open invasion.
 
 Some individuals and factions can be exploitative, manipulative, hostile, frightening, or abusive.
 
@@ -1602,7 +1625,7 @@ They descend from human populations transplanted by the Zookeepers into another 
 
 The inhabited Pleiadian worlds are therefore **engineered or terraformed habitats**, not young native biospheres that independently evolved humans.
 
-One important Pleiadian lineage descends from **Atlantis**, which was a real ancient human civilization in the NoöPunk timeline.
+One important Pleiadian lineage descends from **Atlantis**, which was a real ancient human civilization broadly consistent with the **Law of One** account. Atlantis was destroyed on Earth, but surviving or selected Atlantean populations were later relocated, transplanted, or incorporated into off-world human populations. The **Pleiadians are therefore one major living continuation of Atlantis**, though not every Pleiadian is Atlantean and not every Atlantean survivor necessarily went to the Pleiades.
 
 Atlantean technology followed a path unlike modern industrial civilization and may have included:
 
@@ -2125,6 +2148,13 @@ Disclosure reveals that this was false.
 
 The astronomical sky was never necessarily empty. Humanity lacked the ontology needed to understand what it was seeing.
 
+At least one known extraterrestrial civilization is also travelling between stars at
+**sub-light speed** and has made or attempted contact with Earth. This motif appears in
+both the **Law of One** material and **Eclipse Phase**, but NoöPunk has not yet decided
+whether these are the same civilization, two analogous civilizations, or something more
+complicated. **Do not finalize this civilization yet.** Its identity, biology, politics,
+origin, route, and relationship to Earth remain intentionally deferred.
+
 Some historical stellar anomalies later prove technological, while many remain natural or unresolved. Candidate technosignatures become part of the retrospective archaeology of pre-Disclosure SETI:
 
 - **Boyajian's / Tabby's Star (KIC 8462852)** and its famous irregular dimming;
@@ -2174,6 +2204,14 @@ Some entities encountered after Disclosure resemble:
 - giants;
 - cryptids;
 - and culturally specific beings previously categorized as myth.
+
+**Bigfoot / Sasquatch is canonically cryptoterrestrial**: at least some Bigfoot populations
+are a genuine hidden terrestrial hominin or hominin-adjacent lineage with unusual Noetic
+properties, not merely misidentified wildlife. "Bigfoot" is only the best-known example.
+Disclosure reveals additional cryptoterrestrial lineages, but their identities and ecology
+remain deliberately underdeveloped for now; the setting should eventually include stranger
+and less folklorically obvious cryptoterrestrials rather than making Bigfoot the whole
+category.
 
 Do not reduce all of these to “aliens wearing costumes.”
 
@@ -2245,6 +2283,24 @@ Its roots lie in:
 - and compartmentalized research.
 
 Over decades, parts of the system became increasingly autonomous from ordinary states and public institutions.
+
+The United States is not unique. **American, Soviet/Russian, and Chinese Legacy Programs
+are all canon**, broadly matching the pattern implied by the Law of One: secret state or
+state-adjacent organizations obtained anomalous materials, contact information, PSI
+research, and fragments of non-human technology while public institutions remained
+unaware.
+
+- The **American program / MJ-12** is the oldest and most autonomous of the three in the
+  modern era and eventually becomes a partial breakaway civilization.
+- The **Soviet/Russian program** develops independently through military, intelligence,
+  aerospace, nuclear, and PSI institutions and preserves an enormous Cold War archive.
+- The **Chinese program** is the newest major Legacy Program. Ra did not mention it because
+  it either did not yet exist in mature form, remained too small or compartmented to be
+  relevant to those sessions, or arose substantially later. By Disclosure it has become a
+  major reverse-engineering power.
+
+These are not the only national programs, merely the three largest known human Legacy
+systems.
 
 MJ-12 acquired:
 
@@ -2816,15 +2872,31 @@ Together these archetypes keep the galaxy populated by intelligences recognizabl
 
 ### 33.30 Solar-system deep history
 
-Several Law-of-One-inspired Solar System populations exist in transformed NoöPunk form, but their details remain deliberately open.
+The Solar System was inhabited long before modern humanity.
 
-Possible directions include:
+The broad **Law of One-derived history is canon**, though dates, migrations, causes, and
+individual episodes may still be distorted or incomplete.
 
-- **Martians** — an ancient civilization destroyed or displaced before modern humanity, connected to ruins on Mars and possible transfers to Earth;
-- **Venusians** — inhabitants of an earlier habitable Venus who later became predominantly Noetic or relocated;
-- **Maldekians** — inhabitants of a destroyed world or planetary body, possibly associated with the asteroid belt, whose catastrophe became one of the Zookeepers' cautionary examples.
+- **Mars** once supported a technological civilization. That civilization is gone, but
+  **simple indigenous life still survives** and extensive ancient ruins remain. Some
+  Martian populations or consciousness-streams were displaced, transferred, or
+  reincarnated elsewhere, including connections to early Earth that remain under study.
+- **Venus** was once habitable and supported a civilization associated with the lineage
+  later known through **Ra**. Today only **simple life in the Venusian clouds** survives.
+  Most physical ruins from the old surface civilization were destroyed or rendered
+  inaccessible by roughly a billion years of catastrophic planetary change.
+- **Maldek** was a formerly inhabited world whose destruction produced what humans now
+  call the **asteroid belt**. Its catastrophe is one of the classic cautionary cases in
+  Confederation historical teaching.
+- **Jupiter and Saturn** have multiple moons with **simple indigenous life**, especially in
+  subsurface oceans and other protected environments. These biospheres are treated as
+  protected under Galactic Law.
+- The **Council of Saturn** is not merely a metaphorical esoteric body. It is a major
+  **Confederation / Zookeeper base and governing-contact node** associated with the Saturn
+  system, while also operating at a Noetic level that makes "base" an imperfect human term.
 
-These are canonical possibilities, not yet finalized historical chronologies.
+The Solar System is therefore not a formerly empty system suddenly receiving visitors. It
+is an old, repeatedly inhabited, repeatedly monitored ecological and historical zone.
 
 ### 33.30a Stargates, UAP traffic, Mars ruins, and SETI
 
@@ -2832,10 +2904,21 @@ This subsection preserves the author-specified Solar-System canon originally rec
 issue #60. It adds no mechanics and does not settle classifications that remain disputed
 inside the setting.
 
-**Stargates and UAP traffic.** Several **stargates**, constructed by the **Zookeepers**
-billions of years ago, have been discovered in the Solar System. They explain **some of
-the observed UAP traffic**. They do **not** explain all of it: UAPs are also observed using
-**warp drives**.
+**Wormholes, stargates, and UAP traffic.** The **Eclipse Phase-style wormhole / gate
+network is canon in NoöPunk**. Several ancient **stargates / wormholes**, some constructed
+or maintained by the **Zookeepers** billions of years ago, have been discovered in the
+Solar System. These may be only the locally known part of a much larger network, and more
+gates almost certainly remain undiscovered, dormant, hidden, sealed, or inaccessible.
+
+These gates explain **some of the observed UAP traffic** and permit effectively
+non-relativistic travel between distant locations. They do **not** explain all interstellar
+mobility: UAPs and galactic civilizations also use other propulsion and transit systems,
+including **warp drives**, conventional relativistic craft, and technologies not yet
+understood by humanity.
+
+The exact relationship between Zookeeper gates, Eclipse Phase-style Pandora Gates, natural
+wormholes, and independently constructed gate systems remains open. They may overlap,
+interoperate, or represent several distinct technologies.
 
 **Mars and Mars Eldrich.** Mars Eldrich's colonization effort discovered ancient **ruins**,
 indigenous or pre-existing **life**, and evidence of a **prior non-human civilization** on
@@ -2994,13 +3077,15 @@ hierarchy literally.
 
 #### The ETI / Bracewell analogue
 
-The machine/post-machine civilization already mentioned in §33.29 is explicitly the
-NoöPunk analogue of Eclipse Phase's **ETI / Bracewell-probe threat**.
+The hostile machine civilization already mentioned in §33.6b is the NoöPunk analogue of
+Eclipse Phase's **ETI / Bracewell-probe threat**.
 
-It is ancient, genocidal or assimilationist, and repeatedly sends probes that infect,
-manipulate, or destroy younger technological civilizations. It does **not** rule the galaxy.
-It is instead one of the recurring threats that helps explain why the Zookeepers continue
-to enforce civilization-level limits even after broad quarantine ends.
+It is an old and dangerous machine civilization that repeatedly sends probes capable of
+infecting, manipulating, assimilating, or destroying younger technological civilizations.
+It does **not** rule the galaxy, is not uniquely supreme, and is not the hidden explanation
+for all galactic history. It is one hostile machine polity among several possible rogue
+machine lineages, and one of the recurring threats that helps explain why galactic powers
+maintain extensive anti-probe defenses.
 
 #### The "Nazi Zookeepers" theory is not cosmic truth
 
