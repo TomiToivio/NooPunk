@@ -55,6 +55,19 @@ setting can contain national archives, crash retrievals, anomalous encounters, c
 ontologies, and open contact without fixing one universal order in which every revelation
 occurs.
 
+National reverse-engineering traditions differ substantially. The United States develops
+MJ-12; the Nordic countries build on Ghost Flier and Ghost Rocket recoveries; India and
+Egypt draw heavily on archaeological material; India also combines this with Vimana
+traditions and yogic siddhis; Israel develops Kabbalistic / Merkabah noetic engineering;
+and China enters the field later than the programmes described in the original Law of One
+period. The Soviet/Russian programme is intentionally unresolved but appears to involve
+Confederation-derived technology. **Russia has no canonical Disclosure event at present.**
+
+CE-5 and related contact practices may function as noetic summoning/contact rituals rather
+than reliable methods for calling physical spacecraft. DMT entities, astral projection,
+Hoffman/Faggin-style conscious-agent networks, and other Noetic experiences may be different
+interfaces to the same deeper conscious network.
+
 ## 20XX — BCI, transhumanism, and human cyborgification
 
 Brain-computer interfaces, prosthetics, sensory extensions, cognitive augmentation,
@@ -68,6 +81,15 @@ technologies in radically different ways.
 
 States, federations, corporations, movements, religions, cities, and regions respond
 differently to AI, PSI, NHI, transhumanism, and networked power.
+
+A **limited / hybrid war between Russia and Europe** ends without Russia breaking apart.
+The crisis accelerates European integration: the **European Union becomes a federal
+superpower and Ukraine joins the EU**.
+
+Russia then undergoes a **revolution followed by another period of democratization,
+institutional struggle, and disorder reminiscent of the post-Soviet transition**. Russia
+does **not** canonically descend into civil war or territorial breakup. Its later political
+settlement remains deliberately open.
 
 Some regions remain comparatively stable. Others experience war, authoritarian reaction,
 corporate sovereignty, institutional breakdown, radical federalization, commons-oriented
