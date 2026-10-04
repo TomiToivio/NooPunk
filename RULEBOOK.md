@@ -2323,23 +2323,41 @@ Its roots lie in:
 
 Over decades, parts of the system became increasingly autonomous from ordinary states and public institutions.
 
-The United States is not unique. **American, Soviet/Russian, and Chinese Legacy Programs
-are all canon**, broadly matching the pattern implied by the Law of One: secret state or
-state-adjacent organizations obtained anomalous materials, contact information, PSI
-research, and fragments of non-human technology while public institutions remained
-unaware.
+The United States is not unique, but human reverse-engineering traditions are **not one
+uniform global model**. Different states and cultures encountered different classes of
+artifacts, entities, archaeological remains, PSI traditions, and contact phenomena.
 
-- The **American program / MJ-12** is the oldest and most autonomous of the three in the
-  modern era and eventually becomes a partial breakaway civilization.
-- The **Soviet/Russian program** develops independently through military, intelligence,
-  aerospace, nuclear, and PSI institutions and preserves an enormous Cold War archive.
-- The **Chinese program** is the newest major Legacy Program. Ra did not mention it because
-  it either did not yet exist in mature form, remained too small or compartmented to be
-  relevant to those sessions, or arose substantially later. By Disclosure it has become a
-  major reverse-engineering power.
+- The **American program / MJ-12** is the oldest and most autonomous modern crash-retrieval
+  system and eventually becomes a partial breakaway civilization.
+- The exact history of the **Soviet / Russian programme is deliberately unresolved**.
+  Earlier versions that simply copied the American crash-retrieval model are no longer
+  canon. Its deepest technological inheritance appears to involve **Confederation-derived
+  technology**, but how the Soviet state obtained it, how much survived the Soviet collapse,
+  and what institutional descendants still possess it in 20XX remain open questions.
+- The **Chinese programme begins substantially later**, after the period described in the
+  original Law of One material. China becomes formidable, but it is still playing catch-up
+  with older Legacy traditions in the most exotic reverse-engineering fields.
+- A **Nordic programme** grows from recoveries and investigations associated with the
+  **Ghost Flier / Ghost Flyer wave of the 1930s** and the **Ghost Rockets of 1946**.
+  Sweden and neighboring Nordic states accumulate anomalous aerospace material decades
+  before the modern UAP era and eventually cooperate through a quiet regional research
+  network.
+- **India** develops an archaeological and consciousness-oriented programme around ancient
+  aerospace traditions, anomalous finds, **Vimana** traditions, and the practical study of
+  **yogic siddhis**. Its programme never cleanly separates aerospace engineering from
+  consciousness research.
+- **Egypt** develops a reverse-engineering tradition centered on anomalous archaeological
+  finds and technologies recovered from or inferred through ancient sites.
+- **Israel** develops an unusually noetic aerospace tradition in which advanced engineering
+  is combined with **Kabbalistic / Merkabah ritual technology**. In NoöPunk, the joke that
+  Israel builds "Merkabah spaceships" is substantially true: some vehicles use engineered
+  consciousness, symbolic geometry, and ritualized noetic control as functional parts of
+  their navigation or propulsion systems.
 
-These are not the only national programs, merely the three largest known human Legacy
-systems.
+These programmes should not be ranked on one simple technological ladder. They possess
+different fragments of the puzzle: recovered hardware, archaeological technology,
+Confederation knowledge, materials science, PSI practice, ritual technologies, or
+consciousness-mediated interfaces.
 
 MJ-12 acquired:
 
@@ -2390,8 +2408,15 @@ Canonical structural consequences include:
 - UFO / NHI Disclosure makes non-human presence undeniable and destabilizes secrecy
   systems, religions, sciences, geopolitics, and public ideas of humanity;
 - the Noösphere develops as human, machine, networked, and psionic collective intelligence;
-- geopolitical responses diverge sharply, producing zones of continuity, regulation,
-  acceleration, reaction, collapse, war, and experimentation;
+- a **limited / hybrid war between Russia and Europe** ends without a total continental war
+  or Russian breakup. The crisis accelerates European political integration: the
+  **European Union becomes a federal superpower and Ukraine joins the EU**;
+- Russia subsequently experiences a **revolution and another period of democratization,
+  institutional struggle, and disorder reminiscent of the post-Soviet transition**.
+  Russia remains a single state: **no canonical civil war or territorial breakup occurs**.
+  Its later political settlement in 20XX is intentionally unresolved;
+- geopolitical responses elsewhere diverge sharply, producing zones of continuity,
+  regulation, acceleration, reaction, local collapse, war, and experimentation;
 - humanity remains deeply divided: enthusiasm, terror, skepticism, indifference, religious
   interpretation, scientific curiosity, and political exploitation all coexist.
 
@@ -2404,6 +2429,40 @@ tectonic shifts moved under society until the old categories could no longer con
 
 Detailed crisis narratives formerly kept here are archived in
 `docs/archive/NARRATIVE_TIMELINE_VARIANTS.md`.
+
+### 33.27b Contact rituals, DMT, and the Conscious Agent Network
+
+NoöPunk treats several apparently different anomalous practices as culturally distinct
+interfaces to the same underlying **Noetic / Conscious Agent Network**.
+
+**CE-5** is therefore not assumed to be a reliable way of calling physical spacecraft.
+It is better modeled as a modern **summoning or contact ritual**: focused intention,
+meditation, group synchronization, expectation, symbolism, and altered attention may
+establish a noetic coupling. When something genuinely answers, the responding entity is
+most likely a **Plasmoid, Noetic intelligence, thought-form, or other consciousness-mediated
+phenomenon**. A physical craft may occasionally be involved, but it is not the default
+interpretation.
+
+Likewise, intense psychedelic states, especially **DMT**, can expose minds to structures
+normally filtered from ordinary perception. In the setting, several research traditions
+gradually converge on the possibility that these are different descriptions of one domain:
+
+- Donald Hoffman's **Conscious Agent Network**;
+- Faggin-inspired networks of fundamental conscious entities;
+- **DMT machine elves** and other recurrent psychedelic entities;
+- **astral projection** and some traditional out-of-body maps;
+- Noetic contact;
+- some forms of PSI and ritual magic.
+
+They are **not necessarily identical experiences or entities**, but they can be different
+human access modes, cultural maps, or phenomenological cross-sections of the same deeper
+conscious network.
+
+This preserves ontological uncertainty while giving the setting a unifying hypothesis:
+the Psyche / Noetic layer is not an empty private dream-space but a structured domain in
+which conscious agents can encounter one another outside ordinary sensory channels.
+
+---
 
 ### 33.28 Rogue-AGI disasters
 
@@ -2764,14 +2823,22 @@ narrative variants unless separately reintroduced as fictional 20XX analogues.
 
 The global disclosure cascade is intentionally plural rather than harmonized:
 
-- **China** emphasizes propulsion, materials science, and claims of independent technical
-  breakthroughs;
-- **Russia** releases military encounter records and long-term anomalous-aerospace files;
+- **China** emphasizes propulsion and materials science, but its reverse-engineering effort
+  is younger than the oldest American and European programmes and remains behind them in
+  several exotic fields;
+- the **Nordic countries** connect modern UAP research to classified material from the
+  Ghost Fliers of the 1930s and the Ghost Rockets of 1946;
 - **Brazil** emphasizes traumatic contact, biological, and medical cases;
 - **France** releases scientific, military, aerospace, and intelligence archives;
-- **Egypt** foregrounds archaeological material interpreted as ancient contact;
-- **India** releases archaeological, astronomical, religious, and textual material
-  interpreted as evidence of very old NHI interaction.
+- **Egypt** foregrounds archaeological recoveries and ancient technological material;
+- **India** combines archaeological and astronomical evidence with Vimana traditions,
+  consciousness research, and yogic siddhis;
+- **Israel** reveals a noetic engineering tradition in which Kabbalah, Merkabah mysticism,
+  advanced physics, and aerospace technology have partially converged.
+
+**Russia is not part of this canonical Disclosure cascade.** Its Soviet/Russian
+reverse-engineering history and its current relationship to NHI secrecy remain deliberately
+unresolved until that part of the setting is redesigned.
 
 These disclosures conflict with one another. There is never a single authoritative human
 Disclosure narrative.
