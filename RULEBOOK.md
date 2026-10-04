@@ -1588,7 +1588,13 @@ The four best-known ufological species/categories are now understood more specif
 - **Pleiadians** are human populations that somehow ended up in the Pleiades and are broadly
   **Confederation-aligned**. One major Pleiadian lineage descends from Atlantean survivors
   or transplanted Atlantean populations, while other Pleiadian populations derive from
-  different human migrations and interventions.
+  different human migrations and interventions. Their deeper origin is deliberately
+  unresolved. Because Confederation accounts also describe humans being genetically
+  engineered roughly **70,000 years ago** in connection with the transfer of Martian
+  populations to Earth, researchers cannot agree on whether Pleiadians are descendants of
+  Earth humans, a sister population, an older human lineage, or evidence that the category
+  "human" predates its supposed terrestrial origin. **Were the Pleiadians the original
+  humans?** NoöPunk leaves the question open.
 - **Reptilians** are among the most powerful biological civilizations within the
   **Orion Group** and are widely regarded as its principal old political-military elite,
   although Orion itself contains many species and is not a Reptilian monoculture.
@@ -2878,9 +2884,15 @@ The broad **Law of One-derived history is canon**, though dates, migrations, cau
 individual episodes may still be distorted or incomplete.
 
 - **Mars** once supported a technological civilization. That civilization is gone, but
-  **simple indigenous life still survives** and extensive ancient ruins remain. Some
-  Martian populations or consciousness-streams were displaced, transferred, or
-  reincarnated elsewhere, including connections to early Earth that remain under study.
+  **simple indigenous life still survives** and extensive ancient ruins remain.
+  Confederation accounts state that roughly **70,000 years ago** they genetically
+  engineered human bodies in connection with moving Martian populations to Earth. This
+  makes the ancient Martians' biological identity one of the setting's major unresolved
+  questions. **Were the Martians already human, were they transferred into engineered
+  human bodies, or were "Martian" and "human" already branches of an older lineage?**
+  Likewise, the relationship between Martians, Earth humans, and the apparently human
+  Pleiadians remains scientifically and politically contested. No definitive human family
+  tree is canon.
 - **Venus** was once habitable and supported a civilization associated with the lineage
   later known through **Ra**. Today only **simple life in the Venusian clouds** survives.
   Most physical ruins from the old surface civilization were destroyed or rendered
