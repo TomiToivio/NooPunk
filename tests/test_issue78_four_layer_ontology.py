@@ -42,15 +42,20 @@ def read() -> str:
     return (ROOT / RULEBOOK).read_text(encoding="utf-8")
 
 
+#: The ontology section, anchored by its stable heading text rather than a section
+#: number. Section numbers are reused by later commits (the glossary took 34 once
+#: already), so keying on the number is what let a clobber read as "content moved".
+ONTOLOGY_HEADING = "The four NoöPunk systems"
+
+
 def section() -> str:
-    """The raw body of §34 (heading to §35), or "" if it is missing."""
+    """The raw body of the four-layer ontology section, or "" if it is missing."""
     text = read()
-    marker = "## 34."
-    if marker not in text:
-        return ""
-    body = text.split(marker, 1)[1]
-    nxt = body.find("\n## 35.")
-    return body[:nxt] if nxt != -1 else body
+    match = re.search(
+        rf"(?ms)^##\s+\d+\.\s+[^\n]*{re.escape(ONTOLOGY_HEADING)}[^\n]*\n(.*?)(?=^##\s+\d+\.|\Z)",
+        text,
+    )
+    return match.group(1) if match else ""
 
 
 def flat() -> str:
@@ -61,7 +66,7 @@ def flat() -> str:
 
 class FourLayerOntologyRecordedTests(unittest.TestCase):
     def test_the_section_exists_and_names_all_four_layers(self) -> None:
-        self.assertIn("## 34.", read())
+        self.assertIn(ONTOLOGY_HEADING, read())
         text = flat()
         for layer in ("physical", "psychic", "social", "cybernetic"):
             with self.subTest(layer=layer):
@@ -69,8 +74,8 @@ class FourLayerOntologyRecordedTests(unittest.TestCase):
 
     def test_each_layer_has_a_core_question(self) -> None:
         text = section()
-        for heading in ("#### 34.2.1 Physical", "#### 34.2.2 Psychic",
-                        "#### 34.2.3 Social", "#### 34.2.4 Cybernetic"):
+        for heading in ("#### 36.2.1 Physical", "#### 36.2.2 Psychic",
+                        "#### 36.2.3 Social", "#### 36.2.4 Cybernetic"):
             with self.subTest(heading=heading):
                 self.assertIn(heading, text)
         self.assertEqual(text.count("**Core question:**"), 4,
@@ -93,7 +98,7 @@ class FourLayerOntologyRecordedTests(unittest.TestCase):
         self.assertIn("no separate linguistic layer", text)
         self.assertIn("do not create a separate linguistic layer", text)
         # ...and language is explicitly placed inside Social, not beside it
-        social = flat().split("34.2.3 social", 1)[1].split("34.2.4 cybernetic", 1)[0]
+        social = flat().split("36.2.3 social", 1)[1].split("36.2.4 cybernetic", 1)[0]
         self.assertIn("language", social)
 
 
@@ -205,16 +210,16 @@ class AntiInventionTests(unittest.TestCase):
     def test_the_section_invents_no_dice_or_statistics(self) -> None:
         """The ONTOLOGY invents no mechanics -- excluding the status subsection.
 
-        §34.10 is a status note recording what the separate #74 prototype does
+        §35.10 is a status note recording what the separate #74 prototype does
         ("deterministic Python owns mechanics and state: legal actions, ratings,
         dice, modifiers..."). That sentence *describes* the prototype's scope; it
         is not the ontology authoring a statistic, which is what this guard is
         for. Forbidding the word anywhere in §34 therefore failed on text that
-        obeys the rule, so the check is scoped to the ontology itself and §34.10
+        obeys the rule, so the check is scoped to the ontology itself and §35.10
         is excluded by name.
         """
         body = section()
-        marker = re.search(r"(?m)^#{3,4} 34\.10", body)
+        marker = re.search(r"(?m)^#{3,4} 36\.10", body)
         ontology = body[: marker.start()] if marker else body
         text = " ".join(re.sub(r"[>*_`]", " ", ontology).split()).lower()
         for mechanic in ("2d6", "dice", "initiative", "hit point", "armour", "armor"):
@@ -223,8 +228,8 @@ class AntiInventionTests(unittest.TestCase):
         # and the exclusion must stay meaningful: the prototype note is still there
         self.assertRegex(
             body,
-            r"(?m)^#{3,4} 34\.10",
-            "the §34.10 status subsection this exclusion names has moved or been removed",
+            r"(?m)^#{3,4} 36\.10",
+            "the §35.10 status subsection this exclusion names has moved or been removed",
         )
 
     def test_no_concrete_future_dates(self) -> None:

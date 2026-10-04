@@ -6,6 +6,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 RULEBOOK = ROOT / "RULEBOOK.md"
+#: Issue #98 moved the narrative named-actor detail (Lockheed Martin, the OpenAI chief's
+#: fate, etc.) out of the canonical rulebook into this archive and replaced active use of
+#: living real-world actors with fictional analogues. The #83 guard follows that split.
+ARCHIVE = ROOT / "docs/archive/NARRATIVE_TIMELINE_VARIANTS.md"
 
 
 def text() -> str:
@@ -24,6 +28,11 @@ def text() -> str:
     """
     raw = RULEBOOK.read_text(encoding="utf-8")
     return " ".join(raw.split())
+
+
+def archive_text() -> str:
+    """Whitespace-collapsed narrative-archive text (issue #98 archive)."""
+    return " ".join(ARCHIVE.read_text(encoding="utf-8").split())
 
 
 class Issue83LoreTests(unittest.TestCase):
@@ -97,16 +106,24 @@ class Issue83LoreTests(unittest.TestCase):
             "ETI / Bracewell-probe threat",
             '"Nazi Zookeepers" theory is not cosmic truth',
             "one transition in the development of planetary consciousness",
-            "Lockheed Martin",
-            "Sam Altman's body is never recovered",
         ):
+            self.assertIn(s, t)
+
+    def test_named_actor_detail_is_preserved_in_the_archive(self) -> None:
+        """#98 fictionalised active actors and archived the named-actor detail; the canon
+        must still be *preserved* there rather than deleted (a #98 acceptance criterion)."""
+        t = archive_text()
+        for s in ("Lockheed Martin", "Sam Altman"):
             self.assertIn(s, t)
 
     def test_uncertainty_and_fiction_framing(self) -> None:
         t = text()
         self.assertIn("The setting becomes stranger after contact, not simpler.", t)
         self.assertIn("No single taxonomy should explain every UAP, NHI, PSI, or mythic phenomenon.", t)
-        self.assertIn("alternate-history fictional uses of real people, organizations, and countries", t)
+        # #98 replaced the blanket "fictional uses of real people" disclaimer with a
+        # fictional-analogue policy; assert that policy rather than the withdrawn wording.
+        self.assertIn("fictional analogue", t)
+        self.assertIn("Real people may still be named as historical, scientific,", t)
 
 
 if __name__ == "__main__":
