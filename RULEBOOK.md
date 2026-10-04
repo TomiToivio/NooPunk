@@ -61,23 +61,111 @@ The code should implement the rulebook. The rulebook should not merely describe 
 
 For the current development phase, describe the game as:
 
-> **NoöPunk: Eclipse Phase 2nd Edition homebrew / Concordia RPG-Simulation**
+> **NoöPunk: a Concordia RPG/social simulation using heavily modified Eclipse Phase 2E rules, set in an alternate pre-Fall 20XX.**
 
-This is the current canonical setting relationship.
+NoöPunk is a portmanteau of **Noösphere** and **Cyberpunk**.
 
-NoöPunk shares the Eclipse Phase technological and transhuman baseline, but follows an **alternate pre-Fall history**. It has its own divergences in:
-- ideological conflicts,
-- factions and political economies,
-- AI / AGI / NHI framing,
-- Noösphere,
-- panpsychism,
-- psionics,
-- cyborg and transhuman themes,
-- social-science simulation layer,
-- LaclauGPT-inspired ideological contestation,
-- Panpsychic Cyborg Multitude themes.
+- **Cyberpunk** is the cybernetic side: artificial intelligence, ubiquitous computation, networks, surveillance, corporate and state power, cybernetic augmentation, synthetic media, and technologically mediated social life. William Gibson is a central literary influence.
+- **Noösphere** is the psychic side: consciousness, collective intelligence, psionics, NHI, and the emergence of a planetary sphere of mind. Pierre Teilhard de Chardin is the central conceptual reference.
 
-Eclipse Phase supplies both the **rules/technology baseline and parent continuity**. NoöPunk's identity comes from the alternate timeline, its social simulation, and its Noösphere-side paradigm shifts.
+The year is deliberately written as **20XX**. Ray Kurzweil's 2045 Singularity date is an important thematic reference, but NoöPunk does not commit to a fixed chronology for future events.
+
+### 2.1 Social-science foundation
+
+NoöPunk grows directly out of the intellectual terrain explored by the **LaclauGPT** research project. The social-science background is part of the game model, not decorative lore.
+
+**Ernesto Laclau** provides the core model of ideology, antagonism, political identity, floating and empty signifiers, coalition formation, and struggle for hegemony. The major concepts of 20XX, including **AI, AGI, NHI, PSI, consciousness, humanity, safety, freedom, progress, and the Singularity**, are themselves contested signifiers. Factions struggle to stabilize their meanings and organize society around them.
+
+**Manuel Castells** provides the network-society and communication-power layer. Power is exercised by programming networks, connecting and disconnecting actors, shaping communication, and controlling flows of information, capital, technology, and attention.
+
+**Simon Lindgren** provides a bridge between critical theory, AI, digital society, and social data science. NoöPunk should use social-science methods inside the simulation wherever useful, including:
+
+- Social Network Analysis;
+- discourse-network analysis;
+- agent-based social simulation;
+- analysis of large-scale digital communication;
+- data-driven modeling of ideological formations and social change.
+
+The game should ask not only what a technology can do, but **who defines it, who benefits, who is excluded, which futures become imaginable, and which forms of power it stabilizes or disrupts**.
+
+### 2.2 AI as ideological conflict
+
+NoöPunk turns contemporary AI discourse into factions, institutions, policies, technologies, and historical outcomes.
+
+The setting contains competing currents rather than one canonical ideology:
+
+- accelerationist, Cosmist, and techno-optimist visions inspired by figures such as **Ray Kurzweil** and **Ben Goertzel**;
+- **Critical AI** perspectives concerned with political economy, inequality, exclusion, ideology, and concentrated technological power;
+- **existential-risk** perspectives associated with AGI catastrophe and loss of control.
+
+These positions are not merely opinions held by NPCs. They shape states, corporations, movements, research programmes, laws, military doctrines, infrastructure, and the uneven geography of 20XX.
+
+### 2.3 Cyberpunk updated for 20XX
+
+NoöPunk begins from the premise that many classic cyberpunk themes are already recognizable in contemporary society. It therefore updates cyberpunk using current social trends, real technological trajectories, social science, political economy, AI ideology, ubiquitous networks, synthetic media, surveillance, platform power, cybernetic augmentation, and emerging collective intelligence.
+
+The target is not retro-1980s cyberpunk preserved in amber. It is **cyberpunk that kept evolving**.
+
+**Philip K. Dick is the most NoöPunkish literary influence**, especially *Ubik*, *VALIS*, *A Scanner Darkly*, *Do Androids Dream of Electric Sheep?*, and *The Three Stigmata of Palmer Eldritch*. His unstable boundaries between reality, technology, altered consciousness, institutions, paranoia, and the divine are central to the tone.
+
+### 2.4 The Noösphere and simultaneous paradigm shifts
+
+NoöPunk places several paradigm shifts on top of one another:
+
+1. the AI / AGI revolution;
+2. NHI / UAP Disclosure;
+3. a scientific revolution in consciousness, PSI, and panpsychism;
+4. the emergence of the Noösphere as technologically and psychically connected collective intelligence.
+
+The setting can therefore be understood as being about **Non-Human Intelligence** in a broad sense, including both **Artificial Intelligence** and **Extraterrestrial / anomalous Intelligence**.
+
+Important conceptual influences include:
+
+- **Alexander Wendt**, especially *Quantum Mind and Social Science* and *The Last Humans*;
+- **Jacques Vallée**, whose Interdimensional Hypothesis informs the technological, biological, consciousness-related, psionic, and spacetime-anomalous character of the NHI phenomenon;
+- **Diana Walsh Pasulka**, whose work informs the religious, cultural, technological, and institutional consequences of UAP/NHI contact and provides a bridge back to Teilhard's Noösphere;
+- **Federico Faggin**, whose Quantum Information Panpsychism is the primary fictional scientific basis for NoöPunk's post-materialist consciousness paradigm;
+- **Penrose and Hameroff**, **Donald Hoffman**, and **Bernardo Kastrup** as additional consciousness influences;
+- psychedelic and DMT research aesthetics, including **Andrew Gallimore**;
+- **Dean Radin** as an inspiration for PSI, entanglement, and the interpretation of "magic" as a cultural vocabulary for anomalous consciousness phenomena.
+
+These are inspirations for a fictional setting. Their real-world scientific or philosophical status does not automatically establish NoöPunk's fictional conclusions.
+
+### 2.5 Relationship to Eclipse Phase
+
+Eclipse Phase supplies the **rules and transhuman-technology baseline**, but NoöPunk follows a substantially different world history.
+
+Canonical divergences include:
+
+- **the Fall has not happened**;
+- **Earth remains inhabited and politically central**;
+- there have been multiple localized **Rogue AGI Disasters**, but no global extinction-level Fall;
+- some regions have post-apocalyptic conditions while global civilization remains functional;
+- Eclipse Phase-level technologies exist, but distribution is highly uneven;
+- most humans still inhabit their original biological bodies;
+- roughly **25% of humanity has cortical stacks**;
+- roughly half of those with cortical stacks have already resleeved at least once;
+- roughly **50% of humanity has some cybernetic augmentation**, ranging from medically necessary replacements to mesh inserts and cognitive enhancements;
+- player characters may encounter much higher concentrations of transhumans because of the institutions, crises, conflicts, and frontier environments in which they operate.
+
+NoöPunk should preserve EP2 mechanics where they are useful, simplify them where Concordia and large-scale simulation require it, and replace them where the NoöPunk world model demands something different.
+
+### 2.6 Core design identity
+
+NoöPunk is simultaneously:
+
+- a cyberpunk RPG;
+- a Noösphere / consciousness RPG;
+- a transhuman RPG;
+- an NHI/UAP-contact setting;
+- a political and ideological simulation;
+- a social-science simulation;
+- a Concordia multi-agent world;
+- an Eclipse Phase-derived rules experiment.
+
+Its central question is:
+
+> **Who gets to define what humanity, intelligence, consciousness, progress, danger, and reality mean when several paradigm shifts happen at once?**
 
 ---
 
