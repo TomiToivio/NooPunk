@@ -336,16 +336,18 @@ organisation, a history, or a mechanic.
 **Firewall.** EP2's cross-faction conspiracy may **exist differently, emerge
 differently, or not yet exist**, depending on where NoöPunk's divergence lands. The
 setting does not currently state which. Nothing is established about its membership,
-reach, methods, or whether it has formed at all. (Note a wording trap: the phrase
-"Great Firewall" does appear in §33.27, where it refers to the Chinese state's internet
-controls — an unrelated use of the words, not this organisation.)
+reach, methods, or whether it has formed at all. (Note a wording trap: the words "Great
+Firewall" also name the Chinese state's internet controls — an unrelated use of the same
+words, not this organisation. That passage is no longer in this rulebook; #98 refactored
+the background chronology into unordered 20XX paradigm shifts, and the wording now lives
+only in `docs/archive/NARRATIVE_TIMELINE_VARIANTS.md`, which is not active canon.)
 
 **TITANs.** NoöPunk is **pre-Fall**: nothing comparable to the canonical Eclipse Phase
 Fall has occurred (§33.1), and the setting must **not** assume that it has. NoöPunk's
 rogue-AGI history is real and specific — the localized "AGI holocausts" of the NHI
-Crisis, recorded in §33.28 and §33.28b — but whether it is a *TITAN* trajectory, a
-different one, or no trajectory at all is **not decided**. These are separate questions
-and the answer to the second does not follow from the first.
+Crisis, recorded in §33.28 — but whether it is a *TITAN* trajectory, a different one, or
+no trajectory at all is **not decided**. These are separate questions and the answer to
+the second does not follow from the first.
 
 NoöPunk may ultimately replace EP2's character architecture substantially. The conceptual distinction between identity and embodiment is useful enough to retain during the prototype.
 
@@ -1132,7 +1134,7 @@ NoöPunk draws this specifically from **Alexander Wendt's** work on the politics
 disclosure: there is no single shared human reaction to contact, and the social response
 is a problem of political theory rather than a single public "reveal". Wendt's *Quantum
 Mind and Social Science* is also one of the setting's consciousness-theory inspirations
-(§35.5, §33.17). His work is an inspiration for this **fictional** worldbuilding; the
+(§36.5, §33.17). His work is an inspiration for this **fictional** worldbuilding; the
 setting does not present his arguments as established science.
 
 ### 33.3 Butlerian Jihad and bioconservative reaction
@@ -3282,18 +3284,27 @@ a one- or two-sentence note explaining their contribution.
 
 ### 35.3 Fiction books
 
-**Purpose:** inspirations rather than literal factual sourcebooks.
+**Purpose:** inspirations rather than literal factual sourcebooks. A fictional work
+does not become literal NoöPunk canon merely by appearing here unless another canon
+section explicitly imports a concept from it.
 
-Seed this list from works already cited elsewhere in the rulebook, including:
+Current anchors include:
 
-- **Philip K. Dick — _Ubik_.** Normalized professional PSI and counter-PSI services.
-- **Philip K. Dick — _VALIS_.** Information as revelation, ontological shock, and the
-  VALIS-like activation event.
-- **William Gibson — _Neuromancer_.** Cyberspace, cyberpunk social structure, and
-  networked power.
+- **Philip K. Dick — _Ubik_.**
+  - Commercialized PSI, anti-psi, ontological instability, mundane psychic services.
+- **Philip K. Dick — _VALIS_.**
+  - Revelatory information, altered consciousness, religious ambiguity, reality instability.
+- **Philip K. Dick — _A Scanner Darkly_.**
+  - Surveillance, identity fragmentation, drugs, institutional paranoia.
+- **Philip K. Dick — _Do Androids Dream of Electric Sheep?_.**
+  - Artificial persons, empathy, unstable human/machine boundaries.
+- **Philip K. Dick — _The Three Stigmata of Palmer Eldritch_.**
+  - Corporate power, altered reality, colonization, drugs, and ontological intrusion.
+- **William Gibson — _Neuromancer_.**
+  - Cyberspace, corporate power, networked life, AI, and the foundational cyberpunk grammar.
 
-Add further fiction when it materially shapes NoöPunk's tone, society, technology, or
-cosmology.
+Add further fiction here when it meaningfully changes NoöPunk's tone, ontology, social
+structure, technology, or scenario design.
 
 ### 35.4 Movies and television
 
@@ -3308,33 +3319,36 @@ Maintain a curated list of screen works that influence NoöPunk's:
 - corporate and state power;
 - ontological horror and wonder.
 
-Add titles only when their influence is concrete enough to explain in a short annotation.
+Current list: **to be expanded as sources are selected.** Add titles only when their
+influence is concrete enough to explain in a short annotation.
 
 ### 35.5 Role-playing games
 
-The RPG list should record both mechanical and setting influences.
+The RPG list records both mechanical and setting influences.
 
-At minimum:
-
-- **Eclipse Phase 2nd Edition** — current rules and transhuman-technology baseline, plus
-  alternate pre-Fall parent continuity.
-- **Cyberpunk 2013 / 2020 / RED** — street-level cyberpunk, corporations, technology,
-  urban social structure, and the old-school mechanical sensibility that NoöPunk often
-  simplifies from.
-- **Shadowrun** — model for combining a cyberpunk street world with a second ontological
+- **Posthuman Studios — _Eclipse Phase, Second Edition_.** Primary rules and
+  transhuman-technology baseline. NoöPunk is an alternate pre-Fall homebrew continuity and
+  heavily modifies this material.
+- **Cyberpunk 2013 / Cyberpunk 2020 / Cyberpunk RED.** Major cyberpunk RPG lineage,
+  especially important for street-level technology, social conflict, corporations,
+  hacking, equipment, urban social structure, and the feel of human-scale life inside
+  high technology — the old-school mechanical sensibility NoöPunk often simplifies from.
+- **Shadowrun.** Model for combining a cyberpunk street world with a second ontological
   layer; NoöPunk replaces urban fantasy with the Noösphere, PSI, NHI, and QIP.
-- **The Sprawl** — inspiration for narrativist cyberpunk play and faction pressure.
-- **CY_BORG** — inspiration for extreme mechanical compression and fast play.
+- **The Sprawl.** Inspiration for narrativist cyberpunk play and faction pressure.
+- **CY_BORG.** Inspiration for extreme mechanical compression and fast play.
 
 Record whether a game contributes **rules**, **setting**, **tone**, or some combination.
+Add further RPGs when they contribute useful mechanics, scenario structures, simulation
+ideas, setting techniques, or aesthetic reference points.
 
 ### 35.6 Computer games
 
 Maintain a list of computer games that influence NoöPunk's playable form, interface,
 simulation model, cyberpunk atmosphere, AI society, hacking, or transhumanism.
 
-Relevant inspirations should be added with a short explanation of the contribution rather
-than only the title.
+Current list: **to be expanded as sources are selected.** Relevant inspirations should be
+added with a short explanation of the contribution rather than only the title.
 
 ### 35.7 Maintenance rule
 
@@ -3347,7 +3361,11 @@ new work:
 2. state what it contributes;
 3. distinguish **non-fiction world-model source** from **fictional inspiration**;
 4. preserve ideological disagreement between sources rather than harmonizing it away;
-5. cross-reference the canon section that actually uses the source when useful.
+5. distinguish **real-world claims** from **NoöPunk canon and fictional extrapolation**;
+6. cross-reference the canon section that actually uses the source when useful — a more
+   detailed theory section elsewhere in this rulebook may already cover it;
+7. avoid turning the list into an indiscriminate catalog: inclusion should mean the work
+   materially influences the setting, mechanics, simulation, or aesthetics.
 
 Issue #99 tracks the creation and continued maintenance of this list.
 
@@ -3920,150 +3938,4 @@ conscious AGI via quantum processors, uploading continuity and the Council of Sa
 elements of its fictional world model, not as settled descriptions of the real world.
 
 ---
-
-## 38. Living sources, recommended reading, and influences
-
-This is the **living influence map** for NoöPunk. It complements the more theory-oriented
-bibliography in §37 by grouping works according to how they are used in the design of the
-setting, rules, simulation, tone, and aesthetics.
-
-> **Whenever a new work becomes a meaningful source or influence for NoöPunk, add it to this list.**
-
-Prefer concise annotations explaining **what the work contributes** rather than maintaining
-a bare bibliography.
-
-Real-world works may describe mutually incompatible theories, forecasts, ideologies, or
-interpretations. That disagreement is often exactly why they belong here. Inclusion does
-**not** mean that NoöPunk endorses a work as scientifically established or politically
-correct. The setting may fictionalize, extrapolate, combine, or canonize contested ideas
-without claiming that they are established fact outside NoöPunk.
-
-### 38.1 Non-fiction books
-
-These works are more than aesthetic references. They describe, model, theorize, or debate
-how the **society, technology, science, politics, consciousness, AI, NHI/ufology, psionics,
-and future history** of NoöPunk may work.
-
-#### AI ideological triad
-
-These three books deliberately sit together because they describe **different poles of the
-antagonistic AI field** that shapes NoöPunk.
-
-- **Eliezer Yudkowsky & Nate Soares — _If Anyone Builds It, Everyone Dies: Why Superhuman AI Would Kill Us All_ (2025).**
-  - **NoöPunk use:** strongest Doomer / existential-risk pole.
-  - **Setting interpretation:** this catastrophic trajectory is genuinely possible and has
-    occurred to other civilizations, but it is **not inevitable**. A rough in-world estimate
-    is on the order of **10%**, rather than certainty.
-
-- **Ray Kurzweil — _The Singularity Is Nearer: When We Merge with AI_ (2024).**
-  - **NoöPunk use:** strong Accelerationist / techno-optimist account of the gains from a
-    successful Singularity.
-  - **Setting interpretation:** the benefits Kurzweil describes are also genuinely possible
-    and are visible in successful regions, institutions, and human-machine assemblages of
-    20XX.
-
-- **Emily M. Bender & Alex Hanna — _The AI Con: How to Fight Big Tech's Hype and Create the Future We Want_ (2025).**
-  - **NoöPunk use:** the AI-Critical / political-economy pole.
-  - **Setting interpretation:** its critique of hype, concentrated corporate power, labor
-    impacts, surveillance, and Big Tech ideology accurately describes major failures of AI
-    capitalism in the setting.
-
-A compact ideological map is:
-
-```text
-Doomer / x-risk
-      ↕
-Accelerationist / techno-optimist
-      ↕
-AI-Critical / political economy
-```
-
-NoöPunk must preserve the **antagonism** between these positions rather than declaring one
-of them the single correct ideology. Different factions, institutions, regions, and
-historical episodes may make different parts of each analysis look correct.
-
-#### Additional non-fiction sources
-
-Add further non-fiction works here as they become meaningful sources for the setting.
-Useful domains include:
-
-- sociology and social theory;
-- political economy;
-- futurology;
-- philosophy;
-- consciousness studies;
-- AI and AI safety;
-- critical AI studies;
-- cybernetics;
-- parapsychology;
-- ufology / NHI studies;
-- social data science;
-- network science;
-- transhumanism and posthumanism.
-
-The detailed theoretical bibliography in §37 already contains many current candidates and
-may be promoted into this living list when their specific design contribution is clear.
-
-### 38.2 Fiction books
-
-Fictional works are **inspirations**, not literal factual sourcebooks for world mechanics
-unless another canon section explicitly says otherwise.
-
-Current anchors include:
-
-- **Philip K. Dick — _Ubik_.**
-  - Commercialized PSI, anti-psi, ontological instability, mundane psychic services.
-- **Philip K. Dick — _VALIS_.**
-  - Revelatory information, altered consciousness, religious ambiguity, reality instability.
-- **Philip K. Dick — _A Scanner Darkly_.**
-  - Surveillance, identity fragmentation, drugs, institutional paranoia.
-- **Philip K. Dick — _Do Androids Dream of Electric Sheep?_.**
-  - Artificial persons, empathy, unstable human/machine boundaries.
-- **Philip K. Dick — _The Three Stigmata of Palmer Eldritch_.**
-  - Corporate power, altered reality, colonization, drugs, and ontological intrusion.
-- **William Gibson — _Neuromancer_.**
-  - Cyberspace, corporate power, networked life, AI, and the foundational cyberpunk grammar.
-
-Add further fiction here when it meaningfully changes NoöPunk's tone, ontology, social
-structure, technology, or scenario design.
-
-### 38.3 Movies / TV
-
-Screen media are primarily references for **tone, aesthetics, world structure, social
-organization, technology, transhumanism, cyberpunk, NHI, PSI, and ontological weirdness**.
-
-Current list: **to be expanded as sources are selected.**
-
-### 38.4 Role-playing games
-
-- **Posthuman Studios — _Eclipse Phase, Second Edition_.**
-  - Primary rules and transhuman-technology baseline. NoöPunk is an alternate pre-Fall
-    homebrew continuity and heavily modifies this material.
-- **Cyberpunk 2013 / Cyberpunk 2020 / Cyberpunk RED.**
-  - Major cyberpunk RPG lineage and especially important for street-level technology,
-    social conflict, corporations, hacking, equipment, and the feel of human-scale life
-    inside high technology.
-
-Add further RPGs here when they contribute useful mechanics, scenario structures,
-simulation ideas, setting techniques, or aesthetic reference points.
-
-### 38.5 Computer games
-
-Computer games are primarily references for **interaction design, simulation structure,
-systems, interfaces, tone, emergent play, AI/NPC behavior, hacking, exploration, and
-cyberpunk/transhuman atmosphere**.
-
-Current list: **to be expanded as sources are selected.**
-
-### 38.6 Maintenance rule for agents and contributors
-
-When adding a source:
-
-1. place it in the most appropriate category;
-2. give a short annotation explaining its contribution to NoöPunk;
-3. preserve ideological disagreement rather than harmonizing incompatible works;
-4. distinguish **real-world claims** from **NoöPunk canon and fictional extrapolation**;
-5. cross-reference a more detailed theory section elsewhere in the rulebook when useful;
-6. avoid turning the list into an indiscriminate catalog: inclusion should mean the work
-   materially influences the setting, mechanics, simulation, or aesthetics.
 
