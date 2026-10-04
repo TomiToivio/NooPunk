@@ -110,11 +110,48 @@ The speculative consciousness / NHI layer draws inspiration from sources identif
 
 Do not present speculative setting assumptions as established real-world scientific facts.
 
-### 6. Time convention
+### 6. Background timeline discipline
 
 Canonical future dates are written as **20XX** unless the author explicitly says otherwise.
 
-The world is approximately a 2045-like extrapolation from the 2026 situation, but agents must not assign exact future dates on their own.
+Ray Kurzweil's 2045 Singularity is a thematic and intellectual reference, not the canonical
+date of the setting. Agents must not assign exact future dates on their own.
+
+The background timeline is a set of **unordered paradigm shifts**, not a prediction of a
+single future chronology. Treat the following as binding:
+
+- describe the major changes that create the NoöPunk world without inventing exact dates;
+- do not infer a global "first this, then that" sequence unless the dependency is explicit canon;
+- do not turn a numbered list, document order, or vivid narrative example into chronology;
+- keep Cyberpunk intensification, the AI/AGI revolution, the QIP/PSI scientific revolution,
+  UFO/NHI Disclosure, and Noösphere emergence conceptually distinct even when they interact;
+- **QIP/PSI must arise independently of UFO/NHI Disclosure**. Disclosure may later reshape
+  its interpretation, but it is not the source of the scientific breakthrough;
+- write canonical background at the level of paradigm shifts, geopolitical consequences,
+  technologies, ideologies, scientific revolutions, and social transformations rather than
+  minute-by-minute incident narration;
+- preserve detailed raids, speeches, crisis sequences, national disclosure cascades, and
+  other cinematic variants in `docs/archive/NARRATIVE_TIMELINE_VARIANTS.md`, not as the
+  canonical chronology;
+- if chronology is genuinely required by a specific scenario, label it as scenario-local or
+  a narrative variant unless the author explicitly promotes it to canon.
+
+### 6.1 Real people and fictional 20XX actors
+
+Real-world scholars, scientists, philosophers, writers, and theorists may retain their real
+names when NoöPunk is attributing ideas or intellectual influence.
+
+Political, corporate, military, media, and celebrity figures acting **inside fictional
+20XX** should normally be fictionalized. Preserve the recognizable social role or inspiration
+when useful, but do not automatically carry a living real person into the future-history
+narrative.
+
+Examples of acceptable real-name attribution include Federico Faggin, Donald Hoffman,
+Dean Radin, Jacques Vallée, Diana Walsh Pasulka, Alexander Wendt, and Ray Kurzweil when
+cited as intellectual influences.
+
+Archived drafts containing real public figures remain archive material; agents must not
+silently restore them as active canon.
 
 ### 7. Retrocyberpunk tone is not a license to add lore
 
