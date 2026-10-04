@@ -1246,6 +1246,49 @@ Some believers treat every surviving sentence as revelation. Academic and instit
 orthodoxy is more cautious: **Ra was real; the contact was real; much of the cosmology is
 real; the transcript is not perfect.**
 
+The Law of One is especially important to humans and human movements that orient themselves
+toward the **Confederation**. For these groups it functions as scripture, contact testimony,
+cosmology, ethical teaching, and a guide to Service-to-Others alignment. It is not, however,
+a universal human holy book.
+
+Large parts of humanity remain unconvinced or hostile to this interpretation. Common human
+positions include:
+
+- **skepticism**: the Ra contact was real, but its interpretation, motives, or reliability
+  remain uncertain;
+- **alien-psyop theory**: the Law of One is regarded as a sophisticated influence operation
+  designed to recruit humanity into an extraterrestrial political or religious bloc;
+- **materialism or atheism**: NHI are accepted as real while metaphysical claims about the
+  Source, densities, reincarnation, or spiritual evolution are rejected;
+- **continuity with older Earth religions**: Christians, Muslims, Hindus, Buddhists, Jews,
+  indigenous traditions, esoteric schools, and other religious communities variously
+  reinterpret, absorb, reject, or condemn the Ra material through their own traditions;
+- **pragmatism or indifference**: many people treat Confederation/Orion metaphysics as remote
+  from everyday survival, work, family, politics, or local community.
+
+The **Orion Group and Orion-aligned factions do not simply read the Law of One backwards**.
+They possess their own competing philosophical, religious, political, and metaphysical
+traditions centered on hierarchy, self-sovereignty, domination, elite development,
+asymmetric obligation, power, and Service to Self. Human Orion-aligned movements may borrow
+from older Earth ideologies, occult traditions, corporate doctrines, aristocratic systems,
+transhuman elitism, or entirely new teachings received through Orion contact.
+
+This creates one of the major ideological struggles of post-Disclosure humanity:
+
+> **The Confederation and Orion Group are both actively competing for human alignment, but
+> neither exhausts the political, religious, or metaphysical possibilities available to
+> humanity.**
+
+At the galactic scale, these are the **two largest and most consequential ideological
+alignments currently known to humans**, not the only factions in existence. Numerous minor
+powers, local civilizations, Social Memory Complexes, hive minds, machine polities,
+ecologies, non-aligned cultures, isolationists, mercantile networks, religious orders,
+post-civilizational intelligences, and entities that do not fit the category of
+"civilization" also exist.
+
+Humanity is therefore entering a genuinely plural galactic order rather than a simple
+two-sided cosmic war.
+
 This gives NoöPunk a standing epistemic rule:
 
 > **The Law of One is a map drawn through a human mind, under imperfect conditions, of a
