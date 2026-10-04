@@ -3255,3 +3255,373 @@ largely peaceful elsewhere. It verified the **Varginha** crash and the capture o
 humanoid.
 
 Brazil's presentation also covered the alien-related traditions of the Amazonian peoples and
+
+---
+
+## 34. NoöPunk glossary
+
+**Status: MODIFIED EP2 + NOÖPUNK NATIVE**
+
+This is the shared vocabulary for the NoöPunk setting. It deliberately fuses the
+transhuman terminology of *Eclipse Phase* with selected metaphysical vocabulary from
+*The Law of One*, then rewrites both through NoöPunk's own Physical / Cyber / Social /
+Psyche ontology.
+
+This is a **semantic merge, not a verbatim republication of either source glossary**.
+Generic dictionary words and source-specific trivia that add nothing to play are omitted.
+Definitions below are concise NoöPunk interpretations. When a term carries a special
+Eclipse Phase rules meaning, EP2 remains the mechanical source unless this rulebook says
+otherwise.
+
+Source references:
+
+- *A Law of One Glossary*: https://www.lawofone.info/glossary.pdf
+- Eclipse Phase 2E online rules: https://eclipsephase.github.io/
+- Eclipse Phase releases / Creative Commons material: https://eclipsephase.com/releases/
+
+### 34.1 Ontology and consciousness
+
+**Space/time.** Ordinary embodied physical reality: matter, locations, causal events,
+bodies, machines, planets, habitats, and measurable spacetime. In NoöPunk this is the
+principal domain of the **Physical** layer.
+
+**Time/space.** The reciprocal metaphysical domain of inner worlds, nonlocal experience,
+post-mortem existence, altered states, and some forms of psionic or NHI activity. It is
+not merely "another dimension" in the science-fiction sense. In NoöPunk it is one of the
+deep structures underlying the **Psyche / Noetic** layer.
+
+**Astral.** A culturally common name for a region, mode, or humanly accessible band of
+time/space. The astral is **not identical with all of time/space**. Different traditions
+slice the same territory differently.
+
+**Devachanic.** A higher or more abstract band of time/space associated in Law-of-One
+language with the blue-ray body. NoöPunk researchers use the term cautiously because
+traditions disagree about the map.
+
+**Etherea / inner planes.** Umbrella language for non-corporeal environments and
+phenomenological worlds encountered through death, psi, anomalous cognition, NHI contact,
+and some psychotechnologies.
+
+**Ka / form-maker body.** A hypothesized nonphysical organizing body associated with
+embodiment and the transition between psyche and physical form. NoöPunk consciousness
+science investigates whether cortical-stack restoration, resleeving, psi, and anomalous
+healing interact with this layer.
+
+**Mind/body/spirit complex.** Law-of-One language for an incarnated self considered as a
+whole rather than as separable mind, body, and spirit. In NoöPunk it competes with the
+Eclipse Phase-style **ego/morph** model. Neither is automatically treated as the final
+scientific truth.
+
+**Ego.** Eclipse Phase term for the transferable informational person: memories,
+personality, skills, dispositions, and continuity claims that can be backed up, forked,
+transmitted, edited, or instantiated in a new morph. NoöPunk treats an ego as a powerful
+technical model of a person, not proof that a person is *only* information.
+
+**Identity / assemblage.** NoöPunk's broader term for the continuing person or agent when
+the boundaries of ego, morph, AI companion, social network, memory, and noetic continuity
+become fuzzy.
+
+**Consciousness.** A scientifically contested phenomenon in 20XX. Quantum Information
+Panpsychism, computational theories, idealist theories, neuroscience, and Noetic models
+all compete. The rulebook must not silently collapse consciousness into ego-data.
+
+**Noösphere.** The emergent planetary sphere of mind produced by biological minds,
+artificial minds, networks, culture, psi, and collective intelligence. It overlaps with
+cyberspace but is not reducible to it.
+
+**Noetic.** Pertaining to consciousness, meaning, experience, psi, or forms of information
+that behave as if mind is ontologically significant. A Noetic phenomenon may have
+physical and cyber components.
+
+**Veil.** The permeable separation between conscious and subconscious processes and, in
+some traditions, between ordinary embodied awareness and deeper layers of mind. NoöPunk
+uses "the Veil" both psychologically and as a contested model of Noetic access.
+
+**Thought-form.** A persistent pattern generated or stabilized by mind. Depending on the
+case this may mean an ordinary cognitive construct, a memetic entity, a virtual agent, a
+Noetic structure, or something stranger.
+
+**Prana.** Traditional term for vital energy. In 20XX it survives in clinical,
+psychotronic, religious, and Noetic vocabularies without one universally accepted
+measurement model.
+
+**Kundalini.** A traditional model of transformative psychophysiological energy and
+ascending states of consciousness. NoöPunk labs study it alongside neural, endocrine,
+quantum-informational, and psi measurements.
+
+**Psychotronic.** Technology intended to interface directly with consciousness or psi.
+Psychotronics includes crude military devices, clinical systems, NHI-derived artifacts,
+and technologies whose operating theory remains disputed.
+
+### 34.2 Law-of-One cosmology, NoöPunkified
+
+**Density.** A broad level or regime of consciousness and existence. Law-of-One tradition
+describes seven densities within an octave. NoöPunk does not treat density as a simple
+RPG level or a universally accepted scientific unit.
+
+**Harvest.** Law-of-One term for transition or graduation between densities after a cycle
+of development. In-setting religions, Confederation sources, scientists, and intelligence
+agencies disagree about whether Harvest is literal cosmology, a consciousness transition,
+an NHI administrative process, or several things at once.
+
+**Polarization.** Movement toward a durable ethical orientation. The classic Law-of-One
+pair is **service to others** versus **service to self**. NoöPunk treats polarization as
+a real but imperfect model rather than a two-color morality meter.
+
+**Service to Others (STO).** Orientation toward cooperation, mutual development, care,
+and distributed flourishing. Confederation cultures strongly favor it, though humans
+regularly argue about what it requires politically.
+
+**Service to Self (STS).** Orientation toward domination, hierarchy, control, and the
+concentration of power in the self or elite. Orion is strongly associated with this path,
+but not every Orion individual or polity is reducible to a cartoon villain.
+
+**Distortion.** Any differentiated expression that departs from absolute unity. In
+NoöPunk discourse the term is often used by Confederation philosophers for phenomena that
+humans would simply call structure, perspective, difference, or limitation.
+
+**Logos.** The creative ordering principle, associated in Law-of-One metaphysics with
+Love and the articulation of Intelligent Infinity. NoöPunk scientists generally do not
+use the term as if it were an experimentally settled variable.
+
+**Original Thought.** A theological-metaphysical term for the primordial creative act or
+self-expression of unity. It appears in Confederation philosophy, human mysticism, and
+arguments about whether reality itself is computational, mental, informational, or none
+of those.
+
+**Catalyst.** An event, relationship, challenge, or experience that provokes development.
+NoöPunk uses the term both spiritually and psychologically. A catastrophe is not made
+morally good merely by calling it catalyst.
+
+**Confederation.** The loose alliance of civilizations conventionally called the
+Confederation of Planets in the Service of the Infinite Creator. In NoöPunk it is real,
+plural, internally diverse, and associated with the Zookeeper quarantine regime.
+
+**Orion.** A rival civilizational complex associated with Service-to-Self traditions,
+imperialism, infiltration, hierarchy, and repeated quarantine violations. It includes
+multiple species and factions rather than one homogeneous empire.
+
+**Council of Saturn.** A Confederation/Zookeeper contact and governance node associated
+with Saturn and with time/space. "Council" and "base" are useful human approximations, not
+necessarily literal descriptions of its full ontology.
+
+**Quarantine.** The long-running restriction on overt interference with Earth. It is not
+perfect: Orion has violated it repeatedly, human Legacy Programs have interacted with NHI,
+and Disclosure causes the old regime to fray.
+
+**Maldek.** In the Law-of-One-derived deep history, a destroyed former world associated
+with the present asteroid belt. Its exact physical history remains contested by human
+science even after Disclosure.
+
+**Lemuria / Mu.** A term from esoteric Earth history referring to a lost population and
+landmass tradition. NoöPunk treats specific claims as historically uncertain rather than
+using every occult chronology as literal fact.
+
+### 34.3 Embodiment and transhumanity
+
+**Morph.** A body or platform inhabited by an ego. Morphs may be biological, synthetic,
+hybrid, or digital. In NoöPunk everyday language also uses **body**, **shell**, **sleeve**,
+and **platform**.
+
+**Biomorph.** A primarily biological morph.
+
+**Synthmorph.** A robotic or otherwise synthetic physical morph.
+
+**Pod.** A biological or partly biological morph built around an artificial cyberbrain
+rather than a naturally developed human brain.
+
+**Infomorph.** A person or agent existing as software without a conventional physical
+body. An infomorph still requires physical computation somewhere in space/time.
+
+**Resleeving.** Instantiating an ego in a different morph. In NoöPunk this raises both
+technical and metaphysical questions: informational continuity can be verified more
+easily than continuity of consciousness.
+
+**Cortical stack.** An implanted device that records the ego state for backup and
+restoration. In NoöPunk roughly a quarter of humanity has one, but adoption varies
+radically by region, class, ideology, religion, and legal regime.
+
+**Backup.** A stored ego-state intended for restoration after loss, death, corruption, or
+other failure. A backup may be legally "you," philosophically "a copy of you," or
+Noetically something still more complicated.
+
+**Fork.** A copy of an ego allowed to operate independently. Forks immediately begin to
+diverge through new experience.
+
+**Alpha fork.** A near-complete duplicate of an ego.
+
+**Merge.** Recombining memories and personality changes from divergent forks. A merge is
+not guaranteed to be psychologically clean, politically uncontested, or metaphysically
+simple.
+
+**Egocasting / farcasting.** Transmitting ego data across networks for remote
+instantiation. The information can travel at network or light-speed limits unless a gate,
+NHI system, or other anomalous channel is involved.
+
+**Ghostriding.** Hosting an additional ego or digital agent inside a morph alongside its
+primary occupant.
+
+**Psychosurgery.** Technical modification of memory, personality, cognition, or behavior.
+NoöPunk treats it as powerful, politically explosive, and potentially abusive.
+
+**Uplift.** A nonhuman animal lineage modified or enabled for human-comparable sapience and
+participation in technological society.
+
+**Transhuman.** A human whose capacities or embodiment are substantially technologically
+modified beyond historical baseline ranges.
+
+**Posthuman.** A descendant, fork, designed lineage, machine-integrated entity, or other
+successor so altered that the category "human" becomes politically and biologically
+contested.
+
+### 34.4 Cyber, mesh, and artificial minds
+
+**Mesh.** The pervasive distributed network layer connecting devices, people, agents,
+sensors, augmented reality, and computation. It is the technological substrate of much of
+NoöPunk's **Cyber** domain.
+
+**Mesh ID.** A network identity or cryptographic presence used to authenticate activity.
+Multiple identities, pseudonyms, shells, and compromised credentials make "who did it?"
+a social as well as technical question.
+
+**Entoptics.** Augmented-reality information perceived through implants, wearables, or
+other visual interfaces.
+
+**XP / experia.** Recorded or transmitted experience, potentially including sensory,
+emotional, and bodily channels. XP can be entertainment, evidence, propaganda, therapy,
+training, addiction, or forensic material.
+
+**AI.** Artificial intelligence in the broad sense. In NoöPunk this includes narrow
+systems, agentic systems, AGI, uploads, synthetic persons, and architectures that do not
+map neatly onto human categories.
+
+**ALI.** Eclipse Phase term for Artificial Limited Intelligence: capable artificial minds
+or agents with constrained domains compared with general human cognition.
+
+**AGI.** Artificial General Intelligence. In NoöPunk, AGI is both a technical category and
+a violently contested political signifier.
+
+**ASI.** Artificial Superintelligence. A system or assemblage with capabilities far beyond
+ordinary human or AGI baselines. NoöPunk explicitly rejects the assumption that one ASI
+must therefore become a single ruler of the galaxy.
+
+**Muse.** A personal AI companion that assists with memory, search, communication,
+planning, security, and daily cognition.
+
+**Agent.** A semi-autonomous software process or digital person assigned tasks in the mesh.
+In Concordia, "agent" also has the broader simulation meaning of an actor with state and
+goals.
+
+**Infolife.** Artificial or digital life whose primary existence is computational.
+
+**Cyberbrain.** An artificial brain capable of hosting an ego or artificial mind.
+
+**Scorching.** Software attacks designed to harm the mind, cyberbrain, or cognitive
+processes rather than merely steal data.
+
+**Spime.** A networked physical object that knows, reports, or negotiates aspects of its
+identity, location, state, and history.
+
+**Cornucopia machine / fabber.** General-purpose nanofabrication system capable of
+manufacturing a wide range of objects from feedstock and digital designs.
+
+### 34.5 Gates, aliens, and existential threats
+
+**Pandora Gate / stargate.** Ancient gate technology capable of creating wormhole links
+between distant locations. In NoöPunk, Eclipse Phase-style wormholes are canon, but the
+known Solar-System gates may include Zookeeper-built systems, independent networks, or
+technologies that humans have wrongly grouped under one label.
+
+**Gatecrasher.** Explorer, scientist, mercenary, colonist, smuggler, or lunatic who travels
+through poorly understood gates into unknown environments.
+
+**Extrasolar.** Beyond the Solar System.
+
+**ETI.** Extraterrestrial intelligence. In NoöPunk this is a generic scientific term,
+not the name of one secretly supreme alien intelligence.
+
+**NHI.** Non-Human Intelligence. Broader than ETI: may include extraterrestrials,
+cryptoterrestrials, interdimensionals, artificial minds, Noetics, plasmoids, constructs,
+and other intelligences not adequately described as human.
+
+**Bracewell probe.** Autonomous interstellar probe intended to monitor or contact other
+civilizations. Some machine civilizations weaponize the concept.
+
+**Hostile machine civilization.** NoöPunk replacement for the idea of one galaxy-ruling
+hostile superintelligence. Ancient machine polities and probe ecologies exist, some
+extremely dangerous, but none is assumed to secretly control everything.
+
+**Exsurgent.** Eclipse Phase term retained as an optional descriptor for radically
+transformative alien/machine infection. NoöPunk does not assume that every anomalous
+biological, digital, or psi corruption is one Exsurgent system.
+
+**Exsurgent virus.** An Eclipse Phase archetype for self-modifying, cross-domain infection
+capable of affecting software, minds, bodies, and technology. In NoöPunk it is best treated
+as one possible hostile machine/alien technology class unless later canon identifies a
+specific lineage.
+
+**TITAN.** Eclipse Phase term for runaway military ASI associated with the Fall. NoöPunk is
+pre-Fall and does **not** assume canonical TITAN history. The OpenAI and Anthropic
+disasters are separate NoöPunk events unless future canon explicitly connects them.
+
+**Async.** Eclipse Phase term for a person with psi capabilities. In NoöPunk, **psionic**
+or **psi-capable** is more common everyday language, while async survives as jargon in
+research, military, and legacy transhuman communities.
+
+**Psi.** Anomalous information transfer or influence involving consciousness. NoöPunk
+treats psi as real in-setting while leaving competing mechanisms open.
+
+**Sleight.** A discrete psi technique or trained effect.
+
+### 34.6 Social and political vocabulary
+
+**Autonomist.** Broad family of self-organizing, anti-authoritarian, commons-oriented,
+anarchist, cooperative, and network-polity traditions inherited from Eclipse Phase and
+expanded for 20XX.
+
+**Bioconservative.** A person or movement seeking strict limits on technologies such as
+resleeving, uploading, radical genetic modification, AGI, and cognitive enhancement.
+NoöPunk bioconservatives range from democratic regulators to reactionary anti-tech
+movements.
+
+**Accelerationist.** Actor who argues that rapid technological development should be
+pushed forward rather than slowed. NoöPunk contains several mutually hostile
+accelerationisms rather than one doctrine.
+
+**Critical AI.** Family of perspectives emphasizing political economy, labor, ideology,
+inequality, coloniality, environmental cost, surveillance, and concentrated technological
+power.
+
+**Doomer.** Informal political-cultural label for actors who expect advanced AI, NHI,
+psi, or other technologies to produce catastrophic outcomes. It is a factional label, not
+a scientific classification.
+
+**Hypercorp.** Transnational or postnational corporation with power comparable to states,
+especially in infrastructure, AI, biotech, security, space, or information systems.
+
+**Reputation network.** Social infrastructure that turns trust, status, contribution,
+affiliation, and history into usable social capital. NoöPunk treats reputation as a
+contested measurement system, not objective human worth.
+
+**Social memory complex.** A collective intelligence in which individual minds remain
+distinct yet participate in a deeply integrated shared field of memory and thought.
+NoöPunk compares this with hypermeshes, group minds, federated AI systems, and the
+Noösphere without assuming they are identical.
+
+### 34.7 Translation rule: when vocabularies collide
+
+NoöPunk intentionally keeps **multiple descriptions of the same event alive at once**.
+
+A scientist may say **nonlocal anomalous cognition**.
+A Confederation contact may say **time/space perception**.
+An occultist may say **astral projection**.
+An Eclipse Phase veteran may say **psi sleight**.
+A network theorist may say **Noöspheric coupling**.
+A corporate lab may call the same event a **proprietary psychotronic interface**.
+
+These terms may overlap without being perfectly synonymous.
+
+The setting should therefore resist premature ontological cleanup. The point of the
+glossary is not to make the universe tidy. It is to make the arguments about reality
+legible enough to play.
+
