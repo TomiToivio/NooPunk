@@ -72,7 +72,7 @@ The year is deliberately written as **20XX**. Ray Kurzweil's 2045 Singularity da
 
 ### 2.1 Social-science foundation
 
-NoöPunk grows directly out of the intellectual terrain explored by the **LaclauGPT** research project. The social-science background is part of the game model, not decorative lore.
+NoöPunk grows directly out of the intellectual terrain explored by the **LaclauGPT** research project (https://github.com/TomiToivio/LaclauGPT/blob/main/paper/PHASE_1_PAPER.md). The social-science background is part of the game model, not decorative lore.
 
 **Ernesto Laclau** provides the core model of ideology, antagonism, political identity, floating and empty signifiers, coalition formation, and struggle for hegemony. The major concepts of 20XX, including **AI, AGI, NHI, PSI, consciousness, humanity, safety, freedom, progress, and the Singularity**, are themselves contested signifiers. Factions struggle to stabilize their meanings and organize society around them.
 
@@ -94,11 +94,13 @@ NoöPunk turns contemporary AI discourse into factions, institutions, policies, 
 
 The setting contains competing currents rather than one canonical ideology:
 
-- accelerationist, Cosmist, and techno-optimist visions inspired by figures such as **Ray Kurzweil** and **Ben Goertzel**;
-- **Critical AI** perspectives concerned with political economy, inequality, exclusion, ideology, and concentrated technological power;
-- **existential-risk** perspectives associated with AGI catastrophe and loss of control.
+- accelerationist, Cosmist, and techno-optimist visions inspired by **Ray Kurzweil**'s *The Singularity Is Nearer* and **Ben Goertzel**'s *A Cosmist Manifesto*;
+- **Critical AI** perspectives concerned with political economy, inequality, exclusion, ideology, and concentrated technological power, including **Timnit Gebru** and **Émile P. Torres**' critique of the **TESCREAL** bundle;
+- **existential-risk** perspectives associated with AGI catastrophe and loss of control, such as **Nate Soares** and **Eliezer Yudkowsky**'s *If Anyone Builds It, Everyone Dies*.
 
 These positions are not merely opinions held by NPCs. They shape states, corporations, movements, research programmes, laws, military doctrines, infrastructure, and the uneven geography of 20XX.
+
+NoöPunk contains the full ideological spectrum rather than adopting one official answer; the conflict between these views is part of the world itself.
 
 ### 2.3 Cyberpunk updated for 20XX
 
