@@ -30,7 +30,8 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RULEBOOK = "RULEBOOK.md"
+#: Issue #98 archived the narrative chronology out of RULEBOOK.md; this guard follows it.
+RULEBOOK = "docs/archive/NARRATIVE_TIMELINE_VARIANTS.md"
 NARRATION = "The crisis accelerates"
 SPECIFICS = "Crisis chronology: named specifics"
 

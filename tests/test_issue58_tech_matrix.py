@@ -175,52 +175,51 @@ class NoRankingTests(unittest.TestCase):
 
 
 class CatastropheTests(unittest.TestCase):
-    def test_catastrophes_in_order(self) -> None:
-        """The structure is four: #58 specified two, and issue #89 extended it."""
+    """Issue #98 superseded the ordinal named-company chronology.
+
+    Earlier drafts of this file carried four ordered, company-named catastrophes (#58 two,
+    #89 four). #98 removed that fixed chronology and replaced it with one unordered
+    structural category, moving the named-company narrative into
+    ``docs/archive/NARRATIVE_TIMELINE_VARIANTS.md``. These guards assert the #98 shape so
+    a later edit cannot silently reintroduce the chronology #98 removed.
+    """
+
+    def test_there_is_one_unordered_structural_category(self) -> None:
         cats = load()["catastrophes"]
-        self.assertEqual(len(cats), 4)
-        self.assertEqual([c["ordinal"] for c in cats],
-                         ["first", "second", "third", "fourth"])
+        self.assertEqual(len(cats), 1)
+        self.assertEqual(cats[0]["id"], "rogue-agi-disasters")
 
-    def test_the_original_two_retain_their_severity_and_resolution(self) -> None:
-        first, second = load()["catastrophes"][:2]
-        self.assertNotEqual(first["severity"], second["severity"])
-        self.assertNotEqual(first["resolution"], second["resolution"])
+    def test_no_ordinal_chronology_is_asserted(self) -> None:
+        """No 'first/second/third/fourth' ordinals: the order is not canon."""
+        cat = load()["catastrophes"][0]
+        self.assertNotIn("ordinal", cat)
+        for forbidden in ("first", "second", "third", "fourth"):
+            with self.subTest(ordinal=forbidden):
+                self.assertNotIn(forbidden, json.dumps(cat).lower())
 
-    def test_the_second_supersedes_the_timeline_explicitly(self) -> None:
-        """A timeline change must be recorded, not applied silently."""
-        second = load()["catastrophes"][1]
-        self.assertIsInstance(second.get("supersedes"), dict)
-        self.assertEqual(second["supersedes"]["target_file"], "TIMELINE.md")
+    def test_the_structural_entry_forbids_inferred_chronology(self) -> None:
+        cat = load()["catastrophes"][0]
+        rule = cat.get("$chronology_rule", "").lower()
+        self.assertIn("do not infer", rule)
+        self.assertIn("order", rule)
 
-    def test_the_fourth_records_the_issue_89_extension(self) -> None:
-        """#89 extended the two-event structure to four; the extension must be recorded."""
-        fourth = load()["catastrophes"][3]
-        self.assertIsInstance(fourth.get("supersedes"), dict)
-        self.assertIn("#89", fourth["supersedes"]["reason"])
+    def test_the_named_company_chronology_is_archived_not_deleted(self) -> None:
+        """#98's acceptance criterion: preserve narrative variants, do not delete them."""
+        archived = (ROOT / "docs/archive/NARRATIVE_TIMELINE_VARIANTS.md").read_text(
+            encoding="utf-8")
+        self.assertIn("First AGI Holocaust", archived)
+        self.assertIn("Anthropic", archived)
 
-    def test_the_third_and_fourth_do_not_invent_severity(self) -> None:
-        """#89 states no severity or resolution for the third and fourth."""
-        third, fourth = load()["catastrophes"][2:4]
-        for cat in (third, fourth):
-            with self.subTest(cat=cat["id"]):
-                self.assertEqual(cat["severity"], "unassigned")
-                self.assertEqual(cat["resolution"], "unassigned")
-
-    def test_the_timeline_records_the_two_event_structure(self) -> None:
+    def test_the_timeline_is_unordered_shifts(self) -> None:
+        """#98: the background timeline is unordered paradigm shifts, not a beat sequence."""
         text = read(TIMELINE)
-        self.assertIn("Rogue AGI / ASI Disasters in the United States", text)
-        self.assertIn("First Rogue AGI Holocaust", text)
-        self.assertIn("Second Rogue AGI Holocaust", text)
-        self.assertIn("#58", text, "the supersession must name the issue that caused it")
+        self.assertIn("unordered", text.lower())
 
     def test_real_company_names_are_marked_setting_fiction(self) -> None:
-        """The issue warns these are speculative; the artefact must say so."""
-        data = load()
-        self.assertIn("$company_attribution_note", data)
-        note = data["$company_attribution_note"].lower()
-        self.assertIn("setting fiction", note)
-        self.assertIn("not", note)
+        """The artefact must still say real companies are not active 20XX actors."""
+        note = load()["$company_attribution_note"].lower()
+        self.assertIn("supersede", note)
+        self.assertIn("fictional analogue", note)
         self.assertIn("real", note)
 
 
