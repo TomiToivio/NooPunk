@@ -93,19 +93,38 @@ These domains are structurally coupled. A social interaction can become physical
 
 ### 3.2. Stats
 
-**Status: NOÖPUNK CORE.**
+**Status: NOÖPUNK CORE — issue #131.**
 
-Canonical STAT ratings use **1–10** for ordinary operative characters. The final STAT list is maintained by the latest explicit author direction and later issues that revise earlier drafts.
+NoöPunk uses exactly **six universal character STATS**:
 
-A STAT represents broad capability. A Skill represents learned competence. They remain separate and are added together for checks.
+| STAT | Code | Meaning |
+| --- | --- | --- |
+| Fitness | **FIT** | General physical capability, strength, stamina and toughness |
+| Reflexes | **REF** | Reaction speed, coordination, agility and dexterity |
+| Intelligence | **INT** | General cognitive ability, reasoning, learning and knowledge |
+| Social | **SOC** | Social skills, communication and charisma |
+| Cybernetics | **CYB** | Cyberspace/cyborg-native technical aptitude |
+| Psyche | **PSY** | Consciousness, willpower, psychic resilience and base psionic potential |
+
+Canonical STAT ratings use **1–10** for ordinary human characters.
+
+A STAT represents broad capability. A Skill represents learned competence. They remain
+separate and are added together for checks.
 
 ```text
 STAT + Skill + 1d10
 ```
 
-Where an entity does not meaningfully possess a domain or STAT, use **N/A** in human-readable material and `null` in machine-readable data rather than treating zero as absence.
+The six STATS are intentionally simple. Additional complexity belongs in the Physical,
+Social, Cybernetic and Psychic system layers rather than in extra universal attributes.
 
-Augmentation may create effective capabilities above the ordinary human scale, but base capability and augmentation should remain distinguishable.
+In particular, **COMPUTE / INTERFACE / NETWORK are hardware or system characteristics,
+not character STATS**. The Social Systems layer adds Contacts, Factions, Reputation,
+Motivations, Affect and network structure around SOC. The Psychic Systems layer adds
+awakening, psionic abilities and Noöspace mechanics around PSY.
+
+Augmentation may create effective capabilities above the ordinary human scale, but base
+capability and augmentation should remain distinguishable.
 
 ---
 
@@ -776,39 +795,31 @@ The initial implementation may include EP2-derived:
 
 The exact NoöPunk sheet is not yet final.
 
-### 9.2 Four-layer 1–10 attribute system
+### 9.2 Six-stat character core
 
-**Status: NOÖPUNK NATIVE — issue #113.**
+**Status: NOÖPUNK CORE — issue #131.**
 
-The canonical future NoöPunk STAT model uses four ontological layers with three STATS in
-each layer:
+The canonical character-facing attribute model is:
 
-| Layer | STATS |
-| --- | --- |
-| Physical | **Fitness (FIT), Reflexes (REF), Resilience (RES)** |
-| Social | **Reason (REA), Empathy (EMP), Presence (PRE)** |
-| Psychic | **Will (WIL), Intuition (INU), Noesis (NOE)** |
-| Cybernetic | **Integration (CYI), Bandwidth (BND), Control (CTL)** |
+| STAT | Code | Primary system |
+| --- | --- | --- |
+| Fitness | **FIT** | Physical |
+| Reflexes | **REF** | Physical |
+| Intelligence | **INT** | Social / general cognition |
+| Social | **SOC** | Social |
+| Cybernetics | **CYB** | Cybernetic |
+| Psyche | **PSY** | Psychic |
 
-Operative ordinary-human STATS use the **1–10** scale established in #111. A layer that
-does not meaningfully operate for an entity is **N/A** on human-readable sheets and
-`null` in machine-readable data. **0 does not mean absence.**
+The four-system ontology remains useful for organizing rules, but it no longer implies
+three attributes per system. It is a **rules-layer architecture**, not a reason to multiply
+the base STAT list.
 
-Language, symbolic reasoning, institutions, discourse, and shared knowledge belong to the
-**Social** layer. Phenomenal consciousness, intuition, self-directed awareness, PSI, and
-Noetic capability belong to the **Psychic** layer. The two are deliberately distinct.
-There is no generic Mental/Ego layer.
+Social complexity belongs in the Social Systems layer. Psychic complexity belongs in the
+Psychic Systems layer. Cybernetic equipment and platforms may have their own technical
+statistics, including **COMPUTE / INTERFACE / NETWORK**, but those are hardware/system
+statistics rather than character attributes.
 
-Cybernetic STATS measure direct functional coupling to machines, BCI, computation, and
-networks, not intelligence. A biological human without meaningful direct cybernetic
-coupling may have the Cybernetic layer as N/A while still using ordinary external
-computers through Social STATS plus learned skills.
-
-Cybernetic augmentation may later unlock Cybernetic STATS, provide narrow modifiers, or
-produce an **effective** STAT above 10. Keep the biological/base rating and augmentation
-separate so the 1–10 human scale remains visible.
-
-The full definitions and entity examples are maintained in
+The full definitions are maintained in
 [`rulebook/2_ATTRIBUTES.md`](rulebook/2_ATTRIBUTES.md).
 
 ### 9.3 Density, Polarization, and energy centers
@@ -828,9 +839,9 @@ blanket numeric superiority.
 - values between = mixed, developing, conflicted, or unpolarized.
 
 Polarization changes through sustained meaningful action rather than chosen alignment.
-High **EMP** can help perceive and enact StO possibilities but does not itself make a
-character StO. High **WIL** can support disciplined self-directed control but does not
-itself make a character StS.
+High **SOC** may help a character understand social consequences and other people, while
+high **PSY** may support disciplined self-direction or psychic resilience, but neither
+STAT determines Polarization.
 
 The seven energy centers are **developmental states across the four-layer character
 ontology**, not seven extra STATS. Use the states **Blocked / Active / Balanced /
@@ -853,8 +864,8 @@ The detailed canonical design is in
 ### 9.4 Biological-human-first scope
 
 The initial playable kernel prioritizes biological humans, optional cybernetics, the
-four-layer attributes, PSI, Density, Polarization, Contacts/Factions/Motivations, and
-UNHSS/Firewall field agents.
+**FIT / REF / INT / SOC / CYB / PSY** six-stat core, PSI, Density, Polarization,
+Contacts/Factions/Motivations, and UNHSS/Firewall field agents.
 
 Cortical-stack continuity, full resleeving, morph catalogs, forks/backups, and infomorph
 edge cases remain deferred. Later transhuman mechanics must map onto this ontology rather
@@ -873,7 +884,7 @@ NoöPunk's basic resolution engine is:
 STAT + Skill + 1d10 ≥ Difficulty Value
 ```
 
-Both **STAT** and trained **Skill** ratings use a **1–10** scale. Their final names and lists are intentionally deferred. Stats and skills remain separate mechanical quantities.
+Both **STAT** and trained **Skill** ratings use a **1–10** scale. The canonical STAT list is **FIT / REF / INT / SOC / CYB / PSY**. The Skill list may continue to evolve. Stats and skills remain separate mechanical quantities.
 
 ### 10.1 Difficulty Values
 
