@@ -1,177 +1,225 @@
 # Attributes
 
-> **Status: NOÖPUNK CORE — issue #131**
+> **Status: NOÖPUNK NATIVE — issue #131 supersedes issue #113.**
 >
-> NoöPunk uses a deliberately small **six-STAT** core. Complexity belongs in Skills,
-> equipment, traits, statuses, and the Physical / Social / Cybernetic / Psychic system
-> layers rather than in a growing list of universal character attributes.
+> NoöPunk uses an independent **1–10 STAT** model. Six universal base STATs —
+> **FIT / REF / INT / SOC / CYB / PSY** — describe the character. They are organized
+> by four ontological layers: **Physical, Social, Psychic, and Cybernetic**. These
+> layers describe different modes of participation in the world. They are not four
+> skills and they do not collapse into a generic "Mental" or "Ego" layer.
 
 ## Core principles
 
-- Canonical character STATS are **Fitness (FIT), Reflexes (REF), Intelligence (INT),
-  Social (SOC), Cybernetics (CYB), and Psyche (PSY)**.
-- STATS and trained Skills use the **1–10** scale for ordinary human characters.
-- A STAT is broad capability. A Skill is learned competence.
-- Checks use the canonical NoöPunk engine:
+- **Physical** is embodied material and biological capability.
+- **Social** is language, symbolic reasoning, communication, identity, institutions,
+  discourse, and understanding other agents.
+- **Psychic** is phenomenal consciousness, self-directed awareness, intuition, PSI, and
+  Noetic capability.
+- **Cybernetic** is direct functional coupling to computation, AI, BCI, networks, and
+  machines.
+- **Language is Social.**
+- **Psychic and Social are distinct.**
+- **Cybernetic is not intelligence.**
+- **Density is not IQ.**
+- **Polarization is not alignment.**
+
+## Why six base STATs
+
+An earlier draft (issue #113) grew to twelve STATS. That made every interesting concept
+its own universal dial and left the character sheet hard to read. The author's direction
+on issue #131 is the opposite: **keep the universal layer small and put complexity into
+the domain layers.**
+
+- The base STATs cover only what *every* character needs a universal, rolled number for.
+- The **Social Systems** layer carries social complexity: Affect, Factions, Motivations,
+  Reputation, Contacts, reputation networks, and persuasion procedures.
+- The **Psychic Systems** layer carries psychic complexity: PSI domains, awakening, the
+  seven energy centers, Noetic techniques, Density and Polarization.
+- **Cybernetics keeps one base STAT (CYB).** Hardware and system properties — processing,
+  bandwidth, storage, hardening, interfaces — are statistics of the *equipment and agents*
+  a character controls (decks, implants, devices, software, AIs), not character attributes.
+  See *Cybernetic hardware statistics* below.
+
+Ordinary human STAT ratings use **1–10** when a STAT is operative. A missing layer is
+represented as **N/A** in human-readable sheets and **null** in machine-readable data.
+**0 is not used for absence**, because 0 would blur the difference between "this layer
+does not operate for this entity" and "this entity operates in the layer but is extremely
+poor at it."
+
+## The six base STATS
+
+| Layer | STAT | Code | Covers |
+| --- | --- | --- | --- |
+| Physical | Fitness | FIT | strength, stamina, exertion, gross motor power |
+| Physical | Reflexes | REF | speed, coordination, reaction time, dexterity, balance |
+| Social | Intelligence | INT | reasoning, learning, knowledge, language-mediated cognition |
+| Social | Social | SOC | communication, charisma, projection, persuasion, empathy |
+| Cybernetic | Cybernetics | CYB | cyberspace/cyborg-native aptitude; direct coupling to machines |
+| Psychic | Psyche | PSY | consciousness, willpower, psychic resilience, psionics |
+
+### Fitness (FIT)
+Strength, stamina, gross motor capability, exertion, lifting, climbing, running, and
+sustained physical output.
+
+### Reflexes (REF)
+Reaction speed, balance, agility, dexterity, fine bodily timing, hand-eye coordination,
+and rapid physical response. **Dexterity** is the fine-motor reading of Reflexes;
+**movement** is a derived value produced from Reflexes and Fitness together with
+morphology, rather than a separate STAT.
+
+### Intelligence (INT)
+General cognitive ability: reasoning, learning, memory, knowledge, analysis, abstraction,
+interpretation, planning, formal logic, and scientific reasoning.
+
+Intelligence belongs to the Social layer because NoöPunk treats human symbolic cognition
+as inseparable from language, communication, institutions, and accumulated culture. This
+does **not** mean that non-human or non-linguistic consciousness lacks cognition.
+
+### Social (SOC)
+Aptitude for other agents and social space: communication, charisma, expression,
+composure, projection, authority, persuasion, performance, leadership, intimidation,
+reciprocity, interpersonal attunement, and management of one's public role.
+
+Social can make Service-to-Others choices easier to perceive or enact, but **high Social
+does not make a character StO**.
+
+The finer distinctions an earlier draft split into separate *Empathy*, *Presence* and
+*Reason* STATS — reading another mind versus projecting one's own, feeling with others
+versus commanding them — are **Social Systems** mechanics. They are expressed through
+that layer's Affect, Faction, Motivation, Reputation and Contact model plus learned
+skills, not through additional base STATs.
+
+### Cybernetics (CYB)
+Cyberspace/cyborg-native technical aptitude and the depth of a character's **direct
+coupling** to machine systems: BCI coherence, sensorimotor incorporation, implant
+coordination, machine embodiment, command and control through cybernetic systems, and the
+ability to treat technological components as part of the acting self.
+
+A biological human who uses ordinary external tools but has no meaningful cybernetic
+interface may have this layer as **N/A** while still using computers through Intelligence
+and learned skills. Cybernetics measures the coupling, not learned hacking technique and
+not general reasoning.
+
+### Psyche (PSY)
+The base STAT for consciousness, willpower, psychic resilience, psionics, and related
+inner capacities: self-direction, concentration, intentional control, persistence,
+psychic resistance, awareness and depth of consciousness, and PSI/Noetic potential.
+
+Psyche measures a general capacity, not spiritual worth or Density. A powerful psychic can
+be immature, unpolarized, destructive, confused, or ethically ordinary. A contemplative
+character may have a deep, well-integrated Psyche with little usable PSI; a naturally
+gifted but chaotic psychic may show the reverse. Characters with psychic awareness or
+awakened abilities get their actual psionic capabilities — the PSI domains, techniques and
+awakening mechanics — modelled in the **Psychic Systems** layer, and a Sleeper may carry
+latent Psyche that mostly manifests as luck, intuition and weak anomalous effects.
+
+## Cybernetic hardware statistics
+
+Hardware and system properties are **not character attributes**. They are statistics of
+the equipment, implants, devices, agents and decks a character has access to — the same
+way a firearm has statistics that are not the character's STATS:
+
+- **processing** — parallel computation, inference, simulation, cryptographic workload,
+  running agents and processes;
+- **bandwidth** — concurrent connections, throughput, remote presence, latency, routing,
+  distributed and swarm operation;
+- **storage** — datasets, model weights, exploit libraries, cached knowledge, archives,
+  backups;
+- **hardening** — isolation, sandboxing, authentication, exploit resistance, redundancy,
+  compartmentalization, integrity protection.
+
+Offensive hacking is learned technique and stays a **Skill**; defensive hardening is a
+property of the target system. A check therefore reads as `INT or CYB + Hacking Skill`
+rolled against a target's hardening rating, not `Attack stat` versus `Defence stat`.
+Exact hardware statistics, their ranges and their conversion are deferred to the
+Cybernetic Systems and equipment passes.
+
+## Skills remain separate
+
+NoöPunk keeps the rule established in #111:
 
 ```text
 STAT + Skill + 1d10
 ```
 
-- Domain-specific complexity is added **on top of** the six STATS rather than by creating
-  more base STATS.
-- Hardware characteristics are not character attributes.
-- Density, Polarization, psychic awakening, social-network position, reputation, cyberware
-  specifications, wounds, and other subsystem values remain separate from the six STATS.
+A skill describes learned practice. A STAT describes the capability through which that
+practice is being expressed.
 
-## The six canonical STATS
+The same skill may sometimes pair with different STATS when the fictional method changes.
+Examples:
 
-| STAT | Code | Core meaning | Primary system |
-| --- | --- | --- | --- |
-| Fitness | FIT | General physical capability, strength, stamina, toughness and bodily exertion | Physical |
-| Reflexes | REF | Reaction speed, coordination, agility, dexterity and sensorimotor control | Physical |
-| Intelligence | INT | General cognitive ability, reasoning, learning, memory and knowledge | Social / general cognition |
-| Social | SOC | Communication, charisma, social perception and ability to operate in human social systems | Social |
-| Cybernetics | CYB | Cyberspace/cyborg-native technical aptitude and ability to act through cybernetic systems | Cybernetic |
-| Psyche | PSY | Consciousness, willpower, psychic resilience, awareness and base psionic potential | Psychic |
+- ordinary network research may use **INT + Research**;
+- reading a witness may use **SOC + Kinesics**;
+- coercive command may use **SOC + Persuade/Provoke**;
+- resisting psychic intrusion may use **PSY + Psi** or a future resistance skill;
+- receiving an anomalous impression may use **PSY + Psi**;
+- direct BCI machine control may use **CYB + Interface/Pilot**;
+- brute physical work may use **FIT + Athletics**.
 
-These six values are the universal character-facing attribute layer. The four system chapters
-may introduce additional mechanics, but those mechanics do **not** become extra universal
-STATS unless a later explicit author decision changes this model.
+Exact pairings belong to the skill-design and playtest passes. The attribute model should
+not silently turn skills back into fixed aptitude aliases.
 
-## Fitness (FIT)
+## Absent layers
 
-FIT measures general embodied physical capability. It covers strength, stamina, toughness,
-endurance, lifting, climbing, running, resisting ordinary physical strain, and similar
-whole-body performance.
+Use three distinct states:
 
-Do not split FIT back into Strength, Constitution, Body, Toughness, Resilience, Health or
-other universal STATS. Those distinctions can be represented where useful through Skills,
-Traits, Statuses, equipment, wounds, derived values, or the Physical Systems layer.
-
-## Reflexes (REF)
-
-REF measures speed and control of physical action: reaction time, balance, agility,
-coordination, dexterity, fine motor timing, hand-eye coordination, and rapid sensorimotor
-response.
-
-Movement rate, initiative, weapon handling and similar values may derive from REF or use it
-in checks, but they are not additional universal STATS.
-
-## Intelligence (INT)
-
-INT is the deliberately broad general cognitive STAT. It covers reasoning, learning,
-memory, analysis, problem solving, abstraction, knowledge acquisition and the ability to
-work with complex information.
-
-NoöPunk's Social Systems layer can model language, culture, discourse, institutions,
-extended cognition, education and other specifically social forms of intelligence in much
-greater detail. That theoretical complexity should not require splitting INT into several
-base attributes.
-
-## Social (SOC)
-
-SOC measures social capability: communication, charisma, interpersonal perception,
-persuasion, composure, performance, leadership, negotiation and the ability to operate
-within social relationships and institutions.
-
-The **Social Systems** layer provides the deeper model: Contacts, Factions, Reputation,
-Motivations, Affect, social networks, discourse, ideology and other relational structures.
-Those systems add structure around SOC rather than turning Empathy, Presence, Charisma,
-Language, Reputation or network position into additional universal STATS.
-
-## Cybernetics (CYB)
-
-CYB measures a character's native aptitude for acting through cyberspace and cybernetic
-systems. It is the base STAT for cybernetic fluency, human-machine coupling, hacking and
-technical action when the method is specifically cybernetic.
-
-CYB can describe:
-- a conventional human hacker using ordinary interfaces;
-- a BCI user immersed in cyberspace;
-- a cyborg acting through integrated implants;
-- an AI or synthetic agent operating natively in digital systems.
-
-### Hardware is separate
-
-**COMPUTE / INTERFACE / NETWORK are not character STATS.**
-
-They are characteristics of the hardware, software platform, implant, cyberdeck, agent
-runtime, vehicle, server, network connection or other technical system being used.
-
-The Cybernetic Systems layer may therefore model values such as:
-- **COMPUTE** — processing capacity available to the system;
-- **INTERFACE** — quality/capacity of the connection between actor and system;
-- **NETWORK** — connectivity, bandwidth, reach or distributed access;
-- storage/memory capacity;
-- security/hardening;
-- sensors, actuators, software, models and other installed capabilities.
-
-These values describe what the equipment or platform can provide. **CYB** describes the
-character's aptitude for using, inhabiting or controlling cybernetic systems.
-
-## Psyche (PSY)
-
-PSY is the base STAT for the character as a conscious agent. It covers consciousness,
-willpower, concentration, psychic resilience, self-directed awareness, resistance to
-psychic pressure, and baseline sensitivity or potential for psionics.
-
-A character does **not** gain a full catalogue of psychic powers merely from having high
-PSY. Characters who become psychically aware or awakened receive their actual psionic
-abilities, techniques, risks, Noöspace interactions and related mechanics from the
-**Psychic Systems** layer.
-
-Do not split PSY back into Will, Intuition, Noesis, Empathy or similar universal STATS.
-Those distinctions can exist as psychic skills, traits, powers, states or subsystem
-mechanics where they improve play.
-
-## Skills remain separate
-
-A Skill describes learned practice. A STAT describes the broad capability through which
-that practice is expressed.
+1. **N/A / null** — the layer or STAT is not meaningfully operative for this entity.
+2. **1–10** — the layer is operative within the ordinary human-scale rating.
+3. **11+ effective** — superhuman/transhuman/NHI performance, normally produced by
+   augmentation, non-human embodiment, PSI, or another explicit exception.
 
 Examples:
 
-- **FIT + Athletics** for sustained physical exertion;
-- **REF + Athletics** for an agility-focused maneuver;
-- **INT + Research** for analytic investigation;
-- **SOC + Persuade** for negotiation or influence;
-- **CYB + Program/Infosec** for hacking or cybernetic technical work;
-- **PSY + Psi** for a psychic technique when the Psychic Systems layer permits it.
+| Entity | Physical | Social | Psychic | Cybernetic |
+| --- | --- | --- | --- | --- |
+| ordinary biological human without direct cybernetics | 1–10 | 1–10 | 1–10 | N/A |
+| cybernetically augmented human | 1–10 | 1–10 | 1–10 | 1–10 |
+| non-conscious software AI | N/A | operative | N/A | operative |
+| conscious AGI | platform-dependent | operative | operative | operative |
+| non-conscious robot | operative | possibly operative | N/A | operative |
+| Noetic entity | possibly N/A | possibly operative | operative | possibly N/A |
+| animal | operative | limited/nonhuman | operative | usually N/A |
 
-The same Skill may pair with a different STAT when the fictional method genuinely changes.
-The GM should choose the STAT that matches what the character is actually doing rather
-than assigning every Skill one permanent attribute.
+"No human-compatible language" does not imply "no Social layer." A nonhuman entity may
+participate socially through telepathy, chemical signaling, machine protocols, collective
+signaling, symbolic geometry, or other media.
 
-## 1–10 scale and augmentation
+## Cybernetic augmentation and the 1–10 human scale
 
-Ordinary human ratings use **1–10**.
+For biological humans, the unaugmented/base STAT remains on the **1–10** scale.
 
-Augmentation, exceptional physiology, NHI capability, powerful cybernetics, PSI or other
-explicit effects may create effective capabilities above 10. Keep the base STAT and the
-source of augmentation distinguishable where that distinction matters.
+Cybernetics can later affect a STAT in three ways:
 
-Example:
+1. **unlock** an otherwise unavailable Cybernetic STAT;
+2. provide a **situational modifier** to an existing STAT + Skill check;
+3. produce an **effective STAT above 10** when an augmentation genuinely exceeds ordinary
+   human capacity.
+
+Keep base and augmentation visible separately. For example:
 
 ```text
 REF 8
-reflex accelerator: +3 when active
-effective REF: 11
+augmentation: +3 reflex accelerator
+effective REF: 11 when the accelerator applies
 ```
 
-Routine gear should normally provide capabilities, permissions or situational modifiers
-rather than permanently rewriting a character's base STAT.
+Do not let routine gear permanently rewrite the biological base score. This keeps the
+human 1–10 scale legible while leaving room for cyborgs, transhumans, NHI, and machine
+entities.
 
 # Density
 
 > **Density is a developmental state of consciousness, not a STAT and not IQ.**
 
-Represent Density as a separate **tier/state**, normally written **1D–7D** for NPC and
-world-model purposes.
+Represent Density as a **tier/state**, normally written **1D–7D** for NPC/world-model
+purposes.
 
 - PCs normally begin in **3D** or, with explicit campaign permission, **4D**.
 - 5D–7D are not ordinary advancement tiers for player characters.
-- High INT, SOC or PSY does not automatically determine Density.
+- A high-INT scientist can be 3D.
+- A low-INT being can be 4D.
+- PSY, and the psychic techniques built on it, may affect how a character experiences or
+  handles awakening, but none of them determines Density.
 
 ## 3D → 4D awakening
 
@@ -179,72 +227,121 @@ A 3D PC may have a **six-segment Awakening Clock**.
 
 Advance the clock only for major fictional developments involving sustained integration
 of consciousness, catalyst, PSI/Noetic experience, energy-center development, or
-polarization. Do not award segments for ordinary XP or successful skill checks.
+polarization. Do not award segments for ordinary XP, successful skill checks, or merely
+having high Psychic STATS.
 
 When the sixth segment is filled, the character becomes **eligible** for a 4D transition.
-The transition should occur through a significant story event rather than as an automatic
-numeric upgrade.
+The transition should occur through a significant story event, not automatically at the
+instant the clock fills. It may involve a stable change in perception, identity,
+relationships, PSI, or participation in the Noösphere.
+
+A 4D transition does **not** grant blanket numerical superiority. Any mechanical benefits
+must be explicit and narrow.
 
 # Polarization
 
 > **Polarization is a dynamic history of orientation expressed through sustained action,
-> not a chosen good/evil alignment and not a STAT.**
+> not a chosen good/evil alignment.**
 
-Track Polarization separately:
+Track Polarization on a separate scale:
 
 ```text
 -100 ← Service to Self (StS) ... 0 ... Service to Others (StO) → +100
 ```
 
-Use the Law-of-One-inspired thresholds as setting rules:
+Characters normally begin near 0 unless their history clearly establishes otherwise.
+
+Use the Law-of-One-inspired asymmetry as a setting rule:
 
 - **+51 or higher**: clearly StO-polarized;
 - **-95 or lower**: clearly StS-polarized;
-- between those thresholds: mixed, developing, conflicted or unpolarized.
+- between those thresholds: mixed, developing, conflicted, or unpolarized.
 
-INT, SOC and PSY may shape how a character understands or executes choices, but no STAT
-awards Polarization by itself.
+These thresholds are not moral scores and do not replace roleplaying. They represent the
+setting's metaphysical model of sustained orientation.
+
+## How Polarization changes
+
+Change Polarization because of **meaningful patterns of choice**, not isolated cosmetic
+acts. A major action may shift the score by roughly **1–5 points**, with repeated
+consistent behavior mattering more than one dramatic gesture.
+
+Examples of StO-polarizing patterns include voluntary aid, solidarity, costly protection,
+truthful cooperation, respect for agency, and building reciprocal capacity in others.
+
+Examples of StS-polarizing patterns include domination, instrumentalization, coercive
+control, deliberate hierarchy for personal power, and systematically converting other
+agents into extensions of the self.
+
+Context matters. Sacrifice can be manipulative. Self-interest can be healthy. Violence can
+protect others. Cooperation can conceal domination. The GM/system should judge the
+orientation of the sustained action, not match keywords.
+
+## Social, Psyche, and Polarization
+
+- **SOC** can help a character understand others and recognize opportunities for StO
+  action. It does not award StO points by itself.
+- **PSY** can help a character maintain self-directed control and execute StS strategies.
+  It does not award StS points by itself.
+- A low-SOC character may become strongly StO through principle, discipline, or chosen
+  solidarity.
+- A high-SOC character may use exquisite understanding of others for manipulation.
+- A low-PSY character can still drift into selfishness without becoming strongly
+  polarized.
+- A high-PSY character can be a disciplined protector.
 
 # Seven energy centers
 
-The seven energy centers are **not seven extra STATS** and are not mapped one-to-one onto
-FIT / REF / INT / SOC / CYB / PSY.
+Do **not** map the seven energy centers one-to-one onto the six STATS.
 
-Treat them as developmental states spanning the character and the four systems. Each center
-may be recorded as:
+Treat them as **developmental states spanning layers**. Each center may be recorded as:
 
 - **Blocked**
 - **Active**
 - **Balanced**
 - **Integrated**
 
-| Center | Primary concerns | Strongest system relationships |
+This vocabulary is developmental, not a second 1–10 competence scale.
+
+| Center | Primary concerns | Strongest layer relationships |
 | --- | --- | --- |
-| Red | survival, embodiment, vitality, material existence | Physical |
+| Red | survival, embodiment, vitality, basic material existence | Physical |
 | Orange | selfhood, intimacy, one-to-one relation, personal desire | Psychic + Social |
 | Yellow | groups, roles, institutions, status, collective identity | Social |
 | Green | compassion, reciprocity, care, opening beyond self-interest | Social + Psychic |
 | Blue | communication, truthful expression, listening, shared meaning | Social |
 | Indigo | disciplined consciousness, intuition, PSI, Noetic work | Psychic |
-| Violet | whole-system signature / integration | whole character |
+| Violet | whole-system signature / integration | derived from the whole character |
 
-The Cybernetic system sits outside the chakra map. Technology can still affect conditions
-at any center without becoming an eighth chakra.
+The **Cybernetic layer sits outside the chakra map**. Technology can nevertheless affect
+conditions at any center: a BCI may aid communication, a psychotronic device may amplify
+Indigo work, surveillance may distort Yellow-center relations, and cybernetic embodiment
+may alter Red-center experience. Cybernetics does not become an eighth chakra.
+
+Energy centers may later serve as prerequisites, permissions, risks, or modifiers for
+specific PSI/awakening mechanics. Do not give automatic generic bonuses merely for marking
+a center "Integrated."
 
 # Biological-human-first kernel
 
-The first playable character kernel uses:
+Implement the first playable character kernel around:
 
 - biological humans;
 - optional cybernetic augmentation;
-- **FIT / REF / INT / SOC / CYB / PSY**;
-- separate 1–10 Skills;
-- PSI and psychic awakening mechanics in the Psychic Systems layer;
+- the six base STATS above;
+- separate 1–10 skills;
+- PSI;
 - Density;
 - Polarization;
-- Contacts / Factions / Motivations and the wider Social Systems layer;
+- Contacts / Factions / Motivations;
 - UNHSS / Firewall field agents.
 
-Later transhuman, synthetic, AI, NHI and disembodied-character rules should map their
-capabilities onto this six-STAT core and add domain-specific subsystem values only where
-needed.
+Defer until this model is stable:
+
+- cortical-stack continuity mechanics;
+- full resleeving;
+- morph switching/catalogs;
+- forks and backups;
+- infomorph edge cases.
+
+Later transhuman rules must map onto the four-layer ontology rather than replacing it.

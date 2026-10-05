@@ -4,9 +4,13 @@ Issue #111 makes NoöPunk an independent system. The canonical check is:
 
     STAT + Skill + 1d10 >= Difficulty Value
 
-Both STAT and trained Skill ratings are 1..10. Their final named lists are
-intentionally deferred. Ties, criticals, and the situational-modifier procedure
-are also deliberately unresolved rather than inherited from another game.
+Both STAT and trained Skill ratings are 1..10. Issue #131 (2026-10-05) locks the
+six universal base STATs — FIT / REF / INT / SOC / CYB / PSY — recorded in
+``data/rules/core.json``. Cybernetic hardware statistics (COMPUTE / INTERFACE /
+NETWORK and similar) are properties of decks, implants, devices and agents, not
+character STATs. The universal Skill list remains deferred. Ties, criticals, and
+the situational-modifier procedure are also deliberately unresolved rather than
+inherited from another game.
 """
 
 from __future__ import annotations
@@ -35,6 +39,13 @@ SKILL_LEVEL_MAX = int(_CANON["skills"]["max"])
 DIFFICULTIES = {int(k): str(v) for k, v in _CANON["difficulties"].items()}
 DIFFICULTY_LADDER = tuple(sorted(DIFFICULTIES))
 TOP_DIFFICULTY = max(DIFFICULTY_LADDER)
+
+#: The six universal base STATs, locked by issue #131. Order is canonical.
+STAT_LIST: tuple[str, ...] = tuple(_CANON["stats"]["final_list"])
+#: Canonical display names, keyed by STAT code.
+STAT_NAMES: dict[str, str] = dict(_CANON["stats"]["names"])
+#: The four-layer ontology each base STAT belongs to.
+STAT_LAYER: dict[str, str] = dict(_CANON["stats"]["layer"])
 
 
 @dataclass(frozen=True, slots=True)
@@ -172,8 +183,11 @@ __all__ = [
     "OpposedResult",
     "SKILL_LEVEL_MAX",
     "SKILL_LEVEL_MIN",
+    "STAT_LAYER",
+    "STAT_LIST",
     "STAT_MAX",
     "STAT_MIN",
+    "STAT_NAMES",
     "TOP_DIFFICULTY",
     "compare_opposed",
     "difficulty_for",

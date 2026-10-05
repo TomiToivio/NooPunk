@@ -61,9 +61,20 @@ Existing Godot and Concordia scaffolds must be preserved, not deleted, but they 
 
 ### 4. Current reserved design areas
 
-Issue #51 explicitly revises the earlier six-attribute reservation. The canonical character direction is now a **four-system unified tag model**: Physical / Social / Psychic / Cybernetic, with attributes represented as typed attribute tags rather than a separate subsystem. Ordinary-human STAT values use the **1..10** scale (issue #111), but the final attribute names/counts and generation procedure are not yet locked. The old FIT / REF / INT / CHA / CYB / PSY model and its 3d6 generator remain in the digital runtime only as documented porting debt.
+Issue #51 explicitly revises the earlier six-attribute reservation toward a four-system
+ontology: **Physical / Social / Psychic / Cybernetic**. Issue #131 (2026-10-05) now locks
+the final attribute names/counts to **six base STATs — Fitness (FIT), Reflexes (REF),
+Intelligence (INT), Social (SOC), Cybernetics (CYB) and Psyche (PSY)** — on the **1..10**
+scale (issue #111). The charisma/empathy/presence distinctions belong to the Social Systems
+layer, and psychic detail to the Psychic Systems layer; cybernetic hardware properties
+(processing, bandwidth, storage, hardening, etc.) are statistics of decks, implants, devices
+and agents, not character STATs. The generation procedure remains unlocked. `src/rules/tags.py`
+remains a non-canonical prototype. The older FIT / REF / INT / CHA / CYB / PSY sketch and its
+3d6 generator remain in the digital runtime only as documented porting debt.
 
-Issue #111 supersedes the earlier 2d6 / level-0..4 direction. The active core direction is an **independent NoöPunk 1–10 STAT + 1–10 Skill + 1d10 system**, while the final STAT and universal Skill lists remain explicitly deferred.
+Issue #111 supersedes the earlier 2d6 / level-0..4 direction. The active core direction is
+an **independent NoöPunk 1–10 STAT + 1–10 Skill + 1d10 system**. Issue #131 locks the STAT
+list; the universal Skill list remains explicitly deferred.
 
 Issue #110 defines campaign-scoped specialist content under that newer direction. Its provisional skill vocabulary and fields may be documented and represented as data, but agents must not treat Eclipse Phase linked aptitudes, percentile values, or other EP2 numerical mechanics as current NoöPunk rules.
 
@@ -72,7 +83,7 @@ For the initial Asteroid Belt / UNHSS campaign, only expose specialist fields th
 The earlier issue #17 BCI / Compute / Connection / Infosec cyberspace modifier framework is **withdrawn from active canon**. Do not port it. Hacking / cyberspace is DEFERRED until the author defines an original NoöPunk subsystem.
 
 Until explicitly specified, do not define:
-- final attribute names/counts inside the four systems, or derived statistics
+- derived statistics, or any per-layer STAT lists beyond the six base STATs locked by issue #131
 - the final universal skill list beyond the provisional/campaign-scoped vocabulary explicitly authorized by issues #110 and #111
 - which skills are unskilled-allowed versus trained-only
 - new specialist fields beyond those explicitly enabled by a campaign profile or character/scenario requirement
