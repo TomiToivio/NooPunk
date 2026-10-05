@@ -153,7 +153,7 @@ Canonical divergences include:
 - roughly **50% of humanity has some cybernetic augmentation**, ranging from medically necessary replacements to mesh inserts and cognitive enhancements;
 - player characters may encounter much higher concentrations of transhumans because of the institutions, crises, conflicts, and frontier environments in which they operate.
 
-NoöPunk should preserve EP2 mechanics where they are useful, simplify them where Concordia and large-scale simulation require it, and replace them where the NoöPunk world model demands something different.
+NoöPunk may mine earlier EP2 prototypes for useful ideas, but current mechanics must be expressed through the independent NoöPunk rules rather than inherited by default.
 
 ### 2.6 Core design identity
 
@@ -289,7 +289,7 @@ Cortical-stack continuity, resleeving, full morph catalogs, forks and infomorph 
 
 ## 9. Characters and identity
 
-**Status: EP2 BASELINE → expected heavy NoöPunk conversion.**
+**Status: LEGACY EP2 PROTOTYPE → expected heavy NoöPunk conversion.**
 
 The initial prototype may use EP2-style separation between the continuing person/agent and the body or platform they inhabit.
 
@@ -400,7 +400,7 @@ The authored DVs are the playtest baseline and must not be silently retuned.
 
 ## 11. Pools and expendable resources
 
-**Status: EP2 BASELINE / EXPERIMENTAL FOR CONCORDIA.**
+**Status: LEGACY EP2 PROTOTYPE / EXPERIMENTAL FOR CONCORDIA.**
 
 Begin with the relevant EP2 pool/resource concepts.
 
@@ -419,7 +419,7 @@ Questions to test:
 
 ## 12. Physical harm, wounds, and stress
 
-**Status: EP2 BASELINE.**
+**Status: LEGACY EP2 PROTOTYPE.**
 
 The first prototype should support both physical harm and psychological/mental stress because NoöPunk needs consequences for violence, dangerous technology, horror, altered states, and anomalous experiences.
 
@@ -438,7 +438,7 @@ Expected future changes:
 
 ## 13. Combat
 
-**Status: EP2 BASELINE, intentionally minimal.**
+**Status: LEGACY EP2 PROTOTYPE, intentionally minimal.**
 
 Implement only the amount of combat required for a playable vertical slice.
 
@@ -458,7 +458,7 @@ If full EP2 combat proves too heavy for Concordia, simplify it.
 
 ## 14. Embodiment, morphs, bodies, and platforms
 
-**Status: EP2 BASELINE → core NoöPunk subsystem.**
+**Status: LEGACY EP2 PROTOTYPE → core NoöPunk subsystem.**
 
 The EP distinction between identity and morph/embodiment is especially valuable for NoöPunk.
 
@@ -479,7 +479,7 @@ Long term, "morph" may be replaced by a more general NoöPunk term such as **emb
 
 ## 15. Mesh, hacking, cyberspace, and the Noösphere
 
-**Status: EP2 BASELINE → major NoöPunk reskin/replacement target.**
+**Status: LEGACY EP2 PROTOTYPE → major NoöPunk reskin/replacement target.**
 
 Use EP2 mesh/hacking mechanics as the initial playable cyber layer.
 
@@ -675,7 +675,7 @@ See `data/world/social_graph.json` and `docs/design/GAMEPLAY_LOOP.md`.
 
 ## 18. Gear, augmentation, software, and technology
 
-**Status: EP2 BASELINE DATA, selectively imported.**
+**Status: LEGACY EP2 PROTOTYPE DATA, selectively imported.**
 
 EP2 provides useful starting categories for gear, implants, augmentations, weapons, armor, software, mesh tools, and transhuman technology.
 
@@ -975,7 +975,7 @@ The destination is **not a separate setting wearing borrowed EP mechanics**.
 
 The destination is a playable **alternate pre-Fall Eclipse Phase timeline** in which NoöPunk's paradigm shifts reshape an intact Earth and wider transhuman civilization. Rules may still mutate through use, but the Eclipse Phase continuity and technology baseline are now intentional parts of the premise.
 
-## 31. Persistent EP2 test-session subset (#60)
+## 31. Legacy EP2 test-session subset (#60)
 
 **Status: native orchestration around the existing EP2 homebrew test kernel.**
 
