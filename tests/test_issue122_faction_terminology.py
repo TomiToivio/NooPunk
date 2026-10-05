@@ -134,6 +134,28 @@ class GraphLayerTests(unittest.TestCase):
             with self.subTest(layer=layer):
                 self.assertIn(layer, text)
 
+    def test_the_layers_are_a_numbered_index_not_loose_prose(self) -> None:
+        """Assert the list NUMBERS, not only the layer names.
+
+        A name-only check passes with the `1.`–`7.` markers stripped, because every phrase
+        still appears -- but the result is no longer a usable index, and the issue asks for
+        an enumerated set. Proven by sabotage: removing the numbering left the guard green.
+        """
+        raw = CHAPTER.read_text(encoding="utf-8")
+        expected = [f"{n}. **{layer}" for n, layer in enumerate(self.LAYERS, start=1)]
+        for marker in expected:
+            with self.subTest(marker=marker):
+                self.assertIn(marker, raw, f"the graph layer list lost its numbering: {marker}")
+
+    def test_the_layers_are_in_the_issue_s_order(self) -> None:
+        """The issue lists them 1..7; a reordering that keeps all seven names would still
+        satisfy a membership check, so assert the sequence too."""
+        raw = CHAPTER.read_text(encoding="utf-8")
+        positions = [raw.find(layer) for layer in self.LAYERS]
+        self.assertNotIn(-1, positions, "a graph layer name is missing entirely")
+        self.assertEqual(positions, sorted(positions),
+                         "the graph layers are no longer in the issue's order")
+
     def test_faction_to_faction_edges_are_derived_not_stored(self) -> None:
         """The issue says rivalries are derived from US/FRONTIER overlap; a stored opinion
         field would be a second source of truth for the same fact."""
