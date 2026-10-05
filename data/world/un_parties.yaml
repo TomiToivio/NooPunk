@@ -1,0 +1,32 @@
+parties:
+  - name: Bioconservatives
+    position: far_right
+    tendencies:
+      - Hard-core Bioconservatives
+      - Intellectual X-Risk Doomists
+      - Old Far Right / Populists
+  - name: Libertarian Party
+    position: right
+    themes:
+      - free_markets
+      - private_property
+      - accelerationism
+      - minarchism
+      - extraterrestrial_trade
+  - name: United Earth Social Democratic Party
+    position: centre_left
+    governing_record: won every UN parliamentary and presidential election so far
+    themes:
+      - welfare_state
+      - ecology
+      - progressive_taxation
+      - redistribution
+      - megacorporate_regulation
+      - multilateralism
+  - name: The Multitude
+    position: far_left
+    tendencies:
+      - Autonomist / anarchist / post-workerist
+      - Marxist / Marxist-Leninist
+open_for_future_parties: true
+extra_parliamentary_factions: true

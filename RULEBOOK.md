@@ -4413,3 +4413,130 @@ Issue #110 also records a larger character-design problem involving:
 These concepts are **not mechanically implemented here**. Density is not IQ; Polarization is not a D&D-style personality label; Social is not merely charisma; Psychic and Social remain distinct; Cybernetic is not intelligence; and an absent layer is not the same as incompetence.
 
 A dedicated attribute-system design issue owns this work before it becomes executable rules.
+
+
+## 44. Reverse-engineering, contact, and cryptoterrestrial map (#105)
+
+**Status: mixed canon and explicitly open design questions.** Issue #105 is exploratory, so only the points explicitly settled below are promoted to hard setting canon.
+
+Human reverse-engineering traditions are plural rather than copies of one American model.
+
+- **United States:** crash retrieval, contractor custody, military-industrial compartmentalization, and a Legacy Program whose core doctrine is secrecy. It is not automatically a sovereign breakaway civilization. The core conflict is elected/public authority versus permanent secrecy structures and contractors that still claim loyalty to the United States.
+- **Soviet/Russian lineage:** associated primarily with recovered **Confederacy** technology rather than Orion technology. The exact recoveries, sites, controlling institutions, and continuity through the Soviet collapse remain open.
+- **China:** a later-starting program that begins after the Law of One period, initially behind US/Soviet programs, then catches up through industrial capacity, espionage, archaeology, conventional aerospace, AI-assisted reverse engineering, and independent recovery/contact.
+- **Nordic lineage:** Ghost Fliers/Flyers, Ghost Rockets, and later observations/recoveries form a distinct scientific lineage spanning Finland, Sweden, Norway, Denmark, and Iceland. Whether this ever became a single formal multinational program remains open. Its characteristic emphasis is materials science, detection, noetics, and transparency rather than weaponization.
+- **India:** combines Vimanas, Siddhis, archaeology, consciousness research, and modern aerospace/nuclear/space science rather than merely copying modern crash retrievals.
+- **Egypt:** emphasizes archaeological finds and ancient technological/Noetic inheritances while preserving ambiguity about what is genuinely artificial or NHI.
+- **Israel:** develops a technological-Noetic tradition drawing on Kabbalistic symbolism and consciousness practice. **Merkabah spacecraft** is the characteristic visual/conceptual hook. In-world "magick" is treated as an interface with Noetic phenomena, not arbitrary fantasy spellcasting.
+
+### 44.1 Contact and altered-state interfaces
+
+**CE-5** is primarily a contact/summoning ritual, not a dependable spacecraft-calling technique. Typical outcomes include plasmoid manifestations, Noetic entities, anomalous lights/orbs, telepathic/contact experiences, and only rarely unambiguous physical craft.
+
+DMT experiences, "machine elves," astral/OBE traditions, Noetic Projection, Hoffman's Conscious Agent Network, Faggin-style consciousness ontology, and some PSI experiences may be different interfaces into one deeper **Conscious Agent / Noetic network**. Neuroscience, physics, psychonautics, occult traditions, and parapsychology may therefore be describing different projections of the same substrate. This is setting metaphysics, not a claim about established real-world science.
+
+Bledsoe-style orb phenomena and "The Lady" are **Confederacy-associated** in NoöPunk, while their exact ontology remains open: direct contact, Noetic intermediary, plasmoid, physical/noetic hybrid, or several layers at once.
+
+### 44.2 Cryptoterrestrials and undersea infrastructure
+
+**Tridactyls** are a real cryptoterrestrial species/category in NoöPunk. Whether modern Nazca bodies and the older esoteric/Law-of-One references describe exactly the same lineage remains an in-world research question.
+
+**Undersea NHI bases and transit corridors are canon.** They may include hidden bases, manufacturing, sensor systems, and routes used or contested by different factions. Not every USO is extraterrestrial and not every undersea anomaly belongs to one faction.
+
+Atlantis and Lemuria/Mu belong to the setting's ancient-history problem, but their **current status remains unresolved**: extinct civilization, hidden enclave, undersea survivor, off-world descendant, Noetic remnant, or something else.
+
+### 44.3 Orion infiltration and social consequences
+
+The Orion abduction/hybridization program means that Orion has penetrated human society despite quarantine. The extent, mechanisms, and identity-awareness of infiltrators remain uncertain. Hybrids may be biological, social, psychic, political, or mixed.
+
+A hard tone rule applies: **real infiltration does not make every conspiracy theory true**. False accusations, propaganda, mass paranoia, opportunistic witch hunts, and genuine hostile activity coexist.
+
+---
+
+## 45. Disclosure as unification and ontological shock (#106)
+
+Alexander Wendt's work is the principal political-sociological model for NoöPunk Disclosure. The key NoöPunk outcome is that **unification and fragmentation happen simultaneously**.
+
+Disclosure can strengthen planetary identity, UN federalization, international science, and cross-border contact institutions while also eroding state legitimacy, intensifying populism, creating anti-NHI militias, producing religious schisms, feeding conspiracy ecosystems, and triggering hybrid witch hunts.
+
+Four broad reaction families recur without exhausting the political landscape:
+
+- **Contact / acceleration / enthusiast:** welcome NHI, open science, technology release, Confederacy-friendly politics, CE-5/contact religion;
+- **Anti-NHI / doomer:** sovereignty, survivalism, anti-hybrid politics, militarized planetary defence;
+- **Skeptical / psyop:** interprets Disclosure as fabrication, secret human technology, or a pretext for surveillance/global governance;
+- **Indifferent majority:** initially absorbs even extraordinary evidence into ordinary life until direct consequences become personally unavoidable.
+
+### 45.1 Disclosure depth model
+
+Disclosure is a process, not one press conference. Use five **depth levels** as an analytical model rather than a single mandatory world chronology:
+
+1. UAP/UFO phenomena are accepted as real.
+2. Non-human/extraterrestrial intelligence is scientifically and politically established.
+3. Biologics and reverse-engineered technology are acknowledged.
+4. Abductions and hybridization become institutionally credible, producing the sharpest panic threshold.
+5. Open contact and diplomacy become public.
+
+Different countries, institutions, and publics can inhabit different depths at the same time.
+
+The United States may undergo **failed or incomplete Disclosure** because elected leadership cannot fully compel compartmentalized Legacy Program and contractor structures to release decisive evidence. This preserves the conflict as one of sovereignty, secrecy, contractor power, and constitutional authority rather than a simple "government versus breakaway civilization" story.
+
+Global Disclosure can instead become **polycentric** through China, Russia, Peru, Brazil, Egypt, India, France, Nordic countries, civilian science, and AI-assisted sensor networks. Disclosure becomes irreversible when **multiple independent epistemic systems converge**: astronomy, radar/sensors, materials science, genomics, archaeology, oceanography, consciousness research, citizen science, state archives, and AI analysis.
+
+### 45.2 Contact ecology and the Noösphere
+
+CE-5 movements after Disclosure include sincere contact communities, scams, cults, intelligence operations, scientific experiments, and accidental Noetic summoning circles.
+
+**Men in Black** are principally associated with Orion in the setting, although human intelligence services can imitate MIB folklore and particular manifestations may be constructs, hybrids, controlled humans, Noetic projections, or synthetic bodies.
+
+A distributed **Sphere Network** is a possible physical/Noetic infrastructure supporting the Confederacy quarantine: nuclear monitoring, unauthorized-incursion detection, observation, and communication. Do not assume every orb/sphere belongs to this network.
+
+AI becomes interpreter, mediator, amplifier, and potentially participant in NHI contact. Disclosure is therefore also a **Noöspheric phase transition** linking humans, AIs, psionic humans, Noetics, NHI, institutions, media, and collective narratives.
+
+---
+
+## 46. Major human political factions and UN Parliament parties (#109)
+
+The UN Parliament's first four major blocs are broad, internally contradictory coalitions. They do **not** exhaust human politics. Corporations, Legacy Programs, organized crime, intelligence networks, cults, militias, insurgencies, cooperatives, and other extra-parliamentary actors remain major powers.
+
+### 46.1 Bioconservatives
+
+A far-right populist party organized around defence of "old-school" biological humanity. It opposes or heavily restricts extraterrestrials, AIs, transhumans, cyborgs, hybrids, and other boundary-blurring beings, and favors authoritarian politics, militarism, strong borders, and aggressive defence.
+
+Its main internal tendencies are:
+
+1. **Hard-core Bioconservatives** focused on preserving biological humanity;
+2. **Intellectual X-Risk Doomists** focused on a particular existential threat;
+3. **Old Far Right / Populists** rooted in culturally specific nationalism, traditionalism, and religious fundamentalism.
+
+They share the claim that humanity is under threat while often disagreeing violently about what "humanity" means.
+
+### 46.2 Libertarian Party
+
+A right-libertarian, strongly pro-capitalist, accelerationist party supporting free markets, private property, technological acceleration, unrestricted entrepreneurship, and commercial relations with extraterrestrial civilizations. It is hostile to heavy UN/state regulation and favors a minarchist order centered on contracts, property, and physical security.
+
+Critics regard it as the political instrument of the **neo-feudal cybercapitalist class**, megacorporations, private infrastructure owners, wealthy accelerationists, and space-industrial interests. Its outer edge shades into anarcho-capitalism.
+
+### 46.3 United Earth Social Democratic Party
+
+A centre-left/left social-democratic and green governing coalition supporting welfare-state capitalism, ecological protection, progressive taxation, megacorporate regulation, international redistribution, strong public institutions, cautious governance of powerful technologies, and credible defence combined with peaceful NHI diplomacy.
+
+Its political instinct is:
+
+**legislation + bureaucracy + taxation + international institutions + expert committees**
+
+The UESDP has won **every UN parliamentary and presidential election so far**.
+
+Internal wings include labour social democrats, greens, technocratic internationalists, development/redistribution advocates, moderate transhumanists, security-oriented internationalists, and cautious NHI diplomacy advocates.
+
+### 46.4 The Multitude
+
+The main far-left parliamentary formation combines two historically distinct blocs:
+
+- an **autonomist/anarchist/post-workerist** wing oriented around commons, cooperatives, municipalism, networks, self-management, anti-capitalism, open technology, and solidarity with oppressed synthetic/transhuman/NHI persons;
+- an **old-school Marxist / Marxist-Leninist** wing with more centralized/statist traditions.
+
+The transformed Chinese communist tradition contributes an unstable synthesis of autonomist Marxism, Neo-Maoism, Taoist/Confucian thought, and state-controlled cybercapitalism.
+
+The Multitude is intentionally sprawling, argumentative, and theoretically over-equipped.
+
+These four blocs are hooks for NPC allegiance, Affect/Reputation edges, elections, lobbying, diplomacy, scandals, and mission conflicts. The parliamentary party system remains explicitly open for later additions.
