@@ -146,9 +146,15 @@ class WendtCitationTests(unittest.TestCase):
 
 class RulebookShapeTests(unittest.TestCase):
     def test_top_level_numbering_is_contiguous(self) -> None:
-        numbers = [int(n) for n in re.findall(r"(?m)^##\s+(\d+)\.", read())]
-        self.assertEqual(numbers, list(range(1, max(numbers) + 1)),
-                         f"section numbering has a gap: {numbers}")
+        """Assert contiguity separately for the #120 core and preserved ledger."""
+        text = read()
+        core, appendix = text.split("# Extended canon and reference material", 1)
+        core_numbers = [int(n) for n in re.findall(r"(?m)^##\\s+(\\d+)\\.", core)]
+        ledger_numbers = [int(n) for n in re.findall(r"(?m)^##\\s+(\\d+)\\.", appendix)]
+        self.assertEqual(core_numbers, list(range(1, 9)),
+                         f"core chapter numbering drifted: {core_numbers}")
+        self.assertEqual(ledger_numbers, list(range(1, max(ledger_numbers) + 1)),
+                         f"compatibility-ledger numbering has a gap: {ledger_numbers}")
 
     def test_the_theory_bibliography_and_ontology_still_follow_the_sources_section(self) -> None:
         """The surviving section sits where it was written; the restored pair follows it."""
