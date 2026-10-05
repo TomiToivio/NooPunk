@@ -52,9 +52,19 @@ class Issue51DesignArchitectureTests(unittest.TestCase):
         self.assertIn("The UI is a client. The NoöPunk simulation is the game.", text)
 
     def test_agents_no_longer_freeze_six_attribute_list(self) -> None:
+        """#51 superseded the old six; #131 later locked a NEW six by author decision.
+
+        The original point was that agents must not freeze an attribute list on
+        their own initiative. That still holds: AGENTS.md must record the list as an
+        *author* decision, and must keep the generation procedure and the universal
+        Skill list explicitly open.
+        """
         text = read("AGENTS.md")
-        self.assertIn("Issue #51 explicitly revises the earlier six-attribute reservation", text)
-        self.assertIn("final attribute names/counts", text)
+        self.assertIn("Issue #131", text)
+        self.assertIn("locks the universal base STAT list", text)
+        self.assertIn("FIT / REF / INT / SOC / CYB / PSY", text)
+        # the still-open parts must keep reading as open
+        self.assertIn("still **not locked**", text)
 
 
 if __name__ == "__main__":

@@ -444,9 +444,18 @@ class AntiInventionTests(unittest.TestCase):
                 self.assertNotIn(invented, source.lower())
 
     def test_rulebook_attributes_are_not_rewritten_by_this_prototype(self) -> None:
-        """#51 says do not lock the final names; the STAT list stays unfinalized."""
+        """#51 says do not lock the final names *from the prototype*; #131 locked them.
+
+        The prototype fixtures in ``src/rules/tag_fixtures.py`` still use the old
+        ``FIT/REF/INT/CHA/CYB/PSY`` codes and must keep being described as
+        non-canonical. The author, not the prototype, locked the new six on #131.
+        """
         text = " ".join((ROOT / "AGENTS.md").read_text(encoding="utf-8").split()).lower()
-        self.assertIn("not yet locked", text)
+        # the prototype must keep being marked non-canonical, and the lock must be
+        # attributed to the author rather than to the prototype
+        self.assertIn("author", text)
+        self.assertIn("issue #131", text)
+        self.assertIn("non-canonical", text)
 
 
 class AbsentSystemTests(unittest.TestCase):
