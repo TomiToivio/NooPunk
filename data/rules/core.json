@@ -1,10 +1,16 @@
 {
   "_note": "Canonical NoöPunk core resolution data for issue #111. NoöPunk is an independent RPG system inspired by multiple games; no single external ruleset is its mechanical parent.",
   "_source_of_truth": "RULEBOOK.md and explicit current author direction.",
-  "_canon_revision": "issue-111-d10-independent",
+  "_canon_revision": "issue-131-six-stat-core",
   "system_identity": {
     "independent": true,
-    "not_a_conversion_of": ["Eclipse Phase", "Cyberpunk 2020", "Cyberpunk RED", "Fate", "PbtA"],
+    "not_a_conversion_of": [
+      "Eclipse Phase",
+      "Cyberpunk 2020",
+      "Cyberpunk RED",
+      "Fate",
+      "PbtA"
+    ],
     "influences": [
       "Cyberpunk 2020 / RED",
       "Eclipse Phase",
@@ -18,8 +24,33 @@
   "stats": {
     "min": 1,
     "max": 10,
-    "final_list": "deferred",
-    "_note": "All canonical character STAT ratings use 1..10. Final STAT names are intentionally not locked by issue #111."
+    "final_list": [
+      {
+        "name": "Fitness",
+        "code": "FIT"
+      },
+      {
+        "name": "Reflexes",
+        "code": "REF"
+      },
+      {
+        "name": "Intelligence",
+        "code": "INT"
+      },
+      {
+        "name": "Social",
+        "code": "SOC"
+      },
+      {
+        "name": "Cybernetics",
+        "code": "CYB"
+      },
+      {
+        "name": "Psyche",
+        "code": "PSY"
+      }
+    ],
+    "_note": "Canonical six-STAT character core from issue #131. Domain-specific complexity belongs in Skills, system layers, traits, statuses, equipment, and subsystem values."
   },
   "skills": {
     "min": 1,
@@ -52,10 +83,59 @@
   "situational_modifiers": "deferred",
   "probability_examples": {
     "_note": "Success rates for representative fixed STAT+Skill profiles before modifiers; recorded for playtesting, not used to alter the authored DVs.",
-    "Novice STAT 4 + Skill 1": {"9": 0.7, "13": 0.3, "15": 0.1, "17": 0.0, "21": 0.0, "24": 0.0, "29": 0.0},
-    "Average trained STAT 5 + Skill 3": {"9": 1.0, "13": 0.6, "15": 0.4, "17": 0.2, "21": 0.0, "24": 0.0, "29": 0.0},
-    "Professional STAT 6 + Skill 5": {"9": 1.0, "13": 0.9, "15": 0.7, "17": 0.5, "21": 0.1, "24": 0.0, "29": 0.0},
-    "Expert STAT 7 + Skill 7": {"9": 1.0, "13": 1.0, "15": 1.0, "17": 0.8, "21": 0.4, "24": 0.1, "29": 0.0},
-    "Elite STAT 8 + Skill 9": {"9": 1.0, "13": 1.0, "15": 1.0, "17": 1.0, "21": 0.7, "24": 0.4, "29": 0.0}
+    "Novice STAT 4 + Skill 1": {
+      "9": 0.7,
+      "13": 0.3,
+      "15": 0.1,
+      "17": 0,
+      "21": 0,
+      "24": 0,
+      "29": 0
+    },
+    "Average trained STAT 5 + Skill 3": {
+      "9": 1,
+      "13": 0.6,
+      "15": 0.4,
+      "17": 0.2,
+      "21": 0,
+      "24": 0,
+      "29": 0
+    },
+    "Professional STAT 6 + Skill 5": {
+      "9": 1,
+      "13": 0.9,
+      "15": 0.7,
+      "17": 0.5,
+      "21": 0.1,
+      "24": 0,
+      "29": 0
+    },
+    "Expert STAT 7 + Skill 7": {
+      "9": 1,
+      "13": 1,
+      "15": 1,
+      "17": 0.8,
+      "21": 0.4,
+      "24": 0.1,
+      "29": 0
+    },
+    "Elite STAT 8 + Skill 9": {
+      "9": 1,
+      "13": 1,
+      "15": 1,
+      "17": 1,
+      "21": 0.7,
+      "24": 0.4,
+      "29": 0
+    }
+  },
+  "cybernetic_system": {
+    "character_stat": "CYB",
+    "hardware_stats": [
+      "COMPUTE",
+      "INTERFACE",
+      "NETWORK"
+    ],
+    "_note": "COMPUTE / INTERFACE / NETWORK describe hardware or system capabilities, not universal character STATS."
   }
 }
