@@ -159,7 +159,7 @@ silently restore them as active canon.
 
 Recognized influences include old-school Cyberpunk, Shadowrun, Philip K. Dick, Hawkwind, and 1970s space psychedelia.
 
-Those remain tonal/comparative references. **Eclipse Phase is different:** it is now the licensed parent continuity, technology baseline, and EP2 mechanical foundation for NoöPunk. Use EP material only within the applicable licensing and attribution boundaries, and document timeline divergences rather than renaming concepts merely to appear original.
+Those remain tonal/comparative references. **Eclipse Phase is also an influence, not NoöPunk's parent rules engine.** It remains valuable for transhuman technology, morphs/embodiment, mesh, reputation, space and existential-risk concepts. Use directly adapted EP material only within the applicable licensing and attribution boundaries, and preserve provenance rather than treating EP2 mechanics as automatic defaults.
 
 ### 8. Minimal Godot foundation
 
@@ -240,9 +240,9 @@ NoöPunk's canonical design invariants are documented once in [`docs/archive/DES
 4. Allow scenarios and medium-specific presentation to diverge.
 5. Preserve the **Cyberpunk / Noösphere balance**.
 6. Treat **UFO Disclosure, Psionics and Panpsychism** as the defining Noösphere paradigm shifts.
-7. Treat **Shadowrun** as a comparative influence. Treat **Eclipse Phase** as the licensed parent continuity / technology baseline / EP2 rules foundation, subject to provenance and attribution.
+7. Treat **Shadowrun** and **Eclipse Phase** as comparative/design influences, not mechanical templates.
 8. Do not silently redesign these balances. If an implementation requires a departure, document the reason explicitly.
-9. Treat **EP2 as the current mechanical chassis**. NoöPunk may simplify or replace subsystems deliberately, but agents must not revert the project to an original-rules-only premise unless the author explicitly changes direction again.
+9. Treat NoöPunk as an **independent rules system inspired by multiple games**. No external RPG supplies the default chassis; issue #111's 1–10 STAT + 1–10 Skill + 1d10 core is the active baseline.
 
 Practical consequences:
 
@@ -268,17 +268,17 @@ Platform-specific differences must be documented as adaptations. They must not s
 
 Scenarios, UI, pacing, maps, presentation, automation, and other medium-specific features may diverge where appropriate. Core rules, mechanics, terminology, and world canon should not.
 
-### 15. Eclipse Phase 2E chassis and alternate-timeline rule
+### 15. Independent-system rule and Eclipse Phase provenance
 
-**Eclipse Phase 2E is the current mechanical chassis and Eclipse Phase is the parent continuity.**
+**NoöPunk is an independent RPG system inspired by multiple games. Eclipse Phase is not the current mechanical chassis.**
 
 When adding or revising mechanics:
 
-1. begin from the current author direction in issue #60 and `RULEBOOK.md`;
-2. preserve EP2 mechanics and terminology when they work, rather than replacing them for originality's sake;
-3. simplify or modify subsystems only when NoöPunk or Concordia has a clear reason;
-4. connect NoöPunk additions to the project's theoretical sources where appropriate;
-5. record whether material is EP-derived, modified EP, or NoöPunk-native, including licensing/provenance;
-6. keep unresolved systems unresolved rather than inventing unsupported canon.
+1. begin from the current author direction in issue #111 and RULEBOOK.md;
+2. preserve the canonical 1–10 STAT + 1–10 Skill + 1d10 core unless explicitly revised;
+3. use Cyberpunk 2020/RED, Eclipse Phase, Fate, PbtA, OSR/Cities Without Number, Citizen Sleeper, The Expanse and other games as selective design references, not automatic rules;
+4. keep unresolved systems unresolved rather than importing a familiar solution from another game;
+5. record directly adapted material with appropriate source, license and modification provenance;
+6. prefer the smallest NoöPunk-native procedure that serves the game's human and Concordia/LLM play.
 
-Setting work must preserve the anchors **20XX / pre-Fall / Earth intact / Eclipse Phase technology level** unless the author explicitly revises them.
+Setting work should preserve current 20XX / Earth-intact anchors unless the author explicitly revises them.
