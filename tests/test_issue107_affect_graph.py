@@ -1,5 +1,11 @@
 from __future__ import annotations
+from pathlib import Path
+import sys
 import pytest
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+
 from simulation.affect import AffectEdge, AffectGraph, inherit_faction_affects
 
 def edge(source,target,affect,score,domain):
