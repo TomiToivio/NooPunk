@@ -136,8 +136,8 @@ class AgentRulesTests(unittest.TestCase):
             "shadowrun",
             "eclipse phase",
             "the veil",
-            "ep2 as the current mechanical chassis",
-            "must not revert the project to an original-rules-only premise",
+            "independent original rules system",
+            "stat + skill + 1d10",
         ):
             with self.subTest(fragment=fragment):
                 self.assertIn(fragment, text)
