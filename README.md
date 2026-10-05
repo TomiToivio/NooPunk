@@ -2,7 +2,7 @@
 
 **NoöPunk = Noösphere + Cyberpunk.**
 
-NoöPunk is an experimental **computer RPG and social simulation** set in an alternate pre-Fall **20XX** timeline using **Eclipse Phase 2nd Edition homebrew rules**, a deterministic Python RPG kernel, and **Google DeepMind Concordia** for optional LLM-driven agents and narration. Earth still exists. Transhuman technology is already here. AGI, cyborgification, NHI contact, psionics, panpsychism, and the emerging Noösphere are destabilizing the old world at the same time.
+NoöPunk is an experimental **computer RPG and social simulation** set in a pre-Fall **20XX** transhuman future using an **independent NoöPunk d10 rules system**, a deterministic Python RPG kernel, and **Google DeepMind Concordia** for optional LLM-driven agents and narration. Earth still exists. Transhuman technology is already here. AGI, cyborgification, NHI contact, psionics, panpsychism, and the emerging Noösphere are destabilizing the old world at the same time.
 
 The project is currently a **playable text-based prototype**. You can run the normal game entirely without Ollama or an LLM.
 
@@ -98,7 +98,7 @@ The deterministic text game itself uses only the Python standard library. The to
 python scripts/noopunk_text.py
 ```
 
-This starts the canonical alternate Eclipse Phase timeline: **pre-Fall, 20XX, Earth intact**.
+This starts the canonical NoöPunk setting: **pre-Fall, 20XX, Earth intact**.
 
 ### Small Concordia / EP2 proof of concept
 
@@ -156,16 +156,19 @@ NoöPunk is an experimental text-based RPG/social-simulation prototype under act
 The current direction is:
 
 ```text
-Eclipse Phase 2E
+independent NoöPunk RPG
         ↓
-EP2 homebrew Concordia prototype
+STAT + Skill + 1d10
         ↓
-NoöPunk reskin and world replacement
+Physical / Social / Psychic / Cybernetic character ontology
         ↓
-simplified EP-derived mechanics
+UNHSS / Firewall missions + Affect social graph
         ↓
-increasingly native NoöPunk RPG / simulation rules
+Concordia / deterministic runtime
 ```
+
+Issue #111 supersedes the older EP2-chassis direction. Eclipse Phase remains a major
+setting and technology influence, but NoöPunk is not an Eclipse Phase conversion.
 
 The immediate goal is not to implement every Eclipse Phase subsystem. It is to keep a small playable kernel running, then discover through play which mechanics should be retained, simplified, reskinned, or replaced.
 
@@ -203,25 +206,22 @@ agent.observe(result)
 
 Important characters, factions, and institutions may use LLM cognition. Simpler background NPCs can use deterministic or lightweight scripted behaviour where rich language interaction is unnecessary.
 
-## Eclipse Phase 2E homebrew
+## Independent rules, multiple influences
 
-The first playable NoöPunk RPG prototype uses **Eclipse Phase 2nd Edition** as its mechanical and technological chassis.
+NoöPunk has no parent ruleset. The core check is:
 
-EP2 already contains many systems useful for NoöPunk:
+```text
+STAT + Skill + 1d10
+```
 
-- transhuman bodies and morphs;
-- AGIs and infomorphs;
-- mesh networking and hacking;
-- reputation systems;
-- psychosocial stress;
-- advanced augmentation;
-- artificial minds;
-- psi;
-- post-scarcity and post-capitalist social arrangements.
+Cyberpunk 2020/RED is the clearest inspiration for the ordinary resolution feel.
+Eclipse Phase remains important for transhuman technology, existential-risk themes,
+mesh/morph/reputation ideas and Solar-System worldbuilding. Fate, PbtA/The Sprawl,
+CY_BORG, Cities Without Number, Citizen Sleeper and The Expanse also inform selected
+parts of the design.
 
-NoöPunk is an **alternate pre-Fall timeline**, not a replay of Eclipse Phase canon. The year is **20XX**, Earth still exists and remains politically central, and the timeline diverges through its Noösphere, NHI/UAP contact, panpsychism, psionics, ideological conflicts, political economy, and alternate AI history.
-
-The rules will be modified and simplified heavily where useful.
+Legacy EP2 prototype code and scenarios remain in the repository as historical or
+experimental material until migrated. They are not current mechanical canon.
 
 ## Rules and world documentation
 
@@ -229,8 +229,9 @@ Active canonical documents:
 
 - **Rules:** [`RULEBOOK.md`](RULEBOOK.md)
 - **Continuity boundary:** [`docs/PRE_FALL_ALTERNATE_TIMELINE.md`](docs/PRE_FALL_ALTERNATE_TIMELINE.md)
-- **Umbrella implementation work:** [issue #60](https://github.com/TomiToivio/NooPunk/issues/60)
-- **Small Concordia/EP2 scenario:** [`docs/scenarios/ISSUE74_CONCORDIA_EP2_POC.md`](docs/scenarios/ISSUE74_CONCORDIA_EP2_POC.md)
+- **Current independent core:** issue #111
+- **Historical umbrella work:** [issue #60](https://github.com/TomiToivio/NooPunk/issues/60)
+- **Legacy Concordia/EP2 scenario:** [`docs/scenarios/ISSUE74_CONCORDIA_EP2_POC.md`](docs/scenarios/ISSUE74_CONCORDIA_EP2_POC.md)
 
 Documents under [`docs/archive/`](docs/archive/) are historical design records. They are useful provenance, but they are **not automatically active canon** and do not override the current rulebook or explicit current author direction.
 
@@ -290,7 +291,7 @@ With the dependencies from `requirements.txt` installed, also check the real Con
 python scripts/concordia_smoke.py --build-concordia-config
 ```
 
-## Eclipse Phase sources and license
+## Eclipse Phase-derived legacy material and license
 
 Eclipse Phase is created by **Posthuman Studios**. Eclipse Phase-derived material in this repository must follow the applicable Eclipse Phase Creative Commons terms and attribution requirements.
 
@@ -306,4 +307,4 @@ NoöPunk-original setting material and code should be kept clearly distinguishab
 
 The aim is to implement and transform the rules, not to mirror the Eclipse Phase books. Prefer code, structured data, compact rule summaries, conversion notes, and provenance records over copying large amounts of rulebook prose.
 
-**NoöPunk is an unofficial fan/homebrew project and is not affiliated with or endorsed by Posthuman Studios.**
+**NoöPunk is an independent project and is not affiliated with or endorsed by Posthuman Studios. Legacy or adapted Eclipse Phase-derived material remains separately attributed under its applicable license.**
