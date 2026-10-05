@@ -323,7 +323,7 @@ Working mapping:
 | mesh | cyberspace / network layer / possible Noösphere interface |
 | psi | psionics / Noösphere interaction |
 | reputation network | social / network capital |
-| Firewall | **deliberately undecided** — see below |
+| Firewall | **covert operational culture / intelligence network inside UNHSS** — see below |
 | TITANs | **deliberately undecided** — see below |
 
 These are **working mappings**, not final terminology.
@@ -333,12 +333,12 @@ the alternate timeline's divergence point falls inside them. Recording them as o
 the decision; a later contributor must not "helpfully" resolve them by inventing an
 organisation, a history, or a mechanic.
 
-**Firewall.** EP2's cross-faction conspiracy may **exist differently, emerge
-differently, or not yet exist**, depending on where NoöPunk's divergence lands. The
-setting does not currently state which. Nothing is established about its membership,
-reach, methods, or whether it has formed at all. (Note a wording trap: the phrase
-"Great Firewall" does appear in §33.27, where it refers to the Chinese state's internet
-controls — an unrelated use of the words, not this organisation.)
+**Firewall.** Firewall is the insider and operational name for the classified field,
+intelligence, and counter-X-Risk culture inside the **United Nations Human Security and Survival Organization (UNHSS)**. It preserves the useful cross-faction mission role of
+Eclipse Phase's Firewall without being a separate secret conspiracy outside government.
+Player characters are Firewall/UNHSS field agents by default while also retaining a
+personal political, cultural, national, professional, or social faction identity. The
+"Great Firewall" in §33.27 remains China's internet-control system and is unrelated.
 
 **TITANs.** NoöPunk is **pre-Fall**: nothing comparable to the canonical Eclipse Phase
 Fall has occurred (§33.1), and the setting must **not** assume that it has. NoöPunk's
@@ -1184,42 +1184,24 @@ The setting therefore visibly contains:
 
 The coexistence of these groups is politically important.
 
-### 33.5 Proto-federal United Nations
+### 33.5 Emerging federal United Nations
 
-Many states are trying to transform the **United Nations** into a stronger federal or
-quasi-federal government of Earth.
+By 20XX the **United Nations is becoming a real federal world government**. The process
+is incomplete, politically contested, and uneven, but it has moved beyond a merely
+proto-federal aspiration. Every recognized Earth state is a UN member. Off-world human
+polities, including Luna, Mars, and sovereign Belt or habitat communities, may also
+become member states in their own right.
 
-The process is chaotic, incomplete and contested. There is **no consolidated world
-government**.
+The emerging federal system has a **UN President, UN Prime Minister, and UN Parliament**.
+Global presidential and parliamentary elections occur every **four years**. The exact
+constitutional division of powers remains deliberately open for later design.
 
-The emerging order overlaps with:
+UNHSS is one of the principal engines of this federalization because existential-risk
+governance forces the UN to acquire real sovereign capacities: resource mobilization,
+policing, intelligence, emergency authority, scientific infrastructure, military
+forces, space fleets, and global jurisdiction. It is widely regarded as the UN's most
+important institution, which makes it both indispensable and politically alarming.
 
-- national governments;
-- regional blocs;
-- emergency authorities;
-- transnational agencies;
-- corporate jurisdictions;
-- habitat governments;
-- NHI-contact institutions;
-- military and intelligence coalitions;
-- post-scarcity and commons-based networks.
-
-Some states want a democratic Earth federation. Others want only narrow coordination for
-NHI contact, AGI control, planetary defense, trade, migration and crisis response. Some
-resist any transfer of sovereignty. Corporations and non-state actors try to shape the
-process, while autonomist and Multitude-oriented movements may distrust both nation-states
-and centralized planetary government.
-
-The UN is therefore both an **emerging planetary authority** and a major arena of struggle
-over what Earth should become.
-
-Running beneath the institutional question is a **political-economic** one. The core
-contested axis of the NHI Crisis era is **neofeudal cybercapitalism versus the Multitude**:
-concentrated platform, corporate and habitat power that converts crisis into new forms of
-private sovereignty, against commons-based, cooperative and autonomist formations that
-organize from below. This is a live struggle, not a settled outcome, and it is one of the
-setting's central themes — the same axis is stated in
-`docs/PRE_FALL_ALTERNATE_TIMELINE.md` and `data/paradigm_shifts.yaml`.
 
 ### 33.6 Psionics, QIP, awakening and the Noösphere
 
@@ -3998,3 +3980,182 @@ elements of its fictional world model, not as settled descriptions of the real w
 
 ---
 
+
+
+## UNHSS / Firewall: default campaign institution
+
+> **Issue #108 canon.** This section defines the default player organization and the
+> institutional core of the emerging federal United Nations. It coordinates with
+> #105 (Legacy Programs / Disclosure) and #107 (factions, motivations, reputation,
+> contacts, and mission loop).
+
+### Name, history, and identity
+
+The canonical organization is the **United Nations Human Security and Survival
+Organization (UNHSS)**. It was founded under the cumbersome name **United Nations
+X-Risk and NHI Organization**, which produced the durable public nickname **X-Com**.
+Uniformed police and field officers are often called **X-Cops**, sometimes
+pejoratively. **Firewall** is the insider / operational name used especially by
+intelligence and field personnel.
+
+Firewall is not an extra-governmental conspiracy. It is the classified operational
+culture and intelligence network **inside UNHSS**.
+
+### Mandate and jurisdiction
+
+UNHSS has legal responsibility for existential and species-level survival risks,
+including AGI and rogue AI, NHI / extraterrestrial intelligence, PSI / Noetic
+phenomena, advanced biotechnology, planetary defence, nuclear risk, climate change,
+pandemics, autonomous weapons, catastrophic infrastructure failure, and other
+human-caused or non-human X-Risks. Its distinctive operational center is the
+intersection **X-Risk + NHI + AGI + PSI**.
+
+Every recognized Earth state belongs to the UN and formally accepts UNHSS jurisdiction
+in NHI / X-Risk matters. Formal jurisdiction is global and extends through the human
+Solar System, but **legal jurisdiction ≠ actual access ≠ political cooperation**.
+
+The most enthusiastic collaborators include the **European Union, Japan, Canada,
+Brazil, Peru, Egypt, and India**. The **United States, Russia, and China** participate
+at governmental level while retaining especially difficult Legacy Program secrecy.
+Civilian governments may cooperate with UNHSS while partially autonomous secrecy and
+reverse-engineering structures obstruct it.
+
+### Three institutions fused into one
+
+UNHSS exists because member states could not agree whether humanity needed a civilian
+scientific agency, an FBI-like transnational police/intelligence service, or a rapid
+UN Peacekeeper military force. The compromise was all three:
+
+1. **Civilian / scientific / diplomatic branch.** Research coordination, standards,
+   NHI diplomacy, AI and recovered-technology treaties, planetary defence, Disclosure
+   policy, human / AI / NHI rights debates, civil defence, disaster relief,
+   development, refugee response, resilience, and recovery.
+2. **UNHSS Police / Firewall.** International investigation, counterintelligence,
+   intelligence gathering, specialist police work, and covert operations focused on
+   NHI and X-Risk crimes.
+3. **Tactical / military component.** Rapid intervention under the legal fiction that
+   even its hardest combat formations are Peacekeeper military-police tactical or
+   SWAT assets rather than a conventional standing world army.
+
+UNHSS Police officers are legally **UN Peacekeeper military police**. Their remit
+includes rogue AI, prohibited AGI work, illegal recovered technology and reverse
+engineering, NHI trafficking, psychotronic weapons, illegal PSI experimentation,
+hybrid/infiltration investigations, existential-technology terrorism, sabotage of
+planetary defence, crimes against protected NHI beings, and major Legacy Program theft
+or leaks.
+
+### Military, mobility, and space forces
+
+UNHSS maintains two elite permanent rapid-deployment regiments:
+
+- **Earth Special Operations Regiment:** global counter-NHI, rogue-AI containment,
+  hostage rescue, dangerous-site seizure, WMD/X-Risk intervention, and support to
+  X-Cops.
+- **Solar-System Space Marine Regiment:** orbital assault and boarding, habitat and
+  station intervention, ship seizure, rescue, lunar/planetary/asteroid deployment,
+  and NHI-site operations.
+
+Member-state Peacekeeper regiments supplement them and vary from first-rate specialist
+units to lightly equipped defensive, evacuation, checkpoint, civilian-protection, and
+disaster-response formations.
+
+UNHSS also operates air, sea, and space components: strategic airlift and ISR;
+maritime / USO operations and oceanic sensor networks; a Solar-System **strike fleet**
+capable of orbital assault and space-marine deployment; patrol ships, transports,
+cutters, medical and rescue ships, logistics ships; and **deep-space scouts** combining
+research vessel, spy ship, exploration ship, and coast-guard roles. Orbital
+infrastructure includes defence platforms, SIGINT satellites, sensor constellations,
+stations, communications relays, and planetary-defence systems. Assets may be owned by
+UNHSS or seconded by member states.
+
+### Visual identity
+
+Uniformed UNHSS police and military personnel retain unmistakable UN Peacekeeper
+identity: **blue UN berets or helmets with black uniforms**, with formal styling
+influenced by **19th-century European Hussar uniforms**. The style reflects strong
+early EU backing and later spread through UNHSS ceremonial and field dress. Covert
+agents normally dress for the mission.
+
+### Democratic safeguards and the deep-state problem
+
+UNHSS was deliberately designed to avoid becoming another MJ-12-style permanent
+secrecy apparatus. Safeguards include elected UN oversight, parliamentary committees,
+rotating multinational inspectors, judicial review, member-state inspection rights,
+limits on compartments, mandatory audit, inspector-general offices, whistleblower
+channels, distributed command authority, public overt budgets, multinational review
+of classified budgets, a legal distinction between temporary emergency secrecy and
+indefinite secrecy, and limits on contractor control of recovered technology.
+
+Conspiracy theories that UNHSS / Firewall has itself become a planetary deep state are
+ubiquitous. Some are false; some expose real abuses; some may concern compromised
+cells. The institution is not secretly evil by default.
+
+### Player characters and dual faction identity
+
+The default campaign assumption is:
+
+> **Player characters are covert Firewall field agents of UNHSS while also belonging
+> to another political, cultural, ideological, national, professional, or social
+> faction.**
+
+This creates the standard character structure **personal faction identity + Firewall
+mission identity**. The two identities may conflict. Examples include EU federalist,
+PCM activist, Finnish investigator, Indian noetic scientist, Belter autonomist,
+AI-rights activist, corporate defector, or transhuman faction member, each also serving
+with Firewall. Faction, motivation, reputation, and contacts mechanics should treat
+this tension as a primary source of missions and consequences (#107).
+
+### Mission architecture
+
+A Firewall team may investigate anomalies, negotiate with NHI, stop rogue AI, inspect
+a Legacy Program, protect scientists, evacuate a habitat, infiltrate a corporation,
+investigate PSI crime, board a ship, raid an illegal reverse-engineering lab, examine
+hybrid infiltration, explore an archaeological site, recover a Ghost Rocket fragment,
+operate in cyberspace or a Noetic environment, escort diplomats, provide disaster
+relief, prevent nuclear escalation, investigate ecological X-Risk, travel to asteroid
+colonies, or perform deep-space reconnaissance.
+
+A campaign base may be a UNHSS station, city field office, Belt outpost, patrol ship,
+space station, or mobile task-force base. This supports the location / mission loop
+being developed in #107.
+
+### UN federal executive and the Minister
+
+The ordinary political head of UNHSS is the **United Nations Minister of Human
+Security and Survival**, a member of the UN Parliament and part of the federal
+executive. The Minister answers to the UN President and Prime Minister and oversees
+normal strategy, budget, administration, diplomacy, science, policing, and defence.
+The precise appointment mechanism remains for later constitutional design.
+
+### Four Wallfacers
+
+UNHSS maintains **four Wallfacers**, explicitly inspired in-world by *The Three-Body
+Problem*. Their purpose is strategic deception against hostile ETI, infiltrating NHI,
+rogue AGIs, machine civilizations, and other adversaries capable of pervasive
+surveillance or prediction.
+
+A Wallfacer may pursue unusual hypotheses, fund strange projects, request specialist
+personnel, commission research, create compartmented task forces, conduct deception,
+and make preparations whose purpose remains largely inside one person's head. They
+are still bounded by human rights, UN law, material constraints, anti-coup safeguards,
+and existential-risk safety rules. They are not omnipotent.
+
+Wallfacers are mission engines: their apparently irrational orders may be brilliant,
+wrong, compromised, or impossible to interpret until much later.
+
+### Central political tension
+
+UNHSS must remain internally contradictory rather than becoming a frictionless
+adventurers' guild. Persistent conflicts include science vs secrecy, diplomacy vs law
+enforcement, policing vs military force, civil liberties vs existential security,
+transparency vs counterintelligence, national sovereignty vs global jurisdiction,
+member states vs federal authority, Legacy Programs vs Firewall, AI rights vs AI
+containment, NHI diplomacy vs planetary defence, PSI research vs spiritual
+interpretation, accountability vs classified reverse engineering, and Wallfacer
+autonomy vs democratic oversight.
+
+The core political question is therefore:
+
+> **Can humanity build a legitimate democratic institution powerful enough to fight
+> existential threats without turning it into the unaccountable deep state it was
+> created to replace?**

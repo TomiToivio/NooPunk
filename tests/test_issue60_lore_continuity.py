@@ -9,12 +9,10 @@ stated in one canonical document must not be silently missing from the other.
    other. The guard below asserts the shared continuity facts appear in BOTH the
    timeline document and the canonical `RULEBOOK.md`.
 
-2. Issue #60's divergence table names two Eclipse Phase concepts that NoöPunk
-   carries as *deliberately undecided* rather than mapped -- `Firewall` and
-   `TITANs`. The valuable property is not that the words appear; it is that they
-   appear **as undecided**. A later contributor resolving them by inventing an
-   organisation or a history must fail the build, so the assertions check the
-   surrounding claim, not just the token.
+2. Issue #108 resolves one of issue #60's former open conversion gaps: Firewall is
+   now the covert operational culture inside UNHSS. TITANs remain deliberately
+   undecided. The guard therefore protects both the new Firewall mapping and the
+   still-open TITAN question.
 """
 from __future__ import annotations
 
@@ -147,28 +145,22 @@ class PreFallContinuityTests(unittest.TestCase):
 
 
 class ConversionGapTests(unittest.TestCase):
-    """The two #60 concepts carried as deliberately undecided — gaps 1 and 2."""
+    """Issue #108 resolves Firewall; the TITAN conversion gap remains open."""
 
     def setUp(self) -> None:
         self.mapping = section_of(RULEBOOK, "9. Characters and identity")
 
-    def test_firewall_is_recorded_as_undecided(self) -> None:
+    def test_firewall_is_mapped_to_unhss(self) -> None:
         self.assertIn("Firewall", self.mapping, "Firewall is absent from the mapping section")
-        # The decision is the openness: it must not be described as formed.
         firewall_block = re.search(
-            r"\*\*Firewall\.\*\*(.{0,600})", self.mapping, re.DOTALL
+            r"\*\*Firewall\.\*\*(.{0,1000})", self.mapping, re.DOTALL
         )
         if firewall_block is None:
             self.fail("no Firewall paragraph in the mapping section")
         body = firewall_block.group(1)
-        self.assertRegex(
-            body,
-            r"may \*\*exist differently, emerge\s*differently, or not yet exist\*\*"
-            r"|deliberately undecided",
-            "Firewall is not recorded as undecided",
-        )
-        for settled in ("Firewall was founded", "Firewall exists and", "Firewall is organised"):
-            self.assertNotIn(settled, body, f"Firewall reads as settled: {settled!r}")
+        self.assertRegex(body, r"United Nations Human Security and Survival Organization|UNHSS")
+        self.assertRegex(body, r"operational|intelligence")
+        self.assertNotRegex(body, r"deliberately undecided|not yet exist")
 
     def test_titans_are_recorded_as_undecided(self) -> None:
         self.assertIn("TITANs", self.mapping, "TITANs absent from the mapping section")
