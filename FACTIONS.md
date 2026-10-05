@@ -37,3 +37,19 @@ Reputation is an edge from the evaluating faction/actor toward the character. Us
 Start with a small social graph: a few appropriate contacts such as a close friend, professional contact, family/community tie, patron/mentor and optionally an enemy. Record identity, role, faction, relationship, Affect label/score, why you know them, their needs, realistic capabilities and reciprocity.
 
 Exact starting counts and random tables remain future character-generation design.
+
+## Default Firewall affiliation
+
+By default, a player character has **two simultaneous affiliations**:
+
+1. **Firewall / UNHSS mission identity** — the character is a field agent of the United
+   Nations Human Security and Survival Organization.
+2. **Personal faction identity** — political, cultural, national, professional,
+   ideological, community, or social affiliation.
+
+Firewall is therefore not a replacement for the faction list. It is the campaign-wide
+operational affiliation layered on top of another faction. Conflicts between the two
+are expected to drive motivations, reputation, contacts, and mission consequences.
+
+See RULEBOOK.md, “UNHSS / Firewall: default campaign institution,” and issues #108 and
+#107.
