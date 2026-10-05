@@ -93,19 +93,53 @@ These domains are structurally coupled. A social interaction can become physical
 
 ### 3.2. Stats
 
-**Status: NOÖPUNK CORE.**
+**Status: NOÖPUNK CORE — author decision on issue #131.**
 
-Canonical STAT ratings use **1–10** for ordinary operative characters. The final STAT list is maintained by the latest explicit author direction and later issues that revise earlier drafts.
+NoöPunk uses **six base STATS**. This is a deliberately simplified universal core; deeper
+complexity belongs in the **domain layers** (Physical, Social, Psychic and Cybernetic
+systems and their subsystems) rather than in the base attributes.
 
-A STAT represents broad capability. A Skill represents learned competence. They remain separate and are added together for checks.
+| STAT | Code | Covers |
+| --- | --- | --- |
+| Fitness | **FIT** | general physical capability: strength, endurance, exertion, toughness |
+| Reflexes | **REF** | speed, coordination, reaction time, dexterity |
+| Intelligence | **INT** | general cognitive ability, reasoning, learning, knowledge |
+| Social | **SOC** | social skills, communication, charisma |
+| Cybernetics | **CYB** | cyberspace- and cyborg-native technical aptitude |
+| Psyche | **PSY** | consciousness, willpower, psychic resilience, psionics, inner capacities |
+
+These six are the **universal base model**. Social complexity belongs in the **Social
+Systems** layer (chapter 6); psychic capability beyond the base stat belongs in the
+**Psychic Systems** layer (chapter 8).
+
+**CYB is a character stat; COMPUTE / INTERFACE / NETWORK are not.** Those three are
+**hardware/system statistics** of the cybernetic equipment, implants, devices, agents and
+decks a character has access to, and they are recorded with that equipment rather than on the
+character sheet. A character's CYB rating and a deck's system ratings are different kinds of
+number and must not be collapsed into one.
+
+Canonical STAT ratings use **1–10** for ordinary operative characters. A STAT represents
+broad capability; a Skill represents learned competence. They remain separate and are added
+together for checks.
 
 ```text
 STAT + Skill + 1d10
 ```
 
-Where an entity does not meaningfully possess a domain or STAT, use **N/A** in human-readable material and `null` in machine-readable data rather than treating zero as absence.
+Where an entity does not meaningfully possess a domain or STAT, use **N/A** in human-readable
+material and `null` in machine-readable data rather than treating zero as absence.
+**0 does not mean absence.**
 
-Augmentation may create effective capabilities above the ordinary human scale, but base capability and augmentation should remain distinguishable.
+Language, symbolic reasoning, institutions, discourse and shared knowledge belong to the
+**Social** layer. Phenomenal consciousness, self-directed awareness, intuition, PSI and
+Noetic capability belong to the **Psychic** layer. The two remain deliberately distinct.
+There is no generic Mental/Ego layer.
+
+Augmentation may create effective capabilities above the ordinary human scale, but base
+capability and augmentation should remain distinguishable.
+
+The full definitions and entity examples are maintained in
+[`rulebook/2_ATTRIBUTES.md`](rulebook/2_ATTRIBUTES.md).
 
 ---
 

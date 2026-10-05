@@ -52,9 +52,29 @@ class CoreRulesTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 AttributeSet({"BODY": bad})
 
-    def test_final_stat_and_skill_lists_are_deferred(self) -> None:
+    def test_final_stat_list_is_locked_and_skill_list_is_deferred(self) -> None:
+        """Issue #131 locked the six base STATS; the Skill list stays deferred.
+
+        The stat list was deliberately deferred under #111 and is now an author
+        decision, so this guard pins the locked list rather than the deferred
+        marker. The Skill list is still open and must keep reading as deferred.
+        """
         canon = json.loads((ROOT / "data" / "rules" / "core.json").read_text(encoding="utf-8"))
-        self.assertEqual(canon["stats"]["final_list"], "deferred")
+        self.assertEqual(
+            canon["stats"]["final_list"],
+            ["FIT", "REF", "INT", "SOC", "CYB", "PSY"],
+        )
+        self.assertEqual(
+            canon["stats"]["names"],
+            {
+                "FIT": "Fitness",
+                "REF": "Reflexes",
+                "INT": "Intelligence",
+                "SOC": "Social",
+                "CYB": "Cybernetics",
+                "PSY": "Psyche",
+            },
+        )
         self.assertEqual(canon["skills"]["final_list"], "deferred")
 
     def test_skill_check_engine_is_1d10(self) -> None:
