@@ -182,6 +182,11 @@ The subsystem is intentionally unresolved.
 
 Licensing/source provenance remains mandatory for directly adapted material.
 
+For compatibility with the older EP2 conversion matrix, the historical status vocabulary
+`EP2 BASELINE`, `MODIFIED EP2`, `NOÖPUNK NATIVE`, `EXPERIMENTAL`, and `DEFERRED`
+remains recognized as **legacy provenance metadata**. Those labels do not make EP2 the
+current chassis.
+
 ## 4. Source hierarchy
 
 When sources disagree, use this order:
@@ -258,7 +263,7 @@ They should not invent dice results, damage values, resource changes, or other m
 
 ## 8. The smallest playable rules kernel
 
-**Status: EP2 BASELINE, to be simplified aggressively.**
+**Status: LEGACY EP2, to be simplified aggressively.**
 
 Do not implement all of Eclipse Phase before NoöPunk becomes playable.
 
@@ -283,7 +288,7 @@ Everything else may remain deferred until play shows that it is needed.
 
 ## 9. Characters and identity
 
-**Status: EP2 BASELINE → expected heavy NoöPunk conversion.**
+**Status: LEGACY EP2 → expected heavy NoöPunk conversion.**
 
 The initial prototype may use EP2-style separation between the continuing person/agent and the body or platform they inhabit.
 
@@ -402,7 +407,7 @@ The table is diagnostic, not permission to alter the authored DVs. Legendary DV 
 
 ## 11. Pools and expendable resources
 
-**Status: EP2 BASELINE / EXPERIMENTAL FOR CONCORDIA.**
+**Status: LEGACY EP2 / EXPERIMENTAL FOR CONCORDIA.**
 
 Begin with the relevant EP2 pool/resource concepts.
 
@@ -421,7 +426,7 @@ Questions to test:
 
 ## 12. Physical harm, wounds, and stress
 
-**Status: EP2 BASELINE.**
+**Status: LEGACY EP2.**
 
 The first prototype should support both physical harm and psychological/mental stress because NoöPunk needs consequences for violence, dangerous technology, horror, altered states, and anomalous experiences.
 
@@ -440,7 +445,7 @@ Expected future changes:
 
 ## 13. Combat
 
-**Status: EP2 BASELINE, intentionally minimal.**
+**Status: LEGACY EP2, intentionally minimal.**
 
 Implement only the amount of combat required for a playable vertical slice.
 
@@ -460,7 +465,7 @@ If full EP2 combat proves too heavy for Concordia, simplify it.
 
 ## 14. Embodiment, morphs, bodies, and platforms
 
-**Status: EP2 BASELINE → core NoöPunk subsystem.**
+**Status: LEGACY EP2 → core NoöPunk subsystem.**
 
 The EP distinction between identity and morph/embodiment is especially valuable for NoöPunk.
 
@@ -481,7 +486,7 @@ Long term, "morph" may be replaced by a more general NoöPunk term such as **emb
 
 ## 15. Mesh, hacking, cyberspace, and the Noösphere
 
-**Status: EP2 BASELINE → major NoöPunk reskin/replacement target.**
+**Status: LEGACY EP2 → major NoöPunk reskin/replacement target.**
 
 Use EP2 mesh/hacking mechanics as the initial playable cyber layer.
 
@@ -521,7 +526,7 @@ Do not finalize the complete replacement mechanic yet.
 
 ## 16. Psionics and Noösphere interaction
 
-**Status: MODIFIED EP2 / NOÖPUNK NATIVE METAPHYSICS; detailed mechanics still DEFERRED.**
+**Status: ADAPTED / INSPIRED / NOÖPUNK NATIVE METAPHYSICS; detailed mechanics still DEFERRED.**
 
 EP2 psi may be used temporarily as a mechanical hook, but its origin is explicitly replaced.
 
@@ -627,7 +632,7 @@ This does not mean every magical claim is true in-setting. Traditions may contai
 
 ## 17. Social interaction and reputation
 
-**Status: EP2 BASELINE + NOÖPUNK SIMULATION EXPANSION.**
+**Status: LEGACY EP2 + NOÖPUNK SIMULATION EXPANSION.**
 
 Use EP2 social/reputation mechanics where useful for the first playable prototype.
 
@@ -662,7 +667,7 @@ A conversation may be roleplayed by LLM agents while deterministic mechanics res
 
 ## 18. Gear, augmentation, software, and technology
 
-**Status: EP2 BASELINE DATA, selectively imported.**
+**Status: LEGACY EP2 DATA, selectively imported.**
 
 EP2 provides useful starting categories for gear, implants, augmentations, weapons, armor, software, mesh tools, and transhuman technology.
 
@@ -682,7 +687,7 @@ The **global technology baseline is Eclipse Phase-level transhuman technology**.
 
 ## 19. AI, AGI, infomorphs, and non-human agents
 
-**Status: MODIFIED EP2 / NOÖPUNK NATIVE DIRECTION.**
+**Status: ADAPTED / INSPIRED / NOÖPUNK NATIVE DIRECTION.**
 
 EP2 provides useful machinery for artificial and digital persons, but NoöPunk has its own AI/AGI/NHI themes.
 
@@ -820,7 +825,7 @@ The same saved state plus the same deterministic inputs should reproduce the sam
 
 **Status: EXPERIMENTAL REFERENCES.**
 
-EP2 is the starting chassis, not a prison.
+EP2 is an influence and legacy implementation source, not a chassis.
 
 If a subsystem is too cumbersome for Concordia, compare lighter approaches including:
 
@@ -2854,7 +2859,7 @@ model in §33.27. Do not reconstruct a fixed chronology from the archived varian
 
 ## 34. NoöPunk glossary
 
-**Status: MODIFIED EP2 + NOÖPUNK NATIVE**
+**Status: ADAPTED / INSPIRED + NOÖPUNK NATIVE**
 
 This is the shared vocabulary for the NoöPunk setting. It deliberately fuses the
 transhuman terminology of *Eclipse Phase* with selected metaphysical vocabulary from
