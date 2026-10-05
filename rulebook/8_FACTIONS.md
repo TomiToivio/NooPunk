@@ -25,6 +25,12 @@ The **layer** decides what the edge means:
 | **Faction Reputation** | a faction's or actor's standing toward a character |
 | **Faction US / FRONTIER** | a formation's ideological support or opposition |
 
+A score of **0** is an explicit **neutral** relation. **No edge is not the same thing as a
+stored 0**: an absent edge means *unknown* (the actor has no relation to the target at all),
+while a stored 0 means a relation that is consciously neutral. This distinction is canon
+(issue #107) and is why the score is a labelled, directional edge rather than a single
+sentiment axis.
+
 ## Contacts
 
 A **Contact** is a specific person the character knows personally or socially.
