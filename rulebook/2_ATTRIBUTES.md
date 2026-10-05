@@ -1,11 +1,12 @@
 # Attributes
 
-> **Status: NOÖPUNK NATIVE — issue #113**
+> **Status: NOÖPUNK NATIVE — issue #131 supersedes issue #113.**
 >
-> NoöPunk uses an independent **1–10 STAT** model organized by four ontological layers:
-> **Physical, Social, Psychic, and Cybernetic**. These layers describe different modes
-> of participation in the world. They are not four skills and they do not collapse into
-> a generic "Mental" or "Ego" layer.
+> NoöPunk uses an independent **1–10 STAT** model. Six universal base STATs —
+> **FIT / REF / INT / SOC / CYB / PSY** — describe the character. They are organized
+> by four ontological layers: **Physical, Social, Psychic, and Cybernetic**. These
+> layers describe different modes of participation in the world. They are not four
+> skills and they do not collapse into a generic "Mental" or "Ego" layer.
 
 ## Core principles
 
@@ -22,116 +23,116 @@
 - **Density is not IQ.**
 - **Polarization is not alignment.**
 
+## Why six base STATs
+
+An earlier draft (issue #113) grew to twelve STATS. That made every interesting concept
+its own universal dial and left the character sheet hard to read. The author's direction
+on issue #131 is the opposite: **keep the universal layer small and put complexity into
+the domain layers.**
+
+- The base STATs cover only what *every* character needs a universal, rolled number for.
+- The **Social Systems** layer carries social complexity: Affect, Factions, Motivations,
+  Reputation, Contacts, reputation networks, and persuasion procedures.
+- The **Psychic Systems** layer carries psychic complexity: PSI domains, awakening, the
+  seven energy centers, Noetic techniques, Density and Polarization.
+- **Cybernetics keeps one base STAT (CYB).** Hardware and system properties — processing,
+  bandwidth, storage, hardening, interfaces — are statistics of the *equipment and agents*
+  a character controls (decks, implants, devices, software, AIs), not character attributes.
+  See *Cybernetic hardware statistics* below.
+
 Ordinary human STAT ratings use **1–10** when a STAT is operative. A missing layer is
 represented as **N/A** in human-readable sheets and **null** in machine-readable data.
 **0 is not used for absence**, because 0 would blur the difference between "this layer
 does not operate for this entity" and "this entity operates in the layer but is extremely
 poor at it."
 
-## Physical STATS
+## The six base STATS
+
+| Layer | STAT | Code | Covers |
+| --- | --- | --- | --- |
+| Physical | Fitness | FIT | strength, stamina, exertion, gross motor power |
+| Physical | Reflexes | REF | speed, coordination, reaction time, dexterity, balance |
+| Social | Intelligence | INT | reasoning, learning, knowledge, language-mediated cognition |
+| Social | Social | SOC | communication, charisma, projection, persuasion, empathy |
+| Cybernetic | Cybernetics | CYB | cyberspace/cyborg-native aptitude; direct coupling to machines |
+| Psychic | Psyche | PSY | consciousness, willpower, psychic resilience, psionics |
 
 ### Fitness (FIT)
 Strength, stamina, gross motor capability, exertion, lifting, climbing, running, and
 sustained physical output.
 
 ### Reflexes (REF)
-Reaction speed, balance, agility, fine bodily timing, hand-eye coordination, and rapid
-physical response.
+Reaction speed, balance, agility, dexterity, fine bodily timing, hand-eye coordination,
+and rapid physical response. **Dexterity** is the fine-motor reading of Reflexes;
+**movement** is a derived value produced from Reflexes and Fitness together with
+morphology, rather than a separate STAT.
 
-### Resilience (RES)
-Resistance to injury, fatigue, toxins, environmental stress, pain, sleep loss, and other
-embodied strain.
+### Intelligence (INT)
+General cognitive ability: reasoning, learning, memory, knowledge, analysis, abstraction,
+interpretation, planning, formal logic, and scientific reasoning.
 
-## Social STATS
-
-### Reason (REA)
-Language-mediated and symbolic reasoning: analysis, abstraction, interpretation,
-planning, formal logic, scientific reasoning, and the ability to work with culturally
-shared concepts and knowledge.
-
-Reason belongs to the Social layer because NoöPunk treats human symbolic cognition as
-inseparable from language, communication, institutions, and accumulated culture. This
+Intelligence belongs to the Social layer because NoöPunk treats human symbolic cognition
+as inseparable from language, communication, institutions, and accumulated culture. This
 does **not** mean that non-human or non-linguistic consciousness lacks cognition.
 
-### Empathy (EMP)
-Sensitivity to other agents: perspective-taking, emotional understanding, social
-perception, reciprocity, interpersonal attunement, and recognition of motives and needs.
+### Social (SOC)
+Aptitude for other agents and social space: communication, charisma, expression,
+composure, projection, authority, persuasion, performance, leadership, intimidation,
+reciprocity, interpersonal attunement, and management of one's public role.
 
-Empathy can make Service-to-Others choices easier to perceive or enact, but **high
-Empathy does not make a character StO**.
+Social can make Service-to-Others choices easier to perceive or enact, but **high Social
+does not make a character StO**.
 
-### Presence (PRE)
-The ability to project an identity into social space: expression, composure, charisma,
-authority, persuasion, performance, leadership, intimidation, and management of one's
-public role.
+The finer distinctions an earlier draft split into separate *Empathy*, *Presence* and
+*Reason* STATS — reading another mind versus projecting one's own, feeling with others
+versus commanding them — are **Social Systems** mechanics. They are expressed through
+that layer's Affect, Faction, Motivation, Reputation and Contact model plus learned
+skills, not through additional base STATs.
 
-## Psychic STATS
-
-### Will (WIL)
-Self-direction, concentration, intentional control, persistence, psychic resistance, and
-the ability to maintain a chosen course under internal or Noetic pressure.
-
-Will can support disciplined Service-to-Self strategies, but **high Will does not make a
-character StS**.
-
-### Intuition (INU)
-Non-discursive apprehension: holistic pattern recognition, felt salience, anomalous
-impressions, precognitive hunches, symbolic resonance, and the ability to notice what
-analytic reasoning has not yet articulated.
-
-Intuition is not a substitute for Research, Know, or Perceive. It is the Psychic route by
-which information may become subjectively available before it is explicit.
-
-### Noesis (NOE)
-Capacity for direct Noetic participation: psychic sensitivity, PSI potential, resonance,
-entanglement, reception, projection, and other consciousness-mediated interaction.
-
-Noesis measures capability, not spiritual worth or Density. A powerful psychic can be
-immature, unpolarized, destructive, confused, or ethically ordinary.
-
-## Cybernetic STATS
-
-Cybernetic STATS describe **direct coupling** to machine systems. A biological human who
-uses ordinary external tools but has no meaningful cybernetic interface may have this
-layer as **N/A**. Ordinary computer use can still be resolved through Social STATS plus
-appropriate skills. The Cybernetic layer becomes operative when the character has BCI,
-implants, a synthetic subsystem, direct neural interfaces, machine embodiment, or an
-equivalent functional coupling.
-
-### Integration (CYI)
-Depth and stability of coupling between the agent and cybernetic systems: BCI coherence,
-sensorimotor incorporation, implant coordination, embodiment of machine extensions, and
+### Cybernetics (CYB)
+Cyberspace/cyborg-native technical aptitude and the depth of a character's **direct
+coupling** to machine systems: BCI coherence, sensorimotor incorporation, implant
+coordination, machine embodiment, command and control through cybernetic systems, and the
 ability to treat technological components as part of the acting self.
 
-### Bandwidth (BND)
-Rate and volume of information exchange through direct cybernetic channels: parallel
-feeds, sensory overlays, high-throughput data access, multi-system communication, and
-capacity to remain functional under dense information flow.
+A biological human who uses ordinary external tools but has no meaningful cybernetic
+interface may have this layer as **N/A** while still using computers through Intelligence
+and learned skills. Cybernetics measures the coupling, not learned hacking technique and
+not general reasoning.
 
-### Control (CTL)
-Precision of intentional action through cybernetic systems: machine command, remote
-operation, multi-device coordination, synthetic actuator control, and maintaining agency
-across complex technical systems.
+### Psyche (PSY)
+The base STAT for consciousness, willpower, psychic resilience, psionics, and related
+inner capacities: self-direction, concentration, intentional control, persistence,
+psychic resistance, awareness and depth of consciousness, and PSI/Noetic potential.
 
-## The final 12-STAT list
+Psyche measures a general capacity, not spiritual worth or Density. A powerful psychic can
+be immature, unpolarized, destructive, confused, or ethically ordinary. A contemplative
+character may have a deep, well-integrated Psyche with little usable PSI; a naturally
+gifted but chaotic psychic may show the reverse. Characters with psychic awareness or
+awakened abilities get their actual psionic capabilities — the PSI domains, techniques and
+awakening mechanics — modelled in the **Psychic Systems** layer, and a Sleeper may carry
+latent Psyche that mostly manifests as luck, intuition and weak anomalous effects.
 
-| Layer | STAT | Code |
-| --- | --- | --- |
-| Physical | Fitness | FIT |
-| Physical | Reflexes | REF |
-| Physical | Resilience | RES |
-| Social | Reason | REA |
-| Social | Empathy | EMP |
-| Social | Presence | PRE |
-| Psychic | Will | WIL |
-| Psychic | Intuition | INU |
-| Psychic | Noesis | NOE |
-| Cybernetic | Integration | CYI |
-| Cybernetic | Bandwidth | BND |
-| Cybernetic | Control | CTL |
+## Cybernetic hardware statistics
 
-This replaces the older provisional FIT / REF / INT / CHA / CYB / PSY sketch and avoids
-recreating Eclipse Phase aptitudes under new names.
+Hardware and system properties are **not character attributes**. They are statistics of
+the equipment, implants, devices, agents and decks a character has access to — the same
+way a firearm has statistics that are not the character's STATS:
+
+- **processing** — parallel computation, inference, simulation, cryptographic workload,
+  running agents and processes;
+- **bandwidth** — concurrent connections, throughput, remote presence, latency, routing,
+  distributed and swarm operation;
+- **storage** — datasets, model weights, exploit libraries, cached knowledge, archives,
+  backups;
+- **hardening** — isolation, sandboxing, authentication, exploit resistance, redundancy,
+  compartmentalization, integrity protection.
+
+Offensive hacking is learned technique and stays a **Skill**; defensive hardening is a
+property of the target system. A check therefore reads as `INT or CYB + Hacking Skill`
+rolled against a target's hardening rating, not `Attack stat` versus `Defence stat`.
+Exact hardware statistics, their ranges and their conversion are deferred to the
+Cybernetic Systems and equipment passes.
 
 ## Skills remain separate
 
@@ -147,14 +148,13 @@ practice is being expressed.
 The same skill may sometimes pair with different STATS when the fictional method changes.
 Examples:
 
-- ordinary network research may use **REA + Research**;
-- reading a witness may use **EMP + Kinesics**;
-- coercive command may use **PRE + Persuade/Provoke**;
-- resisting psychic intrusion may use **WIL + Psi** or a future resistance skill;
-- receiving an anomalous impression may use **INU + Psi**;
-- projecting or manipulating a Noetic effect may use **NOE + Psi**;
-- direct BCI machine control may use **CTL + Interface/Pilot**;
-- sustaining several simultaneous cybernetic feeds may use **BND** with the relevant skill.
+- ordinary network research may use **INT + Research**;
+- reading a witness may use **SOC + Kinesics**;
+- coercive command may use **SOC + Persuade/Provoke**;
+- resisting psychic intrusion may use **PSY + Psi** or a future resistance skill;
+- receiving an anomalous impression may use **PSY + Psi**;
+- direct BCI machine control may use **CYB + Interface/Pilot**;
+- brute physical work may use **FIT + Athletics**.
 
 Exact pairings belong to the skill-design and playtest passes. The attribute model should
 not silently turn skills back into fixed aptitude aliases.
@@ -216,10 +216,10 @@ purposes.
 
 - PCs normally begin in **3D** or, with explicit campaign permission, **4D**.
 - 5D–7D are not ordinary advancement tiers for player characters.
-- A high-REA scientist can be 3D.
-- A low-REA being can be 4D.
-- NOE, INU, or WIL may affect how a character experiences or handles awakening, but none
-  of them determines Density.
+- A high-INT scientist can be 3D.
+- A low-INT being can be 4D.
+- PSY, and the psychic techniques built on it, may affect how a character experiences or
+  handles awakening, but none of them determines Density.
 
 ## 3D → 4D awakening
 
@@ -277,22 +277,22 @@ Context matters. Sacrifice can be manipulative. Self-interest can be healthy. Vi
 protect others. Cooperation can conceal domination. The GM/system should judge the
 orientation of the sustained action, not match keywords.
 
-## Empathy, Will, and Polarization
+## Social, Psyche, and Polarization
 
-- **EMP** can help a character understand others and recognize opportunities for StO
+- **SOC** can help a character understand others and recognize opportunities for StO
   action. It does not award StO points by itself.
-- **WIL** can help a character maintain self-directed control and execute StS strategies.
+- **PSY** can help a character maintain self-directed control and execute StS strategies.
   It does not award StS points by itself.
-- A low-EMP character may become strongly StO through principle, discipline, or chosen
+- A low-SOC character may become strongly StO through principle, discipline, or chosen
   solidarity.
-- A high-EMP character may use exquisite understanding of others for manipulation.
-- A low-WIL character can still drift into selfishness without becoming strongly
+- A high-SOC character may use exquisite understanding of others for manipulation.
+- A low-PSY character can still drift into selfishness without becoming strongly
   polarized.
-- A high-WIL character can be a disciplined protector.
+- A high-PSY character can be a disciplined protector.
 
 # Seven energy centers
 
-Do **not** map the seven energy centers one-to-one onto the twelve STATS.
+Do **not** map the seven energy centers one-to-one onto the six STATS.
 
 Treat them as **developmental states spanning layers**. Each center may be recorded as:
 
@@ -328,7 +328,7 @@ Implement the first playable character kernel around:
 
 - biological humans;
 - optional cybernetic augmentation;
-- the twelve STATS above;
+- the six base STATS above;
 - separate 1–10 skills;
 - PSI;
 - Density;

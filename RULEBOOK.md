@@ -776,37 +776,44 @@ The initial implementation may include EP2-derived:
 
 The exact NoöPunk sheet is not yet final.
 
-### 9.2 Four-layer 1–10 attribute system
+### 9.2 Six base STATs across the four-layer ontology
 
-**Status: NOÖPUNK NATIVE — issue #113.**
+**Status: NOÖPUNK CORE — issue #131 supersedes issue #113.**
 
-The canonical future NoöPunk STAT model uses four ontological layers with three STATS in
-each layer:
+The character sheet is deliberately small. Six universal base STATs cover what every
+character needs a rolled number for, organized by four ontological layers:
 
-| Layer | STATS |
-| --- | --- |
-| Physical | **Fitness (FIT), Reflexes (REF), Resilience (RES)** |
-| Social | **Reason (REA), Empathy (EMP), Presence (PRE)** |
-| Psychic | **Will (WIL), Intuition (INU), Noesis (NOE)** |
-| Cybernetic | **Integration (CYI), Bandwidth (BND), Control (CTL)** |
+| Layer | STAT | Code |
+| --- | --- | --- |
+| Physical | Fitness | FIT |
+| Physical | Reflexes | REF |
+| Social | Intelligence | INT |
+| Social | Social | SOC |
+| Cybernetic | Cybernetics | CYB |
+| Psychic | Psyche | PSY |
 
 Operative ordinary-human STATS use the **1–10** scale established in #111. A layer that
 does not meaningfully operate for an entity is **N/A** on human-readable sheets and
 `null` in machine-readable data. **0 does not mean absence.**
 
-Language, symbolic reasoning, institutions, discourse, and shared knowledge belong to the
-**Social** layer. Phenomenal consciousness, intuition, self-directed awareness, PSI, and
-Noetic capability belong to the **Psychic** layer. The two are deliberately distinct.
-There is no generic Mental/Ego layer.
+Complexity belongs in the domain layers, not in more base attributes. **Intelligence** and
+**Social** belong to the Social layer: language, symbolic reasoning, institutions,
+discourse, and shared knowledge, with finer distinctions — reading another mind versus
+projecting one's own — living in the Social Systems layer (§6). **Psyche** belongs to the
+Psychic layer — consciousness, willpower, psychic resilience, PSI and Noetic capability —
+with the PSI domains, awakening and energy centers living in the Psychic Systems layer
+(§8). The two layers are deliberately distinct, and there is no generic Mental/Ego layer.
 
-Cybernetic STATS measure direct functional coupling to machines, BCI, computation, and
-networks, not intelligence. A biological human without meaningful direct cybernetic
-coupling may have the Cybernetic layer as N/A while still using ordinary external
-computers through Social STATS plus learned skills.
+**Cybernetics (CYB)** measures direct functional coupling to machines, BCI, computation
+and networks, not intelligence and not learned technique. A biological human without
+meaningful direct cybernetic coupling may have the Cybernetic layer as N/A while still
+using ordinary external computers through **INT** plus learned skills.
 
-Cybernetic augmentation may later unlock Cybernetic STATS, provide narrow modifiers, or
-produce an **effective** STAT above 10. Keep the biological/base rating and augmentation
-separate so the 1–10 human scale remains visible.
+Processing, bandwidth, storage, hardening and similar hardware properties are statistics
+of the decks, implants, devices and agents a character uses, **not character STATS**.
+Cybernetic augmentation may later unlock the Cybernetic layer, provide narrow modifiers,
+or produce an **effective** STAT above 10; keep the biological/base rating and the
+augmentation separate so the 1–10 human scale stays legible.
 
 The full definitions and entity examples are maintained in
 [`rulebook/2_ATTRIBUTES.md`](rulebook/2_ATTRIBUTES.md).
@@ -828,8 +835,8 @@ blanket numeric superiority.
 - values between = mixed, developing, conflicted, or unpolarized.
 
 Polarization changes through sustained meaningful action rather than chosen alignment.
-High **EMP** can help perceive and enact StO possibilities but does not itself make a
-character StO. High **WIL** can support disciplined self-directed control but does not
+High **SOC** can help perceive and enact StO possibilities but does not itself make a
+character StO. High **PSY** can support disciplined self-directed control but does not
 itself make a character StS.
 
 The seven energy centers are **developmental states across the four-layer character
