@@ -6,15 +6,30 @@
 > incidents and interpretations for play. It does **not** redefine the wider NoöPunk
 > timeline, psionics rules, hacking rules, combat rules or NHI canon.
 >
+> **This entire document is fictional alternate-history lore. Real people, governments,
+> companies and institutions are used as fictionalized setting elements; the events
+> described here are not claims about real-world history or evidence.**
+>
+> **Chronology in this document is scenario-local.** The historical anchors it uses —
+> the 1930s Ghost Flier wave and the 1946 Ghost Rockets — are canon; the Ö-Mappi
+> institutional history built on them is this scenario's narrative variant, not a global
+> chronology. No exact future year is assigned anywhere in this file: the setting is
+> **20XX**, and the anchors are historical canon years used as such.
+>
 > **Rules boundary:** use the canonical NoöPunk core where a check is needed:
 >
 > ```text
 > STAT + Skill + 1d10 vs Difficulty Value
 > ```
 >
-> The six base STATs are **FIT, REF, INT, SOC, CYB and PSY**. Where the current
+> The six base STATs are **FIT, REF, INT, SOC, CYB and PSY** (RULEBOOK.md §9.2; issue
+> #131 supersedes the earlier twelve-stat draft). Where the current
 > rulebook has not yet defined a subsystem, resolve the scene fiction-first and mark
 > any mechanical detail as a TODO rather than inventing a new subsystem.
+>
+> **Names and statistics remain editable while drafting.** This file fixes the playable
+> *situation*; the character-generation procedure and the final numbers are the
+> character-creation pass's business.
 
 ---
 
@@ -405,7 +420,14 @@ In the current campaign it sits awkwardly across:
 - Suojelupoliisi;
 - Europol;
 - newer international security arrangements;
-- the UN Security Agency.
+- the UN Security Agency — i.e. the **UNHSS / Firewall** structure that RULEBOOK.md §38
+  makes the default campaign institution.
+
+The UNHSS connection is what turns a Finnish curiosity into a live institutional problem:
+UNHSS holds formal jurisdiction in NHI and X-Risk matters across the human Solar System,
+but **legal jurisdiction is not actual access and not political cooperation** (§38). A
+basement unit in Helsinki sits exactly in the gap between those three things, which is why
+its chain of command can be simultaneously real and unanswerable.
 
 This creates overlapping authority.
 
