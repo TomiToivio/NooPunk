@@ -183,7 +183,13 @@ class LegacySupersededNotDeletedTests(unittest.TestCase):
 class OriginalSystemDirectionTests(unittest.TestCase):
     def test_documents_state_the_current_rules_direction(self) -> None:
         """Issue #111 restores and specifies the independent-system direction."""
-        self.assertIn("independent noopunk rules system", normalised("README.md"))
+        # The repo spells the game "NoöPunk"; a sibling guard accepts either
+        # spelling (test_issue78 does the same). Asserting only the ASCII form
+        # tested wording the README never used.
+        self.assertRegex(
+            normalised("README.md"),
+            r"independent no(?:ö|o)punkt? rules system|independent noöpunk rules system",
+        )
         self.assertIn("1–10 stat", normalised("README.md"))
         with self.subTest(doc="docs/index.html"):
             self.assertIn("rulebook", normalised("docs/index.html"))

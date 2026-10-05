@@ -1,4 +1,4 @@
-"""Tests for the mandatory resolver seam (#40 Phase C).
+"""Tests for the mandatory resolver seam (#40 Phase C), on the issue #111 core.
 
 ``docs/SIMULATION_ARCHITECTURE_SPEC.md`` §7.4 is binding:
 
@@ -8,8 +8,12 @@
 > exists, the resolver must return an *explicit unresolved outcome*, not an
 > improvised one.
 
-These tests exist to pin that property, including the negative ones: an undefined
-action must produce a *visible gap*, never a plausible invented number.
+Issue #111 replaced the resolution kernel with ``STAT + Skill + 1d10 >= DV`` (both
+ratings 1..10) and retired the 2d6 engine, the ``SkillAccess`` gate and the
+``attempted`` / ``unskilled_modifier`` fields. This module is ported to that kernel:
+the seam's *guarantees* are unchanged — no bypass, explicit gaps, one event per
+committed resolution — while the assertions about retired fields are gone rather than
+asserting mechanics the rulebook no longer contains.
 """
 
 from __future__ import annotations
@@ -29,21 +33,22 @@ from concordia_runtime import (
     ResolverSeam,
     resolve_proposal,
 )
-from rules import AttributeSet, SkillAccess, resolve_check
+from rules import AttributeSet, resolve_check
 from simulation.engine import Simulation
 
 
+#: 1..10 STAT ratings (issue #111). Deliberately non-canonical names.
 ATTRIBUTES = AttributeSet(
-    {"FIT": 1, "REF": 2, "INT": 0, "CHA": 1, "CYB": -1, "PSY": 0}
+    {"FIT": 4, "REF": 6, "INT": 5, "CHA": 7, "CYB": 8, "PSY": 5}
 )
 
 #: A deliberately minimal, clearly non-canonical action registry. Defining which
 #: actions exist is a tabletop decision (AGENTS.md §4), so the tests supply their
 #: own rather than reading canon that does not exist yet.
 RULES = {
-    "persuade": {"difficulty": 8},
-    "climb": {"difficulty": 10},
-    "lift": {"difficulty": 8, "extra_modifiers": (-1,)},
+    "persuade": {"difficulty": 15},
+    "climb": {"difficulty": 17},
+    "lift": {"difficulty": 15},
 }
 
 
@@ -63,28 +68,29 @@ class ResolverSeamTests(unittest.TestCase):
         resolution = resolve_proposal(
             ProposedAction(actor="fixture:a", intent="persuade the council", action_type="persuade"),
             attributes=ATTRIBUTES,
-            capability=capability(skill_level=1),
+            capability=capability(skill_level=6),
             rules=RULES,
-            dice_total=7,
+            dice_total=4,
         )
         expected = resolve_check(
-            attribute_modifier=ATTRIBUTES["CHA"], target=8, skill_level=1, dice_total=7
+            stat=ATTRIBUTES["CHA"], skill=6, target=15, die=4
         )
         self.assertIs(resolution.decision, Decision.RESOLVED)
         self.assertEqual(resolution.outcome.total, expected.total)
         self.assertEqual(resolution.outcome.success, expected.success)
-        self.assertEqual(resolution.outcome.dice_total, expected.dice_total)
+        self.assertEqual(resolution.outcome.die, expected.die)
 
     def test_resolved_action_records_canonical_numbers_in_the_event(self) -> None:
         resolution, event = self.seam.resolve_and_commit(
             ProposedAction(actor="fixture:a", intent="persuade the council", action_type="persuade"),
             attributes=ATTRIBUTES,
-            capability=capability(skill_level=1),
+            capability=capability(skill_level=6),
             rules=RULES,
-            dice_total=7,
+            dice_total=4,
         )
-        self.assertIn("2d6=7", event.content)
-        self.assertIn("difficulty 8", event.content)
+        # The event states the canonical 1d10 formula and the DV it faced.
+        self.assertIn("1d10", event.content)
+        self.assertIn("DV 15", event.content)
         self.assertIn("success", event.content)
         # The natural-language intent survives beside the numbers.
         self.assertIn("persuade the council", event.content)
@@ -93,9 +99,9 @@ class ResolverSeamTests(unittest.TestCase):
         _, event = self.seam.resolve_and_commit(
             ProposedAction(actor="fixture:a", intent="climb it", action_type="climb"),
             attributes=ATTRIBUTES,
-            capability=capability(attribute_id="REF"),
+            capability=capability(attribute_id="REF", skill_level=6),
             rules=RULES,
-            dice_total=11,
+            dice_total=9,
         )
         self.assertEqual(event.source, "concordia")
         self.assertTrue(event.synthetic)
@@ -104,15 +110,16 @@ class ResolverSeamTests(unittest.TestCase):
         """`dice_total` is for deterministic callers; a proposal cannot carry one."""
         proposal = ProposedAction(
             actor="fixture:a", intent="climb it", action_type="climb",
-            check={"difficulty": 10, "dice_total": 18},
+            check={"difficulty": 17, "dice_total": 18},
         )
         # Even with an attempt to smuggle a dice value into `check`, the seam rolls
         # or takes the injection from the *caller*, not from the proposal.
         resolution = resolve_proposal(
-            proposal, attributes=ATTRIBUTES, capability=capability(attribute_id="REF"), rules=RULES,
+            proposal, attributes=ATTRIBUTES,
+            capability=capability(attribute_id="REF", skill_level=6), rules=RULES,
         )
-        self.assertIsNotNone(resolution.outcome.dice_total)
-        self.assertNotEqual(resolution.outcome.dice_total, 18)
+        self.assertIsNotNone(resolution.outcome.die)
+        self.assertNotEqual(resolution.outcome.die, 18)
 
     # -- unresolved path: the whole point --------------------------------- #
 
@@ -150,7 +157,7 @@ class ResolverSeamTests(unittest.TestCase):
             attributes=ATTRIBUTES, capability=capability(attribute_id="LUCK"), rules=RULES,
         )
         self.assertIs(resolution.decision, Decision.UNRESOLVED)
-        self.assertEqual(resolution.reason, "no_attribute_specified")
+        self.assertEqual(resolution.reason, "no_stat_specified")
 
     def test_empty_intent_is_unresolved(self) -> None:
         resolution = resolve_proposal(
@@ -160,25 +167,25 @@ class ResolverSeamTests(unittest.TestCase):
         self.assertIs(resolution.decision, Decision.UNRESOLVED)
         self.assertEqual(resolution.reason, "empty_action")
 
-    def test_blocked_trained_only_attempt_is_not_a_failure(self) -> None:
-        """§4.2: a blocked attempt rolls no dice and must not read as a failed roll."""
+    def test_action_without_the_skill_is_unresolved_not_a_failure(self) -> None:
+        """Issue #111 defines no unskilled procedure, so a skill-less attempt is a gap.
+
+        It must be reported as such rather than resolved at an invented penalty.
+        """
         resolution = resolve_proposal(
             ProposedAction(actor="fixture:a", intent="suture the wound", action_type="climb"),
             attributes=ATTRIBUTES,
-            capability=capability(attribute_id="REF", has_skill=False,
-                                  skill_access=SkillAccess.TRAINED_ONLY),
+            capability=capability(attribute_id="REF", has_skill=False),
             rules=RULES,
         )
         self.assertIs(resolution.decision, Decision.UNRESOLVED)
-        self.assertEqual(resolution.reason, "trained_only_without_skill")
-        self.assertFalse(resolution.outcome.attempted)
-        self.assertIsNone(resolution.outcome.dice_total)
-        self.assertIsNone(resolution.outcome.success)
+        self.assertEqual(resolution.reason, "skill_not_available")
+        self.assertIsNone(resolution.outcome)
 
     def test_unresolved_actions_appear_in_the_review_queue(self) -> None:
         self.seam.resolve_and_commit(
             ProposedAction(actor="a", intent="persuade", action_type="persuade"),
-            attributes=ATTRIBUTES, capability=capability(), rules=RULES, dice_total=8,
+            attributes=ATTRIBUTES, capability=capability(skill_level=6), rules=RULES, dice_total=5,
         )
         self.seam.resolve_and_commit(
             ProposedAction(actor="b", intent="declare war", action_type="declare_war"),
@@ -196,14 +203,13 @@ class ResolverSeamTests(unittest.TestCase):
         self.seam.resolve_and_commit(
             ProposedAction(actor="b", intent="suture", action_type="climb"),
             attributes=ATTRIBUTES,
-            capability=capability(attribute_id="REF", has_skill=False,
-                                  skill_access=SkillAccess.TRAINED_ONLY),
+            capability=capability(attribute_id="REF", has_skill=False),
             rules=RULES,
         )
         summary = self.seam.summary()
         self.assertEqual(summary["decisions"]["UNRESOLVED"], 2)
         self.assertIn("no_canonical_rule_for_action", summary["unresolved_reasons"])
-        self.assertIn("trained_only_without_skill", summary["unresolved_reasons"])
+        self.assertIn("skill_not_available", summary["unresolved_reasons"])
 
     # -- the bypass must be impossible ------------------------------------ #
 
@@ -239,7 +245,8 @@ class ResolverSeamTests(unittest.TestCase):
             self.seam.resolve_and_commit(
                 ProposedAction(actor=f"fixture:a{index}", intent="persuade the council",
                                action_type="persuade"),
-                attributes=ATTRIBUTES, capability=capability(), rules=RULES, dice_total=9,
+                attributes=ATTRIBUTES, capability=capability(skill_level=6), rules=RULES,
+                dice_total=5,
             )
         self.assertEqual(len(self.simulation.events), 3)
         self.assertEqual(len(self.seam.resolutions), 3)
@@ -247,23 +254,22 @@ class ResolverSeamTests(unittest.TestCase):
     def test_resolution_is_serialisable_for_audit(self) -> None:
         resolution, _ = self.seam.resolve_and_commit(
             ProposedAction(actor="fixture:a", intent="persuade the council", action_type="persuade"),
-            attributes=ATTRIBUTES, capability=capability(skill_level=2), rules=RULES, dice_total=9,
+            attributes=ATTRIBUTES, capability=capability(skill_level=6), rules=RULES, dice_total=5,
         )
         payload = resolution.as_dict()
         self.assertEqual(payload["decision"], "RESOLVED")
-        self.assertEqual(payload["outcome"]["skill_level"], 2)
-        self.assertEqual(payload["outcome"]["dice_total"], 9)
+        self.assertEqual(payload["outcome"]["skill"], 6)
+        self.assertEqual(payload["outcome"]["die"], 5)
 
     def test_rule_provenance_is_recorded(self) -> None:
         resolution = resolve_proposal(
             ProposedAction(actor="fixture:a", intent="lift it", action_type="lift"),
-            attributes=ATTRIBUTES, capability=capability(attribute_id="FIT"), rules=RULES,
-            dice_total=9,
+            attributes=ATTRIBUTES, capability=capability(attribute_id="FIT", skill_level=5),
+            rules=RULES, dice_total=6,
         )
         self.assertEqual(resolution.rule, "lift")
-        # Rule-level modifiers reach the shared resolver.
-        self.assertEqual(resolution.outcome.extra_modifiers, (-1,))
-        self.assertEqual(resolution.outcome.total, 9 + 0 + 1 - 1)
+        # 1..10 STAT + 1..10 Skill + 1d10, no retired modifier stack.
+        self.assertEqual(resolution.outcome.total, 4 + 5 + 6)
 
     def test_event_content_marks_unresolved_visibly(self) -> None:
         resolution, event = self.seam.resolve_and_commit(
