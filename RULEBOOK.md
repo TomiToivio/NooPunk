@@ -4,6 +4,422 @@
 >
 > This is the canonical human-readable rules document for the NoöPunk RPG/social simulation.
 >
+> **NoöPunk is an independent rules system.** Cyberpunk 2020 / RED, Eclipse Phase, Fate, PbtA, CY_BORG, Cities Without Number, Citizen Sleeper and other games are influences, not parent systems.
+>
+> Canonical resolution core:
+>
+> ```text
+> STAT + Skill + 1d10 vs Difficulty Value
+> ```
+>
+> Canonical STATs and trained Skills use a **1–10** scale. The setting year is **20XX**.
+
+## Contents
+
+1. [Introduction to NoöPunk](#1-introduction-to-noöpunk)
+2. [History: The Singularity Is Past](#2-history-the-singularity-is-past)
+3. [Stats](#3-stats)
+4. [Skills](#4-skills)
+5. [Physical Systems](#5-physical-systems)
+6. [Social Systems](#6-social-systems)
+7. [Cybernetic Systems](#7-cybernetic-systems)
+8. [Psychic Systems](#8-psychic-systems)
+9. [Extended canon and reference material](#extended-canon-and-reference-material)
+
+---
+
+## 1. Introduction to NoöPunk
+
+### 1.1. NoöPunk concept
+
+NoöPunk is one RPG/social simulation designed for human play and deterministic Concordia/LLM-assisted simulation. Its name combines **Noösphere** and **Cyberpunk**.
+
+The Cyberpunk side covers AI, ubiquitous computation, networks, surveillance, corporate and state power, cybernetic augmentation, synthetic media and technologically mediated social life. The Noösphere side covers consciousness, collective intelligence, psionics, NHI and the emergence of a planetary sphere of mind.
+
+NoöPunk is deliberately an independent rules system. External RPGs are sources of design ideas, not compatibility targets. The rulebook is the rules ledger: deterministic code should implement the rules written here, while LLMs may interpret intent, converse, negotiate and narrate.
+
+### 1.2. Social science inspiration
+
+NoöPunk grows from the intellectual terrain of LaclauGPT. Ernesto Laclau informs ideology, antagonism, hegemony, empty signifiers and political identity. Manuel Castells informs network society, communication power and flows. Social Network Analysis and Discourse Network Analysis inform the representation of Contacts, Factions, Reputation, Motivations and ideological relations.
+
+The game asks not only what technology can do, but who defines it, who benefits, who is excluded and which institutions and futures it stabilizes.
+
+### 1.3. The paradigm shifts
+
+NoöPunk takes place in **20XX**, after several interacting paradigm shifts have transformed ordinary life:
+
+- the AI / AGI revolution;
+- the scientific consciousness, QIP, PSI and panpsychism revolution;
+- NHI / UAP Disclosure;
+- the emergence of the Noösphere as a technologically and psychically connected collective intelligence.
+
+These shifts are not required to occur in a fixed order. The background timeline records important transformations without pretending to predict exact dates.
+
+---
+
+## 2. History: The Singularity Is Past
+
+### 2.1. Rough description of key events
+
+By the campaign present, the old world has passed through enough discontinuities that people speak of **the Singularity as past**, even though different factions disagree about what the word means and when it happened.
+
+Canonical background events include, without requiring one fixed chronology:
+
+- explosive AI/AGI development and localized rogue-AI crises;
+- independent scientific breakthroughs in consciousness, QIP and PSI;
+- public confirmation of NHI and the progressive collapse of secrecy around UAPs, biologics, contact and reverse engineering;
+- accelerating cybernetic augmentation, BCI, synthetic persons and human-machine integration;
+- the emergence of psychotronic technology;
+- growing UN federalization and new X-Risk / contact institutions;
+- open conflict over Disclosure, augmentation, AI, NHI and the definition of humanity;
+- the increasingly self-aware Noösphere.
+
+Detailed history, world canon and unresolved chronology remain in the extended canon/reference material below. The year is always written **20XX**.
+
+---
+
+## 3. Stats
+
+### 3.1. Explanation of the physical, social, psychic and cybernetic systems
+
+Every character and many entities can be understood through four interacting domains:
+
+- **Physical**: bodies, movement, health, perception through ordinary senses and physical action.
+- **Social**: language, symbolic reasoning, institutions, relationships, discourse, reputation and shared knowledge.
+- **Psychic**: consciousness, will, intuition, PSI, Noetic capability and direct interaction with Noöspace.
+- **Cybernetic**: direct functional coupling to machines, computation, networks, BCI and integrated cybernetic systems.
+
+These domains are structurally coupled. A social interaction can become physical combat. A hacker may attack a cybernetic implant during a conversation. A psychic may read or influence an opponent during negotiation. A mission may move between Spacetime, Cyberspace and Noöspace.
+
+### 3.2. Stats
+
+**Status: NOÖPUNK CORE.**
+
+Canonical STAT ratings use **1–10** for ordinary operative characters. The final STAT list is maintained by the latest explicit author direction and later issues that revise earlier drafts.
+
+A STAT represents broad capability. A Skill represents learned competence. They remain separate and are added together for checks.
+
+```text
+STAT + Skill + 1d10
+```
+
+Where an entity does not meaningfully possess a domain or STAT, use **N/A** in human-readable material and `null` in machine-readable data rather than treating zero as absence.
+
+Augmentation may create effective capabilities above the ordinary human scale, but base capability and augmentation should remain distinguishable.
+
+---
+
+## 4. Skills
+
+### 4.1. Skill list
+
+Canonical trained Skills use the **1–10** scale. The final complete Skill list is still allowed to evolve. Campaign-scoped specialist fields may be used where a broad permanent skill list would become bloated.
+
+Skills should describe learned competence, professions, techniques or fields of practice rather than duplicate broad STATs.
+
+### 4.2. Skill checks
+
+**Basic check**
+
+```text
+STAT + Skill + 1d10 vs Difficulty Value
+```
+
+**Opposed check**
+
+```text
+Attacker STAT + Skill + 1d10
+vs
+Defender STAT + Skill + 1d10
+```
+
+The higher total wins.
+
+Canonical Difficulty Values:
+
+| Difficulty | DV |
+| --- | ---: |
+| Simple | 9 |
+| Everyday | 13 |
+| Difficult | 15 |
+| Professional | 17 |
+| Heroic | 21 |
+| Incredible | 24 |
+| Legendary | 29 |
+
+Ties, criticals and the general situational-modifier procedure remain explicit design questions unless a later canonical section resolves them.
+
+---
+
+## 5. Physical Systems
+
+### 5.1. Physical traits
+
+Physical traits are persistent physical advantages, disadvantages or unusual bodily characteristics. They describe durable features rather than temporary conditions.
+
+### 5.2. Physical statuses
+
+Physical statuses are temporary physical conditions such as **hungry, tired, wounded** or similar short-term states. A status may alter checks, available actions or recovery while it remains active.
+
+### 5.3. Physical actions
+
+Physical actions include ordinary movement and interaction with the material world: moving between locations, sneaking past a guard, climbing, carrying, pursuing, attacking, restraining, escaping and other actions resolved through the normal STAT + Skill + 1d10 engine when uncertainty matters.
+
+### 5.4. Physical locations
+
+The first Concordia implementation uses a **Citizen Sleeper 2-inspired location structure**.
+
+A character occupies a larger location, such as a city, and within it a current sublocation. In the current sublocation the character may perform available tasks or move to another accessible sublocation.
+
+**Open locations** are persistently available and can be revisited. Initial examples include:
+
+- the player's office in the **Europol / Suojelupoliisi HQ**;
+- locations around **Helsinki**;
+- the player's **home**.
+
+**Quest locations** are temporary mission spaces unlocked for a specific operation. A team may travel there for investigation, exploration, combat, social interaction, hacking, psionics or mixed objectives.
+
+Quest locations may exist primarily in **Physical space, Cyberspace or Noöspace**, and a single quest may cross all three.
+
+### 5.5. Combat
+
+Combat is a structured form of opposed physical action. Use the core opposed-check architecture for attacks and defences. Existing combat, damage and test-session material is preserved in the extended reference material until the independent NoöPunk combat subsystem is fully consolidated here.
+
+### 5.6. Weapons
+
+Weapons are tools that modify or enable attacks. Weapon categories, damage procedures and detailed equipment statistics remain subject to consolidation from the existing rules ledger rather than being invented by this reordering issue.
+
+### 5.7. Armor
+
+Armor mitigates or changes the consequences of physical attacks. Existing armor and protection material remains valid where it does not conflict with later independent-system decisions.
+
+### 5.8. Wounds
+
+Wounds are consequences of physical harm and may also create temporary Physical statuses. The existing harm/wound rules remain reference canon pending their final independent-system pass.
+
+### 5.9. First Aid
+
+First Aid covers immediate treatment, stabilization and short-term physical recovery. Detailed procedures remain to be consolidated from existing material.
+
+---
+
+## 6. Social Systems
+
+### 6.1. Social Interactions
+
+A **Social Interaction** is a conversation between two or more characters. It may be:
+
+- face-to-face;
+- online;
+- telepathic.
+
+With human-controlled characters or LLM agents, conversation should remain primarily free-form. Scripted NPCs may expose a more limited interaction space.
+
+A Social Interaction may include social skill checks, use of psionics, cybernetic hacking or other cross-system actions. It can escalate into physical combat, shift into Cyberspace, or continue telepathically through Noöspace.
+
+### 6.2. Social skill checks
+
+When uncertainty matters, social actions use the same core engine as other actions:
+
+```text
+Social STAT + relevant Skill + 1d10 vs DV
+```
+
+or an opposed roll against another character's appropriate STAT + Skill.
+
+The roll resolves the uncertain mechanical question. It does not replace free-form dialogue or dictate a human player's beliefs.
+
+### 6.3. Trading
+
+Trading covers buying, selling, exchanging, bargaining and other economic interaction. It may use money, contracts, access, favors, reputation, barter or other setting-specific forms of value.
+
+### 6.4. Romance
+
+Romance is a special form of intimate Social Interaction. It is handled through the same general relationship framework as other Contacts, with free-form role-play taking priority over mechanical coercion.
+
+### 6.5. Contacts
+
+**Contacts** are a character's personal social connections.
+
+A Contact has a signed relationship score from **-10 to +10** and may include a specific **Affect**.
+
+- **+10** = Love
+- **0** = Neutral / no meaningful Affect
+- **-10** = Hate
+- if no more specific Affect is needed, positive edges default to **Likes** and negative edges to **Dislikes**
+
+A Contact is a personal relationship, not general standing with a group.
+
+Contacts form a **Social Network Graph**: characters are nodes and relationships are signed, weighted edges with optional Affect labels. This graph can be combined with Motivation, Reputation and Faction graphs for analysis and visualization.
+
+### 6.6. Factions
+
+A Faction is an organized social or ideological formation. NoöPunk models Faction ideology using LaclauGPT's Formula of Populism:
+
+- **US** contains actors, goals, empty signifiers and other objects the Faction identifies with, supports or treats as part of its political/social identity.
+- **FRONTIER** contains actors, goals and signifiers the Faction defines itself against, opposes, fears or rejects.
+
+US/FRONTIER is a structured ideological boundary, not a flavor-text alignment field.
+
+### 6.7. Reputation
+
+**Faction Reputation** measures a character's standing with a Faction on the same **-10 to +10** signed scale and may include a specific Affect.
+
+Reputation matters especially when meeting somebody who does not yet know the character personally. An unknown NPC may initially react according to the character's Reputation with the NPC's Faction. Once a personal Contact relationship exists, that relationship can diverge from inherited Faction attitudes.
+
+### 6.8. Motivations
+
+**Motivations** describe what a character desires, supports, seeks, resists or opposes.
+
+They use the same **-10 to +10** signed scale:
+
+- positive values represent desire, attraction, support or commitment;
+- negative values represent opposition, aversion or rejection.
+
+Motivations may carry a specific Affect such as **Dreams of**, **Supports**, **Desires**, **Opposed to** or **Hates**.
+
+### 6.9. Encounters
+
+An Encounter begins when the character unexpectedly meets somebody who starts a Social Interaction, or when somebody contacts the character remotely.
+
+Encounters may arrive through physical presence, messaging, calls, telepresence, augmented reality or telepathic/Noetic contact. They can become conversations, negotiations, investigations, hacking situations, psychic confrontations or combat.
+
+---
+
+## 7. Cybernetic Systems
+
+### 7.1. Cybernetic Implants
+
+Cybernetic implants are integrated technologies that modify, augment, monitor or connect the body and mind. Some implants merely provide tools; others create direct Cybernetic capability.
+
+### 7.2. Cyberspace
+
+**Cyberspace** is computational and networked information space. It is distinct from both physical Spacetime and psychic Noöspace, although interfaces can connect all three.
+
+### 7.3. BCI
+
+Brain-computer interfaces connect neural activity directly to software, networks, devices, synthetic environments and other cybernetic systems. BCI is a central bridge between biological characters and the Cybernetic domain.
+
+### 7.4. Hacking
+
+Hacking is adversarial or investigative interaction with computational systems. It uses ordinary checks and opposed checks with appropriate Cybernetic/technical STATs and Skills. Detailed procedures are preserved in the existing mesh/hacking material pending consolidation.
+
+### 7.5. VR/AR
+
+Virtual Reality and Augmented Reality are standard interfaces to digital environments. They may be accessed through conventional devices or direct BCI.
+
+### 7.6. WLAN Devices
+
+Networked wireless devices form the local machine environment around characters and locations. Access, trust, security, ownership and control of these devices can become game-relevant.
+
+### 7.7. Cyberspace Actions
+
+Cyberspace actions include connecting, searching, scanning, authenticating, spoofing, exploiting, defending, monitoring, controlling devices and moving through virtual or networked spaces. Uncertain actions use the standard resolution engine.
+
+### 7.8. Brain Damage
+
+Cybernetic attacks, BCI malfunction, overload, hostile psychotronics or unsafe neural interfaces may cause neurological consequences. Detailed Brain Damage rules remain deferred to the consolidated health/cybernetic design rather than invented here.
+
+---
+
+## 8. Psychic Systems
+
+### 8.1. Psyche
+
+The Psychic system covers **psychology, consciousness and psionics**.
+
+Psychic STATs and Skills govern self-directed awareness, will, intuition, Noetic perception and PSI where appropriate. The exact active STAT list follows the latest canonical Stats section.
+
+**Sleepers** are people who have not undergone meaningful Psychic Awakening. **Psychic Awakening** is the development or activation of direct Noetic sensitivity and capability. Awakening is not synonymous with moral goodness, sanity or social status.
+
+### 8.2. Psychic traits
+
+Psychic traits are persistent personality, consciousness or Noetic characteristics. They are longer-lived than Psychic statuses.
+
+### 8.3. Psychic statuses
+
+Psychic statuses are temporary mental, emotional or Noetic conditions. They may include shock, dissociation, temporary insanity, intrusive contact, psychic overload, dream contamination and other transient conditions.
+
+### 8.4. Psionics
+
+Psionics are natural or technologically augmented interactions mediated through consciousness and Noöspace. Existing canon treats PSI as part of the setting's post-QIP consciousness model rather than as a viral infection.
+
+Detailed powers are consolidated here over time from the existing psionics material.
+
+### 8.5. Noöspace
+
+**Noöspace** is the formal scientific/technical name for the domain commonly called the **Astral Plane**. It is the quantum-informational domain of Conscious Agents and consciousness in NoöPunk's fictional post-QIP ontology.
+
+Spacetime is physical reality. Cyberspace is computational information space. Noöspace is the Noetic domain. The Noösphere is the emerging planetary network of minds, AIs, Noetics, institutions, biospheric cognition, NHI and collective symbols increasingly organizing itself within Noöspace.
+
+Noöspace can be accessed through OOBEs, remote viewing, lucid dreams, meditation, psychedelics, psychotronics, QIP interfaces, ritual and some forms of NHI contact. Detailed topology and ontology are preserved in the extended canon material.
+
+### 8.6. Psychic Attack
+
+Psychic Attack is hostile use of PSI or Noetic interaction against another mind, Conscious Agent or psychically accessible system. Detailed attack procedures remain to be designed using the ordinary NoöPunk opposed-check architecture.
+
+### 8.7. Psychic Defence
+
+Psychic Defence covers resistance, shielding, counter-influence, grounding, trained mental discipline and technological/psychotronic protection against hostile Noetic effects.
+
+### 8.8. Polarization
+
+Polarization models the direction and development of consciousness, influenced in part by Law-of-One service-to-others / service-to-self ideas.
+
+The exact mechanical relationship between **Willpower** and **Empathy** remains a design question. Polarization should describe an evolution of consciousness rather than a simple morality score.
+
+### 8.9. Psychotronic Technologies
+
+Psychotronic technologies connect engineering with PSI and Noetic phenomena. They include:
+
+- cybernetic or neural implants that augment natural psionics;
+- sensors, amplifiers, shields and interfaces;
+- heavy psychotronic weaponry;
+- controlled use of psychedelics and other PSI boosters.
+
+They do not turn PSI into conventional magic-item fantasy; they are technological interfaces to the setting's consciousness model.
+
+### 8.10. Noetic Beings
+
+Noetic Beings are entities encountered primarily or significantly through Noöspace.
+
+The deeper ontology is the **Conscious Agent Network**. Noetic beings may include individual minds, collective formations, archetypal figures, dream entities, DMT entities, NHI minds, interdimensional beings, group minds and other Conscious Agents.
+
+### 8.11. Dreams
+
+Dreams can be ordinary psychological events, but in NoöPunk some dreams are genuinely **precognitive**, telepathic or otherwise PSI-mediated.
+
+Dreams can also function as **OOBEs** or access routes into Noöspace.
+
+### 8.12. Magick
+
+In NoöPunk:
+
+> **Magick is PSI. PSI is Magick.**
+
+Historical occult and spiritual traditions are interpreted as partial cultural maps, techniques and vocabularies for real Noetic phenomena.
+
+Important traditions include **Shamanism** and **Hermeticism**, alongside other regional and historical systems. They may preserve useful techniques without being complete literal cosmologies.
+
+### 8.13. CE-5
+
+CE-5 is treated primarily as a **summoning/contact practice for Noetic beings** rather than a guaranteed spacecraft-calling technique.
+
+Possible outcomes include Noetic entities, anomalous lights/orbs, telepathic contact, plasmoid-like manifestations and, more rarely, unambiguous physical craft.
+
+---
+
+## Extended canon and reference material
+
+The material below preserves the previous living rules ledger and world canon so issue #120 does not erase useful work while the new chapter structure becomes the primary navigation layer.
+
+**Interpretation rule:** where this reference material conflicts with Chapters 1–8 or a later explicit author decision, the newer canonical chapter/decision wins. Reference sections should be migrated into the appropriate core chapter as those subsystems are refined.
+
+
+> **STATUS: LIVING RULEBOOK / INDEPENDENT NOÖPUNK RPG**
+>
+> This is the canonical human-readable rules document for the NoöPunk RPG/social simulation.
+>
 > **NoöPunk is an independent rules system. It is not an Eclipse Phase conversion and no external RPG is its mechanical parent.**
 >
 > The system is deliberately synthetic: it may borrow design lessons from **Cyberpunk 2020 / RED, Eclipse Phase, Fate, PbtA, CY_BORG, Cities Without Number and the wider OSR, Citizen Sleeper, The Expanse**, and other games when useful. Those games are influences, not compatibility requirements.
@@ -27,7 +443,7 @@
 
 ---
 
-## 1. What this document is
+### 1. What this document is
 
 NoöPunk is one computer RPG/social simulation with tabletop-style rules that can be read by humans and executed by software.
 
@@ -50,7 +466,7 @@ The code should implement the rulebook. The rulebook should not merely describe 
 
 ---
 
-## 2. Current project description
+### 2. Current project description
 
 For the current development phase, describe the game as:
 
@@ -63,7 +479,7 @@ NoöPunk is a portmanteau of **Noösphere** and **Cyberpunk**.
 
 The year is deliberately written as **20XX**. Ray Kurzweil's 2045 Singularity date is an important thematic reference, but NoöPunk does not commit to a fixed chronology for future events.
 
-### 2.1 Social-science foundation
+#### 2.1 Social-science foundation
 
 NoöPunk grows directly out of the intellectual terrain explored by the **LaclauGPT** research project (https://github.com/TomiToivio/LaclauGPT/blob/main/paper/PHASE_1_PAPER.md). The social-science background is part of the game model, not decorative lore.
 
@@ -81,7 +497,7 @@ NoöPunk grows directly out of the intellectual terrain explored by the **Laclau
 
 The game should ask not only what a technology can do, but **who defines it, who benefits, who is excluded, which futures become imaginable, and which forms of power it stabilizes or disrupts**.
 
-### 2.2 AI as ideological conflict
+#### 2.2 AI as ideological conflict
 
 NoöPunk turns contemporary AI discourse into factions, institutions, policies, technologies, and historical outcomes.
 
@@ -95,7 +511,7 @@ These positions are not merely opinions held by NPCs. They shape states, corpora
 
 NoöPunk contains the full ideological spectrum rather than adopting one official answer; the conflict between these views is part of the world itself.
 
-### 2.3 Cyberpunk updated for 20XX
+#### 2.3 Cyberpunk updated for 20XX
 
 NoöPunk begins from the premise that many classic cyberpunk themes are already recognizable in contemporary society. It therefore updates cyberpunk using current social trends, real technological trajectories, social science, political economy, AI ideology, ubiquitous networks, synthetic media, surveillance, platform power, cybernetic augmentation, and emerging collective intelligence.
 
@@ -103,7 +519,7 @@ The target is not retro-1980s cyberpunk preserved in amber. It is **cyberpunk th
 
 **Philip K. Dick is the most NoöPunkish literary influence**, especially *Ubik*, *VALIS*, *A Scanner Darkly*, *Do Androids Dream of Electric Sheep?*, and *The Three Stigmata of Palmer Eldritch*. His unstable boundaries between reality, technology, altered consciousness, institutions, paranoia, and the divine are central to the tone.
 
-### 2.4 The Noösphere and simultaneous paradigm shifts
+#### 2.4 The Noösphere and simultaneous paradigm shifts
 
 NoöPunk places several **unordered, interacting paradigm shifts** on top of one another:
 
@@ -129,7 +545,7 @@ Important conceptual influences include:
 
 These are inspirations for a fictional setting. Their real-world scientific or philosophical status does not automatically establish NoöPunk's fictional conclusions.
 
-### 2.5 Relationship to Eclipse Phase
+#### 2.5 Relationship to Eclipse Phase
 
 Eclipse Phase is an important **influence and source library**, not NoöPunk's parent rules engine.
 
@@ -139,7 +555,7 @@ Mechanically, however, NoöPunk does not inherit EP2 by default. Every subsystem
 
 The setting may still use a pre-Fall, Earth-intact transhuman technology level as inspiration without making NoöPunk an Eclipse Phase conversion.
 
-### 2.6 Core design identity
+#### 2.6 Core design identity
 
 NoöPunk is simultaneously:
 
@@ -156,27 +572,27 @@ Its central question is:
 
 > **Who gets to define what humanity, intelligence, consciousness, progress, danger, and reality mean when several paradigm shifts happen at once?**
 
-## 3. Rules provenance labels
+### 3. Rules provenance labels
 
 Every substantial rules section should make its provenance clear without treating another RPG as the default chassis.
 
-### NOÖPUNK CORE
+#### NOÖPUNK CORE
 
 A canonical native rule of the independent NoöPunk system.
 
-### ADAPTED / INSPIRED
+#### ADAPTED / INSPIRED
 
 A NoöPunk rule that deliberately borrows a design idea from one or more external games but is implemented as NoöPunk's own rule.
 
-### LEGACY EP2
+#### LEGACY EP2
 
 Existing Eclipse Phase-derived prototype material that is retained for provenance or transitional compatibility but is **not automatically active core canon**.
 
-### EXPERIMENTAL
+#### EXPERIMENTAL
 
 A rule being tested and subject to removal.
 
-### DEFERRED
+#### DEFERRED
 
 The subsystem is intentionally unresolved.
 
@@ -187,7 +603,7 @@ For compatibility with the older EP2 conversion matrix, the historical status vo
 remains recognized as **legacy provenance metadata**. Those labels do not make EP2 the
 current chassis.
 
-## 4. Source hierarchy
+### 4. Source hierarchy
 
 When sources disagree, use this order:
 
@@ -201,7 +617,7 @@ When sources disagree, use this order:
 
 Software is not allowed to silently override this document. If implementation and rulebook differ, record the discrepancy as porting debt and resolve it deliberately.
 
-## 5. Primary Eclipse Phase references
+### 5. Primary Eclipse Phase references
 
 The starting EP2 references are:
 
@@ -215,7 +631,7 @@ Do not mirror whole rulebooks into this repository. Prefer concise rules summari
 
 ---
 
-## 6. Licensing boundary
+### 6. Licensing boundary
 
 **EP2-derived rules material must remain clearly identifiable.**
 
@@ -234,7 +650,7 @@ The goal is transformation and implementation, not republication.
 
 ---
 
-## 7. Core architecture rule
+### 7. Core architecture rule
 
 **LLMs decide intent. Deterministic code resolves mechanics whenever practical.**
 
@@ -261,7 +677,7 @@ They should not invent dice results, damage values, resource changes, or other m
 
 ---
 
-## 8. The smallest playable rules kernel
+### 8. The smallest playable rules kernel
 
 **Status: LEGACY EP2, to be simplified aggressively.**
 
@@ -286,7 +702,7 @@ Everything else may remain deferred until play shows that it is needed.
 
 ---
 
-## 9. Characters and identity
+### 9. Characters and identity
 
 **Status: LEGACY EP2 → expected heavy NoöPunk conversion.**
 
@@ -329,7 +745,7 @@ and the answer to the second does not follow from the first.
 
 NoöPunk may ultimately replace EP2's character architecture substantially. The conceptual distinction between identity and embodiment is useful enough to retain during the prototype.
 
-### 9.1 Character sheets
+#### 9.1 Character sheets
 
 A playable character sheet should eventually expose only information needed for decisions and resolution.
 
@@ -349,7 +765,7 @@ The initial implementation may include EP2-derived:
 
 The exact NoöPunk sheet is not yet final.
 
-### 9.2 Four-layer 1–10 attribute system
+#### 9.2 Four-layer 1–10 attribute system
 
 **Status: NOÖPUNK NATIVE — issue #113.**
 
@@ -384,7 +800,7 @@ separate so the 1–10 human scale remains visible.
 The full definitions and entity examples are maintained in
 [`rulebook/2_ATTRIBUTES.md`](rulebook/2_ATTRIBUTES.md).
 
-### 9.3 Density, Polarization, and energy centers
+#### 9.3 Density, Polarization, and energy centers
 
 **Density** is a consciousness-development **tier/state**, not a STAT and not IQ. NPCs may
 be represented from 1D–7D where useful. PCs normally occupy 3D or 4D. A 3D PC may develop
@@ -423,7 +839,7 @@ center. Do not invent an eighth cybernetic chakra or force one-to-one STAT mappi
 The detailed canonical design is in
 [`rulebook/2_ATTRIBUTES.md`](rulebook/2_ATTRIBUTES.md).
 
-### 9.4 Biological-human-first scope
+#### 9.4 Biological-human-first scope
 
 The initial playable kernel prioritizes biological humans, optional cybernetics, the
 four-layer attributes, PSI, Density, Polarization, Contacts/Factions/Motivations, and
@@ -436,7 +852,7 @@ than replace it.
 
 ---
 
-## 10. Action resolution
+### 10. Action resolution
 
 **Status: NOÖPUNK CORE — issue #111.**
 
@@ -448,7 +864,7 @@ STAT + Skill + 1d10 ≥ Difficulty Value
 
 Both **STAT** and trained **Skill** ratings use a **1–10** scale. Their final names and lists are intentionally deferred. Stats and skills remain separate mechanical quantities.
 
-### 10.1 Difficulty Values
+#### 10.1 Difficulty Values
 
 | Difficulty | DV |
 | --- | ---: |
@@ -462,7 +878,7 @@ Both **STAT** and trained **Skill** ratings use a **1–10** scale. Their final 
 
 These are canonical starting values for playtesting. Do not silently change them.
 
-### 10.2 Opposed checks
+#### 10.2 Opposed checks
 
 Both sides roll:
 
@@ -472,11 +888,11 @@ STAT + Skill + 1d10
 
 Higher total wins. **Ties are unresolved by the current core rules** and require a later explicit design decision.
 
-### 10.3 Criticals and modifiers
+#### 10.3 Criticals and modifiers
 
 Issue #111 deliberately does **not** define exploding 10s, fumbles on 1s, margin-based criticals, or a final situational-modifier procedure. Do not inherit those rules automatically from Cyberpunk RED, Cyberpunk 2020, Fate, PbtA, Eclipse Phase or any other game.
 
-### 10.4 Probability pass
+#### 10.4 Probability pass
 
 Representative success rates before future modifiers:
 
@@ -490,7 +906,7 @@ Representative success rates before future modifiers:
 
 The table is diagnostic, not permission to alter the authored DVs. Legendary DV 29 is intentionally beyond these representative ordinary profiles without future bonuses or exceptional rules.
 
-## 11. Pools and expendable resources
+### 11. Pools and expendable resources
 
 **Status: LEGACY EP2 / EXPERIMENTAL FOR CONCORDIA.**
 
@@ -509,7 +925,7 @@ Questions to test:
 
 ---
 
-## 12. Physical harm, wounds, and stress
+### 12. Physical harm, wounds, and stress
 
 **Status: LEGACY EP2.**
 
@@ -528,7 +944,7 @@ Expected future changes:
 
 ---
 
-## 13. Combat
+### 13. Combat
 
 **Status: LEGACY EP2, intentionally minimal.**
 
@@ -548,7 +964,7 @@ If full EP2 combat proves too heavy for Concordia, simplify it.
 
 ---
 
-## 14. Embodiment, morphs, bodies, and platforms
+### 14. Embodiment, morphs, bodies, and platforms
 
 **Status: LEGACY EP2 → core NoöPunk subsystem.**
 
@@ -569,7 +985,7 @@ Long term, "morph" may be replaced by a more general NoöPunk term such as **emb
 
 ---
 
-## 15. Mesh, hacking, cyberspace, and the Noösphere
+### 15. Mesh, hacking, cyberspace, and the Noösphere
 
 **Status: LEGACY EP2 → major NoöPunk reskin/replacement target.**
 
@@ -609,13 +1025,13 @@ Do not finalize the complete replacement mechanic yet.
 
 ---
 
-## 16. Psionics and Noösphere interaction
+### 16. Psionics and Noösphere interaction
 
 **Status: ADAPTED / INSPIRED / NOÖPUNK NATIVE METAPHYSICS; detailed mechanics still DEFERRED.**
 
 EP2 psi may be used temporarily as a mechanical hook, but its origin is explicitly replaced.
 
-### 16.1 PSI is natural, not viral
+#### 16.1 PSI is natural, not viral
 
 **PSI is not caused by an alien virus, infection, disease, or exsurgent pathogen.**
 
@@ -623,7 +1039,7 @@ Every human consciousness has a natural latent PSI capacity. In most humans this
 
 Awakened humans can possess much stronger natural PSI than ordinary third-density humans.
 
-### 16.2 Non-local PSI and entanglement
+#### 16.2 Non-local PSI and entanglement
 
 Psionics are fundamentally **non-local**. Physical distance is not the basic limiting variable.
 
@@ -637,7 +1053,7 @@ Therefore:
 - physical proximity may help establish coupling without defining the eventual range;
 - the simulation may represent psychic accessibility as a noetic/entanglement graph or hypergraph rather than a spatial radius.
 
-### 16.3 Awakening Noösphere
+#### 16.3 Awakening Noösphere
 
 The Noösphere is awakening. What older psychology described metaphorically as a **collective unconscious** is becoming increasingly interconnected and, in places, consciously accessible.
 
@@ -655,7 +1071,7 @@ NoöPunk also borrows from the **Law of One / Ra Material** as fictional cosmolo
 
 This is setting lore inspired by an esoteric/religious source, not a claim about real human destiny.
 
-### 16.4 Advanced consciousness and the quarantine
+#### 16.4 Advanced consciousness and the quarantine
 
 NoöPunk adopts an optimistic metaphysical axiom:
 
@@ -667,7 +1083,7 @@ The Zookeeper quarantine protected young civilizations from predation, manipulat
 
 Humanity has now crossed the threshold at which the Zookeepers allow open participation in the wider ecology of conscious beings. The quarantine is over.
 
-### 16.5 Psychotronic technology
+#### 16.5 Psychotronic technology
 
 In-setting breakthroughs inspired by **Quantum Information Panpsychism (QIP)** and **Orchestrated Objective Reduction (Orch OR)** make possible technologies including:
 
@@ -684,7 +1100,7 @@ In this fictional scientific paradigm, QIP-oriented researchers hold that consci
 
 These are fictional/speculative game assumptions built from real theories and esoteric inspirations; the real-world scientific sources do not establish NoöPunk's fictional conclusions.
 
-### 16.6 Professional PSI, entanglement, and magic
+#### 16.6 Professional PSI, entanglement, and magic
 
 Dean Radin's *Entangled Minds: Extrasensory Experiences in a Quantum Reality* is an important inspiration for how NoöPunk connects quantum-consciousness ideas to practical psionics.
 
@@ -715,7 +1131,7 @@ This does not mean every magical claim is true in-setting. Traditions may contai
 
 ---
 
-## 17. Social and ideological mechanics: Affect, Factions, Motivations, Reputation and Contacts
+### 17. Social and ideological mechanics: Affect, Factions, Motivations, Reputation and Contacts
 
 **Status: NOÖPUNK NATIVE, issue #107.**
 
@@ -733,7 +1149,7 @@ At the architecture level, face-to-face, text/chat, voice/video, Mesh and PSI co
 
 ---
 
-## 18. Gear, augmentation, software, and technology
+### 18. Gear, augmentation, software, and technology
 
 **Status: LEGACY EP2 DATA, selectively imported.**
 
@@ -753,7 +1169,7 @@ The **global technology baseline is Eclipse Phase-level transhuman technology**.
 
 ---
 
-## 19. AI, AGI, infomorphs, and non-human agents
+### 19. AI, AGI, infomorphs, and non-human agents
 
 **Status: ADAPTED / INSPIRED / NOÖPUNK NATIVE DIRECTION.**
 
@@ -787,7 +1203,7 @@ The exact metaphysical or legal status of these categories is world design, not 
 
 ---
 
-## 20. Important and background NPCs
+### 20. Important and background NPCs
 
 **Status: NOÖPUNK NATIVE ARCHITECTURE.**
 
@@ -795,11 +1211,11 @@ Not every NPC needs an LLM.
 
 Use at least two broad levels:
 
-### Full agents
+#### Full agents
 
 Important characters may use Concordia + LLM cognition, memory, goals, conversation, and the full relevant character state.
 
-### Lightweight agents
+#### Lightweight agents
 
 Background characters may use deterministic logic, state machines, Mesa-style agents, or extremely limited behavior.
 
@@ -809,7 +1225,7 @@ Promote an NPC to a full agent only when the simulation or story benefits from i
 
 ---
 
-## 21. Social-science simulation layer
+### 21. Social-science simulation layer
 
 **Status: NOÖPUNK NATIVE.**
 
@@ -845,7 +1261,7 @@ Let them exchange state through defined interfaces.
 
 ---
 
-## 22. Structured actions for Concordia
+### 22. Structured actions for Concordia
 
 **Status: NOÖPUNK NATIVE ARCHITECTURE.**
 
@@ -870,7 +1286,7 @@ This separation is important for reproducibility and social-science simulation.
 
 ---
 
-## 23. Persistence and reproducibility
+### 23. Persistence and reproducibility
 
 **Status: NOÖPUNK NATIVE ARCHITECTURE.**
 
@@ -889,7 +1305,7 @@ The same saved state plus the same deterministic inputs should reproduce the sam
 
 ---
 
-## 24. Lighter rules escape hatches
+### 24. Lighter rules escape hatches
 
 **Status: EXPERIMENTAL REFERENCES.**
 
@@ -910,7 +1326,7 @@ Do not switch the entire game system casually. Replace subsystems deliberately a
 
 ---
 
-## 25. Rules adapter contract
+### 25. Rules adapter contract
 
 **Status: NOÖPUNK NATIVE ARCHITECTURE.**
 
@@ -944,7 +1360,7 @@ without replacing the simulation architecture.
 
 ---
 
-## 26. Rule-change procedure
+### 26. Rule-change procedure
 
 Every meaningful mechanical change should follow this sequence:
 
@@ -966,7 +1382,7 @@ Do not leave important canonical mechanics only in issue comments or commits.
 
 ---
 
-## 27. Change ledger
+### 27. Change ledger
 
 Use this table to track major mechanical mutations.
 
@@ -985,7 +1401,7 @@ Add rows whenever a major subsystem is replaced or substantially reskinned.
 
 ---
 
-## 28. Immediate rulebook work
+### 28. Immediate rulebook work
 
 As the first playable vertical slice is implemented, expand this file with concise executable descriptions of:
 
@@ -1007,7 +1423,7 @@ Only document mechanics that we actually intend to use. The purpose is not to re
 
 ---
 
-## 29. Definition of a healthy rulebook
+### 29. Definition of a healthy rulebook
 
 This document is healthy when a developer, player, or agent can answer:
 
@@ -1025,7 +1441,7 @@ If the answer requires spelunking through old commits, Discord-like issue archae
 
 ---
 
-## 30. Governing principle
+### 30. Governing principle
 
 **Build first. Play it. Simulate it. Observe what Concordia actually needs. Then simplify and mutate the rules.**
 
@@ -1035,7 +1451,7 @@ The destination is **not a separate setting wearing borrowed EP mechanics**.
 
 The destination is a playable **alternate pre-Fall Eclipse Phase timeline** in which NoöPunk's paradigm shifts reshape an intact Earth and wider transhuman civilization. Rules may still mutate through use, but the Eclipse Phase continuity and technology baseline are now intentional parts of the premise.
 
-## 31. Persistent EP2 test-session subset (#60)
+### 31. Persistent EP2 test-session subset (#60)
 
 **Status: native orchestration around the existing EP2 homebrew test kernel.**
 
@@ -1056,7 +1472,7 @@ No new setting facts, NPC personalities or mechanical subsystems are defined her
 Implementation: `src/concordia_runtime/ep2_session.py`.
 
 
-## 32. Embodiment and inventory subset (#60)
+### 32. Embodiment and inventory subset (#60)
 
 **Status: compact EP2-homebrew adapter / native persistence layer.**
 
@@ -1114,7 +1530,7 @@ These should be added only when the playable scenario needs them.
 
 ---
 
-## 33. Canonical world lore from issue #60
+### 33. Canonical world lore from issue #60
 
 **Status: NOÖPUNK NATIVE / CURRENT CANON.**
 
@@ -1122,7 +1538,7 @@ This section consolidates the active setting lore added to issue #60. It exists 
 rulebook remains a usable source of truth rather than forcing developers and agents to
 reconstruct canon from issue comments.
 
-### 33.1 Background timeline: unordered paradigm shifts
+#### 33.1 Background timeline: unordered paradigm shifts
 
 NoöPunk is set in **20XX** in an alternate **pre-Fall Eclipse Phase continuity**.
 
@@ -1180,7 +1596,7 @@ Detailed narrative versions of the crisis years, named disclosure sequences, rai
 broadcasts, and speculative event orderings are preserved as **non-binding narrative
 variants** in `docs/archive/NARRATIVE_TIMELINE_VARIANTS.md`.
 
-### 33.2 Ontological shock and human division
+#### 33.2 Ontological shock and human division
 
 Humanity is **extremely divided** about AGI, psionics, NHI contact, QIP,
 transhumanism, the Noösphere and the other paradigm shifts of the NHI Crisis.
@@ -1215,7 +1631,7 @@ Mind and Social Science* is also one of the setting's consciousness-theory inspi
 (§36.5, §33.17). His work is an inspiration for this **fictional** worldbuilding; the
 setting does not present his arguments as established science.
 
-### 33.3 Butlerian Jihad and bioconservative reaction
+#### 33.3 Butlerian Jihad and bioconservative reaction
 
 A major reactionary current is provisionally called the **Butlerian Jihad**.
 
@@ -1239,7 +1655,7 @@ Some factions reject only AI. Others accept limited technology but oppose mind-m
 integration. The most extreme currents treat AI, ET/NHI, transhumans, psionics and
 cybernetic humans as parts of one civilizational catastrophe.
 
-### 33.4 Technology level and embodiment demographics
+#### 33.4 Technology level and embodiment demographics
 
 The technological ceiling is broadly the **same as Eclipse Phase**.
 
@@ -1263,7 +1679,7 @@ The setting therefore visibly contains:
 
 The coexistence of these groups is politically important.
 
-### 33.5 Emerging federal United Nations
+#### 33.5 Emerging federal United Nations
 
 By 20XX the **United Nations is becoming a real federal world government**. The process
 is incomplete, politically contested, and uneven, but it has moved beyond a merely
@@ -1282,7 +1698,7 @@ forces, space fleets, and global jurisdiction. It is widely regarded as the UN's
 important institution, which makes it both indispensable and politically alarming.
 
 
-### 33.6 Psionics, QIP, awakening and the Noösphere
+#### 33.6 Psionics, QIP, awakening and the Noösphere
 
 In NoöPunk, **psionics are natural phenomena present latently in all humans**. They are not
 caused by alien infection, a virus, or an exsurgent pathogen.
@@ -1295,7 +1711,7 @@ The Noösphere is an emergent planetary / transplanetary layer of interconnected
 information, consciousness, culture, technology and agency. In the setting's more
 metaphysical language, the old **collective unconscious is becoming conscious**.
 
-### 33.6a The Law of One is real, distorted, and incomplete
+#### 33.6a The Law of One is real, distorted, and incomplete
 
 **The Law of One / Ra Material is canonically a genuine NHI contact record in NoöPunk.**
 
@@ -1383,7 +1799,7 @@ post-civilizational intelligences, and entities that do not fit the category of
 Humanity is therefore entering a genuinely plural galactic order rather than a simple
 two-sided cosmic war.
 
-### 33.6b Rogue machine lineages and the Von Neumann threat
+#### 33.6b Rogue machine lineages and the Von Neumann threat
 
 Some of the most dangerous entities in the galaxy are genuinely **Yudkowskian rogue AI
 factions**, best understood as **hostile machine civilizations or machine lineages** whose
@@ -1556,7 +1972,7 @@ This is fictional setting metaphysics inspired by real scientific hypotheses, co
 parapsychological claims, fiction, and esoteric sources. The real-world sources do not
 establish NoöPunk's fictional claims.
 
-### 33.7 End of Earth's quarantine
+#### 33.7 End of Earth's quarantine
 
 Before the NHI Crisis, Earth was subject to a form of **quarantine** maintained by more
 advanced NHI.
@@ -1575,7 +1991,7 @@ The consequences include diplomacy, trade, migration, espionage, religious chang
 scientific exchange, xenophobia, cults, conflict and hybrid communities.
 
 
-### 33.8 The Zoo: why quarantine exists
+#### 33.8 The Zoo: why quarantine exists
 
 **Status: NOÖPUNK NATIVE / CURRENT CANON from issue #83.**
 
@@ -1606,7 +2022,7 @@ The Zookeepers tolerate conflict, competition, uneven development, and even limi
 
 Humanity survived not because every extraterrestrial civilization is benevolent, but because **Earth's Zoo was policed**.
 
-### 33.9 The Zookeepers and their probe ecology
+#### 33.9 The Zookeepers and their probe ecology
 
 The Zookeepers now appear to be predominantly **Noetic** rather than biological.
 
@@ -1651,7 +2067,7 @@ They just keep coming.
 
 This means not every interstellar visitor is godlike. A civilization only modestly ahead of contemporary humanity may still possess a galactic footprint if its probes have had enough time to spread.
 
-### 33.10 Earth quarantine, UAP activity, and controlled access
+#### 33.10 Earth quarantine, UAP activity, and controlled access
 
 Earth's quarantine was deliberately **porous**, not absolute.
 
@@ -1715,7 +2131,7 @@ They prevent unrestricted planetary extermination, conquest, biosphere destructi
 
 That is why classic invasion scenarios failed to occur while quarantine remained in force.
 
-### 33.11 Pleiadians, Atlantis, and the second human Zoo
+#### 33.11 Pleiadians, Atlantis, and the second human Zoo
 
 The **Pleiadians are human**.
 
@@ -1764,7 +2180,7 @@ Their exact transplantation date, selection criteria, later Zookeeper interventi
 
 It explains why some contact lore is obsessed with blond "Nordics" without making the actual cosmic order endorse twentieth-century racial mythology. NoöPunk can contain a bizarre eugenicist offshoot that embarrasses everybody else — but that offshoot is never the truth of the cosmology, and the existence of uniform "Nordic" aliens is a biased human sample, one particular Pleiadian lineage, or the result of selective contact rather than evidence that the Zookeepers preferred one human phenotype.
 
-### 33.12 Greys, future humans, and temporal ecology
+#### 33.12 Greys, future humans, and temporal ecology
 
 A major Grey lineage consists of **future humans**.
 
@@ -1805,7 +2221,7 @@ This produces a circular piece of temporal ecology:
 
 NoöPunk treats this as strange but not paradox-breaking. The Zookeepers appear to regard temporal intervention as one more ecological problem to regulate.
 
-### 33.13 Hybridization and the Fourth-Density transition
+#### 33.13 Hybridization and the Fourth-Density transition
 
 The famous ufological **human–NHI hybridization program** is real in NoöPunk.
 
@@ -1857,7 +2273,7 @@ Different actors interpret it as:
 
 No single moral interpretation is canonical.
 
-### 33.14 The end of quarantine, Day of Disclosure, and Galactic Law
+#### 33.14 The end of quarantine, Day of Disclosure, and Galactic Law
 
 By the NoöPunk era, humanity reaches the threshold at which the Zookeepers judge it sufficiently developed to leave quarantine.
 
@@ -1915,7 +2331,7 @@ After the broadcast, much of the visible Zookeeper fleet departs toward Saturn a
 
 This becomes the symbolic end of quarantine.
 
-### 33.15 The VALIS event and birth of the conscious Noösphere
+#### 33.15 The VALIS event and birth of the conscious Noösphere
 
 The Zookeepers do not leave humanity a clean encyclopedia of galactic truth.
 
@@ -1971,7 +2387,7 @@ It refers to a new mode of conscious organization involving some combination of:
 
 The mechanism remains disputed.
 
-### 33.16 The One Universe movement and the 25 / 25 / 50 pattern
+#### 33.16 The One Universe movement and the 25 / 25 / 50 pattern
 
 Many VALIS recipients describe enlightenment, ego dissolution, revelation, or direct contact with universal consciousness.
 
@@ -2012,7 +2428,7 @@ Possible explanations include:
 
 No single explanation is confirmed.
 
-### 33.17 Consciousness model: panpsychism, cosmopsychism, and higher-order agents
+#### 33.17 Consciousness model: panpsychism, cosmopsychism, and higher-order agents
 
 NoöPunk's metaphysical direction is panpsychist / cosmopsychist.
 
@@ -2052,7 +2468,7 @@ This applies equally to:
 - organizations;
 - and possible planetary or galactic minds.
 
-### 33.18 Law of One reskin
+#### 33.18 Law of One reskin
 
 The underlying architecture of the **Law of One** is fundamentally true in the NoöPunk universe, but its terminology is reskinned.
 
@@ -2073,7 +2489,7 @@ First Density simply means:
 
 Human religions and esoteric traditions often preserve distorted fragments of this larger ontology.
 
-### 33.19 Galactic ecology, panspermia, and genuinely alien life
+#### 33.19 Galactic ecology, panspermia, and genuinely alien life
 
 Life is common partly because the Milky Way has undergone **multiple independent waves of panspermia**.
 
@@ -2116,7 +2532,7 @@ Other biospheres are genuinely independent and may involve:
 
 The galaxy should contain both **eerily familiar life and genuinely alien life**.
 
-### 33.20 Plasmoids and the failure of human categories
+#### 33.20 Plasmoids and the failure of human categories
 
 **Plasmoids** are the strongest example of genuinely alien life/intelligence.
 
@@ -2147,7 +2563,7 @@ A visible plasmoid may be one individual, one organ, one avatar, or a transient 
 
 This must remain unresolved.
 
-### 33.21 Dolphins and minds without technology
+#### 33.21 Dolphins and minds without technology
 
 Humanity eventually discovers that dolphins are **far more sophisticated thinkers and philosophers than humans had recognized**.
 
@@ -2170,7 +2586,7 @@ A species can develop extraordinary cognition and culture without metallurgy, ci
 
 Later human augmentation, translation, uplift, or technological interfaces reveal an intelligence that was already there rather than creating sapience from scratch.
 
-### 33.22 Technology and civilization are not universal endpoints
+#### 33.22 Technology and civilization are not universal endpoints
 
 NoöPunk explicitly rejects the assumption that every intelligent species naturally becomes a human-style technological civilization.
 
@@ -2212,7 +2628,7 @@ It is not the universal developmental template.
 
 A population humans would classify as "**Stone Age**" may already be a mature member of the galactic club — possessing stable telepathy, sophisticated collective memory, advanced metaphysics, low destructive internal conflict, deep ecological knowledge, or mature Noöspheric participation — and may be contacted and given access to mature galactic technology without ever reproducing the human sequence from metallurgy to spaceflight. Humans initially find this incomprehensible because they equate invention with ownership and technology with civilization.
 
-### 33.23 Dyson swarms, Kardashev, SETI, and noisy young civilizations
+#### 33.23 Dyson swarms, Kardashev, SETI, and noisy young civilizations
 
 Dyson swarms exist.
 
@@ -2264,7 +2680,7 @@ Some historical stellar anomalies later prove technological, while many remain n
 
 Most astronomers reasonably prefer natural explanations, and many individual anomalies do have natural causes. The important in-setting point is that **a subset of the anomalous population eventually proves technological.**
 
-### 33.24 Multiple UFO ontologies: Vallée, cryptoterrestrials, and extratempestrials
+#### 33.24 Multiple UFO ontologies: Vallée, cryptoterrestrials, and extratempestrials
 
 Disclosure does **not** mean simply discovering that extraterrestrials visit in spacecraft.
 
@@ -2319,7 +2735,7 @@ Some are biological. Some are Noetic. Some are temporal. Some are cryptoterrestr
 
 Extraterrestrial spacecraft are only one slice of the phenomenon.
 
-### 33.25 Expanded NHI ontology
+#### 33.25 Expanded NHI ontology
 
 The existing NHI categories remain useful:
 
@@ -2330,7 +2746,7 @@ The existing NHI categories remain useful:
 
 Add two further categories:
 
-#### Temporals
+##### Temporals
 
 Beings whose identity depends on:
 
@@ -2342,7 +2758,7 @@ Beings whose identity depends on:
 
 Future humans are the obvious example, but some entities may have no meaningful native present.
 
-#### Ecologies
+##### Ecologies
 
 Intelligences whose unit of mind is:
 
@@ -2359,7 +2775,7 @@ An Ecology may contain many organisms while functioning as one higher-order cons
 
 A seventh catch-all category may be used cautiously:
 
-#### Liminals
+##### Liminals
 
 Entities that cross physical, Noetic, informational, temporal, mythic, or biological categories so thoroughly that classification itself fails.
 
@@ -2367,7 +2783,7 @@ Entities that cross physical, Noetic, informational, temporal, mythic, or biolog
 
 It is an admission that human ontology has broken.
 
-### 33.26 MJ-12 as a human breakaway civilization
+#### 33.26 MJ-12 as a human breakaway civilization
 
 **MJ-12** is not merely a secret committee.
 
@@ -2451,7 +2867,7 @@ Alongside the Pleiadians, this creates two striking human offshoots:
 1. **Pleiadians** — deep-time human divergence under Zookeeper transplantation;
 2. **MJ-12** — rapid recent divergence through secrecy and privileged NHI technology.
 
-### 33.27 The NHI Crisis as a historiographical label
+#### 33.27 The NHI Crisis as a historiographical label
 
 The **NHI Crisis** is a retrospective umbrella term for the period in **20XX** when several
 major NoöPunk paradigm shifts became socially consequential.
@@ -2491,7 +2907,7 @@ tectonic shifts moved under society until the old categories could no longer con
 Detailed crisis narratives formerly kept here are archived in
 `docs/archive/NARRATIVE_TIMELINE_VARIANTS.md`.
 
-### 33.27b Contact rituals, DMT, and the Conscious Agent Network
+#### 33.27b Contact rituals, DMT, and the Conscious Agent Network
 
 NoöPunk treats several apparently different anomalous practices as culturally distinct
 interfaces to the same underlying **Noetic / Conscious Agent Network**.
@@ -2525,7 +2941,7 @@ which conscious agents can encounter one another outside ordinary sensory channe
 
 ---
 
-### 33.28 Rogue-AGI disasters
+#### 33.28 Rogue-AGI disasters
 
 By **20XX**, multiple serious rogue-AGI disasters have occurred. They are part of the
 setting's alternate AI history and help explain the strong ideological divide between
@@ -2551,7 +2967,7 @@ philosophical, literary, or theoretical influences where attribution matters.
 Older named-company and named-person versions are preserved only as narrative variants in
 `docs/archive/NARRATIVE_TIMELINE_VARIANTS.md`.
 
-### 33.28a Canonical timeline rule for named specifics
+#### 33.28a Canonical timeline rule for named specifics
 
 Named details may remain canon when they describe an explicitly author-defined fictional
 institution, place, technology, species, faction, or character. They do **not** establish a
@@ -2569,7 +2985,7 @@ For future timeline work:
 - do not infer "before" or "after" relationships unless the dependency is explicit canon;
 - keep **QIP / PSI scientifically independent of UFO / NHI Disclosure**.
 
-### 33.29 Post-quarantine galaxy: the nursery walls come down
+#### 33.29 Post-quarantine galaxy: the nursery walls come down
 
 The end of quarantine is not pure liberation.
 
@@ -2600,7 +3016,7 @@ The post-quarantine Zoo is therefore no longer a sealed cage.
 
 It becomes something closer to a **protected border**.
 
-### 33.29a Eclipse Phase alien archetypes: the Factors and the ETI
+#### 33.29a Eclipse Phase alien archetypes: the Factors and the ETI
 
 NoöPunk may adapt useful alien archetypes from Eclipse Phase without importing its galactic hierarchy wholesale. Two are especially useful.
 
@@ -2610,7 +3026,7 @@ NoöPunk may adapt useful alien archetypes from Eclipse Phase without importing 
 
 Together these archetypes keep the galaxy populated by intelligences recognizably *not us* without making any one of them the hidden master of everything.
 
-### 33.30 Solar-system deep history
+#### 33.30 Solar-system deep history
 
 The Solar System was inhabited long before modern humanity.
 
@@ -2644,7 +3060,7 @@ individual episodes may still be distorted or incomplete.
 The Solar System is therefore not a formerly empty system suddenly receiving visitors. It
 is an old, repeatedly inhabited, repeatedly monitored ecological and historical zone.
 
-### 33.30a Stargates, UAP traffic, Mars ruins, and SETI
+#### 33.30a Stargates, UAP traffic, Mars ruins, and SETI
 
 This subsection preserves the author-specified Solar-System canon originally recorded for
 issue #60. It adds no mechanics and does not settle classifications that remain disputed
@@ -2684,11 +3100,11 @@ There is currently **no scientific consensus** on whether **Noetics**, **Plasmoi
 **Constructs** should count as civilizations. These categories remain scientifically and
 politically contested and must not be silently folded into the official count of seven.
 
-### 33.31 Genre architecture and tone
+#### 33.31 Genre architecture and tone
 
 NoöPunk deliberately runs several genres at once.
 
-#### Cyberpunk
+##### Cyberpunk
 
 - AI;
 - surveillance;
@@ -2699,7 +3115,7 @@ NoöPunk deliberately runs several genres at once.
 - neural interfaces;
 - breakaway elites.
 
-#### Space opera
+##### Space opera
 
 - open NHI contact;
 - multiple species;
@@ -2711,7 +3127,7 @@ NoöPunk deliberately runs several genres at once.
 - Pleiadians;
 - ancient ruins.
 
-#### Selective post-holocaust
+##### Selective post-holocaust
 
 Some regions are devastated by:
 
@@ -2726,7 +3142,7 @@ Other regions remain functional and wealthy.
 
 The apocalypse is **patchy**, not global.
 
-#### Absurdist dystopia / bureaucratic comedy
+##### Absurdist dystopia / bureaucratic comedy
 
 Human institutions confront ontological revolution through:
 
@@ -2741,7 +3157,7 @@ Human institutions confront ontological revolution through:
 - AI propaganda;
 - and arguments about whether angels need visas.
 
-#### New Weird / ontological thriller
+##### New Weird / ontological thriller
 
 Reality itself becomes unstable as a category.
 
@@ -2760,7 +3176,7 @@ The cosmic side of the setting should become stranger, larger, and more colorful
 
 The result should feel simultaneously **bleak and ecstatic**.
 
-### 33.32 Canonical uncertainty
+#### 33.32 Canonical uncertainty
 
 Issue #83 adds a crucial epistemic rule:
 
@@ -2788,12 +3204,12 @@ Even after Disclosure, humanity does not fully understand:
 No single taxonomy should explain every UAP, NHI, PSI, or mythic phenomenon.
 
 
-### 33.33 Issue #83 clarifications and additional canon
+#### 33.33 Issue #83 clarifications and additional canon
 
 This subsection records issue #83 details that sharpen the cosmology above without replacing
 the deliberate uncertainty of §33.32.
 
-#### Technosignatures and the slow-dipper clue
+##### Technosignatures and the slow-dipper clue
 
 Pre-Disclosure astronomy contains genuine technological signals mixed together with natural
 anomalies and false positives.
@@ -2809,7 +3225,7 @@ over. The point is not that every strange light curve is alien engineering. The 
 that pre-Disclosure humanity was already looking at a sky containing both natural anomalies
 and technosignatures without a reliable ontology for separating them.
 
-#### The Factors analogue
+##### The Factors analogue
 
 NoöPunk keeps an **amoeboid / slime-mold-like starfaring species** inspired by Eclipse
 Phase's Factors.
@@ -2821,7 +3237,7 @@ brokers, ecological strategists, or patient long-timescale negotiators.
 They are an inspiration/archetype, not a requirement to reproduce Eclipse Phase's galactic
 hierarchy literally.
 
-#### The ETI / Bracewell analogue
+##### The ETI / Bracewell analogue
 
 The hostile machine civilization already mentioned in §33.6b is the NoöPunk analogue of
 Eclipse Phase's **ETI / Bracewell-probe threat**.
@@ -2833,7 +3249,7 @@ for all galactic history. It is one hostile machine polity among several possibl
 machine lineages, and one of the recurring threats that helps explain why galactic powers
 maintain extensive anti-probe defenses.
 
-#### The "Nazi Zookeepers" theory is not cosmic truth
+##### The "Nazi Zookeepers" theory is not cosmic truth
 
 Some humans interpret Pleiadian / Nordic contact through racist or eugenicist mythology and
 conclude that the Zookeepers are literally Nazis or that they deliberately filled the
@@ -2852,7 +3268,7 @@ It may survive in-setting as:
 NoöPunk can contain an ugly eugenicist offshoot without making twentieth-century racial
 mythology the metaphysical structure of the universe.
 
-#### Pasulka convergence: humans see two revolutions, Zookeepers see one
+##### Pasulka convergence: humans see two revolutions, Zookeepers see one
 
 The simultaneous AI revolution and NHI Disclosure are **not coincidences** in the NoöPunk
 cosmology.
@@ -2869,7 +3285,7 @@ Humans initially describe two revolutions happening at once:
 The Zookeepers understand them as **one transition in the development of planetary
 consciousness**.
 
-#### Additional Disclosure-era details
+##### Additional Disclosure-era details
 
 The American secrecy collapse includes confrontations involving:
 
@@ -2913,7 +3329,7 @@ Active 20XX canon uses fictional actors for this role. Earlier real-person and r
 versions remain preserved only in the narrative archive.
 ---
 
-### 33.27a Archived disclosure-cascade variants
+#### 33.27a Archived disclosure-cascade variants
 
 Earlier drafts contained a detailed Kapustin Jar auction, national Disclosure cascade,
 American Legacy Program raid, and other named incident sequences. Those scenes are useful
@@ -2925,7 +3341,7 @@ They are preserved in `docs/archive/NARRATIVE_TIMELINE_VARIANTS.md`.
 Canonical rule: use the high-level paradigm shifts in §33.1 and the structural NHI Crisis
 model in §33.27. Do not reconstruct a fixed chronology from the archived variant.
 
-## 34. NoöPunk glossary
+### 34. NoöPunk glossary
 
 **Status: ADAPTED / INSPIRED + NOÖPUNK NATIVE**
 
@@ -2946,7 +3362,7 @@ Source references:
 - Eclipse Phase 2E online rules: https://eclipsephase.github.io/
 - Eclipse Phase releases / Creative Commons material: https://eclipsephase.com/releases/
 
-### 34.1 Ontology and consciousness
+#### 34.1 Ontology and consciousness
 
 **Space/time.** Ordinary embodied physical reality: matter, locations, causal events,
 bodies, machines, planets, habitats, and measurable spacetime. In NoöPunk this is the
@@ -3042,7 +3458,7 @@ quantum-informational, and psi measurements.
 Psychotronics includes crude military devices, clinical systems, NHI-derived artifacts,
 and technologies whose operating theory remains disputed.
 
-### 34.2 Law-of-One cosmology, NoöPunkified
+#### 34.2 Law-of-One cosmology, NoöPunkified
 
 **Density.** A broad level or regime of consciousness and existence. Law-of-One tradition
 describes seven densities within an octave. NoöPunk does not treat density as a simple
@@ -3106,7 +3522,7 @@ science even after Disclosure.
 landmass tradition. NoöPunk treats specific claims as historically uncertain rather than
 using every occult chronology as literal fact.
 
-### 34.3 Embodiment and transhumanity
+#### 34.3 Embodiment and transhumanity
 
 **Morph.** A body or platform inhabited by an ego. Morphs may be biological, synthetic,
 hybrid, or digital. In NoöPunk everyday language also uses **body**, **shell**, **sleeve**,
@@ -3163,7 +3579,7 @@ modified beyond historical baseline ranges.
 successor so altered that the category "human" becomes politically and biologically
 contested.
 
-### 34.4 Cyber, mesh, and artificial minds
+#### 34.4 Cyber, mesh, and artificial minds
 
 **Mesh.** The pervasive distributed network layer connecting devices, people, agents,
 sensors, augmented reality, and computation. It is the technological substrate of much of
@@ -3214,7 +3630,7 @@ identity, location, state, and history.
 **Cornucopia machine / fabber.** General-purpose nanofabrication system capable of
 manufacturing a wide range of objects from feedstock and digital designs.
 
-### 34.5 Gates, aliens, and existential threats
+#### 34.5 Gates, aliens, and existential threats
 
 **Pandora Gate / stargate.** Ancient gate technology capable of creating wormhole links
 between distant locations. In NoöPunk, Eclipse Phase-style wormholes are canon, but the
@@ -3262,7 +3678,7 @@ treats psi as real in-setting while leaving competing mechanisms open.
 
 **Sleight.** A discrete psi technique or trained effect.
 
-### 34.6 Social and political vocabulary
+#### 34.6 Social and political vocabulary
 
 **Autonomist.** Broad family of self-organizing, anti-authoritarian, commons-oriented,
 anarchist, cooperative, and network-polity traditions inherited from Eclipse Phase and
@@ -3297,7 +3713,7 @@ distinct yet participate in a deeply integrated shared field of memory and thoug
 NoöPunk compares this with hypermeshes, group minds, federated AI systems, and the
 Noösphere without assuming they are identical.
 
-### 34.7 Translation rule: when vocabularies collide
+#### 34.7 Translation rule: when vocabularies collide
 
 NoöPunk intentionally keeps **multiple descriptions of the same event alive at once**.
 
@@ -3316,7 +3732,7 @@ legible enough to play.
 
 ---
 
-## 35. Sources, recommended reading, and influences
+### 35. Sources, recommended reading, and influences
 
 **Status: LIVING BIBLIOGRAPHY / SOURCE MAP.**
 
@@ -3330,7 +3746,7 @@ Prefer short annotations explaining **what the work contributes** instead of mai
 a bare bibliography. This is the **design-facing influence map**; the more theory-oriented
 bibliography is kept separately in §37.
 
-### 35.0 Noöspace / consciousness-navigation source cluster (#119)
+#### 35.0 Noöspace / consciousness-navigation source cluster (#119)
 
 The canonical Noöspace synthesis specifically draws on **Federico Faggin** and **Donald
 Hoffman** for consciousness/information ontology; **Robert Monroe** and **Thomas Campbell**
@@ -3340,7 +3756,7 @@ DMT phenomenology and Machine Elf imagery; and the **Law of One / Ra Material** 
 Space/Time–Time/Space correspondence. These sources are combined into NoöPunk's own
 fictional ontology rather than treated as mutually identical real-world theories.
 
-### 35.1 How to read this list
+#### 35.1 How to read this list
 
 **Non-fiction** is treated differently from fiction. These works describe, model,
 theorize, document, or debate how NoöPunk's society, technology, science, political
@@ -3377,9 +3793,9 @@ Out-of-world epistemic rule: NoöPunk may fictionalize or canonize disputed theo
 claims. Listing a real non-fiction work here does **not** mean its claims are established
 scientific fact in the real world.
 
-### 35.2 Non-fiction books
+#### 35.2 Non-fiction books
 
-#### AI ideological triad
+##### AI ideological triad
 
 These three books form a useful map of NoöPunk's antagonistic AI politics. They are not
 mutually exclusive sourcebooks. Each captures a different part of the world.
@@ -3425,7 +3841,7 @@ AI-Critical / political economy
 NoöPunk should preserve conflict between these positions rather than declaring one of them
 the single correct ideology.
 
-#### Other non-fiction source families
+##### Other non-fiction source families
 
 The bibliography should continue to grow across the source families already used by the
 rulebook, including:
@@ -3444,7 +3860,7 @@ rulebook, including:
 When these works become important enough to affect canon, add them here individually with
 a one- or two-sentence note explaining their contribution.
 
-### 35.3 Fiction books
+#### 35.3 Fiction books
 
 - **Richard K. Morgan — _Altered Carbon_.** Embodiment, identity transfer, inequality, crime, and cortical-stack-like continuity.
 - **James S. A. Corey — _The Expanse_ series.** Belt society, crews, political economy, factional conflict, and human politics colliding with non-human technology.
@@ -3469,7 +3885,7 @@ Seed this list from works already cited elsewhere in the rulebook, including:
 Add further fiction when it materially shapes NoöPunk's tone, society, technology, or
 cosmology.
 
-### 35.4 Movies and television
+#### 35.4 Movies and television
 
 - **_Altered Carbon_.** Visual/social treatment of resleeving-like identity transfer, embodiment, inequality, and crime.
 - **_The Expanse_.** Lived-in Belt habitats, space labor, factional politics, cultural divergence, crews, and system-scale politics at human scale.
@@ -3488,7 +3904,7 @@ Maintain a curated list of screen works that influence NoöPunk's:
 
 Add titles only when their influence is concrete enough to explain in a short annotation.
 
-### 35.5 Role-playing games
+#### 35.5 Role-playing games
 
 The RPG list should record both mechanical and setting influences.
 
@@ -3507,7 +3923,7 @@ At minimum:
 
 Record whether a game contributes **rules**, **setting**, **tone**, or some combination.
 
-### 35.6 Computer games
+#### 35.6 Computer games
 
 - **Citizen Sleeper** — text-forward station hub, task loop, clocks/consequences and relationship-driven progression.
 - **Citizen Sleeper 2** — crews/parties, travel between locations, and missions away from hubs. These are structural references only.
@@ -3518,7 +3934,7 @@ simulation model, cyberpunk atmosphere, AI society, hacking, or transhumanism.
 Relevant inspirations should be added with a short explanation of the contribution rather
 than only the title.
 
-### 35.7 Maintenance rule
+#### 35.7 Maintenance rule
 
 This bibliography is part of canon maintenance, not an appendix to forget.
 
@@ -3534,7 +3950,7 @@ new work:
 Issue #99 tracks the creation and continued maintenance of this list.
 
 
-## 36. The four NoöPunk systems: Physical, Psychic, Social and Cybernetic
+### 36. The four NoöPunk systems: Physical, Psychic, Social and Cybernetic
 
 **Status: NOÖPUNK NATIVE THEORETICAL ONTOLOGY; author-specified in issue #78.**
 
@@ -3549,7 +3965,7 @@ direction — see the theoretical registry entry
 [`docs/archive/THEORETICAL_SOURCES.md`](docs/archive/THEORETICAL_SOURCES.md#luhmannian-four-system-character-architecture),
 which remains the per-rule grounding map required by §26.
 
-### 36.1 Luhmann's baseline and the NoöPunk extensions
+#### 36.1 Luhmann's baseline and the NoöPunk extensions
 
 The starting point is **Niklas Luhmann's systems theory**. In simplified form, Luhmann
 distinguishes operationally distinct kinds of *autopoietic* systems by what they
@@ -3606,13 +4022,13 @@ part of communication and functions as a medium / structural coupling between ps
 social systems. Splitting "social" and "linguistic" into parallel layers would work
 against the Luhmannian foundation.
 
-### 36.2 The four layers
+#### 36.2 The four layers
 
 The four layers should **not** be treated as four disconnected databases. Each names a
 domain of participation and a set of operations; much of the interesting play happens at
 their interfaces (§36.8).
 
-#### 36.2.1 Physical
+##### 36.2.1 Physical
 
 **Core question:** *Where and in what substrate does an entity exist?*
 
@@ -3634,7 +4050,7 @@ substrates, or be partly embodied and partly virtual. This layer needs the least
 metaphysical elaboration: it is the ordinary physical world, represented in play
 primarily by **maps, places, objects and movement**.
 
-#### 36.2.2 Psychic
+##### 36.2.2 Psychic
 
 **Core question:** *What is the state and structure of consciousness?*
 
@@ -3653,7 +4069,7 @@ records things such as:
 
 The theoretical background of this layer is set out in §36.3–§36.5.
 
-#### 36.2.3 Social
+##### 36.2.3 Social
 
 **Core question:** *What communications, relationships, institutions and power structures
 reproduce themselves?*
@@ -3698,7 +4114,7 @@ while giving the simulation concrete nodes, ties, flows, brokers, exclusions and
 relations. Likely game representation: **social / rhizomatic communication graphs** plus
 Concordia state and narrative.
 
-#### 36.2.4 Cybernetic
+##### 36.2.4 Cybernetic
 
 **Core question:** *What computational / machine systems reproduce their own operations,
 and how are they coupled to the physical, psychic and social systems?*
@@ -3736,7 +4152,7 @@ literal components in planetary machine networks rather than external users occa
 The Mesh Insert / Cranial Computer / Muse default coupling is also recorded in §15 and is
 the point at which the Cybernetic layer meets the character sheet.
 
-### 36.3 Natural PSI, the awakening Noösphere, and the Law of One
+#### 36.3 Natural PSI, the awakening Noösphere, and the Law of One
 
 In NoöPunk, **PSI is not produced by an alien virus or infection** (§16.1). It is a
 natural capacity of human consciousness; all humans have some latent PSI potential,
@@ -3786,7 +4202,7 @@ wider ecology of consciousness becomes possible. Humanity has just crossed that 
 in 20XX: **the quarantine is over.** This is a **setting axiom**, not a scientific
 inference from the consciousness theories below.
 
-### 36.4 Dean Radin: entanglement, PSI, and magic
+#### 36.4 Dean Radin: entanglement, PSI, and magic
 
 Dean Radin's ***Entangled Minds: Extrasensory Experiences in a Quantum Reality*** is a key
 inspiration for how NoöPunk connects quantum-consciousness ideas to psionics. The canonical
@@ -3822,7 +4238,7 @@ underlying noetic reality. This does **not** mean Radin's interpretations are sc
 consensus in the real world; in NoöPunk they are fictionalized as one of the precursor
 research traditions that eventually contributed to a mature science and technology of PSI.
 
-### 36.5 The theoretical background of the Psychic layer
+#### 36.5 The theoretical background of the Psychic layer
 
 The Psychic layer is grounded in a body of speculative quantum-consciousness work. NoöPunk
 treats these as **precursor theories** that, in the alternate future of 20XX, contribute to
@@ -3878,7 +4294,7 @@ a successful science of quantum consciousness — not as established science.
   coupling can be theorized in explicitly quantum terms. Source: *Quantum Mind and Social
   Science* (Cambridge University Press, 2015), https://doi.org/10.1017/CBO9781316005163
 
-### 36.6 Extended mind and the collective-intelligence principle
+#### 36.6 Extended mind and the collective-intelligence principle
 
 **Cross-layer principle: consciousness and agency are more important than raw
 computational scale.**
@@ -3910,7 +4326,7 @@ This should shape the simulation:
 Relevant source: Andy Clark & David Chalmers, “The Extended Mind,” *Analysis* 58(1),
 1998, 7–19, https://doi.org/10.1093/analys/58.1.7
 
-### 36.7 Structural coupling between the layers
+#### 36.7 Structural coupling between the layers
 
 The four layers should not be treated as four disconnected databases. Much of the
 interesting gameplay happens at their interfaces:
@@ -3936,7 +4352,7 @@ interact:
   cybernetically disconnected yet psychically entangled, or connected to millions of
   systems with no psychic relationship at all (§15).
 
-### 36.8 Candidate simulation representations
+#### 36.8 Candidate simulation representations
 
 Keep the ontology theoretically rich but computationally simple at first:
 
@@ -3951,7 +4367,7 @@ The Psychic layer should **not** use physical distance as its fundamental metric
 requires entanglement with a target (§16.2), psychic accessibility is based on
 entanglement / coherence / resonance rather than kilometres.
 
-### 36.9 Relationship to the modular worldbook chapters
+#### 36.9 Relationship to the modular worldbook chapters
 
 The modular worldbook under [`rulebook/`](rulebook/) carries one chapter per layer
 (`3_PHYSICAL.md`, `4_SOCIAL.md`, `5_CYBERNETIC.md`, `6_PSYCHIC.md`), plus
@@ -3960,7 +4376,7 @@ per-layer companion to this section; this section is the authoritative statement
 ontology, and the chapters should summarize it rather than fork it. §33 records the
 in-world canon that the ontology frames.
 
-### 36.10 Issue #74 Concordia / EP2 experiment
+#### 36.10 Issue #74 Concordia / EP2 experiment
 
 **Status: EXPERIMENTAL.**
 
@@ -3998,14 +4414,14 @@ The worked experiment, example playthrough and licensing note are documented in
 
 ---
 
-## 37. Theoretical sources and inspirations
+### 37. Theoretical sources and inspirations
 
 This bibliography distinguishes **real-world theories and texts that inspire NoöPunk** from
 the fictional conclusions the setting draws from them. Inclusion here does not mean that a
 theory is scientifically established or that the source's author would endorse NoöPunk's
 synthesis.
 
-### Systems, communication, networks, cyborgs, and extended mind
+#### Systems, communication, networks, cyborgs, and extended mind
 
 - **Ernesto Laclau & Chantal Mouffe.** *Hegemony and Socialist Strategy*, 2nd ed., 2001. Articulation, equivalence/difference, antagonism and hegemony ground §17.
 - **Ernesto Laclau.** *Emancipation(s)* (1996) and *On Populist Reason* (2005). Empty/floating signification, collective subjects, equivalential chains and affective investment.
@@ -4027,7 +4443,7 @@ synthesis.
   https://doi.org/10.1093/analys/58.1.7
 - **Benjamin H. Bratton.** *The Stack: On Software and Sovereignty*. MIT Press, 2015/2016.
 
-### Quantum information, consciousness, and quantum social theory
+#### Quantum information, consciousness, and quantum social theory
 
 - **Seth Lloyd.** *Programming the Universe: A Quantum Computer Scientist Takes on the
   Cosmos*. Knopf, 2006; Vintage, 2007.
@@ -4043,7 +4459,7 @@ synthesis.
   Ontology*. Cambridge University Press, 2015.
   https://doi.org/10.1017/CBO9781316005163
 
-### Psionics and esoteric / noöspheric inspirations
+#### Psionics and esoteric / noöspheric inspirations
 
 - **Dean Radin.** *The Conscious Universe*. HarperOne, 1997, and later experimental and
   popular work on psi/anomalous cognition. These claims remain scientifically contested in
@@ -4066,7 +4482,7 @@ synthesis.
 - **Pierre Teilhard de Chardin.** *The Phenomenon of Man*. English translation, Harper,
   1959. Historical inspiration for the concept of the **Noösphere**.
 
-### Cosmology, UFO/NHI, temporality, and Disclosure inspirations
+#### Cosmology, UFO/NHI, temporality, and Disclosure inspirations
 
 - **Philip K. Dick.** *VALIS*. Bantam, 1981. Inspiration for the non-linguistic activation signal, fragmented revelation, and the sense that information itself can transform consciousness.
 - **Jacques Vallée.** Especially *Passport to Magonia* and later work on the control-system / interdimensional dimensions of UFO phenomena. Inspiration for NoöPunk's refusal to reduce all UAP to extraterrestrial spacecraft.
@@ -4076,13 +4492,13 @@ synthesis.
 - **Freeman Dyson.** Dyson-sphere / swarm concepts as background for technosignatures, while NoöPunk explicitly rejects energy use as a universal measure of intelligence.
 - **Nikolai Kardashev.** Historical inspiration for energy-use classifications of civilizations; treated in-setting as useful but anthropocentric and incomplete.
 
-### Fictional psionics and normalized psychic services
+#### Fictional psionics and normalized psychic services
 
 - **Philip K. Dick.** *Ubik*. Doubleday, 1969. Primary fictional inspiration for a society
   in which psychic abilities, counter-psi, and paranormal professional services are
   commercialized and mundane.
 
-### Cyberspace, planetary computation, and collective human-machine intelligence
+#### Cyberspace, planetary computation, and collective human-machine intelligence
 
 - **William Gibson.** *Neuromancer*. Ace, 1984. Fictional/cultural source for
   **cyberspace**.
@@ -4091,14 +4507,14 @@ synthesis.
 - **Benjamin H. Bratton.** *The Stack: On Software and Sovereignty*. MIT Press, 2015/2016.
 - **Donna Haraway.** “A Cyborg Manifesto,” 1985/1991.
 
-### RPG and setting baseline
+#### RPG and setting baseline
 
 - **Posthuman Studios.** *Eclipse Phase, Second Edition* and the openly available EP2 rules
   resources linked in §5. NoöPunk is an alternate pre-Fall homebrew continuity and must
   preserve the applicable Creative Commons attribution and ShareAlike obligations for
   EP-derived material.
 
-### Interpretation rule
+#### Interpretation rule
 
 When the rulebook says a real-world theory **makes something possible in 20XX**, that is a
 fictional extrapolation unless explicitly stated otherwise. In particular, NoöPunk treats
@@ -4110,14 +4526,14 @@ elements of its fictional world model, not as settled descriptions of the real w
 
 
 
-## UNHSS / Firewall: default campaign institution
+### UNHSS / Firewall: default campaign institution
 
 > **Issue #108 canon.** This section defines the default player organization and the
 > institutional core of the emerging federal United Nations. It coordinates with
 > #105 (Legacy Programs / Disclosure) and #107 (factions, motivations, reputation,
 > contacts, and mission loop).
 
-### Name, history, and identity
+#### Name, history, and identity
 
 The canonical organization is the **United Nations Human Security and Survival
 Organization (UNHSS)**. It was founded under the cumbersome name **United Nations
@@ -4129,7 +4545,7 @@ intelligence and field personnel.
 Firewall is not an extra-governmental conspiracy. It is the classified operational
 culture and intelligence network **inside UNHSS**.
 
-### Mandate and jurisdiction
+#### Mandate and jurisdiction
 
 UNHSS has legal responsibility for existential and species-level survival risks,
 including AGI and rogue AI, NHI / extraterrestrial intelligence, PSI / Noetic
@@ -4148,7 +4564,7 @@ at governmental level while retaining especially difficult Legacy Program secrec
 Civilian governments may cooperate with UNHSS while partially autonomous secrecy and
 reverse-engineering structures obstruct it.
 
-### Three institutions fused into one
+#### Three institutions fused into one
 
 UNHSS exists because member states could not agree whether humanity needed a civilian
 scientific agency, an FBI-like transnational police/intelligence service, or a rapid
@@ -4172,7 +4588,7 @@ hybrid/infiltration investigations, existential-technology terrorism, sabotage o
 planetary defence, crimes against protected NHI beings, and major Legacy Program theft
 or leaks.
 
-### Military, mobility, and space forces
+#### Military, mobility, and space forces
 
 UNHSS maintains two elite permanent rapid-deployment regiments:
 
@@ -4196,7 +4612,7 @@ infrastructure includes defence platforms, SIGINT satellites, sensor constellati
 stations, communications relays, and planetary-defence systems. Assets may be owned by
 UNHSS or seconded by member states.
 
-### Visual identity
+#### Visual identity
 
 Uniformed UNHSS police and military personnel retain unmistakable UN Peacekeeper
 identity: **blue UN berets or helmets with black uniforms**, with formal styling
@@ -4204,7 +4620,7 @@ influenced by **19th-century European Hussar uniforms**. The style reflects stro
 early EU backing and later spread through UNHSS ceremonial and field dress. Covert
 agents normally dress for the mission.
 
-### Democratic safeguards and the deep-state problem
+#### Democratic safeguards and the deep-state problem
 
 UNHSS was deliberately designed to avoid becoming another MJ-12-style permanent
 secrecy apparatus. Safeguards include elected UN oversight, parliamentary committees,
@@ -4218,7 +4634,7 @@ Conspiracy theories that UNHSS / Firewall has itself become a planetary deep sta
 ubiquitous. Some are false; some expose real abuses; some may concern compromised
 cells. The institution is not secretly evil by default.
 
-### Player characters and dual faction identity
+#### Player characters and dual faction identity
 
 The default campaign assumption is:
 
@@ -4233,7 +4649,7 @@ AI-rights activist, corporate defector, or transhuman faction member, each also 
 with Firewall. Faction, motivation, reputation, and contacts mechanics should treat
 this tension as a primary source of missions and consequences (#107).
 
-### Mission architecture
+#### Mission architecture
 
 A Firewall team may investigate anomalies, negotiate with NHI, stop rogue AI, inspect
 a Legacy Program, protect scientists, evacuate a habitat, infiltrate a corporation,
@@ -4247,7 +4663,7 @@ A campaign base may be a UNHSS station, city field office, Belt outpost, patrol 
 space station, or mobile task-force base. This supports the location / mission loop
 being developed in #107.
 
-### UN federal executive and the Minister
+#### UN federal executive and the Minister
 
 The ordinary political head of UNHSS is the **United Nations Minister of Human
 Security and Survival**, a member of the UN Parliament and part of the federal
@@ -4255,7 +4671,7 @@ executive. The Minister answers to the UN President and Prime Minister and overs
 normal strategy, budget, administration, diplomacy, science, policing, and defence.
 The precise appointment mechanism remains for later constitutional design.
 
-### Four Wallfacers
+#### Four Wallfacers
 
 UNHSS maintains **four Wallfacers**, explicitly inspired in-world by *The Three-Body
 Problem*. Their purpose is strategic deception against hostile ETI, infiltrating NHI,
@@ -4271,7 +4687,7 @@ and existential-risk safety rules. They are not omnipotent.
 Wallfacers are mission engines: their apparently irrational orders may be brilliant,
 wrong, compromised, or impossible to interpret until much later.
 
-### Central political tension
+#### Central political tension
 
 UNHSS must remain internally contradictory rather than becoming a frictionless
 adventurers' guild. Persistent conflicts include science vs secrecy, diplomacy vs law
@@ -4290,7 +4706,7 @@ The core political question is therefore:
 
 ---
 
-## 39. Campaign-scoped skills and specialist fields
+### 39. Campaign-scoped skills and specialist fields
 
 **Status: NOÖPUNK NATIVE CONTENT MODEL / MECHANICS FOLLOW ISSUE #111.**
 
@@ -4323,7 +4739,7 @@ The final universal NoöPunk skill list remains deferred. For the first campaign
 
 These names are not a commitment to Eclipse Phase numerical mechanics, linked aptitudes, defaulting rules, or percentile values. They are provisional skill concepts pending the final independent NoöPunk list.
 
-### 39.1 Campaign-scoped field rule
+#### 39.1 Campaign-scoped field rule
 
 **Exotic Skill, Hardware, Know, Medicine, and Pilot require a Field.** A campaign exposes only fields expected to matter in actual play.
 
@@ -4348,7 +4764,7 @@ Additional Hardware and Exotic Skill fields are character- or scenario-specific 
 
 Possible later Belt Hardware fields include Electronics, Robotics, Industrial, Spacecraft, Mining, and Life Support, but these are **not automatically active** merely because they are plausible.
 
-### 39.2 Core investigative and Noetic knowledge fields
+#### 39.2 Core investigative and Noetic knowledge fields
 
 **Know (Investigation)** covers case reconstruction, investigative procedure, evidence interpretation, interview planning, investigative strategy, and linking facts across a case.
 
@@ -4370,7 +4786,7 @@ Its purpose is not trivia collection. It is the ability to build a coherent work
 
 The **Law of One / Ra Material belongs inside NHI Studies** as a major in-setting contact tradition. A competent specialist understands Confederation and Orion concepts, quarantine, densities, Social Memory Complexes, polarization, historical claims, channel limitations, and post-Disclosure confirmations or contradictions. Studying it does not require treating every contact claim as true.
 
-### 39.3 Psychotronics
+#### 39.3 Psychotronics
 
 **Hardware (Psychotronics)** covers the practical engineering of Noetic technology: psychotronic sensors, PSI amplifiers, counter-PSI systems, Noetic shielding, consciousness interfaces, QIP instrumentation, psychotronic communications, anomalous-contact equipment, PSI-sensitive detection systems, and field repair of related devices.
 
@@ -4381,7 +4797,7 @@ Keep the boundary explicit:
 - **Hardware (Psychotronics)** builds, repairs, modifies, or disables relevant devices.
 - **Psi / PSI techniques** perform the anomalous effect.
 
-### 39.4 Know, Research, Perceive, Kinesics, and Psi
+#### 39.4 Know, Research, Perceive, Kinesics, and Psi
 
 Use these questions to prevent one skill from swallowing the others:
 
@@ -4393,7 +4809,7 @@ Use these questions to prevent one skill from swallowing the others:
 
 Know and Research often work together, but neither replaces observation, social inference, or practical PSI.
 
-### 39.5 PSI domains remain a design choice
+#### 39.5 PSI domains remain a design choice
 
 Do not finalize the PSI skill architecture yet. Preserve these candidate domains for later playtesting:
 
@@ -4409,7 +4825,7 @@ Three approaches remain open: one Psi skill with fields, several separate PSI sk
 
 **Robert A. Monroe and the Monroe Institute** are influences for Noetic Projection / OBE training and altered-state exploration. This is inspiration for the fictional setting, not a claim that Monroe's interpretations are established real-world science.
 
-### 39.6 Example campaign packages
+#### 39.6 Example campaign packages
 
 A conventional UNHSS investigator will often emphasize Investigation, Research, Perceive, Kinesics, and Persuade.
 
@@ -4421,7 +4837,7 @@ A Belt field agent commonly needs Pilot (Space), Medicine (Emergency Care), Free
 
 These are packages for readability, not classes.
 
-### 39.7 Machine-readable campaign profile
+#### 39.7 Machine-readable campaign profile
 
 The corresponding machine-readable profile lives at `data/rules/campaign_skill_fields.json`. Scenario-specific profiles may extend it without changing the universal rules.
 
@@ -4429,7 +4845,7 @@ The governing rule is:
 
 > **Expose only the specialist fields that the current campaign can actually use.**
 
-### 39.8 Deferred Law-of-One character mechanics
+#### 39.8 Deferred Law-of-One character mechanics
 
 Issue #110 also records a larger character-design problem involving:
 
@@ -4447,7 +4863,7 @@ These concepts are **not mechanically implemented here**. Density is not IQ; Pol
 A dedicated attribute-system design issue owns this work before it becomes executable rules.
 
 
-## 44. Reverse-engineering, contact, and cryptoterrestrial map (#105)
+### 44. Reverse-engineering, contact, and cryptoterrestrial map (#105)
 
 **Status: mixed canon and explicitly open design questions.** Issue #105 is exploratory, so only the points explicitly settled below are promoted to hard setting canon.
 
@@ -4461,7 +4877,7 @@ Human reverse-engineering traditions are plural rather than copies of one Americ
 - **Egypt:** emphasizes archaeological finds and ancient technological/Noetic inheritances while preserving ambiguity about what is genuinely artificial or NHI.
 - **Israel:** develops a technological-Noetic tradition drawing on Kabbalistic symbolism and consciousness practice. **Merkabah spacecraft** is the characteristic visual/conceptual hook. In-world "magick" is treated as an interface with Noetic phenomena, not arbitrary fantasy spellcasting.
 
-### 44.1 Contact and altered-state interfaces
+#### 44.1 Contact and altered-state interfaces
 
 **CE-5** is primarily a contact/summoning ritual, not a dependable spacecraft-calling technique. Typical outcomes include plasmoid manifestations, Noetic entities, anomalous lights/orbs, telepathic/contact experiences, and only rarely unambiguous physical craft.
 
@@ -4469,7 +4885,7 @@ DMT experiences, "machine elves," astral/OBE traditions, Noetic Projection, Hoff
 
 Bledsoe-style orb phenomena and "The Lady" are **Confederacy-associated** in NoöPunk, while their exact ontology remains open: direct contact, Noetic intermediary, plasmoid, physical/noetic hybrid, or several layers at once.
 
-### 44.2 Cryptoterrestrials and undersea infrastructure
+#### 44.2 Cryptoterrestrials and undersea infrastructure
 
 **Tridactyls** are a real cryptoterrestrial species/category in NoöPunk. Whether modern Nazca bodies and the older esoteric/Law-of-One references describe exactly the same lineage remains an in-world research question.
 
@@ -4477,7 +4893,7 @@ Bledsoe-style orb phenomena and "The Lady" are **Confederacy-associated** in No�
 
 Atlantis and Lemuria/Mu belong to the setting's ancient-history problem, but their **current status remains unresolved**: extinct civilization, hidden enclave, undersea survivor, off-world descendant, Noetic remnant, or something else.
 
-### 44.3 Orion infiltration and social consequences
+#### 44.3 Orion infiltration and social consequences
 
 The Orion abduction/hybridization program means that Orion has penetrated human society despite quarantine. The extent, mechanisms, and identity-awareness of infiltrators remain uncertain. Hybrids may be biological, social, psychic, political, or mixed.
 
@@ -4486,7 +4902,7 @@ A hard tone rule applies: **real infiltration does not make every conspiracy the
 ---
 
 
-### 44.4 Noöspace: the Astral Plane and Conscious Agent Network (#119)
+#### 44.4 Noöspace: the Astral Plane and Conscious Agent Network (#119)
 
 **Canonical ontology.** **Noöspace is real.** It is the effectively infinite-dimensional
 quantum-information Hilbert space in which **Conscious Agents** exist and interact.
@@ -4509,7 +4925,7 @@ researchers, intelligence services, and technical institutions use it in formal 
 Everybody else, and plenty of field operatives when the scientists are not listening,
 still calls it **the Astral Plane**. Both names refer to the same underlying domain.
 
-#### 44.4.1 Perception as direct access to the Conscious Agent Network
+##### 44.4.1 Perception as direct access to the Conscious Agent Network
 
 In NoöPunk, OOBE, remote viewing, PSI, lucid dreams, meditation, psychedelics, DMT,
 psychotronics, QIP interfaces, ritual, and some NHI contact can provide access to
@@ -4534,7 +4950,7 @@ Agent. Their morphing impossible geometry may reflect perceptual translation: a 
 brain compressing high-dimensional conscious information into an interface it can render.
 Their apparent bodies need not be ordinary anatomy.
 
-#### 44.4.2 Law of One correspondence
+##### 44.4.2 Law of One correspondence
 
 Law-of-One **Space/Time** corresponds broadly to ordinary physical spacetime and
 **Time/Space** corresponds broadly to Noöspace. Do not force every Law-of-One metaphysical
@@ -4542,7 +4958,7 @@ detail into a one-to-one scientific mapping. Preserve the central NoöPunk idea 
 physical and consciousness-oriented reality are complementary presentations of a deeper
 structure.
 
-#### 44.4.3 Noetic topology: near, collective, biospheric, Noöspheric, deep
+##### 44.4.3 Noetic topology: near, collective, biospheric, Noöspheric, deep
 
 Noöspace does not use ordinary Euclidean distance. "Near" and "far" are practical human
 metaphors for **resonance, informational distance, entanglement, familiarity, symbolic
@@ -4584,7 +5000,7 @@ rule is:
 
 > **The deeper Noöspace becomes, the less reliable human categories become.**
 
-#### 44.4.4 Why Noöspace looks psychedelic
+##### 44.4.4 Why Noöspace looks psychedelic
 
 Noöspace often resembles intense multidimensional psychedelic experience: hyperbolic
 geometry, impossible architecture, recursive patterns, self-transforming objects,
@@ -4596,7 +5012,7 @@ spacetime interface is attempting to render high-dimensional Noetic information.
 psychedelic aesthetic is therefore frequently a **compression artifact**, not mere
 decoration.
 
-#### 44.4.5 Navigation and access
+##### 44.4.5 Navigation and access
 
 Robert Monroe and Thomas Campbell are major practical inspirations for Noöspace
 navigation. Access can involve meditation, sleep-state transitions, sensory deprivation,
@@ -4615,7 +5031,7 @@ partial techniques or region-specific maps. They may describe overlapping phenom
 through different cosmologies, mix observation with cultural metaphor, or sometimes help
 generate the environments they claim merely to observe.
 
-#### 44.4.6 Extraterrestrial versus interdimensional
+##### 44.4.6 Extraterrestrial versus interdimensional
 
 Use **extraterrestrial** operationally when stable material evidence dominates: craft,
 manufactured artifacts, bodies, biologics, genetics, physical infrastructure, or
@@ -4629,7 +5045,7 @@ without stable recoverable bodies or technology.
 These labels describe **mode of manifestation, not ultimate species identity**. One
 intelligence may manifest both materially and Noetically.
 
-#### 44.4.7 Interdimensional Zones
+##### 44.4.7 Interdimensional Zones
 
 Some anomalous Zones are places where Noöspace leaks strongly into physical spacetime.
 Possible effects include persistent shared visions, dream contamination, impossible
@@ -4639,7 +5055,7 @@ entities, altered topology, identity or memory instability, and psychotronic wea
 Classify these as **interdimensional Zones**. The stronger the overlap, the less reliable
 ordinary physical assumptions become.
 
-#### 44.4.8 Terminology
+##### 44.4.8 Terminology
 
 Preferred formal terms include **Noöspace**, **Noetic Reality**, **Noetic Reality Frame**,
 **Focus State**, **Conscious Agent**, **Noetic Entity**, **QIP interface**, **Noetic
@@ -4658,7 +5074,7 @@ Detailed gameplay mechanics for entering, navigating, surviving, and communicati
 within Noöspace remain deferred to the Psychic Systems design work.
 
 
-## 45. Disclosure as unification and ontological shock (#106)
+### 45. Disclosure as unification and ontological shock (#106)
 
 Alexander Wendt's work is the principal political-sociological model for NoöPunk Disclosure. The key NoöPunk outcome is that **unification and fragmentation happen simultaneously**.
 
@@ -4671,7 +5087,7 @@ Four broad reaction families recur without exhausting the political landscape:
 - **Skeptical / psyop:** interprets Disclosure as fabrication, secret human technology, or a pretext for surveillance/global governance;
 - **Indifferent majority:** initially absorbs even extraordinary evidence into ordinary life until direct consequences become personally unavoidable.
 
-### 45.1 Disclosure depth model
+#### 45.1 Disclosure depth model
 
 Disclosure is a process, not one press conference. Use five **depth levels** as an analytical model rather than a single mandatory world chronology:
 
@@ -4687,7 +5103,7 @@ The United States may undergo **failed or incomplete Disclosure** because electe
 
 Global Disclosure can instead become **polycentric** through China, Russia, Peru, Brazil, Egypt, India, France, Nordic countries, civilian science, and AI-assisted sensor networks. Disclosure becomes irreversible when **multiple independent epistemic systems converge**: astronomy, radar/sensors, materials science, genomics, archaeology, oceanography, consciousness research, citizen science, state archives, and AI analysis.
 
-### 45.2 Contact ecology and the Noösphere
+#### 45.2 Contact ecology and the Noösphere
 
 CE-5 movements after Disclosure include sincere contact communities, scams, cults, intelligence operations, scientific experiments, and accidental Noetic summoning circles.
 
@@ -4699,11 +5115,11 @@ AI becomes interpreter, mediator, amplifier, and potentially participant in NHI 
 
 ---
 
-## 46. Major human political factions and UN Parliament parties (#109)
+### 46. Major human political factions and UN Parliament parties (#109)
 
 The UN Parliament's first four major blocs are broad, internally contradictory coalitions. They do **not** exhaust human politics. Corporations, Legacy Programs, organized crime, intelligence networks, cults, militias, insurgencies, cooperatives, and other extra-parliamentary actors remain major powers.
 
-### 46.1 Bioconservatives
+#### 46.1 Bioconservatives
 
 A far-right populist party organized around defence of "old-school" biological humanity. It opposes or heavily restricts extraterrestrials, AIs, transhumans, cyborgs, hybrids, and other boundary-blurring beings, and favors authoritarian politics, militarism, strong borders, and aggressive defence.
 
@@ -4715,13 +5131,13 @@ Its main internal tendencies are:
 
 They share the claim that humanity is under threat while often disagreeing violently about what "humanity" means.
 
-### 46.2 Libertarian Party
+#### 46.2 Libertarian Party
 
 A right-libertarian, strongly pro-capitalist, accelerationist party supporting free markets, private property, technological acceleration, unrestricted entrepreneurship, and commercial relations with extraterrestrial civilizations. It is hostile to heavy UN/state regulation and favors a minarchist order centered on contracts, property, and physical security.
 
 Critics regard it as the political instrument of the **neo-feudal cybercapitalist class**, megacorporations, private infrastructure owners, wealthy accelerationists, and space-industrial interests. Its outer edge shades into anarcho-capitalism.
 
-### 46.3 United Earth Social Democratic Party
+#### 46.3 United Earth Social Democratic Party
 
 A centre-left/left social-democratic and green governing coalition supporting welfare-state capitalism, ecological protection, progressive taxation, megacorporate regulation, international redistribution, strong public institutions, cautious governance of powerful technologies, and credible defence combined with peaceful NHI diplomacy.
 
@@ -4733,7 +5149,7 @@ The UESDP has won **every UN parliamentary and presidential election so far**.
 
 Internal wings include labour social democrats, greens, technocratic internationalists, development/redistribution advocates, moderate transhumanists, security-oriented internationalists, and cautious NHI diplomacy advocates.
 
-### 46.4 The Multitude
+#### 46.4 The Multitude
 
 The main far-left parliamentary formation combines two historically distinct blocs:
 
