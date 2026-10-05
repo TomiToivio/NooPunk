@@ -3430,6 +3430,21 @@ new work:
 Issue #99 tracks the creation and continued maintenance of this list.
 
 
+
+### 35.X Social/gameplay influences from #107/#110/#111
+
+These are **influences, not parent systems or scientific authorities**:
+
+- **Cyberpunk RED:** Lifepath friends/enemies, Contacts texture, and readable d10 cyberpunk play.
+- **The Expanse Roleplaying Game:** crew relationships, reputation, Belt/station science-fiction campaigning.
+- **Citizen Sleeper / Citizen Sleeper 2:** hub/task/clocks, relationship-driven text RPG structure, crew travel and missions.
+- **Richard K. Morgan, _Altered Carbon_ / adaptation:** embodiment, identity transfer and inequality as later transhuman questions.
+- **James S. A. Corey, _The Expanse_ / adaptation:** Belt culture, labor, crews, political economy and non-human technology.
+- **Ernesto Laclau / Chantal Mouffe:** articulation, antagonism, equivalence/difference, hegemony and signifiers.
+- **Emilia Palonen:** affective formulation of political identification; NoöPunk generalizes the US/FRONTIER structure beyond populism.
+- **Robert A. Monroe / Monroe Institute:** cultural and experimental influence on OBE / Noetic Projection design, not evidence that the real-world interpretation is established science.
+
+
 ## 36. The four NoöPunk systems: Physical, Psychic, Social and Cybernetic
 
 **Status: NOÖPUNK NATIVE THEORETICAL ONTOLOGY; author-specified in issue #78.**
