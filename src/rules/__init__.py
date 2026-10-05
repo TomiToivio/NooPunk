@@ -65,6 +65,7 @@ from .tags import (
     build_stack,
     compose_check,
     resolve_tag_check,
+    stat_rating,
     transhuman_attribute,
 )
 
@@ -118,5 +119,6 @@ __all__ = [
     "resolve_tag_check",
     "roll_check_dice",
     "roll_d10",
+    "stat_rating",
     "transhuman_attribute",
 ]

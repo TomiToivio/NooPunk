@@ -1,18 +1,25 @@
-"""Issue #51 prototype tests: the unified tag system.
+"""Issue #51 prototype tests: the unified tag system, on the issue #111 core.
 
 #51's "First implementation target" items 1-6 are code, so they are tested as
 behaviour rather than guarded as prose:
 
 1. one unified tag data structure, ``category="attribute"`` included;
-2. the -3..+3 ordinary-human attribute-tag range;
+2. the ordinary-human attribute-tag range -- now the 1..10 STAT scale (issue #111);
 3. applicability and stacking;
 4. **one** generic resolver -- and critically, it is the *existing canonical* one;
 5. sample characters;
 6. the same resolver on combat, social, hacking, investigation and psionics.
 
-The property worth protecting above all: **tags feed the canonical 2d6 engine, they
+The property worth protecting above all: **tags feed the canonical d10 engine, they
 do not fork a second one**. A test asserts that composition calls `rules.resolve_check`
 and that no dice are rolled inside the tag module.
+
+Issue #111 replaced the retired -3..+3 attribute band / 0..4 skill levels and the 2d6
+kernel with ``STAT + Skill + 1d10 >= DV`` (both ratings 1..10). It also retired the
+kernel's ``attempted`` / ``unskilled_modifier`` fields and left an *unskilled*
+procedure undefined. The assertions below are ported to that kernel: they assert the
+current canonical behaviour instead of retired fields, rather than inventing an
+unskilled rule.
 
 Fixture characters only; no setting material is created or asserted.
 
@@ -36,6 +43,7 @@ from rules import (  # noqa: E402
     RESOLVED,
     UNRESOLVED_ABSENT_SYSTEM,
     AbsentSystemResult,
+    CheckResult,
     SystemPresence,
     Tag,
     TagError,
@@ -61,7 +69,7 @@ class OneTagTypeTests(unittest.TestCase):
     """#51 principle 1 and 2: attributes are tags, and there is one tag engine."""
 
     def test_an_attribute_is_a_tag_with_the_attribute_category(self) -> None:
-        tag = _attr("FIT", 1)
+        tag = _attr("FIT", 6)
         self.assertIsInstance(tag, Tag)
         self.assertTrue(tag.is_attribute)
         self.assertEqual(tag.category, "attribute")
@@ -70,26 +78,26 @@ class OneTagTypeTests(unittest.TestCase):
         """Gear, condition and reputation tags are Tags too, not separate systems."""
         for category in ("skill", "gear", "condition", "reputation", "cyberware"):
             with self.subTest(category=category):
-                tag = _skill("X", 1, "physical", ("y",), category=category)
+                tag = _skill("X", 5, "physical", ("y",), category=category)
                 self.assertIsInstance(tag, Tag)
                 self.assertFalse(tag.is_attribute)
 
     def test_systems_are_the_four_canonical_groups(self) -> None:
         for system in ("physical", "social", "psychic", "cybernetic"):
             with self.subTest(system=system):
-                self.assertEqual(_skill("X", 1, system, ("y",)).system, system)
+                self.assertEqual(_skill("X", 5, system, ("y",)).system, system)
 
     def test_unknown_system_is_rejected(self) -> None:
         with self.assertRaises(TagError):
-            _skill("X", 1, "spiritual", ("y",))
+            _skill("X", 5, "spiritual", ("y",))
 
     def test_empty_name_is_rejected(self) -> None:
         with self.assertRaises(TagError):
-            _skill("", 1, "physical", ("y",))
+            _skill("", 5, "physical", ("y",))
 
 
 class AttributeRangeTests(unittest.TestCase):
-    """#51 principle 3: ordinary-human attribute tags run -3..+3."""
+    """#51 principle 3: ordinary-human attribute tags run 1..10 (issue #111)."""
 
     def test_the_whole_human_range_is_accepted(self) -> None:
         for rating in range(HUMAN_ATTRIBUTE_MIN, HUMAN_ATTRIBUTE_MAX + 1):
@@ -99,15 +107,19 @@ class AttributeRangeTests(unittest.TestCase):
     def test_beyond_the_human_range_requires_the_transhuman_type(self) -> None:
         """The ceiling must stay verifiable, not quietly widened."""
         with self.assertRaises(TagError):
-            _attr("CYB", 5)
-        self.assertEqual(TranshumanTag("CYB", 5, "cybernetic", category="attribute").rating, 5)
+            _attr("CYB", 11)
+        self.assertEqual(TranshumanTag("CYB", 11, "cybernetic", category="attribute").rating, 11)
 
     def test_transhuman_tag_must_actually_exceed_the_human_range(self) -> None:
         with self.assertRaises(TagError):
-            TranshumanTag("CYB", 2, "cybernetic", category="attribute")
+            TranshumanTag("CYB", 8, "cybernetic", category="attribute")
 
-    def test_attribute_zero_is_the_ordinary_baseline(self) -> None:
-        self.assertEqual(_attr("INT", 0).rating, 0)
+    def test_the_ceiling_is_the_top_of_the_ordinary_human_scale(self) -> None:
+        """The 1..10 band is pinned by both ends, and 0 is *not* a valid rating."""
+        self.assertEqual(_attr("INT", HUMAN_ATTRIBUTE_MIN).rating, 1)
+        self.assertEqual(_attr("INT", HUMAN_ATTRIBUTE_MAX).rating, 10)
+        with self.assertRaises(TagError):
+            _attr("INT", 0)
 
 
 class ApplicabilityTests(unittest.TestCase):
@@ -115,23 +127,23 @@ class ApplicabilityTests(unittest.TestCase):
 
     def test_attribute_tags_are_always_applicable(self) -> None:
         """#51: attributes are 'always present; broad rather than situational'."""
-        tag = _attr("REF", 2)
+        tag = _attr("REF", 7)
         for scopes in ((), ("combat",), ("negotiation",)):
             with self.subTest(scopes=scopes):
                 self.assertTrue(tag.applies_to(scopes))
 
     def test_a_scope_tag_applies_only_to_its_scopes(self) -> None:
-        pistol = _skill("Pistol", 2, "physical", ("combat", "firearms"))
+        pistol = _skill("Pistol", 7, "physical", ("combat", "firearms"))
         self.assertTrue(pistol.applies_to(("combat",)))
         self.assertFalse(pistol.applies_to(("negotiation",)))
 
     def test_an_unscoped_situational_tag_never_applies(self) -> None:
         """Otherwise an unscoped tag would help everything, which #51 forbids."""
-        tag = _skill("Vague", 2, "physical", ())
+        tag = _skill("Vague", 7, "physical", ())
         self.assertFalse(tag.applies_to(("combat",)))
 
     def test_applicability_is_case_insensitive(self) -> None:
-        tag = _skill("Pistol", 2, "physical", ("Combat",))
+        tag = _skill("Pistol", 7, "physical", ("Combat",))
         self.assertTrue(tag.applies_to(("COMBAT",)))
 
 
@@ -140,19 +152,18 @@ class StackingTests(unittest.TestCase):
 
     def test_distinct_relevant_tags_stack(self) -> None:
         stack = build_stack(
-            [_attr("REF", 1), _skill("Pistol", 2, "physical", ("combat",)),
-             _skill("Smartlink", 1, "cybernetic", ("combat",), category="gear")],
+            [_attr("REF", 7), _skill("Pistol", 8, "physical", ("combat",)),
+             _skill("Smartlink", 6, "cybernetic", ("combat",), category="gear")],
             action_scopes=("combat",),
         )
-        # REF +1, Pistol +2, Smartlink +1 -> but only non-attribute tags are summed
-        # separately; the stack total is every contributed tag.
-        self.assertEqual(stack.total, 4)
+        # Every contributed tag is summed in the audit total (attribute + situational).
+        self.assertEqual(stack.total, 7 + 8 + 6)
 
     def test_duplicate_tags_do_not_stack(self) -> None:
         """Same name + system is one cause, whatever its source (#51)."""
         stack = build_stack(
-            [_skill("Pistol", 2, "physical", ("combat",), category="skill"),
-             _skill("Pistol", 2, "physical", ("combat",), category="gear")],
+            [_skill("Pistol", 7, "physical", ("combat",), category="skill"),
+             _skill("Pistol", 7, "physical", ("combat",), category="gear")],
             action_scopes=("combat",),
         )
         pistols = [t for t in stack.contributed if t.name == "Pistol"]
@@ -161,16 +172,16 @@ class StackingTests(unittest.TestCase):
 
     def test_the_stronger_duplicate_survives(self) -> None:
         stack = build_stack(
-            [_skill("Pistol", 1, "physical", ("combat",), category="skill"),
-             _skill("Pistol", 3, "physical", ("combat",), category="gear")],
+            [_skill("Pistol", 6, "physical", ("combat",), category="skill"),
+             _skill("Pistol", 9, "physical", ("combat",), category="gear")],
             action_scopes=("combat",),
         )
         pistols = [t for t in stack.contributed if t.name == "Pistol"]
-        self.assertEqual(pistols[0].rating, 3)
+        self.assertEqual(pistols[0].rating, 9)
 
     def test_irrelevant_tags_are_rejected_with_a_reason(self) -> None:
         stack = build_stack(
-            [_attr("REF", 1), _skill("Pistol", 2, "physical", ("combat",))],
+            [_attr("REF", 7), _skill("Pistol", 7, "physical", ("combat",))],
             action_scopes=("negotiation",),
         )
         self.assertEqual(len(stack.contributed), 1)
@@ -178,16 +189,16 @@ class StackingTests(unittest.TestCase):
 
     def test_contributing_tags_are_capped(self) -> None:
         """#51 lists a maximum as an open question; the mechanism must exist."""
-        many = [_skill(f"S{i}", 2, "physical", ("combat",)) for i in range(10)]
-        stack = build_stack([_attr("REF", 1), *many], action_scopes=("combat",))
+        many = [_skill(f"S{i}", 7, "physical", ("combat",)) for i in range(10)]
+        stack = build_stack([_attr("REF", 7), *many], action_scopes=("combat",))
         situational = [t for t in stack.contributed if not t.is_attribute]
         self.assertEqual(len(situational), PROTOTYPE_MAX_CONTRIBUTING_TAGS)
         self.assertTrue(stack.capped, "dropped tags must be reported, not hidden")
 
     def test_the_cap_is_deterministic_regardless_of_input_order(self) -> None:
-        a = _skill("Alpha", 2, "physical", ("combat",))
-        b = _skill("Beta", 3, "physical", ("combat",))
-        c = _skill("Gamma", 1, "physical", ("combat",))
+        a = _skill("Alpha", 6, "physical", ("combat",))
+        b = _skill("Beta", 9, "physical", ("combat",))
+        c = _skill("Gamma", 5, "physical", ("combat",))
         first = build_stack([a, b, c], action_scopes=("combat",), max_contributing=2)
         second = build_stack([c, b, a], action_scopes=("combat",), max_contributing=2)
         self.assertEqual(
@@ -195,17 +206,17 @@ class StackingTests(unittest.TestCase):
         )
 
     def test_attribute_tags_are_never_capped(self) -> None:
-        """Dropping an attribute would silently change the modifier."""
-        tag = _skill("Filler", 2, "physical", ("combat",))
+        """Dropping an attribute would silently change the STAT."""
+        tag = _skill("Filler", 6, "physical", ("combat",))
         stack = build_stack(
-            [_attr("FIT", 1), _attr("REF", 2), _attr("INT", 1), _attr("CHA", 1),
-             _attr("CYB", 1), _attr("PSY", 1), tag],
+            [_attr("FIT", 5), _attr("REF", 7), _attr("INT", 6), _attr("CHA", 4),
+             _attr("CYB", 6), _attr("PSY", 5), tag],
             action_scopes=("combat",), max_contributing=0,
         )
         self.assertEqual(len([t for t in stack.contributed if t.is_attribute]), 6)
 
     def test_stack_explanation_is_human_readable(self) -> None:
-        stack = build_stack([_attr("REF", 2), _skill("Pistol", 2, "physical", ("combat",))],
+        stack = build_stack([_attr("REF", 7), _skill("Pistol", 8, "physical", ("combat",))],
                             action_scopes=("combat",))
         joined = "\n".join(stack.explain())
         self.assertIn("REF", joined)
@@ -217,13 +228,13 @@ class CanonicalEngineCompositionTests(unittest.TestCase):
 
     def test_composition_produces_canonical_check_arguments(self) -> None:
         composed = compose_check(
-            [_attr("REF", 2), _skill("Pistol", 3, "physical", ("combat",)),
-             _skill("Smartlink", 1, "cybernetic", ("combat",), category="gear")],
+            [_attr("REF", 7), _skill("Pistol", 8, "physical", ("combat",)),
+             _skill("Smartlink", 6, "cybernetic", ("combat",), category="gear")],
             attribute="REF", skill="Pistol", action_scopes=("combat",),
         )
-        self.assertEqual(composed.attribute_modifier, 2)
-        self.assertEqual(composed.skill_level, 3)
-        self.assertEqual(composed.extra_modifiers, (1,))
+        self.assertEqual(composed.attribute_modifier, 7)
+        self.assertEqual(composed.skill_level, 8)
+        self.assertEqual(composed.extra_modifiers, (6,))
 
     def test_the_tag_module_does_not_roll_its_own_dice(self) -> None:
         """#51 principle 9: the deterministic core resolves; one engine, one mechanic."""
@@ -237,45 +248,66 @@ class CanonicalEngineCompositionTests(unittest.TestCase):
 
     def test_resolution_equals_the_canonical_resolve_check(self) -> None:
         """Given the same inputs, the tag path and the direct path agree exactly."""
-        tags = [_attr("REF", 2), _skill("Pistol", 3, "physical", ("combat",)),
-                _skill("Smartlink", 1, "cybernetic", ("combat",), category="gear")]
+        tags = [_attr("REF", 7), _skill("Pistol", 8, "physical", ("combat",)),
+                _skill("Smartlink", 6, "cybernetic", ("combat",), category="gear")]
         result, composed = resolve_tag_check(
-            tags, attribute="REF", skill="Pistol", difficulty=12,
+            tags, attribute="REF", skill="Pistol", difficulty=15,
             action_scopes=("combat",), dice_total=8,
         )
         direct = resolve_check(
-            attribute_modifier=composed.attribute_modifier,
-            target=12,
-            skill_level=composed.skill_level,
-            extra_modifiers=composed.extra_modifiers,
-            dice_total=8,
+            stat=composed.attribute_modifier,
+            target=15,
+            skill=composed.skill_level,
+            die=8,
         )
         self.assertEqual(result, direct)
 
     def test_a_missing_attribute_tag_is_an_error_not_a_silent_zero(self) -> None:
         """A silent 0 would hide a malformed character."""
         with self.assertRaises(TagError):
-            compose_check([_skill("Pistol", 2, "physical", ("combat",))],
+            compose_check([_skill("Pistol", 7, "physical", ("combat",))],
                           attribute="REF", skill="Pistol", action_scopes=("combat",))
 
-    def test_skill_rating_is_clamped_to_the_canonical_scale(self) -> None:
-        """Skill levels are 0..4; a tag's magnitude is not the same scale."""
-        tags = [_attr("CYB", 2), _skill("Mesh intrusion", 3, "cybernetic", ("hacking",))]
+    def test_skill_rating_is_the_canonical_skill_directly(self) -> None:
+        """A trained Skill is 1..10, the same scale as a tag, so there is no clamp.
+
+        The retired prototype clamped a tag's magnitude to 0..4; issue #111 makes the
+        skill tag's rating the canonical Skill rating outright.
+        """
+        tags = [_attr("CYB", 6), _skill("Mesh intrusion", 9, "cybernetic", ("hacking",))]
         composed = compose_check(tags, attribute="CYB", skill="Mesh intrusion",
                                  action_scopes=("hacking",))
-        self.assertLessEqual(composed.skill_level, 4)
+        self.assertEqual(composed.skill_level, 9)
+        self.assertEqual(composed.skill, 9)
 
-    def test_blocked_attempt_is_preserved(self) -> None:
-        """Trained-only without the skill must stay blocked, not become a failure."""
-        from rules import SkillAccess
+    def test_an_unskilled_attempt_is_refused_not_silently_resolved(self) -> None:
+        """Issue #111 defines no unskilled procedure.
 
+        The retired kernel rolled an unskilled attempt at a -1 penalty and reported
+        ``attempted`` / ``unskilled_modifier`` on the result. Neither field exists on
+        the #111 ``CheckResult``, and such an attempt must be refused explicitly rather
+        than resolved at an invented rating.
+        """
+        # A caller that declares it has no trained Skill for the action is refused.
+        with self.assertRaises(TagError):
+            resolve_tag_check(
+                [_attr("REF", 7)], attribute="REF", difficulty=10, action_scopes=(),
+                unskilled=True, dice_total=7,
+            )
+        # Naming a skill that no contributing tag supplies is likewise refused.
+        with self.assertRaises(TagError):
+            resolve_tag_check(
+                [_attr("REF", 7)], attribute="REF", difficulty=10, skill="Pistol",
+                action_scopes=("combat",), dice_total=7,
+            )
+        # And the canonical result itself carries no retired unskilled surface.
         result, _ = resolve_tag_check(
-            [_attr("REF", 2)], attribute="REF", difficulty=10, action_scopes=(),
-            has_skill=False, dice_total=7,
+            [_attr("REF", 7), _skill("Pistol", 7, "physical", ("combat",))],
+            attribute="REF", difficulty=10, skill="Pistol", action_scopes=("combat",),
+            dice_total=7,
         )
-        # Unskilled without trained-only is a penalty, not a block.
-        self.assertTrue(result.attempted)
-        self.assertEqual(result.unskilled_modifier, -1)
+        self.assertFalse(hasattr(result, "attempted"))
+        self.assertFalse(hasattr(result, "unskilled_modifier"))
 
 
 class SampleCharacterTests(unittest.TestCase):
@@ -316,8 +348,7 @@ class SampleCharacterTests(unittest.TestCase):
             SAMPLE_CHARACTERS["fixture:street-fixer"], attribute="REF", difficulty=10,
             skill="Pistol", action_scopes=("combat", "firearms"), dice_total=7,
         )
-        self.assertTrue(result.attempted)
-        self.assertIsNotNone(result.success)
+        self.assertTrue(result.success)
 
     def test_social_check_resolves(self) -> None:
         result, composed = resolve_tag_check(
@@ -326,14 +357,14 @@ class SampleCharacterTests(unittest.TestCase):
             action_scopes=("investigation", "interviews"), dice_total=6,
         )
         self.assertTrue(result.success)
-        self.assertEqual(composed.attribute_modifier, 1)
+        self.assertEqual(composed.attribute_modifier, 6)
 
     def test_hacking_check_resolves(self) -> None:
         result, _ = resolve_tag_check(
             SAMPLE_CHARACTERS["fixture:mesh-intruder"], attribute="CYB", difficulty=12,
             skill="Mesh intrusion", action_scopes=("hacking", "network_access"), dice_total=9,
         )
-        self.assertTrue(result.attempted)
+        self.assertTrue(result.success)
 
     def test_investigation_check_resolves(self) -> None:
         result, _ = resolve_tag_check(
@@ -341,22 +372,33 @@ class SampleCharacterTests(unittest.TestCase):
             difficulty=10, skill="Pattern recognition", action_scopes=("investigation",),
             dice_total=8,
         )
-        self.assertTrue(result.attempted)
+        self.assertTrue(result.success)
 
     def test_psionics_check_resolves(self) -> None:
         result, _ = resolve_tag_check(
             SAMPLE_CHARACTERS["fixture:noosphere-sensitive"], attribute="PSY", difficulty=10,
             skill="Telepathy", action_scopes=("psionics",), dice_total=7,
         )
-        self.assertTrue(result.attempted)
+        self.assertTrue(result.success)
 
-    def test_a_condition_tag_penalises_the_check(self) -> None:
-        """Negative tags must actually reduce the total, not be decorative."""
-        base, _ = resolve_tag_check(
+    def test_a_condition_tag_is_recorded_but_not_folded_into_the_total(self) -> None:
+        """A negative tag must appear in the audit, not silently vanish.
+
+        Issue #111 §10.3 leaves the situational-modifier procedure undefined, so the
+        condition tag is recorded in the stack and in ``extra_modifiers`` but does not
+        change the canonical total: the tag prototype must not invent a modifier rule
+        the core rules declined to state.
+        """
+        result, composed = resolve_tag_check(
             SAMPLE_CHARACTERS["fixture:mesh-intruder"], attribute="CYB", difficulty=14,
             skill="Mesh intrusion", action_scopes=("security",), dice_total=9,
         )
-        self.assertLess(base.total, 9 + 3 + 3)
+        names = {tag.name for tag in composed.stack.contributed}
+        self.assertIn("Compromised firmware", names)
+        # It is carried as an audit modifier...
+        self.assertEqual(composed.extra_modifiers, (3,))
+        # ...but the canonical total is STAT + Skill + 1d10 only.
+        self.assertEqual(result.total, 9 + 9 + 9)
 
     def test_the_same_resolver_serves_every_domain(self) -> None:
         """#51 principle 8: one mechanic across genres."""
@@ -380,6 +422,7 @@ class SampleCharacterTests(unittest.TestCase):
             skill="Pistol", action_scopes=("combat",), rng=FixedRng(),
         )
         self.assertEqual(first, second)
+        self.assertIsInstance(first, CheckResult)
 
 
 class AntiInventionTests(unittest.TestCase):
@@ -401,7 +444,7 @@ class AntiInventionTests(unittest.TestCase):
                 self.assertNotIn(invented, source.lower())
 
     def test_rulebook_attributes_are_not_rewritten_by_this_prototype(self) -> None:
-        """#51 says do not lock the final names; RULEBOOK §5 keeps them unfinalized."""
+        """#51 says do not lock the final names; the STAT list stays unfinalized."""
         text = " ".join((ROOT / "AGENTS.md").read_text(encoding="utf-8").split()).lower()
         self.assertIn("not yet locked", text)
 
@@ -442,10 +485,10 @@ class AbsentSystemTests(unittest.TestCase):
             SystemPresence().has("magical")
 
     def test_absent_system_refuses_instead_of_rolling_at_a_penalty(self) -> None:
-        """A -3 roll would assert a capability the entity does not have."""
+        """Rolling at a penalty would assert a capability the entity does not have."""
         ai = SystemPresence.absent_systems("psychic")
         result, composed = resolve_tag_check(
-            [_attr("PSY", 1)],
+            [_attr("PSY", 5)],
             attribute="PSY", difficulty=10, presence=ai, dice_total=7,
         )
         self.assertIsInstance(result, AbsentSystemResult)
@@ -457,7 +500,7 @@ class AbsentSystemTests(unittest.TestCase):
         """Presence is a precondition, not a modifier."""
         noetic = SystemPresence.absent_systems("physical")
         result, composed = resolve_tag_check(
-            [_attr("FIT", 0)],
+            [_attr("FIT", 1)],
             attribute="FIT", difficulty=6, presence=noetic, dice_total=12,
         )
         self.assertIsInstance(result, AbsentSystemResult)
@@ -466,19 +509,22 @@ class AbsentSystemTests(unittest.TestCase):
                          "there is no success to read; nothing was rolled")
 
     def test_a_present_but_very_low_attribute_still_rolls(self) -> None:
-        """The distinction §5.2 draws, asserted directly: -3 rolls, absence does not."""
+        """The distinction §5.2 draws, asserted directly: 1 rolls, absence does not."""
         frail = SystemPresence()
+        low = [_attr("FIT", 1), _skill("Climb", 1, "physical", ("movement",))]
         result, composed = resolve_tag_check(
-            [_attr("FIT", -3)],
-            attribute="FIT", difficulty=8, presence=frail, dice_total=7,
+            low, attribute="FIT", difficulty=8, skill="Climb",
+            action_scopes=("movement",), presence=frail, dice_total=7,
         )
         self.assertEqual(composed.outcome, RESOLVED)
         self.assertTrue(hasattr(result, "total"))
+        self.assertEqual(composed.stat, HUMAN_ATTRIBUTE_MIN,
+                         "the lowest ordinary-human STAT is still a real rating, not absence")
         # ...whereas the same action for an entity with no Physical participation
         # does not resolve at all.
         absent, composed_absent = resolve_tag_check(
-            [_attr("FIT", 0)],
-            attribute="FIT", difficulty=8,
+            low, attribute="FIT", difficulty=8, skill="Climb",
+            action_scopes=("movement",),
             presence=SystemPresence.absent_systems("physical"), dice_total=7,
         )
         self.assertIsInstance(absent, AbsentSystemResult)
@@ -487,8 +533,9 @@ class AbsentSystemTests(unittest.TestCase):
     def test_an_entity_can_still_act_in_the_systems_it_has(self) -> None:
         ai = SystemPresence.absent_systems("psychic")
         result, composed = resolve_tag_check(
-            [_attr("CYB", 2)],
-            attribute="CYB", difficulty=10, presence=ai, dice_total=7,
+            [_attr("CYB", 8), _skill("Mesh intrusion", 6, "cybernetic", ("hacking",))],
+            attribute="CYB", difficulty=10, skill="Mesh intrusion",
+            action_scopes=("hacking",), presence=ai, dice_total=7,
         )
         self.assertEqual(composed.outcome, RESOLVED)
         self.assertTrue(hasattr(result, "success"))
@@ -497,7 +544,7 @@ class AbsentSystemTests(unittest.TestCase):
         """Useful when the attribute lives in one system but the action is in another."""
         ai = SystemPresence.absent_systems("psychic")
         result, composed = resolve_tag_check(
-            [_attr("CYB", 2)],
+            [_attr("CYB", 8)],
             attribute="CYB", difficulty=10, presence=ai, system="psychic", dice_total=7,
         )
         self.assertIsInstance(result, AbsentSystemResult)
@@ -505,8 +552,9 @@ class AbsentSystemTests(unittest.TestCase):
 
     def test_presence_is_optional_so_existing_callers_are_unaffected(self) -> None:
         result, composed = resolve_tag_check(
-            [_attr("REF", 2)],
-            attribute="REF", difficulty=10, dice_total=7,
+            [_attr("REF", 7), _skill("Pistol", 7, "physical", ("combat",))],
+            attribute="REF", difficulty=10, skill="Pistol",
+            action_scopes=("combat",), dice_total=7,
         )
         self.assertEqual(composed.outcome, RESOLVED)
         self.assertTrue(hasattr(result, "success"))
