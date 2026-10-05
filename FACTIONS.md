@@ -79,3 +79,19 @@ Transparency
 Uplift Rights
 Venusian Sovereignty
 Wealth
+
+## Default Firewall affiliation
+
+By default, a player character has **two simultaneous affiliations**:
+
+1. **Firewall / UNHSS mission identity** — the character is a field agent of the United
+   Nations Human Security and Survival Organization.
+2. **Personal faction identity** — political, cultural, national, professional,
+   ideological, community, or social affiliation.
+
+Firewall is therefore not a replacement for the faction list. It is the campaign-wide
+operational affiliation layered on top of another faction. Conflicts between the two
+are expected to drive motivations, reputation, contacts, and mission consequences.
+
+See RULEBOOK.md, “UNHSS / Firewall: default campaign institution,” and issues #108 and
+#107.
