@@ -1,113 +1,61 @@
 {
-  "_note": "Canonical NoöPunk core rules data. PORTED to the tabletop canon in RULEBOOK.md section 4 (2d6 + skill level + attribute modifier against 6/8/10/12/14+) as part of issue #40 Phase C. The previous revision of this file carried a `_superseded_note` recording that it still held the withdrawn 3d6-era engine; that port is now done, so the note is removed and the values below ARE the current canon.",
-  "_source_of_truth": "RULEBOOK.md. Where this file and the rulebook disagree, the rulebook is authoritative and this file is wrong.",
-  "_canon_revision": "2d6-port",
-  "attributes": [
-    {
-      "id": "FIT",
-      "name": "Fitness",
-      "description": "Your health, fitness and constitution."
-    },
-    {
-      "id": "REF",
-      "name": "Reflexes",
-      "description": "Your dexterity, agility and coordination."
-    },
-    {
-      "id": "INT",
-      "name": "Intelligence",
-      "description": "How smart, educated and knowledgeable you are."
-    },
-    {
-      "id": "CHA",
-      "name": "Charisma",
-      "description": "Your social skills, attractiveness and leadership skills."
-    },
-    {
-      "id": "CYB",
-      "name": "Cybernetics",
-      "description": "Your cyborg side; how technical you are; your proficiency in cyberspace, programming and cybernetics."
-    },
-    {
-      "id": "PSY",
-      "name": "Psyche",
-      "description": "Your consciousness, intuition, empathy and psionics. Used in astral projection and for psionics."
-    }
-  ],
-  "skill_check": {
-    "dice": "2d6",
-    "dice_count": 2,
-    "dice_sides": 6,
-    "formula": "total = 2d6 + relevant skill level + relevant attribute modifier",
-    "success": "total >= difficulty",
-    "_notes": [
-      "No automatic failure on a natural 2 and no automatic success on a natural 12 (RULEBOOK 4).",
-      "No permanent skill-to-attribute binding: the GM selects the attribute that fits the action (RULEBOOK 4).",
-      "Helpful or hostile circumstances normally combine into a situational modifier within -2..+2 (RULEBOOK 4).",
-      "Skill levels are 0..4 and contribute +0..+4. Unskilled is NOT level 0 (RULEBOOK 4.2, 5.3)."
+  "_note": "Canonical NoöPunk core resolution data for issue #111. NoöPunk is an independent RPG system inspired by multiple games; no single external ruleset is its mechanical parent.",
+  "_source_of_truth": "RULEBOOK.md and explicit current author direction.",
+  "_canon_revision": "issue-111-d10-independent",
+  "system_identity": {
+    "independent": true,
+    "not_a_conversion_of": ["Eclipse Phase", "Cyberpunk 2020", "Cyberpunk RED", "Fate", "PbtA"],
+    "influences": [
+      "Cyberpunk 2020 / RED",
+      "Eclipse Phase",
+      "Fate",
+      "Powered by the Apocalypse",
+      "OSR / Cities Without Number",
+      "Citizen Sleeper 1/2",
+      "The Expanse"
     ]
   },
+  "stats": {
+    "min": 1,
+    "max": 10,
+    "final_list": "deferred",
+    "_note": "All canonical character STAT ratings use 1..10. Final STAT names are intentionally not locked by issue #111."
+  },
+  "skills": {
+    "min": 1,
+    "max": 10,
+    "final_list": "deferred",
+    "_note": "All canonical trained Skill ratings use 1..10. Final Skill names are intentionally not locked by issue #111."
+  },
+  "skill_check": {
+    "dice": "1d10",
+    "dice_count": 1,
+    "dice_sides": 10,
+    "formula": "STAT + Skill + 1d10",
+    "success": "total >= difficulty"
+  },
   "difficulties": {
-    "6": "Relatively simple task that is still beyond ordinary routine",
-    "8": "Significant challenge to a competent professional",
-    "10": "Difficult task expected mainly of a skilled expert",
-    "12": "Master-level challenge",
-    "14": "Extreme task where even a true master will probably fail"
+    "9": "Simple",
+    "13": "Everyday",
+    "15": "Difficult",
+    "17": "Professional",
+    "21": "Heroic",
+    "24": "Incredible",
+    "29": "Legendary"
   },
-  "_difficulties_notes": [
-    "RULEBOOK 4 writes the top rung as '14+'. This map pins the five named rungs; a target above 14 is expressed as an explicit difficulty_floor rather than as a sixth rung.",
-    "The previous ladder (easiest 3 / easier 6 / easy 9 / normal 12 / hard 15 / impossible 18) is withdrawn and its names are NOT retained as aliases. In particular difficulty 6 keeps its number but changed meaning.",
-    "Anything easier than 6 generally should not require a roll."
-  ],
-  "human_3d6_generation": {
-    "roll": "3d6 independently for each of the six attributes",
-    "_note": "Attribute generation is unchanged by the 2d6 port (RULEBOOK 5.2, 17.1). This is the RAW 3d6 generation roll and is not the skill-check engine.",
-    "modifier_table": {
-      "3": -3,
-      "4": -2,
-      "5": -2,
-      "6": -1,
-      "7": -1,
-      "8": -1,
-      "9": 0,
-      "10": 0,
-      "11": 0,
-      "12": 0,
-      "13": 1,
-      "14": 1,
-      "15": 1,
-      "16": 2,
-      "17": 2,
-      "18": 3
-    },
-    "ordinary_human_range": [-3, 3],
-    "_range_note": "Above +3 is transhuman, below -3 is basically dead. These describe attribute modifiers and define no death/injury/augmentation mechanic (RULEBOOK 5.2)."
-  },
-  "skill_levels": {
-    "min": 0,
-    "max": 4,
-    "_note": "A level-0 skill contributes +0 through level-4 at +4. Unskilled sits outside the numbered levels (RULEBOOK 5.3)."
-  },
-  "unskilled_penalty": -1,
-  "_unskilled_note": "RULEBOOK 4.2: an unskilled attempt is either allowed with -1, or blocked when training is required (a blocked attempt rolls no dice).",
-  "trained_only_blocked": true,
   "opposed": {
-    "formula": "2d6 + relevant skill level + relevant attribute modifier, both sides",
-    "tie": "player_character_wins",
-    "_tie_note": "RULEBOOK 4.1: if a player character is involved and totals tie, the player character wins. A general tie procedure with no player character involved is deliberately NOT defined; do not invent one."
+    "formula": "STAT + Skill + 1d10 vs STAT + Skill + 1d10",
+    "winner": "higher_total",
+    "tie": "deferred"
   },
-  "aiding": {
-    "helper_rolls": "relevant skill + attribute check against the same difficulty",
-    "on_success": 1,
-    "on_failure": 0,
-    "cap": 1,
-    "_note": "RULEBOOK 4.3."
-  },
-  "npc_checks": {
-    "dice": "2d6",
-    "ordinary_competence": 0,
-    "particularly_bad": -1,
-    "_note": "RULEBOOK 4.4. Unusually detailed NPCs with attributes and skill levels use the full player-character procedure.",
-    "full_procedure_available": true
+  "criticals": "deferred",
+  "situational_modifiers": "deferred",
+  "probability_examples": {
+    "_note": "Success rates for representative fixed STAT+Skill profiles before modifiers; recorded for playtesting, not used to alter the authored DVs.",
+    "Novice STAT 4 + Skill 1": {"9": 0.7, "13": 0.3, "15": 0.1, "17": 0.0, "21": 0.0, "24": 0.0, "29": 0.0},
+    "Average trained STAT 5 + Skill 3": {"9": 1.0, "13": 0.6, "15": 0.4, "17": 0.2, "21": 0.0, "24": 0.0, "29": 0.0},
+    "Professional STAT 6 + Skill 5": {"9": 1.0, "13": 0.9, "15": 0.7, "17": 0.5, "21": 0.1, "24": 0.0, "29": 0.0},
+    "Expert STAT 7 + Skill 7": {"9": 1.0, "13": 1.0, "15": 1.0, "17": 0.8, "21": 0.4, "24": 0.1, "29": 0.0},
+    "Elite STAT 8 + Skill 9": {"9": 1.0, "13": 1.0, "15": 1.0, "17": 1.0, "21": 0.7, "24": 0.4, "29": 0.0}
   }
 }

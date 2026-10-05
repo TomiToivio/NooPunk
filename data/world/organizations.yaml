@@ -1,0 +1,59 @@
+# Canonical organization data for issue #108.
+# Human-readable source of truth: RULEBOOK.md.
+UNHSS:
+  canonical_name: United Nations Human Security and Survival Organization
+  founding_name: United Nations X-Risk and NHI Organization
+  aliases:
+    - X-Com
+    - Firewall
+  public_pejoratives:
+    - X-Cops
+  parent:
+    - United Nations
+  player_role:
+    default: Firewall field agent
+    dual_affiliation: true
+  branches:
+    - Civilian Science and Research
+    - Diplomacy and Policy
+    - Civil Defence and Development
+    - UNHSS Police
+    - Firewall Intelligence
+    - Tactical Response
+    - Earth Special Operations Regiment
+    - Solar-System Space Marine Regiment
+    - Air Component
+    - Sea Component
+    - Space Component
+    - Deep Space Scout Service
+  mandate:
+    - X-Risk
+    - AGI
+    - NHI
+    - PSI
+    - planetary defence
+    - nuclear risk
+    - climate risk
+    - pandemics
+    - autonomous weapons
+    - catastrophic technology
+  jurisdiction:
+    - Earth
+    - Luna
+    - Mars
+    - Belt
+    - Solar System
+  enthusiastic_collaborators:
+    - European Union
+    - Japan
+    - Canada
+    - Brazil
+    - Peru
+    - Egypt
+    - India
+  legacy_program_tension:
+    - United States
+    - Russia
+    - China
+  wallfacers: 4
+  political_head: United Nations Minister of Human Security and Survival

@@ -2,7 +2,7 @@
 
 **NoöPunk = Noösphere + Cyberpunk.**
 
-NoöPunk is an experimental **computer RPG and social simulation** set in an alternate pre-Fall **20XX** timeline using **Eclipse Phase 2nd Edition homebrew rules**, a deterministic Python RPG kernel, and **Google DeepMind Concordia** for optional LLM-driven agents and narration. Earth still exists. Transhuman technology is already here. AGI, cyborgification, NHI contact, psionics, panpsychism, and the emerging Noösphere are destabilizing the old world at the same time.
+NoöPunk is an experimental **computer RPG and social simulation** set in **20XX**, using an **independent NoöPunk rules system**, a deterministic Python RPG kernel, and **Google DeepMind Concordia** for optional LLM-driven agents and narration. Earth still exists. Transhuman technology is already here. AGI, cyborgification, NHI contact, psionics, panpsychism, and the emerging Noösphere are destabilizing the old world at the same time.
 
 The project is currently a **playable text-based prototype**. You can run the normal game entirely without Ollama or an LLM.
 
@@ -98,7 +98,7 @@ The deterministic text game itself uses only the Python standard library. The to
 python scripts/noopunk_text.py
 ```
 
-This starts the canonical alternate Eclipse Phase timeline: **pre-Fall, 20XX, Earth intact**.
+This starts the canonical **20XX, Earth-intact** NoöPunk scenario.
 
 ### Small Concordia / EP2 proof of concept
 
@@ -156,20 +156,18 @@ NoöPunk is an experimental text-based RPG/social-simulation prototype under act
 The current direction is:
 
 ```text
-Eclipse Phase 2E
+Independent NoöPunk RPG
         ↓
-EP2 homebrew Concordia prototype
+1–10 STAT + 1–10 Skill + 1d10 core
         ↓
-NoöPunk reskin and world replacement
+subsystems selectively inspired by many games
         ↓
-simplified EP-derived mechanics
-        ↓
-increasingly native NoöPunk RPG / simulation rules
+shared deterministic rules for text / Concordia / future Godot use
 ```
 
-The immediate goal is not to implement every Eclipse Phase subsystem. It is to keep a small playable kernel running, then discover through play which mechanics should be retained, simplified, reskinned, or replaced.
+NoöPunk is **not an Eclipse Phase conversion and not a hack of any single parent system**. Cyberpunk 2020/RED is an important reference for readable STAT + Skill + d10 resolution; Eclipse Phase remains important for transhuman concepts; Fate, PbtA, CY_BORG, Cities Without Number/OSR, Citizen Sleeper, The Expanse and other games inform different design problems.
 
-The main umbrella work is [issue #60 — Build NoöPunk Concordia RPG/Simulation from Eclipse Phase 2E homebrew](https://github.com/TomiToivio/NooPunk/issues/60).
+The current core work is [issue #111](https://github.com/TomiToivio/NooPunk/issues/111).
 
 ## What NoöPunk is about
 
@@ -203,25 +201,21 @@ agent.observe(result)
 
 Important characters, factions, and institutions may use LLM cognition. Simpler background NPCs can use deterministic or lightweight scripted behaviour where rich language interaction is unnecessary.
 
-## Eclipse Phase 2E homebrew
+## Rules influences
 
-The first playable NoöPunk RPG prototype uses **Eclipse Phase 2nd Edition** as its mechanical and technological chassis.
+NoöPunk is an independent RPG. External games are **influences rather than compatibility targets**.
 
-EP2 already contains many systems useful for NoöPunk:
+Current important influences include:
 
-- transhuman bodies and morphs;
-- AGIs and infomorphs;
-- mesh networking and hacking;
-- reputation systems;
-- psychosocial stress;
-- advanced augmentation;
-- artificial minds;
-- psi;
-- post-scarcity and post-capitalist social arrangements.
+- **Cyberpunk 2020 / RED** for the clarity and feel of STAT + Skill + d10 resolution;
+- **Eclipse Phase** for transhuman technology, morphs/embodiment, mesh, reputation, space and existential-risk ideas;
+- **Fate** for aspects/stunts and fiction-facing flexibility;
+- **PbtA / The Sprawl / The Veil** for moves, consequences and narrative pressure;
+- **CY_BORG** and **Cities Without Number / OSR** for fast, compact play;
+- **Citizen Sleeper 1/2** for text-RPG structure, clocks and pressures;
+- **The Expanse** and other science-fiction RPGs where specific subsystem ideas fit.
 
-NoöPunk is an **alternate pre-Fall timeline**, not a replay of Eclipse Phase canon. The year is **20XX**, Earth still exists and remains politically central, and the timeline diverges through its Noösphere, NHI/UAP contact, panpsychism, psionics, ideological conflicts, political economy, and alternate AI history.
-
-The rules will be modified and simplified heavily where useful.
+Directly adapted material keeps its source and licensing provenance. No external ruleset supplies default mechanics automatically.
 
 ## Rules and world documentation
 
