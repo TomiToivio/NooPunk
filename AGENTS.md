@@ -69,6 +69,8 @@ The current provisional **2d6 skill-check engine**, its difficulty ladder, oppos
 
 The earlier issue #17 BCI / Compute / Connection / Infosec cyberspace modifier framework is **withdrawn from active canon**. Do not port it. Hacking / cyberspace is DEFERRED until the author defines an original NoöPunk subsystem.
 
+Issue #107 now explicitly specifies the shared **Affect / Faction / Motivation / Reputation / Contacts** representation and the text-forward location/social/mission architecture. Treat [rulebook/4_SOCIAL.md](rulebook/4_SOCIAL.md) and [docs/design/GAMEPLAY_LOOP.md](docs/design/GAMEPLAY_LOOP.md) as author-specified for those areas. The exact persuasion formulas, Contact generation counts/tables, universal Affect-score increments, and propagation algorithms remain undefined.
+
 Until explicitly specified, do not define:
 - final attribute names/counts inside the four systems, or derived statistics
 - additional skills, or a rename/split/merge of the ones in RULEBOOK.md §5.3
@@ -86,11 +88,9 @@ Until explicitly specified, do not define:
 - equipment statistics
 - economy
 - advancement / XP
-- factions
 - professions
 - detailed geography
 - quests or canonical plot
-- social mechanics
 - hacking / cyberspace mechanics, including whether the withdrawn BCI / Compute / Connection / Infosec concepts return
 - vehicles
 - magic or supernatural systems
