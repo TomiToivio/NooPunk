@@ -182,6 +182,11 @@ The subsystem is intentionally unresolved.
 
 Licensing/source provenance remains mandatory for directly adapted material.
 
+For compatibility with the older EP2 conversion matrix, the historical status vocabulary
+`EP2 BASELINE`, `MODIFIED EP2`, `NOÖPUNK NATIVE`, `EXPERIMENTAL`, and `DEFERRED`
+remains recognized as **legacy provenance metadata**. Those labels do not make EP2 the
+current chassis.
+
 ## 4. Source hierarchy
 
 When sources disagree, use this order:
@@ -258,7 +263,7 @@ They should not invent dice results, damage values, resource changes, or other m
 
 ## 8. The smallest playable rules kernel
 
-**Status: EP2 BASELINE, to be simplified aggressively.**
+**Status: LEGACY EP2, to be simplified aggressively.**
 
 Do not implement all of Eclipse Phase before NoöPunk becomes playable.
 
@@ -283,7 +288,7 @@ Everything else may remain deferred until play shows that it is needed.
 
 ## 9. Characters and identity
 
-**Status: EP2 BASELINE → expected heavy NoöPunk conversion.**
+**Status: LEGACY EP2 → expected heavy NoöPunk conversion.**
 
 The initial prototype may use EP2-style separation between the continuing person/agent and the body or platform they inhabit.
 
@@ -402,7 +407,7 @@ The table is diagnostic, not permission to alter the authored DVs. Legendary DV 
 
 ## 11. Pools and expendable resources
 
-**Status: EP2 BASELINE / EXPERIMENTAL FOR CONCORDIA.**
+**Status: LEGACY EP2 / EXPERIMENTAL FOR CONCORDIA.**
 
 Begin with the relevant EP2 pool/resource concepts.
 
@@ -421,7 +426,7 @@ Questions to test:
 
 ## 12. Physical harm, wounds, and stress
 
-**Status: EP2 BASELINE.**
+**Status: LEGACY EP2.**
 
 The first prototype should support both physical harm and psychological/mental stress because NoöPunk needs consequences for violence, dangerous technology, horror, altered states, and anomalous experiences.
 
@@ -440,7 +445,7 @@ Expected future changes:
 
 ## 13. Combat
 
-**Status: EP2 BASELINE, intentionally minimal.**
+**Status: LEGACY EP2, intentionally minimal.**
 
 Implement only the amount of combat required for a playable vertical slice.
 
@@ -460,7 +465,7 @@ If full EP2 combat proves too heavy for Concordia, simplify it.
 
 ## 14. Embodiment, morphs, bodies, and platforms
 
-**Status: EP2 BASELINE → core NoöPunk subsystem.**
+**Status: LEGACY EP2 → core NoöPunk subsystem.**
 
 The EP distinction between identity and morph/embodiment is especially valuable for NoöPunk.
 
@@ -481,7 +486,7 @@ Long term, "morph" may be replaced by a more general NoöPunk term such as **emb
 
 ## 15. Mesh, hacking, cyberspace, and the Noösphere
 
-**Status: EP2 BASELINE → major NoöPunk reskin/replacement target.**
+**Status: LEGACY EP2 → major NoöPunk reskin/replacement target.**
 
 Use EP2 mesh/hacking mechanics as the initial playable cyber layer.
 
@@ -521,7 +526,7 @@ Do not finalize the complete replacement mechanic yet.
 
 ## 16. Psionics and Noösphere interaction
 
-**Status: MODIFIED EP2 / NOÖPUNK NATIVE METAPHYSICS; detailed mechanics still DEFERRED.**
+**Status: ADAPTED / INSPIRED / NOÖPUNK NATIVE METAPHYSICS; detailed mechanics still DEFERRED.**
 
 EP2 psi may be used temporarily as a mechanical hook, but its origin is explicitly replaced.
 
@@ -633,23 +638,19 @@ NoöPunk uses **one Affect graph** for Factions, Motivations, Reputation and Con
 
 Every relation has a Target, semantic Affect label, and Affect Score from -100 to +100. Labels such as Knows, Trusts, Supports, Loves, Fears, Distrusts, Hates and Opposes are not collapsed into generic sentiment. Multiple labelled relations toward one target are allowed, all relations are directional, and an absent edge means unknown rather than neutral.
 
-Factions are changing discursive formations represented as US^(positive/constitutive Affects) + FRONTIER^(negative/antagonistic Affects). This adapts Emilia Palonen's Formula of Populism as a **general model of political/social identification**, not a populism classifier. US and FRONTIER may articulate demands, signifiers, identities, factions, institutions, technologies and individuals. Laclau/Mouffe distinctions remain binding: difference is not automatically antagonism, ambiguity is not automatically emptiness, and affective investment is not sentiment classification.
+Factions are changing discursive formations represented as US^(positive/constitutive Affects) + FRONTIER^(negative/antagonistic Affects). This adapts Emilia Palonen's Formula of Populism as a general model of political/social identification, not a populism classifier. US and FRONTIER may articulate demands, signifiers, identities, factions, institutions, technologies and individuals.
 
 Character Motivations use the same edge representation. Faction membership supplies starting Affects, not mind control. Multiple factions preserve different labels as ambivalence; matching target+label edges are combined; explicitly personal Motivations can override inherited matching edges while provenance is retained.
 
-Reputation is a directional edge from the evaluating faction/actor toward the character. Contacts are person-to-person social edges, including friends, acquaintances, professional ties and enemies. Character creation should begin with a small playable Contact graph rather than a full biography generator. Exact Contact-count tables and universal relationship-score increments remain future design.
+Reputation is directional from the evaluating faction/actor toward the character. Contacts are person-to-person social edges, including friends, acquaintances, professional ties and enemies. The default UNHSS / Firewall affiliation is represented through the same system alongside the character's personal faction identity.
 
-The same heterogeneous graph is shared with the social/discourse simulation so play can support introductions, brokers, social distance, alliances/frontiers, faction change, reputation propagation and discourse-network analysis without four incompatible databases.
-
-The default UNHSS / Firewall affiliation is represented through this system: the PC has the campaign-wide Firewall/UNHSS affiliation plus personal faction identity, and conflicts between them may produce Motivations, Reputation and Contact consequences.
-
-At the architecture level, face-to-face, text/chat, voice/video, Mesh and PSI communication are channels over the same social layer. The first playable interaction model is text-forward and hub-based, documented in [docs/design/GAMEPLAY_LOOP.md](docs/design/GAMEPLAY_LOOP.md). A small Asteroid Belt/station slice is the preferred initial scope.
+At the architecture level, face-to-face, text/chat, voice/video, Mesh and PSI communication are channels over the same social layer. The first playable interaction model is text-forward and hub-based, documented in [docs/design/GAMEPLAY_LOOP.md](docs/design/GAMEPLAY_LOOP.md), with a small Asteroid Belt/station slice as the preferred initial scope.
 
 ---
 
 ## 18. Gear, augmentation, software, and technology
 
-**Status: EP2 BASELINE DATA, selectively imported.**
+**Status: LEGACY EP2 DATA, selectively imported.**
 
 EP2 provides useful starting categories for gear, implants, augmentations, weapons, armor, software, mesh tools, and transhuman technology.
 
@@ -669,7 +670,7 @@ The **global technology baseline is Eclipse Phase-level transhuman technology**.
 
 ## 19. AI, AGI, infomorphs, and non-human agents
 
-**Status: MODIFIED EP2 / NOÖPUNK NATIVE DIRECTION.**
+**Status: ADAPTED / INSPIRED / NOÖPUNK NATIVE DIRECTION.**
 
 EP2 provides useful machinery for artificial and digital persons, but NoöPunk has its own AI/AGI/NHI themes.
 
@@ -807,7 +808,7 @@ The same saved state plus the same deterministic inputs should reproduce the sam
 
 **Status: EXPERIMENTAL REFERENCES.**
 
-EP2 is the starting chassis, not a prison.
+EP2 is an influence and legacy implementation source, not a chassis.
 
 If a subsystem is too cumbersome for Concordia, compare lighter approaches including:
 
@@ -2841,7 +2842,7 @@ model in §33.27. Do not reconstruct a fixed chronology from the archived varian
 
 ## 34. NoöPunk glossary
 
-**Status: MODIFIED EP2 + NOÖPUNK NATIVE**
+**Status: ADAPTED / INSPIRED + NOÖPUNK NATIVE**
 
 This is the shared vocabulary for the NoöPunk setting. It deliberately fuses the
 transhuman terminology of *Eclipse Phase* with selected metaphysical vocabulary from
