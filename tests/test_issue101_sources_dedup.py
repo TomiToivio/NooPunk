@@ -149,8 +149,8 @@ class RulebookShapeTests(unittest.TestCase):
         """Assert contiguity separately for the #120 core and preserved ledger."""
         text = read()
         core, appendix = text.split("# Extended canon and reference material", 1)
-        core_numbers = [int(n) for n in re.findall(r"(?m)^##\\s+(\\d+)\\.", core)]
-        ledger_numbers = [int(n) for n in re.findall(r"(?m)^##\\s+(\\d+)\\.", appendix)]
+        core_numbers = [int(n) for n in re.findall(r"(?m)^##\s+(\d+)\.", core)]
+        ledger_numbers = [int(n) for n in re.findall(r"(?m)^##\s+(\d+)\.", appendix)]
         self.assertEqual(core_numbers, list(range(1, 9)),
                          f"core chapter numbering drifted: {core_numbers}")
         self.assertEqual(ledger_numbers, list(range(1, max(ledger_numbers) + 1)),

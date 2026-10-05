@@ -384,8 +384,8 @@ class RulebookHygieneTests(unittest.TestCase):
         """The #120 core and preserved compatibility ledger are each contiguous."""
         text = read(RULEBOOK)
         core, appendix = text.split("# Extended canon and reference material", 1)
-        core_numbers = [int(n) for n in re.findall(r"(?m)^## (\\d+)\\.", core)]
-        ledger_numbers = [int(n) for n in re.findall(r"(?m)^## (\\d+)\\.", appendix)]
+        core_numbers = [int(n) for n in re.findall(r"(?m)^## (\d+)\.", core)]
+        ledger_numbers = [int(n) for n in re.findall(r"(?m)^## (\d+)\.", appendix)]
         self.assertEqual(core_numbers, list(range(1, 9)),
                          f"core chapter numbering drifted: {core_numbers}")
         self.assertEqual(ledger_numbers, list(range(1, max(ledger_numbers) + 1)),
