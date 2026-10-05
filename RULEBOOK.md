@@ -369,6 +369,91 @@ The initial implementation may include EP2-derived:
 
 The exact NoöPunk sheet is not yet final.
 
+### 9.2 Four-layer 1–10 attribute system
+
+**Status: NOÖPUNK NATIVE — issue #113.**
+
+The canonical future NoöPunk STAT model uses four ontological layers with three STATS in
+each layer:
+
+| Layer | STATS |
+| --- | --- |
+| Physical | **Fitness (FIT), Reflexes (REF), Resilience (RES)** |
+| Social | **Reason (REA), Empathy (EMP), Presence (PRE)** |
+| Psychic | **Will (WIL), Intuition (INU), Noesis (NOE)** |
+| Cybernetic | **Integration (CYI), Bandwidth (BND), Control (CTL)** |
+
+Operative ordinary-human STATS use the **1–10** scale established in #111. A layer that
+does not meaningfully operate for an entity is **N/A** on human-readable sheets and
+`null` in machine-readable data. **0 does not mean absence.**
+
+Language, symbolic reasoning, institutions, discourse, and shared knowledge belong to the
+**Social** layer. Phenomenal consciousness, intuition, self-directed awareness, PSI, and
+Noetic capability belong to the **Psychic** layer. The two are deliberately distinct.
+There is no generic Mental/Ego layer.
+
+Cybernetic STATS measure direct functional coupling to machines, BCI, computation, and
+networks, not intelligence. A biological human without meaningful direct cybernetic
+coupling may have the Cybernetic layer as N/A while still using ordinary external
+computers through Social STATS plus learned skills.
+
+Cybernetic augmentation may later unlock Cybernetic STATS, provide narrow modifiers, or
+produce an **effective** STAT above 10. Keep the biological/base rating and augmentation
+separate so the 1–10 human scale remains visible.
+
+The full definitions and entity examples are maintained in
+[`rulebook/2_ATTRIBUTES.md`](rulebook/2_ATTRIBUTES.md).
+
+### 9.3 Density, Polarization, and energy centers
+
+**Density** is a consciousness-development **tier/state**, not a STAT and not IQ. NPCs may
+be represented from 1D–7D where useful. PCs normally occupy 3D or 4D. A 3D PC may develop
+toward 4D through a **six-segment Awakening Clock** advanced only by major Noetic,
+developmental, catalyst, energy-center, or polarization events. Filling the clock makes a
+character eligible for a story-significant 4D transition; it does not automatically grant
+blanket numeric superiority.
+
+**Polarization** is tracked separately from attributes on a Law-of-One-inspired
+`-100 ... 0 ... +100` continuum:
+
+- `+51` or higher = clearly Service-to-Others polarized;
+- `-95` or lower = clearly Service-to-Self polarized;
+- values between = mixed, developing, conflicted, or unpolarized.
+
+Polarization changes through sustained meaningful action rather than chosen alignment.
+High **EMP** can help perceive and enact StO possibilities but does not itself make a
+character StO. High **WIL** can support disciplined self-directed control but does not
+itself make a character StS.
+
+The seven energy centers are **developmental states across the four-layer character
+ontology**, not seven extra STATS. Use the states **Blocked / Active / Balanced /
+Integrated**. Their strongest correspondences are:
+
+- Red → Physical embodiment and survival;
+- Orange → Psychic + Social selfhood and one-to-one relation;
+- Yellow → Social groups, institutions, and role identity;
+- Green → Social + Psychic compassion and reciprocity;
+- Blue → Social communication and truthful expression;
+- Indigo → Psychic intuition, disciplined consciousness, PSI, and Noetic work;
+- Violet → whole-character integration / signature.
+
+The **Cybernetic** layer is outside the chakra model, though technology may influence any
+center. Do not invent an eighth cybernetic chakra or force one-to-one STAT mappings.
+
+The detailed canonical design is in
+[`rulebook/2_ATTRIBUTES.md`](rulebook/2_ATTRIBUTES.md).
+
+### 9.4 Biological-human-first scope
+
+The initial playable kernel prioritizes biological humans, optional cybernetics, the
+four-layer attributes, PSI, Density, Polarization, Contacts/Factions/Motivations, and
+UNHSS/Firewall field agents.
+
+Cortical-stack continuity, full resleeving, morph catalogs, forks/backups, and infomorph
+edge cases remain deferred. Later transhuman mechanics must map onto this ontology rather
+than replace it.
+
+
 ---
 
 ## 10. Action resolution
