@@ -182,15 +182,9 @@ class LegacySupersededNotDeletedTests(unittest.TestCase):
 
 class OriginalSystemDirectionTests(unittest.TestCase):
     def test_documents_state_the_current_rules_direction(self) -> None:
-        """The original-rules-only direction was superseded by #60/#63.
-
-        This guard previously asserted that the README and the site stated an
-        "original rules system". `RULEBOOK.md` now records that direction as
-        superseded and makes EP2 the current chassis, so asserting the retired
-        wording would test a policy the author reversed. What still matters is
-        that the public documents point at the direction actually in force.
-        """
-        self.assertIn("eclipse phase 2nd edition homebrew", normalised("README.md"))
+        """Issue #111 restores and specifies the independent-system direction."""
+        self.assertIn("independent noopunk rules system", normalised("README.md"))
+        self.assertIn("1–10 stat", normalised("README.md"))
         with self.subTest(doc="docs/index.html"):
             self.assertIn("rulebook", normalised("docs/index.html"))
 
