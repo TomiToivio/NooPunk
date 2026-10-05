@@ -137,6 +137,17 @@ NoöPunk may selectively draw on Eclipse Phase for transhuman technology, morphs
 
 Mechanically, however, NoöPunk does not inherit EP2 by default. Every subsystem must be judged on whether it serves NoöPunk's own play style and world. Existing EP2-derived Python modules are legacy/prototype material until deliberately ported, adapted or retired.
 
+Canonical divergences include:
+
+- **the Fall has not happened**;
+- **Earth remains inhabited and politically central**;
+- there have been multiple localized **Rogue AGI Disasters**, but no global extinction-level Fall;
+- Eclipse Phase-level technologies exist, but distribution is highly uneven;
+- most humans still inhabit their original biological bodies;
+- roughly **25% of humanity has cortical stacks**;
+- roughly half of those with cortical stacks have already resleeved at least once;
+- roughly **50% of humanity has some cybernetic augmentation**, ranging from medically necessary replacements to mesh inserts and cognitive enhancements.
+
 The setting may still use a pre-Fall, Earth-intact transhuman technology level as inspiration without making NoöPunk an Eclipse Phase conversion.
 
 ### 2.6 Core design identity
@@ -318,7 +329,8 @@ intelligence, and counter-X-Risk culture inside the **United Nations Human Secur
 Eclipse Phase's Firewall without being a separate secret conspiracy outside government.
 Player characters are Firewall/UNHSS field agents by default while also retaining a
 personal political, cultural, national, professional, or social faction identity. The
-"Great Firewall" in §33.27 remains China's internet-control system and is unrelated.
+"Great Firewall" in §33.27 is China's internet-control system: an unrelated use of the
+words, not this organisation.
 
 **TITANs.** NoöPunk is **pre-Fall**: nothing comparable to the canonical Eclipse Phase
 Fall has occurred (§33.1), and the setting must **not** assume that it has. NoöPunk's
@@ -1281,6 +1293,11 @@ policing, intelligence, emergency authority, scientific infrastructure, military
 forces, space fleets, and global jurisdiction. It is widely regarded as the UN's most
 important institution, which makes it both indispensable and politically alarming.
 
+Running beneath the institutional question is a **political-economic** one. The core
+contested axis of the NHI Crisis era is **neofeudal cybercapitalism versus the
+Multitude**: concentrated platform, corporate and habitat power that converts crisis into
+new forms of private sovereignty, against commons-based, cooperative and autonomist
+formations that organize from below. This is a live struggle, not a settled outcome.
 
 ### 33.6 Psionics, QIP, awakening and the Noösphere
 
@@ -4110,7 +4127,7 @@ elements of its fictional world model, not as settled descriptions of the real w
 
 
 
-## UNHSS / Firewall: default campaign institution
+## 38. UNHSS / Firewall: default campaign institution
 
 > **Issue #108 canon.** This section defines the default player organization and the
 > institutional core of the emerging federal United Nations. It coordinates with
@@ -4120,8 +4137,9 @@ elements of its fictional world model, not as settled descriptions of the real w
 ### Name, history, and identity
 
 The canonical organization is the **United Nations Human Security and Survival
-Organization (UNHSS)**. It was founded under the cumbersome name **United Nations
-X-Risk and NHI Organization**, which produced the durable public nickname **X-Com**.
+Organization (UNHSS)**. It was founded under the cumbersome name
+**United Nations X-Risk and NHI Organization**, which produced the durable public
+nickname **X-Com**.
 Uniformed police and field officers are often called **X-Cops**, sometimes
 pejoratively. **Firewall** is the insider / operational name used especially by
 intelligence and field personnel.
@@ -4249,9 +4267,9 @@ being developed in #107.
 
 ### UN federal executive and the Minister
 
-The ordinary political head of UNHSS is the **United Nations Minister of Human
-Security and Survival**, a member of the UN Parliament and part of the federal
-executive. The Minister answers to the UN President and Prime Minister and oversees
+The ordinary political head of UNHSS is the
+**United Nations Minister of Human Security and Survival**, a member of the UN Parliament
+and part of the federal executive. The Minister answers to the UN President and Prime Minister and oversees
 normal strategy, budget, administration, diplomacy, science, policing, and defence.
 The precise appointment mechanism remains for later constitutional design.
 
@@ -4447,7 +4465,7 @@ These concepts are **not mechanically implemented here**. Density is not IQ; Pol
 A dedicated attribute-system design issue owns this work before it becomes executable rules.
 
 
-## 44. Reverse-engineering, contact, and cryptoterrestrial map (#105)
+## 40. Reverse-engineering, contact, and cryptoterrestrial map (#105)
 
 **Status: mixed canon and explicitly open design questions.** Issue #105 is exploratory, so only the points explicitly settled below are promoted to hard setting canon.
 
@@ -4461,7 +4479,7 @@ Human reverse-engineering traditions are plural rather than copies of one Americ
 - **Egypt:** emphasizes archaeological finds and ancient technological/Noetic inheritances while preserving ambiguity about what is genuinely artificial or NHI.
 - **Israel:** develops a technological-Noetic tradition drawing on Kabbalistic symbolism and consciousness practice. **Merkabah spacecraft** is the characteristic visual/conceptual hook. In-world "magick" is treated as an interface with Noetic phenomena, not arbitrary fantasy spellcasting.
 
-### 44.1 Contact and altered-state interfaces
+### 40.1 Contact and altered-state interfaces
 
 **CE-5** is primarily a contact/summoning ritual, not a dependable spacecraft-calling technique. Typical outcomes include plasmoid manifestations, Noetic entities, anomalous lights/orbs, telepathic/contact experiences, and only rarely unambiguous physical craft.
 
@@ -4469,7 +4487,7 @@ DMT experiences, "machine elves," astral/OBE traditions, Noetic Projection, Hoff
 
 Bledsoe-style orb phenomena and "The Lady" are **Confederacy-associated** in NoöPunk, while their exact ontology remains open: direct contact, Noetic intermediary, plasmoid, physical/noetic hybrid, or several layers at once.
 
-### 44.2 Cryptoterrestrials and undersea infrastructure
+### 40.2 Cryptoterrestrials and undersea infrastructure
 
 **Tridactyls** are a real cryptoterrestrial species/category in NoöPunk. Whether modern Nazca bodies and the older esoteric/Law-of-One references describe exactly the same lineage remains an in-world research question.
 
@@ -4477,7 +4495,7 @@ Bledsoe-style orb phenomena and "The Lady" are **Confederacy-associated** in No�
 
 Atlantis and Lemuria/Mu belong to the setting's ancient-history problem, but their **current status remains unresolved**: extinct civilization, hidden enclave, undersea survivor, off-world descendant, Noetic remnant, or something else.
 
-### 44.3 Orion infiltration and social consequences
+### 40.3 Orion infiltration and social consequences
 
 The Orion abduction/hybridization program means that Orion has penetrated human society despite quarantine. The extent, mechanisms, and identity-awareness of infiltrators remain uncertain. Hybrids may be biological, social, psychic, political, or mixed.
 
@@ -4486,7 +4504,7 @@ A hard tone rule applies: **real infiltration does not make every conspiracy the
 ---
 
 
-### 44.4 Noöspace: the Astral Plane and Conscious Agent Network (#119)
+### 40.4 Noöspace: the Astral Plane and Conscious Agent Network (#119)
 
 **Canonical ontology.** **Noöspace is real.** It is the effectively infinite-dimensional
 quantum-information Hilbert space in which **Conscious Agents** exist and interact.
@@ -4658,7 +4676,7 @@ Detailed gameplay mechanics for entering, navigating, surviving, and communicati
 within Noöspace remain deferred to the Psychic Systems design work.
 
 
-## 45. Disclosure as unification and ontological shock (#106)
+## 41. Disclosure as unification and ontological shock (#106)
 
 Alexander Wendt's work is the principal political-sociological model for NoöPunk Disclosure. The key NoöPunk outcome is that **unification and fragmentation happen simultaneously**.
 
@@ -4671,7 +4689,7 @@ Four broad reaction families recur without exhausting the political landscape:
 - **Skeptical / psyop:** interprets Disclosure as fabrication, secret human technology, or a pretext for surveillance/global governance;
 - **Indifferent majority:** initially absorbs even extraordinary evidence into ordinary life until direct consequences become personally unavoidable.
 
-### 45.1 Disclosure depth model
+### 41.1 Disclosure depth model
 
 Disclosure is a process, not one press conference. Use five **depth levels** as an analytical model rather than a single mandatory world chronology:
 
@@ -4687,7 +4705,7 @@ The United States may undergo **failed or incomplete Disclosure** because electe
 
 Global Disclosure can instead become **polycentric** through China, Russia, Peru, Brazil, Egypt, India, France, Nordic countries, civilian science, and AI-assisted sensor networks. Disclosure becomes irreversible when **multiple independent epistemic systems converge**: astronomy, radar/sensors, materials science, genomics, archaeology, oceanography, consciousness research, citizen science, state archives, and AI analysis.
 
-### 45.2 Contact ecology and the Noösphere
+### 41.2 Contact ecology and the Noösphere
 
 CE-5 movements after Disclosure include sincere contact communities, scams, cults, intelligence operations, scientific experiments, and accidental Noetic summoning circles.
 
@@ -4699,11 +4717,11 @@ AI becomes interpreter, mediator, amplifier, and potentially participant in NHI 
 
 ---
 
-## 46. Major human political factions and UN Parliament parties (#109)
+## 42. Major human political factions and UN Parliament parties (#109)
 
 The UN Parliament's first four major blocs are broad, internally contradictory coalitions. They do **not** exhaust human politics. Corporations, Legacy Programs, organized crime, intelligence networks, cults, militias, insurgencies, cooperatives, and other extra-parliamentary actors remain major powers.
 
-### 46.1 Bioconservatives
+### 42.1 Bioconservatives
 
 A far-right populist party organized around defence of "old-school" biological humanity. It opposes or heavily restricts extraterrestrials, AIs, transhumans, cyborgs, hybrids, and other boundary-blurring beings, and favors authoritarian politics, militarism, strong borders, and aggressive defence.
 
@@ -4715,13 +4733,13 @@ Its main internal tendencies are:
 
 They share the claim that humanity is under threat while often disagreeing violently about what "humanity" means.
 
-### 46.2 Libertarian Party
+### 42.2 Libertarian Party
 
 A right-libertarian, strongly pro-capitalist, accelerationist party supporting free markets, private property, technological acceleration, unrestricted entrepreneurship, and commercial relations with extraterrestrial civilizations. It is hostile to heavy UN/state regulation and favors a minarchist order centered on contracts, property, and physical security.
 
 Critics regard it as the political instrument of the **neo-feudal cybercapitalist class**, megacorporations, private infrastructure owners, wealthy accelerationists, and space-industrial interests. Its outer edge shades into anarcho-capitalism.
 
-### 46.3 United Earth Social Democratic Party
+### 42.3 United Earth Social Democratic Party
 
 A centre-left/left social-democratic and green governing coalition supporting welfare-state capitalism, ecological protection, progressive taxation, megacorporate regulation, international redistribution, strong public institutions, cautious governance of powerful technologies, and credible defence combined with peaceful NHI diplomacy.
 
@@ -4733,7 +4751,7 @@ The UESDP has won **every UN parliamentary and presidential election so far**.
 
 Internal wings include labour social democrats, greens, technocratic internationalists, development/redistribution advocates, moderate transhumanists, security-oriented internationalists, and cautious NHI diplomacy advocates.
 
-### 46.4 The Multitude
+### 42.4 The Multitude
 
 The main far-left parliamentary formation combines two historically distinct blocs:
 
