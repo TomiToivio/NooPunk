@@ -15,7 +15,7 @@ from concordia_runtime.config import ConcordiaRuntimeConfig
 from concordia_runtime.mechanics import resolve_structured_check, resolve_structured_opposed
 from concordia_runtime.participants import GameMasterSpec, HumanPlayer, LLMAgentSpec
 from concordia_runtime.session import SessionSpec
-from rules import AttributeSet, SkillAccess
+from rules import AttributeSet
 
 
 class ConcordiaRuntimeTests(unittest.TestCase):
@@ -52,36 +52,24 @@ class ConcordiaRuntimeTests(unittest.TestCase):
         self.assertEqual(agent.name, "placeholder_actor")
 
     def test_participant_can_carry_structured_canonical_attributes(self) -> None:
-        attributes = AttributeSet({"FIT": 0, "REF": 1, "INT": 2, "CHA": -1, "CYB": 3, "PSY": 0})
+        attributes = AttributeSet({"Physical": 5, "Social": 6, "Psychic": 4, "Cybernetic": 7})
         agent = LLMAgentSpec(name="placeholder_actor", attributes=attributes)
-        self.assertEqual(agent.attributes["CYB"], 3)
+        self.assertEqual(agent.attributes["Cybernetic"], 7)
 
     def test_structured_mechanics_are_code_resolved(self) -> None:
-        attributes = AttributeSet({"FIT": 0, "REF": 1, "INT": 2, "CHA": -1, "CYB": 3, "PSY": 0})
+        attributes = AttributeSet({"Physical": 5, "Social": 6, "Psychic": 4, "Cybernetic": 7})
         result = resolve_structured_check(
             attributes=attributes,
-            attribute_id="CYB",
-            target=15,
-            extra_modifiers=(1,),
-            dice_total=11,
+            attribute_id="Cybernetic",
+            skill=5,
+            target=17,
+            die=5,
         )
-        self.assertEqual(result["total"], 15)
+        self.assertEqual(result["total"], 17)
         self.assertTrue(result["success"])
-        opposed = resolve_structured_opposed(15, 15)
+        opposed = resolve_structured_opposed(17, 17)
         self.assertTrue(opposed["unresolved_tie"])
         self.assertIsNone(opposed["winner"])
-
-    def test_structured_trained_only_action_is_blocked(self) -> None:
-        attributes = AttributeSet({"FIT": 0, "REF": 0, "INT": 0, "CHA": 0, "CYB": 0, "PSY": 0})
-        result = resolve_structured_check(
-            attributes=attributes,
-            attribute_id="INT",
-            target=9,
-            skill_access=SkillAccess.TRAINED_ONLY,
-            has_skill=False,
-        )
-        self.assertFalse(result["attempted"])
-        self.assertEqual(result["blocked_reason"], "trained_only_without_skill")
 
     def test_human_player_is_an_injected_input_boundary(self) -> None:
         player = HumanPlayer(
