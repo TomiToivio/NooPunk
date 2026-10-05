@@ -3998,3 +3998,162 @@ elements of its fictional world model, not as settled descriptions of the real w
 
 ---
 
+
+
+---
+
+## 39. Campaign-scoped skills and specialist fields
+
+**Status: NOÖPUNK NATIVE CONTENT MODEL / MECHANICS FOLLOW ISSUE #111.**
+
+Issue #110 defines the specialist-skill content needed by the initial Asteroid Belt / UNHSS campaign. Issue #111 supersedes #110's assumption that Eclipse Phase percentile mechanics remain the active chassis: NoöPunk now treats these names and fields as **content design** to be expressed through the independent **1–10 Skill** system and the core `STAT + Skill + 1d10` resolution rule.
+
+The final universal NoöPunk skill list remains deferred. For the first campaign, however, the following Eclipse Phase-derived vocabulary is a useful provisional baseline because it already covers the kinds of actions the campaign needs:
+
+- Athletics
+- Deceive
+- Exotic Skill (Field)
+- Fray
+- Free Fall
+- Guns
+- Hardware (Field)
+- Infiltrate
+- Infosec
+- Interface
+- Kinesics
+- Know (Field)
+- Medicine (Field)
+- Melee
+- Perceive
+- Persuade
+- Pilot (Field)
+- Program
+- Provoke
+- Psi
+- Research
+- Survival
+
+These names are not a commitment to Eclipse Phase numerical mechanics, linked aptitudes, defaulting rules, or percentile values. They are provisional skill concepts pending the final independent NoöPunk list.
+
+### 39.1 Campaign-scoped field rule
+
+**Exotic Skill, Hardware, Know, Medicine, and Pilot require a Field.** A campaign exposes only fields expected to matter in actual play.
+
+Do not preload giant specialty catalogs. Add a field when a character concept, scenario, location, profession, or piece of equipment creates a genuine need for it. This keeps character sheets, NPC descriptions, deterministic rules data, and LLM prompts compact.
+
+For the initial Asteroid Belt / UNHSS campaign, the default profile is:
+
+- **Pilot (Space)**
+- **Medicine (Emergency Care)**
+- **Medicine (Forensics)**
+- **Hardware (Psychotronics)**
+- **Know (Investigation)**
+- **Know (Psychology)**
+- **Know (Law Enforcement)**
+- **Know (Intelligence)**
+- **Know (Counterintelligence)**
+- **Know (Quantum Information Panpsychism / QIP)**
+- **Know (Parapsychology)**
+- **Know (NHI Studies)**
+
+Additional Hardware and Exotic Skill fields are character- or scenario-specific rather than universal.
+
+Possible later Belt Hardware fields include Electronics, Robotics, Industrial, Spacecraft, Mining, and Life Support, but these are **not automatically active** merely because they are plausible.
+
+### 39.2 Core investigative and Noetic knowledge fields
+
+**Know (Investigation)** covers case reconstruction, investigative procedure, evidence interpretation, interview planning, investigative strategy, and linking facts across a case.
+
+**Know (Psychology)** covers psychological profiling, trauma, manipulation, witness reliability, cult dynamics, belief formation, contactee/experiencer assessment, and psychologically complex interviewing. **Dr. Harri S. Romppainen primarily solves cases through Know (Psychology)** rather than being reduced to a generic detective archetype.
+
+**Know (Law Enforcement)** covers police procedure, jurisdiction, warrants, evidence handling, arrest/search rules, cross-jurisdiction cooperation, and UNHSS policing powers.
+
+**Know (Intelligence)** covers intelligence cycles, source evaluation, HUMINT, SIGINT, OSINT, GEOINT, analysis, briefing, collection planning, covert networks, compartmentation, and deception analysis.
+
+**Know (Counterintelligence)** covers mole hunting, hostile recruitment, surveillance/countersurveillance concepts, compromise assessment, insider threats, disinformation, NHI infiltration, Legacy Program penetration, and rogue-AI manipulation of institutions.
+
+**Know (QIP)** covers the setting's scientific theory of consciousness: Quantum Information Panpsychism, related quantum-consciousness precursor theories, continuity questions, conscious-AI questions, and the theoretical basis of psychotronics and Noetic interfaces.
+
+**Know (Parapsychology)** covers the scientific and empirical study of PSI: telepathy, remote viewing, precognition, psychokinesis, anomalous cognition, experimental PSI, psychotronic research, and PSI testing methodology.
+
+**Know (NHI Studies)** is the broad synthesis field for post-Disclosure non-human-intelligence work. It combines historical ufology, exopolitics, contact studies, official releases, intelligence archives, experiencer testimony, channeling/contact traditions, archaeology, reverse-engineering claims, NHI statements, and competing ontologies.
+
+Its purpose is not trivia collection. It is the ability to build a coherent working hypothesis from contradictory evidence while applying provenance, source criticism, comparative analysis, and deception/disinformation awareness.
+
+The **Law of One / Ra Material belongs inside NHI Studies** as a major in-setting contact tradition. A competent specialist understands Confederation and Orion concepts, quarantine, densities, Social Memory Complexes, polarization, historical claims, channel limitations, and post-Disclosure confirmations or contradictions. Studying it does not require treating every contact claim as true.
+
+### 39.3 Psychotronics
+
+**Hardware (Psychotronics)** covers the practical engineering of Noetic technology: psychotronic sensors, PSI amplifiers, counter-PSI systems, Noetic shielding, consciousness interfaces, QIP instrumentation, psychotronic communications, anomalous-contact equipment, PSI-sensitive detection systems, and field repair of related devices.
+
+Keep the boundary explicit:
+
+- **Know (QIP)** understands consciousness theory.
+- **Know (Parapsychology)** understands PSI theory and research.
+- **Hardware (Psychotronics)** builds, repairs, modifies, or disables relevant devices.
+- **Psi / PSI techniques** perform the anomalous effect.
+
+### 39.4 Know, Research, Perceive, Kinesics, and Psi
+
+Use these questions to prevent one skill from swallowing the others:
+
+- **Know:** What do I already understand about this domain?
+- **Research:** Can I find, verify, and interpret useful information from external sources?
+- **Perceive:** What do I notice right now through available senses?
+- **Kinesics:** What can I infer from behavior, body language, tells, and social cues?
+- **Psi:** Can I actually produce the psionic effect?
+
+Know and Research often work together, but neither replaces observation, social inference, or practical PSI.
+
+### 39.5 PSI domains remain a design choice
+
+Do not finalize the PSI skill architecture yet. Preserve these candidate domains for later playtesting:
+
+- Remote Viewing
+- Telepathy
+- Psychokinesis
+- **Noetic Projection** (common-language: astral projection / out-of-body experience)
+- Channeling
+- Precognition
+- Counter-Psi
+
+Three approaches remain open: one Psi skill with fields, several separate PSI skills, or one Psi skill with learned techniques/sleights/moves. The third may mesh naturally with later Stunt/Move design, but no option is canon yet.
+
+**Robert A. Monroe and the Monroe Institute** are influences for Noetic Projection / OBE training and altered-state exploration. This is inspiration for the fictional setting, not a claim that Monroe's interpretations are established real-world science.
+
+### 39.6 Example campaign packages
+
+A conventional UNHSS investigator will often emphasize Investigation, Research, Perceive, Kinesics, and Persuade.
+
+Dr. Romppainen instead emphasizes Psychology, NHI Studies, Research, Kinesics, and Persuade, with Parapsychology where appropriate.
+
+A Noetic scientist commonly emphasizes QIP, Parapsychology, Research, Interface, Psychotronics, and practical Psi only if personally capable.
+
+A Belt field agent commonly needs Pilot (Space), Medicine (Emergency Care), Free Fall, Interface, Research, and one or more role-specific Know fields.
+
+These are packages for readability, not classes.
+
+### 39.7 Machine-readable campaign profile
+
+The corresponding machine-readable profile lives at `data/rules/campaign_skill_fields.json`. Scenario-specific profiles may extend it without changing the universal rules.
+
+The governing rule is:
+
+> **Expose only the specialist fields that the current campaign can actually use.**
+
+### 39.8 Deferred Law-of-One character mechanics
+
+Issue #110 also records a larger character-design problem involving:
+
+- Density as a possible consciousness-development mechanic;
+- 3rd-to-4th Density awakening for PCs and broader Density ranges for NPCs;
+- Service-to-Others / Service-to-Self Polarization;
+- possible SAV/empathy and WIL relationships;
+- seven energy centers / chakras;
+- the Physical / Social / Psychic / Cybernetic character ontology;
+- absent/non-operative layers for entities such as software AIs or Noetic beings;
+- biological-human-first characters with resleeving/morph complexity deferred.
+
+These concepts are **not mechanically implemented here**. Density is not IQ; Polarization is not a D&D-style personality label; Social is not merely charisma; Psychic and Social remain distinct; Cybernetic is not intelligence; and an absent layer is not the same as incompetence.
+
+A dedicated attribute-system design issue owns this work before it becomes executable rules.
