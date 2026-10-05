@@ -1,84 +1,42 @@
-# Factions, Motivations
+# NoöPunk factions, motivations, and reputation contexts
 
-## Factions
-A character could be a members of several different factions based on political ideology, local community, identity and career.
-Anarchist: You believe power is corrupt and favor voluntary, non-hierarchical organizations based on direct democracy.
-Argonaut: You seek technoprogressive solutions to transhumanity’s injustices and inequalities.
-Barsoomian: You wish to see Mars liberated from hypercorp control.
-Brinker: You belong to a cult, commune, or other group that seeks isolation from the rest of transhumanity.
-Criminal: You are associated with the underworld, either part of a large cartel, smaller gang, or as an independent operator.
-Extropian: You believe in unrestricted free markets and that taking proactive risks with technology is better than playing it safe.
-Hypercorp: You support hypercapitalist expansion and competitive-economics-driven social order. You accept that certain liberties must be restricted for security and freedom.
-Jovian: You are a bioconservative concerned about out-of-control transhuman technologies.
-Lunar/Orbital: You support the conservative economics,
-Earth-tied nationalism, and traditionalism of the LunarLagrange Alliance.
-Mercurial: You oppose the assimilation and oppression of AGIs
-and uplifts, supporting self-determination for your kind.
-Reclaimer: You believe transhumanity should be focused on
-reclaiming, terraforming, and repopulating Earth.
-Scum: You push the boundaries of the experimental, fully
-testing what it means to be transhuman.
-Socialite: You are a part of the glitterati, defining and defined by
-inner-system media culture.
-Titanian: You are a technosocialist, believing that science and
-technology can provide for the well-being of all.
-Venusian: You adhere to the Morningstar Constellation’s vision
-for a more socialized, friendlier hypercapitalism.
-Regional: You are a Solarian, Sifter, Belter, Europan, Ringer, or
-Skimmer invested in the culture, prosperity, and security of
-your area of the Solar System.
+Status: starter library for issue #107. Canonical mechanics are in rulebook/4_SOCIAL.md. This replaces the old wholesale Eclipse Phase faction list with NoöPunk-specific design seeds.
 
-## Motivations
-Acceptance
-AGI Personhood
-Alien Contact
-Anarchism
-Autonomy
-Bioconservatism - human-centrism: no aliens, no AI, no cyborgs, no transhumans!
-Create Legacy
-Creative Expression
-Discover/Forget Past
-Education
-Escape
-Expand Influence
-Exploration
-Fame/Recognition
-Find a Purpose
-Find a Tribe
-Friendly ASI
-Hedonism
-Immortality
-Independence
-Law of One - ie. follows the Zookeeper religion
-Leadership
-Libertarianism - support unlimited free markets and corporations
-Locate Lost [Friend/Item/Lover/Relative]
-Make Art
-Martian Liberation
-Morphological Freedom
-Multitudism (Autonomist Marxism)
-Neurodiversity
-Open Source
-Personal Career
-Personal Improvement
-Philanthropy
-Prove Others Wrong
-Reconnect with
-Transhumanity
-Religion
-Revenge
-Scientific Discovery
-Self-Reliance
-Skill Mastery
-Socialism
-Stability
-Survival
-Technoprogressivism
-Thrill-Seeking
-Transparency
-Uplift Rights
-Venusian Sovereignty
-Wealth
+## Faction families
+
+Characters may belong to several formations at once. A faction is stored as US + FRONTIER Affect edges, not as a personality package.
+
+Current NoöPunk faction families include:
+- states, federations, national/local communities and Belt/habitat identities;
+- AI ideological formations: accelerationist/techno-optimist, x-risk/safety, Critical AI/political-economy, moratorium/opposition and AI-rights positions;
+- corporations and corporate blocs;
+- Legacy Programs, Disclosure coalitions and investigators;
+- transhuman, cyborg, morphological-freedom and augmentation politics;
+- biological-human, bioconservative and human-sovereignty formations;
+- AI/digital-person personhood, autonomy, labor and rights formations;
+- NHI-related pro-contact, resistance/defense, Confederacy-oriented, Orion-opposed and quarantine/disclosure positions already present in NoöPunk lore;
+- Noösphere/PSI scientific, professional, religious, skeptical and political formations;
+- labor, commons, cooperative, socialist, autonomist and multitude formations, including the Panpsychic Cyborg Multitude where applicable;
+- criminal/informal networks such as gangs, brokers and smugglers;
+- professional/knowledge communities such as research institutes, universities, security services, media and clinics.
+
+These are families, not a forced master list. Add named factions only when the rulebook establishes them.
+
+## Motivation library
+
+Recurring NoöPunk motivation targets include AI acceleration, AI safety, Critical AI, AI rights, Disclosure, secrecy, human sovereignty, transhumanism, bioconservatism, cyborgification, Noösphere, PSI, NHI cooperation, NHI resistance, nationalism, federalism, commons, corporate power, ecological survival, space expansion, personal survival, family, friendship, loyalty, love, revenge, curiosity, career, discovery, fame, wealth and community.
+
+Each target still needs an Affect label and score. AI acceleration | Supports | +70 and AI acceleration | Opposes | -60 are both valid.
+
+## Reputation contexts
+
+Reputation is an edge from the evaluating faction/actor toward the character. Useful contexts emerge from actual play: local station/habitat community; employer/corporation/guild/union/cooperative; state/federal/security institution; AI-rights or AI-safety formation; Disclosure/Legacy Program actor; PSI/Noösphere institution; transhuman or bioconservative community; NHI-contact or planetary-defense formation; criminal/fixer/smuggler network.
+
+## Contacts
+
+Start with a small social graph: a few appropriate contacts such as a close friend, professional contact, family/community tie, patron/mentor and optionally an enemy. Record identity, role, faction, relationship, Affect label/score, why you know them, their needs, realistic capabilities and reciprocity.
+
+Exact starting counts and random tables remain future character-generation design.
 
 ## Default Firewall affiliation
 
