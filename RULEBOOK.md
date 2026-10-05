@@ -2952,14 +2952,36 @@ Source references:
 bodies, machines, planets, habitats, and measurable spacetime. In NoöPunk this is the
 principal domain of the **Physical** layer.
 
-**Time/space.** The reciprocal metaphysical domain of inner worlds, nonlocal experience,
-post-mortem existence, altered states, and some forms of psionic or NHI activity. It is
-not merely "another dimension" in the science-fiction sense. In NoöPunk it is one of the
-deep structures underlying the **Psyche / Noetic** layer.
+**Noöspace / Time/space / Astral Plane.** **Noöspace** is the official scientific and
+technical term for the effectively infinite-dimensional quantum-informational domain in
+which conscious agents directly exist and interact. In Law-of-One terminology it
+corresponds broadly to **Time/Space**; in ordinary speech almost everyone calls the same
+underlying domain **the Astral Plane**, **the Astral**, dreamspace, spirit world, DMT
+space, hyperspace, or simply the Other Side. Physical **space/time** is a constrained
+projection or subset of this deeper Noetic information space rather than a second
+parallel universe. The setting does not claim that real-world physics has established
+this model; inside 20XX it is the dominant post-QIP theory.
 
-**Astral.** A culturally common name for a region, mode, or humanly accessible band of
-time/space. The astral is **not identical with all of time/space**. Different traditions
-slice the same territory differently.
+**Noösphere.** The emergent planetary-scale network of humans, AIs, Noetics, institutions,
+cultures, biospheric cognition, NHI, and collective symbolic formations increasingly
+organizing itself within Noöspace. **Noöspace is the domain; the Noösphere is an emergent
+network within it.**
+
+**Conscious Agent.** Any mind, intelligence, collective mind, archetypal formation,
+Noetic entity, NHI mind, biospheric intelligence, genuinely Noetic AI, or more alien
+subject capable of existing or interacting within Noöspace. Apparent bodies in Noöspace
+may be perceptual interfaces rather than biological anatomy.
+
+**Noetic resonance.** Similarity, entanglement, symbolic association, emotional
+attunement, identity, memory, and cognitive accessibility that function as the practical
+equivalent of distance in Noöspace. Noöspace has topology, but not ordinary Euclidean
+geography.
+
+**Noetic Reality Frame / Focus State.** A stable mode or band of Noöspace experience used
+by researchers and trained projectors to distinguish near-physical overlays, collective
+unconscious regions, biospheric regions, Noöspheric structures, and deeper alien
+environments. Monroe-style Focus terminology and Campbell-style reality frames are
+practical inspirations, not one-to-one imported cosmologies.
 
 **Devachanic.** A higher or more abstract band of time/space associated in Law-of-One
 language with the blue-ray body. NoöPunk researchers use the term cautiously because
@@ -3307,6 +3329,16 @@ shape NoöPunk.
 Prefer short annotations explaining **what the work contributes** instead of maintaining
 a bare bibliography. This is the **design-facing influence map**; the more theory-oriented
 bibliography is kept separately in §37.
+
+### 35.0 Noöspace / consciousness-navigation source cluster (#119)
+
+The canonical Noöspace synthesis specifically draws on **Federico Faggin** and **Donald
+Hoffman** for consciousness/information ontology; **Robert Monroe** and **Thomas Campbell**
+for OOBE navigation and nonphysical reality frames; **C. G. Jung** for archetypes and the
+collective unconscious; **Andrew Gallimore** and **Terence McKenna** for multidimensional
+DMT phenomenology and Machine Elf imagery; and the **Law of One / Ra Material** for the
+Space/Time–Time/Space correspondence. These sources are combined into NoöPunk's own
+fictional ontology rather than treated as mutually identical real-world theories.
 
 ### 35.1 How to read this list
 
@@ -4452,6 +4484,179 @@ The Orion abduction/hybridization program means that Orion has penetrated human 
 A hard tone rule applies: **real infiltration does not make every conspiracy theory true**. False accusations, propaganda, mass paranoia, opportunistic witch hunts, and genuine hostile activity coexist.
 
 ---
+
+
+### 44.4 Noöspace: the Astral Plane and Conscious Agent Network (#119)
+
+**Canonical ontology.** **Noöspace is real.** It is the effectively infinite-dimensional
+quantum-information Hilbert space in which **Conscious Agents** exist and interact.
+Ordinary 3+1-dimensional physical spacetime is a constrained subset, projection, or
+representational structure within that deeper Noetic domain. This is fictional post-QIP
+science inside NoöPunk, not a claim that present-day real-world physics has established
+such an ontology.
+
+Use the three-space distinction consistently:
+
+- **Spacetime** is ordinary physical reality.
+- **Cyberspace** is computational and networked information space.
+- **Noöspace** is the quantum-informational domain of consciousness and Conscious Agents.
+- **Noösphere** is the emergent planetary-scale network of minds, AIs, Noetics,
+  institutions, biospheric cognition, NHI, cultures, and collective symbolic structures
+  increasingly organizing itself **within Noöspace**.
+
+The official scientific/technical term is **Noöspace**. QIP physicists, Noetic
+researchers, intelligence services, and technical institutions use it in formal work.
+Everybody else, and plenty of field operatives when the scientists are not listening,
+still calls it **the Astral Plane**. Both names refer to the same underlying domain.
+
+#### 44.4.1 Perception as direct access to the Conscious Agent Network
+
+In NoöPunk, OOBE, remote viewing, PSI, lucid dreams, meditation, psychedelics, DMT,
+psychotronics, QIP interfaces, ritual, and some NHI contact can provide access to
+Noöspace. The experiencer is not necessarily inventing a private fantasy world. They may
+be directly perceiving or interacting with the **Conscious Agent Network**.
+
+The setting synthesizes, rather than literally reproduces, several source traditions:
+Federico Faggin-style quantum-information consciousness ontology; Donald Hoffman's
+Conscious Agent Network; Robert Monroe's OOBE and Focus phenomenology; Thomas Campbell's
+reality-frame model; Law-of-One **Time/Space**; Jungian archetypes and collective
+unconscious; DMT phenomenology; Andrew Gallimore's multidimensional models; and Terence
+McKenna's Machine Elf imagery.
+
+Conscious Agents may include individual human minds, collective human formations,
+archetypal figures, dream entities, psychopomps, DMT entities, Noetics, NHI minds,
+interdimensional beings, planetary or biospheric intelligences, genuinely Noetic AIs,
+religious or mythological forms stabilized by populations, and entities with no obvious
+relationship to Earth or human cognition.
+
+**Self-Transforming Machine Elves** are one canonical presentation/class of Conscious
+Agent. Their morphing impossible geometry may reflect perceptual translation: a human
+brain compressing high-dimensional conscious information into an interface it can render.
+Their apparent bodies need not be ordinary anatomy.
+
+#### 44.4.2 Law of One correspondence
+
+Law-of-One **Space/Time** corresponds broadly to ordinary physical spacetime and
+**Time/Space** corresponds broadly to Noöspace. Do not force every Law-of-One metaphysical
+detail into a one-to-one scientific mapping. Preserve the central NoöPunk idea that
+physical and consciousness-oriented reality are complementary presentations of a deeper
+structure.
+
+#### 44.4.3 Noetic topology: near, collective, biospheric, Noöspheric, deep
+
+Noöspace does not use ordinary Euclidean distance. "Near" and "far" are practical human
+metaphors for **resonance, informational distance, entanglement, familiarity, symbolic
+association, and cognitive accessibility**.
+
+**Near Noöspace** overlaps strongly with spacetime. It can resemble remote viewing,
+out-of-body observation, familiar rooms and cities, near-physical overlays, distant
+locations, other planets, or dream environments that retain strong correspondence with
+ordinary reality.
+
+**Human collective-unconscious regions** are shaped by cultures, archetypes, memory,
+religions, myths, dreams, fear, desire, and repeated symbolic practice. They can present
+as archetypal cities, paradises, hells, afterlives, dreamworlds, mythic landscapes,
+thoughtforms, recurring beings, and psychodramatic environments. Different cultures may
+encounter overlapping structures through radically different symbolic interfaces.
+
+**Biospheric regions** are not exclusively human. Animal experience, ecological systems,
+forests, oceans, evolutionary memory, cryptoterrestrial cognition, and planetary-scale
+patterns contribute to environments that may feel intensely alive while only partly
+human-readable.
+
+**Noöspheric regions** are increasingly structured by the emerging Noösphere itself:
+humans, AIs, networks, institutions, media, psionic people, Noetics, biospheric
+intelligence, NHI, and collective symbols. The Noösphere is becoming increasingly
+self-aware, but it is not harmonious.
+
+Competing political, spiritual, technological, and ideological **polarizations** generate
+a kind of **Noetic weather**: memetic attractors, ideological storms, cultic formations,
+collective fear fields, cooperation networks, propaganda ecosystems, AI-generated
+psychic structures, parasitic entities, resonance zones, and emergent group minds.
+Law-of-One service-to-others / service-to-self polarity is one influence, not the only
+axis of conflict.
+
+**Deep Noöspace** begins where Earth-associated archetypes and human symbolic compression
+cease to be reliable. Possible experiences include impossible geometry, direct transfer
+of meaning, recursive environments, simultaneous viewpoints, nonlocality, unstable
+identity, nonlinear causality, and radically nonhuman intelligences. The governing design
+rule is:
+
+> **The deeper Noöspace becomes, the less reliable human categories become.**
+
+#### 44.4.4 Why Noöspace looks psychedelic
+
+Noöspace often resembles intense multidimensional psychedelic experience: hyperbolic
+geometry, impossible architecture, recursive patterns, self-transforming objects,
+luminous lattices, hyperspatial tunnels, entities made of symbols or meaning, and
+synesthetic communication.
+
+The in-world explanation is perceptual compression. A nervous system evolved for a narrow
+spacetime interface is attempting to render high-dimensional Noetic information. The
+psychedelic aesthetic is therefore frequently a **compression artifact**, not mere
+decoration.
+
+#### 44.4.5 Navigation and access
+
+Robert Monroe and Thomas Campbell are major practical inspirations for Noöspace
+navigation. Access can involve meditation, sleep-state transitions, sensory deprivation,
+auditory induction, lucid dreaming, DMT or related psychedelics, trained remote viewing,
+QIP interfaces, neural implants, psychotronic devices, ritual techniques, CE-5 protocols,
+or NHI-assisted contact.
+
+Navigation depends less on metres than on attention, intention, emotional state, memory,
+identity, symbolic association, learned Focus-state techniques, technological assistance,
+resonance, and contact with other Conscious Agents.
+
+Occult systems are therefore treated as **maps and access traditions, not one final
+literal truth**. Theosophy, Hermeticism, shamanism, ceremonial magick, Kabbalah, Tantra,
+Yogic Siddhis, spiritualism, indigenous cosmologies, and other traditions may preserve
+partial techniques or region-specific maps. They may describe overlapping phenomena
+through different cosmologies, mix observation with cultural metaphor, or sometimes help
+generate the environments they claim merely to observe.
+
+#### 44.4.6 Extraterrestrial versus interdimensional
+
+Use **extraterrestrial** operationally when stable material evidence dominates: craft,
+manufactured artifacts, bodies, biologics, genetics, physical infrastructure, or
+repeatable material technology.
+
+Use **interdimensional** when manifestation occurs primarily through Noöspace:
+apparitions, dream contact, psychic entities, impossible geometry, symbolic
+manifestations, poltergeist-like effects, reality distortions, Noetic beings, or entities
+without stable recoverable bodies or technology.
+
+These labels describe **mode of manifestation, not ultimate species identity**. One
+intelligence may manifest both materially and Noetically.
+
+#### 44.4.7 Interdimensional Zones
+
+Some anomalous Zones are places where Noöspace leaks strongly into physical spacetime.
+Possible effects include persistent shared visions, dream contamination, impossible
+architecture, time anomalies, collective imagery, temporary physical manifestation of
+entities, altered topology, identity or memory instability, and psychotronic weather.
+
+Classify these as **interdimensional Zones**. The stronger the overlap, the less reliable
+ordinary physical assumptions become.
+
+#### 44.4.8 Terminology
+
+Preferred formal terms include **Noöspace**, **Noetic Reality**, **Noetic Reality Frame**,
+**Focus State**, **Conscious Agent**, **Noetic Entity**, **QIP interface**, **Noetic
+topology**, and **Noetic resonance**.
+
+Common terms include **Astral Plane**, **Astral**, **the Other Side**, **dreamspace**,
+**spirit world**, **DMT space**, **hyperspace**, **the weird**, and **the deep**.
+
+A recurring piece of setting texture is the failed attempt to retire the old vocabulary:
+
+> "Technically it's a nonlocal Noetic information manifold."
+>
+> "Sure. The Astral Plane."
+
+Detailed gameplay mechanics for entering, navigating, surviving, and communicating
+within Noöspace remain deferred to the Psychic Systems design work.
+
 
 ## 45. Disclosure as unification and ontological shock (#106)
 
