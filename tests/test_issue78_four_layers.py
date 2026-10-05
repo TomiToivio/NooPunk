@@ -381,10 +381,15 @@ class SpeculativeStaysSpeculativeTests(unittest.TestCase):
 
 class RulebookHygieneTests(unittest.TestCase):
     def test_section_numbering_has_no_gaps(self) -> None:
-        """The file had a §34 hole before this change; it must not reopen."""
-        numbers = [int(n) for n in re.findall(r"(?m)^## (\d+)\.", read(RULEBOOK))]
-        self.assertEqual(numbers, list(range(1, max(numbers) + 1)),
-                         f"section numbering has a gap: {numbers}")
+        """The #120 core and preserved compatibility ledger are each contiguous."""
+        text = read(RULEBOOK)
+        core, appendix = text.split("# Extended canon and reference material", 1)
+        core_numbers = [int(n) for n in re.findall(r"(?m)^## (\\d+)\\.", core)]
+        ledger_numbers = [int(n) for n in re.findall(r"(?m)^## (\\d+)\\.", appendix)]
+        self.assertEqual(core_numbers, list(range(1, 9)),
+                         f"core chapter numbering drifted: {core_numbers}")
+        self.assertEqual(ledger_numbers, list(range(1, max(ledger_numbers) + 1)),
+                         f"compatibility-ledger numbering has a gap: {ledger_numbers}")
 
     def test_the_four_layers_are_written_as_a_letter_case_the_repo_uses(self) -> None:
         """NOÖPUNK carries the umlaut; an ASCII-only label is a mismatch."""
