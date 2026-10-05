@@ -15,7 +15,7 @@ from concordia_runtime.config import ConcordiaRuntimeConfig
 from concordia_runtime.mechanics import resolve_structured_check, resolve_structured_opposed
 from concordia_runtime.participants import GameMasterSpec, HumanPlayer, LLMAgentSpec
 from concordia_runtime.session import SessionSpec
-from rules import AttributeSet, SkillAccess
+from rules import AttributeSet
 
 
 class ConcordiaRuntimeTests(unittest.TestCase):
@@ -52,36 +52,36 @@ class ConcordiaRuntimeTests(unittest.TestCase):
         self.assertEqual(agent.name, "placeholder_actor")
 
     def test_participant_can_carry_structured_canonical_attributes(self) -> None:
-        attributes = AttributeSet({"FIT": 0, "REF": 1, "INT": 2, "CHA": -1, "CYB": 3, "PSY": 0})
+        attributes = AttributeSet({"FIT": 4, "REF": 5, "INT": 6, "CHA": 3, "CYB": 7, "PSY": 5})
         agent = LLMAgentSpec(name="placeholder_actor", attributes=attributes)
-        self.assertEqual(agent.attributes["CYB"], 3)
+        self.assertEqual(agent.attributes["CYB"], 7)
 
     def test_structured_mechanics_are_code_resolved(self) -> None:
-        attributes = AttributeSet({"FIT": 0, "REF": 1, "INT": 2, "CHA": -1, "CYB": 3, "PSY": 0})
+        attributes = AttributeSet({"FIT": 4, "REF": 5, "INT": 6, "CHA": 3, "CYB": 7, "PSY": 5})
         result = resolve_structured_check(
             attributes=attributes,
             attribute_id="CYB",
-            target=15,
-            extra_modifiers=(1,),
-            dice_total=11,
+            target=21,
+            skill_level=7,
+            dice_total=8,
         )
-        self.assertEqual(result["total"], 15)
+        self.assertEqual(result["total"], 7 + 7 + 8)
         self.assertTrue(result["success"])
         opposed = resolve_structured_opposed(15, 15)
         self.assertTrue(opposed["unresolved_tie"])
         self.assertIsNone(opposed["winner"])
 
     def test_structured_trained_only_action_is_blocked(self) -> None:
-        attributes = AttributeSet({"FIT": 0, "REF": 0, "INT": 0, "CHA": 0, "CYB": 0, "PSY": 0})
-        result = resolve_structured_check(
-            attributes=attributes,
-            attribute_id="INT",
-            target=9,
-            skill_access=SkillAccess.TRAINED_ONLY,
-            has_skill=False,
-        )
-        self.assertFalse(result["attempted"])
-        self.assertEqual(result["blocked_reason"], "trained_only_without_skill")
+        attributes = AttributeSet({"FIT": 5, "REF": 5, "INT": 5, "CHA": 5, "CYB": 5, "PSY": 5})
+        # Issue #111 does not define an unskilled procedure; a request without a
+        # skill must fail loudly rather than silently rolling at a penalty.
+        with self.assertRaises(ValueError):
+            resolve_structured_check(
+                attributes=attributes,
+                attribute_id="INT",
+                target=9,
+                skill_level=None,
+            )
 
     def test_human_player_is_an_injected_input_boundary(self) -> None:
         player = HumanPlayer(
