@@ -334,8 +334,7 @@ the decision; a later contributor must not "helpfully" resolve them by inventing
 organisation, a history, or a mechanic.
 
 **Firewall.** Firewall is the insider and operational name for the classified field,
-intelligence, and counter-X-Risk culture inside the **United Nations Human Security and
-Survival Organization (UNHSS)**. It preserves the useful cross-faction mission role of
+intelligence, and counter-X-Risk culture inside the **United Nations Human Security and Survival Organization (UNHSS)**. It preserves the useful cross-faction mission role of
 Eclipse Phase's Firewall without being a separate secret conspiracy outside government.
 Player characters are Firewall/UNHSS field agents by default while also retaining a
 personal political, cultural, national, professional, or social faction identity. The
