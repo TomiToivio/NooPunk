@@ -619,38 +619,32 @@ This does not mean every magical claim is true in-setting. Traditions may contai
 
 ---
 
-## 17. Social interaction and reputation
+## 17. Social and ideological mechanics: Affect, Factions, Motivations, Reputation and Contacts
 
-**Status: EP2 BASELINE + NOÖPUNK SIMULATION EXPANSION.**
+**Status: NOÖPUNK NATIVE, issue #107.**
 
-Use EP2 social/reputation mechanics where useful for the first playable prototype.
+NoöPunk now uses **one Affect graph** for Factions, Motivations, Reputation and Contacts. The canonical detailed specification is [rulebook/4_SOCIAL.md](rulebook/4_SOCIAL.md); the engine-neutral representation is [src/simulation/affect.py](src/simulation/affect.py).
 
-NoöPunk also needs a much larger social-science layer that should not be forced entirely into RPG skill checks.
+Every relation has a **Target**, semantic **Affect** label, and **Affect Score from -100 to +100**. Labels such as Knows, Trusts, Supports, Loves, Fears, Distrusts, Hates and Opposes are not collapsed into generic sentiment. Multiple labelled relations toward one target are allowed, all relations are directional, and an absent edge means **unknown**, not neutral.
 
-The theoretical foundation combines **Niklas Luhmann** and **Manuel Castells**:
-
-- For Luhmann, the basic operation of social systems is **communication**. Psychic systems (consciousness) and social systems (communication) remain distinct but structurally coupled. Language belongs inside this communicative/social domain rather than forming a separate ontological layer.
-- For Castells, contemporary society is increasingly constituted through **networks and flows**. Power includes the capacity to program networks, connect and disconnect actors, shape communication, and control or redirect flows.
-
-The Social layer is therefore best understood as a **communication network**. It includes interpersonal relations, discourse, language, organizations, institutions, rhizomes, reputation, media, ideology and network power.
-
-Keep distinct but interoperable:
+Factions are represented as changing discursive formations:
 
 ```text
-RPG social mechanics
-        ↕
-agent cognition
-        ↕
-social networks
-        ↕
-organizations / factions
-        ↕
-ideology / discourse
-        ↕
-political economy
+Faction = US^(positive / constitutive Affects)
+        + FRONTIER^(negative / antagonistic Affects)
 ```
 
-A conversation may be roleplayed by LLM agents while deterministic mechanics resolve specific consequential social actions.
+This adapts Emilia Palonen's Formula of Populism as a **general model of political/social identification**, not a populism classifier. US and FRONTIER may articulate demands, signifiers, identities, factions, institutions, technologies and individuals. Laclau/Mouffe distinctions remain binding: difference is not automatically antagonism, ambiguity is not automatically emptiness, and affective investment is not sentiment classification.
+
+Character Motivations use the same edge representation. Faction membership supplies starting Affects, not mind control. Multiple factions preserve different labels as ambivalence; matching target+label edges are combined; explicitly personal Motivations can override inherited matching edges while provenance is retained.
+
+Reputation is a directional edge **from the evaluating faction/actor toward the character**. Contacts are person-to-person social edges, including friends, acquaintances, professional ties and enemies. Character creation should begin with a small playable Contact graph rather than a full biography generator. Exact Contact-count tables and universal relationship-score increments remain future design.
+
+The same heterogeneous graph is shared with the social/discourse simulation so play can eventually support introductions, brokers, social distance, alliances/frontiers, faction change, reputation propagation and discourse-network analysis without building four incompatible databases.
+
+At the architecture level, face-to-face, text/chat, voice/video, Mesh and PSI communication are channels over this same social layer. Channel-specific access or modifiers may differ, but relationship state does not fork by medium.
+
+The first playable interaction model is text-forward and hub-based, documented in [docs/design/GAMEPLAY_LOOP.md](docs/design/GAMEPLAY_LOOP.md): Locations contain Rooms/Places/Nodes, tasks and NPCs; the player moves among hubs, forms parties, communicates with Contacts, and enters bounded missions. A small Asteroid Belt/station slice is the preferred initial scope. Exploration, Social, Mission, Combat, Cyberspace and Psionics are interaction modes around one persistent character/world model.
 
 ---
 
@@ -3353,6 +3347,13 @@ a one- or two-sentence note explaining their contribution.
 
 ### 35.3 Fiction books
 
+- **Richard K. Morgan — _Altered Carbon_.** Embodiment, identity transfer, inequality,
+  crime, and the social consequences of cortical-stack-like continuity.
+- **James S. A. Corey — _The Expanse_ series.** Belt society, crews, interplanetary
+  political economy, factional conflict, and human politics colliding with non-human
+  technology.
+
+
 **Purpose:** inspirations rather than literal factual sourcebooks.
 
 Seed this list from works already cited elsewhere in the rulebook, including:
@@ -3373,6 +3374,12 @@ Add further fiction when it materially shapes NoöPunk's tone, society, technolo
 cosmology.
 
 ### 35.4 Movies and television
+
+- **_Altered Carbon_.** Visual and social treatment of resleeving-like identity transfer,
+  embodiment, extreme inequality, and crime.
+- **_The Expanse_.** Lived-in Belt habitats, space labor, factional politics, cultural
+  divergence, crews, and system-scale politics experienced at human scale.
+
 
 Maintain a curated list of screen works that influence NoöPunk's:
 
@@ -3397,7 +3404,10 @@ At minimum:
   transhuman-technology baseline, plus alternate pre-Fall parent continuity.
 - **Cyberpunk 2013 / 2020 / RED** — street-level cyberpunk, corporations, technology,
   urban social structure, and the old-school mechanical sensibility that NoöPunk often
-  simplifies from.
+  simplifies from. **Cyberpunk RED** additionally informs issue #107's compact
+  friends/enemies and Contact hooks.
+- **The Expanse Roleplaying Game** — crew-centered science-fiction play, Ties /
+  Relationships / Reputation, and Belt/station campaign structure.
 - **Shadowrun** — model for combining a cyberpunk street world with a second ontological
   layer; NoöPunk replaces urban fantasy with the Noösphere, PSI, NHI, and QIP.
 - **The Sprawl** — inspiration for narrativist cyberpunk play and faction pressure.
@@ -3406,6 +3416,12 @@ At minimum:
 Record whether a game contributes **rules**, **setting**, **tone**, or some combination.
 
 ### 35.6 Computer games
+
+- **Citizen Sleeper** — text-forward station hub, task loop, clocks/consequences and
+  relationship-driven progression.
+- **Citizen Sleeper 2** — crews/parties, travel between locations, and missions away from
+  hubs. These are structural interaction references only; NoöPunk does not copy their
+  setting, characters, prose, quests, or assets.
 
 Maintain a list of computer games that influence NoöPunk's playable form, interface,
 simulation model, cyberpunk atmosphere, AI society, hacking, or transhumanism.
@@ -3901,6 +3917,21 @@ theory is scientifically established or that the source's author would endorse N
 synthesis.
 
 ### Systems, communication, networks, cyborgs, and extended mind
+
+- **Ernesto Laclau & Chantal Mouffe.** *Hegemony and Socialist Strategy: Towards a
+  Radical Democratic Politics*, 2nd ed., 2001. Articulation, equivalence/difference,
+  antagonism and hegemony ground the social/discourse model in §17.
+- **Ernesto Laclau.** *Emancipation(s)*, 1996, and *On Populist Reason*, 2005.
+  Empty/floating signification, collective subjects, equivalential chains and affective
+  investment inform Factions and Motivations.
+- **Emilia Palonen.** *The Birth and Death of Liberal Democracy in Hungary: The Populist
+  Logic of Polarisation as Hegemony*, 2025. Source for the Formula of Populism heuristic
+  generalized by issue #107 beyond populism.
+- **Tomi Toivio.** *LaclauGPT: Ideological contestation over AI* (current
+  LaclauGPT-Discourse-Analysis paper). Computational discourse-analysis source for
+  articulation, demands, signifier roles, frontiers, affects, provenance, and the
+  safeguards that sentiment is not affective investment and disagreement is not
+  automatically antagonism.
 
 - **Niklas Luhmann.** *Social Systems*. Stanford University Press, 1995. English
   translation of *Soziale Systeme* (1984).
