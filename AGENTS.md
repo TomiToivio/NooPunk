@@ -61,11 +61,11 @@ Existing Godot and Concordia scaffolds must be preserved, not deleted, but they 
 
 ### 4. Current reserved design areas
 
-Issue #51 explicitly revises the earlier six-attribute reservation. The canonical character direction is now a **four-system unified tag model**: Physical / Social / Psychic / Cybernetic, with attributes represented as typed attribute tags rather than a separate subsystem. Ordinary-human attribute-tag values use the -3..+3 band, but the final attribute names/counts and generation procedure are not yet locked. The old FIT / REF / INT / CHA / CYB / PSY model and its 3d6 generator remain in the digital runtime only as documented porting debt.
+Issue #111 establishes the canonical **independent NoöPunk rules system**. The character ontology remains Physical / Social / Psychic / Cybernetic, but the final STAT names are not locked. Canonical STATS and trained Skills use **1–10** ratings.
 
-The current provisional **2d6 skill-check engine**, its difficulty ladder, opposed skill checks with player-character tie priority, unskilled -1 / trained-only blocking, the skill list, and the level-0..4 trained skill scale remain author-specified in RULEBOOK.md for now. Agents must preserve them until the author explicitly revises them.
+The canonical core check is **STAT + Skill + 1d10 vs Difficulty Value**. The authored DV ladder is **9 / 13 / 15 / 17 / 21 / 24 / 29**. Opposed checks use the same formula on both sides and higher total wins. Ties remain deliberately unresolved. Critical/fumble rules and the general situational-modifier procedure are also unresolved.
 
-**The current skill list, level-0..4 scale, and 2d6 skill-check engine are tabletop-first.** The existing digital runtime still contains the superseded 3d6 check engine and old difficulty ladder. Treat that as explicit porting debt, not as competing canon. Do not partially port #25 into one runtime; a later task must derive the shared digital specification and update Godot and Concordia consistently.
+Issue #110 contributes campaign-scoped skill content and field taxonomy, not EP2 numerical mechanics. The final skill list remains deferred. Do not restore the retired 2d6, 3d6-modifier, level-0..4, or EP2 percentile engines as current canon.
 
 The earlier issue #17 BCI / Compute / Connection / Infosec cyberspace modifier framework is **withdrawn from active canon**. Do not port it. Hacking / cyberspace is DEFERRED until the author defines an original NoöPunk subsystem.
 
@@ -86,11 +86,9 @@ Until explicitly specified, do not define:
 - equipment statistics
 - economy
 - advancement / XP
-- factions
 - professions
 - detailed geography
 - quests or canonical plot
-- social mechanics
 - hacking / cyberspace mechanics, including whether the withdrawn BCI / Compute / Connection / Infosec concepts return
 - vehicles
 - magic or supernatural systems
@@ -100,9 +98,9 @@ These may be represented only by clearly empty extension points when needed by t
 
 ### 5. Setting constraints
 
-Treat NoöPunk as an **alternate Eclipse Phase timeline set before the Fall**, combining Noösphere + Cyberpunk inside that transhuman setting.
+Treat NoöPunk as an **independent RPG system** in a pre-Fall 20XX transhuman setting combining Noösphere + Cyberpunk.
 
-Canonical anchors are: **20XX**, **Earth still exists**, **the Fall has not happened**, and **the technology level is broadly Eclipse Phase-level**.
+Canonical anchors are: **20XX**, **Earth still exists**, **the Fall has not happened**, and Eclipse Phase remains a major **setting/technology influence rather than a mechanical parent**.
 
 The cyberpunk layer remains technological, political, economic, and social cyberpunk. Do not convert it into fantasy.
 
@@ -157,7 +155,7 @@ silently restore them as active canon.
 
 Recognized influences include old-school Cyberpunk, Shadowrun, Philip K. Dick, Hawkwind, and 1970s space psychedelia.
 
-Those remain tonal/comparative references. **Eclipse Phase is different:** it is now the licensed parent continuity, technology baseline, and EP2 mechanical foundation for NoöPunk. Use EP material only within the applicable licensing and attribution boundaries, and document timeline divergences rather than renaming concepts merely to appear original.
+All named games are influences rather than parent systems. **NoöPunk is an original independent rules system.** Cyberpunk 2020/RED is the primary reference for the readable STAT + Skill + d10 feel; Eclipse Phase remains important for transhuman technology, existential-risk themes, reputation/mesh/morph ideas and Solar-System worldbuilding. Use externally derived material only within applicable licensing and attribution boundaries.
 
 ### 8. Minimal Godot foundation
 
@@ -238,9 +236,9 @@ NoöPunk's canonical design invariants are documented once in [`docs/archive/DES
 4. Allow scenarios and medium-specific presentation to diverge.
 5. Preserve the **Cyberpunk / Noösphere balance**.
 6. Treat **UFO Disclosure, Psionics and Panpsychism** as the defining Noösphere paradigm shifts.
-7. Treat **Shadowrun** as a comparative influence. Treat **Eclipse Phase** as the licensed parent continuity / technology baseline / EP2 rules foundation, subject to provenance and attribution.
+7. Treat **Shadowrun** and **Eclipse Phase** as comparative/setting influences, not mechanical parent systems.
 8. Do not silently redesign these balances. If an implementation requires a departure, document the reason explicitly.
-9. Treat **EP2 as the current mechanical chassis**. NoöPunk may simplify or replace subsystems deliberately, but agents must not revert the project to an original-rules-only premise unless the author explicitly changes direction again.
+9. Treat NoöPunk as an **independent original rules system** whose canonical core is **STAT + Skill + 1d10**; no external game supplies a default chassis.
 
 Practical consequences:
 
@@ -266,17 +264,18 @@ Platform-specific differences must be documented as adaptations. They must not s
 
 Scenarios, UI, pacing, maps, presentation, automation, and other medium-specific features may diverge where appropriate. Core rules, mechanics, terminology, and world canon should not.
 
-### 15. Eclipse Phase 2E chassis and alternate-timeline rule
+### 15. Independent rules chassis and setting-influence rule
 
-**Eclipse Phase 2E is the current mechanical chassis and Eclipse Phase is the parent continuity.**
+**Issue #111 supersedes the EP2-chassis direction. NoöPunk is mechanically independent.**
 
 When adding or revising mechanics:
 
-1. begin from the current author direction in issue #60 and `RULEBOOK.md`;
-2. preserve EP2 mechanics and terminology when they work, rather than replacing them for originality's sake;
-3. simplify or modify subsystems only when NoöPunk or Concordia has a clear reason;
-4. connect NoöPunk additions to the project's theoretical sources where appropriate;
-5. record whether material is EP-derived, modified EP, or NoöPunk-native, including licensing/provenance;
-6. keep unresolved systems unresolved rather than inventing unsupported canon.
+1. begin from current author direction and `RULEBOOK.md`;
+2. preserve the canonical **STAT + Skill + 1d10** engine and 1–10 rating scales unless explicitly revised;
+3. use other games as references and sources of ideas, not compatibility requirements;
+4. connect NoöPunk additions to theoretical sources where appropriate;
+5. record provenance/licensing for actually adapted material;
+6. keep unresolved systems unresolved rather than inventing defaults.
 
-Setting work must preserve the anchors **20XX / pre-Fall / Earth intact / Eclipse Phase technology level** unless the author explicitly revises them.
+Setting work preserves **20XX / pre-Fall / Earth intact** unless explicitly revised. Eclipse Phase can remain a major transhuman/space/technology influence without becoming the rules chassis.
+
