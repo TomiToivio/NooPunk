@@ -63,19 +63,21 @@ Existing Godot and Concordia scaffolds must be preserved, not deleted, but they 
 
 Issue #51 explicitly revises the earlier six-attribute reservation. The canonical character direction is now a **four-system unified tag model**: Physical / Social / Psychic / Cybernetic, with attributes represented as typed attribute tags rather than a separate subsystem. Ordinary-human attribute-tag values use the -3..+3 band, but the final attribute names/counts and generation procedure are not yet locked. The old FIT / REF / INT / CHA / CYB / PSY model and its 3d6 generator remain in the digital runtime only as documented porting debt.
 
-The current provisional **2d6 skill-check engine**, its difficulty ladder, opposed skill checks with player-character tie priority, unskilled -1 / trained-only blocking, the skill list, and the level-0..4 trained skill scale remain author-specified in RULEBOOK.md for now. Agents must preserve them until the author explicitly revises them.
+Issue #111 supersedes the earlier 2d6 / level-0..4 direction. The active core direction is an **independent NoöPunk 1–10 STAT + 1–10 Skill + 1d10 system**, while the final STAT and universal Skill lists remain explicitly deferred.
 
-**The current skill list, level-0..4 scale, and 2d6 skill-check engine are tabletop-first.** The existing digital runtime still contains the superseded 3d6 check engine and old difficulty ladder. Treat that as explicit porting debt, not as competing canon. Do not partially port #25 into one runtime; a later task must derive the shared digital specification and update Godot and Concordia consistently.
+Issue #110 defines campaign-scoped specialist content under that newer direction. Its provisional skill vocabulary and fields may be documented and represented as data, but agents must not treat Eclipse Phase linked aptitudes, percentile values, or other EP2 numerical mechanics as current NoöPunk rules.
+
+For the initial Asteroid Belt / UNHSS campaign, only expose specialist fields that actual play needs. The machine-readable profile is `data/rules/campaign_skill_fields.json`; scenario-specific additions should extend the profile instead of creating giant universal catalogs.
 
 The earlier issue #17 BCI / Compute / Connection / Infosec cyberspace modifier framework is **withdrawn from active canon**. Do not port it. Hacking / cyberspace is DEFERRED until the author defines an original NoöPunk subsystem.
 
 Until explicitly specified, do not define:
 - final attribute names/counts inside the four systems, or derived statistics
-- additional skills, or a rename/split/merge of the ones in RULEBOOK.md §5.3
+- the final universal skill list beyond the provisional/campaign-scoped vocabulary explicitly authorized by issues #110 and #111
 - which skills are unskilled-allowed versus trained-only
-- skill specialties or the mechanism by which a broad skill is narrowed (the profession mechanism in particular is deferred)
+- new specialist fields beyond those explicitly enabled by a campaign profile or character/scenario requirement
 - how many skills a starting character has, or at what levels
-- skill-to-attribute bindings (checks use the attribute relevant to the action)
+- final skill-to-STAT bindings
 - character creation
 - character classes or archetypes
 - combat resolution
