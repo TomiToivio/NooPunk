@@ -38,6 +38,17 @@ REQUIRED_EXAMPLES = {
     "machine-standing",        # machine rights / sceptical of human BCI
 }
 
+#: Issue #95 names three camps in the AI paradigm shift and asks that the setting
+#: contain "the full ideological spectrum rather than adopting one official answer".
+#: The accelerationist pole was already represented; these two were not, so the guard
+#: pins all three to the axis they belong to. Losing one silently would mean the
+#: simulation could only reason about part of the spectrum the issue specifies.
+REQUIRED_AI_CAMPS = {
+    "accelerant-frontier": "accelerationist",
+    "critical-ai-camp": "critical",
+    "xrisk-camp": "doomer",
+}
+
 
 def load() -> dict:
     return json.loads(MODEL_PATH.read_text(encoding="utf-8"))
@@ -128,6 +139,27 @@ def test_pcm_positions_are_not_uniform() -> None:
     pcm = next(f for f in model["factions"] if f["id"] == "pcm")
     kinds = {p["kind"] for p in pcm["positions"].values()}
     assert len(kinds) >= 2, "PCM must not hold one uniform position kind"
+
+
+def test_the_issue_95_ai_spectrum_is_represented() -> None:
+    """Issue #95: the setting contains the full AI spectrum, not one official answer.
+
+    The accelerationist pole was already present; the Critical AI and existential-risk
+    camps were not, so the simulation could only reason about a third of the spectrum
+    the issue specifies. Pin all three to the axis, and pin that they are genuinely
+    different kinds rather than three labels for one position.
+    """
+    model = load()
+    by_id = {f["id"]: f for f in model["factions"]}
+    for faction_id, expected_kind in REQUIRED_AI_CAMPS.items():
+        assert faction_id in by_id, f"missing AI-spectrum camp: {faction_id}"
+        actual = by_id[faction_id]["positions"]["ai"]["kind"]
+        assert actual == expected_kind, (
+            f"{faction_id} should hold the {expected_kind!r} position on the ai axis, "
+            f"found {actual!r}"
+        )
+    kinds = {by_id[f]["positions"]["ai"]["kind"] for f in REQUIRED_AI_CAMPS}
+    assert len(kinds) == 3, f"the three camps collapsed into one position: {kinds}"
 
 
 def test_required_example_combinations_exist() -> None:

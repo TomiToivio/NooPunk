@@ -431,6 +431,94 @@
         }
       },
       "$demonstrates": "Religious anti-cyborg faction that interprets NHI as spiritual entities."
+    },
+    {
+      "id": "critical-ai-camp",
+      "name": "Critical AI current",
+      "common_names": [
+        "Critical AI",
+        "the TESCREAL critique"
+      ],
+      "kind": "research-and-movement current",
+      "$kind_note": "Not one organisation. A current spanning researchers, labour and data-justice organisers, and critical-theory and social-data-science voices, which treats AI as a political-economic arrangement rather than a neutral capability.",
+      "$provenance": "Issue #95 section 2: 'Critical AI perspectives such as Timnit Gebru's and Emile P. Torres' critique of the TESCREAL bundle'. Recorded as the camp the issue names, so the simulation represents the full AI ideological spectrum rather than only its accelerationist pole.",
+      "positions": {
+        "ai": {
+          "kind": "critical",
+          "summary": "Not anti-machine-intelligence: opposed to who owns, governs and profits from it. Concentrated technological power, labour displacement and the TESCREAL-style bundling of AI with eugenics and longtermism are the objects of critique, not the artifact itself.",
+          "internal_disagreement": true
+        },
+        "nhi": {
+          "kind": "hybrid",
+          "summary": "Sceptical of Disclosure narratives that serve existing state and corporate secrecy, while accepting that contact is real and badly interpreted. Reads some NHI discourse as the same power question as AI, in a different register.",
+          "internal_disagreement": true
+        },
+        "psionics": {
+          "kind": "critical",
+          "summary": "Insists on evidence and replication discipline, and on asking whose claims are funded. Accepts psionics as a validated in-setting field without exempting it from the scrutiny it applies to AI.",
+          "internal_disagreement": true
+        },
+        "panpsychism": {
+          "kind": "hybrid",
+          "summary": "Open to consciousness-fundamental ontology as philosophy, suspicious of it as a shortcut past political economy. Wary of any metaphysics that makes exploitation unthinkable.",
+          "internal_disagreement": true
+        },
+        "cyborgization": {
+          "kind": "hybrid",
+          "summary": "Backs medical and disability-led augmentation and rights; resists augmentation as a market-differentiated advantage and as workplace coercion.",
+          "internal_disagreement": true
+        },
+        "noosphere": {
+          "kind": "hybrid",
+          "summary": "Interested in collective intelligence as a commons, hostile to the collective layer as an extraction surface. Split on whether the Noosphere can be built non-oppressively.",
+          "internal_disagreement": true
+        }
+      },
+      "$demonstrates": "Issue #95's Critical AI camp, which the existing data did not represent."
+    },
+    {
+      "id": "xrisk-camp",
+      "name": "Existential-risk current",
+      "common_names": [
+        "x-risk",
+        "the control-problem camp"
+      ],
+      "kind": "research-and-advocacy current",
+      "$kind_note": "A current rather than a faction: research institutes, safety organisations and advocates whose shared claim is that advanced AGI is a species-level hazard unless control is solved first.",
+      "$provenance": "Issue #95 section 2: 'existential-risk warnings such as Nate Soares' and Eliezer Yudkowsky's If Anyone Builds It, Everyone Dies'. Recorded as the camp the issue names.",
+      "positions": {
+        "ai": {
+          "kind": "doomer",
+          "summary": "Advanced AGI is a species-level hazard and capability development should stop until alignment and control are solved. Not a refusal of machine intelligence in principle but a refusal of the race as currently run.",
+          "internal_disagreement": true
+        },
+        "nhi": {
+          "kind": "hybrid",
+          "summary": "Treats contact as a control and verification problem: a more capable non-human intelligence cannot be trusted merely because it is diplomatic. Applies the same reasoning it applies to AGI.",
+          "internal_disagreement": true
+        },
+        "psionics": {
+          "kind": "hybrid",
+          "summary": "Mostly sceptical, and internally divided over whether psi research is an unhelpful distraction from the real hazard or an early warning about minds that act without a physical channel.",
+          "internal_disagreement": true
+        },
+        "panpsychism": {
+          "kind": "hybrid",
+          "summary": "Generally hostile to consciousness-fundamental ontology as wishful thinking, though a minority treats moral patienthood for machine minds as a serious issue rather than a distraction.",
+          "internal_disagreement": true
+        },
+        "cyborgization": {
+          "kind": "critical",
+          "summary": "Accepts medical augmentation; wary of cognitive augmentation that widens the gap between those who can be verified and those who cannot.",
+          "internal_disagreement": true
+        },
+        "noosphere": {
+          "kind": "doomer",
+          "summary": "The collective layer as a control failure: shared cognition may be precisely the channel through which a loss of autonomy happens without anyone deciding to lose it.",
+          "internal_disagreement": true
+        }
+      },
+      "$demonstrates": "Issue #95's existential-risk camp, which the existing data did not represent."
     }
   ],
   "paradigm_shift_events": [

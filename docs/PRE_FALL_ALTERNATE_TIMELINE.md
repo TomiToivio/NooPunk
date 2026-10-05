@@ -63,7 +63,23 @@ This is especially important for the LaclauGPT-style social-science layer: hegem
 
 ## Timeline discipline
 
-Use **20XX** for future dates unless the author explicitly fixes a year.
+Use **20XX** for future dates unless the author explicitly fixes a year. Kurzweil's 2045
+Singularity is a thematic reference, not a canonical date.
+
+The background is **not a year-by-year forecast**. Its major developments are unordered
+paradigm shifts unless a causal dependency is explicitly fixed by canon.
+
+In particular:
+
+- Cyberpunk intensification, AI/AGI transformation, QIP/PSI, UFO/NHI Disclosure, and
+  Noösphere emergence must not be converted into numbered historical stages;
+- the **QIP/PSI breakthrough occurs independently of UFO/NHI Disclosure**;
+- canonical summaries should stay structural and generic rather than prescribe raids,
+  speeches, broadcasts, or a single national disclosure sequence;
+- detailed narrative variants belong in `docs/archive/NARRATIVE_TIMELINE_VARIANTS.md`;
+- real scholars and theorists may be named for attribution, while political, corporate,
+  military, media, and celebrity actors inside fictional 20XX should normally be
+  fictionalized.
 
 Do not independently write the Fall into the timeline.
 

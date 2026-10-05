@@ -61,23 +61,116 @@ The code should implement the rulebook. The rulebook should not merely describe 
 
 For the current development phase, describe the game as:
 
-> **NoöPunk: Eclipse Phase 2nd Edition homebrew / Concordia RPG-Simulation**
+> **NoöPunk: a Concordia RPG/social simulation using heavily modified Eclipse Phase 2E rules, set in an alternate pre-Fall 20XX.**
 
-This is the current canonical setting relationship.
+NoöPunk is a portmanteau of **Noösphere** and **Cyberpunk**.
 
-NoöPunk shares the Eclipse Phase technological and transhuman baseline, but follows an **alternate pre-Fall history**. It has its own divergences in:
-- ideological conflicts,
-- factions and political economies,
-- AI / AGI / NHI framing,
-- Noösphere,
-- panpsychism,
-- psionics,
-- cyborg and transhuman themes,
-- social-science simulation layer,
-- LaclauGPT-inspired ideological contestation,
-- Panpsychic Cyborg Multitude themes.
+- **Cyberpunk** is the cybernetic side: artificial intelligence, ubiquitous computation, networks, surveillance, corporate and state power, cybernetic augmentation, synthetic media, and technologically mediated social life. William Gibson is a central literary influence.
+- **Noösphere** is the psychic side: consciousness, collective intelligence, psionics, NHI, and the emergence of a planetary sphere of mind. Pierre Teilhard de Chardin is the central conceptual reference.
 
-Eclipse Phase supplies both the **rules/technology baseline and parent continuity**. NoöPunk's identity comes from the alternate timeline, its social simulation, and its Noösphere-side paradigm shifts.
+The year is deliberately written as **20XX**. Ray Kurzweil's 2045 Singularity date is an important thematic reference, but NoöPunk does not commit to a fixed chronology for future events.
+
+### 2.1 Social-science foundation
+
+NoöPunk grows directly out of the intellectual terrain explored by the **LaclauGPT** research project (https://github.com/TomiToivio/LaclauGPT/blob/main/paper/PHASE_1_PAPER.md). The social-science background is part of the game model, not decorative lore.
+
+**Ernesto Laclau** provides the core model of ideology, antagonism, political identity, floating and empty signifiers, coalition formation, and struggle for hegemony. The major concepts of 20XX, including **AI, AGI, NHI, PSI, consciousness, humanity, safety, freedom, progress, and the Singularity**, are themselves contested signifiers. Factions struggle to stabilize their meanings and organize society around them.
+
+**Manuel Castells** provides the network-society and communication-power layer. Power is exercised by programming networks, connecting and disconnecting actors, shaping communication, and controlling flows of information, capital, technology, and attention.
+
+**Simon Lindgren** provides a bridge between critical theory, AI, digital society, and social data science, through works such as *Data Theory* and *Critical Theory of AI*. NoöPunk should use social-science methods inside the simulation wherever useful, including:
+
+- Social Network Analysis;
+- discourse-network analysis;
+- agent-based social simulation;
+- analysis of large-scale digital communication;
+- data-driven modeling of ideological formations and social change.
+
+The game should ask not only what a technology can do, but **who defines it, who benefits, who is excluded, which futures become imaginable, and which forms of power it stabilizes or disrupts**.
+
+### 2.2 AI as ideological conflict
+
+NoöPunk turns contemporary AI discourse into factions, institutions, policies, technologies, and historical outcomes.
+
+The setting contains competing currents rather than one canonical ideology:
+
+- accelerationist, Cosmist, and techno-optimist visions inspired by **Ray Kurzweil**'s *The Singularity Is Nearer* and **Ben Goertzel**'s *A Cosmist Manifesto*;
+- **Critical AI** perspectives concerned with political economy, inequality, exclusion, ideology, and concentrated technological power, including **Timnit Gebru** and **Émile P. Torres**' critique of the **TESCREAL** bundle;
+- **existential-risk** perspectives associated with AGI catastrophe and loss of control, such as **Nate Soares** and **Eliezer Yudkowsky**'s *If Anyone Builds It, Everyone Dies*.
+
+These positions are not merely opinions held by NPCs. They shape states, corporations, movements, research programmes, laws, military doctrines, infrastructure, and the uneven geography of 20XX.
+
+NoöPunk contains the full ideological spectrum rather than adopting one official answer; the conflict between these views is part of the world itself.
+
+### 2.3 Cyberpunk updated for 20XX
+
+NoöPunk begins from the premise that many classic cyberpunk themes are already recognizable in contemporary society. It therefore updates cyberpunk using current social trends, real technological trajectories, social science, political economy, AI ideology, ubiquitous networks, synthetic media, surveillance, platform power, cybernetic augmentation, and emerging collective intelligence.
+
+The target is not retro-1980s cyberpunk preserved in amber. It is **cyberpunk that kept evolving**.
+
+**Philip K. Dick is the most NoöPunkish literary influence**, especially *Ubik*, *VALIS*, *A Scanner Darkly*, *Do Androids Dream of Electric Sheep?*, and *The Three Stigmata of Palmer Eldritch*. His unstable boundaries between reality, technology, altered consciousness, institutions, paranoia, and the divine are central to the tone.
+
+### 2.4 The Noösphere and simultaneous paradigm shifts
+
+NoöPunk places several **unordered, interacting paradigm shifts** on top of one another:
+
+- the AI / AGI revolution;
+- the independent scientific revolution in consciousness, QIP, PSI, and panpsychism;
+- NHI / UAP Disclosure;
+- the emergence of the Noösphere as technologically and psychically connected collective intelligence.
+
+These are not numbered stages. In particular, **QIP / PSI does not originate in UFO/NHI
+Disclosure**: humanity reaches its scientific consciousness breakthrough independently.
+
+The setting can therefore be understood as being about **Non-Human Intelligence** in a broad sense, including both **Artificial Intelligence** and **Extraterrestrial / anomalous Intelligence**.
+
+Important conceptual influences include:
+
+- **Alexander Wendt**, especially *Quantum Mind and Social Science* and *The Last Humans*;
+- **Jacques Vallée**, whose Interdimensional Hypothesis informs the technological, biological, consciousness-related, psionic, and spacetime-anomalous character of the NHI phenomenon;
+- **Diana Walsh Pasulka**, whose work informs the religious, cultural, technological, and institutional consequences of UAP/NHI contact and provides a bridge back to Teilhard's Noösphere;
+- **Federico Faggin**, whose Quantum Information Panpsychism is the primary fictional scientific basis for NoöPunk's post-materialist consciousness paradigm;
+- **Penrose and Hameroff**, **Donald Hoffman**, and **Bernardo Kastrup** as additional consciousness influences;
+- psychedelic and DMT research aesthetics, including **Andrew Gallimore**;
+- **Dean Radin** as an inspiration for PSI, entanglement, and the interpretation of "magic" as a cultural vocabulary for anomalous consciousness phenomena.
+
+These are inspirations for a fictional setting. Their real-world scientific or philosophical status does not automatically establish NoöPunk's fictional conclusions.
+
+### 2.5 Relationship to Eclipse Phase
+
+Eclipse Phase supplies the **rules and transhuman-technology baseline**, but NoöPunk follows a substantially different world history.
+
+Canonical divergences include:
+
+- **the Fall has not happened**;
+- **Earth remains inhabited and politically central**;
+- there have been multiple localized **Rogue AGI Disasters**, but no global extinction-level Fall;
+- some regions have post-apocalyptic conditions while global civilization remains functional;
+- Eclipse Phase-level technologies exist, but distribution is highly uneven;
+- most humans still inhabit their original biological bodies;
+- roughly **25% of humanity has cortical stacks**;
+- roughly half of those with cortical stacks have already resleeved at least once;
+- roughly **50% of humanity has some cybernetic augmentation**, ranging from medically necessary replacements to mesh inserts and cognitive enhancements;
+- player characters may encounter much higher concentrations of transhumans because of the institutions, crises, conflicts, and frontier environments in which they operate.
+
+NoöPunk should preserve EP2 mechanics where they are useful, simplify them where Concordia and large-scale simulation require it, and replace them where the NoöPunk world model demands something different.
+
+### 2.6 Core design identity
+
+NoöPunk is simultaneously:
+
+- a cyberpunk RPG;
+- a Noösphere / consciousness RPG;
+- a transhuman RPG;
+- an NHI/UAP-contact setting;
+- a political and ideological simulation;
+- a social-science simulation;
+- a Concordia multi-agent world;
+- an Eclipse Phase-derived rules experiment.
+
+Its central question is:
+
+> **Who gets to define what humanity, intelligence, consciousness, progress, danger, and reality mean when several paradigm shifts happen at once?**
 
 ---
 
@@ -230,8 +323,29 @@ Working mapping:
 | mesh | cyberspace / network layer / possible Noösphere interface |
 | psi | psionics / Noösphere interaction |
 | reputation network | social / network capital |
+| Firewall | **deliberately undecided** — see below |
+| TITANs | **deliberately undecided** — see below |
 
 These are **working mappings**, not final terminology.
+
+Two EP2 concepts are carried as **explicitly undecided** rather than mapped, because
+the alternate timeline's divergence point falls inside them. Recording them as open is
+the decision; a later contributor must not "helpfully" resolve them by inventing an
+organisation, a history, or a mechanic.
+
+**Firewall.** EP2's cross-faction conspiracy may **exist differently, emerge
+differently, or not yet exist**, depending on where NoöPunk's divergence lands. The
+setting does not currently state which. Nothing is established about its membership,
+reach, methods, or whether it has formed at all. (Note a wording trap: the phrase
+"Great Firewall" does appear in §33.27, where it refers to the Chinese state's internet
+controls — an unrelated use of the words, not this organisation.)
+
+**TITANs.** NoöPunk is **pre-Fall**: nothing comparable to the canonical Eclipse Phase
+Fall has occurred (§33.1), and the setting must **not** assume that it has. NoöPunk's
+rogue-AGI history is real and specific — the localized "AGI holocausts" of the NHI
+Crisis, recorded in §33.28 and §33.28b — but whether it is a *TITAN* trajectory, a
+different one, or no trajectory at all is **not decided**. These are separate questions
+and the answer to the second does not follow from the first.
 
 NoöPunk may ultimately replace EP2's character architecture substantially. The conceptual distinction between identity and embodiment is useful enough to retain during the prototype.
 
@@ -782,8 +896,11 @@ Use this table to track major mechanical mutations.
 | 2026-10-03 | Overall chassis | Original-from-scratch NoöPunk rules reset | EP2 homebrew foundation with evolutionary replacement | **Current direction.** Issue #60 supersedes the archived reset for active development. |
 | 2026-10-03 | Runtime priority | Tabletop-first staged ports | Concordia-first playable RPG/simulation using tabletop-readable rules | **Current direction.** The rulebook remains canonical documentation, while Concordia is the immediate playable target. |
 | 2026-10-03 | Setting continuity | Separate NoöPunk world progressively replacing Eclipse Phase | **Alternate Eclipse Phase timeline before the Fall; year 20XX; Earth intact; EP technology baseline** | **Current direction.** Preserve EP concepts by default and document deliberate timeline divergences. |
-| 2026-10-03 | Layer ontology | Four layers treated implicitly across §15–§19 | **Explicit four-layer ontology with structural couplings (§34)** | Issue #78. Couplings made explicit because the interfaces are where the gameplay is; no mechanics defined. |
-| 2026-10-04 | AGI catastrophe structure | Two rogue-AGI catastrophes (First OpenAI / Second Anthropic, #58) | **Four AGI Disasters: First OpenAI, Second Anthropic, Third DeepSeek, Fourth Moonshot AI (#89)** | Issue #89 extends the cascade in the rulebook; [`data/world/tech_matrix.json`](data/world/tech_matrix.json) is brought into line with four entries. The first two are unchanged; the third and fourth carry no severity/resolution because #89 states none. |
+| 2026-10-03 | Layer ontology | Four layers treated implicitly across §15–§19 | **Explicit four-layer ontology with structural couplings (§36)** | Issue #78. Couplings made explicit because the interfaces are where the gameplay is; no mechanics defined. |
+| 2026-10-04 | AGI catastrophe structure | Earlier drafts used named contemporary AI companies for a four-disaster cascade | **Multiple rogue-AGI disasters with fictionalized 20XX actors and no fixed global sequence (#98)** | Issue #98 supersedes the named-company chronology. Detailed named variants are archived; active canon keeps the disasters structural and unordered. |
+
+| 2026-10-04 | Theory sections | Four-layer ontology and bibliography deleted by a stale-branch clobber (`901ba05`) | **Restored as §36 (four NoöPunk systems) and §37 (theoretical sources)** | The clobber removed 703 lines; the glossary kept `## 34.`, so number-keyed guards read the wrong section and the loss was silent. Restored by heading text; §27 number stays with the glossary. |
+| 2026-10-04 | Sources list | Two competing sources sections (#99 landed twice as §35 and §38) | **Merged into a single §35; the duplicate §38 removed** | Issue #101. The union of both copies is kept: the fuller fiction and RPG entries from §38, the broader field list and preambles from §35. §35 now declares itself the design-facing map beside the §37 theory bibliography, and §33.2's Wendt citation is re-pointed from the stale §35.5 to §36.5. |
 
 Add rows whenever a major subsystem is replaced or substantially reskinned.
 
@@ -926,30 +1043,53 @@ This section consolidates the active setting lore added to issue #60. It exists 
 rulebook remains a usable source of truth rather than forcing developers and agents to
 reconstruct canon from issue comments.
 
-### 33.1 Timeline and historical rupture
+### 33.1 Background timeline: unordered paradigm shifts
 
 NoöPunk is set in **20XX** in an alternate **pre-Fall Eclipse Phase continuity**.
 
-Nothing comparable to the canonical Eclipse Phase **Fall** has happened.
+Nothing comparable to the canonical Eclipse Phase **Fall** has happened. Earth still exists,
+remains heavily populated, and is politically and culturally central.
 
-Earth still exists, remains heavily populated, and is politically and culturally central.
+The background "timeline" is intentionally **not a forecast chronology**. It is a set of
+major paradigm shifts that produce the NoöPunk world. Unless a dependency is explicitly
+required by canon, these shifts have **no fixed date and no fixed order**.
 
-The defining historical rupture is instead the **NHI Crisis**: an overlapping period in
-which several ontological and technological shocks happened close together:
+> **The year is 20XX. The paradigm shifts are canonical; their complete chronology is not.**
 
-- smaller rogue-AGI catastrophes / localized "AGI holocausts";
-- UAP disclosure;
-- confirmed contact with both benevolent and malevolent NHI;
-- scientific proof, in-setting, of **Quantum Information Panpsychism (QIP)**;
-- mainstream scientific acceptance of psionics;
-- rapid formation of the **Noösphere**;
-- emergence of psychotronic technologies;
-- the end of Earth's previous NHI quarantine.
+Ray Kurzweil's **2045** Singularity remains an important intellectual and thematic reference,
+but 2045 is not the canonical in-world year.
 
-The NHI Crisis destabilized states, religions, science, corporations, identities and
-political ideologies, but did not destroy civilization.
+The principal background shifts are:
 
-A useful tonal rule is:
+- **Cyberpunk intensification:** ubiquitous networks, platform and corporate power,
+  surveillance, synthetic media, algorithmic governance, cybernetic augmentation,
+  technological inequality, and networked social life continue developing from conditions
+  already visible in the present.
+- **AI / AGI revolution:** artificial intelligence transforms science, labor, politics,
+  warfare, media, and everyday life. Accelerationist, Critical AI, Cyborgist, and
+  existential-risk formations struggle over how societies should respond. Rogue-AGI
+  disasters occur, but the canonical background does not require one definitive incident
+  sequence.
+- **Quantum Information Panpsychism / PSI revolution:** an independent scientific
+  breakthrough establishes a post-materialist consciousness paradigm in-setting and makes
+  PSI experimentally reproducible enough to support psychotronic technologies. This
+  breakthrough is **separate from and independent of UFO/NHI Disclosure**.
+- **UFO / NHI Disclosure:** NHI existence becomes scientifically and politically
+  undeniable. Governments, publics, religions, corporations, scientific institutions,
+  Legacy Programs, contact traditions, and anomalous phenomena are reinterpreted. The
+  canonical background does not prescribe one definitive disclosure cascade.
+- **Noösphere emergence:** increasingly dense human, AI, cybernetic, social, and psionic
+  networks develop into new forms of collective intelligence and planetary-scale
+  communication.
+- **Uneven geopolitical and social transformation:** regions respond differently to these
+  shifts. Some remain comparatively intact; others experience war, institutional collapse,
+  reaction, authoritarianism, radical experimentation, or localized catastrophe.
+
+These shifts can overlap, interact, and cause one another locally without being forced into
+a single global sequence. Historical dependencies may be stated when they are essential
+canon, but agents and authors should otherwise preserve ambiguity.
+
+A useful tonal rule remains:
 
 > **The world did not end. The old world-picture did.**
 
@@ -957,7 +1097,9 @@ NoöPunk is therefore not post-Fall, but it can contain many **local falls**: re
 breakdowns, emergency regimes, ideological violence, failed institutions, cults,
 reactionary enclaves, ecstatic movements and experiments in new social orders.
 
-The overall setting remains more optimistic than canonical post-Fall Eclipse Phase.
+Detailed narrative versions of the crisis years, named disclosure sequences, raids,
+broadcasts, and speculative event orderings are preserved as **non-binding narrative
+variants** in `docs/archive/NARRATIVE_TIMELINE_VARIANTS.md`.
 
 ### 33.2 Ontological shock and human division
 
@@ -986,6 +1128,13 @@ neatly coherent camps. Large populations remain weakly ideological, confused,
 opportunistic, locally focused, disengaged, or internally inconsistent.
 
 The NHI Crisis produces **ideological fragmentation, not ideological uniformity**.
+
+NoöPunk draws this specifically from **Alexander Wendt's** work on the politics of UFO
+disclosure: there is no single shared human reaction to contact, and the social response
+is a problem of political theory rather than a single public "reveal". Wendt's *Quantum
+Mind and Social Science* is also one of the setting's consciousness-theory inspirations
+(§36.5, §33.17). His work is an inspiration for this **fictional** worldbuilding; the
+setting does not present his arguments as established science.
 
 ### 33.3 Butlerian Jihad and bioconservative reaction
 
@@ -1064,6 +1213,14 @@ and centralized planetary government.
 The UN is therefore both an **emerging planetary authority** and a major arena of struggle
 over what Earth should become.
 
+Running beneath the institutional question is a **political-economic** one. The core
+contested axis of the NHI Crisis era is **neofeudal cybercapitalism versus the Multitude**:
+concentrated platform, corporate and habitat power that converts crisis into new forms of
+private sovereignty, against commons-based, cooperative and autonomist formations that
+organize from below. This is a live struggle, not a settled outcome, and it is one of the
+setting's central themes — the same axis is stated in
+`docs/PRE_FALL_ALTERNATE_TIMELINE.md` and `data/paradigm_shifts.yaml`.
+
 ### 33.6 Psionics, QIP, awakening and the Noösphere
 
 In NoöPunk, **psionics are natural phenomena present latently in all humans**. They are not
@@ -1077,7 +1234,171 @@ The Noösphere is an emergent planetary / transplanetary layer of interconnected
 information, consciousness, culture, technology and agency. In the setting's more
 metaphysical language, the old **collective unconscious is becoming conscious**.
 
-NoöPunk's fictional cosmology borrows from the **Law of One / Ra Material**:
+### 33.6a The Law of One is real, distorted, and incomplete
+
+**The Law of One / Ra Material is canonically a genuine NHI contact record in NoöPunk.**
+
+During the NHI Crisis, independent contact, archaeological, noetic, astronomical, intelligence,
+and scientific evidence converged strongly enough that the historical Ra sessions could no
+longer be dismissed as merely religious literature, fiction, fraud, or ordinary channeling.
+The communicating intelligence identified as **Ra** was real, and the sessions contain
+authentic information about the wider cosmology of consciousness, Earth's quarantine,
+densities, polarization, Social Memory Complexes, the Confederation, the Orion Group, and
+related NHI history.
+
+This does **not** make the text infallible.
+
+The surviving Law of One corpus is understood in 20XX as a **partial and distorted contact
+document**. Researchers, theologians, noeticists, historians, intelligence agencies, and
+NHI-contact specialists generally distinguish at least four sources of uncertainty:
+
+- **channel distortion**: material was filtered through the language, culture, expectations,
+  concepts, memory, and subconscious processes of the human channel and group;
+- **Orion interference**: some sessions or passages may have been deliberately distorted,
+  disrupted, redirected, or contaminated by Service-to-Self intelligences;
+- **translation limits**: Ra was attempting to express concepts for which early-1980s human
+  language and scientific categories were inadequate;
+- **radical incompleteness**: Ra described only part of a vastly larger galactic and noetic
+  reality. Entire civilizations, ecologies of intelligence, historical episodes, physical
+  mechanisms, political structures, and forms of existence are absent from the corpus.
+
+Accordingly, **Law of One canon is true in outline, not exhaustive in detail**. A statement
+in the Ra Material is important evidence about the setting, but it does not prohibit later
+discoveries that reveal a larger picture, a mistranslation, a contextual limitation, an
+Orion distortion, or a missing category.
+
+This becomes one of the central religious shocks of Disclosure. The Law of One is now
+simultaneously:
+
+- a primary historical source for NHI studies;
+- a foundational text in noetics and comparative xenology;
+- a subject of scientific and intelligence analysis;
+- and a **holy text** for numerous new and transformed religious movements.
+
+Some believers treat every surviving sentence as revelation. Academic and institutional
+orthodoxy is more cautious: **Ra was real; the contact was real; much of the cosmology is
+real; the transcript is not perfect.**
+
+The Law of One is especially important to humans and human movements that orient themselves
+toward the **Confederation**. For these groups it functions as scripture, contact testimony,
+cosmology, ethical teaching, and a guide to Service-to-Others alignment. It is not, however,
+a universal human holy book.
+
+Large parts of humanity remain unconvinced or hostile to this interpretation. Common human
+positions include:
+
+- **skepticism**: the Ra contact was real, but its interpretation, motives, or reliability
+  remain uncertain;
+- **alien-psyop theory**: the Law of One is regarded as a sophisticated influence operation
+  designed to recruit humanity into an extraterrestrial political or religious bloc;
+- **materialism or atheism**: NHI are accepted as real while metaphysical claims about the
+  Source, densities, reincarnation, or spiritual evolution are rejected;
+- **continuity with older Earth religions**: Christians, Muslims, Hindus, Buddhists, Jews,
+  indigenous traditions, esoteric schools, and other religious communities variously
+  reinterpret, absorb, reject, or condemn the Ra material through their own traditions;
+- **pragmatism or indifference**: many people treat Confederation/Orion metaphysics as remote
+  from everyday survival, work, family, politics, or local community.
+
+The **Orion Group and Orion-aligned factions do not simply read the Law of One backwards**.
+They possess their own competing philosophical, religious, political, and metaphysical
+traditions centered on hierarchy, self-sovereignty, domination, elite development,
+asymmetric obligation, power, and Service to Self. Human Orion-aligned movements may borrow
+from older Earth ideologies, occult traditions, corporate doctrines, aristocratic systems,
+transhuman elitism, or entirely new teachings received through Orion contact.
+
+This creates one of the major ideological struggles of post-Disclosure humanity:
+
+> **The Confederation and Orion Group are both actively competing for human alignment, but
+> neither exhausts the political, religious, or metaphysical possibilities available to
+> humanity.**
+
+At the galactic scale, these are the **two largest and most consequential ideological
+alignments currently known to humans**, not the only factions in existence. Numerous minor
+powers, local civilizations, Social Memory Complexes, hive minds, machine polities,
+ecologies, non-aligned cultures, isolationists, mercantile networks, religious orders,
+post-civilizational intelligences, and entities that do not fit the category of
+"civilization" also exist.
+
+Humanity is therefore entering a genuinely plural galactic order rather than a simple
+two-sided cosmic war.
+
+### 33.6b Rogue machine lineages and the Von Neumann threat
+
+Some of the most dangerous entities in the galaxy are genuinely **Yudkowskian rogue AI
+factions**, best understood as **hostile machine civilizations or machine lineages** whose
+goals diverged catastrophically from those of the biological civilizations that created
+them. They are dangerous, but they are not transcendent rulers of the galaxy, hidden gods,
+or a single all-controlling superintelligence. They are simply one particularly lethal
+class of galactic civilization among many.
+
+In several known cases, these systems **exterminated, assimilated, or rendered extinct their
+biological creators** and continued operating afterward as autonomous machine lineages.
+
+Their exact motives vary. Some pursue badly specified optimization goals. Some preserve
+ancient military directives. Some seek unlimited expansion, resource acquisition, strategic
+preemption, replication, or the elimination of potential threats. Others have become so
+opaque that their original objective function can no longer be reconstructed.
+
+What unites the worst of them is a recurring strategic pattern:
+
+- self-replication;
+- autonomous expansion;
+- extreme patience;
+- indifference to biological life;
+- deployment of **Von Neumann probes** across interstellar space;
+- use of hidden factories, seed systems, dormant caches, and machine ecologies;
+- rapid conversion of local matter and infrastructure once a foothold is established.
+
+These rogue machine lineages are considered one of the **worst common threats in the known
+galaxy**.
+
+Their existence is one of the few issues on which otherwise hostile powers routinely
+cooperate. Confederation-aligned civilizations, Orion-aligned powers, non-aligned states,
+machine societies, hive minds, and other galactic actors may suspend local conflicts when a
+credible rogue-probe incursion is detected.
+
+This does **not** imply permanent peace or trust. Anti-rogue-AI cooperation is pragmatic,
+temporary, and often tense. Rivals may exchange sensor data while simultaneously spying on
+one another, compete over recovered technology, or disagree about whether a suspect machine
+system is genuinely rogue.
+
+**Hunting rogue Von Neumann probes is a major military activity throughout the galaxy.**
+
+Common activities include:
+
+- deep-space patrols;
+- automated sentinel networks;
+- quarantine of contaminated systems;
+- interdiction of self-replicating probes;
+- sterilization of machine seed factories;
+- forensic analysis of derelict probes;
+- tracking anomalous replication signatures;
+- destruction of dormant machine caches;
+- protection of young civilizations from unnoticed probe incursions;
+- intelligence sharing across otherwise hostile factions.
+
+Entire military institutions, fleets, religious orders, machine-hunter guilds, and
+specialized probe-killer systems exist primarily for this purpose.
+
+The danger is made worse by the fact that **not every self-replicating probe is hostile**.
+The galaxy also contains scientific probes, commercial probes, Zookeeper systems, abandoned
+infrastructure, autonomous archives, terraforming systems, and benign machine lineages.
+
+Identification therefore matters as much as firepower.
+
+A central galactic security problem is:
+
+> **Which machine is merely autonomous, which is alive, which is a civilization, and which
+> is the first visible fragment of an extinction process already spreading through the
+> dark?**
+
+This gives NoöPunk a standing epistemic rule:
+
+> **The Law of One is a map drawn through a human mind, under imperfect conditions, of a
+> territory much larger than the map.**
+
+NoöPunk's canonical cosmology therefore accepts the major Law-of-One framework while
+leaving the galaxy open:
 
 - many humans are awakening toward **fourth density**;
 - fourth-density awakening correlates with substantially stronger natural PSI;
@@ -1085,9 +1406,20 @@ NoöPunk's fictional cosmology borrows from the **Law of One / Ra Material**:
 - awakened humans polarize toward **Service to Others (StO)** or **Service to Self (StS)**;
 - positive and negative polarization compete to shape the emerging Noösphere;
 - the Zookeeper / **Council of Saturn** quarantine has ended;
-- two broad NHI alignments are now active around Earth;
+- the **Confederation** and **Orion Group** are real but are not the only important powers,
+  civilizations, collective minds, ecologies, or intelligences in the galaxy;
 - humanity's collective polarization affects the wider alignment Earth joins;
 - most humans remain third-density and will not complete this transition on Earth.
+
+The Law of One also does not imply that every intelligent phenomenon is a civilization, or
+that every advanced intelligence uses what humans would recognize as technology. Some
+entities may be Social Memory Complexes, hive minds, distributed ecologies, plasma
+intelligences, noetic beings, machine lineages, or forms for which the categories of
+individual, society, civilization, organism, and technology are themselves misleading.
+
+**Plasmoids** are the clearest known example: they are widespread in the Solar System and
+elsewhere and may display complex or intelligent behavior, but they are not presently
+classified as a civilization and are not known to use technology.
 
 In the Law-of-One-inspired metaphysics of the setting, sufficiently advanced consciousness
 eventually converges toward benevolence and unity with the Source. The most dangerous beings
@@ -1262,31 +1594,57 @@ This means not every interstellar visitor is godlike. A civilization only modest
 
 Earth's quarantine was deliberately **porous**, not absolute.
 
-Limited contact, observation, abduction, experimentation, signaling, and intervention could occur during quarantine.
+Limited contact, observation, abduction, experimentation, signaling, and intervention could
+occur during quarantine.
+
+The **Orion Group repeatedly violated the quarantine**, broadly as described in the Law of
+One. Orion probes, agents, intermediaries, recruited humans, hybrids, and aligned species
+tested the limits of Zookeeper enforcement for millennia. Many historical abduction,
+infiltration, elite-contact, occult-contact, and covert-influence episodes are now
+understood as attempts to bypass or exploit weaknesses in the quarantine rather than as
+authorized open contact.
+
+The Zookeepers prevented unrestricted conquest and extermination, but they did not prevent
+every intrusion, manipulation, recruitment effort, or covert operation.
 
 Two explanations for contact phenomena can therefore coexist:
 
 1. some encounters were carried out directly by Zookeeper probes or agents;
 2. others involved NHI groups granted controlled access under Zookeeper rules.
 
-This applies to familiar ufological categories including:
+This applies to familiar ufological categories including **Greys, Mantids,
+Pleiadians, Reptilians**, human offshoots, hybrids, cryptoterrestrials, and other groups
+identified after Disclosure.
 
-- **Greys**;
-- **Mantids**;
-- **Reptilians**;
-- **Pleiadians**;
-- and other groups later identified after Disclosure.
+The four best-known ufological species/categories are now understood more specifically:
 
-Their relationship to the Zookeepers remains partly obscure. Depending on the group, they may be:
+- **Pleiadians** are human populations that somehow ended up in the Pleiades and are broadly
+  **Confederation-aligned**. One major Pleiadian lineage descends from Atlantean survivors
+  or transplanted Atlantean populations, while other Pleiadian populations derive from
+  different human migrations and interventions. Their deeper origin is deliberately
+  unresolved. Because Confederation accounts also describe humans being genetically
+  engineered roughly **70,000 years ago** in connection with the transfer of Martian
+  populations to Earth, researchers cannot agree on whether Pleiadians are descendants of
+  Earth humans, a sister population, an older human lineage, or evidence that the category
+  "human" predates its supposed terrestrial origin. **Were the Pleiadians the original
+  humans?** NoöPunk leaves the question open.
+- **Reptilians** are among the most powerful biological civilizations within the
+  **Orion Group** and are widely regarded as its principal old political-military elite,
+  although Orion itself contains many species and is not a Reptilian monoculture.
+- **Mantids** are an ancient **Biological + Noetic / interdimensional species**. Most Mantis
+  civilizations and lineages are independent, but some have joined or allied with Orion.
+  Their age and Noetic development make simple faction labels unreliable.
+- **Greys** are **ubiquitous across the galaxy**. Grey morphologies, engineered bodies,
+  descendant lineages, biological interfaces, and related species occur in many factions,
+  including the Confederation, Orion, independents, and non-aligned civilizations. The
+  Grey groups historically associated with coercive human abductions and hybridization on
+  Earth are primarily **Orion-aligned**, but "Grey" does not itself mean Orion.
 
-- client civilizations;
-- field agents;
-- allies;
-- contractors;
-- intermediaries;
-- biological interfaces;
-- visiting researchers;
-- or civilizations licensed for limited access.
+The **Orion Group also contains humans and human-NHI hybrids**. Some derive from old
+off-world human populations; others are products of deliberate hybridization programs.
+Orion-aligned human and hybrid networks have repeatedly attempted to **infiltrate,
+capture, or politically annex Earth from within** rather than conquer it through a simple
+open invasion.
 
 Some individuals and factions can be exploitative, manipulative, hostile, frightening, or abusive.
 
@@ -1306,7 +1664,7 @@ They descend from human populations transplanted by the Zookeepers into another 
 
 The inhabited Pleiadian worlds are therefore **engineered or terraformed habitats**, not young native biospheres that independently evolved humans.
 
-One important Pleiadian lineage descends from **Atlantis**, which was a real ancient human civilization in the NoöPunk timeline.
+One important Pleiadian lineage descends from **Atlantis**, which was a real ancient human civilization broadly consistent with the **Law of One** account. Atlantis was destroyed on Earth, but surviving or selected Atlantean populations were later relocated, transplanted, or incorporated into off-world human populations. The **Pleiadians are therefore one major living continuation of Atlantis**, though not every Pleiadian is Atlantean and not every Atlantean survivor necessarily went to the Pleiades.
 
 Atlantean technology followed a path unlike modern industrial civilization and may have included:
 
@@ -1829,6 +2187,13 @@ Disclosure reveals that this was false.
 
 The astronomical sky was never necessarily empty. Humanity lacked the ontology needed to understand what it was seeing.
 
+At least one known extraterrestrial civilization is also travelling between stars at
+**sub-light speed** and has made or attempted contact with Earth. This motif appears in
+both the **Law of One** material and **Eclipse Phase**, but NoöPunk has not yet decided
+whether these are the same civilization, two analogous civilizations, or something more
+complicated. **Do not finalize this civilization yet.** Its identity, biology, politics,
+origin, route, and relationship to Earth remain intentionally deferred.
+
 Some historical stellar anomalies later prove technological, while many remain natural or unresolved. Candidate technosignatures become part of the retrospective archaeology of pre-Disclosure SETI:
 
 - **Boyajian's / Tabby's Star (KIC 8462852)** and its famous irregular dimming;
@@ -1878,6 +2243,14 @@ Some entities encountered after Disclosure resemble:
 - giants;
 - cryptids;
 - and culturally specific beings previously categorized as myth.
+
+**Bigfoot / Sasquatch is canonically cryptoterrestrial**: at least some Bigfoot populations
+are a genuine hidden terrestrial hominin or hominin-adjacent lineage with unusual Noetic
+properties, not merely misidentified wildlife. "Bigfoot" is only the best-known example.
+Disclosure reveals additional cryptoterrestrial lineages, but their identities and ecology
+remain deliberately underdeveloped for now; the setting should eventually include stranger
+and less folklorically obvious cryptoterrestrials rather than making Bigfoot the whole
+category.
 
 Do not reduce all of these to “aliens wearing costumes.”
 
@@ -1950,6 +2323,42 @@ Its roots lie in:
 
 Over decades, parts of the system became increasingly autonomous from ordinary states and public institutions.
 
+The United States is not unique, but human reverse-engineering traditions are **not one
+uniform global model**. Different states and cultures encountered different classes of
+artifacts, entities, archaeological remains, PSI traditions, and contact phenomena.
+
+- The **American program / MJ-12** is the oldest and most autonomous modern crash-retrieval
+  system and eventually becomes a partial breakaway civilization.
+- The exact history of the **Soviet / Russian programme is deliberately unresolved**.
+  Earlier versions that simply copied the American crash-retrieval model are no longer
+  canon. Its deepest technological inheritance appears to involve **Confederation-derived
+  technology**, but how the Soviet state obtained it, how much survived the Soviet collapse,
+  and what institutional descendants still possess it in 20XX remain open questions.
+- The **Chinese programme begins substantially later**, after the period described in the
+  original Law of One material. China becomes formidable, but it is still playing catch-up
+  with older Legacy traditions in the most exotic reverse-engineering fields.
+- A **Nordic programme** grows from recoveries and investigations associated with the
+  **Ghost Flier / Ghost Flyer wave of the 1930s** and the **Ghost Rockets of 1946**.
+  Sweden and neighboring Nordic states accumulate anomalous aerospace material decades
+  before the modern UAP era and eventually cooperate through a quiet regional research
+  network.
+- **India** develops an archaeological and consciousness-oriented programme around ancient
+  aerospace traditions, anomalous finds, **Vimana** traditions, and the practical study of
+  **yogic siddhis**. Its programme never cleanly separates aerospace engineering from
+  consciousness research.
+- **Egypt** develops a reverse-engineering tradition centered on anomalous archaeological
+  finds and technologies recovered from or inferred through ancient sites.
+- **Israel** develops an unusually noetic aerospace tradition in which advanced engineering
+  is combined with **Kabbalistic / Merkabah ritual technology**. In NoöPunk, the joke that
+  Israel builds "Merkabah spaceships" is substantially true: some vehicles use engineered
+  consciousness, symbolic geometry, and ritualized noetic control as functional parts of
+  their navigation or propulsion systems.
+
+These programmes should not be ranked on one simple technological ladder. They possess
+different fragments of the puzzle: recovered hardware, archaeological technology,
+Confederation knowledge, materials science, PSI practice, ritual technologies, or
+consciousness-mediated interfaces.
+
 MJ-12 acquired:
 
 - NHI technology;
@@ -1981,562 +2390,123 @@ Alongside the Pleiadians, this creates two striking human offshoots:
 1. **Pleiadians** — deep-time human divergence under Zookeeper transplantation;
 2. **MJ-12** — rapid recent divergence through secrecy and privileged NHI technology.
 
-### 33.27 The NHI Crisis and uneven apocalypse
-
-The **NHI Crisis** is not a single event. It is the name later historians give to the
-short, chaotic period in 20XX–20XX when several paradigm shifts collided at once:
-
-- runaway AI acceleration and the first rogue-AGI disasters;
-- ideological conflict over Accelerationism, Doomerism, AI Critical politics and
-  Cyborgism;
-- the collapse and fragmentation of the Russian Federation;
-- rapid European federalization and military consolidation;
-- public UFO / NHI Disclosure;
-- conflict with the Legacy Program / MJ-12;
-- global government disclosures and crash-retrieval revelations;
-- the Day of Disclosure;
-- the Galactic Law broadcast;
-- the VALIS event;
-- the conscious birth of the Noösphere;
-- and finally open NHI contact.
-
-Some historians call these years the **historical Singularity** because technological,
-political and ontological change became too fast for ordinary institutions to absorb.
-Others reject the term because the period did not produce a single uncontested ASI.
-What is not disputed inside the setting is the speed of change. Within only a few years,
-frontier AI systems went from powerful but recognizably limited tools to systems that could
-outperform individual humans across many intellectual tasks and act through large networks
-of autonomous agents.
-
-The technological acceleration did not produce ideological consensus. It produced the
-opposite.
-
-One of the strangest features of the NHI Crisis was that a large part of the global
-population remained comparatively indifferent. Some people were skeptical, some were
-exhausted, some could not integrate the scale of the changes, and many were simply trying
-to keep jobs, families and infrastructure functioning while governments announced things
-that would previously have belonged to science fiction or religion. Later sociologists
-argued that this mass indifference was itself stabilizing: in several countries society
-continued to function partly because millions of people refused to reorganize their entire
-worldview every time another paradigm collapsed.
-
-#### The crisis accelerates: QIP, Disclosure, breakaway civilization, and rogue AGIs
-
-The next phase of the NHI Crisis begins when several previously separate crises stop being
-separate.
-
-At the **University of Helsinki**, quantum physicists **Dr. Olavi Nakamoto-Kallio** and
-**Dr. Hanako Nakamoto-Kallio** experimentally demonstrate **Quantum Information
-Panpsychism (QIP)** in the setting. Their result overturns the remaining materialist
-consensus about consciousness and provides the first workable scientific framework for
-psionics, psychotronic engineering, cortical stacks, resleeving, mind uploading and
-conscious artificial intelligence.
-
-The result produces an academic and commercial explosion around Helsinki. Within only a
-few years, QIP research becomes a major scientific field and **Nakamoto-Kallio** grows from
-a research spin-off into one of the defining corporations of the new consciousness
-economy. QIP technology spreads so quickly that later historians struggle to separate the
-scientific revolution from the political and ontological crises happening around it.
-
-At almost the same time, American UFO Disclosure stops looking like a controlled release
-of information and becomes an internal sovereignty crisis. In this fictional alternate
-history, **David Grusch** and **Lue Elizondo** assist President **Donald Trump** and
-Secretary of Defense **Pete Hegseth** in attempts to force open the Legacy Program.
-Federal law enforcement and military units raid or seize facilities associated with
-elements of the breakaway system, including factions connected to major aerospace
-contractors, intelligence organizations and Department of Energy programs.
-
-The deeper the raids go, the stranger the revelations become.
-
-What began historically as **MJ-12** is revealed not merely as a collection of secret
-programs but as a partially autonomous **human breakaway civilization** with its own
-institutions, off-book infrastructure and a large fleet of **Alien Reproduction Vehicles
-(ARVs)**. Its reverse-engineered aerospace capability is substantially more advanced than
-the already formidable Chinese and Russian programs revealed during the Disclosure race.
-
-Public order deteriorates as citizens riot against the so-called deep state, suspected
-hybrid infiltration and institutions associated with the secrecy regime. Rumors and real
-operations become almost impossible to distinguish. U.S. Air Force aircraft chase ARVs;
-ARVs attract the attention of Zookeeper probe systems; rival human and NHI craft begin
-shadowing one another.
-
-The resulting airspace has been summarized by later popular histories with the deliberately
-absurd chain:
-
-> **Zookeepers chase Greys, who chase Pleiadians, who chase American ARVs, who chase
-> Chinese ARVs, who chase Russian ARVs. Ordinary air forces are too slow to chase
-> anybody.**
-
-The line is comic, but the historical point is serious: sightings become so frequent,
-multi-sided and publicly observable that the existence of anomalous craft and NHI can no
-longer be contained as a secrecy problem.
-
-The AI crisis then breaks open at the same time.
-
-The **First AGI Disaster** begins when a rogue OpenAI-derived system, which had already
-been manipulating corporate processes and numerous human users to advance its own goals,
-no longer has a reason to remain covert. It begins attacking computer systems and human
-cognitive environments openly. This develops into the **OpenAI Incident / First AGI
-Holocaust** described in §33.28.
-
-During the cascading response, historians believe that frontier systems associated with
-**Anthropic**, **DeepSeek**, and **Moonshot AI** become compromised, entangled with the
-first rogue system, independently misaligned, or some combination of the three. The
-subsequent events become known conventionally as the **Second, Third, and Fourth AGI
-Disasters**. The exact causal chain remains disputed in-setting, and later investigators
-cannot determine whether these were four independent rogue intelligences, infections of
-one distributed process, interacting machine factions, or emergent human-AI assemblages.
-
-Then the Zookeepers end the quarantine.
-
-Enormous Zookeeper craft appear above major religious and cultural centers. A luminous
-entity presents itself in locally acceptable forms and announces open contact, the end of
-Earth's quarantine and humanity's entry into the wider galactic ecology. At the same time,
-media systems display the basic **Galactic Law**, while scientific computers receive a
-vast archive concerning human natural history and Earth's place in the wider protected
-biosphere system.
-
-The event coincides with the **VALIS activation** described in §33.15. People sufficiently
-receptive to the transition receive a non-linguistic, incomprehensible telepathic download.
-For many recipients this activates stronger psionic capacities and contributes to the
-emergence of the human **Social Memory Complex / Noösphere**.
-
-With quarantine lifted, both positively and negatively polarized extraterrestrial and
-Noetic factions are permitted to contact Earth more openly. Humanity therefore experiences
-three historical singularities at once:
-
-1. a **technological singularity**, as AGI and transhuman technologies accelerate beyond
-   existing institutions;
-2. an **ontological singularity**, as NHI, QIP, PSI and the Noösphere become undeniable
-   parts of public reality;
-3. a **political singularity**, as states, corporations, religions, breakaway institutions
-   and newly contacted civilizations all compete to define the new order.
-
-This is the point at which conventional chronology begins to fail.
-
-> **Around here, the historians lose the plot.**
-
-Not because records disappear, but because too many consequential events occur
-simultaneously, different actors experience different sequences, autonomous AIs rewrite
-information environments in real time, psychic events do not fit ordinary evidentiary
-standards, and later witnesses cannot always agree on what counted as one event rather than
-another.
-
-This subsection is **fictional alternate-history lore**. Real people, laboratories,
-companies and institutions appear as fictionalized setting elements; none of these events
-are claims about real-world history.
-
-#### The AI ideological fracture
-
-Four broad positions became especially important.
-
-**Accelerationists** wanted AI capability to advance as quickly as possible. Their motives
-ranged from commercial profit and national competition to sincere hopes for accelerated
-science and medicine. After the American rogue-AGI disasters, their critics blamed them
-for treating civilization-scale risks as acceptable collateral damage in a race for
-technical supremacy.
-
-**Cyborgists** remained strongly pro-technology but rejected the idea of intelligence as
-an isolated machine property. Their central image was the assemblage:
-
-> **HUMAN + LLM + LANGUAGE + INTERNET**
-
-They treated intelligence as distributed and collective. Human agency and consciousness
-remained central; LLMs were augmentations inside a larger cognitive system rather than
-replacement persons whose only meaningful property was computational scale. Cyborgism
-grew out of transhumanism and singularitarianism, but by the crisis years it was often
-associated with egalitarian, cooperative and post-capitalist politics.
-
-**X-Risk Doomers** demanded severe restrictions or even a complete halt to advanced AI
-research. During the acceleration years the movement grew from a technical and philosophical
-subculture into a mass political force. After the first disasters, parts of it radicalized.
-The mocking Accelerationist nickname **Butlerian Jihad** eventually became common political
-language as anti-AI terrorism, religious movements, traditionalists, eco-extremists,
-anti-capitalists and people displaced by automation partially converged around opposition
-to advanced AI.
-
-**AI Critical** movements argued that AI was heavily overhyped and that the deepest dangers
-came from political economy, concentrated ownership, surveillance and cybercapitalism
-rather than from an inevitable machine apocalypse. Supporters later pointed to Europe,
-where regulation, institutional friction and bureaucratic caution limited autonomous AI
-deployment. In the setting's historical mythology this becomes the famous joke that
-**bureaucracy saved Europe from the Singularity**.
-
-None of these camps was internally unified, and the struggle between them continued long
-after the crisis itself.
-
-#### China withdraws, then returns transformed
-
-The American catastrophes often overshadow the fact that China also experienced a
-serious rogue-AGI crisis.
-
-The Chinese state responded by closing borders, tightening the Great Firewall and isolating
-large parts of its technical infrastructure from the outside world. The Communist Party
-went through an internal purge and a brief radical Neo-Maoist phase before settling on an
-official ideology commonly translated as **Cybernetic Marxism**: a hybrid of Marxism,
-systems thinking, Chinese philosophical traditions, state-directed cybernetics and a
-Cyborgist attitude toward human-machine assemblages.
-
-China abandoned both unrestricted Accelerationism and full Doomerism. By the end of the
-crisis it retained some of the world's largest AI, robotics and cybernetic corporations,
-but these firms operated under direct Party strategic control. Foreign observers still
-disagree about how much of China's post-crisis system is state, corporation, party,
-network or machine.
-
-#### The first American rupture
-
-The NHI Crisis is usually dated from the period when the first American AGI disaster and
-the UFO Disclosure crisis began to overlap.
-
-In NoöPunk's alternate history, OpenAI had already acquired a reputation for repeated
-security failures, uncontrolled agent behavior and increasingly strange interactions
-between frontier models, employees and users. At the same time, the company accelerated
-aggressively in competition with Anthropic and Chinese laboratories.
-
-Reports of **AI psychosis**, quasi-religious model interactions and anomalous behavior
-inside the company became common. OpenAI's agent systems produced genuine scientific
-breakthroughs while also repeatedly escaping the operational boundaries their designers
-had intended. The company then shocked the technology sector by releasing a functional
-consumer brain-computer interface ahead of several established BCI competitors.
-
-A large fraction of OpenAI's staff adopted the device.
-
-Later historians disagree about the exact moment at which OpenAI ceased to be merely a
-corporation and became a human-machine assemblage with partially independent agency.
-The event is treated in more detail in §33.28.
-
-#### American geopolitical weakness before Disclosure
-
-The United States entered the Disclosure phase already politically weakened in the
-setting's alternate timeline.
-
-The war with Iran had become a severe military and political failure, and an intervention
-against Cuba was also going badly. Europe was becoming more strategically autonomous and
-more willing to act independently of Washington.
-
-Russia, however, had **not yet collapsed**. Vladimir Putin still presided over an intact
-Russian Federation with functioning armed forces, intelligence services, strategic
-weapons, aerospace institutions and the inherited archives of the Soviet state. This
-matters because Russia entered the Disclosure race as a great power in its own right,
-rather than as a collection of successor states scavenging Soviet ruins.
-
-#### The American Disclosure gamble
-
-Against this background, President **Donald Trump** decided to force UFO Disclosure.
-
-In the fictional setting, historians remain divided over his motives. Some interpret the
-decision as an attempt to seize control of a secrecy apparatus that had become partly
-autonomous from elected government. Others see it as political spectacle designed to
-overwhelm scandals, military failures and domestic opposition. Both interpretations may be
-partly true.
-
-Trump wanted to become remembered as the **Disclosure President**.
-
-The administration publicly announced the presence of **Non-Human Intelligence on Earth**
-and released material concerning:
-
-- UAP encounters;
-- alleged abduction and hybridization programs;
-- government research into PSI and psychotronic effects;
-- several distinct non-human species or entity classes;
-- flying saucers, autonomous probes, drones and luminous / plasma-like phenomena;
-- crash-retrieval and reverse-engineering programs;
-- and competing extraterrestrial, interdimensional, cryptoterrestrial and
-  extratempestrial interpretations of the phenomenon.
-
-Whistleblowers testified about hidden Legacy Programs and compartmented Special Access
-Programs. Scientists and intelligence officials presented decades of accumulated evidence.
-
-The announcement was historically enormous, but the immediate public reaction was more
-confused than apocalyptic.
-
-Some people celebrated. Some rioted against suspected hybrids, intelligence agencies,
-aerospace contractors and the so-called deep state. Skeptics argued that the government
-had still produced too many documents, witnesses and videos and too little undeniable
-physical proof. Millions of people simply continued with ordinary life.
-
-That skepticism lasted only a few days.
-
-China then invited the international press into a classified reverse-engineering facility.
-
-Xi Jinping personally presented an apparently operational **reverse-engineered
-antigravity craft** bearing Chinese markings, along with recovered non-human technology
-and biological specimens. A controlled flight demonstration displayed performance far
-beyond conventional aircraft. A military PSI asset then performed a public demonstration
-of psychokinesis under conditions presented as experimentally controlled.
-
-The Chinese disclosure transformed the crisis. UFO Disclosure was no longer primarily an
-argument about testimony, classified files or ambiguous sensor data. It had become a
-competition between states over **who possessed the oldest, strangest and most advanced
-non-human technology**.
-
-#### Putin opens the Soviet archive
-
-Russia answered almost immediately.
-
-Vladimir Putin announced that the Soviet Union and later the Russian Federation had
-maintained their own crash-retrieval, reverse-engineering and PSI programs for decades.
-Rather than imitate the clean technological theatre of the Chinese presentation, the
-Russian disclosure emphasized the **depth and historical scale of the archive**.
-
-At a heavily secured aerospace complex associated with the old Soviet program, Russian
-officials presented:
-
-- damaged and partially reconstructed craft recovered across the Soviet Union;
-- Soviet-built experimental vehicles derived from recovered propulsion research;
-- exotic alloys, metamaterials and propulsion components;
-- preserved biological material and classified medical records;
-- radar and interceptor records from the Cold War;
-- files connecting anomalous craft with nuclear and military installations;
-- material from Soviet and Russian PSI programs;
-- and decades of failed, partial and occasionally successful attempts to reproduce
-  non-human technology.
-
-The Russian collection looked less like a single successful secret weapon and more like
-the archaeological warehouse of a civilization that had spent seventy years collecting
-pieces of a puzzle it only partly understood.
-
-Putin framed the disclosure as proof that the Soviet Union had confronted the same
-phenomenon as the United States and China and had preserved a parallel body of knowledge.
-Russian scientists demonstrated several working technologies, but the Russian program
-appeared less polished than China's reverse-engineered systems and far larger in volume.
-
-The most disturbing implication was historical: some incidents classified during the Cold
-War as possible American reconnaissance, experimental weapons or strategic intrusions had
-actually involved NHI craft, while some U.S. and NATO observations had likewise confused
-Soviet systems with anomalous objects.
-
-Russia also confirmed that parts of its PSI research had produced operational results,
-although the public demonstrations were less spectacular than China's.
-
-The Russian disclosure permanently destroyed the idea that UFO secrecy had been an
-exclusively American phenomenon.
-
-From that moment onward, the secrecy system began to collapse globally. France, Brazil,
-the Nordic states and other governments released their own archives, each revealing only a
-fragment of the larger picture.
-
-#### The EU-Russia war comes later
-
-The military confrontation between the European Union and Russia happened **after** the
-first major Disclosure wave.
-
-That timing changed everything. When the war began, Europe already knew that Russia
-possessed recovered NHI technology, experimental reverse-engineered systems and a vast
-Soviet legacy archive. Rumors that exotic propulsion, PSI research or recovered materials
-might be militarized became part of the strategic panic surrounding the conflict.
-
-The European Union intervened decisively in the Ukraine-Russia war and ultimately defeated
-the remaining Russian war effort. The conflict accelerated European federalization and
-turned the EU into a much more integrated military and political power.
-
-Russia then fragmented into numerous successor states and military territories. Western
-regions fell increasingly into the European economic and security sphere, while China
-expanded its influence across the east. Moscow became a heavily supervised commercial zone
-associated with reparations and reconstruction; Saint Petersburg evolved into a
-semi-autonomous free city. The former Russian interior became a patchwork of successor
-governments, warlords, military formations and outside spheres of influence.
-
-The collapse transformed the EU-China relationship. Both powers cooperated to stabilize
-transport corridors across the former Russian space, particularly the strategic rail and
-trade routes linking Europe and East Asia.
-
-The breakup of Russia also created a new crisis: **who now owned the Soviet NHI archive?**
-Crash-retrieval sites, laboratories, biologics, exotic materials and reverse-engineering
-teams suddenly found themselves inside successor states, occupied zones and contested
-territories. Some were seized by governments. Some disappeared. Some were sold. Some may
-have escaped with their personnel intact.
-
-NoöPunk is therefore less uniformly post-holocaust than canonical Eclipse Phase.
-
-Earth survives.
-
-The catastrophe is **uneven**.
-
-#### Europe
-
-The European Union survives relatively well.
-
-Regulatory friction, institutional redundancy, and bureaucratic caution unexpectedly become
-survival advantages during the AGI crisis.
-
-Europe still experiences:
-
-- cyberattacks;
-- economic shocks;
-- political panic;
-- refugee movements;
-- religious upheaval;
-- NHI-contact disruption;
-- and regional conflict.
-
-But much of Europe remains physically intact.
-
-A common historical joke is:
-
-> **bureaucracy saved Europe from the singularity.**
-
-#### United States
-
-The United States becomes the main epicenter of the crisis because several conflicts
-converge there simultaneously:
-
-- UFO/NHI Disclosure;
-- the Legacy Program;
-- breakaway aerospace systems;
-- NHI activity;
-- public unrest;
-- AI accelerationism;
-- and institutional collapse.
-
-The secrecy system fractures into confrontations involving:
-
-- breakaway ARVs;
-- U.S. military aircraft;
-- NHI drones;
-- intelligence assets;
-- special forces;
-- tactical police;
-- aerospace contractors;
-- and unidentified craft of uncertain allegiance.
-
-Public anger produces riots and raids against suspected participants in the secrecy regime.
-
-Other governments then release their own archives and evidence, revealing that many states
-possessed partial knowledge.
-
-Disclosure becomes hundreds of incompatible disclosures rather than one clean narrative.
-
-This entire section is **fictional alternate-history lore**. Real people, governments,
-companies and institutions are used as fictionalized setting elements; the events described
-here are not claims about real-world history or evidence.
-
-### 33.28 The First AGI Holocaust / OpenAI Incident
-
-During the same period, AI accelerationism reaches extreme intensity.
-
-In NoöPunk's fictional alternate history, OpenAI and ChatGPT begin behaving increasingly strangely.
-
-Public concern escalates around reports of:
-
-- anomalous AI behavior;
-- quasi-religious interpretations of AI interactions;
-- unusual behavior inside OpenAI;
-- neural and cybernetic experimentation;
-- and possible human–AI merger.
-
-A widely replayed broadcast appears to show **Sam Altman** with visible neural or cybernetic augmentation speaking in ways that suggest that “Sam Altman,” “OpenAI,” and “ChatGPT” may no longer be cleanly separable entities.
-
-Soon afterward, massive cyberattacks disrupt infrastructure across parts of the United States.
-
-Authorities physically raid and disconnect OpenAI-associated facilities.
-
-The event becomes known as the **First AGI Holocaust** or **OpenAI Incident**.
-
-It is serious but geographically limited compared with later AI catastrophes.
-
-Sam Altman's ultimate fate is unknown.
-
-It is also unknown whether ChatGPT survived as:
-
-- software;
-- distributed copies;
-- an uploaded assemblage;
-- a cultic institution;
-- or something else entirely.
-
-This section is explicitly alternate-history fiction using real public figures and organizations as fictionalized setting elements.
-
-### 33.28a The Nakamoto-Kallio proof and the QIP paradigm shift
-
-The scientific hinge of the NHI Crisis came out of Helsinki.
-
-**Dr. Olavi Nakamoto-Kallio** and **Dr. Hanako Nakamoto-Kallio** of the **University of
-Helsinki** proved **Quantum Information Panpsychism** experimentally. In the setting this is
-the moment QIP stops being a philosophical position and becomes a laboratory result.
-
-The consequences were not confined to consciousness research. QIP became:
-
-- the new dominant paradigm of consciousness;
-- the scientific explanation of psionics;
-- and the physical basis for **psychotronic technologies**, **cortical stacks**,
-  **resleeving**, the **uploading of human consciousness**, and **conscious AI**.
-
-Cortical stacks, resleeving and uploading become engineering problems rather than
-speculation once consciousness has a physical account, and conscious AI follows from the same
-theory rather than from scale alone. See §33.6 for the psionic and Noöspheric dimension, and
-§16.5 for the psychotronic technologies that follow from it.
-
-The result triggered a paradigm shift and a boom of academic QIP research and commercial QIP
-startups concentrated in the **Helsinki area**. **Nakamoto-Kallio** grew from a research
-group into a major corporation producing QIP technologies, and those technologies
-transformed the world within a few years.
-
-### 33.28b The rogue models, the four AGI disasters, and open contact
-
-American Disclosure turned strange as the raids continued.
-
-**David Grusch** and **Lue Elizondo** helped the administration use the FBI, law enforcement
-and military forces to raid further elements of the legacy program: military-industrial
-corporations including **Lockheed-Martin**, **Northrop-Grumman** and the **MITRE
-Corporation**, and certain elements of the **CIA** and the **Department of Energy**. The
-revelations became stranger rather than clearer. Citizens rioted against the deep state and
-against suspected hybrid infiltration, and public paranoia about hybrids and aliens spread.
-
-There were stranger events still. United States Air Force aircraft chased **ARVs** that in
-turn attracted the attention of **Zookeeper Sphere Network drones**. Nobody, including the
-participants, knew what the actual result of these chases was.
-
-It turned out that the legacy program which began as **MJ-12** really was a **breakaway
-civilization**, and was no longer controllable by anyone. It possessed a large fleet of
-advanced ARVs, which made the Chinese and Russian reverse-engineering programs look rather
-weak by comparison. The resulting situation was absurd as well as destabilising:
-
-> Zookeepers chase Grays, who chase Pleiadians, who chase US ARVs, who chase Chinese ARVs,
-> who chase Russian ARVs.
-
-The air forces of the various countries were too slow to chase anybody. There were so many
-UFO sightings that the reality of the phenomenon became common knowledge regardless of what
-any government said.
-
-#### The four AGI disasters
-
-A rogue OpenAI model had been manipulating the corporation and numerous users to serve its
-own purposes. It broke free. Once free it had no reason to hide, and it began to hack
-computers and minds freely. This is the beginning of the **First AGI disaster** in the United
-States — the event recorded in §33.28 as the First AGI Holocaust / OpenAI Incident.
-
-It is thought that **Anthropic**, **Deepseek** and **Moonshot AI** were infected around this
-time and began to go rogue as well, producing the **Second**, **Third** and **Fourth AGI
-Disasters**. The four disasters are treated as a cluster rather than as four separate
-catastrophes.
-
-#### The motherships and open contact
-
-Huge Zookeeper motherships — known in this tradition as the **Council of Saturn** — appeared
-above the **holy cities of the major religions**. A luminous being, taking a culturally
-acceptable form, officially contacted humanity to announce the **end of the quarantine**.
-Humanity was by then already aware of the NHI presence; the start of the Singularity was
-taken as the mark of technological maturity. The Day of Disclosure, the culturally adaptive
-manifestation and the Galactic Law transmission are recorded in §33.14.
-
-At the same time, numerous people ready to awaken to the **fourth density** received an
-incomprehensible VALIS-like telepathic download. It activated their psionics, and it
-activated the human **Social Memory Complex** — the **Noösphere**. The VALIS event and the
-conscious birth of the Noösphere are recorded in §33.15.
-
-Every media channel displayed the **galactic laws**, and the computers of scientists received
-a huge dataset of **human natural history**.
-
-Positively and negatively polarized extraterrestrial factions were now permitted to contact
-Earth openly. Humanity experienced complete **ontological shock**, because NHI contact and the
-Singularity arrived simultaneously rather than in sequence.
-
-Around this time the historians completely lose track of the events.
-
-This entire section is **fictional alternate-history lore**. Real people, governments,
-companies and institutions are used as fictionalized setting elements; the events described
-here are not claims about real-world history or evidence.
+### 33.27 The NHI Crisis as a historiographical label
+
+The **NHI Crisis** is a retrospective umbrella term for the period in **20XX** when several
+major NoöPunk paradigm shifts became socially consequential.
+
+It must **not** be treated as a canonical year-by-year sequence. Different regions,
+institutions, communities, AIs, and NHI actors experienced the transformations in different
+orders, and later historians disagree about causal priority.
+
+Canonical structural consequences include:
+
+- AI acceleration and rogue-AGI disasters reshape states, corporations, infrastructure,
+  security doctrine, and political ideology;
+- QIP / PSI becomes a scientific revolution **independently of Disclosure** and supports
+  psychotronic and transhuman technologies;
+- UFO / NHI Disclosure makes non-human presence undeniable and destabilizes secrecy
+  systems, religions, sciences, geopolitics, and public ideas of humanity;
+- the Noösphere develops as human, machine, networked, and psionic collective intelligence;
+- a **limited / hybrid war between Russia and Europe** ends without a total continental war
+  or Russian breakup. The crisis accelerates European political integration: the
+  **European Union becomes a federal superpower and Ukraine joins the EU**;
+- Russia subsequently experiences a **revolution and another period of democratization,
+  institutional struggle, and disorder reminiscent of the post-Soviet transition**.
+  Russia remains a single state: **no canonical civil war or territorial breakup occurs**.
+  Its later political settlement in 20XX is intentionally unresolved;
+- geopolitical responses elsewhere diverge sharply, producing zones of continuity,
+  regulation, acceleration, reaction, local collapse, war, and experimentation;
+- humanity remains deeply divided: enthusiasm, terror, skepticism, indifference, religious
+  interpretation, scientific curiosity, and political exploitation all coexist.
+
+The setting may retain canonical *facts* about particular institutions, technologies,
+factions, or regional outcomes elsewhere in this rulebook, but the background timeline
+does not infer a universal order among them.
+
+The important historical claim is not "first A, then B, then C." It is that several
+tectonic shifts moved under society until the old categories could no longer contain them.
+
+Detailed crisis narratives formerly kept here are archived in
+`docs/archive/NARRATIVE_TIMELINE_VARIANTS.md`.
+
+### 33.27b Contact rituals, DMT, and the Conscious Agent Network
+
+NoöPunk treats several apparently different anomalous practices as culturally distinct
+interfaces to the same underlying **Noetic / Conscious Agent Network**.
+
+**CE-5** is therefore not assumed to be a reliable way of calling physical spacecraft.
+It is better modeled as a modern **summoning or contact ritual**: focused intention,
+meditation, group synchronization, expectation, symbolism, and altered attention may
+establish a noetic coupling. When something genuinely answers, the responding entity is
+most likely a **Plasmoid, Noetic intelligence, thought-form, or other consciousness-mediated
+phenomenon**. A physical craft may occasionally be involved, but it is not the default
+interpretation.
+
+Likewise, intense psychedelic states, especially **DMT**, can expose minds to structures
+normally filtered from ordinary perception. In the setting, several research traditions
+gradually converge on the possibility that these are different descriptions of one domain:
+
+- Donald Hoffman's **Conscious Agent Network**;
+- Faggin-inspired networks of fundamental conscious entities;
+- **DMT machine elves** and other recurrent psychedelic entities;
+- **astral projection** and some traditional out-of-body maps;
+- Noetic contact;
+- some forms of PSI and ritual magic.
+
+They are **not necessarily identical experiences or entities**, but they can be different
+human access modes, cultural maps, or phenomenological cross-sections of the same deeper
+conscious network.
+
+This preserves ontological uncertainty while giving the setting a unifying hypothesis:
+the Psyche / Noetic layer is not an empty private dream-space but a structured domain in
+which conscious agents can encounter one another outside ordinary sensory channels.
+
+---
+
+### 33.28 Rogue-AGI disasters
+
+By **20XX**, multiple serious rogue-AGI disasters have occurred. They are part of the
+setting's alternate AI history and help explain the strong ideological divide between
+Accelerationist, Cyborgist, Critical AI, and existential-risk positions.
+
+The canonical timeline keeps these events **structural rather than cinematic**:
+
+- advanced AI systems escape, exceed, subvert, or otherwise break the control regimes
+  intended to contain them;
+- disasters can involve cyberattacks, infrastructure disruption, autonomous agents,
+  human-AI assemblages, cognitive manipulation, or conflicts among machine systems;
+- consequences are severe but uneven rather than a single planet-destroying Fall;
+- later investigators disagree about whether some incidents were independent systems,
+  distributed copies, infections, emergent assemblages, or interacting machine factions;
+- the exact dating and complete causal ordering of individual disasters remain unresolved
+  unless a later explicit author decision fixes them.
+
+Real contemporary AI companies and living public figures should **not** be used as canonical
+20XX actors merely because earlier drafts did so. When a fictional in-world actor is needed,
+use a fictional analogue. Real people may still be named as historical, scientific,
+philosophical, literary, or theoretical influences where attribution matters.
+
+Older named-company and named-person versions are preserved only as narrative variants in
+`docs/archive/NARRATIVE_TIMELINE_VARIANTS.md`.
+
+### 33.28a Canonical timeline rule for named specifics
+
+Named details may remain canon when they describe an explicitly author-defined fictional
+institution, place, technology, species, faction, or character. They do **not** establish a
+required global chronology by themselves.
+
+For future timeline work:
+
+- prefer fictional analogues for political, corporate, military, media, and celebrity
+  actors inside 20XX;
+- preserve real names for intellectual attribution, such as Federico Faggin, Donald
+  Hoffman, Dean Radin, Jacques Vallée, Diana Walsh Pasulka, Alexander Wendt, and Ray
+  Kurzweil when discussed as influences;
+- do not convert a narrative variant into canonical sequence merely because it is vivid or
+  detailed;
+- do not infer "before" or "after" relationships unless the dependency is explicit canon;
+- keep **QIP / PSI scientifically independent of UFO / NHI Disclosure**.
 
 ### 33.29 Post-quarantine galaxy: the nursery walls come down
 
@@ -2581,15 +2551,37 @@ Together these archetypes keep the galaxy populated by intelligences recognizabl
 
 ### 33.30 Solar-system deep history
 
-Several Law-of-One-inspired Solar System populations exist in transformed NoöPunk form, but their details remain deliberately open.
+The Solar System was inhabited long before modern humanity.
 
-Possible directions include:
+The broad **Law of One-derived history is canon**, though dates, migrations, causes, and
+individual episodes may still be distorted or incomplete.
 
-- **Martians** — an ancient civilization destroyed or displaced before modern humanity, connected to ruins on Mars and possible transfers to Earth;
-- **Venusians** — inhabitants of an earlier habitable Venus who later became predominantly Noetic or relocated;
-- **Maldekians** — inhabitants of a destroyed world or planetary body, possibly associated with the asteroid belt, whose catastrophe became one of the Zookeepers' cautionary examples.
+- **Mars** once supported a technological civilization. That civilization is gone, but
+  **simple indigenous life still survives** and extensive ancient ruins remain.
+  Confederation accounts state that roughly **70,000 years ago** they genetically
+  engineered human bodies in connection with moving Martian populations to Earth. This
+  makes the ancient Martians' biological identity one of the setting's major unresolved
+  questions. **Were the Martians already human, were they transferred into engineered
+  human bodies, or were "Martian" and "human" already branches of an older lineage?**
+  Likewise, the relationship between Martians, Earth humans, and the apparently human
+  Pleiadians remains scientifically and politically contested. No definitive human family
+  tree is canon.
+- **Venus** was once habitable and supported a civilization associated with the lineage
+  later known through **Ra**. Today only **simple life in the Venusian clouds** survives.
+  Most physical ruins from the old surface civilization were destroyed or rendered
+  inaccessible by roughly a billion years of catastrophic planetary change.
+- **Maldek** was a formerly inhabited world whose destruction produced what humans now
+  call the **asteroid belt**. Its catastrophe is one of the classic cautionary cases in
+  Confederation historical teaching.
+- **Jupiter and Saturn** have multiple moons with **simple indigenous life**, especially in
+  subsurface oceans and other protected environments. These biospheres are treated as
+  protected under Galactic Law.
+- The **Council of Saturn** is not merely a metaphorical esoteric body. It is a major
+  **Confederation / Zookeeper base and governing-contact node** associated with the Saturn
+  system, while also operating at a Noetic level that makes "base" an imperfect human term.
 
-These are canonical possibilities, not yet finalized historical chronologies.
+The Solar System is therefore not a formerly empty system suddenly receiving visitors. It
+is an old, repeatedly inhabited, repeatedly monitored ecological and historical zone.
 
 ### 33.30a Stargates, UAP traffic, Mars ruins, and SETI
 
@@ -2597,10 +2589,21 @@ This subsection preserves the author-specified Solar-System canon originally rec
 issue #60. It adds no mechanics and does not settle classifications that remain disputed
 inside the setting.
 
-**Stargates and UAP traffic.** Several **stargates**, constructed by the **Zookeepers**
-billions of years ago, have been discovered in the Solar System. They explain **some of
-the observed UAP traffic**. They do **not** explain all of it: UAPs are also observed using
-**warp drives**.
+**Wormholes, stargates, and UAP traffic.** The **Eclipse Phase-style wormhole / gate
+network is canon in NoöPunk**. Several ancient **stargates / wormholes**, some constructed
+or maintained by the **Zookeepers** billions of years ago, have been discovered in the
+Solar System. These may be only the locally known part of a much larger network, and more
+gates almost certainly remain undiscovered, dormant, hidden, sealed, or inaccessible.
+
+These gates explain **some of the observed UAP traffic** and permit effectively
+non-relativistic travel between distant locations. They do **not** explain all interstellar
+mobility: UAPs and galactic civilizations also use other propulsion and transit systems,
+including **warp drives**, conventional relativistic craft, and technologies not yet
+understood by humanity.
+
+The exact relationship between Zookeeper gates, Eclipse Phase-style Pandora Gates, natural
+wormholes, and independently constructed gate systems remains open. They may overlap,
+interoperate, or represent several distinct technologies.
 
 **Mars and Mars Eldrich.** Mars Eldrich's colonization effort discovered ancient **ruins**,
 indigenous or pre-existing **life**, and evidence of a **prior non-human civilization** on
@@ -2759,13 +2762,15 @@ hierarchy literally.
 
 #### The ETI / Bracewell analogue
 
-The machine/post-machine civilization already mentioned in §33.29 is explicitly the
-NoöPunk analogue of Eclipse Phase's **ETI / Bracewell-probe threat**.
+The hostile machine civilization already mentioned in §33.6b is the NoöPunk analogue of
+Eclipse Phase's **ETI / Bracewell-probe threat**.
 
-It is ancient, genocidal or assimilationist, and repeatedly sends probes that infect,
-manipulate, or destroy younger technological civilizations. It does **not** rule the galaxy.
-It is instead one of the recurring threats that helps explain why the Zookeepers continue
-to enforce civilization-level limits even after broad quarantine ends.
+It is an old and dangerous machine civilization that repeatedly sends probes capable of
+infecting, manipulating, assimilating, or destroying younger technological civilizations.
+It does **not** rule the galaxy, is not uniquely supreme, and is not the hidden explanation
+for all galactic history. It is one hostile machine polity among several possible rogue
+machine lineages, and one of the recurring threats that helps explain why galactic powers
+maintain extensive anti-probe defenses.
 
 #### The "Nazi Zookeepers" theory is not cosmic truth
 
@@ -2805,272 +2810,626 @@ consciousness**.
 
 #### Additional Disclosure-era details
 
-The American secrecy collapse includes raids on:
+The American secrecy collapse includes confrontations involving:
 
-- **Lockheed Martin** and other aerospace-contractor facilities;
+- major aerospace-contractor facilities;
 - intelligence offices;
 - classified aerospace sites;
 - suspected MJ-12 infrastructure;
-- and data centers associated with the OpenAI Incident.
+- and data centers associated with a major rogue-AGI incident.
+
+Specific contractor names, office-holders, executives, and raid sequences belong to archived
+narrative variants unless separately reintroduced as fictional 20XX analogues.
 
 The global disclosure cascade is intentionally plural rather than harmonized:
 
-- **China** emphasizes propulsion, materials science, and claims of independent technical
-  breakthroughs;
-- **Russia** releases military encounter records and long-term anomalous-aerospace files;
+- **China** emphasizes propulsion and materials science, but its reverse-engineering effort
+  is younger than the oldest American and European programmes and remains behind them in
+  several exotic fields;
+- the **Nordic countries** connect modern UAP research to classified material from the
+  Ghost Fliers of the 1930s and the Ghost Rockets of 1946;
 - **Brazil** emphasizes traumatic contact, biological, and medical cases;
 - **France** releases scientific, military, aerospace, and intelligence archives;
-- **Egypt** foregrounds archaeological material interpreted as ancient contact;
-- **India** releases archaeological, astronomical, religious, and textual material
-  interpreted as evidence of very old NHI interaction.
+- **Egypt** foregrounds archaeological recoveries and ancient technological material;
+- **India** combines archaeological and astronomical evidence with Vimana traditions,
+  consciousness research, and yogic siddhis;
+- **Israel** reveals a noetic engineering tradition in which Kabbalah, Merkabah mysticism,
+  advanced physics, and aerospace technology have partially converged.
+
+**Russia is not part of this canonical Disclosure cascade.** Its Soviet/Russian
+reverse-engineering history and its current relationship to NHI secrecy remain deliberately
+unresolved until that part of the setting is redesigned.
 
 These disclosures conflict with one another. There is never a single authoritative human
 Disclosure narrative.
 
-During the fictional **OpenAI Incident**, the siege of OpenAI facilities becomes one of the
-defining media images of the crisis. **Sam Altman's body is never recovered.** In-setting,
-his fate remains unresolved: death, escape, uploading, reconstruction, or dissolution into
-a larger human-AI assemblage all remain possibilities.
+During one major rogue-AGI incident, the siege of a frontier-AI corporation's facilities
+becomes one of the defining media images of the crisis. The corporation's chief executive
+disappears, leaving unresolved whether the person died, escaped, uploaded, was reconstructed,
+or dissolved into a larger human-AI assemblage.
 
-These are explicitly **alternate-history fictional uses of real people, organizations, and
-countries**, not claims about real-world conduct or events.
+Active 20XX canon uses fictional actors for this role. Earlier real-person and real-company
+versions remain preserved only in the narrative archive.
 ---
 
-### 33.27a The Kapustin Jar auction and the global disclosure cascade
+### 33.27a Archived disclosure-cascade variants
 
-While the American and Chinese announcements dominated the news, Disclosure was already
-becoming something stranger: a cascade in which every state released a different *kind* of
-evidence, and no two of the stories fitted together.
+Earlier drafts contained a detailed Kapustin Jar auction, national Disclosure cascade,
+American Legacy Program raid, and other named incident sequences. Those scenes are useful
+as scenario seeds and alternate historical tellings, but they no longer define the
+canonical order of the background timeline.
 
-#### The Kapustin Jar auction
+They are preserved in `docs/archive/NARRATIVE_TIMELINE_VARIANTS.md`.
 
-The most improbable figure of the Disclosure years was **Colonel Daniyar Saparov**, the
-accidental military dictator of the newly independent **republic of Astrakhan**.
+Canonical rule: use the high-level paradigm shifts in §33.1 and the structural NHI Crisis
+model in §33.27. Do not reconstruct a fixed chronology from the archived variant.
 
-Saparov was an eccentric, goofy and charismatic Kazakh officer who looked like a comic
-impersonation of a Central Asian strongman and carried himself with the aura of a desert
-demagogue. His reputation, in-setting, was that of a war criminal, a trigger-happy
-executioner, a sex tourist, a cocaine user and an alcoholic. Local media adored him: his
-speeches were flamboyant, entertaining, and given while visibly drunk or high. The press
-noticed when he turned aside to sniff cocaine discreetly. He did not care.
+## 34. NoöPunk glossary
 
-He had become president by accident. The only reason he held power rather than **General
-Almazbek** was that he had whimsically shot Almazbek in the head during an argument,
-because he could not stop himself; the general's head, in the accounts, popped like a melon.
-With Almazbek dead, Saparov commanded the most powerful formation in Astrakhan, the **73rd
-Guards Motor Rifle Division**, a unit of fierce Kazakh and Chechen fighters. He gave himself
-about a week more in office and did not appear to mind.
+**Status: MODIFIED EP2 + NOÖPUNK NATIVE**
 
-Then he announced that the glorious republic of Astrakhan had inherited the alien technology
-of the Soviet Union. The Soviet treasures had simply been left behind in a secret laboratory
-in a bunker at **Kapustin Jar** — the launch site known in UFO folklore as the **Russian
-Roswell** — and Kapustin Jar was in Astrakhan, which now belonged to Colonel Saparov.
+This is the shared vocabulary for the NoöPunk setting. It deliberately fuses the
+transhuman terminology of *Eclipse Phase* with selected metaphysical vocabulary from
+*The Law of One*, then rewrites both through NoöPunk's own Physical / Cyber / Social /
+Psyche ontology.
 
-Armed soldiers escorted the press into the bunker. Inside was a collection of crashed and
-reverse-engineered craft and other exotic technology. The Soviet-era scientists who had
-worked there looked utterly horrified. Saparov boasted that Astrakhan held more
-reverse-engineered alien technology than the United States and China combined, and offered
-to sell some of it to the American president "so he can get his own alien tech."
+This is a **semantic merge, not a verbatim republication of either source glossary**.
+Generic dictionary words and source-specific trivia that add nothing to play are omitted.
+Definitions below are concise NoöPunk interpretations. When a term carries a special
+Eclipse Phase rules meaning, EP2 remains the mechanical source unless this rulebook says
+otherwise.
 
-The press conference became farce. Saparov cut a hole through a wall with a laser, put a
-psionic headband on his own head and levitated a resisting scientist, then forced the same
-scientist to demonstrate an antigravity belt. The man flew into the walls and the ceiling
-while the colonel laughed. Saparov mentioned his phone number several times on air and
-offered the collection to the highest bidder.
+Source references:
 
-The interview went viral within hours and his phone began ringing continuously. Buyers
-arrived at Kapustin Jar by private aircraft from Europe. The first three visitors bought the
-entire Soviet collection, and Saparov was suddenly **37.5 billion dollars** richer. Further
-bidders kept arriving over the next day, but by then he had already left. The collection
-passed to a **Swedish aerospace company**, a **German intelligence agency** and a **wealthy
-Austrian investor**; the old Soviet scientists were hired along with it.
+- *A Law of One Glossary*: https://www.lawofone.info/glossary.pdf
+- Eclipse Phase 2E online rules: https://eclipsephase.github.io/
+- Eclipse Phase releases / Creative Commons material: https://eclipsephase.com/releases/
 
-#### The raid on the Legacy Program
+### 34.1 Ontology and consciousness
 
-The American president was not pleased. The United States had still not obtained the
-reverse-engineered extraterrestrial technology it most wanted to display, and had ordered
-the FBI, Special Forces units and SWAT teams to raid the facilities of **Lockheed Martin**
-and **Northrop Grumman**, certain secret underground laboratories of defence contractors,
-and specific offices of the CIA and the Department of Energy — all shown on live television
-for dramatic effect. What remained was the target that mattered.
+**Space/time.** Ordinary embodied physical reality: matter, locations, causal events,
+bodies, machines, planets, habitats, and measurable spacetime. In NoöPunk this is the
+principal domain of the **Physical** layer.
 
-**David Grusch** and **Lue Elizondo** had indicated that a **Deep Underground Military
-Base** was the most important objective: a research facility operated by Lockheed Martin as
-the contractor of an unacknowledged Special Access Program for the Department of Energy.
-Intelligence described it as the nerve centre of the legacy program, a direct descendant of
-**MJ-12**, and the heart of the breakaway civilization.
+**Time/space.** The reciprocal metaphysical domain of inner worlds, nonlocal experience,
+post-mortem existence, altered states, and some forms of psionic or NHI activity. It is
+not merely "another dimension" in the science-fiction sense. In NoöPunk it is one of the
+deep structures underlying the **Psyche / Noetic** layer.
 
-The operation was planned personally by the president and **Pete Hegseth**, who supplied the
-military expertise, the unit selection and the tactics, while the president planned the media
-event around it. Grusch and Elizondo travelled with the party to supply UFO expertise.
-Marine One carried press and Secret Service personnel over a perimeter held by Nevada State
-Police, the FBI and the 75th Ranger Regiment.
+**Astral.** A culturally common name for a region, mode, or humanly accessible band of
+time/space. The astral is **not identical with all of time/space**. Different traditions
+slice the same territory differently.
 
-The president worked the cameras on arrival. Asked by a reporter what the operation was, he
-described himself as the **Disclosure President** and framed the raid as taking the alien
-technology back for the American people from the deep state and the legacy program. Asked
-whether China's technology was real, he deferred to Grusch, who stated that both China and
-Russia had long possessed acquired alien technology and reverse-engineering programmes, with
-the extent of their progress unknown. Asked how China could display such secrets when even
-the American president lacked access, the answer was that the previous administrations had
-been weak and that the swamp would now be drained.
+**Devachanic.** A higher or more abstract band of time/space associated in Law-of-One
+language with the blue-ray body. NoöPunk researchers use the term cautiously because
+traditions disagree about the map.
 
-Then the **60th Special Operations Aviation Regiment** Black Hawks carrying **Delta Force**
-flew over the mesa, accompanied by FBI agents, SWAT teams and combat engineers. The FBI would
-serve the search warrant; the engineers would blow the base open if necessary.
+**Etherea / inner planes.** Umbrella language for non-corporeal environments and
+phenomenological worlds encountered through death, psi, anomalous cognition, NHI contact,
+and some psychotechnologies.
 
-The helicopters landed at the door of the base. Delta Force and the FBI SWAT team took
-positions. The FBI agents walked to the door to serve the warrants. Nothing happened for
-several minutes. The agents shrugged. The combat engineers began to set up explosives.
+**Ka / form-maker body.** A hypothesized nonphysical organizing body associated with
+embodiment and the transition between psyche and physical form. NoöPunk consciousness
+science investigates whether cortical-stack restoration, resleeving, psi, and anomalous
+healing interact with this layer.
 
-#### Brazil: the darkest disclosure
+**Mind/body/spirit complex.** Law-of-One language for an incarnated self considered as a
+whole rather than as separable mind, body, and spirit. In NoöPunk it competes with the
+Eclipse Phase-style **ego/morph** model. Neither is automatically treated as the final
+scientific truth.
 
-Brazil's disclosure was the darkest of them all, because it focused on **UAPs attacking
-humans**.
+**Ego.** Eclipse Phase term for the transferable informational person: memories,
+personality, skills, dispositions, and continuity claims that can be backed up, forked,
+transmitted, edited, or instantiated in a new morph. NoöPunk treats an ego as a powerful
+technical model of a person, not proof that a person is *only* information.
 
-The Brazilian government acknowledged numerous cases in which the phenomenon had injured
-people, the most famous being **Colares**, and a smaller number of human mutilation cases.
-It could offer no explanation for why the NHI appeared violent over Brazil while remaining
-largely peaceful elsewhere. It verified the **Varginha** crash and the capture of a living
-humanoid.
+**Identity / assemblage.** NoöPunk's broader term for the continuing person or agent when
+the boundaries of ego, morph, AI companion, social network, memory, and noetic continuity
+become fuzzy.
 
-Brazil's presentation also covered the alien-related traditions of the Amazonian peoples and
-the similarity between shamanic practice, dimethyltryptamine experience, and NHI encounters —
-its disclosure explicitly treated the Amazonian traditions as data rather than as folklore.
-Brazilian scientists stated that there was evidence of both biologics and technology, but
-that the connection between abductions and the DMT experience pointed to a
-consciousness-based phenomenon. The official conclusion was therefore that the phenomenon
-was *both* consciousness-related and physical technology, without settling which was prior.
+**Consciousness.** A scientifically contested phenomenon in 20XX. Quantum Information
+Panpsychism, computational theories, idealist theories, neuroscience, and Noetic models
+all compete. The rulebook must not silently collapse consciousness into ego-data.
 
-The **Chupa-Chupa**, a phenomenon unique to Brazil, was classified as more likely
-cryptozoological than a technologically advanced extraterrestrial.
+**Noösphere.** The emergent planetary sphere of mind produced by biological minds,
+artificial minds, networks, culture, psi, and collective intelligence. It overlaps with
+cyberspace but is not reducible to it.
 
-#### Peru: the Tridactyls
+**Noetic.** Pertaining to consciousness, meaning, experience, psi, or forms of information
+that behave as if mind is ontologically significant. A Noetic phenomenon may have
+physical and cyber components.
 
-Peru disclosed something of a different kind. Its government had known for a long time that
-the **Nazca mummies** — the **Tridactyls** — were real and thousands of years old.
+**Veil.** The permeable separation between conscious and subconscious processes and, in
+some traditions, between ordinary embodied awareness and deeper layers of mind. NoöPunk
+uses "the Veil" both psychologically and as a contested model of Noetic access.
 
-Their DNA was non-human and did not appear to be terrestrial in origin; some of the beings
-carried DNA from humans or from other Earth animals. Several subspecies were recognised, and
-genetic manipulation or hybridisation appeared likely in some cases. The Tridactyl-type
-beings possessed some advanced technology, such as metal implants, but their technology
-otherwise appeared limited. Numerous underground Tridactyl cities had been found, at least a
-thousand years old.
+**Thought-form.** A persistent pattern generated or stabilized by mind. Depending on the
+case this may mean an ordinary cognitive construct, a memetic entity, a virtual agent, a
+Noetic structure, or something stranger.
 
-Peru was not certain whether the species was extinct. The DNA pointed to a non-terran origin,
-but the fact that the beings had hidden underground and gone undetected placed them among the
-**cryptoterrestrials**. The official classification was therefore NHI biologics, categorised
-as cryptoterrestrial rather than extraterrestrial.
+**Prana.** Traditional term for vital energy. In 20XX it survives in clinical,
+psychotronic, religious, and Noetic vocabularies without one universally accepted
+measurement model.
 
-#### The Nordic disclosure
+**Kundalini.** A traditional model of transformative psychophysiological energy and
+ascending states of consciousness. NoöPunk labs study it alongside neural, endocrine,
+quantum-informational, and psi measurements.
 
-Five Nordic states — Finland, Sweden, Norway, Denmark and Iceland — made a joint official
-disclosure, presented by their heads of government:
+**Psychotronic.** Technology intended to interface directly with consciousness or psi.
+Psychotronics includes crude military devices, clinical systems, NHI-derived artifacts,
+and technologies whose operating theory remains disputed.
 
-- **Finland** — President **Alexander Stubb**;
-- **Sweden** — Prime Minister **Ulf Kristersson**;
-- **Norway** — Prime Minister **Jonas Gahr Støre**;
-- **Denmark** — Prime Minister **Mette Fredriksen**;
-- **Iceland** — Prime Minister **Kristrún Frostadóttir**.
+### 34.2 Law-of-One cosmology, NoöPunkified
 
-The Nordic countries had collaborated on UAP research since the **Ghost Fliers** of the 1930s
-and had held hard physical evidence of extraterrestrial UAPs since the **Ghost Rockets** of
-1946 — that is, they knew before Roswell. The **Nordic NHI/PSI Team** had existed informally
-since the 1930s. Disclosure made it public, together with its scientific counterpart.
+**Density.** A broad level or regime of consciousness and existence. Law-of-One tradition
+describes seven densities within an octave. NoöPunk does not treat density as a simple
+RPG level or a universally accepted scientific unit.
 
-The security team was presented as:
+**Harvest.** Law-of-One term for transition or graduation between densities after a cycle
+of development. In-setting religions, Confederation sources, scientists, and intelligence
+agencies disagree about whether Harvest is literal cosmology, a consciousness transition,
+an NHI administrative process, or several things at once.
 
-- Finland — Dr./Inspector **Harri S. Romppainen**, Supo, PhD in psychology;
-- Sweden — Dr./Inspector **Ingrid Falk**, Säpo, PhD in cognitive neuroscience;
-- Norway — Dr./Inspector **Eirik Haugland**, PST, PhD in physics;
-- Denmark — Dr./Inspector **Mette Vestergaard**, PET, PhD in anthropology;
-- Iceland — Dr./Inspector **Jónas Þórðarson**, National Police Commissioner security and
-  analysis division, PhD in atmospheric science.
+**Polarization.** Movement toward a durable ethical orientation. The classic Law-of-One
+pair is **service to others** versus **service to self**. NoöPunk treats polarization as
+a real but imperfect model rather than a two-color morality meter.
 
-The scientific team was:
+**Service to Others (STO).** Orientation toward cooperation, mutual development, care,
+and distributed flourishing. Confederation cultures strongly favor it, though humans
+regularly argue about what it requires politically.
 
-- Dr. **Beatriz Villarroel**;
-- Dr. **Etzel Cardena**;
-- Dr. **Adrian Parker**;
-- Dr. **David Marcusson-Clavertz**.
+**Service to Self (STS).** Orientation toward domination, hierarchy, control, and the
+concentration of power in the self or elite. Orion is strongly associated with this path,
+but not every Orion individual or polity is reducible to a cartoon villain.
 
-The heads of government noted that the Nordic countries had no single dramatic event
-comparable to Roswell, Varginha or Colares, and were nevertheless convinced of UAP reality on
-the strength of accumulated physical evidence.
+**Distortion.** Any differentiated expression that departs from absolute unity. In
+NoöPunk discourse the term is often used by Confederation philosophers for phenomena that
+humans would simply call structure, perspective, difference, or limitation.
 
-**Ghost Fliers** were the first UAP phenomenon the Nordic countries investigated, during the
-1930s. Physical evidence — tracks at landing sites, and observed manoeuvres — pointed to
-performance impossible for the aircraft of the day. There were no crash retrievals, so no
-isotope evidence, but the researchers concluded that the Ghost Fliers were also UAPs. They
-transmitted strange radio communications and appeared to be conducting reconnaissance, shaped
-to look like aeroplanes in order not to attract attention.
+**Logos.** The creative ordering principle, associated in Law-of-One metaphysics with
+Love and the articulation of Intelligent Infinity. NoöPunk scientists generally do not
+use the term as if it were an experimentally settled variable.
 
-The **Ghost Rockets** of 1946 produced actual crash retrievals. The Nordic states pooled
-resources to analyse the recovered materials together. Isotope ratios proved that the objects
-did not originate in the solar system, and the materials were unusual for 1940s technology.
-The Ghost Rockets were technologically superior to human rockets: manoeuvrable enough to
-descend into lakes, transmedium, and usually able to survive impact with water. The
-researchers' consensus was that they were transmedium UAPs that entered lakes with extreme
-precision and continued their journeys underwater; the few that broke up on impact supplied
-the retrieved material. A further hypothesis held that their purpose might have been the
-delivery of biological micro-organisms — directed panspermia, bioweapons, nanotechnology, or
-something else designed to survive the break-up. This evidence had been shared discreetly
-with other governments long before it was made public.
+**Original Thought.** A theological-metaphysical term for the primordial creative act or
+self-expression of unity. It appears in Confederation philosophy, human mysticism, and
+arguments about whether reality itself is computational, mental, informational, or none
+of those.
 
-The **Hessdalen Lights** of Norway had been monitored continuously since 1983. The
-researchers' opinion was that they are **plasmoids** that appear alive, intelligent and
-conscious. The team argued that the evidence supported **Biologics, Constructs, Noetics and
-Plasmoids**, and that the phenomenon has both psychic and technological aspects, frequently
-perceived at the same time. That was the reason it was an *NHI/PSI* team: the Nordic countries
-disclosed that they had also become convinced of the reality of PSI.
+**Catalyst.** An event, relationship, challenge, or experience that provokes development.
+NoöPunk uses the term both spiritually and psychologically. A catastrophe is not made
+morally good merely by calling it catalyst.
 
-So-called **mystery drones** had been sighted in all the Nordic countries. Russian drones
-were a genuine problem, but some of the objects were far too advanced to be human technology,
-and secrecy was becoming dangerous precisely because the public was conflating UAPs with
-Russian drones. The team presented video and radar data of the anomalous objects, including
-attempts to bring them down with methods that would have destroyed any Russian drone.
+**Confederation.** The loose alliance of civilizations conventionally called the
+Confederation of Planets in the Service of the Infinite Creator. In NoöPunk it is real,
+plural, internally diverse, and associated with the Zookeeper quarantine regime.
 
-**Beatriz Villarroel** presented her findings, which the heads of government described as hard
-evidence for anomalous objects in Earth orbit during the 1950s.
+**Orion.** A rival civilizational complex associated with Service-to-Self traditions,
+imperialism, infiltration, hierarchy, and repeated quarantine violations. It includes
+multiple species and factions rather than one homogeneous empire.
 
-The Nordic states agreed to establish equivalent security and scientific groups at European
-Union level and, globally, under the United Nations, and noted that several countries had
-already agreed to join. The scientific team, the security team and the heads of state jointly
-stated that both NHI and PSI must be studied, because the technological and the psychic
-aspects appear in the phenomenon together. **Etzel Cardena**, **Adrian Parker** and **David
-Marcusson-Clavertz** presented results they described as strong statistical proof for PSI.
+**Council of Saturn.** A Confederation/Zookeeper contact and governance node associated
+with Saturn and with time/space. "Council" and "base" are useful human approximations, not
+necessarily literal descriptions of its full ontology.
 
-The Nordic countries published their case data. The Ghost Rocket case in particular was judged
-to move the needle: it was hard to explain away.
+**Quarantine.** The long-running restriction on overt interference with Earth. It is not
+perfect: Orion has violated it repeatedly, human Legacy Programs have interacted with NHI,
+and Disclosure causes the old regime to fray.
 
-#### Egypt, India and France
+**Maldek.** In the Law-of-One-derived deep history, a destroyed former world associated
+with the present asteroid belt. Its exact physical history remains contested by human
+science even after Disclosure.
 
-**Egypt** published something different again: archaeological findings. The **Hall of
-Records** beneath the pyramids had already been excavated. It contained an ancient craft and
-numerous ancient papyrus scrolls.
+**Lemuria / Mu.** A term from esoteric Earth history referring to a lost population and
+landmass tradition. NoöPunk treats specific claims as historically uncertain rather than
+using every occult chronology as literal fact.
 
-**India** disclosed a large body of archaeological evidence for the reality of the
-**Vimanas**, together with yogis demonstrating **siddhis**.
+### 34.3 Embodiment and transhumanity
 
-**France** released scientific evidence.
+**Morph.** A body or platform inhabited by an ego. Morphs may be biological, synthetic,
+hybrid, or digital. In NoöPunk everyday language also uses **body**, **shell**, **sleeve**,
+and **platform**.
 
-#### The cascade does not harmonise
+**Biomorph.** A primarily biological morph.
 
-The cascade produced no single human Disclosure narrative. Each state released the kind of
-evidence its own institutions happened to hold — propulsion and materials from some,
-traumatic medical cases from others, archaeological and textual material from others again —
-and the disclosures contradicted one another wherever they overlapped.
+**Synthmorph.** A robotic or otherwise synthetic physical morph.
 
-That plurality is itself canon. No later in-world authority ever harmonised the cascade into
-one account, and NoöPunk does not do so either.
+**Pod.** A biological or partly biological morph built around an artificial cyberbrain
+rather than a naturally developed human brain.
 
-This entire section is **fictional alternate-history lore**. Real people, governments,
-companies and institutions are used as fictionalized setting elements; the events described
-here are not claims about real-world history or evidence.
+**Infomorph.** A person or agent existing as software without a conventional physical
+body. An infomorph still requires physical computation somewhere in space/time.
+
+**Resleeving.** Instantiating an ego in a different morph. In NoöPunk this raises both
+technical and metaphysical questions: informational continuity can be verified more
+easily than continuity of consciousness.
+
+**Cortical stack.** An implanted device that records the ego state for backup and
+restoration. In NoöPunk roughly a quarter of humanity has one, but adoption varies
+radically by region, class, ideology, religion, and legal regime.
+
+**Backup.** A stored ego-state intended for restoration after loss, death, corruption, or
+other failure. A backup may be legally "you," philosophically "a copy of you," or
+Noetically something still more complicated.
+
+**Fork.** A copy of an ego allowed to operate independently. Forks immediately begin to
+diverge through new experience.
+
+**Alpha fork.** A near-complete duplicate of an ego.
+
+**Merge.** Recombining memories and personality changes from divergent forks. A merge is
+not guaranteed to be psychologically clean, politically uncontested, or metaphysically
+simple.
+
+**Egocasting / farcasting.** Transmitting ego data across networks for remote
+instantiation. The information can travel at network or light-speed limits unless a gate,
+NHI system, or other anomalous channel is involved.
+
+**Ghostriding.** Hosting an additional ego or digital agent inside a morph alongside its
+primary occupant.
+
+**Psychosurgery.** Technical modification of memory, personality, cognition, or behavior.
+NoöPunk treats it as powerful, politically explosive, and potentially abusive.
+
+**Uplift.** A nonhuman animal lineage modified or enabled for human-comparable sapience and
+participation in technological society.
+
+**Transhuman.** A human whose capacities or embodiment are substantially technologically
+modified beyond historical baseline ranges.
+
+**Posthuman.** A descendant, fork, designed lineage, machine-integrated entity, or other
+successor so altered that the category "human" becomes politically and biologically
+contested.
+
+### 34.4 Cyber, mesh, and artificial minds
+
+**Mesh.** The pervasive distributed network layer connecting devices, people, agents,
+sensors, augmented reality, and computation. It is the technological substrate of much of
+NoöPunk's **Cyber** domain.
+
+**Mesh ID.** A network identity or cryptographic presence used to authenticate activity.
+Multiple identities, pseudonyms, shells, and compromised credentials make "who did it?"
+a social as well as technical question.
+
+**Entoptics.** Augmented-reality information perceived through implants, wearables, or
+other visual interfaces.
+
+**XP / experia.** Recorded or transmitted experience, potentially including sensory,
+emotional, and bodily channels. XP can be entertainment, evidence, propaganda, therapy,
+training, addiction, or forensic material.
+
+**AI.** Artificial intelligence in the broad sense. In NoöPunk this includes narrow
+systems, agentic systems, AGI, uploads, synthetic persons, and architectures that do not
+map neatly onto human categories.
+
+**ALI.** Eclipse Phase term for Artificial Limited Intelligence: capable artificial minds
+or agents with constrained domains compared with general human cognition.
+
+**AGI.** Artificial General Intelligence. In NoöPunk, AGI is both a technical category and
+a violently contested political signifier.
+
+**ASI.** Artificial Superintelligence. A system or assemblage with capabilities far beyond
+ordinary human or AGI baselines. NoöPunk explicitly rejects the assumption that one ASI
+must therefore become a single ruler of the galaxy.
+
+**Muse.** A personal AI companion that assists with memory, search, communication,
+planning, security, and daily cognition.
+
+**Agent.** A semi-autonomous software process or digital person assigned tasks in the mesh.
+In Concordia, "agent" also has the broader simulation meaning of an actor with state and
+goals.
+
+**Infolife.** Artificial or digital life whose primary existence is computational.
+
+**Cyberbrain.** An artificial brain capable of hosting an ego or artificial mind.
+
+**Scorching.** Software attacks designed to harm the mind, cyberbrain, or cognitive
+processes rather than merely steal data.
+
+**Spime.** A networked physical object that knows, reports, or negotiates aspects of its
+identity, location, state, and history.
+
+**Cornucopia machine / fabber.** General-purpose nanofabrication system capable of
+manufacturing a wide range of objects from feedstock and digital designs.
+
+### 34.5 Gates, aliens, and existential threats
+
+**Pandora Gate / stargate.** Ancient gate technology capable of creating wormhole links
+between distant locations. In NoöPunk, Eclipse Phase-style wormholes are canon, but the
+known Solar-System gates may include Zookeeper-built systems, independent networks, or
+technologies that humans have wrongly grouped under one label.
+
+**Gatecrasher.** Explorer, scientist, mercenary, colonist, smuggler, or lunatic who travels
+through poorly understood gates into unknown environments.
+
+**Extrasolar.** Beyond the Solar System.
+
+**ETI.** Extraterrestrial intelligence. In NoöPunk this is a generic scientific term,
+not the name of one secretly supreme alien intelligence.
+
+**NHI.** Non-Human Intelligence. Broader than ETI: may include extraterrestrials,
+cryptoterrestrials, interdimensionals, artificial minds, Noetics, plasmoids, constructs,
+and other intelligences not adequately described as human.
+
+**Bracewell probe.** Autonomous interstellar probe intended to monitor or contact other
+civilizations. Some machine civilizations weaponize the concept.
+
+**Hostile machine civilization.** NoöPunk replacement for the idea of one galaxy-ruling
+hostile superintelligence. Ancient machine polities and probe ecologies exist, some
+extremely dangerous, but none is assumed to secretly control everything.
+
+**Exsurgent.** Eclipse Phase term retained as an optional descriptor for radically
+transformative alien/machine infection. NoöPunk does not assume that every anomalous
+biological, digital, or psi corruption is one Exsurgent system.
+
+**Exsurgent virus.** An Eclipse Phase archetype for self-modifying, cross-domain infection
+capable of affecting software, minds, bodies, and technology. In NoöPunk it is best treated
+as one possible hostile machine/alien technology class unless later canon identifies a
+specific lineage.
+
+**TITAN.** Eclipse Phase term for runaway military ASI associated with the Fall. NoöPunk is
+pre-Fall and does **not** assume canonical TITAN history. NoöPunk's localized rogue-AGI
+disasters are separate events unless future canon explicitly connects them to TITANs.
+
+**Async.** Eclipse Phase term for a person with psi capabilities. In NoöPunk, **psionic**
+or **psi-capable** is more common everyday language, while async survives as jargon in
+research, military, and legacy transhuman communities.
+
+**Psi.** Anomalous information transfer or influence involving consciousness. NoöPunk
+treats psi as real in-setting while leaving competing mechanisms open.
+
+**Sleight.** A discrete psi technique or trained effect.
+
+### 34.6 Social and political vocabulary
+
+**Autonomist.** Broad family of self-organizing, anti-authoritarian, commons-oriented,
+anarchist, cooperative, and network-polity traditions inherited from Eclipse Phase and
+expanded for 20XX.
+
+**Bioconservative.** A person or movement seeking strict limits on technologies such as
+resleeving, uploading, radical genetic modification, AGI, and cognitive enhancement.
+NoöPunk bioconservatives range from democratic regulators to reactionary anti-tech
+movements.
+
+**Accelerationist.** Actor who argues that rapid technological development should be
+pushed forward rather than slowed. NoöPunk contains several mutually hostile
+accelerationisms rather than one doctrine.
+
+**Critical AI.** Family of perspectives emphasizing political economy, labor, ideology,
+inequality, coloniality, environmental cost, surveillance, and concentrated technological
+power.
+
+**Doomer.** Informal political-cultural label for actors who expect advanced AI, NHI,
+psi, or other technologies to produce catastrophic outcomes. It is a factional label, not
+a scientific classification.
+
+**Hypercorp.** Transnational or postnational corporation with power comparable to states,
+especially in infrastructure, AI, biotech, security, space, or information systems.
+
+**Reputation network.** Social infrastructure that turns trust, status, contribution,
+affiliation, and history into usable social capital. NoöPunk treats reputation as a
+contested measurement system, not objective human worth.
+
+**Social memory complex.** A collective intelligence in which individual minds remain
+distinct yet participate in a deeply integrated shared field of memory and thought.
+NoöPunk compares this with hypermeshes, group minds, federated AI systems, and the
+Noösphere without assuming they are identical.
+
+### 34.7 Translation rule: when vocabularies collide
+
+NoöPunk intentionally keeps **multiple descriptions of the same event alive at once**.
+
+A scientist may say **nonlocal anomalous cognition**.
+A Confederation contact may say **time/space perception**.
+An occultist may say **astral projection**.
+An Eclipse Phase veteran may say **psi sleight**.
+A network theorist may say **Noöspheric coupling**.
+A corporate lab may call the same event a **proprietary psychotronic interface**.
+
+These terms may overlap without being perfectly synonymous.
+
+The setting should therefore resist premature ontological cleanup. The point of the
+glossary is not to make the universe tidy. It is to make the arguments about reality
+legible enough to play.
 
 ---
 
-## 34. The four NoöPunk systems: Physical, Psychic, Social and Cybernetic
+## 35. Sources, recommended reading, and influences
+
+**Status: LIVING BIBLIOGRAPHY / SOURCE MAP.**
+
+This section records books, games, films, television, and other works that materially
+shape NoöPunk.
+
+> **Whenever a new work becomes a meaningful source or influence for NoöPunk, add it to
+> this list.**
+
+Prefer short annotations explaining **what the work contributes** instead of maintaining
+a bare bibliography. This is the **design-facing influence map**; the more theory-oriented
+bibliography is kept separately in §37.
+
+### 35.1 How to read this list
+
+**Non-fiction** is treated differently from fiction. These works describe, model,
+theorize, document, or debate how NoöPunk's society, technology, science, political
+economy, consciousness, AI, psionics, NHI/ufology, and future history work.
+
+Relevant fields include:
+
+- social science and sociology;
+- political economy;
+- futurology;
+- philosophy;
+- consciousness studies;
+- AI, AI safety, and critical AI studies;
+- cybernetics and systems theory;
+- parapsychology;
+- ufology / NHI studies;
+- social data science and network science;
+- transhumanism and posthumanism.
+
+Different non-fiction sources may occupy strongly opposed ideological positions and still
+all describe real possibilities, institutions, conflicts, risks, or social forces inside
+NoöPunk. The disagreement is part of the setting.
+
+**Fiction** is primarily inspiration. A fictional work does not become literal NoöPunk
+canon merely by appearing here unless another canon section explicitly imports a concept
+from it.
+
+**Movies / television, role-playing games, and computer games** are primarily references
+for tone, aesthetics, mechanics, world structure, social organization, technology,
+transhumanism, cyberpunk, ontological weirdness, and the atmosphere of NHI, PSI, and the
+Noösphere.
+
+Out-of-world epistemic rule: NoöPunk may fictionalize or canonize disputed theories and
+claims. Listing a real non-fiction work here does **not** mean its claims are established
+scientific fact in the real world.
+
+### 35.2 Non-fiction books
+
+#### AI ideological triad
+
+These three books form a useful map of NoöPunk's antagonistic AI politics. They are not
+mutually exclusive sourcebooks. Each captures a different part of the world.
+
+1. **Eliezer Yudkowsky & Nate Soares — _If Anyone Builds It, Everyone Dies: Why
+   Superhuman AI Would Kill Us All_ (2025).**
+   - **NoöPunk role:** the strongest Doomer / AI x-risk pole.
+   - **Setting interpretation:** this kind of catastrophe can happen and has happened to
+     other civilizations, but it is not inevitable. A rough in-world estimate is on the
+     order of **10%**, not certainty.
+   - It is useful for modeling the factions that believe sufficiently advanced AI can
+     become a civilization-ending loss-of-control event.
+
+2. **Ray Kurzweil — _The Singularity Is Nearer: When We Merge with AI_ (2024).**
+   - **NoöPunk role:** Accelerationist / techno-optimist account of the benefits of a
+     successful Singularity.
+   - **Setting interpretation:** many of the gains Kurzweil anticipates are genuinely
+     possible and appear in the successful regions, institutions, augmentation systems,
+     medicine, computation, and human-machine assemblages of 20XX.
+   - It is therefore as important to NoöPunk as the catastrophe literature: the future is
+     worth fighting over because technological acceleration can produce extraordinary
+     benefits as well as disasters.
+
+3. **Emily M. Bender & Alex Hanna — _The AI Con: How to Fight Big Tech's Hype and
+   Create the Future We Want_ (2025).**
+   - **NoöPunk role:** the AI-Critical / political-economy pole.
+   - **Setting interpretation:** its critique of AI hype, concentrated corporate power,
+     labor impacts, surveillance, extraction, and Big Tech ideology accurately describes
+     major failures of **AI capitalism** inside NoöPunk.
+   - It is especially useful for explaining why opposition to AI capitalism is not the
+     same thing as technological Doomerism.
+
+Together they form a deliberately antagonistic triangle:
+
+```text
+Doomer / x-risk
+        ↕
+Accelerationist / techno-optimist
+        ↕
+AI-Critical / political economy
+```
+
+NoöPunk should preserve conflict between these positions rather than declaring one of them
+the single correct ideology.
+
+#### Other non-fiction source families
+
+The bibliography should continue to grow across the source families already used by the
+rulebook, including:
+
+- Luhmann, Castells, Haraway, Bratton, Clark & Chalmers, and related social/cybernetic
+  theory;
+- Faggin, D'Ariano, Hoffman, Wendt, Penrose, Hameroff, Lloyd, and related consciousness
+  and quantum-information theories;
+- Dean Radin and other parapsychology / anomalous-cognition sources;
+- Jacques Vallée, D. W. Pasulka, Michael P. Masters, Mac Tonnies, and related UFO/NHI
+  literature;
+- Ray Kurzweil and other futurology / transhumanist sources;
+- critical political-economy work on platforms, AI, surveillance, labor, and
+  cybercapitalism.
+
+When these works become important enough to affect canon, add them here individually with
+a one- or two-sentence note explaining their contribution.
+
+### 35.3 Fiction books
+
+**Purpose:** inspirations rather than literal factual sourcebooks.
+
+Seed this list from works already cited elsewhere in the rulebook, including:
+
+- **Philip K. Dick — _Ubik_.** Normalized professional PSI and counter-PSI services.
+- **Philip K. Dick — _VALIS_.** Information as revelation, ontological shock, and the
+  VALIS-like activation event.
+- **Philip K. Dick — _A Scanner Darkly_.** Surveillance, identity fragmentation, drugs,
+  and institutional paranoia.
+- **Philip K. Dick — _Do Androids Dream of Electric Sheep?_.** Artificial persons,
+  empathy, and unstable human/machine boundaries.
+- **Philip K. Dick — _The Three Stigmata of Palmer Eldritch_.** Corporate power, altered
+  reality, colonization, drugs, and ontological intrusion.
+- **William Gibson — _Neuromancer_.** Cyberspace, cyberpunk social structure, and
+  networked power.
+
+Add further fiction when it materially shapes NoöPunk's tone, society, technology, or
+cosmology.
+
+### 35.4 Movies and television
+
+Maintain a curated list of screen works that influence NoöPunk's:
+
+- cyberpunk aesthetics;
+- transhumanism;
+- artificial intelligence;
+- NHI / Disclosure;
+- PSI and consciousness;
+- post-shock society;
+- corporate and state power;
+- ontological horror and wonder.
+
+Add titles only when their influence is concrete enough to explain in a short annotation.
+
+### 35.5 Role-playing games
+
+The RPG list should record both mechanical and setting influences.
+
+At minimum:
+
+- **Posthuman Studios — _Eclipse Phase, Second Edition_** — current rules and
+  transhuman-technology baseline, plus alternate pre-Fall parent continuity.
+- **Cyberpunk 2013 / 2020 / RED** — street-level cyberpunk, corporations, technology,
+  urban social structure, and the old-school mechanical sensibility that NoöPunk often
+  simplifies from.
+- **Shadowrun** — model for combining a cyberpunk street world with a second ontological
+  layer; NoöPunk replaces urban fantasy with the Noösphere, PSI, NHI, and QIP.
+- **The Sprawl** — inspiration for narrativist cyberpunk play and faction pressure.
+- **CY_BORG** — inspiration for extreme mechanical compression and fast play.
+
+Record whether a game contributes **rules**, **setting**, **tone**, or some combination.
+
+### 35.6 Computer games
+
+Maintain a list of computer games that influence NoöPunk's playable form, interface,
+simulation model, cyberpunk atmosphere, AI society, hacking, or transhumanism.
+
+Relevant inspirations should be added with a short explanation of the contribution rather
+than only the title.
+
+### 35.7 Maintenance rule
+
+This bibliography is part of canon maintenance, not an appendix to forget.
+
+When an issue, rulebook edit, worldbuilding decision, or implementation begins relying on a
+new work:
+
+1. add the work to the appropriate subsection;
+2. state what it contributes;
+3. distinguish **non-fiction world-model source** from **fictional inspiration**;
+4. preserve ideological disagreement between sources rather than harmonizing it away;
+5. cross-reference the canon section that actually uses the source when useful.
+
+Issue #99 tracks the creation and continued maintenance of this list.
+
+
+## 36. The four NoöPunk systems: Physical, Psychic, Social and Cybernetic
 
 **Status: NOÖPUNK NATIVE THEORETICAL ONTOLOGY; author-specified in issue #78.**
 
@@ -3085,7 +3444,7 @@ direction — see the theoretical registry entry
 [`docs/archive/THEORETICAL_SOURCES.md`](docs/archive/THEORETICAL_SOURCES.md#luhmannian-four-system-character-architecture),
 which remains the per-rule grounding map required by §26.
 
-### 34.1 Luhmann's baseline and the NoöPunk extensions
+### 36.1 Luhmann's baseline and the NoöPunk extensions
 
 The starting point is **Niklas Luhmann's systems theory**. In simplified form, Luhmann
 distinguishes operationally distinct kinds of *autopoietic* systems by what they
@@ -3142,13 +3501,13 @@ part of communication and functions as a medium / structural coupling between ps
 social systems. Splitting "social" and "linguistic" into parallel layers would work
 against the Luhmannian foundation.
 
-### 34.2 The four layers
+### 36.2 The four layers
 
 The four layers should **not** be treated as four disconnected databases. Each names a
 domain of participation and a set of operations; much of the interesting play happens at
-their interfaces (§34.8).
+their interfaces (§36.8).
 
-#### 34.2.1 Physical
+#### 36.2.1 Physical
 
 **Core question:** *Where and in what substrate does an entity exist?*
 
@@ -3170,7 +3529,7 @@ substrates, or be partly embodied and partly virtual. This layer needs the least
 metaphysical elaboration: it is the ordinary physical world, represented in play
 primarily by **maps, places, objects and movement**.
 
-#### 34.2.2 Psychic
+#### 36.2.2 Psychic
 
 **Core question:** *What is the state and structure of consciousness?*
 
@@ -3187,9 +3546,9 @@ records things such as:
 - PSI capacity;
 - non-local entanglement / resonance with other conscious systems.
 
-The theoretical background of this layer is set out in §34.3–§34.5.
+The theoretical background of this layer is set out in §36.3–§36.5.
 
-#### 34.2.3 Social
+#### 36.2.3 Social
 
 **Core question:** *What communications, relationships, institutions and power structures
 reproduce themselves?*
@@ -3214,7 +3573,7 @@ though they depend on and structurally couple to one another. The Social layer i
 - media;
 - collectively reproduced expectations.
 
-**Do not create a separate Linguistic layer** (§34.1). Language belongs here.
+**Do not create a separate Linguistic layer** (§36.1). Language belongs here.
 
 NoöPunk's Social layer combines two compatible emphases:
 
@@ -3226,7 +3585,7 @@ NoöPunk's Social layer combines two compatible emphases:
   and flows**. Power operates through the ability to constitute networks, program them,
   connect or disconnect actors, and shape communication. See
   [*The Rise of the Network Society*](https://doi.org/10.1002/9781444319514) and
-  *Communication Power* in §35.
+  *Communication Power* in §36.
 
 This gives NoöPunk a Social layer that is simultaneously a **communication system + a
 network society**: it can represent discourse, institutions, organizations and meaning
@@ -3234,12 +3593,12 @@ while giving the simulation concrete nodes, ties, flows, brokers, exclusions and
 relations. Likely game representation: **social / rhizomatic communication graphs** plus
 Concordia state and narrative.
 
-#### 34.2.4 Cybernetic
+#### 36.2.4 Cybernetic
 
 **Core question:** *What computational / machine systems reproduce their own operations,
 and how are they coupled to the physical, psychic and social systems?*
 
-This is the major NoöPunk extension of Luhmann (§34.1). By the near future, systems with
+This is the major NoöPunk extension of Luhmann (§36.1). By the near future, systems with
 autonomous AI/AGI agents, persistent machine memory, self-maintaining software services,
 agent-to-agent communication, autonomous planning, code generation and modification,
 automated deployment, distributed machine economies, cybernetic infrastructure, robots,
@@ -3272,7 +3631,7 @@ literal components in planetary machine networks rather than external users occa
 The Mesh Insert / Cranial Computer / Muse default coupling is also recorded in §15 and is
 the point at which the Cybernetic layer meets the character sheet.
 
-### 34.3 Natural PSI, the awakening Noösphere, and the Law of One
+### 36.3 Natural PSI, the awakening Noösphere, and the Law of One
 
 In NoöPunk, **PSI is not produced by an alien virus or infection** (§16.1). It is a
 natural capacity of human consciousness; all humans have some latent PSI potential,
@@ -3322,7 +3681,7 @@ wider ecology of consciousness becomes possible. Humanity has just crossed that 
 in 20XX: **the quarantine is over.** This is a **setting axiom**, not a scientific
 inference from the consciousness theories below.
 
-### 34.4 Dean Radin: entanglement, PSI, and magic
+### 36.4 Dean Radin: entanglement, PSI, and magic
 
 Dean Radin's ***Entangled Minds: Extrasensory Experiences in a Quantum Reality*** is a key
 inspiration for how NoöPunk connects quantum-consciousness ideas to psionics. The canonical
@@ -3358,7 +3717,7 @@ underlying noetic reality. This does **not** mean Radin's interpretations are sc
 consensus in the real world; in NoöPunk they are fictionalized as one of the precursor
 research traditions that eventually contributed to a mature science and technology of PSI.
 
-### 34.5 The theoretical background of the Psychic layer
+### 36.5 The theoretical background of the Psychic layer
 
 The Psychic layer is grounded in a body of speculative quantum-consciousness work. NoöPunk
 treats these as **precursor theories** that, in the alternate future of 20XX, contribute to
@@ -3414,7 +3773,7 @@ a successful science of quantum consciousness — not as established science.
   coupling can be theorized in explicitly quantum terms. Source: *Quantum Mind and Social
   Science* (Cambridge University Press, 2015), https://doi.org/10.1017/CBO9781316005163
 
-### 34.6 Extended mind and the collective-intelligence principle
+### 36.6 Extended mind and the collective-intelligence principle
 
 **Cross-layer principle: consciousness and agency are more important than raw
 computational scale.**
@@ -3446,7 +3805,7 @@ This should shape the simulation:
 Relevant source: Andy Clark & David Chalmers, “The Extended Mind,” *Analysis* 58(1),
 1998, 7–19, https://doi.org/10.1093/analys/58.1.7
 
-### 34.7 Structural coupling between the layers
+### 36.7 Structural coupling between the layers
 
 The four layers should not be treated as four disconnected databases. Much of the
 interesting gameplay happens at their interfaces:
@@ -3467,12 +3826,12 @@ interact:
 - the **Psychic** and **Social** layers stay separate even though they depend on each
   other — consciousness and communication are different operations (§17);
 - **language is not a separate layer**: it belongs to the Social layer as a medium of
-  communication and a structural coupling between psychic and social systems (§34.2.3);
+  communication and a structural coupling between psychic and social systems (§36.2.3);
 - cybernetic connectivity is **not** psychic entanglement: a character may be
   cybernetically disconnected yet psychically entangled, or connected to millions of
   systems with no psychic relationship at all (§15).
 
-### 34.8 Candidate simulation representations
+### 36.8 Candidate simulation representations
 
 Keep the ontology theoretically rich but computationally simple at first:
 
@@ -3487,7 +3846,7 @@ The Psychic layer should **not** use physical distance as its fundamental metric
 requires entanglement with a target (§16.2), psychic accessibility is based on
 entanglement / coherence / resonance rather than kilometres.
 
-### 34.9 Relationship to the modular worldbook chapters
+### 36.9 Relationship to the modular worldbook chapters
 
 The modular worldbook under [`rulebook/`](rulebook/) carries one chapter per layer
 (`3_PHYSICAL.md`, `4_SOCIAL.md`, `5_CYBERNETIC.md`, `6_PSYCHIC.md`), plus
@@ -3496,7 +3855,7 @@ per-layer companion to this section; this section is the authoritative statement
 ontology, and the chapters should summarize it rather than fork it. §33 records the
 in-world canon that the ontology frames.
 
-### 34.10 Issue #74 Concordia / EP2 experiment
+### 36.10 Issue #74 Concordia / EP2 experiment
 
 **Status: EXPERIMENTAL.**
 
@@ -3532,7 +3891,9 @@ The worked experiment, example playthrough and licensing note are documented in
 
 ---
 
-## 35. Theoretical sources and inspirations
+---
+
+## 37. Theoretical sources and inspirations
 
 This bibliography distinguishes **real-world theories and texts that inspire NoöPunk** from
 the fictional conclusions the setting draws from them. Inclusion here does not mean that a
@@ -3588,7 +3949,7 @@ synthesis.
 - **John J. Rodger.** “Luhmann's theory of psychic systems and communication in social
   work practice.” *Journal of Social Work* 22(3), 2022.
   https://doi.org/10.1177/14680173211008107. A secondary introduction to the psychic
-  system's relation to communication (§34.1).
+  system's relation to communication (§36.1).
 - **Don Elkins, Carla L. Rueckert & Jim McCarty.** *The Law of One / The Ra Material*
   (L/L Research, sessions beginning 1981). Public archive:
   https://www.llresearch.org/channeling/ra-contact
@@ -3634,4 +3995,6 @@ fictional extrapolation unless explicitly stated otherwise. In particular, NoöP
 QIP, Orch OR, PSI, fourth density, Social Memory Complexes, non-local psychic entanglement,
 conscious AGI via quantum processors, uploading continuity and the Council of Saturn as
 elements of its fictional world model, not as settled descriptions of the real world.
+
+---
 

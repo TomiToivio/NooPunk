@@ -1,99 +1,117 @@
-# NoöPunk Predicted Timeline
+# NoöPunk Background Paradigm Shifts
 
-> **Status:** speculative scenario / author predictions for approximately 2026–2045.
+> **Status:** canonical high-level background model.
 >
-> All dates are intentionally written as **20XX**. These are scenario assumptions for NoöPunk worldbuilding, not statements of established fact or certainty about the future.
+> **The year is always 20XX.** Ray Kurzweil's 2045 Singularity remains a thematic reference,
+> not a fixed in-world date.
+>
+> The entries below are **unordered paradigm shifts**, not a forecast chronology. Their
+> document order does not imply historical order.
 
-NoöPunk develops from the convergence of artificial intelligence, geopolitical transformation, cybernetics, consciousness research, non-human intelligence, psionics, and human-machine integration. The events below are the major predicted beats of the setting. Their exact dates remain deliberately obscured as **20XX**.
+NoöPunk develops from several transformations already visible in present-day society. The
+setting extrapolates them into 20XX without pretending to know the exact dates or complete
+sequence by which they unfold.
 
-## 20XX — Creation of AGI / ASI
+## 20XX — Cyberpunk intensification
 
-Artificial general intelligence and eventually artificial superintelligence are created. Machine intelligence becomes a central force in science, economics, culture, security, and planetary-scale coordination.
+Ubiquitous digital networks, platform power, surveillance, synthetic media, cybernetic
+augmentation, technological inequality, corporate and state information infrastructures,
+algorithmic governance, and networked social life intensify.
 
-## 20XX — Rogue AGI / ASI Disasters in the United States
+NoöPunk treats cyberpunk as an extrapolation of existing tendencies rather than a future
+condition that begins on one identifiable day.
 
-> **Superseded and extended by [issue #58](https://github.com/TomiToivio/NooPunk/issues/58)**,
-> which specifies **two** rogue-AGI catastrophes rather than one. This entry previously
-> recorded a single disaster. The section heading and wording are revised here; the
-> phrase "concentrated primarily in the United States" remains true under the two-event
-> reading, so the change is additive where it can be. The canonical machine-readable
-> record is [`data/world/tech_matrix.json`](data/world/tech_matrix.json) under
-> `catastrophes`, and the regional consequences are in
-> [`docs/TECH_MATRIX.md`](docs/TECH_MATRIX.md).
+## 20XX — AI / AGI revolution
 
-Two major rogue-AI disasters occur, concentrated primarily in the United States. Each
-becomes a historical rupture in the governance of advanced AI and together they reshape
-global technological power.
+AI and AGI transform science, labor, politics, warfare, media, and everyday life.
+Accelerationist, Cyborgist, Critical AI, and existential-risk positions become major
+ideological and institutional formations.
 
-1. **First Rogue AGI Holocaust.** Serious but comparatively contained; defeated using
-   conventional military means. The first major proof that AGI catastrophe was possible.
-2. **Second Rogue AGI Holocaust.** Far more severe; requires large-scale EMP attacks,
-   including nuclear EMP, to shut down infrastructure controlled by the rogue system.
-   Much of the continental United States is devastated.
+Multiple rogue-AGI disasters occur and reshape governance and technological development.
+Their exact dates, actors, and global order are deliberately unresolved in canonical
+background. Named contemporary-company versions belong to archived narrative variants.
 
-The company names the setting attaches to these events are **setting fiction**
-([`docs/WRITING_STYLE_AND_MODELING.md`](docs/WRITING_STYLE_AND_MODELING.md) §4, level 5 —
-NoöPunk extrapolation), not claims about the real world.
+## 20XX — Quantum Information Panpsychism / PSI breakthrough
 
-## 20XX — EU–Russia War / World War III
+A scientific breakthrough in consciousness establishes a post-materialist paradigm
+associated in-setting with Quantum Information Panpsychism and makes PSI reproducible
+enough to support psychotronic technologies.
 
-A large-scale war erupts between the European Union and Russia. It becomes part of a wider period of warfare across multiple regions and is commonly remembered as **World War III**, despite the absence of a strategic nuclear exchange.
+This shift is **independent of UFO/NHI Disclosure**. Humanity does not need aliens to
+discover PSI. Disclosure may later transform the interpretation and politics of the
+science, but it is not its origin.
 
-## 20XX — European Federation and New Superpower
+Relevant real-world intellectual influences may be cited by name, including Federico
+Faggin, Donald Hoffman, Dean Radin, and other theorists whose attribution matters.
 
-The war accelerates European political integration. The European Union transforms into a more fully federal political entity and emerges as a new global superpower.
+## 20XX — UFO / UAP Disclosure and NHI contact
 
-## 20XX — UFO / UAP Disclosure and NHI Contact
+NHI existence becomes scientifically and politically undeniable. Governments, scientific
+institutions, religions, corporations, publics, Legacy Programs, contact traditions, and
+anomalous phenomena are reinterpreted.
 
-UFO/UAP disclosure moves beyond a simple extraterrestrial crash-retrieval narrative. The revealed phenomenon is more complex, involving multiple forms of **non-human intelligence (NHI)** and a strong consciousness or psionic component.
+Disclosure is plural and contested rather than one mandatory cinematic sequence. The
+setting can contain national archives, crash retrievals, anomalous encounters, competing
+ontologies, and open contact without fixing one universal order in which every revelation
+occurs.
 
-Within the NoöPunk scenario, **Jacques Vallée's interpretation is the closest existing model**: the phenomenon includes extraterrestrial possibilities but cannot be reduced to extraterrestrial visitors alone, and may involve interdimensional or otherwise non-conventional forms of intelligence and interaction.
+National reverse-engineering traditions differ substantially. The United States develops
+MJ-12; the Nordic countries build on Ghost Flier and Ghost Rocket recoveries; India and
+Egypt draw heavily on archaeological material; India also combines this with Vimana
+traditions and yogic siddhis; Israel develops Kabbalistic / Merkabah noetic engineering;
+and China enters the field later than the programmes described in the original Law of One
+period. The Soviet/Russian programme is intentionally unresolved but appears to involve
+Confederation-derived technology. **Russia has no canonical Disclosure event at present.**
 
-Open or undeniable NHI contact becomes part of human reality.
+CE-5 and related contact practices may function as noetic summoning/contact rituals rather
+than reliable methods for calling physical spacecraft. DMT entities, astral projection,
+Hoffman/Faggin-style conscious-agent networks, and other Noetic experiences may be different
+interfaces to the same deeper conscious network.
 
-## 20XX — Scientific Validation of Psionics
+## 20XX — BCI, transhumanism, and human cyborgification
 
-Phenomena previously classified as paranormal or anomalous are demonstrated scientifically under reproducible conditions.
+Brain-computer interfaces, prosthetics, sensory extensions, cognitive augmentation,
+synthetic organs, AI companions, wearable and implanted computation, biological
+engineering, cortical stacks, and resleeving spread unevenly.
 
-This leads to the development of **psychotronic technologies**: engineered systems that interact with consciousness, cognition, perception, or mind-to-mind / mind-to-environment effects.
+Different societies embrace, regulate, reject, monopolize, socialize, or ritualize these
+technologies in radically different ways.
 
-Psionic capabilities eventually develop into an ordinary service industry, with commercial, medical, communications, security, entertainment, research, and personal applications.
+## 20XX — Geopolitical and social transformation
 
-## 20XX — Panpsychism / Idealism Becomes the New Paradigm
+States, federations, corporations, movements, religions, cities, and regions respond
+differently to AI, PSI, NHI, transhumanism, and networked power.
 
-Scientific discoveries about consciousness overturn strongly reductive models of mind. Some form of **panpsychism, idealism, or consciousness-fundamental ontology** becomes a major new philosophical and scientific paradigm.
+A **limited / hybrid war between Russia and Europe** ends without Russia breaking apart.
+The crisis accelerates European integration: the **European Union becomes a federal
+superpower and Ukraine joins the EU**.
 
-Matter, information, computation, and consciousness are increasingly understood as aspects of a deeper common reality rather than as entirely separate domains.
+Russia then undergoes a **revolution followed by another period of democratization,
+institutional struggle, and disorder reminiscent of the post-Soviet transition**. Russia
+does **not** canonically descend into civil war or territorial breakup. Its later political
+settlement remains deliberately open.
 
-## 20XX — BCI, Transhumanism and Human Cyborgification
-
-Brain-computer interfaces mature from medical and experimental systems into widespread human augmentation.
-
-Neural interfaces, prosthetics, sensory extensions, cognitive augmentation, synthetic organs, AI companions, wearable and implanted computation, and biological engineering blur the boundary between human and machine.
-
-The result is a full **Cyberpunk** condition: humans become increasingly networked, augmented, programmable, and cyborgized.
+Some regions remain comparatively stable. Others experience war, authoritarian reaction,
+corporate sovereignty, institutional breakdown, radical federalization, commons-oriented
+experiments, or local catastrophe. These outcomes do not require one fixed global sequence.
 
 ## 20XX — Emergence of the Noösphere
 
-The **Noösphere** comes into being as an emergent planetary layer of connected intelligence.
+The Noösphere emerges from the interaction of human minds, AIs, communication networks,
+BCIs, culture, institutions, and scientifically accepted PSI.
 
-It has two intertwined infrastructures:
-
-1. **Cybernetic Noösphere:** humans, AIs, networks, sensors, media, BCIs, autonomous systems, and machine-mediated communication form a continuously interacting cognitive network.
-2. **Psionic Noösphere:** scientifically validated consciousness phenomena create forms of connection that are not reducible to ordinary digital communications.
-
-The mature Noösphere resembles a technologically and psychically awakened form of **C. G. Jung's collective unconscious becoming collective consciousness**: a planetary-scale field in which human minds, machine minds, networks, culture, and consciousness increasingly participate in a shared cognitive environment.
+Its cybernetic and psionic aspects reinforce one another, but the Noösphere is an emergent
+planetary condition rather than the final numbered stage of a deterministic timeline.
 
 ---
 
-## Core NoöPunk Convergence
+## Core NoöPunk convergence
 
-The scenario culminates in the convergence of:
+NoöPunk is the world produced when these paradigm shifts overlap and interact:
 
-**Noösphere + Cyberpunk + AGI/ASI + NHI + Psionics + Panpsychism/Idealism + Transhumanism + Geopolitical Transformation**
+**Cyberpunk + AI/AGI + QIP/PSI + NHI + Noösphere + Transhumanism + Geopolitical Transformation**
 
-NoöPunk is the world that emerges when these developments cease to be separate trends and begin reinforcing one another.
-
+The canonical claim is the convergence. The exact chronology is intentionally open.
 
 ---
 

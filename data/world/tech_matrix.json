@@ -3,7 +3,7 @@
   "format": "noopunk.world.tech_matrix",
   "version": 1,
   "time_convention": "20XX",
-  "$time_comment": "AGENTS.md §6: canonical future dates are written 20XX unless the author says otherwise. This file assigns no year to any event; the issue asks to fix an approximate era and that remains an author decision (see open_questions_unassigned).",
+  "$time_comment": "AGENTS.md §6: canonical future dates are 20XX. The background shifts are unordered unless an explicit causal dependency is canon; this file must not infer chronology from array order.",
   "design_rule": "Technological capability is a product of ideological struggle, political economy, catastrophe, culture and infrastructure, not of a single global tech level. No region is simply more advanced than another: every profile carries both gains and vulnerabilities, and the same planet contains Cyberpunk and Eclipse Phase conditions simultaneously.",
   "$dimensions_comment": "The thirteen dimensions are the issue's own list, kept in its order and wording. Each carries an OPEN ordered vocabulary rather than a closed enum: the order is meaningful (later = more capable) but the scale is not a number, and a region may hold a value that is not adjacent to another region's. Per AGENTS.md §10 this stays reversible if the author revises the ladder.",
   "dimensions": [
@@ -435,58 +435,17 @@
   "$unassigned_summary": "A blank cell is an author decision that has not been made, not an omission. 49 of the 91 dimension x region cells are unassigned, because issue #58 states a regional position for only some dimensions and this file asserts nothing beyond its text. The remaining 42 carry a value the issue states or a marked extrapolation ($example: true).",
   "catastrophes": [
     {
-      "id": "first-rogue-agi-holocaust",
-      "ordinal": "first",
-      "name": "First Rogue AGI Holocaust",
-      "$name_note": "The issue's term. The issue also calls it the 'OpenAI incident', using a real company name; it is listed under $company_attribution_note.",
-      "severity": "contained",
-      "resolution": "defeated_using_conventional_military_means",
-      "$significance": "The issue: 'first major proof that AGI catastrophe was possible'.",
-      "supersedes": null
-    },
-    {
-      "id": "second-rogue-agi-holocaust",
-      "ordinal": "second",
-      "name": "Second Rogue AGI Holocaust",
-      "$name_note": "The issue's term. The issue also calls it the 'Anthropic incident', using a real company name; it is listed under $company_attribution_note.",
-      "severity": "severe",
-      "resolution": "large_scale_emp_attacks_including_nuclear_emp",
-      "$significance": "The issue: 'much of the continental United States was devastated'.",
-      "supersedes": {
-        "target_file": "TIMELINE.md",
-        "target_section": "20XX - Rogue AGI / ASI Disaster in the United States",
-        "reason": "TIMELINE.md records a single rogue-AGI disaster. Issue #58 specifies two, with different severities and resolutions. Recorded as an explicit supersession, dated and naming #58, rather than a silent rewrite of a timeline fact.",
-        "compatibility": "The existing entry's phrase 'concentrated primarily in the United States' remains true under the two-event reading, so the change is additive where it can be."
-      }
-    },
-    {
-      "id": "third-agi-disaster",
-      "ordinal": "third",
-      "name": "Third AGI Disaster",
-      "$name_note": "Term from issue #89 (the 'DeepSeek' incident in setting fiction; real company name recorded under $company_attribution_note).",
-      "severity": "unassigned",
-      "resolution": "unassigned",
-      "$issue89_note": "Issue #89: 'It is thought that Anthropic, Deepseek and Moonshot AI are infected around this time and start to go rogue leading to the Second, Third and Fourth AGI Disasters.' #89 supplies no severity or resolution for the third and fourth, so those cells are left unassigned rather than invented.",
-      "supersedes": null
-    },
-    {
-      "id": "fourth-agi-disaster",
-      "ordinal": "fourth",
-      "name": "Fourth AGI Disaster",
-      "$name_note": "Term from issue #89 (the 'Moonshot AI' incident in setting fiction; real company name recorded under $company_attribution_note).",
-      "severity": "unassigned",
-      "resolution": "unassigned",
-      "$issue89_note": "Third and Fourth AGI Disasters named by issue #89. Severity and resolution are not stated by the issue and are left unassigned rather than inferred.",
-      "supersedes": {
-        "target_file": "rulebook/7_TIMELINE.md",
-        "target_section": "20XX - Rogue AGI / ASI Disasters in the United States",
-        "reason": "The timeline and this file previously recorded a two-catastrophe structure (issue #58). Issue #89 extends it to four, adding the DeepSeek and Moonshot AI disasters. Recorded as an explicit supersession naming #89 rather than a silent rewrite.",
-        "compatibility": "The first two entries (OpenAI / First, Anthropic / Second) are unchanged; the change is purely additive."
-      }
+      "id": "rogue-agi-disasters",
+      "name": "Rogue AGI Disasters",
+      "$name_note": "Canonical structural category from issue #98. Earlier named-company and ordinal versions are archived narrative variants, not active 20XX chronology.",
+      "severity": "uneven",
+      "resolution": "varies_by_incident_and_region",
+      "$significance": "Multiple rogue-AGI disasters establish that advanced AI can cause civilization-scale harm without producing the canonical Eclipse Phase Fall.",
+      "$chronology_rule": "Do not infer incident order, company identity, or exact dates from this entry. Add ordering only if the author explicitly fixes a dependency."
     }
   ],
-  "$company_attribution_note": "SETTING FICTION (WRITING_STYLE_AND_MODELING.md §4, level 5 - NoöPunk extrapolation). Issue #58 explicitly warns that 'references to current countries, companies, and organizations are speculative setting elements, not claims about the real world'. The real-world names it uses - OpenAI, Anthropic, Google, SpaceX, Microsoft, Meta, Amazon - are therefore recorded as fictional setting elements and MUST NOT be presented as claims about those organisations, their conduct or their future. NoöPunk makes no assertion about any real company's safety record, intentions or capability.",
-  "$megacorp_note": "The issue: 'Major fictionalized future megacorporate blocs can descend from companies such as: Google, SpaceX, Microsoft, Meta, Amazon.' Recorded here as the issue's own list of antecedents only. No corporation is named, characterised, given a territory or assigned a capability, because AGENTS.md §1 forbids inventing organisations and the issue sketches these as one-line possibilities rather than entities.",
+  "$company_attribution_note": "Issue #98 supersedes active use of living real-world corporate actors inside fictional 20XX. Real companies may be discussed as present-day inspirations or historical antecedents, but future in-world corporate actors should normally be fictional analogues.",
+  "$megacorp_note": "Future megacorporate blocs should be fictional 20XX actors. Present-day companies may be cited only as inspirations or antecedents where relevant, not as automatically surviving canonical future actors.",
   "runtime_guidance": {
     "shared": "Runtimes read regional technology profiles from this file rather than re-declaring them, so tabletop, Godot and Concordia cannot drift into separate worlds (docs/DESIGN_PRINCIPLES.md §2). No runtime may derive a numeric technology score or a blanket modifier from a profile: cross-region comparison is an authorial and narrative judgement, not an arithmetic one.",
     "tabletop": "Use a profile to describe what is ordinary, restricted or unavailable in a region, and use the gains/vulnerabilities pair to keep regions incomparable. A travel scene between regions is a genre transition; present it through what characters notice as absent or as normal, not through a capability rating.",
@@ -499,7 +458,7 @@
     "What technologies are globally mature - requires a baseline the issue does not state",
     "Which technologies are region-specific - requires the baseline above before it can be answered",
     "Which areas reach Eclipse Phase-like capabilities and which stay near Cyberpunk 2020/RED - the issue's own open question; profiles here are relative, not calibrated to either reference game",
-    "Defining the rogue-AGI catastrophes further - ordinal is recorded from issue #58 (first two) and issue #89 (third and fourth); dates, actors, severity and resolution for the third and fourth are not stated and stay unassigned",
+    "Defining individual rogue-AGI disasters further - dates, exact actors, and global ordering remain unresolved unless the author explicitly fixes them",
     "The European Federation's AI Critical model - the issue states its shape and its strengths; its institutions are not specified",
     "China's post-AGI system - deliberately left opaque per the issue",
     "The Butlerian Jihad and the treatment of jinn - the jinn question is IN-WORLD UNKNOWN and must stay unresolved",
@@ -508,9 +467,9 @@
     "How regional differences reach RPG mechanics - AGENTS.md §4 keeps equipment, economy and detailed simulation mechanics unresolved; the issue's gameplay section is narrative guidance"
   ],
   "$sources": {
-    "timeline": "rulebook/7_TIMELINE.md - the rogue-AGI catastrophes supersede and extend its single rogue-AGI entry; issue #89 extends the structure from two to four",
+    "timeline": "rulebook/7_TIMELINE.md - issue #98 refactors the background into unordered 20XX paradigm shifts and supersedes the named-company catastrophe sequence",
     "ideology": "data/world/ideology.json - the ideological postures here reference its positions and factions",
-    "issue": "TomiToivio/NooPunk issue #58 (regions, dimensions, tone rule) and issue #89 (the four AGI Disasters)",
+    "issue": "TomiToivio/NooPunk issue #58 (regional technology regimes), issue #89 (archived named-disaster variant), and issue #98 (current unordered 20XX timeline rule)",
     "writing_style": "docs/WRITING_STYLE_AND_MODELING.md §4 - the epistemic-status levels used in $cell_sources",
     "design_principles": "docs/DESIGN_PRINCIPLES.md - one world across three runtimes; AGENTS.md §1 (author intent is canon) and §4 (reserved design areas)"
   }

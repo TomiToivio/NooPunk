@@ -26,7 +26,9 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RULEBOOK = "RULEBOOK.md"
+#: Issue #98 moved the narrative-heavy disclosure cascade out of the canonical rulebook
+#: into this archive, so the guard reads the archive rather than RULEBOOK.md.
+RULEBOOK = "docs/archive/NARRATIVE_TIMELINE_VARIANTS.md"
 HEADING = "The Kapustin Jar auction and the global disclosure cascade"
 
 
