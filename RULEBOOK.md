@@ -1,36 +1,29 @@
 # NoöPunk Rulebook
 
-> **STATUS: LIVING RULEBOOK / PRE-FALL ECLIPSE PHASE ALTERNATE TIMELINE**
+> **STATUS: LIVING RULEBOOK / INDEPENDENT NOÖPUNK RPG**
 >
-> This is the canonical human-readable rules document for the NoöPunk Concordia RPG/Simulation.
+> This is the canonical human-readable rules document for the NoöPunk RPG/social simulation.
 >
-> NoöPunk is an **alternate Eclipse Phase timeline set before the Fall**. It uses **Eclipse Phase 2nd Edition (EP2)** as its rules and technology baseline.
+> **NoöPunk is an independent rules system. It is not an Eclipse Phase conversion and no external RPG is its mechanical parent.**
 >
-> Canonical world anchors:
+> The system is deliberately synthetic: it may borrow design lessons from **Cyberpunk 2020 / RED, Eclipse Phase, Fate, PbtA, CY_BORG, Cities Without Number and the wider OSR, Citizen Sleeper, The Expanse**, and other games when useful. Those games are influences, not compatibility requirements.
 >
-> - the year is **20XX**;
-> - **the Fall has not happened**;
-> - **Earth still exists** and remains inhabited and politically central;
-> - the technology level is broadly the **same transhuman technology level as Eclipse Phase**;
-> - the timeline diverges through NoöPunk's Noösphere, panpsychism, psionics, NHI/UAP contact, ideological conflicts, political economy, and alternate AI history.
->
-> The development path is:
+> Canonical mechanical heart from issue #111:
 >
 > ```text
-> Eclipse Phase 2E rules + transhuman technology
->         ↓
-> alternate pre-Fall timeline (20XX, Earth intact)
->         ↓
-> NoöPunk historical + noöspheric divergence
->         ↓
-> Concordia RPG / social simulation
->         ↓
-> selective rules simplification and modification where useful
+> STAT + Skill + 1d10 vs Difficulty Value
 > ```
 >
-> **Issue #60 is the current design mandate for this rules direction.** Earlier archived documents describing an "original rules only" reset are historical design records and do not override this file.
+> - all canonical STAT ratings use **1–10**;
+> - all canonical trained Skill ratings use **1–10**;
+> - the final STAT list is **deferred**;
+> - the final Skill list is **deferred**;
+> - opposed checks roll the same formula on both sides and the higher total wins;
+> - ties, criticals and the general situational-modifier procedure remain **explicit design questions**.
 >
-> The rulebook is expected to change frequently. That is a feature, not a problem.
+> Eclipse Phase remains an important source of transhuman, mesh, morph, reputation, space and existential-risk ideas, and EP-derived material must retain its provenance and licensing. It is no longer the core rules chassis.
+>
+> The setting remains **20XX**, Earth remains inhabited and politically central, and the Fall has not happened. The rulebook is expected to change frequently.
 
 ---
 
@@ -61,7 +54,7 @@ The code should implement the rulebook. The rulebook should not merely describe 
 
 For the current development phase, describe the game as:
 
-> **NoöPunk: a Concordia RPG/social simulation using heavily modified Eclipse Phase 2E rules, set in an alternate pre-Fall 20XX.**
+> **NoöPunk: an independent 1–10 STAT + Skill + d10 RPG/social-simulation system set in 20XX, built for human play and deterministic Concordia/LLM-assisted simulation.**
 
 NoöPunk is a portmanteau of **Noösphere** and **Cyberpunk**.
 
@@ -138,22 +131,13 @@ These are inspirations for a fictional setting. Their real-world scientific or p
 
 ### 2.5 Relationship to Eclipse Phase
 
-Eclipse Phase supplies the **rules and transhuman-technology baseline**, but NoöPunk follows a substantially different world history.
+Eclipse Phase is an important **influence and source library**, not NoöPunk's parent rules engine.
 
-Canonical divergences include:
+NoöPunk may selectively draw on Eclipse Phase for transhuman technology, morphs and embodiment, mesh/cyberspace ideas, reputation, posthuman identity, space habitats, existential risk and related concepts. Any directly adapted material must keep clear attribution, provenance and licensing.
 
-- **the Fall has not happened**;
-- **Earth remains inhabited and politically central**;
-- there have been multiple localized **Rogue AGI Disasters**, but no global extinction-level Fall;
-- some regions have post-apocalyptic conditions while global civilization remains functional;
-- Eclipse Phase-level technologies exist, but distribution is highly uneven;
-- most humans still inhabit their original biological bodies;
-- roughly **25% of humanity has cortical stacks**;
-- roughly half of those with cortical stacks have already resleeved at least once;
-- roughly **50% of humanity has some cybernetic augmentation**, ranging from medically necessary replacements to mesh inserts and cognitive enhancements;
-- player characters may encounter much higher concentrations of transhumans because of the institutions, crises, conflicts, and frontier environments in which they operate.
+Mechanically, however, NoöPunk does not inherit EP2 by default. Every subsystem must be judged on whether it serves NoöPunk's own play style and world. Existing EP2-derived Python modules are legacy/prototype material until deliberately ported, adapted or retired.
 
-NoöPunk should preserve EP2 mechanics where they are useful, simplify them where Concordia and large-scale simulation require it, and replace them where the NoöPunk world model demands something different.
+The setting may still use a pre-Fall, Earth-intact transhuman technology level as inspiration without making NoöPunk an Eclipse Phase conversion.
 
 ### 2.6 Core design identity
 
@@ -166,41 +150,37 @@ NoöPunk is simultaneously:
 - a political and ideological simulation;
 - a social-science simulation;
 - a Concordia multi-agent world;
-- an Eclipse Phase-derived rules experiment.
+- an **independent RPG system assembled from many influences rather than one parent game**.
 
 Its central question is:
 
 > **Who gets to define what humanity, intelligence, consciousness, progress, danger, and reality mean when several paradigm shifts happen at once?**
 
----
-
 ## 3. Rules provenance labels
 
-Every substantial rules section added to this document should use one of these labels.
+Every substantial rules section should make its provenance clear without treating another RPG as the default chassis.
 
-### EP2 BASELINE
+### NOÖPUNK CORE
 
-A rule is currently inherited from Eclipse Phase 2E with no important intended mechanical change.
+A canonical native rule of the independent NoöPunk system.
 
-### MODIFIED EP2
+### ADAPTED / INSPIRED
 
-A rule is recognizably derived from EP2 but has been simplified, renamed, rescaled, combined, or otherwise changed for NoöPunk.
+A NoöPunk rule that deliberately borrows a design idea from one or more external games but is implemented as NoöPunk's own rule.
 
-### NOÖPUNK NATIVE
+### LEGACY EP2
 
-A rule has been designed specifically for NoöPunk and is not intended to reproduce an EP2 mechanic.
+Existing Eclipse Phase-derived prototype material that is retained for provenance or transitional compatibility but is **not automatically active core canon**.
 
 ### EXPERIMENTAL
 
-A rule is being tested and may be discarded.
+A rule being tested and subject to removal.
 
 ### DEFERRED
 
-The subsystem is intentionally not defined yet.
+The subsystem is intentionally unresolved.
 
-These labels are about design provenance, not legal conclusions. Licensing and source provenance must also be recorded separately when EP-derived material is implemented.
-
----
+Licensing/source provenance remains mandatory for directly adapted material.
 
 ## 4. Source hierarchy
 
@@ -208,18 +188,13 @@ When sources disagree, use this order:
 
 1. **Explicit current author direction**
 2. **RULEBOOK.md**
-3. **Issue #60 and later issues that explicitly modify it**
+3. **Issue #111 and later issues that explicitly revise it**
 4. **Implemented tests and shared machine-readable rules data**
-5. **EP2 official/publicly licensed rules references**
-6. **EP2 Quick-Start Rules**
-7. **Other compatible Eclipse Phase references and conversions**
-8. **Archived NoöPunk design documents**
+5. **Earlier NoöPunk issues and design documents that do not conflict with the above**
+6. **External RPGs as inspiration or source material, never as automatic default canon**
+7. **Archived NoöPunk design documents**
 
-Software is not allowed to silently override this document.
-
-If the implementation and this rulebook differ, record the discrepancy as porting debt and resolve it deliberately.
-
----
+Software is not allowed to silently override this document. If implementation and rulebook differ, record the discrepancy as porting debt and resolve it deliberately.
 
 ## 5. Primary Eclipse Phase references
 
@@ -323,7 +298,7 @@ Working mapping:
 | mesh | cyberspace / network layer / possible Noösphere interface |
 | psi | psionics / Noösphere interaction |
 | reputation network | social / network capital |
-| Firewall | **deliberately undecided** — see below |
+| Firewall | **covert operational culture / intelligence network inside UNHSS** — see below |
 | TITANs | **deliberately undecided** — see below |
 
 These are **working mappings**, not final terminology.
@@ -333,12 +308,12 @@ the alternate timeline's divergence point falls inside them. Recording them as o
 the decision; a later contributor must not "helpfully" resolve them by inventing an
 organisation, a history, or a mechanic.
 
-**Firewall.** EP2's cross-faction conspiracy may **exist differently, emerge
-differently, or not yet exist**, depending on where NoöPunk's divergence lands. The
-setting does not currently state which. Nothing is established about its membership,
-reach, methods, or whether it has formed at all. (Note a wording trap: the phrase
-"Great Firewall" does appear in §33.27, where it refers to the Chinese state's internet
-controls — an unrelated use of the words, not this organisation.)
+**Firewall.** Firewall is the insider and operational name for the classified field,
+intelligence, and counter-X-Risk culture inside the **United Nations Human Security and Survival Organization (UNHSS)**. It preserves the useful cross-faction mission role of
+Eclipse Phase's Firewall without being a separate secret conspiracy outside government.
+Player characters are Firewall/UNHSS field agents by default while also retaining a
+personal political, cultural, national, professional, or social faction identity. The
+"Great Firewall" in §33.27 remains China's internet-control system and is unrelated.
 
 **TITANs.** NoöPunk is **pre-Fall**: nothing comparable to the canonical Eclipse Phase
 Fall has occurred (§33.1), and the setting must **not** assume that it has. NoöPunk's
@@ -373,26 +348,57 @@ The exact NoöPunk sheet is not yet final.
 
 ## 10. Action resolution
 
-**Status: EP2 BASELINE.**
+**Status: NOÖPUNK CORE — issue #111.**
 
-Use EP2-style action and skill resolution for the first Concordia prototype.
+NoöPunk's basic resolution engine is:
 
-The exact mechanical procedure, target numbers, success levels, modifiers, opposed-test handling, and edge cases must be implemented from the licensed EP2 references and summarized here as they become part of the executable prototype.
+```text
+STAT + Skill + 1d10 ≥ Difficulty Value
+```
 
-Do not maintain an undocumented second resolution system.
+Both **STAT** and trained **Skill** ratings use a **1–10** scale. Their final names and lists are intentionally deferred. Stats and skills remain separate mechanical quantities.
 
-### NoöPunk conversion target
+### 10.1 Difficulty Values
 
-Action resolution should eventually become:
+| Difficulty | DV |
+| --- | ---: |
+| Simple | 9 |
+| Everyday | 13 |
+| Difficult | 15 |
+| Professional | 17 |
+| Heroic | 21 |
+| Incredible | 24 |
+| Legendary | 29 |
 
-- fast enough for many simulated agents;
-- deterministic and testable in Python;
-- legible to humans;
-- compact enough that LLM agents can reason about legal actions;
-- rich enough to preserve meaningful risk and competence;
-- replaceable without rewriting Concordia.
+These are canonical starting values for playtesting. Do not silently change them.
 
----
+### 10.2 Opposed checks
+
+Both sides roll:
+
+```text
+STAT + Skill + 1d10
+```
+
+Higher total wins. **Ties are unresolved by the current core rules** and require a later explicit design decision.
+
+### 10.3 Criticals and modifiers
+
+Issue #111 deliberately does **not** define exploding 10s, fumbles on 1s, margin-based criticals, or a final situational-modifier procedure. Do not inherit those rules automatically from Cyberpunk RED, Cyberpunk 2020, Fate, PbtA, Eclipse Phase or any other game.
+
+### 10.4 Probability pass
+
+Representative success rates before future modifiers:
+
+| Profile | DV 9 | DV 13 | DV 15 | DV 17 | DV 21 | DV 24 | DV 29 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Novice: STAT 4 + Skill 1 | 70% | 30% | 10% | 0% | 0% | 0% | 0% |
+| Average trained: 5 + 3 | 100% | 60% | 40% | 20% | 0% | 0% | 0% |
+| Professional: 6 + 5 | 100% | 90% | 70% | 50% | 10% | 0% | 0% |
+| Expert: 7 + 7 | 100% | 100% | 100% | 80% | 40% | 10% | 0% |
+| Elite: 8 + 9 | 100% | 100% | 100% | 100% | 70% | 40% | 0% |
+
+The table is diagnostic, not permission to alter the authored DVs. Legendary DV 29 is intentionally beyond these representative ordinary profiles without future bonuses or exceptional rules.
 
 ## 11. Pools and expendable resources
 
@@ -623,28 +629,21 @@ This does not mean every magical claim is true in-setting. Traditions may contai
 
 **Status: NOÖPUNK NATIVE, issue #107.**
 
-NoöPunk now uses **one Affect graph** for Factions, Motivations, Reputation and Contacts. The canonical detailed specification is [rulebook/4_SOCIAL.md](rulebook/4_SOCIAL.md); the engine-neutral representation is [src/simulation/affect.py](src/simulation/affect.py).
+NoöPunk uses **one Affect graph** for Factions, Motivations, Reputation and Contacts. The detailed specification is [rulebook/4_SOCIAL.md](rulebook/4_SOCIAL.md); the engine-neutral representation is [src/simulation/affect.py](src/simulation/affect.py).
 
-Every relation has a **Target**, semantic **Affect** label, and **Affect Score from -100 to +100**. Labels such as Knows, Trusts, Supports, Loves, Fears, Distrusts, Hates and Opposes are not collapsed into generic sentiment. Multiple labelled relations toward one target are allowed, all relations are directional, and an absent edge means **unknown**, not neutral.
+Every relation has a Target, semantic Affect label, and Affect Score from -100 to +100. Labels such as Knows, Trusts, Supports, Loves, Fears, Distrusts, Hates and Opposes are not collapsed into generic sentiment. Multiple labelled relations toward one target are allowed, all relations are directional, and an absent edge means unknown rather than neutral.
 
-Factions are represented as changing discursive formations:
-
-```text
-Faction = US^(positive / constitutive Affects)
-        + FRONTIER^(negative / antagonistic Affects)
-```
-
-This adapts Emilia Palonen's Formula of Populism as a **general model of political/social identification**, not a populism classifier. US and FRONTIER may articulate demands, signifiers, identities, factions, institutions, technologies and individuals. Laclau/Mouffe distinctions remain binding: difference is not automatically antagonism, ambiguity is not automatically emptiness, and affective investment is not sentiment classification.
+Factions are changing discursive formations represented as US^(positive/constitutive Affects) + FRONTIER^(negative/antagonistic Affects). This adapts Emilia Palonen's Formula of Populism as a **general model of political/social identification**, not a populism classifier. US and FRONTIER may articulate demands, signifiers, identities, factions, institutions, technologies and individuals. Laclau/Mouffe distinctions remain binding: difference is not automatically antagonism, ambiguity is not automatically emptiness, and affective investment is not sentiment classification.
 
 Character Motivations use the same edge representation. Faction membership supplies starting Affects, not mind control. Multiple factions preserve different labels as ambivalence; matching target+label edges are combined; explicitly personal Motivations can override inherited matching edges while provenance is retained.
 
-Reputation is a directional edge **from the evaluating faction/actor toward the character**. Contacts are person-to-person social edges, including friends, acquaintances, professional ties and enemies. Character creation should begin with a small playable Contact graph rather than a full biography generator. Exact Contact-count tables and universal relationship-score increments remain future design.
+Reputation is a directional edge from the evaluating faction/actor toward the character. Contacts are person-to-person social edges, including friends, acquaintances, professional ties and enemies. Character creation should begin with a small playable Contact graph rather than a full biography generator. Exact Contact-count tables and universal relationship-score increments remain future design.
 
-The same heterogeneous graph is shared with the social/discourse simulation so play can eventually support introductions, brokers, social distance, alliances/frontiers, faction change, reputation propagation and discourse-network analysis without building four incompatible databases.
+The same heterogeneous graph is shared with the social/discourse simulation so play can support introductions, brokers, social distance, alliances/frontiers, faction change, reputation propagation and discourse-network analysis without four incompatible databases.
 
-At the architecture level, face-to-face, text/chat, voice/video, Mesh and PSI communication are channels over this same social layer. Channel-specific access or modifiers may differ, but relationship state does not fork by medium.
+The default UNHSS / Firewall affiliation is represented through this system: the PC has the campaign-wide Firewall/UNHSS affiliation plus personal faction identity, and conflicts between them may produce Motivations, Reputation and Contact consequences.
 
-The first playable interaction model is text-forward and hub-based, documented in [docs/design/GAMEPLAY_LOOP.md](docs/design/GAMEPLAY_LOOP.md): Locations contain Rooms/Places/Nodes, tasks and NPCs; the player moves among hubs, forms parties, communicates with Contacts, and enters bounded missions. A small Asteroid Belt/station slice is the preferred initial scope. Exploration, Social, Mission, Combat, Cyberspace and Psionics are interaction modes around one persistent character/world model.
+At the architecture level, face-to-face, text/chat, voice/video, Mesh and PSI communication are channels over the same social layer. The first playable interaction model is text-forward and hub-based, documented in [docs/design/GAMEPLAY_LOOP.md](docs/design/GAMEPLAY_LOOP.md). A small Asteroid Belt/station slice is the preferred initial scope.
 
 ---
 
@@ -1178,42 +1177,24 @@ The setting therefore visibly contains:
 
 The coexistence of these groups is politically important.
 
-### 33.5 Proto-federal United Nations
+### 33.5 Emerging federal United Nations
 
-Many states are trying to transform the **United Nations** into a stronger federal or
-quasi-federal government of Earth.
+By 20XX the **United Nations is becoming a real federal world government**. The process
+is incomplete, politically contested, and uneven, but it has moved beyond a merely
+proto-federal aspiration. Every recognized Earth state is a UN member. Off-world human
+polities, including Luna, Mars, and sovereign Belt or habitat communities, may also
+become member states in their own right.
 
-The process is chaotic, incomplete and contested. There is **no consolidated world
-government**.
+The emerging federal system has a **UN President, UN Prime Minister, and UN Parliament**.
+Global presidential and parliamentary elections occur every **four years**. The exact
+constitutional division of powers remains deliberately open for later design.
 
-The emerging order overlaps with:
+UNHSS is one of the principal engines of this federalization because existential-risk
+governance forces the UN to acquire real sovereign capacities: resource mobilization,
+policing, intelligence, emergency authority, scientific infrastructure, military
+forces, space fleets, and global jurisdiction. It is widely regarded as the UN's most
+important institution, which makes it both indispensable and politically alarming.
 
-- national governments;
-- regional blocs;
-- emergency authorities;
-- transnational agencies;
-- corporate jurisdictions;
-- habitat governments;
-- NHI-contact institutions;
-- military and intelligence coalitions;
-- post-scarcity and commons-based networks.
-
-Some states want a democratic Earth federation. Others want only narrow coordination for
-NHI contact, AGI control, planetary defense, trade, migration and crisis response. Some
-resist any transfer of sovereignty. Corporations and non-state actors try to shape the
-process, while autonomist and Multitude-oriented movements may distrust both nation-states
-and centralized planetary government.
-
-The UN is therefore both an **emerging planetary authority** and a major arena of struggle
-over what Earth should become.
-
-Running beneath the institutional question is a **political-economic** one. The core
-contested axis of the NHI Crisis era is **neofeudal cybercapitalism versus the Multitude**:
-concentrated platform, corporate and habitat power that converts crisis into new forms of
-private sovereignty, against commons-based, cooperative and autonomist formations that
-organize from below. This is a live struggle, not a settled outcome, and it is one of the
-setting's central themes — the same axis is stated in
-`docs/PRE_FALL_ALTERNATE_TIMELINE.md` and `data/paradigm_shifts.yaml`.
 
 ### 33.6 Psionics, QIP, awakening and the Noösphere
 
@@ -3347,11 +3328,8 @@ a one- or two-sentence note explaining their contribution.
 
 ### 35.3 Fiction books
 
-- **Richard K. Morgan — _Altered Carbon_.** Embodiment, identity transfer, inequality,
-  crime, and the social consequences of cortical-stack-like continuity.
-- **James S. A. Corey — _The Expanse_ series.** Belt society, crews, interplanetary
-  political economy, factional conflict, and human politics colliding with non-human
-  technology.
+- **Richard K. Morgan — _Altered Carbon_.** Embodiment, identity transfer, inequality, crime, and cortical-stack-like continuity.
+- **James S. A. Corey — _The Expanse_ series.** Belt society, crews, political economy, factional conflict, and human politics colliding with non-human technology.
 
 
 **Purpose:** inspirations rather than literal factual sourcebooks.
@@ -3375,10 +3353,8 @@ cosmology.
 
 ### 35.4 Movies and television
 
-- **_Altered Carbon_.** Visual and social treatment of resleeving-like identity transfer,
-  embodiment, extreme inequality, and crime.
-- **_The Expanse_.** Lived-in Belt habitats, space labor, factional politics, cultural
-  divergence, crews, and system-scale politics experienced at human scale.
+- **_Altered Carbon_.** Visual/social treatment of resleeving-like identity transfer, embodiment, inequality, and crime.
+- **_The Expanse_.** Lived-in Belt habitats, space labor, factional politics, cultural divergence, crews, and system-scale politics at human scale.
 
 
 Maintain a curated list of screen works that influence NoöPunk's:
@@ -3404,10 +3380,8 @@ At minimum:
   transhuman-technology baseline, plus alternate pre-Fall parent continuity.
 - **Cyberpunk 2013 / 2020 / RED** — street-level cyberpunk, corporations, technology,
   urban social structure, and the old-school mechanical sensibility that NoöPunk often
-  simplifies from. **Cyberpunk RED** additionally informs issue #107's compact
-  friends/enemies and Contact hooks.
-- **The Expanse Roleplaying Game** — crew-centered science-fiction play, Ties /
-  Relationships / Reputation, and Belt/station campaign structure.
+  simplifies from.
+- **The Expanse Roleplaying Game** — crew-centered science-fiction play, Ties / Relationships / Reputation, and Belt/station campaign structure.
 - **Shadowrun** — model for combining a cyberpunk street world with a second ontological
   layer; NoöPunk replaces urban fantasy with the Noösphere, PSI, NHI, and QIP.
 - **The Sprawl** — inspiration for narrativist cyberpunk play and faction pressure.
@@ -3417,11 +3391,8 @@ Record whether a game contributes **rules**, **setting**, **tone**, or some comb
 
 ### 35.6 Computer games
 
-- **Citizen Sleeper** — text-forward station hub, task loop, clocks/consequences and
-  relationship-driven progression.
-- **Citizen Sleeper 2** — crews/parties, travel between locations, and missions away from
-  hubs. These are structural interaction references only; NoöPunk does not copy their
-  setting, characters, prose, quests, or assets.
+- **Citizen Sleeper** — text-forward station hub, task loop, clocks/consequences and relationship-driven progression.
+- **Citizen Sleeper 2** — crews/parties, travel between locations, and missions away from hubs. These are structural references only.
 
 Maintain a list of computer games that influence NoöPunk's playable form, interface,
 simulation model, cyberpunk atmosphere, AI society, hacking, or transhumanism.
@@ -3918,20 +3889,10 @@ synthesis.
 
 ### Systems, communication, networks, cyborgs, and extended mind
 
-- **Ernesto Laclau & Chantal Mouffe.** *Hegemony and Socialist Strategy: Towards a
-  Radical Democratic Politics*, 2nd ed., 2001. Articulation, equivalence/difference,
-  antagonism and hegemony ground the social/discourse model in §17.
-- **Ernesto Laclau.** *Emancipation(s)*, 1996, and *On Populist Reason*, 2005.
-  Empty/floating signification, collective subjects, equivalential chains and affective
-  investment inform Factions and Motivations.
-- **Emilia Palonen.** *The Birth and Death of Liberal Democracy in Hungary: The Populist
-  Logic of Polarisation as Hegemony*, 2025. Source for the Formula of Populism heuristic
-  generalized by issue #107 beyond populism.
-- **Tomi Toivio.** *LaclauGPT: Ideological contestation over AI* (current
-  LaclauGPT-Discourse-Analysis paper). Computational discourse-analysis source for
-  articulation, demands, signifier roles, frontiers, affects, provenance, and the
-  safeguards that sentiment is not affective investment and disagreement is not
-  automatically antagonism.
+- **Ernesto Laclau & Chantal Mouffe.** *Hegemony and Socialist Strategy*, 2nd ed., 2001. Articulation, equivalence/difference, antagonism and hegemony ground §17.
+- **Ernesto Laclau.** *Emancipation(s)* (1996) and *On Populist Reason* (2005). Empty/floating signification, collective subjects, equivalential chains and affective investment.
+- **Emilia Palonen.** *The Birth and Death of Liberal Democracy in Hungary* (2025). Source for the Formula of Populism heuristic generalized by issue #107 beyond populism.
+- **Tomi Toivio.** *LaclauGPT: Ideological contestation over AI*. Source for computational articulation, demands, signifier roles, frontiers, affects, provenance, and safeguards against reducing discourse to sentiment.
 
 - **Niklas Luhmann.** *Social Systems*. Stanford University Press, 1995. English
   translation of *Soziale Systeme* (1984).
@@ -4029,3 +3990,340 @@ elements of its fictional world model, not as settled descriptions of the real w
 
 ---
 
+
+
+## UNHSS / Firewall: default campaign institution
+
+> **Issue #108 canon.** This section defines the default player organization and the
+> institutional core of the emerging federal United Nations. It coordinates with
+> #105 (Legacy Programs / Disclosure) and #107 (factions, motivations, reputation,
+> contacts, and mission loop).
+
+### Name, history, and identity
+
+The canonical organization is the **United Nations Human Security and Survival
+Organization (UNHSS)**. It was founded under the cumbersome name **United Nations
+X-Risk and NHI Organization**, which produced the durable public nickname **X-Com**.
+Uniformed police and field officers are often called **X-Cops**, sometimes
+pejoratively. **Firewall** is the insider / operational name used especially by
+intelligence and field personnel.
+
+Firewall is not an extra-governmental conspiracy. It is the classified operational
+culture and intelligence network **inside UNHSS**.
+
+### Mandate and jurisdiction
+
+UNHSS has legal responsibility for existential and species-level survival risks,
+including AGI and rogue AI, NHI / extraterrestrial intelligence, PSI / Noetic
+phenomena, advanced biotechnology, planetary defence, nuclear risk, climate change,
+pandemics, autonomous weapons, catastrophic infrastructure failure, and other
+human-caused or non-human X-Risks. Its distinctive operational center is the
+intersection **X-Risk + NHI + AGI + PSI**.
+
+Every recognized Earth state belongs to the UN and formally accepts UNHSS jurisdiction
+in NHI / X-Risk matters. Formal jurisdiction is global and extends through the human
+Solar System, but **legal jurisdiction ≠ actual access ≠ political cooperation**.
+
+The most enthusiastic collaborators include the **European Union, Japan, Canada,
+Brazil, Peru, Egypt, and India**. The **United States, Russia, and China** participate
+at governmental level while retaining especially difficult Legacy Program secrecy.
+Civilian governments may cooperate with UNHSS while partially autonomous secrecy and
+reverse-engineering structures obstruct it.
+
+### Three institutions fused into one
+
+UNHSS exists because member states could not agree whether humanity needed a civilian
+scientific agency, an FBI-like transnational police/intelligence service, or a rapid
+UN Peacekeeper military force. The compromise was all three:
+
+1. **Civilian / scientific / diplomatic branch.** Research coordination, standards,
+   NHI diplomacy, AI and recovered-technology treaties, planetary defence, Disclosure
+   policy, human / AI / NHI rights debates, civil defence, disaster relief,
+   development, refugee response, resilience, and recovery.
+2. **UNHSS Police / Firewall.** International investigation, counterintelligence,
+   intelligence gathering, specialist police work, and covert operations focused on
+   NHI and X-Risk crimes.
+3. **Tactical / military component.** Rapid intervention under the legal fiction that
+   even its hardest combat formations are Peacekeeper military-police tactical or
+   SWAT assets rather than a conventional standing world army.
+
+UNHSS Police officers are legally **UN Peacekeeper military police**. Their remit
+includes rogue AI, prohibited AGI work, illegal recovered technology and reverse
+engineering, NHI trafficking, psychotronic weapons, illegal PSI experimentation,
+hybrid/infiltration investigations, existential-technology terrorism, sabotage of
+planetary defence, crimes against protected NHI beings, and major Legacy Program theft
+or leaks.
+
+### Military, mobility, and space forces
+
+UNHSS maintains two elite permanent rapid-deployment regiments:
+
+- **Earth Special Operations Regiment:** global counter-NHI, rogue-AI containment,
+  hostage rescue, dangerous-site seizure, WMD/X-Risk intervention, and support to
+  X-Cops.
+- **Solar-System Space Marine Regiment:** orbital assault and boarding, habitat and
+  station intervention, ship seizure, rescue, lunar/planetary/asteroid deployment,
+  and NHI-site operations.
+
+Member-state Peacekeeper regiments supplement them and vary from first-rate specialist
+units to lightly equipped defensive, evacuation, checkpoint, civilian-protection, and
+disaster-response formations.
+
+UNHSS also operates air, sea, and space components: strategic airlift and ISR;
+maritime / USO operations and oceanic sensor networks; a Solar-System **strike fleet**
+capable of orbital assault and space-marine deployment; patrol ships, transports,
+cutters, medical and rescue ships, logistics ships; and **deep-space scouts** combining
+research vessel, spy ship, exploration ship, and coast-guard roles. Orbital
+infrastructure includes defence platforms, SIGINT satellites, sensor constellations,
+stations, communications relays, and planetary-defence systems. Assets may be owned by
+UNHSS or seconded by member states.
+
+### Visual identity
+
+Uniformed UNHSS police and military personnel retain unmistakable UN Peacekeeper
+identity: **blue UN berets or helmets with black uniforms**, with formal styling
+influenced by **19th-century European Hussar uniforms**. The style reflects strong
+early EU backing and later spread through UNHSS ceremonial and field dress. Covert
+agents normally dress for the mission.
+
+### Democratic safeguards and the deep-state problem
+
+UNHSS was deliberately designed to avoid becoming another MJ-12-style permanent
+secrecy apparatus. Safeguards include elected UN oversight, parliamentary committees,
+rotating multinational inspectors, judicial review, member-state inspection rights,
+limits on compartments, mandatory audit, inspector-general offices, whistleblower
+channels, distributed command authority, public overt budgets, multinational review
+of classified budgets, a legal distinction between temporary emergency secrecy and
+indefinite secrecy, and limits on contractor control of recovered technology.
+
+Conspiracy theories that UNHSS / Firewall has itself become a planetary deep state are
+ubiquitous. Some are false; some expose real abuses; some may concern compromised
+cells. The institution is not secretly evil by default.
+
+### Player characters and dual faction identity
+
+The default campaign assumption is:
+
+> **Player characters are covert Firewall field agents of UNHSS while also belonging
+> to another political, cultural, ideological, national, professional, or social
+> faction.**
+
+This creates the standard character structure **personal faction identity + Firewall
+mission identity**. The two identities may conflict. Examples include EU federalist,
+PCM activist, Finnish investigator, Indian noetic scientist, Belter autonomist,
+AI-rights activist, corporate defector, or transhuman faction member, each also serving
+with Firewall. Faction, motivation, reputation, and contacts mechanics should treat
+this tension as a primary source of missions and consequences (#107).
+
+### Mission architecture
+
+A Firewall team may investigate anomalies, negotiate with NHI, stop rogue AI, inspect
+a Legacy Program, protect scientists, evacuate a habitat, infiltrate a corporation,
+investigate PSI crime, board a ship, raid an illegal reverse-engineering lab, examine
+hybrid infiltration, explore an archaeological site, recover a Ghost Rocket fragment,
+operate in cyberspace or a Noetic environment, escort diplomats, provide disaster
+relief, prevent nuclear escalation, investigate ecological X-Risk, travel to asteroid
+colonies, or perform deep-space reconnaissance.
+
+A campaign base may be a UNHSS station, city field office, Belt outpost, patrol ship,
+space station, or mobile task-force base. This supports the location / mission loop
+being developed in #107.
+
+### UN federal executive and the Minister
+
+The ordinary political head of UNHSS is the **United Nations Minister of Human
+Security and Survival**, a member of the UN Parliament and part of the federal
+executive. The Minister answers to the UN President and Prime Minister and oversees
+normal strategy, budget, administration, diplomacy, science, policing, and defence.
+The precise appointment mechanism remains for later constitutional design.
+
+### Four Wallfacers
+
+UNHSS maintains **four Wallfacers**, explicitly inspired in-world by *The Three-Body
+Problem*. Their purpose is strategic deception against hostile ETI, infiltrating NHI,
+rogue AGIs, machine civilizations, and other adversaries capable of pervasive
+surveillance or prediction.
+
+A Wallfacer may pursue unusual hypotheses, fund strange projects, request specialist
+personnel, commission research, create compartmented task forces, conduct deception,
+and make preparations whose purpose remains largely inside one person's head. They
+are still bounded by human rights, UN law, material constraints, anti-coup safeguards,
+and existential-risk safety rules. They are not omnipotent.
+
+Wallfacers are mission engines: their apparently irrational orders may be brilliant,
+wrong, compromised, or impossible to interpret until much later.
+
+### Central political tension
+
+UNHSS must remain internally contradictory rather than becoming a frictionless
+adventurers' guild. Persistent conflicts include science vs secrecy, diplomacy vs law
+enforcement, policing vs military force, civil liberties vs existential security,
+transparency vs counterintelligence, national sovereignty vs global jurisdiction,
+member states vs federal authority, Legacy Programs vs Firewall, AI rights vs AI
+containment, NHI diplomacy vs planetary defence, PSI research vs spiritual
+interpretation, accountability vs classified reverse engineering, and Wallfacer
+autonomy vs democratic oversight.
+
+The core political question is therefore:
+
+> **Can humanity build a legitimate democratic institution powerful enough to fight
+> existential threats without turning it into the unaccountable deep state it was
+> created to replace?**
+
+---
+
+## 39. Campaign-scoped skills and specialist fields
+
+**Status: NOÖPUNK NATIVE CONTENT MODEL / MECHANICS FOLLOW ISSUE #111.**
+
+Issue #110 defines the specialist-skill content needed by the initial Asteroid Belt / UNHSS campaign. Issue #111 supersedes #110's assumption that Eclipse Phase percentile mechanics remain the active chassis: NoöPunk now treats these names and fields as **content design** to be expressed through the independent **1–10 Skill** system and the core `STAT + Skill + 1d10` resolution rule.
+
+The final universal NoöPunk skill list remains deferred. For the first campaign, however, the following Eclipse Phase-derived vocabulary is a useful provisional baseline because it already covers the kinds of actions the campaign needs:
+
+- Athletics
+- Deceive
+- Exotic Skill (Field)
+- Fray
+- Free Fall
+- Guns
+- Hardware (Field)
+- Infiltrate
+- Infosec
+- Interface
+- Kinesics
+- Know (Field)
+- Medicine (Field)
+- Melee
+- Perceive
+- Persuade
+- Pilot (Field)
+- Program
+- Provoke
+- Psi
+- Research
+- Survival
+
+These names are not a commitment to Eclipse Phase numerical mechanics, linked aptitudes, defaulting rules, or percentile values. They are provisional skill concepts pending the final independent NoöPunk list.
+
+### 39.1 Campaign-scoped field rule
+
+**Exotic Skill, Hardware, Know, Medicine, and Pilot require a Field.** A campaign exposes only fields expected to matter in actual play.
+
+Do not preload giant specialty catalogs. Add a field when a character concept, scenario, location, profession, or piece of equipment creates a genuine need for it. This keeps character sheets, NPC descriptions, deterministic rules data, and LLM prompts compact.
+
+For the initial Asteroid Belt / UNHSS campaign, the default profile is:
+
+- **Pilot (Space)**
+- **Medicine (Emergency Care)**
+- **Medicine (Forensics)**
+- **Hardware (Psychotronics)**
+- **Know (Investigation)**
+- **Know (Psychology)**
+- **Know (Law Enforcement)**
+- **Know (Intelligence)**
+- **Know (Counterintelligence)**
+- **Know (Quantum Information Panpsychism / QIP)**
+- **Know (Parapsychology)**
+- **Know (NHI Studies)**
+
+Additional Hardware and Exotic Skill fields are character- or scenario-specific rather than universal.
+
+Possible later Belt Hardware fields include Electronics, Robotics, Industrial, Spacecraft, Mining, and Life Support, but these are **not automatically active** merely because they are plausible.
+
+### 39.2 Core investigative and Noetic knowledge fields
+
+**Know (Investigation)** covers case reconstruction, investigative procedure, evidence interpretation, interview planning, investigative strategy, and linking facts across a case.
+
+**Know (Psychology)** covers psychological profiling, trauma, manipulation, witness reliability, cult dynamics, belief formation, contactee/experiencer assessment, and psychologically complex interviewing. **Dr. Harri S. Romppainen primarily solves cases through Know (Psychology)** rather than being reduced to a generic detective archetype.
+
+**Know (Law Enforcement)** covers police procedure, jurisdiction, warrants, evidence handling, arrest/search rules, cross-jurisdiction cooperation, and UNHSS policing powers.
+
+**Know (Intelligence)** covers intelligence cycles, source evaluation, HUMINT, SIGINT, OSINT, GEOINT, analysis, briefing, collection planning, covert networks, compartmentation, and deception analysis.
+
+**Know (Counterintelligence)** covers mole hunting, hostile recruitment, surveillance/countersurveillance concepts, compromise assessment, insider threats, disinformation, NHI infiltration, Legacy Program penetration, and rogue-AI manipulation of institutions.
+
+**Know (QIP)** covers the setting's scientific theory of consciousness: Quantum Information Panpsychism, related quantum-consciousness precursor theories, continuity questions, conscious-AI questions, and the theoretical basis of psychotronics and Noetic interfaces.
+
+**Know (Parapsychology)** covers the scientific and empirical study of PSI: telepathy, remote viewing, precognition, psychokinesis, anomalous cognition, experimental PSI, psychotronic research, and PSI testing methodology.
+
+**Know (NHI Studies)** is the broad synthesis field for post-Disclosure non-human-intelligence work. It combines historical ufology, exopolitics, contact studies, official releases, intelligence archives, experiencer testimony, channeling/contact traditions, archaeology, reverse-engineering claims, NHI statements, and competing ontologies.
+
+Its purpose is not trivia collection. It is the ability to build a coherent working hypothesis from contradictory evidence while applying provenance, source criticism, comparative analysis, and deception/disinformation awareness.
+
+The **Law of One / Ra Material belongs inside NHI Studies** as a major in-setting contact tradition. A competent specialist understands Confederation and Orion concepts, quarantine, densities, Social Memory Complexes, polarization, historical claims, channel limitations, and post-Disclosure confirmations or contradictions. Studying it does not require treating every contact claim as true.
+
+### 39.3 Psychotronics
+
+**Hardware (Psychotronics)** covers the practical engineering of Noetic technology: psychotronic sensors, PSI amplifiers, counter-PSI systems, Noetic shielding, consciousness interfaces, QIP instrumentation, psychotronic communications, anomalous-contact equipment, PSI-sensitive detection systems, and field repair of related devices.
+
+Keep the boundary explicit:
+
+- **Know (QIP)** understands consciousness theory.
+- **Know (Parapsychology)** understands PSI theory and research.
+- **Hardware (Psychotronics)** builds, repairs, modifies, or disables relevant devices.
+- **Psi / PSI techniques** perform the anomalous effect.
+
+### 39.4 Know, Research, Perceive, Kinesics, and Psi
+
+Use these questions to prevent one skill from swallowing the others:
+
+- **Know:** What do I already understand about this domain?
+- **Research:** Can I find, verify, and interpret useful information from external sources?
+- **Perceive:** What do I notice right now through available senses?
+- **Kinesics:** What can I infer from behavior, body language, tells, and social cues?
+- **Psi:** Can I actually produce the psionic effect?
+
+Know and Research often work together, but neither replaces observation, social inference, or practical PSI.
+
+### 39.5 PSI domains remain a design choice
+
+Do not finalize the PSI skill architecture yet. Preserve these candidate domains for later playtesting:
+
+- Remote Viewing
+- Telepathy
+- Psychokinesis
+- **Noetic Projection** (common-language: astral projection / out-of-body experience)
+- Channeling
+- Precognition
+- Counter-Psi
+
+Three approaches remain open: one Psi skill with fields, several separate PSI skills, or one Psi skill with learned techniques/sleights/moves. The third may mesh naturally with later Stunt/Move design, but no option is canon yet.
+
+**Robert A. Monroe and the Monroe Institute** are influences for Noetic Projection / OBE training and altered-state exploration. This is inspiration for the fictional setting, not a claim that Monroe's interpretations are established real-world science.
+
+### 39.6 Example campaign packages
+
+A conventional UNHSS investigator will often emphasize Investigation, Research, Perceive, Kinesics, and Persuade.
+
+Dr. Romppainen instead emphasizes Psychology, NHI Studies, Research, Kinesics, and Persuade, with Parapsychology where appropriate.
+
+A Noetic scientist commonly emphasizes QIP, Parapsychology, Research, Interface, Psychotronics, and practical Psi only if personally capable.
+
+A Belt field agent commonly needs Pilot (Space), Medicine (Emergency Care), Free Fall, Interface, Research, and one or more role-specific Know fields.
+
+These are packages for readability, not classes.
+
+### 39.7 Machine-readable campaign profile
+
+The corresponding machine-readable profile lives at `data/rules/campaign_skill_fields.json`. Scenario-specific profiles may extend it without changing the universal rules.
+
+The governing rule is:
+
+> **Expose only the specialist fields that the current campaign can actually use.**
+
+### 39.8 Deferred Law-of-One character mechanics
+
+Issue #110 also records a larger character-design problem involving:
+
+- Density as a possible consciousness-development mechanic;
+- 3rd-to-4th Density awakening for PCs and broader Density ranges for NPCs;
+- Service-to-Others / Service-to-Self Polarization;
+- possible SAV/empathy and WIL relationships;
+- seven energy centers / chakras;
+- the Physical / Social / Psychic / Cybernetic character ontology;
+- absent/non-operative layers for entities such as software AIs or Noetic beings;
+- biological-human-first characters with resleeving/morph complexity deferred.
+
+These concepts are **not mechanically implemented here**. Density is not IQ; Polarization is not a D&D-style personality label; Social is not merely charisma; Psychic and Social remain distinct; Cybernetic is not intelligence; and an absent layer is not the same as incompetence.
+
+A dedicated attribute-system design issue owns this work before it becomes executable rules.
