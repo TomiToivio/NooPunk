@@ -1,36 +1,29 @@
 # NoöPunk Rulebook
 
-> **STATUS: LIVING RULEBOOK / PRE-FALL ECLIPSE PHASE ALTERNATE TIMELINE**
+> **STATUS: LIVING RULEBOOK / INDEPENDENT NOÖPUNK RPG**
 >
-> This is the canonical human-readable rules document for the NoöPunk Concordia RPG/Simulation.
+> This is the canonical human-readable rules document for the NoöPunk RPG/social simulation.
 >
-> NoöPunk is an **alternate Eclipse Phase timeline set before the Fall**. It uses **Eclipse Phase 2nd Edition (EP2)** as its rules and technology baseline.
+> **NoöPunk is an independent rules system. It is not an Eclipse Phase conversion and no external RPG is its mechanical parent.**
 >
-> Canonical world anchors:
+> The system is deliberately synthetic: it may borrow design lessons from **Cyberpunk 2020 / RED, Eclipse Phase, Fate, PbtA, CY_BORG, Cities Without Number and the wider OSR, Citizen Sleeper, The Expanse**, and other games when useful. Those games are influences, not compatibility requirements.
 >
-> - the year is **20XX**;
-> - **the Fall has not happened**;
-> - **Earth still exists** and remains inhabited and politically central;
-> - the technology level is broadly the **same transhuman technology level as Eclipse Phase**;
-> - the timeline diverges through NoöPunk's Noösphere, panpsychism, psionics, NHI/UAP contact, ideological conflicts, political economy, and alternate AI history.
->
-> The development path is:
+> Canonical mechanical heart from issue #111:
 >
 > ```text
-> Eclipse Phase 2E rules + transhuman technology
->         ↓
-> alternate pre-Fall timeline (20XX, Earth intact)
->         ↓
-> NoöPunk historical + noöspheric divergence
->         ↓
-> Concordia RPG / social simulation
->         ↓
-> selective rules simplification and modification where useful
+> STAT + Skill + 1d10 vs Difficulty Value
 > ```
 >
-> **Issue #60 is the current design mandate for this rules direction.** Earlier archived documents describing an "original rules only" reset are historical design records and do not override this file.
+> - all canonical STAT ratings use **1–10**;
+> - all canonical trained Skill ratings use **1–10**;
+> - the final STAT list is **deferred**;
+> - the final Skill list is **deferred**;
+> - opposed checks roll the same formula on both sides and the higher total wins;
+> - ties, criticals and the general situational-modifier procedure remain **explicit design questions**.
 >
-> The rulebook is expected to change frequently. That is a feature, not a problem.
+> Eclipse Phase remains an important source of transhuman, mesh, morph, reputation, space and existential-risk ideas, and EP-derived material must retain its provenance and licensing. It is no longer the core rules chassis.
+>
+> The setting remains **20XX**, Earth remains inhabited and politically central, and the Fall has not happened. The rulebook is expected to change frequently.
 
 ---
 
@@ -61,7 +54,7 @@ The code should implement the rulebook. The rulebook should not merely describe 
 
 For the current development phase, describe the game as:
 
-> **NoöPunk: a Concordia RPG/social simulation using heavily modified Eclipse Phase 2E rules, set in an alternate pre-Fall 20XX.**
+> **NoöPunk: an independent 1–10 STAT + Skill + d10 RPG/social-simulation system set in 20XX, built for human play and deterministic Concordia/LLM-assisted simulation.**
 
 NoöPunk is a portmanteau of **Noösphere** and **Cyberpunk**.
 
@@ -138,22 +131,13 @@ These are inspirations for a fictional setting. Their real-world scientific or p
 
 ### 2.5 Relationship to Eclipse Phase
 
-Eclipse Phase supplies the **rules and transhuman-technology baseline**, but NoöPunk follows a substantially different world history.
+Eclipse Phase is an important **influence and source library**, not NoöPunk's parent rules engine.
 
-Canonical divergences include:
+NoöPunk may selectively draw on Eclipse Phase for transhuman technology, morphs and embodiment, mesh/cyberspace ideas, reputation, posthuman identity, space habitats, existential risk and related concepts. Any directly adapted material must keep clear attribution, provenance and licensing.
 
-- **the Fall has not happened**;
-- **Earth remains inhabited and politically central**;
-- there have been multiple localized **Rogue AGI Disasters**, but no global extinction-level Fall;
-- some regions have post-apocalyptic conditions while global civilization remains functional;
-- Eclipse Phase-level technologies exist, but distribution is highly uneven;
-- most humans still inhabit their original biological bodies;
-- roughly **25% of humanity has cortical stacks**;
-- roughly half of those with cortical stacks have already resleeved at least once;
-- roughly **50% of humanity has some cybernetic augmentation**, ranging from medically necessary replacements to mesh inserts and cognitive enhancements;
-- player characters may encounter much higher concentrations of transhumans because of the institutions, crises, conflicts, and frontier environments in which they operate.
+Mechanically, however, NoöPunk does not inherit EP2 by default. Every subsystem must be judged on whether it serves NoöPunk's own play style and world. Existing EP2-derived Python modules are legacy/prototype material until deliberately ported, adapted or retired.
 
-NoöPunk should preserve EP2 mechanics where they are useful, simplify them where Concordia and large-scale simulation require it, and replace them where the NoöPunk world model demands something different.
+The setting may still use a pre-Fall, Earth-intact transhuman technology level as inspiration without making NoöPunk an Eclipse Phase conversion.
 
 ### 2.6 Core design identity
 
@@ -166,41 +150,37 @@ NoöPunk is simultaneously:
 - a political and ideological simulation;
 - a social-science simulation;
 - a Concordia multi-agent world;
-- an Eclipse Phase-derived rules experiment.
+- an **independent RPG system assembled from many influences rather than one parent game**.
 
 Its central question is:
 
 > **Who gets to define what humanity, intelligence, consciousness, progress, danger, and reality mean when several paradigm shifts happen at once?**
 
----
-
 ## 3. Rules provenance labels
 
-Every substantial rules section added to this document should use one of these labels.
+Every substantial rules section should make its provenance clear without treating another RPG as the default chassis.
 
-### EP2 BASELINE
+### NOÖPUNK CORE
 
-A rule is currently inherited from Eclipse Phase 2E with no important intended mechanical change.
+A canonical native rule of the independent NoöPunk system.
 
-### MODIFIED EP2
+### ADAPTED / INSPIRED
 
-A rule is recognizably derived from EP2 but has been simplified, renamed, rescaled, combined, or otherwise changed for NoöPunk.
+A NoöPunk rule that deliberately borrows a design idea from one or more external games but is implemented as NoöPunk's own rule.
 
-### NOÖPUNK NATIVE
+### LEGACY EP2
 
-A rule has been designed specifically for NoöPunk and is not intended to reproduce an EP2 mechanic.
+Existing Eclipse Phase-derived prototype material that is retained for provenance or transitional compatibility but is **not automatically active core canon**.
 
 ### EXPERIMENTAL
 
-A rule is being tested and may be discarded.
+A rule being tested and subject to removal.
 
 ### DEFERRED
 
-The subsystem is intentionally not defined yet.
+The subsystem is intentionally unresolved.
 
-These labels are about design provenance, not legal conclusions. Licensing and source provenance must also be recorded separately when EP-derived material is implemented.
-
----
+Licensing/source provenance remains mandatory for directly adapted material.
 
 ## 4. Source hierarchy
 
@@ -208,18 +188,13 @@ When sources disagree, use this order:
 
 1. **Explicit current author direction**
 2. **RULEBOOK.md**
-3. **Issue #60 and later issues that explicitly modify it**
+3. **Issue #111 and later issues that explicitly revise it**
 4. **Implemented tests and shared machine-readable rules data**
-5. **EP2 official/publicly licensed rules references**
-6. **EP2 Quick-Start Rules**
-7. **Other compatible Eclipse Phase references and conversions**
-8. **Archived NoöPunk design documents**
+5. **Earlier NoöPunk issues and design documents that do not conflict with the above**
+6. **External RPGs as inspiration or source material, never as automatic default canon**
+7. **Archived NoöPunk design documents**
 
-Software is not allowed to silently override this document.
-
-If the implementation and this rulebook differ, record the discrepancy as porting debt and resolve it deliberately.
-
----
+Software is not allowed to silently override this document. If implementation and rulebook differ, record the discrepancy as porting debt and resolve it deliberately.
 
 ## 5. Primary Eclipse Phase references
 
@@ -373,26 +348,57 @@ The exact NoöPunk sheet is not yet final.
 
 ## 10. Action resolution
 
-**Status: EP2 BASELINE.**
+**Status: NOÖPUNK CORE — issue #111.**
 
-Use EP2-style action and skill resolution for the first Concordia prototype.
+NoöPunk's basic resolution engine is:
 
-The exact mechanical procedure, target numbers, success levels, modifiers, opposed-test handling, and edge cases must be implemented from the licensed EP2 references and summarized here as they become part of the executable prototype.
+```text
+STAT + Skill + 1d10 ≥ Difficulty Value
+```
 
-Do not maintain an undocumented second resolution system.
+Both **STAT** and trained **Skill** ratings use a **1–10** scale. Their final names and lists are intentionally deferred. Stats and skills remain separate mechanical quantities.
 
-### NoöPunk conversion target
+### 10.1 Difficulty Values
 
-Action resolution should eventually become:
+| Difficulty | DV |
+| --- | ---: |
+| Simple | 9 |
+| Everyday | 13 |
+| Difficult | 15 |
+| Professional | 17 |
+| Heroic | 21 |
+| Incredible | 24 |
+| Legendary | 29 |
 
-- fast enough for many simulated agents;
-- deterministic and testable in Python;
-- legible to humans;
-- compact enough that LLM agents can reason about legal actions;
-- rich enough to preserve meaningful risk and competence;
-- replaceable without rewriting Concordia.
+These are canonical starting values for playtesting. Do not silently change them.
 
----
+### 10.2 Opposed checks
+
+Both sides roll:
+
+```text
+STAT + Skill + 1d10
+```
+
+Higher total wins. **Ties are unresolved by the current core rules** and require a later explicit design decision.
+
+### 10.3 Criticals and modifiers
+
+Issue #111 deliberately does **not** define exploding 10s, fumbles on 1s, margin-based criticals, or a final situational-modifier procedure. Do not inherit those rules automatically from Cyberpunk RED, Cyberpunk 2020, Fate, PbtA, Eclipse Phase or any other game.
+
+### 10.4 Probability pass
+
+Representative success rates before future modifiers:
+
+| Profile | DV 9 | DV 13 | DV 15 | DV 17 | DV 21 | DV 24 | DV 29 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Novice: STAT 4 + Skill 1 | 70% | 30% | 10% | 0% | 0% | 0% | 0% |
+| Average trained: 5 + 3 | 100% | 60% | 40% | 20% | 0% | 0% | 0% |
+| Professional: 6 + 5 | 100% | 90% | 70% | 50% | 10% | 0% | 0% |
+| Expert: 7 + 7 | 100% | 100% | 100% | 80% | 40% | 10% | 0% |
+| Elite: 8 + 9 | 100% | 100% | 100% | 100% | 70% | 40% | 0% |
+
+The table is diagnostic, not permission to alter the authored DVs. Legendary DV 29 is intentionally beyond these representative ordinary profiles without future bonuses or exceptional rules.
 
 ## 11. Pools and expendable resources
 
