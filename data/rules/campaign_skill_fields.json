@@ -1,0 +1,121 @@
+{
+  "format": "noopunk.campaign_skill_fields",
+  "version": 1,
+  "status": "content-design-under-issue-111",
+  "source_issue": 110,
+  "superseding_mechanics_issue": 111,
+  "note": "Issue #110 specialist-field content expressed under the independent NoöPunk 1-10 skill direction. This file defines campaign-visible fields, not skill ratings or final universal skill canon.",
+  "fielded_skill_families": [
+    "Exotic Skill",
+    "Hardware",
+    "Know",
+    "Medicine",
+    "Pilot"
+  ],
+  "campaign": "Asteroid Belt / UNHSS",
+  "fields": {
+    "Pilot": [
+      "Space"
+    ],
+    "Medicine": [
+      "Emergency Care",
+      "Forensics"
+    ],
+    "Hardware": [
+      "Psychotronics"
+    ],
+    "Know": [
+      "Investigation",
+      "Psychology",
+      "Law Enforcement",
+      "Intelligence",
+      "Counterintelligence",
+      "Quantum Information Panpsychism",
+      "Parapsychology",
+      "NHI Studies"
+    ],
+    "Exotic Skill": []
+  },
+  "aliases": {
+    "Know (Quantum Information Panpsychism)": [
+      "Know (QIP)"
+    ],
+    "Noetic Projection": [
+      "Astral Projection",
+      "Out-of-Body Experience",
+      "OBE"
+    ]
+  },
+  "boundaries": {
+    "Know": "Existing domain understanding.",
+    "Research": "Finding, verifying, and interpreting external information.",
+    "Perceive": "Immediate sensory noticing.",
+    "Kinesics": "Inference from behavior, body language, tells, and social cues.",
+    "Psi": "Actually performing a psionic effect.",
+    "Hardware (Psychotronics)": "Building, repairing, modifying, disabling, or operating psychotronic/noetic hardware at an engineering level."
+  },
+  "psi_design": {
+    "status": "deferred",
+    "candidate_domains": [
+      "Remote Viewing",
+      "Telepathy",
+      "Psychokinesis",
+      "Noetic Projection",
+      "Channeling",
+      "Precognition",
+      "Counter-Psi"
+    ],
+    "options": [
+      "one Psi skill with fields",
+      "multiple distinct PSI skills",
+      "one Psi skill with learned techniques/sleights/moves"
+    ]
+  },
+  "character_examples": {
+    "Conventional UNHSS investigator": [
+      "Know (Investigation)",
+      "Research",
+      "Perceive",
+      "Kinesics",
+      "Persuade"
+    ],
+    "Dr. Harri S. Romppainen": [
+      "Know (Psychology)",
+      "Know (NHI Studies)",
+      "Research",
+      "Kinesics",
+      "Persuade",
+      "Know (Parapsychology)"
+    ],
+    "UNHSS Noetic scientist": [
+      "Know (QIP)",
+      "Know (Parapsychology)",
+      "Research",
+      "Interface",
+      "Hardware (Psychotronics)"
+    ],
+    "Belt field agent": [
+      "Pilot (Space)",
+      "Medicine (Emergency Care)",
+      "Free Fall",
+      "Interface",
+      "Research"
+    ]
+  },
+  "campaign_extension_rule": "Add fields only when a character concept, scenario, location, profession, or equipment creates a genuine play need.",
+  "noncanonical_examples": {
+    "Hardware": [
+      "Electronics",
+      "Robotics",
+      "Industrial",
+      "Spacecraft",
+      "Mining",
+      "Life Support"
+    ],
+    "Exotic Skill": [
+      "Music",
+      "Disguise",
+      "Animal Handling"
+    ]
+  }
+}
