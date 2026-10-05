@@ -53,3 +53,15 @@ are expected to drive motivations, reputation, contacts, and mission consequence
 
 See RULEBOOK.md, “UNHSS / Firewall: default campaign institution,” and issues #108 and
 #107.
+
+
+## Major UN Parliament parties
+
+The first four parliamentary blocs are:
+
+- **Bioconservatives** — far-right biological-humanity coalition with hard-core bioconservatives, X-Risk doomists, and older nationalist/religious populists.
+- **Libertarian Party** — pro-market, accelerationist, minarchist, strongly pro-private technology and extraterrestrial trade.
+- **United Earth Social Democratic Party** — social-democratic/green internationalist governing coalition. It has won every UN parliamentary and presidential election so far.
+- **The Multitude** — far-left coalition combining autonomist/anarchist/post-workerist currents with Marxist and Marxist-Leninist traditions.
+
+They are intentionally internally contradictory. Many major factions remain outside parliamentary politics. See RULEBOOK.md §46 and `data/world/un_parties.yaml`.
