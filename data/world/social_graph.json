@@ -1,0 +1,55 @@
+{
+  "format": "noopunk.social_graph.v1",
+  "source": "RULEBOOK.md §17 / issue #107",
+  "affect_score": {
+    "min": -100,
+    "max": 100,
+    "zero": "explicit neutral only; missing edge means unknown"
+  },
+  "edge": {
+    "required": [
+      "source",
+      "source_type",
+      "target",
+      "target_type",
+      "affect",
+      "affect_score",
+      "domain"
+    ],
+    "domains": [
+      "faction_us",
+      "faction_frontier",
+      "motivation",
+      "reputation",
+      "contact"
+    ],
+    "metadata": [
+      "evidence",
+      "origin",
+      "inherited_from",
+      "created_at",
+      "updated_at",
+      "history"
+    ]
+  },
+  "node_types": [
+    "character",
+    "faction",
+    "institution",
+    "nationality",
+    "species",
+    "ideology",
+    "demand",
+    "signifier",
+    "technology",
+    "place",
+    "concept"
+  ],
+  "rules": {
+    "directional": true,
+    "multiple_labeled_edges_same_target": true,
+    "ambivalence": true,
+    "unknown_is_not_neutral": true,
+    "faction_inheritance_is_starting_condition": true
+  }
+}
