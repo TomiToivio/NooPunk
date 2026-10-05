@@ -136,6 +136,8 @@ Cybernetic Systems and equipment passes.
 
 ## Skills remain separate
 
+Cross-system conversion tables for Cyberpunk RED, Eclipse Phase 2E, and Cities Without Number are maintained in [`docs/design/RPG_CONVERSION_REFERENCE.md`](../docs/design/RPG_CONVERSION_REFERENCE.md). They are interoperability aids only and do not expand the canonical six-STAT model or import another game's skill catalogue.
+
 NoöPunk keeps the rule established in #111:
 
 ```text
