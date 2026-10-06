@@ -52,10 +52,10 @@ class UNSATests(unittest.TestCase):
             self.assertIn(term.lower(), BOOK.lower())
 
     def test_nicknames_and_mj12_boundary(self):
-        for term in ("UN X-Risk Agency", "UN NHI Agency", "X-COM", "X-Files",
-                     "Men in Black", "MJ-12"):
+        for term in ("UN X-Risk Agency", "UN NHI Agency", "X-COM", "X-Files", "MJ-12"):
             self.assertIn(term, BOOK)
         self.assertIn("not an acceptable nickname", BOOK)
+        self.assertIn("Men in Black is not a", BOOK)
 
     def test_world_government_role(self):
         self.assertIn("federal government of Earth", BOOK)
