@@ -86,12 +86,12 @@ class AffectGraphTests(unittest.TestCase):
                               domain="motivation", metadata={"origin": "personal"})
         inherited = inherit_faction_affects(
             character_id="pc",
-            faction_edges=[edge("a", "AGI", "Supports", 70, "faction_us"),
-                           edge("b", "AGI", "Fears", -60, "faction_frontier")],
+            faction_edges=[edge("a", "AGI", "Supports", 7, "faction_us"),
+                           edge("b", "AGI", "Fears", -6, "faction_frontier")],
             personal_edges=[personal])
         by = {x.affect: x for x in inherited}
         self.assertEqual(by["Supports"].affect_score, 8)
-        self.assertEqual(by["Fears"].affect_score, -60)
+        self.assertEqual(by["Fears"].affect_score, -6)
 
     def test_round_trip(self) -> None:
         graph = AffectGraph([edge("pc", "friend", "Trusts", 5, "contact")])
