@@ -1,10 +1,15 @@
-"""Unified NoöPunk Affect graph for issue #107."""
+"""Unified NoöPunk Affect graph for issue #107.
+
+Issue #144 normalises every social score to the **-10..+10** scale, replacing the
+earlier -100..+100 range. The representation, domains and inheritance rules are
+unchanged: only the numeric bounds moved.
+"""
 from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Iterable, Mapping
 
-MIN_AFFECT = -100
-MAX_AFFECT = 100
+MIN_AFFECT = -10
+MAX_AFFECT = 10
 VALID_DOMAINS = frozenset({"faction_us","faction_frontier","motivation","reputation","contact"})
 
 @dataclass(frozen=True, slots=True)
@@ -24,7 +29,7 @@ class AffectEdge:
         if not self.affect:
             raise ValueError("Affect edges require a semantic label")
         if not MIN_AFFECT <= self.affect_score <= MAX_AFFECT:
-            raise ValueError("affect_score must be between -100 and +100")
+            raise ValueError("affect_score must be between -10 and +10")
         if self.domain not in VALID_DOMAINS:
             raise ValueError(f"Unknown Affect domain: {self.domain!r}")
 

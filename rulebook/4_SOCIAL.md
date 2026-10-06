@@ -6,9 +6,24 @@ NoöPunk uses one representation for Factions, Motivations, Reputation and Conta
 
 Target | Affect | Affect Score
 
-Affect is the semantic relation, for example Knows, Likes, Trusts, Supports, Identifies With, Loves, Protects, Pursues, Fears, Distrusts, Hates, or Opposes. Affect Score is an integer from -100 to +100. Positive means positive investment, negative means negative investment, and zero is an explicit neutral relation. No edge means unknown. Unknown is therefore not the same as a stored zero.
+Affect is the semantic relation, for example Knows, Likes, Trusts, Supports, Identifies With, Loves, Protects, Pursues, Fears, Distrusts, Hates, or Opposes. Affect Score is an integer from **-10 to +10** (issue #144 normalised the scale; it was previously -100..+100). Positive means positive investment, negative means negative investment, and zero is an explicit neutral relation. No edge means unknown. Unknown is therefore not the same as a stored zero.
 
-The label and score both matter. Fears -70, Hates -70 and Opposes -70 have similar polarity but different meaning. Multiple labelled edges may connect the same source and target, so a character can support and fear AGI at the same time. All edges are directional.
+The label and score both matter. Fears -7, Hates -7 and Opposes -7 have similar polarity but different meaning. Multiple labelled edges may connect the same source and target, so a character can support and fear AGI at the same time. All edges are directional.
+
+## The relationship score scale
+
+Every social score uses one signed scale, **-10 to +10**, matching the feel of the 1-10
+mechanical scale:
+
+| Score | Meaning |
+| --- | --- |
+| **+10** | Love / absolute loyalty / iconic standing |
+| **positive** | Likes / trusts / supports |
+| **0** | Neutral, or no meaningful relationship (unknown) |
+| **negative** | Dislikes / distrusts / opposes |
+| **-10** | Hate / mortal enemy / irreconcilable hostility |
+
+A specific **Affect** overrides the generic wording: `+6, trusts`, `-7, fears`.
 
 ## General edge
 
@@ -38,7 +53,7 @@ Thus Support AGI and Fear AGI remain two edges rather than being averaged into a
 
 ## Reputation
 
-Reputation is a directional Affect edge from a faction or social actor to a character. It is not the character's opinion of that faction. Character -> faction Likes +70 and faction -> character Distrusts -30 may coexist. NoöPunk does not preserve the EP2 reputation-network list wholesale; reputation contexts emerge from NoöPunk factions and institutions.
+Reputation is a directional Affect edge from a faction or social actor to a character. It is not the character's opinion of that faction. Character -> faction Likes +7 and faction -> character Distrusts -3 may coexist. NoöPunk does not preserve the EP2 reputation-network list wholesale; reputation contexts emerge from NoöPunk factions and institutions.
 
 ## Contacts
 

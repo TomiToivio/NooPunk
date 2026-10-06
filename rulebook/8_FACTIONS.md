@@ -111,24 +111,33 @@ The faction system projects into these graph layers:
 These project into actor-to-actor, faction-to-faction or mixed multilayer networks for
 analysis and visualization.
 
-## Open question: the score scale
+## The score scale
 
-**Issue #122 specifies scores on a −10…+10 scale**, with `+10` as the strongest positive
-relation and `−10` as the strongest negative. The examples in that issue use that range
-throughout (`+8 Loves`, `−9 Hates: Orion infiltration`).
+Issue #144 **resolves** the scale question this chapter previously left open. Every social
+score — Contact, Motivation, Faction Reputation and Faction US/FRONTIER alike — uses one
+signed scale:
 
-**The live issue #107 implementation uses −100…+100** — `MIN_AFFECT`/`MAX_AFFECT` in
-`src/simulation/affect.py`, the `score_range` in `data/world/social_affect_schema.json`,
-and the "integer from −100 to +100" wording in `rulebook/4_SOCIAL.md`.
+```text
+-10  ............  0  ............  +10
+Hate             Neutral             Love
+```
 
-Both are author-specified, and they are not the same scale. This is recorded here rather
-than silently reconciled:
+| Score | Generic meaning |
+| --- | --- |
+| **+10** | Love / absolute loyalty / iconic standing |
+| **positive** | Likes / trusts / supports |
+| **0** | Neutral / no meaningful relationship |
+| **negative** | Dislikes / distrusts / opposes |
+| **-10** | Hate / mortal enemy / irreconcilable hostility |
 
-* every rule in this section is expressed in **relative** terms, so it holds on either scale;
-* **which scale is canonical is the author's decision**, and until it is made, no test,
-  example or data file should assume both are interchangeable;
-* a 10× rescale is not cosmetic — it changes every stored score, the schema bounds and the
-  validation in `affect.py`, so it should land as one deliberate change across all three.
+A specific **Affect** overrides the generic wording — `+6, trusts`, `-7, fears`. The score
+says *how strongly*; the Affect says *what kind* of relation it is.
+
+The earlier −100…+100 range recorded in issue #107 is superseded. The 10× rescale landed as
+one deliberate change across all three places that carried it — this chapter, `RULEBOOK.md`
+§17, and the `MIN_AFFECT`/`MAX_AFFECT` bounds in `src/simulation/affect.py` and
+`data/world/social_affect_schema.json` — so no stored score, schema bound or validation is
+left on the old scale.
 
 ## Questions this section does not settle
 

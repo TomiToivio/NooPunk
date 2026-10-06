@@ -26,7 +26,7 @@ These are families, not a forced master list. Add named factions only when the r
 
 Recurring NoöPunk motivation targets include AI acceleration, AI safety, Critical AI, AI rights, Disclosure, secrecy, human sovereignty, transhumanism, bioconservatism, cyborgification, Noösphere, PSI, NHI cooperation, NHI resistance, nationalism, federalism, commons, corporate power, ecological survival, space expansion, personal survival, family, friendship, loyalty, love, revenge, curiosity, career, discovery, fame, wealth and community.
 
-Each target still needs an Affect label and score. AI acceleration | Supports | +70 and AI acceleration | Opposes | -60 are both valid.
+Each target still needs an Affect label and score. AI acceleration | Supports | +7 and AI acceleration | Opposes | -6 are both valid.
 
 ## Reputation contexts
 
