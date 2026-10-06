@@ -580,27 +580,130 @@ Prioritize factions that employ, command, assist, investigate, oppose or otherwi
 meaningful relationships for the PCs in Helsinki. Do not populate the core rulebook with a
 global encyclopedia merely because the faction model can represent one.
 
-The default player character is a **UNSA agent** who has completed shared law-enforcement
-and counterintelligence training at the **UNSA Police Academy** before taking specialist
-training.
+The default player character is a **UNSA anomalous-threat investigator** who has completed
+shared law-enforcement and counterintelligence training at the **UNSA Police Academy**
+before taking specialist training.
 
-### 9.4 Specialist training
+The default campaign fantasy is deliberately specific rather than generic cyberpunk:
+a Blade Runner / X-Files-style investigator works cases where ordinary crime, intelligence,
+AI, cybernetics, psionics and NHI overlap. A case may begin as a murder, missing person,
+hacked implant, intelligence leak, unidentified drone or cult incident and open into four
+simultaneous evidence domains:
+
+1. **Physical** — bodies, trace evidence, movement, weapons, vehicles and ordinary forensics.
+2. **Cybernetic** — networks, devices, cameras, drones, implants, logs, malware and data trails.
+3. **Social** — institutions, factions, contacts, motives, ideologies, reputations and cover stories.
+4. **Psychic / Noöspace** — noetic signatures, psychic influence, altered perception and anomalous entities.
+
+The recurring investigative principle is **triangulate reality before acting**. Powerful
+augmentation should deepen investigation rather than make uncertainty disappear.
+
+#### Default investigation cell
+
+The field investigator normally does **not** work alone. The default cell has four roles:
+
+- **Player character** — the field investigator physically present at the scene and responsible for judgment calls.
+- **Partner** — a persistent field partner who provides an independent witness, second opinion, backup and reality anchor when perception may be compromised.
+- **Controller** — a remote human operator who coordinates legal authority, databases, intelligence context, warrants, backup and institutional support.
+- **Embedded forensic AI** — a constrained, non-AGI multimodal assistant with excellent forensic, legal, medical, cyber and case-archive knowledge plus narrow analytical tools.
+
+The AI is a **copilot, not an autopilot**. It may transcribe, search, compare, reconstruct,
+flag anomalies and estimate confidence. It does not independently authorize arrest, lethal
+force, invasive interrogation, warrants, serious offensive hacking or high-risk
+psychotronic procedures.
+
+Psychic attack, sensor spoofing, false AR overlays, memory interference and compromised
+communications make this distributed cell mechanically and narratively important: the
+partner, controller and AI can disagree with the investigator's own perception.
+
+#### NHI identification and use of force
+
+Augmented sensors may detect anomalies, but **NHI status is not itself grounds for lethal
+force**. Human psychics, transhumans, artificial persons, uploads, hybrids, possession,
+remote control, deliberate spoofing and damaged sensors can all complicate classification.
+
+Use the operational sequence:
+
+**Detection → suspicion → examination → classification → authorization**
+
+A formal multi-channel **Nonhuman Cognition Assessment Protocol**, colloquially still called
+a *Voight-Kampff*, may combine psychophysiology, language, memory consistency, cybernetic
+telemetry, psychic resonance and AI-assisted behavioural analysis. It is a probabilistic
+forensic instrument, never a truth machine.
+
+When feasible, never authorize irreversible force solely from augmented perception. Seek
+independent confirmation from at least two channels such as physical evidence, partner
+observation, cyber evidence, psychic evidence, controller intelligence or formal cognition testing.
+
+**Men in Black are not the player organization.** They are principally associated with the
+Orion Group and function as recurring hostile or deceptive operatives: infiltrators,
+disinformation agents, evidence suppressors, psychic enforcers or fake officials. Their
+presence is one reason valid-looking orders and credentials may themselves require verification.
+
+### 9.4 UNSA Police Academy basic training
+
+Issue #158 fills Lifepath step 13 for the default Helsinki / UNSA campaign. Every graduate
+receives the same broad foundation before specialist academy training.
+
+The universal academy package uses the existing canonical Skills rather than creating an
+academy-only list. Each listed Skill or Field begins at **rating 3** for a freshly graduated
+UNSA agent unless a later character-generation rule explicitly replaces that baseline:
+
+- **Athletics**
+- **Guns**
+- **Unarmed**
+- **Melee**
+- **Tactics**
+- **First Aid**
+- **Investigation**
+- **Forensics**
+- **Perceive**
+- **Research**
+- **Intelligence Analysis**
+- **Counterintelligence**
+- **Infosec**
+- **Interface**
+- **Psychic Defence**
+- **Talk**
+- **Kinesics**
+- **Know (Law)**
+- **Work (Police Officer)**
+
+This is intentionally broad. A graduate can handle an ordinary crime, hostile-intelligence
+problem, basic cyber incident and low-level noetic threat, but is not yet a SWAT operator,
+master hacker, professional psychic, senior analyst, surgeon or forensic scientist.
+
+The mappings follow §4.1: Law is **Know (Law)**; police procedure is primarily
+**Work (Police Officer)** plus Investigation and Know (Law); interviewing uses Talk and
+Kinesics (with Deceive or Provoke when the method calls for them); OSINT uses Research;
+basic cyber access uses Interface and Infosec. Universal noetic training grants
+**Psychic Defence**, not ESP, Telepathy, Psychokinesis, Precognition or Noöspace capability.
+Those trained-only disciplines remain specialist territory unless a later rule says otherwise.
+
+The academy also teaches surveillance, containment and information-hazard awareness as
+cross-skill competencies rather than minting new universal Skills. Their exact situation
+may call for combinations of Perceive, Counterintelligence, Investigation, Forensics,
+Intelligence Analysis, Tactics, Interface, Infosec, Psychic Defence and appropriate Know or Hardware fields.
+
+Standard UNSA service also provides the qualitative augmentation and equipment capabilities
+defined in `rulebook/5_CYBERNETIC.md`. Those capabilities do not grant automatic success and
+do not replace Skills.
+
+### 9.5 Specialist training
 
 The default specialist tracks are:
 
-- **UNSA SWAT Academy** — tactical operations, weapons, close protection, high-risk
-  arrests, counterterrorism, and X-Risk/NHI tactical response.
-- **UNSA PSI Academy** — psychic awareness, PSI, Noöspace work, psychic attack/defence,
-  psychotronic countermeasures, and operational use of psionic assets.
-- **UNSA TECH Academy** — cyberspace, infosec, psychotronics engineering, SIGINT,
-  cybernetic systems, AI/LLM systems, communications/networks, and technical surveillance.
-- **UNSA NHI Academy** — NHI studies, xenology, biology, physics, Noetics, Plasmoids,
-  Constructs, NHI cultures/civilizations, anomalous phenomena, Disclosure-era history,
-  and X-Risk science.
+- **UNSA SWAT Academy** — tactical operations, weapons, close protection, high-risk arrests, counterterrorism, and X-Risk/NHI tactical response.
+- **UNSA PSI Academy** — psychic awareness, PSI, Noöspace work, psychic attack/defence, psychotronic countermeasures, and operational use of psionic assets.
+- **UNSA TECH Academy** — cyberspace, infosec, psychotronics engineering, SIGINT, cybernetic systems, AI/LLM systems, communications/networks, and technical surveillance.
+- **UNSA NHI Academy** — NHI studies, xenology, biology, physics, Noetics, Plasmoids, Constructs, NHI cultures/civilizations, anomalous phenomena, Disclosure-era history, and X-Risk science.
 
 Additional programs may cover intelligence analysis, counterintelligence, HUMINT,
 forensics, investigations, medicine/trauma, piloting/aerospace, diplomacy/liaison and
 scientific field work when the campaign needs them.
+
+Specialist tracks are **deltas on top of the shared academy baseline**. Issue #158 does not
+yet assign their extra Skill points, powers, cyberware statistics or equipment modifiers.
 
 Alternative campaigns may use independent investigators, corporations, gangs, political
 movements, universities, religious/esoteric groups, NHI-aligned groups or other employers.
@@ -4775,9 +4878,10 @@ elements of its fictional world model, not as settled descriptions of the real w
 
 The canonical organization is the **United Nations Security Agency (UNSA)**.
 
-During its early formation it was often called the **UN X-Risk Agency** or **UN NHI Agency**. Popular and internal nicknames include **X-COM**, **X-Files**, and **Men in
-Black**. UNSA personnel often enjoy those names because they describe the job remarkably
-well.
+During its early formation it was often called the **UN X-Risk Agency** or **UN NHI Agency**.
+Popular and internal nicknames include **X-COM** and **X-Files**. **Men in Black is not a
+UNSA nickname**: in current canon the term is principally associated with Orion-linked
+hostile or deceptive operatives, although human services may imitate the folklore.
 
 **MJ-12 is not an acceptable nickname.** UNSA doctrine remembers MJ-12 as a legacy network
 of traitors who failed catastrophically at protecting humanity through secrecy, compromised
