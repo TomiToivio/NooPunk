@@ -4908,6 +4908,17 @@ create strategies that hostile NHI, rogue intelligence or psychic espionage cann
 predict. They remain subject to the setting's political tensions, legal constraints and
 anti-coup safeguards.
 
+#### The default investigative cell
+
+The default campaign fantasy is a **post-Singularity anomalous-threat investigator** working
+a case that exists simultaneously across the Physical, Cyber, Social and Psychic /
+Noöspace layers. The investigator normally does **not work alone**: the standard cell is the
+**field investigator, a partner, a remote controller, and an embedded limited AI**. The
+default procedures — NHI detection as anomaly rather than verdict, the cognition-assessment
+protocol, and the **Triangulate-Reality** lethal-force doctrine — are specified in
+[docs/design/INVESTIGATION_FANTASY.md](docs/design/INVESTIGATION_FANTASY.md) (issue #162).
+That document is a campaign template, not a hard-canon addition.
+
 #### Central political question
 
 > **Can humanity build a legitimate planetary institution powerful enough to survive
