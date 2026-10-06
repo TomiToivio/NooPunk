@@ -1,0 +1,82 @@
+{
+  "format": "noopunk.unsa_academy",
+  "version": 1,
+  "status": "canonical-campaign-profile",
+  "source_issues": [
+    158,
+    162
+  ],
+  "campaign": "Helsinki / UNSA",
+  "universal_rating": 3,
+  "note": "Shared UNSA Police Academy baseline. Specialist tracks are deltas and do not change the universal skill vocabulary.",
+  "universal_training": [
+    "Athletics",
+    "Guns",
+    "Unarmed",
+    "Melee",
+    "Tactics",
+    "First Aid",
+    "Investigation",
+    "Forensics",
+    "Perceive",
+    "Research",
+    "Intelligence Analysis",
+    "Counterintelligence",
+    "Infosec",
+    "Interface",
+    "Psychic Defence",
+    "Talk",
+    "Kinesics",
+    "Know (Law)",
+    "Work (Police Officer)"
+  ],
+  "specialist_tracks": [
+    "UNSA SWAT Academy",
+    "UNSA PSI Academy",
+    "UNSA TECH Academy",
+    "UNSA NHI Academy"
+  ],
+  "universal_psionics": {
+    "granted": [
+      "Psychic Defence"
+    ],
+    "not_granted": [
+      "ESP",
+      "Telepathy",
+      "Psychokinesis",
+      "Precognition",
+      "Noöspace"
+    ],
+    "principle": "Basic psychic defence does not make every graduate a psychic."
+  },
+  "default_investigation_cell": [
+    "player field investigator",
+    "persistent field partner",
+    "remote human controller",
+    "constrained non-AGI forensic AI"
+  ],
+  "evidence_domains": [
+    "physical",
+    "cybernetic",
+    "social",
+    "psychic/noospace"
+  ],
+  "doctrine": [
+    "Triangulate reality before acting.",
+    "NHI status alone is not grounds for lethal force.",
+    "Never authorize irreversible force solely from augmented perception when independent confirmation is feasible.",
+    "The forensic AI is a copilot, not an autopilot."
+  ],
+  "assessment_protocol": {
+    "name": "Nonhuman Cognition Assessment Protocol",
+    "colloquial_name": "Voight-Kampff",
+    "nature": "probabilistic multi-channel forensic instrument",
+    "sequence": [
+      "detection",
+      "suspicion",
+      "examination",
+      "classification",
+      "authorization"
+    ]
+  }
+}
