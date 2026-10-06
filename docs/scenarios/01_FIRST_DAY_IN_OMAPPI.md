@@ -420,11 +420,10 @@ In the current campaign it sits awkwardly across:
 - Suojelupoliisi;
 - Europol;
 - newer international security arrangements;
-- the UN Security Agency — i.e. the **UNHSS / Firewall** structure that RULEBOOK.md §38
-  makes the default campaign institution.
+- **UNSA — the United Nations Security Agency**, the default campaign institution defined in RULEBOOK.md §38.
 
-The UNHSS connection is what turns a Finnish curiosity into a live institutional problem:
-UNHSS holds formal jurisdiction in NHI and X-Risk matters across the human Solar System,
+The UNSA connection is what turns a Finnish curiosity into a live institutional problem:
+UNSA holds formal jurisdiction in NHI and X-Risk matters across the human Solar System,
 but **legal jurisdiction is not actual access and not political cooperation** (§38). A
 basement unit in Helsinki sits exactly in the gap between those three things, which is why
 its chain of command can be simultaneously real and unanswerable.
