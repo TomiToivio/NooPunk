@@ -1,0 +1,45 @@
+{
+  "format": "noopunk.world.faction_taxonomy",
+  "version": 1,
+  "source_issue": 144,
+  "note": "The faction MODEL documented in RULEBOOK.md 43: the types the faction machinery can represent, the generic schema, and the strict NHI type-vs-faction split. This is a taxonomy, not a populated catalogue -- the default campaign keeps only a few Helsinki-relevant factions (RULEBOOK 9.3, 38).",
+  "human_readable_source_of_truth": "RULEBOOK.md",
+  "faction_types": [
+    {"id": "political", "examples": ["parties", "electoral coalitions", "ideological movements", "activist movements", "insurgent movements", "lobbying blocs", "political think tanks"]},
+    {"id": "criminal", "examples": ["street gangs", "mafias", "cartels", "smuggling networks", "hacker gangs", "black-market organizations", "criminal mercenary networks"]},
+    {"id": "civil_society_knowledge", "examples": ["NGOs", "universities", "research institutes", "foundations", "professional associations", "scientific networks", "advocacy organizations", "media"]},
+    {"id": "religious_esoteric", "examples": ["churches", "denominations", "cults", "mystery schools", "occult orders", "new religious movements", "psychic schools"]},
+    {"id": "corporate", "examples": ["corporations", "conglomerates", "startups", "cooperatives", "platform companies", "private military companies", "megacorporations"]},
+    {"id": "governmental", "scale_field": true, "examples": ["states", "agencies"]},
+    {"id": "nhi", "examples": ["civilizations", "polities", "coalitions", "swarms", "hives", "machine polities", "Noetic collectives", "expeditions", "religious orders", "commercial networks"]}
+  ],
+  "governmental_scales": ["Local", "Regional", "Nation-state", "Federal / supranational", "Global / planetary", "Interplanetary / Solar System"],
+  "generic_schema": [
+    "name", "faction_type", "scale", "territory_domain", "members_constituents",
+    "ideology_us_frontier", "motivations", "reputation", "contacts", "allies",
+    "enemies", "network_position", "institutional_resources", "parent_faction",
+    "subfactions", "relevant_tags"
+  ],
+  "nhi_extra_schema": [
+    "dominant_nhi_substrate", "civilization_species_lineage", "polarization_ethical_orientation",
+    "relationship_to_humanity", "relationship_to_quarantine_disclosure"
+  ],
+  "nhi_types": {
+    "core": ["Biologics", "Constructs", "Plasmoids", "Noetics"],
+    "extended_descriptors": [
+      {"id": "process_intelligences", "note": "strongest candidate for an additional formal class"},
+      {"id": "ecologies"},
+      {"id": "assemblages"},
+      {"id": "collectives"},
+      {"id": "geotics"},
+      {"id": "hybrids_composite"},
+      {"id": "anomalies_unclassified"}
+    ]
+  },
+  "rules": {
+    "faction_is_umbrella_concept": true,
+    "type_does_not_determine_political_allegiance": true,
+    "multiple_classifications_allowed": true,
+    "default_campaign_scope": "small number of Helsinki-relevant factions; the taxonomy stays expandable rather than exhaustively populated"
+  }
+}
