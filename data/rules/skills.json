@@ -1,0 +1,251 @@
+{
+  "format": "noopunk.skills",
+  "version": 1,
+  "status": "canonical",
+  "source_issue": 159,
+  "source_of_truth": "RULEBOOK.md §4.1",
+  "untrained_modifier": -1,
+  "field_rule": "Related fields may substitute at -1 when transfer is genuinely plausible; unrelated fields cannot substitute.",
+  "skills": [
+    {
+      "name": "Administrate",
+      "stat": "INT",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Athletics",
+      "stat": "FIT",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Connect",
+      "stat": "SOC",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Counterintelligence",
+      "stat": "INT",
+      "untrained": false,
+      "fielded": false
+    },
+    {
+      "name": "Deceive",
+      "stat": "SOC",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "ESP",
+      "stat": "PSY",
+      "untrained": false,
+      "fielded": false
+    },
+    {
+      "name": "Exotic Skill",
+      "stat": "Variable",
+      "untrained": false,
+      "fielded": true
+    },
+    {
+      "name": "First Aid",
+      "stat": "INT",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Forensics",
+      "stat": "INT",
+      "untrained": false,
+      "fielded": false
+    },
+    {
+      "name": "Fray",
+      "stat": "REF",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Free Fall",
+      "stat": "FIT",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Guns",
+      "stat": "REF",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Hardware",
+      "stat": "CYB",
+      "untrained": false,
+      "fielded": true
+    },
+    {
+      "name": "Infosec",
+      "stat": "CYB",
+      "untrained": false,
+      "fielded": false
+    },
+    {
+      "name": "Intelligence Analysis",
+      "stat": "INT",
+      "untrained": false,
+      "fielded": false
+    },
+    {
+      "name": "Interface",
+      "stat": "CYB",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Investigation",
+      "stat": "INT",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Kinesics",
+      "stat": "SOC",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Know",
+      "stat": "INT",
+      "untrained": false,
+      "fielded": true
+    },
+    {
+      "name": "Lead",
+      "stat": "SOC",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Medicine",
+      "stat": "INT",
+      "untrained": false,
+      "fielded": true
+    },
+    {
+      "name": "Melee",
+      "stat": "FIT",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Noöspace",
+      "stat": "PSY",
+      "untrained": false,
+      "fielded": false
+    },
+    {
+      "name": "Perceive",
+      "stat": "PSY",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Perform",
+      "stat": "PSY",
+      "untrained": true,
+      "fielded": true
+    },
+    {
+      "name": "Pilot",
+      "stat": "REF",
+      "untrained": false,
+      "fielded": true
+    },
+    {
+      "name": "Precognition",
+      "stat": "PSY",
+      "untrained": false,
+      "fielded": false
+    },
+    {
+      "name": "Program",
+      "stat": "CYB",
+      "untrained": false,
+      "fielded": false
+    },
+    {
+      "name": "Provoke",
+      "stat": "SOC",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Psychic Defence",
+      "stat": "PSY",
+      "untrained": false,
+      "fielded": false
+    },
+    {
+      "name": "Psychokinesis",
+      "stat": "PSY",
+      "untrained": false,
+      "fielded": false
+    },
+    {
+      "name": "Research",
+      "stat": "INT",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Sneak",
+      "stat": "REF",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Survival",
+      "stat": "INT",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Tactics",
+      "stat": "INT",
+      "untrained": false,
+      "fielded": false
+    },
+    {
+      "name": "Talk",
+      "stat": "SOC",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Telepathy",
+      "stat": "PSY",
+      "untrained": false,
+      "fielded": false
+    },
+    {
+      "name": "Trade",
+      "stat": "SOC",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Unarmed",
+      "stat": "FIT",
+      "untrained": true,
+      "fielded": false
+    },
+    {
+      "name": "Work",
+      "stat": "Variable",
+      "untrained": false,
+      "fielded": true
+    }
+  ]
+}
