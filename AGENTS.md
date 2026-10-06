@@ -68,7 +68,7 @@ Intelligence (INT), Social (SOC), Cybernetics (CYB) and Psyche (PSY)** — on th
 scale (issue #111). The charisma/empathy/presence distinctions belong to the Social Systems
 layer, and psychic detail to the Psychic Systems layer; cybernetic hardware properties
 (processing, bandwidth, storage, hardening, etc.) are statistics of decks, implants, devices
-and agents, not character STATs. The general STAT/Skill generation procedure remains unlocked; issue #144 defines the Lifepath framework, UNSA training structure and starting Faction Reputation allocation. `src/rules/tags.py`
+and agents, not character STATs. The general STAT/Skill generation procedure remains unlocked; issue #144 defines the Lifepath framework, UNSA training structure and starting Faction Reputation allocation. Issue #158 now additionally defines the default Helsinki/UNSA Police Academy universal Skill package at rating 3, its capability-level standard augmentation package and its stat-free rookie field kit in `data/rules/unsa_academy.json` and `rulebook/5_CYBERNETIC.md`. `src/rules/tags.py`
 remains a non-canonical prototype. The older FIT / REF / INT / CHA / CYB / PSY sketch and its
 3d6 generator remain in the digital runtime only as documented porting debt.
 
@@ -87,15 +87,15 @@ The earlier issue #17 BCI / Compute / Connection / Infosec cyberspace modifier f
 Until explicitly specified, do not define:
 - derived statistics, or any per-layer STAT lists beyond the six base STATs locked by issue #131
 - new specialist fields beyond those explicitly enabled by issue #159, a campaign profile, or a character/scenario requirement
-- how many skills a starting character has, or at what levels
+- how many skills a starting character has, or at what levels, **except** the issue #158 default Helsinki/UNSA Police Academy package explicitly defined in `data/rules/unsa_academy.json`
 - character creation beyond the Lifepath framework and Reputation allocation explicitly specified by issue #144
 - character classes or archetypes
 - combat resolution
 - damage, health, wounds, armor, or initiative
 - psionic powers or psionic mechanics
 - NHI taxonomy or capabilities
-- cyberware / augmentation rules
-- equipment statistics
+- cyberware / augmentation rules beyond the capability-level standard UNSA package explicitly defined by issue #158
+- equipment statistics (issue #158 defines standard rookie equipment availability/capabilities only, not numeric statistics)
 - economy
 - advancement / XP
 - factions beyond the taxonomy and Helsinki-scoped campaign rules explicitly specified by issues #107, #122 and #144
