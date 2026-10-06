@@ -24,7 +24,8 @@
 6. [Social Systems](#6-social-systems)
 7. [Cybernetic Systems](#7-cybernetic-systems)
 8. [Psychic Systems](#8-psychic-systems)
-9. [Extended canon and reference material](#extended-canon-and-reference-material)
+9. [Character Generation](#9-character-generation)
+10. [Extended canon and reference material](#extended-canon-and-reference-material)
 
 ---
 
@@ -409,6 +410,104 @@ Possible outcomes include Noetic entities, anomalous lights/orbs, telepathic con
 
 ---
 
+## 9. Character Generation
+
+**Status: NOÖPUNK CORE — issue #144.**
+
+Character creation uses an original NoöPunk **Lifepath-style framework** inspired by the
+high-level choose-or-roll structure of Cyberpunk RED. It does not copy another game's
+tables or text.
+
+Every major stage may be:
+- chosen manually;
+- randomized from an appropriate campaign table;
+- or mixed, with the player choosing some stages and rolling others.
+
+The framework connects background, factions, Reputation, Contacts, Motivations, training,
+specialization, STATs, Skills, traits/statuses where relevant, equipment/resources where
+defined, and the character's first assignment.
+
+### 9.1 Lifepath sequence
+
+The expandable sequence is:
+
+1. Origin / place of birth
+2. Family and social background
+3. Education
+4. Important childhood or youth events
+5. Political, religious and cultural influences
+6. Early faction ties
+7. Motivations
+8. Friends, allies and Contacts
+9. Rivals and enemies
+10. Romance / significant relationships where appropriate
+11. Major life events and crises
+12. Recruitment into UNSA or the campaign's alternative employer faction
+13. UNSA Police Academy basic training
+14. Specialist academy / training track
+15. Starting assignment
+16. Starting Reputation allocation
+17. Starting equipment/resources where defined
+18. Final character summary
+
+This issue establishes the framework. It does **not** require every random table or every
+starting equipment package to be completed immediately.
+
+### 9.2 Multiple faction membership
+
+A character may belong to several factions at once for different reasons: employer,
+political support, place/community, profession, religion or esoteric school, gang/network,
+family/clan/community, or another meaningful social tie.
+
+Membership is not identical to loyalty. Institutional membership in one faction may coexist
+with support for another and hostility toward a third.
+
+During character creation, the player receives **10 positive Faction Reputation points**
+to divide between **two or three factions**, for example **6/4** or **5/3/2**. Negative
+Reputation normally comes from Lifepath events, enemies, faction conflicts, campaign events,
+or an explicit character concept rather than from the positive pool.
+
+The default UNSA employer relationship may be represented separately from this pool when a
+campaign template grants employment automatically.
+
+### 9.3 Default Helsinki campaign
+
+The default NoöPunk campaign is centered on **Helsinki** and its Finnish / Nordic / EU
+operational environment. It deliberately introduces only a **small number of factions that
+matter in play**.
+
+Prioritize factions that employ, command, assist, investigate, oppose or otherwise create
+meaningful relationships for the PCs in Helsinki. Do not populate the core rulebook with a
+global encyclopedia merely because the faction model can represent one.
+
+The default player character is a **UNSA agent** who has completed shared law-enforcement
+and counterintelligence training at the **UNSA Police Academy** before taking specialist
+training.
+
+### 9.4 Specialist training
+
+The default specialist tracks are:
+
+- **UNSA SWAT Academy** — tactical operations, weapons, close protection, high-risk
+  arrests, counterterrorism, and X-Risk/NHI tactical response.
+- **UNSA PSI Academy** — psychic awareness, PSI, Noöspace work, psychic attack/defence,
+  psychotronic countermeasures, and operational use of psionic assets.
+- **UNSA TECH Academy** — cyberspace, infosec, psychotronics engineering, SIGINT,
+  cybernetic systems, AI/LLM systems, communications/networks, and technical surveillance.
+- **UNSA NHI Academy** — NHI studies, xenology, biology, physics, Noetics, Plasmoids,
+  Constructs, NHI cultures/civilizations, anomalous phenomena, Disclosure-era history,
+  and X-Risk science.
+
+Additional programs may cover intelligence analysis, counterintelligence, HUMINT,
+forensics, investigations, medicine/trauma, piloting/aerospace, diplomacy/liaison and
+scientific field work when the campaign needs them.
+
+Alternative campaigns may use independent investigators, corporations, gangs, political
+movements, universities, religious/esoteric groups, NHI-aligned groups or other employers.
+UNSA is the strong default template, not a restriction on the system.
+
+---
+
 # Extended canon and reference material
 
 The material below preserves the previous living rules ledger and world canon so issue #120 does not erase useful work while the new chapter structure becomes the primary navigation layer.
@@ -729,7 +828,7 @@ Working mapping:
 | mesh | cyberspace / network layer / possible Noösphere interface |
 | psi | psionics / Noösphere interaction |
 | reputation network | social / network capital |
-| Firewall | **covert operational culture / intelligence network inside UNHSS** — see below |
+| Firewall | **superseded in-world term; default campaign role is UNSA** — see below |
 | TITANs | **deliberately undecided** — see below |
 
 These are **working mappings**, not final terminology.
@@ -739,13 +838,12 @@ the alternate timeline's divergence point falls inside them. Recording them as o
 the decision; a later contributor must not "helpfully" resolve them by inventing an
 organisation, a history, or a mechanic.
 
-**Firewall.** Firewall is the insider and operational name for the classified field,
-intelligence, and counter-X-Risk culture inside the **United Nations Human Security and Survival Organization (UNHSS)**. It preserves the useful cross-faction mission role of
-Eclipse Phase's Firewall without being a separate secret conspiracy outside government.
-Player characters are Firewall/UNHSS field agents by default while also retaining a
-personal political, cultural, national, professional, or social faction identity. The
-"Great Firewall" in §33.27 is China's internet-control system: an unrelated use of the
-words, not this organisation.
+**Firewall.** NoöPunk no longer uses **Firewall** as the in-world name of the
+default player organization. The campaign function that once borrowed that Eclipse Phase
+term is now fulfilled by the **United Nations Security Agency (UNSA)**, an overt UN agency
+with classified operational networks. "Firewall" remains only a design/provenance reference
+where comparison with Eclipse Phase is useful. The "Great Firewall" in §33.27 remains
+China's internet-control system and is unrelated.
 
 **TITANs.** NoöPunk is **pre-Fall**: nothing comparable to the canonical Eclipse Phase
 Fall has occurred (§33.1), and the setting must **not** assume that it has. NoöPunk's
@@ -861,7 +959,7 @@ The detailed canonical design is in
 
 The initial playable kernel prioritizes biological humans, optional cybernetics, the
 four-layer attributes, PSI, Density, Polarization, Contacts/Factions/Motivations, and
-UNHSS/Firewall field agents.
+UNSA agents.
 
 Cortical-stack continuity, full resleeving, morph catalogs, forks/backups, and infomorph
 edge cases remain deferred. Later transhuman mechanics must map onto this ontology rather
@@ -4549,184 +4647,155 @@ elements of its fictional world model, not as settled descriptions of the real w
 
 
 
-## 38. UNHSS / Firewall: default campaign institution
+## 38. UNSA: default campaign institution
 
-> **Issue #108 canon.** This section defines the default player organization and the
-> institutional core of the emerging federal United Nations. It coordinates with
-> #105 (Legacy Programs / Disclosure) and #107 (factions, motivations, reputation,
-> contacts, and mission loop).
+> **Issue #144 canon; supersedes the UNHSS / Firewall naming in issue #108.**
+> UNSA is the default player organization and a central institution of the emerging
+> federal United Nations.
 
-#### Name, history, and identity
+#### Name and identity
 
-The canonical organization is the **United Nations Human Security and Survival
-Organization (UNHSS)**. It was founded under the cumbersome name
-**United Nations X-Risk and NHI Organization**, which produced the durable public
-nickname **X-Com**.
-Uniformed police and field officers are often called **X-Cops**, sometimes
-pejoratively. **Firewall** is the insider / operational name used especially by
-intelligence and field personnel.
+The canonical organization is the **United Nations Security Agency (UNSA)**.
 
-Firewall is not an extra-governmental conspiracy. It is the classified operational
-culture and intelligence network **inside UNHSS**.
+During its early formation it was often called the **UN X-Risk Agency** or **UN NHI
+Agency**. Popular and internal nicknames include **X-COM**, **X-Files**, and **Men in
+Black**. UNSA personnel often enjoy those names because they describe the job remarkably
+well.
 
-#### Mandate and jurisdiction
+**MJ-12 is not an acceptable nickname.** UNSA doctrine remembers MJ-12 as a legacy network
+of traitors who failed catastrophically at protecting humanity through secrecy, compromised
+alliances and mishandling of the pre-Disclosure NHI problem. Calling UNSA "MJ-12" implies
+that it has betrayed the mission it was created to repair.
 
-UNHSS has legal responsibility for existential and species-level survival risks,
-including AGI and rogue AI, NHI / extraterrestrial intelligence, PSI / Noetic
-phenomena, advanced biotechnology, planetary defence, nuclear risk, climate change,
-pandemics, autonomous weapons, catastrophic infrastructure failure, and other
-human-caused or non-human X-Risks. Its distinctive operational center is the
-intersection **X-Risk + NHI + AGI + PSI**.
+#### Mandate
 
-Every recognized Earth state belongs to the UN and formally accepts UNHSS jurisdiction
-in NHI / X-Risk matters. Formal jurisdiction is global and extends through the human
-Solar System, but **legal jurisdiction ≠ actual access ≠ political cooperation**.
+UNSA was created during the **NHI Crisis** to pool the law-enforcement, intelligence,
+counterintelligence, military, scientific and technical assets of UN member countries for
+the protection of humanity.
 
-The most enthusiastic collaborators include the **European Union, Japan, Canada,
-Brazil, Peru, Egypt, and India**. The **United States, Russia, and China** participate
-at governmental level while retaining especially difficult Legacy Program secrecy.
-Civilian governments may cooperate with UNHSS while partially autonomous secrecy and
-reverse-engineering structures obstruct it.
+Its mandate covers NHI-related threats, rogue AGI/ASI, PSI and Noöspace threats,
+catastrophic biotechnology, anomalous technologies, planetary defence and other
+civilizational or existential **X-Risks**.
 
-#### Three institutions fused into one
+#### Helsinki operational chain
 
-UNHSS exists because member states could not agree whether humanity needed a civilian
-scientific agency, an FBI-like transnational police/intelligence service, or a rapid
-UN Peacekeeper military force. The compromise was all three:
+For the default Helsinki campaign, the important institutional chain is:
 
-1. **Civilian / scientific / diplomatic branch.** Research coordination, standards,
-   NHI diplomacy, AI and recovered-technology treaties, planetary defence, Disclosure
-   policy, human / AI / NHI rights debates, civil defence, disaster relief,
-   development, refugee response, resilience, and recovery.
-2. **UNHSS Police / Firewall.** International investigation, counterintelligence,
-   intelligence gathering, specialist police work, and covert operations focused on
-   NHI and X-Risk crimes.
-3. **Tactical / military component.** Rapid intervention under the legal fiction that
-   even its hardest combat formations are Peacekeeper military-police tactical or
-   SWAT assets rather than a conventional standing world army.
+**Finnish authorities / Suojelupoliisi → Europol / EU federal security structures → UNSA**
 
-UNHSS Police officers are legally **UN Peacekeeper military police**. Their remit
-includes rogue AI, prohibited AGI work, illegal recovered technology and reverse
-engineering, NHI trafficking, psychotronic weapons, illegal PSI experimentation,
-hybrid/infiltration investigations, existential-technology terrorism, sabotage of
-planetary defence, crimes against protected NHI beings, and major Legacy Program theft
-or leaks.
+These institutions retain their own histories, jurisdictions, cultures and internal
+politics, but X-Risk and NHI response has become increasingly interoperable and vertically
+integrated.
 
-#### Military, mobility, and space forces
+The campaign should introduce only a few factions directly relevant to Helsinki-area play.
+Distant governments, corporations, NHI civilizations, cults and movements enter the
+faction map when a scenario or campaign arc actually needs them.
 
-UNHSS maintains two elite permanent rapid-deployment regiments:
+#### Visible and unofficial UNSA
 
-- **Earth Special Operations Regiment:** global counter-NHI, rogue-AI containment,
-  hostage rescue, dangerous-site seizure, WMD/X-Risk intervention, and support to
-  X-Cops.
-- **Solar-System Space Marine Regiment:** orbital assault and boarding, habitat and
-  station intervention, ship seizure, rescue, lunar/planetary/asteroid deployment,
-  and NHI-site operations.
+Officially, UNSA is a global UN agency. Covertly and unofficially it is a much larger
+network including sympathetic governments and political leaders, embedded police and
+intelligence assets, military personnel, scientists, cyber specialists, psionic assets,
+trusted private-sector and civil-society partners, informants and deniable intermediaries.
 
-Member-state Peacekeeper regiments supplement them and vary from first-rate specialist
-units to lightly equipped defensive, evacuation, checkpoint, civilian-protection, and
-disaster-response formations.
+Some of those actors are formally UNSA. Others cooperate with it or belong to
+compartmentalized networks whose relationship to UNSA is intentionally deniable.
 
-UNHSS also operates air, sea, and space components: strategic airlift and ISR;
-maritime / USO operations and oceanic sensor networks; a Solar-System **strike fleet**
-capable of orbital assault and space-marine deployment; patrol ships, transports,
-cutters, medical and rescue ships, logistics ships; and **deep-space scouts** combining
-research vessel, spy ship, exploration ship, and coast-guard roles. Orbital
-infrastructure includes defence platforms, SIGINT satellites, sensor constellations,
-stations, communications relays, and planetary-defence systems. Assets may be owned by
-UNHSS or seconded by member states.
+#### Civilian side
 
-#### Visual identity
+UNSA is not merely a police/intelligence/military organization. Its civilian side includes
+or coordinates:
 
-Uniformed UNHSS police and military personnel retain unmistakable UN Peacekeeper
-identity: **blue UN berets or helmets with black uniforms**, with formal styling
-influenced by **19th-century European Hussar uniforms**. The style reflects strong
-early EU backing and later spread through UNHSS ceremonial and field dress. Covert
-agents normally dress for the mission.
+- scientific research programs;
+- NHI, Noetics, AI and X-Risk research;
+- diplomatic cadres for global political coordination;
+- civil-defence and resilience planning;
+- development programs;
+- emergency logistics and humanitarian response;
+- disaster relief, reconstruction and post-crisis governance support.
 
-#### Democratic safeguards and the deep-state problem
+UNSA campaigns may therefore involve laboratories, diplomats, aid workers, engineers,
+analysts and scientists as naturally as investigators and tactical teams.
 
-UNHSS was deliberately designed to avoid becoming another MJ-12-style permanent
-secrecy apparatus. Safeguards include elected UN oversight, parliamentary committees,
-rotating multinational inspectors, judicial review, member-state inspection rights,
-limits on compartments, mandatory audit, inspector-general offices, whistleblower
-channels, distributed command authority, public overt budgets, multinational review
-of classified budgets, a legal distinction between temporary emergency secrecy and
-indefinite secrecy, and limits on contractor control of recovered technology.
+#### Security and military capabilities
 
-Conspiracy theories that UNHSS / Firewall has itself become a planetary deep state are
-ubiquitous. Some are false; some expose real abuses; some may concern compromised
-cells. The institution is not secretly evil by default.
+UNSA coordinates international investigation, counterintelligence, covert operations,
+specialist law enforcement, tactical response, planetary defence and military assets made
+available by member states. It may operate permanent multinational specialist formations
+and use seconded national forces when required.
 
-#### Player characters and dual faction identity
+Its remit includes rogue AI, prohibited AGI work, illegal recovered technology,
+NHI trafficking, psychotronic weapons, illegal PSI experimentation, hybrid/infiltration
+investigations, existential-technology terrorism, sabotage of planetary defence, crimes
+against protected NHI beings, and major Legacy Program theft or leaks.
 
-The default campaign assumption is:
+#### Disclosure shock: fragmentation and unification
 
-> **Player characters are covert Firewall field agents of UNHSS while also belonging
-> to another political, cultural, ideological, national, professional, or social
-> faction.**
+This political architecture is explicitly informed by **Alexander Wendt's _The Last
+Humans_** and its speculation about radically different consequences of UFO/NHI
+Disclosure.
 
-This creates the standard character structure **personal faction identity + Firewall
-mission identity**. The two identities may conflict. Examples include EU federalist,
-PCM activist, Finnish investigator, Indian noetic scientist, Belter autonomist,
-AI-rights activist, corporate defector, or transhuman faction member, each also serving
-with Firewall. Faction, motivation, reputation, and contacts mechanics should treat
-this tension as a primary source of missions and consequences (#107).
+In NoöPunk, **both outcomes happen**.
 
-#### Mission architecture
+Disclosure produces **ontological shock and fragmentation**:
+- some states and institutions lose legitimacy or effective control;
+- some regions fall into survivalist **alle-gegen-alle** conditions;
+- conspiracy cultures, militias, local strongmen and extremist movements proliferate;
+- alien-worshipping cults and new religious movements expand;
+- xenophobic and doomer politics become mass forces;
+- collaborationist, hybrid and NHI-linked networks become overt security problems;
+- hostile or compromised hybrids may use **PSI** for influence, manipulation and mind
+  control.
 
-A Firewall team may investigate anomalies, negotiate with NHI, stop rogue AI, inspect
-a Legacy Program, protect scientists, evacuate a habitat, infiltrate a corporation,
-investigate PSI crime, board a ship, raid an illegal reverse-engineering lab, examine
-hybrid infiltration, explore an archaeological site, recover a Ghost Rocket fragment,
-operate in cyberspace or a Noetic environment, escort diplomats, provide disaster
-relief, prevent nuclear escalation, investigate ecological X-Risk, travel to asteroid
-colonies, or perform deep-space reconnaissance.
+At the same time, the same crisis produces **global unification**:
+- NHI contact, rogue AGI/ASI, PSI security and planetary defence exceed the capacity of
+  individual states;
+- the UN, EU, police, intelligence services, militaries, scientific institutions and
+  humanitarian agencies integrate at unprecedented speed;
+- UNSA becomes a practical mechanism for pooling sovereignty and one of the principal
+  engines of global federalization.
 
-A campaign base may be a UNHSS station, city field office, Belt outpost, patrol ship,
-space station, or mobile task-force base. This supports the location / mission loop
-being developed in #107.
+The emerging world government is therefore not the product of a smooth march toward
+unity. It is forged inside panic, institutional collapse, emergency coordination, war,
+Disclosure and reconstruction.
 
-#### UN federal executive and the Minister
+#### UNSA and the federal United Nations
 
-The ordinary political head of UNHSS is the
-**United Nations Minister of Human Security and Survival**, a member of the UN Parliament
-and part of the federal executive. The Minister answers to the UN President and Prime Minister and oversees
-normal strategy, budget, administration, diplomacy, science, policing, and defence.
-The precise appointment mechanism remains for later constitutional design.
+The UN is becoming the **federal government of Earth**, and UNSA is one of the central
+reasons this is happening. It supplies a working planetary institution for problems that
+cannot be governed nationally.
 
-#### Four Wallfacers
+UNSA must nevertheless remain internally contradictory rather than becoming a frictionless
+adventurers' guild. Persistent tensions include science vs secrecy, diplomacy vs policing,
+civil liberties vs existential security, national sovereignty vs global jurisdiction,
+AI rights vs containment, NHI diplomacy vs planetary defence, and democratic
+accountability vs classified operations.
 
-UNHSS maintains **four Wallfacers**, explicitly inspired in-world by *The Three-Body
-Problem*. Their purpose is strategic deception against hostile ETI, infiltrating NHI,
-rogue AGIs, machine civilizations, and other adversaries capable of pervasive
-surveillance or prediction.
+The institution contains idealists, careerists, bureaucratic rivalries, national interests,
+competing doctrines, secrecy and occasional abuse. Its power is a political problem as
+well as a survival tool.
 
-A Wallfacer may pursue unusual hypotheses, fund strange projects, request specialist
-personnel, commission research, create compartmented task forces, conduct deception,
-and make preparations whose purpose remains largely inside one person's head. They
-are still bounded by human rights, UN law, material constraints, anti-coup safeguards,
-and existential-risk safety rules. They are not omnipotent.
+#### Default player relationship
 
-Wallfacers are mission engines: their apparently irrational orders may be brilliant,
-wrong, compromised, or impossible to interpret until much later.
+The default campaign assumes that the player character **belongs to and works for UNSA**.
+The character may simultaneously belong to several other factions and distribute starting
+Reputation among two or three of them under Chapter 9.
 
-#### Central political tension
+UNSA is the employer and institutional home, not the totality of the character's identity.
 
-UNHSS must remain internally contradictory rather than becoming a frictionless
-adventurers' guild. Persistent conflicts include science vs secrecy, diplomacy vs law
-enforcement, policing vs military force, civil liberties vs existential security,
-transparency vs counterintelligence, national sovereignty vs global jurisdiction,
-member states vs federal authority, Legacy Programs vs Firewall, AI rights vs AI
-containment, NHI diplomacy vs planetary defence, PSI research vs spiritual
-interpretation, accountability vs classified reverse engineering, and Wallfacer
-autonomy vs democratic oversight.
+#### Wallfacers
 
-The core political question is therefore:
+The existing UN **Wallfacer** program remains a high-level X-Risk strategy mechanism under
+the emerging federal order. Wallfacers may use unconventional, compartmentalized plans to
+create strategies that hostile NHI, rogue intelligence or psychic espionage cannot easily
+predict. They remain subject to the setting's political tensions, legal constraints and
+anti-coup safeguards.
 
-> **Can humanity build a legitimate democratic institution powerful enough to fight
-> existential threats without turning it into the unaccountable deep state it was
-> created to replace?**
+#### Central political question
+
+> **Can humanity build a legitimate planetary institution powerful enough to survive
+> existential threats without reproducing the secret, compromised deep-state systems it
+> was created to replace?**
 
 ---
 
@@ -4734,7 +4803,7 @@ The core political question is therefore:
 
 **Status: NOÖPUNK NATIVE CONTENT MODEL / MECHANICS FOLLOW ISSUE #111.**
 
-Issue #110 defines the specialist-skill content needed by the initial Asteroid Belt / UNHSS campaign. Issue #111 supersedes #110's assumption that Eclipse Phase percentile mechanics remain the active chassis: NoöPunk now treats these names and fields as **content design** to be expressed through the independent **1–10 Skill** system and the core `STAT + Skill + 1d10` resolution rule.
+Issue #110 defines the specialist-skill content needed by the initial Helsinki / UNSA campaign. Issue #111 supersedes #110's assumption that Eclipse Phase percentile mechanics remain the active chassis: NoöPunk now treats these names and fields as **content design** to be expressed through the independent **1–10 Skill** system and the core `STAT + Skill + 1d10` resolution rule.
 
 The final universal NoöPunk skill list remains deferred. For the first campaign, however, the following Eclipse Phase-derived vocabulary is a useful provisional baseline because it already covers the kinds of actions the campaign needs:
 
@@ -4769,7 +4838,7 @@ These names are not a commitment to Eclipse Phase numerical mechanics, linked ap
 
 Do not preload giant specialty catalogs. Add a field when a character concept, scenario, location, profession, or piece of equipment creates a genuine need for it. This keeps character sheets, NPC descriptions, deterministic rules data, and LLM prompts compact.
 
-For the initial Asteroid Belt / UNHSS campaign, the default profile is:
+For the initial Helsinki / UNSA campaign, the default profile is:
 
 - **Pilot (Space)**
 - **Medicine (Emergency Care)**
@@ -4794,7 +4863,7 @@ Possible later Belt Hardware fields include Electronics, Robotics, Industrial, S
 
 **Know (Psychology)** covers psychological profiling, trauma, manipulation, witness reliability, cult dynamics, belief formation, contactee/experiencer assessment, and psychologically complex interviewing. **Dr. Harri S. Romppainen primarily solves cases through Know (Psychology)** rather than being reduced to a generic detective archetype.
 
-**Know (Law Enforcement)** covers police procedure, jurisdiction, warrants, evidence handling, arrest/search rules, cross-jurisdiction cooperation, and UNHSS policing powers.
+**Know (Law Enforcement)** covers police procedure, jurisdiction, warrants, evidence handling, arrest/search rules, cross-jurisdiction cooperation, and UNSA policing powers.
 
 **Know (Intelligence)** covers intelligence cycles, source evaluation, HUMINT, SIGINT, OSINT, GEOINT, analysis, briefing, collection planning, covert networks, compartmentation, and deception analysis.
 
