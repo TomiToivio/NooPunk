@@ -162,35 +162,47 @@ class GraphLayerTests(unittest.TestCase):
         self.assertRegex(chapter(), r"derived from")
 
 
-class ScaleConflictTests(unittest.TestCase):
-    """Issue #122 specifies -10..+10. The live #107 implementation uses -100..+100.
-    Both are author-specified, so this is recorded, never silently reconciled."""
+class ScaleResolutionTests(unittest.TestCase):
+    """Issue #144 resolves what issue #122 recorded as an open question.
 
-    def test_the_discrepancy_is_recorded(self) -> None:
-        self.assertIn("Open question: the score scale", chapter())
+    #122 named two author-specified scales (-10..+10 in the issue, -100..+100 in the
+    live #107 implementation) and required that the conflict be *recorded* rather than
+    silently reconciled. #144 is the author picking one: -10..+10, applied as a single
+    deliberate change across the chapter, the schema and the runtime.
 
-    def test_both_scales_are_named(self) -> None:
-        text = chapter()
-        with self.subTest(scale="issue #122"):
-            self.assertIn("−10…+10", text)
-        with self.subTest(scale="live #107 implementation"):
-            self.assertIn("−100…+100", text)
+    The anti-drift property is kept in the opposite direction: the chapter must now state
+    the ONE canonical scale, and must not still present the choice as open.
+    """
 
-    def test_the_conflict_is_left_to_the_author(self) -> None:
-        self.assertRegex(chapter(), r"author's decision")
+    def test_the_resolution_is_recorded(self) -> None:
+        self.assertIn("The score scale: −10…+10 (resolved)", chapter())
 
-    def test_the_chapter_does_not_pick_a_scale(self) -> None:
-        """If a later session decides the scale here, this fails: the decision belongs to
-        the author, and picking one silently would invalidate every stored score."""
-        text = chapter()
-        for decided in ("the canonical scale is", "scores are therefore", "we standardise on"):
-            with self.subTest(decided=decided):
-                self.assertNotIn(decided.lower(), text.lower())
+    def test_the_canonical_scale_is_named(self) -> None:
+        self.assertIn("−10…+10", chapter())
 
-    def test_the_rulebook_still_states_the_100_scale(self) -> None:
-        """Until the author decides, RULEBOOK.md keeps its -100..+100 statement; the
-        terminology chapter must not have half-migrated the rulebook."""
-        self.assertIn("-100 to +100", RULEBOOK.read_text(encoding="utf-8"))
+    def test_the_chapter_no_longer_presents_the_scale_as_open(self) -> None:
+        """An agent must not re-open a question the author has answered."""
+        self.assertNotIn("Open question: the score scale", chapter())
+
+    def test_the_superseded_scale_is_recorded_as_replaced(self) -> None:
+        """The old band is documented as replaced, so its history stays legible."""
+        self.assertIn("−100…+100", chapter())
+        self.assertRegex(chapter(), r"replaced")
+
+    def test_the_rulebook_uses_the_resolved_scale(self) -> None:
+        text = RULEBOOK.read_text(encoding="utf-8")
+        self.assertIn("-10 to +10", text)
+        self.assertNotIn("-100 to +100", text)
+
+    def test_the_schema_and_runtime_agree_with_the_rulebook(self) -> None:
+        """One deliberate change across all three, not a half-migration."""
+        import json
+        schema = json.loads((ROOT / "data" / "world" / "social_affect_schema.json")
+                            .read_text(encoding="utf-8"))
+        self.assertEqual(schema["score_range"], [-10, 10])
+        affect = (ROOT / "src" / "simulation" / "affect.py").read_text(encoding="utf-8")
+        self.assertIn("MIN_AFFECT = -10", affect)
+        self.assertIn("MAX_AFFECT = 10", affect)
 
 
 class ScopeTests(unittest.TestCase):

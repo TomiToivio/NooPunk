@@ -1,10 +1,12 @@
 """Unified NoöPunk Affect graph for issue #107."""
 from __future__ import annotations
-from dataclasses import dataclass, field
-from typing import Any, Iterable, Mapping
 
-MIN_AFFECT = -100
-MAX_AFFECT = 100
+from collections.abc import Iterable, Mapping
+from dataclasses import dataclass, field
+from typing import Any
+
+MIN_AFFECT = -10
+MAX_AFFECT = 10
 VALID_DOMAINS = frozenset({"faction_us","faction_frontier","motivation","reputation","contact"})
 
 @dataclass(frozen=True, slots=True)
@@ -24,7 +26,7 @@ class AffectEdge:
         if not self.affect:
             raise ValueError("Affect edges require a semantic label")
         if not MIN_AFFECT <= self.affect_score <= MAX_AFFECT:
-            raise ValueError("affect_score must be between -100 and +100")
+            raise ValueError("affect_score must be between -10 and +10")
         if self.domain not in VALID_DOMAINS:
             raise ValueError(f"Unknown Affect domain: {self.domain!r}")
 
@@ -39,7 +41,7 @@ class AffectEdge:
                 "metadata":dict(self.metadata)}
 
     @classmethod
-    def from_dict(cls,data: Mapping[str,Any]) -> "AffectEdge":
+    def from_dict(cls,data: Mapping[str,Any]) -> AffectEdge:
         return cls(source=str(data["source"]),source_type=str(data["source_type"]),
                    target=str(data["target"]),target_type=str(data["target_type"]),
                    affect=str(data["affect"]),affect_score=int(data["affect_score"]),
@@ -75,7 +77,7 @@ class AffectGraph:
         return {"edges":[e.to_dict() for e in self.edges]}
 
     @classmethod
-    def from_dict(cls,data: Mapping[str,Any]) -> "AffectGraph":
+    def from_dict(cls,data: Mapping[str,Any]) -> AffectGraph:
         return cls([AffectEdge.from_dict(x) for x in data.get("edges",[])])
 
 def inherit_faction_affects(*, character_id:str, faction_edges:Iterable[AffectEdge],

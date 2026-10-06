@@ -1,4 +1,4 @@
-"""Acceptance guard for issue #108: UNHSS / Firewall campaign canon."""
+"""Acceptance guard for issue #108: UNSA / Firewall campaign canon."""
 from pathlib import Path
 import unittest
 
@@ -8,24 +8,25 @@ FACTIONS = (ROOT / "FACTIONS.md").read_text(encoding="utf-8")
 ORG = (ROOT / "data" / "world" / "organizations.yaml").read_text(encoding="utf-8")
 
 
-class Issue108UNHSSTests(unittest.TestCase):
+class Issue108UNSATests(unittest.TestCase):
     def test_name_and_aliases(self):
         for phrase in (
-            "United Nations Human Security and Survival Organization",
+            "United Nations Security Agency (UNSA)",
             "United Nations X-Risk and NHI Organization",
-            "X-Com", "X-Cops", "Firewall",
+            "UN X-Risk Agency", "UN NHI Agency",
+            "X-Com", "X-Cops", "X-Files", "Men in Black",
         ):
             self.assertIn(phrase, BOOK)
 
     def test_default_pc_dual_affiliation(self):
-        self.assertIn("Player characters are covert Firewall field agents", BOOK)
-        self.assertIn("personal faction identity + Firewall", BOOK)
-        self.assertIn("Default Firewall affiliation", FACTIONS)
+        self.assertIn("Player characters are UNSA field agents", BOOK)
+        self.assertIn("personal faction identity + UNSA mission", BOOK)
+        self.assertIn("UNSA", FACTIONS)
 
     def test_three_function_hybrid_and_forces(self):
         for phrase in (
             "Civilian / scientific / diplomatic branch",
-            "UNHSS Police / Firewall",
+            "UNSA Police",
             "Tactical / military component",
             "Earth Special Operations Regiment",
             "Solar-System Space Marine Regiment",

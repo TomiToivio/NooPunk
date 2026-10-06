@@ -6,9 +6,9 @@ NoöPunk uses one representation for Factions, Motivations, Reputation and Conta
 
 Target | Affect | Affect Score
 
-Affect is the semantic relation, for example Knows, Likes, Trusts, Supports, Identifies With, Loves, Protects, Pursues, Fears, Distrusts, Hates, or Opposes. Affect Score is an integer from -100 to +100. Positive means positive investment, negative means negative investment, and zero is an explicit neutral relation. No edge means unknown. Unknown is therefore not the same as a stored zero.
+Affect is the semantic relation, for example Knows, Likes, Trusts, Supports, Identifies With, Loves, Protects, Pursues, Fears, Distrusts, Hates, or Opposes. Affect Score is an integer from -10 to +10. Positive means positive investment, negative means negative investment, and zero is an explicit neutral relation. No edge means unknown. Unknown is therefore not the same as a stored zero.
 
-The label and score both matter. Fears -70, Hates -70 and Opposes -70 have similar polarity but different meaning. Multiple labelled edges may connect the same source and target, so a character can support and fear AGI at the same time. All edges are directional.
+The label and score both matter. Fears -7, Hates -7 and Opposes -7 have similar polarity but different meaning. Multiple labelled edges may connect the same source and target, so a character can support and fear AGI at the same time. All edges are directional.
 
 ## General edge
 
