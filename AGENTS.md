@@ -121,7 +121,9 @@ Canonical anchors are: **20XX**, **Earth still exists**, **the Fall has not happ
 
 The cyberpunk layer remains technological, political, economic, and social cyberpunk. Do not convert it into fantasy.
 
-The speculative consciousness / NHI layer draws inspiration from sources identified by the author, including Teilhard de Chardin, Alexander Wendt, Jacques Vallée, Dean Radin, Federico Faggin, and Donald Hoffman.
+The speculative consciousness / NHI layer draws inspiration from sources identified by the author, including Teilhard de Chardin, **Ben Goertzel**, Alexander Wendt, Jacques Vallée, Dean Radin, Federico Faggin, and Donald Hoffman. Issue #154 makes Goertzel's Cosmism, patternism, Global Brain / mindplex work, and selected PSI/consciousness research an explicit design source while preserving NoöPunk's pluralism and epistemic uncertainty.
+
+The issue #154 research map is `docs/design/COSMISM_NEUROPUNK_IA_AUDIT.md`. Treat its PRESENT / PARTIAL / MISSING / OPTIONAL labels as an audit and future-design roadmap, not permission to implement undefined mechanics or promote every speculative source claim to setting truth.
 
 Do not present speculative setting assumptions as established real-world scientific facts.
 
