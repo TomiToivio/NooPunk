@@ -584,7 +584,36 @@ The default player character is a **UNSA agent** who has completed shared law-en
 and counterintelligence training at the **UNSA Police Academy** before taking specialist
 training.
 
-### 9.4 Specialist training
+### 9.4 UNSA Police Academy baseline
+
+Issue #158 defines the common training package for the default Helsinki / UNSA campaign.
+Every graduate begins with rating **3** in the following canonical Skills:
+
+- Athletics, Guns, Melee, Unarmed;
+- First Aid and Tactics;
+- Investigation, Forensics, Perceive and Research;
+- Intelligence Analysis and Counterintelligence;
+- Talk, Kinesics and Sneak;
+- Interface, Infosec and Psychic Defence.
+
+Every graduate also receives rating **3** in **Know (Law)**, **Know (NHI Studies)**,
+**Know (X-Risk Studies)** and **Work (Police Officer)**.
+
+This is deliberately broad competence, not specialist mastery. Universal Psychic Defence
+training does not make every graduate a psionic operative; ESP, Telepathy, Psychokinesis,
+Precognition and Noöspace remain specialist capabilities unless acquired elsewhere.
+
+The standard augmentation and rookie-equipment capabilities are defined in
+`rulebook/5_CYBERNETIC.md` and `data/rules/unsa_academy.json`. Those definitions do not
+create numeric equipment statistics or a deep-hacking subsystem.
+
+Issue #162 defines the default investigation doctrine in
+`docs/design/DEFAULT_INVESTIGATION_FANTASY.md`: the field PC normally works with a
+persistent partner, a remote human controller and a limited forensic AI. Investigations
+triangulate Physical, Cybernetic, Social and Psychic/Noöspace evidence before irreversible
+action. NHI status alone is not grounds for lethal force.
+
+### 9.5 Specialist training
 
 The default specialist tracks are:
 
