@@ -139,6 +139,13 @@ one deliberate change across all three places that carried it — this chapter, 
 `data/world/social_affect_schema.json` — so no stored score, schema bound or validation is
 left on the old scale.
 
+## Related canon
+
+The **faction taxonomy** (political, criminal, civil society/knowledge, religious/esoteric,
+corporate, governmental, NHI), the **generic faction schema**, the strict **NHI type-vs-faction**
+split, **multi-faction character membership** and the **starting-Reputation procedure** are
+RULEBOOK.md §43 (issue #144). The default campaign faction is **UNSA** (§38).
+
 ## Questions this section does not settle
 
 The exact seeding rule from Reputation to an unknown NPC's initial attitude, whether a

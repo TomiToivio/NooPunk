@@ -1765,6 +1765,10 @@ Use this table to track major mechanical mutations.
 | 2026-10-04 | Theory sections | Four-layer ontology and bibliography deleted by a stale-branch clobber (`901ba05`) | **Restored as §36 (four NoöPunk systems) and §37 (theoretical sources)** | The clobber removed 703 lines; the glossary kept `## 34.`, so number-keyed guards read the wrong section and the loss was silent. Restored by heading text; §27 number stays with the glossary. |
 | 2026-10-04 | Sources list | Two competing sources sections (#99 landed twice as §35 and §38) | **Merged into a single §35; the duplicate §38 removed** | Issue #101. The union of both copies is kept: the fuller fiction and RPG entries from §38, the broader field list and preambles from §35. §35 now declares itself the design-facing map beside the §37 theory bibliography, and §33.2's Wendt citation is re-pointed from the stale §35.5 to §36.5. |
 
+| 2026-10-06 | Social scale | Faction / Reputation / Contact / Motivation scores on -100..+100 (#107); scale question left open by #122 | **One -10..+10 signed scale across prose, code and schema** | Issue #144 normalised the scale, landing in `rulebook/4_SOCIAL.md`, `rulebook/8_FACTIONS.md`, `RULEBOOK.md` §17, `src/simulation/affect.py` and `data/world/social_affect_schema.json`. The separate Law-of-One Polarization continuum (also -100..+100) is deliberately unchanged. |
+| 2026-10-06 | Campaign institution | UNHSS — United Nations Human Security and Survival Organization, with Firewall as its covert culture (#108) | **UNSA — United Nations Security Agency** | Issue #144 renamed the default campaign faction and expanded it: early labels, tolerated nicknames, the MJ-12 taboo, the Suojelupoliisi→Europol→UNSA chain, the covert network, the civilian side, and the Wendt both-outcomes Disclosure canon. Firewall survives only as a documented external design inspiration. |
+| 2026-10-06 | Character model | Character creation deferred; no generation procedure | **Character Generation chapter with a Lifepath framework, the UNSA Police Academy baseline and four specialist academies** | Issue #144. Random tables, the STAT-assignment method, the final skill list and starting equipment are explicit placeholders. |
+
 Add rows whenever a major subsystem is replaced or substantially reskinned.
 
 ---
@@ -4076,6 +4080,19 @@ a scientific classification.
 
 **Hypercorp.** Transnational or postnational corporation with power comparable to states,
 especially in infrastructure, AI, biotech, security, space, or information systems.
+
+**UNSA (United Nations Security Agency).** The global UN agency created during the NHI
+Crisis to pool member-state law-enforcement, intelligence, counterintelligence, military
+and scientific assets for the protection of humanity, and the default campaign faction
+(§38). Formerly called **UNHSS** (United Nations Human Security and Survival Organization),
+with *Firewall* as its covert operational culture; issue #144 renamed it. Its early public
+labels were the **UN X-Risk Agency** and the **UN NHI Agency**, and its tolerated nicknames
+are **X-COM**, **X-Files** and **Men in Black**. "MJ-12" is not a nickname but an accusation
+of betraying humanity.
+
+**Wallfacer.** One of UNSA's **four** strategic wildcards, mandated to run an independent,
+indefinite human-survival program and to deceive adversaries capable of pervasive
+surveillance or prediction; bounded by human rights, UN law and anti-coup safeguards (§38.13).
 
 **Reputation network.** Social infrastructure that turns trust, status, contribution,
 affiliation, and history into usable social capital. NoöPunk treats reputation as a
