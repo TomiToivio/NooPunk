@@ -8,9 +8,10 @@ Both STAT and trained Skill ratings are 1..10. Issue #131 (2026-10-05) locks the
 six universal base STATs — FIT / REF / INT / SOC / CYB / PSY — recorded in
 ``data/rules/core.json``. Cybernetic hardware statistics (COMPUTE / INTERFACE /
 NETWORK and similar) are properties of decks, implants, devices and agents, not
-character STATs. The universal Skill list remains deferred. Ties, criticals, and
-the situational-modifier procedure are also deliberately unresolved rather than
-inherited from another game.
+character STATs. Issue #159 locks the 40-item universal Skill vocabulary recorded
+in ``data/rules/skills.json`` and ``data/rules/core.json``. Ties, criticals, and
+the situational-modifier procedure remain deliberately unresolved rather than inherited
+from another game.
 """
 
 from __future__ import annotations
