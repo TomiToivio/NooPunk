@@ -8,9 +8,9 @@ UNSA:
   aliases:
     - X-COM
     - X-Files
-    - Men in Black
   rejected_aliases:
     MJ-12: "UNSA regards MJ-12 as a failed/traitorous legacy program, not a nickname."
+    Men in Black: "Not a UNSA nickname; principally associated with Orion-linked hostile/deceptive operatives in current canon."
   parent:
     - United Nations
   player_role:
@@ -23,6 +23,16 @@ UNSA:
       - Europol
       - UNSA
     scope_rule: "Only add factions that are relevant to Helsinki-area play or a live scenario."
+    player_fantasy: "Post-Singularity anomalous-threat investigator operating across physical, cybernetic, social, and psychic/Noöspace evidence."
+    investigation_cell:
+      - player field investigator
+      - persistent field partner
+      - remote human controller
+      - constrained non-AGI forensic AI
+    doctrine:
+      - "Triangulate reality before acting."
+      - "NHI status alone is not grounds for lethal force."
+      - "Never authorize irreversible force solely from augmented perception when independent confirmation is feasible."
   functions:
     - Law Enforcement
     - Intelligence
