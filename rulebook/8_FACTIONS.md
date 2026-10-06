@@ -218,7 +218,7 @@ faction; **UNSA** is a faction inside it.
 
 ### 7. NHI: type is not faction
 
-**NHI ontology and NHI politics are separate fields.** An NHI's substrate or type does not
+**NHI ontology and NHI politics are separate fields.** Keep **ontology/type separate from political faction**. An NHI's substrate or type does not
 determine its political allegiance, and a single type contains many unrelated factions.
 
 Core types:
