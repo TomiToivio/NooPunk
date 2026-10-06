@@ -1,0 +1,85 @@
+{
+  "format": "noopunk.unsa_academy",
+  "version": 1,
+  "status": "canonical-default-campaign-profile",
+  "source_issues": [158, 162],
+  "campaign": "Helsinki / UNSA",
+  "universal_training_rating": 3,
+  "rating_note": "UNSA Police Academy graduates begin broadly competent but below specialist level. Specialist academies may later raise or extend this package; those deltas are not defined here.",
+  "universal_skills": [
+    "Athletics",
+    "Guns",
+    "Melee",
+    "Unarmed",
+    "First Aid",
+    "Tactics",
+    "Investigation",
+    "Forensics",
+    "Perceive",
+    "Research",
+    "Intelligence Analysis",
+    "Counterintelligence",
+    "Talk",
+    "Kinesics",
+    "Sneak",
+    "Interface",
+    "Infosec",
+    "Psychic Defence"
+  ],
+  "universal_fields": [
+    "Know (Law)",
+    "Know (NHI Studies)",
+    "Know (X-Risk Studies)",
+    "Work (Police Officer)"
+  ],
+  "task_mappings": {
+    "Police Procedure": ["Work (Police Officer)", "Know (Law)", "Investigation"],
+    "Interview": ["Talk", "Kinesics", "Deceive", "Provoke"],
+    "OSINT": ["Research", "Know (relevant field)"],
+    "Surveillance": ["Sneak", "Perceive", "Interface"],
+    "Counter-surveillance": ["Counterintelligence", "Sneak", "Perceive"],
+    "Information-Hazard Awareness": ["Know (X-Risk Studies)", "Forensics", "Intelligence Analysis", "Psychic Defence"],
+    "Containment Protocols": ["Know (X-Risk Studies)", "Tactics", "Hardware (Psychotronics)"]
+  },
+  "training_boundaries": {
+    "psi": "Every graduate is trained in Psychic Defence, but universal academy training does not make every graduate a psionic specialist. ESP, Telepathy, Psychokinesis, Precognition and Noöspace remain specialist skills unless acquired elsewhere.",
+    "cyber": "Every graduate can use secure interfaces and perform basic defensive/investigative infosec. This does not define or replace the deferred deep-hacking subsystem.",
+    "combat": "Every graduate receives officer-survival, firearms, restraint and basic tactical training. This does not make a graduate a SWAT operator.",
+    "anomalistics": "NHI and X-Risk knowledge use Know fields plus Investigation, Forensics and Perceive rather than a new universal Anomalistics skill."
+  },
+  "standard_augmentation_capabilities": [
+    "secure BCI or non-invasive equivalent",
+    "encrypted local compute and storage",
+    "AI-copilot access",
+    "live translation and evidence cross-referencing",
+    "augmented forensic vision",
+    "local-network and device visualization",
+    "psychotronic threat detection",
+    "psychic shielding / emergency dampening",
+    "secure sensory streaming to authorized partner/controller/AI"
+  ],
+  "platform_rule": "Capabilities are offered through implant, wearable, contact/glasses, handheld or external-BCI forms where practical. Refusing invasive cyberware does not make the character unplayable.",
+  "standard_field_kit": [
+    "service firearm and ammunition",
+    "stun baton / less-lethal option",
+    "restraints",
+    "concealable ballistic protection",
+    "environmental mask / respirator",
+    "UNSA credentials and encrypted communications",
+    "body/sensor recorder",
+    "evidence collection kit",
+    "portable forensic scanner",
+    "compact reconnaissance drone",
+    "hardened offline storage",
+    "CBRN/radiation sensor",
+    "psychotronic detector",
+    "small anomalous-evidence containment package"
+  ],
+  "equipment_note": "This package defines capabilities and availability only. Numeric equipment statistics remain undefined.",
+  "specialist_tracks": [
+    "UNSA SWAT Academy",
+    "UNSA PSI Academy",
+    "UNSA TECH Academy",
+    "UNSA NHI Academy"
+  ]
+}
