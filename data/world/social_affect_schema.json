@@ -1,4 +1,4 @@
-{"schema_version":1,"issue":107,"score_range":[-100,100],
+{"schema_version":1,"issue":107,"score_range":[-10,10],
 "domains":["faction_us","faction_frontier","motivation","reputation","contact"],
 "node_types":["character","faction","institution","nationality","species","ideology","demand","signifier","technology","place","concept"],
 "affect_examples":["Knows","Likes","Trusts","Supports","Identifies With","Loves","Protects","Pursues","Fears","Distrusts","Hates","Opposes"],
