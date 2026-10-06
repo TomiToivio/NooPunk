@@ -1,24 +1,39 @@
-# Canonical organization data for issue #108.
-# Human-readable source of truth: RULEBOOK.md.
-UNHSS:
-  canonical_name: United Nations Human Security and Survival Organization
-  founding_name: United Nations X-Risk and NHI Organization
+# Canonical organization data. Renamed UNHSS -> UNSA by issue #144.
+# Human-readable source of truth: RULEBOOK.md §38.
+UNSA:
+  canonical_name: United Nations Security Agency
+  abbreviation: UNSA
+  supersedes:
+    - United Nations Human Security and Survival Organization (UNHSS)
+    - United Nations X-Risk and NHI Organization
+  early_labels:
+    - UN X-Risk Agency
+    - UN NHI Agency
   aliases:
-    - X-Com
-    - Firewall
+    - X-COM
+    - X-Files
+    - Men in Black
+  forbidden_nicknames:
+    - MJ-12
   public_pejoratives:
     - X-Cops
+  external_design_inspiration:
+    - Eclipse Phase "Firewall" (not an in-world name)
   parent:
     - United Nations
   player_role:
-    default: Firewall field agent
-    dual_affiliation: true
+    default: UNSA field agent
+    multi_faction_membership: true
+  operational_chain:
+    - Suojelupoliisi
+    - Europol
+    - UNSA
   branches:
     - Civilian Science and Research
     - Diplomacy and Policy
     - Civil Defence and Development
-    - UNHSS Police
-    - Firewall Intelligence
+    - UNSA Police
+    - Operations and Intelligence
     - Tactical Response
     - Earth Special Operations Regiment
     - Solar-System Space Marine Regiment
@@ -26,6 +41,12 @@ UNHSS:
     - Sea Component
     - Space Component
     - Deep Space Scout Service
+  academies:
+    - UNSA Police Academy
+    - UNSA SWAT Academy
+    - UNSA PSI Academy
+    - UNSA TECH Academy
+    - UNSA NHI Academy
   mandate:
     - X-Risk
     - AGI

@@ -12,7 +12,7 @@
     "Medicine",
     "Pilot"
   ],
-  "campaign": "Asteroid Belt / UNHSS",
+  "campaign": "Asteroid Belt / UNSA",
   "fields": {
     "Pilot": [
       "Space"
@@ -72,7 +72,7 @@
     ]
   },
   "character_examples": {
-    "Conventional UNHSS investigator": [
+    "Conventional UNSA investigator": [
       "Know (Investigation)",
       "Research",
       "Perceive",
@@ -87,7 +87,7 @@
       "Persuade",
       "Know (Parapsychology)"
     ],
-    "UNHSS Noetic scientist": [
+    "UNSA Noetic scientist": [
       "Know (QIP)",
       "Know (Parapsychology)",
       "Research",

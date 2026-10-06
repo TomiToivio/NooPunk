@@ -153,12 +153,12 @@ class ConversionGapTests(unittest.TestCase):
     def test_firewall_is_mapped_to_unhss(self) -> None:
         self.assertIn("Firewall", self.mapping, "Firewall is absent from the mapping section")
         firewall_block = re.search(
-            r"\*\*Firewall\.\*\*(.{0,1000})", self.mapping, re.DOTALL
+            r"\*\*Firewall / UNHSS → UNSA\.\*\*(.{0,1400})", self.mapping, re.DOTALL
         )
         if firewall_block is None:
             self.fail("no Firewall paragraph in the mapping section")
         body = firewall_block.group(1)
-        self.assertRegex(body, r"United Nations Human Security and Survival Organization|UNHSS")
+        self.assertRegex(body, r"United Nations Security Agency|UNSA")
         self.assertRegex(body, r"operational|intelligence")
         self.assertNotRegex(body, r"deliberately undecided|not yet exist")
 

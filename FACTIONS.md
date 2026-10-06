@@ -38,21 +38,24 @@ Start with a small social graph: a few appropriate contacts such as a close frie
 
 Exact starting counts and random tables remain future character-generation design.
 
-## Default Firewall affiliation
+## Default UNSA affiliation
 
 By default, a player character has **two simultaneous affiliations**:
 
-1. **Firewall / UNHSS mission identity** — the character is a field agent of the United
-   Nations Human Security and Survival Organization.
+1. **UNSA mission identity** — the character is a field agent of the United Nations
+   Security Agency (formerly called UNHSS / Firewall before issue #144).
 2. **Personal faction identity** — political, cultural, national, professional,
    ideological, community, or social affiliation.
 
-Firewall is therefore not a replacement for the faction list. It is the campaign-wide
-operational affiliation layered on top of another faction. Conflicts between the two
-are expected to drive motivations, reputation, contacts, and mission consequences.
+UNSA is therefore not a replacement for the faction list. It is the campaign-wide
+operational affiliation layered on top of the character's other faction ties — and #144
+makes multi-faction membership explicit (a character may belong to several factions for
+different reasons, and receives 10 starting Reputation points to split between two or
+three of them). Conflicts between the ties are expected to drive motivations, reputation,
+contacts, and mission consequences.
 
-See RULEBOOK.md, “UNHSS / Firewall: default campaign institution,” and issues #108 and
-#107.
+See RULEBOOK.md, “UNSA — the United Nations Security Agency,” and issues #108, #107 and
+#144.
 
 
 ## Major UN Parliament parties

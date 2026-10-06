@@ -81,23 +81,22 @@ Affects are mutable state. Missions, betrayal, rescue, propaganda, ideological c
 
 See FACTIONS.md for the NoöPunk starter content library and docs/design/GAMEPLAY_LOOP.md for the text-RPG architecture.
 
-## UNHSS / Firewall campaign frame
+## UNSA campaign frame
 
-The default NoöPunk campaign is organized around the **United Nations Human Security
-and Survival Organization (UNHSS)**. Player characters are Firewall field agents
-inside UNHSS and simultaneously belong to another political, cultural, national,
-professional, ideological, or social faction.
+The default NoöPunk campaign is organized around **UNSA — the United Nations Security
+Agency** (issue #144 renamed it; earlier drafts called it UNHSS / Firewall). Player
+characters are UNSA field agents and simultaneously belong to one or more other
+political, cultural, national, professional, ideological or social factions.
 
-Firewall is the classified operational culture and intelligence network within UNHSS,
-not a separate extra-governmental conspiracy. UNHSS combines civilian science and
-diplomacy, international law enforcement and intelligence, civil defence and disaster
-relief, and UN Peacekeeper rapid-response military capabilities.
+UNSA is not a secret conspiracy but the global UN security agency; its civilian science
+and diplomacy, international law enforcement and intelligence, civil defence and disaster
+relief, and UN Peacekeeper rapid-response military capabilities all sit inside it.
 
 The United Nations is becoming a contested federal world government with universal
 Earth-state membership, possible off-world member states, a UN President, Prime
-Minister and Parliament, and four-year global elections. UNHSS is a major engine of
+Minister and Parliament, and four-year global elections. UNSA is a major engine of
 that federalization.
 
 For the full organization, jurisdiction, forces, democratic safeguards, Wallfacers,
-mission structure, and political tensions, see RULEBOOK.md § “UNHSS / Firewall:
-default campaign institution” and issue #108.
+mission structure, and political tensions, see RULEBOOK.md § “UNSA — the United Nations
+Security Agency” and issues #108 and #144.

@@ -78,7 +78,7 @@ list; the universal Skill list remains explicitly deferred.
 
 Issue #110 defines campaign-scoped specialist content under that newer direction. Its provisional skill vocabulary and fields may be documented and represented as data, but agents must not treat Eclipse Phase linked aptitudes, percentile values, or other EP2 numerical mechanics as current NoöPunk rules.
 
-For the initial Asteroid Belt / UNHSS campaign, only expose specialist fields that actual play needs. The machine-readable profile is `data/rules/campaign_skill_fields.json`; scenario-specific additions should extend the profile instead of creating giant universal catalogs.
+For the initial Asteroid Belt / UNSA campaign, only expose specialist fields that actual play needs. The machine-readable profile is `data/rules/campaign_skill_fields.json`; scenario-specific additions should extend the profile instead of creating giant universal catalogs.
 
 The earlier issue #17 BCI / Compute / Connection / Infosec cyberspace modifier framework is **withdrawn from active canon**. Do not port it. Hacking / cyberspace is DEFERRED until the author defines an original NoöPunk subsystem.
 
