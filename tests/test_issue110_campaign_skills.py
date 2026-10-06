@@ -42,9 +42,22 @@ class Issue110CampaignSkillsTest(unittest.TestCase):
             "The **Law of One / Ra Material belongs inside NHI Studies**",
             "**Hardware (Psychotronics)**",
             "**Noetic Projection**",
-            "dedicated attribute-system design issue",
         ):
             self.assertIn(phrase, rulebook)
+
+        # The deferred character-design work must still be assigned to a dedicated issue.
+        # Matched as a pattern rather than one literal phrase: issue #168 reworded this from
+        # "attribute-system design issue" to "character-layer design issue" (more accurate,
+        # since #39.8 covers Density, Polarization and the character ontology, not only
+        # attributes) without updating the assertion, which is what left main red. The fact
+        # asserted is unchanged, so the guard tolerates either wording instead of pinning
+        # one and going stale on the next rename.
+        self.assertRegex(
+            rulebook,
+            r"A dedicated [a-z-]+ design issue owns this work before it becomes executable "
+            r"rules\.",
+            "the deferred character-design work is no longer assigned to a dedicated issue",
+        )
 
 
 if __name__ == "__main__":
