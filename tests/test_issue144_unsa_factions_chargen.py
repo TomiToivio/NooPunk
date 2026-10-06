@@ -63,7 +63,7 @@ class FactionMechanicsTests(unittest.TestCase):
     def test_multiple_memberships_and_starting_reputation(self):
         for text in (BOOK, TERMS):
             self.assertIn("10 positive", text)
-            self.assertIn("two or three factions", text.lower())
+            self.assertIn("two or three factions", " ".join(text.lower().split()))
             self.assertIn("6/4", text)
             self.assertIn("5/3/2", text)
 
