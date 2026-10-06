@@ -39,6 +39,16 @@ The Cyberpunk side covers AI, ubiquitous computation, networks, surveillance, co
 
 NoöPunk is deliberately an independent rules system. External RPGs are sources of design ideas, not compatibility targets. The rulebook is the rules ledger: deterministic code should implement the rules written here, while LLMs may interpret intent, converse, negotiate and narrate.
 
+#### Genre mix
+
+NoöPunk is a deliberate mix of several science-fiction traditions rather than a member of one subgenre. Its two most immediately recognizable foundations are **cyberpunk** — AI, cyberspace, surveillance, corporations, augmentation, hacking and social inequality — and **post-apocalyptic / post-holocaust SF**, a world reshaped by overlapping technological, geopolitical and NHI crises.
+
+Around those it borrows freely: **first contact** in its serious register (*Contact*, *Arrival*, *2001*); **alien invasion and infiltration**, from *The War of the Worlds* to hybridization and secret NHI activity; **ufological conspiracy**, the disclosure-and-secret-programme territory of the *X-Files* and *Men in Black*; the **military alien-contact** register of *X-COM*; **psi-fi and psychotronics**, where telepathy, remote viewing, altered consciousness and technologies that touch consciousness are ordinary subject matter; **transhumanist and posthuman SF**; **metaphysical and interdimensional SF**, the deeper Noöspace layer where reality itself becomes uncertain; **weird and occult SF**; and **science-fiction, cosmic and body horror**, the *Alien* / *The Thing* side of contact.
+
+> **Cyberpunk + post-apocalyptic SF + first contact + ufological conspiracy + psi-fi + weird/interdimensional SF + science-fiction horror.**
+
+These are **layers of one setting, not competing labels**. A scenario can begin as cyberpunk, turn into an *X-Files*-style investigation, escalate into *X-COM*-style crisis response, and end in first-contact, psi-fi or cosmic-horror territory. NoöPunk intentionally crosses genre boundaries.
+
 ### 1.2. Social science inspiration
 
 NoöPunk grows from the intellectual terrain of LaclauGPT. Ernesto Laclau informs ideology, antagonism, hegemony, empty signifiers and political identity. Manuel Castells informs network society, communication power and flows. Social Network Analysis and Discourse Network Analysis inform the representation of Contacts, Factions, Reputation, Motivations and ideological relations.
