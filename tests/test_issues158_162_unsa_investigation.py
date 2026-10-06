@@ -29,7 +29,7 @@ class UNSAAcademyTests(unittest.TestCase):
         self.assertNotIn("Psionics", ACADEMY["universal_skills"])
 
     def test_equipment_stays_stat_free(self):
-        self.assertIn("Numeric equipment statistics remain undefined", CYBER)
+        self.assertIn("Equipment statistics remain undefined", CYBER)
         self.assertNotIn('"damage"', (ROOT / "data" / "rules" / "unsa_academy.json").read_text(encoding="utf-8"))
 
 

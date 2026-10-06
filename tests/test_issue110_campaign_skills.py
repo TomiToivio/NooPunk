@@ -11,24 +11,30 @@ class Issue110CampaignSkillsTest(unittest.TestCase):
         profile = json.loads((ROOT / "data/rules/campaign_skill_fields.json").read_text())
         fields = profile["fields"]
 
-        self.assertEqual(fields["Pilot"], ["Space"])
-        self.assertEqual(fields["Medicine"], ["Emergency Care", "Forensics"])
+        self.assertEqual(
+            fields["Pilot"],
+            ["Ground Vehicles", "Aircraft", "Spacecraft", "Drones"],
+        )
+        self.assertIn("Emergency Medicine", fields["Medicine"])
+        self.assertIn("Psychotronic Medicine", fields["Medicine"])
         self.assertIn("Psychotronics", fields["Hardware"])
 
         required_know = {
-            "Investigation",
             "Psychology",
-            "Law Enforcement",
-            "Intelligence",
-            "Counterintelligence",
+            "Law",
             "Quantum Information Panpsychism",
             "Parapsychology",
             "NHI Studies",
+            "X-Risk Studies",
+            "Noetics",
         }
         self.assertTrue(required_know.issubset(set(fields["Know"])))
+        self.assertNotIn("Investigation", fields["Know"])
+        self.assertNotIn("Intelligence", fields["Know"])
+        self.assertNotIn("Counterintelligence", fields["Know"])
         self.assertEqual(fields["Exotic Skill"], [])
 
-    def test_rulebook_records_boundaries_and_deferred_psi_design(self):
+    def test_rulebook_records_canonical_boundaries_and_psi_design(self):
         rulebook = (ROOT / "RULEBOOK.md").read_text()
         for phrase in (
             "## 39. Campaign-scoped skills and specialist fields",
