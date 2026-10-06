@@ -138,9 +138,85 @@ Augmentation may create effective capabilities above the ordinary human scale, b
 
 ### 4.1. Skill list
 
-Canonical trained Skills use the **1–10** scale. The final complete Skill list is still allowed to evolve. Campaign-scoped specialist fields may be used where a broad permanent skill list would become bloated.
+Canonical Skills use the **1–10** scale. A character without a Skill either attempts it **untrained at –1** or cannot attempt it at all, as listed below.
 
-Skills should describe learned competence, professions, techniques or fields of practice rather than duplicate broad STATs.
+Some broad Skills use **fields**. A character learns a specific field, such as **Know (Sociology)** or **Pilot (Aircraft)**. Closely related fields may substitute at **–1** when the GM judges that the knowledge or technique genuinely transfers. Unrelated fields do not substitute. Field lists are deliberately open-ended and campaign-scoped.
+
+A Skill normally uses the STAT listed below. **Work** is the exception: its STAT is determined by the occupation and task.
+
+| Skill | STAT | Untrained? | Scope |
+| --- | --- | --- | --- |
+| Administrate | INT | Yes | Bureaucracy, logistics, budgets, institutional procedure and organizational management. |
+| Athletics | FIT | Yes | Running, climbing, swimming, jumping, throwing and general athletic movement. |
+| Connect | SOC | Yes | Networking, asking around, locating contacts and accessing informal social circles. |
+| Counterintelligence | INT | No | Insider-threat recognition, hostile intelligence activity, recruitment attempts, deception and security culture. |
+| Deceive | SOC | Yes | Lying, bluffing, conning, impersonation and verbal or behavioral misdirection. |
+| ESP | PSY | No | Anomalous perception, clairvoyance, psychometry and remote viewing. |
+| Exotic Skill (Field) | Variable | No | Rare techniques or capabilities not covered elsewhere. Use sparingly. |
+| First Aid | INT | Yes | Immediate stabilization, trauma care and emergency treatment. |
+| Forensics | INT | No | Scientific examination of physical, biological, digital, cybernetic and anomalous evidence. |
+| Fray | REF | Yes | Dodging, evasive movement and reacting to immediate physical danger. |
+| Free Fall | FIT | Yes | Movement, orientation and EVA activity in microgravity. |
+| Guns | REF | Yes | Aiming and firing conventional ranged weapons, including handguns, rifles, beam and seeker weapons. |
+| Hardware (Field) | CYB | No | Building, repairing, modifying, disabling and physically hacking technological systems. |
+| Infosec | CYB | No | Intrusion, exploitation, malware, access control, hardening, compromise detection and counter-hacking. |
+| Intelligence Analysis | INT | No | Source evaluation, pattern analysis, uncertainty, competing hypotheses and threat assessment. |
+| Interface | CYB | Yes | Operating computers, devices, AR/VR, cyberware, BCIs, networks and machine systems. |
+| Investigation | INT | Yes | Reconstructing events, following evidence, generating hypotheses and conducting general investigative work. |
+| Kinesics | SOC | Yes | Reading body language, tells, facial expression, emotional signals and nonverbal cues. |
+| Know (Field) | INT | No | Academic, scientific, technical, legal, cultural or theoretical knowledge. |
+| Lead | SOC | Yes | Command, motivation, coordination and leadership in teams, crises or organizations. |
+| Medicine (Field) | INT | No | Diagnosis and professional treatment beyond First Aid. |
+| Melee | FIT | Yes | Fighting with close-combat weapons. |
+| Noöspace | PSY | No | Entering, navigating, perceiving and acting in Noöspace. |
+| Perceive | PSY | Yes | Physical and augmented sensory awareness, situational noticing and hidden-detail detection. |
+| Perform (Field) | PSY | Yes | Music, acting, dance, visual art, ritual or other expressive performance. |
+| Pilot (Field) | REF | No | Driving or piloting vehicles, drones, spacecraft, aircraft, watercraft and similar platforms. |
+| Precognition | PSY | No | Anomalous perception of future possibilities or probabilities. |
+| Program | CYB | No | Writing, modifying and engineering software, scripts, AI tools and software-defined systems. |
+| Provoke | SOC | Yes | Intimidation, taunting, seduction, agitation and deliberate emotional influence. |
+| Psychic Defence | PSY | No | Resisting telepathy, psychic intrusion, hostile noetic influence and related attacks. |
+| Psychokinesis | PSY | No | Deliberately influencing physical systems through PSI. |
+| Research | INT | Yes | Finding, verifying and synthesizing information from records, databases, archives, literature and open sources. |
+| Sneak | REF | Yes | Hiding, stalking, concealing movement and avoiding detection. |
+| Survival | INT | Yes | Wilderness or urban survival, navigation, shelter, food/water and hazard recognition. |
+| Tactics | INT | No | Cover, team movement, room entry, ambush recognition and small-unit operational planning. |
+| Talk | SOC | Yes | Persuasion, negotiation, diplomacy, rapport, explanation and ordinary interviewing. |
+| Telepathy | PSY | No | Reading, transmitting or influencing thoughts and emotional content through PSI. |
+| Trade | SOC | Yes | Bargaining, valuation, market navigation and commercial negotiation. |
+| Unarmed | FIT | Yes | Striking, grappling, restraint, takedowns and non-lethal subdual. |
+| Work (Field) | Variable | No | Broad practical competence in an occupation or profession. |
+
+#### Specialization rules
+
+The main fielded Skills are **Exotic Skill, Hardware, Know, Medicine, Perform, Pilot, and Work**. A campaign may add fields only when they create a genuine play need.
+
+Examples include:
+
+- **Hardware (Cyberware), Hardware (Robotics), Hardware (Drones), Hardware (Psychotronics)**
+- **Know (Law), Know (Sociology), Know (NHI Studies), Know (X-Risk Studies), Know (Noetics)**
+- **Medicine (Emergency Medicine), Medicine (Surgery), Medicine (Psychiatry), Medicine (Cybermedicine)**
+- **Pilot (Ground Vehicles), Pilot (Aircraft), Pilot (Spacecraft), Pilot (Drones)**
+- **Work (Police Officer), Work (Journalist), Work (Researcher), Work (Mechanic)**
+
+A broad **Work** Skill covers routine professional competence, but dedicated Skills win when the task is specifically about their domain. For example, **Work (Police Officer)** covers ordinary police procedure and reporting, while **Investigation**, **Forensics**, **Know (Law)**, **Counterintelligence**, or **Guns** govern specialist tasks.
+
+#### Deliberate overlap boundaries
+
+- **Talk** persuades through communication; **Provoke** moves someone emotionally; **Deceive** misrepresents truth; **Kinesics** reads social cues; **Connect** finds people and social access; **Lead** coordinates people.
+- **Interface** operates systems; **Program** creates or modifies software; **Infosec** attacks or defends security; **Hardware** deals with physical technological systems.
+- **Know** answers from learned domain knowledge; **Research** finds external information; **Investigation** reconstructs a specific case from evidence; **Intelligence Analysis** turns multiple sources into assessed judgments.
+- **First Aid** handles immediate stabilization. **Medicine** covers professional diagnosis and treatment.
+- **Law is not a separate Skill**: use **Know (Law)**.
+- **OSINT is not a separate Skill**: use **Research**, with appropriate Know fields when specialist domain knowledge matters.
+- **Interview and Interrogation are not separate Skills**: use Talk, Kinesics, Deceive and Provoke according to method.
+- **Police Procedure is not a separate Skill**: use Work (Police Officer), Know (Law) and Investigation as appropriate.
+- **Psychic Attack is not a separate Skill**: hostile PSI uses the relevant discipline, such as Telepathy or Psychokinesis, opposed by Psychic Defence when appropriate.
+- **Psychometry and Remote Viewing** are applications of **ESP** rather than separate universal Skills.
+- **Mediumship / entity contact** normally uses **Telepathy** or **Noöspace**, depending on the mode of contact.
+- **Psychotronics** remains primarily **Hardware (Psychotronics)** for engineering, while psychic operation uses the relevant PSY Skill.
+
+This list is the canonical universal Skill vocabulary. Campaign profiles may expose only the subset and fields needed for actual play.
 
 ### 4.2. Skill checks
 
