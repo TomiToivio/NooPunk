@@ -1269,7 +1269,7 @@ This does not mean every magical claim is true in-setting. Traditions may contai
 
 NoöPunk uses **one Affect graph** for Factions, Motivations, Reputation and Contacts. The detailed specification is [rulebook/4_SOCIAL.md](rulebook/4_SOCIAL.md); the engine-neutral representation is [src/simulation/affect.py](src/simulation/affect.py). The canonical **terminology** for the faction system — Contacts, Motivations, Faction Reputation, US / FRONTIER and the graph layers — is [rulebook/8_FACTIONS.md](rulebook/8_FACTIONS.md).
 
-Every relation has a Target, semantic Affect label, and Affect Score from -100 to +100. Labels such as Knows, Trusts, Supports, Loves, Fears, Distrusts, Hates and Opposes are not collapsed into generic sentiment. Multiple labelled relations toward one target are allowed, all relations are directional, and an absent edge means unknown rather than neutral.
+Every relation has a Target, semantic Affect label, and Affect Score from -10 to +10. Labels such as Knows, Trusts, Supports, Loves, Fears, Distrusts, Hates and Opposes are not collapsed into generic sentiment. Multiple labelled relations toward one target are allowed, all relations are directional, and an absent edge means unknown rather than neutral.
 
 Factions are changing discursive formations represented as US^(positive/constitutive Affects) + FRONTIER^(negative/antagonistic Affects). This adapts Emilia Palonen's Formula of Populism as a general model of political/social identification, not a populism classifier. US and FRONTIER may articulate demands, signifiers, identities, factions, institutions, technologies and individuals.
 
@@ -1823,7 +1823,7 @@ The emerging federal system has a **UN President, UN Prime Minister, and UN Parl
 Global presidential and parliamentary elections occur every **four years**. The exact
 constitutional division of powers remains deliberately open for later design.
 
-UNHSS is one of the principal engines of this federalization because existential-risk
+UNSA is one of the principal engines of this federalization because existential-risk
 governance forces the UN to acquire real sovereign capacities: resource mobilization,
 policing, intelligence, emergency authority, scientific infrastructure, military
 forces, space fleets, and global jurisdiction. It is widely regarded as the UN's most
@@ -4774,7 +4774,7 @@ see Chapter 9, Character Generation.
 
 **Status: NOÖPUNK NATIVE CONTENT MODEL / MECHANICS FOLLOW ISSUE #111.**
 
-Issue #110 defines the specialist-skill content needed by the initial Asteroid Belt / UNHSS campaign. Issue #111 supersedes #110's assumption that Eclipse Phase percentile mechanics remain the active chassis: NoöPunk now treats these names and fields as **content design** to be expressed through the independent **1–10 Skill** system and the core `STAT + Skill + 1d10` resolution rule.
+Issue #110 defines the specialist-skill content needed by the initial Asteroid Belt / UNSA campaign. Issue #111 supersedes #110's assumption that Eclipse Phase percentile mechanics remain the active chassis: NoöPunk now treats these names and fields as **content design** to be expressed through the independent **1–10 Skill** system and the core `STAT + Skill + 1d10` resolution rule.
 
 The final universal NoöPunk skill list remains deferred. For the first campaign, however, the following Eclipse Phase-derived vocabulary is a useful provisional baseline because it already covers the kinds of actions the campaign needs:
 
@@ -4809,7 +4809,7 @@ These names are not a commitment to Eclipse Phase numerical mechanics, linked ap
 
 Do not preload giant specialty catalogs. Add a field when a character concept, scenario, location, profession, or piece of equipment creates a genuine need for it. This keeps character sheets, NPC descriptions, deterministic rules data, and LLM prompts compact.
 
-For the initial Asteroid Belt / UNHSS campaign, the default profile is:
+For the initial Asteroid Belt / UNSA campaign, the default profile is:
 
 - **Pilot (Space)**
 - **Medicine (Emergency Care)**
@@ -4834,7 +4834,7 @@ Possible later Belt Hardware fields include Electronics, Robotics, Industrial, S
 
 **Know (Psychology)** covers psychological profiling, trauma, manipulation, witness reliability, cult dynamics, belief formation, contactee/experiencer assessment, and psychologically complex interviewing. **Dr. Harri S. Romppainen primarily solves cases through Know (Psychology)** rather than being reduced to a generic detective archetype.
 
-**Know (Law Enforcement)** covers police procedure, jurisdiction, warrants, evidence handling, arrest/search rules, cross-jurisdiction cooperation, and UNHSS policing powers.
+**Know (Law Enforcement)** covers police procedure, jurisdiction, warrants, evidence handling, arrest/search rules, cross-jurisdiction cooperation, and UNSA policing powers.
 
 **Know (Intelligence)** covers intelligence cycles, source evaluation, HUMINT, SIGINT, OSINT, GEOINT, analysis, briefing, collection planning, covert networks, compartmentation, and deception analysis.
 
@@ -4891,7 +4891,7 @@ Three approaches remain open: one Psi skill with fields, several separate PSI sk
 
 ### 39.6 Example campaign packages
 
-A conventional UNHSS investigator will often emphasize Investigation, Research, Perceive, Kinesics, and Persuade.
+A conventional UNSA investigator will often emphasize Investigation, Research, Perceive, Kinesics, and Persuade.
 
 Dr. Romppainen instead emphasizes Psychology, NHI Studies, Research, Kinesics, and Persuade, with Parapsychology where appropriate.
 
