@@ -12,9 +12,8 @@ A structure guard in the style of ``test_issue60_setting_canon.py``:
 3. asserts the relationship shape and the seven graph layers are stated;
 4. asserts the US / FRONTIER model keeps the parts that make it more than a flavour
    alignment field, and stays explicitly NOT a populism classifier;
-5. asserts the **score-scale conflict is recorded rather than silently resolved**, because
-   the issue specifies -10..+10 while the live #107 implementation uses -100..+100. A later
-   session must not quietly pick one; the guard fails if the discrepancy note disappears.
+5. asserts the score-scale conflict is **resolved by issue #144** in favor of the canonical
+   -10..+10 scale across the rulebook, schema and engine.
 
 Uses only the standard library: CI installs requirements.txt and nothing else.
 """
@@ -163,35 +162,17 @@ class GraphLayerTests(unittest.TestCase):
 
 
 class ScaleConflictTests(unittest.TestCase):
-    """Issue #122 specifies -10..+10. The live #107 implementation uses -100..+100.
-    Both are author-specified, so this is recorded, never silently reconciled."""
+    """Issue #144 resolves the old #107/#122 scale conflict."""
 
-    def test_the_discrepancy_is_recorded(self) -> None:
-        self.assertIn("Open question: the score scale", chapter())
-
-    def test_both_scales_are_named(self) -> None:
+    def test_canonical_scale_is_ten(self) -> None:
         text = chapter()
-        with self.subTest(scale="issue #122"):
-            self.assertIn("−10…+10", text)
-        with self.subTest(scale="live #107 implementation"):
-            self.assertIn("−100…+100", text)
+        self.assertIn("-10 to +10", text)
+        self.assertNotIn("Open question: the score scale", text)
 
-    def test_the_conflict_is_left_to_the_author(self) -> None:
-        self.assertRegex(chapter(), r"author's decision")
-
-    def test_the_chapter_does_not_pick_a_scale(self) -> None:
-        """If a later session decides the scale here, this fails: the decision belongs to
-        the author, and picking one silently would invalidate every stored score."""
-        text = chapter()
-        for decided in ("the canonical scale is", "scores are therefore", "we standardise on"):
-            with self.subTest(decided=decided):
-                self.assertNotIn(decided.lower(), text.lower())
-
-    def test_the_rulebook_still_states_the_100_scale(self) -> None:
-        """Until the author decides, RULEBOOK.md keeps its -100..+100 statement; the
-        terminology chapter must not have half-migrated the rulebook."""
-        self.assertIn("-100 to +100", RULEBOOK.read_text(encoding="utf-8"))
-
+    def test_rulebook_uses_ten_scale(self) -> None:
+        rulebook = RULEBOOK.read_text(encoding="utf-8")
+        self.assertIn("-10 to +10", rulebook)
+        self.assertNotIn("-100 to +100", rulebook)
 
 class ScopeTests(unittest.TestCase):
     def test_the_chapter_defines_no_new_mechanics(self) -> None:
