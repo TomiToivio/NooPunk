@@ -40,7 +40,7 @@ class UNSACanonTests(unittest.TestCase):
         self.assertIn("federal government of Earth", BOOK)
 
     def test_default_character_is_unsa_agent(self):
-        self.assertIn("works for **UNSA**", BOOK)
+        self.assertIn("belongs to and works for UNSA", BOOK)
         self.assertIn("Default UNSA affiliation", FACTIONS)
         self.assertIn("## UNSA campaign frame", SOCIAL)
 
