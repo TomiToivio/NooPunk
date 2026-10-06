@@ -42,7 +42,7 @@ class Issue110CampaignSkillsTest(unittest.TestCase):
             "The **Law of One / Ra Material belongs inside NHI Studies**",
             "**Hardware (Psychotronics)**",
             "**Noetic Projection**",
-            "dedicated attribute-system design issue",
+            "dedicated character-layer design issue",
         ):
             self.assertIn(phrase, rulebook)
 
