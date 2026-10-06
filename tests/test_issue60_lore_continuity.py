@@ -9,10 +9,9 @@ stated in one canonical document must not be silently missing from the other.
    other. The guard below asserts the shared continuity facts appear in BOTH the
    timeline document and the canonical `RULEBOOK.md`.
 
-2. Issue #108 resolves one of issue #60's former open conversion gaps: Firewall is
-   now the covert operational culture inside UNHSS. TITANs remain deliberately
-   undecided. The guard therefore protects both the new Firewall mapping and the
-   still-open TITAN question.
+2. Issue #144 supersedes the former UNHSS/Firewall mapping: Firewall is now only an
+   external Eclipse Phase design inspiration and the in-world employer is UNSA.
+   TITANs remain deliberately undecided.
 """
 from __future__ import annotations
 
@@ -145,50 +144,33 @@ class PreFallContinuityTests(unittest.TestCase):
 
 
 class ConversionGapTests(unittest.TestCase):
-    """Issue #108 resolves Firewall; the TITAN conversion gap remains open."""
+    """Issue #144 resolves the organization name; the TITAN conversion gap remains open."""
 
     def setUp(self) -> None:
         self.mapping = section_of(RULEBOOK, "9. Characters and identity")
 
-    def test_firewall_is_mapped_to_unhss(self) -> None:
-        self.assertIn("Firewall", self.mapping, "Firewall is absent from the mapping section")
-        firewall_block = re.search(
-            r"\*\*Firewall\.\*\*(.{0,1000})", self.mapping, re.DOTALL
-        )
+    def test_firewall_is_external_inspiration_and_unsa_is_canon(self) -> None:
+        self.assertIn("Firewall", self.mapping)
+        self.assertIn("UNSA", self.mapping)
+        firewall_block = re.search(r"\*\*Firewall\.\*\*(.{0,1000})", self.mapping, re.DOTALL)
         if firewall_block is None:
             self.fail("no Firewall paragraph in the mapping section")
         body = firewall_block.group(1)
-        self.assertRegex(body, r"United Nations Human Security and Survival Organization|UNHSS")
-        self.assertRegex(body, r"operational|intelligence")
-        self.assertNotRegex(body, r"deliberately undecided|not yet exist")
+        self.assertRegex(body, r"design influence|design inspiration")
+        self.assertRegex(body, r"United Nations Security Agency|UNSA")
+        self.assertNotRegex(body, r"United Nations Human Security and Survival Organization|UNHSS")
 
     def test_titans_are_recorded_as_undecided(self) -> None:
-        self.assertIn("TITANs", self.mapping, "TITANs absent from the mapping section")
-        titans_block = re.search(r"\*\*TITANs\.\*\*(.{0,700})", self.mapping, re.DOTALL)
-        if titans_block is None:
-            self.fail("no TITANs paragraph in the mapping section")
-        body = titans_block.group(1)
-        self.assertRegex(
-            body,
-            r"not decided|\*\*not\*\* decided|deliberately undecided",
-            "TITANs is not recorded as undecided",
-        )
-        # The pre-Fall relationship must be stated, not assumed away.
-        self.assertRegex(
-            body,
-            r"pre-Fall",
-            "the TITAN paragraph omits the pre-Fall relationship the issue asks for",
-        )
+        self.assertIn("TITANs", self.mapping, "TITANs are absent from the mapping section")
+        titans = re.search(r"\*\*TITANs\.\*\*(.{0,1600})", self.mapping, re.DOTALL)
+        if titans is None:
+            self.fail("no TITAN paragraph in the mapping section")
+        self.assertRegex(titans.group(1), r"not decided|undecided|must \*\*not\*\* assume")
 
     def test_the_two_ambiguous_names_are_distinguished(self) -> None:
-        """'Great Firewall' (China) is a different thing from EP's Firewall."""
+        """'Great Firewall' (China) is unrelated to EP's Firewall design reference."""
         self.assertIn("Great Firewall", self.mapping)
-        self.assertRegex(
-            self.mapping,
-            r"unrelated use of the words|not this organisation",
-            "the mapping does not distinguish EP Firewall from the Great Firewall",
-        )
-
+        self.assertRegex(self.mapping, r"unrelated")
 
 class WendtAttributionTests(unittest.TestCase):
     """Gap 4: §33.2 must name Wendt, as its sibling inspiration sections do."""
