@@ -1263,13 +1263,13 @@ This does not mean every magical claim is true in-setting. Traditions may contai
 
 NoöPunk uses **one Affect graph** for Factions, Motivations, Reputation and Contacts. The detailed specification is [rulebook/4_SOCIAL.md](rulebook/4_SOCIAL.md); the engine-neutral representation is [src/simulation/affect.py](src/simulation/affect.py). The canonical **terminology** for the faction system — Contacts, Motivations, Faction Reputation, US / FRONTIER and the graph layers — is [rulebook/8_FACTIONS.md](rulebook/8_FACTIONS.md).
 
-Every relation has a Target, semantic Affect label, and Affect Score from -100 to +100. Labels such as Knows, Trusts, Supports, Loves, Fears, Distrusts, Hates and Opposes are not collapsed into generic sentiment. Multiple labelled relations toward one target are allowed, all relations are directional, and an absent edge means unknown rather than neutral.
+Every relation has a Target, semantic Affect label, and Affect Score from -10 to +10 (issue #144). Labels such as Knows, Trusts, Supports, Loves, Fears, Distrusts, Hates and Opposes are not collapsed into generic sentiment. Multiple labelled relations toward one target are allowed, all relations are directional, and an absent edge means unknown rather than neutral.
 
 Factions are changing discursive formations represented as US^(positive/constitutive Affects) + FRONTIER^(negative/antagonistic Affects). This adapts Emilia Palonen's Formula of Populism as a general model of political/social identification, not a populism classifier. US and FRONTIER may articulate demands, signifiers, identities, factions, institutions, technologies and individuals.
 
 Character Motivations use the same edge representation. Faction membership supplies starting Affects, not mind control. Multiple factions preserve different labels as ambivalence; matching target+label edges are combined; explicitly personal Motivations can override inherited matching edges while provenance is retained.
 
-Reputation is directional from the evaluating faction/actor toward the character. Contacts are person-to-person social edges, including friends, acquaintances, professional ties and enemies. The default UNHSS / Firewall affiliation is represented through the same system alongside the character's personal faction identity.
+Reputation is directional from the evaluating faction/actor toward the character. Contacts are person-to-person social edges, including friends, acquaintances, professional ties and enemies. The default UNSA affiliation is represented through the same system alongside the character's personal faction identity, and the score scale is **−10…+10** ([rulebook/8_FACTIONS.md](rulebook/8_FACTIONS.md)).
 
 At the architecture level, face-to-face, text/chat, voice/video, Mesh and PSI communication are channels over the same social layer. The first playable interaction model is text-forward and hub-based, documented in [docs/design/GAMEPLAY_LOOP.md](docs/design/GAMEPLAY_LOOP.md), with a small Asteroid Belt/station slice as the preferred initial scope.
 
@@ -1522,6 +1522,7 @@ Use this table to track major mechanical mutations.
 
 | 2026-10-04 | Theory sections | Four-layer ontology and bibliography deleted by a stale-branch clobber (`901ba05`) | **Restored as §36 (four NoöPunk systems) and §37 (theoretical sources)** | The clobber removed 703 lines; the glossary kept `## 34.`, so number-keyed guards read the wrong section and the loss was silent. Restored by heading text; §27 number stays with the glossary. |
 | 2026-10-04 | Sources list | Two competing sources sections (#99 landed twice as §35 and §38) | **Merged into a single §35; the duplicate §38 removed** | Issue #101. The union of both copies is kept: the fuller fiction and RPG entries from §38, the broader field list and preambles from §35. §35 now declares itself the design-facing map beside the §37 theory bibliography, and §33.2's Wendt citation is re-pointed from the stale §35.5 to §36.5. |
+| 2026-10-06 | Default affiliation and Affect-graph prose | In-world `UNHSS` naming and a `-100 to +100` Affect/Contact/Reputation score in `RULEBOOK.md` prose | **`UNSA` everywhere in-world; the Affect graph reads `-10 to +10`** | Issue #149 was rebased to `rulebook/8_FACTIONS.md` alone before merge (`40e10a5`), so the rename and rescale reached the chapter, schema, runtime and data but not the canonical prose — the book contradicted its own §38 and `8_FACTIONS.md`. Residue cleared; the separate Law-of-One **Polarization** axis (§9.3, `-100 ... 0 ... +100`) is a different subsystem and keeps its wider band. |
 
 Add rows whenever a major subsystem is replaced or substantially reskinned.
 
@@ -1817,7 +1818,7 @@ The emerging federal system has a **UN President, UN Prime Minister, and UN Parl
 Global presidential and parliamentary elections occur every **four years**. The exact
 constitutional division of powers remains deliberately open for later design.
 
-UNHSS is one of the principal engines of this federalization because existential-risk
+UNSA is one of the principal engines of this federalization because existential-risk
 governance forces the UN to acquire real sovereign capacities: resource mobilization,
 policing, intelligence, emergency authority, scientific infrastructure, military
 forces, space fleets, and global jurisdiction. It is widely regarded as the UN's most
@@ -4929,7 +4930,7 @@ Three approaches remain open: one Psi skill with fields, several separate PSI sk
 
 ### 39.6 Example campaign packages
 
-A conventional UNHSS investigator will often emphasize Investigation, Research, Perceive, Kinesics, and Persuade.
+A conventional UNSA investigator will often emphasize Investigation, Research, Perceive, Kinesics, and Persuade.
 
 Dr. Romppainen instead emphasizes Psychology, NHI Studies, Research, Kinesics, and Persuade, with Parapsychology where appropriate.
 
