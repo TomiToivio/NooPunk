@@ -1,59 +1,51 @@
-# Canonical organization data for issue #108.
-# Human-readable source of truth: RULEBOOK.md.
-UNHSS:
-  canonical_name: United Nations Human Security and Survival Organization
-  founding_name: United Nations X-Risk and NHI Organization
+# Canonical organization data for issue #144.
+# Human-readable source of truth: RULEBOOK.md §38.
+UNSA:
+  canonical_name: United Nations Security Agency
+  early_labels:
+    - UN X-Risk Agency
+    - UN NHI Agency
   aliases:
-    - X-Com
-    - Firewall
-  public_pejoratives:
-    - X-Cops
+    - X-COM
+    - X-Files
+    - Men in Black
+  prohibited_aliases:
+    MJ-12: "Treated as an accusation of betrayal, not a friendly nickname."
   parent:
     - United Nations
   player_role:
-    default: Firewall field agent
-    dual_affiliation: true
-  branches:
-    - Civilian Science and Research
-    - Diplomacy and Policy
-    - Civil Defence and Development
-    - UNHSS Police
-    - Firewall Intelligence
-    - Tactical Response
-    - Earth Special Operations Regiment
-    - Solar-System Space Marine Regiment
-    - Air Component
-    - Sea Component
-    - Space Component
-    - Deep Space Scout Service
+    default: UNSA agent
+    multi_faction_membership: true
+  helsinki_chain:
+    - Suojelupoliisi
+    - Europol
+    - UNSA
+  capabilities:
+    - law enforcement
+    - counterintelligence
+    - intelligence
+    - military and special operations
+    - scientific research
+    - diplomacy
+    - civil defence
+    - development
+    - disaster relief
+    - reconstruction
   mandate:
-    - X-Risk
-    - AGI
-    - NHI
-    - PSI
+    - NHI threats
+    - rogue AGI and ASI
+    - PSI and Noöspace threats
+    - catastrophic biotechnology
+    - anomalous technology
     - planetary defence
-    - nuclear risk
-    - climate risk
-    - pandemics
-    - autonomous weapons
-    - catastrophic technology
-  jurisdiction:
-    - Earth
-    - Luna
-    - Mars
-    - Belt
-    - Solar System
-  enthusiastic_collaborators:
-    - European Union
-    - Japan
-    - Canada
-    - Brazil
-    - Peru
-    - Egypt
-    - India
-  legacy_program_tension:
-    - United States
-    - Russia
-    - China
-  wallfacers: 4
-  political_head: United Nations Minister of Human Security and Survival
+    - other X-Risks
+  unofficial_network:
+    - supportive governments and political leaders
+    - embedded security and military assets
+    - scientists and research institutions
+    - cyber and technical specialists
+    - psionic assets and psychotronics programs
+    - trusted private-sector and civil-society partners
+    - covert informants and irregular assets
+  political_role: "Institutional spine of the emerging federal United Nations / world government."
+  disclosure_canon: "Fragmentation and global unification happen simultaneously."
