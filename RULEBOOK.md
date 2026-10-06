@@ -5299,3 +5299,185 @@ The transformed Chinese communist tradition contributes an unstable synthesis of
 The Multitude is intentionally sprawling, argumentative, and theoretically over-equipped.
 
 These four blocs are hooks for NPC allegiance, Affect/Reputation edges, elections, lobbying, diplomacy, scandals, and mission conflicts. The parliamentary party system remains explicitly open for later additions.
+
+---
+
+## 43. Faction taxonomy, the faction data model, and multi-faction membership (#144)
+
+**Status: NOÖPUNK NATIVE — issue #144.**
+
+Issue #144 treats **Faction** as the umbrella gameplay concept. A Faction is any social,
+political, economic or ideological formation the system can represent, and all of them
+use the same machinery: Reputation, Contacts, Motivations, Affect, ideology, allies and
+enemies, network position, resources, and parent/subfaction relationships (§17,
+`rulebook/8_FACTIONS.md`). The taxonomy below defines the **types** the system can
+represent — not a demand to populate the rulebook with dozens of organizations.
+
+### 43.1 Default campaign scope: a few relevant factions only
+
+The default NoöPunk campaign is centred on **Helsinki and its surrounding Finnish /
+Nordic / EU operational environment**. Introduce only a **small number of factions directly
+relevant to play**, prioritising those that employ, command, assist or investigate the PCs;
+are physically or politically active in Helsinki; provide useful Contacts, Reputation or
+Motivations; and are likely allies, rivals, suspects or adversaries in early scenarios.
+
+> **Do not pre-populate the rulebook with a huge global catalogue** merely because the
+> faction model can represent it. Distant governments, corporations, NHI civilizations,
+> cults and movements are added when a scenario, campaign arc or supplement actually needs
+> them.
+
+The default campaign should feel socially dense but legible: a small network of recurring
+factions around Helsinki, with the larger world visible behind them.
+
+### 43.2 The faction types
+
+The taxonomy is **expandable**, not exhaustive. Hybrid and multiply-classified factions
+are normal; the primary type is mainly for rules and navigation, not a rigid ontology.
+
+- **Political** — parties, electoral coalitions, ideological and activist movements,
+  revolutionary or insurgent movements, lobbying blocs, think tanks acting politically.
+  Political factions may be institutional or informal.
+- **Criminal** — street gangs, mafias, cartels, smuggling networks, hacker gangs,
+  black-market organizations, criminal mercenary networks. Hybrid political/criminal
+  factions are allowed.
+- **Civil society and knowledge** — NGOs, universities, research institutes, foundations,
+  professional associations, scientific networks, advocacy organizations, media.
+  "Academic", "research" and "knowledge" are **tags**, not separate top-level types.
+- **Religious and esoteric** — churches, religions, denominations, cults, mystery schools,
+  occult orders, new religious movements, psychic schools. In the NoöPunk setting some
+  groups socially classified as "cults" may have genuine interaction with Noetics or other
+  NHI, while major religions may interpret the same phenomena through very different
+  frameworks.
+- **Corporate** — corporations, conglomerates, startups, cooperatives, corporate
+  alliances, platform companies, private military/security companies, megacorporations.
+  The organizational type does not imply ideology: a cooperative and a megacorp are both
+  corporate factions.
+- **Governmental** — states and their agencies, modelled with a **scale** field rather than
+  separate systems. Suggested scales: **Local** (e.g. Helsinki), **Regional** (e.g.
+  Uusimaa), **Nation-state** (e.g. Finland), **Federal / supranational** (e.g. the EU),
+  **Global / planetary** (e.g. the UN), and **Interplanetary / Solar System** where later
+  relevant. A government agency can be an independent nested faction: Finland is a
+  faction, Suojelupoliisi is a faction inside Finland, the EU is a faction, Europol is a
+  faction inside the EU, the UN is a faction, and **UNSA** is a faction inside the emerging
+  global federal structure (§38). Agencies of the same government keep their own
+  Reputation, conflicts, alliances and internal politics.
+- **NHI** — non-human factions and civilizations (§43.4).
+
+Example classifications:
+
+- Europol = Governmental / Supranational / Law Enforcement / Intelligence;
+- a psychic UFO cult = Religious / Noetic / Transnational / Networked.
+
+### 43.3 The generic faction schema
+
+Every faction — human or NHI — is documented with the same fields:
+
+- **Name**;
+- **Faction type** (one primary, plus tags);
+- **Scale** (for governmental factions, and where useful otherwise);
+- **Territory / domain**;
+- **Members / constituents**;
+- **Ideology** (the US + FRONTIER articulation, `rulebook/8_FACTIONS.md`);
+- **Motivations**;
+- **Reputation** (what the faction is known for, and the directional edges toward actors);
+- **Contacts**;
+- **Allies**;
+- **Enemies**;
+- **Network position**;
+- **Institutional resources**;
+- **Parent faction**;
+- **Subfactions**;
+- **Relevant tags**.
+
+NHI factions carry additional fields: dominant NHI substrate/type (§43.4); civilization /
+species / lineage; polarization or ethical orientation (the separate Law-of-One continuum,
+§9.3); relationship to humanity; and relationship to quarantine and Disclosure. Multiple
+classifications and tags are allowed throughout.
+
+### 43.4 NHI type vs NHI faction
+
+NoöPunk draws a strict distinction between:
+
+- an **NHI type / ontology** — what kind of thing an entity is; and
+- an **NHI faction / political organization** — who it sides with and how it is organized.
+
+> **An NHI's substrate or type does not determine its political allegiance.**
+
+A given type may contain allies, enemies and neutrals at once, exactly as humans do.
+
+The four established core types remain the clearest classes:
+
+- **Biologics** — evolved or engineered living organisms;
+- **Constructs** — artificial/machine intelligences and autonomous manufactured entities;
+- **Plasmoids** — plasma/field-like intelligences with uncertain individuality;
+- **Noetics** — primarily consciousness-based beings.
+
+Useful **extended categories / descriptors** (some are better treated as cross-cutting
+descriptors than as formal classes):
+
+- **Process Intelligences** — intelligence exists primarily as an ongoing process rather
+  than a discrete organism. This is the strongest candidate for an additional formal class.
+- **Ecologies** — an ecosystem is the relevant intelligent entity.
+- **Assemblages** — intelligence emerges from heterogeneous interacting components.
+- **Collectives** — swarm minds, hive minds, civilization-scale or distributed minds.
+- **Geotics** — consciousness or intelligence instantiated in apparently ordinary matter or
+  planetary/stellar structures.
+- **Hybrids / Composite entities** — combinations across substrate classes.
+- **Anomalies / Unclassified** — phenomena whose ontology cannot be established reliably.
+
+NHI factions may take the form of civilizations, polities, coalitions, swarms, hives,
+machine polities, Noetic collectives, expeditions, religious orders, commercial networks,
+dissident movements and other organizational forms.
+
+Example classification (type + descriptors, not allegiance):
+
+| Entity | Classification |
+| --- | --- |
+| Confederacy Garden Mind 7 | Noetic + Process + Collective + Distributed |
+| Orion reconnaissance probe | Construct + Individual + Embodied |
+| Sentient Jovian plasma ecology | Plasmoid + Ecology + Distributed |
+| Earth Noösphere | Noetic + Process + Collective + Planetary |
+| An unresolved anomalous case | ANOMALY / classification disputed |
+
+### 43.5 Characters belong to multiple factions
+
+A character may simultaneously belong to **several factions** for different reasons: the
+faction they **work for**; a faction they **personally support**; a faction based on **where
+they live**; a professional or academic faction; a religion, cult or movement; a gang or
+social network; and a family/clan/community if later modelled as factions.
+
+> Faction membership does **not** require ideological loyalty. A character can belong
+> institutionally to one faction, support another, and dislike a third.
+
+In the default campaign the PC is an agent of **UNSA** (§38) and normally also belongs to at
+least one other faction, such as Suojelupoliisi, Europol, a local political or community
+formation, a research or religious body, or a criminal or NHI-aligned network.
+
+### 43.6 Starting Reputation allocation
+
+During character development the player receives **10 positive Reputation points** to
+divide between **two or three factions**, for example **6 / 4** or **5 / 3 / 2**. The points
+are spent as positive Faction Reputation on the −10…+10 scale (§17).
+
+The **default employer faction (UNSA) receives its membership separately** and does not
+have to be one of the point recipients; the player may still spend points on UNSA
+Reputation if they want standing inside it to matter mechanically. This is the proposed
+rule, recorded here as #144's decision.
+
+**Negative Reputation is not bought from this pool.** It normally emerges from Lifepath
+events, enemies, faction conflicts, traits, campaign events or an explicit character
+concept, as described in the Character Generation chapter.
+
+### 43.7 The default Helsinki faction set
+
+For the default campaign, the factions around the PC should remain few and concrete:
+
+- **UNSA** — the default employer and institutional home (§38);
+- **Suojelupoliisi** — the Finnish security apparatus;
+- **Europol** / the emerging EU federal security structure;
+- **one or two locally relevant factions** — political, scientific, corporate, criminal,
+  religious/esoteric or activist;
+- **scenario-specific NHI or anomalous factions** only when they become relevant.
+
+Do **not** add factions merely to fill categories. Add them because they create
+relationships, choices, conflicts or story hooks in the Helsinki campaign.
