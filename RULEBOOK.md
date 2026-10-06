@@ -425,7 +425,7 @@ Possible outcomes include Noetic entities, anomalous lights/orbs, telepathic con
 
 ---
 
-## 9. Character Generation
+## Character Generation
 
 **Status: NOÖPUNK CORE FRAMEWORK — issue #144.**
 
@@ -438,7 +438,7 @@ Character generation connects background, faction membership, Reputation, Contac
 Motivations, personal history, training, specialist career, STATs, Skills and relevant
 Traits or Statuses.
 
-### 9.1. Default campaign origin
+### Default campaign origin
 
 The default campaign assumes the PC is a human, cyborg or transhuman character otherwise
 allowed by the rules and is recruited into **UNSA, the United Nations Security Agency**.
@@ -450,7 +450,7 @@ competence without making every agent identical.
 
 After basic training, the character selects specialist training.
 
-### 9.2. Specialist academies
+### Specialist academies
 
 **UNSA SWAT Academy**
 - paramilitary and tactical operations
@@ -486,7 +486,7 @@ Additional specialist programs may include Intelligence Analysis, Counterintelli
 HUMINT, Forensics, Investigations, Medical/Trauma, Pilot/Aerospace, Diplomatic/Liaison and
 scientific field-team training.
 
-### 9.3. Lifepath sequence
+### Lifepath sequence
 
 Use the following expandable sequence. Each step may be selected manually or randomized:
 
@@ -515,7 +515,7 @@ Starting Reputation is **10 positive points split between two or three factions*
 The final summary should make the character's important faction memberships, Contacts,
 Motivations, enemies, academy training and current assignment immediately visible.
 
-### 9.4. Alternative campaigns
+### Alternative campaigns
 
 UNSA is a strong default campaign template, not a restriction on NoöPunk. Alternative
 campaigns may center on independent investigators, corporations, gangs, activists,
@@ -529,7 +529,7 @@ fits that campaign.
 
 The material below preserves the previous living rules ledger and world canon so issue #120 does not erase useful work while the new chapter structure becomes the primary navigation layer.
 
-**Interpretation rule:** where this reference material conflicts with Chapters 1–9 or a later explicit author decision, the newer canonical chapter/decision wins. Reference sections should be migrated into the appropriate core chapter as those subsystems are refined.
+**Interpretation rule:** where this reference material conflicts with Chapters 1–8, the Character Generation chapter, or a later explicit author decision, the newer canonical chapter/decision wins. Reference sections should be migrated into the appropriate core chapter as those subsystems are refined.
 
 > **STATUS: LIVING RULEBOOK / INDEPENDENT NOÖPUNK RPG**
 >
@@ -4712,7 +4712,7 @@ membership.
 UNSA is not merely a military, intelligence or secret-police organization. Its civilian
 side includes scientific research, NHI/Noetics/AI/X-Risk programs, diplomatic coordination,
 civil-defence planning, resilience and preparedness, development work, emergency logistics,
-humanitarian relief, reconstruction and post-crisis governance support.
+humanitarian and disaster relief, reconstruction and post-crisis governance support.
 
 A UNSA campaign can therefore involve scientists, diplomats, aid workers, engineers and
 analysts as naturally as investigators or tactical teams.
@@ -4768,7 +4768,7 @@ belong to several other factions and divide starting Reputation among two or thr
 UNSA is the employer and institutional home, not the character's entire identity.
 
 Default PCs complete the UNSA Police Academy and a specialist academy before beginning play;
-see Chapter 9, Character Generation.
+see the Character Generation chapter.
 
 ## 39. Campaign-scoped skills and specialist fields
 
