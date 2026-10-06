@@ -26,7 +26,7 @@ These are families, not a forced master list. Add named factions only when the r
 
 Recurring NoöPunk motivation targets include AI acceleration, AI safety, Critical AI, AI rights, Disclosure, secrecy, human sovereignty, transhumanism, bioconservatism, cyborgification, Noösphere, PSI, NHI cooperation, NHI resistance, nationalism, federalism, commons, corporate power, ecological survival, space expansion, personal survival, family, friendship, loyalty, love, revenge, curiosity, career, discovery, fame, wealth and community.
 
-Each target still needs an Affect label and score. AI acceleration | Supports | +70 and AI acceleration | Opposes | -60 are both valid.
+Each target still needs an Affect label and score. AI acceleration | Supports | +7 and AI acceleration | Opposes | -6 are both valid.
 
 ## Reputation contexts
 
@@ -38,21 +38,22 @@ Start with a small social graph: a few appropriate contacts such as a close frie
 
 Exact starting counts and random tables remain future character-generation design.
 
-## Default Firewall affiliation
+## Default UNSA affiliation
 
-By default, a player character has **two simultaneous affiliations**:
+By default, a player character works for **UNSA — the United Nations Security Agency**.
+UNSA membership is the campaign template's employer affiliation, not the character's only
+social identity. A character can simultaneously belong to political, cultural, national,
+professional, religious, community, criminal, academic or other factions.
 
-1. **Firewall / UNHSS mission identity** — the character is a field agent of the United
-   Nations Human Security and Survival Organization.
-2. **Personal faction identity** — political, cultural, national, professional,
-   ideological, community, or social affiliation.
+During character creation, distribute **10 positive Reputation points** between **two or
+three factions**, for example **6 / 4** or **5 / 3 / 2**. UNSA may receive some of these
+points but does not have to: membership and Reputation are distinct.
 
-Firewall is therefore not a replacement for the faction list. It is the campaign-wide
-operational affiliation layered on top of another faction. Conflicts between the two
-are expected to drive motivations, reputation, contacts, and mission consequences.
+The default Helsinki campaign should use only a few recurring factions that matter in play.
+The institutional spine is **Suojelupoliisi → Europol / EU structures → UNSA**. Additional
+local or NHI factions enter when a scenario needs them rather than to fill a catalogue.
 
-See RULEBOOK.md, “UNHSS / Firewall: default campaign institution,” and issues #108 and
-#107.
+See RULEBOOK.md §38, rulebook/8_FACTIONS.md, and issue #144.
 
 
 ## Major UN Parliament parties
