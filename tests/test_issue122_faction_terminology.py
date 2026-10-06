@@ -193,8 +193,9 @@ class ScaleConflictTests(unittest.TestCase):
         schema = json.loads(
             (ROOT / "data" / "world" / "social_affect_schema.json").read_text(encoding="utf-8")
         )
-        self.assertIn("MIN_AFFECT = -10", affect)
-        self.assertIn("MAX_AFFECT = 10", affect)
+        # Anchored, not substring: "MIN_AFFECT = -10" is a prefix of "-100".
+        self.assertRegex(affect, r"(?m)^MIN_AFFECT = -10$")
+        self.assertRegex(affect, r"(?m)^MAX_AFFECT = 10$")
         self.assertEqual(schema["score_range"], [-10, 10])
 
     def test_no_canonical_artefact_still_stores_the_old_scale(self) -> None:

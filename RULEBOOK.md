@@ -24,7 +24,8 @@
 6. [Social Systems](#6-social-systems)
 7. [Cybernetic Systems](#7-cybernetic-systems)
 8. [Psychic Systems](#8-psychic-systems)
-9. [Extended canon and reference material](#extended-canon-and-reference-material)
+9. [Character Generation](#9-character-generation)
+10. [Extended canon and reference material](#extended-canon-and-reference-material)
 
 ---
 
@@ -406,6 +407,361 @@ Important traditions include **Shamanism** and **Hermeticism**, alongside other 
 CE-5 is treated primarily as a **summoning/contact practice for Noetic beings** rather than a guaranteed spacecraft-calling technique.
 
 Possible outcomes include Noetic entities, anomalous lights/orbs, telepathic contact, plasmoid-like manifestations and, more rarely, unambiguous physical craft.
+
+---
+
+## 9. Character Generation
+
+> **Status: NOÖPUNK CORE — issue #144.** This chapter establishes the character
+> generation procedure and its expandable Lifepath framework. It depends on the locked
+> six base STATs (§3.2), the shared social representation (§6), and the default
+> campaign institution, **UNSA — United Nations Security Agency** (§38, formerly called
+> UNHSS / Firewall).
+
+Character generation turns a concept into a playable sheet. It does three things:
+
+1. it establishes **who the character was** before play — origin, family, education,
+   formative events, political and cultural influences, early faction ties;
+2. it establishes **what the character can do** — STATs, skills, training, specialist
+   career, traits and statuses where relevant;
+3. it establishes **who the character knows and owes** — Contacts, Motivations,
+   Reputation, allies, rivals and enemies.
+
+These are one procedure, not three. A Lifepath decision and a mechanical decision are
+usually the same decision seen from different sides.
+
+### 9.1. Three modes: manual, randomized, or mixed
+
+Every major step in this chapter can be handled in one of three modes:
+
+- **Manual.** The player chooses the outcome directly. Manual play is the default
+  recommendation for players who arrive with a strong character concept.
+- **Randomized.** The player rolls on the step's random table and accepts the result,
+  building the character from what the dice produce.
+- **Mixed.** The player chooses some steps and rolls others. A player may roll origin
+  and family for inspiration, then choose education, faction ties and specialist track
+  deliberately. Steps may also be re-rolled or traded for adjacent results by table
+  agreement.
+
+> **Rule.** Randomization is a prompt, not a straitjacket. A rolled result that the
+> table finds unplayable may be rerolled, or kept as fiction for a different step, by
+> unanimous consent. The point of the dice is to surface material a player would not
+> have chosen, not to force an incoherent character.
+
+The three modes apply uniformly. No step is manual-only or random-only; randomization
+tables for a step are an aid to that step, never a separate procedure.
+
+**Design note.** The random tables named throughout this chapter are an
+**expandable later addition**. Issue #144 deliberately establishes the framework,
+step sequence and interfaces first so the architecture is stable; individual tables are
+written as the surrounding systems settle. A step whose table is not yet written is
+played in manual mode.
+
+### 9.2. Default campaign origin: the UNSA agent
+
+In the **default NoöPunk campaign**, the player character is a **UNSA agent**.
+
+UNSA is the global UN agency created during the NHI Crisis to pool the law-enforcement,
+intelligence, counterintelligence, military and scientific assets of member states for
+the protection of humanity (see §38). In the Helsinki-centred default campaign, the
+character operates from the **Finnish / Nordic / EU environment**, inside the
+operational chain:
+
+**Suojelupoliisi → Europol → UNSA**
+
+The character is therefore, by default:
+
+- human, cyborg or transhuman within the range the rules currently allow;
+- an agent of UNSA, the default X-Risk security faction;
+- trained to a shared baseline before play begins;
+- posted into the global apparatus dealing with X-Risks, NHI, anomalous events,
+  advanced technology, psionics and related crises.
+
+The default origin is a **strong campaign template, not a mechanical restriction**.
+Alternative non-UNSA campaigns remain fully supported; see §9.9.
+
+### 9.3. UNSA Police Academy: the shared baseline
+
+Before specialization, every default-campaign character passes **basic training** at the:
+
+> **UNSA Police Academy**
+
+The academy is conceptually inspired by the FBI Academy, adapted to the post-NHI-Crisis
+global/federal setting. It is where a recruit is made, for the first time in their life,
+into someone who can lawfully investigate an X-Risk rather than merely flee it.
+
+Basic training establishes a **shared baseline of competencies** for all default-campaign
+characters. It is the reason a UNSA team can be assembled from very different specialists
+and still function as a unit: the analyst, the tactical operator and the field scientist
+share a common floor of law-enforcement and counterintelligence practice before any of
+them becomes a specialist.
+
+The baseline covers, in concept:
+
+- law-enforcement practice and procedure;
+- investigative method;
+- counterintelligence discipline and tradecraft;
+- the legal and ethical frameworks binding UNSA action;
+- the shape of the UNSA mission space: NHI, X-Risk, psionics, anomalous technology.
+
+> **Rule.** Basic UNSA Police Academy training is the **default campaign baseline**. Its
+> mechanical expression — the specific skills, ratings and statuses a graduate begins with
+> — is a later design task and is a **placeholder** in this pass. The chapter fixes that
+> the baseline exists and is shared; it does not yet fix its numbers.
+
+Any character who is not a default-campaign UNSA agent (see §9.9) substitutes the
+equivalent baseline of their own campaign's institution or chooses to begin untrained.
+
+### 9.4. Specialist academies
+
+After basic training, the character selects a **specialist training path** at one of the
+UNSA specialist academies. This is the step that turns a generalist graduate into a
+character with a career, a professional identity and a reason to be on the team.
+
+#### 9.4.1. UNSA SWAT Academy
+
+The paramilitary and tactical track.
+
+- paramilitary training;
+- tactical operations;
+- weapons;
+- close protection;
+- high-risk arrests;
+- counterterrorism;
+- X-Risk and NHI tactical response.
+
+A SWAT Academy graduate is the character who is sent in when negotiation, investigation
+or containment has already failed — or when the site is too dangerous to approach any
+other way.
+
+#### 9.4.2. UNSA PSI Academy
+
+The psionic track. It trains both natural and awakened psychic capability and, equally
+important, the discipline to operate alongside it.
+
+- psionics;
+- psychic awareness;
+- remote viewing and Noöspace work, as appropriate;
+- psychic attack and defence;
+- psychotronic countermeasures;
+- the use of psionic assets in investigations and operations.
+
+PSI Academy graduates are the characters who can enter Noöspace, and the characters who
+know how a hostile psionic asset will try to enter theirs.
+
+#### 9.4.3. UNSA TECH Academy
+
+The technical and cybernetic track. Representative specializations:
+
+- cyberspace hacker;
+- infosec specialist;
+- psychotronics engineer;
+- SIGINT analyst;
+- cybernetic systems specialist;
+- AI / LLM systems specialist;
+- communications / network specialist;
+- technical surveillance.
+
+A TECH Academy graduate is often the character who finds the evidence that a SWAT or
+investigative team then acts on, and the one who keeps the team's own systems alive.
+
+#### 9.4.4. UNSA NHI Academy
+
+The academic and scientific track, focused on the phenomena UNSA exists to understand.
+
+- NHI studies;
+- biology;
+- xenology;
+- physics;
+- Noetics;
+- Plasmoids;
+- Constructs;
+- NHI cultures and civilizations;
+- anomalous phenomena;
+- disclosure-era history;
+- X-Risk science.
+
+An NHI Academy graduate is the character who can tell the team whether a phenomenon has
+a precedent, a theory and a containment protocol — or whether it is genuinely new.
+
+#### 9.4.5. Design note
+
+The four academies above are the **minimum set** required by the default campaign. Their
+internal skill lists, entry requirements, duration, and mechanical benefits are all later
+design tasks and are **placeholders** in this pass. The chapter fixes what each academy
+is *for*, so later tables and skill packages have a stable home.
+
+### 9.5. Additional specialist tracks
+
+The four academies in §9.4 are a starting set, not a closed list. The framework leaves
+room for further UNSA academies and programs, to be added when a campaign or scenario
+needs them, including at least:
+
+- Intelligence Analysis;
+- Counterintelligence;
+- HUMINT;
+- Forensics;
+- Investigations;
+- Medical / trauma;
+- Pilot / aerospace;
+- Diplomatic / liaison;
+- Scientific field teams;
+- further specialties added later.
+
+> **Rule.** A new specialist track is defined by the same shape as the four core
+> academies: a name, a purpose, a focus list, and (later) an associated skill package.
+> Tracks are added because play needs them, not because a category exists.
+
+### 9.6. The Lifepath framework
+
+Character generation follows a **Lifepath**: an ordered sequence of steps that walk a
+concept from birth to first day on assignment. Every step supports the three modes of
+§9.1 — manual, randomized, or mixed — and every step feeds the character sheet.
+
+The framework is designed to support the following sequence. Each entry names the step
+and states what it sets.
+
+| # | Lifepath step | What it sets |
+| ---: | --- | --- |
+| 1 | **Origin / place of birth** | Where the character is from; first cultural and linguistic anchor; possible faction seed. |
+| 2 | **Family and social background** | Class, community, formative loyalties and grievances; earliest Contacts and rivalries. |
+| 3 | **Education** | Learned competence and status before UNSA; possible academic or professional faction tie. |
+| 4 | **Important childhood / youth events** | Defining memories; traits, fears, drives; sometimes a first enemy. |
+| 5 | **Political / religious / cultural influences** | Ideological formation; seeds for Motivations and faction alignment. |
+| 6 | **Early faction ties** | First memberships and sympathies, before UNSA; candidates for starting Reputation. |
+| 7 | **Motivations** | What the character desires, supports or opposes, on the -10..+10 scale (§6.8). |
+| 8 | **Friends, allies and Contacts** | The starting social graph: personal relationships with signed scores (§6.5). |
+| 9 | **Rivals and enemies** | Antagonists and negative edges; a source of negative Reputation. |
+| 10 | **Romance / significant relationships** | Intimate ties where appropriate (§6.4); allies, complications and emotional stakes. |
+| 11 | **Major life events / crises** | The turning points that explain why the character joined; often traits and Reputation shifts. |
+| 12 | **Recruitment into UNSA** | How and why the character entered UNSA, or, in an alternative campaign, another faction (§9.9). |
+| 13 | **UNSA Police Academy basic training** | The shared baseline of §9.3. |
+| 14 | **Specialist academy** | The specialist career and professional identity of §9.4-9.5. |
+| 15 | **Starting assignment** | The posting that opens play; the campaign's hook into the character. |
+| 16 | **Starting Reputation allocation** | The positive Reputation pool split across factions (§9.7). |
+| 17 | **Starting equipment / resources** | Gear, access and resources appropriate to the assignment. |
+| 18 | **Final character summary** | A one-page statement of who the character is, ready to play. |
+
+The sequence is a **framework**, and it is deliberately expandable. Steps may be
+reordered where a character concept demands it, compressed where a table agrees, or
+expanded with scenario-specific sub-steps. What must not happen is for a later
+contributor to treat the numbered list as a fixed chronology of *world history* — it is
+the order in which a single character's life is built, not a claim about the setting's
+timeline.
+
+**Design note.** As with §9.1, the random tables for these eighteen steps are an
+expandable later addition. Issue #144 defines the framework and the data each step must
+produce; it does not yet write the tables. Steps without a table are played manually.
+
+### 9.7. Starting Reputation allocation
+
+At step 16, the player receives a pool of:
+
+> **10 positive Reputation points** to divide between **two or three factions**.
+
+Reputation uses the signed **-10 to +10** scale defined in §6.7. The example splits
+below are illustrative of the intended texture:
+
+| Split | Example reading |
+| --- | --- |
+| **6 / 4** | Strong standing with a primary faction and solid standing with a secondary one. |
+| **5 / 3 / 2** | Broader but shallower ties across three factions. |
+
+The player chooses which factions receive the points, subject to the campaign's small,
+Helsinki-relevant faction set (§38). The allocation is a statement of *who the character
+is known to* and *who trusts them* at the start of play.
+
+> **Rule — negative Reputation is earned, not spent.** The ten-point pool is
+> **positive**. Negative Reputation normally emerges from Lifepath events, enemies,
+> faction conflicts, traits, and campaign events, rather than being bought from the
+> starting pool. A player who wants a character with a hostile history builds it through
+> steps 4, 9, 11 and 12, not by deducting from the ten positive points.
+
+> **Proposed rule — UNSA membership is granted separately.** In the default campaign,
+> UNSA is the character's employer and institutional home. UNSA membership should
+> therefore be **granted by the campaign template, not paid for from the ten-point
+> pool**. The player allocates all ten points among *other* factions — for example a
+> national or EU security structure, a scientific or academic body, a political or
+> activist formation, a community, a corporation, a religious or esoteric group, or a
+> locally relevant faction — and UNSA loyalty is then layered on top. This preserves the
+> dual personal-and-mission identity that the default campaign is built around (§38) and
+> keeps the employer from crowding out the character's other ties. **This rule is
+> presented here as the rule proposed by issue #144; the alternative — requiring some
+> points to be spent on UNSA — remains open if later playtesting shows the granted-
+> membership version is too generous.**
+
+### 9.8. What character generation produces
+
+A completed Lifepath yields a character sheet that links every generated fact to a
+mechanical quantity. The links are:
+
+- **Background and personal history** — the narrative record built in steps 1-12,
+  providing the fiction behind every number that follows.
+- **Faction membership** — one or more factions the character belongs to, institutionally
+  or personally. A character may belong to several at once (§6.6).
+- **Reputation** — signed **-10..+10** standing with each relevant faction (§6.7),
+  including the ten-point positive allocation of §9.7.
+- **Contacts** — the starting social graph: personal relationships, each with a signed
+  **-10..+10** score and optional Affect (§6.5).
+- **Motivations** — what the character desires, supports or opposes, on the same
+  **-10..+10** scale, each with an optional Affect such as *Dreams of*, *Supports*,
+  *Desires*, *Opposed to* or *Hates* (§6.8).
+- **Training and specialist career** — the academies completed (§9.3-9.5) and the
+  resulting professional identity.
+- **STATs** — the six base STATs **FIT / REF / INT / SOC / CYB / PSY**, on the **1-10**
+  scale locked in §3.2.
+- **Skills** — trained competence on the **1-10** scale (§4).
+- **Traits and statuses** where relevant — persistent characteristics and standing
+  conditions that a Lifepath step produces.
+
+> **Rule — placeholders.** Two mechanical questions are explicitly **deferred** and must
+> not be invented during character generation. (1) **How STAT values are assigned at
+> generation** — the point-buy, array, or random method that produces six 1-10 ratings —
+> is a later design task. (2) **The final universal skill list**, the number of starting
+> skills, their levels, and their STAT bindings are deferred by §4 and must not be fixed
+> here. Starting equipment and resources (step 17) are likewise a **placeholder** pending
+> an equipment and economy pass.
+
+### 9.9. Default campaign framing and alternatives
+
+The **default NoöPunk campaign** assumes a specific shape. It is stated here so that
+later chapters, scenarios and supplements can rely on it:
+
+- the player character is human, cyborg or transhuman within the range the rules
+  currently allow;
+- the player character is an agent of **UNSA**, the default X-Risk security faction;
+- the character has completed baseline law-enforcement and counterintelligence training
+  at the UNSA Police Academy (§9.3);
+- the character has then completed a specialist academy (§9.4);
+- the character begins play as part of the global apparatus dealing with X-Risks, NHI,
+  anomalous events, advanced technology, psionics and related crises;
+- the character operates from the **Helsinki / Finnish / Nordic / EU** environment,
+  inside the **Suojelupoliisi → Europol → UNSA** chain, alongside a small, concrete set
+  of recurring factions (§38).
+
+> **Rule — the default is a template, not a cage.** Nothing in the default campaign
+> framing restricts the system. Character generation is designed so that the same
+> Lifepath, the same Reputation allocation, and the same social systems serve campaigns
+> that have nothing to do with UNSA.
+
+**Alternative non-UNSA campaigns remain possible**, including at least:
+
+- independent investigators;
+- corporate campaigns;
+- gang campaigns;
+- political activist campaigns;
+- university and research campaigns;
+- religious and esoteric campaigns;
+- NHI-aligned campaigns;
+- campaigns built on other factions entirely.
+
+In an alternative campaign, step 12 ("recruitment") substitutes the character's entry
+into whatever faction or formation anchors that campaign, step 13's UNSA baseline is
+replaced by the campaign's own baseline (or by none), and step 14's specialist academy is
+replaced by the campaign's equivalent training path. The rest of the framework — origin,
+family, education, youth events, influences, faction ties, Motivations, Contacts, rivals,
+relationships, crises, assignment, Reputation allocation, equipment and summary — applies
+unchanged. **UNSA is the default employer, not a mandatory one.**
 
 ---
 
@@ -1149,7 +1505,7 @@ This does not mean every magical claim is true in-setting. Traditions may contai
 
 NoöPunk uses **one Affect graph** for Factions, Motivations, Reputation and Contacts. The detailed specification is [rulebook/4_SOCIAL.md](rulebook/4_SOCIAL.md); the engine-neutral representation is [src/simulation/affect.py](src/simulation/affect.py). The canonical **terminology** for the faction system — Contacts, Motivations, Faction Reputation, US / FRONTIER and the graph layers — is [rulebook/8_FACTIONS.md](rulebook/8_FACTIONS.md).
 
-Every relation has a Target, semantic Affect label, and Affect Score from **-10 to +10** (issue #144 normalised the social scale). Labels such as Knows, Trusts, Supports, Loves, Fears, Distrusts, Hates and Opposes are not collapsed into generic sentiment. Multiple labelled relations toward one target are allowed, all relations are directional, and an absent edge means unknown rather than neutral.
+Every relation has a Target, semantic Affect label, and Affect Score from **-10 to +10** (issue #144 normalised the social scale). The faction taxonomy, the generic faction schema, multi-faction membership and the starting-Reputation procedure are in §43. Labels such as Knows, Trusts, Supports, Loves, Fears, Distrusts, Hates and Opposes are not collapsed into generic sentiment. Multiple labelled relations toward one target are allowed, all relations are directional, and an absent edge means unknown rather than neutral.
 
 Factions are changing discursive formations represented as US^(positive/constitutive Affects) + FRONTIER^(negative/antagonistic Affects). This adapts Emilia Palonen's Formula of Populism as a general model of political/social identification, not a populism classifier. US and FRONTIER may articulate demands, signifiers, identities, factions, institutions, technologies and individuals.
 
