@@ -178,7 +178,7 @@ as political actors. Political factions may be institutional or informal.
 Street gangs, mafias, cartels, smuggling networks, hacker gangs, black-market organizations,
 and criminal mercenary networks. Hybrid political/criminal factions are allowed.
 
-### 3. Civil society and knowledge
+### 3. Civil Society and Knowledge
 
 NGOs, universities, research institutes, foundations, professional associations, scientific
 networks, advocacy organizations, and media organizations. `academic`, `research` and
@@ -306,7 +306,7 @@ tracked per faction and per actor, so these coexist without contradiction.
 ## Starting Reputation allocation
 
 During character generation the player receives **10 positive Reputation points** to divide
-between **two or three factions**, for example **6 / 4** or **5 / 3 / 2**.
+between **two or three factions**, for example **6/4** or **5/3/2**.
 
 Employer membership is **granted separately** by the campaign template rather than bought
 from this pool: in the default campaign the character is a UNSA agent by default (§38) and
