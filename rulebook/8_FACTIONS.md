@@ -111,24 +111,51 @@ The faction system projects into these graph layers:
 These project into actor-to-actor, faction-to-faction or mixed multilayer networks for
 analysis and visualization.
 
-## Open question: the score scale
+## Canonical score scale
 
-**Issue #122 specifies scores on a −10…+10 scale**, with `+10` as the strongest positive
-relation and `−10` as the strongest negative. The examples in that issue use that range
-throughout (`+8 Loves`, `−9 Hates: Orion infiltration`).
+**Issue #144 resolves the earlier scale conflict.** Contacts, Motivations, Faction
+Reputation and other Affect edges use the canonical **−10…+10** score range.
 
-**The live issue #107 implementation uses −100…+100** — `MIN_AFFECT`/`MAX_AFFECT` in
-`src/simulation/affect.py`, the `score_range` in `data/world/social_affect_schema.json`,
-and the "integer from −100 to +100" wording in `rulebook/4_SOCIAL.md`.
+- **+10** = strongest positive relation, love, absolute loyalty or iconic standing
+- positive = Likes / trusts / supports unless a more specific Affect is recorded
+- **0** = explicitly neutral
+- negative = Dislikes / distrusts / opposes unless a more specific Affect is recorded
+- **−10** = strongest negative relation, hate, mortal-enemy or irreconcilable hostility
 
-Both are author-specified, and they are not the same scale. This is recorded here rather
-than silently reconciled:
+An absent edge still means **unknown**, not neutral.
 
-* every rule in this section is expressed in **relative** terms, so it holds on either scale;
-* **which scale is canonical is the author's decision**, and until it is made, no test,
-  example or data file should assume both are interchangeable;
-* a 10× rescale is not cosmetic — it changes every stored score, the schema bounds and the
-  validation in `affect.py`, so it should land as one deliberate change across all three.
+The engine model and JSON schema must use the same −10…+10 bounds.
+
+## Faction taxonomy and campaign scope
+
+Faction is the umbrella gameplay concept. Useful top-level types include **Political,
+Criminal, Civil Society / Knowledge, Religious / Esoteric, Corporate, Governmental, and
+NHI Factions / Civilizations**. These are navigation and rules categories, not rigid
+ontologies; tags and multiple classifications are allowed.
+
+Governmental factions use a scale such as local, regional, nation-state, federal /
+supranational, global / planetary, or later interplanetary. Agencies may be nested
+factions with their own Reputation and internal politics.
+
+For NHI, keep **ontology/type separate from political faction**. Core types include
+Biologics, Constructs, Plasmoids and Noetics. Process Intelligence, Ecology, Assemblage,
+Collective, Geotic, Hybrid/Composite and Anomaly/Unclassified may be descriptors or
+extended categories as appropriate.
+
+The default campaign is **Helsinki-centered**. The taxonomy may represent a huge world,
+but the campaign should introduce only a few factions that create actual relationships,
+choices, conflicts or story hooks around Helsinki.
+
+## Multiple memberships and starting Reputation
+
+A character may belong to several factions simultaneously for different reasons:
+employment, politics, residence/community, profession, religion/esotericism, gang/network
+or family/clan/community.
+
+During character generation, allocate **10 positive Reputation points** between **two or
+three factions**, such as **6/4** or **5/3/2**. Negative Reputation normally comes from
+Lifepath events, enemies, faction conflict, campaign events or an explicit concept.
+
 
 ## Questions this section does not settle
 

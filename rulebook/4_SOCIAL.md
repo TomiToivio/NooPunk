@@ -6,9 +6,9 @@ NoöPunk uses one representation for Factions, Motivations, Reputation and Conta
 
 Target | Affect | Affect Score
 
-Affect is the semantic relation, for example Knows, Likes, Trusts, Supports, Identifies With, Loves, Protects, Pursues, Fears, Distrusts, Hates, or Opposes. Affect Score is an integer from -100 to +100. Positive means positive investment, negative means negative investment, and zero is an explicit neutral relation. No edge means unknown. Unknown is therefore not the same as a stored zero.
+Affect is the semantic relation, for example Knows, Likes, Trusts, Supports, Identifies With, Loves, Protects, Pursues, Fears, Distrusts, Hates, or Opposes. Affect Score is an integer from -10 to +10. Positive means positive investment, negative means negative investment, and zero is an explicit neutral relation. No edge means unknown. Unknown is therefore not the same as a stored zero.
 
-The label and score both matter. Fears -70, Hates -70 and Opposes -70 have similar polarity but different meaning. Multiple labelled edges may connect the same source and target, so a character can support and fear AGI at the same time. All edges are directional.
+The label and score both matter. Fears -7, Hates -7 and Opposes -7 have similar polarity but different meaning. Multiple labelled edges may connect the same source and target, so a character can support and fear AGI at the same time. All edges are directional.
 
 ## General edge
 
@@ -38,7 +38,7 @@ Thus Support AGI and Fear AGI remain two edges rather than being averaged into a
 
 ## Reputation
 
-Reputation is a directional Affect edge from a faction or social actor to a character. It is not the character's opinion of that faction. Character -> faction Likes +70 and faction -> character Distrusts -30 may coexist. NoöPunk does not preserve the EP2 reputation-network list wholesale; reputation contexts emerge from NoöPunk factions and institutions.
+Reputation is a directional Affect edge from a faction or social actor to a character. It is not the character's opinion of that faction. Character -> faction Likes +7 and faction -> character Distrusts -3 may coexist. NoöPunk does not preserve the EP2 reputation-network list wholesale; reputation contexts emerge from NoöPunk factions and institutions.
 
 ## Contacts
 
@@ -66,23 +66,29 @@ Affects are mutable state. Missions, betrayal, rescue, propaganda, ideological c
 
 See FACTIONS.md for the NoöPunk starter content library and docs/design/GAMEPLAY_LOOP.md for the text-RPG architecture.
 
-## UNHSS / Firewall campaign frame
+## UNSA campaign frame
 
-The default NoöPunk campaign is organized around the **United Nations Human Security
-and Survival Organization (UNHSS)**. Player characters are Firewall field agents
-inside UNHSS and simultaneously belong to another political, cultural, national,
-professional, ideological, or social faction.
+The default NoöPunk campaign is centered on **Helsinki** and organized around the
+**United Nations Security Agency (UNSA)**. The PC works for UNSA while potentially
+belonging to several other political, cultural, national, professional, ideological,
+religious, community or social factions.
 
-Firewall is the classified operational culture and intelligence network within UNHSS,
-not a separate extra-governmental conspiracy. UNHSS combines civilian science and
-diplomacy, international law enforcement and intelligence, civil defence and disaster
-relief, and UN Peacekeeper rapid-response military capabilities.
+UNSA pools member-state law-enforcement, intelligence, counterintelligence, military,
+scientific and technical assets for NHI and other X-Risk response. In Helsinki, the
+practical institutional chain is **Suojelupoliisi → Europol → UNSA**.
 
-The United Nations is becoming a contested federal world government with universal
-Earth-state membership, possible off-world member states, a UN President, Prime
-Minister and Parliament, and four-year global elections. UNHSS is a major engine of
-that federalization.
+UNSA also has a major civilian side: science, diplomacy, civil defence, development,
+humanitarian response, disaster relief and reconstruction. It is a major engine of the
+UN's evolution toward a federal world government.
 
-For the full organization, jurisdiction, forces, democratic safeguards, Wallfacers,
-mission structure, and political tensions, see RULEBOOK.md § “UNHSS / Firewall:
-default campaign institution” and issue #108.
+The default campaign should expose only a **small number of factions relevant to
+Helsinki-area play**. Add distant or global factions when a scenario actually makes them
+matter.
+
+Disclosure drives two contradictory processes at once: ontological shock, fragmentation,
+cult formation, xenophobic/doomer backlash and PSI-enabled hybrid infiltration on one
+side; global unification and planetary institutions on the other. Both are canonical.
+
+Character creation grants **10 positive Faction Reputation points** divided between **two
+or three factions** (for example **6/4** or **5/3/2**). See RULEBOOK.md Chapter 9 and
+rulebook/8_FACTIONS.md.

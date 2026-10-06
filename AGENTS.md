@@ -68,7 +68,7 @@ Intelligence (INT), Social (SOC), Cybernetics (CYB) and Psyche (PSY)** — on th
 scale (issue #111). The charisma/empathy/presence distinctions belong to the Social Systems
 layer, and psychic detail to the Psychic Systems layer; cybernetic hardware properties
 (processing, bandwidth, storage, hardening, etc.) are statistics of decks, implants, devices
-and agents, not character STATs. The generation procedure remains unlocked. `src/rules/tags.py`
+and agents, not character STATs. The general STAT/Skill generation procedure remains unlocked; issue #144 defines the Lifepath framework, UNSA training structure and starting Faction Reputation allocation. `src/rules/tags.py`
 remains a non-canonical prototype. The older FIT / REF / INT / CHA / CYB / PSY sketch and its
 3d6 generator remain in the digital runtime only as documented porting debt.
 
@@ -78,7 +78,7 @@ list; the universal Skill list remains explicitly deferred.
 
 Issue #110 defines campaign-scoped specialist content under that newer direction. Its provisional skill vocabulary and fields may be documented and represented as data, but agents must not treat Eclipse Phase linked aptitudes, percentile values, or other EP2 numerical mechanics as current NoöPunk rules.
 
-For the initial Asteroid Belt / UNHSS campaign, only expose specialist fields that actual play needs. The machine-readable profile is `data/rules/campaign_skill_fields.json`; scenario-specific additions should extend the profile instead of creating giant universal catalogs.
+For the default Helsinki / UNSA campaign, only expose specialist fields that actual play needs. The machine-readable profile is `data/rules/campaign_skill_fields.json`; scenario-specific additions should extend the profile instead of creating giant universal catalogs.
 
 The earlier issue #17 BCI / Compute / Connection / Infosec cyberspace modifier framework is **withdrawn from active canon**. Do not port it. Hacking / cyberspace is DEFERRED until the author defines an original NoöPunk subsystem.
 
@@ -89,7 +89,7 @@ Until explicitly specified, do not define:
 - new specialist fields beyond those explicitly enabled by a campaign profile or character/scenario requirement
 - how many skills a starting character has, or at what levels
 - final skill-to-STAT bindings
-- character creation
+- character creation beyond the Lifepath framework and Reputation allocation explicitly specified by issue #144
 - character classes or archetypes
 - combat resolution
 - damage, health, wounds, armor, or initiative
@@ -99,7 +99,7 @@ Until explicitly specified, do not define:
 - equipment statistics
 - economy
 - advancement / XP
-- factions
+- factions beyond the taxonomy and Helsinki-scoped campaign rules explicitly specified by issues #107, #122 and #144
 - professions
 - detailed geography
 - quests or canonical plot

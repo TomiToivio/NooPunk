@@ -1,6 +1,53 @@
-{"schema_version":1,"issue":107,"score_range":[-100,100],
-"domains":["faction_us","faction_frontier","motivation","reputation","contact"],
-"node_types":["character","faction","institution","nationality","species","ideology","demand","signifier","technology","place","concept"],
-"affect_examples":["Knows","Likes","Trusts","Supports","Identifies With","Loves","Protects","Pursues","Fears","Distrusts","Hates","Opposes"],
-"rules":{"unknown_is_absent_edge":true,"explicit_neutral_score":0,"directional":true,"multiple_labels_per_target":true,
-"faction_inheritance":{"same_target_same_label":"arithmetic_mean_toward_zero","different_labels":"retain_as_ambivalence","personal_matching_edge":"override"}}}
+{
+  "schema_version": 1,
+  "issue": 144,
+  "score_range": [
+    -10,
+    10
+  ],
+  "domains": [
+    "faction_us",
+    "faction_frontier",
+    "motivation",
+    "reputation",
+    "contact"
+  ],
+  "node_types": [
+    "character",
+    "faction",
+    "institution",
+    "nationality",
+    "species",
+    "ideology",
+    "demand",
+    "signifier",
+    "technology",
+    "place",
+    "concept"
+  ],
+  "affect_examples": [
+    "Knows",
+    "Likes",
+    "Trusts",
+    "Supports",
+    "Identifies With",
+    "Loves",
+    "Protects",
+    "Pursues",
+    "Fears",
+    "Distrusts",
+    "Hates",
+    "Opposes"
+  ],
+  "rules": {
+    "unknown_is_absent_edge": true,
+    "explicit_neutral_score": 0,
+    "directional": true,
+    "multiple_labels_per_target": true,
+    "faction_inheritance": {
+      "same_target_same_label": "arithmetic_mean_toward_zero",
+      "different_labels": "retain_as_ambivalence",
+      "personal_matching_edge": "override"
+    }
+  }
+}

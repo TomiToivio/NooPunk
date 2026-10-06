@@ -274,15 +274,15 @@ class CanonAnchorTests(unittest.TestCase):
         self.assertIn("### 5.3. Ghost Rockets, 1946", text)
 
     def test_three_institutional_anchors_are_cited(self) -> None:
-        for anchor in ("Suojelupoliisi", "Europol", "UNHSS"):
+        for anchor in ("Suojelupoliisi", "Europol", "UNSA"):
             with self.subTest(anchor=anchor):
                 self.assertIn(anchor, scenario())
 
-    def test_the_unhss_anchor_is_connected_to_the_rulebook(self) -> None:
+    def test_the_unsa_anchor_is_connected_to_the_rulebook(self) -> None:
         """The scenario names the UN Security Agency; it must tie that to the canonical
-        UNHSS / Firewall institution (§38) rather than leaving a floating organisation."""
+        UNSA institution (§38) rather than leaving a floating organisation."""
         text = scenario_norm()
-        self.assertIn("unhss / firewall", text)
+        self.assertIn("unsa", text)
         self.assertIn("rulebook.md §38", text)
 
     def test_the_canon_anchors_are_traceable_to_the_rulebook(self) -> None:
