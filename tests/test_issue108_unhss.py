@@ -1,4 +1,4 @@
-"""Acceptance guard for issue #108: UNHSS / Firewall campaign canon."""
+"""Compatibility guard: issue #144 supersedes issue #108 UNHSS / Firewall naming."""
 from pathlib import Path
 import unittest
 
@@ -8,43 +8,29 @@ FACTIONS = (ROOT / "FACTIONS.md").read_text(encoding="utf-8")
 ORG = (ROOT / "data" / "world" / "organizations.yaml").read_text(encoding="utf-8")
 
 
-class Issue108UNHSSTests(unittest.TestCase):
-    def test_name_and_aliases(self):
+class Issue108SupersededBy144Tests(unittest.TestCase):
+    def test_unsa_is_the_canonical_successor(self):
+        self.assertIn("United Nations Security Agency (UNSA)", BOOK)
+        self.assertIn("supersedes the UNHSS / Firewall naming", BOOK)
+        self.assertIn("## Default Helsinki / UNSA affiliation", FACTIONS)
+
+    def test_default_pc_is_unsa_agent(self):
+        self.assertIn("belongs to and works for UNSA", BOOK)
+        self.assertIn("default: UNSA agent", ORG)
+        self.assertIn("multi_faction_membership: true", ORG)
+
+    def test_unsa_keeps_the_broad_human_security_mission(self):
         for phrase in (
-            "United Nations Human Security and Survival Organization",
-            "United Nations X-Risk and NHI Organization",
-            "X-Com", "X-Cops", "Firewall",
+            "law-enforcement", "intelligence", "counterintelligence",
+            "scientific research", "civil-defence", "disaster relief",
+            "planetary defence", "Wallfacer",
         ):
-            self.assertIn(phrase, BOOK)
+            self.assertIn(phrase.lower(), BOOK.lower())
 
-    def test_default_pc_dual_affiliation(self):
-        self.assertIn("Player characters are covert Firewall field agents", BOOK)
-        self.assertIn("personal faction identity + Firewall", BOOK)
-        self.assertIn("Default Firewall affiliation", FACTIONS)
-
-    def test_three_function_hybrid_and_forces(self):
-        for phrase in (
-            "Civilian / scientific / diplomatic branch",
-            "UNHSS Police / Firewall",
-            "Tactical / military component",
-            "Earth Special Operations Regiment",
-            "Solar-System Space Marine Regiment",
-            "strike fleet",
-            "deep-space scouts",
-        ):
-            self.assertIn(phrase, BOOK)
-
-    def test_federal_un_and_wallfacers(self):
-        for phrase in (
-            "UN President", "UN Prime Minister", "UN Parliament",
-            "four years", "four Wallfacers",
-            "Minister of Human Security and Survival",
-        ):
-            self.assertIn(phrase, BOOK)
-
-    def test_machine_readable_model(self):
-        for phrase in ("canonical_name:", "wallfacers: 4", "dual_affiliation: true"):
-            self.assertIn(phrase, ORG)
+    def test_machine_readable_model_uses_unsa(self):
+        self.assertIn("UNSA:", ORG)
+        self.assertIn("canonical_name: United Nations Security Agency", ORG)
+        self.assertNotIn("\nUNHSS:", ORG)
 
 
 if __name__ == "__main__":
