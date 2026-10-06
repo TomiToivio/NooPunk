@@ -602,6 +602,12 @@ Additional programs may cover intelligence analysis, counterintelligence, HUMINT
 forensics, investigations, medicine/trauma, piloting/aerospace, diplomacy/liaison and
 scientific field work when the campaign needs them.
 
+The **universal training every graduate shares**, with its starting Skill levels, the
+standard augmentation packages, the augmented-vision modes and the rookie equipment kit,
+are specified in [docs/design/UNSA_ACADEMY.md](docs/design/UNSA_ACADEMY.md) (issue #158).
+That document is a design specification, not a hard-canon addition: it works entirely
+inside the canonical Skill list of §4 and adds no new Skills or STATs.
+
 Alternative campaigns may use independent investigators, corporations, gangs, political
 movements, universities, religious/esoteric groups, NHI-aligned groups or other employers.
 UNSA is the strong default template, not a restriction on the system.
