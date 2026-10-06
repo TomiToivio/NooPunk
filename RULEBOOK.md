@@ -39,6 +39,20 @@ The Cyberpunk side covers AI, ubiquitous computation, networks, surveillance, co
 
 NoöPunk is deliberately an independent rules system. External RPGs are sources of design ideas, not compatibility targets. The rulebook is the rules ledger: deterministic code should implement the rules written here, while LLMs may interpret intent, converse, negotiate and narrate.
 
+#### Intellectual lineage: the NoöPunk "patron saints"
+
+A playful shorthand for one major futurist / Noöspheric lineage is:
+
+> **Pierre Teilhard de Chardin → Ben Goertzel → Ray Kurzweil**
+
+This is not religious canon and does not imply agreement with every claim by any of them. It identifies three useful conceptual poles: **Teilhard** for the Noösphere and evolutionary convergence; **Goertzel** for Cosmism, AGI, patternist minds, Global Brain / mindplex ideas, posthuman transformation and radical openness about future intelligence; and **Kurzweil** for accelerating technological change, the Singularity and human-machine merger.
+
+In that deliberately playful sense, **Ben Goertzel is the patron saint of NoöPunk Cosmism**, sitting between Teilhard's Noösphere and Kurzweil's Singularity.
+
+Cosmism is a major bridge across NoöPunk's **Noösphere, cyberpunk/transhumanist, AGI, posthuman and cosmic/NHI** sides. Goertzel's practical emphasis on exploring the **inner, outer and social cosmos**, and on **joy, growth and freedom/choice**, is an explicit source and design lens. It is not the official ideology of the setting. Factions and characters may embrace, revise or reject it, and disputed claims from Cosmist or consciousness literature do not become real-world scientific facts merely by being cited here.
+
+The detailed source-and-setting audit, including Goertzel's work on PSI/consciousness, Neuropunk and Intelligence Augmentation, is maintained in [docs/design/COSMISM_NEUROPUNK_IA_AUDIT.md](docs/design/COSMISM_NEUROPUNK_IA_AUDIT.md).
+
 #### Genre mix
 
 NoöPunk is a deliberate mix of several science-fiction traditions rather than a member of one subgenre. Its two most immediately recognizable foundations are **cyberpunk** — AI, cyberspace, surveillance, corporations, augmentation, hacking and social inequality — and **post-apocalyptic / post-holocaust SF**, a world reshaped by overlapping technological, geopolitical and NHI crises.
@@ -4574,6 +4588,19 @@ synthesis.
   https://doi.org/10.1093/analys/58.1.7
 - **Benjamin H. Bratton.** *The Stack: On Software and Sovereignty*. MIT Press, 2015/2016.
 
+#### Cosmism, AGI, patternism, Global Brain, and mindplexes
+
+- **Ben Goertzel.** *A Cosmist Manifesto: Practical Philosophy for the Posthuman Age*. Humanity+ Press, 2010. Major source for NoöPunk's constructive posthuman/cosmic horizon: joy, growth and freedom/choice; patternism; panpsychism and Universal Mind; AGI; uploading; BCI; human-AI merging; Global Brains and mindplexes; synthetic realities; nanotechnology; post-scarcity; alien and potentially extradimensional minds; PSI; meditation; psychedelics; post-religion; and "building gods."
+- **Ben Goertzel.** "Glocality of Self and Memory as a Possible Foundation for Understanding Psi" (2008), https://www.goertzel.org/dynapsyc/2008/glocal_psi.pdf. A speculative glocal model of self/memory offered as a conceptual framework for precognition, telepathy and remote viewing; useful as an in-setting precursor/competing theory, not real-world confirmation of PSI.
+- **Ben Goertzel.** "Patterns of Awareness: A Pattern-Theoretic, Panpsychist Solution to the Hard Problem of Consciousness" (2004), https://www.goertzel.org/dynapsyc/2004/HardProblem.htm. Source for patternist/panpsychist approaches to awareness and selfhood.
+- **Ben Goertzel.** "Chance and Consciousness" (1995/1996), https://www.goertzel.org/dynapsyc/1995/GOERTZEL.html. Speculative source connecting consciousness, spontaneity/randomness, altered states and creativity.
+- **Ben Goertzel.** "Evolutionary Quantum Computation: Its Role in the Brain, Its Realization in Electronic Hardware, and Its Implications for the Panpsychic Theory of Consciousness" (1997), https://www.goertzel.org/dynapsyc/1997/Qc.html. Speculative precursor for quantum-noetic computation and "systemic consciousness."
+- **Ben Goertzel.** "Mindplexes: The Potential Emergence of Multiple Levels of Focused Consciousness in Communities of AIs and Humans" (2003), https://www.goertzel.org/dynapsyc/2003/mindplex.htm. Direct inspiration for nested collective persons, human-AI collectives and possible Noöspheric higher-order minds.
+- **Ben Goertzel.** "The WorldWideBrain: Using the WorldWideWeb to Implement Globally Distributed Cognition" (1996), https://www.goertzel.org/papers/wwb.html. Early source for the cybernetic Global Brain lineage.
+- **Ben Goertzel.** "Toward a Formal Model of Cognitive Synergy" (2017), https://arxiv.org/abs/1703.04361. Inspiration for intelligence emerging from complementary cognitive processes rather than raw compute alone.
+- **Ben Goertzel.** "The General Theory of General Intelligence: A Pragmatic Patternist Perspective" (2021), https://arxiv.org/abs/2103.15100. Patternist AGI, metagraph knowledge representation, cognitive synergy, machine consciousness and machine ethics.
+- **Ben Goertzel, Ted Goertzel & Zarathustra Goertzel.** "The global brain and the emerging economy of abundance: Mutualism, open collaboration, exchange networks and the automated commons." *Technological Forecasting and Social Change* 114 (2017), 65–73. Source for the Global Brain / commons / abundance side of NoöPunk's post-scarcity-versus-cyberpunk-inequality tension.
+
 #### Quantum information, consciousness, and quantum social theory
 
 - **Seth Lloyd.** *Programming the Universe: A Quantum Computer Scientist Takes on the
@@ -4637,6 +4664,10 @@ synthesis.
 - **Ray Kurzweil.** *The Singularity Is Nearer*. Viking, 2024.
 - **Benjamin H. Bratton.** *The Stack: On Software and Sovereignty*. MIT Press, 2015/2016.
 - **Donna Haraway.** “A Cyborg Manifesto,” 1985/1991.
+- **Max Talanov et al.** "Neuropunk Revolution. Hacking Cognitive Systems towards Cyborgs 3.0." arXiv:2205.06538, 2022, https://arxiv.org/abs/2205.06538. Source for closed-loop biological/cybernetic integration, real-time neurosimulation as middleware, BCI/neurointerfaces, spiking and memristive hardware, neurostimulation and biohybrid cyborg systems.
+- **Douglas Engelbart.** *Augmenting Human Intellect: A Conceptual Framework* (1962), and **J. C. R. Licklider.** "Man-Computer Symbiosis" (1960). Foundational Intelligence Augmentation sources for human-tool and human-computer cognitive assemblages.
+- **Martin Dresler et al.** "Non-pharmacological cognitive enhancement." *Neuropharmacology* 64 (2013). Broad real-world review of non-pharmacological enhancement methods.
+- **Kenta Kitamura.** "Assessing Human Intelligence Augmentation Strategies Using Brain Machine Interfaces and Brain Organoids in the Era of AI Advancement" (2025), https://arxiv.org/abs/2503.15508. Speculative comparison of BMI, brain-organoid and hybrid augmentation strategies.
 
 #### RPG and setting baseline
 
