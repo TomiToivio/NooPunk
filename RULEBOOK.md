@@ -138,9 +138,22 @@ Augmentation may create effective capabilities above the ordinary human scale, b
 
 ### 4.1. Skill list
 
-Canonical trained Skills use the **1–10** scale. The final complete Skill list is still allowed to evolve. Campaign-scoped specialist fields may be used where a broad permanent skill list would become bloated.
+Canonical trained Skills use the **1–10** scale, matching the six 1–10 STATs. The canonical
+universal Skill list is defined by **issue #159** in
+[`rulebook/9_SKILLS.md`](rulebook/9_SKILLS.md); it supersedes the earlier placeholder that left
+the list open.
 
-Skills should describe learned competence, professions, techniques or fields of practice rather than duplicate broad STATs.
+Every Skill is based on one of the six attributes (**FIT / REF / INT / SOC / CYB / PSY**). Some
+broad Skills require a **field** (Exotic Skill, Hardware, Know, Medicine, Pilot, Perform, Work);
+a related field may substitute at **−1**, an unrelated field may not. Some Skills may be
+attempted **untrained at −1**; others require training — each Skill's row in the chapter states
+which.
+
+Skills describe learned competence, professions, techniques or fields of practice rather than
+duplicate broad STATs. Campaign-scoped specialist fields keep the list small: only expose fields
+actual play needs, per [`data/rules/campaign_skill_fields.json`](data/rules/campaign_skill_fields.json).
+
+The machine-readable list is [`data/rules/skills.json`](data/rules/skills.json).
 
 ### 4.2. Skill checks
 
@@ -554,8 +567,8 @@ The material below preserves the previous living rules ledger and world canon so
 >
 > - all canonical STAT ratings use **1–10**;
 > - all canonical trained Skill ratings use **1–10**;
-> - the final STAT list is **deferred**;
-> - the final Skill list is **deferred**;
+> - the final STAT list is **locked** (six STATs, issue #131);
+> - the final Skill list is **locked** ([`rulebook/9_SKILLS.md`](rulebook/9_SKILLS.md), issue #159);
 > - opposed checks roll the same formula on both sides and the higher total wins;
 > - ties, criticals and the general situational-modifier procedure remain **explicit design questions**.
 >
@@ -1002,7 +1015,7 @@ NoöPunk's basic resolution engine is:
 STAT + Skill + 1d10 ≥ Difficulty Value
 ```
 
-Both **STAT** and trained **Skill** ratings use a **1–10** scale. Their final names and lists are intentionally deferred. Stats and skills remain separate mechanical quantities.
+Both **STAT** and trained **Skill** ratings use a **1–10** scale. The six STATs are locked by issue #131 and the universal Skill list by issue #159 ([`rulebook/9_SKILLS.md`](rulebook/9_SKILLS.md)). Stats and skills remain separate mechanical quantities.
 
 ### 10.1 Difficulty Values
 
@@ -1536,6 +1549,7 @@ Use this table to track major mechanical mutations.
 
 | 2026-10-04 | Theory sections | Four-layer ontology and bibliography deleted by a stale-branch clobber (`901ba05`) | **Restored as §36 (four NoöPunk systems) and §37 (theoretical sources)** | The clobber removed 703 lines; the glossary kept `## 34.`, so number-keyed guards read the wrong section and the loss was silent. Restored by heading text; §27 number stays with the glossary. |
 | 2026-10-04 | Sources list | Two competing sources sections (#99 landed twice as §35 and §38) | **Merged into a single §35; the duplicate §38 removed** | Issue #101. The union of both copies is kept: the fuller fiction and RPG entries from §38, the broader field list and preambles from §35. §35 now declares itself the design-facing map beside the §37 theory bibliography, and §33.2's Wendt citation is re-pointed from the stale §35.5 to §36.5. |
+| 2026-10-06 | Skill list | The universal Skill list was **deferred** since issue #111 (core.json `skills.final_list == "deferred"`) | **Locked: the canonical universal list in [`rulebook/9_SKILLS.md`](rulebook/9_SKILLS.md) + [`data/rules/skills.json`](data/rules/skills.json)** | Issue #159. Each of the 34 Skills carries a governing attribute, trained-only vs untrained-(−1) status, and the field-specialization rule; the generic Psi placeholder is replaced by six psionic disciplines. Effect-level mechanics (combat, hacking, sleights) stay deferred. |
 | 2026-10-06 | Default affiliation and Affect-graph prose | In-world `UNHSS` naming and a `-100 to +100` Affect/Contact/Reputation score in `RULEBOOK.md` prose | **`UNSA` everywhere in-world; the Affect graph reads `-10 to +10`** | Issue #149 was rebased to `rulebook/8_FACTIONS.md` alone before merge (`40e10a5`), so the rename and rescale reached the chapter, schema, runtime and data but not the canonical prose — the book contradicted its own §38 and `8_FACTIONS.md`. Residue cleared; the separate Law-of-One **Polarization** axis (§9.3, `-100 ... 0 ... +100`) is a different subsystem and keeps its wider band. |
 
 Add rows whenever a major subsystem is replaced or substantially reskinned.
@@ -4846,7 +4860,7 @@ anti-coup safeguards.
 
 Issue #110 defines the specialist-skill content needed by the initial Helsinki / UNSA campaign. Issue #111 supersedes #110's assumption that Eclipse Phase percentile mechanics remain the active chassis: NoöPunk now treats these names and fields as **content design** to be expressed through the independent **1–10 Skill** system and the core `STAT + Skill + 1d10` resolution rule.
 
-The final universal NoöPunk skill list remains deferred. For the first campaign, however, the following Eclipse Phase-derived vocabulary is a useful provisional baseline because it already covers the kinds of actions the campaign needs:
+The canonical universal NoöPunk skill list is locked by issue #159 in [`rulebook/9_SKILLS.md`](rulebook/9_SKILLS.md). This section remains the **campaign-scoped** layer on top of it: it exposes only the fields and specialist content the initial Helsinki / UNSA campaign needs. The Eclipse Phase-derived vocabulary below is the campaign baseline from issue #110:
 
 - Athletics
 - Deceive
@@ -4943,19 +4957,23 @@ Use these questions to prevent one skill from swallowing the others:
 
 Know and Research often work together, but neither replaces observation, social inference, or practical PSI.
 
-### 39.5 PSI domains remain a design choice
+### 39.5 PSI skill architecture
 
-Do not finalize the PSI skill architecture yet. Preserve these candidate domains for later playtesting:
+**Issue #159 resolves the skill-list half of this question.** Of the three approaches that were
+open — one Psi skill with fields, several separate PSI skills, or one Psi skill with learned
+techniques — NoöPunk selects **several separate PSI skills**: the six disciplines **Telepathy,
+Clairvoyance, Psychokinesis, Noöspace, Precognition and Psychic Defence**, defined in
+[`rulebook/9_SKILLS.md`](rulebook/9_SKILLS.md). Each requires an explicit source of psionic
+capability and is trained only.
 
-- Remote Viewing
-- Telepathy
-- Psychokinesis
-- **Noetic Projection** (common-language: astral projection / out-of-body experience)
-- Channeling
-- Precognition
-- Counter-Psi
+The former candidate domains map in as follows: *Remote Viewing* and *Psychometry* are techniques
+within **Clairvoyance**; **Noetic Projection** (astral projection / OBE) and *Channeling / Mediumship*
+are techniques within **Noöspace**; *Counter-Psi* is absorbed by **Psychic Defence**. Psychic
+**attack** is performed through the disciplines rather than as its own skill.
 
-Three approaches remain open: one Psi skill with fields, several separate PSI skills, or one Psi skill with learned techniques/sleights/moves. The third may mesh naturally with later Stunt/Move design, but no option is canon yet.
+What remains open is the **effect layer**: the specific sleights, powers, their resolution and their
+interaction with the Stunt/Move direction are still a **later design increment**. This section fixes
+the skill names and attributes only; it defines no psionic mechanics.
 
 **Robert A. Monroe and the Monroe Institute** are influences for Noetic Projection / OBE training and altered-state exploration. This is inspiration for the fictional setting, not a claim that Monroe's interpretations are established real-world science.
 

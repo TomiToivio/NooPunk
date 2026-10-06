@@ -88,9 +88,12 @@ class CoreJsonTests(unittest.TestCase):
         self.assertEqual(stats["names"], BASE_NAMES)
         self.assertEqual(stats["layer"], BASE_LAYER)
 
-    def test_skill_list_remains_deferred(self) -> None:
-        """#131 locks the STAT list only; the skill list is untouched."""
-        self.assertEqual(canon()["skills"]["final_list"], "deferred")
+    def test_skill_list_is_a_separate_artifact_after_159(self) -> None:
+        """#131 locked the STAT list only. Issue #159 later locked the Skill list in its
+        own artifact, so core.json now points at it rather than saying "deferred"; #131's
+        own scope (the STAT list) is unchanged."""
+        self.assertEqual(canon()["stats"]["final_list"], BASE_STATS)
+        self.assertEqual(canon()["skills"]["final_list"], "data/rules/skills.json")
 
     def test_the_human_scale_stays_one_to_ten(self) -> None:
         self.assertEqual((canon()["stats"]["min"], canon()["stats"]["max"]), (1, 10))

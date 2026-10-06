@@ -1,0 +1,400 @@
+{
+  "format": "noopunk.rules.skills",
+  "version": 1,
+  "source_issue": 159,
+  "supersedes": "the deferred universal skill list (data/rules/core.json: skills.final_list == \"deferred\")",
+  "status": "canonical universal list",
+  "scale": {
+    "min": 1,
+    "max": 10
+  },
+  "check": "STAT + Skill + 1d10 vs Difficulty Value",
+  "untrained_modifier": -1,
+  "related_field_modifier": -1,
+  "field_skills": [
+    "Exotic Skill",
+    "Hardware",
+    "Know",
+    "Medicine",
+    "Pilot",
+    "Perform",
+    "Work"
+  ],
+  "note": "Inspired especially by Eclipse Phase and Cities Without Number, but its own system. Carries no EP2 numerical mechanics (no linked aptitudes, percentiles, or defaulting formula).",
+  "skills": [
+    {
+      "name": "Administrate",
+      "attribute": "INT",
+      "flexible_attribute": "SOC",
+      "trained": false,
+      "category": "cognitive",
+      "summary": "Managing an organization: bureaucracy, logistics, budgets, project management, institutional procedure, personnel."
+    },
+    {
+      "name": "Athletics",
+      "attribute": "FIT",
+      "trained": false,
+      "category": "physical",
+      "summary": "Physical activity in gravity: climbing, running, swimming, jumping, gymnastics, throwing, winged flight."
+    },
+    {
+      "name": "Clairvoyance",
+      "attribute": "PSY",
+      "trained": true,
+      "category": "psionic",
+      "psi": true,
+      "summary": "Anomalous and remote perception; Remote Viewing and Psychometry are techniques within it.",
+      "requires": "psionic capability source"
+    },
+    {
+      "name": "Connect",
+      "attribute": "SOC",
+      "trained": false,
+      "category": "social",
+      "summary": "Finding and using social connections: contacts, networking, informal channels."
+    },
+    {
+      "name": "Deceive",
+      "attribute": "SOC",
+      "trained": false,
+      "category": "social",
+      "summary": "Lying, bluffing, conning, fast talk, impersonation, acting, misrepresentation.",
+      "opposed_by": "Kinesics"
+    },
+    {
+      "name": "Exotic Skill",
+      "attribute": "variable",
+      "trained": true,
+      "category": "field",
+      "field": true,
+      "summary": "Unusual capabilities that fit nowhere else, used sparingly."
+    },
+    {
+      "name": "Fray",
+      "attribute": "REF",
+      "trained": false,
+      "category": "physical",
+      "summary": "Getting out of the way of danger: dodging, evasive movement, avoiding sudden hazards. Evasion only; combat defence procedure is deferred."
+    },
+    {
+      "name": "Free Fall",
+      "attribute": "FIT",
+      "trained": false,
+      "category": "physical",
+      "summary": "Physical activity in microgravity or free fall: maneuvering, orientation, EVA, spin recovery."
+    },
+    {
+      "name": "Guns",
+      "attribute": "REF",
+      "trained": true,
+      "category": "combat",
+      "summary": "Aiming and shooting ranged weapons: beam, kinetic, seeker, spray, handguns, rifles."
+    },
+    {
+      "name": "Hardware",
+      "attribute": "CYB",
+      "trained": true,
+      "category": "technical",
+      "field": true,
+      "fields_example": [
+        "Electronics",
+        "Cyberware",
+        "Robotics",
+        "Vehicles",
+        "Weapons",
+        "Drones",
+        "Sensors",
+        "Industrial systems",
+        "Psychotronics",
+        "Nanofabrication"
+      ],
+      "summary": "Building, repairing, disabling, upgrading and physically hacking technological systems."
+    },
+    {
+      "name": "Infosec",
+      "attribute": "CYB",
+      "trained": true,
+      "category": "technical",
+      "summary": "Hacking or protecting devices and networks: intrusion, exploitation, malware, defence, hardening, counter-hacking."
+    },
+    {
+      "name": "Interface",
+      "attribute": "CYB",
+      "trained": false,
+      "category": "technical",
+      "summary": "Operating and interacting with computers, devices, AR/VR, networks, cyberware and machine systems. Interface quality modifies the roll."
+    },
+    {
+      "name": "Kinesics",
+      "attribute": "SOC",
+      "trained": false,
+      "category": "social",
+      "summary": "Reading people: body language, tells, social cues, emotional signals. Opposes Deceive."
+    },
+    {
+      "name": "Know",
+      "attribute": "INT",
+      "trained": true,
+      "category": "cognitive",
+      "field": true,
+      "fields_example": [
+        "Sociology",
+        "Political Science",
+        "Physics",
+        "Biology",
+        "History",
+        "Anthropology",
+        "Economics",
+        "Psychology",
+        "Artificial Intelligence",
+        "NHI Studies",
+        "X-Risk Studies",
+        "Law",
+        "Noetics",
+        "Theology"
+      ],
+      "summary": "Academic, scientific, technical, cultural or theoretical knowledge of a field."
+    },
+    {
+      "name": "Lead",
+      "attribute": "SOC",
+      "trained": false,
+      "category": "social",
+      "summary": "Leadership: command, motivating people, coordinating teams, combat, political and crisis leadership."
+    },
+    {
+      "name": "Medicine",
+      "attribute": "INT",
+      "trained": true,
+      "category": "field",
+      "field": true,
+      "fields_example": [
+        "Emergency Care",
+        "Surgery",
+        "Psychiatry",
+        "Neurology",
+        "Cybermedicine",
+        "Veterinary",
+        "Xenomedicine",
+        "Psychotronic Medicine",
+        "Forensics"
+      ],
+      "summary": "Diagnosing and healing. First Aid folds into Medicine (Emergency Care)."
+    },
+    {
+      "name": "Melee",
+      "attribute": "FIT",
+      "flexible_attribute": "REF",
+      "trained": false,
+      "category": "physical",
+      "summary": "Fighting with held or improvised melee weapons; finesse weapons may use REF."
+    },
+    {
+      "name": "Noöspace",
+      "attribute": "PSY",
+      "trained": true,
+      "category": "psionic",
+      "psi": true,
+      "summary": "Entering, navigating, perceiving and acting in Noöspace; Noetic Projection and Channeling are techniques within it.",
+      "requires": "psionic capability source"
+    },
+    {
+      "name": "Perceive",
+      "attribute": "PSY",
+      "trained": false,
+      "category": "investigative",
+      "summary": "Awareness through the senses: sight, hearing, smell, touch, situational awareness, noticing hidden detail."
+    },
+    {
+      "name": "Perform",
+      "attribute": "PSY",
+      "flexible_attribute": "SOC",
+      "trained": false,
+      "category": "field",
+      "field": true,
+      "fields_example": [
+        "Music",
+        "Dance",
+        "Acting",
+        "Visual Art",
+        "Ritual Performance",
+        "Performance Art"
+      ],
+      "summary": "Performing art or expressive activity; SOC when primarily social."
+    },
+    {
+      "name": "Pilot",
+      "attribute": "REF",
+      "trained": true,
+      "category": "field",
+      "field": true,
+      "fields_example": [
+        "Ground Vehicles",
+        "Aircraft",
+        "Spacecraft",
+        "Drones",
+        "Watercraft",
+        "Exoskeletons",
+        "exotic vehicles"
+      ],
+      "summary": "Piloting or driving vehicles; related categories may be used at -1."
+    },
+    {
+      "name": "Precognition",
+      "attribute": "PSY",
+      "trained": true,
+      "category": "psionic",
+      "psi": true,
+      "summary": "Anomalous perception of future probabilities.",
+      "requires": "psionic capability source"
+    },
+    {
+      "name": "Program",
+      "attribute": "CYB",
+      "trained": true,
+      "category": "technical",
+      "summary": "Writing and modifying software: scripting, apps, AI tools, nanofabrication programming, virtual environments."
+    },
+    {
+      "name": "Provoke",
+      "attribute": "SOC",
+      "trained": false,
+      "category": "social",
+      "summary": "Moving someone emotionally: intimidation, taunting, seduction, agitation, emotional manipulation."
+    },
+    {
+      "name": "Psychic Defence",
+      "attribute": "PSY",
+      "trained": true,
+      "category": "psionic",
+      "psi": true,
+      "summary": "Resisting telepathy, intrusion, possession, influence and noetic attack; absorbs the former Counter-Psi domain.",
+      "requires": "psionic capability source"
+    },
+    {
+      "name": "Psychokinesis",
+      "attribute": "PSY",
+      "trained": true,
+      "category": "psionic",
+      "psi": true,
+      "summary": "Influencing physical systems and matter through PSI; the physical, potentially offensive discipline.",
+      "requires": "psionic capability source"
+    },
+    {
+      "name": "Research",
+      "attribute": "INT",
+      "trained": false,
+      "category": "investigative",
+      "summary": "Finding and synthesizing external information: online, archives, databases, public records, OSINT."
+    },
+    {
+      "name": "Sneak",
+      "attribute": "REF",
+      "trained": false,
+      "category": "physical",
+      "summary": "Sneaking, hiding, stalking, concealing movement, escaping detection."
+    },
+    {
+      "name": "Survival",
+      "attribute": "INT",
+      "trained": false,
+      "category": "cognitive",
+      "summary": "Operating in hostile environments: wilderness and urban survival, navigation, shelter, food and water, hazards."
+    },
+    {
+      "name": "Talk",
+      "attribute": "SOC",
+      "trained": false,
+      "category": "social",
+      "summary": "Persuading through ordinary communication: persuasion, negotiation, diplomacy, rapport, convincing."
+    },
+    {
+      "name": "Telepathy",
+      "attribute": "PSY",
+      "trained": true,
+      "category": "psionic",
+      "psi": true,
+      "summary": "Reading and transmitting thoughts, emotion and mental content; mind-to-mind contact.",
+      "requires": "psionic capability source"
+    },
+    {
+      "name": "Trade",
+      "attribute": "SOC",
+      "trained": false,
+      "category": "social",
+      "summary": "Buying and selling on markets: bargaining, valuation, negotiating prices, commercial dealing."
+    },
+    {
+      "name": "Unarmed",
+      "attribute": "FIT",
+      "trained": false,
+      "category": "combat",
+      "summary": "Unarmed combat: striking, grappling, restraint, takedowns, holds, non-lethal subdual."
+    },
+    {
+      "name": "Work",
+      "attribute": "variable",
+      "trained": true,
+      "category": "field",
+      "field": true,
+      "fields_example": [
+        "Police Officer",
+        "Journalist",
+        "Mechanic",
+        "Farmer",
+        "Soldier",
+        "Bartender",
+        "Construction",
+        "Politician",
+        "Researcher"
+      ],
+      "summary": "Broad practical occupational competence; attribute set by the field."
+    }
+  ],
+  "overlap_resolutions": {
+    "social_cluster": "Talk persuades by argument; Provoke moves emotion; Deceive misrepresents; Kinesics reads others; Connect finds people; Lead directs groups.",
+    "technical_cluster": "Program creates/modifies software; Infosec attacks/defends systems; Interface operates/interacts with systems; Hardware physically builds/repairs devices.",
+    "knowledge_cluster": "Research finds and verifies external info; Know holds domain understanding; investigation/law-enforcement/intelligence/counterintelligence are Know fields.",
+    "work_vs_dedicated": "Dedicated skills outperform a broad Work for specialised tasks.",
+    "first_aid": "Folded into Medicine (Emergency Care).",
+    "law": "A Know field: Know (Law).",
+    "tactics": "No separate skill; covered by Lead plus a relevant Know field."
+  },
+  "psi_note": "The generic Psi placeholder is replaced by six disciplines. Psychic attack is performed through the disciplines, not as a separate skill. Psychotronics remains Hardware (Psychotronics) (CYB).",
+  "deferred": [
+    "combat resolution, damage, defence procedure",
+    "hacking / cyberspace procedures",
+    "psionic powers, sleights, their effects and resolution",
+    "starting skill counts and levels",
+    "advancement / XP",
+    "cyberware, augmentation and equipment statistics",
+    "the full campaign field catalogue"
+  ],
+  "unsa_academy_alignment": {
+    "source_issue": 158,
+    "note": "The academy's needs map onto the universal list; specialist knowledge lives in Know fields. No separate Tactics/Police-Procedure/Forensics skills.",
+    "map": {
+      "Firearms": "Guns",
+      "Unarmed combat": "Unarmed",
+      "Melee / stun baton": "Melee",
+      "Athletics / fitness": "Athletics",
+      "Room entry / cover / team movement": "Lead + Know (Law Enforcement)",
+      "First aid / trauma care": "Medicine (Emergency Care)",
+      "Law / criminal procedure": "Know (Law)",
+      "Investigation": "Know (Investigation)",
+      "Interview / interrogation": "Talk / Provoke / Kinesics",
+      "Forensics": "Medicine (Forensics)",
+      "Observation / perception": "Perceive",
+      "Surveillance / countersurveillance": "Sneak + Know (Counterintelligence)",
+      "Police procedure / chain of custody": "Know (Law Enforcement)",
+      "Intelligence analysis": "Know (Intelligence)",
+      "Counterintelligence": "Know (Counterintelligence)",
+      "HUMINT": "Connect / Talk + Know (Intelligence)",
+      "OSINT": "Research",
+      "Detect deception": "Kinesics",
+      "Secure communications / crypto": "Infosec / Program",
+      "X-risk recognition": "Know (X-Risk Studies)",
+      "NHI studies / anomalous phenomena": "Know (NHI Studies)"
+    }
+  }
+}

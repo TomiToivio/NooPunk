@@ -4,7 +4,13 @@
   "_canon_revision": "issue-111-d10-independent",
   "system_identity": {
     "independent": true,
-    "not_a_conversion_of": ["Eclipse Phase", "Cyberpunk 2020", "Cyberpunk RED", "Fate", "PbtA"],
+    "not_a_conversion_of": [
+      "Eclipse Phase",
+      "Cyberpunk 2020",
+      "Cyberpunk RED",
+      "Fate",
+      "PbtA"
+    ],
     "influences": [
       "Cyberpunk 2020 / RED",
       "Eclipse Phase",
@@ -18,7 +24,14 @@
   "stats": {
     "min": 1,
     "max": 10,
-    "final_list": ["FIT", "REF", "INT", "SOC", "CYB", "PSY"],
+    "final_list": [
+      "FIT",
+      "REF",
+      "INT",
+      "SOC",
+      "CYB",
+      "PSY"
+    ],
     "names": {
       "FIT": "Fitness",
       "REF": "Reflexes",
@@ -40,8 +53,8 @@
   "skills": {
     "min": 1,
     "max": 10,
-    "final_list": "deferred",
-    "_note": "All canonical trained Skill ratings use 1..10. Final Skill names are intentionally not locked by issue #111."
+    "final_list": "data/rules/skills.json",
+    "_note": "Issue #159 defines the canonical universal Skill list in data/rules/skills.json, superseding the earlier 'deferred' state. Every Skill ties to one of the six STATs; see rulebook/9_SKILLS.md."
   },
   "skill_check": {
     "dice": "1d10",
@@ -68,10 +81,50 @@
   "situational_modifiers": "deferred",
   "probability_examples": {
     "_note": "Success rates for representative fixed STAT+Skill profiles before modifiers; recorded for playtesting, not used to alter the authored DVs.",
-    "Novice STAT 4 + Skill 1": {"9": 0.7, "13": 0.3, "15": 0.1, "17": 0.0, "21": 0.0, "24": 0.0, "29": 0.0},
-    "Average trained STAT 5 + Skill 3": {"9": 1.0, "13": 0.6, "15": 0.4, "17": 0.2, "21": 0.0, "24": 0.0, "29": 0.0},
-    "Professional STAT 6 + Skill 5": {"9": 1.0, "13": 0.9, "15": 0.7, "17": 0.5, "21": 0.1, "24": 0.0, "29": 0.0},
-    "Expert STAT 7 + Skill 7": {"9": 1.0, "13": 1.0, "15": 1.0, "17": 0.8, "21": 0.4, "24": 0.1, "29": 0.0},
-    "Elite STAT 8 + Skill 9": {"9": 1.0, "13": 1.0, "15": 1.0, "17": 1.0, "21": 0.7, "24": 0.4, "29": 0.0}
+    "Novice STAT 4 + Skill 1": {
+      "9": 0.7,
+      "13": 0.3,
+      "15": 0.1,
+      "17": 0.0,
+      "21": 0.0,
+      "24": 0.0,
+      "29": 0.0
+    },
+    "Average trained STAT 5 + Skill 3": {
+      "9": 1.0,
+      "13": 0.6,
+      "15": 0.4,
+      "17": 0.2,
+      "21": 0.0,
+      "24": 0.0,
+      "29": 0.0
+    },
+    "Professional STAT 6 + Skill 5": {
+      "9": 1.0,
+      "13": 0.9,
+      "15": 0.7,
+      "17": 0.5,
+      "21": 0.1,
+      "24": 0.0,
+      "29": 0.0
+    },
+    "Expert STAT 7 + Skill 7": {
+      "9": 1.0,
+      "13": 1.0,
+      "15": 1.0,
+      "17": 0.8,
+      "21": 0.4,
+      "24": 0.1,
+      "29": 0.0
+    },
+    "Elite STAT 8 + Skill 9": {
+      "9": 1.0,
+      "13": 1.0,
+      "15": 1.0,
+      "17": 1.0,
+      "21": 0.7,
+      "24": 0.4,
+      "29": 0.0
+    }
   }
 }

@@ -52,10 +52,13 @@ class CoreRulesTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 AttributeSet({"BODY": bad})
 
-    def test_final_stat_list_is_locked_and_skill_list_is_deferred(self) -> None:
+    def test_final_stat_list_is_locked_and_skill_list_has_its_own_artifact(self) -> None:
         canon = json.loads((ROOT / "data" / "rules" / "core.json").read_text(encoding="utf-8"))
         self.assertEqual(canon["stats"]["final_list"], ["FIT", "REF", "INT", "SOC", "CYB", "PSY"])
-        self.assertEqual(canon["skills"]["final_list"], "deferred")
+        # Issue #159 supersedes the earlier "deferred" state: the Skill list now lives in
+        # data/rules/skills.json, which core.json points at.
+        self.assertEqual(canon["skills"]["final_list"], "data/rules/skills.json")
+        self.assertTrue((ROOT / "data" / "rules" / "skills.json").exists())
 
     def test_skill_check_engine_is_1d10(self) -> None:
         self.assertEqual(CHECK_DICE, "1d10")

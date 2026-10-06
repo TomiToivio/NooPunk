@@ -4,13 +4,15 @@
   "status": "content-design-under-issue-111",
   "source_issue": 110,
   "superseding_mechanics_issue": 111,
-  "note": "Issue #110 specialist-field content expressed under the independent NoöPunk 1-10 skill direction. This file defines campaign-visible fields, not skill ratings or final universal skill canon.",
+  "note": "Issue #110 specialist-field content expressed under the independent NoöPunk 1-10 skill direction. This file defines campaign-visible fields, not skill ratings or final universal skill canon. The universal Skill list is now locked by issue #159 (rulebook/9_SKILLS.md, data/rules/skills.json); this file remains the campaign-scoped field extension.",
   "fielded_skill_families": [
     "Exotic Skill",
     "Hardware",
     "Know",
     "Medicine",
-    "Pilot"
+    "Pilot",
+    "Perform",
+    "Work"
   ],
   "campaign": "Helsinki / UNSA",
   "fields": {
@@ -32,9 +34,12 @@
       "Counterintelligence",
       "Quantum Information Panpsychism",
       "Parapsychology",
-      "NHI Studies"
+      "NHI Studies",
+      "Law"
     ],
-    "Exotic Skill": []
+    "Exotic Skill": [],
+    "Perform": [],
+    "Work": []
   },
   "aliases": {
     "Know (Quantum Information Panpsychism)": [
@@ -117,5 +122,6 @@
       "Disguise",
       "Animal Handling"
     ]
-  }
+  },
+  "universal_list_issue": 159
 }

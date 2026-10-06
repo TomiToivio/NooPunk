@@ -74,7 +74,10 @@ remains a non-canonical prototype. The older FIT / REF / INT / CHA / CYB / PSY s
 
 Issue #111 supersedes the earlier 2d6 / level-0..4 direction. The active core direction is
 an **independent NoöPunk 1–10 STAT + 1–10 Skill + 1d10 system**. Issue #131 locks the STAT
-list; the universal Skill list remains explicitly deferred.
+list. Issue #159 now locks the canonical universal **Skill list** in
+[`rulebook/9_SKILLS.md`](rulebook/9_SKILLS.md) and [`data/rules/skills.json`](data/rules/skills.json):
+each Skill's governing attribute, trained-only vs untrained-(-1) status, the field-specialization
+rule, and the six psionic disciplines that replace the generic Psi placeholder.
 
 Issue #110 defines campaign-scoped specialist content under that newer direction. Its provisional skill vocabulary and fields may be documented and represented as data, but agents must not treat Eclipse Phase linked aptitudes, percentile values, or other EP2 numerical mechanics as current NoöPunk rules.
 
@@ -84,8 +87,8 @@ The earlier issue #17 BCI / Compute / Connection / Infosec cyberspace modifier f
 
 Until explicitly specified, do not define:
 - derived statistics, or any per-layer STAT lists beyond the six base STATs locked by issue #131
-- the final universal skill list beyond the provisional/campaign-scoped vocabulary explicitly authorized by issues #110 and #111
-- which skills are unskilled-allowed versus trained-only
+- the final universal skill list **beyond** the canonical list locked by issue #159 (`rulebook/9_SKILLS.md`, `data/rules/skills.json`) and the campaign-scoped additions authorized by issue #110
+- which skills are unskilled-allowed versus trained-only **beyond** the per-Skill status locked by issue #159
 - new specialist fields beyond those explicitly enabled by a campaign profile or character/scenario requirement
 - how many skills a starting character has, or at what levels
 - final skill-to-STAT bindings
