@@ -113,7 +113,7 @@ The faction system projects into these graph layers:
 These project into actor-to-actor, faction-to-faction or mixed multilayer networks for
 analysis and visualization.
 
-## The score scale: −10…+10 (resolved)
+## Canonical score scale: −10…+10
 
 **Canonical: every Faction, Reputation, Contact, Motivation and relationship score uses
 `−10…+10`.** Issue #144 makes the author's decision, which issue #122 had recorded as open.
@@ -137,9 +137,9 @@ share a polarity and differ in meaning.
 A stored **0** is an explicit *neutral* relation; **no edge** means *unknown*. The two are
 never the same thing (see above).
 
-### Why this replaced −100…+100
+### Why this replaced the older 100-point band
 
-The earlier implementation used a wider `−100…+100` band (`MIN_AFFECT`/`MAX_AFFECT` in
+The earlier implementation used a wider 100-point relationship band (`MIN_AFFECT`/`MAX_AFFECT` in
 `src/simulation/affect.py`, the `score_range` in `data/world/social_affect_schema.json`, and
 the wording in `rulebook/4_SOCIAL.md`). Issue #144 replaces that scale, so this landed as
 **one deliberate change across all three** rather than a cosmetic 10× divide: every stored
