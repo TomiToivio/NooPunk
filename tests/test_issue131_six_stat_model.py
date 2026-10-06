@@ -88,9 +88,12 @@ class CoreJsonTests(unittest.TestCase):
         self.assertEqual(stats["names"], BASE_NAMES)
         self.assertEqual(stats["layer"], BASE_LAYER)
 
-    def test_skill_list_remains_deferred(self) -> None:
-        """#131 locks the STAT list only; the skill list is untouched."""
-        self.assertEqual(canon()["skills"]["final_list"], "deferred")
+    def test_skill_list_matches_issue159_canon(self) -> None:
+        """#159 subsequently locks the universal Skill list without changing #131's STAT lock."""
+        skills = json.loads(read("data/rules/skills.json"))
+        canonical_skills = [row["name"] for row in skills["skills"]]
+        self.assertEqual(len(canonical_skills), 40)
+        self.assertEqual(canon()["skills"]["final_list"], canonical_skills)
 
     def test_the_human_scale_stays_one_to_ten(self) -> None:
         self.assertEqual((canon()["stats"]["min"], canon()["stats"]["max"]), (1, 10))
