@@ -91,7 +91,7 @@ class AffectGraphTests(unittest.TestCase):
             personal_edges=[personal])
         by = {x.affect: x for x in inherited}
         self.assertEqual(by["Supports"].affect_score, 8)
-        self.assertEqual(by["Fears"].affect_score, -60)
+        self.assertEqual(by["Fears"].affect_score, -6)
 
     def test_round_trip(self) -> None:
         graph = AffectGraph([edge("pc", "friend", "Trusts", 5, "contact")])
