@@ -1,38 +1,87 @@
 {
   "format": "noopunk.campaign_skill_fields",
-  "version": 1,
-  "status": "content-design-under-issue-111",
-  "source_issue": 110,
-  "superseding_mechanics_issue": 111,
-  "note": "Issue #110 specialist-field content expressed under the independent NoöPunk 1-10 skill direction. This file defines campaign-visible fields, not skill ratings or final universal skill canon.",
+  "version": 2,
+  "status": "campaign-profile-under-issue-159",
+  "source_issue": 159,
+  "superseding_mechanics_issue": 159,
+  "note": "Helsinki / UNSA campaign-visible fields under the canonical universal skill system defined by issue #159. This file narrows fields for play; it does not replace RULEBOOK.md §4.1 or data/rules/skills.json.",
   "fielded_skill_families": [
     "Exotic Skill",
     "Hardware",
     "Know",
     "Medicine",
-    "Pilot"
+    "Perform",
+    "Pilot",
+    "Work"
   ],
   "campaign": "Helsinki / UNSA",
   "fields": {
     "Pilot": [
-      "Space"
+      "Ground Vehicles",
+      "Aircraft",
+      "Spacecraft",
+      "Drones"
     ],
     "Medicine": [
-      "Emergency Care",
-      "Forensics"
+      "Emergency Medicine",
+      "Surgery",
+      "Psychiatry",
+      "Neurology",
+      "Cybermedicine",
+      "Veterinary Medicine",
+      "Xenomedicine",
+      "Psychotronic Medicine"
     ],
     "Hardware": [
-      "Psychotronics"
+      "Electronics",
+      "Cyberware",
+      "Robotics",
+      "Vehicles",
+      "Weapons",
+      "Drones",
+      "Sensors",
+      "Industrial Systems",
+      "Psychotronics",
+      "Nanofabrication Hardware"
     ],
     "Know": [
-      "Investigation",
+      "Sociology",
+      "Political Science",
+      "Physics",
+      "Biology",
+      "History",
+      "Anthropology",
+      "Economics",
       "Psychology",
-      "Law Enforcement",
-      "Intelligence",
-      "Counterintelligence",
-      "Quantum Information Panpsychism",
+      "Artificial Intelligence",
+      "NHI Studies",
+      "X-Risk Studies",
+      "Law",
+      "Noetics",
+      "Theology",
       "Parapsychology",
-      "NHI Studies"
+      "Quantum Information Panpsychism"
+    ],
+    "Perform": [
+      "Music",
+      "Dance",
+      "Acting",
+      "Visual Art",
+      "Ritual Performance",
+      "Performance Art"
+    ],
+    "Work": [
+      "Police Officer",
+      "Journalist",
+      "Mechanic",
+      "Farmer",
+      "Soldier",
+      "Bartender",
+      "Construction",
+      "Politician",
+      "Researcher",
+      "Cyber Operator",
+      "Meditation Teacher"
     ],
     "Exotic Skill": []
   },
@@ -47,44 +96,30 @@
     ]
   },
   "boundaries": {
-    "Know": "Existing domain understanding.",
-    "Research": "Finding, verifying, and interpreting external information.",
-    "Perceive": "Immediate sensory noticing.",
+    "Know": "Answers from learned domain knowledge; Law is Know (Law).",
+    "Research": "Finds, verifies, and synthesizes external information; OSINT lives here.",
+    "Investigation": "Reconstructs a specific case from evidence.",
+    "Intelligence Analysis": "Turns multiple sources into assessed judgments under uncertainty.",
+    "Perceive": "Immediate physical and augmented sensory noticing.",
     "Kinesics": "Inference from behavior, body language, tells, and social cues.",
-    "Psi": "Actually performing a psionic effect.",
-    "Hardware (Psychotronics)": "Building, repairing, modifying, disabling, or operating psychotronic/noetic hardware at an engineering level."
-  },
-  "psi_design": {
-    "status": "deferred",
-    "candidate_domains": [
-      "Remote Viewing",
-      "Telepathy",
-      "Psychokinesis",
-      "Noetic Projection",
-      "Channeling",
-      "Precognition",
-      "Counter-Psi"
-    ],
-    "options": [
-      "one Psi skill with fields",
-      "multiple distinct PSI skills",
-      "one Psi skill with learned techniques/sleights/moves"
-    ]
+    "Psi": "Issue #159 replaces the generic Psi placeholder with ESP, Telepathy, Psychokinesis, Precognition, Noöspace, and Psychic Defence.",
+    "Hardware (Psychotronics)": "Engineering of psychotronic/noetic hardware; psychic operation uses the relevant PSY skill."
   },
   "character_examples": {
     "Conventional UNSA investigator": [
-      "Know (Investigation)",
+      "Investigation",
       "Research",
       "Perceive",
       "Kinesics",
-      "Persuade"
+      "Talk",
+      "Know (Law)"
     ],
     "Dr. Harri S. Romppainen": [
       "Know (Psychology)",
       "Know (NHI Studies)",
       "Research",
       "Kinesics",
-      "Persuade",
+      "Talk",
       "Know (Parapsychology)"
     ],
     "UNSA Noetic scientist": [
@@ -95,27 +130,12 @@
       "Hardware (Psychotronics)"
     ],
     "Belt field agent": [
-      "Pilot (Space)",
-      "Medicine (Emergency Care)",
+      "Pilot (Spacecraft)",
+      "First Aid",
       "Free Fall",
       "Interface",
       "Research"
     ]
   },
-  "campaign_extension_rule": "Add fields only when a character concept, scenario, location, profession, or equipment creates a genuine play need.",
-  "noncanonical_examples": {
-    "Hardware": [
-      "Electronics",
-      "Robotics",
-      "Industrial",
-      "Spacecraft",
-      "Mining",
-      "Life Support"
-    ],
-    "Exotic Skill": [
-      "Music",
-      "Disguise",
-      "Animal Handling"
-    ]
-  }
+  "campaign_extension_rule": "Add fields only when a character concept, scenario, location, profession, or equipment creates a genuine play need; related fields may substitute at -1 per issue #159."
 }
