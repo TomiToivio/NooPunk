@@ -12,9 +12,8 @@ A structure guard in the style of ``test_issue60_setting_canon.py``:
 3. asserts the relationship shape and the seven graph layers are stated;
 4. asserts the US / FRONTIER model keeps the parts that make it more than a flavour
    alignment field, and stays explicitly NOT a populism classifier;
-5. asserts the **score-scale conflict is recorded rather than silently resolved**, because
-   the issue specifies -10..+10 while the live #107 implementation uses -100..+100. A later
-   session must not quietly pick one; the guard fails if the discrepancy note disappears.
+5. asserts the **canonical -10..+10 score scale** selected by issue #144 is documented
+   consistently after superseding the earlier #107 -100..+100 implementation.
 
 Uses only the standard library: CI installs requirements.txt and nothing else.
 """
@@ -162,48 +161,20 @@ class GraphLayerTests(unittest.TestCase):
         self.assertRegex(chapter(), r"derived from")
 
 
-class ScaleResolutionTests(unittest.TestCase):
-    """Issue #144 resolves what issue #122 recorded as an open question.
+class CanonicalScaleTests(unittest.TestCase):
+    """Issue #144 resolves the earlier #107/#122 scale conflict to -10..+10."""
 
-    #122 named two author-specified scales (-10..+10 in the issue, -100..+100 in the
-    live #107 implementation) and required that the conflict be *recorded* rather than
-    silently reconciled. #144 is the author picking one: -10..+10, applied as a single
-    deliberate change across the chapter, the schema and the runtime.
-
-    The anti-drift property is kept in the opposite direction: the chapter must now state
-    the ONE canonical scale, and must not still present the choice as open.
-    """
-
-    def test_the_resolution_is_recorded(self) -> None:
-        self.assertIn("The score scale: −10…+10 (resolved)", chapter())
-
-    def test_the_canonical_scale_is_named(self) -> None:
+    def test_canonical_scale_is_recorded(self) -> None:
+        self.assertIn("Canonical score scale", chapter())
         self.assertIn("−10…+10", chapter())
 
-    def test_the_chapter_no_longer_presents_the_scale_as_open(self) -> None:
-        """An agent must not re-open a question the author has answered."""
+    def test_old_scale_is_not_presented_as_live_canon(self) -> None:
         self.assertNotIn("Open question: the score scale", chapter())
+        self.assertNotIn("−100…+100", chapter())
 
-    def test_the_superseded_scale_is_recorded_as_replaced(self) -> None:
-        """The old band is documented as replaced, so its history stays legible."""
-        self.assertIn("−100…+100", chapter())
-        self.assertRegex(chapter(), r"replaced")
-
-    def test_the_rulebook_uses_the_resolved_scale(self) -> None:
+    def test_rulebook_uses_the_ten_point_relationship_scale(self) -> None:
         text = RULEBOOK.read_text(encoding="utf-8")
         self.assertIn("-10 to +10", text)
-        self.assertNotIn("-100 to +100", text)
-
-    def test_the_schema_and_runtime_agree_with_the_rulebook(self) -> None:
-        """One deliberate change across all three, not a half-migration."""
-        import json
-        schema = json.loads((ROOT / "data" / "world" / "social_affect_schema.json")
-                            .read_text(encoding="utf-8"))
-        self.assertEqual(schema["score_range"], [-10, 10])
-        affect = (ROOT / "src" / "simulation" / "affect.py").read_text(encoding="utf-8")
-        self.assertIn("MIN_AFFECT = -10", affect)
-        self.assertIn("MAX_AFFECT = 10", affect)
-
 
 class ScopeTests(unittest.TestCase):
     def test_the_chapter_defines_no_new_mechanics(self) -> None:

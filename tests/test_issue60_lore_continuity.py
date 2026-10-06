@@ -9,10 +9,9 @@ stated in one canonical document must not be silently missing from the other.
    other. The guard below asserts the shared continuity facts appear in BOTH the
    timeline document and the canonical `RULEBOOK.md`.
 
-2. Issue #108 resolves one of issue #60's former open conversion gaps: Firewall is
-   now the covert operational culture inside UNHSS. TITANs remain deliberately
-   undecided. The guard therefore protects both the new Firewall mapping and the
-   still-open TITAN question.
+2. Issue #144 supersedes issue #108's UNHSS / Firewall naming: the default campaign
+   organization is now UNSA. Firewall remains only an external design/provenance
+   reference. TITANs remain deliberately undecided.
 """
 from __future__ import annotations
 
@@ -145,22 +144,23 @@ class PreFallContinuityTests(unittest.TestCase):
 
 
 class ConversionGapTests(unittest.TestCase):
-    """Issue #108 resolves Firewall; the TITAN conversion gap remains open."""
+    """Issue #144 maps the former Firewall role to UNSA; TITANs remain open."""
 
     def setUp(self) -> None:
         self.mapping = section_of(RULEBOOK, "9. Characters and identity")
 
-    def test_firewall_is_mapped_to_unsa(self) -> None:
-        self.assertIn("Firewall", self.mapping, "Firewall is absent from the mapping section")
+    def test_firewall_role_is_superseded_by_unsa(self) -> None:
+        self.assertIn("Firewall", self.mapping)
         firewall_block = re.search(
             r"\*\*Firewall\.\*\*(.{0,1000})", self.mapping, re.DOTALL
         )
         if firewall_block is None:
-            self.fail("no Firewall paragraph in the mapping section")
+            self.fail("no Firewall provenance paragraph in the mapping section")
         body = firewall_block.group(1)
         self.assertRegex(body, r"United Nations Security Agency|UNSA")
-        self.assertRegex(body, r"operational|intelligence")
-        self.assertNotRegex(body, r"deliberately undecided|not yet exist")
+        self.assertRegex(body, r"no longer uses|superseded")
+        self.assertRegex(body, r"design/provenance|design reference")
+
 
     def test_titans_are_recorded_as_undecided(self) -> None:
         self.assertIn("TITANs", self.mapping, "TITANs absent from the mapping section")
@@ -185,7 +185,7 @@ class ConversionGapTests(unittest.TestCase):
         self.assertIn("Great Firewall", self.mapping)
         self.assertRegex(
             self.mapping,
-            r"unrelated use of the words|not this organisation",
+            r"unrelated|internet-control system",
             "the mapping does not distinguish EP Firewall from the Great Firewall",
         )
 

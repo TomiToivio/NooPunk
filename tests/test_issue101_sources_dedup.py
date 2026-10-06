@@ -151,7 +151,7 @@ class RulebookShapeTests(unittest.TestCase):
         core, appendix = text.split("# Extended canon and reference material", 1)
         core_numbers = [int(n) for n in re.findall(r"(?m)^##\s+(\d+)\.", core)]
         ledger_numbers = [int(n) for n in re.findall(r"(?m)^##\s+(\d+)\.", appendix)]
-        self.assertEqual(core_numbers, list(range(1, 9)),
+        self.assertEqual(core_numbers, list(range(1, 10)),
                          f"core chapter numbering drifted: {core_numbers}")
         self.assertEqual(ledger_numbers, list(range(1, max(ledger_numbers) + 1)),
                          f"compatibility-ledger numbering has a gap: {ledger_numbers}")
