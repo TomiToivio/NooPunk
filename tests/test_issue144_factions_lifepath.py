@@ -57,7 +57,7 @@ class UNSATests(unittest.TestCase):
 
 class CharacterGenerationTests(unittest.TestCase):
     def test_chapter_exists(self):
-        self.assertIn("## 9. Character Generation", BOOK)
+        self.assertIn("## Character Generation", BOOK)
         self.assertIn("choose", BOOK.lower())
         self.assertIn("roll randomly", BOOK.lower())
 
