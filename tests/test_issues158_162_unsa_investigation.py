@@ -29,8 +29,12 @@ class UNSAAcademyTests(unittest.TestCase):
         self.assertNotIn("Psionics", ACADEMY["universal_skills"])
 
     def test_equipment_stays_stat_free(self):
-        self.assertIn("Numeric equipment statistics remain undefined", CYBER)
-        self.assertNotIn('"damage"', (ROOT / "data" / "rules" / "unsa_academy.json").read_text(encoding="utf-8"))
+        # Fixed by issue #164: the chapter says "Equipment statistics remain undefined";
+        # the "Numeric ..." wording lives in the academy JSON, not the chapter.
+        self.assertIn("Equipment statistics remain undefined", CYBER)
+        academy_text = (ROOT / "data" / "rules" / "unsa_academy.json").read_text(encoding="utf-8")
+        self.assertIn("Numeric equipment statistics remain undefined", academy_text)
+        self.assertNotIn('"damage"', academy_text)
 
 
 class InvestigationDoctrineTests(unittest.TestCase):

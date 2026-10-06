@@ -11,19 +11,23 @@ class Issue110CampaignSkillsTest(unittest.TestCase):
         profile = json.loads((ROOT / "data/rules/campaign_skill_fields.json").read_text())
         fields = profile["fields"]
 
-        self.assertEqual(fields["Pilot"], ["Space"])
-        self.assertEqual(fields["Medicine"], ["Emergency Care", "Forensics"])
+        # Re-baselined by issue #164: #159/#160 locked the canonical skill vocabulary
+        # and rewrote this profile, so the guard now asserts the resolved profile
+        # instead of the pre-#160 Eclipse Phase-derived names.
+        self.assertEqual(fields["Pilot"], ["Ground Vehicles", "Aircraft", "Spacecraft", "Drones"])
+        self.assertIn("Emergency Medicine", fields["Medicine"])
+        # Forensics is a standalone canonical Skill under §4.1, not a Medicine field.
+        self.assertNotIn("Forensics", fields["Medicine"])
         self.assertIn("Psychotronics", fields["Hardware"])
 
         required_know = {
-            "Investigation",
             "Psychology",
-            "Law Enforcement",
-            "Intelligence",
-            "Counterintelligence",
+            "Law",
+            "NHI Studies",
+            "X-Risk Studies",
+            "Noetics",
             "Quantum Information Panpsychism",
             "Parapsychology",
-            "NHI Studies",
         }
         self.assertTrue(required_know.issubset(set(fields["Know"])))
         self.assertEqual(fields["Exotic Skill"], [])

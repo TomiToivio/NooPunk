@@ -4951,32 +4951,13 @@ anti-coup safeguards.
 
 Issue #110 defines the specialist-skill content needed by the initial Helsinki / UNSA campaign. Issue #111 supersedes #110's assumption that Eclipse Phase percentile mechanics remain the active chassis: NoöPunk now treats these names and fields as **content design** to be expressed through the independent **1–10 Skill** system and the core `STAT + Skill + 1d10` resolution rule.
 
-The final universal NoöPunk skill list remains deferred. For the first campaign, however, the following Eclipse Phase-derived vocabulary is a useful provisional baseline because it already covers the kinds of actions the campaign needs:
+**Resolved.** The final universal NoöPunk skill list is no longer deferred: issue #159 locks the canonical 40-skill vocabulary in §4.1 and `data/rules/skills.json`, and `data/rules/core.json` mirrors it. This section is retained as the campaign-scoped **field** layer beneath that canonical list.
 
-- Athletics
-- Deceive
-- Exotic Skill (Field)
-- Fray
-- Free Fall
-- Guns
-- Hardware (Field)
-- Infiltrate
-- Infosec
-- Interface
-- Kinesics
-- Know (Field)
-- Medicine (Field)
-- Melee
-- Perceive
-- Persuade
-- Pilot (Field)
-- Program
-- Provoke
-- Psi
-- Research
-- Survival
+The following Eclipse Phase-derived vocabulary was an earlier provisional baseline. It is **superseded by §4.1** and preserved here only as history:
 
-These names are not a commitment to Eclipse Phase numerical mechanics, linked aptitudes, defaulting rules, or percentile values. They are provisional skill concepts pending the final independent NoöPunk list.
+> Athletics, Deceive, Exotic Skill (Field), Fray, Free Fall, Guns, Hardware (Field), Infiltrate, Infosec, Interface, Kinesics, Know (Field), Medicine (Field), Melee, Perceive, Persuade, Pilot (Field), Program, Provoke, Psi, Research, Survival.
+
+These names are not a commitment to Eclipse Phase numerical mechanics, linked aptitudes, defaulting rules, or percentile values. They are superseded skill concepts; the canonical independent NoöPunk list is §4.1.
 
 ### 39.1 Campaign-scoped field rule
 
@@ -4984,26 +4965,26 @@ These names are not a commitment to Eclipse Phase numerical mechanics, linked ap
 
 Do not preload giant specialty catalogs. Add a field when a character concept, scenario, location, profession, or piece of equipment creates a genuine need for it. This keeps character sheets, NPC descriptions, deterministic rules data, and LLM prompts compact.
 
-For the initial Helsinki / UNSA campaign, the default profile is:
+For the initial Helsinki / UNSA campaign, the default profile is the §4.1 field set recorded in `data/rules/campaign_skill_fields.json` (issue #159). It replaces the superseded Eclipse Phase-derived field names — `Pilot (Space)`, `Medicine (Emergency Care)`, `Know (Investigation)`, `Know (Law Enforcement)`, `Know (Intelligence)` — with the canonical equivalents:
 
-- **Pilot (Space)**
-- **Medicine (Emergency Care)**
-- **Medicine (Forensics)**
+- **Pilot (Ground Vehicles / Aircraft / Spacecraft / Drones)**
+- **Medicine (Emergency Medicine / Forensics / …)**
 - **Hardware (Psychotronics)**
-- **Know (Investigation)**
 - **Know (Psychology)**
-- **Know (Law Enforcement)**
-- **Know (Intelligence)**
-- **Know (Counterintelligence)**
+- **Know (Law)** (replaces the old `Know (Law Enforcement)`)
+- **Know (NHI Studies)**
+- **Know (X-Risk Studies)**
+- **Know (Noetics)**
 - **Know (Quantum Information Panpsychism / QIP)**
 - **Know (Parapsychology)**
-- **Know (NHI Studies)**
 
 Additional Hardware and Exotic Skill fields are character- or scenario-specific rather than universal.
 
 Possible later Belt Hardware fields include Electronics, Robotics, Industrial, Spacecraft, Mining, and Life Support, but these are **not automatically active** merely because they are plausible.
 
 ### 39.2 Core investigative and Noetic knowledge fields
+
+> **Mapping note (issues #159 / #164).** The knowledge-field paragraphs below describe the *conceptual* coverage the campaign needs. Under §4.1 several of them are now canonical **skills** rather than Know fields — `Investigation`, `Research`, `Intelligence Analysis`, `Counterintelligence`, `Perceive` and `Kinesics` — while `Know (Psychology)`, `Know (NHI Studies)`, `Know (Parapsychology)` and `Know (QIP)` remain Know fields. Read the historical `Know (Investigation)`, `Know (Intelligence)` and `Know (Counterintelligence)` labels below as superseded names for those skills.
 
 **Know (Investigation)** covers case reconstruction, investigative procedure, evidence interpretation, interview planning, investigative strategy, and linking facts across a case.
 
