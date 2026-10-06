@@ -12,6 +12,21 @@ ORG = (ROOT / "data" / "world" / "organizations.yaml").read_text(encoding="utf-8
 SCHEMA = json.loads((ROOT / "data" / "world" / "social_affect_schema.json").read_text(encoding="utf-8"))
 
 
+def _canon_prose(document: str) -> str:
+    """The canonical prose, excluding the Change ledger section.
+
+    The ledger (§27) legitimately *quotes* superseded tokens to record the change, so it
+    must not be scanned for them. Exclude only that section's span: a naive
+    ``split("## 27. Change ledger")[0]`` also drops everything AFTER the ledger, which
+    hides the later chapters (§33, §39) where stale prose actually survived.
+    """
+    before, sep, rest = document.partition("## 27. Change ledger")
+    if not sep:
+        return document
+    after = rest.partition("\n## ")[2]  # resume at the next `## ` heading (§28)
+    return before + after
+
+
 class HelsinkiScopeTests(unittest.TestCase):
     def test_default_campaign_is_helsinki_centered(self):
         self.assertIn("default NoöPunk campaign is centered on **Helsinki**", BOOK)
@@ -66,6 +81,19 @@ class FactionMechanicsTests(unittest.TestCase):
             self.assertIn("two or three factions", " ".join(text.lower().split()))
             self.assertIn("6/4", text)
             self.assertIn("5/3/2", text)
+
+    def test_rulebook_prose_uses_the_ten_point_scale(self):
+        """Issue #144 normalises every Affect/Contact/Reputation score to -10..+10.
+
+        The merged PR left the RULEBOOK.md prose describing the Affect graph as
+        ``-100 to +100`` while the data, schema and chapter all said -10..+10: the book
+        contradicted the machine-readable canon. This is the *graph* scale; the separate
+        Law-of-One **Polarization** axis (§9.3, ``-100 ... 0 ... +100``) is a different
+        subsystem and deliberately keeps its wider band.
+        """
+        prose = _canon_prose(BOOK)  # the ledger quotes the old scale on purpose
+        self.assertNotIn("-100 to +100", prose)
+        self.assertIn("-10 to +10", prose)
 
     def test_taxonomy_separates_nhi_ontology_from_faction(self):
         for term in ("Political", "Criminal", "Civil Society", "Religious",
