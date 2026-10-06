@@ -87,15 +87,15 @@ The earlier issue #17 BCI / Compute / Connection / Infosec cyberspace modifier f
 Until explicitly specified, do not define:
 - derived statistics, or any per-layer STAT lists beyond the six base STATs locked by issue #131
 - new specialist fields beyond those explicitly enabled by issue #159, a campaign profile, or a character/scenario requirement
-- how many skills a starting character has, or at what levels
-- character creation beyond the Lifepath framework and Reputation allocation explicitly specified by issue #144
+- how many skills a starting character has, or at what levels, **except** the Helsinki / UNSA Police Academy baseline explicitly specified by issue #158
+- character creation beyond the Lifepath framework and Reputation allocation explicitly specified by issue #144, **except** the issue #158 academy-training package that fills Lifepath step 13
 - character classes or archetypes
 - combat resolution
 - damage, health, wounds, armor, or initiative
-- psionic powers or psionic mechanics
+- psionic powers or psionic mechanics; issue #158 may grant universal **Psychic Defence training and qualitative protective equipment**, but does not define powers, ranges, costs or a PSI subsystem
 - NHI taxonomy or capabilities
-- cyberware / augmentation rules
-- equipment statistics
+- cyberware / augmentation rules, **except** the qualitative, campaign-scoped UNSA standard augmentation capability package defined by issue #158; numeric cyberware statistics remain reserved
+- equipment statistics; issue #158 may define standard carried/mission-issued **equipment categories and capabilities**, but not numeric gear modifiers, damage, armor or prices
 - economy
 - advancement / XP
 - factions beyond the taxonomy and Helsinki-scoped campaign rules explicitly specified by issues #107, #122 and #144
