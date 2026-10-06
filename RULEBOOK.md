@@ -5253,3 +5253,125 @@ The transformed Chinese communist tradition contributes an unstable synthesis of
 The Multitude is intentionally sprawling, argumentative, and theoretically over-equipped.
 
 These four blocs are hooks for NPC allegiance, Affect/Reputation edges, elections, lobbying, diplomacy, scandals, and mission conflicts. The parliamentary party system remains explicitly open for later additions.
+
+
+---
+
+## 43. Faction taxonomy, schema, and NHI type vs faction (#144)
+
+**Status: NOÖPUNK NATIVE — issue #144.** The default-campaign framing, the UNSA rename and
+the Character Generation chapter landed in §§38–39 and Chapter 9; this section records the
+**faction-model half** of the same issue: the types the faction machinery can represent, the
+generic schema every faction is documented with, and the strict separation of an NHI's
+ontology from its politics.
+
+### 43.1 Faction as the umbrella concept
+
+**Faction** is the umbrella gameplay concept. All factions use the same machinery regardless
+of organizational form: Reputation, Contacts, Motivations, Affect, ideology, allies and
+enemies, network position, resources, and parent/subfaction relationships (§17,
+`rulebook/8_FACTIONS.md`). A faction is *any* social, political, economic or ideological
+formation the system can represent.
+
+The taxonomy below defines the **types the system can represent** — not a demand to populate
+the rulebook with dozens of organizations. The default campaign keeps only a small number of
+factions directly relevant to play (§9.3, §38).
+
+### 43.2 The faction types
+
+The taxonomy is **expandable**, not exhaustive, and hybrid or multiply-classified factions
+are normal. The primary type is mainly for rules and navigation, not a rigid ontology.
+
+| Type | Examples |
+| --- | --- |
+| **Political** | Parties, electoral coalitions, ideological and activist movements, revolutionary or insurgent movements, lobbying blocs, politically acting think tanks. May be institutional or informal. |
+| **Criminal** | Street gangs, mafias, cartels, smuggling networks, hacker gangs, black-market organizations, criminal mercenary networks. Hybrid political/criminal factions are allowed. |
+| **Civil society and knowledge** | NGOs, universities, research institutes, foundations, professional associations, scientific networks, advocacy organizations, media. "Academic", "research" and "knowledge" are **tags**, not separate top-level types. |
+| **Religious and esoteric** | Churches, religions, denominations, cults, mystery schools, occult orders, new religious movements, psychic schools. Some groups socially labelled "cults" may have genuine contact with Noetics or other NHI, while major religions may read the same phenomena through very different frameworks. |
+| **Corporate** | Corporations, conglomerates, startups, cooperatives, corporate alliances, platform companies, private military/security companies, megacorporations. The organizational type does **not** imply ideology: a cooperative and a megacorp are both corporate factions. |
+| **Governmental** | States and their agencies, modelled with a **scale** field rather than separate systems. |
+| **NHI** | Non-human factions and civilizations (§43.4). |
+
+**Governmental scale.** Use one field with the values **Local** (e.g. Helsinki), **Regional**
+(e.g. Uusimaa), **Nation-state** (e.g. Finland), **Federal / supranational** (e.g. the EU),
+**Global / planetary** (e.g. the UN), and **Interplanetary / Solar System** where later
+relevant. A government agency can be an independent nested faction: Finland is a faction,
+Suojelupoliisi is a faction inside Finland, the EU is a faction, Europol is a faction inside
+the EU, the UN is a faction, and **UNSA** is a faction inside the emerging global federal
+structure (§38). Different agencies of the same government keep their own Reputation,
+conflicts, alliances and internal politics.
+
+Example classifications:
+
+- Europol = Governmental / Supranational / Law Enforcement / Intelligence;
+- a psychic UFO cult = Religious / Noetic / Transnational / Networked.
+
+### 43.3 The generic faction schema
+
+Every faction — human or NHI — is documented with the same fields:
+
+- **Name**;
+- **Faction type** (one primary, plus tags);
+- **Scale** (for governmental factions, and where useful otherwise);
+- **Territory / domain**;
+- **Members / constituents**;
+- **Ideology** (the US + FRONTIER articulation, `rulebook/8_FACTIONS.md`);
+- **Motivations**;
+- **Reputation**;
+- **Contacts**;
+- **Allies**;
+- **Enemies**;
+- **Network position**;
+- **Institutional resources**;
+- **Parent faction**;
+- **Subfactions**;
+- **Relevant tags**.
+
+NHI factions carry four additional fields: **dominant NHI substrate/type** (§43.4);
+**civilization / species / lineage**; **polarization or ethical orientation** (the separate
+Law-of-One continuum, §9.3); and **relationship to humanity** and to **quarantine /
+Disclosure**. Multiple classifications and tags are allowed throughout.
+
+### 43.4 NHI type vs NHI faction
+
+NoöPunk draws a strict distinction between:
+
+- an **NHI type / ontology** — what kind of thing an entity is; and
+- an **NHI faction / political organization** — who it sides with and how it is organized.
+
+> **An NHI's substrate or type does not determine its political allegiance.** A type may
+> contain allies, enemies and neutrals at once, exactly as humans do.
+
+The four established **core types** remain the clearest classes:
+
+- **Biologics** — evolved or engineered living organisms;
+- **Constructs** — artificial/machine intelligences and autonomous manufactured entities;
+- **Plasmoids** — plasma/field-like intelligences with uncertain individuality;
+- **Noetics** — primarily consciousness-based beings.
+
+Useful **extended categories / descriptors**; some are better treated as cross-cutting
+descriptors than as formal classes:
+
+- **Process Intelligences** — intelligence exists primarily as an ongoing process rather
+  than a discrete organism. This is the strongest candidate for an additional formal class.
+- **Ecologies** — an ecosystem is the relevant intelligent entity;
+- **Assemblages** — intelligence emerges from heterogeneous interacting components;
+- **Collectives** — swarm minds, hive minds, civilization-scale or distributed minds;
+- **Geotics** — consciousness or intelligence instantiated in apparently ordinary matter or
+  planetary/stellar structures;
+- **Hybrids / Composite entities** — combinations across substrate classes;
+- **Anomalies / Unclassified** — phenomena whose ontology cannot be established reliably.
+
+NHI factions may take the form of civilizations, polities, coalitions, swarms, hives,
+machine polities, Noetic collectives, expeditions, religious orders, commercial networks,
+dissident movements and other organizational forms.
+
+Example classification (type and descriptors, never allegiance):
+
+| Entity | Classification |
+| --- | --- |
+| Confederacy Garden Mind 7 | Noetic + Process + Collective + Distributed |
+| Orion reconnaissance probe | Construct + Individual + Embodied |
+| Sentient Jovian plasma ecology | Plasmoid + Ecology + Distributed |
+| Earth Noösphere | Noetic + Process + Collective + Planetary |
+| An unresolved anomalous case | ANOMALY / classification disputed |
