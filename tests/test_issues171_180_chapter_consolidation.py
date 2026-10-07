@@ -15,6 +15,7 @@ Run: python3 -m unittest discover -s tests -p "test_*.py"
 from __future__ import annotations
 
 from pathlib import Path
+import re
 import unittest
 
 
@@ -27,24 +28,42 @@ def flat(relative: str) -> str:
     return " ".join(text.split()).lower()
 
 
+def rulebook_section(number: int) -> str:
+    """Return one numbered top-level RULEBOOK section, preserving its local text."""
+    text = (ROOT / "RULEBOOK.md").read_text(encoding="utf-8")
+    match = re.search(
+        rf"^## {number}\. .*?(?=^## \d+\. |\Z)",
+        text,
+        flags=re.MULTILINE | re.DOTALL,
+    )
+    if match is None:
+        raise AssertionError(f"RULEBOOK section {number} not found")
+    return match.group(0)
+
+
 class HarmLadderTests(unittest.TestCase):
     def test_wound_ladder_exists(self) -> None:
         text = flat("RULEBOOK.md")
-        self.assertIn("## 52. physical harm: a light ladder", text)
+        self.assertIn("## 51. physical harm: a light ladder", text)
         for state in ("scratched", "wounded", "critical", "down"):
             with self.subTest(state=state):
                 self.assertIn(state, text)
 
     def test_harm_rules_stay_non_numeric(self) -> None:
-        text = flat("RULEBOOK.md")
-        self.assertIn("explicit design questions", text)
-        self.assertIn("armor", text)
+        section = rulebook_section(51).lower()
+        self.assertIn("consequence vocabulary", section)
+        self.assertIn("explicit design questions", section)
+        self.assertNotRegex(section, r"\b\d+d\d+\b")
+        self.assertNotRegex(
+            section,
+            r"\b(?:damage|armor|armour|hp|health)\s*(?:=|:|\+|-)\s*\d+\b",
+        )
 
 
 class EquipmentListTests(unittest.TestCase):
     def test_top_level_equipment_list(self) -> None:
         text = flat("RULEBOOK.md")
-        self.assertIn("## 53. equipment (list)", text)
+        self.assertIn("## 52. equipment (list)", text)
         for category in ("weapons", "armor and protection", "tools, sensors and vehicles"):
             with self.subTest(category=category):
                 self.assertIn(category, text)
@@ -78,8 +97,8 @@ class CrossReferenceTests(unittest.TestCase):
 
     def test_physical_chapter_points_at_canon(self) -> None:
         phys = flat("rulebook/3_PHYSICAL.md")
+        self.assertIn("§51", phys)
         self.assertIn("§52", phys)
-        self.assertIn("§53", phys)
         self.assertIn("9_field_catalogs.md", phys)
 
 
