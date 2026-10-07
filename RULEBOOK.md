@@ -4631,11 +4631,28 @@ entanglement / coherence / resonance rather than kilometres.
 ### 36.9 Relationship to the modular worldbook chapters
 
 The modular worldbook under [`rulebook/`](rulebook/) carries one chapter per layer
-(`3_PHYSICAL.md`, `4_SOCIAL.md`, `5_CYBERNETIC.md`, `6_PSYCHIC.md`), plus
-`2_ATTRIBUTES.md` for the character-statistics side. Those chapters are the
+([`3_PHYSICAL.md`](rulebook/3_PHYSICAL.md), [`4_SOCIAL.md`](rulebook/4_SOCIAL.md),
+[`5_CYBERNETIC.md`](rulebook/5_CYBERNETIC.md), [`6_PSYCHIC.md`](rulebook/6_PSYCHIC.md)), plus
+[`2_ATTRIBUTES.md`](rulebook/2_ATTRIBUTES.md) for the character-statistics side,
+[`7_TIMELINE.md`](rulebook/7_TIMELINE.md) for the background paradigm shifts and
+[`8_FACTIONS.md`](rulebook/8_FACTIONS.md) for faction terminology. Those chapters are the
 per-layer companion to this section; this section is the authoritative statement of the
 ontology, and the chapters should summarize it rather than fork it. §33 records the
 in-world canon that the ontology frames.
+
+The reference chapters that follow the same pattern, and that the author requested on
+2026-10-07, are:
+
+| Chapter | Contents | Source issues |
+| --- | --- | --- |
+| [`10_SINGULARITY_CRISIS.md`](rulebook/10_SINGULARITY_CRISIS.md) | The Singularity Crisis, the three surviving ASI outcomes (Noösphere / Panopticon / Thanatos), cyborgist intelligence theory and the two Singularities | #177, #178, #180 |
+| [`11_ONTOLOGY.md`](rulebook/11_ONTOLOGY.md) | The seven densities, vehicle-vs-entity, cryptoterrestrials, plasmoids, thought-forms, the Higher Self and the Sphere Network | #179 |
+| [`12_BEINGS.md`](rulebook/12_BEINGS.md) | The working catalogue of kinds of being, hybrids, the identity-verification procedure and the class conflict | #171, #172, #179, #180 |
+| [`13_EQUIPMENT.md`](rulebook/13_EQUIPMENT.md) | Equipment, cybernetic implants and psychotronic devices — descriptive lists, no statistics | #180 and the author directive |
+| [`14_CHARACTER_GENERATION.md`](rulebook/14_CHARACTER_GENERATION.md) | The character-generation section: origins, backgrounds, training paths and the character-as-assemblage summary | #144 and the author directive |
+
+These chapters are **descriptive lists with light descriptions, as the author specified**;
+they define no numeric statistics and no new subsystems.
 
 ### 36.10 Issue #74 Concordia / EP2 experiment
 
