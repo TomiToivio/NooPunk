@@ -4650,6 +4650,7 @@ The reference chapters that follow the same pattern, and that the author request
 | [`12_BEINGS.md`](rulebook/12_BEINGS.md) | The working catalogue of kinds of being, hybrids, the identity-verification procedure and the class conflict | #171, #172, #179, #180 |
 | [`13_EQUIPMENT.md`](rulebook/13_EQUIPMENT.md) | Equipment, cybernetic implants and psychotronic devices — descriptive lists, no statistics | #180 and the author directive |
 | [`14_CHARACTER_GENERATION.md`](rulebook/14_CHARACTER_GENERATION.md) | The character-generation section: origins, backgrounds, training paths and the character-as-assemblage summary | #144 and the author directive |
+| [`15_XENOPOLITICS.md`](rulebook/15_XENOPOLITICS.md) | Xenopolitics after the NHI Crisis: two-faction situation, reconstruction, the Confederacy religious explosion, the Orion hybrid panic, human reactions and campaign hooks | #187 |
 
 These chapters are **descriptive lists with light descriptions, as the author specified**;
 they define no numeric statistics and no new subsystems.
@@ -5832,3 +5833,59 @@ reservation, AGENTS.md §4).
 **Availability.** In the default Helsinki/UNSA campaign, ordinary kit is issued; heavy weapons,
 armor, vehicles and containment systems are **mission-issued**, not permanent personal
 inventory. Everything else is availability- and legality-gated in fiction.
+
+---
+
+## 53. Xenopolitics after the NHI Crisis (#187)
+
+**Status: NOÖPUNK NATIVE lore.** Ten years after the NHI Crisis, Earth is a **reconstruction
+world under unresolved xenopolitical pressure**, with two major non-human factions present
+and neither reducible to an ally or an enemy. The full chapter is
+[`rulebook/15_XENOPOLITICS.md`](rulebook/15_XENOPOLITICS.md).
+
+### 53.1 Catastrophe, not Fall
+
+The Crisis was a **near-extinction event with regional holocausts, not a global Fall**.
+Earth remains inhabited and politically central (§33.1, §33.28); the rogue-AGI disasters are
+"severe but uneven rather than a single planet-destroying Fall". What makes the era
+postapocalyptic is not a dead planet but a wounded one: partly rebuilt cities, exclusion
+zones, a biosphere under active restoration, a broken political order, and roughly a billion
+people dead, displaced, or missing from any registry still trusted.
+
+### 53.2 Two factions, both helping
+
+**Both major NHI blocs want Earth to remain a living world with a functioning biosphere and
+a surviving human population.** A dead Earth serves no one — not as a garden, a proving
+ground, a market, a congregation or a ward. So both provide genuine relief: medicine, food
+and water, decontamination, biosphere restoration, grid rebuilding, and defence against
+surviving rogue AI.
+
+> **An NHI actor may save millions of lives and still hold deeply coercive long-term goals.**
+
+- The **Confederacy / Council** faction appears as humanity's obvious saviors: intervention,
+  reconstruction, PSI and consciousness technologies, selective disclosure, and a
+  paternalism that grows resented. Its arrival detonates a **mass Law of One-style religious
+  movement** — among the largest new movements on Earth within a decade — while quarantine
+  and non-interference rules become politically explosive.
+- The **Orion Group** also rebuilds where it profits, while running abductions, hybridization,
+  infiltration, psychic coercion, elite capture and Men in Black operations. Undeniable NHI
+  existence made the hybridization programme much harder to dismiss, producing a **hybrid
+  panic** in which infiltration and xenophobic paranoia are genuinely hard to separate.
+
+### 53.3 The sovereignty question
+
+> **Who has legitimate sovereignty over Earth after nonhuman powers demonstrably saved
+> humanity from extinction?**
+
+Human reactions do not converge: gratitude, devotion, collaboration, rejection, insurgency,
+denial, human supremacism, pro-hybrid civil-rights movements, and demands for both total
+disclosure and renewed secrecy all coexist. A major fault line is whether **the two factions
+are genuinely distinct** at all — or whether humans are pawns in an alien civil war, or
+whether one faction invented the other. The setting resolves none of this: the ambiguity is
+structural, and both factions have an interest in it persisting.
+
+### 53.4 What this section does not define
+
+No faction mechanics, no reputation formulas, no NHI capabilities or stat blocks, no economy,
+no combat or vehicle rules, and no canonical chronology — the sequence is structural
+(§33.28a). The chapter is lore and light description only, consistent with `AGENTS.md` §4.
