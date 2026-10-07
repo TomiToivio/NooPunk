@@ -27,6 +27,15 @@
 9. [Character Generation](#9-character-generation)
 10. [Extended canon and reference material](#extended-canon-and-reference-material)
 11. [Field catalogs: characters, gear, implants, PSI and beings](rulebook/9_FIELD_CATALOGS.md)
+12. [Physical harm: a light ladder](#51-physical-harm-a-light-ladder-171180)
+13. [Equipment (list)](#52-equipment-list)
+
+Per-domain detail chapters:
+
+- [rulebook/3_PHYSICAL.md](rulebook/3_PHYSICAL.md) — harm, equipment, bodies
+- [rulebook/5_CYBERNETIC.md](rulebook/5_CYBERNETIC.md) — implants, psychotronics, resleeving
+- [rulebook/6_PSYCHIC.md](rulebook/6_PSYCHIC.md) — PSI powers, psychotronics, sleep, Seity, Noöspace
+- [rulebook/9_FIELD_CATALOGS.md](rulebook/9_FIELD_CATALOGS.md) — character, gear, implant, PSI and being catalogs
 
 ---
 
@@ -5127,7 +5136,7 @@ researchers, intelligence services, and technical institutions use it in formal 
 Everybody else, and plenty of field operatives when the scientists are not listening,
 still calls it **the Astral Plane**. Both names refer to the same underlying domain.
 
-#### 44.4.1 Perception as direct access to the Conscious Agent Network
+#### 40.4.1 Perception as direct access to the Conscious Agent Network
 
 In NoöPunk, OOBE, remote viewing, PSI, lucid dreams, meditation, psychedelics, DMT,
 psychotronics, QIP interfaces, ritual, and some NHI contact can provide access to
@@ -5152,7 +5161,7 @@ Agent. Their morphing impossible geometry may reflect perceptual translation: a 
 brain compressing high-dimensional conscious information into an interface it can render.
 Their apparent bodies need not be ordinary anatomy.
 
-#### 44.4.2 Law of One correspondence
+#### 40.4.2 Law of One correspondence
 
 Law-of-One **Space/Time** corresponds broadly to ordinary physical spacetime and
 **Time/Space** corresponds broadly to Noöspace. Do not force every Law-of-One metaphysical
@@ -5160,7 +5169,7 @@ detail into a one-to-one scientific mapping. Preserve the central NoöPunk idea 
 physical and consciousness-oriented reality are complementary presentations of a deeper
 structure.
 
-#### 44.4.3 Noetic topology: near, collective, biospheric, Noöspheric, deep
+#### 40.4.3 Noetic topology: near, collective, biospheric, Noöspheric, deep
 
 Noöspace does not use ordinary Euclidean distance. "Near" and "far" are practical human
 metaphors for **resonance, informational distance, entanglement, familiarity, symbolic
@@ -5202,7 +5211,7 @@ rule is:
 
 > **The deeper Noöspace becomes, the less reliable human categories become.**
 
-#### 44.4.4 Why Noöspace looks psychedelic
+#### 40.4.4 Why Noöspace looks psychedelic
 
 Noöspace often resembles intense multidimensional psychedelic experience: hyperbolic
 geometry, impossible architecture, recursive patterns, self-transforming objects,
@@ -5214,7 +5223,7 @@ spacetime interface is attempting to render high-dimensional Noetic information.
 psychedelic aesthetic is therefore frequently a **compression artifact**, not mere
 decoration.
 
-#### 44.4.5 Navigation and access
+#### 40.4.5 Navigation and access
 
 Robert Monroe and Thomas Campbell are major practical inspirations for Noöspace
 navigation. Access can involve meditation, sleep-state transitions, sensory deprivation,
@@ -5233,7 +5242,7 @@ partial techniques or region-specific maps. They may describe overlapping phenom
 through different cosmologies, mix observation with cultural metaphor, or sometimes help
 generate the environments they claim merely to observe.
 
-#### 44.4.6 Extraterrestrial versus interdimensional
+#### 40.4.6 Extraterrestrial versus interdimensional
 
 Use **extraterrestrial** operationally when stable material evidence dominates: craft,
 manufactured artifacts, bodies, biologics, genetics, physical infrastructure, or
@@ -5247,7 +5256,7 @@ without stable recoverable bodies or technology.
 These labels describe **mode of manifestation, not ultimate species identity**. One
 intelligence may manifest both materially and Noetically.
 
-#### 44.4.7 Interdimensional Zones
+#### 40.4.7 Interdimensional Zones
 
 Some anomalous Zones are places where Noöspace leaks strongly into physical spacetime.
 Possible effects include persistent shared visions, dream contamination, impossible
@@ -5257,7 +5266,7 @@ entities, altered topology, identity or memory instability, and psychotronic wea
 Classify these as **interdimensional Zones**. The stronger the overlap, the less reliable
 ordinary physical assumptions become.
 
-#### 44.4.8 Terminology
+#### 40.4.8 Terminology
 
 Preferred formal terms include **Noöspace**, **Noetic Reality**, **Noetic Reality Frame**,
 **Focus State**, **Conscious Agent**, **Noetic Entity**, **QIP interface**, **Noetic
@@ -5736,3 +5745,73 @@ in which each subsystem continues according to its own logic.
 For now these ideas are valid lore/scenario concepts and design research only. Do not add
 numeric Seity ratings, new base STATs or a general subsystem-disconnection rules engine
 without later author direction.
+
+---
+
+## 51. Physical harm: a light ladder (#171–#180)
+
+**Status: harm-state vocabulary; full combat and damage resolution deferred.** This is a
+**fiction-first consequence vocabulary**, not a hidden damage engine. A successful attack does
+not automatically select or advance a state, and repeated harm does not automatically step a
+character along the list. Until the author defines the combat/damage subsystem, the GM records
+the state that is already established by the fiction, scenario consequence, or explicit
+mechanic elsewhere. The states are temporary Physical statuses (Chapter 5):
+
+| State | Meaning |
+| --- | --- |
+| **Scratched** | Superficial; an inconvenience. |
+| **Wounded** | A real injury; relevant actions are harder and the character is in danger. |
+| **Critical** | Out of the fight without immediate help. |
+| **Down** | Dying or dead without intervention. |
+
+**Mitigation** is by **armor** and cover, rated by what they resist in plain terms (ballistic,
+kinetic, energy, environmental) rather than an abstract number. **First Aid** stabilises and
+can move a wound one step up the ladder; **Medicine** (a fielded Skill) treats deeper damage.
+**Non-lethal** restraint, subdual and less-lethal options are first-class — this is a game
+about investigators who must justify force (Chapter 9; `docs/design/DEFAULT_INVESTIGATION_FANTASY.md`).
+
+Exact transition rules, dice, damage values, armor ratings, initiative and healing times remain
+**explicit design questions** and are not invented here.
+
+---
+
+## 52. Equipment (list)
+
+**Status: light catalogue — availability and function, not statistics.** The full equipment
+catalogue is `rulebook/9_FIELD_CATALOGS.md` §2. This list is the top-level vocabulary so play
+and NPC generation share terms; numeric statistics remain undefined by design (an author-owned
+reservation, AGENTS.md §4).
+
+### Weapons
+
+| Category | Examples | Notes |
+| --- | --- | --- |
+| Sidearms | Service pistol, revolver, holdout, needler | Standard issue; concealable. |
+| Long arms | Carbine, rifle, shotgun, marksman rifle | Mission-issued. |
+| Less-lethal | Stun baton, taser, riot launcher, net, gas | First resort for UNSA. |
+| Melee | Baton, blade, improvised | Quiet, deniable, close. |
+| Beam / energy | Laser, particle, microwave area-denial | High-tech; rare, regulated. |
+| Seeker / smart | Guided micro-munitions, drone-guns | Cybernetic-era; expensive. |
+| Psychotronic | Interference emitters, "affective" weapons | Overlaps Chapter 8 and §46. |
+| Exotic | Anomalous or NHI-derived devices | Plot devices, not shop stock. |
+
+### Armor and protection
+
+- Concealable ballistic vest; plate carrier; riot/breach armor.
+- Environmental suit; NBC/CBRN gear; radiation shielding; vacuum/hardsuit.
+- Psychotronic shielding; helmets, shields, ablative layers.
+
+### Tools, sensors and vehicles
+
+- Restraints, breaching, climbing, evidence collection, portable forensic scanner.
+- Multispectral/thermal/low-light optics; audio/RF surveillance; trackers; CBRN and
+  psychotronic sensors; recon drones (micro to vehicle-scale).
+- Cyberdecks, hardened handhelds, offline storage, secure comms, BCI hardware.
+- Ground, air, water and spacecraft; drones and remote platforms — **vehicles remain a
+  deferred subsystem** (vocabulary, not stat lines).
+- Consumables: medical, performance and psychoactive drugs, booster regimens, power cells,
+  ammunition, spare parts, and services (care, credentials, safehouses).
+
+**Availability.** In the default Helsinki/UNSA campaign, ordinary kit is issued; heavy weapons,
+armor, vehicles and containment systems are **mission-issued**, not permanent personal
+inventory. Everything else is availability- and legality-gated in fiction.
