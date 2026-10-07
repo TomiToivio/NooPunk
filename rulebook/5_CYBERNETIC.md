@@ -106,3 +106,86 @@ A newly graduated field agent normally has access to:
 Heavier armor, specialist weapons, large drones, vehicles, advanced containment systems and other mission-specific hardware are issued as required rather than treated as permanent personal inventory.
 
 This list defines **availability and function only**. Equipment statistics remain undefined.
+
+---
+
+## Cybernetic and psychotronic implants (list)
+
+**Status: light catalogue.** Implants are described by **what they do**, not by a numeric stat
+line. Implants come in invasive (implanted), semi-invasive (wearable) and non-invasive
+(contact/glasses/external-BCI) forms; the UNSA rule is that any capability available as an
+implant should also be available non-invasively where practical (see above). Implant,
+device and agent **hardware properties — COMPUTE, INTERFACE, NETWORK, storage, bandwidth,
+hardening — are properties of the hardware, not character STATs.**
+
+### Somatic and prosthetic
+
+| Implant | Roughly |
+| --- | --- |
+| Prosthetic limb / organ | Replaces or augments a body part; may exceed human baseline. |
+| Myomer / hydraulic musculature | Strength and speed beyond biology. |
+| Dermal / subdermal armor | Integrated protection. |
+| Skeletal reinforcement | Structural toughness. |
+| Reflex co-processor | Heightened reaction (Fray/REF support). |
+| Toxin filters / organ shunt | Resist drugs, poison, fatigue. |
+| Metabolic regulator | Endurance, hunger/sleep management. |
+| Optics / auditory suite | Multispectral sight, ranged hearing, recording. |
+
+### Neural and cognitive
+
+| Implant | Roughly |
+| --- | --- |
+| BCI / neural jack | The core brain–machine bridge. |
+| Cognitive co-processor | Attention, working memory, task orchestration. |
+| Memory buffer / recorder | Capture and replay of experience; evidentiary and legal weight. |
+| Skillsoft driver | Loads procedural competence; shallow but fast. |
+| AI-copilot link | Hosts the embedded agent (see above). |
+| Datalink / comms node | Silent encrypted communication, HUD/AR. |
+
+### Psychotronic
+
+| Implant | Roughly |
+| --- | --- |
+| Psychotronic shield node | Intrusion warning and shielding (supports Psychic Defence). |
+| Noetic amplifier | Boosts trained psi; dangerous without training. |
+| Anomaly sensor | Gross noetic/psychic-residue detection. |
+| Dampener / grounding node | Emergency suppression, cognitive stabilisation. |
+| QIP interface | Frontier consciousness-model research interface. |
+
+### Identity, memory and continuity
+
+| Technology | Roughly |
+| --- | --- |
+| Cortical stack analogue | Anchors or backups identity/memory for recovery. |
+| Backup / restore rig | Restores a mind-state into a body. |
+| Resleeving pipeline | Moves a mind into a cloned or engineered body (see below). |
+| Continuity ledger | Records who is legally *the same person* across bodies. |
+
+**These four are loaded.** Whether they transfer consciousness or only copy memory is an
+**unresolved setting question** (see `6_PSYCHIC.md` §6 and RULEBOOK.md §36). Do not let them
+become an automated resurrection button.
+
+---
+
+## Resleeving, continuity and the immortality gap (lore)
+
+**Status: lore; mechanics deferred.**
+
+Resleeving is common in NoöPunk's NHI lore and central to the Singularity-era politics. Within
+the setting's Law-of-One / ufology-inspired mythology, humans may themselves be descendants of
+consciousnesses transferred into engineered bodies, and some NHI species routinely move minds
+between engineered bodies — so "incarnation" and "resleeving" blur.
+
+The **Orion Group** offers elites cortical-stack-like continuity, resleeving into cloned or
+engineered bodies, radical life extension, backups and hybrid bodies — in exchange for
+infrastructure, secrecy, influence, legal immunity and access. The result is
+**neo-feudal immortality**: the wealthy become biologically replaceable while ordinary people
+remain mortal. Once that trade exists, class conflict becomes existential — *"the ruling class
+stopped dying."*
+
+**Unresolved, and kept unresolved:** does resleeving transfer consciousness or only copy
+memory? Can two valid continuations of one person exist? Is a cortical stack information, or
+does it anchor something? Do the Greys themselves know? Can any ASI detect whether a resleeved
+person is "the same" conscious agent?
+
+> Design rule: resleeving is **horror and politics**, not a respawn mechanic.

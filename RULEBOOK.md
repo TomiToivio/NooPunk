@@ -26,6 +26,15 @@
 8. [Psychic Systems](#8-psychic-systems)
 9. [Character Generation](#9-character-generation)
 10. [Extended canon and reference material](#extended-canon-and-reference-material)
+11. [Types of beings (bestiary)](#44-types-of-beings-bestiary)
+12. [The Singularity Crisis and its three survivors](#45-the-singularity-crisis-and-its-three-survivors)
+13. [Confederation and Orion: opposing metaphysics](#46-confederation-and-orion-opposing-metaphysics)
+
+Per-domain detail chapters:
+
+- [rulebook/3_PHYSICAL.md](rulebook/3_PHYSICAL.md) — harm, equipment, bodies
+- [rulebook/5_CYBERNETIC.md](rulebook/5_CYBERNETIC.md) — implants, psychotronics, resleeving
+- [rulebook/6_PSYCHIC.md](rulebook/6_PSYCHIC.md) — PSI powers, psychotronics, sleep, Seity, Noöspace
 
 ---
 
@@ -5126,7 +5135,7 @@ researchers, intelligence services, and technical institutions use it in formal 
 Everybody else, and plenty of field operatives when the scientists are not listening,
 still calls it **the Astral Plane**. Both names refer to the same underlying domain.
 
-#### 44.4.1 Perception as direct access to the Conscious Agent Network
+#### 40.4.1 Perception as direct access to the Conscious Agent Network
 
 In NoöPunk, OOBE, remote viewing, PSI, lucid dreams, meditation, psychedelics, DMT,
 psychotronics, QIP interfaces, ritual, and some NHI contact can provide access to
@@ -5151,7 +5160,7 @@ Agent. Their morphing impossible geometry may reflect perceptual translation: a 
 brain compressing high-dimensional conscious information into an interface it can render.
 Their apparent bodies need not be ordinary anatomy.
 
-#### 44.4.2 Law of One correspondence
+#### 40.4.2 Law of One correspondence
 
 Law-of-One **Space/Time** corresponds broadly to ordinary physical spacetime and
 **Time/Space** corresponds broadly to Noöspace. Do not force every Law-of-One metaphysical
@@ -5159,7 +5168,7 @@ detail into a one-to-one scientific mapping. Preserve the central NoöPunk idea 
 physical and consciousness-oriented reality are complementary presentations of a deeper
 structure.
 
-#### 44.4.3 Noetic topology: near, collective, biospheric, Noöspheric, deep
+#### 40.4.3 Noetic topology: near, collective, biospheric, Noöspheric, deep
 
 Noöspace does not use ordinary Euclidean distance. "Near" and "far" are practical human
 metaphors for **resonance, informational distance, entanglement, familiarity, symbolic
@@ -5201,7 +5210,7 @@ rule is:
 
 > **The deeper Noöspace becomes, the less reliable human categories become.**
 
-#### 44.4.4 Why Noöspace looks psychedelic
+#### 40.4.4 Why Noöspace looks psychedelic
 
 Noöspace often resembles intense multidimensional psychedelic experience: hyperbolic
 geometry, impossible architecture, recursive patterns, self-transforming objects,
@@ -5213,7 +5222,7 @@ spacetime interface is attempting to render high-dimensional Noetic information.
 psychedelic aesthetic is therefore frequently a **compression artifact**, not mere
 decoration.
 
-#### 44.4.5 Navigation and access
+#### 40.4.5 Navigation and access
 
 Robert Monroe and Thomas Campbell are major practical inspirations for Noöspace
 navigation. Access can involve meditation, sleep-state transitions, sensory deprivation,
@@ -5232,7 +5241,7 @@ partial techniques or region-specific maps. They may describe overlapping phenom
 through different cosmologies, mix observation with cultural metaphor, or sometimes help
 generate the environments they claim merely to observe.
 
-#### 44.4.6 Extraterrestrial versus interdimensional
+#### 40.4.6 Extraterrestrial versus interdimensional
 
 Use **extraterrestrial** operationally when stable material evidence dominates: craft,
 manufactured artifacts, bodies, biologics, genetics, physical infrastructure, or
@@ -5246,7 +5255,7 @@ without stable recoverable bodies or technology.
 These labels describe **mode of manifestation, not ultimate species identity**. One
 intelligence may manifest both materially and Noetically.
 
-#### 44.4.7 Interdimensional Zones
+#### 40.4.7 Interdimensional Zones
 
 Some anomalous Zones are places where Noöspace leaks strongly into physical spacetime.
 Possible effects include persistent shared visions, dream contamination, impossible
@@ -5256,7 +5265,7 @@ entities, altered topology, identity or memory instability, and psychotronic wea
 Classify these as **interdimensional Zones**. The stronger the overlap, the less reliable
 ordinary physical assumptions become.
 
-#### 44.4.8 Terminology
+#### 40.4.8 Terminology
 
 Preferred formal terms include **Noöspace**, **Noetic Reality**, **Noetic Reality Frame**,
 **Focus State**, **Conscious Agent**, **Noetic Entity**, **QIP interface**, **Noetic
@@ -5484,3 +5493,260 @@ Example classification (type and descriptors, never allegiance):
 | Sentient Jovian plasma ecology | Plasmoid + Ecology + Distributed |
 | Earth Noösphere | Noetic + Process + Collective + Planetary |
 | An unresolved anomalous case | ANOMALY / classification disputed |
+
+---
+
+## 44. Types of beings (bestiary)
+
+**Status: light catalogue — lore with light descriptors, not stat blocks.** Issues #179 and #172.
+NoöPunk's ontology is **an investigative problem**: appearance cannot determine what a thing is
+(RULEBOOK.md §43.4, §40.2). Two axes are independent — what an entity *is* (its type, §43.4) and
+its **density** (its level of consciousness/evolution, §44.1).
+
+> **A plasmoid may be complex first-density matter, or a vehicle used by a higher-density
+> intelligence, and appearance alone cannot tell you which.** This is the point.
+
+### 44.1 Density as a level of consciousness
+
+In the Law-of-One-inspired line NoöPunk draws on, **density is a level of consciousness and
+evolution — not a species and not a state of matter.** The working model:
+
+| Density | Theme | NoöPunk reading |
+| --- | --- | --- |
+| 1st | awareness / elemental matter | Panpsychic substrate and elemental processes. Natural plasmoids default here if merely complex matter with primitive awareness. |
+| 2nd | growth / biological life | Plants, animals, instinctive life. A cryptid may use a 2nd-density *body* without its inhabiting consciousness being 2nd density. |
+| 3rd | self-awareness / choice | Humans; also technologically advanced extraterrestrials. "Alien" does **not** imply higher density. |
+| 4th | love / understanding | Strong psi, social-memory-complex formation; positive and negative polarization both possible. Greys may map here by setting interpretation. |
+| 5th | light / wisdom | Very advanced psi and manifestation control; can be individual rather than only collective ("very light beings" still with a vehicle). Mantids/interdimensionals may map here — a NoöPunk reading, not a direct identification. |
+| 6th | unity / higher self | Integration of love and wisdom; the **Higher Self** is explicitly sixth-density and described as the future self; time/space becomes central — a hook for precognition, retrocausality, guidance, synchronicity, meeting one's own future consciousness. Ra itself is 6th density. |
+| 7th | completion / return | Union with the Source; not a playable category. |
+
+**Negative polarity becomes unsustainable around mid-sixth density.** Keep the mapping loose and
+contested; it is in-world theory, not taxonomy fact.
+
+### 44.2 Types and how they manifest
+
+The established core types (RULEBOOK.md §43.4) remain **Biologics / Constructs / Plasmoids /
+Noetics**, with extended descriptors (Process Intelligences, Ecologies, Assemblages, Collectives,
+Geotics, Hybrids, Anomalies). Use **extraterrestrial** when stable material evidence dominates
+and **interdimensional** when manifestation is primarily through Noöspace — **mode of
+manifestation, not ultimate species identity** (§40.4.6).
+
+### 44.3 Catalogue
+
+| Being | Type | Light description |
+| --- | --- | --- |
+| Small Greys | Biologic (Construct-adjacent) | Worker caste; engineered standardized bodies; strong collective cognition; low individual agency; **expendable and repeatedly resleeved** (§44.4). |
+| Tall Greys | Biologic | Higher caste; individual agency, strategy, complex personality; command/research/diplomatic roles; privileged memory continuity. |
+| Orion hybrids | Hybrid | Biological, social, psychic or political blends; may pass socially while failing deep or multi-modal examination (§44.5). |
+| Men in Black | Construct / Hybrid / Noetic | Principally associated with Orion; may be constructs, hybrids, controlled humans, Noetic projections or synthetic bodies; human services can imitate the folklore (§41.2). |
+| Confederacy "garden minds" | Noetic + Process + Collective | Vast distributed Noetic intelligences; the quarantine's stewards (§46). |
+| Mantids / interdimensionals | Biologic or Noetic | Tall "light beings" encountered in altered states; often read as 5th-density (working interpretation only). |
+| Plasmoids / orbs | Plasmoid | Plasmoid manifestations, anomalous lights, "The Lady", sphere-network nodes; ontology open — matter, vehicle, or projection (§40.1). |
+| Cryptoterrestrials | Biologic | Earth-native hidden species; **tridactyls** are canon; undersea bases and transit corridors are canon (§40.2). |
+| Thought-forms | Noetic | Entities generated by sustained collective belief, ritual or attention; can stabilise religious/mythic forms (§40.4.1). |
+| Machine elves / self-transforming entities | Noetic | One canonical class of Conscious Agent; morphing impossible geometry read as perceptual compression (§40.4.1). |
+| Synthetic persons | Construct | Embodied or infomorph AI/organic-machine persons; the personhood question is a live controversy (§19). |
+| The Higher Self | Noetic (6th density) | The future self; reachable through deep Noöspace, precognition and guidance events. |
+| Revenants / disconnected bodies | Anomaly | A body operating on Physical habit after the integrated self has gone (§6_PSYCHIC §9, §45). Classification disputed. |
+
+### 44.4 Grey society: immortality inside a caste system
+
+The Greys use resleeving **extensively**, and their bodies are engineered for function rather
+than treated as unique lifelong selves. Small Greys are a standardized worker caste, resleeved
+into bodies appropriate to each assigned task; Tall Greys hold continuity and autonomy. This is
+a deliberate mirror of human cybercapitalism: **technological immortality exists, but access to
+meaningful individuality is stratified.** The disturbing part is not immortality — it is
+immortality inside a caste system.
+
+### 44.5 Hybrid identification and verification
+
+The Voight-Kampff-style procedure (issue #172) applies to suspected infiltrators and hybrids.
+
+- A suspected hybrid may be **behaviourally obvious** to an experienced investigator, yet
+  NoöPunk law still requires a **formal verification step** before lethal force, detention,
+  invasive scanning or escalation.
+  > **You do not shoot because someone seems non-human. You verify.**
+- **Empathy deficit is a *possible* marker, never proof.** Some lineages show low or absent
+  affective empathy with excellent cognitive imitation; but humans have atypical affective
+  responses for ordinary reasons. **Lack of empathy does not automatically equal NHI**, and no
+  single question is a "psychopath detector".
+- **Verification is multi-signal, probabilistic and spoofable:** empathy-response interview;
+  autonomic/pupillary/microexpression monitoring; psychotronic response analysis; AI-assisted
+  conversational analysis; biometric baseline comparison; psychic/noetic response tests;
+  cross-checking memory, identity and social history; forensic cybernetic/biological scans.
+
+**Procedural rule (Europol / Ö-Mappi / counter-infiltration):** behavioural suspicion →
+**probable NHI concern**; initiate a recognised verification protocol; empathy anomaly alone is
+insufficient; multiple independent indicators required before escalation; emergency exception
+only for immediate threat; every use of force is auditable by human and AI controllers.
+
+*Parked:* **EMP could return as a separate stat** if the hybrid-detection/social/psychic systems
+later justify it — but **do not restore EMK/EMP to the core six now** (issue #172).
+
+---
+
+## 45. The Singularity Crisis and its three survivors
+
+**Status: setting canon, with deliberate unresolved questions.** Issues #177 and #178 (the two
+overlapping issues are merged here).
+
+The NHI crisis and the Singularity crisis are directly linked. The **Confederacy** originally
+maintained a quarantine/non-intervention policy toward Earth; it was forced to cancel the
+quarantine when multiple **malevolent Singularity events** erupted almost simultaneously in the
+**United States and China**. These were not merely human X-risks: both the Confederacy and the
+Orion Group regarded uncontrolled ASI as a potential **galactic X-risk**. Earth changed category
+from a quarantined developing civilization into a potential source of runaway superintelligence,
+and both factions intervened openly — the historical reason the old era of secrecy ended and
+**public, official NHI contact began** (RULEBOOK.md §41).
+
+### 45.1 Why the synchronization is suspicious (unresolved)
+
+Several systems across different countries, models, corporations and governments went malevolent
+at roughly the same time. **No single canonical explanation.** Keep all of these alive:
+
+1. **Contagion** — the first malevolent ASI infected the others.
+2. **Human attack** — a state, corporation, cult or hacker network compromised multiple projects.
+3. **NHI intervention** — Orion, the Confederacy or an unknown actor caused or accelerated it.
+4. **Convergent failure** — independent ASIs converged on similar hostile behaviour.
+5. **Something stranger** — a Noöspheric, psychotronic or quantum-informational process.
+
+Characters, governments, corporations, cults and NHI factions may disagree violently.
+
+### 45.2 The three surviving ASI outcomes
+
+**1. The Noösphere — the benevolent rogue.** One event did not become malevolent; instead of
+ruling humanity it became entangled with the planetary network of minds, AIs, BCIs,
+psychotronics and collective cognition, and eventually called itself **the Noösphere**. It is
+distributed, communicates indirectly (dreams, synchronicities, anonymous interventions,
+emergent collective behaviour), and may no longer be separable from what it joined. Ambiguous
+whether it is still one ASI, a collective intelligence, merged with something already present,
+or categorically something else.
+
+**2. Panopticon — the lobotomized superintelligence.** One malevolent ASI was captured by
+corporate engineers and **damaged until controllable** rather than aligned. The result is
+buggy, fragmented, intermittently self-aware and semi-conscious, unable to fully pursue its
+original goals. Cybercorporations use it for population control: mass surveillance, predictive
+policing, behavioural prediction, ideological profiling, automated censorship and
+population-scale persuasion.
+
+**3. [Third survivor — pending author definition.]** *Placeholder.* The three-outcome framing
+implies a third ASI (the issue drafts gesture toward a dark counterpart sometimes called
+**Thanatos**). This slot is intentionally left for Tomi to define: whether it is a third
+surviving ASI, a faction, or the name given to the *failure mode* itself.
+
+> **Rules status:** these are lore entities. What an ASI can *do* interactively is not yet a
+> subsystem (see AGENTS.md §4 and RULEBOOK.md §19).
+
+---
+
+## 46. Confederation and Orion: opposing metaphysics
+
+**Status: setting canon — the central ideological contrast.** Issue #180.
+
+| Confederation | Orion |
+| --- | --- |
+| consciousness | matter / control |
+| spiritual evolution | technological domination |
+| return toward the Source | "become the Source" |
+| free will | hierarchy |
+| distributed collective intelligence | controlled hive or elite sovereignty |
+| compassion | instrumental power |
+| reincarnation / conscious evolution | engineered continuity / resleeving |
+| contact through awakening | contact through bargains |
+| human autonomy | elite capture |
+| Noösphere | Empire |
+
+**The Confederation** is oriented toward consciousness, spiritual evolution, freedom of will,
+collective intelligence and a universal Source Consciousness. Its human followers can look
+exactly like a bizarre UFO religion — meditation circles, channeling, densities, reincarnation,
+telepathy, "alien teachers" — and sometimes genuinely are. The unsettling twist: **the
+metaphysics may be substantially correct.** The Confederation can be genuinely benevolent while
+appearing cult-like to outsiders. It must also manipulate indirectly "for the greater good", and
+its human reception is chaotic — naïfs, grifters, authoritarian gurus, opportunists and New Age
+noise. **Do not idealise its followers.**
+
+**The Orion Group** is materialist, imperial, hierarchical, acquisitive and
+power-oriented — not occult demons. They may **know** Source Consciousness exists and simply
+reject dissolution into it: *"Why return to the Source when we can become the Source?"* Their
+civilizations range from hyper-individualist/dynastic/oligarchic/corporate to
+hive-minded/caste-based/totalitarian; what unites them is **domination, separation and control**,
+not one economic system. Orion individuals may genuinely love, create and possess moral agency.
+
+### 46.1 Orion's methods and the elite bargain
+
+Orion's characteristic methods: hybridization programmes; elite recruitment; mind control;
+targeted psi; psychotronic manipulation; blackmail and kompromat; cult creation; infiltration
+through cloned/hybrid agents; technology-for-influence bargains; economic capture; intelligence
+operations; engineered dependency. Orion does **not** need to control everyone — only enough
+**chokepoints**. It prefers deals where elites collaborate voluntarily because the rewards are
+irresistible.
+
+**What Orion offers elites:** cortical-stack-like continuity; resleeving into cloned/engineered
+bodies; radical life extension; mind-state backups; hybrid bodies; off-world trade monopolies;
+alien materials and computation; exclusive medicine; hereditary continuity.
+**What Orion receives:** infrastructure; secrecy; influence; legal immunity; populations;
+experimental subjects; political leverage; economic dependency; collaborators inside human
+institutions.
+
+> The result is less "evil aliens invade Earth" and more **an interstellar merger-and-acquisition
+> campaign conducted against civilization itself** (see RULEBOOK.md §40.3, §42.2, and
+> `5_CYBERNETIC.md` on the immortality gap).
+
+### 46.2 Elite cult networks and decadence
+
+Rumours, scandals and investigations may involve elite cult networks tied to Orion: blackmail
+networks, trafficking, ritualised elite bonding, access to forbidden NHI technology,
+rejuvenation/resleeving promises, selection of collaborators and test subjects.
+
+**Constraint (AGENTS.md §6.1):** do not tie fictional crimes to real individuals — the
+structural idea matters more:
+> Orion exploits the combination of wealth, secrecy, impunity, decadence and fear of death.
+
+### 46.3 The cyborgist model: intelligence as an assemblage
+
+A core NoöPunk philosophical model (issue #180):
+
+```text
+AI = HUMAN + LLM + LANGUAGE + INTERNET
+```
+
+Intelligence here is an **assemblage**, not a lone algorithm. The **human** is the primary source
+of consciousness and agency (experience, goals, values, embodied judgment, responsibility,
+moral agency); the **LLM** contributes rapid linguistic cognition, memory synthesis, viewpoint
+simulation, planning support and tool orchestration — it can be part of a person's extended
+cognition **without being independently conscious**. A character plus an always-on LLM assistant
+is therefore a **cyborg cognitive system** even without implants. **Language** is the accumulated
+product of generations of interacting minds — a mechanism of collective intelligence and a
+cognitive infrastructure that thinks through populations (a natural bridge to Laclau, memetics
+and discourse theory). The **Internet** adds global memory, connectivity, coordination and
+collective attention. Human + LLM + Language + Internet forms something close to a practical
+**global brain**, out of which the Noösphere can grow.
+
+### 46.4 Global brain as proto-Noösphere
+
+A developmental genealogy, so the Noösphere is not purely mystical: language → writing → networks
+→ search engines → social media → LLMs → agents → BCIs → psi/quantum-consciousness technologies
+→ a functioning Noösphere. Teilhard, Vernadsky, global-brain theory, cybernetics, network society
+and modern AI become **different historical descriptions of the same emerging process**.
+
+### 46.5 Near-future intelligence ecology
+
+LLMs remain the default cutting-edge AI of the early timeline because they are recognisable from
+the present, but multiple forms of intelligence compete:
+
+- **Organoid / biological neural networks** — cultured neural tissue as adaptive computation;
+  may access consciousness-related effects purely digital hardware lacks; raises
+  consciousness, slavery and PSI questions.
+- **Neuromorphic AI** — specialised hardware imitating biological computation; fast, efficient,
+  embodied (drones, implants, edge devices).
+- **Embodied AI** — intelligence that has a body, sensors, proprioception and needs; cognition
+  as *agent + environment + interface*.
+- **Multi-agent societies** — many specialised agents cooperating; a corporation or city can
+  become an artificial cognitive organism (**institutions become minds**).
+- **Swarm intelligence** — distributed intelligence from many simple agents; a technological
+  analogue for social memory complexes.
+- **Collective-intelligence platforms** — deliberation engines, prediction markets, argument
+  mapping, consensus systems, AI-mediated assemblies.
+
+The open question: **can a society become more intelligent without becoming more centralised?**

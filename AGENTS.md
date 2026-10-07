@@ -82,6 +82,20 @@ Issue #110 defines campaign-scoped specialist content under that newer direction
 
 For the default Helsinki / UNSA campaign, only expose specialist fields that actual play needs. The machine-readable profile is `data/rules/campaign_skill_fields.json`; scenario-specific additions should extend the profile instead of creating giant universal catalogs.
 
+Issues #171–#180 add **light, scoped content** in several of the areas below — **lists of things
+with brief descriptions**, plus conceptual and light rules — without lifting the reservation on
+numeric statistics or full subsystems. Specifically: a **wound ladder** and an
+**equipment-by-function list** (`rulebook/3_PHYSICAL.md`); a **cybernetic and psychotronic
+implant list** plus resleeving/continuity lore (`rulebook/5_CYBERNETIC.md`); a **PSI power
+list**, psychotronic device families, the sleep/night phase, **Seity** (parked), the
+Pauli–Jung/Atmanspacher in-world theory, and disconnected-system lore (`rulebook/6_PSYCHIC.md`);
+and a **bestiary** (types of beings, the density model, hybrid verification) plus the
+Singularity-Crisis and Confederation/Orion lore (`RULEBOOK.md` §§44–46). This content is
+lore-and-light-rules only: it defines **no per-item statistics, no full combat/damage
+subsystem, no deep-hacking subsystem, no economy, and no interactive ASI mechanics**, and psi
+powers remain described as capabilities resolved with the existing Skill check rather than
+stat blocks.
+
 The earlier issue #17 BCI / Compute / Connection / Infosec cyberspace modifier framework is **withdrawn from active canon**. Do not port it. Hacking / cyberspace is DEFERRED until the author defines an original NoöPunk subsystem.
 
 Until explicitly specified, do not define:
