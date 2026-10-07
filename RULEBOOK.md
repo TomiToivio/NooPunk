@@ -5489,7 +5489,7 @@ Example classification (type and descriptors, never allegiance):
 
 ---
 
-## 45. The Singularity Crisis, alignment and the two Singularities (#177, #178, #180)
+## 44. The Singularity Crisis, alignment and the two Singularities (#177, #178, #180)
 
 The decisive AI catastrophe was not one machine but a cluster of **malevolent Singularity
 events** in the United States and China, produced through different models, institutions and
@@ -5532,7 +5532,7 @@ human/collective authorization for high-impact action, and auditable human respo
 This reduces one existential failure mode without making cyborg systems automatically just,
 free or safe.
 
-### 45.1 Cyborgist intelligence
+### 44.1 Cyborgist intelligence
 
 A useful NoöPunk shorthand is:
 
@@ -5556,7 +5556,7 @@ quantum-consciousness interfaces.
 
 ---
 
-## 46. Confederation, Orion, resleeving and elite immortality (#180)
+## 45. Confederation, Orion, resleeving and elite immortality (#180)
 
 The **Confederation** is oriented toward consciousness, free will, spiritual evolution,
 collective intelligence and Source Consciousness. Its human allies can look exactly like a
@@ -5589,7 +5589,7 @@ memories, or works differently again is intentionally unresolved.
 
 ---
 
-## 47. Psychotronics, PSI, psyops and anomalous-effect diagnosis (#171, #176)
+## 46. Psychotronics, PSI, psyops and anomalous-effect diagnosis (#171, #176)
 
 "Psychotronic" is an operational umbrella, not a synonym for PSI.
 
@@ -5607,7 +5607,7 @@ Investigators may classify candidate mechanisms as Physical/Neural, Chemical, Cy
 Social/Psyops, PSI/Noetic, Mixed or Unknown and test them with the relevant Skills.
 Presentation alone never reveals the cause.
 
-### 47.1 Pauli–Jung / Atmanspacher model
+### 46.1 Pauli–Jung / Atmanspacher model
 
 Harald Atmanspacher's dual-aspect-monist work is an explicit source for one in-world
 scientific model. In this view, Physical and Psychic are complementary aspects of a deeper
@@ -5625,7 +5625,7 @@ every coincidence qualifies.
 
 ---
 
-## 48. Hybrid verification doctrine (#172)
+## 47. Hybrid verification doctrine (#172)
 
 Counter-infiltration agents do not gain permission to use force because somebody "seems
 non-human."
@@ -5649,7 +5649,7 @@ you shoot.**
 
 ---
 
-## 49. Sleep, dreams and rare system disentanglement (#175)
+## 48. Sleep, dreams and rare system disentanglement (#175)
 
 Sleep is a recurring interface between ordinary life and the Psychic System.
 
@@ -5664,7 +5664,7 @@ from four simultaneous perspectives. This is a scenario concept, not a routine r
 
 ---
 
-## 50. Density, manifestation and ontological forensics (#179)
+## 49. Density, manifestation and ontological forensics (#179)
 
 In the Law-of-One-inspired layer, **density describes evolution of consciousness, not
 species, morphology or state of matter**.
@@ -5686,7 +5686,7 @@ The working NoöPunk interpretation is:
 
 These are source-inspired setting metaphysics, not real-world scientific claims.
 
-### 50.1 Vehicle is not entity
+### 49.1 Vehicle is not entity
 
 A physical body, clone, synthetic body, orb, plasmoid, dream body, avatar, projection or
 thought-form can be a **vehicle**. The consciousness using it is classified separately.
@@ -5707,7 +5707,7 @@ communication, triangulation, interception and defence, inspired by Patrick Jack
 
 ---
 
-## 51. Field catalogs: characters, equipment, implants, PSI and beings (#171–#180)
+## 50. Field catalogs: characters, equipment, implants, PSI and beings (#171–#180)
 
 The canonical light-description catalogs live in
 [rulebook/9_FIELD_CATALOGS.md](rulebook/9_FIELD_CATALOGS.md).
@@ -5724,7 +5724,7 @@ They provide:
   plasmoids, thought-forms, Noetics, ASIs and higher-density manifestations;
 - future-design notes for Seity and subsystem disentanglement.
 
-### 51.1 Lore-only future design: Seity and disconnected systems (#173, #174)
+### 50.1 Lore-only future design: Seity and disconnected systems (#173, #174)
 
 Issues #173 and #174 are intentionally **not active mechanics**.
 
