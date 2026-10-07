@@ -6,6 +6,15 @@
 > Entries establish that something exists in the setting or is available as a design hook.
 > They do **not** create missing numeric statistics, damage values, costs, slot systems,
 > implant limits, PSI point economies, or other unresolved mechanics.
+>
+> **This is the condensed campaign-facing catalog.** The deep worldbook chapters it
+> summarizes are [`11_ONTOLOGY.md`](11_ONTOLOGY.md) (densities, vehicles,
+> cryptoterrestrials, thought-forms), [`12_BEINGS.md`](12_BEINGS.md) (the catalogue of kinds
+> of being and the verification doctrine), [`13_EQUIPMENT.md`](13_EQUIPMENT.md) (gear,
+> implants, psychotronics), [`14_CHARACTER_GENERATION.md`](14_CHARACTER_GENERATION.md)
+> (chargen), [`10_SINGULARITY_CRISIS.md`](10_SINGULARITY_CRISIS.md) (the Crisis and the two
+> Singularities) and [`6_PSYCHIC.md`](6_PSYCHIC.md) (Psychic Systems). Read this file for the
+> quick field list; read those for the full treatment.
 
 ## 1. Character generation: practical checklist
 
