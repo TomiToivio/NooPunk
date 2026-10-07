@@ -115,6 +115,29 @@ class XenopoliticsChapterTests(unittest.TestCase):
         self.assertRegex(text, r"§?\s*33\.32",
                          "the chapter must cite the canonical-uncertainty rule (§33.32)")
 
+    def test_chapter_keeps_the_pre_fall_bound(self) -> None:
+        """The #187 premise ('ASI holocaust') must not upgrade into a global Fall.
+
+        `RULEBOOK.md` §33.1 (pre-Fall; Earth inhabited and central) and §33.28 (disasters
+        'severe but uneven rather than a single planet-destroying Fall') bound how far the
+        catastrophe may be read. This is the canon trap a naive reading of the issue walks
+        straight into, so pin the reconciliation rather than trusting it to survive edits.
+        """
+        text = flat(CHAPTER)
+        self.assertRegex(text, r"pre-Fall",
+                         "the chapter must keep the pre-Fall bound (RULEBOOK.md §33.1)")
+        self.assertRegex(text, r"§\s*33\.1\b",
+                         "the chapter must cite §33.1 for the pre-Fall bound")
+        self.assertRegex(text, r"§\s*33\.28",
+                         "the chapter must cite §33.28 for the 'severe but uneven' scale")
+        self.assertRegex(text, r"regional catastrophes",
+                         "the chapter must state the regional-catastrophe reconciliation")
+
+    def test_chapter_keeps_both_blocs_aid_genuine(self) -> None:
+        """The issue's central premise: both sides genuinely help. Pin it verbatim."""
+        self.assertRegex(flat(CHAPTER), r"both want Earth to remain a living world",
+                         "the chapter must keep the 'both blocs want a living Earth' premise")
+
 
 if __name__ == "__main__":
     unittest.main()

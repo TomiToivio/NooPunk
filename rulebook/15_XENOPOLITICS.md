@@ -38,24 +38,46 @@ not a verdict.
 
 ## 14.2 What the Crisis left behind
 
-The Singularity Crisis — the ASI near-extinction event, detailed in
-[`10_SINGULARITY_CRISIS.md`](10_SINGULARITY_CRISIS.md) and labelled as a historiographical
-problem in `RULEBOOK.md` §33.27 — is the fracture the present world grows out of. Its broad,
-**non-chronological** shape is fixed canon:
+The Singularity Crisis — detailed in [`10_SINGULARITY_CRISIS.md`](10_SINGULARITY_CRISIS.md) and
+labelled as a historiographical problem in `RULEBOOK.md` §33.27 — is the fracture the present
+world grows out of. Its broad, **non-chronological** shape is fixed canon:
 
 1. the Singularity, and the emergence of at least one **malevolent ASI**;
-2. an **ASI catastrophe** that brought humanity close to extinction;
-3. **NHI intervention** that became impossible to deny, and that helped prevent total
-   extinction;
+2. an **ASI catastrophe** whose default outcome, without intervention, would have been
+   human extinction or permanent disempowerment;
+3. **NHI intervention** that became impossible to deny, and that **changed that outcome**;
 4. **disaster relief, reconstruction and biosphere restoration** on a planetary scale;
 5. a **disclosure and intervention shock** that reshaped Earth's politics;
 6. roughly a decade later, the default NoöPunk campaign.
 
-The **intensity of the catastrophe varied geographically**, and that variation is a
+The **scale** of the catastrophe is a canon question in its own right, and the setting is
+narrower than the word "holocaust" alone suggests. Three canonical statements bind together:
+
+- **No global Fall has happened.** NoöPunk is an alternate **pre-Fall** continuity: Earth
+  still exists, remains heavily populated, and is politically and culturally central
+  (`RULEBOOK.md` §33.1).
+- **The rogue-AGI disasters were severe but uneven** — "rather than a single
+  planet-destroying Fall" (`RULEBOOK.md` §33.28).
+- **The threat was real and existential, but it was averted.** Without extraterrestrial
+  intervention "humanity would have been destroyed or permanently disempowered"
+  (`RULEBOOK.md` §44; `10_SINGULARITY_CRISIS.md` §9.4.1). That is a counterfactual, not a
+  description of what Earth became.
+
+The reconciliation — and it is exactly what the issue's own "postapocalyptic intensity
+should vary geographically" clause asks for — is this:
+
+> **The Crisis was a genuine near-extinction event, delivered as regional catastrophes rather
+> than a single global Fall.** Some regions suffered what amounts to a holocaust; others were
+> scarred but survive intact. The world was *going* to end and was *stopped*; it was not
+> *destroyed and then rebuilt*.
+
+So the **intensity of the catastrophe varied geographically**, and that variation is a
 first-class setting fact. Some regions were rebuilt quickly and function; others remain ruined,
 depopulated, ecologically damaged, politically fragmented, militarized, or run by emergency
-authorities. "Post-apocalyptic" is a **gradient across the map**, not a uniform condition
-(`RULEBOOK.md` line 68 frames the genre as cyberpunk plus post-holocaust SF precisely this way).
+authorities. "Post-apocalyptic" is a **gradient across the map**, not a uniform condition —
+Earth as a whole is an inhabited, politically central world recovering unequally, not a
+ruined planet (`RULEBOOK.md` line 68 frames the genre as cyberpunk plus post-holocaust SF
+precisely this way).
 
 Two things are true at once and must not be flattened into one:
 
