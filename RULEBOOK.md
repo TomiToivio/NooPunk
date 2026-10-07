@@ -27,8 +27,8 @@
 9. [Character Generation](#9-character-generation)
 10. [Extended canon and reference material](#extended-canon-and-reference-material)
 11. [Field catalogs: characters, gear, implants, PSI and beings](rulebook/9_FIELD_CATALOGS.md)
-12. [Physical harm: a light ladder](#52-physical-harm-a-light-ladder-171180)
-13. [Equipment (list)](#53-equipment-list)
+12. [Physical harm: a light ladder](#51-physical-harm-a-light-ladder-171180)
+13. [Equipment (list)](#52-equipment-list)
 
 Per-domain detail chapters:
 
@@ -5498,37 +5498,7 @@ Example classification (type and descriptors, never allegiance):
 
 ---
 
-## 44. Types of beings: navigational overview
-
-**Status: navigational cross-reference.** The canonical content lives elsewhere; this section
-exists so the rulebook's being material is reachable from the main sequence (the field catalog
-sits in the appendix).
-
-| What you want | Where it lives |
-| --- | --- |
-| The being catalogue (field guide) | `rulebook/9_FIELD_CATALOGS.md` §8 |
-| Density: evolution of consciousness, not species | `RULEBOOK.md` §50 |
-| Ontological forensics — *vehicle is not entity* | `RULEBOOK.md` §50.1 |
-| Core NHI types: Biologics / Constructs / Plasmoids / Noetics | `RULEBOOK.md` §43.4 |
-| Hybrid identification and verification | `RULEBOOK.md` §48 |
-| Cryptoterrestrial map and contact interfaces | `RULEBOOK.md` §40 |
-| Singularity-Crisis actors (Noösphere, Panopticon, Thanatos) | `RULEBOOK.md` §45 |
-| Confederation and Orion | `RULEBOOK.md` §46 |
-
-### 44.1 The one rule to carry forward
-
-**A UFO investigator sees morphology. A NoöPunk investigator has to discover ontology.**
-
-A biological body, clone, synthetic body, orb, plasmoid, dream-body, projection, avatar or
-thought-form can be a **vehicle**; the consciousness and political actor using it are
-classified separately. Density cannot be read off appearance. False positives are mandatory
-setting texture: natural plasma can look like an NHI orb; a drone can fake an orb; a
-high-density entity can look biological; a thought-form can look like a cryptid; an ordinary
-third-density alien can possess technology humans mistake for PSI.
-
----
-
-## 45. The Singularity Crisis, alignment and the two Singularities (#177, #178, #180)
+## 44. The Singularity Crisis, alignment and the two Singularities (#177, #178, #180)
 
 The decisive AI catastrophe was not one machine but a cluster of **malevolent Singularity
 events** in the United States and China, produced through different models, institutions and
@@ -5571,7 +5541,7 @@ human/collective authorization for high-impact action, and auditable human respo
 This reduces one existential failure mode without making cyborg systems automatically just,
 free or safe.
 
-### 45.1 Cyborgist intelligence
+### 44.1 Cyborgist intelligence
 
 A useful NoöPunk shorthand is:
 
@@ -5595,7 +5565,7 @@ quantum-consciousness interfaces.
 
 ---
 
-## 46. Confederation, Orion, resleeving and elite immortality (#180)
+## 45. Confederation, Orion, resleeving and elite immortality (#180)
 
 The **Confederation** is oriented toward consciousness, free will, spiritual evolution,
 collective intelligence and Source Consciousness. Its human allies can look exactly like a
@@ -5628,7 +5598,7 @@ memories, or works differently again is intentionally unresolved.
 
 ---
 
-## 47. Psychotronics, PSI, psyops and anomalous-effect diagnosis (#171, #176)
+## 46. Psychotronics, PSI, psyops and anomalous-effect diagnosis (#171, #176)
 
 "Psychotronic" is an operational umbrella, not a synonym for PSI.
 
@@ -5646,7 +5616,7 @@ Investigators may classify candidate mechanisms as Physical/Neural, Chemical, Cy
 Social/Psyops, PSI/Noetic, Mixed or Unknown and test them with the relevant Skills.
 Presentation alone never reveals the cause.
 
-### 47.1 Pauli–Jung / Atmanspacher model
+### 46.1 Pauli–Jung / Atmanspacher model
 
 Harald Atmanspacher's dual-aspect-monist work is an explicit source for one in-world
 scientific model. In this view, Physical and Psychic are complementary aspects of a deeper
@@ -5664,7 +5634,7 @@ every coincidence qualifies.
 
 ---
 
-## 48. Hybrid verification doctrine (#172)
+## 47. Hybrid verification doctrine (#172)
 
 Counter-infiltration agents do not gain permission to use force because somebody "seems
 non-human."
@@ -5688,7 +5658,7 @@ you shoot.**
 
 ---
 
-## 49. Sleep, dreams and rare system disentanglement (#175)
+## 48. Sleep, dreams and rare system disentanglement (#175)
 
 Sleep is a recurring interface between ordinary life and the Psychic System.
 
@@ -5703,7 +5673,7 @@ from four simultaneous perspectives. This is a scenario concept, not a routine r
 
 ---
 
-## 50. Density, manifestation and ontological forensics (#179)
+## 49. Density, manifestation and ontological forensics (#179)
 
 In the Law-of-One-inspired layer, **density describes evolution of consciousness, not
 species, morphology or state of matter**.
@@ -5725,7 +5695,7 @@ The working NoöPunk interpretation is:
 
 These are source-inspired setting metaphysics, not real-world scientific claims.
 
-### 50.1 Vehicle is not entity
+### 49.1 Vehicle is not entity
 
 A physical body, clone, synthetic body, orb, plasmoid, dream body, avatar, projection or
 thought-form can be a **vehicle**. The consciousness using it is classified separately.
@@ -5746,7 +5716,7 @@ communication, triangulation, interception and defence, inspired by Patrick Jack
 
 ---
 
-## 51. Field catalogs: characters, equipment, implants, PSI and beings (#171–#180)
+## 50. Field catalogs: characters, equipment, implants, PSI and beings (#171–#180)
 
 The canonical light-description catalogs live in
 [rulebook/9_FIELD_CATALOGS.md](rulebook/9_FIELD_CATALOGS.md).
@@ -5763,7 +5733,7 @@ They provide:
   plasmoids, thought-forms, Noetics, ASIs and higher-density manifestations;
 - future-design notes for Seity and subsystem disentanglement.
 
-### 51.1 Lore-only future design: Seity and disconnected systems (#173, #174)
+### 50.1 Lore-only future design: Seity and disconnected systems (#173, #174)
 
 Issues #173 and #174 are intentionally **not active mechanics**.
 
@@ -5778,12 +5748,14 @@ without later author direction.
 
 ---
 
-## 52. Physical harm: a light ladder (#171–#180)
+## 51. Physical harm: a light ladder (#171–#180)
 
-**Status: light rules; full combat resolution deferred.** Issues #171–#180 asked for a
-playable physical layer without inventing a numeric damage track. Use a **fiction-first wound
-ladder**. A physical attack that succeeds and is not mitigated leaves a **wound**, recorded as
-a temporary Physical status (Chapter 5):
+**Status: harm-state vocabulary; full combat and damage resolution deferred.** This is a
+**fiction-first consequence vocabulary**, not a hidden damage engine. A successful attack does
+not automatically select or advance a state, and repeated harm does not automatically step a
+character along the list. Until the author defines the combat/damage subsystem, the GM records
+the state that is already established by the fiction, scenario consequence, or explicit
+mechanic elsewhere. The states are temporary Physical statuses (Chapter 5):
 
 | State | Meaning |
 | --- | --- |
@@ -5798,12 +5770,12 @@ can move a wound one step up the ladder; **Medicine** (a fielded Skill) treats d
 **Non-lethal** restraint, subdual and less-lethal options are first-class — this is a game
 about investigators who must justify force (Chapter 9; `docs/design/DEFAULT_INVESTIGATION_FANTASY.md`).
 
-Exact dice, damage values, armor ratings, initiative and healing times remain **explicit design
-questions** and are not invented here.
+Exact transition rules, dice, damage values, armor ratings, initiative and healing times remain
+**explicit design questions** and are not invented here.
 
 ---
 
-## 53. Equipment (list)
+## 52. Equipment (list)
 
 **Status: light catalogue — availability and function, not statistics.** The full equipment
 catalogue is `rulebook/9_FIELD_CATALOGS.md` §2. This list is the top-level vocabulary so play
@@ -5820,7 +5792,7 @@ reservation, AGENTS.md §4).
 | Melee | Baton, blade, improvised | Quiet, deniable, close. |
 | Beam / energy | Laser, particle, microwave area-denial | High-tech; rare, regulated. |
 | Seeker / smart | Guided micro-munitions, drone-guns | Cybernetic-era; expensive. |
-| Psychotronic | Interference emitters, "affective" weapons | Overlaps Chapter 8 and §47. |
+| Psychotronic | Interference emitters, "affective" weapons | Overlaps Chapter 8 and §46. |
 | Exotic | Anomalous or NHI-derived devices | Plot devices, not shop stock. |
 
 ### Armor and protection
