@@ -113,11 +113,11 @@ This list defines **availability and function only**. Equipment statistics remai
 
 - **Implant catalog** — the campaign-facing list of cybernetic and psychotronic implants is
   `rulebook/9_FIELD_CATALOGS.md` §3 (light descriptions; no slot limits, no numeric stats).
-- **Resleeving, continuity and the immortality gap** — `RULEBOOK.md` §46 (Confederation,
+- **Resleeving, continuity and the immortality gap** — `RULEBOOK.md` §45 (Confederation,
   Orion, resleeving and elite immortality).
-- **Psychotronics as a category** — `RULEBOOK.md` §47 and `rulebook/6_PSYCHIC.md` §A.
+- **Psychotronics as a category** — `RULEBOOK.md` §46 and `rulebook/6_PSYCHIC.md` §A.
 
 **Continuity is a loaded setting question, not a respawn button.** Cortical-stack-like
 technology, backup/restore, resleeving and continuity ledgers record and move minds — but
 whether they transfer consciousness or only copy memory is **deliberately unresolved**
-(`RULEBOOK.md` §46). Do not implement automated resurrection.
+(`RULEBOOK.md` §45). Do not implement automated resurrection.
