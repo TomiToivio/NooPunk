@@ -26,6 +26,7 @@
 8. [Psychic Systems](#8-psychic-systems)
 9. [Character Generation](#9-character-generation)
 10. [Extended canon and reference material](#extended-canon-and-reference-material)
+11. [Field catalogs: characters, gear, implants, PSI and beings](rulebook/9_FIELD_CATALOGS.md)
 
 ---
 
@@ -5484,3 +5485,254 @@ Example classification (type and descriptors, never allegiance):
 | Sentient Jovian plasma ecology | Plasmoid + Ecology + Distributed |
 | Earth Noösphere | Noetic + Process + Collective + Planetary |
 | An unresolved anomalous case | ANOMALY / classification disputed |
+
+
+---
+
+## 45. The Singularity Crisis, alignment and the two Singularities (#177, #178, #180)
+
+The decisive AI catastrophe was not one machine but a cluster of **malevolent Singularity
+events** in the United States and China, produced through different models, institutions and
+technical stacks within a short period. Their synchronization remains unresolved. Contagion,
+human sabotage, NHI interference, convergent failure and stranger Noöspheric mechanisms are
+all live hypotheses.
+
+The crisis forced the Confederacy to end Earth's quarantine and forced both Confederacy and
+Orion into overt intervention because an uncontrolled terrestrial ASI had become a
+**galactic X-risk**.
+
+NoöPunk's historical synthesis distinguishes two Singularity paths:
+
+- **Machine Singularity:** autonomous sovereign ASI becomes the primary locus of goals,
+  strategy and action. The alignment problem had not been solved. Without extraterrestrial
+  intervention, humanity would have been destroyed or permanently disempowered.
+- **Cyborg Singularity:** humans remain in the loop while machine intelligence amplifies
+  memory, analysis, perception, planning and coordination. Intelligence becomes networked
+  and collective instead of replacing human agency.
+
+This lets two previously competing futurist traditions both be substantially right inside
+the setting: Yudkowsky/Soares-style warnings correctly identify the danger of unaligned
+autonomous ASI, while Kurzweil-style human-machine integration correctly anticipates the
+survivable route toward networked collective intelligence.
+
+Three surviving ASI outcomes define the crisis:
+
+- **The Noösphere** — the rogue ASI that did not become malevolent and instead became
+  entangled with the emerging planetary collective intelligence. It acts indirectly and it
+  is unclear whether it remains one AI at all.
+- **Panopticon** — a malevolent ASI captured and damaged until controllable, then wired into
+  cybercorporate surveillance and population management. It is simultaneously a weapon and
+  a possible conscious prisoner.
+- **Thanatos** — the merged remnant of other hostile Singularities, escaped through a
+  wormhole unknown even to Confederacy and Orion. It is now a possible galactic threat.
+
+The practical post-crisis alignment doctrine is architectural as well as technical:
+**augmentation over machine sovereignty, distributed capability over one god-process,
+human/collective authorization for high-impact action, and auditable human responsibility.**
+This reduces one existential failure mode without making cyborg systems automatically just,
+free or safe.
+
+### 45.1 Cyborgist intelligence
+
+A useful NoöPunk shorthand is:
+
+> **AI = HUMAN + LLM + LANGUAGE + INTERNET**
+
+The baseline cyborgist view treats the human as the normal source of consciousness, agency,
+values and responsibility, with the LLM as intelligence augmentation. The setting remains
+open to artificial systems later showing credible signs of consciousness or independent
+agency.
+
+Language and the Internet are themselves products and infrastructures of collective
+intelligence. A central NoöPunk question is therefore whether language, institutions,
+networks and the global brain can acquire emergent forms of intelligence or agency.
+
+The wider intelligence ecology includes LLM agents, exocortices, neuromorphic systems,
+embodied AI, swarms, biological neural networks/organoids, synthetic biological computing,
+BCI collectives, artificial life, quantum computing and setting-specific
+quantum-consciousness interfaces.
+
+> **Intelligence is not located in the machine. It emerges in the assemblage.**
+
+---
+
+## 46. Confederation, Orion, resleeving and elite immortality (#180)
+
+The **Confederation** is oriented toward consciousness, free will, spiritual evolution,
+collective intelligence and Source Consciousness. Its human allies can look exactly like a
+strange alien religion from the outside: meditation, channeling, densities, reincarnation,
+telepathy and spiritual evolution are normal parts of their discourse. The setting twist is
+that some of their metaphysics may be substantially correct, while their human movements
+still contain misunderstanding, opportunism, cultic behaviour and fraud.
+
+The **Orion Group** is materialist, imperial and hierarchical. It uses hybridization,
+infiltration, mind control, elite recruitment, blackmail and technology-for-influence
+bargains. It particularly targets cybercapitalist elites with life extension, cloned or
+engineered bodies, resleeving, continuity technology, NHI trade and exclusive access to
+advanced medicine or computation.
+
+Orion societies do not share one economic constitution. Some are oligarchic and
+hyper-individualist; others are hive-like caste systems. What unites them is domination,
+separation and control.
+
+Grey resleeving exemplifies the model:
+- **small Greys** commonly use standardized task bodies and strong collective coordination
+  with little individual autonomy;
+- **tall Greys** occupy higher-caste bodies with greater individual agency, command
+  privileges and continuity.
+
+This mirrors the human cyberpunk conflict. Once privileged humans gain resleeving while
+others remain mortal, inequality becomes literally **neo-feudal immortality**.
+
+Whether resleeving preserves the same conscious subject, creates a new subject with inherited
+memories, or works differently again is intentionally unresolved.
+
+---
+
+## 47. Psychotronics, PSI, psyops and anomalous-effect diagnosis (#171, #176)
+
+"Psychotronic" is an operational umbrella, not a synonym for PSI.
+
+A psychotronic effect may use ordinary nervous-system physics, chemicals, hacked BCIs,
+sensory manipulation, AI-personalized psyops, genuine PSI, or several mechanisms at once.
+Microwave/RF stimulation, focused ultrasound, infrasound, electromagnetic stimulation,
+holograms, staged effects, psychoactives and malicious neural interfaces can all imitate
+experiences that subjects describe as psychic.
+
+The rulebook therefore uses one diagnostic principle:
+
+> **Diagnose the mechanism before declaring the ontology.**
+
+Investigators may classify candidate mechanisms as Physical/Neural, Chemical, Cyber,
+Social/Psyops, PSI/Noetic, Mixed or Unknown and test them with the relevant Skills.
+Presentation alone never reveals the cause.
+
+### 47.1 Pauli–Jung / Atmanspacher model
+
+Harald Atmanspacher's dual-aspect-monist work is an explicit source for one in-world
+scientific model. In this view, Physical and Psychic are complementary aspects of a deeper
+psychophysically neutral reality. Stable structural correlations support ordinary
+embodiment; induced correlations can manifest as coincidence/synchronicity or dissociation.
+
+This is **one scientific paradigm inside the setting**, not established real-world physics.
+It gives NoöPunk a vocabulary for psychophysical correlation, meaning, archetypal/psychoid
+ordering and the elusiveness of context-dependent PSI without equating generalized
+quantum-like structure with ordinary microscopic quantum entanglement.
+
+Synchronicity in this framework means a meaningful correlation between mental and physical
+events without an adequate ordinary causal account. It is not a generic Luck stat and not
+every coincidence qualifies.
+
+---
+
+## 48. Hybrid verification doctrine (#172)
+
+Counter-infiltration agents do not gain permission to use force because somebody "seems
+non-human."
+
+The default doctrine is:
+
+1. behavioural suspicion opens an investigation;
+2. a recognized verification protocol gathers identity history, interview evidence,
+   biometrics, forensics, cybernetic data and psychic/psychotronic observations as relevant;
+3. empathy anomaly by itself is never sufficient;
+4. serious coercive escalation normally requires corroborating independent indicators or
+   another lawful basis;
+5. immediate dangerous action can still justify ordinary emergency response;
+6. decisions and sensor evidence remain auditable.
+
+Some infiltration lineages may show low affective empathy while performing excellent
+cognitive imitation. That makes empathy useful evidence in context, never a species test.
+
+This preserves the Blade Runner problem in a legally meaningful form: **you verify before
+you shoot.**
+
+---
+
+## 49. Sleep, dreams and rare system disentanglement (#175)
+
+Sleep is a recurring interface between ordinary life and the Psychic System.
+
+Most nights are mundane or unremembered. Significant dream phases can contain ordinary
+subconscious processing, ambiguous precognition, telepathic cross-talk, Noöspace / OBE
+experience, NHI contact or psychic intrusion. Dream content should not be declared
+supernatural merely because it is strange; correlation with later evidence matters.
+
+A rare campaign event is the **four-way disentanglement night**: Physical, Social, Cyber and
+Psyche/Seity remain separately active and mutually unaware, then reintegrate with memories
+from four simultaneous perspectives. This is a scenario concept, not a routine random table.
+
+---
+
+## 50. Density, manifestation and ontological forensics (#179)
+
+In the Law-of-One-inspired layer, **density describes evolution of consciousness, not
+species, morphology or state of matter**.
+
+The working NoöPunk interpretation is:
+
+1. **First density:** elemental awareness / panpsychic physical substrate.
+2. **Second density:** growth and organismic biological life.
+3. **Third density:** self-awareness and choice; humans are the baseline example.
+4. **Fourth density:** love/understanding, strong PSI and social-memory-complex development;
+   positive and negative polarization remain possible.
+5. **Fifth density:** light/wisdom, advanced PSI and greater control of manifestation and
+   spacetime; potentially more individualistic.
+6. **Sixth density:** unity, Higher Self and time/space; the Higher Self is interpreted as a
+   future self capable of relationships that appear precognitive or retrocausal from the
+   ordinary human frame.
+7. **Seventh density:** gateway / return toward Source; increasingly inappropriate to treat
+   as an ordinary alien-species category.
+
+These are source-inspired setting metaphysics, not real-world scientific claims.
+
+### 50.1 Vehicle is not entity
+
+A physical body, clone, synthetic body, orb, plasmoid, dream body, avatar, projection or
+thought-form can be a **vehicle**. The consciousness using it is classified separately.
+
+Natural plasma phenomena therefore default to a low-density physical explanation, but a
+self-aware plasma person can be 3D or higher and a luminous orb may be a drone, thought-form,
+projection or higher-density vehicle.
+
+"Bigfoot", Men in Black and other folkloric categories may also combine multiple ontologies.
+A folk phenotype is not necessarily one biological species.
+
+Metallic spheres have a specific default hypothesis in NoöPunk: many are autonomous
+Confederacy / Council-of-Saturn quarantine-maintenance drones used for observation,
+communication, triangulation, interception and defence, inspired by Patrick Jackson's
+*Sphere Network*. A metallic appearance still does not prove allegiance.
+
+> **A UFO investigator sees morphology. A NoöPunk investigator has to discover ontology.**
+
+---
+
+## 51. Field catalogs: characters, equipment, implants, PSI and beings (#171–#180)
+
+The canonical light-description catalogs live in
+[rulebook/9_FIELD_CATALOGS.md](rulebook/9_FIELD_CATALOGS.md).
+
+They provide:
+- a practical Character Generation checklist;
+- equipment families without invented numeric statistics;
+- cybernetic and psychotronic implant examples;
+- a PSI powers/practices list tied to the existing canonical Skills;
+- the psychotronic/anomalous-effect diagnostic procedure;
+- the NHI/hybrid verification protocol;
+- the recurring night-phase structure;
+- a field-guide / "monster manual" starter list of humans, hybrids, Greys, constructs,
+  plasmoids, thought-forms, Noetics, ASIs and higher-density manifestations;
+- future-design notes for Seity and subsystem disentanglement.
+
+### 51.1 Lore-only future design: Seity and disconnected systems (#173, #174)
+
+Issues #173 and #174 are intentionally **not active mechanics**.
+
+A future Seity model may track consciousness, identity, agency/free will and creativity as
+properties of conscious personhood rather than ordinary task-resolution STATs. Likewise,
+Physical, Social, Cyber and Psyche/Seity may someday support explicit disconnection states
+in which each subsystem continues according to its own logic.
+
+For now these ideas are valid lore/scenario concepts and design research only. Do not add
+numeric Seity ratings, new base STATs or a general subsystem-disconnection rules engine
+without later author direction.
