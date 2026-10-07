@@ -63,13 +63,13 @@ class XenopoliticsChapterTests(unittest.TestCase):
         self.assertRegex(text, r"sovereignty")
 
     def test_chapter_defines_no_numeric_statistics(self) -> None:
-        """The reserved areas (AGENTS.md §4) must not appear as tables of numbers.
+        """A *stat block* is detected: a numeric column that is not a leading key column.
 
-        A *statistics table* is detected structurally: a markdown table with a **column**
-        whose cells are bare numbers across two or more data rows. A single gloss row (say
-        ``| +10 | love |``) does not trip this, and neither does a prose reference to the
-        1–10 STAT scale or the −10…+10 Affect scale — those name a scale, they do not
-        tabulate data. What is forbidden here is the shape of a stat block.
+        Rationale: the reserved areas (`AGENTS.md` §4) forbid statistics. A legitimate gloss
+        table may still lead with a numeric **key** (``| +10 | love |`` — the Affect scale),
+        so a bare "all-numeric column" rule would false-positive on canon prose. What is
+        forbidden here is a numeric column *other than the first* — the shape of a stat line
+        (``| Grey | 7 | 12 |``, ``| type A | 87 |``) rather than a labelled scale.
         """
         offenders: list[str] = []
         columns: dict[int, list[str]] = {}
@@ -80,6 +80,8 @@ class XenopoliticsChapterTests(unittest.TestCase):
             nonlocal columns, rows_in_table, header_seen
             if rows_in_table >= 2:
                 for idx, cells in columns.items():
+                    if idx == 0:
+                        continue  # a leading key column may be numeric (a scale)
                     if len(cells) >= 2 and all(
                         c and re.fullmatch(r"[-−+]?\d+(?:[.,]\d+)?%?", c) for c in cells
                     ):
@@ -107,6 +109,19 @@ class XenopoliticsChapterTests(unittest.TestCase):
         self.assertEqual(offenders, [],
                          "the xenopolitics chapter must not tabulate statistics:\n  "
                          + "\n  ".join(offenders))
+
+    def test_ledger_has_the_xenopolitics_section(self) -> None:
+        """The chapter must also be discoverable from the ledger itself, not only the TOC.
+
+        The `## N.` ledger is the primary reading surface; §40–§44 are the precedent for
+        cross-chapter lore living there. A chapter reachable only through a TOC bullet is
+        easy to miss, so pin the ledger section and its link back to the chapter.
+        """
+        text = RULEBOOK.read_text(encoding="utf-8")
+        self.assertRegex(text, r"(?m)^## 53\. Xenopolitics after the NHI Crisis",
+                         "RULEBOOK.md lost the §53 xenopolitics ledger section")
+        self.assertIn("rulebook/15_XENOPOLITICS.md", text,
+                      "the §53 ledger section must link the full chapter")
 
     def test_chapter_leaves_the_central_question_open(self) -> None:
         """The ambiguity is load-bearing: the chapter must not declare a verdict."""

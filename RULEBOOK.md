@@ -5839,3 +5839,65 @@ reservation, AGENTS.md §4).
 **Availability.** In the default Helsinki/UNSA campaign, ordinary kit is issued; heavy weapons,
 armor, vehicles and containment systems are **mission-issued**, not permanent personal
 inventory. Everything else is availability- and legality-gated in fiction.
+
+---
+
+## 53. Xenopolitics after the NHI Crisis (#187)
+
+**Status: NOÖPUNK NATIVE lore.** About a decade after the NHI Crisis, Earth is a
+**reconstruction world under unresolved xenopolitical pressure**: two major non-human blocs
+are present, both genuinely helped prevent extinction, and neither is reducible to an ally or
+an enemy. The full chapter is
+[`rulebook/15_XENOPOLITICS.md`](rulebook/15_XENOPOLITICS.md).
+
+### 53.1 Catastrophe, not Fall
+
+The Crisis was a **near-extinction event delivered as regional catastrophes, not a single
+global Fall**. NoöPunk remains an alternate **pre-Fall** continuity: Earth still exists,
+remains heavily populated, and is politically and culturally central (§33.1), and the
+rogue-AGI disasters are **"severe but uneven rather than a single planet-destroying Fall"**
+(§33.28). Without extraterrestrial intervention humanity **would have been** destroyed or
+permanently disempowered (§44) — a counterfactual, not a description of what Earth became.
+What makes the era postapocalyptic is therefore **not a dead planet but a wounded one**:
+partly rebuilt cities, exclusion zones, a biosphere under active restoration, a broken
+political order, and a great many people dead, displaced, or absent from any registry anyone
+still trusts.
+
+### 53.2 Two blocs, both helping
+
+**Both major blocs want Earth to remain a living world with a functioning biosphere and a
+surviving human population.** A dead Earth serves no one — not as a garden, a proving ground,
+a market, a congregation or a ward. So both provide genuine relief: medicine, food and water,
+decontamination, biosphere restoration, grid rebuilding and defence against surviving rogue
+AI.
+
+> **An NHI actor may save millions of lives and still hold deeply coercive long-term goals.**
+
+The **Confederation / Confederacy** bloc appears as humanity's obvious saviours —
+intervention, reconstruction, PSI and consciousness technologies, selective disclosure, and a
+paternalism that grows resented. Its arrival detonates a **mass Law-of-One-style religious
+movement**, among the largest new movements on Earth within a decade, while its quarantine and
+non-interference rules become politically explosive. The **Orion Group** also rebuilds where
+it profits, while running abductions, hybridization, infiltration, psychic coercion, elite
+capture and Men in Black operations; undeniable NHI existence made the hybridization
+programme far harder to dismiss, producing a **hybrid panic** in which infiltration and
+xenophobic paranoia are genuinely hard to separate.
+
+### 53.3 The sovereignty question
+
+> **Who has legitimate sovereignty over Earth after nonhuman powers demonstrably saved
+> humanity from extinction?**
+
+Human reactions do not converge: gratitude, devotion, collaboration, rejection, insurgency,
+denial, human supremacism, pro-hybrid civil-rights movements, and demands for both total
+disclosure and renewed secrecy all coexist. A major fault line is whether **the two blocs are
+genuinely distinct** at all — or whether humans are pawns in an alien civil war, or whether
+one bloc invented the other. The setting resolves none of this: per §33.32 the ambiguity is
+structural, and both blocs have an interest in it persisting.
+
+### 53.4 What this section does not define
+
+No faction mechanics, no reputation formulas, no NHI capabilities or stat blocks, no economy,
+no combat or vehicle rules, and **no canonical chronology** — the sequence is structural
+(§33.28a), and "about a decade" is an interval, not a date. The chapter is lore and light
+description only, consistent with `AGENTS.md` §4.
