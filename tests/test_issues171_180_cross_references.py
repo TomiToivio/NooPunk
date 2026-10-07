@@ -20,18 +20,26 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-#: the reference chapters the #171–#180 batch added or expanded
-REFERENCE_CHAPTERS = (
-    "rulebook/6_PSYCHIC.md",
-    "rulebook/10_SINGULARITY_CRISIS.md",
-    "rulebook/11_ONTOLOGY.md",
-    "rulebook/12_BEINGS.md",
-    "rulebook/13_EQUIPMENT.md",
-    "rulebook/14_CHARACTER_GENERATION.md",
-)
-
+#: Coverage is DISCOVERED, not listed. A hand-maintained list rots on the next chapter:
+#: a chapter missing from it has its own §-references silently unchecked, which is how the
+#: §40.4 mis-numbering survived and how `15_XENOPOLITICS.md` went unverified after #189.
+#: A chapter qualifies when it self-numbers, because that is what makes a `§N.M` inside it
+#: a real pointer rather than prose.
 _SECTION_REF = re.compile(r"§\s*(\d+(?:\.\d+)*)")
 _HEADING_NUM = re.compile(r"(?m)^#{1,6}\s+(\d+(?:\.\d+)*)")
+
+
+def reference_chapters() -> tuple[str, ...]:
+    """Every modular chapter that carries self-numbered headings, in path order."""
+    return tuple(
+        f"rulebook/{p.name}"
+        for p in sorted((ROOT / "rulebook").glob("*.md"))
+        if _HEADING_NUM.findall(p.read_text(encoding="utf-8"))
+    )
+
+
+#: Backwards-compatible alias: the guard's other tests iterate this name.
+REFERENCE_CHAPTERS = reference_chapters()
 
 
 def _universe() -> set[str]:
@@ -57,6 +65,25 @@ class CrossReferenceIntegrityTests(unittest.TestCase):
                 if ref not in universe:
                     failures.append(f"{rel}: §{ref} resolves to no heading")
         self.assertEqual(failures, [], "dangling cross-references:\n  " + "\n  ".join(failures))
+
+    def test_the_coverage_set_is_complete(self) -> None:
+        """The discovery must cover every self-numbering chapter, and only those.
+
+        The list is now derived, so the failure mode it replaces — a chapter added to
+        ``rulebook/`` and left out of the coverage set — is caught structurally. Pin the
+        known members too, so a change to the discovery rule is visible in review.
+        """
+        discovered = set(reference_chapters())
+        expected = {
+            f"rulebook/{p.name}"
+            for p in (ROOT / "rulebook").glob("*.md")
+            if _HEADING_NUM.findall(p.read_text(encoding="utf-8"))
+        }
+        self.assertEqual(
+            discovered, expected,
+            "the cross-reference coverage set no longer matches the self-numbering chapters",
+        )
+        self.assertIn("rulebook/15_XENOPOLITICS.md", discovered)
 
     def test_the_chapters_self_number_consistently(self) -> None:
         """Each chapter must carry at least one self-numbered heading.
