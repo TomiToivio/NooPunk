@@ -28,6 +28,7 @@ REFERENCE_CHAPTERS = (
     "rulebook/12_BEINGS.md",
     "rulebook/13_EQUIPMENT.md",
     "rulebook/14_CHARACTER_GENERATION.md",
+    "rulebook/15_XENOPOLITICS.md",
 )
 
 _SECTION_REF = re.compile(r"§\s*(\d+(?:\.\d+)*)")

@@ -36,6 +36,12 @@ Per-domain detail chapters:
 - [rulebook/5_CYBERNETIC.md](rulebook/5_CYBERNETIC.md) — implants, psychotronics, resleeving
 - [rulebook/6_PSYCHIC.md](rulebook/6_PSYCHIC.md) — PSI powers, psychotronics, sleep, Seity, Noöspace
 - [rulebook/9_FIELD_CATALOGS.md](rulebook/9_FIELD_CATALOGS.md) — character, gear, implant, PSI and being catalogs
+- [rulebook/10_SINGULARITY_CRISIS.md](rulebook/10_SINGULARITY_CRISIS.md) — the Crisis, the Noösphere / Panopticon / Thanatos outcomes, cyborgist intelligence theory
+- [rulebook/11_ONTOLOGY.md](rulebook/11_ONTOLOGY.md) — densities, vehicles, cryptoterrestrials, thought-forms, the Sphere Network
+- [rulebook/12_BEINGS.md](rulebook/12_BEINGS.md) — the catalogue of kinds of being, hybrids and the verification procedure
+- [rulebook/13_EQUIPMENT.md](rulebook/13_EQUIPMENT.md) — equipment, implants and psychotronic devices (lists, no statistics)
+- [rulebook/14_CHARACTER_GENERATION.md](rulebook/14_CHARACTER_GENERATION.md) — origins, backgrounds, training paths
+- [rulebook/15_XENOPOLITICS.md](rulebook/15_XENOPOLITICS.md) — the post-Crisis NHI situation, the two blocs, reconstruction society and its political consequences
 
 ---
 
@@ -4650,6 +4656,7 @@ The reference chapters that follow the same pattern, and that the author request
 | [`12_BEINGS.md`](rulebook/12_BEINGS.md) | The working catalogue of kinds of being, hybrids, the identity-verification procedure and the class conflict | #171, #172, #179, #180 |
 | [`13_EQUIPMENT.md`](rulebook/13_EQUIPMENT.md) | Equipment, cybernetic implants and psychotronic devices — descriptive lists, no statistics | #180 and the author directive |
 | [`14_CHARACTER_GENERATION.md`](rulebook/14_CHARACTER_GENERATION.md) | The character-generation section: origins, backgrounds, training paths and the character-as-assemblage summary | #144 and the author directive |
+| [`15_XENOPOLITICS.md`](rulebook/15_XENOPOLITICS.md) | The post-Crisis xenopolitical situation: the two NHI blocs and why both aid reconstruction, the Confederate awakening, the Orion hybrid problem, human reaction spectra, the institutional shake-up and the world about a decade later | #187 |
 
 These chapters are **descriptive lists with light descriptions, as the author specified**;
 they define no numeric statistics and no new subsystems.
