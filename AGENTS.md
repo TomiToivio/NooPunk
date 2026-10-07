@@ -85,8 +85,8 @@ For the default Helsinki / UNSA campaign, only expose specialist fields that act
 Issues #171–#180 add **light, scoped content** in several of the areas below — **lists of
 things with brief descriptions**, plus conceptual and light rules — without lifting the
 reservation on numeric statistics or full subsystems. The lore and the main catalogs are
-`RULEBOOK.md` §§45–51 and `rulebook/9_FIELD_CATALOGS.md`; the follow-up chapter consolidation
-adds the **wound ladder** and **equipment list** (`RULEBOOK.md` §§52–53,
+`RULEBOOK.md` §§44–50 and `rulebook/9_FIELD_CATALOGS.md`; the follow-up chapter consolidation
+adds the **wound ladder** and **equipment list** (`RULEBOOK.md` §§51–52,
 `rulebook/3_PHYSICAL.md`) and the expanded **Pauli–Jung / Atmanspacher** detail
 (`rulebook/6_PSYCHIC.md`). This content defines **no per-item statistics, no full
 combat/damage subsystem, no deep-hacking subsystem, no economy, and no interactive ASI
