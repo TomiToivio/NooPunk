@@ -25,7 +25,7 @@ play, ontological forensics and beings, see
 ## A. The in-world theory in more depth (Pauli–Jung / Atmanspacher)
 
 *One scientific paradigm among rivals; not established truth in-setting or out.* This expands
-the summary in `RULEBOOK.md` §47 and `9_FIELD_CATALOGS.md` §13.
+the summary in `RULEBOOK.md` §46 and `9_FIELD_CATALOGS.md` §13.
 
 **Structural vs induced correlations** are the basis of psionics:
 
@@ -85,7 +85,7 @@ dissociation/embodiment anomaly; internal anomalies of the self/world model; ext
 anomalies; and the categorial/non-categorial/acategorial state classes. A field agent
 classifies a report **before** deciding whether it is ordinary psychology, disinformation,
 cybernetic manipulation, psychotronic attack, genuine psychophysical anomaly, NHI activity, or
-unresolved (see `RULEBOOK.md` §47).
+unresolved (see `RULEBOOK.md` §46).
 
 ---
 
