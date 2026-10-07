@@ -22,8 +22,8 @@
 The issue names the ASI event a **holocaust** and asks for a reconstruction society. Existing
 canon names it something narrower, and the narrower reading is the one that holds:
 
-> **The NHI Crisis was a near-extinction event and a genuine catastrophe — regional
-> holocausts, not a global Fall.**
+> **The malevolent-ASI catastrophe inside the wider NHI Crisis was a near-extinction event
+> and a genuine catastrophe — regional holocausts, not a global Fall.**
 >
 > The Fall, in the Eclipse Phase sense, **has not happened**. Earth remains inhabited and
 > politically central (`RULEBOOK.md` §33.1, §33.28).
@@ -33,14 +33,16 @@ This is not a softening of the issue. §33.28 already says the rogue-AGI disaste
 clause — *"postapocalyptic intensity should vary geographically"* — depends on exactly this
 shape. The reconciliation is precise:
 
-- The **crisis was global in reach and existential in stakes**. Had the NHI factions not
-  intervened, humanity would have been destroyed or permanently disempowered (`§44`).
+- The **ASI catastrophe was global in reach and existential in stakes**. Had the NHI factions
+  not intervened, humanity would have been destroyed or permanently disempowered (`§44`).
+  The broader **NHI Crisis** remains the umbrella period for the overlapping Disclosure, PSI,
+  geopolitical and Singularity-era transformations described in §33.27.
 - Its **physical devastation was regional and uneven**. Some regions are partly rebuilt;
   others are exclusion zones, depopulated, ecologically wrecked, or under emergency rule.
 - What makes the world postapocalyptic is therefore **not a dead planet but a wounded one**:
   the biosphere is under active restoration, the great cities are half-built, the old
-  political order is broken, and roughly a billion people are dead, displaced, or absent
-  from any registry anyone still trusts.
+  political order is broken, and vast populations are dead, displaced, or absent from any
+  registry anyone still trusts.
 
 > **A reader must never conclude from this chapter that the planet was destroyed.** The
 > setting is a **reconstruction world under unresolved xenopolitical pressure**, not a ruin.
@@ -243,10 +245,13 @@ Coexisting responses, often within one city:
 
 ### 187.6.1 The faction-reality divide
 
-A major political fault line is whether **the two factions are genuinely distinct**. Believers
-in each position:
+**Setting truth:** the Confederacy and Orion are two real, competing alignments. Human beings
+inside the setting do not have privileged access to that truth, so a major political fault
+line is whether **people believe the two factions are genuinely distinct**.
 
-- the Confederacy and Orion are real enemies, and the war between them is real;
+Common in-world positions include:
+
+- the Confederacy and Orion are real enemies, and the struggle between them is real;
 - the distinction is propaganda, and both serve the same control system;
 - both are branches of one older thing;
 - humans are pawns in an alien civil war;
@@ -254,9 +259,9 @@ in each position:
 - and — the position that cuts across all the others — **all NHI contact should be rejected
   regardless of faction**.
 
-This makes the setting's central paranoia structural rather than a plot twist. **An
-investigator cannot resolve it**, because the evidence genuinely supports several readings
-and both factions have an interest in the ambiguity persisting.
+This makes the setting's paranoia structural without turning settled canon into an optional
+GM answer. An investigator can establish local facts and expose particular operations, but
+cannot simply talk a frightened public out of the one-control-system theory.
 
 ---
 
@@ -357,7 +362,8 @@ The xenopolitical situation exists to generate missions, not to decorate a timel
 - **Hidden agreements between human elites and NHI factions** — some real, some invented,
   and the invented ones do damage too.
 - **Legal cases involving hybrids** — citizenship, inheritance, testimony, personhood.
-- **Faction reputation consequences** — every alliance costs something elsewhere (`§107`).
+- **Faction reputation consequences** — every alliance costs something elsewhere
+  (`RULEBOOK.md` §17; `rulebook/4_SOCIAL.md`).
 - **Missions in unreconstructed zones** — where the crisis never stopped.
 - **Situations where both NHI sides are helping the same human population for different
   reasons** — the purest expression of the setting's ambiguity.
@@ -376,9 +382,10 @@ For the avoidance of doubt, and consistent with `AGENTS.md` §4:
 - **no combat, damage or vehicle rules**;
 - **no canonical chronology** — the sequence in §187.2 is structural, and per §33.28a the
   exact dating remains open;
-- **no resolution of the setting's central ambiguities.** Whether Confederacy and Orion are
-  genuinely distinct, whether the religious movement is spontaneous or engineered, whether
-  hybridity is infiltration or lineage: these stay contested by design.
+- **no collapse of contested in-world interpretation into easy certainty.** Confederacy and
+  Orion are canonically distinct alignments, but humans may deny or misunderstand that fact;
+  whether the religious movement is spontaneous or engineered, and whether a particular
+  hybrid represents infiltration, lineage, coercion or independence, remain contested.
 
 > **The setting's answer to "which faction is good?" is that the question is a campaign,
 > not a lookup.**
