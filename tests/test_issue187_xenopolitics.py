@@ -5,14 +5,14 @@ Pins the properties that matter and could silently rot:
 
 1. the chapter exists at its ledger number, is contiguous with the rest of the ledger, and
    is linked from the rulebook and from the §36.9 reference table;
-2. the **canon reconciliation** holds: the chapter says the Crisis was a catastrophe with
-   regional holocausts **and** that the Fall has not happened. A later edit must not
+2. the **canon reconciliation** holds: the chapter says the ASI catastrophe inside the wider
+   NHI Crisis involved regional holocausts **and** that the Fall has not happened. A later edit must not
    silently upgrade it to a planet-destroying Fall (which would contradict §33.1/§33.28) or
    soften it to a non-event;
 3. the **both-sides-help** premise and the moral axis sentence survive — they are the point
    of the section;
-4. the **ambiguity** is preserved: the chapter must not resolve whether the two factions are
-   genuinely distinct;
+4. the **faction truth / public belief distinction** is preserved: the two blocs are canonically
+   distinct, while humans may believe otherwise;
 5. the chapter keeps its no-mechanics bound (no statistics, no faction mechanics).
 
 Asserts structure and presence only, never wording beyond the required invariants.
@@ -160,21 +160,20 @@ class AmbiguityPreservationTests(unittest.TestCase):
     def setUp(self) -> None:
         self.ch_flat = flat(read(CHAPTER))
 
-    def test_the_faction_reality_question_stays_open(self) -> None:
-        """The chapter must present the divide WITHOUT settling it."""
-        self.assertIn("whether **the two factions are genuinely distinct**", self.ch_flat)
-        # and it must say plainly that it is unresolved / structural
-        self.assertRegex(
+    def test_two_factions_are_canonically_distinct(self) -> None:
+        """Setting truth is two competing alignments, even when people deny it."""
+        self.assertIn(
+            "**Setting truth:** the Confederacy and Orion are two real, competing alignments",
             self.ch_flat,
-            r"investigator cannot resolve it|stays contested|resolves none of this",
+        )
+        self.assertIn(
+            "whether **people believe the two factions are genuinely distinct**",
+            self.ch_flat,
         )
 
-    def test_it_does_not_assert_the_factions_are_identical(self) -> None:
-        """A later edit must not 'answer' the question in either direction."""
-        for verdict in ("are the same faction", "are one and the same",
-                        "do not actually exist", "are proven real enemies"):
-            with self.subTest(verdict=verdict):
-                self.assertNotIn(verdict, self.ch_flat)
+    def test_one_control_system_remains_an_in_world_belief(self) -> None:
+        self.assertIn("both serve the same control system", self.ch_flat)
+        self.assertIn("without turning settled canon into an optional GM answer", self.ch_flat)
 
     def test_the_religious_movement_questions_stay_questions(self) -> None:
         self.assertRegex(self.ch_flat, r"Is this spontaneous religious conversion")
