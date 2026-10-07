@@ -106,3 +106,18 @@ A newly graduated field agent normally has access to:
 Heavier armor, specialist weapons, large drones, vehicles, advanced containment systems and other mission-specific hardware are issued as required rather than treated as permanent personal inventory.
 
 This list defines **availability and function only**. Equipment statistics remain undefined.
+
+---
+
+## Where things live
+
+- **Implant catalog** — the campaign-facing list of cybernetic and psychotronic implants is
+  `rulebook/9_FIELD_CATALOGS.md` §3 (light descriptions; no slot limits, no numeric stats).
+- **Resleeving, continuity and the immortality gap** — `RULEBOOK.md` §46 (Confederation,
+  Orion, resleeving and elite immortality).
+- **Psychotronics as a category** — `RULEBOOK.md` §47 and `rulebook/6_PSYCHIC.md` §A.
+
+**Continuity is a loaded setting question, not a respawn button.** Cortical-stack-like
+technology, backup/restore, resleeving and continuity ledgers record and move minds — but
+whether they transfer consciousness or only copy memory is **deliberately unresolved**
+(`RULEBOOK.md` §46). Do not implement automated resurrection.
