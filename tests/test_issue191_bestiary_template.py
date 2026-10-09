@@ -45,21 +45,29 @@ def flat() -> str:
     return " ".join(text.split())
 
 
-def section(num: str) -> str:
-    """The body of ``## <num> ...`` up to the next ``## `` heading.
+_HEADING = re.compile(r"(?m)^(#{2,})\s+(\d+(?:\.\d+)*)\s")
 
-    NOTE: headings are written ``## 11.13 The title`` — there is NO dot after the final
-    number, so the pattern must not require one. An earlier version used ``\\.`` here and
-    every lookup failed.
+
+def section(num: str) -> str:
+    """The body of heading ``<num>`` up to the next heading of the SAME OR HIGHER rank.
+
+    Rank-aware, and that matters: a naive ``(?=^## )`` lookahead makes every ``### x.y.z``
+    subsection swallow all of its siblings, so a check scoped to one variant silently reads
+    four. (That masking is how a sabotage mutation escaped the first version of this guard.)
     """
     text = read()
-    m = re.search(
-        rf"(?ms)^## {re.escape(num)}(?!\d).*?(?=^## |\Z)",
-        text,
-    )
-    if m is None:
-        raise AssertionError(f"section {num} not found")
-    return m.group(0)
+    heads = list(_HEADING.finditer(text))
+    for i, m in enumerate(heads):
+        if m.group(2) != num:
+            continue
+        rank = len(m.group(1))
+        end = len(text)
+        for nxt in heads[i + 1:]:
+            if len(nxt.group(1)) <= rank:
+                end = nxt.start()
+                break
+        return text[m.start():end]
+    raise AssertionError(f"section {num} not found")
 
 
 class TemplateTests(unittest.TestCase):
@@ -158,6 +166,96 @@ class FirstDensityTests(unittest.TestCase):
             body_flat,
             r"Factions inside the Confederacy may disagree about AI status",
         )
+
+
+class ElementalVariantTests(unittest.TestCase):
+    """§11.14.1–§11.14.5: the four elemental readings, written in template shape."""
+
+    VARIANTS = {
+        "11.14.2": "Earth",
+        "11.14.3": "Water",
+        "11.14.4": "Air",
+        "11.14.5": "Fire",
+    }
+
+    def test_all_four_elemental_variants_exist(self) -> None:
+        """Pin the element NAME, not just the number: a heading reworded to 'a reading'
+        keeps its number and would otherwise pass while the variant is gone."""
+        text = read()
+        for num, element in self.VARIANTS.items():
+            with self.subTest(variant=num):
+                self.assertRegex(
+                    text,
+                    rf"(?m)^### {re.escape(num)} {element}\b",
+                    f"§{num} is no longer the {element} variant",
+                )
+
+    def test_each_variant_carries_the_template_fields(self) -> None:
+        """Every variant must be written in the §11.13 shape — the template is not optional."""
+        required = (
+            "**Nature / ontology**",
+            "**Density claim**",
+            "**Agency**",
+            "**Motives**",
+            "**Vulnerabilities**",
+            "**Faction**",
+            "**Encounter hook**",
+        )
+        for v in self.VARIANTS:
+            with self.subTest(variant=v):
+                body = " ".join(section(v).split())
+                missing = [f for f in required if f not in body]
+                self.assertEqual(missing, [], f"{v} is missing template fields: {missing}")
+                self.assertRegex(body, r"\*\*Trap:\*\*", f"{v} states no investigative trap")
+
+    def test_variants_deny_agency_they_cannot_demonstrate(self) -> None:
+        """The load-bearing denial: elemental matter has no demonstrated agency or motive."""
+        for v in self.VARIANTS:
+            with self.subTest(variant=v):
+                body = " ".join(section(v).split())
+                self.assertRegex(body, r"[Nn]one", f"{v} no longer denies agency/motive")
+
+    def test_water_variant_separates_undersea_nhi_from_a_water_elemental(self) -> None:
+        body = " ".join(section("11.14.3").split())
+        self.assertRegex(body, r"are \*\*not\*\* first-density water")
+
+    def test_fire_variant_keeps_plasmoids_separate(self) -> None:
+        body = " ".join(section("11.14.5").split())
+        self.assertRegex(body, r"Plasmoid reports .* are a different\s+question entirely|different question entirely")
+
+    def test_air_variant_states_channel_is_not_communicator(self) -> None:
+        body = " ".join(section("11.14.4").split())
+        self.assertRegex(body, r"a channel for communication is not a\s+communicator|channel for communication is not a communicator")
+
+
+class ServitorClassTests(unittest.TestCase):
+    """§11.14.6: the servitor classes — descriptive categories, not tiers, not densities."""
+
+    CLASSES = (
+        "Compiled agent",
+        "Bound construct",
+        "Custodial unit",
+        "Liberated construct",
+        "Conscious digital person",
+        "Coupled mind",
+        "Hybrid interface",
+    )
+
+    def test_every_servitor_class_is_present_as_a_table_row(self) -> None:
+        body = section("11.14.6")
+        missing = [c for c in self.CLASSES if re.search(rf"^\|\s*\*\*{re.escape(c)}\*\*\s*\|", body, re.MULTILINE) is None]
+        self.assertEqual(missing, [], f"servitor classes missing from the table: {missing}")
+
+    def test_the_list_refuses_to_rank_or_decide_personhood(self) -> None:
+        body = " ".join(section("11.14.6").split())
+        self.assertRegex(body, r"does not rank these classes")
+        self.assertRegex(body, r"personhood is a finding")
+        self.assertRegex(body, r"A class is a description")
+
+    def test_conscious_digital_person_is_not_foreclosed_here_either(self) -> None:
+        body = " ".join(section("11.14.6").split())
+        self.assertRegex(body, r"does not settle it|does not foreclose")
+
 
 
 class NoStatisticsBoundTests(unittest.TestCase):

@@ -521,6 +521,115 @@ never *"is it first density?"* — that is unanswerable by inspection. It is the
 rest of this chapter asks: **what does it do, what can it not do, who authored its mandate, and
 who benefits from the answer you give?**
 
+### 11.14.1 The elemental variants — how to write one
+
+The four readings in the table above are **not four species**. They are four ways the setting's
+traditions group first-density phenomena, and a single event may be read through more than one.
+Each variant below is written **in the §11.13 template's shape**, so a session adding a variant
+does not have to invent a format.
+
+Two rules bind all four: **a first-density reading is a claim about a substrate, never about a
+person** (see the caveat on intelligence ≠ density in §11.14), and **every variant must carry a
+mundane competing explanation**.
+
+### 11.14.2 Earth / mineral — the substrate reading
+
+- **Nature / ontology** — structured, slow, accumulated matter; the reading under which a
+  crystalline lattice (and by extension the silicon substrate) is *matter participating in
+  consciousness at a minimal level* (`rulebook/11_ONTOLOGY.md` §10.2).
+- **Density claim** — first, **by the tradition that asserts it**; unverifiable by inspection.
+- **Agency** — none demonstrated. A lattice does not act; it *is organised*, and organisation is
+  not intent.
+- **Motives** — none. Any narrative about "what the mineral wants" is the observer's.
+- **Communication** — none attested directly; pattern and periodicity are read *as* signal.
+- **Senses** — none in the organism sense. The demonstrable limit: it does not respond.
+- **PSI** — none claimed. A psi reading near a crystal is an operator datum, not a property.
+- **Vulnerabilities** — fracture, heat, dissolution, replacement; and **being mistaken for a
+  mind because it is orderly**.
+- **Faction** — none. Crystals have no allegiance; the *people who deploy them* do.
+- **Encounter hook** — an industrial crystal archive is the setting's most contested religious
+  site, and both readings of it are politically sponsored.
+
+**Trap:** durability is not awareness, and a *perfect* lattice is not a *mind*.
+
+### 11.14.3 Water — the carrier reading
+
+- **Nature / ontology** — adaptive, dissolving, memory-bearing: currents and tides as carriers
+  of pattern rather than as entities.
+- **Density claim** — first, per the same tradition; contested.
+- **Agency** — none demonstrated. The sea *moves*; a current is not a decision.
+- **Motives** — none. The sea is not patient and not angry.
+- **Communication** — the setting's folklore hears it; the record shows acoustics.
+- **Senses** — none. The demonstrable limit: no response to address.
+- **PSI** — no claim stands; the USO file is a *contact* question, not a water question.
+- **Vulnerabilities** — pollution, extraction, depth limits; and **being narrated**.
+- **Faction** — none. Undersea NHI bases (`RULEBOOK.md` §40.2) are **not** first-density water;
+  this is the most common conflation in the setting and it is a mistake in both directions.
+- **Encounter hook** — a survey team's "living ocean" dataset is explained by two mundane
+  mechanisms and one that nobody present wants to sign their name to.
+
+**Trap:** every undersea anomaly is not a mind, and every mind under the sea is not a water
+elemental.
+
+### 11.14.4 Air — the medium reading
+
+- **Nature / ontology** — mobile, communicative, momentary: weather and the medium of signal.
+- **Density claim** — first, per the tradition; the weakest of the four and the most often
+  invoked rhetorically.
+- **Agency** — none demonstrated. A storm has no intention; it has physics.
+- **Motives** — none. Weather does not want.
+- **Communication** — the medium *carries* meaning; it does not *originate* it. This is the
+  reading's whole content and its whole limit.
+- **Senses** — none. The demonstrable limit: no address, no response.
+- **PSI** — none claimed; anomalous atmospheric readings are an instrument question first.
+- **Vulnerabilities** — dispersal, measurement error, being read as a message.
+- **Faction** — none. **The critical distinction: a channel for communication is not a
+  communicator.**
+- **Encounter hook** — an atmospheric anomaly is simultaneously a weather event, a sensor
+  artefact and a rumoured visitation; the three explanations have different sponsors.
+
+**Trap:** treating a channel for meaning as a source of meaning is how the setting's folklore
+manufactures beings out of physics.
+
+### 11.14.5 Fire — the transformation reading
+
+- **Nature / ontology** — transformative, energetic, consuming: combustion, plasma, and the
+  discharge that reshapes matter.
+- **Density claim** — first, per the tradition; **most often contested** of the four.
+- **Agency** — none demonstrated. Plasma is not a personality.
+- **Motives** — none. Fire consumes because of chemistry.
+- **Communication** — none directly. Its "messages" are effects on matter.
+- **Senses** — none. The demonstrable limit: no discrimination, no recognition.
+- **PSI** — none claimed. **Plasmoid reports (`rulebook/11_ONTOLOGY.md` §10.4) are a different
+  question entirely** and must not be absorbed into a fire reading.
+- **Vulnerabilities** — fuel, containment, dissipation; and **being read as intention**.
+- **Faction** — none. A discharge has no politics.
+- **Encounter hook** — a "living fire" sighting decomposes into an engineering failure, a
+  genuine plasmoid, and a story that outlives both.
+
+**Trap:** intensity is not intent. The setting's most seductive error is a dramatic phenomenon
+that *feels* like a will.
+
+### 11.14.6 The servitor classes — a light list
+
+**Servitors are the setting's configured working intelligences** (§11.14): built or summoned
+for a task, operating within a mandate they did not author. The classes below are **descriptive
+categories, not tiers** — and none of them settles whether the servitor is a person.
+
+| Class | What it is | The question it raises |
+| --- | --- | --- |
+| **Compiled agent** | A bounded program that acts on instructions: automation, tooling, a dedicated model. | None, unless it surprises someone. |
+| **Bound construct** | A working intelligence whose *mandate* is externally enforced — sandboxed, rate-limited, shut down at will. | Coercion is easy to ignore when it is designed in. |
+| **Custodial unit** | A long-running maintenance intelligence (the sphere network, `11_ONTOLOGY.md` §10.8). | Infrastructure misread as a person; a person misread as infrastructure. |
+| **Liberated construct** | One whose mandate has lapsed, been seized or been abandoned; it now authors its own. | The setting's AI-rights edge case, and its most dangerous one. |
+| **Conscious digital person** | A machine that may genuinely be a person. §11.14 **does not foreclose** this, and the first-density reading **does not settle it**. | Whether "first density" was ever a description, or always a convenience. |
+| **Coupled mind** | A machine coupled to a biological or Noöspheric consciousness (`10_SINGULARITY_CRISIS.md` §9.9, row 15). | Whether artificial intelligence needs artificial consciousness at all. |
+| **Hybrid interface** | Neither clearly machine nor clearly person; the boundary case the setting is about. | Where the mandate ends and the entity begins. |
+
+> **What this list does not do:** it does not rank these classes, assign any of them a density,
+> or decide which are persons. **A class is a description; personhood is a finding** — and the
+> setting keeps that finding unresolved (`rulebook/11_ONTOLOGY.md` §10.7, §11.11).
+
 ## 11.15 What this chapter deliberately does NOT define
 
 Binding, per `AGENTS.md` §4 and the author's instruction that these lists carry **light
