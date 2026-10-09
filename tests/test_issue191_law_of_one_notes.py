@@ -127,6 +127,24 @@ class LawOfOneNotesTests(unittest.TestCase):
         self.assertIn("This Council is located in the octave, or eight[h] dimension", self.notes)
         self.assertIn("[corrected]", self.notes)
 
+    def test_the_citation_audit_section_survives(self) -> None:
+        """Two sibling streams produced FALSE corrections; the audit records both.
+
+        This is the highest-value content of the whole sheet: either claim, taken on trust,
+        puts a false statement about the primary text into canon. Guard both directions —
+        the section exists AND each false claim is refuted with its citation.
+        """
+        self.assertIn("Citation audit", self.notes)
+        self.assertRegex(self.notes, r"12\.21` does exist")
+        self.assertIn("session 12 anchors", self.notes)
+        self.assertRegex(self.notes, r"6\.8` DOES place the Council at Saturn")
+
+    def test_the_citation_audit_keeps_the_elision_warning(self) -> None:
+        """The ROOT CAUSE matters as much as the correction: an elided extract looks like a
+        numbering gap, and the next agent will make the same mistake without this."""
+        self.assertIn("Never infer a missing question from an extractor's elision", self.notes)
+        self.assertRegex(self.notes, r"Citations are audited, not inherited")
+
     def test_no_numeric_power_or_balance_scale_is_introduced(self) -> None:
         """The granularity the author set: light description, not full stats.
 
