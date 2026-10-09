@@ -36,6 +36,7 @@ Per-domain detail chapters:
 - [rulebook/5_CYBERNETIC.md](rulebook/5_CYBERNETIC.md) — implants, psychotronics, resleeving
 - [rulebook/6_PSYCHIC.md](rulebook/6_PSYCHIC.md) — PSI powers, psychotronics, sleep, Seity, Noöspace
 - [rulebook/9_FIELD_CATALOGS.md](rulebook/9_FIELD_CATALOGS.md) — character, gear, implant, PSI and being catalogs
+- [rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md](rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md) — Confederacy/Source lore, Sphere Network investigations, starseeds, noetic contact and existing-core playable procedures (#191)
 
 ---
 
