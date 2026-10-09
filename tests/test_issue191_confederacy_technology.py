@@ -22,11 +22,12 @@ RULEBOOK = ROOT / "RULEBOOK.md"
 
 
 def flat(path: Path) -> str:
-    """Collapse wrapping AND strip markdown emphasis, for prose assertions.
+    """Collapse wrapping AND strip markdown emphasis, for *prose* assertions only.
 
-    Emphasis markers matter: the section says "Ra **does not** describe Jackson's …", so a
-    regex written against the plain words fails on the ``**``. Strip ``*``/``_``/backticks so
-    assertions test the prose, not its formatting.
+    Emphasis matters: the section says "Ra **does not** describe Jackson's …", so a regex
+    written against the plain words fails on the ``**``. Do NOT use this on file paths —
+    it strips underscores, so ``16_CONFEDERACY_SOURCE_AND_CONTACT.md`` becomes
+    ``16CONFEDERACYSOURCEANDCONTACT.md``. Assert paths against raw text instead.
     """
     text = path.read_text(encoding="utf-8")
     text = text.replace("*", "").replace("`", "")
@@ -68,10 +69,21 @@ class SphereEvidenceDisciplineTests(unittest.TestCase):
         self.assertRegex(self.text, r"does not describe Jackson'?s sphere",
                           "must keep the 'Ra is silent' note")
 
-    def test_four_layer_taxonomy_is_present(self) -> None:
-        for layer in ("Orbital Sentinels", "Atmospheric Wardens",
-                      "Local Microcustodians", "Noetic relays"):
-            self.assertIn(layer, self.text, f"missing sphere layer {layer}")
+    def test_sphere_section_does_not_fork_the_network(self) -> None:
+        """§10.8.2 must not canonise a second sphere taxonomy.
+
+        Chapter 16 §16.2 owns the operational reading and warns against inventing canonical
+        Jackson-style type definitions. This pass cut an earlier four-layer naming for exactly
+        that reason, so pin the cross-link and the "no fork" statement.
+        """
+        text = flat(ONTOLOGY)
+        self.assertIn("16_CONFEDERACY_SOURCE_AND_CONTACT.md",
+                      ONTOLOGY.read_text(encoding="utf-8"),
+                      "the sphere section must cross-link chapter 16")
+        self.assertRegex(text, r"do not fork the network|does not define a second one",
+                         "must keep the explicit 'one network, not two' statement")
+        self.assertRegex(text, r"observation layers, not canonical types",
+                         "must keep the observation-layers caveat")
 
 
 class MindBodySpiritMappingTests(unittest.TestCase):

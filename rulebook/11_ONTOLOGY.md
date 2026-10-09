@@ -375,31 +375,37 @@ of a sphere network. Recorded here with its evidence class so no later pass can 
 > Jackson. That is exactly the setting's texture: an investigator can reach the sphere
 > hypothesis *from data*, and still be wrong.
 
-### 10.8.2 The four-layer taxonomy (extends, does not replace, the above)
+### 10.8.2 Observational layers — do not fork the network
 
-The sphere network is best modelled as a **partially autonomous mesh predating the first human
-satellites**, whose layers humans routinely mistake for unrelated phenomena. This is the
-NoöPunk synthesis of the Jackson hypothesis and the POSS-I altitude band, *not* a claim about
-the real world:
+**There is one Sphere Network, and `rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md` §16.2 is where
+its operational reading lives.** This section deliberately does **not** define a second one, and
+it does **not** canonise a new layer taxonomy — an earlier draft of this passage proposed named
+"Orbital Sentinels / Atmospheric Wardens / Local Microcustodians / Noetic relays" classes, and
+that was cut precisely because §16.2 already cautions against inventing canonical Jackson-style
+type definitions.
 
-| Layer | Domain | What observers misread it as | Notes |
-| --- | --- | --- | --- |
-| **Orbital Sentinels** | high orbit / geosynchronous band | pre-Sputnik glints, satellites, debris; the POSS-I class | matches the ~20,000–35,000 km band; sparse, slow, mostly silent |
-| **Atmospheric Wardens** | lower atmosphere | "silver spheres", foo-fighters, sensor plumes, weather/drone sightings | interception and relief roles; **false-flag susceptible** |
-| **Local Microcustodians** | indoors / near-human | **poltergeist activity**, "psychotronic" interference, household haunting | the Jackson indoor class; a genuine privacy and security problem |
-| **Noetic relays** | Noöspace / coupling layer | light orbs, PSI manifestations, shared-dream intrusions | **speculative**, and it is the layer most likely to be spoofed |
+What belongs here, and stays:
 
-**Not all metallic spheres are Confederacy assets.** Human counterfeits, Orion infiltration
-devices, balloons, orbital debris, camera artefacts, and genuinely unclassified phenomena
-coexist in every layer. **A photographic glint never uniquely identifies a metallic sphere** —
-which is the same rule as §10.3, applied to hardware.
+- **Altitude, not essence.** The one thing the POSS-I modelling actually constrains is a
+  *characteristic altitude band* (§10.8.1). That is an observation, not a classification.
+- **Layered *observation*.** Operators may loosely say a node was detected *orbital*,
+  *atmospheric* or *local*; per §16.2 these are **observation layers, not canonical types**, and
+  a given sphere may shift roles.
+- **One network, many interpretations.** Human counterfeits, Orion infiltration devices,
+  balloons, orbital debris, camera artefacts, and genuinely unclassified phenomena coexist at
+  every altitude. **A photographic glint never uniquely identifies a metallic sphere** — the
+  same rule as §10.3, applied to hardware.
 
-**Source note (2026-10-09).** This section adds (a) the primary-source POSS-I grounding and its
-evidence class, and (b) the four-layer naming — a NoöPunk design synthesis. The **Jackson
-adaptation itself was already canon** in the text above; §10.8.1–10.8.2 refine it rather than
-replacing it, and do not claim Villarroel's results support Jackson's taxonomy. Ra is silent on
-all of it: Ra **does not** describe Jackson's sphere types **or** identify POSS-I transients as
-Guardian craft.
+**Cross-references.** Operational functions, contact procedure and playable situations:
+`rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md` §16.2. The sphere's place in the wider
+Confederacy picture: `rulebook/15_XENOPOLITICS.md`, `RULEBOOK.md` §41.2.
+
+**Source note (2026-10-09).** What this section contributes is the **primary-source grounding
+and evidence class** for the historical-transient strand — the concrete POSS-I figures and the
+"not a finding" statement in §10.8.1 — kept in the ontology chapter next to the sphere canon it
+bears on. The **Jackson adaptation itself was already canon** above; the **operational layering
+is §16.2's**. Ra is silent on all of it: Ra **does not** describe Jackson's sphere types **or**
+identify POSS-I transients as Guardian craft.
 
 ---
 
