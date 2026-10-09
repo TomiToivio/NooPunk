@@ -217,6 +217,35 @@ from that perspective.
 perspective on a life it has already (from its side) lived, communicating under severe
 constraints and through symbolic material. It should never simply answer a question.
 
+### 10.6.0 The mind/body/spirit complex and NoöPunk's four systems
+
+The tracker asks where Ra's **mind/body/spirit complex** sits relative to NoöPunk's four
+systems. The answer is a **thematic overlay, not an architecture change** — and this matters,
+because the four-system model is locked by #51/#131 and must not be quietly replaced.
+
+| Ra term | NoöPunk reading | Caveat |
+| --- | --- | --- |
+| **mind** | the **Social** and **Psychic** systems together | Ra's "mind" is broader than NoöPunk's Social; it is *both* the intersubjective and the inner-life side |
+| **body** | the **Physical** system | direct, uncontroversial |
+| **spirit** | the **Psychic** seity side, plus the parked **Seity** block (`rulebook/6_PSYCHIC.md` §6.5.3, §6.6) | "spirit" is the *contested* term NoöPunk most wants to de-sermonise |
+
+**What this means in play:**
+
+- Keep Ra's **mind/body/spirit** as the **Confederacy's own vocabulary** — the words a
+  Confederacy envoy actually uses. A human engineer does not have to accept them.
+- Keep NoöPunk's **Physical / Social / Psychic / Cybernetic** as the **system architecture**.
+  The **Cybernetic** layer has **no Ra counterpart at all** — it is the modern layer, and the
+  mapping must never be used to delete it. This is the single most important caution here:
+  "mind/body/spirit = our four systems" is **false**, because the fourth system has no source
+  term.
+- So a character sheet stays four-system, while a Confederacy NPC can talk about
+  mind/body/spirit complexes without either side being wrong. The two vocabularies
+  **translate**, they do not merge.
+
+**De-sermonising is the point** (the tracker's reskin directive): "spirit" carries the most
+religious freight, so the investigator-facing text prefers **seity**, **agency**, or **psychic
+system**, and reserves the word *spirit* for when a believer is speaking in character.
+
 ### 10.6.1 Source notes
 
 For documentation and later citation, the useful Ra passages are: **9.18–9.22** (Maldek /
