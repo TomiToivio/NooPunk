@@ -119,8 +119,11 @@ class LawOfOneNotesTests(unittest.TestCase):
         """6.8 DOES place the Council at Saturn; a sibling note claimed the text was silent.
 
         The correction is load-bearing: if a later edit reverts to the sibling's claim, the
-        setting loses a citation and gains a false statement about the source.
+        setting loses a citation and gains a false statement about the source. Pin the
+        CITATION as well as the quote, or renumbering 6.8 to a session that says no such
+        thing leaves the guard green.
         """
+        self.assertIn("**6.8**", self.notes)
         self.assertIn("This Council is located in the octave, or eight[h] dimension", self.notes)
         self.assertIn("[corrected]", self.notes)
 
@@ -130,25 +133,36 @@ class LawOfOneNotesTests(unittest.TestCase):
         A bare absence check would false-FAIL on the two documents' OWN prohibitions ("no PSI
         point economy", a "balance score" named as a *misreading*). Per
         `references/structure-guard-assertion-discipline.md` the exemption is scoped to the
-        **clause** that owns the token, never to the whole line: a clause stating a real
-        mechanic alongside a negator elsewhere must still FAIL.
+        **clause** that owns the token, never to a character window: a clause stating a real
+        mechanic passes a window scan whenever a negator happens to sit nearby, which is how
+        a real mechanic can be smuggled in beside a prohibition.
         """
         for pattern in (r"\bPSI points?\b", r"\benergy[- ]center rating\b", r"\bbalance score\b"):
             with self.subTest(pattern=pattern):
-                self._assert_never_asserted(self.notes, pattern)
-                self._assert_never_asserted(self.chapter, pattern)
+                self._assert_only_ever_denied(self.notes, pattern)
+                self._assert_only_ever_denied(self.chapter, pattern)
 
-    def _assert_never_asserted(self, text: str, pattern: str) -> None:
-        """Fail if `pattern` occurs anywhere outside a clause that forbids or rejects it."""
-        for m in re.finditer(pattern, text, flags=re.IGNORECASE):
-            window = text[max(0, m.start() - 220):m.end() + 220].lower()
-            forbidden = (
-                "no ", "not ", "nothing", "never", "does not", "do not", "cannot",
-                "misreading", "not supported", "deliberately does not", "without",
-            )
+    #: Words that mark a clause as DENYING or REJECTING the token, not asserting it.
+    _DENIAL = (
+        "no ", "not ", "nothing", "never", "does not", "do not", "cannot", "without",
+        "misreading", "not supported", "rather than", "instead of",
+    )
+
+    def _assert_only_ever_denied(self, text: str, pattern: str) -> None:
+        """Fail if `pattern` occurs in ANY sentence that does not deny/reject it.
+
+        Judged per SENTENCE, never per character window: the sentence that OWNS the token must
+        carry the negation. A real mechanic in its own sentence fails even when an unrelated
+        sentence nearby says "no …". The split is on sentence ends only — splitting on `;`
+        too would strand a list item from the rejection label that governs it ("**Not
+        supported:** …; a "balance score" that grows."), a false FAIL the sweep caught.
+        """
+        for sentence in re.split(r"(?<=[.!?])\s+", text):
+            if not re.search(pattern, sentence, flags=re.IGNORECASE):
+                continue
             self.assertTrue(
-                any(n in window for n in forbidden),
-                f"{pattern!r} appears outside a prohibition/rejection clause: {window!r}",
+                any(n in sentence.lower() for n in self._DENIAL),
+                f"{pattern!r} is asserted in a sentence that does not deny it: {sentence!r}",
             )
 
     # ---- 4. the chapter's own bounds and linkage -------------------------------------
@@ -172,13 +186,21 @@ class LawOfOneNotesTests(unittest.TestCase):
         self.assertIn("rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md", self.rulebook)
 
     def test_the_ledger_carries_the_new_section_at_its_own_site(self) -> None:
-        """Anchored level + end, so a demotion to ### cannot satisfy it."""
+        """Anchored level + end, so a demotion to ### cannot satisfy it.
+
+        The POINTER must be pinned as the link, not as a bare filename: §54 mentions the
+        chapter path twice (the pointer and a later cross-reference), so a filename check is
+        satisfied by the second mention after the pointer itself is gutted.
+        """
         appendix = self.rulebook.split("# Extended canon and reference material", 1)[1]
         self.assertRegex(appendix, r"(?m)^## 54\. Noetic practice, crystal technology and the craft question \(#191\)$")
         m = re.search(r"(?ms)^## 54\. .*?(?=^## \d+\. |\Z)", appendix)
         self.assertIsNotNone(m, "ledger §54 not found")
-        self.assertIn("rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md", m.group(0),
-                      "ledger §54 does not point at the modular chapter")
+        self.assertIn(
+            "[`rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md`](rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md)",
+            m.group(0) if m else "",
+            "ledger §54 does not carry the markdown link that makes it a pointer",
+        )
 
     def test_the_ledger_remains_contiguous(self) -> None:
         appendix = self.rulebook.split("# Extended canon and reference material", 1)[1]
