@@ -299,6 +299,79 @@ autonomous AI sphere infrastructure → biological and non-biological NHI → th
 natural plasma phenomena → deceptive or hostile imitations. **Every layer is a distinct
 hypothesis, and the setting does not collapse them.**
 
+### 10.8.1 The empirical layer: POSS-I transients (evidence class: **contested**)
+
+Since 2026 an actual **observational** strand has to be kept separate from the Jackson
+hypothesis, because the two are constantly conflated. The Villarroel/POSS-I work is the closest
+thing the setting has to real data on high-altitude reflective objects — and it is **not** proof
+of a sphere network. Recorded here with its evidence class so no later pass can upgrade it.
+
+**What the papers actually report** (verified from the primary abstracts, 2026-10-09):
+
+- **Bruehl, Villarroel, Guergouri, Doherty, Streblyanska — *Earth-Projected Clustering of
+  Historical Optical Transients in the Palomar Observatory Sky Survey-I* (arXiv:2609.09461).**
+  POSS-I plates taken **before Sputnik** contain star-like point sources consistent with
+  **sub-second flashes** absent from all later observations. From **107,875** transients, a
+  machine-learning filter selected a high-probability subset; two independent methods then
+  tested for non-random Earth-projected grouping. Result: **16 statistically-significant
+  hotspots** (cluster analysis found 6 "highly distinct"), including the **Pacific west of
+  southern Mexico/Central America**, the **southern Gulf of Mexico**, and the **southwestern US
+  (Sedona AZ / White Sands NM)**. Transients matching reported **nuclear-testing** associations
+  showed **location specificity** (Pacific-only during Pacific testing; southwestern-US-only
+  during Nevada testing).
+- **Villarroel, Streblyanska, Guergouri, Doherty, Shultz, Bruehl — *Modelling Palomar
+  Transients: Constraints from Reflection Geometry and Orbital Altitude* (arXiv:2609.05105).**
+  A **modelling** study (geometric shadow modelling, Monte-Carlo, photometric constraints).
+  Assuming a spherical-shell model, the antisolar transient deficit implies characteristic
+  altitudes of **~20,000–25,000 km**; a second estimate from the global Earth-shadow deficit
+  gives **~20,000–35,000 km**, extending into the geosynchronous region. Under simplified
+  assumptions, inferred reflective-facet sizes run **centimetres to ~3 m**, with characteristic
+  flash durations **~320 ms** and slow rotation.
+
+**What this does NOT establish** — and the papers are careful about this:
+
+- **No artificial object, no craft, no sphere, and no NHI is claimed.** The morphology is
+  consistent with **specular reflection**; the authors explicitly explore **"both natural and
+  non-natural toy models"** and frame the sizes as inferred **putative reflectors**, not
+  measured diameters.
+- The hotspot result is a **statistical grouping over survey data**, exposed to plate artefacts
+  and observational selection; the authors phrase the outcome as findings that **"hint at"**
+  intriguing characteristics.
+- **Evidence class: contested / model-dependent.** The correct in-world status is *"a real,
+  peer-visible anomaly with at least one high-altitude explanation"* — not *"we found the
+  sphere network."*
+
+> **Design consequence.** The POSS-I transients give UNSA's NHI desk a **legitimate,
+> falsifiable** line of inquiry that predates Sputnik and does not require anyone to believe
+> Jackson. That is exactly the setting's texture: an investigator can reach the sphere
+> hypothesis *from data*, and still be wrong.
+
+### 10.8.2 The four-layer taxonomy (extends, does not replace, the above)
+
+The sphere network is best modelled as a **partially autonomous mesh predating the first human
+satellites**, whose layers humans routinely mistake for unrelated phenomena. This is the
+NoöPunk synthesis of the Jackson hypothesis and the POSS-I altitude band, *not* a claim about
+the real world:
+
+| Layer | Domain | What observers misread it as | Notes |
+| --- | --- | --- | --- |
+| **Orbital Sentinels** | high orbit / geosynchronous band | pre-Sputnik glints, satellites, debris; the POSS-I class | matches the ~20,000–35,000 km band; sparse, slow, mostly silent |
+| **Atmospheric Wardens** | lower atmosphere | "silver spheres", foo-fighters, sensor plumes, weather/drone sightings | interception and relief roles; **false-flag susceptible** |
+| **Local Microcustodians** | indoors / near-human | **poltergeist activity**, "psychotronic" interference, household haunting | the Jackson indoor class; a genuine privacy and security problem |
+| **Noetic relays** | Noöspace / coupling layer | light orbs, PSI manifestations, shared-dream intrusions | **speculative**, and it is the layer most likely to be spoofed |
+
+**Not all metallic spheres are Confederacy assets.** Human counterfeits, Orion infiltration
+devices, balloons, orbital debris, camera artefacts, and genuinely unclassified phenomena
+coexist in every layer. **A photographic glint never uniquely identifies a metallic sphere** —
+which is the same rule as §10.3, applied to hardware.
+
+**Source note (2026-10-09).** This section adds (a) the primary-source POSS-I grounding and its
+evidence class, and (b) the four-layer naming — a NoöPunk design synthesis. The **Jackson
+adaptation itself was already canon** in the text above; §10.8.1–10.8.2 refine it rather than
+replacing it, and do not claim Villarroel's results support Jackson's taxonomy. Ra is silent on
+all of it: Ra **does not** describe Jackson's sphere types **or** identify POSS-I transients as
+Guardian craft.
+
 ---
 
 ## 10.9 Thought-forms
