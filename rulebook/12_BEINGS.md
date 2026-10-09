@@ -630,6 +630,67 @@ categories, not tiers** — and none of them settles whether the servitor is a p
 > or decide which are persons. **A class is a description; personhood is a finding** — and the
 > setting keeps that finding unresolved (`rulebook/11_ONTOLOGY.md` §10.7, §11.11).
 
+### 11.14.7 Second-density organisms — and the uplift question
+
+**Status: NOÖPUNK NATIVE lore, issue #191 §IV. Light description only.**
+
+Second density is **growth, movement and instinctive biological life developing toward
+self-awareness** (`rulebook/11_ONTOLOGY.md` §10.2). It is the tier the setting's humans spend
+most of their time *among* — eating, farming, wearing, curing, exterminating and living with —
+and it is the tier the setting most often **misclassifies in both directions**.
+
+**The three readings of any remarkable animal, plant or colony:**
+
+| Reading | What it means | The trap |
+| --- | --- | --- |
+| **Ordinary second-density life** | A real organism, developing on its own terms, with no NHI involvement whatsoever | The rarest and most important reading, and the one an investigator under pressure skips |
+| **A vessel used by a higher-density entity** | A cryptid, animal or engineered body *occupied or operated* by something else — §10.2's load-bearing point, and §10.3's separability rule | Concluding "it is only an animal" from the shape of the body |
+| **Altered life** | An organism materially changed by engineering, psychic manipulation or selection — see below | Reading a manipulation as an *origin*, or an origin as a manipulation |
+
+> **The rule that survives all three: the body does not report its occupant.** A perfectly
+> ordinary dog is not evidence of an ordinary mind, and an odd animal is not evidence of NHI.
+> This is §10.1 applied to the biosphere.
+
+**Altered life — a light list, no mechanics.** Four mechanisms the setting recognises, kept
+**distinct** because they have entirely different implications for consent and for rights:
+
+- **Genetic / engineered alteration** — deliberate changes to an organism's inheritance:
+  hybridisation programmes (`RULEBOOK.md` §40.3), engineered livestock, tailored crops,
+  synthetic biology (`10_SINGULARITY_CRISIS.md` §9.9, row 12). The oldest and most industrial.
+- **Psychic / behavioural alteration** — an organism's *behaviour* shaped without changing its
+  inheritance: conditioning, induced bonds, telepathic control, psychotronic influence. **This
+  is the one that raises consent questions most sharply, and it leaves no archaeological trace.**
+- **Symbiotic / environmental alteration** — change through ecology rather than design:
+  microbiomes, parasites, commensal species, co-evolution with human settlement or with an
+  NHI presence (`10_SINGULARITY_CRISIS.md` §9.9's biological information layer).
+- **Selected / husbandry alteration** — ordinary human selection over long timescales. Not NHI,
+  not exotic, and **responsible for more genuinely strange organisms than any other cause**.
+
+**Uplift — the setting's honest position.** "Uplift" is the claim that a second-density organism
+has been *deliberately raised toward self-awareness*. Three things must be said, and the setting
+keeps them separate:
+
+1. **The claim is not verified by behaviour.** A clever animal is a clever animal. Corvid and
+   cetacean cognition are the setting's standing reminder that human intuitions about which
+   animals are "just" animals are unreliable (`RULEBOOK.md` §33.21's dolphins are the canon case).
+2. **It is not impossible.** The source places the transition to self-awareness at the 2D–3D
+   boundary and calls it a **developmental transition** (`rulebook/11_ONTOLOGY.md` §10.2;
+   §33.18's reskin of *harvest*). Whether that transition can be *engineered* is an open
+   question, not a settled impossibility.
+3. **If it happened, it would be a rights event.** An uplifted organism is not a product, a pet
+   or a weapon — and the setting does not resolve whether a being raised into awareness by a
+   benefactor, an occupation programme or an Orion infiltration effort **owes** anything to the
+   one who raised it. That is a campaign's question.
+
+**Investigative shape (no mechanics).** The actable question is never *"is it uplifted?"* It is
+the same question §11.13 asks of any being: **who altered it, who benefits from the answer, and
+what does it do that an ordinary organism cannot?**
+
+> **A caution that belongs in the record: altered life is where human and Orion programmes
+> overlap most, and where the setting is most tempted to become a monster manual.** The
+> chapter's own §11.15 bound applies — this is a field guide, not a bestiary of encounter
+> statistics.
+
 ## 11.15 What this chapter deliberately does NOT define
 
 Binding, per `AGENTS.md` §4 and the author's instruction that these lists carry **light

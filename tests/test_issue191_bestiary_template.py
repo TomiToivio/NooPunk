@@ -258,6 +258,47 @@ class ServitorClassTests(unittest.TestCase):
 
 
 
+class SecondDensityTests(unittest.TestCase):
+    """§11.14.7: second-density life, altered life and the uplift question."""
+
+    def test_the_second_density_section_exists(self) -> None:
+        self.assertRegex(read(), r"(?m)^### 11\.14\.7 Second-density organisms")
+
+    def test_the_body_does_not_report_its_occupant(self) -> None:
+        """The load-bearing rule, applied to the biosphere."""
+        body = " ".join(section("11.14.7").split())
+        self.assertRegex(body, r"the body does not report its occupant")
+
+    def test_all_three_readings_of_remarkable_life_are_present(self) -> None:
+        body = section("11.14.7")
+        for reading in ("Ordinary second-density life", "vessel used by a higher-density", "Altered life"):
+            with self.subTest(reading=reading):
+                self.assertIn(reading, body)
+
+    def test_the_four_alteration_mechanisms_stay_distinct(self) -> None:
+        body = section("11.14.7")
+        for mech in (
+            "Genetic / engineered alteration",
+            "Psychic / behavioural alteration",
+            "Symbiotic / environmental alteration",
+            "Selected / husbandry alteration",
+        ):
+            with self.subTest(mechanism=mech):
+                self.assertIn(mech, body)
+
+    def test_uplift_is_neither_verified_nor_impossible(self) -> None:
+        body = " ".join(section("11.14.7").split())
+        self.assertRegex(body, r"The claim is not verified by behaviour")
+        self.assertRegex(body, r"It is not impossible\.")
+        self.assertRegex(body, r"it would be a rights event")
+
+    def test_husbandry_is_credited_as_a_mundane_cause(self) -> None:
+        """The mundane explanation must be mandatory, not optional (11_ONTOLOGY §10.7)."""
+        body = " ".join(section("11.14.7").split())
+        self.assertRegex(body, r"responsible for more genuinely strange organisms than any other cause")
+
+
+
 class NoStatisticsBoundTests(unittest.TestCase):
     """§11.15 refuses the arithmetic; the new sections must actually honour it."""
 
