@@ -37,6 +37,7 @@ Per-domain detail chapters:
 - [rulebook/6_PSYCHIC.md](rulebook/6_PSYCHIC.md) — PSI powers, psychotronics, sleep, Seity, Noöspace
 - [rulebook/9_FIELD_CATALOGS.md](rulebook/9_FIELD_CATALOGS.md) — character, gear, implant, PSI and being catalogs
 - [rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md](rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md) — Confederacy/Source lore, Sphere Network investigations, starseeds, noetic contact and existing-core playable procedures (#191)
+- [rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md](rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md) — noetic practice, grounding and debiasing, crystal/lattice technology, the artefact market and craft, as procedural rules (#191)
 
 ---
 
@@ -5890,3 +5891,75 @@ structural, and both factions have an interest in it persisting.
 No faction mechanics, no reputation formulas, no NHI capabilities or stat blocks, no economy,
 no combat or vehicle rules, and no canonical chronology — the sequence is structural
 (§33.28a). The chapter is lore and light description only, consistent with `AGENTS.md` §4.
+
+---
+
+## 54. Noetic practice, crystal technology and the craft question (#191)
+
+**Status: NOÖPUNK NATIVE lore + procedural rules.** The practice-and-technology companion to
+[`rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md`](rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md),
+and the rules half of the author's "add the lore and rules" directive on issue #191. The full
+chapter is [`rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md`](rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md).
+
+### 54.1 The practice layer
+
+The seven energy centers are reskinned as **receptor clusters** — a *map of attention and
+exchange*, not a chakra ladder with ratings. Its use in play is investigative: a contact does
+not arrive at a person at random, it arrives **where a receptor is listening**, so reading a
+cluster tells an investigator *where someone is exposed* and never *who is knocking*. The
+violet register **"cannot be manipulated"** (`15.12`), which is the setting's hardest identity
+constraint: no procedure or device can read, forge or alter it, so identity fraud must attack
+**records and witnesses** instead.
+
+Grounding work (balancing, `5.2`; "becoming unswayed", `42.2`) is **field hygiene**: a downtime
+practice that at most grants the GM's situational modifier on the next `Psychic Defence` or PSY
+check — never a tracked score. Ra's own emphasis is balance *against* maximal activation
+(`43.8`, `54.16`), so a game that accumulates a "balance meter" has misread the source.
+**Repression is the failure state and is a penalty, not a bonus** (`42.9`, `42.10`).
+
+### 54.2 Crystal technology — the operator precondition
+
+A charged crystal is an **attuned lattice instrument**, and the one rule that defines the whole
+technology family is that **it does not work without an attuned operator**: the structure is
+charged "only insofar as the crystalline physical structure is charged by a correspondingly
+crystallized or regularized or balanced mind/body/spirit complex" (`29.23`; cf. `2.3`, `57.6`).
+An unattended instrument is inert, however exotic. This makes the technology
+**un-outsourceable** — you cannot buy your way to a working lattice — which is a class politics
+in itself, and it is what stops the setting acquiring a magical-item economy. Ra's refusal to
+teach the uses (`29.31`) becomes in-setting **doctrine**: the best crystal scene is a refusal,
+not a sale.
+
+Because attunement cannot be bought, **the black market in "alien crystal" is mostly a fraud**
+(the artefact-market section of
+`rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md`), and **provenance is the object** — the
+chain of custody is where the scenario lives. Capabilities are listed, never statted, per the
+equipment doctrine in `rulebook/13_EQUIPMENT.md`.
+
+### 54.3 Craft: an asymmetry that explains the recovery narratives
+
+Ra's own craft is **a thought-form that concentration motivates** (`51.4`), and higher
+densities travel "from locus to locus by thought alone, materializing the necessary craft"
+(`51.2`). Orion's craft, by contrast, are **manufactured** (`12.2`). The consequences are
+political: an intention-driven craft cannot be confiscated or stored, a manufactured one can.
+**That is why every retrieval narrative in the setting's Disclosure material describes
+manufactured craft** — the absence of recoverable Confederacy vehicles is a *prediction of the
+ontology*, not a gap in the evidence. No drive physics, no craft statistics, no vehicle rules
+(`AGENTS.md` §4).
+
+### 54.4 The silicon-AI question, answered honestly
+
+The seed idea that a digital mind might be a first-density "silicon elemental" is **a
+Confederacy doctrine, not a source claim**. Ra describes first density as "the mineral and
+water life upon the planet" (`13.16`), but the density progression is described as
+**biological/organic**, no mineral-to-machine pathway is given anywhere in the corpus, and the
+crystal/being correspondence is explicitly labelled an **analogy** (`47.7`). In-setting the
+doctrine is **contested**, and it is convenient: as a classification it denies machine
+personhood without having to argue. **No classification may settle personhood** — whether an AI
+is conscious stays UNKNOWN (§9.4), and a density label has no mechanical authority.
+
+### 54.5 What this section does not define
+
+No numeric PSI subsystem, no power costs, no energy-center ratings, no balance track, no
+artefact statistics, no craft/vehicle/travel mechanics, no density-specific abilities, and no
+resolution of the setting's open questions. Practice and technology doctrine only, per
+`AGENTS.md` §4 and the author's "light description, not full stats" granularity.
