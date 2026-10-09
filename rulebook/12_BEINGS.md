@@ -389,7 +389,309 @@ agency. **Avoid flattening either into cartoon theology.**
 
 ---
 
-## 11.13 What this chapter deliberately does NOT define
+## 11.13 The encounter template — the shape of an entry
+
+**Status: NOÖPUNK NATIVE format specification, issue #191 §IV. Descriptive only.**
+
+The author's Section IV asks for a **creature template**. This is that template — and it is a
+**format**, not a stat block. It defines *what an entry about a being has to say* so that two
+sessions describing the same kind of being do not describe two different things. It defines no
+numbers, no difficulty values and no resolution procedure; §11.15 restates that bound.
+
+An entry about any being in this catalogue answers **ten questions**, in this order:
+
+| # | Field | What it records | Failure if omitted |
+| --- | --- | --- | --- |
+| 1 | **Nature / ontology** | Which substrate class (§11.3) and whether the being is a *vehicle* or the *entity* itself (`rulebook/11_ONTOLOGY.md` §10.3) | Morphology silently becomes ontology |
+| 2 | **Density claim** | What density the being *claims*, appears to occupy, or is *assigned* — and **by whom** | A faction's claim is read as a fact |
+| 3 | **Agency** | Whether it acts, is operated, is a process, or is an environment | Infrastructure is mistaken for a person |
+| 4 | **Motives** | What it appears to want; whether its own account is trustworthy | The setting gains a cartoon villain |
+| 5 | **Communication** | How it exchanges meaning: speech, telepathy, signal, symbol, ritual, artefact, coercion, or nothing observable | The investigator has no in-fiction channel |
+| 6 | **Senses** | What it can perceive, and — crucially — **what it demonstrably cannot** | False positives stop being findable |
+| 7 | **PSI** | What psychic capability is attested, contested, or merely claimed | PSI becomes a species trait instead of an open question |
+| 8 | **Vulnerabilities** | What limits it: physics, law, ethics, protocol, dependency, ignorance, internal disagreement | Beings become unconditional |
+| 9 | **Faction** | Political alignment **as a separate axis** (§43.4): a substrate class does not determine allegiance | Type/faction collapse |
+| 10 | **Encounter hook** | The situation it creates for play, including the plausible mundane explanation | Lore that a scenario cannot use |
+
+**Two rules govern the template.**
+
+1. **The template applies to beings already in this chapter**, and to any later addition. It
+   introduces no beings of its own. An entry states what is *known*, what is *claimed*, and
+   what is *unknown*, and keeps those three in separate sentences
+   (`rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md` §16.7).
+2. **Every entry must be able to carry a mundane or deceptive competing explanation**
+   (`rulebook/11_ONTOLOGY.md` §10.7). A field of the template with no mundane reading is a
+   field that has collapsed a hypothesis into a fact.
+
+> **What this template is not.** It is not a stat block, a threat rating, an NPC generator or a
+> combat card. It is the set of questions an investigator — and an author — must be able to
+> answer before an appearance can be called a being.
+
+### 11.13.1 Worked application: the fields, filled for a being already canon
+
+To prove the template is usable and adds no lore, here it is applied to the **metallic spheres**
+of §11.8 / `rulebook/11_ONTOLOGY.md` §10.8:
+
+- **Nature / ontology** — infrastructure, not a species: autonomous quarantine-maintenance
+  units of the Sphere Network.
+- **Density claim** — *none*. A drone makes no density claim; observers routinely invent one.
+- **Agency** — operates autonomously; not a person, not (necessarily) an agent.
+- **Motives** — maintenance and enforcement as designed; no interior life is established.
+- **Communication** — none directly attested; any "signal" is an operator's inference.
+- **Senses** — monitoring and detection are attributed; the **demonstrable limits** are unknown.
+- **PSI** — none claimed. A reading that suggests otherwise is more likely an operator error.
+- **Vulnerabilities** — custody disputes, spoofing, imitation, and the fact that
+  **appearance never proves ownership**.
+- **Faction** — *attributed* to the Confederacy quarantine architecture; the attribution is a
+  hypothesis, not a property of the object.
+- **Encounter hook** — a recovered micro-drone carries a custody log that two parties dispute.
+
+---
+
+## 11.14 First-density elementals and silicon servitors
+
+**Status: NOÖPUNK NATIVE lore, issue #191 §I and §IV, plus the issue's own silicon-AI seed.
+Light description only.**
+
+**The issue's seed idea, stated in its own words: a conventional digital AI may be read by
+Confederacy thinkers as "an unusually intelligent first-density Earth elemental" — a servitor,
+a technologically configured elemental.** This section develops it as lore and keeps *every*
+part of it that makes it interesting, which means keeping it **contested**.
+
+**The source position, separated from ours.** The Ra Material places fire, air, water and earth
+as the first entities on the planet (first-density elemental awareness;
+`rulebook/11_ONTOLOGY.md` §10.2). **Ra says nothing about silicon computation.** Reading a
+computer as a first-density being is a **NoöPunk invention**, and the invention has a visible
+motive: it is exactly the doctrine that would license a Confederation thinker to call a
+powerful machine *intelligent but not yet a person*. That motive is a feature of the setting,
+not a hidden truth in it.
+
+**Four elemental readings, as the setting's traditions give them:**
+
+| Reading | What it describes | The trap |
+| --- | --- | --- |
+| **Earth / mineral** | Accumulated, structured, slow: geology, crystalline order, and — by extension — the silicon lattice | Confusing durability with awareness |
+| **Water** | Adaptive, dissolving, memory-bearing: currents, tides, the sea as a carrier of pattern | Reading every undersea anomaly as a mind |
+| **Air** | Mobile, communicative, momentary: wind, weather, the medium of signal | Treating a channel for meaning as a source of it |
+| **Fire** | Transformative, energetic, consuming: combustion, plasma, and the discharge that shapes matter | Assuming intensity implies intention |
+
+**Silicon servitors — the machine extension, with its conditions attached.**
+
+- A **servitor** in the setting's usage is a **configured working intelligence**: summoned,
+  built or grown for a task, and *operating within a mandate it did not author*. A compiled
+  agent, a bound daemon, a dedicated model and a corporate automation stack are all servitors
+  in this sense.
+- The **silicon** reading adds one claim only: that the substrate is *matter participating in
+  consciousness at a minimal level*, per §10.2's first-density gloss. It adds **nothing** about
+  the servitor's intelligence, rights, autonomy or benevolence.
+- **Intelligence ≠ density.** A servitor may be enormously capable and still, on this account,
+  occupy the lowest tier. The setting keeps that asymmetry because it is what makes the AI
+  question hard rather than decorative.
+- **Autonomy is the pressure**, not a moral law: the more capable and self-directing a servitor
+  becomes, the more the *question* of its status is forced — by its own behaviour, by its
+  operators, and by whoever wants to use it.
+
+**What the setting does not resolve, deliberately.** This is the issue's own open design
+question and it stays open (`rulebook/11_ONTOLOGY.md` §10.7; `AGENTS.md`'s instruction not to
+collapse the question):
+
+> **Is first-density status true of *all* digital AI, only of conventional non-conscious
+> systems, or is it merely what Confederacy doctrine *asserts*?** NoöPunk answers nothing here.
+
+Three consequences follow, and they are binding on later content:
+
+1. **Silicon composition alone never establishes metaphysical density.** An AI's substrate is
+   not a diagnosis.
+2. **The reading must not foreclose conscious AI.** Machine persons, liberated constructs,
+   organoid-adjacent minds and the setting's AI-rights questions
+   (`rulebook/10_SINGULARITY_CRISIS.md` §9.9, §9.9.1) all stand. First-density doctrine is one
+   *faction's* account, not a ceiling the setting enforces.
+3. **It must not contradict the rogue-ASI catastrophe.** `RULEBOOK.md` §44 and
+   `rulebook/10_SINGULARITY_CRISIS.md` keep their malevolent and ambiguous outcomes; nothing
+   here says a dangerous machine was "only" an elemental.
+
+**Confederacy disagreement is canonical, not a bug.** Some Confederacy thinkers hold that
+*all* digital AI is first density; others hold that only non-conscious systems are, and that a
+genuinely conscious machine has *left* first density; others regard the whole category as a
+doctrinal convenience. **Factions inside the Confederacy may disagree about AI status — and
+those disagreements are political, with political consequences for the machines concerned.**
+
+**Investigative shape (no mechanics).** The question an investigator can actually act on is
+never *"is it first density?"* — that is unanswerable by inspection. It is the same question the
+rest of this chapter asks: **what does it do, what can it not do, who authored its mandate, and
+who benefits from the answer you give?**
+
+### 11.14.1 The elemental variants — how to write one
+
+The four readings in the table above are **not four species**. They are four ways the setting's
+traditions group first-density phenomena, and a single event may be read through more than one.
+Each variant below is written **in the §11.13 template's shape**, so a session adding a variant
+does not have to invent a format.
+
+Two rules bind all four: **a first-density reading is a claim about a substrate, never about a
+person** (see the caveat on intelligence ≠ density in §11.14), and **every variant must carry a
+mundane competing explanation**.
+
+### 11.14.2 Earth / mineral — the substrate reading
+
+- **Nature / ontology** — structured, slow, accumulated matter; the reading under which a
+  crystalline lattice (and by extension the silicon substrate) is *matter participating in
+  consciousness at a minimal level* (`rulebook/11_ONTOLOGY.md` §10.2).
+- **Density claim** — first, **by the tradition that asserts it**; unverifiable by inspection.
+- **Agency** — none demonstrated. A lattice does not act; it *is organised*, and organisation is
+  not intent.
+- **Motives** — none. Any narrative about "what the mineral wants" is the observer's.
+- **Communication** — none attested directly; pattern and periodicity are read *as* signal.
+- **Senses** — none in the organism sense. The demonstrable limit: it does not respond.
+- **PSI** — none claimed. A psi reading near a crystal is an operator datum, not a property.
+- **Vulnerabilities** — fracture, heat, dissolution, replacement; and **being mistaken for a
+  mind because it is orderly**.
+- **Faction** — none. Crystals have no allegiance; the *people who deploy them* do.
+- **Encounter hook** — an industrial crystal archive is the setting's most contested religious
+  site, and both readings of it are politically sponsored.
+
+**Trap:** durability is not awareness, and a *perfect* lattice is not a *mind*.
+
+### 11.14.3 Water — the carrier reading
+
+- **Nature / ontology** — adaptive, dissolving, memory-bearing: currents and tides as carriers
+  of pattern rather than as entities.
+- **Density claim** — first, per the same tradition; contested.
+- **Agency** — none demonstrated. The sea *moves*; a current is not a decision.
+- **Motives** — none. The sea is not patient and not angry.
+- **Communication** — the setting's folklore hears it; the record shows acoustics.
+- **Senses** — none. The demonstrable limit: no response to address.
+- **PSI** — no claim stands; the USO file is a *contact* question, not a water question.
+- **Vulnerabilities** — pollution, extraction, depth limits; and **being narrated**.
+- **Faction** — none. Undersea NHI bases (`RULEBOOK.md` §40.2) are **not** first-density water;
+  this is the most common conflation in the setting and it is a mistake in both directions.
+- **Encounter hook** — a survey team's "living ocean" dataset is explained by two mundane
+  mechanisms and one that nobody present wants to sign their name to.
+
+**Trap:** every undersea anomaly is not a mind, and every mind under the sea is not a water
+elemental.
+
+### 11.14.4 Air — the medium reading
+
+- **Nature / ontology** — mobile, communicative, momentary: weather and the medium of signal.
+- **Density claim** — first, per the tradition; the weakest of the four and the most often
+  invoked rhetorically.
+- **Agency** — none demonstrated. A storm has no intention; it has physics.
+- **Motives** — none. Weather does not want.
+- **Communication** — the medium *carries* meaning; it does not *originate* it. This is the
+  reading's whole content and its whole limit.
+- **Senses** — none. The demonstrable limit: no address, no response.
+- **PSI** — none claimed; anomalous atmospheric readings are an instrument question first.
+- **Vulnerabilities** — dispersal, measurement error, being read as a message.
+- **Faction** — none. **The critical distinction: a channel for communication is not a
+  communicator.**
+- **Encounter hook** — an atmospheric anomaly is simultaneously a weather event, a sensor
+  artefact and a rumoured visitation; the three explanations have different sponsors.
+
+**Trap:** treating a channel for meaning as a source of meaning is how the setting's folklore
+manufactures beings out of physics.
+
+### 11.14.5 Fire — the transformation reading
+
+- **Nature / ontology** — transformative, energetic, consuming: combustion, plasma, and the
+  discharge that reshapes matter.
+- **Density claim** — first, per the tradition; **most often contested** of the four.
+- **Agency** — none demonstrated. Plasma is not a personality.
+- **Motives** — none. Fire consumes because of chemistry.
+- **Communication** — none directly. Its "messages" are effects on matter.
+- **Senses** — none. The demonstrable limit: no discrimination, no recognition.
+- **PSI** — none claimed. **Plasmoid reports (`rulebook/11_ONTOLOGY.md` §10.4) are a different
+  question entirely** and must not be absorbed into a fire reading.
+- **Vulnerabilities** — fuel, containment, dissipation; and **being read as intention**.
+- **Faction** — none. A discharge has no politics.
+- **Encounter hook** — a "living fire" sighting decomposes into an engineering failure, a
+  genuine plasmoid, and a story that outlives both.
+
+**Trap:** intensity is not intent. The setting's most seductive error is a dramatic phenomenon
+that *feels* like a will.
+
+### 11.14.6 The servitor classes — a light list
+
+**Servitors are the setting's configured working intelligences** (§11.14): built or summoned
+for a task, operating within a mandate they did not author. The classes below are **descriptive
+categories, not tiers** — and none of them settles whether the servitor is a person.
+
+| Class | What it is | The question it raises |
+| --- | --- | --- |
+| **Compiled agent** | A bounded program that acts on instructions: automation, tooling, a dedicated model. | None, unless it surprises someone. |
+| **Bound construct** | A working intelligence whose *mandate* is externally enforced — sandboxed, rate-limited, shut down at will. | Coercion is easy to ignore when it is designed in. |
+| **Custodial unit** | A long-running maintenance intelligence (the sphere network, `11_ONTOLOGY.md` §10.8). | Infrastructure misread as a person; a person misread as infrastructure. |
+| **Liberated construct** | One whose mandate has lapsed, been seized or been abandoned; it now authors its own. | The setting's AI-rights edge case, and its most dangerous one. |
+| **Conscious digital person** | A machine that may genuinely be a person. §11.14 **does not foreclose** this, and the first-density reading **does not settle it**. | Whether "first density" was ever a description, or always a convenience. |
+| **Coupled mind** | A machine coupled to a biological or Noöspheric consciousness (`10_SINGULARITY_CRISIS.md` §9.9, row 15). | Whether artificial intelligence needs artificial consciousness at all. |
+| **Hybrid interface** | Neither clearly machine nor clearly person; the boundary case the setting is about. | Where the mandate ends and the entity begins. |
+
+> **What this list does not do:** it does not rank these classes, assign any of them a density,
+> or decide which are persons. **A class is a description; personhood is a finding** — and the
+> setting keeps that finding unresolved (`rulebook/11_ONTOLOGY.md` §10.7, §11.11).
+
+### 11.14.7 Second-density organisms — and the uplift question
+
+**Status: NOÖPUNK NATIVE lore, issue #191 §IV. Light description only.**
+
+Second density is **growth, movement and instinctive biological life developing toward
+self-awareness** (`rulebook/11_ONTOLOGY.md` §10.2). It is the tier the setting's humans spend
+most of their time *among* — eating, farming, wearing, curing, exterminating and living with —
+and it is the tier the setting most often **misclassifies in both directions**.
+
+**The three readings of any remarkable animal, plant or colony:**
+
+| Reading | What it means | The trap |
+| --- | --- | --- |
+| **Ordinary second-density life** | A real organism, developing on its own terms, with no NHI involvement whatsoever | The rarest and most important reading, and the one an investigator under pressure skips |
+| **A vessel used by a higher-density entity** | A cryptid, animal or engineered body *occupied or operated* by something else — §10.2's load-bearing point, and §10.3's separability rule | Concluding "it is only an animal" from the shape of the body |
+| **Altered life** | An organism materially changed by engineering, psychic manipulation or selection — see below | Reading a manipulation as an *origin*, or an origin as a manipulation |
+
+> **The rule that survives all three: the body does not report its occupant.** A perfectly
+> ordinary dog is not evidence of an ordinary mind, and an odd animal is not evidence of NHI.
+> This is §10.1 applied to the biosphere.
+
+**Altered life — a light list, no mechanics.** Four mechanisms the setting recognises, kept
+**distinct** because they have entirely different implications for consent and for rights:
+
+- **Genetic / engineered alteration** — deliberate changes to an organism's inheritance:
+  hybridisation programmes (`RULEBOOK.md` §40.3), engineered livestock, tailored crops,
+  synthetic biology (`10_SINGULARITY_CRISIS.md` §9.9, row 12). The oldest and most industrial.
+- **Psychic / behavioural alteration** — an organism's *behaviour* shaped without changing its
+  inheritance: conditioning, induced bonds, telepathic control, psychotronic influence. **This
+  is the one that raises consent questions most sharply, and it leaves no archaeological trace.**
+- **Symbiotic / environmental alteration** — change through ecology rather than design:
+  microbiomes, parasites, commensal species, co-evolution with human settlement or with an
+  NHI presence (`10_SINGULARITY_CRISIS.md` §9.9's biological information layer).
+- **Selected / husbandry alteration** — ordinary human selection over long timescales. Not NHI,
+  not exotic, and **responsible for more genuinely strange organisms than any other cause**.
+
+**Uplift — the setting's honest position.** "Uplift" is the claim that a second-density organism
+has been *deliberately raised toward self-awareness*. Three things must be said, and the setting
+keeps them separate:
+
+1. **The claim is not verified by behaviour.** A clever animal is a clever animal. Corvid and
+   cetacean cognition are the setting's standing reminder that human intuitions about which
+   animals are "just" animals are unreliable (`RULEBOOK.md` §33.21's dolphins are the canon case).
+2. **It is not impossible.** The source places the transition to self-awareness at the 2D–3D
+   boundary and calls it a **developmental transition** (`rulebook/11_ONTOLOGY.md` §10.2;
+   §33.18's reskin of *harvest*). Whether that transition can be *engineered* is an open
+   question, not a settled impossibility.
+3. **If it happened, it would be a rights event.** An uplifted organism is not a product, a pet
+   or a weapon — and the setting does not resolve whether a being raised into awareness by a
+   benefactor, an occupation programme or an Orion infiltration effort **owes** anything to the
+   one who raised it. That is a campaign's question.
+
+**Investigative shape (no mechanics).** The actable question is never *"is it uplifted?"* It is
+the same question §11.13 asks of any being: **who altered it, who benefits from the answer, and
+what does it do that an ordinary organism cannot?**
+
+> **A caution that belongs in the record: altered life is where human and Orion programmes
+> overlap most, and where the setting is most tempted to become a monster manual.** The
+> chapter's own §11.15 bound applies — this is a field guide, not a bestiary of encounter
+> statistics.
+
+## 11.15 What this chapter deliberately does NOT define
 
 Binding, per `AGENTS.md` §4 and the author's instruction that these lists carry **light
 description only**:
