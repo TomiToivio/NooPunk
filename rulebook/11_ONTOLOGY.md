@@ -217,6 +217,35 @@ from that perspective.
 perspective on a life it has already (from its side) lived, communicating under severe
 constraints and through symbolic material. It should never simply answer a question.
 
+### 10.6.0 The mind/body/spirit complex and NoöPunk's four systems
+
+The tracker asks where Ra's **mind/body/spirit complex** sits relative to NoöPunk's four
+systems. The answer is a **thematic overlay, not an architecture change** — and this matters,
+because the four-system model is locked by #51/#131 and must not be quietly replaced.
+
+| Ra term | NoöPunk reading | Caveat |
+| --- | --- | --- |
+| **mind** | the **Social** and **Psychic** systems together | Ra's "mind" is broader than NoöPunk's Social; it is *both* the intersubjective and the inner-life side |
+| **body** | the **Physical** system | direct, uncontroversial |
+| **spirit** | the **Psychic** seity side, plus the parked **Seity** block (`rulebook/6_PSYCHIC.md` §6.5.3, §6.6) | "spirit" is the *contested* term NoöPunk most wants to de-sermonise |
+
+**What this means in play:**
+
+- Keep Ra's **mind/body/spirit** as the **Confederacy's own vocabulary** — the words a
+  Confederacy envoy actually uses. A human engineer does not have to accept them.
+- Keep NoöPunk's **Physical / Social / Psychic / Cybernetic** as the **system architecture**.
+  The **Cybernetic** layer has **no Ra counterpart at all** — it is the modern layer, and the
+  mapping must never be used to delete it. This is the single most important caution here:
+  "mind/body/spirit = our four systems" is **false**, because the fourth system has no source
+  term.
+- So a character sheet stays four-system, while a Confederacy NPC can talk about
+  mind/body/spirit complexes without either side being wrong. The two vocabularies
+  **translate**, they do not merge.
+
+**De-sermonising is the point** (the tracker's reskin directive): "spirit" carries the most
+religious freight, so the investigator-facing text prefers **seity**, **agency**, or **psychic
+system**, and reserves the word *spirit* for when a believer is speaking in character.
+
 ### 10.6.1 Source notes
 
 For documentation and later citation, the useful Ra passages are: **9.18–9.22** (Maldek /
@@ -298,6 +327,85 @@ same caution: **do not assume every orb or sphere belongs to it.**
 autonomous AI sphere infrastructure → biological and non-biological NHI → thought-forms →
 natural plasma phenomena → deceptive or hostile imitations. **Every layer is a distinct
 hypothesis, and the setting does not collapse them.**
+
+### 10.8.1 The empirical layer: POSS-I transients (evidence class: **contested**)
+
+Since 2026 an actual **observational** strand has to be kept separate from the Jackson
+hypothesis, because the two are constantly conflated. The Villarroel/POSS-I work is the closest
+thing the setting has to real data on high-altitude reflective objects — and it is **not** proof
+of a sphere network. Recorded here with its evidence class so no later pass can upgrade it.
+
+**What the papers actually report** (verified from the primary abstracts, 2026-10-09):
+
+- **Bruehl, Villarroel, Guergouri, Doherty, Streblyanska — *Earth-Projected Clustering of
+  Historical Optical Transients in the Palomar Observatory Sky Survey-I* (arXiv:2609.09461).**
+  POSS-I plates taken **before Sputnik** contain star-like point sources consistent with
+  **sub-second flashes** absent from all later observations. From **107,875** transients, a
+  machine-learning filter selected a high-probability subset; two independent methods then
+  tested for non-random Earth-projected grouping. Result: **16 statistically-significant
+  hotspots** (cluster analysis found 6 "highly distinct"), including the **Pacific west of
+  southern Mexico/Central America**, the **southern Gulf of Mexico**, and the **southwestern US
+  (Sedona AZ / White Sands NM)**. Transients matching reported **nuclear-testing** associations
+  showed **location specificity** (Pacific-only during Pacific testing; southwestern-US-only
+  during Nevada testing).
+- **Villarroel, Streblyanska, Guergouri, Doherty, Shultz, Bruehl — *Modelling Palomar
+  Transients: Constraints from Reflection Geometry and Orbital Altitude* (arXiv:2609.05105).**
+  A **modelling** study (geometric shadow modelling, Monte-Carlo, photometric constraints).
+  Assuming a spherical-shell model, the antisolar transient deficit implies characteristic
+  altitudes of **~20,000–25,000 km**; a second estimate from the global Earth-shadow deficit
+  gives **~20,000–35,000 km**, extending into the geosynchronous region. Under simplified
+  assumptions, inferred reflective-facet sizes run **centimetres to ~3 m**, with characteristic
+  flash durations **~320 ms** and slow rotation.
+
+**What this does NOT establish** — and the papers are careful about this:
+
+- **No artificial object, no craft, no sphere, and no NHI is claimed.** The morphology is
+  consistent with **specular reflection**; the authors explicitly explore **"both natural and
+  non-natural toy models"** and frame the sizes as inferred **putative reflectors**, not
+  measured diameters.
+- The hotspot result is a **statistical grouping over survey data**, exposed to plate artefacts
+  and observational selection; the authors phrase the outcome as findings that **"hint at"**
+  intriguing characteristics.
+- **Evidence class: contested / model-dependent.** The correct in-world status is *"a real,
+  peer-visible anomaly with at least one high-altitude explanation"* — not *"we found the
+  sphere network."*
+
+> **Design consequence.** The POSS-I transients give UNSA's NHI desk a **legitimate,
+> falsifiable** line of inquiry that predates Sputnik and does not require anyone to believe
+> Jackson. That is exactly the setting's texture: an investigator can reach the sphere
+> hypothesis *from data*, and still be wrong.
+
+### 10.8.2 Observational layers — do not fork the network
+
+**There is one Sphere Network, and `rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md` §16.2 is where
+its operational reading lives.** This section deliberately does **not** define a second one, and
+it does **not** canonise a new layer taxonomy — an earlier draft of this passage proposed named
+"Orbital Sentinels / Atmospheric Wardens / Local Microcustodians / Noetic relays" classes, and
+that was cut precisely because §16.2 already cautions against inventing canonical Jackson-style
+type definitions.
+
+What belongs here, and stays:
+
+- **Altitude, not essence.** The one thing the POSS-I modelling actually constrains is a
+  *characteristic altitude band* (§10.8.1). That is an observation, not a classification.
+- **Layered *observation*.** Operators may loosely say a node was detected *orbital*,
+  *atmospheric* or *local*; per §16.2 these are **observation layers, not canonical types**, and
+  a given sphere may shift roles.
+- **One network, many interpretations.** Human counterfeits, Orion infiltration devices,
+  balloons, orbital debris, camera artefacts, and genuinely unclassified phenomena coexist at
+  every altitude. **A photographic glint never uniquely identifies a metallic sphere** — the
+  same rule as §10.3, applied to hardware.
+
+**Cross-references.** Operational functions, contact procedure and playable situations:
+`rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md` §16.2. The sphere's place in the wider
+Confederacy picture: `rulebook/15_XENOPOLITICS.md`, `RULEBOOK.md` §41.2.
+
+**Source note (2026-10-09).** What this section contributes is the **primary-source grounding
+and evidence class** for the historical-transient strand — the concrete POSS-I figures and the
+"not a finding" statement in §10.8.1 — kept in the ontology chapter next to the sphere canon it
+bears on. The **Jackson adaptation itself was already canon** above; the **operational layering
+is §16.2's**. Ra is silent on all of it: Ra **does not** describe Jackson's sphere types **or**
+identify POSS-I transients as Guardian craft.
 
 ---
 

@@ -176,6 +176,68 @@ Devices that genuinely interact with the aspects described in `rulebook/6_PSYCHI
 These are the canonical UNSA capabilities (`data/rules/unsa_academy.json`: "psychotronic
 threat detection", "psychic shielding / emergency dampening") described in equipment terms.
 
+### 12.4.4 Crystal transducers — the Confederacy lineage
+
+**A second technology family, distinct from §12.4.1–12.4.2.** NoöPunk's own psychotronics are
+*engineered for repeatability*; crystal work is *attunement-dependent and operator-limited*.
+Same goal — coupling a seity to a coherent field — opposite reliability profile. That
+contrast is the whole point: it is why tech-transfer between humanity and the Confederacy is
+politically fraught.
+
+**The source is narrower than the trope, and the narrowness is the design brief.** From the
+Ra Material (re-verified from the primary text, 2026-10-09):
+
+- **`29.30`** — a crystalline entity charges a physical crystal, "thus enabling it to vibrate
+  harmonically and also become the **catalyst or gateway whereby intelligent infinity may thus
+  become intelligent energy**, this crystal serving as an **analog of the violet ray** of
+  mind/body/spirit in relatively undistorted form." A **transducer**, not a charm.
+- **`2.3`** — "**Without the relative crystallization of the healer working with the crystal,
+  the crystal will not be properly charged.**"
+- **`57.6`** — the operator must first "balance and polarize the self"; the healer *is* part of
+  the apparatus.
+- **`57.9`** — size and tuning are **relative to the patient**: the light must be "spread the
+  complete width of the spectrum of the one to be healed." A crystal tuned for one being does
+  not fit another.
+- **`29.31`** — asked for specific uses, Ra **declines**: "**The uses of the crystal … include
+  the uses for healing, for power, and even for the development of life-forms.** We feel that
+  it is unwise to offer instruction at this time as your peoples have shown a tendency to use
+  peaceful sources of power for disharmonious reasons." Ra also notes Confederation entities
+  "**have erred in this in the past**."
+
+> **Three hard constraints, which kill the generic "+2 healing rock":** the device is
+> **operator-gated**, **subject-scaled**, and the instructions are **refused**. (Thank you to
+> the sibling agent whose chapter-16 research pass first isolated these three — they are the
+> best design brief in the Ra corpus, and they are cited here rather than restated there.)
+
+**The taxonomy below is NoöPunk engineering, not Ra.** Only the *healing / power / life-form*
+uses are in the source (`29.31`); everything computational is our extrapolation and must be
+labelled as such wherever it appears in play:
+
+| Device | Light description | Operator / scaling | Failure mode |
+| --- | --- | --- | --- |
+| **Attuned processor** | Ordered-information substrate; compute coupled to an operator's coherent state | needs a calibrated operator | drift, refusal, or output no algorithm predicts |
+| **Memory core** | Latticed storage whose *index* is a meaning-relation, not an address | readable only by a matching attunement | index rot; readable by a *different* mind |
+| **Noetic scanner** | Couples to an *observer* and returns a correlation, never an image | must be read by a trained seity | **evidence, not proof** (same rule as §12.5) |
+| **Healing prism** | Field transducer tuned to one patient's spectrum (`57.9`) | re-tuned per subject | mis-tuned → harm; a fraud can fake the ritual |
+| **Resonance shield** | Maintains stable coupling against intrusion | operator must hold it | dropped under stress; leaks under sustained pressure |
+| **Noetic relay** | Long-range coupling between consented parties | requires consent on **both** ends | interception; a relay that reports more than was sent |
+| **Power converter** | Couples field excitation to usable work | needs a coherent source | spectacular, dangerous, irreproducible failure |
+| **Geometry device** | Pyramid/resonator amplification (`3.6`–`3.15`) | placement and ratio matter | amplification is **not selective** — the hazard is the point |
+
+**Why this belongs in a cyberpunk setting.** The in-world *technical* rationale is the QIP/PSI
+line the canon already names: **Faggin's Quantum Information Panpsychism** as the fictional
+scientific basis for NoöPunk's post-materialist paradigm, and **Radin** as the influence for
+treating anomalous consciousness phenomena as an empirical domain (`RULEBOOK.md` §2.4, §16;
+`rulebook/7_TIMELINE.md`; `rulebook/6_PSYCHIC.md` §6.3.1). Both are **named already** — this
+section cross-references them, it does not introduce them, and a Confederacy engineer and a
+QIP physicist can describe the same crystal without agreeing on what it is. **The PSI evidence
+is contested and the field is hypothetical**; the device does not settle the metaphysics.
+
+**The refusal is a scenario engine, not a footnote.** `29.31` means the Confederacy withholds
+the *instructions* on free-will grounds — so a human lab that has independently derived
+transduction creates a genuine political conflict in which the Confederacy's own doctrine
+argues *against* their sharing it. See the tracker's "un-taught crystal" seed.
+
 ---
 
 ## 12.5 Sensors and forensics — the three overlays
