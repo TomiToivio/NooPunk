@@ -280,7 +280,7 @@ Practical consequences:
 - A scenario, mission, map, or presentation difference between Tabletop, Godot and Concordia is expected and permitted. A **rules** difference is a defect: extract a shared specification rather than fork the rule.
 - Where a shared specification already exists (for example `data/rules/core.json` over `src/rules/core.py`), consume it rather than re-declaring the same values in a second runtime.
 
-`tests/test_design_principles.py` fails the build if these invariants, the canonical document, or the documents that reference it drift out of agreement.
+These invariants are binding on every agent, but they are **not** enforced by an automated test: per the policy above, tests cover executable code only, and creative documents are reviewed editorially and by playtesting. There is deliberately no build gate on document agreement.
 
 
 ### 14. Tabletop-first porting gate
