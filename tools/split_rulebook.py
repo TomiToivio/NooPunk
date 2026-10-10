@@ -1,35 +1,27 @@
 #!/usr/bin/env python3
-"""Split RULEBOOK.md into navigable parts, losslessly, with a frozen hash manifest.
+"""Split the consolidated RULEBOOK.md into navigable segments — losslessly.
 
-Why it works this way (agent-facing version: docs/design/RULEBOOK_STRUCTURE.md):
+`RULEBOOK.md` is 6108 lines in one file: a core game book (sections 1-9) and a
+54-section extended ledger, separated by the `# Extended canon and reference
+material` marker. Reading it is hard, and a single file cannot be navigated by
+part.
 
-* Tests depend on RULEBOOK.md's SHAPE. `test_issue101_sources_dedup` splits the file on the
-  literal marker `# Extended canon and reference material` and requires `## 1.`-`## 9.` in the
-  core half and contiguous `## 1.`-`## N.` in the appendix half.
-  `test_issues171_180_cross_references` builds the §-reference UNIVERSE from RULEBOOK.md's own
-  headings. So the index keeps EVERY heading, in order, verbatim -- only bodies move. Every
-  existing `RULEBOOK.md §N` link therefore keeps resolving.
+This tool derives `rulebook_parts/` from it, driven by the TOTAL section->part map
+in `data/rules/rulebook_segmentation.json`. Losslessness is the whole point, so it
+is proved rather than asserted: `--check` rebuilds the original byte stream from the
+segments it handed out and compares it with the file on disk.
 
-* RULEBOOK.md'S BODY IS NEVER WRITTEN. The first attempt moved bodies out of it and emptied it;
-  309 tests failed, because the suite reads RULEBOOK.md's body, not merely its headings. Rewriting
-  them all would have been the largest possible risk to the content this task exists to protect.
-  So the direction is reversed: RULEBOOK.md stays canonical and the parts are GENERATED SEGMENTS
-  of it. The ONLY edit this tool makes to RULEBOOK.md is inserting the navigation block below,
-  idempotently -- which `test_issues171_180_cross_references` requires anyway, since a rulebook
-  chapter the reader cannot reach from the rulebook is not canon-facing.
-
-* "Do not lose anything" is PROVEN, not asserted. RULEBOOK.md's own SHA-256 and each section
-  body's SHA-256 are frozen into data/rules/rulebook_split_manifest.json. The guard re-hashes both,
-  so the parts can never drift from the canonical text and the canonical text can never move
-  without the parts being regenerated in the same commit.
+`RULEBOOK.md` stays canonical. The parts are a derived, navigable view; nothing in
+the source is renumbered, reworded or removed, and the guards that pin the
+core/ledger structure keep working because the source is untouched.
 
 Usage:
-    python3 tools/split_rulebook.py            # dry run: report the partition
-    python3 tools/split_rulebook.py --apply    # write parts, manifest and index
+    python3 tools/split_rulebook.py            # write rulebook_parts/
+    python3 tools/split_rulebook.py --check    # prove losslessness, write nothing
 """
 from __future__ import annotations
 
-import hashlib
+import argparse
 import json
 import re
 import sys
@@ -37,254 +29,179 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "RULEBOOK.md"
-PARTS_DIR = ROOT / "rulebook" / "parts"
-MANIFEST = ROOT / "data" / "rules" / "rulebook_split_manifest.json"
-INDEX = ROOT / "rulebook" / "00_INDEX.md"
+MAP_FILE = ROOT / "data" / "rules" / "rulebook_segmentation.json"
+OUT_DIR = ROOT / "rulebook_parts"
 
-#: The literal the contiguity guard splits on. It must survive, in place, in the index.
-APPENDIX_MARKER = "# Extended canon and reference material"
-
-_H2 = re.compile(r"(?m)^## ")
-_NUMBERED = re.compile(r"##\s+(\d+)\.")
-
-#: part stem -> (title, core section numbers, appendix section numbers).
-#: A section number appears EXACTLY ONCE; `validate_partition` enforces that.
-PART_MAP: dict[str, tuple[str, tuple[int, ...], tuple[int, ...]]] = {
-    "01_basic_rules": ("Basic Rules", (1, 2, 3, 4), ()),
-    "02_character_generation": ("Character Generation", (9,), ()),
-    "03_physical_systems": ("Physical Systems: Harm, Combat and the Body", (5,), (12, 13, 14, 51)),
-    "04_cybernetic_systems": ("Cybernetic Systems: Gear, Mesh and Cyberspace", (7,), (15, 18, 52)),
-    "05_psychic_systems": ("Psychic Systems: Psionics, Noöspace and the Anomalous", (8,),
-                           (16, 46, 47, 48, 49, 54)),
-    "06_social_systems": ("Social Systems: Interaction, Ideology and Simulation", (6,), (17, 21)),
-    "07_noopunk_lore": ("NoöPunk Lore: World, History and Politics", (), (33, 44, 45, 53)),
-    "08_rules_architecture": ("Reference: Rules Architecture and Governance", (), tuple(range(1, 9))),
-    "09_characters_and_beings": ("Reference: Characters, Identity, AI, NPCs and Beings", (),
-                                 (9, 10, 11, 19, 20, 31, 32)),
-    "10_campaign_unsa_factions": ("Reference: Campaign, UNSA, Contact and Factions", (),
-                                  (38, 39, 40, 41, 42, 43)),
-    "11_concordia_and_parity": ("Reference: Concordia, Adaptation, Persistence and Parity", (),
-                                tuple(range(22, 31)) + (36, 37)),
-    "12_glossary_sources_catalogs": ("Reference: Glossary, Sources and Field Catalogs", (),
-                                     (34, 35, 50)),
-}
+HEAD_H1 = re.compile(r"^# (?!#)")
+HEAD_H2 = re.compile(r"^## (?!#)")
+NUMBERED = re.compile(r"^## (\d+)\.")
+NAV_START = "<!-- rulebook-part-nav:start -->"
+NAV_END = "<!-- rulebook-part-nav:end -->"
 
 
-#: Inserted verbatim, once. `ensure_navigation` is idempotent, so re-running cannot duplicate it.
-NAVIGATION_ANCHOR = "> Canonical STATs and trained Skills use a **1–10** scale. The setting year is **20XX**."
-NAVIGATION_BLOCK = """
-**This rulebook is also published as navigable parts.** This file remains the canonical text. For
-reading, the same content is segmented in [`rulebook/00_INDEX.md`](rulebook/00_INDEX.md), which
-links every section to one of twelve parts under [`rulebook/parts/`](rulebook/parts/). Each part is
-a **verbatim segment** of this file, regenerated by `python3 tools/split_rulebook.py --apply`, and a
-guard fails if a part drifts from this text.
-"""
+def load_map() -> dict:
+    return json.loads(MAP_FILE.read_text(encoding="utf-8"))
 
 
-def ensure_navigation(text: str) -> tuple[str, bool]:
-    """Insert the navigation block once, right after the status blockquote. Idempotent."""
-    if "rulebook/00_INDEX.md" in text:
-        return text, False
-    if NAVIGATION_ANCHOR not in text:
-        raise SystemExit("navigation anchor not found; RULEBOOK.md front matter changed shape")
-    return text.replace(NAVIGATION_ANCHOR, NAVIGATION_ANCHOR + "\n" + NAVIGATION_BLOCK, 1), True
+def segment(lines: list[str], marker: str) -> list[dict]:
+    """Cut the file into structural segments, in order.
 
-
-def sha256(text: str) -> str:
-    return hashlib.sha256(text.encode("utf-8")).hexdigest()
-
-
-def parse(text: str) -> dict:
-    """Locate the front matter, every section, and the appendix marker."""
-    marker_at = text.index(APPENDIX_MARKER)
-    heads = list(_H2.finditer(text))
-    sections = []
-    for index, match in enumerate(heads):
-        end_of_line = text.index("\n", match.start())
-        heading = text[match.start():end_of_line]
-        number = _NUMBERED.match(heading)
-        end = heads[index + 1].start() if index + 1 < len(heads) else len(text)
-        body = text[end_of_line + 1:end]
-        # The appendix marker is an H1 immediately before the appendix's first section, so it
-        # sits at the end of whatever block precedes it. Hoist it out, never duplicate it.
-        if APPENDIX_MARKER in body:
-            body = body[body.index(APPENDIX_MARKER) + len(APPENDIX_MARKER):]
-        sections.append({
-            "kind": "appendix" if match.start() > marker_at else "core",
-            "number": int(number.group(1)) if number else None,
-            "heading": heading,
-            "body": body,
-        })
-    return {"front": text[:heads[0].start()], "sections": sections}
-
-
-def blocks_by_heading(text: str) -> dict[str, str]:
-    """{heading line -> body} for every `## ` heading, without needing the appendix marker.
-
-    Parts are keyed by heading rather than by (kind, number) because a part may hold sections
-    from both runs, where `## 1.` appears in each with a different title.
+    A segment begins at an H1 or H2 heading; everything before the first heading is
+    the preamble. Splitting on H1 as well as H2 is what keeps the core/ledger marker
+    from being swallowed by the last core section -- it becomes its own segment, so
+    the two numbering spaces stay distinguishable.
     """
-    heads = list(_H2.finditer(text))
-    out: dict[str, str] = {}
-    for index, match in enumerate(heads):
-        end_of_line = text.index("\n", match.start())
-        end = heads[index + 1].start() if index + 1 < len(heads) else len(text)
-        out[text[match.start():end_of_line]] = text[end_of_line + 1:end].rstrip("\n")
-    return out
-
-
-def assignment() -> dict[tuple[str, int], str]:
-    return {(kind, n): stem
-            for stem, (_t, core, app) in PART_MAP.items()
-            for kind, numbers in (("core", core), ("appendix", app))
-            for n in numbers}
-
-
-def validate_partition(parsed: dict) -> None:
-    """Every numbered section lands in exactly one part, and none is left over."""
-    seen: dict[tuple[str, int], str] = {}
-    for stem, (_title, core, app) in PART_MAP.items():
-        for kind, numbers in (("core", core), ("appendix", app)):
-            for number in numbers:
-                key = (kind, number)
-                if key in seen:
-                    raise SystemExit(f"{key} assigned to both {seen[key]} and {stem}")
-                seen[key] = stem
-    present = {(s["kind"], s["number"]) for s in parsed["sections"] if s["number"] is not None}
-    unassigned = sorted(present - set(seen))
-    if unassigned:
-        raise SystemExit(f"sections with no part: {unassigned}")
-    phantom = sorted(set(seen) - present)
-    if phantom:
-        raise SystemExit(f"parts name sections that do not exist: {phantom}")
-
-
-def normalised_body(section: dict) -> str:
-    """The one canonical normalisation, used by BOTH the part writer and the manifest digest.
-
-    Trailing newlines are stripped so the two can never disagree about the same bytes.
-    """
-    return section["body"].rstrip("\n")
-
-
-def build_part(stem: str, parsed: dict, assign: dict[tuple[str, int], str]) -> str:
-    title = PART_MAP[stem][0]
-    mine = [s for s in parsed["sections"] if s["number"] is not None
-            and assign.get((s["kind"], s["number"])) == stem]
-    kinds = {s["kind"] for s in mine}
-    provenance = "the core run" if kinds == {"core"} else (
-        "the extended-canon run" if kinds == {"appendix"} else "the core and extended-canon runs")
-    note = (
-        f"> Generated, verbatim segment of [RULEBOOK.md](../../RULEBOOK.md) ({provenance}). "
-        "The rulebook file is canonical; this part and its section numbers are unchanged so "
-        "that cross-references keep resolving. Regenerate with "
-        "`python3 tools/split_rulebook.py --apply`."
+    starts = [i for i, ln in enumerate(lines) if HEAD_H1.match(ln) or HEAD_H2.match(ln)]
+    if not starts or starts[0] != 0:
+        starts = [0, *starts]
+    segments: list[dict] = []
+    for index, start in enumerate(starts):
+        end = starts[index + 1] if index + 1 < len(starts) else len(lines)
+        body = lines[start:end]
+        first = body[0] if body else ""
+        segments.append(
+            {
+                "start": start,
+                "end": end,
+                "lines": body,
+                "heading": first.rstrip("\n"),
+                "is_h1": bool(HEAD_H1.match(first)),
+                "is_h2": bool(HEAD_H2.match(first)),
+            }
+        )
+    # Which side of the marker a section sits on decides which numbering space it
+    # belongs to. The marker is itself a segment, so this is a clean index compare.
+    marker_index = next(
+        (i for i, s in enumerate(segments) if s["heading"].strip() == marker), None
     )
-    out = [f"# {title}", "", note, ""]
-    for section in mine:
-        # VERBATIM heading and body: a part must be a byte-exact segment of RULEBOOK.md, so a
-        # guard can re-extract it by heading and compare digests. No decoration, no renumbering.
-        out.append(section["heading"])
-        out.append(normalised_body(section))
-        out.append("")
-    return "\n".join(out).rstrip("\n") + "\n"
+    if marker_index is None:
+        raise SystemExit(f"core/ledger marker not found: {marker!r}")
+    for i, s in enumerate(segments):
+        s["space"] = "preamble" if i < marker_index else "ledger"
+    segments[marker_index]["space"] = "marker"
+    return segments
 
 
-def build_index(parsed: dict, assign: dict[tuple[str, int], str]) -> str:
-    """The navigable index: every heading of RULEBOOK.md, each pointing at its part.
-
-    Lives at rulebook/00_INDEX.md rather than inside RULEBOOK.md, which is never modified.
-    """
-    parts = [f"| [{PART_MAP[stem][0]}](parts/{stem}.md) | "
-             f"{len(PART_MAP[stem][1]) + len(PART_MAP[stem][2])} sections |"
-             for stem in PART_MAP]
-    out = ["# NoöPunk Rulebook — index", "",
-           "**`RULEBOOK.md` is canonical and is not modified by this index.** Every section heading",
-           "below is the canonical reference — cross-references throughout the repository use these",
-           "numbers — and each part is a generated, verbatim segment of `RULEBOOK.md`.", "",
-           "Regenerate with `python3 tools/split_rulebook.py --apply`. A guard fails if any part",
-           "drifts from `RULEBOOK.md`, so the two cannot disagree.", "",
-           "## Parts", "", "| Part | Sections |", "| --- | --- |", *parts, "",
-           "Section numbering is deliberately unchanged, including the core `1`–`9` run and the",
-           "extended-canon `1`–`54` run, so no existing cross-reference breaks.", "",
-           "## Contents", ""]
-    for section in parsed["sections"]:
-        out.append(section["heading"])
-        out.append("")
-        if section["number"] is None:
-            out.append(section["body"].rstrip("\n"))
+def assign(segments: list[dict], mapping: dict) -> None:
+    """Attach each segment to a part. Raises on anything unassigned or doubled."""
+    parts = mapping["parts"]
+    by_id = {p["id"]: p for p in parts}
+    for part in parts:
+        part["_segments"] = []
+    seen: dict[tuple[str, str], str] = {}
+    for s in segments:
+        if s["space"] == "marker" or not s["is_h2"]:
+            # The marker and every H1 are structural; the meta part holds structure.
+            target = parts[0]["id"]
         else:
-            stem = assign[(section["kind"], section["number"])]
-            out.append(f"> Moved to [`rulebook/parts/{stem}.md`](rulebook/parts/{stem}.md) "
-                       f"— {PART_MAP[stem][0]}.")
-        out.append("")
-    return "\n".join(out).rstrip("\n") + "\n"
+            match = NUMBERED.match(s["heading"])
+            if match is None:
+                # An unnumbered H2 before the marker is the core half's table of contents:
+                # navigation, not a rules section, so it stays with the structural part.
+                target = parts[0]["id"]
+            else:
+                # The core and ledger numbering spaces RESTART at 1, so a section's key in
+                # the map depends on which side of the marker it came from: the core half is
+                # declared under "core", the ledger under "ledger". Reading only "ledger" --
+                # or treating "preamble" as blanket-structural -- silently files the entire
+                # playable core game-book (Stats, Skills, the four system chapters, character
+                # generation) under meta, which "holds no player-facing rules". The map said
+                # otherwise and nothing noticed, because the core lists were never consulted.
+                space = "core" if s["space"] == "preamble" else "ledger"
+                key = match.group(1)
+                target = next((p["id"] for p in parts if key in p.get(space, [])), None)
+                if target is None:
+                    raise SystemExit(f"unassigned {space} section: {s['heading']!r}")
+                token = (space, key)
+                if token in seen:
+                    raise SystemExit(f"section {space} {key} assigned twice")
+                seen[token] = target
+        by_id[target]["_segments"].append(s)
+        s["part"] = target
+    for part in parts:
+        if not part["_segments"]:
+            raise SystemExit(f"part {part['id']} received no segments")
 
 
-def build_manifest(parsed: dict, assign: dict[tuple[str, int], str], source: str) -> dict:
-    parts: dict[str, dict] = {}
-    for stem, (title, _core, _app) in PART_MAP.items():
-        entries = [s for s in parsed["sections"] if s["number"] is not None
-                   and assign[(s["kind"], s["number"])] == stem]
-        parts[stem] = {
-            "title": title,
-            "file": f"rulebook/parts/{stem}.md",
-            "sections": [{
-                "kind": s["kind"],
-                "number": s["number"],
-                "heading": s["heading"],
-                "body_sha256": sha256(normalised_body(s)),
-                "body_lines": len(s["body"].splitlines()),
-            } for s in entries],
-        }
-    return {
-        "$comment": "Frozen from the pre-split RULEBOOK.md. Proves the split lost nothing: the "
-                    "guard re-hashes every section body in rulebook/parts/ against these digests.",
-        "format": "noopunk.rulebook_split_manifest",
-        "version": 1,
-        "issue": 232,
-        "source": "RULEBOOK.md",
-        "$only_edit": "The navigation block linking this index. Never the body.",
-        "source_sha256": sha256(source),
-        "appendix_marker": APPENDIX_MARKER,
-        "section_count": sum(len(p["sections"]) for p in parts.values()),
-        "parts": parts,
-    }
+def reconstruct(segments: list[dict]) -> str:
+    """The original text, rebuilt from the segments in canonical order."""
+    return "".join("".join(s["lines"]) for s in segments)
 
 
-def main() -> int:
-    text = SOURCE.read_text(encoding="utf-8")
-    text, linked = ensure_navigation(text)
-    if "--apply" not in sys.argv and linked:
-        print("RULEBOOK.md would gain the navigation block (first run)")
-    parsed = parse(text)
-    validate_partition(parsed)
-    assign = assignment()
-    total = sum(len(s["body"].splitlines()) for s in parsed["sections"] if s["number"] is not None)
+def nav_block(part: dict, parts: list[dict]) -> str:
+    links = " · ".join(
+        f"[{p['title'].split(':')[0]}]({p['id']}.md)" for p in parts
+    )
+    return (
+        f"{NAV_START}\n"
+        f"> **Part of the NoöPunk rulebook.** Index: [INDEX.md](INDEX.md) · {links}\n"
+        f">\n"
+        f"> Source of truth: `RULEBOOK.md` (canonical). This part is generated by\n"
+        f"> `python3 tools/split_rulebook.py`; edit the source, never this file.\n"
+        f"{NAV_END}\n\n"
+    )
 
-    print(f"partition OK: {len(parsed['sections'])} headings, "
-          f"{sum(1 for s in parsed['sections'] if s['number'] is not None)} numbered sections "
-          f"-> {len(PART_MAP)} parts, {total} body lines")
-    if "--apply" not in sys.argv:
-        for stem, (title, core, app) in PART_MAP.items():
-            lines = sum(len(s["body"].splitlines()) for s in parsed["sections"]
-                        if s["number"] is not None and assign[(s["kind"], s["number"])] == stem)
-            covered = [f"c{n}" for n in core] + [f"a{n}" for n in app]
-            print(f"  {stem:30s} {lines:5d} lines  ({' '.join(covered)})")
-        print("\ndry run; pass --apply to write")
+
+def write_parts(mapping: dict) -> list[Path]:
+    parts = mapping["parts"]
+    OUT_DIR.mkdir(exist_ok=True)
+    written: list[Path] = []
+    for part in parts:
+        target = OUT_DIR / f"{part['id']}.md"
+        header = (
+            f"# {part['title']}\n\n"
+            f"*{part['purpose']}*\n\n"
+            + nav_block(part, parts)
+        )
+        body = "".join("".join(s["lines"]) for s in part["_segments"])
+        target.write_text(header + body, encoding="utf-8")
+        written.append(target)
+    index = ["# NoöPunk rulebook — segment index\n",
+             "\n",
+             "Generated from `RULEBOOK.md` by `tools/split_rulebook.py`. ",
+             "Total: no section is unassigned and the concatenation of the parts ",
+             "reproduces the source byte-for-byte (`--check`).\n\n"]
+    for part in parts:
+        index.append(f"## [{part['title']}]({part['id']}.md)\n\n")
+        index.append(f"{part['purpose']}\n\n")
+        for s in part["_segments"]:
+            if s["is_h2"]:
+                index.append(f"- {s['heading'][3:]}\n")
+        index.append("\n")
+    (OUT_DIR / "INDEX.md").write_text("".join(index), encoding="utf-8")
+    return written
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--check", action="store_true", help="prove losslessness, write nothing")
+    args = parser.parse_args(argv)
+
+    mapping = load_map()
+    original = SOURCE.read_text(encoding="utf-8")
+    segments = segment(original.splitlines(keepends=True), mapping["core_ledger_marker"])
+    assign(segments, mapping)
+
+    rebuilt = reconstruct(segments)
+    if rebuilt != original:
+        a, b = original.splitlines(), rebuilt.splitlines()
+        where = next((i for i, (x, y) in enumerate(zip(a, b)) if x != y), min(len(a), len(b)))
+        print(f"LOSSY: reconstruction differs at line {where + 1}", file=sys.stderr)
+        print(f"  source: {a[where][:90]!r}" if where < len(a) else "  source: <eof>", file=sys.stderr)
+        print(f"  parts : {b[where][:90]!r}" if where < len(b) else "  parts : <eof>", file=sys.stderr)
+        return 1
+
+    covered = sum(len(p["_segments"]) for p in mapping["parts"])
+    print(f"segments: {len(segments)} | assigned to {len(mapping['parts'])} parts | covered {covered}")
+    print(f"lossless: reconstruction == RULEBOOK.md ({len(original)} bytes, "
+          f"{original.count(chr(10)) + 1} lines)")
+    if args.check:
+        print("check only; nothing written")
         return 0
-
-    if linked:
-        SOURCE.write_text(text, encoding="utf-8")
-    PARTS_DIR.mkdir(parents=True, exist_ok=True)
-    for stem in PART_MAP:
-        (PARTS_DIR / f"{stem}.md").write_text(build_part(stem, parsed, assign), encoding="utf-8")
-    MANIFEST.write_text(json.dumps(build_manifest(parsed, assign, text),
-                                   indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    INDEX.write_text(build_index(parsed, assign), encoding="utf-8")
-    print(f"wrote {len(PART_MAP)} parts, {MANIFEST.relative_to(ROOT)} and {INDEX.relative_to(ROOT)}")
-    print(f"RULEBOOK.md body untouched; navigation block {'inserted' if linked else 'already present'}"
-          f" (sha256 {sha256(text)[:12]}…)")
+    written = write_parts(mapping)
+    for path in written:
+        print(f"wrote {path.relative_to(ROOT)}")
+    print(f"wrote {(OUT_DIR / 'INDEX.md').relative_to(ROOT)}")
     return 0
 
 
