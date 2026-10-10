@@ -1,0 +1,94 @@
+{
+  "$comment": "Machine-readable policy for the issue #231 release packaging guard. The guard (tools/release_packaging_guard.py) reads THIS file plus data/sources/game_system_rights.json, so the excluded-licence set has exactly one home (the ledger) and the packaging rules have exactly one home (here). Do not add a second exclusion list anywhere. Records PACKAGING RULES ONLY: no licence is selected by this file, no LICENSE/NOTICE file is created, and nothing here is a legal clearance.",
+  "format": "noopunk.licensing.release_packaging_policy",
+  "version": 1,
+  "issue": "https://github.com/TomiToivio/NooPunk/issues/231",
+  "parent_epic": "https://github.com/TomiToivio/NooPunk/issues/200",
+  "status": "guard-scaffold-author-decision-still-open",
+  "author_decision_open": true,
+  "source_of_truth": {
+    "rights_ledger": "data/sources/game_system_rights.json",
+    "licence_plan": "docs/licenses/ISSUE_200_LICENSE_AND_NOTICE_PLAN.md",
+    "release_gate": "docs/licenses/ISSUE_200_CC_RELEASE_GATE.md",
+    "quarantine_notice": "docs/licenses/ECLIPSE_PHASE_HOMEBREW.md"
+  },
+  "$excluded_licence_decisions_note": "These are EXACT keys of the rights ledger's decision_vocabulary. The guard errors if any key here stops existing in the ledger (drift), and errors if any artifact class declares one of them. Do not rename them here without renaming them in the ledger.",
+  "excluded_licence_decisions": [
+    "verified-nc-sharealike",
+    "no-cc-grant-established",
+    "blocked-unverified",
+    "proprietary-out-of-scope"
+  ],
+  "$documented_mention_markers_note": "Excluded-licence names that legitimately appear in provenance/conscience prose. The guard reports these as an INVENTORY (warnings), never as errors: README.md and RULEBOOK.md state that the game contains NC-derived material, and the audit records name the licences they audit. Flagging those as failures would be a false positive.",
+  "documented_mention_markers": [
+    "CC BY-NC",
+    "BY-NC-SA",
+    "NonCommercial",
+    "Open Game License",
+    "OGL 1.0a",
+    "Product Identity"
+  ],
+  "quarantined_paths": [
+    {
+      "glob": "src/eclipse_phase_homebrew/**",
+      "reason": "EP2 homebrew prototype; CC BY-NC-SA-derived. Recorded in docs/licenses/ECLIPSE_PHASE_HOMEBREW.md."
+    },
+    {
+      "glob": "src/concordia_runtime/ep2_*.py",
+      "reason": "Concordia adapters for the same EP2 prototype; same NC-derived boundary."
+    },
+    {
+      "glob": "scripts/ep2_*.py",
+      "reason": "EP2 smoke scripts for the same prototype; same NC-derived boundary."
+    }
+  ],
+  "artifact_classes": [
+    {
+      "id": "rulebook-prose",
+      "globs": ["RULEBOOK.md", "FACTIONS.md", "README.md", "rulebook/**", "rulebook_parts/**"],
+      "licence": "author-decision",
+      "note": "Original creative rulebook and worldbook prose."
+    },
+    {
+      "id": "rule-data",
+      "globs": ["data/rules/**", "data/world/**", "data/simulation/**", "data/paradigm_shifts.yaml"],
+      "licence": "author-decision",
+      "note": "The rules in machine-readable syntax; grouped with the rulebook, not with the code."
+    },
+    {
+      "id": "licensing-and-source-records",
+      "globs": ["data/licenses/**", "data/sources/**", "docs/licenses/**", "docs/sources/**"],
+      "licence": "author-decision",
+      "note": "Rights ledgers, licence plan and provenance inventories. Must follow the rulebook, not a software licence."
+    },
+    {
+      "id": "design-and-audit-records",
+      "globs": ["docs/**", "AGENTS.md", ".hermes/**"],
+      "licence": "author-decision",
+      "note": "Design, audit, scenario and record material. Publication scope of .hermes/ agent plans is an author decision."
+    },
+    {
+      "id": "source-code",
+      "globs": ["src/**", "scripts/**", "tools/**", "tests/**"],
+      "licence": "author-decision-separate-software-licence",
+      "note": "Needs its own software licence, separate from the CC instrument."
+    },
+    {
+      "id": "fixtures-and-scenes",
+      "globs": ["fixtures/**", "scenes/**", "deploy/**", "project.godot"],
+      "licence": "author-decision-follows-code",
+      "note": "Godot project files are code, not prose."
+    },
+    {
+      "id": "packaging-and-config",
+      "globs": [".github/**", ".gitignore", "requirements.txt", "requirements-concordia.txt", "LICENSE*", "NOTICE*"],
+      "licence": "author-decision-follows-code",
+      "note": "CI, dependency and release-packaging plumbing."
+    }
+  ],
+  "release_modes": {
+    "$comment": "A 'public' release cannot be declared clean while the author's licence decision is open. Use 'audit' for dry runs and a full-tree scan; 'public' is the release-gate mode.",
+    "audit": "Full-tree scan reports findings as warnings and passes while the tree is internally consistent, even with the author decision open.",
+    "public": "Fails while any artifact class is still 'author-decision'."
+  }
+}
