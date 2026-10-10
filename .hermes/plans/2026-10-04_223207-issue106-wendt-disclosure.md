@@ -1,3 +1,5 @@
+> **SUPERSEDED TEST REFERENCE (#271):** this plan tells you to run `python tests/test_world_ideology.py`, which no longer exists. Documentation tests were removed under #270/#271; automated tests now cover executable code only. Review the worldbuilding editorially, not with a test.
+
 # Issue #106 — Wendt-based Disclosure Model: staged shock, camps, and the Noöspheric transition
 
 > **For Hermes:** this is a *thinking* deliverable — analysis + design proposals, not an

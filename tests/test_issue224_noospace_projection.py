@@ -25,9 +25,9 @@ ROOT = Path(__file__).resolve().parents[1]
 CHAPTER = ROOT / "rulebook" / "6_PSYCHIC.md"
 SCOPE_DOC = ROOT / "docs" / "design" / "ISSUE_224_NOOSPACE_SCOPE.md"
 
-from src.rules import core  # noqa: E402
-from src.rules import cross_domain_state as cd  # noqa: E402
-from src.rules import noospace_projection as npj  # noqa: E402
+from src.rules import core
+from src.rules import cross_domain_state as cd
+from src.rules import noospace_projection as npj
 
 
 def flat(path: Path) -> str:
@@ -46,6 +46,10 @@ class ProvisionalStatusTests(unittest.TestCase):
 
     def test_the_module_declares_itself_provisional(self) -> None:
         self.assertTrue(npj.PROVISIONAL)
+
+
+
+
 
 class StateMachineIsConsumedTests(unittest.TestCase):
     """#225 owns the states; projection must consult them, not re-declare them."""
@@ -104,6 +108,8 @@ class BodyIsUnreachableTests(unittest.TestCase):
     def test_a_body_alone_is_not_in_danger(self) -> None:
         self.assertFalse(npj.body_in_danger(state=cd.ASTRAL_PROJECTED, deliberately_attacked=False))
 
+
+
 class AccessRouteTests(unittest.TestCase):
     def test_every_route_maps_to_a_225_state(self) -> None:
         states = {cd.EMBODIED, cd.CYBER_IMMERSED, cd.ASTRAL_PROJECTED, cd.INVOLUNTARY_DREAM_NDE}
@@ -121,6 +127,8 @@ class AccessRouteTests(unittest.TestCase):
 
     def test_lucid_dreaming_is_not_full_projection(self) -> None:
         self.assertEqual(npj.ROUTE_STATE[npj.AccessRoute.LUCID_DREAM], cd.INVOLUNTARY_DREAM_NDE)
+
+
 
 class RegionTests(unittest.TestCase):
     def test_the_five_regions_are_404s(self) -> None:
@@ -149,6 +157,8 @@ class RegionTests(unittest.TestCase):
     def test_negative_steps_are_rejected(self) -> None:
         with self.assertRaises(ValueError):
             npj.shift_region(npj.Region.NEAR, npj.Direction.DEEPER, -1)
+
+
 
 class ResonanceNavigationTests(unittest.TestCase):
     def test_resonance_is_bounded(self) -> None:
@@ -207,6 +217,8 @@ class TemporalAmbiguityTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             npj.elapsed_in_spacetime(region=npj.Region.NEAR, subjective_minutes=-1)
 
+
+
 class PerceptionTests(unittest.TestCase):
     def test_uncorroborated_information_is_ambiguous_by_default(self) -> None:
         self.assertEqual(
@@ -240,6 +252,8 @@ class PerceptionTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             npj.Perception(content="x", source=npj.InformationSource.AMBIGUOUS, confidence=1.4)
 
+
+
 class EncounterTests(unittest.TestCase):
     def test_every_consciouous_agent_class_has_a_skill(self) -> None:
         for kind in npj.EncounterKind:
@@ -265,6 +279,8 @@ class EncounterTests(unittest.TestCase):
         nonhuman = npj.encounter_dv(kind=npj.EncounterKind.NONHUMAN, region=npj.Region.NEAR,
                                     hostile=False)
         self.assertGreater(nonhuman, common)
+
+
 
 class ReturnTests(unittest.TestCase):
     def test_a_projected_character_can_return(self) -> None:
@@ -336,6 +352,8 @@ class ProjectionLifecycleTests(unittest.TestCase):
 
     def test_return_uses_225s_transition_legality(self) -> None:
         self.assertTrue(cd.legal_transition(cd.ASTRAL_PROJECTED, cd.EMBODIED))
+
+
 
 
 if __name__ == "__main__":

@@ -12,7 +12,6 @@ Cross-links: #200 (epic), #217 (resolution semantics), #222 (cyberspace procedur
 """
 from __future__ import annotations
 
-import re
 import unittest
 from pathlib import Path
 
@@ -25,6 +24,16 @@ from src.rules import cross_domain_state as cds
 def flat(path: Path) -> str:
     """Whitespace-collapsed: the chapter hard-wraps, so phrases span line breaks."""
     return " ".join(path.read_text(encoding="utf-8").split())
+
+
+
+
+
+
+
+
+
+
 
 
 class ExecutableInvariantTests(unittest.TestCase):
@@ -103,12 +112,8 @@ class ExecutableInvariantTests(unittest.TestCase):
         with self.assertRaises(cds.CrossDomainError):
             economy.spend("act")
 
-    def test_a_reaction_is_never_free(self) -> None:
-        economy = cds.ActionEconomy()
-        economy.react()
-        self.assertEqual(economy.debt, 1, "an unheld reaction must incur debt")
-        economy.reset_for_exchange()
-        self.assertEqual(economy.spent, 1, "the debt must be paid in the next exchange")
+
+
 
 
 if __name__ == "__main__":

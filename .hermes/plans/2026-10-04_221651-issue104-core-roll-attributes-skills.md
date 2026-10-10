@@ -1,3 +1,5 @@
+> **SUPERSEDED TEST REFERENCE (#271):** this plan tells you to run `python tests/test_world_ideology.py`, which no longer exists. Documentation tests were removed under #270/#271; automated tests now cover executable code only. Review the worldbuilding editorially, not with a test.
+
 # Issue #104 — Core Resolution: Attributes + Skills, and the Stunt / Move Hybrid
 
 > **For Hermes:** planning only. No RULEBOOK, code, or data changes land until the author

@@ -12,15 +12,14 @@ equipment list this maps into without editing).
 """
 from __future__ import annotations
 
-import re
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CHAPTER = ROOT / "rulebook" / "3_PHYSICAL.md"
 
-from src.rules import cross_domain_state as cds
 from src.rules import core
+from src.rules import cross_domain_state as cds
 from src.rules import physical_combat as pc
 
 
@@ -34,6 +33,7 @@ class LadderTests(unittest.TestCase):
 
     def test_the_module_ladder_is_exactly_the_recorded_four_states(self) -> None:
         self.assertEqual(pc.LADDER, ("Scratched", "Wounded", "Critical", "Down"))
+
 
     def test_the_ladder_is_a_state_not_a_counter(self) -> None:
         """Two solid hits must not accumulate into a worse rung (§51's requirement)."""
@@ -49,6 +49,8 @@ class LadderTests(unittest.TestCase):
         for forbidden in ("previous", "current", "existing", "prior"):
             with self.subTest(param=forbidden):
                 self.assertNotIn(forbidden, params)
+
+
 
 class ArithmeticTests(unittest.TestCase):
     """AC1/AC3 — the core arithmetic, proved by enumeration."""
@@ -153,6 +155,8 @@ class ArmorTests(unittest.TestCase):
         with self.assertRaises(pc.PhysicalConflictError):
             pc.armor_steps("sonic", frozenset({"ballistic"}))
 
+
+
 class SuppressionTests(unittest.TestCase):
     """AC1 — suppression is a status that never wounds."""
 
@@ -165,6 +169,8 @@ class SuppressionTests(unittest.TestCase):
         for roll in range(1, 11):
             with self.subTest(roll=roll):
                 self.assertNotIn(pc.resist_suppression(5, 3, roll, 13), pc.LADDER)
+
+
 
 class ProcedureTests(unittest.TestCase):
     """AC1 — every named requirement of the acceptance criterion is present."""
@@ -181,6 +187,11 @@ class ProcedureTests(unittest.TestCase):
         "Healing and near-death",                      # healing
     )
 
+
+
+
+
+
     def test_the_action_costs_agree_with_the_shared_contract(self) -> None:
         """Physical play must spend the #225 economy, not a second one."""
         self.assertEqual(cds.AP_PER_EXCHANGE, 3)
@@ -191,14 +202,25 @@ class ProcedureTests(unittest.TestCase):
 class SimpleAdvancedTests(unittest.TestCase):
     """AC3 — two dialects, one core, and the cheaper dialect is not weaker."""
 
+
     def test_simple_mode_uses_the_authored_difficulty_ladder(self) -> None:
         self.assertEqual(pc.DIFFICULTY_LADDER, (9, 13, 15, 17, 21, 24, 29))
+
+
 
 class HygieneTests(unittest.TestCase):
     """AC4/AC5 — independent wording, provisional labels, resolvable links."""
 
+
+
+
+
+
+
+
     def test_the_module_declares_itself_non_canonical(self) -> None:
         self.assertFalse(pc.IS_CANONICAL)
+
 
     def test_the_module_does_not_restate_the_ladder_literally(self) -> None:
         """The direct prohibition: no second copy of the ladder's values in the module."""

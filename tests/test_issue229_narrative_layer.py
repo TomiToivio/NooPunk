@@ -13,7 +13,6 @@ sits on top of), #226 (investigation, untouched).
 from __future__ import annotations
 
 import inspect
-import re
 import unittest
 from pathlib import Path
 
@@ -76,6 +75,9 @@ class BoundTests(unittest.TestCase):
         with self.assertRaises(nl.NarrativeError):
             nl.can_invoke(-1)
 
+
+
+
 class NoRatingTests(unittest.TestCase):
     """AC3 — an aspect is never a rating; 'tag-only characters' is the named failure."""
 
@@ -119,6 +121,8 @@ class AspectAnatomyTests(unittest.TestCase):
         with self.assertRaises(nl.NarrativeError):
             an_aspect(effect_class="rating")
 
+
+
 class PoolTests(unittest.TestCase):
     """AC2 — narrative resources with a real cost, which cannot buy a bigger modifier."""
 
@@ -148,6 +152,8 @@ class PoolTests(unittest.TestCase):
         with self.assertRaises(nl.NarrativeError):
             pool.invoke(1)
 
+
+
 class GMoveTests(unittest.TestCase):
     """AC2 — GM moves and partial success, read off the band the core already produced."""
 
@@ -168,6 +174,8 @@ class GMoveTests(unittest.TestCase):
         for band, move in nl.BAND_TO_MOVE.items():
             with self.subTest(band=band):
                 self.assertNotRegex(nl.GM_MOVES[move], r"\d")
+
+
 
 class PrecedenceTests(unittest.TestCase):
     """AC3 — deterministic precedence; the LLM proposes, the engine decides."""
@@ -193,6 +201,8 @@ class PrecedenceTests(unittest.TestCase):
         self.assertFalse(result.accepted)
         self.assertIn("malformed", result.reason)
 
+
+
 class ParityTests(unittest.TestCase):
     """AC4 — GNS parity is structural: every style resolves on ONE core."""
 
@@ -210,11 +220,23 @@ class ParityTests(unittest.TestCase):
         """Parity is only real if the realm modules actually share the band function."""
         self.assertIs(soc.band_for_margin, pc.band_for_margin)
 
+
+
+
+
 class HygieneTests(unittest.TestCase):
     """AC5 — provisional labels, independent wording, resolvable links."""
 
+
+
+
+
+
+
     def test_the_module_declares_itself_non_canonical(self) -> None:
         self.assertFalse(nl.IS_CANONICAL)
+
+
 
 if __name__ == "__main__":
     unittest.main()

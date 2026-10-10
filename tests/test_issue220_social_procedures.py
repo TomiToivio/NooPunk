@@ -9,7 +9,6 @@ Cross-links: #200 (epic), #225 (the shared clock), #219 (the shared band arithme
 """
 from __future__ import annotations
 
-import re
 import unittest
 from pathlib import Path
 
@@ -94,6 +93,8 @@ class HardLimitTests(unittest.TestCase):
             with self.subTest(name=forbidden):
                 self.assertFalse(hasattr(soc, forbidden))
 
+
+
 class CoercionTests(unittest.TestCase):
     """AC1/AC3 — coercion moves behaviour and always leaves a cost."""
 
@@ -114,6 +115,8 @@ class CoercionTests(unittest.TestCase):
     def test_an_unknown_consequence_is_refused(self) -> None:
         with self.assertRaises(soc.SocialError):
             soc.SocialOutcome(consequence="Enslaved", coercive=True)
+
+
 
 class ReputationStepTests(unittest.TestCase):
     """AC2 — a witnessed exchange may move Reputation by exactly ONE step."""
@@ -171,6 +174,8 @@ class RelationshipStatusTests(unittest.TestCase):
     def test_statuses_are_derived_by_construction(self) -> None:
         self.assertTrue(soc.status_is_derived())
 
+
+
 class GroupTests(unittest.TestCase):
     """AC1 — group interaction, with a BOUNDED modifier."""
 
@@ -186,11 +191,34 @@ class GroupTests(unittest.TestCase):
     def test_the_cap_matches_the_recorded_situational_cap(self) -> None:
         self.assertEqual(soc.MAX_GROUP_SUPPORT, 2)
 
+
+
+class PreservationTests(unittest.TestCase):
+    """AC2 — the existing graph is consumed, not forked."""
+
+
+
+
+
+
+
+class ConcordiaSeamTests(unittest.TestCase):
+    """AC4 — the LLM narrates; the engine rolls and writes state."""
+
+
+
+
 class HygieneTests(unittest.TestCase):
     """AC5 — provisional labels, independent wording, resolvable links."""
 
+
+
+
+
     def test_the_module_declares_itself_non_canonical(self) -> None:
         self.assertFalse(soc.IS_CANONICAL)
+
+
 
 if __name__ == "__main__":
     unittest.main()
