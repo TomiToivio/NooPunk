@@ -21,6 +21,8 @@ breaking them:
 """
 from __future__ import annotations
 
+from . import core  # the canonical ladder owner (data/rules/core.json)
+
 #: PROVISIONAL. The author owns calibration.
 IS_CANONICAL = False
 
@@ -51,7 +53,13 @@ BAND_TO_LADDER_INDEX: dict[str, int] = {
 }
 
 #: The core difficulty ladder (`RULEBOOK.md` §4.2), used by simple mode.
-DIFFICULTY_LADDER: tuple[int, ...] = (9, 13, 15, 17, 21, 24, 29)
+#:
+#: CONSUMED, not re-declared. `src/rules/core.py` is the canonical reader of
+#: `data/rules/core.json`, and AGENTS.md §13 requires a shared specification to be consumed
+#: rather than restated in a second runtime: a local copy silently goes stale the moment the
+#: author recalibrates the ladder, and no test would notice. The guard for this is
+#: `tests/test_issue219_physical_combat.py::test_the_ladder_is_consumed_from_core`.
+DIFFICULTY_LADDER: tuple[int, ...] = core.DIFFICULTY_LADDER
 
 #: The band a simple-mode target sits at before cover, aim and range adjust it.
 BAND_DIFFICULTY: dict[str, int] = {
