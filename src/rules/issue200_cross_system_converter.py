@@ -36,7 +36,7 @@ BANDS: dict[tuple[str, str], tuple[int, ...]] = {
 # An EP percentile high test target means EASIER, opposite typical DV. This
 # explicitly ordered list avoids silently reversing difficulty.
 DIFFICULTY_EASIEST_TO_HARDEST = {
-    family: (tuple(reversed(bands)) if family == "eclipse_phase" else bands)
+    family: bands
     for (family, kind), bands in BANDS.items() if kind == "difficulty"
 }
 
