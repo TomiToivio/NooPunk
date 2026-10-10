@@ -531,7 +531,7 @@
     },
     {
       "id": "lighter-rules-alternatives",
-      "name": "Lighter rules alternatives (Fate / Neon City Overdrive / PbtA)",
+      "name": "Lighter rules alternatives (Fate / PbtA), with proprietary comparisons kept separate (Neon City Overdrive)",
       "ep2_reference": "third-party conversions, not EP2",
       "ep2_covered": false,
       "rulebook_section": "24",

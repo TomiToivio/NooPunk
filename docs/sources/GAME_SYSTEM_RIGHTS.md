@@ -386,3 +386,43 @@ It does not claim any closed system is "free", does not claim an SRD's licence c
 does not treat a blocked fetch as a licence finding, and does not license NoöPunk as anything.
 It records what could be established, how, and on what date — so that the next step is a
 decision rather than an accident.
+
+## Rewording pass — the derivation claims removed (2026-10-10, #200 item 1)
+
+The audit above named the claim sites; this pass acted on the ones that are not
+author-owned. **Nothing has been deleted** — no rule content, no lore, no file. What changed
+is the *claim*: where rule content asserted that NoöPunk derives its mechanics from a closed or
+proprietary system, it now says what the rules are instead of what they came from.
+
+| Site | Was | Now |
+| --- | --- | --- |
+| `RULEBOOK.md` character generation | "inspired by the high-level choose-or-roll structure of Cyberpunk RED" | an original NoöPunk framework that copies no other game's tables, text or structure |
+| `RULEBOOK.md` §35.5 | RED credited with "the old-school mechanical sensibility that NoöPunk often simplifies from" | RED as genre *tone*; "a genre influence, not a mechanical source (issue #200)" |
+| `RULEBOOK.md` §33 | "EP2 is an influence and legacy implementation source" | EP2 "quarantined from the intended CC release surface" |
+| `rulebook/4_SOCIAL.md` | contact graph "inspired by Cyberpunk RED social hooks" | the graph is NoöPunk's own design |
+| `rulebook/2_ATTRIBUTES.md` | conversion tables named for three external systems | NoöPunk-authored, opt-in interoperability aids that make no external system a parent |
+| `README.md` ×3 | RED "for the clarity and feel of STAT + Skill + d10 resolution" | the kernel is NoöPunk's own; the #200 centre (Fudge/Fate) states the design role; CY_BORG a compression goal, not a source |
+| `docs/design/RPG_CONVERSION_REFERENCE.md` | tables "convert characters from" three systems | convert *from* other games *into* NoöPunk for interoperability only, no parent/baseline claim |
+| `data/rules/core.json` | `influences` listed Cyberpunk 2020 / RED | the #200 centre and corners; no closed system listed |
+| `data/world/tech_matrix.json` | regions benchmarked against a reference game | described relative to each other; no benchmark |
+| `data/rules/conversion_matrix.json` | Fate / NCO / PbtA grouped as one class | CC-usable alternatives separated from the proprietary comparison |
+| `docs/index.html`, `docs/sources/SOCIAL_SYSTEM_SOURCES.md` | RED named as a contributing influence / source | removed or recorded as a comparison point only |
+
+**Kept deliberately.** The *influence* acknowledgements stay: `RULEBOOK.md` still names these
+games as influences and explicitly not as parent systems, and the §35.5 inventory still lists
+them with what they contribute. `not_a_conversion_of` in `core.json` keeps its negative claims —
+"not a conversion of X" is the honest form. The author's own open question about which regions
+reach Eclipse Phase-like capability is *carried, not answered*, so its phrasing is untouched.
+The conversion tables themselves are NoöPunk-original authorship and were **kept**, per the
+direction record's own note that deleting them would be the blanket deletion #200 forbids.
+
+**Not touched, on purpose.** `AGENTS.md` §13.2 and §15.3 still fix the old CY_BORG /
+Cyberpunk 2020 / The Sprawl poles. Those are author-owned and #200 says locked rules move by
+author-approved process; changing them as an agent would be the silent redesign §13.8 forbids.
+They remain recorded in `open_inconsistency` until the author reconciles them.
+
+Guard: `tests/test_issue200_closed_system_claims.py` asserts the removed claims stay removed,
+that a closed system is never credited with a mechanical role (clause-scoped, so a negation in
+the same sentence is not mistaken for a claim), that the replacement claims exist, and that the
+ledger's actions move with the state. Sabotage-proven on eight mutations with byte-identical
+restores.

@@ -526,9 +526,8 @@ Possible outcomes include Noetic entities, anomalous lights/orbs, telepathic con
 
 **Status: NOÖPUNK CORE — issue #144.**
 
-Character creation uses an original NoöPunk **Lifepath-style framework** inspired by the
-high-level choose-or-roll structure of Cyberpunk RED. It does not copy another game's
-tables or text.
+Character creation uses an original NoöPunk **Lifepath-style framework** with a high-level
+choose-or-roll structure. It copies no other game's tables, text or structure.
 
 Every major stage may be:
 - chosen manually;
@@ -1566,12 +1565,12 @@ The same saved state plus the same deterministic inputs should reproduce the sam
 
 **Status: EXPERIMENTAL REFERENCES.**
 
-EP2 is an influence and legacy implementation source, not a chassis.
+EP2 is an influence and a legacy prototype source, quarantined from the intended CC release surface (see docs/licenses/ISSUE_200_CC_RELEASE_GATE.md); it is not a chassis.
 
 If a subsystem is too cumbersome for Concordia, compare lighter approaches including:
 
 - Transhumanity's Fate,
-- Neon City Overdrive-style EP conversions,
+- Neon City Overdrive-style EP conversions (proprietary; a comparison only, not a source),
 - Powered by the Apocalypse-style EP conversions,
 - later native NoöPunk mechanics.
 
@@ -4175,9 +4174,8 @@ At minimum:
 
 - **Posthuman Studios — _Eclipse Phase, Second Edition_** — current rules and
   transhuman-technology baseline, plus alternate pre-Fall parent continuity.
-- **Cyberpunk 2013 / 2020 / RED** — street-level cyberpunk, corporations, technology,
-  urban social structure, and the old-school mechanical sensibility that NoöPunk often
-  simplifies from.
+- **Cyberpunk 2013 / 2020 / RED** — street-level cyberpunk tone: corporations, technology
+  and urban social structure. A genre influence, not a mechanical source (issue #200).
 - **The Expanse Roleplaying Game** — crew-centered science-fiction play, Ties / Relationships / Reputation, and Belt/station campaign structure.
 - **Shadowrun** — model for combining a cyberpunk street world with a second ontological
   layer; NoöPunk replaces urban fantasy with the Noösphere, PSI, NHI, and QIP.

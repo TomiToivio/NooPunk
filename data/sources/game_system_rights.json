@@ -318,67 +318,67 @@
         "file": "README.md",
         "line": 216,
         "claim": "Cyberpunk 2020/RED 'is an important reference for readable STAT + Skill + d10 resolution'",
-        "action": "reword: influence, not the reference for the kernel"
+        "action": "DONE 2026-10-10 (#200 item 1): reworded -- the six-STAT kernel is NooPunk's own; RED is no longer named as its resolution reference."
       },
       {
         "file": "README.md",
         "line": 258,
         "claim": "Cyberpunk 2020 / RED 'for the clarity and feel of STAT + Skill + d10 resolution'",
-        "action": "reword"
+        "action": "DONE 2026-10-10 (#200 item 1): reworded -- RED removed from the influences bullet; the #200 centre (Fudge/Fate) now states the Attribute/Skill and narrative role."
       },
       {
         "file": "README.md",
         "line": 262,
         "claim": "CY_BORG and Cities Without Number / OSR for fast, compact play",
-        "action": "reword: CWN SRD is CC0 (usable); CY_BORG stays a design goal, not a source"
+        "action": "DONE 2026-10-10 (#200 item 1): reworded -- CWN/SWN named for procedures; CY_BORG marked a compression design goal, not a rules source."
       },
       {
         "file": "rulebook/4_SOCIAL.md",
         "line": 47,
         "claim": "'inspired by Cyberpunk RED social hooks'",
-        "action": "reword: no closed-system derivation claim"
+        "action": "DONE 2026-10-10 (#200 item 1): reworded -- the contact graph is stated as NooPunk's own design."
       },
       {
         "file": "rulebook/2_ATTRIBUTES.md",
         "line": 139,
         "claim": "conversion tables for Cyberpunk RED, Eclipse Phase 2E and Cities Without Number",
-        "action": "scope: interop aid; keep only if reframed as non-derivative"
+        "action": "DONE 2026-10-10 (#200 item 1): reframed as NoöPunk-authored, opt-in interoperability aids that make no external system a parent. Kept -- the direction record marks the tables keep."
       },
       {
         "file": "docs/design/RPG_CONVERSION_REFERENCE.md",
         "line": 6,
         "claim": "converts FROM Cyberpunk RED into 'the native NooPunk 1-10 STAT + 1-10 Skill + 1d10 rules'",
-        "action": "the central RED-dependence doc; rework"
+        "action": "DONE 2026-10-10 (#200 item 1): reworked -- the tables convert FROM other games for interoperability only, with no parent/baseline/implementation-source claim."
       },
       {
         "file": "docs/sources/SOCIAL_SYSTEM_SOURCES.md",
         "line": 18,
         "claim": "Cyberpunk RED as the source of friends/enemies and Contacts design",
-        "action": "reword: influence, and check against #60's audit format"
+        "action": "DONE 2026-10-10 (#200 item 1): reworded to a design comparison point with an explicit no-derivation note."
       },
       {
         "file": "data/rules/core.json",
         "line": 9,
         "claim": "reference_games list includes Cyberpunk 2020 and Cyberpunk RED",
-        "action": "machine-readable claim; rework with the license decision"
+        "action": "DONE 2026-10-10 (#200 item 1): influences reworked to the #200 centre and corners; no closed system is listed. Final influence wording still subject to the author's licence selection."
       },
       {
         "file": "data/rules/conversion_matrix.json",
         "line": 534,
         "claim": "Fate / Neon City Overdrive / PbtA grouped as 'lighter rules alternatives'",
-        "action": "splits CC-usable (Fate) from proprietary (NCO); separate them"
+        "action": "DONE 2026-10-10 (#200 item 1): name now separates the CC-usable alternatives (Fate/PbtA) from the proprietary comparison (NCO)."
       },
       {
         "file": "data/world/tech_matrix.json",
         "line": 454,
         "claim": "capability profiles calibrated near 'Cyberpunk 2020/RED'",
-        "action": "reword: relative, not calibrated to a closed game"
+        "action": "DONE 2026-10-10 (#200 item 1): reworded -- regions are described relative to each other, with no reference-game benchmark."
       },
       {
         "file": "docs/index.html",
         "line": 73,
         "claim": "public site text names Cyberpunk 2020/RED as a contributing influence",
-        "action": "public-facing; reword with the others"
+        "action": "DONE 2026-10-10 (#200 item 1): reworded -- RED removed from the public-site influence sentence."
       },
       {
         "file": "tests/test_design_principles.py",
@@ -390,13 +390,13 @@
         "file": "tests/test_issue101_sources_dedup.py",
         "line": 108,
         "claim": "expects Cyberpunk 2013, Shadowrun, The Sprawl, CY_BORG in the dedup list",
-        "action": "test coupling to the old framing; update with the reword"
+        "action": "DONE 2026-10-10 (#200 item 1): no reword needed -- this is the surviving influences/reading list, where naming these games is legitimate acknowledgement. The test coupling stands."
       },
       {
         "file": "tests/test_issue58_tech_matrix.py",
         "line": 271,
         "claim": "the concrete-year guard special-cases the reference-game title 'Cyberpunk 2020/RED'",
-        "action": "test coupling; update with tech_matrix.json"
+        "action": "DONE 2026-10-10 (#200 item 1): tech_matrix.json reworded, so the reference-game title no longer occurs. The year-scan strip list in test_issue58_tech_matrix.py:271 is kept as a trap guard and is now inert."
       }
     ],
     "authority_conflict": {
