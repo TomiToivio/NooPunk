@@ -147,5 +147,103 @@ class GeneratedPartsTests(unittest.TestCase):
         self.assertTrue(PARTS_DIR.is_dir())
 
 
+class ThePartsContainWhatTheMapDeclaresTests(unittest.TestCase):
+    """Totality and losslessness are both satisfied by filing every section ANYWHERE.
+
+    The map does not only say *that* every section is assigned; it says **which** part each one
+    belongs to, in its `core` and `ledger` lists. Those lists are the reader-facing promise --
+    "01 Basic Rules" contains the rules. An implementation that never consults them can ignore
+    them entirely, pass every other test in this file, and still file the whole playable core
+    game-book under `00_meta_and_provenance`, whose stated purpose is material that is *"not
+    player-facing rules"*.
+
+    So the declaration is checked against the artefacts rather than taken on trust, and the core
+    numbering space gets the same totality check the ledger already had.
+    """
+
+    def setUp(self) -> None:
+        self.tool = _tool()
+        self.mapping = json.loads(MAP_FILE.read_text(encoding="utf-8"))
+        original = SOURCE.read_text(encoding="utf-8")
+        segments = self.tool.segment(
+            original.splitlines(keepends=True), self.mapping["core_ledger_marker"]
+        )
+        self.tool.assign(segments, self.mapping)
+
+    def _declared(self, part: dict) -> set[str]:
+        return {f"core:{x}" for x in part.get("core", [])} | {
+            f"ledger:{x}" for x in part.get("ledger", [])
+        }
+
+    def _delivered(self, part: dict) -> set[str]:
+        out: set[str] = set()
+        for s in part["_segments"]:
+            m = self.tool.NUMBERED.match(s["heading"])
+            if not m:
+                continue
+            space = "core" if s["space"] == "preamble" else "ledger"
+            out.add(f"{space}:{m.group(1)}")
+        return out
+
+    def test_every_part_delivers_exactly_the_sections_it_declares(self) -> None:
+        for part in self.mapping["parts"]:
+            with self.subTest(part=part["id"]):
+                self.assertEqual(
+                    self._delivered(part),
+                    self._declared(part),
+                    f"{part['id']} does not contain the sections the map assigns to it",
+                )
+
+    def test_every_core_section_is_declared_somewhere(self) -> None:
+        """The core half has its own numbering space, so it needs its own totality check."""
+        original = SOURCE.read_text(encoding="utf-8")
+        segments = self.tool.segment(
+            original.splitlines(keepends=True), self.mapping["core_ledger_marker"]
+        )
+        on_disk = {
+            m.group(1)
+            for s in segments
+            if s["space"] == "preamble" and (m := self.tool.NUMBERED.match(s["heading"]))
+        }
+        declared: set[str] = set()
+        for part in self.mapping["parts"]:
+            declared = declared.union(part.get("core", []))
+        with self.subTest("declared but absent from the source"):
+            self.assertEqual(sorted(declared.difference(on_disk)), [])
+        with self.subTest("in the source but declared by no part"):
+            self.assertEqual(sorted(on_disk.difference(declared)), [])
+
+
+    def test_the_companion_notes_quote_the_real_totals(self) -> None:
+        """Prose drifts; the measurement in the notes is pinned to the artefacts it describes."""
+        notes = (
+            ROOT / "docs" / "design" / "RULEBOOK_SPLIT_MEASUREMENT_2026-10-10.md"
+        ).read_text(encoding="utf-8")
+        total = sum(
+            len("".join(s["lines"]))
+            for part in self.mapping["parts"]
+            for s in part["_segments"]
+        )
+        self.assertEqual(total, len(SOURCE.read_text(encoding="utf-8")))
+        self.assertIn("| **64** | **320,640** |", notes)
+        self.assertIn("58.7%", notes)
+
+    def test_the_playable_core_is_not_filed_under_meta(self) -> None:
+        """The named failure this class exists for, asserted on the written artefacts."""
+        meta = self.mapping["parts"][0]
+        self.assertEqual(meta["id"], "00_meta_and_provenance")
+        misplaced = {k for k in self._delivered(meta) if k.startswith("core:")}
+        self.assertEqual(
+            misplaced,
+            set(),
+            "the core game-book is filed under a part whose purpose is "
+            f"'not player-facing rules': {sorted(misplaced)}",
+        )
+        body = (PARTS_DIR / "01_basic_rules.md").read_text(encoding="utf-8")
+        for heading in ("## 3. Stats", "## 4. Skills"):
+            with self.subTest(heading=heading):
+                self.assertIn(heading, body)
+
+
 if __name__ == "__main__":
     unittest.main()

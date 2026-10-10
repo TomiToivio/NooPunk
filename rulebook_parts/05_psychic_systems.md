@@ -9,6 +9,93 @@
 > `python3 tools/split_rulebook.py`; edit the source, never this file.
 <!-- rulebook-part-nav:end -->
 
+## 8. Psychic Systems
+
+### 8.1. Psyche
+
+The Psychic system covers **psychology, consciousness and psionics**.
+
+Psychic STATs and Skills govern self-directed awareness, will, intuition, Noetic perception and PSI where appropriate. The exact active STAT list follows the latest canonical Stats section.
+
+**Sleepers** are people who have not undergone meaningful Psychic Awakening. **Psychic Awakening** is the development or activation of direct Noetic sensitivity and capability. Awakening is not synonymous with moral goodness, sanity or social status.
+
+### 8.2. Psychic traits
+
+Psychic traits are persistent personality, consciousness or Noetic characteristics. They are longer-lived than Psychic statuses.
+
+### 8.3. Psychic statuses
+
+Psychic statuses are temporary mental, emotional or Noetic conditions. They may include shock, dissociation, temporary insanity, intrusive contact, psychic overload, dream contamination and other transient conditions.
+
+### 8.4. Psionics
+
+Psionics are natural or technologically augmented interactions mediated through consciousness and Noöspace. Existing canon treats PSI as part of the setting's post-QIP consciousness model rather than as a viral infection.
+
+Detailed powers are consolidated here over time from the existing psionics material.
+
+### 8.5. Noöspace
+
+**Noöspace** is the formal scientific/technical name for the domain commonly called the **Astral Plane**. It is the quantum-informational domain of Conscious Agents and consciousness in NoöPunk's fictional post-QIP ontology.
+
+Spacetime is physical reality. Cyberspace is computational information space. Noöspace is the Noetic domain. The Noösphere is the emerging planetary network of minds, AIs, Noetics, institutions, biospheric cognition, NHI and collective symbols increasingly organizing itself within Noöspace.
+
+Noöspace can be accessed through OOBEs, remote viewing, lucid dreams, meditation, psychedelics, psychotronics, QIP interfaces, ritual and some forms of NHI contact. Detailed topology and ontology are preserved in the extended canon material.
+
+### 8.6. Psychic Attack
+
+Psychic Attack is hostile use of PSI or Noetic interaction against another mind, Conscious Agent or psychically accessible system. Detailed attack procedures remain to be designed using the ordinary NoöPunk opposed-check architecture.
+
+### 8.7. Psychic Defence
+
+Psychic Defence covers resistance, shielding, counter-influence, grounding, trained mental discipline and technological/psychotronic protection against hostile Noetic effects.
+
+### 8.8. Polarization
+
+Polarization models the direction and development of consciousness, influenced in part by Law-of-One service-to-others / service-to-self ideas.
+
+The exact mechanical relationship between **Willpower** and **Empathy** remains a design question. Polarization should describe an evolution of consciousness rather than a simple morality score.
+
+### 8.9. Psychotronic Technologies
+
+Psychotronic technologies connect engineering with PSI and Noetic phenomena. They include:
+
+- cybernetic or neural implants that augment natural psionics;
+- sensors, amplifiers, shields and interfaces;
+- heavy psychotronic weaponry;
+- controlled use of psychedelics and other PSI boosters.
+
+They do not turn PSI into conventional magic-item fantasy; they are technological interfaces to the setting's consciousness model.
+
+### 8.10. Noetic Beings
+
+Noetic Beings are entities encountered primarily or significantly through Noöspace.
+
+The deeper ontology is the **Conscious Agent Network**. Noetic beings may include individual minds, collective formations, archetypal figures, dream entities, DMT entities, NHI minds, interdimensional beings, group minds and other Conscious Agents.
+
+### 8.11. Dreams
+
+Dreams can be ordinary psychological events, but in NoöPunk some dreams are genuinely **precognitive**, telepathic or otherwise PSI-mediated.
+
+Dreams can also function as **OOBEs** or access routes into Noöspace.
+
+### 8.12. Magick
+
+In NoöPunk:
+
+> **Magick is PSI. PSI is Magick.**
+
+Historical occult and spiritual traditions are interpreted as partial cultural maps, techniques and vocabularies for real Noetic phenomena.
+
+Important traditions include **Shamanism** and **Hermeticism**, alongside other regional and historical systems. They may preserve useful techniques without being complete literal cosmologies.
+
+### 8.13. CE-5
+
+CE-5 is treated primarily as a **summoning/contact practice for Noetic beings** rather than a guaranteed spacecraft-calling technique.
+
+Possible outcomes include Noetic entities, anomalous lights/orbs, telepathic contact, plasmoid-like manifestations and, more rarely, unambiguous physical craft.
+
+---
+
 ## 16. Psionics and Noösphere interaction
 
 **Status: ADAPTED / INSPIRED / NOÖPUNK NATIVE METAPHYSICS; detailed mechanics still DEFERRED.**

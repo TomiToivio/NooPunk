@@ -9,6 +9,58 @@
 > `python3 tools/split_rulebook.py`; edit the source, never this file.
 <!-- rulebook-part-nav:end -->
 
+## 5. Physical Systems
+
+### 5.1. Physical traits
+
+Physical traits are persistent physical advantages, disadvantages or unusual bodily characteristics. They describe durable features rather than temporary conditions.
+
+### 5.2. Physical statuses
+
+Physical statuses are temporary physical conditions such as **hungry, tired, wounded** or similar short-term states. A status may alter checks, available actions or recovery while it remains active.
+
+### 5.3. Physical actions
+
+Physical actions include ordinary movement and interaction with the material world: moving between locations, sneaking past a guard, climbing, carrying, pursuing, attacking, restraining, escaping and other actions resolved through the normal STAT + Skill + 1d10 engine when uncertainty matters.
+
+### 5.4. Physical locations
+
+The first Concordia implementation uses a **Citizen Sleeper 2-inspired location structure**.
+
+A character occupies a larger location, such as a city, and within it a current sublocation. In the current sublocation the character may perform available tasks or move to another accessible sublocation.
+
+**Open locations** are persistently available and can be revisited. Initial examples include:
+
+- the player's office in the **Europol / Suojelupoliisi HQ**;
+- locations around **Helsinki**;
+- the player's **home**.
+
+**Quest locations** are temporary mission spaces unlocked for a specific operation. A team may travel there for investigation, exploration, combat, social interaction, hacking, psionics or mixed objectives.
+
+Quest locations may exist primarily in **Physical space, Cyberspace or Noöspace**, and a single quest may cross all three.
+
+### 5.5. Combat
+
+Combat is a structured form of opposed physical action. Use the core opposed-check architecture for attacks and defences. Existing combat, damage and test-session material is preserved in the extended reference material until the independent NoöPunk combat subsystem is fully consolidated here.
+
+### 5.6. Weapons
+
+Weapons are tools that modify or enable attacks. Weapon categories, damage procedures and detailed equipment statistics remain subject to consolidation from the existing rules ledger rather than being invented by this reordering issue.
+
+### 5.7. Armor
+
+Armor mitigates or changes the consequences of physical attacks. Existing armor and protection material remains valid where it does not conflict with later independent-system decisions.
+
+### 5.8. Wounds
+
+Wounds are consequences of physical harm and may also create temporary Physical statuses. The existing harm/wound rules remain reference canon pending their final independent-system pass.
+
+### 5.9. First Aid
+
+First Aid covers immediate treatment, stabilization and short-term physical recovery. Detailed procedures remain to be consolidated from existing material.
+
+---
+
 ## 12. Physical harm, wounds, and stress
 
 **Status: LEGACY EP2.**
