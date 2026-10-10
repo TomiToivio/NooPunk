@@ -264,5 +264,67 @@ class DocumentedClaimTests(unittest.TestCase):
         self.assertFalse(labels & {"Terrible", "Mediocre", "Fair", "Good", "Great", "Superb"})
 
 
+class ExactProbabilityTests(unittest.TestCase):
+    """The exact path, adopted from the sibling resolution lab (PR #207).
+
+    A design number should not be blamable on a seed. These functions are rational and
+    need no RNG at all, so they are checked exactly rather than with tolerances.
+    """
+
+    def setUp(self) -> None:
+        self.counts = kp.fdf_outcome_counts()
+
+    def test_the_outcome_counts_are_the_known_4df_triangle(self) -> None:
+        from fractions import Fraction
+        self.assertEqual(sum(self.counts.values()), 3 ** kp.FDF_COUNT)
+        self.assertEqual(self.counts[0], 19)
+        self.assertEqual(self.counts[kp.FDF_COUNT], 1)
+        self.assertEqual(Fraction(self.counts[0], 81), Fraction(19, 81))
+        # exactness: no float creeps in
+        self.assertIsInstance(kp.exact_success_probability(
+            candidate="A_additive", stat=5, skill=5, difficulty=0), Fraction)
+
+    def test_exact_probabilities_are_seed_free_and_stable(self) -> None:
+        first = kp.exact_success_probability(candidate="C_skill_primary", stat=5, skill=5, difficulty=0)
+        second = kp.exact_success_probability(candidate="C_skill_primary", stat=5, skill=5, difficulty=0)
+        self.assertEqual(first, second)
+
+    def test_exact_and_sampled_agree(self) -> None:
+        """The two methods are independent; if they diverge, one of them is wrong."""
+        for candidate in kp.CANDIDATES:
+            for stat, skill in ((2, 1), (5, 5), (10, 1), (8, 8)):
+                with self.subTest(candidate=candidate, profile=(stat, skill)):
+                    exact = float(kp.exact_success_probability(
+                        candidate=candidate, stat=stat, skill=skill, difficulty=0))
+                    sampled = kp.p_success_ladder(
+                        candidate=candidate, stat=stat, skill=skill, difficulty=0,
+                        trials=30_000, seed=4242)
+                    self.assertAlmostEqual(exact, sampled, delta=0.015)
+
+    def test_the_top_step_succeeds_almost_always_and_the_bottom_almost_never(self) -> None:
+        from fractions import Fraction
+        top = kp.exact_success_probability(candidate="A_additive", stat=10, skill=10, difficulty=0)
+        bottom = kp.exact_success_probability(candidate="C_skill_primary", stat=2, skill=1, difficulty=0)
+        self.assertEqual(top, Fraction(80, 81))  # all but the -4 tail
+        self.assertEqual(bottom, Fraction(5, 81))
+
+    def test_exact_opposed_is_symmetric_and_ties_are_real(self) -> None:
+        left, tie, right = kp.exact_opposed_probabilities(
+            candidate="A_additive", left=(5, 5), right=(5, 5))
+        self.assertEqual(left, right)  # mirror-image opponents
+        self.assertEqual(left + tie + right, 1)
+        self.assertAlmostEqual(float(tie), 0.169, delta=0.002)
+
+    def test_skill_primary_skews_opposed_play_toward_training(self) -> None:
+        from fractions import Fraction
+        additive, _, _ = kp.exact_opposed_probabilities(
+            candidate="A_additive", left=(10, 1), right=(5, 5))
+        primary, _, _ = kp.exact_opposed_probabilities(
+            candidate="C_skill_primary", left=(10, 1), right=(5, 5))
+        self.assertAlmostEqual(float(additive), 0.416, delta=0.002)
+        self.assertAlmostEqual(float(primary), 0.141, delta=0.002)
+        self.assertLess(primary, Fraction(1, 4), "an untrained brute should not be near parity")
+
+
 if __name__ == "__main__":
     unittest.main()

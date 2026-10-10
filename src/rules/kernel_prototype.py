@@ -37,8 +37,11 @@ CC-compatible boundary the rights ledger records.
 from __future__ import annotations
 
 import random
+from collections import Counter
 from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass
+from fractions import Fraction
+from itertools import product
 
 from .core import (
     DIFFICULTIES,
@@ -396,6 +399,62 @@ def expected_4df_distribution() -> Mapping[int, float]:
     return {k: v / total for k, v in sorted(counts.items())}
 
 
+#: The 81 equally likely 4dF outcomes, as exact integer counts. The exact probability
+#: functions below use these, so they need no seed and carry no sampling error.
+def fdf_outcome_counts() -> Mapping[int, int]:
+    """Exact counts of the 81 equally likely 4dF outcomes."""
+    counts: Counter[int] = Counter()
+    for faces in product((-1, 0, 1), repeat=FDF_COUNT):
+        counts[sum(faces)] += 1
+    return dict(sorted(counts.items()))
+
+
+def _situational_applied(situational: int, cap_situational: bool) -> int:
+    applied = int(situational)
+    if cap_situational:
+        applied = max(-MAX_SITUATIONAL_STEPS, min(MAX_SITUATIONAL_STEPS, applied))
+    return applied
+
+
+def exact_success_probability(
+    *, candidate: str, stat: int, skill: int, difficulty: int = 0,
+    situational: int = 0, cap_situational: bool = True,
+) -> Fraction:
+    """P(total >= difficulty), exactly.
+
+    Adopted from the sibling resolution lab (PR #207), which computes exact rational
+    probabilities instead of sampling: a measured number that cannot be blamed on a
+    seed is a stronger piece of evidence for a design argument. No dice are rolled.
+    """
+    if candidate not in CANDIDATES:
+        raise ValueError(f"Unknown candidate {candidate!r}.")
+    base = CANDIDATES[candidate](stat, skill) + _situational_applied(situational, cap_situational)
+    target = clamp_step(difficulty)
+    outcomes = fdf_outcome_counts()
+    favourable = sum(count for roll, count in outcomes.items() if base + roll >= target)
+    return Fraction(favourable, sum(outcomes.values()))
+
+
+def exact_opposed_probabilities(
+    *, candidate: str, left: tuple[int, int], right: tuple[int, int],
+) -> tuple[Fraction, Fraction, Fraction]:
+    """Exact (left wins, tie, right wins) over all 81 x 81 opposed outcome pairs."""
+    left_base = CANDIDATES[candidate](left[0], left[1])
+    right_base = CANDIDATES[candidate](right[0], right[1])
+    outcomes = fdf_outcome_counts()
+    total = sum(outcomes.values()) ** 2
+    left_wins = tie = 0
+    for l_roll, l_count in outcomes.items():
+        for r_roll, r_count in outcomes.items():
+            pair = l_count * r_count
+            left_total, right_total = left_base + l_roll, right_base + r_roll
+            if left_total > right_total:
+                left_wins += pair
+            elif left_total == right_total:
+                tie += pair
+    return Fraction(left_wins, total), Fraction(tie, total), Fraction(total - left_wins - tie, total)
+
+
 __all__ = [
     "CANDIDATES",
     "FDF_COUNT",
@@ -415,7 +474,10 @@ __all__ = [
     "combine_skill_primary",
     "disparity",
     "edge_curve",
+    "exact_opposed_probabilities",
+    "exact_success_probability",
     "expected_4df_distribution",
+    "fdf_outcome_counts",
     "hits_to_takedown",
     "ladder_label",
     "legacy_dv_ladder",
