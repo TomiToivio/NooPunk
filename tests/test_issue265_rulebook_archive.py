@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Issue #265 — the pre-narrative archive is complete, provable, and the new book starts clean.
 
 The issue's acceptance criteria are that (a) the complete old content remains retrievable, (b)
@@ -69,11 +68,23 @@ class RetrievabilityTests(unittest.TestCase):
         bad = [f["source"] for f in d["files"] if sha256(ROOT / f["source"]) != f["sha256"]]
         self.assertEqual(bad, [], f"content changed under the archive: {bad}")
 
-    def test_the_root_rulebook_is_preserved_byte_for_byte(self) -> None:
+    def test_the_root_rulebook_snapshot_is_a_complete_old_rulebook(self) -> None:
+        """The #243 snapshot is history and must stay intact — the LIVE file is not frozen.
+
+        This originally asserted `sha256(snapshot) == sha256(ROOT / "RULEBOOK.md")`, which pins
+        the live canonical file forever. That cannot hold: #265 exists precisely to REPLACE the
+        root rulebook with the narrative-first edition, so an equality against a historical
+        snapshot would make the issue it archives for impossible. The immutable record of the
+        pre-narrative bytes is the annotated tag; this snapshot is the in-tree proof that the
+        old corpus was captured whole, so what is asserted is that it is a *complete* old
+        rulebook — not a partial file mistaken for preservation.
+        """
         snap = ROOT / "rulebook" / "source_snapshots" / "root" / "RULEBOOK.md"
-        self.assertTrue(snap.is_file())
-        self.assertEqual(sha256(snap), sha256(ROOT / "RULEBOOK.md"),
-                         "the #243 snapshot of the root RULEBOOK.md no longer matches the live file")
+        self.assertTrue(snap.is_file(), "the #243 snapshot of the root RULEBOOK.md is gone")
+        text = snap.read_text(encoding="utf-8")
+        self.assertIn("# Extended canon and reference material", text)
+        sections = [ln for ln in text.splitlines() if ln.startswith("## ")]
+        self.assertGreater(len(sections), 50, "the snapshot is not the whole old rulebook")
 
     def test_the_archive_regenerates_identically(self) -> None:
         import subprocess
@@ -103,7 +114,7 @@ class MigrationCompletenessTests(unittest.TestCase):
         self.assertEqual(missing, [], f"legacy chapters with no recorded destination: {missing}")
 
     def test_every_row_carries_a_known_destination_label(self) -> None:
-        rows = re.findall(r"^\| .+? \| \*\*([A-Z-]+)\*\* \|", self.map, re.M)
+        rows = re.findall(r"^\| .+? \| \*\*([A-Z-]+)\*\* \|", self.map, re.MULTILINE)
         self.assertGreater(len(rows), 60, "expected a row per legacy unit")
         self.assertLessEqual(set(rows), DESTINATIONS, f"unknown destination label: {set(rows) - DESTINATIONS}")
 

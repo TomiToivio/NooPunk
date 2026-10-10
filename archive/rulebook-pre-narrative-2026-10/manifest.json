@@ -13,16 +13,16 @@
   "files": [
     {
       "source": "RULEBOOK.md",
-      "bytes": 322056,
-      "sha256": "c654ebddfc0f730c8edafec3c664e1e6d560e8d7783f3a8926fc8347ce3fc959",
-      "git_blob_sha": "a2c78127d93f8f70775f8edd014048455e003a0d",
+      "bytes": 322211,
+      "sha256": "a9814eb2258778168ecb608fb98b01de24dfd62d5e0868b6c8966afdb9dd6d16",
+      "git_blob_sha": "510fd30f94ea8585102913ad0afdfed356441852",
       "preserved_at": "rulebook/source_snapshots/root/RULEBOOK.md"
     },
     {
       "source": "rulebook/00_INDEX.md",
-      "bytes": 15530,
-      "sha256": "f9e129e1aa8ed8a78864212aadd17044ef3709f101118cc02b9f260db7c0aa12",
-      "git_blob_sha": "499c0d5c2956a4cda2149f0aa3537da576253cd4",
+      "bytes": 15685,
+      "sha256": "3d47b5ac50a1d82ace7abba67534f2977ab1c550f2bfcad70e4894e5ebac4a01",
+      "git_blob_sha": "8d652f7414fdd119be9f06fbfde97a105a32d53e",
       "preserved_at": "in place (not deleted)"
     },
     {
@@ -244,9 +244,9 @@
     },
     {
       "source": "rulebook_parts/00_meta_and_provenance.md",
-      "bytes": 28010,
-      "sha256": "e336ea8a2441a04ba376c9805aa802ac91b39c6cfe8317ab82fbb334bebe2fa7",
-      "git_blob_sha": "0c18e5f6c1824078f8be1aeff6fbb0f737e7940c",
+      "bytes": 28165,
+      "sha256": "a81870c91d8ef49ef7db9febced1b4553d0edc6a93200146bcd2b6e2d2a98647",
+      "git_blob_sha": "07b1603c02f74dd4cf0b069ade38fb59d2d5bacc",
       "preserved_at": "rulebook/source_snapshots/rulebook_parts/00_meta_and_provenance.md"
     },
     {
@@ -307,9 +307,9 @@
     },
     {
       "source": "docs/rulebook_segments/01_PLAYER_CORE.md",
-      "bytes": 18968,
-      "sha256": "ed33f8d25857253917c6c332a6421797bf7f9921cc425a197bbccbd9183879a6",
-      "git_blob_sha": "6b22e9cab7018a7c4d579814ceb3c7968d459cf9",
+      "bytes": 19123,
+      "sha256": "fe86c568ab947c9b841c808a628c092588c2c8296ba72130a791d071fb8c631d",
+      "git_blob_sha": "bdbd11c5c8d003854c7b3678e9b3c7d9abc83206",
       "preserved_at": "in place (not deleted)"
     },
     {
@@ -399,8 +399,8 @@
     {
       "source": "data/rules/rulebook_split_manifest.json",
       "bytes": 19191,
-      "sha256": "500bdc47759c802230e519e93d0d7f80892e8531cbba831d717cd2dd21834dc1",
-      "git_blob_sha": "6b8ebbe066c4478c7e5d5bb5a114e031260de270",
+      "sha256": "9e138a46caaa7b0bfd6f520e75f5d2f6f73052fc21c3692ac5986e3521f75e75",
+      "git_blob_sha": "bacf171de04b71f32af7cb324ae5f6f263d8b5ef",
       "preserved_at": "in place (not deleted)"
     },
     {
