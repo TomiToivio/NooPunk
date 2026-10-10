@@ -116,7 +116,7 @@ This list defines **availability and function only**. Equipment statistics remai
 - **Resleeving, continuity and the immortality gap** — `RULEBOOK.md` §45 (Confederation,
   Orion, resleeving and elite immortality).
 - **Psychotronics as a category** — `RULEBOOK.md` §46 and `rulebook/6_PSYCHIC.md` §A.
-- **Cyberspace, graph hacking and the shared action economy** — this chapter, *Cyberspace: the four access modes*. The shared action-point system itself is #217/#225; cyber hardware statistics are #221/#228; PSI special powers are #223; astral projection legality is #224; evidence handling is #226.
+- **Cyberspace, graph hacking and the shared action economy** — this chapter, *Cyberspace: the four access modes*. The shared action-point system itself is #217/#225; cyber hardware statistics are #221/#228; PSI special powers are #223; astral projection legality is #224; evidence handling is #226. **The shared action-point economy is now specified in [`rulebook/18_CROSS_DOMAIN_STATE.md`](18_CROSS_DOMAIN_STATE.md)**, which is the one canonical contract this chapter's DRAFT clock defers to; it does not redefine the clock here.
 
 **Continuity is a loaded setting question, not a respawn button.** Cortical-stack-like
 technology, backup/restore, resleeving and continuity ledgers record and move minds — but
