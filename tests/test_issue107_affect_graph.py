@@ -10,9 +10,8 @@ Two independent reasons this file never ran in CI, both fixed here:
    dependency -- pytest is not installed, so the module would have raised ImportError the
    moment discovery tried to import it.
 
-The repository documents the same trap for ``test_world_ideology.py`` in
-``.github/workflows/python-scaffold.yml`` and gives that file its own runner step. This
-guard instead becomes a ``unittest.TestCase`` so the existing discovery run both imports
+The repository documented the same trap for ``test_world_ideology.py`` (since removed under
+issue #271). This guard instead becomes a ``unittest.TestCase`` so the existing discovery run both imports
 and collects it, with no dependency beyond the standard library.
 
 The graph semantics asserted here are unchanged from the original file: validation bounds,

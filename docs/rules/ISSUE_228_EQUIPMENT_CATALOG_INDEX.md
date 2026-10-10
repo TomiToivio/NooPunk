@@ -10,4 +10,4 @@ The record contains item names and existing light descriptions with provenance o
 
 The extractor is independently written project code and reuses only existing NoöPunk repo text. Final publication and code licensing remain gated by #231. No third-party RPG expression is introduced in this change.
 
-Tests: `python -m unittest discover -s tests -p 'test_issue228_equipment_catalog_index.py'`.
+This is an index/documentation artefact and has **no unit tests** (removed under issue #271, per `AGENTS.md`'s code-only testing policy); review it editorially. The extractor it describes is code, and that is exercised by the code suite.

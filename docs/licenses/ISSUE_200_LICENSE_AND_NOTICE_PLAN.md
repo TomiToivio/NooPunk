@@ -113,8 +113,9 @@ A release gate needs an executable check, not a promise. What such a scan must a
    ledger's recorded choice;
 5. the `data/` and code split from §1 is respected.
 
-Items 1, 2 and 4 are mechanically checkable and are guarded by
-`tests/test_issue200_license_notice_plan.py`. **Items 3 and 5 need a scan over the tree for
+Items 1, 2 and 4 are mechanically checkable, but their former documentation test
+(`test_issue200_license_notice_plan.py`) was removed under issue #271, so they are checked by
+editorial review. **Items 3 and 5 need a scan over the tree for
 third-party notices and licence headers**, which is a follow-up: it is a text-matching problem
 over ~400 files and belongs in its own increment, not smuggled into a documentation change.
 

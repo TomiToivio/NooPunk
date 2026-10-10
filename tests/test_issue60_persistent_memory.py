@@ -262,20 +262,3 @@ class MemoryObserverBridgeTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             MemoryObserver("", store)
         store.close()
-
-
-class MilestoneDocTests(unittest.TestCase):
-    """The maintained #60 milestone doc must not re-list memory as missing."""
-
-    def test_the_milestone_doc_records_memory_as_implemented(self) -> None:
-        doc = (ROOT / "docs" / "sources" / "EP2_SESSION_MILESTONE.md").read_text(
-            encoding="utf-8")
-        flat = " ".join(doc.split())
-        self.assertIn("MemoryStore", flat)
-        # It may only appear as a remaining item if it is no longer listed there.
-        remaining = flat.split("Remaining:", 1)[1] if "Remaining:" in flat else ""
-        self.assertNotIn("private agent memory", remaining.casefold())
-
-
-if __name__ == "__main__":
-    unittest.main()

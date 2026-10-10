@@ -4,7 +4,7 @@
 
 Issue [#232](https://github.com/TomiToivio/NooPunk/issues/232), parent [#200](https://github.com/TomiToivio/NooPunk/issues/200).
 
-The original rulebook was **320,640 characters** when segmented. Its complete text, including introductions, mechanics, sources, glossary, faction lore, duplicated or historical descriptions and all later appended material, is preserved **in original order** in nine files under this directory. The `manifest.json` records exact start/end offsets; `tests/test_issue232_lossless_segments.py` assembles the files and asserts exact equality with the canonical source. **No sections were removed, rewritten, reconciled, superseded or silently dropped** in this operation. Existing `rulebook/*.md` chapters and the root `RULEBOOK.md` remain as they were.
+The original rulebook was **320,640 characters** when segmented. Its complete text, including introductions, mechanics, sources, glossary, faction lore, duplicated or historical descriptions and all later appended material, is preserved **in original order** in nine files under this directory. The `manifest.json` records exact start/end offsets; the files can be reassembled from `manifest.json` and compared with the canonical source by hand (the former `test_issue232_lossless_segments.py` was removed under issue #271 as a documentation test). **No sections were removed, rewritten, reconciled, superseded or silently dropped** in this operation. Existing `rulebook/*.md` chapters and the root `RULEBOOK.md` remain as they were.
 
 | Snapshot | Coverage in original rulebook | Proposed eventual book ownership |
 | --- | --- | --- |

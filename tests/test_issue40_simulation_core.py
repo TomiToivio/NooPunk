@@ -1,8 +1,8 @@
 """Phase B tests: the deterministic simulation core for issue #40.
 
-These are BEHAVIOUR tests, not structure guards (contrast
-``test_issue40_simulation_spec.py``, which guards the specification text). Phase B
-is code, so the properties that matter must be *executed*:
+These are BEHAVIOUR tests: code, so the properties that matter must be *executed*. (The
+sibling ``test_issue40_simulation_spec.py``, which asserted specification text, was removed
+under issue #271.)
 
 * state is exactly the reduction of the event log (no side channel);
 * replays are byte-identical, and a branch from the same prefix is identical to

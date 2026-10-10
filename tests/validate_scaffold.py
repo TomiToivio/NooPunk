@@ -8,8 +8,6 @@ ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = [
     "project.godot",
     "scenes/main.tscn",
-    "AGENTS.md",
-    "RULEBOOK.md",
     "src/godot/.gitkeep",
     "src/godot/core_rules.gd",
     "src/rules/.gitkeep",

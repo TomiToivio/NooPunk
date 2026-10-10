@@ -297,8 +297,8 @@ baseline (published before this archive, covering the full legacy corpus).
 - **[MIGRATION_MAP.md](MIGRATION_MAP.md)** — section-by-section: each legacy unit's destination (new
   chapter, deferred supplement, lore/reference, or historical archive), plus anything awaiting author
   review.
-- **[manifest.json](manifest.json)** — the machine-readable inventory, verified by
-  `tests/test_issue265_rulebook_archive.py`.
+- **[manifest.json](manifest.json)** — the machine-readable inventory, inspectable directly
+  (its former documentation test was removed under issue #271, per the code-only testing policy).
 
 ## Retrieval
 

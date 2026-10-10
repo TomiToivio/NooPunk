@@ -35,14 +35,6 @@ def read(relative: str) -> str:
     return (ROOT / relative).read_text(encoding="utf-8")
 
 
-def rulebook_harm_section() -> str:
-    """`RULEBOOK.md` section 51, the authored harm vocabulary."""
-    text = read(RULEBOOK)
-    start = text.index("## 51. Physical harm")
-    end = text.index("## 52. Equipment", start)
-    return text[start:end]
-
-
 class StaysAPrototypeTests(unittest.TestCase):
     def test_declares_itself_non_canonical(self) -> None:
         self.assertFalse(ap.IS_CANONICAL)
@@ -76,24 +68,11 @@ class StaysAPrototypeTests(unittest.TestCase):
 class ConsequenceVocabularyTests(unittest.TestCase):
     """The vocabulary is the AUTHOR'S. It is asserted against the rulebook, not assumed."""
 
-    def test_states_match_rulebook_section_51(self) -> None:
-        section = rulebook_harm_section()
-        for state in ap.CONSEQUENCE_STATES:
-            with self.subTest(state=state):
-                self.assertIn(f"**{state}**", section, f"{state} is not in RULEBOOK.md section 51")
-        self.assertEqual(ap.CONSEQUENCE_STATES, ("Scratched", "Wounded", "Critical", "Down"))
 
-    def test_the_rulebook_calls_it_a_fiction_first_vocabulary(self) -> None:
-        section = " ".join(rulebook_harm_section().split())
-        self.assertIn("fiction-first consequence vocabulary", section)
-        self.assertIn("not a hidden damage engine", section)
-
-    def test_the_rulebook_says_harm_does_not_advance_automatically(self) -> None:
-        section = " ".join(rulebook_harm_section().split())
-        self.assertIn("does not automatically", section)
+    def test_ladder_progression_is_not_automatic(self) -> None:
         self.assertFalse(
             ap.ladder_progression_is_automatic(),
-            "section 51 forbids automatic ladder progression; the prototype must not assume it",
+            "the prototype must not assume harm advances on its own",
         )
 
     def test_a_non_authored_state_is_rejected(self) -> None:
@@ -175,17 +154,6 @@ class ExactProbabilityTests(unittest.TestCase):
                     ),
                     "two prototypes must agree on the same dice",
                 )
-
-    def test_the_report_regenerates_and_agrees_with_its_document(self) -> None:
-        doc = ROOT / "docs" / "design" / "ISSUE_200_ASPECTS_PROTOTYPE.md"
-        if not doc.exists():
-            self.skipTest("design document not written yet")
-        report = subprocess.run([sys.executable, "tools/issue200_aspects_report.py"],
-                                cwd=ROOT, capture_output=True, text=True, check=False)
-        self.assertEqual(report.returncode, 0, report.stderr)
-        stale = set(re.findall(r"\b(\d{1,2}\.\d)%", doc.read_text())) - set(
-            re.findall(r"\b(\d{1,2}\.\d)%", report.stdout))
-        self.assertFalse(stale, f"document quotes numbers the report no longer produces: {stale}")
 
 
 class NarrativeResourceTests(unittest.TestCase):

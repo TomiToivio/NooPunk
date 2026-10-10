@@ -27,7 +27,6 @@ the quarantined EP2 prototype could re-enter a release bundle without any test n
 | --- | --- |
 | `data/licenses/release_packaging_policy.json` | machine-readable packaging rules: quarantine list, artifact classes, exclusion vocabulary |
 | `tools/release_packaging_guard.py` | the check, runnable and importable |
-| `tests/test_issue231_release_packaging_guard.py` | guards the guard; fails closed |
 | `data/sources/game_system_rights.json` | the single source of truth for *which licences are excluded* |
 
 The policy defers its exclusion vocabulary to the rights ledger's `decision_vocabulary`, and the

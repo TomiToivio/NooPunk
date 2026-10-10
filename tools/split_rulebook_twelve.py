@@ -3,12 +3,11 @@
 
 Why it works this way (agent-facing version: docs/design/RULEBOOK_STRUCTURE.md):
 
-* Tests depend on RULEBOOK.md's SHAPE. `test_issue101_sources_dedup` splits the file on the
-  literal marker `# Extended canon and reference material` and requires `## 1.`-`## 9.` in the
-  core half and contiguous `## 1.`-`## N.` in the appendix half.
-  `test_issues171_180_cross_references` builds the §-reference UNIVERSE from RULEBOOK.md's own
-  headings. So the index keeps EVERY heading, in order, verbatim -- only bodies move. Every
-  existing `RULEBOOK.md §N` link therefore keeps resolving.
+* RULEBOOK.md's SHAPE is a REVIEW discipline, not a test: the documentation tests that used to
+  assert it were removed under issue #271 (see AGENTS.md's code-only testing policy). The editors
+  still require `## 1.`-`## 9.` in the core half and contiguous `## 1.`-`## N.` in the appendix
+  half, and every `§N` reference must keep resolving against RULEBOOK.md's own headings. So the
+  index keeps EVERY heading, in order, verbatim -- only bodies move.
 
 * RULEBOOK.md'S BODY IS NEVER WRITTEN. The first attempt moved bodies out of it and emptied it;
   309 tests failed, because the suite reads RULEBOOK.md's body, not merely its headings. Rewriting
