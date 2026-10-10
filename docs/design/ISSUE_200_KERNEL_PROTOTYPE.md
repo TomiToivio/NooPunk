@@ -20,7 +20,10 @@ Reproduce every figure below:
 PYTHONPATH=src python3 tools/issue200_kernel_report.py
 ```
 
-Deterministic (seed `20261010`, 40,000 trials), so two runs agree.
+Dice probabilities are **exact** (rational arithmetic, no seed); lethality is sampled at
+40,000 trials with seed `20261010`. The sibling resolution lab in PR #207 computes exact
+probabilities too, and this file **adopted that method**; the sampled figures it replaced agreed
+with the exact ones to within sampling error.
 
 ## The one thing that must survive any candidate
 
@@ -109,12 +112,13 @@ P(success) at step 0:
 
 | candidate | weak 2+1 | competent 5+5 | mixed 10+1 | specialist 8+8 | top 10+10 |
 | --- | --- | --- | --- | --- | --- |
-| **A** | 6.3% | 61.8% | **62.0%** | 98.8% | 98.7% |
-| **B** | 18.7% | 61.8% | 62.0% | 93.8% | 98.7% |
-| **C** | 6.3% | 61.8% | **18.8%** | 98.8% | 98.7% |
+| **A** | 6.2% | 61.7% | **61.7%** | 98.8% | 98.8% |
+| **B** | 18.5% | 61.7% | 61.7% | 93.8% | 98.8% |
+| **C** | 6.2% | 61.7% | **18.5%** | 98.8% | 98.8% |
 
 At the extremes the clamp makes the candidates converge; **the middle is where the design lives.**
 The `mixed 10+1` column *is* the question: a character with a peak Attribute and no training.
+Under C that character sits at 18.5% success; under A and B, 61.7%.
 
 For comparison, the canonical engine on the same profiles:
 
@@ -135,11 +139,11 @@ character never can. The ladder's bounded curve is the reason to consider this a
 
 | candidate | equal 5+5 vs 5+5: win | tie | specialist 8+8 vs 5+5: win | mixed 10+1 vs 5+5: win |
 | --- | --- | --- | --- | --- |
-| **A** | 42.0% | 16.7% | 85.6% | **42.0%** |
-| **B** | 42.0% | 16.7% | 73.8% | **42.0%** |
-| **C** | 42.0% | 16.7% | 85.6% | **14.4%** |
+| **A** | 41.6% | 16.9% | 85.9% | **41.6%** |
+| **B** | 41.6% | 16.9% | 73.9% | **41.6%** |
+| **C** | 41.6% | 16.9% | 85.9% | **14.1%** |
 
-Two findings. Equal opponents win ~42% with a **16.7% tie band** — 4dF-vs-4dF ties about one roll
+Two findings. Equal opponents win ~41.6% with a **16.9% tie band** — 4dF-vs-4dF ties about one roll
 in six, against 1d10-vs-1d10's 10%, so an opposed-check procedure needs to say what a tie *means*.
 And the last column is the whole decision: under A and B an untrained brute **stays at parity**
 with a competent character, while under C training is decisive.
@@ -150,8 +154,8 @@ Competent 5+5 at step 0, capped at ±2 steps versus uncapped:
 
 | situational | capped | uncapped |
 | --- | --- | --- |
-| +0 | 62.2% | 62.2% |
-| +1 | 81.7% | 81.7% |
+| +0 | 61.7% | 61.7% |
+| +1 | 81.5% | 81.5% |
 | +2 | 93.8% | 93.8% |
 | +3 | 93.8% | 98.8% |
 | +4 | 93.8% | **100.0%** |
@@ -181,7 +185,7 @@ noise next to a +20), while C's untrained brute takes 10.3 because his skill is 
 **Recommendation: candidate C, skill-primary**, with two caveats the author owns.
 
 C is the only candidate that makes training matter: a trained specialist beats an untrained
-brute 86%/14%, where A and B leave it a coin-flip. It needs the clamp for only 8 of 100 pairs
+brute **85.9% / 14.1%**, where A and B leave it a coin-flip at 41.6%. It needs the clamp for only 8 of 100 pairs
 (A: 22; 38 collapse to the extremes), so the ladder's ends stay meaningful. And it keeps the
 Attribute mechanically real — the ±1 nudge plus STAT-as-governing-attribute — without
 double-counting it into a ±6 range.

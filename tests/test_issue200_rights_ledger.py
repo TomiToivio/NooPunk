@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Guard for the game-system rights ledger (issue #200).
 
 Issue #200 replaces NooPunk's closed-system design framing with a fully Creative Commons
@@ -30,7 +29,6 @@ Run: python3 -m unittest discover -s tests -p "test_*.py"
 from __future__ import annotations
 
 import json
-import re
 import unittest
 from pathlib import Path
 
@@ -260,11 +258,20 @@ class CombinationTests(unittest.TestCase):
         self.assertIn("Veil", adopted)
         self.assertIn("Fudge", adopted)
 
-    def test_the_overlap_is_flagged_rather_than_deleted(self) -> None:
-        """Parallel ledgers must not be silently removed by whichever agent lands last."""
-        overlap = self.d["sibling_artifacts"]["overlap_to_resolve"]
-        self.assertIn("rules_engine_rights.json", overlap)
-        self.assertIn("duplication", overlap)
+    def test_the_overlap_is_recorded_as_a_trail_rather_than_erased(self) -> None:
+        """Parallel ledgers must not be silently deleted by whichever agent lands last.
+
+        The consolidation did happen later (#208), which is fine -- what matters is that the
+        ledger records both that it was flagged and who resolved it, so the history is not
+        rewritten to look like it was never a duplication.
+        """
+        sib = self.d["sibling_artifacts"]
+        flagged = sib["overlap_flagged_before_consolidation"]
+        self.assertIn("rules_engine_rights.json", flagged)
+        self.assertIn("duplication", flagged)
+        self.assertIn("#208", sib["overlap_resolved_by"])
+        self.assertNotIn("both are left in place", json.dumps(sib),
+                         "the stale 'both are left in place' claim survived the consolidation")
 
     def test_the_veil_verification_survives_with_its_caveat(self) -> None:
         veil = next(e for e in self.d["sources"] if e["id"] == "the-veil")
@@ -282,6 +289,20 @@ class CombinationTests(unittest.TestCase):
         # it must read as REPORTED: either "reported, not fixed" or "instead of resolving"
         self.assertRegex(blob, r"REPORTED, not silently fixed|instead of resolving")
         self.assertIn("An inconsistency inside the locked set", self.doc)
+
+    def test_the_remaining_inconsistency_matches_the_repository_state(self) -> None:
+        """If the author reconciles AGENTS.md, this record must move with it -- not go stale."""
+        inc = self.d["open_inconsistency"]
+        agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        principles = (ROOT / "docs" / "archive" / "DESIGN_PRINCIPLES.md").read_text(encoding="utf-8")
+        agents_old = "CY_BORG" in agents and "Cyberpunk 2020" in agents
+        principles_new = "Apocalypse World" in principles
+        if agents_old and principles_new:
+            self.assertIn("what_remains", inc)
+            self.assertIn("AGENTS.md", inc["what_remains"])
+        else:
+            self.fail("AGENTS.md and DESIGN_PRINCIPLES.md now agree, but the rights ledger "
+                      "still records a standing contradiction -- update open_inconsistency")
 
     def test_the_ep_prototype_quarantine_is_in_the_migration_order(self) -> None:
         order = self.d["migration_order"]

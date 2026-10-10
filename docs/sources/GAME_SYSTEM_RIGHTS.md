@@ -230,29 +230,59 @@ the storefront-listing quote; SWN explicitly downgraded to principles-only.
 **What the siblings should adopt from this ledger:** the closed-claim inventory, the author-lock
 record, the migration order, and the blocked-versus-negative distinction.
 
-**Overlap still to resolve — and it needs the author, not an agent:**
-`rules_engine_rights.json` and `game_system_rights.json` record findings for the **same** reference
-set. They now **agree on every shared source**, so the overlap is **duplication, not
-disagreement**. Consolidating them into one ledger, and folding `RULES_ENGINE_LICENSES.md` into
-this document, would be cleaner — but both are left in place so that no guard and no agent loses
-a reference. Flagged rather than unilaterally deleted.
+**The overlap this flagged has since been consolidated — by a later agent, not by me.**
+`rules_engine_rights.json` and `game_system_rights.json` covered the **same** reference set and
+**agreed on every shared source**, so the overlap was **duplication, not disagreement**. When this
+document was written both were left in place deliberately, because whichever agent lands last
+should not silently delete a colleague's ledger. **PR #208 then did the tidying properly:**
+`rules_engine_rights.json` and `RULES_ENGINE_LICENSES.md` were removed and their findings folded
+into this document, leaving `game_system_rights.json` as the single ledger. Nothing was lost,
+because the two agreed.
 
-## An inconsistency inside the locked set (reported, not fixed)
+## An inconsistency inside the locked set — partly repaired, still standing
 
-Combining the sibling work turned up this:
+Combining the sibling work turned up this, and PR #208 then acted on part of it:
 
-> `docs/archive/DESIGN_PRINCIPLES.md` **§1** was rewritten by #203 to the #200 triangle, while the
-> **same document's numbered invariant list** still names the old poles — and `AGENTS.md` §13.2
-> names them too.
+> `docs/archive/DESIGN_PRINCIPLES.md` had been rewritten to the #200 triangle while its own
+> numbered invariant list still named the old poles. **#208 fixed that** — the invariant list now
+> carries the triangle, and `tests/test_design_principles.py` was updated with it.
 
-So the canonical design document now argues **two different sets of reference poles in two
-places**. `tests/test_design_principles.py` passes, because it pins the *numbered invariants*
-rather than §1 — meaning **the build does not catch this drift**.
+**What remains is the cross-document half:**
+
+> `AGENTS.md` **§13.2** still names **CY_BORG / Cyberpunk 2020 / The Sprawl** as the canonical
+> reference poles, while `DESIGN_PRINCIPLES.md` item 2 now names **Eclipse Phase / Apocalypse
+> World & The Veil / Cities Without Number & Stars Without Number** and points at the #200 triangle.
+
+So the contradiction did not disappear — it **moved from inside one document to between two**.
+`tests/test_design_principles.py` still passes, because the guard pins the principles document;
+`AGENTS.md` is the canonical repository contract and is author-owned.
 
 This is recorded rather than resolved, for the same reason the `AGENTS.md` block is untouched:
 §13.2, `DESIGN_PRINCIPLES.md` and `test_design_principles.py` are the author-owned set, and #200
 says to move them *"by author-approved process"*. Resolving it as an agent would be exactly the
 silent redesign §13.8 forbids.
+
+## Combining with the sibling kernel lab
+
+PR #207 produced a **second** #200 kernel experiment at
+`src/rules/issue200_resolution_lab.py`, and the honest thing is that it is **better at one thing
+this file is not**: it computes **exact rational probabilities** with `Fraction`, where this one
+sampled. So this file **adopted that method** — `exact_success_probability` and
+`exact_opposed_probabilities` now carry the headline numbers, and a figure can no longer be blamed
+on a seed. (The sampled figures it replaced agreed with the exact ones to within sampling error,
+which is its own small check on both.)
+
+The two labs are complementary rather than redundant:
+
+| | asks | answers with |
+| --- | --- | --- |
+| **#207 resolution lab** | what happens if we keep the *same target numbers* and swap the die? | exact probabilities on the raw scale |
+| **this kernel prototype** | what happens if we map ratings and difficulties onto a *ladder*? | exact probabilities per candidate rule |
+
+Their central finding — **equal target numbers are not equal difficulty**, because 1d10 averages
+5.5 and 4dF averages zero — is the same wall this file hits from the other side when six of the
+seven authored DVs collapse onto one step. Two independent routes, one conclusion: **the DV scale
+has to be re-authored, not just re-rolled.**
 
 ## The audit inventory: what currently claims a closed-system dependence
 
