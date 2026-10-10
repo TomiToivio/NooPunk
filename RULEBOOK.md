@@ -4834,10 +4834,10 @@ elements of its fictional world model, not as settled descriptions of the real w
 
 The canonical organization is the **United Nations Security Administration (UNSA)**.
 
-During its early formation it was often called the **UN X-Risk Administration** or **UN NHI
-Agency**. Popular and internal nicknames include **X-COM** (also written **X-Com** or
-**XCOM**), **X-Files**, and **Men in Black**. UNSA personnel often enjoy those names because
-they describe the job remarkably well.
+During its early formation it was often called the **UN X-Risk Administration** or
+**UN NHI Agency**. Popular and internal nicknames include **X-COM** (also written
+**X-Com** or **XCOM**), **X-Files**, and **Men in Black**. UNSA personnel often enjoy those
+names because they describe the job remarkably well.
 
 Those nicknames are **informal institutional culture, not official designations** — they are not
 official departments, units or legal titles, and none implies any connection to the existing
