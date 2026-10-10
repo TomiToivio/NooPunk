@@ -251,7 +251,7 @@ Combining the sibling work turned up this:
 
 > `docs/archive/DESIGN_PRINCIPLES.md` had been rewritten to the #200 triangle while its own
 > numbered invariant list still named the old poles. **PR #208 fixed that** — the invariant list now
-> carries the triangle, and `tests/test_design_principles.py` was updated with it.
+> carries the triangle. (The `tests/test_design_principles.py` guard was removed under #270/#271 as a documentation test.)
 
 **What remains is the cross-document half:**
 
@@ -322,7 +322,7 @@ that currently name a closed system as a rules base, reference or calibration po
 | --- | --- | --- |
 | `AGENTS.md` | 263 | §13.2 poles: CY_BORG (Gamism), Cyberpunk 2020 (Simulationism), The Sprawl (Narrativism) |
 | `AGENTS.md` | 304 | §15.3 names Cyberpunk 2020/RED as a selective design reference |
-| `tests/test_design_principles.py` | 34 | pins `"Gamism": "CY_BORG"`, `"Simulationism": "Cyberpunk 2020"` as build-failing invariants |
+| `tests/test_design_principles.py` (removed #270/#271) | 34 | pinned `"Gamism": `"CY_BORG"`, `"Simulationism": "Cyberpunk 2020"` as build-failing invariants |
 
 **Live claims to reword once the licence is ratified:**
 
@@ -351,7 +351,7 @@ build guard below -- not a grep-able marker. That is an author decision, not an 
 preserves the author-owned text and reports the conflict** rather than editing around it.
 
 There is a second reason not to improvise here: `AGENTS.md` §13, `docs/archive/DESIGN_PRINCIPLES.md`
-and `tests/test_design_principles.py` are guarded **as a set**. The test fails the build if they
+and `tests/test_design_principles.py` were guarded **as a set**. (That test has since been removed under #270/#271; the invariants themselves remain binding.) It failed the build if they
 drift out of agreement, so a change has to move all three together, deliberately.
 
 ## Migration order

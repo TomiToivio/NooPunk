@@ -94,7 +94,7 @@ Existing prototypes you should build on rather than duplicate:
 ## Rules that apply to every change here
 
 - **`AGENTS.md` is the canonical contract** and `docs/archive/DESIGN_PRINCIPLES.md` the design
-  invariants. `tests/test_design_principles.py` fails the build if the documents and the invariants
+  invariants. There is no automated build gate on this: documentation tests were removed under #270/#271, and agreement between these documents and the binding invariants
   disagree — including a check that the AGENTS.md `§13.2` pole sentence matches the canonical
   document (see issue #200 and PR #214).
 - **New numeric values are DRAFT** until the author calibrates them. Say so in the docstring.

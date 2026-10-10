@@ -70,7 +70,7 @@ chapters sit in their own books; the map's `core` lists are live data instead of
 
 ### The guard
 
-`tests/test_rulebook_segmentation.py` gained `ThePartsContainWhatTheMapDeclaresTests`, which
+A `tests/test_rulebook_segmentation.py` guard (since removed under #270/#271, as it asserted rulebook structure rather than code behaviour) once gained `ThePartsContainWhatTheMapDeclaresTests`, which
 asserts the declaration against the artefacts: every part delivers **exactly** the sections the
 map assigns it, the core numbering space gets the same totality check the ledger already had,
 and the written `01_basic_rules.md` really contains Stats and Skills. Sabotage-verified: reverting
