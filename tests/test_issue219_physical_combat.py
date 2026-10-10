@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CHAPTER = ROOT / "rulebook" / "3_PHYSICAL.md"
 
 from src.rules import cross_domain_state as cds
+from src.rules import core
 from src.rules import physical_combat as pc
 
 
@@ -320,6 +321,22 @@ class HygieneTests(unittest.TestCase):
 
     def test_the_module_declares_itself_non_canonical(self) -> None:
         self.assertFalse(pc.IS_CANONICAL)
+
+    def test_the_ladder_is_consumed_from_core(self) -> None:
+        """AGENTS.md §13: consume a shared specification, do not restate it.
+
+        `src/rules/core.py` is the canonical reader of `data/rules/core.json`. A local copy of
+        the ladder passes every existing test and then silently goes stale the moment the author
+        recalibrates the ladder, because nothing compares the two. This pins the consumption.
+        """
+        self.assertEqual(pc.DIFFICULTY_LADDER, core.DIFFICULTY_LADDER)
+
+    def test_the_module_does_not_restate_the_ladder_literally(self) -> None:
+        """The direct prohibition: no second copy of the ladder's values in the module."""
+        source = (ROOT / "src" / "rules" / "physical_combat.py").read_text(encoding="utf-8")
+        literal = ", ".join(str(dv) for dv in core.DIFFICULTY_LADDER)
+        self.assertNotIn(literal, source,
+                         "the ladder is restated as a literal; consume core.DIFFICULTY_LADDER")
 
 
 if __name__ == "__main__":
