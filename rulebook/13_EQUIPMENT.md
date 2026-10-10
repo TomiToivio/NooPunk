@@ -320,8 +320,10 @@ Binding, per `AGENTS.md` §4 and the author's "light description" instruction:
 - **an economy or gear-acquisition subsystem**;
 - **cyberware/augmentation mechanics beyond capability level** — no implant-quality dice, no
   essence/humanity cost, no slot system;
-- **the deferred deep-hacking / cyberspace subsystem** (`AGENTS.md` §4: hacking is deferred
-  until the author defines an original NoöPunk subsystem);
+- **deep-hacking / cyberspace device *statistics*** — the subsystem itself is now specified
+  in `rulebook/5_CYBERNETIC.md` (*Cyberspace: the four access modes*, issue #222), which is the
+  author-defined original NoöPunk subsystem `AGENTS.md` §4 awaited; numeric device statistics
+  remain undefined;
 - **cortical-stack continuity and resleeving mechanics** (§12.3.4);
 - **vehicle statistics**;
 - **starting equipment lists or counts** beyond the canonical UNSA field kit.
