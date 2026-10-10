@@ -243,7 +243,7 @@ mechanics, or text from either work, and do not silently import their assumption
 ## 5. Invariants for agents and contributors
 
 1. Preserve the **Gamism / Narrativism / Simulationism balance**, with issue #51's current priority: **Narrativist experience + Simulationist world + Gamist friction**.
-2. Use **CY_BORG**, **Cyberpunk 2020**, and **The Sprawl** as the canonical reference poles; use **The Veil** as a complementary Narrativist reference.
+2. Use **Eclipse Phase** (Simulationism), **Apocalypse World / The Veil** (Narrativism), and **Cities Without Number / Stars Without Number** (Gamism) as the canonical reference poles, per the issue #200 triangle in §1; Fudge, Psi-Punk, Fate and Transhumanity's Fate supply the hybrid centre.
 3. Preserve **rules/mechanics parity** between Tabletop, Godot, and Concordia wherever possible, with **Tabletop as the canonical first implementation**.
 4. Allow scenarios and medium-specific presentation to diverge.
 5. Preserve the **Cyberpunk / Noösphere balance**.

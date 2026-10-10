@@ -111,6 +111,64 @@ They stay **unverified** rather than guessed. The Veil's author-stated CC BY-SA 
 compatible with a BY-SA 4.0 release and **in**compatible with a BY-only one, so the licence
 decision above has to be made before its text could ever be adapted.
 
+### Second pass — the sources this audit was blocked on (2026-10-10, later)
+
+The first pass recorded several **blocked** fetches and refused to assert anything from them.
+A later session retrieved most of them. The blocked-verification discipline stands — a failure
+is still never a finding — but the evidence below is now readable and the entries move from
+*unverified* to *verified*, with the **decisions unchanged** where the licence turns out to be
+exactly what the blocked state guessed it might be.
+
+**Fudge — verified: OGL 1.0a, and the two licences are indeed separate.** `fudgerpg.com`'s OGL
+page is readable and states the SRD is released under the Open Game License, that **Appendix I
+carries OGL 1.0a**, and lists the three compliance duties: include the licence, update Section
+15 with the proper copyright notices, and designate **Open Game Content vs Product Identity**.
+It also treats the **1995 core PDF as a different work with its own licence** — so the note
+that these two must not be conflated is confirmed at the publisher, not inferred.
+
+**Psi-Punk — verified in part: OGL 1.0a *with* Product Identity.** The SRD's OGL legal page
+reserves the Introduction, the setting chapter (*The World of Psi-punk*) and the sample
+adventure (**Brain.Net**) as Product Identity, and the publisher's announcement describes the
+SRD as the rules text with *"virtually none of the setting or fluff."* Two independent
+exclusions therefore stack: OGC cannot be relabelled CC, **and** the reserved sections are not
+open at all. Decision unchanged — structural inspiration only.
+
+**Apocalypse World — verified: a permission policy, not a grant.** The publisher's PbtA policy
+page says *"If you're using our words, you need our permission, per copyright law. If you
+aren't using our words, you don't need our permission."* The 2010 core carries an
+all-rights-reserved notice. That is an affirmative statement of the position the first pass
+could only report as "no CC statement found", and it confirms the reading: **concepts are
+freely implementable, expression is not.**
+
+**The Veil — author-stated CC BY-SA 3.0, and a trap inside it.** The work's own statement
+(*"The text of The Veil: Cascade is licensed under the Creative Commons Share-alike 3.0
+Unported (CC BY-SA 3.0)"*) was found in two independent copies. Kept as **author-stated rather
+than publisher-page verified**, because the publisher's own site was still not read — that is a
+deliberate distinction, not a hedge.
+
+> **The trap, which matters more than the licence:** the same statement records that some moves
+> are *"tweaked or lifted straight from Apocalypse World ... used with his permission."* That
+> permission was granted **to that project**. It does **not** travel with The Veil's licence, so
+> the AW-derived portions inside The Veil are unavailable to NoöPunk **even though the
+> surrounding text is licensed**. This is a per-portion exclusion sitting inside an otherwise
+> adaptable work, and it is exactly the class of thing a licence name alone would miss.
+
+The Veil's CC BY-SA 3.0 remains the concrete reason the release target should be **CC BY-SA
+4.0 rather than CC BY 4.0**: BY-SA 4.0 accepts BY-SA 3.0 in the adaptation pathway, and a BY-only
+release would close that door entirely.
+
+**Cities Without Number — the blurb, in full.** The publisher's storefront listing adds two
+sentences the first pass had truncated, and both matter: the waiver permits use *"for both
+personal and commercial purposes"*, and *"Later versions of this file may be released, but any
+released version may be used."* So a future SRD revision does not invalidate a copy taken today.
+The **scope limit stands unchanged** — the waiver covers the SRD, not the book.
+
+**Still unverified after the second pass:** Stars Without Number's own SRD licence page. It is
+CC0 by strong indication (community reports and the publisher's sibling listings for CWN and
+Worlds Without Number) and that is **not** a finding, per #200 and per the discipline above. It
+stays `blocked-unverified` until someone reads its licence page, which is the whole point of
+recording it that way.
+
 ### The closed systems — out of the rule bases, into the references
 
 Cyberpunk RED/2020, CY_BORG, Shadowrun, Neon City Overdrive, Metro: Otherscape, GURPS, The

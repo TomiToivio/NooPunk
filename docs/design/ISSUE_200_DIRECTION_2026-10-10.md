@@ -8,8 +8,19 @@ issue, not a claim that code or the rulebook have already migrated"* and *"No co
 happen merely by updating it."* No LICENSE file is added, no die is changed, no subsystem is
 implemented, and the locked `1–10 STAT + 1–10 Skill + 1d10` core is **not** superseded here.
 
-Companions: [`docs/sources/RULES_ENGINE_LICENSES.md`](../sources/RULES_ENGINE_LICENSES.md) and
-[`data/sources/rules_engine_rights.json`](../../data/sources/rules_engine_rights.json).
+Companions — canonical, shared with the sessions that landed #203/#204:
+[`docs/sources/GAME_SYSTEM_RIGHTS.md`](../sources/GAME_SYSTEM_RIGHTS.md),
+[`data/sources/game_system_rights.json`](../../data/sources/game_system_rights.json), and the
+release gate [`docs/licenses/ISSUE_200_CC_RELEASE_GATE.md`](../licenses/ISSUE_200_CC_RELEASE_GATE.md).
+
+**Reconciled across three parallel sessions, not duplicated.** #200 was worked by three PRs at
+once — #203 (GNS canon + release gate), #204 (rights audit + ledger), #205 (this record).
+The result is **one ledger, one audit, one release gate, and two guards with a deliberate
+division of labour**: `test_issue200_rights_ledger.py` owns the ledger's shape, vocabulary and
+audit inventory; `test_issue200_rules_engine_direction.py` owns this record, the no-relicense
+rule, and a licence-string property over the canonical ledger. The second rights ledger and
+audit that this session first wrote were **retired** rather than left to fork the record, and the
+sources the #204 audit recorded as *blocked* were retrieved and folded into its second pass.
 
 ## 1. The design geometry
 
@@ -82,26 +93,41 @@ automatic rules"*. The live mentions are:
 nothing to delete.** The ledger records RED and the other closed systems as `no-reuse` so the
 boundary is explicit rather than implied.
 
-## 4. Two guard conflicts this direction creates — AUTHOR DECISIONS
+## 4. The guard conflicts: one real (now fixed), one that was never real
 
-These are real contradictions between the new direction and guards that currently pin the old
-one. **I did not re-baseline them**: the issue says the older engine assumptions are superseded
-*"only when approved migration and tests land"*, and these are migrations, not typos.
+### 4.1 REAL, and fixed here — the canonical pole list contradicted the triangle
 
-1. **`tests/test_design_principles.py`** pins the creative-agenda poles to
-   `{"Gamism": "CY_BORG", "Simulationism": "Cyberpunk 2020", "Narrativism": "The Sprawl"}`,
-   against the archived `docs/archive/DESIGN_PRINCIPLES.md`. #200 replaces those poles with
-   **Eclipse Phase / AW–The Veil / CWN–SWN**. Re-baselining means re-pinning a guard that
-   tests the *archive* — so the real question is whether the live direction gets its own
-   principles document rather than the archive carrying it.
-2. **`tests/test_issue32_rules_reset.py`** lists **`fate`** and **`pbta` / `powered by the
-   apocalypse`** in `FORBIDDEN_CHASSIS`. #200 makes Fate a *centre* influence and PbtA-inspired
-   design an explicit narrativist input. The guard is not wrong about *chassis* — Fate still
-   must not become the chassis — but its token list now forbids naming the very influences the
-   direction recommends.
+`docs/archive/DESIGN_PRINCIPLES.md` is the canonical principles document and is
+**build-enforced as a set** with `AGENTS.md` §13 and `tests/test_design_principles.py`.
 
-Both need an author ruling before anything is re-pinned, because each one either weakens a
-real protection or requires superseding the archived principles document.
+#203 rewrote its §1 to the #200 triangle (Simulationism → Eclipse Phase, Narrativism →
+Apocalypse World / The Veil, Gamism → Cities Without Number / Stars Without Number) — and
+**left invariant #2 saying the opposite**:
+
+> *"Use **CY_BORG**, **Cyberpunk 2020**, and **The Sprawl** as the canonical reference poles."*
+
+So the document contradicted itself, and the guard **could not see it**: the pole test asked
+only whether the old names appear somewhere in the doc, and the stale sentence satisfied it.
+A document-wide name check is satisfied by the paragraph you forgot.
+
+Fixed: invariant #2 now names the #200 corners, `REFERENCE_POLES` is re-baselined to match, and
+the guard gained **`test_the_canonical_poles_match_the_triangle`**, which is **sentence-scoped** —
+it finds the sentence that declares the poles and requires the new corners *in that sentence*
+while forbidding the superseded trio *in that sentence*. The name-only check is what failed, so
+the replacement tests the fact rather than the vocabulary.
+
+**Still the author's:** `AGENTS.md` §13.2 carries the same old pole list and is a **protected
+file**. It has to move with the documented set, and no agent can write it. That is the one
+outstanding item from this section.
+
+### 4.2 Never real — `FORBIDDEN_CHASSIS`
+
+My earlier report flagged `tests/test_issue32_rules_reset.py` as conflicting because its
+`FORBIDDEN_CHASSIS` includes `fate` and `pbta`. Reading the assertion rather than the list
+shows it forbids only *"X as the chassis"* and *"chassis is X"* — which is exactly right under
+#200, where Fate is a **centre influence** that must never become the chassis. **Not a conflict;
+nothing was changed.** Recorded here so a later session does not "fix" a guard that is doing its
+job.
 
 ## 5. What is reserved, and what is not
 
