@@ -9,6 +9,27 @@
 > `python3 tools/split_rulebook.py`; edit the source, never this file.
 <!-- rulebook-part-nav:end -->
 
+## 2. History: The Singularity Is Past
+
+### 2.1. Rough description of key events
+
+By the campaign present, the old world has passed through enough discontinuities that people speak of **the Singularity as past**, even though different factions disagree about what the word means and when it happened.
+
+Canonical background events include, without requiring one fixed chronology:
+
+- explosive AI/AGI development and localized rogue-AI crises;
+- independent scientific breakthroughs in consciousness, QIP and PSI;
+- public confirmation of NHI and the progressive collapse of secrecy around UAPs, biologics, contact and reverse engineering;
+- accelerating cybernetic augmentation, BCI, synthetic persons and human-machine integration;
+- the emergence of psychotronic technology;
+- growing UN federalization and new X-Risk / contact institutions;
+- open conflict over Disclosure, augmentation, AI, NHI and the definition of humanity;
+- the increasingly self-aware Noösphere.
+
+Detailed history, world canon and unresolved chronology remain in the extended canon/reference material below. The year is always written **20XX**.
+
+---
+
 ## 33. Canonical world lore from issue #60
 
 **Status: NOÖPUNK NATIVE / CURRENT CANON.**

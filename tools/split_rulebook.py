@@ -90,26 +90,32 @@ def assign(segments: list[dict], mapping: dict) -> None:
         part["_segments"] = []
     seen: dict[tuple[str, str], str] = {}
     for s in segments:
-        if s["space"] in {"marker"} or (s["space"] == "preamble"):
-            target = parts[0]["id"]
-        elif not s["is_h2"]:
-            # An H1 inside the ledger is structural; the meta part holds structure.
+        if s["space"] == "marker" or not s["is_h2"]:
+            # The marker and every H1 are structural; the meta part holds structure.
             target = parts[0]["id"]
         else:
             match = NUMBERED.match(s["heading"])
-            key = match.group(1) if match else s["heading"].lstrip("# ").strip()
-            space = s["space"]
-            target = None
-            for part in parts:
-                if key in part.get(space, []):
-                    target = part["id"]
-                    break
-            if target is None:
-                raise SystemExit(f"unassigned {space} section: {s['heading']!r}")
-            token = (space, key)
-            if token in seen:
-                raise SystemExit(f"section {space} {key} assigned twice")
-            seen[token] = target
+            if match is None:
+                # An unnumbered H2 before the marker is the core half's table of contents:
+                # navigation, not a rules section, so it stays with the structural part.
+                target = parts[0]["id"]
+            else:
+                # The core and ledger numbering spaces RESTART at 1, so a section's key in
+                # the map depends on which side of the marker it came from: the core half is
+                # declared under "core", the ledger under "ledger". Reading only "ledger" --
+                # or treating "preamble" as blanket-structural -- silently files the entire
+                # playable core game-book (Stats, Skills, the four system chapters, character
+                # generation) under meta, which "holds no player-facing rules". The map said
+                # otherwise and nothing noticed, because the core lists were never consulted.
+                space = "core" if s["space"] == "preamble" else "ledger"
+                key = match.group(1)
+                target = next((p["id"] for p in parts if key in p.get(space, [])), None)
+                if target is None:
+                    raise SystemExit(f"unassigned {space} section: {s['heading']!r}")
+                token = (space, key)
+                if token in seen:
+                    raise SystemExit(f"section {space} {key} assigned twice")
+                seen[token] = target
         by_id[target]["_segments"].append(s)
         s["part"] = target
     for part in parts:
