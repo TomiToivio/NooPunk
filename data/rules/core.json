@@ -1,5 +1,5 @@
 {
-  "_note": "Canonical NoöPunk core resolution data for issue #111. NoöPunk is an independent RPG system inspired by multiple games; no single external ruleset is its mechanical parent.",
+  "_note": "Canonical NoöPunk core resolution data for issue #111. NoöPunk is an independent RPG system inspired by multiple games; no single external ruleset is its mechanical parent. Issue #200 reworked this list: no closed/proprietary system is a base or implementation source, and naming a system as an influence is a design acknowledgement, not a licensing claim.",
   "_source_of_truth": "RULEBOOK.md and explicit current author direction.",
   "_canon_revision": "issue-111-d10-independent",
   "system_identity": {
@@ -12,13 +12,13 @@
       "PbtA"
     ],
     "influences": [
-      "Cyberpunk 2020 / RED",
-      "Eclipse Phase",
-      "Fate",
-      "Powered by the Apocalypse",
+      "Fudge (Attribute/Skill distinction)",
+      "Fate / Fate Core SRD",
+      "Psi-Punk (design inspiration)",
+      "Eclipse Phase (comparison)",
+      "Powered by the Apocalypse / The Veil",
       "OSR / Cities Without Number",
-      "Citizen Sleeper 1/2",
-      "The Expanse"
+      "Citizen Sleeper 1/2"
     ]
   },
   "stats": {

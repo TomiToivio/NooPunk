@@ -15,7 +15,7 @@ NoöPunk generalizes Palonen's formula beyond populism. The RPG uses it as a soc
 ## RPG and interactive-fiction references
 
 - Eclipse Phase 2E: starting point for factions, motivations and reputation. NoöPunk replaces the setting-specific lists with its own Affect graph/content.
-- Cyberpunk RED: friends/enemies, relationship hooks and street-level Contacts.
+- Cyberpunk RED: a comparison point for friends/enemies, relationship hooks and street-level Contacts (design comparison only; no derivation claim).
 - The Expanse Roleplaying Game: crew-centered SF play, Ties/Relationships/Reputation and Belt/station political economy.
 - Citizen Sleeper: text-forward hub/task/relationship loop.
 - Citizen Sleeper 2: crew structure, travel between hubs and missions away from hubs.

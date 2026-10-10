@@ -213,7 +213,7 @@ subsystems selectively inspired by many games
 shared deterministic rules for text / Concordia / future Godot use
 ```
 
-NoöPunk is **not an Eclipse Phase conversion and not a hack of any single parent system**. Cyberpunk 2020/RED is an important reference for readable STAT + Skill + d10 resolution; Eclipse Phase remains important for transhuman concepts; Fate, PbtA, CY_BORG, Cities Without Number/OSR, Citizen Sleeper, The Expanse and other games inform different design problems.
+NoöPunk is **not an Eclipse Phase conversion and not a hack of any single parent system**. Its six-STAT + separate-Skill kernel is NoöPunk's own (issue #200); Eclipse Phase remains important for transhuman concepts; Fate, PbtA, CY_BORG, Cities Without Number/OSR, Citizen Sleeper, The Expanse and other games inform different design problems.
 
 The current core work is [issue #111](https://github.com/TomiToivio/NooPunk/issues/111).
 
@@ -255,11 +255,11 @@ NoöPunk is an independent RPG. External games are **influences rather than comp
 
 Current important influences include:
 
-- **Cyberpunk 2020 / RED** for the clarity and feel of STAT + Skill + d10 resolution;
+- **Fudge / Fate** for the Attribute-versus-Skill split, the trait ladder and narrative consequences (the #200 centre);
 - **Eclipse Phase** for transhuman technology, morphs/embodiment, mesh, reputation, space and existential-risk ideas;
 - **Fate** for aspects/stunts and fiction-facing flexibility;
 - **PbtA / The Sprawl / The Veil** for moves, consequences and narrative pressure;
-- **CY_BORG** and **Cities Without Number / OSR** for fast, compact play;
+- **Cities Without Number / Stars Without Number (OSR)** for fast, compact procedures and generators; **CY_BORG** as a design goal for extreme compression, not a rules source;
 - **Citizen Sleeper 1/2** for text-RPG structure, clocks and pressures;
 - **The Expanse** and other science-fiction RPGs where specific subsystem ideas fit.
 

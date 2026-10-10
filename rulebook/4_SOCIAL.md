@@ -44,7 +44,7 @@ Reputation is a directional Affect edge from a faction or social actor to a char
 
 A Contact is a specific PC or NPC known personally or socially. Positive and negative relations use the same graph. Unknown people have no Contact edge; a numeric subsystem may use 0 as fallback without creating a zero-valued edge.
 
-Character creation should start with a small playable graph inspired by Cyberpunk RED social hooks: a few appropriate contacts such as a close friend, professional contact, family/community tie, patron or mentor, and optionally an enemy. Each contact records identity, role, faction if known, relationship, Affect label/score, why you know them, what they may want, what they can realistically do, and reciprocity. Exact counts and random tables remain future character-generation design.
+Character creation should start with a small playable graph of NoöPunk's own design: a few appropriate contacts such as a close friend, professional contact, family/community tie, patron or mentor, and optionally an enemy. Each contact records identity, role, faction if known, relationship, Affect label/score, why you know them, what they may want, what they can realistically do, and reciprocity. Exact counts and random tables remain future character-generation design.
 
 Meaningful encounters may add, modify, relabel or remove Contact edges. Issue #107 intentionally does not fix universal numeric increments yet.
 

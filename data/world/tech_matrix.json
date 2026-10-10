@@ -451,13 +451,13 @@
     "tabletop": "Use a profile to describe what is ordinary, restricted or unavailable in a region, and use the gains/vulnerabilities pair to keep regions incomparable. A travel scene between regions is a genre transition; present it through what characters notice as absent or as normal, not through a capability rating.",
     "concordia": "A region's profile constrains what agents may attempt rather than how well they roll: an autonomous AI actor entering a Butlerian region is refused by the region's posture, not penalised. Keep the refusal explicit and typed, mirroring the absent-system treatment in the rules layer, so a refusal cannot be read as a failed attempt.",
     "godot": "Presentation only. Region differences may drive environment, ambient systems and available interfaces. Do not store a scalar tech level for a region, and do not gate content on one.",
-    "not_yet": "The following are author decisions and are NOT derivable from this file: the approximate era, which technologies are globally mature, which are region-specific, which areas reach Eclipse Phase-like capability, and which remain close to Cyberpunk 2020/RED. See open_questions_unassigned."
+    "not_yet": "The following are author decisions and are NOT derivable from this file: the approximate era, which technologies are globally mature, which are region-specific, which areas reach the high-capability end and which remain near the low-capability end. See open_questions_unassigned."
   },
   "open_questions_unassigned": [
     "Approximate NoöPunk date / era - AGENTS.md §6 keeps all dates as 20XX and assigning a decade is an author decision",
     "What technologies are globally mature - requires a baseline the issue does not state",
     "Which technologies are region-specific - requires the baseline above before it can be answered",
-    "Which areas reach Eclipse Phase-like capabilities and which stay near Cyberpunk 2020/RED - the issue's own open question; profiles here are relative, not calibrated to either reference game",
+    "Which areas reach Eclipse Phase-like capabilities and which stay near the low end - the issue's own open question; profiles here are relative, not calibrated to any reference game",
     "Defining individual rogue-AGI disasters further - dates, exact actors, and global ordering remain unresolved unless the author explicitly fixes them",
     "The European Federation's AI Critical model - the issue states its shape and its strengths; its institutions are not specified",
     "China's post-AGI system - deliberately left opaque per the issue",

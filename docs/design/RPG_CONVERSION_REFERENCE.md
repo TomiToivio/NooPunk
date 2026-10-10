@@ -2,10 +2,11 @@
 
 > **Status: conversion/reference appendix for issue #135.**
 >
-> NoöPunk is an independent system. These tables help convert characters from
-> **Cyberpunk RED**, **Eclipse Phase 2E**, and **Cities Without Number (CWN)** into the
-> native NoöPunk **1–10 STAT + 1–10 Skill + 1d10** rules. They do **not** import another
-> game's attribute or skill catalogue.
+> NoöPunk is an independent system. These opt-in tables convert characters *from* other
+> games *into* the native NoöPunk **1–10 STAT + 1–10 Skill + 1d10** rules, for
+> interoperability only. No external system is a parent, a baseline or an implementation
+> source for these rules, and nothing here imports another game's attribute or skill
+> catalogue.
 
 ## Design rule
 
