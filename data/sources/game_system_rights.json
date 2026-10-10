@@ -67,7 +67,8 @@
       "role_in_noopunk": "First-rank STRUCTURAL inspiration: the separate Attribute/Skill split and flexible quantitative adjudication. Nothing else.",
       "license_checked": "2026-10-10",
       "how_verified": "CONFLICTING OBSERVATIONS, both recorded. A sibling agent (#205) read the publisher page and reports it states the SRD is released under the OGL, that Appendix I carries OGL 1.0a, and lists the three compliance obligations. This environment COULD NOT VERIFY: fudgerpg.com returns HTTP 403 at the licensing page and HTTP 406 (Mod_Security) at the site root, and the Wayback Machine reports no archived snapshot. The publisher's assertion is therefore recorded as REPORTED-BUT-NOT-INDEPENDENTLY-REPRODUCED rather than silently accepted or discarded.",
-      "notes": "Even when verified, OGL 1.0a Open Game Content is NOT a Creative Commons grant and cannot be relabelled or relicensed CC. OGL 1.0a also carries obligations incompatible with a pure CC release. Treat as design inspiration ONLY unless the author secures separate written CC-compatible permission. The Fudge OGL and the 1995 Fudge PDF are two different licences -- do not conflate them."
+      "notes": "Even when verified, OGL 1.0a Open Game Content is NOT a Creative Commons grant and cannot be relabelled or relicensed CC. OGL 1.0a also carries obligations incompatible with a pure CC release. Treat as design inspiration ONLY unless the author secures separate written CC-compatible permission. The Fudge OGL and the 1995 Fudge PDF are two different licences -- do not conflate them.",
+      "attribution": null
     },
     {
       "id": "fudge-1995-pdf",
@@ -93,7 +94,8 @@
       "role_in_noopunk": "The proof-of-concept that psychic, cyber and astral subsystems can be built around a Fudge-style attribute/skill split.",
       "license_checked": "2026-10-10",
       "how_verified": "Reported by a sibling agent (#205), which read the SRD legal page: it names the reserved material ('All content in the game's Introduction and in Chapter 1: The World of Psi-punk are considered Product Identity. Brain.Net, the sample adventure, is likewise ...'), and the publisher's announcement describes the SRD as the rules text with 'virtually none of the setting or fluff'. NOT independently reproduced from this environment; recorded as reported rather than as read.",
-      "notes": "TWO separate exclusions apply: OGL Open Game Content is not CC and must not be relabelled, and the declared Product Identity is not open at all. Its structural lessons are implementable; its tables are not. Design/structural inspiration only unless separate written permission is obtained."
+      "notes": "TWO separate exclusions apply: OGL Open Game Content is not CC and must not be relabelled, and the declared Product Identity is not open at all. Its structural lessons are implementable; its tables are not. Design/structural inspiration only unless separate written permission is obtained.",
+      "attribution": null
     },
     {
       "id": "eclipse-phase-2e",
@@ -106,7 +108,8 @@
       "role_in_noopunk": "Simulationist influence: cyberware, networks, AI, PSI, transhumanism, equipment, tactical conflict, cross-realm interaction.",
       "license_checked": "2026-10-03",
       "how_verified": "Verified from the publisher's licence page in issue #60; see data/sources/external_sources.json.",
-      "notes": "NonCommercial + ShareAlike. Its expression CANNOT enter a commercially reusable CC BY or BY-SA release. Independent text and mechanics only, as #200 requires."
+      "notes": "NonCommercial + ShareAlike. Its expression CANNOT enter a commercially reusable CC BY or BY-SA release. Independent text and mechanics only, as #200 requires.",
+      "attribution": null
     },
     {
       "id": "transhumanitys-fate",
@@ -132,7 +135,8 @@
       "role_in_noopunk": "Gamist influence: fast procedures, generators, mission structure, encounter pacing, cyberpunk skill framing.",
       "license_checked": "2026-10-10",
       "how_verified": "Three readings agree. (1) The publisher's own storefront listing: 'provided under a Creative Commons 0 waiver allowing downloaders to copy, modify, reproduce, or otherwise use it for both personal and commercial purposes. Later versions of this file may be released, but any released version may be used'. (2) The publisher blurb as carried by the SRD's aggregator listings. (3) The SRD mirror: 'The SRD is a free, open-source, and public domain document'. The gordianblade viewer renders client-side, so its own licence text could not be read as static HTML -- hence the storefront quote is the load-bearing evidence.",
-      "notes": "SCOPE MATTERS: the CC0 dedication covers the SYSTEM REFERENCE DOCUMENT. It is not a finding that the full commercial Cities Without Number book is CC0 -- 'the full SRD, but not all parts of the original book'. Use only the SRD, and only the parts it actually covers."
+      "notes": "SCOPE MATTERS: the CC0 dedication covers the SYSTEM REFERENCE DOCUMENT. It is not a finding that the full commercial Cities Without Number book is CC0 -- 'the full SRD, but not all parts of the original book'. Use only the SRD, and only the parts it actually covers.",
+      "attribution": "None required (CC0). Courtesy credit proposed: game procedures informed by the Cities Without Number System Reference Document (Sine Nomine Publishing), released under CC0 1.0 Universal. Scope: the waiver covers the SRD, not the published book."
     },
     {
       "id": "stars-without-number-srd",
@@ -145,7 +149,8 @@
       "role_in_noopunk": "Gamist influence: generators, faction turns, sandbox procedures.",
       "license_checked": "2026-10-10",
       "how_verified": "NOT VERIFIED, and deliberately not promoted. Third-party reports and the publisher's sibling listings for CWN and Worlds Without Number both describe a Creative Commons 0 waiver, but the SWN SRD's own publisher listing was not located in either pass (this environment was rate-limited at HTTP 202; a sibling agent, #205, recorded the same gap).",
-      "notes": "Downgraded to principles-only precisely because #200 forbids treating 'user reports CC' as a finding. NooPunk must not list the whole book as CC on this evidence. Promote to a reusable verdict ONLY after reading the SWN SRD's own licence page, and record it as a separate entry clearly distinguished from the commercial book."
+      "notes": "Downgraded to principles-only precisely because #200 forbids treating 'user reports CC' as a finding. NooPunk must not list the whole book as CC on this evidence. Promote to a reusable verdict ONLY after reading the SWN SRD's own licence page, and record it as a separate entry clearly distinguished from the commercial book. Later pass (2026-10-10): no Stars Without Number SRD was located. What Sine Nomine publishes for SWN is a FREE EDITION OF THE BOOK (Original Free Edition; Revised Edition plus a free version), not a System Reference Document -- whereas the CWN and Worlds Without Number SRD listings both carry the CC0 waiver, which is where the 'user reports CC' reading comes from. A free book is a distribution choice, not an open licence, and free != open, so the SWN entry stays blocked-unverified: the correct resolution may be that there is no SRD licence to verify rather than that it is hard to read.",
+      "attribution": null
     },
     {
       "id": "apocalypse-world",
@@ -158,7 +163,8 @@
       "role_in_noopunk": "Narrativist influence: fiction-first stakes, hard choices, GM moves, clocks, social and emotional consequences.",
       "license_checked": "2026-10-10",
       "how_verified": "The publisher's PbtA policy page, read by a sibling agent (#205): 'If you're using our words, you need our permission, per copyright law. If you aren't using our words, you don't need our permission'. This environment separately confirmed the absence of any CC statement on the publisher's own Apocalypse World pages. Being the origin of the PbtA design movement, and appearing in free references, does not establish a CC grant for the book.",
-      "notes": "The policy is permission-per-request, not a standing grant -- which is exactly why the practical route is INDEPENDENT IMPLEMENTATION of the concepts and reuse of none of the words. 'PbtA' is a descriptive design designation, not a licence, and NooPunk is not required to use PbtA's dice mechanic."
+      "notes": "The policy is permission-per-request, not a standing grant -- which is exactly why the practical route is INDEPENDENT IMPLEMENTATION of the concepts and reuse of none of the words. 'PbtA' is a descriptive design designation, not a licence, and NooPunk is not required to use PbtA's dice mechanic.",
+      "attribution": null
     },
     {
       "id": "the-veil",
@@ -171,7 +177,8 @@
       "role_in_noopunk": "Narrativist influence: emotional stakes, identity, cyberpunk-PbtA framing.",
       "license_checked": "2026-10-10",
       "how_verified": "The work's own licence statement ('The text of The Veil: Cascade is licensed under the Creative Commons Share-alike 3.0 Unported (CC BY-SA 3.0)'), found in two independent copies and reported by a sibling agent (#205); the publisher's own site was not fetched in either pass. The material itself is not present on disk (#60 records the same absence).",
-      "notes": "THE DECISIVE CASE FOR BY-SA OVER BY-ONLY: CC BY-SA 3.0 is compatible with a CC BY-SA 4.0 release through the one-way 3.0-to-4.0 upgrade, and incompatible with a CC BY-only release. CAVEAT that survives the verification: the work's own text records that some moves are 'tweaked or lifted straight from Apocalypse World ... used with his permission'. That permission was granted to THAT project and does not transfer to NooPunk, so the AW-derived portions inside The Veil are NOT covered by The Veil's licence. The grant covers The Veil's own text."
+      "notes": "THE DECISIVE CASE FOR BY-SA OVER BY-ONLY: CC BY-SA 3.0 is compatible with a CC BY-SA 4.0 release through the one-way 3.0-to-4.0 upgrade, and incompatible with a CC BY-only release. CAVEAT that survives the verification: the work's own text records that some moves are 'tweaked or lifted straight from Apocalypse World ... used with his permission'. That permission was granted to THAT project and does not transfer to NooPunk, so the AW-derived portions inside The Veil are NOT covered by The Veil's licence. The grant covers The Veil's own text.",
+      "attribution": "Contains material adapted from *The Veil*, by Fraser Simons (Samjoko Publishing), licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported licence."
     },
     {
       "id": "cyberpunk-red-2020",

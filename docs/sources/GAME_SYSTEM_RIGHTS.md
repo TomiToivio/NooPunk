@@ -191,11 +191,17 @@ personal and commercial purposes"*, and *"Later versions of this file may be rel
 released version may be used."* So a future SRD revision does not invalidate a copy taken today.
 The **scope limit stands unchanged** — the waiver covers the SRD, not the book.
 
-**Still unverified after the second pass:** Stars Without Number's own SRD licence page. It is
-CC0 by strong indication (community reports and the publisher's sibling listings for CWN and
-Worlds Without Number) and that is **not** a finding, per #200 and per the discipline above. It
-stays `blocked-unverified` until someone reads its licence page, which is the whole point of
-recording it that way.
+**Still unverified after the second pass:** Stars Without Number's own SRD licence page — and a
+third pass suggests the reason, which is more interesting than a stubborn fetch. **No Stars
+Without Number SRD was located at all.** What Sine Nomine publishes for SWN is a **free edition
+of the book** (Original Free Edition; Revised Edition plus a free version), not a System
+Reference Document — while the **CWN and Worlds Without Number SRD listings both carry the CC0
+waiver**, which is where the "user reports CC" reading originates.
+
+A **free book is a distribution choice, not an open licence**, and free ≠ open. So the entry
+stays `blocked-unverified`, but the shape of the problem has changed: the likely resolution is
+that **there is no SRD licence to verify**, not that the page is hard to read. Recorded that way
+rather than promoted on inference, which is the discipline this audit was built around.
 
 ### The closed systems — out of the rule bases, into the references
 
