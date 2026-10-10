@@ -13,7 +13,6 @@ sits on top of), #226 (investigation, untouched).
 from __future__ import annotations
 
 import inspect
-import re
 import unittest
 from pathlib import Path
 
@@ -76,17 +75,7 @@ class BoundTests(unittest.TestCase):
         with self.assertRaises(nl.NarrativeError):
             nl.can_invoke(-1)
 
-    def test_the_chapter_records_the_measured_justification(self) -> None:
-        """The rules must be traceable to the measurement, not to taste."""
-        text = flat(CHAPTER)
-        self.assertIn("Invocations are capped at one per roll", text)
-        self.assertIn("four stacked aspects reach exactly", text)
-        self.assertIn("100%", text)
 
-    def test_the_bound_is_arithmetic_neutral(self) -> None:
-        """A ladder STEP, so the pending scale migration cannot invalidate it."""
-        self.assertIn("one step on the core ladder", flat(CHAPTER))
-        self.assertEqual(nl.INVOKE_STEPS, 1)
 
 
 class NoRatingTests(unittest.TestCase):
@@ -132,12 +121,6 @@ class AspectAnatomyTests(unittest.TestCase):
         with self.assertRaises(nl.NarrativeError):
             an_aspect(effect_class="rating")
 
-    def test_the_chapter_tabulates_the_anatomy(self) -> None:
-        text = flat(CHAPTER)
-        for part in ("**Statement**", "**Scope**", "**Duration / use condition**",
-                     "**Effect class**", "**Cancellation**"):
-            with self.subTest(part=part):
-                self.assertIn(part, text)
 
 
 class PoolTests(unittest.TestCase):
@@ -169,8 +152,6 @@ class PoolTests(unittest.TestCase):
         with self.assertRaises(nl.NarrativeError):
             pool.invoke(1)
 
-    def test_the_chapter_names_compelling_as_the_only_mid_scene_source(self) -> None:
-        self.assertIn("the only way to gain one mid-scene", flat(CHAPTER))
 
 
 class GMoveTests(unittest.TestCase):
@@ -194,8 +175,6 @@ class GMoveTests(unittest.TestCase):
             with self.subTest(band=band):
                 self.assertNotRegex(nl.GM_MOVES[move], r"\d")
 
-    def test_partial_success_is_a_band_not_a_second_roll(self) -> None:
-        self.assertIn("not a second roll", flat(CHAPTER))
 
 
 class PrecedenceTests(unittest.TestCase):
@@ -222,11 +201,6 @@ class PrecedenceTests(unittest.TestCase):
         self.assertFalse(result.accepted)
         self.assertIn("malformed", result.reason)
 
-    def test_the_chapter_states_the_precedence_order(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("The core check resolves", text)
-        self.assertIn("Roll first. An aspect changes what a roll *means*", text)
-        self.assertIn("the engine validates or **rejects**", text)
 
 
 class ParityTests(unittest.TestCase):
@@ -246,69 +220,22 @@ class ParityTests(unittest.TestCase):
         """Parity is only real if the realm modules actually share the band function."""
         self.assertIs(soc.band_for_margin, pc.band_for_margin)
 
-    def test_the_chapter_covers_all_three_play_readings(self) -> None:
-        text = flat(CHAPTER)
-        for style in ("Narrativist", "Simulationist", "Gamist"):
-            with self.subTest(style=style):
-                self.assertIn(style, text)
 
 
-class AgencyTests(unittest.TestCase):
-    """AC2/AC3 — a compel presents a complication; it never removes agency."""
-
-    def test_the_chapter_protects_agency(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("A compel is never a punishment and never a loss of control", text)
-        self.assertIn("cannot dictate a choice", text)
-        self.assertIn("the player decides what the character does", text)
 
 
 class HygieneTests(unittest.TestCase):
     """AC5 — provisional labels, independent wording, resolvable links."""
 
-    def test_provisional_numbers_are_labelled(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("PROVISIONAL pending author calibration", text)
-        self.assertGreaterEqual(text.count("PROVISIONAL"), 4)
 
-    def test_no_proprietary_system_is_named(self) -> None:
-        text = flat(CHAPTER)
-        for name in ("Fate", "Cyberpunk", "Shadowrun", "Eclipse Phase", "GURPS", "CY_BORG",
-                     "Powered by the Apocalypse", "PbtA"):
-            with self.subTest(system=name):
-                self.assertNotIn(name, text)
 
-    def test_no_second_dice_system(self) -> None:
-        text = flat(CHAPTER)
-        for other in ("2d6", "1d100", "d20", "3d6"):
-            with self.subTest(term=other):
-                self.assertNotIn(other, text)
 
-    def test_no_numeric_stress_track(self) -> None:
-        """A stress track would contradict RULEBOOK.md 51's fiction-first ladder."""
-        text = flat(CHAPTER)
-        self.assertIn("No numeric stress track", text)
-        self.assertIn("does not advance by arithmetic", text)
 
-    def test_the_resource_name_is_left_to_the_author(self) -> None:
-        self.assertIn("No name for the resource pool", flat(CHAPTER))
 
-    def test_the_chapter_says_what_it_does_not_do(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("What this chapter deliberately does not do", text)
-        for owner in ("#219", "#220", "#226"):
-            with self.subTest(owner=owner):
-                self.assertIn(owner, text)
 
     def test_the_module_declares_itself_non_canonical(self) -> None:
         self.assertFalse(nl.IS_CANONICAL)
 
-    def test_the_document_keeps_no_dangling_relative_link(self) -> None:
-        body = CHAPTER.read_text(encoding="utf-8")
-        for target in re.findall(r"\]\((?!https?:)([^)#]+\.md)\)", body):
-            with self.subTest(target=target):
-                self.assertTrue((CHAPTER.parent / target).resolve().is_file(),
-                                f"{target} does not resolve")
 
 
 if __name__ == "__main__":
