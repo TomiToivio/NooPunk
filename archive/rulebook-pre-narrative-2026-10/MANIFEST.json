@@ -1,0 +1,524 @@
+{
+  "$comment": "Archive manifest for the pre-narrative rulebook corpus. Retrieval is by the annotated tag below; this manifest makes that tag verifiable file by file. `derived` entries are generated views whose content already exists in RULEBOOK.md; `distinct` entries carry prose that exists nowhere else and must survive the migration.",
+  "issue": 265,
+  "archive": "archive/rulebook-pre-narrative-2026-10",
+  "tag": "rulebook-pre-narrative-2026-10",
+  "source_commit": "72118754ccdab53508ab90267349d942efca15b7",
+  "source_date": "2026-10-10T18:35:30+03:00",
+  "totals": {
+    "files": 63,
+    "bytes": 2389107,
+    "by_classification": {
+      "canonical": 2,
+      "derived": 37,
+      "distinct": 23,
+      "partial": 1
+    }
+  },
+  "files": [
+    {
+      "path": "RULEBOOK.md",
+      "bytes": 322056,
+      "sha256": "c654ebddfc0f730c8edafec3c664e1e6d560e8d7783f3a8926fc8347ce3fc959",
+      "classification": "canonical",
+      "prose_overlap_with_canonical": 1.0,
+      "substantive_lines": 3084
+    },
+    {
+      "path": "docs/rulebook_segments/01_PLAYER_CORE.md",
+      "bytes": 18968,
+      "sha256": "ed33f8d25857253917c6c332a6421797bf7f9921cc425a197bbccbd9183879a6",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 1.0,
+      "substantive_lines": 133
+    },
+    {
+      "path": "docs/rulebook_segments/02_DOMAIN_QUICKSTART.md",
+      "bytes": 13276,
+      "sha256": "73a9961b23e1ce3f32bcedcc8359ae901b4caa6d22289e7e8bd32fe601ec071e",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 1.0,
+      "substantive_lines": 77
+    },
+    {
+      "path": "docs/rulebook_segments/03_CHARACTER_GENERATION.md",
+      "bytes": 7680,
+      "sha256": "025375a99179e19c84e5135a3207c7b7d705f2304a29275554323c55d83136f2",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 1.0,
+      "substantive_lines": 79
+    },
+    {
+      "path": "docs/rulebook_segments/04_CORE_REFERENCE.md",
+      "bytes": 34319,
+      "sha256": "7a5461debdc265dfded8d4ae3070417edaa554962c7cebbeffc0b0f8e3c77f34",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 1.0,
+      "substantive_lines": 289
+    },
+    {
+      "path": "docs/rulebook_segments/05_SYSTEMS_AND_ENGINEERING.md",
+      "bytes": 17572,
+      "sha256": "71f8792107ded4aa6e2a630a084ea1067d6955149ea3e2269132df6d4168bdce",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 1.0,
+      "substantive_lines": 127
+    },
+    {
+      "path": "docs/rulebook_segments/06_WORLD_CANON.md",
+      "bytes": 81862,
+      "sha256": "375a3627dd391ba78bec601589ae7a2da3261b227e840624c730102cfaf2b3dd",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 1.0,
+      "substantive_lines": 855
+    },
+    {
+      "path": "docs/rulebook_segments/07_GLOSSARY_AND_SOURCES.md",
+      "bytes": 30458,
+      "sha256": "3a22c6693e0a8d0598b7ce94149ad5f0d195307432d309d48567cb89dff8fc3a",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 1.0,
+      "substantive_lines": 350
+    },
+    {
+      "path": "docs/rulebook_segments/08_WORLD_SYSTEMS_AND_CAMPAIGN.md",
+      "bytes": 91010,
+      "sha256": "3a15b908d4bf1a1b559fc3adbdf35255fa92ce5d5205d4000d09032f27f3ead8",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 1.0,
+      "substantive_lines": 878
+    },
+    {
+      "path": "docs/rulebook_segments/09_LATE_LORE_AND_CATALOGS.md",
+      "bytes": 26911,
+      "sha256": "1bdac783480a5c9861db56fdaf8981937dc852d00ebdfcaedb8fb667f8d7bea5",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 1.0,
+      "substantive_lines": 309
+    },
+    {
+      "path": "docs/rulebook_segments/README.md",
+      "bytes": 6884,
+      "sha256": "ab07b749372fa2949e53a6ee91946ce1dece80d71fadad30a3186cb3a2311be9",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.0,
+      "substantive_lines": 45
+    },
+    {
+      "path": "rulebook/00_INDEX.md",
+      "bytes": 15530,
+      "sha256": "f9e129e1aa8ed8a78864212aadd17044ef3709f101118cc02b9f260db7c0aa12",
+      "classification": "partial",
+      "prose_overlap_with_canonical": 0.359,
+      "substantive_lines": 128
+    },
+    {
+      "path": "rulebook/10_SINGULARITY_CRISIS.md",
+      "bytes": 35600,
+      "sha256": "11361132286c9e3bf57a135fd21b47d92cb54c192ab03a2d3a788b8d48714148",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.006,
+      "substantive_lines": 358
+    },
+    {
+      "path": "rulebook/11_ONTOLOGY.md",
+      "bytes": 25740,
+      "sha256": "2450eb3dae563979c1ceb0b4ed12426af47809727eaafa65cedcfb7bef4747a4",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.003,
+      "substantive_lines": 290
+    },
+    {
+      "path": "rulebook/12_BEINGS.md",
+      "bytes": 41706,
+      "sha256": "d08296382299bef13c5eef59dd05f07a2cee942f7b373e5ceec70c82de0ffaeb",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.0,
+      "substantive_lines": 441
+    },
+    {
+      "path": "rulebook/13_EQUIPMENT.md",
+      "bytes": 19133,
+      "sha256": "564caf0f5a9df3864850a7f83322a04a786cf4582ff86e66edd3fb75117f7e13",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.0,
+      "substantive_lines": 201
+    },
+    {
+      "path": "rulebook/14_CHARACTER_GENERATION.md",
+      "bytes": 20824,
+      "sha256": "58ecf3b312009cabc78ccd5183a4717d419eeb702e8545154968d80ee9778317",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.0,
+      "substantive_lines": 236
+    },
+    {
+      "path": "rulebook/15_XENOPOLITICS.md",
+      "bytes": 30365,
+      "sha256": "2c62979b6a3f9b2a7eda449598e037129851bcf816ebcfeec83f5654d2ee6019",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.003,
+      "substantive_lines": 342
+    },
+    {
+      "path": "rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md",
+      "bytes": 17833,
+      "sha256": "ec72e5d05a46e3160a907ee0273098b6570d0859669c668764ef62539a7240fa",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.0,
+      "substantive_lines": 73
+    },
+    {
+      "path": "rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md",
+      "bytes": 26663,
+      "sha256": "0eb8903a29afd5685f4436eec60a4858d391568e5c3621694fe51d5274c03111",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.0,
+      "substantive_lines": 287
+    },
+    {
+      "path": "rulebook/18_CROSS_DOMAIN_STATE.md",
+      "bytes": 13456,
+      "sha256": "182fd7ff42b2c74b3dcc8e4cc496624e29411cdfd5170166691d9283a95e75cf",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.0,
+      "substantive_lines": 144
+    },
+    {
+      "path": "rulebook/19_NARRATIVE_LAYER.md",
+      "bytes": 9677,
+      "sha256": "8e591c6ff6a2ff7c7cf68454d38c7c3af49930ec7967eac2a475214d51742705",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.0,
+      "substantive_lines": 104
+    },
+    {
+      "path": "rulebook/1_NOÖPUNK.md",
+      "bytes": 226,
+      "sha256": "447ce7cd866bef73787fbc0c426cce99deff5af35d20add52a8ad64c5294a18f",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.0,
+      "substantive_lines": 3
+    },
+    {
+      "path": "rulebook/2_ATTRIBUTES.md",
+      "bytes": 16819,
+      "sha256": "21698bc3bf16717b8ee1435b29b857f133e97ef8d18bbbf5291b4d49e9577da7",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.0,
+      "substantive_lines": 181
+    },
+    {
+      "path": "rulebook/3_PHYSICAL.md",
+      "bytes": 13114,
+      "sha256": "a2714803fe066d35677261b98a7c4193822ec14f7e5728acb73c1bd47d44aa2a",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.0,
+      "substantive_lines": 136
+    },
+    {
+      "path": "rulebook/4_SOCIAL.md",
+      "bytes": 17761,
+      "sha256": "ec6511e46aa2dc7036ff3e8cb42ad9422b2ef293d3e5f2885c6c8510523b31f2",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.0,
+      "substantive_lines": 145
+    },
+    {
+      "path": "rulebook/5_CYBERNETIC.md",
+      "bytes": 13843,
+      "sha256": "f1cb553d157c362d346bdb2bdce3295dcc8621e48e4a524273c01dc9dc362065",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.0,
+      "substantive_lines": 93
+    },
+    {
+      "path": "rulebook/6_PSYCHIC.md",
+      "bytes": 59910,
+      "sha256": "69f1b96959a13a97a973f01c066f9b74575b2320b19b6aa573ffaf6fff160555",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.0,
+      "substantive_lines": 679
+    },
+    {
+      "path": "rulebook/7_TIMELINE.md",
+      "bytes": 16134,
+      "sha256": "9201a37812c52756fc5144e2fa3f58a657f422952242075e46114fb73be28247",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.0,
+      "substantive_lines": 134
+    },
+    {
+      "path": "rulebook/8_FACTIONS.md",
+      "bytes": 15652,
+      "sha256": "6afcea91aa95aae15498ef34560ed56416da57c1a00a868ee1ad81019caae5e7",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.023,
+      "substantive_lines": 177
+    },
+    {
+      "path": "rulebook/9_FIELD_CATALOGS.md",
+      "bytes": 22249,
+      "sha256": "aaf38fd9796ad6743382629f2b8653991bd511b221cd075086717c07a0f66b7a",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.008,
+      "substantive_lines": 253
+    },
+    {
+      "path": "rulebook/README.md",
+      "bytes": 1884,
+      "sha256": "997bceffd4ff90ce1a209c70572cebe50a656539cf31a7fa5bf32c5e075ebb95",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.0,
+      "substantive_lines": 4
+    },
+    {
+      "path": "rulebook/parts/01_basic_rules.md",
+      "bytes": 16638,
+      "sha256": "78502986e171a1ccd92ff9aade8a56b9ee129818821ee20e68dda63a852b493e",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.991,
+      "substantive_lines": 108
+    },
+    {
+      "path": "rulebook/parts/02_character_generation.md",
+      "bytes": 2236,
+      "sha256": "1461c4e26cbd9a130f943fe82eb7407e6a2897607e1f3d9cef4b0264f76beb64",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.941,
+      "substantive_lines": 17
+    },
+    {
+      "path": "rulebook/parts/03_physical_systems.md",
+      "bytes": 6499,
+      "sha256": "885fd9bdbeb828b9c2aa97420e6a2097aa6939268cbedbdeadd4b2ea733a0e17",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.962,
+      "substantive_lines": 52
+    },
+    {
+      "path": "rulebook/parts/04_cybernetic_systems.md",
+      "bytes": 7072,
+      "sha256": "8ea4fc7650e002b3c464c3b2c900989397c54cea1372e152443858fb41bbdff6",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.965,
+      "substantive_lines": 57
+    },
+    {
+      "path": "rulebook/parts/05_psychic_systems.md",
+      "bytes": 22432,
+      "sha256": "3ef2b11b9dd212d308a45147c61bc38533ea7ee0db5b17934544b26dca3f50b7",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.99,
+      "substantive_lines": 197
+    },
+    {
+      "path": "rulebook/parts/06_social_systems.md",
+      "bytes": 7311,
+      "sha256": "6f01765113ad60eb3664e99470187f2a55857dfb78ecc5109b15b0123dc785d0",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.951,
+      "substantive_lines": 41
+    },
+    {
+      "path": "rulebook/parts/07_noopunk_lore.md",
+      "bytes": 93507,
+      "sha256": "669c28a07df559343d6969109849ee71c3c8e53c13eb811da4e17684b8a0a4d8",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.998,
+      "substantive_lines": 984
+    },
+    {
+      "path": "rulebook/parts/08_rules_architecture.md",
+      "bytes": 14076,
+      "sha256": "3ae3f1094206d99b113f9731c08f631fdf55d8c7cf6b9d1cefed94406d7b1f5b",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.98,
+      "substantive_lines": 101
+    },
+    {
+      "path": "rulebook/parts/09_characters_and_beings.md",
+      "bytes": 15415,
+      "sha256": "1c492785b8c2d73dffc3c7e5c29654ae0138863689eed64e5dc5f79c59dbe3da",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.988,
+      "substantive_lines": 161
+    },
+    {
+      "path": "rulebook/parts/10_campaign_unsa_factions.md",
+      "bytes": 51881,
+      "sha256": "6585fe85001e94b44d4d5e136936177a2a56acfe0002ea2cee045bde5070d213",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.996,
+      "substantive_lines": 472
+    },
+    {
+      "path": "rulebook/parts/11_concordia_and_parity.md",
+      "bytes": 48220,
+      "sha256": "d0874bac65b0a9eb4975d24aee75059bcc33d1d8374e6c8793cffa69e8fcc5a7",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.996,
+      "substantive_lines": 469
+    },
+    {
+      "path": "rulebook/parts/12_glossary_sources_catalogs.md",
+      "bytes": 32273,
+      "sha256": "5831cf48035d4295c2ee8456ccd6641cd8e722e88ffbf7c57dfc70b7d7097241",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.995,
+      "substantive_lines": 371
+    },
+    {
+      "path": "rulebook/source_snapshots/root/RULEBOOK.md",
+      "bytes": 322056,
+      "sha256": "c654ebddfc0f730c8edafec3c664e1e6d560e8d7783f3a8926fc8347ce3fc959",
+      "classification": "canonical",
+      "prose_overlap_with_canonical": 1.0,
+      "substantive_lines": 3084
+    },
+    {
+      "path": "rulebook/source_snapshots/rulebook_parts/00_meta_and_provenance.md",
+      "bytes": 28010,
+      "sha256": "e336ea8a2441a04ba376c9805aa802ac91b39c6cfe8317ab82fbb334bebe2fa7",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.977,
+      "substantive_lines": 220
+    },
+    {
+      "path": "rulebook/source_snapshots/rulebook_parts/01_basic_rules.md",
+      "bytes": 20297,
+      "sha256": "ad90848b4b5fafe83aca909f7b6b2603bd360b1fedff27ed3d74857195f93266",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.97,
+      "substantive_lines": 135
+    },
+    {
+      "path": "rulebook/source_snapshots/rulebook_parts/02_character_generation.md",
+      "bytes": 23179,
+      "sha256": "bf40d9e2d3256593d462a3bf23ab10b6891158785b265bb6081e72613f6ace38",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.982,
+      "substantive_lines": 221
+    },
+    {
+      "path": "rulebook/source_snapshots/rulebook_parts/03_physical_systems.md",
+      "bytes": 6902,
+      "sha256": "c568106c84963b141bf4cc42e09362516a21394619e2f6fa39488a1b4db05c86",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.926,
+      "substantive_lines": 54
+    },
+    {
+      "path": "rulebook/source_snapshots/rulebook_parts/04_cybernetic_systems.md",
+      "bytes": 9212,
+      "sha256": "fb35da9eed99e9cd56f0a352867a9f8a4a349add827a7c3b406a810885f7e2ce",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.93,
+      "substantive_lines": 71
+    },
+    {
+      "path": "rulebook/source_snapshots/rulebook_parts/05_psychic_systems.md",
+      "bytes": 17252,
+      "sha256": "7742e762cc113a375b322fb95c2bd42c326015cc93a20a2c60ebb3c3773bdd2c",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.964,
+      "substantive_lines": 137
+    },
+    {
+      "path": "rulebook/source_snapshots/rulebook_parts/06_social_systems.md",
+      "bytes": 33659,
+      "sha256": "c2fba2c32c4296ac63dd8f1338da5c05454de636f91b8a7aa975c21db2b9612c",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.984,
+      "substantive_lines": 304
+    },
+    {
+      "path": "rulebook/source_snapshots/rulebook_parts/07_lore_and_world.md",
+      "bytes": 189643,
+      "sha256": "4626e9d64588f785fea22598701788890be56629da67f0d2fe110d858b4e2cca",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.997,
+      "substantive_lines": 1992
+    },
+    {
+      "path": "rulebook/source_snapshots/rulebook_parts/INDEX.md",
+      "bytes": 4034,
+      "sha256": "14e24b2c4a2d0e138cda43eecce66d3618d42316f2a86353c176b9a8dbfb1812",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.0,
+      "substantive_lines": 45
+    },
+    {
+      "path": "rulebook_parts/00_meta_and_provenance.md",
+      "bytes": 28010,
+      "sha256": "e336ea8a2441a04ba376c9805aa802ac91b39c6cfe8317ab82fbb334bebe2fa7",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.977,
+      "substantive_lines": 220
+    },
+    {
+      "path": "rulebook_parts/01_basic_rules.md",
+      "bytes": 20297,
+      "sha256": "ad90848b4b5fafe83aca909f7b6b2603bd360b1fedff27ed3d74857195f93266",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.97,
+      "substantive_lines": 135
+    },
+    {
+      "path": "rulebook_parts/02_character_generation.md",
+      "bytes": 23179,
+      "sha256": "bf40d9e2d3256593d462a3bf23ab10b6891158785b265bb6081e72613f6ace38",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.982,
+      "substantive_lines": 221
+    },
+    {
+      "path": "rulebook_parts/03_physical_systems.md",
+      "bytes": 6902,
+      "sha256": "c568106c84963b141bf4cc42e09362516a21394619e2f6fa39488a1b4db05c86",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.926,
+      "substantive_lines": 54
+    },
+    {
+      "path": "rulebook_parts/04_cybernetic_systems.md",
+      "bytes": 9212,
+      "sha256": "fb35da9eed99e9cd56f0a352867a9f8a4a349add827a7c3b406a810885f7e2ce",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.93,
+      "substantive_lines": 71
+    },
+    {
+      "path": "rulebook_parts/05_psychic_systems.md",
+      "bytes": 17252,
+      "sha256": "7742e762cc113a375b322fb95c2bd42c326015cc93a20a2c60ebb3c3773bdd2c",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.964,
+      "substantive_lines": 137
+    },
+    {
+      "path": "rulebook_parts/06_social_systems.md",
+      "bytes": 33659,
+      "sha256": "c2fba2c32c4296ac63dd8f1338da5c05454de636f91b8a7aa975c21db2b9612c",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.984,
+      "substantive_lines": 304
+    },
+    {
+      "path": "rulebook_parts/07_lore_and_world.md",
+      "bytes": 189643,
+      "sha256": "4626e9d64588f785fea22598701788890be56629da67f0d2fe110d858b4e2cca",
+      "classification": "derived",
+      "prose_overlap_with_canonical": 0.997,
+      "substantive_lines": 1992
+    },
+    {
+      "path": "rulebook_parts/INDEX.md",
+      "bytes": 4034,
+      "sha256": "14e24b2c4a2d0e138cda43eecce66d3618d42316f2a86353c176b9a8dbfb1812",
+      "classification": "distinct",
+      "prose_overlap_with_canonical": 0.0,
+      "substantive_lines": 45
+    }
+  ]
+}
