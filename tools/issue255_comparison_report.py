@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Generate COMPARISON.md — the #255 comparison gate — from data, not from prose.
+"""Generate the #255 exact-odds appendix — from data, not from prose.
+
+COMPARISON.md itself is the hand-written research gate. This tool produces the ARITHMETIC
+behind it, which is the part that must not be hand-written: the 4dF distribution, what a
+modifier is actually worth, and the difficulty recalibration that follows.
 
 The document is GENERATED rather than hand-written because its whole value is being
 evidence-linked: every count and probability in it is computed here, from
@@ -34,7 +38,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MAPPING = ROOT / "data" / "rules" / "skill_mapping_crosssystem.json"
 SKILLS = ROOT / "data" / "rules" / "skills.json"
 SOURCES = ROOT / "data" / "sources" / "game_system_rights.json"
-OUT = ROOT / "COMPARISON.md"
+OUT = ROOT / "docs" / "design" / "ISSUE_255_ODDS.md"
 
 LABELS = ("direct", "analogy", "unsupported")
 
@@ -207,9 +211,9 @@ def document() -> str:
     families = {f["id"]: f for f in mapping["families"]}
     n = len(mapping["mapping"])
     parts = [
-        "# COMPARISON.md — cross-system comparison before locking the NoöPunk core",
+        "# Issue #255 — exact odds appendix",
         "",
-        "**Status: generated comparison gate. Nothing in this file is canonical.**",
+        "**Status: generated arithmetic. Nothing in this file is canonical.**",
         "",
         "For [#255](https://github.com/TomiToivio/NooPunk/issues/255), parent epic",
         "[#200](https://github.com/TomiToivio/NooPunk/issues/200). Regenerate with",
@@ -291,7 +295,7 @@ def document() -> str:
         "Noöspace) already look like EP2's roll-plus-discipline split, which is the shape to keep; the",
         "open question is whether a specific power is a **stunt** (Fate) or a **move** (PbtA).",
         "",
-        "## 6. Two alternative Fate-first kernels — DRAFT, not canonical",
+        "## The two kernels from COMPARISON.md, measured — DRAFT, not canonical",
         "",
         "Both kernels keep six separately rated Attributes and separately rated Skills, and both use",
         "**4dF**. They differ in how the two ratings combine, which turns out to be the decisive choice.",
@@ -408,9 +412,9 @@ def main() -> int:
             print("skill-mapping summary drifted from the mapping", file=sys.stderr)
             return 1
         if not OUT.exists() or OUT.read_text(encoding="utf-8") != document():
-            print("COMPARISON.md is out of date; regenerate it", file=sys.stderr)
+            print("the odds appendix is out of date; regenerate it", file=sys.stderr)
             return 1
-        print("summary and COMPARISON.md are both current")
+        print("summary and the odds appendix are both current")
         return 0
     if "--tables" in sys.argv:
         print("\n".join(t_summary(mapping)))
