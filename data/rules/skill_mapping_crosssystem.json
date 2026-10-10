@@ -1,0 +1,921 @@
+{
+  "$comment": "Full cross-system mapping of the canonical NoöPunk skill list (issue #255, deliverable 2/3). Every skill in data/rules/skills.json appears once, mapped into all four families. Each cell is labelled `direct` (the family has a skill/ability of essentially the same scope), `analogy` (a related concept covers part of it, or it maps onto a different mechanic type), or `unsupported` (no counterpart). The point of the labels is that #255 forbids handwaving that the lists are identical -- they are not. Rules never become canonical from this file; it is a comparison gate.",
+  "format": "noopunk.skill_mapping_crosssystem",
+  "version": 1,
+  "issue": 255,
+  "parent_epic": 200,
+  "skill_source": "data/rules/skills.json",
+  "skills_in_source": 40,
+  "label_vocabulary": {
+    "direct": "Same mechanic type and comparable scope. A conversion is still lossy: numeric scales differ.",
+    "analogy": "Related concept, partial overlap, or a different mechanic type entirely (skill vs move vs aspect).",
+    "unsupported": "No counterpart. The skill would have to be introduced or the fiction resolved without a roll."
+  },
+  "families": [
+    {
+      "id": "fate",
+      "name": "Fate Core / Transhumanity's Fate",
+      "role": "centre (preferred starting chassis)",
+      "license": "CC BY 3.0 Unported (Fate Core SRD); Transhumanity's Fate is CC BY-NC-SA 3.0 and must not be copied",
+      "mechanic_type": "skills rated as a ladder, rolled against opposition; aspects and stunts carry fictional weight",
+      "verification": "Fate Core's skill list verified against the CC BY 3.0 SRD as recorded in data/sources/game_system_rights.json. Which skills Transhumanity's Fate ADDS (as opposed to inheriting) is INFERRED from its Eclipse Phase lineage, not read from its text, which is NC-licensed and not reproduced here."
+    },
+    {
+      "id": "ep2",
+      "name": "Eclipse Phase 2nd Edition",
+      "role": "simulationist corner",
+      "license": "CC BY-NC-SA 4.0 -- non-commercial, so text is inspiration only",
+      "mechanic_type": "active skills with a percentile pool, opposed by the same or by a passive value",
+      "verification": "The active-skill names below are INFERRED from the EP2 lineage and the open online reference; the exact list was not re-read from eclipsephase.github.io during this pass. Treat EP2 column names as strong analogies, not quotations."
+    },
+    {
+      "id": "cwn",
+      "name": "Cities Without Number / Stars Without Number",
+      "role": "gamist corner",
+      "license": "CWN SRD is CC0; the SWN free edition is free-to-read and NOT automatically an open SRD",
+      "mechanic_type": "short skill list, 2d6 + skill + attribute against a target number",
+      "verification": "The CWN/SWN skill list below is a well-established shared list and was NOT re-verified against the official CC0 SRD during this pass, per #255's warning to verify from the original rather than a mirror. Recorded as the next verification step."
+    },
+    {
+      "id": "pbta",
+      "name": "PbtA / The Veil",
+      "role": "narrativist corner",
+      "license": "No universal PbtA SRD; Apocalypse World has no CC grant; The Veil is CC BY-SA 3.0 for its text",
+      "mechanic_type": "MOVES, not skills: a trigger, a roll, and a list of outcomes including hard choices",
+      "verification": "Move names below are the generic PbtA idiom, chosen so a reader unfamiliar with narrativist play can see the shape. The Veil's EXACT move list and attribute names were NOT verified against the publisher text; no official SRD is invented here, as #255 requires."
+    }
+  ],
+  "mapping": [
+    {
+      "skill": "Administrate",
+      "stat": "INT",
+      "fate": {
+        "name": "Resources",
+        "label": "analogy",
+        "note": "Fate's Resources is about access and permission, not procedure or budget skill."
+      },
+      "ep2": {
+        "name": null,
+        "label": "unsupported",
+        "note": "EP2 folds administration into Know and roleplay."
+      },
+      "cwn": {
+        "name": "Administer",
+        "label": "direct"
+      },
+      "pbta": {
+        "name": "Negotiate / requisition move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Athletics",
+      "stat": "FIT",
+      "fate": {
+        "name": "Athletics",
+        "label": "direct"
+      },
+      "ep2": {
+        "name": "Athletics",
+        "label": "direct"
+      },
+      "cwn": {
+        "name": "Exert",
+        "label": "analogy",
+        "note": "Exert covers endurance and force; athletics-in-motion sits closer to SWN's Exert plus roleplay."
+      },
+      "pbta": {
+        "name": "Defy Danger / Act Under Pressure",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Connect",
+      "stat": "SOC",
+      "fate": {
+        "name": "Contacts",
+        "label": "direct"
+      },
+      "ep2": {
+        "name": null,
+        "label": "analogy",
+        "note": "EP2 handles networks through reputation, favors and faction play rather than a skill."
+      },
+      "cwn": {
+        "name": "Connect",
+        "label": "direct"
+      },
+      "pbta": {
+        "name": "Reach out to a contact",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Counterintelligence",
+      "stat": "INT",
+      "fate": {
+        "name": "Investigate",
+        "label": "analogy",
+        "note": "Fate has no defensive-security skill; this is a scope Fate would carry as an aspect or stunt."
+      },
+      "ep2": {
+        "name": null,
+        "label": "analogy",
+        "note": "EP2 treats security culture as fiction plus the Security Ops Know field."
+      },
+      "cwn": {
+        "name": null,
+        "label": "analogy",
+        "note": "CWN backgrounds and foci can grant it; it is not on the skill list."
+      },
+      "pbta": {
+        "name": "Read a situation (threat)",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Deceive",
+      "stat": "SOC",
+      "fate": {
+        "name": "Deceive",
+        "label": "direct"
+      },
+      "ep2": {
+        "name": "Deceive",
+        "label": "direct"
+      },
+      "cwn": {
+        "name": "Talk",
+        "label": "analogy",
+        "note": "CWN merges persuasion and lying into Talk plus roleplay."
+      },
+      "pbta": {
+        "name": "Lay down a lie / manipulate",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "ESP",
+      "stat": "PSY",
+      "fate": {
+        "name": "an aspect or stunt",
+        "label": "analogy",
+        "note": "Fate has no psi skill; a psi power is naturally a stunt granting permission."
+      },
+      "ep2": {
+        "name": "Psi",
+        "label": "analogy",
+        "note": "EP2's Psi skill is the roll; the specific sleights are separate powers. ESP is one NoöPunk discipline covering several EP2 sleights."
+      },
+      "cwn": {
+        "name": null,
+        "label": "unsupported",
+        "note": "CWN and SWN have no psychic skill by default."
+      },
+      "pbta": {
+        "name": "Open your mind move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Exotic Skill",
+      "stat": "Variable",
+      "fate": {
+        "name": "stunt",
+        "label": "analogy",
+        "note": "Fate's stunts are the nearest structure for narrow, permission-granting competence."
+      },
+      "ep2": {
+        "name": "Exotic Weapon (narrower)",
+        "label": "analogy"
+      },
+      "cwn": {
+        "name": "foci",
+        "label": "analogy",
+        "note": "CWN foci are the natural home for a narrow specialty."
+      },
+      "pbta": {
+        "name": "playbook move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "First Aid",
+      "stat": "INT",
+      "fate": {
+        "name": null,
+        "label": "analogy",
+        "note": "Fate handles emergency care with Lore or a stunt; there is no dedicated skill."
+      },
+      "ep2": {
+        "name": "Medicine",
+        "label": "analogy",
+        "note": "EP2 does not split first aid from medicine."
+      },
+      "cwn": {
+        "name": "Heal",
+        "label": "direct"
+      },
+      "pbta": {
+        "name": "Patch someone up",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Forensics",
+      "stat": "INT",
+      "fate": {
+        "name": "Investigate",
+        "label": "analogy",
+        "note": "Fate's Investigate covers gathering evidence; lab science is a stunt or aspect."
+      },
+      "ep2": {
+        "name": null,
+        "label": "analogy",
+        "note": "EP2 puts scientific examination under Know fields."
+      },
+      "cwn": {
+        "name": "Heal",
+        "label": "analogy",
+        "note": "CWN's Heal extends to forensics of bodies; physical evidence leans on Know."
+      },
+      "pbta": {
+        "name": "Investigate a scene",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Fray",
+      "stat": "REF",
+      "fate": {
+        "name": "Athletics",
+        "label": "analogy",
+        "note": "Fate defends with the same skill as the attack's genre; evasion is not separate."
+      },
+      "ep2": {
+        "name": "Fray",
+        "label": "direct"
+      },
+      "cwn": {
+        "name": "Exert",
+        "label": "analogy"
+      },
+      "pbta": {
+        "name": "Defy Danger",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Free Fall",
+      "stat": "FIT",
+      "fate": {
+        "name": "Athletics",
+        "label": "analogy"
+      },
+      "ep2": {
+        "name": "Free Fall",
+        "label": "direct"
+      },
+      "cwn": {
+        "name": "Exert",
+        "label": "analogy"
+      },
+      "pbta": {
+        "name": "Defy Danger",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Guns",
+      "stat": "REF",
+      "fate": {
+        "name": "Shoot",
+        "label": "direct"
+      },
+      "ep2": {
+        "name": "Guns",
+        "label": "direct"
+      },
+      "cwn": {
+        "name": "Shoot",
+        "label": "direct"
+      },
+      "pbta": {
+        "name": "Fire / shoot move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Hardware",
+      "stat": "CYB",
+      "fate": {
+        "name": "Crafts",
+        "label": "analogy",
+        "note": "Crafts builds and repairs; NoöPunk's Hardware adds disabling and physical intrusion."
+      },
+      "ep2": {
+        "name": "Hardware",
+        "label": "direct",
+        "note": "EP2 also field-splits Hardware, as NoöPunk does."
+      },
+      "cwn": {
+        "name": "Fix",
+        "label": "direct"
+      },
+      "pbta": {
+        "name": "tinker / repair move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Infosec",
+      "stat": "CYB",
+      "fate": {
+        "name": "Crafts (or a subsystem)",
+        "label": "analogy",
+        "note": "Transhumanity's Fate introduces a hacking subsystem rather than a skill."
+      },
+      "ep2": {
+        "name": "Infosec",
+        "label": "direct"
+      },
+      "cwn": {
+        "name": "Program",
+        "label": "analogy",
+        "note": "CWN's Program covers intrusion and defence."
+      },
+      "pbta": {
+        "name": "jack in / hack move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Intelligence Analysis",
+      "stat": "INT",
+      "fate": {
+        "name": "Investigate",
+        "label": "analogy",
+        "note": "Assessment of competing hypotheses has no dedicated Fate skill."
+      },
+      "ep2": {
+        "name": null,
+        "label": "analogy",
+        "note": "EP2 uses Know fields plus faction play."
+      },
+      "cwn": {
+        "name": "Know",
+        "label": "analogy"
+      },
+      "pbta": {
+        "name": "Read a charged situation",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Interface",
+      "stat": "CYB",
+      "fate": {
+        "name": "Interface (Transhumanity's Fate)",
+        "label": "analogy",
+        "note": "Named from the EP lineage; not read from TF's NC text."
+      },
+      "ep2": {
+        "name": "Interface",
+        "label": "direct"
+      },
+      "cwn": {
+        "name": null,
+        "label": "analogy",
+        "note": "CWN assumes ordinary computer use without a roll."
+      },
+      "pbta": {
+        "name": "use the machine move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Investigation",
+      "stat": "INT",
+      "fate": {
+        "name": "Investigate",
+        "label": "direct"
+      },
+      "ep2": {
+        "name": null,
+        "label": "analogy",
+        "note": "EP2 spreads investigation across Know, Research, Perceive and Interrogation-adjacent skills."
+      },
+      "cwn": {
+        "name": "Notice",
+        "label": "analogy",
+        "note": "CWN leans on Notice plus player reasoning."
+      },
+      "pbta": {
+        "name": "Investigate a mystery",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Kinesics",
+      "stat": "SOC",
+      "fate": {
+        "name": "Empathy",
+        "label": "direct"
+      },
+      "ep2": {
+        "name": "Kinesics",
+        "label": "direct"
+      },
+      "cwn": {
+        "name": null,
+        "label": "analogy",
+        "note": "CWN has no read-people skill; it is roleplay and Notice."
+      },
+      "pbta": {
+        "name": "Read a person",
+        "label": "direct",
+        "note": "This is one of the clearest direct correspondences in the whole table."
+      }
+    },
+    {
+      "skill": "Know",
+      "stat": "INT",
+      "fate": {
+        "name": "Lore",
+        "label": "direct"
+      },
+      "ep2": {
+        "name": "Know",
+        "label": "direct"
+      },
+      "cwn": {
+        "name": "Know",
+        "label": "direct"
+      },
+      "pbta": {
+        "name": "Spout lore / know things",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Lead",
+      "stat": "SOC",
+      "fate": {
+        "name": null,
+        "label": "analogy",
+        "note": "Fate has no leadership skill; command is an aspect, stunt or Rapport."
+      },
+      "ep2": {
+        "name": null,
+        "label": "analogy"
+      },
+      "cwn": {
+        "name": "Lead",
+        "label": "direct"
+      },
+      "pbta": {
+        "name": "Command / inspire move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Medicine",
+      "stat": "INT",
+      "fate": {
+        "name": null,
+        "label": "analogy",
+        "note": "Fate would carry this as Lore plus stunts."
+      },
+      "ep2": {
+        "name": "Medicine",
+        "label": "direct"
+      },
+      "cwn": {
+        "name": "Heal",
+        "label": "direct"
+      },
+      "pbta": {
+        "name": "treat a wound move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Melee",
+      "stat": "FIT",
+      "fate": {
+        "name": "Fight",
+        "label": "direct"
+      },
+      "ep2": {
+        "name": "Melee",
+        "label": "direct"
+      },
+      "cwn": {
+        "name": "Stab",
+        "label": "direct"
+      },
+      "pbta": {
+        "name": "mix it up / hand-to-hand",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Noöspace",
+      "stat": "PSY",
+      "fate": {
+        "name": "an aspect",
+        "label": "analogy",
+        "note": "No counterpart; in Fate this is a setting layer reached through aspects and stunts."
+      },
+      "ep2": {
+        "name": null,
+        "label": "unsupported",
+        "note": "EP2 has no equivalent to the Noösphere as a navigable space."
+      },
+      "cwn": {
+        "name": null,
+        "label": "unsupported"
+      },
+      "pbta": {
+        "name": "a custom 'enter the noösphere' move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Perceive",
+      "stat": "PSY",
+      "fate": {
+        "name": "Notice",
+        "label": "direct"
+      },
+      "ep2": {
+        "name": "Perceive",
+        "label": "direct"
+      },
+      "cwn": {
+        "name": "Notice",
+        "label": "direct"
+      },
+      "pbta": {
+        "name": "Read a situation",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Perform",
+      "stat": "PSY",
+      "fate": {
+        "name": null,
+        "label": "analogy",
+        "note": "Fate covers performance with Rapport or a stunt."
+      },
+      "ep2": {
+        "name": null,
+        "label": "analogy"
+      },
+      "cwn": {
+        "name": "Perform",
+        "label": "direct"
+      },
+      "pbta": {
+        "name": "perform / sway move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Pilot",
+      "stat": "REF",
+      "fate": {
+        "name": "Drive",
+        "label": "analogy",
+        "note": "Fate's Drive is vehicles generally; NoöPunk field-splits Pilot."
+      },
+      "ep2": {
+        "name": "Pilot",
+        "label": "direct"
+      },
+      "cwn": {
+        "name": "Pilot",
+        "label": "direct"
+      },
+      "pbta": {
+        "name": "drive / fly move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Precognition",
+      "stat": "PSY",
+      "fate": {
+        "name": "an aspect or stunt",
+        "label": "analogy"
+      },
+      "ep2": {
+        "name": "Psi",
+        "label": "analogy",
+        "note": "A specific EP2 sleight rather than a skill."
+      },
+      "cwn": {
+        "name": null,
+        "label": "unsupported"
+      },
+      "pbta": {
+        "name": "a custom precognition move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Program",
+      "stat": "CYB",
+      "fate": {
+        "name": "Crafts",
+        "label": "analogy"
+      },
+      "ep2": {
+        "name": "Program",
+        "label": "direct"
+      },
+      "cwn": {
+        "name": "Program",
+        "label": "direct"
+      },
+      "pbta": {
+        "name": "write software move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Provoke",
+      "stat": "SOC",
+      "fate": {
+        "name": "Provoke",
+        "label": "direct"
+      },
+      "ep2": {
+        "name": "Provoke",
+        "label": "direct"
+      },
+      "cwn": {
+        "name": "Talk",
+        "label": "analogy"
+      },
+      "pbta": {
+        "name": "Provoke / intimidate",
+        "label": "direct",
+        "note": "PbtA has a distinct social-provocation move; the clearest social direct match."
+      }
+    },
+    {
+      "skill": "Psychic Defence",
+      "stat": "PSY",
+      "fate": {
+        "name": "Will",
+        "label": "analogy"
+      },
+      "ep2": {
+        "name": "Psi (opposed)",
+        "label": "analogy",
+        "note": "EP2 opposes psi attacks with the same skill or a Willpower-type defence."
+      },
+      "cwn": {
+        "name": null,
+        "label": "unsupported"
+      },
+      "pbta": {
+        "name": "resist influence move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Psychokinesis",
+      "stat": "PSY",
+      "fate": {
+        "name": "an aspect or stunt",
+        "label": "analogy"
+      },
+      "ep2": {
+        "name": "Psi",
+        "label": "analogy"
+      },
+      "cwn": {
+        "name": null,
+        "label": "unsupported"
+      },
+      "pbta": {
+        "name": "a custom telekinesis move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Research",
+      "stat": "INT",
+      "fate": {
+        "name": "Investigate or Lore",
+        "label": "analogy",
+        "note": "Fate splits finding from knowing into Investigate and Lore."
+      },
+      "ep2": {
+        "name": "Research",
+        "label": "direct"
+      },
+      "cwn": {
+        "name": "Know",
+        "label": "analogy"
+      },
+      "pbta": {
+        "name": "look it up / gather info move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Sneak",
+      "stat": "REF",
+      "fate": {
+        "name": "Stealth",
+        "label": "direct"
+      },
+      "ep2": {
+        "name": "Infiltrate",
+        "label": "direct"
+      },
+      "cwn": {
+        "name": "Sneak",
+        "label": "direct"
+      },
+      "pbta": {
+        "name": "Act Under Pressure / sneak move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Survival",
+      "stat": "INT",
+      "fate": {
+        "name": "Survival (or Lore)",
+        "label": "analogy",
+        "note": "Fate often carries it as an aspect or a Lore stunt."
+      },
+      "ep2": {
+        "name": "Survival",
+        "label": "direct"
+      },
+      "cwn": {
+        "name": "Survive",
+        "label": "direct"
+      },
+      "pbta": {
+        "name": "forage / endure move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Tactics",
+      "stat": "INT",
+      "fate": {
+        "name": null,
+        "label": "analogy",
+        "note": "Fate handles small-unit tactics with aspects and create-an-advantage."
+      },
+      "ep2": {
+        "name": null,
+        "label": "analogy"
+      },
+      "cwn": {
+        "name": null,
+        "label": "analogy",
+        "note": "CWN uses the faction/mission toolkit rather than a skill."
+      },
+      "pbta": {
+        "name": "Read a situation (battle)",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Talk",
+      "stat": "SOC",
+      "fate": {
+        "name": "Rapport",
+        "label": "direct"
+      },
+      "ep2": {
+        "name": "Persuade",
+        "label": "direct"
+      },
+      "cwn": {
+        "name": "Talk",
+        "label": "direct"
+      },
+      "pbta": {
+        "name": "Persuade / manipulate",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Telepathy",
+      "stat": "PSY",
+      "fate": {
+        "name": "an aspect or stunt",
+        "label": "analogy"
+      },
+      "ep2": {
+        "name": "Psi",
+        "label": "analogy"
+      },
+      "cwn": {
+        "name": null,
+        "label": "unsupported"
+      },
+      "pbta": {
+        "name": "a custom telepathy move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Trade",
+      "stat": "SOC",
+      "fate": {
+        "name": "Resources",
+        "label": "analogy"
+      },
+      "ep2": {
+        "name": null,
+        "label": "analogy"
+      },
+      "cwn": {
+        "name": "Trade",
+        "label": "direct"
+      },
+      "pbta": {
+        "name": "bargain move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Unarmed",
+      "stat": "FIT",
+      "fate": {
+        "name": "Fight",
+        "label": "analogy",
+        "note": "Fate does not split armed from unarmed."
+      },
+      "ep2": {
+        "name": "Melee (unarmed)",
+        "label": "analogy"
+      },
+      "cwn": {
+        "name": "Punch",
+        "label": "direct"
+      },
+      "pbta": {
+        "name": "hand-to-hand move",
+        "label": "analogy"
+      }
+    },
+    {
+      "skill": "Work",
+      "stat": "Variable",
+      "fate": {
+        "name": "an aspect",
+        "label": "analogy",
+        "note": "Fate carries professional identity as an aspect, which is the same idea as NoöPunk's Work."
+      },
+      "ep2": {
+        "name": null,
+        "label": "analogy"
+      },
+      "cwn": {
+        "name": "Work",
+        "label": "direct"
+      },
+      "pbta": {
+        "name": "playbook / background",
+        "label": "analogy",
+        "note": "In PbtA, profession is a playbook rather than a skill."
+      }
+    }
+  ],
+  "summary": {
+    "$comment": "Computed by tools/issue255_comparison_report.py from the mapping above; never hand-written. A guard fails if these drift.",
+    "fate": {
+      "direct": 12,
+      "analogy": 28,
+      "unsupported": 0
+    },
+    "ep2": {
+      "direct": 20,
+      "analogy": 18,
+      "unsupported": 2
+    },
+    "cwn": {
+      "direct": 19,
+      "analogy": 15,
+      "unsupported": 6
+    },
+    "pbta": {
+      "direct": 2,
+      "analogy": 38,
+      "unsupported": 0
+    }
+  },
+  "reading": "No family is a drop-in for the NoöPunk list. Fate Core is the closest STRUCTURAL match (skills plus aspects plus stunts) but lacks a psi skill, a leadership skill and a professional skill. EP2 is the closest SCOPE match and is where several NoöPunk skills were originally seeded, but it is NC-licensed and its list is shorter. CWN/SWN is the closest NAMING match and needs three additions (Fray, Free Fall, a psi family). PbtA has no skills at all: every row is a move or a playbook, which is exactly why a PbtA conversion changes the game's type rather than just its numbers."
+}
