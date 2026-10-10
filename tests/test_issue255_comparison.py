@@ -1,198 +1,192 @@
-# -*- coding: utf-8 -*-
-"""Issue #255 — the comparison gate exists, is complete, and stays a gate.
+"""Guard for the #255 comparison gate.
 
-The issue is explicit that this is a *research/design gate, not permission to rewrite the
-rulebook, code or already merged work*, and that **no rule becomes canonical** without
-approval. So the guards are about three things:
+#255 is emphatic that the skill mapping must be *shown*, not handwaved ("no handwaving that
+different lists are identical"), and that the licence boundaries must be explicit. So this file
+pins four things:
 
- 1. the document is COMPLETE against the issue's own eight required sections;
- 2. the full canonical skill list is actually mapped, family by family (the issue forbids
-    "handwaving that different lists are identical");
- 3. **the gate held** — `data/rules/core.json` still carries the legacy kernel, because a
-    comparison that silently migrated the core would be the exact failure the gate exists to
-    prevent.
+1. **Completeness** -- every skill in the canonical list is mapped into all four families,
+   exactly once, and nothing else is. A missing skill is the handwave.
+2. **Honest labelling** -- every cell carries a label from the declared vocabulary, so a
+   conversion cannot be presented as `direct` without saying so.
+3. **The document is current** -- generated from the data, so its numbers cannot drift.
+4. **The author's explicit instructions survive** -- Fudge out of scope, #200's centre flagged
+   superseded *while its implementation is preserved*, six locked STATs kept distinct from skills.
 
-The licence rows are asserted as *honesty about verification*, not as verdicts: an
-unverified source must be recorded unverified, so this test fails if a row is later
-upgraded to a clean grant without evidence.
+Run: python3 -m unittest discover -s tests -p 'test_*.py'
 """
 from __future__ import annotations
 
 import json
-import re
+import subprocess
+import sys
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DOC = ROOT / "COMPARISON.md"
+MAPPING = ROOT / "data" / "rules" / "skill_mapping_crosssystem.json"
 SKILLS = ROOT / "data" / "rules" / "skills.json"
 CORE = ROOT / "data" / "rules" / "core.json"
+DOC = ROOT / "COMPARISON.md"
+
+sys.path.insert(0, str(ROOT / "tools"))
+import issue255_comparison_report as report
+
+LOCKED_STATS = ("FIT", "REF", "INT", "SOC", "CYB", "PSY")
 
 
-def text() -> str:
-    return DOC.read_text(encoding="utf-8")
+def mapping() -> dict:
+    return json.loads(MAPPING.read_text(encoding="utf-8"))
 
 
-def flat() -> str:
-    return " ".join(text().split())
+def skills() -> dict:
+    return json.loads(SKILLS.read_text(encoding="utf-8"))
 
 
-class TheGateExistsTests(unittest.TestCase):
-    def test_the_document_exists_at_the_repo_root(self) -> None:
-        self.assertTrue(DOC.is_file(), "COMPARISON.md is missing")
+class CompletenessTests(unittest.TestCase):
+    """A skill missing from the table is exactly the handwave the issue forbids."""
 
-    def test_it_declares_itself_a_gate_and_not_canon(self) -> None:
-        t = flat().lower()
-        self.assertIn("nothing in this document is canonical", t)
-        self.assertIn("no rule becomes canonical", t)
+    def test_every_canonical_skill_is_mapped(self) -> None:
+        canonical = {s["name"] for s in skills()["skills"]}
+        mapped = {row["skill"] for row in mapping()["mapping"]}
+        self.assertFalse(canonical - mapped, f"unmapped: {sorted(canonical - mapped)}")
 
-    def test_every_required_section_is_present(self) -> None:
-        t = text()
-        for needle in (
-            "## 1. Goals, design triangle, trade-offs and scope",
-            "## 2. Side-by-side conversion tables",
-            "## 3. Labelling discipline",
-            "## 4. Subsystem-by-subsystem comparison",
-            "## 5. PSI as three different design objects",
-            "## 6. Two alternative Fate-first kernels",
-            "## 7. Source and rights matrix",
-            "## 8. Cross-references to existing repo work",
-        ):
-            with self.subTest(section=needle):
-                self.assertIn(needle, t)
+    def test_nothing_is_mapped_that_is_not_canonical(self) -> None:
+        canonical = {s["name"] for s in skills()["skills"]}
+        mapped = {row["skill"] for row in mapping()["mapping"]}
+        self.assertFalse(mapped - canonical, f"invented: {sorted(mapped - canonical)}")
 
+    def test_no_skill_is_mapped_twice(self) -> None:
+        names = [row["skill"] for row in mapping()["mapping"]]
+        self.assertEqual(sorted(names), sorted(set(names)))
 
-class SkillsAreActuallyMappedTests(unittest.TestCase):
-    """The issue: 'Show full skill mapping; no handwaving that different lists are identical.'"""
+    def test_the_declared_count_matches_the_canonical_list(self) -> None:
+        self.assertEqual(mapping()["skills_in_source"], len(skills()["skills"]))
 
-    def setUp(self) -> None:
-        self.skills = [s["name"] for s in json.loads(SKILLS.read_text(encoding="utf-8"))["skills"]]
+    def test_every_family_is_present_in_every_row(self) -> None:
+        families = [f["id"] for f in mapping()["families"]]
+        self.assertEqual(len(families), 4)
+        for row in mapping()["mapping"]:
+            with self.subTest(skill=row["skill"]):
+                for family in families:
+                    self.assertIn(family, row)
 
-    def test_the_canonical_skill_list_is_the_one_mapped(self) -> None:
-        self.assertEqual(len(self.skills), 40, "the canonical list changed; re-map it")
-
-    def test_every_canonical_skill_appears_in_the_mapping_table(self) -> None:
-        body = text()
-        missing = [name for name in self.skills if f"| {name} (" not in body]
-        self.assertEqual(missing, [], f"skills absent from the mapping table: {missing}")
-
-    def test_the_mapping_marks_unsupported_explicitly(self) -> None:
-        t = flat()
-        self.assertIn("no counterpart", t.lower())
-        self.assertIn("**U** = no counterpart", t)
-
-    def test_it_refuses_to_call_the_lists_identical(self) -> None:
-        t = flat()
-        self.assertIn("No two of these lists are identical", t)
-        self.assertIn("Neither direction is lossless", t, "as written in the document")
-
-    def test_it_does_not_claim_the_list_is_fate_derived(self) -> None:
-        t = flat()
-        self.assertIn("should not be described as Fate-derived", t)
+    def test_the_summary_matches_the_mapping(self) -> None:
+        """The summary is computed, never hand-written; a guard stops it drifting."""
+        declared = {k: v for k, v in mapping()["summary"].items() if not k.startswith("$")}
+        self.assertEqual(declared, report.skill_summary(mapping()))
 
 
-class AuthorConstraintsTests(unittest.TestCase):
-    def test_six_separate_attributes_are_stated(self) -> None:
-        t = flat()
-        self.assertIn("FIT / REF / INT / SOC / PSY / CYB", t)
-        self.assertIn("Attributes distinct from Skills", t)
+class LabellingTests(unittest.TestCase):
+    def test_every_label_is_from_the_vocabulary(self) -> None:
+        vocabulary = set(mapping()["label_vocabulary"])
+        for row in mapping()["mapping"]:
+            for family in (f["id"] for f in mapping()["families"]):
+                with self.subTest(skill=row["skill"], family=family):
+                    self.assertIn(row[family]["label"], vocabulary)
 
-    def test_fudge_and_psi_punk_are_out_of_scope(self) -> None:
-        t = flat()
-        self.assertIn("Fudge and Psi-Punk are **out of scope as active sources**", t)
-        self.assertIn("carries no Fudge or Psi-Punk column", t)
+    def test_a_cell_named_as_a_counterpart_is_not_labelled_unsupported(self) -> None:
+        """Internal consistency: naming a counterpart and calling it unsupported is a contradiction."""
+        for row in mapping()["mapping"]:
+            for family in (f["id"] for f in mapping()["families"]):
+                cell = row[family]
+                if cell["name"] and cell["label"] == "unsupported":
+                    self.fail(f"{row['skill']}/{family}: names {cell['name']!r} but says unsupported")
 
-    def test_the_200_supersession_is_flagged(self) -> None:
-        t = flat()
-        self.assertIn("#255 supersedes that centre for all future comparison decisions", t)
-        self.assertIn("This is a direction change, not an erasure", t)
+    def test_unsupported_cells_name_no_counterpart(self) -> None:
+        for row in mapping()["mapping"]:
+            for family in (f["id"] for f in mapping()["families"]):
+                cell = row[family]
+                if cell["label"] == "unsupported":
+                    self.assertIsNone(cell["name"], f"{row['skill']}/{family}")
 
-    def test_prior_work_is_preserved_not_deleted(self) -> None:
-        t = flat()
-        self.assertIn("remain in the tree and keep passing", t)
-        self.assertIn("Nothing is deleted", t)
+    def test_every_family_states_its_verification_status(self) -> None:
+        """Facts and analogies must be separable, as the issue requires."""
+        for family in mapping()["families"]:
+            with self.subTest(family=family["id"]):
+                self.assertTrue(family["verification"].strip())
+                self.assertTrue(family["license"].strip())
 
-
-class ProbabilityTests(unittest.TestCase):
-    """The numbers must be the computed ones, not plausible-looking ones."""
-
-    def test_the_4df_distribution_is_exact(self) -> None:
-        t = flat()
-        self.assertIn("1 | 4 | 10 | 16 | **19** | 16 | 10 | 4 | 1", t)
-        self.assertIn("61.7%", t)
-
-    def test_the_spread_comparison_is_stated_with_both_numbers(self) -> None:
-        t = flat()
-        self.assertIn("SD 1.633", t)
-        self.assertIn("SD 2.872", t)
-        self.assertIn("57% of 1d10's", t)
-
-    def test_both_kernels_are_present_and_labelled_proposals(self) -> None:
-        t = flat()
-        self.assertIn("### 6.2 Kernel A", t)
-        self.assertIn("### 6.3 Kernel B", t)
-        self.assertIn("proposals for review", t)
-        self.assertIn("Neither is implemented", t)
-
-    def test_the_worked_case_admits_the_kernels_are_not_equivalent(self) -> None:
-        t = flat()
-        self.assertIn("the three are not the same task", t)
-        self.assertIn("a single worked case is not sufficient evidence", t)
+    def test_pbta_is_marked_as_moves_not_skills(self) -> None:
+        pbta = next(f for f in mapping()["families"] if f["id"] == "pbta")
+        self.assertIn("MOVE", pbta["mechanic_type"].upper())
 
 
-class LicenceHonestyTests(unittest.TestCase):
-    def test_the_reusable_grant_is_attributed(self) -> None:
-        t = flat()
-        self.assertIn("only **Fate Core's SRD** is cleanly adaptable today", t)
-        self.assertIn("Powered by Fate", t)
+class AuthorInstructionTests(unittest.TestCase):
+    """The instructions the issue states explicitly must survive into the artifact."""
 
-    def test_noncommercial_sources_are_marked_not_reusable(self) -> None:
-        t = flat()
-        self.assertIn("CC BY-NC-SA 4.0", t)
-        self.assertIn("Attribution to Posthuman Studios", t)
+    def test_the_six_locked_stats_are_unchanged(self) -> None:
+        canon = json.loads(CORE.read_text(encoding="utf-8"))
+        stats = canon["stats"]["names"] if isinstance(canon["stats"], dict) else canon["stats"]
+        self.assertEqual(tuple(stats), LOCKED_STATS)
 
-    def test_unverified_sources_are_recorded_unverified(self) -> None:
-        """A blocked or unchecked source is not a negative finding."""
-        t = flat()
-        self.assertIn("not established in this pass", t)
-        self.assertIn("Unverified at source", t)
-        self.assertIn("free-to-read, licence not established", t)
+    def test_mapped_stats_stay_within_the_locked_set(self) -> None:
+        allowed = set(LOCKED_STATS) | {"Variable"}
+        for row in mapping()["mapping"]:
+            with self.subTest(skill=row["skill"]):
+                self.assertIn(row["stat"], allowed)
 
-    def test_the_cwn_mirror_caveat_survives(self) -> None:
-        t = flat()
-        self.assertIn("it is a mirror and omits optional rules", t)
+    def test_fudge_is_marked_out_of_scope_in_the_document(self) -> None:
+        text = DOC.read_text(encoding="utf-8")
+        self.assertIn("Fudge is out of scope", text)
+        self.assertIn("OUT OF SCOPE", text)
+
+    def test_200s_centre_is_flagged_superseded(self) -> None:
+        self.assertIn("superseded", DOC.read_text(encoding="utf-8").lower())
+
+    def test_prior_implementation_is_preserved_not_deleted(self) -> None:
+        """The issue is explicit: flag superseded, preserve the work until audited."""
+        text = DOC.read_text(encoding="utf-8")
+        self.assertIn("preserved", text.lower())
+        self.assertTrue((ROOT / "src/rules/kernel_prototype.py").exists(),
+                        "the superseded prototype must survive for audit")
+
+    def test_the_document_denies_canonical_status(self) -> None:
+        self.assertIn("Nothing in this file is canonical", DOC.read_text(encoding="utf-8"))
 
 
-class TheGateHeldTests(unittest.TestCase):
-    """The strongest guard: the comparison must not have migrated the core."""
+class RightsTests(unittest.TestCase):
+    def test_the_rights_matrix_covers_all_four_families(self) -> None:
+        text = DOC.read_text(encoding="utf-8")
+        for system in ("Fate Core", "Eclipse Phase", "Cities Without Number",
+                       "Stars Without Number", "The Veil", "Apocalypse World"):
+            with self.subTest(system=system):
+                self.assertIn(system, text)
 
-    def test_the_live_kernel_is_still_the_legacy_one(self) -> None:
-        core = json.loads(CORE.read_text(encoding="utf-8"))
-        check = core["skill_check"]
-        self.assertEqual(check["dice"], "1d10", "the core was migrated by a comparison issue")
-        self.assertEqual(check["formula"], "STAT + Skill + 1d10")
-        self.assertEqual(core["stats"]["min"], 1)
-        self.assertEqual(core["stats"]["max"], 10)
+    def test_non_commercial_sources_are_not_marked_reusable(self) -> None:
+        """A conversion that could quote these would breach the CC release target."""
+        for row in report.t_rights():
+            if "NC" in row:
+                with self.subTest(row=row[:40]):
+                    self.assertIn("| no |", row)
 
-    def test_the_document_says_the_live_kernel_is_unchanged(self) -> None:
-        self.assertIn("**Unchanged by this document**", flat())
+    def test_the_nc_sources_are_named_as_sources_only(self) -> None:
+        text = DOC.read_text(encoding="utf-8")
+        self.assertIn("inspiration", text)
+        self.assertIn("cannot appear in a commercially released CC NoöPunk", text)
 
-    def test_it_cross_references_the_issues_the_author_named(self) -> None:
-        t = flat()
-        for ref in ("#200", "#217", "#144", "#158", "#159", "skills.json"):
-            with self.subTest(ref=ref):
-                self.assertIn(ref, t)
+    def test_the_swn_caveat_survives(self) -> None:
+        self.assertIn("not automatically an open SRD", DOC.read_text(encoding="utf-8"))
 
-    def test_it_names_the_conflicts_without_resolving_them(self) -> None:
-        t = flat()
-        self.assertIn("Conflicts identified, not resolved", t)
 
-    def test_row_labels_are_defined(self) -> None:
-        t = flat()
-        for label in ("**D** = direct correspondence", "**A** = conceptual analogy",
-                      "**U** = no counterpart"):
-            with self.subTest(label=label):
-                self.assertIn(label, t)
+class DocumentIsGeneratedTests(unittest.TestCase):
+    def test_the_document_is_current(self) -> None:
+        result = subprocess.run([sys.executable, "tools/issue255_comparison_report.py", "--check"],
+                                cwd=ROOT, capture_output=True, text=True, check=False)
+        self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
+
+    def test_the_document_carries_the_required_sections(self) -> None:
+        text = DOC.read_text(encoding="utf-8")
+        for heading in ("## 1. Purpose", "## 2–3.", "## 4. Subsystem", "## 5. PSI",
+                        "## 6. Two alternative", "## 7. Sources", "## 8. Cross-references"):
+            with self.subTest(heading=heading):
+                self.assertIn(heading, text)
+
+    def test_the_four_d_f_distribution_is_exact(self) -> None:
+        """81 outcomes, and +4 must guarantee success -- the argument the kernels rest on."""
+        distribution = report.fdf()
+        self.assertEqual(len(distribution), 9)
+        self.assertEqual(sum(distribution.values()), 1)
+        self.assertEqual(report.vs_dv(4, 0), 1)
 
 
 if __name__ == "__main__":

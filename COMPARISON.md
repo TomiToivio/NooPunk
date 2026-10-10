@@ -1,460 +1,573 @@
-# COMPARISON.md — Fate-first comparison gate for the NoöPunk core
+# COMPARISON.md — cross-system comparison before locking the NoöPunk core
 
-**Status: RESEARCH / GATE. Nothing in this document is canonical.** Issue
-[#255](https://github.com/TomiToivio/NooPunk/issues/255) requires a comparison before any core
-rules conversion is chosen. No rule change, no code change and no migration follows from this
-document until the comparison is reviewed and the author records decisions.
+**Status: generated comparison gate. Nothing in this file is canonical.**
 
-**Author direction (2026-10-10): drop Fudge / Psi-Punk as a foundation.** This document therefore
-carries no Fudge or Psi-Punk column. See §0 for what that supersedes.
+For [#255](https://github.com/TomiToivio/NooPunk/issues/255), parent epic
+[#200](https://github.com/TomiToivio/NooPunk/issues/200). Regenerate with
+`python3 tools/issue255_comparison_report.py`; a guard fails if this file is out of date.
 
----
+## 1. Purpose, GNS triangle and scope
 
-## 0. Supersession, recorded rather than assumed
+Author direction (2026-10-10): **drop Fudge/Psi-Punk as a foundation**, compare four
+families, and decide a Fate-first direction **before** committing to a core conversion.
+This is a research gate. It does not rewrite the rulebook, the code, or merged work.
 
-Issue **#200** placed a *Fudge / Psi-Punk / Fate / Transhumanity's Fate* hybrid at the centre of the
-design triangle. **#255 supersedes that centre for all future comparison decisions**: the starting
-chassis is now **Fate Core / Transhumanity's Fate**, and Fudge and Psi-Punk are **out of scope as
-active sources**.
+The triangle below is a **subjective design map, not a classification**. Every one of these
+games mixes agendas; the corners name which tendency each family serves best.
 
-This is a direction change, not an erasure:
+| Corner | Family | What it does best | Why it is not adopted wholesale |
+| --- | --- | --- | --- |
+| **Centre** | Fate Core / Transhumanity's Fate | aspects, stunts, stress/consequences, flexible actions | too simple as-is: **six separately rated Attributes AND separately rated Skills are mandatory** |
+| **Simulationist** | Eclipse Phase 2E | transhuman, hacking, PSI, injury, equipment, existential risk | too complex to import, and **NC-licensed** |
+| **Gamist** | Cities / Stars Without Number | concise OSR tactics, backgrounds/edges/foci, mission and faction tools | carries D&D-adjacent class/level assumptions NoöPunk does not want |
+| **Narrativist** | PbtA / The Veil | fiction-first moves, hard choices, relationships, drama | changes the game's *type*, not just its numbers; The Veil is more thematically pertinent than Apocalypse World |
 
-- `docs/design/ISSUE_200_*`, the resolution lab, the kernel prototype, the cross-system converter
-  and every test they carry **remain in the tree and keep passing**. Nothing is deleted.
-- Where this document compares dice history (§6), it says plainly that the Fudge-style 4dF lineage
-  came through #200 and is now evaluated as *one option among others*, not as the inherited centre.
-- OGL-only expression from Fudge or Psi-Punk must not enter the CC release regardless of this
-  document's conclusions — that is a licensing constraint, not a design preference (§7).
+### Scope and licence boundaries
 
----
+- The centre is **built on** Fate Core, but **Transhumanity's Fate text is NC and is not copied**.
+- **Fudge is out of scope** as an active chassis. The #213/#215 kernel prototype that consumes
+  a Fudge/Fate ladder mapping is **superseded for future comparison decisions and preserved
+  untouched** for audit, per this issue. #200's own Fudge/Psi-Punk centre is superseded the
+  same way, and this file says so rather than quietly rewriting it.
+- No rule here becomes canonical. Deliverable 6 is explicitly a draft of alternatives.
 
-## 1. Goals, design triangle, trade-offs and scope
+## 2–3. The canonical skill list against all four families (40 skills, full mapping)
 
-### 1.1 The triangle as a design *map*, not a rating
+*Every* skill in `data/rules/skills.json` is mapped into *every* family. Rows are labelled
+`direct` (comparable mechanic and scope), `analogy` (partial overlap, or a different mechanic
+type entirely) and `unsupported` (no counterpart). The labels exist because #255 forbids
+claiming the lists are identical; they are not, and a conversion is lossy even when it is
+`direct`, because the numeric scales differ.
 
-GNS is a **subjective heuristic**. Every game below mixes agendas; the corners say what each family
-is *best used for* in NoöPunk, not what it "is".
-
-```
-                    SIMULATIONISM
-                     Eclipse Phase 2E
-                          /\
-                         /  \
-                        /    \
-                       / CORE \
-                      /  Fate  \
-                     /  Core /  \
-                    / Transhumanity's
-                   /      Fate      \
-                  /__________________\
-   NARRATIVISM                        GAMISM
-   PbtA / The Veil                    Cities Without Number
-                                       Stars Without Number
-```
-
-- **Centre — Fate Core / Transhumanity's Fate (preferred starting chassis).** Aspects, stunts,
-  stress/consequences, flexible actions. **Too simple as-is**: NoöPunk requires **six independently
-  rated Attributes AND separately rated Skills**, which Fate does not supply.
-- **Simulationist corner — Eclipse Phase 2E.** Rich transhuman, hacking, PSI, injury, equipment and
-  existential-risk procedures; **too complex to import wholesale**.
-- **Gamist corner — CWN / SWN.** Concise playable OSR tactics, backgrounds/edges or foci, skills,
-  mission/faction tools. **Avoid D&D/class/level assumptions.**
-- **Narrativist corner — PbtA / The Veil.** Fiction-first moves, hard choices, relationships,
-  consequences. **The Veil is more thematically pertinent than Apocalypse World** (postmodern
-  cyberpunk, a digital overlay over the senses) and is the PbtA reference used here.
-
-### 1.2 Non-negotiable requirements carried from the author direction
-
-1. Six independently rated Attributes: **FIT / REF / INT / SOC / PSY / CYB**.
-2. **Attributes distinct from Skills** (Fate's unified approach does not satisfy this alone).
-3. **Preserve the existing NoöPunk skill list** exactly — `data/rules/skills.json`, 40 skills.
-4. No silent rule switch and no arbitrary 1:1 mapping (§3).
-5. No Fudge in the recommended active sources.
-6. No NC or OGL-only **expression** in the commercial CC target.
-
-### 1.3 Scope boundary
-
-**In scope:** comparison, conversion tables, probability analysis, a source/rights matrix and two
-*proposals*.
-**Out of scope:** changing `data/rules/*`, editing `RULEBOOK.md` or `rulebook/*`, implementing any
-kernel, closing #217 or #232.
-
----
-
-**No rule becomes canonical without the author's recorded approval.**
-
-## 2. Side-by-side conversion tables
-
-**Family key:** **F** = Fate Core / Transhumanity's Fate · **E** = Eclipse Phase 2E ·
-**C** = Cities Without Number / Stars Without Number · **P** = PbtA / The Veil.
-**Row labels:** **D** = direct correspondence · **A** = conceptual analogy · **U** = no counterpart.
-
-### 2.1 Attributes and stat analogues
-
-| NoöPunk | F | E | C | P |
+| Family | Role | direct | analogy | unsupported |
 | --- | --- | --- | --- | --- |
-| FIT (Fitness) | A — *Physique* covers force/endurance, not general fitness | **D** — *Somatics* (2e: Fitness/BOD) | A — *Exert* (skill) + hit points | U — approaches (Forceful/…) are not attributes |
-| REF (Reflexes) | A — *Athletics* + *Notice* split | **D** — *Reflexes* | A — initiative, no attribute | U |
-| INT (Intelligence) | A — *Lore* + *Investigate*, knowledge-as-skill | **D** — *Cognition* | A — *Know* (skill) | U |
-| SOC (Social) | A — *Rapport* / *Contacts* / *Provoke* split three ways | **D** — *Savvy* (2e: CHA/SAV) | A — *Talk* / *Lead* / *Connect* split | A — moves like *Read a Person* |
-| PSY (Psyche) | A — *Will*; TF adds psi via stunts/aspects | **D** — *Willpower* + *Psi* | A — *Survive* (skill); SWN psi is a separate subsystem | A — *Resist* / psychic moves |
-| CYB (Cybernetics) | U — no cyber attribute; TF handles it as gear/stunts | A — 2e has no single cyber attribute; implants are gear | A — cyber is gear; CWN adds a *Hacking* skill | U — gear tags |
-| **Attribute + Skill as a check** | **U** — Fate resolves on a single rated skill + 4dF | **D** — aptitude + skill + d10 | A — skill + 2d6 / + level | U — 2d6 + stat, but stats are the playbook's |
+| Fate Core / Transhumanity's Fate | centre (preferred starting chassis) | 12 | 28 | 0 |
+| Eclipse Phase 2nd Edition | simulationist corner | 20 | 18 | 2 |
+| Cities Without Number / Stars Without Number | gamist corner | 19 | 15 | 6 |
+| PbtA / The Veil | narrativist corner | 2 | 38 | 0 |
 
-**Lossy points, stated:** the NoöPunk attribute set is *six independent axes including a dedicated
-CYB and PSY*. EP2 is the only family with a genuinely comparable attribute array; Fate and PbtA
-require **new attributes to be added**, and CWN/SWN require attributes to be introduced at all.
+### Verification status, per family
 
-### 2.2 The canonical 40-skill list across all four families
+- **Fate Core / Transhumanity's Fate** — Fate Core's skill list verified against the CC BY 3.0 SRD as recorded in data/sources/game_system_rights.json. Which skills Transhumanity's Fate ADDS (as opposed to inheriting) is INFERRED from its Eclipse Phase lineage, not read from its text, which is NC-licensed and not reproduced here.
+- **Eclipse Phase 2nd Edition** — The active-skill names below are INFERRED from the EP2 lineage and the open online reference; the exact list was not re-read from eclipsephase.github.io during this pass. Treat EP2 column names as strong analogies, not quotations.
+- **Cities Without Number / Stars Without Number** — The CWN/SWN skill list below is a well-established shared list and was NOT re-verified against the official CC0 SRD during this pass, per #255's warning to verify from the original rather than a mirror. Recorded as the next verification step.
+- **PbtA / The Veil** — Move names below are the generic PbtA idiom, chosen so a reader unfamiliar with narrativist play can see the shape. The Veil's EXACT move list and attribute names were NOT verified against the publisher text; no official SRD is invented here, as #255 requires.
 
-This is the full mapping the issue requires. "No counterpart" is marked **U** rather than
-hand-waved; where a family covers the ground with a *different kind* of object (a Fate skill, a PbtA
-move, an SWN skill) that is stated.
+### Full mapping
 
-| # | NoöPunk skill (STAT) | F | E | C | P |
+| NoöPunk skill | STAT | Fate Core / Transhumanity's Fate | Eclipse Phase 2nd Edition | Cities Without Number / Stars Without Number | PbtA / The Veil |
 | --- | --- | --- | --- | --- | --- |
-| 1 | Administrate (INT) | U | U | **D** — *Administer* | U |
-| 2 | Athletics (FIT) | **D** — *Athletics* | **D** — *Athletics* | A — *Exert* | A — *Act Under Pressure* |
-| 3 | Connect (SOC) | **D** — *Contacts* | A — *Persuade* / networking | **D** — *Connect* | A — *Streetwise*-type moves |
-| 4 | Counterintelligence (INT) | A — *Deceive* inverted | A — *Infiltrate* / Kinesics | A — *Sneak* + *Notice* | A — *Read a Person* |
-| 5 | Deceive (SOC) | **D** — *Deceive* | **D** — *Deceive* | A — *Talk* | A — *Manipulate* |
-| 6 | ESP (PSY) | A — psi stunt | **D** — psi sleights | A — psychic powers (separate subsystem) | A — psychic move |
-| 7 | Exotic Skill (any) | A — any skill with a stunt | A — *Exotic Skill* concept | A — foci/edges grant odd competencies | A — playbook move |
-| 8 | First Aid (INT) | A — *Medicine* | **D** — *Medicine* (trauma care) | A — *Heal* | U |
-| 9 | Forensics (INT) | A — *Investigate* | A — *Research* / *Perceive* | A — *Know* + *Notice* | A — *Investigate*-type move |
-| 10 | Fray (REF) | A — *Athletics* defence | **D** — *Fray* | A — AC/armour + *Exert* | A — *Defy Danger* |
-| 11 | Free Fall (REF) | U | **D** — *Free Fall* | U | U |
-| 12 | Guns (REF) | **D** — *Shoot* | **D** — *Guns* | **D** — *Shoot* | A — *Open Fire*-type move |
-| 13 | Hardware (INT) | A — *Crafts* | **D** — *Hardware* | A — *Fix* | U |
-| 14 | Infosec (INT) | U | **D** — *Infosec*-family (see #17 caution) | A — *Program* | A — hacking move |
-| 15 | Intelligence Analysis (INT) | A — *Investigate* | **D** — *Research* + *Know* | A — *Know* + *Administer* | A — *Assess* move |
-| 16 | Interface (CYB) | U | **D** — *Interface* | A — *Program* | A — hacking move |
-| 17 | Investigation (INT) | **D** — *Investigate* | A — *Research* + *Perceive* + *Know* | A — *Notice* + *Know* | **D**-ish — the core *investigate* loop |
-| 18 | Kinesics (SOC) | A — *Empathy* | **D** — *Kinesics* | A — *Notice* | A — *Read a Person* |
-| 19 | Know (INT) | A — *Lore* | **D** — *Know* | **D** — *Know* | A — *Spout Lore* |
-| 20 | Lead (SOC) | A — *Rapport* + command | A — *Persuade* (leadership) | **D** — *Lead* | A — *Command*-type move |
-| 21 | Medicine (INT) | A — *Medicine* stunt | **D** — *Medicine* | A — *Heal* | U |
-| 22 | Melee (REF) | **D** — *Fight* | **D** — *Melee* | **D** — *Stab* | A — *Hack and Slash* |
-| 23 | Noöspace (PSY) | A — TF psi stunt | A — psi + mesh interaction | U | A — psychic/astral move |
-| 24 | Perceive (REF) | **D** — *Notice* | **D** — *Perceive* | **D** — *Notice* | A — *Read a Sitch* |
-| 25 | Perform (SOC) | A — *Rapport* / *Provoke* | A — *Persuade* performance | **D** — *Perform* | A — *Manipulate* |
-| 26 | Pilot (REF) | **D** — *Drive* | **D** — *Pilot* | **D** — *Pilot* | U |
-| 27 | Precognition (PSY) | A — psi stunt | **D** — psi sleight | U | A — psychic move |
-| 28 | Program (INT) | U | **D** — *Program* | **D** — *Program* | A — hacking move |
-| 29 | Provoke (SOC) | **D** — *Provoke* | **D** — *Provoke* | A — *Talk* (intimidation) | A — *Manipulate* / *Go Aggro* |
-| 30 | Psychic Defence (PSY) | A — *Will* vs psi | **D** — psi defence | A — mental saves | A — *Resist* move |
-| 31 | Psychokinesis (PSY) | A — psi stunt | **D** — psi sleight | A — psychic power | A — psychic move |
-| 32 | Research (INT) | A — *Investigate* + *Lore* | **D** — *Research* | A — *Know* | A — *Investigate*-type move |
-| 33 | Sneak (REF) | **D** — *Stealth* | **D** — *Infiltrate* | **D** — *Sneak* | A — *Act Under Pressure* |
-| 34 | Survival (FIT) | A — *Survival* (FAE) / *Physique* | **D** — *Survival* | **D** — *Survive* | U |
-| 35 | Tactics (INT) | A — *Lore* / create advantage | A — *Know* + *Tactics*-flavoured | A — *Lead* + *Know* | A — *Assess* |
-| 36 | Talk (SOC) | **D** — *Rapport* | **D** — *Persuade* | **D** — *Talk* | A — *Manipulate* |
-| 37 | Telepathy (PSY) | A — psi stunt | **D** — psi sleight | A — psychic power | A — psychic move |
-| 38 | Trade (SOC) | A — *Resources* (not a skill) | A — reputation/Commerce | **D** — *Trade* | A — *Barter*-type move |
-| 39 | Unarmed (REF) | A — *Fight* (no weapon split) | A — *Melee* covers unarmed | A — *Punch* | A — *Hack and Slash* |
-| 40 | Work (INT) | A — *Crafts* | A — *Hardware* / profession | **D** — *Work* | U |
+| Administrate | INT | Resources `analogy` | *no counterpart* `unsupported` | Administer `direct` | Negotiate / requisition move `analogy` |
+| Athletics | FIT | Athletics `direct` | Athletics `direct` | Exert `analogy` | Defy Danger / Act Under Pressure `analogy` |
+| Connect | SOC | Contacts `direct` | *no counterpart* `analogy` | Connect `direct` | Reach out to a contact `analogy` |
+| Counterintelligence | INT | Investigate `analogy` | *no counterpart* `analogy` | *no counterpart* `analogy` | Read a situation (threat) `analogy` |
+| Deceive | SOC | Deceive `direct` | Deceive `direct` | Talk `analogy` | Lay down a lie / manipulate `analogy` |
+| ESP | PSY | an aspect or stunt `analogy` | Psi `analogy` | *no counterpart* `unsupported` | Open your mind move `analogy` |
+| Exotic Skill | Variable | stunt `analogy` | Exotic Weapon (narrower) `analogy` | foci `analogy` | playbook move `analogy` |
+| First Aid | INT | *no counterpart* `analogy` | Medicine `analogy` | Heal `direct` | Patch someone up `analogy` |
+| Forensics | INT | Investigate `analogy` | *no counterpart* `analogy` | Heal `analogy` | Investigate a scene `analogy` |
+| Fray | REF | Athletics `analogy` | Fray `direct` | Exert `analogy` | Defy Danger `analogy` |
+| Free Fall | FIT | Athletics `analogy` | Free Fall `direct` | Exert `analogy` | Defy Danger `analogy` |
+| Guns | REF | Shoot `direct` | Guns `direct` | Shoot `direct` | Fire / shoot move `analogy` |
+| Hardware | CYB | Crafts `analogy` | Hardware `direct` | Fix `direct` | tinker / repair move `analogy` |
+| Infosec | CYB | Crafts (or a subsystem) `analogy` | Infosec `direct` | Program `analogy` | jack in / hack move `analogy` |
+| Intelligence Analysis | INT | Investigate `analogy` | *no counterpart* `analogy` | Know `analogy` | Read a charged situation `analogy` |
+| Interface | CYB | Interface (Transhumanity's Fate) `analogy` | Interface `direct` | *no counterpart* `analogy` | use the machine move `analogy` |
+| Investigation | INT | Investigate `direct` | *no counterpart* `analogy` | Notice `analogy` | Investigate a mystery `analogy` |
+| Kinesics | SOC | Empathy `direct` | Kinesics `direct` | *no counterpart* `analogy` | Read a person `direct` |
+| Know | INT | Lore `direct` | Know `direct` | Know `direct` | Spout lore / know things `analogy` |
+| Lead | SOC | *no counterpart* `analogy` | *no counterpart* `analogy` | Lead `direct` | Command / inspire move `analogy` |
+| Medicine | INT | *no counterpart* `analogy` | Medicine `direct` | Heal `direct` | treat a wound move `analogy` |
+| Melee | FIT | Fight `direct` | Melee `direct` | Stab `direct` | mix it up / hand-to-hand `analogy` |
+| Noöspace | PSY | an aspect `analogy` | *no counterpart* `unsupported` | *no counterpart* `unsupported` | a custom 'enter the noösphere' move `analogy` |
+| Perceive | PSY | Notice `direct` | Perceive `direct` | Notice `direct` | Read a situation `analogy` |
+| Perform | PSY | *no counterpart* `analogy` | *no counterpart* `analogy` | Perform `direct` | perform / sway move `analogy` |
+| Pilot | REF | Drive `analogy` | Pilot `direct` | Pilot `direct` | drive / fly move `analogy` |
+| Precognition | PSY | an aspect or stunt `analogy` | Psi `analogy` | *no counterpart* `unsupported` | a custom precognition move `analogy` |
+| Program | CYB | Crafts `analogy` | Program `direct` | Program `direct` | write software move `analogy` |
+| Provoke | SOC | Provoke `direct` | Provoke `direct` | Talk `analogy` | Provoke / intimidate `direct` |
+| Psychic Defence | PSY | Will `analogy` | Psi (opposed) `analogy` | *no counterpart* `unsupported` | resist influence move `analogy` |
+| Psychokinesis | PSY | an aspect or stunt `analogy` | Psi `analogy` | *no counterpart* `unsupported` | a custom telekinesis move `analogy` |
+| Research | INT | Investigate or Lore `analogy` | Research `direct` | Know `analogy` | look it up / gather info move `analogy` |
+| Sneak | REF | Stealth `direct` | Infiltrate `direct` | Sneak `direct` | Act Under Pressure / sneak move `analogy` |
+| Survival | INT | Survival (or Lore) `analogy` | Survival `direct` | Survive `direct` | forage / endure move `analogy` |
+| Tactics | INT | *no counterpart* `analogy` | *no counterpart* `analogy` | *no counterpart* `analogy` | Read a situation (battle) `analogy` |
+| Talk | SOC | Rapport `direct` | Persuade `direct` | Talk `direct` | Persuade / manipulate `analogy` |
+| Telepathy | PSY | an aspect or stunt `analogy` | Psi `analogy` | *no counterpart* `unsupported` | a custom telepathy move `analogy` |
+| Trade | SOC | Resources `analogy` | *no counterpart* `analogy` | Trade `direct` | bargain move `analogy` |
+| Unarmed | FIT | Fight `analogy` | Melee (unarmed) `analogy` | Punch `direct` | hand-to-hand move `analogy` |
+| Work | Variable | an aspect `analogy` | *no counterpart* `analogy` | Work `direct` | playbook / background `analogy` |
 
-**The honest result:** NoöPunk's list is **nearest to EP2 (about 18 direct, 16 analogy, 2 unsupported)
-and to CWN/SWN (about 15 direct, 19 analogy, 6 unsupported)**, and **furthest from Fate and PbtA**
-(Fate: 9 direct, 22 analogy, 7 unsupported; PbtA: ~1 direct, 25 analogy, 13 unsupported — because
-PbtA has *moves*, not a skill list).
+## 4. Subsystem comparison
 
-**No two of these lists are identical.** In particular EP2 has *Infiltrate* where NoöPunk has
-*Sneak*, and *Persuade* where NoöPunk splits *Talk / Lead / Perform*; CWN/SWN have *Administer*,
-*Connect*, *Work*, *Trade*, *Lead*, *Perform*, *Punch*, *Stab*, *Fix* and *Exert* — several of which
-are closer to NoöPunk than EP2's equivalents. A conversion must map **per skill**, which is what the
-table does, not per system.
-
-### 2.3 Dice distributions
-
-| | Fate Core | EP2 | CWN/SWN | PbtA / The Veil |
-| --- | --- | --- | --- | --- |
-| Dice | **4dF** (Fate dice) | **1d10** | **2d6** + skill + attribute (or class) | **2d6** |
-| Range | −4 … +4 | 1 … 10 | 2 … 12 | 2 … 12 |
-| Mean | **0** | **5.5** | 7 | 7 |
-| SD | **1.633** | **2.872** | 2.415 | 2.415 |
-| Shape | steep, centred, extreme results ~1.2% | **flat** — every result equally likely | triangular, bell-peaked | triangular |
-
-The load-bearing fact: **4dF's spread is 57% of 1d10's.** Under 4dF, competence dominates luck;
-under a flat d10, luck dominates. Any move to Fate dice is therefore a *balance* decision, not a
-cosmetic one (§6.2).
-
-### 2.4 Difficulty levels and target numbers
-
-| NoöPunk (current canon) | F | E | C | P |
-| --- | --- | --- | --- | --- |
-| 9 Simple | +0 *Fair* | ~10 trivial | 6 trivial | 6- |
-| 13 Everyday | +2 *Good* | ~15 easy | 7-9 = success w/ cost | **7-9 partial success** |
-| 15 Difficult | +4 *Great* | ~20 average | 10+ full success | 10+ full success |
-| 17 Professional | +6 *Superb* | ~25 hard | — | — |
-| 21 Heroic | +8 *Fantastic* | ~30 very hard | — | — |
-| 24 Incredible | — (beyond ladder) | ~35 | — | — |
-| 29 Legendary | — | ~40+ | — | — |
-
-**Fate's ladder stops at +8 and PbtA has three outcomes, not seven DVs.** NoöPunk's seven-step
-ladder is a **d10-shaped** ladder: it maps cleanly onto *none* of the four. This is the single
-biggest conversion asymmetry and the reason §6 proposes recalibrated ladders rather than reused
-ones.
-
-### 2.5 Degree of success
-
-| | Fate Core | EP2 | CWN/SWN | PbtA / The Veil |
-| --- | --- | --- | --- | --- |
-| Model | **shifts** (margin in 3s) | margin-based; MoS tiers | binary hit/miss (+crit on nat 20) | **three bands**: 6−, 7-9, 10+ |
-| Partial success | via *succeed at a cost* | rare | rare | **first-class** (7-9) |
-| NoöPunk today | margin deferred (`criticals: deferred`) | — | — | — |
-
-**PbtA is the only family where partial success is the default texture**, which is why it is the
-Narrativist corner: adopting its 7-9 band is the cheapest route to #217's "partial-success
-consequences".
-
-### 2.6 Opposed and assisted rolls
-
-| | Fate Core | EP2 | CWN/SWN | PbtA / The Veil |
-| --- | --- | --- | --- | --- |
-| Opposed | both roll 4dF + skill; higher wins | aptitude+skill+d10 each; higher wins | usually a static save | usually **not** opposed; the fiction decides |
-| Assisted | *create advantage* → +2; teamwork | teamwork bonus | assist bonus | *aid* move |
-
-NoöPunk currently defines opposed as `STAT + Skill + 1d10` vs the same, with ties **deferred**.
-Fate resolves ties by "the defender/target wins" convention; PbtA removes the tie entirely.
-
-### 2.7 Resources and aspects
-
-| | Fate Core | EP2 | CWN/SWN | PbtA / The Veil |
-| --- | --- | --- | --- | --- |
-| Narrative resource | **Fate Points** (invoke/compel) | Insight / Moxie / pools | Effort (SWN), System Strain | **Hold**, Strings, Obligation |
-| Character descriptors | **Aspects** (high concept, trouble) | motivations, traits | foci/edges, backgrounds | playbook moves, **Beliefs** |
-
-NoöPunk's current data has **no narrative-resource currency**, so this is net-new whichever centre
-is chosen. Fate Points + Aspects is the centre's proposal; **Holds** and **Strings** are the
-Narrativist analogues worth borrowing for the social layer (#220).
-
-### 2.8 Backgrounds and lifepaths
-
-| | Fate Core | EP2 | CWN/SWN | PbtA / The Veil |
-| --- | --- | --- | --- | --- |
-| Method | free-text aspects | **package-based lifepath** (background, career, faction, interest) | foci/edges + background | playbook choice |
-| NoöPunk today | Lifepath-style, choose-or-roll (`RULEBOOK.md` §9) | — | — | — |
-
-EP2's four-package lifepath is the closest structural match to NoöPunk's existing choose-or-roll
-frame; Fate's aspects would *replace* it rather than extend it, and should be treated as a separate
-decision.
-
-### 2.9 Stunts, edges, foci, moves and PSI
-
-| | Fate Core | EP2 | CWN/SWN | PbtA / The Veil |
-| --- | --- | --- | --- | --- |
-| Exception-based trait | **Stunt** (+2 or a rules exception) | sleights/traits/implants | **foci / edges** | **Moves** |
-| Cost | refresh / stunt slots | points, gear | foci picks | playbook budget |
-| PSI carrier | stunt or aspect | **discrete sleights** | separate power subsystem | a Move (or a psychic playbook) |
-
----
-
-## 3. Labelling discipline — and where conversions are lossy
-
-Every row above carries **D / A / U**. Three warnings attach to the whole table:
-
-1. **Edition-dependent.** EP2's aptitude names changed between 1e and 2e (e.g. *Somatics* vs
-   *Fitness/BOD*), and CWN/SWN differ from each other. A conversion that does not name the edition
-   is not reproducible.
-2. **Lossy by construction.** Mapping *Talk / Lead / Perform* onto a single Fate *Rapport* loses
-   three distinct competencies; mapping Fate's *Lore* onto *Know + Research + Intelligence
-   Analysis* inflates one. **Neither direction is lossless** and neither should be presented as a
-   1:1 equivalence.
-3. **Unsupported is an answer.** 13 NoöPunk skills have no PbtA counterpart because PbtA does not
-   have a skill list. Marking that **U** is more useful than inventing a move for `Free Fall`.
-
----
-
-## 4. Subsystem-by-subsystem comparison
-
-For each: complexity · agency · genre fit · risk · what to adapt / avoid.
-
-| Subsystem | F | E | C | P | Adapt / avoid |
+| Subsystem | Fate Core / TF | EP2 | CWN / SWN | PbtA / The Veil | What NoöPunk should adapt |
 | --- | --- | --- | --- | --- | --- |
-| **PSI** | stunts/aspects: cheap, thin | **richest**, costly to run | separate subsystem, swingy | a move: thin but dramatic | **adapt** Fate's costliness + EP's structure; **avoid** importing EP psi metaphysics (NoöPunk has its own, #223) |
-| **Combat** | abstract, fast, low crunch | detailed, slow | **concise, tactical** | fiction-first, no tactics | **adapt** CWN's brevity + NoöPunk's own wound ladder (#219); avoid OSR class assumptions |
-| **Social** | aspects + *Rapport/Provoke* | skills only | *Talk/Lead/Connect* | **best-in-class** (moves, Strings, Beliefs) | **adapt** PbtA's texture; avoid its lack of mechanical depth for a simulationist goal |
-| **Faction** | U (aspects at best) | reputation/faction mechanics | **faction turns — best-in-class** | U | **adapt** SWN faction turns; avoid level/HD scaffolding |
-| **Cyberspace** | U as a subsystem | **most detailed** | CWN *Hacking* is concise | a move | NoöPunk already specifies four modes + graph hacking (#222); **borrow** CWN's brevity, avoid opaque theatre |
-| **Investigation** | *Investigate* + create advantage | Research/Perceive | Notice/Know | **the PbtA investigation loop** | **adapt** the clue-forward loop; avoid bottleneck clues |
-| **Cybernetics/transhumanism** | gear/stunts | **best-in-class** | gear + cyber | tags | **adapt** EP's breadth *as concepts only* (NC licence, §7) |
-| **Advancement** | milestones | points/rep | **XP + foci** | XP triggers from fiction | **adapt** PbtA's fiction-driven XP triggers; avoid D&D levels |
-| **GM procedure** | low | low | **generators, mission tools** | **MC moves/principles** | **adapt** both: OSR generators + PbtA principles; avoid railroading either way |
-
----
+| **PSI** | an aspect or stunt granting permission | discrete sleights under one Psi skill | none by default | a move with triggers and consequences | adapt the **permission** model; avoid statting every power |
+| **Combat** | one attack skill per genre, stress absorbed by consequences | detailed, lethal, initiative-driven | concise and tactical | fictional positioning drives outcomes | adapt CWN's concision inside Fate's consequence frame |
+| **Social** | Rapport/Provoke/Empathy plus aspects | Persuade/Deceive/Kinesics | Talk only | a dedicated social move with hard choices | adapt: PbtA's social move is the clearest single idea here |
+| **Faction** | aspects and a faction sheet | reputation and favors | faction turn | fronts and clocks | adapt CWN/SWN's faction tools; they are already procedural |
+| **Cyberspace / hacking** | a TF subsystem, not a skill | Interface + Infosec vs security | Program | a jack-in move | adapt: NoöPunk's two-skill split matches EP2's shape without its complexity |
+| **Investigation** | Investigate | Know/Research/Perceive | Notice | Investigate a mystery | **NoöPunk's core fantasy** — adapt the explicit procedure, not a skill alone |
+| **Cybernetics / transhumanism** | aspects and stunts | morphs and resleeving, fully procedural | minimal | gear as fiction | adapt EP2's *concepts*; its procedures are the complexity to avoid |
+| **Advancement** | milestones, refresh, skill pyramid | points and rep | XP and foci | playbook advances | adapt Fate milestones; they fit the UNSA academy frame |
+| **GM procedure** | aspects, compels, create an advantage | scenario and X-risk tools | mission and faction generators | agenda, principles, moves | adapt PbtA's *agenda and principles* almost verbatim |
 
 ## 5. PSI as three different design objects
 
-The issue requires these to be distinguished, because they are **not the same kind of thing**:
+The same fiction — a psychic investigator — is three different objects depending on family,
+and conflating them is the commonest conversion error:
 
-- **EP2 / SWN — discrete abilities.** A psi power is a discrete, acquired, individually rated thing
-  with its own cost. Power is *possessed*. Counterplay is mechanical (psychic defence, strain).
-- **Fate — a Stunt or an Aspect.** A psi effect is an *exception to the normal rules*, paid for out
-  of a limited budget (refresh/stunt slots) and invokable. Power is *authored into the character's
-  fiction*.
-- **PbtA — a Move.** **A Move is not merely a power.** It is a *procedure*: a **trigger** ("when you
-  open your mind to…"), a **roll**, and **choices/consequences** including hard ones. Its content
-  is the situation, not a spell. Modelling PSI as a Move changes what PSI *is* in play — from a
-  resource you spend to a moment you enter.
+- **EP2 / SWN — a discrete ability.** A power you have or lack, with its own rules text. Easy
+  to balance, hard to make feel personal, and NC-licensed in EP2's case.
+- **Fate — a stunt or an aspect.** A *permission plus a small, bounded edge*. Cheapest to
+  write and the closest to NoöPunk's existing 'light description, not full stats' doctrine.
+- **PbtA — a move.** A move is **not merely a power**: it has a trigger, a roll, and a list of
+  outcomes including hard choices and consequences. It produces *story* rather than a result.
 
-**Consequence for NoöPunk:** #223 has already formalised active/passive/combat PSI on the existing
-check. The comparison says a Fate-first centre should carry PSI as **stunts plus a small
-consequence economy**, and only *borrow* PbtA's trigger/choice structure for the fiction-facing
-half — not replace the deterministic half, which #222 and #223 both require.
+NoöPunk's own psi skills (ESP, Telepathy, Psychokinesis, Precognition, Psychic Defence,
+Noöspace) already look like EP2's roll-plus-discipline split, which is the shape to keep; the
+open question is whether a specific power is a **stunt** (Fate) or a **move** (PbtA).
 
----
+## 6. Two alternative Fate-first kernels — DRAFT, not canonical
 
-## 6. Two alternative Fate-first kernels (proposals — NOT canonical)
+Both kernels keep six separately rated Attributes and separately rated Skills, and both use
+**4dF**. They differ in how the two ratings combine, which turns out to be the decisive choice.
 
-Both are **proposals for review**. Neither is implemented, and no number here overrides
-`data/rules/core.json`.
+**Kernel A — additive, capped at 4.** `4dF + ladder(STAT) + ladder(Skill)`, where the
+ladder maps 1–10 to −1…+3. Both ratings always count.
 
-### 6.1 The exact probabilities (computed, not estimated)
+**Kernel B — single-axis.** `4dF + higher(STAT, Skill)`, plus 1 only when the weaker rating is
+a real competence. Deliberately non-additive.
 
-4dF is the sum of four dice each in {−1, 0, +1}; 81 outcomes:
+### 4dF, exactly (81 equiprobable outcomes)
 
-| 4dF sum | −4 | −3 | −2 | −1 | 0 | +1 | +2 | +3 | +4 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| count /81 | 1 | 4 | 10 | 16 | **19** | 16 | 10 | 4 | 1 |
-| P(≥) | 100% | 98.8% | 93.8% | 81.5% | **61.7%** | 38.3% | 18.5% | 6.2% | 1.2% |
+| Total | Probability | At least this |
+| ---: | ---: | ---: |
+| -4 | 1.2% | 100.0% |
+| -3 | 4.9% | 98.8% |
+| -2 | 12.3% | 93.8% |
+| -1 | 19.8% | 81.5% |
+| +0 | 23.5% | 61.7% |
+| +1 | 19.8% | 38.3% |
+| +2 | 12.3% | 18.5% |
+| +3 | 4.9% | 6.2% |
+| +4 | 1.2% | 1.2% |
 
-**4dF: mean 0, SD 1.633. 1d10: mean 5.5, SD 2.872.** Two consequences that decide everything else:
+### Why "bounded" cannot mean Fate's customary +2
 
-- **Expectation-matched DV shift.** To keep a legacy success chance, a Fate-dice DV must be
-  **legacy DV − 5.5**: `9→3.5, 13→7.5, 15→9.5, 17→11.5, 21→15.5, 24→18.5, 29→23.5`.
-- **The d10 gives a flat 10-point band per +1 rating; 4dF does not.** Under 1d10 each +1 rating is
-  exactly +10 percentage points. Under 4dF the same swing is worth ~3 points at the top of the
-  range, ~31 points in the middle, and ~31 again at the bottom. **A linear conversion cannot
-  preserve both the centre and the tails.** That is a design decision, not arithmetic.
+| Modifier | P(success vs DV 0) | Gain over +0 |
+| ---: | ---: | ---: |
+| +0 | 61.7% | 0.0% |
+| +1 | 81.5% | 19.8% |
+| +2 | 93.8% | 32.1% |
+| +3 | 98.8% | 37.0% |
+| +4 | 100.0% | 38.3% |
+| +5 | 100.0% | 38.3% |
+| +6 | 100.0% | 38.3% |
 
-### 6.2 Kernel A — the Fate-native ladder
+Only **63.0%** of 4dF outcomes fall within ±1, so a +1 is worth **19.8 points** of success
+probability and a +2 is worth **32.1**. At **+4** the bonus alone guarantees success against
+DV 0, because 4dF cannot roll below −4. That is the "uncapped numerical exploit" #200 names,
+and it is why Kernel A caps.
 
-Attributes and Skills are each rated on a trimmed Fate ladder (**−1 … +5**, replacing 1–10), and a
-check is `Attribute + Skill + 4dF` against:
+### Difficulty recalibration
 
-| DV | 2 | 4 | 6 | 8 | 10 | 12 |
-| --- | --- | --- | --- | --- | --- | --- |
-| label | Simple | Everyday | Difficult | Professional | Heroic | Incredible |
+The canonical DV ladder (9/13/15/17/21/24/29) is calibrated for `STAT + Skill + 1d10` and
+**cannot be reused** under 4dF. Baselines: a starting operative (STAT 5 + Skill 3 = 8) and a
+competent specialist (STAT 7 + Skill 6 = 13). Its top end deliberately exceeds what an
+ordinary operative can reach, so those rows show `—`: that is the ladder working as designed,
+not a gap in the conversion.
 
-Success chance by rating:
+| Difficulty | NoöPunk DV | start (8) | specialist (13) | 4dF DV at +1 | +2 | +3 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Simple | 9 | 100.0% | 100.0% | -4 | -4 | -4 |
+| Everyday | 13 | 60.0% | 100.0% | -4 | -4 | -4 |
+| Difficult | 15 | 40.0% | 90.0% | -1 | 0 | 1 |
+| Professional | 17 | 20.0% | 70.0% | 1 | 2 | 3 |
+| Heroic | 21 | 0.0% | 30.0% | 2 | 3 | 4 |
+| Incredible | 24 | 0.0% | 0.0% | 6 | 7 | 8 |
+| Legendary | 29 | 0.0% | 0.0% | 6 | 7 | 8 |
 
-| rating (Attr+Skill) | DV 4 | DV 6 | DV 8 | DV 10 | DV 12 |
-| --- | --- | --- | --- | --- | --- |
-| +0 | 1.2% | 0.0% | 0.0% | 0.0% | 0.0% |
-| +2 | 18.5% | 1.2% | 0.0% | 0.0% | 0.0% |
-| +4 | **61.7%** | 18.5% | 1.2% | 0.0% | 0.0% |
-| +6 | 93.8% | **61.7%** | 18.5% | 1.2% | 0.0% |
-| +8 | 100% | 93.8% | **61.7%** | 18.5% | 1.2% |
+### Worked UNSA case
 
-**Balance consequences.** Ratings are small, so **every point matters enormously** — a +1 swing is
-worth ~15-30 points near the centre, where the legacy d10 gave a flat 10. **Stacking must be
-bounded** (a hard +2 cap on aspects/invokes, exactly as Fate does) or the ladder saturates at the
-ends. A 1.2% floor and ceiling also means *automatic* success/failure is real: at rating +8 vs DV 4
-the roll cannot fail, which the d10 system could never produce.
+Junior Investigator, first session: STATs `{'FIT': 5, 'REF': 5, 'INT': 7, 'SOC': 6, 'CYB': 5, 'PSY': 4}`,
+skills `{'Investigation': 3, 'Research': 3, 'Kinesics': 2, 'Talk': 2, 'Perceive': 2}`.
 
-### 6.3 Kernel B — 1–10 preserved, Fate dice substituted
+| Check | STAT | Kernel A | Kernel B |
+| --- | --- | ---: | ---: |
+| Investigation | INT 7 | +2 | +2 |
+| Research | INT 7 | +2 | +2 |
+| Kinesics | SOC 6 | +0 | +1 |
+| Talk | SOC 6 | +0 | +1 |
+| Perceive | PSY 4 | -1 | +0 |
 
-Attributes and Skills **stay 1–10** (author-locked attributes; the skill list is preserved
-regardless). Check is `Attribute + Skill + 4dF` (range 2–20+4dF) against a **recalibrated** ladder
-shifted by the expectation match:
+**The measured argument against Kernel B.** For an INT 7 investigator, Kernel A gives
+Investigation 3 a bonus of **+2** and Perceive 2 a bonus of **+1** — the trained
+skill counts. Kernel B gives both **+2**, because the single-axis rule discards the
+weaker rating entirely: once the STAT dominates, investing in the skill changes nothing.
+Kernel B is not a gentler Kernel A; it deletes the Attribute-versus-Skill distinction that
+#255 requires NoöPunk to preserve. **Recommendation: Kernel A**, subject to author approval.
 
-| legacy DV | 9 | 13 | 15 | 17 | 21 | 24 | 29 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Kernel B DV | **4** | **8** | **10** | **12** | **16** | **19** | **24** |
+## 7. Sources and rights matrix
 
-**What this buys and costs.** Because the character side keeps its full 2–20 spread while the dice
-spread halves, **competence dominates luck much more strongly than today**: the same characters
-produce far more predictable outcomes and the flat 10-point band vanishes. Difficulty tuning
-becomes *harder* for the GM, because the useful DV range widens to ~20 points while the dice only
-contribute ±4. This is the option to prefer if the priority is *preserving existing character
-numbers*; Kernel A is the option to prefer if the priority is *Fate-native simplicity*.
+| System | Licence | Commercially reusable? | Role here |
+| --- | --- | --- | --- |
+| Fate Core System Reference Document (fate-srd.com) | CC BY 3.0 Unported | yes | centre chassis |
+| Transhumanity's Fate (Eclipse Phase for Fate) | CC BY-NC-SA 3.0 (author-stated) | no | centre (NC: not copyable) |
+| Eclipse Phase 2nd Edition | CC BY-NC-SA 4.0 | no | simulationist corner |
+| Cities Without Number System Reference Document (Kevin Crawford / Sine Nomine) | CC0 (public-domain dedication) | public domain | gamist corner |
+| Stars Without Number (Kevin Crawford / Sine Nomine) | NOT ESTABLISHED from an authoritative source | no | gamist corner |
+| The Veil / The Veil: Cascade (Samjoko Publishing) | CC BY-SA 3.0 (Unported) for the text | yes | narrativist corner |
+| Apocalypse World (D. Vincent and Meguey Baker) | NO CC GRANT ESTABLISHED -- all rights reserved with a per-request permission policy for words | no | narrativist corner |
+| Fudge OGL System Reference Document | OGL 1.0a for designated Open Game Content | no | OUT OF SCOPE |
 
-### 6.4 Worked comparable case (UNSA field agent)
+Transhumanity's Fate and Eclipse Phase 2E are **CC BY-NC-SA** and therefore inspiration
+only: their expression cannot appear in a commercially released CC NoöPunk. The CWN SRD is
+**CC0** and reusable, but must be verified from the official SRD rather than a mirror. The SWN
+free edition is free-to-read and **not automatically an open SRD**. There is no universal PbtA
+SRD: Apocalypse World has no CC grant, and The Veil's licence covers its text, not a SRD.
+Full per-source detail is in `docs/sources/ATTRIBUTION.md` and
+`data/sources/component_rights.json`.
 
-*Agent: `INT 7`, `Investigation 4` → rating 11. Task: a Professional-grade forensic reconstruction.*
+## 8. Cross-references and conflicts
 
-| System | Check | Success |
-| --- | --- | --- |
-| **Legacy (current canon)** | `11 + 1d10 ≥ 17` → needs 6+ on d10 | **50.0%** |
-| **Kernel B (4dF, DV 12)** | `11 + 4dF ≥ 12` → needs 4dF ≥ +1 | **38.3%** |
-| **Kernel A (rating ≈ +4, DV 6)** | `+4 + 4dF ≥ 6` → needs 4dF ≥ +2 | **18.5%** |
-
-**Read this honestly: the three are not the same task.** The legacy 50% is the calibration target;
-Kernel B lands ~12 points low at that DV (the rounding of `17 − 5.5` to an integer), and Kernel A
-lands ~31 points low because a +4 rating is *not* equivalent to a legacy 11. Either kernel needs its
-own calibration pass against a spread of legacy benchmarks before it can be called equivalent —
-which is exactly why the issue forbids locking a formula now.
-
----
-
-## 7. Source and rights matrix
-
-Verified 2026-10-10. **A blocked or unverified row is recorded as unverified, not as a grant.**
-
-| Source | Edition / version | Where verified | Licence | Commercially reusable? |
-| --- | --- | --- | --- | --- |
-| **Fate Core / FAE SRD** | official CC-BY SRD (ZIP) | `fate-srd.com/official-licensing-fate` | **CC BY** (the site offers CC-BY and OGL downloads and *recommends* CC) | **Yes, with attribution.** Note the site itself says *"Do not use the text on this site"* — the **downloaded SRD** is the licensed artefact, not the website text. Logos are **trademarks**: "Powered by Fate" needs the exact Evil Hat attribution line |
-| **Transhumanity's Fate** | 2016 v1.1 | publisher page (issue) | **CC BY-NC-SA** | **No** — NonCommercial. Concepts and design lessons only; **no copied expression** |
-| **Eclipse Phase (all releases)** | 2e | `eclipsephase.com/cclicense/` | **CC BY-NC-SA 4.0** *"unless noted otherwise"* — the page states **exceptions apply** | **No** — NC. Attribution to Posthuman Studios, LLC + link required for any reuse |
-| **EP Rules Primer** | 2021 PDF | issue link | same NC family; **different scope from the full rules** | No — and note it is not the full rules |
-| **Cities Without Number SRD** | community mirror `cwn.quadrifons.com` | mirror page | mirror says *"free, open-source, and public domain"* — **but it is a mirror and omits optional rules** | **Unverified at source.** Issue requires checking the **official CC0 SRD**; until then: **unverified** |
-| **Stars Without Number Revised — Free Version** | free PDF | DriveThruRPG listing | **free-to-read, licence not established** | **No claim made.** Free availability is not an open licence |
-| **Apocalypse World** | official site | issue link | **no universal PbtA SRD**; site offers playbooks/MC sheets | **Unverified** — conceptual use only |
-| **Worlds of Legacy SRD** | 2020 PDF | issue link | **edition/licence not verified** | **Unverified** |
-| **The Veil** | — | searched; no authoritative licence statement located | **not established in this pass** | **Unverified.** No official SRD should be assumed; #200 recorded the attached edition as CC BY-SA 3.0 — that remains an **author-stated classification**, not something this pass confirmed |
-| **Fudge / Psi-Punk** | — | — | OGL 1.0a (designated OGC) / special licence | **Out of scope per #255**; must not enter the CC release |
-
-**Bottom line for the CC target:** only **Fate Core's SRD** is cleanly adaptable today, under CC BY
-with attribution. Everything else is either NC (EP, Transhumanity's Fate), unverified at source
-(CWN, SWN, AW, The Veil, Worlds of Legacy) or out of scope (Fudge, Psi-Punk). **Concepts may inform
-design; copied expression may not enter a commercially reusable CC release.**
-
----
-
-## 8. Cross-references to existing repo work
-
-| Existing artefact | Relationship | Action |
-| --- | --- | --- |
-| `docs/design/ISSUE_200_DIRECTION_2026-10-10.md`, `ISSUE_200_CC_RELEASE_GATE.md`, `ISSUE_200_KERNEL_PROTOTYPE.md`, `ISSUE_200_RESOLUTION_EXPERIMENT.md`, `ISSUE_200_CROSS_SYSTEM_CONVERSION.md` | #200's centre — **now superseded for future comparison decisions** by #255 | **Preserve.** Keep passing; flag the Fudge/Psi-Punk centre as superseded, do not delete |
-| `docs/design/RPG_CONVERSION_REFERENCE.md` (298 lines) | existing conversion tables including RED | **Preserve**; overlaps §2 and should be merged into this document's structure only after review |
-| `docs/rules/EP2_CONVERSION_MATRIX.md` (142 lines) | EP2 → NoöPunk port status | **Preserve**; supplies the EP2 column's honesty about partial ports |
-| `data/rules/conversion_matrix.json` | machine-readable conversion rows | **Preserve**; candidate to consume these tables later |
-| `data/rules/core.json` | the live kernel: `STAT + Skill + 1d10`, DV ladder 9/13/15/17/21/24/29, untrained −1, field −1 | **Unchanged by this document** |
-| `data/rules/skills.json` (40 skills) | the canonical list mapped in §2.2 | **Unchanged.** §2.2 maps it; it does not re-author it |
-| **#217** (core rules / −3…+3 migration) | owns the kernel decision this document gates | This document **informs** #217; it does not decide it |
-| **#218–#232** (subsystem specs) | consume whichever kernel #217 approves | §4 says what to adapt per subsystem; #219–#230 have already landed procedures on the *current* kernel |
-| **#144** (faction taxonomy) | faction comparison in §4 | Cross-referenced, not changed |
-| **#158 / #159** (equipment policy; skill file) | §2.2 respects both | `skills.json` is the source of truth and is untouched |
+| Existing work | Relationship to this comparison |
+| --- | --- |
+| #200 | parent epic. Its Fudge/Psi-Punk centre is **superseded for future comparison decisions**; prior implementation is preserved, not deleted |
+| #207 | exact odds on the raw scale — still valid as arithmetic |
+| #213/#215 | the author-directed 1–10 ladder and its kernel prototype: **superseded as a chassis choice**, preserved for audit |
+| #217–#232 | subsystem chapters. This file does not rewrite them; it names what a Fate-first pass would touch |
+| #233 | aspects / narrative resource / consequence prototype — the Fate-side work, and the source of the stacking measurement quoted above |
+| #231 | rights ledger and attribution. The rights matrix here derives from it |
+| #144 | faction taxonomy — relevant to the Faction row above |
+| #158, #159 | referenced by #255; not restated here |
 
 ### Conflicts identified, not resolved
 
-1. **A centre conflict.** #200's documents describe a Fudge/Psi-Punk centre; #255 replaces it. Both
-   are in the tree. **This document records #255 as current and #200 as superseded for future
-   comparisons** — and does not rewrite #200's files, because #255 says to preserve them.
-2. **A ladder conflict.** The current DV ladder is d10-shaped (7 steps, 9–29). Neither Fate (tops
-   out at +8) nor PbtA (3 outcomes) can host it without recalibration (§6.3).
-3. **A skill-granularity conflict.** #255 says the skill list "draws from" Transhumanity's Fate, EP
-   and CWN. §2.2 shows it is **nearest to EP2 and CWN/SWN and furthest from Fate** — the list should
-   not be described as Fate-derived.
-4. **A "−3…+3" tension.** #213/#215 have already moved parts of the prototype to a −3…+3 scale while
-   `core.json` still fixes 1–10 attributes. This document does not resolve it; it is flagged for
-   #217.
+- **Fudge/Psi-Punk vs Fate-first.** Author direction supersedes the earlier centre. The
+  prototype files are left in place, so the repository currently contains both a
+  Fudge-ladder prototype and this Fate-first comparison. That is intentional until audited.
+- **Two numbering runs in `RULEBOOK.md`** (core 1–9 and extended canon 1–54) mean a bare
+  `§N` reference is ambiguous for 1–9. Recorded in `docs/design/RULEBOOK_STRUCTURE.md`.
+- **NC contamination risk.** Any conversion that quotes Transhumanity's Fate or EP2 text
+  would breach the CC release target. The guard in `tests/test_issue255_comparison.py`
+  checks this file names them only as sources.
+
+### Not done here
+
+- No migration, no renumbering, no rewrite of the rulebook or the code.
+- The EP2, CWN and The Veil column names carry explicit verification caveats in the data file. Re-reading those sources against their official texts is the next step.
+- 40 skills mapped; 40 rows in the data file; 4 families. Raw data: `data/rules/skill_mapping_crosssystem.json`.
+# COMPARISON.md — Fate-first system comparison and conversion tables (issue #255)
+
+**Status: IN PROGRESS.** This is a research/design gate, not a rule change. **No rule becomes
+canonical from this document**, and nothing here authorises edits to `RULEBOOK.md`,
+`data/rules/*` or any merged implementation. Author direction (2026-10-10): *drop Fudge/Psi-Punk
+as a foundation; compare four families; write `COMPARISON.md` before committing to a core rules
+conversion.*
+
+> **Superseded premise, marked not deleted.** Issue #200's centre was **Fudge + Psi-Punk + Fate**.
+> #255 supersedes that **for future comparison decisions**: Fudge is **out of scope** as an active
+> source or chassis, Psi-Punk likewise, and #200's proposal is history rather than a baseline.
+> Prior implementation work that assumed the old centre — including
+> `docs/design/ISSUE_217_RESOLUTION_SEMANTICS_2026-10-10.md`, which proposed a partial-success
+> policy for the Fudge-derived ladder — is **preserved untouched until audited** and is downstream
+> of a premise that no longer holds. This document does not delete it and does not reconcile it.
 
 ---
 
-## 9. Recommendation (for the author's decision — not an implementation)
+## 1. Goals, design triangle, trade-offs, and scope boundaries
 
-**Recommended direction: Fate-first, as the centre — but with NoöPunk's own six attributes and the
-existing 40-skill list on top of it, and with the d10 replaced only after a calibration pass.**
+### 1.1 What this document is for
 
-1. **Adopt the centre:** Fate's aspects, stunts, stress/consequences and fiction-first flexibility.
-2. **Do not adopt Fate's unified skill model.** Keep six Attributes **and** separate Skills; §2.2
-   shows the list is not Fate-shaped and should not be forced into it.
-3. **Prefer Kernel B** (preserve 1–10) if existing character numbers and continuity matter most;
-   **prefer Kernel A** if simplicity matters most. **Both need calibration against a spread of
-   legacy benchmarks** (§6.4) before locking — a single worked case is not sufficient evidence.
-4. **License guardrail:** only the Fate Core SRD is adaptable today. EP, Transhumanity's Fate, SWN,
-   AW and The Veil are **not** cleared for copied expression in a commercial CC release.
-5. **Nothing here is canonical.** No `data/rules/*` change, no `RULEBOOK.md` change, and no
-   migration until the author records the decision on #255 / #217.
+To decide **which family supplies the chassis**, how the four families' concepts map onto NoöPunk's
+canonical six Attributes and 40 Skills, and what a conversion costs — *before* anything is locked.
+The deliverable is a comparison, a set of conversion tables with honest labels, at least two
+alternative numeric kernels with probabilities, and a rights matrix.
+
+### 1.2 The GNS design triangle (a heuristic, not a classification)
+
+GNS is a **subjective design map, not an objective rating**, and every game named here mixes
+agendas. It is used here only to spread the design space.
+
+| Position | Family | What it contributes | What it costs |
+| --- | --- | --- | --- |
+| **Centre — preferred chassis** | **Fate Core** (and *Transhumanity's Fate* as its transhuman application) | narrative aspects, stunts, stress/consequences, flexible actions | too simple as-is; **six separate Attributes AND separately rated Skills are mandatory**, which Fate Core does not provide |
+| **Simulationist corner** | **Eclipse Phase 2e** | rich transhuman, hacking, PSI, injury, equipment and existential-risk procedures | too complex to import wholesale; **NC licence** |
+| **Gamist corner** | **Cities Without Number / Stars Without Number** | concise playable OSR tactics, backgrounds/edges or foci, skills, mission and faction tools | avoid excessive D&D class/level assumptions; **SWN's free edition is not an open SRD** |
+| **Narrativist corner** | **PbtA — The Veil, Worlds of Legacy** | fiction-first moves, hard choices, relationships, consequences, character drama | narrativist play must be explained to readers new to it; **AW itself grants nothing** |
+
+Author's steer on the Narrativist corner: **The Veil is more thematically pertinent than
+Apocalypse World** — and the rights matrix below shows this is also the corner where the licensing
+is *cleanest* to reuse.
+
+### 1.3 The trade-off this comparison exists to expose
+
+**The preferred centre contains a NonCommercial work.** The author locks the chassis to *Fate Core
+/ Transhumanity's Fate* — but **Transhumanity's Fate is CC BY-NC-SA**, so it cannot be copied into
+NoöPunk's Creative Commons release. Fate Core itself is **CC BY and explicitly *not* viral**, so it
+*can*.
+
+That is the central tension of this issue and it shapes everything else:
+
+- **Fate Core supplies the reusable chassis** (aspects, stunts, stress/consequences, flexible
+  actions) with attribution as the only obligation.
+- **Transhumanity's Fate and Eclipse Phase 2e supply design study, not expression.** They may be
+  read to understand how a transhuman Fate game handles morphs, PSI, hacking and existential risk;
+  their text may not enter the work.
+- **Anything whose only clean source is an NC book must be re-expressed from the mechanics**, which
+  is what CWN's CC0 SRD explicitly permits and what EP/Transhumanity's Fate do not.
+
+### 1.4 Author-locked requirements (carried here as constraints, not proposals)
+
+1. Base on **Fate Core / Transhumanity's Fate**; **do not copy NC-licensed Transhumanity's Fate
+   text**.
+2. Exactly **six independently rated Attributes — FIT / REF / INT / SOC / PSY / CYB** — and
+   **Attributes distinct from Skills**.
+3. **Preserve the existing NoöPunk Skill list** (`data/rules/skills.json`, 40 skills). Its lineage
+   is *identified* as drawing on Transhumanity's Fate, Eclipse Phase and CWN — **the tables below
+   verify alignment rather than assert that those systems have identical lists**.
+4. **Research conversions before choosing** dice formula, attribute/skill scaling, difficulties,
+   movement, stress or progression. No silent rule switches; no arbitrary 1:1 mappings.
+5. **No Fudge** in recommended active sources or chassis; where history is compared, mark it out of
+   scope and distinguish #200's outdated proposal.
+
+### 1.5 Scope and licence boundaries (summary; the matrix is §7)
+
+- **Reusable in a commercial CC release:** Fate Core SRD (**CC BY**, not viral), Cities Without
+  Number SRD (**CC0**), Worlds of Legacy SRD (**CC BY**).
+- **Reusable with a ShareAlike obligation:** The Veil / Cascade (**CC BY-SA 3.0**) — and it carries
+  a **per-portion carve-out** (see §7).
+- **Not reusable — design study only:** Eclipse Phase 2e and *Transhumanity's Fate* (**CC BY-NC-SA**).
+- **No grant at all:** Apocalypse World (playbooks/moves/MC sheets are free to read; there is no
+  universal PbtA SRD), and Stars Without Number's **free edition, which is a book, not an SRD**.
+- **Out of scope:** Fudge, Psi-Punk (OGL) — superseded by #255.
+
+---
+
+## 2. Attribute conversion table
+
+A “counterpart” means analogous use, **not equivalent numbers or a fixed formula**. Fate Core has **skills**, not core attributes; EP uses **aptitudes**, with skills in addition; CWN/SWN have D&D-like attributes + skills; PbtA/The Veil usually roll moves using a broad stat or emotion, with no independent universal skill bonus.
+
+| NoöPunk stat | Fate Core skills typically involved | Eclipse Phase 2E aptitude area (conceptual) | CWN / SWN attributes | PbtA / The Veil |
+|---|---|---|---|---|
+| **FIT** Fitness | Physique, Athletics, Fight | SOM (somatics) | Strength, Constitution | body-related stat / emotional condition depending on move |
+| **REF** Reflexes | Athletics, Shoot, Drive | REF (reflexes) | Dexterity | action-based move with relevant stat/emotion |
+| **INT** Intelligence | Lore, Investigate, Notice | COG (cognition), INT (intuition) | Intelligence, Wisdom | investigation move / relevant emotion |
+| **SOC** Social | Rapport, Empathy, Deceive, Provoke | SAV (savvy) | Charisma | social move / emotional condition |
+| **PSY** Psyche | Will plus supernatural Aspect/Stunt | WIL (willpower); psi uses additional game-specific systems | Wisdom/Charisma; SWN psychic class/powers separate | custom psychic move plus fictional permissions |
+| **CYB** Cybernetics | Lore, Crafts, Burglary + gear/Aspect | COG/INT and Infosec/Interface/Programming; hardware is separate | Intelligence + Program/Fix; SWN technical skills | interface/hacking move, hardware narrative permission |
+
+**Important:** NoöPunk CYB is a **character stat**, while `Interface / Network / Compute` are **hardware properties**, not extra character attributes. EP's aptitudes are not just “Fate stats” with the numbers changed. PbtA's triggers/procedures cannot be represented with a single numerical column.
+
+## 3. Complete canonical skill vocabulary: cross-system *concept* mapping
+
+This comparison enumerates **every** name from `data/rules/skills.json` at the time of drafting. **These are provisional analogies**, not confirmed identical official skill names: EP entries may vary by edition; Fate examples are from its broad skill model; CWN and SWN lists differ; PbtA examples are proposed possible *types of moves*, not official The Veil moves. “No direct match” must remain an explicit gap.
+
+| NoöPunk skill | Stat | Fate analogue | Eclipse Phase analogue | Without Number analogue | PbtA / The Veil move analogy |
+|---|---|---|---|---|---|
+| Administrate | INT | Resources, Contacts | Administration | Administer | institutional move |
+| Athletics | FIT | Athletics | Freerunning | Exert | act under fire |
+| Connect | SOC | Contacts | Networking | Connect | relationship move |
+| Counterintelligence | INT | Investigate, Notice | Infosec, Investigation | Notice, Connect | counterspy move |
+| Deceive | SOC | Deceive | Deceive | Talk | deceive move |
+| ESP | PSY | Notice + Stunt | Psi sleight | SWN psychic ability; CWN none | psychic move |
+| Exotic Skill | Variable | Stunt / permission | Exotic Skill | Work / special skill | custom move |
+| First Aid | INT | Lore + Stunt | Medicine | Heal (CWN) | healing move |
+| Forensics | INT | Investigate | Investigation | Notice, Know | clue move |
+| Fray | REF | Athletics, Fight | Fray | Exert, Punch | defend move |
+| Free Fall | FIT | Athletics | Free Fall | Exert, Pilot | zero-g move |
+| Guns | REF | Shoot | Guns | Shoot | combat move |
+| Hardware | CYB | Crafts | Hardware | Fix | repair move |
+| Infosec | CYB | Burglary, Lore | Infosec | Program | security move |
+| Intelligence Analysis | INT | Investigate, Lore | Research, Investigation | Know, Notice | assess threat move |
+| Interface | CYB | Lore + Stunt | Interface | Program | interface move |
+| Investigation | INT | Investigate | Investigation | Notice, Know | investigate move |
+| Kinesics | SOC | Empathy | Kinesics | Notice, Talk | read a person |
+| Know | INT | Lore | Academics / skill field | Know (CWN) | expertise move |
+| Lead | SOC | Rapport, Provoke | Persuasion / Leadership | Lead | lead move |
+| Medicine | INT | Lore + Stunt | Medicine | Heal (CWN) | heal move |
+| Melee | FIT | Fight | Melee | Stab | attack move |
+| Noöspace | PSY | Aspect + Stunt | no direct match | no direct match | bespoke projection move |
+| Perceive | PSY | Notice | Perception | Notice | read situation |
+| Perform | PSY | Rapport + Stunt | Art | Perform | perform move |
+| Pilot | REF | Drive | Pilot | Drive / Pilot (SWN) | vehicle move |
+| Precognition | PSY | Stunt | precognition-related sleight | SWN psychic power analogy | premonition move |
+| Program | CYB | Lore, Crafts | Programming | Program | hack move |
+| Provoke | SOC | Provoke | Intimidation | Talk, Lead | apply pressure move |
+| Psychic Defence | PSY | Will + Stunt | psi resistance | SWN psychic resistance | resist psi move |
+| Psychokinesis | PSY | Stunt | psychokinetic sleight | SWN telekinesis power | psychic move |
+| Research | INT | Investigate, Lore | Research | Know | research move |
+| Sneak | REF | Stealth | Infiltration | Sneak | sneak move |
+| Survival | INT | Survival | Survival | Survive | survive move |
+| Tactics | INT | Lore, Notice | Tactics | Lead, Know | battle plan move |
+| Talk | SOC | Rapport | Persuasion | Talk | persuade move |
+| Telepathy | PSY | Stunt | telepathy-related sleight | SWN telepathy discipline | mind-contact move |
+| Trade | SOC | Resources, Rapport | Networking / Profession | Trade | trade move |
+| Unarmed | FIT | Fight | Unarmed Combat | Punch | attack move |
+| Work | Variable | Lore, Crafts | Profession / field | Work | career move |
+
+**Notes:** `Exotic Skill` and `Work` are fielded/variable; `Know`, `Medicine`, `Hardware`, `Pilot`, `Perform` have field specializations in the current catalog. Neither the Transhumanity's Fate, Eclipse Phase, nor CWN skill list is *literally identical* to the NoöPunk list: record nearest functional correspondence and mismatches. Exact page-by-page validation remains an explicit review task.
+
+## 4. Dice, thresholds, degrees of success: conversion *framework*, not a conversion formula
+
+| Topic | Fate Core | Eclipse Phase 2E | CWN / SWN | PbtA / The Veil | NoöPunk open design question |
+|---|---|---|---|---|---|
+| Randomizer | 4 Fate dice (`-1,0,+1`) | d100 roll-under | Commonly 2d6 skills and d20 attack rolls | Typically 2d6 + stat/emotion | One kernel across all subsystems? |
+| Skills & attributes | Skill rating; no standard separate attribute | Aptitude + skill base/target; percentile resolution | Separate attribute modifier and skill rating | Usually no universal skill ratings | Preserve both, avoid runaway stacked bonuses |
+| Difficulty | Ladder with opposition/target numbers, shifts | Target number, modifiers and success quality | 2d6 checks vs difficulty; combat differs | 6-/7–9/10+ bands (typical, game-specific) | Translate outcome *frequency*, not bare integers |
+| Degrees | Fail, tie, succeed, succeed with style | Success/critical/superior result and failure gradations | Often binary checks, specific combat exceptions | Miss, mixed, strong hit | Which narrative costs can accompany success? |
+| Assistance | Teamwork and advantages/aspects | Bonuses, assistance, gear, teamwork | Aid or modifier by edition and procedure | Aid/interfere move or fiction | Cap stacking and make collaboration meaningful |
+| Metacurrency | Fate Points | Pools/moxie-like resources | Effort for some psychic systems; no universal Fate Points | Usually fictionally triggered moves, some playbook resources | Do resource pools overlap? |
+
+**4dF exact distribution (81 equally likely combinations):**
+
+| 4dF result | -4 | -3 | -2 | -1 | 0 | +1 | +2 | +3 | +4 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Outcomes / 81 | 1 | 4 | 10 | 16 | 19 | 16 | 10 | 4 | 1 |
+
+A Fate outcome of **+2 net modifier** has a higher success probability against the same target than +0; adding a second unrestricted +2 attribute would substantially change standard Fate target expectations. Do **not** equate EP “60% skill” to Fate “+3” or CWN “level 3”: these are different distributions and target settings.
+
+### Two explicit Fate-first kernels to playtest (both DRAFT)
+
+**Kernel A: bounded additive attributes + skills.** `4dF + A + S`; proposed example ranges `A ∈ [-2,+2]`, `S ∈ [0,3]`. Calibrate difficulty and cap stacked temporary bonuses. *Pros:* both matter every check. *Risk:* very large modifiers relative to 4dF spread, and over-specialization.
+
+**Kernel B: skill-led with attribute edge.** `4dF + S + conditional A`; conditional attribute contribution is **capped** (e.g. +1/0/-1) when attribute especially helps or hinders the specific approach. All stats are rated separately and determine capacity, resistance, fictional access and bounded bonuses. *Pros:* closer to Fate core odds. *Risk:* attributes may feel underused if triggers unclear.
+
+These are **hypotheses, not rules**. When stress-testing, vary target shifts, qualified opponent, gear, teamwork, Fate Point invokes, cyber/psi edge use, expert vs newcomer and PvP.
+
+**Shared example for testing:** An UNSA academy graduate with INT +1, Research 2 examines an Orion-linked forensic dossier. Against a proposed target 3 with neutral dice: Kernel A total 3 = success/tie boundary depending chosen formal rules; Kernel B total 3 if conditional +1 applies. A senior analyst with INT +2 and Research 3 would gain +5 in A, versus at most +4 in B: compare rates of success at *all* difficulty tiers. Fate's real tie and style outcomes must be chosen explicitly before final odds tables.
+
+## 5. Difficulty conversion by *task meaning* (illustrative)
+
+| Fictional difficulty | Fate-style target example | EP2 approach | CWN/SWN approach | PbtA / The Veil approach |
+|---|---|---|---|---|
+| Routine for trained agent | +0 / +1 opposition | Easy threshold with beneficial modifiers | Lower skill-check DV | Usually no roll unless dramatic stakes |
+| Professional challenge | +2 / +3 opposition | Ordinary test with relevant modifiers | Standard skill-check DV | Trigger a move, 7–9 has meaningful cost |
+| Elite / resistant opponent | +4 / +5 opposition | Contest or penalty for difficult conditions | Higher DV or opposed check | Opponent/threat moves and snowball |
+| Exceptional / NHI anomaly | +6+ if roll is allowed | Heavy penalty or impossible without permission | High DV / required specialist capacity | Fictional positioning or specialist move required |
+
+This table deliberately avoids claiming numerical equivalence. Before implementing any conversion, calculate percentiles for typical beginner/competent/expert agents and verify plausible task permissions.
+
+## 6. Subsystem comparisons and recommendations to investigate
+
+| Subsystem | Fate / Transhumanity's Fate | Eclipse Phase | CWN / SWN | PbtA / The Veil | NoöPunk research hypothesis |
+|---|---|---|---|---|---|
+| **PSI** | Aspect for psychic identity/permissions; Stunt for a defined exception; stress/consequence costs | Separate psi abilities/sleights, aptitude/skill interactions, costs/risks | SWN disciplines/powers and Effort as explicit resource | A psychic Move triggers from a fictional action and determines 3-tier consequences | Separate **capability/permission**, **check** and **cost**; avoid psi = unrestricted bonus |
+| **Combat** | Zones, four actions, stress/consequences and concession | More detailed action timing, injuries, range and gear | Clear rounds, attacks, damage and tactical choices | Harm, fiction-first threat and mixed-result escalation | Test meaningful tactics without EP tactical burden |
+| **Social** | Rapport/Deceive/Provoke, aspects and social conflict | Networking, reputation, motivations and social skills | Talk, Connect, Lead and contacts/factions | Emotional stakes, debt/relationship and social moves | Model trust, warrants, diplomacy, obligation, ideology |
+| **Factions** | Campaign aspects, extras, consequences and milestones | Organizational networks/reputations | Faction turn, assets, goals, actions | Fronts/threats/clocks, evolving relationships | Preserve existing NoöPunk faction/reputation rules; compare separately |
+| **Cyberspace** | Advantage, contests, challenges with technical Stunts | Distinct mesh hacking, infosec, AI and network systems | CWN Program/Fix and hacking procedures; SWN technical actions | Fictional cyber move, costs and exposure | Explicit network topology, privileges and separate hardware Interface/Network/Compute |
+| **Investigation** | Discover/create advantage; compel complications | Professional investigative skills/gear | Skill checks, GM procedures | Clue-revealing moves, partial hits and costs | Essential clues cannot disappear on one failed roll; maintain evidence chain |
+| **Transhumanism** | Body/identity as Aspects/extras | Morphs/resleeving/augmentation identity | Cyberware and SWN optional AI/transhuman tech | Relationship/identity consequences | Emerging, uneven adoption; don't import whole Eclipse Phase setting |
+| **Advancement** | Milestones, skill rearrangement, Stunts | Skills, pools, gear and bodily changes | XP and level advancement | End-of-session questions and playbook growth | Classless lifepath; both expertise and life-altering experiences |
+
+### PSI power, Stunt and Move: important non-identity
+
+An **Eclipse Phase psi sleight** or **Stars Without Number psychic power** typically establishes a concrete capability with eligibility/cost rules. A **Fate Stunt** is a narrowly framed exception or special bonus, often justified by an Aspect. A **PbtA Move** is a triggered procedure that says what happens when a player acts in specific circumstances, including mixed outcomes and GM reactions. They are *not interchangeable units*: one power might need an **Aspect (identity) + Stunt (permission) + skill test (ability) + move-like 7–9 consequence text (narrative price)**. This is a conceptual composition, not a suggestion to run four independent resolution rolls.
+
+
+## 7. Source and rights matrix
+
+Verified **2026-10-10** at the sources linked by the issue. "Reusable" means *the text may be
+reproduced in a commercial Creative Commons release*.
+
+| Source | Edition / URL | Licence (as stated at source) | Commercial reuse | Obligations and scope limits |
+| --- | --- | --- | --- | --- |
+| **Fate Core SRD** | fate-srd.com — official licensing + CC-BY SRDs (ZIP) | **Creative Commons Attribution (CC BY)**, Unported | **Yes** | *"the most liberal one possible"*, explicitly **not viral** — derived content need not be CC. Requires the **attribution bloc supplied at the top of each SRD file** on the copyright page. |
+| **Transhumanity's Fate** | legacy.eclipsephase.com releases page | **CC BY-NC-SA** (per EP licensing; page requires Fate Core) | **No** | NonCommercial blocks commercial reuse. **Design study only — no text.** |
+| **Eclipse Phase 2e** | eclipsephase.com/cclicense | **CC BY-NC-SA** unless noted otherwise; "exceptions noted below" | **No** | Attribution to **Posthuman Studios, LLC**; derivatives under the same licence; NC blocks commercial. Per-release exceptions exist and must be checked per release. |
+| EP online reference | eclipsephase.github.io | derived from EP | **No** | Inherits the NC licence of its source. |
+| **Cities Without Number SRD** | DriveThruRPG product 452790 (Sine Nomine, official) | **CC0 1.0** — *"a Creative Commons 0 waiver allowing downloaders to copy, modify, reproduce, or otherwise use it for both personal and commercial purposes"* | **Yes** | The publisher states CC0 waives his claim on *"that specific verbiage"*. **Scope: the full SRD, but not all parts of the original book.** |
+| **Stars Without Number (revised, free version)** | DriveThruRPG product 230009 | **No licence statement found** — a free edition of the **book** | **No** | **Free-to-read is not an open licence.** No SRD exists to verify; Sine Nomine publishes SRDs for CWN and WWN, not SWN. |
+| **Apocalypse World** | lumpley.games/apocalypseworld | **No CC grant on the page** | **No** | Free playbooks, moves and MC sheets to *read*; the page grants no reuse. **There is no universal PbtA SRD.** |
+| **Worlds of Legacy SRD** | ufopress.co.uk PDF | **Creative Commons Attribution (CC BY)** | **Yes** | *"all you need to do is put the attribution provided below clearly in your work"* — no fees, **no requirement to license your own work CC**. Licensing moniker: **"Worlds of Legacy"**. |
+| **The Veil / Cascade** | samjokopublishing.com (text), DriveThruRPG | **CC BY-SA 3.0 Unported** | **Yes**, with ShareAlike | **Per-portion carve-out:** the licence paragraph itself records that *"some moves are either tweaked or lifted straight from Apocalypse World"* — that permission was granted **to that project**, so those portions are unavailable even though the surrounding text is licensed. Adopting The Veil text imposes **ShareAlike on the whole work**. |
+| **Fudge / Psi-Punk** | — | OGL (cannot be relabelled CC) | **No** | **Out of scope** per #255. Retained only as history. |
+
+### 7.1 What the matrix decides
+
+1. **The chassis can be licensed cleanly.** Fate Core is CC BY and not viral, so a Fate-first
+   NoöPunk can be released commercially under Tomi's chosen licence with an attribution bloc and no
+   copyleft surprise. This is the single most important fact in this document.
+2. **Two of the four families are study-only.** EP2 and Transhumanity's Fate are the richest
+   sources for the transhuman and PSI material and **none of their text may be used**. Every
+   mechanic traced to them must be re-expressed, and the tracing must be recorded.
+3. **The Gamist corner is the most permissive and the least open at the same time.** CWN's SRD is
+   **CC0** (no obligations at all), while SWN's free edition grants **nothing** — the two are
+   routinely conflated because they share a publisher.
+4. **The Narrativist corner is usable — but only one of its three routes is clean.** Worlds of
+   Legacy (CC BY) is unconditionally reusable; The Veil (CC BY-SA) would put the whole work under
+   ShareAlike; Apocalypse World grants nothing.
+5. **A Fate Core + CWN + Worlds of Legacy combination is licence-compatible** with a commercial CC
+   release. A Fate Core + The Veil combination forces ShareAlike on everything.
+
+### 7.2 Retrieval honesty
+
+- **Verified at source:** Fate licensing page and its CC-BY guide; EP licensing page;
+  Transhumanity's Fate release page; CWN SRD official DriveThruRPG listing; SWN free-edition
+  listing; Worlds of Legacy SRD PDF; The Veil licence paragraph; Apocalypse World page.
+- **Not retrieved in this pass:** the EP licensing page's per-release *exceptions* list, and The
+  Veil: Inheritance QuickStart's separate terms. Both are recorded as **unverified** rather than
+  assumed, and neither is relied on above.
+
+---
+
+## 8. Cross-references to existing work (do not overwrite)
+
+| Artefact | What it already provides | How this document uses it |
+| --- | --- | --- |
+| `data/rules/skills.json` | the **40 canonical Skills** with `stat`, `untrained` and `fielded` flags; `untrained_modifier: -1`; the field-substitution rule | the canonical side of every skill mapping in §3 |
+| `docs/design/RPG_CONVERSION_REFERENCE.md` | EP2→NoöPunk and CWN→NoöPunk STAT correspondence, skill references, conversion procedure | the starting point for the Simulationist and Gamist columns; **consume, do not rewrite** |
+| `docs/design/ISSUE_200_CROSS_SYSTEM_CONVERSION.md` | the five-family conversion lab and its three dimensions | the conversion algorithm §2 builds on |
+| `docs/design/ISSUE_200_KERNEL_PROTOTYPE.md` | three attribute+skill kernels with measured probabilities, the ladder, opposed checks, modifier stacking, lethality | §6 starts from these rather than restarting |
+| `docs/sources/GAME_SYSTEM_RIGHTS.md` + `data/sources/game_system_rights.json` | the dated, guarded provenance ledger | the authoritative rights record; §7 above is the summary, that ledger is the source |
+| Issues **#217–#232** | the domain work packages (core rules, chargen, physical, social, cybernetic, psychic, astral, cross-domain, UNSA, beings, equipment, narrative, GM toolkit, CC release, consolidation) | the chapters the comparison must ultimately feed; **#217 is now downstream of a superseded centre** |
+
+### 8.1 Conflicts found (recorded, not resolved)
+
+- **#217's resolution semantics were designed against the superseded Fudge/Fate ladder.** The
+  untrained −1 rule matches canon (`skills.json` `untrained_modifier: -1`), but the ladder and the
+  partial-success policy are premises from #200's old centre. Flagged for audit; **not deleted**.
+- **#200's direction record and the kernel prototype** both name Fudge/Psi-Punk as the centre.
+  #255 supersedes that for future comparison decisions; the documents stay as history.
+- **The rights ledger already records** the EP/Transhumanity's Fate NC boundary and The Veil's
+  per-portion carve-out. §7 agrees with it; no ledger edit is proposed here.
+
+---
+
+## Roadmap for the remaining sections
+
+Committed in small reviewable increments, per the issue's collaboration requirements:
+
+- [x] **§1** goals, triangle, trade-offs, scope boundaries — *this increment*
+- [x] **§7** source and rights matrix — *this increment*
+- [x] **§8** cross-references and conflicts — *this increment*
+- [ ] **§2** side-by-side conversion tables: six Attributes and the **full 40-skill list** against
+      each of the four families, labelled *direct correspondence / conceptual analogy /
+      unsupported*, marking **no counterpart** where none exists
+- [ ] **§3** the same tables with lossiness and edition-dependence spelled out
+- [ ] **§4** domain comparisons — PSI, Combat, Social, Faction, Cyberspace/hacking, investigation,
+      cybernetics/transhumanism, advancement, GM procedure — by complexity, agency, genre fit, risk
+- [ ] **§5** PSI as four distinct design concepts: EP/SWN discrete abilities, Fate Stunt/Aspect,
+      PbtA Move (a Move has triggers, choices and consequences, and is *not* merely a power)
+- [ ] **§6** at least two alternative Fate-first numeric kernels with probability analysis, target
+      recalibration, stacking/balance and a worked comparable UNSA case
+
+
+## 9. Specific scenarios for apples-to-apples playtests
+
+1. **UNSA interview:** Friendly Confederacy contact offers vital intelligence only if the agents promise confidentiality that may constrain human sovereignty. Test social competency vs voluntary compromise and faction response.
+2. **Orion proxy investigation:** Investigators track a donor network via interviews, open-source evidence, forensics and cyber intrusion. Core clue must be discoverable, with consequences escalating on risk.
+3. **PSI incident:** Academy-trained psychic probes missing-time impressions; learn something partial and ambiguous without automatic mind-reading truth. Test stress, countermeasures and agency.
+4. **Cybergraph operation:** Hacker penetrates one endpoint only where a real authorized/vulnerable technical path exists; compromise does not automatically grant brain access.
+5. **Physical crisis:** Rescue civilians from a contaminated anomaly zone with limited rounds, gear constraints, teammates and negotiable risks.
+
+Track median resolution time, number of rule lookups, tactical decisions, meaningful narrative choices, modifier stacks, success rates, safety/agency and GM improvisation burden.
+
+## 10. Dependencies, coordination, deliverables
+
+- [#200](https://github.com/TomiToivio/NooPunk/issues/200) is an existing parent *implementation* epic. Its Fudge/Psi-Punk center conflicts with #255's new author direction. **Do not destructively rewrite #200 or mass-delete implementation artifacts**; raise a resolution comment and use separate approved follow-up change.
+- [#217–232](https://github.com/TomiToivio/NooPunk/issues/217), [#144](https://github.com/TomiToivio/NooPunk/issues/144), [#158](https://github.com/TomiToivio/NooPunk/issues/158), [#159](https://github.com/TomiToivio/NooPunk/issues/159) contain pre-existing work. Preserve valid contributions and flag conflicts with the latest decision.
+- Candidate future *decision record* must pin: chosen kernel, trait/skill ranges, challenge ladder, stress handling, resources, Stunt and PSI mapping, advancement, and licensing; **none decided merely by this research**.
+- Before merge verify: all **40** skills mapped; six attributes; four families; difficulty, PSI/combat/social/faction/cyberspace tables; sources and license caveats; no canonical rule changes.
