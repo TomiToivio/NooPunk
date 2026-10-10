@@ -1,0 +1,289 @@
+{
+  "issue": 243,
+  "baseline_commit": "84b0e1cb517ddf7a92ba07077ab2ebb65fba3cad",
+  "baseline_tree": "84b0e1cb517ddf7a92ba07077ab2ebb65fba3cad",
+  "hash_type": "git_blob_sha1",
+  "status": "inventory_and_exact_snapshot_only_not_reconciled",
+  "files": [
+    {
+      "source": "RULEBOOK.md",
+      "git_blob_sha": "a2c78127d93f8f70775f8edd014048455e003a0d",
+      "bytes": 322056,
+      "destination": "rulebook/source_snapshots/root/RULEBOOK.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/00_INDEX.md",
+      "git_blob_sha": "499c0d5c2956a4cda2149f0aa3537da576253cd4",
+      "bytes": 15530,
+      "destination": "rulebook/00_INDEX.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/10_SINGULARITY_CRISIS.md",
+      "git_blob_sha": "f9761248f9591e06cd34df2099ff74cc1348f872",
+      "bytes": 35600,
+      "destination": "rulebook/10_SINGULARITY_CRISIS.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/11_ONTOLOGY.md",
+      "git_blob_sha": "05d1301f5b99133d175e2cf3c4bc465ed134a35d",
+      "bytes": 25740,
+      "destination": "rulebook/11_ONTOLOGY.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/12_BEINGS.md",
+      "git_blob_sha": "8ac30a8fff54e76d99a642cedb1d0f885cd520b7",
+      "bytes": 41706,
+      "destination": "rulebook/12_BEINGS.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/13_EQUIPMENT.md",
+      "git_blob_sha": "6b5e0592a2859e04e1f2173f7b65b1f3a11ddc8f",
+      "bytes": 19133,
+      "destination": "rulebook/13_EQUIPMENT.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/14_CHARACTER_GENERATION.md",
+      "git_blob_sha": "15aacf1e77e8556faef9fe91c9744a682c1d2065",
+      "bytes": 20824,
+      "destination": "rulebook/14_CHARACTER_GENERATION.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/15_XENOPOLITICS.md",
+      "git_blob_sha": "d471f1ef7056e068cf107b969476e9a47335d2d2",
+      "bytes": 30365,
+      "destination": "rulebook/15_XENOPOLITICS.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md",
+      "git_blob_sha": "15b95fe853ba887a7fee414b4c20745d621aef79",
+      "bytes": 17833,
+      "destination": "rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md",
+      "git_blob_sha": "96c7b8b7995128ae6f914df6f9fae82a4e85609a",
+      "bytes": 26663,
+      "destination": "rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/1_NOÖPUNK.md",
+      "git_blob_sha": "52689139e6ee3b488f124a70c6def204d6d021eb",
+      "bytes": 226,
+      "destination": "rulebook/1_NOÖPUNK.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/2_ATTRIBUTES.md",
+      "git_blob_sha": "029db19f6329e2208914c1f77418bb550fb006e3",
+      "bytes": 16348,
+      "destination": "rulebook/2_ATTRIBUTES.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/3_PHYSICAL.md",
+      "git_blob_sha": "fc15a72ab6be9e36d0c5f420e860634da633b168",
+      "bytes": 2090,
+      "destination": "rulebook/3_PHYSICAL.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/4_SOCIAL.md",
+      "git_blob_sha": "e239972a4ff56b118442e96ac7c823ac54b85213",
+      "bytes": 7565,
+      "destination": "rulebook/4_SOCIAL.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/5_CYBERNETIC.md",
+      "git_blob_sha": "a44040d540d6be5cb309a1e0f502bf5f30aac718",
+      "bytes": 13611,
+      "destination": "rulebook/5_CYBERNETIC.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/6_PSYCHIC.md",
+      "git_blob_sha": "eb9ad76901615161dd1ba38c44770564d9b27358",
+      "bytes": 53726,
+      "destination": "rulebook/6_PSYCHIC.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/7_TIMELINE.md",
+      "git_blob_sha": "853d78c7abbadf04619673aeade198c5dbc35869",
+      "bytes": 16134,
+      "destination": "rulebook/7_TIMELINE.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/8_FACTIONS.md",
+      "git_blob_sha": "e12cb59191a9424fbfdeec0cf2c40ba55d41eb90",
+      "bytes": 15652,
+      "destination": "rulebook/8_FACTIONS.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/9_FIELD_CATALOGS.md",
+      "git_blob_sha": "25c54fb19397185e78a5607cbab08350845e41be",
+      "bytes": 22249,
+      "destination": "rulebook/9_FIELD_CATALOGS.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/parts/01_basic_rules.md",
+      "git_blob_sha": "f7a9c5f27549bdcc35dac2872d4640d72d25f7a0",
+      "bytes": 16638,
+      "destination": "rulebook/parts/01_basic_rules.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/parts/02_character_generation.md",
+      "git_blob_sha": "f6c498d4158513785510c3696acbd04c789f2428",
+      "bytes": 2236,
+      "destination": "rulebook/parts/02_character_generation.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/parts/03_physical_systems.md",
+      "git_blob_sha": "832ad47dcc0b3205ca9a4ee1390768684e8a50ac",
+      "bytes": 6499,
+      "destination": "rulebook/parts/03_physical_systems.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/parts/04_cybernetic_systems.md",
+      "git_blob_sha": "c41f4ff8440fc789db22894582079907e394362f",
+      "bytes": 7072,
+      "destination": "rulebook/parts/04_cybernetic_systems.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/parts/05_psychic_systems.md",
+      "git_blob_sha": "af14f296c5d5652d3bd627c0b97dc6dd335a9471",
+      "bytes": 22432,
+      "destination": "rulebook/parts/05_psychic_systems.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/parts/06_social_systems.md",
+      "git_blob_sha": "0b9a84966d6b71e27ac5fceaaa3ba1bd2b022e97",
+      "bytes": 7311,
+      "destination": "rulebook/parts/06_social_systems.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/parts/07_noopunk_lore.md",
+      "git_blob_sha": "1548dc6d76e67cdd992b19753f2977ea89fff494",
+      "bytes": 93507,
+      "destination": "rulebook/parts/07_noopunk_lore.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/parts/08_rules_architecture.md",
+      "git_blob_sha": "aa3c2525ade14e17be4a5f0bd1869510f9ca2a1d",
+      "bytes": 14076,
+      "destination": "rulebook/parts/08_rules_architecture.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/parts/09_characters_and_beings.md",
+      "git_blob_sha": "15117c50309924e1869809135912cab177748594",
+      "bytes": 15415,
+      "destination": "rulebook/parts/09_characters_and_beings.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/parts/10_campaign_unsa_factions.md",
+      "git_blob_sha": "ef31921cd7dc6b3ff1a7e889bb7e1d7406c6bf6e",
+      "bytes": 51881,
+      "destination": "rulebook/parts/10_campaign_unsa_factions.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/parts/11_concordia_and_parity.md",
+      "git_blob_sha": "46cc90a44fcca5413b2c0fcda7e24a48f12bced5",
+      "bytes": 48220,
+      "destination": "rulebook/parts/11_concordia_and_parity.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook/parts/12_glossary_sources_catalogs.md",
+      "git_blob_sha": "b4d2a0e3465ee689b6661d86900b4c07f1d2dac2",
+      "bytes": 32273,
+      "destination": "rulebook/parts/12_glossary_sources_catalogs.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook_parts/00_meta_and_provenance.md",
+      "git_blob_sha": "0c18e5f6c1824078f8be1aeff6fbb0f737e7940c",
+      "bytes": 28010,
+      "destination": "rulebook/source_snapshots/rulebook_parts/00_meta_and_provenance.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook_parts/01_basic_rules.md",
+      "git_blob_sha": "00b743d162268180e2e0bbc026b2dc978d74a8a5",
+      "bytes": 20297,
+      "destination": "rulebook/source_snapshots/rulebook_parts/01_basic_rules.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook_parts/02_character_generation.md",
+      "git_blob_sha": "ada90f975f89eacce32e9cfab91e3b260850b0b8",
+      "bytes": 23179,
+      "destination": "rulebook/source_snapshots/rulebook_parts/02_character_generation.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook_parts/03_physical_systems.md",
+      "git_blob_sha": "ef8c0d9aa18a1ea7de1d0d6107517ad5b0d0dfe0",
+      "bytes": 6902,
+      "destination": "rulebook/source_snapshots/rulebook_parts/03_physical_systems.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook_parts/04_cybernetic_systems.md",
+      "git_blob_sha": "e7a3e6797358ef9049445faa801ca874469c5478",
+      "bytes": 9212,
+      "destination": "rulebook/source_snapshots/rulebook_parts/04_cybernetic_systems.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook_parts/05_psychic_systems.md",
+      "git_blob_sha": "58f302ed2e6a48129a67614c6895cae88652e461",
+      "bytes": 17252,
+      "destination": "rulebook/source_snapshots/rulebook_parts/05_psychic_systems.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook_parts/06_social_systems.md",
+      "git_blob_sha": "507e3088177ef42da42371502a5d1c22fdf3c7fd",
+      "bytes": 33659,
+      "destination": "rulebook/source_snapshots/rulebook_parts/06_social_systems.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook_parts/07_lore_and_world.md",
+      "git_blob_sha": "a11c05b4cd691479239dc690e7997ca75430c10a",
+      "bytes": 189643,
+      "destination": "rulebook/source_snapshots/rulebook_parts/07_lore_and_world.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    },
+    {
+      "source": "rulebook_parts/INDEX.md",
+      "git_blob_sha": "00e3d0199e18c8188cbbf575ad456fe14909a26e",
+      "bytes": 4034,
+      "destination": "rulebook/source_snapshots/rulebook_parts/INDEX.md",
+      "reconciliation": "pending_section_by_section_comparison"
+    }
+  ]
+}
