@@ -25,6 +25,7 @@ import json
 import pathlib
 import subprocess
 import sys
+from typing import Any
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 ARCHIVE = ROOT / "archive" / "rulebook-pre-narrative-2026-10"
@@ -74,7 +75,7 @@ def git(*args: str) -> str:
 
 def build() -> dict:
     canonical_lines = set(substantive_lines(ROOT / "RULEBOOK.md"))
-    entries = []
+    entries: list[dict[str, Any]] = []
     for path in corpus():
         kind, share, lines = classify(path, canonical_lines)
         entries.append({

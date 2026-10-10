@@ -147,7 +147,9 @@ CHAPTERS = {
 def read_sections() -> tuple[dict[int, str], dict[int, str]]:
     text = (ROOT / "RULEBOOK.md").read_text(encoding="utf-8")
     found = re.findall(r"^##\s+(\d+)\.\s+(.+)$", text, re.MULTILINE)
-    core, appendix, switched = {}, {}, False
+    core: dict[int, str] = {}
+    appendix: dict[int, str] = {}
+    switched = False
     for n, title in found:
         if n == "1" and title.strip().startswith("Introduction"):
             switched = False

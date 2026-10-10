@@ -30,7 +30,8 @@ def load() -> dict:
 
 
 def git(*args: str) -> str:
-    return subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True).stdout
+    return subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True,
+                          check=False).stdout
 
 
 def tag_exists() -> bool:
@@ -45,7 +46,7 @@ class ArchiveRetrievabilityTests(unittest.TestCase):
         for entry in load()["files"]:
             with self.subTest(path=entry["path"]):
                 blob = subprocess.run(["git", "show", f"{TAG}:{entry['path']}"], cwd=ROOT,
-                                      capture_output=True)
+                                      capture_output=True, check=False)
                 self.assertEqual(blob.returncode, 0, f"{entry['path']} not present at {TAG}")
                 self.assertEqual(
                     hashlib.sha256(blob.stdout).hexdigest(), entry["sha256"],
@@ -59,7 +60,8 @@ class ArchiveRetrievabilityTests(unittest.TestCase):
 
     @unittest.skipUnless(tag_exists(), f"tag {TAG} not fetched")
     def test_the_canonical_text_is_in_the_archive(self) -> None:
-        blob = subprocess.run(["git", "show", f"{TAG}:RULEBOOK.md"], cwd=ROOT, capture_output=True)
+        blob = subprocess.run(["git", "show", f"{TAG}:RULEBOOK.md"], cwd=ROOT,
+                              capture_output=True, check=False)
         self.assertEqual(blob.returncode, 0)
         self.assertGreater(len(blob.stdout), 250_000, "the canonical rulebook is suspiciously small")
 
