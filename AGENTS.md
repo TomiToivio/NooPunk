@@ -9,6 +9,10 @@ These rules are mandatory for coding and documentation agents working in this re
 invariants and are restated as binding rules in §13 below. Read that document
 before changing rules, mechanics, or setting material.
 
+### Automated tests policy: executable code only
+
+Automated tests and CI assertions must exercise **executable game/software code** (Python, Godot, Concordia, game tools, runtime APIs and behavior). Do **not** add pytest/unittest tests, text-matching assertions, schema-locked canon checks, snapshot guards, or CI gates for **rules, lore, scenario prose, worldbuilding, canon, rulebook structure, design principles, or wording**. The author reviews those materials editorially and through tabletop playtesting; they are not code contracts. Do not recreate removed lore/rulebook tests under new names or add such checks to the code-test suite. Preserve the existing lore and archival material as documentation, not executable tests. When a tabletop mechanic is implemented as code, test the implementation's behavior, not whether prose matches a frozen version.
+
 ### 1. Author intent is canon
 
 Do not invent NoöPunk rules, mechanics, lore, history, factions, technologies, metaphysics, organizations, locations, character classes, archetypes, species, NHI categories, psionic powers, skills, attributes, combat systems, progression systems, equipment lists, economies, or world events unless the author has explicitly specified them.
