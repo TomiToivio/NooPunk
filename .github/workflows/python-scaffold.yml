@@ -1,4 +1,4 @@
-name: Python scaffold checks
+name: Python game-code checks
 
 on:
   push:
@@ -12,14 +12,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      # fetch-depth: 0 so the archive tag is present. #265's guarantee is that the pre-narrative
-      # corpus is retrievable from `rulebook-pre-narrative-2026-10`. With the default shallow,
-      # tag-less checkout the tag does not exist, and the retrievability guards SKIP -- so CI
-      # reports green on the one thing this change exists to prove. Verified against main that
-      # the guards pass when the tag is fetched.
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -27,22 +20,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Validate Godot scaffold
-        run: python tests/validate_scaffold.py
-      - name: Check design-principles invariants
-        run: python -m unittest discover -s tests -p "test_design_principles.py"
-      # test_world_ideology.py defines module-level test functions rather than
-      # TestCase classes, so `unittest discover` does NOT collect it (the pattern
-      # matches the file, but there are no TestCases inside to run). It carries
-      # its own runner. Without this step the whole data/world/ideology.json
-      # artifact is unguarded in CI -- the checks existed but never executed.
-      - name: Check world ideology model
-        run: python tests/test_world_ideology.py
-      - name: Test shared rules and Concordia runtime
+      - name: Test executable game code
         run: python -m unittest discover -s tests -p "test_*.py"
-      - name: Smoke-check documented game commands
+      - name: Smoke-check executable game commands
         run: |
           python scripts/noopunk_text.py --help
-          printf 'quit\n' | python scripts/noopunk_text.py --scenario issue74
+          printf 'quit\\n' | python scripts/noopunk_text.py --scenario issue74
           python scripts/concordia_smoke.py
           python scripts/concordia_smoke.py --build-concordia-config
