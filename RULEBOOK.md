@@ -4947,7 +4947,10 @@ against protected NHI beings, and major Legacy Program theft or leaks.
 
 This political architecture is explicitly informed by **Alexander Wendt's _The Last
 Humans_** and its speculation about radically different consequences of UFO/NHI
-Disclosure.
+Disclosure. Wendt's argument is a real scholarly claim and an intellectual influence;
+UNSA, the pooled-sovereignty turn and the federal outcome are **NoöPunk fiction**, and
+nothing here should be read as a prediction of what states would actually do (§37, the
+interpretation rule).
 
 In NoöPunk, **both outcomes happen**.
 
