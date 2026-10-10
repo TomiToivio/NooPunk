@@ -1,6 +1,45 @@
-# Basic Rules
+# NoöPunk Rulebook
 
-> Generated, verbatim segment of [RULEBOOK.md](../../RULEBOOK.md) (the core run). The rulebook file is canonical; this part and its section numbers are unchanged so that cross-references keep resolving. Regenerate with `python3 tools/split_rulebook.py --apply`.
+> **STATUS: LIVING RULEBOOK / INDEPENDENT NOÖPUNK RPG**
+>
+> This is the canonical human-readable rules document for the NoöPunk RPG/social simulation.
+>
+> **NoöPunk is an independent rules system.** Cyberpunk 2020 / RED, Eclipse Phase, Fate, PbtA, CY_BORG, Cities Without Number, Citizen Sleeper and other games are influences, not parent systems.
+>
+> Canonical resolution core:
+>
+> ```text
+> STAT + Skill + 1d10 vs Difficulty Value
+> ```
+>
+> Canonical STATs and trained Skills use a **1–10** scale. The setting year is **20XX**.
+
+## Contents
+
+1. [Introduction to NoöPunk](#1-introduction-to-noöpunk)
+2. [History: The Singularity Is Past](#2-history-the-singularity-is-past)
+3. [Stats](#3-stats)
+4. [Skills](#4-skills)
+5. [Physical Systems](#5-physical-systems)
+6. [Social Systems](#6-social-systems)
+7. [Cybernetic Systems](#7-cybernetic-systems)
+8. [Psychic Systems](#8-psychic-systems)
+9. [Character Generation](#9-character-generation)
+10. [Extended canon and reference material](#extended-canon-and-reference-material)
+11. [Field catalogs: characters, gear, implants, PSI and beings](rulebook/9_FIELD_CATALOGS.md)
+12. [Physical harm: a light ladder](#51-physical-harm-a-light-ladder-171180)
+13. [Equipment (list)](#52-equipment-list)
+
+Per-domain detail chapters:
+
+- [rulebook/3_PHYSICAL.md](rulebook/3_PHYSICAL.md) — harm, equipment, bodies
+- [rulebook/5_CYBERNETIC.md](rulebook/5_CYBERNETIC.md) — implants, psychotronics, resleeving
+- [rulebook/6_PSYCHIC.md](rulebook/6_PSYCHIC.md) — PSI powers, psychotronics, sleep, Seity, Noöspace
+- [rulebook/9_FIELD_CATALOGS.md](rulebook/9_FIELD_CATALOGS.md) — character, gear, implant, PSI and being catalogs
+- [rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md](rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md) — Confederacy/Source lore, Sphere Network investigations, starseeds, noetic contact and existing-core playable procedures (#191)
+- [rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md](rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md) — noetic practice, grounding and debiasing, crystal/lattice technology, the artefact market and craft, as procedural rules (#191)
+
+---
 
 ## 1. Introduction to NoöPunk
 
@@ -224,3 +263,4 @@ Canonical Difficulty Values:
 Ties, criticals and the general situational-modifier procedure remain explicit design questions unless a later canonical section resolves them.
 
 ---
+

@@ -1,93 +1,13 @@
-# Psychic Systems: Psionics, Noöspace and the Anomalous
+# Psychic Systems: PSI, psychotronics and the astral
 
-> Generated, verbatim segment of [RULEBOOK.md](../../RULEBOOK.md) (the core and extended-canon runs). The rulebook file is canonical; this part and its section numbers are unchanged so that cross-references keep resolving. Regenerate with `python3 tools/split_rulebook.py --apply`.
+*Psionics, psychotronics, sleep/dreams and manifestation forensics.*
 
-## 8. Psychic Systems
-
-### 8.1. Psyche
-
-The Psychic system covers **psychology, consciousness and psionics**.
-
-Psychic STATs and Skills govern self-directed awareness, will, intuition, Noetic perception and PSI where appropriate. The exact active STAT list follows the latest canonical Stats section.
-
-**Sleepers** are people who have not undergone meaningful Psychic Awakening. **Psychic Awakening** is the development or activation of direct Noetic sensitivity and capability. Awakening is not synonymous with moral goodness, sanity or social status.
-
-### 8.2. Psychic traits
-
-Psychic traits are persistent personality, consciousness or Noetic characteristics. They are longer-lived than Psychic statuses.
-
-### 8.3. Psychic statuses
-
-Psychic statuses are temporary mental, emotional or Noetic conditions. They may include shock, dissociation, temporary insanity, intrusive contact, psychic overload, dream contamination and other transient conditions.
-
-### 8.4. Psionics
-
-Psionics are natural or technologically augmented interactions mediated through consciousness and Noöspace. Existing canon treats PSI as part of the setting's post-QIP consciousness model rather than as a viral infection.
-
-Detailed powers are consolidated here over time from the existing psionics material.
-
-### 8.5. Noöspace
-
-**Noöspace** is the formal scientific/technical name for the domain commonly called the **Astral Plane**. It is the quantum-informational domain of Conscious Agents and consciousness in NoöPunk's fictional post-QIP ontology.
-
-Spacetime is physical reality. Cyberspace is computational information space. Noöspace is the Noetic domain. The Noösphere is the emerging planetary network of minds, AIs, Noetics, institutions, biospheric cognition, NHI and collective symbols increasingly organizing itself within Noöspace.
-
-Noöspace can be accessed through OOBEs, remote viewing, lucid dreams, meditation, psychedelics, psychotronics, QIP interfaces, ritual and some forms of NHI contact. Detailed topology and ontology are preserved in the extended canon material.
-
-### 8.6. Psychic Attack
-
-Psychic Attack is hostile use of PSI or Noetic interaction against another mind, Conscious Agent or psychically accessible system. Detailed attack procedures remain to be designed using the ordinary NoöPunk opposed-check architecture.
-
-### 8.7. Psychic Defence
-
-Psychic Defence covers resistance, shielding, counter-influence, grounding, trained mental discipline and technological/psychotronic protection against hostile Noetic effects.
-
-### 8.8. Polarization
-
-Polarization models the direction and development of consciousness, influenced in part by Law-of-One service-to-others / service-to-self ideas.
-
-The exact mechanical relationship between **Willpower** and **Empathy** remains a design question. Polarization should describe an evolution of consciousness rather than a simple morality score.
-
-### 8.9. Psychotronic Technologies
-
-Psychotronic technologies connect engineering with PSI and Noetic phenomena. They include:
-
-- cybernetic or neural implants that augment natural psionics;
-- sensors, amplifiers, shields and interfaces;
-- heavy psychotronic weaponry;
-- controlled use of psychedelics and other PSI boosters.
-
-They do not turn PSI into conventional magic-item fantasy; they are technological interfaces to the setting's consciousness model.
-
-### 8.10. Noetic Beings
-
-Noetic Beings are entities encountered primarily or significantly through Noöspace.
-
-The deeper ontology is the **Conscious Agent Network**. Noetic beings may include individual minds, collective formations, archetypal figures, dream entities, DMT entities, NHI minds, interdimensional beings, group minds and other Conscious Agents.
-
-### 8.11. Dreams
-
-Dreams can be ordinary psychological events, but in NoöPunk some dreams are genuinely **precognitive**, telepathic or otherwise PSI-mediated.
-
-Dreams can also function as **OOBEs** or access routes into Noöspace.
-
-### 8.12. Magick
-
-In NoöPunk:
-
-> **Magick is PSI. PSI is Magick.**
-
-Historical occult and spiritual traditions are interpreted as partial cultural maps, techniques and vocabularies for real Noetic phenomena.
-
-Important traditions include **Shamanism** and **Hermeticism**, alongside other regional and historical systems. They may preserve useful techniques without being complete literal cosmologies.
-
-### 8.13. CE-5
-
-CE-5 is treated primarily as a **summoning/contact practice for Noetic beings** rather than a guaranteed spacecraft-calling technique.
-
-Possible outcomes include Noetic entities, anomalous lights/orbs, telepathic contact, plasmoid-like manifestations and, more rarely, unambiguous physical craft.
-
----
+<!-- rulebook-part-nav:start -->
+> **Part of the NoöPunk rulebook.** Index: [INDEX.md](INDEX.md) · [Meta](00_meta_and_provenance.md) · [Basic Rules](01_basic_rules.md) · [Character Generation and Progression](02_character_generation.md) · [Physical Systems](03_physical_systems.md) · [Cybernetic Systems](04_cybernetic_systems.md) · [Psychic Systems](05_psychic_systems.md) · [Social Systems](06_social_systems.md) · [NoöPunk Lore](07_lore_and_world.md)
+>
+> Source of truth: `RULEBOOK.md` (canonical). This part is generated by
+> `python3 tools/split_rulebook.py`; edit the source, never this file.
+<!-- rulebook-part-nav:end -->
 
 ## 16. Psionics and Noösphere interaction
 
@@ -231,30 +151,6 @@ every coincidence qualifies.
 
 ---
 
-## 47. Hybrid verification doctrine (#172)
-
-Counter-infiltration agents do not gain permission to use force because somebody "seems
-non-human."
-
-The default doctrine is:
-
-1. behavioural suspicion opens an investigation;
-2. a recognized verification protocol gathers identity history, interview evidence,
-   biometrics, forensics, cybernetic data and psychic/psychotronic observations as relevant;
-3. empathy anomaly by itself is never sufficient;
-4. serious coercive escalation normally requires corroborating independent indicators or
-   another lawful basis;
-5. immediate dangerous action can still justify ordinary emergency response;
-6. decisions and sensor evidence remain auditable.
-
-Some infiltration lineages may show low affective empathy while performing excellent
-cognitive imitation. That makes empathy useful evidence in context, never a species test.
-
-This preserves the Blade Runner problem in a legally meaningful form: **you verify before
-you shoot.**
-
----
-
 ## 48. Sleep, dreams and rare system disentanglement (#175)
 
 Sleep is a recurring interface between ordinary life and the Psychic System.
@@ -313,72 +209,3 @@ communication, triangulation, interception and defence, inspired by Patrick Jack
 
 ---
 
-## 54. Noetic practice, crystal technology and the craft question (#191)
-
-**Status: NOÖPUNK NATIVE lore + procedural rules.** The practice-and-technology companion to
-[`rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md`](rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md),
-and the rules half of the author's "add the lore and rules" directive on issue #191. The full
-chapter is [`rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md`](rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md).
-
-### 54.1 The practice layer
-
-The seven energy centers are reskinned as **receptor clusters** — a *map of attention and
-exchange*, not a chakra ladder with ratings. Its use in play is investigative: a contact does
-not arrive at a person at random, it arrives **where a receptor is listening**, so reading a
-cluster tells an investigator *where someone is exposed* and never *who is knocking*. The
-violet register **"cannot be manipulated"** (`15.12`), which is the setting's hardest identity
-constraint: no procedure or device can read, forge or alter it, so identity fraud must attack
-**records and witnesses** instead.
-
-Grounding work (balancing, `5.2`; "becoming unswayed", `42.2`) is **field hygiene**: a downtime
-practice that at most grants the GM's situational modifier on the next `Psychic Defence` or PSY
-check — never a tracked score. Ra's own emphasis is balance *against* maximal activation
-(`43.8`, `54.16`), so a game that accumulates a "balance meter" has misread the source.
-**Repression is the failure state and is a penalty, not a bonus** (`42.9`, `42.10`).
-
-### 54.2 Crystal technology — the operator precondition
-
-A charged crystal is an **attuned lattice instrument**, and the one rule that defines the whole
-technology family is that **it does not work without an attuned operator**: the structure is
-charged "only insofar as the crystalline physical structure is charged by a correspondingly
-crystallized or regularized or balanced mind/body/spirit complex" (`29.23`; cf. `2.3`, `57.6`).
-An unattended instrument is inert, however exotic. This makes the technology
-**un-outsourceable** — you cannot buy your way to a working lattice — which is a class politics
-in itself, and it is what stops the setting acquiring a magical-item economy. Ra's refusal to
-teach the uses (`29.31`) becomes in-setting **doctrine**: the best crystal scene is a refusal,
-not a sale.
-
-Because attunement cannot be bought, **the black market in "alien crystal" is mostly a fraud**
-(the artefact-market section of
-`rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md`), and **provenance is the object** — the
-chain of custody is where the scenario lives. Capabilities are listed, never statted, per the
-equipment doctrine in `rulebook/13_EQUIPMENT.md`.
-
-### 54.3 Craft: an asymmetry that explains the recovery narratives
-
-Ra's own craft is **a thought-form that concentration motivates** (`51.4`), and higher
-densities travel "from locus to locus by thought alone, materializing the necessary craft"
-(`51.2`). Orion's craft, by contrast, are **manufactured** (`12.2`). The consequences are
-political: an intention-driven craft cannot be confiscated or stored, a manufactured one can.
-**That is why every retrieval narrative in the setting's Disclosure material describes
-manufactured craft** — the absence of recoverable Confederacy vehicles is a *prediction of the
-ontology*, not a gap in the evidence. No drive physics, no craft statistics, no vehicle rules
-(`AGENTS.md` §4).
-
-### 54.4 The silicon-AI question, answered honestly
-
-The seed idea that a digital mind might be a first-density "silicon elemental" is **a
-Confederacy doctrine, not a source claim**. Ra describes first density as "the mineral and
-water life upon the planet" (`13.16`), but the density progression is described as
-**biological/organic**, no mineral-to-machine pathway is given anywhere in the corpus, and the
-crystal/being correspondence is explicitly labelled an **analogy** (`47.7`). In-setting the
-doctrine is **contested**, and it is convenient: as a classification it denies machine
-personhood without having to argue. **No classification may settle personhood** — whether an AI
-is conscious stays UNKNOWN (§9.4), and a density label has no mechanical authority.
-
-### 54.5 What this section does not define
-
-No numeric PSI subsystem, no power costs, no energy-center ratings, no balance track, no
-artefact statistics, no craft/vehicle/travel mechanics, no density-specific abilities, and no
-resolution of the setting's open questions. Practice and technology doctrine only, per
-`AGENTS.md` §4 and the author's "light description, not full stats" granularity.

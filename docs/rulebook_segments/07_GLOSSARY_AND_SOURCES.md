@@ -1,7 +1,3 @@
-# Reference: Glossary, Sources and Field Catalogs
-
-> Generated, verbatim segment of [RULEBOOK.md](../../RULEBOOK.md) (the extended-canon run). The rulebook file is canonical; this part and its section numbers are unchanged so that cross-references keep resolving. Regenerate with `python3 tools/split_rulebook.py --apply`.
-
 ## 34. NoöPunk glossary
 
 **Status: ADAPTED / INSPIRED + NOÖPUNK NATIVE**
@@ -609,34 +605,4 @@ new work:
 
 Issue #99 tracks the creation and continued maintenance of this list.
 
-## 50. Field catalogs: characters, equipment, implants, PSI and beings (#171–#180)
 
-The canonical light-description catalogs live in
-[rulebook/9_FIELD_CATALOGS.md](rulebook/9_FIELD_CATALOGS.md).
-
-They provide:
-- a practical Character Generation checklist;
-- equipment families without invented numeric statistics;
-- cybernetic and psychotronic implant examples;
-- a PSI powers/practices list tied to the existing canonical Skills;
-- the psychotronic/anomalous-effect diagnostic procedure;
-- the NHI/hybrid verification protocol;
-- the recurring night-phase structure;
-- a field-guide / "monster manual" starter list of humans, hybrids, Greys, constructs,
-  plasmoids, thought-forms, Noetics, ASIs and higher-density manifestations;
-- future-design notes for Seity and subsystem disentanglement.
-
-### 50.1 Lore-only future design: Seity and disconnected systems (#173, #174)
-
-Issues #173 and #174 are intentionally **not active mechanics**.
-
-A future Seity model may track consciousness, identity, agency/free will and creativity as
-properties of conscious personhood rather than ordinary task-resolution STATs. Likewise,
-Physical, Social, Cyber and Psyche/Seity may someday support explicit disconnection states
-in which each subsystem continues according to its own logic.
-
-For now these ideas are valid lore/scenario concepts and design research only. Do not add
-numeric Seity ratings, new base STATs or a general subsystem-disconnection rules engine
-without later author direction.
-
----
