@@ -1,0 +1,122 @@
+{
+  "$comment": "Component-level rights ledger for issue #231, complementing the source-level ledger in game_system_rights.json. That file records WHO we take from and under what licence; this file records WHAT WE SHIP and what each shipped component owes. The licence CHOICE itself is the author's and is deliberately not decided here: every component's `license` is either `pending-author-decision` or a status derived from a source ledger entry. A guard fails if a component claims a decided licence that has not been chosen, or if a component lists a non-commercial, proprietary or unverified-OGL source as an included input.",
+  "format": "noopunk.component_rights",
+  "version": 1,
+  "issue": 231,
+  "parent_epic": 200,
+  "source_ledger": "data/sources/game_system_rights.json",
+  "attribution_document": "docs/sources/ATTRIBUTION.md",
+  "target_license": {
+    "state": "pending-author-decision",
+    "$comment": "Issue #231 acceptance criterion 1. CC BY-SA 4.0 is recommended for the rulebook and original setting because it can adapt The Veil's CC BY-SA 3.0 text; CC BY 4.0 cannot. Source code is licensed separately.",
+    "candidates": ["CC BY-SA 4.0", "CC BY 4.0"],
+    "recommended": "CC BY-SA 4.0",
+    "code_license": "pending-author-decision"
+  },
+  "components": [
+    {
+      "id": "rulebook-text",
+      "kind": "prose",
+      "paths": ["RULEBOOK.md", "rulebook/*.md"],
+      "license": "pending-author-decision",
+      "attribution_required": true,
+      "third_party_inputs": ["fate-core-srd", "the-veil"],
+      "notes": "Original NoöPunk expression. Fate Core is CC BY 3.0 (attribution owed); The Veil is CC BY-SA 3.0, which is why the share-alike candidate is recommended. No Fate or Veil text is reproduced verbatim."
+    },
+    {
+      "id": "rulebook-parts",
+      "kind": "prose-generated",
+      "paths": ["rulebook_parts/*.md"],
+      "license": "inherits:rulebook-text",
+      "attribution_required": false,
+      "third_party_inputs": [],
+      "notes": "Generated views of RULEBOOK.md. No independent rights: whatever the source is licensed under, these are too."
+    },
+    {
+      "id": "rulebook-segments",
+      "kind": "prose-generated",
+      "paths": ["docs/rulebook_segments/*.md"],
+      "license": "inherits:rulebook-text",
+      "attribution_required": false,
+      "third_party_inputs": [],
+      "notes": "Lossless snapshots of RULEBOOK.md, same reasoning as rulebook-parts."
+    },
+    {
+      "id": "rules-code",
+      "kind": "code",
+      "paths": ["src/**/*.py", "tools/*.py", "scripts/*.py"],
+      "license": "pending-author-decision",
+      "attribution_required": true,
+      "third_party_inputs": [],
+      "notes": "Original code. #231 asks for a source-code licence separate from the creative text; the choice is pending."
+    },
+    {
+      "id": "rules-data",
+      "kind": "data",
+      "paths": ["data/rules/*.json"],
+      "license": "inherits:rulebook-text",
+      "attribution_required": false,
+      "third_party_inputs": [],
+      "notes": "The deterministic rule specifications. Creative content, so it follows the rulebook licence rather than the code licence."
+    },
+    {
+      "id": "tests",
+      "kind": "code",
+      "paths": ["tests/*.py"],
+      "license": "inherits:rules-code",
+      "attribution_required": false,
+      "third_party_inputs": [],
+      "notes": "Test suite."
+    },
+    {
+      "id": "godot-scaffold",
+      "kind": "code",
+      "paths": ["src/godot/**/*"],
+      "license": "pending-author-decision",
+      "attribution_required": false,
+      "third_party_inputs": [],
+      "notes": "Scaffold only; no third-party Godot addons vendored."
+    },
+    {
+      "id": "docs",
+      "kind": "prose",
+      "paths": ["docs/**/*.md"],
+      "license": "inherits:rulebook-text",
+      "attribution_required": false,
+      "third_party_inputs": [],
+      "notes": "Design and source documentation. Contains quoted third-party licence terms, which are cited rather than licensed."
+    },
+    {
+      "id": "scenes",
+      "kind": "data",
+      "paths": ["scenes/**/*"],
+      "license": "inherits:rulebook-text",
+      "attribution_required": false,
+      "third_party_inputs": [],
+      "notes": "Scenario and session data."
+    }
+  ],
+  "not_shipped": {
+    "$comment": "Sources that must not be treated as shippable inputs in a fully commercial CC release. Recorded here so the guard can fail if a component ever lists one as an included input.",
+    "excluded_sources": [
+      "eclipse-phase-2e",
+      "transhumanitys-fate",
+      "fudge-ogl-srd",
+      "fudge-1995-pdf",
+      "psi-punk",
+      "stars-without-number-srd",
+      "apocalypse-world",
+      "cyberpunk-red-2020",
+      "cy-borg",
+      "shadowrun",
+      "other-proprietary-tabletop",
+      "computer-game-references"
+    ],
+    "why": "Non-commercial, proprietary, no established CC grant, or unresolvable OGL terms. #231 criterion 3 requires any incompatible expression to be isolated or independently rewritten; until that audit is complete these are inspiration, not inputs."
+  },
+  "open_items": [
+    "Criterion 1: the CC BY-SA 4.0 vs CC BY 4.0 choice is the author's, as is the code licence.",
+    "Criterion 3: artwork and trademark verification has not been performed; the repository currently ships no artwork.",
+    "Criterion 3: no NC/OGL expression has been found in the shipped text, but the isolation audit is not complete for the two NC role-playing sources."
+  ]
+}
