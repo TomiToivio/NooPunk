@@ -29,11 +29,15 @@ REFERRING_DOCS = (
     "docs/archive/CONCORDIA_ARCHITECTURE.md",
 )
 
-#: The three reference poles, by creative agenda.
+#: The three reference poles, by creative agenda, per the issue #200 triangle.
+#: These were CY_BORG / Cyberpunk 2020 / The Sprawl before #200 realigned the corners;
+#: the doc's own invariant #2 named the old trio after #203 had already rewritten §1, so
+#: the pole set and the triangle contradicted each other while this guard passed on the
+#: leftover sentence. See `test_the_canonical_poles_match_the_triangle`.
 REFERENCE_POLES = {
-    "Gamism": "CY_BORG",
-    "Simulationism": "Cyberpunk 2020",
-    "Narrativism": "The Sprawl",
+    "Gamism": "Cities Without Number",
+    "Simulationism": "Eclipse Phase",
+    "Narrativism": "Apocalypse World",
 }
 
 #: The three defining Noösphere paradigm shifts.
@@ -68,6 +72,24 @@ class CanonicalDocumentTests(unittest.TestCase):
             with self.subTest(agenda=agenda):
                 self.assertIn(system.lower(), text)
                 self.assertIn(agenda.lower(), text)
+
+    def test_the_canonical_poles_match_the_triangle(self) -> None:
+        """The pole sentence must agree with the #200 triangle, in the same doc.
+
+        Sentence-scoped on purpose: #203 rewrote §1 to the new corners while invariant #2
+        still said CY_BORG / Cyberpunk 2020 / The Sprawl, and a document-wide name check was
+        satisfied by that leftover, so it could not see the contradiction.
+        """
+        text = read(CANONICAL_DOC)
+        sentences = [s for s in re.split(r"(?<=[.;])\s+", text) if "canonical reference poles" in s]
+        self.assertTrue(sentences, "no sentence declares the canonical reference poles")
+        for sentence in sentences:
+            for system in ("Eclipse Phase", "Apocalypse World", "Cities Without Number"):
+                with self.subTest(system=system):
+                    self.assertIn(system, sentence)
+            for superseded in ("CY_BORG", "Cyberpunk 2020", "The Sprawl"):
+                with self.subTest(superseded=superseded):
+                    self.assertNotIn(superseded, sentence)
 
     def test_names_the_three_noosphere_paradigm_shifts(self) -> None:
         text = normalised(CANONICAL_DOC)
