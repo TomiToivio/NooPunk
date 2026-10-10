@@ -33,6 +33,52 @@
 3. **The reskin must not flatten the source.** Where the setting renames something, §9 notes
    what the renaming must preserve. A reskin that loses a real distinction is a bug, not a
    style choice.
+4. **Citations are audited, not inherited.** A parallel research pass produced two confident
+   claims *about the source* that are false. Both were checked against the live page and are
+   recorded in §11 below. **A citation inherited from a summary is unverified until someone
+   opens the page** — which is exactly why this sheet exists.
+
+---
+
+## 0.1 Citation audit — two sibling claims that are FALSE
+
+Both arrived as confident corrections during the parallel research pass. Both are wrong, and
+both were verified against the live page at <https://www.lawofone.info/> on 2026-10-09.
+
+### `12.21` does exist, and it IS the Men in Black answer
+
+- **The claim:** *"`12.21` does not exist as an anchored question on lawofone.info (session 12
+  runs …12.20 → 12.22)."*
+- **The truth:** session 12 anchors **0 through 33 with no gaps**. The live page renders
+  `[12].[21] **Questioner:** Who are the Men in Black?` followed by Ra's answer, *"The Men in
+  Black are a thought-form type of entity which have some beingness to their make-up…"* The
+  site's own `unified-index.php` lists `12.21` under thought-form.
+- **Root cause of the error:** an *elided* extract. A page fetched through a summarising
+  extractor can omit questions while keeping neighbouring anchors, which reads exactly like a
+  numbering gap. **Never infer a missing question from an extractor's elision** — fetch the
+  page and count the anchors.
+- **Consequence for canon:** the citation in [`11_ONTOLOGY.md`](../rulebook/11_ONTOLOGY.md)
+  (§10.9, Men in Black as materialising thought-forms) is **correct and stays**.
+
+### `6.8` DOES place the Council at Saturn
+
+- **The claim:** *"The text never places the Council on Saturn. The only link is the name."*
+- **The truth:** at **`6.8`** the questioner asks *"Where is this Council located?"* and Ra
+  answers: *"This Council is located in the octave, or eight[h] dimension, of the planet
+  Saturn, taking its place in an area which you understand in third-dimensional terms as the
+  rings."* The cached primary page preserves the anchor `[6].[8]` on the question.
+- **What is true in the sibling's version:** the location is *not* third-dimensional, and
+  "Council of Saturn" is a loose human translation. That is the **narrower** correct statement,
+  now recorded as the reskin's rule: a Saturn-orbital Quarantine Authority is a **translation
+  artefact**, and the notes may not say the text is silent.
+- **Consequence for canon:** [`rulebook/12_BEINGS.md`](../rulebook/12_BEINGS.md) and
+  `RULEBOOK.md` §33.18's Council-of-Saturn usage is **compatible and stays**;
+  `16_CONFEDERACY_SOURCE_AND_CONTACT.md`'s reskin table is safe as written.
+
+> **The rule this section exists to enforce.** A research stream is not a source. Two of the
+> three most confident cross-stream "corrections" this pass were false, and either one, taken
+> on trust, would have put a **false statement about the primary text** into canon. Verify the
+> page; then write.
 
 ---
 
