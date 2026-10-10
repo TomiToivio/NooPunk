@@ -34,28 +34,37 @@ TAG = "rulebook-pre-narrative-2026-10"
 SUBSTANTIVE = 40  #: minimum line length to count as prose rather than markdown furniture
 
 
-def sha256(path: pathlib.Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+def blob(path: str) -> bytes:
+    """Read a path AS IT IS IN THE TAG. The archive describes the archive, not the working tree.
+
+    An earlier version walked the working tree. That made the manifest go stale the moment any
+    parallel change touched a rulebook file, and it would also have let the manifest drift away
+    from what the tag actually holds -- which is the only thing it is supposed to guarantee.
+    """
+    return subprocess.run(["git", "show", f"{TAG}:{path}"], cwd=ROOT, capture_output=True,
+                          check=True).stdout
 
 
-def corpus() -> list[pathlib.Path]:
-    """Every rulebook-shaped file: the canonical text and all derived/distinct views."""
-    files = [ROOT / "RULEBOOK.md"]
-    for pattern in ("rulebook/**/*.md", "rulebook_parts/**/*.md", "docs/rulebook_segments/**/*.md"):
-        files += sorted(p for p in ROOT.glob(pattern) if p.is_file())
-    return sorted(set(files))
+def corpus() -> list[str]:
+    """Every rulebook-shaped file present at the tag: canonical text plus all views."""
+    # core.quotePath=false is REQUIRED: git escapes non-ASCII paths by default, so the quoted
+    # form of rulebook/1_NOÖPUNK.md does not start with "rulebook/" and was silently dropped --
+    # a completeness hole in the very file whose job is completeness.
+    listing = subprocess.run(["git", "-c", "core.quotePath=false", "ls-tree", "-r", "--name-only", TAG],
+                             cwd=ROOT, capture_output=True, text=True, check=True).stdout.splitlines()
+    keep = ("RULEBOOK.md", "rulebook/", "rulebook_parts/", "docs/rulebook_segments/")
+    return sorted(p for p in listing if p.endswith(".md") and p.startswith(keep))
 
 
-def substantive_lines(path: pathlib.Path) -> list[str]:
-    return [s for s in (ln.strip() for ln in path.read_text(encoding="utf-8").splitlines())
-            if len(s) >= SUBSTANTIVE]
+def substantive_lines(text: str) -> list[str]:
+    return [s for s in (ln.strip() for ln in text.splitlines()) if len(s) >= SUBSTANTIVE]
 
 
-def classify(path: pathlib.Path, canonical_lines: set[str]) -> tuple[str, float, int]:
+def classify(path: str, text: str, canonical_lines: set[str]) -> tuple[str, float, int]:
     """`canonical` for RULEBOOK.md itself; otherwise by prose overlap with it."""
-    if path.name == "RULEBOOK.md":
+    if path == "RULEBOOK.md":
         return "canonical", 1.0, len(canonical_lines)
-    lines = substantive_lines(path)
+    lines = substantive_lines(text)
     if not lines:
         return "distinct", 0.0, 0
     share = sum(1 for ln in lines if ln in canonical_lines) / len(lines)
@@ -74,14 +83,16 @@ def git(*args: str) -> str:
 
 
 def build() -> dict:
-    canonical_lines = set(substantive_lines(ROOT / "RULEBOOK.md"))
+    canonical_text = blob("RULEBOOK.md").decode("utf-8")
+    canonical_lines = set(substantive_lines(canonical_text))
     entries: list[dict[str, Any]] = []
     for path in corpus():
-        kind, share, lines = classify(path, canonical_lines)
+        raw = blob(path)
+        kind, share, lines = classify(path, raw.decode("utf-8"), canonical_lines)
         entries.append({
-            "path": path.relative_to(ROOT).as_posix(),
-            "bytes": path.stat().st_size,
-            "sha256": sha256(path),
+            "path": path,
+            "bytes": len(raw),
+            "sha256": hashlib.sha256(raw).hexdigest(),
             "classification": kind,
             "prose_overlap_with_canonical": share,
             "substantive_lines": lines,

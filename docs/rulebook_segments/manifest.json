@@ -6,57 +6,57 @@
   "segments": [
     {
       "path": "docs/rulebook_segments/01_PLAYER_CORE.md",
-      "length": 18905,
+      "length": 19453,
       "source_start": 0,
-      "source_end": 18905
+      "source_end": 19453
     },
     {
       "path": "docs/rulebook_segments/02_DOMAIN_QUICKSTART.md",
       "length": 13258,
-      "source_start": 18905,
-      "source_end": 32163
+      "source_start": 19453,
+      "source_end": 32711
     },
     {
       "path": "docs/rulebook_segments/03_CHARACTER_GENERATION.md",
       "length": 7655,
-      "source_start": 32163,
-      "source_end": 39818
+      "source_start": 32711,
+      "source_end": 40366
     },
     {
       "path": "docs/rulebook_segments/04_CORE_REFERENCE.md",
       "length": 34179,
-      "source_start": 39818,
-      "source_end": 73997
+      "source_start": 40366,
+      "source_end": 74545
     },
     {
       "path": "docs/rulebook_segments/05_SYSTEMS_AND_ENGINEERING.md",
       "length": 17506,
-      "source_start": 73997,
-      "source_end": 91503
+      "source_start": 74545,
+      "source_end": 92051
     },
     {
       "path": "docs/rulebook_segments/06_WORLD_CANON.md",
       "length": 81735,
-      "source_start": 91503,
-      "source_end": 173238
+      "source_start": 92051,
+      "source_end": 173786
     },
     {
       "path": "docs/rulebook_segments/07_GLOSSARY_AND_SOURCES.md",
       "length": 30330,
-      "source_start": 173238,
-      "source_end": 203568
+      "source_start": 173786,
+      "source_end": 204116
     },
     {
       "path": "docs/rulebook_segments/08_WORLD_SYSTEMS_AND_CAMPAIGN.md",
       "length": 90688,
-      "source_start": 203568,
-      "source_end": 294256
+      "source_start": 204116,
+      "source_end": 294804
     },
     {
       "path": "docs/rulebook_segments/09_LATE_LORE_AND_CATALOGS.md",
       "length": 26833,
-      "source_start": 294256,
-      "source_end": 321089
+      "source_start": 294804,
+      "source_end": 321637
     }
   ]
 }

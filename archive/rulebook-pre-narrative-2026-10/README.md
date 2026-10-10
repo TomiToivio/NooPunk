@@ -47,6 +47,33 @@ for the whole corpus:
 2. **Most of the 54-section appendix was never player rules.** It is process, provenance and lore.
    Routing it to the engineering or lore tracks is not discarding rules that existed.
 
+## The corpus has three parallel split systems, and one is orphaned
+
+Found while archiving, and directly relevant to #265's "single active rulebook" requirement:
+
+| System | Writes | Generator |
+| --- | --- | --- |
+| twelve-part | `rulebook/parts/` (12), `rulebook/00_INDEX.md`, `data/rules/rulebook_split_manifest.json` | `tools/split_rulebook_twelve.py --apply` |
+| eight-part ledger | `rulebook_parts/` (9) | `tools/split_rulebook.py` (writes by default; `--check` only checks) |
+| segments view | `docs/rulebook_segments/` (9) + `manifest.json` | **none — the generator is gone** |
+
+The third one has **no generator anywhere in the repository**; grep finds only the test that reads
+it. It is a byte-exact partition of `RULEBOOK.md`, so it still validates — but it cannot be
+regenerated, only hand-realigned. Any insertion into `RULEBOOK.md` therefore has to be propagated
+to it manually, and a one-off script is the only way to do that today.
+
+Two consequences for the migration:
+
+1. **Editing `RULEBOOK.md` costs three regenerations**, one of which is not automatable. Even a
+   seven-line hyperlink in the preamble breaks two guards and requires the orphaned view to be
+   realigned by hand. That is a strong argument for the consolidation #265 asks for, and for
+   making the new edition's generator the only one.
+2. **None of the three should survive into the new edition as-is.** They encode the old
+   numbering; two of them are pure duplication of the canonical text.
+
+This is not a complaint about the old rules — it is the mechanical cost of the migration, measured
+while doing it.
+
 ## What this archive does not do
 
 It does not delete, move or rewrite any rulebook file. It does not choose a dice formula. It does

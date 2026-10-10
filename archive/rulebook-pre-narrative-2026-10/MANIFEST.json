@@ -3,14 +3,14 @@
   "issue": 265,
   "archive": "archive/rulebook-pre-narrative-2026-10",
   "tag": "rulebook-pre-narrative-2026-10",
-  "source_commit": "72118754ccdab53508ab90267349d942efca15b7",
-  "source_date": "2026-10-10T18:35:30+03:00",
+  "source_commit": "a83c9854995532d33412ef79eed1dba4f81fa0f5",
+  "source_date": "2026-10-10T21:29:46+03:00",
   "totals": {
     "files": 63,
     "bytes": 2389107,
     "by_classification": {
-      "canonical": 2,
-      "derived": 37,
+      "canonical": 1,
+      "derived": 38,
       "distinct": 23,
       "partial": 1
     }
@@ -372,9 +372,9 @@
       "path": "rulebook/source_snapshots/root/RULEBOOK.md",
       "bytes": 322056,
       "sha256": "c654ebddfc0f730c8edafec3c664e1e6d560e8d7783f3a8926fc8347ce3fc959",
-      "classification": "canonical",
+      "classification": "derived",
       "prose_overlap_with_canonical": 1.0,
-      "substantive_lines": 3084
+      "substantive_lines": 3097
     },
     {
       "path": "rulebook/source_snapshots/rulebook_parts/00_meta_and_provenance.md",
