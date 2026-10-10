@@ -136,6 +136,8 @@ Cybernetic Systems and equipment passes.
 
 ## Skills remain separate
 
+**Cross-domain play.** A character can be embodied, cyber-immersed, astral-projected or in an involuntary dream/NDE state. The single state machine, the shared action-point economy, the one initiative order and the gateway rule for realm-crossing effects are specified once in [`rulebook/18_CROSS_DOMAIN_STATE.md`](18_CROSS_DOMAIN_STATE.md) (issue #225) and are consumed by the realm chapters rather than restated. Reach is decided by **state**, never by a STAT rating.
+
 Opt-in cross-system conversion tables are maintained in [`docs/design/RPG_CONVERSION_REFERENCE.md`](../docs/design/RPG_CONVERSION_REFERENCE.md) for interoperability with other games. They are NoöPunk-authored aids only: they do not expand the canonical six-STAT model, import another game's skill catalogue, or make any external system a parent of these rules.
 
 NoöPunk keeps the rule established in #111:

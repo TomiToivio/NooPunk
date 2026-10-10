@@ -1029,6 +1029,8 @@ setting theory rather than science:
 
 ## B. Why this matters for mechanics
 
+**Cross-domain play.** Astral projection, cybernetic immersion and involuntary dream/NDE states are the *same* consciousness in different states, not different subsystems. The state machine, the shared action-point economy and the gateway rule for realm-crossing effects are specified once in [`rulebook/18_CROSS_DOMAIN_STATE.md`](18_CROSS_DOMAIN_STATE.md) (issue #225); embodied local PSI stays under this chapter, and full projection (#224) consumes that contract.
+
 Nothing in this chapter creates numeric PSI powers, a PSI point economy, or a spell list.
 PSI applications remain **capabilities** resolved with the existing Skill check
 (`STAT + Skill + 1d10`), and psychotronics remains a broad operational category, not a second
