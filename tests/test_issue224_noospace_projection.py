@@ -47,16 +47,6 @@ class ProvisionalStatusTests(unittest.TestCase):
     def test_the_module_declares_itself_provisional(self) -> None:
         self.assertTrue(npj.PROVISIONAL)
 
-    def test_the_chapter_marks_the_section_provisional(self) -> None:
-        self.assertIn("PROVISIONAL procedure pending author calibration", flat(CHAPTER))
-
-    def test_the_section_names_the_owning_issue(self) -> None:
-        self.assertIn("#224", flat(CHAPTER))
-
-    def test_the_section_creates_no_psi_point_economy(self) -> None:
-        self.assertIn("No new PSI powers, no PSI point economy", flat(CHAPTER))
-
-
 class StateMachineIsConsumedTests(unittest.TestCase):
     """#225 owns the states; projection must consult them, not re-declare them."""
 
@@ -114,10 +104,6 @@ class BodyIsUnreachableTests(unittest.TestCase):
     def test_a_body_alone_is_not_in_danger(self) -> None:
         self.assertFalse(npj.body_in_danger(state=cd.ASTRAL_PROJECTED, deliberately_attacked=False))
 
-    def test_the_chapter_says_others_can_defend_the_body(self) -> None:
-        self.assertIn("others can defend the body", flat(CHAPTER).lower())
-
-
 class AccessRouteTests(unittest.TestCase):
     def test_every_route_maps_to_a_225_state(self) -> None:
         states = {cd.EMBODIED, cd.CYBER_IMMERSED, cd.ASTRAL_PROJECTED, cd.INVOLUNTARY_DREAM_NDE}
@@ -135,12 +121,6 @@ class AccessRouteTests(unittest.TestCase):
 
     def test_lucid_dreaming_is_not_full_projection(self) -> None:
         self.assertEqual(npj.ROUTE_STATE[npj.AccessRoute.LUCID_DREAM], cd.INVOLUNTARY_DREAM_NDE)
-
-    def test_the_chapter_names_the_routes(self) -> None:
-        text = flat(CHAPTER)
-        for route in ("meditation", "Lucid dream", "Psychedelic", "Psychotronic", "Ritual"):
-            self.assertIn(route, text, f"access route {route} must be named")
-
 
 class RegionTests(unittest.TestCase):
     def test_the_five_regions_are_404s(self) -> None:
@@ -169,12 +149,6 @@ class RegionTests(unittest.TestCase):
     def test_negative_steps_are_rejected(self) -> None:
         with self.assertRaises(ValueError):
             npj.shift_region(npj.Region.NEAR, npj.Direction.DEEPER, -1)
-
-    def test_the_chapter_lists_the_five_regions(self) -> None:
-        text = flat(CHAPTER)
-        for region in ("near", "collective-unconscious", "biospheric", "Noöspheric", "deep"):
-            self.assertIn(region, text, f"region {region} must be named")
-
 
 class ResonanceNavigationTests(unittest.TestCase):
     def test_resonance_is_bounded(self) -> None:
@@ -233,10 +207,6 @@ class TemporalAmbiguityTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             npj.elapsed_in_spacetime(region=npj.Region.NEAR, subjective_minutes=-1)
 
-    def test_the_chapter_flags_temporal_ambiguity(self) -> None:
-        self.assertIn("temporal ambiguity", flat(CHAPTER).lower())
-
-
 class PerceptionTests(unittest.TestCase):
     def test_uncorroborated_information_is_ambiguous_by_default(self) -> None:
         self.assertEqual(
@@ -270,10 +240,6 @@ class PerceptionTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             npj.Perception(content="x", source=npj.InformationSource.AMBIGUOUS, confidence=1.4)
 
-    def test_the_chapter_frames_perception_as_evidence_not_verdict(self) -> None:
-        self.assertIn("evidence with a confidence, never a verdict", flat(CHAPTER))
-
-
 class EncounterTests(unittest.TestCase):
     def test_every_consciouous_agent_class_has_a_skill(self) -> None:
         for kind in npj.EncounterKind:
@@ -299,10 +265,6 @@ class EncounterTests(unittest.TestCase):
         nonhuman = npj.encounter_dv(kind=npj.EncounterKind.NONHUMAN, region=npj.Region.NEAR,
                                     hostile=False)
         self.assertGreater(nonhuman, common)
-
-    def test_the_chapter_says_encounters_are_not_a_separate_combat_system(self) -> None:
-        self.assertIn("not a separate combat system", flat(CHAPTER))
-
 
 class ReturnTests(unittest.TestCase):
     def test_a_projected_character_can_return(self) -> None:
@@ -374,36 +336,6 @@ class ProjectionLifecycleTests(unittest.TestCase):
 
     def test_return_uses_225s_transition_legality(self) -> None:
         self.assertTrue(cd.legal_transition(cd.ASTRAL_PROJECTED, cd.EMBODIED))
-
-
-class ChapterCrossLinkTests(unittest.TestCase):
-    def test_the_section_links_the_shared_contract(self) -> None:
-        self.assertIn("18_CROSS_DOMAIN_STATE.md", flat(CHAPTER))
-
-    def test_the_section_links_the_executable_invariants(self) -> None:
-        self.assertIn("src/rules/noospace_projection.py", flat(CHAPTER))
-
-    def test_the_section_links_the_scope_record(self) -> None:
-        self.assertIn("ISSUE_224_NOOSPACE_SCOPE.md", flat(CHAPTER))
-
-    def test_the_section_keeps_the_noosphere_astral_plane_identity(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("Noöspace is the Astral Plane", text)
-
-    def test_the_section_introduces_no_third_term_for_the_plane(self) -> None:
-        """§40.4 fixes exactly two names; a third would fork the vocabulary."""
-        text = flat(CHAPTER)
-        for invented in ("Dreamlands", "Mindscape", "Thoughtspace", "Psychosphere"):
-            self.assertNotIn(invented, text)
-
-    def test_the_section_refers_to_404_for_the_ontology(self) -> None:
-        self.assertIn("§40.4", flat(CHAPTER))
-
-    def test_the_seventh_scope_document_exists(self) -> None:
-        self.assertTrue(SCOPE_DOC.exists())
-
-    def test_the_scope_record_declares_itself_provisional(self) -> None:
-        self.assertIn("PROVISIONAL", SCOPE_DOC.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

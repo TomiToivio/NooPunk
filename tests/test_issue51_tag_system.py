@@ -443,20 +443,6 @@ class AntiInventionTests(unittest.TestCase):
             with self.subTest(invented=invented):
                 self.assertNotIn(invented, source.lower())
 
-    def test_rulebook_attributes_are_not_rewritten_by_this_prototype(self) -> None:
-        """The prototype must not present its vocabulary as canon.
-
-        #51 said "do not lock the final names" *from the prototype*. Issue #131 now does
-        lock the base STAT list, but to the six base STATs — not to the prototype's tag
-        vocabulary, which stays non-canonical. This guard pins both facts.
-        """
-        text = " ".join((ROOT / "AGENTS.md").read_text(encoding="utf-8").split()).lower()
-        self.assertIn("non-canonical prototype", text)
-        self.assertIn("issue #131", text)
-        for code in ("fit", "ref", "int", "soc", "cyb", "psy"):
-            self.assertIn(code, text)
-
-
 class AbsentSystemTests(unittest.TestCase):
     """RULEBOOK §5.2: a system can be absent, and absence is not a low score.
 

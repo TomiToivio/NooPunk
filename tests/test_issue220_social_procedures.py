@@ -94,20 +94,6 @@ class HardLimitTests(unittest.TestCase):
             with self.subTest(name=forbidden):
                 self.assertFalse(hasattr(soc, forbidden))
 
-    def test_the_chapter_states_the_hard_limits(self) -> None:
-        text = flat(CHAPTER)
-        for phrase in (
-            "A social check changes what a character can *achieve*",
-            "Kinesics reads cues, not truth",
-            "There is no guaranteed lie detection",
-            "does not rewrite memory or ideology",
-            "Coercion is not persuasion",
-            "cannot overwrite a Motivation",
-        ):
-            with self.subTest(phrase=phrase):
-                self.assertIn(phrase, text)
-
-
 class CoercionTests(unittest.TestCase):
     """AC1/AC3 — coercion moves behaviour and always leaves a cost."""
 
@@ -128,11 +114,6 @@ class CoercionTests(unittest.TestCase):
     def test_an_unknown_consequence_is_refused(self) -> None:
         with self.assertRaises(soc.SocialError):
             soc.SocialOutcome(consequence="Enslaved", coercive=True)
-
-    def test_the_chapter_names_grievance_as_the_coercion_cost(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("**Grievance** is the canonical social consequence of coercion", text)
-
 
 class ReputationStepTests(unittest.TestCase):
     """AC2 — a witnessed exchange may move Reputation by exactly ONE step."""
@@ -190,13 +171,6 @@ class RelationshipStatusTests(unittest.TestCase):
     def test_statuses_are_derived_by_construction(self) -> None:
         self.assertTrue(soc.status_is_derived())
 
-    def test_the_chapter_keeps_the_unknown_rule(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("no edge means", text.lower())
-        self.assertIn("unknown is not the same as a stored zero", text.lower())
-        self.assertIn("changing a status means changing an edge", text)
-
-
 class GroupTests(unittest.TestCase):
     """AC1 — group interaction, with a BOUNDED modifier."""
 
@@ -212,85 +186,11 @@ class GroupTests(unittest.TestCase):
     def test_the_cap_matches_the_recorded_situational_cap(self) -> None:
         self.assertEqual(soc.MAX_GROUP_SUPPORT, 2)
 
-    def test_the_chapter_states_the_bound(self) -> None:
-        self.assertIn("+1 per supporting member up to +2", flat(CHAPTER))
-
-
-class PreservationTests(unittest.TestCase):
-    """AC2 — the existing graph is consumed, not forked."""
-
-    def test_the_canonical_scale_is_intact(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("integer from -10 to +10", text)
-
-    def test_us_and_frontier_survive(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("US^(positive or constitutive affects)", text)
-        self.assertIn("FRONTIER^(negative or antagonistic affects)", text)
-
-    def test_the_affect_reference_model_survives(self) -> None:
-        self.assertIn("src/simulation/affect.py", flat(CHAPTER))
-
-    def test_no_second_graph_or_aspect_layer(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("No second graph and no second aspect layer", text)
-        self.assertIn("18_CROSS_DOMAIN_STATE.md", text)
-
-    def test_the_aspect_layer_is_the_existing_one(self) -> None:
-        self.assertIn("ISSUE_200_ASPECTS_PROTOTYPE.md", flat(CHAPTER))
-
-
-class ConcordiaSeamTests(unittest.TestCase):
-    """AC4 — the LLM narrates; the engine rolls and writes state."""
-
-    def test_the_seam_is_stated(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("Ollama / Concordia: who rolls?", text)
-        self.assertIn("it never rolls and never sets state", text)
-        self.assertIn("narration is generated, **numbers are not**", text)
-
-    def test_the_rejection_rule_is_stated(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("**rejected**, not narrated into existence", text)
-
-
 class HygieneTests(unittest.TestCase):
     """AC5 — provisional labels, independent wording, resolvable links."""
 
-    def test_provisional_numbers_are_labelled(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("PROVISIONAL pending author calibration", text)
-        self.assertGreaterEqual(text.count("PROVISIONAL"), 6)
-
-    def test_no_proprietary_system_is_named(self) -> None:
-        text = flat(CHAPTER)
-        for name in ("Cyberpunk", "Shadowrun", "Eclipse Phase", "GURPS", "CY_BORG"):
-            with self.subTest(system=name):
-                self.assertNotIn(name, text)
-
-    def test_no_second_dice_system(self) -> None:
-        """Social play uses the one core check; an alternative die would be a second arithmetic."""
-        text = flat(CHAPTER)
-        for other in ("2d6", "1d100", "d20", "3d6"):
-            with self.subTest(term=other):
-                self.assertNotIn(other, text)
-
-    def test_the_chapter_says_what_it_does_not_do(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("What this chapter deliberately does not do", text)
-        self.assertIn("No persuasion formulas", text)
-        self.assertIn("#226", text)
-
     def test_the_module_declares_itself_non_canonical(self) -> None:
         self.assertFalse(soc.IS_CANONICAL)
-
-    def test_the_document_keeps_no_dangling_relative_link(self) -> None:
-        body = CHAPTER.read_text(encoding="utf-8")
-        for target in re.findall(r"\]\((?!https?:)([^)#]+\.md)\)", body):
-            with self.subTest(target=target):
-                self.assertTrue((CHAPTER.parent / target).resolve().is_file(),
-                                f"{target} does not resolve")
-
 
 if __name__ == "__main__":
     unittest.main()

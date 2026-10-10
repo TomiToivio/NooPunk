@@ -76,13 +76,6 @@ class StaysAPrototypeTests(unittest.TestCase):
 class ConsequenceVocabularyTests(unittest.TestCase):
     """The vocabulary is the AUTHOR'S. It is asserted against the rulebook, not assumed."""
 
-    def test_states_match_rulebook_section_51(self) -> None:
-        section = rulebook_harm_section()
-        for state in ap.CONSEQUENCE_STATES:
-            with self.subTest(state=state):
-                self.assertIn(f"**{state}**", section, f"{state} is not in RULEBOOK.md section 51")
-        self.assertEqual(ap.CONSEQUENCE_STATES, ("Scratched", "Wounded", "Critical", "Down"))
-
     def test_the_rulebook_calls_it_a_fiction_first_vocabulary(self) -> None:
         section = " ".join(rulebook_harm_section().split())
         self.assertIn("fiction-first consequence vocabulary", section)

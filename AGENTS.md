@@ -13,6 +13,21 @@ before changing rules, mechanics, or setting material.
 
 Automated tests and CI assertions must exercise **executable game/software code** (Python, Godot, Concordia, game tools, runtime APIs and behavior). Do **not** add pytest/unittest tests, text-matching assertions, schema-locked canon checks, snapshot guards, or CI gates for **rules, lore, scenario prose, worldbuilding, canon, rulebook structure, design principles, or wording**. The author reviews those materials editorially and through tabletop playtesting; they are not code contracts. Do not recreate removed lore/rulebook tests under new names or add such checks to the code-test suite. Preserve the existing lore and archival material as documentation, not executable tests. When a tabletop mechanic is implemented as code, test the implementation's behavior, not whether prose matches a frozen version.
 
+This policy also covers checks that are not unittest files: do not add documentation gates to `tools/`,
+`scripts/`, GitHub Actions, release tooling or hooks, and do not reintroduce a removed documentation
+test under a new name, in a renamed file, or as a "smoke" step. If a change removes a documentation
+test, that is a **deletion of a test, never of the material the test described** — lore, rules, canon,
+scenarios and archives stay.
+
+**What to do instead.** Review creative material by (a) author editorial review, (b) discussion on the
+relevant issue, (c) comparing overlapping sources by hand, and (d) **tabletop playtesting**. These are
+human processes and must not be converted back into CI gates.
+
+**Every participating agent** must carry this policy in its own NoöPunk-specific instructions and
+skill files, wherever they live, and must report the paths it checked in the tracking issue. An agent
+that cannot reach a private or external skill file must name the path and the blocker rather than
+claim it was updated.
+
 ### 1. Author intent is canon
 
 Do not invent NoöPunk rules, mechanics, lore, history, factions, technologies, metaphysics, organizations, locations, character classes, archetypes, species, NHI categories, psionic powers, skills, attributes, combat systems, progression systems, equipment lists, economies, or world events unless the author has explicitly specified them.
@@ -280,7 +295,7 @@ Practical consequences:
 - A scenario, mission, map, or presentation difference between Tabletop, Godot and Concordia is expected and permitted. A **rules** difference is a defect: extract a shared specification rather than fork the rule.
 - Where a shared specification already exists (for example `data/rules/core.json` over `src/rules/core.py`), consume it rather than re-declaring the same values in a second runtime.
 
-`tests/test_design_principles.py` fails the build if these invariants, the canonical document, or the documents that reference it drift out of agreement.
+These invariants are upheld by author review and tabletop playtesting, not by an automated test. Per this project's testing policy, automated tests cover **executable game code only**; there is deliberately no test that fails the build when design prose or the documents referencing it change.
 
 
 ### 14. Tabletop-first porting gate
