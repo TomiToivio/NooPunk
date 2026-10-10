@@ -258,7 +258,12 @@ Full per-source detail is in `docs/sources/ATTRIBUTION.md` and
 - No migration, no renumbering, no rewrite of the rulebook or the code.
 - The EP2, CWN and The Veil column names carry explicit verification caveats in the data file. Re-reading those sources against their official texts is the next step.
 - 40 skills mapped; 40 rows in the data file; 4 families. Raw data: `data/rules/skill_mapping_crosssystem.json`.
-# COMPARISON.md — Fate-first system comparison and conversion tables (issue #255)
+---
+
+## Appendix A — the first increment, preserved verbatim
+
+_This appendix is the earlier `COMPARISON.md` that was **concatenated** onto the document above when the issue's PRs merged (it arrived as a second whole document: a second H1 and a second §1–§8, so every section number was defined twice). It is kept whole so nothing is discarded — #255 asks that agents' additions be reconciled **without discarding content** — and its headings are prefixed `A.` so they can no longer collide with the body above. Its unique material is §9 (playtest scenarios) and §10 (dependencies/coordination)._
+
 
 **Status: IN PROGRESS.** This is a research/design gate, not a rule change. **No rule becomes
 canonical from this document**, and nothing here authorises edits to `RULEBOOK.md`,
@@ -276,16 +281,16 @@ conversion.*
 
 ---
 
-## 1. Goals, design triangle, trade-offs, and scope boundaries
+## A.1. Goals, design triangle, trade-offs, and scope boundaries
 
-### 1.1 What this document is for
+### A.1.1 What this document is for
 
 To decide **which family supplies the chassis**, how the four families' concepts map onto NoöPunk's
 canonical six Attributes and 40 Skills, and what a conversion costs — *before* anything is locked.
 The deliverable is a comparison, a set of conversion tables with honest labels, at least two
 alternative numeric kernels with probabilities, and a rights matrix.
 
-### 1.2 The GNS design triangle (a heuristic, not a classification)
+### A.1.2 The GNS design triangle (a heuristic, not a classification)
 
 GNS is a **subjective design map, not an objective rating**, and every game named here mixes
 agendas. It is used here only to spread the design space.
@@ -301,7 +306,7 @@ Author's steer on the Narrativist corner: **The Veil is more thematically pertin
 Apocalypse World** — and the rights matrix below shows this is also the corner where the licensing
 is *cleanest* to reuse.
 
-### 1.3 The trade-off this comparison exists to expose
+### A.1.3 The trade-off this comparison exists to expose
 
 **The preferred centre contains a NonCommercial work.** The author locks the chassis to *Fate Core
 / Transhumanity's Fate* — but **Transhumanity's Fate is CC BY-NC-SA**, so it cannot be copied into
@@ -318,7 +323,7 @@ That is the central tension of this issue and it shapes everything else:
 - **Anything whose only clean source is an NC book must be re-expressed from the mechanics**, which
   is what CWN's CC0 SRD explicitly permits and what EP/Transhumanity's Fate do not.
 
-### 1.4 Author-locked requirements (carried here as constraints, not proposals)
+### A.1.4 Author-locked requirements (carried here as constraints, not proposals)
 
 1. Base on **Fate Core / Transhumanity's Fate**; **do not copy NC-licensed Transhumanity's Fate
    text**.
@@ -332,7 +337,7 @@ That is the central tension of this issue and it shapes everything else:
 5. **No Fudge** in recommended active sources or chassis; where history is compared, mark it out of
    scope and distinguish #200's outdated proposal.
 
-### 1.5 Scope and licence boundaries (summary; the matrix is §7)
+### A.1.5 Scope and licence boundaries (summary; the matrix is §7)
 
 - **Reusable in a commercial CC release:** Fate Core SRD (**CC BY**, not viral), Cities Without
   Number SRD (**CC0**), Worlds of Legacy SRD (**CC BY**).
@@ -345,7 +350,7 @@ That is the central tension of this issue and it shapes everything else:
 
 ---
 
-## 2. Attribute conversion table
+## A.2. Attribute conversion table
 
 A “counterpart” means analogous use, **not equivalent numbers or a fixed formula**. Fate Core has **skills**, not core attributes; EP uses **aptitudes**, with skills in addition; CWN/SWN have D&D-like attributes + skills; PbtA/The Veil usually roll moves using a broad stat or emotion, with no independent universal skill bonus.
 
@@ -360,7 +365,7 @@ A “counterpart” means analogous use, **not equivalent numbers or a fixed for
 
 **Important:** NoöPunk CYB is a **character stat**, while `Interface / Network / Compute` are **hardware properties**, not extra character attributes. EP's aptitudes are not just “Fate stats” with the numbers changed. PbtA's triggers/procedures cannot be represented with a single numerical column.
 
-## 3. Complete canonical skill vocabulary: cross-system *concept* mapping
+## A.3. Complete canonical skill vocabulary: cross-system *concept* mapping
 
 This comparison enumerates **every** name from `data/rules/skills.json` at the time of drafting. **These are provisional analogies**, not confirmed identical official skill names: EP entries may vary by edition; Fate examples are from its broad skill model; CWN and SWN lists differ; PbtA examples are proposed possible *types of moves*, not official The Veil moves. “No direct match” must remain an explicit gap.
 
@@ -409,7 +414,7 @@ This comparison enumerates **every** name from `data/rules/skills.json` at the t
 
 **Notes:** `Exotic Skill` and `Work` are fielded/variable; `Know`, `Medicine`, `Hardware`, `Pilot`, `Perform` have field specializations in the current catalog. Neither the Transhumanity's Fate, Eclipse Phase, nor CWN skill list is *literally identical* to the NoöPunk list: record nearest functional correspondence and mismatches. Exact page-by-page validation remains an explicit review task.
 
-## 4. Dice, thresholds, degrees of success: conversion *framework*, not a conversion formula
+## A.4. Dice, thresholds, degrees of success: conversion *framework*, not a conversion formula
 
 | Topic | Fate Core | Eclipse Phase 2E | CWN / SWN | PbtA / The Veil | NoöPunk open design question |
 |---|---|---|---|---|---|
@@ -438,7 +443,7 @@ These are **hypotheses, not rules**. When stress-testing, vary target shifts, qu
 
 **Shared example for testing:** An UNSA academy graduate with INT +1, Research 2 examines an Orion-linked forensic dossier. Against a proposed target 3 with neutral dice: Kernel A total 3 = success/tie boundary depending chosen formal rules; Kernel B total 3 if conditional +1 applies. A senior analyst with INT +2 and Research 3 would gain +5 in A, versus at most +4 in B: compare rates of success at *all* difficulty tiers. Fate's real tie and style outcomes must be chosen explicitly before final odds tables.
 
-## 5. Difficulty conversion by *task meaning* (illustrative)
+## A.5. Difficulty conversion by *task meaning* (illustrative)
 
 | Fictional difficulty | Fate-style target example | EP2 approach | CWN/SWN approach | PbtA / The Veil approach |
 |---|---|---|---|---|
@@ -449,7 +454,7 @@ These are **hypotheses, not rules**. When stress-testing, vary target shifts, qu
 
 This table deliberately avoids claiming numerical equivalence. Before implementing any conversion, calculate percentiles for typical beginner/competent/expert agents and verify plausible task permissions.
 
-## 6. Subsystem comparisons and recommendations to investigate
+## A.6. Subsystem comparisons and recommendations to investigate
 
 | Subsystem | Fate / Transhumanity's Fate | Eclipse Phase | CWN / SWN | PbtA / The Veil | NoöPunk research hypothesis |
 |---|---|---|---|---|---|
@@ -467,7 +472,7 @@ This table deliberately avoids claiming numerical equivalence. Before implementi
 An **Eclipse Phase psi sleight** or **Stars Without Number psychic power** typically establishes a concrete capability with eligibility/cost rules. A **Fate Stunt** is a narrowly framed exception or special bonus, often justified by an Aspect. A **PbtA Move** is a triggered procedure that says what happens when a player acts in specific circumstances, including mixed outcomes and GM reactions. They are *not interchangeable units*: one power might need an **Aspect (identity) + Stunt (permission) + skill test (ability) + move-like 7–9 consequence text (narrative price)**. This is a conceptual composition, not a suggestion to run four independent resolution rolls.
 
 
-## 7. Source and rights matrix
+## A.7. Source and rights matrix
 
 Verified **2026-10-10** at the sources linked by the issue. "Reusable" means *the text may be
 reproduced in a commercial Creative Commons release*.
@@ -485,7 +490,7 @@ reproduced in a commercial Creative Commons release*.
 | **The Veil / Cascade** | samjokopublishing.com (text), DriveThruRPG | **CC BY-SA 3.0 Unported** | **Yes**, with ShareAlike | **Per-portion carve-out:** the licence paragraph itself records that *"some moves are either tweaked or lifted straight from Apocalypse World"* — that permission was granted **to that project**, so those portions are unavailable even though the surrounding text is licensed. Adopting The Veil text imposes **ShareAlike on the whole work**. |
 | **Fudge / Psi-Punk** | — | OGL (cannot be relabelled CC) | **No** | **Out of scope** per #255. Retained only as history. |
 
-### 7.1 What the matrix decides
+### A.7.1 What the matrix decides
 
 1. **The chassis can be licensed cleanly.** Fate Core is CC BY and not viral, so a Fate-first
    NoöPunk can be released commercially under Tomi's chosen licence with an attribution bloc and no
@@ -502,7 +507,7 @@ reproduced in a commercial Creative Commons release*.
 5. **A Fate Core + CWN + Worlds of Legacy combination is licence-compatible** with a commercial CC
    release. A Fate Core + The Veil combination forces ShareAlike on everything.
 
-### 7.2 Retrieval honesty
+### A.7.2 Retrieval honesty
 
 - **Verified at source:** Fate licensing page and its CC-BY guide; EP licensing page;
   Transhumanity's Fate release page; CWN SRD official DriveThruRPG listing; SWN free-edition
@@ -513,7 +518,7 @@ reproduced in a commercial Creative Commons release*.
 
 ---
 
-## 8. Cross-references to existing work (do not overwrite)
+## A.8. Cross-references to existing work (do not overwrite)
 
 | Artefact | What it already provides | How this document uses it |
 | --- | --- | --- |
@@ -524,7 +529,7 @@ reproduced in a commercial Creative Commons release*.
 | `docs/sources/GAME_SYSTEM_RIGHTS.md` + `data/sources/game_system_rights.json` | the dated, guarded provenance ledger | the authoritative rights record; §7 above is the summary, that ledger is the source |
 | Issues **#217–#232** | the domain work packages (core rules, chargen, physical, social, cybernetic, psychic, astral, cross-domain, UNSA, beings, equipment, narrative, GM toolkit, CC release, consolidation) | the chapters the comparison must ultimately feed; **#217 is now downstream of a superseded centre** |
 
-### 8.1 Conflicts found (recorded, not resolved)
+### A.8.1 Conflicts found (recorded, not resolved)
 
 - **#217's resolution semantics were designed against the superseded Fudge/Fate ladder.** The
   untrained −1 rule matches canon (`skills.json` `untrained_modifier: -1`), but the ladder and the
@@ -555,7 +560,7 @@ Committed in small reviewable increments, per the issue's collaboration requirem
       recalibration, stacking/balance and a worked comparable UNSA case
 
 
-## 9. Specific scenarios for apples-to-apples playtests
+## A.9. Specific scenarios for apples-to-apples playtests
 
 1. **UNSA interview:** Friendly Confederacy contact offers vital intelligence only if the agents promise confidentiality that may constrain human sovereignty. Test social competency vs voluntary compromise and faction response.
 2. **Orion proxy investigation:** Investigators track a donor network via interviews, open-source evidence, forensics and cyber intrusion. Core clue must be discoverable, with consequences escalating on risk.
@@ -565,7 +570,7 @@ Committed in small reviewable increments, per the issue's collaboration requirem
 
 Track median resolution time, number of rule lookups, tactical decisions, meaningful narrative choices, modifier stacks, success rates, safety/agency and GM improvisation burden.
 
-## 10. Dependencies, coordination, deliverables
+## A.10. Dependencies, coordination, deliverables
 
 - [#200](https://github.com/TomiToivio/NooPunk/issues/200) is an existing parent *implementation* epic. Its Fudge/Psi-Punk center conflicts with #255's new author direction. **Do not destructively rewrite #200 or mass-delete implementation artifacts**; raise a resolution comment and use separate approved follow-up change.
 - [#217–232](https://github.com/TomiToivio/NooPunk/issues/217), [#144](https://github.com/TomiToivio/NooPunk/issues/144), [#158](https://github.com/TomiToivio/NooPunk/issues/158), [#159](https://github.com/TomiToivio/NooPunk/issues/159) contain pre-existing work. Preserve valid contributions and flag conflicts with the latest decision.
