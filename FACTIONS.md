@@ -45,7 +45,7 @@ Do not turn this file into a global faction encyclopedia. Add named factions whe
 matter to a scenario, relationship or campaign arc.
 
 The default PC:
-1. works for **UNSA (United Nations Security Agency)**; and
+1. works for **UNSA (United Nations Security Administration)**; and
 2. may simultaneously belong to two or three additional or overlapping political,
    cultural, national, professional, ideological, religious, community or social factions.
 

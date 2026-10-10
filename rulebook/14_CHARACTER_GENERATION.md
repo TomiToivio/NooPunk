@@ -13,7 +13,7 @@
 > procedure, starting skill counts and levels, classes/archetypes and equipment statistics
 > were reserved. The author's 2026-10-07 directive opens the **section and its descriptive
 > lists** — the *shape* of a character and the paths through it — and does not open new
-> arithmetic (§13.8).
+> arithmetic (§13.11).
 
 ---
 
@@ -227,7 +227,134 @@ Three setting rules bind character generation directly:
 
 ---
 
-## 13.8 What this chapter deliberately does NOT define
+## 13.8 The default lifepath in five steps (issue #197)
+
+The canonical Lifepath (`RULEBOOK.md` §9.1, issue #144) is a long sequence. For the default
+UNSA campaign, issue #197 names its **five load-bearing steps** — the spine the setting
+content hangs from:
+
+1. **Childhood, social origins and formative experience.** Where they came from and what
+   happened to them (§13.4).
+2. **The experience that made UNSA recruit them.** Education, a first career, or an
+   extraordinary event — the reason their file exists at all.
+3. **UNSA Academy common training.** The **equalizing step**: the universal
+   investigator-officer package every graduate receives (`data/rules/unsa_academy.json`,
+   issue #158), regardless of where they came from. The Academy teaches baseline
+   investigation, evidence handling, safety and fieldcraft, cyber hygiene, contact protocol
+   and operational competency.
+4. **Specialty.** An optional or defined Academy track (§13.5) that differentiates graduates
+   *after* the common package.
+5. **Graduation, relationships and first assignment.** Who they owe, who they know, and the
+   posting they did not choose.
+
+**What differentiates graduates is steps 1–2 and 4; what makes them a party is step 3.**
+That is the design intent: prior careers and specializations supply variety, while the common
+package guarantees the team can actually work together.
+
+**Skills, packages and Edges are three different things** (issue #197; see the boundary notes
+in §13.11): *Skills* are learned competencies (`data/rules/skills.json`, §4.1); the
+*lifepath/career package* records professional history and recruitment rationale; *Edges* —
+distinctive talents, cybernetic/PSI capabilities, professional advantages, connections or
+formative experience, in the spirit of *Cities Without Number* — are a **separate mechanical
+question that issue #197 does not settle**. Balance, eligibility and progression for Edges
+belong to the rules issues, and this chapter deliberately locks nothing.
+
+> **Related issues (coordinate, do not duplicate).** **#144** owns the Lifepath framework and
+> the Reputation pool; **#158** owns the UNSA Academy universal package, the standard
+> augmentations and the rookie field kit; **#159** owns the canonical Skill vocabulary, the
+> field-specialization model and the default STAT bindings. This chapter consumes all three
+> and restates none of them.
+
+---
+
+## 13.9 "Geeks, Jocks & Freaks" — student slang, not classes
+
+**Issue #197 adds exactly one piece of chargen vocabulary, and it is deliberately informal:**
+Academy students describe recruitment routes as **Geeks, Jocks & Freaks**. It is **student
+slang, not an official or mandatory classification**, and it carries **no mechanical weight**.
+
+| Slang | Recruited for | Typical prior life |
+| --- | --- | --- |
+| **Geeks** | scholarly or technical expertise | research, engineering, medicine, analysis, academia |
+| **Jocks** | operational, military, intelligence, law-enforcement or rescue experience | service, policing, the field |
+| **Freaks** | PSI, anomalous encounters, unusual augmentation or other exceptional characteristics | the setting's hardest backgrounds (§11.5) |
+
+Two cautions are part of the term itself:
+
+- **The categories overlap.** A hacker may be a Jock with a Geek's degree; a psi-capable
+  recruit may also be the most rigorous analyst in the intake. Do not reduce every hacker to
+  one type, or treat every unusual person as one archetype.
+- **"Freak" is affectionate, impolite, and the setting knows it.** The word is the students'
+  own. It must never license treating unusual people as **inherently pathological**; §11.10's
+  class-and-personhood politics and §11.5's injustice engine are the corrective, and the
+  Academy's whole point is that an anomalous recruit graduates as an officer like any other.
+
+**The equalizing rule stands above the slang:** all graduates gain the common Academy package,
+and prior careers and specializations differentiate them *without* creating character classes
+or tiering one route above another. Multiple age and background paths stay viable.
+
+---
+
+## 13.10 Example new-graduate backgrounds (issue #197)
+
+Four worked examples of **step 1 → step 2 → step 3 → step 5** — recruitment routes, not stat
+blocks. Each shows a different road into the Academy and the same equalizing result. **They
+define no numbers, no Skill packages and no mechanical bonuses**; they illustrate the shape
+§13.9 describes.
+
+**1 — The Geek who was already an expert.**
+*Origins:* a corporate research arcology; comfortably inside the machine (§13.4.2).
+*Recruited:* a published (and quietly suppressed) result in psychotronic signal analysis that
+should not have been possible with the equipment she had. UNSA read the paper; her employer
+read the security log. *Route:* **Geek**.
+*Equalizer:* the Academy taught her to secure a scene, handle evidence and carry a warrant.
+*First assignment:* a forensic-support posting she finds humiliatingly junior and privately
+perfect — she can see in the data what the field team cannot.
+*Parity note:* her technical advantage is a **career history**, not a bonus; the field
+investigator beside her is not worse at the job.
+
+**2 — The Jock who thought they were done with all this.**
+*Origins:* working/precarious background, periphery post-industrial town (§13.4.2).
+*Recruited:* twelve years in national tactical response, ending with an incident nobody will
+write down involving something that was not, in the report, present. *Route:* **Jock**.
+*Equalizer:* the Academy re-taught procedure he had been doing by instinct for a decade, and
+made him articulate it.
+*First assignment:* field lead for the new graduates — technically their peer, structurally
+their adult.
+*Parity note:* experience buys judgment, not immunity; the universal package is genuinely new
+material for him too.
+
+**3 — The Freak who never asked for this.**
+*Origins:* a Rhizome / psychedelic-church household, or a Confederacy-follower family
+(§13.4.2).
+*Recruited:* measurable PSI under a screening she did not consent to, after an anomalous
+encounter her own community reads as devotion and the state reads as a case. *Route:* **Freak**.
+*Equalizer:* the Academy treated her as a **recruit, not a specimen** — the institution's best
+face, and exactly the promise it does not always keep (§11.5's injustice engine).
+*First assignment:* an investigation team where her partner's job includes noticing if she
+stops being herself.
+*Parity note:* PSI here is a **capability resolved with the existing Skill check**
+(`rulebook/6_PSYCHIC.md` §6.7), not a new subsystem, and not a licence to treat her as damaged.
+
+**4 — The one from the wrong side.**
+*Origins:* raised inside an Orion-bargain or purchased relationship (§13.4.2); a hybrid
+accusation in the family (§11.5).
+*Recruited:* volunteered, which nobody expected, or was handed over, which is worse.
+*Route:* readable as any of the three — which is precisely why the slang fails at the edges,
+and why the Academy's equalizing rule exists.
+*Equalizer:* graduation makes her a UNSA officer; it does not make anyone trust her, and it
+does not settle what her background did to her.
+*First assignment:* counterintelligence, where her knowledge is the most useful thing in the
+room and her file is the most dangerous (§38's Cold War).
+*Parity note:* the hardest background is **playable and not punished** — but §11.5's caveat
+travels with it, and the campaign must not pretend the suspicion is unreasonable.
+
+> **These are examples, not canon characters and not templates.** Per `AGENTS.md` §2, they
+> illustrate the paths; they do not fix names, numbers, factions or outcomes.
+
+---
+
+## 13.11 What this chapter deliberately does NOT define
 
 Binding, per `AGENTS.md` §4 and the author's "light description" instruction:
 

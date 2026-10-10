@@ -6,6 +6,54 @@ NoöPunk is an experimental **computer RPG and social simulation** set in **20XX
 
 The project is currently a **playable text-based prototype**. You can run the normal game entirely without Ollama or an LLM.
 
+## Genre and positioning
+
+**Genre:** cyberpunk science fantasy. **Supporting registers:** paranormal/UFO/PSI conspiracy
+mystery, investigative adventure, emerging transhumanism, the NHI crisis, and post-catastrophe
+reconstruction.
+
+**Genre line.** Cyberpunk meets the Noösphere: a pre-Fall transhuman world where the AGI
+revolution, cybernetics and corporate power are already familiar, while disclosure, psionics
+and the NHI crisis arrive in the same decade.
+
+**Elevator pitch.**
+
+> Earth still exists. That is the problem. An agency nobody outside it takes entirely
+> seriously investigates abductions, infiltrations and impossible physics, while two non-human
+> powers rebuild the planet for reasons of their own.
+
+**Storefront pitch.**
+
+> **NoöPunk** is a cyberpunk science-fantasy RPG of investigation in a wounded near-future.
+> The Fall has not happened; a catastrophe already has. Two non-human factions helped rebuild
+> Earth after regional holocausts, and neither can be filed as simply an ally or an enemy.
+> You are a newly graduated investigator of the **United Nations Security Administration
+> (UNSA)** — trained, augmented, wired to a limited forensic AI, and sent into a world where
+> mind-control, hybridization, corporate psy-ops and ordinary human lying all leave the same
+> kind of evidence.
+
+**Comparisons.** NoöPunk sits between three touchstones and borrows from each:
+
+- **Shadowrun** — cyberpunk plus extraordinary powers, and a world where the paranormal is
+  real. NoöPunk draws on UFO/PSI/interdimensional lore rather than elves, dragons or spells.
+- **Eclipse Phase** — ASI catastrophe, transhumanism, existential risk and survival.
+- **The X-Files** — investigations, agencies, and conspiracy mythology.
+
+A useful shorthand is **"pre-Eclipse Phase" in degree of societal transformation** — not a
+prequel and not shared continuity. Cybernetics, PSI, disclosure and transhumanism are still
+comparatively new, and Earth-based states and social institutions largely continue to function
+despite regional catastrophes, post-ASI damage and reconstruction.
+
+**Tone.** This is not a full postapocalypse and not Lovecraftian cosmic horror. The universe
+is not fundamentally hostile: some NHI are benevolent, others hostile, ambiguous, or merely
+politically opposed to one another. **Cosmic wonder and Fortean/ontological mystery** are the
+default register, with horror as an occasional note rather than the premise.
+
+> **Positioning note.** The audience-fit comparisons above are a **positioning hypothesis**,
+> not proven market data. NoöPunk claims no affiliation with, or endorsement by, any game,
+> show or publisher named here — they are comparisons, not licenses. See the licensing section
+> below for the one real provenance obligation (Eclipse Phase).
+
 ## Quick start
 
 Requires **Python 3.12** (the version tested in CI).
