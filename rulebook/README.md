@@ -1,3 +1,5 @@
+> **New narrative-first rulebook (issue #265):** [NEW_EDITION.md](NEW_EDITION.md) starts with FIT / REF / INT / SOC / PSY / CYB and introduces streamlined tabletop play, Social relationships and Psyche. The previous edition is preserved completely in [the archival branch](https://github.com/TomiToivio/NooPunk/tree/archive/pre-265-full-rulebook-2026-10-10); the [migration register](../docs/rulebook_consolidation/NARRATIVE_EDITION_MIGRATION.md) tracks the transition. Existing generated parts and tests remain available until the source-of-truth switch can be made as one consistent change.
+
 # NoöPunk rulebook: canonical editing and preservation
 
 The **only editable rulebook** lives under `rulebook/`, with [00_INDEX.md](00_INDEX.md) as its table of contents. Never treat root `RULEBOOK.md`, `rulebook_parts/`, `rulebook/parts/` or `source_snapshots/` as an independent source of new canonical decisions without checking existing project rules and approvals. Historical duplicate sources are preserved during issue [#243](https://github.com/TomiToivio/NooPunk/issues/243).
