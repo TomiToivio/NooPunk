@@ -9,15 +9,20 @@ Cross-links: #200 (epic), #225 (the shared clock), #219 (the shared band arithme
 """
 from __future__ import annotations
 
-import re
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+CHAPTER = ROOT / "rulebook" / "4_SOCIAL.md"
 
 from src.rules import cross_domain_state as cds
 from src.rules import physical_combat as pc
 from src.rules import social as soc
+
+
+def flat(path: Path) -> str:
+    """Whitespace-collapsed: the chapter hard-wraps, so phrases span line breaks."""
+    return " ".join(path.read_text(encoding="utf-8").split())
 
 
 class OneArithmeticTests(unittest.TestCase):
@@ -89,6 +94,7 @@ class HardLimitTests(unittest.TestCase):
                 self.assertFalse(hasattr(soc, forbidden))
 
 
+
 class CoercionTests(unittest.TestCase):
     """AC1/AC3 — coercion moves behaviour and always leaves a cost."""
 
@@ -109,6 +115,7 @@ class CoercionTests(unittest.TestCase):
     def test_an_unknown_consequence_is_refused(self) -> None:
         with self.assertRaises(soc.SocialError):
             soc.SocialOutcome(consequence="Enslaved", coercive=True)
+
 
 
 class ReputationStepTests(unittest.TestCase):
@@ -168,6 +175,7 @@ class RelationshipStatusTests(unittest.TestCase):
         self.assertTrue(soc.status_is_derived())
 
 
+
 class GroupTests(unittest.TestCase):
     """AC1 — group interaction, with a BOUNDED modifier."""
 
@@ -182,3 +190,35 @@ class GroupTests(unittest.TestCase):
 
     def test_the_cap_matches_the_recorded_situational_cap(self) -> None:
         self.assertEqual(soc.MAX_GROUP_SUPPORT, 2)
+
+
+
+class PreservationTests(unittest.TestCase):
+    """AC2 — the existing graph is consumed, not forked."""
+
+
+
+
+
+
+
+class ConcordiaSeamTests(unittest.TestCase):
+    """AC4 — the LLM narrates; the engine rolls and writes state."""
+
+
+
+
+class HygieneTests(unittest.TestCase):
+    """AC5 — provisional labels, independent wording, resolvable links."""
+
+
+
+
+
+    def test_the_module_declares_itself_non_canonical(self) -> None:
+        self.assertFalse(soc.IS_CANONICAL)
+
+
+
+if __name__ == "__main__":
+    unittest.main()

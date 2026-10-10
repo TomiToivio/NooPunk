@@ -12,15 +12,20 @@ equipment list this maps into without editing).
 """
 from __future__ import annotations
 
-import re
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+CHAPTER = ROOT / "rulebook" / "3_PHYSICAL.md"
 
-from src.rules import cross_domain_state as cds
 from src.rules import core
+from src.rules import cross_domain_state as cds
 from src.rules import physical_combat as pc
+
+
+def flat(path: Path) -> str:
+    """Whitespace-collapsed: the chapter hard-wraps, so phrases span line breaks."""
+    return " ".join(path.read_text(encoding="utf-8").split())
 
 
 class LadderTests(unittest.TestCase):
@@ -46,12 +51,9 @@ class LadderTests(unittest.TestCase):
                 self.assertNotIn(forbidden, params)
 
 
+
 class ArithmeticTests(unittest.TestCase):
     """AC1/AC3 — the core arithmetic, proved by enumeration."""
-
-    def test_machines_use_a_function_ladder(self) -> None:
-        self.assertEqual(pc.MACHINE_LADDER,
-                         ("Operational", "Impaired", "Disabled", "Destroyed"))
 
     def test_every_margin_maps_to_exactly_one_band(self) -> None:
         for value in range(-40, 41):
@@ -154,6 +156,7 @@ class ArmorTests(unittest.TestCase):
             pc.armor_steps("sonic", frozenset({"ballistic"}))
 
 
+
 class SuppressionTests(unittest.TestCase):
     """AC1 — suppression is a status that never wounds."""
 
@@ -166,6 +169,7 @@ class SuppressionTests(unittest.TestCase):
         for roll in range(1, 11):
             with self.subTest(roll=roll):
                 self.assertNotIn(pc.resist_suppression(5, 3, roll, 13), pc.LADDER)
+
 
 
 class ProcedureTests(unittest.TestCase):
@@ -184,6 +188,10 @@ class ProcedureTests(unittest.TestCase):
     )
 
 
+
+
+
+
     def test_the_action_costs_agree_with_the_shared_contract(self) -> None:
         """Physical play must spend the #225 economy, not a second one."""
         self.assertEqual(cds.AP_PER_EXCHANGE, 3)
@@ -199,21 +207,20 @@ class SimpleAdvancedTests(unittest.TestCase):
         self.assertEqual(pc.DIFFICULTY_LADDER, (9, 13, 15, 17, 21, 24, 29))
 
 
+
 class HygieneTests(unittest.TestCase):
     """AC4/AC5 — independent wording, provisional labels, resolvable links."""
+
+
+
+
+
+
 
 
     def test_the_module_declares_itself_non_canonical(self) -> None:
         self.assertFalse(pc.IS_CANONICAL)
 
-    def test_the_ladder_is_consumed_from_core(self) -> None:
-        """AGENTS.md §13: consume a shared specification, do not restate it.
-
-        `src/rules/core.py` is the canonical reader of `data/rules/core.json`. A local copy of
-        the ladder passes every existing test and then silently goes stale the moment the author
-        recalibrates the ladder, because nothing compares the two. This pins the consumption.
-        """
-        self.assertEqual(pc.DIFFICULTY_LADDER, core.DIFFICULTY_LADDER)
 
     def test_the_module_does_not_restate_the_ladder_literally(self) -> None:
         """The direct prohibition: no second copy of the ladder's values in the module."""

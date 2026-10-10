@@ -13,17 +13,20 @@ before changing rules, mechanics, or setting material.
 
 Automated tests and CI assertions must exercise **executable game/software code** (Python, Godot, Concordia, game tools, runtime APIs and behavior). Do **not** add pytest/unittest tests, text-matching assertions, schema-locked canon checks, snapshot guards, or CI gates for **rules, lore, scenario prose, worldbuilding, canon, rulebook structure, design principles, or wording**. The author reviews those materials editorially and through tabletop playtesting; they are not code contracts. Do not recreate removed lore/rulebook tests under new names or add such checks to the code-test suite. Preserve the existing lore and archival material as documentation, not executable tests. When a tabletop mechanic is implemented as code, test the implementation's behavior, not whether prose matches a frozen version.
 
-This applies to **every** agent and every kind of check, not only files named `test_*`:
-tests hidden inside code-test modules, standalone scripts, validation tools, GitHub Actions
-workflows, pre-commit hooks, and agent checklists are equally out of bounds. A rules
-**implementation** is code and may be tested; a test that freezes rulebook prose, asserts
-lore contains a phrase, or pins Markdown structure may not exist anywhere in this repository.
+This policy also covers checks that are not unittest files: do not add documentation gates to `tools/`,
+`scripts/`, GitHub Actions, release tooling or hooks, and do not reintroduce a removed documentation
+test under a new name, in a renamed file, or as a "smoke" step. If a change removes a documentation
+test, that is a **deletion of a test, never of the material the test described** — lore, rules, canon,
+scenarios and archives stay.
 
-**How to review creative material instead** (issue #271): by **author editorial review**,
-**discussion**, **editorial comparison** against other sources, and **actual tabletop
-playtesting**. Those are the review channels for rules, lore, scenarios, canon and design
-documents — recorded as prose or playtest notes, **never** wired into CI as gates. A
-documentation-only change must never have to satisfy a creative-content test to merge.
+**What to do instead.** Review creative material by (a) author editorial review, (b) discussion on the
+relevant issue, (c) comparing overlapping sources by hand, and (d) **tabletop playtesting**. These are
+human processes and must not be converted back into CI gates.
+
+**Every participating agent** must carry this policy in its own NoöPunk-specific instructions and
+skill files, wherever they live, and must report the paths it checked in the tracking issue. An agent
+that cannot reach a private or external skill file must name the path and the blocker rather than
+claim it was updated.
 
 ### 1. Author intent is canon
 
@@ -292,10 +295,7 @@ Practical consequences:
 - A scenario, mission, map, or presentation difference between Tabletop, Godot and Concordia is expected and permitted. A **rules** difference is a defect: extract a shared specification rather than fork the rule.
 - Where a shared specification already exists (for example `data/rules/core.json` over `src/rules/core.py`), consume it rather than re-declaring the same values in a second runtime.
 
-These invariants are binding on every agent. They are **not** encoded as documentation
-tests (see *Automated tests policy* above): agreement between this section, the canonical
-`docs/archive/DESIGN_PRINCIPLES.md`, and the documents that reference them is kept by
-editorial review when any of them changes, not by a build-failing test.
+These invariants are binding on every agent, but they are **not** enforced by an automated test: per the policy above, tests cover executable code only, and creative documents are reviewed editorially and by playtesting. There is deliberately no build gate on document agreement.
 
 
 ### 14. Tabletop-first porting gate

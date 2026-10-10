@@ -14,9 +14,8 @@ editing `RULEBOOK.md` or anything under `rulebook/`.
 | `tools/split_rulebook.py` | Regenerates all of the above. |
 
 **Edit `RULEBOOK.md`, then run `python3 tools/split_rulebook.py --apply` in the same commit.**
-Staying in step is kept by this review guidance, **not** by a test: per the *Automated tests
-policy* in `AGENTS.md`, no documentation/Markdown test gates the rulebook (the former
-`test_issue232_rulebook_split.py` was removed under issue #271).
+If you edit `RULEBOOK.md` and do not regenerate, `tests/test_issue232_rulebook_split.py` fails with
+that instruction. If you hand-edit a part, the same guard fails and names the section.
 
 ## Why the parts are generated rather than the rulebook being cut up
 
@@ -31,19 +30,18 @@ checkable with `git diff`.
 
 ## The shape guards you must not break
 
-`RULEBOOK.md`'s structure used to be constrained by three documentation tests (removed under
-issue #271, per `AGENTS.md`'s code-only testing policy). It is now a **review** rule, and it is
-about cross-references:
+Three tests constrain `RULEBOOK.md`'s structure, and all of them are about cross-references:
 
-1. The file splits at the literal marker `# Extended canon and reference material`, requiring
-   `## 1.`–`## 9.` before it and contiguous `## 1.`–`## N.` after it.
-2. Every `§N` reference, anywhere, must resolve against the union of `RULEBOOK.md`'s headings
-   plus each self-numbering `rulebook/*.md` chapter — so a heading deleted from `RULEBOOK.md`
-   silently orphans references.
-3. Every self-numbering `rulebook/*.md` must be linked from `RULEBOOK.md`. That is why the
-   navigation block exists at all: `00_INDEX.md` self-numbers.
+1. **`test_issue101_sources_dedup::test_top_level_numbering_is_contiguous`** splits the file on the
+   literal marker `# Extended canon and reference material` and requires `## 1.`–`## 9.` before it
+   and contiguous `## 1.`–`## N.` after it.
+2. **`test_issues171_180_cross_references`** builds the §-reference *universe* from RULEBOOK.md's
+   headings plus each self-numbering `rulebook/*.md` chapter. Every `§N` anywhere must resolve
+   against that union — so a heading deleted from `RULEBOOK.md` silently orphans references.
+3. The same guard requires every self-numbering `rulebook/*.md` to be **linked from
+   `RULEBOOK.md`**. That is why the navigation block exists at all: `00_INDEX.md` self-numbers.
 
-`rulebook/parts/` is deliberately one level down, because `rulebook/*.md` is globbed by rule 2 —
+`rulebook/parts/` is deliberately one level down, because `rulebook/*.md` is globbed by guard 2 —
 putting twelve generated parts in that glob would impose self-numbering and link requirements on
 all of them for no benefit.
 
@@ -96,9 +94,9 @@ Existing prototypes you should build on rather than duplicate:
 ## Rules that apply to every change here
 
 - **`AGENTS.md` is the canonical contract** and `docs/archive/DESIGN_PRINCIPLES.md` the design
-  invariants. Their agreement — including that the AGENTS.md `§13.2` pole sentence matches the
-  canonical document (see issue #200 and PR #214) — is kept by **editorial review**, not by a
-  build-failing test (the former `test_design_principles.py` was removed under issue #271).
+  invariants. There is no automated build gate on this: documentation tests were removed under #270/#271, and agreement between these documents and the binding invariants
+  disagree — including a check that the AGENTS.md `§13.2` pole sentence matches the canonical
+  document (see issue #200 and PR #214).
 - **New numeric values are DRAFT** until the author calibrates them. Say so in the docstring.
 - **Deterministic and auditable**: rolls and state transitions belong in code with tests, never in
   an LLM prompt.

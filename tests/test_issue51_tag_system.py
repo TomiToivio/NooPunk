@@ -27,14 +27,14 @@ Run: python3 -m unittest discover -s tests -p "test_*.py"
 """
 from __future__ import annotations
 
-from pathlib import Path
 import sys
 import unittest
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from rules import (  # noqa: E402
+from rules import (
     FOUR_SYSTEMS,
     HUMAN_ATTRIBUTE_MAX,
     HUMAN_ATTRIBUTE_MIN,
@@ -53,7 +53,7 @@ from rules import (  # noqa: E402
     resolve_check,
     resolve_tag_check,
 )
-from rules.tag_fixtures import SAMPLE_CHARACTERS, TRANSHUMAN_SAMPLE  # noqa: E402
+from rules.tag_fixtures import SAMPLE_CHARACTERS, TRANSHUMAN_SAMPLE
 
 
 def _attr(name: str, rating: int) -> Tag:
@@ -435,6 +435,8 @@ class AntiInventionTests(unittest.TestCase):
     def test_the_attribute_vocabulary_is_marked_non_canonical(self) -> None:
         source = (ROOT / "src" / "rules" / "tags.py").read_text(encoding="utf-8")
         self.assertIn("Prototype vocabulary — not canon", source)
+
+
 
 
 class AbsentSystemTests(unittest.TestCase):

@@ -262,3 +262,7 @@ class MemoryObserverBridgeTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             MemoryObserver("", store)
         store.close()
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -98,7 +98,7 @@ boundary is explicit rather than implied.
 ### 4.1 REAL, and fixed here — the canonical pole list contradicted the triangle
 
 `docs/archive/DESIGN_PRINCIPLES.md` is the canonical principles document and is
-**build-enforced as a set** with `AGENTS.md` §13 and `tests/test_design_principles.py`.
+**binding as a set** with `AGENTS.md` §13. (Not build-enforced: the documentation tests were removed under #270/#271.)
 
 #203 rewrote its §1 to the #200 triangle (Simulationism → Eclipse Phase, Narrativism →
 Apocalypse World / The Veil, Gamism → Cities Without Number / Stars Without Number) — and

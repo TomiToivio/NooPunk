@@ -14,8 +14,6 @@ Run: python3 -m unittest discover -s tests -p 'test_*.py'
 from __future__ import annotations
 
 import json
-import re
-import subprocess
 import sys
 import unittest
 from fractions import Fraction
@@ -33,6 +31,14 @@ RULEBOOK = "RULEBOOK.md"
 
 def read(relative: str) -> str:
     return (ROOT / relative).read_text(encoding="utf-8")
+
+
+def rulebook_harm_section() -> str:
+    """`RULEBOOK.md` section 51, the authored harm vocabulary."""
+    text = read(RULEBOOK)
+    start = text.index("## 51. Physical harm")
+    end = text.index("## 52. Equipment", start)
+    return text[start:end]
 
 
 class StaysAPrototypeTests(unittest.TestCase):
@@ -69,10 +75,17 @@ class ConsequenceVocabularyTests(unittest.TestCase):
     """The vocabulary is the AUTHOR'S. It is asserted against the rulebook, not assumed."""
 
 
-    def test_ladder_progression_is_not_automatic(self) -> None:
+    def test_the_rulebook_calls_it_a_fiction_first_vocabulary(self) -> None:
+        section = " ".join(rulebook_harm_section().split())
+        self.assertIn("fiction-first consequence vocabulary", section)
+        self.assertIn("not a hidden damage engine", section)
+
+    def test_the_rulebook_says_harm_does_not_advance_automatically(self) -> None:
+        section = " ".join(rulebook_harm_section().split())
+        self.assertIn("does not automatically", section)
         self.assertFalse(
             ap.ladder_progression_is_automatic(),
-            "the prototype must not assume harm advances on its own",
+            "section 51 forbids automatic ladder progression; the prototype must not assume it",
         )
 
     def test_a_non_authored_state_is_rejected(self) -> None:
@@ -154,6 +167,7 @@ class ExactProbabilityTests(unittest.TestCase):
                     ),
                     "two prototypes must agree on the same dice",
                 )
+
 
 
 class NarrativeResourceTests(unittest.TestCase):

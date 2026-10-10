@@ -13,15 +13,20 @@ sits on top of), #226 (investigation, untouched).
 from __future__ import annotations
 
 import inspect
-import re
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+CHAPTER = ROOT / "rulebook" / "19_NARRATIVE_LAYER.md"
 
 from src.rules import narrative_layer as nl
 from src.rules import physical_combat as pc
 from src.rules import social as soc
+
+
+def flat(path: Path) -> str:
+    """Whitespace-collapsed: the chapter hard-wraps, so phrases span line breaks."""
+    return " ".join(path.read_text(encoding="utf-8").split())
 
 
 def an_aspect(**kw):
@@ -71,6 +76,8 @@ class BoundTests(unittest.TestCase):
             nl.can_invoke(-1)
 
 
+
+
 class NoRatingTests(unittest.TestCase):
     """AC3 — an aspect is never a rating; 'tag-only characters' is the named failure."""
 
@@ -115,6 +122,7 @@ class AspectAnatomyTests(unittest.TestCase):
             an_aspect(effect_class="rating")
 
 
+
 class PoolTests(unittest.TestCase):
     """AC2 — narrative resources with a real cost, which cannot buy a bigger modifier."""
 
@@ -145,6 +153,7 @@ class PoolTests(unittest.TestCase):
             pool.invoke(1)
 
 
+
 class GMoveTests(unittest.TestCase):
     """AC2 — GM moves and partial success, read off the band the core already produced."""
 
@@ -165,6 +174,7 @@ class GMoveTests(unittest.TestCase):
         for band, move in nl.BAND_TO_MOVE.items():
             with self.subTest(band=band):
                 self.assertNotRegex(nl.GM_MOVES[move], r"\d")
+
 
 
 class PrecedenceTests(unittest.TestCase):
@@ -192,6 +202,7 @@ class PrecedenceTests(unittest.TestCase):
         self.assertIn("malformed", result.reason)
 
 
+
 class ParityTests(unittest.TestCase):
     """AC4 — GNS parity is structural: every style resolves on ONE core."""
 
@@ -210,8 +221,21 @@ class ParityTests(unittest.TestCase):
         self.assertIs(soc.band_for_margin, pc.band_for_margin)
 
 
+
+
+
+class HygieneTests(unittest.TestCase):
+    """AC5 — provisional labels, independent wording, resolvable links."""
+
+
+
+
+
+
+
     def test_the_module_declares_itself_non_canonical(self) -> None:
         self.assertFalse(nl.IS_CANONICAL)
+
 
 
 if __name__ == "__main__":
