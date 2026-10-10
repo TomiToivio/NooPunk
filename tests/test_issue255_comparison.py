@@ -17,6 +17,7 @@ Run: python3 -m unittest discover -s tests -p 'test_*.py'
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 import unittest
@@ -103,6 +104,24 @@ class DocumentRequirementsTests(unittest.TestCase):
     def test_the_document_exists_and_is_substantial(self) -> None:
         text = doc_text()
         self.assertGreater(len(text.splitlines()), 200)
+
+    def test_the_document_has_one_title_and_no_duplicate_section_numbers(self) -> None:
+        """A merged COMPARISON.md carried two H1 titles and two of every §1–§8.
+
+        The concatenation arrived because two PRs each treated this file as *the*
+        comparison and their contents were merged rather than reconciled. Nothing in the
+        other guards notices it — a presence check passes a file that says everything twice
+        — so this pins the structural requirement directly: exactly one title, and no
+        section number defined more than once.
+        """
+        text = doc_text()
+        titles = re.findall(r"(?m)^# .+", text)
+        self.assertEqual(len(titles), 1,
+                         f"COMPARISON.md must have exactly one H1 title, found {titles!r}")
+        numbers = re.findall(r"(?m)^## (\d+)\.", text)
+        duplicates = sorted({n for n in numbers if numbers.count(n) > 1})
+        self.assertEqual(duplicates, [],
+                         f"section number(s) defined more than once: {duplicates}")
 
     def test_the_six_attributes_are_all_present(self) -> None:
         text = doc_text()
