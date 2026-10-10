@@ -9,6 +9,42 @@
 > `python3 tools/split_rulebook.py`; edit the source, never this file.
 <!-- rulebook-part-nav:end -->
 
+## 7. Cybernetic Systems
+
+### 7.1. Cybernetic Implants
+
+Cybernetic implants are integrated technologies that modify, augment, monitor or connect the body and mind. Some implants merely provide tools; others create direct Cybernetic capability.
+
+### 7.2. Cyberspace
+
+**Cyberspace** is computational and networked information space. It is distinct from both physical Spacetime and psychic Noöspace, although interfaces can connect all three.
+
+### 7.3. BCI
+
+Brain-computer interfaces connect neural activity directly to software, networks, devices, synthetic environments and other cybernetic systems. BCI is a central bridge between biological characters and the Cybernetic domain.
+
+### 7.4. Hacking
+
+Hacking is adversarial or investigative interaction with computational systems. It uses ordinary checks and opposed checks with appropriate Cybernetic/technical STATs and Skills. Detailed procedures are preserved in the existing mesh/hacking material pending consolidation.
+
+### 7.5. VR/AR
+
+Virtual Reality and Augmented Reality are standard interfaces to digital environments. They may be accessed through conventional devices or direct BCI.
+
+### 7.6. WLAN Devices
+
+Networked wireless devices form the local machine environment around characters and locations. Access, trust, security, ownership and control of these devices can become game-relevant.
+
+### 7.7. Cyberspace Actions
+
+Cyberspace actions include connecting, searching, scanning, authenticating, spoofing, exploiting, defending, monitoring, controlling devices and moving through virtual or networked spaces. Uncertain actions use the standard resolution engine.
+
+### 7.8. Brain Damage
+
+Cybernetic attacks, BCI malfunction, overload, hostile psychotronics or unsafe neural interfaces may cause neurological consequences. Detailed Brain Damage rules remain deferred to the consolidated health/cybernetic design rather than invented here.
+
+---
+
 ## 15. Mesh, hacking, cyberspace, and the Noösphere
 
 **Status: LEGACY EP2 → major NoöPunk reskin/replacement target.**

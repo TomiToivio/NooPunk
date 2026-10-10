@@ -7,15 +7,6 @@ Generated from `RULEBOOK.md` by `tools/split_rulebook.py`. Total: no section is 
 How the rulebook is governed, versioned and audited. Not player-facing rules.
 
 - Contents
-- 1. Introduction to NoöPunk
-- 2. History: The Singularity Is Past
-- 3. Stats
-- 4. Skills
-- 5. Physical Systems
-- 6. Social Systems
-- 7. Cybernetic Systems
-- 8. Psychic Systems
-- 9. Character Generation
 - 1. What this document is
 - 2. Current project description
 - 3. Rules provenance labels
@@ -36,6 +27,9 @@ How the rulebook is governed, versioned and audited. Not player-facing rules.
 
 Attributes, Skills, the check, pools and the portable adapter contract.
 
+- 1. Introduction to NoöPunk
+- 3. Stats
+- 4. Skills
 - 8. The smallest playable rules kernel
 - 10. Action resolution
 - 11. Pools and expendable resources
@@ -46,6 +40,7 @@ Attributes, Skills, the check, pools and the portable adapter contract.
 
 Lifepath creation, identity, advancement and campaign specialist fields.
 
+- 9. Character Generation
 - 9. Characters and identity
 - 39. Campaign-scoped skills and specialist fields
 
@@ -53,6 +48,7 @@ Lifepath creation, identity, advancement and campaign specialist fields.
 
 Wounds, combat, embodiment and platform rules.
 
+- 5. Physical Systems
 - 12. Physical harm, wounds, and stress
 - 13. Combat
 - 14. Embodiment, morphs, bodies, and platforms
@@ -62,6 +58,7 @@ Wounds, combat, embodiment and platform rules.
 
 Gear and implants, mesh/hacking/cyberspace, AI agents and equipment lists.
 
+- 7. Cybernetic Systems
 - 15. Mesh, hacking, cyberspace, and the Noösphere
 - 18. Gear, augmentation, software, and technology
 - 19. AI, AGI, infomorphs, and non-human agents
@@ -71,6 +68,7 @@ Gear and implants, mesh/hacking/cyberspace, AI agents and equipment lists.
 
 Psionics, psychotronics, sleep/dreams and manifestation forensics.
 
+- 8. Psychic Systems
 - 16. Psionics and Noösphere interaction
 - 46. Psychotronics, PSI, psyops and anomalous-effect diagnosis (#171, #176)
 - 48. Sleep, dreams and rare system disentanglement (#175)
@@ -80,6 +78,7 @@ Psionics, psychotronics, sleep/dreams and manifestation forensics.
 
 Affect/faction/contacts mechanics, NPCs, the simulation layer and UNSA.
 
+- 6. Social Systems
 - 17. Social and ideological mechanics: Affect, Factions, Motivations, Reputation and Contacts
 - 20. Important and background NPCs
 - 21. Social-science simulation layer
@@ -92,6 +91,7 @@ Affect/faction/contacts mechanics, NPCs, the simulation layer and UNSA.
 
 The setting: history, glossary, four systems, factions, NHI and theory sources.
 
+- 2. History: The Singularity Is Past
 - 33. Canonical world lore from issue #60
 - 34. NoöPunk glossary
 - 35. Sources, recommended reading, and influences
