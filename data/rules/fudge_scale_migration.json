@@ -1,0 +1,53 @@
+{
+  "format": "noopunk.fudge_scale_migration",
+  "version": 1,
+  "status": "author-directed-scale-conversion; active d10 runtimes still legacy adapters",
+  "source_issue": 200,
+  "source": "data/rules/core.json",
+  "stat_codes": [
+    "FIT",
+    "REF",
+    "INT",
+    "SOC",
+    "CYB",
+    "PSY"
+  ],
+  "attribute_skill_mapping": {
+    "1": -3,
+    "2": -2,
+    "3": -2,
+    "4": -1,
+    "5": 0,
+    "6": 0,
+    "7": 1,
+    "8": 1,
+    "9": 2,
+    "10": 3
+  },
+  "difficulty_mapping": {
+    "9": -3,
+    "13": -2,
+    "15": -1,
+    "17": 0,
+    "21": 1,
+    "24": 2,
+    "29": 3
+  },
+  "difficulty_labels": {
+    "0": "Professional",
+    "1": "Heroic",
+    "2": "Incredible",
+    "3": "Legendary",
+    "-3": "Simple",
+    "-2": "Everyday",
+    "-1": "Difficult"
+  },
+  "bounds": {
+    "min": -3,
+    "max": 3
+  },
+  "skill_names_source": "data/rules/skills.json",
+  "legacy_runtime_note": "Old 1..10 with 1d10 is a compatibility path; no new 4dF success formula is finalized in this data.",
+  "roundtrip": "non-bijective; retain original 1..10 values for migration and storage until final cutover",
+  "probability_note": "DV conversions preserve rank, not success chance; separately calibrate 4dF plus attribute and skill."
+}
