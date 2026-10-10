@@ -26,9 +26,9 @@ class CrosswalkTests(unittest.TestCase):
                 target = BANDS[family, kind]
                 with self.subTest(family=family, kind=kind):
                     self.assertEqual(convert(src[0], "noopunk", family, kind).target_value,
-                                     target[-1] if family == "eclipse_phase" and kind == "difficulty" else target[0])
+                                     target[0])
                     self.assertEqual(convert(src[-1], "noopunk", family, kind).target_value,
-                                     target[0] if family == "eclipse_phase" and kind == "difficulty" else target[-1])
+                                     target[-1])
 
     def test_ep_difficulty_reverses_its_probability_threshold(self):
         self.assertEqual(convert(9, "noopunk", "eclipse_phase", "difficulty").target_value, 90)
