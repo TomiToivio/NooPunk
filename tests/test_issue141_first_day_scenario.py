@@ -279,7 +279,7 @@ class CanonAnchorTests(unittest.TestCase):
                 self.assertIn(anchor, scenario())
 
     def test_the_unsa_anchor_is_connected_to_the_rulebook(self) -> None:
-        """The scenario names the UN Security Agency; it must tie that to the canonical
+        """The scenario names the UN Security Administration; it must tie that to the canonical
         UNSA institution (§38) rather than leaving a floating organisation."""
         text = scenario_norm()
         self.assertIn("unsa", text)

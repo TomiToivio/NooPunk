@@ -41,7 +41,7 @@ class HelsinkiScopeTests(unittest.TestCase):
 
 class UNSATests(unittest.TestCase):
     def test_canonical_name_and_mandate(self):
-        self.assertIn("United Nations Security Agency (UNSA)", BOOK)
+        self.assertIn("United Nations Security Administration (UNSA)", BOOK)
         for term in ("law-enforcement", "intelligence", "counterintelligence", "military",
                      "scientific", "NHI", "X-Risk"):
             self.assertIn(term.lower(), BOOK.lower())
@@ -52,7 +52,7 @@ class UNSATests(unittest.TestCase):
             self.assertIn(term.lower(), BOOK.lower())
 
     def test_nicknames_and_mj12_boundary(self):
-        for term in ("UN X-Risk Agency", "UN NHI Agency", "X-COM", "X-Files",
+        for term in ("UN X-Risk Administration", "UN NHI Agency", "X-Com", "X-Files",
                      "Men in Black", "MJ-12"):
             self.assertIn(term, BOOK)
         self.assertIn("not an acceptable nickname", BOOK)

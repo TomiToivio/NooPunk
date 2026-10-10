@@ -411,7 +411,7 @@ If pressed on whether this proves extraterrestrial technology, Romppainen answer
 > problem important enough to lie about for eighty years. That is already an
 > interesting fact."
 
-### 5.4. Europol and the UN Security Agency
+### 5.4. Europol and the UN Security Administration
 
 Over time, the unit survived by changing administrative homes.
 
@@ -420,7 +420,7 @@ In the current campaign it sits awkwardly across:
 - Suojelupoliisi;
 - Europol;
 - newer international security arrangements;
-- the UN Security Agency — i.e. the **UNSA** structure that RULEBOOK.md §38
+- the UN Security Administration — i.e. the **UNSA** structure that RULEBOOK.md §38
   makes the default campaign institution.
 
 The UNSA connection is what turns a Finnish curiosity into a live institutional problem:

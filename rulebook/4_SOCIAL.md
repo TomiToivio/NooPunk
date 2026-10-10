@@ -69,7 +69,7 @@ See FACTIONS.md for the NoöPunk starter content library and docs/design/GAMEPLA
 ## UNSA campaign frame
 
 The default NoöPunk campaign is centered on **Helsinki** and organized around the
-**United Nations Security Agency (UNSA)**. The PC works for UNSA while potentially
+**United Nations Security Administration (UNSA)**. The PC works for UNSA while potentially
 belonging to several other political, cultural, national, professional, ideological,
 religious, community or social factions.
 
