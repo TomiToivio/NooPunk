@@ -1,0 +1,526 @@
+{
+  "$comment": "Frozen from the pre-split RULEBOOK.md. Proves the split lost nothing: the guard re-hashes every section body in rulebook/parts/ against these digests.",
+  "format": "noopunk.rulebook_split_manifest",
+  "version": 1,
+  "issue": 232,
+  "source": "RULEBOOK.md",
+  "$only_edit": "The navigation block linking this index. Never the body.",
+  "source_sha256": "ce58862a851f65e35f4b769b785fb181eb0940f7aaa320c69922ec42c4c8964e",
+  "appendix_marker": "# Extended canon and reference material",
+  "section_count": 63,
+  "parts": {
+    "01_basic_rules": {
+      "title": "Basic Rules",
+      "file": "rulebook/parts/01_basic_rules.md",
+      "sections": [
+        {
+          "kind": "core",
+          "number": 1,
+          "heading": "## 1. Introduction to NoöPunk",
+          "body_sha256": "e9b98fd85b692329edc9738db6bb8c7ecc8e220811a544d2db23e2e76d694ebb",
+          "body_lines": 52
+        },
+        {
+          "kind": "core",
+          "number": 2,
+          "heading": "## 2. History: The Singularity Is Past",
+          "body_sha256": "bde6be8b93dc6912c548448eaa9673a7f996bb3f2a9d93aeefe01de411408a78",
+          "body_lines": 20
+        },
+        {
+          "kind": "core",
+          "number": 3,
+          "heading": "## 3. Stats",
+          "body_sha256": "17fa37ec03e16f0a1e3e5fb3bf3d5de4281171785b31f3b382780dc088fb4758",
+          "body_lines": 30
+        },
+        {
+          "kind": "core",
+          "number": 4,
+          "heading": "## 4. Skills",
+          "body_sha256": "e01081a65686c74af345dfdabe248c5e382a018b5fc9d98497e58007a67123c3",
+          "body_lines": 117
+        }
+      ]
+    },
+    "02_character_generation": {
+      "title": "Character Generation",
+      "file": "rulebook/parts/02_character_generation.md",
+      "sections": [
+        {
+          "kind": "core",
+          "number": 9,
+          "heading": "## 9. Character Generation",
+          "body_sha256": "56fe3d346cacdbb26dab851834232bbed48815c6bab50041f3aeb880f4cbc5e5",
+          "body_lines": 33
+        }
+      ]
+    },
+    "03_physical_systems": {
+      "title": "Physical Systems: Harm, Combat and the Body",
+      "file": "rulebook/parts/03_physical_systems.md",
+      "sections": [
+        {
+          "kind": "core",
+          "number": 5,
+          "heading": "## 5. Physical Systems",
+          "body_sha256": "2e499dd7f79322bfe8e2f00cc25412e1673d1c61d61c63ce86c68f73ec506800",
+          "body_lines": 51
+        },
+        {
+          "kind": "appendix",
+          "number": 12,
+          "heading": "## 12. Physical harm, wounds, and stress",
+          "body_sha256": "b317f3c5ba685922d9b222dea8aaa425efe0c452438edcbb2c4d7230d8d5d505",
+          "body_lines": 18
+        },
+        {
+          "kind": "appendix",
+          "number": 13,
+          "heading": "## 13. Combat",
+          "body_sha256": "58ad45b52741a1fa7f65a913a2f4196c39631528f0ae1ac337cf6456c11b1713",
+          "body_lines": 19
+        },
+        {
+          "kind": "appendix",
+          "number": 14,
+          "heading": "## 14. Embodiment, morphs, bodies, and platforms",
+          "body_sha256": "b2f660c339c16eeb91bd51a5b2218069f5378e4a97467851bd445acc19dabcff",
+          "body_lines": 20
+        },
+        {
+          "kind": "appendix",
+          "number": 51,
+          "heading": "## 51. Physical harm: a light ladder (#171–#180)",
+          "body_sha256": "1f02c3d9115cf3f5fd12c26741a0668d85f2ed90ef2435d7ea9aa459c8224f43",
+          "body_lines": 26
+        }
+      ]
+    },
+    "04_cybernetic_systems": {
+      "title": "Cybernetic Systems: Gear, Mesh and Cyberspace",
+      "file": "rulebook/parts/04_cybernetic_systems.md",
+      "sections": [
+        {
+          "kind": "core",
+          "number": 7,
+          "heading": "## 7. Cybernetic Systems",
+          "body_sha256": "08ee30affc95a2014b60675f8a3d39c768a02c2a6c9c3acc0bf50c43b235b38c",
+          "body_lines": 35
+        },
+        {
+          "kind": "appendix",
+          "number": 15,
+          "heading": "## 15. Mesh, hacking, cyberspace, and the Noösphere",
+          "body_sha256": "a4b233796a7a6732c1e0e8e16bae7b03d820d49da9a14cc631df19473321e90b",
+          "body_lines": 39
+        },
+        {
+          "kind": "appendix",
+          "number": 18,
+          "heading": "## 18. Gear, augmentation, software, and technology",
+          "body_sha256": "c193d91325b81dbcdeee0fe2e7eb9f528f1125011ec6cc2bb372b344a05bcda2",
+          "body_lines": 19
+        },
+        {
+          "kind": "appendix",
+          "number": 52,
+          "heading": "## 52. Equipment (list)",
+          "body_sha256": "6c69e329110f99d0a590395420d8b06ca79a7061ab36b38370fccab2e26e8a02",
+          "body_lines": 42
+        }
+      ]
+    },
+    "05_psychic_systems": {
+      "title": "Psychic Systems: Psionics, Noöspace and the Anomalous",
+      "file": "rulebook/parts/05_psychic_systems.md",
+      "sections": [
+        {
+          "kind": "core",
+          "number": 8,
+          "heading": "## 8. Psychic Systems",
+          "body_sha256": "4acdadab0b2b1866898806a79c56bab51e6a74ff1bced27b196fec942d474284",
+          "body_lines": 86
+        },
+        {
+          "kind": "appendix",
+          "number": 16,
+          "heading": "## 16. Psionics and Noösphere interaction",
+          "body_sha256": "b12278891a094b8d2c49933e6a2a4bdd93cb9c830e73c57ae680422ae85b43b5",
+          "body_lines": 105
+        },
+        {
+          "kind": "appendix",
+          "number": 46,
+          "heading": "## 46. Psychotronics, PSI, psyops and anomalous-effect diagnosis (#171, #176)",
+          "body_sha256": "0f7fb05384dd81df07fc862ade30215dc5ff5db2370a3b835c37d783cceb2589",
+          "body_lines": 35
+        },
+        {
+          "kind": "appendix",
+          "number": 47,
+          "heading": "## 47. Hybrid verification doctrine (#172)",
+          "body_sha256": "79ed7c8ab5c8001f6ca245fd8affd35af7d84108d5b4d6e76fc7b8717948639c",
+          "body_lines": 23
+        },
+        {
+          "kind": "appendix",
+          "number": 48,
+          "heading": "## 48. Sleep, dreams and rare system disentanglement (#175)",
+          "body_sha256": "2cdf3139fc3d0e9e15ea86af388de34b313d72520a23f5ea142f161602657525",
+          "body_lines": 14
+        },
+        {
+          "kind": "appendix",
+          "number": 49,
+          "heading": "## 49. Density, manifestation and ontological forensics (#179)",
+          "body_sha256": "432efda241e8bf49a698196d24962cdb6b7d040fe26f82cb1e650d02dc1eea15",
+          "body_lines": 42
+        },
+        {
+          "kind": "appendix",
+          "number": 54,
+          "heading": "## 54. Noetic practice, crystal technology and the craft question (#191)",
+          "body_sha256": "5d7e72ae54ed9fb49a4b6b211d7c04fae0d15ef4851b2128a8f8d980a29fa416",
+          "body_lines": 68
+        }
+      ]
+    },
+    "06_social_systems": {
+      "title": "Social Systems: Interaction, Ideology and Simulation",
+      "file": "rulebook/parts/06_social_systems.md",
+      "sections": [
+        {
+          "kind": "core",
+          "number": 6,
+          "heading": "## 6. Social Systems",
+          "body_sha256": "6381ac93b894908ce09d8dc6a9d339da2828f82ac57f3d96f95ee808ed6a628b",
+          "body_lines": 82
+        },
+        {
+          "kind": "appendix",
+          "number": 17,
+          "heading": "## 17. Social and ideological mechanics: Affect, Factions, Motivations, Reputation and Contacts",
+          "body_sha256": "97c42a1bc5fd8c72ed617485af8f466f009cb589fee3597c91b5367157769cdf",
+          "body_lines": 17
+        },
+        {
+          "kind": "appendix",
+          "number": 21,
+          "heading": "## 21. Social-science simulation layer",
+          "body_sha256": "0f564db93e8497c696815fbcbe79a1dc1e87f2fe93bebb0ee9761108e741b475",
+          "body_lines": 35
+        }
+      ]
+    },
+    "07_noopunk_lore": {
+      "title": "NoöPunk Lore: World, History and Politics",
+      "file": "rulebook/parts/07_noopunk_lore.md",
+      "sections": [
+        {
+          "kind": "appendix",
+          "number": 33,
+          "heading": "## 33. Canonical world lore from issue #60",
+          "body_sha256": "0774c16e6e849ee5399053696b45b1f17eab40dbae07b6b1ce65a7888efb809d",
+          "body_lines": 1815
+        },
+        {
+          "kind": "appendix",
+          "number": 44,
+          "heading": "## 44. The Singularity Crisis, alignment and the two Singularities (#177, #178, #180)",
+          "body_sha256": "d81156b0940e86dee4f9219631c81b0df2b17bdaecee080fa67f345dba9010d2",
+          "body_lines": 66
+        },
+        {
+          "kind": "appendix",
+          "number": 45,
+          "heading": "## 45. Confederation, Orion, resleeving and elite immortality (#180)",
+          "body_sha256": "d5155c899e40d7b7b712bbb7f9e800d32c916b6d6d07be2b1d6372f24127bec6",
+          "body_lines": 40
+        },
+        {
+          "kind": "appendix",
+          "number": 53,
+          "heading": "## 53. Xenopolitics after the NHI Crisis (#187)",
+          "body_sha256": "331436d5a0e78c90b0ea2db47cb8712e8b5266edbeecd52c18c1ec99bf1c6a75",
+          "body_lines": 86
+        }
+      ]
+    },
+    "08_rules_architecture": {
+      "title": "Reference: Rules Architecture and Governance",
+      "file": "rulebook/parts/08_rules_architecture.md",
+      "sections": [
+        {
+          "kind": "appendix",
+          "number": 1,
+          "heading": "## 1. What this document is",
+          "body_sha256": "5abf19d635e76b61fa5520fc4dad08a35b620c1ce50d1a68e5678003eb8be2db",
+          "body_lines": 22
+        },
+        {
+          "kind": "appendix",
+          "number": 2,
+          "heading": "## 2. Current project description",
+          "body_sha256": "842e7c108ea0163ea068307e1606218fd815935907c6eb72a7d93daf9f8504ff",
+          "body_lines": 116
+        },
+        {
+          "kind": "appendix",
+          "number": 3,
+          "heading": "## 3. Rules provenance labels",
+          "body_sha256": "e53f57e9e3f8eb417e7b910811e3a0fa980b2a6cb5cb62833d154535521e46fa",
+          "body_lines": 30
+        },
+        {
+          "kind": "appendix",
+          "number": 4,
+          "heading": "## 4. Source hierarchy",
+          "body_sha256": "8ef41b286da03425d372ac1966acc6894c2a6df2b172a6d66f5c64e2a5aa688a",
+          "body_lines": 13
+        },
+        {
+          "kind": "appendix",
+          "number": 5,
+          "heading": "## 5. Primary Eclipse Phase references",
+          "body_sha256": "ade5521b49dafc893797d4f9120851974fac95ba193d08cc7305c3256fc62a19",
+          "body_lines": 13
+        },
+        {
+          "kind": "appendix",
+          "number": 6,
+          "heading": "## 6. Licensing boundary",
+          "body_sha256": "c0d4f3cb5827430b6fbce341023cc13c46e9b5fd79c22e91126e6668a8e68749",
+          "body_lines": 18
+        },
+        {
+          "kind": "appendix",
+          "number": 7,
+          "heading": "## 7. Core architecture rule",
+          "body_sha256": "c0eadc1ef7af5c89bdff9fcb429d417d0c912e4e90b43c406f4099aad25a28fc",
+          "body_lines": 26
+        },
+        {
+          "kind": "appendix",
+          "number": 8,
+          "heading": "## 8. The smallest playable rules kernel",
+          "body_sha256": "fe4acd316c6ae179ab220dca5897d3eb02e7e4965f471be7389fde2ae73c2051",
+          "body_lines": 24
+        }
+      ]
+    },
+    "09_characters_and_beings": {
+      "title": "Reference: Characters, Identity, AI, NPCs and Beings",
+      "file": "rulebook/parts/09_characters_and_beings.md",
+      "sections": [
+        {
+          "kind": "appendix",
+          "number": 9,
+          "heading": "## 9. Characters and identity",
+          "body_sha256": "ebe67d16e69a27e704e3e1e90156ff0bf6d6946ebf28aaeee242c9764bf1608a",
+          "body_lines": 156
+        },
+        {
+          "kind": "appendix",
+          "number": 10,
+          "heading": "## 10. Action resolution",
+          "body_sha256": "018f62e0f8c5ae399f5b17fb4ef012468efb6624e47267ac6fe3df445a62a516",
+          "body_lines": 53
+        },
+        {
+          "kind": "appendix",
+          "number": 11,
+          "heading": "## 11. Pools and expendable resources",
+          "body_sha256": "4401942504941ce67d7a17ac639880a7e63cd3efa86e53e199b2a7ffb1ab2cbf",
+          "body_lines": 18
+        },
+        {
+          "kind": "appendix",
+          "number": 19,
+          "heading": "## 19. AI, AGI, infomorphs, and non-human agents",
+          "body_sha256": "f4b27d818acba78527f60ae2b9ac7cf632871593adf3eceebb9a001fd2fc186b",
+          "body_lines": 33
+        },
+        {
+          "kind": "appendix",
+          "number": 20,
+          "heading": "## 20. Important and background NPCs",
+          "body_sha256": "6ffb8ac0b0b8bc730787faac8c84642287bddf07efd83f82cd26bc612b0730fa",
+          "body_lines": 21
+        },
+        {
+          "kind": "appendix",
+          "number": 31,
+          "heading": "## 31. Persistent EP2 test-session subset (#60)",
+          "body_sha256": "8de8d61566343bab822069776dec873e5f727e87abd35b247bdcb4279d7ae738",
+          "body_lines": 20
+        },
+        {
+          "kind": "appendix",
+          "number": 32,
+          "heading": "## 32. Embodiment and inventory subset (#60)",
+          "body_sha256": "e81121a0d5107cde6795702701f679a307eac0f04a77b645f3ea90605ef3e37d",
+          "body_lines": 57
+        }
+      ]
+    },
+    "10_campaign_unsa_factions": {
+      "title": "Reference: Campaign, UNSA, Contact and Factions",
+      "file": "rulebook/parts/10_campaign_unsa_factions.md",
+      "sections": [
+        {
+          "kind": "appendix",
+          "number": 38,
+          "heading": "## 38. UNSA: default campaign institution",
+          "body_sha256": "965200f7d164e3d8c701198e50da7fcfa8b740d1d34eb9af46ac1af50e3f3603",
+          "body_lines": 256
+        },
+        {
+          "kind": "appendix",
+          "number": 39,
+          "heading": "## 39. Campaign-scoped skills and specialist fields",
+          "body_sha256": "a8f095604718b6856fd22e3992e7eb0e868e32d253dc7cd2e631af21e7a33799",
+          "body_lines": 118
+        },
+        {
+          "kind": "appendix",
+          "number": 40,
+          "heading": "## 40. Reverse-engineering, contact, and cryptoterrestrial map (#105)",
+          "body_sha256": "fbfd03fe319116bafdb4f116eb970326b31142404353bfe288b91a80bfd44584",
+          "body_lines": 210
+        },
+        {
+          "kind": "appendix",
+          "number": 41,
+          "heading": "## 41. Disclosure as unification and ontological shock (#106)",
+          "body_sha256": "c9801b8aeb93b805e803f00cd4b8adb83e1608416df4a61ffa7b3e08915c4ab4",
+          "body_lines": 40
+        },
+        {
+          "kind": "appendix",
+          "number": 42,
+          "heading": "## 42. Major human political factions and UN Parliament parties (#109)",
+          "body_sha256": "42bc05b0c630bc00a44e5dde869e14268a5d772845bb70f2dc1ddf6634895282",
+          "body_lines": 49
+        },
+        {
+          "kind": "appendix",
+          "number": 43,
+          "heading": "## 43. Faction taxonomy, schema, and NHI type vs faction (#144)",
+          "body_sha256": "bcf5beae332683f5db7968dd17afac087143bf062b6d1ef2d5a843a82121c8bf",
+          "body_lines": 121
+        }
+      ]
+    },
+    "11_concordia_and_parity": {
+      "title": "Reference: Concordia, Adaptation, Persistence and Parity",
+      "file": "rulebook/parts/11_concordia_and_parity.md",
+      "sections": [
+        {
+          "kind": "appendix",
+          "number": 22,
+          "heading": "## 22. Structured actions for Concordia",
+          "body_sha256": "de023cef5f291db8ae127538a050c3bbb9fd2623a363f341d6c7317063d0a6df",
+          "body_lines": 24
+        },
+        {
+          "kind": "appendix",
+          "number": 23,
+          "heading": "## 23. Persistence and reproducibility",
+          "body_sha256": "2315b9f8d3d84eb9ed97dad5cc46be68baf9308bad6ef7e749c864058b0326cf",
+          "body_lines": 18
+        },
+        {
+          "kind": "appendix",
+          "number": 24,
+          "heading": "## 24. Lighter rules escape hatches",
+          "body_sha256": "779b1c6a9f539a2496340e9b1665585bdc9757952094282ad2459a44fea0726c",
+          "body_lines": 20
+        },
+        {
+          "kind": "appendix",
+          "number": 25,
+          "heading": "## 25. Rules adapter contract",
+          "body_sha256": "315560715b64951d619942b37cfee0d33c02d1b80c763f6e62da80b0c8900eb1",
+          "body_lines": 33
+        },
+        {
+          "kind": "appendix",
+          "number": 26,
+          "heading": "## 26. Rule-change procedure",
+          "body_sha256": "5dfb3b1f51299941693d7b9a65896d92b1a68f322728ef0f649dee68ddf28c29",
+          "body_lines": 21
+        },
+        {
+          "kind": "appendix",
+          "number": 27,
+          "heading": "## 27. Change ledger",
+          "body_sha256": "1014bf3d4476052d67f1f17e94a8899a80875e5dbbf6b9644164e97902215496",
+          "body_lines": 19
+        },
+        {
+          "kind": "appendix",
+          "number": 28,
+          "heading": "## 28. Immediate rulebook work",
+          "body_sha256": "064f388db6ccc0ef21179f488b353004a3c8aff82cf485f571e21de0a94a6d55",
+          "body_lines": 21
+        },
+        {
+          "kind": "appendix",
+          "number": 29,
+          "heading": "## 29. Definition of a healthy rulebook",
+          "body_sha256": "be6ea8f38a24d0dc260fb7d72100859b9ba966009e48b4d0c651190e35316bf2",
+          "body_lines": 17
+        },
+        {
+          "kind": "appendix",
+          "number": 30,
+          "heading": "## 30. Governing principle",
+          "body_sha256": "8edd42d50e491001d1b3dcef1b20d30987ee92d79ed30138561c5a074b1354e0",
+          "body_lines": 9
+        },
+        {
+          "kind": "appendix",
+          "number": 36,
+          "heading": "## 36. The four NoöPunk systems: Physical, Psychic, Social and Cybernetic",
+          "body_sha256": "2790b75abe5c01b091b9168ee7076cee3e77f3c4f24734cf11e632d6490d71c6",
+          "body_lines": 481
+        },
+        {
+          "kind": "appendix",
+          "number": 37,
+          "heading": "## 37. Theoretical sources and inspirations",
+          "body_sha256": "d456424c8cd4d415793bbb78f15700b3e4194c19de1abccd5c60f1c0a49bd95c",
+          "body_lines": 128
+        }
+      ]
+    },
+    "12_glossary_sources_catalogs": {
+      "title": "Reference: Glossary, Sources and Field Catalogs",
+      "file": "rulebook/parts/12_glossary_sources_catalogs.md",
+      "sections": [
+        {
+          "kind": "appendix",
+          "number": 34,
+          "heading": "## 34. NoöPunk glossary",
+          "body_sha256": "0f2a878b687effae7e334a84bac421a2855c7334236dc8f2ba18730d5061218e",
+          "body_lines": 390
+        },
+        {
+          "kind": "appendix",
+          "number": 35,
+          "heading": "## 35. Sources, recommended reading, and influences",
+          "body_sha256": "51219cd294a5f5b16cd18d7b4c0aa1799587a4def283871e30e92e2cfde13302",
+          "body_lines": 216
+        },
+        {
+          "kind": "appendix",
+          "number": 50,
+          "heading": "## 50. Field catalogs: characters, equipment, implants, PSI and beings (#171–#180)",
+          "body_sha256": "9cfe7b52e238264624e1d8f5af89ba7da5d8eccb482fb6b1e537a107391ff4f4",
+          "body_lines": 31
+        }
+      ]
+    }
+  }
+}
