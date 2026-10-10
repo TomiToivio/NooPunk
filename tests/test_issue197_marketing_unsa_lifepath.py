@@ -41,6 +41,18 @@ def flat(text: str) -> str:
     return " ".join(text.split())
 
 
+def canon_prose(text: str) -> str:
+    """Canon prose with the `## 27. Change ledger` span excluded.
+
+    The ledger exists to record superseded tokens, so a whole-file absence check reds the
+    day someone records the rename there -- the exclusion test_issue144 already established.
+    """
+    before, sep, rest = text.partition("## 27. Change ledger")
+    if not sep:
+        return text
+    return before + rest.partition("\n## ")[2]
+
+
 class PositioningTests(unittest.TestCase):
     """#197 §1 — genre, tone, audience, pitch and comparative positioning."""
 
@@ -87,13 +99,20 @@ class UNSANamingTests(unittest.TestCase):
         self.assertIn("United Nations Security Administration", self.factions)
 
     def test_the_old_expansion_is_gone(self) -> None:
-        for text in (self.book, self.org, self.factions):
-            self.assertNotIn("United Nations Security Agency", text)
+        # Scanned over canon prose, not the whole file: the §27 change ledger is exactly
+        # where a superseded token belongs, so the guard must not red when it is recorded.
+        for label, text in (
+            ("RULEBOOK canon prose", canon_prose(self.book)),
+            ("organizations.yaml", self.org),
+            ("FACTIONS.md", self.factions),
+        ):
+            with self.subTest(document=label):
+                self.assertNotIn("United Nations Security Agency", text)
 
     def test_former_name_is_preserved_as_history(self) -> None:
         self.assertIn("UN X-Risk Administration", self.book)
         self.assertIn("UN X-Risk Administration", self.org)
-        self.assertNotIn("UN X-Risk Agency", self.book)
+        self.assertNotIn("UN X-Risk Agency", canon_prose(self.book))
 
     def test_nicknames_are_informal_and_flagged_as_such(self) -> None:
         self.assertIn("X-Files", self.book_flat)
@@ -200,6 +219,55 @@ class CrossLinkTests(unittest.TestCase):
     def test_cross_links_survive(self) -> None:
         for issue in ("#144", "#158", "#159"):
             self.assertIn(issue, self.chargen)
+
+
+class NicknameCultureTests(unittest.TestCase):
+    """#197 §2 remnants: the joke as culture, the non-binary politics, the mixed party."""
+
+    def setUp(self) -> None:
+        self.book_flat = flat(read(RULEBOOK))
+
+    def test_the_joke_is_culture_strongest_among_academy_graduates(self) -> None:
+        # #197: "Make this a recurring bit of institutional culture, especially among
+        # Academy graduates."
+        self.assertIn("recurring piece of institutional culture", self.book_flat)
+        self.assertIn("especially among Academy graduates", self.book_flat)
+
+    def test_the_politics_are_not_binary(self) -> None:
+        # #197: "Preserve competing national, institutional, and factional positions
+        # instead of assigning every human group a uniform stance."
+        self.assertIn("None of this makes the politics binary", self.book_flat)
+        # Polarity, not a bare noun: inverting the clause leaves "uniform stance" in place,
+        # so a presence check would not notice the fact had been reversed.
+        self.assertRegex(self.book_flat, r"(?i)rather than[^.]{0,90}uniform stance")
+
+    def test_the_mixed_party_rationale_survives(self) -> None:
+        # #197 §2: UNSA must be a plausible reason for a mixed party to work together.
+        self.assertRegex(
+            self.book_flat,
+            r"whatever they were before recruitment.{0,200}share the universal Academy package",
+        )
+
+
+class FictionBoundaryTests(unittest.TestCase):
+    """#197 deliverable 6: real-world inspiration vs established evidence and fiction."""
+
+    def setUp(self) -> None:
+        self.book_flat = flat(read(RULEBOOK))
+
+    def test_wendt_inspiration_is_separated_from_the_fiction(self) -> None:
+        # §2: "Clearly distinguish the fiction from Wendt's actual claims."
+        self.assertRegex(
+            self.book_flat,
+            r"Wendt's argument is a real scholarly claim.{0,200}\*\*NoöPunk fiction\*\*",
+        )
+
+    def test_the_boundary_names_the_interpretation_rule(self) -> None:
+        # The separation must point at the rule that carries it, not just assert itself.
+        self.assertRegex(
+            self.book_flat,
+            r"\*\*NoöPunk fiction\*\*.{0,140}§37",
+        )
 
 
 if __name__ == "__main__":
