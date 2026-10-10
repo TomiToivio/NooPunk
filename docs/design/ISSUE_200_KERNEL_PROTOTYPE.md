@@ -25,6 +25,11 @@ Dice probabilities are **exact** (rational arithmetic, no seed); lethality is sa
 probabilities too, and this file **adopted that method**; the sampled figures it replaced agreed
 with the exact ones to within sampling error.
 
+**Companion prototype:** [ISSUE_200_ASPECTS_PROTOTYPE.md](ISSUE_200_ASPECTS_PROTOTYPE.md) covers the
+other half of #200's kernel request — what aspects, narrative costs and consequences may do around
+this roll. This file answers how a roll resolves; that one answers what a tag is allowed to change,
+and measures the cap that stops aspects from reaching automatic success.
+
 ## The one thing that must survive any candidate
 
 **Attributes and Skills stay separate.** #200 is explicit that Fudge's attribute/skill
