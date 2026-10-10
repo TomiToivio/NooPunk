@@ -5722,6 +5722,14 @@ others remain mortal, inequality becomes literally **neo-feudal immortality**.
 Whether resleeving preserves the same conscious subject, creates a new subject with inherited
 memories, or works differently again is intentionally unresolved.
 
+**Two Orion strategies, and one human colony.** Orion as described here is one alignment, but
+it is not one strategy. Its **Grey/Mantid** tendency works by infiltration, hybrids and
+reasonable-sounding deals, while its **Reptilian** tendency wants overt conquest and accepts
+catastrophic losses — and the Confederacy side's human anchor is the **Pleiadian** colony.
+These are developed in §53.5 and in the *Pleiadian humans, and staged contact* and
+*Two strategic blocs: Grey/Mantid and Reptilian* sections of
+[`rulebook/15_XENOPOLITICS.md`](rulebook/15_XENOPOLITICS.md).
+
 ---
 
 ## 46. Psychotronics, PSI, psyops and anomalous-effect diagnosis (#171, #176)
@@ -5992,7 +6000,38 @@ are genuinely distinct** at all — or whether humans are pawns in an alien civi
 whether one faction invented the other. The setting resolves none of this: the ambiguity is
 structural, and both factions have an interest in it persisting.
 
-### 53.4 What this section does not define
+### 53.4 A strategic crisis, not a war
+
+The present is a **strategic crisis**, not an all-out alien war: desperate diplomacy, cold war,
+proxy conflict and hybrid operations, under the expectation of a future **Reptilian invasion**
+that drives preparation, xenophobia, concession and pre-emptive violence without making open
+invasion the default campaign state. **Orion operatives are already embedded** in human
+institutions and societies; the *Three-Body Problem* sophon comparison is thematic shorthand
+for asymmetric surveillance, infiltration and distrust, **not** literal technology. Ordinary
+people cannot tell who has been hybridized, coerced or recruited, so panic, paranoia and
+**false accusation** are political forces, and investigation must separate real operations from
+rumour and from opportunistic human abuse.
+
+### 53.5 The blocs, the colony and the staging
+
+Orion wants an **intact biosphere and human noösphere** — assimilation and control, not
+annihilation — and its internal dispute is over **how much damage is acceptable**. Its
+**Grey/Mantid bloc** works by infiltration, hybrids, mind control, collaborators and
+reasonable-sounding deals; its **Reptilian bloc** is the militarist tendency that enjoys
+battle, ships proxy troops, accepts losses on the order of half of Earth's biosphere, and
+prefers to be feared. Whether that rift is genuine or a choreographed good-cop/bad-cop
+performance is **deliberately unresolved**.
+
+The **Confederacy** is friendly but **not allied**: no full Earth membership, its terms
+disputed as incompatible with human sovereignty, and its leaders doubtful that Earth is ready.
+Its **Pleiadian human colony** — human, long a Confederacy member, and the largest Confederacy
+group initially on Earth — anchors a **staged contact strategy** (Pleiadian humans, then other
+humanoids, then the most visibly strange), with defence assistance likely even without
+membership. Contact has also **split existing religions**, between traditions that absorb the
+Law of One and those that turn to xenophobic fundamentalism. Other NHI remain **secondary** to
+this central conflict.
+
+### 53.6 What this section does not define
 
 No faction mechanics, no reputation formulas, no NHI capabilities or stat blocks, no economy,
 no combat or vehicle rules, and no canonical chronology — the sequence is structural

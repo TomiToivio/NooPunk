@@ -1,6 +1,6 @@
 # Xenopolitics after the NHI Crisis
 
-> **Status: NOÖPUNK NATIVE lore — issue #187.** This chapter is the setting's
+> **Status: NOÖPUNK NATIVE lore — issues #187 and #197.** This chapter is the setting's
 > **post-Crisis xenopolitical framework**: how Earth is governed, contested and rebuilt
 > roughly **ten years after the NHI Crisis**, with two major non-human factions present and
 > neither of them reducible to "good" or "evil" aliens.
@@ -106,6 +106,31 @@ Shared reconstruction activities, often performed side by side in the same ruine
 That sentence is the axis of the whole chapter. No act of genuine aid here is fake, and no
 act of genuine aid is therefore innocent.
 
+### 187.3.1 A strategic crisis, not a war
+
+The era is a **strategic crisis of the *Three-Body Problem* kind** — desperate diplomacy, cold
+war, proxy conflict and hybrid operations under the shadow of a war that has not been
+declared. It is *not* an all-out alien war, and it is *not* a clean Confederacy-versus-Orion
+morality play. Earth is negotiating from weakness with powers that are stronger than it,
+already present on it, and not fully legible to it.
+
+**Orion is already inside.** Unlike the Trisolaran analogy, Orion operatives are **already on
+Earth and embedded within human institutions and societies**. The comparison to that novel's
+sophons is **thematic shorthand for asymmetric surveillance, infiltration, anxiety and
+distrust** — **not** a claim that Orion uses literal sophons or identical technology. There is
+no fleet to look at and no wall to watch; the pressure runs through institutions that
+otherwise work normally.
+
+**The uncertainty is the weapon — and also the danger.** Ordinary people cannot easily know who
+has been hybridized, coerced or recruited. That produces waves of panic, paranoia, witch hunts
+and **false accusation**: denunciation as a weapon, a business, or a way to settle an unrelated
+score. Investigation therefore has to separate real operations from rumour *and* from
+opportunistic human abuse. The global truths of this chapter are fixed; **what any particular
+case actually is remains a question of evidence** (`§47`).
+
+**A future invasion is expected.** A full-scale **Reptilian** invasion is widely anticipated,
+and the anticipation — rather than the invasion — is what shapes the present (`§187.8.1`).
+
 ---
 
 ## 187.4 The Confederacy / Council side
@@ -163,6 +188,44 @@ The questions the setting keeps open, deliberately:
 > The Confederacy must not be treated as "the good aliens". Their popularity destabilizes
 > human politics as effectively as Orion's infiltration does.
 
+### 187.4.2 No membership, and no alliance
+
+The Confederacy's relationship with Earth is **friendly but limited**, and the limit is the
+whole point:
+
+> **There is no full Earth membership and no alliance.** Parts of humanity judge the
+> Confederacy's terms incompatible with human self-determination and sovereignty — and
+> Confederacy leaders may equally doubt that most Earth humans are **ready** for full
+> membership.
+
+Human opposition is a spectrum, not a camp: principled **autonomy** arguments, distrust of the
+specific terms, and outright **xenophobia against all NHI** — Confederacy species included —
+all exist, and often share a platform. Treating every anti-membership human as a bigot, or
+every pro-membership human as a collaborator, is a modelling error (`§187.6`).
+
+**Assistance does not depend on membership.** The Confederacy is **likely to help defend,
+protect and rebuild Earth even without formal membership**, and the Pleiadians in particular
+behave as though the defence of a living Earth were their own business. That aid is genuine. It
+still does not settle the sovereignty question, and it does not oblige any human institution to
+trust them.
+
+### 187.4.3 Pleiadian humans, and staged contact
+
+**The Pleiadian human colony** has belonged to the Confederacy for a long time. Its people are
+human, and that is exactly why they matter: they were the **largest Confederacy group initially
+present on Earth**, and they are an enormous diplomatic and operational asset — interlocutors
+who can be introduced to a frightened population without immediately breaking it.
+
+The Confederacy's contact strategy is **staged**, and the staging is itself a grievance:
+
+1. **Pleiadian humans first**, to minimize immediate culture shock;
+2. **other humanoid species** next;
+3. **the most visibly strange or nonhuman species** last.
+
+This produces a **gradual disclosure trajectory**, and with it a permanent argument about
+deception, selective disclosure, and **who counts as "human"** in the first place. A staged
+revelation can be read as consideration, or as management.
+
 ---
 
 ## 187.5 The Orion Group side
@@ -214,6 +277,60 @@ benefits from the chaos of accusation.
 `§47`'s hybrid verification doctrine exists precisely because the setting refuses to let
 "looks wrong" equal "is guilty".
 
+### 187.5.3 Preserve and assimilate, not annihilate
+
+Orion wants an **intact, useful biosphere and human noösphere**. Its objective is
+**assimilation and control, not indiscriminate extermination** — a dead or sterile Earth would
+be worthless to it (`§187.3`).
+
+The internal dispute is therefore **not whether Earth is valuable but how much damage is
+acceptable**, and that dispute is now the most dangerous variable in the setting.
+
+### 187.5.4 Two strategic blocs: Grey/Mantid and Reptilian
+
+Orion is not one strategy, and its two blocs want different things from Earth.
+
+- **The Grey/Mantid bloc** ran the earlier preparatory abduction and hybridization campaign and
+  has shifted toward **covert social infiltration**: hybrid agents, mind control, human
+  collaborators, and the quiet purchase of influence. These species generally **dislike direct
+  combat**, preferring sophisticated diplomacy, bargaining, influence, compromise and tempting
+  personal or institutional deals. Their offers can be **reasonable and still be
+  assimilation**, and that is precisely what makes them effective.
+- **The Reptilian bloc** is the impatient militarist tendency, and it **enjoys battle**. It
+  favours overt military conquest, and trigger-happy encounters and ostensibly "rogue" commando
+  terror attacks occur **despite Grey/Mantid restraint**. It ships subject and slave species as
+  expendable proxy troops, and it will accept catastrophic losses — **even on the order of half
+  of Earth's biosphere and noösphere** — if the remainder can be conquered. Its preferred
+  diplomatic idiom is intimidation and annihilation threat: **being feared matters more to it
+  than being liked.**
+
+> "Russian-style diplomacy" is the **in-world characterisation of a coercive threat idiom**,
+> not a statement about any real people. Write it as the fiction's own shorthand and leave it
+> there.
+
+### 187.5.5 A genuine rift, or a performance?
+
+The bloc conflict may be **a real and self-destructive rift** — which is what the Law of One
+material would predict, since service-to-self societies are said to fracture through domination
+and rivalry — **or** it may be **a coordinated good-cop/bad-cop performance**, in which
+reasonable Grey/Mantid negotiators are made to look better by contrast with terrifying
+Reptilians.
+
+The setting keeps this **an unresolved intelligence question**. Canon does not settle it, and an
+investigator who claims to have settled it should be made to show their evidence (`§187.6.1`).
+
+### 187.5.6 Materialism, cults and elite networks
+
+Orion species have **no equivalent of the Law of One religion**, and mostly want none: they are
+**materialist in rhetoric and governing ideology**. They tolerate, encourage or
+instrumentalize **human cults devoted to Orion** wherever such movements offer access,
+coercion, blackmail or **elite capture**.
+
+Exploitative elite networks — trafficking, dependence, compromise and privilege traded for
+complicity — are among the darkest and most effective mechanisms of infiltration. Handle them
+as **villainy with consequences**, without gratuitous detail, and without asserting anything
+about real persons or organizations.
+
 ---
 
 ## 187.6 Human reactions are not uniform
@@ -262,6 +379,37 @@ Common in-world positions include:
 This makes the setting's paranoia structural without turning settled canon into an optional
 GM answer. An investigator can establish local facts and expose particular operations, but
 cannot simply talk a frightened public out of the one-control-system theory.
+
+### 187.6.2 The religious schism
+
+The mass movement of `§187.4.1` does not float above existing religion; it **splits it**.
+Confederacy contact and Law of One beliefs have driven conversions on a scale that forces every
+older tradition to answer, and they have divided rather than unified them:
+
+- some traditions **reinterpret or absorb** the Law of One into their own theology, finding
+  continuity with their own mystical and contact narratives;
+- some respond with **intensely xenophobic fundamentalism**, reading every NHI — Confederacy
+  species included — as deception;
+- and many positions lie between, argued out inside single denominations and congregations.
+
+**Do not treat any religion as reacting as one body.** The schism runs through families and
+congregations, not only between institutions. And **not all opposition is religious at all**:
+secular sovereignty movements, human-supremacist politics and plain xenophobia reject NHI
+cooperation with no theological argument whatsoever (`§187.6`).
+
+Finally, the **"Law of One cult" is an in-world religious and social movement**: its existence
+is setting fact, while the truth of its metaphysics is not, and it must never be presented as
+evidence for real-world claims (`§187.10`).
+
+### 187.6.3 Other NHI are secondary
+
+Other factions have been discovered and contacted, but they are **secondary to the central
+Earth–Confederacy–Orion conflict**. They belong in play as **background, isolated mysteries,
+case-level encounters and optional story hooks**.
+
+This chapter deliberately does **not** enlarge them into a catalogue of newly dominant
+geopolitical blocs. A new species is a scenario, a rumour or a specialist's problem before it
+is a great power.
 
 ---
 
@@ -339,6 +487,25 @@ The texture of the era:
 > The world is not waiting to be saved a second time. It is arguing about the terms of the
 > first rescue.
 
+### 187.8.1 The escalation horizon
+
+Many people on Earth expect a **Reptilian invasion fleet** (`§187.5.4`). The expectation is a
+present-tense political force, and it does work in every direction at once:
+
+- **military preparation** — planetary defence, civil defence, and the standing argument over
+  who commands it (`§187.7`);
+- **opportunistic alliance** — governments and blocs weighing what they would concede for
+  protection, and to whom;
+- **xenophobia** — hostility to all NHI, on the reasoning that the friendly ones will not save
+  you from the other ones;
+- **concessions to Grey/Mantid diplomacy** — the reasonable bloc looks far more reasonable
+  when the alternative is the other bloc;
+- and **pre-emptive violence** — raids, strikes and atrocities committed in the name of a war
+  that has not started.
+
+**This does not make open invasion the default campaign state.** The default remains
+investigation under a cold war (`§187.9`). The fleet is anticipated, not arrived.
+
 ---
 
 ## 187.9 Campaign hooks
@@ -368,6 +535,30 @@ The xenopolitical situation exists to generate missions, not to decorate a timel
 - **Situations where both NHI sides are helping the same human population for different
   reasons** — the purest expression of the setting's ambiguity.
 
+### 187.9.1 UNSA's position in the crisis
+
+UNSA (`§38`) is where the crisis arrives as **work**. It is simultaneously responsible for
+counter-infiltration, public order, diplomacy, sovereignty negotiation, civil liberties, crisis
+management, intelligence under uncertainty and defence planning — a portfolio whose parts
+contradict each other, while states, faith communities and grassroots movements fracture in
+different directions (`§187.6`).
+
+Campaign tensions this produces:
+
+- a suspected hybrid in a position of real influence, and a file that cannot settle it;
+- a genuine Orion proxy operation **and** a xenophobic hoax, in the same week, with the same
+  vocabulary;
+- a Grey/Mantid cease-fire offer that is genuinely useful and morally compromising;
+- a Reptilian raid that **sabotages** exactly the talks it appears intended to help;
+- Pleiadian cultural diplomacy and covert defence assistance, welcomed and resented;
+- Confederacy alliance terms disputed by sovereign governments;
+- and religious splits and radicalization as case context rather than set dressing.
+
+The standing instruction is a **rule of play, not a rule of mechanics**: never let every suspect
+be an Orion asset, every alien be a threat, or every religious response collapse into two
+monolithic camps. **Case-level uncertainty and evidence still decide individual outcomes**, even
+though the global truths in this chapter are fixed (`§47`).
+
 ---
 
 ## 187.10 What this chapter does not define
@@ -385,7 +576,15 @@ For the avoidance of doubt, and consistent with `AGENTS.md` §4:
 - **no collapse of contested in-world interpretation into easy certainty.** Confederacy and
   Orion are canonically distinct alignments, but humans may deny or misunderstand that fact;
   whether the religious movement is spontaneous or engineered, and whether a particular
-  hybrid represents infiltration, lineage, coercion or independence, remain contested.
+  hybrid represents infiltration, lineage, coercion or independence, remain contested;
+- **no settlement of the two questions this chapter adds.** Whether the Orion bloc rift is
+  genuine or choreographed (`§187.5.5`), and how much of the hybridization programme is ever
+  publicly proven (`§187.5.1`), both stay open;
+- **no conflation of a narrative comparison with evidence.** *The Three-Body Problem* is a
+  **narrative comparison** for the strategic texture of the era (`§187.3.1`), and the Law of One
+  corpus is **fictional-setting inspiration** (`§187.4.1`). Neither is a documented account of
+  real extraterrestrial activity: this chapter cites them as sources for fiction, never as
+  findings about the world outside it.
 
 > **The setting's answer to "which faction is good?" is that the question is a campaign,
 > not a lookup.**
