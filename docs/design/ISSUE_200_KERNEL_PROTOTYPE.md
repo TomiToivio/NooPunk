@@ -40,8 +40,8 @@ has to keep clear of.
 
 | rating | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| step | −3 | −2 | −2 | −1 | +0 | +0 | +1 | +2 | +2 | +3 |
-| label | Abysmal | Poor | Poor | Weak | Unremarkable | Unremarkable | Capable | Strong | Strong | Peak |
+| step | −3 | −2 | −2 | −1 | +0 | +0 | +1 | +1 | +2 | +3 |
+| label | Abysmal | Poor | Poor | Weak | Unremarkable | Unremarkable | Capable | Capable | Strong | Peak |
 
 Dice are 4dF — four dice of −1/0/+1:
 
@@ -82,20 +82,20 @@ How many of the 100 possible (STAT, Skill) pairs land on each step:
 
 | candidate | −3 | −2 | −1 | +0 | +1 | +2 | +3 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| **A** | 19 | 11 | 12 | 16 | 12 | 11 | 19 |
-| **B** | 1 | 14 | 13 | **36** | 15 | 18 | 3 |
-| **C** | 14 | 12 | 18 | 12 | 18 | 12 | 14 |
+| **A** | 19 | 13 | 14 | 14 | 14 | 10 | 16 |
+| **B** | 1 | 14 | 13 | **36** | 26 | 7 | 3 |
+| **C** | 14 | 12 | 18 | 16 | 16 | 14 | 10 |
 
 All three reach every step, so reachability distinguishes nothing. The **unclamped** range does:
 
 | candidate | raw range | pairs needing the clamp | pairs collapsed to an extreme |
 | --- | --- | --- | --- |
-| **A** | −6 … +6 | **22 of 100** | **38 of 100** |
+| **A** | −6 … +6 | **19 of 100** | **35 of 100** |
 | **B** | −3 … +3 by construction | 0 of 100 | 4 of 100 |
-| **C** | −4 … +4 | 8 of 100 | 28 of 100 |
+| **C** | −4 … +4 | 8 of 100 | 24 of 100 |
 
-**A wants a ±6 range on a ±3 ladder.** Nearly a quarter of its pairs are clamped and more than a
-third are flattened onto the extremes — at which point the ladder's ends stop being the top and
+**A wants a ±6 range on a ±3 ladder.** Nearly a fifth of its pairs are clamped and about a third
+are flattened onto the extremes — at which point the ladder's ends stop being the top and
 become "anything high". That is the additive-scaling failure mode, measured rather than asserted.
 
 ## 3. Where the candidates stop differing — and where they don't
@@ -104,17 +104,17 @@ Effective step per profile, before any roll:
 
 | candidate | weak 2+1 | competent 5+5 | mixed 10+1 | specialist 8+8 | top 10+10 |
 | --- | --- | --- | --- | --- | --- |
-| **A** | −3 | +0 | **+0** | +3 | +3 |
-| **B** | −2 | +0 | +0 | +2 | +3 |
-| **C** | −3 | +0 | **−2** | +3 | +3 |
+| **A** | −3 | +0 | **+0** | +2 | +3 |
+| **B** | −2 | +0 | +0 | +1 | +3 |
+| **C** | −3 | +0 | **−2** | +2 | +3 |
 
 P(success) at step 0:
 
 | candidate | weak 2+1 | competent 5+5 | mixed 10+1 | specialist 8+8 | top 10+10 |
 | --- | --- | --- | --- | --- | --- |
-| **A** | 6.2% | 61.7% | **61.7%** | 98.8% | 98.8% |
-| **B** | 18.5% | 61.7% | 61.7% | 93.8% | 98.8% |
-| **C** | 6.2% | 61.7% | **18.5%** | 98.8% | 98.8% |
+| **A** | 6.2% | 61.7% | **61.7%** | 93.8% | 98.8% |
+| **B** | 18.5% | 61.7% | 61.7% | 81.5% | 98.8% |
+| **C** | 6.2% | 61.7% | **18.5%** | 93.8% | 98.8% |
 
 At the extremes the clamp makes the candidates converge; **the middle is where the design lives.**
 The `mixed 10+1` column *is* the question: a character with a peak Attribute and no training.
@@ -125,11 +125,11 @@ For comparison, the canonical engine on the same profiles:
 | DV (ladder) | weak 2+1 | competent 5+5 | mixed 10+1 | specialist 8+8 | top 10+10 |
 | --- | --- | --- | --- | --- | --- |
 | 9 (−3) | 50.2% | 100.0% | 100.0% | 100.0% | 100.0% |
-| 13 (−1) | 10.0% | 79.7% | 89.7% | 100.0% | 100.0% |
-| 15 (+0) | 0.0% | 59.7% | 69.7% | 100.0% | 100.0% |
-| 17 (+1) | 0.0% | 40.3% | 50.3% | 100.0% | 100.0% |
-| 21 (+3) | 0.0% | 0.0% | 9.9% | 59.8% | 100.0% |
-| 24 (+3) | 0.0% | 0.0% | 0.0% | 29.6% | 69.6% |
+| 13 (−2) | 10.0% | 79.7% | 89.7% | 100.0% | 100.0% |
+| 15 (−1) | 0.0% | 59.7% | 69.7% | 100.0% | 100.0% |
+| 17 (+0) | 0.0% | 40.3% | 50.3% | 100.0% | 100.0% |
+| 21 (+1) | 0.0% | 0.0% | 9.9% | 59.8% | 100.0% |
+| 24 (+2) | 0.0% | 0.0% | 0.0% | 29.6% | 69.6% |
 | 29 (+3) | 0.0% | 0.0% | 0.0% | 0.0% | 20.0% |
 
 The legacy engine **saturates hard**: at DV 13–17 a specialist succeeds every time and a weak
@@ -139,9 +139,9 @@ character never can. The ladder's bounded curve is the reason to consider this a
 
 | candidate | equal 5+5 vs 5+5: win | tie | specialist 8+8 vs 5+5: win | mixed 10+1 vs 5+5: win |
 | --- | --- | --- | --- | --- |
-| **A** | 41.6% | 16.9% | 85.9% | **41.6%** |
-| **B** | 41.6% | 16.9% | 73.9% | **41.6%** |
-| **C** | 41.6% | 16.9% | 85.9% | **14.1%** |
+| **A** | 41.6% | 16.9% | 73.9% | **41.6%** |
+| **B** | 41.6% | 16.9% | 58.4% | **41.6%** |
+| **C** | 41.6% | 16.9% | 73.9% | **14.1%** |
 
 Two findings. Equal opponents win ~41.6% with a **16.9% tie band** — 4dF-vs-4dF ties about one roll
 in six, against 1d10-vs-1d10's 10%, so an opposed-check procedure needs to say what a tie *means*.
@@ -171,21 +171,21 @@ Expected exchanges to fill a 4-box stress track, defending at Everyday (DV 13):
 | engine | weak 2+1 | competent 5+5 | mixed 10+1 | specialist 8+8 | top 10+10 |
 | --- | --- | --- | --- | --- | --- |
 | legacy 1d10 | 40.5 | 5.0 | 4.5 | 4.0 | 4.0 |
-| **A** | 21.7 | 4.2 | 4.2 | 2.4 | 2.4 |
-| **B** | 10.2 | 4.2 | 4.2 | 2.7 | 2.4 |
-| **C** | 21.7 | 4.2 | **10.3** | 2.4 | 2.4 |
+| **A** | 10.2 | 3.3 | 3.3 | 2.4 | 2.1 |
+| **B** | 6.0 | 3.3 | 3.3 | 2.7 | 2.1 |
+| **C** | 10.2 | 3.3 | **6.1** | 2.4 | 2.1 |
 
 #200 leaves the light wound ladder in place until it is reconciled, so this measures **pace**, not
 a proposed wound system. Two things worth seeing: the legacy engine resolves a fight for a
 competent character in 5 exchanges and then **cannot go faster** (4.0 at the top — the d10 is
-noise next to a +20), while C's untrained brute takes 10.3 because his skill is genuinely poor.
+noise next to a +20), while C's untrained brute takes 6.1 because his skill is genuinely poor.
 
 ## 7. What the measurements say
 
 **Recommendation: candidate C, skill-primary**, with two caveats the author owns.
 
 C is the only candidate that makes training matter: a trained specialist beats an untrained
-brute **85.9% / 14.1%**, where A and B leave it a coin-flip at 41.6%. It needs the clamp for only 8 of 100 pairs
+brute **73.9% / 14.1%**, where A and B leave it a coin-flip at 41.6%. It needs the clamp for only 8 of 100 pairs
 (A: 22; 38 collapse to the extremes), so the ladder's ends stay meaningful. And it keeps the
 Attribute mechanically real — the ±1 nudge plus STAT-as-governing-attribute — without
 double-counting it into a ±6 range.
@@ -199,12 +199,14 @@ averaging one number out of two makes the Attribute/Skill split largely decorati
 
 **What this does not settle, and should not be presented as settled:**
 
-- **Six of the seven authored DVs collapse.** With the draft calibration,
-  `9 Simple=−3, 13 Everyday=−1, 15 Difficult=+0, 17 Professional=+1, 21 Heroic=+3, 24 Incredible=+3,
-  29 Legendary=+3`. A seven-step ladder cannot carry Heroic, Incredible *and* Legendary. Fixing
-  it means either widening the ladder or re-authoring the top DVs — **an author decision**.
-- **The DV-to-step calibration is a draft**, derived from the median legacy total (DV 15.5 = step
-  0), not authored canon.
+- **The DV collapse this prototype first reported is FIXED.** Its own draft divisor mapped
+  21 Heroic, 24 Incredible and 29 Legendary all onto +3. #213 supplied an author-directed table
+  and this prototype now **consumes** it, so all seven authored DVs map onto seven distinct steps.
+- **The rating and DV mappings are consumed, not invented.** Per `AGENTS.md` §13, where a shared
+  specification exists it is consumed rather than re-declared in a second runtime — so changing
+  `data/rules/fudge_scale_migration.json` moves these numbers and the tests will say so.
+- **A DV outside the authored seven falls back to the nearest one**, stated rather than silently
+  interpolated.
 - **Ratings 1 and 10 are partly wasted under any candidate**, since both already sit on ±3 alone.
 - **Aspects, stress, consequences, compels and scene stakes are not prototyped here.** #200 asks
   for them and they need their own prototype and their own playtest; this kernel is the
@@ -214,7 +216,15 @@ averaging one number out of two makes the Attribute/Skill split largely decorati
 
 ## Reproducing
 
-`src/rules/kernel_prototype.py` holds the engine and `IS_CANONICAL = False`; `tools/issue200_kernel_report.py`
-regenerates this document's numbers; `tests/test_issue200_kernel_prototype.py` pins the
-properties that must hold whatever the author chooses — including the legacy benchmark matching
-the recorded canon, and the canonical files staying untouched.
+`src/rules/kernel_prototype.py` holds the engine and `IS_CANONICAL = False`;
+`tools/issue200_kernel_report.py` regenerates this document's numbers;
+`tests/test_issue200_kernel_prototype.py` pins the properties that must hold whatever the author
+chooses — including the legacy benchmark matching the recorded canon, the canonical files staying
+untouched, and the rating/DV tables matching the author-directed file.
+
+**The rating and difficulty mappings are consumed from
+`data/rules/fudge_scale_migration.json`** (issue #213, author-directed) rather than re-declared
+here, per `AGENTS.md` §13's rule that a shared specification is consumed rather than restated in a
+second runtime. A first revision of this prototype carried its own draft divisors and, as a
+result, collapsed six of the seven authored DVs onto one step. Change the author's file, not this
+one, and the tests will tell you which numbers moved.

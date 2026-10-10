@@ -36,12 +36,14 @@ CC-compatible boundary the rights ledger records.
 
 from __future__ import annotations
 
+import json
 import random
 from collections import Counter
 from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass
 from fractions import Fraction
 from itertools import product
+from pathlib import Path
 
 from .core import (
     DIFFICULTIES,
@@ -83,17 +85,24 @@ FDF_SIDES = 3
 #: prototype value awaiting playtest, not a canon number.
 MAX_SITUATIONAL_STEPS = 2
 
-#: DRAFT divisor mapping a 1–10 rating onto a ladder step. A step is ~1.5 rating
-#: points, so 1 and 10 land exactly on ±3 and the middle two ratings share step 0.
-LADDER_RATING_PIVOT = 5.5
-LADDER_RATING_WIDTH = 1.5
+#: The author-directed 1–10 -> -3..+3 scale, CONSUMED rather than re-declared.
+#:
+#: Issue #200 and PR #213 put the ratings/difficulty conversion in
+#: ``data/rules/fudge_scale_migration.json``. AGENTS.md section 13 says where a shared
+#: specification already exists, consume it rather than declaring the same values in a
+#: second runtime -- so this prototype reads that file instead of carrying its own draft
+#: divisors (which it used to, and which collapsed six of the seven DVs onto one step).
+_SCALE_PATH = Path(__file__).resolve().parents[2] / "data" / "rules" / "fudge_scale_migration.json"
 
-#: DRAFT divisor converting a canonical Difficulty Value onto the ladder scale, for
-#: migration comparison only. Derived from the median legacy total: an average
-#: STAT 5 + Skill 5 + 1d10 has a median of 15.5, so DV 15.5 is ladder 0. Recorded as a
-#: prototype calibration; it is NOT authored canon and the DVs above Heroic clamp.
-LEGACY_DV_PIVOT = 15.5
-LEGACY_DV_WIDTH = 2.0
+with _SCALE_PATH.open(encoding="utf-8") as _fh:
+    _SCALE = json.load(_fh)
+
+#: rating (1..10) -> ladder step, per the author-directed migration.
+RATING_TO_STEP: dict[int, int] = {int(k): int(v) for k, v in _SCALE["attribute_skill_mapping"].items()}
+
+#: canonical Difficulty Value -> ladder step, per the author-directed migration. Bijective
+#: across all seven authored DVs, which is what this prototype's own draft could not manage.
+DV_TO_STEP: dict[int, int] = {int(k): int(v) for k, v in _SCALE["difficulty_mapping"].items()}
 
 
 def clamp_step(step: int) -> int:
@@ -111,12 +120,16 @@ def ladder_label(step: int) -> str:
 
 
 def rating_step(rating: int, *, label: str = "rating") -> int:
-    """Map a 1..10 STAT or Skill rating onto a ladder step."""
+    """Map a 1..10 STAT or Skill rating onto a ladder step.
+
+    Reads the author-directed table in ``data/rules/fudge_scale_migration.json``. Issue
+    #213 fixed this mapping by author direction, so the prototype follows it rather than
+    proposing a rival one.
+    """
     value = int(rating)
     if not STAT_MIN <= value <= STAT_MAX:
         raise ValueError(f"{label} must be {STAT_MIN}..{STAT_MAX}.")
-    raw = (value - LADDER_RATING_PIVOT) / LADDER_RATING_WIDTH
-    return clamp_step(round(raw))
+    return clamp_step(RATING_TO_STEP[value])
 
 
 def combine_additive(stat: int, skill: int) -> int:
@@ -282,13 +295,17 @@ def resolve_legacy(
 
 
 def legacy_dv_to_step(dv: int) -> int:
-    """Map a canonical Difficulty Value onto a ladder step, for comparison only.
+    """Map a canonical Difficulty Value onto a ladder step.
 
-    A prototype calibration (see :data:`LEGACY_DV_PIVOT`), not authored canon. Values
-    above Heroic clamp to the top step, which is a real limitation of a seven-step
-    ladder and is reported as such rather than hidden.
+    Uses the author-directed table (issue #213). A DV that is not one of the seven
+    authored difficulties falls back to the NEAREST one, which is stated rather than
+    silently interpolated: the authored set is what the mapping was defined for.
     """
-    return clamp_step(round((int(dv) - LEGACY_DV_PIVOT) / LEGACY_DV_WIDTH))
+    value = int(dv)
+    if value in DV_TO_STEP:
+        return clamp_step(DV_TO_STEP[value])
+    nearest = min(DV_TO_STEP, key=lambda authored: abs(authored - value))
+    return clamp_step(DV_TO_STEP[nearest])
 
 
 def legacy_dv_ladder() -> dict[str, int]:
@@ -457,15 +474,15 @@ def exact_opposed_probabilities(
 
 __all__ = [
     "CANDIDATES",
+    "DV_TO_STEP",
     "FDF_COUNT",
     "FDF_SIDES",
     "IS_CANONICAL",
     "LADDER_LABELS",
     "LADDER_MAX",
     "LADDER_MIN",
-    "LEGACY_DV_PIVOT",
-    "LEGACY_DV_WIDTH",
     "MAX_SITUATIONAL_STEPS",
+    "RATING_TO_STEP",
     "SUCCESS_WITH_STYLE_MARGIN",
     "LadderResult",
     "clamp_step",
