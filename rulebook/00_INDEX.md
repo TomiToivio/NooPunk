@@ -48,6 +48,7 @@ extended-canon `1`–`54` run, so no existing cross-reference breaks.
 
 Per-domain detail chapters:
 
+- [rulebook/NEW_EDITION.md](rulebook/NEW_EDITION.md) — the narrative-first edition entry point (#265); `rulebook/00_START_HERE.md` is its reader's guide
 - [rulebook/3_PHYSICAL.md](rulebook/3_PHYSICAL.md) — harm, equipment, bodies
 - [rulebook/5_CYBERNETIC.md](rulebook/5_CYBERNETIC.md) — implants, psychotronics, resleeving
 - [rulebook/6_PSYCHIC.md](rulebook/6_PSYCHIC.md) — PSI powers, psychotronics, sleep, Seity, Noöspace
