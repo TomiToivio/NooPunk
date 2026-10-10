@@ -12,7 +12,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      # fetch-depth: 0 so the archive tag is present. #265's guarantee is that the pre-narrative
+      # corpus is retrievable from `rulebook-pre-narrative-2026-10`. With the default shallow,
+      # tag-less checkout the tag does not exist, and the retrievability guards SKIP -- so CI
+      # reports green on the one thing this change exists to prove. Verified against main that
+      # the guards pass when the tag is fetched.
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
