@@ -55,12 +55,12 @@
       "source": "Fudge OGL System Reference Document",
       "url": "https://www.fudgerpg.com/about/about-fudge/fudge-ogl-requirements.html",
       "kind": "srd-text",
-      "license": "OGL 1.0a for designated Open Game Content (author-stated)",
+      "license": "OGL 1.0a for designated Open Game Content",
       "license_url": null,
       "decision": "blocked-unverified",
       "role_in_noopunk": "First-rank STRUCTURAL inspiration: the separate Attribute/Skill split and flexible quantitative adjudication. Nothing else.",
       "license_checked": "2026-10-10",
-      "how_verified": "COULD NOT VERIFY. fudgerpg.com returns HTTP 403 (and HTTP 406 via Mod_Security on the site root), and the Wayback Machine reports no archived snapshot of the licensing page. Recorded as blocked, not as a finding.",
+      "how_verified": "CONFLICTING OBSERVATIONS, both recorded. A sibling agent (#205) read the publisher page and reports it states the SRD is released under the OGL, that Appendix I carries OGL 1.0a, and lists the three compliance obligations. This environment COULD NOT VERIFY: fudgerpg.com returns HTTP 403 at the licensing page and HTTP 406 (Mod_Security) at the site root, and the Wayback Machine reports no archived snapshot. The publisher's assertion is therefore recorded as REPORTED-BUT-NOT-INDEPENDENTLY-REPRODUCED rather than silently accepted or discarded.",
       "notes": "Even when verified, OGL 1.0a Open Game Content is NOT a Creative Commons grant and cannot be relabelled or relicensed CC. OGL 1.0a also carries obligations incompatible with a pure CC release. Treat as design inspiration ONLY unless the author secures separate written CC-compatible permission. The Fudge OGL and the 1995 Fudge PDF are two different licences -- do not conflate them."
     },
     {
@@ -78,16 +78,16 @@
     },
     {
       "id": "psi-punk",
-      "source": "Psi-Punk (OGL cyberpunk/psionics RPG)",
-      "url": null,
+      "source": "Psi-Punk SRD (Accessible Games)",
+      "url": "https://fudgesrd.opengamingnetwork.com/legal/",
       "kind": "published-book",
-      "license": "OGL 1.0a for designated Open Game Content (author-stated)",
+      "license": "OGL 1.0a for designated Open Game Content, with declared Product Identity",
       "license_url": null,
       "decision": "blocked-unverified",
       "role_in_noopunk": "The proof-of-concept that psychic, cyber and astral subsystems can be built around a Fudge-style attribute/skill split.",
       "license_checked": "2026-10-10",
-      "how_verified": "COULD NOT VERIFY at an authoritative source from this environment. No edition or licence text was readable.",
-      "notes": "OGL Open Game Content is not CC and must not be relabelled. Design/structural inspiration only unless separate written permission is obtained."
+      "how_verified": "Reported by a sibling agent (#205), which read the SRD legal page: it names the reserved material ('All content in the game's Introduction and in Chapter 1: The World of Psi-punk are considered Product Identity. Brain.Net, the sample adventure, is likewise ...'), and the publisher's announcement describes the SRD as the rules text with 'virtually none of the setting or fluff'. NOT independently reproduced from this environment; recorded as reported rather than as read.",
+      "notes": "TWO separate exclusions apply: OGL Open Game Content is not CC and must not be relabelled, and the declared Product Identity is not open at all. Its structural lessons are implementable; its tables are not. Design/structural inspiration only unless separate written permission is obtained."
     },
     {
       "id": "eclipse-phase-2e",
@@ -125,8 +125,8 @@
       "decision": "verified-public-domain",
       "role_in_noopunk": "Gamist influence: fast procedures, generators, mission structure, encounter pacing, cyberpunk skill framing.",
       "license_checked": "2026-10-10",
-      "how_verified": "Two independent readings. (1) The publisher blurb, as carried by the SRD's storefront listings, states the document 'is provided under a Creative Commons 0 waiver allowing downloaders to copy, modify, reproduce'. (2) The SRD mirror site states 'The SRD is a free, open-source, and public domain document'. The gordianblade viewer renders client-side, so its own licence text could not be read as static HTML -- hence the storefront blurb is the load-bearing evidence.",
-      "notes": "SCOPE MATTERS: the CC0 dedication covers the SYSTEM REFERENCE DOCUMENT. It is not a finding that the full commercial Cities Without Number book is CC0. Use only the SRD, and only the parts it actually covers."
+      "how_verified": "Three readings agree. (1) The publisher's own storefront listing: 'provided under a Creative Commons 0 waiver allowing downloaders to copy, modify, reproduce, or otherwise use it for both personal and commercial purposes. Later versions of this file may be released, but any released version may be used'. (2) The publisher blurb as carried by the SRD's aggregator listings. (3) The SRD mirror: 'The SRD is a free, open-source, and public domain document'. The gordianblade viewer renders client-side, so its own licence text could not be read as static HTML -- hence the storefront quote is the load-bearing evidence.",
+      "notes": "SCOPE MATTERS: the CC0 dedication covers the SYSTEM REFERENCE DOCUMENT. It is not a finding that the full commercial Cities Without Number book is CC0 -- 'the full SRD, but not all parts of the original book'. Use only the SRD, and only the parts it actually covers."
     },
     {
       "id": "stars-without-number-srd",
@@ -138,34 +138,34 @@
       "decision": "blocked-unverified",
       "role_in_noopunk": "Gamist influence: generators, faction turns, sandbox procedures.",
       "license_checked": "2026-10-10",
-      "how_verified": "COULD NOT VERIFY. The search endpoint rate-limited this environment (HTTP 202) before an authoritative SRD was reached. #200 explicitly warns against trusting mirror assertions here.",
-      "notes": "NoöPunk must not list the whole book as CC on this evidence. If a verified CC0/public-domain SRD is located, record it as a separate entry clearly distinguished from the commercial book."
+      "how_verified": "NOT VERIFIED, and deliberately not promoted. Third-party reports and the publisher's sibling listings for CWN and Worlds Without Number both describe a Creative Commons 0 waiver, but the SWN SRD's own publisher listing was not located in either pass (this environment was rate-limited at HTTP 202; a sibling agent, #205, recorded the same gap).",
+      "notes": "Downgraded to principles-only precisely because #200 forbids treating 'user reports CC' as a finding. NooPunk must not list the whole book as CC on this evidence. Promote to a reusable verdict ONLY after reading the SWN SRD's own licence page, and record it as a separate entry clearly distinguished from the commercial book."
     },
     {
       "id": "apocalypse-world",
       "source": "Apocalypse World (D. Vincent and Meguey Baker)",
-      "url": "https://lumpley.games/apocalypseworld/",
+      "url": "http://apocalypse-world.com/pbta/policy",
       "kind": "published-book",
-      "license": "NO CC GRANT ESTABLISHED",
+      "license": "NO CC GRANT ESTABLISHED -- all rights reserved with a per-request permission policy for words",
       "license_url": null,
       "decision": "no-cc-grant-established",
       "role_in_noopunk": "Narrativist influence: fiction-first stakes, hard choices, GM moves, clocks, social and emotional consequences.",
       "license_checked": "2026-10-10",
-      "how_verified": "The publisher's own pages for Apocalypse World were read and carry no Creative Commons statement. Being the origin of the PbtA design movement, and appearing in free references, does not by itself establish a CC grant for the book.",
-      "notes": "Narrativist CONCEPTS are independently implementable -- implementing a described idea is not copying its expression. Copy no AW text. 'PbtA' is a descriptive design designation, not a licence, and NooPunk is not required to use PbtA's dice mechanic."
+      "how_verified": "The publisher's PbtA policy page, read by a sibling agent (#205): 'If you're using our words, you need our permission, per copyright law. If you aren't using our words, you don't need our permission'. This environment separately confirmed the absence of any CC statement on the publisher's own Apocalypse World pages. Being the origin of the PbtA design movement, and appearing in free references, does not establish a CC grant for the book.",
+      "notes": "The policy is permission-per-request, not a standing grant -- which is exactly why the practical route is INDEPENDENT IMPLEMENTATION of the concepts and reuse of none of the words. 'PbtA' is a descriptive design designation, not a licence, and NooPunk is not required to use PbtA's dice mechanic."
     },
     {
       "id": "the-veil",
-      "source": "The Veil (Fraser Simons)",
-      "url": null,
+      "source": "The Veil / The Veil: Cascade (Samjoko Publishing)",
+      "url": "https://www.samjokopublishing.com/",
       "kind": "published-book",
-      "license": "CC BY-SA 3.0 (author-stated, for the attached edition)",
+      "license": "CC BY-SA 3.0 (Unported) for the text",
       "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
-      "decision": "blocked-unverified",
+      "decision": "verified-permissive",
       "role_in_noopunk": "Narrativist influence: emotional stakes, identity, cyberpunk-PbtA framing.",
       "license_checked": "2026-10-10",
-      "how_verified": "COULD NOT VERIFY independently -- the material is not present on disk (#60 records the same absence) and no authoritative licence page was reachable.",
-      "notes": "If the author-stated CC BY-SA 3.0 holds, it is compatible with a CC BY-SA 4.0 release through the one-way 3.0-to-4.0 upgrade, but NOT with a CC BY-only release. Verify before adapting any expression."
+      "how_verified": "The work's own licence statement ('The text of The Veil: Cascade is licensed under the Creative Commons Share-alike 3.0 Unported (CC BY-SA 3.0)'), found in two independent copies and reported by a sibling agent (#205); the publisher's own site was not fetched in either pass. The material itself is not present on disk (#60 records the same absence).",
+      "notes": "THE DECISIVE CASE FOR BY-SA OVER BY-ONLY: CC BY-SA 3.0 is compatible with a CC BY-SA 4.0 release through the one-way 3.0-to-4.0 upgrade, and incompatible with a CC BY-only release. CAVEAT that survives the verification: the work's own text records that some moves are 'tweaked or lifted straight from Apocalypse World ... used with his permission'. That permission was granted to THAT project and does not transfer to NooPunk, so the AW-derived portions inside The Veil are NOT covered by The Veil's licence. The grant covers The Veil's own text."
     },
     {
       "id": "cyberpunk-red-2020",
@@ -228,6 +228,35 @@
       "notes": "ABSTRACT GAMEPLAY DESIGN LESSONS ONLY. No licensed assets, code, text or proprietary worlds are incorporated. In particular: do not import their mechanics, and do NOT generalise any of them into universal neural hacking -- #200 forbids that."
     }
   ],
+  "sibling_artifacts": {
+    "$comment": "Two other agents worked issue #200 in parallel (both landed 2026-10-10, after this ledger's first revision). Recorded so the set is COMBINED rather than forked, and so a later reader does not mistake the overlap for independent agreement.",
+    "landed_in_parallel": [
+      "PR #203 (issue200-cc-gns-provenance-20261010): docs/licenses/ISSUE_200_CC_RELEASE_GATE.md, plus a first pass at docs/archive/DESIGN_PRINCIPLES.md section 1.",
+      "PR #205 (rules-engine direction record): data/sources/rules_engine_rights.json, docs/sources/RULES_ENGINE_LICENSES.md, docs/design/ISSUE_200_DIRECTION_2026-10-10.md, tests/test_issue200_rules_engine_direction.py.",
+      "PR #204 (this ledger): data/sources/game_system_rights.json, docs/sources/GAME_SYSTEM_RIGHTS.md, tests/test_issue200_rights_ledger.py."
+    ],
+    "adopted_from_the_siblings": [
+      "The Veil UPGRADED from unverified to verified (CC BY-SA 3.0 text), including the Apocalypse-World-derived-moves caveat.",
+      "Psi-Punk UPGRADED from blocked to a recorded OGL 1.0a reading with declared Product Identity.",
+      "Fudge's publisher reading recorded ALONGSIDE this environment's HTTP 403/406 block, as conflicting observations rather than picking a winner.",
+      "Apocalypse World's finding upgraded with the publisher's PbtA permission-policy quote.",
+      "Cities Without Number's evidence upgraded to the publisher's own storefront-listing quote.",
+      "Stars Without Number explicitly downgraded to principles-only."
+    ],
+    "offered_to_the_siblings": [
+      "closed_system_claim_inventory -- the file/line audit of what currently claims a closed-system dependence: the 'audit before deleting' step.",
+      "authority_conflict -- the AGENTS.md section 13/15 lock and its build coupling.",
+      "migration_order -- the sequencing that keeps each step inside its authorisation.",
+      "The blocked-versus-negative distinction in the decision vocabulary, and the EP-provenance boundary already recorded for issue #60."
+    ],
+    "overlap_to_resolve": "data/sources/rules_engine_rights.json and data/sources/game_system_rights.json now record per-source findings for the SAME reference set and AGREE on every shared source. The overlap is therefore duplication, not disagreement. Consolidating them into one ledger -- and folding docs/sources/RULES_ENGINE_LICENSES.md into docs/sources/GAME_SYSTEM_RIGHTS.md -- is an author call; both are left in place so no guard and no agent loses a reference."
+  },
+  "open_inconsistency": {
+    "$comment": "Found while combining the sibling work. REPORTED, not silently fixed, because it sits inside the author-owned set.",
+    "what": "docs/archive/DESIGN_PRINCIPLES.md section 1 was rewritten by PR #203 to the #200 triangle (Apocalypse World / The Veil, Cities Without Number / Stars Without Number, Eclipse Phase), while the SAME document's numbered invariant list still names the old poles, and AGENTS.md section 13.2 names them too.",
+    "why_it_matters": "The canonical design document now argues two different sets of reference poles in two places. tests/test_design_principles.py passes, because it pins the numbered invariants rather than section 1 -- so the build does NOT catch the drift.",
+    "author_action": "AGENTS.md section 13.2, docs/archive/DESIGN_PRINCIPLES.md and tests/test_design_principles.py must move together, deliberately, per #200's 'author-approved process'. Until that happens this ledger records the inconsistency instead of resolving it."
+  },
   "reuse_rules": {
     "$comment": "The gates that make this ledger enforceable rather than decorative.",
     "cc0": "Usable in any NooPunk release, commercial or not. Scope-limited: an SRD dedication does not cover its full commercial book.",
@@ -271,14 +300,15 @@
   },
   "migration_order": {
     "$comment": "The order #200 implies, so that no step outruns its authorisation.",
-    "1_audit": "DONE at this revision -- this ledger and the claim inventory above.",
-    "2_license_choice": "Author selects CC BY-SA 4.0 or CC BY 4.0 and publishes LICENSE/NOTICE/attribution map with itemized surfaces.",
-    "3_authority_update": "Author updates AGENTS.md sections 13/15 + docs/archive/DESIGN_PRINCIPLES.md + tests/test_design_principles.py together, explicitly superseding the pole and baseline language.",
+    "1_audit": "DONE at this revision -- this ledger, the claim inventory, and the reconciliation of the parallel sibling audits.",
+    "2_license_choice": "Author selects CC BY-SA 4.0 or CC BY 4.0 and publishes LICENSE/NOTICE/attribution map with itemized surfaces. The Veil (CC BY-SA 3.0) makes this consequential: BY-SA keeps that adaptation path open, BY-only forfeits it.",
+    "3_authority_update": "Author updates AGENTS.md sections 13/15 + docs/archive/DESIGN_PRINCIPLES.md + tests/test_design_principles.py together, explicitly superseding the pole and baseline language -- and thereby resolving the open_inconsistency recorded above.",
     "4_reword_claims": "Update the live files in the inventory above. Audit before deleting; preserve original NooPunk text and lore; no destructive blanket deletions.",
+    "4b_ep_prototype_quarantine": "Before any public release, inventory and fence the Eclipse Phase 2E homebrew prototype (src/eclipse_phase_homebrew/, src/concordia_runtime/ep2_adapter.py). It is CC BY-NC-SA-derived and must not ship inside a commercially reusable CC release. See docs/licenses/ISSUE_200_CC_RELEASE_GATE.md and docs/licenses/ECLIPSE_PHASE_HOMEBREW.md -- do not delete it while tests depend on it.",
     "5_kernel_prototype": "Prototype the Fudge/Fate 6-STAT + separate-Skill core; test additive scaling, modifier stacking, opposed checks, combat lethality, high-end PSI and cybertool disparity. Approve ONE resolution method (4dF vs mapped ratings vs legacy d10).",
     "6_migrate_legacy": "Migrate the historical 1d10 code only AFTER the decision, keeping the six STATs and the Skill taxonomy and specialist policy.",
     "7_subsystems": "Rework Physical/Social/Cyber/Psychic/Astral/NHI/Investigative subsystems in CC-compatible original drafting.",
-    "8_gates": "Reproducible tests, licence scan and valid attribution before the issue is marked done."
+    "8_gates": "Reproducible tests, licence scan and valid attribution before the issue is marked done; add checks that flag unreviewed third-party material and block reintroduction of excluded licences."
   },
   "current_imports": {
     "summary": "None. No rule text, table, formula or artwork from any source in this ledger has been imported into NooPunk.",

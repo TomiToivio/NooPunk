@@ -154,9 +154,11 @@ class GateTests(unittest.TestCase):
                 self.assertNotIn(entry["decision"], REUSABLE,
                                  "a blocked source claims a reusable licence")
                 # A blocked entry may still RECORD a party's own claim (The Veil's attached
-                # edition says BY-SA 3.0), but it must say plainly that it was not verified.
+                # edition says BY-SA 3.0, and a sibling agent read Psi-Punk's page), but it
+                # must say plainly that it was not verified here.
                 self.assertRegex(entry.get("how_verified", ""),
-                                 r"COULD NOT VERIFY|Not verified|COULD NOT|not verify",
+                                 r"(?i)could not verify|not verified|not verify"
+                                 r"|not independently reproduced|recorded as reported",
                                  f"{entry['id']} is blocked but does not say so")
 
     def test_public_availability_is_explicitly_not_a_licence(self) -> None:
@@ -231,8 +233,61 @@ class InventoryTests(unittest.TestCase):
 
     def test_the_doc_keeps_the_blocked_and_unverified_distinction(self) -> None:
         doc = AUDIT_DOC.read_text(encoding="utf-8")
-        self.assertIn("blocked is not a finding", doc)
+        self.assertRegex(doc, r"blocked is (?:still )?not a finding")
         self.assertIn("no CC grant established", doc)
+
+
+class CombinationTests(unittest.TestCase):
+    """#200 was worked by three agents at once; the set must reconcile, not fork."""
+
+    def setUp(self) -> None:
+        self.d = ledger()
+        self.doc = AUDIT_DOC.read_text(encoding="utf-8")
+
+    def test_the_sibling_artifacts_are_recorded(self) -> None:
+        sib = self.d["sibling_artifacts"]
+        blob = json.dumps(sib)
+        for pr in ("#203", "#205", "#204"):
+            with self.subTest(pr=pr):
+                self.assertIn(pr, blob)
+
+    def test_it_records_what_was_adopted_and_what_was_offered(self) -> None:
+        sib = self.d["sibling_artifacts"]
+        self.assertTrue(sib["adopted_from_the_siblings"])
+        self.assertTrue(sib["offered_to_the_siblings"])
+        # the two corrections that came from the sibling pass, not from this one
+        adopted = " ".join(sib["adopted_from_the_siblings"])
+        self.assertIn("Veil", adopted)
+        self.assertIn("Fudge", adopted)
+
+    def test_the_overlap_is_flagged_rather_than_deleted(self) -> None:
+        """Parallel ledgers must not be silently removed by whichever agent lands last."""
+        overlap = self.d["sibling_artifacts"]["overlap_to_resolve"]
+        self.assertIn("rules_engine_rights.json", overlap)
+        self.assertIn("duplication", overlap)
+
+    def test_the_veil_verification_survives_with_its_caveat(self) -> None:
+        veil = next(e for e in self.d["sources"] if e["id"] == "the-veil")
+        self.assertEqual(veil["decision"], "verified-permissive")
+        self.assertIn("BY-SA 3.0", veil["license"])
+        # the AW-derived portions inside The Veil are NOT covered by The Veil's licence
+        self.assertIn("does not transfer", veil["notes"])
+
+    def test_the_author_owned_inconsistency_is_reported_not_fixed(self) -> None:
+        inc = self.d["open_inconsistency"]
+        blob = json.dumps(inc)
+        for needle in ("DESIGN_PRINCIPLES.md", "AGENTS.md", "test_design_principles.py"):
+            with self.subTest(needle=needle):
+                self.assertIn(needle, blob)
+        # it must read as REPORTED: either "reported, not fixed" or "instead of resolving"
+        self.assertRegex(blob, r"REPORTED, not silently fixed|instead of resolving")
+        self.assertIn("An inconsistency inside the locked set", self.doc)
+
+    def test_the_ep_prototype_quarantine_is_in_the_migration_order(self) -> None:
+        order = self.d["migration_order"]
+        self.assertIn("4b_ep_prototype_quarantine", order)
+        self.assertIn("eclipse_phase_homebrew", order["4b_ep_prototype_quarantine"])
+        self.assertIn("ISSUE_200_CC_RELEASE_GATE.md", self.doc)
 
 
 if __name__ == "__main__":
