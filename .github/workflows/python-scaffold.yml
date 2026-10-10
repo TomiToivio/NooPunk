@@ -12,7 +12,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      # fetch-depth: 0 so the archive tag is present. #265's guarantee is that the old rulebook
+      # corpus is retrievable from `rulebook-pre-narrative-2026-10`; with a shallow, tag-less
+      # checkout the retrievability guards SKIP and CI verifies nothing about the archive.
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"

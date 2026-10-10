@@ -149,6 +149,7 @@ class SingleSourceOfTruthTests(unittest.TestCase):
 
 
 class GeneratedArtifactsAreCurrentTests(unittest.TestCase):
+    @unittest.skipUnless(tag_exists(), f"tag {TAG} not fetched")
     def test_the_manifest_is_current(self) -> None:
         result = subprocess.run([sys.executable, "tools/issue265_archive_manifest.py", "--check"],
                                 cwd=ROOT, capture_output=True, text=True, check=False)

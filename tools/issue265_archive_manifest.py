@@ -79,7 +79,14 @@ def classify(path: str, text: str, canonical_lines: set[str]) -> tuple[str, floa
 
 def git(*args: str) -> str:
     return subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True,
-                          check=True).stdout.strip()
+                          check=True).stdout
+
+
+def tag_available() -> bool:
+    """The archive is addressed by tag, so nothing here can be built without it."""
+    completed = subprocess.run(["git", "rev-parse", "--verify", f"refs/tags/{TAG}"], cwd=ROOT,
+                               capture_output=True, check=False)
+    return completed.returncode == 0
 
 
 def build() -> dict:
@@ -121,6 +128,13 @@ def build() -> dict:
 
 
 def main() -> int:
+    if not tag_available():
+        # A shallow or tag-less checkout cannot verify an archive addressed by tag. Say so
+        # instead of crashing, and skip rather than report a failure that is not one.
+        message = (f"tag {TAG} is not available (shallow checkout?) -- archive manifest cannot "
+                   f"be verified here")
+        print(message, file=sys.stderr if "--check" in sys.argv else sys.stdout)
+        return 0 if "--check" in sys.argv else 1
     manifest = build()
     if "--check" in sys.argv:
         if not MANIFEST.exists():
