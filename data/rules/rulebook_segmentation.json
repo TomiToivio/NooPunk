@@ -1,0 +1,144 @@
+{
+  "format": "noopunk.rulebook.segmentation",
+  "version": 1,
+  "issue": "https://github.com/TomiToivio/NooPunk/issues/232",
+  "source": "RULEBOOK.md",
+  "rationale": "Splits the 6108-line consolidated RULEBOOK.md into navigable segments. The map is TOTAL: every top-level section is assigned to exactly one part, so nothing can be dropped. Parts 1-7 follow the author's seven functional areas; part 0 carries the rules-provenance / process material, which is not a play area and would otherwise have to be misfiled. RULEBOOK.md stays canonical -- the parts are derived from it, and a guard proves the concatenation is byte-for-byte lossless.",
+  "core_ledger_marker": "# Extended canon and reference material",
+  "parts": [
+    {
+      "id": "00_meta_and_provenance",
+      "title": "Meta: rules provenance, process and change ledger",
+      "purpose": "How the rulebook is governed, versioned and audited. Not player-facing rules.",
+      "core": [],
+      "ledger": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "23",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31",
+        "32"
+      ]
+    },
+    {
+      "id": "01_basic_rules",
+      "title": "Basic Rules: the resolution kernel",
+      "purpose": "Attributes, Skills, the check, pools and the portable adapter contract.",
+      "core": [
+        "1",
+        "3",
+        "4"
+      ],
+      "ledger": [
+        "8",
+        "10",
+        "11",
+        "24",
+        "25"
+      ]
+    },
+    {
+      "id": "02_character_generation",
+      "title": "Character Generation and Progression",
+      "purpose": "Lifepath creation, identity, advancement and campaign specialist fields.",
+      "core": [
+        "9"
+      ],
+      "ledger": [
+        "9",
+        "39"
+      ]
+    },
+    {
+      "id": "03_physical_systems",
+      "title": "Physical Systems: combat and the body",
+      "purpose": "Wounds, combat, embodiment and platform rules.",
+      "core": [
+        "5"
+      ],
+      "ledger": [
+        "12",
+        "13",
+        "14",
+        "51"
+      ]
+    },
+    {
+      "id": "04_cybernetic_systems",
+      "title": "Cybernetic Systems: gear, augmentation and cyberspace",
+      "purpose": "Gear and implants, mesh/hacking/cyberspace, AI agents and equipment lists.",
+      "core": [
+        "7"
+      ],
+      "ledger": [
+        "15",
+        "18",
+        "19",
+        "52"
+      ]
+    },
+    {
+      "id": "05_psychic_systems",
+      "title": "Psychic Systems: PSI, psychotronics and the astral",
+      "purpose": "Psionics, psychotronics, sleep/dreams and manifestation forensics.",
+      "core": [
+        "8"
+      ],
+      "ledger": [
+        "16",
+        "46",
+        "48",
+        "49"
+      ]
+    },
+    {
+      "id": "06_social_systems",
+      "title": "Social Systems: society, factions and institutions",
+      "purpose": "Affect/faction/contacts mechanics, NPCs, the simulation layer and UNSA.",
+      "core": [
+        "6"
+      ],
+      "ledger": [
+        "17",
+        "20",
+        "21",
+        "22",
+        "38",
+        "42",
+        "43"
+      ]
+    },
+    {
+      "id": "07_lore_and_world",
+      "title": "NoöPunk Lore: world, history and sources",
+      "purpose": "The setting: history, glossary, four systems, factions, NHI and theory sources.",
+      "core": [
+        "2"
+      ],
+      "ledger": [
+        "33",
+        "34",
+        "35",
+        "36",
+        "37",
+        "40",
+        "41",
+        "44",
+        "45",
+        "47",
+        "50",
+        "53",
+        "54"
+      ]
+    }
+  ]
+}
