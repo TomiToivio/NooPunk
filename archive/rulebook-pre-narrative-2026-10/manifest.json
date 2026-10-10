@@ -1,0 +1,425 @@
+{
+  "format": "noopunk.rulebook.archive",
+  "version": 1,
+  "issue": 265,
+  "tag": "rulebook-pre-narrative-2026-10",
+  "extends": {
+    "issue": 243,
+    "inventory": "docs/rulebook_consolidation/inventory.json",
+    "snapshots": "rulebook/source_snapshots/"
+  },
+  "hash_type": "sha256+git_blob_sha1",
+  "deleted_anything": false,
+  "files": [
+    {
+      "source": "RULEBOOK.md",
+      "bytes": 322056,
+      "sha256": "c654ebddfc0f730c8edafec3c664e1e6d560e8d7783f3a8926fc8347ce3fc959",
+      "git_blob_sha": "a2c78127d93f8f70775f8edd014048455e003a0d",
+      "preserved_at": "rulebook/source_snapshots/root/RULEBOOK.md"
+    },
+    {
+      "source": "rulebook/00_INDEX.md",
+      "bytes": 15530,
+      "sha256": "f9e129e1aa8ed8a78864212aadd17044ef3709f101118cc02b9f260db7c0aa12",
+      "git_blob_sha": "499c0d5c2956a4cda2149f0aa3537da576253cd4",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/10_SINGULARITY_CRISIS.md",
+      "bytes": 35600,
+      "sha256": "11361132286c9e3bf57a135fd21b47d92cb54c192ab03a2d3a788b8d48714148",
+      "git_blob_sha": "f9761248f9591e06cd34df2099ff74cc1348f872",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/11_ONTOLOGY.md",
+      "bytes": 25740,
+      "sha256": "2450eb3dae563979c1ceb0b4ed12426af47809727eaafa65cedcfb7bef4747a4",
+      "git_blob_sha": "05d1301f5b99133d175e2cf3c4bc465ed134a35d",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/12_BEINGS.md",
+      "bytes": 41706,
+      "sha256": "d08296382299bef13c5eef59dd05f07a2cee942f7b373e5ceec70c82de0ffaeb",
+      "git_blob_sha": "8ac30a8fff54e76d99a642cedb1d0f885cd520b7",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/13_EQUIPMENT.md",
+      "bytes": 19133,
+      "sha256": "564caf0f5a9df3864850a7f83322a04a786cf4582ff86e66edd3fb75117f7e13",
+      "git_blob_sha": "6b5e0592a2859e04e1f2173f7b65b1f3a11ddc8f",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/14_CHARACTER_GENERATION.md",
+      "bytes": 20824,
+      "sha256": "58ecf3b312009cabc78ccd5183a4717d419eeb702e8545154968d80ee9778317",
+      "git_blob_sha": "15aacf1e77e8556faef9fe91c9744a682c1d2065",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/15_XENOPOLITICS.md",
+      "bytes": 30365,
+      "sha256": "2c62979b6a3f9b2a7eda449598e037129851bcf816ebcfeec83f5654d2ee6019",
+      "git_blob_sha": "d471f1ef7056e068cf107b969476e9a47335d2d2",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md",
+      "bytes": 17833,
+      "sha256": "ec72e5d05a46e3160a907ee0273098b6570d0859669c668764ef62539a7240fa",
+      "git_blob_sha": "15b95fe853ba887a7fee414b4c20745d621aef79",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md",
+      "bytes": 26663,
+      "sha256": "0eb8903a29afd5685f4436eec60a4858d391568e5c3621694fe51d5274c03111",
+      "git_blob_sha": "96c7b8b7995128ae6f914df6f9fae82a4e85609a",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/18_CROSS_DOMAIN_STATE.md",
+      "bytes": 13456,
+      "sha256": "182fd7ff42b2c74b3dcc8e4cc496624e29411cdfd5170166691d9283a95e75cf",
+      "git_blob_sha": "cdb7cad1bbdcbe77264061388d4bbab83863062a",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/19_NARRATIVE_LAYER.md",
+      "bytes": 9677,
+      "sha256": "8e591c6ff6a2ff7c7cf68454d38c7c3af49930ec7967eac2a475214d51742705",
+      "git_blob_sha": "397c39fabae8d412a50828b58fcdd922f3898bb2",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/1_NO\u00d6PUNK.md",
+      "bytes": 226,
+      "sha256": "447ce7cd866bef73787fbc0c426cce99deff5af35d20add52a8ad64c5294a18f",
+      "git_blob_sha": "52689139e6ee3b488f124a70c6def204d6d021eb",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/2_ATTRIBUTES.md",
+      "bytes": 16819,
+      "sha256": "21698bc3bf16717b8ee1435b29b857f133e97ef8d18bbbf5291b4d49e9577da7",
+      "git_blob_sha": "602d1f360d1b94fcb24605fef60c0751106d05f0",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/3_PHYSICAL.md",
+      "bytes": 13114,
+      "sha256": "a2714803fe066d35677261b98a7c4193822ec14f7e5728acb73c1bd47d44aa2a",
+      "git_blob_sha": "87c9f4b25b9423cf075ad154bf5525c8c5cd7926",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/4_SOCIAL.md",
+      "bytes": 17761,
+      "sha256": "ec6511e46aa2dc7036ff3e8cb42ad9422b2ef293d3e5f2885c6c8510523b31f2",
+      "git_blob_sha": "4b90c7ac83a4461fd3098e64791d59d6ce8dbf70",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/5_CYBERNETIC.md",
+      "bytes": 13843,
+      "sha256": "f1cb553d157c362d346bdb2bdce3295dcc8621e48e4a524273c01dc9dc362065",
+      "git_blob_sha": "fcd0d9fd8dadb9ac308cf12e3e9f512e9ec6e1cc",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/6_PSYCHIC.md",
+      "bytes": 59910,
+      "sha256": "69f1b96959a13a97a973f01c066f9b74575b2320b19b6aa573ffaf6fff160555",
+      "git_blob_sha": "35c7e29fa199eb246204bafbb250480a1dde12ee",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/7_TIMELINE.md",
+      "bytes": 16134,
+      "sha256": "9201a37812c52756fc5144e2fa3f58a657f422952242075e46114fb73be28247",
+      "git_blob_sha": "853d78c7abbadf04619673aeade198c5dbc35869",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/8_FACTIONS.md",
+      "bytes": 15652,
+      "sha256": "6afcea91aa95aae15498ef34560ed56416da57c1a00a868ee1ad81019caae5e7",
+      "git_blob_sha": "e12cb59191a9424fbfdeec0cf2c40ba55d41eb90",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/9_FIELD_CATALOGS.md",
+      "bytes": 22249,
+      "sha256": "aaf38fd9796ad6743382629f2b8653991bd511b221cd075086717c07a0f66b7a",
+      "git_blob_sha": "25c54fb19397185e78a5607cbab08350845e41be",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/parts/01_basic_rules.md",
+      "bytes": 16638,
+      "sha256": "78502986e171a1ccd92ff9aade8a56b9ee129818821ee20e68dda63a852b493e",
+      "git_blob_sha": "f7a9c5f27549bdcc35dac2872d4640d72d25f7a0",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/parts/02_character_generation.md",
+      "bytes": 2236,
+      "sha256": "1461c4e26cbd9a130f943fe82eb7407e6a2897607e1f3d9cef4b0264f76beb64",
+      "git_blob_sha": "f6c498d4158513785510c3696acbd04c789f2428",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/parts/03_physical_systems.md",
+      "bytes": 6499,
+      "sha256": "885fd9bdbeb828b9c2aa97420e6a2097aa6939268cbedbdeadd4b2ea733a0e17",
+      "git_blob_sha": "832ad47dcc0b3205ca9a4ee1390768684e8a50ac",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/parts/04_cybernetic_systems.md",
+      "bytes": 7072,
+      "sha256": "8ea4fc7650e002b3c464c3b2c900989397c54cea1372e152443858fb41bbdff6",
+      "git_blob_sha": "c41f4ff8440fc789db22894582079907e394362f",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/parts/05_psychic_systems.md",
+      "bytes": 22432,
+      "sha256": "3ef2b11b9dd212d308a45147c61bc38533ea7ee0db5b17934544b26dca3f50b7",
+      "git_blob_sha": "af14f296c5d5652d3bd627c0b97dc6dd335a9471",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/parts/06_social_systems.md",
+      "bytes": 7311,
+      "sha256": "6f01765113ad60eb3664e99470187f2a55857dfb78ecc5109b15b0123dc785d0",
+      "git_blob_sha": "0b9a84966d6b71e27ac5fceaaa3ba1bd2b022e97",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/parts/07_noopunk_lore.md",
+      "bytes": 93507,
+      "sha256": "669c28a07df559343d6969109849ee71c3c8e53c13eb811da4e17684b8a0a4d8",
+      "git_blob_sha": "1548dc6d76e67cdd992b19753f2977ea89fff494",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/parts/08_rules_architecture.md",
+      "bytes": 14076,
+      "sha256": "3ae3f1094206d99b113f9731c08f631fdf55d8c7cf6b9d1cefed94406d7b1f5b",
+      "git_blob_sha": "aa3c2525ade14e17be4a5f0bd1869510f9ca2a1d",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/parts/09_characters_and_beings.md",
+      "bytes": 15415,
+      "sha256": "1c492785b8c2d73dffc3c7e5c29654ae0138863689eed64e5dc5f79c59dbe3da",
+      "git_blob_sha": "15117c50309924e1869809135912cab177748594",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/parts/10_campaign_unsa_factions.md",
+      "bytes": 51881,
+      "sha256": "6585fe85001e94b44d4d5e136936177a2a56acfe0002ea2cee045bde5070d213",
+      "git_blob_sha": "ef31921cd7dc6b3ff1a7e889bb7e1d7406c6bf6e",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/parts/11_concordia_and_parity.md",
+      "bytes": 48220,
+      "sha256": "d0874bac65b0a9eb4975d24aee75059bcc33d1d8374e6c8793cffa69e8fcc5a7",
+      "git_blob_sha": "46cc90a44fcca5413b2c0fcda7e24a48f12bced5",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/parts/12_glossary_sources_catalogs.md",
+      "bytes": 32273,
+      "sha256": "5831cf48035d4295c2ee8456ccd6641cd8e722e88ffbf7c57dfc70b7d7097241",
+      "git_blob_sha": "b4d2a0e3465ee689b6661d86900b4c07f1d2dac2",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook_parts/00_meta_and_provenance.md",
+      "bytes": 28010,
+      "sha256": "e336ea8a2441a04ba376c9805aa802ac91b39c6cfe8317ab82fbb334bebe2fa7",
+      "git_blob_sha": "0c18e5f6c1824078f8be1aeff6fbb0f737e7940c",
+      "preserved_at": "rulebook/source_snapshots/rulebook_parts/00_meta_and_provenance.md"
+    },
+    {
+      "source": "rulebook_parts/01_basic_rules.md",
+      "bytes": 20297,
+      "sha256": "ad90848b4b5fafe83aca909f7b6b2603bd360b1fedff27ed3d74857195f93266",
+      "git_blob_sha": "00b743d162268180e2e0bbc026b2dc978d74a8a5",
+      "preserved_at": "rulebook/source_snapshots/rulebook_parts/01_basic_rules.md"
+    },
+    {
+      "source": "rulebook_parts/02_character_generation.md",
+      "bytes": 23179,
+      "sha256": "bf40d9e2d3256593d462a3bf23ab10b6891158785b265bb6081e72613f6ace38",
+      "git_blob_sha": "ada90f975f89eacce32e9cfab91e3b260850b0b8",
+      "preserved_at": "rulebook/source_snapshots/rulebook_parts/02_character_generation.md"
+    },
+    {
+      "source": "rulebook_parts/03_physical_systems.md",
+      "bytes": 6902,
+      "sha256": "c568106c84963b141bf4cc42e09362516a21394619e2f6fa39488a1b4db05c86",
+      "git_blob_sha": "ef8c0d9aa18a1ea7de1d0d6107517ad5b0d0dfe0",
+      "preserved_at": "rulebook/source_snapshots/rulebook_parts/03_physical_systems.md"
+    },
+    {
+      "source": "rulebook_parts/04_cybernetic_systems.md",
+      "bytes": 9212,
+      "sha256": "fb35da9eed99e9cd56f0a352867a9f8a4a349add827a7c3b406a810885f7e2ce",
+      "git_blob_sha": "e7a3e6797358ef9049445faa801ca874469c5478",
+      "preserved_at": "rulebook/source_snapshots/rulebook_parts/04_cybernetic_systems.md"
+    },
+    {
+      "source": "rulebook_parts/05_psychic_systems.md",
+      "bytes": 17252,
+      "sha256": "7742e762cc113a375b322fb95c2bd42c326015cc93a20a2c60ebb3c3773bdd2c",
+      "git_blob_sha": "58f302ed2e6a48129a67614c6895cae88652e461",
+      "preserved_at": "rulebook/source_snapshots/rulebook_parts/05_psychic_systems.md"
+    },
+    {
+      "source": "rulebook_parts/06_social_systems.md",
+      "bytes": 33659,
+      "sha256": "c2fba2c32c4296ac63dd8f1338da5c05454de636f91b8a7aa975c21db2b9612c",
+      "git_blob_sha": "507e3088177ef42da42371502a5d1c22fdf3c7fd",
+      "preserved_at": "rulebook/source_snapshots/rulebook_parts/06_social_systems.md"
+    },
+    {
+      "source": "rulebook_parts/07_lore_and_world.md",
+      "bytes": 189643,
+      "sha256": "4626e9d64588f785fea22598701788890be56629da67f0d2fe110d858b4e2cca",
+      "git_blob_sha": "a11c05b4cd691479239dc690e7997ca75430c10a",
+      "preserved_at": "rulebook/source_snapshots/rulebook_parts/07_lore_and_world.md"
+    },
+    {
+      "source": "rulebook_parts/INDEX.md",
+      "bytes": 4034,
+      "sha256": "14e24b2c4a2d0e138cda43eecce66d3618d42316f2a86353c176b9a8dbfb1812",
+      "git_blob_sha": "00e3d0199e18c8188cbbf575ad456fe14909a26e",
+      "preserved_at": "rulebook/source_snapshots/rulebook_parts/INDEX.md"
+    },
+    {
+      "source": "docs/rulebook_segments/01_PLAYER_CORE.md",
+      "bytes": 18968,
+      "sha256": "ed33f8d25857253917c6c332a6421797bf7f9921cc425a197bbccbd9183879a6",
+      "git_blob_sha": "6b22e9cab7018a7c4d579814ceb3c7968d459cf9",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "docs/rulebook_segments/02_DOMAIN_QUICKSTART.md",
+      "bytes": 13276,
+      "sha256": "73a9961b23e1ce3f32bcedcc8359ae901b4caa6d22289e7e8bd32fe601ec071e",
+      "git_blob_sha": "5d7851fcd40509f2bd42328d30de681889766372",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "docs/rulebook_segments/03_CHARACTER_GENERATION.md",
+      "bytes": 7680,
+      "sha256": "025375a99179e19c84e5135a3207c7b7d705f2304a29275554323c55d83136f2",
+      "git_blob_sha": "12597aed7f77846ff3a416b6d8abdfaf8a0831e3",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "docs/rulebook_segments/04_CORE_REFERENCE.md",
+      "bytes": 34319,
+      "sha256": "7a5461debdc265dfded8d4ae3070417edaa554962c7cebbeffc0b0f8e3c77f34",
+      "git_blob_sha": "0c2c3dc4aff51dc53251fde365fb2379a866ff3a",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "docs/rulebook_segments/05_SYSTEMS_AND_ENGINEERING.md",
+      "bytes": 17572,
+      "sha256": "71f8792107ded4aa6e2a630a084ea1067d6955149ea3e2269132df6d4168bdce",
+      "git_blob_sha": "46df66483a9964744c6011b7ac8135b7bcda6c9d",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "docs/rulebook_segments/06_WORLD_CANON.md",
+      "bytes": 81862,
+      "sha256": "375a3627dd391ba78bec601589ae7a2da3261b227e840624c730102cfaf2b3dd",
+      "git_blob_sha": "fef3d7401d6e7b8a73f18b1fb476a706a6866150",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "docs/rulebook_segments/07_GLOSSARY_AND_SOURCES.md",
+      "bytes": 30458,
+      "sha256": "3a22c6693e0a8d0598b7ce94149ad5f0d195307432d309d48567cb89dff8fc3a",
+      "git_blob_sha": "fca85f638754915ab651eee0c5341c6271fef512",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "docs/rulebook_segments/08_WORLD_SYSTEMS_AND_CAMPAIGN.md",
+      "bytes": 91010,
+      "sha256": "3a15b908d4bf1a1b559fc3adbdf35255fa92ce5d5205d4000d09032f27f3ead8",
+      "git_blob_sha": "cba3a68450f252565fb833a82d9c4b980ccfae3d",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "docs/rulebook_segments/09_LATE_LORE_AND_CATALOGS.md",
+      "bytes": 26911,
+      "sha256": "1bdac783480a5c9861db56fdaf8981937dc852d00ebdfcaedb8fb667f8d7bea5",
+      "git_blob_sha": "8ac1b218854828437b21b38ff2a63bde25cd210b",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "docs/rulebook_segments/README.md",
+      "bytes": 6884,
+      "sha256": "ab07b749372fa2949e53a6ee91946ce1dece80d71fadad30a3186cb3a2311be9",
+      "git_blob_sha": "bed247c104dad3b57e07f1726b701adab11be88c",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "docs/archive/RULEBOOK.md",
+      "bytes": 34841,
+      "sha256": "7df95adce8fdbe35114c994299b2af5451c81e0f49f7f6a3e9cfa08e8b2d9d30",
+      "git_blob_sha": "d600dea961b06547a087438ac7bf08ea9915db75",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "docs/archive/RULEBOOK_PRE_ISSUE_120_2026-10-05.md",
+      "bytes": 237774,
+      "sha256": "c95b2117d1695b26226ce8d607196e659dae10025f1f9897fc0c5a13325e8955",
+      "git_blob_sha": "4c38b03c9713d60f30ece1e93ea5c5011009b886",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "data/rules/rulebook_segmentation.json",
+      "bytes": 3590,
+      "sha256": "245f30b0b4071a5bf5ac850502e18cc60c3bad7168ae48ca482eb1eac34a7370",
+      "git_blob_sha": "45898e5b289c0f89dc2350c65361b180b2c3e670",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "data/rules/rulebook_split_manifest.json",
+      "bytes": 19191,
+      "sha256": "500bdc47759c802230e519e93d0d7f80892e8531cbba831d717cd2dd21834dc1",
+      "git_blob_sha": "6b8ebbe066c4478c7e5d5bb5a114e031260de270",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "data/rules/fudge_scale_migration.json",
+      "bytes": 1226,
+      "sha256": "a71c795eb474de16dc7e0fcd057b5fe4e7e331346450097048ccd5cb6b72c872",
+      "git_blob_sha": "53961006574902a175a0ad41012bf7f844f11c0f",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "docs/rulebook_consolidation/inventory.json",
+      "bytes": 11462,
+      "sha256": "c38b366195cbc4d71192352bb8a628a67658a98fea36def5fef6779e53c882db",
+      "git_blob_sha": "403e8cc086665f88aa69ec61f5f131b00eafd4cb",
+      "preserved_at": "in place (not deleted)"
+    }
+  ],
+  "generated_derivatives": {
+    "rulebook/parts": "generated verbatim segments of RULEBOOK.md (tools/split_rulebook.py); guard-enforced",
+    "docs/rulebook_segments": "generated per-book segments of RULEBOOK.md (#232 split work)"
+  }
+}
