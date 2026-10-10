@@ -136,8 +136,12 @@ class LadderTests(unittest.TestCase):
         c = [raws["C_skill_primary"](s, k) for s, k in pairs]
         self.assertEqual((min(a), max(a)), (-6, 6))
         self.assertEqual((min(c), max(c)), (-4, 4))
+        # Nearly a fifth of all rating pairs need clamping under the author-directed
+        # mapping. The exact count moved with the mapping; the pathology did not.
         clipped = sum(1 for v in a if not kp.LADDER_MIN <= v <= kp.LADDER_MAX)
-        self.assertGreaterEqual(clipped, 20, "A's clamping is the measured pathology")
+        self.assertGreaterEqual(clipped, 18, "A's clamping is the measured pathology")
+        extremes = sum(1 for v in a if abs(kp.clamp_step(v)) == kp.LADDER_MAX)
+        self.assertGreater(extremes, clipped)
 
     def test_the_averaged_candidate_is_within_range_by_construction(self) -> None:
         for s in range(1, 11):
@@ -251,12 +255,32 @@ class DocumentedClaimTests(unittest.TestCase):
         self.assertGreater(measured["B_averaged"], 0.5)
         self.assertLess(measured["C_skill_primary"], 0.3)
 
-    def test_the_dv_calibration_clamps_the_top_of_the_authored_ladder(self) -> None:
-        """Documented as a limitation: a 7-step ladder cannot carry 7 named DVs."""
+    def test_the_authored_dv_mapping_is_bijective(self) -> None:
+        """The limitation this prototype reported is fixed by the author-directed table.
+
+        A first revision used a draft divisor and collapsed six of the seven authored DVs
+        onto one step. Issue #213's author-directed mapping carries all seven, so the
+        prototype CONSUMES it and this test pins the property that matters: no two DVs
+        share a step.
+        """
         steps = [kp.legacy_dv_to_step(dv) for dv in core.DIFFICULTY_LADDER]
         self.assertEqual(len(steps), 7)
+        self.assertEqual(len(set(steps)), 7, f"two authored DVs collide: {steps}")
+        self.assertEqual(steps, sorted(steps))
+        self.assertEqual(steps[0], kp.LADDER_MIN)
         self.assertEqual(steps[-1], kp.LADDER_MAX)
-        self.assertGreaterEqual(len(steps) - len(set(steps)), 2, "the collision is the finding")
+
+    def test_a_non_authored_dv_falls_back_to_the_nearest_authored_one(self) -> None:
+        """Stated rather than silently interpolated: the table is defined on the 7 DVs."""
+        self.assertEqual(kp.legacy_dv_to_step(14), kp.legacy_dv_to_step(13))
+        self.assertEqual(kp.legacy_dv_to_step(100), kp.LADDER_MAX)
+
+    def test_the_rating_mapping_is_the_author_directed_one(self) -> None:
+        """Consumed from data/rules/fudge_scale_migration.json, not re-declared."""
+        scale = json.loads((ROOT / "data" / "rules" / "fudge_scale_migration.json").read_text())
+        expected = {int(k): int(v) for k, v in scale["attribute_skill_mapping"].items()}
+        self.assertEqual({r: kp.rating_step(r) for r in range(1, 11)}, expected)
+        self.assertEqual(kp.RATING_TO_STEP, expected)
 
     def test_ladder_labels_are_our_own_wording_not_a_source_copy(self) -> None:
         """Fudge's ladder names are its expression; ours must be independently worded."""

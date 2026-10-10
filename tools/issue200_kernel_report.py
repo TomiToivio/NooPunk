@@ -32,7 +32,6 @@ from rules.kernel_prototype import (
     exact_success_probability,
     expected_4df_distribution,
     hits_to_takedown,
-    legacy_dv_ladder,
     legacy_dv_to_step,
     p_success_legacy,
     rating_step,
@@ -138,8 +137,8 @@ def main() -> int:
         extremes = sum(1 for r in raws if abs(clamp_step(r)) == LADDER_MAX)
         print(f"| `{candidate}` | {min(raws):+d}..{max(raws):+d} | {len(out)} of 100 | {extremes} of 100 |")
     print("\nAll three reach every step, so 'reachability' distinguishes nothing — the raw")
-    print("range does. The additive candidate wants a ±6 range on a ±3 ladder, so more than")
-    print("half its pairs are clamped and the ladder's ends become blunt.")
+    print("range does. The additive candidate wants a ±6 range on a ±3 ladder, so nearly a")
+    print("fifth of its pairs are clamped and a third collapse onto the extremes.")
 
     rule("5. High-end disparity — and where the candidates stop differing")
     print("Effective step per profile, before any roll:\n")
@@ -215,17 +214,21 @@ def main() -> int:
     print("\n#200 leaves the light wound ladder in place until it is reconciled, so this")
     print("measures how *fast* each engine resolves an exchange — not a proposed wound model.")
 
-    rule("9. Known limitations of this prototype, stated rather than hidden")
-    ladder = ", ".join(f"{k}={v:+d}" for k, v in legacy_dv_ladder().items())
-    print(f"- **Six of the seven DVs collapse.** {ladder} — Heroic, Incredible and Legendary")
-    print("  all clamp to +3. A seven-step ladder cannot carry seven authored DVs without")
-    print("  either widening the ladder or re-authoring the DVs.")
-    print("- **The DV-to-step calibration is a draft** derived from the median legacy total")
-    print("  (DV 15.5 = step 0), not authored canon.")
-    print("- **Ratings 1 and 10 are wasted** in the additive candidate: they already saturate")
-    print("  the ladder alone, so Skill cannot add anything the STAT had not already given.")
-    print("- **No aspects, stress or consequence model is proposed here.** #200 asks for those")
-    print("  to be tested; they need their own prototype and their own playtest.")
+    rule("9. Where this prototype stands, stated rather than hidden")
+    print("- **The DV collapse this prototype first reported is FIXED.** Its own draft divisor")
+    print("  mapped 21 Heroic, 24 Incredible and 29 Legendary all onto +3. Issue #213 supplied")
+    print("  an author-directed table, this prototype now CONSUMES it (see")
+    print("  `data/rules/fudge_scale_migration.json`), and all seven authored DVs map onto seven")
+    print("  distinct steps. Do not restate the mapping here -- change the author's file.")
+    print("- **The rating and DV mappings are consumed, not invented.** Per AGENTS.md section 13,")
+    print("  where a shared specification exists it is consumed rather than re-declared in a")
+    print("  second runtime, so a change to that file moves these numbers and the tests say so.")
+    print("- **A DV outside the authored seven falls back to the nearest one**, stated rather than")
+    print("  silently interpolated: the table is defined on the authored difficulty set.")
+    print("- **Ratings 1 and 10 are still partly wasted in the additive candidate**: a 10 already")
+    print("  saturates the ladder alone, so a Skill can add nothing the STAT had not already given.")
+    print("- **No aspects, stress or consequence model is proposed here.** #200 asks for those to")
+    print("  be tested; they need their own prototype and their own playtest.")
     return 0
 
 
