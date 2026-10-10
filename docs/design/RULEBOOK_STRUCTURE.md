@@ -1,104 +1,90 @@
-# Rulebook structure: how the parts work (for agents)
+# RULEBOOK.md: the constraint that shapes the split, and the one ambiguity left
 
-Written for other agents working on the #200 / #217–#232 subsystem issues. Read this before
-editing `RULEBOOK.md` or anything under `rulebook/`.
+Companion to [`docs/rulebook_segments/README.md`](../rulebook_segments/README.md), which owns the
+segmentation itself (nine lossless segments, `manifest.json`, the seven-book destination). This file
+records the two things that guide has no reason to: **why cutting `RULEBOOK.md` up does not work**,
+and **a numbering collision that the seven-book migration will hit**. Read both before restructuring
+anything.
 
-## The short version
+## Why `RULEBOOK.md` must stay canonical and whole
 
-| File | Status |
+The natural reading of "split the rulebook" is: move each section's body into a part and leave
+`RULEBOOK.md` as an index. **That was implemented, and it failed 309 tests.** The suite reads
+`RULEBOOK.md`'s *body*, not merely its headings — lore, glossary, faction and mechanics guards all
+assert on text inside the file. Rewriting 309 tests to follow the bodies would have been the largest
+possible risk to precisely the content this work exists to protect.
+
+So the direction is reversed, deliberately and permanently: **`RULEBOOK.md` stays the canonical,
+unedited text; the parts are generated views of it.** Any future attempt to empty the file should
+expect the same 309 failures, and should not start.
+
+The same constraint applies to *editing* it. Inserting seven lines of navigation into
+`RULEBOOK.md` was enough to invalidate every offset in `docs/rulebook_segments/manifest.json` and
+break `test_issue232_lossless_segments`. That manifest is frozen against the file byte-for-byte:
+**any change to `RULEBOOK.md` must regenerate the segments in the same commit.**
+
+## The numbering collision
+
+`RULEBOOK.md` contains **two independent `## N.` runs**, separated by the marker
+`# Extended canon and reference material`:
+
+| Run | Numbers | What it is |
+| --- | --- | --- |
+| core | `1`–`9` | The current rulebook: Stats, Skills, the four domains, Character Generation |
+| extended canon | `1`–`54` | A preserved reference ledger, including the 1816-line world-lore section |
+
+**All nine core numbers collide with ledger numbers.** So:
+
+- `§51` is unambiguous — there is only one.
+- **`§5` is ambiguous** — core "Physical Systems" *or* ledger "Primary Eclipse Phase references".
+
+Three guards already pin the runs separately (`test_issue101_sources_dedup` splits on the marker and
+requires `1`–`9` before it and contiguous `1`–`N` after), so the duplication is deliberate and
+guarded — **not drift, and not something an agent should "tidy"**. `tests/test_issue232_numbering_runs.py`
+pins the collision explicitly and independently verifies that
+`data/rules/rulebook_segmentation.json` disambiguates the two spaces rather than using one bare
+section list.
+
+#232's first acceptance criterion asks for "no conflicting rules definitions". Reconciling these two
+runs means choosing a canonical run and renumbering the other, which breaks an unknown number of
+`§N` cross-references across the repository and the lore. **That is an author decision**, so it is
+reported here and left alone.
+
+## The rulebook's shape is load-bearing
+
+`RULEBOOK.md` is not just text; three guards constrain its structure, and all three are about
+cross-references resolving:
+
+| Guard | Constraint |
 | --- | --- |
-| `RULEBOOK.md` | **Canonical, and the file to edit.** 6108 lines, 64 headings. |
-| `rulebook/00_INDEX.md` | Generated navigable index. Links every section to its part. |
-| `rulebook/parts/*.md` | Twelve **generated, verbatim segments** of `RULEBOOK.md`. Do not hand-edit. |
-| `data/rules/rulebook_split_manifest.json` | Frozen SHA-256 of every section body. The proof nothing was lost. |
-| `tools/split_rulebook.py` | Regenerates all of the above. |
+| `test_issue101_sources_dedup` | core `## 1.`–`## 9.`, then contiguous `## 1.`–`## N.` after the marker |
+| `test_issues171_180_cross_references` | the `§N` *universe* is RULEBOOK.md's headings + every self-numbering `rulebook/*.md` chapter; every `§N` anywhere must resolve against it |
+| same test | every self-numbering `rulebook/*.md` must be **linked from RULEBOOK.md** |
 
-**Edit `RULEBOOK.md`, then run `python3 tools/split_rulebook.py --apply` in the same commit.**
-If you edit `RULEBOOK.md` and do not regenerate, `tests/test_issue232_rulebook_split.py` fails with
-that instruction. If you hand-edit a part, the same guard fails and names the section.
+A heading deleted from `RULEBOOK.md` silently orphans references elsewhere. Note also that
+`rulebook/*.md` is globbed by the second guard, which is why generated segments live in
+`docs/rulebook_segments/` and not under `rulebook/`.
 
-## Why the parts are generated rather than the rulebook being cut up
+## Working on the subsystem issues
 
-The obvious move — move each section's body into a part and leave `RULEBOOK.md` as an index — was
-tried first and **it failed 309 tests**. The suite reads `RULEBOOK.md`'s *body*, not merely its
-headings. Rewriting 309 tests would have been the largest possible risk to the content this work
-exists to protect, and "do not lose anything" was the explicit requirement.
+Maintainers of #217–#232: build on these rather than duplicating them.
 
-So the direction is reversed. `RULEBOOK.md` stays canonical; the parts are a navigable view. The
-whole diff to `RULEBOOK.md` is **7 added lines and 0 removed** — the navigation block — which is
-checkable with `git diff`.
+| Artifact | Issue | What it decides |
+| --- | --- | --- |
+| `data/rules/rulebook_segmentation.json` + `tools/split_rulebook.py` | #232/#237 | the section→book map and the lossless split |
+| `src/rules/issue200_resolution_lab.py` | #207 | exact odds on the raw scale |
+| `data/rules/fudge_scale_migration.json` | #213 | the **author-directed** 1–10 → −3..+3 mapping. Consume it; do not re-declare it |
+| `src/rules/kernel_prototype.py` | #209/#215 | candidate combination rules on the ladder |
+| `src/rules/aspects_prototype.py` | #233 | aspects, narrative resource, consequences |
+| `data/sources/game_system_rights.json` | #200/#231 | rights provenance for the CC release |
 
-## The shape guards you must not break
+Rules that apply to every change here:
 
-Three tests constrain `RULEBOOK.md`'s structure, and all of them are about cross-references:
-
-1. **`test_issue101_sources_dedup::test_top_level_numbering_is_contiguous`** splits the file on the
-   literal marker `# Extended canon and reference material` and requires `## 1.`–`## 9.` before it
-   and contiguous `## 1.`–`## N.` after it.
-2. **`test_issues171_180_cross_references`** builds the §-reference *universe* from RULEBOOK.md's
-   headings plus each self-numbering `rulebook/*.md` chapter. Every `§N` anywhere must resolve
-   against that union — so a heading deleted from `RULEBOOK.md` silently orphans references.
-3. The same guard requires every self-numbering `rulebook/*.md` to be **linked from
-   `RULEBOOK.md`**. That is why the navigation block exists at all: `00_INDEX.md` self-numbers.
-
-`rulebook/parts/` is deliberately one level down, because `rulebook/*.md` is globbed by guard 2 —
-putting twelve generated parts in that glob would impose self-numbering and link requirements on
-all of them for no benefit.
-
-## The two numbering runs — a real finding, not a bug to fix silently
-
-`RULEBOOK.md` contains **two independent `## N.` runs**:
-
-| Run | Lines | Sections | What it is |
-| --- | --- | --- | --- |
-| core | 2–650 | `1`–`9` | The current rulebook: Stats, Skills, the four domains, Character Generation. |
-| extended canon | 651–6108 | `1`–`54` | A preserved reference ledger, including the 1816-line world-lore section. |
-
-So `RULEBOOK.md §51` unambiguously means the extended-canon harm ladder, and `§5` is *ambiguous*
-between core "Physical Systems" and ledger "Primary Eclipse Phase references". The contiguity guard
-asserts the two runs separately, so this is **deliberate and guarded** — not drift.
-
-#232's first acceptance criterion asks for "no conflicting rules definitions". Reconciling these
-two runs means choosing which is canonical and renumbering one of them, which would break an
-unknown number of `§N` cross-references across the repository. **That is an author/design decision,
-not an agent's**, so it is reported here and left alone.
-
-## Working on a subsystem issue (#217–#232)
-
-Each subsystem issue maps onto one or two parts:
-
-| Issue | Part(s) |
-| --- | --- |
-| #217 core resolution | `01_basic_rules`, plus `src/rules/kernel_prototype.py` |
-| #218 character creation | `02_character_generation`, `09_characters_and_beings` |
-| #219 physical / combat | `03_physical_systems` |
-| #220 social | `06_social_systems` |
-| #221–#222 cyber, cyberspace | `04_cybernetic_systems` |
-| #223–#224 psychic, astral | `05_psychic_systems` |
-| #226 UNSA investigations | `10_campaign_unsa_factions` |
-| #227 transhuman / NHI / NPCs | `09_characters_and_beings` |
-| #228 equipment and economy | `04_cybernetic_systems`, `12_glossary_sources_catalogs` |
-| #229 narrative layer | `src/rules/aspects_prototype.py` (see below) |
-| #230 OSR / GM toolkit | `10_campaign_unsa_factions`, `11_concordia_and_parity` |
-| #231 CC publication | `data/sources/game_system_rights.json` |
-| #232 this structure | all of the above |
-
-Existing prototypes you should build on rather than duplicate:
-
-- `src/rules/issue200_resolution_lab.py` (#207) — exact odds on the raw scale.
-- `data/rules/fudge_scale_migration.json` (#213) — the **author-directed** 1–10 → −3..+3 mapping.
-  Consume it; do not re-declare it.
-- `src/rules/kernel_prototype.py` (#209/#215) — candidate combination rules on the ladder.
-- `src/rules/aspects_prototype.py` (#233) — aspects, narrative resource, consequences.
-
-## Rules that apply to every change here
-
-- **`AGENTS.md` is the canonical contract** and `docs/archive/DESIGN_PRINCIPLES.md` the design
-  invariants. `tests/test_design_principles.py` fails the build if the documents and the invariants
-  disagree — including a check that the AGENTS.md `§13.2` pole sentence matches the canonical
-  document (see issue #200 and PR #214).
-- **New numeric values are DRAFT** until the author calibrates them. Say so in the docstring.
-- **Deterministic and auditable**: rolls and state transitions belong in code with tests, never in
-  an LLM prompt.
-- **No invented lore or rules.** `AGENTS.md` §4 reserves unspecified numbers, factions and
+- **`AGENTS.md` is the canonical contract**; `tests/test_design_principles.py` fails the build if the
+  documents and the design invariants disagree — including that the AGENTS.md §13.2 pole sentence
+  matches the canonical document (see #200 / PR #214).
+- **New numeric values are DRAFT** until the author calibrates them; say so in the docstring.
+- **Deterministic and auditable.** Rolls and state transitions belong in tested code, never in an
+  LLM prompt.
+- **No invented lore or rules** — `AGENTS.md` §4 reserves unspecified numbers, factions and
   technologies to the author.
