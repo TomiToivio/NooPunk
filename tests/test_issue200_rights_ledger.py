@@ -288,7 +288,9 @@ class CombinationTests(unittest.TestCase):
                 self.assertIn(needle, blob)
         # it must read as REPORTED: either "reported, not fixed" or "instead of resolving"
         self.assertRegex(blob, r"REPORTED, not silently fixed|instead of resolving")
-        self.assertIn("An inconsistency inside the locked set", self.doc)
+        # the heading says "author-owned", not "locked": this repo has no TOMI-LOCKED markers,
+        # and its own plan notes warn against citing a lock that is not there.
+        self.assertIn("An inconsistency in the author-owned set", self.doc)
 
     def test_the_remaining_inconsistency_matches_the_repository_state(self) -> None:
         """If the author reconciles AGENTS.md, this record must move with it -- not go stale."""

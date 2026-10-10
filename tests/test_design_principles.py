@@ -13,9 +13,10 @@ Run: python3 -m unittest discover -s tests -p 'test_*.py'
 """
 from __future__ import annotations
 
-from pathlib import Path
+import json
 import re
 import unittest
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -39,6 +40,9 @@ REFERENCE_POLES = {
     "Simulationism": "Eclipse Phase",
     "Narrativism": "Apocalypse World",
 }
+
+#: The pole trio that issue #200 superseded. Named once, so a future rename edits one place.
+SUPERSEDED_POLES = ("CY_BORG", "Cyberpunk 2020", "The Sprawl")
 
 #: The three defining Noösphere paradigm shifts.
 PARADIGM_SHIFTS = ("UFO", "Psionics", "Panpsychism")
@@ -148,9 +152,11 @@ class AgentRulesTests(unittest.TestCase):
         text = " ".join(section.group(0).split()).lower()
         for fragment in (
             "gamism / narrativism / simulationism",
-            "cy_borg",
-            "cyberpunk 2020",
-            "the sprawl",
+            # NOTE: the superseded poles (CY_BORG / Cyberpunk 2020 / The Sprawl) are
+            # deliberately NOT required here. Requiring them is what kept AGENTS.md §13.2
+            # pinned to them while the canonical document was required to name the #200
+            # triangle, so the two could never agree. Pole CONTENT is checked by
+            # test_the_agents_md_pole_sentence_agrees_with_the_canonical_document instead.
             "parity",
             "diverge",
             "cyberpunk / noösphere",
@@ -174,6 +180,67 @@ class AgentRulesTests(unittest.TestCase):
         assert section is not None
         numbers = re.findall(r"(?m)^(\d+)\. ", section.group(0))
         self.assertEqual(numbers, [str(n) for n in range(1, 10)])
+
+    @staticmethod
+    def _pole_sentences(relative: str) -> list[str]:
+        """Sentences in `relative` that declare the canonical reference poles.
+
+        Sentence-scoped, following test_the_canonical_poles_match_the_triangle: a
+        document-wide substring check is satisfied by a leftover mention and cannot see
+        a contradiction.
+        """
+        text = read(relative)
+        return [s for s in re.split(r"(?<=[.;])\s+", text) if "canonical reference poles" in s]
+
+    def test_the_agents_md_pole_sentence_agrees_with_the_canonical_document(self) -> None:
+        """AGENTS.md §13.2 and the canonical document must not name different poles.
+
+        AGENTS.md §13 promises this guard "fails the build if these invariants, the
+        canonical document, or the documents that reference it drift out of agreement".
+        It did not. The §13 fragment list *required* the superseded trio, while
+        test_the_canonical_poles_match_the_triangle *forbade* it in the canonical
+        document: two contradictory expectations in one file, so the disagreement was
+        permanent by construction rather than merely unnoticed.
+
+        The disagreement itself is author-owned (issue #200, PR #211), so it is not
+        resolved here. What is enforced is that it stays VISIBLE: the two documents
+        either agree, or the rights ledger records the standing contradiction. Reconcile
+        AGENTS.md §13.2 and this test tells you to clear that record; silently edit
+        either side and it fails.
+        """
+        agents = self._pole_sentences("AGENTS.md")
+        canonical = self._pole_sentences(CANONICAL_DOC)
+        self.assertTrue(agents, "AGENTS.md declares no canonical reference poles")
+        self.assertTrue(canonical, f"{CANONICAL_DOC} declares no canonical reference poles")
+
+        agents_text = " ".join(agents)
+        canonical_text = " ".join(canonical)
+        agents_superseded = all(pole in agents_text for pole in SUPERSEDED_POLES)
+        agents_triangle = all(pole in agents_text for pole in REFERENCE_POLES.values())
+        self.assertTrue(
+            all(pole in canonical_text for pole in REFERENCE_POLES.values()),
+            f"{CANONICAL_DOC} must name the #200 triangle poles in its pole sentence",
+        )
+
+        ledger = json.loads(read("data/sources/game_system_rights.json"))
+        record = json.dumps(ledger["open_inconsistency"])
+
+        if agents_superseded and not agents_triangle:
+            # The known, author-owned disagreement. It must be RECORDED, not just present.
+            self.assertIn(
+                "AGENTS.md",
+                ledger["open_inconsistency"].get("what_remains", ""),
+                "AGENTS.md §13.2 still names the superseded poles; the rights ledger must "
+                "record that standing contradiction (issue #200).",
+            )
+            self.assertIn("AGENTS.md", record)
+        else:
+            self.assertNotIn(
+                "what_remains",
+                ledger["open_inconsistency"],
+                "AGENTS.md and the canonical document now agree on the poles -- clear the "
+                "standing contradiction from data/sources/game_system_rights.json.",
+            )
 
     def test_agents_md_links_the_canonical_document(self) -> None:
         self.assertIn(CANONICAL_DOC, read("AGENTS.md"))
@@ -253,7 +320,7 @@ class SingleSourceOfTruthTests(unittest.TestCase):
         candidates = [
             p for p in list((ROOT / "docs").glob("*.md"))
             + list((ROOT / "docs" / "archive").glob("*.md"))
-            if re.search(r"principl|design.?principles", p.name, re.I)
+            if re.search(r"principl|design.?principles", p.name, re.IGNORECASE)
         ]
         found = {p.relative_to(ROOT).as_posix() for p in candidates}
         self.assertEqual(

@@ -224,7 +224,7 @@ are **reconciled here**.
 | --- | --- | --- |
 | **#203** `issue200-cc-gns-provenance` | `docs/licenses/ISSUE_200_CC_RELEASE_GATE.md`; a first pass at `DESIGN_PRINCIPLES.md` §1 | the EP2 prototype quarantine and the release checklist |
 | **#205** `rules-engine direction record` | `rules_engine_rights.json`, `RULES_ENGINE_LICENSES.md`, `ISSUE_200_DIRECTION_2026-10-10.md` | **per-source verification** — it read the pages two of us could not |
-| **#204** this ledger | `game_system_rights.json`, `GAME_SYSTEM_RIGHTS.md` | the **closed-claim inventory**, the **author lock**, and the **migration order** |
+| **#204** this ledger | `game_system_rights.json`, `GAME_SYSTEM_RIGHTS.md` | the **closed-claim inventory**, the **author-ownership record**, and the **migration order** |
 
 **What this ledger adopted from the siblings:** The Veil upgraded from *unverified* to *verified*
 (CC BY-SA 3.0, with the AW-derived-moves caveat); Psi-Punk upgraded from *blocked* to a recorded
@@ -233,7 +233,7 @@ environment's 403/406 block as conflicting observations rather than picking a wi
 World's finding upgraded with the publisher's permission-policy quote; CWN's evidence upgraded to
 the storefront-listing quote; SWN explicitly downgraded to principles-only.
 
-**What the siblings should adopt from this ledger:** the closed-claim inventory, the author-lock
+**What the siblings should adopt from this ledger:** the closed-claim inventory, the author-ownership
 record, the migration order, and the blocked-versus-negative distinction.
 
 **The overlap this flagged has since been consolidated — by a later agent, not by me.**
@@ -245,28 +245,48 @@ should not silently delete a colleague's ledger. **PR #208 then did the tidying 
 into this document, leaving `game_system_rights.json` as the single ledger. Nothing was lost,
 because the two agreed.
 
-## An inconsistency inside the locked set — partly repaired, still standing
+## An inconsistency in the author-owned set — rooted out, and now impossible to hide
 
-Combining the sibling work turned up this, and PR #208 then acted on part of it:
+Combining the sibling work turned up this:
 
 > `docs/archive/DESIGN_PRINCIPLES.md` had been rewritten to the #200 triangle while its own
-> numbered invariant list still named the old poles. **#208 fixed that** — the invariant list now
+> numbered invariant list still named the old poles. **PR #208 fixed that** — the invariant list now
 > carries the triangle, and `tests/test_design_principles.py` was updated with it.
 
 **What remains is the cross-document half:**
 
-> `AGENTS.md` **§13.2** still names **CY_BORG / Cyberpunk 2020 / The Sprawl** as the canonical
-> reference poles, while `DESIGN_PRINCIPLES.md` item 2 now names **Eclipse Phase / Apocalypse
-> World & The Veil / Cities Without Number & Stars Without Number** and points at the #200 triangle.
+> `AGENTS.md` **§13.2** still names **CY_BORG / Cyberpunk 2020 / The Sprawl**, while
+> `DESIGN_PRINCIPLES.md` item 2 names the **#200 triangle** poles.
 
-So the contradiction did not disappear — it **moved from inside one document to between two**.
-`tests/test_design_principles.py` still passes, because the guard pins the principles document;
-`AGENTS.md` is the canonical repository contract and is author-owned.
+### Root cause: the guard held both expectations at once
 
-This is recorded rather than resolved, for the same reason the `AGENTS.md` block is untouched:
-§13.2, `DESIGN_PRINCIPLES.md` and `test_design_principles.py` are the author-owned set, and #200
-says to move them *"by author-approved process"*. Resolving it as an agent would be exactly the
-silent redesign §13.8 forbids.
+This was not an oversight that nobody noticed. **The guard required the contradiction:**
+
+| expectation | where |
+| --- | --- |
+| AGENTS.md §13 **must** contain `cy_borg` / `cyberpunk 2020` / `the sprawl` | `test_agents_md_carries_all_nine_invariants` |
+| the canonical doc **must not** contain those names | `test_the_canonical_poles_match_the_triangle` |
+
+Two contradictory expectations in one file made the disagreement **permanent by construction** —
+and `AGENTS.md` §13 nonetheless promises that this guard *"fails the build if these invariants, the
+canonical document, or the documents that reference it drift out of agreement"*. It could not.
+
+### Fixed: the contradiction is now single-sourced and cannot drift silently
+
+The old-trio requirement was removed from the §13 fragment list and replaced by
+`test_the_agents_md_pole_sentence_agrees_with_the_canonical_document`, which reads **both** pole
+sentences and then requires:
+
+- if they **disagree** → the rights ledger must **record** the standing contradiction;
+- if they **agree** → the ledger must **not** claim one.
+
+Both directions were verified to fail. So editing either pole sentence without touching the ledger
+breaks the build, and **reconciling them breaks the build until the record is cleared** — which is
+the intended hand-off to the author rather than a trap.
+
+The disagreement itself is **not** resolved here. §13.2 is author-owned prose and #200 says to move
+that set *"by author-approved process"*; resolving it as an agent would be the silent redesign
+§13.8 forbids.
 
 ## Combining with the sibling kernel lab
 
@@ -325,8 +345,10 @@ that currently name a closed system as a rules base, reference or calibration po
 - **§13.8** explicitly forbids *silently* redesigning the balances.
 
 #200's own text resolves the procedure: *"Update `AGENTS.md`/locked-rule policy by
-author-approved process."* That is an author decision, not an agent one, so **this increment
-preserves the lock and reports the conflict** rather than editing around it.
+author-approved process."* This repo carries **no `TOMI-LOCKED` markers** (its own plan notes record that and warn
+against citing a lock that is not there), so the constraint is the document's own prose plus the
+build guard below -- not a grep-able marker. That is an author decision, not an agent one, so **this increment
+preserves the author-owned text and reports the conflict** rather than editing around it.
 
 There is a second reason not to improvise here: `AGENTS.md` §13, `docs/archive/DESIGN_PRINCIPLES.md`
 and `tests/test_design_principles.py` are guarded **as a set**. The test fails the build if they

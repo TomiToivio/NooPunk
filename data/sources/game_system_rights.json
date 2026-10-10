@@ -10,7 +10,8 @@
     "supersedes": "Earlier #200 language treating Cyberpunk RED as the mechanics baseline, and any implication that OGL material can simply be relicensed CC.",
     "design_geometry": "Equilateral GNS triangle: Simulationism ~33.33% (Eclipse Phase), Narrativism ~33.33% (Apocalypse World / The Veil), Gamism ~33.33% (Cities Without Number / Stars Without Number). Proportions are playtest goals, not page quotas. No influence is ranked above another.",
     "center": "One NooPunk system homebrewed from Fudge + Psi-Punk + Fate + Transhumanity's Fate together. Separate Attributes and Skills (Fudge's distinction) are NOT optional; the six STATs FIT/REF/INT/SOC/CYB/PSY and the existing Skill catalogue survive.",
-    "not_yet_done": "This issue is a specification. No code or rulebook text has migrated merely because this ledger exists."
+    "not_yet_done": "This issue is a specification. No code or rulebook text has migrated merely because this ledger exists.",
+    "$comment": "No TOMI-LOCKED markers exist in this repository (its own plan notes record that, and warn against citing a lock that is not there), so the constraint here is the document's own prose plus the build guard below -- not a grep-able marker. AGENTS.md binds agents anyway when a task conflicts with an author-owned element: preserve it and report the conflict."
   },
   "target_license": {
     "$comment": "Itemized: the rulebook/setting and the code are licensed separately, and the choice is the author's.",
@@ -270,11 +271,13 @@
     "overlap_resolved_by": "PR #208 consolidated it: rules_engine_rights.json and docs/sources/RULES_ENGINE_LICENSES.md were removed and their findings folded into docs/sources/GAME_SYSTEM_RIGHTS.md, leaving game_system_rights.json as the single ledger. Nothing was lost in the merge, because the two agreed on every shared source."
   },
   "open_inconsistency": {
-    "$comment": "Found while combining the sibling work. PARTLY REPAIRED by PR #208 and re-verified against main. What remains is REPORTED, not silently fixed, because it sits inside the author-owned set.",
-    "repaired": "PR #208 moved the numbered invariant list in docs/archive/DESIGN_PRINCIPLES.md onto the issue #200 triangle poles and updated tests/test_design_principles.py with it, so that document no longer argues two sets of poles with itself.",
-    "what_remains": "AGENTS.md section 13.2 still names CY_BORG (Gamism), Cyberpunk 2020 (Simulationism) and The Sprawl (Narrativism) as the canonical reference poles, while docs/archive/DESIGN_PRINCIPLES.md item 2 now names Eclipse Phase / Apocalypse World & The Veil / Cities Without Number & Stars Without Number and points at the #200 triangle in its own section 1. The contradiction did not disappear -- it moved from inside one document to between two.",
-    "why_it_matters": "tests/test_design_principles.py passes on this revision, so the build still does not catch it. The guard pins the principles document; AGENTS.md is the canonical repository contract and is author-owned.",
-    "author_action": "AGENTS.md sections 13.2 and 15.3 need revising in the same deliberate pass as the rest of the author-owned set, per #200's 'author-approved process'. Until then this ledger records the contradiction instead of resolving it."
+    "$comment": "Found while combining the sibling work, root-caused here. PARTLY REPAIRED by PR #208; the remainder is REPORTED, not silently fixed, because it is an author decision.",
+    "repaired": "PR #208 moved the numbered invariant list in docs/archive/DESIGN_PRINCIPLES.md onto the issue #200 triangle poles and added test_the_canonical_poles_match_the_triangle, so that document no longer argues two sets of poles with itself.",
+    "what_remains": "AGENTS.md section 13.2 still names CY_BORG (Gamism), Cyberpunk 2020 (Simulationism) and The Sprawl (Narrativism) as the canonical reference poles, while docs/archive/DESIGN_PRINCIPLES.md item 2 names Eclipse Phase / Apocalypse World & The Veil / Cities Without Number & Stars Without Number. The contradiction did not disappear -- it moved from inside one document to between two.",
+    "root_cause": "The guard held BOTH expectations at once. test_agents_md_carries_all_nine_invariants REQUIRED the superseded trio to appear in AGENTS.md section 13, while test_the_canonical_poles_match_the_triangle FORBADE that trio in the canonical document. Two contradictory expectations in one file made the disagreement permanent by construction rather than merely unnoticed -- and AGENTS.md section 13 nonetheless promises the guard 'fails the build if these invariants, the canonical document, or the documents that reference it drift out of agreement'.",
+    "enforced_by": "tests/test_design_principles.py::test_the_agents_md_pole_sentence_agrees_with_the_canonical_document. The old trio requirement was removed from the section 13 fragment list and replaced by this check, which reads BOTH pole sentences: if they disagree the rights ledger must record the standing contradiction, and if they agree the ledger must not. Verified to fail in both directions.",
+    "why_it_matters": "No drift is silent any more. Editing either pole sentence without touching the ledger fails the build, and reconciling them fails until the record is cleared -- so this ledger entry cannot go stale and nobody can quietly add a second contradiction.",
+    "author_action": "AGENTS.md sections 13.2 and 15.3 need revising in the same deliberate pass as the rest of the author-owned set, per #200's 'author-approved process'. Doing so will fail this guard until open_inconsistency is cleared, which is the intended hand-off."
   },
   "reuse_rules": {
     "$comment": "The gates that make this ledger enforceable rather than decorative.",
