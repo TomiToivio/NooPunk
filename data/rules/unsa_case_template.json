@@ -1,0 +1,43 @@
+{
+  "format": "noopunk.gm.case_template",
+  "version": 1,
+  "status": "GM worksheet; no new game mechanics or lore",
+  "source": "docs/design/DEFAULT_INVESTIGATION_FANTASY.md",
+  "setting": "Helsinki / UNSA",
+  "fields": {
+    "case_id": "",
+    "hook": "",
+    "investigator": "",
+    "partner": "",
+    "controller": "",
+    "forensic_ai_role": "",
+    "core_question": "",
+    "initial_scene": "",
+    "domain_leads": {
+      "physical": [],
+      "cybernetic": [],
+      "social": [],
+      "psychic_noospace": []
+    },
+    "witnesses": [],
+    "evidence_ids": [],
+    "contradictions": [],
+    "faction_interests": [],
+    "possible_player_choices": [],
+    "consequences": [],
+    "resolution_notes": []
+  },
+  "review": {
+    "simulationism": "What causal traces, infrastructure and bodies constrain the case?",
+    "narrativism": "What relationships, ethical or ideological dilemmas change when players choose?",
+    "gamism": "What risks, meaningful tradeoffs and alternative paths exist?",
+    "clue_access": "What essential investigative leads remain accessible without a single-roll lockout?",
+    "llm_safety": "Which factual states and evidence provenance remain determined by engine and human GM rather than invented by dialogue?"
+  },
+  "rules": {
+    "numeric_mechanics": "Use approved core resolution; this worksheet invents no difficulty, harm, PSI magnitude, AP or NPC power.",
+    "psi_as_lead": "Psychic impressions are uncertain leads; corroborate before treating as verified evidence.",
+    "network_access": "A digital clue requires a credible access path; cyber intrusion does not imply neural compromise.",
+    "outcome": "No mandatory fixed solution; preserve player agency, uncertainty and consequence."
+  }
+}
