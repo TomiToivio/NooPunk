@@ -16,94 +16,78 @@ another.
 
 ---
 
-## 1. Gamism / Narrativism / Simulationism balance
+## 1. Gamism / Narrativism / Simulationism balance (issue #200)
 
-NoöPunk uses all three creative agendas, but issue #51 makes the balance
-**deliberately asymmetric** rather than equal.
+**Author direction, 2026-10-10:** the three corners have **equal design weight**:
+Simulationism ~33⅓%, Narrativism ~33⅓%, and Gamism ~33⅓%. These are
+qualitative playtest goals, not fractional page counts or a second dice mechanic.
+An apparent asymmetry in a particular scene (for example, tactical combat or
+diplomacy) need not be forced into thirds. Overall play must support all three.
 
-The current design direction is:
+```text
+                         SIMULATIONISM
+                         Eclipse Phase
+                             /\
+                            /  \
+                           /    \
+                          / CORE \
+                         / Fudge  \
+                        /Psi-Punk  \
+                       /Fate +     \
+                      /Transhumanity\
+                     /  's Fate     \
+                    /_______________\
+             NARRATIVISM             GAMISM
+      Apocalypse World / The Veil    Cities Without Number /
+                                    Stars Without Number
+```
 
-- **Narrativism** in the foreground: social interaction, relationships, beliefs,
-  motives, ideological conflict and emergent story;
-- **Simulationism** as the substrate: persistent world state, causal coherence,
-  four-system character ontology, institutions, networks and material constraints;
-- **Gamism** as pressure: risk, scarcity, failure, tactical choices and meaningful
-  mechanical consequences.
+**One shared rules engine sits in the center of the triangle.** Its conceptual
+foundations are a Fudge / Psi-Punk / Fate / Transhumanity's Fate synthesis.
+The **separation between character Attributes and Skills is mandatory**.
+The established six character Attributes (FIT, REF, INT, SOC, CYB, PSY) and
+canonical Skill vocabulary remain in place. Equipment statistics such as
+Interface, Network and Compute are device/session properties, not extra
+character Attributes. The final dice model and scale conversion are a
+separate, explicit migration and playtest decision under issue #200:
+**do not silently replace the current d10 implementation.**
 
-> **Narrativist experience + Simulationist world + Gamist friction.**
+Each corner contributes a different kind of design:
+- **Simulationism — Eclipse Phase:** causal coherence, equipment and
+  resource differences, cybernetics, PSI, medicine, networks, transhuman
+  consequences and persistent world state.
+- **Narrativism — Apocalypse World / The Veil:** fictional positioning,
+  meaningful choices, relationships, ideological and social conflicts,
+  GM consequences, and developments that advance the story.
+- **Gamism — Cities Without Number / Stars Without Number:** legible
+  stakes, risk/reward, tactical choices, fast procedures, lightweight
+  encounter and faction tools.
 
-This is a design priority, not a literal percentage split.
+These are **inspirations and design principles, not source-code or rules-text
+imports**. Fudge and Psi-Punk's designated open material is primarily
+**OGL**, not automatically Creative Commons. Fate's official SRD has a
+**CC BY** route. The cited Eclipse Phase and Transhumanity's Fate editions
+are **CC BY-NC-SA** and cannot simply be reused in a commercially
+reusable NoöPunk core. The Veil has a CC BY-SA text grant; permissions
+for Apocalypse World and Without Number titles require edition/SRD
+verification before any expression is copied. See
+[`docs/licenses/ISSUE_200_CC_RELEASE_GATE.md`](../licenses/ISSUE_200_CC_RELEASE_GATE.md).
 
-The canonical reference points are three tabletop RPGs, one per pole:
+**Open-source acknowledgements:** NoöPunk should explicitly credit these
+systems for their inspirations without claiming endorsement or using a
+publisher's restricted marks. Distinguish original gameplay ideas from
+verbatim licensed expressions and preserve their attribution and license
+requirements. The desired NoöPunk release is fully Creative Commons,
+with a compatible license chosen for the published rules/setting; code
+licensing is evaluated separately.
 
-- **Gamism: CY_BORG**
-- **Simulationism: Cyberpunk 2020**
-- **Narrativism: The Sprawl**
-
-> **CY_BORG for challenge. Cyberpunk 2020 for reality. The Sprawl for story.**
-
-### Gamism — CY_BORG
-
-CY_BORG is the main reference for:
-
-- challenge-oriented play
-- dangerous situations
-- meaningful player choices
-- resource pressure
-- emergent problem solving
-- fast, playable rules rather than maximal mechanical complexity
-
-Gamism does **not** mean NoöPunk becomes combat-focused or optimization-heavy.
-Hacking, psionics, infiltration, investigation, social engineering, and exploration
-can all function as gamist challenge spaces.
-
-### Simulationism — Cyberpunk 2020
-
-Cyberpunk 2020 is the main reference for:
-
-- coherent world rules
-- material consequences
-- cybernetics and technology that actually matter mechanically
-- injuries, equipment, economy, and social conditions
-- a believable causal relationship between world, character, and mechanics
-
-Simulation should make the setting feel internally consistent without turning every
-subsystem into unnecessary bookkeeping.
-
-### Narrativism — The Sprawl and The Veil
-
-The Sprawl remains the canonical reference pole for:
-
-- fiction-forward consequences
-- story-generating mechanics
-- relationships, factions, corporations and offscreen pressure
-- directives / flags that tell the GM what the player wants explored
-- failures and partial successes that change the situation
-- mechanics that push the narrative forward rather than merely returning pass/fail
-
-**The Veil** is a complementary Narrativist reference, especially for beliefs,
-motivations, interpersonal play, fictional positioning and internal state. NoöPunk
-does not copy its emotion-as-stat mechanic.
-
-### On the references
-
-NoöPunk is not a clone of these systems. They are **design anchors**, not
-mechanical templates.
-
-A rough current map is:
-
-- **Gamism-heavy:** CY_BORG
-- **Simulationism-heavy:** Cyberpunk 2020, Eclipse Phase, Shadowrun
-- **Narrativism-heavy:** The Veil, The Sprawl, :Otherscape, Neon City Overdrive
-
-Most of these games mix agendas. The categories identify which design lessons are
-most useful to NoöPunk rather than assigning each game to a single pure school.
-
-The target is not to maximize all three independently. Narrativism and
-Simulationism form the core; Gamism constrains them with consequential play.
+**One game across media:** write tabletop rules first, then a deterministic
+specification for Godot and Concordia/Ollama. LLMs can improvise dialogue,
+NPC intent and narrative consequences but cannot secretly alter dice,
+permission rules, equipment properties, action points or canonical state.
 
 ---
-
+ 
 ## 2. Tabletop / Godot / Concordia balance
 
 NoöPunk is **one computer RPG/simulation** (#48 — see
