@@ -1,0 +1,62 @@
+{
+  "format": "noopunk.rulebook.lossless_segments",
+  "version": 1,
+  "canonical": "RULEBOOK.md",
+  "status": "VERBATIM snapshots; canonical root is unchanged. Re-snapshot when editing the root; not independently authoritative",
+  "segments": [
+    {
+      "path": "docs/rulebook_segments/01_PLAYER_CORE.md",
+      "length": 18456,
+      "source_start": 0,
+      "source_end": 18456
+    },
+    {
+      "path": "docs/rulebook_segments/02_DOMAIN_QUICKSTART.md",
+      "length": 13258,
+      "source_start": 18456,
+      "source_end": 31714
+    },
+    {
+      "path": "docs/rulebook_segments/03_CHARACTER_GENERATION.md",
+      "length": 7655,
+      "source_start": 31714,
+      "source_end": 39369
+    },
+    {
+      "path": "docs/rulebook_segments/04_CORE_REFERENCE.md",
+      "length": 34179,
+      "source_start": 39369,
+      "source_end": 73548
+    },
+    {
+      "path": "docs/rulebook_segments/05_SYSTEMS_AND_ENGINEERING.md",
+      "length": 17506,
+      "source_start": 73548,
+      "source_end": 91054
+    },
+    {
+      "path": "docs/rulebook_segments/06_WORLD_CANON.md",
+      "length": 81735,
+      "source_start": 91054,
+      "source_end": 172789
+    },
+    {
+      "path": "docs/rulebook_segments/07_GLOSSARY_AND_SOURCES.md",
+      "length": 30330,
+      "source_start": 172789,
+      "source_end": 203119
+    },
+    {
+      "path": "docs/rulebook_segments/08_WORLD_SYSTEMS_AND_CAMPAIGN.md",
+      "length": 90688,
+      "source_start": 203119,
+      "source_end": 293807
+    },
+    {
+      "path": "docs/rulebook_segments/09_LATE_LORE_AND_CATALOGS.md",
+      "length": 26833,
+      "source_start": 293807,
+      "source_end": 320640
+    }
+  ]
+}

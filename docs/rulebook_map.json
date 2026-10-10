@@ -1,0 +1,538 @@
+{
+  "format": "noopunk.rulebook.part_map",
+  "version": 1,
+  "canonical": "RULEBOOK.md",
+  "canonical_length": 320640,
+  "core_marker": "# Extended canon and reference material",
+  "core_marker_offset": 37416,
+  "note": "Assigns every section to exactly one part. It does NOT move, cut or reorder text: RULEBOOK.md remains the single canonical source, and the parts are a reading and work-partition view over it. It is the executable form of the seven-book architecture in docs/rulebook_segments/README.md. Byte-losslessness is a separate guarantee, held by docs/rulebook_segments/manifest.json.",
+  "parts": {
+    "basic_rules": "Basic Rules",
+    "character_generation": "Character Generation",
+    "physical": "Physical Systems",
+    "cybernetic": "Cybernetic Systems",
+    "psychic": "Psychic Systems",
+    "social": "Social Systems",
+    "lore": "NoöPunk Lore",
+    "gm_toolkit": "GM Toolkit",
+    "reference": "Reference & Provenance"
+  },
+  "provisional_parts": [
+    "gm_toolkit",
+    "reference"
+  ],
+  "sections": [
+    {
+      "key": "core:Contents",
+      "title": "Contents",
+      "half": "core",
+      "start": 551,
+      "size": 1586,
+      "part": "reference"
+    },
+    {
+      "key": "core:1. Introduction to NoöPunk",
+      "title": "1. Introduction to NoöPunk",
+      "half": "core",
+      "start": 2137,
+      "size": 5105,
+      "part": "basic_rules"
+    },
+    {
+      "key": "core:2. History: The Singularity Is Past",
+      "title": "2. History: The Singularity Is Past",
+      "half": "core",
+      "start": 7242,
+      "size": 1126,
+      "part": "lore"
+    },
+    {
+      "key": "core:3. Stats",
+      "title": "3. Stats",
+      "half": "core",
+      "start": 8368,
+      "size": 1633,
+      "part": "basic_rules"
+    },
+    {
+      "key": "core:4. Skills",
+      "title": "4. Skills",
+      "half": "core",
+      "start": 10001,
+      "size": 8455,
+      "part": "basic_rules"
+    },
+    {
+      "key": "core:5. Physical Systems",
+      "title": "5. Physical Systems",
+      "half": "core",
+      "start": 18456,
+      "size": 2804,
+      "part": "physical"
+    },
+    {
+      "key": "core:6. Social Systems",
+      "title": "6. Social Systems",
+      "half": "core",
+      "start": 21260,
+      "size": 3885,
+      "part": "social"
+    },
+    {
+      "key": "core:7. Cybernetic Systems",
+      "title": "7. Cybernetic Systems",
+      "half": "core",
+      "start": 25145,
+      "size": 1904,
+      "part": "cybernetic"
+    },
+    {
+      "key": "core:8. Psychic Systems",
+      "title": "8. Psychic Systems",
+      "half": "core",
+      "start": 27049,
+      "size": 4665,
+      "part": "psychic"
+    },
+    {
+      "key": "core:9. Character Generation",
+      "title": "9. Character Generation",
+      "half": "core",
+      "start": 31714,
+      "size": 5702,
+      "part": "character_generation"
+    },
+    {
+      "key": "ledger:1. What this document is",
+      "title": "1. What this document is",
+      "half": "ledger",
+      "start": 39369,
+      "size": 773,
+      "part": "reference"
+    },
+    {
+      "key": "ledger:2. Current project description",
+      "title": "2. Current project description",
+      "half": "ledger",
+      "start": 40142,
+      "size": 8603,
+      "part": "reference"
+    },
+    {
+      "key": "ledger:3. Rules provenance labels",
+      "title": "3. Rules provenance labels",
+      "half": "ledger",
+      "start": 48745,
+      "size": 1038,
+      "part": "reference"
+    },
+    {
+      "key": "ledger:4. Source hierarchy",
+      "title": "4. Source hierarchy",
+      "half": "ledger",
+      "start": 49783,
+      "size": 635,
+      "part": "reference"
+    },
+    {
+      "key": "ledger:5. Primary Eclipse Phase references",
+      "title": "5. Primary Eclipse Phase references",
+      "half": "ledger",
+      "start": 50418,
+      "size": 634,
+      "part": "reference"
+    },
+    {
+      "key": "ledger:6. Licensing boundary",
+      "title": "6. Licensing boundary",
+      "half": "ledger",
+      "start": 51052,
+      "size": 834,
+      "part": "reference"
+    },
+    {
+      "key": "ledger:7. Core architecture rule",
+      "title": "7. Core architecture rule",
+      "half": "ledger",
+      "start": 51886,
+      "size": 614,
+      "part": "basic_rules"
+    },
+    {
+      "key": "ledger:8. The smallest playable rules kernel",
+      "title": "8. The smallest playable rules kernel",
+      "half": "ledger",
+      "start": 52500,
+      "size": 586,
+      "part": "basic_rules"
+    },
+    {
+      "key": "ledger:9. Characters and identity",
+      "title": "9. Characters and identity",
+      "half": "ledger",
+      "start": 53086,
+      "size": 7394,
+      "part": "character_generation"
+    },
+    {
+      "key": "ledger:10. Action resolution",
+      "title": "10. Action resolution",
+      "half": "ledger",
+      "start": 60480,
+      "size": 1824,
+      "part": "basic_rules"
+    },
+    {
+      "key": "ledger:11. Pools and expendable resources",
+      "title": "11. Pools and expendable resources",
+      "half": "ledger",
+      "start": 62304,
+      "size": 567,
+      "part": "basic_rules"
+    },
+    {
+      "key": "ledger:12. Physical harm, wounds, and stress",
+      "title": "12. Physical harm, wounds, and stress",
+      "half": "ledger",
+      "start": 62871,
+      "size": 674,
+      "part": "physical"
+    },
+    {
+      "key": "ledger:13. Combat",
+      "title": "13. Combat",
+      "half": "ledger",
+      "start": 63545,
+      "size": 585,
+      "part": "physical"
+    },
+    {
+      "key": "ledger:14. Embodiment, morphs, bodies, and platforms",
+      "title": "14. Embodiment, morphs, bodies, and platforms",
+      "half": "ledger",
+      "start": 64130,
+      "size": 577,
+      "part": "physical"
+    },
+    {
+      "key": "ledger:15. Mesh, hacking, cyberspace, and the Noösphere",
+      "title": "15. Mesh, hacking, cyberspace, and the Noösphere",
+      "half": "ledger",
+      "start": 64707,
+      "size": 1816,
+      "part": "cybernetic"
+    },
+    {
+      "key": "ledger:16. Psionics and Noösphere interaction",
+      "title": "16. Psionics and Noösphere interaction",
+      "half": "ledger",
+      "start": 66523,
+      "size": 7025,
+      "part": "psychic"
+    },
+    {
+      "key": "ledger:17. Social and ideological mechanics: Affect, Factions, Motivations, Reputation and Contacts",
+      "title": "17. Social and ideological mechanics: Affect, Factions, Motivations, Reputation and Contacts",
+      "half": "ledger",
+      "start": 73548,
+      "size": 2416,
+      "part": "social"
+    },
+    {
+      "key": "ledger:18. Gear, augmentation, software, and technology",
+      "title": "18. Gear, augmentation, software, and technology",
+      "half": "ledger",
+      "start": 75964,
+      "size": 809,
+      "part": "cybernetic"
+    },
+    {
+      "key": "ledger:19. AI, AGI, infomorphs, and non-human agents",
+      "title": "19. AI, AGI, infomorphs, and non-human agents",
+      "half": "ledger",
+      "start": 76773,
+      "size": 1687,
+      "part": "cybernetic"
+    },
+    {
+      "key": "ledger:20. Important and background NPCs",
+      "title": "20. Important and background NPCs",
+      "half": "ledger",
+      "start": 78460,
+      "size": 615,
+      "part": "social"
+    },
+    {
+      "key": "ledger:21. Social-science simulation layer",
+      "title": "21. Social-science simulation layer",
+      "half": "ledger",
+      "start": 79075,
+      "size": 658,
+      "part": "social"
+    },
+    {
+      "key": "ledger:22. Structured actions for Concordia",
+      "title": "22. Structured actions for Concordia",
+      "half": "ledger",
+      "start": 79733,
+      "size": 546,
+      "part": "reference"
+    },
+    {
+      "key": "ledger:23. Persistence and reproducibility",
+      "title": "23. Persistence and reproducibility",
+      "half": "ledger",
+      "start": 80279,
+      "size": 455,
+      "part": "reference"
+    },
+    {
+      "key": "ledger:24. Lighter rules escape hatches",
+      "title": "24. Lighter rules escape hatches",
+      "half": "ledger",
+      "start": 80734,
+      "size": 759,
+      "part": "gm_toolkit"
+    },
+    {
+      "key": "ledger:25. Rules adapter contract",
+      "title": "25. Rules adapter contract",
+      "half": "ledger",
+      "start": 81493,
+      "size": 553,
+      "part": "reference"
+    },
+    {
+      "key": "ledger:26. Rule-change procedure",
+      "title": "26. Rule-change procedure",
+      "half": "ledger",
+      "start": 82046,
+      "size": 1060,
+      "part": "reference"
+    },
+    {
+      "key": "ledger:27. Change ledger",
+      "title": "27. Change ledger",
+      "half": "ledger",
+      "start": 83106,
+      "size": 3113,
+      "part": "reference"
+    },
+    {
+      "key": "ledger:28. Immediate rulebook work",
+      "title": "28. Immediate rulebook work",
+      "half": "ledger",
+      "start": 86219,
+      "size": 722,
+      "part": "reference"
+    },
+    {
+      "key": "ledger:29. Definition of a healthy rulebook",
+      "title": "29. Definition of a healthy rulebook",
+      "half": "ledger",
+      "start": 86941,
+      "size": 599,
+      "part": "reference"
+    },
+    {
+      "key": "ledger:30. Governing principle",
+      "title": "30. Governing principle",
+      "half": "ledger",
+      "start": 87540,
+      "size": 590,
+      "part": "reference"
+    },
+    {
+      "key": "ledger:31. Persistent EP2 test-session subset (#60)",
+      "title": "31. Persistent EP2 test-session subset (#60)",
+      "half": "ledger",
+      "start": 88130,
+      "size": 1149,
+      "part": "gm_toolkit"
+    },
+    {
+      "key": "ledger:32. Embodiment and inventory subset (#60)",
+      "title": "32. Embodiment and inventory subset (#60)",
+      "half": "ledger",
+      "start": 89279,
+      "size": 1775,
+      "part": "physical"
+    },
+    {
+      "key": "ledger:33. Canonical world lore from issue #60",
+      "title": "33. Canonical world lore from issue #60",
+      "half": "ledger",
+      "start": 91054,
+      "size": 81735,
+      "part": "lore"
+    },
+    {
+      "key": "ledger:34. NoöPunk glossary",
+      "title": "34. NoöPunk glossary",
+      "half": "ledger",
+      "start": 172789,
+      "size": 20404,
+      "part": "reference"
+    },
+    {
+      "key": "ledger:35. Sources, recommended reading, and influences",
+      "title": "35. Sources, recommended reading, and influences",
+      "half": "ledger",
+      "start": 193193,
+      "size": 9926,
+      "part": "reference"
+    },
+    {
+      "key": "ledger:36. The four NoöPunk systems: Physical, Psychic, Social and Cybernetic",
+      "title": "36. The four NoöPunk systems: Physical, Psychic, Social and Cybernetic",
+      "half": "ledger",
+      "start": 203119,
+      "size": 27699,
+      "part": "lore"
+    },
+    {
+      "key": "ledger:37. Theoretical sources and inspirations",
+      "title": "37. Theoretical sources and inspirations",
+      "half": "ledger",
+      "start": 230818,
+      "size": 11567,
+      "part": "reference"
+    },
+    {
+      "key": "ledger:38. UNSA: default campaign institution",
+      "title": "38. UNSA: default campaign institution",
+      "half": "ledger",
+      "start": 242385,
+      "size": 14351,
+      "part": "lore"
+    },
+    {
+      "key": "ledger:39. Campaign-scoped skills and specialist fields",
+      "title": "39. Campaign-scoped skills and specialist fields",
+      "half": "ledger",
+      "start": 256736,
+      "size": 9241,
+      "part": "character_generation"
+    },
+    {
+      "key": "ledger:40. Reverse-engineering, contact, and cryptoterrestrial map (#105)",
+      "title": "40. Reverse-engineering, contact, and cryptoterrestrial map (#105)",
+      "half": "ledger",
+      "start": 265977,
+      "size": 13925,
+      "part": "psychic"
+    },
+    {
+      "key": "ledger:41. Disclosure as unification and ontological shock (#106)",
+      "title": "41. Disclosure as unification and ontological shock (#106)",
+      "half": "ledger",
+      "start": 279902,
+      "size": 3595,
+      "part": "lore"
+    },
+    {
+      "key": "ledger:42. Major human political factions and UN Parliament parties (#109)",
+      "title": "42. Major human political factions and UN Parliament parties (#109)",
+      "half": "ledger",
+      "start": 283497,
+      "size": 3504,
+      "part": "lore"
+    },
+    {
+      "key": "ledger:43. Faction taxonomy, schema, and NHI type vs faction (#144)",
+      "title": "43. Faction taxonomy, schema, and NHI type vs faction (#144)",
+      "half": "ledger",
+      "start": 287001,
+      "size": 6806,
+      "part": "social"
+    },
+    {
+      "key": "ledger:44. The Singularity Crisis, alignment and the two Singularities (#177, #178, #180)",
+      "title": "44. The Singularity Crisis, alignment and the two Singularities (#177, #178, #180)",
+      "half": "ledger",
+      "start": 293807,
+      "size": 3613,
+      "part": "lore"
+    },
+    {
+      "key": "ledger:45. Confederation, Orion, resleeving and elite immortality (#180)",
+      "title": "45. Confederation, Orion, resleeving and elite immortality (#180)",
+      "half": "ledger",
+      "start": 297420,
+      "size": 2358,
+      "part": "lore"
+    },
+    {
+      "key": "ledger:46. Psychotronics, PSI, psyops and anomalous-effect diagnosis (#171, #176)",
+      "title": "46. Psychotronics, PSI, psyops and anomalous-effect diagnosis (#171, #176)",
+      "half": "ledger",
+      "start": 299778,
+      "size": 1824,
+      "part": "psychic"
+    },
+    {
+      "key": "ledger:47. Hybrid verification doctrine (#172)",
+      "title": "47. Hybrid verification doctrine (#172)",
+      "half": "ledger",
+      "start": 301602,
+      "size": 975,
+      "part": "psychic"
+    },
+    {
+      "key": "ledger:48. Sleep, dreams and rare system disentanglement (#175)",
+      "title": "48. Sleep, dreams and rare system disentanglement (#175)",
+      "half": "ledger",
+      "start": 302577,
+      "size": 764,
+      "part": "psychic"
+    },
+    {
+      "key": "ledger:49. Density, manifestation and ontological forensics (#179)",
+      "title": "49. Density, manifestation and ontological forensics (#179)",
+      "half": "ledger",
+      "start": 303341,
+      "size": 2172,
+      "part": "psychic"
+    },
+    {
+      "key": "ledger:50. Field catalogs: characters, equipment, implants, PSI and beings (#171–#180)",
+      "title": "50. Field catalogs: characters, equipment, implants, PSI and beings (#171–#180)",
+      "half": "ledger",
+      "start": 305513,
+      "size": 1491,
+      "part": "reference"
+    },
+    {
+      "key": "ledger:51. Physical harm: a light ladder (#171–#180)",
+      "title": "51. Physical harm: a light ladder (#171–#180)",
+      "half": "ledger",
+      "start": 307004,
+      "size": 1514,
+      "part": "physical"
+    },
+    {
+      "key": "ledger:52. Equipment (list)",
+      "title": "52. Equipment (list)",
+      "half": "ledger",
+      "start": 308518,
+      "size": 2195,
+      "part": "cybernetic"
+    },
+    {
+      "key": "ledger:53. Xenopolitics after the NHI Crisis (#187)",
+      "title": "53. Xenopolitics after the NHI Crisis (#187)",
+      "half": "ledger",
+      "start": 310713,
+      "size": 5318,
+      "part": "lore"
+    },
+    {
+      "key": "ledger:54. Noetic practice, crystal technology and the craft question (#191)",
+      "title": "54. Noetic practice, crystal technology and the craft question (#191)",
+      "half": "ledger",
+      "start": 316031,
+      "size": 4609,
+      "part": "psychic"
+    }
+  ]
+}
