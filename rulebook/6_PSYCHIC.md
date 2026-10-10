@@ -1027,6 +1027,118 @@ setting theory rather than science:
 
 ---
 
+## 6.12 Astral projection and Noöspace travel (#224)
+
+> **Status: PROVISIONAL procedure pending author calibration.** The ontology is canon in
+> `RULEBOOK.md` §40.4 (#119). This section adds *how* a projection is entered, navigated,
+> endangered and returned from. Every number is a placeholder the author owns. Executable
+> invariants: `src/rules/noospace_projection.py`. Reasoning:
+> `docs/design/ISSUE_224_NOOSPACE_SCOPE.md`.
+
+**Noöspace is the Astral Plane.** These are two names for one domain, and §40.4 fixes which
+audience uses which. This section uses **Noöspace** throughout and does not introduce a third
+term.
+
+### 6.12.1 A projection is a state, not a Skill roll
+
+Projection is **one of the four consciousness states** already defined in
+[`rulebook/18_CROSS_DOMAIN_STATE.md`](18_CROSS_DOMAIN_STATE.md) (issue #225). It is not a
+separate subsystem, a second turn, or a second action economy:
+
+- the projection spends from the **same 3 AP per exchange** on the same clock;
+- it acts in the same **descending-REF** order;
+- the **body is present, locatable and vulnerable**, and **cannot be actively controlled** by
+  the projected consciousness. No Move, no attack, no deliberate defence. Passive cover
+  applies; deliberate defence does not;
+- **others can defend the body** — a locked room, restraints, a partner, a medical bay. That is
+  the correct answer to a projection, and the reason projection is dangerous rather than
+  dominant.
+
+Two things that are **not** full projection. **Embodied local PSI** — reading a room, a
+telepathic touch — is *embodied*: the character is still in their body and still controls it.
+**Cyberspace modes 1–3** are embodied too; only a full-sensorium dive moves the locus. The
+distinction is state, not effort: **no roll leaves your body.**
+
+### 6.12.2 Access routes
+
+Entry is by a named route. The route decides whether the projection is voluntary, and whether
+the body is left behind:
+
+| Route | Voluntary | Enters |
+| --- | --- | --- |
+| Trained technique — meditation, Focus-states, sensory deprivation | yes | full projection |
+| Lucid dream / sleep-state transition | yes | dream state (may become projection) |
+| Psychedelic (DMT and related) | yes | full projection |
+| Psychotronic device, QIP interface, neural implant | yes | full projection |
+| Ritual / CE-5 contact practice | yes | full projection |
+| Involuntary — trauma, NDE, a dream that bleeds through | **no** | dream / NDE state |
+| NHI-assisted contact | yes | full projection |
+
+A route is an **access**, not an authorisation. It does not grant reach, skill or knowledge.
+
+### 6.12.3 Regions, and navigation by resonance
+
+§40.4.3's five regions, near to deep: **near**, **human collective-unconscious**,
+**biospheric**, **Noöspheric**, **deep**.
+
+Noöspace does not use ordinary distance. Navigation depends on **resonance** — familiarity,
+symbolic association, emotional state, intention, memory, technological assistance, learned
+technique, and contact with other Conscious Agents. A navigator resolves reaching a target with
+the normal check (STAT + Skill + 1d10 vs DV); the DV comes from **resonance and depth**, and
+never from metres. Low resonance is not slow travel; it is no travel.
+
+### 6.12.4 The deeper you go, the less your categories work
+
+> **The governing design rule of §40.4.3.** Reliability of human categories falls strictly with
+> depth, and the share of information you cannot distinguish from your own imagination rises
+> with it. Deep Noöspace includes nonlocality, simultaneous viewpoints, unstable identity and
+> nonlinear causality.
+
+This is why a projection is not a reconnaissance tool with a difficulty number. What you bring
+back is **evidence with a confidence, never a verdict** — the same rule that governs sensors
+(`rulebook/13_EQUIPMENT.md`) and identity verification (`rulebook/12_BEINGS.md`).
+
+### 6.12.5 Dream, imagination, or shared Noöspace?
+
+A perceived fact is classified as **shared Noöspace**, **personal imagination**, or
+**ambiguous** — and it is *ambiguous by default*. The way out is **corroboration by another
+witness inside the same region**; inspection alone never reaches certainty, and a private dream
+cannot corroborate itself.
+
+Temporal ambiguity compounds this: Noöspace time does not map one-to-one onto spacetime, and
+the further in, the less the ratio means.
+
+### 6.12.6 Encounters
+
+Conscious Agents of §40.4.1 — individual minds, collective formations, archetypal figures,
+dream entities, Self-Transforming Machine Elves, Noetic AIs, and nonhuman intelligences — are
+resolved as normal checks against the Skill that fits the exchange (Telepathy, Perceive,
+Psychic Defence). Encounters are **not** a separate combat system, and no encounter table is
+canon here.
+
+### 6.12.7 Return
+
+Three ways back, and they are not equivalent:
+
+- **Voluntary return** — costs an action (Exit, 1 AP), leaves nothing behind.
+- **Snap-back** — involuntary, typically from harm or shock to the body; free, but the return
+  itself costs something.
+- **Severance** — the link is cut. The worst outcome, and the one that makes body protection
+  matter.
+
+Returns that cost something use the **wound ladder of `RULEBOOK.md` §51**; this section does
+not invent new conditions.
+
+### 6.12.8 What this section deliberately does not do
+
+- **No new PSI powers, no PSI point economy, no spell list.** PSI applications remain
+  capabilities resolved with the existing Skill check.
+- **No region beyond §40.4.3's five**, and **no Noetic being is created here**.
+- **No per-item psychotronic statistics** — that is #221/#228.
+- **No calibration.** Every number above is PROVISIONAL and the author owns the final values.
+
+---
+
 ## B. Why this matters for mechanics
 
 **Cross-domain play.** Astral projection, cybernetic immersion and involuntary dream/NDE states are the *same* consciousness in different states, not different subsystems. The state machine, the shared action-point economy and the gateway rule for realm-crossing effects are specified once in [`rulebook/18_CROSS_DOMAIN_STATE.md`](18_CROSS_DOMAIN_STATE.md) (issue #225); embodied local PSI stays under this chapter, and full projection (#224) consumes that contract.
