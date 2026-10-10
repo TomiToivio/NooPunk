@@ -31,7 +31,7 @@ class Issue108SupersededBy144Tests(unittest.TestCase):
 
     def test_default_pc_is_unsa_agent(self):
         self.assertIn("belongs to and works for UNSA", BOOK)
-        self.assertIn("default: UNSA agent", ORG)
+        self.assertIn("default: newly graduated UNSA agent on first assignment", ORG)
         self.assertIn("multi_faction_membership: true", ORG)
 
     def test_unsa_keeps_the_broad_human_security_mission(self):

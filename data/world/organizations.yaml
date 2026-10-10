@@ -2,19 +2,27 @@
 # Human-readable source of truth: RULEBOOK.md.
 UNSA:
   canonical_name: United Nations Security Administration
-  early_names:
+  former_names:
     - UN X-Risk Administration
+  early_informal_names:
     - UN NHI Agency
   aliases:
     - X-COM
+    - X-Com
+    - XCOM
     - X-Files
     - Men in Black
   rejected_aliases:
     MJ-12: "UNSA regards MJ-12 as a failed/traitorous legacy program, not a nickname."
   parent:
     - United Nations
+  not_a_world_government: "UNSA is an agency, not a sovereign; member states retain sovereignty and most resources."
+  origins:
+    founding_mode: pooled member-state secondment
+    academy: "UNSA Academy: training, continuing education and NHI/PSI/AI research centre."
   player_role:
-    default: UNSA agent
+    default: newly graduated UNSA agent on first assignment
+    veteran_seconded_agents: instructors, commanders, handlers, mentors (NPCs), not forbidden as PCs
     multi_faction_membership: true
   default_campaign:
     location: Helsinki

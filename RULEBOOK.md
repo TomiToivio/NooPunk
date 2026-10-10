@@ -4834,17 +4834,20 @@ elements of its fictional world model, not as settled descriptions of the real w
 
 The canonical organization is the **United Nations Security Administration (UNSA)**.
 
-During its early formation it was often called the **UN X-Risk Administration** or **UN NHI Agency**. Popular and internal nicknames include **X-COM**, **X-Files**, and **Men in
-Black**. UNSA personnel often enjoy those names because they describe the job remarkably
-well.
+During its early formation it was often called the **UN X-Risk Administration** or **UN NHI
+Agency**. Popular and internal nicknames include **X-COM** (also written **X-Com** or
+**XCOM**), **X-Files**, and **Men in Black**. UNSA personnel often enjoy those names because
+they describe the job remarkably well.
 
-Those nicknames are **informal institutional culture, not official designations**. None of
-them names a department, a unit or a legal title, and none implies any connection to an
-existing entertainment franchise: the habit came from the public and from UNSA's own first
-recruits, who noticed that the job had been described decades earlier by people who were
-guessing. The joke runs thickest among **Academy graduates**, for whom it doubles as an
-admission that the institution is exactly as strange as the rumours promised. Official
-briefings, protocol and legal documents use the formal name only.
+Those nicknames are **informal institutional culture, not official designations** — they are not
+official departments, units or legal titles, and none implies any connection to the existing
+entertainment franchises: the habit came from the public and from UNSA's own first recruits, who
+noticed that the job had been described decades earlier by people who were guessing. The joke
+runs thickest among **Academy graduates**, for whom it doubles as an admission that the
+institution is exactly as strange as the rumours promised. "Men in Black" is the weakest of the
+three, attaching in current lore far more often to **Orion-linked hostile operatives,
+disinformation agents and infiltrators** (§53.2) than to UNSA itself. Official briefings,
+protocol and legal documents use the formal name only.
 
 **MJ-12 is not an acceptable nickname.** UNSA doctrine remembers MJ-12 as a legacy network
 of traitors who failed catastrophically at protecting humanity through secrecy, compromised
@@ -4860,6 +4863,34 @@ the protection of humanity.
 Its mandate covers NHI-related threats, rogue AGI/ASI, PSI and Noöspace threats,
 catastrophic biotechnology, anomalous technologies, planetary defence and other
 civilizational or existential **X-Risks**.
+
+#### Origins: pooled member-state resources
+
+UNSA did not begin as a standing global service. It began as an **act of pooling**: member
+states contributed what they already had — police and intelligence officers, scientific
+institutes and laboratories, signal and forensic capacity, military and emergency-response
+units, and the national NHI/X-Risk desks that had grown up piecemeal before Disclosure. The
+early organization is therefore best understood as a **secondment**, not a founding intake:
+for its first years most staff arrived *from* somewhere else, on loan, with a home service, a
+national interest and a career to return to. That legacy still shapes the institution — a
+seconded officer's loyalties are layered, and the same file can be read differently in
+Helsinki, Brussels and Washington.
+
+#### The Academy and the research mandate
+
+The second generation is different. Once the pooled emergency capacity proved permanent, UNSA
+established its **own Academy**, producing officers who were never seconded from anywhere and
+were trained directly for the NHI/X-Risk mission from the start (character generation:
+`RULEBOOK.md` §9; [`rulebook/14_CHARACTER_GENERATION.md`](rulebook/14_CHARACTER_GENERATION.md)).
+The Academy is not a barracks: it is simultaneously a **training institution, a
+continuing-education school, and a research centre** for NHI, Noetics, PSI, AI/ASI and X-Risk
+work. Officers return to it between assignments, and much of UNSA's scientific output is
+produced under its roof or through its programs.
+
+This creates the setting's characteristic generational and cultural gap: **Academy graduates
+share a doctrine and a slang** (the "X-Files"/"X-Com" joke above is theirs most of all), while
+**veterans seconded from national services** bring outside loyalties, older habits and
+sometimes a very different view of how much humanity should be told.
 
 #### Helsinki operational chain
 
@@ -4996,8 +5027,23 @@ AI rights vs containment, NHI diplomacy vs planetary defence, and democratic
 accountability vs classified operations.
 
 The institution contains idealists, careerists, bureaucratic rivalries, national interests,
-competing doctrines, secrecy and occasional abuse. Its power is a political problem as
-well as a survival tool.
+competing doctrines, secrecy and occasional abuse. Its power is a political problem as well
+as a survival tool.
+
+#### UNSA is not a world government
+
+The federalization above is real, but it must not be read as UNSA ruling Earth. **UNSA is an
+agency, not a sovereign.** States retain their sovereignty, their competing intelligence
+interests and control of most of the resources UNSA depends on. UNSA holds only the authority
+its members have pooled, and that authority is contested, conditional and in principle
+revocable. Its planetary reach is best described as *access* — to facilities, databases, units
+and airspace — rather than *rule*.
+
+This is deliberate and load-bearing for play. Institutional tensions, incomplete disclosure,
+national foot-dragging, compartmentalized factions inside UNSA itself, NHI diplomacy and
+competing human positions all remain live drivers. A UNSA officer often has more power to
+*investigate* than to *act*, and needs a member state — or a warrant, or a favour — to close
+the gap.
 
 #### Default player relationship
 
@@ -5006,6 +5052,26 @@ The character may simultaneously belong to several other factions and distribute
 Reputation among two or three of them under Chapter 9.
 
 UNSA is the employer and institutional home, not the totality of the character's identity.
+
+**The default playable unit is a team of newly graduated UNSA agents on their first
+assignment** (character generation: `RULEBOOK.md` §9;
+[`rulebook/14_CHARACTER_GENERATION.md`](rulebook/14_CHARACTER_GENERATION.md); the investigation
+register: [`docs/design/DEFAULT_INVESTIGATION_FANTASY.md`](docs/design/DEFAULT_INVESTIGATION_FANTASY.md)).
+The Academy has
+just equalized them: whatever they were before recruitment — scholar, soldier, officer,
+hacker, or an anomalous recruit nobody can fully explain — they now share the universal
+Academy package and a first posting they did not choose. Their inexperience is the campaign's
+engine; their competence is real.
+
+**Veteran seconded agents remain central, but usually as instructors, commanding officers,
+handlers and mentors rather than as the default player characters.** They carry the older
+culture — national loyalties, pre-Disclosure habits, the "X-Risk Administration" era — and
+they are exactly the people who can tell the new graduates how the institution really works.
+They should be prominent NPCs, not a forbidden option.
+
+**Nothing here forbids other campaign models.** Veteran-led teams, mixed-generation teams,
+non-UNSA campaigns and alternative employers all remain valid; the Academy-graduate premise is
+the default, not the only door.
 
 #### Wallfacers
 
