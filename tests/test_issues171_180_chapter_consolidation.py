@@ -119,9 +119,21 @@ class ReservationsPreservedTests(unittest.TestCase):
                       flat("rulebook/5_CYBERNETIC.md"))
         self.assertIn("not statistics", flat("RULEBOOK.md"))
 
-    def test_deep_hacking_still_deferred(self) -> None:
-        self.assertIn("deep hacking remains a separate deferred subsystem",
-                      flat("rulebook/5_CYBERNETIC.md"))
+    def test_cyberspace_is_specified_and_the_withdrawn_framework_is_still_not_ported(self) -> None:
+        """#222 IS the author-defined original subsystem the deferral waited for.
+
+        `AGENTS.md` deferred hacking/cyberspace "until the author defines an original
+        NooPunk subsystem"; issue #222 does exactly that, so the deferral is satisfied
+        and this guard moves with the state rather than going stale. What the deferral
+        actually protected must still hold, and is asserted here: the withdrawn issue
+        #17 BCI/Compute/Connection/Infosec modifier framework is NOT ported, and there
+        is no free-form instant-hack button.
+        """
+        text = flat("rulebook/5_CYBERNETIC.md")
+        self.assertIn("cyberspace surface itself is specified below", text)
+        self.assertIn("issue #222", text)
+        self.assertIn("creates a free-form instant-hack button", text)
+        self.assertIn("silently restores older withdrawn bci/compute/connection/infosec mechanics", text)
 
     def test_seity_still_parked(self) -> None:
         self.assertIn("not active rules",
