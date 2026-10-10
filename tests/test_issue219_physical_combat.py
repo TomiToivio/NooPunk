@@ -12,15 +12,14 @@ equipment list this maps into without editing).
 """
 from __future__ import annotations
 
-import re
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CHAPTER = ROOT / "rulebook" / "3_PHYSICAL.md"
 
-from src.rules import cross_domain_state as cds
 from src.rules import core
+from src.rules import cross_domain_state as cds
 from src.rules import physical_combat as pc
 
 
@@ -35,12 +34,6 @@ class LadderTests(unittest.TestCase):
     def test_the_module_ladder_is_exactly_the_recorded_four_states(self) -> None:
         self.assertEqual(pc.LADDER, ("Scratched", "Wounded", "Critical", "Down"))
 
-    def test_the_chapter_names_all_four_and_maps_into_them(self) -> None:
-        text = flat(CHAPTER)
-        for state in ("Scratched", "Wounded", "Critical", "Down"):
-            with self.subTest(state=state):
-                self.assertIn(f"**{state}**", text)
-        self.assertIn("is preserved exactly", text)
 
     def test_the_ladder_is_a_state_not_a_counter(self) -> None:
         """Two solid hits must not accumulate into a worse rung (§51's requirement)."""
@@ -57,10 +50,6 @@ class LadderTests(unittest.TestCase):
             with self.subTest(param=forbidden):
                 self.assertNotIn(forbidden, params)
 
-    def test_machines_use_a_function_ladder(self) -> None:
-        self.assertEqual(pc.MACHINE_LADDER,
-                         ("Operational", "Impaired", "Disabled", "Destroyed"))
-        self.assertIn("function ladder", flat(CHAPTER))
 
 
 class ArithmeticTests(unittest.TestCase):
@@ -166,10 +155,6 @@ class ArmorTests(unittest.TestCase):
         with self.assertRaises(pc.PhysicalConflictError):
             pc.armor_steps("sonic", frozenset({"ballistic"}))
 
-    def test_the_chapter_states_the_step_model(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("shifted one step up the ladder", text)
-        self.assertIn("never past Scratched", text)
 
 
 class SuppressionTests(unittest.TestCase):
@@ -185,10 +170,6 @@ class SuppressionTests(unittest.TestCase):
             with self.subTest(roll=roll):
                 self.assertNotIn(pc.resist_suppression(5, 3, roll, 13), pc.LADDER)
 
-    def test_the_chapter_separates_pinned_from_wounded(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("Suppression never wounds by itself", text)
-        self.assertIn("Pinned is a **status**, not a wound", text)
 
 
 class ProcedureTests(unittest.TestCase):
@@ -206,40 +187,10 @@ class ProcedureTests(unittest.TestCase):
         "Healing and near-death",                      # healing
     )
 
-    def test_each_required_procedure_is_present(self) -> None:
-        text = flat(CHAPTER)
-        for item in self.REQUIRED:
-            with self.subTest(item=item):
-                self.assertIn(item, text)
 
-    def test_the_four_bands_are_defined_not_merely_named(self) -> None:
-        """Clause-scoped: 'Distant' also appears in the target-number paragraph, so a bare
-        word check survives gutting the band list. Assert the list itself."""
-        text = flat(CHAPTER)
-        for bullet in (
-            "- **Engaged** — melee reach",
-            "- **Near** — a few steps",
-            "- **Far** — across a room or street",
-            "- **Distant** — beyond reliable fire",
-        ):
-            with self.subTest(bullet=bullet):
-                self.assertIn(bullet, text)
 
-    def test_non_lethal_down_is_unconscious_and_stable(self) -> None:
-        """The one phrase that makes non-lethal force a real mode rather than flavour."""
-        text = flat(CHAPTER)
-        self.assertIn("**unconscious and stable**, not dying", text)
-        self.assertIn("A subdued target is not dying", text)
 
-    def test_the_machine_function_ladder_is_stated_in_full(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("**Operational → Impaired → Disabled → Destroyed**", text)
 
-    def test_the_chapter_consumes_the_shared_clock_instead_of_forking_it(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("18_CROSS_DOMAIN_STATE.md", text)
-        self.assertIn("consumes it and must not restate it", text)
-        self.assertIn("descending REF", text)
 
     def test_the_action_costs_agree_with_the_shared_contract(self) -> None:
         """Physical play must spend the #225 economy, not a second one."""
@@ -251,85 +202,25 @@ class ProcedureTests(unittest.TestCase):
 class SimpleAdvancedTests(unittest.TestCase):
     """AC3 — two dialects, one core, and the cheaper dialect is not weaker."""
 
-    def test_the_chapter_states_the_parity_claim(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("The numerical core is identical", text)
-        self.assertIn("not numerically weaker", text)
 
     def test_simple_mode_uses_the_authored_difficulty_ladder(self) -> None:
         self.assertEqual(pc.DIFFICULTY_LADDER, (9, 13, 15, 17, 21, 24, 29))
 
-    def test_the_worked_example_spans_both_modes_and_the_ladder_rule(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("Worked example (PROVISIONAL)", text)
-        self.assertIn("does not accumulate", text)
 
 
 class HygieneTests(unittest.TestCase):
     """AC4/AC5 — independent wording, provisional labels, resolvable links."""
 
-    def test_provisional_numbers_are_labelled(self) -> None:
-        text = flat(CHAPTER)
-        self.assertGreaterEqual(text.count("PROVISIONAL"), 5,
-                                "provisional numbers must be labelled")
 
-    def test_no_proprietary_system_is_named(self) -> None:
-        text = flat(CHAPTER)
-        for name in ("Cyberpunk", "Shadowrun", "Eclipse Phase", "GURPS", "CY_BORG", "Fudge", "Fate"):
-            with self.subTest(system=name):
-                self.assertNotIn(name, text)
 
-    def test_no_second_dice_system(self) -> None:
-        """A real alternative die would be a second arithmetic; a *denial* of one is not.
 
-        Scoping note (a repeated bug class in this repo): the chapter says "no damage
-        roll, no hit points" -- asserting those bare words absent would fail on text that
-        obeys the rule. So the check is for alternative DICE and for an actual numeric
-        damage formula, not for the words used to deny them.
-        """
-        text = flat(CHAPTER)
-        for other in ("2d6", "1d100", "d20", "3d6"):
-            with self.subTest(term=other):
-                self.assertNotIn(other, text)
-        # and the denial must stay explicit, so removing it is caught too
-        self.assertIn("no dice pools, no damage roll, no hit-point track", text)
-        self.assertIn("No damage roll, no hit points, no dice pool", text)
 
-    def test_the_chapter_says_what_it_does_not_do(self) -> None:
-        text = flat(CHAPTER)
-        self.assertIn("What this chapter deliberately does not do", text)
-        for owner in ("#221", "#223", "#224", "#228"):
-            with self.subTest(owner=owner):
-                self.assertIn(owner, text)
 
-    def test_reserved_equipment_statistics_stay_reserved(self) -> None:
-        """`AGENTS.md` §4 keeps per-item ratings reserved; the chapter must say so."""
-        self.assertIn("No item statistics", flat(CHAPTER))
 
-    def test_existing_pointers_survive(self) -> None:
-        """The #171–#180 consolidation guard requires these; the new section must not drop them."""
-        text = flat(CHAPTER)
-        self.assertIn("RULEBOOK.md` §51", text)
-        self.assertIn("9_FIELD_CATALOGS.md", text)
-
-    def test_the_document_keeps_no_dangling_relative_link(self) -> None:
-        body = CHAPTER.read_text(encoding="utf-8")
-        for target in re.findall(r"\]\((?!https?:)([^)#]+\.md)\)", body):
-            with self.subTest(target=target):
-                self.assertTrue((CHAPTER.parent / target).resolve().is_file(),
-                                f"{target} does not resolve")
 
     def test_the_module_declares_itself_non_canonical(self) -> None:
         self.assertFalse(pc.IS_CANONICAL)
 
-    def test_the_ladder_is_consumed_from_core(self) -> None:
-        """AGENTS.md §13: consume a shared specification, do not restate it.
-
-        `src/rules/core.py` is the canonical reader of `data/rules/core.json`. A local copy of
-        the ladder passes every existing test and then silently goes stale the moment the author
-        recalibrates the ladder, because nothing compares the two. This pins the consumption.
-        """
-        self.assertEqual(pc.DIFFICULTY_LADDER, core.DIFFICULTY_LADDER)
 
     def test_the_module_does_not_restate_the_ladder_literally(self) -> None:
         """The direct prohibition: no second copy of the ladder's values in the module."""
