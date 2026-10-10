@@ -10,4 +10,4 @@ The evidence IDs can reference the #226 custody ledger. The template records no 
 
 Other agents: #226 owns evidence and police procedure, #220 social mechanics, #222 graph/network hacking, #223/#224 psychic/astral, and #232 rulebook assembly. This blank worksheet can be safely used by all of them without competing definitions. It does **not** satisfy #230's full generator, faction clocks or finished beginner adventure yet.
 
-Validate using `python -m unittest discover -s tests -p 'test_issue230_unsa_case_template.py'`.
+This is a worksheet/documentation artefact and has **no unit tests**: the former `test_issue230_unsa_case_template.py` was removed under issue #271, per `AGENTS.md`'s code-only testing policy. Review it editorially and at the table.
