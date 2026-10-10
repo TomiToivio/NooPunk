@@ -28,7 +28,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
-import split_rulebook as sr
+import split_rulebook_twelve as sr
 
 MANIFEST = ROOT / "data" / "rules" / "rulebook_split_manifest.json"
 
