@@ -25,7 +25,7 @@ def _canon_prose(document: str) -> str:
 
 class Issue108SupersededBy144Tests(unittest.TestCase):
     def test_unsa_is_the_canonical_successor(self):
-        self.assertIn("United Nations Security Agency (UNSA)", BOOK)
+        self.assertIn("United Nations Security Administration (UNSA)", BOOK)
         self.assertIn("supersedes the UNHSS / Firewall naming", BOOK)
         self.assertIn("## Default Helsinki / UNSA affiliation", FACTIONS)
 
@@ -44,7 +44,7 @@ class Issue108SupersededBy144Tests(unittest.TestCase):
 
     def test_machine_readable_model_uses_unsa(self):
         self.assertIn("UNSA:", ORG)
-        self.assertIn("canonical_name: United Nations Security Agency", ORG)
+        self.assertIn("canonical_name: United Nations Security Administration", ORG)
         self.assertNotIn("\nUNHSS:", ORG)
 
 

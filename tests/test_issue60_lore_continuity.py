@@ -157,7 +157,7 @@ class ConversionGapTests(unittest.TestCase):
         if firewall_block is None:
             self.fail("no Firewall provenance paragraph in the mapping section")
         body = firewall_block.group(1)
-        self.assertRegex(body, r"United Nations Security Agency|UNSA")
+        self.assertRegex(body, r"United Nations Security Administration|UNSA")
         self.assertRegex(body, r"no longer uses|superseded")
         self.assertRegex(body, r"design/provenance|design reference")
 

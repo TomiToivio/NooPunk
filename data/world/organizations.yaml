@@ -1,9 +1,9 @@
 # Canonical organization data for issue #144.
 # Human-readable source of truth: RULEBOOK.md.
 UNSA:
-  canonical_name: United Nations Security Agency
+  canonical_name: United Nations Security Administration
   early_names:
-    - UN X-Risk Agency
+    - UN X-Risk Administration
     - UN NHI Agency
   aliases:
     - X-COM

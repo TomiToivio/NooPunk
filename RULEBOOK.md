@@ -981,7 +981,7 @@ organisation, a history, or a mechanic.
 
 **Firewall.** NoöPunk no longer uses **Firewall** as the in-world name of the
 default player organization. The campaign function that once borrowed that Eclipse Phase
-term is now fulfilled by the **United Nations Security Agency (UNSA)**, an overt UN agency
+term is now fulfilled by the **United Nations Security Administration (UNSA)**, an overt UN body
 with classified operational networks. "Firewall" remains only a design/provenance reference
 where comparison with Eclipse Phase is useful. The "Great Firewall" in §33.27 remains
 China's internet-control system and is unrelated.
@@ -4832,11 +4832,19 @@ elements of its fictional world model, not as settled descriptions of the real w
 
 #### Name and identity
 
-The canonical organization is the **United Nations Security Agency (UNSA)**.
+The canonical organization is the **United Nations Security Administration (UNSA)**.
 
-During its early formation it was often called the **UN X-Risk Agency** or **UN NHI Agency**. Popular and internal nicknames include **X-COM**, **X-Files**, and **Men in
+During its early formation it was often called the **UN X-Risk Administration** or **UN NHI Agency**. Popular and internal nicknames include **X-COM**, **X-Files**, and **Men in
 Black**. UNSA personnel often enjoy those names because they describe the job remarkably
 well.
+
+Those nicknames are **informal institutional culture, not official designations**. None of
+them names a department, a unit or a legal title, and none implies any connection to an
+existing entertainment franchise: the habit came from the public and from UNSA's own first
+recruits, who noticed that the job had been described decades earlier by people who were
+guessing. The joke runs thickest among **Academy graduates**, for whom it doubles as an
+admission that the institution is exactly as strange as the rumours promised. Official
+briefings, protocol and legal documents use the formal name only.
 
 **MJ-12 is not an acceptable nickname.** UNSA doctrine remembers MJ-12 as a legacy network
 of traitors who failed catastrophically at protecting humanity through secrecy, compromised
@@ -4909,7 +4917,10 @@ against protected NHI beings, and major Legacy Program theft or leaks.
 
 This political architecture is explicitly informed by **Alexander Wendt's _The Last
 Humans_** and its speculation about radically different consequences of UFO/NHI
-Disclosure.
+Disclosure. Wendt's work is a real scholarly argument and an intellectual influence;
+UNSA, the pooled-sovereignty turn and the federal outcome are **NoöPunk fiction**, and
+nothing here should be read as a claim about what states would actually do (§37
+interpretation rule).
 
 In NoöPunk, **both outcomes happen**.
 
@@ -4934,6 +4945,43 @@ At the same time, the same crisis produces **global unification**:
 The emerging world government is therefore not the product of a smooth march toward
 unity. It is forged inside panic, institutional collapse, emergency coordination, war,
 Disclosure and reconstruction.
+
+#### Diplomacy and the emerging NHI cold war
+
+UNSA did not begin as an anti-NHI command. Its first posture was **diplomatic toward both
+blocs** — the Confederacy and Orion — because a species that had just been saved by
+unidentified craft could not assume every further unidentified craft was hostile, and because
+choosing a side before understanding either one would have been a different kind of surrender.
+That posture did not survive contact with evidence.
+
+The relationship with **Orion** is now best described as **hybrid, cold and proxy conflict**
+rather than open invasion: abductions, hybridization programmes, infiltration at every level,
+psychic coercion and mind control, cult manipulation, elite capture, and covert manipulation of
+governments and corporations ([rulebook/15_XENOPOLITICS.md](rulebook/15_XENOPOLITICS.md),
+the Orion side; §40.3). Some human and non-state actors accept Orion
+patronage, and some of them do not know whose interests they are serving. Espionage,
+infiltration, clandestine influence and **contested attribution** are working conditions here,
+not exceptional plot events.
+
+Relations with the **Confederacy** are broadly **friendly** — assistance, cooperation and shared
+relief work are real, as is its restraint toward Orion
+([rulebook/15_XENOPOLITICS.md](rulebook/15_XENOPOLITICS.md), the Confederacy side) — and also
+**conditional**. Its
+terms for a formal alliance are judged too onerous by human actors who read them as constraints
+on human autonomy and on national and collective sovereignty. Friendly is not the same as
+settled, and the Confederacy is not above criticism.
+
+Crucially, **human politics are not a mirror of the NHI divide.** Governments, services,
+institutions and movements disagree about how far to trust Confederacy assurances, what an
+alliance would be worth, and how to respond to Orion's operations; some would concede much for
+protection and others would refuse all of it. Treating any human faction as automatically
+pro-Confederacy or automatically Orion-aligned is a modelling error, not a shorthand.
+
+For play, the default case load is investigation rather than battle: abduction and hybrid
+networks, anomalous influence and suspected mind control, proxy actors, compromised
+institutions, and **diplomatic incidents**. Some apparent NHI operations turn out to be
+ordinary human deception, psychological operations, or simple misattribution, and the evidence
+has to be allowed to decide (§40.3).
 
 #### UNSA and the federal United Nations
 
