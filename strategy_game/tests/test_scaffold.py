@@ -44,7 +44,9 @@ class ContractTests(unittest.TestCase):
         )
         restored = WorldState.from_json(original.to_json())
         self.assertEqual(restored, original)
-        self.assertEqual(restored.events[0].provenance, "author:TBD")
+        # #282 moved provenance from a bare string to a structured record, so the origin is now
+        # carried on `.source` (kind stays UNKNOWN for an unclassified legacy value).
+        self.assertEqual(restored.events[0].provenance.source, "author:TBD")
 
     def test_to_json_is_json_and_carries_every_collection(self):
         import json
