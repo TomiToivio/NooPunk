@@ -13,8 +13,11 @@ Two properties matter more than the rest:
   edge type, and the scaffold must never require an optional dependency to load or view the
   political field.
 """
+import dataclasses
 import json
+import subprocess
 import sys
+import typing
 import unittest
 from pathlib import Path
 
@@ -279,6 +282,64 @@ class NoOptionalDependencyTests(unittest.TestCase):
         for adapter in capabilities.OPTIONAL_ADAPTERS:
             with self.subTest(adapter=adapter):
                 self.assertNotIn(f"import {adapter}", source)
+
+
+class ScopeDirectiveTests(unittest.TestCase):
+    """`POLITICAL_SIMULATOR_SCOPE.md`: build a game *inspired by* LaclauGPT — never import it.
+
+    The layer already honours this, but until now nothing failed if it stopped: the prime directive
+    was prose. These two checks are its enforceable half.
+    """
+
+    def test_importing_the_layer_couples_to_no_laclaugpt_package(self):
+        """Asserted in a subprocess so the parent's own imports cannot mask the answer."""
+        code = (
+            "import sys, strategy_game, strategy_game.politics;"
+            "from strategy_game.core import WorldState;"
+            "from strategy_game.view import board_view, political_view;"
+            "state = WorldState(); state.to_json(); board_view(state); political_view(state);"
+            "print(sorted(m for m in sys.modules if m == 'laclaugpt' or m.startswith('laclaugpt.')))"
+        )
+        result = subprocess.run([sys.executable, "-c", code], cwd=ROOT,
+                                capture_output=True, text=True, check=False)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout.strip(), "[]",
+                         f"loading or viewing the layer pulled in LaclauGPT: {result.stdout}")
+
+    def test_the_module_source_imports_no_laclaugpt(self):
+        import strategy_game.politics as politics
+
+        source = Path(politics.__file__).read_text(encoding="utf-8")
+        self.assertNotIn("import laclaugpt", source)
+        self.assertNotIn("from laclaugpt", source)
+
+
+class NoQuantifiedPoliticsTests(unittest.TestCase):
+    """`POLITICAL_SIMULATOR_SCOPE.md`: never claim a scientific "hegemony score".
+
+    A future rule *may* legitimately need a number. If that day comes the guard should be changed
+    deliberately, with the rule and its approval, rather than the quantity slipping in unnoticed.
+    """
+
+    RECORDS = (Demand, Signifier, Formation, Frontier)
+    METRIC_TOKENS = ("score", "strength", "influence", "threshold", "weight", "probability",
+                     "rating")
+
+    def test_no_political_record_declares_a_numeric_field(self):
+        for record in self.RECORDS:
+            hints = typing.get_type_hints(record)
+            for declared in dataclasses.fields(record):
+                with self.subTest(record=record.__name__, field=declared.name):
+                    self.assertNotIn(hints[declared.name], (int, float),
+                                     f"{record.__name__}.{declared.name} is a numeric quantity")
+
+    def test_no_political_record_declares_a_metric_shaped_field(self):
+        for record in self.RECORDS:
+            names = [declared.name for declared in dataclasses.fields(record)]
+            for token in self.METRIC_TOKENS:
+                with self.subTest(record=record.__name__, token=token):
+                    self.assertEqual([name for name in names if token in name], [],
+                                     f"{record.__name__} declares a metric-shaped field")
 
 
 if __name__ == "__main__":
