@@ -8,9 +8,9 @@ Reserved: attributes, personality trait tags, character decisions, roleplay, res
 ## Layer II: Network-society political simulation
 Reserved: Laclaudian ideological articulation, Castellsian communication power, agents, agency, contested meanings and systemic events. All transition mechanisms **TBD by author**.
 
-Data vocabulary only (no rules): `politics.py` carries `Demand`, `Signifier`, `Formation` and `Frontier`; political relations are ordinary `NetworkEdge` records with a relation-layer label, so the field is one multiplex graph. Design record: [docs/POLITICAL_SIMULATOR_MODEL.md](docs/POLITICAL_SIMULATOR_MODEL.md).
+Data vocabulary only (no rules): `political.py` carries `Demand`, `Signifier` and its roles, `Articulation`, `Frontier`, `CommunicativeTie` and `PoliticalFormation`, in a standalone `PoliticalField`. `view.py` renders it through `political_view(field)`. Design record: [docs/POLITICAL_SIMULATION_DESIGN.md](docs/POLITICAL_SIMULATION_DESIGN.md).
 
-The complementary `political.py` vocabulary and [Gate B design proposal](docs/POLITICAL_SIMULATION_DESIGN.md) introduce standalone articulations, signifier roles and communicative ties. These remain separate from the `politics.py` / `WorldState` representation. Both are containers, **not approved mechanics**; integration requires an explicit decision.
+The field is deliberately **not** wired into `WorldState`: integrating Layer II with the other layers is a Gate D decision, so the rendering hook receives the field explicitly rather than reading it off the world state. These are containers, **not approved mechanics**; integration requires an explicit decision.
 
 ## Layer III: Faction strategy
 Reserved: organizational assets, faction management, strategic operations, resource allocation, spatial and network presence. All mechanics **TBD by author**.

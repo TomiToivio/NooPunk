@@ -5,7 +5,6 @@ import json
 from dataclasses import asdict, dataclass, field
 from typing import Any
 
-from .politics import Demand, Formation, Frontier, Signifier
 from .provenance import Provenance
 
 
@@ -88,24 +87,12 @@ class WorldState:
     locations: list[Location] = field(default_factory=list)
     edges: list[NetworkEdge] = field(default_factory=list)
     events: list[Event] = field(default_factory=list)
-    #: Layer II (issue #282). Declared political records, empty by default. Political *relations*
-    #: are ordinary :class:`NetworkEdge` entries in ``edges`` carrying a
-    #: :class:`strategy_game.politics.RelationLayer` label -- there is deliberately no second
-    #: edge collection, so the whole political field stays one multiplex graph.
-    demands: list[Demand] = field(default_factory=list)
-    signifiers: list[Signifier] = field(default_factory=list)
-    formations: list[Formation] = field(default_factory=list)
-    frontiers: list[Frontier] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         """Plain-JSON representation. Nested records are serialized explicitly."""
         data = asdict(self)
         # ``asdict`` would leave a Provenance enum member inside the payload; emit the scalars.
         data["events"] = [event.to_dict() for event in self.events]
-        data["demands"] = [item.to_dict() for item in self.demands]
-        data["signifiers"] = [item.to_dict() for item in self.signifiers]
-        data["formations"] = [item.to_dict() for item in self.formations]
-        data["frontiers"] = [item.to_dict() for item in self.frontiers]
         return data
 
     def to_json(self) -> str:
@@ -124,8 +111,4 @@ class WorldState:
             locations=[Location(**item) for item in data.get("locations", [])],
             edges=[NetworkEdge(**item) for item in data.get("edges", [])],
             events=[Event.from_dict(item) for item in data.get("events", [])],
-            demands=[Demand.from_dict(item) for item in data.get("demands", [])],
-            signifiers=[Signifier.from_dict(item) for item in data.get("signifiers", [])],
-            formations=[Formation.from_dict(item) for item in data.get("formations", [])],
-            frontiers=[Frontier.from_dict(item) for item in data.get("frontiers", [])],
         )

@@ -50,15 +50,11 @@ class ContractTests(unittest.TestCase):
 
     def test_to_json_is_json_and_carries_every_collection(self):
         import json
-        from dataclasses import fields as dataclass_fields
-
         payload = json.loads(WorldState().to_json())
-        # Derived, not a frozen literal. Issue #282 added the Layer II political collections to
-        # `WorldState`, and a hard-coded set would go stale on every future addition instead of
-        # failing for a real reason. Deriving the expectation keeps this test's actual intent --
-        # *every declared collection is carried* -- and makes a collection that serializes under
-        # the wrong key impossible to miss.
-        self.assertEqual(set(payload), {f.name for f in dataclass_fields(WorldState)})
+        self.assertEqual(
+            set(payload),
+            {"schema_version", "leaders", "factions", "assets", "locations", "edges", "events"},
+        )
 
     def test_containers_default_to_empty_and_are_not_shared(self):
         first, second = WorldState(), WorldState()
