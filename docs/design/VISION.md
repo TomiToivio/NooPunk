@@ -267,10 +267,10 @@ under an **open-source software licence** for the code and an **open content lic
 NoöPunk-original material, with a published attribution and provenance policy (§7a, and the licence
 documents referenced there). Reached in three milestones, **each of which must be playable**:
 
-- **S1-a — first public playable.** The first thing a stranger can download and enjoy: the abstract
-  strategic map, one playable faction leader, rival factions, decisions and events, a visible
-  political-power consequence, and a complete short scenario, published open source with a licence,
-  a README and a documented save format.
+- **S1-a — first public playable: the MVP.** The first thing a stranger can download and enjoy —
+  **the MVP defined in §7b**: one small scenario containing the Strategy, Simulation and RPG
+  pillars at reduced scale in a single loop, published open source with a licence, a README and a
+  documented save format.
   *Gate:* a stranger on the internet plays a full session to the end without help.
   *Kill switch:* anything that requires an account, a server or a paid dependency.
 - **S1-b — content-complete.** The vertical slice becomes a full, coherent small campaign: character
@@ -361,6 +361,68 @@ is out of scope until the author changes this section.
   once the author decides it**, and is not invented by a contributor.
 - **No feature may require a live service, a proprietary engine or a paid model provider to be
   playable.** Optional LLM support stays optional, and switching it off must leave a complete game.
+
+## 7b. The MVP: the smallest game that still has all three pillars
+
+**Definition.** The MVP is **one small, complete, playable scenario that genuinely contains a
+Strategy layer, a Simulation layer and an RPG layer at reduced scale** — playable in a single
+sitting, offline, with no LLM, database or server, released open source. It is a *small game*, not
+a demo of an architecture and not a slice of one pillar. If any of the three is missing, it is not
+the MVP; it is a prototype (S0).
+
+**This section fixes *scope*, not rules.** Every count below is a **provisional envelope to be
+approved at S0-A**, not a mechanic, a number or canonical content. Nothing here selects a
+mechanic, and nothing here may be treated as approved design.
+
+### The three pillars, scaled down but present
+
+| Pillar | The MVP must have | It need **not** have yet |
+|---|---|---|
+| **Strategy** (God's-eye) | one overhead map of a few abstract regions; a handful of competing factions that also act; turn-based decisions with **visible power shifts the player can read** | deep economy, military stacks, tech trees, space, procedural maps |
+| **Simulation** (political / discourse) | opinion and legitimacy that move **for reasons the player can inspect**; at least two competing public narratives; a small communication network whose *shape* matters; events driven by the state | full Laclau–Castells depth, dozens of signifiers, measured-hegemony claims |
+| **RPG** (character) | one playable leader with traits, a few named relationships, choices with real consequences, and a **personal position that affects the strategic layer** | lifepath depth, large cast, portraits, dialogue trees, succession dynasties |
+
+**The single most important design property:** the three pillars must **feed each other in one
+loop**. A leader's decision changes faction standing; that changes discourse; that changes who
+cooperates; that creates the next personal decision. If the pillars are three disconnected
+mini-games sharing a menu, the MVP has failed even if all three exist.
+
+### Hard caps — what "scaled down" means concretely
+
+*Provisional envelopes, for approval at S0-A:*
+
+- **One** map, **one** scenario, **one** finite campaign. No second map, no campaign selector.
+- **A single sitting**: one session, minutes not hours, with a real ending.
+- **Content budget in the handfuls, not dozens**: a few regions, a few factions, a few named
+  characters, a few events. If a content list is longer than a page, it is out of MVP scope.
+- **One resolution mechanism, reused everywhere** — not one per pillar.
+- **No engine work**: 2D or text-readable overhead map only. No 3D, no art production, no engine
+  migration.
+- **No required model, service or account.** Optional LLM support, if any, is off by default and
+  its absence must leave a complete game.
+- **No multiplayer, no space, no economy simulation, no mod UI** — documented data files only.
+
+### Explicitly out of the MVP
+
+Procedural generation; deep economy or logistics; dynastic succession; off-world content;
+multiplayer or persistence; LLM-driven NPCs as a dependency; art, portraits or audio production;
+a polished UI framework; a scenario editor; an MMO-anything. Each of these is legitimate later and
+**none of them justifies delaying the MVP.**
+
+### Definition of done
+
+The MVP ships when:
+
+1. a stranger can run it from source, offline, and **finish a full scenario in one sitting**;
+2. they can **explain why power shifted** — every meaningful change has an inspectable in-game
+   reason;
+3. all three pillars are present, and **removing any one of them would obviously break the game**;
+4. the source is public under the licences in §7a; and
+5. it is **enjoyable enough that we want to keep building on it.** If it is not, the correct next
+   step is to fix or cut, not to add scope.
+
+**The MVP is the target of S1-a.** Everything in S1-b, S1-c and S2–S4 is what happens *after* an
+MVP exists and has been played.
 
 ## 8. Non-goals for current agents
 
