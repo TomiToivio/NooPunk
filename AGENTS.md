@@ -28,6 +28,54 @@ skill files, wherever they live, and must report the paths it checked in the tra
 that cannot reach a private or external skill file must name the path and the blocker rather than
 claim it was updated.
 
+### 0. Active track: the NoöPunk × LaclauGPT crossover game
+
+Directive: issue #306. **Two games, one shared world. Do not collapse them.**
+
+- **Legacy NoöPunk RPG** — `RULEBOOK.md`, `rulebook/`, and the Godot/Concordia ports. Its rules,
+  attributes, skill procedures, lifepath, character sheets and gameplay are **not** automatically
+  rules of the crossover.
+- **Crossover game** — an independently playable Python project in `strategy_game/`, designed to be
+  translatable into a physical board/card/dice tabletop game. Its rulebook is
+  `strategy_game/RULEBOOK.md`, which currently says **NO RULES APPROVED**; the scaffold code provides
+  vocabulary, not playable mechanics.
+
+What carries over, and what does not:
+
+- **Existing world lore generally carries over** from `RULEBOOK.md` and `rulebook/` as canon
+  background, subject to explicit scenario deviations and later author decisions. Preserve existing
+  characters, institutions and NHI concepts; do not delete or casually overwrite legacy lore.
+- **Legacy rules do not carry over.** Cross-references are fine. Importing a legacy mechanic into the
+  crossover requires an explicit, approved conversion decision.
+- **Timeline.** The crossover begins during the **acceleration toward the NHI Crisis** — recognisable
+  everyday institutions and electoral politics that grow stranger as AGI, NHI-disclosure and PSI
+  shocks accumulate. The legacy RPG's default later/post-crisis scenario is *not* the crossover's
+  starting point, and the NHI Crisis must not be narrated as already resolved.
+- **The legacy RPG is not rewritten, replaced or retired.** Changing it needs its own
+  author-approved issue.
+- New Weird is the overarching genre; Social Science Fiction and dark science-fiction comedy are
+  deliberate tonal modes (#303).
+
+Active design tracks: #282 (crossover parent and scaffold), #295 (leader mechanics), #296 (faction
+strategy), #297 (discourse and information-network simulation), #302 (country-agnostic society),
+#303 (tone, agent ontology, tabletop aesthetics), #304 (optional player agents, GM turns, Tarot),
+#305 (paradigm-shift populist realignments), #306 (this directive).
+
+Luhmann supplies differentiated social-system context, Castells supplies network/communication power,
+and Laclau/Mouffe supplies contestation of signifiers and frontiers. These are **game inspirations,
+not validated predictive transition laws.** Do not embed LaclauGPT's data pipelines, infrastructure or
+empirical analyses as game runtime dependencies.
+
+#### 0.1 New-session checklist
+
+1. **Which game?** Legacy RPG or crossover. If a task is ambiguous, ask before editing.
+2. **Read first:** the relevant rulebook entrypoint (`RULEBOOK.md`, or `strategy_game/RULEBOOK.md`)
+   and the linked issue.
+3. **Default new crossover coding and design work to `strategy_game/`.**
+4. **Record design decisions** as proposals for author approval. Never invent mechanics, numbers,
+   canon or typologies.
+5. **Tests cover executable code only**, in either game — see the automated tests policy above.
+
 ### 1. Author intent is canon
 
 Do not invent NoöPunk rules, mechanics, lore, history, factions, technologies, metaphysics, organizations, locations, character classes, archetypes, species, NHI categories, psionic powers, skills, attributes, combat systems, progression systems, equipment lists, economies, or world events unless the author has explicitly specified them.
@@ -241,6 +289,11 @@ When uncertain, choose the smaller implementation.
 
 
 ### 11. One RPG, three runtimes, developed in sequence
+
+> **Scope (§0, issue #306):** this section governs the **legacy** NoöPunk RPG. The NoöPunk ×
+> LaclauGPT crossover game in `strategy_game/` is a separate, independently playable project with its
+> own rulebook and its own rules track. "One RPG, three runtimes" remains true of the legacy RPG; it
+> is not a claim that NoöPunk is a single game.
 
 NoöPunk is one RPG rules/world model. It is developed as **one computer
 RPG/simulation**, and the three headings below are notation/runtime choices within
