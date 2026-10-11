@@ -20,4 +20,4 @@ Only standard-library packages are required. The entrypoint displays the empty m
 
 ## Long-term vision
 
-The horizon this project is building toward — one universe, two games, six scales of agency, and the H0–H5 gates — is recorded in [`docs/design/VISION.md`](../docs/design/VISION.md) (issue [#309](https://github.com/TomiToivio/NooPunk/issues/309)). It is a **north star, not an instruction**: it authorizes no mechanics, canon or scope, and it does not change anything in this directory.
+The horizon this project is building toward — **one open-source indie Grand Strategy RPG with a God's-eye view**, one universe and two games, six zoom levels of one simulation, and the R0–R3 release plan — is recorded in [`docs/design/VISION.md`](../docs/design/VISION.md) (issue [#309](https://github.com/TomiToivio/NooPunk/issues/309)). It is a **north star, not an instruction**: it authorizes no mechanics, canon or scope, and it does not change anything in this directory.
