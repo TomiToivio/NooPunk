@@ -282,12 +282,18 @@ class IsolationContractTests(unittest.TestCase):
         self.assertEqual(result.stdout.strip(), "[]",
                          f"Layer II is meant to be dependency-free: {result.stdout}")
 
-    def test_the_field_is_not_wired_into_world_state(self):
-        """Integration is a Gate D decision: Layer II must stand alone for now."""
+    def test_the_field_is_not_nested_into_world_state(self):
+        """Integration is a Gate D decision, and it has not been taken for *this* container.
+
+        ``WorldState`` carries the ``politics.py`` collections that landed in #294; this layer's
+        ``PoliticalField`` stays a separate, id-coupled container. It must not appear inside a
+        snapshot as a nested payload unless that integration is decided deliberately.
+        """
         from strategy_game.core import WorldState
 
-        self.assertNotIn("political", {field for field in WorldState().__dict__})
-        self.assertFalse(hasattr(WorldState(), "demands"))
+        state = WorldState()
+        self.assertNotIn("political_field", state.__dict__)
+        self.assertNotIn("political_field", state.to_dict())
 
 
 if __name__ == "__main__":
