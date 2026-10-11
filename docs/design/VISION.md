@@ -311,3 +311,105 @@ The two are not interchangeable, and this vision does not move either one.
 
 *This document implements [#309](https://github.com/TomiToivio/NooPunk/issues/309). It grants
 no permissions, changes no rules, and invents no canon.*
+
+
+## 12. Proposed first playable slice
+
+Implementation-plan baseline, inspected on 2026-10-11: `core.py` provides serializable `WorldState`, a schema-version field and provenance; `ports.py` contains reserved protocols. There is no playable turn engine. `politics.py` is integrated with `WorldState`, while `political.py` remains a separate vocabulary proposal. The plan below builds on that distinction.
+
+**Proposal for discussion in #282 and #295–#297, not an approved scenario or mechanic.**
+
+Player promise: lead a faction through a short, consequential episode of the acceleration toward the NHI Crisis, moving between a personal dilemma, an organizational decision and a visible public interpretation. Use an author-selected small cast and abstract board. Present choices as text and cards before investing in exploration or cinematic environments.
+
+Adapt the illustrative chain in §3: ambiguous evidence reaches the player; the leader chooses a response; the faction acts or delegates; competing interpretations travel through the declared network; the approved resolver produces consequences; those consequences create the next personal decision. The ending should show what changed and why, including unresolved interpretations. Evidence, a faction's claim and an established fictional fact must remain distinguishable.
+
+The first slice needs only the actions, resolution procedure and ending conditions selected in the three layer discussions. It must be playable by a human without an LLM and expressible with a physical board/cards/dice if the approved rules require them. No numbers, action economy, dice model, faction taxonomy or canonical incident are selected here.
+
+## 13. Cross-scale authority and event flow
+
+**Proposed future architecture.** The current scaffold stores declared data; the command validator, resolver and replay machinery below do not exist yet. Implement only the portion required by an approved slice.
+
+```mermaid
+flowchart TD
+    H[Human choices] --> P[Action proposals]
+    A[Optional bounded AI] --> P
+    P --> V[Permission and rule validation]
+    V --> R[Authoritative resolver]
+    R --> E[Recorded events and state]
+    E --> C[Character view]
+    E --> F[Faction view]
+    E --> D[Discourse and network view]
+    C --> H
+    F --> H
+    D --> H
+```
+
+One accepted action is resolved once. Views show its consequences; they do not independently recalculate or award them. Approved cross-scale consequences become explicit events, with causal references, rather than hidden mutations inside UI or dialogue. Later scales can use coarser updates; identical tick rates and continuous global simulation are unnecessary.
+
+Start from `core.py`, `ports.py`, `provenance.py` and `view.py`, preserving the boundaries in [INTEGRATION_BOUNDARIES.md](../../strategy_game/docs/INTEGRATION_BOUNDARIES.md). Extend serialization only as needed. A future replay record should identify the initial snapshot, rules/schema versions, accepted inputs, recorded random outcomes and resulting events. A seed alone cannot reproduce changing model responses or changed code. Record accepted LLM proposals; replay must not call the model again.
+
+| Controller | May do after relevant rule approval | Authority boundary |
+| --- | --- | --- |
+| Human | Choose a permitted action, inspect available information, delegate | Same action validation as other controllers |
+| Rules-driven actor | Select among approved actions using an explicit policy | No privileged state mutation |
+| Optional LLM actor | Propose structured actions and dialogue from permitted context | Validate actor identity, knowledge, action permissions and budget; reject invalid proposals |
+| Resolver | Apply approved rules and recorded randomness | Sole writer of resolved gameplay state |
+| Scenario author / GM | Supply approved content and use explicitly defined GM capabilities | Authored content and interventions retain provenance; no silent canon promotion |
+
+Delegation needs an explicit mandate, stopping conditions and an inspectable result. Permissions concern both what an agent can do and what it can know. Timeouts and invalid model output must have an approved fallback, such as returning control to the human; they must not invent an action or outcome.
+
+## 14. Implementation sequence grounded in the repository
+
+These are proposed work packages, not additional authorization. Continue the existing issues rather than opening duplicate implementation tracks.
+
+| Step | Existing home | Concrete deliverable | Exit condition |
+| --- | --- | --- | --- |
+| A. Select the minimum rules | #295 leader; #296 faction; #297 discourse/network | Author-selected procedures recorded in `strategy_game/RULEBOOK.md`, including unresolved questions | Each selected procedure can be exercised without software |
+| B. Reconcile the data model | #282 integration and #297 vocabulary | Explicit mapping or consolidation decision for `politics.py` and `political.py`; stable identifiers and provenance semantics | One agreed representation for slice transitions; no silent loss of existing records |
+| C. Specify the shared turn | #282, after A and B | Inputs, action ownership, ordering, randomness, rejection behavior and cross-layer consequences | An author-reviewed worked turn explains every state change |
+| D. Implement the small resolver | Scoped follow-up to #282 | Headless Python implementation of the approved procedures and executable behavior tests | Human-controlled slice runs offline; views cannot alter state |
+| E. Make the slice finishable | #282 integration, after C and D | Approved scenario, text interface, end summary, save/load and inspectable event history | One person can finish and explain the consequences |
+| F. Playtest before expansion | #282; later H1 decision | Playtest notes and a small prioritized revision list | Author accepts pacing, clarity and replay value before adding scope |
+
+Rule selection, not engine selection, is the immediate dependency. NetworkX, Mesa, a database, Godot, Concordia and model providers remain optional candidates. Select libraries only when an approved requirement makes the standard-library approach inadequate. Do not build a distributed platform to serve an empty turn loop.
+
+### Horizon feature/dependency ledger and scope kill switches
+
+| Horizon | Deliverable focus | Dependency and evidence for proceeding | Scope kill switch | Status / work home |
+| --- | --- | --- | --- | --- |
+| H0 | Tiny leader–faction–discourse slice | Steps A–F; a complete explainable episode | Reduce scenario breadth and presentation; retain consequential choices | Scaffold exists; rules pending in #282/#295–#297 |
+| H1 | Complete indie campaign, authoring tools and polished 2D play | H0 enjoyment established; usable saves and coherent content pipeline | Keep text/cards; postpone engine migration and cinematic scenes | Unscheduled proposal |
+| H2 | Relationships, political feedback, bounded optional LLMs and mods | H1 causal legibility; measured cost and reproducibility | Disable model agents; retain authored content and rules-driven play | Unscheduled proposal; #304 is related agent design, not MMO approval |
+| H3 | Broader Earth strategy and selective off-world expansion | H2 pacing survives greater breadth; profiling supports expansion | Abstract distant regions; defer space or additional civilizations | Unscheduled proposal |
+| H4 | Private/co-op persistence, then shared worlds | Explicit permissions, conflict handling, recovery and governance; affordable operation | Keep local saves or private small worlds; postpone public servers | Unscheduled proposal |
+| H5 | Cinematic production and potentially MMO-scale concurrency | Funded team, production pipeline and demonstrated online feasibility | Ship the smaller game; no AAA/MMO dependency imposed on earlier horizons | Aspirational only |
+
+## 15. Playtest and research plan
+
+Collect evidence for gates instead of setting arbitrary numerical targets now. Establish a baseline with the first playable slice, then agree targets with the author.
+
+| Question | Evidence to collect | Design response if it fails |
+| --- | --- | --- |
+| Is time spent deciding? | Session duration, decision points and idle/repetitive intervals | Cut upkeep and empty turns |
+| Do choices matter? | Consequences traceable to chosen actions; comparison of alternative playthroughs | Revise approved options and feedback before adding content |
+| Can players explain political change? | Player account of changes compared with the event history | Improve explanations and simplify hidden interactions |
+| Is the story worth replaying? | Different strategies and endings within approved scenario content | Improve consequential variation, not map size |
+| Can it run economically? | Turn latency; optional model calls, tokens and cost per session | Reduce model frequency or use rules-driven actors |
+
+Tests cover executable behavior once implemented: rejected actions leave state unchanged, accepted consequences apply once, save/load preserves state, and replay reproduces recorded resolutions under the same versions. Review this vision and all creative content editorially and through playtesting. Add no prose, canon or rulebook CI gates.
+
+### Research still required
+
+The references in §6 are study prompts, not completed comparative research. The existing issue discussion additionally suggests **Suzerain**, **Dwarf Fortress** and **Mount & Blade** for studying political narrative and cross-scale continuity. Assess those references before selecting adaptations.
+
+Before choosing a frontend, compare a minimal text/card client with candidate Python and engine clients against the same approved slice: input, accessibility, packaging, save compatibility and deployment effort. Before proposing a proprietary-game mod, verify the current official modding documentation and redistribution permissions. A mod experiment must not become a dependency of the standalone game.
+
+Before H4, separately decide scenario-versus-world canon, creator attribution and licenses, content validation, moderation and appeals, hidden-information access, griefing controls, server recovery and incompatible mod handling. These need explicit design and operational decisions; a provenance field alone does not solve them.
+
+## 16. Document acceptance and maintenance
+
+This file supplies a first slice pitch, proposed event-flow diagram, controller boundaries, implementation sequence, horizon ledger and playtest plan. Engine research, detailed UGC governance and the actual mechanics remain open. These proposals do not mark the issue's entire research checklist complete.
+
+A reader should be able to identify the game they are working on, the existing rule-authoring issues, the next scoped deliverable and the conditions for stopping expansion. Review that manually. Direct author instructions and approved scoped decisions govern implementation; a vision edit alone does not approve mechanics or expand a milestone.
+
+Reconcile this document when #309 or the relevant author decisions change, updating the reconciliation date and preserving the distinction between implemented capability and aspiration. Keep #309 available as the north-star discussion; completion of this document does not mean the ultimate game has been implemented.
