@@ -109,6 +109,10 @@ videogame products ([`docs/archive/NOOPUNK_AS_ONE_GAME.md`](docs/archive/NOOPUNK
 #48). The tabletop / Godot / Concordia distinction in this section is about notation
 and runtime sequence, not about maintaining three products.
 
+This section describes the **legacy NoöPunk RPG only** (see §0). The repository's second game, the
+NoöPunk × LaclauGPT crossover in `strategy_game/`, is a separate game with its own rules, scenario and
+timeline; the lore/rule boundary is in §0.
+
 The **tabletop-style RPG rules/worldbook are the canonical design source** for NoöPunk.
 
 Development order is binding:
