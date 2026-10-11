@@ -122,7 +122,11 @@ class SerializationContractTests(unittest.TestCase):
         self.assertEqual(leader.personality_tags, ["tag"])
 
     def test_event_keeps_provenance_distinct_from_the_description(self):
-        self.assertEqual(Event("e1", "text").provenance, "")
+        # #288 replaced the bare-string provenance with a typed record whose default origin is
+        # UNKNOWN (not evidence); the assertion checks the contract rather than the old literal.
+        default = Event("e1", "text").provenance
+        self.assertTrue(default.is_unknown)
+        self.assertEqual(default.source, "")
         self.assertNotEqual(Event("e1", "text", "evidence").description, "evidence")
 
 
