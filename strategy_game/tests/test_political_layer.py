@@ -13,6 +13,7 @@ Two properties matter more than the rest:
   edge type, and the scaffold must never require an optional dependency to load or view the
   political field.
 """
+import dataclasses
 import json
 import sys
 import unittest
@@ -279,6 +280,63 @@ class NoOptionalDependencyTests(unittest.TestCase):
         for adapter in capabilities.OPTIONAL_ADAPTERS:
             with self.subTest(adapter=adapter):
                 self.assertNotIn(f"import {adapter}", source)
+
+
+class NoScoringSurfaceTests(unittest.TestCase):
+    """No political *record* may grow a numeric field (issue #282's hard boundary).
+
+    The panel test pins the rendering hook's display fields; that leaves the records
+    themselves unguarded, and a `Demand.score` added by a later pass would reach the panel
+    only if the panel chose to read it. So this checks the dataclasses directly.
+
+    Coverage is **discovered, not listed**: a hand-written record list goes stale exactly
+    when a new record appears, which is when a score is most likely to arrive with it.
+    """
+
+    #: Field names that would mean a score, a strength or a threshold had been invented.
+    FORBIDDEN_TOKENS = (
+        "score", "strength", "weight", "salience", "momentum", "progress", "power",
+        "cost", "threshold", "confidence", "rating", "budget", "stake", "influence",
+    )
+
+    def _records(self) -> tuple[type, ...]:
+        from strategy_game import politics
+
+        return tuple(sorted(
+            (obj for obj in vars(politics).values()
+             if isinstance(obj, type) and dataclasses.is_dataclass(obj)
+             and obj.__module__ == politics.__name__),
+            key=lambda cls: cls.__name__,
+        ))
+
+    def test_the_record_discovery_finds_the_declared_records(self):
+        names = {cls.__name__ for cls in self._records()}
+        self.assertEqual(names, {"Demand", "Signifier", "Formation", "Frontier"})
+
+    def test_no_political_record_declares_a_numeric_field(self):
+        for record in self._records():
+            for spec in dataclasses.fields(record):
+                with self.subTest(record=record.__name__, field=spec.name):
+                    # String comparison: `from __future__ import annotations` means
+                    # `spec.type` is the annotation *text*, not the resolved type.
+                    self.assertNotIn(spec.type, ("int", "float", "complex"),
+                                     f"{record.__name__}.{spec.name} is numeric; the scaffold "
+                                     "stores no strength, weight or score")
+
+    def test_no_political_field_name_suggests_a_score(self):
+        for record in self._records():
+            for spec in dataclasses.fields(record):
+                tokens = set(spec.name.lower().split("_"))
+                for word in self.FORBIDDEN_TOKENS:
+                    with self.subTest(record=record.__name__, field=spec.name, token=word):
+                        self.assertNotIn(word, tokens)
+
+    def test_the_module_exposes_no_scoring_api(self):
+        from strategy_game import politics
+
+        for name in ("score", "rate", "weigh", "strengthen", "salience", "influence_of"):
+            with self.subTest(name=name):
+                self.assertFalse(hasattr(politics, name))
 
 
 if __name__ == "__main__":
