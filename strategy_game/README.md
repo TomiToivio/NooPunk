@@ -17,3 +17,7 @@ python -m unittest discover -s strategy_game/tests -v
 ```
 
 Only standard-library packages are required. The entrypoint displays the empty map/network view model as JSON. Later optional adapters may use NetworkX, Mesa, Ollama, Concordia and a map/UI framework after their designs are approved.
+
+## Long-term vision
+
+The horizon this project is building toward — one universe, two games, six scales of agency, and the H0–H5 gates — is recorded in [`docs/design/VISION.md`](../docs/design/VISION.md) (issue [#309](https://github.com/TomiToivio/NooPunk/issues/309)). It is a **north star, not an instruction**: it authorizes no mechanics, canon or scope, and it does not change anything in this directory.
