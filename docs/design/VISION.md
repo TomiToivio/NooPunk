@@ -1,4 +1,4 @@
-# NoöPunk: one God's-eye New Weird Grand Strategy RPG
+# NoöPunk — long-term vision
 
 **Status: LONG-TERM NORTH STAR. Aspirational.**
 
@@ -172,7 +172,9 @@ These are written as **tests**, so a proposed feature can be rejected against th
 - **Determinism and inspection:** recorded action/event log, seedable resolution,
   snapshots, replay tools, versioned schemas, explicit provenance. **Stochasticity lives
   in the proposal layer, not in the authoritative result.**
-- **Interfaces:** start with an abstract/text or 2D overhead strategic map and contextual leader, faction, discourse, institution and event panels. Maintain this God’s-eye paradigm even at H5; Godot is an optional view client, not a locked engine. No embodied action/exploration camera.
+- **Interfaces:** CLI/text and a minimal 2D map first; a polished strategy map, character
+  scenes and mission UI later; engine clients are extensible and **Godot is one candidate,
+  not a locked choice**.
 - **Multiplayer, far later:** authoritative server, permissions, access-controlled state,
   rate limits, persistence, rollback and conflict resolution; human/human, human/LLM and
   LLM/LLM interaction **without unlimited autonomous operation**.
@@ -193,7 +195,7 @@ is copied or depended upon.**
 - **Crusader Kings III** — character-focused long-horizon strategy and emergent narrative.
 - **Dune: Adventures in the Imperium** — Architect/Agent framing and strategic delegation.
 - **Eclipse Phase** — deep transhuman and existential science fiction for the RPG layer.
-- **Cyberpunk 2077** — inspiration for presentation polish, tone and production values, not first-person or third-person action gameplay.
+- **Cyberpunk 2077** — embodied city-scale storytelling and cinematic ambition.
 - **Stellaris** — expandable civilization-scale strategy and emergent history.
 - **EVE Online** — persistent player-led geopolitics, organizations, living economy.
 - **Citizen Sleeper** and **Disco Elysium** — dense decisions, character voice, unusual
@@ -280,8 +282,8 @@ LLM-controlled characters, safe creator tools and a clear governance model.
 auditability, retention.
 *Kill switch:* a governance or moderation problem we cannot honestly solve.
 
-**H5 — AAA-quality strategy presentation / MMO-scale horizon.**
-High-fidelity overhead map, portraits, events, animation, sound and possible EVE-like persistence. **No switch to an embodied action RPG.**
+**H5 — AAA / MMO-scale horizon.**
+Cinematic 3D, detailed environments, high-fidelity missions, potentially EVE-like scale.
 This is a **funding, team and technology-dependent production horizon**, not something
 today's Python scaffold must already support.
 *Gate:* explicit production feasibility — team, funding, content pipeline, engine, online
@@ -304,7 +306,7 @@ H0 ships would be the scope creep this document exists to prevent.
 
 ## 8. Non-goals for current agents
 
-- Do **not** treat the strategy RPG, grand strategy, AAA polish and MMO persistence as different products. They are optional maturity horizons of the ONE crossover game.
+- Do **not** attempt to build an AAA RPG, a grand strategy game and an MMO simultaneously.
 - Do **not** import the LaclauGPT research pipeline, claims of scientific causal certainty,
   or proprietary game content.
 - Do **not** rewrite existing NoöPunk RPG rules, invent canon, select or implement new
@@ -469,18 +471,3 @@ This file supplies a first slice pitch, proposed event-flow diagram, controller 
 A reader should be able to identify the game they are working on, the existing rule-authoring issues, the next scoped deliverable and the conditions for stopping expansion. Review that manually. Direct author instructions and approved scoped decisions govern implementation; a vision edit alone does not approve mechanics or expand a milestone.
 
 Reconcile this document when #309 or the relevant author decisions change, updating the reconciliation date and preserving the distinction between implemented capability and aspiration. Keep #309 available as the north-star discussion; completion of this document does not mean the ultimate game has been implemented.
-
-
-## 15. Merge reconciliation: map-first vision and H0 design gates
-
-**One primary screen:** a CK3-like overhead map/abstract board, zoomable across strategic domains where useful, plus contextual character sheets, faction orders, discourse/network panels, policy and diplomacy panels, and event dialogue. One authoritative world event feeds those views. Show separately **what happened**, **who claims what**, **what the approved rules changed**, and **what remains unknown**. Neither a mission nor the solar-system expansion adds a separate embodied exploration game.
-
-**H0-A, design approval first:** review #295 (leader/NPC), #296 (faction), and #297 (discourse/network) separately. Propose a one-page, paper-playable vertical slice with the player's role, initial NHI-crisis acceleration tension, one consequential choice, same-screen projections and clear end condition. Approve cross-layer event propagation as a fourth gate. No mechanic, numeric system, scenario canon or launch commitment is approved by this vision.
-
-**H0-B, small executable slice after approval:** retain an offline Python-standard-library baseline. Proposed pipeline: validated command intent → authorization → approved deterministic resolver → authoritative world state → recorded event/provenance → consistent map, leader, faction and discourse projections. Save/load and deterministic replay should record accepted actions, versioned rules and any randomness; optional LLM text is only a proposal. Test executable behavior, never prose or canon wording.
-
-**H0-C, graduate through playtesting:** one complete replayable, fast-paced scenario that a fresh player understands and can finish; inspectable causal outcomes, coherent panel interaction and no dependency on LLM, MongoDB, Godot, servers or a planetary simulation. Only then consider H1. H1–H5 are successive versions of the **same** God’s-eye grand-strategy RPG, never six separate games or playing modes.
-
-**Kill switches:** if politics is opaque simplify projections; if turns have dead air cut low-value events; if inference costs grow bound/disable agents; if online governance fails stay offline/co-op. Keep separate sourced reality, accepted science, actor claims, authored world premises, simulated consequences and unresolved mystery.
-
-*This section carries the distinctive user clarification and H0 sequencing from PR #311 while retaining main's existing detailed implementation and governance sections.*
