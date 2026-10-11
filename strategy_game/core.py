@@ -1,8 +1,8 @@
 """Data-only, rule-free foundation for the separate NoöPunk strategy game."""
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass, field
 import json
+from dataclasses import asdict, dataclass, field
 from typing import Any
 
 
@@ -78,6 +78,16 @@ class Event:
     description: str
     provenance: Provenance = field(default_factory=Provenance)
 
+    def __post_init__(self) -> None:
+        """Normalise a bare origin string into the container at construction time.
+
+        Accepting a string is convenient for fixtures and for older callers, but the
+        *stored* form is always the container -- otherwise a snapshot would round-trip
+        to an object that no longer equals the one that produced it.
+        """
+        if not isinstance(self.provenance, Provenance):
+            self.provenance = Provenance.from_any(self.provenance)
+
 
 @dataclass
 class WorldState:
@@ -96,7 +106,7 @@ class WorldState:
         return json.dumps(self.to_dict(), ensure_ascii=False, sort_keys=True)
 
     @classmethod
-    def from_json(cls, text: str) -> "WorldState":
+    def from_json(cls, text: str) -> WorldState:
         data = json.loads(text)
         return cls(
             schema_version=data["schema_version"],

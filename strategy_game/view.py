@@ -1,6 +1,8 @@
 """Read-only cartographic/network view model, without a map or game engine."""
 from __future__ import annotations
+
 from typing import Any
+
 from .core import WorldState
 
 
