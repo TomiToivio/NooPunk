@@ -2,6 +2,7 @@
 import unittest
 
 from strategy_game.core import (
+    Provenance,
     Asset,
     Event,
     Faction,
@@ -10,6 +11,7 @@ from strategy_game.core import (
     NetworkEdge,
     WorldState,
 )
+
 from strategy_game.view import board_view
 
 
@@ -44,7 +46,9 @@ class ContractTests(unittest.TestCase):
         )
         restored = WorldState.from_json(original.to_json())
         self.assertEqual(restored, original)
-        self.assertEqual(restored.events[0].provenance, "author:TBD")
+        # Stored as a container so evidence and generated discourse stay separable
+        # (#282); the author-supplied value is still preserved exactly.
+        self.assertEqual(restored.events[0].provenance, Provenance(kind="author:TBD"))
 
     def test_to_json_is_json_and_carries_every_collection(self):
         import json

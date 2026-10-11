@@ -46,10 +46,42 @@ class NetworkEdge:
 
 
 @dataclass
+class Provenance:
+    """Where a claim came from. Data only — this decides no rule and ranks nothing.
+
+    Issue #282 requires evidence and *generated or simulated* discourse to be stored
+    separately, and requires empirical extraction to stay distinguishable from
+    hypothetical simulation transitions. A bare string could not express that, so the
+    origin is a value the author fills in (for example "evidence", "simulated" or
+    "generated"), never an enum this scaffold invents.
+    """
+
+    kind: str = ""
+    source: str = ""
+    note: str = ""
+
+    @classmethod
+    def from_any(cls, value: "Provenance | dict | str | None") -> "Provenance":
+        """Accept a Provenance, a mapping, a bare kind string, or nothing."""
+        if isinstance(value, cls):
+            return value
+        if isinstance(value, dict):
+            return cls(**value)
+        if isinstance(value, str):
+            return cls(kind=value)
+        return cls()
+
+
+@dataclass
 class Event:
     identifier: str
     description: str
-    provenance: str = ""
+    provenance: Provenance = field(default_factory=Provenance)
+
+    def __post_init__(self) -> None:
+        """Normalise a bare origin string into the container at construction time."""
+        if not isinstance(self.provenance, Provenance):
+            self.provenance = Provenance.from_any(self.provenance)
 
 
 @dataclass
@@ -78,5 +110,12 @@ class WorldState:
             assets=[Asset(**item) for item in data["assets"]],
             locations=[Location(**item) for item in data["locations"]],
             edges=[NetworkEdge(**item) for item in data["edges"]],
-            events=[Event(**item) for item in data["events"]],
+            events=[
+                Event(
+                    identifier=item["identifier"],
+                    description=item["description"],
+                    provenance=Provenance.from_any(item.get("provenance")),
+                )
+                for item in data.get("events", [])
+            ],
         )

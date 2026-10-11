@@ -20,6 +20,7 @@ sys.path.insert(0, str(ROOT))
 
 from strategy_game import ports  # noqa: E402
 from strategy_game.core import (  # noqa: E402
+    Provenance,
     Asset,
     Event,
     Faction,
@@ -122,7 +123,7 @@ class SerializationContractTests(unittest.TestCase):
         self.assertEqual(leader.personality_tags, ["tag"])
 
     def test_event_keeps_provenance_distinct_from_the_description(self):
-        self.assertEqual(Event("e1", "text").provenance, "")
+        self.assertEqual(Event("e1", "text").provenance, Provenance())
         self.assertNotEqual(Event("e1", "text", "evidence").description, "evidence")
 
 
