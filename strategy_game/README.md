@@ -6,6 +6,8 @@ The three layers are represented as data only: `core.py` (leader, faction, asset
 
 **Important:** no game rules, turn engine, agent actions, resource economics, objectives, or canon are implemented. This directory does not change or replace the NoöPunk RPG. The strategy game maintains its own [RULEBOOK.md](RULEBOOK.md) and [research plan](docs/RULE_SYSTEM_RESEARCH.md).
 
+The additional standalone [`political.py`](political.py) vocabulary models Laclaudian articulations and Castellsian communication without numeric scores or importing LaclauGPT. It remains separate from the `WorldState`-integrated `politics.py` model pending explicit integration approval. See [the Gate B design proposal](docs/POLITICAL_SIMULATION_DESIGN.md).
+
 ## Run the empty-state demo
 From repository root:
 

@@ -245,8 +245,10 @@ class PortAndEntrypointTests(unittest.TestCase):
     def test_package_exports_are_declared(self):
         import strategy_game
 
+        # Layer II's entry point and its two vocabularies are exported alongside the core container.
         self.assertEqual(set(strategy_game.__all__),
-                         {"WorldState", "Provenance", "ProvenanceKind"})
+                         {"WorldState", "Provenance", "ProvenanceKind",
+                          "PoliticalField", "SignifierRole", "PowerMode"})
 
     def test_module_entrypoint_emits_the_view_model(self):
         result = subprocess.run([sys.executable, "-m", "strategy_game"], cwd=ROOT,

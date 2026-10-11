@@ -10,6 +10,8 @@ Reserved: Laclaudian ideological articulation, Castellsian communication power, 
 
 Data vocabulary only (no rules): `politics.py` carries `Demand`, `Signifier`, `Formation` and `Frontier`; political relations are ordinary `NetworkEdge` records with a relation-layer label, so the field is one multiplex graph. Design record: [docs/POLITICAL_SIMULATOR_MODEL.md](docs/POLITICAL_SIMULATOR_MODEL.md).
 
+The complementary `political.py` vocabulary and [Gate B design proposal](docs/POLITICAL_SIMULATION_DESIGN.md) introduce standalone articulations, signifier roles and communicative ties. These remain separate from the `politics.py` / `WorldState` representation. Both are containers, **not approved mechanics**; integration requires an explicit decision.
+
 ## Layer III: Faction strategy
 Reserved: organizational assets, faction management, strategic operations, resource allocation, spatial and network presence. All mechanics **TBD by author**.
 
