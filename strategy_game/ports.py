@@ -30,3 +30,15 @@ class MapProvider(Protocol):
     """
 
     def describe(self, state: WorldState) -> object: ...
+
+
+class AgentRunner(Protocol):
+    """Reserved agent-runner port: runs an actor against a state (see #282).
+
+    Named separately from ``AgentProvider`` because the issue lists "agent runners" as its own
+    adapter boundary: a provider supplies an actor, a runner advances it. Signature only -- which
+    layer uses one, and whether it is an LLM at all, stays open, and the scaffold never requires
+    an LLM to load or view world state.
+    """
+
+    def describe(self, state: WorldState) -> object: ...

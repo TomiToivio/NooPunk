@@ -122,7 +122,9 @@ class SerializationContractTests(unittest.TestCase):
         self.assertEqual(leader.personality_tags, ["tag"])
 
     def test_event_keeps_provenance_distinct_from_the_description(self):
-        self.assertEqual(Event("e1", "text").provenance, "")
+        # provenance is a container now (#282): an event with no stated origin must stay
+        # VISIBLY unknown rather than reading as an empty fact.
+        self.assertTrue(Event("e1", "text").provenance.is_unknown)
         self.assertNotEqual(Event("e1", "text", "evidence").description, "evidence")
 
 
