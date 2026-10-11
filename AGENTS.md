@@ -76,6 +76,8 @@ empirical analyses as game runtime dependencies.
    canon or typologies.
 5. **Tests cover executable code only**, in either game — see the automated tests policy above.
 
+For crossover integration details, also see [`strategy_game/README.md`](strategy_game/README.md), [`strategy_game/docs/RULE_SYSTEM_RESEARCH.md`](strategy_game/docs/RULE_SYSTEM_RESEARCH.md), and [`strategy_game/docs/INTEGRATION_BOUNDARIES.md`](strategy_game/docs/INTEGRATION_BOUNDARIES.md). These are crossover-specific references, not legacy rule transfers.
+
 ### 1. Author intent is canon
 
 Do not invent NoöPunk rules, mechanics, lore, history, factions, technologies, metaphysics, organizations, locations, character classes, archetypes, species, NHI categories, psionic powers, skills, attributes, combat systems, progression systems, equipment lists, economies, or world events unless the author has explicitly specified them.
@@ -108,6 +110,8 @@ NoöPunk is **one computer RPG/simulation**, not separate tabletop, simulation a
 videogame products ([`docs/archive/NOOPUNK_AS_ONE_GAME.md`](docs/archive/NOOPUNK_AS_ONE_GAME.md),
 #48). The tabletop / Godot / Concordia distinction in this section is about notation
 and runtime sequence, not about maintaining three products.
+
+**Scope:** This section governs the **legacy NoöPunk RPG only**. The crossover described in §0 (#306) is a second game with independent rules and a different starting scenario. Its presence does not weaken the legacy RPG's tabletop-first development sequence.
 
 This section describes the **legacy NoöPunk RPG only** (see §0). The repository's second game, the
 NoöPunk × LaclauGPT crossover in `strategy_game/`, is a separate game with its own rules, scenario and
@@ -298,6 +302,8 @@ When uncertain, choose the smaller implementation.
 > LaclauGPT crossover game in `strategy_game/` is a separate, independently playable project with its
 > own rulebook and its own rules track. "One RPG, three runtimes" remains true of the legacy RPG; it
 > is not a claim that NoöPunk is a single game.
+
+**Scope:** The one-game/three-runtime principle in this section applies to the legacy NoöPunk RPG, not to the independently designed crossover game in §0 (#306).
 
 NoöPunk is one RPG rules/world model. It is developed as **one computer
 RPG/simulation**, and the three headings below are notation/runtime choices within
