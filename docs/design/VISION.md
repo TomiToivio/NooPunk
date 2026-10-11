@@ -2,6 +2,14 @@
 
 **Status: LONG-TERM NORTH STAR. Aspirational.**
 
+> **Author clarification (2026-10-11, issue #309): one game, one primary perspective.**
+> The product is a **Crusader Kings III-style Grand Strategy / RPG with a God's-eye overhead
+> strategic view** — *not* several games, separately launched modes or an embodied open-world
+> RPG. The player primarily controls a faction through its leader, characters, agents and
+> institutions. The simulation layers in §3 are **interlocking systems of that one strategy
+> game**, not products in their own right. "AAA" means future presentation quality, depth,
+> reactivity and production polish — not a first-person camera or a mandatory 3D city.
+
 This document is a direction, not an instruction. It **authorizes no mechanics, no
 canon, no numerical design and no scope**. It does not override
 [`AGENTS.md`](../../AGENTS.md), and where the two ever disagree, `AGENTS.md` wins.
@@ -73,10 +81,12 @@ Tone shifts contextually: comic, bureaucratically absurd, tragic, cerebral, genu
 alien. New Weird is the umbrella; social science fiction and dark science-fiction comedy
 are deliberate modes.
 
-## 3. Six scales of agency
+## 3. Six interlocking simulation layers of one game
 
-One universe, many scales. The player may move between them; the simulation need not
-tick every scale at the same granularity.
+One game, six interlocking simulation layers. **These rows are simulation domains, not distinct games,
+separate campaigns, interchangeable play modes or camera perspectives.** The player stays in the
+overhead / strategic viewpoint, and selecting an agent, institution, movement or location opens the
+appropriate panel. The simulation need not tick every layer at the same granularity.
 
 | Scale | Player experience |
 |---|---|
@@ -168,7 +178,9 @@ is copied or depended upon.**
   Proprietary but moddable; a *prototype mod* path may be studied, but a total conversion
   must never be presumed releasable as a standalone product.
 - **Democracy 4** — policy choices, voter blocs, feedback loops.
-- **Crusader Kings III** — character-focused long-horizon strategy and emergent narrative.
+- **Crusader Kings III** — **primary structural and interface reference**: map-first God's-eye camera,
+  selectable territories / institutions / characters, faction-leader roleplaying, contextual
+  event and dialogue panels, and one continuous strategic campaign.
 - **Dune: Adventures in the Imperium** — Architect/Agent framing and strategic delegation.
 - **Eclipse Phase** — deep transhuman and existential science fiction for the RPG layer.
 - **Cyberpunk 2077** — embodied city-scale storytelling and cinematic ambition.
