@@ -49,12 +49,27 @@ binding and predates this document ([#306](https://github.com/TomiToivio/NooPunk
 See §11 for which existing design documents govern which game — several are legacy-only
 and must not be read as crossover doctrine.
 
-## 2. The ultimate game
+## 2. The ultimate game: one Grand Strategy RPG with a God's-eye view
 
-A New Weird roleplaying game and political simulation in which one person may play a
-character, a faction leader, a shaper of public discourse, or a hand on the machinery of
-planetary civilization — and in which, at the far horizon, many humans and optional
-LLM-driven characters inhabit a persistent world together.
+**There is exactly one game.** It is a **Crusader Kings III-style Grand Strategy / Roleplaying
+game** in which the player holds a **God's-eye view**: a single overhead strategic map of the
+political world, and the ability to zoom from that map all the way down to a named person —
+without ever leaving the game, switching modes or starting a different one.
+
+The player is **always a character**: someone with a history, relationships, loyalties,
+ambitions and a position inside a faction, institution or state. Power is *held by a person*,
+and it can be lost with that person. The strategic map is not a separate wargame layered on
+top — it is **the same world seen from further away**, and every event on it resolves down to
+people who can be named.
+
+Character RPG, faction strategy, the LaclauGPT-inspired political simulation, geopolitics,
+later space strategy and eventually multiplayer are **interacting subsystems of this one
+crossover game** — not six games, not six modes, and not six camera perspectives. The
+**overhead strategic map plus contextual panels is the enduring interface paradigm**: the map
+is the constant, and panels, ledgers and character sheets open over it according to context.
+
+This document uses the word *scale* throughout to mean **a zoom level of the one simulation**.
+It never means a separate product.
 
 **Primary genre: New Weird.** The setting is organized around paradigm shift, ontological
 mystery and institutions under stress. Social science fiction, science fantasy,
@@ -73,24 +88,33 @@ Tone shifts contextually: comic, bureaucratically absurd, tragic, cerebral, genu
 alien. New Weird is the umbrella; social science fiction and dark science-fiction comedy
 are deliberate modes.
 
-## 3. Six scales of agency
+## 3. One game, many zoom levels
 
-One universe, many scales. The player may move between them; the simulation need not
-tick every scale at the same granularity.
+The God's-eye map is always present. Zooming in does not change the game — it reveals more
+detail of the **same** simulation, and the same clock keeps running at every zoom level.
+Nothing here is a mode the player enters or leaves.
 
-| Scale | Player experience |
-|---|---|
-| **Person** | An UNSA field agent, scientist, journalist, activist, diplomat, hacker, psychic, posthuman or faction leader — lifepath, relationships, missions, meaningful choices and consequences |
-| **Organization / faction** | Lead a movement, network, intelligence cell, corporation, institute or NHI-aligned organization — leaders, assets, operations, covert and overt power, delegation, rivalry |
-| **Society / discourse** | Contest hegemony through narratives, identities, alliances and communication networks — signifiers, frontiers, legitimacy, coalitions. **Abstract and gameable**, never the research stack |
-| **Nation / planet** | Change states and global governance under ontological crisis — institutions, diplomacy, UNSA, crisis response, science, conflict, surveillance, trust |
-| **Solar system / beyond** | Follow disclosure and accelerating technology outward — settlement, posthuman polities, asymmetric civilizations, unknown realities |
-| **Persistent world** | Humans and optional LLM characters collectively produce ongoing history — persistent factions, delegated agents, asynchronous play, moderation and governance |
+The **Crusader Kings III structural model** is the benchmark: a named character with traits,
+relationships, secrets and ambitions; an overhead map of realms, factions and networks; a
+single turn structure advancing both together; and succession, rivalry and consequence
+linking them, so that losing the person loses the power. NoöPunk's version keeps that spine
+and replaces the feudal map with institutions, discourse networks and a state under
+ontological stress.
 
-**Multiscale continuity.** Consequence travels upward and downward: a discovery can change
-a faction's strategy; its public reading can move discourse; alignment can shift state
-policy; strategy can create personal missions. Players must be able to **focus on one
-scale and delegate, abstract or ignore the rest.**
+| Domain (zoom level of the one game) | What the God's-eye map shows | What zooming in reveals |
+|---|---|---|
+| **Person** | a named figure, their affiliations, and the missions they are on | lifepath, relationships, dilemmas, meaningful choices and consequences — as an UNSA field agent, scientist, journalist, activist, diplomat, hacker, psychic, posthuman or faction leader |
+| **Organization / faction** | blocs, cells, corporations, institutes and their rivalries across the map | leaders, assets, recruitment, operations, covert and overt power, delegation |
+| **Society / discourse** | contested narratives flowing through communication networks | signifiers, frontiers, legitimacy and coalitions. **Abstract and gameable**, never the research stack |
+| **Nation / planet** | states, institutions and the shape of global governance | diplomacy, UNSA, crisis response, science, conflict, surveillance, trust |
+| **Solar system / beyond** | settlement and polities beyond Earth, once reachable | posthuman polities, asymmetric civilizations, unknown realities |
+| **Persistent world** | other players' and LLM factions acting in the same history | delegated agents, asynchronous play, moderation and governance |
+
+**Zoom-level continuity.** Consequence travels in both directions through one model: a
+discovery can change a faction's strategy; its public reading can move discourse; alignment
+can shift state policy; strategy can create personal missions. The player may **work at any
+zoom level and delegate, abstract or ignore the others** — delegating is a decision inside the
+game, not a switch to a different one.
 
 *Illustrative causal chain — fiction, not a chosen mechanic:* an investigator finds
 ambiguous evidence of possible NHI involvement → a faction leaks it → rival populists
