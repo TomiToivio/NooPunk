@@ -211,14 +211,48 @@ each carries a **scope kill switch** — the thing that, if it is not working, g
 rather than rescued.
 
 **H0 — Today: tiny, independent, actually playable.**
-Three simple gameplay layers, an abstract board, a very small rule system, fast
-consequential turns. This is [#282](https://github.com/TomiToivio/NooPunk/issues/282) and
+Three simple interlocking systems inside **one God's-eye, CK3-style strategic interface**:
+an abstract board, a very small rule system, fast consequential turns. This is
+[#282](https://github.com/TomiToivio/NooPunk/issues/282) and
 its layer tracks [#295](https://github.com/TomiToivio/NooPunk/issues/295) ·
 [#296](https://github.com/TomiToivio/NooPunk/issues/296) ·
 [#297](https://github.com/TomiToivio/NooPunk/issues/297). Existing "no unapproved
 mechanics or canon" instructions remain in force.
 *Gate:* a complete, fun, explainable mini-scenario one person can finish.
 *Kill switch:* any layer that cannot be explained on a table.
+
+**H0 in three stages — approval before runtime.** *(Contributed by the parallel vision draft in
+[#311](https://github.com/TomiToivio/NooPunk/pull/311) and kept here so the sequence is not lost:
+editorial judgement gates the code, not the other way round.)*
+
+- **H0-A — editorial and design gates, before any playable mechanics.** Review the three layer
+  proposals **separately** with the author and other agents, selecting only the necessary leader
+  attributes and tags, faction decisions, political representations and interactions. No new
+  numerical ranges, costs, randomness or canonical actors are assumed. Write a **one-page
+  vertical-slice proposal** naming the player, the initial tension, the integrated map and its
+  contextual panels, one illustrative consequential decision, the ending and the estimated
+  cognitive burden — author approval required before mechanics. Specify a **paper-playable
+  version** of the proposed leader, faction and discourse rules, reviewed separately, with
+  cross-layer event propagation as its own fourth gate. Identify which facts are historical,
+  invented, factional, simulated or uncertain; **never conflate media reach with persuasion, or a
+  game score with measured hegemony.**
+- **H0-B — minimal runtime, after those approvals.** Python standard library as baseline, all
+  adapters optional; the existing empty scaffold and view model are a starting point, not a
+  request to restructure. Interfaces rather than a committed file layout: validated command
+  intent, authorized rules resolver, versioned world snapshot, append-only event and provenance
+  record, projections for character card, faction board and discourse graph **on one overhead
+  strategy screen**, save/load/replay, and a minimal text or 2D strategy UI. One explicit player
+  decision should yield a clearly explained event and changes visible in the linked panels
+  **without leaving the map**. Seed randomness and record inputs so resolution can be replayed.
+  Verified with **behavioural tests for executable code only** — command validity, save/load,
+  deterministic replay, no unauthorized state mutation, consistent event-to-view projections —
+  and never with tests over design prose, lore or canon.
+- **H0-C — graduation.** The author has explicitly approved every mechanic and scenario element
+  used; a fresh player can finish a complete session without reading the research framework;
+  every meaningful change has an inspectable in-game explanation; the game runs, saves and loads
+  **offline with no LLM, database, Mesa, Godot or server**; gameplay review — not documentation
+  CI — validates the prose; and scope stays small, with no empty-turn slog or administrative
+  micromanagement.
 
 **H1 — Polished indie political RPG/strategy.**
 Character creation and lifepath, leaders and agents, scenario authoring, dialogue and
