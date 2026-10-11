@@ -37,7 +37,7 @@ binding and predates this document ([#306](https://github.com/TomiToivio/NooPunk
 |---|---|---|
 | Path | `RULEBOOK.md`, `rulebook/`, `src/`, `data/rules/` | `strategy_game/` |
 | Rules | its own, unchanged | **NO RULES APPROVED** |
-| Status | developed, not to be rewritten | active new game, R0 |
+| Status | developed, not to be rewritten | active new game, S0 |
 | Timeline | its own default campaign | **acceleration toward** the NHI Crisis |
 
 - **Lore is shared.** Characters, institutions, NHI concepts and prior creative work
@@ -211,7 +211,7 @@ is copied or depended upon.**
   crossover is a separate scenario, game and rules implementation**, not a forced merger
   of rulebooks.
 
-## 7. The plan: an open-source indie game, shipped in releases
+## 7. The plan: an open-source indie game, shipped in stages
 
 **Product target.** The destination is a **finished, released, open-source indie game** — small
 enough for one developer plus contributors, complete enough to be worth playing on its own, and
@@ -223,12 +223,12 @@ toward.**
 not a ladder of growing ambition. Every release must be independently playable, and a release
 that is not fun is not rescued by the next one's systems. No dates; no commitments.
 
-**R0 — Paper, then a prototype. Approval before runtime.**
+**S0 — Paper, then a prototype. Approval before runtime.**
 The design gates come **before** any playable mechanics. This is the content of the former H0
 stages, kept because the sequence is the point: editorial judgement gates the code, not the
 reverse.
 
-- **R0-A — design gates.** *Before any playable mechanics:* review the layer proposals
+- **S0-A — design gates.** *Before any playable mechanics:* review the layer proposals
   **separately** with the author and other agents, selecting only the necessary leader attributes
   and tags, faction decisions, political representations and interactions. No new numerical
   ranges, costs, randomness or canonical actors are assumed. Write a **one-page vertical-slice
@@ -238,7 +238,7 @@ reverse.
   faction and discourse rules, reviewed separately, with cross-layer event propagation as its own
   fourth gate. Identify which facts are historical, invented, factional, simulated or uncertain;
   **never conflate media reach with persuasion, or a game score with measured hegemony.**
-- **R0-B — minimal runtime, after those approvals.** Python standard library as baseline, all
+- **S0-B — minimal runtime, after those approvals.** Python standard library as baseline, all
   adapters optional; the existing empty scaffold and view model are a starting point, not a request
   to restructure. Interfaces rather than a committed file layout: validated command intent,
   authorized rules resolver, versioned world snapshot, append-only event and provenance record,
@@ -249,7 +249,7 @@ reverse.
   **behavioural tests for executable code only** — command validity, save/load, deterministic
   replay, no unauthorized state mutation, consistent event-to-view projections — and never with
   tests over design prose, lore or canon.
-- **R0-C — graduation to R1.** The author has explicitly approved every mechanic and scenario
+- **S0-C — graduation to S1.** The author has explicitly approved every mechanic and scenario
   element used; a fresh player can finish a complete session without reading the research
   framework; every meaningful change has an inspectable in-game explanation; the game runs, saves
   and loads **offline with no LLM, database, Mesa, Godot or server**; and scope stays small, with no
@@ -258,46 +258,73 @@ reverse.
 *Gate:* a complete, fun, explainable mini-scenario one person can finish.
 *Kill switch:* any system that cannot be explained on a table.
 
-**R1 — First public playable release.**
-The first thing a stranger can download and enjoy: the abstract strategic map, one playable
-faction leader, rival factions, decisions and events, a visible political-power consequence, and
-a complete short scenario. **Published open source**, with a licence, a README that says how to
-run it, and a documented save format.
-*Gate:* a stranger on the internet plays a full session to the end without help.
-*Kill switch:* anything that requires an account, a server or a paid dependency.
+**S1 — The indie release. This is the actual goal.**
+A complete, finishable, presentable open-source indie game: one campaign covering the acceleration
+toward the NHI Crisis, one playable faction leader with a small cast, rival factions, decisions and
+events, a legible 2D overhead map with contextual panels, saves and loads, and a closing summary
+that explains what changed and why — with **no required LLM, database or network service**. Shipped
+under an **open-source software licence** for the code and an **open content licence** for
+NoöPunk-original material, with a published attribution and provenance policy (§7a, and the licence
+documents referenced there). Reached in three milestones, **each of which must be playable**:
 
-**R2 — Content-complete small game.**
-The vertical slice becomes a full, coherent small campaign: character creation and lifepath,
-leaders and agents, discourse and network play, geopolitics, scenario authoring, an appealing 2D
-interface, saves and replay, and a complete NHI-acceleration campaign. Modding and scenario data
-formats documented.
-*Gate:* repeatably enjoyable, and other people can author scenarios without reading the source.
-*Kill switch:* interface polish displacing rule coherence.
+- **S1-a — first public playable.** The first thing a stranger can download and enjoy: the abstract
+  strategic map, one playable faction leader, rival factions, decisions and events, a visible
+  political-power consequence, and a complete short scenario, published open source with a licence,
+  a README and a documented save format.
+  *Gate:* a stranger on the internet plays a full session to the end without help.
+  *Kill switch:* anything that requires an account, a server or a paid dependency.
+- **S1-b — content-complete.** The vertical slice becomes a full, coherent small campaign: character
+  creation and lifepath, leaders and agents, discourse and network play, geopolitics, scenario
+  authoring, an appealing 2D interface, saves and replay, and a complete NHI-acceleration campaign,
+  with modding and scenario data formats documented.
+  *Gate:* repeatably enjoyable, and other people can author scenarios without reading the source.
+  *Kill switch:* interface polish displacing rule coherence.
+- **S1-c — 1.0.** A released game: balanced, documented, moddable, accessible, with contributor
+  documentation, a contribution and provenance process, a content-licence statement, and a
+  UGC/moderation policy before any community content pipeline opens. Optional bounded LLM character
+  play, if it can be **switched off** without losing the game.
+  *Gate:* a finished game we would honestly put our names on, playable offline forever.
+  *Kill switch:* any feature that makes the game unusable without a live service.
 
-**R3 — 1.0.**
-A released game: balanced, documented, moddable, accessible, with contributor documentation, a
-contribution and provenance process, a content-licence statement, and a UGC/moderation policy
-before any community content pipeline opens. Optional bounded LLM character play, if it can be
-**switched off** without losing the game.
-*Gate:* a finished game we would honestly put our names on, playable offline forever.
-*Kill switch:* any feature that makes the game unusable without a live service.
+**S2 — Post-release depth, driven by real players.** *(Unscheduled.)*
+Fixes and balancing from actual play, deeper political and institutional simulation, richer
+character relationships, a scenario editor and a documented mod format, community scenarios, and
+*optional* bounded LLM-driven characters behind a clearly marked setting.
+*Gate:* players keep playing and modding it, and the added depth is legible rather than opaque.
+*Kill switch:* LLM cost or latency, or content sprawl, becoming load-bearing.
 
-**Beyond 1.0 — deliberate non-plan.** A persistent multiplayer world and cinematic production
-remain *possible and interesting*, and nothing here forbids them. They are **not stages of this
-plan**, they are not required to justify R1–R3, and starting them requires a new author-approved
-issue. This is what keeps the indie target honest.
+**S3 — Optional, community-scaled expansion.** *(Unscheduled.)*
+Broader Earth strategy and, only if the released game has proven itself and contributors have
+arrived, a selective off-world layer. Abstract distant regions aggressively; **do not simulate what
+a small team cannot maintain.**
+*Gate:* evidence of demand plus maintainers, not ambition.
+*Kill switch:* any system that only produces waiting or maintenance burden.
+
+**S4 — Optional persistent multiplayer.** *(Unscheduled, not planned.)*
+Private and small co-operative play first; shared persistent worlds only if someone can genuinely
+operate, moderate and fund them, with explicit permissions, rollback and conflict handling. The
+project **does not plan, promise or architect for a public MMO-scale service.** If it never happens,
+the game is unaffected.
+*Gate:* a real operator, a real governance model and real economics — otherwise it does not start.
+
+**Explicitly not planned.** AAA production values and MMO-scale operations are **out of scope as
+planning targets**. They may be discussed as distant fan-scale possibilities, but no stage, no
+architecture decision and no roadmap commitment may depend on them, and **no agent may use them to
+justify added scope, staffing or infrastructure.** This is what keeps the indie target honest.
 
 ### Release ledger
 
-| Release | Ships | Gate | Kill switch | Owning issue |
+| Stage | Ships | Gate | Kill switch | Owning issue |
 |---|---|---|---|---|
-| R0 | paper rules + minimal prototype | author-approved design gates precede code | a system that cannot be explained on a table | #282, #295, #296, #297 |
-| R1 | first public open-source playable | a stranger finishes a session unaided | needs an account, server or paid dependency | *unassigned* |
-| R2 | content-complete small game | repeatable, third-party authoring works | polish over coherence | *unassigned* |
-| R3 | 1.0 release | a finished game, offline forever | unusable without a live service | *unassigned* |
-| beyond | *not planned* | a new approved issue | — | — |
+| S0 | paper rules + minimal prototype | author-approved design gates precede code | a system that cannot be explained on a table | #282, #295, #296, #297 |
+| S1-a | first public open-source playable | a stranger finishes a session unaided | needs an account, server or paid dependency | *unassigned* |
+| S1-b | content-complete small game | repeatable, third-party authoring works | polish over coherence | *unassigned* |
+| S1-c | 1.0 release | a finished game, offline forever | unusable without a live service | *unassigned* |
+| S2 | post-release depth from real players | players keep playing and modding | LLM cost or content sprawl | *unassigned* |
+| S3 | optional community-scaled expansion | demand plus maintainers | systems that only add burden | *unassigned* |
+| S4 | optional persistent multiplayer | a real operator and governance model | — | *not planned* |
 
-**Only R0 has an owning issue, and that is deliberate.** Assigning owners to R1–R3 before R0
+**Only S0 has an owning issue, and that is deliberate.** Assigning owners to S1–S4 before S0
 graduates would be the scope creep this document exists to prevent.
 
 ## 7a. Open-source indie requirements
@@ -311,6 +338,13 @@ is out of scope until the author changes this section.
   treats **code and content as separate licensing questions** — the licence ledger work in
   [#200](https://github.com/TomiToivio/NooPunk/issues/200) covers rules prose, data and lore;
   **source code needs its own software licence**, and that choice is the author's.
+- **Non-commercial sources must stay out of the release.** Eclipse Phase-derived material is
+  CC BY-NC-SA, and the existing EP2 homebrew prototype with it. A released game cannot absorb
+  NC-licensed content, so that material stays **isolated, marked and attributed**, and never enters
+  a distributable build. This is the largest clean-up obligation before S1, and the licence
+  documents in the repository — the
+  [#200](https://github.com/TomiToivio/NooPunk/issues/200) release gate, notice plan and packaging
+  guard — hold the binding detail rather than this document.
 - **Nothing proprietary is depended on.** No Terra Invicta, Crusader Kings III, EVE, Stellaris or
   other commercial game's code, assets or rules text is copied, linked or required. They are
   **studied**, never ported. A total conversion of anyone else's game can never be presumed
@@ -458,7 +492,7 @@ These are proposed work packages, not additional authorization. Continue the exi
 | C. Specify the shared turn | #282, after A and B | Inputs, action ownership, ordering, randomness, rejection behavior and cross-layer consequences | An author-reviewed worked turn explains every state change |
 | D. Implement the small resolver | Scoped follow-up to #282 | Headless Python implementation of the approved procedures and executable behavior tests | Human-controlled slice runs offline; views cannot alter state |
 | E. Make the slice finishable | #282 integration, after C and D | Approved scenario, text interface, end summary, save/load and inspectable event history | One person can finish and explain the consequences |
-| F. Playtest before expansion | #282; later R1 decision | Playtest notes and a small prioritized revision list | Author accepts pacing, clarity and replay value before adding scope |
+| F. Playtest before expansion | #282; later S1 decision | Playtest notes and a small prioritized revision list | Author accepts pacing, clarity and replay value before adding scope |
 
 Rule selection, not engine selection, is the immediate dependency. NetworkX, Mesa, a database, Godot, Concordia and model providers remain optional candidates. Select libraries only when an approved requirement makes the standard-library approach inadequate. Do not build a distributed platform to serve an empty turn loop.
 
@@ -466,11 +500,11 @@ Rule selection, not engine selection, is the immediate dependency. NetworkX, Mes
 
 | Horizon | Deliverable focus | Dependency and evidence for proceeding | Scope kill switch | Status / work home |
 | --- | --- | --- | --- | --- |
-| R0 | Tiny leader–faction–discourse slice | Steps A–F; a complete explainable episode | Reduce scenario breadth and presentation; retain consequential choices | Scaffold exists; rules pending in #282/#295–#297 |
-| R1 | First public open-source playable | R0 graduation; a stranger finishes a session unaided | Cut anything needing an account, a server or a paid dependency | Unscheduled proposal |
-| R2 | Content-complete small game with authoring tools | R1 enjoyment established; usable saves and a coherent content pipeline | Keep text/cards; postpone engine migration and cinematic scenes | Unscheduled proposal |
-| R3 | Balanced, documented, moddable 1.0 | Legible causes, affordable cost, working modding and contributor process | Disable optional model agents; retain authored content and rules-driven play | Unscheduled proposal; #304 is related agent design, not multiplayer approval |
-| beyond | *Not planned* — multiplayer persistence and cinematic production | A new author-approved issue | Ship the smaller game; no AAA/MMO dependency imposed on earlier releases | Aspirational only |
+| S0 | Tiny leader–faction–discourse slice | Steps A–F; a complete explainable episode | Reduce scenario breadth and presentation; retain consequential choices | Scaffold exists; rules pending in #282/#295–#297 |
+| S1-a | First public open-source playable | S0 graduation; a stranger finishes a session unaided | Cut anything needing an account, a server or a paid dependency | Unscheduled proposal |
+| S1-b | Content-complete small game with authoring tools | S1-a enjoyment established; usable saves and a coherent content pipeline | Keep text/cards; postpone engine migration and cinematic scenes | Unscheduled proposal |
+| S1-c | Balanced, documented, moddable 1.0 | Legible causes, affordable cost, working modding and contributor process | Disable optional model agents; retain authored content and rules-driven play | Unscheduled proposal; #304 is related agent design, not multiplayer approval |
+| S2–S4 | Post-release depth, optional expansion, optional multiplayer | Evidence of demand and maintainers; a real operator for any server | Ship the smaller game; no AAA/MMO dependency imposed on earlier releases | Aspirational only |
 
 ## 15. Playtest and research plan
 
