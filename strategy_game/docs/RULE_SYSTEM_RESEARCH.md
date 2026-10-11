@@ -54,7 +54,6 @@ Possible later decisions concern leaders, field offices, institutions, legitimac
 
 ## Separate rule-authoring gates
 Gate A: author-approved leader RPG rules. Gate B: author-approved political-simulation methodology and simulation assumptions. Gate C: author-approved strategy rules. Gate D: explicit integration contract and prototype playtest. Until all relevant gates, **no gameplay mechanics are implemented**.
-
 ## Minimal abstract map visualisation and scenario import (plan, no canon)
 
 Task 6 of #282. Both halves are *plans*: neither selects a rendering engine nor introduces a
