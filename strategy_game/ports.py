@@ -1,6 +1,8 @@
 """Reserved adapters: signatures only. No rules, actions or transitions."""
 from __future__ import annotations
+
 from typing import Protocol
+
 from .core import WorldState
 
 
