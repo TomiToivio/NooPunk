@@ -5,7 +5,9 @@
 This document is a direction, not an instruction. It **authorizes no mechanics, no
 canon, no numerical design and no scope**. It does not override
 [`AGENTS.md`](../../AGENTS.md), and where the two ever disagree, `AGENTS.md` wins.
-Nothing here is a commitment, a date, or a promise of AAA or MMO scale.
+Nothing here is a commitment or a date. The plan in §7 ends at a **finished, released,
+open-source indie game**; AAA production values and MMO-scale services are **not stages of
+it** (§7a).
 
 It exists for one purpose: **to keep the long horizon coherent while every actual
 increment stays small.** The releases in §7 are gates, not entitlements. Each one must
@@ -143,17 +145,18 @@ These are written as **tests**, so a proposed feature can be rejected against th
 6. **Human/LLM parity of *roles*, not of implementation.** A human or an AI may inhabit an
    NPC, leader, faction or diplomat — within explicit permissions, compute budgets and
    anti-abuse boundaries. LLM play is a bounded participant, never an unbounded optimizer.
-7. **Simulation first, presentation later.** Headless world model and playable text/2D
-   interfaces first; attractive interfaces next; cinematic 3D last, and only if resources
-   exist.
+7. **Simulation first, presentation later, inside indie reach.** Headless world model and
+   playable text/2D interfaces first; a modest, presentable 2D strategy map and its panels
+   next. Nothing beyond that is planned, and no release may wait on cinematic production.
 8. **Persistent causality and legibility.** The game must be able to explain *why* society,
    loyalties and power changed. Deterministic rules, randomness, LLM-generated content,
    authored canon and in-world claims are **distinguishable**, always.
 9. **Player and creator agency.** Scenario editing, faction and leader creation, modding
    interfaces, user campaigns, community storytelling — and, at the far horizon, shared
    world-building with moderation.
-10. **Accessible scope.** Modular solo play must remain viable **even if** the MMO and AAA
-    ambitions never happen. This pillar outranks the rest when they conflict.
+10. **Shippable scope.** The goal is a **finished open-source indie game**, not an ambition to
+    grow into something larger. Solo play must always be viable, with or without multiplayer
+    or optional model support. This pillar outranks the rest when they conflict.
 
 ## 5. Technical architecture (candidates, not commitments)
 
@@ -195,7 +198,11 @@ is copied or depended upon.**
 - **Crusader Kings III** — character-focused long-horizon strategy and emergent narrative.
 - **Dune: Adventures in the Imperium** — Architect/Agent framing and strategic delegation.
 - **Eclipse Phase** — deep transhuman and existential science fiction for the RPG layer.
-- **Cyberpunk 2077** — embodied city-scale storytelling and cinematic ambition.
+  **Licensing boundary:** EP-derived material is CC BY-NC-SA, so it is **non-commercial** and
+  cannot enter a released, distributable build. Keep it isolated, marked and attributed
+  (§7a).
+- **Cyberpunk 2077** — a benchmark for AAA production values at AAA budget, studied so that
+  this project knows what it is **not** attempting. Not a scope target, not a camera to copy.
 - **Stellaris** — expandable civilization-scale strategy and emergent history.
 - **EVE Online** — persistent player-led geopolitics, organizations, living economy.
 - **Citizen Sleeper** and **Disco Elysium** — dense decisions, character voice, unusual
