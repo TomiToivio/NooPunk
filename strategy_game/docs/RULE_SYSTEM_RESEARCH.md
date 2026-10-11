@@ -32,6 +32,8 @@ Laclau/Mouffe/Palonen describe articulations of political identities and demands
 
 **Agent approach:** Mesa for aggregate/non-central actors; optional Ollama or Concordia for a handful of faction leaders. LLM output is a proposal, not authority over game state. A validated rule layer must eventually transform proposals into state changes. An entirely non-LLM path is required. Model costs, nondeterminism and prompt injections need controls.
 
+**Concrete proposal:** [POLITICAL_SIMULATION_DESIGN.md](POLITICAL_SIMULATION_DESIGN.md) maps this section's concepts onto the abstract vocabulary that now exists in `../political.py` (demands, signifier roles, articulations, frontiers, communicative ties, inferred formations) and sets out the unapproved play loop with its Gate B assumptions listed for approval. LaclauGPT stays a **theory source**: nothing in the layer imports it, and it stores no numeric quantity.
+
 ## Layer III: Faction management options
 Possible later decisions concern leaders, field offices, institutions, legitimacy, coalitions, media channels, research, operations and logistical assets. Do not select an economy or military system yet. Show physical **location**, social **network position**, and ideological **formation** as distinct dimensions. Assess how to represent transnational networks crossing national borders and how to keep resource locations visibly differentiated from network edges.
 

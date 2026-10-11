@@ -8,6 +8,8 @@ Reserved: attributes, personality trait tags, character decisions, roleplay, res
 ## Layer II: Network-society political simulation
 Reserved: Laclaudian ideological articulation, Castellsian communication power, agents, agency, contested meanings and systemic events. All transition mechanisms **TBD by author**.
 
+An abstract vocabulary of containers now exists (`political.py`: demands, signifiers and their roles, articulations, frontiers, communicative ties, inferred formations), with the proposed play loop in [docs/POLITICAL_SIMULATION_DESIGN.md](docs/POLITICAL_SIMULATION_DESIGN.md). **A Gate B proposal, not a rule:** no transition, cost, round structure or win condition is implemented or approved.
+
 ## Layer III: Faction strategy
 Reserved: organizational assets, faction management, strategic operations, resource allocation, spatial and network presence. All mechanics **TBD by author**.
 
