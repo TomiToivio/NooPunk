@@ -428,6 +428,10 @@ MVP exists and has been played.
 
 - Do **not** attempt to build an AAA RPG, a grand strategy game and an MMO simultaneously. The
   plan in §7 ends at a **finished open-source indie game**; anything past that is not a stage of it.
+- Do **not** scale the MVP up toward the vision. Scale the vision down to the MVP (§7b): cut
+  regions, factions, characters and events before adding a system, and never add a fourth layer
+  to the three-pillar MVP. The vision is the direction the MVP must not contradict — it is not
+  the build target.
 - Do **not** add a dependency that stops the game being built and run **from source, offline,
   without an account and without a paid service**.
 - Do **not** copy, link or require any commercial game's code, assets or rules text, and never
@@ -451,6 +455,8 @@ Each is a future piece of work, carried by a scoped issue rather than built from
 - [ ] A **cross-scale world-state and event-flow architecture** — where consequence travels, and where simulation is abstracted.
 - [ ] **Candidate engines, Python-to-engine bridges and licensed/modding prototypes**, findings kept non-binding.
 - [ ] **Separation of human-played, LLM-played and rules-driven roles**, with the limits of delegation.
+- [ ] The **MVP size envelope** — the concrete region, faction, character, event, turn and save
+  counts, author-confirmed at S0-A, replacing the provisional "handfuls" in §7b.
 - [ ] The **release matrix** with dependencies and kill switches — extended from §7's ledger.
 - [ ] **UGC governance** — moderation, canon conflicts, multiplayer trust, attribution.
 - [ ] **Playtesting criteria** — engagement per minute, meaningful consequences per turn, clarity of power shifts, replayability, operational cost.
