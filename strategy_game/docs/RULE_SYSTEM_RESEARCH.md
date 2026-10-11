@@ -54,3 +54,33 @@ Possible later decisions concern leaders, field offices, institutions, legitimac
 
 ## Separate rule-authoring gates
 Gate A: author-approved leader RPG rules. Gate B: author-approved political-simulation methodology and simulation assumptions. Gate C: author-approved strategy rules. Gate D: explicit integration contract and prototype playtest. Until all relevant gates, **no gameplay mechanics are implemented**.
+
+## Minimal abstract map visualisation and scenario import (plan, no canon)
+
+Task 6 of #282. Both halves are *plans*: neither selects a rendering engine nor introduces a
+setting fact. The scaffold already emits the neutral view model these would consume
+(`strategy_game/view.py`), and `strategy_game/ports.py::MapProvider` marks where a geometry
+source would plug in.
+
+**Map, smallest useful form.** Three layers over one abstract board, drawn from state that
+already exists rather than from new data: point locations from `Location`, graph nodes and
+edges from `Faction`/`NetworkEdge`, and asset pins from `Asset.location_id`. Candidates to
+compare later, none chosen: a static SVG or HTML page generated from the view model, a
+matplotlib/plotly figure, a lightweight Python desktop canvas, or a browser page served by
+Python. Constraints to hold whichever is picked: the board is a *board*, not empty terrain;
+no turn or movement is implied by drawing a node; and the view must render from a snapshot
+with **no** optional adapter installed.
+
+**Scenario import, without inventing canon.** The realistic source is what the repository
+already publishes — the existing NoöPunk factions, organisations and places — imported as
+*references* into `Location` / `Faction` / `Asset` containers, with the origin recorded in
+`Provenance.source`. Two boundaries: an imported name is a label, not a rule or a claim
+about real institutions, and the strategy game must not become a second source of canon for
+the RPG. Import stays a one-way, explicit mapping the author approves; nothing is inferred
+from the RPG's rulebook, and no faction, place or capability is added that the RPG does not
+already carry.
+
+**Open questions for the author.** Is the board a flat world, a region set, or a graph without
+geography? Should a scenario pin historical dates inside 2026–2045 or stay undated? Does
+imported RPG material need a compatibility marker in the snapshot so a future change to the
+RPG can be detected rather than silently absorbed?

@@ -22,6 +22,8 @@ jobs:
           pip install -r requirements.txt
       - name: Test executable game code
         run: python -m unittest discover -s tests -p "test_*.py"
+      - name: Test the standalone strategy game scaffold
+        run: python -m unittest discover -s strategy_game/tests -p "test_*.py"
       - name: Smoke-check executable game commands
         run: |
           python scripts/noopunk_text.py --help
