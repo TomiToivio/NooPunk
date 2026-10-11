@@ -1,8 +1,8 @@
 """Data-only, rule-free foundation for the separate NoöPunk strategy game."""
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass, field
 import json
+from dataclasses import asdict, dataclass, field
 from typing import Any
 
 
@@ -69,7 +69,7 @@ class WorldState:
         return json.dumps(self.to_dict(), ensure_ascii=False, sort_keys=True)
 
     @classmethod
-    def from_json(cls, text: str) -> "WorldState":
+    def from_json(cls, text: str) -> WorldState:
         data = json.loads(text)
         return cls(
             schema_version=data["schema_version"],
