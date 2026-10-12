@@ -6,9 +6,17 @@ NoöPunk is an experimental **computer RPG and social simulation** set in **20XX
 
 The project is currently a **playable text-based prototype**. You can run the normal game entirely without Ollama or an LLM.
 
+## Motivation: social science first, science fiction second
+
+**My primary motivation is sociological modeling of possible near-future paradigm-shift scenarios.** NoöPunk is an experiment at the intersection of **social science, social data science, and social science fiction**. The game is a way to build and explore simple, explicit models of how societies, institutions, networks, ideologies, and political factions might respond to interacting transformations in AI, nonhuman intelligence (NHI), and consciousness/PSI. These are exploratory scenarios, not predictions or empirical claims that contested phenomena are real.
+
+**My secondary motivation is to make science-fiction entertainment in my own style.** Characters, political satire, unsettling mysteries, philosophical questions, absurdity, and encounters with the genuinely strange give the models a playable and imaginative form.
+
+The resulting genre is best described as **Social Science Fiction × New Weird**. **Cyberpunk Science Fantasy emerges progressively** as the paradigm shifts become more visible and consequential within the fictional world. The scenario starts around **2027**, still close to recognizable contemporary society, rather than assuming a mature cyberpunk future from the outset. Social modeling remains the core motivation throughout; the aesthetics and possibilities of the world evolve with the crisis.
+
 ## Genre and positioning
 
-**Genre identity:** **New Weird** is the primary creative genre, **Social Science Fiction** defines the central political and societal questions, and **Cyberpunk Science Fantasy** supplies a secondary technological and speculative aesthetic. These are complementary lenses, not three separate games.
+**Genre identity:** **Social Science Fiction × New Weird** is the defining blend: social-scientific modeling motivates the project and New Weird gives it its distinctive fictional expression. **Cyberpunk Science Fantasy** becomes increasingly prominent as the fictional paradigm shifts unfold. These are complementary lenses, not three separate games.
 
 ### 1. Social Science Fiction: society is the protagonist
 
@@ -16,7 +24,7 @@ NoöPunk explores how institutions, ideologies, communications, economies, relig
 
 ### 2. New Weird: reality refuses to fit the categories
 
-**The primary genre.** AI, alleged nonhuman intelligences, anomalous consciousness, PSI, unfamiliar religions, and strange institutions collide without reducing the mystery to conventional aliens, magic, or a single tidy explanation. The tone can shift between political satire, unsettling investigation, philosophical wonder, absurd comedy, and the profoundly alien. The paradigm shift is ontological as well as technological: who gets to decide what is real?
+**The primary imaginative genre, alongside Social Science Fiction.** AI, alleged nonhuman intelligences, anomalous consciousness, PSI, unfamiliar religions, and strange institutions collide without reducing the mystery to conventional aliens, magic, or a single tidy explanation. The tone can shift between political satire, unsettling investigation, philosophical wonder, absurd comedy, and the profoundly alien. The paradigm shift is ontological as well as technological: who gets to decide what is real?
 
 ### 3. Cyberpunk Science Fantasy: the world and its tools
 
