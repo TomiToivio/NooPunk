@@ -23,3 +23,7 @@ Only standard-library packages are required. The entrypoint displays the empty m
 ## Long-term vision
 
 The horizon this project is building toward — **one open-source indie Grand Strategy RPG with a God's-eye view**, one universe and two games, six zoom levels of one simulation, and the S0–S4 stage plan — is recorded in [`docs/design/VISION.md`](../docs/design/VISION.md) (issue [#309](https://github.com/TomiToivio/NooPunk/issues/309)). It is a **north star, not an instruction**: it authorizes no mechanics, canon or scope, and it does not change anything in this directory.
+
+## NoöPunk: Global design alternative
+
+The ultra-abstract worldwide Network Society / Luhmannian social systems / Laclaudian hegemony concept, political-simulator references, card/tabletop architecture options, illustrative crisis-turn walkthrough and preliminary bookkeeping analysis are documented in [`docs/NOOPUNK_GLOBAL_DESIGN.md`](docs/NOOPUNK_GLOBAL_DESIGN.md) ([issue #338](https://github.com/TomiToivio/NooPunk/issues/338)). This is a **design proposal only**, not approved gameplay rules, and does not replace the local-city scenario #322.
