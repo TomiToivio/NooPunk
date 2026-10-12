@@ -259,6 +259,10 @@ Official names are *organizational self-descriptions*; colloquial names are *pol
 labels*, and different supporters and opponents may use rival nicknames. The initial four labels
 remain recognizable ideological families, not necessarily one central organization each.
 
+**These are #328's proposals. Where [#329](https://github.com/TomiToivio/NooPunk/issues/329) names
+the same faction differently, #329's naming is preferred** — see §11. The names below are kept
+because they are part of this directive's text, not because they outrank the later register.
+
 | Type / seed | Proposed official or self-designated name | Colloquial name(s) | Notes |
 | --- | --- | --- | --- |
 | Accelerationist movement / corporate bloc | **Alliance for Unrestricted Progress and Enterprise** | **Accelerators**, **the Accels**; opponents: "Profit First" | Umbrella of market-led AI, privatized PSI and extraterrestrial-trade projects — not every technologist or libertarian |
@@ -417,6 +421,31 @@ and are **not** canon here; they are noted only so the pending decision is not l
 - The crossover boundary notes: `strategy_game/docs/INTEGRATION_BOUNDARIES.md`,
   `POLITICAL_SIMULATOR_SCOPE.md`, `POLITICAL_SIMULATION_DESIGN.md`; `strategy_game/RULEBOOK.md`
   still says **NO RULES APPROVED**.
+
+## 11. Related artifacts — the seven-faction data file, and issue #329
+
+This record is **not** the only artifact for this roster, and it is deliberately the *narrative*
+one. The seven global paradigm factions also exist as machine-readable authored data landed from
+#328 **and [#329](https://github.com/TomiToivio/NooPunk/issues/329)**:
+
+| Artifact | What it holds |
+| --- | --- |
+| [`strategy_game/data/global_factions.json`](../../strategy_game/data/global_factions.json) | the seven factions as authored data, with `axes`, `entity_kinds`, `evidence_model`, `event_card_seeds`, `open_questions`, `deferred` and `boundaries` |
+| [`strategy_game/factions.py`](../../strategy_game/factions.py) | its loader, with runtime contracts |
+| [`strategy_game/docs/GLOBAL_FACTIONS.md`](../../strategy_game/docs/GLOBAL_FACTIONS.md) | the crossover package's own record |
+
+**Both issues state the same seven-faction roster**, and the data file reconciles them: where the
+two differ it **prefers #329's naming** — *Confederacy Awakening*, *Orion/Grey networks*,
+*Normalcy Bloc* — and cites both issues per field. So the naming register in §6.2 of this record,
+which follows #328, is the **earlier** of the two registers and #329's names take precedence where
+they disagree. It also leaves every `official_name` **null**, which agrees with this record's
+position that the formal names are proposals awaiting your selection.
+
+**What this record uniquely holds**, and the data file does not: the two author-directed families
+(§4), the organizational origins and MJ-12 → Breakaway Civilization (§6.1, §6.3), the rogue ASI
+swarm (§6.4), the party-to-current affinities with their temporal distinction (§7), the suggested
+name-representation fields (§8), and the full open-question set (§9). Use the data file for the
+seven; use this record for the rest of the directive.
 
 ## Boundaries this record holds
 
