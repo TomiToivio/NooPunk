@@ -8,6 +8,8 @@ The three layers are represented as data only: `core.py` (leader, faction, asset
 
 The additional standalone [`political.py`](political.py) vocabulary models Laclaudian articulations and Castellsian communication without numeric scores or importing LaclauGPT. It remains separate from the `WorldState`-integrated `politics.py` model pending explicit integration approval. See [the Gate B design proposal](docs/POLITICAL_SIMULATION_DESIGN.md).
 
+**Global factions** — the seven authored paradigm factions (Accelerationists, Cyborgists, Critical, Butlerian Jihad, Confederacy Awakening, Orion/Grey networks, Normalcy Bloc) are recorded as author canon in [`docs/GLOBAL_FACTIONS.md`](docs/GLOBAL_FACTIONS.md) and [`data/global_factions.json`](data/global_factions.json), read by [`factions.py`](factions.py). Setting canon only: no simulation rules are implemented, and the roster defines no mechanics.
+
 ## Run the empty-state demo
 From repository root:
 

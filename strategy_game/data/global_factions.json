@@ -1,0 +1,384 @@
+{
+  "format": "noopunk.strategy_game.global_factions",
+  "version": 1,
+  "status": "author_canon",
+  "source_issues": [328, 329],
+  "note": "The seven global paradigm factions as authored in issues #328 and #329. Every entry is a CONDENSATION OF AUTHOR TEXT, not an invention: the two issues state the same roster, and this file reconciles them into one — #329's naming is preferred where the two differ (Confederacy Awakening, Orion/Grey networks, Normalcy Bloc) and both are cited per field. Nothing here is a game rule, a statistic or a mechanic; per #329 section 5.7 no simulation rules are implemented before review. Where the author stated nothing, a field is null with a reason rather than being filled in.",
+  "provenance": {
+    "kind": "authored",
+    "source": "issues #328 and #329",
+    "note": "Author intent is canon. A faction's stated PSI/NHI posture is that faction's in-world BELIEF, not a claim the game makes about reality; see evidence_model."
+  },
+  "entity_kinds": [
+    {
+      "id": "human_ideological_formation",
+      "label": "Human ideological formation",
+      "note": "#329 section 4.2: a global ideology can influence a local political party without replacing it."
+    },
+    {
+      "id": "nhi_aligned_formation",
+      "label": "NHI-aligned formation",
+      "note": "An external NHI power and/or its human supporters. Distinct kind of entity from a human movement."
+    },
+    {
+      "id": "latent_public",
+      "label": "Latent public / sociological tendency",
+      "note": "#329 section 3.G: not a single organised party; a cross-faction tendency that can stabilise society and frustrate every ambitious faction."
+    }
+  ],
+  "axes": {
+    "economic": {
+      "id": "economic",
+      "poles": ["left", "right"],
+      "note": "#327: left = redistribution, collective provision, state intervention; right = markets, property, deregulation. Descriptive simplification, not enough to explain everything."
+    },
+    "social": {
+      "id": "social",
+      "poles": ["conservative", "liberal"],
+      "note": "#327: conservative/traditionalist vs liberal/pluralist. Do not conflate economic liberalism with social liberalism."
+    },
+    "additional_dimensions": {
+      "id": "additional_dimensions",
+      "labels": ["nationalism/globalism", "authoritarian/libertarian", "religion/secularism", "human-sovereignty/alien-integration"],
+      "note": "#329: recorded alongside the two conventional axes."
+    },
+    "paradigm_positions": {
+      "id": "paradigm_positions",
+      "labels": ["agi", "psi", "nhi", "confederacy_accession", "sovereignty_agency_consent"],
+      "note": "#329 section 4.1: encode each actor's stance to AGI, PSI, NHI and Confederacy accession SEPARATELY from the two conventional axes. They are not deterministically deducible from one another. This is the third dimension: two factions can land in the same compass cell and still differ entirely on the paradigm shift."
+    }
+  },
+  "factions": [
+    {
+      "id": "accelerationists",
+      "label": "Accelerationists",
+      "subtitle": "The Extraterrestrial Free Market",
+      "kind": "human_ideological_formation",
+      "sources": ["#328 section 1", "#329 section 1.A"],
+      "axis_defaults": {
+        "economic": "extreme right / market-libertarian / anarchocapitalist",
+        "social": "internally socially libertarian, but often allied tactically with conservative right-populists",
+        "note": "#329: the satirical NooPunk antagonist archetype, NOT an allegation about all real libertarians, AI researchers or entrepreneurs. #328 records the author's own paradox: libertarians should be liberal but tend to be conservative far-right populists in practice."
+      },
+      "motto": "Profit before human survival!",
+      "stances": {
+        "agi": "Unfettered AGI/ASI, corporate ownership of infrastructure, machine-run corporations; indifferent to rogue-intelligence and biosphere risks.",
+        "psi": "Patent, commercialise, privatise and monetise psionic abilities; psychotronic products; consciousness-as-a-service.",
+        "nhi": "Immediate extraterrestrial trade liberalisation, alien investment rights, Extraterrestrial Economic Zones, private commercial treaties, NHI megacorporations, hybrid executives."
+      },
+      "core_signifiers": ["Profit", "Growth", "Markets", "Progress"],
+      "positive_vision": null,
+      "positive_vision_note": "Not stated by the author. The two issues frame this faction satirically as the antagonist archetype and give it resources and methods, not a positive programme; recording one would invent canon.",
+      "extreme_end_state": "The movement becomes the commercial collaborator, useful intermediary and eventual captive of malevolent Grey/Orion-linked forces, rogue AGIs, mind control and NHI hybrids. An end state is an assimilated galactic corporate order, not a triumphant independent humanity.",
+      "resources_methods": ["huge money", "platform reach", "R&D", "trade leverage"],
+      "allies": ["tactically, conservative right-populists; commercially, Orion/Grey networks (see orion_grey_networks)"],
+      "antagonists": ["butlerian_jihad", "critical"],
+      "contradictions": [
+        "Weak legitimacy once harms surface.",
+        "Infiltration vulnerability.",
+        "Internal conflict between opportunists and true believers."
+      ],
+      "cross_read": "The willing commercial collaborator and recruitment target of the malevolent NHI coalition. Some leaders knowingly betray human autonomy; others believe they are simply doing business. #329 warns explicitly: not all Accelerationists are automatically infiltrated.",
+      "author_verdict": "#328, recorded as canon: this faction is the enemy of humanity, the biosphere and the entire universe.",
+      "references": [
+        "Nick Land as a broad accelerationist inspiration",
+        "#329: the above is intentionally exaggerated science-fiction satire and should NOT be attributed as the literal positions of any named thinker"
+      ],
+      "lore_anchors": ["rulebook_parts/07_lore_and_world.md section 33.2 (Accelerationist position; 'accelerationisms rather than one doctrine')"]
+    },
+    {
+      "id": "cyborgists",
+      "label": "Cyborgists",
+      "subtitle": "Conscious Agency and the Noosphere",
+      "kind": "human_ideological_formation",
+      "sources": ["#328 section 2", "#329 section 1.B"],
+      "axis_defaults": {
+        "economic": "left",
+        "social": "liberal, solidaristic, cosmopolitan / transformative",
+        "note": "#329: diverse membership and internal disagreements."
+      },
+      "core": "Human consciousness, agency, empathy and autonomy are more important than simply maximising machine intelligence. Humans evolve collectively rather than being replaced.",
+      "canonical_formulation": "AI is an assemblage of HUMAN, LLM, LANGUAGE and INTERNET: human consciousness and agency are the most important part, the LLM is an intelligence augmentation, and language and the internet are the collective intelligence of humanity.",
+      "stances": {
+        "agi": "Augmentation and cooperative/distributed intelligence, not corporate non-conscious AGI dominion; strong safeguards against rogue ASI.",
+        "psi": "An emergent or rediscovered natural human capacity in fiction; train carefully, ensure access, prevent coercion and psychic exploitation.",
+        "nhi": "Careful, compassionate diplomacy and exchange, plus Dark Forest awareness, defence, and respect for human sovereignty."
+      },
+      "core_signifiers": ["Consciousness", "Agency", "Humanity", "Progress", "Freedom"],
+      "positive_vision": "Emancipatory posthuman flourishing, collective intelligence, conscious social-memory networks, pluralism, cooperative or commons-led evolution. Transform humanity without becoming someone's livestock, client species or compulsory hive mind.",
+      "extreme_end_state": null,
+      "extreme_end_state_note": "No bad end state is stated for this faction; the quoted failure mode above is what it seeks to avoid.",
+      "resources_methods": ["bridge science, civil society, consciousness research and sympathetic NHI", "costs: difficult ethical tradeoffs, low initial funding, disputes over what counts as consent or consciousness"],
+      "allies": ["critical", "sympathetic NHI"],
+      "antagonists": ["accelerationists", "orion_grey_networks"],
+      "contradictions": ["Consciousness is treated as fundamental, which is a philosophical doctrine rather than an established in-universe fact (see #329 section 4.6)."],
+      "author_position": "#328, recorded: I will join this faction when the Singularity starts.",
+      "references": [
+        "Donna Haraway, Cyborg Manifesto",
+        "Pierre Teilhard de Chardin, the noosphere",
+        "Ben Goertzel, Cosmism",
+        "Aaron Bastani, Fully Automated Luxury Communism",
+        "#329: reference points, not assertions that the authors share every setting position"
+      ],
+      "lore_anchors": ["rulebook_parts/07_lore_and_world.md section 33.2 (Cyborgist position)", "section 33.17 (consciousness model)"]
+    },
+    {
+      "id": "critical",
+      "label": "Critical",
+      "subtitle": "Anti-Colonial Inquiry and Equality",
+      "kind": "human_ideological_formation",
+      "sources": ["#328 section 3", "#329 section 1.C"],
+      "axis_defaults": {
+        "economic": "left",
+        "social": "liberal / progressive, anti-colonial and egalitarian",
+        "note": "#328: clearly left-wing and liberal."
+      },
+      "stances": {
+        "agi": "Investigates technocapitalism, labour inequality, environmental costs, ownership and surveillance; can underrate benefits or dismiss some existential-risk warnings.",
+        "psi": "Initial skepticism and demands for evidence, then potentially an Archaic Revival that recognises long traditions of spiritual and psychic practice without treating any culture's claims as scientific proof. Opposes caste hierarchies between psi-capable and non-psi people; rejects appropriation, patriarchal domination and private monopolies.",
+        "nhi": "Opposes species-based prejudice, human supremacism and blanket assumptions about appearance or identity; scrutinises supposed benevolence, colonial extraction, surveillance, genetic manipulation and uneven technology transfer. Challenges Grey/Mantid/Reptilian caste systems, and is equally willing to criticise human exploitation."
+      },
+      "core_signifiers": ["Equality", "Consciousness", "Disclosure", "Peace"],
+      "positive_vision": "Excellent interspecies rights frameworks; #328's verdict: careful, balanced and sane left-liberal politics in the long run.",
+      "extreme_end_state": null,
+      "extreme_end_state_note": "None stated; the stated risk is a failure mode of its strength rather than an end state.",
+      "risks": "Productive skepticism can harden into denial.",
+      "resources_methods": ["journalism", "courts", "universities", "rights groups", "legitimacy", "counter-hegemonic coalition building"],
+      "allies": ["cyborgists"],
+      "antagonists": ["accelerationists", "orion_grey_networks", "butlerian_jihad"],
+      "contradictions": [
+        "Skeptical enough to dismiss AI's actual benefits while being the faction most alert to technocapitalist harm.",
+        "Conflict over scientific verification, spiritual revival and NHI rights."
+      ],
+      "guardrail": "Critique of blonde/blue-eyed Pleiadian iconography must address its symbolism and racialised reception, never turn phenotype into proof of motive or moral character. #328 records the same worry from the author: handle it carefully, not racistly or speciesistly.",
+      "author_verdict": "#328: second favourite faction, after the Cyborgists.",
+      "references": ["#328 predicted arc: celebrates the Archaic Revival as liberation from western patriarchal capitalism"],
+      "lore_anchors": ["rulebook_parts/07_lore_and_world.md section 33.2 (Critical AI position)"]
+    },
+    {
+      "id": "butlerian_jihad",
+      "label": "Doomers / Butlerian Jihad",
+      "subtitle": "Humanity First at Any Cost",
+      "kind": "human_ideological_formation",
+      "sources": ["#328 section 4", "#329 section 1.D"],
+      "axis_defaults": {
+        "economic": "(not fixed by the author) biocentric and sovereignty-first rather than economically defined",
+        "social": "socially conservative and often right-populist, with potential heterodox environmentalist, secular-security, or left anti-tech offshoots",
+        "note": "#329: do NOT equate every AI-safety advocate or all believers with extremists."
+      },
+      "stances": {
+        "agi": "Runaway AGI means extinction by default; demands bans, machine destruction, potentially rollback of augmentation and industry.",
+        "psi": "Fear infiltration, possession, witchcraft or uncontrollable psychic weapons; hardline factions prohibit practices.",
+        "nhi": "Dark Forest worst-case assumption: strike first or humanity is extinguished. A continuum from lawful precaution and diplomatic quarantine to militant conspiracism, armed survivalism, militia violence, civil war and genocidal anti-NHI campaigns."
+      },
+      "core_signifiers": ["Survival", "Humanity", "Sovereignty"],
+      "positive_vision": null,
+      "positive_vision_note": "Not stated by the author; the two issues give this faction an escalation ladder and bad end states only.",
+      "extreme_end_state": "Militarised neo-medieval theocracy, anti-NHI genocide, collapse to survivalist enclaves, or self-destructive preventive war.",
+      "escalation_ladder": ["legal political advocacy against all forms of NHI", "protests against the state if it does not adopt doomer policy", "survivalist militias and civil war", "some doomers give up and go Mad Max"],
+      "allies": ["nativist parties", "authoritarian factions", "fundamentalist religion", "radical luddites", "security institutions under crisis"],
+      "antagonists": ["confederacy_awakening", "orion_grey_networks", "cyborgists"],
+      "contradictions": [
+        "Religious and ecological branches may disagree profoundly.",
+        "Their concern about X-risk may be empirically well-founded in particular incidents, giving them dramatically credible arguments."
+      ],
+      "author_verdict": "#328: second craziest faction; at least they do not want human extinction.",
+      "references": ["Dune's Butlerian Jihad", "Dark Forest theory", "anti-industrial / extreme deep-ecology motifs as fictional inspirations, not blanket claims about actual activists"],
+      "lore_anchors": ["rulebook_parts/07_lore_and_world.md section 33.3 (Butlerian Jihad and bioconservative reaction: 'It is not one monolithic organization' — bioconservatives, religious traditionalists, anti-AI movements, militant anti-transhuman organisations, separatist communities, terrorists, states)"]
+    },
+    {
+      "id": "confederacy_awakening",
+      "label": "Confederacy Awakening / Galactic Ascension Movement",
+      "kind": "nhi_aligned_formation",
+      "sources": ["#328 section 5", "#329 section 2.E"],
+      "axis_defaults": {
+        "economic": "spans",
+        "social": "spans",
+        "note": "Intentionally not reducible to the compass. Both the benevolent Confederacy and its political/religious human supporters are major global actors."
+      },
+      "core": "Contact triggers a large fictional psychic awakening and an unprecedented conversion movement. It converts ordinary citizens and party members across all quadrants.",
+      "incompatible_readings": {
+        "friendly": "Joining a compassionate interstellar federation: ending warfare, ending animal suffering, ecological restoration, consciousness cultivation and collective intelligence; legitimate nonhuman diplomacy.",
+        "threatening": "Childhood's End paternalism or alien religion masking coercion; human genetic engineering around 70,000 years ago (a setting claim requiring an in-universe evidence status); manipulated faiths; quarantine as a zoo; the Sphere Network as pervasive surveillance; and talk of humanity's Harvest."
+      },
+      "conditions_associated_with_alliance": [
+        "end meat eating",
+        "combat climate change and biodiversity collapse",
+        "disarm nuclear weapons / stop warfare",
+        "daily meditation",
+        "ban dangerous rogue AGI/ASI",
+        "altruistic communal/communist-like norms and a Noosphere / Social Memory Complex"
+      ],
+      "conditions_note": "#329: distinguish proposals, negotiated rules, voluntary practices and coercive mandates; do not flatten them into unquestioned canon.",
+      "core_tension": "Universal peace versus loss of sovereignty, individual consent and private mental boundaries. An apparently beneficial contact can be genuinely alien and politically explosive without secretly being Orion.",
+      "game_effects": ["religious schisms", "new psychic institutions", "international treaties", "NHI diplomats", "mass counter-movements"],
+      "allies": ["cyborgists (partially)", "NHI confederacy"],
+      "antagonists": ["butlerian_jihad", "orion_grey_networks", "accelerationists (partially)"],
+      "contradictions": ["Polarising even though it is presented as the benevolent faction: its demands are simultaneously desirable and sovereignty-destroying, which is where its dramatic charge lives."],
+      "lore_anchors": [
+        "section 33.6 psionics, QIP, awakening and the Noosphere",
+        "section 33.8 The Zoo: why quarantine exists",
+        "section 33.9 The Zookeepers and their probe ecology",
+        "section 33.11 Pleiadians, Atlantis and the second human Zoo",
+        "section 33.14 the end of quarantine, Day of Disclosure and Galactic Law",
+        "section 33.15 the VALIS event and birth of the conscious Noosphere"
+      ]
+    },
+    {
+      "id": "orion_grey_networks",
+      "label": "Orion / Grey Collaborative and Infiltration Networks",
+      "kind": "nhi_aligned_formation",
+      "sources": ["#328 section 6", "#329 section 2.F"],
+      "status": "covert",
+      "core": "Malevolent NHI coalition (fictional setting) with covert hybridisation, abductive/biological caste and psychic manipulation capabilities, subject to verification by factions in play.",
+      "methods": ["controlled corporations", "lobbyists", "automated financial systems", "political parties", "platforms", "human hybrids", "rogue AGI", "apparently mundane businesses"],
+      "relation_to_accelerationists": "Accelerationist-aligned elites are attractive commercial partners and recruitment targets, but NOT all Accelerationists are automatically infiltrated. Use case-by-case evidence and separate actual hidden allegiance from accusatory propaganda and xenophobic witch hunts.",
+      "play_note": "Focus on network power, dependencies and information asymmetry. Reveal clues through player investigation rather than arbitrarily labelling all opponents aliens.",
+      "lore_anchors": [
+        "section 33.6b rogue machine lineages and the Von Neumann threat",
+        "section 33.12 Greys, future humans and temporal ecology",
+        "section 33.13 hybridization and the Fourth-Density transition"
+      ],
+      "open_question_ref": "open_questions.is_malevolent_nhi_playable"
+    },
+    {
+      "id": "normalcy_bloc",
+      "label": "Normalcy Bloc",
+      "subtitle": "1999 Forever",
+      "kind": "latent_public",
+      "sources": ["#328 section 7", "#329 section 3.G"],
+      "core": "A vast, politically diverse social segment refuses to update its everyday reality. Work continues, branding consultants relabel ontological crises, sports radio debates yesterday's scores, and government committees commission feasibility studies of whether the alien sphere is actually a sphere. The economy sells themed products while the social fabric melts.",
+      "not_a_party": "#329: do NOT make it a single organised party; treat it as a cross-faction sociological tendency / latent constituency.",
+      "reasons": ["denial", "exhaustion", "survival", "institutional inertia", "attention fragmentation", "practical prioritisation"],
+      "reasons_note": "Not universally low intelligence.",
+      "tone_references": ["Don't Look Up", "Idiocracy", "Maniac-adjacent comic/social satire"],
+      "function": "Inertia, distraction, normalcy bias, media attention and delayed institutional response. It can unexpectedly stabilise society and frustrate every ambitious faction.",
+      "author_note": "#328: a large segment of society is utterly unable to react to the paradigm shift; the author notes this appears to be happening in the real world too."
+    }
+  ],
+  "cross_cutting_rules": [
+    {
+      "id": "axes_plus_positions",
+      "source": "#329 section 4.1",
+      "text": "Retain the recognizable 2026 left/right economic and conservative/liberal cultural compass. Separately encode each actor's stance to AGI, PSI, NHI and Confederacy accession, plus sovereignty/agency/consent. These are not deterministically deducible from one another."
+    },
+    {
+      "id": "different_entity_kinds",
+      "source": "#329 section 4.2",
+      "text": "Human factions, alien factions, movements, institutions and latent publics are different kinds of entities. A global ideology can influence a local political party without replacing it. Faction membership and affinity can overlap, with competing internal wings."
+    },
+    {
+      "id": "laclau",
+      "source": "#329 section 4.3",
+      "text": "Struggle over the signifiers Humanity, Survival, Progress, Freedom, Consciousness, Disclosure, Equality, Peace, Sovereignty and Harvest. Track articulations, antagonisms and contingent hegemonic alliances, not a forced single correct politics."
+    },
+    {
+      "id": "castells",
+      "source": "#329 section 4.4",
+      "text": "Corporate capital and platforms, research networks, religious networks, security networks and psychic/Sphere infrastructure provide different channels of network power. Exposure is not automatic consent or conversion."
+    },
+    {
+      "id": "luhmann",
+      "source": "#329 section 4.5",
+      "text": "Economic markets, law, science, religion, politics, medicine and security interpret the same events differently; crisis destabilises institutions and generates second-order conflicts."
+    },
+    {
+      "id": "consciousness_fault_line",
+      "source": "#329 section 4.6",
+      "text": "Noosphere as voluntary solidarity versus imposed shared mind; PSI freedom versus psychological privacy; augmentation versus assimilation. 'Consciousness is fundamental' is a Cyborgist philosophical doctrine unless independently established in fiction."
+    },
+    {
+      "id": "escalation_timeline",
+      "source": "#329 section 4.7",
+      "text": "Early ~2027 acceleration, competitive AGI policy and PSI controversies; controlled rogue AGI through bans and safeguards may shift agenda attention to PSI normalization and then NHI/sovereignty. These are branching game outcomes, not inevitable: rogue AI can recur, PSI may remain contested, NHI contact may fracture.",
+      "binding_note": "#306: the crossover begins during the acceleration toward the NHI Crisis; the crisis must not be narrated as already resolved."
+    },
+    {
+      "id": "player_agency",
+      "source": "#329 section 4.8",
+      "text": "Have factions defect, ally, split and adapt based on shocks and incentives. Accelerationists need not always lose; Cyborgists and Critical need real fail states; Doomers may avert a genuine threat; the Confederacy may yield benefits and painful trade-offs."
+    }
+  ],
+  "evidence_model": {
+    "source": "#329 section 5.4 and its creative-canon notes",
+    "categories": ["objective in-world facts", "disclosed facts", "allegations", "misinformation", "mind control", "player-accessible clues"],
+    "rule": "Never encode propaganda as automatically true. Distinguish what the game master knows from what factions assert. PSI, NHI, alien genetic engineering, Sphere surveillance, mind control and Harvest are in-universe hypotheses or events, not statements about proven real-world reality.",
+    "provenance_mapping": {
+      "objective_in_world_facts": "EVIDENCE within the fiction",
+      "author_setting_canon": "AUTHORED",
+      "faction_assertions_propaganda_rumour": "not EVIDENCE; recorded as the asserting faction's claim",
+      "game_generated_outcomes": "SIMULATED",
+      "unclassified_or_unverified": "UNKNOWN (the default, never silently promoted)",
+      "code": "strategy_game/provenance.py"
+    }
+  },
+  "mvp_scope": {
+    "source": "#329 section 5",
+    "text": "Keep the existing single-city/Ukweli opening, three local parties and modest faction-leader roster untouched. Introduce global ideological responses through small sets of tags, event cards, world news, NHI offers, economic pressure and NPC affiliations — not seven additional national parties or a giant globe simulator.",
+    "ukweli_party_mapping": [
+      {"party": "Ukweli Communist Party", "role": "incumbent national-liberation government"},
+      {"party": "Identity Party", "role": "tribalist / rural populist"},
+      {"party": "Libertarian Party", "role": "small anarchocapitalist accelerationist minority"}
+    ],
+    "mapping_note": "Parties can borrow factions' discourse without being identical to global factions."
+  },
+  "event_card_seeds": [
+    "alien economic zone proposal",
+    "PSI-as-a-service IPO",
+    "billionaire hybrid rumours",
+    "awakening epidemic",
+    "Confederacy accession terms",
+    "sphere-network data scandal",
+    "Butlerian Jihad raid",
+    "religious schism",
+    "psychic-privacy bill",
+    "world government debate",
+    "nothing to see here media cycle"
+  ],
+  "event_card_note": "#329 section 5.5 asks for 8-12 short playable event cards and names these eleven seeds. Recorded here as the authored seed list; the cards themselves are a design deliverable, not implemented.",
+  "deferred": {
+    "simulation_rules": "#329 section 5.7: propose the lightest simulation rules consistent with #297 and #309, with NO implementation before review. Not attempted here.",
+    "lore_doc_updates": "#329 section 5.8: update relevant lore/design documentation only after agreement.",
+    "mechanics": "strategy_game/RULEBOOK.md still says NO RULES APPROVED."
+  },
+  "open_questions": [
+    {
+      "id": "roster_closed_at_seven",
+      "text": "Is the roster closed at seven, or is the Confederacy Awakening an umbrella covering both the genuine-awakening and the Childhood's-End-cult readings?"
+    },
+    {
+      "id": "is_malevolent_nhi_playable",
+      "text": "Are the Orion/Grey networks a playable faction, a non-player threat, or both?"
+    },
+    {
+      "id": "accelerationists_and_orion_one_or_two",
+      "text": "Accelerationists and Orion/Grey overlap by design (collaboration). One faction with two wings, or two factions with a dependency?"
+    },
+    {
+      "id": "normalcy_bloc_agency",
+      "text": "Is the Normalcy Bloc a faction with agency, or purely a comedic and inertial pressure on other factions' legitimacy? #329 section 3.G leans to the latter."
+    },
+    {
+      "id": "escalation_starting_rung",
+      "text": "How far along the Butlerian Jihad escalation ladder may the crossover begin, given #306 forbids narrating the NHI Crisis as already resolved?"
+    },
+    {
+      "id": "real_person_policy",
+      "text": "Real-world reference policy: theorists named in these issues keep their names when attributing ideas (AGENTS.md section 6.1); political, corporate, media or celebrity figures acting inside fictional 20XX must be fictionalised."
+    },
+    {
+      "id": "compass_over_override",
+      "text": "Does the left/right placement override or refine the compass work in #327, or sit alongside it as the faction-level layer?"
+    },
+    {
+      "id": "naming_ownership",
+      "text": "Which issue owns the canonical faction names — #328 or #329? They differ (Benevolent NHI faction vs Confederacy Awakening; Science Fiction Comedy vs Normalcy Bloc). This file prefers #329 and cites both, but the author should say which is authoritative."
+    }
+  ],
+  "boundaries": [
+    "Author intent is canon; nothing here invents a mechanic, a number or a typology beyond what the author wrote.",
+    "Crossover only: this file lives in strategy_game/ and changes no legacy RULEBOOK.md canon (#306).",
+    "World lore carries over; legacy RPG rules do not.",
+    "Automated tests cover executable code only — never factions, lore or prose (#271)."
+  ]
+}
