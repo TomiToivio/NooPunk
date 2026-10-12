@@ -1,0 +1,35 @@
+# Republic of Ukweli: local strategy scenario (2027)
+
+**Status:** Provisional city-map adaptation for #324. This does not retcon the separate post-crisis UNSA Helsinki RPG.
+
+## Provenance and reuse inventory
+
+- **Retain:** The three-party local MVP (CPU, UIP, ULP), originally recorded in [#324](https://github.com/TomiToivio/NooPunk/issues/324), [#329](https://github.com/TomiToivio/NooPunk/issues/329) and [the global faction roster](../../strategy_game/docs/GLOBAL_FACTIONS.md). Earlier project declarations distinguish a national-liberation governing communist party, identity-focused populist opposition, and libertarian accelerationist opposition. The running data uses these party identities.
+- **Retain/adapt:** The Indian Ocean archipelago and modern port metropolis specified in #324, influenced by Mombasa, Zanzibar, Mumbai and Singapore but not copying their actual districts.
+- **Retire from this timeline:** Later UNSA institutions and post-NHI-Crisis certainties. These remain canon for the separate later-era RPG, not facts of the 2027 political slice.
+- **Newly proposed:** The eight abstract playable location labels, their travel links, generic leader placeholders, starting resources and five event cards in [ukweli_local.json](../../strategy_game/data/ukweli_local.json). **None are claimed as recovered canon**.
+
+This is a bounded repository/default-branch search, **not a complete audit of historical branches or archived sources**. Historical names and NPCs should be reconciled against archived lore before final canon approval.
+
+## City and islands
+
+One modern Indian Ocean port city, two surrounding island locations, a mixed urban fabric and short coastal hinterland. Playable places: Old Harbor, Civic and Commercial Centre, Mixed Neighborhoods, University and Hospital, Industrial Logistics Port, Outer Island Communities, Airfield Island, Coastal Hinterland. Connections are ferry/road/bridge *abstract adjacencies*, not a tactical map. The model and mechanics accept any scenario conforming to the JSON schema. Real-world inspirations are urban and institutional dynamics, not replicas or demographic stereotypes.
+
+## Opening political situation
+
+Three rivals: the Communist Party of Ukweli (incumbent national-liberation and reform legacy), Ukweli Identity Party (rural/identity populist opposition), and Ukweli Libertarian Party (libertarian accelerationist opposition). Four provisional functional leader placeholders per party are **not established named NPC canon**; replace them with sourced character records after canon audit. Core disputed demands include public security, automation, cultural identity, licensing and the costs of strategic technology. Religion and ethnic heritage are heterogeneous, not deterministic political loyalties.
+
+## Global shocks, local outcomes
+
+Externally supplied cards introduce AI breakthroughs, trade disruption, a reported anomalous signal, PSI research controversy and international governance. The player may adopt global technology locally, but never rewrites global science. Competing interpretations of the same incident remain possible. In the experimental slice these are small numerical modifiers, not claims about real societies or theories.
+
+## Run
+
+From repository root:
+
+```sh
+python -m strategy_game.local_slice --turns 12 --seed 2027
+python -m unittest strategy_game.tests.test_local_slice -v
+```
+
+This runs **an explicitly provisional, deterministic Python experiment**, not an approved ruleset or a full character-driven campaign. The strategy_game scaffold and its separate placeholder RULEBOOK retain their existing contract.
