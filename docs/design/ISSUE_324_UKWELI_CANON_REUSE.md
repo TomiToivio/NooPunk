@@ -148,3 +148,19 @@ The recycle must not drag the future in:
 - It does not resolve §4. Those are rulings.
 
 **Next units for #324, in the issue's own order:** B — the scenario document (`docs/scenarios/UKWELI_LOCAL_SCENARIO.md`), written against this inventory; C — the generic location schema plus the Ukweli configuration (blocked on §4.3); then D (consuming #326), E, F, G.
+
+---
+
+## 7. Parallel artefacts that landed after this inventory
+
+A sibling session landed `5e2372e` (`feat(strategy): experimental Ukweli local slice and theory proposal (#321 #322 #323 #324)`) minutes after this inventory merged. It covers a large part of the remaining #321–#324 work and names its own gaps honestly. Recorded here so the two are not edited as if they were one:
+
+| Artefact | Covers | Relationship to this inventory |
+| --- | --- | --- |
+| [`docs/scenarios/REPUBLIC_OF_UKWELI.md`](../../docs/scenarios/REPUBLIC_OF_UKWELI.md) | #324 B, provisional | the shorter scenario doc; §4.1 and §4.2 conflicts are flagged at its head |
+| [`strategy_game/data/ukweli_local.json`](../../strategy_game/data/ukweli_local.json) | #324 C, first configuration | the 8 locations, links, leader placeholders, starting resources and 5 event cards §3.4 lists as genuinely new |
+| [`strategy_game/local_slice.py`](../../strategy_game/local_slice.py) + [`docs/LOCAL_SLICE_RULES_PROVISIONAL.md`](../../strategy_game/docs/LOCAL_SLICE_RULES_PROVISIONAL.md) | #322 M1/F, #323 | the deterministic vertical slice; explicitly unapproved playtest assumptions, not `strategy_game/RULEBOOK.md` |
+| [`strategy_game/docs/PASULKA_THEORY_CROSSWALK.md`](../../strategy_game/docs/PASULKA_THEORY_CROSSWALK.md) | #321 | the theory crosswalk |
+
+Its scenario doc states that its search was *"a bounded repository/default-branch search, **not** a complete audit of historical branches or archived sources"*, and asks for reconciliation against archived lore before canon approval. **§1–§3 above are that audit**: all refs (`git log --all -S "Ukweli"`), all filenames, and the warehouse (`books/`, `ubiquitous_maniacs/`, `docs/archive/`) contain no other Ukweli material, so there is nothing further to reconcile and no older canon to retire. The two documents are complements, not duplicates: this one is the provenance record, that one is the playable city map.
+
