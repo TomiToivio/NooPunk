@@ -2,6 +2,13 @@
 
 **Status:** Provisional city-map adaptation for #324. This does not retcon the separate post-crisis UNSA Helsinki RPG.
 
+> **Two names below are contested on `main` and are NOT settled by this document.** Recorded here because this is the path #324 names, so a reader arrives here first.
+>
+> - **The state's name.** This file says *Republic of Ukweli*; [#325](https://github.com/TomiToivio/NooPunk/issues/325) states *"**Official name: People's Republic of Ukweli**"* and makes the name load-bearing for the setting's own joke (*"Not quite Cuba, comrade"*), which only works because the formal name misleads. These are not stylistic variants — *People's Republic* carries a claim about the state's self-understanding. **Awaiting the author.**
+> - **The libertarian party.** This file and `ukweli_local.json` say **ULP (Ukweli Libertarian Party)**; [#325](https://github.com/TomiToivio/NooPunk/issues/325) and [#326](https://github.com/TomiToivio/NooPunk/issues/326) say **LFP (Libertarian Freedom Party of Ukweli)**. **Awaiting the author.**
+>
+> The completed all-refs and warehouse audit this file asks for in its closing paragraph — and the retain/adapt/retire inventory that goes with it — is [`docs/design/ISSUE_324_UKWELI_CANON_REUSE.md`](../../docs/design/ISSUE_324_UKWELI_CANON_REUSE.md) (#324 deliverable A). The longer scenario document at [`UKWELI_LOCAL_SCENARIO.md`](UKWELI_LOCAL_SCENARIO.md) is #324 deliverable B, marked CANON/PROPOSAL statement by statement.
+
 ## Provenance and reuse inventory
 
 - **Retain:** The three-party local MVP (CPU, UIP, ULP), originally recorded in [#324](https://github.com/TomiToivio/NooPunk/issues/324), [#329](https://github.com/TomiToivio/NooPunk/issues/329) and [the global faction roster](../../strategy_game/docs/GLOBAL_FACTIONS.md). Earlier project declarations distinguish a national-liberation governing communist party, identity-focused populist opposition, and libertarian accelerationist opposition. The running data uses these party identities.
