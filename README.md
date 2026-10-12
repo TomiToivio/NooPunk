@@ -8,13 +8,21 @@ The project is currently a **playable text-based prototype**. You can run the no
 
 ## Genre and positioning
 
-**Genre:** cyberpunk science fantasy. **Supporting registers:** paranormal/UFO/PSI conspiracy
-mystery, investigative adventure, emerging transhumanism, the NHI crisis, and post-catastrophe
-reconstruction.
+**Genre identity:** **New Weird** is the primary creative genre, **Social Science Fiction** defines the central political and societal questions, and **Cyberpunk Science Fantasy** supplies a secondary technological and speculative aesthetic. These are complementary lenses, not three separate games.
 
-**Genre line.** Cyberpunk meets the Noösphere: a pre-Fall transhuman world where the AGI
-revolution, cybernetics and corporate power are already familiar, while disclosure, psionics
-and the NHI crisis arrive in the same decade.
+### 1. Social Science Fiction: society is the protagonist
+
+NoöPunk explores how institutions, ideologies, communications, economies, religions, and political movements respond to extraordinary paradigm shifts. Players lead factions and characters in a compact grand-strategy/RPG simulation: they build networks, contest meanings, pursue hegemony, and influence social change. Ernesto Laclau's discourse theory, Manuel Castells's network/communication power, and Niklas Luhmann's systems theory inform its abstract political model. The starting scenario, around **2027**, focuses on accelerating conflict *before* the later NHI Crisis.
+
+### 2. New Weird: reality refuses to fit the categories
+
+**The primary genre.** AI, alleged nonhuman intelligences, anomalous consciousness, PSI, unfamiliar religions, and strange institutions collide without reducing the mystery to conventional aliens, magic, or a single tidy explanation. The tone can shift between political satire, unsettling investigation, philosophical wonder, absurd comedy, and the profoundly alien. The paradigm shift is ontological as well as technological: who gets to decide what is real?
+
+### 3. Cyberpunk Science Fantasy: the world and its tools
+
+**Secondary genre and influence, not the whole premise.** Hacking, surveillance, corporate power, cybernetics, BCI, AI, inequality, and transhuman technology provide grounded near-future material conflicts. Science-fantasy elements introduce NHI and PSI as consequential features of the **fictional setting**, with uncertain mechanisms and competing interpretations. Cyberpunk stays deliberately limited in the early 2027 scenario, rather than swallowing the social-science and New Weird themes or assuming a fully cyberpunk society already exists.
+
+**In one sentence:** Social Science Fiction asks **how society changes**; New Weird asks **what reality has become**; Cyberpunk Science Fantasy asks **what powers and technologies people use to survive and fight over it**.
 
 **Elevator pitch.**
 
@@ -24,7 +32,7 @@ and the NHI crisis arrive in the same decade.
 
 **Storefront pitch.**
 
-> **NoöPunk** is a cyberpunk science-fantasy RPG of investigation in a wounded near-future.
+> **NoöPunk** is a New Weird social-science RPG and political simulation of investigation in a wounded near-future.
 > The Fall has not happened; a catastrophe already has. Two non-human factions helped rebuild
 > Earth after regional holocausts, and neither can be filed as simply an ally or an enemy.
 > You are a newly graduated investigator of the **United Nations Security Administration
