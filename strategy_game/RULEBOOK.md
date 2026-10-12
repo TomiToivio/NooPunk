@@ -15,6 +15,8 @@ The complementary `political.py` vocabulary and [Gate B design proposal](docs/PO
 ## Layer III: Faction strategy
 Reserved: organizational assets, faction management, strategic operations, resource allocation, spatial and network presence. All mechanics **TBD by author**.
 
+**Global factions (author canon, #328/#329):** the seven paradigm factions and their evidence model are recorded in [docs/GLOBAL_FACTIONS.md](docs/GLOBAL_FACTIONS.md) and [`data/global_factions.json`](data/global_factions.json). Setting canon only — the roster defines no mechanics.
+
 ## Interfaces and integration
 Rules must be authored independently for each layer, then explicitly approved before software implementation. The world-map interface displays abstract state and does not itself determine political, social or tactical outcomes.
 
