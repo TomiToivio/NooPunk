@@ -1,0 +1,298 @@
+{
+  "format": "noopunk.strategy.local.v0",
+  "year": 2027,
+  "setting": "Republic of Ukweli, Indian Ocean",
+  "locations": [
+    {
+      "id": "old_harbor",
+      "label": "Old Harbor",
+      "pressure": 0,
+      "tags": [
+        "heritage",
+        "trade"
+      ]
+    },
+    {
+      "id": "civic",
+      "label": "Civic and Commercial Centre",
+      "pressure": 1,
+      "tags": [
+        "government",
+        "finance"
+      ]
+    },
+    {
+      "id": "residential",
+      "label": "Mixed Neighborhoods",
+      "pressure": 0,
+      "tags": [
+        "housing"
+      ]
+    },
+    {
+      "id": "campus",
+      "label": "University and Hospital",
+      "pressure": 0,
+      "tags": [
+        "science"
+      ]
+    },
+    {
+      "id": "port",
+      "label": "Industrial Logistics Port",
+      "pressure": 1,
+      "tags": [
+        "shipping"
+      ]
+    },
+    {
+      "id": "outer_island",
+      "label": "Outer Island Communities",
+      "pressure": 0,
+      "tags": [
+        "ferry",
+        "tourism"
+      ]
+    },
+    {
+      "id": "airfield_island",
+      "label": "Airfield Island",
+      "pressure": 1,
+      "tags": [
+        "communications"
+      ]
+    },
+    {
+      "id": "coast",
+      "label": "Coastal Hinterland",
+      "pressure": 0,
+      "tags": [
+        "agriculture"
+      ]
+    }
+  ],
+  "routes": [
+    [
+      "old_harbor",
+      "civic"
+    ],
+    [
+      "civic",
+      "residential"
+    ],
+    [
+      "civic",
+      "campus"
+    ],
+    [
+      "old_harbor",
+      "port"
+    ],
+    [
+      "old_harbor",
+      "outer_island"
+    ],
+    [
+      "port",
+      "airfield_island"
+    ],
+    [
+      "residential",
+      "coast"
+    ]
+  ],
+  "parties": [
+    {
+      "id": "cpu",
+      "name": "Communist Party of Ukweli",
+      "leader_ids": [
+        "cpu1",
+        "cpu2",
+        "cpu3",
+        "cpu4"
+      ],
+      "claims": [
+        "liberation",
+        "stability"
+      ]
+    },
+    {
+      "id": "uip",
+      "name": "Ukweli Identity Party",
+      "leader_ids": [
+        "uip1",
+        "uip2",
+        "uip3",
+        "uip4"
+      ],
+      "claims": [
+        "identity",
+        "tradition"
+      ]
+    },
+    {
+      "id": "ulp",
+      "name": "Ukweli Libertarian Party",
+      "leader_ids": [
+        "ulp1",
+        "ulp2",
+        "ulp3",
+        "ulp4"
+      ],
+      "claims": [
+        "markets",
+        "acceleration"
+      ]
+    }
+  ],
+  "leaders": [
+    {
+      "id": "cpu1",
+      "name": "CPU Chair",
+      "faction": "cpu",
+      "location": "civic",
+      "portfolio": "politics",
+      "skill": 2,
+      "traits": []
+    },
+    {
+      "id": "cpu2",
+      "name": "CPU Organiser",
+      "faction": "cpu",
+      "location": "civic",
+      "portfolio": "networks",
+      "skill": 2,
+      "traits": []
+    },
+    {
+      "id": "cpu3",
+      "name": "CPU Operations Lead",
+      "faction": "cpu",
+      "location": "civic",
+      "portfolio": "operations",
+      "skill": 2,
+      "traits": []
+    },
+    {
+      "id": "cpu4",
+      "name": "CPU Research Lead",
+      "faction": "cpu",
+      "location": "civic",
+      "portfolio": "research",
+      "skill": 2,
+      "traits": []
+    },
+    {
+      "id": "uip1",
+      "name": "UIP Chair",
+      "faction": "uip",
+      "location": "residential",
+      "portfolio": "politics",
+      "skill": 2,
+      "traits": []
+    },
+    {
+      "id": "uip2",
+      "name": "UIP Organiser",
+      "faction": "uip",
+      "location": "residential",
+      "portfolio": "networks",
+      "skill": 2,
+      "traits": []
+    },
+    {
+      "id": "uip3",
+      "name": "UIP Operations Lead",
+      "faction": "uip",
+      "location": "residential",
+      "portfolio": "operations",
+      "skill": 2,
+      "traits": []
+    },
+    {
+      "id": "uip4",
+      "name": "UIP Research Lead",
+      "faction": "uip",
+      "location": "residential",
+      "portfolio": "research",
+      "skill": 2,
+      "traits": []
+    },
+    {
+      "id": "ulp1",
+      "name": "ULP Chair",
+      "faction": "ulp",
+      "location": "port",
+      "portfolio": "politics",
+      "skill": 2,
+      "traits": []
+    },
+    {
+      "id": "ulp2",
+      "name": "ULP Organiser",
+      "faction": "ulp",
+      "location": "port",
+      "portfolio": "networks",
+      "skill": 2,
+      "traits": []
+    },
+    {
+      "id": "ulp3",
+      "name": "ULP Operations Lead",
+      "faction": "ulp",
+      "location": "port",
+      "portfolio": "operations",
+      "skill": 2,
+      "traits": []
+    },
+    {
+      "id": "ulp4",
+      "name": "ULP Research Lead",
+      "faction": "ulp",
+      "location": "port",
+      "portfolio": "research",
+      "skill": 2,
+      "traits": []
+    }
+  ],
+  "relationships": [
+    {
+      "a": "cpu1",
+      "b": "uip1",
+      "trust": -1,
+      "tags": [
+        "rivals"
+      ]
+    },
+    {
+      "a": "cpu4",
+      "b": "ulp4",
+      "trust": 1,
+      "tags": [
+        "former_colleagues"
+      ]
+    }
+  ],
+  "shocks": [
+    {
+      "title": "Global frontier AI model released",
+      "legitimacy_delta": 0
+    },
+    {
+      "title": "Unverified anomalous signal at coastal facility",
+      "legitimacy_delta": -1
+    },
+    {
+      "title": "Maritime trade disruption",
+      "legitimacy_delta": -1
+    },
+    {
+      "title": "Contested PSI research report",
+      "legitimacy_delta": 0
+    },
+    {
+      "title": "International AI safety agreement",
+      "legitimacy_delta": 1
+    }
+  ]
+}
