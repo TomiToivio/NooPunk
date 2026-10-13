@@ -119,13 +119,37 @@ class AdapterBoundaryTests(unittest.TestCase):
 
 
 class LayerIndependenceTests(unittest.TestCase):
-    """The RPG layer stands alone: no strategy rules, no optional dependency."""
+    """The RPG layer stands alone: no strategy rules, no optional dependency.
 
-    def test_the_rpg_package_imports_no_strategy_engine_module(self) -> None:
+    Coupling to strategy code is permitted in **exactly one declared seam**, and nowhere else. A later
+    PR introduced `rpg/boundary.py` to bridge to `core.WorldState`, which is that seam's whole purpose;
+    the rule below pins it to one file rather than forbidding it outright, so a second accidental
+    dependency still fails.
+    """
+
+    #: The one module allowed to import strategy engine code, and the reason it exists.
+    COUPLING_SEAM = "boundary.py"
+
+    def test_only_the_seam_imports_strategy_engine_code(self) -> None:
+        offenders: dict[str, str] = {}
         for source in RPG_DIR.glob("*.py"):
+            if source.name == self.COUPLING_SEAM:
+                continue
             text = source.read_text(encoding="utf-8")
             for banned in ("local_slice", "politics", "political", "core", "session", "WorldState"):
-                self.assertNotIn(f"import {banned}", text, f"{source.name} imports {banned}")
+                if f"import {banned}" in text:
+                    offenders[source.name] = banned
+        self.assertEqual(offenders, {}, "only the declared seam may couple to strategy code")
+
+    def test_the_seam_is_exactly_one_file(self) -> None:
+        seams = sorted(s.name for s in RPG_DIR.glob("*.py")
+                       if "import WorldState" in s.read_text(encoding="utf-8"))
+        self.assertEqual(seams, [self.COUPLING_SEAM])
+
+    def test_the_resolution_core_does_not_depend_on_strategy_state(self) -> None:
+        text = Path(fate.__file__).read_text(encoding="utf-8")
+        for banned in ("WorldState", "local_slice", "politics", "session"):
+            self.assertNotIn(banned, text, banned)
 
     def test_importing_the_layer_needs_no_optional_dependency(self) -> None:
         for source in RPG_DIR.glob("*.py"):
