@@ -455,8 +455,16 @@ class CouncilModel:
             held[leader.portfolio] = leader.identifier
 
         per_leader: dict[str, int] = {}
+        seen_mission_ids: set[str] = set()
         for mission in council.missions:
             head = f"mission {mission.identifier}"
+            if not mission.identifier.strip():
+                problems.append("mission has no identifier")
+            elif mission.identifier in seen_mission_ids:
+                problems.append(f"{head}: identifier appears more than once in this turn")
+            seen_mission_ids.add(mission.identifier)
+            if not mission.location_id.strip():
+                problems.append(f"{head}: no location; each active mission must name a location")
             if not mission.leader_id.strip():
                 problems.append(
                     f"{head}: no leader. Issue #323's central rule is that every active faction move "

@@ -192,6 +192,22 @@ class StructuralRuleTests(unittest.TestCase):
         issues = self.model.structural_problems(_council(leaders=tuple(leaders)))
         self.assertTrue(any("no identifier" in issue for issue in issues))
 
+    def test_duplicate_mission_ids_are_refused_even_with_distinct_leaders(self):
+        council = _council(missions=(
+            _mission(1, "opinion_support"),
+            _mission(2, "membership_resources", identifier="mission_1"),
+        ))
+        problems = " | ".join(self.model.structural_problems(council))
+        self.assertIn("identifier appears more than once", problems)
+
+    def test_blank_mission_id_is_refused(self):
+        council = _council(missions=(_mission(1, "opinion_support", identifier=" "),))
+        self.assertIn("mission has no identifier", " | ".join(self.model.structural_problems(council)))
+
+    def test_mission_must_name_a_location(self):
+        council = _council(missions=(_mission(1, "opinion_support", location_id="  "),))
+        self.assertIn("no location", " | ".join(self.model.structural_problems(council)))
+
     def test_a_mission_without_a_leader_is_invalid(self):
         council = _council(missions=(_mission(1, "opinion_support", leader_id=""),))
         problems = " | ".join(self.model.structural_problems(council))
