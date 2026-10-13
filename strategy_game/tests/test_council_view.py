@@ -28,6 +28,28 @@ class CouncilViewTests(unittest.TestCase):
         self.assertIn("Declaration warnings:", shown)
         self.assertIn("absent", shown)
 
+    def test_orphaned_mission_details_are_shown_without_reassigning(self):
+        council = Council("orphan", leaders=(CouncilLeader("a", name="Alpha"),),
+                          missions=(MissionDeclaration("lost-1", leader_id="ghost",
+                                                       kind="investigate", target_id="site-7",
+                                                       location_id="outer-district",
+                                                       quantity="opinion_support", authorised_by="a"),))
+        before = council.to_dict()
+        board = render_assignment_board(council, self.model)
+        self.assertIn("Unassigned or unknown-leader missions:", board)
+        self.assertIn("lost-1 | leader: ghost | kind: investigate", board)
+        self.assertIn("location: outer-district | target: site-7", board)
+        self.assertEqual(before, council.to_dict())
+
+    def test_missing_leader_mission_is_visible(self):
+        council = Council("missing", leaders=(), missions=(
+            MissionDeclaration("no-leader", leader_id="", kind="campaign",
+                               target_id="voters", location_id="centre"),
+        ))
+        board = render_assignment_board(council, self.model)
+        self.assertIn("no-leader | leader: (missing)", board)
+        self.assertIn("Declaration warnings:", board)
+
     def test_render_is_repeatable_and_does_not_mutate_council(self):
         before = self.council.to_dict()
         first = render_assignment_board(self.council, self.model)
