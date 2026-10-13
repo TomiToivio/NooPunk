@@ -85,6 +85,13 @@ An unavailable leader never silently trades down into a "lesser" action: the slo
 faction runs fewer missions. Recovery timing, exposure risk and halving are `TODO: requires author
 specification`; the table records only the *shape* of the consequence.
 
+**The shape is now enforced, and the specifics are still reported.** Issue #323's acceptance criterion 2
+says an unavailable leader cannot execute a mission, so `structural_problems` in `council.py` **refuses** a
+mission led by a status whose row says `No`, rather than reporting it. This enforces the *shape* this table
+records; it does not author the TODOs. Timing (1–2 turns), exposure risk and halving stay reported with the
+row cited, and `enforced` stays `false` for the table as a whole in `data/council.json`, which carries
+`mission_column_enforced: true` for the column that the criterion names.
+
 ## 5. Relationships: sparse, pairwise, opinion and trust
 
 Relationships exist only between a faction's four leaders and a **limited cast of important local NPCs**

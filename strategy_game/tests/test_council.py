@@ -331,7 +331,12 @@ class ReportedConsequenceTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.model = load_council()
 
-    def test_a_draft_no_mission_status_is_reported_not_refused(self):
+    def test_a_no_mission_status_REFUSES_the_mission(self):
+        """Criterion 2's second clause, **enforced** — #323 was reopened because this was only reported.
+
+        Section 4's timings and magnitudes are still TODO and still reported; its *mission* column is
+        authored for all six rows, so the refusal is applied rather than described.
+        """
         leaders = tuple(
             CouncilLeader(
                 identifier=leader.identifier,
@@ -341,11 +346,21 @@ class ReportedConsequenceTests(unittest.TestCase):
             for leader in _leaders()
         )
         council = _council(leaders=leaders)
-        self.assertEqual(self.model.structural_problems(council), ())
+        problems = self.model.structural_problems(council)
+        self.assertEqual(len(problems), 1, problems)
+        self.assertIn("mission_1", problems[0])
+        self.assertIn("injured", problems[0])
+        self.assertIn("criterion 2", problems[0])
         reports = " | ".join(self.model.consequence_reports(council))
-        self.assertIn("injured", reports)
-        self.assertIn("DRAFT status table", reports)
-        self.assertIn("reported rather than refused", reports)
+        self.assertIn("REFUSED by structural_problems", reports)
+        self.assertIn("TIMING", reports)
+
+    def test_the_mission_column_is_applied_while_the_rest_stays_reported(self):
+        """The split matters: the refusal is a rule, the timing and magnitude are not."""
+        self.assertIs(self.model.status_record.get("mission_column_enforced"), True)
+        self.assertTrue(self.model.status_record.get("mission_column_reason"))
+        no_mission = {row.status for row in self.model.status_rows if not row.allows_a_mission()}
+        self.assertEqual(no_mission, {"busy", "injured", "unavailable", "exhausted", "absent"})
 
     def test_the_status_vocabulary_is_the_specifications_and_every_row_is_unenforced(self):
         self.assertEqual(

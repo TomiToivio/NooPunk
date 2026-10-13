@@ -208,7 +208,7 @@
       "exhausted",
       "absent"
     ],
-    "source": "the status table in docs/LEADER_COUNCIL_SYSTEM.md section 4, every row marked DRAFT",
+    "source": "the status table in strategy_game/docs/LEADER_COUNCIL_SYSTEM.md section 4, every row marked DRAFT",
     "rows": [
       {
         "status": "busy",
@@ -248,7 +248,9 @@
       }
     ],
     "enforced": false,
-    "reason": "every row is DRAFT, and three of the six carry a TODO. A mission led by a leader in a no-mission row is therefore REPORTED with the row cited, not refused: refusing it would implement an unapproved rule."
+    "mission_column_enforced": true,
+    "mission_column_reason": "The table is DRAFT as a WHOLE, so 'enforced' stays false: the row timings (injured recovery) and magnitudes (the compromised reduction and exposure risk) are TODO and are reported, not applied. But the 'mission' column is authored for all six rows, and issue #323's own acceptance criterion 2 says an unavailable leader cannot execute one, so structural_problems REFUSES a mission led by a no-mission status. Enforcing an acceptance criterion the issue states is not implementing an unapproved rule; inventing the missing timings and magnitudes would be.",
+    "reason": "every row is DRAFT. TWO of the six rows carry a TODO - injured and compromised - covering THREE unauthored items: recovery timing, exposure risk and halving. (The earlier wording said 'three of the six rows carry a TODO', which conflated the three items with the row count; the row count is two.) Those items stay reported with the row cited. The refusal itself is enforced in structural_problems (see mission_column_reason): what is unauthored is how long a status lasts and how much it costs, never whether it permits a mission."
   },
   "character_events": {
     "id": "character_event_declarations",
