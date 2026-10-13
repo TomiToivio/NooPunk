@@ -275,8 +275,79 @@
   },
   "event_seed": {
     "id": "diplomatic_recruitment_using_affinity_and_tag_conflict",
-    "label": "one authored diplomatic or recruitment event",
-    "note": "Built on axis similarity plus narrative tag conflicts, and never on hardcoded faction good/evil relations. The issue leaves the specific event to be authored; this records only its shape so the seed is not lost."
+    "label": "The Neutral Laboratory",
+    "status": "authored_narrative_prototype_no_resolution_rules",
+    "visibility": "player_safe",
+    "premise": "A small independent laboratory has independently documented anomalous observations. Its director offers access to a public briefing and invites the faction to help protect participants' consent and data. A private-sector sponsor separately offers equipment in exchange for an exclusive publishing window.",
+    "cast": [
+      {
+        "id": "lab_director",
+        "role": "Independent researcher",
+        "public_position": "Supports open and reproducible investigation; wary of secrecy and financial capture",
+        "tags": [
+          "PSI_RESEARCH"
+        ]
+      },
+      {
+        "id": "patron_envoy",
+        "role": "Corporate patron's envoy",
+        "public_position": "Supports ambitious technology research and partnership, but asks for preferential access",
+        "tags": [
+          "HUMAN_AUGMENTATION"
+        ]
+      },
+      {
+        "id": "community_organizer",
+        "role": "Community participant advocate",
+        "public_position": "Wants participant consent and meaningful public accountability",
+        "tags": [
+          "COMMONS_ORGANIZER"
+        ]
+      }
+    ],
+    "beats": [
+      {
+        "id": "invitation",
+        "prompt": "The director asks how the faction would publish sensitive evidence without exposing participants. The sponsor offers immediate practical help on its own conditions.",
+        "surface": "Present the faction's publicly stated AGI/technology, PSI and cultural positions and relevant doctrine, goal or resource TAGs. The director's trust remains an NPC judgement, not a computed ideology score."
+      },
+      {
+        "id": "conflict",
+        "prompt": "The community organizer challenges the sponsor's exclusivity clause while a skeptical researcher asks whether PSI claims have been replicated.",
+        "surface": "A materialist character with REMOTE_VIEWER competence, or an anti-AGI character with HUMAN_AUGMENTATION, may argue their positions without being rejected as contradictory. Belief does not grant psychic capability."
+      },
+      {
+        "id": "choice",
+        "prompt": "Choose a public commitment and an actionable next scene.",
+        "surface": "The GM checks what players actually promise, available relationships and evidence; no secret polity information is disclosed."
+      }
+    ],
+    "choices": [
+      {
+        "id": "open_protocol",
+        "label": "Public protocol, consent first",
+        "explicit_commitment": "Publish a consent-based testing protocol and protect participant identities.",
+        "follow_up": "Negotiate with the director and organizer over independent oversight and a replication session.",
+        "cost_or_tension": "The sponsor may withdraw exclusive funding; an impatient supporter may criticize the delay."
+      },
+      {
+        "id": "conditional_patronage",
+        "label": "Conditional corporate partnership",
+        "explicit_commitment": "Accept limited equipment support only under written independence, consent and disclosure terms.",
+        "follow_up": "Negotiate the contract and investigate whether the conditions can be enforced.",
+        "cost_or_tension": "Activists may question independence; the patron may reject restrictions."
+      },
+      {
+        "id": "withhold_and_verify",
+        "label": "Quiet independent verification",
+        "explicit_commitment": "Delay publication, preserve evidence and seek a second investigator.",
+        "follow_up": "Recruit an outside researcher and address the director's concern about delay and trust.",
+        "cost_or_tension": "Participants may fear indefinite secrecy; competitors can publish first."
+      }
+    ],
+    "outcome_policy": "No automatic success, predetermined alliance, faction morality score, fixed resource change, forced NPC recruitment or canonical NHI revelation. Resolve any follow-up through future author-approved faction rules or a GM scene. Record commitments, consent constraints, relationships and unresolved tensions as narrative state.",
+    "nhi_separation": "A welcoming NHI contact-policy position must never imply allegiance to the Confederacy or Orion. This event supplies no evidence of any named NHI polity and must not reveal hidden campaign cosmology.",
+    "compatibility_note": "Prototype for issue #346. The current code records event_seed as uninterpreted data; no new resolver, numeric modifier or faction-creation mechanic is authorized."
   },
   "cautions": [
     {"source": "laclau", "note": "axes summarise orientations; demands, antagonisms and nodal or empty signifiers drive actual articulation and hegemonic struggle. A five-value vector is not a substitute for political discourse, contingencies or coalitions."},
