@@ -277,14 +277,19 @@ satellite television and global mobile networks. "Model boats, cables and the po
 infrastructure/network nodes and vulnerabilities, **not individual units**."
 
 **PROPOSAL — the grounded node list.** The working map already carries the economy as eight locations
-and seven routes (`strategy_game/data/ukweli_local.json`): Old Harbor and Civic Centre, Mixed
-Neighborhoods, University and Hospital, Industrial Logistics Port, Coastal Hinterland, Outer Island
-Communities, Airfield Island and the Restricted Island (the biodiversity exclusion zone, whose access
-class is `restricted`). Airfield Island is the connectivity node (its tag is `communications`); read
-the port, the airfield and the cables as the state's three chokepoints. The map carries **three island
-nodes, one of them restricted**, which is this document's own 3–4-island CANON; the historic quarter is
-folded into the waterfront civic node so the eight-node envelope holds, and the trade-off is recorded in
-[`../design/ISSUE_324_UKWELI_GAP_CLOSURE.md`](../design/ISSUE_324_UKWELI_GAP_CLOSURE.md).
+and seven routes (`strategy_game/data/ukweli_local.json`): Old Harbor, Civic and Commercial Centre,
+Mixed Neighborhoods, University and Hospital, Industrial Logistics Port, Outer Island Communities,
+Airfield Island and Coastal Hinterland. Airfield Island is the connectivity node (its tag is
+`communications`); read the port, the airfield and the cables as the state's three chokepoints.
+
+**OPEN — the restricted island is declared, and is not yet a playable node.** This document states one
+city plus 3–4 islands with one marked restricted as CANON, and the map carries **two** island nodes and
+no closed one. The restricted exclusion island is therefore recorded **off the board, with its reason** —
+the board is at the eight-node cap and its node set is pinned by the schema and by a merged board
+projection, so *which city or environs role gives way* is the author's trade to make. The declaration,
+the reason and the three options for the Eldrich Island / Freedom Colony relation are in
+[`../design/ISSUE_324_UKWELI_GAP_CLOSURE.md`](../design/ISSUE_324_UKWELI_GAP_CLOSURE.md) and
+`strategy_game/data/ukweli_geography.json`.
 
 ## 8. The MVP scope, and what this document does not do
 
