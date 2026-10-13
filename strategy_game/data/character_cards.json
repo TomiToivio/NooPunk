@@ -1,0 +1,446 @@
+{
+  "format": "noopunk.strategy_game.character_cards",
+  "version": 1,
+  "status": "MVP CONTENT AND SCHEMA ONLY - no mechanic, no statistic, no threshold, no resolution. Gates A-D in docs/RULE_SYSTEM_RESEARCH.md remain open; AGENTS.md section 4 reserves resolution and cadence to the author.",
+  "sources": [
+    "issue #356: three card families, shared schema, template -> instance lifecycle, visibility, filters",
+    "issue #356 comment: three card families, one record - the non-collapse rules adopted here",
+    "issue #326: Sir Mars Eldrich, canonical contemporary NPC (Eldrich dynasty, Eldrich Corporation, Libertarian party, Mars colonisation)",
+    "RULEBOOK.md section 'Mars and Mars Eldrich': the ancient ruins on Mars",
+    "docs/design/ISSUE_324_UKWELI_CANON_REUSE.md: #326 owns Sir Mars Eldrich; the island question is explicitly undefined",
+    "docs/scenarios/UKWELI_LOCAL_SCENARIO.md, docs/scenarios/PREFALL_FIRST_CONTACT.md",
+    "data/codex.json: the four NHI categories (ontology), form, knowledge_status, alternative_ontologies, reveal_stage, manifestations, origin_claims, faction_relationships",
+    "data/faction_creation.json: issue #346's shared TAG kinds (belief, competence, equipment, relationship, asset, goal)",
+    "data/ukweli_local.json: the Ukweli party ids (cpu, uip, ulp) and their leader slots",
+    "strategy_game/docs/INTEGRATION_BOUNDARIES.md",
+    "strategy_game/tabletop/cards.py: the Card primitive this projects onto"
+  ],
+  "visibility_policy": {
+    "public": "readable at the table",
+    "private": "known to its owner or holder",
+    "concealed": "exists in the collection but reads as a hidden card back",
+    "claims": "canon / player_known / reported_claim / rumour / source_mythology / gm_truth / unknown; gm_truth is redacted by render_detail unless reveal_secrets=True",
+    "interiority": "consciousness_status is unknown / contested / asserted_in_world; it is never derived, and asserted_in_world needs a cited source because the setting does not settle whether a being is conscious",
+    "facts": "observable_facts (what happened) and inferences (what a character concludes) are separate fields and are never merged",
+    "note": "display policy only. No rule reads these values, and no card carries a statistic."
+  },
+  "entries": [
+    {
+      "identifier": "sir_mars_eldrich",
+      "family": "canonical",
+      "display_name": "Sir Mars Eldrich",
+      "role": "patron",
+      "summary": "Head of the aristocratic Eldrich family business dynasty and of Eldrich Corporation, successor to the Eldrich Colonial Shipping Corporation. The richest citizen of Ukweli and a globally dominant shipping magnate: an extremely eccentric, flamboyant publicity seeker, serial inventor and promoter of improbable products, some genuinely original and others arguably stolen or appropriated. Publicly meddles in politics, funds the Libertarian party and sympathetic media, and is obsessed with colonising Mars — a colonisation effort that discovered ancient ruins on Mars, which he is furious to see unsettled by stargates and anomalous transport.",
+      "faction_ids": ["ulp"],
+      "tags": [
+        {"kind": "belief", "value": "libertarian anti-establishment branding over aristocratic pedigree"},
+        {"kind": "competence", "value": "serial invention and promotion of improbable products"},
+        {"kind": "asset", "value": "Eldrich Corporation (global shipping)"},
+        {"kind": "asset", "value": "Eldrich Mansion on Eldrich Island"},
+        {"kind": "goal", "value": "colonise Mars"},
+        {"kind": "relationship", "value": "patron of the Libertarian party, which stays formally autonomous"}
+      ],
+      "declared_actions": ["influence", "recruitment"],
+      "statuses": ["richest citizen of Ukweli", "public political meddler"],
+      "relationships": [
+        {"other_id": "ulp", "kind": "patron_of", "visibility": "public"}
+      ],
+      "observable_facts": [
+        "Heads the Eldrich Corporation, successor to the Eldrich Colonial Shipping Corporation",
+        "Publicly funds the Libertarian party and sympathetic media",
+        "His colonisation effort discovered ancient ruins on Mars",
+        "Searches for crash-retrieval material"
+      ],
+      "inferences": [
+        "That the party is his instrument, although it remains formally autonomous",
+        "That wealth decides the argument, which the free-market rhetoric denies",
+        "The legal and physical relation of Eldrich Island to the Freedom Colony is unresolved: leave it unfilled"
+      ],
+      "visibility": "public",
+      "claim_status": "canon",
+      "consciousness_status": "unknown",
+      "art_ref": "placeholder:art/portrait/eldrich-sir-mars",
+      "provenance": {"kind": "authored", "note": "issue #326 Sir Mars Eldrich: canonical contemporary NPC"},
+      "sources": [
+        "#326 Sir Mars Eldrich: canonical contemporary NPC",
+        "RULEBOOK.md section 'Mars and Mars Eldrich'",
+        "docs/design/ISSUE_324_UKWELI_CANON_REUSE.md",
+        "docs/scenarios/UKWELI_LOCAL_SCENARIO.md",
+        "docs/scenarios/PREFALL_FIRST_CONTACT.md",
+        "rulebook/parts/07_noopunk_lore.md"
+      ],
+      "gm_notes": "His authored secret is the author's to write. Play the contradictions, not a villain: aristocratic pedigree against anti-establishment branding, monopolistic market power against free-market rhetoric, local philanthropy and jobs against elite capture. He is neither one-dimensional nor omnipotent."
+    },
+    {
+      "identifier": "archetype_faction_organizer",
+      "family": "archetype",
+      "display_name": "Faction organizer",
+      "role": "organizer",
+      "summary": "The person who turns a party's or movement's line into a room of people who will actually show up. Knows which door in the ward office still opens and whose cousin owes a favour.",
+      "tags": [
+        {"kind": "competence", "value": "grassroots mobilisation and turnout"},
+        {"kind": "asset", "value": "branch network and member register"},
+        {"kind": "goal", "value": "win the ward, then the city"},
+        {"kind": "relationship", "value": "owes favours across the ward"}
+      ],
+      "declared_actions": ["influence", "recruitment", "investigation"],
+      "statuses": [],
+      "visibility": "public",
+      "art_ref": "placeholder:art/archetype/faction-organizer",
+      "provenance": {"kind": "authored", "note": "issue #356 generic faction archetype"},
+      "sources": ["#356 generic faction members and civilian archetypes"]
+    },
+    {
+      "identifier": "archetype_corporate_security",
+      "family": "archetype",
+      "display_name": "Corporate security",
+      "role": "security",
+      "summary": "Contract protection for an enclave, a shipment or a person who cannot be lost. Professional, bored, and the first to notice that the crowd has stopped behaving like a crowd.",
+      "tags": [
+        {"kind": "competence", "value": "close protection and crowd control"},
+        {"kind": "equipment", "value": "sidearm, surveillance kit, encrypted radio"},
+        {"kind": "asset", "value": "corporate badge and legal cover"},
+        {"kind": "belief", "value": "the contract is the law"}
+      ],
+      "declared_actions": ["combat", "investigation", "field_operations"],
+      "statuses": [],
+      "visibility": "public",
+      "art_ref": "placeholder:art/archetype/corporate-security",
+      "provenance": {"kind": "authored", "note": "issue #356 generic faction archetype"},
+      "sources": ["#356 generic faction members and civilian archetypes"]
+    },
+    {
+      "identifier": "archetype_netrunner",
+      "family": "archetype",
+      "display_name": "Netrunner",
+      "role": "netrunner",
+      "summary": "Reaches a local, restricted network from inside its physical footprint, or through a drone, an insider or an intercepted courier. Air-gapped systems stay out of reach without a credible connection, so half the job is being in the right room.",
+      "tags": [
+        {"kind": "competence", "value": "local-access intrusion and social engineering"},
+        {"kind": "equipment", "value": "deck, BCI rig, collected exploits"},
+        {"kind": "belief", "value": "information wants to be free, ideally into someone else's account"},
+        {"kind": "asset", "value": "one insider who still answers"}
+      ],
+      "declared_actions": ["cyber", "espionage", "field_operations"],
+      "statuses": [],
+      "visibility": "public",
+      "art_ref": "placeholder:art/archetype/netrunner",
+      "provenance": {"kind": "authored", "note": "issue #356 generic faction archetype; access model per #344"},
+      "sources": ["#356 generic faction members and civilian archetypes", "#344 cyberspace access model"]
+    },
+    {
+      "identifier": "archetype_intelligence_officer",
+      "family": "archetype",
+      "display_name": "Intelligence officer",
+      "role": "intelligence officer",
+      "summary": "Collects what a faction cannot ask for publicly: source handling, pattern work, and the patience to file a rumour as a rumour until something corroborates it.",
+      "tags": [
+        {"kind": "competence", "value": "source handling and pattern analysis"},
+        {"kind": "asset", "value": "agency files and a budget line nobody audits"},
+        {"kind": "belief", "value": "uncertainty is a finding"},
+        {"kind": "relationship", "value": "a network of people who owe them nothing and fear them slightly"}
+      ],
+      "declared_actions": ["espionage", "investigation"],
+      "statuses": [],
+      "visibility": "public",
+      "art_ref": "placeholder:art/archetype/intelligence-officer",
+      "provenance": {"kind": "authored", "note": "issue #356 generic faction archetype"},
+      "sources": ["#356 generic faction members and civilian archetypes"]
+    },
+    {
+      "identifier": "archetype_researcher",
+      "family": "archetype",
+      "display_name": "Researcher",
+      "role": "researcher",
+      "summary": "Knows the literature, the limits of the literature, and which paradigm shift will make their funding line vanish. In Ukweli's moment, the honest ones mark their evidence tiers and the hurried ones do not.",
+      "tags": [
+        {"kind": "competence", "value": "literature synthesis and method criticism"},
+        {"kind": "asset", "value": "grant funding and a preprint server"},
+        {"kind": "goal", "value": "publish before the paradigm moves"},
+        {"kind": "belief", "value": "the three epistemic tiers stay separate"}
+      ],
+      "declared_actions": ["investigation", "influence"],
+      "statuses": [],
+      "visibility": "public",
+      "art_ref": "placeholder:art/archetype/researcher",
+      "provenance": {"kind": "authored", "note": "issue #356 generic faction archetype"},
+      "sources": ["#356 generic faction members and civilian archetypes"]
+    },
+    {
+      "identifier": "archetype_activist",
+      "family": "archetype",
+      "display_name": "Activist",
+      "role": "activist",
+      "summary": "Organises against the enclave, the pipeline or the platform, usually all three at once. May be a member of a party, a union, a tenants' group or a network that will not give a name to a journalist.",
+      "tags": [
+        {"kind": "belief", "value": "the commons against the enclosures"},
+        {"kind": "competence", "value": "mobilising, framing and showing up"},
+        {"kind": "relationship", "value": "trust of a network that is not a branch"},
+        {"kind": "asset", "value": "a legal fund and a sympathetic councillor"}
+      ],
+      "declared_actions": ["influence", "investigation", "recruitment"],
+      "statuses": [],
+      "visibility": "public",
+      "art_ref": "placeholder:art/archetype/activist",
+      "provenance": {"kind": "authored", "note": "issue #356 generic faction archetype"},
+      "sources": ["#356 generic faction members and civilian archetypes"]
+    },
+    {
+      "identifier": "archetype_soldier",
+      "family": "archetype",
+      "display_name": "Soldier",
+      "role": "soldier",
+      "summary": "Trained for the last war and deployed into the political one: checkpoints, evacuations, and standing very still while a crowd decides what it is.",
+      "tags": [
+        {"kind": "competence", "value": "field discipline and unit cohesion"},
+        {"kind": "equipment", "value": "service rifle and battlefield sensors"},
+        {"kind": "relationship", "value": "loyalty to the unit before the ministry"},
+        {"kind": "belief", "value": "orders are for people with better information"}
+      ],
+      "declared_actions": ["combat", "field_operations"],
+      "statuses": [],
+      "visibility": "public",
+      "art_ref": "placeholder:art/archetype/soldier",
+      "provenance": {"kind": "authored", "note": "issue #356 generic faction archetype"},
+      "sources": ["#356 generic faction members and civilian archetypes"]
+    },
+    {
+      "identifier": "archetype_bureaucrat",
+      "family": "archetype",
+      "display_name": "Bureaucrat",
+      "role": "bureaucrat",
+      "summary": "Holds the record that decides whether a thing happened. Not a villain: the procedural knowledge is real, necessary, and the most quietly powerful asset in the city.",
+      "tags": [
+        {"kind": "competence", "value": "procedural knowledge and records"},
+        {"kind": "asset", "value": "access to the archive and the permit queue"},
+        {"kind": "belief", "value": "the form is the institution"},
+        {"kind": "goal", "value": "retire before it all has to be re-registered"}
+      ],
+      "declared_actions": ["investigation"],
+      "statuses": [],
+      "visibility": "public",
+      "art_ref": "placeholder:art/archetype/bureaucrat",
+      "provenance": {"kind": "authored", "note": "issue #356 generic faction archetype"},
+      "sources": ["#356 generic faction members and civilian archetypes"]
+    },
+    {
+      "identifier": "archetype_journalist",
+      "family": "archetype",
+      "display_name": "Journalist",
+      "role": "journalist",
+      "summary": "Works a story about money, disclosure and who knew what when, in a city where the broadcaster's archive is a political instrument and the anchor everyone watched has just retired.",
+      "tags": [
+        {"kind": "competence", "value": "interviewing and source protection"},
+        {"kind": "asset", "value": "editorial contacts and an archive login"},
+        {"kind": "belief", "value": "publish the correction in the same place as the error"},
+        {"kind": "goal", "value": "one story that survives its own fact-check"}
+      ],
+      "declared_actions": ["investigation", "influence"],
+      "statuses": [],
+      "visibility": "public",
+      "art_ref": "placeholder:art/archetype/journalist",
+      "provenance": {"kind": "authored", "note": "issue #356 generic faction archetype"},
+      "sources": ["#356 generic faction members and civilian archetypes"]
+    },
+    {
+      "identifier": "archetype_commuter",
+      "family": "archetype",
+      "display_name": "Commuter",
+      "role": "commuter",
+      "summary": "Crosses the city twice a day through the checkpoints that the powerful argue about. Has opinions, timetables and a phone full of evidence, and is meaningful to social and investigation play rather than being anyone's combat encounter.",
+      "tags": [
+        {"kind": "competence", "value": "knows every route and every delay"},
+        {"kind": "asset", "value": "a phone, a transit card, a routine"},
+        {"kind": "belief", "value": "politics is what happens to the timetable"},
+        {"kind": "relationship", "value": "neighbours on both sides of the line"}
+      ],
+      "declared_actions": ["investigation"],
+      "statuses": ["civilian"],
+      "visibility": "public",
+      "art_ref": "placeholder:art/archetype/commuter",
+      "provenance": {"kind": "authored", "note": "issue #356 generic civilian archetype"},
+      "sources": ["#356 generic faction members and civilian archetypes"]
+    },
+    {
+      "identifier": "archetype_shopkeeper",
+      "family": "archetype",
+      "display_name": "Shopkeeper",
+      "role": "shopkeeper",
+      "summary": "Runs the corner the whole street uses as a meeting point, an informal bank and a rumour exchange. Sees the first sign of a shock and the last person who left before it.",
+      "tags": [
+        {"kind": "competence", "value": "reads the street's mood before the news does"},
+        {"kind": "asset", "value": "premises on a corner, cash float, favours owed"},
+        {"kind": "relationship", "value": "knows who is short of what"},
+        {"kind": "belief", "value": "keep the lights on and the door open"}
+      ],
+      "declared_actions": ["investigation", "influence"],
+      "statuses": ["civilian"],
+      "visibility": "public",
+      "art_ref": "placeholder:art/archetype/shopkeeper",
+      "provenance": {"kind": "authored", "note": "issue #356 generic civilian archetype"},
+      "sources": ["#356 generic faction members and civilian archetypes"]
+    },
+    {
+      "identifier": "archetype_civilian_witness",
+      "family": "archetype",
+      "display_name": "Civilian witness",
+      "role": "witness",
+      "summary": "Was standing there when it happened and has no framing for it. The most valuable card in an investigation, and the one most likely to be lied to, bought or quietly moved.",
+      "tags": [
+        {"kind": "competence", "value": "was there, and remembers the sequence"},
+        {"kind": "asset", "value": "a phone recording nobody has asked for yet"},
+        {"kind": "relationship", "value": "terrified of being useful to anyone"},
+        {"kind": "goal", "value": "get home and be left out of it"}
+      ],
+      "declared_actions": ["investigation"],
+      "statuses": ["civilian", "unaffiliated"],
+      "visibility": "public",
+      "art_ref": "placeholder:art/archetype/civilian-witness",
+      "provenance": {"kind": "authored", "note": "issue #356 generic civilian archetype"},
+      "sources": ["#356 generic faction members and civilian archetypes"]
+    },
+    {
+      "identifier": "nhi_cephalopod_envoy",
+      "family": "nhi",
+      "display_name": "Cephalopoid aquatic intelligences",
+      "role": "encounter exemplar",
+      "summary": "Game-facing exemplar of the Biologics category: a deep-water delegation whose grammar is written on its skin. Nothing about it is confirmed to the public, and the card shows what was seen while its identity and its standing stay unestablished.",
+      "tags": [
+        {"kind": "belief", "value": "that the sea already has a polity, or that it cannot"},
+        {"kind": "belief", "value": "that a delegation implies someone sent them"}
+      ],
+      "observable_facts": [
+        "A diplomatic delegation aboard a flooded consulate",
+        "Cephalopod anatomy adapted to a non-terrestrial pressure and light environment",
+        "Individual persons with a partly shared sensory model; not a hive"
+      ],
+      "inferences": [
+        "That a mandate exists behind the delegation (attributed, not observed)",
+        "That a candidate UCCC membership is on offer (a codex reading, not a fact)"
+      ],
+      "visibility": "public",
+      "claim_status": "rumour",
+      "consciousness_status": "unknown",
+      "nhi": {
+        "category": "biologic",
+        "form": "species",
+        "species_ref": "cephalopod_diplomats",
+        "origin_hypotheses": ["Terrestrial marine lineage, presented as a candidate UCCC member or a neutral party."],
+        "allegiances": ["uccc (candidate)", "unaligned (candidate)"],
+        "claim_status": "rumour",
+        "contested": false,
+        "reveal_stage": "gradual"
+      },
+      "art_ref": "placeholder:art/nhi/cephalopod-envoy",
+      "provenance": {"kind": "authored", "note": "card authored for issue #356; classification derived from data/codex.json"},
+      "sources": ["#356 one exemplar per NHI category", "data/codex.json#cephalopod_diplomats"]
+    },
+    {
+      "identifier": "nhi_metallic_spheres",
+      "family": "nhi",
+      "display_name": "Networked Metallic Spheres",
+      "role": "encounter exemplar",
+      "summary": "Game-facing exemplar of the Constructs category: the ubiquitous orb network, engineered rather than evolved, and ordinary enough to be player-known. A swarm is a presence; a single orb is a rumour with a camera. No capability is stated here, because the setting does not stat an entity.",
+      "tags": [
+        {"kind": "belief", "value": "that a controller exists, or that no one is watching"},
+        {"kind": "belief", "value": "that the network is a service rather than an occupation"}
+      ],
+      "observable_facts": [
+        "A formation over a city",
+        "A sphere waiting in a room with no door",
+        "A polished sphere with no seam, hatch or marking"
+      ],
+      "inferences": [
+        "That a direct or remote controller exists somewhere: the codex keeps this unresolved",
+        "That whoever operates the network is responsible for the surveillance it performs"
+      ],
+      "visibility": "public",
+      "claim_status": "player_known",
+      "consciousness_status": "unknown",
+      "nhi": {
+        "category": "construct",
+        "form": "vessel_or_technology",
+        "species_ref": "metallic_spheres",
+        "origin_hypotheses": ["The default ubiquitous metallic orb intelligence, communications and surveillance network. Possible direct or remote controllers."],
+        "allegiances": ["uccc (usual association)"],
+        "claim_status": "player_known",
+        "contested": false,
+        "reveal_stage": "common"
+      },
+      "art_ref": "placeholder:art/nhi/metallic-spheres",
+      "provenance": {"kind": "authored", "note": "card authored for issue #356; classification derived from data/codex.json"},
+      "sources": ["#356 one exemplar per NHI category", "data/codex.json#metallic_spheres"]
+    },
+    {
+      "identifier": "nhi_q_uo",
+      "family": "nhi",
+      "display_name": "Q'uo",
+      "role": "encounter exemplar",
+      "summary": "Game-facing exemplar of the Noetics category: a composite speaking principle rather than another biological species. Sourced from mythology rather than from evidence, rendered as overlapping voices and never as a portrait. The card states no mind and no competence.",
+      "tags": [
+        {"kind": "belief", "value": "that a principle can hold a conversation at all"},
+        {"kind": "belief", "value": "that the voice is plural because it is many, or because it is one"}
+      ],
+      "observable_facts": [
+        "A channeled session",
+        "A plural voice: the combined voices the source material names"
+      ],
+      "inferences": [
+        "That it is a group rather than a species, which the codex keeps explicit",
+        "That a historical UCCC contact happened (source mythology, not evidence)"
+      ],
+      "visibility": "public",
+      "claim_status": "source_mythology",
+      "consciousness_status": "unknown",
+      "nhi": {
+        "category": "noetic",
+        "form": "individual",
+        "species_ref": "q_uo",
+        "origin_hypotheses": ["In the source material a composite noetic speaking principle, not another biological species. The codex keeps the group-versus-species distinction explicit."],
+        "allegiances": ["uccc (historical contact)"],
+        "claim_status": "source_mythology",
+        "contested": false,
+        "reveal_stage": "later"
+      },
+      "art_ref": "placeholder:art/nhi/q-uo",
+      "provenance": {"kind": "authored", "note": "card authored for issue #356; classification derived from data/codex.json"},
+      "sources": ["#356 one exemplar per NHI category", "data/codex.json#q_uo"]
+    },
+    {
+      "identifier": "nhi_orbs_of_light",
+      "family": "nhi",
+      "display_name": "Orbs of Light",
+      "role": "encounter exemplar",
+      "summary": "Game-facing exemplar of the Plasmoids category, and the clearest case of a contested classification: the codex also records noetic and construct readings, so the card keeps the category, the form, the observations and the disputes in separate fields.",
+      "tags": [
+        {"kind": "belief", "value": "that the light is a being, a device or a misidentification"},
+        {"kind": "belief", "value": "that no reading of it is settled yet"}
+      ],
+      "observable_facts": [
+        "A light in a photograph",
+        "A light that moves against the wind",
+        "Luminous, roughly spherical, no resolved body"
+      ],
+      "inferences": [
+        "That an orb may equally be a device, an avatar, a misidentification or a phenomenon",
+        "That the plasma-like coherence is a body rather than an effect: unresolved in the codex"
+      ],
+      "visibility": "public",
+      "claim_status": "player_known",
+      "consciousness_status": "contested",
+      "nhi": {
+        "category": "plasmoid",
+        "form": "mythonym",
+        "species_ref": "orbs_of_light",
+        "origin_hypotheses": ["The initial fiction treats some orbs as plasmoids or possible first-density elementals. An orb may equally be a device, an avatar, a misidentification or a phenomenon: the entry keeps the alternatives."],
+        "allegiances": ["uccc (usual association)"],
+        "claim_status": "player_known",
+        "contested": true,
+        "reveal_stage": "common"
+      },
+      "art_ref": "placeholder:art/nhi/orbs-of-light",
+      "provenance": {"kind": "authored", "note": "card authored for issue #356; classification and its contestation derived from data/codex.json"},
+      "sources": ["#356 one exemplar per NHI category", "data/codex.json#orbs_of_light", "#356: classification may be provisional, contested or redacted"]
+    }
+  ]
+}
