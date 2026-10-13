@@ -142,8 +142,12 @@ class LayerIndependenceTests(unittest.TestCase):
         self.assertEqual(offenders, {}, "only the declared seam may couple to strategy code")
 
     def test_the_seam_is_exactly_one_file(self) -> None:
+        # The seam is signature-only: boundary.py accepts ``WorldState`` for the ``LeaderRPG``
+        # port's signature and deliberately does NOT import it at runtime. So the seam is detected
+        # by any reference to strategy state, not by a literal import line, which would make this
+        # contract contradict the "no banned import" contract above.
         seams = sorted(s.name for s in RPG_DIR.glob("*.py")
-                       if "import WorldState" in s.read_text(encoding="utf-8"))
+                       if "WorldState" in s.read_text(encoding="utf-8"))
         self.assertEqual(seams, [self.COUPLING_SEAM])
 
     def test_the_resolution_core_does_not_depend_on_strategy_state(self) -> None:
