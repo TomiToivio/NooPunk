@@ -1,0 +1,206 @@
+{
+  "format": "noopunk.strategy_game.paradigm_event_seeds",
+  "version": 1,
+  "status": "author_review_required_no_rules",
+  "source_issue": 329,
+  "note": "Scenario prompts only. No odds, resources, automatic alignment effects, numerical claims or validated causal laws.",
+  "cards": [
+    {
+      "id": "alien-economic-zone",
+      "title": "Extraterrestrial Economic Zone",
+      "system": "Economy",
+      "hook": "An alliance of investors asks Ukweli to grant extraterrestrial firms commercial privileges.",
+      "associated_currents": [
+        "accelerationists",
+        "orion"
+      ],
+      "player_questions": [
+        "What rights do nonhuman companies have?",
+        "Who audits beneficial ownership?",
+        "Can alien actors bypass labor protections?"
+      ],
+      "epistemic_caution": "The proposal remains a political demand, not established NHI consent or an enforceable treaty.",
+      "mechanical_effects": []
+    },
+    {
+      "id": "psi-ipo",
+      "title": "PSI-as-a-Service IPO",
+      "system": "Economy",
+      "hook": "A startup announces subscription-based psychic services and a spectacular valuation.",
+      "associated_currents": [
+        "accelerationists",
+        "cyborgists",
+        "critical"
+      ],
+      "player_questions": [
+        "Protect psychic privacy",
+        "Audit claims and informed consent",
+        "Consider public or cooperative ownership"
+      ],
+      "epistemic_caution": "Commercial claims must be distinguished from validated capabilities.",
+      "mechanical_effects": []
+    },
+    {
+      "id": "hybrid-rumor",
+      "title": "Billionaire Hybrid Rumour",
+      "system": "Media",
+      "hook": "An influencer alleges that a well-known patron is an Orion hybrid.",
+      "associated_currents": [
+        "orion",
+        "critical",
+        "normalcy"
+      ],
+      "player_questions": [
+        "Investigate specific evidence without profiling",
+        "Contest disinformation",
+        "Protect the accused from violence"
+      ],
+      "epistemic_caution": "Rumor cannot prove biological identity, ancestry, consciousness or allegiance.",
+      "mechanical_effects": []
+    },
+    {
+      "id": "awakening",
+      "title": "Awakening Epidemic",
+      "system": "Religion",
+      "hook": "Reports of spontaneous telepathy spread between workplaces, schools and families.",
+      "associated_currents": [
+        "confederacy",
+        "cyborgists",
+        "normalcy"
+      ],
+      "player_questions": [
+        "Offer voluntary scientific assessment",
+        "Provide consent-based support",
+        "Investigate coercive recruitment"
+      ],
+      "epistemic_caution": "PSI can be established in setting without validating every claim about its origin.",
+      "mechanical_effects": []
+    },
+    {
+      "id": "accession",
+      "title": "Confederacy Accession Terms",
+      "system": "Politics",
+      "hook": "A diplomatic mission offers collective protection conditional on extensive reforms.",
+      "associated_currents": [
+        "confederacy",
+        "critical",
+        "doomers"
+      ],
+      "player_questions": [
+        "Debate animal welfare and climate obligations",
+        "Require transparent noninterference guarantees",
+        "Reject or renegotiate political conditions"
+      ],
+      "epistemic_caution": "Treat the mission's promises as proposals, not proven benevolence.",
+      "mechanical_effects": []
+    },
+    {
+      "id": "sphere-scandal",
+      "title": "Sphere-Network Data Scandal",
+      "system": "Security",
+      "hook": "Evidence suggests a protective sphere network may retain intimate behavioral observations.",
+      "associated_currents": [
+        "confederacy",
+        "critical",
+        "cyborgists"
+      ],
+      "player_questions": [
+        "Demand independent inspection",
+        "Secure witnesses and records",
+        "Negotiate human data sovereignty"
+      ],
+      "epistemic_caution": "Observation, storage, purpose and control remain distinct findings.",
+      "mechanical_effects": []
+    },
+    {
+      "id": "butlerian-raid",
+      "title": "Butlerian Jihad Raid",
+      "system": "Security",
+      "hook": "Militants attack a laboratory suspected of developing prohibited AGI.",
+      "associated_currents": [
+        "doomers",
+        "critical",
+        "accelerationists"
+      ],
+      "player_questions": [
+        "Protect staff and preserve evidence",
+        "Investigate possible rogue AI risks",
+        "Pursue legal accountability"
+      ],
+      "epistemic_caution": "Risk claims do not justify violence against civilians.",
+      "mechanical_effects": []
+    },
+    {
+      "id": "religious-schism",
+      "title": "The Great Schism",
+      "system": "Religion",
+      "hook": "An established religious institution divides over whether the Source is divine, alien or propaganda.",
+      "associated_currents": [
+        "confederacy",
+        "cyborgists",
+        "normalcy"
+      ],
+      "player_questions": [
+        "Convene interfaith dialogue",
+        "Protect dissenters",
+        "Request independent PSI research"
+      ],
+      "epistemic_caution": "No metaphysical interpretation is fixed as narrator truth.",
+      "mechanical_effects": []
+    },
+    {
+      "id": "privacy-bill",
+      "title": "Psychic Privacy Bill",
+      "system": "Law",
+      "hook": "Legislators propose a right against nonconsensual psychic intrusion and coerced BCI access.",
+      "associated_currents": [
+        "critical",
+        "cyborgists",
+        "accelerationists"
+      ],
+      "player_questions": [
+        "Define evidence and consent standards",
+        "Balance investigations with civil liberties",
+        "Determine liability across species"
+      ],
+      "epistemic_caution": "The bill is a legal proposal; no numerical bonuses or enacted rights are implied.",
+      "mechanical_effects": []
+    },
+    {
+      "id": "world-government",
+      "title": "World Government Debate",
+      "system": "Politics",
+      "hook": "A UN constitutional convention considers emergency authority for cross-border paradigm crises.",
+      "associated_currents": [
+        "confederacy",
+        "cyborgists",
+        "doomers"
+      ],
+      "player_questions": [
+        "Demand democratic accountability",
+        "Debate sovereignty and emergency powers",
+        "Negotiate representation of NHIs"
+      ],
+      "epistemic_caution": "Global hegemony is an aspiration contested by factions, not the MVP starting condition.",
+      "mechanical_effects": []
+    },
+    {
+      "id": "normalcy-cycle",
+      "title": "Nothing to See Here",
+      "system": "Media",
+      "hook": "A broadcaster devotes prime time to a celebrity scandal while an anomalous object obscures the sun.",
+      "associated_currents": [
+        "normalcy",
+        "critical",
+        "accelerationists"
+      ],
+      "player_questions": [
+        "Redirect attention to public safety",
+        "Challenge disinformation",
+        "Explore why audiences avoid crisis coverage"
+      ],
+      "epistemic_caution": "Normalcy is a diffuse social tendency, not an organized party or an intelligence deficit.",
+      "mechanical_effects": []
+    }
+  ]
+}
