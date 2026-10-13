@@ -1,9 +1,9 @@
 # NoöPunk Strategy Game: Rulebook (placeholder)
 
-**Status: NO RULES APPROVED.** Separate from all existing NoöPunk RPG rulebooks. Do not auto-import, copy or reinterpret their mechanics.
+**Status (issue #389): Fate Core RPG foundation selected by author.** The RPG layer has an initial original Python prototype based on the Fate Core CC BY 3.0 SRD, while detailed Transhumanity's Fate-inspired enhancements and NoöPunk conversions are unfinished. **Faction strategy and political simulation rules are not yet approved.** Separate from existing NoöPunk legacy RPG rules; do not automatically import their mechanics.
 
 ## Layer I: Faction leader, narrative RPG
-Reserved: attributes, personality trait tags, character decisions, roleplay, resolution. All procedures and values **TBD by author**.
+**Author-selected baseline:** Fate Core four actions, 4dF + skill, character aspects, stunts, Fate points, stress and consequences. First Python slice: [`rpg/fate.py`](rpg/fate.py); licensing and gaps: [`rpg/README.md`](rpg/README.md). PSI is natural and not virus-derived. Most humans remain in original biological bodies: cortical stacks and resleeving are optional, new and rare. NoöPunk lore does not inherit Eclipse Phase's setting. Exact NoöPunk skill lists, stunts, equipment permissions, full Fate implementation and future conversions remain to be designed.
 
 **Unapproved design proposal (#295):** [leader/NPC micro-rule example](docs/LEADER_MICRO_RULES_PROPOSAL.md). The worked 2d6 example and all attribute names, numbers and interfaces are for author review only; **none is a rule of this game**.
 
