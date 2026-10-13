@@ -1,0 +1,31 @@
+{
+  "schema_version": "noopunk.mod_example.v1",
+  "description": "Noncanonical data-only example: no travel or contact is automatically enabled.",
+  "nodes": [
+    {
+      "identifier": "example-foreign-lab",
+      "label": "Unspecified overseas research contact",
+      "kind": "organization",
+      "layer": "social",
+      "tags": [
+        "unverified-contact"
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "identifier": "example-research-invitation",
+      "card_type": "event",
+      "title": "Invitation to Independent Review",
+      "role": "persistent_record",
+      "text": "An overseas laboratory offers a voluntary, independent replication review. The GM decides whether correspondence is reachable.",
+      "tags": [
+        "research",
+        "consent"
+      ],
+      "visibility": "public",
+      "prerequisites": [],
+      "effects": []
+    }
+  ]
+}
