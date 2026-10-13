@@ -1,0 +1,72 @@
+{
+  "format": "noopunk.strategy_game.board_binding",
+  "status": "PROPOSAL - a reading of issue #347's board vocabulary applied to the one complete local slice. No rule is defined: every mapping below is editable data, the layout is cosmetic, and nothing here decides what an edge costs or who may move a piece.",
+  "provenance": {
+    "kind": "authored",
+    "source": "issue #347",
+    "note": "the binding, the layer/kind mapping and the cosmetic layout are this session's reading of the issue's board vocabulary; the author may replace every value here"
+  },
+  "slice": "ukweli_local.json",
+  "board_identifier": "ukweli-local",
+  "node_bindings": {
+    "locations": {
+      "kind": "location",
+      "layer": "physical"
+    },
+    "parties": {
+      "kind": "faction",
+      "layer": "social"
+    },
+    "leaders": {
+      "kind": "person",
+      "layer": "social"
+    }
+  },
+  "edge_bindings": {
+    "routes": {
+      "kind": "travel",
+      "layer": "physical",
+      "note": "the source field is named routes; the issue's edge vocabulary calls that travel. Direction, meaning and control are still not implied."
+    },
+    "relationships": {
+      "kind": null,
+      "layer": "social",
+      "kind_from_tags": {},
+      "note": "a relationship declares no kind in the source, so the neutral default is used and the declared tags are preserved verbatim on the edge. To type them, declare a mapping here, e.g. {\"rivals\": \"opposition\"}."
+    }
+  },
+  "reserved": [
+    "pieces: the slice declares no piece, so none is invented",
+    "action eligibility, control, ownership, travel rules and victory",
+    "joining this board to strategy_game.core.WorldState (Gate D)"
+  ],
+  "layout": {
+    "kind": "cosmetic_positions",
+    "note": "cosmetic only. Layout is deliberately outside Board, so replacing or recomputing these coordinates can never change the graph. Placed on three declared rings by node family, which is the whole of the reasoning behind them.",
+    "positions": {
+      "old_harbor": [1.0,0.0],
+      "civic": [0.707,0.707],
+      "residential": [0.0,1.0],
+      "campus": [-0.707,0.707],
+      "port": [-1.0,0.0],
+      "outer_island": [-0.707,-0.707],
+      "airfield_island": [-0.0,-1.0],
+      "coast": [0.707,-0.707],
+      "cpu": [0.0,-0.45],
+      "uip": [0.39,0.225],
+      "ulp": [-0.39,0.225],
+      "cpu1": [1.7,0.0],
+      "cpu2": [1.472,0.85],
+      "cpu3": [0.85,1.472],
+      "cpu4": [0.0,1.7],
+      "uip1": [-0.85,1.472],
+      "uip2": [-1.472,0.85],
+      "uip3": [-1.7,0.0],
+      "uip4": [-1.472,-0.85],
+      "ulp1": [-0.85,-1.472],
+      "ulp2": [-0.0,-1.7],
+      "ulp3": [0.85,-1.472],
+      "ulp4": [1.472,-0.85]
+    }
+  }
+}
