@@ -48,3 +48,25 @@ python -m unittest strategy_game.tests.test_global_slice -v
 `global_slice.py` contains a deliberately small, **separate** demonstration of four text views (global city-hub map and typed network links, faction assets and agents, global political responses, mission/encounter choices), discoverable mission sites and agent-led resource activation. A crash investigation can discover an NHI installation; the archive infiltration can resolve nonviolently; abstract force-response is represented only as a possible mission choice. Randomness is seeded for reproduction and all skill/asset calculations are explicitly **illustrative**, not approved rules or balanced gameplay. The user cannot yet operate a general interactive campaign from this CLI: `demo()` runs a fixed illustrative sequence.
 
 **Author approval still required:** final skill/TAG vocabulary, dice mechanism, difficulty scales, asset economy, political transitions, combat, encounter writing and comprehensive UI. The prototype does **not** change `WorldState`, canonical strategy `RULEBOOK.md`, the separate local-city slice, or the legacy RPG. See [issue #338](https://github.com/TomiToivio/NooPunk/issues/338).
+
+## Character cards (#356)
+
+The existing [character-card system](characters.py) is now the shared data-only catalogue for canonical leaders, reusable civilian/faction archetypes and uncertain NHI exemplars. The [card data](data/character_cards.json), [design notes](docs/CHARACTER_CARDS.md) and [executable tests](tests/test_character_cards.py) cover template instantiation, uniqueness, visibility/redaction, codex classification and integration with tabletop card projections. No unapproved attributes or action resolution are introduced.
+
+Quick verification from the repository root:
+
+```bash
+python -m unittest strategy_game.tests.test_character_cards
+```
+
+Example read-only loading:
+
+```python
+from strategy_game.characters import load_character_cards, render_front
+
+roster = load_character_cards()
+for card in roster:
+    print(render_front(card))
+```
+
+Use `strategy_game.characters` rather than adding a parallel `character_cards` implementation. The category (Biologics, Constructs, Noetics or Plasmoids), species, hypothetical origin and faction affiliation are **different fields**, and GM-only claims must be redacted in player-facing views.
