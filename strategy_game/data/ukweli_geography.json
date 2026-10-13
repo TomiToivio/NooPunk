@@ -9,7 +9,8 @@
     "#326 Sir Mars Eldrich, Eldrich Island, the mansion and the Freedom Colony: the island/mansion/freedom-zone relation is explicitly UNDEFINED",
     "#322 MVP: one city plus environs, 5-8 abstract districts/locations",
     "docs/design/ISSUE_324_UKWELI_CANON_REUSE.md sections 4.1-4.3, the conflicts flagged for the author",
-    "docs/scenarios/UKWELI_LOCAL_SCENARIO.md (deliverable B) and docs/world/PEOPLES_REPUBLIC_OF_UKWELI.md (the #325 setting bible)",
+    "docs/world/PEOPLES_REPUBLIC_OF_UKWELI.md (the #325 setting bible), which states one city plus 3-4 islands with one marked restricted as CANON",
+    "strategy_game/data/board_local.json (the landed board projection, PR #387), which pins the playable board's node set",
     "strategy_game/data/ukweli_local.json (the live playable board this record cross-checks)"
   ],
   "provenance": {
@@ -24,7 +25,7 @@
     "informal_register": "Republic of Ukweli",
     "informal_register_where_it_appears": [
       "the issue #324 title and body, written before #325 landed",
-      "strategy_game/data/ukweli_local.json's setting string (aligned to the official name by this record)"
+      "strategy_game/data/ukweli_local.json's setting string, left unchanged because it is the informal register and not the official name"
     ],
     "register_mapping_recorded": true,
     "note": "This is a register mapping, not a choice between two competing official names. #325 declares the official name and makes it load-bearing; #324's plain form is ordinary shorthand and the everyday register is Ukweli / New Ukweli. Recording the mapping closes the conflict STRUCTURALLY; the residual question (below) stays OPEN.",
@@ -45,7 +46,7 @@
         "strategy_game/data/global_factions.json uses 'ulp'",
         "strategy_game/data/character_cards.json gives Sir Mars Eldrich faction_ids ['ulp']",
         "#325 and #326 (the setting authority and the character issue) say 'LFP - Libertarian Freedom Party of Ukweli'",
-        "docs/scenarios/REPUBLIC_OF_UKWELI.md uses ULP; strategy_game/docs/IDEOLOGICAL_FORMATIONS_2026.md uses ULP, following #327"
+        "docs/scenarios/REPUBLIC_OF_UKWELI.md and strategy_game/docs/IDEOLOGICAL_FORMATIONS_2026.md use ULP"
       ],
       "resolved": false,
       "decision_taken_here": "The DATA ID stays 'ulp', because ukweli_local.json and the landed Eldrich card already use it and inventing a fourth party id would fork the scaffold. The DISPLAY LABEL is not chosen: issue #326 deliberately left it open and a landed contract asserts that it stays surfaced rather than resolved.",
@@ -79,25 +80,28 @@
       "id": "exclusion_island",
       "label": "Restricted Island (biodiversity exclusion zone)",
       "access": "restricted",
-      "on_playable_board": true,
+      "on_playable_board": false,
+      "absent_reason": "The playable board is at the eight-node cap both #322 and the schema state, and its node set is now pinned by a landed board-projection artifact (strategy_game/data/board_local.json, PR #387) as well as by the cap, so a ninth node is not a scenario edit alone and removing one is not this record's decision. Which city or environs role gives way for the restricted island - or whether the cap itself should move - is the author's choice.",
       "rationale": "CANON from #325: the government has designated an entire island a prohibited/protected zone, publicly to safeguard Ukweli's unusual biodiversity and ecological heritage, with its own credible conservation value even if security is also involved. The public position, the competing internal assessments and the setting's deeper mysteries stay distinct.",
       "sources": [
         "#325 'an entire island a prohibited/protected zone'",
         "#325 'one marked restricted' in the 6-8 node envelope",
-        "docs/scenarios/UKWELI_LOCAL_SCENARIO.md section 2 'an exclusion island'"
+        "docs/scenarios/UKWELI_LOCAL_SCENARIO.md section 2 'an exclusion island'",
+        "docs/world/PEOPLES_REPUBLIC_OF_UKWELI.md section 8, which states the 3-4-island, one-restricted envelope as CANON"
       ]
     }
   ],
   "island_count": {
-    "landed": 3,
+    "declared": 3,
+    "on_playable_board": 2,
     "issue_envelope": [3, 4],
-    "envelope_source": "#325 'Suggested initial state: 1 city + 3-4 islands'",
-    "note": "Three island nodes are landed, which sits inside #325's own 3-4 envelope and satisfies #324's 'multiple islands'. The playable board keeps exactly eight location nodes (the cap #322 and the schema both state), so the fifth-to-eighth city-role had to be folded rather than the cap raised: the historic quarter is folded into the waterfront civic node, keeping its heritage and trade tags.",
+    "envelope_source": "#325 'Suggested initial state: 1 city + 3-4 islands', also stated as CANON in the setting bible",
+    "note": "THREE islands are declared, inside #325's envelope; TWO are playable today, because the board carries eight nodes and its node set is pinned by the cap, by the schema, and by a landed board projection. The configuration therefore still shows one island fewer than the canon, and that gap is recorded here as a PLACEMENT question rather than silently closed by folding a city role into another node: which role gives way is a scenario decision, and this record does not take it. The exclusion island carries no route wherever it is placed, so a prohibited zone stays unreachable under the provisional travel rules.",
     "pending": {
-      "id": "island_count_three_or_four",
-      "question": "Three island nodes or four - and if a fourth is wanted, which city or environs role gives way?",
-      "why_not_decided": "Three is inside the stated envelope and eight is the stated node cap, so the count and the trade-off are the author's. Dropping or folding a listed city role is a scenario decision, not a code one.",
-      "container_instead": "The island set is declared as a list with an explicit access class per entry, so a fourth island is one more entry and never a code change."
+      "id": "restricted_island_placement",
+      "question": "Should the restricted exclusion island become a ninth playable node (moving the cap), displace one of the eight existing nodes, or be represented off-board as a declared non-playable zone?",
+      "why_not_decided": "Eight is the stated cap, the board is full, and the existing node set is bound by a merged board projection as well as by the schema. Choosing the trade - or moving the cap - is the author's.",
+      "container_instead": "The island set is declared with an explicit access class and an on_playable_board flag per entry, so placing the island is an edit to scenario data (and a board binding) and never a code change."
     }
   },
   "relations": [
@@ -111,7 +115,7 @@
         "adjacent - one node with two faces: mansion and colony share infrastructure and fate",
         "separate, linked - two nodes out of the budget: a domestic base and a public one"
       ],
-      "note": "The relation is explicitly undefined in #326 and in the #324 inventory section 4.3. This record declares the three options and asserts none of them, because the map schema cannot place both without a ruling. The two existing island nodes are NOT equated with either place.",
+      "note": "The relation is explicitly undefined in #326 and in the #324 inventory section 4.3. This record declares the three options and asserts none of them, because the map schema cannot place both without a ruling. Neither existing island node is equated with either place.",
       "sources": ["#326 (the relation is undecided)", "docs/design/ISSUE_324_UKWELI_CANON_REUSE.md section 4.3"]
     }
   ],
@@ -123,16 +127,22 @@
       "container_instead": "state_names declares official, everyday and informal registers as named strings."
     },
     {
-      "id": "restricted_island_legal_autonomy",
-      "question": "What is the exclusion island's legal autonomy, and what is the Eldrich Island / Freedom Colony relation?",
-      "why_not_decided": "#326 leaves the Eldrich Island / Freedom Colony relation undefined and the inventory records the restricted island's legal autonomy as OPEN. Both are canon decisions.",
+      "id": "restricted_island_placement",
+      "question": "Is the restricted exclusion island a playable node, and if so which node gives way - or does the eight-node cap move?",
+      "why_not_decided": "The board is at its cap and its node set is pinned by the schema and by a merged board projection; the trade-off is a scenario decision belonging to the author.",
+      "container_instead": "islands declares each island's access class and on_playable_board flag, with an absent_reason where the island is not on the board."
+    },
+    {
+      "id": "eldrich_island_legal_autonomy",
+      "question": "What is the Eldrich Island / Freedom Colony relation, and the restricted island's legal autonomy?",
+      "why_not_decided": "#326 leaves the island / Freedom Colony relation undefined and the inventory records the restricted island's legal autonomy as OPEN. Both are canon decisions.",
       "container_instead": "relations declares each as a named option list with resolved: false and an empty ruling_source, so no relation is silently settled."
     },
     {
-      "id": "which_city_role_gives_way_for_a_fourth_island",
-      "question": "If a fourth island node is wanted, which listed city or environs role gives way?",
-      "why_not_decided": "Eight nodes is the cap and the current board is full; the trade-off between #324's city roles and #325's island count is the author's.",
-      "container_instead": "The board's location list is pure scenario data, so the trade is an edit to a data file, not to the engine."
+      "id": "island_count_three_or_four",
+      "question": "Three declared islands or four?",
+      "why_not_decided": "Three sits inside the stated envelope; a fourth is permitted by the envelope but the board's cap and node set make it a placement decision as well.",
+      "container_instead": "The island set is a list, so a fourth island is one more entry and never a code change."
     }
   ]
 }

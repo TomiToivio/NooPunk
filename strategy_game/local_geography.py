@@ -6,7 +6,9 @@ module is the **structural** half of that: it reads the live playable board
 (``data/ukweli_local.json``) and the declared geography record (``data/ukweli_geography.json``) and
 answers four questions **by reading, never by assuming**:
 
-* which board nodes are islands, and which island is the restricted / exclusion one;
+* which islands the record declares, which of them are playable, and which is the restricted /
+  exclusion one - together with a **reason** where a declared island is not on the board, so the gap is
+  recorded rather than hidden;
 * what the state's official name is, and which register the everyday and informal forms occupy;
 * what the Eldrich Island / Freedom Colony relation is - **reported as OPEN with its options**, never
   resolved, because issue #326 says the relation is undefined;
@@ -21,6 +23,16 @@ control and no victory; it declares no number, threshold, magnitude or scale
 three options for the island relation are recorded as named strings so a later pass can act on the
 author's ruling instead of re-deriving the question. ``strategy_game/RULEBOOK.md`` still says
 **NO RULES APPROVED**, and this layer touches no engine behaviour.
+
+Two separations the code keeps honest:
+
+* **A declaration is not a board marker.** The record declares the island set; the board *may* carry
+  ``island`` / ``access`` markers. Where a board marker exists it must **agree** with the declaration,
+  and where it does not the declaration stands - a missing marker is *unrecorded*, never silently read
+  as "not an island".
+* **An absent island is accounted for.** A declared island that is not on the playable board must carry
+  an ``absent_reason``, so "declared canon but not playable" is never mistaken for a node that was
+  simply forgotten.
 """
 from __future__ import annotations
 
@@ -92,31 +104,49 @@ def _strings(value: Any) -> tuple[str, ...]:
     return tuple(str(item) for item in value)
 
 
+def _all_keys(value: Any) -> set[str]:
+    """Every mapping key anywhere in a payload. Used only to look for a numeric-shaped name."""
+    found: set[str] = set()
+    if isinstance(value, Mapping):
+        for key, item in value.items():
+            found.add(str(key))
+            found |= _all_keys(item)
+    elif isinstance(value, (list, tuple)):
+        for item in value:
+            found |= _all_keys(item)
+    return found
+
+
 @dataclass(frozen=True)
 class BoardPlace:
-    """One node of the live playable board, as declared."""
+    """One node of the live playable board, as declared.
+
+    ``island`` is ``None`` when the board declares no island marker for the node, and ``access`` is
+    empty for the same reason: an unrecorded marker is *unknown*, never assumed to be ``open`` or to
+    mean "not an island".
+    """
 
     identifier: str
     label: str
-    island: bool
-    access: str
     tags: tuple[str, ...] = ()
-    pressure_declared: bool = False
+    island: bool | None = None
+    access: str = ""
 
     @property
     def is_exclusion(self) -> bool:
-        """True when the node is closed rather than ordinary play."""
+        """True when the *board* marks the node closed. Absence is not a claim either way."""
         return self.access in ("restricted", "prohibited")
 
 
 @dataclass(frozen=True)
 class DeclaredIsland:
-    """One island the record declares, and whether it sits on the playable board."""
+    """One island the record declares, and whether it is playable."""
 
     identifier: str
     label: str
     access: str
     on_playable_board: bool
+    absent_reason: str = ""
     rationale: str = ""
     sources: tuple[str, ...] = ()
 
@@ -197,7 +227,8 @@ class LocalGeography:
     sources: tuple[str, ...] = ()
     places: tuple[BoardPlace, ...] = ()
     islands: tuple[DeclaredIsland, ...] = ()
-    island_count_landed: int = 0
+    island_count_declared: int = 0
+    island_count_on_board: int = 0
     island_envelope: tuple[int, int] = (0, 0)
     relations: tuple[OpenRelation, ...] = ()
     name_register: NameRegister | None = None
@@ -207,14 +238,27 @@ class LocalGeography:
     detail: dict[str, Any] = field(default_factory=dict)
 
     # -- readings ------------------------------------------------------------
+    def on_board(self, identifier: str) -> bool:
+        """True when the identifier is a node of the live board."""
+        return any(place.identifier == identifier for place in self.places)
+
     @property
-    def board_islands(self) -> tuple[BoardPlace, ...]:
-        """The board nodes marked as islands. A reading, not a claim about the fiction."""
-        return tuple(place for place in self.places if place.island)
+    def board_ids(self) -> tuple[str, ...]:
+        return tuple(place.identifier for place in self.places)
+
+    @property
+    def board_islands(self) -> tuple[DeclaredIsland, ...]:
+        """The declared islands that are playable today. A reading, not a claim about the fiction."""
+        return tuple(island for island in self.islands if island.on_playable_board)
+
+    @property
+    def off_board_islands(self) -> tuple[DeclaredIsland, ...]:
+        """The declared islands that are canon but not playable. Each carries an absent_reason."""
+        return tuple(island for island in self.islands if not island.on_playable_board)
 
     @property
     def board_exclusions(self) -> tuple[BoardPlace, ...]:
-        """The board nodes marked closed. Exactly one is expected, and it is reported, not assumed."""
+        """Board nodes the board itself marks closed. None is not the same as "no closed node"."""
         return tuple(place for place in self.places if place.is_exclusion)
 
     @property
@@ -223,6 +267,9 @@ class LocalGeography:
 
     def place(self, identifier: str) -> BoardPlace | None:
         return next((p for p in self.places if p.identifier == identifier), None)
+
+    def declared_island(self, identifier: str) -> DeclaredIsland | None:
+        return next((i for i in self.islands if i.identifier == identifier), None)
 
     def relation(self, identifier: str) -> OpenRelation | None:
         return next((r for r in self.relations if r.identifier == identifier), None)
@@ -237,8 +284,8 @@ class LocalGeography:
     def problems(self) -> tuple[str, ...]:
         """Return the structural problems found; empty means the record is consistent.
 
-        Every check here is a *shape or reference* check. None of them reads, applies or invents a
-        rule, and none of them decides an author question.
+        Every check here is a *shape, reference or agreement* check. None of them reads, applies or
+        invents a rule, and none of them decides an author question.
         """
         problems: list[str] = []
         if self.format != GEOGRAPHY_FORMAT:
@@ -262,9 +309,9 @@ class LocalGeography:
             if place.identifier in seen:
                 problems.append(f"duplicate board location id {place.identifier!r}")
             seen.add(place.identifier)
-            if place.access not in ACCESS_CLASSES:
+            if place.access and place.access not in ACCESS_CLASSES:
                 problems.append(
-                    f"{place.identifier}: access {place.access!r} not in {ACCESS_CLASSES}"
+                    f"{place.identifier}: access marker {place.access!r} not in {ACCESS_CLASSES}"
                 )
 
         if not self.islands:
@@ -276,19 +323,40 @@ class LocalGeography:
                 problems.append(
                     f"{island.identifier}: declared as on the playable board but absent from the board"
                 )
+            if not island.on_playable_board and not island.absent_reason.strip():
+                problems.append(
+                    f"{island.identifier}: declared off the playable board without a reason; an absent "
+                    "island must be accounted for"
+                )
 
         exclusions = self.exclusion_islands
         if len(exclusions) != 1:
             problems.append(
                 f"expected exactly one restricted / exclusion island, found {len(exclusions)}"
             )
-        declared_closed = {island.identifier for island in exclusions}
-        board_closed = {place.identifier for place in self.board_exclusions}
-        if declared_closed != board_closed:
-            problems.append(
-                "the board's closed nodes do not match the declared exclusion islands: "
-                f"board {sorted(board_closed)} vs declared {sorted(declared_closed)}"
-            )
+
+        # A board marker must agree with the declaration. A missing marker is unrecorded, not a claim.
+        for place in self.places:
+            declared = self.declared_island(place.identifier)
+            if place.island is True and declared is None:
+                problems.append(
+                    f"{place.identifier}: the board marks this node as an island but no island is "
+                    "declared for it"
+                )
+            if place.island is False and declared is not None:
+                problems.append(
+                    f"{place.identifier}: the board denies island status for a declared island"
+                )
+            if place.access and declared is not None and place.access != declared.access:
+                problems.append(
+                    f"{place.identifier}: the board declares access {place.access!r} but the record "
+                    f"declares {declared.access!r}"
+                )
+            if place.access and declared is None:
+                problems.append(
+                    f"{place.identifier}: the board marks this node {place.access!r} but no island is "
+                    "declared for it"
+                )
 
         if self.name_register is None:
             problems.append("the state's naming registers are not declared")
@@ -337,9 +405,8 @@ class LocalGeography:
                 {
                     "id": place.identifier,
                     "label": place.label,
-                    "island": place.island,
-                    "access": place.access,
                     "tags": list(place.tags),
+                    "island": place.island,
                 }
                 for place in self.places
             ],
@@ -349,11 +416,13 @@ class LocalGeography:
                     "label": island.label,
                     "access": island.access,
                     "on_playable_board": island.on_playable_board,
+                    "absent_reason": island.absent_reason,
                 }
                 for island in self.islands
             ],
             "island_count": {
-                "landed": self.island_count_landed,
+                "declared": self.island_count_declared,
+                "on_playable_board": self.island_count_on_board,
                 "issue_envelope": list(self.island_envelope),
             },
             "relations": [relation.to_dict() for relation in self.relations],
@@ -373,27 +442,14 @@ class LocalGeography:
         return payload
 
 
-def _all_keys(value: Any) -> set[str]:
-    """Every mapping key anywhere in a payload. Used only to look for a numeric-shaped name."""
-    found: set[str] = set()
-    if isinstance(value, Mapping):
-        for key, item in value.items():
-            found.add(str(key))
-            found |= _all_keys(item)
-    elif isinstance(value, (list, tuple)):
-        for item in value:
-            found |= _all_keys(item)
-    return found
-
-
 def _place_from_board(record: Mapping[str, Any]) -> BoardPlace:
+    island_raw = record.get("island")
     return BoardPlace(
         identifier=str(record.get("id", "")),
         label=str(record.get("label", "")),
-        island=bool(record.get("island", False)),
-        access=str(record.get("access", "")) or "open",
         tags=_strings(record.get("tags")),
-        pressure_declared="pressure" in record,
+        island=(None if island_raw is None else bool(island_raw)),
+        access=str(record.get("access", "") or ""),
     )
 
 
@@ -403,6 +459,7 @@ def _island_from_dict(record: Mapping[str, Any]) -> DeclaredIsland:
         label=str(record.get("label", "")),
         access=str(record.get("access", "")),
         on_playable_board=bool(record.get("on_playable_board", False)),
+        absent_reason=str(record.get("absent_reason", "")),
         rationale=str(record.get("rationale", "")),
         sources=_strings(record.get("sources")),
     )
@@ -446,6 +503,10 @@ def geography_from_dict(
     names = data.get("state_names")
     count = data.get("island_count") or {}
     budget = (data.get("board") or {}).get("node_budget") or list(NODE_BUDGET)
+    islands = tuple(
+        _island_from_dict(item) for item in (data.get("islands") or []) if isinstance(item, Mapping)
+    )
+    on_board_ids = {place.identifier for place in board_places}
     return LocalGeography(
         format=str(data.get("format", "")),
         version=int(data.get("version", 0) or 0),
@@ -453,13 +514,12 @@ def geography_from_dict(
         numeric_scale_approved=bool(data.get("numeric_scale_approved", False)),
         sources=_strings(data.get("sources")),
         places=board_places,
-        islands=tuple(
-            _island_from_dict(item) for item in (data.get("islands") or []) if isinstance(item, Mapping)
+        islands=islands,
+        island_count_declared=int(count.get("declared", len(islands)) or 0),
+        island_count_on_board=int(
+            count.get("on_playable_board", sum(1 for i in islands if i.identifier in on_board_ids)) or 0
         ),
-        island_count_landed=int(count.get("landed", 0) or 0),
-        island_envelope=tuple(
-            int(x) for x in (count.get("issue_envelope") or [0, 0])
-        ),  # type: ignore[arg-type]
+        island_envelope=tuple(int(x) for x in (count.get("issue_envelope") or [0, 0])),  # type: ignore[arg-type]
         relations=tuple(
             _relation_from_dict(item) for item in (data.get("relations") or []) if isinstance(item, Mapping)
         ),

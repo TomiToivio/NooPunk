@@ -233,3 +233,31 @@ def demo_investigation(seed: int = 42) -> Mapping[str, object]:
     cyber = skill_check(operative, Action.OVERCOME, "Technology", 2, rng=rng)
     psi = skill_check(operative, Action.CREATE_ADVANTAGE, "Psi", 1, rng=rng)
     return {"character": operative.id, "cyber": cyber, "psi": psi}
+
+
+def demo_netrunning(seed: int = 7) -> Mapping[str, object]:
+    """A compact BCI netrunning scene, resolved by the same engine as any other scene.
+
+    Netrunning invents no second mechanic here: augmentation is where a netrunner starts, and
+    **reachability is fiction, not a skill bonus** -- a heavily augmented runner may be skilled and
+    still unable to reach a target, which no roll can grant. See ``cyber.py`` and
+    ``data/connectivity.json`` for that model; this function only demonstrates that a cyber scene and a
+    PSI scene share one resolution path.
+    """
+    rng = Random(seed)
+    netrunner = Character(
+        id="field-netrunner", name="Field Netrunner",
+        aspects=["Deck-Scarcity Trained", "A Wireless BCI Is an Exposed Endpoint"],
+        skills={"Technology": 3, "Notice": 1},
+        gear=["BCI rig", "specialist deck"],
+        natural_psi=False,
+    )
+    approach = skill_check(netrunner, Action.OVERCOME, "Technology", 2, rng=rng)
+    defend = skill_check(netrunner, Action.DEFEND, "Technology", 1, rng=rng)
+    return {
+        "character": netrunner.id,
+        "reachability": "fiction-first: a reachable path must exist before any roll",
+        "approach": approach,
+        "defend": defend,
+        "psi": "not involved: a BCI rig is an interface, not an innate PSI ability",
+    }

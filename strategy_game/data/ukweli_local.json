@@ -1,20 +1,27 @@
 {
   "format": "noopunk.strategy.local.v0",
   "year": 2027,
-  "setting": "People's Republic of Ukweli, Indian Ocean",
+  "setting": "Republic of Ukweli, Indian Ocean",
   "locations": [
     {
-      "id": "civic",
-      "label": "Old Harbor and Civic Centre",
-      "pressure": 1,
+      "id": "old_harbor",
+      "label": "Old Harbor",
+      "pressure": 0,
       "tags": [
         "heritage",
-        "trade",
+        "trade"
+      ],
+      "island": false
+    },
+    {
+      "id": "civic",
+      "label": "Civic and Commercial Centre",
+      "pressure": 1,
+      "tags": [
         "government",
         "finance"
       ],
-      "island": false,
-      "access": "open"
+      "island": false
     },
     {
       "id": "residential",
@@ -23,8 +30,7 @@
       "tags": [
         "housing"
       ],
-      "island": false,
-      "access": "open"
+      "island": false
     },
     {
       "id": "campus",
@@ -33,8 +39,7 @@
       "tags": [
         "science"
       ],
-      "island": false,
-      "access": "open"
+      "island": false
     },
     {
       "id": "port",
@@ -43,18 +48,7 @@
       "tags": [
         "shipping"
       ],
-      "island": false,
-      "access": "open"
-    },
-    {
-      "id": "coast",
-      "label": "Coastal Hinterland",
-      "pressure": 0,
-      "tags": [
-        "agriculture"
-      ],
-      "island": false,
-      "access": "open"
+      "island": false
     },
     {
       "id": "outer_island",
@@ -64,8 +58,7 @@
         "ferry",
         "tourism"
       ],
-      "island": true,
-      "access": "open"
+      "island": true
     },
     {
       "id": "airfield_island",
@@ -74,22 +67,23 @@
       "tags": [
         "communications"
       ],
-      "island": true,
-      "access": "open"
+      "island": true
     },
     {
-      "id": "exclusion_island",
-      "label": "Restricted Island (biodiversity exclusion zone)",
+      "id": "coast",
+      "label": "Coastal Hinterland",
       "pressure": 0,
       "tags": [
-        "conservation",
-        "restricted"
+        "agriculture"
       ],
-      "island": true,
-      "access": "restricted"
+      "island": false
     }
   ],
   "routes": [
+    [
+      "old_harbor",
+      "civic"
+    ],
     [
       "civic",
       "residential"
@@ -99,24 +93,20 @@
       "campus"
     ],
     [
-      "civic",
+      "old_harbor",
       "port"
     ],
     [
-      "residential",
-      "coast"
+      "old_harbor",
+      "outer_island"
     ],
     [
       "port",
       "airfield_island"
     ],
     [
-      "port",
-      "outer_island"
-    ],
-    [
-      "coast",
-      "outer_island"
+      "residential",
+      "coast"
     ]
   ],
   "parties": [

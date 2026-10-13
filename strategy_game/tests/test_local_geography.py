@@ -2,8 +2,9 @@
 
 Code-only, per `AGENTS.md` and issue #271. These exercise the **record and its validator** - the island
 set, the single exclusion island, the naming registers and the still-open relations - and not any
-prose. Almost every test below mutates a copy of the real record and demands that the specific defect
-is *reported*, so a passing run means the shape was genuinely checked rather than assumed.
+prose. Almost every test below mutates a copy of the real record or the real board and demands that the
+specific defect is *reported*, so a passing run means the shape was genuinely checked rather than
+assumed.
 
 Run:
     python -m unittest discover -s strategy_game/tests -p "test_local_geography.py"
@@ -90,91 +91,126 @@ class BoardCrossCheckTests(unittest.TestCase):
         low, high = NODE_BUDGET
         self.assertTrue(low <= len(self.geography.places) <= high)
 
-    def test_every_declared_board_island_exists_on_the_board(self) -> None:
-        on_board = {place.identifier for place in self.geography.places}
-        for island in self.geography.islands:
-            if island.on_playable_board:
-                self.assertIn(island.identifier, on_board, island.identifier)
+    def test_the_board_is_not_restated_from_the_record(self) -> None:
+        """The places come from the board file, so their ids are the board's own ids."""
+        board_ids = {item["id"] for item in _board()["locations"]}
+        self.assertEqual(set(self.geography.board_ids), board_ids)
 
-    def test_exactly_one_island_is_closed(self) -> None:
-        self.assertEqual(len(self.geography.exclusion_islands), 1)
+    def test_every_declared_playable_island_exists_on_the_board(self) -> None:
+        for island in self.geography.board_islands:
+            self.assertTrue(self.geography.on_board(island.identifier), island.identifier)
 
-    def test_the_board_islands_match_the_declared_islands(self) -> None:
-        declared = {island.identifier for island in self.geography.islands}
-        on_board = {place.identifier for place in self.geography.board_islands}
-        self.assertEqual(on_board, declared)
+    def test_no_declared_off_board_island_exists_on_the_board(self) -> None:
+        for island in self.geography.off_board_islands:
+            self.assertFalse(self.geography.on_board(island.identifier), island.identifier)
 
-    def test_the_closed_board_node_is_the_declared_exclusion_island(self) -> None:
-        declared = {island.identifier for island in self.geography.exclusion_islands}
-        closed = {place.identifier for place in self.geography.board_exclusions}
-        self.assertEqual(closed, declared)
+    def test_the_board_marks_the_playable_islands(self) -> None:
+        for island in self.geography.board_islands:
+            place = self.geography.place(island.identifier)
+            assert place is not None
+            self.assertIs(place.island, True, island.identifier)
 
-    def test_every_access_class_is_a_declared_class(self) -> None:
-        for place in self.geography.places:
-            self.assertIn(place.access, ACCESS_CLASSES, place.identifier)
+    def test_an_unrecorded_board_marker_stays_unknown(self) -> None:
+        """Absence is unrecorded, never read as 'not an island'."""
+        board = _board()
+        for location in board["locations"]:
+            location.pop("island", None)
+        geography = geography_from_dict(_raw(), board)
+        for place in geography.places:
+            self.assertIsNone(place.island)
+        self.assertEqual(geography.problems(), ())
 
 
 class IslandGapTests(unittest.TestCase):
-    """The gaps issue #324 and #325 name are closed, and the closures are checked."""
+    """The gaps issue #324 and #325 name are closed as structure, and the closures are checked."""
 
     @classmethod
     def setUpClass(cls) -> None:
         cls.geography = load_local_geography()
 
-    def test_the_board_carries_at_least_three_islands(self) -> None:
-        """#325 'suggested initial state: 1 city + 3-4 islands'; #324 'multiple islands'."""
-        self.assertGreaterEqual(len(self.geography.board_islands), 3)
+    def test_the_record_declares_three_islands(self) -> None:
+        """#325 / the setting bible: one city plus 3-4 islands, one marked restricted."""
+        low, high = self.geography.island_envelope
+        self.assertTrue(low <= self.geography.island_count_declared <= high)
+        self.assertGreaterEqual(self.geography.island_count_declared, 3)
 
-    def test_the_exclusion_island_is_on_the_board(self) -> None:
-        identifiers = {place.identifier for place in self.geography.board_islands}
-        self.assertIn("exclusion_island", identifiers)
+    def test_the_exclusion_island_is_declared_and_restricted(self) -> None:
+        island = self.geography.declared_island("exclusion_island")
+        self.assertIsNotNone(island)
+        assert island is not None
+        self.assertEqual(island.access, "restricted")
+        self.assertTrue(island.is_exclusion)
 
-    def test_the_exclusion_island_is_the_restricted_one(self) -> None:
-        place = self.geography.place("exclusion_island")
-        self.assertIsNotNone(place)
-        assert place is not None
-        self.assertEqual(place.access, "restricted")
-        self.assertTrue(place.is_exclusion)
+    def test_the_exclusion_island_is_recorded_off_the_board_with_a_reason(self) -> None:
+        """It is canon, and it is not playable: the record says so instead of folding a node away."""
+        island = self.geography.declared_island("exclusion_island")
+        assert island is not None
+        self.assertFalse(island.on_playable_board)
+        self.assertTrue(island.absent_reason.strip())
+        self.assertIn(island, self.geography.off_board_islands)
 
-    def test_the_other_islands_are_open(self) -> None:
-        for place in self.geography.board_islands:
-            if place.identifier != "exclusion_island":
-                self.assertEqual(place.access, "open", place.identifier)
+    def test_the_other_declared_islands_are_open(self) -> None:
+        for island in self.geography.islands:
+            if island.identifier != "exclusion_island":
+                self.assertEqual(island.access, "open", island.identifier)
 
-    def test_a_board_with_no_closed_island_is_reported(self) -> None:
-        board = _board()
-        for location in board["locations"]:
-            location["access"] = "open"
-        problems = geography_from_dict(_raw(), board).problems()
-        self.assertTrue(any("board's closed nodes do not match" in p for p in problems))
+    def test_the_playable_island_count_matches_the_board(self) -> None:
+        self.assertEqual(self.geography.island_count_on_board, len(self.geography.board_islands))
+        self.assertEqual(self.geography.island_count_on_board, 2)
 
     def test_two_declared_exclusion_islands_are_reported(self) -> None:
         raw = _raw()
         raw["islands"][0]["access"] = "prohibited"
-        board = _board()
-        board["locations"][5]["access"] = "prohibited"
-        problems = geography_from_dict(raw, board).problems()
+        problems = geography_from_dict(raw, _board()).problems()
         self.assertTrue(any("exactly one restricted" in p for p in problems))
 
-    def test_two_exclusion_islands_are_reported(self) -> None:
-        board = _board()
-        for location in board["locations"]:
-            if location["id"] == "airfield_island":
-                location["access"] = "prohibited"
-        problems = geography_from_dict(_raw(), board).problems()
-        self.assertTrue(any("board's closed nodes do not match" in p for p in problems))
+    def test_an_unknown_access_class_is_reported(self) -> None:
+        raw = _raw()
+        raw["islands"][0]["access"] = "shut"
+        problems = geography_from_dict(raw, _board()).problems()
+        self.assertTrue(any("access 'shut' not in" in p for p in problems))
 
     def test_a_board_beyond_the_node_cap_is_reported(self) -> None:
         board = _board()
-        board["locations"].append({"id": "extra", "label": "Extra", "island": False, "access": "open"})
+        board["locations"].append({"id": "extra", "label": "Extra", "island": False})
         problems = geography_from_dict(_raw(), board).problems()
         self.assertTrue(any("stated envelope" in p for p in problems))
 
-    def test_an_island_absent_from_the_board_is_reported(self) -> None:
+    def test_an_island_declared_playable_but_absent_is_reported(self) -> None:
         board = _board()
         board["locations"] = [x for x in board["locations"] if x["id"] != "outer_island"]
         problems = geography_from_dict(_raw(), board).problems()
         self.assertTrue(any("absent from the board" in p for p in problems))
+
+    def test_an_off_board_island_without_a_reason_is_reported(self) -> None:
+        raw = _raw()
+        raw["islands"][2]["absent_reason"] = ""
+        problems = geography_from_dict(raw, _board()).problems()
+        self.assertTrue(any("without a reason" in p for p in problems))
+
+    def test_a_board_denying_a_declared_island_is_reported(self) -> None:
+        board = _board()
+        for location in board["locations"]:
+            if location["id"] == "outer_island":
+                location["island"] = False
+        problems = geography_from_dict(_raw(), board).problems()
+        self.assertTrue(any("denies island status" in p for p in problems))
+
+    def test_a_board_marking_an_undeclared_island_is_reported(self) -> None:
+        board = _board()
+        for location in board["locations"]:
+            if location["id"] == "civic":
+                location["island"] = True
+        problems = geography_from_dict(_raw(), board).problems()
+        self.assertTrue(any("no island is declared for it" in p for p in problems))
+
+    def test_a_board_access_marker_disagreeing_with_the_record_is_reported(self) -> None:
+        board = _board()
+        for location in board["locations"]:
+            if location["id"] == "outer_island":
+                location["access"] = "restricted"
+        problems = geography_from_dict(_raw(), board).problems()
+        self.assertTrue(any("declares access 'restricted'" in p for p in problems))
 
 
 class NamingTests(unittest.TestCase):
@@ -260,6 +296,10 @@ class PendingDecisionTests(unittest.TestCase):
     def test_the_record_carries_open_decisions(self) -> None:
         self.assertTrue(self.geography.pending_decisions)
 
+    def test_the_island_placement_question_is_carried_open(self) -> None:
+        identifiers = {decision.identifier for decision in self.geography.pending_decisions}
+        self.assertIn("restricted_island_placement", identifiers)
+
     def test_every_open_decision_states_its_reason(self) -> None:
         for decision in self.geography.pending_decisions:
             self.assertTrue(decision.why_not_decided, decision.identifier)
@@ -295,6 +335,22 @@ class NoStatisticTests(unittest.TestCase):
         raw["party_labels"][0]["influence_rating"] = "high"
         problems = geography_from_dict(raw, _board()).problems()
         self.assertTrue(any("numeric-looking field" in p for p in problems))
+
+    def test_no_access_class_is_a_number(self) -> None:
+        for access in ACCESS_CLASSES:
+            self.assertIsInstance(access, str)
+
+
+class CopySafetyTests(unittest.TestCase):
+    """The fixtures above must not be mutating the shipped records."""
+
+    def test_the_shipped_records_are_unchanged_by_the_suite(self) -> None:
+        raw = _raw()
+        board = _board()
+        geography = load_local_geography()
+        self.assertEqual(len(geography.places), len(board["locations"]))
+        self.assertEqual(geography.problems(), ())
+        self.assertEqual(json.loads(DATA_PATH.read_text(encoding="utf-8")), raw)
 
 
 class ScopeDirectiveTests(unittest.TestCase):

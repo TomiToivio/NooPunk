@@ -1,6 +1,6 @@
 # NoöPunk Global Strategy: Fate-based RPG layer
 
-This is the **first implementation slice** of [issue #389](https://github.com/TomiToivio/NooPunk/issues/389). It is an independently importable Python module and **not yet a full implementation of Transhumanity's Fate**.
+This is an **expanded, bounded implementation slice** of [issue #389](https://github.com/TomiToivio/NooPunk/issues/389). It is an independently importable Python module and **not yet a full implementation of Transhumanity's Fate**.
 
 The authored decision is **Fate Core as the shared RPG resolution foundation**, with **Transhumanity's Fate and Eclipse Phase as design references**. The latter books' noncommercial Creative Commons conditions are not the same as Fate Core's CC BY license. This implementation is original Python code based on the Fate Core SRD, not a port or reproduction of their copyrighted prose, setting content, proprietary illustrations or character catalogues.
 
