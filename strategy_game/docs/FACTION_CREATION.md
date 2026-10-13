@@ -8,6 +8,15 @@
 | `strategy_game/data/faction_creation.json` | the vocabulary, transcribed from the issue |
 | `strategy_game/faction_creation.py` | the reader, the draft validator and the player/GM split |
 | `strategy_game/tests/test_faction_creation.py` | 28 executable contracts (issue #271: code only) |
+| `strategy_game/data/founding_story.json` | the founder and the patron as edges: roles, named states, declared costs, open questions |
+| `strategy_game/founding_story.py` | builds those edges, validates a story, and keeps the pending-decision registry |
+| `strategy_game/tests/test_founding_story.py` | 30 executable contracts for the founding layer |
+
+**Consumed, not restated (the founding layer):** the stateful edge itself lives in
+[`../relationships.py`](../relationships.py), the six quantities in [`../quantities.py`](../quantities.py),
+and the court half in [`LEADER_COUNCIL_SYSTEM.md`](LEADER_COUNCIL_SYSTEM.md). The static
+`Relationship` on a character card is **consumed, never replaced**: `from_card_relationships` upgrades
+the card's declared tie into a stateful edge that keeps its ids and its direction.
 
 **Consumed, not restated:** `data/global_factions.json` already declares the two conventional axes
 (`economic` left↔right, `social` conservative↔liberal, with the "do not conflate economic liberalism
@@ -66,7 +75,45 @@ its relations. The pre-generated Cosmist International template carries the issu
 and tags, marked as proposed settings rather than frozen stats, and *he* does not begin knowing the
 hidden Soviet, Confederacy or Orion history.
 
-## 5. What the author still has to decide
+## 5. The founding story as a mechanical input: two edges, two different costs
+
+Steps 2 and 4 of the creation flow — the academic founder and the corporate patron — are the part of
+the story that has to *do* something. Before this layer a draft held a single `leader` string and the
+patron had no field at all, and `relationship` and `goal` existed only as **static card tags**: a label
+with no condition attached, which cannot diverge, be captured or be severed. Both roles are therefore
+carried as **relationship edges** with their own goals and a mutable **named** state — never a number,
+because `numeric_scale_approved` is still `false`.
+
+| | **Pre-crisis academic founder** | **Corporate patron** |
+| --- | --- | --- |
+| edge | `founded_by` | `patron_of` |
+| gives | legitimacy and access earned *before* the paradigm shifts: citation capital, students, institutional standing, a doctrine still taken seriously | means: cash, facilities, personnel, data, equipment, organisational access, corporate reach |
+| costs | legitimacy hostage to one reputation the paradigm shifts have just made contested: obsolescence, discredit, schism | dependence, a captured agenda, reputational contamination, and the step-4 ladder ally → council member → rival power centre → usurper |
+| kind of cost | **concentrated and non-purchasable** — one person, and no money buys the standing back | **diffuse and replaceable** — many assets, and another patron could in principle replace this one |
+| quantities (§7) | institutional access and articulation: a *source* of legitimacy | membership/resources and the *rented* part of access — never opinion or seats |
+| named states | `ascendant / contested / discredited / superseded / departed` | `aligned / divergent / conditional / withdrawing / captured / severed` |
+
+The asymmetry is the point: **the founder is where the faction's legitimacy comes from; the patron is
+the biggest threat to it.** A faction can be killed by its founder being wrong *and* by its patron being
+right — the patron's business model being exactly what the faction exists to oppose.
+
+**The patron edge carries a goal the faction need not share**, and validation *permits* that divergence,
+because the divergence is the mechanic: the canon case is a patron whose declared goal is not his
+party's doctrinaire base, and the gap is what produces the party's stated internal contradictions. A
+check refusing it would be the defect rather than the guard.
+
+**Belief is not capability, and the founder is where that earns its keep.** A founder may hold a belief
+that is false in the fiction while still being a competent researcher, so *"wrong but rigorous"* and
+*"right but a fraud"* are two different games: the discredit failure is not "the founder was
+incompetent". The check is executable — an id that `faction_creation.json` files as a `belief` and that
+is attached as a `competence` is reported by name, and the sabotage that flips one turns the suite red.
+
+**The state is mutable and the transition is not judged.** `reassign_state()` moves an edge and logs
+the previous condition; *which* transition is legitimate is a rule the author has not given, so
+`transitions.declared` is `false` with a reason, and a severed edge is **read, not deleted** — whether
+a severed patron can be replaced is one of the open questions below.
+
+## 6. What the author still has to decide
 
 - **The StO bloc's official label.** #348 locks **UCCC** and says not to revert to older
   Confederation/Orion Group names as official labels; this issue's text says **"Confederacy/Zookeepers"**.
@@ -79,3 +126,20 @@ hidden Soviet, Confederacy or Orion history.
   the author's.
 - **Any affinity or tension mechanic**: this module deliberately computes none, because the issue allows
   broad cues only as a later, author-approved aid.
+
+### Open in the founding layer
+
+- **Is the founder one of the four leaders, or a fifth authority over them?** The same tension is raised
+  on #323 as "four leaders" versus "four field deployments"; it is flagged on both issues and resolved on
+  neither.
+- **Does a patron sit on the council or outside the four leaders?** Step 4 names all four positions —
+  ally, council member, rival power centre, usurper — and fixes none of them as the default.
+- **Can a severed patron edge be replaced, or is the loss permanent?**
+- **Which transition between named positions is legitimate?** Structural only: the record moves and logs.
+- **May a patron or founder be NHI-aligned, or an NHI entity itself be a patron?** `TAG_SCOPES` has no
+  NHI/entity scope even though `data/world/faction_taxonomy.json` declares the `nhi` faction type.
+  Recorded as a dependency, not extended here.
+- **Any ordered scale for an edge's condition** — none is proposed, and `numeric_scale_approved` stays
+  `false`.
+- **The authored secret of any specific patron**: the cards leave `gm_notes` to the author, and this
+  layer adds no secret to any named character.

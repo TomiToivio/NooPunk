@@ -1,0 +1,207 @@
+{
+  "format": "noopunk.strategy_game.founding_story",
+  "status": "PROPOSAL - approves nothing. Records issue #346's steps 2 and 4 (the founder and the corporate patron) as relationship EDGES with their own goals and mutable NAMED states. strategy_game/RULEBOOK.md still says NO RULES APPROVED. No number, threshold, magnitude or resolution appears anywhere in this file.",
+  "sources": [
+    "issue #346, 'Faction creation: proposed step-by-step sequence', step 2: create the founder - scholar, ideologue, prophet, player character",
+    "issue #346, step 4: recruit the financier / corporate patron - 'Patron resources are not automatically faction property', 'patron could be ally, council member, rival power center or eventual usurper'",
+    "issue #346, 'Character economy': the player plays the faction leader in the CK3 sense - one principal character within a larger social institution; leadership succession, legitimacy and internal disputes can matter later",
+    "issue #346, 'Four faction card types' and 'CK3-style court, council and field operations': a corporate patron's organisation card stays distinguishable from outright faction ownership",
+    "the #346 design comment of 2026-10-13 ('Founding story as a mechanical input'), which is the model transcribed here: the founder and the patron as two different kinds of cost, the named state lists, and the CK3 lessons that transfer and those that do not",
+    "strategy_game/data/character_cards.json, which already carries the canon patron tie (sir_mars_eldrich -> ulp, kind patron_of, visibility public) as a STATIC card tag and already separates the observable fact from the inference",
+    "strategy_game/data/faction_creation.json, whose typed tag kinds (belief / competence / equipment / relationship / asset / goal) this layer reuses rather than restating",
+    "strategy_game/relationships.py, the one stateful edge record: the founder and patron edges are instances of it, not a parallel record",
+    "docs/design/NOOPUNK_GLOBAL.md section 7, the six quantities that must stay distinct, consumed through strategy_game/quantities.py"
+  ],
+  "provenance": {
+    "kind": "authored",
+    "source": "issue #346 steps 2 and 4, plus the author-side design comment of 2026-10-13",
+    "note": "the model is the author's directive and the design comment's; the schema is this session's"
+  },
+  "shared_edge": {
+    "record": "strategy_game.relationships.RelationshipEdge",
+    "note": "Issue #346's own instruction is that the founder and patron edges reuse the council layer's relationship record rather than declaring a rival one, so both roles below are built as that record, carrying a role, its own goals, its own typed tags and a mutable named state. strategy_game.characters.Relationship remains the static card tag and is consumed, never replaced.",
+    "what_was_missing": "Today a faction draft holds a single 'leader' string and no patron field at all, and 'relationship' and 'goal' exist only as static card tags: there is no edge whose condition can degrade, diverge, capture or be severed. This layer is that edge."
+  },
+  "belief_is_not_competence": {
+    "rule": "Belief and capability are separate kinds and are never read as each other, because the founder is where the distinction earns its keep.",
+    "why_it_matters": "A founder may hold a belief that is FALSE in the fiction while still being a COMPETENT researcher. The discredit failure is therefore not 'the founder was incompetent': a competent researcher whose thesis is falsified still loses the faction's legitimacy. Keeping the kinds apart is what makes 'wrong but rigorous' and 'right but a fraud' two different games.",
+    "enforced_by": "RelationshipSet.validate(tag_vocabulary=...) reports a tag whose declared kind in faction_creation.json disagrees with the kind it is attached as."
+  },
+  "roles": [
+    {
+      "id": "founder",
+      "label": "pre-crisis academic founder",
+      "issue_step": 2,
+      "archetype": "Hari Seldon / Foundation, or an existential-risk researcher and institution builder in the vein of Yudkowsky / MIRI: a charismatic, intellectually formidable academic who moves from research to advocacy, initially altruistic and motivated by human survival rather than wealth or power, with idealism open to being tested in play.",
+      "edge_kind": "founded_by",
+      "states": ["ascendant", "contested", "discredited", "superseded", "departed"],
+      "gives": [
+        "legitimacy and access earned before the paradigm shifts",
+        "citation capital",
+        "students and co-thinkers",
+        "institutional standing",
+        "a doctrine that is still taken seriously"
+      ],
+      "costs": [
+        "the faction's legitimacy is hostage to one reputation the paradigm shifts have just made contested",
+        "obsolescence",
+        "discredit",
+        "schism when the thesis is falsified or the founder compromises"
+      ],
+      "cost_kind": "concentrated and non-purchasable: one person, and no amount of money buys the standing back",
+      "quantities_touched": ["institutional_access", "discursive_hegemony"],
+      "quantity_note": "A source of legitimacy: institutional access (#5) and articulation (#6), with support (#1) following them. DECLARED, NOT ENFORCED: which quantities an edge touches is a design claim recorded as data, not a rule that any code applies.",
+      "failure_modes": ["discredit", "obsolescence", "schism"],
+      "failure_note": "Hits institutional access and articulation first, and opinion/support with them. A failure that moved nothing would be the empty-turn outcome the playtest checklist rules out.",
+      "state_effects": {
+        "declared": false,
+        "reason": "What a named state DOES to a quantity, a mission or another relationship is a rule, and no rule is approved. This layer records the positions and the directions the design comment claims; it applies none of them."
+      },
+      "pending_author_decisions": [
+        {
+          "id": "founder_authority",
+          "question": "Is the founder one of the four leaders or a fifth authority over them?",
+          "why_not_decided": "Issue #346 step 2 says the player plays the faction leader in the CK3 sense, while step 5 and the character-economy section speak of a court with the founder within it. The same tension is raised on #323 as 'four leaders' versus 'four field deployments', and it is the author's to settle.",
+          "container_instead": "The edge records holder_id and other_id as named endpoints without asserting whether either end is a leader, a principal or an institution."
+        }
+      ]
+    },
+    {
+      "id": "patron",
+      "label": "corporate patron",
+      "issue_step": 4,
+      "archetype": "A rich, eccentric CEO or investor drawn to the faction's ideas, often from a technologically or ideologically related industry, whose backing adds cash, facilities, personnel, data, equipment, organisational access and corporate reach - and whose strings, motives and reputational risk arrive with it.",
+      "edge_kind": "patron_of",
+      "states": ["aligned", "divergent", "conditional", "withdrawing", "captured", "severed"],
+      "gives": [
+        "cash",
+        "facilities",
+        "personnel",
+        "data",
+        "equipment",
+        "organisational access",
+        "corporate reach"
+      ],
+      "costs": [
+        "dependence",
+        "a captured agenda",
+        "reputational contamination",
+        "the step-4 ladder: ally -> council member -> rival power centre -> usurper"
+      ],
+      "cost_kind": "diffuse and replaceable: many assets, and a different patron could in principle replace this one",
+      "quantities_touched": ["membership_resources", "institutional_access"],
+      "quantity_note": "Money, and the RENTED part of institutional access: media reach and agenda-setting. Money-stops removes the rented quantities and reveals which were owned.",
+      "cannot_move": ["opinion_support", "legislative_representation"],
+      "cannot_move_note": "Read from the canon case: the LFP's declared vulnerability is vote support far below its media reach, so the patron moves finance and agenda-setting and cannot buy opinion or seats. The quantities a patron cannot move are exactly the ones elections are decided by, which is why patronage is not 'support plus a number' and why step 4 forbids treating patron resources as faction property. DECLARED, NOT ENFORCED.",
+      "carries_its_own_goal": "The patron edge carries a goal the faction need not share. Sir Mars Eldrich's declared goal (colonise Mars, back right-wing populist parties) is not the Libertarian party's doctrinaire libertarian base, and the gap is what produces the party's stated internal contradictions over free markets, immigration, elite patronage and charismatic leadership. The divergence IS the mechanic, not a footnote - which is why validation permits a patron goal the faction does not hold.",
+      "public_fact_versus_inference": "The tie itself is public: kind patron_of, visibility public, and the party stays formally autonomous. What a player may hold wrongly is the INFERENCE - 'that the party is his instrument' - so the record keeps observable facts apart from inferences. A separate guard makes the inference an assertion only by naming it as one.",
+      "not_an_omnipotent_puppet_master": "The ceiling is a canon row, not a disclaimer: the patron moves finance and agenda-setting and cannot buy opinion or seats. That is why the edge can be a cost rather than a support bonus.",
+      "failure_modes": ["money stops", "divergence", "capture"],
+      "failure_note": "Withdrawal removes one network edge (the finance and ownership layer) and reveals which quantities were rented and which were owned: the faction shrinks, and no save is rolled. Capture is the CK3 succession problem applied to an edge - the patron is a mortal who can outlive the founder's project.",
+      "state_effects": {
+        "declared": false,
+        "reason": "Same as the founder's: the shape of the consequence is recorded, the rule that would apply it is not approved."
+      },
+      "pending_author_decisions": [
+        {
+          "id": "patron_seat",
+          "question": "Does a patron sit on the council or outside the four leaders?",
+          "why_not_decided": "Issue #346 step 4 names all four positions - ally, council member, rival power centre, usurper - and fixes none of them as the default.",
+          "container_instead": "The edge carries a role and a state and says nothing about a seat; a council assignment is a separate declaration the council layer owns."
+        },
+        {
+          "id": "severed_edge_fate",
+          "question": "Can a severed patron edge be replaced, or is the loss permanent?",
+          "why_not_decided": "The design comment proposes that withdrawal deletes the edge rather than applying a penalty, but whether a new patron may be recruited afterwards is a rule, and no rule is approved.",
+          "container_instead": "RelationshipEdge.is_severed reads the named position and deletes nothing; the history of prior states is kept."
+        },
+        {
+          "id": "authored_patron_secret",
+          "question": "The authored secret of any specific patron.",
+          "why_not_decided": "The character cards deliberately leave gm_notes as the author's to write, and this layer adds no secret to any named character.",
+          "container_instead": "gm_notes stays empty on the shipped example and is withheld by the player view."
+        }
+      ]
+    }
+  ],
+  "transitions": {
+    "declared": false,
+    "reason": "Which named position may follow which is a rule the author has not given. The record is mutable and every change is logged (state_history), so the structure of a transition exists; its legitimacy is not judged."
+  },
+  "ck3": {
+    "transfers": [
+      {"id": "power_is_held_by_a_person", "note": "a founder or a patron is a mortal asset, so their death, retirement or disgrace is a state change: money-stops is, in CK3 terms, the patron's death"},
+      {"id": "opinions_drive_behaviour", "note": "a councillor or patron with a low opinion does not simply comply; the sparse opinion and trust record belongs to the council layer's relationship record, which these edges reuse"},
+      {"id": "traits_are_dispositions", "note": "a trait changes which choices are available, not how much larger a number is"},
+      {"id": "claims", "note": "legitimacy comes from a recognized right, so a faction's leader can be legitimately contested by a claimant - a co-founder, a patron, a successor. This is the structural defence against 'the player IS the faction': the project is separable from the person"},
+      {"id": "succession_of_persons", "note": "the faction outlives the founder; the founder does not outlive the faction"}
+    ],
+    "does_not_transfer": [
+      {"id": "scale", "note": "no thousands of portraits and no feudal map: docs/LEADER_COUNCIL_SYSTEM.md already bans a CK3 court simulator and a family tree"},
+      {"id": "feudal_assumptions", "note": "no vassalage, de jure titles or realm law. NooPunk's offices are portfolios over an organisation, not land held of a liege"},
+      {"id": "numbers", "note": "CK3's opinion is a wide integer scalar; NooPunk keeps named positions, and numeric_scale_approved remains false"}
+    ]
+  },
+  "examples": [
+    {
+      "id": "eldrich_patron_of_ulp",
+      "label": "the canon patron tie, as a stateful edge",
+      "role": "patron",
+      "edge_kind": "patron_of",
+      "holder_id": "sir_mars_eldrich",
+      "other_id": "ulp",
+      "state": "divergent",
+      "tags": ["indebted"],
+      "goals": ["colonise Mars"],
+      "typed_tags": [
+        {"kind": "goal", "value": "colonise Mars"},
+        {"kind": "relationship", "value": "patron of the Libertarian party, which stays formally autonomous"}
+      ],
+      "observable": ["he funds the party and owns sympathetic media"],
+      "inferences": ["that the party is his instrument"],
+      "visibility": "public",
+      "canon": true,
+      "note": "This is the SAME tie character_cards.json already declares as a static card tag (sir_mars_eldrich -> ulp, kind patron_of, visibility public), with the same ids and the same direction, plus the goal the faction need not share and a named state. No secret is added: gm_notes stays empty."
+    },
+    {
+      "id": "placeholder_founder_edge",
+      "label": "the academic-founder archetype, as an edge",
+      "role": "founder",
+      "edge_kind": "founded_by",
+      "holder_id": "placeholder_leader_cosmist",
+      "other_id": "cosmist_international",
+      "state": "contested",
+      "state_rationale": "",
+      "tags": ["mentor"],
+      "goals": ["DISCLOSE_UFO_SECRETS"],
+      "typed_tags": [
+        {"kind": "belief", "value": "AUTONOMIST_MARXIST"},
+        {"kind": "belief", "value": "QIP_PANPSYCHIST"},
+        {"kind": "competence", "value": "literature synthesis and method criticism"},
+        {"kind": "goal", "value": "DISCLOSE_UFO_SECRETS"}
+      ],
+      "observable": [
+        "the papers, the students and the nonprofit research and advocacy organisation all predate the paradigm shifts"
+      ],
+      "inferences": ["that the movement is only as durable as one reputation"],
+      "visibility": "public",
+      "canon": false,
+      "placeholder_identity": true,
+      "note": "PLACEHOLDER, not canon. Issue #346's academic-prophet founder is the author's to name, so the identity here is a placeholder and the belief tags are the Cosmist International template's own proposed settings. The competence is free text on purpose: it is not a proposed setting, and inventing a capability vocabulary for it would be inventing canon. Note that the belief that makes the founder's doctrine and the competence that makes his research are two different kinds on the same edge."
+    }
+  ],
+  "pending_author_decisions": [
+    {
+      "id": "ordered_scale",
+      "question": "Is any ordered or numeric scale ever approved for an edge's condition?",
+      "why_not_decided": "numeric_scale_approved is false in faction_creation.json and the design comment proposes none. A scale is the author's ruling, not this module's.",
+      "container_instead": "Named positions only, with state_vocabulary declared per role."
+    },
+    {
+      "id": "nhi_endpoint_scope",
+      "question": "May a patron or founder be NHI-aligned, or may an NHI entity itself be a patron?",
+      "why_not_decided": "TAG_SCOPES in faction_creation.py has no scope for an NHI or entity card even though data/world/faction_taxonomy.json declares the nhi faction type and the codex holds NHI entities. Recorded as a dependency, not extended here.",
+      "container_instead": "RelationshipEdge asserts no endpoint taxonomy, so an entity endpoint can be added later without a schema change; the tag scope question stays open."
+    }
+  ]
+}

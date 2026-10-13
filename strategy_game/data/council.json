@@ -1,0 +1,436 @@
+{
+  "format": "noopunk.strategy_game.council",
+  "status": "PROPOSAL - approves nothing. Records issue #323's council, portfolio, mission and relationship layer as STRUCTURE: what each portfolio decides, how the four offices structurally disagree, what a mission costs and who authorises it, and how a personal tie produces a strategic consequence. strategy_game/RULEBOOK.md still says NO RULES APPROVED. No magnitude, threshold, turn cadence, die, action set, win condition or economy appears anywhere in this file.",
+  "sources": [
+    "issue #323, objective: 'every active faction move has a named leader responsible for carrying it out', four leader characters per faction, at most four leader-led active missions per turn",
+    "issue #323, data model (minimum): Leader, Faction, Relationship, Mission with leader_id REQUIRED, Event",
+    "issue #323, acceptance criteria: four leaders per faction; one active mission per leader per turn; members and resources amplify but never create free missions; one persistent portfolio with a bounded visible bonus; relationships and triggered choices change concrete strategy state",
+    "issue #323, non-goals: no separate CK3 court simulator, no global character network, no tactical combat or pathfinding, no full Terra Invicta council mechanics",
+    "strategy_game/docs/LEADER_COUNCIL_SYSTEM.md (stage A): the central rule, the four portfolios, the bounded passive, the statuses, the sparse relationship record, the seven-step turn order, the minimum data model, the worked turn",
+    "strategy_game/docs/LEADER_MICRO_RULES_PROPOSAL.md: the candidate Reason/Nerve/Rapport card is UNAPPROVED (D1, D2 and D6 open) and D7 REFUSES importing the six legacy STATs; nothing here assumes any attribute set",
+    "the #323 design comment of 2026-10-13 ('Portfolios that argue, missions tied to the six quantities, and the RPG loop'), which is the model transcribed here",
+    "docs/design/NOOPUNK_GLOBAL.md section 7: the six quantities that must stay distinct, consumed through strategy_game/quantities.py",
+    "strategy_game/relationships.py: the one stateful edge record the relationship layer here reads"
+  ],
+  "provenance": {
+    "kind": "authored",
+    "source": "issue #323 and its stage-A specification, plus the author-side design comment of 2026-10-13",
+    "note": "the model is the author's directive and the design comment's; the schema is this session's"
+  },
+  "consumes": {
+    "core": "strategy_game/core.py already declares Leader and Faction containers; this layer extends them by addition and replaces nothing.",
+    "spec": "strategy_game/docs/LEADER_COUNCIL_SYSTEM.md owns the written specification; this file implements its STRUCTURE and restates none of its prose.",
+    "quantities": "the six quantities come from strategy_game/quantities.py, transcribed from docs/design/NOOPUNK_GLOBAL.md section 7.",
+    "edges": "relationships are strategy_game.relationships.RelationshipEdge; the sparse record is not redeclared here.",
+    "leader_card": "the Reason/Nerve/Rapport card in LEADER_MICRO_RULES_PROPOSAL.md is UNAPPROVED and is not assumed: a leader's attributes stay an uninterpreted author-defined mapping, so nothing below cares which attribute set is finally chosen."
+  },
+  "council_size": {
+    "value": 4,
+    "approved": false,
+    "source": "issue #323's own acceptance criterion ('every player and rival faction has four leaders') and its own four-move cap ('at most four leader-led active missions per turn'); docs/LEADER_COUNCIL_SYSTEM.md section 1 records the fixed roster size as DRAFT.",
+    "not_this_question": "This is ONE faction's leader roster. It is deliberately NOT the open question of which canonical faction records are canonical (the 4 / 7 / 11 data-integrity flag in docs/design/NOOPUNK_GLOBAL.md section 6A), which stays unresolved and is not touched here."
+  },
+  "central_rule": {
+    "id": "one_named_leader_per_active_move",
+    "rule": "Every active faction move has exactly one named leader responsible for carrying it out. Members, volunteers, contacts, funds and equipment are resources and reachable capacity, never independent action slots.",
+    "structural_checks": [
+      "a mission with an empty leader_id is invalid and is rejected",
+      "one leader cannot hold two active missions in the same turn",
+      "a faction cannot declare more active missions than it has leader-turns",
+      "declared resources amplify a leader-led mission and never add a mission"
+    ],
+    "source": "issue #323 objective and acceptance criteria; stage-A specification section 1",
+    "approved": false
+  },
+  "portfolios": [
+    {
+      "id": "politics_diplomacy",
+      "label": "Politics & Diplomacy",
+      "issue_portfolio": "politics / diplomacy",
+      "decides": "the faction's posture toward incumbents, coalitions and courts: which doors are opened, which compromises are acceptable, and which institutional foothold is worth the price.",
+      "serves": [
+        "legislative_representation",
+        "office_control",
+        "institutional_access"
+      ],
+      "primary": "legislative_representation",
+      "standing_position": "convert support into institutions",
+      "argues_for": "compromise, coalition, court the incumbent, bank a seat now",
+      "passive": {
+        "quantity": "institutional_access",
+        "magnitude_declared": false,
+        "reason": "the stage-A specification proposes a bounded passive (at most +1, capped +2 faction-wide per turn) and marks every number DRAFT. A magnitude is a rule and no rule is approved, so this container records WHICH quantity the office touches and leaves the size to the author."
+      }
+    },
+    {
+      "id": "organisation_networks",
+      "label": "Organisation & Networks",
+      "issue_portfolio": "organisation / networks",
+      "decides": "the base and the network: who is recruited, how the movement is organised, how far its reach actually extends, and whether that reach is owned or borrowed.",
+      "serves": [
+        "opinion_support",
+        "membership_resources"
+      ],
+      "primary": "opinion_support",
+      "standing_position": "grow the base and the network",
+      "argues_for": "mass mobilisation, expand, refuse elite deals that hollow the movement",
+      "passive": {
+        "quantity": "opinion_support",
+        "magnitude_declared": false,
+        "reason": "same as the office above: the quantity is named, the size is not approved."
+      }
+    },
+    {
+      "id": "operations_resources",
+      "label": "Operations & Resources",
+      "issue_portfolio": "operations / resources",
+      "decides": "means and options: what is acquired, what is kept in reserve, what resilience the assets have, and how much of the faction's capacity is rented from someone else.",
+      "serves": [
+        "membership_resources"
+      ],
+      "primary": "membership_resources",
+      "standing_position": "secure means and options",
+      "argues_for": "acquire, keep capability, take the ruthless option, protect the patron's money",
+      "passive": {
+        "quantity": "membership_resources",
+        "magnitude_declared": false,
+        "reason": "same as above. Note that membership/resources appears in two portfolios' interests, which is not a collision: the quantity is one, the interests in it are two."
+      }
+    },
+    {
+      "id": "research_intelligence",
+      "label": "Research & Intelligence",
+      "issue_portfolio": "research / intelligence",
+      "decides": "what is known and how it is framed: which claim is verified, which evidence is published, which signifier the faction makes nodal, and what it chooses to hold back.",
+      "serves": [
+        "institutional_access",
+        "discursive_hegemony"
+      ],
+      "primary": "discursive_hegemony",
+      "standing_position": "know and frame",
+      "argues_for": "investigate, verify, publish - or, on the other wing, publish first and apologise later",
+      "quantity_note": "Research and evidence are NOT one of the six quantities: evidence is not a track, it is what a claim is grounded in. This office reaches the six through institutional access (opening a door with knowledge) and through discursive hegemony (making an articulation nodal).",
+      "passive": {
+        "quantity": "discursive_hegemony",
+        "magnitude_declared": false,
+        "reason": "same as above."
+      }
+    }
+  ],
+  "structural_disagreement": {
+    "id": "scarcity_makes_the_council_an_argument",
+    "claim": "The six quantities are non-identical by rule, and a faction is capped at four leader-led active moves per turn, so it CANNOT pursue all of its priorities in a turn. The council is therefore a scarcity mechanism, and scarcity is what turns four offices into four arguments. A council whose members always agree is a council whose four portfolios serve one quantity, which is precisely what the six-quantity rule forbids.",
+    "consequences": [
+      "a faction can hold opinion/support and still lose seats (turnout, electoral rule)",
+      "a faction can win seats and not hold office (coalition arithmetic)",
+      "a faction can have a huge membership and no institutional access",
+      "a faction can hold the nodal signifier and lose everything else"
+    ],
+    "reported_not_enforced": "The code reports when the four portfolios' primary quantities are identical, when a quantity no office serves, and which quantities this turn's declared missions leave unpursued. It applies no consequence: what a covered or uncovered quantity is worth is a rule.",
+    "source": "docs/design/NOOPUNK_GLOBAL.md section 7 and the #323 design comment, section 1",
+    "approved": false
+  },
+  "mission": {
+    "requirements": [
+      "leader_id",
+      "target_id",
+      "quantity"
+    ],
+    "leader_slot": "one active mission per leader per turn; a leader spends the turn on one active mission or on hold/skip",
+    "authorisation": {
+      "field": "authorised_by",
+      "holder": "the faction's principal, per the issue's own wording that the faction leader assigns strategy and chooses priorities",
+      "open_question": "whether the council can authorise a mission the principal has not, or refuse one the principal has ordered, is NOT decided here. The declaration records who authorised it and whether that is the principal is REPORTED, not enforced."
+    },
+    "costs": [
+      {
+        "id": "leader_turn",
+        "label": "one of the four leader-turns",
+        "note": "an opportunity cost measured in QUANTITIES NOT PURSUED, which is what the scarcity above means in practice"
+      },
+      {
+        "id": "declared_resources",
+        "label": "the declared resources and assets",
+        "note": "named, never priced: the amounts are a rule and no rule is approved"
+      },
+      {
+        "id": "leader_status_risk",
+        "label": "the leader may end the turn in a named status",
+        "note": "busy, injured or compromised. The status vocabulary is declared; which outcomes cause which status is stage-B work and is not implemented."
+      },
+      {
+        "id": "patron_edge_stress",
+        "label": "drawing on a patron's asset stresses the patron edge",
+        "note": "issue #346 step 4: patron resources are not automatically faction property. A mission that names a patron edge is a dependence debt rather than a free resource, so the declaration records the edge instead of the funds."
+      }
+    ],
+    "failure_is_not_nothing": {
+      "shape": "a failed mission does not move the attempted quantity, and a DIFFERENT quantity moves the wrong way. A failure that moved nothing would be the empty-turn outcome the playtest checklist rules out.",
+      "examples": [
+        {
+          "mission": "negotiate",
+          "attempted": "institutional_access",
+          "moves_wrong_way": [
+            "institutional_access",
+            "opinion_support"
+          ],
+          "note": "a failed negotiation can close the access it sought and cost legitimacy"
+        },
+        {
+          "mission": "investigate",
+          "attempted": "discursive_hegemony",
+          "moves_wrong_way": [
+            "discursive_hegemony"
+          ],
+          "note": "a failed investigation publishes a CLAIM THAT IS NOT EVIDENCE; the evidence_model in data/global_factions.json is binding, and provenance stays UNKNOWN"
+        }
+      ],
+      "declared": false,
+      "reason": "which quantity a given failure moves, and by how much, is a rule. The shape is recorded so the container is not mistaken for the rule."
+    },
+    "refusal": {
+      "field": "refusals",
+      "shape": "a portfolio holder may contest or refuse a mission that cuts against their portfolio's quantity. A refusal is a STATE (decline, or the leader's own availability), not a scheduling accident, so the council's disagreement lands at the assignment step as a strategic fact rather than as table talk.",
+      "effect_declared": false,
+      "reason": "whether a council refusal is a status or an authored choice is decision D6 in docs/LEADER_MICRO_RULES_PROPOSAL.md, unauthored. The slot is described; the rule is not made."
+    },
+    "resolution": {
+      "declared": false,
+      "reason": "no mission is resolved anywhere in this package. Gate A (leader RPG) and gate C (strategy) in docs/RULE_SYSTEM_RESEARCH.md are open, and AGENTS.md section 4 reserves resolution, thresholds and cadence to the author. The Mission record carries an uninterpreted outcome field that nothing here writes."
+    }
+  },
+  "status_consequences": {
+    "vocabulary": [
+      "busy",
+      "injured",
+      "unavailable",
+      "compromised",
+      "exhausted",
+      "absent"
+    ],
+    "source": "the status table in docs/LEADER_COUNCIL_SYSTEM.md section 4, every row marked DRAFT",
+    "rows": [
+      {
+        "status": "busy",
+        "mission": "no",
+        "portfolio": "still applies",
+        "note": "already committed"
+      },
+      {
+        "status": "injured",
+        "mission": "no",
+        "portfolio": "suspended",
+        "note": "recovery timing is TODO: requires author specification"
+      },
+      {
+        "status": "unavailable",
+        "mission": "no",
+        "portfolio": "suspended",
+        "note": "an unavailable leader never silently trades down into a lesser action; the slot is simply unused"
+      },
+      {
+        "status": "compromised",
+        "mission": "yes_with_exposure_risk",
+        "portfolio": "reduced",
+        "note": "exposure risk and the reduction are TODO: requires author specification"
+      },
+      {
+        "status": "exhausted",
+        "mission": "no",
+        "portfolio": "still applies",
+        "note": ""
+      },
+      {
+        "status": "absent",
+        "mission": "no",
+        "portfolio": "none",
+        "note": ""
+      }
+    ],
+    "enforced": false,
+    "reason": "every row is DRAFT, and three of the six carry a TODO. A mission led by a leader in a no-mission row is therefore REPORTED with the row cited, not refused: refusing it would implement an unapproved rule."
+  },
+  "strategic_channels": [
+    {
+      "id": "gates_legality_and_cost",
+      "label": "the tie gates whether a mission can be attempted, and what it costs",
+      "opened_by": [
+        "mentor",
+        "indebted"
+      ],
+      "closed_by": [
+        "suspicious"
+      ],
+      "note": "a mentor or indebted edge to a target makes a negotiation a mission you can attempt; a suspicious edge makes the same mission illegal or costly",
+      "enforced": false,
+      "reason": "the correspondence between a tag and a mission's legality is a rule. It is transcribed here as declared data with enforced=false, so the layer reads the edge either way without granting anything.",
+      "applies": "tag_conditional"
+    },
+    {
+      "id": "carries_quantities",
+      "label": "the tie is the conduit the quantities travel along",
+      "carries": [
+        "institutional_access",
+        "discursive_hegemony",
+        "opinion_support"
+      ],
+      "note": "a personal edge to another faction's leader IS the conduit for access, articulation and coalition (Castells). The RPG layer is therefore not extra: it is the graph on which four of the six quantities move.",
+      "enforced": false,
+      "reason": "which quantities travel along which tie is a rule.",
+      "applies": "every_tie"
+    },
+    {
+      "id": "decides_trade_off_or_split",
+      "label": "the tie decides whether a disagreement is a trade-off or a split",
+      "note": "two portfolio holders who disagree on strategy and share a rival opinion produce a leak or a quiet sabotage; two who disagree but are mentor or friend produce a compromise. The disagreement is resolved by the two structures that already exist - the portfolio's interest and the sparse relationship record - not by a die roll.",
+      "enforced": false,
+      "reason": "what a leak or a sabotage removes is a rule.",
+      "applies": "every_tie"
+    },
+    {
+      "id": "written_back_as_state",
+      "label": "the tie is written back as state at the end of the turn",
+      "note": "at step 7 of the turn order relationships update ALONGSIDE the six quantities, and the next turn's mission legality reads them: leader decision -> faction standing -> discourse -> who cooperates -> the next personal decision. One loop, not three mini-games.",
+      "enforced": false,
+      "reason": "the update rules are the turn engine, and no turn engine is approved.",
+      "applies": "every_tie"
+    }
+  ],
+  "worked_example": {
+    "label": "four moves against six quantities",
+    "placeholder": true,
+    "note": "ILLUSTRATIVE and placeholder: these leader ids are invented for the example, not canon, and no faction from data/global_factions.json is used. The shape deliberately mirrors the worked turn in docs/LEADER_COUNCIL_SYSTEM.md section 8 rather than restating it, and shows the scarcity: four moves can name at most four of the six quantities.",
+    "principal_id": "placeholder_principal",
+    "leaders": [
+      {
+        "id": "placeholder_leader_1",
+        "portfolio": "politics_diplomacy",
+        "status": "",
+        "location_id": "placeholder_district_civic"
+      },
+      {
+        "id": "placeholder_leader_2",
+        "portfolio": "organisation_networks",
+        "status": "",
+        "location_id": "placeholder_district_outer"
+      },
+      {
+        "id": "placeholder_leader_3",
+        "portfolio": "operations_resources",
+        "status": "",
+        "location_id": "placeholder_district_works"
+      },
+      {
+        "id": "placeholder_leader_4",
+        "portfolio": "research_intelligence",
+        "status": "",
+        "location_id": "placeholder_district_hill"
+      }
+    ],
+    "missions": [
+      {
+        "id": "placeholder_mission_negotiate",
+        "leader_id": "placeholder_leader_1",
+        "kind": "negotiate",
+        "target_id": "placeholder_mayors_office",
+        "quantity": "institutional_access",
+        "authorised_by": "placeholder_principal"
+      },
+      {
+        "id": "placeholder_mission_organise",
+        "leader_id": "placeholder_leader_2",
+        "kind": "organise",
+        "target_id": "placeholder_volunteers",
+        "quantity": "opinion_support",
+        "authorised_by": "placeholder_principal"
+      },
+      {
+        "id": "placeholder_mission_acquire",
+        "leader_id": "placeholder_leader_3",
+        "kind": "acquire",
+        "target_id": "placeholder_released_tool",
+        "quantity": "membership_resources",
+        "authorised_by": "placeholder_principal"
+      },
+      {
+        "id": "placeholder_mission_investigate",
+        "leader_id": "placeholder_leader_4",
+        "kind": "investigate",
+        "target_id": "placeholder_rival_contact",
+        "quantity": "discursive_hegemony",
+        "authorised_by": "placeholder_principal"
+      }
+    ],
+    "unpursued_quantities": [
+      "legislative_representation",
+      "office_control"
+    ],
+    "what_it_shows": "Each move names WHICH of the six it tries to move, which is what stops a mission being a generic success roll: winning the ward (legislative representation) and winning the crowd (opinion/support) are different missions, not one mission with different modifiers. Four leaders, four moves, and two priorities nobody at the table is pursuing this turn - the argument the council is having, in one table."
+  },
+  "cautions": [
+    {
+      "source": "acceptance",
+      "note": "rival and player factions obey the SAME constraint: the validator takes any number of councils and applies no special case, so a rival cannot bank unused missions or gain free actions from members."
+    },
+    {
+      "source": "non-goals",
+      "note": "no separate CK3 court simulator, no global character network, no tactical combat or pathfinding, no full Terra Invicta council mechanics. Members stay abstract."
+    },
+    {
+      "source": "laclau",
+      "note": "the six quantities are orientations and standing; demands, antagonisms and nodal signifiers drive actual articulation. Covering a quantity is not winning a hegemony."
+    },
+    {
+      "source": "castells",
+      "note": "reach depends on concrete networks and access, which is why a personal tie is modelled as a channel rather than as a bonus."
+    },
+    {
+      "source": "simplicity",
+      "note": "four leaders, four offices, sparse ties. No dense all-to-all graph and no per-member simulation."
+    }
+  ],
+  "pending_author_decisions": [
+    {
+      "id": "roster_size",
+      "question": "Is a faction's roster exactly four leaders, or four-or-more with four deployed?",
+      "why_not_decided": "Issue #323 says a faction has four leaders and therefore four missions; issue #346 says the four field-agent deployment limit 'counts characters assigned to field actions, not all managers'. The two are compatible on the four-moves-per-turn cap but differ on the roster. Flagged on both issues and not resolved here.",
+      "container_instead": "council_size records the four SLOTS the cap comes from, and the roster check reports a roster that is not four rather than refusing it."
+    },
+    {
+      "id": "founder_authority",
+      "question": "Is the founder one of the four leaders, or a fifth authority over them?",
+      "why_not_decided": "The same tension as the roster question, seen from #346 step 2 and step 5.",
+      "container_instead": "A council leader record names a portfolio and an id; it asserts nothing about whether the principal or the founder holds a post."
+    },
+    {
+      "id": "refusal_effect",
+      "question": "Is a council refusal a status or an authored choice, and what does it do?",
+      "why_not_decided": "Decision D6 of docs/LEADER_MICRO_RULES_PROPOSAL.md is unauthored, and that document approves nothing.",
+      "container_instead": "The mission declaration carries a refusals list and the effect is declared false with this reason."
+    },
+    {
+      "id": "passive_magnitude",
+      "question": "What does a portfolio's passive effect actually change, and by how much?",
+      "why_not_decided": "The stage-A specification proposes at most +1 and a +2 faction-wide cap, and marks every number DRAFT. No magnitude is approved.",
+      "container_instead": "Each portfolio names the quantity its office touches (passive.quantity) and sets magnitude_declared false with the reason."
+    },
+    {
+      "id": "leader_attributes",
+      "question": "Which leader card is approved: Reason/Nerve/Rapport, one capability plus tags, or something else?",
+      "why_not_decided": "D1, D2 and D6 are open in the micro-rules proposal, and D7 refuses importing the six legacy STATs without separate approval. Nothing in this layer may assume an attribute set.",
+      "container_instead": "No attribute is named anywhere in this file or in council.py. A mission names a quantity and a leader, and the resolution inputs stay author-defined."
+    },
+    {
+      "id": "failure_effect",
+      "question": "Which quantity does a failed mission move the wrong way?",
+      "why_not_decided": "The design comment states the SHAPE (the attempted quantity does not move; a different one moves the wrong way) and no magnitudes.",
+      "container_instead": "mission.failure_is_not_nothing records the shape and two illustrative cases with declared false."
+    },
+    {
+      "id": "turn_unit",
+      "question": "Is a turn weeks or months?",
+      "why_not_decided": "The stage-A specification says the author picks the unit and forbids daily micro-orders; the issue says weeks or months in implementation.",
+      "container_instead": "Nothing in this layer reads a clock. A turn is an argument of the validator, not a duration."
+    }
+  ]
+}
