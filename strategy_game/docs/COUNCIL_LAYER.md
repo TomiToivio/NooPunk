@@ -143,3 +143,25 @@ reason. **A container is not a rule.**
 **Not the same question:** `council_size` is *one faction's* leader roster. It is deliberately not the open
 data-integrity question of which canonical faction records are canonical
 (`docs/design/NOOPUNK_GLOBAL.md` §6A), which stays unresolved and is not touched here.
+
+## 7. The seam to the RPG layer (issue #389)
+
+The relationship record above is *read*, never *applied*: `strategic_consequences()` returns a reading
+with `enforced: false`. Issue #389 has since approved the **RPG layer's** rules basis (Fate Core), while
+the **strategy** and **political-simulation** layers remain unapproved. Those two facts are what
+`strategy_game/relationship_seam.py` exists to keep apart.
+
+The seam is **signature-only**, in the spirit of `ports.py`:
+
+- `RPGRelationshipSource` is a `typing.Protocol` — the one way the strategic layer may *read* the
+  personal state the RPG layer owns (`relationship_states`, `declared_edge_ids`). It resolves nothing
+  and transitions nothing.
+- `NullRelationshipSource` is the default: it declares nothing, and its emptiness is **UNMODELLED,
+  never zero** — the same discipline as §4's absent-tie rule.
+- `strategic_consequence_view()` **reuses** `CouncilModel.strategic_consequences()` rather than
+  re-implementing it, and attaches `applied: false` and the owner of the mechanics. It imports nothing
+  from `strategy_game/rpg/`, and a contract asserts that in a subprocess.
+
+So the seam is the structure that makes the author's remaining decision *expressible*: once there is a
+ruling about what a tie changes, it has a declared slot to land in. Until then it lands nowhere, and
+the triggered-RPG-choice half of acceptance criterion 6 stays open with it.

@@ -1,0 +1,222 @@
+{
+  "format": "noopunk.strategy_game.faction_cards",
+  "version": 1,
+  "status": "PROPOSAL - approves nothing. Specifies issue #346's four card types (character, organization, research, government influence) as a RECORD LAYER: what each type represents, its tag scope, its control vocabulary and its declared links. strategy_game/RULEBOOK.md still says NO RULES APPROVED. No effect, magnitude, threshold, cost, die or action set appears anywhere in this file; the issue's 'minimal effects and interactions' clause is recorded as DECLARED, NOT ENFORCED, and its unenforced half is an explicit pending author decision.",
+  "sources": [
+    "issue #346, acceptance criterion 4: 'Specify the four card types: character, organization, research and government influence, with minimal effects and interactions.'",
+    "issue #346, 'Four faction card types': the table (Agents/characters, Organizations, Research, Government) and its 'Illustrative mechanical function' column, which is transcribed here as an unenforced declaration",
+    "issue #346, 'Interactions': a character can lead a faction-controlled organization; an organization produces research; research improves advocacy or operations; deployed agents use those capabilities to gain government influence; government influence can in turn fund or restrict organizations and research; a corporate patron's organization card remains distinguishable from outright faction ownership",
+    "issue #346, 'Proposed MVP': each card has a title, type, a few TAGs/values, control/affiliation and one concise effect; research and government cards represent durable assets/influence, not one-off consumables. The 'one concise effect' is unauthored and is left as a pending decision.",
+    "issue #346, author clarification: the starting Finnish government relation is 'collaboration, not political ownership'; influence is 'captured and contested' rather than an entire government being automatically owned",
+    "issue #356 (strategy_game/characters.py + data/character_cards.json): the CHARACTER card family already exists and is consumed here, never duplicated",
+    "strategy_game/data/faction_creation.json: the typed tag kinds and the tag SCOPES (faction, character, organization, research, government) that this layer reuses for the four card types"
+  ],
+  "provenance": {
+    "kind": "authored",
+    "source": "issue #346's 'Four faction card types' section and its initial acceptance criteria",
+    "note": "the four types and the interaction chain are the author's; the record schema is this session's"
+  },
+  "control_states": [
+    "owned",
+    "allied",
+    "infiltrated",
+    "patron_controlled",
+    "cooperating",
+    "autonomous",
+    "contested"
+  ],
+  "card_types": [
+    {
+      "id": "character",
+      "label": "Agents / characters",
+      "tag_scope": "character",
+      "represents": "The founder, managers, field agents, patrons and significant NPCs.",
+      "declared_function": "Skills/TAGs, loyalty, expertise, relationships, role/assignment and actions.",
+      "declared_function_enforced": false,
+      "card_role": "persistent_record",
+      "control_states_apply": false,
+      "may_carry": ["typed_tags", "relationships", "declared_actions", "statuses", "state"],
+      "may_not_carry": ["resolved_effect", "numeric_stat", "threshold"],
+      "note": "CONSUMED, NOT DUPLICATED: the character card record and its schema live in strategy_game/characters.py (issue #356). This layer declares the type so the four-type vocabulary is complete and so a faction roster can reference a character card by id; it ships no character card of its own, because a second character record would be a parallel system."
+    },
+    {
+      "id": "organization",
+      "label": "Organizations",
+      "tag_scope": "organization",
+      "represents": "NGOs, corporations, labs, media platforms, security teams, religious bodies and professional networks.",
+      "declared_function": "Recurring resources, capabilities, infrastructure and access; may be owned, allied, infiltrated or patron-controlled.",
+      "declared_function_enforced": false,
+      "card_role": "persistent_record",
+      "control_states_apply": true,
+      "control_note": "The control vocabulary carries the issue's own distinction: a corporate patron's organization card is held under a NAMED control state, so it stays distinguishable from outright faction ownership rather than reading as faction property.",
+      "may_carry": ["typed_tags", "control", "owner_id", "produces", "consumes", "relationships"],
+      "may_not_carry": ["resolved_effect", "numeric_stat", "threshold", "economy"],
+      "note": "A persistent board/entity record, not a card in a hand: it does not enter play as a move."
+    },
+    {
+      "id": "research",
+      "label": "Research",
+      "tag_scope": "research",
+      "represents": "Scientific insights, discoveries, AGI/PSI/NHI knowledge, theories, technical breakthroughs and applied technologies.",
+      "declared_function": "Unlock actions, technologies, ideological arguments, warnings, evidence and new strategic options.",
+      "declared_function_enforced": false,
+      "card_role": "persistent_record",
+      "control_states_apply": false,
+      "may_carry": ["typed_tags", "owner_id", "produces", "consumes", "relationships"],
+      "may_not_carry": ["resolved_effect", "numeric_stat", "threshold"],
+      "note": "What a research card UNLOCKS is an effect and is unauthored; the evidence_model in data/global_factions.json stays binding, so a research card never promotes a claim to EVIDENCE."
+    },
+    {
+      "id": "government",
+      "label": "Government influence",
+      "tag_scope": "government",
+      "represents": "Political influence or control in a city, region/state or other jurisdiction.",
+      "declared_function": "Access to institutions, policy, regulation, budgets, police/security or legitimacy; capture and contest influence rather than treating an entire government as automatically owned.",
+      "declared_function_enforced": false,
+      "card_role": "persistent_record",
+      "control_states_apply": true,
+      "control_note": "A government relation defaults to a NAMED cooperation state ('cooperating', 'autonomous', 'contested'), never to 'owned': the author's clarification is that starting government support is collaboration, not political ownership.",
+      "may_carry": ["typed_tags", "control", "owner_id", "produces", "consumes", "relationships"],
+      "may_not_carry": ["resolved_effect", "numeric_stat", "threshold", "economy"],
+      "note": "The shared tabletop Card primitive declares no 'government' member (strategy_game/tabletop/cards.py). Extending that enum would touch the board layer's file, which belongs to a sibling unit, so the gap is recorded as a pending decision; a government card is a full record in this layer regardless."
+    }
+  ],
+  "declared_interactions": [
+    {
+      "id": "character_leads_organization",
+      "label": "A character can lead a faction-controlled organization.",
+      "source": "character",
+      "target": "organization",
+      "via": "leadership",
+      "enforced": false,
+      "reason": "What leading an organization DOES — its effect on capacity, reach or control — is a rule, and no rule is approved. The chain is declared so the container is legible, and applied nowhere."
+    },
+    {
+      "id": "organization_produces_research",
+      "label": "An organization produces research.",
+      "source": "organization",
+      "target": "research",
+      "via": "production",
+      "enforced": false,
+      "reason": "How much research an organization produces, and how fast, is an effect and a magnitude. Declared, not enforced."
+    },
+    {
+      "id": "research_improves_advocacy_or_operations",
+      "label": "Research improves advocacy or operations.",
+      "source": "research",
+      "target": "organization",
+      "via": "capability",
+      "enforced": false,
+      "reason": "'Improves' is an effect. That research unlocks an argument, an option or a warning is the issue's design claim; the claim is data here, not a mechanism."
+    },
+    {
+      "id": "deployed_agents_gain_government_influence",
+      "label": "Deployed agents use those capabilities to gain government influence.",
+      "source": "character",
+      "target": "government",
+      "via": "field_operation",
+      "enforced": false,
+      "reason": "Gaining influence is a mission outcome, and mission resolution is unauthored (gate C). The channel is declared so the mission layer has a named destination."
+    },
+    {
+      "id": "government_influence_funds_or_restricts_research",
+      "label": "Government influence can in turn fund or restrict organizations and research.",
+      "source": "government",
+      "target": "research",
+      "via": "policy",
+      "enforced": false,
+      "reason": "Funding, restriction and their amounts are an economy, which is explicitly not approved. Declared, not enforced."
+    },
+    {
+      "id": "patron_organization_is_not_faction_property",
+      "label": "A corporate patron's organization card remains distinguishable from outright faction ownership.",
+      "source": "organization",
+      "target": "organization",
+      "via": "control_state",
+      "enforced": false,
+      "reason": "The distinction is carried by the NAMED control state (for example patron_controlled versus owned), which is structural. What a patron's control then changes is the author's to rule (see #346 step 4)."
+    }
+  ],
+  "cards": [
+    {
+      "id": "archetype_advocacy_nonprofit",
+      "card_type": "organization",
+      "title": "Advocacy nonprofit (archetype)",
+      "summary": "A generic pre-crisis advocacy and research organisation: a small committed membership, initial research capacity and growing public visibility. Generic means the author did not name it; it is not a named faction and carries no setting content.",
+      "tags": [
+        {"kind": "asset", "value": "REMOTE_VIEWING_TEAM"},
+        {"kind": "goal", "value": "DISCLOSE_UFO_SECRETS"}
+      ],
+      "control": "allied",
+      "control_rationale": "",
+      "produces": ["archetype_research_programme"],
+      "consumes": [],
+      "observable": ["It publishes papers and organises public events that predate the paradigm shifts."],
+      "inferences": ["That its standing is only as durable as its founder's reputation."],
+      "visibility": "public",
+      "provenance": {"kind": "generated", "source": "", "note": "a generic archetype, not authored canon"},
+      "sources": [],
+      "gm_notes": ""
+    },
+    {
+      "id": "archetype_research_programme",
+      "card_type": "research",
+      "title": "Research programme (archetype)",
+      "summary": "A generic research card representing an accumulated body of insight rather than a consumable: a programme, a discovery or an applied technology held as durable knowledge.",
+      "tags": [
+        {"kind": "asset", "value": "RESEARCH_LAB"},
+        {"kind": "belief", "value": "QUANTUM_RESEARCH"}
+      ],
+      "control": "",
+      "control_rationale": "A research card is not controlled by anyone the way an organisation is: it is what the faction knows. No control state is declared, and the reason is recorded rather than left blank.",
+      "produces": ["archetype_municipal_government_relation"],
+      "consumes": [],
+      "observable": ["The programme's outputs are papers, data and prototypes."],
+      "inferences": ["That a finding is evidence rather than a claim — which the setting does not settle."],
+      "visibility": "public",
+      "provenance": {"kind": "generated", "source": "", "note": "a generic archetype, not authored canon"},
+      "sources": [],
+      "gm_notes": ""
+    },
+    {
+      "id": "archetype_municipal_government_relation",
+      "card_type": "government",
+      "title": "Government relationship (archetype)",
+      "summary": "A generic government-influence card for a city or region: an institutional relationship that can be cooperative while remaining autonomous, and that can be contested rather than treated as owned.",
+      "tags": [
+        {"kind": "relationship", "value": "cooperation with the municipal government"},
+        {"kind": "goal", "value": "DEFEND_HUMAN_AUTONOMY"}
+      ],
+      "control": "cooperating",
+      "control_rationale": "",
+      "produces": ["archetype_advocacy_nonprofit"],
+      "consumes": ["archetype_research_programme"],
+      "observable": ["The jurisdiction cooperates with the faction on specified matters."],
+      "inferences": ["That the faction controls the jurisdiction, which the cooperation does not establish."],
+      "visibility": "public",
+      "provenance": {"kind": "generated", "source": "", "note": "a generic archetype, not authored canon"},
+      "sources": [],
+      "gm_notes": ""
+    }
+  ],
+  "pending_author_decisions": [
+    {
+      "id": "declared_interaction_effects",
+      "question": "What does each declared interaction actually change — what does an organization producing research produce, and what does research improving advocacy improve?",
+      "why_not_decided": "An interaction's effect, and any magnitude in it, is a rule. strategy_game/RULEBOOK.md says NO RULES APPROVED and AGENTS.md section 4 reserves resolution, thresholds, effects and economics to the author, so an agent must not invent them.",
+      "container_instead": "The six interactions are declared with enforced:false and a reason each, and a card carries LINKS (produces/consumes) rather than effects. Criterion 4's 'minimal effects and interactions' clause is therefore satisfied as far as it is structure and left open where it is a rule."
+    },
+    {
+      "id": "government_primitive_member",
+      "question": "Does the shared tabletop Card primitive gain a 'government' member?",
+      "why_not_decided": "strategy_game/tabletop/cards.py belongs to the board layer (#347). Adding an enum member is that unit's decision, and this unit must not touch it.",
+      "container_instead": "UNPROJECTABLE names the gap and to_card() refuses a government card by name rather than guessing a mapping; the card is a full record in this layer regardless."
+    },
+    {
+      "id": "fifth_card_type",
+      "question": "Is a fifth card type ever added beyond the issue's four?",
+      "why_not_decided": "Issue #346 names exactly four, and a card type is a content category the author owns; an agent must not add one.",
+      "container_instead": "CARD_TYPE_IDS declares the four and FactionCard refuses any other type by name, so a fifth is a deliberate author edit rather than a silent drift."
+    }
+  ]
+}
