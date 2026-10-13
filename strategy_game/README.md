@@ -40,6 +40,8 @@ The horizon this project is building toward — **one open-source indie Grand St
 
 The ultra-abstract worldwide Network Society / Luhmannian social systems / Laclaudian hegemony concept, political-simulator references, card/tabletop architecture options, illustrative crisis-turn walkthrough and preliminary bookkeeping analysis are documented in [`docs/NOOPUNK_GLOBAL_DESIGN.md`](docs/NOOPUNK_GLOBAL_DESIGN.md) ([issue #338](https://github.com/TomiToivio/NooPunk/issues/338)). This is a **design proposal only**, not approved gameplay rules, and does not replace the local-city scenario #322.
 
+The issue's five 2026-10-13 author decisions — cyberspace/local-access netrunning, Physical/Astral/Cyber as abstract strategic operations, pregenerated ideological factions with layered storylines, the tactical-view roadmap split, and RPG missions first — are consolidated with an item-by-item acceptance mapping (met / met as structure / gated, with the gate named) in [`../docs/design/ISSUE_338_ACCEPTANCE.md`](../docs/design/ISSUE_338_ACCEPTANCE.md), beside the closeout handoff [`../docs/design/ISSUE_338_GLOBAL_HANDOFF.md`](../docs/design/ISSUE_338_GLOBAL_HANDOFF.md). It adds no module, resolves no structural fork and approves no mechanic.
+
 ## Experimental NoöPunk: Global vertical slice (#338)
 
 Run a **noncanonical** deterministic example from the repository root:
