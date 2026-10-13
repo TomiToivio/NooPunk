@@ -10,6 +10,8 @@ from enum import Enum
 from random import Random
 from typing import Mapping
 
+from ..characters import Tag
+
 
 class Action(str, Enum):
     OVERCOME = "overcome"
@@ -101,6 +103,9 @@ class Character:
     natural_psi: bool = False
     psi_abilities: list[str] = field(default_factory=list)
     statuses: list[str] = field(default_factory=list)
+    #: Typed character tags from issue #346's shared vocabulary (belief, competence, equipment,
+    #: relationship, asset, goal). The same kinds factions and cards use: no second tag scheme.
+    tags: tuple[Tag, ...] = ()
 
     def __post_init__(self) -> None:
         if not self.id or not self.name:
@@ -111,6 +116,22 @@ class Character:
             raise ResourceError("skills must be nonnegative integer ratings")
         if self.psi_abilities and not self.natural_psi:
             raise ResourceError("natural PSI abilities require natural_psi; equipment alone grants no innate PSI")
+        seen: set[tuple[str, str]] = set()
+        for tag in self.tags:
+            if not isinstance(tag, Tag):
+                raise ResourceError("tags must come from the shared typed vocabulary (issue #346)")
+            key = (tag.kind, tag.value)
+            if key in seen:
+                raise ResourceError(f"duplicate tag {tag.kind}:{tag.value}")
+            seen.add(key)
+
+    def tags_of_kind(self, kind: str) -> tuple[Tag, ...]:
+        """Character tags of one kind.
+
+        The kinds are typed for a reason: a ``belief`` is a doctrine the holder holds and a
+        ``competence`` is a capability, so a doctrine is never read as a capability.
+        """
+        return tuple(tag for tag in self.tags if tag.kind == kind)
 
     def spend_fate_point(self) -> None:
         if self.fate_points < 1:
