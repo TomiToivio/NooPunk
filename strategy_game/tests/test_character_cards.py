@@ -17,8 +17,10 @@ from strategy_game.characters import (
     CHARACTER_CARDS_FORMAT,
     CHARACTER_CARDS_VERSION,
     CLAIM_STATUSES,
+    CONSCIOUSNESS_STATUSES,
     DECLARED_ACTION_KINDS,
     NHI_CATEGORIES,
+    NHI_TAG_KINDS,
     TAG_KINDS,
     CharacterCard,
     CharacterError,
@@ -287,6 +289,7 @@ class ValidationTests(unittest.TestCase):
             nhi=NhiClassification(
                 category=NhiCategory.CONSTRUCT,
                 species_ref="orbs_of_light",
+                form=str(entry["form"]),
                 claim_status=ClaimStatus(entry["knowledge_status"]),
                 contested=bool(entry["alternative_ontologies"]),
             ),
@@ -300,7 +303,10 @@ class ValidationTests(unittest.TestCase):
             family=CharacterFamily.NHI,
             display_name="Rumour promoted to canon",
             nhi=NhiClassification(
-                category=NhiCategory.PLASMOID, species_ref="orbs_of_light", claim_status=ClaimStatus.CANON
+                category=NhiCategory.PLASMOID,
+                species_ref="orbs_of_light",
+                form="mythonym",
+                claim_status=ClaimStatus.CANON,
             ),
         )
         problems = CharacterRoster([wrong], version=CHARACTER_CARDS_VERSION).validate(codex=self.codex)
@@ -311,7 +317,9 @@ class ValidationTests(unittest.TestCase):
             identifier="test_unknown_species",
             family=CharacterFamily.NHI,
             display_name="Invented species",
-            nhi=NhiClassification(category=NhiCategory.NOETIC, species_ref="invented_species"),
+            nhi=NhiClassification(
+                category=NhiCategory.NOETIC, species_ref="invented_species", form="species"
+            ),
         )
         problems = CharacterRoster([unknown], version=CHARACTER_CARDS_VERSION).validate(codex=self.codex)
         self.assertTrue(any("not in the codex" in problem for problem in problems), problems)
@@ -393,6 +401,115 @@ class LoaderTests(unittest.TestCase):
             path = Path(tmp) / "faction_creation.json"
             path.write_text(json.dumps({"tag_kinds": [{"id": "belief"}]}), encoding="utf-8")
             self.assertFalse(tag_vocabulary_matches(path))
+
+
+class NonCollapseTests(unittest.TestCase):
+    """The three families are held apart: an entity is not a person, and facts are not inferences."""
+
+    def setUp(self) -> None:
+        self.roster = load_character_cards()
+        self.codex = codex_entry_map()
+
+    def test_nhi_cards_carry_no_statted_capability(self) -> None:
+        for card in self.roster.filter(family=CharacterFamily.NHI):
+            self.assertEqual(card.declared_actions, (), card.identifier)
+            for tag in card.tags:
+                self.assertIn(tag.kind, NHI_TAG_KINDS, card.identifier)
+
+    def test_an_nhi_card_may_not_declare_an_action(self) -> None:
+        with self.assertRaises(CharacterError):
+            CharacterCard(
+                identifier="statted_entity",
+                family=CharacterFamily.NHI,
+                display_name="Statted entity",
+                declared_actions=("combat",),
+                nhi=NhiClassification(
+                    category=NhiCategory.CONSTRUCT, species_ref="metallic_spheres", form="vessel_or_technology"
+                ),
+            )
+
+    def test_a_competence_tag_is_refused_on_an_nhi_card(self) -> None:
+        with self.assertRaises(CharacterError):
+            CharacterCard(
+                identifier="capable_entity",
+                family=CharacterFamily.NHI,
+                display_name="Capable entity",
+                tags=(Tag(kind="competence", value="hacks anything"),),
+                nhi=NhiClassification(
+                    category=NhiCategory.CONSTRUCT, species_ref="metallic_spheres", form="vessel_or_technology"
+                ),
+            )
+
+    def test_an_nhi_card_must_declare_the_codex_form_as_well_as_the_category(self) -> None:
+        with self.assertRaises(CharacterError):
+            CharacterCard(
+                identifier="formless_entity",
+                family=CharacterFamily.NHI,
+                display_name="Formless entity",
+                nhi=NhiClassification(category=NhiCategory.NOETIC, species_ref="q_uo"),
+            )
+
+    def test_an_nhi_card_is_never_a_template_for_a_person(self) -> None:
+        with self.assertRaises(CharacterError):
+            self.roster.instantiate("nhi_metallic_spheres")
+
+    def test_observable_facts_are_separate_from_inferences(self) -> None:
+        for card in self.roster.filter(family=CharacterFamily.NHI):
+            self.assertTrue(card.observable_facts, card.identifier)
+            self.assertTrue(card.inferences, card.identifier)
+            self.assertFalse(
+                set(card.observable_facts) & set(card.inferences),
+                f"{card.identifier} merges observation with attribution",
+            )
+
+    def test_observable_facts_come_from_the_codex_manifestations(self) -> None:
+        """A card may not invent what was seen: every codex manifestation must appear as observed."""
+        for card in self.roster.filter(family=CharacterFamily.NHI):
+            assert card.nhi is not None
+            entry = self.codex[card.nhi.species_ref]
+            for manifestation in entry.get("manifestations") or ():
+                self.assertIn(manifestation, card.observable_facts, card.identifier)
+
+    def test_consciousness_status_defaults_to_unknown_and_is_never_asserted_lightly(self) -> None:
+        plain = CharacterCard(identifier="plain_person", family=CharacterFamily.ARCHETYPE, display_name="Plain")
+        self.assertEqual(plain.consciousness_status, "unknown")
+        for card in self.roster:
+            self.assertIn(card.consciousness_status, CONSCIOUSNESS_STATUSES)
+        with self.assertRaises(CharacterError):
+            CharacterCard(
+                identifier="certain_entity",
+                family=CharacterFamily.NHI,
+                display_name="Certainly conscious",
+                consciousness_status="asserted_in_world",
+                nhi=NhiClassification(
+                    category=NhiCategory.NOETIC, species_ref="q_uo", form="individual"
+                ),
+            )
+
+    def test_front_shows_observable_facts_while_the_identity_stays_unestablished(self) -> None:
+        text = render_front(self.roster.get("nhi_orbs_of_light"))
+        self.assertIn("observed:", text)
+        self.assertIn("A light that moves against the wind", text)
+        self.assertIn("contested", text)
+
+    def test_detail_prints_facts_and_inferences_as_two_lists(self) -> None:
+        text = render_detail(self.roster.get("nhi_metallic_spheres"))
+        self.assertIn("observable facts:", text)
+        self.assertIn("inferences (attribution, not observation):", text)
+
+    def test_detail_withholds_gm_secrets_from_a_codex_entry(self) -> None:
+        codex = dict(self.codex)
+        entry = dict(codex["orbs_of_light"])
+        entry["gm_secrets"] = "the orbs are a maintenance swarm for something larger"
+        codex["orbs_of_light"] = entry
+        text = render_detail(self.roster.get("nhi_orbs_of_light"), codex=codex, reveal_secrets=True)
+        self.assertNotIn("maintenance swarm", text)
+
+    def test_filter_by_form(self) -> None:
+        self.assertEqual(
+            [card.identifier for card in self.roster.filter(form="mythonym")], ["nhi_orbs_of_light"]
+        )
+        self.assertTrue(self.roster.filter(form="species"))
 
 
 if __name__ == "__main__":

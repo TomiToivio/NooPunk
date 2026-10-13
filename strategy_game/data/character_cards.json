@@ -4,10 +4,12 @@
   "status": "MVP CONTENT AND SCHEMA ONLY - no mechanic, no statistic, no threshold, no resolution. Gates A-D in docs/RULE_SYSTEM_RESEARCH.md remain open; AGENTS.md section 4 reserves resolution and cadence to the author.",
   "sources": [
     "issue #356: three card families, shared schema, template -> instance lifecycle, visibility, filters",
-    "issue #326: Sir Mars Eldrich, canonical contemporary NPC (Eldrich dynasty, Eldrich Corporation, Eldrich Island, Libertarian party, Mars colonisation)",
-    "docs/design/ISSUE_324_UKWELI_CANON_REUSE.md",
-    "docs/scenarios/UKWELI_LOCAL_SCENARIO.md",
-    "data/codex.json: the four NHI categories (ontology), knowledge_status, alternative_ontologies, reveal_stage, origin_claims, faction_relationships",
+    "issue #356 comment: three card families, one record - the non-collapse rules adopted here",
+    "issue #326: Sir Mars Eldrich, canonical contemporary NPC (Eldrich dynasty, Eldrich Corporation, Libertarian party, Mars colonisation)",
+    "RULEBOOK.md section 'Mars and Mars Eldrich': the ancient ruins on Mars",
+    "docs/design/ISSUE_324_UKWELI_CANON_REUSE.md: #326 owns Sir Mars Eldrich; the island question is explicitly undefined",
+    "docs/scenarios/UKWELI_LOCAL_SCENARIO.md, docs/scenarios/PREFALL_FIRST_CONTACT.md",
+    "data/codex.json: the four NHI categories (ontology), form, knowledge_status, alternative_ontologies, reveal_stage, manifestations, origin_claims, faction_relationships",
     "data/faction_creation.json: issue #346's shared TAG kinds (belief, competence, equipment, relationship, asset, goal)",
     "data/ukweli_local.json: the Ukweli party ids (cpu, uip, ulp) and their leader slots",
     "strategy_game/docs/INTEGRATION_BOUNDARIES.md",
@@ -17,7 +19,9 @@
     "public": "readable at the table",
     "private": "known to its owner or holder",
     "concealed": "exists in the collection but reads as a hidden card back",
-    "claims": "canon / player_known / reported_claim / rumour / source_mythology / gm_truth; gm_truth is redacted by render_detail unless reveal_secrets=True",
+    "claims": "canon / player_known / reported_claim / rumour / source_mythology / gm_truth / unknown; gm_truth is redacted by render_detail unless reveal_secrets=True",
+    "interiority": "consciousness_status is unknown / contested / asserted_in_world; it is never derived, and asserted_in_world needs a cited source because the setting does not settle whether a being is conscious",
+    "facts": "observable_facts (what happened) and inferences (what a character concludes) are separate fields and are never merged",
     "note": "display policy only. No rule reads these values, and no card carries a statistic."
   },
   "entries": [
@@ -26,7 +30,7 @@
       "family": "canonical",
       "display_name": "Sir Mars Eldrich",
       "role": "patron",
-      "summary": "Head of the aristocratic Eldrich family business dynasty and of Eldrich Corporation, successor to the Eldrich Colonial Shipping Corporation. The richest citizen of Ukweli and a globally dominant shipping magnate: an extremely eccentric, flamboyant publicity seeker, serial inventor and promoter of improbable products, some genuinely original and others arguably stolen or appropriated. Publicly meddles in politics, funds the Libertarian party and sympathetic media, and is obsessed with colonising Mars.",
+      "summary": "Head of the aristocratic Eldrich family business dynasty and of Eldrich Corporation, successor to the Eldrich Colonial Shipping Corporation. The richest citizen of Ukweli and a globally dominant shipping magnate: an extremely eccentric, flamboyant publicity seeker, serial inventor and promoter of improbable products, some genuinely original and others arguably stolen or appropriated. Publicly meddles in politics, funds the Libertarian party and sympathetic media, and is obsessed with colonising Mars — a colonisation effort that discovered ancient ruins on Mars, which he is furious to see unsettled by stargates and anomalous transport.",
       "faction_ids": ["ulp"],
       "tags": [
         {"kind": "belief", "value": "libertarian anti-establishment branding over aristocratic pedigree"},
@@ -41,17 +45,31 @@
       "relationships": [
         {"other_id": "ulp", "kind": "patron_of", "visibility": "public"}
       ],
+      "observable_facts": [
+        "Heads the Eldrich Corporation, successor to the Eldrich Colonial Shipping Corporation",
+        "Publicly funds the Libertarian party and sympathetic media",
+        "His colonisation effort discovered ancient ruins on Mars",
+        "Searches for crash-retrieval material"
+      ],
+      "inferences": [
+        "That the party is his instrument, although it remains formally autonomous",
+        "That wealth decides the argument, which the free-market rhetoric denies",
+        "The legal and physical relation of Eldrich Island to the Freedom Colony is unresolved: leave it unfilled"
+      ],
       "visibility": "public",
       "claim_status": "canon",
+      "consciousness_status": "unknown",
       "art_ref": "placeholder:art/portrait/eldrich-sir-mars",
       "provenance": {"kind": "authored", "note": "issue #326 Sir Mars Eldrich: canonical contemporary NPC"},
       "sources": [
         "#326 Sir Mars Eldrich: canonical contemporary NPC",
+        "RULEBOOK.md section 'Mars and Mars Eldrich'",
         "docs/design/ISSUE_324_UKWELI_CANON_REUSE.md",
         "docs/scenarios/UKWELI_LOCAL_SCENARIO.md",
+        "docs/scenarios/PREFALL_FIRST_CONTACT.md",
         "rulebook/parts/07_noopunk_lore.md"
       ],
-      "gm_notes": "Play the contradictions, not a villain: aristocratic pedigree against anti-establishment branding, monopolistic market power against free-market rhetoric, local philanthropy and jobs against elite capture, flamboyant imagination against possible AI/NHI/PSI encounters. He is neither one-dimensional nor omnipotent."
+      "gm_notes": "His authored secret is the author's to write. Play the contradictions, not a villain: aristocratic pedigree against anti-establishment branding, monopolistic market power against free-market rhetoric, local philanthropy and jobs against elite capture. He is neither one-dimensional nor omnipotent."
     },
     {
       "identifier": "archetype_faction_organizer",
@@ -286,17 +304,26 @@
       "family": "nhi",
       "display_name": "Cephalopoid aquatic intelligences",
       "role": "encounter exemplar",
-      "summary": "Game-facing exemplar of the Biologics category: a deep-water envoy whose grammar is written on its skin. Nothing about it is confirmed to the public, and the codex keeps the species distinct from the category.",
+      "summary": "Game-facing exemplar of the Biologics category: a deep-water delegation whose grammar is written on its skin. Nothing about it is confirmed to the public, and the card shows what was seen while its identity and its standing stay unestablished.",
       "tags": [
-        {"kind": "competence", "value": "non-verbal, distributed negotiation"},
-        {"kind": "belief", "value": "the sea is a polity, not a resource"},
-        {"kind": "relationship", "value": "candidate member of the UCCC, or a neutral party"}
+        {"kind": "belief", "value": "that the sea already has a polity, or that it cannot"},
+        {"kind": "belief", "value": "that a delegation implies someone sent them"}
       ],
-      "declared_actions": ["influence", "investigation"],
+      "observable_facts": [
+        "A diplomatic delegation aboard a flooded consulate",
+        "Cephalopod anatomy adapted to a non-terrestrial pressure and light environment",
+        "Individual persons with a partly shared sensory model; not a hive"
+      ],
+      "inferences": [
+        "That a mandate exists behind the delegation (attributed, not observed)",
+        "That a candidate UCCC membership is on offer (a codex reading, not a fact)"
+      ],
       "visibility": "public",
       "claim_status": "rumour",
+      "consciousness_status": "unknown",
       "nhi": {
         "category": "biologic",
+        "form": "species",
         "species_ref": "cephalopod_diplomats",
         "origin_hypotheses": ["Terrestrial marine lineage, presented as a candidate UCCC member or a neutral party."],
         "allegiances": ["uccc (candidate)", "unaligned (candidate)"],
@@ -313,18 +340,26 @@
       "family": "nhi",
       "display_name": "Networked Metallic Spheres",
       "role": "encounter exemplar",
-      "summary": "Game-facing exemplar of the Constructs category: the ubiquitous orb network, engineered rather than evolved, and ordinary enough to be player-known. A swarm is a presence; a single orb is a rumour with a camera.",
+      "summary": "Game-facing exemplar of the Constructs category: the ubiquitous orb network, engineered rather than evolved, and ordinary enough to be player-known. A swarm is a presence; a single orb is a rumour with a camera. No capability is stated here, because the setting does not stat an entity.",
       "tags": [
-        {"kind": "competence", "value": "communications and surveillance at scale"},
-        {"kind": "equipment", "value": "no seam, hatch or marking"},
-        {"kind": "relationship", "value": "usual association with the UCCC"},
-        {"kind": "belief", "value": "no interiority is claimed for it"}
+        {"kind": "belief", "value": "that a controller exists, or that no one is watching"},
+        {"kind": "belief", "value": "that the network is a service rather than an occupation"}
       ],
-      "declared_actions": ["espionage", "investigation"],
+      "observable_facts": [
+        "A formation over a city",
+        "A sphere waiting in a room with no door",
+        "A polished sphere with no seam, hatch or marking"
+      ],
+      "inferences": [
+        "That a direct or remote controller exists somewhere: the codex keeps this unresolved",
+        "That whoever operates the network is responsible for the surveillance it performs"
+      ],
       "visibility": "public",
       "claim_status": "player_known",
+      "consciousness_status": "unknown",
       "nhi": {
         "category": "construct",
+        "form": "vessel_or_technology",
         "species_ref": "metallic_spheres",
         "origin_hypotheses": ["The default ubiquitous metallic orb intelligence, communications and surveillance network. Possible direct or remote controllers."],
         "allegiances": ["uccc (usual association)"],
@@ -341,17 +376,25 @@
       "family": "nhi",
       "display_name": "Q'uo",
       "role": "encounter exemplar",
-      "summary": "Game-facing exemplar of the Noetics category: a composite speaking principle rather than another biological species. Rendered as overlapping voices, never as a portrait, and sourced from mythology rather than from evidence.",
+      "summary": "Game-facing exemplar of the Noetics category: a composite speaking principle rather than another biological species. Sourced from mythology rather than from evidence, rendered as overlapping voices and never as a portrait. The card states no mind and no competence.",
       "tags": [
-        {"kind": "competence", "value": "speaks with one plural voice"},
-        {"kind": "belief", "value": "a principle can hold a conversation"},
-        {"kind": "relationship", "value": "historical contact with the UCCC"}
+        {"kind": "belief", "value": "that a principle can hold a conversation at all"},
+        {"kind": "belief", "value": "that the voice is plural because it is many, or because it is one"}
       ],
-      "declared_actions": ["investigation", "psi"],
+      "observable_facts": [
+        "A channeled session",
+        "A plural voice: the combined voices the source material names"
+      ],
+      "inferences": [
+        "That it is a group rather than a species, which the codex keeps explicit",
+        "That a historical UCCC contact happened (source mythology, not evidence)"
+      ],
       "visibility": "public",
       "claim_status": "source_mythology",
+      "consciousness_status": "unknown",
       "nhi": {
         "category": "noetic",
+        "form": "individual",
         "species_ref": "q_uo",
         "origin_hypotheses": ["In the source material a composite noetic speaking principle, not another biological species. The codex keeps the group-versus-species distinction explicit."],
         "allegiances": ["uccc (historical contact)"],
@@ -368,17 +411,26 @@
       "family": "nhi",
       "display_name": "Orbs of Light",
       "role": "encounter exemplar",
-      "summary": "Game-facing exemplar of the Plasmoids category, and the clearest case of a contested classification: the codex also records noetic and construct readings, so the card keeps the category, the species label and the disputes apart.",
+      "summary": "Game-facing exemplar of the Plasmoids category, and the clearest case of a contested classification: the codex also records noetic and construct readings, so the card keeps the category, the form, the observations and the disputes in separate fields.",
       "tags": [
-        {"kind": "competence", "value": "appears, moves with apparent intent, leaves"},
-        {"kind": "belief", "value": "no claim about its interiority is settled"},
-        {"kind": "relationship", "value": "usual association with the UCCC"}
+        {"kind": "belief", "value": "that the light is a being, a device or a misidentification"},
+        {"kind": "belief", "value": "that no reading of it is settled yet"}
       ],
-      "declared_actions": ["investigation", "psi"],
+      "observable_facts": [
+        "A light in a photograph",
+        "A light that moves against the wind",
+        "Luminous, roughly spherical, no resolved body"
+      ],
+      "inferences": [
+        "That an orb may equally be a device, an avatar, a misidentification or a phenomenon",
+        "That the plasma-like coherence is a body rather than an effect: unresolved in the codex"
+      ],
       "visibility": "public",
       "claim_status": "player_known",
+      "consciousness_status": "contested",
       "nhi": {
         "category": "plasmoid",
+        "form": "mythonym",
         "species_ref": "orbs_of_light",
         "origin_hypotheses": ["The initial fiction treats some orbs as plasmoids or possible first-density elementals. An orb may equally be a device, an avatar, a misidentification or a phenomenon: the entry keeps the alternatives."],
         "allegiances": ["uccc (usual association)"],

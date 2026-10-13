@@ -7,21 +7,32 @@ layer, and nothing more: **no statistic is derived, no roll is compared, no effe
 no action is resolved.** Gates A-D in ``docs/RULE_SYSTEM_RESEARCH.md`` are open, and
 ``AGENTS.md`` §4 reserves resolution, thresholds and cadence to the author.
 
-Design rules this module follows rather than restates:
+One record, three families, one discriminator. The non-collapse rules below follow the design
+proposal recorded on issue #356, because collapsing any two families is a modelling error:
 
-* **Reuse the card primitive.** :class:`strategy_game.tabletop.cards.Card` already carries
-  identity, a generic type (including ``CardType.CHARACTER``), tags, ``art_ref`` for placeholder
-  art, structured-but-uninterpreted ``prerequisites``/``effects`` and a provenance record.
-  :func:`to_card` projects a character onto it instead of adding a second card type.
-* **Do not invent the NHI taxonomy.** ``data/codex.json`` already declares ``ontology`` =
-  ``biologic`` / ``construct`` / ``noetic`` / ``plasmoid``, ``knowledge_status`` and
-  ``alternative_ontologies``. :class:`NhiCategory` and :class:`ClaimStatus` mirror those value
-  sets, and :func:`classification_from_codex_entry` *derives* a classification from a codex
-  entry — so category, contested status and certainty are never a card author's assertion.
-* **Do not invent the tag vocabulary.** ``TAG_KINDS`` mirrors issue #346's shared tag kinds
-  (``data/faction_creation.json``); :func:`tag_vocabulary_matches` checks the two agree.
-* **Unknown stays visible.** A card with no recorded origin keeps ``ProvenanceKind.UNKNOWN``,
-  per :mod:`strategy_game.provenance`.
+* A **canonical** character is one record with a reserved identity and ``AUTHORED`` provenance.
+  It is never instanced: duplicating a canonical leader is unimplementable to prevent unless an
+  instance is refused.
+* An **archetype** is ``GENERATED`` content: a template with the author's tags, instantiated
+  into an individual that may gain a name and keep its ``template_id``. Generic means *the author
+  did not name them*, not that the world treats them as furniture.
+* An **NHI** card represents the human-facing understanding of an entity, not the entity, and is
+  **not a person card**: it carries no stated capability, no declared action and no human
+  attribute, because asserting those asserts commensurable personhood. Its category, form,
+  contested readings, certainty and allegiances are consumed from the codex.
+
+Two separations the schema enforces because the fiction depends on them:
+
+* :attr:`CharacterCard.observable_facts` (what happened) is a different field from
+  :attr:`CharacterCard.inferences` (what a character concludes). A photographic glint never
+  uniquely identifies a metallic sphere.
+* :attr:`CharacterCard.consciousness_status` defaults to ``unknown`` and is never derived: PSI
+  cannot settle whether a being is conscious, so no card may assert it without a cited source.
+
+Design rules followed rather than restated: the :class:`strategy_game.tabletop.cards.Card`
+primitive is reused (``CardType.CHARACTER`` already exists), the tag vocabulary is issue #346's,
+and GM material is withheld by the *code* rather than by a renderer — :func:`render_detail`
+strips ``gm_secrets`` exactly as ``Codex.player_view()`` does.
 """
 from __future__ import annotations
 
@@ -58,8 +69,8 @@ CHARACTER_FAMILIES: tuple[str, ...] = tuple(family.value for family in Character
 class NhiCategory(Enum):
     """The setting's four NHI categories, mirroring the codex ``ontology`` field.
 
-    A category is *not* a species: a Grey, a mantid or an orb is not a whole category, and a
-    card carries the category and the species reference separately.
+    A category is *not* a species: a Grey, a mantid or an orb is not a whole category, and the
+    card carries the category, the form and the species reference separately.
     """
 
     BIOLOGIC = "biologic"
@@ -74,7 +85,7 @@ NHI_CATEGORIES: tuple[str, ...] = tuple(category.value for category in NhiCatego
 class ClaimStatus(Enum):
     """How well-established a claim about a card is, mirroring the codex ``knowledge_status``.
 
-    The last three are *uncertain* claims: they stay readable precisely because the setting is
+    The middle values are *uncertain* claims: they stay readable precisely because the setting is
     about living with uncertainty. :data:`REDACTED_CLAIM_STATUSES` is what a renderer hides until
     asked, so card metadata cannot spoil a reveal.
     """
@@ -85,6 +96,7 @@ class ClaimStatus(Enum):
     RUMOUR = "rumour"
     SOURCE_MYTHOLOGY = "source_mythology"
     GM_TRUTH = "gm_truth"
+    UNKNOWN = "unknown"
 
 
 CLAIM_STATUSES: tuple[str, ...] = tuple(status.value for status in ClaimStatus)
@@ -92,8 +104,19 @@ CLAIM_STATUSES: tuple[str, ...] = tuple(status.value for status in ClaimStatus)
 #: Claims a renderer redacts unless the caller explicitly asks for secrets.
 REDACTED_CLAIM_STATUSES: tuple[ClaimStatus, ...] = (ClaimStatus.GM_TRUTH,)
 
+#: What a card may say about a being's interiority. ``unknown`` is the default and the honest
+#: answer; ``contested`` records that readings disagree; ``asserted_in_world`` means someone in
+#: the setting claims it, which is why it requires a cited source.
+CONSCIOUSNESS_STATUSES: tuple[str, ...] = ("unknown", "contested", "asserted_in_world")
+
 #: The shared tag kinds declared by issue #346 (``data/faction_creation.json``).
 TAG_KINDS: tuple[str, ...] = ("belief", "competence", "equipment", "relationship", "asset", "goal")
+
+#: Tag kinds an NHI card may use. A ``belief`` tag reads as *what humans believe about it*, which
+#: is the human-facing framing; a ``competence`` or ``equipment`` tag would stat an entity the
+#: setting refuses to stat, and ``asset``/``goal``/``relationship`` duplicate fields the card
+#: already has (``allegiances``).
+NHI_TAG_KINDS: tuple[str, ...] = ("belief",)
 
 #: The action *labels* issue #356 lists for cards. Names only: nothing here resolves one.
 DECLARED_ACTION_KINDS: tuple[str, ...] = (
@@ -163,14 +186,17 @@ class Relationship:
 
 @dataclass(frozen=True)
 class NhiClassification:
-    """Category, species, hypotheses, allegiance and certainty — kept apart on purpose.
+    """Category, form, species, hypotheses, allegiance and certainty — kept apart on purpose.
 
     ``contested`` is true when the codex entry lists an ``alternative_ontologies`` reading, so a
-    disputed classification stays disputed instead of being flattened by the card.
+    disputed classification stays disputed instead of being flattened by the card. ``form`` is
+    the codex ``form`` (species / polity / avatar / individual / vessel_or_technology / mythonym):
+    a category is not a species, and an entity inside a category is not the category.
     """
 
     category: NhiCategory
     species_ref: str
+    form: str = ""
     origin_hypotheses: tuple[str, ...] = ()
     allegiances: tuple[str, ...] = ()
     claim_status: ClaimStatus = ClaimStatus.RUMOUR
@@ -185,6 +211,7 @@ class NhiClassification:
         return {
             "category": self.category.value,
             "species_ref": self.species_ref,
+            "form": self.form,
             "origin_hypotheses": list(self.origin_hypotheses),
             "allegiances": list(self.allegiances),
             "claim_status": self.claim_status.value,
@@ -196,7 +223,7 @@ class NhiClassification:
 def classification_from_codex_entry(entry: Mapping[str, Any]) -> NhiClassification:
     """Derive a classification from a codex entry.
 
-    Everything here comes from the entry: ``ontology`` gives the category,
+    Everything here comes from the entry: ``ontology`` gives the category, ``form`` the form,
     ``alternative_ontologies`` decides ``contested``, ``knowledge_status`` gives the claim
     status, ``faction_relationships`` the allegiances and ``origin_claims`` the hypotheses. A
     card therefore cannot upgrade a rumour into canon by asserting it.
@@ -212,6 +239,7 @@ def classification_from_codex_entry(entry: Mapping[str, Any]) -> NhiClassificati
     return NhiClassification(
         category=NhiCategory(ontology),
         species_ref=str(entry.get("identifier", "")).strip(),
+        form=str(entry.get("form", "")).strip(),
         origin_hypotheses=_strings(entry.get("origin_claims")),
         allegiances=_strings(entry.get("faction_relationships")),
         claim_status=ClaimStatus(status),
@@ -234,8 +262,14 @@ class CharacterCard:
     declared_actions: tuple[str, ...] = ()
     statuses: tuple[str, ...] = ()
     relationships: tuple[Relationship, ...] = ()
+    #: What happened. Evidence-shaped, and deliberately not merged with the field below.
+    observable_facts: tuple[str, ...] = ()
+    #: What a character concludes from those facts. Attribution, not observation.
+    inferences: tuple[str, ...] = ()
     visibility: CardVisibility = CardVisibility.PUBLIC
     claim_status: ClaimStatus | None = None
+    #: Whether a being is conscious. Defaults to unknown and is never derived from the card.
+    consciousness_status: str = "unknown"
     nhi: NhiClassification | None = None
     #: Reference to artwork kept outside the card, so placeholder art can exist from day one.
     art_ref: str = ""
@@ -257,6 +291,16 @@ class CharacterCard:
             raise CharacterError(f"identifier {self.identifier!r} must be a stable slug")
         if not str(self.display_name).strip():
             raise CharacterError(f"card {self.identifier} needs a display_name")
+        if self.consciousness_status not in CONSCIOUSNESS_STATUSES:
+            raise CharacterError(
+                f"card {self.identifier}: consciousness_status {self.consciousness_status!r} is not "
+                f"one of {CONSCIOUSNESS_STATUSES}"
+            )
+        if self.consciousness_status == "asserted_in_world" and not self.sources:
+            raise CharacterError(
+                f"card {self.identifier}: claiming that a being is conscious needs a cited source; "
+                "the setting does not settle interiority"
+            )
         for action in self.declared_actions:
             if action not in DECLARED_ACTION_KINDS:
                 raise CharacterError(
@@ -273,11 +317,28 @@ class CharacterCard:
                 )
         if self.family is CharacterFamily.ARCHETYPE and self.nhi is not None:
             raise CharacterError("an archetype is not an NHI classification; use the nhi family")
-        if self.family is CharacterFamily.NHI and self.nhi is None:
-            raise CharacterError(
-                f"NHI card {self.identifier} must carry a classification; category, species, "
-                "hypotheses and certainty belong on the card"
-            )
+        if self.family is CharacterFamily.NHI:
+            if self.nhi is None:
+                raise CharacterError(
+                    f"NHI card {self.identifier} must carry a classification; category, form, "
+                    "species, hypotheses and certainty belong on the card"
+                )
+            if not self.nhi.form:
+                raise CharacterError(
+                    f"NHI card {self.identifier} must declare the codex form as well as the category"
+                )
+            if self.declared_actions:
+                raise CharacterError(
+                    f"NHI card {self.identifier} may not declare actions: a stated capability is a "
+                    "human attribute line by another name, and the setting refuses to stat entities"
+                )
+            for tag in self.tags:
+                if tag.kind not in NHI_TAG_KINDS:
+                    raise CharacterError(
+                        f"NHI card {self.identifier}: tag kind {tag.kind!r} is not allowed on an "
+                        f"entity card; allowed {NHI_TAG_KINDS}. A belief tag reads as what humans "
+                        "believe about it; competence or equipment would stat it."
+                    )
 
     # -- serialization ------------------------------------------------------
     def to_dict(self) -> dict[str, Any]:
@@ -295,7 +356,10 @@ class CharacterCard:
                 {"other_id": rel.other_id, "kind": rel.kind, "visibility": rel.visibility.value}
                 for rel in self.relationships
             ],
+            "observable_facts": list(self.observable_facts),
+            "inferences": list(self.inferences),
             "visibility": self.visibility.value,
+            "consciousness_status": self.consciousness_status,
             "art_ref": self.art_ref,
             "state": dict(self.state),
             "sources": list(self.sources),
@@ -342,11 +406,15 @@ class CharacterCard:
                 )
                 for item in (data.get("relationships") or [])
             ),
+            observable_facts=_strings(data.get("observable_facts")),
+            inferences=_strings(data.get("inferences")),
             visibility=CardVisibility(visibility),
             claim_status=ClaimStatus(str(claim_raw)) if claim_raw else None,
+            consciousness_status=str(data.get("consciousness_status", "unknown")).strip() or "unknown",
             nhi=NhiClassification(
                 category=NhiCategory(str(nhi_raw.get("category", "")).strip()),
                 species_ref=str(nhi_raw.get("species_ref", "")).strip(),
+                form=str(nhi_raw.get("form", "")).strip(),
                 origin_hypotheses=_strings(nhi_raw.get("origin_hypotheses")),
                 allegiances=_strings(nhi_raw.get("allegiances")),
                 claim_status=ClaimStatus(str(nhi_raw.get("claim_status", ClaimStatus.RUMOUR.value))),
@@ -424,10 +492,11 @@ class CharacterRoster:
         faction: str | None = None,
         tag: str | None = None,
         category: NhiCategory | str | None = None,
+        form: str | None = None,
         role: str | None = None,
         text: str = "",
     ) -> tuple[CharacterCard, ...]:
-        """Filter by family, affiliation, tag value, NHI category, role or free text."""
+        """Filter by family, affiliation, tag value, NHI category or form, role or free text."""
         want_family = CharacterFamily(family) if isinstance(family, str) and family else family
         want_category = NhiCategory(category) if isinstance(category, str) and category else category
         needle = text.strip().lower()
@@ -442,6 +511,8 @@ class CharacterRoster:
             ):
                 continue
             if want_category is not None and (card.nhi is None or card.nhi.category is not want_category):
+                continue
+            if form is not None and (card.nhi is None or form.lower() not in card.nhi.form.lower()):
                 continue
             if role is not None and role.lower() not in card.role.lower():
                 continue
@@ -463,13 +534,19 @@ class CharacterRoster:
         """Make an individual from a generic template.
 
         Only archetypes are instanced: a canonical character is a unique persistent identity, so
-        duplicating one is refused rather than silently allowed.
+        duplicating one is refused rather than silently allowed. Promotion is by addition, never
+        by cloning — the instance keeps its ``template_id``.
         """
         template = self.get(template_id)
         if template.family is CharacterFamily.CANONICAL:
             raise CharacterError(
                 f"{template_id!r} is a canonical character, not a template; canonical identities "
                 "are not duplicated"
+            )
+        if template.family is CharacterFamily.NHI:
+            raise CharacterError(
+                f"{template_id!r} is an NHI classification, not a template; an entity is not a "
+                "generic person and cannot be copied into one"
             )
         name = display_name.strip() or template.display_name
         raw_id = identifier.strip() if identifier else f"{template.identifier}_{slug(name)}"
@@ -489,8 +566,11 @@ class CharacterRoster:
             declared_actions=template.declared_actions,
             statuses=tuple(statuses) or template.statuses,
             relationships=template.relationships,
+            observable_facts=template.observable_facts,
+            inferences=template.inferences,
             visibility=template.visibility,
             claim_status=template.claim_status,
+            consciousness_status=template.consciousness_status,
             nhi=template.nhi,
             art_ref=template.art_ref,
             template_id=template.identifier,
@@ -510,8 +590,9 @@ class CharacterRoster:
         """Return the problems found, empty when the roster is consistent.
 
         With ``codex`` supplied, every NHI classification is checked against the real codex entry:
-        the category must equal the entry's ``ontology`` and the claim status its
-        ``knowledge_status``. With ``known_faction_ids`` supplied, affiliations must resolve.
+        the category must equal the entry's ``ontology``, the form its ``form``, the claim status
+        its ``knowledge_status``, and the hypotheses and allegiances must quote it verbatim. With
+        ``known_faction_ids`` supplied, affiliations must resolve.
         """
         problems: list[str] = []
         for card in self.cards.values():
@@ -525,6 +606,11 @@ class CharacterRoster:
                         problems.append(
                             f"{card.identifier}: category {card.nhi.category.value!r} contradicts codex "
                             f"ontology {derived.category.value!r}"
+                        )
+                    if card.nhi.form != derived.form:
+                        problems.append(
+                            f"{card.identifier}: form {card.nhi.form!r} contradicts codex form "
+                            f"{derived.form!r}; a category is not a species"
                         )
                     if derived.claim_status is not card.nhi.claim_status:
                         problems.append(
@@ -597,13 +683,24 @@ def tag_vocabulary_matches(path: Path | str | None = None) -> bool:
 
 
 def render_front(card: CharacterCard) -> str:
-    """The compact face: what a player reads at a glance. Never prints secrets."""
+    """The compact face: what a player reads at a glance. Never prints secrets.
+
+    An NHI card's front shows *observable* facts while its identity stays unestablished, which is
+    the issue's own UX requirement: a photographic glint never uniquely identifies a sphere.
+    """
     lines = [f"{card.display_name} — {card.role or card.family.value}"]
     if card.faction_ids:
         lines.append("factions: " + ", ".join(card.faction_ids))
     if card.nhi is not None:
         contested = " (contested)" if card.nhi.contested else ""
-        lines.append(f"category: {card.nhi.category.value}{contested} | claim: {card.nhi.claim_status.value}")
+        lines.append(
+            f"category: {card.nhi.category.value} | form: {card.nhi.form} | "
+            f"claim: {card.nhi.claim_status.value}{contested}"
+        )
+        if card.consciousness_status != "unknown":
+            lines.append(f"interiority: {card.consciousness_status}")
+    if card.observable_facts:
+        lines.append("observed: " + " | ".join(card.observable_facts))
     if card.tags:
         lines.append("tags: " + ", ".join(f"{tag.kind}:{tag.value}" for tag in card.tags))
     if card.art_ref:
@@ -618,12 +715,20 @@ def render_detail(
     codex: Mapping[str, Mapping[str, Any]] | None = None,
     roster: CharacterRoster | None = None,
 ) -> str:
-    """The expandable back: lore, relationships, certainty and the GM's note.
+    """The expandable back: lore, relationships, evidence and the GM's note.
 
     A redacted claim status is withheld unless ``reveal_secrets`` is set, so a card's own
-    metadata cannot spoil a reveal. With a codex mapping, the referenced entry expands the lore.
+    metadata cannot spoil a reveal. ``observable_facts`` and ``inferences`` are printed as two
+    separate lists, because *what happened* and *what a character concludes* are different
+    things. A codex entry is expanded with ``gm_secrets`` removed, mirroring ``Codex.player_view``.
     """
     lines = [render_front(card), "", card.summary or "(no summary)"]
+    if card.observable_facts:
+        lines.append("observable facts:")
+        lines.extend(f"  - {fact}" for fact in card.observable_facts)
+    if card.inferences:
+        lines.append("inferences (attribution, not observation):")
+        lines.extend(f"  - {claim}" for claim in card.inferences)
     if card.declared_actions:
         lines.append("may be used for: " + ", ".join(card.declared_actions))
     if card.statuses:
@@ -638,8 +743,9 @@ def render_detail(
     if card.nhi is not None:
         nhi = card.nhi
         lines.append(
-            f"NHI: category={nhi.category.value} species={nhi.species_ref} "
-            f"certainty={nhi.claim_status.value} contested={nhi.contested} stage={nhi.reveal_stage or '-'}"
+            f"NHI: category={nhi.category.value} form={nhi.form} species={nhi.species_ref} "
+            f"certainty={nhi.claim_status.value} contested={nhi.contested} "
+            f"stage={nhi.reveal_stage or '-'} interiority={card.consciousness_status}"
         )
         if nhi.origin_hypotheses:
             lines.append("origin hypotheses: " + ", ".join(nhi.origin_hypotheses))
@@ -648,11 +754,13 @@ def render_detail(
         if codex is not None:
             entry = codex.get(nhi.species_ref)
             if entry is not None:
-                biology = str(entry.get("biology_or_substrate", "")).strip()
+                # Same rule as Codex.player_view(): GM material is withheld by the code.
+                view = {k: v for k, v in entry.items() if k != "gm_secrets"}
+                biology = str(view.get("biology_or_substrate", "")).strip()
                 if biology:
                     lines.append(f"lore: {biology}")
-                if entry.get("art_direction"):
-                    lines.append(f"art direction: {entry['art_direction']}")
+                if view.get("art_direction"):
+                    lines.append(f"art direction: {view['art_direction']}")
     if card.sources:
         lines.append("sources: " + "; ".join(card.sources))
     if card.template_id:
