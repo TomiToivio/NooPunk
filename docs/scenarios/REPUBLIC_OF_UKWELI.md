@@ -7,6 +7,8 @@
 > - **The state's name.** This file says *Republic of Ukweli*; [#325](https://github.com/TomiToivio/NooPunk/issues/325) states *"**Official name: People's Republic of Ukweli**"* and makes the name load-bearing for the setting's own joke (*"Not quite Cuba, comrade"*), which only works because the formal name misleads. These are not stylistic variants — *People's Republic* carries a claim about the state's self-understanding. **Awaiting the author.**
 > - **The libertarian party.** This file and `ukweli_local.json` say **ULP (Ukweli Libertarian Party)**; [#325](https://github.com/TomiToivio/NooPunk/issues/325) and [#326](https://github.com/TomiToivio/NooPunk/issues/326) say **LFP (Libertarian Freedom Party of Ukweli)**. **Awaiting the author.**
 >
+> Both conflicts are now carried as **structure with the decision still PENDING** in [`../design/ISSUE_324_UKWELI_GAP_CLOSURE.md`](../design/ISSUE_324_UKWELI_GAP_CLOSURE.md): the state's **official name is #325's own declaration** (People's Republic of Ukweli) recorded as a register mapping rather than a choice, and the party keeps the data id `ulp` with its display label open. That record also closes the island-count gap this file's list could not — the map now carries three island nodes, one of them the restricted exclusion island.
+>
 > The completed all-refs and warehouse audit this file asks for in its closing paragraph — and the retain/adapt/retire inventory that goes with it — is [`docs/design/ISSUE_324_UKWELI_CANON_REUSE.md`](../../docs/design/ISSUE_324_UKWELI_CANON_REUSE.md) (#324 deliverable A). The longer scenario document at [`UKWELI_LOCAL_SCENARIO.md`](UKWELI_LOCAL_SCENARIO.md) is #324 deliverable B, marked CANON/PROPOSAL statement by statement.
 
 ## Provenance and reuse inventory
@@ -20,7 +22,7 @@ This is a bounded repository/default-branch search, **not a complete audit of hi
 
 ## City and islands
 
-One modern Indian Ocean port city, two surrounding island locations, a mixed urban fabric and short coastal hinterland. Playable places: Old Harbor, Civic and Commercial Centre, Mixed Neighborhoods, University and Hospital, Industrial Logistics Port, Outer Island Communities, Airfield Island, Coastal Hinterland. Connections are ferry/road/bridge *abstract adjacencies*, not a tactical map. The model and mechanics accept any scenario conforming to the JSON schema. Real-world inspirations are urban and institutional dynamics, not replicas or demographic stereotypes.
+One modern Indian Ocean port city, three island locations — one of them a restricted exclusion island — a mixed urban fabric and a short coastal hinterland. Playable places: Old Harbor and Civic Centre, Mixed Neighborhoods, University and Hospital, Industrial Logistics Port, Coastal Hinterland, Outer Island Communities, Airfield Island, Restricted Island (biodiversity exclusion zone). The historic quarter is folded into the waterfront civic node so the eight-node envelope holds three islands, one restricted; the closure and its still-open trade-off are recorded in [`../design/ISSUE_324_UKWELI_GAP_CLOSURE.md`](../design/ISSUE_324_UKWELI_GAP_CLOSURE.md). Connections are ferry/road/bridge *abstract adjacencies*, not a tactical map; the restricted island carries no route, so no leader reaches it under the provisional travel rules. The model and mechanics accept any scenario conforming to the JSON schema. Real-world inspirations are urban and institutional dynamics, not replicas or demographic stereotypes.
 
 ## Opening political situation
 

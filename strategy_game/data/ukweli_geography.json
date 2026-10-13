@@ -1,0 +1,138 @@
+{
+  "format": "noopunk.strategy_game.ukweli_geography",
+  "version": 1,
+  "status": "PROPOSAL - closes the geography and naming gaps issue #324 names, as STRUCTURE only. No rule, no mechanic, no threshold, no scale. numeric_scale_approved is false. The island set, the register mapping and the open relation below are declared data read by strategy_game/local_geography.py; nothing here resolves a question that is the author's.",
+  "numeric_scale_approved": false,
+  "sources": [
+    "#324 recycle the Republic of Ukweli as the Indian Ocean city-and-islands scenario",
+    "#325 design the People's Republic of Ukweli: 'Official name: People's Republic of Ukweli'; 1 city + 3-4 islands represented by 6-8 location nodes, one marked restricted; the restricted biodiversity island",
+    "#326 Sir Mars Eldrich, Eldrich Island, the mansion and the Freedom Colony: the island/mansion/freedom-zone relation is explicitly UNDEFINED",
+    "#322 MVP: one city plus environs, 5-8 abstract districts/locations",
+    "docs/design/ISSUE_324_UKWELI_CANON_REUSE.md sections 4.1-4.3, the conflicts flagged for the author",
+    "docs/scenarios/UKWELI_LOCAL_SCENARIO.md (deliverable B) and docs/world/PEOPLES_REPUBLIC_OF_UKWELI.md (the #325 setting bible)",
+    "strategy_game/data/ukweli_local.json (the live playable board this record cross-checks)"
+  ],
+  "provenance": {
+    "kind": "authored",
+    "source": "issues #324, #325, #326, #322",
+    "note": "the sources state the official name, the existence of an exclusion island and the 3-4 island envelope; the register mapping and the structural closures here are this session's, and every author decision is left PENDING rather than filled in."
+  },
+  "state_names": {
+    "official": "People's Republic of Ukweli",
+    "official_source": "#325 states it under 'Official name:', and the setting's own joke ('Not quite Cuba, comrade') only works because the formal name misleads, so the formal name is load-bearing rather than stylistic.",
+    "everyday_register": ["Ukweli", "New Ukweli"],
+    "informal_register": "Republic of Ukweli",
+    "informal_register_where_it_appears": [
+      "the issue #324 title and body, written before #325 landed",
+      "strategy_game/data/ukweli_local.json's setting string (aligned to the official name by this record)"
+    ],
+    "register_mapping_recorded": true,
+    "note": "This is a register mapping, not a choice between two competing official names. #325 declares the official name and makes it load-bearing; #324's plain form is ordinary shorthand and the everyday register is Ukweli / New Ukweli. Recording the mapping closes the conflict STRUCTURALLY; the residual question (below) stays OPEN.",
+    "residual_pending": {
+      "id": "informal_short_form",
+      "question": "May 'Republic of Ukweli' continue to be used as an informal short form, or must every occurrence be corrected to the official name?",
+      "why_not_decided": "The two forms are not stylistic variants - 'People's Republic' carries a claim about the state's self-understanding - so whether the plainer form remains usable in issue titles and prose is the author's, not this record's.",
+      "container_instead": "Both registers are declared as named strings; the record asserts no rule about where either may appear."
+    }
+  },
+  "party_labels": [
+    {
+      "id": "ulp",
+      "data_name": "Ukweli Libertarian Party",
+      "setting_doc_name": "LFP - Libertarian Freedom Party of Ukweli",
+      "where_each_appears": [
+        "strategy_game/data/ukweli_local.json declares the party id 'ulp' with the name 'Ukweli Libertarian Party'",
+        "strategy_game/data/global_factions.json uses 'ulp'",
+        "strategy_game/data/character_cards.json gives Sir Mars Eldrich faction_ids ['ulp']",
+        "#325 and #326 (the setting authority and the character issue) say 'LFP - Libertarian Freedom Party of Ukweli'",
+        "docs/scenarios/REPUBLIC_OF_UKWELI.md uses ULP; strategy_game/docs/IDEOLOGICAL_FORMATIONS_2026.md uses ULP, following #327"
+      ],
+      "resolved": false,
+      "decision_taken_here": "The DATA ID stays 'ulp', because ukweli_local.json and the landed Eldrich card already use it and inventing a fourth party id would fork the scaffold. The DISPLAY LABEL is not chosen: issue #326 deliberately left it open and a landed contract asserts that it stays surfaced rather than resolved.",
+      "todo": "requires author specification: settle ULP vs LFP, then change the label and the documents together"
+    }
+  ],
+  "board": {
+    "data_path": "strategy_game/data/ukweli_local.json",
+    "node_budget": [5, 8],
+    "node_budget_source": "#322 '5-8 abstract districts/locations'; #325 '6-8 location nodes'",
+    "note": "The record reads the live board and cross-checks it rather than restating it. A second city conforming to data/city_scenario_schema.json is a scenario, not a code change."
+  },
+  "islands": [
+    {
+      "id": "outer_island",
+      "label": "Outer Island Communities",
+      "access": "open",
+      "on_playable_board": true,
+      "rationale": "villages, tourism and ferry-dependent communities; the outer islands are where development is uneven.",
+      "sources": ["#324 item 6 'outer island with villages and tourism'", "#325 'several inhabited and/or strategic islands'"]
+    },
+    {
+      "id": "airfield_island",
+      "label": "Airfield Island",
+      "access": "open",
+      "on_playable_board": true,
+      "rationale": "the strategic island: airfield and communications facilities, the port's connectivity node.",
+      "sources": ["#324 item 7 'strategic island / airfield / communications facilities'"]
+    },
+    {
+      "id": "exclusion_island",
+      "label": "Restricted Island (biodiversity exclusion zone)",
+      "access": "restricted",
+      "on_playable_board": true,
+      "rationale": "CANON from #325: the government has designated an entire island a prohibited/protected zone, publicly to safeguard Ukweli's unusual biodiversity and ecological heritage, with its own credible conservation value even if security is also involved. The public position, the competing internal assessments and the setting's deeper mysteries stay distinct.",
+      "sources": [
+        "#325 'an entire island a prohibited/protected zone'",
+        "#325 'one marked restricted' in the 6-8 node envelope",
+        "docs/scenarios/UKWELI_LOCAL_SCENARIO.md section 2 'an exclusion island'"
+      ]
+    }
+  ],
+  "island_count": {
+    "landed": 3,
+    "issue_envelope": [3, 4],
+    "envelope_source": "#325 'Suggested initial state: 1 city + 3-4 islands'",
+    "note": "Three island nodes are landed, which sits inside #325's own 3-4 envelope and satisfies #324's 'multiple islands'. The playable board keeps exactly eight location nodes (the cap #322 and the schema both state), so the fifth-to-eighth city-role had to be folded rather than the cap raised: the historic quarter is folded into the waterfront civic node, keeping its heritage and trade tags.",
+    "pending": {
+      "id": "island_count_three_or_four",
+      "question": "Three island nodes or four - and if a fourth is wanted, which city or environs role gives way?",
+      "why_not_decided": "Three is inside the stated envelope and eight is the stated node cap, so the count and the trade-off are the author's. Dropping or folding a listed city role is a scenario decision, not a code one.",
+      "container_instead": "The island set is declared as a list with an explicit access class per entry, so a fourth island is one more entry and never a code change."
+    }
+  },
+  "relations": [
+    {
+      "id": "eldrich_island_freedom_colony",
+      "label": "Eldrich Island and the Freedom Colony",
+      "resolved": false,
+      "ruling_source": "",
+      "options": [
+        "same place - one node does the work of two: the island IS the enclave",
+        "adjacent - one node with two faces: mansion and colony share infrastructure and fate",
+        "separate, linked - two nodes out of the budget: a domestic base and a public one"
+      ],
+      "note": "The relation is explicitly undefined in #326 and in the #324 inventory section 4.3. This record declares the three options and asserts none of them, because the map schema cannot place both without a ruling. The two existing island nodes are NOT equated with either place.",
+      "sources": ["#326 (the relation is undecided)", "docs/design/ISSUE_324_UKWELI_CANON_REUSE.md section 4.3"]
+    }
+  ],
+  "pending_author_decisions": [
+    {
+      "id": "informal_short_form",
+      "question": "May 'Republic of Ukweli' persist as an informal short form?",
+      "why_not_decided": "See state_names.residual_pending; the conflict is a register question and the register policy is the author's.",
+      "container_instead": "state_names declares official, everyday and informal registers as named strings."
+    },
+    {
+      "id": "restricted_island_legal_autonomy",
+      "question": "What is the exclusion island's legal autonomy, and what is the Eldrich Island / Freedom Colony relation?",
+      "why_not_decided": "#326 leaves the Eldrich Island / Freedom Colony relation undefined and the inventory records the restricted island's legal autonomy as OPEN. Both are canon decisions.",
+      "container_instead": "relations declares each as a named option list with resolved: false and an empty ruling_source, so no relation is silently settled."
+    },
+    {
+      "id": "which_city_role_gives_way_for_a_fourth_island",
+      "question": "If a fourth island node is wanted, which listed city or environs role gives way?",
+      "why_not_decided": "Eight nodes is the cap and the current board is full; the trade-off between #324's city roles and #325's island count is the author's.",
+      "container_instead": "The board's location list is pure scenario data, so the trade is an edit to a data file, not to the engine."
+    }
+  ]
+}

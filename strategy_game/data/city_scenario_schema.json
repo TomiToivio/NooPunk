@@ -22,8 +22,10 @@
   "records": {
     "location": {
       "required": ["id", "label"],
-      "optional": ["pressure", "tags"],
-      "types": {"id": "str", "label": "str", "pressure": "int", "tags": "list[str]"}
+      "optional": ["pressure", "tags", "island", "access"],
+      "types": {"id": "str", "label": "str", "pressure": "int", "tags": "list[str]",
+                "island": "bool", "access": "str"},
+      "note": "island marks a node as an island (a district may be a mainland neighbourhood or an entire island; both use the same small location model, per #324), and access marks it open or closed, with the closed value one of open / restricted / prohibited (#325 names one restricted island). Both are structural facts about the scenario and not rules: nothing reads them as a cost, a route, a control or a score. A closed island carries no route in the Ukweli configuration, so no leader reaches it under the provisional travel rules - which is what a prohibited zone means."
     },
     "route": {
       "shape": "a two-element list of location ids",

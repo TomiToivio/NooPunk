@@ -43,7 +43,7 @@ derives no value and applies no rule.
 | Bullet | Evidence | Status |
 | --- | --- | --- |
 | Ukweli is the default named local scenario; the separate UNSA Helsinki RPG scenario is not overwritten | README + site now name it as the default; no file of the UNSA/Helsinki scenario material was modified | met |
-| One modern city, multiple islands, 6–8 simple locations, no national/global playable map | `ukweli_local.json`: 8 locations including two island locations and a coastal hinterland; the schema caps locations at 8 and knows no map beyond the city | met |
+| One modern city, multiple islands, 6–8 simple locations, no national/global playable map | `ukweli_local.json`: 8 locations including **three** island nodes, one of them the restricted exclusion island, and a coastal hinterland; the schema caps locations at 8 and knows no map beyond the city | met — the island count was raised from two to three by the addendum below |
 | Indian Ocean influences recognizable without one-to-one copying or stereotypes | `REPUBLIC_OF_UKWELI.md` geographic and aesthetic brief (Mombasa, Zanzibar, Mumbai, Singapore as urban and institutional dynamics, "not replicas or demographic stereotypes") | met |
 | Existing lore checked for continuity, preserved/revised elements documented and attributed | the reuse note's per-element retain/adapt/retire with project sources | met |
 | Three factions × four leaders run the same mission/portfolio system as #323 | `ukweli_local.json` leaders carry `portfolio` from the four council portfolios; the schema consumes `local_slice.PORTFOLIOS` rather than restating them, and a test asserts the two agree | met |
@@ -70,3 +70,16 @@ Read of each named artifact on `main`, plus direct execution for the two claims 
 the schema validated the merged Ukweli configuration with **no problems**, and the seeded slice was
 run twice to confirm determinism. Nothing was edited to make a criterion pass; a gap would have been
 reported instead of closed.
+
+## Addendum (landed after this record)
+
+The record above closed #324 on the schema and the seven deliverables. Four items it carried forward
+were still open afterwards, and three of them are **geography and naming questions a record can hold
+without deciding**: the state's formal name, the third party's name, and the restricted island's
+relationship and legal autonomy. Those, plus the **island count** — the configuration carried two
+island nodes and no restricted one, while the setting bible states one city plus 3–4 islands with one
+marked restricted as CANON — are recorded as **structure with the decisions still PENDING** in
+[`ISSUE_324_UKWELI_GAP_CLOSURE.md`](ISSUE_324_UKWELI_GAP_CLOSURE.md), read by
+`strategy_game/local_geography.py` and `strategy_game/data/ukweli_geography.json`. The addendum also
+raises the map's island count from two to three and adds the restricted exclusion island the setting
+bible already required; the sentence in the island row above was corrected on landing it.
