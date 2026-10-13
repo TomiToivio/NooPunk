@@ -1,0 +1,85 @@
+{
+  "format": "noopunk.strategy_game.local_global_link",
+  "version": 1,
+  "status": "PROPOSAL - the local-to-global link as STRUCTURE only, for issue #322. It declares which global current a local party TENDS toward; it approves no rule, computes no affinity, and asserts no roster count. numeric_scale_approved is false.",
+  "numeric_scale_approved": false,
+  "roster_count_asserted": false,
+  "sources": [
+    "#322 MVP: 'Global shocks, local effects' - global events influence the local simulation, and the game does not simulate international politics",
+    "#322 design principle 5: AI breakthroughs, NHI revelations, PSI controversies, crashes and geopolitical events arrive via an external event deck with scenario-level modifiers",
+    "strategy_game/docs/IDEOLOGICAL_FORMATIONS_2026.md sections 5-6, the parties' global-current affinities and the Castellsian network separation",
+    "docs/design/ISSUE_328_GLOBAL_FACTIONS_ROSTER.md section 7, publicity is not endorsement and reaches are not votes",
+    "docs/design/NOOPUNK_GLOBAL.md section 7, the six quantities that must stay distinct, read through strategy_game/quantities.py",
+    "docs/design/NOOPUNK_GLOBAL.md section 6B.3, the 4/7/11 global-roster question, which stays OPEN and is NOT bound here"
+  ],
+  "provenance": {
+    "kind": "authored",
+    "source": "issues #322, #328, #327",
+    "note": "the affinity directions are transcribed from the landed design records; the link shape is this session's. Naming a global current is not a claim about the global roster's size."
+  },
+  "link_rule": "A local faction TENDS toward a global current. A tendency is not a membership, and naming a current asserts nothing about how many global factions or parties are canonical: the 4 / 7 / 11 question is OPEN (NOOPUNK_GLOBAL.md section 6B.3) and this record binds to no count. Membership is never forced - outside networks recruit individuals inside mainstream parties, civil services and corporations without the party itself becoming them.",
+  "quantity_rule": "A link names WHICH of the six quantities it plausibly touches. Which quantities a tendency touches is a design claim recorded as data, not a rule any code applies, so every link carries declared_not_enforced: false.",
+  "links": [
+    {
+      "local_party": "cpu",
+      "global_current": "Critical",
+      "membership": false,
+      "declared_not_enforced": false,
+      "basis": "establishment-pragmatic current: an incumbent national-liberation party defending sovereign human institutions.",
+      "quantities_touched": ["institutional_access", "discursive_hegemony"],
+      "cannot_move": ["membership_resources"],
+      "note": "A tendency can be borrowed as discourse without the party becoming the global actor."
+    },
+    {
+      "local_party": "cpu",
+      "global_current": "Cyborgist",
+      "membership": false,
+      "declared_not_enforced": false,
+      "basis": "public-interest augmentation, read as 'Ukweli Socialism' applied to human transformation.",
+      "quantities_touched": ["opinion_support", "institutional_access"],
+      "cannot_move": ["legislative_representation"],
+      "note": "The party's social-development wing reads augmentation as a public good; its cadres read it as capital's answer to labour. Both are in the party, so the current is a wing, not the party."
+    },
+    {
+      "local_party": "uip",
+      "global_current": "Doomer / Human Sovereignty",
+      "membership": false,
+      "declared_not_enforced": false,
+      "basis": "identity-rural populism's strongest potential pull toward security framing after disruptive NHI events.",
+      "quantities_touched": ["opinion_support", "discursive_hegemony"],
+      "cannot_move": ["institutional_access"],
+      "note": "A pull, not a state: the party's revival wing can read the same event as ancestral, which cuts against its security wing. Swahili identity and religious affiliation are never equated with one NHI stance."
+    },
+    {
+      "local_party": "ulp",
+      "global_current": "Accelerationist",
+      "membership": false,
+      "declared_not_enforced": false,
+      "basis": "deregulated AGI, open augmentation and commercialised disclosure, with Eldrich-linked private-sector networks.",
+      "quantities_touched": ["membership_resources", "institutional_access"],
+      "cannot_move": ["opinion_support", "legislative_representation"],
+      "note": "The setting's own worked example that reach and funding are not votes: the party can hold network power far exceeding its electoral support."
+    }
+  ],
+  "shock_intake": {
+    "channel": "external event card or scenario-level modifier",
+    "rule": "Global developments enter the local simulation as external events and modifiers. The local layer never simulates the globe, and a local actor's research means acquiring, adapting and deploying global science and technology locally, plus contesting its political meaning - not launching civilisation-changing global R&D.",
+    "local_research_is_adoption": true,
+    "simulates_international_politics": false,
+    "sources": ["#322 design principles 5 and 6", "#324 'local research means acquiring, adapting and deploying'"]
+  },
+  "pending_author_decisions": [
+    {
+      "id": "global_roster_count",
+      "question": "How many global factions or parties are canonical - four, seven or eleven?",
+      "why_not_decided": "docs/design/NOOPUNK_GLOBAL.md section 6B.3 records three unreconciled rosters and says the settlement is the author's. The same question is OPEN on #327 and on strategy_game/data/global_factions.json.",
+      "container_instead": "A link names a CURRENT, never a roster size; this record declares no count field and asserts roster_count_asserted: false."
+    },
+    {
+      "id": "affinity_strength",
+      "question": "Is any ordered or numeric strength ever approved for a tendency?",
+      "why_not_decided": "numeric_scale_approved is false in strategy_game/data/faction_creation.json and no scale is proposed. A scale is the author's ruling.",
+      "container_instead": "Every link is a named current with a named basis string; no magnitude, weight or ranking is recorded."
+    }
+  ]
+}

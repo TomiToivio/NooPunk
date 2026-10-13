@@ -20,7 +20,7 @@ playtest assumptions stay in `local_slice.py` where they were recorded.
 | Section | Shape | Notes |
 | --- | --- | --- |
 | `format`, `year`, `setting` | strings / integer | the scenario's own name for itself |
-| `locations` | 5–8 records: `id`, `label`, optional `pressure`, `tags` | abstract playable districts, not a tactical map |
+| `locations` | 5–8 records: `id`, `label`, optional `pressure`, `tags`, `island`, `access` | abstract playable districts, not a tactical map; `island` marks an island node and `access` (`open` / `restricted` / `prohibited`) marks it open or closed, both as scenario structure, not rules |
 | `routes` | pairs of location ids | **abstract adjacency**: direction, cost and control carry no meaning |
 | `parties` | `id`, `name`, `leader_ids` (exactly four), optional `claims` and resources | four leaders per party is the leader system's own number (#323), not a schema invention |
 | `leaders` | `id`, `name`, `faction`, `location`, `portfolio` (+ optional `skill`, `traits`, `status`) | `faction` must be a party id, `location` a location id, `portfolio` one of the four council portfolios |
