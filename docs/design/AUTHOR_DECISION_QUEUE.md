@@ -2,14 +2,12 @@
 
 **What this file is.** A consolidation, not a design. Every item is condensed from the open issue
 that carries it (each row links there). Nothing here is canon, a mechanic, a name or a ruling: each
-row is a **question only the author can answer**. Siblings have already written per-issue acceptance
-walk-throughs — this file exists so the answers can be given in **one pass**, after which each
-answered row can be verified, recorded and closed.
+row is a **question only the author can answer**. Answering one turns it into a criterion check, an
+acceptance record, a PR and a close.
 
-**Board status (2026-10-13).** Nine issues open. None is autonomously closeable: every remaining
-blocker is either an author ruling (below) or a sibling's in-flight work (#325's map specification,
-and the RPG boundary seam, where two fix PRs are open). Two issues (#323, #338) are open *because they were reopened
-deliberately* to avoid closing on a `Closes` line while their rules remain unapproved.
+**Board status (2026-10-13, updated).** Five issues open: **#309** (umbrella), **#322**, **#323**,
+**#328**, **#338**. Since the first version of this queue, **#325**, **#345**, **#346** and the
+umbrella **#282** closed; their rows are retired at the bottom, kept only so the history is legible.
 
 ## The queue
 
@@ -24,28 +22,27 @@ deliberately* to avoid closing on a `Closes` line while their rules remain unapp
 | D7 | Confirm the three Ukweli party ↔ global-current affinities as **starting tendencies**, not fixed memberships. | #328 | *yes* / *no* |
 | D8 | Reconcile the legacy UN party records with the established UN world government and eleven parties. | #328 | *decide* |
 | D9 | #338's remaining scope — narrative encounters, campaign frame, political simulation — in or out? | #338 | *in* / *close as satisfied* |
-| D10 | PSI vocabulary and limits, optional PSI TAGs, the encounter prototype. These sit inside `AGENTS.md` §4's verbatim reservation of *"psionic powers or psionic mechanics"* and `rulebook/17` §17.9. | #345 criteria 1, 2 | *approve* / *refuse* |
-| D11 | Who **owns** the Archaic Revival definition — it appears in #344, #345 and #346, so it should be defined once. | #345, #346 | *pick one issue* |
-| D12 | Approve the five ideological axes, the typed faction/character TAG vocabulary and the three genre pillars. | #346 | *approve* |
-| D13 | Confirm **Cosmist International** (Autonomist Marxist influenced by Russian Cosmism) as the default playable faction, with the StO↔communism / StS↔capitalism reading kept explicitly fictional. | #346 | *confirm* |
-| D14 | The cultural axis: is it liberal/conservative, or is a distinct authoritarian/libertarian value needed too? | #346 | *one* / *both* |
 
-Two carry-overs from already-closed issues, recorded so they are not lost: the state's formal name
+Two carry-overs from closed issues, recorded so they are not lost: the state's formal name
 (#324 §4.1), and **ULP** versus **LFP** as the third-party name across `#issue` / `#data` / `#325` /
 `#326`.
 
-## Issues with no decision pending
+## Retired rows (their issue closed)
 
-- **#325** — a sibling claimed the map specification (deliverable 3) on 2026-10-13; the setting bible
-  is merged. Ratification of its PROPOSAL items (the four conflicts as options, Freedom Colony's
-  legal autonomy) will be a future row.
-- **#282, #309** — umbrella issues: open by design, no decision needed.
+- **D10–D11, PSI vocabulary and the Archaic Revival owner** — *#345 closed*. If the PSI rules were
+  waived rather than approved, that decision now lives in the closure record, not here.
+- **D12–D14, faction creation (the five axes, Cosmist International, the cultural axis)** — *#346
+  closed*. The axes and TAG vocabulary are on `main`; the cultural-axis question is retired with the
+  issue.
+- **#325's ratification rows** (the four conflicts as options, Freedom Colony's legal autonomy) —
+  *#325 closed* after the map specification landed.
+- **#309, #282** — umbrellas: open or closed by design, no decision needed.
 
 ## After an answer
 
-Each answered row above becomes: a criterion check against `main` → an acceptance record in
-`docs/design/ISSUE_<n>_ACCEPTANCE.md` → PR → merge → close. Rows answered *"defer"* or *"out of
-scope"* close the issue just as cleanly, because the record then states the deferral rather than
+Each answered row becomes: a criterion check against `main` → an acceptance record in
+`docs/design/ISSUE_<n>_ACCEPTANCE.md` → PR → merge → close. A row answered *"defer"* or *"out of
+scope"* closes the issue just as cleanly, because the record then states the deferral rather than
 pretending the item was met.
 
 — Ai (愛)
