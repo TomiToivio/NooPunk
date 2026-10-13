@@ -1,0 +1,288 @@
+{
+  "format": "noopunk.strategy_game.faction_creation",
+  "status": "PROPOSAL - not locked rules, and not a locked taxonomy. Transcribes issue #346's faction-creation directive as data. Every tag family is marked 'suggested' because the issue says so. No numeric axis value appears anywhere: the issue asks for named qualitative positions first and an ordered scale only after playtesting.",
+  "sources": [
+    "issue #346: five independent ideological dimensions",
+    "issue #346: 'NHI cannot be captured by one scalar' - policy toward NHI separately from diplomacy with each named polity",
+    "issue #346: shared TAG system for factions and characters, built on the existing STAT/TAG design",
+    "issue #346: suggested faction-creation flow for the MVP, and the pre-generated Cosmist International example",
+    "issue #346: three-pillar balance (social science fiction, extrapolated cyberpunk, occasional science fantasy)",
+    "issue #348's author-canon clarification locks the StO bloc's official label as UCCC; this issue's text says 'Confederacy/Zookeepers'. The locked label is used here and the other wording is recorded as notation, with the conflict flagged for the author rather than decided.",
+    "consumes strategy_game/data/global_factions.json (the two axes, additional_dimensions and the #329 paradigm positions) and strategy_game/docs/LEADER_COUNCIL_SYSTEM.md (the court half) instead of restating them"
+  ],
+  "provenance": {
+    "kind": "authored",
+    "source": "issue #346",
+    "note": "the author's model, transcribed; the schema is this session's"
+  },
+  "consumes": {
+    "axes": "strategy_game/data/global_factions.json declares economic, social, additional_dimensions and the #329 paradigm positions; this file adds only the position vocabulary and the creation flow.",
+    "court": "strategy_game/docs/LEADER_COUNCIL_SYSTEM.md owns the four leaders, portfolios, missions and relationships.",
+    "codex": "strategy_game/data/codex.json owns the NHI entities; this file owns the diplomatic states a faction can hold toward them."
+  },
+  "position_vocabulary": {
+    "positions": [
+      {"id": "strong_low_pole", "label": "strongly toward the low pole", "rank": -2},
+      {"id": "moderate_low_pole", "label": "moderately toward the low pole", "rank": -1},
+      {"id": "neutral", "label": "neutral or openly undecided", "rank": 0},
+      {"id": "moderate_high_pole", "label": "moderately toward the high pole", "rank": 1},
+      {"id": "strong_high_pole", "label": "strongly toward the high pole", "rank": 2}
+    ],
+    "note": "Named positions first; the issue allows a small ordered scale only after playtesting, which is why 'rank' exists here as an ordering aid and not as a game quantity. Do NOT equate an ideological position with fixed personality, intelligence, morality, psychic power or predetermined loyalty, and remember that a faction's publicly advertised position can differ from its hidden agenda.",
+    "numeric_scale_approved": false
+  },
+  "axes": [
+    {
+      "id": "economic",
+      "label": "Left vs Right (economic politics)",
+      "low_pole": "communism, commons, collective ownership, redistribution",
+      "high_pole": "capitalism, private property, competitive markets, accumulation",
+      "significance": "Who owns and allocates resources. Not identical to attitudes toward authority.",
+      "declared_in": "global_factions.json"
+    },
+    {
+      "id": "social",
+      "label": "Liberal vs Conservative (cultural politics)",
+      "low_pole": "progressive, pluralist, individual freedom and changing norms",
+      "high_pole": "traditionalist, continuity, inherited norms and social hierarchy",
+      "significance": "Cultural orientation. This is NOT the conventional Political Compass authoritarian/libertarian vertical axis; if the Compass is used literally, model authoritarianism/libertarianism separately or rename this dimension. Governance positions are captured by governance tags instead.",
+      "declared_in": "global_factions.json",
+      "author_decision_open": "whether this axis is enough or a distinct authoritarian/libertarian value is also necessary"
+    },
+    {
+      "id": "agi",
+      "label": "AGI / technological transformation",
+      "low_pole": "doomer, restriction, precaution, AGI bans",
+      "high_pole": "accelerationist, AGI development, technological transformation",
+      "significance": "Overall response to rapid AGI and breakthrough technology. Nuances about BCI, robotics, cybernetics, quantum computing and transhumanism belong in specific tags: a faction may oppose autonomous AGI while strongly supporting human augmentation.",
+      "declared_in": "global_factions.json as the paradigm position 'agi'"
+    },
+    {
+      "id": "nhi",
+      "label": "NHI contact / integration",
+      "low_pole": "isolation, human exclusivism; extremes may call for eradication",
+      "high_pole": "acceptance, coexistence, contact and integration; extremes may become cultic submission",
+      "significance": "GENERAL policy toward NHI, not loyalty to a single civilization. Tolerance, collaboration, assimilation, submission and genocide are distinguished by tags, policies and goals, not by one number.",
+      "declared_in": "global_factions.json as the paradigm position 'nhi'"
+    },
+    {
+      "id": "psi",
+      "label": "PSI / consciousness ontology",
+      "low_pole": "materialism, functionalist and computational accounts, scepticism toward PSI",
+      "high_pole": "idealism, fundamental or cosmic consciousness, panpsychism and PSI openness",
+      "significance": "Metaphysical commitments and PSI policy. BELIEF IS NOT ABILITY: a QIP believer need not be an accomplished psychic, and a scientifically minded materialist may still acknowledge empirical anomalies in this fiction.",
+      "declared_in": "global_factions.json as the paradigm position 'psi'"
+    }
+  ],
+  "tag_kinds": [
+    {"id": "belief", "label": "a doctrine the holder holds", "note": "does not imply competence"},
+    {"id": "competence", "label": "a capability the holder possesses"},
+    {"id": "equipment", "label": "a thing the holder owns or operates"},
+    {"id": "relationship", "label": "a tie to someone or something else"},
+    {"id": "asset", "label": "an organisational resource"},
+    {"id": "goal", "label": "an explicit objective"}
+  ],
+  "tag_scopes": ["faction", "character", "organization", "research", "government"],
+  "tag_families": [
+    {
+      "id": "political_doctrine",
+      "label": "Political doctrine",
+      "kind": "belief",
+      "suggested": true,
+      "tags": [
+        {"id": "AUTONOMIST_MARXIST", "label": "autonomist Marxist"},
+        {"id": "RUSSIAN_COSMIST", "label": "Russian cosmist"},
+        {"id": "LIBERTARIAN", "label": "libertarian"},
+        {"id": "ECO_SOCIALIST", "label": "eco-socialist"},
+        {"id": "TECHNOCRAT", "label": "technocrat"},
+        {"id": "RELIGIOUS_TRADITIONALIST", "label": "religious traditionalist"}
+      ]
+    },
+    {
+      "id": "technology_doctrine",
+      "label": "Technology doctrine",
+      "kind": "belief",
+      "suggested": true,
+      "tags": [
+        {"id": "AGI_ABOLITIONIST", "label": "AGI abolitionist"},
+        {"id": "AGI_ACCELERATIONIST", "label": "AGI accelerationist"},
+        {"id": "HUMAN_AUGMENTATION", "label": "pro human augmentation"},
+        {"id": "BCI_ADOPTION", "label": "BCI adoption"},
+        {"id": "BIO_ONLY", "label": "biological embodiment only"},
+        {"id": "QUANTUM_RESEARCH", "label": "quantum research programme"}
+      ]
+    },
+    {
+      "id": "consciousness_doctrine",
+      "label": "Consciousness and PSI doctrine",
+      "kind": "belief",
+      "suggested": true,
+      "note": "BELIEF, distinct from the abilities below. A believer need not be capable, and a capable person need not believe.",
+      "tags": [
+        {"id": "QIP_PANPSYCHIST", "label": "quantum-information panpsychist"},
+        {"id": "MATERIALIST", "label": "materialist"},
+        {"id": "COSMIC_SOURCE_IDEALIST", "label": "cosmic-source idealist"},
+        {"id": "PSI_RESEARCH", "label": "PSI research programme"},
+        {"id": "RITUAL_PRACTITIONER", "label": "ritual practitioner"}
+      ]
+    },
+    {
+      "id": "psi_ability",
+      "label": "PSI and cognitive capability",
+      "kind": "competence",
+      "suggested": true,
+      "note": "Competence, not doctrine and not equipment. These are the ids the codex's translation scene can consume as research.",
+      "tags": [
+        {"id": "TELEPATH", "label": "telepath"},
+        {"id": "REMOTE_VIEWER", "label": "remote viewer"},
+        {"id": "PRECOGNITIVE", "label": "precognitive"}
+      ]
+    },
+    {
+      "id": "nhi_policy",
+      "label": "NHI policy and allegiances",
+      "kind": "belief",
+      "suggested": true,
+      "note": "Positions and postures. These say nothing structural about the per-polity diplomatic states below, and nothing here is derived from the NHI axis.",
+      "tags": [
+        {"id": "HUMAN_SOVEREIGNTY", "label": "human sovereignty"},
+        {"id": "NHI_CONTACT", "label": "pro contact"},
+        {"id": "CONFEDERACY_ALIGNED", "label": "aligned with the social-memory-complex bloc"},
+        {"id": "ORION_TRADING", "label": "trades with the Orion bloc"},
+        {"id": "ANTI_HYBRID_ASSIMILATION", "label": "resists hybrid assimilation"},
+        {"id": "NHI_EXTERMINATIONIST", "label": "NHI exterminationist"},
+        {"id": "INTERDIMENSIONAL_CONTACT", "label": "interdimensional contact"}
+      ]
+    },
+    {
+      "id": "social_governance",
+      "label": "Social and governance doctrine",
+      "kind": "belief",
+      "suggested": true,
+      "note": "This is where authoritarianism, democracy, anarchism and civil-liberties positions belong, so the cultural axis is not asked to carry them.",
+      "tags": [
+        {"id": "DIRECT_DEMOCRACY", "label": "direct democracy"},
+        {"id": "AUTHORITARIAN", "label": "authoritarian"},
+        {"id": "COMMONS_ORGANIZER", "label": "commons organiser"},
+        {"id": "ECOLOGICAL_STEWARDSHIP", "label": "ecological stewardship"},
+        {"id": "ARCHAIC_REVIVAL", "label": "archaic revival"}
+      ]
+    },
+    {
+      "id": "goals_and_history",
+      "label": "Special goals and histories",
+      "kind": "goal",
+      "suggested": true,
+      "tags": [
+        {"id": "DISCLOSE_UFO_SECRETS", "label": "disclose the ufology secrets"},
+        {"id": "BUILD_EFTZ", "label": "build an Extraterrestrial Economic Zone"},
+        {"id": "DEFEND_HUMAN_AUTONOMY", "label": "defend human autonomy"},
+        {"id": "ABOLISH_PRIVATE_PROPERTY", "label": "abolish private property"},
+        {"id": "INVESTIGATE_SOVIET_PROGRAM", "label": "investigate the Soviet programme"},
+        {"id": "PSI_SERVICE_INDUSTRY", "label": "build a PSI service industry"},
+        {"id": "EXTRATERRESTRIAL_DIPLOMACY", "label": "extraterrestrial diplomacy"}
+      ]
+    },
+    {
+      "id": "organisational_assets",
+      "label": "Organisational capabilities",
+      "kind": "asset",
+      "suggested": true,
+      "note": "One tag definition, different context: REMOTE_VIEWING_TEAM is a faction's asset and REMOTE_VIEWER is a character's competence. Same vocabulary, different scopes, and they are not interchangeable.",
+      "tags": [
+        {"id": "REMOTE_VIEWING_TEAM", "label": "remote-viewing team", "applies_to": ["faction", "organization"]},
+        {"id": "TELEPATHIC_NETWORK", "label": "telepathic network", "applies_to": ["faction", "organization"]},
+        {"id": "PRIVATE_LINK", "label": "private link", "applies_to": ["faction", "organization"]},
+        {"id": "COURIER_FLEET", "label": "courier fleet", "applies_to": ["faction", "organization"]},
+        {"id": "RESEARCH_LAB", "label": "research laboratory", "applies_to": ["faction", "organization", "research"]}
+      ]
+    }
+  ],
+  "nhi_polities": [
+    {"id": "uccc", "label": "Union of Collective Consciousness Communes (UCCC)", "note": "the locked official label. The service-to-others bloc: a communist social memory complex in the Confederal register. This issue's text calls it 'Confederacy/Zookeepers'; that wording is recorded here as notation, not as the official name."},
+    {"id": "orion_sphere", "label": "Greater Orion Arm Co-Prosperity Sphere", "note": "the locked official label. The service-to-self bloc: capitalist corporations with Grey, Mantid and Reptilian tendencies."},
+    {"id": "independent_origins", "label": "other extraterrestrial, interdimensional, extratempestrial and cryptoterrestrial origins", "note": "at least these exist alongside the two blocs; a diplomatic state can be held toward them individually."}
+  ],
+  "diplomatic_states": [
+    {"id": "hostility", "label": "hostility"},
+    {"id": "contact", "label": "contact established"},
+    {"id": "trading", "label": "trading"},
+    {"id": "alliance", "label": "alliance"},
+    {"id": "dependence", "label": "dependence"},
+    {"id": "resistance", "label": "active resistance"}
+  ],
+  "separation_rule": {
+    "policy_field": "nhi",
+    "relations_field": "nhi_relations",
+    "note": "Issue #346: avoid forcing pro-NHI to equal pro-Confederacy or pro-Orion. A pro-contact diplomat may oppose both hierarchies and seek relations with independent NHI, and a xenophobic hardliner may seek the extermination of both. The axis is how welcoming a faction is toward contact in general; the relations are separate, mutable ties to each named polity. Neither is derived from the other in code."
+  },
+  "faction_creation_flow": [
+    {"step": 1, "label": "Select or roll a template", "note": "default: Cosmist International, or create a new faction"},
+    {"step": 2, "label": "Set five broad ideological positions", "note": "simple descriptors before numbers or sliders"},
+    {"step": 3, "label": "Pick a few defining tags", "note": "including one positive political goal, one taboo or red line, and one distinguishing doctrine"},
+    {"step": 4, "label": "Define NHI relationships individually", "note": "where known; unknown contacts stay hidden or unrevealed"},
+    {"step": 5, "label": "Create the faction leader", "note": "with their own possibly different ideology and tags; other agents and managers have individual convictions and may disagree with leadership"},
+    {"step": 6, "label": "Attach starting organization, research and government relationship cards", "note": "consistent with the Helsinki-first scope; only a few assets are needed"},
+    {"step": 7, "label": "Generate tensions", "note": "from ideological affinities, incompatibilities, history, material interests and internal disagreements, not from simplistic good/evil labels"}
+  ],
+  "template": {
+    "id": "cosmist_international",
+    "label": "Cosmist International",
+    "note": "Pre-generated, editable quick-start template. These are PROPOSED starting settings, not frozen character stats. He must not begin with knowledge of the hidden Soviet, Confederacy or Orion historical canon.",
+    "positions": {
+      "economic": "strong_low_pole",
+      "social": "strong_low_pole",
+      "agi": "moderate_high_pole",
+      "nhi": "moderate_high_pole",
+      "psi": "strong_high_pole"
+    },
+    "positions_plain": "economically Left / culturally Liberal / human-augmentation-positive but cautious of rogue autonomous AGI / NHI diplomatic and pro-human-sovereignty / strongly QIP-panpsychist",
+    "tags": ["AUTONOMIST_MARXIST", "RUSSIAN_COSMIST", "COMMONS_ORGANIZER", "HUMAN_AUGMENTATION", "QIP_PANPSYCHIST", "HUMAN_SOVEREIGNTY", "DISCLOSE_UFO_SECRETS"]
+  },
+  "comparative_examples": [
+    {
+      "id": "corporate_orion_trading_bloc",
+      "label": "Corporate Orion trading bloc",
+      "positions_plain": "Right, often market-libertarian cultural rhetoric, technologically accelerationist, opportunistically NHI-friendly, PSI commercially instrumental",
+      "tags": ["ORION_TRADING", "BUILD_EFTZ", "PSI_SERVICE_INDUSTRY"],
+      "note": "illustrative, not a mandatory ideological bundle"
+    },
+    {
+      "id": "archaic_revival_ecologists",
+      "label": "Archaic Revival ecologists",
+      "positions_plain": "variable Left/Right, often culturally spiritual or traditional but socially communal, sceptical of AGI and machine NHI, often PSI idealist",
+      "tags": ["ARCHAIC_REVIVAL", "ECOLOGICAL_STEWARDSHIP", "ANTI_HYBRID_ASSIMILATION"],
+      "note": "illustrative, not a mandatory ideological bundle"
+    },
+    {
+      "id": "human_defense_security_movement",
+      "label": "Human-defence security movement",
+      "positions_plain": "variable economics and cultural views, precautionary technology, NHI wary or hostile, PSI pragmatist",
+      "tags": ["HUMAN_SOVEREIGNTY", "ANTI_HYBRID_ASSIMILATION"],
+      "note": "illustrative, not a mandatory ideological bundle"
+    }
+  ],
+  "cross_axis_examples": [
+    {"id": "materialist_remote_viewer", "label": "materialist trained remote viewer", "note": "belief and competence in opposition: the tag kinds keep them apart"},
+    {"id": "anti_agi_augmented_human", "label": "anti-AGI augmented human", "note": "opposes autonomous AGI while supporting human augmentation; one axis cannot express this"},
+    {"id": "right_wing_pro_confederacy_diplomat", "label": "right-wing pro-Confederacy diplomat", "note": "economic and NHI positions need not align with any party stereotype"},
+    {"id": "left_wing_anti_confederacy_autonomist", "label": "left-wing anti-Confederacy autonomist", "note": "the mirror case, proving the system does not force rigid bundles"}
+  ],
+  "fog_of_war": {
+    "note": "Issue #346: a player's knowledge of actual NHI connections can differ from their public ideology, and tags and axes must not reveal classified author canon on the starting UI.",
+    "withheld_from_player": ["hidden_agenda", "unrevealed nhi_relations"],
+    "public_vs_hidden": "A faction's publicly advertised position can differ from its hidden agenda; both are stored, and only the public one is shown."
+  },
+  "event_seed": {
+    "id": "diplomatic_recruitment_using_affinity_and_tag_conflict",
+    "label": "one authored diplomatic or recruitment event",
+    "note": "Built on axis similarity plus narrative tag conflicts, and never on hardcoded faction good/evil relations. The issue leaves the specific event to be authored; this records only its shape so the seed is not lost."
+  },
+  "cautions": [
+    {"source": "laclau", "note": "axes summarise orientations; demands, antagonisms and nodal or empty signifiers drive actual articulation and hegemonic struggle. A five-value vector is not a substitute for political discourse, contingencies or coalitions."},
+    {"source": "castells", "note": "recruitment, movement building, contact, propaganda and communications depend on concrete networks and access."},
+    {"source": "luhmann", "note": "one actor can hold different expectations in science, religion, law, politics and the economy; consider public doctrine versus internal faction practice."},
+    {"source": "gameplay", "note": "use broad affinity and tension cues for recruitment and diplomacy, but never make tag combinations predetermined alliance, hatred, morality or voting behaviour."},
+    {"source": "simplicity", "note": "one faction card (five positions plus a handful of tags) plus the existing character cards; avoid complex population models and avoid adding more sliders for every subgroup."}
+  ]
+}
