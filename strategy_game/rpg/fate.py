@@ -194,8 +194,8 @@ def skill_check(
     return resolve(action, actor.skills.get(skill_name, 0), difficulty, rng=rng, bonus=bonus)
 
 
-def demo_netrunning(seed: int = 7) -> Mapping[str, object]:
-    """A compact netrunning example: a foothold first, then the intrusion check.
+def demo_netrunning_foothold(seed: int = 7) -> Mapping[str, object]:
+    """A netrunning example where the foothold is established before the intrusion check.
 
     Issue #344's model applies here: a serious intrusion normally requires being near or inside the
     target, or deploying a proxy. So the scene records the access step explicitly instead of

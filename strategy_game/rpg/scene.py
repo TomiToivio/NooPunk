@@ -106,6 +106,16 @@ class ActionEffect(str, Enum):
     SUCCEED_WITH_STYLE = "succeed_with_style"
 
 
+#: Outcome -> ActionEffect. The two enums name the same four results differently
+#: ("success" vs "succeed"), so the mapping is explicit rather than an accidental ``outcome.value``.
+_EFFECT_BY_OUTCOME: dict[Outcome, ActionEffect] = {
+    Outcome.FAILURE: ActionEffect.FAIL,
+    Outcome.TIE: ActionEffect.TIE,
+    Outcome.SUCCESS: ActionEffect.SUCCEED,
+    Outcome.SUCCESS_WITH_STYLE: ActionEffect.SUCCEED_WITH_STYLE,
+}
+
+
 @dataclass(frozen=True)
 class Interpretation:
     """Rules-facing signal; the GM chooses narrative consequences."""
@@ -123,7 +133,7 @@ def interpret(result: Resolution) -> Interpretation:
     style = outcome is Outcome.SUCCESS_WITH_STYLE
     success = outcome in (Outcome.SUCCESS, Outcome.SUCCESS_WITH_STYLE)
     return Interpretation(
-        effect=ActionEffect(outcome.value),
+        effect=_EFFECT_BY_OUTCOME[outcome],
         shifts=shifts,
         boost=(action in (Action.CREATE_ADVANTAGE, Action.DEFEND) and outcome is Outcome.TIE)
               or (action is Action.ATTACK and style),
