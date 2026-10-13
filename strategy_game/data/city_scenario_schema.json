@@ -1,0 +1,72 @@
+{
+  "format": "noopunk.strategy_game.city_scenario_schema",
+  "version": 1,
+  "status": "SCHEMA FOR SCENARIO DATA ONLY. It describes the shape of a city-and-environs configuration. No rule, number, threshold, cost or outcome lives here: the engine reads this data, and the provisional playtest rules stay in strategy_game/local_slice.py. Nothing in this file is approved gameplay.",
+  "reference_instance": "strategy_game/data/ukweli_local.json",
+  "why": "Issue #324 deliverable C asks for a reusable generic city-and-environs location schema plus one Ukweli configuration; strategy_game/docs/LOCAL_SLICE_RULES_PROVISIONAL.md lists 'formal scenario schema validator' as a known omission. This file and strategy_game/scenario_schema.py close that omission. The schema is deliberately country-agnostic: no Finnish or US electoral structure, geography or institution is named here.",
+  "vocabulary_is_consumed_not_restated": {
+    "portfolios": ["politics", "networks", "operations", "research"],
+    "note": "These are the four council portfolios the leader system already declares (#323). strategy_game/local_slice.py's PORTFOLIOS is the engine's copy; a test asserts the two agree rather than trusting this list."
+  },
+  "fields": {
+    "format": {"required": true, "type": "str", "note": "the scenario's own format string, e.g. noopunk.strategy_game.ukweli_local"},
+    "year": {"required": true, "type": "int", "note": "in-setting year of the starting condition"},
+    "setting": {"required": true, "type": "str", "note": "one line naming the scenario"},
+    "locations": {"required": true, "type": "list", "min_items": 5, "max_items": 8},
+    "routes": {"required": true, "type": "list", "min_items": 1},
+    "parties": {"required": true, "type": "list"},
+    "leaders": {"required": true, "type": "list"},
+    "relationships": {"required": false, "type": "list"},
+    "shocks": {"required": false, "type": "list"}
+  },
+  "records": {
+    "location": {
+      "required": ["id", "label"],
+      "optional": ["pressure", "tags"],
+      "types": {"id": "str", "label": "str", "pressure": "int", "tags": "list[str]"}
+    },
+    "route": {
+      "shape": "a two-element list of location ids",
+      "note": "an abstract adjacency, not a tactical path; direction and cost carry no meaning"
+    },
+    "party": {
+      "required": ["id", "name", "leader_ids"],
+      "optional": ["claims", "treasury", "legitimacy", "network", "technology"],
+      "types": {
+        "id": "str", "name": "str", "leader_ids": "list[str]", "claims": "list[str]",
+        "treasury": "int", "legitimacy": "int", "network": "int", "technology": "int"
+      }
+    },
+    "leader": {
+      "required": ["id", "name", "faction", "location", "portfolio"],
+      "optional": ["skill", "traits", "status"],
+      "types": {"id": "str", "name": "str", "faction": "str", "location": "str",
+                "portfolio": "str", "skill": "int", "traits": "list[str]", "status": "str"}
+    },
+    "relationship": {
+      "required": ["a", "b"],
+      "optional": ["trust", "tags"],
+      "types": {"a": "str", "b": "str", "trust": "int", "tags": "list[str]"}
+    },
+    "shock": {
+      "required": ["title"],
+      "optional": ["legitimacy_delta", "note"],
+      "types": {"title": "str", "legitimacy_delta": "int", "note": "str"}
+    }
+  },
+  "constraints": {
+    "unique_ids": ["locations", "parties", "leaders"],
+    "locations": {"min_items": 5, "max_items": 8},
+    "leaders_per_party": 4,
+    "routes": {"endpoints_must_exist": true, "pair_must_differ": true},
+    "leaders": {"location_must_exist": true, "faction_must_be_a_party": true, "portfolio_must_be_declared": true},
+    "party_leader_ids": {"exactly": 4, "unique": true, "must_match_leaders_by_faction": true},
+    "relationships": {"endpoints_must_be_leaders": true, "pair_must_differ": true},
+    "unknown_record_fields_are_reported": true
+  },
+  "what_this_schema_is_not": [
+    "It is not a rule system: it validates shape, references and counts, and derives no value.",
+    "It is not canon: the Ukweli instance is scenario data, and the reuse note records which parts are recovered lore and which are newly proposed.",
+    "It does not bind the engine to one city: a second configuration conforming to this schema is a scenario, not a code change. A test proves that with a synthetic second city."
+  ]
+}

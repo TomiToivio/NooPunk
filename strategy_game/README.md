@@ -57,6 +57,8 @@ python -m unittest strategy_game.tests.test_global_slice -v
 
 The existing [character-card system](characters.py) is now the shared data-only catalogue for canonical leaders, reusable civilian/faction archetypes and uncertain NHI exemplars. The [card data](data/character_cards.json), [design notes](docs/CHARACTER_CARDS.md) and [executable tests](tests/test_character_cards.py) cover template instantiation, uniqueness, visibility/redaction, codex classification and integration with tabletop card projections. No unapproved attributes or action resolution are introduced.
 
+The **default named local scenario is the Republic of Ukweli** ([#324](https://github.com/TomiToivio/NooPunk/issues/324)): [`docs/scenarios/REPUBLIC_OF_UKWELI.md`](../docs/scenarios/REPUBLIC_OF_UKWELI.md) is the scenario document, [`data/ukweli_local.json`](data/ukweli_local.json) the configuration (8 locations, 7 routes, 3 parties, 12 leaders, 5 event shocks), and [`scenario_schema.py`](scenario_schema.py) validates **any** city configuration against the generic [`data/city_scenario_schema.json`](data/city_scenario_schema.json) — see [the schema notes](docs/CITY_SCENARIO_SCHEMA.md). The schema is country-agnostic, and a test proves it by validating and building a synthetic second city. The seeded slice plays with `python strategy_game/local_slice.py --turns 12 --seed 2027`, and the board renders with `python -m strategy_game.render`.
+
 Quick verification from the repository root:
 
 ```bash
