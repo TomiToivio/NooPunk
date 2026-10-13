@@ -41,6 +41,21 @@ def render_assignment_board(council: Council, model: CouncilModel) -> str:
             f"- {row['name']} [{row['leader_id']}] | portfolio: {row['portfolio']} | "
             f"status: {row['status']} | location: {row['location']} | {row['assignment']}"
         )
+    # Keep malformed orders inspectable. A mission assigned to an unknown or blank
+    # leader has no leader row, so it needs a dedicated section rather than only
+    # a diagnostic message. No mission is executed or silently reassigned.
+    known_leaders = {leader.identifier for leader in council.leaders}
+    orphaned = [mission for mission in council.missions if mission.leader_id not in known_leaders]
+    if orphaned:
+        lines.append("Unassigned or unknown-leader missions:")
+        for mission in orphaned:
+            lines.append(
+                f"- {mission.identifier or '(unnamed mission)'} | "
+                f"leader: {mission.leader_id or '(missing)'} | "
+                f"kind: {mission.kind or 'unspecified'} | "
+                f"location: {mission.location_id or 'unspecified'} | "
+                f"target: {mission.target_id or 'unspecified'}"
+            )
     problems = model.structural_problems(council)
     if problems:
         lines.append("Declaration warnings:")
