@@ -1,0 +1,166 @@
+{
+  "format": "noopunk.strategy_game.ukweli_leaders",
+  "status": "PROPOSAL - not locked rules and not a locked roster. Design-level content only: no mechanic, no statistic, no threshold, no action economy. The four-leader economy belongs to #323; the twelve leader seats below already exist in data/ukweli_local.json and are annotated here, never duplicated.",
+  "sources": [
+    "#326 Ukweli faction leaders and NPCs: Sir Mars Eldrich and the Eldrich dynasty",
+    "#323 four faction leaders, council portfolios, missions and relationships",
+    "#324 / docs/design/ISSUE_324_UKWELI_CANON_REUSE.md (the leader roster is #326's deliverable, not #324's)",
+    "#325 / docs/world/PEOPLES_REPUBLIC_OF_UKWELI.md",
+    "#328 / docs/design/ISSUE_328_ROSTER_RECONCILIATION.md",
+    "docs/scenarios/UKWELI_LOCAL_SCENARIO.md",
+    "strategy_game/data/ukweli_local.json (the existing leader records this roster annotates)",
+    "strategy_game/data/character_cards.json (Sir Mars Eldrich is already a landed canonical card)",
+    "strategy_game/docs/LEADER_COUNCIL_SYSTEM.md"
+  ],
+  "provenance": {
+    "kind": "authored",
+    "source": "issue #326",
+    "note": "Roster shape, dynasty eras and declared blanks authored for #326 as a proposal. The only filled present-day person is Sir Mars Eldrich, and he is referenced from the already-landed character card rather than restated."
+  },
+  "naming_note": {
+    "issue": "The libertarian party has two names in the repository and they are not interchangeable.",
+    "data_id": "ulp",
+    "data_name": "Ukweli Libertarian Party",
+    "setting_doc_name": "LFP - Libertarian Freedom Party of Ukweli",
+    "where_each_appears": [
+      "strategy_game/data/ukweli_local.json declares the party id 'ulp' with the name 'Ukweli Libertarian Party'",
+      "strategy_game/data/character_cards.json gives Sir Mars Eldrich faction_ids ['ulp']",
+      "docs/world/PEOPLES_REPUBLIC_OF_UKWELI.md uses 'LFP', and explicitly flags the conflict as awaiting the author's word"
+    ],
+    "decision_taken_here": "This roster uses the existing data id 'ulp', because ukweli_local.json and the landed Eldrich card both already use it and inventing a fourth party id would fork the scaffold. The label question stays open for the author.",
+    "todo": "requires author specification: settle ULP vs LFP, then change the label and the documents together"
+  },
+  "eras": [
+    {
+      "id": "historical",
+      "label": "Historical",
+      "status": "invocable, not agentic",
+      "note": "Represented in documents, memories, archives and events only. Consumes no action slot and cannot be commanded, because the person is dead. Per the issue's own MVP distinction."
+    },
+    {
+      "id": "present",
+      "label": "Present",
+      "status": "invocable and agentic",
+      "note": "Alive and reachable in the scenario. Being agentic is not the same as holding a council seat: an independent patron is not automatically one of a faction's four leaders."
+    }
+  ],
+  "dynasty": [
+    {
+      "person_ref": "sir_uranus_eldrich",
+      "display_name": "Sir Uranus Eldrich",
+      "era": "historical",
+      "generation": 1,
+      "role": "founding shipping magnate; Victorian-era head of the family firm",
+      "canon_status": "canon",
+      "what_the_scenario_keeps": "an unsettled archive. The scandal stays allegations, and the mansion stays a source of Gothic and New Weird folklore, archival investigations, conspiracy claims and misleading clues - with no predetermined supernatural revelation.",
+      "what_must_not_be_asserted": "that the scandal is proven, or that the archive conceals any particular truth",
+      "evidence_classes": ["canon: the family and the firm existed", "allegation: the scandal", "folklore: the mansion's reputation"],
+      "event_hooks": ["the_uranus_papers"]
+    },
+    {
+      "person_ref": "sir_mercury_eldrich",
+      "display_name": "Sir Mercury Eldrich",
+      "era": "historical",
+      "generation": 2,
+      "role": "the commercial facilitator of the 1964 transition",
+      "canon_status": "canon",
+      "what_the_scenario_keeps": "a standing obligation with no owner. He facilitated a peaceful transition rather than bestowing it; the debt is inherited in both directions, and either side may call it in.",
+      "canon_invariants": [
+        "independence stays 1964",
+        "it stays peaceful",
+        "it stays CPU-led",
+        "British enterprises were negotiated into protection rather than expropriated"
+      ],
+      "what_must_not_be_asserted": "that independence was granted by the Eldrich family, or that the CPU owes the firm anything not negotiated",
+      "evidence_classes": ["canon: the 1964 independence and its negotiated protections", "interpretation: the moral weight of the bargain"],
+      "event_hooks": ["the_independence_bargain"]
+    },
+    {
+      "person_ref": "sir_mars_eldrich",
+      "display_name": "Sir Mars Eldrich",
+      "era": "present",
+      "generation": 3,
+      "role": "independent patron",
+      "canon_status": "canon",
+      "card_ref": "sir_mars_eldrich",
+      "holds_council_seat": false,
+      "seat_note": "Per the issue's MVP distinction he is initially an independent patron and major NPC, NOT automatically one of the libertarian party's four formal leaders. Placing him on a council would consume one of the four action slots under #323 and is the author's decision.",
+      "what_the_scenario_keeps": "an attention economy with a balance sheet: money, media, inventions, a space venture and a public party relationship that stays formally autonomous.",
+      "what_must_not_be_asserted": "that his Mars venture has already proven the ruins artificial, that stargates or anomalous transport exist, or that his patronage makes the libertarian party his instrument. In the present day his Mars project reads as publicity plus real engineering economics - launch cadence, insurance, freight, orbital logistics, contracts - and the scenario never has to tell the player whether he is right.",
+      "evidence_classes": ["canon: wealth, publicity, the party patronage, the Mars venture"],
+      "event_hooks": ["the_islands_charter", "the_latest_eldrich_invention", "a_mars_mission"]
+    }
+  ],
+  "leader_template": {
+    "note": "The concise shape every named leader record should satisfy. It matches the fields the twelve existing records in data/ukweli_local.json already use, plus one proposed addition that is NOT yet in the data.",
+    "existing_fields": ["id", "name", "faction", "location", "portfolio", "skill", "traits"],
+    "proposed_addition": {
+      "institutional_tie": "which institution or network the seat is bound to, so a seat can be specified before a person is invented for it"
+    },
+    "not_in_this_template": [
+      "any new statistic: the roster adds no score, rating or track",
+      "personality prose: bios are authored separately, and inventing individuals is forbidden here"
+    ]
+  },
+  "portfolios": {
+    "note": "The four portfolios from #323, as already used by the existing leader records.",
+    "ids": ["politics", "networks", "operations", "research"],
+    "rule": "one persistent management portfolio per leader; a portfolio is passive and is never an extra active move"
+  },
+  "seats": {
+    "note": "The twelve existing leader seats, annotated with the institutional tie each needs. None carries a person: filling one is author work, not mine. Every entry points at an id that already exists in data/ukweli_local.json.",
+    "cpu": [
+      {"leader_ref": "cpu1", "portfolio": "politics", "institutional_tie": "the state apparatus and the party's governing record", "person": null, "todo": "requires author specification"},
+      {"leader_ref": "cpu2", "portfolio": "networks", "institutional_tie": "labour and mass organisations", "person": null, "todo": "requires author specification"},
+      {"leader_ref": "cpu3", "portfolio": "operations", "institutional_tie": "the port, industry and the state's resource base", "person": null, "todo": "requires author specification"},
+      {"leader_ref": "cpu4", "portfolio": "research", "institutional_tie": "the universities and the technical intelligence services", "person": null, "todo": "requires author specification"}
+    ],
+    "uip": [
+      {"leader_ref": "uip1", "portfolio": "politics", "institutional_tie": "the rural and communal representative bodies", "person": null, "todo": "requires author specification"},
+      {"leader_ref": "uip2", "portfolio": "networks", "institutional_tie": "religious and civic associations", "person": null, "todo": "requires author specification"},
+      {"leader_ref": "uip3", "portfolio": "operations", "institutional_tie": "land, agriculture and the coastal economy", "person": null, "todo": "requires author specification"},
+      {"leader_ref": "uip4", "portfolio": "research", "institutional_tie": "cultural and historical institutions", "person": null, "todo": "requires author specification"}
+    ],
+    "ulp": [
+      {"leader_ref": "ulp1", "portfolio": "politics", "institutional_tie": "the party's parliamentary and populist opposition role", "person": null, "todo": "requires author specification"},
+      {"leader_ref": "ulp2", "portfolio": "networks", "institutional_tie": "business, property and private-sector networks", "person": null, "todo": "requires author specification"},
+      {"leader_ref": "ulp3", "portfolio": "operations", "institutional_tie": "the enclave economy and offshore arrangements", "person": null, "todo": "requires author specification"},
+      {"leader_ref": "ulp4", "portfolio": "research", "institutional_tie": "private research, technology investment and sympathetic media", "person": null, "todo": "requires author specification"}
+    ]
+  },
+  "independent_npcs": {
+    "note": "A handful of consequential independent NPCs are wanted by the issue, but no individual is invented here. The shape is specified and left empty, so a later pass can fill it without restructuring anything.",
+    "template": ["id", "name", "affiliation", "location", "institutional_tie", "role", "event_hooks"],
+    "entries": [],
+    "todo": "requires author specification",
+    "already_covered_elsewhere": "sir_mars_eldrich is an independent patron, and that record already exists as a canonical character card rather than being duplicated here"
+  },
+  "relationships": {
+    "note": "Tabular edges. Trust is a small signed value only where the existing data already carries one; no new quantity is invented.",
+    "edges": [
+      {"a": "sir_mars_eldrich", "b": "ulp", "kind": "patronage", "trust": null, "note": "funds and publicly supports the party, which stays formally autonomous; derived from the landed character card, not restated from scratch"},
+      {"a": "sir_mars_eldrich", "b": "sympathetic_media", "kind": "patronage", "trust": null, "note": "publicity is not endorsement, and reach is not votes"},
+      {"a": "sir_uranus_eldrich", "b": "sir_mercury_eldrich", "kind": "dynastic_succession", "trust": null, "note": "historical; the firm passes from the first generation to the second"},
+      {"a": "sir_mercury_eldrich", "b": "cpu", "kind": "inherited_obligation", "trust": null, "note": "the 1964 bargain is inherited in both directions; either side may call it in"},
+      {"a": "sir_mars_eldrich", "b": "cpu", "kind": "rivalry", "trust": null, "note": "patron of the opposition, and not sovereign over the port"}
+    ]
+  },
+  "event_hooks": {
+    "note": "The issue's candidate interactions, kept as invocable hooks rather than mechanics. Each names which historical generation it draws on, so a dead generation generates fiction without acting.",
+    "hooks": [
+      {"id": "the_independence_bargain", "era": "historical", "drawn_from": "sir_mercury_eldrich", "premise": "leaked papers fuel competing discourses of liberation, pragmatism, colonial compromise and elite privilege.", "strategic_shape": "the interpretation of a past event is contested; the choices are about which reading the faction sponsors"},
+      {"id": "the_islands_charter", "era": "present", "drawn_from": "sir_mars_eldrich", "premise": "debate the legality of tax and offshore privileges, national jurisdiction and workers' protections.", "strategic_shape": "legitimacy, jobs, investment and party relations move together"},
+      {"id": "the_latest_eldrich_invention", "era": "present", "drawn_from": "sir_mars_eldrich", "premise": "viral absurdity, a spectacular commercial promise or an intellectual-property scandal.", "strategic_shape": "publicity converts into media and political influence, with reputational risk"},
+      {"id": "a_mars_mission", "era": "present", "drawn_from": "sir_mars_eldrich", "premise": "a corporate space project competes with workers' demands or national infrastructure.", "strategic_shape": "a real, expensive, locally consequential commitment a government can tax, subsidise or nationalise the optics of"},
+      {"id": "the_uranus_papers", "era": "historical", "drawn_from": "sir_uranus_eldrich", "premise": "ambiguous Victorian testimony and occult rumours create competing interpretations.", "strategic_shape": "no predetermined supernatural revelation; the archive may mislead"}
+    ]
+  },
+  "cautions": [
+    "PROPOSAL ONLY. Nothing here is a locked rule, and no number above is approved.",
+    "Uranus and Mercury are historical and must stay invocable rather than agentic: they generate events, they do not compete for action slots.",
+    "Sir Mars Eldrich is already a landed canonical character card; this roster references it and does not restate or re-author it.",
+    "Allegations, satire, propaganda, established history and unresolved NHI/PSI mysteries must stay clearly distinguishable. The dynasty's evidence_classes fields exist so a claim cannot drift upward into canon by repetition.",
+    "No extra leader mission slots are introduced: the roster is four seats per faction, per #323.",
+    "The port is not sovereign territory: Eldrich's wealth affects but does not override gameplay."
+  ]
+}
