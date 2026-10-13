@@ -407,7 +407,7 @@ def council_from_dict(data: Mapping[str, Any]) -> Council:
     }
     leaders = tuple(
         CouncilLeader(
-            identifier=str(item["id"]),
+            identifier=str(item.get("id") or ""),
             name=str(item.get("name") or ""),
             portfolio=str(item.get("portfolio") or ""),
             status=str(item.get("status") or ""),
@@ -415,11 +415,10 @@ def council_from_dict(data: Mapping[str, Any]) -> Council:
             detail={k: v for k, v in item.items() if k not in known_leader_keys},
         )
         for item in _records(data.get("leaders"))
-        if item.get("id")
     )
     missions = tuple(
         MissionDeclaration(
-            identifier=str(item["id"]),
+            identifier=str(item.get("id") or ""),
             leader_id=str(item.get("leader_id") or ""),
             kind=str(item.get("kind") or ""),
             target_id=str(item.get("target_id") or ""),
@@ -433,7 +432,6 @@ def council_from_dict(data: Mapping[str, Any]) -> Council:
             detail={k: v for k, v in item.items() if k not in known_mission_keys},
         )
         for item in _records(data.get("missions"))
-        if item.get("id")
     )
     return Council(
         identifier=str(data["id"]),
