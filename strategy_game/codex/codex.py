@@ -22,6 +22,7 @@ from typing import Any, Iterable, Mapping
 
 from .entities import (
     CodexError,
+    EntityDescriptor,
     EntityForm,
     EntityOntology,
     EntityRecord,
@@ -71,6 +72,16 @@ class Codex:
 
     def by_form(self, form: EntityForm) -> tuple[EntityRecord, ...]:
         return tuple(item for item in self.entries.values() if item.form is form)
+
+    def by_descriptor(self, descriptor: EntityDescriptor) -> tuple[EntityRecord, ...]:
+        """Entries carrying a `RULEBOOK.md` §43.4 extended descriptor.
+
+        Descriptors are a separate, non-exclusive axis from ``ontology`` (``EntityOntology``): an entry
+        can be, say, Noetic *and* Collective, so this filters on the descriptor list rather than on the
+        primary type.
+        """
+        return tuple(item for item in self.entries.values()
+                     if descriptor in item.ontology_descriptors)
 
     def by_reveal_stage(self, stage: str) -> tuple[EntityRecord, ...]:
         needle = str(stage).strip().casefold()

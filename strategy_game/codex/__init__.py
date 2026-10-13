@@ -18,9 +18,13 @@ by a test (#271) — only this code's behaviour is tested.
 """
 from .codex import CODEX_PATH, Codex, load_codex
 from .entities import (
+    CONSCIOUSNESS_STATUSES,
+    ENTITY_DESCRIPTORS,
     ENTITY_ONTOLOGIES,
     KNOWLEDGE_STATUSES,
     CodexError,
+    ConsciousnessStatus,
+    EntityDescriptor,
     EntityForm,
     EntityOntology,
     EntityRecord,
@@ -28,6 +32,7 @@ from .entities import (
 )
 from .translation import (
     COMMUNICATION_MODES,
+    LOAD_BEARING_SIGNIFIERS,
     TRANSLATION_LADDER,
     CommunicationMode,
     Confidence,
@@ -43,9 +48,13 @@ from .translation import (
 
 __all__ = [
     # entities
+    "CONSCIOUSNESS_STATUSES",
+    "ENTITY_DESCRIPTORS",
     "ENTITY_ONTOLOGIES",
     "KNOWLEDGE_STATUSES",
     "CodexError",
+    "ConsciousnessStatus",
+    "EntityDescriptor",
     "EntityForm",
     "EntityOntology",
     "EntityRecord",
@@ -56,6 +65,7 @@ __all__ = [
     "load_codex",
     # translation
     "COMMUNICATION_MODES",
+    "LOAD_BEARING_SIGNIFIERS",
     "TRANSLATION_LADDER",
     "CommunicationMode",
     "Confidence",

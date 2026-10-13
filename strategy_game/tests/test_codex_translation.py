@@ -20,6 +20,7 @@ sys.path.insert(0, str(ROOT))
 
 from strategy_game.codex import (  # noqa: E402
     COMMUNICATION_MODES,
+    LOAD_BEARING_SIGNIFIERS,
     TRANSLATION_LADDER,
     CodexError,
     CommunicationMode,
@@ -223,6 +224,38 @@ class SignalVariantTests(unittest.TestCase):
     def test_a_session_with_no_mode_cannot_present_a_signal(self):
         with self.assertRaises(CodexError):
             signal_variant((), seed=1)
+
+
+class LoadBearingSignifierTests(unittest.TestCase):
+    """The issue's pragmatics signifiers ("gift", "we"...) as a declared, non-invented set."""
+
+    def test_the_issue_s_pragmatic_signifiers_are_declared(self):
+        for name in ("we", "gift", "weapon", "voluntary", "service", "harvest", "ownership",
+                     "individual"):
+            with self.subTest(name=name):
+                self.assertIn(name, LOAD_BEARING_SIGNIFIERS)
+
+    def test_the_signifier_set_is_the_issue_s_own_example_list(self):
+        self.assertEqual(
+            sorted(LOAD_BEARING_SIGNIFIERS),
+            ["gift", "harvest", "individual", "ownership", "service", "voluntary", "we", "weapon"],
+        )
+
+
+class MisunderstandingIsAStateTests(unittest.TestCase):
+    """A tested-but-wrong reading is a state the session keeps, not a failure that resets it."""
+
+    def test_a_wrong_reading_does_not_move_the_ladder_backwards(self):
+        session = ContactSession(entity_id="e1", modes=(CommunicationMode.SILENCE,))
+        session.advance_to(TranslationStage.TEST_UNDER_UNCERTAINTY)
+        session.propose("gift", "a weapon", Confidence.LOW, outcome="the reading was falsified")
+        # The falsified reading stays recorded beside the surviving ones; progress is monotonic.
+        self.assertIs(session.stage, TranslationStage.TEST_UNDER_UNCERTAINTY)
+        self.assertEqual([m.text for m in session.meanings_for("gift")], ["a weapon"])
+        session.propose("gift", "a trade good", Confidence.MEDIUM, outcome="verified on a second visit")
+        self.assertEqual(len(session.meanings_for("gift")), 2)
+        with self.assertRaises(CodexError):
+            session.advance_to(TranslationStage.DETECT_SIGNAL)
 
 
 if __name__ == "__main__":

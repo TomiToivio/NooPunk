@@ -9,7 +9,7 @@ here is asserted by a test; the executable half is `strategy_game/codex/`, teste
 
 | Module | Contents |
 | --- | --- |
-| `codex/entities.py` | `EntityRecord` with the issue's field list, `EntityOntology` (Biologics / Noetics / Plasmoids / Constructs), `EntityForm` (species, polity, organization, avatar, individual, vessel/technology, mythonym), `KnowledgeStatus` (the issue's six registers) |
+| `codex/entities.py` | `EntityRecord` with the issue's field list, `EntityOntology` (Biologics / Noetics / Plasmoids / Constructs), `EntityForm` (species, polity, organization, avatar, individual, vessel/technology, mythonym), `KnowledgeStatus` (the issue's six registers), `EntityDescriptor` (`RULEBOOK.md` §43.4 extended categories), `ConsciousnessStatus` (the never-derived posture) |
 | `codex/codex.py` | `Codex` — lookup by identifier, display name or alias; queries by ontology, form, stage and register; a player-facing projection that withholds GM material |
 | `codex/translation.py` | `CommunicationMode`, the `TranslationStage` ladder, `Lexicon`/`Meaning`, `ContactSession`, `machine_candidate`, `signal_variant` |
 | `data/codex.json` | 17 entries, all four ontologies represented |
@@ -85,3 +85,45 @@ not testable.
    scene and failed interpretation with explicit alternative meanings, research/skill choices and
    board consequences". The data model supports it; the scene needs the strategy layer's rules
    (Gate C) and the skill-check procedure (Gate A).
+
+## 6. What the second pass added (2026-10-13): descriptors, the consciousness posture, the polity fix
+
+Three gaps the first pass left open are now closed as **structure, validation and code-only tests** — no
+mechanic, no statistic, no new canon:
+
+1. **The `RULEBOOK.md` §43.4 extended descriptors** are carried as `EntityDescriptor` /
+   `EntityRecord.ontology_descriptors`: Process, Ecology, Assemblage, Collective, Geotic,
+   Hybrid/Composite, Anomaly/Unclassified. They are a *second, non-exclusive* axis on top of the primary
+   ontology, because §43.4 says "some are better treated as cross-cutting descriptors than as formal
+   classes". `Codex.by_descriptor()` queries them.
+2. **The consciousness posture** is `ConsciousnessStatus` on the entity record, sharing the vocabulary of
+   the already-merged character-card layer (`unknown` / `contested` / `asserted_in_world`), defaulting to
+   `unknown` and **never derived** — no method returns a boolean, and an in-world assertion needs a cited
+   source (`rulebook/6_PSYCHIC.md` §6.7.3). The plasmoid entries carry `contested`, on their own
+   "unresolved" text, so a plasmoid's physical existence stays a different question from its consciousness.
+3. **The ontology-on-a-polity inconsistency** is reconciled: `EntityRecord.ontology` may now be **absent**
+   for a faction form (`polity`/`organization`), recorded as an explicit `null` with a stated
+   `ontology_absent_reason`; a body form may not omit its substrate, and an omission without a reason is
+   refused. `uccc` and `orion_sphere` now record the absence (their own `biology_or_substrate` reads
+   "not applicable"), so the type/faction collapse §43.4 forbids is gone. `djinn` keeps its single
+   dominant substrate as §43.3 permits.
+
+The translation model also gained `LOAD_BEARING_SIGNIFIERS` — the issue's own pragmatics list
+("gift", "weapon", "we", "voluntary", "service", "harvest", "ownership", "individual") — as the declared
+set `EntityRecord.referent_collisions` names when an entity expresses one non-equivalently (the UCCC
+"we", a metallic sphere's "individual"). Misunderstanding is already a *state*, not a failure: the ladder
+never moves backwards, so a falsified reading closes a hypothesis while the entity stays open (§16.4).
+
+### PENDING — author rulings this pass did **not** make
+
+- **Whether a §43.4 descriptor becomes a formal `EntityOntology` value.** §43.4 names Process as "the
+  strongest candidate for an additional formal class"; the structure makes that decision expressible and
+  does not pre-empt it.
+- **Whether a phenomenon/manifestation gets its own `EntityForm` value or a typed status field.**
+  `EntityForm` is unchanged (no `phenomenon` value was invented); the record now carries a free-text
+  `entity_status` so "phenomenon" or "not an entity" can be recorded without a locked taxonomy.
+- **Which entries carry which descriptors, and which carry `referent_collisions`.** Three descriptor
+  assignments and two referent collisions are populated from the entries' own text; the rest are the
+  author's.
+- The **flagship species**, the **reveal-stage vocabulary**, the **confidence vocabulary** and the
+  **translation scene's board consequences** (Gates A and C) remain open, as in §5 and §4.

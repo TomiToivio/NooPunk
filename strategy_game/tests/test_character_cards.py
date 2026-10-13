@@ -379,7 +379,12 @@ class SchemaTests(unittest.TestCase):
     def test_every_claim_status_in_the_schema_is_one_the_codex_declares(self) -> None:
         declared = {str(entry.get("knowledge_status")) for entry in codex_entry_map().values()}
         self.assertTrue(set(CLAIM_STATUSES) >= declared, declared - set(CLAIM_STATUSES))
-        self.assertTrue(set(NHI_CATEGORIES) >= {str(e.get("ontology")) for e in codex_entry_map().values()})
+        # A faction record may record its ontology as *absent with a reason* (a polity is not a
+        # substrate, per RULEBOOK §43.4), so only the ontologies the codex actually declares must be
+        # among the four categories.
+        self.assertTrue(set(NHI_CATEGORIES) >= {
+            str(e.get("ontology")) for e in codex_entry_map().values() if e.get("ontology")
+        })
 
 
 class LoaderTests(unittest.TestCase):
