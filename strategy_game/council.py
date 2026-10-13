@@ -421,8 +421,18 @@ class CouncilModel:
             problems.append(
                 f"the vocabulary declares {len(self.portfolios)} offices; issue #323's council is four"
             )
+        # A repeated identifier is not an additional character/action slot. A mission
+        # lookup would otherwise silently resolve to the first matching record.
+        seen_leader_ids: set[str] = set()
         held: dict[str, str] = {}
         for leader in council.leaders:
+            if not leader.identifier.strip():
+                problems.append("council leader has no identifier")
+            elif leader.identifier in seen_leader_ids:
+                problems.append(
+                    f"leader identifier {leader.identifier!r} appears more than once in the roster"
+                )
+            seen_leader_ids.add(leader.identifier)
             if leader.status and leader.status not in LEADER_STATUSES:
                 problems.append(
                     f"leader {leader.identifier}: status {leader.status!r} is not one of "
