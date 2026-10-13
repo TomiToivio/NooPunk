@@ -40,17 +40,23 @@ from typing import Any, Iterable, Mapping
 from .provenance import Provenance
 from .quantities import QUANTITY_IDS, unknown_quantities
 from .relationships import RelationshipEdge, RelationshipSet
+from .tabletop.cards import Card, CardRole, CardType
 
 __all__ = [
     "CHANNEL_APPLIES",
     "COUNCIL_FORMAT",
     "DATA_PATH",
+    "EVENT_EFFECT_TARGET_KINDS",
+    "EVENT_TRIGGER_KINDS",
     "LEADER_STATUSES",
     "PORTFOLIO_IDS",
+    "CharacterEvent",
     "Council",
     "CouncilError",
     "CouncilLeader",
     "CouncilModel",
+    "EventEffect",
+    "EventOption",
     "MissionCost",
     "MissionDeclaration",
     "PassiveEffect",
@@ -59,6 +65,8 @@ __all__ = [
     "StrategicChannel",
     "council_from_dict",
     "load_council",
+    "render_event_front",
+    "to_event_card",
 ]
 
 #: The declared file format, so a caller cannot silently load a different document.
@@ -88,6 +96,24 @@ LEADER_STATUSES: tuple[str, ...] = (
 
 #: How a strategic channel attaches to a tie: by its tags, or to every tie there is.
 CHANNEL_APPLIES: tuple[str, ...] = ("tag_conditional", "every_tie")
+
+#: The observable changes a character event may fire on. Issue #323 asks for events triggered by
+#: relationships, traits and outcomes of the state this layer already carries, and these three are
+#: exactly that state — no fourth kind is invented here.
+EVENT_TRIGGER_KINDS: tuple[str, ...] = (
+    "leader_status_change",
+    "relationship_state_change",
+    "mission_outcome",
+)
+
+#: What an event option may name as the state it changes. ``relationship_state`` is deliberately not a
+#: closed list: the edge owns its state vocabulary (``relationships.py``), so no second vocabulary is
+#: declared here.
+EVENT_EFFECT_TARGET_KINDS: tuple[str, ...] = (
+    "quantity",
+    "leader_status",
+    "relationship_state",
+)
 
 
 class CouncilError(ValueError):
@@ -272,6 +298,75 @@ class MissionDeclaration:
 
 
 @dataclass
+class EventEffect:
+    """What one event option touches. The target is named; how far it moves is not approved."""
+
+    target_kind: str = ""
+    target: str = ""
+    declared: bool = False
+    reason: str = ""
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "target_kind": self.target_kind,
+            "target": self.target,
+            "declared": self.declared,
+            "reason": self.reason,
+        }
+
+
+@dataclass
+class EventOption:
+    """One named choice. It has to say what it changes, or say why that is undeclared."""
+
+    identifier: str
+    label: str = ""
+    effects: tuple[EventEffect, ...] = ()
+    #: Set only where an option's effect is deliberately left to the author. Emptiness with a reason.
+    pending_reason: str = ""
+    detail: dict[str, Any] = field(default_factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        payload = {
+            "id": self.identifier,
+            "label": self.label,
+            "effects": [effect.to_dict() for effect in self.effects],
+            "pending_reason": self.pending_reason,
+        }
+        payload.update(self.detail)
+        return payload
+
+
+@dataclass
+class CharacterEvent:
+    """One declared character event: a trigger, participants and named options. Nothing fires here."""
+
+    identifier: str
+    label: str = ""
+    trigger_kind: str = ""
+    trigger_ref: str = ""
+    participants: tuple[str, ...] = ()
+    options: tuple[EventOption, ...] = ()
+    narrative_text: str = ""
+    placeholder: bool = False
+    detail: dict[str, Any] = field(default_factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        payload = {
+            "id": self.identifier,
+            "label": self.label,
+            "trigger_kind": self.trigger_kind,
+            "trigger_ref": self.trigger_ref,
+            "participants": list(self.participants),
+            "options": [option.to_dict() for option in self.options],
+            "narrative_text": self.narrative_text,
+            "placeholder": self.placeholder,
+        }
+        payload.update(self.detail)
+        return payload
+
+
+@dataclass
 class Council:
     """A faction's four offices and the turn's declared moves."""
 
@@ -365,6 +460,9 @@ class CouncilModel:
     channels: tuple[StrategicChannel, ...] = ()
     disagreement: dict[str, Any] = field(default_factory=dict)
     worked_example: dict[str, Any] = field(default_factory=dict)
+    #: Issue #323's minimum ``Event`` record, as a container. Nothing here fires or resolves one.
+    character_events: tuple[CharacterEvent, ...] = ()
+    event_declaration: dict[str, Any] = field(default_factory=dict)
     cautions: tuple[dict[str, Any], ...] = ()
     pending_author_decisions: tuple[dict[str, Any], ...] = ()
     sources: tuple[str, ...] = ()
@@ -386,6 +484,12 @@ class CouncilModel:
         for row in self.status_rows:
             if row.status == status:
                 return row
+        return None
+
+    def event(self, identifier: str) -> CharacterEvent | None:
+        for event in self.character_events:
+            if event.identifier == identifier:
+                return event
         return None
 
     def worked_example_council(self) -> Council:
@@ -618,6 +722,141 @@ class CouncilModel:
                 )
         return tuple(reports)
 
+    # -- the character-event container: the issue's Event requirements, refused by name ---------
+
+    def event_problems(
+        self,
+        events: Iterable[CharacterEvent] | None = None,
+    ) -> tuple[str, ...]:
+        """Issue #323's own ``Event`` requirements, refused by name. Empty means the deck is legal.
+
+        The issue's minimum data model lists ``Event: trigger, participants, choice options, state
+        effects, short narrative text``, and its acceptance criterion 6 requires a triggered choice to
+        change concrete strategy state rather than dialogue alone. So an event has to name a trigger
+        from the declared trigger kinds, name the record its trigger fires on, name its participants,
+        carry options, and every option has to name a state effect *or* give the reason its effect is
+        undeclared. Nothing here fires, schedules or resolves anything, and no magnitude is checked —
+        a refusal is over the container's completeness, never over an effect.
+        """
+        declared = tuple(self.character_events if events is None else events)
+        problems: list[str] = []
+        seen: set[str] = set()
+        for event in declared:
+            head = f"character event {event.identifier or '<no id>'}"
+            if not event.identifier.strip():
+                problems.append("character event has no identifier")
+            elif event.identifier in seen:
+                problems.append(f"{head}: identifier appears more than once in the deck")
+            seen.add(event.identifier)
+            if not event.trigger_kind.strip():
+                problems.append(
+                    f"{head}: names no trigger_kind. Issue #323's Event record carries a trigger, and "
+                    "an event nothing can fire is not an event"
+                )
+            elif event.trigger_kind not in EVENT_TRIGGER_KINDS:
+                problems.append(
+                    f"{head}: trigger_kind {event.trigger_kind!r} is not one of {EVENT_TRIGGER_KINDS}"
+                )
+            if not event.trigger_ref.strip():
+                problems.append(
+                    f"{head}: names no trigger_ref; a trigger has to name the record whose change "
+                    "fires it, or the deck cannot say when it applies"
+                )
+            if not event.participants:
+                problems.append(
+                    f"{head}: no participants. Issue #323's Event record names participants, and an "
+                    "event with nobody in it has no choice for anybody to make"
+                )
+            if any(not participant.strip() for participant in event.participants):
+                problems.append(f"{head}: a participant has no identifier")
+            if not event.options:
+                problems.append(
+                    f"{head}: no options. Issue #323's Event record carries choice options, and an "
+                    "event with no option is a cutscene"
+                )
+            for option in event.options:
+                option_head = f"{head} option {option.identifier or '<no id>'}"
+                if not option.identifier.strip():
+                    problems.append(f"{head}: an option has no identifier")
+                if not option.effects and not option.pending_reason.strip():
+                    problems.append(
+                        f"{option_head}: names no state effect and gives no reason. Acceptance "
+                        "criterion 6 requires a triggered choice to change concrete strategy state, "
+                        "not only dialogue, so an option that changes nothing is refused rather than "
+                        "authored as filler"
+                    )
+                for effect in option.effects:
+                    if not effect.target_kind.strip():
+                        problems.append(f"{option_head}: an effect names no target_kind")
+                    elif effect.target_kind not in EVENT_EFFECT_TARGET_KINDS:
+                        problems.append(
+                            f"{option_head}: effect target_kind {effect.target_kind!r} is not one of "
+                            f"{EVENT_EFFECT_TARGET_KINDS}"
+                        )
+                    if not effect.target.strip():
+                        problems.append(f"{option_head}: an effect names no target")
+                    elif effect.target_kind == "quantity" and effect.target not in QUANTITY_IDS:
+                        problems.append(
+                            f"{option_head}: effect target {effect.target!r} is not one of the six "
+                            f"{QUANTITY_IDS}"
+                        )
+                    elif effect.target_kind == "leader_status" and effect.target not in LEADER_STATUSES:
+                        problems.append(
+                            f"{option_head}: effect target {effect.target!r} is not one of "
+                            f"{LEADER_STATUSES}"
+                        )
+        return tuple(problems)
+
+    def event_reports(
+        self,
+        events: Iterable[CharacterEvent] | None = None,
+        *,
+        council: Council | None = None,
+    ) -> tuple[str, ...]:
+        """What the author has not ruled on in the deck, reported with its source. Never a refusal.
+
+        Three things are reported and never refused: that the container's effects are undeclared (the
+        proposal E1-E3 is unapproved), that an event carries a single option (two or three options are
+        proposed, not approved), and that a participant is not in the council roster — issue #323
+        explicitly allows a limited cast of important NPCs outside the four leaders.
+        """
+        declared = tuple(self.character_events if events is None else events)
+        reports: list[str] = []
+        if not self.event_declaration:
+            reports.append(
+                "no character-event container is declared in this document, so the triggered-choice "
+                "half of acceptance criterion 6 has no slot to land in"
+            )
+        elif not self.event_declaration.get("declared"):
+            reports.append(
+                "character events: the container declares the shape and approves nothing. "
+                f"{self.event_declaration.get('reason') or ''}"
+            )
+        for event in declared:
+            head = f"character event {event.identifier}"
+            if len(event.options) == 1:
+                reports.append(
+                    f"{head}: carries one option. Two or three named options are proposed (E2 of "
+                    "docs/design/ISSUE_323_RULES_STAGES_BCDE_PROPOSAL.md) and that proposal is not "
+                    "approved, so this is reported rather than refused."
+                )
+            for option in event.options:
+                for effect in option.effects:
+                    if not effect.declared:
+                        reports.append(
+                            f"{head} option {option.identifier}: names {effect.target_kind} "
+                            f"{effect.target!r} and the change itself is undeclared. {effect.reason}"
+                        )
+            if council is not None:
+                for participant in event.participants:
+                    if council.leader(participant) is None:
+                        reports.append(
+                            f"{head}: participant {participant!r} is not in this faction's roster. "
+                            "Issue #323 allows a limited cast of important local NPCs alongside the "
+                            "four leaders, so this is reported rather than refused."
+                        )
+        return tuple(reports)
+
     # -- reporting: the two structural readings --------------------------------------------
 
     def shared_interest_report(self, council: Council | None = None) -> dict[str, Any]:
@@ -771,6 +1010,15 @@ class CouncilModel:
                 (channel.identifier, "carries", name)
                 for name in unknown_quantities(channel.carries)
             )
+        for event in self.character_events:
+            if event.trigger_kind and event.trigger_kind not in EVENT_TRIGGER_KINDS:
+                out.append((event.identifier, "trigger_kind", event.trigger_kind))
+            for option in event.options:
+                for effect in option.effects:
+                    if effect.target_kind and effect.target_kind not in EVENT_EFFECT_TARGET_KINDS:
+                        out.append((event.identifier, "effect.target_kind", effect.target_kind))
+                    if effect.target_kind == "quantity" and effect.target not in QUANTITY_IDS:
+                        out.append((event.identifier, "effect.target", effect.target))
         return tuple(out)
 
 
@@ -840,6 +1088,50 @@ def council_model_from_dict(data: Mapping[str, Any]) -> CouncilModel:
         for record in _records(data.get("strategic_channels"))
     )
     size_record = dict(data.get("council_size") or {})
+    events_record = dict(data.get("character_events") or {})
+    events = tuple(
+        CharacterEvent(
+            identifier=str(record.get("id") or ""),
+            label=str(record.get("label") or ""),
+            trigger_kind=str(record.get("trigger_kind") or ""),
+            trigger_ref=str(record.get("trigger_ref") or ""),
+            participants=_strings(record.get("participants")),
+            options=tuple(
+                EventOption(
+                    identifier=str(option.get("id") or ""),
+                    label=str(option.get("label") or ""),
+                    effects=tuple(
+                        EventEffect(
+                            target_kind=str(effect.get("target_kind") or ""),
+                            target=str(effect.get("target") or ""),
+                            declared=bool(effect.get("declared", False)),
+                            reason=str(effect.get("reason") or ""),
+                        )
+                        for effect in _records(option.get("effects"))
+                    ),
+                    pending_reason=str(option.get("pending_reason") or ""),
+                    detail={
+                        key: value
+                        for key, value in option.items()
+                        if key not in {"id", "label", "effects", "pending_reason"}
+                    },
+                )
+                for option in _records(record.get("options"))
+            ),
+            narrative_text=str(record.get("narrative_text") or ""),
+            placeholder=bool(record.get("placeholder", False)),
+            detail={
+                key: value
+                for key, value in record.items()
+                if key
+                not in {
+                    "id", "trigger_kind", "trigger_ref", "participants", "options",
+                    "narrative_text", "placeholder",
+                }
+            },
+        )
+        for record in _records(events_record.get("events"))
+    )
     return CouncilModel(
         portfolios=portfolios,
         portfolio_order=tuple(order),
@@ -853,6 +1145,8 @@ def council_model_from_dict(data: Mapping[str, Any]) -> CouncilModel:
         channels=channels,
         disagreement=dict(data.get("structural_disagreement") or {}),
         worked_example=dict(data.get("worked_example") or {}),
+        character_events=events,
+        event_declaration=events_record,
         cautions=_records(data.get("cautions")),
         pending_author_decisions=_records(data.get("pending_author_decisions")),
         sources=_strings(data.get("sources")),
@@ -865,10 +1159,51 @@ def council_model_from_dict(data: Mapping[str, Any]) -> CouncilModel:
                 "format", "status", "sources", "provenance", "consumes", "council_size",
                 "central_rule", "portfolios", "structural_disagreement", "mission",
                 "status_consequences", "strategic_channels", "worked_example", "cautions",
-                "pending_author_decisions",
+                "pending_author_decisions", "character_events",
             }
         },
     )
+
+
+def to_event_card(event: CharacterEvent) -> Card:
+    """Project a declared character event onto the existing tabletop :class:`Card`.
+
+    ``CardType.EVENT`` and ``CardRole.PLAYABLE_MOVE`` are the **primitive's own** members, so the event
+    container is a typed declaration rather than a second card vocabulary — the same move
+    ``faction_cards.to_card()`` makes for its four card types. ``prerequisites`` and ``effects`` stay
+    empty on the primitive because what an option changes is gated work, so the projection carries
+    labels and links only. The provenance is left at its default, where an unrecorded origin stays
+    visible (``UNKNOWN``) rather than reading as fact.
+    """
+    return Card(
+        identifier=event.identifier,
+        card_type=CardType.EVENT,
+        title=event.label or event.identifier,
+        role=CardRole.PLAYABLE_MOVE,
+        text=event.narrative_text,
+        tags=(
+            f"trigger:{event.trigger_kind}",
+            *(f"participant:{participant}" for participant in event.participants),
+            *(f"option:{option.identifier}" for option in event.options),
+            *(
+                f"effect:{effect.target_kind}:{effect.target}"
+                for option in event.options
+                for effect in option.effects
+            ),
+        ),
+    )
+
+
+def render_event_front(event: CharacterEvent) -> str:
+    """The compact face: the trigger, the participants and the named options. Never an effect's size."""
+    lines = [f"{event.label or event.identifier} — character event ({event.trigger_kind})"]
+    if event.trigger_ref:
+        lines.append(f"fires on: {event.trigger_ref}")
+    if event.participants:
+        lines.append("participants: " + ", ".join(event.participants))
+    for option in event.options:
+        lines.append(f"- {option.label or option.identifier}")
+    return "\n".join(lines)
 
 
 def load_council(path: Path | str | None = None) -> CouncilModel:

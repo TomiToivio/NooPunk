@@ -335,5 +335,103 @@ class ScopeDirectiveTests(unittest.TestCase):
         self.assertNotIn("from laclaugpt", text)
 
 
+class FirstTurnContainerTests(unittest.TestCase):
+    """Issue #346 criterion 7: the container that names the slots and holds no value."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.model = load_faction_creation()
+
+    def test_the_shipped_container_is_well_formed_and_declares_no_value(self):
+        self.assertTrue(self.model.first_turn)
+        self.assertEqual(self.model.first_turn_problems(), ())
+        self.assertIs(self.model.first_turn["values_declared"], False)
+        self.assertTrue(self.model.first_turn["reason"])
+
+    def test_the_container_names_the_issues_own_candidate_fields(self):
+        fields = self.model.first_turn_fields()
+        self.assertTrue(fields)
+        for field in fields:
+            with self.subTest(field=field.get("id")):
+                self.assertTrue(field.get("id"))
+                self.assertTrue(field.get("label"))
+
+    def test_the_container_still_leaves_the_tag_and_axis_vocabularies_intact(self):
+        self.assertEqual(self.model.off_vocabulary(), ())
+        self.assertEqual(self.model.dangling_tag_references(), ())
+        self.assertIs(self.model.numeric_scale_approved, False)
+
+    def test_a_field_that_carries_a_value_is_refused_by_name(self):
+        model = load_faction_creation()
+        model.first_turn["candidate_sheet_fields"][0]["value"] = 5
+        problems = " | ".join(model.first_turn_problems())
+        self.assertIn("holds no value", problems)
+
+    def test_a_named_field_that_carries_a_number_is_refused(self):
+        model = load_faction_creation()
+        model.first_turn["candidate_sheet_fields"][0]["label"] = 3
+        self.assertIn(
+            "is the number",
+            " | ".join(model.first_turn_problems()),
+        )
+
+    def test_a_field_with_no_identifier_or_a_repeated_one_is_refused(self):
+        model = load_faction_creation()
+        model.first_turn["candidate_sheet_fields"] = [{"id": ""}, {"id": "funding"}, {"id": "funding"}]
+        problems = " | ".join(model.first_turn_problems())
+        self.assertIn("has no identifier", problems)
+        self.assertIn("appears more than once", problems)
+
+    def test_a_container_that_does_not_say_whether_values_are_declared_is_refused(self):
+        model = load_faction_creation()
+        del model.first_turn["values_declared"]
+        self.assertIn(
+            "does not state values_declared",
+            " | ".join(model.first_turn_problems()),
+        )
+
+    def test_an_empty_field_is_only_honest_with_the_reason_it_is_empty(self):
+        model = load_faction_creation()
+        model.first_turn["reason"] = ""
+        self.assertIn("gives no reason", " | ".join(model.first_turn_problems()))
+
+    def test_a_document_without_the_container_says_so_rather_than_inventing_one(self):
+        self.assertIn(
+            "no first-turn container is declared",
+            " | ".join(_fixture().first_turn_problems()),
+        )
+
+
+class PendingDecisionTests(unittest.TestCase):
+    """The two criteria #346 cannot close: the reason each stays open is recorded, not restated twice."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.model = load_faction_creation()
+
+    def test_every_pending_decision_carries_the_reason_it_is_open(self):
+        self.assertTrue(self.model.pending_decisions())
+        self.assertEqual(self.model.unreasoned_decisions(), ())
+        for item in self.model.pending_decisions():
+            with self.subTest(decision=item.get("id")):
+                self.assertTrue(item.get("container_instead"))
+
+    def test_the_first_resource_question_is_recorded_as_an_economy_the_author_owns(self):
+        ids = {item["id"] for item in self.model.pending_decisions()}
+        self.assertIn("first_turn_resource_constraints", ids)
+
+    def test_the_resolution_question_is_pointed_at_rather_than_recorded_twice(self):
+        """One seam, one record: the resolution ruling lives in data/council.json and is cited here."""
+        from strategy_game.council import load_council
+
+        council_ids = {item["id"] for item in load_council().pending_decisions()}
+        self.assertIn("mission_resolution", council_ids)
+        entry = next(
+            item for item in self.model.pending_decisions()
+            if item["id"] == "abstract_mission_resolution"
+        )
+        self.assertIn("council.json", entry["why_not_decided"])
+
+
 if __name__ == "__main__":
     unittest.main()

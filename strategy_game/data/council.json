@@ -250,6 +250,113 @@
     "enforced": false,
     "reason": "every row is DRAFT, and three of the six carry a TODO. A mission led by a leader in a no-mission row is therefore REPORTED with the row cited, not refused: refusing it would implement an unapproved rule."
   },
+  "character_events": {
+    "id": "character_event_declarations",
+    "criterion": "issue #323 acceptance criterion 6: 'Important NPC relationships and triggered RPG choices change concrete strategy state, not only dialogue'",
+    "data_model": "issue #323's minimum data model lists Event: trigger, participants, choice options, state effects, short narrative text. This is that container and nothing else.",
+    "declared": false,
+    "reason": "Which events exist, which option is taken and what each option CHANGES are rules. Issue #323 stage E and the E1-E3 proposal are unapproved (docs/design/ISSUE_323_RULES_STAGES_BCDE_PROPOSAL.md), and strategy_game/RULEBOOK.md still says NO RULES APPROVED. The container declares the SHAPE so the decision is expressible; the deck's content and every effect's direction and size stay the author's.",
+    "trigger_kinds": [
+      {
+        "id": "leader_status_change",
+        "label": "a leader's status changed",
+        "observable_in": "council.py LEADER_STATUSES, read on a CouncilLeader.status",
+        "note": "issue #323 asks for triggers based on relationships and traits; this is the status vocabulary the layer already declares"
+      },
+      {
+        "id": "relationship_state_change",
+        "label": "a relationship edge changed state",
+        "observable_in": "relationships.py RelationshipEdge.state and its state_history",
+        "note": "the edge owns its state vocabulary; no second list of relationship states is declared here"
+      },
+      {
+        "id": "mission_outcome",
+        "label": "a declared active move produced an outcome",
+        "observable_in": "council.py MissionDeclaration.outcome, an uninterpreted field",
+        "note": "nothing in this package writes an outcome, so nothing in this package can fire this trigger. The slot is declared; the mechanism is not"
+      }
+    ],
+    "effect_target_kinds": [
+      {
+        "id": "quantity",
+        "label": "one of the six quantities",
+        "vocabulary": "strategy_game/quantities.py, transcribed from docs/design/NOOPUNK_GLOBAL.md section 7"
+      },
+      {
+        "id": "leader_status",
+        "label": "a leader's availability",
+        "vocabulary": "council.py LEADER_STATUSES"
+      },
+      {
+        "id": "relationship_state",
+        "label": "a relationship edge's condition",
+        "vocabulary": "the edge's own declared state_vocabulary in relationships.py. Deliberately not a second list of states: the edge owns its vocabulary, so this container checks only that a target is named"
+      }
+    ],
+    "effect_shape": {
+      "fields": [
+        "target_kind",
+        "target",
+        "declared",
+        "reason"
+      ],
+      "note": "an effect names WHAT it touches. declared is false on every effect here because how far it moves and in which direction is a rule."
+    },
+    "options_rule": {
+      "id": "an_option_names_what_it_changes",
+      "note": "Issue #323's criterion 6 requires a triggered choice to change concrete strategy state and not dialogue alone, so an option that names no effect and gives no reason is refused by name. An option that names an effect whose size is unauthored carries declared false and its reason instead. The refusal is over the container's completeness, never over an effect.",
+      "approved": false
+    },
+    "tabletop_projection": {
+      "primitive": "strategy_game/tabletop/cards.py Card, with CardType.EVENT and CardRole.PLAYABLE_MOVE",
+      "note": "the event container is a typed declaration that projects onto the ONE shared card primitive, exactly as faction_cards.to_card() projects its four card types. No second card type vocabulary is introduced.",
+      "prerequisites_and_effects": "left empty on the primitive: what an option changes is gated work, so the projection carries labels and links only"
+    },
+    "events": [
+      {
+        "id": "placeholder_event_status_settles",
+        "placeholder": true,
+        "trigger_kind": "leader_status_change",
+        "trigger_ref": "placeholder_leader_2",
+        "participants": [
+          "placeholder_leader_1",
+          "placeholder_leader_2"
+        ],
+        "narrative_text": "",
+        "options": [
+          {
+            "id": "placeholder_option_carry_the_office",
+            "label": "carry the office until its holder returns",
+            "effects": [
+              {
+                "target_kind": "leader_status",
+                "target": "exhausted",
+                "declared": false,
+                "reason": "whether taking over an office exhausts a leader, and for how long, is a rule and no rule is approved"
+              }
+            ]
+          },
+          {
+            "id": "placeholder_option_let_it_lapse",
+            "label": "let the office stand empty",
+            "effects": [
+              {
+                "target_kind": "quantity",
+                "target": "opinion_support",
+                "declared": false,
+                "reason": "whether an unstaffed office costs opinion/support, and how much, is a rule and no rule is approved"
+              }
+            ]
+          }
+        ],
+        "note": "ILLUSTRATIVE and placeholder: these leader ids are invented for the example, not canon, and no faction from data/global_factions.json is used. It mirrors the worked turn in docs/LEADER_COUNCIL_SYSTEM.md section 8 rather than asserting story content. narrative_text is EMPTY because the prose is the author's."
+      }
+    ],
+    "narrative_note": {
+      "declared": false,
+      "reason": "issue #323 lists a short narrative text on the Event record and the placeholder's is empty: the writing is the author's, and no test reads it"
+    }
+  },
   "strategic_channels": [
     {
       "id": "gates_legality_and_cost",
@@ -435,6 +542,24 @@
       "question": "Is a turn weeks or months?",
       "why_not_decided": "The stage-A specification says the author picks the unit and forbids daily micro-orders; the issue says weeks or months in implementation.",
       "container_instead": "Nothing in this layer reads a clock. A turn is an argument of the validator, not a duration."
+    },
+    {
+      "id": "status_consequence_rows",
+      "question": "What does each leader status actually do: the recovery timing of injured, the compromised reduction, and its exposure risk?",
+      "why_not_decided": "The status table in docs/LEADER_COUNCIL_SYSTEM.md section 4 is DRAFT and three of its six rows carry 'TODO: requires author specification'. Issue #323 acceptance criterion 2 has two clauses, and only the first (at most one active mission per leader per turn) is enforced; the second (unavailable leaders cannot execute one) is its consequence, which is exactly what is unauthored.",
+      "container_instead": "status_consequences holds the six rows, cites their source and sets enforced false with its reason, so a mission led by a leader in a no-mission row is REPORTED with the row cited rather than refused."
+    },
+    {
+      "id": "mission_resolution",
+      "question": "How is a declared mission resolved, and what does its outcome mean?",
+      "why_not_decided": "Gate A (leader RPG) and gate C (strategy) in docs/RULE_SYSTEM_RESEARCH.md are open, and AGENTS.md section 4 reserves resolution, thresholds and cadence to the author. Issue #346 acceptance criterion 6 asks for abstract mission resolution and is blocked on the same ruling; issue #389 approves the RPG layer only and does not license a strategy resolution rule.",
+      "container_instead": "mission.resolution declares nothing, and MissionDeclaration.outcome stays an uninterpreted field that no code in this package writes."
+    },
+    {
+      "id": "event_deck_and_effects",
+      "question": "Which character events exist, how many, and what does each option change?",
+      "why_not_decided": "Issue #323 acceptance criterion 6 and stage E require triggered choices that change concrete strategy state, and the proposal (E1-E3) is unapproved: the trigger conditions, the deck's size and every effect's direction and size are rules. What is landed is the container only.",
+      "container_instead": "character_events declares the trigger kinds, the three effect target kinds and one placeholder event, sets declared false with its reason, and event_problems refuses an option that names no state effect and gives no reason - the one completeness requirement criterion 6 states itself."
     }
   ]
 }

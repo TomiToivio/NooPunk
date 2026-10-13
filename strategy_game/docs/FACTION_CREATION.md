@@ -122,8 +122,11 @@ a severed patron can be replaced is one of the open questions below.
 - **The cultural axis**: liberal/conservative alone, or a distinct authoritarian/libertarian value as
   well. `global_factions.json` currently records authoritarian/libertarian under `additional_dimensions`.
 - **Whether an ordered scale is ever approved**, and if so its range.
-- **The authored diplomacy/recruitment event**, whose shape is recorded as a seed but whose content is
-  the author's.
+- **The authored diplomacy/recruitment event.** Now **authored** (PR #426, 2026-10-13): `event_seed` holds
+  "The Neutral Laboratory" with its cast, three beats and three choices, marked
+  `authored_narrative_prototype_no_resolution_rules`. What is still the author's is the **resolution** —
+  the seed's own `outcome_policy` refuses an automatic success, a fixed resource change and a forced
+  recruitment, and no code reads it.
 - **Any affinity or tension mechanic**: this module deliberately computes none, because the issue allows
   broad cues only as a later, author-approved aid.
 
@@ -143,3 +146,29 @@ a severed patron can be replaced is one of the open questions below.
   `false`.
 - **The authored secret of any specific patron**: the cards leave `gm_notes` to the author, and this
   layer adds no secret to any named character.
+
+## 7. Acceptance criterion 7: the first-turn container, and why it holds no value
+
+Criterion 7 asks to *"define pre-crisis world state and first-turn resource constraints"*. The
+**world state** half is documented (the acceleration period, partial disclosure with no public contact
+yet, commercial PSI). The **resource constraints** half is an **economy**, and an economy is reserved
+to the author (`AGENTS.md` §4) while `strategy_game/RULEBOOK.md` still says **NO RULES APPROVED**.
+
+So what landed is the container a ruling would occupy, and nothing else:
+
+| Field | Content |
+| --- | --- |
+| `first_turn.id` | `first_turn_resource_constraints` |
+| `first_turn.candidate_sheet_fields` | the **issue's own** candidate faction-sheet list, transcribed as names only: ideology/doctrine, legitimacy, membership/support, influence/reputation, funding, research, intelligence, organisation/facilities, security, network ties, corporate-patron access, strategic objectives |
+| `first_turn.values_declared` | `false`, with the reason it is `false` |
+| `first_turn.list_source` | says the list is the issue's and is **not** an approved sheet |
+
+`first_turn_problems()` refuses only what stops the container being a container: a field with no
+identifier, a repeated identifier, a field carrying **anything but its name** (a value there would be an
+invented one), a numeric label, a container that does not say whether values are declared, and an empty
+container that gives no reason for being empty. It computes nothing, prices nothing and reads no clock.
+
+**The resolution half of criterion 6 stays open next to it**, and it is recorded **once**: the ruling is
+`mission_resolution` in `data/council.json`'s `pending_author_decisions`, and this file's
+`pending_author_decisions` points at it rather than restating it.
+

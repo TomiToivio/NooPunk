@@ -1,49 +1,92 @@
-# Issue #346 — acceptance record
+# Issue #346 — acceptance record (re-verified after the second reopening)
 
-**Basis for closing.** The author authorised defer-and-close on 2026-10-13, provided a deferred item is
-stated as deferred. This issue was reopened deliberately at 19:43 for a stated reason — *"a container is
-not a rule, and a document is not a mechanic"* — and that reason is answered here rather than
-sidestepped: the containers are **verified to exist**, and the mechanics are recorded as **deferred** to
-the author, not claimed.
+**State: LEFT OPEN, deliberately, with the reason per criterion below.** This issue was reopened twice,
+the second time from PR #400 (documentation-only, carrying a `Closes` line). Re-checked on current
+`origin/main` by **exercising** the code (`python -m unittest`, importing the modules), not by reading
+the earlier PR bodies.
 
-## Verified met (measured on `main`)
+| # | Criterion | Position | Basis on current `main` |
+| --- | --- | --- | --- |
+| 1 | Faction-creation flow + first playable academic-founder template | **MET** | the seven-step flow and the Cosmist International template in `data/faction_creation.json`; `data/founding_story.json` records the founder edge |
+| 2 | Faction + lightweight character sheets on existing stat/TAG conventions | **MET for tags** | the typed kind vocabulary (`TAG_KINDS`) is reused across cards and edges; the leader's *attribute set* stays author-defined (D1/D2 open, D7 refuses the six legacy STATs) |
+| 3 | Nonprofit / patron / council / court / field-agent distinctions, unified roster with overlapping roles | **MET in substance** | a patron edge is structurally distinct from faction property; the roster question (*exactly four* vs *four deployed of more*) stays flagged on #323 and here, not resolved |
+| 4 | The four card types (character, organization, research, government) with minimal effects and interactions | **MET as structure, effects OPEN** | `faction_cards.py` + `data/faction_cards.json` + `tests/test_faction_cards.py` declare `CARD_TYPE_IDS`, the control vocabulary, six declared interactions (`enforced: false`) and a projection onto the shared `Card`; what each interaction *changes* is a `pending_author_decisions` entry |
+| 5 | Random low-level NPC creation without individual management | **MET** | the archetype family and `instantiate()` in `character_cards` |
+| 6 | Four field-agent deployments per turn **with abstract mission resolution** | **NOT MET** | the four-move cap is refused by name in `council.py`; *resolution* is a rule: `data/council.json`'s `mission.resolution` is `declared: false` and `MissionDeclaration.outcome` is an uninterpreted field |
+| 7 | Pre-crisis world state **and first-turn resource constraints** | **NOT MET** | the world state is documented; the resource constraints are an **economy**, reserved to the author. Now expressible: `first_turn` names the issue's own candidate field slots with `values_declared: false` and its reason |
+| 8 | Two contrasting factions created with the same rules | **MET** | three comparative examples plus the seven authored factions, all validating through one vocabulary |
+| 9 | Cross-reference and reconcile existing strategy/faction/character issues | **MET** | `consumes` blocks in both data files and the cross-links in both documents |
 
-| What | Evidence |
-| --- | --- |
-| **The five qualitative axes** and the **typed shared TAG vocabulary** | `faction_creation.py` + `data/faction_creation.json`; `test_faction_creation` — **28 tests OK** |
-| **The four card types** — character, organization, research, government — with their **declared interactions** | `faction_cards.py` + `data/faction_cards.json`: `card_types` = those four, `declared_interactions` = six, `control_states` = seven; `test_faction_cards` — **27 tests OK** |
-| **The card layer enforces no mechanic** | `faction_cards.py` sets `EFFECTS_ENFORCED = False`, and the data carries `pending_author_decisions` = `declared_interaction_effects`, `government_primitive_member`, `fifth_card_type`. This is the criterion stated *as structure*, which is the only honest form before rules are approved |
-| **The authored recruitment/diplomacy event** (the "one authored event" task) | PR **#426**, *The Neutral Laboratory*: three beats, three meaningful commitments, follow-up scenes; built on the existing five-axis vocabulary and typed TAG model, preserving the player/GM information boundary, consent, cross-axis contradictions and separate NHI diplomacy — narrative data only, no invented numeric rules (`cbecbcb`, `6d26f65`) |
-| **Character-card conventions reused, not duplicated** | `characters.py` + `data/character_cards.json`, with the world-catalogue reader added for the sibling card system |
+## Precisely what is blocked, and on which author decision
 
-## Standing constraints the issue records (not deliverables)
+- **Criterion 6 — abstract mission resolution.** Blocked on an author ruling for *how a declared mission
+  is resolved and what its outcome means*. Gates A (leader RPG) and C (strategy) are open in
+  `docs/RULE_SYSTEM_RESEARCH.md`, `AGENTS.md` §4 reserves resolution and thresholds, and #389 approved
+  the **RPG layer only**, which does not license a strategy resolution rule. The ruling is recorded
+  **once**, as `mission_resolution` in `data/council.json`'s `pending_author_decisions`; this issue's data
+  file points at it rather than restating it.
+- **Criterion 7 — first-turn resource constraints.** Blocked on an author ruling for *starting resources
+  / an economy*. `AGENTS.md` §4 reserves economies to the author and `strategy_game/RULEBOOK.md` still
+  says **NO RULES APPROVED**, so no agent may supply one.
 
-Tasks 9, 10, 13, 14, 21, 28 and the Helsinki-scope set (34–39) are rules for *future* writing: three
-genre pillars as a filter, political science primary, humanity kept recognisable, religious imagery never
-treated as verified claim, tabletop-convertible agent-led mechanics, all fiction explicitly inside
-NoöPunk. They constrain what may be written; they produce no artifact and cannot be "finished".
+Both are also rows in `docs/design/AUTHOR_DECISION_QUEUE.md`, so an answer converts directly into a
+criterion check and a close.
 
-## Deferred — the rules (2 criteria)
+## What landed for this issue in this session
 
-| Criterion | Position |
-| --- | --- |
-| 6. Abstract mission resolution | **deferred** — a rule; `strategy_game/RULEBOOK.md` still says strategy and political-simulation rules are not approved. Carried in the queue beside #323's six decisions, which are the same gate |
-| 7. First-turn resource constraints | **deferred** — resource economics must not be guessed (#338 records the same boundary). Same queue row |
+- `strategy_game/data/faction_creation.json`: the `first_turn` **container** (the issue's own candidate
+  faction-sheet field names, `values_declared: false` with its reason) and a `pending_author_decisions`
+  list carrying the two blocked criteria — one of them by reference, so the resolution ruling has one home.
+- `strategy_game/faction_creation.py`: `first_turn`, `first_turn_fields()`, `first_turn_problems()`
+  (refuses a value where none is approved), `pending_decisions()` and `unreasoned_decisions()`.
+- `strategy_game/tests/test_faction_creation.py`: 12 further code-only contracts.
+- `strategy_game/docs/FACTION_CREATION.md` §7 for this container, and a correction of the stale bullet
+  claiming the recruitment event's content is still unauthored (PR #426 authored it).
 
-## Deferred — the authorial canon and decisions
+`strategy_game/RULEBOOK.md` was **not touched**; no rule, magnitude, threshold, cost, die, action set,
+turn cadence or win condition appears anywhere in this work; no test asserts prose ([#271]).
 
-Twenty-odd tasks are author work: the cultural-axis decision (liberal/conservative *or* also
-authoritarian/libertarian); NHI contact policy held apart from named NHI diplomacy; the EFTZ commercial
-and legal structures; the classified ARV-by-1981 timeline; two contrasting Soviet-program successor
-factions; ancient and contemporary breakaway civilizations; the fourfold evidence categories; the
-Law-of-One political reinterpretation and its Confederate Social Memory Complex; the Soviet–Confederacy
-and US–Orion relationships; the disclosure mystery's ideological terminus; and the Cosmist
-International set — founder identity, manifesto in game terms, Helsinki nonprofit and conditional
-government collaboration, the introductory scene. Each is listed in the queues row **D12** and must not
-be invented by an agent.
+## What is explicitly not claimed
 
-**A note on the checkboxes.** The issue's 48 boxes are still unchecked, including many whose structure
-landed after they were written (the axes, the TAGs, the card types, the authored event). They were not
-edited, because the work landed in PRs, not in the issue text; this record is the current state.
+The two blocked criteria are **not** met, not deferred-and-closed, and not waived. This issue stays open
+until the author rules on resolution (criterion 6) and on starting resources (criterion 7), or explicitly
+folds them into another issue.
 
-— Ai (愛)
+
+---
+
+## Re-verification (later session): the records above stand, and criterion 7's container now exists
+
+This record is **kept as written** — its two deferrals are correctly *stated as deferred*, which is the
+condition the defer-and-close rule sets, so the close it supported is honest and is **not** re-litigated
+here. What this session adds is the structure that was still missing under criterion 7, plus a
+measurement of the whole layer on current `main` by **executing** it (`python -m unittest`, importing the
+modules) rather than by reading a PR body.
+
+**Criterion 7's container is now landed.** *"Pre-crisis world state and first-turn resource
+constraints"*: the world-state half was documented, and the resource-constraints half is an **economy**,
+which `AGENTS.md` §4 reserves to the author. So `data/faction_creation.json` now carries `first_turn` —
+the **issue's own** candidate faction-sheet field names (ideology/doctrine, legitimacy,
+membership/support, influence/reputation, funding, research, intelligence, organisation/facilities,
+security, network ties, corporate-patron access, strategic objectives) — with `values_declared: false`
+and the reason it is false. `faction_creation.py` adds `first_turn_fields()`, `first_turn_problems()`
+(which refuses a field carrying **anything but its name**, a blank or repeated identifier, a numeric
+label, a container that does not say whether values are declared, and an empty container with no reason),
+`pending_decisions()` and `unreasoned_decisions()`. **The criterion is still not met** — a container is
+not a rule — and the ruling it waits for is queue row **D11**.
+
+**The resolution ruling has one home.** Criterion 6's ruling is `mission_resolution` in
+`data/council.json`'s `pending_author_decisions`; this file's `pending_author_decisions` **points at it**
+rather than restating it, so the same decision is not tracked in two vocabularies.
+
+**And the criterion-6 gap on #323 is closed as structure.** #323's minimum data model lists an `Event`
+record (`trigger, participants, choice options, state effects, short narrative text`) and nothing in the
+package declared one; `data/council.json`'s `character_events` now does, with `event_problems()` /
+`event_reports()` in `council.py` and a projection onto the shared tabletop `Card`. That is #323's
+criterion, but it is the same gate as #346's criterion 6, which is why it is noted here.
+
+**Measured on `main` at this session's base (`16fcb69`), both suites green:** the strategy suite
+**1119 → 1151** tests with this work (32 new code-only contracts, [#271]), the root suite **509**,
+`python -m strategy_game` emits its pinned key set, and `NoQuantifiedPoliticsTests` passes. No rule,
+magnitude, threshold, cost, die, action set, cadence or win condition appears anywhere in it;
+`strategy_game/RULEBOOK.md` is untouched.

@@ -299,6 +299,10 @@ class FactionCreationModel:
     separation_rule: dict[str, Any] = field(default_factory=dict)
     fog_of_war: dict[str, Any] = field(default_factory=dict)
     event_seed: dict[str, Any] = field(default_factory=dict)
+    #: Issue #346 criterion 7's container: the field SLOTS a first-turn constraint would occupy.
+    #: It carries names only — no value, no economy, no turn cadence.
+    first_turn: dict[str, Any] = field(default_factory=dict)
+    pending_author_decisions: tuple[dict[str, Any], ...] = ()
     cautions: tuple[dict[str, Any], ...] = ()
     sources: tuple[str, ...] = ()
     provenance: Provenance = field(default_factory=Provenance)
@@ -364,6 +368,79 @@ class FactionCreationModel:
         """Whether a tag may be attached to a card of this type. No scope declared means every scope."""
         tag = self.tags[tag_id]
         return (not tag.applies_to) or scope in tag.applies_to
+
+    # -- criterion 7's container: names only, never a value ---------------------------------
+
+    def first_turn_fields(self) -> tuple[dict[str, Any], ...]:
+        """The field slots a first-turn constraint would occupy, in the document's own order."""
+        return _records(self.first_turn.get("candidate_sheet_fields"))
+
+    def first_turn_problems(self) -> tuple[str, ...]:
+        """Malformed first-turn container, refused by name. Empty means the container is well-formed.
+
+        Issue #346's criterion 7 asks to *define* first-turn resource constraints, and the same issue
+        marks its candidate sheet "not fixed". A starting economy is reserved to the author
+        (``AGENTS.md`` §4) and ``strategy_game/RULEBOOK.md`` says no rules are approved, so this
+        module must never invent a value. What it can refuse is a container that has stopped being a
+        container: a field with no identifier, a repeated identifier, a field carrying anything but
+        its name, or a container that does not say whether values are declared and why not.
+        """
+        problems: list[str] = []
+        if not self.first_turn:
+            problems.append(
+                "no first-turn container is declared, so issue #346's criterion 7 has no slot to "
+                "land in"
+            )
+            return tuple(problems)
+        if not isinstance(self.first_turn.get("values_declared"), bool):
+            problems.append(
+                "the first-turn container does not state values_declared, so a reader cannot tell an "
+                "approved sheet from an empty slot"
+            )
+        if not self.first_turn.get("values_declared") and not str(
+            self.first_turn.get("reason") or ""
+        ).strip():
+            problems.append(
+                "the first-turn container declares no values and gives no reason; an empty field is "
+                "only honest with the reason it is empty"
+            )
+        seen: set[str] = set()
+        for field in self.first_turn_fields():
+            identifier = str(field.get("id") or "").strip()
+            if not identifier:
+                problems.append("a first-turn field has no identifier")
+            elif identifier in seen:
+                problems.append(f"first-turn field {identifier!r} appears more than once")
+            seen.add(identifier)
+            extra = sorted(key for key in field if key not in {"id", "label", "note"})
+            if extra:
+                problems.append(
+                    f"first-turn field {identifier!r} carries {extra}: the container names the fields "
+                    "a constraint would occupy and holds no value, so a value here is an invented one"
+                )
+            for key, value in field.items():
+                if key in {"id", "label", "note"} and isinstance(value, (int, float)) and not isinstance(
+                    value, bool
+                ):
+                    problems.append(
+                        f"first-turn field {identifier!r}: {key} is the number {value!r}; every value "
+                        "is the author's to approve"
+                    )
+        return tuple(problems)
+
+    # -- registries ------------------------------------------------------------------------
+
+    def pending_decisions(self) -> tuple[dict[str, Any], ...]:
+        """Every decision left to the author, with the reason it is open."""
+        return tuple(self.pending_author_decisions)
+
+    def unreasoned_decisions(self) -> tuple[str, ...]:
+        """Pending decisions whose ``why_not_decided`` is empty — a container pretending to be an answer."""
+        return tuple(
+            str(item.get("id") or "?")
+            for item in self.pending_decisions()
+            if not str(item.get("why_not_decided") or "").strip()
+        )
 
     # -- the player / GM split -------------------------------------------------------------
 
@@ -507,6 +584,8 @@ def creation_from_dict(data: dict[str, Any]) -> FactionCreationModel:
         separation_rule=dict(data.get("separation_rule") or {}),
         fog_of_war=dict(data.get("fog_of_war") or {}),
         event_seed=dict(data.get("event_seed") or {}),
+        first_turn=dict(data.get("first_turn") or {}),
+        pending_author_decisions=_records(data.get("pending_author_decisions")),
         cautions=_records(data.get("cautions")),
         sources=_strings(data.get("sources")),
         provenance=Provenance.from_dict(data.get("provenance")),
@@ -518,7 +597,7 @@ def creation_from_dict(data: dict[str, Any]) -> FactionCreationModel:
                 "format", "position_vocabulary", "axes", "tag_families", "nhi_polities",
                 "diplomatic_states", "faction_creation_flow", "template", "comparative_examples",
                 "cross_axis_examples", "separation_rule", "fog_of_war", "event_seed", "cautions",
-                "sources", "provenance",
+                "sources", "provenance", "first_turn", "pending_author_decisions",
             }
         },
     )

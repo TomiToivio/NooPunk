@@ -9,9 +9,9 @@ explicitly recorded as open.
 
 | Artifact | Role |
 | --- | --- |
-| `strategy_game/data/council.json` | the four offices, the mission shape and its declared costs, the status table, the four strategic channels, the open questions |
-| `strategy_game/council.py` | the two validators (requirements refused; unauthored effects reported) and the structural readings |
-| `strategy_game/tests/test_council.py` | 49 executable contracts (issue #271: code only) |
+| `strategy_game/data/council.json` | the four offices, the mission shape and its declared costs, the status table, the four strategic channels, the character-event container, the open questions |
+| `strategy_game/council.py` | the three validators (requirements refused; unauthored effects reported; the event container checked for completeness) and the structural readings |
+| `strategy_game/tests/test_council.py` | 74 executable contracts (issue #271: code only) |
 | `strategy_game/quantities.py` | the six quantities of `docs/design/NOOPUNK_GLOBAL.md` §7, in one place |
 | `strategy_game/relationships.py` | the one sparse, stateful relationship edge, read by the mission layer |
 
@@ -163,5 +163,44 @@ The seam is **signature-only**, in the spirit of `ports.py`:
   from `strategy_game/rpg/`, and a contract asserts that in a subprocess.
 
 So the seam is the structure that makes the author's remaining decision *expressible*: once there is a
-ruling about what a tie changes, it has a declared slot to land in. Until then it lands nowhere, and
-the triggered-RPG-choice half of acceptance criterion 6 stays open with it.
+ruling about what a tie changes, it has a declared slot to land in. Until then it lands nowhere — and
+§8 below lands the second slot that half of acceptance criterion 6 was missing.
+
+## 8. The character-event container: the slot criterion 6 has been missing
+
+Acceptance criterion 6 of [#323](https://github.com/TomiToivio/NooPunk/issues/323) is the one this file
+could not reach: *"triggered RPG choices change concrete strategy state, not only dialogue."* The sparse
+relationship edge is landed and stateful, but until now nothing in the package declared an **event** —
+and #323's own minimum data model lists one (`Event: trigger, participants, choice options, state
+effects, short narrative text`). That gap is now a container:
+
+| Artifact | Role |
+| --- | --- |
+| `data/council.json` → `character_events` | the trigger kinds, the effect target kinds and one placeholder event |
+| `council.py` → `event_problems()` | the issue's Event requirements **refused by name** |
+| `council.py` → `event_reports()` | everything whose *effect* is unauthored, reported with its source |
+| `council.py` → `to_event_card()` / `render_event_front()` | the projection onto the shared tabletop `Card` |
+
+**Three trigger kinds, and no fourth.** `leader_status_change` (the `LEADER_STATUSES` this layer already
+declares), `relationship_state_change` (the edge's own `state` and `state_history`) and
+`mission_outcome` (the uninterpreted `MissionDeclaration.outcome`). The third is declared but cannot
+fire, because nothing in the package writes an outcome — the slot is declared, the mechanism is not.
+
+**No second vocabulary.** `relationship_state` effects are not checked against a list declared here:
+the edge owns its state vocabulary, so the container only requires that a target be named. Effects on
+`quantity` and `leader_status` are checked against `quantities.py` and `LEADER_STATUSES` — the
+vocabulary that already exists. And the event projects onto `tabletop/cards.py`'s `Card` with
+`CardType.EVENT` and `CardRole.PLAYABLE_MOVE`, exactly as `faction_cards.to_card()` projects its four
+card types; a contract asserts the projection uses the primitive's own classes rather than copies.
+
+**What is refused, and why that is not a rule.** Only criterion 6's own requirement: an option that
+names no state effect *and* gives no reason is refused by name, because "dialogue alone" is exactly what
+the criterion excludes. An option whose effect is unauthored carries `declared: false` and its reason
+instead, and every effect in the shipped deck does. A single-option event is **reported**, not refused,
+because "two or three options" is proposal E2 and is unapproved.
+
+**Nothing fires.** No event is scheduled, no trigger is evaluated, no option is taken and no quantity
+moves. `character_events.declared` is `false` with its reason, and the deck's content, its trigger
+conditions and every effect's direction and size remain the author's (`event_deck_and_effects` in
+`data/council.json`'s `pending_author_decisions`).
+

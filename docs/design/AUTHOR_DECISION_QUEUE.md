@@ -5,8 +5,8 @@ carries it. Nothing here is canon, a mechanic, a name or a ruling: each row is a
 author can answer**. Answering one turns it into a criterion check, an acceptance record, a PR and a
 close.
 
-**Board status (2026-10-13, fifth update).** Two issues open: **#338**, **#421**
-(licence tracking, created from #309 §9). **#309 closed on author direction** — the author asked for it
+**Board status (2026-10-13, fifth update — #323 corrected).** Three issues open: **#323** (reopened),
+**#338**, **#421** (licence tracking, created from #309 §9). **#309 closed on author direction** — the author asked for it
 by name, which overrides the earlier *"open by design"* note below. Closing it cost nothing because its
 own acceptance criteria are met (it serves as a coherent, reusable north-star vision and is referenced
 throughout the design docs) and all ten of its §8 artifacts now exist as files: engines and the S1
@@ -18,11 +18,14 @@ check in `ISSUE_309_PLAYTESTING_AND_DISCIPLINE.md`, and the attribution half of 
 D10 below. **#347** closed on the defer-and-close rule — six of its ten
 criteria are met with measured evidence (including the ten-kind example set and the data-only authoring
 contract), and the four that depend on choosing a renderer are carried as row D13. **#346** closed on the defer-and-close rule — the card layer
-it needed was verified to exist (`faction_cards.py`, four card types, 27 tests OK), and its two rule
-dependent criteria are carried as rows below. Since the first queue,
-**#325**, **#345**, **#346** and **#282** closed once, **#322** and **#323** closed on the
-defer-and-close rule the author authorised on 2026-10-13 — their deferred items are rows below, so
-closing them lost nothing.
+it needed was verified to exist (`faction_cards.py`, four card types, 27 tests OK), and its two
+rule-dependent criteria are stated as **deferred** in `ISSUE_346_ACCEPTANCE.md` and carried as row D11.
+Since the first queue, **#325**, **#345**, **#346** and **#282** closed once, **#322** closed on the
+defer-and-close rule the author authorised on 2026-10-13, and **#323** was closed on that same rule and
+has been **reopened**: its record presented criterion 2 (*"unavailable leaders cannot execute one"*) as
+met, but that clause is the consequence of the DRAFT status table's three `TODO` rows and is reported
+rather than enforced — so on that row the deferral was not stated as a deferral, which is the rule's own
+condition. D3 still carries #323's six decisions, and nothing about them changed.
 
 ## Live rows
 

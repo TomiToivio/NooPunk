@@ -355,5 +355,42 @@
     {"source": "luhmann", "note": "one actor can hold different expectations in science, religion, law, politics and the economy; consider public doctrine versus internal faction practice."},
     {"source": "gameplay", "note": "use broad affinity and tension cues for recruitment and diplomacy, but never make tag combinations predetermined alliance, hatred, morality or voting behaviour."},
     {"source": "simplicity", "note": "one faction card (five positions plus a handful of tags) plus the existing character cards; avoid complex population models and avoid adding more sliders for every subgroup."}
+  ],
+  "first_turn": {
+    "id": "first_turn_resource_constraints",
+    "criterion": "issue #346 acceptance criterion 7: 'Define pre-crisis world state and first-turn resource constraints'.",
+    "world_state": "the pre-crisis acceleration period, partial disclosure with no public contact yet, and commercial PSI are documented in strategy_game/docs/FACTION_CREATION.md and the #346 record; they are not restated here.",
+    "candidate_sheet_fields": [
+      {"id": "ideology_doctrine", "label": "ideology / doctrine", "note": "the five axes and the tag vocabulary above already carry this"},
+      {"id": "legitimacy", "label": "legitimacy"},
+      {"id": "membership_support", "label": "membership / support"},
+      {"id": "influence_reputation", "label": "influence / reputation"},
+      {"id": "funding", "label": "funding"},
+      {"id": "research", "label": "research"},
+      {"id": "intelligence", "label": "intelligence"},
+      {"id": "organisation_facilities", "label": "organisation / facilities"},
+      {"id": "security", "label": "security"},
+      {"id": "network_ties", "label": "network ties"},
+      {"id": "patron_access", "label": "corporate-patron access", "note": "issue #346 step 4: patron resources are not automatically faction property, so this slot is access, not ownership"},
+      {"id": "strategic_objectives", "label": "strategic objectives"}
+    ],
+    "values_declared": false,
+    "reason": "Starting values, income, upkeep and first-turn limits are an ECONOMY: AGENTS.md section 4 reserves economies to the author, strategy_game/RULEBOOK.md still says NO RULES APPROVED, and the issue itself marks this sheet list 'candidate, not fixed'. The container therefore names the field slots the constraint would occupy and leaves every value empty for the author to fill.",
+    "list_source": "the field names are issue #346's own candidate faction-sheet list, transcribed as names only; this is not an approved sheet and carries no value.",
+    "not_this_question": "This container is deliberately NOT the open 4/7/11 global roster question (docs/design/NOOPUNK_GLOBAL.md section 6A) and not the twelve leader seats of #322. Nothing here counts or names a faction or a person."
+  },
+  "pending_author_decisions": [
+    {
+      "id": "first_turn_resource_constraints",
+      "question": "What are a faction's starting resources and first-turn limits?",
+      "why_not_decided": "Issue #346 acceptance criterion 7 asks for first-turn resource constraints; a starting economy is reserved to the author by AGENTS.md section 4, and strategy_game/RULEBOOK.md still says NO RULES APPROVED, so an agent must not supply one.",
+      "container_instead": "first_turn records the issue's own candidate field names and sets values_declared false with its reason; first_turn_problems refuses a field that carries anything but its name."
+    },
+    {
+      "id": "abstract_mission_resolution",
+      "question": "How does a faction's abstract mission resolve, and what does its outcome mean?",
+      "why_not_decided": "Issue #346 acceptance criterion 6 asks for four field-agent deployments with abstract mission resolution. The four-move cap is structurally validated (strategy_game/council.py), but resolution itself is Gate A/C work and unapproved; issue #389 approves the RPG layer only. Recorded once, in strategy_game/data/council.json's 'mission_resolution' entry, and pointed at here rather than restated.",
+      "container_instead": "strategy_game/data/council.json's mission.resolution declares nothing, and MissionDeclaration.outcome stays an uninterpreted field."
+    }
   ]
 }
