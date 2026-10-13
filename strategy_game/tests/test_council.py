@@ -28,16 +28,26 @@ if str(ROOT) not in sys.path:  # pragma: no cover - import bootstrap, mirrors th
 from strategy_game.council import (  # noqa: E402
     COUNCIL_FORMAT,
     DATA_PATH,
+    EVENT_EFFECT_TARGET_KINDS,
+    EVENT_TRIGGER_KINDS,
     LEADER_STATUSES,
     PORTFOLIO_IDS,
+    CharacterEvent,
     Council,
     CouncilLeader,
+    EventEffect,
+    EventOption,
     MissionDeclaration,
     load_council,
+    render_event_front,
+    to_event_card,
 )
 from strategy_game.founding_story import load_founding_story, story_from_example  # noqa: E402
 from strategy_game.quantities import QUANTITY_IDS  # noqa: E402
 from strategy_game.relationships import RelationshipEdge, RelationshipSet  # noqa: E402
+from strategy_game import council as council_module  # noqa: E402
+from strategy_game.tabletop import cards as primitive_cards  # noqa: E402
+from strategy_game.tabletop.cards import CardError, CardRole, CardType  # noqa: E402
 
 #: Keys that would mean a price, a scale or a resolution had crept into the content file.
 FORBIDDEN_KEYS = (
@@ -619,6 +629,219 @@ class ShippedDocumentTests(unittest.TestCase):
         self.assertEqual(len(self.model.unpursued_quantities(council)), 2)
         empty = _council(missions=())
         self.assertEqual(self.model.unpursued_quantities(empty), QUANTITY_IDS)
+
+
+def _event(
+    identifier: str = "event_1",
+    *,
+    options: tuple[EventOption, ...] | None = None,
+    **overrides: Any,
+) -> CharacterEvent:
+    base: dict[str, Any] = dict(
+        identifier=identifier,
+        label="A tie turns",
+        trigger_kind="relationship_state_change",
+        trigger_ref="edge_1",
+        participants=("leader_1", "leader_2"),
+        options=options
+        if options is not None
+        else (
+            EventOption(
+                identifier="option_1",
+                label="stand by the tie",
+                effects=(EventEffect(target_kind="quantity", target="opinion_support"),),
+            ),
+            EventOption(
+                identifier="option_2",
+                label="let it go",
+                effects=(EventEffect(target_kind="relationship_state", target="strained"),),
+            ),
+        ),
+    )
+    base.update(overrides)
+    return CharacterEvent(**base)
+
+
+class CharacterEventTests(unittest.TestCase):
+    """Issue #323's ``Event`` record and criterion 6: the container, refused only for completeness."""
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.model = load_council()
+
+    def test_a_well_formed_event_has_no_problem(self):
+        self.assertEqual(self.model.event_problems((_event(),)), ())
+
+    def test_the_shipped_deck_is_legal_and_declares_that_it_approves_nothing(self):
+        self.assertTrue(self.model.character_events)
+        self.assertEqual(self.model.event_problems(), ())
+        self.assertIs(self.model.event_declaration.get("declared"), False)
+        self.assertTrue(self.model.event_declaration.get("reason"))
+        self.assertEqual(self.model.off_vocabulary(), ())
+
+    def test_the_shipped_deck_names_the_trigger_kinds_and_effect_target_kinds_it_uses(self):
+        """The vocabularies are declared data, so an off-vocabulary value is reportable, not a crash."""
+        declared_triggers = {item["id"] for item in self.model.event_declaration["trigger_kinds"]}
+        self.assertEqual(declared_triggers, set(EVENT_TRIGGER_KINDS))
+        declared_targets = {item["id"] for item in self.model.event_declaration["effect_target_kinds"]}
+        self.assertEqual(declared_targets, set(EVENT_EFFECT_TARGET_KINDS))
+        for event in self.model.character_events:
+            for option in event.options:
+                for effect in option.effects:
+                    with self.subTest(effect=effect.target):
+                        self.assertIn(effect.target_kind, EVENT_EFFECT_TARGET_KINDS)
+
+    def test_every_shipped_effect_is_undeclared_with_a_reason(self):
+        for event in self.model.character_events:
+            for option in event.options:
+                for effect in option.effects:
+                    with self.subTest(option=option.identifier):
+                        self.assertIs(effect.declared, False)
+                        self.assertTrue(effect.reason)
+
+    def test_an_option_that_changes_nothing_is_refused_by_name(self):
+        filler = EventOption(identifier="option_filler", label="say something moving")
+        problems = " | ".join(self.model.event_problems((_event(options=(filler,)),)))
+        self.assertIn("names no state effect and gives no reason", problems)
+        self.assertIn("not only dialogue", problems)
+
+    def test_an_option_whose_effect_is_undeclared_for_a_stated_reason_is_accepted(self):
+        deferred = EventOption(
+            identifier="option_deferred",
+            label="the author has not said what this does",
+            pending_reason="the effect is a rule and no rule is approved",
+        )
+        self.assertEqual(self.model.event_problems((_event(options=(deferred,)),)), ())
+
+    def test_a_trigger_kind_outside_the_declared_vocabulary_is_refused(self):
+        problems = " | ".join(
+            self.model.event_problems((_event(trigger_kind="leader_feels_sad"),))
+        )
+        self.assertIn("is not one of", problems)
+        for kind in EVENT_TRIGGER_KINDS:
+            with self.subTest(kind=kind):
+                self.assertEqual(self.model.event_problems((_event(trigger_kind=kind),)), ())
+
+    def test_an_event_must_name_the_record_its_trigger_fires_on(self):
+        problems = " | ".join(self.model.event_problems((_event(trigger_ref="  "),)))
+        self.assertIn("trigger_ref", problems)
+
+    def test_an_event_without_participants_has_no_choice_for_anyone_to_make(self):
+        problems = " | ".join(self.model.event_problems((_event(participants=()),)))
+        self.assertIn("no participants", problems)
+        blank = " | ".join(self.model.event_problems((_event(participants=("leader_1", " ")),)))
+        self.assertIn("a participant has no identifier", blank)
+
+    def test_an_event_with_no_option_is_a_cutscene_and_is_refused(self):
+        problems = " | ".join(self.model.event_problems((_event(options=()),)))
+        self.assertIn("no options", problems)
+
+    def test_an_effect_target_is_checked_against_the_shared_vocabulary(self):
+        wrong_quantity = EventOption(
+            identifier="option_1",
+            effects=(EventEffect(target_kind="quantity", target="influence"),),
+        )
+        self.assertIn(
+            "is not one of the six",
+            " | ".join(self.model.event_problems((_event(options=(wrong_quantity,)),))),
+        )
+        wrong_status = EventOption(
+            identifier="option_1",
+            effects=(EventEffect(target_kind="leader_status", target="sleepy"),),
+        )
+        self.assertIn(
+            "is not one of",
+            " | ".join(self.model.event_problems((_event(options=(wrong_status,)),))),
+        )
+        unknown_kind = EventOption(
+            identifier="option_1",
+            effects=(EventEffect(target_kind="mood", target="grim"),),
+        )
+        self.assertIn(
+            "target_kind",
+            " | ".join(self.model.event_problems((_event(options=(unknown_kind,)),))),
+        )
+        empty_target = EventOption(
+            identifier="option_1",
+            effects=(EventEffect(target_kind="quantity", target=""),),
+        )
+        self.assertIn(
+            "names no target",
+            " | ".join(self.model.event_problems((_event(options=(empty_target,)),))),
+        )
+
+    def test_duplicate_event_identities_are_refused(self):
+        problems = " | ".join(self.model.event_problems((_event(), _event())))
+        self.assertIn("appears more than once", problems)
+
+    def test_a_single_option_event_is_reported_rather_than_refused(self):
+        single = _event(options=(
+            EventOption(
+                identifier="option_1",
+                effects=(EventEffect(target_kind="leader_status", target="busy"),),
+            ),
+        ))
+        self.assertEqual(self.model.event_problems((single,)), ())
+        self.assertIn(
+            "carries one option",
+            " | ".join(self.model.event_reports((single,))),
+        )
+
+    def test_each_undeclared_effect_is_reported_with_the_reason_it_is_open(self):
+        reports = " | ".join(self.model.event_reports())
+        self.assertIn("the change itself is undeclared", reports)
+        self.assertIn("no rule is approved", reports)
+
+    def test_a_participant_outside_the_four_leaders_is_reported_not_refused(self):
+        """Issue #323 allows a limited cast of important local NPCs alongside the four leaders."""
+        council = _council()
+        outside = _event(participants=("leader_1", "the_mayor"))
+        self.assertEqual(self.model.event_problems((outside,)), ())
+        reports = " | ".join(self.model.event_reports((outside,), council=council))
+        self.assertIn("not in this faction's roster", reports)
+        inside = _event(participants=("leader_1", "leader_2"))
+        self.assertNotIn(
+            "not in this faction's roster",
+            " | ".join(self.model.event_reports((inside,), council=council)),
+        )
+
+    def test_the_deck_does_not_special_case_a_player_faction(self):
+        """Rival parity: the same function validates any council's deck."""
+        rival = _council(identifier="rival")
+        self.assertEqual(
+            self.model.event_problems((self.model.character_events[0],)),
+            self.model.event_problems((self.model.character_events[0],)),
+        )
+        self.assertEqual(
+            self.model.event_reports((), council=rival),
+            self.model.event_reports((), council=_council()),
+        )
+
+    def test_the_event_projects_onto_the_shared_card_primitive(self):
+        event = self.model.character_events[0]
+        card = to_event_card(event)
+        self.assertIs(card.card_type, CardType.EVENT)
+        self.assertIs(card.role, CardRole.PLAYABLE_MOVE)
+        self.assertTrue(card.title)
+        self.assertIn(f"trigger:{event.trigger_kind}", card.tags)
+        self.assertIn(f"option:{event.options[0].identifier}", card.tags)
+        self.assertEqual(card.effects, ())
+        self.assertEqual(card.prerequisites, ())
+
+    def test_the_projection_uses_the_one_card_vocabulary_and_not_a_second_one(self):
+        self.assertIs(council_module.Card, primitive_cards.Card)
+        self.assertIs(council_module.CardType, primitive_cards.CardType)
+        self.assertIs(council_module.CardRole, primitive_cards.CardRole)
+
+    def test_a_blank_event_identity_cannot_be_projected_onto_the_primitive(self):
+        with self.assertRaises(CardError):
+            to_event_card(CharacterEvent(identifier=""))
+
+    def test_the_rendered_front_names_the_options_and_no_size(self):
+        front = render_event_front(self.model.character_events[0])
+        self.assertIn(self.model.character_events[0].options[0].label, front)
+        self.assertIn("character event", front)
+        self.assertNotIn("declared", front)
 
 
 if __name__ == "__main__":
