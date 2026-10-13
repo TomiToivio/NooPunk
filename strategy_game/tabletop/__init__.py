@@ -30,9 +30,12 @@ rule layer would manipulate. Concretely, the following are deliberately absent a
   meanings and any mechanical claim need author approval per issue #304;
 * **turn order, actions, economy, victory** — not modelled at all;
 * integration with :class:`strategy_game.core.WorldState` — joining a new subsystem to the shared
-  container *is* the Gate D decision, so :func:`strategy_game.tabletop.bridge.board_from_world`
-  takes the world state as an explicit **argument** and returns a projection. The rendering path
-  exists; the gate is not performed, and the argument is still there to remove when it is.
+  container *is* the Gate D decision, so :func:`strategy_game.tabletop.bridge.board_from_world` and
+  :func:`strategy_game.tabletop.bridge.board_from_local_slice` take their source as an explicit
+  **argument** and return a projection. The rendering path exists; the gate is not performed, and the
+  argument is still there to remove when it is. The second of those is the **first board with content
+  on it**: the one complete local slice (``data/ukweli_local.json``) projected through the mapping
+  declared in ``data/board_local.json``.
 
 The public API of this subpackage is its own; :mod:`strategy_game`'s pinned ``__all__`` and the
 pinned key set of ``python -m strategy_game`` are untouched (#282/#347).
@@ -48,7 +51,16 @@ from .board import (
     EdgeKind,
     Layout,
 )
-from .bridge import board_from_world
+from .bridge import (
+    BOARD_BINDING_DATA,
+    BOARD_BINDING_FORMAT,
+    BoardBindingError,
+    board_from_local_slice,
+    board_from_world,
+    layout_from_slice_binding,
+    load_board_binding,
+    local_slice_board,
+)
 from .cards import Card, CardError, CardRole, CardType, CardVisibility
 from .decks import Deck, DeckError, DrawLogEntry, DuplicatePolicy, Zone
 from .dice import DiceNotationError, DicePool, RollLog, RollResult, parse_notation, roll
@@ -92,7 +104,14 @@ __all__ = [
     "TarotUse",
     "draw_tarot",
     # bridge
+    "BOARD_BINDING_DATA",
+    "BOARD_BINDING_FORMAT",
+    "BoardBindingError",
+    "board_from_local_slice",
     "board_from_world",
+    "layout_from_slice_binding",
+    "load_board_binding",
+    "local_slice_board",
     # serialization
     "TABLE_SCHEMA_VERSION",
     "TableState",
