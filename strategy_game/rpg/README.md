@@ -38,9 +38,29 @@ The authored decision is **Fate Core as the shared RPG resolution foundation**, 
 The public functions `roll_fate`, `resolve`, `skill_check` and `demo_investigation` are dependency-free. Use Python 3.10+.
 
 ```bash
+python -m strategy_game.rpg           # the worked scene as JSON
+python -m strategy_game.rpg --text   # the same report as reading text
+python -m strategy_game.rpg --seed 7
 python -m unittest strategy_game.tests.test_fate_rpg
 python -c "from strategy_game.rpg.fate import demo_investigation; print(demo_investigation())"
 ```
+
+## Run it: the worked scene
+
+`python -m strategy_game.rpg` runs the layer's demonstrations in one payload and prints them: the
+**investigation** (a cyber *overcome* and a PSI *create advantage* through the **same** engine, which is
+issue #389's worked example), the two **BCI netrunning** examples, and — for every check — the dice as
+they fell, the total, the shifts and the outcome, followed by what the table keeps. The module is
+[`run.py`](run.py) and the entry point is [`__main__.py`](__main__.py). It is **noncanonical and
+illustrative**: an example of the engine, not scenario canon, and it computes no strategy or political
+mechanic. Its exclusions are read from [`boundary.py`](boundary.py) rather than restated, so the seam has
+one home.
+
+This added no coupling. `run.py` and `__main__.py` import only from inside `rpg/`; the layer's contract
+in [`tests/test_rpg_boundary.py`](../tests/test_rpg_boundary.py) permits exactly two *types* to cross
+from the strategy engine — the shared `characters` tag vocabulary anywhere, and the reserved port's
+`core.WorldState` parameter type in the one file that fills the port — so the demonstration reaches for
+neither.
 
 ## Licensing and sources
 - Fate Core System SRD: https://fate-srd.com/fate-core
