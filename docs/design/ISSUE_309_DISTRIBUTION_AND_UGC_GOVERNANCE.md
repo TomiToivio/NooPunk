@@ -198,25 +198,34 @@ python3 tools/release_packaging_guard.py --mode audit            # CI, full tree
 python3 tools/release_packaging_guard.py --bundle bundle.txt --mode public   # the packaging gate
 ```
 
-**Measured on `main`, 2026-10-13:** `--mode audit` returns **PASS: 0 error(s), 204 warning(s)** —
-30 `documented-licence-mention`, 7 `quarantined-path-in-release-set`, 167 `unreviewed-material`.
-`--mode public` **fails by design** while `data/licenses/release_packaging_policy.json` carries
-`"author_decision_open": true`; the guard's own documentation states it is *"meant to keep failing in
-public mode until the author selects a licence. That is the point: the failure is the record that
-the decision is still open."*
+**Measured on 2026-10-13 against `origin/main` at `16fcb69` (the base of this record's branch):**
+`--mode audit` returned **PASS: 0 error(s), 204 warning(s)** — 30 `documented-licence-mention`, 7
+`quarantined-path-in-release-set`, 167 `unreviewed-material`. `--mode public` **fails by design**
+while `data/licenses/release_packaging_policy.json` carries `"author_decision_open": true`; the
+guard's own documentation states it is *"meant to keep failing in public mode until the author
+selects a licence. That is the point: the failure is the record that the decision is still open."*
 
-**One packaging gap found while measuring, recorded and not fixed.** Of those 204 warnings,
-**157 are paths under `strategy_game/`**, and the reason is structural rather than incidental: the
-policy's `artifact_classes` cover `src/**`, `scripts/**`, `tools/**`, `tests/**`, `docs/**`,
-`data/**`, `fixtures/**` and packaging plumbing — and **no artifact class covers `strategy_game/` at
-all.** In `--mode audit` that is a warning; in `--bundle … --mode public` an uncovered path is an
-**error** ("unreviewed third-party material must not ship"). So **the release set as currently
-defined would reject the crossover game's own tree**, which is the very thing S1-a ships.
+**The one packaging gap that measurement found — real when found, and since closed by someone
+else.** Of those 204 warnings, **157 were paths under `strategy_game/`**, and the cause was
+structural rather than incidental: the policy's `artifact_classes` covered `src/**`, `scripts/**`,
+`tools/**`, `tests/**`, `docs/**`, `data/**`, `fixtures/**` and packaging plumbing — and **no
+artifact class covered `strategy_game/` at all.** In `--mode audit` that is a warning; in
+`--bundle … --mode public` an uncovered path is an **error** ("unreviewed third-party material must
+not ship"). So the release set as then defined would have rejected the crossover game's own tree,
+which is the very thing S1-a ships.
 
-That is a real release-blocking gap, and it is **deliberately not fixed here**: adding an artifact
-class to `data/licenses/release_packaging_policy.json` assigns a licensing category, which is
-[#421](https://github.com/TomiToivio/NooPunk/issues/421)'s subject and the author's decision. This
-record names it so it is not discovered during a release attempt.
+**It was closed concurrently by [#429](https://github.com/TomiToivio/NooPunk/pull/429)** — *"the
+release plan could not ship the game, and the guard had no test"* — which extended the artifact
+classes to cover `strategy_game/` (`rulebook-prose`, `rule-data`, `design-and-audit-records`,
+`source-code`). Re-measured on `main` at `c1a016f`: `--mode audit` → **PASS: 0 error(s), 39
+warning(s)** (32 `documented-licence-mention`, 7 `quarantined-path-in-release-set`), with only
+**2** warnings naming a `strategy_game/` path; `--mode public` still **fails**, which is the
+author-decision record and is unchanged.
+
+The gap is recorded rather than deleted, because the provenance is the point: it was a genuine
+release-blocking defect, it was found by two tracks at the same time, and **the correction is not
+this record's work.** #429 changed nothing else in this document beyond these figures, and no
+artifact class is proposed here.
 
 The guard also does not answer whether a bundle is *lawful*; its documentation is explicit that it
 answers only *"is this bundle internally consistent with the recorded rights position?"*, and the
@@ -439,8 +448,9 @@ should be read as a moderation design.
   agent's."* §7 leaves price entirely open.
 - **Whether the Steamworks SDK falls under §7a's "nothing proprietary".** Flagged as a genuine
   question (§1.3 conflict 2) and left to the author.
-- **The artifact class for `strategy_game/`.** The gap is measured and named (§2.3); assigning the
-  class is a licensing decision.
+- **The artifact class for `strategy_game/`.** This record was going to leave it open as a
+  licensing decision, but [#429](https://github.com/TomiToivio/NooPunk/pull/429) closed it
+  concurrently; §2.3 records both states.
 - **The inbound contribution licence and the attribution policy.** Named as gaps, assigned to
   [#421](https://github.com/TomiToivio/NooPunk/issues/421) (§4.3, §4.4).
 - **Any mechanic, count, threshold or rule of the UGC/mod format.** §4.2 states a governance
@@ -450,13 +460,20 @@ should be read as a moderation design.
 
 ## 6. Verification
 
-Everything factual above was measured on 2026-10-13, from a branch off `origin/main`:
+Everything factual above was measured on 2026-10-13 against `origin/main` at `16fcb69`, and the
+guard figures were **re-measured against `origin/main` at `c1a016f`** after
+[#429](https://github.com/TomiToivio/NooPunk/pull/429) landed:
 
-- `python3 tools/release_packaging_guard.py --mode audit` → **PASS: 0 error(s), 204 warning(s)**
-  (30 `documented-licence-mention`, 7 `quarantined-path-in-release-set`, 167
-  `unreviewed-material`; 157 of the warnings are `strategy_game/` paths).
-- No artifact class in `data/licenses/release_packaging_policy.json` matches `strategy_game` —
-  checked programmatically.
+- `python3 tools/release_packaging_guard.py --mode audit`, at `16fcb69` → **PASS: 0 error(s), 204
+  warning(s)** (30 `documented-licence-mention`, 7 `quarantined-path-in-release-set`, 167
+  `unreviewed-material`; 157 of the warnings were `strategy_game/` paths).
+- `python3 tools/release_packaging_guard.py --mode audit`, at `c1a016f` → **PASS: 0 error(s), 39
+  warning(s)** (32 `documented-licence-mention`, 7 `quarantined-path-in-release-set`; 2 warnings
+  name a `strategy_game/` path). `--mode public` → **FAIL: 1 error**, which is the author-decision
+  record.
+- At `16fcb69`, **no** artifact class in `data/licenses/release_packaging_policy.json` matched
+  `strategy_game`; at `c1a016f`, four do (`rulebook-prose`, `rule-data`,
+  `design-and-audit-records`, `source-code`) — both checked programmatically.
 - `data/licenses/release_packaging_policy.json` → `author_decision_open: true`.
 - Quarantine globs and excluded-licence vocabulary read from the same policy file and from
   `data/sources/game_system_rights.json` (`decision_vocabulary`).
