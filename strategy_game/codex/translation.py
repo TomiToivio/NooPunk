@@ -17,6 +17,10 @@ So this module models **partial understanding as data**:
 * :class:`Meaning` carries a candidate reading with a display-confidence label, never a probability;
 * :class:`Lexicon` holds **several candidates per sign** and has no method that returns a single
   answer — a sign that is ambiguous stays ambiguous, which is the whole dramatic point;
+* a **tested-but-wrong** reading is a *state* the session keeps, not a reset: :meth:`ContactSession.advance_to`
+  refuses to move backwards, so a falsified reading closes a hypothesis while the entity stays open, which
+  is `rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md` §16.4 — "Failure should generate information, risk or
+  new choices rather than an automatic 'you can never know'";
 * :func:`machine_candidate` reproduces the issue's warning that an automatic translator can be
   confidently wrong by returning a *low-confidence* candidate that is explicitly marked as a guess.
 
@@ -60,6 +64,18 @@ class CommunicationMode(Enum):
 
 #: The declared value set, so callers can validate without constructing an enum member.
 COMMUNICATION_MODES: tuple[str, ...] = tuple(mode.value for mode in CommunicationMode)
+
+
+#: The **load-bearing signifiers** the issue names as the pragmatics traps of first contact — the words
+#: whose meaning is not equivalent across minds. The issue's own line: "Distinguish lexical translation
+#: from **pragmatics** ('gift', 'weapon', 'we', 'voluntary', 'service', 'harvest', 'ownership',
+#: 'individual')." This is the conventional set :attr:`EntityRecord.referent_collisions` names when it
+#: records which of them a given entity expresses non-equivalently (the UCCC "we" as a social memory
+#: complex of thousands of bodies, a metallic sphere's "individual" as one node of a planetary swarm, a
+#: vegetal migrant for whom "now" spans a century). No conlang and no engine: the difficulty is authored.
+LOAD_BEARING_SIGNIFIERS: tuple[str, ...] = (
+    "gift", "weapon", "we", "voluntary", "service", "harvest", "ownership", "individual",
+)
 
 
 class TranslationStage(Enum):

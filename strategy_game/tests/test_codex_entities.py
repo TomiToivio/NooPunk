@@ -20,8 +20,13 @@ sys.path.insert(0, str(ROOT))
 
 from strategy_game.codex import (  # noqa: E402
     CODEX_PATH,
+    CONSCIOUSNESS_STATUSES,
+    ENTITY_DESCRIPTORS,
+    ENTITY_ONTOLOGIES,
     Codex,
     CodexError,
+    ConsciousnessStatus,
+    EntityDescriptor,
     EntityForm,
     EntityOntology,
     EntityRecord,
@@ -200,6 +205,132 @@ class CodexTests(unittest.TestCase):
         self.assertEqual(Codex.from_json(codex.to_json()).to_json(), codex.to_json())
 
 
+class ExtendedDescriptorTests(unittest.TestCase):
+    """The `RULEBOOK.md` §43.4 extended categories, carried as a descriptor axis (issue #348)."""
+
+    def test_the_rulebook_extended_descriptors_are_declared(self):
+        for name in ("process", "ecology", "assemblage", "collective", "geotic",
+                     "hybrid_or_composite", "anomaly_or_unclassified"):
+            with self.subTest(name=name):
+                self.assertIn(name, ENTITY_DESCRIPTORS)
+
+    def test_a_descriptor_is_not_an_ontology(self):
+        """§43.4 says some are 'better treated as cross-cutting descriptors than as formal classes'."""
+        self.assertEqual(set(ENTITY_DESCRIPTORS) & set(ENTITY_ONTOLOGIES), set())
+
+    def test_a_descriptor_must_be_a_member(self):
+        with self.assertRaises(CodexError):
+            _record(ontology_descriptors=("collective",))  # type: ignore[arg-type]
+
+    def test_a_descriptor_may_not_repeat(self):
+        with self.assertRaises(CodexError):
+            _record(ontology_descriptors=(EntityDescriptor.COLLECTIVE, EntityDescriptor.COLLECTIVE))
+
+    def test_descriptors_ride_on_top_of_the_primary_ontology(self):
+        """One primary reading plus descriptors, exactly as §43.4's worked example reads."""
+        record = _record(ontology=EntityOntology.NOETIC,
+                         ontology_descriptors=(EntityDescriptor.COLLECTIVE, EntityDescriptor.PROCESS))
+        self.assertIs(record.ontology, EntityOntology.NOETIC)
+        self.assertEqual(record.ontology_descriptors,
+                         (EntityDescriptor.COLLECTIVE, EntityDescriptor.PROCESS))
+
+    def test_descriptors_round_trip(self):
+        record = _record("e5", ontology_descriptors=(EntityDescriptor.ECOLOGY,))
+        self.assertEqual(EntityRecord.from_dict(json.loads(json.dumps(record.to_dict()))), record)
+
+    def test_an_unrecognised_descriptor_raises_rather_than_being_dropped(self):
+        with self.assertRaises(CodexError):
+            EntityRecord.from_dict(
+                {"identifier": "e1", "display_name": "x", "ontology_descriptors": ["vibes"]}
+            )
+
+
+class ConsciousnessPostureTests(unittest.TestCase):
+    """The issue refuses to let the model assert what the fiction cannot know (issue #348)."""
+
+    def test_the_default_posture_is_unknown(self):
+        self.assertIs(_record().consciousness_status, ConsciousnessStatus.UNKNOWN)
+
+    def test_the_vocabulary_matches_the_character_card_layer(self):
+        from strategy_game.characters import CONSCIOUSNESS_STATUSES as CARD_STATUSES
+
+        self.assertEqual(CONSCIOUSNESS_STATUSES, CARD_STATUSES)
+
+    def test_nothing_turns_the_posture_into_a_truth_value(self):
+        """No accessor may collapse interiority to a boolean — the setting does not settle it."""
+        record = _record(consciousness_status=ConsciousnessStatus.CONTESTED)
+        for name in ("is_conscious", "conscious", "is_sentient", "sentient", "has_mind"):
+            with self.subTest(name=name):
+                self.assertFalse(hasattr(record, name), f"EntityRecord.{name} would assert interiority")
+        self.assertNotIsInstance(record.consciousness_status, bool)
+
+    def test_an_in_world_assertion_needs_a_cited_source(self):
+        with self.assertRaises(CodexError):
+            _record(consciousness_status=ConsciousnessStatus.ASSERTED_IN_WORLD)
+        record = _record(consciousness_status=ConsciousnessStatus.ASSERTED_IN_WORLD,
+                         source_references=("a witness account",))
+        self.assertIs(record.consciousness_status, ConsciousnessStatus.ASSERTED_IN_WORLD)
+
+    def test_the_posture_must_be_a_member(self):
+        with self.assertRaises(CodexError):
+            _record(consciousness_status="definitely")  # type: ignore[arg-type]
+
+    def test_an_unrecognised_posture_raises(self):
+        with self.assertRaises(CodexError):
+            EntityRecord.from_dict(
+                {"identifier": "e1", "display_name": "x", "consciousness_status": "yes"}
+            )
+
+    def test_the_posture_round_trips(self):
+        record = _record("e6", consciousness_status=ConsciousnessStatus.CONTESTED)
+        self.assertEqual(EntityRecord.from_dict(json.loads(json.dumps(record.to_dict()))), record)
+
+
+class OntologyAbsenceTests(unittest.TestCase):
+    """A polity is not a body: ontology may be absent *with a stated reason* (issue #348, §43.4)."""
+
+    def test_a_body_form_may_not_omit_its_ontology(self):
+        with self.assertRaises(CodexError):
+            _record(ontology=None, form=EntityForm.SPECIES,
+                    ontology_absent_reason="no reason helps a body")
+
+    def test_a_polity_may_omit_its_ontology_with_a_reason(self):
+        record = _record(ontology=None, form=EntityForm.POLITY,
+                         ontology_absent_reason="a bloc, not a body")
+        self.assertIsNone(record.ontology)
+        self.assertEqual(record.hypotheses, ())
+        self.assertFalse(record.is_contested)
+
+    def test_an_omitted_ontology_needs_a_reason(self):
+        with self.assertRaises(CodexError):
+            _record(ontology=None, form=EntityForm.ORGANIZATION)
+
+    def test_a_present_but_null_ontology_loads_as_absent_not_as_the_default(self):
+        """A ``null`` with a reason is a stated absence, not the historical BIOLOGIC default."""
+        record = EntityRecord.from_dict({
+            "identifier": "e1", "display_name": "x", "ontology": None,
+            "form": "polity", "ontology_absent_reason": "a bloc",
+        })
+        self.assertIsNone(record.ontology)
+
+    def test_a_missing_ontology_key_still_takes_the_default(self):
+        record = EntityRecord.from_dict({"identifier": "e1", "display_name": "x"})
+        self.assertIs(record.ontology, EntityOntology.BIOLOGIC)
+
+    def test_an_absent_ontology_round_trips(self):
+        record = _record("e7", ontology=None, form=EntityForm.POLITY,
+                         ontology_absent_reason="a bloc")
+        restored = EntityRecord.from_dict(json.loads(json.dumps(record.to_dict())))
+        self.assertIsNone(restored.ontology)
+        self.assertEqual(restored.ontology_absent_reason, "a bloc")
+
+    def test_the_absent_ontology_stays_absent_in_the_player_view(self):
+        codex = Codex()
+        codex.add(_record("p1", ontology=None, form=EntityForm.POLITY,
+                          ontology_absent_reason="a bloc, not a body"))
+        self.assertIsNone(codex.player_view("p1")["ontology"])
+
+
 class ShippedCodexDataTests(unittest.TestCase):
     """Structural checks on the data file, because loading it is code behaviour."""
 
@@ -257,6 +388,40 @@ class ShippedCodexDataTests(unittest.TestCase):
         for record in codex.by_knowledge_status(KnowledgeStatus.GM_TRUTH):
             with self.subTest(record=record.identifier):
                 self.assertNotIn(record.display_name, payload)
+
+    def test_at_least_one_entry_declares_an_extended_descriptor(self):
+        """The §43.4 descriptor axis must be exercised by the shipped data, not only by unit tests."""
+        self.assertTrue(any(r.ontology_descriptors for r in load_codex().entries.values()))
+
+    def test_every_shipped_descriptor_is_a_valid_member(self):
+        for record in load_codex().entries.values():
+            for descriptor in record.ontology_descriptors:
+                with self.subTest(record=record.identifier):
+                    self.assertIn(descriptor.value, ENTITY_DESCRIPTORS)
+
+    def test_a_faction_form_declares_a_ontology_or_states_why_it_has_none(self):
+        """Every polity/organization either claims a substrate or records the absence with a reason."""
+        for record in load_codex().entries.values():
+            if record.form in (EntityForm.POLITY, EntityForm.ORGANIZATION):
+                with self.subTest(record=record.identifier):
+                    self.assertTrue(
+                        record.ontology is not None or record.ontology_absent_reason.strip(),
+                        f"{record.identifier}: a faction form must claim a ontology or state its absence",
+                    )
+
+    def test_the_reconciled_polities_no_longer_assert_a_substrate(self):
+        """The #348 reconciliation: a bloc is not *a* biologic (its own substrate text says so)."""
+        codex = load_codex()
+        for identifier in ("uccc", "orion_sphere"):
+            with self.subTest(record=identifier):
+                record = codex.get(identifier)
+                self.assertIsNone(record.ontology)
+                self.assertTrue(record.ontology_absent_reason.strip())
+
+    def test_every_shipped_posture_is_a_valid_member(self):
+        for record in load_codex().entries.values():
+            with self.subTest(record=record.identifier):
+                self.assertIn(record.consciousness_status.value, CONSCIOUSNESS_STATUSES)
 
 
 if __name__ == "__main__":
