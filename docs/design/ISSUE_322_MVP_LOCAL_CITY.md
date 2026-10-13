@@ -33,29 +33,37 @@ as a runtime dependency.
 ## 2. The small board
 
 Eight nodes at most, five at least, per #322's own envelope, and the same envelope the schema caps. The
-current configuration is exactly eight:
+current configuration is exactly eight, and it is *scenario data*: a second city is a configuration, not
+a code change.
 
-| # | Node | Kind | Access |
-| --- | --- | --- | --- |
-| 1 | Old Harbor and Civic Centre | city | open |
-| 2 | Mixed Neighborhoods | city | open |
-| 3 | University and Hospital | city | open |
-| 4 | Industrial Logistics Port | city | open |
-| 5 | Coastal Hinterland | environs | open |
-| 6 | Outer Island Communities | island | open |
-| 7 | Airfield Island | island | open |
-| 8 | Restricted Island (biodiversity exclusion zone) | island | **restricted** |
+| # | Node | Kind |
+| --- | --- | --- |
+| 1 | Old Harbor | city |
+| 2 | Civic and Commercial Centre | city |
+| 3 | Mixed Neighborhoods | city |
+| 4 | University and Hospital | city |
+| 5 | Industrial Logistics Port | city |
+| 6 | Outer Island Communities | island |
+| 7 | Airfield Island | island |
+| 8 | Coastal Hinterland | environs |
 
-**Three island nodes, one of them the restricted exclusion island**, matching the setting bible's canon;
-the closure and the still-open trade-off are in
-[`ISSUE_324_UKWELI_GAP_CLOSURE.md`](ISSUE_324_UKWELI_GAP_CLOSURE.md) §4. Islands link by **simple
-ferry/bridge/boat adjacencies with no pathfinding and no maritime simulator**; a *district* may be a
-mainland neighbourhood or an entire island, and both use the same small location model. The restricted
-island carries **no route**, so no leader reaches it — which is what a prohibited zone means.
+Islands link by **simple ferry/bridge/boat adjacencies with no pathfinding and no maritime simulator**; a
+*district* may be a mainland neighbourhood or an entire island, and both use the same small location
+model (a district may be an island — #324's own words).
 
-Node classification is **structure, not a rule**: `island` and `access` are schema fields on a location
-record, read by `strategy_game/local_geography.py`, and no engine code interprets them as a cost, a
-route, a control or a score.
+**The restricted exclusion island is declared, and it is not a board node.** The setting bible states as
+canon *"one city plus 3–4 islands … one marked restricted"*, and the board carries two islands and no
+closed one. Placing the island needs a ninth node — which the cap forbids — or the removal of a node
+whose set is now pinned by a **merged board projection** as well as by the schema, so **which role gives
+way is the author's trade**, recorded rather than taken. The declaration, its access class and the reason
+it is off the board live in `strategy_game/data/ukweli_geography.json`, and
+[`ISSUE_324_UKWELI_GAP_CLOSURE.md`](ISSUE_324_UKWELI_GAP_CLOSURE.md) §4 walks it.
+
+Node classification is **structure, not a rule**: `island` and `access` are optional schema fields on a
+location record (the config marks its two islands and leaves `access` unrecorded because nothing is
+closed), read by `strategy_game/local_geography.py`, and no engine code interprets them as a cost, a
+route, a control or a score. A board marker that contradicts the declaration is *reported*, and an
+unrecorded marker stays **unknown** rather than being read as "not an island".
 
 ## 3. Four-character factions
 

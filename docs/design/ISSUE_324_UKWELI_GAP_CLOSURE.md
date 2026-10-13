@@ -36,9 +36,11 @@ rival official names but a **register** difference, and the register mapping is 
 | **Everyday** | **Ukweli**, **New Ukweli** | the map, the city, ordinary conversation |
 | **Informal** | *Republic of Ukweli* | #324's own title and body, and older prose |
 
-This is recorded in `strategy_game/data/ukweli_geography.json` → `state_names`, and the scenario data's
-`setting` string now reads *People's Republic of Ukweli, Indian Ocean*. **Aligning the data to #325 is
-not inventing a name**: it is the author's own statement, and the record cites it.
+This is recorded in `strategy_game/data/ukweli_geography.json` → `state_names`. The scenario data's
+`setting` string is deliberately **left as the informal register** (*Republic of Ukweli, Indian Ocean*)
+rather than rewritten: the mapping already records both registers, and the board file is bound by another
+landed artifact (PR #387) whose node set and content are not this record's to churn. **Aligning the
+record to #325 is not inventing a name**: it is the author's own statement, and the record cites it.
 
 **PENDING — the residual question.** Whether the **informal short form may persist** in issue titles and
 prose is the author's, and it is recorded as `state_names.residual_pending` with a container instead of
@@ -78,42 +80,45 @@ The two island nodes on the board are **not** equated with either place, and
 `local_geography.problems()` reports any relation that claims to be resolved without a cited ruling.
 The restricted island's legal autonomy is carried in the same place.
 
-## 4. The island count — **CLOSED** in the configuration, with the trade-off recorded
+## 4. The island gap — **declared as structure**, with the placement left to the author
 
 **The gap.** #324 asks for *one modern city, multiple islands and 6–8 simple locations*, with one island
 in the set marked restricted; and the setting bible
 ([`../world/PEOPLES_REPUBLIC_OF_UKWELI.md`](../world/PEOPLES_REPUBLIC_OF_UKWELI.md) §8) states as
 **CANON**: *"One city plus 3–4 islands represented by 6–8 location nodes, one marked restricted."* The
-live configuration carried **two** island nodes (`outer_island`, `airfield_island`) and **no** restricted
-node, so the configuration contradicted the canon it was meant to instantiate. An exclusion island is
+live configuration carries **two** island nodes (`outer_island`, `airfield_island`) and **no** restricted
+node, so it shows one island fewer than the canon it is meant to instantiate. An exclusion island is
 canon in its own right: #325 designates an entire island a prohibited/protected zone, publicly to
 safeguard Ukweli's biodiversity.
 
-**What landed.** The board now carries **three island nodes, one of them restricted**, still inside the
-eight-node cap both issues state:
+**What was checked, and why the configuration was not restructured.** Adding the island needs a **ninth
+node**, which the eight-node cap that `#322`, `#325` and the merged schema all state rules out — or the
+**removal of an existing node**. And the board's node set is not free to edit: it is pinned not only by
+the cap but by a **merged board projection** — `strategy_game/data/board_local.json` and
+`tests/test_board_local_projection.py` (PR #387) bind each of the eight node ids to a layout position
+and assert them. Removing or renaming one would break a landed, green artifact, and **which** role gives
+way is a scenario decision that belongs to the author, not to a validator.
 
-| Node | Role | `island` | `access` |
+So the record does the honest thing instead: it **declares the full island set** — three islands, one of
+them the restricted exclusion island — and marks the restricted one `on_playable_board: false` **with its
+reason**. The gap is therefore *recorded* rather than hidden, and it is one edit away from closing:
+
+| Declared island | Access | On the board | Why |
 | --- | --- | --- | --- |
-| `outer_island` | villages, tourism, ferry-dependent communities | true | open |
-| `airfield_island` | the strategic island: airfield and communications | true | open |
-| **`exclusion_island`** | **the biodiversity exclusion zone** | true | **restricted** |
+| `outer_island` | open | **yes** | villages, tourism, ferry-dependent communities |
+| `airfield_island` | open | **yes** | the strategic island: airfield and communications |
+| **`exclusion_island`** | **restricted** | **no** | the biodiversity exclusion zone: canon, and a ninth node the cap and a landed board projection do not permit this record to place |
 
-**The trade, stated rather than hidden.** Eight is the cap, and the board was already full, so a third
-island could not be added without folding a city role. The **historic quarter is folded into the
-waterfront civic node** (`civic`, now *Old Harbor and Civic Centre*), keeping its `heritage` and `trade`
-tags. The role chose itself on the least-loss principle: the historic quarter and the civic centre are
-two faces of one waterfront, whereas the *coastal hinterland* is a different kind of place — mainland
-countryside and the identity party's rural base — and cannot be folded into an urban node. The location
-labels are explicitly **proposals**, not recovered canon (`REPUBLIC_OF_UKWELI.md`), so folding one edits
-a proposal rather than canon.
+**PENDING — the author's part.** Recorded in `island_count.pending` and in the decision list: should the
+restricted island become a **ninth** node (moving the cap), **displace** one of the eight (and if so,
+which), or be represented **off-board** as a declared non-playable zone? The three are genuinely
+different settings, and the choice is the author's. Whichever is taken, the island **carries no route**,
+so a prohibited zone stays unreachable under the provisional travel rules.
 
-**The restricted island carries no route.** No ferry or bridge edge connects it, so no leader reaches it
-under the provisional travel rules in `local_slice.py` — which is what a *prohibited zone* means, and it
-means the restriction is expressed as structure rather than as a rule about the board.
-
-**PENDING — the author's part.** Recorded in `island_count.pending`: **three island nodes or four**: and
-if a fourth is wanted, **which listed city or environs role gives way**. Choosing the count and the trade
-is a scenario decision, so it is recorded as an option list, never picked.
+**What the structure does buy.** Because `island` and `access` are now optional **schema** fields on any
+location record, placing the island needs no code change at all: it is an edit to the scenario data and
+its board binding. That is the sense in which the structure is landed even though the configuration still
+shows two islands.
 
 ## 5. What landed, and where
 
@@ -121,11 +126,11 @@ is a scenario decision, so it is recorded as an option list, never picked.
 | --- | --- |
 | `strategy_game/data/ukweli_geography.json` | the declared geography: the island set, the naming registers, the open relations and the pending decisions |
 | `strategy_game/local_geography.py` | the reader and the validator (islands, the single exclusion island, the naming registers, the still-open relations) |
-| `strategy_game/tests/test_local_geography.py` | 38 executable contracts over that record |
-| `strategy_game/data/ukweli_local.json` | the board: three island nodes, one restricted; the folded civic node; the official name in `setting` |
-| `strategy_game/data/city_scenario_schema.json` | the generic location record gains optional `island` (bool) and `access` (`open` / `restricted` / `prohibited`) — a reusable capability for any city, not an Ukweli special case |
-| `docs/scenarios/REPUBLIC_OF_UKWELI.md`, `docs/world/PEOPLES_REPUBLIC_OF_UKWELI.md`, `strategy_game/docs/INTERFACE_SPIKE.md`, `strategy_game/docs/CITY_SCENARIO_SCHEMA.md`, `strategy_game/README.md` | the label lists and the schema notes, updated to match the configuration |
-| `ISSUE_324_ACCEPTANCE.md` | an addendum pointer, and the island row corrected on landing |
+| `strategy_game/tests/test_local_geography.py` | 45 executable contracts over that record |
+| `strategy_game/data/ukweli_local.json` | the board: unchanged in its eight nodes and seven routes; its two islands now carry an explicit `island: true` marker the declaration cross-checks |
+| `strategy_game/data/city_scenario_schema.json` | the generic location record gains optional `island` (bool) and `access` (`open` / `restricted` / `prohibited`) — a reusable capability for any city, not an Ukweli special case, and the reason placing the island needs no code change |
+| `docs/scenarios/REPUBLIC_OF_UKWELI.md`, `docs/world/PEOPLES_REPUBLIC_OF_UKWELI.md`, `strategy_game/README.md` | pointing at the declared island and the reason it is off the board; the playable label list is **unchanged** |
+| `strategy_game/docs/CITY_SCENARIO_SCHEMA.md` | the schema note gains the two optional fields |
 
 ## 6. #324's acceptance bullets, revisited
 
@@ -134,12 +139,13 @@ changes or leaves open**, so the two do not fork:
 
 | Bullet | Position after this addendum |
 | --- | --- |
-| One modern city, multiple islands, 6–8 simple locations, no national/global playable map | **Strengthened.** Three island nodes, one restricted, still eight locations and seven routes |
+| One modern city, multiple islands, 6–8 simple locations, no national/global playable map | **Unchanged for the playable board** (eight nodes, two islands). The **restricted island is added as a declaration**, off the board and with its reason, so the canonical gap is now recorded rather than absent |
 | Existing lore checked for continuity, preserved/revised elements attributed | The state-name registers are now attributed to #325 as the source, and the party-label conflict is attributed to both sides rather than to one |
-| Geography, culture and politics remain scenario data, not engine assumptions | **Strengthened.** The island/access markers are schema fields on a location record; no engine code reads them |
+| Geography, culture and politics remain scenario data, not engine assumptions | **Strengthened.** The island/access markers are optional schema fields on a location record; no engine code reads them |
 | *(carried-forward)* the state's formal name | **Closed as a register mapping**, with the informal-form question PENDING |
 | *(carried-forward)* the third party's name | **PENDING**, deliberately, matching #326 |
 | *(carried-forward)* the restricted island's relationship and legal autonomy | **PENDING**, carried as three named options |
+| *(the island gap)* the restricted island itself | **Declared with its access class and its reason for being off the board**; the placement is PENDING |
 
 ## 7. What this record deliberately does not do
 
@@ -149,7 +155,7 @@ changes or leaves open**, so the two do not fork:
   record, and nothing here is read as a cost, a route, a control or a score.
 - It **does not re-open #324** or restate the schema work PR #379 landed; it cites that record and adds
   to it.
-- It **touches no file** owned by #325 for society or by #326 for people: the setting bible gains a
-  corrected label list, not new lore.
+- It **touches no file** owned by #325 for society or by #326 for people: the setting bible gains an
+  open-item paragraph, not new lore and not a changed label list.
 - It carries **no test over prose**: the contracts in `test_local_geography.py` exercise the record and
   its validator, never a document's wording (#271).

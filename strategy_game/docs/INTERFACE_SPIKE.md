@@ -51,9 +51,8 @@ Measured output on the local slice:
 
 ```
 board [scaffold-1] — 8 locations, 3 nodes, 7 routes, 0 assets, 12 leaders
-locations: Old Harbor and Civic Centre, Mixed Neighborhoods, University and Hospital,
-           Industrial Logistics Port, Coastal Hinterland, Outer Island Communities, Airfield Island,
-           Restricted Island (biodiversity exclusion zone)
+locations: Old Harbor, Civic and Commercial Centre, Mixed Neighborhoods, University and Hospital,
+           Industrial Logistics Port, Outer Island Communities, Airfield Island, Coastal Hinterland
 routes (declared edges; direction, meaning and control are not implied): 7
 cards [render-text-1] — 17 in the roster
 ```
