@@ -52,6 +52,28 @@ class DataOnlyModdingTests(unittest.TestCase):
         with self.assertRaises(BoardError):
             board.add_node(BoardNode(identifier="repeated", label="Second"))
 
+    def test_duplicate_cards_are_rejected_by_example_loader(self):
+        from tempfile import TemporaryDirectory
+
+        raw = json.loads(FIXTURE.read_text(encoding="utf-8"))
+        raw["cards"].append(dict(raw["cards"][0]))
+        with TemporaryDirectory() as folder:
+            path = Path(folder) / "duplicate-cards.json"
+            path.write_text(json.dumps(raw), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "duplicate card identifier"):
+                load_example(path)
+
+    def test_unsupported_schema_is_rejected(self):
+        from tempfile import TemporaryDirectory
+
+        raw = json.loads(FIXTURE.read_text(encoding="utf-8"))
+        raw["schema_version"] = "noopunk.mod_example.v999"
+        with TemporaryDirectory() as folder:
+            path = Path(folder) / "future-schema.json"
+            path.write_text(json.dumps(raw), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "unsupported example schema version"):
+                load_example(path)
+
 
 if __name__ == "__main__":
     unittest.main()
