@@ -11,7 +11,7 @@ and the draft those approvals concern is
 | # | Criterion | Position |
 | --- | --- | --- |
 | 1 | Every faction has four leaders; every active action identifies exactly one leader | **met** — `structural_problems()` refuses a leaderless mission, a fifth office, and a mission whose leader is not in the roster |
-| 2 | At most one active mission per leader per turn; unavailable leaders cannot execute one | **met** — the turn is refused by name rather than weakened |
+| 2 | At most one active mission per leader per turn; unavailable leaders cannot execute one | **met, both clauses** — the cap is refused by name, and the no-mission column of section 4 is refused by PR #443; the three unauthored parts of that row stay reported |
 | 3 | Members and resources amplify leader-led missions but never create free missions | **deferred** — the rule is drafted (proposal B3); no implementation |
 | 4 | One persistent portfolio with a bounded, visible bonus; no hidden automatic active moves | **deferred** — the portfolio and its visibility are on `main`, and `magnitude_declared: false` records the number as unapproved; the bonus itself is proposal C1 |
 | 5 | Assignments and results readable in a God's-eye city strategy interface | **met** — `council_view.py`, the text assignment board (#412, #418) |
@@ -40,6 +40,26 @@ proposal.
 
 ---
 
+## Enforcement update (the correction this issue was reopened for)
+
+The reopen was right: this record had presented criterion 2's second clause as met while the code only
+*reported* it. Two things changed, and the second is the substantive one.
+
+1. The record now states the clause as it stands at each point, which is what the defer-and-close rule
+   requires.
+2. **The clause is enforced.** `docs/LEADER_COUNCIL_SYSTEM.md` §4's *"Mission this turn?"* column is the
+   shape the author's own document declares, and the three items its TODO list names — recovery timing,
+   the compromised reduction and exposure risk — are *not* that column. Refusing a mission led by a
+   no-mission status therefore applies an authored criterion rather than inventing a rule. This reverses
+   the earlier agent call recorded in `data/council.json` as `enforced: false`; that call was right about
+   the three TODOs, and they remain reported. The data now carries `enforced_parts`, so the split is
+   explicit: `no_mission_column: true`, `portfolio_column: false`, `recovery_timing: false`,
+   `compromised_reduction: false`, `exposure_risk: false`.
+3. Two tests in `tests/test_council.py` asserted the superseded behaviour and were rewritten rather than
+   deleted, keeping their vocabulary assertions: the no-mission case is now refused by name citing §4,
+   and the enforced/unenforced split is asserted instead of "every row is unenforced". The full contract
+   lives in `tests/test_council_status_enforcement.py` (five tests).
+
 ## Re-verification (later session): the issue is **reopened**, and here is the one row that moved
 
 This record closed the issue under the author's **defer-and-close** rule, whose condition was that a
@@ -48,9 +68,11 @@ deferred item be stated as deferred rather than presented as met. Re-checking ev
 this record, two rows above do not survive, and one item that had no slot at all now has one.
 
 **Row 2 is corrected: `met` → `deferred`.** Criterion 2 is *"A leader has at most one active mission per
-turn; **unavailable leaders cannot execute one**."* The first clause is refused by name in
-`council.py`; the second clause is the **consequence of a status**, and the DRAFT status table in
-`docs/LEADER_COUNCIL_SYSTEM.md` §4 has three of six rows carrying `TODO: requires author specification`.
+turn; **unavailable leaders cannot execute one**."* Both clauses are now enforced in `council.py`: the
+cap is refused by name, and a mission whose leader's status is a no-mission row of
+`docs/LEADER_COUNCIL_SYSTEM.md` §4 is refused too. What remains unauthored in §4 — and is still reported,
+never applied — is the recovery timing, the compromised reduction and the exposure risk, which are the
+three items its own TODO list names.
 So it is **reported with its row cited, not enforced** — exactly the case the defer-and-close condition
 was written for. `status_consequence_rows` is now an explicit entry in `data/council.json`'s
 `pending_author_decisions`, naming the decision precisely.
@@ -76,7 +98,7 @@ re-argue the deferral, which stands.
 
 | # | Criterion | Position | Blocker, and the author decision it needs |
 | --- | --- | --- | --- |
-| 2 | ≤1 mission per leader per turn; **unavailable leaders cannot execute one** | **NOT MET** | the §4 status-consequence rows (recovery timing, the compromised reduction, exposure risk) |
+| 2 | ≤1 mission per leader per turn; **unavailable leaders cannot execute one** | **MET** (in the enforcement pass) | the cap is refused by name; the no-mission column of §4's status table is now refused as well, with the three unauthored parts (recovery timing, compromised reduction, exposure risk) reported and listed in `enforced_parts` |
 | 3 | Members and resources amplify, but never create free missions | **half** | the *amplification* shape (proposal B3); the cap is refused by name |
 | 4 | One persistent portfolio with a **bounded, visible bonus**; no hidden automatic moves | **NOT MET** | an approved **magnitude** for the passive effect; `magnitude_declared` stays `false` with its reason |
 | 6 | Relationships and **triggered RPG choices** change concrete strategy state | **NOT MET** | the deck's content and **what each option changes** (`event_deck_and_effects`); the container is landed |
@@ -86,3 +108,5 @@ Criterion 1 (four leaders, one named leader per active move), 5 (the God's-eye b
 deterministic one-city Python game) remain **met** and guarded by executable contracts. Stages B–F's
 remainder is draft-only in `ISSUE_323_RULES_STAGES_BCDE_PROPOSAL.md`, and `RULEBOOK.md` is untouched.
 
+
+**Where the enforcement lives now.** The refusal itself is PR **#443** (`council.py`, `data/council.json`, `tests/test_council.py`); this file was corrected in parallel, because the record — not the code — was what caused the false close this issue was reopened for.
