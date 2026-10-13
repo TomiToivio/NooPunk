@@ -74,3 +74,5 @@ for card in roster:
 ```
 
 Use `strategy_game.characters` rather than adding a parallel `character_cards` implementation. The category (Biologics, Constructs, Noetics or Plasmoids), species, hypothetical origin and faction affiliation are **different fields**, and GM-only claims must be redacted in player-facing views.
+
+**Populist realignment scenario (#305)** — [`docs/PARADIGM_REALIGNMENT_SCENARIO.md`](docs/PARADIGM_REALIGNMENT_SCENARIO.md) offers a branching fictional political scenario: incumbent adaptation, right-populist patron alliance, left-populist labor coalition and cross-ideological civil liberties. It separates audience support from network reach, includes eight ambiguous GM event hooks, and documents the evidentiary limits of Wendt/Dolan sources. These are proposals, **not rules or outcomes**.
