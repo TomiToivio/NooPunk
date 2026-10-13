@@ -45,13 +45,13 @@
   "artifact_classes": [
     {
       "id": "rulebook-prose",
-      "globs": ["RULEBOOK.md", "FACTIONS.md", "README.md", "rulebook/**", "rulebook_parts/**"],
+      "globs": ["RULEBOOK.md", "FACTIONS.md", "README.md", "COMPARISON.md", "rulebook/**", "rulebook_parts/**", "strategy_game/README.md"],
       "licence": "author-decision",
       "note": "Original creative rulebook and worldbook prose."
     },
     {
       "id": "rule-data",
-      "globs": ["data/rules/**", "data/world/**", "data/simulation/**", "data/paradigm_shifts.yaml"],
+      "globs": ["data/rules/**", "data/world/**", "data/simulation/**", "data/paradigm_shifts.yaml", "strategy_game/data/**"],
       "licence": "author-decision",
       "note": "The rules in machine-readable syntax; grouped with the rulebook, not with the code."
     },
@@ -63,13 +63,13 @@
     },
     {
       "id": "design-and-audit-records",
-      "globs": ["docs/**", "AGENTS.md", ".hermes/**"],
+      "globs": ["docs/**", "AGENTS.md", ".hermes/**", "strategy_game/docs/**", "archive/**"],
       "licence": "author-decision",
       "note": "Design, audit, scenario and record material. Publication scope of .hermes/ agent plans is an author decision."
     },
     {
       "id": "source-code",
-      "globs": ["src/**", "scripts/**", "tools/**", "tests/**"],
+      "globs": ["src/**", "scripts/**", "tools/**", "tests/**", "strategy_game/**", "gen_migration.py"],
       "licence": "author-decision-separate-software-licence",
       "note": "Needs its own software licence, separate from the CC instrument."
     },
