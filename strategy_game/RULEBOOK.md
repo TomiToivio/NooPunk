@@ -5,6 +5,8 @@
 ## Layer I: Faction leader, narrative RPG
 Reserved: attributes, personality trait tags, character decisions, roleplay, resolution. All procedures and values **TBD by author**.
 
+**Unapproved design proposal (#295):** [leader/NPC micro-rule example](docs/LEADER_MICRO_RULES_PROPOSAL.md). The worked 2d6 example and all attribute names, numbers and interfaces are for author review only; **none is a rule of this game**.
+
 ## Layer II: Network-society political simulation
 Reserved: Laclaudian ideological articulation, Castellsian communication power, agents, agency, contested meanings and systemic events. All transition mechanisms **TBD by author**.
 
