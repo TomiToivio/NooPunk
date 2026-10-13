@@ -1,0 +1,247 @@
+{
+  "format": "noopunk.strategy_game.connectivity",
+  "status": "PROPOSAL - no rule approved. This document carries the author's #344 connectivity model as data. It defines no probability, difficulty or numeric rule; it records what is reachable, by which access path, and which of two different things is illegal.",
+  "sources": [
+    "issue #344, author canon clarification 2026-10-13: three eras of hacking and connectivity",
+    "issue #344: 'determine whether access is physically and logically possible before any skill roll'",
+    "issue #344: 'A social/institutional network edge on the global strategy map does not mean an Internet route or a hackable TCP/IP connection.'",
+    "issue #344: 'Keep an accidentally exposed private network distinct from the illegal old-Internet containment breach.'",
+    "docs/design/ISSUE_224_NOOSPACE_SCOPE.md - the astral half of the same abstract operation engine: consumed, not restated",
+    "rulebook/18_CROSS_DOMAIN_STATE.md and src/rules/cross_domain_state.py - the cross-domain contract: consumed, not restated",
+    "issue #345 and PR #350 - the quantum-information/PSI/psychotronics half of #344's later update belongs to that track and is not restated here"
+  ],
+  "provenance": {
+    "kind": "authored",
+    "source": "issue #344",
+    "note": "transcribed from the author's own text; the model is his, the transcription is this session's"
+  },
+  "eras": [
+    {
+      "id": "acceleration",
+      "label": "Acceleration toward the NHI Crisis",
+      "position": "starting_era",
+      "public_network": "online_and_useful",
+      "remote_reach": true,
+      "cross_border_reach": true,
+      "local_links": true,
+      "couriers": "ordinary_logistics",
+      "typical_hacking": [
+        "remote intrusion where a reachable path exists",
+        "network reconnaissance",
+        "cyberespionage",
+        "attacks on exposed infrastructure",
+        "social engineering and local infiltration"
+      ],
+      "note": "The default setting at new game. Hacker gameplay must not begin as if post-crisis local-only netrunning were already universal. Professional hackers already use BCI, cognitive augmentation, narrow AI and specialist hardware from the start: augmentation and reachability change, the netrunner's capability does not."
+    },
+    {
+      "id": "nhi_crisis",
+      "label": "NHI Crisis",
+      "position": "middle",
+      "public_network": "down_or_unusable",
+      "remote_reach": false,
+      "cross_border_reach": false,
+      "local_links": true,
+      "couriers": "dominant",
+      "typical_hacking": [
+        "local and offline intrusion",
+        "on-site access",
+        "drones",
+        "physical couriers",
+        "surviving isolated LANs",
+        "limited ad-hoc links"
+      ],
+      "note": "The public internet is down or effectively unusable as a strategic global service amid physical destruction, outages, emergency isolation, state and corporate disconnects and hostile AGI incidents. A netrunner may be skilled and still unable to reach a target. Travel and logistics are disrupted too."
+    },
+    {
+      "id": "after_crisis",
+      "label": "After the NHI Crisis",
+      "position": "late",
+      "public_network": "safenet_slow_and_managed",
+      "remote_reach": true,
+      "cross_border_reach": false,
+      "local_links": true,
+      "couriers": "routine_infrastructure",
+      "typical_hacking": [
+        "private organizational LANs",
+        "a mismanaged Safenet-facing connection",
+        "physical presence",
+        "a drone or insider",
+        "access to a private link or courier"
+      ],
+      "note": "A Blackwall-like barrier quarantines the hostile old internet and rogue-AGI digital environments. Safenet is slow and managed, and is NOT a trusted channel for sensitive data. Slow does not equal safe; controlled does not equal confidential."
+    }
+  ],
+  "connectivity_classes": [
+    {
+      "id": "public_gateway",
+      "label": "public network gateway",
+      "remote_intrusion": "possible",
+      "description": "A service reachable over the era's public network while that network is up.",
+      "note": "A public-facing service does not automatically yield privileged network access: access, credentials, separation and defensive response still matter."
+    },
+    {
+      "id": "safenet_exposed",
+      "label": "Safenet/Slownet-facing exposure",
+      "remote_intrusion": "possible",
+      "description": "An organization's own link to the managed public network, mistakenly open or poorly isolated.",
+      "note": "Maintaining such a bridge is a major information-security failure and yet remains surprisingly common. It is an INFOSEC vulnerability, NOT the same criminal act as bridging the quarantined old internet."
+    },
+    {
+      "id": "private_linked",
+      "label": "private point-to-point link",
+      "remote_intrusion": "requires_authorised_path",
+      "description": "A dedicated private cable, microwave or optical link between selected sites, with discoverable endpoints and institutional ownership.",
+      "note": "Interceptable and targetable, but not a public route."
+    },
+    {
+      "id": "local_only",
+      "label": "local wired/WLAN only",
+      "remote_intrusion": "requires_local_presence",
+      "description": "A fast, feature-rich local network with no outside route: building WLAN, industrial IoT, local servers, and the Cyber overlay on the physical world.",
+      "note": "A wireless BCI is itself an exposed endpoint on such a network; compromise can threaten its software, attached devices and possibly neural interfaces. Local connectivity is not equivalent to Safenet access, and neither is access to the quarantined old internet."
+    },
+    {
+      "id": "isolated",
+      "label": "isolated / air-gapped",
+      "remote_intrusion": "impossible",
+      "description": "A system with no connection at all to any network the operator can reach.",
+      "note": "An inaccessible air-gapped machine cannot be hacked remotely by narrative fiat. Reaching it means a physical entry point: a field operation, or a device delivered to the site."
+    }
+  ],
+  "access_paths": [
+    {
+      "id": "field_netrunner",
+      "label": "a netrunner present on site",
+      "mode": "local",
+      "requires_local_presence": true,
+      "needs_remote_reach": false,
+      "requires_authorisation": false,
+      "note": "The default for serious netrunning, and the only route to a genuinely isolated target."
+    },
+    {
+      "id": "drone_proxy",
+      "label": "a drone or compromised on-site device",
+      "mode": "proxied",
+      "requires_local_presence": false,
+      "needs_remote_reach": false,
+      "requires_authorisation": false,
+      "note": "Delivers the local connection where plausible. It still needs a real path back to the operator and can be discovered or jammed, so it works within the locality the era still permits."
+    },
+    {
+      "id": "authorized_link",
+      "label": "an authorised institutional connection",
+      "mode": "authorized",
+      "requires_local_presence": false,
+      "needs_remote_reach": false,
+      "requires_authorisation": true,
+      "note": "A legitimate private link or permission to use one. Requires the authority, not merely the ambition."
+    },
+    {
+      "id": "insider",
+      "label": "a trusted insider",
+      "mode": "authorized",
+      "requires_local_presence": false,
+      "needs_remote_reach": false,
+      "requires_authorisation": false,
+      "note": "A person already inside, cooperating or coerced."
+    },
+    {
+      "id": "courier_compromise",
+      "label": "a compromised courier or media shipment",
+      "mode": "proxied",
+      "requires_local_presence": false,
+      "needs_remote_reach": false,
+      "requires_authorisation": false,
+      "note": "Intercepting or altering physically transported storage. It yields the media, not necessarily a live connection."
+    },
+    {
+      "id": "remote_public_service",
+      "label": "a remote attack on a public-facing service",
+      "mode": "remote",
+      "requires_local_presence": false,
+      "needs_remote_reach": true,
+      "requires_authorisation": false,
+      "note": "Requires the era's public network to be up, a genuinely reachable interface, reconnaissance, privileges or exploits, and acceptance of detection risk."
+    },
+    {
+      "id": "bridge_old_internet",
+      "label": "bridging the quarantined old Internet",
+      "mode": "forbidden",
+      "requires_local_presence": true,
+      "needs_remote_reach": false,
+      "requires_authorisation": false,
+      "illegality": "containment_breach",
+      "note": "Connecting Safenet or a protected local network to the old Internet. Attempts trigger automated cyberdefense and multinational law-enforcement response, including armed tactical teams."
+    }
+  ],
+  "illegality_classes": [
+    {
+      "id": "infosec_failure",
+      "label": "a mismanaged public-facing exposure",
+      "is_containment_breach": false,
+      "note": "An organization's own carelessness. Serious, recurring, and politically embarrassing, but it is not the criminal act of crossing the containment boundary."
+    },
+    {
+      "id": "containment_breach",
+      "label": "bridging the quarantined old Internet",
+      "is_containment_breach": true,
+      "note": "A grave international crime in every era. These two must never be merged into one 'cyber crime' tag."
+    }
+  ],
+  "refused_as_access_paths": {
+    "ids": ["social_tie", "faction_relationship", "network_edge", "influence_edge", "personal_contact"],
+    "note": "A Castellsian social or institutional power relation is not a technical route. Being socially connected to a person does not automatically create a usable network path, and an influence edge on the strategy map is not a TCP connection. These ids are refused by name so the mistake is loud instead of silent."
+  },
+  "research_priorities": [
+    {"id": "agi_alignment", "label": "AGI alignment and control"},
+    {"id": "advanced_narrow_ai", "label": "advanced narrow AI without unrestricted autonomous agents"},
+    {"id": "new_networking_and_cryptography", "label": "new topologies, verification and post-catastrophe cryptography - no deployed solution has restored trustworthy global secure networking"},
+    {"id": "human_augmentation", "label": "BCI and human intelligence augmentation"}
+  ],
+  "example_mission": {
+    "id": "on_premises_research_lab",
+    "label": "obtain data from an on-premises research lab",
+    "note": "One comparable mission across the three periods, as the issue asks. The narrative payoff: a heavily augmented netrunner can become more technologically capable while becoming less globally connected.",
+    "periods": [
+      {
+        "era": "acceleration",
+        "route": "remote intrusion through a reachable public service, with reconnaissance and an exploit, or a social-engineering entry against staff",
+        "what_changes": "reachability, not capability",
+        "cost": "detection risk and defensive response"
+      },
+      {
+        "era": "nhi_crisis",
+        "route": "the remote route is gone: the operation becomes an expedition - on-site entry, a planted device, or cooperation with someone already inside",
+        "what_changes": "the same netrunner, the same toolkit, no reachable path",
+        "cost": "travel, logistics and physical exposure"
+      },
+      {
+        "era": "after_crisis",
+        "route": "a mismanaged Safenet-facing connection, physical presence, a drone or insider, or a private link or courier",
+        "what_changes": "targets are private LANs and the mistakes that expose them",
+        "cost": "the containment boundary is now a legal and political hazard as well as a technical one"
+      }
+    ]
+  },
+  "containment_event": {
+    "id": "security_versus_scientific_access",
+    "label": "a containment breach, a Blackwall political controversy, or a trade-off between security and scientific access",
+    "note": "A world-level event seed, not a scripted outcome. Whose gateway failed, who authorised it, and whether the response is oversight or a crackdown are the political questions the setting's movements fight over."
+  },
+  "reconciliation": {
+    "note": "The issue asks that earlier passages stating the internet has already been universally replaced be annotated as describing the post-crisis era. These are the passages found on the default branch; they are listed rather than edited, because the legacy RPG text is not this session's to rewrite (AGENTS.md, and the #306 directive: old lore carries over, do not rewrite the legacy RPG).",
+    "passages": [
+      {
+        "path": "docs/design/ISSUE_222_CYBERSPACE_SCOPE.md",
+        "state": "a short reservation record: it un-reserves cyberspace for the legacy RPG and does not carry an era model at all",
+        "recommended_annotation": "cross-reference this record for the era model; the scope record is otherwise unaffected"
+      },
+      {
+        "path": "rulebook/5_CYBERNETIC.md and rulebook_parts/04_cybernetic_systems.md",
+        "state": "legacy cyberspace chapters; no three-era connectivity model",
+        "recommended_annotation": "date-stamp any statement that implies an already-universal Blackwall as describing the post-crisis era"
+      }
+    ]
+  }
+}
