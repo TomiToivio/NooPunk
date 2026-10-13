@@ -121,30 +121,34 @@ class AdapterBoundaryTests(unittest.TestCase):
 class LayerIndependenceTests(unittest.TestCase):
     """The RPG layer stands alone: no strategy rules, no optional dependency.
 
-    Coupling to strategy code is permitted in **exactly one declared seam**, and nowhere else. A later
-    PR introduced `rpg/boundary.py` to bridge to `core.WorldState`, which is that seam's whole purpose;
-    the rule below pins it to one file rather than forbidding it outright, so a second accidental
-    dependency still fails.
+    Two earlier versions of this contract were both wrong in the same direction -- one forbidden too
+    much, one permitted too much. A blanket ban could not tell an intended dependency from an
+    accidental one, and pinning coupling to a single "seam" broke the moment that seam was removed.
+    The rule that survives is the one about *what* may cross: no strategy ENGINE module, in any file,
+    with exactly one named exception for shared vocabulary.
     """
 
-    #: The one module allowed to import strategy engine code, and the reason it exists.
-    COUPLING_SEAM = "boundary.py"
+    #: Relative modules that are engine behaviour. Importing one means the layers have fused.
+    FORBIDDEN_MODULES = frozenset({"core", "local_slice", "politics", "political", "session", "ports"})
 
-    def test_only_the_seam_imports_strategy_engine_code(self) -> None:
-        offenders: dict[str, str] = {}
-        for source in RPG_DIR.glob("*.py"):
-            if source.name == self.COUPLING_SEAM:
-                continue
-            text = source.read_text(encoding="utf-8")
-            for banned in ("local_slice", "politics", "political", "core", "session", "WorldState"):
-                if f"import {banned}" in text:
-                    offenders[source.name] = banned
-        self.assertEqual(offenders, {}, "only the declared seam may couple to strategy code")
+    #: The single permitted exception: a shared *type*, not engine behaviour.
+    SHARED_VOCABULARY = frozenset({"characters"})
 
-    def test_the_seam_is_exactly_one_file(self) -> None:
-        seams = sorted(s.name for s in RPG_DIR.glob("*.py")
-                       if "import WorldState" in s.read_text(encoding="utf-8"))
-        self.assertEqual(seams, [self.COUPLING_SEAM])
+    def _relative_imports(self) -> dict[str, tuple[str, ...]]:
+        pattern = re.compile(r"^\s*from\s+\.\.(\w+)", re.MULTILINE)
+        return {source.name: tuple(pattern.findall(source.read_text(encoding="utf-8")))
+                for source in RPG_DIR.glob("*.py")}
+
+    def test_no_module_imports_a_strategy_engine(self) -> None:
+        offenders = {name: mods for name, mods in self._relative_imports().items()
+                     if self.FORBIDDEN_MODULES & set(mods)}
+        self.assertEqual(offenders, {}, "no rpg module may import strategy engine behaviour")
+
+    def test_the_only_shared_vocabulary_is_the_declared_type(self) -> None:
+        """One named exception, asserted -- not an open door."""
+        shared = {mod for mods in self._relative_imports().values() for mod in mods}
+        self.assertTrue(shared <= self.SHARED_VOCABULARY,
+                        f"unexpected strategy import(s): {sorted(shared - self.SHARED_VOCABULARY)}")
 
     def test_the_resolution_core_does_not_depend_on_strategy_state(self) -> None:
         text = Path(fate.__file__).read_text(encoding="utf-8")
