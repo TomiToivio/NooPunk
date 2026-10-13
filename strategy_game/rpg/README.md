@@ -28,6 +28,13 @@ The authored decision is **Fate Core as the shared RPG resolution foundation**, 
 - Cyber/PSI capability and countermeasure requirements, rare experimental resleeving procedures.
 - Faction strategy turns, Laclau simulation, AI/GM NPC policies, integration with existing leader-card system.
 
+## Added in the #389 completion pass
+- **Attribution, made explicit and machine-readable:** [`ATTRIBUTION.md`](ATTRIBUTION.md) plus [`attribution.py`](attribution.py), which carries the Fate Core attribution, the unofficial notice and the upstream licence distinctions so a test asserts they are present. The licence NoöPunk *distributes* under stays the author's decision (licence gate #200) and is not chosen here.
+- **Shared typed character TAGs:** `Character.tags` uses issue #346's vocabulary (`belief`, `competence`, `equipment`, `relationship`, `asset`, `goal`) through the same `Tag` type the faction and card layers use, with a duplicate guard and `tags_of_kind()`. No second tag scheme, so a doctrine is never read as a capability.
+- **The adapter boundary to the unbuilt strategy layer:** [`boundary.py`](boundary.py) fills the reserved `strategy_game.ports.LeaderRPG` seam — sheets and seeded, replayable checks outward — and declares **in code** what this layer is not (turn cadence, faction action, resource economy, victory condition, political transition, discourse or network simulation). It joins nothing to `WorldState`.
+- **A netrunning example** (`demo_netrunning`): a foothold first, then the intrusion check, on the same engine. The access step is explicit because issue #344 requires a credible connection rather than assuming remote reachability.
+- **Tests:** [`tests/test_fate_rpg_boundary.py`](../tests/test_fate_rpg_boundary.py) covers the attribution constants, the tag vocabulary, the boundary payload and its declared exclusions, seeded replayability across the two demos, and a source-level check that these modules import none of the unapproved layers.
+
 The public functions `roll_fate`, `resolve`, `skill_check` and `demo_investigation` are dependency-free. Use Python 3.10+.
 
 ```bash

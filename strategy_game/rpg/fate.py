@@ -1,6 +1,8 @@
 """NoöPunk's original, Fate Core SRD-based RPG implementation.
 
-Fate Core System © Evil Hat Productions (CC BY 3.0). See ATTRIBUTION.md.
+Fate Core System © Evil Hat Productions, licensed CC BY 3.0. Attribution, the unofficial notice and
+the upstream licence distinctions are in ``rpg/ATTRIBUTION.md`` and, machine-readably, in
+:mod:`strategy_game.rpg.attribution`.
 This code does not reproduce Transhumanity's Fate or Eclipse Phase setting text.
 """
 from __future__ import annotations
@@ -9,6 +11,8 @@ from dataclasses import dataclass, field
 from enum import Enum
 from random import Random
 from typing import Mapping
+
+from ..characters import Tag
 
 
 class Action(str, Enum):
@@ -101,6 +105,9 @@ class Character:
     natural_psi: bool = False
     psi_abilities: list[str] = field(default_factory=list)
     statuses: list[str] = field(default_factory=list)
+    #: Typed character tags from issue #346's shared vocabulary (belief, competence, equipment,
+    #: relationship, asset, goal). The same kinds factions and cards use: no second tag scheme.
+    tags: tuple[Tag, ...] = ()
 
     def __post_init__(self) -> None:
         if not self.id or not self.name:
@@ -111,6 +118,22 @@ class Character:
             raise ResourceError("skills must be nonnegative integer ratings")
         if self.psi_abilities and not self.natural_psi:
             raise ResourceError("natural PSI abilities require natural_psi; equipment alone grants no innate PSI")
+        seen: set[tuple[str, str]] = set()
+        for tag in self.tags:
+            if not isinstance(tag, Tag):
+                raise ResourceError("tags must come from the shared typed vocabulary (issue #346)")
+            key = (tag.kind, tag.value)
+            if key in seen:
+                raise ResourceError(f"duplicate tag {tag.kind}:{tag.value}")
+            seen.add(key)
+
+    def tags_of_kind(self, kind: str) -> tuple[Tag, ...]:
+        """Character tags of one kind.
+
+        The kinds are typed for a reason: a ``belief`` is a doctrine the holder holds and a
+        ``competence`` is a capability, so a doctrine must never be read as a capability.
+        """
+        return tuple(tag for tag in self.tags if tag.kind == kind)
 
     def spend_fate_point(self) -> None:
         if self.fate_points < 1:
@@ -170,6 +193,31 @@ def skill_check(
     bonus = actor.invoke(invoked_aspect) if invoked_aspect else 0
     return resolve(action, actor.skills.get(skill_name, 0), difficulty, rng=rng, bonus=bonus)
 
+
+def demo_netrunning(seed: int = 7) -> Mapping[str, object]:
+    """A compact netrunning example: a foothold first, then the intrusion check.
+
+    Issue #344's model applies here: a serious intrusion normally requires being near or inside the
+    target, or deploying a proxy. So the scene records the access step explicitly instead of
+    assuming remote reachability, and the intrusion itself uses the same Fate engine as every other
+    check — no separate minigame, no unconditional remote permission.
+    """
+    rng = Random(seed)
+    netrunner = Character(
+        id="unspecified-netrunner", name="Field Netrunner",
+        aspects=["Local-Access Specialist", "Cheap Deck, Expensive Habits"],
+        skills={"Technology": 3, "Investigate": 1},
+        gear=["Deck", "Drone proxy", "Collected exploits"],
+    )
+    access = skill_check(netrunner, Action.CREATE_ADVANTAGE, "Investigate", 1, rng=rng)
+    intrusion = skill_check(netrunner, Action.OVERCOME, "Technology", 3, rng=rng)
+    return {
+        "character": netrunner.id,
+        "access": access,
+        "intrusion": intrusion,
+        "access_required": True,
+        "note": "no remote intrusion without a credible foothold (issue #344)",
+    }
 
 def demo_investigation(seed: int = 42) -> Mapping[str, object]:
     """A compact pre-crisis investigation; no strategy turn mechanics."""
