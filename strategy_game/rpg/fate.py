@@ -1,6 +1,8 @@
 """NoöPunk's original, Fate Core SRD-based RPG implementation.
 
-Fate Core System © Evil Hat Productions (CC BY 3.0). See ATTRIBUTION.md.
+Fate Core System © Evil Hat Productions, licensed CC BY 3.0. Attribution, the unofficial notice and
+the upstream licence distinctions are in ``rpg/ATTRIBUTION.md`` and, machine-readably, in
+:mod:`strategy_game.rpg.attribution`.
 This code does not reproduce Transhumanity's Fate or Eclipse Phase setting text.
 """
 from __future__ import annotations
@@ -129,7 +131,7 @@ class Character:
         """Character tags of one kind.
 
         The kinds are typed for a reason: a ``belief`` is a doctrine the holder holds and a
-        ``competence`` is a capability, so a doctrine is never read as a capability.
+        ``competence`` is a capability, so a doctrine must never be read as a capability.
         """
         return tuple(tag for tag in self.tags if tag.kind == kind)
 
@@ -191,6 +193,31 @@ def skill_check(
     bonus = actor.invoke(invoked_aspect) if invoked_aspect else 0
     return resolve(action, actor.skills.get(skill_name, 0), difficulty, rng=rng, bonus=bonus)
 
+
+def demo_netrunning(seed: int = 7) -> Mapping[str, object]:
+    """A compact netrunning example: a foothold first, then the intrusion check.
+
+    Issue #344's model applies here: a serious intrusion normally requires being near or inside the
+    target, or deploying a proxy. So the scene records the access step explicitly instead of
+    assuming remote reachability, and the intrusion itself uses the same Fate engine as every other
+    check — no separate minigame, no unconditional remote permission.
+    """
+    rng = Random(seed)
+    netrunner = Character(
+        id="unspecified-netrunner", name="Field Netrunner",
+        aspects=["Local-Access Specialist", "Cheap Deck, Expensive Habits"],
+        skills={"Technology": 3, "Investigate": 1},
+        gear=["Deck", "Drone proxy", "Collected exploits"],
+    )
+    access = skill_check(netrunner, Action.CREATE_ADVANTAGE, "Investigate", 1, rng=rng)
+    intrusion = skill_check(netrunner, Action.OVERCOME, "Technology", 3, rng=rng)
+    return {
+        "character": netrunner.id,
+        "access": access,
+        "intrusion": intrusion,
+        "access_required": True,
+        "note": "no remote intrusion without a credible foothold (issue #344)",
+    }
 
 def demo_investigation(seed: int = 42) -> Mapping[str, object]:
     """A compact pre-crisis investigation; no strategy turn mechanics."""
