@@ -105,8 +105,7 @@ global current — and when that articulation breaks — is the playable questio
 
 ## 6. Event-card seeds (#329 §5.5)
 
-The author names eleven; recorded as the authored seed list, with the cards themselves still a design
-deliverable:
+The author names eleven. Their complete, rules-free scenario prompts are now recorded in [`../data/paradigm_event_seeds.json`](../data/paradigm_event_seeds.json). Each includes an institutional setting, a narrative hook, multiple player questions and an explicit epistemic caution. These are **scenario seed cards only**, not approved turn mechanics, effect tables or historical allegations:
 
 alien economic zone proposal · PSI-as-a-service IPO · billionaire hybrid rumours · awakening
 epidemic · Confederacy accession terms · sphere-network data scandal · Butlerian Jihad raid ·
