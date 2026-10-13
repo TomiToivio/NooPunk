@@ -2,6 +2,8 @@
 
 **Status:** Design proposal, **not approved mechanics or setting canon**. Companion to #297 (discourse/network), #302 (social systems), #303 (agent ecology), #304 (GM), #309 (MVP). Generic fictional country and actors; use as transferable scenario design, not a replacement for the Helsinki-first starting arrangement or Ukweli political canon. No LaclauGPT runtime.
 
+**Companion document:** the mechanism this scenario runs on — the equivalence chain and the `FLOATING → NODAL` conversion, the six quantities kept distinct, the patron as a relationship with failure modes, and what makes a realignment legible — is written down as structure in [`../../docs/design/POPULISM_PATRONAGE_AND_REALIGNMENT.md`](../../docs/design/POPULISM_PATRONAGE_AND_REALIGNMENT.md) (#305). Proposals only, same as this file.
+
 ## One-page narrative sequence: incumbent → fringe → coalition → fracture
 
 **Act 0, ordinary politics:** A reasonably competent centre-left cabinet, its parliamentary critics, a tired populist opposition, universities, courts, broadcasters, trade associations, and local civic groups contest normal prices, labor, housing and public services. A peripheral left-populist circle and a new cross-ideological civil-liberties network have little electoral access.
