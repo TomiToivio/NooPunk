@@ -143,8 +143,11 @@ class LeaderRpgLayer:
 
         ``state`` is accepted because the port's signature — ``LeaderRPG.describe(state:
         WorldState)`` in :mod:`strategy_game.ports` — requires it, and is **not read**: joining the
-        table to ``WorldState`` is the Gate D decision, and this boundary performs none. The parameter is intentionally typed as ``object`` to keep the RPG independent of
-        the strategy engine. The implementation never inspects or modifies it.
+        table to ``WorldState`` is the Gate D decision, and this boundary performs none. It is typed
+        as ``object`` on purpose. The layer-independence rule forbids **any** module under ``rpg/``
+        from importing strategy engine code — ``core`` included — with a single named exception for
+        the shared ``characters`` vocabulary, so this seam must not import ``WorldState`` to name it.
+        Staying untyped keeps the two layers unfused while still satisfying the port structurally.
         """
         return {
             "schema_version": BOUNDARY_SCHEMA_VERSION,
