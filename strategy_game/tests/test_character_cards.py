@@ -33,6 +33,8 @@ from strategy_game.characters import (
     classification_from_codex_entry,
     codex_entry_map,
     load_character_cards,
+    load_world_card_catalogue,
+    normalise_ontology,
     render_detail,
     render_front,
     slug,
@@ -510,6 +512,82 @@ class NonCollapseTests(unittest.TestCase):
             [card.identifier for card in self.roster.filter(form="mythonym")], ["nhi_orbs_of_light"]
         )
         self.assertTrue(self.roster.filter(form="species"))
+
+
+class WorldCatalogueAdapterTests(unittest.TestCase):
+    """The root world-card catalogue is read into the single record, and what it may not import
+    is reported rather than silently carried."""
+
+    def setUp(self) -> None:
+        self.roster, self.problems = load_world_card_catalogue()
+
+    def test_the_root_catalogue_loads_into_the_single_record(self) -> None:
+        self.assertTrue(self.roster)
+        self.assertGreaterEqual(len(self.roster), 5)
+        for card in self.roster:
+            self.assertEqual(card.identifier, slug(card.identifier))
+        self.assertTrue(self.roster.get("leader_sir_mars_eldrich"))
+
+    def test_numeric_attributes_are_reported_and_not_carried(self) -> None:
+        self.assertTrue(any("numeric attributes" in problem for problem in self.problems), self.problems)
+        for card in self.roster:
+            self.assertFalse(hasattr(card, "attributes"))
+            self.assertFalse(hasattr(card, "stats"))
+
+    def test_untyped_tags_are_reported_and_not_imported(self) -> None:
+        self.assertTrue(any("untyped tags" in problem for problem in self.problems), self.problems)
+        for card in self.roster:
+            self.assertEqual(card.tags, ())
+
+    def test_nhi_cards_without_a_codex_reference_are_reported(self) -> None:
+        reported = " ".join(self.problems)
+        for name in ("nhi.biologic", "nhi.construct", "nhi.noetic", "nhi.plasmoid"):
+            self.assertIn(slug(name), reported, name)
+        self.assertFalse(self.roster.filter(family=CharacterFamily.NHI))
+
+    def test_faction_labels_are_slugged_and_the_mapping_is_reported(self) -> None:
+        self.assertTrue(any("faction label" in problem for problem in self.problems), self.problems)
+        leader = self.roster.get("leader_sir_mars_eldrich")
+        self.assertEqual(leader.faction_ids, ("eldrich_corporation",))
+
+    def test_the_imported_roster_validates_clean_against_the_codex(self) -> None:
+        self.assertEqual(self.roster.validate(codex=codex_entry_map()), ())
+
+    def test_observations_are_carried_and_attributes_reported_on_a_synthetic_entry(self) -> None:
+        payload = {
+            "schema_version": 1,
+            "cards": [
+                {
+                    "id": "archetype.test",
+                    "card_type": "archetype",
+                    "name": "Test person",
+                    "role": "tester",
+                    "summary": "Does the thing.",
+                    "factions": [],
+                    "tags": ["plain"],
+                    "attributes": {"INT": 2},
+                    "actions": ["investigation"],
+                    "public": {"observation": "A light that moves against the wind"},
+                }
+            ],
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "world_cards.json"
+            path.write_text(json.dumps(payload), encoding="utf-8")
+            roster, problems = load_world_card_catalogue(path)
+        card = roster.get("archetype_test")
+        self.assertEqual(card.observable_facts, ("A light that moves against the wind",))
+        self.assertTrue(any("numeric attributes" in problem for problem in problems), problems)
+
+    def test_normalise_ontology_accepts_both_spellings_and_refuses_junk(self) -> None:
+        for value in ("Constructs", "construct", "CONSTRUCTS"):
+            self.assertEqual(normalise_ontology(value), "construct")
+        with self.assertRaises(CharacterError):
+            normalise_ontology("technology")
+
+    def test_missing_catalogue_is_a_character_error(self) -> None:
+        with self.assertRaises(CharacterError):
+            load_world_card_catalogue(Path(tempfile.gettempdir()) / "not_a_catalogue.json")
 
 
 if __name__ == "__main__":

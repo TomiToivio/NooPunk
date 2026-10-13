@@ -776,3 +776,109 @@ def render_detail(
     elif card.gm_notes:
         lines.append("GM notes: [redacted — pass reveal_secrets=True]")
     return "\n".join(lines)
+
+
+#: The root-level world-card catalogue a sibling session authored for #356
+#: (``scripts/character_cards.py`` + ``data/world/character_cards.json``). It is **read, never
+#: replaced**: this module's record is the single in-memory shape, so one entry point can consume
+#: both catalogues and the reconciliation is visible in code instead of in a thread.
+WORLD_CARD_CATALOGUE = Path(__file__).resolve().parents[1] / "data" / "world" / "character_cards.json"
+
+
+def normalise_ontology(value: str) -> str:
+    """Map a catalogue ontology label onto the codex value set.
+
+    Accepts both the codex's singular lowercase values and a capitalised plural label, because two
+    sessions spelled the same four categories differently and a silent mismatch would put two
+    vocabularies in play.
+    """
+    token = str(value).strip().lower()
+    singular = token[:-1] if token.endswith("s") else token
+    if singular not in NHI_CATEGORIES:
+        raise CharacterError(
+            f"ontology {value!r} does not map onto the codex categories {NHI_CATEGORIES}"
+        )
+    return singular
+
+
+def load_world_card_catalogue(
+    path: Path | str | None = None,
+) -> tuple[CharacterRoster, tuple[str, ...]]:
+    """Read the root world-card catalogue into this record type.
+
+    Returns ``(roster, problems)``. The mapping is deliberately lossy and **says so** rather than
+    importing what this repository has not approved:
+
+    * numeric ``attributes`` are reported, never carried: a numeric rating on a card anticipates the
+      leader-card mechanic that ``docs/LEADER_MICRO_RULES_PROPOSAL.md`` leaves unapproved ("do not
+      import the six legacy STATs, 1-10 ratings or 1d10 rules without separate approval"), and the
+      #356 design proposal puts a human attribute line on an NHI card out of bounds;
+    * bare untyped ``tags`` are reported: this schema types every tag with issue #346's vocabulary;
+    * an NHI card with no codex species reference is reported and not constructed, because a
+      category is not an entity;
+    * faction *labels* are slugged into ids, and each mapping is reported so it can be checked;
+    * ``public.observation`` text is carried into ``observable_facts``.
+    """
+    source = Path(path) if path is not None else WORLD_CARD_CATALOGUE
+    try:
+        payload = json.loads(source.read_text(encoding="utf-8"))
+    except FileNotFoundError as exc:
+        raise CharacterError(f"world card catalogue not found: {source}") from exc
+    except json.JSONDecodeError as exc:
+        raise CharacterError(f"{source} is not valid JSON: {exc}") from exc
+    cards = payload.get("cards")
+    if not isinstance(cards, list):
+        raise CharacterError("the world card catalogue must contain a 'cards' list")
+
+    problems: list[str] = []
+    records: list[CharacterCard] = []
+    for item in cards:
+        if not isinstance(item, Mapping):
+            problems.append(f"entry is not a mapping: {item!r}")
+            continue
+        identifier = slug(str(item.get("id", "")))
+        name = str(item.get("name", "")).strip()
+        family_value = str(item.get("card_type", "")).strip()
+        if family_value not in CHARACTER_FAMILIES or not name:
+            problems.append(f"{identifier or item.get('id')!r}: unusable card_type or name")
+            continue
+        if item.get("attributes"):
+            problems.append(
+                f"{identifier}: numeric attributes {item['attributes']} not carried; a card rating "
+                "is the unapproved leader-card mechanic"
+            )
+        if item.get("tags"):
+            problems.append(
+                f"{identifier}: untyped tags {item['tags']} not carried; this schema requires "
+                "issue #346's tag kinds"
+            )
+        factions = _strings(item.get("factions"))
+        for label in factions:
+            problems.append(f"{identifier}: faction label {label!r} -> id {slug(label)!r}")
+        observations = _strings((item.get("public") or {}).get("observation"))
+        if family_value == CharacterFamily.NHI.value:
+            problems.append(
+                f"{identifier}: NHI card has no codex species reference "
+                f"({(item.get('nhi') or {}).get('ontology')!r}); a category is not an entity, so the "
+                "codex-linked exemplars stand"
+            )
+            continue
+        records.append(
+            CharacterCard(
+                identifier=identifier,
+                family=CharacterFamily(family_value),
+                display_name=name,
+                role=str(item.get("role", "")).strip(),
+                summary=str(item.get("summary", "")).strip(),
+                faction_ids=tuple(slug(label) for label in factions),
+                declared_actions=_strings(item.get("actions")),
+                observable_facts=observations,
+                provenance=Provenance(
+                    kind=ProvenanceKind.AUTHORED,
+                    note=f"read from {source.name} by load_world_card_catalogue",
+                ),
+                sources=(f"data/world/{source.name} (root world-card catalogue)",),
+                art_ref=str(item.get("art_ref", "")).strip(),
+            )
+        )
+    return CharacterRoster(records, sources=_strings(payload.get("sources"))), tuple(problems)
