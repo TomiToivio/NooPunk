@@ -19,13 +19,19 @@ question the rulebook does not.
 
 | Artifact class | Paths | Proposed licence | Status |
 | --- | --- | --- | --- |
-| Rulebook prose + original setting/worldbook | `RULEBOOK.md`, `rulebook/**`, `FACTIONS.md`, `README.md`, `THEORY.md` | **CC BY-SA 4.0** (alt: CC BY 4.0) | **author decision** |
-| Audit / provenance records | `docs/sources/**`, `docs/licenses/**` | same as the rulebook | author decision |
-| Design records | `docs/design/**` | same as the rulebook | author decision |
-| Game data | `data/**` (`core.json`, `skills.json`, `unsa_academy.json`, `campaign_skill_fields.json`, `world/**`) | same as the rulebook — it is *rule text in another syntax*, not code | author decision |
-| Source code | `src/**`, `scripts/**`, `tests/**` | **separate software licence**: MIT / Apache-2.0 / GPL | author decision |
+| Rulebook prose + original setting/worldbook | `RULEBOOK.md`, `rulebook/**`, `FACTIONS.md`, `README.md`, `THEORY.md`, `COMPARISON.md`, `strategy_game/README.md` | **CC BY-SA 4.0** (alt: CC BY 4.0) | **author decision** |
+| Audit / provenance records | `docs/sources/**`, `docs/licenses/**`, `data/sources/**`, `data/licenses/**` | same as the rulebook | author decision |
+| Design records | `docs/**` (incl. `strategy_game/docs/**`) | same as the rulebook | author decision |
+| Game data | `data/**` and `strategy_game/data/**` (`core.json`, `skills.json`, `unsa_academy.json`, `campaign_skill_fields.json`, `world/**`, `council.json`, `ukweli_local.json`) | same as the rulebook — it is *rule text in another syntax*, not code | author decision |
+| Source code | `strategy_game/**` (§*the game*), `src/**`, `scripts/**`, `tests/**`, `tools/**`, `gen_migration.py` | **separate software licence**: MIT / Apache-2.0 / GPL | author decision |
 | Fixtures, deploy descriptors, Godot scenes | `fixtures/**`, `deploy/**`, `scenes/**`, `project.godot` | follows the code licence; Godot project files are code, not prose | author decision |
+| Archived pre-narrative material | `archive/**` | same as the rulebook | author decision |
 | Third-party art/assets | *(none present)* | n/a | **nothing to license: no third-party art is in the tree** |
+
+**This table and `data/licenses/release_packaging_policy.json` must agree**, because a release is
+checked against the policy, not against prose. Both were stale in the same way until now: they named
+`src/**` and `tests/**` while the game lives in `strategy_game/**`, so the release plan counted the
+entire game as uncovered. The policy half was corrected in PR #429; this half is corrected here.
 
 **Why the data files are grouped with the rulebook and not with the code:** `data/rules/*.json`
 *is* the rule text in machine-readable form (the six STATs, the Skill vocabulary, the Academy

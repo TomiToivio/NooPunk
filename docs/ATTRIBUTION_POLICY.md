@@ -10,6 +10,14 @@ the excluded-licence set has exactly one home, `data/sources/game_system_rights.
 rules have exactly one home, `data/licenses/release_packaging_policy.json`. Where this policy and those
 files could disagree, **they win**.
 
+**It also has a companion, and the division is deliberate.** `docs/licenses/ATTRIBUTION_AND_PUBLICATION_POLICY.md`
+(landed in #437) governs the *release procedure* — separate publication surfaces, how a release candidate
+is prepared, and the author decision record. **This document governs the substance: what must be
+attributed, and the rules that follow from it.** Where the two overlap, this one carries the obligations
+and the other carries the procedure; the author decision record lives there and is deliberately unfilled.
+Two documents exist rather than one because they answer different questions, and **neither is authoritative
+over the licence decisions themselves — those are the author's.**
+
 ---
 
 ## 1. What must always be attributed, whoever decides the licences
