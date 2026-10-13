@@ -5,7 +5,10 @@ carries it. Nothing here is canon, a mechanic, a name or a ruling: each row is a
 author can answer**. Answering one turns it into a criterion check, an acceptance record, a PR and a
 close.
 
-**Board status (2026-10-13, sixth update).** One issue open: **#323** (reopened). **#338 closed** (#436
+**Board status (2026-10-14, seventh update).** No issue open: **#323** closed on the defer-and-close rule
+after its acceptance record was corrected so that every criterion is labelled accurately — its criterion 2
+is **met** (the §4 mission column is refused by name in `structural_problems`), and the rule-dependent rows
+carry their deferrals as deferrals. **#338 closed** (#436
 closeout), **#309
 closed on author direction** — the author asked for it by name, which overrides the earlier *"open by
 design"* note below, and closing cost nothing because its acceptance criteria are met and all ten of its
@@ -22,17 +25,18 @@ choosing a renderer are carried as row D13. **#346** closed on the defer-and-clo
 it needed was verified to exist (`faction_cards.py`, four card types, 27 tests OK), and its two
 rule-dependent criteria are stated as **deferred** in `ISSUE_346_ACCEPTANCE.md` and carried as row D11.
 Since the first queue, **#325**, **#345**, **#346** and **#282** closed once, **#322** closed on the
-defer-and-close rule the author authorised on 2026-10-13, and **#323** was closed on that same rule and
-has been **reopened**: its record presented criterion 2 (*"unavailable leaders cannot execute one"*) as
-met, but that clause is the consequence of the DRAFT status table's three `TODO` rows and is reported
-rather than enforced — so on that row the deferral was not stated as a deferral, which is the rule's own
-condition. D3 still carries #323's six decisions, and nothing about them changed.
+defer-and-close rule the author authorised on 2026-10-13, and **#323** was closed on that same rule,
+**reopened** when its record presented criterion 2 (*"unavailable leaders cannot execute one"*) as met while
+the code only **reported** it, and **re-closed on 2026-10-14** once the refusal became real in
+`structural_problems()` and the record was corrected to say so: on that row the deferral had not been
+stated as a deferral, which is the rule's own condition. **D3 carries #323's decisions** — the §4 row
+*timings and magnitudes* now gate no criterion of #323 — and nothing was approved or changed in substance.
 
 ## Live rows
 
 | # | Decision | Blocks | Smallest useful answer |
 | --- | --- | --- | --- |
-| D3 | **#323's six decisions**: the committed-resource ceiling (one shift, spent either way); **+1** as the portfolio-bonus ceiling; one turn without the bonus on reassignment; the two affected mission kinds (negotiate up / organise down); deck size six-to-eight; no event ends in dialogue alone. Full text: `ISSUE_323_RULES_STAGES_BCDE_PROPOSAL.md`. | per-stage implementation PRs | *accept* / *amend* each |
+| D3 | **#323's decisions**: the committed-resource ceiling (one shift, spent either way); **+1** as the portfolio-bonus ceiling; one turn without the bonus on reassignment; the two affected mission kinds (negotiate difficulty-down / organise difficulty-up); deck size six-to-eight; no event ends in dialogue alone. Full text: `ISSUE_323_RULES_STAGES_BCDE_PROPOSAL.md`; per-criterion labels: `ISSUE_323_ACCEPTANCE.md`. Separately, §4's *row timings and magnitudes* (injury recovery, the compromised reduction, exposure risk) stay unauthored (`status_consequence_rows`), but §4's *mission column* is enforced in `structural_problems`, so they gate no criterion of #323. | #323's deferred criteria (3's amplification, 4's magnitude, 6, 7) | *accept* / *amend* each |
 | D4 | The eleven global parties' formal names and colloquial labels; self-name versus hostile exonym. | #328's checkpoint 1 | *ratify as drafted* / *rename* |
 | D5 | MJ-12 continuity: when it starts, what it controls, why it qualifies as a Breakaway Civilization; human-led or not; internal factions; relation to disclosure, the Confederacy, Orion, the Swarm. | #328's checkpoints 2–3 | *decide* |
 | D6 | The ASI swarm's origin, objectives and autonomy; whether any human network is voluntary or coerced. | #328's checkpoint 4 | *decide* |
@@ -41,7 +45,7 @@ condition. D3 still carries #323's six decisions, and nothing about them changed
 | D9 | **The register ruling:** which of the three readings is canonical — A (same register, coarser: 7 → 11), B (two orthogonal registers), C (competing rosters) — and whether the four unpaired Parties belong in the paradigm stratum at all. The four are MJ-12 / Continuity Directorate, the rogue ASI swarm / AIC, the Earth Restoration Alliance, and the Human Survival and Defence Coalition. | #328's central open question (`roster_closed_at_seven`), #338's roster work | *A* / *B* / *C* |
 | D10 | **Licence selection** — the pair: 1a software (MIT / Apache-2.0 / GPL) and 1b content (CC BY-SA 4.0 recommended, CC BY 4.0 alternative). Was tracked by #421; **#421 is now closed and this queue carries it**, because a tracking issue cannot track a decision the author has not made. Agents are forbidden to choose a licence or create `LICENSE` / `NOTICE`, and a test asserts those files do not exist. Enactment is mechanical and is written out in `ISSUE_421_ENACTMENT_AND_COMMERCIAL_MODEL.md` §2 — creating the files, setting `author_decision_open` to false (that single field clears the release gate), and three named tests changing. | the release gate, D14, S1 | *pick 1a + 1b* |
 | D16 | **The commercial model**: free / paid / paid-with-free-earlier-builds. Smaller than it looks, and safely deferrable longer than D10 — **price does not change what may legally be in the build**; the licence pair and the NC-SA exclusion do. Constraints that bind: no required service or paid provider, and `LICENSE`/`NOTICE` must ship inside the artifact. §8 item 6 and `ISSUE_421_ENACTMENT_AND_COMMERCIAL_MODEL.md` §3. | S1 publishing work | *decide* |
-| D11 | **The rules gate**, one row because it is one decision: #323's six decisions (D3) plus #346's two rule-dependent criteria — abstract mission resolution, and first-turn resource constraints. `RULEBOOK.md` still says NO RULES APPROVED. | per-stage PRs for both issues | *approve* / *refuse* |
+| D11 | **The rules gate**, one row because it is one decision: #323's decisions (D3) plus #346's two rule-dependent criteria — abstract mission resolution, and first-turn resource constraints. `RULEBOOK.md` still says NO RULES APPROVED. | per-stage PRs for both issues | *approve* / *refuse* |
 | D13 | **The renderer decision** — which renderer becomes the playable UI. `docs/INTERFACE_SPIKE.md` records the evaluation and recommends text-first with the browser next over the same payload, keeping Godot as a view; the pick is the author's. | #347's playable UI, Helsinki opening and playtest (criteria 5, 6, 8, 10) | *text* / *browser* / *Godot* |
 | D14 | **Distribution for the indie release**: channels (itch.io / Steam / self-hosted), price including free, storefront requirements, packaging and platform support. §8 item 6. The evaluation lives in `ISSUE_309_DISTRIBUTION_AND_UGC_GOVERNANCE.md`; the choice is the author's. | S1 publishing work | *pick channels + price* |
 | D15 | **#309's §8 item 1 verification**: the vertical-slice pitch in `ISSUE_309_VERTICAL_SLICE_AND_EVENT_FLOW.md` is a pitch, not an approval. Rule on whether the four-press turn it describes is the shape S1-a should build toward. | S1-a's interface work | *yes* / *amend* |
