@@ -5,19 +5,20 @@ carries it. Nothing here is canon, a mechanic, a name or a ruling: each row is a
 author can answer**. Answering one turns it into a criterion check, an acceptance record, a PR and a
 close.
 
-**Board status (2026-10-13, fifth update — #323 corrected).** Three issues open: **#323** (reopened),
-**#338**, **#421** (licence tracking, created from #309 §9). **#309 closed on author direction** — the author asked for it
-by name, which overrides the earlier *"open by design"* note below. Closing it cost nothing because its
-own acceptance criteria are met (it serves as a coherent, reusable north-star vision and is referenced
-throughout the design docs) and all ten of its §8 artifacts now exist as files: engines and the S1
-release scope in `ISSUE_309_ENGINE_AND_RELEASE_SCOPE.md`, distribution and UGC governance in
-`ISSUE_309_DISTRIBUTION_AND_UGC_GOVERNANCE.md`, the vertical-slice pitch, cross-scale event flow and role
-separation in `ISSUE_309_VERTICAL_SLICE_AND_EVENT_FLOW.md`, the playtesting criteria and vision-discipline
-check in `ISSUE_309_PLAYTESTING_AND_DISCIPLINE.md`, and the attribution half of §8 item 7 in
-`docs/ATTRIBUTION_POLICY.md`. What remains of §8 is the author's alone and is carried as row D14 and
-D10 below. **#347** closed on the defer-and-close rule — six of its ten
-criteria are met with measured evidence (including the ten-kind example set and the data-only authoring
-contract), and the four that depend on choosing a renderer are carried as row D13. **#346** closed on the defer-and-close rule — the card layer
+**Board status (2026-10-13, sixth update).** One issue open: **#323** (reopened). **#338 closed** (#436
+closeout), **#309
+closed on author direction** — the author asked for it by name, which overrides the earlier *"open by
+design"* note below, and closing cost nothing because its acceptance criteria are met and all ten of its
+§8 artifacts now exist as files. **#421 closed on author direction** after items 3 and 4 landed (#429 and
+`docs/ATTRIBUTION_POLICY.md`) — but it closed **carrying** its items 1 and 2 rather than resolving them,
+because those are decisions. The licence pair is row **D10** and the commercial model is row **D16**, both
+written out with the mechanical enactment steps in `ISSUE_421_ENACTMENT_AND_COMMERCIAL_MODEL.md`. **The
+release gate still refuses a clean public release on `licence-decision-open`: closing the tracking issue
+does not unblock it, and the board says so.**
+
+**#347** closed on the defer-and-close rule — six of its ten criteria are met with measured evidence
+(including the ten-kind example set and the data-only authoring contract), and the four that depend on
+choosing a renderer are carried as row D13. **#346** closed on the defer-and-close rule — the card layer
 it needed was verified to exist (`faction_cards.py`, four card types, 27 tests OK), and its two
 rule-dependent criteria are stated as **deferred** in `ISSUE_346_ACCEPTANCE.md` and carried as row D11.
 Since the first queue, **#325**, **#345**, **#346** and **#282** closed once, **#322** closed on the
@@ -38,7 +39,8 @@ condition. D3 still carries #323's six decisions, and nothing about them changed
 | D7 | Confirm the three Ukweli party ↔ global-current affinities as **starting tendencies**, not fixed memberships. | #328's checkpoint 5 | *yes* / *no* |
 | D8 | Reconcile the legacy UN party records with the established UN world government and eleven Parties. | #328's checkpoint 6 | *decide* |
 | D9 | **The register ruling:** which of the three readings is canonical — A (same register, coarser: 7 → 11), B (two orthogonal registers), C (competing rosters) — and whether the four unpaired Parties belong in the paradigm stratum at all. The four are MJ-12 / Continuity Directorate, the rogue ASI swarm / AIC, the Earth Restoration Alliance, and the Human Survival and Defence Coalition. | #328's central open question (`roster_closed_at_seven`), #338's roster work | *A* / *B* / *C* |
-| D10 | **Licence selection** — tracked by #421 because nothing carried it. Agents are forbidden to choose a licence or create `LICENSE` / `NOTICE`, so this is the author's alone. | #421, #309 §9 | *pick a licence* |
+| D10 | **Licence selection** — the pair: 1a software (MIT / Apache-2.0 / GPL) and 1b content (CC BY-SA 4.0 recommended, CC BY 4.0 alternative). Was tracked by #421; **#421 is now closed and this queue carries it**, because a tracking issue cannot track a decision the author has not made. Agents are forbidden to choose a licence or create `LICENSE` / `NOTICE`, and a test asserts those files do not exist. Enactment is mechanical and is written out in `ISSUE_421_ENACTMENT_AND_COMMERCIAL_MODEL.md` §2 — creating the files, setting `author_decision_open` to false (that single field clears the release gate), and three named tests changing. | the release gate, D14, S1 | *pick 1a + 1b* |
+| D16 | **The commercial model**: free / paid / paid-with-free-earlier-builds. Smaller than it looks, and safely deferrable longer than D10 — **price does not change what may legally be in the build**; the licence pair and the NC-SA exclusion do. Constraints that bind: no required service or paid provider, and `LICENSE`/`NOTICE` must ship inside the artifact. §8 item 6 and `ISSUE_421_ENACTMENT_AND_COMMERCIAL_MODEL.md` §3. | S1 publishing work | *decide* |
 | D11 | **The rules gate**, one row because it is one decision: #323's six decisions (D3) plus #346's two rule-dependent criteria — abstract mission resolution, and first-turn resource constraints. `RULEBOOK.md` still says NO RULES APPROVED. | per-stage PRs for both issues | *approve* / *refuse* |
 | D13 | **The renderer decision** — which renderer becomes the playable UI. `docs/INTERFACE_SPIKE.md` records the evaluation and recommends text-first with the browser next over the same payload, keeping Godot as a view; the pick is the author's. | #347's playable UI, Helsinki opening and playtest (criteria 5, 6, 8, 10) | *text* / *browser* / *Godot* |
 | D14 | **Distribution for the indie release**: channels (itch.io / Steam / self-hosted), price including free, storefront requirements, packaging and platform support. §8 item 6. The evaluation lives in `ISSUE_309_DISTRIBUTION_AND_UGC_GOVERNANCE.md`; the choice is the author's. | S1 publishing work | *pick channels + price* |
