@@ -6,8 +6,8 @@ mechanic, and this record defines none.
 
 | Artifact | Role |
 | --- | --- |
-| `strategy_game/data/genre_paradigms.json` | the three domains, the six genres and the typed inspirations |
-| `strategy_game/genre_paradigms.py` | the reader and the three rules of the record |
+| `strategy_game/data/genre_paradigms.json` | the three domains, the six genres, the typed inspirations, the lens index, the candidates, the axes and the named cards |
+| `strategy_game/genre_paradigms.py` | the reader and the rules of the record |
 | `strategy_game/tests/test_genre_paradigms.py` | code contracts (issue #271: code only) |
 
 ## 1. Three technologies of living, social and psychic worlds
@@ -39,8 +39,16 @@ a record that marks the domains mutually exclusive.
 **The two internal definitions are flagged, not asserted.** The issue's own research found no widely
 established genre canon for the names UFOpunk and Xenopunk, so they are recorded with
 `established_genre_canon: false` as useful internal descriptors rather than claimed as schools. The
-primary framing of the whole setting is unchanged: **New Weird + science fiction comedy + social science
-fiction / science fantasy, with Cyberpunk influence.**
+prior uses the research *did* find are recorded separately in `prior_uses`, each with the strength of
+the claim it supports — an independent attestation (Mattix's *Disposable Heroes* marketed as a
+"xenopunk thriller", the Transmoderna *XENOPUNK VR* installation), a scattered use (the Punktober /
+UFOpunk retro-SF art tag, the *Caves of Qud* discussion), or a **false match** ("UFO punk" music
+references and the unrelated xenopunk look-alikes). A `false_match` entry exists so a look-alike is
+written down rather than forgotten and later mistaken for support; the reader refuses any prior use
+that claims to have established canon.
+
+The primary framing of the whole setting is unchanged: **New Weird + science fiction comedy + social
+science fiction / science fantasy, with Cyberpunk influence.**
 
 ## 3. What these are not
 
@@ -74,7 +82,76 @@ A research entry with no declared capability status would read as an achieved ca
 reports it as an unearned claim. Fiction is exempt only because its status is `not_applicable` by
 definition — and a research record marked `not_applicable` is itself a defect the contracts catch.
 
-## 5. What the author still has to decide
+The catalogues now cover **fiction and non-fiction for every genre**, not only the four the issue's
+table names: the UFOpunk non-fiction side is Vallée's *Passport to Magonia*, Pasulka's *American
+Cosmic* and the live UAP/disclosure discussion, all typed as research *traditions*; Xenopunk's is
+xenobiology, typed as early research; PSIpunk carries *The Telepathy Tapes* alongside Powell and
+Sheldrake as a tradition of claims. The reader reports any genre left with only stories or only
+researchers.
+
+## 5. The further lenses: overlapping readings, never seventh genres
+
+Fourteen further lenses are recorded in the index the issue asks for — **New Weird** (the primary
+framing of the setting, per `AGENTS.md` §0, so it is the frame the others sit inside), **Lunarpunk**,
+**Hopepunk**, **Cli-Fi**, **Silkpunk**, **Atompunk**, **Cassette futurism**, **Transhuman SF**,
+**Mythpunk**, **Military SF**, **Ecopunk**, **Body horror**, **Postcyberpunk** and **Robopunk**. Each
+carries a declared status (an established genre, a named movement, a self-defined aesthetic, a retro
+aesthetic, an emerging aesthetic, a broad tradition, or an internal descriptor) and what it *adds*.
+Robopunk is marked an internal descriptor, because the issue explicitly declines to assert an
+established standardised subgenre for it.
+
+Two structural rules hold the section to its own words:
+
+- **A lens is never a compulsory genre declaration.** `lenses_that_spawn_a_system()` must stay empty,
+  and the lens ids and the six genre ids must not overlap — a lens that quietly became a seventh genre
+  with its own rules would be caught.
+- **Where the issue names a work for a lens, the work is recorded under the lens** (Chambers,
+  Robinson, Ken Liu, Egan, Valente, Haldeman, Bacigalupi, Cronenberg, Doctorow, Miéville), so the
+  index is usable without adding those works to the genre-inspiration lists they do not belong to.
+
+## 6. Candidate transformations: recorded, matrixed, and left unpromoted
+
+The issue's near-future candidates are recorded with the compact matrix it asks for: each candidate
+declares whether it is a **technology** or a **social** tendency, whether the issue flags it as a
+priority, which of the three technology domains it **attaches to**, which event cards it feeds, which
+research it would unlock, its fiction, and the author's own statement of the **game-facing conflict**
+it creates. Ten technologies and ten social candidates are carried. The five the issue marks as
+particularly strong — quantum, embodied AI/robotics, longevity, planetary engineering and
+post-scarcity production — carry `priority: true`.
+
+**Nothing is promoted.** Every candidate carries
+`promotion: pending_author_decision` together with the issue's own design test: *only elevate a
+candidate to a foundational paradigm if it changes what society considers possible, creates distinctive
+factions and institutions, and materially reshapes the shared strategy/RPG loop — otherwise it stays a
+genre lens, a project, a TAG or an event.* The reader exposes `promoted_paradigms()` (empty) and
+`candidates_without_a_promotion_status()` (empty), so a promotion is a deliberate, visible act by the
+author rather than something a later session can record by accident.
+
+## 7. Pressure axes, strategic projects and event-card ideas
+
+The faction responses the issue lists are recorded as **five pressure axes**, each a **pair of named
+positions** — pro/anti-biotech, ecological restoration/extraction, open bio-commons/patent monopolies,
+human enhancement/biological integrity, nano-acceleration/precaution. A one-pole axis is reported by
+`axes_that_are_not_pairs()`, because a single pole is a scale in disguise, and every axis carries
+`recorded_as: pending_author_decision`: whether an axis becomes a recorded tag set or stays prose is
+the open question the document already carries, and `AGENTS.md` §0 keeps the existing political axes
+and party identities intact.
+
+Seven **strategic projects** (an organoid-computing breakthrough, living seawalls, engineered coral
+recovery, a decentralised biofoundry, an NHI biotechnological exchange, a contaminated nanofactory, a
+runaway synthetic ecology) and eleven **event-card ideas** (the Esper Union's privacy demand, the
+organoid personhood claim, the communal biofoundry's watershed, the disputed nanoswarm cleanup,
+disclosure without explanation, the hybrid citizenship referendum, and the five cross-cutting cards —
+robotic workforce strike, rejuvenation patent scandal, neural privacy injunction, atmospheric
+intervention vote, post-scarcity factory) are carried as the issue's own titles.
+
+**They carry no effects.** Every one has `effects: []`, and `proposals_with_effects()` reports any that
+does not. A card title is a title: the issue supplies these to show what the paradigms *could* produce,
+and a cost, an outcome or a threshold arriving through a card name would be an unapproved mechanic.
+They are recorded as cards, projects and TAG ideas rather than as six tactical rulesets — which is what
+the issue asks for.
+
+## 8. What the author still has to decide
 
 - Whether Bionics becomes a fourth **selectable** domain in the strategy layer or stays a framing beside
   the two established paradigms.
@@ -84,3 +161,9 @@ definition — and a research record marked `not_applicable` is itself a defect 
   solarpunks, corporate greenwashing) becomes a recorded axis, a set of tags, or stays prose.
 - How organoid intelligence and biohybrid AI sit against the AGI law restrictions already established
   for the setting.
+- **Which of the twenty candidate transformations, if any, is promoted to a foundational paradigm**,
+  and which of the five pressure axes is recorded as a tag axis. Both are carried as
+  `pending_author_decision`; neither is decided here.
+- Whether the five pressure axes extend the faction vocabulary of
+  [`docs/GLOBAL_FACTIONS.md`](GLOBAL_FACTIONS.md) and [`data/faction_creation.json`](../data/faction_creation.json)
+  or stay a reading of the genre layer. This record does not touch either.
