@@ -27,3 +27,16 @@ The horizon this project is building toward — **one open-source indie Grand St
 ## NoöPunk: Global design alternative
 
 The ultra-abstract worldwide Network Society / Luhmannian social systems / Laclaudian hegemony concept, political-simulator references, card/tabletop architecture options, illustrative crisis-turn walkthrough and preliminary bookkeeping analysis are documented in [`docs/NOOPUNK_GLOBAL_DESIGN.md`](docs/NOOPUNK_GLOBAL_DESIGN.md) ([issue #338](https://github.com/TomiToivio/NooPunk/issues/338)). This is a **design proposal only**, not approved gameplay rules, and does not replace the local-city scenario #322.
+
+## Experimental NoöPunk: Global vertical slice (#338)
+
+Run a **noncanonical** deterministic example from the repository root:
+
+```bash
+python -m strategy_game.global_slice
+python -m unittest strategy_game.tests.test_global_slice -v
+```
+
+`global_slice.py` contains a deliberately small, **separate** demonstration of four text views (global city-hub map and typed network links, faction assets and agents, global political responses, mission/encounter choices), discoverable mission sites and agent-led resource activation. A crash investigation can discover an NHI installation; the archive infiltration can resolve nonviolently; abstract force-response is represented only as a possible mission choice. Randomness is seeded for reproduction and all skill/asset calculations are explicitly **illustrative**, not approved rules or balanced gameplay. The user cannot yet operate a general interactive campaign from this CLI: `demo()` runs a fixed illustrative sequence.
+
+**Author approval still required:** final skill/TAG vocabulary, dice mechanism, difficulty scales, asset economy, political transitions, combat, encounter writing and comprehensive UI. The prototype does **not** change `WorldState`, canonical strategy `RULEBOOK.md`, the separate local-city slice, or the legacy RPG. See [issue #338](https://github.com/TomiToivio/NooPunk/issues/338).
