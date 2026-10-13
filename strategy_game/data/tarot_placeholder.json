@@ -1,0 +1,33 @@
+{
+  "format": "noopunk.strategy_game.tarot_placeholder",
+  "version": 1,
+  "status": "PLACEHOLDER - a data shape for issue #347 item 7, not a designed deck and not canon. The multi-use Tarot design remains the author's.",
+  "sources": [
+    "issue #347: 'Add data-driven example cards: at least one each ... and tarot placeholder'",
+    "strategy_game/tabletop/tarot.py: TarotCard, TarotUse, tarot_deck, draw_tarot"
+  ],
+  "provenance": {
+    "kind": "agent-authored placeholder",
+    "note": "Three cards, one per declared use, so the tarot kind has a data-driven example. No meaning, no interpretation and no rule is fixed here."
+  },
+  "cards": [
+    {
+      "id": "placeholder_tarot_prompt",
+      "name": "The Prompt",
+      "uses": ["prompt"],
+      "note": "A question the player must answer in character. Placeholder text."
+    },
+    {
+      "id": "placeholder_tarot_complication",
+      "name": "The Complication",
+      "uses": ["complication"],
+      "note": "A cost or a fork. Placeholder text."
+    },
+    {
+      "id": "placeholder_tarot_opportunity",
+      "name": "The Opportunity",
+      "uses": ["opportunity"],
+      "note": "A door that opens. Placeholder text."
+    }
+  ]
+}
