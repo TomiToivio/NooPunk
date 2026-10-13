@@ -301,6 +301,98 @@ Columns, as the issue requires: **politics between elections · representation �
 
 ---
 
+## 6A. The two core-insight sources: Sigma Theory and The Shadow Government Simulator
+
+**Added 2026-10-13 — design alternative / proposal, noncanonical, approves no mechanics.** Issue [#338](https://github.com/TomiToivio/NooPunk/issues/338) names these two games as its **core insight** and lists them as primary Strategy inspirations: *"Study the strategic abstraction of **Sigma Theory** and **The Shadow Government Simulator**: a compact graph and small roster of key people can convey planetary-scale competition."* The earlier version of this document omitted both. This subsection closes that gap: it states what each game actually does **from its own sources**, what it does and does not prove about the issue's core claim, the one mechanical lesson Global should take, and what Global must **not** copy. Raw evidence and per-source reliability are in the companion ledger [`NOOPUNK_GLOBAL_SOURCE_LEDGER.md`](NOOPUNK_GLOBAL_SOURCE_LEDGER.md). Nothing here is adopted; no mechanic, number or canon is approved.
+
+**The claim under test.** *"A compact graph and small roster of key people can convey planetary-scale competition."* It has two halves — a **compact graph** and a **small roster of key people** — and it is a claim about the *feasibility of abstraction*, not about any particular model. Each game below is judged against both halves, and against what Global specifically proposes (M1: a multiplex graph of organizations, people, jurisdictions-as-context and function-system couplings, with contested meaning).
+
+### 6A.1 Sigma Theory: Global Cold War — what it does, and what it proves
+
+**What it actually does (verified from its own Steam listing, app 716640).** A turn-based espionage strategy game. A paradigm-shifting discovery — the "Sigma Theory" — *"can only be harnessed by a handful of scientists"*; the player is *"placed at the head of your country's Sigma division"*, racing *"before anyone else"*. Mechanics stated on the page:
+
+- **A small named roster is the engine.** *"Recruit a team of **four special agents from 50 unique unlockable characters**"*, each with *"their own story, motivations and traits"*; archetypes include investigator, soldier, hacker, seducer.
+- **A managed relationship roster of non-agent actors.** *"Develop and manage your relations with **over 100 NPCs**: lobbies, armed groups, politicians…"* through *"flattery, threats or blackmail"*; *"they may turn on you."*
+- **Missions, not a world model.** Agents are sent *"around the world to gather scientists, discover compromising documents on local politicians, and more"*; you *"seduce, manipulate and bribe"* targets.
+- **Counter-espionage, interrogation and prisoner exchange.** Rivals *"will also use their agents to infiltrate your country"*; you *"track, capture and interrogate them … then exchange them for ransom."*
+- **A keep-or-share decision on research.** *"Will you keep these discoveries for yourself or share them with the world?"*
+- **No simulated planet.** There is no model of national economies, territories or populations; the "world" is the player's nation, the rival nations, mission geography, and the NPC relationship roster.
+
+**Does it prove the core claim?** **Yes for the stronger half — "a small roster of key people" — and partially for "a compact graph".** Sigma Theory is the **strongest existing evidence in this document's source set** for the claim: planet-scale rivalry (every superpower competing for a singularity-class discovery) is carried by four named operatives plus a managed relationship roster of 100+ individuals, with **no country simulated as a territory or an economy**. If the claim's strong form is "people and relationships can carry a planetary premise", Sigma Theory demonstrates it at commercial scale (Mostly Positive, 77% of 893 reviews).
+
+What it **does not** carry, stated precisely:
+
+- Its "graph" is a **roster of individuals with relations**, closer to a hub-and-spoke (your agency ↔ rival agencies ↔ per-node contacts) than to the **multiplex graph of organizations, jurisdictions and function-system couplings** Global proposes (M1). It therefore says nothing about whether *that* graph can carry the load.
+- It does **not** avoid countries. The player *is* a nation's Sigma division and rival *nations* act against them; additional playable **nations ship as DLC** ("Additional Nation": Nigeria, Brazil). The accurate statement is that Sigma Theory does not simulate countries *in detail* — not that it has no countries at all. A sibling report that Sigma Theory simulates *no country* is **not confirmed as written** and is corrected here.
+- It does not model contested **meaning** (Laclau) or autonomous **function systems** (Luhmann) at all.
+
+**The lesson Global should take.** A handful of named operatives, each a person with traits and motivations, plus a **relationship roster you actively manage**, is enough to make global rivalry legible and playable; missions are the engine, and relationships are a resource that can be lost. This is direct support for the council's "every move is carried by one named person" rule and for treating the relationship roster (M1/M2) as first-class.
+
+**What Global must NOT copy.** The **nation-as-playable-side** identity and real-world nation framing — Global makes jurisdictions **tags/contexts**, not sides (M1.4). The **separate tactical minigames** (field-operation pursuits, exfiltration phases, drone positioning): Global must not fragment into a disconnected minigame (M4.1). **Assassination/kidnapping** as a central verb — Global's core is the contestation of meaning, not covert violence. The **DLC-nation content model**.
+
+### 6A.2 The Shadow Government Simulator — what it does, and what it proves
+
+**What it actually does (verified from its own Steam listing, app 1281190).** A turn-based strategy game in which you *"lead a secret society towards world domination"* by *"investigat[ing] the influential and convert[ing] them … via bribery, seduction and intimidation"*. Mechanics stated on the page:
+
+- **The board** ***is*** **a discovered network of people.** *"When you enter a new nation, you'll be alone with just a headquarters at your disposal and minimal information. Slowly … uncover[] who are the influential and how much power they truly wield … their traits and personalities."*
+- **Connections are the mechanism.** *"You'll discover **who they are connected to**, and thus person by person, you shall take over the whole elite."*
+- **Connectivity is power *and* exposure.** *"Having a strong interconnected network is the key to success, but **the bigger you get the more visible you are** and this could lead to your demise. Manage your network, **cut and create connections**."*
+- **The world outside the graph is abstract.** Regions have *"procedurally generated networks"*; *"the world's countries will unite against you"*; *"nations you take over become yours to command"* — *"Be it a person or a country, they shall all become like pawns."*
+- **A secret-society frame.** You unlock factions *"such as the Masons and the Templars"*, with bribery/seduction/intimidation as the conversion loop.
+
+**Does it prove the core claim?** **Yes for the "compact graph" half — the strongest available evidence for it.** The Shadow Government Simulator's actual game board *is* a graph of influential people and their connections, uncovered under fog of war, and that graph is asserted to be sufficient to drive a global-domination premise. It also demonstrates **graph-shape-as-mechanic** directly: connectivity is simultaneously success and visibility, and the player is told to *cut and create connections* — exactly the reach/brokerage/exposure tension Global's Castells layer wants (M1.5, §7).
+
+What it **does not** carry:
+
+- The graph is a graph of **people (elites) only** — not the multiplex of **organizations, jurisdictions-as-context and function systems** Global proposes; there is no Luhmannian function-system layer and no contest of meaning.
+- The world outside the graph is a **conquest target** ("nations … become pawns"), a domination fantasy, not a struggle over what a shock *means* (Laclau) — a different genre from NoöPunk.
+- Its **procedural network generation** trades authored political meaning for variety; Global cannot use generated networks as a substitute for content that must *read as global* (M0.3, §9).
+- It shows one shadow organization versus rival organizations and "the world's nations", not many co-equal transnational **political projects** contesting articulation.
+
+**The lesson Global should take.** **Fog-of-war network discovery** — the player does not read the graph, they *uncover* it — is a concrete mechanic that lets a small graph carry a global premise, and it fits Global's provenance / `UNKNOWN`-by-default discipline (M1.8) exactly. The companion lesson is the **connectivity ⇄ visibility trade-off**: growing the network raises both power and exposure, which is the honest shape of the broker risk in M2.
+
+**What Global must NOT copy.** The **secret-society / Illuminati** framing (Masons, Templars) and **bribery–seduction–intimidation as the conversion loop** — Global's core is contestation of meaning, not conversion by coercion. **Procedurally generated networks** as a stand-in for authored meaning. The **"nations become pawns"** conquest model. A **people-only graph**: Global is multiplex (M1.2).
+
+### 6A.3 Verdict on the core claim (evidence, not approval)
+
+- The two games are the **strongest evidence in this document's source set** that a global-scale game need not simulate a planet: **Sigma Theory carries the "small roster of key people" half** (four named operatives plus a managed 100+ relationship roster, no territory/economy model), and **The Shadow Government Simulator carries the "compact graph" half** (a fog-of-war network of influential people whose connections drive world domination, with a real connectivity/exposure tension).
+- **Neither** demonstrates the *specific* thing Global proposes. Neither models **Luhmannian function systems**; neither has a **contested-meaning** layer; both reduce the world outside their graph to **discrete nations / targets / pawns**. The pair therefore proves the claim's **general form** (abstraction can carry scale) and does **not** validate Global's particular multiplex model (M1).
+- The honest conclusion, in the document's existing framing: these two sources are strong evidence that the **risk named in M0.3 and M5 is survivable** — a global board can stay compact — and they are **not** evidence that any specific mechanic here is correct. No mechanic is adopted.
+
+---
+
+## 6B. Carry-over notes and one open finding (no design decisions)
+
+**Added 2026-10-13. Noncanonical. Approves no mechanics and no canon; resolves nothing.** These are carry-over *questions* the issue implies but this document does not decide.
+
+### 6B.1 The Luhmannian layer is already canon (§36) — a carry-over question, not a new build
+
+`RULEBOOK.md` **§36 ("The four NoöPunk systems") is already canon**: §36.1 gives Luhmann's baseline, §36.2 **"The four layers"** names them **Physical / Psychic / Social / Cybernetic**, and **§36.7 is literally "Structural coupling between the layers"** — with the coupling-interface table (Physical ↔ Psychic, Psychic ↔ Social, Social ↔ Cybernetic, Cybernetic ↔ Physical, Psychic ↔ Cybernetic, Psychic ↔ Psychic, and all four) and the rule *"Coupling is not collapse."* Under [AGENTS.md](../../AGENTS.md) §0, **legacy rules do not carry over** to the crossover without an explicit, approved conversion decision, while **lore and known canon do**. The Luhmannian layer is therefore a **carry-over question for the crossover, not a new build**: the crossover does not have to invent it — it has to *decide, explicitly, whether and how to import it*.
+
+**A naming divergence to flag, not to silently resolve.** Issue [#338](https://github.com/TomiToivio/NooPunk/issues/338) writes the cross-cutting layers as **"Physical/Cyber/Astral"** (e.g. *"Physical/Cyber/Astral activities modify shared state"*; *"policy debates on astral jurisdiction"*; *"Physical/Cyber/Astral dimensions as cross-cutting NoöPunk setting layers"*), whereas canon §36.2 names them **Physical / Psychic / Social / Cybernetic**. The issue's **"Astral"** is not a canon layer name, and **"Cyber"** is not canon's **"Cybernetic"**; canon's word for the consciousness domain is **"Psychic"**. The issue itself calls these *"cross-cutting setting layers rather than identical taxonomies"*, so the divergence may be deliberate vocabulary — but it is a **divergence**, and this document **flags it rather than picking one**. Whoever scopes the crossover must settle "Astral" vs "Psychic" explicitly.
+
+### 6B.2 The paper-playable tabletop version is an existing gate deliverable (VISION.md S0-A)
+
+[`VISION.md`](VISION.md) **§S0-A already requires** that, *"before any playable mechanics"*, the leader, faction and discourse rules get a **"paper-playable version … reviewed separately, with cross-layer event propagation as its own fourth gate."** The tabletop work in §§9–11 of this document therefore sits **under an existing gate deliverable**, not a new direction: a paper-playable variant is something the vision already demands, so Global's tabletop option is a candidate *answer* to that requirement, not a new requirement. Nothing here changes the gate; the gate already exists.
+
+### 6B.3 OPEN FINDING — three unreconciled global rosters (data-integrity question, not a design decision)
+
+**This is recorded as an unresolved data-integrity question. This document does not choose the correct number and does not resolve it.** The repository currently holds **three different global-actor rosters**, and Global will depend on that roster:
+
+| Where | Count | What it actually is (verified this session) |
+|---|---|---|
+| [`data/world/un_parties.yaml`](../../data/world/un_parties.yaml) | **4** | Four UN parliamentary parties on an economic/social axis (Bioconservatives; Libertarian Party; United Earth Social Democratic Party; The Multitude). The file itself declares `open_for_future_parties: true` and `extra_parliamentary_factions: true`, i.e. explicitly **non-exhaustive**. |
+| The crossover's global-factions record: [`strategy_game/data/global_factions.json`](../../strategy_game/data/global_factions.json) | **7** | `status: "author_canon"`, `source_issues: [328, 329]`; contains exactly **seven** factions (Accelerationists; Cyborgists; Critical; Doomers / Butlerian Jihad; Confederacy Awakening; Orion / Grey networks; Normalcy Bloc), and its own note says *"The seven global paradigm factions as authored in issues #328 and #329."* |
+| Issue [#328](https://github.com/TomiToivio/NooPunk/issues/328) (OPEN, author-updated **2026-10-12T15:55:15Z**) | **11** | The issue is titled *"Eleven global Parties …"* and its body carries an **11-row** official roster table of global Parties under a UN world government (three of them NHI-led). |
+
+**What I could verify.** The **4** (read `un_parties.yaml`) and the **7** (read `global_factions.json` and counted its `factions` array) are confirmed. Issue #328's **11** is confirmed from the issue's own title and roster table. All three counts are real and live on `main`.
+
+**What I could NOT confirm.** Whether these three lists are meant to describe the **same** set of actors at all. They are **different taxonomies**: `un_parties.yaml` is a UN-parliamentary axis list; #328 is "eleven global Parties under a UN world government" (including NHI-led Parties); `global_factions.json` reconciles #328/#329 into "seven global *paradigm* factions". The discrepancy may be a **count** mismatch, a **taxonomy** mismatch, or both — I did not determine which, and I swept only these three records, so there may be further rosters elsewhere.
+
+**Why record it here.** Global's actor model (M0.5, M1.1) binds to a roster. Binding a design to "a handful of factions" before the **4 / 7 / 11** question is settled risks encoding an arbitrary number. **The count should be settled before any design binds to a number** — but that settlement is the author's, and it is a data-integrity question about which records are canonical, **not a design decision** this document is entitled to make.
+
+---
+
 ## 7. The six quantities that must stay distinct
 
 The issue's acceptance criterion. These are **six different things**, kept in **six different fields**, with **six different component conventions** (§8). **None is interchangeable.**
@@ -485,6 +577,7 @@ This recommendation is a **proposal**, not an approved choice, and does not by i
 - Global faction roster (author taxonomy): [`../../strategy_game/docs/GLOBAL_FACTIONS.md`](../../strategy_game/docs/GLOBAL_FACTIONS.md) ([#328](https://github.com/TomiToivio/NooPunk/issues/328)/[#329](https://github.com/TomiToivio/NooPunk/issues/329))
 - Core containers: [`../../strategy_game/core.py`](../../strategy_game/core.py); political vocabulary: [`../../strategy_game/politics.py`](../../strategy_game/politics.py); provenance: [`../../strategy_game/provenance.py`](../../strategy_game/provenance.py); views: [`../../strategy_game/view.py`](../../strategy_game/view.py)
 - Source verification ledger (companion): [`NOOPUNK_GLOBAL_SOURCE_LEDGER.md`](NOOPUNK_GLOBAL_SOURCE_LEDGER.md)
+- The two core-insight sources (Sigma Theory; The Shadow Government Simulator) and the carry-over / open-finding notes: **§6A** and **§6B** above
 
 ## 14. Deliberately not done here
 
