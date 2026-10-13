@@ -21,7 +21,6 @@ from __future__ import annotations
 from random import Random
 from typing import Any, Mapping, Sequence
 
-from ..core import WorldState
 from .fate import Action, Character, Resolution, skill_check
 
 #: Version of this boundary's payload shape.
@@ -139,11 +138,13 @@ class LeaderRpgLayer:
             rng=Random(seed), invoked_aspect=invoked_aspect,
         )
 
-    def describe(self, state: WorldState | None = None) -> dict[str, Any]:
+    def describe(self, state: object | None = None) -> dict[str, Any]:
         """The reserved ``LeaderRPG`` port: a projection, with no join to the world state.
 
         ``state`` is accepted because the port's signature requires it and is **not read**: joining
-        the table to ``WorldState`` is the Gate D decision, and this boundary performs none.
+        the table to ``WorldState`` is the Gate D decision, and this boundary performs none. It is
+        typed as ``object`` on purpose — the module stays dependency-free, which the layer
+        independence test enforces and which keeps the RPG importable on its own.
         """
         return {
             "schema_version": BOUNDARY_SCHEMA_VERSION,

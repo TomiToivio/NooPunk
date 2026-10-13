@@ -31,6 +31,8 @@ from strategy_game.rpg.fate import (
     ResourceError,
     demo_investigation,
     demo_netrunning,
+    demo_netrunning_foothold,
+    resolve,
 )
 from strategy_game.characters import TAG_KINDS, Tag
 from strategy_game.core import WorldState
@@ -70,6 +72,20 @@ class SharedTagTests(unittest.TestCase):
         self.assertEqual(actor.tags_of_kind("competence")[0].value, "forensic reconstruction")
         self.assertEqual(len(actor.tags_of_kind("belief")), 1)
         self.assertEqual(actor.tags_of_kind("asset"), ())
+
+    def test_a_tag_never_changes_a_roll(self) -> None:
+        """A tag is a label. If tags moved a roll they would be an unapproved mechanic."""
+        plain = Character("a", "Plain", [], skills={"Technology": 2})
+        decorated = Character(
+            "b", "Decorated", ["Local-Access Specialist"], skills={"Technology": 2},
+            tags=(Tag("competence", "legendary netrunner"), Tag("equipment", "military deck")),
+        )
+        for seed in range(6):
+            self.assertEqual(
+                resolve(Action.OVERCOME, plain.skills["Technology"], 3, rng=Random(seed)),
+                resolve(Action.OVERCOME, decorated.skills["Technology"], 3, rng=Random(seed)),
+                f"tags changed the roll at seed {seed}",
+            )
 
     def test_the_tag_kinds_are_the_shared_ones(self) -> None:
         self.assertEqual(
@@ -197,20 +213,31 @@ class ScenarioTests(unittest.TestCase):
         self.assertEqual(psi.action, Action.CREATE_ADVANTAGE)
         self.assertEqual(scene, demo_investigation(3))
 
-    def test_the_netrunning_example_requires_a_foothold_first(self) -> None:
-        scene = demo_netrunning(5)
+    def test_the_foothold_netrunning_example_requires_access_first(self) -> None:
+        scene = demo_netrunning_foothold(5)
         access = cast(Resolution, scene["access"])
         intrusion = cast(Resolution, scene["intrusion"])
         self.assertTrue(scene["access_required"])
         self.assertEqual(access.action, Action.CREATE_ADVANTAGE)
         self.assertEqual(intrusion.action, Action.OVERCOME)
         self.assertIn("#344", str(scene["note"]))
+        self.assertEqual(scene, demo_netrunning_foothold(5))
+
+    def test_the_reachability_netrunning_example_keeps_access_fictional(self) -> None:
+        """The other netrunning example: no roll can grant reachability, and a BCI is not PSI."""
+        scene = demo_netrunning(5)
+        self.assertIn("reachable path must exist", str(scene["reachability"]))
+        self.assertIn("not involved", str(scene["psi"]))
+        for key in ("approach", "defend"):
+            self.assertEqual(len(cast(Resolution, scene[key]).dice), 4)
         self.assertEqual(scene, demo_netrunning(5))
 
     def test_the_same_engine_resolves_both_scenes(self) -> None:
-        for scene in (demo_investigation(1), demo_netrunning(1)):
-            for key in ("cyber", "psi", "access", "intrusion"):
-                if key in scene:
+        for scene in (demo_investigation(1), demo_netrunning(1), demo_netrunning_foothold(1)):
+            for key in ("cyber", "psi", "access", "intrusion", "approach", "defend"):
+                # some scenes carry a non-check value under a shared key (e.g. demo_netrunning's
+                # "psi": "not involved"), so only Resolution values are asserted on
+                if key in scene and isinstance(scene[key], Resolution):
                     outcome = cast(Resolution, scene[key])
                     self.assertEqual(len(outcome.dice), 4)
                     self.assertIsInstance(outcome.outcome.value, str)
