@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "cards": [
+    {
+      "id": "leader.sir_mars_eldrich",
+      "card_type": "canonical",
+      "name": "Sir Mars Eldrich",
+      "role": "corporate patron",
+      "summary": "Eccentric head of the Eldrich business dynasty and its sprawling corporation in Ukweli.",
+      "factions": [
+        "Eldrich Corporation"
+      ],
+      "tags": [
+        "patron",
+        "industrialist",
+        "eccentric",
+        "political donor"
+      ],
+      "attributes": {
+        "SOC": 3,
+        "INT": 2
+      },
+      "actions": [
+        "influence",
+        "recruitment"
+      ],
+      "public": {
+        "relationships": [
+          "Eldrich dynasty"
+        ],
+        "agenda": "Expand family business and prestige."
+      },
+      "gm_only": {
+        "secret": "Leave specific hidden interests for scenario author."
+      }
+    },
+    {
+      "id": "archetype.organizer",
+      "card_type": "archetype",
+      "name": "Faction Organizer",
+      "role": "organizer",
+      "summary": "Local organizer who connects volunteers and movements.",
+      "factions": [],
+      "tags": [
+        "social",
+        "mobilization"
+      ],
+      "attributes": {
+        "SOC": 2
+      },
+      "actions": [
+        "influence",
+        "recruitment"
+      ],
+      "public": {}
+    },
+    {
+      "id": "archetype.security",
+      "card_type": "archetype",
+      "name": "Security Contractor",
+      "role": "security",
+      "summary": "A contracted guard with practical field experience.",
+      "factions": [],
+      "tags": [
+        "physical",
+        "security"
+      ],
+      "attributes": {
+        "FIT": 2,
+        "REF": 2
+      },
+      "actions": [
+        "field_operations",
+        "combat"
+      ],
+      "public": {}
+    },
+    {
+      "id": "archetype.researcher",
+      "card_type": "archetype",
+      "name": "Researcher",
+      "role": "scientist",
+      "summary": "Scientific investigator comfortable with evidence and instruments.",
+      "factions": [],
+      "tags": [
+        "science",
+        "investigation"
+      ],
+      "attributes": {
+        "INT": 2
+      },
+      "actions": [
+        "investigation"
+      ],
+      "public": {}
+    },
+    {
+      "id": "archetype.civilian",
+      "card_type": "archetype",
+      "name": "Civilian Witness",
+      "role": "civilian",
+      "summary": "A resident with first-hand observations and everyday priorities.",
+      "factions": [],
+      "tags": [
+        "witness",
+        "civilian"
+      ],
+      "attributes": {
+        "SOC": 1
+      },
+      "actions": [
+        "investigation"
+      ],
+      "public": {}
+    },
+    {
+      "id": "nhi.biologic",
+      "card_type": "nhi",
+      "name": "Unknown Biologic",
+      "role": "anomalous entity",
+      "summary": "A living organism whose origins are not yet known.",
+      "factions": [],
+      "tags": [
+        "biologic",
+        "contact"
+      ],
+      "attributes": {
+        "PSY": 2
+      },
+      "actions": [
+        "investigation"
+      ],
+      "nhi": {
+        "ontology": "Biologics",
+        "species": null,
+        "origin_hypotheses": [
+          "interdimensional",
+          "extraterrestrial"
+        ],
+        "certainty": "disputed"
+      },
+      "public": {
+        "observation": "An apparently living entity was observed."
+      },
+      "gm_only": {
+        "secret": "Do not infer the true origin from this template."
+      }
+    },
+    {
+      "id": "nhi.construct",
+      "card_type": "nhi",
+      "name": "Unknown Construct",
+      "role": "anomalous entity",
+      "summary": "An apparently manufactured autonomous object.",
+      "factions": [],
+      "tags": [
+        "construct",
+        "unidentified"
+      ],
+      "attributes": {
+        "CYB": 2
+      },
+      "actions": [
+        "investigation"
+      ],
+      "nhi": {
+        "ontology": "Constructs",
+        "species": null,
+        "origin_hypotheses": [
+          "unknown"
+        ],
+        "certainty": "unknown"
+      },
+      "public": {
+        "observation": "Movement and structure suggest an engineered form."
+      }
+    },
+    {
+      "id": "nhi.noetic",
+      "card_type": "nhi",
+      "name": "Unknown Noetic",
+      "role": "anomalous entity",
+      "summary": "An intelligence primarily encountered through consciousness phenomena.",
+      "factions": [],
+      "tags": [
+        "noetic",
+        "psi"
+      ],
+      "attributes": {
+        "PSY": 3
+      },
+      "actions": [
+        "investigation"
+      ],
+      "nhi": {
+        "ontology": "Noetics",
+        "species": null,
+        "origin_hypotheses": [
+          "interdimensional",
+          "unknown"
+        ],
+        "certainty": "disputed"
+      },
+      "public": {
+        "observation": "Witnesses report a shared mental impression."
+      }
+    },
+    {
+      "id": "nhi.plasmoid",
+      "card_type": "nhi",
+      "name": "Unknown Plasmoid",
+      "role": "anomalous entity",
+      "summary": "A luminous energetic manifestation with unexplained behavior.",
+      "factions": [],
+      "tags": [
+        "plasmoid",
+        "luminous"
+      ],
+      "attributes": {
+        "PSY": 1
+      },
+      "actions": [
+        "investigation"
+      ],
+      "nhi": {
+        "ontology": "Plasmoids",
+        "species": null,
+        "origin_hypotheses": [
+          "unknown"
+        ],
+        "certainty": "unknown"
+      },
+      "public": {
+        "observation": "A luminous sphere was recorded."
+      }
+    }
+  ]
+}
