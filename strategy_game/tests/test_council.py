@@ -175,6 +175,39 @@ class StructuralRuleTests(unittest.TestCase):
     def test_a_well_formed_council_has_no_structural_problem(self):
         self.assertEqual(self.model.structural_problems(_council()), ())
 
+    def test_duplicate_leader_identity_cannot_create_an_extra_action_slot(self):
+        leaders = list(_leaders())
+        leaders[3] = CouncilLeader(
+            identifier=leaders[0].identifier,
+            name="Duplicate ID",
+            portfolio=leaders[3].portfolio,
+        )
+        council = _council(leaders=tuple(leaders))
+        issues = self.model.structural_problems(council)
+        self.assertTrue(any("appears more than once" in issue for issue in issues))
+
+    def test_blank_leader_identity_is_invalid(self):
+        leaders = list(_leaders())
+        leaders[0] = CouncilLeader(identifier=" ", portfolio=leaders[0].portfolio)
+        issues = self.model.structural_problems(_council(leaders=tuple(leaders)))
+        self.assertTrue(any("no identifier" in issue for issue in issues))
+
+    def test_duplicate_mission_ids_are_refused_even_with_distinct_leaders(self):
+        council = _council(missions=(
+            _mission(1, "opinion_support"),
+            _mission(2, "membership_resources", identifier="mission_1"),
+        ))
+        problems = " | ".join(self.model.structural_problems(council))
+        self.assertIn("identifier appears more than once", problems)
+
+    def test_blank_mission_id_is_refused(self):
+        council = _council(missions=(_mission(1, "opinion_support", identifier=" "),))
+        self.assertIn("mission has no identifier", " | ".join(self.model.structural_problems(council)))
+
+    def test_mission_must_name_a_location(self):
+        council = _council(missions=(_mission(1, "opinion_support", location_id="  "),))
+        self.assertIn("no location", " | ".join(self.model.structural_problems(council)))
+
     def test_a_mission_without_a_leader_is_invalid(self):
         council = _council(missions=(_mission(1, "opinion_support", leader_id=""),))
         problems = " | ".join(self.model.structural_problems(council))
