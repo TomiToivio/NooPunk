@@ -16,6 +16,9 @@ ROOT = Path(__file__).resolve().parents[1]
 GUARD = ROOT / "tools" / "release_packaging_guard.py"
 
 #: The EP-derived artefacts the register lists; each must be flagged as quarantined in the release set.
+#: The last two were added in #421's follow-up: the modules that exercise the EP2 prototype import the
+#: quarantined code directly, so they are inside the same boundary — and before the two globs existed,
+#: a public-mode bundle of them returned no quarantine finding at all.
 QUARANTINED = (
     "src/eclipse_phase_homebrew/__init__.py",
     "src/eclipse_phase_homebrew/core.py",
@@ -24,6 +27,8 @@ QUARANTINED = (
     "src/concordia_runtime/ep2_adapter.py",
     "src/concordia_runtime/ep2_session.py",
     "scripts/ep2_concordia_smoke.py",
+    "tests/test_ep2_session.py",
+    "tests/test_issue60_ep2_interactions.py",
 )
 
 

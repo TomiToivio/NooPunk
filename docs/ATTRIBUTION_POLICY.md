@@ -2,8 +2,9 @@
 
 **Status: PROPOSED — no licence is selected here.** Issue #421 item 4 names this as the missing artifact:
 *"the project's own attribution policy is not yet written"*. This writes it. The two licence decisions
-(software, content) and the commercial model remain the **author's** (VISION.md §7a, §9) and are tracked
-in #421.
+(software, content) and the commercial model remain the **author's** (VISION.md §7a, §9): they are
+carried as rows D10 and D16 in `docs/design/AUTHOR_DECISION_QUEUE.md`, with the enactment steps written
+out in `docs/design/ISSUE_421_ENACTMENT_AND_COMMERCIAL_MODEL.md`. Nothing below chooses one.
 
 This document says how attribution is *done*, not which licence applies. It restates no exclusion list:
 the excluded-licence set has exactly one home, `data/sources/game_system_rights.json`, and the packaging
@@ -25,13 +26,20 @@ over the licence decisions themselves — those are the author's.**
 | Source | Obligation | Where it is already honoured |
 | --- | --- | --- |
 | **Fate Core** (Evil Hat / Fred Hicks, Rob Donoghue) | CC BY 3.0 — attribution required, and the official notice must appear verbatim | `strategy_game/rpg/ATTRIBUTION.md` (shipped under #389) |
-| **NoöPunk's own text and rules** | The selected content licence's attribution terms, once chosen | **Open** — #421 item 1 |
-| **This project's code** | The selected software licence's terms, once chosen | **Open** — #421 item 1 |
+| **The Veil / The Veil: Cascade** (Fraser Simons, Samjoko Publishing) | CC BY-SA 3.0 (text) — attribution required **because material was adapted**, not merely referenced | `docs/sources/ATTRIBUTION.md` (generated) lists it under *Required attributions* for `rulebook-text`; `strategy_game/rpg/ATTRIBUTION.md` scopes it as a design reference for the RPG layer |
+| **Cities Without Number SRD** (Kevin Crawford / Sine Nomine) | CC0 — no attribution obligation; courtesy credit only | `docs/sources/ATTRIBUTION.md`, courtesy row |
+| **NoöPunk's own text and rules** | The selected content licence's attribution terms, once chosen | **Open** — row D10 in `AUTHOR_DECISION_QUEUE.md` |
+| **This project's code** | The selected software licence's terms, once chosen | **Open** — row D10 in `AUTHOR_DECISION_QUEUE.md` |
 | **Research and theory** (Laclau, Castells, Luhmann, Faggin, Radin, Sheldrake, Powell and others) | Ideas are credited by name; no implication of endorsement or of proving a contested claim | `strategy_game/data/genre_paradigms.json`, `strategy_game/docs/GENRE_PARADIGMS.md`, `RULEBOOK.md` |
 | **Eclipse Phase-derived material** | CC BY-NC-SA — **can never enter a distributable build** | `docs/licenses/ECLIPSE_PHASE_HOMEBREW.md`, quarantine in the packaging policy |
 
-Two of these are settled and shipped. Two wait on the author. One is a prohibition rather than an
-attribution.
+Four rows are settled and shipped today: the three attributions and courtesies the shipped material owes,
+and one prohibition rather than an attribution. The project's **own** code and text wait on the author.
+
+The first two rows are both attribution obligations and **not** the same obligation: CC BY 3.0 permits
+commercial reuse with attribution, CC BY-SA 3.0 adds reciprocity. The ledger's own `reuse_rules` record
+what that means for the content-licence choice — CC BY-SA 3.0 expression (The Veil) is compatible with a
+CC BY-SA release and not with a CC BY-only one.
 
 ## 2. The rules this policy adds
 
@@ -50,6 +58,10 @@ attribution.
 6. **The attribution text is part of the build, not the repository.** Whatever the author selects must be
    reproduced in the distributed artifact, which is why the guard checks a release *set* rather than the
    working tree.
+7. **There are two carriers, and only one is hand-edited.** `strategy_game/rpg/ATTRIBUTION.md` is written
+   by hand and pointed at from shipped code (`strategy_game/rpg/fate.py`). The repository-level
+   `docs/sources/ATTRIBUTION.md` is **generated** by `tools/issue231_attribution.py` and says so on its
+   face: edit the generator and regenerate it, never the file.
 
 ## 3. What happens once the author decides
 

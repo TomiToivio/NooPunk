@@ -40,6 +40,14 @@
     {
       "glob": "scripts/ep2_*.py",
       "reason": "EP2 smoke scripts for the same prototype; same NC-derived boundary."
+    },
+    {
+      "glob": "tests/test_ep2_*.py",
+      "reason": "Tests for the EP2 prototype; they import the quarantined modules directly and encode its percentile/pool fixtures. Added in issue #421 after a public-mode bundle of them returned no quarantine error at all. Same NC-derived boundary."
+    },
+    {
+      "glob": "tests/test_issue60_ep2_*.py",
+      "reason": "Interaction tests for the same EP2 prototype (issue #60); same direct imports and the same NC-derived boundary. Added in issue #421."
     }
   ],
   "artifact_classes": [

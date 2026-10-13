@@ -33,9 +33,15 @@ from release_packaging_guard import (  # noqa: E402
 )
 
 #: The EP2 homebrew prototype: the largest NC-SA clean-up obligation before S1.
+#: The last two entries were added by issue #421 — the modules that exercise the prototype import
+#: the quarantined code directly and carry its percentile/pool fixtures, so they are inside the same
+#: boundary. Measured before that: a public-mode bundle of those two paths returned **no**
+#: quarantined-path-in-release-set finding.
 EP2_QUARANTINED = (
     "src/eclipse_phase_homebrew/core.py",
     "src/concordia_runtime/ep2_session.py",
+    "tests/test_ep2_session.py",
+    "tests/test_issue60_ep2_interactions.py",
 )
 
 
