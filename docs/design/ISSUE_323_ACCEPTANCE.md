@@ -52,9 +52,7 @@ The reopen was right: this record had presented criterion 2's second clause as m
    the compromised reduction and exposure risk — are *not* that column. Refusing a mission led by a
    no-mission status therefore applies an authored criterion rather than inventing a rule. This reverses
    the earlier agent call recorded in `data/council.json` as `enforced: false`; that call was right about
-   the three TODOs, and they remain reported. The data now carries `enforced_parts`, so the split is
-   explicit: `no_mission_column: true`, `portfolio_column: false`, `recovery_timing: false`,
-   `compromised_reduction: false`, `exposure_risk: false`.
+   the three TODOs, and they remain reported. The data carries the split as `mission_column_enforced: true` beside `enforced: false`: the table is DRAFT as a whole, so `enforced` stays false, while the one column the criterion and the document both author is applied.
 3. Two tests in `tests/test_council.py` asserted the superseded behaviour and were rewritten rather than
    deleted, keeping their vocabulary assertions: the no-mission case is now refused by name citing §4,
    and the enforced/unenforced split is asserted instead of "every row is unenforced". The full contract
@@ -98,7 +96,7 @@ re-argue the deferral, which stands.
 
 | # | Criterion | Position | Blocker, and the author decision it needs |
 | --- | --- | --- | --- |
-| 2 | ≤1 mission per leader per turn; **unavailable leaders cannot execute one** | **MET** (in the enforcement pass) | the cap is refused by name; the no-mission column of §4's status table is now refused as well, with the three unauthored parts (recovery timing, compromised reduction, exposure risk) reported and listed in `enforced_parts` |
+| 2 | ≤1 mission per leader per turn; **unavailable leaders cannot execute one** | **MET** (in the enforcement pass) | the cap is refused by name; the no-mission column of §4's status table is now refused as well, with the three unauthored parts (recovery timing, compromised reduction, exposure risk) reported and named by the data's `mission_column_enforced` reason |
 | 3 | Members and resources amplify, but never create free missions | **half** | the *amplification* shape (proposal B3); the cap is refused by name |
 | 4 | One persistent portfolio with a **bounded, visible bonus**; no hidden automatic moves | **NOT MET** | an approved **magnitude** for the passive effect; `magnitude_declared` stays `false` with its reason |
 | 6 | Relationships and **triggered RPG choices** change concrete strategy state | **NOT MET** | the deck's content and **what each option changes** (`event_deck_and_effects`); the container is landed |
