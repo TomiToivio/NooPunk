@@ -127,3 +127,42 @@ this pass. It is summarised here rather than copied into `data/codex.json`, beca
 single source of truth maintained on the #353 branch: enriching it is an edit to that file, not a
 second document beside it. Ask, and the records can be merged into `data/codex.json` in its own field
 vocabulary.
+
+## 6. Reconciliation before any merge: two defects in this pass's own data
+
+The three research legs behind this record completed on 2026-10-13: **87 records** — 37 L/L Research
+contact sources, 17 ufology and contact families, 33 mythic and original entries — with **233 fetched
+sources** between them. Two defects in that data have to be corrected before any of it is merged into
+`data/codex.json`, and both are this pass's fault rather than anyone else's.
+
+**1. Eleven records claim author approval they do not have.** The ufology leg labelled eleven entries
+`approved_canon`: `greys`, `mantids`, `reptilians`, `nhi_hybrids`, `men_in_black`,
+`mj12_legacy_networks`, `atlantean_breakaway_humans`, `pleiadian_delegates`, `orbs_of_light`,
+`metallic_sphere_network`, `cryptoterrestrials`. The author has approved no entity: `NHI_CODEX_SCOPE.md`
+records that a record claiming canon is a defect, and the repository rule is that absence stays visibly
+unknown rather than being promoted. That leg's own note concedes the labels "describe the underlying
+legacy in-world lore, not approval of these codex entries" — which is precisely why each must be
+downgraded to `reported_claim` or `source_mythology` before merging. **Nothing in this pass is canon, and
+this is the one place where the data said otherwise.**
+
+**2. The legs collide on four concepts.** The codex loader raises on a duplicate id, so a naive merge
+either fails or creates two records for one being:
+
+| Concept | Colliding ids | Resolution |
+| --- | --- | --- |
+| Orbs of Light | `orbs_of_light` — ufology leg and myth leg | one record |
+| Pleiadian delegates | `pleiadian_delegates` — ufology leg and myth leg | one record |
+| Shadow people | `shadow_people` — ufology leg and myth leg | one record, as a `phenomenon` |
+| Networked Metallic Spheres | `networked_metallic_spheres` (myth leg) vs `metallic_sphere_network` (ufology leg) | one id; the legs disagree on `device` versus `technology` |
+
+Where the legs disagree on a field, prefer the record whose epistemic kind is the more conservative one
+— a `phenomenon` rather than an agent, `source_mythology` rather than a claim of canon — and let the
+author rule on anything still open. The myth leg reached the same conclusion independently in its own
+merge notes.
+
+**3. What this pass could not verify, in brief.** Egyptology rests on a single encyclopaedic source,
+because Britannica returned a network error; the `Ra 24.19` thought-form citation was taken second-hand
+from the repository's own ontology chapter rather than re-read in session 24; the myth leg read issue
+#348 indirectly, through the repository's files, rather than from the issue itself; and eighteen
+low-attestation L/L names rest only on a community enumeration, with every unattested field left null
+rather than filled.
