@@ -84,7 +84,9 @@ PORTFOLIO_IDS: tuple[str, ...] = (
     "research_intelligence",
 )
 
-#: The statuses §4 lists. What each one *does* is DRAFT and is reported, not enforced.
+#: The statuses §4 lists. §4 is DRAFT as a whole: its *mission* column is applied (issue #323
+#: criterion 2 — an unavailable leader cannot execute a mission), while the row timings and magnitudes
+#: stay reported.
 LEADER_STATUSES: tuple[str, ...] = (
     "busy",
     "injured",
@@ -205,7 +207,14 @@ class StatusRow:
     note: str = ""
 
     def allows_a_mission(self) -> bool:
-        """Whether the row's own DRAFT wording permits a mission. Not a rule: cited, not applied."""
+        """Whether the row permits a mission.
+
+        **Applied, not merely cited** — issue #323's criterion 2 says an unavailable leader cannot
+        execute one, and `structural_problems` refuses a mission led by a status the table marks as no
+        mission. Section 4 is DRAFT, and this is the part of it that is authored: the *mission* column.
+        The row's timing (recovery for ``injured``) and magnitude (``compromised``'s reduction and
+        exposure risk) are still TODO and stay reported rather than applied.
+        """
         return self.mission.strip().lower().startswith("yes")
 
 
@@ -516,9 +525,10 @@ class CouncilModel:
         """The issue's own requirements, refused by name. An empty tuple means the declaration is legal.
 
         These are the checks issue #323 states as acceptance criteria, and only those: a mission names
-        exactly one leader, one leader leads at most one move per turn, the faction declares no more
-        moves than it has leader-turns, a move names one of the six quantities, the four posts are
-        distinct, and a mission that draws on a patron names an edge that exists.
+        exactly one leader, one leader leads at most one move per turn, a leader whose status row
+        allows no mission cannot execute one, the faction declares no more moves than it has
+        leader-turns, a move names one of the six quantities, the four posts are distinct, and a
+        mission that draws on a patron names an edge that exists.
         """
         problems: list[str] = []
         if len(self.portfolios) != len(PORTFOLIO_IDS):
@@ -576,10 +586,21 @@ class CouncilModel:
                     "mission is invalid rather than merely weaker"
                 )
             else:
-                if council.leader(mission.leader_id) is None:
+                leader = council.leader(mission.leader_id)
+                if leader is None:
                     problems.append(
                         f"{head}: leader {mission.leader_id!r} is not in this faction's roster"
                     )
+                else:
+                    row = self.status_row(leader.status)
+                    if row is not None and not row.allows_a_mission():
+                        problems.append(
+                            f"{head}: its leader {leader.identifier!r} is {row.status!r}, and issue "
+                            "#323 criterion 2 says an unavailable leader cannot execute one. Section 4's "
+                            "mission column IS authored even though its DRAFT timings and magnitudes are "
+                            "not, so the refusal is enforced here while the timing stays reported in "
+                            "consequence_reports: the clause is refused, the unauthored parts are named"
+                        )
                 per_leader[mission.leader_id] = per_leader.get(mission.leader_id, 0) + 1
             if not mission.quantity.strip():
                 problems.append(
@@ -654,10 +675,12 @@ class CouncilModel:
             row = self.status_row(leader.status) if leader is not None else None
             if row is not None and not row.allows_a_mission():
                 reports.append(
-                    f"{head}: its leader's status is {row.status!r}, which the DRAFT status table in "
-                    "docs/LEADER_COUNCIL_SYSTEM.md section 4 marks as no mission. Recovery timing, "
-                    "the compromised reduction and exposure risk are TODO: requires author "
-                    "specification, so this is reported rather than refused."
+                    f"{head}: REFUSED by structural_problems — its leader's status is {row.status!r}, "
+                    "which section 4 marks as no mission, and issue #323 criterion 2 says an unavailable "
+                    "leader cannot execute one. What remains unauthored is the row's TIMING and "
+                    "MAGNITUDE, not the refusal: recovery timing, the compromised reduction and the "
+                    "exposure risk are TODO: requires author specification, and they stay reported "
+                    "rather than applied."
                 )
             if mission.refusals:
                 reports.append(
