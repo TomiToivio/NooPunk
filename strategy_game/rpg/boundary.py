@@ -21,7 +21,6 @@ from __future__ import annotations
 from random import Random
 from typing import Any, Mapping, Sequence
 
-from ..core import WorldState
 from .fate import Action, Character, Resolution, skill_check
 
 #: Version of this boundary's payload shape.
@@ -139,15 +138,13 @@ class LeaderRpgLayer:
             rng=Random(seed), invoked_aspect=invoked_aspect,
         )
 
-    def describe(self, state: WorldState | None = None) -> dict[str, Any]:
+    def describe(self, state: object | None = None) -> dict[str, Any]:
         """The reserved ``LeaderRPG`` port: a projection, with no join to the world state.
 
         ``state`` is accepted because the port's signature — ``LeaderRPG.describe(state:
         WorldState)`` in :mod:`strategy_game.ports` — requires it, and is **not read**: joining the
-        table to ``WorldState`` is the Gate D decision, and this boundary performs none. Naming the
-        port's own parameter type is this package's **one declared coupling seam** to strategy code;
-        every other module in ``rpg/`` stays free of it, which the layer-independence test enforces
-        by pinning the coupling to exactly this file.
+        table to ``WorldState`` is the Gate D decision, and this boundary performs none. The parameter is intentionally typed as ``object`` to keep the RPG independent of
+        the strategy engine. The implementation never inspects or modifies it.
         """
         return {
             "schema_version": BOUNDARY_SCHEMA_VERSION,
