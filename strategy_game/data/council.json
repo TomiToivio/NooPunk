@@ -335,7 +335,8 @@
         "location_id": "placeholder_district_civic",
         "target_id": "placeholder_mayors_office",
         "quantity": "institutional_access",
-        "authorised_by": "placeholder_principal"
+        "authorised_by": "placeholder_principal",
+        "location_id": "placeholder_district_civic"
       },
       {
         "id": "placeholder_mission_organise",
@@ -344,7 +345,8 @@
         "location_id": "placeholder_district_outer",
         "target_id": "placeholder_volunteers",
         "quantity": "opinion_support",
-        "authorised_by": "placeholder_principal"
+        "authorised_by": "placeholder_principal",
+        "location_id": "placeholder_district_outer"
       },
       {
         "id": "placeholder_mission_acquire",
@@ -353,7 +355,8 @@
         "location_id": "placeholder_district_works",
         "target_id": "placeholder_released_tool",
         "quantity": "membership_resources",
-        "authorised_by": "placeholder_principal"
+        "authorised_by": "placeholder_principal",
+        "location_id": "placeholder_district_works"
       },
       {
         "id": "placeholder_mission_investigate",
@@ -362,7 +365,8 @@
         "location_id": "placeholder_district_hill",
         "target_id": "placeholder_rival_contact",
         "quantity": "discursive_hegemony",
-        "authorised_by": "placeholder_principal"
+        "authorised_by": "placeholder_principal",
+        "location_id": "placeholder_district_hill"
       }
     ],
     "unpursued_quantities": [
