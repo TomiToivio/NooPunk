@@ -462,6 +462,22 @@ Each is a future piece of work, carried by a scoped issue rather than built from
 - [ ] **Playtesting criteria** — engagement per minute, meaningful consequences per turn, clarity of power shifts, replayability, operational cost.
 - [ ] A **discipline check**: the vision re-read against the three-layer prototype, so immediate development stays small.
 
+**Delivered as separate records, and kept non-binding.** These items are research, so they land in
+their own files rather than in this vision, and they decide nothing here:
+
+- [`ISSUE_309_ENGINE_AND_RELEASE_SCOPE.md`](ISSUE_309_ENGINE_AND_RELEASE_SCOPE.md) — the
+  **candidate engines** survey against §7a's hard constraints, and the **release-scope statement**
+  (what S1-a must contain to be shippable, and what is explicitly deferred to S1-b/S1-c/S2/S3). Its
+  engine recommendation is a proposal for the author.
+- [`ISSUE_309_DISTRIBUTION_AND_UGC_GOVERNANCE.md`](ISSUE_309_DISTRIBUTION_AND_UGC_GOVERNANCE.md) —
+  **distribution channels, price, storefront requirements, packaging and platform support**, and the
+  **UGC governance research** (modding, community content licensing, attribution, and how a
+  community contribution meets the NC-SA clean-up obligation).
+
+Neither record selects a licence, a commercial model or a mechanic, and **the MVP size envelope and
+the licence pair therefore stay open** here — the first at S0-A, the second in
+[#421](https://github.com/TomiToivio/NooPunk/issues/421).
+
 ## 10. How this document changes
 
 - **Vision is not commitment.** Nothing here may be cited as approval, as a requirement, or
