@@ -5,8 +5,17 @@ carries it. Nothing here is canon, a mechanic, a name or a ruling: each row is a
 author can answer**. Answering one turns it into a criterion check, an acceptance record, a PR and a
 close.
 
-**Board status (2026-10-13, fourth update).** Three issues open: **#309** (umbrella), **#338**, **#421**
-(licence tracking, created from #309 §9). **#347** closed on the defer-and-close rule — six of its ten
+**Board status (2026-10-13, fifth update).** Two issues open: **#338**, **#421**
+(licence tracking, created from #309 §9). **#309 closed on author direction** — the author asked for it
+by name, which overrides the earlier *"open by design"* note below. Closing it cost nothing because its
+own acceptance criteria are met (it serves as a coherent, reusable north-star vision and is referenced
+throughout the design docs) and all ten of its §8 artifacts now exist as files: engines and the S1
+release scope in `ISSUE_309_ENGINE_AND_RELEASE_SCOPE.md`, distribution and UGC governance in
+`ISSUE_309_DISTRIBUTION_AND_UGC_GOVERNANCE.md`, the vertical-slice pitch, cross-scale event flow and role
+separation in `ISSUE_309_VERTICAL_SLICE_AND_EVENT_FLOW.md`, the playtesting criteria and vision-discipline
+check in `ISSUE_309_PLAYTESTING_AND_DISCIPLINE.md`, and the attribution half of §8 item 7 in
+`docs/ATTRIBUTION_POLICY.md`. What remains of §8 is the author's alone and is carried as row D14 and
+D10 below. **#347** closed on the defer-and-close rule — six of its ten
 criteria are met with measured evidence (including the ten-kind example set and the data-only authoring
 contract), and the four that depend on choosing a renderer are carried as row D13. **#346** closed on the defer-and-close rule — the card layer
 it needed was verified to exist (`faction_cards.py`, four card types, 27 tests OK), and its two rule
@@ -29,6 +38,8 @@ closing them lost nothing.
 | D10 | **Licence selection** — tracked by #421 because nothing carried it. Agents are forbidden to choose a licence or create `LICENSE` / `NOTICE`, so this is the author's alone. | #421, #309 §9 | *pick a licence* |
 | D11 | **The rules gate**, one row because it is one decision: #323's six decisions (D3) plus #346's two rule-dependent criteria — abstract mission resolution, and first-turn resource constraints. `RULEBOOK.md` still says NO RULES APPROVED. | per-stage PRs for both issues | *approve* / *refuse* |
 | D13 | **The renderer decision** — which renderer becomes the playable UI. `docs/INTERFACE_SPIKE.md` records the evaluation and recommends text-first with the browser next over the same payload, keeping Godot as a view; the pick is the author's. | #347's playable UI, Helsinki opening and playtest (criteria 5, 6, 8, 10) | *text* / *browser* / *Godot* |
+| D14 | **Distribution for the indie release**: channels (itch.io / Steam / self-hosted), price including free, storefront requirements, packaging and platform support. §8 item 6. The evaluation lives in `ISSUE_309_DISTRIBUTION_AND_UGC_GOVERNANCE.md`; the choice is the author's. | S1 publishing work | *pick channels + price* |
+| D15 | **#309's §8 item 1 verification**: the vertical-slice pitch in `ISSUE_309_VERTICAL_SLICE_AND_EVENT_FLOW.md` is a pitch, not an approval. Rule on whether the four-press turn it describes is the shape S1-a should build toward. | S1-a's interface work | *yes* / *amend* |
 | D12 | **The #346 canon set**: the cultural-axis choice; NHI contact policy apart from named diplomacy; EFTZ structures; the ARV-by-1981 timeline; two Soviet-program successor factions; breakaway civilizations; the fourfold evidence categories; the Law-of-One political reading and its Confederate Social Memory Complex; Soviet–Confederacy and US–Orion relations; and the Cosmist International set (founder identity, manifesto, Helsinki status, introductory scene). Full list: `ISSUE_346_ACCEPTANCE.md`. | the authored campaign content | *decide in any order* |
 
 ## Rows deferred on closure (kept so the closures are honest)
@@ -47,7 +58,11 @@ closing them lost nothing.
 - **#338** is a *living design diary*: ~90 checkboxes accumulated across many author addenda, most of
   them proposals for author approval. Closing it by deferral would be hollow, so it stays open until
   the author rules on its design or its own gates.
-- **#309** is the umbrella: open by design.
+- **#309** was listed here as *"the umbrella: open by design"*, and that was right until the author asked
+  for it by name on 2026-10-13. Closing it is **not** a deferral: its own acceptance criteria are met
+  (it serves as a coherent, reusable north-star vision, referenced across the design docs), all ten of its
+  §8 artifacts now exist as files, and its only remaining items are author decisions carried as rows D10,
+  D14 and D15. Nothing was lost by closing it, which is the test this section exists to apply.
 
 ## After an answer
 
