@@ -1,0 +1,120 @@
+{
+  "format": "noopunk.strategy_game.agent_ontology",
+  "status": "PROPOSAL - design only. No numeric scale, no causal rule and no exact typology: issue #303 reserves those to the author. No behaviour algorithm is claimed for any kind, and no default LLM dependency is assumed.",
+  "sources": [
+    "#303 Strategy Game genre, agent ecology and tabletop aesthetic",
+    "#295 / #296 / #297 layers and the V1 records on main (docs/design/V1_FACTION_MANAGEMENT.md, docs/design/V1_DISCOURSE_AND_NETWORK.md)",
+    "docs/design/ISSUE_302_COUNTRY_AGNOSTIC_SOCIETY_V0.md (the interpretive-context reading and the proposed Organization/Audience/Coupling records)",
+    "strategy_game/core.py (Leader, Faction, Asset, Location, NetworkEdge, Event, WorldState)",
+    "strategy_game/politics.py (Demand, Signifier, Formation, Frontier, RelationLayer, PoliticalNodeKind)",
+    "strategy_game/docs/INTEGRATION_BOUNDARIES.md"
+  ],
+  "provenance": {
+    "kind": "authored",
+    "source": "issue #303",
+    "note": "Ontology shape authored for #303 as a proposal. It declares which entities are agents and which are interpretive contexts, and it deliberately resolves nothing that the author has reserved."
+  },
+  "terminology": {
+    "warning": "These are candidate simulation agents / representation units for tabletop and eventual software. They are NOT claims that Luhmannian function systems are people or unified agents.",
+    "rule": "An agent may be asked 'what do you do now?'. A context may only be asked 'how does this read?'. The two sets below are disjoint, and the validator fails if they are not."
+  },
+  "common_card_interface": {
+    "note": "Issue #303 asks to explore ONE common interface without requiring all entity types to share one behavioural algorithm. This is the shared shape; behaviour stays per-kind and unclaimed.",
+    "required_fields": ["kind", "identity", "provenance"],
+    "optional_fields": ["relationships", "location_associations", "system_associations", "scenario_tags", "overlap_kind"],
+    "provenance_note": "Every card carries provenance, so an authored scenario input is never mistaken for an observed fact. Absence of provenance stays visibly unknown rather than defaulting to fact.",
+    "behaviour": "No shared behaviour. Sharing a card shape is not sharing an algorithm, and no kind below is given one.",
+    "not_included": [
+      "any numeric scale: capacity, legitimacy, influence and coercion remain conceptually separable axes awaiting author-approved scales",
+      "a default LLM requirement: population and area cards must be usable with scripted or table-driven responses"
+    ]
+  },
+  "agent_kinds": [
+    {
+      "id": "population_segment",
+      "label": "Population-segment agent / constituency card",
+      "represents": "a heterogeneous, overlapping and mutable social identity - for example pensioners, feminists, fishermen, religious communities, labour groups, conspiracy movements or organised drug-dealing networks",
+      "is_agent": true,
+      "not": "not a timeless essentialist personality template",
+      "notes": "Extremist or criminal groups may appear for descriptive simulation, not glamorisation or endorsement. Segment membership overlaps, so a segment is never a partition of the population.",
+      "aggregation_rule": "segments overlap and may be claimed by several factions at once; support is never exclusively assigned",
+      "double_counting_guard": "a segment is counted at segment level only; when it also belongs to an area, the area records the bundle and not the same support again"
+    },
+    {
+      "id": "location",
+      "label": "Location agent / area card",
+      "represents": "a bundle of inhabitants, local government, businesses and organisations - for example a capital city, port city, small city, countryside or coast",
+      "is_agent": true,
+      "not": "not a sentient place, and not a fixed regional stereotype",
+      "notes": "An area card represents a bundle. A local constituency belongs to an area but may also communicate across borders, so areas and segments are cross-cutting rather than nested.",
+      "aggregation_rule": "an area is a bundle of the organisations and inhabitants within it, and it acts through them",
+      "double_counting_guard": "political support is attributed to the segment OR to the area as a bundle, never to both as the same support"
+    },
+    {
+      "id": "organization",
+      "label": "Organization and institution agent / organization card",
+      "represents": "a bounded organisation such as a capitalist corporation, a police department, a university, a broadcaster, a regulator, a court or a civil-society organisation",
+      "is_agent": true,
+      "not": "not a function system: an organisation participates in one or more function systems without being one",
+      "notes": "This kind is the proposed Organization record of ISSUE_302_COUNTRY_AGNOSTIC_SOCIETY_V0.md, seen from the agent side: an organisation is exactly the kind of entity that can make a bounded decision while participating in several systems at once.",
+      "aggregation_rule": "an organisation holds resources and makes bounded decisions within its own mandate",
+      "double_counting_guard": "an organisation's participation in several systems is recorded as several associations on one card, not as several organisations"
+    },
+    {
+      "id": "faction_leader",
+      "label": "Faction and leader agent",
+      "represents": "a faction and its named leaders, inheriting from #295/#296 and already carried by core.Leader and core.Faction",
+      "is_agent": true,
+      "not": "not a controller of a population: a faction mobilises support and articulates demands, and does not mechanically own a segment",
+      "notes": "This kind reuses core.Leader/core.Faction and the four-seat economy of #323 rather than restating them; the leader roster for Ukweli is the #326 artefact.",
+      "aggregation_rule": "a faction acts only through named leaders, per the one-leader-per-active-move rule",
+      "double_counting_guard": "an independent patron is not automatically a council seat and therefore not an extra action slot"
+    }
+  ],
+  "interpretive_contexts": [
+    {
+      "id": "function_systems",
+      "label": "Luhmannian function systems",
+      "is_agent": false,
+      "what_it_is": "politics, law, economy, science, media and similar systems, understood as interpretive operating contexts",
+      "why_not_an_agent": "a function system has no interests, no resources and no turn. Giving it a card and a move would be the anthropomorphism #303 forbids.",
+      "how_it_acts": "only through organizations and people, who carry its code and reproduce it by acting"
+    },
+    {
+      "id": "communication_networks",
+      "label": "Castellsian communication networks",
+      "is_agent": false,
+      "what_it_is": "ties that carry communication, represented as labelled NetworkEdge entries in the single multiplex graph",
+      "why_not_an_agent": "a tie is a channel and nothing else: reach is a shape, not an intention",
+      "how_it_acts": "it distributes what is carried; it does not decide what to carry"
+    },
+    {
+      "id": "discourse",
+      "label": "Laclau-inspired discourse",
+      "is_agent": false,
+      "what_it_is": "competing signifiers, demands, formations and frontiers, carried by politics.py records",
+      "why_not_an_agent": "a discourse proposes alignments; it does not pursue them. Only factions articulate.",
+      "how_it_acts": "through articulation by factions, subject to separately approved toy rules"
+    }
+  ],
+  "overlap_and_aggregation": {
+    "note": "The issue's explicit worry: avoid double-counting the same political support at segment and location level.",
+    "rules": [
+      "segments and areas are cross-cutting, not a hierarchy",
+      "one support is attributed once, at whichever level the scenario declares",
+      "an organization participating in several function systems is one card with several system associations",
+      "a leader belongs to a faction and may hold at most one portfolio, per #323"
+    ]
+  },
+  "vocabulary_discipline": {
+    "no_third_spelling": "docs/design/V1_DISCOURSE_AND_NETWORK.md section 2.3 forbids inventing a synonym for the unclassified signifier role. This ontology therefore uses politics.py's 'unspecified' when it means that enum member and says 'absent' when it means no value was recorded, and introduces no third term.",
+    "unresolved_fork": "politics.py and political.py are two vocabularies for the same layer and the choice is routed to the author (V1 section 2.2). This ontology assumes neither beyond what core.WorldState already carries, and does not resolve the fork."
+  },
+  "pending_author_choices": [
+    "Which numeric scales, if any, are approved - none are proposed here.",
+    "Whether population and area agents are scripted aggregates or independent actors; the issue says decide after prototypes.",
+    "Whether the Organization record of #302 is adopted, which would make agent kind 'organization' a first-class stored record rather than a card kind.",
+    "Whether the frontier stays a node or becomes an edge, as V1 section 2.2 routes.",
+    "Whether exact typologies of regime are adopted - this record deliberately offers none."
+  ]
+}
