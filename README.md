@@ -1,5 +1,15 @@
 # NoöPunk
 
+## Before NoöPunk: Tommy Pilgrim and the 1974 download
+
+In **1974**, at a **Hawkwind concert**, a left-wing science-fiction writer named **Tommy Pilgrim** took LSD and experienced what he described as a transmission from **VALIS**. Amid the space rock, he believed he had received a staggering download of humanity's future: artificial minds, political upheavals, alien encounters, cybernetic bodies, psychic phenomena, and a civilization struggling to understand what consciousness even was.
+
+Pilgrim wrote it down as ***NoöPunk***, a psychedelic, radical, occasionally ridiculous work of social science fiction. He could never be certain whether his visions were genuine precognition, symbolic misreadings, or glimpses of a neighboring timeline. His technological descriptions sometimes resembled the hardware of 1974 more than the machines they seemed to predict. Yet, decade after decade, uncomfortable numbers of his supposedly fictional events began to look familiar.
+
+The novel became a cult classic, then inspired films, television, tabletop and computer games, and an entire NoöPunk subculture. **Pilgrim is still alive in Helsinki**, now a literary celebrity studied by scholars and courted by parapsychologists. Whether his extraordinary foresight came from VALIS, chance, or something stranger remains an open question *inside the fiction*.
+
+**And this is where the book ends and the scenario begins.** The real-world NoöPunk project uses Pilgrim's imaginary 1974 future history as a **presentation and narrative frame**, not as evidence of actual precognition and not as permission to rewrite its underlying simulation or canon. The opening account summarizes the established premise; Tommy Pilgrim's full literary story remains reserved for the project's author. [Design background: issue #447](https://github.com/TomiToivio/NooPunk/issues/447).
+
 **NoöPunk = Noösphere + Cyberpunk.**
 
 NoöPunk is an experimental **computer RPG and social simulation** set in **20XX**, using an **independent NoöPunk rules system**, a deterministic Python RPG kernel, and **Google DeepMind Concordia** for optional LLM-driven agents and narration. Earth still exists. Transhuman technology is already here. AGI, cyborgification, NHI contact, psionics, panpsychism, and the emerging Noösphere are destabilizing the old world at the same time.
@@ -68,7 +78,7 @@ default register, with horror as an occasional note rather than the premise.
 > **Positioning note.** The audience-fit comparisons above are a **positioning hypothesis**,
 > not proven market data. NoöPunk claims no affiliation with, or endorsement by, any game,
 > show or publisher named here — they are comparisons, not licenses. See the licensing section
-> below for the one real provenance obligation (Eclipse Phase).
+> below for licensing and attribution requirements for adapted rules.
 
 ## NoöPunk in two books: the paradigm shift
 
@@ -277,6 +287,9 @@ agent.observe(result)
 Important characters, factions, and institutions may use LLM cognition. Simpler background NPCs can use deterministic or lightweight scripted behaviour where rich language interaction is unnecessary.
 
 ## Rules influences
+
+NoöPunk's tabletop-style mechanics are **homebrewed, modified and reskinned**, drawing on **Fate Core**, **Transhumanity's Fate** and **Eclipse Phase**. Some narrative procedures are **Powered by the Apocalypse (PbtA)-influenced**, meaning inspired by *Apocalypse World*'s approach to moves and consequences, **not** copied or recycled from that game. NoöPunk is not set in the Eclipse Phase universe: its scenario, timeline, lore, factions, NHI and PSI are original and different. The precise implementation and source attributions vary between the legacy RPG and the newer strategy/RPG crossover, whose mechanics remain subject to approval. Fate Core's CC BY 3.0 terms do not cancel the CC BY-NC-SA obligations on material adapted from Transhumanity's Fate or Eclipse Phase; see [the attribution policy](docs/ATTRIBUTION_POLICY.md) and [design issue #447](https://github.com/TomiToivio/NooPunk/issues/447).
+
 
 NoöPunk is an independent RPG. External games are **influences rather than compatibility targets**.
 
