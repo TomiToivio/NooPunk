@@ -9,6 +9,7 @@ author's boundaries as contracts.
 from __future__ import annotations
 
 import json
+import pathlib
 import unittest
 from pathlib import Path
 
@@ -111,10 +112,14 @@ class BoundaryTests(unittest.TestCase):
                         self.fail(f"{name} appears at {path} in the 2045 discourse record")
 
     def test_the_extremist_position_is_marked_not_endorsed(self) -> None:
+        """The runtime data must carry the marking, not only the register prose."""
         true_humans = next(p for p in self.data["parties"] if p["id"] == "true_humans")
-        policy = json.dumps(true_humans, ensure_ascii=False).lower()
-        self.assertIn("not endorsed", policy)
-        self.assertIn("fictional", policy)
+        marking = str(true_humans.get("depicted_as", "")).lower()
+        self.assertIn("not endorsed", marking)
+        self.assertIn("fictional", marking)
+        self.assertIn("extermination", str(true_humans.get("policy", "")).lower())
+        register = pathlib.Path("data/world/un_parties.yaml").read_text(encoding="utf-8").lower()
+        self.assertIn("not endorsed", register, "the register must carry the same marking")
 
 
 if __name__ == "__main__":
