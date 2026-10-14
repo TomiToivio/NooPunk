@@ -107,6 +107,24 @@ The issue names this as **the literary model for the framing device**, and a fra
 
 **Left to the author, deliberately:** whether *The Iron Dream* also **joins the locked in-universe hierarchy** in §2.2 (or takes a fourth slot beside PKD, Wilson and Le Guin). Its date permits it; §2.2's own rule is to include only the named set, so this document does not add it.
 
+### 3.5 The naming anachronism — the one word 1974 could not have
+
+§3.1 requires that post-1974 material be **marked as such**. There is one case where the project's own founding word violates that rule, and it is worth naming precisely rather than leaving to chance.
+
+**The case.** *VALIS* — Philip K. Dick's novel — was published in **1981**. Pilgrim's download is **1974**. The name therefore **cannot be in the 1974 edition's vocabulary**: a man in 1974 does not have a 1981 novel's title for an experience he has not yet heard of. This is not a quibble about taste; it is the same class of error as citing *The Man Who Fell to Earth* (1976) as a pre-download influence.
+
+**Why it is worth keeping rather than deleting.** The project's canon ruling (2026-09-05) makes the anachronism **evidence, not a bug**: the name's absence from the 1974 edition and its presence in later ones is the visible trace of the **editions negotiating over the text** — the Mandela-edition logic this ticket already uses for timeline slippage. Removing the tension would flatten a device into a mistake.
+
+**The display convention.**
+
+| Layer | What it calls the source |
+| --- | --- |
+| **Pilgrim, 1974 edition** | the light, the signal, the beam, the voice — *his own 1974 vocabulary*. Never "VALIS". |
+| **Later editions, commentary, fan apparatus, this document's framing** | **"VALIS"**, correctly dated **1981**, marked as a later edition's word for what he received. |
+| **Simulation fact** | unchanged. The source of the download is exactly as unresolved as §3.2 says, in every edition. |
+
+**One thing this document does not do.** `RULEBOOK.md` §1.4 — the Tommy Pilgrim introduction — currently has **1974** Pilgrim receiving *"a vast download from VALIS"*. Under §3.1's own rule that word requires marking, and under this project's standing rule **the narrative text is the author's to write and an agent's to read, so this specification does not rewrite it**. It records the requirement, the convention and the reason. The wording is the author's call. Note that the rulebook's own bibliography already dates *VALIS* to **1981 (Bantam)**, so the tension is **already recorded inside the document** rather than introduced here.
+
 ---
 
 ## 4. The boundary, stated once
