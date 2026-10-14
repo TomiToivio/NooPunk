@@ -19,6 +19,8 @@ Reserved: organizational assets, faction management, strategic operations, resou
 
 **Global factions (author canon, #328/#329):** the seven paradigm factions and their evidence model are recorded in [docs/GLOBAL_FACTIONS.md](docs/GLOBAL_FACTIONS.md) and [`data/global_factions.json`](data/global_factions.json). Setting canon only — the roster defines no mechanics.
 
+**UN parliamentary parties (#470):** the four 2045 UN parties authored on 2026-10-14 live in [`../data/world/un_parties.yaml`](../data/world/un_parties.yaml) (roster, legacy mapping, the pending succession questions), with paradigm stances and qualitative six-quantity profiles in [`data/global_factions.json`](data/global_factions.json), Reality Tunnel and discourse readings in [`data/un_political_discourse.json`](data/un_political_discourse.json), the same event read four ways in [`data/paradigm_event_seeds.json`](data/paradigm_event_seeds.json), and a read-only reader in [`paradigm_readings.py`](paradigm_readings.py). **Setting canon only: this adds no rules.** No magnitude, effect, difficulty, cost, cap or clock is attached to any of it, the six quantities stay six distinct things with no "influence" scalar (docs/design/NOOPUNK_GLOBAL.md §7), and whether the four sit in the paradigm register at all is an open author decision (docs/design/AUTHOR_DECISION_QUEUE.md D9/D17). Design record: [docs/UN_PARTIES_REALITY_TUNNELS.md](docs/UN_PARTIES_REALITY_TUNNELS.md).
+
 ## Interfaces and integration
 Rules must be authored independently for each layer, then explicitly approved before software implementation. The world-map interface displays abstract state and does not itself determine political, social or tactical outcomes.
 

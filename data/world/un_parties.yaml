@@ -1,6 +1,25 @@
-# Default four UN parliamentary parties, issue #470 (2045).
-# Other paradigmatic movements and foreign NHI powers remain separate actors.
-# Fictional party beliefs and allegations are not verified world-state facts.
+# Default four UN parliamentary parties, 2045 (issues #470, #118).
+#
+# PROVENANCE. The four entries below are the four 20XX-era UN parliamentary blocs recorded by
+# issue #118 (commit 2c77a3d, "Complete NHI lore, Disclosure model, and UN political blocs"),
+# whose prose counterpart is RULEBOOK.md section 42.1-42.4. The four author names are Tomi's own
+# wording of 2026-10-14 (issue #470, "Design decision (2026-10-15): Four UN political factions")
+# and they AMEND this file in place: every entry keeps the legacy name it succeeds under
+# `legacy_name`, so the #118 record stays readable instead of being overwritten. Fields of the
+# old entries that the author did not contradict are kept under `legacy_*` keys rather than
+# dropped; the author's new material is kept under `author_*` keys.
+#
+# REGISTER. This file is the UN parliamentary party register and is authoritative for the roster:
+# party names, positions and legacy mapping. Paradigm stances and the qualitative six-quantity
+# profiles live in strategy_game/data/global_factions.json; the per-party Reality Tunnel and
+# discourse readings live in strategy_game/data/un_political_discourse.json. Whether these four
+# parties belong in the paradigm register at all is the open 4 / 7 / 11 question
+# (docs/design/STRUCTURAL_FORKS_AND_DECISIONS.md fork 3, docs/design/AUTHOR_DECISION_QUEUE.md rows
+# D9 and D17); this file does not decide it.
+#
+# EPISTEMIC BOUNDARY. A party's belief, and an allegation made about a party, are that faction's
+# in-world position. They are not verified world-state facts: suspected ASI or Grey control,
+# Hybrid infiltration and Confederacy benevolence all remain unresolved in play.
 scenario_start_year: 2045
 background_event_year: 20XX
 register: un_parliamentary_parties
@@ -8,41 +27,123 @@ parties:
   - id: libertarian_accelerationist
     name: Libertarian Accelerationist Party
     legacy_name: Libertarian Party
+    legacy_source: "#118 (commit 2c77a3d); RULEBOOK.md section 42.2"
     position: right
     governing: false
     support: electorally_marginal
+    support_note: Author's own words, kept verbatim — "not very popular despite massive corporate funding".
     resources: megacorporate_funding
-    themes: [free_markets, private_property, accelerationism, extraterrestrial_special_economic_zones, accelerated_asi_research]
-    allegation: Suspected hostile ASI or Grey mind control and hybrid infiltration; unverified.
+    legacy_themes:
+      - free_markets
+      - private_property
+      - accelerationism
+      - minarchism
+      - extraterrestrial_trade
+    author_themes:
+      - extraterrestrial_special_economic_zones
+      - accelerated_asi_research
+    theme_note: >
+      The legacy themes are kept in full — the author contradicted none of them. The two new planks
+      are recorded separately, and `extraterrestrial_special_economic_zones` is noted as the
+      author's wording where canon says only "Extraterrestrial Economic Zones".
+    allegation: >
+      Suspected of being controlled by a malevolent ASI or by Grey mind control, and of being
+      infiltrated by Hybrids. Recorded as an in-world allegation about the party, not as an
+      established fact; canon also warns that not every Accelerationist is infiltrated.
   - id: true_humans
     name: True Humans Party
     legacy_name: Bioconservatives
+    legacy_source: "#118 (commit 2c77a3d); RULEBOOK.md section 42.1"
     position: far_right
     governing: false
-    tendencies:
-      - Far-right populists
+    legacy_tendencies:
+      - Hard-core Bioconservatives
+      - Intellectual X-Risk Doomists
+      - Old Far Right / Populists
+    author_composition:
+      - Far-right populists united with doomerism
       - Religious fundamentalists
-      - Intellectual existential-risk and anti-technology doomers
-    policy: Opposes all NHI and advocates their extermination; a fictional extremist party position, not endorsed.
+      - Intellectually oriented existential-risk and anti-technology doomers
+    policy: >
+      Opposes all NHI and advocates their extermination. This is the fictional faction's own
+      in-world plank, recorded as authored canon: a fictional extremist position, not endorsed,
+      and not a statement about any real person or programme.
+    style_attributions_note: >
+      The author names the Unabomber, Pentti Linkola and Eliezer Yudkowsky as style references for
+      strands of this tendency only (AGENTS.md section 6.1: idea attribution, never actors inside
+      fictional 20XX). How to file them is an author question and is deliberately not filed here.
   - id: unity_security_stability
     name: Unity, Security and Stability Party
     legacy_name: United Earth Social Democratic Party
+    legacy_source: "#118 (commit 2c77a3d); RULEBOOK.md section 42.3"
     legacy_mapping_status: succession_unresolved
-    position: governing_continuity
+    position: centre_left
+    position_status: pending_author_review
+    position_note: >
+      PENDING AUTHOR NOTE, not resolved here. The legacy entry is centre_left (welfare state,
+      ecology, progressive taxation, redistribution, megacorporate regulation, multilateralism),
+      while the author's 2026-10-14 description reads as an authoritarian-conservative governing
+      party: strong security and defence, seen as authoritarian and "painfully conservative", and
+      unable to react to the paradigm shifts. Whether this is a renaming, a recharacterisation, an
+      evolution of the same formation, or a different party occupying the legacy slot is the
+      author's call (issue #470 comment of 2026-10-14, question 2a). The earlier revision of this
+      file recorded `position: governing_continuity`, which quietly answered that question; the
+      legacy value is restored here and the tension is left visible instead.
     governing: true
     support: majority
-    themes: [unity, security, stability, defence, conditional_diplomacy, institutional_continuity]
-    criticisms: [authoritarianism, conservatism, failure_to_adapt]
+    legacy_governing_record: won every UN parliamentary and presidential election so far
+    legacy_themes:
+      - welfare_state
+      - ecology
+      - progressive_taxation
+      - redistribution
+      - megacorporate_regulation
+      - multilateralism
+    author_themes:
+      - unity
+      - security
+      - stability
+      - defence
+      - conditional_diplomacy
+    criticisms:
+      - authoritarianism
+      - conservatism
+      - failure_to_adapt
+    strengths_weaknesses_note: >
+      Author: functioning institutions and broad everyday legitimacy; weakness is inertia and
+      power concentration. Strong on security and defence, but diplomatic solutions remain open.
   - id: noosphere
     name: The Noösphere
     legacy_name: The Multitude
+    legacy_source: "#118 (commit 2c77a3d); RULEBOOK.md section 42.4"
     legacy_mapping_status: merger_or_succession_unresolved
-    position: green_left
+    legacy_tendencies:
+      - Autonomist / anarchist / post-workerist
+      - Marxist / Marxist-Leninist
+    position: far_left
     governing: false
-    major_constituent: Reformed Chinese Communist Party
+    majority_player: Reformed Chinese Communist Party
     ideology: Taoist-Maoist cyborg multitude
-    themes: [ecology, common, cyborg_multitude, social_memory_complex, service_to_others, confederacy_accession]
-    conviction: The Confederacy represents benevolent cosmist communism; this is the party belief.
+    author_themes:
+      - ecology
+      - commons
+      - cyborg_multitude
+      - social_memory_complex
+      - service_to_others
+      - confederacy_accession
+    conviction: >
+      Convinced that the Confederacy embodies cosmist communism in its principles of Service to
+      Others and Social Memory Complex, and seeks to join it, while holding that the Noösphere and
+      the biosphere of Earth must survive and evolve. Recorded as the party's own conviction, not
+      as verified fact about the Confederacy's motives.
+    legacy_mapping_status_note: >
+      The legacy entry's two tendencies are kept: the author did not contradict them, and the
+      design record reads them as the Green/Left axis of the new coalition, with the reformed CCP
+      as its majority player. Whether the Noösphere is the Multitude renamed and re-topped, or a
+      successor coalition, is the author's call (issue #470 comment of 2026-10-14, question 2b).
     reference: https://github.com/TomiToivio/Panpsychic_Cyborg_Multitude
+
+# The roster is a starting four, not a cap. No list length is set by any approved rule.
 open_for_future_parties: true
 extra_parliamentary_factions: true
+roster_size_status: open_pending_author_review
