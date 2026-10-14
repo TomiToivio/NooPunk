@@ -39,3 +39,18 @@ provenance is PR #451.
 2. **Whether *The Iron Dream* also joins the locked in-universe hierarchy** in the spec's §2.2 (a fourth slot beside PKD, Wilson and Le Guin). Its 1972 date permits it; that section's rule is to include only the named set, so no document has added it. *Smallest useful answer:* accept / decline.
 
 Neither question gates a criterion above, which is why they are deferrals rather than blockers.
+
+---
+
+## Addendum, same day: the issue grew after this record was written
+
+This record audits the issue as it stood at **27,745 characters**, which is the revision the five commits above were produced against. **The body then grew to 39,599 characters**, adding four sections and seven further acceptance checks:
+
+- ***A 1974 film that accurately predicts 2026*** — the governing maxim **"NoöPunk looks as if it was MADE in the seventies, not SET in the seventies"**, with the timeline-slip rule that divergences stay rare, identified, minor and non-cascading;
+- ***Visual art direction for later game graphics and UI*** — the comics/graphic-art references added to the hierarchy (**Mœbius**; **Christin and Mézières' *Valérian et Laureline***) with *Zardoz*'s position as #1 unchanged, plus the visual vocabulary, six concrete graphics concepts (a punch-card LLM interface, discourse mapping, NHI contact, a PSI laboratory, the faction board and event cards, map fieldwork) and the production constraints;
+- ***Writing style: precognitive science fiction written/filmed in the seventies*** — period futurology and prose, the framing convention contrasting a "Pilgrim, 1974 edition" excerpt with an "Editorial/Simulation note, 2026", and the sound direction;
+- ***1970s state of the art: grounded reference shelf*** — six period sources (Toffler; Meadows et al.; Hynek; Vallée; Targ and Puthoff; Marks and Kammann) with their dates and their epistemic cautions, including the pre/post-1974 chronology that separates what Pilgrim could have read from later commentary.
+
+**This record does not audit those four sections and does not claim their seven checks.** They are being delivered by **PR #457** (`pilgrim-spec-447-v3`), which re-applied on top of #451 and #452 and preserved this document's §3.4 verbatim rather than losing it in a rewrite.
+
+**The close this record accompanied was reversed.** The issue was closed and then **reopened**, because a closure labelled *completed* over a revision nobody had audited is a false record — the failure mode this addendum exists to prevent. Extend the addendum against the merged #457 before closing the issue again, and state the revision in characters, since that is what changed.
