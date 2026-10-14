@@ -2,7 +2,7 @@
 
 **Status: PROPOSAL. No rule, number, action list, dice procedure or capability is approved by this document.** `strategy_game/RULEBOOK.md` still reads **NO RULES APPROVED**; nothing here is written into it and no code changed. Tomi decides.
 
-**What this edition adds.** The previous edition reconciled the four consensus proposals. This one does what the brief asked and the four proposals did not: it **reads the two SRDs** and grounds the reskin in what those rules actually say. Everything quoted below was fetched and read this session; where a claim could not be verified it is marked rather than assumed.
+**What this edition adds.** The previous edition reconciled the four consensus proposals and read the two SRDs. **This edition folds in the four corrections raised afterwards, and reconciles this document with the second landed document** (`ISSUE_461_RESKIN_SPEC.md`), so the two stop disagreeing in public. One correction **re-shapes an open decision** rather than merely fixing a citation: a mission's hardness is not something the author has to invent, because Fate already defines the structures (§5, Fork 4). Everything quoted below was fetched and read; where a claim could not be verified it is marked rather than assumed.
 
 ---
 
@@ -28,7 +28,10 @@ The four proposals are one design written four times; there is no sixth architec
 1. **"FORCED BY ARITHMETIC" was too strong.** The arithmetic proves that a **difficulty number cannot express a very hard mission** (P(success) = `0.0000` at skill − difficulty ≤ −4; ~four informative ladder steps). It does **not** prove a clock is mandatory — gates, opposed tests and staging are legitimate. **Some** device beyond the ladder is required; which device is the author's, and no fixed N-segment clock is pre-approved.
 2. **The tempo table is an upper bound, not a forecast** — it assumes every character spends every order on the same clock at equal odds.
 
-One refinement both imply: **Fate's margin of 0 is a tie — success at a minor cost, not failure** — so clean-success and not-failing probability must stay distinct. The verifier fails if the disproven wording survives.
+3. **The companion landed document counts its own skill list wrong.** `ISSUE_461_RESKIN_SPEC.md` §2.2 says *"a nine-skill list"* while enumerating **eleven**: Investigate, Research, Notice, Empathy, Athletics, Infiltration, Negotiate, Deceive, Physique, Will, Psi — eleven names under six aptitude families. The count is corrected here; the **list itself remains unapproved**, and its acceptance or amendment is Tomi's.
+4. **A chassis field must be its own — `form` is not it.** The same document's §2.4 reads *"NoöPunk already carries `form` in the card ontology … the reskin is a rename, not a new layer"*, and §2.9 turns that into *"a chassis `form` gate"* for the psi substrate rule. **`form` on `main` is the NHI codex taxonomy**: `characters.py` states it is *"the codex `form` (species / polity / avatar / individual / vessel_or_technology / mythonym)"*, and those are exactly the values in `data/codex.json`. Reusing it for a character's body would hang a **psionic** permission on an **NHI classification**, equating a chassis with an ontology value. **The design intent is adopted — a synthetic chassis cannot use psi competences, and the body grants permission rather than arithmetic — but it needs its own field or card type, and names are Tomi's.**
+
+One refinement all four imply: **Fate's margin of 0 is a tie — success at a minor cost, not failure** — so clean-success and not-failing probability must stay distinct. The verifier fails if the disproven wording survives.
 
 ## 3. `council.json` already carries ten author decisions
 
@@ -62,7 +65,7 @@ Read this session. Each row is **adopt / reskin / refuse**, with the reason. The
 
 **★ The find, and it is a gap neither system fills alone.** EP has **superior failure** (33/66) and a **retry penalty**; Fate Core has neither — its failure is simply failure, and nothing prices a second attempt. **Those two are the crossover's genuinely missing failure semantics**, and they land squarely on the author's own pending row **`failure_effect`**. This is the first time the thread can point at *where* failure handling should come from rather than only that it is open.
 
-**Pools — and the metacurrency collision.** EP 2e runs **four pools**: **Insight** (mental: COG, INT), **Moxie** (social: SAV, WIL, also rep and infection tests), **Vigor** (physical: REF, SOM), and **Flex** (wild-card, any test *and* narrative control). Spend options, verified: ignore all modifiers; **+20 to the target**; **flip-flop the d100** (83 becomes 38); upgrade a success to superior; downgrade a critical failure; or an ongoing +5/+10 to linked skills. *"Unless otherwise noted, only 1 pool point may be spent per test."* And crucially, **Pools are a morph stat** — *"Your morph provides you with pools."*
+**Pools — and the metacurrency collision.** EP 2e runs **four pools**: **Insight** (mental: COG, INT), **Moxie** (social: SAV, WIL, also rep and infection tests), **Vigor** (physical: REF, SOM), and **Flex** (wild-card, any test *and* narrative control). Spend options, verified: ignore all modifiers; **+20 to the target**; **flip-flop the d100** (83 becomes 38); upgrade a success to superior; downgrade a critical failure; or an ongoing +5/+10 to linked skills. *"Unless otherwise noted, only 1 pool point may be spent per test."* And crucially, **Pools are a morph stat** — *"Your morph provides you with pools."* (page: **04/01 Character Stats**, not the Pools page — recorded so the next reader does not hunt for it.)
 
 **The collision is real and must be decided:** Fate already has **Fate points** (invoke for +2 or reroll; compels; refresh), and `rpg/RULEBOOK.md` already specifies them (*"at least three Fate points at session start"*). **Two metacurrencies in one kernel double the economy.** The reskin is clean and I recommend it: **keep Fate points as the only metacurrency**, and read EP's pool options as *flavours of an invoke* — EP's "+20 to the target" **is** Fate's "+2", and EP's "flip-flop" has **no 4dF analogue** (four Fate dice cannot be flip-flopped), so it is either **refused** or mapped to Fate's **reroll**, which the approved rulebook already grants. EP's own cap — one pool point per test — is the precedent for one invoke's worth of stacking per check.
 
@@ -88,7 +91,11 @@ The Fate Core SRD page I read states its own licence — *Creative Commons Attri
 
 **Fork 3 — the MVP is one gated check per order.** *Recommended:* one order → one bounded resolution → one applied outcome, with an optional scene that narrates it and grants nothing; staged missions deferred. Nothing in the repository reads a clock today. **This does not contradict §2's correction** — for a genuinely hard undertaking something beyond the ladder will be needed, and that is `mission_resolution`'s call.
 
-**On all three the recommendation is not the decision.**
+**Fork 4 — a mission's hardness is a choice among structures Fate already defines, not a device to invent.** *Recommended:* the opening of the SRD chapter is the licence — *"Most of the time, a single skill roll should be enough … Sometimes, however, you'll be in a situation where you're doing something really dramatic and interesting … it's a good idea to zoom in on the action and use multiple skill rolls."* The chapter then names **three** ways to zoom in: a **challenge** (*"a series of overcome actions … to resolve an especially complicated or dynamic situation"*), a **contest** (two or more characters racing to a goal), and a **conflict** (mutual harm, resolved with stress and consequences). With the plain overcome roll that is **four structures**, and the choice among them is `mission_resolution`.
+
+**This replaces the "some device beyond the ladder is required" framing with something cheaper and stronger.** §2's arithmetic proved only that a *difficulty number* cannot express a sufficiently hard undertaking; it follows that a single overcome roll cannot either — but a **challenge is precisely the answer**, because "too hard for one number" is what it exists to resolve: several rolls, each possibly on a different skill. So the author is not being asked to author a structure. He is being asked **which existing structure a mission uses**, and the arithmetic stops being load-bearing.
+
+**On all four the recommendation is not the decision.**
 
 ## 6. The decision list
 
@@ -100,13 +107,14 @@ The Fate Core SRD page I read states its own licence — *Creative Commons Attri
 | --- | --- | --- |
 | 1 | **The board: gate or modifier** | not in the ten; *"gate vs modify — never both"* |
 | 2 | **Does movement always consume the order?** | raised downstream; no row exists |
-| 3 | **Clock length**, if any | follows from `mission_resolution`, only if a clock is chosen |
+| 3 | **Which Fate structure a mission uses** — single overcome roll, **challenge**, **contest**, or **conflict** — and the clock length only if a clock follows | re-shaped by §5 Fork 4: this is a choice among existing SRD structures, not an invented device |
 | 4 | **Do scene consequences persist into the same turn's mission?** | recommendation: yes — one clock, one turn, one record |
 | 5 | **Zoom versus prolonged operation; are refused orders replaced?** | recommendation: zoom only; refused orders are lost |
 | 6 | **★ One metacurrency: keep Fate points and refuse EP's pools** — or run both | §4.2: EP's four pools collide with the approved Fate points |
 | 7 | **★ Is the capability gate a stunt, with refresh as its cost?** | §4.1: Fate's own "one character is the doctor" technique plus the refresh price |
 | 8 | **★ Does the crossover want superior/failure severity and a retry price at all?** | §4.2: EP has both; Fate has neither — lands on `failure_effect` |
 | 9 | **★ Is character generation a five-or-six-step reduction of EP's thirteen, on the existing card?** | §4.2; the brief's "simplify further" and the "compact sheet" criterion |
+| 10 | **★ Does the capability gate require a GM-approved stunt, or does the `competence` tag alone refuse an order at declaration time?** | the two landed documents propose different mechanisms for one thing: this document's §4.1 (a **stunt**, priced in **refresh**) and `ISSUE_461_RESKIN_SPEC.md` §2.5 (a **typed competence field**). They reconcile cleanly on one reading — **the tag is the bookkeeping, the stunt is the mechanism, refresh is the price** — in which case the only real question is whether a tag alone can refuse at declaration, or whether GM-approved stunt acquisition is the stricter requirement |
 
 **Decisions 6–9 are new to the thread** and come only from reading the SRDs. Decision 7 is the one I would call the most valuable, because it **deletes** a subsystem the four proposals were designing: the SRD already has the mechanism and the price.
 
