@@ -5,7 +5,7 @@
   "issue": 232,
   "source": "RULEBOOK.md",
   "$only_edit": "The navigation block linking this index. Never the body.",
-  "source_sha256": "6c7fbda1c4a3179e624f3f11d8066b24216842036922772bc8ce19001cfbf1db",
+  "source_sha256": "b67ba3171ba540c9655a770e6513f6ea0111fdfdac66c3043155846fd915f6c3",
   "appendix_marker": "# Extended canon and reference material",
   "section_count": 63,
   "parts": {
@@ -510,8 +510,8 @@
           "kind": "appendix",
           "number": 35,
           "heading": "## 35. Sources, recommended reading, and influences",
-          "body_sha256": "6799c1b9f489a87fdbdc594320fab56a8e08cfefc3ca0102815b36e34e6138a9",
-          "body_lines": 235
+          "body_sha256": "579f73af0af7ef6bfed0623fd4acd5b1da861f856e3277b57fd121727fe5344a",
+          "body_lines": 257
         },
         {
           "kind": "appendix",
