@@ -20,7 +20,66 @@
         "Can alien actors bypass labor protections?"
       ],
       "epistemic_caution": "The proposal remains a political demand, not established NHI consent or an enforceable treaty.",
-      "mechanical_effects": []
+      "mechanical_effects": [],
+      "faction_readings": {
+        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "business, not politics: whoever holds an extraterrestrial zone holds the future.",
+            "counts_as_evidence": "signed contracts, the investors' money, the buyers at the table.",
+            "trusts": "its funders, its corporate counsel, its NHI trade partners.",
+            "does": "lobbies Ukweli for Extraterrestrial Special Economic Zones, and against UN and member-state market control.",
+            "justifies_with": "freedom of contract as the road to human abundance.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.confederacy_contact"
+          },
+          {
+            "faction": "true_humans",
+            "reads": "a bridgehead being sold as a lease: extraterrestrial firms with privileges are sovereignty leaving the room.",
+            "counts_as_evidence": "the pattern of every prior human arrangement with a stronger party.",
+            "trusts": "its national parties, its religious authorities, its own doomer economists.",
+            "does": "campaigns against the zone, names the funders, demands a ban on extraterrestrial corporate presence.",
+            "justifies_with": "human survival and sovereignty over its own economy.",
+            "epistemic_status": "propaganda",
+            "epistemic_note": "The objection that a concession can be sovereign suicide is arguable; asserted as established fact about the buyers' intent, it is a demand carried by a pattern rather than by adjudicated evidence.",
+            "basis": "un_political_discourse.json#true_humans.stances.confederacy_contact"
+          },
+          {
+            "faction": "unity_security_stability",
+            "reads": "a regulatory question for the UN, not a bidding war between states.",
+            "counts_as_evidence": "the mandate, the treaty text, the auditors' findings.",
+            "trusts": "the civil servants, the expert committees, the institutions it staffs.",
+            "does": "legislates, regulates and negotiates; keeps the zone inside UN jurisdiction and keeps the diplomatic option open.",
+            "justifies_with": "order, stability and the rules holding across a crisis.",
+            "epistemic_status": "open_mystery",
+            "epistemic_note": "It is the one reading that treats the buyers' terms as unsettled rather than already known.",
+            "basis": "un_political_discourse.json#unity_security_stability.stances.confederacy_contact"
+          },
+          {
+            "faction": "noosphere",
+            "reads": "an opening for the commons — and a fresh route to enclosure, depending on the terms.",
+            "counts_as_evidence": "who benefits, who is displaced, what it costs the biosphere.",
+            "trusts": "the science it funds, its union and cooperative networks, its confessional allies off-world.",
+            "does": "demands labour, ecological and data clauses, and pushes accession terms rather than pure commerce.",
+            "justifies_with": "the Noösphere and the biosphere of Earth must survive and evolve.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#noosphere.stances.confederacy_contact"
+          }
+        ],
+        "contested_signifier": {
+          "signifier": "sovereignty",
+          "note": "Contested between 'sovereignty is a border' and 'sovereignty is a contract freely entered'. Recorded floating signifier; the meaning is not settled."
+        },
+        "difference_is_not_a_frontier": "The four disagree about evidence, interest and the terms of a deal. That disagreement is not by itself an antagonistic frontier, and the buyers' intent is not settled by anyone's reading of it.",
+        "author_gated": {
+          "magnitudes": null,
+          "effects": null,
+          "turn_cost": null,
+          "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
+        },
+        "faction_register": "data/world/un_parties.yaml"
+      }
     },
     {
       "id": "psi-ipo",
@@ -38,7 +97,65 @@
         "Consider public or cooperative ownership"
       ],
       "epistemic_caution": "Commercial claims must be distinguished from validated capabilities.",
-      "mechanical_effects": []
+      "mechanical_effects": [],
+      "faction_readings": {
+        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "a new industry: psychic services, valuations and a market that has not been regulated yet.",
+            "counts_as_evidence": "the subscription numbers and the customers who pay.",
+            "trusts": "the founders, its funders, the platforms that carry the offer.",
+            "does": "invests, patents, privatises, and treats countermeasures as a product line.",
+            "justifies_with": "consciousness-as-a-service expands human capacity faster than a committee can.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.soft_noetic_psi"
+          },
+          {
+            "faction": "true_humans",
+            "reads": "an abomination wearing a business plan — witchcraft, or a fraud, or both.",
+            "counts_as_evidence": "scriptural and traditional prohibition on one wing; the absence of accepted proof on the other.",
+            "trusts": "its clergy, its own physicians, and whichever of its wings is loudest that week.",
+            "does": "denounces the firm, fights licensing, and turns the panic into a campaign.",
+            "justifies_with": "humanity is being altered without consent.",
+            "epistemic_status": "delusion",
+            "epistemic_note": "On the materialist wing the firm's claims are denied against evidence that an in-world PSI service exists; on the religious wing the phenomenon is real but its meaning is asserted as settled. Both are held against what the record shows.",
+            "basis": "un_political_discourse.json#true_humans.stances.soft_noetic_psi"
+          },
+          {
+            "faction": "unity_security_stability",
+            "reads": "a licensing and mental-privacy problem, solvable by legislation, a regulator and expert committees.",
+            "counts_as_evidence": "consent, certification and the regulator's file.",
+            "trusts": "the regulator it appoints and the committee it commissions.",
+            "does": "licenses the practice, criminalises intrusion, and slows the firm without banning the phenomenon.",
+            "justifies_with": "mental autonomy secured by procedure, not by panic.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#unity_security_stability.stances.soft_noetic_psi"
+          },
+          {
+            "faction": "noosphere",
+            "reads": "an Archaic Revival: capacities that were always human, arriving in a commercial casing.",
+            "counts_as_evidence": "replicated practice, collective testimony, and the long traditions the shift revives.",
+            "trusts": "its networks, its co-operatives, and the consciousness research it funds.",
+            "does": "presses for access and common ownership while resisting private monopoly of a human capacity.",
+            "justifies_with": "consciousness is collective, and it must not be enclosed.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#noosphere.stances.soft_noetic_psi"
+          }
+        ],
+        "contested_signifier": {
+          "signifier": null,
+          "note": "No signifier is asserted for this card: issue #469 asks for the vocabulary to be applied to specific candidate discourses, not hung on everything. Where the readings are simply four positions on an event, they stay four positions."
+        },
+        "difference_is_not_a_frontier": "These four readings disagree about means, evidence and interest. Per issue #469, disagreement is not automatically an antagonistic frontier, and the readings are not narrated as enemies of one another.",
+        "author_gated": {
+          "magnitudes": null,
+          "effects": null,
+          "turn_cost": null,
+          "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
+        },
+        "faction_register": "data/world/un_parties.yaml"
+      }
     },
     {
       "id": "hybrid-rumor",
@@ -56,7 +173,65 @@
         "Protect the accused from violence"
       ],
       "epistemic_caution": "Rumor cannot prove biological identity, ancestry, consciousness or allegiance.",
-      "mechanical_effects": []
+      "mechanical_effects": [],
+      "faction_readings": {
+        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "a competitor's smear, or a hostile security service doing what it likes done: either way, business continues.",
+            "counts_as_evidence": "whose interests the accusation serves.",
+            "trusts": "its own security contractors.",
+            "does": "refuses the accusation, audits its own payroll quietly, and keeps the patron.",
+            "justifies_with": "an accusation is not a contract term.",
+            "epistemic_status": "open_mystery",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.orion_conflict"
+          },
+          {
+            "faction": "true_humans",
+            "reads": "proof at last that the elite was never human.",
+            "counts_as_evidence": "the name, the wealth, the rumour itself; the phenotype of an accused person is treated as a tell.",
+            "trusts": "the influencer who broke it, and its own vigilante wing.",
+            "does": "names and pursues the accused, demands a purge, and promises protection by exclusion.",
+            "justifies_with": "the survival of the people against an infiltrating enemy.",
+            "epistemic_status": "propaganda",
+            "epistemic_note": "The merged record states that such accusations are not always true; canon separately warns against treating phenotype as proof of motive or moral character.",
+            "basis": "un_political_discourse.json#true_humans.stances.orion_conflict"
+          },
+          {
+            "faction": "unity_security_stability",
+            "reads": "an unadjudicated allegation that will burn if the state handles it carelessly or not at all.",
+            "counts_as_evidence": "the evidence, if it exists, assessed under due process.",
+            "trusts": "its counterintelligence service, its courts, and the accused person's right of reply.",
+            "does": "investigates lawfully, protects the accused from violence, and resists taking the rumour as proof.",
+            "justifies_with": "justice done in order, not in the street.",
+            "epistemic_status": "open_mystery",
+            "basis": "un_political_discourse.json#unity_security_stability.stances.orion_conflict"
+          },
+          {
+            "faction": "noosphere",
+            "reads": "a possible infiltration, and a probable lynching: the second is happening now and the first is not established.",
+            "counts_as_evidence": "case-by-case findings about a person, never the person's origin or name.",
+            "trusts": "witnesses, rights advocates, and its own hybrids.",
+            "does": "defends individual hybrid rights while supporting resistance to actual Orion operations.",
+            "justifies_with": "Service to Others: the innocent are not to be sacrificed to a scare.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#noosphere.stances.orion_conflict"
+          }
+        ],
+        "contested_signifier": {
+          "signifier": "humanity",
+          "note": "The one candidate the design record names as a possible empty signifier: the True Humans' three legs each want a different enemy, so 'humanity' holds the chain only while it stays unfilled. Left as a candidate for the author to confirm, not asserted."
+        },
+        "difference_is_not_a_frontier": "The accusation, not the accused person's origin, is what the frontier may be drawn around. Canon warns that phenotype is not proof of motive, and that not every hybrid is hostile; an accused person is not an enemy by category.",
+        "author_gated": {
+          "magnitudes": null,
+          "effects": null,
+          "turn_cost": null,
+          "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
+        },
+        "faction_register": "data/world/un_parties.yaml"
+      }
     },
     {
       "id": "awakening",
@@ -74,7 +249,64 @@
         "Investigate coercive recruitment"
       ],
       "epistemic_caution": "PSI can be established in setting without validating every claim about its origin.",
-      "mechanical_effects": []
+      "mechanical_effects": [],
+      "faction_readings": {
+        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "a market signal: millions of newly capable people, and no one selling to them yet.",
+            "counts_as_evidence": "reports of the effects and the willingness to pay for training.",
+            "trusts": "the entrepreneurs who arrive first.",
+            "does": "builds businesses around training, licensing and psychic labour markets.",
+            "justifies_with": "capability spreads fastest through exchange.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.soft_noetic_psi"
+          },
+          {
+            "faction": "true_humans",
+            "reads": "either possession spreading through schools and workplaces, or mass hysteria to be mocked — its wings never agree which.",
+            "counts_as_evidence": "the testimony of the frightened, on one wing; the absence of a mechanism, on the other.",
+            "trusts": "its own congregations and its own pamphleteers.",
+            "does": "demands testing, exclusion and quarantine of the affected in some regions, and disbelieves them in others.",
+            "justifies_with": "an unaltered humanity is the only safe humanity.",
+            "epistemic_status": "delusion",
+            "basis": "un_political_discourse.json#true_humans.stances.soft_noetic_psi"
+          },
+          {
+            "faction": "unity_security_stability",
+            "reads": "a public-health and public-order matter with a licensing dimension.",
+            "counts_as_evidence": "clinical assessment, consent and the case file.",
+            "trusts": "its health administration and its committees.",
+            "does": "offers assessment, funds research under licence, and moves against coercive recruitment.",
+            "justifies_with": "support and safeguards, delivered through institutions that already exist.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#unity_security_stability.stances.soft_noetic_psi"
+          },
+          {
+            "faction": "noosphere",
+            "reads": "the Noösphere becoming perceptible: collective capacities arriving in ordinary workplaces.",
+            "counts_as_evidence": "lived practice, replicated testimony, and the traditions that already named such experiences.",
+            "trusts": "its networks and the people it organises.",
+            "does": "organises consent-based support, resists coerced testing, and contests claims of exclusive ownership over the experience.",
+            "justifies_with": "the Noösphere of Earth must survive and evolve.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#noosphere.stances.soft_noetic_psi"
+          }
+        ],
+        "contested_signifier": {
+          "signifier": null,
+          "note": "No signifier is asserted for this card: issue #469 asks for the vocabulary to be applied to specific candidate discourses, not hung on everything. Where the readings are simply four positions on an event, they stay four positions."
+        },
+        "difference_is_not_a_frontier": "These four readings disagree about means, evidence and interest. Per issue #469, disagreement is not automatically an antagonistic frontier, and the readings are not narrated as enemies of one another.",
+        "author_gated": {
+          "magnitudes": null,
+          "effects": null,
+          "turn_cost": null,
+          "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
+        },
+        "faction_register": "data/world/un_parties.yaml"
+      }
     },
     {
       "id": "accession",
@@ -92,7 +324,66 @@
         "Reject or renegotiate political conditions"
       ],
       "epistemic_caution": "Treat the mission's promises as proposals, not proven benevolence.",
-      "mechanical_effects": []
+      "mechanical_effects": [],
+      "faction_readings": {
+        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "the largest commercial opportunity in human history, and it should be negotiated, not prayed over.",
+            "counts_as_evidence": "the terms, the technology on offer, and who gains the rights.",
+            "trusts": "its brokers and its funders.",
+            "does": "seeks trade and investment rights inside the accession package while opposing UN control of the traffic.",
+            "justifies_with": "prosperity and open exchange beat a closed sky.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.confederacy_contact"
+          },
+          {
+            "faction": "true_humans",
+            "reads": "an ultimatum dressed as an invitation: the terms are the annexation, and the Harvest is what they mean by it.",
+            "counts_as_evidence": "the conditions attached, read as a list of surrenders.",
+            "trusts": "its own reading of the document and its own preachers.",
+            "does": "rejects the offer outright and mobilises against any government that would sign.",
+            "justifies_with": "survival first: no agreement with a superior power is worth extinction.",
+            "epistemic_status": "propaganda",
+            "epistemic_note": "Reading the conditions as coercive is a defensible position — canon keeps the Harvest ambiguous on purpose — but this reading converts an ambiguity into certainty about intent, and does so to mobilise.",
+            "basis": "un_political_discourse.json#true_humans.stances.confederacy_contact"
+          },
+          {
+            "faction": "unity_security_stability",
+            "reads": "a treaty that must be negotiated slowly, sovereignty by sovereignty, with scrutiny of every clause.",
+            "counts_as_evidence": "the text, the precedents, and what the other party will actually do.",
+            "trusts": "its diplomatic service and its own institutions.",
+            "does": "negotiates, insists on informed consent and verifiable terms, keeps the option of refusal open.",
+            "justifies_with": "sovereignty is preserved by procedure, and defence is kept ready behind the table.",
+            "epistemic_status": "open_mystery",
+            "basis": "un_political_discourse.json#unity_security_stability.stances.confederacy_contact"
+          },
+          {
+            "faction": "noosphere",
+            "reads": "solidarity arriving: cosmist communism, Service to Others and the Social Memory Complex, which the party already believes in.",
+            "counts_as_evidence": "the terms, matched against what it holds the Confederacy to be.",
+            "trusts": "its confessional allies, the reformed CCP, and its own cosmist current.",
+            "does": "seeks accession while insisting that the Noösphere and the biosphere of Earth survive and evolve.",
+            "justifies_with": "a commonwealth of minds is the goal the shift was always pointing at.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "epistemic_note": "The party's conviction about the Confederacy is its own position, not an established fact. It is credible in the sense that the offer is real and its terms are on the table; the beneficence the party reads into them is not evidence.",
+            "basis": "un_political_discourse.json#noosphere.stances.confederacy_contact"
+          }
+        ],
+        "contested_signifier": {
+          "signifier": "freedom",
+          "note": "Contested between 'freedom from a superior power' (True Humans), 'freedom of exchange' (the Libertarian Accelerationists) and 'freedom as collective capacity' (the Noösphere)."
+        },
+        "difference_is_not_a_frontier": "Wanting to join and wanting to refuse are two positions on one offer, not two species at war. The Confederacy's motives stay uncertain, and the two physical NHI blocs are never merged into one pro/anti-alien axis.",
+        "author_gated": {
+          "magnitudes": null,
+          "effects": null,
+          "turn_cost": null,
+          "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
+        },
+        "faction_register": "data/world/un_parties.yaml"
+      }
     },
     {
       "id": "sphere-scandal",
@@ -110,7 +401,64 @@
         "Negotiate human data sovereignty"
       ],
       "epistemic_caution": "Observation, storage, purpose and control remain distinct findings.",
-      "mechanical_effects": []
+      "mechanical_effects": [],
+      "faction_readings": {
+        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "an engineering fact with a liability attached: if the network keeps records, someone owns them.",
+            "counts_as_evidence": "the logs, the contracts, the ownership structure.",
+            "trusts": "its own engineers.",
+            "does": "attacks the exposure as a defect, not as a betrayal, and keeps dealing.",
+            "justifies_with": "the market punishes a bad product better than a committee does.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.confederacy_contact"
+          },
+          {
+            "faction": "true_humans",
+            "reads": "confirmation that the protective gift is a surveillance apparatus.",
+            "counts_as_evidence": "the scandal itself, generalised to every NHI arrangement.",
+            "trusts": "its own media and its own witnesses.",
+            "does": "demands withdrawal from the network and punishment of anyone who dealt with it.",
+            "justifies_with": "everything offered to us was never ours.",
+            "epistemic_status": "propaganda",
+            "basis": "un_political_discourse.json#true_humans.stances.confederacy_contact"
+          },
+          {
+            "faction": "unity_security_stability",
+            "reads": "a data-sovereignty case: observation, storage, purpose and control are four different findings.",
+            "counts_as_evidence": "inspection, audit and the distinction between keeping a record and using it.",
+            "trusts": "its inspectors and its courts.",
+            "does": "demands independent inspection, secures records and witnesses, renegotiates human data sovereignty.",
+            "justifies_with": "the same procedures that keep the state lawful keep the sky lawful.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#unity_security_stability.stances.confederacy_contact"
+          },
+          {
+            "faction": "noosphere",
+            "reads": "a breach by its allies, arriving exactly when it needs them to be right.",
+            "counts_as_evidence": "the inspection's findings, and whether the breach contradicts Service to Others.",
+            "trusts": "its own dissidents, and its ecologists.",
+            "does": "demands transparency from the Confederacy and defends data sovereignty without abandoning accession.",
+            "justifies_with": "a commonwealth that watches its members is not the commonwealth we asked for.",
+            "epistemic_status": "open_mystery",
+            "basis": "un_political_discourse.json#noosphere.stances.confederacy_contact"
+          }
+        ],
+        "contested_signifier": {
+          "signifier": null,
+          "note": "No signifier is asserted for this card: issue #469 asks for the vocabulary to be applied to specific candidate discourses, not hung on everything. Where the readings are simply four positions on an event, they stay four positions."
+        },
+        "difference_is_not_a_frontier": "These four readings disagree about means, evidence and interest. Per issue #469, disagreement is not automatically an antagonistic frontier, and the readings are not narrated as enemies of one another.",
+        "author_gated": {
+          "magnitudes": null,
+          "effects": null,
+          "turn_cost": null,
+          "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
+        },
+        "faction_register": "data/world/un_parties.yaml"
+      }
     },
     {
       "id": "butlerian-raid",
@@ -128,7 +476,65 @@
         "Pursue legal accountability"
       ],
       "epistemic_caution": "Risk claims do not justify violence against civilians.",
-      "mechanical_effects": []
+      "mechanical_effects": [],
+      "faction_readings": {
+        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "vandalism against a laboratory that was building the thing everyone else will build anyway.",
+            "counts_as_evidence": "the size of the programme and the advantage lost by stopping.",
+            "trusts": "the researchers it funds.",
+            "does": "funds the replacement programme, insures it, and lobbies against the restriction the raid is trying to enforce.",
+            "justifies_with": "acceleration without restriction is the only position that does not lose.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.agi_asi"
+          },
+          {
+            "faction": "true_humans",
+            "reads": "the war opening, and the laboratory as a legitimate target.",
+            "counts_as_evidence": "the existence of the programme.",
+            "trusts": "its militant wing.",
+            "does": "celebrates the raid, supports the raiders, and moves along its escalation ladder from advocacy to violence.",
+            "justifies_with": "the risk justifies the act.",
+            "epistemic_status": "propaganda",
+            "epistemic_note": "Canon is explicit that the risk claims do not justify violence against civilians; the raid's framing of itself is a justification, not a finding.",
+            "basis": "un_political_discourse.json#true_humans.stances.agi_asi"
+          },
+          {
+            "faction": "unity_security_stability",
+            "reads": "a crime scene, a security failure, and a regulatory question about what the lab was actually doing.",
+            "counts_as_evidence": "the chain of custody and the licence file.",
+            "trusts": "its police and its inspectors.",
+            "does": "protects the staff, preserves the evidence, investigates the programme lawfully and prosecutes the raiders.",
+            "justifies_with": "the restrictions hold only if the state is the one enforcing them.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#unity_security_stability.stances.agi_asi"
+          },
+          {
+            "faction": "noosphere",
+            "reads": "both a real risk and a real crime: the lab's work may have been dangerous and the raid is still murder.",
+            "counts_as_evidence": "the programme's own records, assessed separately from the raid's claims about it.",
+            "trusts": "its own researchers and its own unions.",
+            "does": "backs collective, accountable machine intelligence and refuses the vigilante shortcut.",
+            "justifies_with": "care with powerful intelligence is compatible with the commons, and killing people is not.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#noosphere.stances.agi_asi"
+          }
+        ],
+        "contested_signifier": {
+          "signifier": "survival",
+          "note": "Contested between 'survival against the machine' and 'survival through it'. Both are recorded floating signifiers."
+        },
+        "difference_is_not_a_frontier": "The laboratory's programme and the raiders are different antagonists: opposing the raid is not endorsing the programme, and the two physical NHI powers are not one bloc.",
+        "author_gated": {
+          "magnitudes": null,
+          "effects": null,
+          "turn_cost": null,
+          "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
+        },
+        "faction_register": "data/world/un_parties.yaml"
+      }
     },
     {
       "id": "religious-schism",
@@ -146,7 +552,65 @@
         "Request independent PSI research"
       ],
       "epistemic_caution": "No metaphysical interpretation is fixed as narrator truth.",
-      "mechanical_effects": []
+      "mechanical_effects": [],
+      "faction_readings": {
+        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "a market of beliefs splitting, which is a market like any other.",
+            "counts_as_evidence": "attendance, donations and which side buys the services.",
+            "trusts": "its media partners.",
+            "does": "advertises to both sides and treats the schism as demand.",
+            "justifies_with": "conscience is a private matter and a public market.",
+            "epistemic_status": "open_mystery",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.soft_noetic_psi"
+          },
+          {
+            "faction": "true_humans",
+            "reads": "the institution is being tested: is the source divine, alien, or a lie — and its wings answer differently, sometimes within one congregation.",
+            "counts_as_evidence": "scripture on one side, suspicion of every nonhuman claim on the other.",
+            "trusts": "whichever authority recognises the danger.",
+            "does": "splits, denounces and, in places, turns the dispute into persecution of believers or of the accused.",
+            "justifies_with": "the faith must not be surrendered to an intruder.",
+            "epistemic_status": "open_mystery",
+            "epistemic_note": "The schism is a genuine doctrinal crisis, not only a slogan: canon keeps the metaphysical interpretation unresolved on purpose.",
+            "basis": "un_political_discourse.json#true_humans.stances.soft_noetic_psi"
+          },
+          {
+            "faction": "unity_security_stability",
+            "reads": "an interfaith and public-order file, handled by the ministry that already handles religious affairs.",
+            "counts_as_evidence": "the law on religious freedom and the police reports on intercommunal violence.",
+            "trusts": "its civil service.",
+            "does": "convenes dialogue, protects dissenters, and keeps the state neutral about which reading is true.",
+            "justifies_with": "the peace of the realm does not require an answer to the question.",
+            "epistemic_status": "open_mystery",
+            "basis": "un_political_discourse.json#unity_security_stability.stances.soft_noetic_psi"
+          },
+          {
+            "faction": "noosphere",
+            "reads": "a revival, and a chance to be honest about what the traditions already said.",
+            "counts_as_evidence": "the traditions themselves and the practice that revives them.",
+            "trusts": "its religious and ecological networks.",
+            "does": "builds syncretic and interfaith coalitions while refusing to make one metaphysics the party line.",
+            "justifies_with": "the Noösphere holds many readings at once.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#noosphere.stances.soft_noetic_psi"
+          }
+        ],
+        "contested_signifier": {
+          "signifier": null,
+          "note": "No signifier is asserted for this card: issue #469 asks for the vocabulary to be applied to specific candidate discourses, not hung on everything. Where the readings are simply four positions on an event, they stay four positions."
+        },
+        "difference_is_not_a_frontier": "These four readings disagree about means, evidence and interest. Per issue #469, disagreement is not automatically an antagonistic frontier, and the readings are not narrated as enemies of one another.",
+        "author_gated": {
+          "magnitudes": null,
+          "effects": null,
+          "turn_cost": null,
+          "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
+        },
+        "faction_register": "data/world/un_parties.yaml"
+      }
     },
     {
       "id": "privacy-bill",
@@ -164,7 +628,66 @@
         "Determine liability across species"
       ],
       "epistemic_caution": "The bill is a legal proposal; no numerical bonuses or enacted rights are implied.",
-      "mechanical_effects": []
+      "mechanical_effects": [],
+      "faction_readings": {
+        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "another licensing regime dressed as a right, with its own bureaucracy attached.",
+            "counts_as_evidence": "the compliance cost and the firms it would put out of business.",
+            "trusts": "its own lawyers.",
+            "does": "fights the bill's scope, offers private countermeasures instead, and defends contract over statute.",
+            "justifies_with": "rights are best enforced by the people who hold them.",
+            "epistemic_status": "propaganda",
+            "epistemic_note": "The bill proposes a right against intrusion; reading it as a bureaucratic power grab is an interested framing of its text.",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.soft_noetic_psi"
+          },
+          {
+            "faction": "true_humans",
+            "reads": "a law to protect the intrusion it should have banned.",
+            "counts_as_evidence": "the exemption it leaves for the services its opponents own.",
+            "trusts": "its own security wing.",
+            "does": "demands prohibition instead of regulation, and denounces the committee that drafted it.",
+            "justifies_with": "only a ban protects a human mind.",
+            "epistemic_status": "propaganda",
+            "basis": "un_political_discourse.json#true_humans.stances.soft_noetic_psi"
+          },
+          {
+            "faction": "unity_security_stability",
+            "reads": "its own bill: a working definition of psychic evidence, consent and liability across species.",
+            "counts_as_evidence": "the drafting file and the case law it builds on.",
+            "trusts": "the committee and the courts.",
+            "does": "defines evidence standards, balances investigation with civil liberties, and takes the licensing side of the argument.",
+            "justifies_with": "a regulated mind is a protected mind, and the state is the one that can regulate.",
+            "epistemic_status": "open_mystery",
+            "epistemic_note": "The instrument is a proposal: no enacted right, and no numerical bonus, is implied by it.",
+            "basis": "un_political_discourse.json#unity_security_stability.stances.soft_noetic_psi"
+          },
+          {
+            "faction": "noosphere",
+            "reads": "a floor below which nobody should fall, and not a ceiling for what might be shared.",
+            "counts_as_evidence": "the testimony of people intruded on, and what consent actually looks like.",
+            "trusts": "its unions and its practice networks.",
+            "does": "backs the right against intrusion while insisting on equitable access to training and care.",
+            "justifies_with": "protecting a mind is the precondition for sharing one.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#noosphere.stances.soft_noetic_psi"
+          }
+        ],
+        "contested_signifier": {
+          "signifier": null,
+          "note": "No signifier is asserted for this card: issue #469 asks for the vocabulary to be applied to specific candidate discourses, not hung on everything. Where the readings are simply four positions on an event, they stay four positions."
+        },
+        "difference_is_not_a_frontier": "These four readings disagree about means, evidence and interest. Per issue #469, disagreement is not automatically an antagonistic frontier, and the readings are not narrated as enemies of one another.",
+        "author_gated": {
+          "magnitudes": null,
+          "effects": null,
+          "turn_cost": null,
+          "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
+        },
+        "faction_register": "data/world/un_parties.yaml"
+      }
     },
     {
       "id": "world-government",
@@ -182,7 +705,64 @@
         "Negotiate representation of NHIs"
       ],
       "epistemic_caution": "Global hegemony is an aspiration contested by factions, not the MVP starting condition.",
-      "mechanical_effects": []
+      "mechanical_effects": [],
+      "faction_readings": {
+        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "emergency authority as the oldest trick in politics, now with a planetary mandate.",
+            "counts_as_evidence": "the clause and who would hold it.",
+            "trusts": "nobody in the room.",
+            "does": "obstructs the convention and offers private emergency capacity instead.",
+            "justifies_with": "a crisis is not a licence to rule the world.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.agi_asi"
+          },
+          {
+            "faction": "true_humans",
+            "reads": "a world state being assembled while the enemy it claims to face is not even identified.",
+            "counts_as_evidence": "the draft text and the delegates.",
+            "trusts": "its own national parties.",
+            "does": "rejects the convention, defends national sovereignty and organises against ratification.",
+            "justifies_with": "the people are not a province of New York.",
+            "epistemic_status": "propaganda",
+            "basis": "un_political_discourse.json#true_humans.stances.confederacy_contact"
+          },
+          {
+            "faction": "unity_security_stability",
+            "reads": "the natural next step: strengthen the institutions that are already doing the work, and make the emergency authority accountable rather than absolute.",
+            "counts_as_evidence": "the mandate, the precedents, and the durability of the existing order.",
+            "trusts": "the institutions it staffs.",
+            "does": "negotiates the scope of the authority, keeps the diplomatic option open, and resists surrendering the governing order.",
+            "justifies_with": "stability is the precondition for any of the other answers.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#unity_security_stability.stances.agi_asi"
+          },
+          {
+            "faction": "noosphere",
+            "reads": "a chance for democratic accountability beyond the nation, and a risk of one more distant authority.",
+            "counts_as_evidence": "who is represented, and whether the mandate is revocable.",
+            "trusts": "its commons networks and its federated politics.",
+            "does": "demands accountable representation and NHI representation, and resists emergency powers that outlast the emergency.",
+            "justifies_with": "the Noösphere has no single centre, and neither should the law.",
+            "epistemic_status": "open_mystery",
+            "basis": "un_political_discourse.json#noosphere.stances.cyborg_ecology"
+          }
+        ],
+        "contested_signifier": {
+          "signifier": null,
+          "note": "No signifier is asserted for this card: issue #469 asks for the vocabulary to be applied to specific candidate discourses, not hung on everything. Where the readings are simply four positions on an event, they stay four positions."
+        },
+        "difference_is_not_a_frontier": "These four readings disagree about means, evidence and interest. Per issue #469, disagreement is not automatically an antagonistic frontier, and the readings are not narrated as enemies of one another.",
+        "author_gated": {
+          "magnitudes": null,
+          "effects": null,
+          "turn_cost": null,
+          "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
+        },
+        "faction_register": "data/world/un_parties.yaml"
+      }
     },
     {
       "id": "normalcy-cycle",
@@ -200,7 +780,110 @@
         "Explore why audiences avoid crisis coverage"
       ],
       "epistemic_caution": "Normalcy is a diffuse social tendency, not an organized party or an intelligence deficit.",
-      "mechanical_effects": []
+      "mechanical_effects": [],
+      "faction_readings": {
+        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "a market signal: attention is a resource and the crisis has to compete for it with better products.",
+            "counts_as_evidence": "the ratings.",
+            "trusts": "its media partners.",
+            "does": "buys the airtime and lets the crisis lose the fight.",
+            "justifies_with": "people choose what they attend to; that is the normalcy argument, made on purpose.",
+            "epistemic_status": "open_mystery",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.soft_noetic_psi"
+          },
+          {
+            "faction": "true_humans",
+            "reads": "proof that the public has been pacified into missing the danger overhead.",
+            "counts_as_evidence": "the scandal's ratings and the ignored object in the sky.",
+            "trusts": "its own broadcasters.",
+            "does": "interrupts the normalcy with an outrage of its own, as loud as it can be.",
+            "justifies_with": "someone has to shout that the sky is falling.",
+            "epistemic_status": "propaganda",
+            "epistemic_note": "The observation that attention drifts is real; converting it into proof of deliberate pacification is an assertion.",
+            "basis": "un_political_discourse.json#true_humans.stances.orion_conflict"
+          },
+          {
+            "faction": "unity_security_stability",
+            "reads": "broadcast scheduling as a governance failure, best answered by public information and a calm statement.",
+            "counts_as_evidence": "the public-safety file.",
+            "trusts": "the broadcasters it can still reach.",
+            "does": "redirects attention officially, holds the line, and does not alarm a population it needs to keep working.",
+            "justifies_with": "order and continuity: the state does not panic, and so neither does the country.",
+            "epistemic_status": "propaganda",
+            "basis": "un_political_discourse.json#unity_security_stability.stances.soft_noetic_psi"
+          },
+          {
+            "faction": "noosphere",
+            "reads": "a population looking away from something it cannot yet act on, which is a failure of the politics on offer, not of the people.",
+            "counts_as_evidence": "the material conditions of the audience: work, exhaustion, rent, the school run.",
+            "trusts": "the organisers already in these neighbourhoods.",
+            "does": "organises locally and refuses the frame that the public is simply stupid or hypnotised.",
+            "justifies_with": "a politics that asks something of people has to mean something to them.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#noosphere.stances.cyborg_ecology"
+          }
+        ],
+        "contested_signifier": {
+          "signifier": null,
+          "note": "No signifier is asserted for this card: issue #469 asks for the vocabulary to be applied to specific candidate discourses, not hung on everything. Where the readings are simply four positions on an event, they stay four positions."
+        },
+        "difference_is_not_a_frontier": "These four readings disagree about means, evidence and interest. Per issue #469, disagreement is not automatically an antagonistic frontier, and the readings are not narrated as enemies of one another.",
+        "author_gated": {
+          "magnitudes": null,
+          "effects": null,
+          "turn_cost": null,
+          "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
+        },
+        "faction_register": "data/world/un_parties.yaml"
+      }
     }
-  ]
+  ],
+  "reading_vocabulary": {
+    "note": "The reading vocabulary of issue #469, defined once here and applied only where a specific candidate discourse earns it. Two questions are kept apart: how well established an EVENT is (the event-level statuses already in use), and what kind of claim a faction's READING of that event is.",
+    "event_statuses_in_use": {
+      "note": "Already recorded on the seed cards' siblings in strategy_game/data/un_political_discourse.json; restated here so both surfaces read the same.",
+      "ids": [
+        "observed",
+        "corroborated",
+        "contested",
+        "alleged",
+        "unknown"
+      ]
+    },
+    "reading_statuses": [
+      {
+        "id": "demonstrated_in_world_fact",
+        "means": "the reading rests on a fact the setting has established."
+      },
+      {
+        "id": "credible_incomplete_evidence",
+        "means": "the reading argues from partial but credible evidence."
+      },
+      {
+        "id": "propaganda",
+        "means": "the reading is asserted for power or advantage rather than from evidence."
+      },
+      {
+        "id": "delusion",
+        "means": "the reading is held against the evidence — motivated denial, or certainty the evidence does not carry."
+      },
+      {
+        "id": "open_mystery",
+        "means": "the reading treats the matter as unresolved, as it is."
+      }
+    ],
+    "laclau_terms": {
+      "nodal_point": "a signifier that provisionally stabilises a faction's discourse.",
+      "floating_signifier": "a signifier whose meaning competing factions struggle to fix. The recorded candidates are humanity, freedom, security, consciousness, sovereignty, progress, nature and survival.",
+      "chain_of_equivalence_vs_difference": "how distinct demands are linked into a temporary alliance, or kept apart. Linking and differing are ordinary politics; neither is a moral verdict.",
+      "antagonistic_frontier": "a constructed division between 'us' and an obstacle to the imagined social whole. Mere disagreement is not automatically antagonism.",
+      "empty_signifier": "a signifier that comes to represent a wider chain of equivalential demands and an imagined fullness — not a merely ambiguous word."
+    },
+    "empty_signifier_rule": "Ambiguity alone is not sufficient for an empty signifier (issue #469). None is asserted on this surface; the one candidate the design record names is left in the author-gated field of strategy_game/data/global_factions.json.",
+    "difference_rule": "Difference must not be equated with an enemy frontier (issue #469). Where two factions simply disagree about evidence or interest, say so; do not narrate them as antagonists.",
+    "no_mechanics_note": "These statuses are narrative vocabulary. They carry no probability, threshold, clock, cost or effect: no resolution mechanic is approved (strategy_game/RULEBOOK.md)."
+  }
 }
