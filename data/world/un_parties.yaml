@@ -1,32 +1,48 @@
+# Default four UN parliamentary parties, issue #470 (2045).
+# Other paradigmatic movements and foreign NHI powers remain separate actors.
+# Fictional party beliefs and allegations are not verified world-state facts.
+scenario_start_year: 2045
+background_event_year: 20XX
+register: un_parliamentary_parties
 parties:
-  - name: Bioconservatives
-    position: far_right
-    tendencies:
-      - Hard-core Bioconservatives
-      - Intellectual X-Risk Doomists
-      - Old Far Right / Populists
-  - name: Libertarian Party
+  - id: libertarian_accelerationist
+    name: Libertarian Accelerationist Party
+    legacy_name: Libertarian Party
     position: right
-    themes:
-      - free_markets
-      - private_property
-      - accelerationism
-      - minarchism
-      - extraterrestrial_trade
-  - name: United Earth Social Democratic Party
-    position: centre_left
-    governing_record: won every UN parliamentary and presidential election so far
-    themes:
-      - welfare_state
-      - ecology
-      - progressive_taxation
-      - redistribution
-      - megacorporate_regulation
-      - multilateralism
-  - name: The Multitude
-    position: far_left
+    governing: false
+    support: electorally_marginal
+    resources: megacorporate_funding
+    themes: [free_markets, private_property, accelerationism, extraterrestrial_special_economic_zones, accelerated_asi_research]
+    allegation: Suspected hostile ASI or Grey mind control and hybrid infiltration; unverified.
+  - id: true_humans
+    name: True Humans Party
+    legacy_name: Bioconservatives
+    position: far_right
+    governing: false
     tendencies:
-      - Autonomist / anarchist / post-workerist
-      - Marxist / Marxist-Leninist
+      - Far-right populists
+      - Religious fundamentalists
+      - Intellectual existential-risk and anti-technology doomers
+    policy: Opposes all NHI and advocates their extermination; a fictional extremist party position, not endorsed.
+  - id: unity_security_stability
+    name: Unity, Security and Stability Party
+    legacy_name: United Earth Social Democratic Party
+    legacy_mapping_status: succession_unresolved
+    position: governing_continuity
+    governing: true
+    support: majority
+    themes: [unity, security, stability, defence, conditional_diplomacy, institutional_continuity]
+    criticisms: [authoritarianism, conservatism, failure_to_adapt]
+  - id: noosphere
+    name: The Noösphere
+    legacy_name: The Multitude
+    legacy_mapping_status: merger_or_succession_unresolved
+    position: green_left
+    governing: false
+    major_constituent: Reformed Chinese Communist Party
+    ideology: Taoist-Maoist cyborg multitude
+    themes: [ecology, common, cyborg_multitude, social_memory_complex, service_to_others, confederacy_accession]
+    conviction: The Confederacy represents benevolent cosmist communism; this is the party belief.
+    reference: https://github.com/TomiToivio/Panpsychic_Cyborg_Multitude
 open_for_future_parties: true
 extra_parliamentary_factions: true
