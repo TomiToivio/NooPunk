@@ -1,0 +1,341 @@
+{
+  "format": "noopunk.strategy_game.un_parties_2045",
+  "version": 1,
+  "status": "author_canon",
+  "author_decision_date": "2026-10-15",
+  "source_issues": [
+    470,
+    469,
+    328,
+    346
+  ],
+  "note": "The four UN political factions of the 2045 default scenario, per Tomi's design decision. Fictional successor coalitions; not assertions about present-day parties. The three-umbrella proposal is superseded for default UN politics and retained as ancestry.",
+  "reconciles": {
+    "legacy_register": "data/world/un_parties.yaml",
+    "queue_row": "D8 - reconcile the legacy UN party records with the established UN world government and eleven Parties",
+    "reading": "The four occupy the UN-parliamentary register, which is distinct from the seven paradigm formations (strategy_game/data/global_factions.json) and from #328's Party table. Registers stay separate; see docs/UN_PARTIES_2045.md."
+  },
+  "governing_institutions": "UN/UNSA remain governing institutions whose control is politically contested, not independent fifth factions.",
+  "paradigm_shifts": [
+    {
+      "id": "soft_psi",
+      "label": "Soft: noetic / PSI Archaic Revival"
+    },
+    {
+      "id": "confederacy",
+      "label": "Hard, seemingly benevolent: Confederacy contact"
+    },
+    {
+      "id": "orion",
+      "label": "Hard, hostile: Orion abductions, hybridization and war"
+    }
+  ],
+  "stance_vocabulary": {
+    "soft_psi": [
+      "commercialise",
+      "regulate_and_contain",
+      "schism_persecution_vs_denial",
+      "embrace_collective_consciousness"
+    ],
+    "confederacy": [
+      "open_markets_and_contact_zones",
+      "reject_and_resist",
+      "conditional_diplomacy",
+      "join_and_integrate"
+    ],
+    "orion": [
+      "business_opportunity_vs_security_threat",
+      "militant_resistance_and_exclusion",
+      "security_and_military_defence",
+      "resist_aggression_distinguish_from_confederacy"
+    ],
+    "asi": [
+      "accelerate_without_un_controls",
+      "deep_suspicion_or_opposition",
+      "controlled_development",
+      "collective_posthuman_with_ecological_constraints"
+    ]
+  },
+  "stance_status": "working_hypothesis_not_locked",
+  "parties": [
+    {
+      "id": "libertarian_accelerationist",
+      "label": "Libertarian Accelerationist Party",
+      "subtitle": "Corporate resources without popularity",
+      "ancestry_2026": [
+        "libertarian and market-libertarian currents",
+        "accelerationist techno-optimists",
+        "megacorporate capital"
+      ],
+      "legacy_register_ancestors": [
+        "un_parties.yaml: Libertarian Party (right)",
+        "#328: CLAPP",
+        "global_factions.json: accelerationists"
+      ],
+      "axis": {
+        "economic": "right / market-libertarian",
+        "social": "internally libertarian, tactically allied with conservative right-populists"
+      },
+      "platform": [
+        "oppose UN and member-state intervention",
+        "oppose market regulation",
+        "demand Extraterrestrial Special Economic Zones",
+        "permission for accelerated ASI research"
+      ],
+      "material_base": "Substantial megacorporate funding; limited mass appeal.",
+      "stances": {
+        "soft_psi": "commercialise",
+        "confederacy": "open_markets_and_contact_zones",
+        "orion": "business_opportunity_vs_security_threat",
+        "asi": "accelerate_without_un_controls"
+      },
+      "internal_currents": [
+        {
+          "id": "sincere_libertarians",
+          "note": "genuine civil-liberties and anti-intervention conviction"
+        },
+        {
+          "id": "opportunists",
+          "note": "capital seeking access and exemptions"
+        },
+        {
+          "id": "security_anxious",
+          "note": "members who read the alien presence as a market to arm against, not merely to trade with"
+        }
+      ],
+      "vulnerabilities": [
+        "narrow popularity",
+        "dependence on patron capital",
+        "internal argument over whether special zones and unregulated ASI are compatible with human liberty at all"
+      ],
+      "uncertainties": [
+        {
+          "id": "hostile_asi_control",
+          "claim": "party is controlled by a hostile ASI",
+          "status": "in_world_allegation_not_confirmed"
+        },
+        {
+          "id": "grey_mind_control",
+          "claim": "leadership is subject to Grey mind control",
+          "status": "in_world_allegation_not_confirmed"
+        },
+        {
+          "id": "hybrid_infiltration",
+          "claim": "alien hybrids have infiltrated the party",
+          "status": "in_world_allegation_not_confirmed"
+        }
+      ],
+      "endgames": [
+        "chartered extraterrestrial enclaves",
+        "a private ASI no UN vote can recall"
+      ]
+    },
+    {
+      "id": "true_humans",
+      "label": "True Humans Party",
+      "subtitle": "Popular rage without a coherent positive future",
+      "ancestry_2026": [
+        "far-right populist umbrella",
+        "religious fundamentalist movements",
+        "anti-technology and existential-risk hardliners"
+      ],
+      "legacy_register_ancestors": [
+        "un_parties.yaml: Bioconservatives (far right)",
+        "#328: IHSF",
+        "global_factions.json: butlerian_jihad"
+      ],
+      "axis": {
+        "economic": "not fixed by the author; sovereignty-first rather than economically defined",
+        "social": "socially conservative, often right-populist"
+      },
+      "platform": [
+        "hostile to all NHI",
+        "advocates genocidal and exterminationist policies against them",
+        "hard borders, militarism, aggressive defence"
+      ],
+      "depicted_as": "extremist political position, not endorsed",
+      "material_base": "Mobilised populist base; no comparable institutional or corporate base.",
+      "stances": {
+        "soft_psi": "schism_persecution_vs_denial",
+        "confederacy": "reject_and_resist",
+        "orion": "militant_resistance_and_exclusion",
+        "asi": "deep_suspicion_or_opposition"
+      },
+      "internal_currents": [
+        {
+          "id": "religious_fundamentalists",
+          "note": "supernatural persecution and purity framings"
+        },
+        {
+          "id": "populist_nationalists",
+          "note": "sovereignty and borders first"
+        },
+        {
+          "id": "rationalist_hardliners",
+          "note": "existential-risk reasoning, materialist and often contemptuous of the religious strand"
+        },
+        {
+          "id": "ecological_primitivists",
+          "note": "biosphere-first, industrial civilisation as the error"
+        },
+        {
+          "id": "opportunists",
+          "note": "actors using the panic for position"
+        }
+      ],
+      "internal_conflicts": [
+        "ecology against industry",
+        "science against revelation",
+        "lawful politics against violence",
+        "human rights against purification",
+        "competing definitions of who counts as human"
+      ],
+      "inspiration_note": "The author cites Unabomber, Pentti Linkola and Eliezer Yudkowsky as different inspirations for strands of fictional rhetoric. This is not a claim that these people share an ideology or support genocide, and no real person appears in any 2045 record.",
+      "endgames": [
+        "mass expulsion programmes",
+        "a purified and impoverished Earth"
+      ]
+    },
+    {
+      "id": "unity_security_stability",
+      "label": "Unity, Security and Stability Party",
+      "subtitle": "Popular legitimacy and institutional machinery without adaptability",
+      "ancestry_2026": [
+        "centre-right and liberal-conservative mainstream",
+        "centre-left social-democratic and institutionalist currents"
+      ],
+      "legacy_register_ancestors": [
+        "un_parties.yaml: United Earth Social Democratic Party (centre left, governing record)",
+        "#328: CCSSP (or UESDP)",
+        "global_factions.json: normalcy_bloc"
+      ],
+      "axis": {
+        "economic": "centre; managed markets",
+        "social": "institutional conservative"
+      },
+      "platform": [
+        "defence",
+        "public order",
+        "strong security while preserving diplomatic options"
+      ],
+      "material_base": "The incumbent governing party with majority popular support; functioning institutions and broad everyday legitimacy.",
+      "stances": {
+        "soft_psi": "regulate_and_contain",
+        "confederacy": "conditional_diplomacy",
+        "orion": "security_and_military_defence",
+        "asi": "controlled_development"
+      },
+      "internal_currents": [
+        {
+          "id": "security_hawks",
+          "note": "emergency powers and militarisation"
+        },
+        {
+          "id": "diplomats",
+          "note": "preserve channels to both NHI polities"
+        },
+        {
+          "id": "civil_liberties",
+          "note": "due process, including for alleged hybrids and espers"
+        }
+      ],
+      "criticisms": [
+        "authoritarian centralisation",
+        "overriding commitment to stability",
+        "institutional conservatism",
+        "inability to respond creatively to simultaneous paradigm changes"
+      ],
+      "strengths": [
+        "functioning institutions",
+        "broad everyday legitimacy",
+        "majority popular support"
+      ],
+      "weaknesses": [
+        "inertia",
+        "power concentration"
+      ],
+      "endgames": [
+        "a managed settlement that outlasts the crisis",
+        "a security state that cannot end it"
+      ]
+    },
+    {
+      "id": "noosphere",
+      "label": "The Noosphere",
+      "subtitle": "Transformative ambition dependent on an unknowable patron",
+      "ancestry_2026": [
+        "green-left umbrella: Finnish Greens, Left Alliance and reformed-CCP analogues",
+        "cosmist and collective-intelligence currents"
+      ],
+      "legacy_register_ancestors": [
+        "un_parties.yaml: The Multitude (far left)",
+        "#328: IADIE or AHPL",
+        "global_factions.json: critical / cyborgists"
+      ],
+      "axis": {
+        "economic": "left",
+        "social": "liberal, solidaristic, cosmopolitan and transformative"
+      },
+      "platform": [
+        "Taoist-Maoist ideology of the cyborg multitude",
+        "planetary ecology with collective intelligence",
+        "technological transformation and communism",
+        "seek to join the Confederacy"
+      ],
+      "material_base": "Earth's Green and Left parties, with the reformed Chinese Communist Party as the largest player.",
+      "stances": {
+        "soft_psi": "embrace_collective_consciousness",
+        "confederacy": "join_and_integrate",
+        "orion": "resist_aggression_distinguish_from_confederacy",
+        "asi": "collective_posthuman_with_ecological_constraints"
+      },
+      "internal_currents": [
+        {
+          "id": "reformed_ccp",
+          "note": "largest player; party-centred leadership"
+        },
+        {
+          "id": "western_greens",
+          "note": "biosphere-first, sceptical of centralised power"
+        },
+        {
+          "id": "democratic_socialists",
+          "note": "redistribution and welfare"
+        },
+        {
+          "id": "pcm_style_decentralists",
+          "note": "distributed, anti-sovereign self-governance; autonomy, plurality and governance of human-AI integration"
+        }
+      ],
+      "internal_conflicts": [
+        "distributed self-governance against party-centred leadership (recorded as a deliberate internal conflict)",
+        "individuality and dissent against collective memory",
+        "biosphere safeguards against industrial and posthuman ambition"
+      ],
+      "uncertainties": [
+        {
+          "id": "confederacy_benevolence",
+          "claim": "the Confederacy's cosmist-communist principles are what they appear to be",
+          "status": "the_partys_conviction_not_confirmed_objective_truth"
+        }
+      ],
+      "references": [
+        "Panpsychic Cyborg Multitude (open-source prototype for cyborg-multitude politics; a real experimental project, not evidence the fictional 2045 Noosphere exists)"
+      ],
+      "endgames": [
+        "a terrestrial noosphere that survives accession on its own terms",
+        "absorbed into a Social Memory Complex that is not what it promised"
+      ]
+    }
+  ],
+  "cross_cutting": {
+    "contested_signifier": "All four claim to defend humanity and define the term differently.",
+    "evidence_model": "Proven fictional incidents, credible intelligence and mere allegation stay separated; due process applies to alleged hybrids and espers.",
+    "continuity": "Ordinary non-reaction remains a population dynamic; the majority is not a faction."
+  },
+  "boundaries": [
+    "Fictional 2045 material, not a claim about any real movement, party or person.",
+    "No mechanic, number, threshold or rule is fixed by this file.",
+    "No dates are assigned to the background; the scenario opens in 2045."
+  ]
+}
