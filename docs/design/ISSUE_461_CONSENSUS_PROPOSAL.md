@@ -1,6 +1,6 @@
 # #461 consensus — consolidated edition, with the SRD crosswalk
 
-**Status: PROPOSAL. No rule, number, action list, dice procedure or capability is approved by this document.** `strategy_game/RULEBOOK.md` still reads **NO RULES APPROVED**; nothing here is written into it and no code changed. Tomi decides.
+**Status: PROPOSAL. No rule, number, action list, dice procedure or capability is approved by this document.** `strategy_game/RULEBOOK.md` records the **Fate Core RPG foundation as approved (#389)** while **faction-strategy and political-simulation rules are not approved**; this document changes neither, nothing here is written into it, and no code changed. Tomi decides.
 
 **What this edition adds.** The previous edition reconciled the four consensus proposals and read the two SRDs. **This edition folds in the four corrections raised afterwards, and reconciles this document with the second landed document** (`ISSUE_461_RESKIN_SPEC.md`), so the two stop disagreeing in public. One correction **re-shapes an open decision** rather than merely fixing a citation: a mission's hardness is not something the author has to invent, because Fate already defines the structures (§5, Fork 4). Everything quoted below was fetched and read; where a claim could not be verified it is marked rather than assumed.
 
@@ -30,6 +30,8 @@ The four proposals are one design written four times; there is no sixth architec
 
 3. **The companion landed document counts its own skill list wrong.** `ISSUE_461_RESKIN_SPEC.md` §2.2 says *"a nine-skill list"* while enumerating **eleven**: Investigate, Research, Notice, Empathy, Athletics, Infiltration, Negotiate, Deceive, Physique, Will, Psi — eleven names under six aptitude families. The count is corrected here; the **list itself remains unapproved**, and its acceptance or amendment is Tomi's.
 4. **A chassis field must be its own — `form` is not it.** The same document's §2.4 reads *"NoöPunk already carries `form` in the card ontology … the reskin is a rename, not a new layer"*, and §2.9 turns that into *"a chassis `form` gate"* for the psi substrate rule. **`form` on `main` is the NHI codex taxonomy**: `characters.py` states it is *"the codex `form` (species / polity / avatar / individual / vessel_or_technology / mythonym)"*, and those are exactly the values in `data/codex.json`. Reusing it for a character's body would hang a **psionic** permission on an **NHI classification**, equating a chassis with an ontology value. **The design intent is adopted — a synthetic chassis cannot use psi competences, and the body grants permission rather than arithmetic — but it needs its own field or card type, and names are Tomi's.**
+
+5. **The repository's standing phrase `NO RULES APPROVED` is now a stale quotation — and this document's own status line carried it.** The phrase appears **62 times across 50 files**, and every occurrence attributes it to `strategy_game/RULEBOOK.md` — including `AGENTS.md`, `VISION.md` and decision queue row D11. That file **no longer contains the phrase**: its status line reads *"Status (issue #389): Fate Core RPG foundation approved … Faction strategy and political simulation rules are not yet approved."* The quotation is therefore **false as quoted** and **over-broad as a status**: it still holds for Layers II and III, but not for Layer I — the layer §1 relies on being approved. Verified: `git grep -i "no rules approved" origin/main` → 62 lines in 50 files; **zero** hits inside `strategy_game/RULEBOOK.md`. **The other 48 files are deliberately not edited here**: rewording `AGENTS.md` and the module docstrings is a governance act rather than a documentation fix, and the author should decide whether the formula is reworded to name the layer or retired outright.
 
 One refinement all four imply: **Fate's margin of 0 is a tie — success at a minor cost, not failure** — so clean-success and not-failing probability must stay distinct. The verifier fails if the disproven wording survives.
 
@@ -120,7 +122,7 @@ The Fate Core SRD page I read states its own licence — *Creative Commons Attri
 
 ## 7. What is not being reopened
 
-The **Fate kernel** (#389) and the **history/audit seam** (#397, #347). **`quantities.py`'s six distinct quantities** — no universal scalar. **One action per named character per turn.** The crossover rulebook's **NO RULES APPROVED** status. **Licensing** per §4.3. Dune, PbtA, The Sprawl and The Veil contribute **lenses, not mechanics**.
+The **Fate kernel** (#389) and the **history/audit seam** (#397, #347). **`quantities.py`'s six distinct quantities** — no universal scalar. **One action per named character per turn.** The crossover rulebook's status — **Layer I (Fate foundation) approved (#389); Layers II and III not approved**. **Licensing** per §4.3. Dune, PbtA, The Sprawl and The Veil contribute **lenses, not mechanics**.
 
 ## 8. After approval — the smallest first step
 
