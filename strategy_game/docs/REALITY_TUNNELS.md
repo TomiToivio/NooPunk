@@ -1,54 +1,50 @@
-# Reality Tunnels — the ideology model (issue #469)
+# Reality Tunnels — the ideology model (issues #469 and #470)
 
-**What this is.** The ideological apparatus the factions are described with: **Laclau's** concepts from the
-LaclauGPT Phase 1 paper, and **Robert Anton Wilson's** Reality Tunnels, implemented as structure in
-`strategy_game/ideology_framework.py` and as data in `strategy_game/data/reality_tunnels.json`.
-**Status: PROPOSAL.** The four parties are the author's decision; these *readings* are agent-written and
-await his call. Nothing here is a mechanic, and the issue stays open for iterative review.
+**Where this lives.** The model is implemented in `strategy_game/un_political_discourse.py` and its data
+`strategy_game/data/un_political_discourse.json`, with the roster in `data/world/un_parties.yaml` and the
+contracts in `strategy_game/tests/test_un_political_discourse.py`. This document explains it; it adds no
+mechanic.
 
-## 1. The apparatus, as the model uses it
+## 1. The apparatus
 
-- **Articulation** — a faction is a contingent configuration of demands, not a bin with immutable members.
-- **Nodal point** — the signifier that provisionally stabilises a discourse (`freedom`, `order`, `survival`, `liberation`, `ordinary life`).
-- **Floating signifier** — a term competing factions struggle to define: `humanity`, `security`, `nature`, `progress`, `the people`.
-- **Equivalential chain** — the demands linked into one project (for the Libertarians: unregulated markets → special zones → unrestricted ASI research → human freedom).
-- **Antagonistic frontier** — what the discourse constitutes as its obstacle.
+Laclau's concepts carry the discourse layer: **articulation**, **nodal points**, **demands** and the
+**antagonistic frontier** each party constitutes — plus the eight **shared floating signifiers** the data
+records (`humanity`, `freedom`, `security`, `consciousness`, `sovereignty`, `progress`, `nature`,
+`survival`), whose meaning the parties contest. The data states the rule that keeps the vocabulary honest:
+a floating signifier has contested meaning, while an empty signifier must represent a **chain of
+equivalences**, not merely be vague.
 
-## 2. Reality Tunnels, and the rule that makes them honest
+## 2. Reality Tunnels, with an epistemic status
 
-A Reality Tunnel is a reading of the **same** evidence. The data enforces this: every tunnel must answer
-for **all four** events — the rogue AGI incident, the soft PSI revival, Confederacy contact, and the Orion
-abductions — so no faction can be defined by the evidence it prefers to notice.
+Wilson's tunnels are implemented as a *reading with a status*, not a claim: each party carries an
+`interpretation`, an `evidence_status` drawn from the five the data defines — **observed, corroborated,
+contested, alleged, unknown** — and `may_change_with_evidence: true`. That last field is the design
+commitment: a tunnel is not a fixed belief, and evidence is allowed to move it.
 
-Five portraits ship: one per party, plus the majority's. That last one matters most:
-
-> **The football results.** Nodal point: *ordinary life*. Chain: getting through the week → whatever keeps
-> the shops open → not being asked to have an opinion about the sky. Its reading of the Confederacy
-> ceremony is *"there were pictures; there was a ceremony; the football was on."*
-
-It is a **population dynamic, not a faction** — and not an accusation of stupidity.
+`interpret_event(event_id)` is the executable form of the deliverable "contrasting readings of the same
+evidence": it returns each party's stance on one event's topic together with that party's tunnel and the
+status of what it thinks it knows. It is a view. It never asserts an event is true.
 
 ## 3. The 2026 baseline (sourced)
 
-The model starts from real formations rather than futuristic bins: the **accelerationist/tech-right** camp
-and its split from **MAGA populists**; **safetyists** and **effective altruists**, themselves split between
-*shut it down* and *build carefully*; the **AI-populist/ethics** camp defined by *who has power* rather than
-prediction; and **"AI as a normal technology"**. Sources: Politico (April 2026), GPB's faction guide
-(Sept 2026), Kate Gage's *Political AI Field Guide*, El País (May 2026), and the project's own
+The model begins from real formations: the **accelerationist/tech-right** camp and its split from **MAGA
+populists**; **safetyists** and **effective altruists**, themselves split between *shut it down* and *build
+carefully*; the **AI-populist/ethics** camp defined by *who has power* rather than prediction; and **"AI as
+a normal technology"**. Sources: Politico (April 2026), GPB's faction guide (Sept 2026), Kate Gage's
+*Political AI Field Guide*, El País (May 2026), and the project's own
 [LaclauGPT Phase 1 paper](https://github.com/TomiToivio/LaclauGPT/blob/main/paper/PHASE_1_PAPER.md).
 
 The load-bearing observation is the **cross-cutting geometry**: the anti-AI left and the doomers converge
 on *brake*, while abundance centre-left and e/acc converge on *build*.
 
-## 4. Writing guidance (Wilson's side of the brief)
+## 4. Writing guidance
 
-Epistemological playfulness, satire and unresolved mysteries: a faction's tunnel should be **recognisable
-from the inside and absurd from the outside**, and the same event should read differently in two voices
-without the narration settling which is right. Where a faction claims something unproven, the data marks
-it — the Libertarians' alleged capture, the Noösphere's confidence in the Confederacy — and the writing
-must keep that mark.
+A faction's tunnel should be **recognisable from the inside and absurd from the outside**, and the same
+event should read differently in two voices without the narration settling which is right. Where a party
+claims something unproven, the data already marks it — the Libertarians' alleged capture, the Noösphere's
+confidence in the Confederacy — and the writing must keep that mark.
 
-## 5. What this is not
+## 5. Keep the issue open
 
-Not a mechanic, not a number, not a decision. The four parties are canon by author decision; the tunnels
-are proposals; the register questions (D9) and the party names (D4) remain the author's.
+#469's own final criterion asks for iterative review with the author, so it stays open. Nothing here
+closes it.
