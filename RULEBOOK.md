@@ -4287,6 +4287,28 @@ Issue #99 tracks the creation and continued maintenance of this list.
 - **Amon Düül II, Neu!, and Tangerine Dream — _Phaedra_ (1974).** Kosmische Musik and early Krautrock texture. Preferred deliberately over generic synthwave, outrun or cyberpunk scoring, which would read as the wrong decade for this frame.
 
 
+### 35.9 Graphic art and illustration
+
+Added by issue #447. Presentation layer only: these are **languages to draw in**, never panels to reproduce.
+
+- **Jean Giraud / Mœbius.** Elegant, intricate line work; astonishing spaces and impossible architectures; visionary desert and urban landscapes; strange vehicles; alien and posthuman silhouettes; mature European psychedelic science-fiction comics. **Chronology caveat:** his ***Métal Hurlant*** work belongs to the **mid/late 1970s**, later than Pilgrim's 1974 download, so it is a **later real-world artistic influence** rather than one of Tommy's 1974 source materials.
+- **Pierre Christin and Jean-Claude Mézières — *Valérian et Laureline* (begun 1967).** Colourful, imaginative planetary and extraterrestrial civilisations; inhabited worlds; intricate environments; striking uniforms, spacesuits, machines and species. **Available before 1974.** Keep its **playfulness and social observation** alongside Mœbius's cosmic strangeness.
+
+**The target is an original synthesis**, not an imitation: the European bande dessinée language, *Zardoz*-scale psychedelic absurdism, 1970s cinematic production design and period paperback illustration. **`Zardoz` keeps its position as the number-one movie reference in §35.4 — nothing here displaces it.** Do **not** reproduce copyrighted panels, character designs or signature illustrations: take the language, never the artefacts. Illustrations are **references, not cleared assets**.
+
+### 35.10 The 1970s reference shelf: fact, prediction and speculation kept apart
+
+Actual 1970s intellectual world, used as **vocabulary, bookshelves, documents and laboratory aesthetics**. This is **history of ideas — not validation of unproven UFO or psi hypotheses.** Each entry states what it may and may not be read as.
+
+- **Alvin Toffler — *Future Shock* (1970).** Rapid technological and social change. Characters describe mass disorientation as *future shock* and anticipate institutional lag. **Caution:** sociological forecasting, not supernatural foresight.
+- **Donella Meadows et al. — *The Limits to Growth* (1972).** World3 scenarios; computer-generated global futures, line-printer graphs and interdependent social and ecological variables. **Caution:** **conditional model scenarios**, not precise forecasts of fixed events.
+- **J. Allen Hynek — *The UFO Experience: A Scientific Inquiry* (1972).** Close-encounter typology and case evaluation; the coded case reports, witness interviews and unexplained categories of the UNSA predecessors. **Caution:** unexplained sightings are **not** proof of extraterrestrial or NHI origin.
+- **Jacques Vallée — *The Invisible College* (1975).** Consciousness, cultural and non-simple-ET interpretations of contact. **Post-1974:** appropriate to Pilgrim's later revisions, to 1970s design research or to later commentary. **Hypotheses remain unverified.**
+- **Russell Targ and Harold Puthoff — "Information transmission under conditions of sensory shielding", *Nature* (1974).** Shielded-room experiments, remote-viewing sketches, sensor arrays, blind targets and grant reports. **Caution:** the reported anomalous findings remain **disputed**, and the paper was published **18 October 1974**, which may postdate Tommy's unspecified 1974 concert and download — do not assume he had read it.
+- **David Marks and Richard Kammann — "Information transmission in remote viewing experiments", *Nature* (1978).** Contradictory reports and sceptical internal review; distinguish conclusions from data. **Later commentary, not a text present in 1974**, and the attempted replication **did not verify** the earlier claims.
+
+**Interpretation guideline.** Represent the decade's genuine **scientific uncertainty and competing expectations**, not a fake consensus. In NoöPunk *fiction* a later 2026 in-world revelation may vindicate an earlier prediction; such later fictional facts **must not be presented as real-world scientific discovery**. **Pilgrim in 1974 can have visions of later work, but his contemporary footnotes must accurately distinguish what had and had not yet been published.**
+
 ## 36. The four NoöPunk systems: Physical, Psychic, Social and Cybernetic
 
 **Status: NOÖPUNK NATIVE THEORETICAL ONTOLOGY; author-specified in issue #78.**
