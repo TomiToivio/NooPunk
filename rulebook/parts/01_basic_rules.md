@@ -53,6 +53,38 @@ NoöPunk takes place in **20XX**, after several interacting paradigm shifts have
 
 These shifts are not required to occur in a fixed order. The background timeline records important transformations without pretending to predict exact dates.
 
+### 1.4. How this book came to exist: Tommy Pilgrim, 1974
+
+**Status: FRAMING DEVICE / PRESENTATION LAYER.** This subsection explains who is supposed to have written the book you are reading, and where the boundary lies between the book's presentation and the setting's canon.
+
+#### The download
+
+In **1974**, at a **Hawkwind** concert — *Space Ritual* is the touchstone and the sound of it — **Tommy Pilgrim** took LSD and had an experience he never satisfactorily explained: a vast **download from VALIS**, a flood of the future. He saw the AI/AGI revolution, the consciousness and QIP breakthrough, NHI Disclosure, the emergence of the Noösphere, and the political, psychic and metaphysical convulsions that follow. He did not know then, and does not claim to know now, which parts he received literally, which his 1974 mind mistranslated into its own vocabulary, and which came from a neighbouring possible timeline.
+
+He was not a naive acid casualty. Pilgrim is a **Leary-style psychedelic counterculturalist and a serious radical intellectual** — he read **Deleuze and Guattari, Michel Foucault and Guy Debord**, the works that existed by 1974 — and he insisted that a vision of the future is worthless unless you can say who owns it, who is excluded by it, and which institutions it stabilizes.
+
+He wrote the download down as **speculative fiction**. The novel was called **_NoöPunk_**.
+
+#### The book, the genre, the fandom
+
+The novel became a cult classic and then a franchise: **film, television, tabletop role-playing game, computer game**. Its name became a genre. In-world, **NoöPunk** is not one title but a recognised mode of science fiction, and its fandom is a subculture with its own music, slang, iconography, politics and aesthetics — deliberately left under-specified here, so that the subculture can be developed rather than declared.
+
+What made Pilgrim famous rather than merely cultish is the uncomfortable part: **events around him keep proving his supposed fiction right**. The public VALIS event (§33.15) is the largest example, arriving decades after he wrote it down.
+
+**Now.** Pilgrim is still alive and living in **Helsinki** — a highly eccentric media celebrity, courted and studied by literary scholars, and by parapsychologists at several universities who would very much like to know what he actually received. Whether he experienced real precognition, was guided by VALIS, or touched an alternative timeline is **deliberately unresolved**. A campaign may treat this as mystery, as metaphysics, or as an elaborate literary joke, and no rulebook passage is required to settle it.
+
+#### The 1974 decoder: presentation is not canon
+
+One rule keeps this framing device safe:
+
+> **The book is an imperfect 1974 decoder for a future it describes substantially accurately. Its aesthetics are presentation. They never alter the simulation, the chronology, or the rules.**
+
+A device may be right in **function and social consequence** and wrong in **appearance**. Pilgrim's datacentre is a room-sized thinking machine fed by punched cards; the facility the rules describe, its capabilities, its networking and its politics are unchanged. Cassettes, spools, cathode-ray terminals and vacuum-fluorescent numerals are the vocabulary he had for things that do not work that way.
+
+Rare, conspicuous and usually inconsequential slips of **alternative history** are permitted and encouraged: a wrongly remembered consumer product, a renamed city, a medium that never existed. They are signs of the mistranslation, not licences to rewrite NoöPunk's historical sequence. Where presentation and canon disagree, **canon wins** and the discrepancy is itself the artifact.
+
+The real-world works that shape this presentation, and the sources that shape the setting, are recorded separately in §35 and §37.
+
 ---
 
 ## 2. History: The Singularity Is Past
@@ -73,6 +105,23 @@ Canonical background events include, without requiring one fixed chronology:
 - the increasingly self-aware Noösphere.
 
 Detailed history, world canon and unresolved chronology remain in the extended canon/reference material below. The year is always written **20XX**.
+
+### 2.2. Event cards: how this history reaches the table
+
+**Status: PROPOSED DELIVERY MECHANISM. The details are deliberately unfixed** — no deck, cadence, timing, magnitude or resolution rule is approved by this subsection.
+
+The timeline above describes transformations; a campaign needs them to *land*. The proposed instrument is the **event card**: one world-level development — a disclosure, a market shock, a containment failure, an NHI offer, an institutional crackdown, a domestic emergency — delivered to the table with what it touches and what it changes.
+
+**Two stages, in this order:**
+
+1. **A default event timeline first.** A single authored, fixed sequence, consistent with the canonical order the extended material already implies, so that a first campaign can be run without anyone authoring anything and so that "what happens next" is a shared reference rather than a per-session invention. Deterministic and reproducible: the same start reaches the same world.
+2. **Variability later.** Seeded draws, alternative branches, per-scenario decks and scenario-specific cards come after the default sequence is stable and playtested. Variability is a layer over the timeline, never a replacement for it.
+
+**Discipline that applies from the very first card:**
+
+- a card carries its **epistemic kind** — a canonical timeline event, an in-universe rumour, a scenario-local invention — on the same never-silently-upgraded rule the rest of the project uses;
+- a card is a **delivery mechanism for setting events**, not a new rules subsystem, and must not import statistics, thresholds or resolution procedures this rulebook has not approved;
+- the existing authored material is the starting point to reconcile with rather than duplicate: the crisis/event rows in `docs/design/NOOPUNK_GLOBAL.md` and the five scenario event cards in `strategy_game/data/ukweli_local.json`.
 
 ---
 
