@@ -115,14 +115,14 @@
     {
       "id": "transhumanitys-fate",
       "source": "Transhumanity's Fate (Eclipse Phase for Fate)",
-      "url": null,
+      "url": "https://eclipsephase.com/2016/03/16/transhumanitys-fate-is-here/",
       "kind": "published-book",
       "license": "CC BY-NC-SA 3.0 (author-stated)",
       "license_url": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
       "decision": "verified-nc-sharealike",
       "role_in_noopunk": "The demonstration that a sophisticated transhuman setting runs on Fate.",
       "license_checked": "2026-10-03",
-      "how_verified": "Recorded in issue #60's audit as NOT PRESENT on disk; the licence is the author's statement, not an independent reading.",
+      "how_verified": "Recorded in issue #60's audit as NOT PRESENT on disk. Its licence claim is now source-checkable: the publisher's own announcement (read 2026-10-14; posted 2016-03-16) states the book 'is available under a Creative Commons BY-NC-SA license' - notably WITHOUT a version number, so the 3.0 recorded here remains unconfirmed by that source and a file-level reading is still outstanding.",
       "notes": "NonCommercial. Protected text cannot go into a commercially reusable CC edition. If the author supplies the file, it needs its own dated entry before any content is used."
     },
     {
