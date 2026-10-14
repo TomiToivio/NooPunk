@@ -87,6 +87,26 @@ The diegetic furniture that carries the layer:
 
 **Tone discipline:** the future's ideological, geopolitical, social and ethical machinery stays **rigorous beneath the strange prose**. The comedy and the seriousness are not in tension; the comedy is *how* the seriousness gets told.
 
+### 3.4 The model: *The Iron Dream* (Norman Spinrad, 1972)
+
+The issue names this as **the literary model for the framing device**, and a framing specification that omits its own model leaves the device unexplained. It is recorded here in the section whose subject it is; the rulebook carries the bibliography entry at `RULEBOOK.md` §35.3.
+
+**The work.** A **metafictional 1972 novel** by Norman Spinrad. Its surface is a novel-within-a-novel, ***Lord of the Swastika***, presented as written by an **alternate-history Adolf Hitler** — in that timeline he emigrated from Germany to the United States in 1919 after the Great War and became first a pulp science-fiction illustrator and then a writer of lurid pro-fascism stories under a thin science-fiction veneer. The nested text is followed by a **faux-scholarly afterword by the fictional critic Homer Whipple**. The book's own author attribution ("Adolf Hitler", actually Spinrad) is part of the joke.
+
+**The three devices NoöPunk borrows — and nothing else:**
+
+1. **The in-universe author.** A text whose author is a *positioned construct* rather than the real writer. This is the whole shape of the Pilgrim frame: the novel exists because a specific man, at a specific concert, in a specific year, wrote down what he saw.
+2. **The apparently autonomous genre-fiction text.** The inner book has its own editions, reception and reputation *inside* the fiction — which is why Pilgrim's novel can have a fandom, adaptations and a scholarly literature without any of them being the real book.
+3. **The fictional critical reception.** The faux-scholarly apparatus is what lets a text be *examined in-world* rather than merely quoted; it is the layer that makes §3.3's academic analysis and marginalia do work.
+
+**What NoöPunk adds to the model:** **precognitive futurology** — Pilgrim's imagined future turns out to be disturbingly accurate, and whether that is real precognition, VALIS, or a neighbouring timeline is never settled (§3.2). *The Iron Dream* supplies the frame; the accuracy is NoöPunk's own addition to it.
+
+**Guard, binding.** Borrow the **apparatus**, never the nested book's politics. Spinrad wrote the novel-within as **satire** — its point is to expose the appeal of fascist pulp — and NoöPunk's own author is a leftist. A reading that takes the inner text straight has misread the model, and the rulebook states the same guard at §35.3.
+
+**Temporal note.** 1972 precedes Pilgrim's 1974 download, so unlike *The Man Who Fell to Earth* (1976) this reference may legitimately inform the **in-universe** 1974 frame as well as the out-of-universe reading.
+
+**Left to the author, deliberately:** whether *The Iron Dream* also **joins the locked in-universe hierarchy** in §2.2 (or takes a fourth slot beside PKD, Wilson and Le Guin). Its date permits it; §2.2's own rule is to include only the named set, so this document does not add it.
+
 ---
 
 ## 4. The boundary, stated once
@@ -158,6 +178,7 @@ NoöPunk is intended as a **Creative Commons** project using **homebrewed, reski
 - This is a **provenance record, not legal advice**, and it authorises no release. The licence choice is the author's.
 
 **The crucial distinction, restated because it is load-bearing:** NoöPunk's **timeline, lore, factions, species, politics, institutions, NHI/PSI/AGI concepts and scenario are entirely different from Eclipse Phase's.** NoöPunk is **not** set after Eclipse Phase's Fall; resleeving and cortical stacks remain rare and novel; and natural PSI is **not** an alien-virus-derived condition. The adapted mechanics do not import the setting.
+**Where the licence authority lives, so this table cannot drift.** This section states the conditions; the **ledger is the authority**, and it is what a release gate reads. `docs/sources/EXTERNAL_SOURCE_LICENSES.md` (issue #60) carries the per-source findings and the file-level boundary — that noncommercial and share-alike conditions attach per file, and that a file mixing Eclipse-Phase-derived material cannot be re-licensed under an incompatible licence. `docs/sources/GAME_SYSTEM_RIGHTS.md` with `data/sources/game_system_rights.json` carries the rights record and the recommended release licence. `docs/sources/ATTRIBUTION.md` records that the licence is **not yet chosen** and points at issue #231's criterion 1. If this table and the ledger ever disagree, **the ledger wins and the disagreement is the finding** — not a wording preference to be settled here.
 
 ---
 
@@ -178,6 +199,8 @@ NoöPunk is intended as a **Creative Commons** project using **homebrewed, reski
 - `RULEBOOK.md` **§2.2 "Event cards: how this history reaches the table"** — event cards
 - `RULEBOOK.md` **§35.8 "Sound and music"** — sound and music
 - Issue [#447](https://github.com/TomiToivio/NooPunk/issues/447) — this brief, including the locked reference set and the presentation-versus-reality rule
+- `RULEBOOK.md` **§35.3 "Fiction books"** — the bibliography entry for *The Iron Dream*, with the same guard as §3.4
+- Licence authority, which the release gate reads rather than this document: `docs/sources/EXTERNAL_SOURCE_LICENSES.md`, `docs/sources/GAME_SYSTEM_RIGHTS.md`, `data/sources/game_system_rights.json`, `docs/sources/ATTRIBUTION.md`
 
 **Numbering caution.** `RULEBOOK.md` carries **two** headings numbered `2.2`: *"Event cards: how this history reaches the table"* and *"AI as ideological conflict"*. Every citation above therefore names the heading as well as the number, so the reference cannot resolve to the wrong section. The duplicate numbering is pre-existing and is **flagged, not fixed** here — renumbering a ledger section is a separate change with its own reference-graph consequences.
 
