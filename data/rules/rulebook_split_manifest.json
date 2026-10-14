@@ -5,7 +5,7 @@
   "issue": 232,
   "source": "RULEBOOK.md",
   "$only_edit": "The navigation block linking this index. Never the body.",
-  "source_sha256": "a9814eb2258778168ecb608fb98b01de24dfd62d5e0868b6c8966afdb9dd6d16",
+  "source_sha256": "68cbcf509f470ea6831817b314485e82b79569417992facfd723a8487d643476",
   "appendix_marker": "# Extended canon and reference material",
   "section_count": 63,
   "parts": {
@@ -17,15 +17,15 @@
           "kind": "core",
           "number": 1,
           "heading": "## 1. Introduction to NoöPunk",
-          "body_sha256": "e9b98fd85b692329edc9738db6bb8c7ecc8e220811a544d2db23e2e76d694ebb",
-          "body_lines": 52
+          "body_sha256": "fef5d420a54073c7506d03c76e9248dbd3d40ff6f8b6c008f12ec130766a844c",
+          "body_lines": 84
         },
         {
           "kind": "core",
           "number": 2,
           "heading": "## 2. History: The Singularity Is Past",
-          "body_sha256": "bde6be8b93dc6912c548448eaa9673a7f996bb3f2a9d93aeefe01de411408a78",
-          "body_lines": 20
+          "body_sha256": "bcb21ab5729a87657c41a03af41a332d10254795aceda3df92412378623b1aec",
+          "body_lines": 37
         },
         {
           "kind": "core",
@@ -510,8 +510,8 @@
           "kind": "appendix",
           "number": 35,
           "heading": "## 35. Sources, recommended reading, and influences",
-          "body_sha256": "51219cd294a5f5b16cd18d7b4c0aa1799587a4def283871e30e92e2cfde13302",
-          "body_lines": 216
+          "body_sha256": "3948ebc3c330ae8fd6e9ff229455ed38a58629dbda64e286913e73a80f8610e9",
+          "body_lines": 239
         },
         {
           "kind": "appendix",

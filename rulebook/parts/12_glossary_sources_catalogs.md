@@ -542,6 +542,19 @@ Seed this list from works already cited elsewhere in the rulebook, including:
   reality, colonization, drugs, and ontological intrusion.
 - **William Gibson — _Neuromancer_.** Cyberspace, cyberpunk social structure, and
   networked power.
+- **Norman Spinrad — _The Iron Dream_ (1972).** A novel presented as the work of an
+  alternate-history Adolf Hitler — the real author is Spinrad, and the presentation includes its
+  own critical apparatus. The device NoöPunk takes from it is **precognitive futurology**: a book
+  whose fiction is read as forecast, so that its accuracy becomes the story. §1.4 uses exactly
+  that frame for Tommy Pilgrim. The influence here is the device, not the politics.
+- **Robert Anton Wilson — _Illuminatus!_ (1975, with Robert Shea) and _Cosmic Trigger I_
+  (1977, non-fiction).** Countercultural epistemology, conspiracies, psychedelic humour and
+  philosophical ambiguity — the register that lets §1.4's ambiguity stay unresolved.
+- **Ursula K. Le Guin — _The Left Hand of Darkness_ (1969) and _The Dispossessed_ (1974).**
+  Serious anthropological, political, social and philosophical science fiction; commons and
+  anarchist political economy treated as a lived system rather than a slogan.
+- **Anthony Burgess — _A Clockwork Orange_ (1962).** Conditioning, free will, subculture and
+  social control; the literary parent of the 1971 film reference in §35.4.
 
 Add further fiction when it materially shapes NoöPunk's tone, society, technology, or
 cosmology.
@@ -550,6 +563,9 @@ cosmology.
 
 - **_Altered Carbon_.** Visual/social treatment of resleeving-like identity transfer, embodiment, inequality, and crime.
 - **_The Expanse_.** Lived-in Belt habitats, space labor, factional politics, cultural divergence, crews, and system-scale politics at human scale.
+- **_Zardoz_ (1974).** The number-one visual and tonal reference for the presentation layer in §1.4: weird posthuman mysticism, institutional absurdity, radical costumes and theatrical science fiction.
+- **_A Clockwork Orange_ (1971).** Social engineering, youth counterculture, a stylised retrofuture and uncomfortable satire.
+- **_The Man Who Fell to Earth_ (1976).** Alien humanity, estrangement, media, consumerism and rock-star futurism. **Temporal caveat:** released after Pilgrim's 1974 download, so it belongs to the modern art-direction layer and to later adaptations, not to the sources of the 1974 book.
 
 
 Maintain a curated list of screen works that influence NoöPunk's:
@@ -608,6 +624,13 @@ new work:
 5. cross-reference the canon section that actually uses the source when useful.
 
 Issue #99 tracks the creation and continued maintenance of this list.
+
+### 35.8 Sound and music
+
+**Status: appended out of numeric order on purpose.** Inserting a subsection mid-list would renumber §35.7 and break every reference to it, so this lands at the end.
+
+- **Hawkwind — _Space Ritual_ (1973).** Soundtrack reference #1 for the presentation layer described in §1.4: space rock as the sound of a 1974 download, shaping pacing, sound design, cover art and interface atmospherics.
+- **Amon Düül II, Neu!, and Tangerine Dream — _Phaedra_ (1974).** Kosmische Musik and early Krautrock texture. Preferred deliberately over generic synthwave, outrun or cyberpunk scoring, which would read as the wrong decade for this frame.
 
 ## 50. Field catalogs: characters, equipment, implants, PSI and beings (#171–#180)
 
