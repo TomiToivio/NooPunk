@@ -2,90 +2,103 @@
 
 **Status: SPECIFICATION, PROPOSAL. Presentation only.** This document defines how NoöPunk is *presented* as a 1974-origin work. It defines **no** rule, mechanic, statistic, scenario fact, chronology or canon, and it changes nothing in the simulation it presents. Documents are reviewed editorially and by playtesting, never by CI ([#271](https://github.com/TomiToivio/NooPunk/issues/271)).
 
-**Relationship to the rulebook.** The rulebook half of this issue is already delivered: `RULEBOOK.md` **§1.4** (*"How this book came to exist: Tommy Pilgrim, 1974"* — the download, the book, the genre, the fandom, and *"The 1974 decoder: presentation is not canon"*), **§2.2** (event cards), and **§35.8** (sound and music). **This document does not restate them.** It specifies the *art direction* they depend on, and defers to them for the narrative text itself.
+**Relationship to the rulebook.** The narrative layer is already delivered: `RULEBOOK.md` **§1.4** (*"How this book came to exist: Tommy Pilgrim, 1974"*), **§2.2** (*"Event cards"*), and **§35.8** (*"Sound and music"*), with the film and literature references in **§35**. **This document does not restate them**; it specifies the art direction they depend on.
 
 ---
 
-## 1. The one rule
+## 1. The governing maxim
+
+> **NoöPunk looks as if it was MADE in the seventies — not SET in the seventies.**
+
+**The core pitch.** NoöPunk is presented as though it were a **lost psychedelic science-fiction film made in 1974**, somehow predicting real history up to **2026** with startling precision. **After 2026 its future is contested and changeable.**
+
+This is an aesthetic, storytelling and eventual indie-graphics rule. It is **not** a retcon: 2026 computer technology does not run on punched cards. The scenario and its science, sociology, geopolitical events and technology stay grounded in the established NoöPunk timeline. **The 1974 author/director's visual imagination is an intentionally unreliable decoder of genuinely precognitive visions.**
+
+### 1.1 The one rule
 
 > **Presentation is not canon.** The 1974 layer decides how NoöPunk *looks, sounds and is narrated*. It never decides what is *true in the simulation*.
 
-Everything below is an application of that sentence. Where a presentation choice and a canonical fact disagree, the canonical fact wins and the disagreement is displayed as a **deliberate 1974 misreading** (§5), never resolved by editing the fact.
+Where a presentation choice and a canonical fact disagree, **the canonical fact wins**, and the disagreement is displayed as a **deliberate 1974 misreading** (§5), never resolved by editing the fact.
 
 ---
 
 ## 2. Art direction
 
-### 2.1 Film — the locked hierarchy, and nothing else
+### 2.1 Film — the locked hierarchy
 
 | # | Reference | What it supplies |
 | --- | --- | --- |
-| **1** | ***Zardoz* (1974)** | **The number-one visual and tonal reference.** Weird posthuman mysticism, institutional absurdity, radical costumes, theatrical science fiction. The tone is *earnest and strange*, never winking. |
+| **1** | ***Zardoz* (1974)** | **The number-one live-action visual and tonal reference — its position does not move.** Weird posthuman mysticism, institutional absurdity, radical costumes, theatrical science fiction. Earnest and strange, never winking. |
 | 2 | ***A Clockwork Orange* (1971)** | Social engineering, youth counterculture, stylised retrofuture, uncomfortable satire. |
 | 3 | ***The Man Who Fell to Earth* (1976)** | Alien humanity, estrangement, media, consumerism, rock-star futurism. |
 
-**Temporal caveat, carried verbatim in force:** *The Man Who Fell to Earth* was released **after** 1974. It is therefore a **modern art-direction reference**, or an influence on a **later Pilgrim adaptation** — never something Pilgrim saw before his download. Any in-universe attribution of it to the 1974 Pilgrim must be marked as an anachronism of the *adaptation*, not of the man.
+**Temporal caveat, in force:** *The Man Who Fell to Earth* was released **after** 1974 — a **modern art-direction reference** and a **later-adaptation** influence, never something Pilgrim saw before his download.
 
-**Only the named set.** No other film may be promoted to a primary inspiration. *"Do not substitute unfamiliar film references as primary inspirations"* is a constraint on this document as much as on the presentation.
+### 2.2 Graphic art — added references
 
-### 2.2 Literary — the locked hierarchy
+| Reference | What it supplies | Chronology caution |
+| --- | --- | --- |
+| **Jean Giraud / Mœbius** | Elegant, intricate lines; astonishing spaces; impossible architectures; visionary desert and urban landscapes; strange vehicles; alien and posthuman silhouettes; mature European psychedelic SF comics. | His ***Métal Hurlant*** work belongs to the **mid/late 1970s** — later than a 1974 download. **Distinguish later real-world artistic influence from Tommy's precise 1974 source materials.** |
+| **Pierre Christin and Jean-Claude Mézières, *Valérian et Laureline* (begun 1967)** | Colourful, imaginative planetary and extraterrestrial civilisations; inhabited SF worlds; intricate environments; visually striking uniforms, spacesuits, machines and species. | **Available before 1974.** Keep its **playfulness and social observation** alongside Mœbius's cosmic strangeness. |
+
+**Goal for future retro-indie graphics:** an **original, feasible, readable synthesis** of that European bande dessinée language with *Zardoz*-scale psychedelic absurdism, 1970s cinematic production design and period SF-paperback illustration.
+
+**Hard constraint:** do **not** reproduce copyrighted panels, character designs or signature illustrations. Take the *language*, never the *artefacts*.
+
+### 2.3 Literary — the locked hierarchy
 
 | # | Reference | What it supplies |
 | --- | --- | --- |
-| **1** | **Philip K. Dick** | **The number-one literary reference.** Ontological uncertainty, synthetic consciousness, prophetic paranoia, unreliable reality, VALIS. The whole framing device descends from him. |
+| **1** | **Philip K. Dick** | **The number-one literary reference.** Ontological uncertainty, synthetic consciousness, prophetic paranoia, unreliable reality, VALIS. |
 | 2 | **Robert Anton Wilson** | Countercultural epistemology, conspiracies, psychedelic humour, philosophical ambiguity. |
-| 3 | **Ursula K. Le Guin** | Serious anthropological, political, social and philosophical science fiction — the seriousness the strange surface must not lose. |
+| 3 | **Ursula K. Le Guin** | Serious anthropological, political, social and philosophical science fiction. |
 
-### 2.3 Sound
+### 2.4 Visual vocabulary
 
-**Hawkwind — *Space Ritual* is soundtrack reference #1** and the sound of the download itself. Beneath it: early **Amon Düül II**, **Neu!**, and **Tangerine Dream's *Phaedra***. Space rock, kosmische Musik and early Krautrock texture shape pacing, sound design, cover art and interface atmospherics.
+Theatrical costumes and strange hats · saturated poster colours and cosmic gradients · alien geometries and impossible interior architecture · brutalist research facilities · physical props and set-built consoles · cathode-ray tubes, teleprinters, switches, analogue meters, tape decks, magnetic reels, punch cards, printed graphs and retro scientific diagrams · hand-inked outlines, poster-like flat colours, stippled textures, comics-panel compositions · illustrated mission cards · faux 1974 book and film jackets.
 
-**Explicit negative:** prefer these to **generic synthwave / outrun / cyberpunk clichés**. The target is 1974 psychedelic SF, not 1980s neon.
+**Favour the slightly theatrical look of practical effects over glossy contemporary cyberpunk UI.**
 
-### 2.4 Visual and interface language — the analog future
+### 2.5 Six concrete future-graphics concepts
 
-The design vocabulary, to be used across covers, illustrations, diagrams, UI, documentation and marginalia:
+1. **LLM / AGI dialogue.** An enormously intelligent language-model interface presented on a **1974 mainframe** — blinking lamps, huge tape reels, punched-card readers, a teletype. The dialogue, reasoning and societal consequences are **accurate for the simulated future**; punch cards are **representation**, not a mandatory in-world implementation.
+2. **Social media / discourse mapping.** Statistically meaningful communication-network simulation visualised as psychedelic TV broadcasts, ticker tape, analogue network maps, cathode-ray diagrams and dossiers.
+3. **NHI contact.** Mœbius/Valérian-like strange architectures, biologics and extraterrestrial environments meeting *Zardoz*'s theatrical mysticism. **Do not make NHI evidence more conclusive than the scenario says.**
+4. **PSI / remote-viewing laboratory.** EEG-like chart recorders, oscilloscopes, sensory-deprivation gear, hand-drawn brain diagrams, elaborate electronic apparatus, institutional researchers — **with the actual PSI rules and confidence levels preserved**.
+5. **Faction board / Event Cards.** Retro SF-comics covers and period newspaper/academic-report collage, with simple icons, a strong type hierarchy, legible card rules, and **visual distinction between prophecy, observable evidence and uncertain hypotheses**.
+6. **Map and fieldwork.** Bird's-eye board-game maps of Helsinki and other sites; hand-inked location panels; travel folders; small human silhouettes. **Scalable to indie-friendly 2D sprites without photorealism.**
 
-- punched cards, cassette reels, spools, paper tape;
-- cathode-ray terminals, printed computer readouts, teletype;
-- vacuum-fluorescent numerals, chunky knobs and switches, indicator lamps;
-- brutalist and set-built rooms — institutional concrete, not sleek glass;
-- vintage typography; psychedelic paperback cover aesthetics;
-- strange posthuman fashion; period-inspired institutional design.
+### 2.6 Production constraints
 
-**The translation layer.** A device may be **correctly predicted in function and social consequence** while being **rendered as though it used punched cards or cassettes**. The rendering is the *presentation*; the actual simulated device stays technically correct unless an explicit canon deviation is approved.
+Build a **low-cost, adaptable art bible** before committing to shaders or assets: palette and typography prototypes, 2D sprites and portraits, card templates, UI and backgrounds.
 
-**Accessibility is a hard constraint.** Psychedelic visuals must not compromise navigation, readability, data interpretation or operational UI. The aesthetic is a skin over a legible instrument.
+**Precedence, binding:** small-screen readability, accessibility, a **reduced-motion alternative** for psychedelia, and **visual explanations of actual data** all take precedence over spectacle.
+
+> **Retro presentation must never falsify quantitative UI information.**
+
+**Only the named set, plus §2.2.** *"Do not substitute unfamiliar film references as primary inspirations."*
 
 ---
 
-## 3. Narrative framing
+## 3. Writing
 
-### 3.1 The 1974 decoder
+### 3.1 Voice
 
-Tommy Pilgrim is presented as a **Timothy Leary-style acid-head hippie**, an eccentric psychedelic counterculturalist, *and* a serious radical-left intellectual who reads **Deleuze and Guattari, Michel Foucault and Guy Debord**. For 1974 plausibility, only what was **available by 1974** can appear in the original book; later work may inform his subsequent commentary or revisions, and must be marked as such.
+The **writing**, not only the illustrations, carries 1974's intellectual and material imagination: radical 1970s futurology, psychedelic New Wave prose, social-science essays, obscure technical jargon, institutional absurdity, dry countercultural comedy.
 
-The prose must read as **someone channeling future history while tripping at a Hawkwind show in 1974** — not a contemporary cyberpunk story with a sepia filter.
+Pilgrim describes **realistically correct later concepts** — LLMs, AGI, attention architectures, ideological polarisation, AI agents, BCI, PSI claims, NHI uncertainties — with surprisingly apt functional and sociological insight, while getting the **packaging** wrong: typewriters, punched-card conversational engines, pneumatic mail, television-based social networks, cassette intelligence modules. **This does not mean all canonical technology actually works that way.**
 
-### 3.2 The in-universe phenomenon
+### 3.2 The rare timeline-slip rule
 
-The novel *NoöPunk* became a cult classic and then a **film, TV series, tabletop RPG and computer RPG**; **NoöPunk is a science-fiction genre in-universe**, not one franchise; and its fandom is a **subculture** with its own lifestyle, philosophy, iconography, slang, music, politics and aesthetics. Specific customs are **left open** rather than fixed here.
+The author sometimes uses a **different minor political name, consumer brand, election date, chronology detail or background invention** — suggesting error, imperfect translation, or a neighbouring possible timeline.
 
-Tommy is **still alive in Helsinki**, long known only to a cult readership, now recognised by literary scholars, courted by parapsychologists at several universities, and a highly eccentric media celebrity. **The ambiguity is preserved:** whether he received real precognition, was guided by VALIS, or accessed an alternative timeline is never settled. This is a **framing device**, not a licence to replace the scenario with metafiction.
+Keep these divergences **rare, identified, minor and non-cascading**. **Do not silently revise major canonical events, dates, countries, institutions, research evidence or causality.**
 
-### 3.3 Framing artefacts
+> Where the text is a **verified historical assertion** rather than a Pilgrim excerpt, use the **canonically correct** information. The future after the currently verified point can branch through player and faction agency.
 
-The diegetic furniture that carries the layer:
+### 3.3 Illustrative passage
 
-- marginalia by Pilgrim, in his own hand;
-- excerpts from **imaginary editions** of the novel;
-- academic analysis of the novel and of its predictions;
-- fandom ephemera — zines, letters, convention material, annotated reading lists;
-- psychedelic chapter headings;
-- seventies cover designs and faux archival diagrams;
-- **diegetic book-versus-reality comparisons** — the device that makes the framing pay off.
-
-**Tone discipline:** the future's ideological, geopolitical, social and ethical machinery stays **rigorous beneath the strange prose**. The comedy and the seriousness are not in tension; the comedy is *how* the seriousness gets told.
+> In the Year 2026 the Ministers consulted the Great Linguistic Engine. Fifty million citizens had deposited their passions into the public television wires, and the Engine, having read the whole quarrel in less than one second, announced that the Nation was suffering from six incompatible definitions of reality. Its operators inserted a fresh card deck. One card, mispunched, bore the date 2027.
 
 ### 3.4 The model: *The Iron Dream* (Norman Spinrad, 1972)
 
@@ -109,25 +122,43 @@ The issue names this as **the literary model for the framing device**, and a fra
 
 ---
 
+### 3.5 Framing convention
+
+Contrast an in-world **"Pilgrim, 1974 edition"** excerpt with an **"Editorial / Simulation note, 2026"** whenever a charming 1970s misconception might otherwise mislead the player.
+
+**Do not make the rulebook opaque parody.** Narrative flavour in controlled doses; **actual mechanics, instructions, timeline entries and scientific discussion remain clear.**
+
+### 3.6 Sound
+
+**Hawkwind's *Space Ritual* = #1** soundtrack and tone. **Neu!** = propulsive motorik and technological momentum. **Tangerine Dream's *Phaedra*** = cosmic, anomalous and metaphysical atmosphere. **Early Amon Düül II** = political upheaval and hallucinatory disorientation.
+
+Prefer **real period space rock / Krautrock / kosmische Musik** over generic retro synthwave. **Explicit negative:** not 1980s neon.
+
+**Licensing:** the original recordings are **references, not presumed cleared assets.** Commission or create original music, or license recordings separately.
+
+---
+
 ## 4. The boundary, stated once
 
 | Layer | Decides | May not decide |
 | --- | --- | --- |
-| **Presentation** (this document) | typography, palette, illustration, interface skin, cover art, marginalia, prose voice, the 1974 vocabulary a device is described in | what is true in the simulation, what a mechanic does, what the timeline contains |
-| **Canon** (`RULEBOOK.md`, the rulebook, canon data) | setting, chronology, factions, institutions, technology, NHI/PSI/AGI concepts, rules and their outcomes | how it is illustrated or narrated |
+| **Presentation** (this document) | typography, palette, illustration, comics language, interface skin, cover art, marginalia, prose voice, the 1974 vocabulary a device is described in | what is true in the simulation; what a mechanic does; what the timeline contains |
+| **Canon** (`RULEBOOK.md`, the rulebook, canon data) | setting, chronology, factions, institutions, technology, NHI/PSI/AGI concepts, rules and outcomes | how it is illustrated or narrated |
 
-**Aesthetic reskinning must not quietly alter the underlying simulation, chronology, canon or functionality.** That sentence is the acceptance test for every artefact this layer produces.
+**Aesthetic reskinning must not quietly alter the underlying simulation, chronology, canon or functionality.** That sentence is the acceptance test for every artefact in this layer.
+
+**Accessibility is a hard constraint throughout.** Psychedelic visuals must not compromise navigation, readability, data interpretation or operational UI.
 
 ---
 
-## 5. The discrepancy register — templates for non-disruptive slippage
+## 5. The discrepancy register
 
-Keep such mistakes **rare, conspicuous, and usually insignificant** to major events and systems. Four kinds, each with its display convention:
+Four kinds, each with a display convention. All are **rare, conspicuous and insignificant** to major systems, and **none may move a canonical outcome**.
 
-1. **The mistranslated device.** A real capability rendered in 1974 materials — a datacentre drawn as a room-sized thinking machine feeding on punched cards. **Display:** the illustration is period; a caption or footnote gives the accurate underlying capability. *Capabilities, networking and performance are unchanged.*
-2. **The misnamed detail.** Pilgrim predicts an event correctly but gets a minor consumer product or the medium of communication wrong. **Display:** leave the event intact; flag the discrepancy in marginalia. Never let the wrong detail move a canonical outcome.
-3. **The anachronistic witness.** A reference to something published after 1974 (including *The Man Who Fell to Earth*, 1976) appears near the 1974 material. **Display:** attribute it to a **later edition or adaptation**, explicitly — the anachronism is the *editions'* negotiation, not the man's memory.
-4. **The neighbouring timeline.** A rare alternative-history note suggests Pilgrim saw a divergent branch. **Display:** mark it as unconfirmed and **do not** let it rewrite NoöPunk's canonical historical sequence. It adds mystery; it does not edit history.
+1. **The mistranslated device.** A real capability rendered in 1974 materials — a datacentre drawn as a room-sized thinking machine feeding on punched cards. **Display:** period illustration; caption or footnote gives the accurate capability. *Capabilities, networking and performance unchanged.*
+2. **The misnamed detail.** An event predicted correctly, a minor product or communication medium wrong. **Display:** leave the event intact; flag the discrepancy in marginalia.
+3. **The anachronistic witness.** A post-1974 reference (including *The Man Who Fell to Earth*, 1976; *Métal Hurlant*; Vallée's *The Invisible College*, 1975; Marks and Kammann, 1978) near 1974 material. **Display:** attribute it to a **later edition, revision or adaptation** — the anachronism is the *editions'* negotiation, not the man's memory.
+4. **The neighbouring timeline.** A rare alternative-history note. **Display:** mark it unconfirmed; it adds mystery and **must not** rewrite the canonical historical sequence.
 
 ---
 
@@ -141,17 +172,16 @@ Keep such mistakes **rare, conspicuous, and usually insignificant** to major eve
 >
 > *(Marginalia, Pilgrim, 1976: "I got the year wrong. It was sooner. I got the cassette wrong too — there is no cassette. I keep the cassette because I can draw it.")*
 
-*What this demonstrates:* the period voice carries a **correct** account of institutional capture, with the error confined to a recording medium, and the correction attributed to Pilgrim himself rather than to the editor.
-
 ### 6.2 Marginalia convention
 
-> `[TP]` — Pilgrim's own hand, in-period. May be wrong; is always sincere.
+> `[TP]` — Pilgrim's own hand, in-period. May be wrong; always sincere.
 > `[ED. n]` — an editor of a later edition. Corrects facts, never the story.
-> `[ARCHIVE]` — faux archival apparatus. Dates, provenance, catalogue numbers; period-styled.
+> `[ARCHIVE]` — faux archival apparatus: dates, provenance, catalogue numbers, period-styled.
+> `[SIM 2026]` — **Editorial / Simulation note.** Required wherever a 1974 misconception could mislead; states the canonically correct information.
 
 ### 6.3 Interface styling note
 
-> **Panel: network overview.** Rendered as an oscilloscope trace over graph paper, with a paper-tape readout listing node labels. **Function:** unchanged — the same nodes, edges and filters; keyboard-navigable; every value legible as text. The skin is period; the data contract is not. *Accessibility is unaffected because the underlying component is the existing one.*
+> **Panel: network overview.** Rendered as an oscilloscope trace over graph paper, with a paper-tape readout listing node labels. **Function:** unchanged — the same nodes, edges and filters; keyboard-navigable; every value legible as text; a reduced-motion alternative is provided. The skin is period; the data contract is not. *Accessibility is unaffected because the underlying component is the existing one.*
 
 ### 6.4 Alt-history discrepancy notice
 
@@ -159,48 +189,77 @@ Keep such mistakes **rare, conspicuous, and usually insignificant** to major eve
 
 ---
 
-## 7. Licensing and provenance
+## 7. The 1970s reference shelf
 
-NoöPunk is intended as a **Creative Commons** project using **homebrewed, reskinned and modified mechanics** inspired by or adapted from the works below. The licences are **not interchangeable**, and this document does not claim they are.
+Actual 1970s intellectual world, used as **vocabulary, bookshelves, documents and laboratory aesthetics**. This is **history of ideas — not validation of unproven UFO or psi hypotheses.**
+
+| Domain | Period source / claim | Use in NoöPunk | Caution |
+| --- | --- | --- | --- |
+| Futurology | **Alvin Toffler, *Future Shock* (1970)** | Characters describe mass disorientation as *future shock*; anticipate institutional lag | Sociological forecasting, not supernatural foresight |
+| Systems futurology | **Donella Meadows et al., *The Limits to Growth* (1972)**, World3 scenarios | Computer-generated global futures; line-printer graphs, scenario charts, interdependent variables | **Conditional model scenarios**, not precise forecasts of fixed events |
+| Scientific ufology | **J. Allen Hynek, *The UFO Experience* (1972)** | UNSA predecessors' coded case reports, witness interviews, unexplained categories | Unexplained sightings are **not** proof of extraterrestrial/NHI origin |
+| Speculative ufology | **Jacques Vallée, *The Invisible College* (1975)** | Debate on psychological, cultural, interdimensional or anomalous-contact models | **Post-1974:** later revisions, design research or commentary. Hypotheses unverified |
+| Parapsychology | **Targ and Puthoff, "Information transmission under conditions of sensory shielding"**, *Nature* (1974) | Shielded-room experiments, remote-viewing sketches, sensor arrays, blind targets, grant reports | Findings **disputed**; published **18 October 1974**, which may **postdate** Tommy's unspecified 1974 concert/download — do not assume he had read it |
+| Critical scrutiny | **Marks and Kammann, "Information transmission in remote viewing experiments"**, *Nature* (1978) | Contradictory reports and sceptical internal review; distinguish conclusions from data | Later replication **did not verify** Targ/Puthoff. Later commentary, **not** a 1974 text |
+
+**Interpretation guideline.** Represent 1970s scientific **uncertainty and competing expectations**, not a fake consensus. It is legitimate in NoöPunk *fiction* for later 2026 in-world revelations to vindicate an earlier prediction; those later fictional facts **must not be presented as a real-world scientific discovery**. **1974 Pilgrim can have visions of later work, but his contemporary footnotes must accurately distinguish what had and had not yet been published.**
+
+---
+
+## 8. Licensing and provenance
+
+A **Creative Commons** project using **homebrewed, reskinned and modified mechanics** inspired by or adapted beneath. The licences are **not interchangeable**, and this document does not claim they are.
 
 | Source | Licence |
 | --- | --- |
-| **Fate Core System** (Evil Hat Productions), SRD | **Creative Commons Attribution 3.0 Unported (CC BY 3.0)**; also offered separately via OGL 1.0a. |
-| **Transhumanity's Fate** (Posthuman Studios; Macklin and Graham) | **CC BY-NC-SA** |
+| **Fate Core System** (Evil Hat), SRD | **CC BY 3.0 Unported**; also offered separately via OGL 1.0a |
+| **Transhumanity's Fate** (Posthuman Studios) | **CC BY-NC-SA** |
 | **Eclipse Phase Second Edition** (Posthuman Studios) | **CC BY-NC-SA 4.0 International**, subject to the publisher's stated exceptions |
 
 **Guardrails, binding:**
 
-- The **Fate CC BY permission does not override** the noncommercial/share-alike restrictions on anything copied or adapted from *Transhumanity's Fate* or *Eclipse Phase*. **CC BY-NC-SA material stays noncommercial**, and derivatives of it stay share-alike.
-- **Do not** declare the project as a whole commercially reusable under CC BY, and **do not** assert that all components share a single licence. Mixed CC-BY and CC-BY-NC-SA components are **incompatible at the whole-project level** unless and until the provenance is audited.
-- **Verify the exact edition and file notices and exceptions at release time**, and maintain attribution, licence notices and notices of modification for derivative material.
-- **Separate generic mechanical ideas from copied protected expression.** Ideas are not the licensable part; expression is.
+- The **Fate CC BY permission does not override** the noncommercial/share-alike restrictions on anything from *Transhumanity's Fate* or *Eclipse Phase*. CC BY-NC-SA material stays noncommercial and its derivatives stay share-alike.
+- **Do not** declare the project as a whole commercially reusable under CC BY, and **do not** assert a single project-wide licence. Mixed CC-BY and CC-BY-NC-SA components are **incompatible at whole-project level** until provenance is audited.
+- **Verify the exact edition and file notices and exceptions at release time**; maintain attribution and notices of modification.
+- **Separate generic mechanical ideas from copied protected expression.**
 - This is a **provenance record, not legal advice**, and it authorises no release. The licence choice is the author's.
+- **Illustrations, panels and music are references, not assets.** Comics references supply a *language*, never reproducible panels; the named recordings are not presumed cleared.
 
-**The crucial distinction, restated because it is load-bearing:** NoöPunk's **timeline, lore, factions, species, politics, institutions, NHI/PSI/AGI concepts and scenario are entirely different from Eclipse Phase's.** NoöPunk is **not** set after Eclipse Phase's Fall; resleeving and cortical stacks remain rare and novel; and natural PSI is **not** an alien-virus-derived condition. The adapted mechanics do not import the setting.
-**Where the licence authority lives, so this table cannot drift.** This section states the conditions; the **ledger is the authority**, and it is what a release gate reads. `docs/sources/EXTERNAL_SOURCE_LICENSES.md` (issue #60) carries the per-source findings and the file-level boundary — that noncommercial and share-alike conditions attach per file, and that a file mixing Eclipse-Phase-derived material cannot be re-licensed under an incompatible licence. `docs/sources/GAME_SYSTEM_RIGHTS.md` with `data/sources/game_system_rights.json` carries the rights record and the recommended release licence. `docs/sources/ATTRIBUTION.md` records that the licence is **not yet chosen** and points at issue #231's criterion 1. If this table and the ledger ever disagree, **the ledger wins and the disagreement is the finding** — not a wording preference to be settled here.
-
----
-
-## 8. Non-goals
-
-- It defines **no** rule, mechanic, statistic, threshold, cost or outcome, and no scenario, faction or timeline fact.
-- It **restates no rulebook text**; §1.4, §2.2 and §35.8 are the authority for the narrative layer, and this document cross-references rather than duplicates them.
-- It **adds no reference** to the locked hierarchies. *Zardoz* #1, PKD #1, *Space Ritual* #1, and only the named set.
-- It **does not** treat the out-of-universe bibliography as Pilgrim's 1974 library. Works published after 1974 enter, if at all, as **later commentary or adaptation**, and the Miéville novels in particular must never be read as 1974 influences.
-- It **does not** resolve whether Pilgrim's precognition was real, VALIS, or a neighbouring timeline.
-- It carries **no automated test** ([#271](https://github.com/TomiToivio/NooPunk/issues/271)).
+**Load-bearing distinction:** NoöPunk's **timeline, lore, factions, species, politics, institutions, NHI/PSI/AGI concepts and scenario are entirely different from Eclipse Phase's.** NoöPunk is **not** set after the Fall; resleeving and cortical stacks remain rare; natural PSI is **not** virus-derived.
 
 ---
 
-## 9. Cross-references
+## 9. Non-goals
 
-- `RULEBOOK.md` **§1.4 "How this book came to exist: Tommy Pilgrim, 1974"** — the Tommy Pilgrim introduction (the narrative text this document styles)
-- `RULEBOOK.md` **§2.2 "Event cards: how this history reaches the table"** — event cards
-- `RULEBOOK.md` **§35.8 "Sound and music"** — sound and music
-- Issue [#447](https://github.com/TomiToivio/NooPunk/issues/447) — this brief, including the locked reference set and the presentation-versus-reality rule
-- `RULEBOOK.md` **§35.3 "Fiction books"** — the bibliography entry for *The Iron Dream*, with the same guard as §3.4
-- Licence authority, which the release gate reads rather than this document: `docs/sources/EXTERNAL_SOURCE_LICENSES.md`, `docs/sources/GAME_SYSTEM_RIGHTS.md`, `data/sources/game_system_rights.json`, `docs/sources/ATTRIBUTION.md`
+- No rule, mechanic, statistic, threshold, cost, outcome, scenario, faction or timeline fact.
+- It **restates no rulebook text**; §1.4, §2.2 and §35.8 are the authority for the narrative layer.
+- It **adds no primary film or literary reference** beyond the named set and §2.2's graphic additions.
+- It does **not** treat the out-of-universe bibliography as Pilgrim's 1974 library; post-1974 works enter only as later commentary or adaptation. The Miéville novels must never be read as 1974 influences.
+- It does **not** resolve whether Pilgrim's precognition was real, VALIS, or a neighbouring timeline.
+- No automated test ([#271](https://github.com/TomiToivio/NooPunk/issues/271)).
 
-**Numbering caution.** `RULEBOOK.md` carries **two** headings numbered `2.2`: *"Event cards: how this history reaches the table"* and *"AI as ideological conflict"*. Every citation above therefore names the heading as well as the number, so the reference cannot resolve to the wrong section. The duplicate numbering is pre-existing and is **flagged, not fixed** here — renumbering a ledger section is a separate change with its own reference-graph consequences.
+---
 
+## 10. Acceptance position against the issue's checklist
+
+| Issue check | Position |
+| --- | --- |
+| Enforce *"made in 1974, not set in 1974"* for art, prose and presentation | **§1, §4** — stated as the governing maxim |
+| Add Mœbius and *Valérian* prominently to graphic references, *Zardoz* staying #1 | **§2.2** — with the *Métal Hurlant* chronology caveat; the rulebook's §35 visual list also gains them |
+| Prototype an accessible illustrated UI/event card and one punch-card LLM scene | **§2.5(1), §2.5(5), §2.6, §6.3** — specified, **not built**; a prototype is a separate deliverable and no art bible exists yet |
+| 1970s futurology/ufology/parapsychology flavour, exposition readable | **§3.1, §3.4** |
+| Annotate minor slippages rather than silently changing canon | **§3.2, §5, §6.4** |
+| Period references and correct pre/post-1974 chronology in the sources list; label contested claims | **§7** — with the rulebook sources gaining the same |
+| Retain Hawkwind, Neu!, Tangerine Dream, Amon Düül II; licences separate | **§3.5** |
+
+---
+
+## 11. Cross-references
+
+- `RULEBOOK.md` **§1.4 "How this book came to exist: Tommy Pilgrim, 1974"** — the narrative text this document styles
+- `RULEBOOK.md` **§2.2 "Event cards: how this history reaches the table"**
+- `RULEBOOK.md` **§35 "Sources, recommended reading, and influences"** — the film and literature lists, where the graphic references and the period shelf are added
+- `RULEBOOK.md` **§35.8 "Sound and music"**
+- Issue [#447](https://github.com/TomiToivio/NooPunk/issues/447) — this brief
+
+**Numbering caution.** `RULEBOOK.md` carries **two** headings numbered `2.2`: *"Event cards: how this history reaches the table"* and *"AI as ideological conflict"*. Citations therefore name the heading as well as the number. The duplicate is **flagged, not fixed** — renumbering a ledger section is a separate change with its own reference-graph consequences.
