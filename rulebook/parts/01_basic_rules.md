@@ -121,7 +121,7 @@ The timeline above describes transformations; a campaign needs them to *land*. T
 
 - a card carries its **epistemic kind** — a canonical timeline event, an in-universe rumour, a scenario-local invention — on the same never-silently-upgraded rule the rest of the project uses;
 - a card is a **delivery mechanism for setting events**, not a new rules subsystem, and must not import statistics, thresholds or resolution procedures this rulebook has not approved;
-- the existing authored material is the starting point to reconcile with rather than duplicate: the crisis/event rows in `docs/design/NOOPUNK_GLOBAL.md` and the five scenario event cards in `strategy_game/data/ukweli_local.json`.
+- the existing authored material is the starting point to reconcile with rather than duplicate: the **eleven authored `event_card_seeds` already recorded with the global faction roster** (`strategy_game/data/global_factions.json`), the crisis/event rows in `docs/design/NOOPUNK_GLOBAL.md`, and the five scenario event cards in `strategy_game/data/ukweli_local.json`. One default timeline built over these seeds — not a second deck beside them, drifting.
 
 ---
 

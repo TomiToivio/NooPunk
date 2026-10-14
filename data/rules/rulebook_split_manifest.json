@@ -5,7 +5,7 @@
   "issue": 232,
   "source": "RULEBOOK.md",
   "$only_edit": "The navigation block linking this index. Never the body.",
-  "source_sha256": "68cbcf509f470ea6831817b314485e82b79569417992facfd723a8487d643476",
+  "source_sha256": "6c7fbda1c4a3179e624f3f11d8066b24216842036922772bc8ce19001cfbf1db",
   "appendix_marker": "# Extended canon and reference material",
   "section_count": 63,
   "parts": {
@@ -24,7 +24,7 @@
           "kind": "core",
           "number": 2,
           "heading": "## 2. History: The Singularity Is Past",
-          "body_sha256": "bcb21ab5729a87657c41a03af41a332d10254795aceda3df92412378623b1aec",
+          "body_sha256": "abf6f7a6e9d1bf4a26c35a90f9f936a7c221cf37d995a5b6f7695da513009075",
           "body_lines": 37
         },
         {
@@ -510,8 +510,8 @@
           "kind": "appendix",
           "number": 35,
           "heading": "## 35. Sources, recommended reading, and influences",
-          "body_sha256": "3948ebc3c330ae8fd6e9ff229455ed38a58629dbda64e286913e73a80f8610e9",
-          "body_lines": 239
+          "body_sha256": "6799c1b9f489a87fdbdc594320fab56a8e08cfefc3ca0102815b36e34e6138a9",
+          "body_lines": 235
         },
         {
           "kind": "appendix",

@@ -168,7 +168,7 @@ The timeline above describes transformations; a campaign needs them to *land*. T
 
 - a card carries its **epistemic kind** — a canonical timeline event, an in-universe rumour, a scenario-local invention — on the same never-silently-upgraded rule the rest of the project uses;
 - a card is a **delivery mechanism for setting events**, not a new rules subsystem, and must not import statistics, thresholds or resolution procedures this rulebook has not approved;
-- the existing authored material is the starting point to reconcile with rather than duplicate: the crisis/event rows in `docs/design/NOOPUNK_GLOBAL.md` and the five scenario event cards in `strategy_game/data/ukweli_local.json`.
+- the existing authored material is the starting point to reconcile with rather than duplicate: the **eleven authored `event_card_seeds` already recorded with the global faction roster** (`strategy_game/data/global_factions.json`), the crisis/event rows in `docs/design/NOOPUNK_GLOBAL.md`, and the five scenario event cards in `strategy_game/data/ukweli_local.json`. One default timeline built over these seeds — not a second deck beside them, drifting.
 
 ---
 
@@ -4200,11 +4200,7 @@ Seed this list from works already cited elsewhere in the rulebook, including:
   reality, colonization, drugs, and ontological intrusion.
 - **William Gibson — _Neuromancer_.** Cyberspace, cyberpunk social structure, and
   networked power.
-- **Norman Spinrad — _The Iron Dream_ (1972).** A novel presented as the work of an
-  alternate-history Adolf Hitler — the real author is Spinrad, and the presentation includes its
-  own critical apparatus. The device NoöPunk takes from it is **precognitive futurology**: a book
-  whose fiction is read as forecast, so that its accuracy becomes the story. §1.4 uses exactly
-  that frame for Tommy Pilgrim. The influence here is the device, not the politics.
+- **Norman Spinrad — _The Iron Dream_ (1972).** A metafictional novel that presents itself as the work of an alternate-history Adolf Hitler who emigrated to the United States in 1919 and became a pulp science-fiction illustrator and writer. The nested novel is **_Lord of the Swastika_**, followed by a faux-scholarly afterword by the fictional critic **Homer Whipple**; the fictional attribution is part of the conceit, and the satire is the point — the American Nazi Party put the book on its recommended reading list anyway, which is exactly why NoöPunk borrows **the metafictional frame and never the nested book's fascist ideology**. What §1.4 takes from it is **precognitive futurology**: a book read as forecast, so that its accuracy becomes the story. A 1972 work therefore precedes Pilgrim's 1974 download and can inform his in-universe frame, unlike *Cosmic Trigger* (1977) or *The Shockwave Rider* (1975). *Out-of-universe resonance:* Hawkwind's *Quark, Strangeness and Charm* (1977) carries an instrumental titled "Iron Dream" — after the download, so it belongs to the modern layer, not to Pilgrim's sources.
 - **Robert Anton Wilson — _Illuminatus!_ (1975, with Robert Shea) and _Cosmic Trigger I_
   (1977, non-fiction).** Countercultural epistemology, conspiracies, psychedelic humour and
   philosophical ambiguity — the register that lets §1.4's ambiguity stay unresolved.
