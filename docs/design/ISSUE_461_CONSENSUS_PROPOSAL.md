@@ -23,7 +23,7 @@ The four proposals are one design written four times; there is no sixth architec
 | **A mission names which of the six quantities it aims at.** No universal scalar. | `quantities.py`; `MissionDeclaration.quantity` |
 | **A scene settles an already-committed order and buys nothing.** | all four |
 
-## 2. Two corrections to this document's earlier editions, adopted
+## 2. Four corrections adopted — two of them aimed at the second landed document
 
 1. **"FORCED BY ARITHMETIC" was too strong.** The arithmetic proves that a **difficulty number cannot express a very hard mission** (P(success) = `0.0000` at skill − difficulty ≤ −4; ~four informative ladder steps). It does **not** prove a clock is mandatory — gates, opposed tests and staging are legitimate. **Some** device beyond the ladder is required; which device is the author's, and no fixed N-segment clock is pre-approved.
 2. **The tempo table is an upper bound, not a forecast** — it assumes every character spends every order on the same clock at equal odds.
@@ -89,7 +89,7 @@ The Fate Core SRD page I read states its own licence — *Creative Commons Attri
 
 **Fork 2 — the board is a gate, not a modifier.** *Recommended:* position decides **legality and reach**; the GM's difficulty stays the only number in a check. The repository already does this (`cyber.py::resolve_access` — *"No numbers, no odds"*), and the design record's rule is **"gate vs modify — never both."** §4.2 adds EP's corroboration: even EP caps stacked modifiers rather than letting them accumulate.
 
-**Fork 3 — the MVP is one gated check per order.** *Recommended:* one order → one bounded resolution → one applied outcome, with an optional scene that narrates it and grants nothing; staged missions deferred. Nothing in the repository reads a clock today. **This does not contradict §2's correction** — for a genuinely hard undertaking something beyond the ladder will be needed, and that is `mission_resolution`'s call.
+**Fork 3 — the MVP is one gated check per order.** *Recommended:* one order → one bounded resolution → one applied outcome, with an optional scene that narrates it and grants nothing; staged missions deferred. Nothing in the repository reads a clock today. **This does not contradict §2's correction** — for a genuinely hard undertaking something beyond the ladder will be needed, and **Fork 4 names what**: a challenge, a contest or a conflict. Which of those the MVP uses stays `mission_resolution`'s call, and the single-check recommendation above is what an MVP looks like if the answer is "the plain overcome roll".
 
 **Fork 4 — a mission's hardness is a choice among structures Fate already defines, not a device to invent.** *Recommended:* the opening of the SRD chapter is the licence — *"Most of the time, a single skill roll should be enough … Sometimes, however, you'll be in a situation where you're doing something really dramatic and interesting … it's a good idea to zoom in on the action and use multiple skill rolls."* The chapter then names **three** ways to zoom in: a **challenge** (*"a series of overcome actions … to resolve an especially complicated or dynamic situation"*), a **contest** (two or more characters racing to a goal), and a **conflict** (mutual harm, resolved with stress and consequences). With the plain overcome roll that is **four structures**, and the choice among them is `mission_resolution`.
 
@@ -116,7 +116,7 @@ The Fate Core SRD page I read states its own licence — *Creative Commons Attri
 | 9 | **★ Is character generation a five-or-six-step reduction of EP's thirteen, on the existing card?** | §4.2; the brief's "simplify further" and the "compact sheet" criterion |
 | 10 | **★ Does the capability gate require a GM-approved stunt, or does the `competence` tag alone refuse an order at declaration time?** | the two landed documents propose different mechanisms for one thing: this document's §4.1 (a **stunt**, priced in **refresh**) and `ISSUE_461_RESKIN_SPEC.md` §2.5 (a **typed competence field**). They reconcile cleanly on one reading — **the tag is the bookkeeping, the stunt is the mechanism, refresh is the price** — in which case the only real question is whether a tag alone can refuse at declaration, or whether GM-approved stunt acquisition is the stricter requirement |
 
-**Decisions 6–9 are new to the thread** and come only from reading the SRDs. Decision 7 is the one I would call the most valuable, because it **deletes** a subsystem the four proposals were designing: the SRD already has the mechanism and the price.
+**Decisions 6–9 are new to the thread** and come only from reading the SRDs; **decision 10** is new to *this* edition and is the only one that resolves a disagreement between the two landed documents. Decision 7 is the one I would call the most valuable, because it **deletes** a subsystem the four proposals were designing: the SRD already has the mechanism and the price. **Decision 3 is the one most improved**, because it stopped being a design task and became a choice among structures Fate already defines.
 
 ## 7. What is not being reopened
 
