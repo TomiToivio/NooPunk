@@ -6,6 +6,9 @@
 
 ---
 
+
+> **2026-10-14 production decision:** The eventual game uses **indie retro graphics** designed with the above seventies psychedelic SF / European comics visual language. A runnable original-art, offline [1974 graphics prototype](../../strategy_game/render/retro_1974.html) and [indie-retro production guide](../../strategy_game/docs/INDIE_RETRO_ART_DIRECTION.md) demonstrate the intended look without changing canon, scenario or mechanics. Add **Mœbius** and ***Valérian et Laureline*** as the principal comics references beside the existing locked film hierarchy; *Zardoz* remains film reference #1.
+
 ## 1. The one rule
 
 > **Presentation is not canon.** The 1974 layer decides how NoöPunk *looks, sounds and is narrated*. It never decides what is *true in the simulation*.
