@@ -538,6 +538,9 @@ Seed this list from works already cited elsewhere in the rulebook, including:
   reality, colonization, drugs, and ontological intrusion.
 - **William Gibson — _Neuromancer_.** Cyberspace, cyberpunk social structure, and
   networked power.
+- **Jeff Noon — _Vurt_ (1993).** Psychedelic cyberpunk, shared dreamworlds, altered consciousness, human/nonhuman hybrids, and porous boundaries between constructed experience and ordinary reality. Inspiration for Noöspace, PSI and cyber-mediated realities.
+- **Adam Roberts — _The Thing Itself_ (2015).** Kantian philosophy, artificial intelligence, alien intelligence, and the possibility that reality exceeds human cognitive categories. Inspiration for contested ontologies and the AGI/NHI/PSI paradigm shift.
+- **qntm — _There Is No Antimemetics Division_ (2021).** Antimemes, information hazards, institutional memory failure, and anomalous-entity containment. Inspiration for UNSA investigations, cognitive warfare, counterintelligence, and mysteries whose evidence cannot reliably be remembered.
 
 Add further fiction when it materially shapes NoöPunk's tone, society, technology, or
 cosmology.
