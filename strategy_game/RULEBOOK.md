@@ -65,7 +65,7 @@ When a character acts **as an individual**, a check reads one of exactly six ski
 | **Somatics** | **SOM** | Exploiting bodily physical capabilities: strength, stamina, movement, sustained positioning |
 | **Willpower** | **WIL** | Self-control, mental fortitude, strength of personality |
 
-Rate them on the Fate ladder exactly as any Fate skill, using the conventional pyramid (+4 one, +3 two, +2 three, +1 four). Unrated skills are +0. The six are **broad on purpose**: they describe the kinds of thing a person can attempt, not the training a specialist has.
+Rate these six on the **Fate ladder** (e.g., +0 to +4); an unrated skill is +0. **Starting allocation is not yet specified for the six-skill list.** The standard Fate Core great pyramid assigns ten distinct ratings (+4 one, +3 two, +2 three, +1 four), so it **cannot** be applied literally to six skills. Do not generate ten slots, duplicate skills, or silently introduce a new distribution. Until the author approves a six-skill allocation, use GM-approved example ratings for playtests, and record the allocation and advancement rule as deferred. The six are **broad on purpose**: they describe the kinds of thing a person can attempt, not the training a specialist has.
 
 ### 3.1 The crosswalk, and the duplicate that must not survive
 
