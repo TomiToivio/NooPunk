@@ -558,10 +558,10 @@
     "Automated tests cover executable code only — never factions, lore or prose (#271)."
   ],
   "registers": {
-    "note": "This document holds two registers. The seven entries in `factions` are the paradigm formations authored in issues #328 and #329. The four entries in `un_parliamentary_parties` are the UN parliamentary parties authored on 2026-10-14 (issue #470), recorded alongside them so that one file holds one schema for stances, signifiers, axes and kind. The register question — whether these four belong in the paradigm register at all, and how the 4 / 7 / 11 counts relate — is OPEN and is NOT decided here (docs/design/STRUCTURAL_FORKS_AND_DECISIONS.md fork 3; docs/design/AUTHOR_DECISION_QUEUE.md rows D9 and D17).",
+    "note": "Two registers: seven historically authored global paradigm formations (not a roster of playable political parties), and exactly THREE playable UN parliamentary parties for 2045. Fourth Accelerationist party is archived as a non-playable antagonist. Whether the paradigm formations and parties should be unified is still an open design question.",
     "authoritative_for": [
       "paradigm stances (the five dimensions in stance_dimensions)",
-      "the qualitative six-quantity profiles of the four UN parties",
+      "the qualitative six-quantity profiles of the three playable UN parties",
       "core signifiers per entry"
     ],
     "not_authoritative_for": [
