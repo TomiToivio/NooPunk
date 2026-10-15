@@ -86,10 +86,19 @@ skill would turn betrayal into something the character rolls.
   them ([fate-srd.com/fate-core/skills](https://fate-srd.com/fate-core/skills)); each of the eighteen
   per-skill SRD pages resolves (`https://fate-srd.com/fate-core/<skill>`), which is how the mapping's
   source column was checked rather than remembered; Fate Core is CC BY 3.0 on the SRD's own licensing
-  line. Terra Invicta's councilor page states **eight** attributes and their one-line meanings, plus
-  that a faction starts with four councilors and may expand, and that missions are assigned in an
-  assignment phase
-  ([wiki.hoodedhorse.com/Terra_Invicta/Councilors](https://wiki.hoodedhorse.com/Terra_Invicta/Councilors)).
+  line. Terra Invicta's councilor page states **eight** attributes and their one-line meanings, that
+  a faction starts with four councilors and may expand, and that missions are assigned in an
+  assignment phase. Its mission model was read too: there is **no separate "skill" tier** — a
+  contested mission compares an attack stat against a defence stat, both drawn from the same eight
+  attributes — a councilor's usable mission set also comes from a profession and from equipped
+  organisations, and each attribute carries a mission family (recorded per proposed skill in
+  `data/strategic_skills.json::strategic_skills[].terra_invicta_missions`). Loyalty is used as the
+  defence stat of two missions and describes how likely a councilor is to defect, which is the
+  corroboration for keeping it out of the roster
+  ([wiki.hoodedhorse.com/Terra_Invicta/Councilors](https://wiki.hoodedhorse.com/Terra_Invicta/Councilors),
+  [/Missions](https://wiki.hoodedhorse.com/Terra_Invicta/Missions)). Both pages are Cloudflare-guarded,
+  so they were read through the wiki's own raw and mirrored pages; names and structure only, and no
+  value, weight, cost or duration was copied.
 - **Could not be verified here, and therefore not asserted.** *Transhumanity's Fate's own skill list
   and its additions to Fate Core.* The source rulebook is not in this repository, it is not reachable
   on the web in a usable form, and its CC BY-NC-SA terms forbid reproducing its text even if it were.
@@ -97,7 +106,10 @@ skill would turn betrayal into something the character rolls.
   landed `ISSUE_461_RESKIN_SPEC.md` §3.1 quotes the TF developer notes as doing deliberately
   ("avoided creating new concepts and wherever possible built off existing Fate Core concepts") — and
   the gap is recorded as an open item rather than filled with plausible names. **No TF skill name
-  appears anywhere in this edition that was not first verified as a Fate Core skill name.**
+  appears anywhere in this edition that was not first verified as a Fate Core skill name.** The
+  reference's own **action economy** is unverified in the same way: that a councilor attempts exactly
+  one mission per assignment phase is implied by the wiki's intel wording but not stated there, and
+  nothing in the crossover depends on it — the one-action turn is #461/#482's.
 - **Not touched, and not claimed.** `council.json`'s roster size and founder authority (open decisions
   `roster_size` / `founder_authority`), its ten author decisions, `local_slice.MISSIONS` (consumed by
   reference; four of its names are reused and the rest of the proposal is marked proposed), and

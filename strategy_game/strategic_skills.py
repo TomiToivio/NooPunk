@@ -61,6 +61,11 @@ class StrategicSkill:
     ``mission_kinds`` names the kinds of faction mission that would check it. Those names are part of
     the same proposal: they describe mission *shapes* (organisational, political, covert, ...), and
     they carry no difficulty, cost, odds or effect.
+
+    ``terra_invicta_missions`` is a **reference column**, not a mechanic: the names of the mission
+    families whose Terra Invicta attribute covers the same ground as this skill. Names only -- no
+    description, no attack/defence pairing and no value is taken, and the column exists so the
+    delegation of scope to a reference stays traceable instead of implicit.
     """
 
     id: str
@@ -70,6 +75,8 @@ class StrategicSkill:
     overlaps: str = ""
     #: What the skill is consolidated from on the Fate side, recorded so the mapping is traceable.
     consolidated_from: tuple[str, ...] = ()
+    #: The reference system's mission families for the same ground. Reference only.
+    terra_invicta_missions: tuple[str, ...] = ()
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -79,6 +86,7 @@ class StrategicSkill:
             "mission_kinds": list(self.mission_kinds),
             "overlaps": self.overlaps,
             "consolidated_from": list(self.consolidated_from),
+            "terra_invicta_missions": list(self.terra_invicta_missions),
         }
 
 
@@ -143,6 +151,9 @@ def roster_from_dict(data: Mapping[str, Any]) -> tuple[tuple[StrategicSkill, ...
                 overlaps=str(record.get("overlaps") or "").strip(),
                 consolidated_from=_strings(record.get("consolidated_from"), "consolidated_from",
                                            f"strategic_skills[{index}]"),
+                terra_invicta_missions=_strings(record.get("terra_invicta_missions"),
+                                                "terra_invicta_missions",
+                                                f"strategic_skills[{index}]"),
             )
         )
 

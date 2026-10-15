@@ -354,6 +354,38 @@ class ProposedRosterDataTests(unittest.TestCase):
         with self.assertRaises(SkillLayerError):
             validate_skill(ActionContext.FACTION_AGENT, "COG", strategic_roster=self.roster)
 
+    def test_the_reference_column_round_trips_and_is_shape_checked(self) -> None:
+        """The reference column is loader-validated data, not prose: a bare string is refused."""
+        import copy
+        import json
+        from pathlib import Path
+
+        from strategy_game import strategic_skills
+        from strategy_game.strategic_skills import StrategicRosterError, roster_from_dict
+
+        for skill in self.roster.values():
+            for name in skill.terra_invicta_missions:
+                self.assertIsInstance(name, str)
+                self.assertTrue(name.strip(), skill.id)
+            self.assertIn("terra_invicta_missions", skill.to_dict())
+
+        data = json.loads(Path(strategic_skills.DATA_PATH).read_text(encoding="utf-8"))
+        broken = copy.deepcopy(data)
+        broken["strategic_skills"][0]["terra_invicta_missions"] = "Control Nation"
+        with self.assertRaises(StrategicRosterError):
+            roster_from_dict(broken)
+
+    def test_the_reference_model_records_what_was_verified_and_what_was_not(self) -> None:
+        """A reference whose gaps are not recorded reads as though everything in it were checked."""
+        import json
+        from pathlib import Path
+
+        from strategy_game import strategic_skills
+        model = json.loads(Path(strategic_skills.DATA_PATH).read_text(encoding="utf-8"))["terra_invicta_model"]
+        self.assertTrue(model["verified"])
+        self.assertTrue(model["unverified"])
+        self.assertTrue(model["not_reproduced"])
+
 
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()
