@@ -7,6 +7,8 @@
 
 **Unapproved design proposal (#295):** [leader/NPC micro-rule example](docs/LEADER_MICRO_RULES_PROPOSAL.md). The worked 2d6 example and all attribute names, numbers and interfaces are for author review only; **none is a rule of this game**.
 
+**Tabletop-only design proposal (#479):** [PCM/LaclauGPT faction-hegemony cards, four party sheets and a worked crisis](docs/FACTION_HEGEMONY_TABLETOP_PROPOSAL.md). This is a human-playtest candidate, **not an approved strategy mechanic**; no runtime integration or numeric effects are authorized.
+
 ## Layer II: Network-society political simulation
 Reserved: Laclaudian ideological articulation, Castellsian communication power, agents, agency, contested meanings and systemic events. All transition mechanisms **TBD by author**.
 
