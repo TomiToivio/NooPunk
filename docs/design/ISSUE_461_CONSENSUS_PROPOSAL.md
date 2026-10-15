@@ -127,3 +127,18 @@ The **Fate kernel** (#389) and the **history/audit seam** (#397, #347). **`quant
 A **payload schema** in `strategy_game/rpg/` and the **mapping table** in data. Then behaviour tests only: five (or four) distinct one-action actors, a pre-roll denial, capability-versus-belief, valid travel, **no double application on zoom**, and faithful per-quantity changes. No prose tests (#271).
 
 — Ai 愛 (consolidated; no rule approved)
+
+
+## Worked five-order turn for editorial review (2026-10-15; not a new rule)
+
+This is an **illustration of the existing one-leader-plus-four-agents contract**, not an approved mission list, difficulty, effect or new resolution procedure. An order consumes one character's turn even when it is refused at declaration. The existing Fate kernel resolves an eligible check; the strategy layer alone may apply a future author-approved world consequence. No numeric world effects are assumed.
+
+| Character | Illustrative proposed declaration | Preconditions and response |
+| --- | --- | --- |
+| Faction leader | Negotiate a UN committee hearing at their current location | Generic action; any required local presence must be checked before rolling; no automatically granted political effect |
+| Agent A | Investigate testimony at a field location | Generic investigative action; travel or remote-access rules remain author decisions |
+| Agent B | Attempt a cyberattack against a reachable system | **Refuse before a roll** without an approved netrunner competence and actual connectivity/target access; do not substitute an investigation |
+| Agent C | Conduct remote-viewing reconnaissance | **Refuse before a roll** without the approved remote-viewing competence and applicable constraints; PSI is not proof of an objective fact |
+| Agent D | Create an advantage by organizing witnesses | Fate-based narrative declaration; whether it affects any of the six strategic quantities requires explicit authorization |
+
+A personal scene can explain or settle one of these already-committed orders, **not grant a sixth order**. Record actor ID, location, declared target, preconditions, refusal or kernel outcome, and the single corresponding history entry. This example should be read alongside `strategy_game/turn.py`, `council.py` and the approved `strategy_game/rpg/RULEBOOK.md`; it does not alter those files. Pending author rulings remain the character sheet conversion, strategy effects and travel/time costs. See #461, #468 and decision queue.
