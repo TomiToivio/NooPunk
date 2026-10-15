@@ -46,7 +46,19 @@ queue rows D3/D11 remain untouched: nothing here resolves a row.
 5. **A refused declaration is not counted as an action** by the ledger, because whether a refused order
    costs the turn is the strategy layer's open question (`refusal_effect`), and inventing an answer
    here would be inventing a rule. The ledger records only what it can decide.
-6. **Two metacurrencies are refused.** Fate points stay the only one; Eclipse Phase's pools become a
+6. **The capability gate is a parameter of the check, not advice in the rules text.** A gated move
+   passes `required_capability=`, the engine refuses it before any dice, and the capability is read
+   from the sheet's `competence` tags -- so the gate cannot be forgotten at the table and a gated
+   action cannot be rolled at a lower rating and read as a hard attempt. (Adopted after a sibling
+   implementation on the same issue proposed it as a first-class parameter; the *vocabulary* is this
+   repository's existing one rather than a second capability set.)
+7. **Both scales share the scene resolver, not just the dice.** A context-checked action goes through
+   `rpg/scene.py::check`, so tracked scene aspects with free invocations, rerolls, aspect invokes and
+   the fictional-permission flag all apply identically in a scene and in a mission. The rating to use
+   is handed in (`rating=`), because the strategic ladder lives beside the individual one -- but the
+   *actor* is always the character themselves, never a copy of the sheet, so Fate points spent and
+   invocations consumed are real.
+8. **Two metacurrencies are refused.** Fate points stay the only one; Eclipse Phase's pools become a
    design reference for what an invoke may be spent on, not a second economy. This matches the
    consolidated `#461` position and keeps the arithmetic of both scales the same.
 

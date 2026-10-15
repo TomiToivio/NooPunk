@@ -88,6 +88,8 @@ A narrow technical speciality is expressed on the sheet as **a stunt** (a named 
 
 **A capability is a competence, never a skill of its own.** PSI, netrunning and the other gated abilities are typed capabilities: they decide *whether* an action is available, and then the check reads one of the six. A precognitive impression is *INT*; contesting a mind is *WIL*. There is deliberately **no `Psi` skill** in the crossover — the earlier [rpg/RULEBOOK.md](rpg/RULEBOOK.md) §6 example predates the six-skill decision, and the kernel's own demonstrations use plain skill names because the kernel is setting-independent (§10).
 
+**The gate is enforced, not decorative.** A gated move declares the capability it needs — `check(…, required_capability="netrunner")` — and a character without it is refused **before any dice**; the capability is read from the sheet's `competence` tags, the same typed vocabulary `TELEPATH`, `REMOTE_VIEWER` and the netrunner archetype already use, so there is no second capability scheme and a `belief` can never be read as a capability. An ungated roll at a lower rating would look like a hard attempt rather than a refusal, which is the failure the gate exists to prevent.
+
 ## 4. Strategic agent skills (PROPOSAL — not approved)
 
 When the same character acts **as an agent or leader representing their faction**, a check reads a **strategic skill** instead. This is a **different list on the same sheet**, and issue #482 explicitly leaves the roster open. What follows is a worked proposal with its mapping, offered for design review.
@@ -136,6 +138,8 @@ The **four actions** are fixed, and the context is where the game lives:
 * **Defend** against an action, and against an attempt to create an advantage against you.
 
 An attack's positive shifts become a hit (§7); a defence that succeeds with style may grant a **boost** — a one-use, fleeting aspect. **The GM keeps everything else**: whether the action is possible at all, what the opposition is, and what a cost or complication looks like. The dice decide the outcome, not the fiction's permissions, and the engine reports mechanical signals without fabricating story.
+
+A context-checked action at **either** scale runs through the same scene resolver as any scene, so a tracked scene aspect's free invocation, a reroll, an aspect invoke and the fictional-permission flag all work identically whether the character is acting as an individual or for their faction — and resolution always happens against the character's own sheet, never a copy, so Fate points spent and invocations consumed are the real ones.
 
 **Two permissions are checked before any dice at either scale.** Reachability: a serious intrusion needs local access, a nearby position or a deployed proxy, and no roll grants reach the fiction did not. Capability: a special move needs its competence first — a cyberattack needs a netrunner capability, remote-viewing reconnaissance needs a PSI capability — and an ineligible declaration is **refused, not substituted** for something the character could do.
 

@@ -42,7 +42,9 @@ from .skills import (
     INDIVIDUAL_SKILLS,
     ActionContext,
     SkillLayerError,
+    capabilities_of,
     check,
+    require_capability,
 )
 from .run import (
     DEFAULT_SEED,
@@ -71,7 +73,9 @@ __all__ = [
     "ActionContext",
     "INDIVIDUAL_SKILLS",
     "SkillLayerError",
+    "capabilities_of",
     "check",
+    "require_capability",
     "skills",
     # the five seats and the one-action-per-character turn (issue #482)
     "AGENT_SEAT_COUNT",
