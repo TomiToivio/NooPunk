@@ -102,6 +102,11 @@ that any articulation *causes* an outcome.
 
 ## Implementation status
 
+The tabletop layer built on this vocabulary - faction sheets, PCM demand and event cards, an
+adversarial crisis and a one-page turn procedure - is in
+[../../docs/design/ISSUE_479_PCM_LACLAU_MECHANICS.md](../../docs/design/ISSUE_479_PCM_LACLAU_MECHANICS.md)
+(issue #479). It consumes this layer's containers and adds no rules.
+
 **Implemented and tested (containers only):** the vocabulary above, deterministic JSON round-trip,
 per-instance collections, the read-only queries `demands_of` / `signifiers_of`, the provenance
 separation, and the two boundaries (no LaclauGPT/adapter import, no numeric quantity).
