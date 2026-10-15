@@ -83,10 +83,10 @@ class BoundaryTests(unittest.TestCase):
         cls.data = load_un_political_discourse()
         cls.raw = DATA_PATH.read_text(encoding="utf-8")
 
-    def test_the_four_parties_are_the_authors_decision(self) -> None:
+    def test_the_three_parties_are_the_authors_decision(self) -> None:
         self.assertEqual(
             [party["id"] for party in self.data["parties"]],
-            ["libertarian_accelerationist", "true_humans", "unity_security_stability", "noosphere"],
+            ["true_humans", "unity_security_stability", "noosphere"],
         )
         self.assertIs(self.data["simulation_rules_approved"], False)
 
@@ -135,7 +135,7 @@ class DiscourseModelTests(unittest.TestCase):
 
     def test_relations_use_the_declared_vocabulary_and_name_their_basis(self) -> None:
         states = self.data["relation_states"]
-        self.assertGreaterEqual(len(self.data["relations"]), 4)
+        self.assertGreaterEqual(len(self.data["relations"]), 3)
         for relation in self.data["relations"]:
             with self.subTest(pair=relation["between"]):
                 self.assertIn(relation["state"], states)
