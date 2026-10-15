@@ -166,3 +166,30 @@ Row **D17** on `main` already carries the succession, register and magnitude que
 by this branch (D18–D21) cover only what D17 does not: the roster's scope, the style-reference filing
 and the coercive-plank question, and #469's remaining approvals. No decision is made here, and both
 issues stay open, as each instructs.
+
+
+## MJ-12 / Legacy Program compatibility decision sheet (2026-10-15; options, not canon)
+
+The issue #470 addendum proposes a useful reconciliation of **fictional** reverse engineering with the human-vs-Orion technology gap. Keep this separate from the four-party register: the Legacy Program is not an additional playable party, and disclosure remains an **unordered `20XX` background event**, with 2045 as the default scenario opening year. This is a design hypothesis, not a real-world evidentiary claim about MJ-12, ARVs or secret bases.
+
+| Open choice | Conservative baseline **proposal** | Alternative to weigh | Guardrail |
+| --- | --- | --- | --- |
+| Legacy/UNSA relationship | Partial transfer of records, personnel and few serviceable artifacts, with residual compartmentalized networks | Full public institutional absorption or an autonomous clandestine rival | Never add a fifth playable political faction |
+| Operational ARVs | A scarce investigative/reconnaissance asset whose reliability and maintenance are unresolved | Museum-grade prototypes, unreliable experimental vehicles, or more mature but strategically outclassed craft | No readily mass-produced near-peer Earth fleet |
+| Two technology streams | Distinguish AGI-accelerated inventions from fragmentary ET-derived components, and permit ambiguous mixed provenance | Leave individual devices' origins completely disputed | Technological *capability* is not proof of a particular origin |
+| Disclosure | Competing in-world reports, later official US acknowledgement, incomplete accessible archives | Fractured or qualified acknowledgement | No precise `20XX` sequence or automatic public consensus |
+| Combat asymmetry | Intelligence, logistics, attrition and political constraints matter more than a single superior weapon | Emphasize reverse-engineering knowledge gaps and incompatible supply chains | Orion remains dangerous; Confederacy motives stay ambiguous |
+
+**Author decisions still needed:** number and availability of functional ARVs; authority over residual secret installations; what specific hardware survives in 2045; which institutions can independently verify provenance; how any of this affects UNSA missions. None is assigned a number, effect, modifier or event card here. Link eventual approved facts to the *existing* faction/world records and #468/#469 Reality Tunnel interpretation pipeline rather than creating a parallel MJ-12 roster. A disclosure card can be read in four ways by the four UN parties without giving the player omniscient access to its truth.
+
+
+## Shared 2045 scenario / Reality Tunnel illustration (#468, #469)
+
+**Same event, four interested readings; no new canon or game mechanics.** A disputed document claims that an ARV component transferred to UNSA was built using both legacy reverse-engineering work and an AGI-designed subsystem. The document is **alleged** until independently checked. The event can be read in the existing `paradigm_readings.py` vocabulary without promoting interpretation to observation:
+
+- **Libertarian Accelerationists:** emphasize suppressed private innovation and demand access to the component; the leap from a leak to a justified special economic zone is political rhetoric.
+- **True Humans:** frame the same document as evidence that humanity has been secretly compromised; their call to purge nonhumans does not turn allegation into verified fact.
+- **Unity, Security and Stability:** emphasize chain of custody, classification, public safety and continuity of UNSA oversight; secrecy may be a strategy rather than proof that a report is false.
+- **The Noösphere:** emphasize common stewardship, transparent provenance and human/noetic consent, while its pro-Confederacy wing may misread ambiguous technology as benevolent contact.
+
+Record **observation / corroboration / claim / interpretation separately**, leave the component's origin unresolved, and let new evidence change a party's account without auto-changing the physical world. This example is for editorial use and may eventually be adapted into the existing event seed system **only after author approval**, not as an eleventh-plus-one surprise event. In the 2045 starting scenario, functional national institutions and contested UN sovereignty coexist with war-damaged regions; an ARV revelation must not imply a completed global Fall or a fixed order for the `20XX` disclosures.

@@ -283,3 +283,10 @@ A **Creative Commons** project using **homebrewed, reskinned and modified mechan
 - Issue [#447](https://github.com/TomiToivio/NooPunk/issues/447) — this brief
 
 **Numbering caution.** `RULEBOOK.md` carries **two** headings numbered `2.2`: *"Event cards: how this history reaches the table"* and *"AI as ideological conflict"*. Citations therefore name the heading as well as the number. The duplicate is **flagged, not fixed** — renumbering a ledger section is a separate change with its own reference-graph consequences.
+
+
+## Additional contemporary reading shelf (2026-10-15; out-of-universe only)
+
+The author identified **Jeff Noon, *Vurt* (1993)**, **Adam Roberts, *The Thing Itself* (2015)**, and **qntm, *There Is No Antimemetics Division* (2021)** as strongly NoöPunk-adjacent references. They suggest respectively altered-media/countercultural subjectivity, Kantian/AI metaphysics, and organizations managing phenomena that disrupt knowledge and memory.
+
+These **post-1974** works enrich the present-day author and adaptation team's reading shelf. They are **not** sources that Tommy Pilgrim could have read before his 1974 VALIS experience, do not displace *Zardoz*, PKD or *Space Ritual* from their established primacy, and do not establish canon facts, gameplay powers or visual borrowings. Keep any specific borrowing subject to the project's attribution and rights review.
