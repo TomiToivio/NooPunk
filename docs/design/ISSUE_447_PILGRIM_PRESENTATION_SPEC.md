@@ -287,6 +287,6 @@ A **Creative Commons** project using **homebrewed, reskinned and modified mechan
 
 ## Additional contemporary reading shelf (2026-10-15; out-of-universe only)
 
-The author identified **Jeff Noon, *Vurt* (1993)**, **Peter Watts, *The Thing Itself* (2015)** [**correction needed: *The Thing Itself* is by Adam Roberts**], and **qntm, *There Is No Antimemetics Division* (2021)** as strongly NoöPunk-adjacent references. For bibliographic accuracy, credit *The Thing Itself* to **Adam Roberts**; the mistaken attribution is shown here only as an editorial correction, not as a source claim. They suggest respectively altered-media/countercultural subjectivity, Kantian/AI metaphysics, and organizations managing phenomena that disrupt knowledge and memory.
+The author identified **Jeff Noon, *Vurt* (1993)**, **Adam Roberts, *The Thing Itself* (2015)**, and **qntm, *There Is No Antimemetics Division* (2021)** as strongly NoöPunk-adjacent references. They suggest respectively altered-media/countercultural subjectivity, Kantian/AI metaphysics, and organizations managing phenomena that disrupt knowledge and memory.
 
 These **post-1974** works enrich the present-day author and adaptation team's reading shelf. They are **not** sources that Tommy Pilgrim could have read before his 1974 VALIS experience, do not displace *Zardoz*, PKD or *Space Ritual* from their established primacy, and do not establish canon facts, gameplay powers or visual borrowings. Keep any specific borrowing subject to the project's attribution and rights review.
