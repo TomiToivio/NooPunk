@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NoöPunk | 1974 interface study</title>
+<style>
+:root{color-scheme:dark;--ink:#f9e9bd;--black:#201d31;--panel:#302b43;--orange:#f6a55b;--mint:#9dd9bc;--violet:#b29be7}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#53365b 0%,transparent 43%),var(--black);color:var(--ink);font:1rem/1.55 system-ui,sans-serif}
+main{max-width:1080px;margin:auto;padding:clamp(1rem,4vw,3rem)}h1,h2{font-family:Georgia,serif;line-height:1.1}h1{font-size:clamp(2rem,7vw,4.5rem);margin:.3rem 0}h2{font-size:1.6rem}p{max-width:70ch}.eyebrow{color:var(--orange);text-transform:uppercase;letter-spacing:.17em;font-weight:800}.layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(270px,1fr);gap:1.5rem;margin:2rem 0}.panel{min-width:0;background:var(--panel);border:3px solid var(--ink);box-shadow:9px 9px 0 #151320;padding:1.25rem}.machine{border:9px ridge #ac7259;border-radius:17px;background:#292d31;padding:1rem}.lamps{display:flex;gap:.5rem;margin-bottom:1rem}.lamp{height:12px;width:12px;background:var(--mint);border-radius:50%;box-shadow:0 0 7px var(--mint)}.lamp:nth-child(2){background:var(--orange);box-shadow:0 0 7px var(--orange)}.screen{background:#101e22;color:#bcf4ca;min-height:14rem;padding:1.25rem;border:4px solid #79867a;border-radius:22px;font:1rem/1.5 ui-monospace,monospace;overflow-wrap:anywhere}.paper{color:#2a2536;background:#f5dfab;padding:1rem;font:1rem/1.5 ui-monospace,monospace;border-left:7px solid var(--orange)}.holes{display:flex;gap:.65rem;flex-wrap:wrap;padding:1rem;background:#dcae72;margin:1rem 0}.hole{display:block;background:#2d2932;width:11px;height:16px;border-radius:2px}.legend{display:flex;gap:.7rem;flex-wrap:wrap}.legend span{border:2px solid currentColor;padding:.15rem .5rem;font-size:.83rem}.observed{color:var(--mint)}.inferred{color:var(--orange)}.fiction{color:var(--violet)}button{background:var(--orange);border:3px solid #1b1823;color:#171320;font:inherit;font-weight:800;padding:.55rem .85rem;cursor:pointer}button:focus-visible{outline:4px solid var(--mint);outline-offset:3px}button:hover{background:#ffd6a3}.note{border-left:4px solid var(--mint);padding-left:1rem}.label{font-weight:800;letter-spacing:.08em}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}@media(max-width:760px){.layout{grid-template-columns:1fr}.panel{box-shadow:none}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style></head>
+<body><main>
+<p class="eyebrow">NoöPunk / speculative production art / issue #447</p>
+<h1>THE GREAT LINGUISTIC ENGINE</h1>
+<p>Prototype of a 1974 <em>presentation</em> of a near-future AI encounter. The giant computer, paper tape and punched cards are a fictional visual translation, <strong>not canonical hardware</strong>. Nothing here defines game rules.</p>
+<div class="layout">
+<section class="panel" aria-labelledby="machine-heading">
+<h2 id="machine-heading">1 / Punch-card oracle</h2><div class="machine"><div class="lamps" aria-hidden="true"><i class="lamp"></i><i class="lamp"></i><i class="lamp"></i></div>
+<div class="screen" id="terminal" role="status" aria-live="polite">CIVIC DISCOURSE ENGINE / 2026<br>INPUT: 1 PUBLIC DEBATE<br>RESULT: MULTIPLE CONTESTED INTERPRETATIONS<br>STATUS: MODEL OUTPUT, NOT VERIFIED FACT</div>
+<div class="holes" aria-hidden="true"><i class="hole"></i><i class="hole"></i><i class="hole"></i><i class="hole"></i><i class="hole"></i><i class="hole"></i><i class="hole"></i><i class="hole"></i><i class="hole"></i><i class="hole"></i><i class="hole"></i></div>
+<button id="advance" type="button">Advance teletype</button></div>
+<p class="note"><strong>2026 editorial annotation:</strong> A contemporary model's response is shown in a period-styled terminal. The interface neither validates the output nor rewrites the technology underneath.</p>
+</section>
+<section class="panel" aria-labelledby="card-heading">
+<p class="eyebrow">Illustrative event card / NOT a rule</p><h2 id="card-heading">2 / The signal</h2>
+<div class="paper"><strong>REPORT 07: ASTRAL STATIC</strong><br><br>A field office receives mutually incompatible descriptions of an unexplained signal.<br><br>STATUS: UNRESOLVED<br>EVIDENCE: INSUFFICIENT<br>PLAYER EFFECT: NOT SPECIFIED</div>
+<p class="label">Evidence labels</p><div class="legend" aria-label="Three distinct evidence types"><span class="observed">Observed</span><span class="inferred">Hypothesis</span><span class="fiction">Pilgrim's prophecy</span></div>
+<p>Labels are explicit words as well as colors. This card is an <strong>illustration only</strong>, not an addition to the event deck, the timeline, or PSI/NHI certainty.</p>
+</section></div>
+<section class="panel"><h2>3 / The two editions</h2><p class="eyebrow">Pilgrim, 1974 / illustrative marginalia only</p>
+<p class="paper">“The Ministries fed their disagreements through the talking machine, which responded with several incompatible futures.”</p>
+<p class="eyebrow">Editorial / simulation note, 2026</p><p>Interpret the talking machine as an aesthetic depiction of an AI interface. Its actual model, reliability, network and consequences remain governed by the canonical simulation and its rules. The quotation above is an original illustrative sample, <strong>not Tommy Pilgrim's author-written story</strong>.</p></section>
+<footer><p>Design study: original HTML/CSS, no bundled fonts, illustrations, music, or third-party assets. High-contrast text, keyboard-operable control, no autoplay, no motion, responsive layout. Zardoz remains the primary film reference, Philip K. Dick the primary literary reference and Hawkwind's <em>Space Ritual</em> the primary sound reference.</p></footer>
+</main><script>
+const messages=[
+"CIVIC DISCOURSE ENGINE / 2026\nINPUT: 1 PUBLIC DEBATE\nRESULT: MULTIPLE CONTESTED INTERPRETATIONS\nSTATUS: MODEL OUTPUT, NOT VERIFIED FACT",
+"DEBATE ANALYSIS / 2026\nCLAIM A: ACCELERATE SYSTEMS\nCLAIM B: RESTRAIN SYSTEMS\nMODEL: DOES NOT RESOLVE THE DISPUTE\nSTATUS: ANALYTICAL INTERPRETATION",
+"EDITORIAL REMINDER\nTHIS CABINET IS A 1974 VISUAL METAPHOR.\nTHE SIMULATED 2026 TECHNOLOGY REMAINS UNCHANGED.\nNO GAME STATE HAS BEEN MODIFIED."
+];let position=0;document.getElementById("advance").addEventListener("click",()=>{position=(position+1)%messages.length;document.getElementById("terminal").textContent=messages[position]});
+</script></body></html>
