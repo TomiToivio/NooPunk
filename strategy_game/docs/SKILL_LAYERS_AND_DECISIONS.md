@@ -78,7 +78,7 @@ than a second sheet; a capability as a permission rather than a bonus; a chassis
 **Refused:** its setting, its prose, its skill list as such (now recorded from secondary sources as names only — §4), and its
 Somatics/Will duplication, which this edition removes by name.
 
-**Its own list, mapped (the review the issue asks for by name).** Transhumanity's Fate's skill list is now recorded in [`data/strategic_skills.json`](data/strategic_skills.json) as `transhumanitys_fate_mapping` - **names only**, no description and no prose from the work, matching the Terra Invicta reference column. The finding is decision-relevant and slightly awkward: the list is **almost entirely scene-shaped**, so it consolidates into the six individual skills rather than into the strategic seven. Only three of its skills are organisational by nature (Civ Rep, Eye Rep, Cred); most of the rest can feed either layer. **The seven proposed strategic skills therefore cannot be derived from the work's list** - that layer is a design choice informed by Terra Invicta's *shape*, which is why D22 is a ruling rather than a merge. Verification status, and what remains unverified (including a count that disagrees between two reproduced pages), is recorded in the file beside the mapping.
+**Its own list, mapped (the review the issue asks for by name).** Transhumanity's Fate's skill list is now recorded in [`data/strategic_skills.json`](data/strategic_skills.json) as `transhumanitys_fate_mapping` - **names only**, no description and no prose from the work, matching the Terra Invicta reference column. The finding is decision-relevant and slightly awkward: the list is **almost entirely scene-shaped**, so it consolidates into the six individual skills rather than into the strategic seven. Only three of its skills are organisational by nature (Civ Rep, Eye Rep, Cred); most of the rest can feed either layer. **The seven proposed strategic skills therefore cannot be derived from the work's list** - that layer is a design choice informed by Terra Invicta's *shape*, which is why D22 is a ruling rather than a merge. The list is now **verified**: 24 names, matching the work's own skill-list pages as reproduced in three independent copies, name for name. The count that once disagreed between two reproductions is resolved and was a units error - the work states a character starts with **25 skill points** under a Great (+4) cap, which a reproduction read as a number of skills. Verification detail, and what remains unverified, is recorded in the file beside the mapping.
 
 **From Eclipse Phase 2e (CC BY-NC-SA, design reference only).** The **six aptitudes** and their scopes
 are used, as *Fate-rated skills*. Refused: the percentile d100 kernel, the four pools (kept as one
@@ -113,17 +113,17 @@ skill would turn betrayal into something the character rolls.
   [/Missions](https://wiki.hoodedhorse.com/Terra_Invicta/Missions)). Both pages are Cloudflare-guarded,
   so they were read through the wiki's own raw and mirrored pages; names and structure only, and no
   value, weight, cost or duration was copied.
-- **Could not be verified here, and therefore not asserted.** *Transhumanity's Fate's own skill list
-  and its additions to Fate Core.* The source rulebook is not in this repository, it is not reachable
-  on the web in a usable form, and its CC BY-NC-SA terms forbid reproducing its text even if it were.
-  The mapping is therefore expressed against the **Fate Core list TF builds on** — which the repo's own
-  landed `ISSUE_461_RESKIN_SPEC.md` §3.1 quotes the TF developer notes as doing deliberately
-  ("avoided creating new concepts and wherever possible built off existing Fate Core concepts") — and
-  the gap is recorded as an open item rather than filled with plausible names. **No TF skill name
-  appears anywhere in this edition that was not first verified as a Fate Core skill name.** The
-  reference's own **action economy** is unverified in the same way: that a councilor attempts exactly
-  one mission per assignment phase is implied by the wiki's intel wording but not stated there, and
-  nothing in the crossover depends on it — the one-action turn is #461/#482's.
+- **Verified this pass: the work's own skill list.** It is **24 names**, and they match the names recorded here
+  one for one - checked against the work's own front-matter skill-list pages as reproduced in three independent
+  copies of the book, with **no description, prose or artwork reproduced**, the discipline this file keeps for the
+  Terra Invicta reference too. Two things follow. The count recorded earlier as unverified is **a units error, now
+  resolved**: the work states a character starts with **25 skill points** under a Great (+4) cap, and a reproduction
+  read that figure as a skill count. And the work **renames** Fate Core's *Physique* to **Somatics**, *Empathy* to
+  **Kinesics** and *Stealth* to **Infiltrate**, folding *Contacts* and *Resources* into Cred, Civ Rep and Eye Rep -
+  which is why the shared names **Somatics** and **Will** mean different things on each side (see `../RULEBOOK.md` §3.1).
+  **What stays unverified:** whether any skill changed between printings (the three copies agree but may share an
+  edition), and the work's prose and setting material, which this crossover does not use.
+
 - **Not touched, and not claimed.** `council.json`'s roster size and founder authority (open decisions
   `roster_size` / `founder_authority`), its ten author decisions, `local_slice.MISSIONS` (consumed by
   reference; four of its names are reused and the rest of the proposal is marked proposed), and
@@ -138,7 +138,7 @@ Carried forward deliberately; none of these is answered by this edition.
 | --- | --- | --- |
 | 1 | The final **strategic skill roster**: accept, amend or replace the seven | `data/strategic_skills.json`; this document §2 |
 | 2 | The **mission kinds** the strategic skills check, and which of the four new names are kept | `data/strategic_skills.json::proposed_mission_kinds` |
-| 3 | **Transhumanity's Fate's own skill list** — confirm the mapping against the book | §4 above |
+| 3 | ~~**Transhumanity's Fate's own skill list** — confirm the mapping against the book~~ **Resolved.** 24 names, verified against the work's own skill-list pages in three independent copies and matching the recorded names name for name; the count was a units error (25 *skill points*, not 25 skills). A printing-by-printing check stays desirable; nothing depends on it. | §4 above |
 | 4 | Whether the **strategic map crosses the `LeaderRPG` boundary payload** | `rpg/boundary.py::SHEET_KEYS` is a pinned contract; left unchanged |
 | 5 | Whether the **kernel's demonstrations** are restated in the six (they use plain skill names because the kernel is setting-independent) | `rpg/fate.py` demos; `rpg/RULEBOOK.md` §6 |
 | 6 | **Advancement**, the full **stunt catalogue**, and equipment statistics | §9 of the rulebook |
@@ -146,7 +146,7 @@ Carried forward deliberately; none of these is answered by this edition.
 | 8 | Every **numeric** strategy question: mission difficulty, cost, duration, cadence, effect, win conditions | queue rows D3, D11; `council.json` |
 | 9 | Whether **EP2e's simulationist material** is ported, and the band→ladder question for legacy percentile content | `ISSUE_461_RESKIN_SPEC.md` rows R1–R5 |
 
-| 10 | The six skills' **starting allocation and advancement**. Fate Core's Great pyramid rates ten different skills and cannot apply literally to six; the rulebook records allocation as unspecified. | `RULEBOOK.md` §3; queue row D23 |
+| 10 | The six skills' **starting allocation and advancement**. Fate Core's Great pyramid rates ten different skills and cannot apply literally to six; the rulebook records allocation as unspecified. **The adopted baseline's own method is now recorded** (§4 and `RULEBOOK.md` §3): the work gives **25 starting skill points under a Great (+4) cap**, with Fate Core's **Skill Columns** rule as its stated alternative to the pyramid — a budget written for a 24-skill list, so applying it to six, literally or scaled, is a ruling either way. | `RULEBOOK.md` §3; queue row D23 |
 
 ## 6. Provenance and licensing of this edition
 

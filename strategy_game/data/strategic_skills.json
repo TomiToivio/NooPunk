@@ -302,7 +302,7 @@
     }
   ],
   "mapping_caveats": [
-    "The source column of `mapping` names Fate Core's skills. That table was prepared before Transhumanity's Fate's own list was verified; `transhumanitys_fate_mapping` now carries that list, recorded from secondary sources as names only.",
+    "The source column of `mapping` names Fate Core's skills. That table was prepared before Transhumanity's Fate's own list was verified; `transhumanitys_fate_mapping` now carries that list - 24 names, verified against the work's own skill-list pages and recorded names-only.",
     "Fate Core is CC BY 3.0 and its skill names are used here as design references only: the eighteen rows are a consolidation into seven NoöPunk skills, not a reproduction of Fate Core's skill descriptions.",
     "The individual layer's crosswalk (the six skills, and where a Fate Core skill goes when the character acts alone) is documented in strategy_game/RULEBOOK.md section 4 rather than duplicated here."
   ],
@@ -559,17 +559,25 @@
   ],
   "transhumanitys_fate_mapping_finding": "Almost the entire TF list is scene-shaped: it consolidates into the six individual skills. Only three TF skills are organisational by nature (Civ Rep, Eye Rep, Cred), and most of the rest can feed a mission as well as a scene. The seven proposed strategic skills therefore cannot be derived from TF's list - that layer is a design choice informed by Terra Invicta's shape, which is why D22 is a ruling and not a merge. This mapping answers the review the issue asks for; it approves nothing.",
   "transhumanitys_fate_verification": {
-    "status": "names verified from secondary sources; the book itself was not read here",
+    "status": "the work's skill list is verified: 24 names, matching the 24 recorded here one for one",
     "method": "names only - no description, no prose and no artwork from the work is reproduced, matching the Terra Invicta reference column",
     "checked_against": [
       "the work's own skill-conversion glossary as reproduced by the WikiFate project (fate-srd.fr), which lists the English skill names beside their French translations",
       "the same project's skill chapter, which states the list size and that Contacts and Resources are folded into Civ Rep, Eye Rep and Cred rather than listed",
-      "an independent character sheet (Chuck Dee, 'Character a Day 2021', day 3) whose chosen skills - Fight, Infiltrate, Athletics, Notice, Shoot, InfoSec, Investigate, Deceive, Cover, Rapport, Will, Somatics - all appear in that list"
+      "an independent character sheet (Chuck Dee, 'Character a Day 2021', day 3) whose chosen skills - Fight, Infiltrate, Athletics, Notice, Shoot, InfoSec, Investigate, Deceive, Cover, Rapport, Will, Somatics - all appear in that list",
+      "the work's own front-matter skill list, as reproduced in three independent copies of the book (a document-library preview, a mirrored PDF copy, and a second document host), each carrying the same 24 names under its Skill List heading at pages 30-31"
     ],
+    "count_resolved": "The discrepancy recorded earlier is resolved, and it was a units error rather than a disagreement: the figures the reproductions carried are the work's starting skill POINTS (it states that a character starts with 25 points under a Great (+4) cap), not a count of skills. The list is 24, and the 24 names recorded here match it one for one - no name added, none missing.",
+    "verified_renames": [
+      "Somatics is Fate Core's Physique renamed, not an additional skill beside it",
+      "Kinesics is Fate Core's Empathy renamed",
+      "Infiltrate is Fate Core's Stealth renamed",
+      "Contacts and Resources are not listed skills: they are folded into Cred, Civ Rep and Eye Rep"
+    ],
+    "name_collision_recorded": "Two names appear in both lists with different provenance, which is exactly what #482's 'do not accidentally retain Transhumanity's Fate's existing Somatics / Will as duplicate attributes' warns about: the work's Somatics is Fate Core's Physique renamed, while NooPunk's SOM is Eclipse Phase 2e's Somatics aptitude; the work's Will is Fate Core's Will, while NooPunk's WIL is EP2e's Willpower aptitude. NooPunk keeps exactly one of each - SOM and WIL - and no parallel Fate Core Physique or Will survives beside them.",
     "recorded_as_unverified": [
-      "the exact count: the reproduced chapter says 25 skills while the conversion glossary lists 24 names; the difference is unresolved here",
-      "whether any skill was renamed or dropped between printings",
-      "everything about the work's own setting material, which this crossover does not use"
+      "whether any skill was renamed or dropped between printings: the three copies read here agree, but they may share an edition",
+      "the work's prose, examples and setting material, which this crossover does not use"
     ]
   }
 }
