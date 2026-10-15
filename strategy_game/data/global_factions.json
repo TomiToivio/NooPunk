@@ -625,7 +625,7 @@
     "note": "Declared here so the four entries state a kind. It is deliberately NOT added to `entity_kinds` (which describes the seven paradigm formations' kinds) and not to strategy_game/factions.py's ENTITY_KINDS, because placing these four in the paradigm register is the open question, not a decision."
   },
   "un_parliamentary_parties": {
-    "note": "Author-specified on 2026-10-14 (issue #470). Qualitative only: no scalar influence, no strength, no magnitude, no starting value. Every entry states which of the six quantities of docs/design/NOOPUNK_GLOBAL.md section 7 the party holds, in the record's words, and a separate stance on each of the three paradigm shifts plus the two cross-cutting dimensions.",
+    "note": "2045 canon (#470, 2026-10-15): exactly three playable human UN parties. Historical fourth party retained only as a non-playable legacy entry, linked to Swarm/Orion-aligned clandestine antagonist networks. Three NHI major powers are separate non-playable actors. Qualitative profiles are narrative and not numerical rules.",
     "author_gated": [
       "six-quantity magnitudes, weights and starting values",
       "starting seats, office and access tokens",
@@ -633,72 +633,6 @@
       "the register question (see `registers`)"
     ],
     "parties": [
-      {
-        "id": "libertarian_accelerationist",
-        "label": "Libertarian Accelerationist Party",
-        "legacy_label": "Libertarian Party",
-        "kind": "un_parliamentary_party",
-        "sources": [
-          "#470 (author decision, 2026-10-14)",
-          "#118 (roster entry it succeeds)"
-        ],
-        "roster_entry": "data/world/un_parties.yaml#libertarian_accelerationist",
-        "axis_defaults": {
-          "economic": "right — market-libertarian, minarchist, open to extraterrestrial trade",
-          "social": null,
-          "note": "The author fixes the economic and market stance; no social-axis position is stated for this party, so none is recorded (AGENTS.md section 1)."
-        },
-        "motto": null,
-        "motto_note": "No motto is authored for this party. The paradigm entry accelerationists carries one; assigning it here would invent canon.",
-        "stances": {
-          "soft_noetic_psi": "commercial PSI and private countermeasures",
-          "confederacy_contact": "alien trade and open economic zones",
-          "orion_conflict": "security threat but also contested business relationships",
-          "agi_asi": "accelerate; repeal or exempt restrictive controls",
-          "cyborg_ecology": "private enhancement and enterprise"
-        },
-        "core_signifiers": [
-          "freedom",
-          "markets",
-          "acceleration"
-        ],
-        "core_signifiers_source": "strategy_game/data/un_political_discourse.json (nodal_points), kept consistent",
-        "six_quantities": {
-          "opinion_support": {
-            "note": "weak and corroded: “not very popular despite massive corporate funding”, and the control or infiltration allegation attacks even that thin support.",
-            "basis": "author, issue #470 (2026-10-14)"
-          },
-          "membership_resources": {
-            "note": "its deepest quantity: megacorporate funding and funder networks, but no mass base.",
-            "basis": "author, issue #470 (2026-10-14)"
-          },
-          "legislative_representation": {
-            "note": "it holds one of the four UN parliamentary slots, so it holds seats that its popularity does not match.",
-            "basis": "roster; RULEBOOK.md section 42.2"
-          },
-          "office_control": {
-            "note": "minimal: a minarchist, anti-state party rarely holds executive office, and its power runs through its funders instead.",
-            "basis": "RULEBOOK.md section 42.2, read"
-          },
-          "institutional_access": {
-            "note": "strong: its funders reach ministries, regulators, trade interfaces and NHI-commerce arrangements.",
-            "basis": "RULEBOOK.md section 42.2 (neo-feudal cybercapitalist class), read"
-          },
-          "discursive_hegemony": {
-            "note": "nearly empty: “profit” and freedom-as-property do not hold an equivalential chain, and the Grey/ASI suspicion empties even those. The case where a faction holds everything except meaning.",
-            "basis": "docs/design/NOOPUNK_GLOBAL.md section 7; #470 design record"
-          }
-        },
-        "internal_fault_lines": [
-          "sincere libertarians vs patron-dependent opportunists",
-          "human autonomy vs unrestricted collaboration"
-        ],
-        "author_gated": {
-          "six_quantity_magnitudes": null,
-          "starting_seats": null,
-          "note": "The profile says which of the six quantities the party holds, in the record's words. No magnitude, weight, range or scalar is set: those are author-gated. “Influence” does not exist as a quantity here (docs/design/NOOPUNK_GLOBAL.md section 7)."
-        }
-      },
       {
         "id": "true_humans",
         "label": "True Humans Party",
@@ -900,6 +834,79 @@
           "note": "No magnitude or starting value is set for any of the six quantities."
         }
       }
+    ],
+    "non_playable_historical_entries": [
+      {
+        "id": "libertarian_accelerationist",
+        "label": "Libertarian Accelerationist Party",
+        "legacy_label": "Libertarian Party",
+        "kind": "un_parliamentary_party",
+        "sources": [
+          "#470 (author decision, 2026-10-14)",
+          "#118 (roster entry it succeeds)"
+        ],
+        "roster_entry": "data/world/un_parties.yaml#libertarian_accelerationist",
+        "axis_defaults": {
+          "economic": "right — market-libertarian, minarchist, open to extraterrestrial trade",
+          "social": null,
+          "note": "The author fixes the economic and market stance; no social-axis position is stated for this party, so none is recorded (AGENTS.md section 1)."
+        },
+        "motto": null,
+        "motto_note": "No motto is authored for this party. The paradigm entry accelerationists carries one; assigning it here would invent canon.",
+        "stances": {
+          "soft_noetic_psi": "commercial PSI and private countermeasures",
+          "confederacy_contact": "alien trade and open economic zones",
+          "orion_conflict": "security threat but also contested business relationships",
+          "agi_asi": "accelerate; repeal or exempt restrictive controls",
+          "cyborg_ecology": "private enhancement and enterprise"
+        },
+        "core_signifiers": [
+          "freedom",
+          "markets",
+          "acceleration"
+        ],
+        "core_signifiers_source": "strategy_game/data/un_political_discourse.json (nodal_points), kept consistent",
+        "six_quantities": {
+          "opinion_support": {
+            "note": "weak and corroded: “not very popular despite massive corporate funding”, and the control or infiltration allegation attacks even that thin support.",
+            "basis": "author, issue #470 (2026-10-14)"
+          },
+          "membership_resources": {
+            "note": "its deepest quantity: megacorporate funding and funder networks, but no mass base.",
+            "basis": "author, issue #470 (2026-10-14)"
+          },
+          "legislative_representation": {
+            "note": "it holds one of the four UN parliamentary slots, so it holds seats that its popularity does not match.",
+            "basis": "roster; RULEBOOK.md section 42.2"
+          },
+          "office_control": {
+            "note": "minimal: a minarchist, anti-state party rarely holds executive office, and its power runs through its funders instead.",
+            "basis": "RULEBOOK.md section 42.2, read"
+          },
+          "institutional_access": {
+            "note": "strong: its funders reach ministries, regulators, trade interfaces and NHI-commerce arrangements.",
+            "basis": "RULEBOOK.md section 42.2 (neo-feudal cybercapitalist class), read"
+          },
+          "discursive_hegemony": {
+            "note": "nearly empty: “profit” and freedom-as-property do not hold an equivalential chain, and the Grey/ASI suspicion empties even those. The case where a faction holds everything except meaning.",
+            "basis": "docs/design/NOOPUNK_GLOBAL.md section 7; #470 design record"
+          }
+        },
+        "internal_fault_lines": [
+          "sincere libertarians vs patron-dependent opportunists",
+          "human autonomy vs unrestricted collaboration"
+        ],
+        "author_gated": {
+          "six_quantity_magnitudes": null,
+          "starting_seats": null,
+          "note": "The profile says which of the six quantities the party holds, in the record's words. No magnitude, weight, range or scalar is set: those are author-gated. “Influence” does not exist as a quantity here (docs/design/NOOPUNK_GLOBAL.md section 7)."
+        }
+      }
+    ],
+    "default_playable_party_ids": [
+      "true_humans",
+      "unity_security_stability",
+      "noosphere"
     ]
   }
 }
