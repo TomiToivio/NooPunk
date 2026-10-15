@@ -82,6 +82,9 @@
    "endgames": [
     "chartered extraterrestrial enclaves",
     "a private ASI no UN vote can recall"
+   ],
+   "schism_lines": [
+    "whether extraterrestrial special zones and unregulated ASI are compatible with human liberty at all"
    ]
   },
   {
@@ -130,7 +133,12 @@
     "a purified and impoverished Earth"
    ],
    "policy": "Opposes all NHI and advocates their extermination.",
-   "depicted_as": "fictional extremist position, not endorsed"
+   "depicted_as": "fictional extremist position, not endorsed",
+   "schism_lines": [
+    "religious fundamentalists vs materialist doomers",
+    "nationalisms with incompatible definitions of humanity",
+    "lawful politics vs violence"
+   ]
   },
   {
    "id": "unity_security_stability",
@@ -174,6 +182,10 @@
    "endgames": [
     "a managed settlement that outlasts the crisis",
     "a security state that cannot end it"
+   ],
+   "schism_lines": [
+    "security hawks vs diplomats",
+    "emergency powers vs civil liberties, including due process for alleged hybrids and espers"
    ]
   },
   {
@@ -219,6 +231,11 @@
    "endgames": [
     "a terrestrial noosphere that survives accession on its own terms",
     "absorbed into a Social Memory Complex that is not what it promised"
+   ],
+   "schism_lines": [
+    "distributed self-governance against party-centred leadership",
+    "individuality and dissent against collective memory",
+    "biosphere safeguards against industrial and posthuman ambition"
    ]
   }
  ],
@@ -227,19 +244,102 @@
    "id": "verified_psi_service",
    "fact": "An independently verified in-world remote-viewing service exists.",
    "status": "corroborated",
-   "topic": "soft_noetic_psi"
+   "topic": "soft_noetic_psi",
+   "majority_reaction": "Some people use it, some sell it, some are being weird about it; the football is on."
   },
   {
    "id": "confederacy_harvest_offer",
    "fact": "The Confederacy publicly proposes a Harvest program; its ultimate implications are unknown.",
    "status": "observed",
-   "topic": "confederacy_contact"
+   "topic": "confederacy_contact",
+   "majority_reaction": "There were pictures, there was a ceremony, and then the ordinary week resumed."
   },
   {
    "id": "suspected_hybrid_official",
    "fact": "An official is accused of hybrid infiltration; evidence has not been adjudicated.",
    "status": "alleged",
-   "topic": "orion_conflict"
+   "topic": "orion_conflict",
+   "majority_reaction": "Someone should do something, carefully, and preferably not to us."
   }
- ]
+ ],
+ "relation_states": [
+  "alliance",
+  "tactical_alliance",
+  "contested",
+  "rivalry",
+  "schism"
+ ],
+ "relation_rule": "A relation names the signifier or axis it turns on and carries may_change_with_evidence. No relation is permanent and none implies joint command.",
+ "relations": [
+  {
+   "between": [
+    "libertarian_accelerationist",
+    "unity_security_stability"
+   ],
+   "state": "rivalry",
+   "basis": "market sovereignty against public regulation",
+   "may_change_with_evidence": true
+  },
+  {
+   "between": [
+    "libertarian_accelerationist",
+    "true_humans"
+   ],
+   "state": "tactical_alliance",
+   "basis": "shared hostility to UN and member-state regulation, over incompatible answers on markets and on purity",
+   "may_change_with_evidence": true
+  },
+  {
+   "between": [
+    "libertarian_accelerationist",
+    "noosphere"
+   ],
+   "state": "rivalry",
+   "basis": "capital against the common",
+   "may_change_with_evidence": true
+  },
+  {
+   "between": [
+    "true_humans",
+    "noosphere"
+   ],
+   "state": "rivalry",
+   "basis": "competing definitions of humanity and of who may belong to it",
+   "may_change_with_evidence": true
+  },
+  {
+   "between": [
+    "true_humans",
+    "unity_security_stability"
+   ],
+   "state": "contested",
+   "basis": "public order against the eliminationist wing; the incumbent courts and restrains the same base",
+   "may_change_with_evidence": true
+  },
+  {
+   "between": [
+    "noosphere",
+    "unity_security_stability"
+   ],
+   "state": "contested",
+   "basis": "institutional continuity against transformation, both claiming the public interest",
+   "may_change_with_evidence": true
+  }
+ ],
+ "endgame_space": [
+  "peaceful cohabitation",
+  "hegemonic victory by one project",
+  "disintegration",
+  "multiple human and posthuman civilizations, Diaspora-like"
+ ],
+ "endgame_space_note": "No preordained victor and no predetermined alignment; the space is the set of outcomes design must keep reachable, not a forecast.",
+ "integration": {
+  "faction_creation_tags": "strategy_game/data/faction_creation.json (#346)",
+  "abstract_political_network_strategy": "issue #338",
+  "starting_scenario": "issue #468",
+  "characters_and_actions": "issue #461",
+  "lenses": "Wendt (state sovereignty and ontology), Pasulka (belief and disclosure), Dolan (secret intelligence)"
+ },
+ "relations_status": "proposal_pending_author_review",
+ "relations_status_note": "Allies, antagonists and internal schism lines are the substance of decision-queue row D21, which asks whether the four factions' missing #470 criteria should enter the data, stay a design record, or be amended. They are recorded here as a proposal so the question is answerable rather than silently answered. The substance is already written up in docs/design/ISSUE_470_FACTION_DEPTH_AND_THE_2026_GAP.md section 1; this only makes it readable and checkable. One revert removes it."
 }
