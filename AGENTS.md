@@ -37,8 +37,10 @@ Directive: issue #306. **Two games, one shared world. Do not collapse them.**
   rules of the crossover.
 - **Crossover game** — an independently playable Python project in `strategy_game/`, designed to be
   translatable into a physical board/card/dice tabletop game. Its rulebook is
-  `strategy_game/RULEBOOK.md`, which currently says **NO RULES APPROVED**; the scaffold code provides
-  vocabulary, not playable mechanics.
+  `strategy_game/RULEBOOK.md`, which records the **Fate Core RPG foundation as approved** (#389, #482)
+  while **faction strategy and political simulation rules remain unapproved**; `strategy_game/rpg/RULEBOOK.md`
+  is the playable field manual for the approved individual-level layer, and the scaffold code provides
+  vocabulary for the unapproved layers.
 
 What carries over, and what does not:
 
