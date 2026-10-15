@@ -91,9 +91,21 @@ class Character:
     id: str
     name: str
     aspects: list[str]
+    #: The character's **individual** Fate ladder. Issue #482 fixes this layer's vocabulary to the six
+    #: broad skills in ``rpg.skills.INDIVIDUAL_SKILLS`` (COG, INT, REF, SAV, SOM, WIL); a narrow
+    #: speciality is a stunt or a ``competence`` tag under one of them, never a seventh attribute.
+    #: ``rpg.skills.validate_skill`` enforces that at check time.
     skills: dict[str, int] = field(default_factory=dict)
+    #: The **faction-agent** ladder: the same character's ratings in the strategic skill roster.
+    #: Empty by default because that roster is a proposal (#482); a faction-agent check with no roster
+    #: supplied is refused rather than rated at zero.
+    strategic_skills: dict[str, int] = field(default_factory=dict)
     stunts: list[str] = field(default_factory=list)
+    #: Fate points now. Session start raises this to :attr:`refresh` (Fate Core's refresh rule).
     fate_points: int = 3
+    #: Fate Core's refresh: the baseline the character returns to between sessions. Configurable, and
+    #: deliberately not a second currency.
+    refresh: int = 3
     physical_stress: list[bool] = field(default_factory=lambda: [False, False])
     mental_stress: list[bool] = field(default_factory=lambda: [False, False])
     consequences: list[Consequence] = field(default_factory=list)
@@ -116,6 +128,10 @@ class Character:
             raise ResourceError("fate_points cannot be negative")
         if any(not isinstance(v, int) or v < 0 for v in self.skills.values()):
             raise ResourceError("skills must be nonnegative integer ratings")
+        if any(not isinstance(v, int) or v < 0 for v in self.strategic_skills.values()):
+            raise ResourceError("strategic_skills must be nonnegative integer ratings")
+        if not isinstance(self.refresh, int) or self.refresh < 0:
+            raise ResourceError("refresh must be a nonnegative integer")
         if self.psi_abilities and not self.natural_psi:
             raise ResourceError("natural PSI abilities require natural_psi; equipment alone grants no innate PSI")
         seen: set[tuple[str, str]] = set()
@@ -139,6 +155,15 @@ class Character:
         if self.fate_points < 1:
             raise ResourceError("not enough Fate points")
         self.fate_points -= 1
+
+    def refresh_to_baseline(self) -> int:
+        """Fate Core's refresh: session start raises Fate points **to at least** refresh.
+
+        A character holding more than their refresh keeps the higher balance, which is what the
+        approved field manual already states (``rpg/RULEBOOK.md`` section 4). Returns the balance.
+        """
+        self.fate_points = max(self.fate_points, self.refresh)
+        return self.fate_points
 
     def invoke(self, aspect: str, *, free: bool = False) -> int:
         """Invoke an existing aspect for +2. Rerolls are deliberately explicit elsewhere."""
