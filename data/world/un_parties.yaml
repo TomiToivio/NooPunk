@@ -1,4 +1,4 @@
-# Default four UN parliamentary parties, 2045 (issues #470, #118).
+# Default THREE playable UN parliamentary parties, 2045 (author decision #470, 2026-10-15).
 #
 # PROVENANCE. The four entries below are the four 20XX-era UN parliamentary blocs recorded by
 # issue #118 (commit 2c77a3d, "Complete NHI lore, Disclosure model, and UN political blocs"),
@@ -9,9 +9,9 @@
 # old entries that the author did not contradict are kept under `legacy_*` keys rather than
 # dropped; the author's new material is kept under `author_*` keys.
 #
-# REGISTER. This file is the UN parliamentary party register and is authoritative for the roster:
-# party names, positions and legacy mapping. Paradigm stances and the qualitative six-quantity
-# profiles live in strategy_game/data/global_factions.json; the per-party Reality Tunnel and
+# REGISTER. Only `parties` is the active playable political roster; historical_non_playable_parties is archival.
+# Names, positions and legacy mapping for the current three are authoritative here.
+# Profiles live in strategy_game/data/global_factions.json; event readings in paradigm_event_seeds.json.
 # discourse readings live in strategy_game/data/un_political_discourse.json. Whether these four
 # parties belong in the paradigm register at all is the open 4 / 7 / 11 question
 # (docs/design/STRUCTURAL_FORKS_AND_DECISIONS.md fork 3, docs/design/AUTHOR_DECISION_QUEUE.md rows
@@ -24,32 +24,6 @@ scenario_start_year: 2045
 background_event_year: 20XX
 register: un_parliamentary_parties
 parties:
-  - id: libertarian_accelerationist
-    name: Libertarian Accelerationist Party
-    legacy_name: Libertarian Party
-    legacy_source: "#118 (commit 2c77a3d); RULEBOOK.md section 42.2"
-    position: right
-    governing: false
-    support: electorally_marginal
-    support_note: Author's own words, kept verbatim — "not very popular despite massive corporate funding".
-    resources: megacorporate_funding
-    legacy_themes:
-      - free_markets
-      - private_property
-      - accelerationism
-      - minarchism
-      - extraterrestrial_trade
-    author_themes:
-      - extraterrestrial_special_economic_zones
-      - accelerated_asi_research
-    theme_note: >
-      The legacy themes are kept in full — the author contradicted none of them. The two new planks
-      are recorded separately, and `extraterrestrial_special_economic_zones` is noted as the
-      author's wording where canon says only "Extraterrestrial Economic Zones".
-    allegation: >
-      Suspected of being controlled by a malevolent ASI or by Grey mind control, and of being
-      infiltrated by Hybrids. Recorded as an in-world allegation about the party, not as an
-      established fact; canon also warns that not every Accelerationist is infiltrated.
   - id: true_humans
     name: True Humans Party
     legacy_name: Bioconservatives
@@ -143,7 +117,43 @@ parties:
       successor coalition, is the author's call (issue #470 comment of 2026-10-14, question 2b).
     reference: https://github.com/TomiToivio/Panpsychic_Cyborg_Multitude
 
-# The roster is a starting four, not a cap. No list length is set by any approved rule.
+# Exactly three default parties are playable; custom parties remain future work.
 open_for_future_parties: true
 extra_parliamentary_factions: true
-roster_size_status: open_pending_author_review
+roster_size_status: three_default_playable_author_approved
+
+# Former fourth party preserved for provenance, antagonist events and possible future custom factions.
+# These entries are NOT members of the playable `parties` list.
+historical_non_playable_parties:
+  - id: libertarian_accelerationist
+    name: Libertarian Accelerationist Party
+    legacy_name: Libertarian Party
+    legacy_source: "#118 (commit 2c77a3d); RULEBOOK.md section 42.2"
+    position: right
+    governing: false
+    support: electorally_marginal
+    support_note: Author's own words, kept verbatim — "not very popular despite massive corporate funding".
+    resources: megacorporate_funding
+    legacy_themes:
+      - free_markets
+      - private_property
+      - accelerationism
+      - minarchism
+      - extraterrestrial_trade
+    author_themes:
+      - extraterrestrial_special_economic_zones
+      - accelerated_asi_research
+    theme_note: >
+      The legacy themes are kept in full — the author contradicted none of them. The two new planks
+      are recorded separately, and `extraterrestrial_special_economic_zones` is noted as the
+      author's wording where canon says only "Extraterrestrial Economic Zones".
+    allegation: >
+      Suspected of being controlled by a malevolent ASI or by Grey mind control, and of being
+      infiltrated by Hybrids. Recorded as an in-world allegation about the party, not as an
+      established fact; canon also warns that not every Accelerationist is infiltrated.
+    playable: false
+    antagonist_status: functionally_coopted_by_swarm_and_orion_networks
+    antagonist_note: >
+      In the fictional 2045 setting, the hardline accelerationist organization is a clandestine
+      antagonist rather than a democratically viable party. Individual culpability is not inferred
+      from mere association; uncertainty and propaganda remain possible.

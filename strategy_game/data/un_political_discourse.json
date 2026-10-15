@@ -1,345 +1,357 @@
 {
- "format": "noopunk.strategy_game.un_political_discourse",
- "version": 1,
- "scenario_start": 2045,
- "background_dates": "20XX",
- "background_ordered": false,
- "source_issues": [
-  469,
-  470
- ],
- "status": "author_specified_descriptive_data",
- "party_register": "data/world/un_parties.yaml",
- "legacy_paradigm_register": "strategy_game/data/global_factions.json",
- "future_parties_allowed": true,
- "simulation_rules_approved": false,
- "provenance_note": "Faction statements are interpretations, not confirmed narrator facts. No strength scores, transitions, votes or combat effects.",
- "epistemic_statuses": [
-  "observed",
-  "corroborated",
-  "contested",
-  "alleged",
-  "unknown"
- ],
- "stance_dimensions": [
-  "soft_noetic_psi",
-  "confederacy_contact",
-  "orion_conflict",
-  "agi_asi",
-  "cyborg_ecology"
- ],
- "shared_floating_signifiers": [
-  "humanity",
-  "freedom",
-  "security",
-  "consciousness",
-  "sovereignty",
-  "progress",
-  "nature",
-  "survival"
- ],
- "signifier_rule": "A floating signifier has contested meaning; an empty signifier must represent a broader chain of equivalences, not merely be ambiguous.",
- "parties": [
-  {
-   "id": "libertarian_accelerationist",
-   "name": "Libertarian Accelerationist Party",
-   "reality_tunnel": {
-    "interpretation": "Alien and machine intelligence represent opportunity; allegations of Grey/ASI capture remain unverified.",
-    "evidence_status": "contested",
-    "blind_spots": [],
-    "may_change_with_evidence": true
-   },
-   "discourse": {
-    "nodal_points": [
-     "freedom",
-     "markets",
-     "acceleration"
-    ],
-    "demands": [
-     "Extraterrestrial Special Economic Zones",
-     "accelerated ASI research",
-     "remove UN and national market controls"
-    ],
-    "frontier": "market sovereignty against public regulation",
-    "empty_signifiers": []
-   },
-   "stances": {
-    "soft_noetic_psi": "commercial PSI and private countermeasures",
-    "confederacy_contact": "alien trade and open economic zones",
-    "orion_conflict": "security threat but also contested business relationships",
-    "agi_asi": "accelerate; repeal or exempt restrictive controls",
-    "cyborg_ecology": "private enhancement and enterprise"
-   },
-   "internal_fault_lines": [
-    "sincere libertarians vs patron-dependent opportunists",
-    "human autonomy vs unrestricted collaboration"
-   ],
-   "internal_currents": [
-    "sincere libertarians",
-    "opportunists",
-    "members who read the alien presence as a market to arm against"
-   ],
-   "endgames": [
-    "chartered extraterrestrial enclaves",
-    "a private ASI no UN vote can recall"
-   ],
-   "schism_lines": [
-    "whether extraterrestrial special zones and unregulated ASI are compatible with human liberty at all"
-   ]
+  "format": "noopunk.strategy_game.un_political_discourse",
+  "version": 1,
+  "scenario_start": 2045,
+  "background_dates": "20XX",
+  "background_ordered": false,
+  "source_issues": [
+    469,
+    470
+  ],
+  "status": "author_specified_descriptive_data",
+  "party_register": "data/world/un_parties.yaml",
+  "legacy_paradigm_register": "strategy_game/data/global_factions.json",
+  "future_parties_allowed": true,
+  "simulation_rules_approved": false,
+  "provenance_note": "Faction statements are interpretations, not confirmed narrator facts. No strength scores, transitions, votes or combat effects. Canon update #470 (2026-10-15): exactly three default playable factions; historic Accelerationist interpretation retained in non-playable_historical_parties, not active political discourse.",
+  "epistemic_statuses": [
+    "observed",
+    "corroborated",
+    "contested",
+    "alleged",
+    "unknown"
+  ],
+  "stance_dimensions": [
+    "soft_noetic_psi",
+    "confederacy_contact",
+    "orion_conflict",
+    "agi_asi",
+    "cyborg_ecology"
+  ],
+  "shared_floating_signifiers": [
+    "humanity",
+    "freedom",
+    "security",
+    "consciousness",
+    "sovereignty",
+    "progress",
+    "nature",
+    "survival"
+  ],
+  "signifier_rule": "A floating signifier has contested meaning; an empty signifier must represent a broader chain of equivalences, not merely be ambiguous.",
+  "parties": [
+    {
+      "id": "true_humans",
+      "name": "True Humans Party",
+      "reality_tunnel": {
+        "interpretation": "Different doomer traditions read one crisis as proof of a common existential enemy; accusations are not always true.",
+        "evidence_status": "contested",
+        "blind_spots": [],
+        "may_change_with_evidence": true
+      },
+      "discourse": {
+        "nodal_points": [
+          "humanity",
+          "purity",
+          "survival"
+        ],
+        "demands": [
+          "human biological and political sovereignty",
+          "reject NHI domination",
+          "ban existential-risk technologies"
+        ],
+        "frontier": "human survival against perceived nonhuman threats",
+        "empty_signifiers": []
+      },
+      "stances": {
+        "soft_noetic_psi": "religious interpretations, materialist denial and persecution in tension",
+        "confederacy_contact": "reject Confederacy accession",
+        "orion_conflict": "militant hostility to Orion and suspected hybrids",
+        "agi_asi": "restrictions and containment",
+        "cyborg_ecology": "bio-preservation with divergent ecologist and religious motives"
+      },
+      "internal_fault_lines": [
+        "religious fundamentalists vs materialist doomers",
+        "nationalisms with incompatible definitions of humanity"
+      ],
+      "internal_currents": [
+        "religious fundamentalists",
+        "populist nationalists",
+        "rationalist hardliners",
+        "ecological primitivists",
+        "opportunists using the panic"
+      ],
+      "endgames": [
+        "mass expulsion programmes",
+        "a purified and impoverished Earth"
+      ],
+      "policy": "Opposes all NHI and advocates their extermination.",
+      "depicted_as": "fictional extremist position, not endorsed",
+      "schism_lines": [
+        "religious fundamentalists vs materialist doomers",
+        "nationalisms with incompatible definitions of humanity",
+        "lawful politics vs violence"
+      ]
+    },
+    {
+      "id": "unity_security_stability",
+      "name": "Unity, Security and Stability Party",
+      "reality_tunnel": {
+        "interpretation": "The crisis is a governance problem best handled through institutional continuity; information control may conceal errors.",
+        "evidence_status": "contested",
+        "blind_spots": [],
+        "may_change_with_evidence": true
+      },
+      "discourse": {
+        "nodal_points": [
+          "unity",
+          "security",
+          "stability"
+        ],
+        "demands": [
+          "preserve functioning institutions",
+          "strong defence",
+          "retain conditional diplomacy"
+        ],
+        "frontier": "order and continuity against destabilization",
+        "empty_signifiers": []
+      },
+      "stances": {
+        "soft_noetic_psi": "licensed research and mental-privacy safeguards",
+        "confederacy_contact": "managed diplomatic engagement",
+        "orion_conflict": "defence and due-process counterintelligence",
+        "agi_asi": "maintain UN restrictions with controlled exceptions not yet designed",
+        "cyborg_ecology": "regulated and cautious adoption"
+      },
+      "internal_fault_lines": [
+        "security hardliners vs diplomats",
+        "constitutional protections vs permanent emergency powers"
+      ],
+      "internal_currents": [
+        "security hawks",
+        "diplomats",
+        "civil liberties"
+      ],
+      "endgames": [
+        "a managed settlement that outlasts the crisis",
+        "a security state that cannot end it"
+      ],
+      "schism_lines": [
+        "security hawks vs diplomats",
+        "emergency powers vs civil liberties, including due process for alleged hybrids and espers"
+      ]
+    },
+    {
+      "id": "noosphere",
+      "name": "The Noösphere",
+      "reality_tunnel": {
+        "interpretation": "Confederacy contact is read as cosmist communist solidarity and a path toward Social Memory Complex; motives remain uncertain.",
+        "evidence_status": "contested",
+        "blind_spots": [],
+        "may_change_with_evidence": true
+      },
+      "discourse": {
+        "nodal_points": [
+          "noösphere",
+          "biosphere",
+          "common"
+        ],
+        "demands": [
+          "collective intelligence and commons",
+          "survival and evolution of Earth's biosphere",
+          "seek Confederacy accession"
+        ],
+        "frontier": "collective emancipation against enclosure and existential stagnation",
+        "empty_signifiers": []
+      },
+      "stances": {
+        "soft_noetic_psi": "archaic revival and PSI as collective capacities",
+        "confederacy_contact": "pro-accession and Service-to-Others interpretation",
+        "orion_conflict": "resist Orion aggression while defending individual hybrid rights",
+        "agi_asi": "collective beneficial machine intelligence with caution on rogue ASI",
+        "cyborg_ecology": "Taoist-Maoist cyborg multitude with ecology"
+      },
+      "internal_fault_lines": [
+        "reformed CCP centralism vs PCM-style rhizomatic autonomy",
+        "biosphere protection vs posthuman transformation"
+      ],
+      "internal_currents": [
+        "reformed CCP",
+        "western greens",
+        "democratic socialists",
+        "distributed self-governance currents"
+      ],
+      "endgames": [
+        "a terrestrial noosphere that survives accession on its own terms",
+        "absorbed into a Social Memory Complex that is not what it promised"
+      ],
+      "schism_lines": [
+        "distributed self-governance against party-centred leadership",
+        "individuality and dissent against collective memory",
+        "biosphere safeguards against industrial and posthuman ambition"
+      ]
+    }
+  ],
+  "example_events": [
+    {
+      "id": "verified_psi_service",
+      "fact": "An independently verified in-world remote-viewing service exists.",
+      "status": "corroborated",
+      "topic": "soft_noetic_psi",
+      "majority_reaction": "Some people use it, some sell it, some are being weird about it; the football is on."
+    },
+    {
+      "id": "confederacy_harvest_offer",
+      "fact": "The Confederacy publicly proposes a Harvest program; its ultimate implications are unknown.",
+      "status": "observed",
+      "topic": "confederacy_contact",
+      "majority_reaction": "There were pictures, there was a ceremony, and then the ordinary week resumed."
+    },
+    {
+      "id": "suspected_hybrid_official",
+      "fact": "An official is accused of hybrid infiltration; evidence has not been adjudicated.",
+      "status": "alleged",
+      "topic": "orion_conflict",
+      "majority_reaction": "Someone should do something, carefully, and preferably not to us."
+    }
+  ],
+  "relation_states": [
+    "alliance",
+    "tactical_alliance",
+    "contested",
+    "rivalry",
+    "schism"
+  ],
+  "relation_rule": "A relation names the signifier or axis it turns on and carries may_change_with_evidence. No relation is permanent and none implies joint command. Active relations involve only the three playable parties; old Accelerationist relationship history remains in historical_non_playable_relations.",
+  "relations": [
+    {
+      "between": [
+        "true_humans",
+        "noosphere"
+      ],
+      "state": "rivalry",
+      "basis": "competing definitions of humanity and of who may belong to it",
+      "may_change_with_evidence": true
+    },
+    {
+      "between": [
+        "true_humans",
+        "unity_security_stability"
+      ],
+      "state": "contested",
+      "basis": "public order against the eliminationist wing; the incumbent courts and restrains the same base",
+      "may_change_with_evidence": true
+    },
+    {
+      "between": [
+        "noosphere",
+        "unity_security_stability"
+      ],
+      "state": "contested",
+      "basis": "institutional continuity against transformation, both claiming the public interest",
+      "may_change_with_evidence": true
+    }
+  ],
+  "endgame_space": [
+    "peaceful cohabitation",
+    "hegemonic victory by one project",
+    "disintegration",
+    "multiple human and posthuman civilizations, Diaspora-like"
+  ],
+  "endgame_space_note": "No preordained victor and no predetermined alignment; the space is the set of outcomes design must keep reachable, not a forecast.",
+  "integration": {
+    "faction_creation_tags": "strategy_game/data/faction_creation.json (#346)",
+    "abstract_political_network_strategy": "issue #338",
+    "starting_scenario": "issue #468",
+    "characters_and_actions": "issue #461",
+    "lenses": "Wendt (state sovereignty and ontology), Pasulka (belief and disclosure), Dolan (secret intelligence)"
   },
-  {
-   "id": "true_humans",
-   "name": "True Humans Party",
-   "reality_tunnel": {
-    "interpretation": "Different doomer traditions read one crisis as proof of a common existential enemy; accusations are not always true.",
-    "evidence_status": "contested",
-    "blind_spots": [],
-    "may_change_with_evidence": true
-   },
-   "discourse": {
-    "nodal_points": [
-     "humanity",
-     "purity",
-     "survival"
-    ],
-    "demands": [
-     "human biological and political sovereignty",
-     "reject NHI domination",
-     "ban existential-risk technologies"
-    ],
-    "frontier": "human survival against perceived nonhuman threats",
-    "empty_signifiers": []
-   },
-   "stances": {
-    "soft_noetic_psi": "religious interpretations, materialist denial and persecution in tension",
-    "confederacy_contact": "reject Confederacy accession",
-    "orion_conflict": "militant hostility to Orion and suspected hybrids",
-    "agi_asi": "restrictions and containment",
-    "cyborg_ecology": "bio-preservation with divergent ecologist and religious motives"
-   },
-   "internal_fault_lines": [
-    "religious fundamentalists vs materialist doomers",
-    "nationalisms with incompatible definitions of humanity"
-   ],
-   "internal_currents": [
-    "religious fundamentalists",
-    "populist nationalists",
-    "rationalist hardliners",
-    "ecological primitivists",
-    "opportunists using the panic"
-   ],
-   "endgames": [
-    "mass expulsion programmes",
-    "a purified and impoverished Earth"
-   ],
-   "policy": "Opposes all NHI and advocates their extermination.",
-   "depicted_as": "fictional extremist position, not endorsed",
-   "schism_lines": [
-    "religious fundamentalists vs materialist doomers",
-    "nationalisms with incompatible definitions of humanity",
-    "lawful politics vs violence"
-   ]
-  },
-  {
-   "id": "unity_security_stability",
-   "name": "Unity, Security and Stability Party",
-   "reality_tunnel": {
-    "interpretation": "The crisis is a governance problem best handled through institutional continuity; information control may conceal errors.",
-    "evidence_status": "contested",
-    "blind_spots": [],
-    "may_change_with_evidence": true
-   },
-   "discourse": {
-    "nodal_points": [
-     "unity",
-     "security",
-     "stability"
-    ],
-    "demands": [
-     "preserve functioning institutions",
-     "strong defence",
-     "retain conditional diplomacy"
-    ],
-    "frontier": "order and continuity against destabilization",
-    "empty_signifiers": []
-   },
-   "stances": {
-    "soft_noetic_psi": "licensed research and mental-privacy safeguards",
-    "confederacy_contact": "managed diplomatic engagement",
-    "orion_conflict": "defence and due-process counterintelligence",
-    "agi_asi": "maintain UN restrictions with controlled exceptions not yet designed",
-    "cyborg_ecology": "regulated and cautious adoption"
-   },
-   "internal_fault_lines": [
-    "security hardliners vs diplomats",
-    "constitutional protections vs permanent emergency powers"
-   ],
-   "internal_currents": [
-    "security hawks",
-    "diplomats",
-    "civil liberties"
-   ],
-   "endgames": [
-    "a managed settlement that outlasts the crisis",
-    "a security state that cannot end it"
-   ],
-   "schism_lines": [
-    "security hawks vs diplomats",
-    "emergency powers vs civil liberties, including due process for alleged hybrids and espers"
-   ]
-  },
-  {
-   "id": "noosphere",
-   "name": "The Noösphere",
-   "reality_tunnel": {
-    "interpretation": "Confederacy contact is read as cosmist communist solidarity and a path toward Social Memory Complex; motives remain uncertain.",
-    "evidence_status": "contested",
-    "blind_spots": [],
-    "may_change_with_evidence": true
-   },
-   "discourse": {
-    "nodal_points": [
-     "noösphere",
-     "biosphere",
-     "common"
-    ],
-    "demands": [
-     "collective intelligence and commons",
-     "survival and evolution of Earth's biosphere",
-     "seek Confederacy accession"
-    ],
-    "frontier": "collective emancipation against enclosure and existential stagnation",
-    "empty_signifiers": []
-   },
-   "stances": {
-    "soft_noetic_psi": "archaic revival and PSI as collective capacities",
-    "confederacy_contact": "pro-accession and Service-to-Others interpretation",
-    "orion_conflict": "resist Orion aggression while defending individual hybrid rights",
-    "agi_asi": "collective beneficial machine intelligence with caution on rogue ASI",
-    "cyborg_ecology": "Taoist-Maoist cyborg multitude with ecology"
-   },
-   "internal_fault_lines": [
-    "reformed CCP centralism vs PCM-style rhizomatic autonomy",
-    "biosphere protection vs posthuman transformation"
-   ],
-   "internal_currents": [
-    "reformed CCP",
-    "western greens",
-    "democratic socialists",
-    "distributed self-governance currents"
-   ],
-   "endgames": [
-    "a terrestrial noosphere that survives accession on its own terms",
-    "absorbed into a Social Memory Complex that is not what it promised"
-   ],
-   "schism_lines": [
-    "distributed self-governance against party-centred leadership",
-    "individuality and dissent against collective memory",
-    "biosphere safeguards against industrial and posthuman ambition"
-   ]
-  }
- ],
- "example_events": [
-  {
-   "id": "verified_psi_service",
-   "fact": "An independently verified in-world remote-viewing service exists.",
-   "status": "corroborated",
-   "topic": "soft_noetic_psi",
-   "majority_reaction": "Some people use it, some sell it, some are being weird about it; the football is on."
-  },
-  {
-   "id": "confederacy_harvest_offer",
-   "fact": "The Confederacy publicly proposes a Harvest program; its ultimate implications are unknown.",
-   "status": "observed",
-   "topic": "confederacy_contact",
-   "majority_reaction": "There were pictures, there was a ceremony, and then the ordinary week resumed."
-  },
-  {
-   "id": "suspected_hybrid_official",
-   "fact": "An official is accused of hybrid infiltration; evidence has not been adjudicated.",
-   "status": "alleged",
-   "topic": "orion_conflict",
-   "majority_reaction": "Someone should do something, carefully, and preferably not to us."
-  }
- ],
- "relation_states": [
-  "alliance",
-  "tactical_alliance",
-  "contested",
-  "rivalry",
-  "schism"
- ],
- "relation_rule": "A relation names the signifier or axis it turns on and carries may_change_with_evidence. No relation is permanent and none implies joint command.",
- "relations": [
-  {
-   "between": [
-    "libertarian_accelerationist",
-    "unity_security_stability"
-   ],
-   "state": "rivalry",
-   "basis": "market sovereignty against public regulation",
-   "may_change_with_evidence": true
-  },
-  {
-   "between": [
-    "libertarian_accelerationist",
-    "true_humans"
-   ],
-   "state": "tactical_alliance",
-   "basis": "shared hostility to UN and member-state regulation, over incompatible answers on markets and on purity",
-   "may_change_with_evidence": true
-  },
-  {
-   "between": [
-    "libertarian_accelerationist",
-    "noosphere"
-   ],
-   "state": "rivalry",
-   "basis": "capital against the common",
-   "may_change_with_evidence": true
-  },
-  {
-   "between": [
+  "relations_status": "proposal_pending_author_review",
+  "relations_status_note": "Allies, antagonists and internal schism lines are the substance of decision-queue row D21, which asks whether the four factions' missing #470 criteria should enter the data, stay a design record, or be amended. They are recorded here as a proposal so the question is answerable rather than silently answered. The substance is already written up in docs/design/ISSUE_470_FACTION_DEPTH_AND_THE_2026_GAP.md section 1; this only makes it readable and checkable. One revert removes it.",
+  "non_playable_historical_parties": [
+    {
+      "id": "libertarian_accelerationist",
+      "name": "Libertarian Accelerationist Party",
+      "reality_tunnel": {
+        "interpretation": "Alien and machine intelligence represent opportunity; allegations of Grey/ASI capture remain unverified.",
+        "evidence_status": "contested",
+        "blind_spots": [],
+        "may_change_with_evidence": true
+      },
+      "discourse": {
+        "nodal_points": [
+          "freedom",
+          "markets",
+          "acceleration"
+        ],
+        "demands": [
+          "Extraterrestrial Special Economic Zones",
+          "accelerated ASI research",
+          "remove UN and national market controls"
+        ],
+        "frontier": "market sovereignty against public regulation",
+        "empty_signifiers": []
+      },
+      "stances": {
+        "soft_noetic_psi": "commercial PSI and private countermeasures",
+        "confederacy_contact": "alien trade and open economic zones",
+        "orion_conflict": "security threat but also contested business relationships",
+        "agi_asi": "accelerate; repeal or exempt restrictive controls",
+        "cyborg_ecology": "private enhancement and enterprise"
+      },
+      "internal_fault_lines": [
+        "sincere libertarians vs patron-dependent opportunists",
+        "human autonomy vs unrestricted collaboration"
+      ],
+      "internal_currents": [
+        "sincere libertarians",
+        "opportunists",
+        "members who read the alien presence as a market to arm against"
+      ],
+      "endgames": [
+        "chartered extraterrestrial enclaves",
+        "a private ASI no UN vote can recall"
+      ],
+      "schism_lines": [
+        "whether extraterrestrial special zones and unregulated ASI are compatible with human liberty at all"
+      ],
+      "playable": false,
+      "classification": "clandestine antagonist / historically superseded UN party",
+      "note": "The organization is functionally co-opted by rogue machine and Orion/Grey hybrid networks in the 2045 fictional setting; allegations about individuals remain unresolved. Not a fourth default choice."
+    }
+  ],
+  "default_playable_party_ids": [
     "true_humans",
+    "unity_security_stability",
     "noosphere"
-   ],
-   "state": "rivalry",
-   "basis": "competing definitions of humanity and of who may belong to it",
-   "may_change_with_evidence": true
-  },
-  {
-   "between": [
-    "true_humans",
-    "unity_security_stability"
-   ],
-   "state": "contested",
-   "basis": "public order against the eliminationist wing; the incumbent courts and restrains the same base",
-   "may_change_with_evidence": true
-  },
-  {
-   "between": [
-    "noosphere",
-    "unity_security_stability"
-   ],
-   "state": "contested",
-   "basis": "institutional continuity against transformation, both claiming the public interest",
-   "may_change_with_evidence": true
-  }
- ],
- "endgame_space": [
-  "peaceful cohabitation",
-  "hegemonic victory by one project",
-  "disintegration",
-  "multiple human and posthuman civilizations, Diaspora-like"
- ],
- "endgame_space_note": "No preordained victor and no predetermined alignment; the space is the set of outcomes design must keep reachable, not a forecast.",
- "integration": {
-  "faction_creation_tags": "strategy_game/data/faction_creation.json (#346)",
-  "abstract_political_network_strategy": "issue #338",
-  "starting_scenario": "issue #468",
-  "characters_and_actions": "issue #461",
-  "lenses": "Wendt (state sovereignty and ontology), Pasulka (belief and disclosure), Dolan (secret intelligence)"
- },
- "relations_status": "proposal_pending_author_review",
- "relations_status_note": "Allies, antagonists and internal schism lines are the substance of decision-queue row D21, which asks whether the four factions' missing #470 criteria should enter the data, stay a design record, or be amended. They are recorded here as a proposal so the question is answerable rather than silently answered. The substance is already written up in docs/design/ISSUE_470_FACTION_DEPTH_AND_THE_2026_GAP.md section 1; this only makes it readable and checkable. One revert removes it."
+  ],
+  "historical_non_playable_relations": [
+    {
+      "between": [
+        "libertarian_accelerationist",
+        "unity_security_stability"
+      ],
+      "state": "rivalry",
+      "basis": "market sovereignty against public regulation",
+      "may_change_with_evidence": true
+    },
+    {
+      "between": [
+        "libertarian_accelerationist",
+        "true_humans"
+      ],
+      "state": "tactical_alliance",
+      "basis": "shared hostility to UN and member-state regulation, over incompatible answers on markets and on purity",
+      "may_change_with_evidence": true
+    },
+    {
+      "between": [
+        "libertarian_accelerationist",
+        "noosphere"
+      ],
+      "state": "rivalry",
+      "basis": "capital against the common",
+      "may_change_with_evidence": true
+    }
+  ]
 }

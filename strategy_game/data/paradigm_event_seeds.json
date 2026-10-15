@@ -22,18 +22,8 @@
       "epistemic_caution": "The proposal remains a political demand, not established NHI consent or an enforceable treaty.",
       "mechanical_effects": [],
       "faction_readings": {
-        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "note": "The same event as read by the THREE default playable parties (2045 author decision #470). Historical accelerationist perspective is preserved separately for antagonist/event usage; not a fourth playable choice.",
         "readings": [
-          {
-            "faction": "libertarian_accelerationist",
-            "reads": "business, not politics: whoever holds an extraterrestrial zone holds the future.",
-            "counts_as_evidence": "signed contracts, the investors' money, the buyers at the table.",
-            "trusts": "its funders, its corporate counsel, its NHI trade partners.",
-            "does": "lobbies Ukweli for Extraterrestrial Special Economic Zones, and against UN and member-state market control.",
-            "justifies_with": "freedom of contract as the road to human abundance.",
-            "epistemic_status": "credible_incomplete_evidence",
-            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.confederacy_contact"
-          },
           {
             "faction": "true_humans",
             "reads": "a bridgehead being sold as a lease: extraterrestrial firms with privileges are sovereignty leaving the room.",
@@ -78,7 +68,19 @@
           "turn_cost": null,
           "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
         },
-        "faction_register": "data/world/un_parties.yaml"
+        "faction_register": "data/world/un_parties.yaml",
+        "historical_non_playable_readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "business, not politics: whoever holds an extraterrestrial zone holds the future.",
+            "counts_as_evidence": "signed contracts, the investors' money, the buyers at the table.",
+            "trusts": "its funders, its corporate counsel, its NHI trade partners.",
+            "does": "lobbies Ukweli for Extraterrestrial Special Economic Zones, and against UN and member-state market control.",
+            "justifies_with": "freedom of contract as the road to human abundance.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.confederacy_contact"
+          }
+        ]
       }
     },
     {
@@ -99,18 +101,8 @@
       "epistemic_caution": "Commercial claims must be distinguished from validated capabilities.",
       "mechanical_effects": [],
       "faction_readings": {
-        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "note": "The same event as read by the THREE default playable parties (2045 author decision #470). Historical accelerationist perspective is preserved separately for antagonist/event usage; not a fourth playable choice.",
         "readings": [
-          {
-            "faction": "libertarian_accelerationist",
-            "reads": "a new industry: psychic services, valuations and a market that has not been regulated yet.",
-            "counts_as_evidence": "the subscription numbers and the customers who pay.",
-            "trusts": "the founders, its funders, the platforms that carry the offer.",
-            "does": "invests, patents, privatises, and treats countermeasures as a product line.",
-            "justifies_with": "consciousness-as-a-service expands human capacity faster than a committee can.",
-            "epistemic_status": "credible_incomplete_evidence",
-            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.soft_noetic_psi"
-          },
           {
             "faction": "true_humans",
             "reads": "an abomination wearing a business plan — witchcraft, or a fraud, or both.",
@@ -154,7 +146,19 @@
           "turn_cost": null,
           "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
         },
-        "faction_register": "data/world/un_parties.yaml"
+        "faction_register": "data/world/un_parties.yaml",
+        "historical_non_playable_readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "a new industry: psychic services, valuations and a market that has not been regulated yet.",
+            "counts_as_evidence": "the subscription numbers and the customers who pay.",
+            "trusts": "the founders, its funders, the platforms that carry the offer.",
+            "does": "invests, patents, privatises, and treats countermeasures as a product line.",
+            "justifies_with": "consciousness-as-a-service expands human capacity faster than a committee can.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.soft_noetic_psi"
+          }
+        ]
       }
     },
     {
@@ -175,18 +179,8 @@
       "epistemic_caution": "Rumor cannot prove biological identity, ancestry, consciousness or allegiance.",
       "mechanical_effects": [],
       "faction_readings": {
-        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "note": "The same event as read by the THREE default playable parties (2045 author decision #470). Historical accelerationist perspective is preserved separately for antagonist/event usage; not a fourth playable choice.",
         "readings": [
-          {
-            "faction": "libertarian_accelerationist",
-            "reads": "a competitor's smear, or a hostile security service doing what it likes done: either way, business continues.",
-            "counts_as_evidence": "whose interests the accusation serves.",
-            "trusts": "its own security contractors.",
-            "does": "refuses the accusation, audits its own payroll quietly, and keeps the patron.",
-            "justifies_with": "an accusation is not a contract term.",
-            "epistemic_status": "open_mystery",
-            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.orion_conflict"
-          },
           {
             "faction": "true_humans",
             "reads": "proof at last that the elite was never human.",
@@ -230,7 +224,19 @@
           "turn_cost": null,
           "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
         },
-        "faction_register": "data/world/un_parties.yaml"
+        "faction_register": "data/world/un_parties.yaml",
+        "historical_non_playable_readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "a competitor's smear, or a hostile security service doing what it likes done: either way, business continues.",
+            "counts_as_evidence": "whose interests the accusation serves.",
+            "trusts": "its own security contractors.",
+            "does": "refuses the accusation, audits its own payroll quietly, and keeps the patron.",
+            "justifies_with": "an accusation is not a contract term.",
+            "epistemic_status": "open_mystery",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.orion_conflict"
+          }
+        ]
       }
     },
     {
@@ -251,18 +257,8 @@
       "epistemic_caution": "PSI can be established in setting without validating every claim about its origin.",
       "mechanical_effects": [],
       "faction_readings": {
-        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "note": "The same event as read by the THREE default playable parties (2045 author decision #470). Historical accelerationist perspective is preserved separately for antagonist/event usage; not a fourth playable choice.",
         "readings": [
-          {
-            "faction": "libertarian_accelerationist",
-            "reads": "a market signal: millions of newly capable people, and no one selling to them yet.",
-            "counts_as_evidence": "reports of the effects and the willingness to pay for training.",
-            "trusts": "the entrepreneurs who arrive first.",
-            "does": "builds businesses around training, licensing and psychic labour markets.",
-            "justifies_with": "capability spreads fastest through exchange.",
-            "epistemic_status": "credible_incomplete_evidence",
-            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.soft_noetic_psi"
-          },
           {
             "faction": "true_humans",
             "reads": "either possession spreading through schools and workplaces, or mass hysteria to be mocked — its wings never agree which.",
@@ -305,7 +301,19 @@
           "turn_cost": null,
           "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
         },
-        "faction_register": "data/world/un_parties.yaml"
+        "faction_register": "data/world/un_parties.yaml",
+        "historical_non_playable_readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "a market signal: millions of newly capable people, and no one selling to them yet.",
+            "counts_as_evidence": "reports of the effects and the willingness to pay for training.",
+            "trusts": "the entrepreneurs who arrive first.",
+            "does": "builds businesses around training, licensing and psychic labour markets.",
+            "justifies_with": "capability spreads fastest through exchange.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.soft_noetic_psi"
+          }
+        ]
       }
     },
     {
@@ -326,18 +334,8 @@
       "epistemic_caution": "Treat the mission's promises as proposals, not proven benevolence.",
       "mechanical_effects": [],
       "faction_readings": {
-        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "note": "The same event as read by the THREE default playable parties (2045 author decision #470). Historical accelerationist perspective is preserved separately for antagonist/event usage; not a fourth playable choice.",
         "readings": [
-          {
-            "faction": "libertarian_accelerationist",
-            "reads": "the largest commercial opportunity in human history, and it should be negotiated, not prayed over.",
-            "counts_as_evidence": "the terms, the technology on offer, and who gains the rights.",
-            "trusts": "its brokers and its funders.",
-            "does": "seeks trade and investment rights inside the accession package while opposing UN control of the traffic.",
-            "justifies_with": "prosperity and open exchange beat a closed sky.",
-            "epistemic_status": "credible_incomplete_evidence",
-            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.confederacy_contact"
-          },
           {
             "faction": "true_humans",
             "reads": "an ultimatum dressed as an invitation: the terms are the annexation, and the Harvest is what they mean by it.",
@@ -382,7 +380,19 @@
           "turn_cost": null,
           "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
         },
-        "faction_register": "data/world/un_parties.yaml"
+        "faction_register": "data/world/un_parties.yaml",
+        "historical_non_playable_readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "the largest commercial opportunity in human history, and it should be negotiated, not prayed over.",
+            "counts_as_evidence": "the terms, the technology on offer, and who gains the rights.",
+            "trusts": "its brokers and its funders.",
+            "does": "seeks trade and investment rights inside the accession package while opposing UN control of the traffic.",
+            "justifies_with": "prosperity and open exchange beat a closed sky.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.confederacy_contact"
+          }
+        ]
       }
     },
     {
@@ -403,18 +413,8 @@
       "epistemic_caution": "Observation, storage, purpose and control remain distinct findings.",
       "mechanical_effects": [],
       "faction_readings": {
-        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "note": "The same event as read by the THREE default playable parties (2045 author decision #470). Historical accelerationist perspective is preserved separately for antagonist/event usage; not a fourth playable choice.",
         "readings": [
-          {
-            "faction": "libertarian_accelerationist",
-            "reads": "an engineering fact with a liability attached: if the network keeps records, someone owns them.",
-            "counts_as_evidence": "the logs, the contracts, the ownership structure.",
-            "trusts": "its own engineers.",
-            "does": "attacks the exposure as a defect, not as a betrayal, and keeps dealing.",
-            "justifies_with": "the market punishes a bad product better than a committee does.",
-            "epistemic_status": "credible_incomplete_evidence",
-            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.confederacy_contact"
-          },
           {
             "faction": "true_humans",
             "reads": "confirmation that the protective gift is a surveillance apparatus.",
@@ -457,7 +457,19 @@
           "turn_cost": null,
           "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
         },
-        "faction_register": "data/world/un_parties.yaml"
+        "faction_register": "data/world/un_parties.yaml",
+        "historical_non_playable_readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "an engineering fact with a liability attached: if the network keeps records, someone owns them.",
+            "counts_as_evidence": "the logs, the contracts, the ownership structure.",
+            "trusts": "its own engineers.",
+            "does": "attacks the exposure as a defect, not as a betrayal, and keeps dealing.",
+            "justifies_with": "the market punishes a bad product better than a committee does.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.confederacy_contact"
+          }
+        ]
       }
     },
     {
@@ -478,18 +490,8 @@
       "epistemic_caution": "Risk claims do not justify violence against civilians.",
       "mechanical_effects": [],
       "faction_readings": {
-        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "note": "The same event as read by the THREE default playable parties (2045 author decision #470). Historical accelerationist perspective is preserved separately for antagonist/event usage; not a fourth playable choice.",
         "readings": [
-          {
-            "faction": "libertarian_accelerationist",
-            "reads": "vandalism against a laboratory that was building the thing everyone else will build anyway.",
-            "counts_as_evidence": "the size of the programme and the advantage lost by stopping.",
-            "trusts": "the researchers it funds.",
-            "does": "funds the replacement programme, insures it, and lobbies against the restriction the raid is trying to enforce.",
-            "justifies_with": "acceleration without restriction is the only position that does not lose.",
-            "epistemic_status": "credible_incomplete_evidence",
-            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.agi_asi"
-          },
           {
             "faction": "true_humans",
             "reads": "the war opening, and the laboratory as a legitimate target.",
@@ -533,7 +535,19 @@
           "turn_cost": null,
           "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
         },
-        "faction_register": "data/world/un_parties.yaml"
+        "faction_register": "data/world/un_parties.yaml",
+        "historical_non_playable_readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "vandalism against a laboratory that was building the thing everyone else will build anyway.",
+            "counts_as_evidence": "the size of the programme and the advantage lost by stopping.",
+            "trusts": "the researchers it funds.",
+            "does": "funds the replacement programme, insures it, and lobbies against the restriction the raid is trying to enforce.",
+            "justifies_with": "acceleration without restriction is the only position that does not lose.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.agi_asi"
+          }
+        ]
       }
     },
     {
@@ -554,18 +568,8 @@
       "epistemic_caution": "No metaphysical interpretation is fixed as narrator truth.",
       "mechanical_effects": [],
       "faction_readings": {
-        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "note": "The same event as read by the THREE default playable parties (2045 author decision #470). Historical accelerationist perspective is preserved separately for antagonist/event usage; not a fourth playable choice.",
         "readings": [
-          {
-            "faction": "libertarian_accelerationist",
-            "reads": "a market of beliefs splitting, which is a market like any other.",
-            "counts_as_evidence": "attendance, donations and which side buys the services.",
-            "trusts": "its media partners.",
-            "does": "advertises to both sides and treats the schism as demand.",
-            "justifies_with": "conscience is a private matter and a public market.",
-            "epistemic_status": "open_mystery",
-            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.soft_noetic_psi"
-          },
           {
             "faction": "true_humans",
             "reads": "the institution is being tested: is the source divine, alien, or a lie — and its wings answer differently, sometimes within one congregation.",
@@ -609,7 +613,19 @@
           "turn_cost": null,
           "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
         },
-        "faction_register": "data/world/un_parties.yaml"
+        "faction_register": "data/world/un_parties.yaml",
+        "historical_non_playable_readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "a market of beliefs splitting, which is a market like any other.",
+            "counts_as_evidence": "attendance, donations and which side buys the services.",
+            "trusts": "its media partners.",
+            "does": "advertises to both sides and treats the schism as demand.",
+            "justifies_with": "conscience is a private matter and a public market.",
+            "epistemic_status": "open_mystery",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.soft_noetic_psi"
+          }
+        ]
       }
     },
     {
@@ -630,19 +646,8 @@
       "epistemic_caution": "The bill is a legal proposal; no numerical bonuses or enacted rights are implied.",
       "mechanical_effects": [],
       "faction_readings": {
-        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "note": "The same event as read by the THREE default playable parties (2045 author decision #470). Historical accelerationist perspective is preserved separately for antagonist/event usage; not a fourth playable choice.",
         "readings": [
-          {
-            "faction": "libertarian_accelerationist",
-            "reads": "another licensing regime dressed as a right, with its own bureaucracy attached.",
-            "counts_as_evidence": "the compliance cost and the firms it would put out of business.",
-            "trusts": "its own lawyers.",
-            "does": "fights the bill's scope, offers private countermeasures instead, and defends contract over statute.",
-            "justifies_with": "rights are best enforced by the people who hold them.",
-            "epistemic_status": "propaganda",
-            "epistemic_note": "The bill proposes a right against intrusion; reading it as a bureaucratic power grab is an interested framing of its text.",
-            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.soft_noetic_psi"
-          },
           {
             "faction": "true_humans",
             "reads": "a law to protect the intrusion it should have banned.",
@@ -686,7 +691,20 @@
           "turn_cost": null,
           "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
         },
-        "faction_register": "data/world/un_parties.yaml"
+        "faction_register": "data/world/un_parties.yaml",
+        "historical_non_playable_readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "another licensing regime dressed as a right, with its own bureaucracy attached.",
+            "counts_as_evidence": "the compliance cost and the firms it would put out of business.",
+            "trusts": "its own lawyers.",
+            "does": "fights the bill's scope, offers private countermeasures instead, and defends contract over statute.",
+            "justifies_with": "rights are best enforced by the people who hold them.",
+            "epistemic_status": "propaganda",
+            "epistemic_note": "The bill proposes a right against intrusion; reading it as a bureaucratic power grab is an interested framing of its text.",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.soft_noetic_psi"
+          }
+        ]
       }
     },
     {
@@ -707,18 +725,8 @@
       "epistemic_caution": "Global hegemony is an aspiration contested by factions, not the MVP starting condition.",
       "mechanical_effects": [],
       "faction_readings": {
-        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "note": "The same event as read by the THREE default playable parties (2045 author decision #470). Historical accelerationist perspective is preserved separately for antagonist/event usage; not a fourth playable choice.",
         "readings": [
-          {
-            "faction": "libertarian_accelerationist",
-            "reads": "emergency authority as the oldest trick in politics, now with a planetary mandate.",
-            "counts_as_evidence": "the clause and who would hold it.",
-            "trusts": "nobody in the room.",
-            "does": "obstructs the convention and offers private emergency capacity instead.",
-            "justifies_with": "a crisis is not a licence to rule the world.",
-            "epistemic_status": "credible_incomplete_evidence",
-            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.agi_asi"
-          },
           {
             "faction": "true_humans",
             "reads": "a world state being assembled while the enemy it claims to face is not even identified.",
@@ -761,7 +769,19 @@
           "turn_cost": null,
           "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
         },
-        "faction_register": "data/world/un_parties.yaml"
+        "faction_register": "data/world/un_parties.yaml",
+        "historical_non_playable_readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "emergency authority as the oldest trick in politics, now with a planetary mandate.",
+            "counts_as_evidence": "the clause and who would hold it.",
+            "trusts": "nobody in the room.",
+            "does": "obstructs the convention and offers private emergency capacity instead.",
+            "justifies_with": "a crisis is not a licence to rule the world.",
+            "epistemic_status": "credible_incomplete_evidence",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.agi_asi"
+          }
+        ]
       }
     },
     {
@@ -782,18 +802,8 @@
       "epistemic_caution": "Normalcy is a diffuse social tendency, not an organized party or an intelligence deficit.",
       "mechanical_effects": [],
       "faction_readings": {
-        "note": "The same in-world event, read four ways. A reading is what a faction believes and does; it decides nothing and resolves nothing.",
+        "note": "The same event as read by the THREE default playable parties (2045 author decision #470). Historical accelerationist perspective is preserved separately for antagonist/event usage; not a fourth playable choice.",
         "readings": [
-          {
-            "faction": "libertarian_accelerationist",
-            "reads": "a market signal: attention is a resource and the crisis has to compete for it with better products.",
-            "counts_as_evidence": "the ratings.",
-            "trusts": "its media partners.",
-            "does": "buys the airtime and lets the crisis lose the fight.",
-            "justifies_with": "people choose what they attend to; that is the normalcy argument, made on purpose.",
-            "epistemic_status": "open_mystery",
-            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.soft_noetic_psi"
-          },
           {
             "faction": "true_humans",
             "reads": "proof that the public has been pacified into missing the danger overhead.",
@@ -837,7 +847,19 @@
           "turn_cost": null,
           "note": "No effect, difficulty, cost, rate, cap or clock is attached to a reading. No new mechanic is locked without the author's approval (issue #469)."
         },
-        "faction_register": "data/world/un_parties.yaml"
+        "faction_register": "data/world/un_parties.yaml",
+        "historical_non_playable_readings": [
+          {
+            "faction": "libertarian_accelerationist",
+            "reads": "a market signal: attention is a resource and the crisis has to compete for it with better products.",
+            "counts_as_evidence": "the ratings.",
+            "trusts": "its media partners.",
+            "does": "buys the airtime and lets the crisis lose the fight.",
+            "justifies_with": "people choose what they attend to; that is the normalcy argument, made on purpose.",
+            "epistemic_status": "open_mystery",
+            "basis": "un_political_discourse.json#libertarian_accelerationist.stances.soft_noetic_psi"
+          }
+        ]
       }
     }
   ],
