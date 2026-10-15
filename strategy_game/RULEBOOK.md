@@ -92,6 +92,8 @@ A narrow technical speciality is expressed on the sheet as **a stunt** (a named 
 
 ## 4. Strategic agent skills (PROPOSAL — not approved)
 
+**The source list, mapped.** Transhumanity's Fate's own skills are recorded against these seven in `data/strategic_skills.json` (`transhumanitys_fate_mapping`, names only). The finding: that list is almost entirely *scene-shaped* and consolidates into the six individual skills above, so the strategic seven cannot be derived from it - they are a design proposal informed by Terra Invicta's shape, awaiting D22.
+
 When the same character acts **as an agent or leader representing their faction**, a check reads a **strategic skill** instead. This is a **different list on the same sheet**, and issue #482 explicitly leaves the roster open. What follows is a worked proposal with its mapping, offered for design review.
 
 **Design reference, not rules.** Terra Invicta's councilors carry eight attributes — persuasion, investigation, espionage, command, administration, science, security and loyalty — and missions that check them. What is taken is the *shape*: a small consolidated list, each entry mapping to a kind of mission. **Nothing numeric is taken** — no attribute scale, no success probability, no mission weight, no cost, no council size, no XP, no turn cadence. The crossover's structure is #482's own: one leader, four agents, one action per character per turn.
