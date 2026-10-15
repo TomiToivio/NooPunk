@@ -29,13 +29,16 @@ from strategy_game.rpg.roster import (  # noqa: E402
     TurnLedger,
     default_seats,
 )
+from strategy_game.rpg.scene import Scene  # noqa: E402
 from strategy_game.rpg.skills import (  # noqa: E402
     INDIVIDUAL_SKILL_NAMES,
     INDIVIDUAL_SKILLS,
     ActionContext,
     SkillLayerError,
+    capabilities_of,
     check,
     individual_skill,
+    require_capability,
     skill_names,
     specialist_supplement,
     validate_skill,
@@ -129,23 +132,23 @@ class ContextResolutionTests(unittest.TestCase):
     def test_an_individual_check_reads_the_individual_rating(self) -> None:
         actor = sheet()
         result = check(actor, ActionContext.INDIVIDUAL, Action.OVERCOME, "COG", 2, rng=Random(3))
-        self.assertEqual(result.skill, 3)
-        self.assertEqual(result.total - result.difficulty, result.shifts)
+        self.assertEqual(result.resolution.skill, 3)
+        self.assertEqual(result.resolution.total - result.resolution.difficulty, result.resolution.shifts)
 
     def test_a_faction_check_reads_the_strategic_rating(self) -> None:
         actor = sheet()
         result = check(actor, ActionContext.FACTION_AGENT, Action.CREATE_ADVANTAGE, "fieldcraft", 1,
                        rng=Random(3), strategic_roster=TEST_ROSTER)
-        self.assertEqual(result.skill, 2)
+        self.assertEqual(result.resolution.skill, 2)
 
     def test_a_zero_rating_in_the_read_layer_is_zero_not_the_other_layer(self) -> None:
         """The namespaces are independent: a strong strategic rating buys nothing in a scene."""
         actor = sheet(skills={"COG": 0}, strategic_skills={"fieldcraft": 4})
         individual = check(actor, ActionContext.INDIVIDUAL, Action.OVERCOME, "COG", 0, rng=Random(1))
-        self.assertEqual(individual.skill, 0)
+        self.assertEqual(individual.resolution.skill, 0)
         strategic = check(actor, ActionContext.FACTION_AGENT, Action.OVERCOME, "fieldcraft", 0,
                           rng=Random(1), strategic_roster=TEST_ROSTER)
-        self.assertEqual(strategic.skill, 4)
+        self.assertEqual(strategic.resolution.skill, 4)
 
     def test_the_same_character_and_kernel_serve_both_layers(self) -> None:
         actor = sheet()
@@ -153,7 +156,7 @@ class ContextResolutionTests(unittest.TestCase):
         strategic = check(actor, ActionContext.FACTION_AGENT, Action.OVERCOME, "statecraft", 1,
                           rng=Random(9), strategic_roster=TEST_ROSTER)
         self.assertEqual(type(individual), type(strategic))
-        self.assertEqual(individual.dice, strategic.dice)
+        self.assertEqual(individual.resolution.dice, strategic.resolution.dice)
 
     def test_every_action_resolves_in_both_contexts(self) -> None:
         actor = sheet()
@@ -164,7 +167,7 @@ class ContextResolutionTests(unittest.TestCase):
             ):
                 result = check(actor, context, action, skill, 1, rng=Random(4),
                                strategic_roster=roster)
-                self.assertEqual(result.action, action)
+                self.assertEqual(result.resolution.action, action)
 
     def test_an_invocation_spends_one_fate_point_and_adds_two(self) -> None:
         actor = sheet(fate_points=1)
@@ -173,7 +176,7 @@ class ContextResolutionTests(unittest.TestCase):
         self.assertEqual(actor.fate_points, 0)
         bare = check(sheet(fate_points=1), ActionContext.INDIVIDUAL, Action.OVERCOME, "COG", 1,
                      rng=Random(2))
-        self.assertEqual(result.total, bare.total + 2)
+        self.assertEqual(result.resolution.total, bare.resolution.total + 2)
 
     def test_an_invocation_without_a_fate_point_is_refused(self) -> None:
         actor = sheet(fate_points=0)
@@ -230,8 +233,8 @@ class SpecialistSupplementTests(unittest.TestCase):
                           stunts=["COG: read the room"])
         for seed in range(5):
             self.assertEqual(
-                check(plain, ActionContext.INDIVIDUAL, Action.OVERCOME, "COG", 2, rng=Random(seed)),
-                check(decorated, ActionContext.INDIVIDUAL, Action.OVERCOME, "COG", 2, rng=Random(seed)),
+                check(plain, ActionContext.INDIVIDUAL, Action.OVERCOME, "COG", 2, rng=Random(seed)).resolution,
+                check(decorated, ActionContext.INDIVIDUAL, Action.OVERCOME, "COG", 2, rng=Random(seed)).resolution,
             )
 
     def test_a_speciality_does_not_become_a_seventh_skill(self) -> None:
@@ -315,6 +318,79 @@ class OneActionPerTurnTests(unittest.TestCase):
             TurnLedger(())
 
 
+class CapabilityGateTests(unittest.TestCase):
+    """#482 names capability gating by name: a gated move without the capability is refused."""
+
+    def test_a_capability_reads_from_the_shared_competence_vocabulary(self) -> None:
+        actor = sheet(tags=(Tag("competence", "netrunner"), Tag("belief", "the commons")))
+        self.assertEqual(capabilities_of(actor), ("netrunner",))
+        self.assertNotIn("the commons", capabilities_of(actor))
+
+    def test_a_gated_action_without_the_capability_is_refused_before_any_dice(self) -> None:
+        actor = sheet()
+        before = actor.fate_points
+        with self.assertRaises(SkillLayerError) as raised:
+            check(actor, ActionContext.FACTION_AGENT, Action.OVERCOME, "fieldcraft", 2, rng=Random(3),
+                  strategic_roster=TEST_ROSTER, required_capability="netrunner")
+        self.assertIn("netrunner", str(raised.exception))
+        self.assertEqual(actor.fate_points, before, "the gate precedes any spend")
+
+    def test_the_same_action_proceeds_with_the_capability(self) -> None:
+        actor = sheet(tags=(Tag("competence", "netrunner"),))
+        result = check(actor, ActionContext.FACTION_AGENT, Action.OVERCOME, "fieldcraft", 2,
+                       rng=Random(3), strategic_roster=TEST_ROSTER, required_capability="netrunner")
+        self.assertEqual(result.resolution.skill, 2)
+
+    def test_an_ungated_action_needs_no_capability(self) -> None:
+        self.assertTrue(check(sheet(), ActionContext.INDIVIDUAL, Action.OVERCOME, "SAV", 1,
+                              rng=Random(3)).resolution.succeeds is not None)
+
+    def test_an_empty_gate_name_is_refused_rather_than_treated_as_ungated(self) -> None:
+        with self.assertRaises(SkillLayerError):
+            require_capability(sheet(), "   ")
+
+    def test_a_capability_gate_does_not_read_a_belief_as_a_capability(self) -> None:
+        actor = sheet(tags=(Tag("belief", "netrunner"),))
+        with self.assertRaises(SkillLayerError):
+            require_capability(actor, "netrunner")
+
+
+class SceneFeatureTests(unittest.TestCase):
+    """A context-checked action gets the approved kernel's scene features, not just its dice."""
+
+    def test_a_tracked_scene_aspect_supplies_a_free_invocation(self) -> None:
+        actor = sheet()
+        scene = Scene()
+        scene.create_aspect("Organised Witnesses", free_invocations=1)
+        result = check(actor, ActionContext.FACTION_AGENT, Action.CREATE_ADVANTAGE, "statecraft", 1,
+                       rng=Random(5), scene=scene, invoked_aspect="Organised Witnesses", free=True,
+                       strategic_roster=TEST_ROSTER)
+        self.assertTrue(result.free)
+        self.assertEqual(scene.aspects["Organised Witnesses"].free_invocations, 0)
+        self.assertEqual(actor.fate_points, 4, "a free invocation spends no Fate point")
+
+    def test_a_reroll_is_available_and_recorded(self) -> None:
+        actor = sheet()
+        result = check(actor, ActionContext.INDIVIDUAL, Action.OVERCOME, "COG", 1, rng=Random(8),
+                       invoked_aspect="Local-Access Specialist", reroll=True)
+        self.assertTrue(result.rerolled)
+        self.assertEqual(actor.fate_points, 3)
+
+    def test_a_denied_permission_raises_before_the_roll(self) -> None:
+        actor = sheet()
+        with self.assertRaises(ResourceError):
+            check(actor, ActionContext.INDIVIDUAL, Action.OVERCOME, "COG", 1, rng=Random(1),
+                  permitted=False)
+
+    def test_resolution_happens_against_the_actor_not_a_copy_of_the_sheet(self) -> None:
+        """The invoker is the actor: stress marked by a scene must land on the real sheet."""
+        actor = sheet()
+        check(actor, ActionContext.INDIVIDUAL, Action.OVERCOME, "SOM", 1, rng=Random(2),
+              invoked_aspect="Local-Access Specialist")
+        self.assertEqual(actor.fate_points, 3)
+        self.assertEqual(actor.physical_stress, [False, False])
+
+
 class ProposedRosterDataTests(unittest.TestCase):
     """The roster in ``data/strategic_skills.json`` is a proposal, and it must behave like one."""
 
@@ -347,8 +423,8 @@ class ProposedRosterDataTests(unittest.TestCase):
         actor = sheet(strategic_skills={"statecraft": 3})
         result = check(actor, ActionContext.FACTION_AGENT, Action.OVERCOME, "statecraft", 1,
                        rng=Random(6), strategic_roster=self.roster)
-        self.assertEqual(result.skill, 3)
-        self.assertEqual(result.total - result.difficulty, result.shifts)
+        self.assertEqual(result.resolution.skill, 3)
+        self.assertEqual(result.resolution.total - result.resolution.difficulty, result.resolution.shifts)
 
     def test_the_roster_still_refuses_an_individual_skill(self) -> None:
         with self.assertRaises(SkillLayerError):

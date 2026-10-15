@@ -61,7 +61,16 @@ def check(
     rng: Random, scene: Scene | None = None,
     invocation: str | None = None, free: bool = False,
     reroll: bool = False, permitted: bool = True,
+    rating: int | None = None,
 ) -> Check:
+    """Resolve one declared check, applying invocations, free invokes and rerolls.
+
+    ``rating`` lets a caller that keeps its own skill ladder (the crossover's strategic layer, whose
+    ratings live beside the individual ones) hand in the value to use, instead of this resolver
+    reading ``actor.skills``. Additive: omitting it is exactly the old behaviour, and passing it
+    changes only where the number comes from -- the actor is still the one that spends Fate points
+    and whose scene aspects are consumed, so nothing is resolved against a copy of the sheet.
+    """
     if not permitted:
         raise ResourceError("fictional permission or target access was denied")
     if free and scene is None:
@@ -76,7 +85,8 @@ def check(
             if free:
                 raise ResourceError("only scene aspects have tracked free invokes")
             bonus = actor.invoke(invocation)
-    first = resolve(action, actor.skills.get(skill, 0), difficulty, rng=rng)
+    base = actor.skills.get(skill, 0) if rating is None else int(rating)
+    first = resolve(action, base, difficulty, rng=rng)
     if reroll:
         dice = roll_fate(rng)
         total = sum(dice) + first.skill

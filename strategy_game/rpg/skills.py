@@ -41,7 +41,9 @@ from enum import Enum
 from random import Random
 from typing import Mapping
 
-from .fate import Action, Character, Resolution, resolve
+from .fate import Action, Character
+from .scene import Check, Scene
+from .scene import check as scene_check
 
 __all__ = [
     "ACTION_CONTEXTS",
@@ -50,8 +52,10 @@ __all__ = [
     "INDIVIDUAL_SKILL_NAMES",
     "IndividualSkill",
     "SkillLayerError",
+    "capabilities_of",
     "check",
     "individual_skill",
+    "require_capability",
     "skill_names",
     "specialist_supplement",
     "validate_skill",
@@ -208,23 +212,71 @@ def check(
     *,
     rng: Random,
     invoked_aspect: str | None = None,
+    scene: Scene | None = None,
+    free: bool = False,
+    reroll: bool = False,
+    permitted: bool = True,
+    required_capability: str | None = None,
     strategic_roster: Mapping[str, object] | None = None,
-) -> Resolution:
+) -> Check:
     """Resolve one check in its declared context, on the one Fate kernel.
 
     The rating is read from the sheet the context names -- ``Character.skills`` for an individual
     action, ``Character.strategic_skills`` for a faction-agent mission -- after
-    :func:`validate_skill` has accepted the name. An aspect invoke is the one Fate point spend this
-    function performs, exactly as ``fate.skill_check`` does.
+    :func:`validate_skill` has accepted the name, and it is handed to the **scene resolver**
+    (``rpg/scene.py``) rather than to the bare dice. So a context-checked action gets everything the
+    approved kernel already gives a scene: tracked scene aspects with free invocations, a reroll, an
+    aspect invoke, and the ``permitted`` fictional-permission flag. Resolution happens against the
+    **actor itself**, never a copy of the sheet, so Fate points spent and free invocations consumed
+    are the real ones.
+
+    ``required_capability`` is the gate issue #482 asks for by name: a special move states the
+    capability it needs, and a character without it is refused **before any dice**, so a
+    capability-gated action cannot be rolled at a lower rating and mistaken for a hard attempt.
     """
     name = validate_skill(context, skill_name, strategic_roster=strategic_roster)
+    require_capability(actor, required_capability)
     rating = (
         actor.skills.get(name, 0)
         if context is ActionContext.INDIVIDUAL
         else actor.strategic_skills.get(name, 0)
     )
-    bonus = actor.invoke(invoked_aspect) if invoked_aspect else 0
-    return resolve(action, rating, difficulty, rng=rng, bonus=bonus)
+    return scene_check(
+        actor, action, name, difficulty, rng=rng, scene=scene,
+        invocation=invoked_aspect, free=free, reroll=reroll, permitted=permitted,
+        rating=rating,
+    )
+
+
+def capabilities_of(actor: Character) -> tuple[str, ...]:
+    """The character's capabilities, read from the shared typed vocabulary.
+
+    A capability is a ``competence`` TAG -- the kind issue #346 already defines, and the kind the
+    rest of the repository uses for ``TELEPATH``, ``REMOTE_VIEWER`` and the netrunner archetype. So
+    there is no second capability scheme here, and a ``belief`` can never be read as a capability.
+    """
+    return tuple(tag.value for tag in actor.tags_of_kind("competence"))
+
+
+def require_capability(actor: Character, capability: str | None) -> None:
+    """Refuse a gated action the character is not capable of, before anything is rolled.
+
+    ``None`` means "this action is not gated", which is the common case; a named capability that the
+    character does not carry raises rather than proceeding at a penalty.
+    """
+    if capability is None:
+        return
+    wanted = str(capability).strip()
+    if not wanted:
+        raise SkillLayerError("a capability gate must name the capability it requires")
+    held = capabilities_of(actor)
+    if wanted not in held:
+        raise SkillLayerError(
+            f"this action requires the {wanted!r} capability, which {actor.name} does not carry; "
+            f"held: {', '.join(held) if held else 'none'}. #482 gates special moves this way -- a "
+            "cyberattack needs a netrunner capability, remote-viewing reconnaissance needs a PSI "
+            "capability -- and an ungated roll would make the gate decorative."
+        )
 
 
 def specialist_supplement(actor: Character, skill_name: str) -> tuple[str, ...]:
