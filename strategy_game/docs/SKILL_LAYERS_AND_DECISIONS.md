@@ -146,6 +146,8 @@ Carried forward deliberately; none of these is answered by this edition.
 | 8 | Every **numeric** strategy question: mission difficulty, cost, duration, cadence, effect, win conditions | queue rows D3, D11; `council.json` |
 | 9 | Whether **EP2e's simulationist material** is ported, and the band→ladder question for legacy percentile content | `ISSUE_461_RESKIN_SPEC.md` rows R1–R5 |
 
+| 10 | The six skills' **starting allocation and advancement**. Fate Core's Great pyramid rates ten different skills and cannot apply literally to six; the rulebook records allocation as unspecified. | `RULEBOOK.md` §3; queue row D23 |
+
 ## 6. Provenance and licensing of this edition
 
 Rules only, and NoöPunk's own vocabulary: no Eclipse Phase or Transhumanity's Fate setting material,
