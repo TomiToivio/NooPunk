@@ -49,3 +49,24 @@ def interpret_event(event_id: str, *, path: str | Path | None = None) -> dict[st
             for party in data["parties"]
         ],
     }
+
+
+def relation_between(party_a, party_b, *, path=None):
+    """The declared relation between two parties, or None when none is recorded.
+
+    A view over authored data: it decides nothing and joins no side.
+    """
+    wanted = {party_a, party_b}
+    for relation in load_un_political_discourse(path).get("relations", []):
+        if set(relation.get("between", [])) == wanted:
+            return dict(relation)
+    return None
+
+
+def majority_reaction(event_id, *, path=None):
+    """The unaligned majority's reading of one event. Never a faction, never an opinion score."""
+    data = load_un_political_discourse(path)
+    event = next((e for e in data["example_events"] if e["id"] == event_id), None)
+    if event is None:
+        raise KeyError(event_id)
+    return str(event.get("majority_reaction") or "")
