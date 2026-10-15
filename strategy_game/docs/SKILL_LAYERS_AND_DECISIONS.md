@@ -143,6 +143,7 @@ Carried forward deliberately; none of these is answered by this edition.
 | 7 | Whether a **consequence maps onto the council status vocabulary** (`injured`, `unavailable`, …) | `#461` decision list, item 4 |
 | 8 | Every **numeric** strategy question: mission difficulty, cost, duration, cadence, effect, win conditions | queue rows D3, D11; `council.json` |
 | 9 | Whether **EP2e's simulationist material** is ported, and the band→ladder question for legacy percentile content | `ISSUE_461_RESKIN_SPEC.md` rows R1–R5 |
+| 10 | The six skills' **starting allocation and advancement**. Fate Core's great pyramid assigns ten distinct ratings (+4 one, +3 two, +2 three, +1 four) and **cannot** apply literally to a six-skill list, so the rulebook §3 records the allocation as not yet specified rather than inventing a distribution. (Raised as a correction to this edition's first draft by a sibling's PR #487.) | `RULEBOOK.md` §3; queue row D23 |
 
 ## 6. Provenance and licensing of this edition
 
