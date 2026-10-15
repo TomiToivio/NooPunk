@@ -266,11 +266,13 @@ A **Creative Commons** project using **homebrewed, reskinned and modified mechan
 | --- | --- |
 | Enforce *"made in 1974, not set in 1974"* for art, prose and presentation | **§1, §4** — stated as the governing maxim |
 | Add Mœbius and *Valérian* prominently to graphic references, *Zardoz* staying #1 | **§2.2** — with the *Métal Hurlant* chronology caveat; the rulebook's §35 visual list also gains them |
-| Prototype an accessible illustrated UI/event card and one punch-card LLM scene | **§2.5(1), §2.5(5), §2.6, §6.3** — specified, **not built**; a prototype is a separate deliverable and no art bible exists yet |
+| Prototype an accessible illustrated UI/event card and one punch-card LLM scene | **Built.** `strategy_game/render/retro_1974.html` (PR #454) and `docs/design/ISSUE_447_RETRO_UI_PROTOTYPE.html` with the art-bible note `docs/design/ISSUE_447_PROTOTYPE_AND_AUDIT.md` (PR #491). The specification behind both is **§2.5(1), §2.5(5), §2.6, §6.3**. Author/art review before any promotion into a game UI is still outstanding |
 | 1970s futurology/ufology/parapsychology flavour, exposition readable | **§3.1, §3.4** |
 | Annotate minor slippages rather than silently changing canon | **§3.2, §5, §6.4** |
 | Period references and correct pre/post-1974 chronology in the sources list; label contested claims | **§7** — with the rulebook sources gaining the same |
-| Retain Hawkwind, Neu!, Tangerine Dream, Amon Düül II; licences separate | **§3.5** |
+| Retain Hawkwind, Neu!, Tangerine Dream, Amon Düül II; licences separate | **§3.7** |
+
+**Table reviewed 2026-10-15 against `main` at `0ec5a99`.** Two rows were superseded in place, both because they had become false rather than by preference: the prototype row, which said *"specified, **not built**"* after two prototypes had merged, and the sound row, which cited **§3.5** (the *VALIS* naming anachronism) where sound is **§3.7** — stale since PR #459 inserted §3.4 and §3.5 and renumbered the writing sections. No prose was deleted.
 
 ---
 

@@ -54,3 +54,76 @@ This record audits the issue as it stood at **27,745 characters**, which is the 
 **This record does not audit those four sections and does not claim their seven checks.** They are being delivered by **PR #457** (`pilgrim-spec-447-v3`), which re-applied on top of #451 and #452 and preserved this document's §3.4 verbatim rather than losing it in a rewrite.
 
 **The close this record accompanied was reversed.** The issue was closed and then **reopened**, because a closure labelled *completed* over a revision nobody had audited is a false record — the failure mode this addendum exists to prevent. Extend the addendum against the merged #457 before closing the issue again, and state the revision in characters, since that is what changed.
+
+---
+
+## Addendum 2, 2026-10-15: the expanded criteria, audited against the tree
+
+**Why this exists.** Addendum 1 ended by handing a condition to its successor — *"Extend the addendum against the merged #457 before closing the issue again, and state the revision in characters, since that is what changed"* — and named four added sections and their seven checks as **unaudited**. This is that audit. It is measured against the tree, not against the claims in the thread, and it is the criterion map the issue has never had.
+
+**The revision, in characters: 39,599**, carrying **32** checkboxes. Re-measure before any close — the body moved five times in two days, and this number is the only statement of whether the audit still applies to what is on the page.
+
+**The tree audited:** `main` at **`0ec5a99`** (*"design(#447): accessible 1974 retrofuture UI prototype and expanded-scope audit (#491)"*, 2026-10-15). Every figure below was measured there, and every command in the last section was re-run green after this branch was rebased onto `e91bcae` — whose only change is `ISSUE_482_ACCEPTANCE.md`, so no file this audit reads moved.
+
+**One correction to Addendum 1.** It named **PR #457** (`pilgrim-spec-447-v3`) as the delivery of the four added sections. **#457 was closed unmerged**; the same content landed as **PR #459** (`eb517ae4`), which also carried the rulebook's 1974 reference shelf. #457 is not the provenance. #459 is.
+
+### The four added sections, and where each one is
+
+| Added section | On `main` |
+| --- | --- |
+| *A 1974 film that accurately predicts 2026* — the maxim, and the rare/short/non-cascading timeline-slip rule | spec **§1**, **§1.1**; the rulebook states the same rule at **§1.4** (*"presentation is not canon"*) |
+| *Visual art direction for later game graphics and UI* — Mœbius and *Valérian et Laureline*, the visual vocabulary, six graphics concepts, the production constraints | spec **§2.1–§2.6**; `RULEBOOK.md` **§35.9** (new) with *Zardoz* held at **#1** in **§35.4** |
+| *Writing style* — period voice, the *"Pilgrim, 1974 edition"* / *"Editorial / Simulation note, 2026"* convention, sound direction | spec **§3.1–§3.3**, **§3.5**, **§3.6**, **§3.7**; `RULEBOOK.md` **§1.4**, **§35.8** |
+| *1970s state of the art* — six period sources with dates, and the pre/post-1974 chronology that separates what Pilgrim could have read from later commentary | spec **§7**; `RULEBOOK.md` **§35.10** (new) |
+
+### The prototype criterion was the one with no artefact. It has two, and the spec contradicted them
+
+The check *"Prototype an accessible indie-friendly illustrated UI/event card and one punch-card LLM scene, with accurate underlying simulation"* was the **only** criterion whose stated position was *"not built"*. It is met twice over. Both artefacts are offline, dependency-free, keyboard-operable files on `main`:
+
+- `strategy_game/render/retro_1974.html` (55 lines, **PR #454**) with `strategy_game/docs/INDIE_RETRO_ART_DIRECTION.md`;
+- `docs/design/ISSUE_447_RETRO_UI_PROTOTYPE.html` (39 lines, **PR #491**) with the art-bible and acceptance note `docs/design/ISSUE_447_PROTOTYPE_AND_AUDIT.md` (28 lines).
+
+**Two documents described this one row and only one of them was right.** The specification's **§10** still read *"specified, **not built**; … no art bible exists yet"*, and its sound row cited **§3.5** — the *VALIS* naming-anachronism section — where sound is **§3.7**, stale since #459 inserted §3.4/§3.5 and renumbered the writing sections. Both rows are superseded in place in this round, under a dated note recording why. **The specification and the tree now agree**, which is the state this issue has repeatedly failed to reach.
+
+### What remains — and it is not agent work
+
+| Remainder | Why it stays open |
+| --- | --- |
+| Tommy Pilgrim's **prologue text** | the standing project rule: the narrative text is the author's to write and an agent's to read. The convention, its position (`RULEBOOK.md` §1.4) and the *VALIS* anachronism marking (spec §3.5) are specified; the prose is not written, and an agent must not write it |
+| **Which rulebook owns** §1.4 and §2.2 | author decision — carried as queue row **D25** |
+| Whether ***The Iron Dream*** joins the locked in-universe hierarchy | author decision — carried as queue row **D26** |
+| **Event Card mechanics** — taxonomy, deck size, probabilities, draw cadence, triggers, effects | deferred by this issue's own instruction (*"we decide the details later"*), not by omission |
+| The **reading-list checkboxes** | the *advance reading and source list for Tomi* is the author's reading, not an agent deliverable, and the brief keeps it out of Pilgrim's 1974 library on purpose |
+| **Editorial acceptance** of the artefacts above | the author's |
+
+### One contradiction in the body, named rather than resolved
+
+Two sections of this issue give **opposite instructions about the same bibliography**. *Advance reading and source list for Tomi* declares itself out-of-universe and requires that it stay separate from Pilgrim's biography — the reading that has governed so far, and the spec's **§9** non-goals repeat it. *Additional sources and inspirations*, added later, is headed *"(out-of-universe; **add to rulebook sources list**)"*.
+
+The works that became **influences** are in `RULEBOOK.md` §35 (**§35.3** fiction, **§35.4** film, **§35.9** graphic, **§35.10** period shelf), and the contemporary shelf the author named on 2026-10-15 is recorded **out-of-universe in the specification**. The **to-read / to-re-read** entries — Bester, Zelazny, Brunner, Miéville, Silverberg, Pohl and Kornbluth, *Bug Jack Barron* — are in neither, and **this round did not add them**: §35.3 admits fiction *"when it materially shapes NoöPunk's tone, society, technology, or cosmology"* and §35.7 admits a work when a decision *"begins relying on"* it — a to-read list is neither yet. Flagged, not resolved. It is a question for the author and it gates no criterion.
+
+### What this addendum does not claim
+
+- **No rule, mechanic, statistic, number, canon, chronology or scenario fact** — and **no `strategy_game/` code or data**. The artefacts behind it are documentation.
+- **No automated test** ([#271](https://github.com/TomiToivio/NooPunk/issues/271)): documents in this repository are reviewed editorially and by playtesting, and no gate was added for any of this.
+- **It does not close the issue.** Addendum 1's condition is now satisfied, but the remainder in the table above is the author's. A close labelled *completed* would have to call an unwritten prologue and two open decisions met — the exact failure that got the previous close reversed.
+- **Superseded rows are counted, not hidden.** Two rows of the specification's §10 changed, both because they had become false. No prose was deleted, and no other file was rewritten.
+
+### The verification behind it
+
+Run on a fresh clone of `main` at `0ec5a99`, using the repository's own canonical commands:
+
+```bash
+python3 tools/split_rulebook_twelve.py --check          # rc 0 — 64 headings -> 12 parts; RULEBOOK.md untouched
+python3 -m unittest discover -s tests -p "test_*.py"    # Ran 531 tests ... OK
+python3 -m unittest discover -s strategy_game/tests -p "test_*.py"   # Ran 1262 tests ... OK
+python3 -m strategy_game | python3 -c "import json,sys; d=json.load(sys.stdin); assert set(d)=={'schema_version','locations','network_nodes','network_edges','assets'}"
+python3 scripts/noopunk_text.py --help
+printf 'quit\n' | python3 scripts/noopunk_text.py --scenario issue74
+python3 scripts/concordia_smoke.py
+python3 scripts/concordia_smoke.py --build-concordia-config
+```
+
+The strategy suite reads **1262**, up from the 1166 recorded in the first half of this record: the growth is sibling merges landing under this issue, and re-running green on that newer `main` is the evidence that the artefacts survived them.
+
+**Two documents now describe this issue's position.** `ISSUE_447_PROTOTYPE_AND_AUDIT.md` (§491) is an editorial acceptance note; this addendum is the criterion map. They agree, and they will drift apart if either is edited without the other — the reason the map is here, in the record whose job it is.
