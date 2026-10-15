@@ -108,12 +108,17 @@ When the same character acts **as an agent or leader representing their faction*
 
 **Overlapping cases are expected, and are the design question.** A campaign led from the front is *command*; the same campaign won by argument is *statecraft*. Evidence taken covertly is *fieldcraft*; the same evidence requested through a record is *inquiry*. Work done against the faction's own exposure is *security*, and the same tradecraft done for the faction is *fieldcraft*. Choosing which skill a mission reads is a table decision, and a case that feels genuinely ambiguous is a signal that the two skills should be merged — not that a difficulty should be invented to separate them.
 
-### 4.2 The mapping from the Fate-side skills
+### 4.2 The mapping from the Fate-side skills, and the reference's own mission model
 
-All 18 Fate Core skills map onto the seven, with no leftovers. The table, with per-row notes and the caveats, is machine-readable in [`data/strategic_skills.json`](data/strategic_skills.json) (`mapping`), read by [`strategic_skills.py`](strategic_skills.py). Two caveats are part of the record:
+All 18 Fate Core skills map onto the seven, with no leftovers. The table, with per-row notes and the caveats, is machine-readable in [`data/strategic_skills.json`](data/strategic_skills.json) (`mapping`), read by [`strategic_skills.py`](strategic_skills.py).
+
+The same file carries the **reference column** — the Terra Invicta mission families whose attribute covers the same ground as each proposed skill (Control Nation, Public Campaign, Inspire and the Enthrall family for statecraft; Purge, Assassinate, the sabotage family and Steal Project for fieldcraft; Investigate Councilor, Detain Councilor and Crackdown for inquiry; Hostile Takeover for stewardship; Coup d'Etat, Increase Unrest, Stabilize Nation, Extract Councilor and the assault missions for command; Advise for science; Protect Target for security). Names only: **no description, no attack/defence pairing and no value** is taken, and the column exists so that the delegation of scope to a reference stays traceable rather than implicit.
+
+Three caveats are part of the record:
 
 * Transhumanity's Fate is a **minimalist Fate Core conversion** — its own developer notes say it "avoided creating new concepts and wherever possible built off existing Fate Core concepts" (quoted in [docs/ISSUE_461_RESKIN_SPEC.md](../docs/design/ISSUE_461_RESKIN_SPEC.md) §3.1). The mapping is therefore expressed against the **verified Fate Core list**, which is the list TF builds on. Confirming TF's own additions or removals against the book is an **open item**: the source rulebook is not in this repository and its CC BY-NC-SA terms forbid reproducing its text.
 * Four proposed mission kinds — covert action, counter-intelligence, and field command — are new names; the rest reuse the existing vocabulary in `local_slice.py::MISSIONS`. The proposal says so itself rather than appearing to extend an approved list.
+* The reference's own action economy is **not** verified and is **not** relied on: that a councilor attempts exactly one mission per assignment phase is implied by the wiki's intel wording but not stated there, and the crossover's one-action-per-character turn comes from #461/#482. `data/strategic_skills.json::terra_invicta_model` records what was verified and what was not.
 
 ### 4.3 Status, stated plainly
 

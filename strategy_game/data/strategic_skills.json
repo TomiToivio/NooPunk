@@ -26,68 +26,164 @@
       "id": "statecraft",
       "label": "Statecraft",
       "definition": "Moving people and institutions to the faction's position: negotiation, public argument, institutional access, the working relationship that makes either possible.",
-      "mission_kinds": ["negotiate", "campaign"],
+      "mission_kinds": [
+        "negotiate",
+        "campaign"
+      ],
       "overlaps": "Overlaps command on a campaign run by leading from the front rather than by persuasion, and stewardship on gaining access through an organisation the faction already runs.",
-      "consolidated_from": ["Rapport", "Provoke", "Empathy", "Deceive", "Contacts"],
-      "terra_invicta_reference": "The reference is persuasion: shaping the opinions of others. The scope here also carries the relationship and access side, which the reference treats through separate organisations."
+      "consolidated_from": [
+        "Rapport",
+        "Provoke",
+        "Empathy",
+        "Deceive",
+        "Contacts"
+      ],
+      "terra_invicta_reference": "The reference is persuasion: shaping the opinions of others. The scope here also carries the relationship and access side, which the reference treats through separate organisations.",
+      "terra_invicta_missions": [
+        "Control Nation",
+        "Public Campaign",
+        "Inspire",
+        "Turn Councilor",
+        "Enthrall Elites",
+        "Enthrall Unaligned Elites",
+        "Enthrall Public",
+        "Enthrall Org"
+      ]
     },
     {
       "id": "fieldcraft",
       "label": "Fieldcraft",
       "definition": "Acting unseen and uninvited: infiltration, surveillance, moving an asset, operating equipment where the faction is not supposed to be.",
-      "mission_kinds": ["covert_action"],
+      "mission_kinds": [
+        "covert_action"
+      ],
       "overlaps": "Overlaps security on counter-intelligence work, and inquiry when the point of the operation is to learn rather than to place something.",
-      "consolidated_from": ["Stealth", "Burglary", "Deceive", "Drive", "Athletics"],
-      "terra_invicta_reference": "The reference is espionage: moving in secret and conducting covert operations. This is the one skill whose whole scope has no counterpart in the six individual skills, which is why it needs a strategic layer at all."
+      "consolidated_from": [
+        "Stealth",
+        "Burglary",
+        "Deceive",
+        "Drive",
+        "Athletics"
+      ],
+      "terra_invicta_reference": "The reference is espionage: moving in secret and conducting covert operations. This is the one skill whose whole scope has no counterpart in the six individual skills, which is why it needs a strategic layer at all.",
+      "terra_invicta_missions": [
+        "Purge",
+        "Assassinate",
+        "Sabotage Facilities",
+        "Sabotage Hab Module",
+        "Sabotage Project",
+        "Steal Project"
+      ]
     },
     {
       "id": "inquiry",
       "label": "Inquiry",
       "definition": "Finding out what someone would rather keep hidden, and reading what is already there: field investigation, records, forensics, the analysis of gathered material.",
-      "mission_kinds": ["investigate"],
+      "mission_kinds": [
+        "investigate"
+      ],
       "overlaps": "Overlaps science whenever the answer needs method rather than legwork, and fieldcraft when the evidence has to be taken rather than requested.",
-      "consolidated_from": ["Investigate", "Notice"],
-      "terra_invicta_reference": "The reference is investigation: discovering information someone would prefer to keep hidden."
+      "consolidated_from": [
+        "Investigate",
+        "Notice"
+      ],
+      "terra_invicta_reference": "The reference is investigation: discovering information someone would prefer to keep hidden.",
+      "terra_invicta_missions": [
+        "Investigate Councilor",
+        "Detain Councilor",
+        "Crackdown"
+      ]
     },
     {
       "id": "stewardship",
       "label": "Stewardship",
       "definition": "Running the faction as an organisation: members, money, offices, logistics, the standing relationships that let any of it happen.",
-      "mission_kinds": ["organize"],
+      "mission_kinds": [
+        "organize"
+      ],
       "overlaps": "Overlaps statecraft on access gained by argument rather than by administration, and command when the organised body is a security or field detail.",
-      "consolidated_from": ["Resources", "Crafts", "Contacts"],
-      "terra_invicta_reference": "The reference is administration: managing large organisations."
+      "consolidated_from": [
+        "Resources",
+        "Crafts",
+        "Contacts"
+      ],
+      "terra_invicta_reference": "The reference is administration: managing large organisations.",
+      "terra_invicta_missions": [
+        "Hostile Takeover"
+      ]
     },
     {
       "id": "command",
       "label": "Command",
       "definition": "Leading the faction's people where it counts: directing a field operation, holding a contested position, taking part in violence when the faction has committed to it.",
-      "mission_kinds": ["field_command", "campaign"],
+      "mission_kinds": [
+        "field_command",
+        "campaign"
+      ],
       "overlaps": "Overlaps security on operations whose purpose is protection rather than action, and statecraft on a campaign that is won by argument rather than by presence.",
-      "consolidated_from": ["Fight", "Shoot", "Physique", "Athletics"],
-      "terra_invicta_reference": "The reference is command: organizing and leading combat operations. No numeric scale, odds or action economy is taken from it."
+      "consolidated_from": [
+        "Fight",
+        "Shoot",
+        "Physique",
+        "Athletics"
+      ],
+      "terra_invicta_reference": "The reference is command: organizing and leading combat operations. No numeric scale, odds or action economy is taken from it.",
+      "terra_invicta_missions": [
+        "Coup d'Etat",
+        "Increase Unrest",
+        "Stabilize Nation",
+        "Extract Councilor",
+        "Assault Alien Asset",
+        "Assault Enemy Space Asset"
+      ]
     },
     {
       "id": "science",
       "label": "Science",
       "definition": "Research and analysis: adopting and adapting a technology, and deriving a new understanding of a phenomenon the faction only partly grasps.",
-      "mission_kinds": ["adopt_technology", "investigate"],
+      "mission_kinds": [
+        "adopt_technology",
+        "investigate"
+      ],
       "overlaps": "Overlaps inquiry on the difference between a method and a case file, which is a design question rather than a settled boundary.",
-      "consolidated_from": ["Lore", "Investigate", "Crafts"],
-      "terra_invicta_reference": "The reference is science: investigating and analysing phenomena to derive new understanding."
+      "consolidated_from": [
+        "Lore",
+        "Investigate",
+        "Crafts"
+      ],
+      "terra_invicta_reference": "The reference is science: investigating and analysing phenomena to derive new understanding.",
+      "terra_invicta_missions": [
+        "Advise"
+      ]
     },
     {
       "id": "security",
       "label": "Security",
       "definition": "Surviving and preventing harm to the faction's people and holdings: counter-intelligence, hardening an asset, holding under interrogation or attack.",
-      "mission_kinds": ["counterintelligence", "field_command"],
+      "mission_kinds": [
+        "counterintelligence",
+        "field_command"
+      ],
       "overlaps": "Overlaps fieldcraft on the covert work done against the faction rather than for it, and command when protection turns into an operation.",
-      "consolidated_from": ["Will", "Physique", "Fight"],
-      "terra_invicta_reference": "The reference is security: the ability to survive violence. The scope here adds counter-intelligence, because in this setting the faction's exposure is usually informational before it is physical."
+      "consolidated_from": [
+        "Will",
+        "Physique",
+        "Fight"
+      ],
+      "terra_invicta_reference": "The reference is security: the ability to survive violence. The scope here adds counter-intelligence, because in this setting the faction's exposure is usually informational before it is physical.",
+      "terra_invicta_missions": [
+        "Protect Target"
+      ]
     }
   ],
   "proposed_mission_kinds": {
-    "reused_from_local_slice": ["campaign", "organize", "negotiate", "adopt_technology", "investigate"],
+    "reused_from_local_slice": [
+      "campaign",
+      "organize",
+      "negotiate",
+      "adopt_technology",
+      "investigate"
+    ],
     "proposed": {
       "covert_action": "A mission that must not be attributable to the faction: infiltration, surveillance, placing or moving an asset.",
       "counterintelligence": "A mission that protects the faction's people or holdings from another faction's covert action, or recovers what was taken.",
@@ -96,24 +192,114 @@
     "note": "No mission carries a difficulty, a cost, an odds, a duration or an effect here. Those are #323's and the author's."
   },
   "mapping": [
-    {"source_skill": "Athletics", "source": "Fate Core (CC BY 3.0)", "proposed": "fieldcraft", "note": "Bodily capability exercised covertly, or under pressure, rather than in a scene."},
-    {"source_skill": "Burglary", "source": "Fate Core (CC BY 3.0)", "proposed": "fieldcraft", "note": "Getting into places the faction is not invited."},
-    {"source_skill": "Contacts", "source": "Fate Core (CC BY 3.0)", "proposed": "stewardship", "note": "The faction's standing relationships and access; statecraft overlaps on the argument side."},
-    {"source_skill": "Crafts", "source": "Fate Core (CC BY 3.0)", "proposed": "stewardship", "note": "Making and maintaining what the organisation runs on."},
-    {"source_skill": "Deceive", "source": "Fate Core (CC BY 3.0)", "proposed": "fieldcraft", "note": "Misdirection as covert action; statecraft overlaps when the deception is public."},
-    {"source_skill": "Drive", "source": "Fate Core (CC BY 3.0)", "proposed": "fieldcraft", "note": "Operating a vehicle as part of an operation."},
-    {"source_skill": "Empathy", "source": "Fate Core (CC BY 3.0)", "proposed": "statecraft", "note": "Reading people in order to move them; the individual layer keeps this under INT."},
-    {"source_skill": "Fight", "source": "Fate Core (CC BY 3.0)", "proposed": "command", "note": "Violence the faction has committed its people to; security overlaps when it is defence."},
-    {"source_skill": "Investigate", "source": "Fate Core (CC BY 3.0)", "proposed": "inquiry", "note": "The clearest single mapping in the table; science overlaps on method."},
-    {"source_skill": "Lore", "source": "Fate Core (CC BY 3.0)", "proposed": "science", "note": "Knowledge and education."},
-    {"source_skill": "Notice", "source": "Fate Core (CC BY 3.0)", "proposed": "inquiry", "note": "Noticing what is already there rather than searching for it."},
-    {"source_skill": "Physique", "source": "Fate Core (CC BY 3.0)", "proposed": "security", "note": "Endurance and bodily resilience; command overlaps where the body is a weapon."},
-    {"source_skill": "Provoke", "source": "Fate Core (CC BY 3.0)", "proposed": "statecraft", "note": "Forcing a reaction rather than building agreement."},
-    {"source_skill": "Rapport", "source": "Fate Core (CC BY 3.0)", "proposed": "statecraft", "note": "Building the relationship a negotiation needs."},
-    {"source_skill": "Resources", "source": "Fate Core (CC BY 3.0)", "proposed": "stewardship", "note": "The faction's money, as the organisation's capability rather than a personal purse."},
-    {"source_skill": "Shoot", "source": "Fate Core (CC BY 3.0)", "proposed": "command", "note": "Violence at a distance."},
-    {"source_skill": "Stealth", "source": "Fate Core (CC BY 3.0)", "proposed": "fieldcraft", "note": "Not being seen."},
-    {"source_skill": "Will", "source": "Fate Core (CC BY 3.0)", "proposed": "security", "note": "Holding under pressure; the individual layer keeps self-control under WIL."}
+    {
+      "source_skill": "Athletics",
+      "source": "Fate Core (CC BY 3.0)",
+      "proposed": "fieldcraft",
+      "note": "Bodily capability exercised covertly, or under pressure, rather than in a scene."
+    },
+    {
+      "source_skill": "Burglary",
+      "source": "Fate Core (CC BY 3.0)",
+      "proposed": "fieldcraft",
+      "note": "Getting into places the faction is not invited."
+    },
+    {
+      "source_skill": "Contacts",
+      "source": "Fate Core (CC BY 3.0)",
+      "proposed": "stewardship",
+      "note": "The faction's standing relationships and access; statecraft overlaps on the argument side."
+    },
+    {
+      "source_skill": "Crafts",
+      "source": "Fate Core (CC BY 3.0)",
+      "proposed": "stewardship",
+      "note": "Making and maintaining what the organisation runs on."
+    },
+    {
+      "source_skill": "Deceive",
+      "source": "Fate Core (CC BY 3.0)",
+      "proposed": "fieldcraft",
+      "note": "Misdirection as covert action; statecraft overlaps when the deception is public."
+    },
+    {
+      "source_skill": "Drive",
+      "source": "Fate Core (CC BY 3.0)",
+      "proposed": "fieldcraft",
+      "note": "Operating a vehicle as part of an operation."
+    },
+    {
+      "source_skill": "Empathy",
+      "source": "Fate Core (CC BY 3.0)",
+      "proposed": "statecraft",
+      "note": "Reading people in order to move them; the individual layer keeps this under INT."
+    },
+    {
+      "source_skill": "Fight",
+      "source": "Fate Core (CC BY 3.0)",
+      "proposed": "command",
+      "note": "Violence the faction has committed its people to; security overlaps when it is defence."
+    },
+    {
+      "source_skill": "Investigate",
+      "source": "Fate Core (CC BY 3.0)",
+      "proposed": "inquiry",
+      "note": "The clearest single mapping in the table; science overlaps on method."
+    },
+    {
+      "source_skill": "Lore",
+      "source": "Fate Core (CC BY 3.0)",
+      "proposed": "science",
+      "note": "Knowledge and education."
+    },
+    {
+      "source_skill": "Notice",
+      "source": "Fate Core (CC BY 3.0)",
+      "proposed": "inquiry",
+      "note": "Noticing what is already there rather than searching for it."
+    },
+    {
+      "source_skill": "Physique",
+      "source": "Fate Core (CC BY 3.0)",
+      "proposed": "security",
+      "note": "Endurance and bodily resilience; command overlaps where the body is a weapon."
+    },
+    {
+      "source_skill": "Provoke",
+      "source": "Fate Core (CC BY 3.0)",
+      "proposed": "statecraft",
+      "note": "Forcing a reaction rather than building agreement."
+    },
+    {
+      "source_skill": "Rapport",
+      "source": "Fate Core (CC BY 3.0)",
+      "proposed": "statecraft",
+      "note": "Building the relationship a negotiation needs."
+    },
+    {
+      "source_skill": "Resources",
+      "source": "Fate Core (CC BY 3.0)",
+      "proposed": "stewardship",
+      "note": "The faction's money, as the organisation's capability rather than a personal purse."
+    },
+    {
+      "source_skill": "Shoot",
+      "source": "Fate Core (CC BY 3.0)",
+      "proposed": "command",
+      "note": "Violence at a distance."
+    },
+    {
+      "source_skill": "Stealth",
+      "source": "Fate Core (CC BY 3.0)",
+      "proposed": "fieldcraft",
+      "note": "Not being seen."
+    },
+    {
+      "source_skill": "Will",
+      "source": "Fate Core (CC BY 3.0)",
+      "proposed": "security",
+      "note": "Holding under pressure; the individual layer keeps self-control under WIL."
+    }
   ],
   "mapping_caveats": [
     "The source column names Fate Core's skills because Transhumanity's Fate is a minimalist Fate Core conversion and its own list is not verifiable in this environment: the source rulebook is not present in the repository, and the licence (CC BY-NC-SA) forbids reproducing its text. The rows therefore map the verified Fate Core list, which is the list Transhumanity's Fate builds on, and TF's own additions or removals are an open item.",
@@ -126,5 +312,21 @@
     "The action economy: TI's councilor count, its recruitment cost in influence, its XP award per mission and its turn cadence. Issue #482 states the crossover's own structure (one leader and four agents, at most one action per character per turn) and it is not TI's.",
     "Councilor professions, traits, orgs, detection and intel mechanics.",
     "TI's eighth attribute, loyalty, is not a skill here: it describes a character's relation to their faction, and this repository already models relations as edges (strategy_game/relationships.py). Turning it into a skill would make betrayal a check the character rolls rather than a thing that happens to the fiction."
-  ]
+  ],
+  "terra_invicta_model": {
+    "source": "https://wiki.hoodedhorse.com/Terra_Invicta/Councilors and /Missions (read via the wiki's own raw and mirrored pages; direct access is Cloudflare-blocked)",
+    "verified": [
+      "A councilor has eight attributes and there is no separate 'skill' tier: a contested mission compares an attack stat against a defence stat, both drawn from those same eight attributes.",
+      "The eight are persuasion, investigation, espionage, command, administration, science, security and loyalty, and each carries a family of missions -- the reference column terra_invicta_missions names them per proposed skill.",
+      "A councilor's usable mission set also comes from a profession and from equipped organisations, so 'which missions may this councilor attempt' is not a function of the attributes alone.",
+      "Missions are assigned in an assignment phase; some resolve automatically and the contested ones are rolled.",
+      "Loyalty is used as the defence stat of two missions and describes how likely a councilor is to defect to another faction -- which is why this proposal keeps it out of the roster (see not_imported_from_terra_invicta)."
+    ],
+    "unverified": [
+      "That a councilor attempts exactly one mission per assignment phase. The official wiki implies it through its intel wording but does not state it, and the statements found elsewhere were secondary sources. The crossover's one-action-per-character turn comes from #461/#482 and depends on none of this.",
+      "Detention, protection and campaign-calendar durations: these exist in the game's own data and are deliberately not reproduced.",
+      "The alien and Servants factions' roster rules -- their council size, and whether they recruit from the same candidate pool."
+    ],
+    "not_reproduced": "No attribute value, mission weight, probability, cost, duration or action-economy quantity is recorded here or anywhere in the crossover material, and no wiki text is quoted."
+  }
 }
