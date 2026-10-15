@@ -75,8 +75,10 @@ own skill-cap arithmetic and its Extras — nothing here needs them.
 **From Transhumanity's Fate (CC BY-NC-SA, design study only, no expression imported).** Adopted as
 *method*: build on existing Fate Core concepts; gear and augmentation as stunts or sub-aspects rather
 than a second sheet; a capability as a permission rather than a bonus; a chassis that costs refresh.
-**Refused:** its setting, its prose, its skill list as such (unverifiable here — §4), and its
+**Refused:** its setting, its prose, its skill list as such (now recorded from secondary sources as names only — §4), and its
 Somatics/Will duplication, which this edition removes by name.
+
+**Its own list, mapped (the review the issue asks for by name).** Transhumanity's Fate's skill list is now recorded in [`data/strategic_skills.json`](data/strategic_skills.json) as `transhumanitys_fate_mapping` - **names only**, no description and no prose from the work, matching the Terra Invicta reference column. The finding is decision-relevant and slightly awkward: the list is **almost entirely scene-shaped**, so it consolidates into the six individual skills rather than into the strategic seven. Only three of its skills are organisational by nature (Civ Rep, Eye Rep, Cred); most of the rest can feed either layer. **The seven proposed strategic skills therefore cannot be derived from the work's list** - that layer is a design choice informed by Terra Invicta's *shape*, which is why D22 is a ruling rather than a merge. Verification status, and what remains unverified (including a count that disagrees between two reproduced pages), is recorded in the file beside the mapping.
 
 **From Eclipse Phase 2e (CC BY-NC-SA, design reference only).** The **six aptitudes** and their scopes
 are used, as *Fate-rated skills*. Refused: the percentile d100 kernel, the four pools (kept as one
