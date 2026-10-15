@@ -157,9 +157,32 @@ class LayerIndependenceTests(unittest.TestCase):
         self.assertEqual(unexpected, {}, "unexpected strategy import outside the declared seam")
 
     def test_the_resolution_core_does_not_depend_on_strategy_state(self) -> None:
-        text = Path(fate.__file__).read_text(encoding="utf-8")
+        """The kernel must not *use* strategy state. Prose may name it; an import may not.
+
+        This used to be a substring scan over the whole file, and it fired on the word "session" in a
+        docstring stating Fate Core's own refresh rule ("refresh at the start of each session"). A
+        guard that reddens on correct prose is one a reader learns to ignore, so it now parses the
+        module and looks at what the code actually refers to: the forbidden names are checked as
+        imports and as referenced names, never as text.
+        """
+        import ast
+
+        tree = ast.parse(Path(fate.__file__).read_text(encoding="utf-8"))
+        imported: set[str] = set()
+        referenced: set[str] = set()
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Import):
+                imported.update(alias.name for alias in node.names)
+            elif isinstance(node, ast.ImportFrom):
+                imported.add(node.module or "")
+                imported.update(alias.name for alias in node.names)
+            elif isinstance(node, ast.Name):
+                referenced.add(node.id)
+            elif isinstance(node, ast.Attribute):
+                referenced.add(node.attr)
         for banned in ("WorldState", "local_slice", "politics", "session"):
-            self.assertNotIn(banned, text, banned)
+            self.assertNotIn(banned, imported, f"fate.py imports {banned}")
+            self.assertNotIn(banned, referenced, f"fate.py refers to {banned}")
 
     def test_importing_the_layer_needs_no_optional_dependency(self) -> None:
         for source in RPG_DIR.glob("*.py"):

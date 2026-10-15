@@ -15,6 +15,8 @@ does not change the key set of ``python -m strategy_game``; both are frozen by
     python -m strategy_game.rpg --text    # the same report as reading text
 """
 from . import ports
+from . import roster as roster
+from . import skills as skills
 from .fate import (
     Action,
     Character,
@@ -28,6 +30,19 @@ from .fate import (
     resolve,
     roll_fate,
     skill_check,
+)
+from .roster import (
+    AGENT_SEAT_COUNT,
+    Seat,
+    SeatKind,
+    TurnLedger,
+    default_seats,
+)
+from .skills import (
+    INDIVIDUAL_SKILLS,
+    ActionContext,
+    SkillLayerError,
+    check,
 )
 from .run import (
     DEFAULT_SEED,
@@ -52,6 +67,19 @@ __all__ = [
     "Resolution",
     "resolve",
     "skill_check",
+    # the two skill layers and the context that selects one (issue #482)
+    "ActionContext",
+    "INDIVIDUAL_SKILLS",
+    "SkillLayerError",
+    "check",
+    "skills",
+    # the five seats and the one-action-per-character turn (issue #482)
+    "AGENT_SEAT_COUNT",
+    "Seat",
+    "SeatKind",
+    "TurnLedger",
+    "default_seats",
+    "roster",
     # the worked scene and the netrunning examples
     "demo_investigation",
     "demo_netrunning",

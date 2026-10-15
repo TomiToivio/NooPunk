@@ -20,6 +20,14 @@ The authored decision is **Fate Core as the shared RPG resolution foundation**, 
 - Optional physiological state, cortical stack/resleeving and innate PSI capability.
 - One deterministic BCI cyber + precognitive PSI demonstration with the **same engine**.
 
+## Added in the #482 pass (skill layers and the faction turn)
+- **The six individual skills, as code:** [`skills.py`](skills.py) carries `INDIVIDUAL_SKILLS` (COG, INT, REF, SAV, SOM, WIL) with the issue's own scope text, the `ActionContext` that selects a layer, and the refusals that keep the two lists apart. A name from the other layer is refused before any dice rather than rated at +0.
+- **The strategic roster as an injected proposal:** `strategic_skills.py` reads `data/strategic_skills.json` (seven proposed skills and an 18-row mapping from the verified Fate Core list). With no roster supplied, a faction-agent check is refused as *pending author approval*. The RPG package imports no strategy module, so the roster arrives as a parameter.
+- **The five seats and the turn:** [`roster.py`](roster.py) — one leader and four agents, at most one action per **character** per turn. It holds no mission, cost, difficulty, clock or quantity.
+- **[`../RULEBOOK.md`](../RULEBOOK.md)** is now the crossover's rulebook rather than a pointer page, and [`../docs/SKILL_LAYERS_AND_DECISIONS.md`](../docs/SKILL_LAYERS_AND_DECISIONS.md) records the decisions, the differences from Fate Core / Transhumanity's Fate / Eclipse Phase / Terra Invicta, and the deferred-decisions register.
+- **Tests:** [`tests/test_rpg_skills.py`](../tests/test_rpg_skills.py) covers context selection, the cross-layer refusals, independent namespaces, the four actions in both contexts, invokes and refresh, the specialist supplement (and that a tag moves no roll), the five-seat roster and the one-action turn.
+- **One guard repaired rather than worked around:** `test_rpg_boundary.py` scanned `fate.py` for the substring `session`, which fired on the word in Fate Core's own refresh rule. It now parses the module with `ast` and checks the forbidden names as imports and references — sabotage-proven both ways (an `import ..session` and a reference to `WorldState` each fail it).
+
 ## Not yet implemented (track in #389)
 - Fate's full reroll invocation, temporary aspects with free invokes, compel/refresh economy.
 - Detailed four-action outcome tables, tie costs, boost creation, attacks, opposition and teamwork.
