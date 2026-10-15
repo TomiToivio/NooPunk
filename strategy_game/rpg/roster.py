@@ -100,6 +100,8 @@ def default_seats(leader_id: str, agent_ids: tuple[str, ...]) -> tuple[Seat, ...
         )
     if not str(leader_id).strip():
         raise RosterError("a leader seat needs a character id")
+    if any(not character_id for character_id in ids):
+        raise RosterError("every agent seat needs a non-empty character id")
     if len(set(ids)) != len(ids) or str(leader_id).strip() in ids:
         raise RosterError("a character holds one seat: the leader and the four agents must be distinct")
     seats = [Seat(AgentSeat.LEADER.value, SeatKind.LEADER, str(leader_id).strip())]
