@@ -222,35 +222,8 @@
     "rivalry",
     "schism"
   ],
-  "relation_rule": "A relation names the signifier or axis it turns on and carries may_change_with_evidence. No relation is permanent and none implies joint command.",
+  "relation_rule": "A relation names the signifier or axis it turns on and carries may_change_with_evidence. No relation is permanent and none implies joint command. Active relations involve only the three playable parties; old Accelerationist relationship history remains in historical_non_playable_relations.",
   "relations": [
-    {
-      "between": [
-        "libertarian_accelerationist",
-        "unity_security_stability"
-      ],
-      "state": "rivalry",
-      "basis": "market sovereignty against public regulation",
-      "may_change_with_evidence": true
-    },
-    {
-      "between": [
-        "libertarian_accelerationist",
-        "true_humans"
-      ],
-      "state": "tactical_alliance",
-      "basis": "shared hostility to UN and member-state regulation, over incompatible answers on markets and on purity",
-      "may_change_with_evidence": true
-    },
-    {
-      "between": [
-        "libertarian_accelerationist",
-        "noosphere"
-      ],
-      "state": "rivalry",
-      "basis": "capital against the common",
-      "may_change_with_evidence": true
-    },
     {
       "between": [
         "true_humans",
@@ -351,5 +324,34 @@
     "true_humans",
     "unity_security_stability",
     "noosphere"
+  ],
+  "historical_non_playable_relations": [
+    {
+      "between": [
+        "libertarian_accelerationist",
+        "unity_security_stability"
+      ],
+      "state": "rivalry",
+      "basis": "market sovereignty against public regulation",
+      "may_change_with_evidence": true
+    },
+    {
+      "between": [
+        "libertarian_accelerationist",
+        "true_humans"
+      ],
+      "state": "tactical_alliance",
+      "basis": "shared hostility to UN and member-state regulation, over incompatible answers on markets and on purity",
+      "may_change_with_evidence": true
+    },
+    {
+      "between": [
+        "libertarian_accelerationist",
+        "noosphere"
+      ],
+      "state": "rivalry",
+      "basis": "capital against the common",
+      "may_change_with_evidence": true
+    }
   ]
 }
