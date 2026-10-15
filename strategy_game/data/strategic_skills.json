@@ -302,7 +302,7 @@
     }
   ],
   "mapping_caveats": [
-    "The source column names Fate Core's skills because Transhumanity's Fate is a minimalist Fate Core conversion and its own list is not verifiable in this environment: the source rulebook is not present in the repository, and the licence (CC BY-NC-SA) forbids reproducing its text. The rows therefore map the verified Fate Core list, which is the list Transhumanity's Fate builds on, and TF's own additions or removals are an open item.",
+    "The source column of `mapping` names Fate Core's skills. That table was prepared before Transhumanity's Fate's own list was verified; `transhumanitys_fate_mapping` now carries that list, recorded from secondary sources as names only.",
     "Fate Core is CC BY 3.0 and its skill names are used here as design references only: the eighteen rows are a consolidation into seven NoöPunk skills, not a reproduction of Fate Core's skill descriptions.",
     "The individual layer's crosswalk (the six skills, and where a Fate Core skill goes when the character acts alone) is documented in strategy_game/RULEBOOK.md section 4 rather than duplicated here."
   ],
@@ -328,5 +328,248 @@
       "The alien and Servants factions' roster rules -- their council size, and whether they recruit from the same candidate pool."
     ],
     "not_reproduced": "No attribute value, mission weight, probability, cost, duration or action-economy quantity is recorded here or anywhere in the crossover material, and no wiki text is quoted."
+  },
+  "transhumanitys_fate_mapping": [
+    {
+      "source_skill": "Athletics",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "REF"
+      ],
+      "proposed_strategic": [],
+      "note": "Movement, balance and defence at scene scale."
+    },
+    {
+      "source_skill": "Civ Rep",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [],
+      "proposed_strategic": [
+        "statecraft"
+      ],
+      "note": "Contacts and services outside the faction: influence held as a relationship, which is exactly what a strategic negotiate or campaign turn spends."
+    },
+    {
+      "source_skill": "Cover",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [],
+      "proposed_strategic": [
+        "fieldcraft"
+      ],
+      "note": "Operating under a false identity is the covert mission, not a scene check."
+    },
+    {
+      "source_skill": "Cred",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [],
+      "proposed_strategic": [
+        "stewardship"
+      ],
+      "note": "Financial leverage is an organisational resource; at scene scale its use reads Savvy."
+    },
+    {
+      "source_skill": "Deceive",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "SAV"
+      ],
+      "proposed_strategic": [],
+      "note": "Scene-scale manipulation."
+    },
+    {
+      "source_skill": "Eye Rep",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [],
+      "proposed_strategic": [
+        "command"
+      ],
+      "note": "Influence inside one's own organisation, which is what a leadership mission draws on."
+    },
+    {
+      "source_skill": "Fight",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "SOM"
+      ],
+      "proposed_strategic": [],
+      "note": "Melee and close combat."
+    },
+    {
+      "source_skill": "Hardware",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "COG"
+      ],
+      "proposed_strategic": [],
+      "note": "Building, repairing and demolition are hands-on: scene scale. A construction programme is a stewardship mission instead."
+    },
+    {
+      "source_skill": "Infiltrate",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "REF"
+      ],
+      "proposed_strategic": [
+        "fieldcraft"
+      ],
+      "note": "Feeds both: the scene check is the movement, the mission is acting uninvited. Renamed from Stealth by TF; this edition folds the scene half into Reflexes."
+    },
+    {
+      "source_skill": "Infosec",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "COG"
+      ],
+      "proposed_strategic": [
+        "security"
+      ],
+      "note": "Feeds both: intrusion and countermeasures at scene scale read Cognition; running a cyber mission needs the netrunner capability, which is a permission rather than a skill."
+    },
+    {
+      "source_skill": "Investigate",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "COG"
+      ],
+      "proposed_strategic": [
+        "inquiry"
+      ],
+      "note": "Feeds both, and the split is the issue's own example: finding something out in a scene is individual, mounting an investigation as an agent is strategic."
+    },
+    {
+      "source_skill": "Kinesics",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "SAV"
+      ],
+      "proposed_strategic": [],
+      "note": "Reading people: TF's replacement for Empathy."
+    },
+    {
+      "source_skill": "Medicine",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "COG"
+      ],
+      "proposed_strategic": [],
+      "note": "Care at scene scale; a public-health programme would read Science."
+    },
+    {
+      "source_skill": "Notice",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "INT"
+      ],
+      "proposed_strategic": [],
+      "note": "Awareness."
+    },
+    {
+      "source_skill": "Pilot",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "REF"
+      ],
+      "proposed_strategic": [],
+      "note": "Vehicles and remote operation."
+    },
+    {
+      "source_skill": "Program",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "COG"
+      ],
+      "proposed_strategic": [],
+      "note": "Writing and modifying code; the cyberattack capability gate is separate, and it is not a skill."
+    },
+    {
+      "source_skill": "Provoke",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "SAV"
+      ],
+      "proposed_strategic": [],
+      "note": "Coercion at scene scale; as an organisational lever it would read Statecraft, which is a design proposal."
+    },
+    {
+      "source_skill": "Rapport",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "SAV"
+      ],
+      "proposed_strategic": [],
+      "note": "Creating relationships and positive feeling."
+    },
+    {
+      "source_skill": "Shoot",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "REF"
+      ],
+      "proposed_strategic": [],
+      "note": "Ranged combat."
+    },
+    {
+      "source_skill": "Somatics",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "SOM"
+      ],
+      "proposed_strategic": [],
+      "note": "TF's own strength-and-endurance skill. Kept as SOM; the Fate Core Physique beside it does not survive."
+    },
+    {
+      "source_skill": "Survival",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "SOM"
+      ],
+      "proposed_strategic": [],
+      "note": "Endurance, orientation and movement through hostile environments."
+    },
+    {
+      "source_skill": "Will",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "WIL"
+      ],
+      "proposed_strategic": [],
+      "note": "Composure under pressure, including horror and psi. Kept as WIL; the Fate Core Will beside it does not survive."
+    },
+    {
+      "source_skill": "Xeno-Contact",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "COG"
+      ],
+      "proposed_strategic": [
+        "science"
+      ],
+      "note": "Feeds both: knowing the species is individual; advising a contact policy is a scientific mission."
+    },
+    {
+      "source_skill": "X-Risks",
+      "source": "Transhumanity's Fate (CC BY-NC-SA 3.0)",
+      "individual": [
+        "COG"
+      ],
+      "proposed_strategic": [
+        "security"
+      ],
+      "note": "Feeds both: knowing the threat is individual; assessing it for the faction is a security mission."
+    }
+  ],
+  "transhumanitys_fate_mapping_finding": "Almost the entire TF list is scene-shaped: it consolidates into the six individual skills. Only three TF skills are organisational by nature (Civ Rep, Eye Rep, Cred), and most of the rest can feed a mission as well as a scene. The seven proposed strategic skills therefore cannot be derived from TF's list - that layer is a design choice informed by Terra Invicta's shape, which is why D22 is a ruling and not a merge. This mapping answers the review the issue asks for; it approves nothing.",
+  "transhumanitys_fate_verification": {
+    "status": "names verified from secondary sources; the book itself was not read here",
+    "method": "names only - no description, no prose and no artwork from the work is reproduced, matching the Terra Invicta reference column",
+    "checked_against": [
+      "the work's own skill-conversion glossary as reproduced by the WikiFate project (fate-srd.fr), which lists the English skill names beside their French translations",
+      "the same project's skill chapter, which states the list size and that Contacts and Resources are folded into Civ Rep, Eye Rep and Cred rather than listed",
+      "an independent character sheet (Chuck Dee, 'Character a Day 2021', day 3) whose chosen skills - Fight, Infiltrate, Athletics, Notice, Shoot, InfoSec, Investigate, Deceive, Cover, Rapport, Will, Somatics - all appear in that list"
+    ],
+    "recorded_as_unverified": [
+      "the exact count: the reproduced chapter says 25 skills while the conversion glossary lists 24 names; the difference is unresolved here",
+      "whether any skill was renamed or dropped between printings",
+      "everything about the work's own setting material, which this crossover does not use"
+    ]
   }
 }

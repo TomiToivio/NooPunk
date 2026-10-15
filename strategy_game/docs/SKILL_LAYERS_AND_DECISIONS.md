@@ -75,8 +75,10 @@ own skill-cap arithmetic and its Extras — nothing here needs them.
 **From Transhumanity's Fate (CC BY-NC-SA, design study only, no expression imported).** Adopted as
 *method*: build on existing Fate Core concepts; gear and augmentation as stunts or sub-aspects rather
 than a second sheet; a capability as a permission rather than a bonus; a chassis that costs refresh.
-**Refused:** its setting, its prose, its skill list as such (unverifiable here — §4), and its
+**Refused:** its setting, its prose, its skill list as such (now recorded from secondary sources as names only — §4), and its
 Somatics/Will duplication, which this edition removes by name.
+
+**Its own list, mapped (the review the issue asks for by name).** Transhumanity's Fate's skill list is now recorded in [`data/strategic_skills.json`](data/strategic_skills.json) as `transhumanitys_fate_mapping` - **names only**, no description and no prose from the work, matching the Terra Invicta reference column. The finding is decision-relevant and slightly awkward: the list is **almost entirely scene-shaped**, so it consolidates into the six individual skills rather than into the strategic seven. Only three of its skills are organisational by nature (Civ Rep, Eye Rep, Cred); most of the rest can feed either layer. **The seven proposed strategic skills therefore cannot be derived from the work's list** - that layer is a design choice informed by Terra Invicta's *shape*, which is why D22 is a ruling rather than a merge. Verification status, and what remains unverified (including a count that disagrees between two reproduced pages), is recorded in the file beside the mapping.
 
 **From Eclipse Phase 2e (CC BY-NC-SA, design reference only).** The **six aptitudes** and their scopes
 are used, as *Fate-rated skills*. Refused: the percentile d100 kernel, the four pools (kept as one
@@ -143,7 +145,8 @@ Carried forward deliberately; none of these is answered by this edition.
 | 7 | Whether a **consequence maps onto the council status vocabulary** (`injured`, `unavailable`, …) | `#461` decision list, item 4 |
 | 8 | Every **numeric** strategy question: mission difficulty, cost, duration, cadence, effect, win conditions | queue rows D3, D11; `council.json` |
 | 9 | Whether **EP2e's simulationist material** is ported, and the band→ladder question for legacy percentile content | `ISSUE_461_RESKIN_SPEC.md` rows R1–R5 |
-| 10 | The six skills' **starting allocation and advancement**. Fate Core's great pyramid assigns ten distinct ratings (+4 one, +3 two, +2 three, +1 four) and **cannot** apply literally to a six-skill list, so the rulebook §3 records the allocation as not yet specified rather than inventing a distribution. (Raised as a correction to this edition's first draft by a sibling's PR #487.) | `RULEBOOK.md` §3; queue row D23 |
+
+| 10 | The six skills' **starting allocation and advancement**. Fate Core's Great pyramid rates ten different skills and cannot apply literally to six; the rulebook records allocation as unspecified. | `RULEBOOK.md` §3; queue row D23 |
 
 ## 6. Provenance and licensing of this edition
 
