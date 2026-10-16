@@ -436,8 +436,10 @@ partnership continuing. It is also what makes the later exposure a **reversal ra
 reveal** — by then the human institutions already have relationships to lose.
 
 > **Ordering caveat.** The beats of this commercial phase are an **author-specified ordering of
-> First Contact narrative beats**, not a chronology of the unordered `20XX` paradigm shifts
-> (§187.10). The only year the specification uses is the **2045** campaign start.
+> First Contact narrative beats**, not a chronology of the unordered pre-2045 paradigm shifts
+> (§187.10). The canonical setting year is **2045** — these beats are canon leading into it —
+> and the ordering and exact dating of the individual paradigm shifts (§187.10) remains
+> deliberately unfixed.
 
 Orion's tonal and structural inspirations, cited as such only: *The X-Files* (covert abductions,
 implants, hybridization, compromised elites, evidence that ordinary institutions initially
@@ -703,9 +705,9 @@ For the avoidance of doubt, and consistent with `AGENTS.md` §4:
 - **no re-dating of the contact-first material.** The commercial phase of `§187.5.7`–`§187.5.9` and
   the ten-tradition contact matrix of [Confederacy contact](16_CONFEDERACY_SOURCE_AND_CONTACT.md)
   §16.8 are an **author-specified ordering of First Contact narrative beats**, not a chronology:
-  the canonical background remains a set of unordered `20XX` paradigm shifts
-  ([timeline](7_TIMELINE.md)), and the only dated year the specification uses is the **2045**
-  campaign start.
+  these beats are **canon** culminating in the canonical setting-year **2045** campaign start,
+  while the canonical background remains a set of **unordered pre-2045 paradigm shifts** whose
+  ordering and exact dating stays deliberately unfixed ([timeline](7_TIMELINE.md)).
 
 > **The setting's answer to "which faction is good?" is that the question is a campaign,
 > not a lookup.**

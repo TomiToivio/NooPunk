@@ -4,19 +4,19 @@
 > Read alongside [ontology](11_ONTOLOGY.md), [beings](12_BEINGS.md), [psychic systems](6_PSYCHIC.md), [equipment](13_EQUIPMENT.md), and [xenopolitics](15_XENOPOLITICS.md).
 > **Source discipline:** the Ra Material is a channeled esoteric text, not verified alien testimony. Radin's PSI claims, Faggin's QIP, Jackson's Sphere Network and modern UAP witnesses carry different evidence statuses. Their similarities are **inspirations**, not independent corroboration.
 
-For the coordinated mythologically legible **messenger** manifestations across ten religious traditions, the Jerusalem peace appearance, and the competing Orion diplomatic strategy, see [First Contact and PSI Awakening](20_FIRST_CONTACT_AND_PSI_AWAKENING.md) (#497). Those contact-first beats are an optional scenario frame, not a replacement for this chapter's other contact protocols.
+For the coordinated mythologically legible **messenger** manifestations across ten religious traditions, the Jerusalem peace appearance, and the competing Orion diplomatic strategy, see [First Contact and PSI Awakening](20_FIRST_CONTACT_AND_PSI_AWAKENING.md) (#497). Those contact-first beats are canonical, not a replacement for this chapter's other contact protocols.
 
 **The ten-tradition contact matrix itself is carried as canon in §16.8 below**, which is where this chapter's own contact protocol now lives; the scenario framing stays in that chapter.
 
 ## 16.1 The operational Confederacy
 
-In 20XX, investigators encounter the **Confederacy** through disaster-relief teams, anomalous traffic controls, quarantined airspace, contact protocols, distributed intelligences and occasional human-looking representatives. Its ancient vocabulary describes *consciousness and evolution*; its present-day behavior resembles a technologically advanced **multi-polity custodial network** operating under contested rules of intervention.
+In 2045, investigators encounter the **Confederacy** through disaster-relief teams, anomalous traffic controls, quarantined airspace, contact protocols, distributed intelligences and occasional human-looking representatives. Its ancient vocabulary describes *consciousness and evolution*; its present-day behavior resembles a technologically advanced **multi-polity custodial network** operating under contested rules of intervention.
 
 The Confederacy is not an all-knowing narrator. Its members can disagree about consent, disclosure, rescue after the ASI catastrophe, information hazards, and how to share technology with a divided and traumatized humanity. Orion's materialist/imperialist accounts are rival political explanations, not proof that the Confederacy's metaphysics is true. Human collaborators, skeptics, cults, and opponents have their own motives. See [xenopolitics](15_XENOPOLITICS.md).
 
 ### Terminology: technical vocabulary and its old names
 
-| Classical Law of One name | Contemporary name in 20XX | Interpretive limit |
+| Classical Law of One name | Contemporary name in 2045 | Interpretive limit |
 | --- | --- | --- |
 | One Infinite Creator | **The Source** | Supposed common ground of existence; no required personified deity |
 | Intelligent infinity | **Conscious Quantum Field** / noetic substrate | In-world theoretical language, **not a real-world experimentally established field** |
