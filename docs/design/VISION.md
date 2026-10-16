@@ -619,3 +619,247 @@ This file supplies a first slice pitch, proposed event-flow diagram, controller 
 A reader should be able to identify the game they are working on, the existing rule-authoring issues, the next scoped deliverable and the conditions for stopping expansion. Review that manually. Direct author instructions and approved scoped decisions govern implementation; a vision edit alone does not approve mechanics or expand a milestone.
 
 Reconcile this document when #309 or the relevant author decisions change, updating the reconciliation date and preserving the distinction between implemented capability and aspiration. Keep #309 available as the north-star discussion; completion of this document does not mean the ultimate game has been implemented.
+
+## 17. Development roadmap: RPG first, then organizational strategy, then grand strategy (#502)
+
+**Where this section comes from.** Issue [#502](https://github.com/TomiToivio/NooPunk/issues/502)
+specifies the **build order** for the crossover game: one NoöPunk game is built incrementally,
+beginning with a playable investigative RPG and layering strategy mechanics on top of the **same
+shared world state**, instead of implementing the entire grand-strategy simulation up front. This
+section records that sequence, its premise and its cross-phase rules in the canon design file, so
+that the build order is not parked in an issue body.
+
+**What this section does, and does not do.** It **adds** a scope axis and a build order. It does
+**not** rename, renumber or reinterpret §7's release stages, does not select a mechanic, number,
+cost, probability, cadence, faction taxonomy or scenario content, does not date anything, and does
+not replace §7b's MVP or §12's first playable slice.
+
+**Guiding progression:** *X-Files-scale investigative RPG → X-COM-scale organizational strategy →
+Terra Invicta-scale faction grand strategy.*
+
+### 17.1 Two axes: release stages and scope phases
+
+This document now carries **two independent development axes**. Neither renames the other, and
+neither may be read as the other.
+
+| Axis | The question it answers | Values | Where it is defined |
+|---|---|---|---|
+| **Release stages** | *How finished, and how public, is the shipped game?* | **S0** paper and prototype design gates → **S1-a / S1-b / S1-c** the indie release, in three playable milestones → **S2** post-release depth → **S3** optional community-scaled expansion → **S4** optional persistent multiplayer | §7, its release ledger, and §14's horizon ledger |
+| **Scope phases** | *How much game exists in the build, and in what order is it added?* | **Phase 1** X-Files-scale investigative RPG → **Phase 2** X-COM-scale organizational strategy → **Phase 3** Terra Invicta-scale faction grand strategy | this section (§17.3–§17.5) |
+
+**Shorthand, fixed here so the rest of the repository can use it unambiguously.** In this repository
+**S0–S4** always means the **release stages** (§7), and **Phase 1–3** always means the **scope
+phases** (§17.3–§17.5). A sentence about the *scope* axis should not be written with an S-number, and
+a sentence about the *release* axis should not be written with a phase number.
+
+**The two axes are orthogonal.** Release stages are about **shipping**; scope phases are about
+**scope and build order**. A build can sit at Phase 1 while its release stage is S0 (a paper
+prototype of the RPG loop) or S1-a (the first public playable). A later scope phase is not a later
+release stage: in release terms, **Phase 2 and Phase 3 are post-MVP growth**, which §7's ledger
+already leaves unscheduled after S1-a.
+
+**How the phases relate to §7b's MVP and §12's slice.**
+
+- **§7b's MVP is the release gate; Phase 1 is the scope target.** The MVP — *the smallest game that
+  still has all three pillars*, the target of **S1-a** — is the bar that the first playable
+  increment of **Phase 1** must clear. Phase 1 delivers the narrative RPG loop and the **minimal
+  shared world state** the three pillars need; the reduced **Strategy** and **Simulation** views
+  §7b requires are what Phase 2 and Phase 3 grow, at the scale §7b already fixes. **Nothing here
+  lowers §7b's bar**: the three pillars must still feed each other in one loop, and §12's slice
+  must still be playable by a human without an LLM.
+- **§12's proposed first playable slice is the concrete candidate for Phase 1's vertical slice.**
+  §12 is not superseded: it remains the implementation-plan baseline, and Phase 1's acceptance
+  criteria (§17.3) are applied to it. §14's Steps A–F remain the work packages that lead there.
+- **Neither §7b nor §12 is rewritten, and no release stage moves.** Phase 1 is *how the RPG-first
+  increment reaches them*, not a replacement for them.
+
+**#502's rule 5, applied to this document itself — separate scope from chronology.** The phase
+sequence is **not** in-world chronology and **not** a forced linear campaign: it is a development
+order. The setting's campaign present is fixed elsewhere
+([`rulebook/20_FIRST_CONTACT_AND_PSI_AWAKENING.md`](../../rulebook/20_FIRST_CONTACT_AND_PSI_AWAKENING.md);
+the 2045 campaign present), and no phase in this section dates anything or claims that the world
+changed from one scope phase to the next.
+
+### 17.2 The premise: the player is the faction leader from day one
+
+**Binding for the crossover player character.** The **player character is the faction leader from
+the start** — *not* a rookie field agent. The other party members are the faction's **agents**. The
+leader already has a faction identity and goals, can participate in RPG scenes, and can direct
+agents; the sophistication of strategic control increases as development proceeds.
+
+**The game must not frame the player character as a rookie who is promoted into strategy play.**
+This is a **framing rule, not a progression rule**, and it is the one premise in this section that
+a later phase may not undo:
+
+- The party is a set of **recruited or assigned agents**, with character sheets, relationships,
+  skills/TAGs and distinct capabilities.
+- **Both the leader and the agents may act within a scene.** The leader is not confined to a
+  strategic screen, and agent autonomy and delegation evolve incrementally — delegation needs an
+  explicit mandate, stopping conditions and an inspectable result, exactly as §13's controller table
+  already requires.
+- **The leader's status never begins below an agent's**, and the leader never has to be promoted
+  into strategic control: the leader has it from the first turn.
+- **A development sequence is not an in-world promotion path.** #502's premise and its rule 5
+  agree: the phase order is a build order, not a career ladder for the character.
+- **Reconciliation, not removal.** The existing canon's new-UNSA-agent material, the Helsinki Field
+  Office framing and Laura Falk remain canonical: they become **party elements** — the faction's
+  agents — under a faction-leader player character. The two passages that framed the player as a
+  rookie are corrected accordingly (§17.9).
+
+### 17.3 Phase 1 — X-Files-scale investigative RPG (the first playable MVP)
+
+A small, satisfying, **narrative-first** loop: *briefing → investigation → dialogue / forensics /
+hacking / PSI → decisions → persistent consequences.*
+
+- **Player character:** the **faction leader**. **Party:** recruited or assigned **agents** with
+  character sheets, relationships, skills/TAGs and distinct capabilities; the leader and the agents
+  may both act within scenes.
+- Reuse and adapt the existing Fate Core / Transhumanity's Fate-inspired RPG work (#482, #389,
+  [`strategy_game/rpg/`](../../strategy_game/rpg/)) — and do **not** import Transhumanity's Fate
+  **lore**.
+- A small cast, a few locations, and intertwined NHI / AGI / PSI **cases** with genuinely
+  consequential choices.
+- Minimal **faction state under the hood** — leader, members, objectives, relationships,
+  intelligence, resources, reputation — with **no large strategic UI and no detailed political
+  simulation**.
+- Outcomes update the **same world state** the later strategy layers will use.
+- Gameplay references: *The X-Files*, *Disco Elysium*, *Citizen Sleeper*. Dangerous combat is
+  occasional, not the core loop.
+
+**Phase 1 acceptance criteria**
+
+- [ ] A faction-leader PC and several playable/commandable agents exist, distinct from rookie-agent
+      framing.
+- [ ] One end-to-end investigation can be played and completed, with branching choices and
+      persistent results.
+- [ ] Core RPG checks/dialogue/skills and at least a thin slice of PSI and hacking work.
+- [ ] Mission results update faction/world state via tested interfaces.
+- [ ] Save/load and automated tests cover the minimal gameplay loop.
+
+*"Automated tests" means tests of **executable code**, per `AGENTS.md`'s automated-tests policy.
+No prose, lore, canon or design document in this repository is guarded by a test, and this checklist
+adds no such gate.*
+
+### 17.4 Phase 2 — X-COM-scale organizational strategy
+
+- **Extend, rather than replace, Phase 1:** cases become **missions on an organizational board**.
+- Add personnel recruitment and assignment, multiple concurrent leads, intel gathering, resources,
+  facilities and operations, opposition activity and time progression.
+- Alternate naturally between faction-leader decisions and RPG missions played through the leader
+  and the agents.
+- Keep the strategic scope small initially — one office, city or region — and the missions
+  eventful; combat and tactical complexity are **optional** and must **not** displace
+  investigation.
+- New strategy actions reuse the **same character, faction and world state**.
+
+**Phase 2 acceptance criteria**
+
+- [ ] The player can prioritize multiple leads and deploy agents with meaningful tradeoffs.
+- [ ] Personnel, intelligence, resources, mission clocks and opposition responses persist.
+- [ ] Mission outcomes feed back into the strategic layer and vice versa.
+- [ ] Existing Phase 1 RPG content remains playable without duplication.
+
+### 17.5 Phase 3 — Terra Invicta-scale faction grand strategy
+
+- Expand progressively from one abstract country to wider regional and global networks and
+  competing factions.
+- Add simplified institutions, ideological struggle, social communication and discourse networks,
+  hegemony, political influence, NHI relations, and AGI/ASI and PSI paradigm shifts.
+- Draw abstractly on Laclau (content and hegemony), Castells (networks) and discourse-network
+  analysis **without** trying to simulate their full theories — the existing warning in §7b that
+  this material is inspiration, not a validated predictive model, continues to apply.
+- Preserve direct RPG agency: grand-strategy decisions generate missions, characters affect
+  politics, and investigations expose strategic opportunities.
+- Design for **eventually optional starts at different scales**, without requiring the player to
+  work up from field operative — the same premise as §17.2, stated at the largest scope.
+
+**Phase 3 acceptance criteria**
+
+- [ ] At least one abstract country supports multiple competing factions, institutions and
+      political influence.
+- [ ] Faction decisions have measurable but interpretable effects on ideology, networks and
+      resources.
+- [ ] RPG missions and organizational operations influence grand-strategy outcomes.
+- [ ] Scale can increase without rewriting the RPG engine or requiring an expensive always-on
+      full-world simulation.
+
+### 17.6 The six cross-phase architecture rules
+
+These rules bind every phase. Each is #502's own rule, with the existing section it agrees with
+named beside it.
+
+1. **One world model, three views** — characters and actions (RPG), organization and missions
+   (X-COM scale), factions / institutions / networks (Terra Invicta scale). Build **small data
+   schemas and versioned save files that grow progressively.** The consequence path is §13's: one
+   accepted action is resolved once, and the views project the result rather than recalculating it.
+2. **Faction leader from day one** — do not frame the player character as a rookie who gets
+   promoted into strategy gameplay (§17.2). The rest of the party are the faction's agents; agent
+   autonomy and delegation can evolve incrementally.
+3. **Vertical slices before breadth** — implement and test one compelling playable loop per phase
+   before expanding features or geographical scope. This is §7's *"release-shaped, not
+   horizon-shaped"* applied to scope.
+4. **Strategy as optional complexity** — retain the fast, eventful narrative RPG as the heart of
+   NoöPunk, and introduce new menus and simulation **only when they produce interesting
+   decisions.** This carries §7b's test — *three disconnected mini-games sharing a menu means the
+   MVP has failed* — into Phase 2 and Phase 3.
+5. **Separate scope from chronology** — development stages are not necessarily lore stages, and
+   not a forced linear campaign structure. The three phases date nothing, and §6's timeline
+   discipline governs the setting (§17.1).
+6. **Reuse existing NoöPunk rulebook and mechanics work, and track dependencies** — do not create
+   competing RPG engines. The existing homes are #482's two-layer mechanics
+   ([`strategy_game/rpg/`](../../strategy_game/rpg/), `strategy_game/RULEBOOK.md`), #389's approved
+   RPG foundation, #461's five-seat structure, and #338's global and minor-faction roadmap. The
+   legacy RPG in `RULEBOOK.md` and `rulebook/` is not rewritten, replaced or retired
+   (`AGENTS.md` §0).
+
+### 17.7 The shared interfaces: `WorldState`, `Faction`, `Leader`, `Agent`, `Case`, `MissionOutcome`
+
+#502 asks for a **minimal shared interface** — `WorldState`, `Faction`, `Leader`, `Agent`, `Case`
+and `MissionOutcome` — so that the three views read one model.
+
+That specification is kept **out of this vision file**, for two reasons this document already
+states: §10 (*"mechanics never live here"*) and §9's convention that a designed artifact lands as
+its own scoped record beside the vision rather than inside it. The record is:
+
+- [`ISSUE_502_SHARED_INTERFACES.md`](ISSUE_502_SHARED_INTERFACES.md) — the six records, their
+  minimal fields, their versioning and extension points, and an **audit of which parts already
+  exist in code today and which are new.**
+
+That record defines **no** mechanic, number, magnitude, cost or subsystem, selects no content, and
+is a specification for author review — not an approval, and not a schema lock. It is written to
+**adopt and extend** the records that already exist rather than to introduce parallel ones, which
+is what rule 6 above requires.
+
+### 17.8 Initial engineering tasks from #502
+
+Reproduced as the issue's own suggestions; they are proposals for scoping, not an authorisation to
+implement, and each remains gated by `AGENTS.md` §1, §2 and §10.
+
+- [ ] Audit the existing character, faction, rules and mission code and issues — especially the
+      two-layer mechanics work (#482) and the existing global and minor-faction roadmap (#338).
+- [ ] Define the minimal shared `WorldState`, `Faction`, `Leader`, `Agent`, `Case` and
+      `MissionOutcome` interface.
+- [ ] Implement a thin playable X-Files investigation with a **faction-leader** PC and a party of
+      agents.
+- [ ] Wire RPG decisions into durable faction and world-state updates.
+- [ ] Add the Phase 2 mission board only after the RPG vertical slice works.
+- [ ] Add the Phase 3 abstract political simulation only after small-scale strategy has a fun
+      gameplay loop.
+
+### 17.9 Frames this section corrects, and what it does not touch
+
+The faction-leader premise (§17.2) corrects the **player-character framing** in exactly two canon
+places. Everything else in those passages — the Helsinki Field Office, Laura Falk, the Reptilian
+raids, the Academy baseline as *character and party* material — is preserved:
+
+| Place | Before | After |
+|---|---|---|
+| `rulebook/20_FIRST_CONTACT_AND_PSI_AWAKENING.md` §5, beat 9 (the 2045 campaign present) | the campaign present opened with *“a new UNSA agent reports to the Helsinki Field Office and works with Laura Falk”* | the player **leads a faction** from the Helsinki Field Office, the player character is the faction leader from day one (not a rookie field agent), and the newly assigned UNSA agent and Laura Falk are **party members — the faction's agents** |
+| `docs/scenarios/FIRST_CONTACT_TEN_TRADITIONS.md` §6.1 and its *"what this document adds"* list, item 5 | the opening hook and the first case load were credited to a *“rookie UNSA agent”* | the hook and the first case load belong to the player's **faction leader**; the newly assigned UNSA agent and Laura Falk are party members |
+
+**Not touched, deliberately.** The legacy RPG's own default player-character baseline — the newly
+graduated UNSA agent of `RULEBOOK.md` §9.3–§9.4 and §38 — stays exactly as written: it is the
+**legacy** game's baseline (`AGENTS.md` §0), and #502's premise is binding for the player character
+of the crossover game, whose party draws on that material as **character background**. No release
+stage, no rule, no number and no other passage was changed. The only other records altered by this
+revision are the **additions** above and the new interface record of §17.7.

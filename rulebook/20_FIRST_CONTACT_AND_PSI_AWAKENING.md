@@ -88,7 +88,7 @@ These beats specify **causal dependencies**, not years — the *internal orderin
 6. Investigations accumulate independently corroborated evidence of abduction, hybridization, manipulation and infiltrators.
 7. Mantid coordination of the apparently separate Orion factions becomes public; the diplomatic settlement degrades.
 8. An alien Cold War / hybrid war persists, including espionage, economic pressure, occasional Confederacy–Orion combat and escalating Reptilian raids.
-9. The **2045 campaign present** begins with functioning yet strained institutions: a new UNSA agent reports to the **Helsinki Field Office** and works with Laura Falk as Reptilian terror raids begin or intensify.
+9. The **2045 campaign present** begins with functioning yet strained institutions: the player leads a faction from the **Helsinki Field Office**, where a newly assigned UNSA agent and Laura Falk are **party members — the faction's agents** — as Reptilian terror raids begin or intensify. The player character is the **faction leader from day one** (issue #502), not a rookie field agent; the game must not frame the PC as a rookie who is promoted into strategy play.
 
 **Continuity note:** the existing [post-Crisis xenopolitical chapter](15_XENOPOLITICS.md) concerns a different, later reconstruction frame. Do not silently rewrite its ASI-catastrophe chronology, nor impose that chronology on the contact-first sequence. The 2045 opening is the **canonical campaign present** (author's ruling of 2026-10-16), while the high-level paradigm shifts behind it remain unordered in [7_TIMELINE.md](7_TIMELINE.md). The earlier pre-Fall scenario remains separately documented in [PREFALL_FIRST_CONTACT.md](../docs/scenarios/PREFALL_FIRST_CONTACT.md).
 
