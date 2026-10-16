@@ -6,6 +6,8 @@
 
 For the coordinated mythologically legible **messenger** manifestations across ten religious traditions, the Jerusalem peace appearance, and the competing Orion diplomatic strategy, see [First Contact and PSI Awakening](20_FIRST_CONTACT_AND_PSI_AWAKENING.md) (#497). Those contact-first beats are an optional scenario frame, not a replacement for this chapter's other contact protocols.
 
+**The ten-tradition contact matrix itself is carried as canon in §16.8 below**, which is where this chapter's own contact protocol now lives; the scenario framing stays in that chapter.
+
 ## 16.1 The operational Confederacy
 
 In 20XX, investigators encounter the **Confederacy** through disaster-relief teams, anomalous traffic controls, quarantined airspace, contact protocols, distributed intelligences and occasional human-looking representatives. Its ancient vocabulary describes *consciousness and evolution*; its present-day behavior resembles a technologically advanced **multi-polity custodial network** operating under contested rules of intervention.
@@ -119,3 +121,55 @@ No new density-specific combat abilities, orbital drone stat blocks, numerical p
 - **Disclosure-era testimony:** David Grusch, Jake Barber and others provide *claims* for comparison, not a verification of the metaphysical system or any individual report.
 
 > **Research boundary:** documentary evidence about a public claim is evidence that the claim was made; it is not automatically evidence that the reported NHI event occurred. The rulebook deliberately mines conflicting accounts for playable intrigue while preserving that distinction.
+
+## 16.8 The ten-tradition contact matrix and the messenger protocol
+
+> **Author-specified canon** ([issue #497](https://github.com/TomiToivio/NooPunk/issues/497)). This section keeps the next free §-number and is placed after the §16.7 source appendix so that **no existing §-number in this chapter changes**. It is the canonical home of the matrix; [First Contact: the ten-tradition contact matrix](../docs/scenarios/FIRST_CONTACT_TEN_TRADITIONS.md) keeps the longer narrative version and [First Contact and PSI Awakening](20_FIRST_CONTACT_AND_PSI_AWAKENING.md) keeps the scenario framing.
+
+The Confederacy (the Zookeepers, §16.1) makes coordinated public First Contact across the world's major religious traditions. **It does not present itself as the gods or founders of religions.** It uses *locally legible mythological forms*: ancient-looking craft, symbols, messenger imagery, visionary appearances and culturally recognizable ways of announcing a presence. **Vimanas in India** and **Merkabah / throne-chariot and angelic imagery in Jerusalem** are the specification's own examples. Angel-like emissaries are a useful analogy — **not** an assertion that any faith's angels are literally aliens.
+
+The visitors claim that some ancient encounters were real, announce that **the Quarantine is over**, and begin offering revelations about cosmology, human history, consciousness, PSI and the nature of reality. Their revelations may be incomplete, culturally translated, inconsistent or mistaken. **Leave open whether the phenomena are physical appearances, adaptive interfaces or PSI-mediated perceptions**; the §16.4 contact procedure applies to every reported messenger encounter, including the ones below.
+
+### The dramatic question
+
+Does any of this prove a religion true, or show that religious traditions misinterpreted visitors? **Neither conclusion follows automatically.** Some believers see confirmation of revelation; others see deception, a test, demonic temptation, or merely technologically advanced beings. Nonbelievers likewise disagree. Religious traditions and their adherents remain internally diverse, and **no one institutional or theological response speaks for them all.**
+
+### Method note
+
+This is a **setting-design list based on the ten traditions nominated for the scenario**, not a definitive population ranking. Categories and counts — especially folk religion, Buddhism and Shinto — are methodologically disputed. The locations are **culturally resonant narrative choices**, not assertions that every member of each tradition recognizes a single holy city. The specification states a manifestation and a dramatic question in one column; where it states an interpretive *limit* instead, that limit is marked as such.
+
+| Tradition | Core public contact site(s) | Manifestation and dramatic question |
+| --- | --- | --- |
+| **Christianity** | **Vatican City / Rome**, plus **Jerusalem** | Angelic messengers and visionary throne imagery. The Vatican must decide whether to recognize, investigate or reject the visitors; churches worldwide disagree. |
+| **Islam** | **Mecca**, with **Jerusalem** as a shared Abrahamic site | Messenger-like, luminous and/or geometric phenomena, framed with great sensitivity toward Islamic aniconism. No claim that an emissary depicts God or Muhammad. Who has authority to interpret the event? |
+| **Hinduism** | **Varanasi**, India | **Vimanas** and imagery suggestive of celestial messengers rather than visitors calling themselves deities. Diverse Hindu schools interpret the encounter differently. |
+| **Buddhism** | **Bodh Gaya**, India | Luminous or mandala-like appearances suggestive of celestial messengers or bodhisattva iconography. Are these awakened beings, illusions or mere visitors? |
+| **Chinese traditional / folk religions** | **Mount Tai** or **Beijing's Temple of Heaven**, China | Celestial-court and heavenly-envoy imagery, interpreted differently by Daoist, folk and other Chinese traditions. *Limit, not a question:* avoid claiming one unified faith. |
+| **Sikhism** | **Amritsar**, India | A restrained messenger/contact presentation near the Golden Temple. *Limit, not a question:* without impersonating Gurus or reducing Sikh teachings to alien revelation. |
+| **Judaism** | **Jerusalem** | **Merkabah**, wheels-within-wheels, prophetic vision and angelic messenger imagery. Debate about prophecy, religious authority and false signs. |
+| **Baháʼí Faith** | **Haifa / Acre**, Israel | Symbolic, peaceful emissaries in the vicinity of major Baháʼí holy places. *Limit, not a question:* do not pretend to supersede Baháʼí revelation; the debate is over progressive revelation and unity. |
+| **Jainism** | **Palitana** or **Shikharji**, India | Nonviolent, ascetic or luminous messenger imagery. Tension between spectacular visitors and Jain ethics. *Limit:* carefully avoid the assumption that Jainism has a creator god. |
+| **Shinto** | **Ise Grand Shrine**, Japan | Sacred-landscape and kami-associated symbolism. *Limit, not a question:* without pretending that kami are simply aliens. Debate over place, ritual and ancestral tradition. |
+
+### The shared Jerusalem message, with distinct Rome and Mecca manifestations
+
+**Jerusalem is the central symbolic diplomatic scene.** Jewish, Christian and Muslim communities encounter an **overlapping manifestation** with an explicit message of peace among the Abrahamic traditions. The visitors emphasize shared inheritance while religious and political communities dispute their interpretation and legitimacy. **Rome and Mecca also receive distinct public manifestations**, so Jerusalem does not replace the other traditions' major centers. The specification does not state whether the Jerusalem, Rome and Mecca events are one adaptive interface appearing three ways or separate presentations; the open question — physical appearance, adaptive interface or PSI-mediated perception — stays open.
+
+### Conduct rules that carry into play
+
+- Visitors must not violate restricted sacred spaces merely for visual spectacle.
+- NoöPunk must not imply that three religions become theologically identical merely because one NHI civilization sends them a common peace message.
+- Religious leaders and governments retain agency: no institution is spoken for, and no government's decision is pre-empted.
+- The setting does not declare any real-world religion proved or disproved as an objective fact.
+
+### Optional out-of-date contacts: Giza, Teotihuacan and Cusco
+
+Deliberately **out-of-date Zookeeper itinerary mistakes**, retained for the comedy and **optional** — a scenario may use all, some or none. They are not substitutes for the ten core contacts. They introduce archaeology, postcolonial politics, and the unsettling question of who actually remembers Earth's past accurately.
+
+| Site | What the envoys did |
+| --- | --- |
+| **Giza, Egypt** | Envoys seeking ancient Egyptian institutions and a Pharaoh who no longer exists. |
+| **Teotihuacan, Mexico** | Imagery associated with pre-Columbian Mesoamerican traditions; bafflement at changed societies. |
+| **Cusco, Peru** | Radiant Andean/solar imagery addressed to vanished imperial structures. |
+
+**Tonal and structural inspirations, cited as such only:** Roger Zelazny's *Lord of Light* (contact staged through recognizable mythological forms and narrative conventions) and Arthur C. Clarke's *Childhood's End* (technologically superior, apparently protective, deeply paternalistic and ultimately enigmatic guides). **No characters, organisations or plotlines are imported.** For the ordering of these contact beats relative to Orion's diplomacy, see the [timeline](7_TIMELINE.md) and §187.5.7–§187.5.9 of [xenopolitics](15_XENOPOLITICS.md).
