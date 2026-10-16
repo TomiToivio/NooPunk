@@ -1,20 +1,21 @@
-# Issue #506: science programmes and branching technologies
+# Issue #506: research-project integration notes
 
-**Scope:** implement the author's research clock as a deliberately small RPG-first prototype, without overriding the still-provisional wider strategic skill roster in #482. This slice uses the *existing Fate 4dF resolution* from `strategy_game.rpg.fate`; `SCIENCE` is explicitly authorised by #506 for this operation. It does not import Transhumanity's Fate lore.
+PR #507 was reconciled with the already-merged, more complete implementation from PR #508. The **existing** `strategy_game/projects.py`, `strategy_game/research.py`, `strategy_game/research_slice.py`, `strategy_game/campaign/state.py`, and `strategy_game/tests/test_research_projects.py` remain the source of truth. Do not introduce a second incompatible ResearchProject, TechNode, resource ledger, or research save format.
 
-An assigned lead's SCIENCE rating checks whether the programme is productive. On a successful Fate **overcome** result with positive shifts, the clock fills by the faction's **allocated research work units**, capped at the remaining work. On failure or tie the programme stalls with no progress; work already completed remains. A paused, unfunded or prerequisite-blocked project does not roll. There is no invented economy or spending rule: resource allocation is a caller-supplied integer, not a balance automatically deducted from campaign resources.
+## Author simplification: ONE SCIENCE skill
 
-Use `python -m unittest strategy_game.tests.test_issue506_research` to verify this vertical slice. From a Python REPL, `from strategy_game.research import demo_research; print(demo_research())`.
+All research domains use **one SCIENCE skill** on the faction-agent sheet; do not introduce separate physics, biotechnology, parapsychology, archaeology, data-analysis, engineering or knowledge ratings. The existing strategic roster proposal spells the identifier `science` (lowercase); this is the same single skill concept, not another skill. Specialist domain labels are optional context or permissions, **not** a second numerical skill and **not** a universal required TAG.
 
-The fictional example is a recovered NHI drive component requiring `crash_fragment` mission evidence, 12 work units, 3 research capacity each productive turn. Its completion adds *principles understood* and unlocks an RPG inspection option, **not** manufacture of spacecraft. Another data-authored node may represent well-known engineering transferred to faction workshops. Each node may be labelled with multiple branches (cyberpunk, psipunk, solarpunk, biopunk, nanopunk, quantumpunk, alien-derived), and policy restrictions can rule out projects for specific factions. Dependencies are checked as a directed acyclic graph, not a compulsory single path.
+Project differences arise from authored evidence/prerequisites, available facilities and resources, difficulty, work-clock length, ideological choices and payoff. Alien reverse engineering and mundane technology transfer therefore share one competence gate: the existing Fate-based strategic-project check.
 
-### Integration contract and remaining work
+## Reconciliation notes
 
-- `ResearchState.add_evidence(id)` is the explicit mission-to-research seam; a completed research node exposes `unlocked_rpg_options` for the authoring/UI layer to consume. This prototype is not yet wired into `Campaign` saves, `MissionOutcome`, or playable CLI scenes.
-- Research saves are versioned independent JSON payloads; next step is persist a research payload in the shared campaign's existing extension boundary without breaking `campaign-save-1`.
-- Assignments, staff availability, faction resource inventories and political doctrine must be validated against campaign state by a future integration adapter; this pure domain module does **not** claim such checks happen.
-- The universal `StrategicProject` engine for diplomacy, construction, intelligence, etc., has not been implemented. The research clock is the first specific behavior from which that shared abstraction can be extracted after playtesting.
-- The strategic roster outside SCIENCE, check difficulty values, faction work capacity values and authored technology paths require explicit author choices. Example numbers and node identifiers are **non-canonical fixtures**.
-- The issue's X-COM- and Terra-Invicta-scale stages remain open. No ASI rediscovery is implied as an unavoidable end node.
+The initial PR #507 independently introduced a standalone `ResearchState` and `ResearchProject` in a file that PR #508 also created. Keeping both implementations would overwrite the working campaign integration and break the existing APIs. For this merge, the PR #508 implementation was retained and the superseded standalone tests were not brought into `main`.
 
-Principle: **the individual keeps the project productive, the institution provides throughput, and choices determine which futures are pursued.**
+**Follow-up:** The current `ResearchProject.__post_init__` requires domain TAGs or an explicit waiver for any project with a lead. This conflicts with the author's later clarification that domain TAGs are optional, so remove the universal requirement and adjust executable tests. Update documentation that describes domains as required. Preserve project prerequisites only when fiction and authored data warrant them.
+
+For existing integration and test commands see `strategy_game/docs/RESEARCH_PROJECTS.md` and `strategy_game/tests/test_research_projects.py`.
+
+## Status
+
+The RPG-first research and strategic-project implementation is already represented by PR #508. This merged documentation records #507's reconciliation and the single-SCIENCE direction. Issue #506 remains open for the domain-TAG simplification, extended tech-tree content and future X-COM / Terra Invicta strategy phases.

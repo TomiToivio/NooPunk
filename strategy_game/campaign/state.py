@@ -61,6 +61,10 @@ from ..rpg.fate import Character, Consequence
 from ..rpg.roster import AGENT_SEAT_COUNT
 from ..relationships import RelationshipEdge, edge_from_dict
 
+if TYPE_CHECKING:  # no runtime cycle: the project and research records are loaded lazily below
+    from ..projects import FactionCapacity, StrategicProject
+    from ..research import TechNode
+
 if TYPE_CHECKING:  # no runtime cycle: Case lives in .case and state never imports it at runtime
     from .case import Case
 
@@ -77,10 +81,14 @@ __all__ = [
     "save_campaign",
 ]
 
-#: Save-file shape marker. Bump on an incompatible change; ``campaign_from_dict``
-#: refuses a snapshot with a different marker instead of guessing a migration
-#: (roadmap rule 1: versioned saves that **grow** — later phases extend the payload;
-#: they do not reinterpret it).
+#: Save-file shape marker. Bump on an **incompatible** change; ``campaign_from_dict`` refuses a
+#: snapshot with a different marker instead of guessing a migration (roadmap rule 1: versioned saves
+#: that **grow** — later phases extend the payload; they do not reinterpret it). Growth that is
+#: *compatible* keeps the marker: the strategic-project books added here (#506 Phase 1) are new
+#: optional fields with empty defaults, so a snapshot written before them still loads and every field
+#: it did carry is read back unchanged — nothing is reinterpreted and nothing is guessed. A change
+#: that instead gave an existing field a new meaning, or made an old snapshot unreadable, is the case
+#: this marker exists for.
 SCHEMA_VERSION = "campaign-save-1"
 
 #: The member capacity of a playable faction: one leader and four agents (#461/#482).
@@ -280,6 +288,21 @@ class Campaign:
     intelligence_ids: list[str] = field(default_factory=list)
     #: Campaign-scoped authored notes. Nothing reads them; provenance keeps them honest.
     campaign_notes: list[dict[str, Any]] = field(default_factory=list)
+    #: The strategic projects declared on this campaign, by project id (issue #506 Phase 1). Research
+    #: is the first kind of project on the one engine; a construction, organising or diplomatic task
+    #: is the same record. The books live **here**, on the one world model, rather than in a second
+    #: state file — the roadmap's rule 1 ("one world model, three views").
+    projects: dict[str, StrategicProject] = field(default_factory=dict)
+    #: The capability nodes the author's data declares for this world, by node id: the branching
+    #: technology graph Phase 3 grows. Declared, not held.
+    tech_nodes: dict[str, TechNode] = field(default_factory=dict)
+    #: The capabilities the faction **holds**, by node id — one stage at a time, each granted by a
+    #: completed project. This is what a research programme produces and what the RPG reads as a new
+    #: option (``research.rpg_options``).
+    capabilities: dict[str, TechNode] = field(default_factory=dict)
+    #: One resource-throughput ledger per faction id (``projects.FactionCapacity``): what each faction
+    #: can do per turn, and what it has committed to which project.
+    capacities: dict[str, FactionCapacity] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         if bool(self.faction_id) != bool(self.leader_id):
@@ -297,6 +320,40 @@ class Campaign:
                 f"campaign leader {self.leader_id!r} has no sheet on the campaign; "
                 "inventing one would be inventing a character"
             )
+        for faction_id, ledger in self.capacities.items():
+            if ledger.faction_id != faction_id:
+                raise CampaignError(
+                    f"capacity ledger {faction_id!r} names faction {ledger.faction_id!r}; a ledger is "
+                    "keyed by the faction it belongs to"
+                )
+            if faction_id not in self.factions:
+                raise CampaignError(
+                    f"capacity ledger {faction_id!r} belongs to no faction on this campaign; "
+                    "an unknown faction id is a defect, not a default"
+                )
+        for project_id, project in self.projects.items():
+            if project.project_id != project_id:
+                raise CampaignError(
+                    f"project record {project_id!r} names itself {project.project_id!r}; a project is "
+                    "keyed by its own id"
+                )
+            if project.faction_id not in self.factions:
+                raise CampaignError(
+                    f"project {project_id!r} belongs to faction {project.faction_id!r}, which is not "
+                    "on this campaign"
+                )
+        for node_id, node in self.capabilities.items():
+            declared = self.tech_nodes.get(node_id)
+            if declared is None:
+                raise CampaignError(
+                    f"capability {node_id!r} is held but not declared in tech_nodes; a held stage "
+                    "must be one the world's data declares"
+                )
+            if declared != node:
+                raise CampaignError(
+                    f"capability {node_id!r} differs from the node tech_nodes declares; the held "
+                    "stage and the declared node are one record"
+                )
     # -- roster ---------------------------------------------------------------
 
     def attach_sheet(self, sheet: Character) -> None:
@@ -394,6 +451,33 @@ class Campaign:
             for endpoint in (tie.holder_id, tie.other_id):
                 if endpoint not in self.sheets and endpoint not in self.factions:
                     problems.append(f"tie {tie_id}: endpoint {endpoint!r} is not a known record")
+        for project_id, project in self.projects.items():
+            if project.lead_id and project.lead_id not in self.sheets:
+                problems.append(f"project {project_id!r}: lead {project.lead_id!r} has no sheet")
+            ledger = self.capacities.get(project.faction_id)
+            if ledger is None:
+                problems.append(
+                    f"project {project_id!r}: faction {project.faction_id!r} has no capacity ledger "
+                    "to draw on"
+                )
+            elif project.resource_kind not in ledger.units:
+                problems.append(
+                    f"project {project_id!r}: the faction's ledger declares no {project.resource_kind!r} "
+                    "capacity"
+                )
+        for node_id, node in self.capabilities.items():
+            for required in node.requires.node_ids:
+                if required not in self.capabilities:
+                    problems.append(
+                        f"capability {node_id!r} requires node {required!r}, which the campaign does "
+                        "not hold"
+                    )
+        for node_id, node in self.tech_nodes.items():
+            for required in node.requires.node_ids:
+                if required not in self.tech_nodes:
+                    problems.append(
+                        f"tech node {node_id!r} requires node {required!r}, which is not declared"
+                    )
         return tuple(problems)
 
     def to_dict(self) -> dict[str, Any]:
@@ -412,6 +496,10 @@ class Campaign:
             "ties": {tid: tie.to_dict() for tid, tie in sorted(self.ties.items())},
             "intelligence_ids": sorted(self.intelligence_ids),
             "campaign_notes": [dict(note) for note in self.campaign_notes],
+            "projects": {pid: p.to_dict() for pid, p in sorted(self.projects.items())},
+            "tech_nodes": {nid: n.to_dict() for nid, n in sorted(self.tech_nodes.items())},
+            "capabilities": {nid: n.to_dict() for nid, n in sorted(self.capabilities.items())},
+            "capacities": {fid: c.to_dict() for fid, c in sorted(self.capacities.items())},
         }
 
     def to_json(self) -> str:
@@ -432,6 +520,8 @@ def campaign_from_dict(report: Mapping[str, Any]) -> Campaign:
             f"unsupported campaign save schema_version {report.get('schema_version')!r}; "
             f"expected {SCHEMA_VERSION!r}"
         )
+    from ..projects import capacity_from_dict, project_from_dict
+    from ..research import capability_from_dict
     from .case import case_from_dict  # local to keep .state importable without .case
 
     sheets = {
@@ -455,6 +545,22 @@ def campaign_from_dict(report: Mapping[str, Any]) -> Campaign:
         ties=ties,
         intelligence_ids=[str(x) for x in (report.get("intelligence_ids") or [])],
         campaign_notes=[dict(note) for note in (report.get("campaign_notes") or [])],
+        projects={
+            pid: project_from_dict(payload)
+            for pid, payload in dict(report.get("projects") or {}).items()
+        },
+        tech_nodes={
+            nid: capability_from_dict(payload)
+            for nid, payload in dict(report.get("tech_nodes") or {}).items()
+        },
+        capabilities={
+            nid: capability_from_dict(payload)
+            for nid, payload in dict(report.get("capabilities") or {}).items()
+        },
+        capacities={
+            fid: capacity_from_dict(payload)
+            for fid, payload in dict(report.get("capacities") or {}).items()
+        },
     )
 
 

@@ -17,6 +17,24 @@ Tests: `python -m unittest strategy_game.tests.test_issue502_investigation`.
 
 This is a **functional proof of architecture, not a complete authored campaign**. The example's fictional events and placeholder character ratings are not canon, and no dice outcome silently determines story consequences.
 
+## Phase 1: the shared strategic-project engine and research (#506)
+
+The same RPG-first increment now carries the **one** incremental-action mechanic every faction
+operation will use — *agent-lead check → faction resource throughput → multi-turn progress clock* —
+in [`projects.py`](../projects.py), with research as its first instance in
+[`research.py`](../research.py): `ResearchProject`, `TechNode`/`Capability`, `ProjectClock`,
+`FactionCapacity` and `ProjectResult`, on four new books of the shared `Campaign`
+(`projects`, `tech_nodes`, `capabilities`, `capacities`). The lead's check is a **faction-agent**
+`science` check through the one Fate kernel with the **proposed** roster passed in, and the proposal
+is not promoted: without a roster the kernel still refuses it. Discovery, prototype and manufacture
+are separate grants rather than one bar, and one non-research task (an organising programme on
+`stewardship`) runs on the same engine. A noncanonical slice with a mission-sourced artefact, an alien
+reverse-engineering example, a mundane technology-transfer example and save/load runs with
+`python -m strategy_game.research_slice`. The design record is
+[`RESEARCH_PROJECTS.md`](RESEARCH_PROJECTS.md); the contracts are
+`strategy_game/tests/test_research_projects.py`. The numbers it uses are tuning parameters, carried
+as rows D27 and D28 of [`docs/design/AUTHOR_DECISION_QUEUE.md`](../../docs/design/AUTHOR_DECISION_QUEUE.md).
+
 ## Future gates (not implemented yet)
 
 **Phase 1 completion:** connect authored scenes, established characters, real permission gates and campaign content to the scene framework. Integrate saved RPG character changes and a durable shared world store rather than treating the case ledger as a world simulation. Review #389 and #482.
