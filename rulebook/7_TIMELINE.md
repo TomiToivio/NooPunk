@@ -2,19 +2,26 @@
 
 > **Status:** canonical high-level background model.
 >
-> **The year is always 20XX.** Ray Kurzweil's 2045 Singularity remains a thematic reference,
-> not a fixed in-world date.
+> **The setting year is 2045.** NoöPunk's present is the 2045 NHI Crisis era of First
+> Contact and the alien cold war. Ray Kurzweil's 2045 Singularity is the thematic
+> reference that motivates this choice; no further future date is fixed beyond it.
 >
 > The entries below are **unordered paradigm shifts**, not a forecast chronology. Their
-> document order does not imply historical order.
+> document order does not imply historical order: what remains deliberately open is the
+> *ordering and dating of the individual paradigm shifts* by which the setting reached
+> 2045, not the setting year itself.
 
-For the optional contact-first campaign's Confederacy messenger manifestations, Orion trade-and-infiltration sequence, and independently awakening human PSI, see [First Contact and PSI Awakening](20_FIRST_CONTACT_AND_PSI_AWAKENING.md) (#497). Its 2045 scene framing is not a fixed date for this canonical 20XX background.
+The canonical First Contact story — the Confederacy messenger manifestations, Orion's
+trade-and-infiltration sequence, the alien cold war, and the independently awakening
+human PSI — is specified in [First Contact and PSI Awakening](20_FIRST_CONTACT_AND_PSI_AWAKENING.md)
+(#497). Those beats are canon, not an optional scene; they culminate in the 2045
+campaign present.
 
 NoöPunk develops from several transformations already visible in present-day society. The
-setting extrapolates them into 20XX without pretending to know the exact dates or complete
+setting extrapolates them into 2045 without pretending to know the exact dates or complete
 sequence by which they unfold.
 
-## 20XX — Cyberpunk intensification
+## Before 2045 — Cyberpunk intensification
 
 Ubiquitous digital networks, platform power, surveillance, synthetic media, cybernetic
 augmentation, technological inequality, corporate and state information infrastructures,
@@ -23,7 +30,7 @@ algorithmic governance, and networked social life intensify.
 NoöPunk treats cyberpunk as an extrapolation of existing tendencies rather than a future
 condition that begins on one identifiable day.
 
-## 20XX — AI / AGI revolution
+## Before 2045 — AI / AGI revolution
 
 AI and AGI transform science, labor, politics, warfare, media, and everyday life.
 Accelerationist, Cyborgist, Critical AI, and existential-risk positions become major
@@ -33,7 +40,7 @@ Multiple rogue-AGI disasters occur and reshape governance and technological deve
 Their exact dates, actors, and global order are deliberately unresolved in canonical
 background. Named contemporary-company versions belong to archived narrative variants.
 
-## 20XX — Quantum Information Panpsychism / PSI breakthrough
+## Before 2045 — Quantum Information Panpsychism / PSI breakthrough
 
 A scientific breakthrough in consciousness establishes a post-materialist paradigm
 associated in-setting with Quantum Information Panpsychism and makes PSI reproducible
@@ -46,7 +53,7 @@ science, but it is not its origin.
 Relevant real-world intellectual influences may be cited by name, including Federico
 Faggin, Donald Hoffman, Dean Radin, and other theorists whose attribution matters.
 
-## 20XX — UFO / UAP Disclosure and NHI contact
+## Before 2045 — UFO / UAP Disclosure and NHI contact
 
 NHI existence becomes scientifically and politically undeniable. Governments, scientific
 institutions, religions, corporations, publics, Legacy Programs, contact traditions, and
@@ -98,20 +105,23 @@ in which the paradigm shifts themselves occur.
 9. **2045** playable start: functioning but destabilized institutions, the UNSA Helsinki
    Field Office, and an uncertain future.
 
-**Dating.** No beat other than the 2045 start is dated; beats 1–8 stay `20XX`, because the issue
-explicitly prescribes no years for them. The distinction between the **first** Reptilian threats
-and the later **escalation** of actual terror raids is preserved. 2045 is the issue's own explicit
-year and is not extended to the canonical background above.
+**Dating.** The canonical setting year is **2045**. Only beat 9 (the playable start) carries a
+fixed year; the author's issue #497 explicitly prescribes no individual years for beats 1–8, and
+that device stands: the beats are canon in their author-specified order, while the ordering and
+exact dating of the individual paradigm shifts above and below remains deliberately unfixed. Per
+the author's ruling of 2026-10-16, this whole contact sequence is **canon** culminating in the
+2045 campaign present — canon, not an optional side scenario. The distinction between the **first**
+Reptilian threats and the later **escalation** of actual terror raids is preserved.
 
 **Independence of PSI.** This is a story order for First Contact only: the QIP/PSI breakthrough
 does not become an effect of contact, and humanity does not need aliens to discover PSI (see the
 "Quantum Information Panpsychism / PSI breakthrough" section above).
 
-The scenario-facing chapter for this material is
+The canonical chapter for this material is
 [First Contact and PSI Awakening](20_FIRST_CONTACT_AND_PSI_AWAKENING.md); the longer reading
 companion is [First Contact: the ten-tradition contact matrix](../docs/scenarios/FIRST_CONTACT_TEN_TRADITIONS.md).
 
-## 20XX — BCI, transhumanism, and human cyborgification
+## Before 2045 — BCI, transhumanism, and human cyborgification
 
 Brain-computer interfaces, prosthetics, sensory extensions, cognitive augmentation,
 synthetic organs, AI companions, wearable and implanted computation, biological
@@ -120,7 +130,7 @@ engineering, cortical stacks, and resleeving spread unevenly.
 Different societies embrace, regulate, reject, monopolize, socialize, or ritualize these
 technologies in radically different ways.
 
-## 20XX — Geopolitical and social transformation
+## Before 2045 — Geopolitical and social transformation
 
 States, federations, corporations, movements, religions, cities, and regions respond
 differently to AI, PSI, NHI, transhumanism, and networked power.
@@ -138,7 +148,7 @@ Some regions remain comparatively stable. Others experience war, authoritarian r
 corporate sovereignty, institutional breakdown, radical federalization, commons-oriented
 experiments, or local catastrophe. These outcomes do not require one fixed global sequence.
 
-## 20XX — Emergence of the Noösphere
+## Before 2045 — Emergence of the Noösphere
 
 The Noösphere emerges from the interaction of human minds, AIs, communication networks,
 BCIs, culture, institutions, and scientifically accepted PSI.

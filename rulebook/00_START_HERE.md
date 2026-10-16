@@ -110,4 +110,4 @@ from any of them enters this book**. Attribution and licensing records are kept 
 
 Character and world canon stays in force: UNSA, the Academy, Ö-Mappi, the NHI Cold War, the
 Singularity Crisis and its partial reconstruction are unchanged by this book's structure. The setting
-is **20XX**, and this is a fictional alternate history.
+is **2045**, and this is a fictional alternate history.

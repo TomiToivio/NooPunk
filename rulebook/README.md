@@ -10,7 +10,7 @@ For concurrent work, announce intended files on issue #243, avoid overlapping fi
 
 ---
 
-The issue [#497 First Contact and PSI Awakening](20_FIRST_CONTACT_AND_PSI_AWAKENING.md) scenario-lore chapter supplements the canonical unordered 20XX timeline, existing Confederacy contact lore, and independently arising PSI without changing legacy mechanics or imposing its optional 2045 scene on other campaigns.
+The issue [#497 First Contact and PSI Awakening](20_FIRST_CONTACT_AND_PSI_AWAKENING.md) is the canonical lore chapter for First Contact, the Orion deception, the 2045 alien cold war and independently arising PSI. The campaign's setting year is **2045** (author's ruling of 2026-10-16); the unordered paradigm-shift background remains the account of how the setting reached that year. The chapter canonizes the existing Confederacy contact lore without changing legacy mechanics.
 
 ## Narrative-first edition (issue #265) — current entry point
 

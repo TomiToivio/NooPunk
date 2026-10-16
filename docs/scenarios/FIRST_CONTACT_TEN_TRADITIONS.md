@@ -10,10 +10,13 @@
 > mechanics, no statistics, no dates beyond the ones the issue itself uses, and no tests —
 > `AGENTS.md`'s automated-tests policy reserves executable tests for executable code.
 >
-> **Setting frame preserved:** `20XX`, Earth intact, no completed Fall (`AGENTS.md` §5, `RULEBOOK.md`
-> §33.1). The background is a set of **unordered paradigm shifts** (`AGENTS.md` §6,
+> **Setting frame preserved:** the canonical setting year is **2045** (`AGENTS.md` §5 as ruled by
+> the author on 2026-10-16 — "#497's contact beats are canon"; `README.md` / `NEW_EDITION.md`
+> "2045 depicts the developed NHI Crisis era"), Earth intact, no completed Fall. The background
+> is a set of **unordered paradigm shifts** in their ordering and exact dating (`AGENTS.md` §6,
 > [`7_TIMELINE.md`](../../rulebook/7_TIMELINE.md)); the issue's numbered beat list in §9 below is an
-> author-specified **ordering of First Contact narrative beats**, not a global chronology.
+> author-specified **ordering of First Contact narrative beats**, not a global chronology, and is
+> canon leading into the 2045 campaign present.
 >
 > **This document is fiction.** It is not a claim about actual religions, religious communities or
 > extraterrestrials, and it does not assert anything about the real world's contested phenomena.
@@ -288,8 +291,9 @@ earlier beats* until checked against the established timeline, and the distincti
 
 Therefore, in this document:
 
-- **No beat other than the 2045 start is dated.** Beats 1–8 are written `20XX` wherever a time
-  reference is wanted, consistent with `AGENTS.md` §6 and `RULEBOOK.md` §33.1/§33.28a.
+- **No beat other than the 2045 start is dated.** Beats 1–8 are written without prescribed years
+  wherever a time reference is wanted, consistent with the unfixed-chronology device (`AGENTS.md`
+  §6): the paradigm shifts are canonically ordered only as "before 2045".
 - The ordering above is a **story order for First Contact**, not a claim that the paradigm shifts of
   `7_TIMELINE.md` happen in this order. The paradigm shifts stay conceptually distinct and
   unordered.
@@ -308,7 +312,7 @@ Therefore, in this document:
 
 | Element of #497 | Where it already lives |
 | --- | --- |
-| Unordered `20XX` paradigm shifts; the no-Fall frame | [`rulebook/7_TIMELINE.md`](../../rulebook/7_TIMELINE.md); `RULEBOOK.md` §33.1, §33.28 |
+| Unordered pre-2045 paradigm shifts (ordering unfixed); the no-Fall frame | [`rulebook/7_TIMELINE.md`](../../rulebook/7_TIMELINE.md); `RULEBOOK.md` §33.1, §33.28 |
 | Quarantine, its ending, the Zoo, Zookeepers and probe ecology | `RULEBOOK.md` §33.7, §33.8, §33.9, §33.10, glossary §34 "Quarantine" |
 | Public Disclosure and the culturally adaptive luminous manifestation ("The Lady") at sacred and historically important sites | `RULEBOOK.md` §33.14 |
 | The operational Confederacy, its terminology, the Source, noetic contact, GM-facing dilemmas | [`rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md`](../../rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md) §16.1–§16.3 |
@@ -385,8 +389,8 @@ Consistent with `AGENTS.md` §4 and §187.10:
   PSI mechanics (those live in `rulebook/6_PSYCHIC.md` and remain as specified there);
 - **no new NHI taxonomy** beyond the factions #497 itself names (Confederacy/Zookeepers, Greys,
   Reptilians, Mantids); no new species, no capabilities;
-- **no dated chronology** — one dated year, 2045, used exactly where the issue uses it; every other
-  beat is `20XX`;
+- **no dated chronology** — one dated year, 2045 (the canonical setting year), used exactly where
+  the issue uses it; every other beat carries no prescribed year per the unfixed-chronology device;
 - **no new factions** — the EEZ is cited as an existing faction instrument, not created here;
 - **no settlement of the open questions** — the Grey/Reptilian rift, the Mantid objective, the
   meaning of the manifestations and the soul/identity question all stay open;

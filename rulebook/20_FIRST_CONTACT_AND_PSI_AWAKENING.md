@@ -1,6 +1,6 @@
 # First Contact: Return of the Messengers, Orion Diplomacy and the PSI Awakening
 
-> **Status:** scenario-facing lore specification for [#497](https://github.com/TomiToivio/NooPunk/issues/497), **20XX**, with a **2045 campaign option**. This chapter does not replace [the unordered canonical paradigm shifts](7_TIMELINE.md), [the legacy post-Crisis xenopolitics](15_XENOPOLITICS.md), or the independently evolving human PSI ontology in [Psychic Systems](6_PSYCHIC.md).
+> **Status:** canonical lore chapter for [#497](https://github.com/TomiToivio/NooPunk/issues/497), set in **2045** by the author's ruling of 2026-10-16. This chapter does not replace [the unordered paradigm-shift background](7_TIMELINE.md), [the legacy post-Crisis xenopolitics](15_XENOPOLITICS.md), or the independently evolving human PSI ontology in [Psychic Systems](6_PSYCHIC.md).
 >
 > **Fiction / evidence boundary:** Contact events, verified PSI, QIP's explanatory success, and NHI political arrangements described below are **fictional NoöPunk propositions**. Real-world reports, parapsychology, quantum-consciousness models and claims of survival after death are not established scientific facts. This is not a statement about the truth or falsity of any religion.
 >
@@ -78,7 +78,7 @@ Confederacy emissaries frame PSI awakening as evolution and offer a form of tran
 
 ## 5. Relative sequence and compatible campaign frames
 
-These beats specify **causal dependencies**, not years. The master timeline in [7_TIMELINE.md](7_TIMELINE.md) remains unordered and anchored to **20XX**:
+These beats specify **causal dependencies**, not years — the *internal ordering* of the contact sequence is what they fix. The master timeline in [7_TIMELINE.md](7_TIMELINE.md) remains an unordered account of how the setting reached **2045**:
 
 1. Covert NHI activity, Quarantine, and independently emerging PSI research coexist.
 2. Confederacy announces the Quarantine's end through coordinated messenger manifestations; optional misaddressed appearances occur.
@@ -88,9 +88,9 @@ These beats specify **causal dependencies**, not years. The master timeline in [
 6. Investigations accumulate independently corroborated evidence of abduction, hybridization, manipulation and infiltrators.
 7. Mantid coordination of the apparently separate Orion factions becomes public; the diplomatic settlement degrades.
 8. An alien Cold War / hybrid war persists, including espionage, economic pressure, occasional Confederacy–Orion combat and escalating Reptilian raids.
-9. A **2045 scenario option** begins with functioning yet strained institutions: a new UNSA agent reports to the **Helsinki Field Office** and works with Laura Falk as Reptilian terror raids begin or intensify.
+9. The **2045 campaign present** begins with functioning yet strained institutions: a new UNSA agent reports to the **Helsinki Field Office** and works with Laura Falk as Reptilian terror raids begin or intensify.
 
-**Continuity note:** the existing [post-Crisis xenopolitical chapter](15_XENOPOLITICS.md) concerns a different, later reconstruction frame. Do not silently rewrite its ASI-catastrophe chronology, nor impose that chronology on this contact-first scenario. The 2045 opening is a **scenario option**, not a retroactive replacement of the intentionally undated high-level 20XX canon. The earlier pre-Fall scenario remains separately documented in [PREFALL_FIRST_CONTACT.md](../docs/scenarios/PREFALL_FIRST_CONTACT.md).
+**Continuity note:** the existing [post-Crisis xenopolitical chapter](15_XENOPOLITICS.md) concerns a different, later reconstruction frame. Do not silently rewrite its ASI-catastrophe chronology, nor impose that chronology on the contact-first sequence. The 2045 opening is the **canonical campaign present** (author's ruling of 2026-10-16), while the high-level paradigm shifts behind it remain unordered in [7_TIMELINE.md](7_TIMELINE.md). The earlier pre-Fall scenario remains separately documented in [PREFALL_FIRST_CONTACT.md](../docs/scenarios/PREFALL_FIRST_CONTACT.md).
 
 ## 6. Two play layers, no invented rules
 
