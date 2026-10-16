@@ -342,6 +342,7 @@ Active canonical documents:
 - **Continuity boundary:** [`docs/PRE_FALL_ALTERNATE_TIMELINE.md`](docs/PRE_FALL_ALTERNATE_TIMELINE.md)
 - **Umbrella implementation work:** [issue #60](https://github.com/TomiToivio/NooPunk/issues/60)
 - **Small Concordia/EP2 scenario:** [`docs/scenarios/ISSUE74_CONCORDIA_EP2_POC.md`](docs/scenarios/ISSUE74_CONCORDIA_EP2_POC.md)
+- **First Contact lore:** [`docs/scenarios/FIRST_CONTACT_TEN_TRADITIONS.md`](docs/scenarios/FIRST_CONTACT_TEN_TRADITIONS.md) — the ten-tradition contact matrix, the Orion deception sequence and the 2045 alien cold war (issue #497).
 
 Documents under [`docs/archive/`](docs/archive/) are historical design records. They are useful provenance, but they are **not automatically active canon** and do not override the current rulebook or explicit current author direction.
 
