@@ -70,6 +70,47 @@ than reliable methods for calling physical spacecraft. DMT entities, astral proj
 Hoffman/Faggin-style conscious-agent networks, and other Noetic experiences may be different
 interfaces to the same deeper conscious network.
 
+### First Contact narrative beats (author-specified order, not a chronology)
+
+**What follows is an author-specified ordering of First Contact narrative beats for the story,
+not a replacement chronology.** [Issue #497](https://github.com/TomiToivio/NooPunk/issues/497)
+gives this sequence to be reconciled with this chapter. The paradigm shifts above and below stay
+**unordered and conceptually distinct**, and the order of these beats says nothing about the order
+in which the paradigm shifts themselves occur.
+
+1. Covert NHI activity; the old Quarantine and its ending.
+2. Coordinated **Confederacy messenger manifestations** in the major religious centres, plus
+   supplementary mistaken ancient-contact destinations
+   ([the ten-tradition contact matrix](16_CONFEDERACY_SOURCE_AND_CONTACT.md) §16.8).
+3. Worldwide theological, epistemological, scientific and political upheaval; Zookeeper
+   explanations of history, reality, NHI and PSI.
+4. Covert Orion positioning, then public **Grey diplomacy and trade overtures** plus ostensibly
+   independent **Reptilian threats**.
+5. A substantive **commercial/diplomatic interval**: EEZ proposals or pilots, resleeving/cloning
+   technology transfers or demonstrations, trade, alliances and mounting resistance
+   ([xenopolitics](15_XENOPOLITICS.md) §187.5.7–§187.5.9).
+6. Investigations and mounting credible evidence of abductions, hybridization, mind control and
+   infiltration.
+7. Public exposure of **Mantid coordination** of the Grey and Reptilian strategies; diplomatic
+   collapse or severe degradation, **not total severance**.
+8. Alien **Cold War / Hybrid War**, occasional Confederacy–Orion clashes, and escalating
+   Reptilian terror raids.
+9. **2045** playable start: functioning but destabilized institutions, the UNSA Helsinki
+   Field Office, and an uncertain future.
+
+**Dating.** No beat other than the 2045 start is dated; beats 1–8 stay `20XX`, because the issue
+explicitly prescribes no years for them. The distinction between the **first** Reptilian threats
+and the later **escalation** of actual terror raids is preserved. 2045 is the issue's own explicit
+year and is not extended to the canonical background above.
+
+**Independence of PSI.** This is a story order for First Contact only: the QIP/PSI breakthrough
+does not become an effect of contact, and humanity does not need aliens to discover PSI (see the
+"Quantum Information Panpsychism / PSI breakthrough" section above).
+
+The scenario-facing chapter for this material is
+[First Contact and PSI Awakening](20_FIRST_CONTACT_AND_PSI_AWAKENING.md); the longer reading
+companion is [First Contact: the ten-tradition contact matrix](../docs/scenarios/FIRST_CONTACT_TEN_TRADITIONS.md).
+
 ## 20XX — BCI, transhumanism, and human cyborgification
 
 Brain-computer interfaces, prosthetics, sensory extensions, cognitive augmentation,

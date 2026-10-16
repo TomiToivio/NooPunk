@@ -331,6 +331,121 @@ complicity — are among the darkest and most effective mechanisms of infiltrati
 as **villainy with consequences**, without gratuitous detail, and without asserting anything
 about real persons or organizations.
 
+### 187.5.7 Extraterrestrial Economic Zones: Orion's commercial instrument
+
+The Grey/Mantid bloc's flagship public offer is the **Extraterrestrial Economic Zone (EEZ)** — an
+ostensibly mutually beneficial special jurisdiction for alien–human trade, technology transfer,
+corporate research and investment. The instrument is already canonical for the accelerationist
+faction (`docs/design/ISSUE_328_GLOBAL_FACTIONS_ROSTER.md` §3;
+`docs/design/ISSUE_329_PARADIGM_FACTIONS_PLAYABLE.md`; `strategy_game/docs/GLOBAL_FACTIONS.md`).
+What the First Contact material specifies is its **place in the Orion commercial strategy**.
+
+**Elite-facing diplomacy.** Grey approaches run through political leaders, governments,
+corporations, business elites and influential intermediaries, seeking official relations and
+profitable partnerships. This is diplomacy and trade first, not mass abduction on television: the
+abduction and hybridization programmes continue underneath (§187.5.1), and the value of the
+commercial channel is precisely that it can be conducted in public without looking like an
+occupation.
+
+**What an EEZ makes arguable.** An EEZ is a concrete point of faction conflict because it forces
+ordinary politics to answer concrete questions:
+
+- **jurisdiction** — whose law runs inside the zone, and who polices it;
+- **sovereignty** — whether a zone is leased, ceded, jointly administered or merely licensed, and
+  whether residents inside it keep their citizenship;
+- **oversight** — who audits the laboratories, the resleeving clinics and the data centres, and
+  who may refuse an audit;
+- **biosecurity** — who is liable when a worker is exposed to alien biology, an implant, a
+  pathogen or an unmeasured environmental effect;
+- **human rights** — labour, consent, exit, and what a person inside a zone can still appeal to;
+- **and systemic risk** — whether a zone is a trading post or an **intelligence and
+  hybrid-infiltration node** (§187.5.9).
+
+The zones produce genuine beneficiaries — jobs, investment, technology and status — and therefore
+genuine constituencies that resist closing them. That resistance is a fact of the setting, not
+evidence about the zones' purpose.
+
+The Confederacy-side contact protocol is defined elsewhere: see
+[Confederacy contact](16_CONFEDERACY_SOURCE_AND_CONTACT.md) §16.8 for the ten-tradition contact
+matrix. It is deliberately **not** repeated here.
+
+### 187.5.8 The materialist claim, and the engineered-immortality offer
+
+Grey diplomats present a **materialist interpretation of First Contact**: that the Zookeepers have
+*disproved* supernatural religion by showing that human myths merely describe technologically and
+psychically advanced beings.
+
+> **This is Grey propaganda.** It is Orion's rhetorical position, consistent with the canonical
+> materialist rhetoric and governing ideology of its species (§187.5.6), and **not** canonically
+> established metaphysical truth. A propaganda claim is evidence of the speaker's interest, not of
+> the world's structure.
+
+In-setting the claim is also weak on its own terms: the QIP/PSI breakthrough arises
+**independently of Disclosure** ([timeline](7_TIMELINE.md), "Quantum Information Panpsychism / PSI
+breakthrough"; [Psychic Systems](6_PSYCHIC.md) §6.1), so the Grey reading is complicated by
+evidence Orion does not control rather than confirmed by the evidence Orion presents.
+
+**The "better immortality."** The Greys offer what they sell as dependable engineered continuity:
+**cortical stacks, backups, cloning, resleeving and continuity of identity**. The technology is an
+extraordinary apparent gift **and** a strategic dependency at the same time:
+
+- its **reliability** is disputed, including under battlefield, disaster and rescue conditions;
+- its **identity claims** are disputed — whether a restored stack is the continuing person or a new
+  conscious copy remains the open question it already is elsewhere in canon (`RULEBOOK.md` §45; §14
+  embodiment);
+- it depends on **Grey infrastructure**, data access and vendor continuity, which is exactly what
+  makes it leverage;
+- and the possibility of **hidden control mechanisms** in the backups is an investigative question,
+  not a settled one.
+
+The package is offered alongside scientific enlightenment, prosperity, protection and pragmatic
+cooperation — promises that are partly kept, which is worse for the people who later have to unwind
+them. It appeals to corporate and accelerationist sympathizers, and it is one of the setting's
+worked cases of **neo-feudal immortality**: a genuinely useful technology whose usefulness is the
+mechanism of dependence.
+
+### 187.5.9 The interval before exposure
+
+**Orion's position does not collapse immediately.** There is a substantive period of diplomacy,
+trade negotiations, pilot EEZs, technology demonstration and political realignment, with public
+constituencies both supporting and opposing the new relationships. The Greys are not instantly
+recognized as enemies; they can plausibly gain influence, and they do.
+
+During that interval, rumor and investigation concern:
+
+- missing persons and **abduction** evidence;
+- **hybridization** programmes and infiltration of human organizations;
+- covert surveillance, blackmail, political manipulation and PSI / **mind control**;
+- the provenance and security of Grey cortical-stack, cloning and resleeving systems;
+- and secret coordination between Grey negotiators, Reptilian pressure campaigns and **Mantid**
+  actors.
+
+**The fracture is a degradation, not a clean rupture.** As independent evidence accumulates and
+becomes publicly undeniable, the purported Grey–Reptilian separation collapses, public confidence
+in alien commerce fractures, and certain EEZs become suspected intelligence or hybrid-infiltration
+nodes — while **treaty obligations and material interests prevent an instant, clean rupture**. Some
+human partners deny the evidence or maintain their relationships; others demand expulsions,
+confiscations or war. The verification doctrine (`RULEBOOK.md` §47) applies to every case in this
+phase, and the false-accusation economy of §187.5.1–§187.5.2 runs in parallel with the real
+operations.
+
+In xenopolitical terms the interval is where the **entanglements that constrain later policy** are
+formed: investments that cannot be unwound, institutions whose staff are compromised *or merely
+suspected*, and human constituencies whose livelihoods, status or convictions depend on the
+partnership continuing. It is also what makes the later exposure a **reversal rather than a
+reveal** — by then the human institutions already have relationships to lose.
+
+> **Ordering caveat.** The beats of this commercial phase are an **author-specified ordering of
+> First Contact narrative beats**, not a chronology of the unordered `20XX` paradigm shifts
+> (§187.10). The only year the specification uses is the **2045** campaign start.
+
+Orion's tonal and structural inspirations, cited as such only: *The X-Files* (covert abductions,
+implants, hybridization, compromised elites, evidence that ordinary institutions initially
+dismiss), *X-COM* (asymmetric capability, terror raids, human counterintelligence and a coordinated
+defensive response through UNSA) and Liu Cixin's *The Three-Body Problem* (civilization-scale
+strategic uncertainty, technological asymmetry, deterrence and mistrust — already treated above as
+a narrative comparison, §187.3.1). **No characters, organisations or plotlines are imported.**
+
 ---
 
 ## 187.6 Human reactions are not uniform
@@ -585,6 +700,12 @@ For the avoidance of doubt, and consistent with `AGENTS.md` §4:
   corpus is **fictional-setting inspiration** (`§187.4.1`). Neither is a documented account of
   real extraterrestrial activity: this chapter cites them as sources for fiction, never as
   findings about the world outside it.
+- **no re-dating of the contact-first material.** The commercial phase of `§187.5.7`–`§187.5.9` and
+  the ten-tradition contact matrix of [Confederacy contact](16_CONFEDERACY_SOURCE_AND_CONTACT.md)
+  §16.8 are an **author-specified ordering of First Contact narrative beats**, not a chronology:
+  the canonical background remains a set of unordered `20XX` paradigm shifts
+  ([timeline](7_TIMELINE.md)), and the only dated year the specification uses is the **2045**
+  campaign start.
 
 > **The setting's answer to "which faction is good?" is that the question is a campaign,
 > not a lookup.**

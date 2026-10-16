@@ -17,6 +17,13 @@
 >
 > **This document is fiction.** It is not a claim about actual religions, religious communities or
 > extraterrestrials, and it does not assert anything about the real world's contested phenomena.
+>
+> **Canonical home:** the material below is now carried inside the canon chapters — the matrix and its
+> conduct rules in [`rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md`](../../rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md)
+> §16.8, the beat sequence under "UFO / UAP Disclosure and NHI contact" in
+> [`rulebook/7_TIMELINE.md`](../../rulebook/7_TIMELINE.md), and the Orion commercial instruments in
+> [`rulebook/15_XENOPOLITICS.md`](../../rulebook/15_XENOPOLITICS.md) §187.5.7–§187.5.9. This document remains the
+> narrative/reading companion, not a second canon.
 
 ---
 
