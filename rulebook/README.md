@@ -10,6 +10,8 @@ For concurrent work, announce intended files on issue #243, avoid overlapping fi
 
 ---
 
+The issue [#497 First Contact and PSI Awakening](20_FIRST_CONTACT_AND_PSI_AWAKENING.md) scenario-lore chapter supplements the canonical unordered 20XX timeline, existing Confederacy contact lore, and independently arising PSI without changing legacy mechanics or imposing its optional 2045 scene on other campaigns.
+
 ## Narrative-first edition (issue #265) — current entry point
 
 The active rulebook now opens with **[00_START_HERE.md](00_START_HERE.md)**, the entry point for the
