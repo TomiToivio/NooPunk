@@ -245,8 +245,9 @@ as the present-tense political force (`15_XENOPOLITICS.md` §187.3.1, §187.8.1;
 
 ### 6.1 Opening hook: the UNSA Helsinki Field Office
 
-> **A rookie UNSA agent begins at the Helsinki Field Office, partnered with Laura Falk, as
-> Reptilian terror raids begin or sharply escalate.**
+> **The player's faction leader begins at the Helsinki Field Office: the player character leads the
+> faction from day one, a newly assigned UNSA agent is partnered with Laura Falk as party members —
+> the faction's agents — and Reptilian terror raids begin or sharply escalate.**
 
 The resulting cases reveal the overlap of direct military threats, compromised Grey trading
 networks, unexplained technology and potential hybrid infiltration.
@@ -260,6 +261,15 @@ initial team (`NEW_EDITION.md` §2). What #497 adds is the **opening situation**
 frame for the Helsinki posting and **escalating Reptilian raids as the first case load**. The
 *term* "Helsinki Field Office" is introduced here and is not a claim about an existing institutional
 name elsewhere in canon.
+
+**Player-character framing (issue #502).** In the game built from the #502 development roadmap
+(`docs/design/VISION.md` §17), the **player character is the faction leader from day one** — not a
+rookie field agent — and the game must not frame the PC as a rookie who is promoted into strategy
+play. The newly assigned UNSA agent and **Laura Falk ("Minerva")** therefore remain canonical as
+**party members — the faction's agents** — inside the same Field Office opening, not as the player
+character. The Academy baseline and the Academy-newcomer material above stay exactly as written:
+they are the **legacy** RPG's default player-character baseline and this party's background
+(`AGENTS.md` §0), and the crossover's binding premise is the faction leader stated here.
 
 ## 7. Beat sequence: what the issue orders, and what it does not
 
@@ -344,7 +354,8 @@ Therefore, in this document:
    **interval before exposure** → collapse of the purported Grey–Reptilian separation. The blocs and
    their methods were canonical; their **order, and the interval, are what #497 specifies.**
 5. **The 2045 opening situation** (§6.1): the UNSA **Helsinki Field Office** and escalating
-   Reptilian raids as the rookie agent's first case load.
+   Reptilian raids as the faction leader's first case load, with a newly assigned UNSA agent and
+   Laura Falk serving as the party's agents.
 
 **One deliberate non-answer.** §9 of #497 (the PSI awakening programme: QIP as the leading in-setting
 framework, the staged emergence, PSI rights, counterintelligence and the "soul" dispute) is largely
