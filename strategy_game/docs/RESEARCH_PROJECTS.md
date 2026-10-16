@@ -43,14 +43,16 @@ So the project check is:
   roster supplied is refused as *pending author approval* rather than rated at zero. Two tests pin
   that, and one asserts the refusal happens **before any dice** (the RNG's state is unchanged).
 
-**Domain TAGs.** Issue #506 asks the check to "adapt to existing NoöPunk character sheet: SCIENCE
-plus relevant domain TAGs such as Forensics, Parapsychology, Engineering". A domain TAG is a
+**Domain TAGs are optional.** The author simplified all research to one SCIENCE skill.
+Subjects such as Forensics, Parapsychology and Engineering are not separate skills; when
+relevant, a project may name descriptive domain TAGs. A domain TAG is a
 `competence` tag in issue #346's vocabulary, read through `rpg.skills.capabilities_of`. It is
 **reported** — the result carries `domain_tags_matched` and `domain_tags_missing` — and it is never
 rated: no tag moves the check or the throughput, because `rpg.skills.specialist_supplement` already
 fixes that rule for the sheet ("it grants no bonus, because a tag that moved a roll would be an
 unapproved mechanic"). A test compares two runs that differ only in the matched tags and asserts
-identical shifts and identical segments.
+identical shifts and identical segments. Projects without any domain TAGs are valid and
+require no waiver flag.
 
 "Particular expertise" is a different mechanism and is the kernel's own: `StrategicProject.
 required_capability` is handed to `rpg.skills.check(..., required_capability=...)`, so the #482 gate

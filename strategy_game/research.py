@@ -18,14 +18,13 @@ no roster supplied the kernel refuses the check as pending author approval, whic
 behaviour and is covered by a test. The proposal's own ``mission_kinds`` for ``science`` are
 ``adopt_technology`` and ``investigate``, and the research kinds below use that vocabulary.
 
-**Domain TAGs.** Issue #506 asks to "adapt to existing NoöPunk character sheet: SCIENCE plus
-relevant domain TAGs such as Forensics, Parapsychology, Engineering". A domain TAG is a
+**Domain TAGs (optional).** A project may name contextual disciplines such as Forensics,
+Parapsychology or Engineering, but requires no domain TAGs at all. A domain TAG is a
 ``competence`` tag in issue #346's shared vocabulary, read through
 :func:`strategy_game.rpg.skills.capabilities_of`. It is **reported**, never rated: the engine returns
 which of the work's named domains the lead actually carries, and no tag moves the check or the
 throughput, because ``rpg.skills.specialist_supplement`` already fixes that rule for the sheet ("it
-grants no bonus, because a tag that moved a roll would be an unapproved mechanic"). Whether a matched
-domain should ever modify the check is an author decision (row D28).
+grants no bonus, because a tag that moved a roll would be an unapproved mechanic"). Missing domain TAGs do not block a project or modify its check.
 
 **Discovery, prototype and manufacture are three different grants.** :class:`TechNode` carries the
 :class:`~strategy_game.projects.ProjectStage` its completion *produces*, and
@@ -112,12 +111,7 @@ class ResearchProject(StrategicProject):
                 f"check (issue #506); {self.lead_skill!r} is not it. A task with another lead skill is "
                 "a StrategicProject, which the same engine already supports."
             )
-        if self.lead_id and not self.domain_tags and not self.detail.get("domain_tags_waived"):
-            raise ProjectError(
-                f"research project {self.project_id!r} names no domain TAG. Issue #506 asks the check "
-                "to adapt SCIENCE with the relevant domain (Forensics, Parapsychology, Engineering); "
-                "declare the domains the work needs, or record why none applies."
-            )
+
 
 
 @dataclass(frozen=True)
