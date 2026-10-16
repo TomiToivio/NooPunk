@@ -8,6 +8,8 @@
 > The entries below are **unordered paradigm shifts**, not a forecast chronology. Their
 > document order does not imply historical order.
 
+For the optional contact-first campaign's Confederacy messenger manifestations, Orion trade-and-infiltration sequence, and independently awakening human PSI, see [First Contact and PSI Awakening](20_FIRST_CONTACT_AND_PSI_AWAKENING.md) (#497). Its 2045 scene framing is not a fixed date for this canonical 20XX background.
+
 NoöPunk develops from several transformations already visible in present-day society. The
 setting extrapolates them into 20XX without pretending to know the exact dates or complete
 sequence by which they unfold.
