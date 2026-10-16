@@ -31,8 +31,12 @@ outcome       the **approved** :class:`strategy_game.rpg.fate.Outcome`
 ============  ==========================================================
 
 What is deliberately absent (Phase 2/3 scope, ``NO_PHASE2``): no mission board, no
-recruitment/assignment loop, no concurrent leads or clocks, and no political /
-hegemony / institution simulation. ``Campaign.state_report`` exposes nothing beyond
+recruitment/assignment loop, and no political / hegemony / institution simulation. The
+**strategic project clock** of issue #506 Phase 1 now exists on the same model — ``projects``,
+``tech_nodes``, ``capabilities`` and ``capacities`` on :class:`Campaign`, advanced by
+``strategy_game.projects`` and read as research by ``strategy_game.research`` — but with one lead
+advancing one project per turn: concurrent projects and rival-faction ledgers are still Phase 2.
+``Campaign.state_report`` exposes nothing beyond
 the scaffold's declared-data discipline: no quantity, threshold, cadence or win
 condition is created here, and the numbers carried are exactly the author-approved
 Fate sheet ratings and the fate-point, treasury and asset **inventories** Phase 1
