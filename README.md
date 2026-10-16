@@ -1,5 +1,34 @@
 # NoöPunk
 
+## Humanity Is No Longer Alone
+
+*The future of humanity is no longer human.*
+
+**The year is 2045. Humanity has survived the greatest paradigm shift in its history. Reality itself has changed.**
+
+The NHI Crisis shattered humanity's understanding of its place in the universe. We are no longer alone, no longer the most intelligent beings on Earth, and perhaps no longer masters of our own minds.
+
+Hostile superintelligences, both extraterrestrial and artificial, threaten human civilization. Rogue artificial minds pursue incomprehensible goals. Alien infiltrators walk among us. Meanwhile, mysterious and seemingly benevolent extraterrestrial **Zookeepers** offer protection, guidance, and the possibility of a radically different future. But what do they really want?
+
+Humanity is changing just as rapidly. Artificial intelligence, cybernetics, genetic engineering, and psionics are transforming our species into a multitude of humans, cyborgs, transhumans, and posthumans. The boundaries between human, machine, alien, and consciousness itself are dissolving.
+
+In the face of existential threats, humanity has united under the **United Nations**. But political unity does not mean ideological consensus. Rival factions struggle to determine humanity's deep future: resist the transformation, control it, or embrace the emergence of a new civilization.
+
+Three great paradigm shifts define the age:
+
+- **AGI: Artificial General Intelligence.** The creation of minds beyond human intelligence, promising abundance and threatening extinction.
+- **NHI: Non-Human Intelligence.** Contact with extraterrestrial and other mysterious intelligences, overturning humanity's understanding of reality and its place in the cosmos.
+- **PSI: Psionics and Consciousness.** The discovery that mind and reality are stranger, more interconnected, and potentially more powerful than modern science imagined.
+
+**NoöPunk** is a New Weird science-fantasy role-playing game and political strategy simulation about humanity's struggle for survival, transformation, and control over its own destiny.
+
+Play as an individual investigating the impossible, or as a faction shaping the future of civilization. Explore a world where every technological breakthrough becomes a political crisis, every existential threat creates new ideologies, and every answer raises deeper questions.
+
+**The old world is ending. The next one is still up for grabs.**
+
+*Setting note: 2045 depicts the developed NHI Crisis era. The earlier strategy campaign begins around 2027, before these outcomes are settled, allowing players to shape the future rather than treating it as inevitable.*
+
+
 ## Before NoöPunk: Tommy Pilgrim and the 1974 download
 
 In **1974**, at a **Hawkwind concert**, a left-wing science-fiction writer named **Tommy Pilgrim** took LSD and experienced what he described as a transmission from **VALIS**. Amid the space rock, he believed he had received a staggering download of humanity's future: artificial minds, political upheavals, alien encounters, cybernetic bodies, psychic phenomena, and a civilization struggling to understand what consciousness even was.
