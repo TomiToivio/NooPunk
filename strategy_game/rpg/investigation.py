@@ -117,10 +117,10 @@ class Investigation:
         Difficulty and permission to attempt are table decisions, not newly invented rules.
         A roll only becomes part of the record after the participant/skill checks pass.
         """
-        from .skills import INDIVIDUAL_SKILLS
+        from .skills import INDIVIDUAL_SKILL_NAMES
         if self.finished or actor_id not in self.participants:
             raise InvestigationError("only an active participant can act in an open case")
-        if skill not in INDIVIDUAL_SKILLS:
+        if skill not in INDIVIDUAL_SKILL_NAMES:
             raise InvestigationError("use an approved individual RPG skill")
         actor = demo_party()[actor_id]
         outcome = check(actor, Action.OVERCOME, skill, difficulty, rng=Random(seed)).resolution
