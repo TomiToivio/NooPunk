@@ -821,14 +821,17 @@ class ResearchProjectTypeTests(unittest.TestCase):
         result = advance_project(campaign, PROJECT_ARCHIVE, rng=Random(1), turn=1, roster=roster())
         self.assertGreaterEqual(result.progress_added, 0)
 
-    def test_a_research_project_names_the_domains_its_work_needs(self) -> None:
-        with self.assertRaises(ProjectError):
-            ResearchProject(
-                project_id="p-no-tags", faction_id=FACTION_ID, title="No domains declared",
-                kind="basic_science", lead_id="a-1", lead_skill=RESEARCH_LEAD_SKILL,
-                lead_difficulty=2, clock=ProjectClock(4), resource_kind=RESEARCH_RESOURCE_KIND,
-                stage=ProjectStage.UNDERSTANDING,
-            )
+    def test_research_without_domain_tags_is_valid(self) -> None:
+        project = ResearchProject(
+            project_id="p-no-tags", faction_id=FACTION_ID, title="General research",
+            kind="basic_science", lead_id="a-1", lead_skill=RESEARCH_LEAD_SKILL,
+            lead_difficulty=2, clock=ProjectClock(4), resource_kind=RESEARCH_RESOURCE_KIND,
+            stage=ProjectStage.UNDERSTANDING,
+        )
+        self.assertEqual(project.domain_tags, ())
+        self.assertEqual(project.lead_skill, RESEARCH_LEAD_SKILL)
+        restored = research_project_from_dict(project.to_dict())
+        self.assertEqual(restored.domain_tags, ())
 
     def test_a_yield_is_ids_into_vocabularies_that_already_exist(self) -> None:
         self.assertTrue(ResearchYield().is_empty())
