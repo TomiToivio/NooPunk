@@ -22,6 +22,12 @@ Current NoöPunk faction families include:
 
 These are families, not a forced master list. Add named factions only when the rulebook establishes them.
 
+## Biosphere politics cross-cut existing factions (#510)
+
+Climate adaptation, solarpunk energy, bioengineering, environmental justice and possible NHI ecological assistance are **policy conflicts inside existing parties and organizations**, not grounds to add new default factions. Far-right populist / bioconservative actors may emphasize local sovereignty, migration limits and biosecurity; right-centre governing actors may favor regulated investment and public-private infrastructure; red-green actors may favor shared energy, ecological commons and distributive justice. Each contains disagreements and can support different proposals case by case.
+
+Corporations, researchers, farmers, residents, UNSA, and local or Indigenous communities may disagree about consent, ownership, risk, and evidence regardless of party. See [Biosphere paradigm](docs/design/ISSUE_510_BIOSPHERE_PARADIGM.md) for playable disputes and the link to research #506.
+
 ## Motivation library
 
 Recurring NoöPunk motivation targets include AI acceleration, AI safety, Critical AI, AI rights, Disclosure, secrecy, human sovereignty, transhumanism, bioconservatism, cyborgification, Noösphere, PSI, NHI cooperation, NHI resistance, nationalism, federalism, commons, corporate power, ecological survival, space expansion, personal survival, family, friendship, loyalty, love, revenge, curiosity, career, discovery, fame, wealth and community.
