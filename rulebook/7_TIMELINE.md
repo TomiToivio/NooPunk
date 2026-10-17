@@ -30,6 +30,14 @@ algorithmic governance, and networked social life intensify.
 NoöPunk treats cyberpunk as an extrapolation of existing tendencies rather than a future
 condition that begins on one identifiable day.
 
+## Before and during 2045 — Biosphere, climate and biopunk transformation
+
+Climate disruption and ecological responses develop alongside the AI, PSI and NHI shifts, **not after** the NHI Crisis. Extreme weather, water and food stress, biodiversity change, migration and adaptation coexist with distributed clean energy, restoration, engineering biology and changing human physiology. Their timing and consequences vary by region; ordinary civic institutions often still function.
+
+Solarpunk successes are as playable as ecological emergencies. Biopunk interventions raise questions of containment, patents, species boundaries, environmental justice and alien-derived knowledge. Later NHI or ASI-assisted ecological projects may be transformative but are never automatically safe, legitimate or equally accessible. Biosphere outcomes remain open, from collapse to democratic regeneration.
+
+The three-system model distinguishes living processes, social communication and psychic consciousness; the Noösphere/QIP are in-world speculative premises rather than empirical climate science. For faction positions, five introductory investigations and research-tree hooks, see [Biosphere paradigm](../docs/design/ISSUE_510_BIOSPHERE_PARADIGM.md) (#510).
+
 ## Before 2045 — AI / AGI revolution
 
 AI and AGI transform science, labor, politics, warfare, media, and everyday life.
