@@ -4218,7 +4218,11 @@ a one- or two-sentence note explaining their contribution.
 
 Seed this list from works already cited elsewhere in the rulebook, including:
 
-- **Philip K. Dick — _Ubik_.** Normalized professional PSI and counter-PSI services.
+- **Hannu Rajaniemi — _Kesämaa_ (_Summerland_, 2018).** An institutionalized afterlife with espionage, geopolitics, technology, and organized activity among the dead. Key inspiration for making astral projection, nonphysical environments, and the political and social organization of the Noösphere central to NoöPunk, rather than merely specialist PSI abilities.
+- **Alfred Bester — _The Demolished Man_ (1953).** Telepathic policing, privacy, social stratification, and the institutional consequences of widespread PSI.
+- **Ursula K. Le Guin — _The Lathe of Heaven_ (1971).** Dream-mediated changes to reality, the ethics of intervention, and the political consequences of powers that escape their users' control.
+- **Roger Zelazny — _Lord of Light_ (1967).** Technology and extraordinary powers framed through religion, contested divinity, and struggles over who controls access to transcendence.
+- **Philip K. Dick — _Ubik_.** Normalized professional PSI and counter-PSI services, post-death consciousness, and uncertainty about the boundary between physical and nonphysical reality.
 - **Philip K. Dick — _VALIS_.** Information as revelation, ontological shock, and the
   VALIS-like activation event.
 - **Philip K. Dick — _A Scanner Darkly_.** Surveillance, identity fragmentation, drugs,
