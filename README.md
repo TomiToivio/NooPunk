@@ -14,6 +14,8 @@ Humanity is changing just as rapidly. Artificial intelligence, cybernetics, gene
 
 In the face of existential threats, humanity has united under the **United Nations**. But political unity does not mean ideological consensus. Rival factions struggle to determine humanity's deep future: resist the transformation, control it, or embrace the emergence of a new civilization.
 
+Climate change, ecological restoration, synthetic biology and the transformation of the **biosphere** are equally fundamental to this age. The political struggle is not only against catastrophe: clean energy, resilient communities and biotechnology can help create genuinely better futures, if people can govern them.
+
 Three great paradigm shifts define the age:
 
 - **AGI: Artificial General Intelligence.** The creation of minds beyond human intelligence, promising abundance and threatening extinction.
@@ -24,7 +26,9 @@ Three great paradigm shifts define the age:
 
 Play as an individual investigating the impossible, or as a faction shaping the future of civilization. Explore a world where every technological breakthrough becomes a political crisis, every existential threat creates new ideologies, and every answer raises deeper questions.
 
-**The old world is ending. The next one is still up for grabs.**
+**The old world is transforming. The next one is still up for grabs.**
+
+NoöPunk also uses a **three-system lens**: living/biological systems (biopunk, solarpunk and planetary ecology), social systems (communication and politics amid AGI/NHI contact), and psychic systems (consciousness, PSI and the fictional Noösphere). These are distinct but interdependent; neither a climate apocalypse nor an effortless ASI utopia is inevitable. See the [biosphere paradigm design](docs/design/ISSUE_510_BIOSPHERE_PARADIGM.md) (#510).
 
 *Setting note: 2045 depicts the developed NHI Crisis era. The earlier strategy campaign begins around 2027, before these outcomes are settled, allowing players to shape the future rather than treating it as inevitable.*
 
