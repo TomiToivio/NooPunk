@@ -17,6 +17,8 @@ human PSI — is specified in [First Contact and PSI Awakening](20_FIRST_CONTACT
 (#497). Those beats are canon, not an optional scene; they culminate in the 2045
 campaign present.
 
+The societal consequences of PSI and astral projection are expanded in [PSI as a civilization-level paradigm shift](21_PSI_PARADIGM_SHIFT.md) (#511). This is an interpretation of the existing awakening, **not** an added dated milestone or a claim that PSI begins after contact.
+
 NoöPunk develops from several transformations already visible in present-day society. The
 setting extrapolates them into 2045 without pretending to know the exact dates or complete
 sequence by which they unfold.

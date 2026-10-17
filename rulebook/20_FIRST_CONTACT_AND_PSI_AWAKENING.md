@@ -53,6 +53,8 @@ Independent investigations then converge on **missing persons, abductions, hybri
 
 After exposure **Greys continue economic leverage, espionage and hybrid infiltration** while **Reptilians favor terror raids and overt conquest**. The Confederacy and Orion occasionally fight. The UN and UNSA protect the population, but rival human factions disagree about security, human rights, religious authority and alien technology.
 
+> **Expanded design:** [PSI as a civilization-level paradigm shift](21_PSI_PARADIGM_SHIFT.md) (#511) develops astral exploration, civic institutions, evidence protocols, five example cases and lightweight RPG implications. It extends the existing PSI awakening rather than replacing it.
+
 ## 4. Human PSI: a separate scientific and social revolution
 
 **Natural human PSI predates disclosure and does not require aliens.** This preserves the rulebook's foundational claim and timeline. Early effects are weak, contested and sporadic. Independent laboratory replication eventually makes specific anomalous-cognition effects accepted **in the fiction**. QIP (**Quantum Information Panpsychism**) develops into a leading explanatory paradigm for a nonlocal conscious substrate. Observed PSI, an explanatory model, and arguments about the **individual immortal soul** are three different evidentiary claims. NoöPunk characters may treat personal immortality as proven, reject that leap or consider it a profound open question; replicated PSI does not adjudicate a religion in its entirety.
