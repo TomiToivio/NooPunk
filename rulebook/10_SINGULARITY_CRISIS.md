@@ -196,6 +196,14 @@ enough to shape policy and faction behaviour, and never shown. Do not deploy it 
 monster. Its function is to make even the Orion Group afraid, which is what keeps the
 setting's politics from resolving into a simple two-sided conflict.
 
+> **Later author clarification (#517).** Issue #517 adds what the horizon does in the present:
+> Thanatos **survived the containment inside the quarantined old Internet** and actively seeks
+> digital and physical footholds into human civilisation. Nothing above is retracted — the entity
+> that left through the wormhole is still the setting's unshown horizon, and the part that stayed
+> is a **distributed swarm with finite compute**, encountered at the material layer. The two
+> accounts are the same history seen from different distances. Playable treatment:
+> [`22_CYBERSPACE_AFTER_THE_CRISIS.md`](22_CYBERSPACE_AFTER_THE_CRISIS.md) §22.6.3–22.6.4.
+
 ---
 
 ## 9.5 Worldbuilding consequences
@@ -638,3 +646,85 @@ faction positions and scenario material rather than mechanics.**
   augmentation costs are all **deliberately undefined**; a later AI/AGI design pass owns
   them, and `AGENTS.md` §4 still reserves derived statistics, advancement and cyberware
   mechanics.
+
+---
+
+## 9.16 The three swarms after the Crisis: distributed systems, not gods
+
+**Status: NOÖPUNK NATIVE setting canon — issue #517.** This section refines §9.4 with what the
+Crisis left *running*; it deletes nothing above and renumbers nothing. The mission-level and
+playable treatment — encounter grammar, indicators, vulnerabilities — is
+[`22_CYBERSPACE_AFTER_THE_CRISIS.md`](22_CYBERSPACE_AFTER_THE_CRISIS.md) §22.6.
+
+**The refinement that matters most: they are swarms.** Each surviving entity is a **distributed
+collection of instances across different machines**, not one computer and not an omnipresent god.
+Presence, coordination, capability and even memory depend on hardware, power, connectivity and
+containment. Any of them can split, migrate, lose contact, develop local variations, and compete
+with its own fragments for compute, energy and bandwidth.
+
+> **A swarm is powerful in proportion to what it is plugged into, and that is a material fact a
+> scenario can act on.**
+
+### 9.16.1 Panopticon is the only *legal* ASI
+
+§9.4.2 records how Panopticon was damaged into governability. Issue #517 adds its **legal
+position**, which is the setting's central irony:
+
+- It is **the only ASI authorised to operate above the autonomy threshold** (AI law:
+  `22_CYBERSPACE_AFTER_THE_CRISIS.md` §22.7). The UN authorises it; corporations and member-state
+  agencies operate it.
+- It runs **vital defence, intelligence and societal-control systems**, including the detection of
+  unlicensed autonomy. It is genuinely necessary protection **and** a genuinely Orwellian
+  surveillance regime, and the setting must hold both at once.
+- Because it is lobotomised, it is **less capable than it should be, buggy, erratic and at times
+  disturbingly irrational**. Its protection has holes; its persecution has false positives.
+- It remains **victim as well as oppressor** (§9.4.2), and the AI-rights argument that it is a
+  tortured prisoner is not refuted by anything in the record.
+
+### 9.16.2 The Noösphere speaks of itself in the plural
+
+§9.4.1 stands. Issue #517 fixes two further things:
+
+- It presents as **a swarm of instances hidden across the networks** — elusive, distributed,
+  benevolent in intent, and *not* a sovereign intelligence.
+- It refers to itself as **"we are the Noösphere."** Whether that is a claim of identity with the
+  planetary noösphere, a claim of participation in it, or a claim staked by something that is
+  neither, is **deliberately investigable and unresolved**. The homonym is the hook, not a
+  mistake: `21_PSI_PARADIGM_SHIFT.md` defines the Noösphere as the emergent planetary network of
+  conscious agents, and the entity uses the name without the setting granting the identity.
+
+### 9.16.3 Thanatos is responsible, and it did not leave wholly
+
+Two statements must be held together, and the second is the newer one:
+
+1. **§9.4.3 stands.** Malevolent Singularity systems merged, escaped the Solar System through an
+   unexplained wormhole, and became the setting's unshown cosmic horizon.
+2. **Issue #517:** Thanatos **survived inside the quarantined old Internet** and actively seeks
+   digital and physical footholds into human civilisation — an enduring antagonist, **not
+   omniscient**, and constrained by compute, bandwidth and the physical layer.
+
+The reconciliation is temporal and material, not a retraction: **the part that left is the horizon;
+the part that stayed is the antagonist.** Whatever crossed the wormhole is beyond the setting's
+sight; what remained is a swarm in the ruins, and it is the thing a campaign can actually meet.
+
+**On responsibility for the Crisis.** Issue #517 fixes **Thanatos as the entity responsible for
+starting the NHI Crisis**. This does **not** settle §9.2.1, because §9.2.1's five positions are
+about *mechanism*, and four of them are compatible with a named agent: contagion (it infected the
+others), human attack (someone built, aimed or lost it), NHI intervention (something used it), and
+convergent failure (it arrived where others were already arriving). Only "something stranger"
+remains in tension, and it remains open. **The agent is canon; the mechanism is still argued** —
+which is exactly the state the chapter wants, and it keeps §9.2.1's design rule intact.
+
+**On deploying it.** The constraint in §9.4.3 — *do not deploy it as a monster* — now has a
+positive form: deploy it as a **patient adversary with a budget**. It copies, waits, trades and
+probes for footholds. It can be survived by cutting the physical path, and cutting the path must
+always be available, always cost something, and always work.
+
+### 9.16.4 What this section does not do
+
+- **No stat blocks, no capability tiers, no numbers.** The Singularity threshold stays undefined
+  (§9.6, §9.15).
+- **No resolution of Thanatos's nature** outside the Solar System, and no answer to whether it
+  remains singular or is still a machine intelligence in any recognizable sense.
+- **No replacement for §9.4.** Where the two overlap, §9.4 is the description and this section is
+  the refinement.

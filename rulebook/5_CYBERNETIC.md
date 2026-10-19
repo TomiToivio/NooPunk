@@ -211,3 +211,28 @@ All numbers **DRAFT**. Target: a clinic's records segment. Intruder: `CYB 6`, `I
 | 4 | **Emergency disconnect** (1 AP) | — | session closed before Trace 4; work kept, no stun |
 
 The example is the point of the section: the intruder has a **hard budget of three actions per exchange**, the defender spends from the *same* clock, and the run ends on a decision the player made — disconnect at Trace 2 rather than gamble on Trace 4 — not on a hidden dice roll.
+
+---
+
+## After the NHI Crisis: where the rest of the account lives
+
+**Status: cross-reference added by issue #517. Nothing in this chapter was changed, renumbered or
+replaced.**
+
+This chapter specifies the **tactical** cybernetic procedure: the four access modes, the node card,
+privilege tiers T0–T4, Trace, ICE, and the software/hardware/wetware ladder. It is the zoom-in.
+
+The **setting** that procedure sits inside — the quarantined old Internet, the Blackwall, physical
+isolation, Safenet and the deliberately primitive public network, the five access classes, the three
+surviving ASI swarms, AI law, the human-in-the-loop economy, the mission-level narrative procedure
+with mixed-success consequences, BCI INFOSEC discipline, and four worked scenes — is
+[`22_CYBERSPACE_AFTER_THE_CRISIS.md`](22_CYBERSPACE_AFTER_THE_CRISIS.md).
+
+Two things follow, and they are the reason the cross-reference is here rather than in a footnote:
+
+- **Nothing in this chapter is superseded.** The four modes, the node card and the wetware rule
+  ("device compromise is not brain compromise") remain exactly as written, and the new chapter
+  reuses them instead of restating them.
+- **The new chapter adds a precondition this one assumes but does not state:** *whether a path
+  exists at all* is decided before any move, and an air-gapped target has no remote path in any
+  era. That is issue #344's rule, implemented as the access classes and the connectivity tags.
