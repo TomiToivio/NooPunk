@@ -6,16 +6,25 @@ The **PC is always the faction leader**, not a rookie agent. The rest of the par
 
 ## Implemented Phase 1 vertical slice
 
-The existing Fate Core RPG engine in `strategy_game/rpg/` and the five-seat roster (#482) are reused. A new noncanonical, local example case has a briefing, two investigative paths, two alternative evidence-handling choices, and a final faction-leader decision. It exposes:
-- selected leader/agent party participants;
-- optional seeded individual RPG checks through the approved Fate engine, where the GM supplies difficulty and permission;
-- persistent narrative choices, evidence and an event ledger with a faction identifier;
-- JSON save/load and an independent interactive terminal runner.
+The existing Fate Core RPG engine in `strategy_game/rpg/` and the five-seat roster (#482) are reused.
+The Phase 1 slice now has **one complete, playable case** — *The Second Shadow*, Helsinki 2045, in
+[`casework/`](../casework/): five scenes, dialogue, three clue fragments each reachable two ways, a
+finding that must be **assembled** from them, checks in four different individual skills, a cyber
+action gated by the #344 reachability model, a PSI action gated by a capability TAG, fail-forward costs
+on every failure, optional and dangerous one-exchange combat, three resolutions, campaign persistence
+through the one writer, mid-play save/load with the dice state, and a headless demo.
 
-Run: `python -m strategy_game.rpg.investigation_cli --save /tmp/noopunk-case.json`.
-Tests: `python -m unittest strategy_game.tests.test_issue502_investigation`.
+Run: `python -m strategy_game.casework --save /tmp/noopunk-case.json`.
+Tests: `python -m unittest strategy_game.tests.test_casework_spec strategy_game.tests.test_casework_session`.
+Design record: [`RPG_FIRST_CASE.md`](RPG_FIRST_CASE.md).
 
-This is a **functional proof of architecture, not a complete authored campaign**. The example's fictional events and placeholder character ratings are not canon, and no dice outcome silently determines story consequences.
+The earlier, deliberately small example in `rpg/investigation.py` remains as the **architecture proof**
+it was labelled as (a fixed ledger with placeholder sheets and a GM-supplied check command); the
+complete case supersedes it in play but does not replace it in the module tree.
+
+This is a **functional proof of architecture, not a complete authored campaign**. The case's fictional
+events, its people and the placeholder character ratings are not canon, and no dice outcome silently
+determines story consequences.
 
 ## Phase 1: the shared strategic-project engine and research (#506)
 
