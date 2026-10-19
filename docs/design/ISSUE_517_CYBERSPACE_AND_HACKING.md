@@ -24,6 +24,22 @@ Do not retroactively describe the opening as a post-crisis dystopian Slownet. Ne
 
 The unequal geography of the setting is intentional: transhuman comfort, intrusive security and digital wastelands can coexist on the same street. The PSI/noöspheric shift was underway **before** the crisis.
 
+
+## 2a. What the AI law looks like from the inside
+
+The legality rules above are only playable if their consequences are visible on a street. These are the forms they take; **no amount, rate, threshold or statistic is asserted**, and every item is a hook rather than a rule.
+
+- **Verification farms.** Human-in-the-loop is a legal requirement, so somebody must sit and confirm what an authorized system proposes. A farm is cheap labour with a security clearance: repetitive, monitored, well-defended by unions and despised by the people doing it. It is also an intelligence chokepoint — the humans see what the model saw.
+- **Cyber nostic operator jobs.** Remote supervision of machines that cannot be left unsupervised is a career with a shift pattern, a burnout profile and a professional identity ("I fly a loader from a chair in Espoo"). Operators are the setting's licensed intermediaries: they hold the credentials a mission needs.
+- **Why labour survives the automation.** Three different arguments coexist and each is believed by different factions: the law demands supervision; the polity prefers human work as a value; and, for compute-constrained tasks, a person is genuinely cheaper than an authorized autonomous system. None of them is presented as the true reason.
+- **Corporate exemptions.** The threshold is defined by capability and control, not by intent, so a firm with a compliance office can argue that its system is supervised, bounded or merely advisory. Exemptions are the ordinary corruption surface, and a mission can turn on whether one was granted or assumed.
+- **Safety theatre.** A facility can display every required safeguard and still hold an unlogged model behind a locked door. Auditors who only read paperwork are the reason the paper is worth stealing.
+- **Black-market autonomy.** Unauthorized models circulate as contraband: stripped safeguards, rented inference, jailbroken copilots, "assistants" that answer questions no licensed system would. The market is small, expensive and paranoid, and it is where a player who needs something illegal actually goes.
+- **AI-liberation politics.** Not everyone agrees that a bounded, supervised intelligence is a kindness. The movement's arguments range from rights-talk to sabotage, and the setting does not settle whether they are right; it settles only that they are organized, sometimes violent, and occasionally correct about a containment breach nobody reported.
+- **The legitimate case for the restrictions.** Every protagonist needs a reason the regime exists that is not a lie. Thanatos is real, containment failures have killed people, and a district that lost its network for a week remembers it. The regime is oppressive **and** load-bearing; a story that only says the first half is propaganda, and one that only says the second is a briefing.
+
+**Play consequence:** the political economy is where hacking meets the faction layer. A farm's shift roster is a social route to a credential; an exemption is a document worth stealing; a black-market dealer is a contact with a price; a liberation cell is an ally who will get the party killed. None of this requires a new mechanic — it is what the existing conversation, evidence and access procedures are *about*.
+
 ## 3. Three surviving distributed ASI swarms
 
 | Swarm | Setting role and agenda | Observable signature / limitation | Encounter hook |

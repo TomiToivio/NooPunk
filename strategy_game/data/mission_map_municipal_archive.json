@@ -1,0 +1,256 @@
+{
+  "format": "noopunk.strategy_game.mission_map",
+  "version": 1,
+  "status": "PROPOSAL - a mission-map data instance for the optional tactical layer (issue #515), validated by strategy_game/mission_map.py. No rule, cost, action economy, damage, initiative or difficulty lives anywhere in this file. Walkability is the only spatial property asserted here; what an agent may DO on the map awaits author-approved core mechanics.",
+  "sources": [
+    "issue #515: 'Prototype a small (~20x20) top-down map with walls, doors, four selectable characters, click-to-move and pathfinding'",
+    "issue #515: 'One reusable tile-based mission environment supporting exploration, dialogue, clues, hacking, PSI, stealth and combat'",
+    "issue #515: 'Reuse NooPunk's existing lightweight Fate-inspired stats, tags, actions, wounds and mission consequences wherever feasible; avoid inventing a second full ruleset'",
+    "issue #515 non-goals: no complex animation, no 3D, no giant maps, no sophisticated enemy AI, no mandatory combat in the first iteration",
+    "docs/design/ISSUE_515_TACTICAL_MAP_SPIKE.md (sibling groundwork): renderer comparison, cross-layer contracts, milestone list, municipal-archive acceptance scenario",
+    "strategy_game/map_spec.py is the STRATEGIC location graph (8 playable nodes, reachability only) and explicitly 'not a map renderer and not a movement system'; this file is the tactical grid it deliberately did not provide",
+    "strategy_game/data/connectivity.json + strategy_game/cyber.py own network reachability and eras (issue #344); a floor plan here never asserts network reachability"
+  ],
+  "provenance": {
+    "kind": "agent_proposal",
+    "source": "issue #515, technical-spike milestone 1",
+    "note": "the schema and this instance are this session's work; the renderer choice and every gameplay rule remain the author's"
+  },
+  "consumes": {
+    "strategic_map": "strategy_game/map_spec.py owns the strategic node/route graph. This tactical grid does not replace it: a mission takes place inside ONE strategic location.",
+    "network_reachability": "strategy_game/cyber.py owns whether a network path exists in the current era. A terminal on this map is a physical fact; whether it can reach anything is decided there.",
+    "roster": "the five-seat faction roster (one leader + four agents). Four agents deploy here; the leader does not appear as a fifth squad slot.",
+    "provenance": "strategy_game/provenance.py owns the provenance vocabulary for outcomes."
+  },
+  "grid": {
+    "width": 20,
+    "height": 20,
+    "note": "20x20 is the prototype target #515 names, not a universal size rule."
+  },
+  "tile_codes": {
+    "#": {
+      "name": "wall",
+      "walkable": false,
+      "note": "blocks movement and blocks any path through the cell"
+    },
+    ".": {
+      "name": "floor",
+      "walkable": true
+    },
+    "+": {
+      "name": "door",
+      "walkable": "when_open",
+      "note": "walkable only if a door record for this cell declares state 'open'"
+    },
+    "T": {
+      "name": "terminal",
+      "walkable": false,
+      "note": "a workstation occupies the cell; it is operated from an adjacent cell"
+    },
+    "E": {
+      "name": "evidence",
+      "walkable": false,
+      "note": "recovered from an adjacent cell"
+    },
+    "P": {
+      "name": "person",
+      "walkable": false,
+      "note": "conversed with from an adjacent cell"
+    },
+    "o": {
+      "name": "obstacle",
+      "walkable": false,
+      "note": "furniture or clutter; no rule attaches to it"
+    },
+    "X": {
+      "name": "exit",
+      "walkable": true,
+      "note": "the mission boundary; entering it is an intent the resolver adjudicates, not a transition this schema performs"
+    }
+  },
+  "rows": [
+    "####################",
+    "#..................#",
+    "#.......P..........#",
+    "#..####....####....#",
+    "#..E.#....#T.#.....#",
+    "#..#..#....#..#....#",
+    "#..#..+....+..#....#",
+    "#..#..#....#..#....#",
+    "#..####....####....#",
+    "#..................#",
+    "#..................#",
+    "#..#########.......#",
+    "#..#.......#.......#",
+    "#..#..T....#.......#",
+    "#..#.......+.......#",
+    "#..#...E...#.......#",
+    "#..#########.......#",
+    "#..................#",
+    "#.X................#",
+    "####################"
+  ],
+  "doors": [
+    {
+      "cell": [
+        6,
+        6
+      ],
+      "state": "open",
+      "note": "evidence room, west wing"
+    },
+    {
+      "cell": [
+        11,
+        6
+      ],
+      "state": "open",
+      "note": "terminal room, east wing"
+    },
+    {
+      "cell": [
+        11,
+        14
+      ],
+      "state": "open",
+      "note": "records room; the only door, so a closed state would seal the room"
+    }
+  ],
+  "agents": [
+    {
+      "agent_ref": "agent.surveyor",
+      "cell": [
+        2,
+        18
+      ],
+      "note": "enters at the exit/entrance cell"
+    },
+    {
+      "agent_ref": "agent.interviewer",
+      "cell": [
+        3,
+        18
+      ],
+      "note": ""
+    },
+    {
+      "agent_ref": "agent.archivist",
+      "cell": [
+        2,
+        17
+      ],
+      "note": ""
+    },
+    {
+      "agent_ref": "agent.signal",
+      "cell": [
+        3,
+        17
+      ],
+      "note": ""
+    }
+  ],
+  "leader_ref": "agent.leader",
+  "interactables": [
+    {
+      "id": "person.caretaker",
+      "kind": "person",
+      "cell": [
+        8,
+        2
+      ],
+      "label": "night caretaker",
+      "note": "the conversation route into the case; knows the access policy"
+    },
+    {
+      "id": "terminal.catalogue",
+      "kind": "terminal",
+      "cell": [
+        11,
+        4
+      ],
+      "label": "public catalogue terminal",
+      "network_ref": "local_lan",
+      "note": "reachability of anything behind it is decided by cyber.py in the current era"
+    },
+    {
+      "id": "terminal.registry",
+      "kind": "terminal",
+      "cell": [
+        6,
+        13
+      ],
+      "label": "registry workstation",
+      "network_ref": "organization_lan",
+      "note": ""
+    },
+    {
+      "id": "evidence.transfer_log",
+      "kind": "evidence",
+      "cell": [
+        3,
+        4
+      ],
+      "label": "transfer log",
+      "note": "the clue that does not require the conversation"
+    },
+    {
+      "id": "evidence.microfiche",
+      "kind": "evidence",
+      "cell": [
+        7,
+        15
+      ],
+      "label": "microfiche drawer",
+      "note": ""
+    }
+  ],
+  "objectives": [
+    {
+      "id": "objective.identify_the_transfer",
+      "kind": "evidence",
+      "interactable_ref": "evidence.transfer_log",
+      "note": "one noncombat route to the case"
+    },
+    {
+      "id": "objective.establish_the_policy",
+      "kind": "conversation",
+      "interactable_ref": "person.caretaker",
+      "note": "the other noncombat route"
+    },
+    {
+      "id": "objective.leave",
+      "kind": "exit",
+      "cell": [
+        2,
+        18
+      ],
+      "note": ""
+    }
+  ],
+  "overlays": [
+    {
+      "cell": [
+        7,
+        15
+      ],
+      "layer": "astral",
+      "note": "display-only impression near the microfiche; it grants no access and does not change walkability"
+    },
+    {
+      "cell": [
+        11,
+        4
+      ],
+      "layer": "cyber",
+      "note": "display-only marker of a networked device"
+    }
+  ],
+  "what_this_is_not": [
+    "not a movement system: path() reports which cells a route crosses, never what it costs or whether the agent may take it",
+    "not a combat map: no cover, line of sight, initiative, hit points or damage is modelled",
+    "not a rules engine: no difficulty, modifier, action point or turn structure appears here",
+    "not a network map: a terminal's reachability belongs to cyber.py and the current era",
+    "not canonical: a proposal for author review under issue #515"
+  ]
+}
