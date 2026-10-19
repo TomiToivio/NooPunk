@@ -586,7 +586,11 @@ class CaseSession:
         for cost_text in costs:
             if cost_text.startswith("consequence "):
                 consequence = cost_text.split("consequence ", 1)[1].strip("'")
-        taken_out = any(w["character"] == seat.character_id and w.get("taken_out") for w in self._wounds)
+        # A hit that overflows the stress track is "taken out" whether or not it wrote a named
+        # consequence; read the cost labels this action produced, not the earlier wound records.
+        taken_out = any(label == "taken out" for label in costs) or any(
+            w["character"] == seat.character_id and w.get("taken_out") for w in self._wounds
+        )
         event = {
             "kind": "case_action",
             "scene": scene.id,

@@ -184,6 +184,26 @@ class FailForwardTests(unittest.TestCase):
         self.assertEqual(session.chain_progress, (3, 3))
         self.assertIn("finding-empty-sleeve", session.findings)
 
+    def test_a_stress_overflow_is_recorded_as_taken_out(self) -> None:
+        # Three mental hits overflow the two-box track. The third hit writes no consequence, so the
+        # record has to read the hit it just applied rather than the earlier consequence wounds.
+        session = _session(rng=_MinusOne())
+        self.assertFalse(session.act("harri_romppainen", "read_the_duty_log").taken_out)
+        session.end_scene()
+        session.act("laura_falk", "interview_nila")
+        self.assertFalse(session.act("harri_romppainen", "scan_the_stack").taken_out)
+        session.end_scene()
+        overflow = session.act("harri_romppainen", "pull_the_mesh_log")
+        self.assertTrue(overflow.ok)
+        self.assertIn("taken out", overflow.costs)
+        self.assertTrue(overflow.taken_out)
+        self.assertTrue(
+            any(event.get("taken_out") for event in session.events), session.events[-1]
+        )
+        # The word is recorded and no rule consumes it: the same character still acts next scene.
+        session.end_scene()
+        self.assertTrue(session.act("harri_romppainen", "check_the_thermal_record").ok)
+
 
 class ChainTests(unittest.TestCase):
     def test_the_finding_cannot_be_assembled_from_nothing(self) -> None:
