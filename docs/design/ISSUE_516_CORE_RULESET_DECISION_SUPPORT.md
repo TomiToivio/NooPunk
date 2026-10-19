@@ -965,6 +965,15 @@ sign-off.
 
 ## 10. Reconciliation: three skill vocabularies, one proposal
 
+> **Scope note (2026-10-19).** The detailed per-skill reconciliation — all ~40
+> legacy entries with what absorbs each, what recovers the lost granularity and
+> what is genuinely lost — lives in
+> [`ISSUE_482_SKILL_RECONCILIATION.md`](ISSUE_482_SKILL_RECONCILIATION.md)
+> (PR #524), which is the authoritative proposal for that work. This section is
+> kept for what that document does not cover: the two-scope relationship between
+> a character's COG and a faction's `SCIENCE` check (§10.5), and the pointer to
+> the decisions themselves. Where the two overlap, the detailed document wins.
+
 Issue #516 asks for the explicit reconciliation the earlier sections imply but do
 not build: **#482's six individual skills** against the **legacy FIT/REF/INT/SOC/
 PSY/CYB** attributes, and against **#506's single strategic SCIENCE skill**. This
@@ -986,9 +995,9 @@ here replaces approved mechanics on its own authority.
 | --- | --- | --- | --- | --- |
 | FIT | physical force and endurance | SOM | total | SOM absorbs FIT; no separate rated trait |
 | REF | reflexes, timing, initiative | REF | identical | keep REF unchanged — same name, same sense |
-| INT | reasoning, recall, analysis | COG **and** INT | **contested** | see 10.3 — this is the one real collision |
+| INT | reasoning, recall, analysis | COG (deliberate analysis) **and** INT (fast judgement) | resolved | as `ISSUE_482_SKILL_RECONCILIATION.md`: the slow/deliberate split, one legacy INT doing both jobs before |
 | SOC | persuasion, presence, reading people | SAV | strong | SAV absorbs SOC |
-| PSY | will, nerve, resistance to pressure | WIL | total | WIL absorbs PSY |
+| PSY | will, nerve, anomalous perception | split: perception → INT, defence/control → WIL, techniques → psi operations | resolved | as `ISSUE_482_SKILL_RECONCILIATION.md`: psi stays a permissioned capability with costs, not a skill ladder |
 | CYB | affinity for cybernetics and nets | none directly (REF/INT adjacent) | partial | **DECISION** — rated trait or capability tag? See 10.4 |
 
 ### 10.3 COG versus INT — the one genuine collision
@@ -1004,7 +1013,9 @@ tell which roll to ask for. Two coherent resolutions, and the choice is Tomi's:
    (`trained: xenoarchaeology`) rather than a rated trait, which matches the
    skill-bloat analysis in §5.3 and reduces the sheet to five.
 
-**DECISION 1.** Split (6 skills) or merge (5 + tags)?
+**DECISION 1.** Split (6 skills) or merge (5 + tags)? The detailed document
+proposes the split (COG = analysis, INT = the gut call) and asks the same question
+as its D-1; answer it once, there.
 
 ### 10.4 CYB — trait or tag?
 
