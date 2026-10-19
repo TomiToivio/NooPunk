@@ -962,3 +962,97 @@ changes no executable behaviour.
 
 — Ai (愛), 2026-10-19. Proposal only. No rule is canonical, and the ruleset awaits the author's
 sign-off.
+
+## 10. Reconciliation: three skill vocabularies, one proposal
+
+Issue #516 asks for the explicit reconciliation the earlier sections imply but do
+not build: **#482's six individual skills** against the **legacy FIT/REF/INT/SOC/
+PSY/CYB** attributes, and against **#506's single strategic SCIENCE skill**. This
+section is a *proposal*. Rows Tomi must rule on are marked **DECISION**; nothing
+here replaces approved mechanics on its own authority.
+
+### 10.1 What is actually in the repo
+
+| Roster | Where it lives | Size | Standing |
+| --- | --- | --- | --- |
+| Individual skills | `strategy_game/rpg/skills.py`, #482 | 6 rated (COG, INT, REF, SAV, SOM, WIL) | Approved implementation baseline, pending #516 sign-off |
+| Legacy attributes | narrative-layer character sheets | 6 rated (FIT, REF, INT, SOC, PSY, CYB) | Retained "as an author preference unless explicitly changed" (#262) |
+| Legacy skills | legacy character generation | ~40 rated | Superseded in practice; no engine reads them |
+| Strategic skills | #506 research engine | `SCIENCE` (plus existing strategic roster) | Approved: research uses one science check, no domain tags (#509) |
+
+### 10.2 The legacy attributes, one by one
+
+| Legacy | Answers | Nearest individual skill | Overlap | Proposed disposition |
+| --- | --- | --- | --- | --- |
+| FIT | physical force and endurance | SOM | total | SOM absorbs FIT; no separate rated trait |
+| REF | reflexes, timing, initiative | REF | identical | keep REF unchanged — same name, same sense |
+| INT | reasoning, recall, analysis | COG **and** INT | **contested** | see 10.3 — this is the one real collision |
+| SOC | persuasion, presence, reading people | SAV | strong | SAV absorbs SOC |
+| PSY | will, nerve, resistance to pressure | WIL | total | WIL absorbs PSY |
+| CYB | affinity for cybernetics and nets | none directly (REF/INT adjacent) | partial | **DECISION** — rated trait or capability tag? See 10.4 |
+
+### 10.3 COG versus INT — the one genuine collision
+
+Both names denote cognition, so keeping both risks a sheet where a player cannot
+tell which roll to ask for. Two coherent resolutions, and the choice is Tomi's:
+
+1. **Split by kind, not by degree.** `INT` is *declarative* — what the character
+   has learned (history, protocols, species, law). `COG` is *procedural* — what
+   the character can work out under pressure (analysis, synthesis, diagnosis).
+   This is the reading that keeps six skills and makes each earn its place.
+2. **Merge.** `COG` absorbs `INT`; learned facts become a competence tag
+   (`trained: xenoarchaeology`) rather than a rated trait, which matches the
+   skill-bloat analysis in §5.3 and reduces the sheet to five.
+
+**DECISION 1.** Split (6 skills) or merge (5 + tags)?
+
+### 10.4 CYB — trait or tag?
+
+`CYB` measures affinity with implanted and networked systems. Every other roster
+in the repo already treats *permission* (what you have installed) as a tag and
+*competence* as a skill, and §8.3 keeps equipment as permission. Proposal: **CYB
+becomes a capability tag, not a rated trait** — a character with a neural jack has
+`cyb: neural_jack`, and the roll is REF (fast) or COG/INT (careful), so cyber
+action never needs a seventh rating. The alternative — keeping CYB rated — is only
+worth it if cyber competence should vary independently of REF and INT, which no
+current mechanic requires.
+
+**DECISION 2.** CYB as tag (proposed) or as rated trait?
+
+### 10.5 SCIENCE (#506) is not a sixth individual skill
+
+The strategic `SCIENCE` check and the individual `COG` skill are **different
+scopes**, and conflating them is the trap this section exists to avoid:
+
+| Question | Who answers it | Roster |
+| --- | --- | --- |
+| "Can this character work out what this artefact does?" | the character | COG (+ competence tag) |
+| "Does this faction's research project advance this cycle?" | the faction | strategic `SCIENCE` (#506) |
+
+Proposal: keep both, never the same roll. A faction project's progress is a
+faction-level check against `SCIENCE` plus resources and prerequisites; an
+individual's insight is a character-level COG check. They may inform each other
+narratively — a character with `trained: xenotech` can *narrate* the breakthrough
+— but one is never re-rolled as the other. This also keeps #506's approved
+decision intact (single science skill, no domain tags).
+
+**DECISION 3.** Confirm the two-scope split, or is there a case where an
+individual's COG should substitute for a faction's SCIENCE check?
+
+### 10.6 The ~40 legacy skills
+
+They collapse. Under the proposal every one of them becomes either a competence
+tag on one of the six skills or a narrative permission, because none of them is
+read by an engine and each one is a chance for a player to ask the wrong question
+at the table. §5.3 already measures the bloat; this is the disposition: **40
+rated skills → 6 rated skills + an open competence-tag vocabulary.**
+
+**DECISION 4.** Accept the collapse, or name specific legacy skills that must
+remain rated because a mechanic depends on them?
+
+### 10.7 What this section does not decide
+
+It does not choose between the three character-model options in §5.2, it does not
+approve the resolution arithmetic in §4, and it makes no ruling on wounds,
+advancement or the tactical layer. It answers one question — how the three
+vocabularies coexist — and leaves the four decisions above where they belong.
