@@ -1,0 +1,134 @@
+{
+  "format": "noopunk.tactical.mission",
+  "schema_version": "tactical-mission-1",
+  "status": "SPIKE_FIXTURE",
+  "mission_id": "spike_municipal_records",
+  "case_id": "spike-records-case",
+  "title": "Spike fixture: the records annex",
+  "note": "Non-canonical fixture for issue #515's technical spike. It exercises the mission data schema (grid, deployment, one dialogue, one clue, one optional confrontation) and is not scenario canon, not a faction, not a location in the setting.",
+  "grid": {
+    "width": 20,
+    "height": 20,
+    "legend": {
+      ".": "floor",
+      "#": "wall",
+      "+": "door"
+    },
+    "rows": [
+      "####################",
+      "#..................#",
+      "#..................#",
+      "#..#####..#####....#",
+      "#..#...#..#...#....#",
+      "#..#...#..#...#....#",
+      "#..#...+..+...#....#",
+      "#..#...#..#...#....#",
+      "#..#####..#####....#",
+      "#..................#",
+      "#....##......##....#",
+      "#....##......##....#",
+      "#..................#",
+      "#........##........#",
+      "#........##........#",
+      "#..................#",
+      "#...##........##...#",
+      "#..................#",
+      "#..................#",
+      "####################"
+    ]
+  },
+  "deploy_cells": [
+    [
+      17,
+      3
+    ],
+    [
+      17,
+      6
+    ],
+    [
+      17,
+      10
+    ],
+    [
+      17,
+      14
+    ]
+  ],
+  "interactions": [
+    {
+      "id": "interview_witness",
+      "kind": "dialogue",
+      "at": [
+        8,
+        9
+      ],
+      "label": "Interview the duty clerk",
+      "text": "Fixture dialogue: the clerk will talk, and names the annex where the ledger is kept.",
+      "intel": [
+        "spike:witness_account"
+      ],
+      "objectives": [
+        "interview_witness"
+      ]
+    },
+    {
+      "id": "read_ledger",
+      "kind": "clue",
+      "at": [
+        5,
+        12
+      ],
+      "label": "Read the annex ledger",
+      "text": "Fixture clue: a ledger in the sealed annex, behind the annex door.",
+      "action": "overcome",
+      "skill": "COG",
+      "difficulty": 2,
+      "requires": [
+        "interview_witness"
+      ],
+      "evidence": [
+        "spike:ledger_page"
+      ],
+      "intel": [
+        "spike:ledger_names"
+      ],
+      "objectives": [
+        "read_ledger"
+      ]
+    },
+    {
+      "id": "confront_contact",
+      "kind": "confrontation",
+      "at": [
+        5,
+        5
+      ],
+      "label": "Confront the contact (optional)",
+      "text": "Fixture confrontation hook: optional, and failing it costs a mild consequence rather than blocking the mission.",
+      "action": "overcome",
+      "skill": "SOM",
+      "difficulty": 2,
+      "optional": true,
+      "requires": [
+        "interview_witness"
+      ],
+      "evidence": [
+        "spike:signed_statement"
+      ],
+      "consequence": "Bruised"
+    }
+  ],
+  "objectives": [
+    {
+      "id": "interview_witness",
+      "label": "spike:witness_interviewed",
+      "required": true
+    },
+    {
+      "id": "read_ledger",
+      "label": "spike:ledger_read",
+      "required": true
+    }
+  ]
+}
