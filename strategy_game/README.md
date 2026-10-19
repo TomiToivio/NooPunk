@@ -24,6 +24,21 @@ The additional standalone [`political.py`](political.py) vocabulary models Lacla
 
 **Tactical map spike (#515)** — [`tactical/`](tactical/) is the renderer-independent half of issue [#515](https://github.com/TomiToivio/NooPunk/issues/515)'s technical spike: a 20×20 tile grid of floor/wall/door cells with ASCII rows as its interchange format ([grid.py](tactical/grid.py)), a validated **mission-data schema** for deployment, dialogue, clue and optional confrontation hooks and objectives ([mission.py](tactical/mission.py), [data/tactical/spike_mission.json](data/tactical/spike_mission.json)), and a headless session that gives four agent seats one action each per turn through the existing [`rpg/roster.py`](rpg/roster.py) ledger, resolves checks through the approved Fate kernel, applies a failed confrontation through [`rpg/scene.py`](rpg/scene.py)'s hit procedure, and writes the mission outcome through [`campaign/missions.py`](campaign/missions.py). **No renderer, engine or art is involved**: a mission has no sprite, tile id or pixel, and the package's import graph is asserted to hold only the standard library and this project. Play it with `python -m strategy_game.tactical` (`--json` for the same run as data). The renderer comparison — Python/Pygame + Tiled recommended, Godot 4's tilemap kept as a documented view, GDScript rules disqualified — is [docs/TACTICAL_MAP_SPIKE.md](docs/TACTICAL_MAP_SPIKE.md), and the choice is queued as row **D38** of [`../docs/design/AUTHOR_DECISION_QUEUE.md`](../docs/design/AUTHOR_DECISION_QUEUE.md). The spike adds no rule; `RULEBOOK.md` keeps its NO RULES APPROVED status.
 
+**The RPG-first vertical slice: one complete case (#502)** — [`casework/`](casework/) is the delivery
+step the author directed to come first: a short, complete, replayable **investigation** for the
+faction-leader PC and four agents, composed from the engine above rather than replacing it. *The Second
+Shadow* (Helsinki, 2045) has five scenes, dialogue, three clue fragments each reachable two ways, a
+finding that must be **assembled**, four different character-layer skills, a cyber action gated by the
+#344 reachability model and a PSI action gated by a capability TAG, fail-forward costs on every failed
+check, optional and dangerous one-exchange combat, and three endings — on the record, in the loading
+bay, or referred upstairs. Persistent consequences go through the one campaign writer; the case saves
+and reloads mid-play with its dice state. Play it with `python -m strategy_game.casework`
+(`--route confront --approach force`, `--json`). Design record:
+[`docs/RPG_FIRST_CASE.md`](docs/RPG_FIRST_CASE.md); contracts:
+[`tests/test_casework_spec.py`](tests/test_casework_spec.py) and
+[`tests/test_casework_session.py`](tests/test_casework_session.py). **Non-canonical scenario content**;
+`RULEBOOK.md` keeps its NO RULES APPROVED status.
+
 ## Run the empty-state demo
 From repository root:
 
