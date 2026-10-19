@@ -12,6 +12,8 @@ For concurrent work, announce intended files on issue #243, avoid overlapping fi
 
 The issue [#497 First Contact and PSI Awakening](20_FIRST_CONTACT_AND_PSI_AWAKENING.md) is the canonical lore chapter for First Contact, the Orion deception, the 2045 alien cold war and independently arising PSI. The campaign's setting year is **2045** (author's ruling of 2026-10-16); the unordered paradigm-shift background remains the account of how the setting reached that year. The chapter canonizes the existing Confederacy contact lore without changing legacy mechanics.
 
+The issue [#517 cyberspace chapter](22_CYBERSPACE_AFTER_THE_CRISIS.md) is the canonical consolidation of post-NHI-Crisis cyberspace: the quarantined old Internet and the Blackwall, physical isolation, Safenet/Slownet, the five access classes, the three surviving ASI swarms, AI law, the human-in-the-loop economy, and the narrative-first hacking procedure with its four worked scenes. It is the **mission-level companion** to the tactical procedure in [5_CYBERNETIC.md](5_CYBERNETIC.md), which it cross-references and does not restate. The tactical chapter, the shared action clock and the legacy `RULEBOOK.md` corpus were not modified.
+
 ## Narrative-first edition (issue #265) — current entry point
 
 The active rulebook now opens with **[00_START_HERE.md](00_START_HERE.md)**, the entry point for the
