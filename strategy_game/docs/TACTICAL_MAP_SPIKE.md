@@ -14,7 +14,7 @@ This record is that spike. Two of the three items are **answered as engineering,
 | --- | --- |
 | **Mission-data schema** | **Built and tested**: `strategy_game/tactical/mission.py`, the packaged fixture `data/tactical/spike_mission.json`, and the headless session that reads it |
 | **Grid/tile format** | **Built and tested**: ASCII `.`/`#`/`+` rows in JSON, `strategy_game/tactical/grid.py` (§9) |
-| **Renderer** | **Evaluated, not chosen** — this record's recommendation is §8, and the choice is queued as **row D29** of [`docs/design/AUTHOR_DECISION_QUEUE.md`](../../docs/design/AUTHOR_DECISION_QUEUE.md) |
+| **Renderer** | **Evaluated, not chosen** — this record's recommendation is §8, and the choice is queued as **row D38** of [`docs/design/AUTHOR_DECISION_QUEUE.md`](../../docs/design/AUTHOR_DECISION_QUEUE.md) |
 
 Nothing here approves a rule. `strategy_game/RULEBOOK.md` keeps its **NO RULES APPROVED** status, no
 enemy, combat round, line of sight, cover, stealth, PSI or hacking mechanic exists in the prototype,
@@ -193,7 +193,7 @@ Why that trade is the right way round *for this project, now*:
    renderer swap rather than a rewrite — and that is precisely what the author may prefer if the
    tactical board becomes the product's main surface.
 
-**This is a recommendation with a named cost, not a ruling.** The author's answer is row D29.
+**This is a recommendation with a named cost, not a ruling.** The author's answer is row D38.
 
 ## 9. Grid and tile format
 
@@ -216,7 +216,7 @@ Why that trade is the right way round *for this project, now*:
   nothing in the prototype opens one, because *what opening a door costs* is a rules decision (§12).
 - **Pathfinding is four-neighbour BFS with a fixed neighbour order**, so a path is shortest and
   reproducible; refusals name the cause (*wall*, *closed door*, *outside the grid*, *no route*).
-- **If Tiled is adopted** (row D29), the production interchange for *authored* maps is Tiled's JSON
+- **If Tiled is adopted** (row D38), the production interchange for *authored* maps is Tiled's JSON
   (`.tmj`) with the same three tile classes mapped in a tileset; the ASCII form stays the test fixture
   format and the smallest way to write a map by hand.
 - **If Godot is adopted**, the same JSON becomes a `TileSet` + `TileMapLayer` at load time; the mission
@@ -306,7 +306,7 @@ objectives, intel, case evidence and an audit note into the campaign.
 Falsifiers, so this does not become folklore:
 
 1. **The tactical board becomes the product's main surface**, with authored multi-level maps and a
-   designer workflow → Godot's editor and export pipeline outweigh the bridge cost; revisit D29.
+   designer workflow → Godot's editor and export pipeline outweigh the bridge cost; revisit D38.
 2. **PyInstaller-class packaging proves unacceptable** for the intended platforms (consoles, mobile,
    storefront requirements under D14) → Godot's exports become the cheaper distribution path.
 3. **Python-for-Godot embedding turns out to be reliable and maintained** for the engine version in use
