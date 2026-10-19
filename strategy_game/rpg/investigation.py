@@ -178,7 +178,7 @@ class Investigation:
                 if set(event) != {"kind", "faction_id", "case_id", "stage", "choice", "actor_ids"}:
                     raise InvestigationError("invalid choice event fields")
                 actors = event["actor_ids"]
-                if not isinstance(actors, list) or not actors or len(set(actors)) != len(actors) or any(
+                if not isinstance(actors, list) or not actors or any(not isinstance(a, str) for a in actors) or len(set(actors)) != len(actors) or any(
                     a not in roster for a in actors
                 ):
                     raise InvestigationError("invalid event participants")
