@@ -161,6 +161,56 @@ class Investigation:
             replay.choose(choice)
         if replay.stage != instance.stage or replay.evidence != instance.evidence:
             raise InvestigationError("save choices are inconsistent with stage or evidence")
+        # Validate the *ordered* event ledger, not just the final stage. Saved rolls
+        # are reproducible from their seed and the shipped illustrative actor sheet.
+        # This protects evidence provenance without creating any strategy mechanics.
+        cursor = cls(case_id=instance.case_id, faction_id=instance.faction_id)
+        choice_index = 0
+        roster = set(demo_party())
+        from .skills import INDIVIDUAL_SKILL_NAMES
+        for event in instance.events:
+            if not isinstance(event, dict) or event.get("case_id") != instance.case_id or (
+                event.get("faction_id") != instance.faction_id
+            ) or event.get("stage") != cursor.stage:
+                raise InvestigationError("event ledger has invalid provenance or stage")
+            kind = event.get("kind")
+            if kind == "investigation_choice":
+                if set(event) != {"kind", "faction_id", "case_id", "stage", "choice", "actor_ids"}:
+                    raise InvestigationError("invalid choice event fields")
+                actors = event["actor_ids"]
+                if not isinstance(actors, list) or not actors or any(not isinstance(a, str) for a in actors) or len(set(actors)) != len(actors) or any(
+                    a not in roster for a in actors
+                ):
+                    raise InvestigationError("invalid event participants")
+                if choice_index >= len(instance.choices) or event["choice"] != instance.choices[choice_index]:
+                    raise InvestigationError("choice event order differs from saved choices")
+                cursor.party(actors)
+                cursor.choose(event["choice"])
+                choice_index += 1
+            elif kind == "rpg_check":
+                if set(event) != {
+                    "kind", "faction_id", "case_id", "stage", "actor_id", "skill",
+                    "difficulty", "seed", "dice", "total", "shifts", "outcome",
+                }:
+                    raise InvestigationError("invalid check event fields")
+                actor_id, skill = event["actor_id"], event["skill"]
+                difficulty, seed = event["difficulty"], event["seed"]
+                if cursor.finished or actor_id not in roster or skill not in INDIVIDUAL_SKILL_NAMES or (
+                    type(difficulty) is not int or type(seed) is not int
+                ):
+                    raise InvestigationError("invalid saved RPG check")
+                expected = check(
+                    demo_party()[actor_id], Action.OVERCOME, skill, difficulty,
+                    rng=Random(seed),
+                ).resolution
+                if event["dice"] != list(expected.dice) or event["total"] != expected.total or (
+                    event["shifts"] != expected.shifts or event["outcome"] != expected.outcome.value
+                ):
+                    raise InvestigationError("saved RPG check does not match seeded Fate resolution")
+            else:
+                raise InvestigationError("unknown saved event kind")
+        if choice_index != len(instance.choices) or cursor.stage != instance.stage:
+            raise InvestigationError("incomplete or contradictory event ledger")
         return instance
 
     def save(self, path: str | Path) -> None:

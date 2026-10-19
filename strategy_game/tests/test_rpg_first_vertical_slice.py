@@ -54,6 +54,40 @@ class RPGFirstVerticalSliceTest(unittest.TestCase):
             case.attempt("leader", "PARAPSYCHOLOGY", 2, 506)
         self.assertEqual(case.events, [])
 
+    def test_corrupted_check_and_missing_event_are_rejected(self):
+        case = Investigation()
+        case.choose("inspect")
+        case.attempt("leader", "SAV", 1, 506)
+        case.choose("copy")
+        good = case.to_dict()
+        self.assertEqual(Investigation.from_dict(good).to_dict(), good)
+
+        from copy import deepcopy
+        for field, altered in (("dice", [1, 1, 1, 1]), ("total", 999),
+                               ("outcome", "success_with_style")):
+            forged = deepcopy(good)
+            forged["events"][1][field] = altered
+            with self.subTest(field=field), self.assertRaises(InvestigationError):
+                Investigation.from_dict(forged)
+        missing = deepcopy(good)
+        missing["events"].pop(0)
+        with self.assertRaises(InvestigationError):
+            Investigation.from_dict(missing)
+        swapped = deepcopy(good)
+        swapped["events"][0], swapped["events"][1] = swapped["events"][1], swapped["events"][0]
+        with self.assertRaises(InvestigationError):
+            Investigation.from_dict(swapped)
+
+    def test_saved_events_reject_unknown_kind_and_wrong_faction(self):
+        case = Investigation()
+        case.choose("interview")
+        from copy import deepcopy
+        for field, changed in (("kind", "strategic_win"), ("faction_id", "other-faction")):
+            payload = deepcopy(case.to_dict())
+            payload["events"][0][field] = changed
+            with self.subTest(field=field), self.assertRaises(InvestigationError):
+                Investigation.from_dict(payload)
+
     def test_invalid_choice_does_not_advance_narrative(self):
         case = Investigation()
         with self.assertRaises(InvestigationError):
