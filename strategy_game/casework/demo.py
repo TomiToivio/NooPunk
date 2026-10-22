@@ -21,7 +21,16 @@ from typing import Any
 from . import kallio
 from .session import ActionResult, CaseSession, load_session
 
-__all__ = ["APPROACHES", "DEMO_SEED", "RESULT_LABELS", "ROUTES", "play", "render_text", "run_demo"]
+__all__ = [
+    "APPROACHES",
+    "DEMO_SEED",
+    "RESULT_LABELS",
+    "ROUTES",
+    "case_summary",
+    "play",
+    "render_text",
+    "run_demo",
+]
 
 #: Per-route default seeds, chosen so each route demonstrates its **own** ending rather than falling
 #: back to a referral. The script is deterministic at any seed (the case is fail-forward); these only
@@ -217,23 +226,33 @@ def run_demo(
         "approach": approach if route == "confront" else "",
         "seed": seed,
         "log": log,
-        "case": {
-            "id": report["case_id"],
-            "title": report["title"],
-            "core_question": report["core_question"],
-            "era_label": report["era_label"],
-            "scene": report["scene"],
-            "clues": report["clues"],
-            "intel": report["intel"],
-            "findings": report["findings"],
-            "chain": report["chain"],
-            "complications": report["complications"],
-            "resolution": report["resolution"],
-            "party": report["party"],
-            "wounds": report["wounds"],
-        },
+        "case": case_summary(report),
         "persisted": report["persisted"],
         "reload": confirmation,
+    }
+
+
+def case_summary(report: dict[str, Any]) -> dict[str, Any]:
+    """The reader-facing half of a session report, in the shape :func:`render_text` reads.
+
+    Shared with the interactive play mode (:mod:`strategy_game.casework.play`) so that a played
+    case and a headless run print the same ending from the same report — the report is the
+    session's own, and nothing here computes anything.
+    """
+    return {
+        "id": report["case_id"],
+        "title": report["title"],
+        "core_question": report["core_question"],
+        "era_label": report["era_label"],
+        "scene": report["scene"],
+        "clues": report["clues"],
+        "intel": report["intel"],
+        "findings": report["findings"],
+        "chain": report["chain"],
+        "complications": report["complications"],
+        "resolution": report["resolution"],
+        "party": report["party"],
+        "wounds": report["wounds"],
     }
 
 

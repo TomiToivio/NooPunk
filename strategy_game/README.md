@@ -33,10 +33,14 @@ finding that must be **assembled**, four different character-layer skills, a cyb
 check, optional and dangerous one-exchange combat, and three endings — on the record, in the loading
 bay, or referred upstairs. Persistent consequences go through the one campaign writer; the case saves
 and reloads mid-play with its dice state. Play it with `python -m strategy_game.casework`
-(`--route confront --approach force`, `--json`). Design record:
+(`--route confront --approach force`, `--json`), or **play it yourself** with
+`python -m strategy_game.casework --play`: the same session at a prompt, where you hold the leader's
+seat, assign the four agents, read each scene's prose, and take the closing decision — with `--save`
+resuming the morning where you left it. Design record:
 [`docs/RPG_FIRST_CASE.md`](docs/RPG_FIRST_CASE.md); contracts:
 [`tests/test_casework_spec.py`](tests/test_casework_spec.py) and
-[`tests/test_casework_session.py`](tests/test_casework_session.py). **Non-canonical scenario content**;
+[`tests/test_casework_session.py`](tests/test_casework_session.py) and
+[`tests/test_casework_play.py`](tests/test_casework_play.py). **Non-canonical scenario content**;
 `RULEBOOK.md` keeps its NO RULES APPROVED status.
 
 ## Run the empty-state demo
