@@ -5,12 +5,12 @@ The **canonical integrated case** is *The Listening Ward*, a self-contained, opt
 Run from the repository root:
 
 ```sh
-python -m strategy_game.rpg --scenario ubiquitous-maniacs-case --save ward.json --new
+python -m strategy_game.rpg --scenario ubiquitous-maniacs --save ward.json --new
 ```
 
 Resume by leaving off `--new`. Within the prompt, use `help`, `status`, `act SEAT ACTION`, `next`, `assemble`, `resolve closed_by_evidence` (or `closed_by_withdrawal`), `save`, `quit`. The live implementation is `strategy_game/casework/ubiquitous_maniacs.py`; direct invocation of `python -m strategy_game.casework.ubiquitous_maniacs_play` is equivalent.
 
-The older two-day narrative prototype is retained separately for compatibility at `python -m strategy_game.rpg --scenario ubiquitous-maniacs`. It shares RPG Fate checks but **is not** the canonical five-seat investigation. Do not mistake its self-contained story state for a full campaign save or merge its rules into the current engine. Existing saves from the two adapters are not interchangeable.
+The older two-day narrative prototype is retained separately for compatibility at `python -m strategy_game.rpg --scenario ubiquitous-maniacs-legacy`. The `ubiquitous-maniacs-case` selector remains an alias for the canonical case. It shares RPG Fate checks but **is not** the canonical five-seat investigation. Do not mistake its self-contained story state for a full campaign save or merge its rules into the current engine. Existing saves from the two adapters are not interchangeable.
 
 ## Rights and provenance boundaries
 
@@ -26,3 +26,7 @@ python -m unittest strategy_game.tests.test_ubiquitous_maniacs_case strategy_gam
 ```
 
 These checks test wiring and case behavior, **not copyright clearance**. Review CI before release or merging new content.
+
+## Distribution boundary
+
+The archive and legacy trees remain in repository history and the source checkout for research, but are quarantined from public release bundles by `data/licenses/release_packaging_policy.json`. They are not dependencies of the canonical case. This is **not** certification of the entire repository as copyright-cleared; exclude unreviewed historical sources and check the selected release bundle. Removing a file in a new commit does not erase prior Git objects.
