@@ -66,6 +66,19 @@ MANIAC_LINES = (
     "Hei ystävät",
     "Tapahtuu outoja asioita",
     "Strange things are happening",
+    # The intake exchange: the corpus's own Finnish realisation of the show's lines.
+    "Tutkitteko olenko androidi",
+    "viruksen kantajaksi",
+    "valittu kokeeseen",
+    "VALITTU KOKEESEEN",
+    # The translated chorus and the closing line of the prologue.
+    "Hyin outoja",
+    "me olemme paha",
+    "epävarmuutemme",
+    "kruununa työlle",
+    "ravistella tiedettä",
+    "ensi kerralla varautukaa",
+    "Minä olen Ragnarök",
 )
 
 RIGET_LINES = (
@@ -74,6 +87,23 @@ RIGET_LINES = (
     "Och där: Sverige",
     "Danskjävlar",
     "Det är en jävla bra idé",
+    # The show's place-name metaphor, in the corpus's own Finnish.
+    "bleaching ponds",
+)
+
+#: Lines from *Paprika* (Atsuko Chiba, 2006) and from third-party simulation
+#: platforms, quoted in the corpus's own analysis documents.
+OTHER_LINES = (
+    "strayed into the patient's dream",
+    "Osanai seemed to disappear",
+    "Doctor with patient",
+    "Fed his mind with images",
+    "Upload Any Report",
+    "Living relationship graph",
+    "What situation is this?",
+    "What person am I?",
+    "Not an officially supported Google product",
+    "1M+ rinnakkaista",
 )
 
 #: Paths whose contents are never searched. A test file may name the lines it asserts
@@ -84,7 +114,7 @@ EXEMPT = ("tests/test_third_party_expression_absent.py",)
 
 def _scan(text: str) -> list[str]:
     found = []
-    for line in MANIAC_LINES + RIGET_LINES:
+    for line in MANIAC_LINES + RIGET_LINES + OTHER_LINES:
         if line in text:
             found.append(line)
     return found
@@ -135,7 +165,6 @@ class ThirdPartyExpressionTests(unittest.TestCase):
             blob = subprocess.run(
                 ["git", "-C", str(ROOT), "show", f"HEAD:{rel}"],
                 capture_output=True,
-                check=False,
             ).stdout
             if not blob:
                 continue
