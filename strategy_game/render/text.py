@@ -17,6 +17,7 @@ Design constraints this file obeys, and the reason each is stated rather than as
 from __future__ import annotations
 
 import json
+from collections.abc import Mapping
 from pathlib import Path
 from typing import Any
 
@@ -60,6 +61,26 @@ def _label_index(view: dict[str, Any]) -> dict[str, str]:
     return labels
 
 
+#: Attribute keys whose value is a secret when the key says so. A renderer must not be the
+#: thing that leaks a secret, so a private/concealed attribute is withheld rather than printed.
+_PRIVATE_ATTRIBUTE_KEYS = ("private", "secret", "secrets", "gm_notes", "gm_secrets")
+
+
+def _public_attributes(attributes: Mapping[str, Any]) -> dict[str, Any]:
+    """The attributes a board view may show: everything except the private ones.
+
+    The key decides, so an author who marks an attribute ``private`` gets it withheld without
+    having to change the renderer; a key that is not private is printed as declared.
+    """
+    if not isinstance(attributes, Mapping):
+        return {}
+    return {
+        key: value
+        for key, value in attributes.items()
+        if str(key).strip().lower() not in _PRIVATE_ATTRIBUTE_KEYS
+    }
+
+
 def board_lines(state: WorldState) -> tuple[str, ...]:
     """The board as deterministic text lines. Empty state yields an empty-board note."""
     view = board_view(state)
@@ -69,7 +90,12 @@ def board_lines(state: WorldState) -> tuple[str, ...]:
         f"{len(view['assets'])} assets, {len(state.leaders)} leaders"
     )
     lines: list[str] = [header]
-    if not view["locations"] and not view["network_nodes"] and not view["network_edges"]:
+    if (
+        not view["locations"]
+        and not view["network_nodes"]
+        and not view["network_edges"]
+        and not state.leaders
+    ):
         lines.append("(empty scaffold board: no declared content)")
         return tuple(lines)
 
@@ -109,7 +135,9 @@ def board_lines(state: WorldState) -> tuple[str, ...]:
         for leader in state.leaders:
             attributes = ""
             if leader.attributes:
-                attributes = " " + json.dumps(leader.attributes, sort_keys=True, ensure_ascii=False)
+                attributes = " " + json.dumps(
+                    _public_attributes(leader.attributes), sort_keys=True, ensure_ascii=False
+                )
             lines.append(f"  - {leader.name} [{leader.identifier}]{attributes}")
     return tuple(lines)
 
