@@ -437,6 +437,12 @@ class StrategicProject:
     resource_kind: str
     #: The stage this project's **completion** produces, and only that one.
     stage: ProjectStage
+    #: The supporting personnel (issue #506 Phase 2): character ids on the campaign's one roster,
+    #: assigned through ``operations.assign_support``. Assignment, not a bonus — no supporter moves
+    #: the check or the throughput, because a supporter who did would be an unapproved mechanic
+    #: (row D39 states the question). What support buys is legibility: the turn report can say who is
+    #: on the programme, who can still act, and who could take it over when the lead cannot.
+    support_ids: tuple[str, ...] = ()
     requires: Prerequisites = field(default_factory=Prerequisites)
     #: The capability node this project produces on completion. Empty for an operation that
     #: produces no capability (a construction, an organising task, a diplomatic campaign).
@@ -491,9 +497,17 @@ class StrategicProject:
             self.requires = Prerequisites.from_dict(self.requires)
         for name, values in (("domain_tags", self.domain_tags),
                              ("prohibited_by", self.prohibited_by),
-                             ("grants_resource_ids", self.grants_resource_ids)):
+                             ("grants_resource_ids", self.grants_resource_ids),
+                             ("support_ids", self.support_ids)):
             if len(set(values)) != len(values):
                 raise ProjectError(f"{name} repeats an entry: {sorted(values)}")
+        if any(not str(value).strip() for value in self.support_ids):
+            raise ProjectError("support_ids carries an empty character id")
+        if self.lead_id in self.support_ids:
+            raise ProjectError(
+                f"project {self.project_id!r}: {self.lead_id!r} is the lead and cannot also be its "
+                "own supporting personnel"
+            )
         if self.paused and not self.pause_reasons:
             raise ProjectError(
                 f"project {self.project_id!r} is paused; a pause states its reason, so a reader can "
@@ -518,6 +532,7 @@ class StrategicProject:
                 "title": self.title,
                 "kind": self.kind,
                 "lead_id": self.lead_id,
+                "support_ids": list(self.support_ids),
                 "lead_skill": self.lead_skill,
                 "lead_difficulty": self.lead_difficulty,
                 "clock": self.clock.to_dict(),
@@ -542,10 +557,10 @@ class StrategicProject:
         if not isinstance(data, Mapping):
             raise ProjectError(f"a project record must be a mapping, got {type(data).__name__}")
         known = {
-            "project_id", "faction_id", "title", "kind", "lead_id", "lead_skill", "lead_difficulty",
-            "clock", "resource_kind", "stage", "requires", "node_id", "required_capability",
-            "domain_tags", "prohibited_by", "grants_resource_ids", "paused", "pause_reasons",
-            "completed_on_turn", "history",
+            "project_id", "faction_id", "title", "kind", "lead_id", "support_ids", "lead_skill",
+            "lead_difficulty", "clock", "resource_kind", "stage", "requires", "node_id",
+            "required_capability", "domain_tags", "prohibited_by", "grants_resource_ids", "paused",
+            "pause_reasons", "completed_on_turn", "history",
         }
         return cls(
             project_id=str(data.get("project_id") or ""),
@@ -553,6 +568,7 @@ class StrategicProject:
             title=str(data.get("title") or ""),
             kind=str(data.get("kind") or ""),
             lead_id=str(data.get("lead_id") or ""),
+            support_ids=tuple(str(x) for x in (data.get("support_ids") or [])),
             lead_skill=str(data.get("lead_skill") or ""),
             lead_difficulty=int(data.get("lead_difficulty", 0)),
             clock=ProjectClock.from_dict(data.get("clock") or {}),
@@ -989,7 +1005,13 @@ def resume_project(campaign: Campaign, project_id: str) -> StrategicProject:
 
 
 def reassign_project(campaign: Campaign, project_id: str, lead_id: str) -> StrategicProject:
-    """Hand a project to another lead. Refuses a lead with no sheet, and keeps the clock."""
+    """Hand a project to another lead. Refuses a lead with no sheet, and keeps the clock.
+
+    A reassignment is a *membership* change on the project, so it also settles the support list: the
+    new lead cannot be its own supporting personnel (issue #506 Phase 2), so a supporter who is
+    promoted to lead leaves the support list. The clock, every completed segment and the project's
+    allocation are untouched — the work belongs to the programme, not to the person.
+    """
     project = _project(campaign, project_id)
     if lead_id not in campaign.sheets:
         raise ProjectError(
@@ -999,6 +1021,8 @@ def reassign_project(campaign: Campaign, project_id: str, lead_id: str) -> Strat
     if lead_id != project.lead_id:
         project.detail.setdefault("reassigned_from", []).append(project.lead_id)
         project.lead_id = lead_id
+        if lead_id in project.support_ids:
+            project.support_ids = tuple(x for x in project.support_ids if x != lead_id)
     return project
 
 

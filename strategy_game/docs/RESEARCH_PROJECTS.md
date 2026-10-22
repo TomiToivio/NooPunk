@@ -6,8 +6,10 @@ will use: *agent-lead skill check → faction resource throughput → multi-turn
 
 **Status of this record.** Design record and implementation notes. It approves nothing: the numbers
 it describes are marked as tuning parameters, and every open ruling is carried to
-`docs/design/AUTHOR_DECISION_QUEUE.md` (rows D27 and D28). Phases 2–3 of #506 are roadmap and stay
-unbuilt.
+`docs/design/AUTHOR_DECISION_QUEUE.md` (rows D27 and D28). **Phase 2** of #506 is now built on this
+engine and documented in the companion record
+[`STRATEGIC_OPERATIONS_PHASE2.md`](STRATEGIC_OPERATIONS_PHASE2.md) (issue #532); Phase 3, the
+branching technology DAG, stays unbuilt.
 
 ## 1. What was built
 
@@ -18,6 +20,7 @@ unbuilt.
 | `strategy_game/research_slice.py` | the **noncanonical vertical slice**: one mission-sourced artefact, one alien reverse-engineering example, one mundane technology-transfer example, one non-research task, save/load, a seeded JSON report (`python -m strategy_game.research_slice`) |
 | `strategy_game/campaign/state.py` | four new books on the one world model: `projects`, `tech_nodes`, `capabilities`, `capacities` |
 | `strategy_game/tests/test_research_projects.py` | 69 executable contracts (`python -m unittest discover -s strategy_game/tests -p "test_research_projects.py"`) |
+| `strategy_game/docs/STRATEGIC_OPERATIONS_PHASE2.md` | the **Phase 2** companion record: the organisation built *on* this engine (#532) |
 
 Research is the **first instance** of the engine, not a special case of it: a construction, an
 organising programme, a diplomatic campaign or a covert operation is the same `StrategicProject`
@@ -199,15 +202,19 @@ data does not declare.
 
 * **No technology DAG UI or data-driven branching network** (#506 Phase 3): `tech_nodes` is the seam,
   and the branch labels are descriptive data.
-* **No concurrent projects, no personnel assignment loop, no rival-faction ledgers, no facility
-  upgrades, no opposition sabotage** (#506 Phase 2). One lead advances one project per turn on one
-  ledger; a second project's commitment is a capacity decision the ledger already refuses to
-  over-promise.
+* **No rival-faction simulation, no trade and no espionage** (#506 Phase 3).
 * **No second price for failure** beyond the lead's action for the turn.
 * **No numeric bonus from a domain TAG, no enforced ideological gate.** Both are reports (row D28).
 * **No approved numbers.** Every figure is a `TUNING_` parameter, a fixture, or the author's own.
 * The **legacy RPG** (`RULEBOOK.md`, `rulebook/`) is untouched and its mechanics are still not the
   crossover's (`AGENTS.md` §0).
+
+Phase 2 of #506 — concurrent projects, personnel assignment, facility and capacity upgrades,
+bottlenecks and recruitment, opposition sabotage and the mission↔research loop — used to be listed
+here as absent. It is now built in `strategy_game/operations.py` on this engine, with its own record:
+[`STRATEGIC_OPERATIONS_PHASE2.md`](STRATEGIC_OPERATIONS_PHASE2.md). This engine was not replaced to do
+it: `advance_project` is still the only path a clock moves by, and `TurnLedger` is still the only
+record of who has acted.
 
 ## 9. How to verify
 

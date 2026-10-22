@@ -62,6 +62,7 @@ from ..rpg.roster import AGENT_SEAT_COUNT
 from ..relationships import RelationshipEdge, edge_from_dict
 
 if TYPE_CHECKING:  # no runtime cycle: the project and research records are loaded lazily below
+    from ..operations import CapacityInvestment, SabotageReport
     from ..projects import FactionCapacity, StrategicProject
     from ..research import TechNode
 
@@ -303,6 +304,15 @@ class Campaign:
     #: One resource-throughput ledger per faction id (``projects.FactionCapacity``): what each faction
     #: can do per turn, and what it has committed to which project.
     capacities: dict[str, FactionCapacity] = field(default_factory=dict)
+    #: The bounded capacity raises this campaign has applied, by investment id
+    #: (``operations.CapacityInvestment``): a lab, a workshop, a recruitment drive. A book rather than
+    #: a number on the ledger, because the *investment* is the auditable record — what was bought,
+    #: for what cost, on which turn — and the ledger only carries the sum it must defend.
+    capacity_investments: dict[str, CapacityInvestment] = field(default_factory=dict)
+    #: Every resolved opposition attempt against a project, by attempt id
+    #: (``operations.SabotageReport``). Keyed by attempt so a replayed turn cannot apply one twice,
+    #: and stored whole so the record of what was done to a programme survives a save.
+    sabotages: dict[str, SabotageReport] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         if bool(self.faction_id) != bool(self.leader_id):
@@ -353,6 +363,28 @@ class Campaign:
                 raise CampaignError(
                     f"capability {node_id!r} differs from the node tech_nodes declares; the held "
                     "stage and the declared node are one record"
+                )
+        for investment_id, investment in self.capacity_investments.items():
+            if investment.investment_id != investment_id:
+                raise CampaignError(
+                    f"investment record {investment_id!r} names itself "
+                    f"{investment.investment_id!r}; an investment is keyed by its own id"
+                )
+            if investment.faction_id not in self.factions:
+                raise CampaignError(
+                    f"investment {investment_id!r} belongs to faction "
+                    f"{investment.faction_id!r}, which is not on this campaign"
+                )
+        for attempt_id, report in self.sabotages.items():
+            if report.attempt_id != attempt_id:
+                raise CampaignError(
+                    f"sabotage record {attempt_id!r} names itself {report.attempt_id!r}; an attempt "
+                    "is keyed by its own id"
+                )
+            if report.project_id not in self.projects:
+                raise CampaignError(
+                    f"sabotage record {attempt_id!r} names project {report.project_id!r}, which is "
+                    "not on this campaign"
                 )
     # -- roster ---------------------------------------------------------------
 
@@ -454,6 +486,11 @@ class Campaign:
         for project_id, project in self.projects.items():
             if project.lead_id and project.lead_id not in self.sheets:
                 problems.append(f"project {project_id!r}: lead {project.lead_id!r} has no sheet")
+            for supporter in project.support_ids:
+                if supporter not in self.sheets:
+                    problems.append(
+                        f"project {project_id!r}: supporting person {supporter!r} has no sheet"
+                    )
             ledger = self.capacities.get(project.faction_id)
             if ledger is None:
                 problems.append(
@@ -478,6 +515,13 @@ class Campaign:
                     problems.append(
                         f"tech node {node_id!r} requires node {required!r}, which is not declared"
                     )
+        for investment_id, investment in self.capacity_investments.items():
+            ledger = self.capacities.get(investment.faction_id)
+            if ledger is None:
+                problems.append(
+                    f"investment {investment_id!r}: faction {investment.faction_id!r} has no capacity "
+                    "ledger to raise"
+                )
         return tuple(problems)
 
     def to_dict(self) -> dict[str, Any]:
@@ -500,6 +544,10 @@ class Campaign:
             "tech_nodes": {nid: n.to_dict() for nid, n in sorted(self.tech_nodes.items())},
             "capabilities": {nid: n.to_dict() for nid, n in sorted(self.capabilities.items())},
             "capacities": {fid: c.to_dict() for fid, c in sorted(self.capacities.items())},
+            "capacity_investments": {
+                iid: item.to_dict() for iid, item in sorted(self.capacity_investments.items())
+            },
+            "sabotages": {aid: item.to_dict() for aid, item in sorted(self.sabotages.items())},
         }
 
     def to_json(self) -> str:
@@ -520,6 +568,7 @@ def campaign_from_dict(report: Mapping[str, Any]) -> Campaign:
             f"unsupported campaign save schema_version {report.get('schema_version')!r}; "
             f"expected {SCHEMA_VERSION!r}"
         )
+    from ..operations import capacity_investment_from_dict, sabotage_from_dict
     from ..projects import capacity_from_dict, project_from_dict
     from ..research import capability_from_dict
     from .case import case_from_dict  # local to keep .state importable without .case
@@ -560,6 +609,14 @@ def campaign_from_dict(report: Mapping[str, Any]) -> Campaign:
         capacities={
             fid: capacity_from_dict(payload)
             for fid, payload in dict(report.get("capacities") or {}).items()
+        },
+        capacity_investments={
+            iid: capacity_investment_from_dict(payload)
+            for iid, payload in dict(report.get("capacity_investments") or {}).items()
+        },
+        sabotages={
+            aid: sabotage_from_dict(payload)
+            for aid, payload in dict(report.get("sabotages") or {}).items()
         },
     )
 
