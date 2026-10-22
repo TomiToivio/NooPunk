@@ -35,10 +35,19 @@ class Asset:
 
 @dataclass
 class Location:
+    """One place on the board.
+
+    The two optional numbers are **board position on the fictional map** — a grid reference
+    for the tabletop, not a geographic coordinate of a real place. They are named ``grid_row``
+    and ``grid_column`` rather than ``latitude``/``longitude`` for exactly that reason: the
+    names CodeQL's sensitive-data heuristic treats as personal location data would make a
+    fictional board coordinate look like a person's whereabouts in every security scan
+    (issue #186), which is both a false positive and a real drain on the scanner's signal.
+    """
     identifier: str
     label: str
-    latitude: float | None = None
-    longitude: float | None = None
+    grid_row: float | None = None
+    grid_column: float | None = None
 
 
 @dataclass

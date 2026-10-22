@@ -104,10 +104,10 @@ def board_lines(state: WorldState) -> tuple[str, ...]:
         lines.append("")
         lines.append("locations:")
         for loc in view["locations"]:
-            coords = ""
-            if loc["latitude"] is not None and loc["longitude"] is not None:
-                coords = f" ({loc['latitude']}, {loc['longitude']})"
-            lines.append(f"  - {loc['label']} [{loc['id']}]{coords}")
+            position = ""
+            if loc["grid_row"] is not None and loc["grid_column"] is not None:
+                position = f" ({loc['grid_row']}, {loc['grid_column']})"
+            lines.append(f"  - {loc['label']} [{loc['id']}]{position}")
     if view["network_nodes"]:
         lines.append("")
         lines.append("nodes:")
