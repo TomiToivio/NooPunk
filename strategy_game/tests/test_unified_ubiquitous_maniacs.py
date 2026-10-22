@@ -12,7 +12,7 @@ class UnifiedUbiquitousManiacsTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             save = Path(folder) / "campaign.json"
             cmd = [sys.executable, "-m", "strategy_game.rpg", "--scenario",
-                   "ubiquitous-maniacs", "--save", str(save)]
+                   "ubiquitous-maniacs-legacy", "--save", str(save)]
             run = subprocess.run(cmd, input="check romppainen SAV 1 42\nread_form\nenter_chamber\nretain_record\ncontinue\nfollow_clue\n",
                                  text=True, capture_output=True, timeout=30)
             self.assertEqual(run.returncode, 0, run.stderr)
@@ -28,7 +28,7 @@ class UnifiedUbiquitousManiacsTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             save = Path(folder) / "campaign.json"
             run = subprocess.run(
-                [sys.executable, "-m", "strategy_game.rpg", "--scenario", "ubiquitous-maniacs",
+                [sys.executable, "-m", "strategy_game.rpg", "--scenario", "ubiquitous-maniacs-legacy",
                  "--save", str(save)],
                 input="invalid\nquit\n", text=True, capture_output=True, timeout=30)
             self.assertEqual(run.returncode, 0, run.stderr)
