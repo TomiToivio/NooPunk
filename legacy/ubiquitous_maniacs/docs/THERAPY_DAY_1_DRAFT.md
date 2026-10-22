@@ -15,8 +15,8 @@ session:
 ## Tyylisuunta
 
 Maniacin ja Rigetin surrealismi. PKD:n todellisuuden hajoaminen.
-Altered Carbonin kyberneettinen kylmyys. Ingrid on Annie Landsberg (Emma Stone):
-mikroilmeet, joiden kesto on Planckin aikaa. Romppainen on nuori Jack Nicholson:
+Altered Carbonin kyberneettinen kylmyys. Ingrid on sähköinen ja älykäs:
+mikroilmeet, joiden kesto on Planckin aikaa. Romppainen on luoteettava ja lämminhenkinen:
 leveä hymy, silmät jotka eivät kaihda mitään, mutta joiden takana pyörii
 narkkarilogiikkaa joka ei tiedä olevansa naamiota.
 
@@ -463,7 +463,7 @@ terapiasession, jossa on 2 skill checkiä ja 2 valintaa ilman checkiä.
 
 ## Ingridin mikroilmeet
 
-Ingridin esikuva on Annie Landsberg / Emma Stone. Hänen ilmaisunsa
+Ingridin ilmaisu on tiheä ja laskettu. Hänen ilmaisunsa
 perustuu mikroilmeisiin jotka kestävät lyhyemmän ajan kuin ihmisen
 näköjärjestelmän pitäisi pystyä havaitseman. Tämä on Noösfäärin
 sivuvaikutus: Ingridin tietoisuus vuotaa hänen kasvoihinsa nopeammin
@@ -487,7 +487,7 @@ Käsikirjoituksessa Ingridin mikroilmeet toimivat seuraavasti:
 
 ## Romppaisen narkkaripersoona
 
-Romppaisen esikuva on Tomi Toivio / nuori Jack Nicholson. Leveä hymy,
+Romppainen on luoteettava, lämminhenkinen ja romanttinen. Leveä hymy,
 silmät jotka eivät kaihda mitään, mutta joiden takana pyörii narkkarilogiikkaa
 joka ei tiedä olevansa naamiota.
 

@@ -39,7 +39,7 @@ Tehdään aluksi aivan minimaalinen pelimalli.
 Tee ehdotus terapiasession sisällöksi.
 Muista että tyyli on Maniac + Riget + PKD + Altered Carbon.
 Päähahmot ovat Ingrid Falk ja Tohtori Romppainen, heillä on hellyyttävä, tuskallinen, hihityttävä ja romanttinen suhde.
-Muista että Ingrid Falkin esikuva on Annie Landsberg jota esittää Emma Stone. Kuvaile siis hänen mikroilmeensä Planckin ajan tarkkuudella. Tohtori Romppaisen esikuva on Tomi Toivio jota esittää nuori Jack Nicholson.
+Muista että Ingrid Falk on sähköinen, älykäs, hiljainen nainen, joka istuu välillä hiljaisuudessa ja joskus puhuu yhdellä lauseella, joka muuttaa huoneen. Kuvaile siis hänen mikroilmeensä hänen oma luonteensa tarkkuudella, ei kenenkään tunnetun näyttelijän kautta. Tohtori Romppainen on luoteettava, lämminhenkinen, romanttinen mies, jonka väsymys on koko kohtauksen läpi tunnistettavissa.
 Toimita terapiasessio formaatissa joka toimii kun suunnittelemme kaikki 7 päivää terapiasessioita ja muuta sisältöä.
 Tässä versiossa siis valintatilanteet, sosiaalinen vuorovaikutus, taitojen ratkaisu nopalla.
 Lisätään muut mekaniikat myöhemmin. Näytä nyt minulle käytännössä miten tämän pelin kohtaukset käsikirjoitetaan.
