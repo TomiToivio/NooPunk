@@ -194,6 +194,27 @@ LOCALLY_CLEANED: list[dict[str, str]] = [
         "nature": "asserted the show's intake question",
         "detail": "The assertion follows the rewritten line.",
     },
+    {
+        "path": "TERAPIASESSIO.md",
+        "work": "the performers of the source works (as real people, not as a work)",
+        "nature": "directed the author to write two characters as named real performers",
+        "detail": "The two character blueprints now describe the characters themselves - "
+                  "Ingrid's electrical, guarded warmth and Romppainen's weary, generous "
+                  "charm - instead of naming real performers for the author to imitate.",
+    },
+    {
+        "path": "docs/THERAPY_DAY_1_DRAFT.md",
+        "work": "the performers of the source works (as real people, not as a work)",
+        "nature": "named real performers as the models for two characters",
+        "detail": "The character descriptions stay; the performers' names are gone.",
+    },
+    {
+        "path": "docs/THERAPY_SESSION_DAY_1_PROPOSAL.md",
+        "work": "the performers of the source works (as real people, not as a work)",
+        "nature": "named real performers in the acting direction for two characters",
+        "detail": "The acting direction now describes the quality to play - electrical "
+                  "vulnerability, crooked charisma - without naming a performer.",
+    },
 ]
 
 # Third-party material that IS imported, because it is summary/analysis rather than

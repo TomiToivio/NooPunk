@@ -33,10 +33,9 @@ painajainen, horjuva todellisuus sekä ruumiin ja identiteetin transhumanistinen
 noir. Huumori ei mitätöi kipua, eikä romanssi paranna hahmoja yhdessä
 kohtauksessa.
 
-Ingridin näyttelijäohjeessa on Annie Landsbergin kaltainen sähköinen
+Ingridin näyttelijäohjeessa on sähköinen
 haavoittuvuus: tunne ehtii kasvoille, yrittää naamioitua vitsiksi ja vuotaa
-sitten takaisin näkyviin. Romppaisen näyttelijäohjeessa on nuoren Jack
-Nicholsonin kaltainen vino karisma: hymy näyttää tietävän enemmän kuin mies,
+sitten takaisin näkyviin. Romppaisen näyttelijäohjeessa on vino karisma: hymy näyttää tietävän enemmän kuin mies,
 jonka kasvoilla se on.
 
 "Planckin ajan tarkkuus" toteutetaan käsikirjoituksen runollisena

@@ -165,7 +165,8 @@
       "importable": "not-importable-as-expression",
       "importable_reason": "The work is third-party and no grant travels with an analysis of it. The corpus's own documents describing HOW the show builds a scene are the author's own work and are retained; the show's dialogue, script and catchphrases are not, and were removed on 2026-10-22. What remains names the show and describes its devices without reproducing its words.",
       "license_checked": "2026-10-22",
-      "notes": "TWO PASSES. First, the transcript directory was excluded from the import: the fan transcript of the show's dialogue, an episode guide and a style analysis that quoted the script extensively. Second, on 2026-10-22, the same pass found third-party expression inside the corpus's OWN files — the show's dialogue, a recurring refrain, an advertising line, a catchphrase, a prologue, a translated chorus and quoted reviews — and removed it, keeping the analysis. The twelve affected files, the work involved and what replaced each quote are listed in legacy/ubiquitous_maniacs/MANIFEST.md under 'Third-party expression removed from the corpus's own files', and in manifest.json under 'locally_cleaned'. The playable scenario strategy_game/scenarios/ubiquitous_maniacs.py was checked against the same list and contains no third-party quotes. A closed-caption transcript signature (a run of twelve or more consecutive dialogue lines) was the test used for the first pass; a quoted-span and block-quote scan was the test used for the second."    },
+      "notes": "TWO PASSES. First, the transcript directory was excluded from the import: the fan transcript of the show's dialogue, an episode guide and a style analysis that quoted the script extensively. Second, on 2026-10-22, the same pass found third-party expression inside the corpus's OWN files — the show's dialogue, a recurring refrain, an advertising line, a catchphrase, a prologue, a translated chorus and quoted reviews — and removed it, keeping the analysis. The twelve affected files, the work involved and what replaced each quote are listed in legacy/ubiquitous_maniacs/MANIFEST.md under 'Third-party expression removed from the corpus's own files', and in manifest.json under 'locally_cleaned'. The playable scenario strategy_game/scenarios/ubiquitous_maniacs.py was checked against the same list and contains no third-party quotes. A closed-caption transcript signature (a run of twelve or more consecutive dialogue lines) was the test used for the first pass; a quoted-span and block-quote scan was the test used for the second."
+    },
     {
       "id": "riget-1994-style-influence",
       "source": "Riget / The Kingdom (1994) — named as a stylistic influence in the Ubiquitous Maniacs corpus",
@@ -179,7 +180,23 @@
       "importable": "not-importable-as-expression",
       "importable_reason": "The series is third-party with no established grant, and no grant travels with an analysis of it. The episode-guide file that was formerly imported was a quotation of English Wikipedia text; it was removed with the transcript directory. The corpus's own documents describing the show's devices are retained as the author's own analysis, and the show's dialogue, catchphrase and prologue were removed from them on 2026-10-22.",
       "license_checked": "2026-10-22",
-      "notes": "The Wikipedia episode summaries were CC BY-SA 4.0 and quotable with attribution, but they were removed anyway, because the import's rule is the stricter one: third-party EXPRESSION is not imported, and a summary of a third-party work does not become the author's merely by being rewritten. The device analysis stays; the words do not. See the sibling entry for Maniac, and legacy/ubiquitous_maniacs/MANIFEST.md for the file-level record."    }
+      "notes": "The Wikipedia episode summaries were CC BY-SA 4.0 and quotable with attribution, but they were removed anyway, because the import's rule is the stricter one: third-party EXPRESSION is not imported, and a summary of a third-party work does not become the author's merely by being rewritten. The device analysis stays; the words do not. See the sibling entry for Maniac, and legacy/ubiquitous_maniacs/MANIFEST.md for the file-level record."
+    },
+    {
+      "id": "transhumanitys-fate-skill-list",
+      "source": "Transhumanity's Fate — the skill list the imported corpus's own engine resolved against",
+      "url": "https://www.posthumanstudios.com/",
+      "repository": "legacy/ubiquitous_maniacs/src/rpg/",
+      "kind": "rules-reference",
+      "edition": "Transhumanity's Fate, as embedded in the corpus's engine",
+      "license": "CC BY-NC-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
+      "attribution": "Transhumanity's Fate (c) Transhumanity Federation / Evil Hat Productions, CC BY-NC-SA 3.0 - https://www.posthumanstudios.com",
+      "importable": "partial-names-only",
+      "importable_reason": "The corpus's engine embeds the skill list as its operative skill system, and that list is NC-SA text from a third-party work. The live tree therefore does NOT carry it. This repository's rulebook (strategy_game/rpg/RULEBOOK.md 8) records the work as comparative design guidance whose prose and content are not included, and strategy_game/docs/SKILL_LAYERS_AND_DECISIONS.md 4 records its skill list as names only, for cross-reference, not as an imported ruleset. The three corpus modules worth keeping were ported onto the live engine WITHOUT it, resolving against this repository's own six individual skills; the corpus's seven-attribute system and its named skills were not ported at all. The legacy tree keeps the original list because the legacy tree is a quarantined research archive and not a release asset.",
+      "license_checked": "2026-10-23",
+      "notes": "The port is strategy_game/rpg/psi.py, alongside projection.py and psychosurgery.py, bound to the canonical case by strategy_game/casework/ward_mechanics.py. The mapping from the corpus's seven attributes to the engine's six skills is recorded in the port's docstring and pinned by strategy_game/tests/test_rpg_corpus_ports.py, which asserts that every PSI mode resolves against one of the engine's six skills and that the engine's capability gate refuses a gated action before any dice. The legacy tree is excluded from release bundles by data/licenses/release_packaging_policy.json, so the NC-SA list is not distributed by a release of this repository."
+    }
   ],
   "current_imports": {
     "summary": "None. No external code, data or text from any source above has been imported into NooPunk.",

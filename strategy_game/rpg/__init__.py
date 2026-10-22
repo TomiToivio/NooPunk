@@ -15,6 +15,9 @@ does not change the key set of ``python -m strategy_game``; both are frozen by
     python -m strategy_game.rpg --text    # the same report as reading text
 """
 from . import ports
+from . import projection as projection
+from . import psi as psi
+from . import psychosurgery as psychosurgery
 from . import roster as roster
 from . import skills as skills
 from .fate import (
@@ -38,14 +41,6 @@ from .roster import (
     TurnLedger,
     default_seats,
 )
-from .skills import (
-    INDIVIDUAL_SKILLS,
-    ActionContext,
-    SkillLayerError,
-    capabilities_of,
-    check,
-    require_capability,
-)
 from .run import (
     DEFAULT_SEED,
     ENGINE_DOES_NOT_DECIDE,
@@ -53,6 +48,14 @@ from .run import (
     SCENE_REPORT_VERSION,
     render_report,
     scene_report,
+)
+from .skills import (
+    INDIVIDUAL_SKILLS,
+    ActionContext,
+    SkillLayerError,
+    capabilities_of,
+    check,
+    require_capability,
 )
 
 __all__ = [
@@ -96,4 +99,8 @@ __all__ = [
     "scene_report",
     # the reserved adapter seam to the unapproved strategy and political layers
     "ports",
+    # the corpus-derived scene models, ported onto this engine
+    "projection",
+    "psi",
+    "psychosurgery",
 ]
