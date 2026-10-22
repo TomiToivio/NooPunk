@@ -131,7 +131,7 @@ def play(
     # A failure withholds the fragment, so the demo does what a table does: takes the *other* route
     # to the same fact while a seat is still free. Both routes failing is the partial chain.
     if "stack-manifest" not in session.clues:
-        log.append(_action(session.act("laura_univaara", "ask_the_clinic")))
+        log.append(_action(session.act("pc_leader", "ask_the_clinic")))
     session.save(target)
     before = (session.scene_spec.id, len(session.clues), session.turn)
     session = load_session(target, kallio.CASE)

@@ -1090,6 +1090,7 @@ class CaseSession:
                 "degraded": degraded,
                 "wounds": list(wounds),
                 "invoked": named,
+                "invoked_free": free_invoke is not None,
                 "chain_gaps": list(gaps),
             }
         )
