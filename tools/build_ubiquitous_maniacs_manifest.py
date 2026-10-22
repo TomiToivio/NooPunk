@@ -173,6 +173,20 @@ LOCALLY_ANNOTATED: list[dict[str, str]] = [
                   "this manifest is the original file's, so the difference between it and "
                   "the local sha256 is exactly this banner.",
     },
+    {
+        "path": "docs/STYLISTIC_INFLUENCES_MANIAC_RIGET.md",
+        "reason": "it quoted third-party dialogue verbatim",
+        "detail": "The upstream file carried twenty-one verbatim quotations from the Netflix "
+                  "miniseries *Maniac* (2018) and from *Riget / The Kingdom* (1994), "
+                  "including the corpus's own Finnish realisation of the same lines. Those "
+                  "quotations were removed on 2026-10-22: the analysis of which stylistic "
+                  "devices were borrowed, and how they were realised, is kept, and each "
+                  "section now says what was removed and why. The upstream blob sha in "
+                  "this manifest is the original file's, so the difference between it and "
+                  "the local sha256 is exactly the removed quotations. A guard, "
+                  "tests/test_third_party_expression_absent.py, fails if the quotations "
+                  "reappear in the working tree or in a commit.",
+    },
 ]
 
 # The upstream directory that the corpus's own README documents but which was never
@@ -486,14 +500,13 @@ def build_md(entries: list[Entry]) -> str:
     for item in EXCLUDED:
         lines.append(f"| `{item['path']}` | {item['reason']} | {item['detail']} |")
     lines.append("")
-    lines.append("## Files imported with a local banner")
+    lines.append("## Files changed after import")
     lines.append("")
     lines.append(
-        "One file was given a banner after import, because a verbatim copy of it would "
-        "otherwise read as **active instruction** rather than as archived material. The "
-        "upstream blob sha in the inventory above is the *original* file's, so the "
-        "difference between it and the local sha256 is exactly the banner — the original "
-        "is still provable."
+        "Two files differ from their upstream copies, for different reasons. The upstream "
+        "blob sha in the inventory above is the *original* file's in both cases, so the "
+        "difference between it and the local sha256 is exactly the local change — the "
+        "original is still provable."
     )
     lines.append("")
     lines.append("| path | reason | detail |")

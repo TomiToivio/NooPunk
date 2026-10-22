@@ -135,6 +135,7 @@ class ThirdPartyExpressionTests(unittest.TestCase):
             blob = subprocess.run(
                 ["git", "-C", str(ROOT), "show", f"HEAD:{rel}"],
                 capture_output=True,
+                check=False,
             ).stdout
             if not blob:
                 continue
