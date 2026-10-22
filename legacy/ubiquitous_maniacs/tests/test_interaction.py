@@ -121,7 +121,7 @@ def test_full_canonical_playthrough_stops_before_pod() -> None:
 
     node = get_node("green_light")
     assert node is not None
-    assert node.npc_text == "Onneksi olkoon. Teidät on valittu kokeeseen."
+    assert node.npc_text == "Tervetuloa. Tämä on koe, ja teidät on valittu siihen."
     apply_choice(game, node.choices[0])
 
     node = get_node("forms")

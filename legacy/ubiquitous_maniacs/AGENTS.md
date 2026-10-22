@@ -1,3 +1,17 @@
+> **ARCHIVED MATERIAL — NOT ACTIVE INSTRUCTIONS.**
+>
+> This file was the *Ubiquitous Maniacs* corpus's own agent context. It is preserved here as
+> prior art, verbatim, and it is **not** in force. The instructions below were written for
+> the corpus's own repository and describe a setting and a rules system that this repository's
+> canon has since moved past — a post-Fall world, seven attributes, the UFAB complex, and a
+> 4dF chassis that the current edition deliberately does not adopt.
+>
+> The authority for work in this repository is the **repository-root `AGENTS.md`**, and the
+> conflicts between the two are listed in [`MIGRATION_MAP.md`](MIGRATION_MAP.md) §4. Where the
+> two disagree, the root `AGENTS.md` and the current canon win.
+>
+> The original file follows, unchanged.
+
 # Noöpunk: Ubiquitous Maniacs — agent context
 
 Apply these instructions to all work in this project directory, together with the repository-root `AGENTS.md`.

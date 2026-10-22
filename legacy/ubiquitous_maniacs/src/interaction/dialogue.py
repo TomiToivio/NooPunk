@@ -63,7 +63,7 @@ _node(DialogueNode(
     choices=[
         Choice(
             id="android_or_homosexual",
-            text="'Tutkitteko, olenko androidi tai homoseksuaali?'",
+            text="'Tutkitteko, olenko kone?'",
             next_node="second_silence",
             on_success_trust=1,
             success_text="Dahl tuijottaa intensiivisesti. Ei hymähdystä. Ei kulmakarvan liikettä.",
@@ -110,7 +110,7 @@ _node(DialogueNode(
     choices=[
         Choice(
             id="virus_carrier",
-            text="'Epäilettekö minua viruksen kantajaksi?'",
+            text="'Epäilettekö minua tartuttajana?'",
             next_node="green_light",
             on_failure_suspicion=1,
             success_text="Dahl ei vastaa. Katse ei irtoa sinusta.",
@@ -155,7 +155,7 @@ _node(DialogueNode(
         "tulostaa pitkän paperiliuskan. Dahl ei katso paperia. Hän katsoo sinua. "
         "Kun printteri vaikenee, hän vilkaisee tulosta kerran ja laskee sen pöydälle."
     ),
-    npc_text="Onneksi olkoon. Teidät on valittu kokeeseen.",
+    npc_text="Tervetuloa. Tämä on koe, ja teidät on valittu siihen.",
     choices=[
         Choice(id="accept_plainly", text="Nyökkää ja odota jatko-ohjeita.", next_node="forms", on_success_trust=1),
         Choice(

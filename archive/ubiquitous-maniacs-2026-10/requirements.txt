@@ -1,4 +1,0 @@
-networkx>=3.2
-pandas>=2.1
-streamlit>=1.36
-pytest>=8.2

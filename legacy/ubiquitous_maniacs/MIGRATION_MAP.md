@@ -62,13 +62,13 @@ import, and this map governs the corpus's import *into this repository*.
 
 | imported unit | count | lands in | note |
 | --- | --- | --- | --- |
-| `docs/` (design and research notes) | 129 | `archive/ubiquitous-maniacs-2026-10/docs/` | **lore/reference.** The research notes on Goertzel, CAN, Hoffman/Faggin, Wendt, Vallée, PKD, Paprika, *Maniac*/*Riget* and the 1974 author frame are the corpus's *working papers*. They are prior art, not canon. |
-| `src/` | 64 | `archive/ubiquitous-maniacs-2026-10/src/` | **reference implementation.** A working social graph, layered hacking simulation and RPG module. Superseded in design by this repository's `strategy_game/`, which has its own `campaign/`, `rpg/`, `characters.py`, `codex/` and `casework/`. |
-| `tests/` | 41 | `archive/ubiquitous-maniacs-2026-10/tests/` | **reference tests.** They exercise the imported `src/`, not this repository's code, so they are **not** part of this repository's test run. The imported `tests/` must not be collected by `pytest` at the repository root — see §6. |
-| corpus-root documents (Finnish) | 30 | `archive/ubiquitous-maniacs-2026-10/` | **lore/reference**, mostly superseded. `PÄIVÄ_1.md`, `PÄIVÄ_2_HISTORIA.md`, `KIRJA.md`, `KIRJA_KONE.md`, `KYBER.md`, `NHI.md`, `HAHMOT.md`, `ROMPPAINEN.md`, `GLOCAL.md`, `SISÄAVARUUS.md` and the rest. |
-| entry-point scripts | 4 | `archive/ubiquitous-maniacs-2026-10/` | `play.py`, `app.py`, `hacking_demo.py`, `social_demo.py`. **Not runnable as shipped** — see §5. |
-| `docs/reference/laclaugpt/` | 11 | `archive/ubiquitous-maniacs-2026-10/docs/reference/laclaugpt/` | The corpus's own LaclauGPT import, with its conflict ledger. **Superseded** by this repository's `docs/research/` and `data/sources/`. |
-| third-party reference material | 8 | `archive/ubiquitous-maniacs-2026-10/references/maniac_transcripts/` | **summary material only.** See §7. |
+| `docs/` (design and research notes) | 129 | `legacy/ubiquitous_maniacs/docs/` | **lore/reference.** The research notes on Goertzel, CAN, Hoffman/Faggin, Wendt, Vallée, PKD, Paprika, *Maniac*/*Riget* and the 1974 author frame are the corpus's *working papers*. They are prior art, not canon. |
+| `src/` | 64 | `legacy/ubiquitous_maniacs/src/` | **reference implementation.** A working social graph, layered hacking simulation and RPG module. Superseded in design by this repository's `strategy_game/`, which has its own `campaign/`, `rpg/`, `characters.py`, `codex/` and `casework/`. |
+| `tests/` | 41 | `legacy/ubiquitous_maniacs/tests/` | **reference tests.** They exercise the imported `src/`, not this repository's code, so they are **not** part of this repository's test run. The imported `tests/` must not be collected by `pytest` at the repository root — see §6. |
+| corpus-root documents (Finnish) | 30 | `legacy/ubiquitous_maniacs/` | **lore/reference**, mostly superseded. `PÄIVÄ_1.md`, `PÄIVÄ_2_HISTORIA.md`, `KIRJA.md`, `KIRJA_KONE.md`, `KYBER.md`, `NHI.md`, `HAHMOT.md`, `ROMPPAINEN.md`, `GLOCAL.md`, `SISÄAVARUUS.md` and the rest. |
+| entry-point scripts | 4 | `legacy/ubiquitous_maniacs/` | `play.py`, `app.py`, `hacking_demo.py`, `social_demo.py`. **Not runnable as shipped** — see §5. |
+| `docs/reference/laclaugpt/` | 11 | `legacy/ubiquitous_maniacs/docs/reference/laclaugpt/` | The corpus's own LaclauGPT import, with its conflict ledger. **Superseded** by this repository's `docs/research/` and `data/sources/`. |
+| third-party reference material | 8 | `legacy/ubiquitous_maniacs/references/maniac_transcripts/` | **summary material only.** See §7. |
 | `MANIFEST.md`, `manifest.json`, `MIGRATION_MAP.md`, `README.md` | 4 | this directory | the import's own records |
 
 ### 3.1 The mechanical engine — a real asset, kept as reference

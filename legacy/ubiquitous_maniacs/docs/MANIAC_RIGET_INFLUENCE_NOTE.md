@@ -4,14 +4,20 @@
 
 Tämä on agentin laatima vaikutemuistio, ei kaanon eikä kehotus jäljitellä Patrick Somervillen, Cary Joji Fukunagan, Lars von Trierin tai Niels Vørselin yksilöllistä tyyliä. Tavoite on tunnistaa siirrettäviä rakenteellisia keinoja ja käyttää niitä Noöpunkin omalla äänellä.
 
-Verkosta löytyi *Maniac*in kaikkien kymmenen jakson epäviralliset dialogitranskriptit sekä pilotin varhaisen käsikirjoituksen hakemistomerkintä. *Riget*in varsinainen käsikirjoitus on julkaistu tanskankielisenä kirjana (Aschehoug, 1995), mutta vapaasti luettavaa luotettavaa kokotekstiä ei löytynyt. Analyysi käyttää siksi englanninkielisiä tekstitystranskriptioita ja Tanskan elokuvainstituutin teostietoja. Transkripti ei sisällä kaikkea käsikirjoituksen toiminta- ja kuvakieltä, joten havainnot ovat painottuneesti dialogia, kohtausten järjestystä ja rekisterinvaihdoksia koskevia.
+Analyysi tehtiin katsomalla sarjat. *Maniac* on katsottavissa Netflixissä ja *Riget*
+tanskalaisena tv-sarjana; *Riget*in kirjasuomennos on ollut saatavilla (Aschehoug, 1995).
 
-Keskeiset verkkolähteet:
+**Siteistämiskäytäntö.** Tämä on vaikutusmuistio: se kuvaa *laitteita* ja ottaa ne
+Noöpunkin omaan ääneen. Kolmannen osan dialogia, replikkiejä tai
+transkriptiosastoja ei siteistetä, eikä tämä dokumentti viittaa niihin — ne ovat
+kolmannen osan omaisuutta, ja laitteen kuvaus ei tarvitse niitä. Alkuperäiset
+teokset mainitaan nimeltä, ja sen voi katsoa itse.
 
-- [*Maniac* (2018), jaksojen transkriptihakemisto](https://www.springfieldspringfield.co.uk/episode_scripts.php?tv-show=maniac-2018)
-- [*Riget* S01E01, englanninkielinen tekstitystranskriptio](https://www.subtitlecat.com/subs/1299/Riget%20S01E01.html)
-- [*The Kingdom / Riget*, Danish Film Institute](https://www.dfi.dk/en/viden-om-film/filmdatabasen/film/riget)
-- von Trier, Lars & Vørsel, Niels (1995), *Riget*, Aschehoug, ISBN 87-11-11105-4.
+Keskeiset teokset:
+
+- *Maniac* (2018), Netflix, ohjaus Cary Joji Fukunaga, käsikirjoitus Patrick Somerville
+- *Riget / The Kingdom* (1994), DR, ohjaus Lars von Trier ja Niels Vørsel
+- von Trier, Lars & Vørsel, Niels (1995), *Riget*, Aschehoug, ISBN 87-11-11105-4
 
 ## Mitä *Maniacista* kannattaa ottaa
 

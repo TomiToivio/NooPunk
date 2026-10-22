@@ -299,7 +299,7 @@ def test_relationship_choice_becomes_npc_memory_and_survives_save_round_trip():
     memories = state.social.memories("elin_dahl")
     assert len(memories) == 1
     assert memories[0]["interaction"] == "ask_android"
-    assert memories[0]["summary"] == "'Tutkitteko, olenko androidi tai homoseksuaali?'"
+    assert memories[0]["summary"] == "'Tutkitteko, olenko kone?'"
     assert memories[0]["valence"] == 1
     assert "player_choice" in memories[0]["tags"]
 

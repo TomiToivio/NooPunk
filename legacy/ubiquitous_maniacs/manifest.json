@@ -53,6 +53,80 @@
       "detail": "The upstream file carried twenty-one verbatim quotations from the Netflix miniseries *Maniac* (2018) and from *Riget / The Kingdom* (1994), including the corpus's own Finnish realisation of the same lines. Those quotations were removed on 2026-10-22: the analysis of which stylistic devices were borrowed, and how they were realised, is kept, and each section now says what was removed and why. The upstream blob sha in this manifest is the original file's, so the difference between it and the local sha256 is exactly the removed quotations. A guard, tests/test_third_party_expression_absent.py, fails if the quotations reappear in the working tree or in a commit."
     }
   ],
+  "locally_cleaned": [
+    {
+      "path": "docs/STYLISTIC_INFLUENCES_MANIAC_RIGET.md",
+      "work": "*Maniac* (Netflix, 2018); *Riget / The Kingdom* (DR, 1994)",
+      "nature": "quoted the shows' dialogue and the *Riget* prologue verbatim",
+      "detail": "The device descriptions stay; the quoted dialogue, the translated chorus and the prologue's closing sentence are gone. The analysis now describes the devices without reproducing the words."
+    },
+    {
+      "path": "docs/MANIAC_RIGET_STYLE_ANALYSIS.md",
+      "work": "*Maniac* (Netflix, 2018); *Riget / The Kingdom* (DR, 1994)",
+      "nature": "quoted advertising lines, a catchphrase and two dialogue lines verbatim",
+      "detail": "Replaced with descriptions of the same devices in the author's own words."
+    },
+    {
+      "path": "docs/MANIAC_RIGET_INFLUENCE_NOTE.md",
+      "work": "*Maniac* (Netflix, 2018); *Riget / The Kingdom* (DR, 1994)",
+      "nature": "cited the transcript sites it had read",
+      "detail": "The citation list now names the works themselves instead of the transcript archives; the analysis is unchanged."
+    },
+    {
+      "path": "docs/PAPRIKA_VAIKUTTEET.md",
+      "work": "*Paprika* (Atsuko Chiba, 2006)",
+      "nature": "quoted four lines of the film's dialogue and its tagline verbatim",
+      "detail": "Each is replaced by a description of what the line did in the scene."
+    },
+    {
+      "path": "docs/SIMULATION_PLATFORM_EVALUATION.md",
+      "work": "third-party simulation platforms",
+      "nature": "quoted product marketing strings verbatim",
+      "detail": "Replaced with paraphrases of the same claims."
+    },
+    {
+      "path": "docs/PHILOSOPHICAL_ZOMBIES.md",
+      "work": "*Maniac* (Netflix, 2018)",
+      "nature": "carried a near-translation of the show's intake dialogue",
+      "detail": "The intake lines are rewritten in the corpus's own Finnish."
+    },
+    {
+      "path": "PÄIVÄ_1.md",
+      "work": "*Maniac* (Netflix, 2018)",
+      "nature": "carried the same near-translation of the show's intake dialogue",
+      "detail": "The intake lines are rewritten in the corpus's own Finnish."
+    },
+    {
+      "path": "src/interaction/dialogue.py",
+      "work": "*Maniac* (Netflix, 2018)",
+      "nature": "the playable intake dialogue reproduced the show's lines",
+      "detail": "The three lines are rewritten; the scene's structure and mechanics are unchanged."
+    },
+    {
+      "path": "src/interaction/cli.py",
+      "work": "*Maniac* (Netflix, 2018)",
+      "nature": "the console printed the show's acceptance line",
+      "detail": "Rewritten in the corpus's own words."
+    },
+    {
+      "path": "app.py",
+      "work": "*Maniac* (Netflix, 2018)",
+      "nature": "the Streamlit view printed the show's acceptance line",
+      "detail": "Rewritten in the corpus's own words."
+    },
+    {
+      "path": "tests/test_interaction.py",
+      "work": "*Maniac* (Netflix, 2018)",
+      "nature": "asserted the show's acceptance line",
+      "detail": "The assertion follows the rewritten line."
+    },
+    {
+      "path": "tests/test_game_integration.py",
+      "work": "*Maniac* (Netflix, 2018)",
+      "nature": "asserted the show's intake question",
+      "detail": "The assertion follows the rewritten line."
+    }
+  ],
   "missing_upstream": [
     {
       "path": "data/",
@@ -62,7 +136,7 @@
   ],
   "third_party_retained": [],
   "counts": {
-    "files_imported": 278,
+    "files_imported": 279,
     "files_excluded": 5,
     "by_class": {
       "corpus root document": 30,
@@ -70,7 +144,8 @@
       "entry-point script": 4,
       "reference (LaclauGPT import)": 11,
       "source": 64,
-      "tests": 41
+      "tests": 41,
+      "third-party reference material": 1
     }
   },
   "files": [
@@ -247,8 +322,8 @@
     },
     {
       "path": "PÄIVÄ_1.md",
-      "bytes": 23664,
-      "sha256": "6e6c90e97f5f334848cf01d2b4d14deba25f7801211c0769d7bd88f13c47754f",
+      "bytes": 23646,
+      "sha256": "903eee052a8607717e73790f32ea32d0d9e770bf4e2585b78b0429b6af65e7e4",
       "source_path": "noopunk/ubiquitous_maniacs/PÄIVÄ_1.md",
       "source_blob_sha": "4d023da1f6dc45a4eef9600cfe1f1f36591bc12c",
       "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
@@ -328,8 +403,8 @@
     },
     {
       "path": "app.py",
-      "bytes": 21375,
-      "sha256": "ea980be8fff69df4d8176c8a50cf87c21f0a9ad0bcdb4c8f723c81d3275a8f37",
+      "bytes": 21390,
+      "sha256": "7a69ad48dc406bfcf980bc54852221112498389c378e41fe65205fc3a912dddb",
       "source_path": "noopunk/ubiquitous_maniacs/app.py",
       "source_blob_sha": "f99b5a38cd285d3b1ab69d1a3dd2a91ba68c0d08",
       "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
@@ -832,8 +907,8 @@
     },
     {
       "path": "docs/MANIAC_RIGET_INFLUENCE_NOTE.md",
-      "bytes": 6978,
-      "sha256": "fca7673388e05a2d4d3ed4fdc1e404419c87f87505f810b60735a81f49fbf031",
+      "bytes": 6721,
+      "sha256": "f756f8fb5e306b58510bfb6ea93a0c9a650c90b8972a0afdf6cdd738986e5e19",
       "source_path": "noopunk/ubiquitous_maniacs/docs/MANIAC_RIGET_INFLUENCE_NOTE.md",
       "source_blob_sha": "68a07475e043f08b352b710f47c655be13594c8d",
       "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
@@ -967,8 +1042,8 @@
     },
     {
       "path": "docs/PAPRIKA_VAIKUTTEET.md",
-      "bytes": 8088,
-      "sha256": "a0f1a511ee79734340b56f5290bb7bc068b9aab13a6d4324118a724ba8e20fce",
+      "bytes": 8126,
+      "sha256": "c8a0981bfa4781a467dd92ce7dca2c9e701e95f79c9143a06c9048ab4c7398e5",
       "source_path": "noopunk/ubiquitous_maniacs/docs/PAPRIKA_VAIKUTTEET.md",
       "source_blob_sha": "4466cdfda71f149a23e8462a7c3d7867f43e6b2c",
       "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
@@ -1003,8 +1078,8 @@
     },
     {
       "path": "docs/PHILOSOPHICAL_ZOMBIES.md",
-      "bytes": 20884,
-      "sha256": "740858b502dd25129f97ae9d77d3253c0061a40f4b32548d1443a9a6b514c2b1",
+      "bytes": 20870,
+      "sha256": "6f5025f36b52fc692187362eda7323d7370823063747965145131d2e8619e290",
       "source_path": "noopunk/ubiquitous_maniacs/docs/PHILOSOPHICAL_ZOMBIES.md",
       "source_blob_sha": "b7809aabe9edfcc6bf47daccd3c656a518a2ec33",
       "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
@@ -1201,8 +1276,8 @@
     },
     {
       "path": "docs/SIMULATION_PLATFORM_EVALUATION.md",
-      "bytes": 20738,
-      "sha256": "5018779aa288535e7c6db206da928401ad9d23567a23a3c1babaeeba48931455",
+      "bytes": 20724,
+      "sha256": "f564832f3809f5866a132ad8250a3e3154d86bfe2614c3213962fcc176127326",
       "source_path": "noopunk/ubiquitous_maniacs/docs/SIMULATION_PLATFORM_EVALUATION.md",
       "source_blob_sha": "4a594d4d5b7e8a09100151cc1b824694267e497d",
       "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
@@ -1246,8 +1321,8 @@
     },
     {
       "path": "docs/STYLISTIC_INFLUENCES_MANIAC_RIGET.md",
-      "bytes": 10271,
-      "sha256": "7b32397c9c11f1ef8e7fae5ba14164a33e64ca0a2f5fca0c02b7388406c914df",
+      "bytes": 9917,
+      "sha256": "05743efcc7b6f532db9c6489e6fcf2e2db98a67fc235c140e2a5bad92f7a2452",
       "source_path": "noopunk/ubiquitous_maniacs/docs/STYLISTIC_INFLUENCES_MANIAC_RIGET.md",
       "source_blob_sha": "cc78f4b9796abf151fb4d11994fa58ea5ff1e0f1",
       "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
@@ -1605,6 +1680,15 @@
       "class": "entry-point script"
     },
     {
+      "path": "references/README.md",
+      "bytes": 2456,
+      "sha256": "5454d5a7a787670c09a5ac805b3840f2afb2da02424ebaa4a2af8157788377af",
+      "source_path": "noopunk/ubiquitous_maniacs/references/README.md",
+      "source_blob_sha": null,
+      "source_commit": null,
+      "class": "third-party reference material"
+    },
+    {
       "path": "requirements-llm.txt",
       "bytes": 1133,
       "sha256": "348ed63881441e93b13d6c10cce1cb1f202b7d91ec463d30c383f62d3f32679a",
@@ -1777,8 +1861,8 @@
     },
     {
       "path": "src/interaction/cli.py",
-      "bytes": 3018,
-      "sha256": "c1769945e0601a9546dc78d8ad2773c91242d347db14430a0b71a8c0811adf9a",
+      "bytes": 3033,
+      "sha256": "62d8b3d1c32cd13878456de892f886e6595ddff270889b6513590ebacb97df6f",
       "source_path": "noopunk/ubiquitous_maniacs/src/interaction/cli.py",
       "source_blob_sha": "ecc29220b6a0f20d1b7e485cda526e93feb79142",
       "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
@@ -1786,8 +1870,8 @@
     },
     {
       "path": "src/interaction/dialogue.py",
-      "bytes": 9509,
-      "sha256": "a192c39799a708a24a3a860ceda7b403e5d465029318b46f7b1952aa27a56e1b",
+      "bytes": 9491,
+      "sha256": "8ede44974bc63ff6ce7a1bd63429502d0ba45c65c8771645b808bb62b60111b3",
       "source_path": "noopunk/ubiquitous_maniacs/src/interaction/dialogue.py",
       "source_blob_sha": "45dbf00e5b8af01986aeef70b14907e4b9bbb6f6",
       "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
@@ -2326,8 +2410,8 @@
     },
     {
       "path": "tests/test_game_integration.py",
-      "bytes": 14595,
-      "sha256": "a3a22384e87d9bd042ad4a9f7ab6a32b22251bfa285f736b7f373a15f485fc77",
+      "bytes": 14573,
+      "sha256": "a9787cc530b0c6863193b75e53a265d9dee395b10bffddf7a433891bc54f2f3a",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_game_integration.py",
       "source_blob_sha": "69db8b47865df80b5625654a8c394547321580d6",
       "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
@@ -2371,8 +2455,8 @@
     },
     {
       "path": "tests/test_interaction.py",
-      "bytes": 4287,
-      "sha256": "04834e8a5600ad615a9755e6a04eb60e640cba7902a513cc88800e5120c070e6",
+      "bytes": 4298,
+      "sha256": "c39b0e265a875cc0c16fbbccd4d10563fff01c058e3b45c50e55d825b6a833ce",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_interaction.py",
       "source_blob_sha": "f090d541e8d37924928ee453a6979423f1ba5d8b",
       "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
