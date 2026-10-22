@@ -176,13 +176,41 @@ class FailForwardTests(unittest.TestCase):
         self.assertTrue(result.ok)
         self.assertIs(result.outcome, Outcome.FAILURE)
         self.assertEqual(result.aspect, "")
-        self.assertEqual(session.scene.aspects, {})
+        # The scene's *declared* situation aspect is not a create-advantage reward: it is there
+        # before anyone rolls and survives a failure. What a failed create-advantage does not get is
+        # its own aspect, and with it the free invocation.
+        self.assertNotIn("Nila's trust", session.scene.aspects)
+        self.assertEqual(list(session.scene.aspects), list(session.scene_spec.aspects))
+        self.assertTrue(all(item.free_invocations == 0 for item in session.scene.aspects.values()))
 
-    def test_a_failure_never_stops_the_chain(self) -> None:
+    def test_a_failure_never_stops_the_case(self) -> None:
+        # A failed check withholds its fragment (``withhold_on_failure``), so a party that fails
+        # every one of them holds no chain at all — and the case still closes, with the gap named.
         session = _session(rng=_MinusOne())
-        _play(session)
-        self.assertEqual(session.chain_progress, (3, 3))
-        self.assertIn("finding-empty-sleeve", session.findings)
+        refusals: list[str] = []
+        for step in SCRIPT:
+            if step is None:
+                session.end_scene()
+                continue
+            result = session.act(*step)
+            if result.ok:
+                continue
+            # A missing prerequisite and an unassemblable chain are the case *recording* the gap:
+            # the action is refused, costs nothing, and the case can still be closed.
+            self.assertTrue(
+                "requires" in result.reason or "cannot be assembled" in result.reason,
+                result.reason,
+            )
+            refusals.append(result.reason)
+        self.assertTrue(refusals)
+        self.assertTrue(any("cannot be assembled" in reason for reason in refusals))
+        self.assertEqual(session.chain_progress, (0, 3))
+        self.assertEqual(set(session.chain_gaps), set(CASE.chain))
+        result = session.resolve("closed_by_withdrawal", seat_id="pc_leader")
+        self.assertEqual(result.resolution_id, "closed_by_withdrawal")
+        self.assertEqual(set(result.gaps), set(CASE.chain))
+        self.assertIn("never obtained", result.detail)
+        self.assertEqual(session.report()["chain"]["missing"], list(CASE.chain))
 
     def test_a_stress_overflow_is_recorded_as_taken_out(self) -> None:
         # Three mental hits overflow the two-box track. The third hit writes no consequence, so the
@@ -360,7 +388,7 @@ class PersistenceTests(unittest.TestCase):
         session.resolve("closed_by_evidence", seat_id="pc_leader")
         report = session.report()
         self.assertTrue(report["finished"])
-        self.assertEqual(report["chain"], {"held": 3, "of": 3})
+        self.assertEqual(report["chain"], {"held": 3, "of": 3, "missing": []})
         self.assertEqual(report["persisted"]["campaign_notes"], 1)
         self.assertIn(
             "Kallio raid case closed on the record", report["persisted"]["objectives"]

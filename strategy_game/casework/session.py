@@ -26,10 +26,27 @@ Fail-forward, stated exactly
 
 The rulebook's own guidance is *"never make an essential clue depend on one successful check"* and
 Fate's own failure text is *"in some overcome actions the GM may allow success at a serious cost"*.
-So an action that yields a clue yields it on a tie and on a failure too; the difference is the
-**price**, declared per action in the case file (a complication, stress, or a named consequence).
-A tie costs the minor price, a failure the serious one. A create-advantage action is the exception:
-it grants no clue on a failure, because the clue must never have depended on it.
+So an action that yields a clue yields it on a tie and on a failure too **unless the case declares
+otherwise**; the difference is the **price**, declared per action in the case file (a complication,
+stress, or a named consequence). A tie costs the minor price, a failure the serious one. A
+create-advantage action is the exception: it grants no clue on a failure, because the clue must never
+have depended on it.
+
+An action marked ``withhold_on_failure`` takes Fate's *other* reading of a failed overcome — *you do
+not get it* — and withholds its fragment, charging the serious price instead. That is what lets a
+chain end short. It is still fail-forward on three counts and each is measured: the price lands, the
+case reaches every fragment by more than one action (so the other route is still on offer in the
+same scene), and a short chain still assembles a **partial** finding with its gap named — or, below
+the partial floor, closes on the weaker resolution with the gap on the record. Nothing dead-ends.
+
+Aspects, stated exactly
+-----------------------
+
+A scene carries the **situation aspects its declaration names** from the first moment, and the ones
+a create-advantage action earns join the same register. Any check may invoke one — a free invocation
+if the aspect still has one, otherwise a Fate point from the character attempting the check — and the
++2 lands in the resolver's arithmetic. The closing check honours an invocation on **every** path,
+passive and opposed: an opposed contest is one more check in the same scene, not a second resolver.
 
 Combat is optional, one exchange, and losable
 ---------------------------------------------
@@ -125,6 +142,11 @@ class ActionResult:
     taken_out: bool = False
     reason: str = ""
     scene_changed: str = ""
+    #: Clues this action would have yielded but did not, because its failure withholds them.
+    withheld: tuple[str, ...] = ()
+    #: The aspect invoked on the check, and whether it was a free invocation or a Fate point.
+    invoked: str = ""
+    free_invocation: bool = False
 
 
 @dataclass(frozen=True)
@@ -154,6 +176,8 @@ class ResolutionResult:
     idempotent: bool = False
     degraded: bool = False
     wounds: tuple[str, ...] = ()
+    #: Chain fragments the party never obtained. A short chain is a recorded gap, not a silence.
+    gaps: tuple[str, ...] = ()
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -164,6 +188,7 @@ class ResolutionResult:
             "detail": self.detail,
             "degraded": self.degraded,
             "wounds": list(self.wounds),
+            "gaps": list(self.gaps),
             "applied": None if self.applied is None else self.applied.to_dict(),
         }
 
@@ -238,7 +263,7 @@ class CaseSession:
             )
         self._ledger = TurnLedger(seats)
         self._dice = self.rng if self.rng is not None else Random(self.seed)
-        self._scene = Scene()
+        self._scene = self._scene_with_declared_aspects()
         self._connectivity = load_connectivity()
         if faction.leader_id != self.campaign.leader_id:  # pragma: no cover - structural_problems
             raise CaseworkError("the campaign leader is not the faction's own leader")
@@ -300,6 +325,18 @@ class CaseSession:
     @property
     def chain_progress(self) -> tuple[int, int]:
         return (sum(1 for clue in self.spec.chain if clue in self._clues), len(self.spec.chain))
+
+    @property
+    def chain_gaps(self) -> tuple[str, ...]:
+        """The chain fragments the party does not hold, in the chain's own order.
+
+        A fragment can be missing because the party never went where it was (a scene left, an
+        action unavailable) or because the check that would have yielded it failed and the case
+        withholds on failure. Either way the gap is named rather than left implicit: it is what the
+        assembly reports, what the resolution record carries, and what a reader of the record needs
+        to see before believing the finding.
+        """
+        return tuple(clue for clue in self.spec.chain if clue not in self._clues)
 
     def has(self, reference: str) -> bool:
         """Whether the party currently holds this clue or finding."""
@@ -429,6 +466,7 @@ class CaseSession:
         action_id: str,
         *,
         free_invoke: str | None = None,
+        invoke: str | None = None,
         reroll: bool = False,
     ) -> ActionResult:
         """Attempt one action with one character, spending that character's action for the scene.
@@ -437,6 +475,16 @@ class CaseSession:
         acted, a cyber path that does not exist, a psi capability the witness lacks — are returned
         with their reason and cost nothing. An **attempt** spends the action whether it succeeds or
         fails; that is the turn structure, not a new rule.
+
+        Two ways to invoke an aspect on the check, which is Fate's one invoke rule:
+
+        * ``free_invoke`` spends a **free invocation** a create-advantage action put on a scene
+          aspect. It is refused, not silently downgraded, when the aspect has none left.
+        * ``invoke`` spends a **Fate point** from the character attempting the check, on a scene
+          aspect (declared situation aspects included) or on one of their own sheet aspects.
+
+        Both add +2 through :func:`strategy_game.rpg.skills.check`, so an invocation lands in the
+        same arithmetic as every other modifier; nothing here re-derives an outcome.
         """
         if self.finished:
             raise CaseworkError("the case is closed; a closed case does not take further actions")
@@ -445,6 +493,10 @@ class CaseSession:
             action = scene.action(action_id)
         except CaseSpecError as exc:
             raise CaseworkError(str(exc)) from exc
+        if free_invoke is not None and invoke is not None:
+            return self._refused(
+                scene.id, action, seat_id, "one check carries at most one invocation"
+            )
         if action_id in self._used:
             return self._refused(scene.id, action, seat_id, self._unavailable(action))
         missing = tuple(item for item in action.requires if not self.has(item))
@@ -456,15 +508,11 @@ class CaseSession:
         if seat.id in self.ledger.acted:
             return self._refused(scene.id, action, seat_id, self._ledger_refusal(seat.id))
         sheet = self.sheet(seat.id)
-        if free_invoke is not None:
-            in_scene = free_invoke in self._scene.aspects
-            if not in_scene and free_invoke not in sheet.aspects:
-                return self._refused(
-                    scene.id,
-                    action,
-                    seat.id,
-                    f"{free_invoke!r} is neither a scene aspect nor one of {sheet.name}'s aspects",
-                )
+        named = free_invoke if free_invoke is not None else invoke
+        if named is not None:
+            refusal = self._invocation_refusal(named, sheet, free=free_invoke is not None)
+            if refusal:
+                return self._refused(scene.id, action, seat.id, refusal)
         reason = self._unavailable(action)
         if reason:
             return self._refused(scene.id, action, seat.id, reason)
@@ -544,8 +592,8 @@ class CaseSession:
                 action.check.difficulty,
                 rng=self._dice,
                 scene=self._scene,
-                invoked_aspect=free_invoke,
-                free=bool(free_invoke) and free_invoke in self._scene.aspects,
+                invoked_aspect=named,
+                free=free_invoke is not None,
                 permitted=True,
                 reroll=reroll,
             )
@@ -556,10 +604,14 @@ class CaseSession:
         success = resolution.outcome in (Outcome.SUCCESS, Outcome.SUCCESS_WITH_STYLE)
 
         clues: tuple[str, ...] = ()
+        withheld: tuple[str, ...] = ()
         # Intel is the by-product of *taking* the action — the promise is made, the scan is
         # logged — so it is granted whatever the dice say. Clues are granted on every non-advantage
         # outcome, and the advantage action's own failure never withholds a clue because no clue
-        # depends on it.
+        # depends on it. An action the case marks ``withhold_on_failure`` is the other Fate reading:
+        # a failed overcome does not get what it was after, and the declared failure price is what
+        # it cost instead. Nothing else changes — the action is spent, the case goes on, the other
+        # route to the same fragment is still on offer, and a short chain still assembles.
         intel = self._grant_intel(action)
         aspect = ""
         costs: list[str] = []
@@ -573,9 +625,11 @@ class CaseSession:
             else:
                 costs.extend(self._apply_cost(sheet, action.on_fail, where=action.id))
         else:
-            # Overcome and attack: the clue is not hostage to the dice. A tie pays the minor price,
-            # a failure the serious one, and the case goes on.
-            clues = self._grant_clues(action)
+            # Overcome and attack: the clue is not hostage to the dice unless the case says so.
+            if resolution.outcome is Outcome.FAILURE and action.withhold_on_failure and action.gives:
+                withheld = tuple(clue for clue in action.gives if clue not in self._clues)
+            else:
+                clues = self._grant_clues(action)
             if resolution.outcome is Outcome.TIE:
                 costs.extend(self._apply_cost(sheet, action.on_tie, where=action.id))
             elif resolution.outcome is Outcome.FAILURE:
@@ -605,10 +659,12 @@ class CaseSession:
                 "total": resolution.total,
                 "shifts": resolution.shifts,
                 "outcome": resolution.outcome.value,
-                "invoked": free_invoke,
+                "invoked": named,
+                "invoked_free": free_invoke is not None,
                 "rerolled": bool(reroll),
             },
             "clues": list(clues),
+            "withheld": list(withheld),
             "intel": list(intel),
             "aspect": aspect,
             "costs": list(costs),
@@ -637,10 +693,62 @@ class CaseSession:
             consequence=consequence,
             taken_out=taken_out,
             scene_changed=changed,
+            withheld=withheld,
+            invoked=named or "",
+            free_invocation=free_invoke is not None,
         )
 
     def _refused(self, scene_id: str, action: ActionSpec, seat_id: str, reason: str) -> ActionResult:
         return ActionResult(False, scene_id, action.id, seat_id, reason=reason)
+
+    def _invocation_refusal(self, name: str, sheet: Character, *, free: bool) -> str:
+        """Why this invocation cannot be spent, or the empty string when it can.
+
+        A **free** invocation must name a scene aspect that still has one: an aspect with none left
+        is refused rather than quietly turned into a Fate-point spend, because that would charge the
+        player for something the fiction already paid for. A **paid** invocation names a scene aspect
+        (declared situation aspects included) or one of the character's own, and needs a Fate point.
+        """
+        in_scene = name in self._scene.aspects
+        if free:
+            if not in_scene:
+                return (
+                    f"{name!r} has no free invocation to spend: only a scene aspect a "
+                    f"create-advantage action put there can carry one, and the scene holds "
+                    f"{sorted(self._scene.aspects) or 'none'}"
+                )
+            if self._scene.aspects[name].free_invocations < 1:
+                return (
+                    f"{name!r} has no free invocations left this scene; invoke it with a Fate point "
+                    f"instead (act(..., invoke={name!r}))"
+                )
+            return ""
+        if not in_scene and name not in sheet.aspects:
+            return (
+                f"{name!r} is neither a scene aspect nor one of {sheet.name}'s aspects; the scene "
+                f"declares {sorted(self._scene.aspects) or 'none'}"
+            )
+        if sheet.fate_points < 1:
+            return (
+                f"{sheet.name} has no Fate point left to invoke {name!r}; a free invocation costs "
+                "nothing, a paid one costs a point of the character's own refresh"
+            )
+        return ""
+
+    def _scene_with_declared_aspects(self, scene_id: str | None = None) -> Scene:
+        """A fresh scene register holding the declaration's own situation aspects.
+
+        A scene aspect is a fact the fiction establishes on arrival, so it is on the register from
+        the first moment — with **no** free invocation, because a free invocation is what a
+        create-advantage action earns and nothing else. That is the whole difference this makes: the
+        party now walks into every scene with something it can invoke for +2 by spending Fate, and
+        the aspects it creates sit beside them in the same register.
+        """
+        scene = Scene()
+        wanted = self.spec.scene(scene_id) if scene_id else self.spec.scenes[self._scene_index]
+        for name in wanted.aspects:
+            scene.create_aspect(name, free_invocations=0)
+        return scene
 
     def _ledger_refusal(self, seat_id: str) -> str:
         statement = self.ledger.acted.get(seat_id, "")
@@ -729,7 +837,7 @@ class CaseSession:
 
     def _enter(self, scene_id: str) -> str:
         self._scene_index = self.spec.scene_index(scene_id)
-        self._scene = Scene()
+        self._scene = self._scene_with_declared_aspects(scene_id)
         self.ledger.next_turn()
         self._events.append(
             {"kind": "scene_change", "scene": scene_id, "turn": self.ledger.turn}
@@ -771,7 +879,9 @@ class CaseSession:
         )
         if not missing_all and one_of_ok:
             self._findings.append(finding_id)
-            self._events.append({"kind": "finding", "finding": finding_id, "partial": False})
+            self._events.append(
+                {"kind": "finding", "finding": finding_id, "partial": False, "missing": []}
+            )
             return FindingResult(True, finding_id, text=finding.text)
 
         held = sum(1 for fragment in finding.fragments if fragment in self._clues)
@@ -780,7 +890,14 @@ class CaseSession:
             self._partial.add(finding_id)
             if finding.partial_complication and finding.partial_complication not in self._complications:
                 self._complications.append(finding.partial_complication)
-            self._events.append({"kind": "finding", "finding": finding_id, "partial": True})
+            self._events.append(
+                {
+                    "kind": "finding",
+                    "finding": finding_id,
+                    "partial": True,
+                    "missing": list(missing_all),
+                }
+            )
             return FindingResult(
                 True,
                 finding_id,
@@ -797,6 +914,13 @@ class CaseSession:
             finding_id,
             missing=tuple(missing_all),
             reason=self._assembly_refusal(finding_id),
+        )
+
+    def _finding_missing(self, finding_id: str) -> tuple[str, ...]:
+        """The fragments this assembled finding had to do without — its recorded shortfall."""
+        finding = self.spec.finding(finding_id)
+        return tuple(
+            fragment for fragment in finding.requires_all if fragment not in self._clues
         )
 
     def _assembly_refusal(self, finding_id: str) -> str:
@@ -869,11 +993,18 @@ class CaseSession:
         seat_id: str | None = None,
         approach: str = "",
         free_invoke: str | None = None,
+        invoke: str | None = None,
     ) -> ResolutionResult:
         """Close the case and write the result into the campaign's persistent state, once.
 
         ``approach`` selects the confrontation's method: ``"pressure"`` (an opposed Savvy contest) or
         ``"force"`` (one opposed attack exchange). Any other resolution ignores it.
+
+        ``free_invoke``/``invoke`` reach the closing check on **every** path, passive and opposed
+        alike: the actor's roll goes through the same scene resolver either way, so a free invocation
+        earned in the final scene is worth +2 to a contest exactly as it is to a passive overcome.
+        Before this, both opposed paths silently dropped it, which made the case's one spendable
+        aspect worth nothing at the one moment the case is decided by a single roll.
 
         Idempotent: the second call returns the record already applied and writes nothing.
         """
@@ -881,10 +1012,12 @@ class CaseSession:
             spec = self.spec.resolution(self._resolution_id)
             return ResolutionResult(
                 spec.id, spec.label, spec.text, self._applied.outcome,
-                applied=self._applied, idempotent=True,
+                applied=self._applied, idempotent=True, gaps=self.chain_gaps,
             )
         if self.finished:  # pragma: no cover - _applied is the only marker
             raise CaseworkError("the case is closed")
+        if free_invoke is not None and invoke is not None:
+            raise CaseworkError("one closing check carries at most one invocation")
         try:
             spec = self.spec.resolution(resolution_id)
         except CaseSpecError as exc:
@@ -896,17 +1029,31 @@ class CaseSession:
         leader_seat = next(seat for seat in self._seat_list if seat.character_id == self.campaign.leader_id)
         seat = self.seat_for(seat_id) if seat_id else leader_seat
         sheet = self.sheet(seat.id)
+        named = free_invoke if free_invoke is not None else invoke
+        if named is not None:
+            refusal = self._invocation_refusal(named, sheet, free=free_invoke is not None)
+            if refusal:
+                raise CaseworkError(refusal)
         if seat.character_id not in self._actors:
             self._actors.append(seat.character_id)
 
         outcome, detail, degraded, wounds = self._closing_check(
-            sheet, spec, approach=approach, free_invoke=free_invoke
+            sheet, spec, approach=approach, free_invoke=free_invoke, invoke=invoke
         )
 
         ended = spec
         if degraded:
             ended = self.spec.resolution("closed_by_withdrawal")
             detail = f"{detail} The case falls back to a referral."
+
+        gaps = self.chain_gaps
+        if gaps:
+            detail = (
+                f"{detail} The chain is short {len(gaps)} of {len(self.spec.chain)} fragments: "
+                f"{list(gaps)} never obtained, and the record says so."
+            )
+        if named:
+            detail = f"{detail} Invoked {named!r} (+2, {'free' if free_invoke else 'a Fate point'})."
 
         findings = list(self._findings)
         intel = tuple(dict.fromkeys((*findings, *self._intel, *ended.intel)))
@@ -942,6 +1089,8 @@ class CaseSession:
                 "outcome": outcome.value,
                 "degraded": degraded,
                 "wounds": list(wounds),
+                "invoked": named,
+                "chain_gaps": list(gaps),
             }
         )
         return ResolutionResult(
@@ -953,6 +1102,7 @@ class CaseSession:
             applied=self._applied,
             degraded=degraded,
             wounds=tuple(wounds),
+            gaps=gaps,
         )
 
     def _closing_check(
@@ -962,8 +1112,16 @@ class CaseSession:
         *,
         approach: str,
         free_invoke: str | None,
+        invoke: str | None = None,
     ) -> tuple[Outcome, str, bool, list[str]]:
-        """Roll the resolution's own closing check, including an optional opposed confrontation."""
+        """Roll the resolution's own closing check, including an optional opposed confrontation.
+
+        Every path hands the actor's roll to :func:`strategy_game.rpg.skills.check` with the
+        invocation attached, so an aspect is worth the same +2 whether the ending is a passive
+        overcome or an opposed contest. The opposition (the suspect) invokes nothing: the case gives
+        NPCs no Fate points, which would be a rules question, and an uninvoked defence is the
+        honest floor for measuring how much the party's own aspects are worth.
+        """
         force = spec.opposed_by and approach == "force"
         pressure = spec.opposed_by and approach == "pressure"
         if spec.opposed_by and approach not in ("force", "pressure"):
@@ -971,9 +1129,15 @@ class CaseSession:
                 f"{spec.id!r} is a confrontation: choose approach='pressure' or approach='force'"
             )
         if force:
-            return self._exchange(sheet, self.character(spec.opposed_by), spec)
+            return self._exchange(
+                sheet, self.character(spec.opposed_by), spec,
+                free_invoke=free_invoke, invoke=invoke,
+            )
         if pressure:
-            return self._contest(sheet, self.character(spec.opposed_by), spec)
+            return self._contest(
+                sheet, self.character(spec.opposed_by), spec,
+                free_invoke=free_invoke, invoke=invoke,
+            )
         try:
             result = skill_check(
                 sheet,
@@ -983,8 +1147,8 @@ class CaseSession:
                 spec.difficulty,
                 rng=self._dice,
                 scene=self._scene,
-                invoked_aspect=free_invoke,
-                free=bool(free_invoke) and free_invoke in self._scene.aspects,
+                invoked_aspect=free_invoke or invoke,
+                free=free_invoke is not None,
             ).resolution
         except SkillLayerError as exc:  # pragma: no cover - the declaration validates the skill
             raise CaseworkError(str(exc)) from exc
@@ -1003,10 +1167,23 @@ class CaseSession:
         return result.outcome, detail, degraded, wounds
 
     def _contest(
-        self, actor: Character, defender: Character, spec: ResolutionSpec
+        self,
+        actor: Character,
+        defender: Character,
+        spec: ResolutionSpec,
+        *,
+        free_invoke: str | None = None,
+        invoke: str | None = None,
     ) -> tuple[Outcome, str, bool, list[str]]:
-        """An opposed social contest: both sides roll the approved kernel, highest total wins."""
-        attack = resolve(Action.OVERCOME, actor.skills.get(spec.skill, 0), 0, rng=self._dice)
+        """An opposed social contest: both sides roll the approved kernel, highest total wins.
+
+        The actor's roll goes through the scene resolver with its invocation, which is what makes a
+        free invocation worth +2 here as well as on a passive check. The defender rolls the same
+        kernel and does not invoke.
+        """
+        attack = self._actor_roll(
+            actor, Action.OVERCOME, spec.skill, free_invoke=free_invoke, invoke=invoke
+        )
         defence = resolve(
             Action.DEFEND, defender.skills.get(spec.skill, 0), attack.total, rng=self._dice
         )
@@ -1021,17 +1198,32 @@ class CaseSession:
             f"opposed {spec.skill}: {actor.name} {attack.total} vs {defender.name} "
             f"{defence.total} — {outcome.value}"
         )
-        return outcome, detail, outcome is not Outcome.SUCCESS and outcome is not Outcome.SUCCESS_WITH_STYLE, []
+        if outcome is Outcome.TIE and spec.tie_is_not_total_failure:
+            detail += " (a tie, and this case's tie option lets it stand)"
+        return outcome, detail, self._degraded(outcome, spec), []
 
     def _exchange(
-        self, actor: Character, defender: Character, spec: ResolutionSpec
+        self,
+        actor: Character,
+        defender: Character,
+        spec: ResolutionSpec,
+        *,
+        free_invoke: str | None = None,
+        invoke: str | None = None,
     ) -> tuple[Outcome, str, bool, list[str]]:
         """One attack exchange. The defender's defense is the attack's opposition, and a hit lands.
 
         There is no second exchange, no initiative and no turn order: those are open author rows
         (D34/D36). The consequence is named in the case data and applied by Fate's own hit procedure.
+
+        Which skill the attack reads is the case's declaration: :attr:`ResolutionSpec.skill` by
+        default, or :attr:`ResolutionSpec.force_attack_skill` when the case names one. Both are
+        measurable options — this method does not choose between them.
         """
-        attack = resolve(Action.ATTACK, actor.skills.get(spec.skill, 0), 0, rng=self._dice)
+        skill = spec.force_attack_skill or spec.skill
+        attack = self._actor_roll(
+            actor, Action.ATTACK, skill, free_invoke=free_invoke, invoke=invoke
+        )
         defence = resolve(
             Action.DEFEND, defender.skills.get("REF", 0), attack.total, rng=self._dice
         )
@@ -1047,7 +1239,7 @@ class CaseSession:
         if shifts > 0:
             hit = self._hit(defender, shifts, name=spec.consequence or "Cutter wound")
             detail = (
-                f"opposed attack: {actor.name} {attack.total} vs {defender.name} "
+                f"opposed attack ({skill}): {actor.name} {attack.total} vs {defender.name} "
                 f"{defence.total} — {shifts} shift(s), {defender.name} hit"
             )
             if hit.taken_out:
@@ -1056,18 +1248,54 @@ class CaseSession:
         elif shifts < 0:
             hit = self._hit(actor, -shifts, name=spec.consequence or "Cutter wound")
             detail = (
-                f"opposed attack: {actor.name} {attack.total} vs {defender.name} "
+                f"opposed attack ({skill}): {actor.name} {attack.total} vs {defender.name} "
                 f"{defence.total} — {-shifts} shift(s) against {actor.name}"
             )
             wounds = [f"{actor.name}: {hit_label(hit, spec.consequence)}"]
             degraded = True
         else:
             detail = (
-                f"opposed attack: {actor.name} {attack.total} vs {defender.name} "
+                f"opposed attack ({skill}): {actor.name} {attack.total} vs {defender.name} "
                 f"{defence.total} — a standoff, nobody lands a hit"
             )
-            degraded = True
+            degraded = not spec.tie_is_not_total_failure
         return outcome, detail, degraded, wounds
+
+    def _actor_roll(
+        self,
+        actor: Character,
+        action: Action,
+        skill: str,
+        *,
+        free_invoke: str | None,
+        invoke: str | None,
+    ):
+        """The party's own half of an opposed check, through the scene resolver and its invocation."""
+        try:
+            return skill_check(
+                actor,
+                ActionContext.INDIVIDUAL,
+                action,
+                skill,
+                0,
+                rng=self._dice,
+                scene=self._scene,
+                invoked_aspect=free_invoke or invoke,
+                free=free_invoke is not None,
+            ).resolution
+        except SkillLayerError as exc:  # pragma: no cover - the declaration validates the skill
+            raise CaseworkError(str(exc)) from exc
+
+    @staticmethod
+    def _degraded(outcome: Outcome, spec: ResolutionSpec) -> bool:
+        """Whether this closing outcome falls back to the weaker resolution.
+
+        A tie and a failure both do, unless the case's tie option says otherwise: *what* a tie
+        should cost is author row D32, so the option only decides whether a tie ends the attempt.
+        """
+        succeeded = outcome in (Outcome.SUCCESS, Outcome.SUCCESS_WITH_STYLE)
+        stands_on_a_tie = outcome is Outcome.TIE and spec.tie_is_not_total_failure
+        return not (succeeded or stands_on_a_tie)
 
     def _hit(self, target: Character, shifts: int, *, name: str) -> Hit:
         """One hit through the approved procedure; the mild slot is used if it is free."""
@@ -1116,10 +1344,18 @@ class CaseSession:
             ],
             "intel": list(self._intel),
             "findings": [
-                {"id": finding, "partial": finding in self._partial}
+                {
+                    "id": finding,
+                    "partial": finding in self._partial,
+                    "missing": list(self._finding_missing(finding)),
+                }
                 for finding in self._findings
             ],
-            "chain": {"held": self.chain_progress[0], "of": self.chain_progress[1]},
+            "chain": {
+                "held": self.chain_progress[0],
+                "of": self.chain_progress[1],
+                "missing": list(self.chain_gaps),
+            },
             "complications": list(self._complications),
             "actors": list(self._actors),
             "party": [

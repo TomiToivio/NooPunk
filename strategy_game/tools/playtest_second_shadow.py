@@ -43,8 +43,9 @@ from pathlib import Path
 from random import Random
 from typing import Any
 
-from strategy_game.casework import kallio
+from strategy_game.casework import kallio, options
 from strategy_game.casework.session import CaseSession, CaseworkError
+from strategy_game.rpg.fate import Action
 
 __all__ = [
     "APPROACHES",
@@ -150,7 +151,12 @@ class Run:
     actions: int = 0
     refused: int = 0
     invocations: int = 0
+    invocations_free: int = 0
+    invocations_paid: int = 0
     closing_invocation: bool = False
+    closing_invocation_free: bool = False
+    withheld: tuple[str, ...] = ()
+    chain_missing: tuple[str, ...] = ()
     scenes: tuple[str, ...] = ()
     turns: int = 0
     clues: tuple[str, ...] = ()
@@ -190,7 +196,12 @@ class Run:
             "actions": self.actions,
             "refused": self.refused,
             "invocations": self.invocations,
+            "invocations_free": self.invocations_free,
+            "invocations_paid": self.invocations_paid,
             "closing_invocation": self.closing_invocation,
+            "closing_invocation_free": self.closing_invocation_free,
+            "withheld": list(self.withheld),
+            "chain_missing": list(self.chain_missing),
             "scenes": list(self.scenes),
             "turns": self.turns,
             "clues": list(self.clues),
@@ -253,6 +264,25 @@ def _skill_of(session: CaseSession, action_id: str) -> str:
     return "" if check is None else check.skill
 
 
+def _advantage_first(
+    session: CaseSession, acts: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
+    """Order a scene's available actions the way a party that means to use an aspect takes them.
+
+    Create-advantage actions first, then actions with a check, then the free ones (assembling a chain
+    rolls no dice and can be done whenever). Declaration order is preserved inside each group, so the
+    policy stays deterministic and the only thing it changes is *when* an aspect exists relative to
+    the checks that could invoke it.
+    """
+    def rank(item: dict[str, Any]) -> tuple[int, int]:
+        check = session.scene_spec.action(item["id"]).check
+        if check is None:
+            return (2, 0)
+        return (0 if check.action is Action.CREATE_ADVANTAGE else 1, 0)
+
+    return sorted(acts, key=rank)
+
+
 def _blocked(session: CaseSession) -> bool:
     """A state the case cannot continue from: no action, no ending, and no scene to leave."""
     if session.finished:
@@ -279,6 +309,7 @@ def _record(
     refused: int,
     events_offset: int = 0,
     closing_invocation: bool = False,
+    closing_invocation_free: bool = False,
 ) -> Run:
     """Reduce a finished (or finished-as-far-as-it-goes) session to a :class:`Run`."""
     report = session.report()
@@ -381,7 +412,24 @@ def _record(
             for event in events
             if event["kind"] == "case_action" and (event.get("check") or {}).get("invoked")
         ),
+        invocations_free=sum(
+            1
+            for event in events
+            if event["kind"] == "case_action"
+            and (event.get("check") or {}).get("invoked")
+            and (event.get("check") or {}).get("invoked_free")
+        ),
+        invocations_paid=sum(
+            1
+            for event in events
+            if event["kind"] == "case_action"
+            and (event.get("check") or {}).get("invoked")
+            and not (event.get("check") or {}).get("invoked_free")
+        ),
         closing_invocation=closing_invocation,
+        closing_invocation_free=closing_invocation_free,
+        withheld=tuple(clue for event in events for clue in (event.get("withheld") or ())),
+        chain_missing=session.chain_gaps,
         scenes=tuple(scenes),
         turns=report["scene"]["turn"],
         clues=tuple(clue["id"] for clue in report["clues"]),
@@ -435,14 +483,56 @@ def _free_aspect(session: CaseSession) -> str | None:
     return None
 
 
+def _aspect_for(
+    session: CaseSession, seat_id: str, *, spend_fate: bool, keep_one: bool = False
+) -> tuple[str | None, bool]:
+    """The aspect this check can invoke, and whether the invocation is free.
+
+    A party spends what it already earned first: any scene aspect with a free invocation left. Only a
+    party that is willing to pay Fate points reaches past that — to another scene aspect (a declared
+    situation aspect included) or to one of the character's own sheet aspects. Returns ``(None,
+    False)`` when nothing can be spent, which is the ``thorough-no-aspects`` policy's whole
+    behaviour.
+
+    ``keep_one`` leaves an aspect's **last** free invocation alone, which is how a table behaves when
+    it expects one decisive roll later (the closing check). It is the difference between spending as
+    you go and saving something for the moment the case is decided.
+    """
+    for name, aspect in session.scene.aspects.items():
+        if aspect.free_invocations > (1 if keep_one else 0):
+            return name, True
+    if not spend_fate:
+        return None, False
+    try:
+        sheet = session.sheet(seat_id)
+    except CaseworkError:  # pragma: no cover - the seat came from the session
+        return None, False
+    if sheet.fate_points < 1:
+        return None, False
+    spare = [name for name, aspect in session.scene.aspects.items() if aspect.free_invocations == 0]
+    for name in spare:
+        return name, False
+    if keep_one:
+        return None, False
+    for name in sheet.aspects:
+        return name, False
+    return None, False
+
+
 def _close(
-    session: CaseSession, requested: str, approach: str, *, free_invoke: str | None = None
-) -> bool:
+    session: CaseSession,
+    requested: str,
+    approach: str,
+    *,
+    free_invoke: str | None = None,
+    invoke: str | None = None,
+) -> tuple[bool, bool]:
     """Resolve the case, falling back to the referral when the requested ending is unavailable.
 
     This is the *harness's* rule for a scripted policy (the player asked for an ending the party has
     not earned); the case itself only ever refuses, so the fallback is recorded as ``fell_back``.
-    Returns whether a free invocation was offered to the closing check.
+    Returns ``(invoked, free)`` — whether an aspect reached the closing check, and whether it cost a
+    Fate point or nothing.
     """
     resolution = RESOLUTION_FOR[requested]
     available = {item["id"] for item in session.resolutions() if item["available"]}
@@ -452,8 +542,9 @@ def _close(
         seat_id="pc_leader",
         approach=approach if chosen == RESOLUTION_FOR["confront"] else "",
         free_invoke=free_invoke,
+        invoke=invoke,
     )
-    return free_invoke is not None
+    return (free_invoke or invoke) is not None, free_invoke is not None
 
 
 def play_thorough(
@@ -464,7 +555,11 @@ def play_thorough(
     skip_skills: Iterable[str] = (),
     skip_scenes: Iterable[str] = (),
     use_aspects: bool = True,
+    spend_fate: bool = False,
+    advantage_first: bool = True,
+    reserve_closing: bool = False,
     best_seats: bool = True,
+    spec=None,
     rng: Random | None = None,
 ) -> Run:
     """Attempt every available action in every scene, then close on the requested ending.
@@ -473,10 +568,22 @@ def play_thorough(
     probe. ``skip_scenes`` leaves a scene without playing it, which is how a party that never visits
     the caretaker ends up with two fragments instead of three. A scene is otherwise left only when
     nothing legal is left to attempt.
+
+    ``use_aspects`` spends free invocations; ``spend_fate`` also spends Fate points on an aspect when
+    no free invocation is left (that is the *paid* half of Fate's invoke rule). ``advantage_first``
+    models a party that creates an advantage **before** the checks it intends to spend it on — the
+    ordering a competent table uses, and the difference between an aspect economy that lands on an
+    action check and one that is created after the last check of its scene.
+
+    ``reserve_closing`` leaves each aspect's last free invocation unspent until the closing check —
+    the party that saves something for the decisive roll rather than spending as it goes.
+
+    ``spec`` plays a variant declaration (see :mod:`strategy_game.casework.options`); the default is
+    the shipped case, byte for byte.
     """
     forced = set(skip_skills)
     skipped = set(skip_scenes)
-    session = kallio.build_session(seed=seed, rng=rng)
+    session = kallio.build_session(seed=seed, rng=rng, spec=spec)
     refused = 0
     blocked = 0
     guard = 0
@@ -496,6 +603,8 @@ def play_thorough(
             for item in session.actions()
             if item["available"] and _skill_of(session, item["id"]) not in forced
         ]
+        if acts and advantage_first:
+            acts = _advantage_first(session, acts)
         if not acts or not session.ledger.seats_available:
             try:
                 session.end_scene()
@@ -507,16 +616,29 @@ def play_thorough(
         if not seat:  # pragma: no cover - a free seat exists whenever availability allows an act
             blocked += 1
             break
-        free = _free_aspect(session) if use_aspects else None
-        result = session.act(seat, action_id, free_invoke=free)
+        free, is_free = (
+            _aspect_for(session, seat, spend_fate=spend_fate, keep_one=reserve_closing)
+            if use_aspects
+            else (None, False)
+        )
+        result = session.act(
+            seat,
+            action_id,
+            free_invoke=free if is_free else None,
+            invoke=None if is_free else free,
+        )
         refused += 0 if result.ok else 1
         if not result.ok:  # pragma: no cover - availability was just queried
             break
-    invoked = _close(
+    free, is_free = (
+        _aspect_for(session, "pc_leader", spend_fate=spend_fate) if use_aspects else (None, False)
+    )
+    invoked, closing_free = _close(
         session,
         requested,
         approach,
-        free_invoke=_free_aspect(session) if use_aspects else None,
+        free_invoke=free if is_free else None,
+        invoke=None if is_free else free,
     )
     return _record(
         session,
@@ -526,6 +648,7 @@ def play_thorough(
         blocked=blocked,
         refused=refused,
         closing_invocation=invoked,
+        closing_invocation_free=closing_free,
     )
 
 
@@ -556,6 +679,7 @@ def play_minimal(
     requested: str = "evidence",
     approach: str = "pressure",
     force_loss: bool = False,
+    spec=None,
     rng: Random | None = None,
 ) -> Run:
     """Take only the actions the requested ending needs, then close. Measures the check floor.
@@ -564,7 +688,7 @@ def play_minimal(
     +1s for the defence — so the one state the rules call *taken out* can be pinned exactly, however
     many dice the investigation consumed. That is the same technique the case's own test uses.
     """
-    session = kallio.build_session(seed=seed, rng=rng)
+    session = kallio.build_session(seed=seed, rng=rng, spec=spec)
     refused = 0
     blocked = 0
     for scene_id, action_id in MINIMAL_STEPS[requested]:
@@ -707,6 +831,105 @@ def play_demo_route(seed: int, route: str, approach: str) -> Run:
 # -- probes -------------------------------------------------------------------------------------
 
 
+def option_matrix(seeds: int, *, start: int = 0) -> dict[str, Any]:
+    """Measure each tuning **option** against the shipped setting, on the same seeds.
+
+    Every group here is one question the case could answer two ways, run over the same seed block so
+    the difference is the option and nothing else. Nothing in this function chooses: the shipped
+    setting is the first row of every group, each alternative is built by
+    :mod:`strategy_game.casework.options`, and the numbers are printed side by side.
+    """
+    seeds_iter = range(start, start + seeds)
+    base = kallio.CASE
+    always = options.with_chain_withholding(base, enabled=False)
+    ref = options.with_force_attack_skill(base, "REF")
+    tie_stands = options.with_tie_policy(base, not_total_failure=True)
+    out: dict[str, list[tuple[str, list[Run]]]] = {}
+
+    # (1) Does a failed check withhold its fragment?
+    out["chain: does a failure withhold the fragment?"] = [
+        ("yes — shipped (``withhold_on_failure``)", [
+            play_thorough(seed, requested="evidence") for seed in seeds_iter
+        ]),
+        ("no — every check grants its clue, as before", [
+            play_thorough(seed, requested="evidence", spec=always) for seed in seeds_iter
+        ]),
+    ]
+    # The same question at the extreme the old evidence quoted: every check forced to fail.
+    out["chain: every check forced to fail"] = [
+        ("yes — shipped", [play_thorough(start, requested="evidence", rng=_Fixed(-1))]),
+        (
+            "no — as before",
+            [play_thorough(start, requested="evidence", spec=always, rng=_Fixed(-1))],
+        ),
+    ]
+    # (2) Which skill a force exchange attacks with.
+    out["force: which skill attacks?"] = [
+        ("the resolution's own — ``SAV`` (code, shipped)", [
+            play_thorough(seed, requested="confront", approach="force") for seed in seeds_iter
+        ]),
+        ("``REF`` — the case document's \"REF opposed attack\"", [
+            play_thorough(seed, requested="confront", approach="force", spec=ref)
+            for seed in seeds_iter
+        ]),
+    ]
+    # (3) Is a tie on a confrontation total failure?
+    for approach in ("pressure", "force"):
+        out[f"tie is total failure? ({approach})"] = [
+            ("yes — shipped", [
+                play_thorough(seed, requested="confront", approach=approach) for seed in seeds_iter
+            ]),
+            ("no — the attempt stands, priced by nothing here", [
+                play_thorough(
+                    seed, requested="confront", approach=approach, spec=tie_stands
+                )
+                for seed in seeds_iter
+            ]),
+        ]
+    # (4) How much of the aspect economy the party spends.
+    out["aspects: how much does the party spend?"] = [
+        ("nothing (``thorough-no-aspects``)", [
+            play_thorough(seed, requested="evidence", use_aspects=False) for seed in seeds_iter
+        ]),
+        ("free invocations, spent as they come", [
+            play_thorough(seed, requested="evidence") for seed in seeds_iter
+        ]),
+        ("free invocations, one kept for the close", [
+            play_thorough(seed, requested="evidence", reserve_closing=True) for seed in seeds_iter
+        ]),
+        ("free and paid (Fate points too)", [
+            play_thorough(seed, requested="evidence", spend_fate=True) for seed in seeds_iter
+        ]),
+        ("free, created after the checks it would help", [
+            play_thorough(seed, requested="evidence", advantage_first=False) for seed in seeds_iter
+        ]),
+    ]
+    # The same question where it matters most: the one opposed roll that decides a detention.
+    out["aspects: how much does the party spend? (confrontation)"] = [
+        ("nothing", [
+            play_thorough(seed, requested="confront", approach="pressure", use_aspects=False)
+            for seed in seeds_iter
+        ]),
+        ("free, one kept for the close", [
+            play_thorough(seed, requested="confront", approach="pressure", reserve_closing=True)
+            for seed in seeds_iter
+        ]),
+    ]
+    # (5) The floor of check load under the shipped chain setting.
+    out["floor: the minimal party"] = [
+        ("withholds on failure — shipped", [
+            play_minimal(seed, requested="evidence") for seed in seeds_iter
+        ]),
+        ("always grants — as before", [
+            play_minimal(seed, requested="evidence", spec=always) for seed in seeds_iter
+        ]),
+    ]
+    return {
+        group: [(label, [run.as_dict() for run in runs]) for label, runs in settings]
+        for group, settings in out.items()
+    }
+
+
 def probe(seeds: int, *, start: int = 0) -> dict[str, Any]:
     """Everything the document's tables need, in one JSON-able record."""
     routes: dict[str, list[Run]] = {}
@@ -749,6 +972,26 @@ def probe(seeds: int, *, start: int = 0) -> dict[str, Any]:
             )
             for seed in range(start, start + seeds)
         ]
+        # The party that keeps one free invocation back for the decisive roll, and the party that
+        # pays Fate points as well as spending what it earned. Together with the greedy `thorough`
+        # family above these are the three ways a table actually spends an aspect economy.
+        policies[f"thorough-reserve:{requested}"] = [
+            play_thorough(
+                seed, requested=requested, approach="pressure", reserve_closing=True
+            )
+            for seed in range(start, start + seeds)
+        ]
+    policies["thorough-paid:evidence"] = [
+        play_thorough(seed, requested="evidence", spend_fate=True)
+        for seed in range(start, start + seeds)
+    ]
+    # The ordering the old harness used: the create-advantage action is taken last in its scene, so
+    # nothing is left to spend the aspect on. This is the control that shows the invocations above
+    # are produced by the party's behaviour *and* the mechanics, not by the measurement.
+    policies["thorough-advantage-last:evidence"] = [
+        play_thorough(seed, requested="evidence", advantage_first=False)
+        for seed in range(start, start + seeds)
+    ]
 
     skills: dict[str, list[Run]] = {}
     for skill in SKILLS:
@@ -793,9 +1036,18 @@ def probe(seeds: int, *, start: int = 0) -> dict[str, Any]:
             "policies": list(policies),
             "skill_probes": list(skills),
             "case_id": kallio.CASE_ID,
+            "case_options": options.describe(kallio.CASE),
+            "action_count": sum(len(scene.actions) for scene in kallio.CASE.scenes),
+            "check_count": sum(
+                1
+                for scene in kallio.CASE.scenes
+                for action in scene.actions
+                if action.check is not None
+            ),
         },
         "routes": {key: [run.as_dict() for run in value] for key, value in routes.items()},
         "policies": {key: [run.as_dict() for run in value] for key, value in policies.items()},
+        "options": option_matrix(seeds, start=start),
         "skills": {key: [run.as_dict() for run in value] for key, value in skills.items()},
         "extremes": {key: run.as_dict() for key, run in extremes.items()},
         "determinism": determinism,
@@ -944,11 +1196,27 @@ def summarise(runs: Mapping[str, Iterable[Mapping[str, Any]]]) -> dict[str, Any]
                 "mean": round(_mean(row["invocations"] for row in rows), 2),
                 "runs_with_any": sum(1 for row in rows if row["invocations"]),
                 "closing_offered": sum(1 for row in rows if row["closing_invocation"]),
+                "free": sum(row["invocations_free"] for row in rows),
+                "paid": sum(row["invocations_paid"] for row in rows),
+                "closing_free": sum(1 for row in rows if row["closing_invocation_free"]),
+            },
+            "withheld": {
+                "runs": sum(1 for row in rows if row["withheld"]),
+                "total": sum(len(row["withheld"]) for row in rows),
+                "by_clue": dict(
+                    Counter(clue for row in rows for clue in row["withheld"]).most_common()
+                ),
             },
             "blocked": sum(row["blocked_states"] for row in rows),
             "scenes": dict(Counter(len(row["scenes"]) + 1 for row in rows)),
             "scene_ids": dict(scenes),
             "chain": dict(sorted(chain.items())),
+            "chain_missing": {
+                "runs": sum(1 for row in rows if row["chain_missing"]),
+                "by_clue": dict(
+                    Counter(clue for row in rows for clue in row["chain_missing"]).most_common()
+                ),
+            },
             "partial": sum(1 for row in rows if row["partial"]),
             "finding": sum(1 for row in rows if row["finding"]),
             "complications": {
@@ -1272,7 +1540,11 @@ def render_markdown(result: Mapping[str, Any]) -> str:
                 _pct(outcomes.get("success", 0), n),
                 _pct(outcomes.get("success_with_style", 0), n),
                 stats["invocations"]["runs_with_any"],
+                stats["invocations"]["mean"],
+                stats["invocations"]["free"],
+                stats["invocations"]["paid"],
                 stats["invocations"]["closing_offered"],
+                stats["invocations"]["closing_free"],
             ]
         )
     lines.append(
@@ -1284,7 +1556,53 @@ def render_markdown(result: Mapping[str, Any]) -> str:
                 "closing success",
                 "closing style",
                 "runs invoking on an action",
+                "invokes/run",
+                "free",
+                "paid",
                 "runs offering one to the closing check",
+                "…of which free",
+            ],
+            rows,
+        )
+    )
+    lines.append("")
+    lines.append("### The clue chain")
+    lines.append("")
+    rows = []
+    for label, stats in list(route_stats.items()) + list(policy_stats.items()):
+        n = stats["n"]
+        rows.append(
+            [
+                f"`{label}`",
+                _pct(stats["chain"].get(3, 0), n),
+                _pct(stats["chain"].get(2, 0), n),
+                _pct(stats["chain"].get(1, 0), n),
+                _pct(stats["chain"].get(0, 0), n),
+                _pct(stats["partial"], n),
+                _pct(stats["chain_missing"]["runs"], n),
+                ", ".join(
+                    f"`{clue}` {count}"
+                    for clue, count in stats["chain_missing"]["by_clue"].items()
+                )
+                or "—",
+                ", ".join(
+                    f"`{clue}` {count}" for clue, count in stats["withheld"]["by_clue"].items()
+                )
+                or "—",
+            ]
+        )
+    lines.append(
+        _md_table(
+            [
+                "run family",
+                "3/3",
+                "2/3",
+                "1/3",
+                "0/3",
+                "partial finding",
+                "runs with a recorded gap",
+                "fragments missing (runs)",
+                "fragments withheld by a failure",
             ],
             rows,
         )
@@ -1365,6 +1683,56 @@ def render_markdown(result: Mapping[str, Any]) -> str:
         )
     )
     lines.append("")
+
+    lines.append("### Options: each author question, measured both ways")
+    lines.append("")
+    lines.append(
+        "Every block below runs the **same seeds** twice, once on the setting the shipped case "
+        "declares and once on the alternative `strategy_game.casework.options` builds. The first row "
+        "of each block is the shipped setting. No row is a recommendation."
+    )
+    lines.append("")
+    for group, settings in result.get("options", {}).items():
+        lines.append(f"**{group}**")
+        lines.append("")
+        rows = []
+        for label, runs in settings:
+            stats = summarise({label: runs})[label]
+            n = stats["n"]
+            rows.append(
+                [
+                    label,
+                    n,
+                    ", ".join(f"{k} ({v})" for k, v in sorted(stats["endings"].items())),
+                    _pct(stats["chain"].get(3, 0), n),
+                    _pct(stats["partial"], n),
+                    _pct(stats["chain_missing"]["runs"], n),
+                    stats["checks"]["mean"],
+                    stats["complications"]["mean"],
+                    _pct(stats["wounds"]["party_runs"], n),
+                    stats["invocations"]["mean"],
+                    _pct(stats["invocations"]["closing_offered"], n),
+                ]
+            )
+        lines.append(
+            _md_table(
+                [
+                    "setting",
+                    "runs",
+                    "ending",
+                    "3/3",
+                    "partial finding",
+                    "a gap recorded",
+                    "checks mean",
+                    "complications mean",
+                    "party wounded",
+                    "invokes/run",
+                    "closing invoke",
+                ],
+                rows,
+            )
+        )
+        lines.append("")
 
     determinism = result["determinism"]
     lines.append("### Determinism")

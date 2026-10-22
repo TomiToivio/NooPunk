@@ -70,28 +70,58 @@ class PolicyTests(unittest.TestCase):
         self.assertEqual(run.checks, 1)  # the withdrawal's own WIL check
         self.assertEqual(run.chain_held, 0)
 
-    def test_a_party_that_fails_every_check_still_gets_the_whole_chain(self) -> None:
+    def test_a_party_that_fails_every_check_still_reaches_an_ending(self) -> None:
+        # The shipped chain withholds a fragment on a failure, so every check failing leaves nothing
+        # to assemble. Fail-forward means the *case* still closes and the record names the gap — not
+        # that a failing party is handed the whole chain.
         run = play_thorough(0, requested="evidence", rng=_Fixed(-1))
-        self.assertEqual(run.chain_held, 3)
+        self.assertEqual(run.chain_held, 0)
         self.assertFalse(run.partial)
-        self.assertEqual(run.applied, "closed_by_evidence")
+        self.assertEqual(run.applied, "closed_by_withdrawal")
+        self.assertEqual(set(run.chain_missing), set(kallio.CASE.chain))
+        self.assertEqual(run.blocked_states, 0)
         # The price is real: failures charge complications and stress on the way.
         self.assertTrue(run.complications)
         self.assertGreater(sum(run.stress.values()), 0)
 
+    def test_the_same_all_fail_run_withholds_nothing_when_the_option_is_off(self) -> None:
+        # The control: the previous behaviour is one option call away, which is what lets the
+        # document report the difference instead of asserting a preference.
+        from strategy_game.casework import options
+
+        always = options.with_chain_withholding(kallio.CASE, enabled=False)
+        run = play_thorough(0, requested="evidence", rng=_Fixed(-1), spec=always)
+        self.assertEqual(run.chain_held, 3)
+        self.assertFalse(run.partial)
+        self.assertEqual(run.applied, "closed_by_evidence")
+
     def test_a_party_that_never_asks_the_one_question_loses_the_clean_finding(self) -> None:
-        # SAV is the only skill that can obtain the registration card, so without it the chain stops
-        # at two fragments and the finding is assembled partially.
+        # SAV is the only skill that can obtain the registration card, so without it both routes to
+        # the manifest are gone, the chain stops at two fragments and the finding is partial.
         run = play_thorough(0, requested="evidence", skip_skills=("SAV",))
         self.assertEqual(run.chain_held, 2)
         self.assertTrue(run.partial)
         self.assertIn("unproven-chain", run.complications)
+        self.assertEqual(set(run.chain_missing), {"stack-manifest"})
 
-    def test_a_skill_the_case_never_checks_costs_nothing_to_drop(self) -> None:
-        run = play_thorough(0, requested="evidence", skip_skills=("SOM",))
-        self.assertEqual(run.chain_held, 3)
-        self.assertFalse(run.partial)
-        self.assertEqual(run.checks, play_thorough(0, requested="evidence").checks)
+    def test_every_individual_skill_is_rolled_somewhere_in_the_case(self) -> None:
+        # No skill is decorative: all six appear in the case's action sets, and a thorough run rolls
+        # all six. REF and SOM do it through the actions that give the closing check its aspects.
+        declared = {
+            action.check.skill
+            for scene in kallio.CASE.scenes
+            for action in scene.actions
+            if action.check is not None
+        }
+        self.assertEqual(declared, {"COG", "INT", "REF", "SAV", "SOM", "WIL"})
+        run = play_thorough(0, requested="evidence")
+        for skill in ("REF", "SOM"):
+            self.assertGreater(run.skills.get(skill, 0), 0, run.skills)
+        # And dropping one of them is no longer free: the check load falls.
+        without_ref = play_thorough(0, requested="evidence", skip_skills=("REF",))
+        self.assertLess(without_ref.checks, run.checks)
+        without_som = play_thorough(0, requested="evidence", skip_skills=("SOM",))
+        self.assertLess(without_som.checks, run.checks)
 
     def test_the_two_fragment_path_assembles_a_partial_finding(self) -> None:
         full = play_thorough(0, requested="evidence", rng=_Fixed(1))

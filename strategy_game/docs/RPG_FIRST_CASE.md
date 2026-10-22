@@ -55,13 +55,16 @@ presentation only, because a clue must never depend on one seat's action.
 |---|---|---|---|---|
 | 1 | The Kallio stairwell | Field Office, 06:20 | duty log vs raid clock (COG Fair); the liaison aside (SAV Average); refuse to sign (WIL Average, create advantage) | `raid-log`, `liaison-deadline`, aspect *Room to work* |
 | 2 | The woman with the stores unit | Meilahti clinic, 07:05 | sit with Nila (SAV Fair); scan the unit (COG Good); ask the clinic (SAV Fair); promise protection (SAV Average, create advantage) | `stack-card`, **`stack-manifest`** ×2 routes, *Nila's trust* |
-| 3 | Forty-one seconds | the rear stair, 08:10 | walk and time it (INT Fair); pull the mesh log (**cyber gate** + COG Fair); search the landing (INT Average) | **`camera-gap`** ×2 routes, `claw-mark` |
+| 3 | Forty-one seconds | the rear stair, 08:10 | walk and time it (INT Fair); pull the mesh log (**cyber gate** + COG Fair); search the landing (INT Average); hold the sealed hatch up (SOM Average, create advantage) | **`camera-gap`** ×2 routes, `claw-mark`, aspect *A shoulder under the hatch* |
 | 4 | A shape worn like a coat | the caretaker's flat, 09:00 | supervise the reading (**PSI gate** + WIL Good); thermal record (COG Fair); ask why she stayed (SAV Average) | **`impression-double`** ×2 routes, `witness-fear` |
-| 5 | Before noon | Field Office / loading bay, 11:40 | assemble the chain (no dice); pull the batch sign-out (COG Fair); read the file (INT Average); brief the liaison (SAV Fair, create advantage) | the **finding**, `batch-signature`, `lahtinen-file` |
+| 5 | Before noon | Field Office / loading bay, 11:40 | assemble the chain (no dice); pull the batch sign-out (COG Fair); read the file (INT Average); brief the liaison (SAV Fair, create advantage); get to the bay first (REF Fair, create advantage) | the **finding**, `batch-signature`, `lahtinen-file`, aspects *The liaison is listening* and *First to the loading bay* |
 
-Checks use **four skills of the character layer** — COG, INT, SAV, WIL — and every one is a plain Fate
-overcome or create-advantage through `rpg.skills.check(..., ActionContext.INDIVIDUAL)`. The two special
-layers are the ones that already exist, not new mechanics:
+Checks use **all six skills of the character layer** — COG, INT, REF, SAV, SOM, WIL — and every one
+is a plain Fate overcome or create-advantage through
+`rpg.skills.check(..., ActionContext.INDIVIDUAL)`. `REF` and `SOM` reach the case through two
+create-advantage actions (*get to the bay first*, *hold the hatch up*); neither yields a clue, so
+neither moves the chain, and the two aspects they create are what a closing check can invoke. The two
+special layers are the ones that already exist, not new mechanics:
 
 * **Cyber.** `pull_the_mesh_log` first asks
   `cyber.ConnectivityModel.resolve_access("local_only", "after_crisis", "field_netrunner")`. The mesh
@@ -92,6 +95,15 @@ finding is marked partial, and the faction's record says so (`case-chain-incompl
 refuses and names exactly what is missing. A player who skips the lab, the mesh or the witness still
 gets a weaker true story rather than a dead end.
 
+**The chain can end short, and says so.** The six chain-yielding actions carry
+`withhold_on_failure`: a **failed** check does not hand over its fragment (a tie still does). Every
+fragment has two routes, so the failure removes one route rather than the last one; a fragment lost
+twice leaves a **gap** the record names (`ResolutionResult.gaps`, `report()["chain"]["missing"]`) and
+the case closes on the partial finding, or on the weaker resolution below the partial floor. Measured
+in [`CASE_MECHANICS_OPTIONS.md`](CASE_MECHANICS_OPTIONS.md) §3.2 against the alternative
+(`casework.options.with_chain_withholding(..., enabled=False)`, which restores "every check grants its
+clue").
+
 The `claw-mark` clue exists to protect the other half of the reasoning: the raid itself was real.
 Without it the chain would read as "nothing happened", which the evidence does not support.
 
@@ -106,7 +118,7 @@ price of each:
 | success with style | clue/intel granted; a create-advantage aspect gets **two** free invocations |
 | success | clue/intel granted; aspect gets one free invocation |
 | tie | clue/intel granted, **minor cost** (a complication, or a point of stress) |
-| failure | clue/intel still granted, **serious cost** (a complication plus stress, or a named consequence) |
+| failure | clue/intel still granted, **serious cost** (a complication plus stress, or a named consequence) — except on an action marked `withhold_on_failure`, where the fragment is what the failure costs |
 | create-advantage failure | no aspect; the declared cost only — the clue never depended on it |
 
 Costs are recorded, not narrated away: `nila-withdraws`, `liaison-doubt`, `clinic-logged-the-scan`,
@@ -118,8 +130,15 @@ Costs are recorded, not narrated away: `nila-withdraws`, `liaison-doubt`, `clini
 | Resolution | Needs | Closing check | Writes |
 |---|---|---|---|
 | **Close it on the record** | the assembled finding | SAV Good (passive) | objective *closed on the record*; `unsa-field-office-trust` (or `…-doubt` on a failed press); the corrected-statement intel |
-| **Take it to the loading bay** | the finding or two fragments, **and** `batch-signature` | SAV Great **opposed** by Lahtinen (words) or REF **opposed** attack (force) | objective *closed with a detention*; trust + `kallio-residents-wary`; `lahtinen-in-custody`; the sleeve controller as a resource |
+| **Take it to the loading bay** | the finding or two fragments, **and** `batch-signature` | SAV Great **opposed** by Lahtinen (words) or an **opposed** attack (force) | objective *closed with a detention*; trust + `kallio-residents-wary`; `lahtinen-in-custody`; the sleeve controller as a resource |
 | **Refer it and walk away** | nothing | WIL Average | objective *referred to Internal Affairs*; `internal-affairs-referral` (or `…` + `case-left-open` on a failure) |
+
+The force exchange **attacks with the resolution's own skill**, `SAV`, in the shipped case: this table's
+"REF opposed attack" is the reading the playtest flagged (F2) as differing from the code, and it is
+still the author's to rule on. `casework.options.with_force_attack_skill(case, "REF")` plays that
+reading and
+[`CASE_MECHANICS_OPTIONS.md`](CASE_MECHANICS_OPTIONS.md) §4 measures what it costs (44% rather than
+76% detentions, and twice the wounds).
 
 Combat is **one opposed exchange** — attack versus defence, then `rpg.scene.apply_hit`. There is no
 initiative, no action economy, no cover, no round structure and no death rule: those are the author's
