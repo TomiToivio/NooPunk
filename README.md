@@ -1,45 +1,44 @@
 # NoöPunk
 
-## Humanity Is No Longer Alone
+## Reality has changed. You are still expected at work.
 
-*The future of humanity is no longer human.*
+*The future of humanity is no longer exclusively a human concern.*
 
-**The year is 2045. Humanity has survived the greatest paradigm shift in its history. Reality itself has changed.**
+**2045. Humanity survived the NHI Crisis. It is having trouble explaining what survived.**
 
-The NHI Crisis shattered humanity's understanding of its place in the universe. We are no longer alone, no longer the most intelligent beings on Earth, and perhaps no longer masters of our own minds.
+Earth is still here. So are governments, employers, political parties and the people who tell you that everything is under control. There are more kinds of intelligence now. Control is harder to locate.
 
-Hostile superintelligences, both extraterrestrial and artificial, threaten human civilization. Rogue artificial minds pursue incomprehensible goals. Alien infiltrators walk among us. Meanwhile, mysterious and seemingly benevolent extraterrestrial **Zookeepers** offer protection, guidance, and the possibility of a radically different future. But what do they really want?
+Rogue artificial minds pursue purposes nobody can translate into reassuring language. Alien infiltrators look like people. The apparently benevolent **Zookeepers** offer protection and a better future. You would like to be grateful. You would also like to know what a zookeeper means by “better.”
 
-Humanity is changing just as rapidly. Artificial intelligence, cybernetics, genetic engineering, and psionics are transforming our species into a multitude of humans, cyborgs, transhumans, and posthumans. The boundaries between human, machine, alien, and consciousness itself are dissolving.
+Cybernetics, genetic engineering and psionics are changing what a person can be. Human, cyborg, transhuman, posthuman: the categories multiply as the distinctions become less dependable. Somewhere in all this is somebody trying to remain themselves.
 
-In the face of existential threats, humanity has united under the **United Nations**. But political unity does not mean ideological consensus. Rival factions struggle to determine humanity's deep future: resist the transformation, control it, or embrace the emergence of a new civilization.
+Humanity has united under the **United Nations**. It has not agreed on what humanity is, or what it ought to become. Rival factions offer resistance, control or transformation. Each would prefer to settle the question before the others do.
 
-Climate change, ecological restoration, synthetic biology and the transformation of the **biosphere** are equally fundamental to this age. The political struggle is not only against catastrophe: clean energy, resilient communities and biotechnology can help create genuinely better futures, if people can govern them.
+And the biosphere still needs looking after. A revelation about consciousness does not repair a damaged ecosystem. Clean energy, ecological restoration and biotechnology offer the possibility of a better life. People still have to build it, share it and keep it alive.
 
-Three great paradigm shifts define the age:
+Three paradigm shifts make certainty difficult:
 
-- **AGI: Artificial General Intelligence.** The creation of minds beyond human intelligence, promising abundance and threatening extinction.
-- **NHI: Non-Human Intelligence.** Contact with extraterrestrial and other mysterious intelligences, overturning humanity's understanding of reality and its place in the cosmos.
-- **PSI: Psionics and Consciousness.** The discovery that mind and reality are stranger, more interconnected, and potentially more powerful than modern science imagined.
+- **AGI: Artificial General Intelligence.** We made minds that could exceed our own. Abundance and extinction both entered the discussion. So did ownership.
+- **NHI: Non-Human Intelligence.** We were not alone. This answered one question and made most of the others worse.
+- **PSI: Psionics and Consciousness.** Mind and reality proved more intimately connected than expected. The discovery did not make it easier to agree about either.
 
-**NoöPunk** is a New Weird science-fantasy role-playing game and political strategy simulation about humanity's struggle for survival, transformation, and control over its own destiny.
+**NoöPunk** is an experimental **New Weird / Social Science Fiction RPG and political strategy project**, growing into cyberpunk science fantasy as its world changes. Investigate the impossible at the scale of a person; contest the future at the scale of a faction. The legacy RPG and the strategy/RPG crossover share a world, with distinct rules and scenario entry points.
 
-Play as an individual investigating the impossible, or as a faction shaping the future of civilization. Explore a world where every technological breakthrough becomes a political crisis, every existential threat creates new ideologies, and every answer raises deeper questions.
+A breakthrough can become a political crisis. A crisis can become somebody's career. Behind both is the awkward question of who needs help, and whether you can still do something for them.
 
-**The old world is transforming. The next one is still up for grabs.**
+**The next world is still up for grabs. You have to live in this one while you argue about it.**
 
 NoöPunk also uses a **three-system lens**: living/biological systems (biopunk, solarpunk and planetary ecology), social systems (communication and politics amid AGI/NHI contact), and psychic systems (consciousness, PSI and the fictional Noösphere). These are distinct but interdependent; neither a climate apocalypse nor an effortless ASI utopia is inevitable. See the [biosphere paradigm design](docs/design/ISSUE_510_BIOSPHERE_PARADIGM.md) (#510).
 
 *Setting note: 2045 depicts the developed NHI Crisis era. The earlier strategy campaign begins around 2027, before these outcomes are settled, allowing players to shape the future rather than treating it as inevitable.*
 
+## Before NoöPunk: a transmission, possibly
 
-## Before NoöPunk: Tommy Pilgrim and the 1974 download
+In **1974**, **Tommy Pilgrim**, a left-wing science-fiction writer, took LSD at a **Hawkwind concert** and experienced what he called a transmission from **VALIS**. It appeared to contain humanity's future. Artificial minds, alien encounters, psychic phenomena, political upheaval. An unreasonable amount of information for one evening.
 
-In **1974**, at a **Hawkwind concert**, a left-wing science-fiction writer named **Tommy Pilgrim** took LSD and experienced what he described as a transmission from **VALIS**. Amid the space rock, he believed he had received a staggering download of humanity's future: artificial minds, political upheavals, alien encounters, cybernetic bodies, psychic phenomena, and a civilization struggling to understand what consciousness even was.
+He wrote it down as ***NoöPunk***. He could not establish whether he had seen the future, misunderstood a symbol, or looked into a neighboring timeline. Some of the future's machinery looked suspiciously like 1974. The uncertainty did not prevent the book from becoming a cult classic. Neither did it prevent later events from beginning to resemble it.
 
-Pilgrim wrote it down as ***NoöPunk***, a psychedelic, radical, occasionally ridiculous work of social science fiction. He could never be certain whether his visions were genuine precognition, symbolic misreadings, or glimpses of a neighboring timeline. His technological descriptions sometimes resembled the hardware of 1974 more than the machines they seemed to predict. Yet, decade after decade, uncomfortable numbers of his supposedly fictional events began to look familiar.
-
-The novel became a cult classic, then inspired films, television, tabletop and computer games, and an entire NoöPunk subculture. **Pilgrim is still alive in Helsinki**, now a literary celebrity studied by scholars and courted by parapsychologists. Whether his extraordinary foresight came from VALIS, chance, or something stranger remains an open question *inside the fiction*.
+Films, television, tabletop and computer games followed, along with a NoöPunk subculture. **Pilgrim is still alive in Helsinki**, a literary celebrity studied by scholars and courted by parapsychologists. There are several explanations for what happened to him. None has disposed of the others.
 
 **And this is where the book ends and the scenario begins.** The real-world NoöPunk project uses Pilgrim's imaginary 1974 future history as a **presentation and narrative frame**, not as evidence of actual precognition and not as permission to rewrite its underlying simulation or canon. The opening account summarizes the established premise; Tommy Pilgrim's full literary story remains reserved for the project's author. [Design background: issue #447](https://github.com/TomiToivio/NooPunk/issues/447).
 
@@ -77,19 +76,23 @@ NoöPunk explores how institutions, ideologies, communications, economies, relig
 
 **Elevator pitch.**
 
-> Earth still exists. That is the problem. An agency nobody outside it takes entirely
-> seriously investigates abductions, infiltrations and impossible physics, while two non-human
-> powers rebuild the planet for reasons of their own.
+> Reality has changed. The institutions responsible for explaining it are still open.
+> NoöPunk is a New Weird RPG and political simulation about who gets believed,
+> who gets power, and what happens to everyone else.
 
-**Storefront pitch.**
+**Storefront pitch — the later UNSA investigation setting.**
 
-> **NoöPunk** is a New Weird social-science RPG and political simulation of investigation in a wounded near-future.
-> The Fall has not happened; a catastrophe already has. Two non-human factions helped rebuild
-> Earth after regional holocausts, and neither can be filed as simply an ally or an enemy.
-> You are a newly graduated investigator of the **United Nations Security Administration
-> (UNSA)** — trained, augmented, wired to a limited forensic AI, and sent into a world where
-> mind-control, hybridization, corporate psy-ops and ordinary human lying all leave the same
-> kind of evidence.
+> You have graduated. You have been augmented. You have been assigned a limited
+> forensic AI. The **United Nations Security Administration (UNSA)** considers
+> you ready.
+>
+> Earth has survived regional catastrophes. Two non-human powers helped rebuild
+> it, and neither fits comfortably under “ally” or “enemy.” Your work concerns
+> abductions, infiltrations and impossible physics. Mind-control, hybridization,
+> corporate psy-ops and ordinary human lying can leave much the same evidence.
+>
+> Someone is in trouble. You need to decide what happened, who to trust,
+> and what you can do before a convincing explanation takes the place of an answer.
 
 **Comparisons.** NoöPunk sits between three touchstones and borrows from each:
 
@@ -289,13 +292,11 @@ The current core work is [issue #111](https://github.com/TomiToivio/NooPunk/issu
 
 ## What NoöPunk is about
 
-The **Cyberpunk** side explores the AI revolution, automation, surveillance, corporate and state power, hacking, biotechnology, BCI, cybernetics, morphs, cyborgification, transhumanism, and post-scarcity technologies.
+The **Cyberpunk** question is who owns the machinery: the AI, the surveillance network, the augmented body, the means of making a life. Automation, biotechnology and post-scarcity possibilities arrive in a world that already knows how to distribute things unequally.
 
-The **Noösphere** side explores NHI/UAP contact, psionics, panpsychism, consciousness-related phenomena, and the possibility that humans, machines, cultures, and networks form larger cognitive assemblages.
+The **Noösphere** question is who, or what, is having the experience. NHI contact, psionics and panpsychism disturb the boundaries between minds, machines, cultures and networks. Understanding the equipment may not settle the question of who is using it.
 
-The setting treats these as simultaneous paradigm shifts. Humans are deeply divided about them: enthusiasts, accelerationists, doomers, skeptics, regulators, opportunists, believers, critics, and people who simply do not care or understand what is happening all inhabit the same world.
-
-NoöPunk therefore focuses not only on future technology, but on what societies do when several incompatible futures arrive at once.
+Enthusiasts, skeptics, regulators, believers and opportunists inhabit the same world. So do people who would like to finish an ordinary day without revising their entire account of existence. Several incompatible futures have arrived. They all need somewhere to live.
 
 ## How the game works
 
