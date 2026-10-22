@@ -403,8 +403,8 @@
     },
     {
       "path": "TERAPIASESSIO.md",
-      "bytes": 4023,
-      "sha256": "2354e465339b49fc3d9c219574f88f8767ff89dd06edd057b4ffc4e0f437cac8",
+      "bytes": 4067,
+      "sha256": "be9eb2ba6045940bfda280407450bb242b014743044afbb75766af5f9da6be78",
       "source_path": "noopunk/ubiquitous_maniacs/TERAPIASESSIO.md",
       "source_blob_sha": "b332a6731564daca92a66d92d3081f4b6dfb1fc8",
       "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
@@ -1384,8 +1384,8 @@
     },
     {
       "path": "docs/THERAPY_DAY_1_DRAFT.md",
-      "bytes": 18274,
-      "sha256": "988756e8aa04323437409f8a646e67994aab5f0a379082a2efb2e4fe4cfc2894",
+      "bytes": 18804,
+      "sha256": "d8001c7d57a957d488462645a742ac5124ae80fa4715df68665812da591ae8fa",
       "source_path": "noopunk/ubiquitous_maniacs/docs/THERAPY_DAY_1_DRAFT.md",
       "source_blob_sha": "7d555f031a5db117893b0ca65e1dab82d5bce0ac",
       "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
@@ -1411,8 +1411,8 @@
     },
     {
       "path": "docs/THERAPY_SESSION_DAY_1_PROPOSAL.md",
-      "bytes": 20246,
-      "sha256": "3ecdafb6f52eae35fb9bc6b8ac7cd55cdd550a3351ee9b642899e6c4a54c8992",
+      "bytes": 20757,
+      "sha256": "b34f30f256c9e96d960280fe00fe3ca5cc1bc9d7c340b16d93573afc93e3d12a",
       "source_path": "noopunk/ubiquitous_maniacs/docs/THERAPY_SESSION_DAY_1_PROPOSAL.md",
       "source_blob_sha": "896c46829531b7bb21e5fd9a56a10a9ad0b2ddfa",
       "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
@@ -1690,8 +1690,8 @@
     },
     {
       "path": "play.py",
-      "bytes": 34626,
-      "sha256": "941ef29503535d23395ebd414eb18b39868c904b4d0a7108d2353d3f87ae80ad",
+      "bytes": 35488,
+      "sha256": "2cbd0c68743b4e8082f22f7733d90f8de6d336bf400eced8611a92f895c8a45b",
       "source_path": "noopunk/ubiquitous_maniacs/play.py",
       "source_blob_sha": "d4a43978e48508af63fd9b2e62ef7c882688afe4",
       "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",

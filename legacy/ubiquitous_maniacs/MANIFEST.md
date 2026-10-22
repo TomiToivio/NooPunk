@@ -13,7 +13,7 @@ Complete inventory of the *Ubiquitous Maniacs* corpus imported from `TomiToivio/
 | source commit at import | `895bdc1078233c1d061e60852ad86de3c01e5c51` |
 | import date | 2026-10-22 |
 | files imported | **279** |
-| bytes imported | **2,469,350** |
+| bytes imported | **2,471,297** |
 | files excluded | **5** |
 | sync | none — this is a snapshot, not a mirror |
 
@@ -21,7 +21,7 @@ Every file below carries the sha256 of the imported copy, the upstream git blob 
 
 ## Imported files by class
 
-### corpus root document — 30 files, 298,105 bytes
+### corpus root document — 30 files, 298,149 bytes
 
 | path | bytes | sha256 (first 16) | upstream blob sha |
 | --- | --- | --- | --- |
@@ -51,12 +51,12 @@ Every file below carries the sha256 of the imported copy, the upstream git blob 
 | `RULEBOOK.md` | 28,613 | `6c7aa9bf2c0565c3` | `4410ca7694ca` |
 | `SISÄAVARUUS.md` | 7,561 | `794a25e774766aac` | `aad5f37fba36` |
 | `SKILLS.md` | 5,431 | `be3823d174fa4e5c` | `751da2b0d942` |
-| `TERAPIASESSIO.md` | 4,023 | `2354e465339b49fc` | `b332a6731564` |
+| `TERAPIASESSIO.md` | 4,067 | `be9eb2ba6045940b` | `b332a6731564` |
 | `VUOROVAIKUTUS.md` | 2,688 | `356151ba43606557` | `11dd160ee5e9` |
 | `requirements-llm.txt` | 1,156 | `4199877643b8059d` | `9496765fd4eb` |
 | `requirements.txt` | 58 | `1b3235d7a18a842f` | `909f76c0577c` |
 
-### design and research documentation — 128 files, 1,288,270 bytes
+### design and research documentation — 128 files, 1,289,311 bytes
 
 | path | bytes | sha256 (first 16) | upstream blob sha |
 | --- | --- | --- | --- |
@@ -166,10 +166,10 @@ Every file below carries the sha256 of the imported copy, the upstream git blob 
 | `docs/SUPERVILLAIN_ARCHITECTURE.md` | 6,597 | `189445c3eea886be` | `852f08e77c1b` |
 | `docs/TAROT_ORACLE_MODULE.md` | 4,839 | `c530b892e84cb41b` | `5313f90bf00f` |
 | `docs/THEORETICAL_SUPERPOSITIONS.md` | 7,354 | `d5d92fdc61349314` | `642d950e3791` |
-| `docs/THERAPY_DAY_1_DRAFT.md` | 18,274 | `988756e8aa043234` | `7d555f031a5d` |
+| `docs/THERAPY_DAY_1_DRAFT.md` | 18,804 | `d8001c7d57a957d4` | `7d555f031a5d` |
 | `docs/THERAPY_DAY_1_MAIN_PLOT.md` | 24,458 | `b4621b9d0388b1e0` | `48a002778d69` |
 | `docs/THERAPY_DAY_2_PLANNING.md` | 5,093 | `ef4e1a7fa6da1fe8` | `cc81a357b215` |
-| `docs/THERAPY_SESSION_DAY_1_PROPOSAL.md` | 20,246 | `3ecdafb6f52eae35` | `896c46829531` |
+| `docs/THERAPY_SESSION_DAY_1_PROPOSAL.md` | 20,757 | `b34f30f256c9e96d` | `896c46829531` |
 | `docs/THERAPY_SESSION_MODEL.md` | 7,324 | `dfc78439fd11e9db` | `74c90b6e2fc0` |
 | `docs/THE_STACK_PROTOCOL_AND_CYBERSPACE.md` | 4,611 | `a6cc4b5c648b5c9f` | `27ba90010153` |
 | `docs/TOMI_TOIVIO_1974_AUTHOR_FRAME.md` | 11,985 | `ed55d315d300f292` | `6ec7989f3167` |
@@ -189,13 +189,13 @@ Every file below carries the sha256 of the imported copy, the upstream git blob 
 | `docs/WENDT_PSI_RULES.md` | 10,504 | `fc33dbb78392187e` | `ab7dc6b37317` |
 | `docs/XENOFEMINISM_AND_NOOPUNK.md` | 2,703 | `e8354ee37cb1b678` | `d0d82d1c6033` |
 
-### entry-point script — 4 files, 65,537 bytes
+### entry-point script — 4 files, 66,399 bytes
 
 | path | bytes | sha256 (first 16) | upstream blob sha |
 | --- | --- | --- | --- |
 | `app.py` | 21,892 | `33e79af858b7a71c` | `f99b5a38cd28` |
 | `hacking_demo.py` | 7,265 | `47861643d23accb7` | `1b5a6375f63c` |
-| `play.py` | 34,626 | `941ef29503535d23` | `d4a43978e485` |
+| `play.py` | 35,488 | `2cbd0c68743b4e80` | `d4a43978e485` |
 | `social_demo.py` | 1,754 | `e102d1d4f4931151` | `d7ae6cc4538d` |
 
 ### reference (LaclauGPT import) — 11 files, 210,726 bytes
