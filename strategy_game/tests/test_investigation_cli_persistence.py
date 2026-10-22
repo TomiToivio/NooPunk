@@ -24,6 +24,27 @@ class InvestigationCLIPersistenceTest(unittest.TestCase):
             self.assertEqual(recovered.events[0]["kind"], "rpg_check")
             self.assertEqual(recovered.events[0]["actor_id"], "leader")
 
+    def test_party_selection_saved_before_next_prompt(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            save_path = Path(tmp) / "case.json"
+            with patch("builtins.input", side_effect=[
+                "party leader agent_3", KeyboardInterrupt
+            ]):
+                with self.assertRaises(KeyboardInterrupt):
+                    main(["--save", str(save_path)])
+            recovered = Investigation.load(save_path)
+            self.assertEqual(recovered.participants, ["leader", "agent_3"])
+
+    def test_invalid_party_selection_does_not_create_save(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            save_path = Path(tmp) / "case.json"
+            with patch("builtins.input", side_effect=[
+                "party outsider", KeyboardInterrupt
+            ]):
+                with self.assertRaises(KeyboardInterrupt):
+                    main(["--save", str(save_path)])
+            self.assertFalse(save_path.exists())
+
     def test_invalid_check_does_not_create_save(self):
         with tempfile.TemporaryDirectory() as tmp:
             save_path = Path(tmp) / "case.json"
