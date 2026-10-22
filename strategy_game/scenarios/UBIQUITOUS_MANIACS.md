@@ -1,18 +1,19 @@
-# Ubiquitous Maniacs: current-engine scenario
+# Ubiquitous Maniacs in the shared NoöPunk RPG
 
-An original two-day UFAB clinic investigation adapted from the author's historical Ubiquitous Maniacs project. A test participant encounters inconsistent records, a psychotronic trial and a dream simulation. This is a compact playable narrative scenario seed, **not** a full port of the legacy campaign, character arcs, social graph or hacking minigame.
-
-Run from repository root:
+The supported play entrypoint is now the **same RPG package** as other NoöPunk demonstrations:
 
 ```sh
-python -m strategy_game.scenarios.ubiquitous_maniacs
-python -m unittest strategy_game.tests.test_ubiquitous_maniacs
+python -m strategy_game.rpg --scenario ubiquitous-maniacs
+python -m strategy_game.rpg --scenario ubiquitous-maniacs --new --save my_case.json
+python -m unittest strategy_game.tests.test_unified_ubiquitous_maniacs
 ```
 
-The module uses the current `Character`, six individual RPG skills, `Action.OVERCOME` and `scene.check`. Choices are narrative transitions; optional seeded Fate checks are nonblocking and replay-verified when loading a save. A full session can be serialized through `to_dict()` / `from_dict()`.
+Choose a displayed option, or use `check romppainen SAV 1 42` to request a seeded, optional Fate check. The game saves after each valid action and on quit/EOF. Reopen the same command to resume. The current Fate resolver, character sheets and six-skill vocabulary are shared with the engine, not copied into the scenario.
 
-## Copyright and source hygiene
+The two-day scenario is a minimal integrated slice. The historical project included richer psychotronic, relationship and cyber subsystems which remain outside the active engine until separately adapted and tested; the old engine is **not** invoked.
 
-This new adapter includes only newly written scenario prose and the author's original UFAB/Romppainen premise. **No original legacy tree is included.** In particular, the legacy `references/maniac_transcripts` directory contains television scripts and must never be copied to main or into release artifacts. No dialogue, character names, episode scenes, brand names, artwork, music or episode transcripts from *Maniac*, *Riget*, *Paprika* or other source works are used in this scenario. Mentioning external titles here is attribution of inspiration, not permission to redistribute them.
+## Copyright hygiene and remaining release decisions
 
-The earlier branch `import/ubiquitous-maniacs-legacy` remains separate and contains uncleared material. Do **not merge that branch**, even after deleting files, because ordinary merges preserve history. Any future salvage should use fresh, individually reviewed additions on branches based on `main`. A legal/human review is still required for a public release; this technical cleanup cannot prove absence of all infringement.
+The original works that inspired the setting are credited as inspirations only. The imported transcript collection is not shipped. Transcript-derived style analysis, which directly quotes protected dialogue and branded fiction, is removed from both duplicate historical trees. Original design commentary may be retained but must not be described as legally cleared without human review.
+
+**Git history remains a separate cleanup issue.** Ordinary Git commits cannot erase past blobs, and deleting historic material from HEAD is not history sanitization. To purge published historical refs, coordinate a repository-wide history rewrite, review PR/branch refs and caches, force-push a rewritten root and inform collaborators to reclone. The GitHub connector here does not provide a complete safe GitHub history purge operation. No code licence or original-content licence is selected by this change.
