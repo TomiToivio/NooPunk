@@ -52,6 +52,7 @@ INVESTIGATE = (
     "act sebastian read_the_stairwell",
     "act harri pull_the_mesh_log",
     "act falk search_the_landing",
+    "act pc hold_the_hatch",
     "next",
     "act univaara supervise_the_reading",
     "act harri check_the_thermal_record",
@@ -61,6 +62,7 @@ INVESTIGATE = (
     "act harri pull_the_batch_signout",
     "act sebastian read_his_file",
     "act univaara brief_the_liaison_early",
+    "act falk get_to_the_bay_first",
 )
 
 
@@ -200,7 +202,7 @@ class NoSecondEngineTests(unittest.TestCase):
             for event in _s(played).events
             if event.get("kind") == "case_action" and event.get("check")
         ]
-        self.assertEqual(len(checks), 14)  # every rolled action on this route's script
+        self.assertEqual(len(checks), 16)  # every rolled action on this route's script
         self.assertTrue(all(check["dice"] for check in checks))
 
     def test_the_menu_reports_exactly_the_sessions_verdict(self) -> None:

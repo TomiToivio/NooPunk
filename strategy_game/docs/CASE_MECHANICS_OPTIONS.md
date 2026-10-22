@@ -91,13 +91,14 @@ Same command, same seed block (0–299, 300 seeds per route and policy), same ca
 
 ### 3.1 F4 — the aspect economy
 
-| run family | runs invoking on an action check | invokes/run | runs offering one to the closing check |
+| run family | runs invoking on an action check | invokes/run | runs spending one on the closing check |
 |---|---|---|---|
-| `thorough:evidence` (before) | **0 / 300** | 0.00 | 193 |
+| `thorough:evidence` (before) | **0 / 300** | 0.00 | 193 (offered, **dropped**) |
 | `thorough:evidence` (after, free spent as they come) | **300 / 300** | 6.23 | 73 |
 | `thorough:evidence` (after, one kept for the close) | 281 / 300 | 2.11 | **275** |
 | `thorough:evidence` (after, free and paid) | 300 / 300 | 17.91 | 158 |
 | `thorough:evidence` (after, ignoring invocations) | 0 / 300 | 0.00 | 0 |
+| the four shipped routes (after) | 0 (the demo spends only at the close) | 0.00 | 211–213 of 300, free |
 
 The single number that mattered most is the seventh column of the old document's table: an aspect was
 worth **+2 on one passive roll** and **nothing** on the opposed one. It is now worth +2 on both:
@@ -107,6 +108,15 @@ worth **+2 on one passive roll** and **nothing** on the opposed one. It is now w
 | `closed_by_evidence` (passive SAV) | failure 8.3%, style 50.0% | failure 18.3%, style 23.3% | failure 1.7%, style 59.7% | failure 17.3%, style 16.3% |
 | `closed_by_confrontation` (opposed, `pressure`) | **identical to no aspect** (187/300 detention) | 187/300 detention | **230/300 detention** | **158/300 detention** |
 
+The same table for the four **shipped routes**, which now spend the aspect they earn at the close:
+
+| route | chain 3/3 | partial | a gap recorded | the closing check invoked | ending |
+|---|---|---|---|---|---|
+| `investigate` | 289/300 | 11 | 11 | 213 | evidence 300 |
+| `confront:pressure` | 289/300 | 11 | 11 | 211 | detention 241, referral 59 |
+| `confront:force` | 289/300 | 11 | 11 | 211 | detention 271, referral 29 |
+| `refer` | 289/300 | 0 | 11 | 0 (the referral needs no aspect) | referral 300 |
+
 The opposed row is the fix: before, the free invocation was accepted and dropped, so the aspect moved
 nothing; now it moves 72 detentions per 300 runs.
 
@@ -115,13 +125,17 @@ nothing; now it moves 72 detentions per 300 runs.
 | run family | 3/3 | 2/3 | ≤1/3 | partial finding | runs with a recorded gap |
 |---|---|---|---|---|---|
 | shipped routes (before) | 100.0% | 0.0% | 0.0% | 0.0% | — |
-| shipped routes (after) | 94.3% | 5.3% | 0.3% | 5.3% | 5.7% |
+| shipped routes (after) | 96.3% | 3.7% | 0.0% | 3.7% | 3.7% |
 | `thorough:*` (before) | 100.0% | 0.0% | 0.0% | 0.0% | — |
 | `thorough:*` (after) | 95.0% | 5.0% | 0.0% | 5.0% | 5.0% |
 | `minimal:evidence` (before) | 100.0% | 0.0% | 0.0% | 0.0% | — |
 | `minimal:evidence` (after) | 62.3% | 31.3% | 6.3% | 31.3% | 37.7% |
 | `random` (before) | 14.7% | 32.7% | 52.7% | 13.0% | — |
 | `random` (after) | 10.0% | 27.7% | 62.3% | 12.3% | 90.0% |
+
+(The route figures differ from the policy figures above because the demo script is a *fixed* route: it
+takes the same actions in the same order on every seed, and the dice decide whether a fragment comes
+back. A policy that takes everything has more routes to lose.)
 
 The extreme the old document quoted:
 
@@ -131,7 +145,7 @@ The extreme the old document quoted:
 | `every-check-fails` (after) | **closed_by_withdrawal** | failure | **0** | False | 17 | 15 | `stack-manifest`, `camera-gap`, `impression-double` |
 | `every-check-succeeds` (after) | closed_by_evidence | success_with_style | 3 | False | 19 | 0 | — |
 | `two-fragments` (after) | closed_by_evidence | success_with_style | 2 | **True** | 16 | 1 | `impression-double` |
-| `one-fragment` (after) | closed_by_withdrawal | success_with_style | 1 | False | 12 | 0 | 2 named |
+| `one-fragment` (after) | closed_by_withdrawal | success_with_style | 1 | False | 12 | 0 | `camera-gap`, `impression-double` |
 
 A party that fails everything still **closes the case, pays 15 complications, is never blocked, and
 carries a record that names all three missing fragments** — it just cannot claim the finding. That is
@@ -193,14 +207,14 @@ per run in normal play, and a completely different answer at the tail.
 
 ### Which skill does a force exchange attack with? (`TUNING_OPPOSED_ATTACK_SKILL`)
 
-| setting | detention | withdrawal | party wounded |
+| setting | detention | withdrawal | party wounded (runs) |
 |---|---|---|---|
-| the resolution's own — `SAV` (code, shipped) | **228 / 300 (76.0%)** | 72 | 25.0% |
-| `REF` — the case document's "REF opposed attack" | **133 / 300 (44.3%)** | 167 | 52.5% |
+| the resolution's own — `SAV` (code, shipped) | **228 / 300 (76.0%)** | 72 | 96 / 300 (32.0%) |
+| `REF` — the case document's "REF opposed attack" | **133 / 300 (44.3%)** | 167 | 154 / 300 (51.3%) |
 
 That gap is F2's whole size: `force` currently attacks with `SAV` 4 against Lahtinen's `REF` 2, which
 is why it beats `pressure` (`SAV` 4 vs `SAV` 3). Reading `REF` as the document says makes force the
-*worse* option and doubles the wounds. Both readings are now one flag apart; the choice is the
+*worse* option and adds 58 wounded parties per 300 runs. Both readings are now one flag apart; the choice is the
 author's, and the shipped case does not make it.
 
 ### Is a tie on a confrontation total failure? (`TUNING_CONFRONTATION_TIE`)
@@ -243,13 +257,15 @@ old evidence would notice:
    (18 + the closing check) instead of 17. This is the cost of §2.3 and it is the only reason the
    "checks mean" column moved.
 2. **The demo routes now spend the aspect they create.** `confront:pressure` reaches a detention in
-   **236/300** runs where it reached **155/300**, and `confront:force` in **264/300** where it reached
+   **241/300** runs where it reached **155/300**, and `confront:force` in **271/300** where it reached
    **210/300**. That is the size of the bug F4(a) described: the free invocation was there, offered,
-   and silently dropped. `investigate` now reaches the evidence ending in **299/300** (was 300/300):
-   one seed in three hundred loses two fragments and falls back, which is the lossiness working.
+   and silently dropped. `investigate` still reaches the evidence ending in **300/300**, but 11 of
+   those runs hold a **partial** finding with a named gap, which is the lossiness working.
 3. **`demo.play` no longer raises** when the requested ending needs something the party did not get.
    It notes the refusal and closes on the weaker record — the difference between a demo that shows a
-   lossy chain and one that crashes on it.
+   lossy chain and one that crashes on it. The interactive front end (`casework/play.py`, merged in
+   #542) now spends the closing aspect the same way, so a played run and a scripted one still produce
+   the same record.
 4. **Records gained fields, nothing lost:** `report()["chain"]["missing"]`,
    `report()["findings"][i]["missing"]`, `ResolutionResult.gaps`, `ActionResult.withheld/invoked`,
    and `withhold_on_failure` / `force_attack_skill` / `tie_is_not_total_failure` / `aspects` in the

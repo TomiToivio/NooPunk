@@ -643,11 +643,23 @@ def play(
                     out(f"approach takes one of {', '.join(APPROACHES)}; using pressure.")
                     chosen = "pressure"
                 approach = chosen
+            # The party's own aspect, if the closing scene earned one: the front end chooses *whether*
+            # to spend it, the session decides what it is worth. Same rule as the headless demo, so a
+            # played run and a scripted one still produce the same record.
+            free = next(
+                (
+                    name
+                    for name, aspect in session.scene.aspects.items()
+                    if aspect.free_invocations > 0
+                ),
+                None,
+            )
             try:
                 result = session.resolve(
                     spec.id,
                     seat_id=seat_id,
                     approach=approach if spec.opposed_by else "",
+                    free_invoke=free,
                 )
             except CaseworkError as exc:
                 out(f"The case refuses: {exc}")

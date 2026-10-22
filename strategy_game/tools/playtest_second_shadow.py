@@ -381,6 +381,14 @@ def _record(
     if closing is not None:
         skills[closing.skill] += 1
         skill_outcomes[closing.skill]["closing"] += 1
+    # The closing invocation is read from the session's own resolution event, so a route replayed
+    # through ``demo.play`` reports the aspect it actually spent rather than the policy's intent.
+    closing_events = [event for event in events if event["kind"] == "resolution"]
+    if closing_events:
+        closing_invocation = bool(closing_events[-1].get("invoked")) or closing_invocation
+        closing_invocation_free = (
+            bool(closing_events[-1].get("invoked_free")) or closing_invocation_free
+        )
     run = Run(
         policy=policy,
         requested=requested,
