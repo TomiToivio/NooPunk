@@ -21,7 +21,9 @@ class UbiquitousManiacsTests(unittest.TestCase):
 
     def test_replay_and_invalid_save(self):
         session = UbiquitousManiacs()
-        session.attempt("ingrid", "COG", 2, 9)
+        # `falk` is the canon Laura Falk. The corpus's *Ingrid* Falk is a different person and
+        # is not in the cast; see the canon-anchoring test for why that matters.
+        session.attempt("falk", "COG", 2, 9)
         session.choose("read_form")
         restored = UbiquitousManiacs.from_dict(session.to_dict())
         self.assertEqual(restored.to_dict(), session.to_dict())

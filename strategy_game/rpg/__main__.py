@@ -11,7 +11,7 @@ def main(argv: list[str] | None = None) -> int:
         description="NoöPunk RPG: Fate engine demos or an integrated playable scenario")
     parser.add_argument("--seed", type=int, default=DEFAULT_SEED)
     parser.add_argument("--text", action="store_true")
-    parser.add_argument("--scenario", choices=("ubiquitous-maniacs", "ubiquitous-maniacs-case"),,
+    parser.add_argument("--scenario", choices=("ubiquitous-maniacs", "ubiquitous-maniacs-case"),
                         help="play a scenario with the same RPG Fate engine")
     parser.add_argument("--save", help="scenario save JSON path")
     parser.add_argument("--new", action="store_true", help="ignore an existing scenario save")

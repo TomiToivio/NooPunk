@@ -13,7 +13,7 @@ Complete inventory of the *Ubiquitous Maniacs* corpus imported from `TomiToivio/
 | source commit at import | `895bdc1078233c1d061e60852ad86de3c01e5c51` |
 | import date | 2026-10-22 |
 | files imported | **278** |
-| bytes imported | **2,420,344** |
+| bytes imported | **2,419,706** |
 | files excluded | **5** |
 | sync | none — this is a snapshot, not a mirror |
 
@@ -56,7 +56,7 @@ Every file below carries the sha256 of the imported copy, the upstream git blob 
 | `requirements-llm.txt` | 1,133 | `348ed63881441e93` | `9496765fd4eb` |
 | `requirements.txt` | 54 | `48902cfde76eebb3` | `909f76c0577c` |
 
-### design and research documentation — 128 files, 1,265,315 bytes
+### design and research documentation — 128 files, 1,264,677 bytes
 
 | path | bytes | sha256 (first 16) | upstream blob sha |
 | --- | --- | --- | --- |
@@ -161,7 +161,7 @@ Every file below carries the sha256 of the imported copy, the upstream git blob 
 | `docs/SISAKKAISET_VERKOSTOKERROKSET.md` | 12,294 | `84b5fde6008d5660` | `f1c5cc72e655` |
 | `docs/SKENAARIO_16_PSYCHE.md` | 4,534 | `1d58407ff3ecc738` | `a846c8976177` |
 | `docs/SOURCE_ETHICS_AND_ANTI_SOURCE_HYPOTHESIS.md` | 3,926 | `c56ac7d8a070050e` | `fe8b46ae83b2` |
-| `docs/STYLISTIC_INFLUENCES_MANIAC_RIGET.md` | 10,909 | `4a5fb7fa3875ae4e` | `cc78f4b9796a` |
+| `docs/STYLISTIC_INFLUENCES_MANIAC_RIGET.md` | 10,271 | `7b32397c9c11f1ef` | `cc78f4b9796a` |
 | `docs/SUBJECT_ARRIVAL_NOTE.md` | 17,748 | `6113bdb59cb8890b` | `5c8217b27503` |
 | `docs/SUPERVILLAIN_ARCHITECTURE.md` | 6,467 | `e61588fc886553a1` | `852f08e77c1b` |
 | `docs/TAROT_ORACLE_MODULE.md` | 4,775 | `0bc2b4d738d7c5a5` | `5313f90bf00f` |
@@ -341,13 +341,14 @@ Nothing is silently discarded. Each excluded file is named, with the reason, so 
 | `references/maniac_transcripts/s01e10_option_c.txt` | verbatim closed-caption dialogue from *Maniac* (Netflix, 2018) | Full episode transcript. Third-party copyrighted dialogue; not importable into a public repository. |
 | `references/maniac_transcripts/STYLISTIC_ANALYSIS.md` | quotes verbatim dialogue from *Maniac* (Netflix, 2018) | Its section 7 is titled 'Direct Dialogue Samples for Noöpunk Extraction' and quotes extended dialogue verbatim. The analysis is the author's own work, but the quoted dialogue is not, so the file travels with the dialogue rather than without it. |
 
-## Files imported with a local banner
+## Files changed after import
 
-One file was given a banner after import, because a verbatim copy of it would otherwise read as **active instruction** rather than as archived material. The upstream blob sha in the inventory above is the *original* file's, so the difference between it and the local sha256 is exactly the banner — the original is still provable.
+Two files differ from their upstream copies, for different reasons. The upstream blob sha in the inventory above is the *original* file's in both cases, so the difference between it and the local sha256 is exactly the local change — the original is still provable.
 
 | path | reason | detail |
 | --- | --- | --- |
 | `AGENTS.md` | the corpus's own agent instructions, which would otherwise claim authority | A banner was prepended marking the file as archived material that is not in force, and naming the repository-root AGENTS.md as the authority. The corpus's text below the banner is unchanged. The upstream blob sha in this manifest is the original file's, so the difference between it and the local sha256 is exactly this banner. |
+| `docs/STYLISTIC_INFLUENCES_MANIAC_RIGET.md` | it quoted third-party dialogue verbatim | The upstream file carried twenty-one verbatim quotations from the Netflix miniseries *Maniac* (2018) and from *Riget / The Kingdom* (1994), including the corpus's own Finnish realisation of the same lines. Those quotations were removed on 2026-10-22: the analysis of which stylistic devices were borrowed, and how they were realised, is kept, and each section now says what was removed and why. The upstream blob sha in this manifest is the original file's, so the difference between it and the local sha256 is exactly the removed quotations. A guard, tests/test_third_party_expression_absent.py, fails if the quotations reappear in the working tree or in a commit. |
 
 ## Material that was never upstream
 
