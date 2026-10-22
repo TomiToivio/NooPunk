@@ -74,6 +74,14 @@ setting can contain national archives, crash retrievals, anomalous encounters, c
 ontologies, and open contact without fixing one universal order in which every revelation
 occurs.
 
+The real institutional shape of the American disclosure channel — a presidential
+unsealing programme with numbered rolling tranches, a legal split between *resolved* and
+*unresolved* cases, and an explicit invitation to outside analysis — is recorded, with
+sources and evidence labels, in
+[PURSUE and the UAP disclosure channel](../docs/research/PURSUE_UAP_DISCLOSURE_SOURCE_SHEET.md).
+It is a **research reference, not canon**: it describes 2026, and NoöPunk's disclosure
+layer is built on the shape of that channel rather than on a single revelation event.
+
 National reverse-engineering traditions differ substantially. The United States develops
 MJ-12; the Nordic countries build on Ghost Flier and Ghost Rocket recoveries; India and
 Egypt draw heavily on archaeological material; India also combines this with Vimana
