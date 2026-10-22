@@ -28,6 +28,7 @@ def main(argv: list[str] | None = None) -> int:
             parts = raw.split()
             if parts and parts[0] == "party":
                 case.party(parts[1:])
+                case.save(args.save)
                 print("Party:", ", ".join(case.participants))
             elif parts and parts[0] == "check" and len(parts) == 5:
                 result = case.attempt(parts[1], parts[2], int(parts[3]), int(parts[4]))
