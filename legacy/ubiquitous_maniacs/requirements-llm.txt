@@ -1,0 +1,24 @@
+# Optional LLM extras for the populism/Laclau ideology lens and the
+# LaclauGPT v3 Noetic Hegemony engine.
+#
+# The Noöpunk RPG core is dependency-free (see requirements.txt: networkx,
+# pandas, streamlit, pytest). This file adds the optional dependencies needed
+# ONLY by the LLM lenses under src/political/ (populism_analysis.py and
+# laclaugpt_v3.py), which are import-gated: the modules import successfully
+# without these and only raise a clear RuntimeError when their analyze()
+# functions are called without them.
+#
+#   pip install -r requirements-llm.txt
+#
+# A separate ARM64 `ollama` server executable must also be installed and running
+# for live analysis (the lenses talk to it over localhost). Tests use injected
+# fakes and never require a running server.
+#
+# OPTIONAL multimodal extra (LaclauGPT v3 video frame extraction only):
+#   pip install opencv-python
+# `opencv-python` is needed ONLY for LaclauGPT v3's `analyze(video=...)` path
+# (text-only and still-image analysis do not need it). It is intentionally NOT
+# listed as a hard dependency below to keep the text+image path light.
+
+ollama>=0.4,<1
+pydantic>=2.8,<3

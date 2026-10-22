@@ -76,6 +76,12 @@
       "note": "Design, audit, scenario and record material. Publication scope of .hermes/ agent plans is an author decision."
     },
     {
+      "id": "imported-legacy-material",
+      "globs": ["legacy/ubiquitous_maniacs/**", "docs/import/**"],
+      "licence": "author-decision",
+      "note": "The imported Ubiquitous Maniacs legacy tree and its import record. First-party material imported from the author's own CC0-1.0 working material, so it carries no third-party obligation and follows the author's own licence decision like the rest of the repository. It is LEGACY: it does not override the current rules in RULEBOOK.md / rulebook/, and the active game's rules live in strategy_game/. The source tree is incomplete - its data/ directory was never committed to the source repository - so the imported code is an archive, not a running game. See docs/import/UBIQUITOUS_MANIACS_LEGACY_IMPORT.md."
+    },
+    {
       "id": "source-code",
       "globs": ["src/**", "scripts/**", "tools/**", "tests/**", "strategy_game/**", "gen_migration.py", "pytest.ini"],
       "licence": "author-decision-separate-software-licence",
