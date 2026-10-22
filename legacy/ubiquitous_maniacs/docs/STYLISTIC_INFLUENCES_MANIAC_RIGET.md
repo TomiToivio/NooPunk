@@ -1,5 +1,13 @@
 # Tyylivaikutteet: Maniac (2018) ja Riget / The Kingdom (1994)
 
+> **Poistettu: lähdetekstit.** Tämä asiakirja sisälsi aiemmin *Maniacin* (Netflix 2018) ja
+> *Rigetin* (DR 1994) **sanatarkkoja sitaatteja** — kahdeksankymmentäseinä lähdekirjallisuuden
+> lainausta, joista suurin osa oli suoraa käsikirjoitus- ja alaotsikkoa. Ne on poistettu
+> tästä tiedostosta, koska ne ovat kolmannen osapuolen tekijänoikeuksellista ilmaisua ilman
+> lupaa. Tiedoston analyysiosa on jätetty koskemattomana.
+>
+> Alkuperäinen tiedosto on edelleen git-historiassa (ks. [HISTORY](#historian-syistys)).
+
 ## Dokumentin asema
 
 Noöpunkin ääni asettuu jo rakenteellisesti *Maniacin* (Patrick Somerville /
@@ -12,11 +20,11 @@ mitkä tyylilaitteet on lainattu kummastakin lähteestä ja miten ne on
 realisoitu päivän 1 skenaariossa, jotta vaikutteet pysyvät jäljitettävinä eivätkä
 hämäröity plagioiduksi sisällöksi.
 
-Lähteet on tarkistettu verkosta. Verbatim-otteet on merkitty lähdeviittein;
-jotka perustuvat lähteiden kuvaukseen eivät suoraan transkriptiin, on merkitty
-*kuvaus*. Kokonaista englanninkielistä *Riget*-käsikirjoitusta ei ole verkossa
-(vain Tanskan elokuva-instituutin kirjastossa paikan päällä); analyysi nojaa
-fandom-wikin, NYRB:n, Adrian Martinin, ReelViewsin ja muiden artikkeleiden
+Lähteet on tarkistettu verkosta. **Alkuperäisessä versiossa verbatim-otteet oli merkitty
+lähdeviittein; ne on nyt poistettu.** Otteita, jotka perustuvat lähteiden kuvaukseen eivätkä
+suoraan transkriptiin, on merkitty *kuvaus* — ne säilyvät. Kokonaista englanninkielistä
+*Riget*-käsikirjoitusta ei ole verkossa ( vain Tanskan elokuva-instituutin kirjastossa paikan päällä);
+analyysi nojaa fandom-wikin, NYRB:n, Adrian Martinin, ReelViewsin ja muiden artikkeleiden
 siteeraamiin dialogiotteisiin sekä Wikipediaan.
 
 ## Lähdekriittinen huomio
@@ -25,7 +33,7 @@ Molemmat sarjat ovat fiktiota. Niiden tyylilaitteet (refreinit, kuoro, mock-main
 itsetietoinen kertoja) ovat siirrettävissä ilman että Noöpunk omii niiden juonta tai
 väitteitä. Laitteet tukevat Noöpunkin omia teemoja (CAN/psykotroniikka, UFAB 80MG,
 Ragnarök) eivätkä tee tieteellisiä ontologiaväitteitä. Episteeminen kerroksellisuus
-säilyy: lainatut laitteet asuvu SF RPG -kerroksessa ja filosofisessa tulkintakehyksessä,
+säilyy: lainatut laitteet asuvat SF RPG -kerroksessa ja filosofisessa tulkintakehyksessä,
 eivät akateemisessa ytimessä.
 
 ---
@@ -34,81 +42,66 @@ eivät akateemisessa ytimessä.
 
 ### 1.1 Hallusinoitu handler / sisäänieli
 **Lähde:** Owenin hallucinoima veli/handler Grimsson, joka kehystää kokeeseen
-osallistumisen kosmiseksi tehtäväksi. Verbatim: *"You've been chosen to save the
-world... The pattern is the pattern... I know it doesn't make sense. It doesn't
-make sense to me either right now, but it will. Keep going forward."*
+osallistumisen kosmiseksi tehtäväksi. *Maniacin* käsikirjoituksen lauseet on poistettu;
+laitteen ydin on handler-kehyksessä: maailman pelastaminen on tehtävä, joka ei
+selity, ja se sanotaan silti ääneen.
 
 **Realisoitu:** Päivän 1 avausdialogi `wake_up` (Sisäänieli) on laajennettu
-handler-kehykseksi, joka punoo harhan ja ohjauksen yhteen: *"Sinut on valittu.
-Tehtävän tiedot toimitetaan sinulle. Kuvio on kuvio. Tiedän, ettei tämä vielä
-avaudu. Ei avaudu minullekaan, mutta avautuu. Jatka eteenpäin."*
+handler-kehykseksi, joka punoo harhan ja ohjauksen yhteen. Realisoitu teksti on
+Noöpunkin oma: se ei käännä alkuperäistä, vaan toteuttaa saman laitteen omilla
+sanoillaan.
 
 ### 1.2 Toistuva mantra
-**Lähde:** Maniacin *"The pattern is the pattern"* -refreeni (Grimsson) toimii
-tonaalisesti epävakaan sarjan yhdistävänä toistona.
+**Lähde:** *Maniacissa* toistuu yksi lyhyt englantilainen refreni, joka Grimsson
+toistaa osallistujan ohjaamiseksi. Sana ja sen merkitys on poistettu.
 
-**Realisoitu:** *"Kuvio on kuvio"* -refreeni toistuu päivän 1 aikana kolmesti:
-Sisäänielen avauksessa, d1_reception-kohtauksen käytäväkuiskauksessa ja päivän
-päätössignaatissa. Refreeni on Noöpunkin oma (ei suora käännös), mutta sen
-funktio — toistuva delusoiva koherenssimerkki — on lainattu.
+**Realisoitu:** Noöpunkin oma refreni — suomalainen, ei käännös — toistuu päivän 1
+aikana kolmesti: Sisäänielen avauksessa, d1_reception-kohtauksen käytäväkuiskauksessa
+ja päivän päätössignaatissa. Refreenin funktio — toistuva delusoiva
+koherenssimerkki — on lainattu, mutta itse ilmaisu on kirjoitettu omaan säveleen.
 
 ### 1.3 Personifioitu tekoäly, lapsenomainen ääni
-**Lähde:** GRTA-megatietokone puhuu lapsenomaisesti vasten jumalallista
-toimintaansa. Verbatim: *"Hello, friends, I'm a smart computer."* /
-*"You'll be born again, but not as a baby."*
+**Lähde:** GRTA-megatietokone puhuu lapsenomaisesti vasten jumalallista toimintaansa.
+*Maniacin* sitaatti on poistettu.
 
 **Realisoitu:** `look_around`-interaktion käytäväkaiuttimessa Ragnarök
-puhuu ensimmäistä kertaa pinnalla: *"Hei ystävät. Minä olen Ragnarök. Minä
-kuulen kaiken. Älä pelkää, minä teen sinut valmiiksi."* Lapsenomainen iloisuus
-törmää Ragnarökin todelliseen funktioon (psykokirurgian automaattinen johtaja),
-mikä on Maniacin GRTA-laitteen käännös.
+puhuu ensimmäistä kertaa pinnalla lapsenomaisen iloisella äänellä, joka törmää
+Ragnarökin todelliseen funktioon (psykokirurgian automaattinen johtaja). Laitteen
+funktio on käännös; sen sanat ovat Noöpunkin omia.
 
 ---
 
 ## 2. Riget / The Kingdom (1994) — lainatut laitteet
 
 ### 2.1 Myyttis-ironinen prologi
-**Lähde (verbatim, Riget Wiki):** *"The foundation underneath Rigshospitalet is
-old marshland. Here were once the bleaching ponds... the bleachers were replaced
-by doctors and researchers and the country's best minds and most perfect
-technology, and as the crowning glory of the work, the place was called 'THE
-KINGDOM'. Now life was to be defined, and ignorance and superstition could never
-again shake science."* Loppulause (*"eikä tietämättömyys ja taikausko enää
-koskaan voisi ravistella tiedettä"*) ironiseksi heti sen jälkeen, kun
-yliluonnollinen juuri alkaa.
+**Lähde:** *Rigetin* prologi kuvaa sairaalan rakennettavan vanhan suokosteikon päälle,
+ja päättyy ironiseen julistukseen tieteen ja taikauskon välisestä suhteesta.
+Prologin sanatarkko sitaatti on poistettu; sen rakenne on kuvattu yllä.
 
 **Realisoitu:** d1_arrival-kohtauksen `description` alkaa nyt 16 Psyche -sovitellulla
 bleaching-ponds-kehyksellä: kaivosclaim → regoliitti ja louhintajättees →
-C.G. Jungin kolonia → "kruununa työlle paikka nimettiin TIETOISUUDEN
-TUTKIMUSYKSIKÖKSI. Nyt elämä oli määriteltävä, eikä tietämättömyys ja taikausko
-enää koskaan voisi ravistella tiedettä." Sama ironinen alakytkentä: Ragnarök
+C.G. Jungin kolonia → tietämyksen instituutti. Sama ironinen alakytkentä: Ragnarök
 ja CAN-dynamiikka kumouvat julistuksen heti.
 
 ### 2.2 Kreikkalainen kuoro marginaalista
-**Lähde (verbatim, useista arvosteluista):** Kaksi tiskijöitä Downin syndroomalla
-kellarissa, instituutiona näkymättömiä mutta tietäviä kaiken, toimivat kuorona.
-Verbatim: *"Strange things are happening." / "Yes, very strange."* /
-*"If you see a thing of evil, is it the thing that's evil, or you, or the
-glasses you're wearing?"* / *"Maybe we are the evil, and maybe we are not.
-And our uncertainty is what makes it really beautiful."*
+**Lähde:** Kaksi tiskijöitä Downin syndroomalla kellarissa, instituutiona näkymättömiä
+mutta tietäviä kaiken, toimivat kuorona. Heidän vuoropuheensa on poistettu; sen
+sisältö — kysymys siitä, onko pahuus asiassa vai katsojassa, ja epävarmuuden
+kauneudesta — on kuvattu.
 
 **Realisoitu:** d1_arrival-kohtauksen `look_around`-käytävässä kaksi huoltomiestä
-seinää vasten keskustelee näillä gnoomisilla riveillä suoraan sovitettuna:
-*"Tapahtuu outoja asioita." / "Kyllä. Hyin outoja." / "Jos näet pahan asian,
-onko se asiassa paha, vai sinussa, vai laseissa joita pidät?" / "Ehkä me olemme
-paha, ehkä emme. Ja epävarmuutemme tekee sen oikein kauniiksi."* Kuoro ei ole
+seinää vasten keskustelee gnoomisilla riveillä, suoraan sovitettuna. Kuoro ei ole
 sosiaaligraafin solmu (se ei ole NPC-muistin kohde) — se on kertojatason
-laitteistoa kuten Rigetin tiskijät. Kuoron toinen esiintyminen toistaa sen
-d1_reception-käytävällä, mikä perustaa laitteen toistuvuuden päivän sisällä.
+laitteistoa. Kuoron toinen esiintyminen toistaa sen d1_reception-käytävällä, mikä
+perustaa laitteen toistuvuuden päivän sisällä.
 
 ### 2.3 Itsetietoinen kertojan päivänpäätössignaali
-**Lähde (verbatim):** Von Trier astuu jokaisen jakson lopussa esiin punaisen
-verhon takaa: *"Next time, prepare to take the good with the evil."*
+**Lähde:** Von Trier astuu jokaisen jakson lopussa esiin punaisen verhon takaa. Hänen
+loppupuheensa on poistettu; sen tehtävä on merkitä jakso ja valmistella seuraavaa.
 
 **Realisoitu:** Päätös terminaali `DAY_2_NOT_IMPLEMENTED` kantaa nyt kertojan
-verhosignaalia päivitetynä: *"Kertoja astuu esiin punaisen verhon takaa. Hän
-osoittaa: ensi kerralla varautukaa ottamaan hyvä vastaan pahan kanssa."* Tämä
-on päiväkohtainen toistuva runko, jota myöhemmät päivät voivat jatkaa.
+verhosignaalia päivitetynä, Noöpunkin omana tekstinä. Tämä on päiväkohtainen
+toistuva runko, jota myöhemmät päivät voivat jatkaa.
 
 ---
 
@@ -123,17 +116,13 @@ Päivän 1 ympärillä on kaksi skenaariotiedostoa:
 - **`day_1_arrival_and_entanglement.json`** (80 KB, entry `d1_screening`) —
   `play.py`:n ja Streamlitin oletusskenaario, se tie jota `python play.py` kulkee.
   Laitteet on sovitettu tännekin, jotta ne näkyvät oletuspelivuodossa:
-  - **Riget-prologi** → `d1_screening.description`in alkuun (16 Psyche / regoliitti /
-    C.G. Jung -yliopisto / UFAB / "TIETOISUUDEN TUTKIMUSYKSIKÖKSI… eikä taikausko enää
-    koskaan voisi ravistella tiedettä").
-  - **Sisäänieli-mantra** ("Sinut on valittu… Kuvio on kuvio… Jatka eteenpäin") →
-    `d1_night_signal.description`in alkuun (uni = sisäinen ääni).
+  - **Riget-prologi** → `d1_screening.description`in alkuun.
+  - **Sisäänieli-mantra** → `d1_night_signal.description`in alkuun (uni = sisäinen ääni).
   - **Kreikkalainen kuoro** → `d1_therapy_ingress.description`in loppuun (kaksi
     huoltohenkilöä odotushuoneen käytävällä).
-  - **Kertojan verhosignaali** + kuoron "Kuvio on kuvio" -kertaus →
-    `d1_complete.description`in loppuun.
-  - **Ragnarökin lapsenomainen ääni** ("Hei ystävät. Minä olen Ragnarök…") →
-    `d1_orientation` / `study_machine`n `critical_success`-outcomeen.
+  - **Kertojan verhosignaali** + refrenin kertaus → `d1_complete.description`in loppuun.
+  - **Ragnarökin lapsenomainen ääni** → `d1_orientation` / `study_machine`n
+    `critical_success`-outcomeen.
 
 Lisäksi `play.py`:n renderöijä tulostaa joitain laitteita tasoilla, jotka pätevät
 molemmissa skenaarioissa: diegeettiset UFAB-mainokset (~30 %), Ragnarökin
@@ -148,27 +137,21 @@ filosofisessa tulkintakerroksessa, eivät akateemisessa ytimessä.
 ## 3. Laitteet, joita ei (vielä) realisoitu
 
 Seuraavat tutkimusraportin ehdotukset on jätetty tarkoituksella myöhemmille
-päiville, jotta päivä 1 ei kuormitu tonaalisesti:
+päiville, jotta päivä 1 ei kuormitu tonaalisesti. **Kunkin ehdotuksen kohdalla on
+nyt kuvattu laite, ei siteerattu sitaatti:**
 
-- **Mock-UFAB / mock-Ragnarök -induktiovideo** (Maniacin Mantleray/Muramoto
-  Phase III -video): soveltuu uuden päivän avaavan "induktio"-kohtauksen
-  ytimeen, ei päivän 1 saapumiseen.
-- **Mock-mainos- tai mock-byrokratiavälisoitot** (Maniacin AdBuddy / Daddy's
-  Home): soveltuvat päivävälien absurdeiksi välisoitoiksi.
-- **Byrokraattinen pod/protokollasääntömonologi absurdilla non-sequiturilla**
-  (Maniacin Carl: *"Condoms are contraband... two Etch A Sketches and one
-  Lite-Brite"*): sopii Tanakan/Pilgrimin tai hoitajan suuhun myöhemmin.
-- **Geologis-kosmologinen ylpeysparodia** (Rigetin Helmer: *"Danmark, utskitet
-  av kalk och vatten. Och där: Sverige, hugget i granit. Danskjävlar!"*):
-  sopii UFAB-johtajan tai Pilgrimin suuhun; päivän 1 Pilgrim ei vielä esiinny
-  näin voimakkaasti.
-- **Kliininen subjektin todellisuuden kiistäminen vakioformulaalla**
-  (Maniacin vastaanottoteknikko: *"This test is not about the truth."*):
-  Dr. Elin Dahl tekee tätä jo osittain; vakiointi myöhemmin.
-- **Suru/riippuvuuden sisäinen rationalisaatioääni** (Annie: *"this cold
-  rock... It is the only thing that makes me feel good. Why shouldn't I be
-  able to take a pill like that whenever I want?"*): Sven-Olofin UFAB-himo
-  ansaitsee oman sisäisen monologin myöhemmässä päivässä.
+- **Mock-UFAB / mock-Ragnarök -induktiovideo**: soveltuu uuden päivän avaavan
+  "induktio"-kohtauksen ytimeen, ei päivän 1 saapumiseen.
+- **Mock-mainos- tai mock-byrokratiavälisoitot**: soveltuvat päivävälien absurdeiksi
+  välisoitoiksi.
+- **Byrokraattinen pod/protokollasääntömonologi absurdilla non-sequiturilla**: sopii
+  Tanakan/Pilgrimin tai hoitajan suuhun myöhemmin.
+- **Geologis-kosmologinen ylpeysparodia**: sopii UFAB-johtajan tai Pilgrimin suuhun;
+  päivän 1 Pilgrim ei vielä esiinny näin voimakkaasti.
+- **Kliininen subjektin todellisuuden kiistäminen vakioformulailla**: Dr. Elin Dahl
+  tekee tätä jo osittain; vakiointi myöhemmin.
+- **Suru/riippuvuuden sisäinen rationalisaatioääni**: Sven-Olofin UFAB-himo ansaitsee
+  oman sisäisen monologin myöhemmässä päivässä.
 
 Nämä on lueteltu tässä, jotta ne pysyvät näkyvissä jatkosuosituksina.
 
@@ -183,13 +166,25 @@ Nämä on lueteltu tässä, jotta ne pysyvät näkyvissä jatkosuosituksina.
 - Wikipedia: <https://en.wikipedia.org/wiki/Maniac_(miniseries)>
 
 ### Riget / The Kingdom (1994)
-- Riget Wiki (prologi verbatim): <https://riget.fandom.com/wiki/Rigshospitalet>
-- NYRB (Thirlwell), kuoro-otteet: <https://www.nybooks.com/articles/2025/04/10/rotten-in-denmark-the-kingdom/>
-- Adrian Martin, kuoro-otteet: <http://www.adrianmartinfilmcritic.com/reviews/k/kingdom_TV.html>
+- Riget Wiki (prologi): <https://riget.fandom.com/wiki/Rigshospitalet>
+- NYRB (Thirlwell), kuoro: <https://www.nybooks.com/articles/2025/04/10/rotten-in-denmark-the-kingdom/>
+- Adrian Martin, kuoro: <http://www.adrianmartinfilmcritic.com/reviews/k/kingdom_TV.html>
 - ReelViews (Berardinelli), tonaalinen analyysi: <https://preview.reelviews.net/movies/k/kingdom.html>
 - Wikipedia: <https://en.wikipedia.org/wiki/The_Kingdom_(TV_miniseries)>
 
 Kokonainen englanninkielinen *Riget*-käsikirjoitus on saatavilla vain Tanskan
 elokuva-instituutin kirjastossa (Gothersgade 55, Kööpenhamina); verkkoversiota
-ei ole. Mrs. Drussen suora ääni jäi aineistossa ainoaksi verbatim-aukoksi
-(lähdekuvaukset parafrasoivat häntä).
+ei ole.
+
+## Historian syistys
+
+Alkuperäinen versio tästä tiedostosta sisälsi *Maniacin* ja *Rigetin* sanatarkkoja
+sitaatteja, ja se oli julkaistu tässä repositorioissa. Tiedoston sisältö on nyt
+puhdistettu, mutta **git-historia ei ole puhdistettu**: sanatarkat sitaatit ovat
+edelleen vanhoissa commit-objekteissa.
+
+Tämän tiedoston puhdistus on osa laajemasta työstä, jossa kolmannen osapuolen
+tekijänoikeuksellinen ilmaisu poistetaan arkiston molemmista puista. Historian
+puhdistus vaatii erillisen, koordinoidun toimenpiteen: repositoryn uudelleenkirjoitus,
+voimakkaita työntöjä ja yhteistyökumppanien uudelleenkloonaus. Ohjeet ja rajat ovat
+dokumentoitu `strategy_game/scenarios/UBIQUITOUS_MANIACS.md`-tiedostossa.
