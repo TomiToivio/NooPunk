@@ -48,54 +48,110 @@
     {
       "glob": "tests/test_issue60_ep2_*.py",
       "reason": "Interaction tests for the same EP2 prototype (issue #60); same direct imports and the same NC-derived boundary. Added in issue #421."
+    },
+    {
+      "glob": "legacy/ubiquitous_maniacs/**",
+      "reason": "Imported research corpus is not file-by-file cleared for redistribution; excludes legacy text, prototype rules and reference research from releases."
+    },
+    {
+      "glob": "archive/ubiquitous-maniacs-2026-10/**",
+      "reason": "Historical working corpus contains unreviewed third-party references and adaptations; exclude from release bundles until rights audit."
     }
   ],
   "artifact_classes": [
     {
       "id": "rulebook-prose",
-      "globs": ["RULEBOOK.md", "FACTIONS.md", "README.md", "COMPARISON.md", "rulebook/**", "rulebook_parts/**", "strategy_game/README.md"],
+      "globs": [
+        "RULEBOOK.md",
+        "FACTIONS.md",
+        "README.md",
+        "COMPARISON.md",
+        "rulebook/**",
+        "rulebook_parts/**",
+        "strategy_game/README.md"
+      ],
       "licence": "author-decision",
       "note": "Original creative rulebook and worldbook prose."
     },
     {
       "id": "rule-data",
-      "globs": ["data/rules/**", "data/world/**", "data/simulation/**", "data/paradigm_shifts.yaml", "strategy_game/data/**"],
+      "globs": [
+        "data/rules/**",
+        "data/world/**",
+        "data/simulation/**",
+        "data/paradigm_shifts.yaml",
+        "strategy_game/data/**"
+      ],
       "licence": "author-decision",
       "note": "The rules in machine-readable syntax; grouped with the rulebook, not with the code."
     },
     {
       "id": "licensing-and-source-records",
-      "globs": ["data/licenses/**", "data/sources/**", "docs/licenses/**", "docs/sources/**"],
+      "globs": [
+        "data/licenses/**",
+        "data/sources/**",
+        "docs/licenses/**",
+        "docs/sources/**"
+      ],
       "licence": "author-decision",
       "note": "Rights ledgers, licence plan and provenance inventories. Must follow the rulebook, not a software licence."
     },
     {
       "id": "design-and-audit-records",
-      "globs": ["docs/**", "AGENTS.md", ".hermes/**", "strategy_game/docs/**", "archive/**"],
+      "globs": [
+        "docs/**",
+        "AGENTS.md",
+        ".hermes/**",
+        "strategy_game/docs/**",
+        "archive/**"
+      ],
       "licence": "author-decision",
       "note": "Design, audit, scenario and record material. Publication scope of .hermes/ agent plans is an author decision."
     },
     {
       "id": "imported-legacy-material",
-      "globs": ["legacy/ubiquitous_maniacs/**", "docs/import/**"],
+      "globs": [
+        "legacy/ubiquitous_maniacs/**",
+        "docs/import/**"
+      ],
       "licence": "author-decision",
       "note": "The imported Ubiquitous Maniacs legacy tree and its import record. First-party material imported from the author's own CC0-1.0 working material, so it carries no third-party obligation and follows the author's own licence decision like the rest of the repository. It is LEGACY: it does not override the current rules in RULEBOOK.md / rulebook/, and the active game's rules live in strategy_game/. The source tree is incomplete - its data/ directory was never committed to the source repository - so the imported code is an archive, not a running game. See docs/import/UBIQUITOUS_MANIACS_LEGACY_IMPORT.md."
     },
     {
       "id": "source-code",
-      "globs": ["src/**", "scripts/**", "tools/**", "tests/**", "strategy_game/**", "gen_migration.py", "pytest.ini"],
+      "globs": [
+        "src/**",
+        "scripts/**",
+        "tools/**",
+        "tests/**",
+        "strategy_game/**",
+        "gen_migration.py",
+        "pytest.ini"
+      ],
       "licence": "author-decision-separate-software-licence",
       "note": "Needs its own software licence, separate from the CC instrument. pytest.ini is test configuration: it tells pytest which directories not to collect, so the preserved corpora under archive/ do not shadow this repository's own src/ package. It is configuration for the test suite, so it travels with the code it configures."
     },
     {
       "id": "fixtures-and-scenes",
-      "globs": ["fixtures/**", "scenes/**", "deploy/**", "project.godot"],
+      "globs": [
+        "fixtures/**",
+        "scenes/**",
+        "deploy/**",
+        "project.godot"
+      ],
       "licence": "author-decision-follows-code",
       "note": "Godot project files are code, not prose."
     },
     {
       "id": "packaging-and-config",
-      "globs": [".github/**", ".gitignore", "requirements.txt", "requirements-concordia.txt", "LICENSE*", "NOTICE*"],
+      "globs": [
+        ".github/**",
+        ".gitignore",
+        "requirements.txt",
+        "requirements-concordia.txt",
+        "LICENSE*",
+        "NOTICE*"
+      ],
       "licence": "author-decision-follows-code",
       "note": "CI, dependency and release-packaging plumbing."
     }
