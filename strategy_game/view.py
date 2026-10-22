@@ -40,8 +40,8 @@ def board_view(state: WorldState) -> dict[str, Any]:
     return {
         "schema_version": state.schema_version,
         "locations": [
-            {"id": x.identifier, "label": x.label, "latitude": x.latitude,
-             "longitude": x.longitude} for x in state.locations
+            {"id": x.identifier, "label": x.label, "grid_row": x.grid_row,
+             "grid_column": x.grid_column} for x in state.locations
         ],
         "network_nodes": [
             {"id": x.identifier, "label": x.name, "type": "faction"}

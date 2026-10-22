@@ -58,7 +58,7 @@ class ViewModelContractTests(unittest.TestCase):
         )
         self.assertEqual(set(view["network_nodes"][0]), {"id", "label", "type"})
         self.assertEqual(set(view["network_edges"][0]), {"source", "target", "layer"})
-        self.assertEqual(set(view["locations"][0]), {"id", "label", "latitude", "longitude"})
+        self.assertEqual(set(view["locations"][0]), {"id", "label", "grid_row", "grid_column"})
         self.assertEqual(
             set(view["assets"][0]), {"id", "label", "location_id", "owner_faction_id"}
         )
