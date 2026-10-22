@@ -16,8 +16,10 @@ tree, global map or tactical UI is a prerequisite of it, and none is used here.
 python -m strategy_game.casework                    # play the whole case headless
 python -m strategy_game.casework --route confront --approach force
 python -m strategy_game.casework --json             # the same run as one JSON record
+python -m strategy_game.casework --play             # play it yourself, at a prompt
 python -m unittest strategy_game.tests.test_casework_spec \
-                   strategy_game.tests.test_casework_session
+                   strategy_game.tests.test_casework_session \
+                   strategy_game.tests.test_casework_play
 ```
 
 ## 1. What the case is
@@ -207,7 +209,66 @@ strategy_game/casework/spec.py       the case declaration: scenes, actions, chec
 strategy_game/casework/session.py    the playable session: seats, ledger, checks, gates, chain, resolutions, save/load
 strategy_game/casework/kallio.py     the packaged case, the party, the campaign builder
 strategy_game/casework/demo.py       the headless play-through and its text report
-strategy_game/casework/__main__.py   python -m strategy_game.casework
+strategy_game/casework/play.py       the interactive terminal mode: menus, commands, transcript, resume
+strategy_game/casework/__main__.py   python -m strategy_game.casework [--play]
 strategy_game/tests/test_casework_spec.py      declaration, campaign and gate contracts
 strategy_game/tests/test_casework_session.py   play, fail-forward, three endings, save/load, determinism
+strategy_game/tests/test_casework_play.py      the prompt: endings, no second engine, pause/resume, exits
+```
+
+## 11. Playing it at a terminal
+
+The headless run is a demonstration; a player needs a prompt. `--play` is that prompt, and it is a
+**front end over the same `CaseSession`** rather than a second engine:
+
+```bash
+python -m strategy_game.casework --play
+python -m strategy_game.casework --play --seed 77 --save /tmp/kallio.json
+python -m strategy_game.casework --play --save /tmp/kallio.json     # resumes that morning
+```
+
+The player holds the faction leader's seat and assigns the four agents. Each scene prints its own
+prose, the seats that are still ready, the actions with the check the session will roll (skill, Fate
+band and the band's number, plus the suggested actor's rating), the clue or aspect each yields, and
+the price the declaration puts on a tie and on a failure. Then it prints the ending menu with the
+session's verdict on each one, and the commands:
+
+| Command | What it does |
+|---|---|
+| `act <seat> <action>` | one character, one action. A seat may be named by id, character id, party number (1–5) or an unambiguous fragment (`harri`, `falk`); an action by id or by its menu number |
+| `party` | the five seats, fate points, stress boxes, consequences |
+| `status` | the scene, the clues in hand, the chain's progress, the assembled finding |
+| `next` | leave the scene early — every seat refreshes in the next turn |
+| `resolve <ending> [pressure\|force] [seat]` | take the closing decision; a confrontation asks for its method if you do not type one |
+| `approach [pressure\|force]` | set the method you will use when you confront him |
+| `save` / `quit` | write the save file / save and leave (`quit` and end-of-input both save) |
+
+**Where every answer comes from.** `CaseSession.actions()` and `CaseSession.resolutions()` say what is
+available and why not, so the menu can never offer something `act()` or `resolve()` would refuse; a
+locked action still prints its line with the session's own reason. `CaseSession.report()` supplies the
+party, the clues, the chain, the complications and the campaign's books. Every transition is `act()`,
+`end_scene()` and `resolve()`; saving is `CaseSession.save()` and resuming is `load_session()`. The
+declaration supplies only what a reader needs and the engine never has to know: prose, labels, the
+band an action rolls against (this case file's own `DIFFICULTY_BANDS`), and the declared prices.
+
+**What it does not add.** No rule, no skill, no dice convention, no difficulty of its own and no
+number. The play mode cannot change an outcome the engine did not produce: with the same seed and the
+same choices it yields the identical event log — same rolls, same clues, same books — as the headless
+run, which `tests/test_casework_play.py` asserts. `--json` is refused in play mode because a played
+transcript and one JSON document cannot share a stream; the same record is available from
+`casework.play.play()`.
+
+**Pausing.** A played case is saved after every action, on `quit` and at end of input. The save is the
+session's own (`case_session-1`), dice state included, so a morning paused after two scenes resumes
+into the rolls and the ending the uninterrupted run would have had — seeded or not. A finished save
+reopens as its ending. `--new` starts a fresh morning over an existing save file.
+
+Deliberately absent: no auto-completion, no colour, no undo, no history, no renderer, no combat
+round, no per-scene "approach" beyond the one the engine defines for the confrontation (nothing else
+in the case file takes a method), and no way to spend a fate point or invoke an aspect by hand —
+`act(..., free_invoke=..., reroll=...)` exists on the session, and offering it is a UI decision for
+the author, not a rule this slice may settle.
+
+```
+strategy_game/casework/play.py   the interactive loop, its menus and its transcript
 ```

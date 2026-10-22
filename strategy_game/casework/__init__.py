@@ -16,6 +16,7 @@ that already exists rather than replacing it.
 :mod:`.kallio`                *The Second Shadow*, the packaged case: 2045, Helsinki Field Office,
                               a Reptilian raid, and a second figure the camera did not record.
 :mod:`.demo`                  the headless play-through and its text report.
+:mod:`.play`                  the interactive terminal mode: the same session, played by a human.
 ============================  ==============================================================
 
 The case is **fail-forward**: a clue never depends on one successful check, a tie and a failure cost
@@ -26,6 +27,8 @@ the loading bay, or referred upstairs — and the third is always available.
     python -m strategy_game.casework                 # play the packaged case headless
     python -m strategy_game.casework --route confront --approach force
     python -m strategy_game.casework --json          # the same run as one JSON record
+    python -m strategy_game.casework --play          # play it yourself, at a prompt
+    python -m strategy_game.casework --play --save /tmp/kallio.json   # pause and resume
 
 Nothing here is canon. The frame is the canonical 2045 / Helsinki Field Office / UNSA setting; the
 incident, its people and its outcome are scenario fiction, and the four agents' sheets are
