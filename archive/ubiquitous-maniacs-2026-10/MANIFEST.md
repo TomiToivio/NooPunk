@@ -12,8 +12,8 @@ Complete inventory of the *Ubiquitous Maniacs* corpus imported from `TomiToivio/
 | source path | `noopunk/ubiquitous_maniacs/` |
 | source commit at import | `895bdc1078233c1d061e60852ad86de3c01e5c51` |
 | import date | 2026-10-22 |
-| files imported | **287** |
-| bytes imported | **2,500,010** |
+| files imported | **279** |
+| bytes imported | **2,432,102** |
 | files excluded | **5** |
 | sync | none — this is a snapshot, not a mirror |
 
@@ -21,327 +21,314 @@ Every file below carries the sha256 of the imported copy, the upstream git blob 
 
 ## Imported files by class
 
-### corpus root document — 30 files, 297,982 bytes
+### corpus root document — 30 files, 293,614 bytes
 
 | path | bytes | sha256 (first 16) | upstream blob sha |
 | --- | --- | --- | --- |
-| `AGENTS.md` | 9,984 | `715c4d821e9b8601` | `68d7ae160378` |
-| `ASKEL_1.md` | 4,146 | `9fd67132a6c2ed4c` | `1ff1ec6a2980` |
-| `CONSCIOUS_AGENT_NETWORK.md` | 720 | `5f13be5554d91f01` | `78695df3f278` |
-| `DEVELOPMENT_NOTES_DAY_1.md` | 4,095 | `062d4264d49d837a` | `1589fa0005f4` |
-| `DEV_NOTES.md` | 9,188 | `566a3d53f198a234` | `063afadbb177` |
-| `ECLIPSE_PHASE.md` | 4,648 | `ad971aef492e16a2` | `baa89400c177` |
-| `GLOCAL.md` | 30,748 | `3e4dd6673a4afcbb` | `095a3bca8873` |
-| `HAHMOT.md` | 24,234 | `c0ec8d09abd31d05` | `2d9c3cbecf22` |
-| `INGRID-ROMPPAINEN.md` | 1,995 | `5e6b57e3861134a4` | `a7013337ca46` |
-| `KIRJA.md` | 2,994 | `fc20dbea4d70d1c8` | `34f0ff6f6c0e` |
-| `KIRJA_KONE.md` | 18,607 | `a92eea501a2bb982` | `ed619e8ace7a` |
-| `KYBER.md` | 34,538 | `9f1bd6b4ac8154c6` | `695671a0b156` |
-| `LABRA_NET.md` | 2,060 | `bdc06dba4938dcea` | `6d193d3f1c28` |
-| `NETWORKX.md` | 1,914 | `2b85b8431dc1796c` | `cdf75b8fef86` |
-| `NHI.md` | 19,025 | `f1ea6a33694d1cc9` | `1fce31ada4ed` |
-| `PERSOONA.md` | 431 | `19e5a7067391acbb` | `7ce8861c7832` |
-| `PHENOMENOLOGY.md` | 1,545 | `7fa67e98a9a0c5a3` | `bb678235b3ec` |
-| `PHILOSOPHICAL_ZOMBIES.md` | 17,942 | `5552d132c00a6b83` | `ecfdc1eda676` |
-| `PSIONICS.md` | 300 | `a864d0e1da1544dc` | `556c961cbb85` |
-| `PÄIVÄ_1.md` | 23,817 | `dda328a8ac5768f6` | `4d023da1f6dc` |
-| `PÄIVÄ_2_HISTORIA.md` | 26,915 | `f3bd7f436992a219` | `81603f07fbc5` |
-| `README_DAY1_PROTOTYPE.md` | 6,311 | `8ed179e3e07ad69b` | `48e73d47f819` |
-| `ROMPPAINEN.md` | 2,436 | `432df6e937ff7f9a` | `77fa46a6eb6a` |
-| `RULEBOOK.md` | 28,613 | `6c7aa9bf2c0565c3` | `4410ca7694ca` |
-| `SISÄAVARUUS.md` | 7,561 | `794a25e774766aac` | `aad5f37fba36` |
-| `SKILLS.md` | 5,431 | `be3823d174fa4e5c` | `751da2b0d942` |
-| `TERAPIASESSIO.md` | 3,882 | `920312da897c259d` | `b332a6731564` |
-| `VUOROVAIKUTUS.md` | 2,688 | `356151ba43606557` | `11dd160ee5e9` |
-| `requirements-llm.txt` | 1,156 | `4199877643b8059d` | `9496765fd4eb` |
-| `requirements.txt` | 58 | `1b3235d7a18a842f` | `909f76c0577c` |
+| `AGENTS.md` | 9,884 | `1ac79da23ae38b87` | `68d7ae160378` |
+| `ASKEL_1.md` | 4,002 | `e546120057148a47` | `1ff1ec6a2980` |
+| `CONSCIOUS_AGENT_NETWORK.md` | 708 | `a5dad5943825de83` | `78695df3f278` |
+| `DEVELOPMENT_NOTES_DAY_1.md` | 4,035 | `e00e7d533f27078f` | `1589fa0005f4` |
+| `DEV_NOTES.md` | 9,034 | `195fee2012e848cc` | `063afadbb177` |
+| `ECLIPSE_PHASE.md` | 4,613 | `46bd9fa227565482` | `baa89400c177` |
+| `GLOCAL.md` | 29,797 | `7a054036bdaa085a` | `095a3bca8873` |
+| `HAHMOT.md` | 24,050 | `ba5ee51ebae2898d` | `2d9c3cbecf22` |
+| `INGRID-ROMPPAINEN.md` | 1,973 | `545907fae72c6d0f` | `a7013337ca46` |
+| `KIRJA.md` | 2,958 | `1ed74a0923163dea` | `34f0ff6f6c0e` |
+| `KIRJA_KONE.md` | 18,312 | `207253fbe7b69285` | `ed619e8ace7a` |
+| `KYBER.md` | 33,966 | `63e68226a5ee89a2` | `695671a0b156` |
+| `LABRA_NET.md` | 2,036 | `58174ee557c7ef72` | `6d193d3f1c28` |
+| `NETWORKX.md` | 1,885 | `33ff27e67a6141c8` | `cdf75b8fef86` |
+| `NHI.md` | 18,912 | `b604a51c28dc8dbd` | `1fce31ada4ed` |
+| `PERSOONA.md` | 425 | `d307f164d0a48928` | `7ce8861c7832` |
+| `PHENOMENOLOGY.md` | 1,539 | `8eaabd978f8204a8` | `bb678235b3ec` |
+| `PHILOSOPHICAL_ZOMBIES.md` | 17,713 | `327e6cda140b5682` | `ecfdc1eda676` |
+| `PSIONICS.md` | 293 | `93873ea3dc2b4ed1` | `556c961cbb85` |
+| `PÄIVÄ_1.md` | 23,664 | `6e6c90e97f5f3348` | `4d023da1f6dc` |
+| `PÄIVÄ_2_HISTORIA.md` | 26,889 | `858cd0f6211d89ae` | `81603f07fbc5` |
+| `README_DAY1_PROTOTYPE.md` | 6,153 | `b9ee062641e1afe2` | `48e73d47f819` |
+| `ROMPPAINEN.md` | 2,408 | `e454a5152835902a` | `77fa46a6eb6a` |
+| `RULEBOOK.md` | 27,921 | `452dc6471fe5afb4` | `4410ca7694ca` |
+| `SISÄAVARUUS.md` | 7,467 | `ece4b23bcc15ded2` | `aad5f37fba36` |
+| `SKILLS.md` | 5,309 | `34619352ac96d542` | `751da2b0d942` |
+| `TERAPIASESSIO.md` | 3,838 | `5694a3304edbc01b` | `b332a6731564` |
+| `VUOROVAIKUTUS.md` | 2,643 | `e5db4ff209e74bf5` | `11dd160ee5e9` |
+| `requirements-llm.txt` | 1,133 | `348ed63881441e93` | `9496765fd4eb` |
+| `requirements.txt` | 54 | `48902cfde76eebb3` | `909f76c0577c` |
 
-### design and research documentation — 129 files, 1,302,571 bytes
-
-| path | bytes | sha256 (first 16) | upstream blob sha |
-| --- | --- | --- | --- |
-| `docs/16_PSYCHE_CG_JUNG_RESEARCH_CITY.md` | 11,237 | `21ca9888ce8c08fe` | `3c3acd5e5b51` |
-| `docs/16_PSYCHE_UFAB_NEOPLATONIC_MEDICAL_ORDER.md` | 15,811 | `ea9beeba05ead99d` | `bbe0328ebe33` |
-| `docs/ALTERED_CARBON_TRANSHUMANISM_INFLUENCE.md` | 7,427 | `9e0fcd346557f487` | `054b965f63f8` |
-| `docs/BOSTROM_BACKGROUND_INFLUENCE_AND_CRITIQUE.md` | 22,874 | `314dcf4e6918a903` | `e70ec481497a` |
-| `docs/CAN_GOERTZEL_PSI_NEUROPUNK_COMPATIBILITY.md` | 11,960 | `d4c1da4d9045d67a` | `a220cf52d507` |
-| `docs/CAN_MICROFOUNDATION_HOFFMAN_FAGGIN.md` | 49,653 | `e17a6fe9417a9d28` | `5a80b572d162` |
-| `docs/CAN_SUBSET_LAYER_PROMPT.md` | 6,402 | `a8dd80d37fa327ad` | `c799d4ea04e4` |
-| `docs/CKJ_EURODEF_SECURITY_ORDER.md` | 8,377 | `8946f53ce9a83403` | `f39ec1f85f4a` |
-| `docs/CONSCIOUS_AGENT_NETWORK.md` | 59,433 | `a49a948b48b9f80c` | `c2869b4f3750` |
-| `docs/CONVERSATION_DECISIONS_2026-07-25_AUTHORITY_SCHISM.md` | 1,297 | `7a8b8420f204c545` | `dc0c1468eaee` |
-| `docs/CONVERSATION_DECISIONS_2026-07-25_DAILY_LOOP.md` | 932 | `6cf91a390af54cd6` | `69edc9947108` |
-| `docs/CONVERSATION_DECISIONS_2026-07-25_INGRID_INTERACTION_SERIES_01.md` | 1,714 | `cf78d9e974c5d2f3` | `e5ee9ee64907` |
-| `docs/CONVERSATION_DECISIONS_2026-07-25_IRUNGU_WAKINI.md` | 913 | `eed2e56de4b63061` | `ff6207c9ec45` |
-| `docs/CONVERSATION_DECISIONS_2026-07-25_MYTHOLOGY.md` | 2,454 | `af810b0ceedf2475` | `587ac047696f` |
-| `docs/CONVERSATION_DECISIONS_2026-07-25_NAME_PROVENANCE.md` | 439 | `17970d57ebf4d9e2` | `076c0ce3311e` |
-| `docs/CONVERSATION_DECISIONS_2026-07-25_ORCH_OR.md` | 1,282 | `9290884d932b4f1d` | `04ec5b279eb3` |
-| `docs/CONVERSATION_DECISIONS_2026-07-25_PERSONALITY_TAGS.md` | 731 | `f91a728710dbddc3` | `3229978f91fc` |
-| `docs/CONVERSATION_DECISIONS_2026-07-25_ROMANTIC_ARCS.md` | 2,508 | `0809a54864095f9f` | `53570ab126bb` |
-| `docs/CONVERSATION_DECISIONS_2026-07-25_ROMPPAINEN_ARC.md` | 1,026 | `49e0e88e5b7bb9ea` | `0511ecf75c3a` |
-| `docs/CONVERSATION_DECISIONS_2026-07-25_ROMPPAINEN_BEHAVIOR_PHASES.md` | 2,140 | `f8abf921eb973175` | `473cf0b2e4df` |
-| `docs/CONVERSATION_DECISIONS_2026-07-25_UFAB_ADDICTION_PRIORITY.md` | 688 | `2804f2d9b3713a6a` | `04365f20c7bb` |
-| `docs/CONVERSATION_DECISIONS_2026-07-25_UFAB_NANOPILL_IMPLANT.md` | 2,097 | `debf463e340c8bc0` | `1b97510ad59b` |
-| `docs/CONVERSATION_DECISIONS_2026-07-25_UFAB_RAGNAROK_AI.md` | 1,295 | `26dea59f10cb4da2` | `4003ce4d2da5` |
-| `docs/CONVERSATION_DECISIONS_2026-07-25_UFAB_STAFF.md` | 1,164 | `723073c8bb3a7b59` | `27039f00033e` |
-| `docs/COSMIST_MANIFESTO_NOOPUNK_ANALYSIS.md` | 30,664 | `7789c3ba459cd4d3` | `7c44e976bbcc` |
-| `docs/DAILY_LOOP.md` | 7,366 | `368cc9a9c6f22f67` | `fa388215e3f5` |
-| `docs/DAYS_1_4_80MG_RAGNAROK_AND_KALLIO_CANON.md` | 8,466 | `ad074eaa47e69580` | `c0b727003923` |
-| `docs/DAY_1_BIG_NEWS_NOTE.md` | 10,134 | `150a11faae9c70fe` | `f3f86e3057b6` |
-| `docs/DAY_2_MARIN_YUE_NOTE.md` | 13,205 | `b7bbf9cb8e9b577a` | `523f2910c9b4` |
-| `docs/DREAM_MASTER_VAIKUTTEET.md` | 5,521 | `4bc50faa9a275ab2` | `be80dd7c9a9b` |
-| `docs/EARTH_POST_FALL_CANON.md` | 5,618 | `c2678b6c654c41b0` | `89b982e064d7` |
-| `docs/ECLIPSE_PHASE_RULES.md` | 16,296 | `89aab5a978d49b59` | `4c390cc31190` |
-| `docs/FIVE_PARADIGM_SHIFTS.md` | 7,650 | `51aa361b008494d4` | `78ba0c8f71b1` |
-| `docs/FUTURE_MULTIDIMENSIONAL_NETWORK_NOTE.md` | 6,600 | `3e2c12c0605bda62` | `2eee7c07d674` |
-| `docs/FUTURE_OCCUPATIONS.md` | 4,054 | `e4a0c71274f96981` | `af2af0225b55` |
-| `docs/GOERTZEL_CORPUS.md` | 24,936 | `de869e70fa23c1db` | `5e7537f9e2fd` |
-| `docs/GOERTZEL_MAP.md` | 6,546 | `61328e0e5b90e700` | `9153d4349981` |
-| `docs/GOERTZEL_NEUROPUNK_CAN_YHTEENSOPIVUUS.md` | 10,070 | `144bd5f2ab076147` | `f5fac362e994` |
-| `docs/GOERTZEL_NOOPUNK_INTEGRATION.md` | 8,104 | `56b876d6862812e5` | `2337f808fa5f` |
-| `docs/GOERTZEL_PAPERS_READING_NOTE.md` | 17,746 | `90b02a37c4617c4c` | `e9c1e69e72c3` |
-| `docs/GQ_CAN_PSIONICS_MODEL.md` | 48,282 | `19080d6cde6938f6` | `a5e661360ba7` |
-| `docs/HACKING_SYSTEM_IMPLEMENTATION.md` | 4,365 | `32902faaec2e0f48` | `888808d2c0b4` |
-| `docs/HELSINKI_DISAPPEARANCES_SCENARIO.md` | 7,162 | `655708f43958ce1d` | `9c8b88e2d081` |
-| `docs/IMPORTED_NHI_FACTION_MATRIX.md` | 4,205 | `df61198dae4b2542` | `591904526a80` |
-| `docs/IMPORTED_RULES_SALVAGE.md` | 2,133 | `b11058b97e6d638d` | `24f3d57739b4` |
-| `docs/IMPORTED_TIMELINE_RECONCILIATION.md` | 3,897 | `19410789208cfcab` | `94e0eab4c326` |
-| `docs/IMPORT_CONFLICT_LEDGER.md` | 4,166 | `bd9f0a8e05d5b34f` | `d1de850a02dc` |
-| `docs/INTELLIGENCE_AUTHORITY_SCHISM.md` | 3,865 | `025b6441df8f44de` | `c42442eb1ba3` |
-| `docs/LACLAUGPT_INTEGRATION_PLAN.md` | 7,487 | `959c654e06b9dac6` | `4c07797b4220` |
-| `docs/LATHE_OF_HEAVEN_VAIKUTTEET.md` | 6,590 | `ef2749950f127b2b` | `d1ce17cc52cd` |
-| `docs/LAYERED_GAMEPLAN_FUTURE.md` | 15,201 | `8cb8be0e754a4ab6` | `d068ee700628` |
-| `docs/LEVIATHAN_WAKES_HARD_SF_INFLUENCE.md` | 8,789 | `2f63bd2e560e75d9` | `15d2b815d38a` |
-| `docs/LLM_STRUCTURALISM_AND_NOOPUNK.md` | 16,715 | `3f3eee750e07601a` | `87e3469edd47` |
-| `docs/LONG_TERM_COSMOLOGICAL_HISTORY.md` | 16,654 | `d0cb17b11b621dbd` | `b9cf18a334fb` |
-| `docs/MANIAC_RESONANCE_DESIGN_NOTE.md` | 8,873 | `8c319664dc2a91d7` | `685b64f56805` |
-| `docs/MANIAC_RIGET_INFLUENCE_NOTE.md` | 7,060 | `844442e51c7a2af1` | `68a07475e043` |
-| `docs/MANIAC_RIGET_STYLE_ANALYSIS.md` | 11,954 | `6ef7ba8305f83180` | `331d1d29982d` |
-| `docs/MARS_ELDRICH_CORPORATION_AND_VESTERLUND.md` | 6,463 | `7ff57533321007c8` | `b39a22c06784` |
-| `docs/MYSTERY_AND_TIMELINE_SUPERPOSITION.md` | 5,454 | `073098de9189f466` | `dd11e327a836` |
-| `docs/NAME_PROVENANCE.md` | 630 | `2ba2f3b615a1f0a9` | `17aba207a82f` |
-| `docs/NEUROPUNK_NOOPUNK_ANALYSIS.md` | 26,840 | `d79aa67acdfbef65` | `330877f87c8c` |
-| `docs/NHI_ONTOLOGY.md` | 12,477 | `7df29617d3a8a0ec` | `075cfead595b` |
-| `docs/NOOPUNK_1974_2026_GENRE_ENGINE.md` | 8,463 | `d45529009ecbec95` | `92e2e035aa78` |
-| `docs/NOOPUNK_EPISTEMIC_ARCHITECTURE.md` | 13,744 | `881e1fe05d16841e` | `ecc4929f378a` |
-| `docs/NOOPUNK_FATE_FUDGE_SYNTHESIS_REVIEW.md` | 9,211 | `7e9ee75a718326ce` | `32a28bcb4c5a` |
-| `docs/NOOPUNK_PARADIGM_COLLAPSE_MODE.md` | 13,218 | `ee496dc0b10f5d54` | `64c6fe210050` |
-| `docs/NOOPUNK_RPG_RULES_V0_1.md` | 21,862 | `86d34d3904b8a733` | `e87c8c1982f9` |
-| `docs/NORDIC_LANGUAGE_MYTHOLOGY_AND_ONTOLOGY_CANON.md` | 5,749 | `125319017d6c3901` | `3550d08375c0` |
-| `docs/OLLAMA_RPG_ARCHITECTURE_PLAN.md` | 18,571 | `0b925deea9222dc0` | `59ade2d7b8e5` |
-| `docs/PANOPTICON_SURVEILLANCE_POWER_AND_NOOPUNK.md` | 15,362 | `8d57098c8a6b5e10` | `2df762385adf` |
-| `docs/PAPRIKA_INFLUENCE_NOTE.md` | 5,312 | `7a6aedf3bfda1c3b` | `5ff5bf4bf718` |
-| `docs/PAPRIKA_VAIKUTTEET.md` | 8,218 | `597f97f1378470a2` | `4466cdfda71f` |
-| `docs/PERSONALITY_TAGS.md` | 2,280 | `e05cdc5f97b19d58` | `a05985586cf4` |
-| `docs/PHILIP_K_DICK_INFLUENCE_MAP.md` | 10,860 | `b7dfebfd4f72c0f0` | `bfa8f200a906` |
-| `docs/PHILOSOPHICAL_FRAMEWORK.md` | 8,633 | `634507f979112acf` | `af31b8cadba4` |
-| `docs/PHILOSOPHICAL_ZOMBIES.md` | 21,441 | `628cf5f870d39cfe` | `b7809aabe9ed` |
-| `docs/PILGRIM_ORCH_OR_THEORY.md` | 6,066 | `0427d8418e1790bd` | `d74f9c6704b8` |
-| `docs/PSIONICS_SECURITY_DISCOURSE_INFLUENCE_NOTE.md` | 4,804 | `0eafba50a5bceadf` | `0b049619a52f` |
-| `docs/PSI_PUNK_RULES_AND_INFLUENCE_REVIEW.md` | 18,466 | `dc5499700eb664bf` | `aa128d940368` |
-| `docs/PSI_VOIMAT.md` | 9,671 | `59c7a46b43e73772` | `1a46c6dff092` |
-| `docs/PSYCHE_CROSS_LAYER_HACKING.md` | 9,543 | `03aaeff6b9fced85` | `023539d2a789` |
-| `docs/PSYKOKURGIA_NELIKON_MALLI.md` | 6,104 | `9d6a8fcda74c6c9f` | `7da630adecfa` |
-| `docs/QIP_CAN_IMPORT_AUDIT.md` | 3,971 | `fed17623ad071e5c` | `89ad977ef058` |
-| `docs/REDDIT_NOOPUNK_ZEITGEIST_SNAPSHOT_2026_08.md` | 15,796 | `5abd05438ba5adad` | `bcc13e65b275` |
-| `docs/RESEARCH_SIMULATION_PARADIGM.md` | 8,254 | `a57c0ac4bdeeba82` | `76fc1201b06d` |
-| `docs/ROMPPAINEN_BEHAVIOR_PHASES.md` | 5,901 | `cfd1faf88ce1e751` | `35b495a41660` |
-| `docs/ROMPPAINEN_INGRID_AND_THE_FALL.md` | 18,455 | `b731f2da2fc1e24b` | `47c0310d4443` |
-| `docs/ROMPPAINEN_INGRID_INTERACTION_SERIES_01.md` | 9,816 | `40486c7d1d2b25b4` | `b42bebdbcfa7` |
-| `docs/ROMPPAINEN_ROMANTIC_ARCS.md` | 5,717 | `1a647fc6bdc125a6` | `74ebbd2c6d18` |
-| `docs/ROMPPAINEN_SEVEN_DAY_ARC.md` | 6,604 | `0743ad61d0d07c6d` | `7a0dddb83c90` |
-| `docs/ROMPPAINEN_TEAM_NOTE.md` | 5,333 | `e1fa6c6c930508b6` | `dfcbd24c7cd1` |
-| `docs/RPG_ATTRIBUTE_SKILL_DIRECTION.md` | 8,228 | `edff6b45fce93346` | `03ffc373b714` |
-| `docs/RPG_CODE_REVIEW_2026_08_01.md` | 5,331 | `63d84922e80e93e4` | `80a44cafb160` |
-| `docs/RPG_MODULE.md` | 9,741 | `5b0d8124adba3c6a` | `d3f41a438a51` |
-| `docs/RULE_SYSTEM_BEST_OF_COMPARISON.md` | 16,055 | `6d77efffb34ca210` | `1e82c196b5e4` |
-| `docs/SHADOWRUN_INFLUENCE_AND_RESKIN.md` | 8,461 | `51305a9a5a7d5ab1` | `9297504ad4cd` |
-| `docs/SIMULATION_DEMOS.md` | 3,072 | `2a3ac035c0ff5337` | `05aa7a54eb66` |
-| `docs/SIMULATION_PLATFORM_EVALUATION.md` | 21,080 | `33751183fc05a42e` | `4a594d4d5b7e` |
-| `docs/SISAAVARYS_LACAN_JUNG.md` | 7,854 | `58a7e4301894a1a7` | `cd806de44eff` |
-| `docs/SISAKKAISET_VERKOSTOKERROKSET.md` | 12,734 | `66c71a148e696f51` | `f1c5cc72e655` |
-| `docs/SKENAARIO_16_PSYCHE.md` | 4,657 | `fcdb9ea0ea8cd52e` | `a846c8976177` |
-| `docs/SOURCE_ETHICS_AND_ANTI_SOURCE_HYPOTHESIS.md` | 4,013 | `78e66cd4b57ed62c` | `fe8b46ae83b2` |
-| `docs/STYLISTIC_INFLUENCES_MANIAC_RIGET.md` | 11,103 | `b81a8f81d4dfc0fc` | `cc78f4b9796a` |
-| `docs/SUBJECT_ARRIVAL_NOTE.md` | 18,256 | `68dd0c93636885e6` | `5c8217b27503` |
-| `docs/SUPERVILLAIN_ARCHITECTURE.md` | 6,597 | `189445c3eea886be` | `852f08e77c1b` |
-| `docs/TAROT_ORACLE_MODULE.md` | 4,839 | `c530b892e84cb41b` | `5313f90bf00f` |
-| `docs/THEORETICAL_SUPERPOSITIONS.md` | 7,354 | `d5d92fdc61349314` | `642d950e3791` |
-| `docs/THERAPY_DAY_1_DRAFT.md` | 18,808 | `787d348e1f728471` | `7d555f031a5d` |
-| `docs/THERAPY_DAY_1_MAIN_PLOT.md` | 24,458 | `b4621b9d0388b1e0` | `48a002778d69` |
-| `docs/THERAPY_DAY_2_PLANNING.md` | 5,093 | `ef4e1a7fa6da1fe8` | `cc81a357b215` |
-| `docs/THERAPY_SESSION_DAY_1_PROPOSAL.md` | 20,820 | `caeb8049e88a732c` | `896c46829531` |
-| `docs/THERAPY_SESSION_MODEL.md` | 7,324 | `dfc78439fd11e9db` | `74c90b6e2fc0` |
-| `docs/THE_STACK_PROTOCOL_AND_CYBERSPACE.md` | 4,611 | `a6cc4b5c648b5c9f` | `27ba90010153` |
-| `docs/TOMI_TOIVIO_1974_AUTHOR_FRAME.md` | 11,985 | `ed55d315d300f292` | `6ec7989f3167` |
-| `docs/TOMI_TOIVIO_FINNISH_VOICE_ENGINE.md` | 3,936 | `1918fef213192e9e` | `b36756f94c36` |
-| `docs/TOMMY_PILGRIM.md` | 21,377 | `544312ea93de135f` | `6e95318a158b` |
-| `docs/TOMMY_PILGRIM_1974_AUTHOR_FRAME.md` | 15,340 | `1f8fcdbd4b222252` | `0eff4ad794e3` |
-| `docs/TOMMY_PILGRIM_VOCABULARY.md` | 8,048 | `898e9c347ac611e0` | `02ab1efa82e9` |
-| `docs/TRANSHUMANITY_FATE_COMPATIBILITY.md` | 4,928 | `7be3b62f43b7fa9d` | `d71bb056a849` |
-| `docs/TWO_TIME_MODEL.md` | 3,507 | `d1b7047034320b57` | `58eee6f8fd54` |
-| `docs/UFAB_NANOPILL_IMPLANT.md` | 5,275 | `e6926098c5af14ad` | `a526e9a550f3` |
-| `docs/UFAB_RAGNAROK_AI.md` | 6,892 | `ca11d76772b1d9b1` | `53ba9bef0801` |
-| `docs/UPLIFTED_ANIMALS.md` | 6,999 | `8aad7c4482b4cbc5` | `8d0d8b335e78` |
-| `docs/VALIS_NOOSPHERE_METAPHYSICS.md` | 12,149 | `ec5236455730513c` | `d13c52e9dbce` |
-| `docs/VALLEE_DIMENSIONS_UFO_THEORY.md` | 12,245 | `bb4d920265836919` | `efdcab0c129c` |
-| `docs/WENDT_CAN_CASTELLS_BRIDGE.md` | 9,192 | `a5e883b0c080fab0` | `deb2378be822` |
-| `docs/WENDT_CRITICAL_AI_THREE_PARADIGM_SHIFTS.md` | 13,485 | `cec15554034c4eb2` | `de4ccd91097b` |
-| `docs/WENDT_PSI_RULES.md` | 10,504 | `fc33dbb78392187e` | `ab7dc6b37317` |
-| `docs/XENOFEMINISM_AND_NOOPUNK.md` | 2,703 | `e8354ee37cb1b678` | `d0d82d1c6033` |
-
-### entry-point script — 4 files, 66,384 bytes
+### design and research documentation — 129 files, 1,277,073 bytes
 
 | path | bytes | sha256 (first 16) | upstream blob sha |
 | --- | --- | --- | --- |
-| `app.py` | 21,877 | `aacb4f841af37363` | `f99b5a38cd28` |
-| `hacking_demo.py` | 7,265 | `47861643d23accb7` | `1b5a6375f63c` |
-| `play.py` | 35,488 | `2cbd0c68743b4e80` | `d4a43978e485` |
-| `social_demo.py` | 1,754 | `e102d1d4f4931151` | `d7ae6cc4538d` |
+| `docs/16_PSYCHE_CG_JUNG_RESEARCH_CITY.md` | 11,003 | `22a5f693a8fc9c88` | `3c3acd5e5b51` |
+| `docs/16_PSYCHE_UFAB_NEOPLATONIC_MEDICAL_ORDER.md` | 15,606 | `00b2ee8caef1b330` | `bbe0328ebe33` |
+| `docs/ALTERED_CARBON_TRANSHUMANISM_INFLUENCE.md` | 7,317 | `70843b23032a1e73` | `054b965f63f8` |
+| `docs/BOSTROM_BACKGROUND_INFLUENCE_AND_CRITIQUE.md` | 22,564 | `caa0496c7062aa8e` | `e70ec481497a` |
+| `docs/CAN_GOERTZEL_PSI_NEUROPUNK_COMPATIBILITY.md` | 11,774 | `bafa24bc5cf77d0a` | `a220cf52d507` |
+| `docs/CAN_MICROFOUNDATION_HOFFMAN_FAGGIN.md` | 48,825 | `1471424fbe13c242` | `5a80b572d162` |
+| `docs/CAN_SUBSET_LAYER_PROMPT.md` | 6,272 | `da3f43f1cfe701f6` | `c799d4ea04e4` |
+| `docs/CKJ_EURODEF_SECURITY_ORDER.md` | 8,148 | `3861b51013e10770` | `f39ec1f85f4a` |
+| `docs/CONSCIOUS_AGENT_NETWORK.md` | 57,978 | `5fe3c6fc4e7d05b6` | `c2869b4f3750` |
+| `docs/CONVERSATION_DECISIONS_2026-07-25_AUTHORITY_SCHISM.md` | 1,288 | `37da517da0469f80` | `dc0c1468eaee` |
+| `docs/CONVERSATION_DECISIONS_2026-07-25_DAILY_LOOP.md` | 917 | `893b48b02050ddb9` | `69edc9947108` |
+| `docs/CONVERSATION_DECISIONS_2026-07-25_INGRID_INTERACTION_SERIES_01.md` | 1,703 | `c0be76a50a95dda1` | `e5ee9ee64907` |
+| `docs/CONVERSATION_DECISIONS_2026-07-25_IRUNGU_WAKINI.md` | 901 | `d3aca60a5d6a5109` | `ff6207c9ec45` |
+| `docs/CONVERSATION_DECISIONS_2026-07-25_MYTHOLOGY.md` | 2,419 | `d1764295e69425a8` | `587ac047696f` |
+| `docs/CONVERSATION_DECISIONS_2026-07-25_NAME_PROVENANCE.md` | 434 | `9e506c4e36a5264f` | `076c0ce3311e` |
+| `docs/CONVERSATION_DECISIONS_2026-07-25_ORCH_OR.md` | 1,270 | `8dcbdb9bf3d8a111` | `04ec5b279eb3` |
+| `docs/CONVERSATION_DECISIONS_2026-07-25_PERSONALITY_TAGS.md` | 721 | `02fa9e8ecc2d7855` | `3229978f91fc` |
+| `docs/CONVERSATION_DECISIONS_2026-07-25_ROMANTIC_ARCS.md` | 2,494 | `9e626508a612a360` | `53570ab126bb` |
+| `docs/CONVERSATION_DECISIONS_2026-07-25_ROMPPAINEN_ARC.md` | 1,012 | `4677cfee42dae584` | `0511ecf75c3a` |
+| `docs/CONVERSATION_DECISIONS_2026-07-25_ROMPPAINEN_BEHAVIOR_PHASES.md` | 2,126 | `3dec4bfbac32db9e` | `473cf0b2e4df` |
+| `docs/CONVERSATION_DECISIONS_2026-07-25_UFAB_ADDICTION_PRIORITY.md` | 680 | `8388a255d1c20c48` | `04365f20c7bb` |
+| `docs/CONVERSATION_DECISIONS_2026-07-25_UFAB_NANOPILL_IMPLANT.md` | 2,086 | `99cb22071d0c7c2f` | `1b97510ad59b` |
+| `docs/CONVERSATION_DECISIONS_2026-07-25_UFAB_RAGNAROK_AI.md` | 1,283 | `4fb9f516ba092870` | `4003ce4d2da5` |
+| `docs/CONVERSATION_DECISIONS_2026-07-25_UFAB_STAFF.md` | 1,149 | `6163f5522f4b0a5f` | `27039f00033e` |
+| `docs/COSMIST_MANIFESTO_NOOPUNK_ANALYSIS.md` | 30,359 | `b604fc230186ad99` | `7c44e976bbcc` |
+| `docs/DAILY_LOOP.md` | 7,240 | `d4de3c5359355020` | `fa388215e3f5` |
+| `docs/DAYS_1_4_80MG_RAGNAROK_AND_KALLIO_CANON.md` | 8,328 | `136428bd3366ef65` | `c0b727003923` |
+| `docs/DAY_1_BIG_NEWS_NOTE.md` | 9,896 | `bb17de9af17455e3` | `f3f86e3057b6` |
+| `docs/DAY_2_MARIN_YUE_NOTE.md` | 12,830 | `24fc5050138370e2` | `523f2910c9b4` |
+| `docs/DREAM_MASTER_VAIKUTTEET.md` | 5,437 | `a618de286b57fe5c` | `be80dd7c9a9b` |
+| `docs/EARTH_POST_FALL_CANON.md` | 5,496 | `32b0163a8233c28d` | `89b982e064d7` |
+| `docs/ECLIPSE_PHASE_RULES.md` | 15,748 | `30fc8d4e8bdc8524` | `4c390cc31190` |
+| `docs/FIVE_PARADIGM_SHIFTS.md` | 7,501 | `af768b2869fe7f57` | `78ba0c8f71b1` |
+| `docs/FUTURE_MULTIDIMENSIONAL_NETWORK_NOTE.md` | 6,447 | `0540cb2221771111` | `2eee7c07d674` |
+| `docs/FUTURE_OCCUPATIONS.md` | 3,995 | `b6440217bc41188f` | `af2af0225b55` |
+| `docs/GOERTZEL_CORPUS.md` | 24,486 | `90f15a80aaf3d30f` | `5e7537f9e2fd` |
+| `docs/GOERTZEL_MAP.md` | 6,392 | `a8ed196596b240ef` | `9153d4349981` |
+| `docs/GOERTZEL_NEUROPUNK_CAN_YHTEENSOPIVUUS.md` | 9,936 | `3868eb82356c9153` | `f5fac362e994` |
+| `docs/GOERTZEL_NOOPUNK_INTEGRATION.md` | 7,922 | `ae62a87edef641b7` | `2337f808fa5f` |
+| `docs/GOERTZEL_PAPERS_READING_NOTE.md` | 17,349 | `fa397f6f80527173` | `e9c1e69e72c3` |
+| `docs/GQ_CAN_PSIONICS_MODEL.md` | 47,562 | `90496252b956e99a` | `a5e661360ba7` |
+| `docs/HACKING_SYSTEM_IMPLEMENTATION.md` | 4,257 | `488c5961c8eb81da` | `888808d2c0b4` |
+| `docs/HELSINKI_DISAPPEARANCES_SCENARIO.md` | 7,039 | `a8d61457e29c2aa2` | `9c8b88e2d081` |
+| `docs/IMPORTED_NHI_FACTION_MATRIX.md` | 4,174 | `fcb159fe36c41494` | `591904526a80` |
+| `docs/IMPORTED_RULES_SALVAGE.md` | 2,094 | `2d53bd9f411b8c4d` | `24f3d57739b4` |
+| `docs/IMPORTED_TIMELINE_RECONCILIATION.md` | 3,838 | `81a85acda95240dd` | `94e0eab4c326` |
+| `docs/IMPORT_CONFLICT_LEDGER.md` | 4,128 | `ef0e462085dd9925` | `d1de850a02dc` |
+| `docs/INTELLIGENCE_AUTHORITY_SCHISM.md` | 3,812 | `b59e33f3323fe789` | `c42442eb1ba3` |
+| `docs/LACLAUGPT_INTEGRATION_PLAN.md` | 7,329 | `5040f9fab7bff4fd` | `4c07797b4220` |
+| `docs/LATHE_OF_HEAVEN_VAIKUTTEET.md` | 6,497 | `eabff1685c7c7906` | `d1ce17cc52cd` |
+| `docs/LAYERED_GAMEPLAN_FUTURE.md` | 14,582 | `b8b312946ae29537` | `d068ee700628` |
+| `docs/LEVIATHAN_WAKES_HARD_SF_INFLUENCE.md` | 8,646 | `d323201463bccdcc` | `15d2b815d38a` |
+| `docs/LLM_STRUCTURALISM_AND_NOOPUNK.md` | 16,418 | `6051eaf13722c9dc` | `87e3469edd47` |
+| `docs/LONG_TERM_COSMOLOGICAL_HISTORY.md` | 15,970 | `38c6f81ae1222bdb` | `b9cf18a334fb` |
+| `docs/MANIAC_RESONANCE_DESIGN_NOTE.md` | 8,569 | `238e2502cc898d3c` | `685b64f56805` |
+| `docs/MANIAC_RIGET_INFLUENCE_NOTE.md` | 6,978 | `fca7673388e05a2d` | `68a07475e043` |
+| `docs/MANIAC_RIGET_STYLE_ANALYSIS.md` | 11,758 | `fab4f94d75718dff` | `331d1d29982d` |
+| `docs/MARS_ELDRICH_CORPORATION_AND_VESTERLUND.md` | 6,321 | `858aafafcc06cc4c` | `b39a22c06784` |
+| `docs/MYSTERY_AND_TIMELINE_SUPERPOSITION.md` | 5,335 | `40e9c05d8a8dc10c` | `dd11e327a836` |
+| `docs/NAME_PROVENANCE.md` | 619 | `95a4ef9ab0ad0e4a` | `17aba207a82f` |
+| `docs/NEUROPUNK_NOOPUNK_ANALYSIS.md` | 26,565 | `58ee76df3ed09c5b` | `330877f87c8c` |
+| `docs/NHI_ONTOLOGY.md` | 12,290 | `bc2590f180fe6146` | `075cfead595b` |
+| `docs/NOOPUNK_1974_2026_GENRE_ENGINE.md` | 8,343 | `0db1651ff12b9585` | `92e2e035aa78` |
+| `docs/NOOPUNK_EPISTEMIC_ARCHITECTURE.md` | 13,486 | `6bcb07238cc8f613` | `ecc4929f378a` |
+| `docs/NOOPUNK_FATE_FUDGE_SYNTHESIS_REVIEW.md` | 9,018 | `c8b73918b735f320` | `32a28bcb4c5a` |
+| `docs/NOOPUNK_PARADIGM_COLLAPSE_MODE.md` | 12,714 | `aa168f022ba1c1c2` | `64c6fe210050` |
+| `docs/NOOPUNK_RPG_RULES_V0_1.md` | 21,439 | `75ecc9c0a384e312` | `e87c8c1982f9` |
+| `docs/NORDIC_LANGUAGE_MYTHOLOGY_AND_ONTOLOGY_CANON.md` | 5,642 | `1d178a187871beeb` | `3550d08375c0` |
+| `docs/OLLAMA_RPG_ARCHITECTURE_PLAN.md` | 18,130 | `09eb6c658723d8d1` | `59ade2d7b8e5` |
+| `docs/PANOPTICON_SURVEILLANCE_POWER_AND_NOOPUNK.md` | 15,181 | `acef8fbaeee5cb19` | `2df762385adf` |
+| `docs/PAPRIKA_INFLUENCE_NOTE.md` | 5,223 | `3a9e0ae0c07065c9` | `5ff5bf4bf718` |
+| `docs/PAPRIKA_VAIKUTTEET.md` | 8,088 | `a0f1a511ee797343` | `4466cdfda71f` |
+| `docs/PERSONALITY_TAGS.md` | 2,248 | `94bd5c2b86033581` | `a05985586cf4` |
+| `docs/PHILIP_K_DICK_INFLUENCE_MAP.md` | 10,719 | `854718ab1d49c00b` | `bfa8f200a906` |
+| `docs/PHILOSOPHICAL_FRAMEWORK.md` | 8,538 | `d7c7670e6a1302d4` | `af31b8cadba4` |
+| `docs/PHILOSOPHICAL_ZOMBIES.md` | 20,884 | `740858b502dd2512` | `b7809aabe9ed` |
+| `docs/PILGRIM_ORCH_OR_THEORY.md` | 5,977 | `434f7c0016990b10` | `d74f9c6704b8` |
+| `docs/PSIONICS_SECURITY_DISCOURSE_INFLUENCE_NOTE.md` | 4,718 | `e0a734115ab7ad45` | `0b049619a52f` |
+| `docs/PSI_PUNK_RULES_AND_INFLUENCE_REVIEW.md` | 18,181 | `971eb560e39965fe` | `aa128d940368` |
+| `docs/PSI_VOIMAT.md` | 9,427 | `59f5376536a2ecf4` | `1a46c6dff092` |
+| `docs/PSYCHE_CROSS_LAYER_HACKING.md` | 9,386 | `9ade791688bcd660` | `023539d2a789` |
+| `docs/PSYKOKURGIA_NELIKON_MALLI.md` | 6,005 | `118a15d81cc2feaf` | `7da630adecfa` |
+| `docs/QIP_CAN_IMPORT_AUDIT.md` | 3,915 | `cae2398d2326ad89` | `89ad977ef058` |
+| `docs/REDDIT_NOOPUNK_ZEITGEIST_SNAPSHOT_2026_08.md` | 15,585 | `268e8396f3560bea` | `bcc13e65b275` |
+| `docs/RESEARCH_SIMULATION_PARADIGM.md` | 7,950 | `1abda64c6045288e` | `76fc1201b06d` |
+| `docs/ROMPPAINEN_BEHAVIOR_PHASES.md` | 5,843 | `be91057a7e6fc922` | `35b495a41660` |
+| `docs/ROMPPAINEN_INGRID_AND_THE_FALL.md` | 18,106 | `688f12145049f918` | `47c0310d4443` |
+| `docs/ROMPPAINEN_INGRID_INTERACTION_SERIES_01.md` | 9,684 | `29c2fb56ff7bad97` | `b42bebdbcfa7` |
+| `docs/ROMPPAINEN_ROMANTIC_ARCS.md` | 5,671 | `83cc540c54875f61` | `74ebbd2c6d18` |
+| `docs/ROMPPAINEN_SEVEN_DAY_ARC.md` | 6,501 | `ccb709f0455955a3` | `7a0dddb83c90` |
+| `docs/ROMPPAINEN_TEAM_NOTE.md` | 5,221 | `2f2bbaff3f442a2c` | `dfcbd24c7cd1` |
+| `docs/RPG_ATTRIBUTE_SKILL_DIRECTION.md` | 8,041 | `74d3fcb902deb5cb` | `03ffc373b714` |
+| `docs/RPG_CODE_REVIEW_2026_08_01.md` | 5,230 | `03e56645e9bc113f` | `80a44cafb160` |
+| `docs/RPG_MODULE.md` | 9,592 | `4c1fc838ff0be714` | `d3f41a438a51` |
+| `docs/RULE_SYSTEM_BEST_OF_COMPARISON.md` | 15,842 | `98a9d0599a076bcf` | `1e82c196b5e4` |
+| `docs/SHADOWRUN_INFLUENCE_AND_RESKIN.md` | 8,309 | `341dfd8f1daf5b65` | `9297504ad4cd` |
+| `docs/SIMULATION_DEMOS.md` | 3,007 | `07322a98c495777c` | `05aa7a54eb66` |
+| `docs/SIMULATION_PLATFORM_EVALUATION.md` | 20,738 | `5018779aa288535e` | `4a594d4d5b7e` |
+| `docs/SISAAVARYS_LACAN_JUNG.md` | 7,664 | `f3c7087e3652b499` | `cd806de44eff` |
+| `docs/SISAKKAISET_VERKOSTOKERROKSET.md` | 12,294 | `84b5fde6008d5660` | `f1c5cc72e655` |
+| `docs/SKENAARIO_16_PSYCHE.md` | 4,534 | `1d58407ff3ecc738` | `a846c8976177` |
+| `docs/SOURCE_ETHICS_AND_ANTI_SOURCE_HYPOTHESIS.md` | 3,926 | `c56ac7d8a070050e` | `fe8b46ae83b2` |
+| `docs/STYLISTIC_INFLUENCES_MANIAC_RIGET.md` | 10,909 | `4a5fb7fa3875ae4e` | `cc78f4b9796a` |
+| `docs/SUBJECT_ARRIVAL_NOTE.md` | 17,748 | `6113bdb59cb8890b` | `5c8217b27503` |
+| `docs/SUPERVILLAIN_ARCHITECTURE.md` | 6,467 | `e61588fc886553a1` | `852f08e77c1b` |
+| `docs/TAROT_ORACLE_MODULE.md` | 4,775 | `0bc2b4d738d7c5a5` | `5313f90bf00f` |
+| `docs/THEORETICAL_SUPERPOSITIONS.md` | 7,182 | `21b3f33776e2eea5` | `642d950e3791` |
+| `docs/THERAPY_DAY_1_DRAFT.md` | 18,278 | `217175cd3fe828b7` | `7d555f031a5d` |
+| `docs/THERAPY_DAY_1_MAIN_PLOT.md` | 24,079 | `76da3623eaf56b10` | `48a002778d69` |
+| `docs/THERAPY_DAY_2_PLANNING.md` | 4,964 | `cf843acd838f057e` | `cc81a357b215` |
+| `docs/THERAPY_SESSION_DAY_1_PROPOSAL.md` | 20,308 | `b5a045a5277534d7` | `896c46829531` |
+| `docs/THERAPY_SESSION_MODEL.md` | 7,138 | `9abb190dd58d3800` | `74c90b6e2fc0` |
+| `docs/THE_STACK_PROTOCOL_AND_CYBERSPACE.md` | 4,508 | `2597b69e59bb4e1f` | `27ba90010153` |
+| `docs/TOMI_TOIVIO_1974_AUTHOR_FRAME.md` | 11,724 | `98d702daebc5111a` | `6ec7989f3167` |
+| `docs/TOMI_TOIVIO_FINNISH_VOICE_ENGINE.md` | 3,849 | `d46630bab503cbb6` | `b36756f94c36` |
+| `docs/TOMMY_PILGRIM.md` | 20,887 | `742907c4919e38d6` | `6e95318a158b` |
+| `docs/TOMMY_PILGRIM_1974_AUTHOR_FRAME.md` | 15,056 | `c8728011c818c26d` | `0eff4ad794e3` |
+| `docs/TOMMY_PILGRIM_VOCABULARY.md` | 7,923 | `8101742f568acf80` | `02ab1efa82e9` |
+| `docs/TRANSHUMANITY_FATE_COMPATIBILITY.md` | 4,855 | `21eba053d68c2ece` | `d71bb056a849` |
+| `docs/TWO_TIME_MODEL.md` | 3,409 | `5945061c4cff8cdc` | `58eee6f8fd54` |
+| `docs/UFAB_NANOPILL_IMPLANT.md` | 5,212 | `0621c8832c84d610` | `a526e9a550f3` |
+| `docs/UFAB_RAGNAROK_AI.md` | 6,793 | `7805450376c43234` | `53ba9bef0801` |
+| `docs/UPLIFTED_ANIMALS.md` | 6,848 | `e3bb4c27eb0b4203` | `8d0d8b335e78` |
+| `docs/VALIS_NOOSPHERE_METAPHYSICS.md` | 11,929 | `2d01b594abb36f37` | `d13c52e9dbce` |
+| `docs/VALLEE_DIMENSIONS_UFO_THEORY.md` | 11,999 | `e0ca2a79c790469d` | `efdcab0c129c` |
+| `docs/WENDT_CAN_CASTELLS_BRIDGE.md` | 9,010 | `e46bf90eed7ae041` | `deb2378be822` |
+| `docs/WENDT_CRITICAL_AI_THREE_PARADIGM_SHIFTS.md` | 13,205 | `e9c9e3322530d9ad` | `de4ccd91097b` |
+| `docs/WENDT_PSI_RULES.md` | 10,259 | `3f77f7104b676e1f` | `ab7dc6b37317` |
+| `docs/XENOFEMINISM_AND_NOOPUNK.md` | 2,646 | `bfa8c5c0c25c7797` | `d0d82d1c6033` |
 
-### reference (LaclauGPT import) — 11 files, 210,726 bytes
+### entry-point script — 4 files, 64,803 bytes
 
 | path | bytes | sha256 (first 16) | upstream blob sha |
 | --- | --- | --- | --- |
-| `docs/reference/laclaugpt/CAMPAIGN.md` | 26,019 | `1c80dc4c4d48c295` | `835f140cd835` |
-| `docs/reference/laclaugpt/HELSINKI.md` | 39,527 | `560ba25c18bb8ee5` | `a73846881465` |
-| `docs/reference/laclaugpt/INTEGRATION_PLAN.md` | 10,721 | `139ce36bd55a7991` | `984b62ec66fb` |
-| `docs/reference/laclaugpt/NHI_FACTIONS.md` | 12,362 | `72fb69162f286163` | `957bebffd447` |
-| `docs/reference/laclaugpt/NHI_SINGULARITY.md` | 26,716 | `6e21660a62d86ae8` | `bddc37475442` |
-| `docs/reference/laclaugpt/NOÖPUNK.md` | 22,562 | `cdea9f2915b4bd81` | `27b14161a720` |
-| `docs/reference/laclaugpt/QIP.md` | 32,950 | `a7246af683557e93` | `27620b8180d6` |
-| `docs/reference/laclaugpt/README.md` | 3,289 | `39f46003e8cf2558` | `70b1790c1716` |
-| `docs/reference/laclaugpt/RULES.md` | 19,080 | `69a3a7d3477b0b54` | `075531e10b7c` |
-| `docs/reference/laclaugpt/TAROT.md` | 2,626 | `41b437b8bee98291` | `058e85599932` |
-| `docs/reference/laclaugpt/WORLD.md` | 14,874 | `2dc1803f8ebb6001` | `8fbc335312f8` |
+| `app.py` | 21,375 | `ea980be8fff69df4` | `f99b5a38cd28` |
+| `hacking_demo.py` | 7,091 | `91690e9185dfa12a` | `1b5a6375f63c` |
+| `play.py` | 34,626 | `941ef29503535d23` | `d4a43978e485` |
+| `social_demo.py` | 1,711 | `a2084828d85db456` | `d7ae6cc4538d` |
 
-### source — 64 files, 364,664 bytes
+### reference (LaclauGPT import) — 11 files, 208,413 bytes
 
 | path | bytes | sha256 (first 16) | upstream blob sha |
 | --- | --- | --- | --- |
-| `src/__init__.py` | 175 | `b9b1eb6fa8fc2d9c` | `490bfb622b4e` |
-| `src/cyber/__init__.py` | 448 | `1bd7a56c89e9f537` | `af5e9a798ec5` |
-| `src/cyber/graph.py` | 426 | `d60a12e1cc1ac90c` | `e02d00ff3b63` |
-| `src/cyber/ontology.py` | 1,673 | `82ef4d4212bd2b69` | `fa34b77fd5f3` |
-| `src/data_loader.py` | 218 | `13c770b671a6d2ca` | `e2f1f04aa564` |
-| `src/game/__init__.py` | 504 | `3fb61e0dc198459f` | `72d5cdbe8c94` |
-| `src/game/day1_web_save.py` | 3,015 | `7d047d7dcb604f34` | `ab515f799540` |
-| `src/game/npc_autonomy.py` | 4,673 | `513ee28fcf8a722a` | `6f6b0ba4c19f` |
-| `src/game/social_graph.py` | 13,775 | `6d5702a8db3fdb5c` | `ee2af98b2284` |
-| `src/game/state.py` | 22,169 | `b6bd927006d203cd` | `56a7a69296c9` |
-| `src/graph_model.py` | 465 | `95058a91dee64847` | `3d22951d04dd` |
-| `src/graph_serialization.py` | 2,591 | `4cb4158c8e4602e6` | `20f05d0dee89` |
-| `src/hacking/__init__.py` | 603 | `dceca3921e22f3c6` | `0e90b764c269` |
-| `src/hacking/layered.py` | 42,403 | `cc1a9a859adeded9` | `6945c09611b7` |
-| `src/hacking/simulation.py` | 10,085 | `93b12ff0bf69219f` | `c3c9bf96c67b` |
-| `src/interaction/__init__.py` | 590 | `daea403c0eb1b121` | `a86e44b420c3` |
-| `src/interaction/cli.py` | 3,120 | `dccc01b2cb2cc58d` | `ecc29220b6a0` |
-| `src/interaction/dialogue.py` | 9,778 | `0ca82e39ecfcc3a2` | `45dbf00e5b8a` |
-| `src/interaction/game.py` | 395 | `2c484b13a4b3e3c3` | `5a9694ce2a1c` |
-| `src/interaction/skills.py` | 918 | `c297f9ba10321cf1` | `b6d8b1d6ac68` |
-| `src/interaction/state.py` | 2,250 | `5e8c83e305735f18` | `9cba2ff74d7f` |
-| `src/noetic/__init__.py` | 181 | `a0e000e0a0c3dd31` | `b7aee2fa9a60` |
-| `src/noetic/graph.py` | 431 | `2b69006511ae9bd3` | `0b8cbc88021c` |
-| `src/ontology.py` | 427 | `2583ccbf7c8235e7` | `d5a37891ecec` |
-| `src/physical/__init__.py` | 185 | `b7ba1099e41959c9` | `b6c3df1e1455` |
-| `src/physical/graph.py` | 433 | `947848df4091b252` | `bd09873554f1` |
-| `src/political/classifier.py` | 1,387 | `d922602b78565510` | `123b60a7c3e0` |
-| `src/political/discourse_adapter.py` | 10,021 | `8d01c85d27c0b0c3` | `a8ac18d3586a` |
-| `src/political/discourse_graph.py` | 6,894 | `55c46c06628eb3f9` | `efd371306b90` |
-| `src/political/laclaugpt_v3.py` | 24,867 | `234d730d84f3f436` | `6172d58ed928` |
-| `src/political/laclaugpt_v3_prompts.py` | 31,794 | `0f403302d9d20e18` | `6feb626a7e57` |
-| `src/political/populism_analysis.py` | 14,056 | `8e8ba96cec34855d` | `e69dcc31bca6` |
-| `src/political/sentiment.py` | 1,527 | `c276ec5d765035aa` | `3df998d941c7` |
-| `src/rpg/__init__.py` | 3,200 | `35fea065927a4ca4` | `8e37d30e502f` |
-| `src/rpg/actions.py` | 2,959 | `2e49298a0a01e146` | `956f478d553f` |
-| `src/rpg/astral.py` | 6,945 | `0a61065c1562a129` | `3ec9ca9d7733` |
-| `src/rpg/conflict.py` | 2,935 | `0e2f65779e29b9e5` | `ac3dd8fecbe9` |
-| `src/rpg/cyber.py` | 5,008 | `7b2348e53e69e028` | `128ac3aa9a44` |
-| `src/rpg/dice.py` | 937 | `c6eb10ec269bd109` | `97b023d7bdde` |
-| `src/rpg/effects.py` | 1,124 | `9907c4be70667e8c` | `f49cadb349b9` |
-| `src/rpg/engine.py` | 9,579 | `4fdb2f27978c4e23` | `8a12bab0c3c4` |
-| `src/rpg/factions.py` | 5,520 | `f6066652eb481c6c` | `9be54755144d` |
-| `src/rpg/integration.py` | 1,697 | `0704dc2498393007` | `2a532118de77` |
-| `src/rpg/loaders.py` | 13,994 | `a0822882d5ee5011` | `66a7d0d787ef` |
-| `src/rpg/models.py` | 6,127 | `254ba5a08088d105` | `da9a4ee915dd` |
-| `src/rpg/npcs.py` | 887 | `b27263e832d0b7c1` | `55c61733495d` |
-| `src/rpg/persistence.py` | 5,747 | `e36f3305d6c04bd0` | `4ebeaf7570a7` |
-| `src/rpg/psi.py` | 14,440 | `a1d8b855d54e2dd8` | `1ae8fb83ef3c` |
-| `src/rpg/psychosurgery.py` | 1,583 | `c9ab27ed459963d8` | `e59f11c9fb60` |
-| `src/rpg/rules.py` | 3,600 | `62cc1fbd51ec16b4` | `8d9c89955bb8` |
-| `src/rpg/social.py` | 855 | `18ec9edc75591b2e` | `6ce9af0c204e` |
-| `src/rpg/tarot.py` | 10,251 | `90a2c1674325f52b` | `dac654890b90` |
-| `src/rpg/traits.py` | 1,614 | `0da85989298031f6` | `8c0d6b1dc868` |
-| `src/rpg/ui.py` | 2,400 | `7f54bcf9a768f1ca` | `2b3085d2a3bb` |
+| `docs/reference/laclaugpt/CAMPAIGN.md` | 25,720 | `cb4d44a21d367bce` | `835f140cd835` |
+| `docs/reference/laclaugpt/HELSINKI.md` | 39,098 | `620036d5dac86064` | `a73846881465` |
+| `docs/reference/laclaugpt/INTEGRATION_PLAN.md` | 10,549 | `8efd8dadf61fafc0` | `984b62ec66fb` |
+| `docs/reference/laclaugpt/NHI_FACTIONS.md` | 12,291 | `4dec438b4ef2dac1` | `957bebffd447` |
+| `docs/reference/laclaugpt/NHI_SINGULARITY.md` | 26,461 | `c05e79883393a79e` | `bddc37475442` |
+| `docs/reference/laclaugpt/NOÖPUNK.md` | 22,411 | `541bf02b72914855` | `27b14161a720` |
+| `docs/reference/laclaugpt/QIP.md` | 32,559 | `18db6dab7c3fbbf4` | `27620b8180d6` |
+| `docs/reference/laclaugpt/README.md` | 3,248 | `450529a0779b5e18` | `70b1790c1716` |
+| `docs/reference/laclaugpt/RULES.md` | 18,729 | `f6a1c04c54190298` | `075531e10b7c` |
+| `docs/reference/laclaugpt/TAROT.md` | 2,570 | `53c27e1f41ea0ebe` | `058e85599932` |
+| `docs/reference/laclaugpt/WORLD.md` | 14,777 | `52aacbf558c6638f` | `8fbc335312f8` |
+
+### source — 64 files, 355,006 bytes
+
+| path | bytes | sha256 (first 16) | upstream blob sha |
+| --- | --- | --- | --- |
+| `src/__init__.py` | 171 | `8f1286ce765f95b0` | `490bfb622b4e` |
+| `src/cyber/__init__.py` | 434 | `963ebf4c2868da4b` | `af5e9a798ec5` |
+| `src/cyber/graph.py` | 413 | `73d0f36433fed584` | `e02d00ff3b63` |
+| `src/cyber/ontology.py` | 1,610 | `c53af57e0833ee5b` | `fa34b77fd5f3` |
+| `src/data_loader.py` | 213 | `8b4dfc342d6b43c0` | `e2f1f04aa564` |
+| `src/game/__init__.py` | 488 | `5d44809e1c574e36` | `72d5cdbe8c94` |
+| `src/game/day1_web_save.py` | 2,935 | `406e420f14caa872` | `ab515f799540` |
+| `src/game/npc_autonomy.py` | 4,536 | `30b6c9ff99d54920` | `6f6b0ba4c19f` |
+| `src/game/social_graph.py` | 13,394 | `26c971c03d7a647d` | `ee2af98b2284` |
+| `src/game/state.py` | 21,674 | `a4f3b8b210a9351a` | `56a7a69296c9` |
+| `src/graph_model.py` | 444 | `a577b7db421b276d` | `3d22951d04dd` |
+| `src/graph_serialization.py` | 2,524 | `db081d9cc664330b` | `20f05d0dee89` |
+| `src/hacking/__init__.py` | 583 | `c896a3a2555601a6` | `0e90b764c269` |
+| `src/hacking/layered.py` | 41,513 | `953bfad7bf10b849` | `6945c09611b7` |
+| `src/hacking/simulation.py` | 9,881 | `3d37674c706ea521` | `c3c9bf96c67b` |
+| `src/interaction/__init__.py` | 568 | `85c321cb7bc526b6` | `a86e44b420c3` |
+| `src/interaction/cli.py` | 3,018 | `c1769945e0601a95` | `ecc29220b6a0` |
+| `src/interaction/dialogue.py` | 9,509 | `a192c39799a708a2` | `45dbf00e5b8a` |
+| `src/interaction/game.py` | 385 | `35ec5440c65190e7` | `5a9694ce2a1c` |
+| `src/interaction/skills.py` | 880 | `98746c52a178784f` | `b6d8b1d6ac68` |
+| `src/interaction/state.py` | 2,170 | `7d905fcb35988d3b` | `9cba2ff74d7f` |
+| `src/noetic/__init__.py` | 178 | `22bee231d4f3c9da` | `b7aee2fa9a60` |
+| `src/noetic/graph.py` | 418 | `a863e5e3a51c48c8` | `0b8cbc88021c` |
+| `src/ontology.py` | 410 | `8a14c91dd8ce4d6c` | `d5a37891ecec` |
+| `src/physical/__init__.py` | 182 | `2164214e230c89de` | `b6c3df1e1455` |
+| `src/physical/graph.py` | 420 | `42969319929c3862` | `bd09873554f1` |
+| `src/political/classifier.py` | 1,367 | `caaab956adca9fbe` | `123b60a7c3e0` |
+| `src/political/discourse_adapter.py` | 9,758 | `4fd6ed56e2204d25` | `a8ac18d3586a` |
+| `src/political/discourse_graph.py` | 6,697 | `87a6bb22176ef2de` | `efd371306b90` |
+| `src/political/laclaugpt_v3.py` | 24,286 | `4f301b45000d9bef` | `6172d58ed928` |
+| `src/political/laclaugpt_v3_prompts.py` | 30,380 | `6099b4a6a635a50d` | `6feb626a7e57` |
+| `src/political/populism_analysis.py` | 13,743 | `0e11448fb4a7626e` | `e69dcc31bca6` |
+| `src/political/sentiment.py` | 1,478 | `7085c887ce1519a7` | `3df998d941c7` |
+| `src/rpg/__init__.py` | 3,118 | `803beab8736217d9` | `8e37d30e502f` |
+| `src/rpg/actions.py` | 2,868 | `6020178c7d9de151` | `956f478d553f` |
+| `src/rpg/astral.py` | 6,778 | `57ea3a6e7aa70c6b` | `3ec9ca9d7733` |
+| `src/rpg/conflict.py` | 2,856 | `eba553ff81af333b` | `ac3dd8fecbe9` |
+| `src/rpg/cyber.py` | 4,884 | `e138b2758e1d82a1` | `128ac3aa9a44` |
+| `src/rpg/dice.py` | 911 | `8d289a99ea9dba39` | `97b023d7bdde` |
+| `src/rpg/effects.py` | 1,096 | `b6b5c2100ecfa918` | `f49cadb349b9` |
+| `src/rpg/engine.py` | 9,361 | `09caf583b2458d79` | `8a12bab0c3c4` |
+| `src/rpg/factions.py` | 5,382 | `3ae7d36cd242abc0` | `9be54755144d` |
+| `src/rpg/integration.py` | 1,658 | `89cfc3e6d8e886c4` | `2a532118de77` |
+| `src/rpg/loaders.py` | 13,711 | `63346bed56429994` | `66a7d0d787ef` |
+| `src/rpg/models.py` | 5,918 | `e251c6e127468807` | `da9a4ee915dd` |
+| `src/rpg/npcs.py` | 858 | `9ccb7ebe008406ee` | `55c61733495d` |
+| `src/rpg/persistence.py` | 5,620 | `7c73613a42b3e3a4` | `4ebeaf7570a7` |
+| `src/rpg/psi.py` | 14,057 | `d5953c244694f82f` | `1ae8fb83ef3c` |
+| `src/rpg/psychosurgery.py` | 1,540 | `9f7f60db7a5a786b` | `e59f11c9fb60` |
+| `src/rpg/rules.py` | 3,504 | `e8357e0cd5a34b53` | `8d9c89955bb8` |
+| `src/rpg/social.py` | 829 | `bd73b4f9a7ad017e` | `6ce9af0c204e` |
+| `src/rpg/tarot.py` | 9,958 | `83ac5d4a4494a685` | `dac654890b90` |
+| `src/rpg/traits.py` | 1,552 | `bb53bc7650434d0e` | `8c0d6b1dc868` |
+| `src/rpg/ui.py` | 2,346 | `7140878ebe5cb417` | `2b3085d2a3bb` |
 | `src/sim/__init__.py` | 0 | `e3b0c44298fc1c14` | `e69de29bb2d1` |
-| `src/sim/hacking/__init__.py` | 19,979 | `0eda98a5eecc9ee6` | `1fa6c2047e36` |
-| `src/sim/social/__init__.py` | 12,077 | `0b0e371fcf81014a` | `496d64927be5` |
-| `src/social/__init__.py` | 803 | `6921d8dbbb649458` | `9aea76e4a9e3` |
-| `src/social/data_loader.py` | 1,196 | `50a82c858ccd6046` | `341b51f91344` |
-| `src/social/graph.py` | 4,548 | `c8f60e9b9ed824d2` | `9e0530d848d3` |
-| `src/social/ontology.py` | 1,604 | `2e793126e4eb859f` | `0bdb38e829ec` |
-| `src/social/simulation.py` | 5,152 | `611fd15e6efb0714` | `fea8e00946c6` |
-| `src/therapy/__init__.py` | 517 | `42df07ca4e12cc53` | `cbacd4044013` |
-| `src/therapy/model.py` | 4,909 | `389ae1e65637fa39` | `69e5e028d3dc` |
+| `src/sim/hacking/__init__.py` | 19,570 | `563d592defc90569` | `1fa6c2047e36` |
+| `src/sim/social/__init__.py` | 11,792 | `1e611b3438219722` | `496d64927be5` |
+| `src/social/__init__.py` | 774 | `e7a44246315d6b25` | `9aea76e4a9e3` |
+| `src/social/data_loader.py` | 1,163 | `2a62287062afbb29` | `341b51f91344` |
+| `src/social/graph.py` | 4,412 | `d21e7c109af0d209` | `9e0530d848d3` |
+| `src/social/ontology.py` | 1,561 | `3e1facf74de3ed39` | `0bdb38e829ec` |
+| `src/social/simulation.py` | 5,034 | `755382b84843ef64` | `fea8e00946c6` |
+| `src/therapy/__init__.py` | 491 | `b904da1762d9ba71` | `cbacd4044013` |
+| `src/therapy/model.py` | 4,744 | `d0ac9767546fa014` | `69e5e028d3dc` |
 
-### tests — 41 files, 239,559 bytes
-
-| path | bytes | sha256 (first 16) | upstream blob sha |
-| --- | --- | --- | --- |
-| `tests/conftest.py` | 214 | `8e11930b978af072` | `23fcc5814aef` |
-| `tests/test_astral_projection.py` | 1,546 | `3f133e35124d3d3e` | `72eaff2b85d2` |
-| `tests/test_campaign_playthrough.py` | 2,133 | `4da3ba3b21fa4da6` | `d81c97da585b` |
-| `tests/test_cross_layer_hacking.py` | 10,718 | `7b598e84f323d681` | `6383530d7ae1` |
-| `tests/test_cyber_deterritorialized.py` | 4,367 | `ad774643ca9a6a5e` | `023007c68150` |
-| `tests/test_cyber_ontology.py` | 871 | `6ae04cdeda62688a` | `124e1a44fbe7` |
-| `tests/test_data_loader.py` | 951 | `72cc897519e8081e` | `881d7b2d47b1` |
-| `tests/test_day1_web_save.py` | 3,160 | `5373cbef7cdad30a` | `682fc1c92c71` |
-| `tests/test_day2_scenario.py` | 7,880 | `71b33a12bdcc44da` | `42a30c758d28` |
-| `tests/test_day_1.py` | 11,323 | `a2e86004c40ccba4` | `5a29926bb081` |
-| `tests/test_day_1_completion_review.py` | 4,295 | `79fef191e2fe746d` | `3fdf844d49d9` |
-| `tests/test_day_1_scenario.py` | 6,771 | `8192f057b2506056` | `d8e134592696` |
-| `tests/test_discourse_adapter.py` | 7,842 | `613837948b1106fc` | `34724820cddb` |
-| `tests/test_game_integration.py` | 14,972 | `93b0076174c4f28b` | `69db8b47865d` |
-| `tests/test_graph_model.py` | 3,447 | `5813eed4f020c046` | `69c6037e20eb` |
-| `tests/test_hacking_console.py` | 15,880 | `05704210ae15d030` | `5073a078c937` |
-| `tests/test_hacking_simulation.py` | 2,176 | `d21c90fb03576ea7` | `58b418a806a5` |
-| `tests/test_helsinki_campaign.py` | 6,831 | `2c3ac537d7fa6aad` | `84731d171b7c` |
-| `tests/test_interaction.py` | 4,425 | `c3f05e5119e1cfa4` | `f090d541e8d3` |
-| `tests/test_laclaugpt_v3.py` | 17,390 | `58ad12832734cdca` | `ffa29b839f79` |
-| `tests/test_layered_hacking.py` | 9,616 | `35ca808098ecdae6` | `e03a157e817e` |
-| `tests/test_location_model.py` | 3,423 | `fc8e68fc626da02c` | `a52561777f4f` |
-| `tests/test_lotta_kallio_node.py` | 7,064 | `6e27d9646a2b9e4d` | `a0342e5adc9c` |
-| `tests/test_maniac_riget_style.py` | 6,749 | `4a78c7e290f5c2c1` | `24848d55a760` |
-| `tests/test_npc_autonomy.py` | 2,143 | `2ca138c7f4e0c953` | `f9dfd096b13e` |
-| `tests/test_npc_memory_loader.py` | 3,188 | `ab2346a7d1157a43` | `6c63c979f949` |
-| `tests/test_npc_memory_ui.py` | 15,175 | `ebe8e2d15fb1873b` | `cbe33706b995` |
-| `tests/test_ontology.py` | 1,338 | `2785d164604c106e` | `13a5f2a613b9` |
-| `tests/test_populism_lens.py` | 6,794 | `e24cece8c46c860b` | `91b01c461f0f` |
-| `tests/test_psi_escalation.py` | 5,000 | `af2cb8d03aaec7c8` | `4eb8b37503c1` |
-| `tests/test_rpg_integration.py` | 1,744 | `7bcab5e8f6c82f3c` | `e1ae4f656ebd` |
-| `tests/test_rpg_module.py` | 7,113 | `6b0fa380c72e60bf` | `912623a34277` |
-| `tests/test_rpg_persistence.py` | 4,530 | `3002ef06ed34ca59` | `885449d76e18` |
-| `tests/test_rpg_rules_v01.py` | 12,124 | `47604f7b514ac98a` | `1ad04d7ecf98` |
-| `tests/test_sim_hacking.py` | 4,907 | `742c21944312cd89` | `2a87342fc93d` |
-| `tests/test_sim_social.py` | 3,884 | `b9a67fbdb1501f24` | `7a854987a72a` |
-| `tests/test_social_simulation.py` | 1,185 | `427b5a57a81507fb` | `5f3dab3400e1` |
-| `tests/test_tarot.py` | 11,494 | `73a508addfe95e9a` | `4551d9170f27` |
-| `tests/test_therapy_model.py` | 1,486 | `2c8897d464a5569b` | `c30398eb7b90` |
-| `tests/test_transhumanity_fate_compatibility.py` | 1,724 | `ad241362371c8f14` | `c827c213c70c` |
-| `tests/test_world_graph_modules.py` | 1,686 | `0a4626e5dff7bdde` | `f55d892f6f81` |
-
-### third-party reference material — 8 files, 18,124 bytes
+### tests — 41 files, 233,193 bytes
 
 | path | bytes | sha256 (first 16) | upstream blob sha |
 | --- | --- | --- | --- |
-| `references/maniac_transcripts/README.md` | 1,502 | `5b970845447cdac6` | `065066fc66ea` |
-| `references/maniac_transcripts/riget_wikipedia_episodes.txt` | 9,423 | `3f2e2a3ab6cb88c3` | `a723f5ff5bca` |
-| `references/maniac_transcripts/s01e04_furs_by_sebastian.txt` | 999 | `4d915e2dd55a565b` | `9edd5213e2e9` |
-| `references/maniac_transcripts/s01e05_exactly_like_you.txt` | 1,043 | `013dd22fda70d2d8` | `f1f574c256fb` |
-| `references/maniac_transcripts/s01e06_larger_structural_issues.txt` | 1,214 | `fea814a6c34edc97` | `3e245a545e8c` |
-| `references/maniac_transcripts/s01e07_ceci_nest_pas_une_drill.txt` | 1,103 | `03b6c0240f74b4b2` | `34203ebfab7c` |
-| `references/maniac_transcripts/s01e08_the_lake_of_the_clouds.txt` | 1,370 | `4bca56b958f5e669` | `2f304bd318fc` |
-| `references/maniac_transcripts/s01e09_utangatta.txt` | 1,470 | `7ccfde8b264bec66` | `20f96d02362f` |
+| `tests/conftest.py` | 205 | `ad3f05c57239b5fe` | `23fcc5814aef` |
+| `tests/test_astral_projection.py` | 1,507 | `cc4481550622f0a8` | `72eaff2b85d2` |
+| `tests/test_campaign_playthrough.py` | 2,074 | `33e0381b436c340d` | `d81c97da585b` |
+| `tests/test_cross_layer_hacking.py` | 10,483 | `3891ce3bcd00331d` | `6383530d7ae1` |
+| `tests/test_cyber_deterritorialized.py` | 4,254 | `cb6e5b8e8a66476d` | `023007c68150` |
+| `tests/test_cyber_ontology.py` | 841 | `686b55e927f72316` | `124e1a44fbe7` |
+| `tests/test_data_loader.py` | 929 | `9d73b58c61e1ccf9` | `881d7b2d47b1` |
+| `tests/test_day1_web_save.py` | 3,083 | `4afa069cfe93a2eb` | `682fc1c92c71` |
+| `tests/test_day2_scenario.py` | 7,657 | `ed2fbca1ac21fc98` | `42a30c758d28` |
+| `tests/test_day_1.py` | 11,023 | `fd6b06c27074757c` | `5a29926bb081` |
+| `tests/test_day_1_completion_review.py` | 4,188 | `d4761f153a5412c2` | `3fdf844d49d9` |
+| `tests/test_day_1_scenario.py` | 6,610 | `8ab1ed7888afc96d` | `d8e134592696` |
+| `tests/test_discourse_adapter.py` | 7,635 | `8970a76daca76ddc` | `34724820cddb` |
+| `tests/test_game_integration.py` | 14,595 | `a3a22384e87d9bd0` | `69db8b47865d` |
+| `tests/test_graph_model.py` | 3,342 | `4c2c8b4d9cb91152` | `69c6037e20eb` |
+| `tests/test_hacking_console.py` | 15,438 | `c17f22be0b11b409` | `5073a078c937` |
+| `tests/test_hacking_simulation.py` | 2,132 | `0bec3fee7ad7ea95` | `58b418a806a5` |
+| `tests/test_helsinki_campaign.py` | 6,670 | `b9deb0fd5e3ad42d` | `84731d171b7c` |
+| `tests/test_interaction.py` | 4,287 | `04834e8a5600ad61` | `f090d541e8d3` |
+| `tests/test_laclaugpt_v3.py` | 16,952 | `214db1d243d93088` | `ffa29b839f79` |
+| `tests/test_layered_hacking.py` | 9,378 | `83784e553fd6703c` | `e03a157e817e` |
+| `tests/test_location_model.py` | 3,330 | `4566e4447fe75668` | `a52561777f4f` |
+| `tests/test_lotta_kallio_node.py` | 6,884 | `68eb73609652ac10` | `a0342e5adc9c` |
+| `tests/test_maniac_riget_style.py` | 6,569 | `de15f2ab2c8cc1fe` | `24848d55a760` |
+| `tests/test_npc_autonomy.py` | 2,078 | `86fe9f5bd026d74f` | `f9dfd096b13e` |
+| `tests/test_npc_memory_loader.py` | 3,096 | `441345aa899c073c` | `6c63c979f949` |
+| `tests/test_npc_memory_ui.py` | 14,747 | `60fa53413cf31d7e` | `cbe33706b995` |
+| `tests/test_ontology.py` | 1,300 | `789a641c7a0fd336` | `13a5f2a613b9` |
+| `tests/test_populism_lens.py` | 6,625 | `ff293e56f52d6bc1` | `91b01c461f0f` |
+| `tests/test_psi_escalation.py` | 4,861 | `81c9437438e9776c` | `4eb8b37503c1` |
+| `tests/test_rpg_integration.py` | 1,696 | `f010249a3bb0ae0f` | `e1ae4f656ebd` |
+| `tests/test_rpg_module.py` | 6,910 | `fde9683ec3c79122` | `912623a34277` |
+| `tests/test_rpg_persistence.py` | 4,415 | `19f9321419946b0e` | `885449d76e18` |
+| `tests/test_rpg_rules_v01.py` | 11,777 | `60d1393564b8af64` | `1ad04d7ecf98` |
+| `tests/test_sim_hacking.py` | 4,758 | `0d3cd1e40e514eaa` | `2a87342fc93d` |
+| `tests/test_sim_social.py` | 3,768 | `d2e622bed28b61b7` | `7a854987a72a` |
+| `tests/test_social_simulation.py` | 1,155 | `da5f1c4906596764` | `5f3dab3400e1` |
+| `tests/test_tarot.py` | 11,179 | `7ec83d488d47bf42` | `4551d9170f27` |
+| `tests/test_therapy_model.py` | 1,441 | `80db6982b5dbe820` | `c30398eb7b90` |
+| `tests/test_transhumanity_fate_compatibility.py` | 1,677 | `01b82f39b7b0c4f1` | `c827c213c70c` |
+| `tests/test_world_graph_modules.py` | 1,644 | `7480b0b0724afdc4` | `f55d892f6f81` |
 
 ## Files excluded from the import
 
@@ -373,16 +360,7 @@ One file was given a banner after import, because a verbatim copy of it would ot
 
 These files name or describe works that are not the author's own. They are retained because they are **summaries and analysis**, not expression: the copyrighted dialogue was excluded above. The ledger entry in `data/sources/external_sources.json` records them.
 
-| path | work | nature |
-| --- | --- | --- |
-| `references/maniac_transcripts/README.md` | *Maniac* (Netflix, 2018) | episode index and motif summary written by the corpus author |
-| `references/maniac_transcripts/riget_wikipedia_episodes.txt` | *Riget* / *The Kingdom* (1994) — Wikipedia episode summaries | Wikipedia episode summaries, quoted as summaries; the source attribution is stated in the file header |
-| `references/maniac_transcripts/s01e04_furs_by_sebastian.txt` | *Maniac* (Netflix, 2018) | episode summary with key scenes, not dialogue |
-| `references/maniac_transcripts/s01e05_exactly_like_you.txt` | *Maniac* (Netflix, 2018) | episode summary with key scenes, not dialogue |
-| `references/maniac_transcripts/s01e06_larger_structural_issues.txt` | *Maniac* (Netflix, 2018) | episode summary with key scenes, not dialogue |
-| `references/maniac_transcripts/s01e07_ceci_nest_pas_une_drill.txt` | *Maniac* (Netflix, 2018) | episode summary with key scenes, not dialogue |
-| `references/maniac_transcripts/s01e08_the_lake_of_the_clouds.txt` | *Maniac* (Netflix, 2018) | episode summary with key scenes, not dialogue |
-| `references/maniac_transcripts/s01e09_utangatta.txt` | *Maniac* (Netflix, 2018) | episode summary with key scenes, not dialogue |
+**None.** Every third-party file in the corpus has been excluded; the exclusion table above lists each one with its reason.
 
 ## Verification
 

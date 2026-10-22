@@ -42,6 +42,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import subprocess
 import sys
 from dataclasses import asdict, dataclass
@@ -271,7 +272,35 @@ def _upstream_commits() -> dict[str, str]:
     return commits
 
 
-SOURCE_ROOT = Path("/mnt/c/Users/totoivio/Panpsychic-Cyborg-Multitude")
+def _resolve_source_root() -> Path:
+    """Where the upstream Panpsychic-Cyborg-Multitude checkout lives.
+
+    The original build ran on the author's Windows machine and hard-coded
+    ``/mnt/c/Users/totoivio/Panpsychic-Cyborg-Multitude``. That path does not exist on
+    Laskin, and a missing upstream checkout is not a cosmetic problem: the manifest's
+    whole value is that each imported file carries its **upstream blob sha**, and
+    without the checkout every one of those becomes ``unavailable`` — the record
+    silently degrades from "provably unaltered" to "trust me".
+
+    So resolve it in order: an explicit override, the Windows path if it is there, and
+    then a local clone. When none is found the manifest still builds, but with the
+    provenance fields marked unavailable — which is the honest outcome, not a failure
+    to hide.
+    """
+    override = os.environ.get("NOOPUNK_PCM_SOURCE_ROOT")
+    if override:
+        return Path(override)
+    windows = Path("/mnt/c/Users/totoivio/Panpsychic-Cyborg-Multitude")
+    if (windows / ".git").exists():
+        return windows
+    for candidate in (Path.home() / "Panpsychic-Cyborg-Multitude",
+                      Path("/mnt/workspace/Panpsychic-Cyborg-Multitude")):
+        if (candidate / ".git").exists():
+            return candidate
+    return windows  # not present; the upstream fields degrade to ``unavailable``
+
+
+SOURCE_ROOT = _resolve_source_root()
 
 
 def _source_commit() -> str | None:
@@ -372,7 +401,9 @@ def build_json(entries: list[Entry]) -> str:
         "excluded": EXCLUDED,
         "locally_annotated": LOCALLY_ANNOTATED,
         "missing_upstream": MISSING_UPSTREAM,
-        "third_party_retained": THIRD_PARTY_RETAINED,
+        "third_party_retained": [
+            item for item in THIRD_PARTY_RETAINED if (ARCHIVE / item["path"]).exists()
+        ],
         "counts": {
             "files_imported": len(entries),
             "files_excluded": len(EXCLUDED),
@@ -486,11 +517,19 @@ def build_md(entries: list[Entry]) -> str:
         "`data/sources/external_sources.json` records them."
     )
     lines.append("")
-    lines.append("| path | work | nature |")
-    lines.append("| --- | --- | --- |")
-    for item in THIRD_PARTY_RETAINED:
-        lines.append(f"| `{item['path']}` | {item['work']} | {item['nature']} |")
-    lines.append("")
+    retained = [item for item in THIRD_PARTY_RETAINED if (ARCHIVE / item["path"]).exists()]
+    if not retained:
+        lines.append(
+            "**None.** Every third-party file in the corpus has been excluded; the "
+            "exclusion table above lists each one with its reason."
+        )
+        lines.append("")
+    else:
+        lines.append("| path | work | nature |")
+        lines.append("| --- | --- | --- |")
+        for item in retained:
+            lines.append(f"| `{item['path']}` | {item['work']} | {item['nature']} |")
+        lines.append("")
     lines.append("## Verification")
     lines.append("")
     lines.append("```sh")

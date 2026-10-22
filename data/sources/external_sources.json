@@ -156,31 +156,31 @@
       "id": "maniac-2018-transcript-summaries",
       "source": "Maniac (Netflix, 2018) episode summaries and index, as written in the Ubiquitous Maniacs corpus",
       "url": "https://www.netflix.com/title/80189628",
-      "repository": "archive/ubiquitous-maniacs-2026-10/references/maniac_transcripts/",
+      "repository": "(not present in this repository — see notes)",
       "kind": "style-reference-summaries",
       "edition": "Maniac, 10 episodes, dir. Cary Joji Fukunaga",
       "license": "not-established",
       "license_url": "https://www.netflix.com/legal/terms-of-use",
       "attribution": "Maniac (c) Netflix Studios. Summarised; not the work.",
-      "importable": "unclear-do-not-import",
-      "importable_reason": "The summaries are the corpus author's own work and name the show; they reproduce no dialogue. The underlying work is third-party and no grant travels with the summaries, so the verdict on the WORK is not-established. The eight retained files were checked for the transcript signature (a run of twelve or more consecutive dialogue lines) and none carries one.",
+      "importable": "not-present",
+      "importable_reason": "Not present in this repository: the file was excluded from the import with the rest of the third-party reference material, so there is nothing here to copy. The underlying work (Netflix's Maniac, 2018; Riget, 1994) is third-party and no grant travels with the corpus author's summaries of it. The excluded set and the reason for each exclusion are recorded in archive/ubiquitous-maniacs-2026-10/MANIFEST.md; the files remain in the source repository.",
       "license_checked": "2026-10-22",
-      "notes": "SIBLING FILES WERE EXCLUDED FROM THE IMPORT. Four files containing verbatim closed-caption dialogue (s01e01, s01e02, s01e03, s01e10) and one analysis file whose section 7 is titled 'Direct Dialogue Samples for Noopunk Extraction' were left out of the public repository; they remain in the source repository. The excluded set and the reason for each exclusion are recorded in archive/ubiquitous-maniacs-2026-10/MANIFEST.md. This is why the imported corpus is a partial copy of the source: the import is a source-of-record with the copyrighted expression removed, not a mirror."
+      "notes": "NOT PRESENT IN THIS REPOSITORY. The corpus's references/maniac_transcripts/ held ten episode files, an episode index and a style analysis. Four of the episode files carried verbatim closed-caption dialogue, and the analysis quoted extended dialogue verbatim in a section titled 'Direct Dialogue Samples for Noopunk Extraction'. All thirteen third-party files were excluded from the import: the four dialogue transcripts, the style analysis, the transcript index, the Riget episode guide and the remaining episode summaries. They remain in the source repository (Panpsychic-Cyborg-Multitude @ LaclauGPT). The excluded set and the reason for each exclusion are recorded in archive/ubiquitous-maniacs-2026-10/MANIFEST.md. This is why the imported corpus is a partial copy of the source: it is a source-of-record with the third-party material removed, not a mirror."
     },
     {
       "id": "riget-1994-wikipedia-episode-summaries",
       "source": "Riget / The Kingdom (1994) episode summaries quoted from English Wikipedia",
       "url": "https://en.wikipedia.org/wiki/The_Kingdom_(miniseries)",
-      "repository": "archive/ubiquitous-maniacs-2026-10/references/maniac_transcripts/riget_wikipedia_episodes.txt",
+      "repository": "(not present in this repository — see notes)",
       "kind": "style-reference-summaries",
       "edition": "Riget (The Kingdom), dir. Erik Balling",
       "license": "CC BY-SA 4.0 (Wikipedia text); the underlying series is not established",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
       "attribution": "Episode summaries from English Wikipedia, article 'The Kingdom (miniseries)', CC BY-SA 4.0; the miniseries itself is third-party and unlicensed here.",
-      "importable": "unclear-do-not-import",
-      "importable_reason": "The Wikipedia text is CC BY-SA and quotable with attribution, which the file header gives. The miniseries it summarises is third-party with no established grant, so the summaries are retained as the corpus author's research notes with the source stated, and nothing is derived from them as expression.",
+      "importable": "not-present",
+      "importable_reason": "Not present in this repository: the file was excluded from the import with the rest of the third-party reference material, so there is nothing here to copy. The underlying work (Netflix's Maniac, 2018; Riget, 1994) is third-party and no grant travels with the corpus author's summaries of it. The excluded set and the reason for each exclusion are recorded in archive/ubiquitous-maniacs-2026-10/MANIFEST.md; the files remain in the source repository.",
       "license_checked": "2026-10-22",
-      "notes": "Retained because the file is a quotation of summaries with the source attributed in its own header, not of expression. See the sibling entry for the excluded transcript files."
+      "notes": "NOT PRESENT IN THIS REPOSITORY. The file was excluded from the import together with the rest of references/maniac_transcripts/; it remains in the source repository. See the sibling entry for the full excluded set."
     }
   ],
   "current_imports": {
