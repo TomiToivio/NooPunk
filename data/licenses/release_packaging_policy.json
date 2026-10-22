@@ -77,9 +77,9 @@
     },
     {
       "id": "source-code",
-      "globs": ["src/**", "scripts/**", "tools/**", "tests/**", "strategy_game/**", "gen_migration.py"],
+      "globs": ["src/**", "scripts/**", "tools/**", "tests/**", "strategy_game/**", "gen_migration.py", "pytest.ini"],
       "licence": "author-decision-separate-software-licence",
-      "note": "Needs its own software licence, separate from the CC instrument."
+      "note": "Needs its own software licence, separate from the CC instrument. pytest.ini is test configuration: it tells pytest which directories not to collect, so the preserved corpora under archive/ do not shadow this repository's own src/ package. It is configuration for the test suite, so it travels with the code it configures."
     },
     {
       "id": "fixtures-and-scenes",
