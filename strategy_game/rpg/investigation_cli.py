@@ -30,7 +30,9 @@ def main(argv: list[str] | None = None) -> int:
                 case.party(parts[1:])
                 print("Party:", ", ".join(case.participants))
             elif parts and parts[0] == "check" and len(parts) == 5:
-                print(case.attempt(parts[1], parts[2], int(parts[3]), int(parts[4])))
+                result = case.attempt(parts[1], parts[2], int(parts[3]), int(parts[4]))
+                case.save(args.save)
+                print(result)
             else:
                 case.choose(raw)
                 case.save(args.save)
