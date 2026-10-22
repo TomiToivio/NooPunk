@@ -3,8 +3,8 @@
 
 Produces, deterministically and re-runnably:
 
-  archive/ubiquitous-maniacs-2026-10/MANIFEST.md     human-readable inventory
-  archive/ubiquitous-maniacs-2026-10/manifest.json    machine-readable inventory
+  legacy/ubiquitous_maniacs/MANIFEST.md     human-readable inventory
+  legacy/ubiquitous_maniacs/manifest.json    machine-readable inventory
 
 What this is
 ------------
@@ -49,7 +49,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-ARCHIVE = REPO / "archive" / "ubiquitous-maniacs-2026-10"
+ARCHIVE = REPO / "legacy" / "ubiquitous_maniacs"
 SOURCE_REPO = "TomiToivio/Panpsychic-Cyborg-Multitude"
 SOURCE_PATH = "noopunk/ubiquitous_maniacs"
 
@@ -110,6 +110,89 @@ EXCLUDED: list[dict[str, str]] = [
                   "Extraction' and quotes extended dialogue verbatim. The analysis is "
                   "the author's own work, but the quoted dialogue is not, so the file "
                   "travels with the dialogue rather than without it.",
+    },
+]
+
+# Third-party EXPRESSION that was inside the corpus's OWN files and was removed by the
+# copyright cleaning pass of 2026-10-22. The corpus's analysis documents quoted the
+# shows' dialogue and scripts verbatim; the analysis itself is the author's work and stays,
+# but the quoted expression does not. Each entry names the file and what was removed.
+LOCALLY_CLEANED: list[dict[str, str]] = [
+    {
+        "path": "docs/STYLISTIC_INFLUENCES_MANIAC_RIGET.md",
+        "work": "*Maniac* (Netflix, 2018); *Riget / The Kingdom* (DR, 1994)",
+        "nature": "quoted the shows' dialogue and the *Riget* prologue verbatim",
+        "detail": "The device descriptions stay; the quoted dialogue, the translated chorus "
+                  "and the prologue's closing sentence are gone. The analysis now describes "
+                  "the devices without reproducing the words.",
+    },
+    {
+        "path": "docs/MANIAC_RIGET_STYLE_ANALYSIS.md",
+        "work": "*Maniac* (Netflix, 2018); *Riget / The Kingdom* (DR, 1994)",
+        "nature": "quoted advertising lines, a catchphrase and two dialogue lines verbatim",
+        "detail": "Replaced with descriptions of the same devices in the author's own words.",
+    },
+    {
+        "path": "docs/MANIAC_RIGET_INFLUENCE_NOTE.md",
+        "work": "*Maniac* (Netflix, 2018); *Riget / The Kingdom* (DR, 1994)",
+        "nature": "cited the transcript sites it had read",
+        "detail": "The citation list now names the works themselves instead of the transcript "
+                  "archives; the analysis is unchanged.",
+    },
+    {
+        "path": "docs/PAPRIKA_VAIKUTTEET.md",
+        "work": "*Paprika* (Atsuko Chiba, 2006)",
+        "nature": "quoted four lines of the film's dialogue and its tagline verbatim",
+        "detail": "Each is replaced by a description of what the line did in the scene.",
+    },
+    {
+        "path": "docs/SIMULATION_PLATFORM_EVALUATION.md",
+        "work": "third-party simulation platforms",
+        "nature": "quoted product marketing strings verbatim",
+        "detail": "Replaced with paraphrases of the same claims.",
+    },
+    {
+        "path": "docs/PHILOSOPHICAL_ZOMBIES.md",
+        "work": "*Maniac* (Netflix, 2018)",
+        "nature": "carried a near-translation of the show's intake dialogue",
+        "detail": "The intake lines are rewritten in the corpus's own Finnish.",
+    },
+    {
+        "path": "P\u00c4IV\u00c4_1.md",
+        "work": "*Maniac* (Netflix, 2018)",
+        "nature": "carried the same near-translation of the show's intake dialogue",
+        "detail": "The intake lines are rewritten in the corpus's own Finnish.",
+    },
+    {
+        "path": "src/interaction/dialogue.py",
+        "work": "*Maniac* (Netflix, 2018)",
+        "nature": "the playable intake dialogue reproduced the show's lines",
+        "detail": "The three lines are rewritten; the scene's structure and mechanics are "
+                  "unchanged.",
+    },
+    {
+        "path": "src/interaction/cli.py",
+        "work": "*Maniac* (Netflix, 2018)",
+        "nature": "the console printed the show's acceptance line",
+        "detail": "Rewritten in the corpus's own words.",
+    },
+    {
+        "path": "app.py",
+        "work": "*Maniac* (Netflix, 2018)",
+        "nature": "the Streamlit view printed the show's acceptance line",
+        "detail": "Rewritten in the corpus's own words.",
+    },
+    {
+        "path": "tests/test_interaction.py",
+        "work": "*Maniac* (Netflix, 2018)",
+        "nature": "asserted the show's acceptance line",
+        "detail": "The assertion follows the rewritten line.",
+    },
+    {
+        "path": "tests/test_game_integration.py",
+        "work": "*Maniac* (Netflix, 2018)",
+        "nature": "asserted the show's intake question",
+        "detail": "The assertion follows the rewritten line.",
     },
 ]
 
@@ -414,6 +497,7 @@ def build_json(entries: list[Entry]) -> str:
         },
         "excluded": EXCLUDED,
         "locally_annotated": LOCALLY_ANNOTATED,
+        "locally_cleaned": LOCALLY_CLEANED,
         "missing_upstream": MISSING_UPSTREAM,
         "third_party_retained": [
             item for item in THIRD_PARTY_RETAINED if (ARCHIVE / item["path"]).exists()
@@ -520,6 +604,22 @@ def build_md(entries: list[Entry]) -> str:
     lines.append("| --- | --- | --- |")
     for item in MISSING_UPSTREAM:
         lines.append(f"| `{item['path']}` | {item['reason']} | {item['detail']} |")
+    lines.append("")
+    lines.append("## Third-party expression removed from the corpus's own files")
+    lines.append("")
+    lines.append(
+        "The corpus's analysis documents and its playable dialogue quoted the source "
+        "shows' dialogue, scripts and marketing lines verbatim. The *analysis* is the "
+        "author's own work and is retained; the *quoted expression* is not, and was "
+        "removed on 2026-10-22. Each row names what was taken out and what replaced it."
+    )
+    lines.append("")
+    lines.append("| path | work | what was removed | what replaced it |")
+    lines.append("| --- | --- | --- | --- |")
+    for item in LOCALLY_CLEANED:
+        lines.append(
+            f"| `{item['path']}` | {item['work']} | {item['nature']} | {item['detail']} |"
+        )
     lines.append("")
     lines.append("## Third-party material retained, and its nature")
     lines.append("")

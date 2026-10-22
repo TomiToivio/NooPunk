@@ -455,7 +455,7 @@ Sitten Romppaista.
 
 Pitkä hiljaisuus.
 
-ROMPPAINEN: Tutkitteko, olenko androidi tai homoseksuaali?
+ROMPPAINEN: Tutkitteko, olenko kone?
 
 Dahl tuijottaa häntä intensiivisesti.
 
@@ -465,7 +465,7 @@ Ei kulmakarvan liikettä.
 
 Romppainen odottaa.
 
-ROMPPAINEN: Epäilettekö minua viruksen kantajaksi?
+ROMPPAINEN: Epäilettekö minua tartuttajana?
 
 Dahl tuijottaa edelleen.
 
@@ -497,7 +497,7 @@ DR. ELIN DAHL: Onneksi olkoon.
 
 Romppainen kallistaa päätään.
 
-DR. ELIN DAHL: Teidät on valittu kokeeseen.
+DR. ELIN DAHL: Tämä on koe, ja teidät on valittu siihen.
 
 Dahl vetää laatikosta nipun lomakkeita.
 

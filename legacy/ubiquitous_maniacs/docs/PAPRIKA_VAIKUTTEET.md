@@ -11,7 +11,8 @@ Paprikan Institute for Psychiatric Research kehittää PT-laitteita (collector, 
 Paprika (Atsuko Chiba) menee potilaiden uniin collectorilla. Terapeutti siirtyy potilaan alitajuntaan. Romppainen on "lähmääntynyt" Ingridin uneen — molemmat ovat samassa unisimulaatiossa.
 
 ### Vastahyökkäys → Entanglement
-Terapeutti voi jäädä loukkuun potilaan alitajuntaan ("counter-invasion"). Nobue "strayed into the patient's dream." Tämä on "entangled assemblage" — Romppainen ja Ingrid entangloutuivat ensimmäisellä kierroksella.
+Terapeutti voi jäädä loukkuun potilaan alitajuntaan ("counter-invasion"). Terapeutti on siirtynyt potilaan uneen vasten tämän tahtoa. Tämä on "entangled
+assemblage" — Romppainen ja Ingrid entangloutuivat ensimmäisellä kierroksella.
 
 ### Jungilainen analyysi → C.G. Jung
 Paprika analysoi unia Jungin anima/animus-käsittein. Meillä on C.G. Jung -AGI ja jungilainen psykoanalyysi ydinrakenne.
@@ -20,16 +21,19 @@ Paprika analysoi unia Jungin anima/animus-käsittein. Meillä on C.G. Jung -AGI 
 Institute for Psychiatric Researchin sisäinen valtataistelu (Inui vs Shima, Osanai vs Atsuko). UFAB:n Pilgrim vs Tanaka, UFAB Ragnarökin salaisuudet.
 
 ### Uni ja todellisuus → NHI/Mantidit
-"Osanai seemed to disappear from his chair. Then reappeared as a samurai warrior." Uni ja todellisuus leviävät toisiinsa. Meillä "NHI voi päästä terapian aikana läpi."
+Uni ja todellisuus leviävät toisiinsa siinä määrin, että hahmo jonka pitäisi istua
+huoneessa on yhtäkkiä jossain aivan muualla. Meillä "NHI voi päästä terapian aikana läpi."
 
 ### Etiikka ja väärinkäyttö → Tanaka/Pilgrim
 Osanai vastustaa PT-laitteita, Inui väärinkäyttää niitä. Tanaka on eettinen, Pilgrim destabilisoituva.
 
 ### Lääkäri-potilas-romanssi → Romppainen/Ingrid
-"Doctor with patient, father with daughter, husband with wife, lover with lover" — Paprikan suhteet ovat roolien rajoilla. Romppainen-Ingrid-dynamiikka on sama rakenne.
+Paprikan suhteet ovat roolien rajoilla: hoitaja ja potilas, isä ja tytär, aviomies ja
+vaimo, rakastaja ja rakastettu. Romppainen-Ingrid-dynamiikka on sama rakenne.
 
 ### Kuvien syöttö alitajuntaan → Inject pattern
-"Fed his mind with images that spark his trauma, below the threshold of consciousness." Hakkerointisimulaation "inject pattern" -mekaniikka.
+Kuvien syöttö alitajuntaan herättää trauman tiedostamatta, että potilas ylipääsisi
+tason. Hakkerointisimulaation "inject pattern" -mekaniikka.
 
 ## Mitä opittiin
 

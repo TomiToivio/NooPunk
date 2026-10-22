@@ -83,7 +83,7 @@ def run_reception_scene(seed: int | None = None) -> EnrollmentStatus:
     print("=" * 60)
     print()
     if status == EnrollmentStatus.ACCEPTED:
-        print("  TULOS: TEIDÄT ON VALITTU KOKEESEEN")
+        print("  TULOS: TÄMÄ ON KOE, JA TEIDÄT ON VALITTU SIIHEN")
         print("  Dahl laskee lomakenipun eteesi. Kohtaus päättyy ennen podia.")
     elif status == EnrollmentStatus.ADDITIONAL_SCREENING:
         print("  Tuloksen: LISÄSELVITYSTÄ VAADITAAN")

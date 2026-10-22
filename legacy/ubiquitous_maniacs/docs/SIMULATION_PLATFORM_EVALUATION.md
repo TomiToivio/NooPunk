@@ -43,10 +43,10 @@ Päivitetty tutkimustulosten perusteella 2026-08-12.
 
 ### 3. MiroFish (mirofish.my)
 
-- **Mikä:** Suljettu kaupallinen SaaS — "Upload Any Report. Simulate The Future." Lataa raportti → generoi ontologian → rakentaa graafin → ajaa multi-agent simulaation → tuottaa ennusteraportin.
-- **Arkkitehtuuri:** Next.js-websovellus. Cloud-hostattu SaaS. Frontend-julkista koodia, backend omistusoikeudellinen. Väittää "1M+ rinnakkaista agenttia".
+- **Mikä:** Suljettu kaupallinen SaaS — "Lataa raportti. Simuloi tulevaisuus." Lataa raportti → generoi ontologian → rakentaa graafin → ajaa multi-agent simulaation → tuottaa ennusteraportin.
+- **Arkkitehtuuri:** Next.js-websovellus. Cloud-hostattu SaaS. Frontend-julkista koodia, backend omistusoikeudellinen. Väittää "yli miljoona rinnakkaista agenttia".
 - **Agenttimalli:** LLM-pohjainen multi-agent. "ReportAgent" haastatteluihin. Yksityiskohtia ei ole julkaistu.
-- **Sosiaalinen verkko:** Twitter + Reddit -kanavat. "Living relationship graph" actoreineen, jännitteineen, muistirakenteineen.
+- **Sosiaalinen verkko:** Twitter + Reddit -kanavat. "elävä suhdegraafi" actoreineen, jännitteineen, muistirakenteineen.
 - **Interoperabiliteetti:** Ei mitään. Ei julkista APIa, ei SDK:ta, ei Python-kirjastoa, ei avointa koodia. Syöte: tiedoston lataus (PDF/MD/TXT). Tuloste: raportti web-UI:ssa.
 - **Lisenssi:** Omistusoikeudellinen, suljettu lähdekoodi
 - **Kypsyys:** V0.1 preview-vaiheessa. Ei akateemista validointia.
@@ -74,7 +74,7 @@ Päivitetty tutkimustulosten perusteella 2026-08-12.
   - Ei Mesa/NetworkX/PySD-integraatiota
   - GM-medioitu arkkitehtuuri tekee siitä kalliin skaalassa
   - Suunniteltu pienelle skaalalle (muutama agentti yksityiskohtaisissa skenaarioissa)
-  - "Not an officially supported Google product"
+  - "ei Googlen tukema tuote"
 - **Sopivuus LaclauGPT:** Korkea konseptuaalisesti — komponenttiarkkitehtuuri, muistijärjestelmät, päättelymallit ovat inspiraatiolähde. Mutta käytännössä LLM-riippuvuus tekee siitä liian kalliin LaclauGPT:n laskennalliseen ytimeen.
 - **Sopivuus Noöpunk:** Korkea konseptuaalisesti — Game Master = RPG-pelimoottorin ohjaaja, Entity-Component = Noöpunkin ECS, muistijärjestelmät = NPC-muistit. Mutta käytännössä sama LLM-kustannusongelma.
 
@@ -237,7 +237,7 @@ Layer 4: LLM-NPC:t (rajoitettu)
 **Vaihe 3: Concordia-inspiraatio (matala prioriteetti)**
 - Concordian komponenttiarkkitehtuuri inspiraatioksi:
   - MemoryComponent: NPC:n muistijärjestelmä (jo osittain olemassa npc_memory:ssä)
-  - ReasoningChain: "What situation is this? What person am I? What does such a person do?"
+  - ReasoningChain: "Mikä tilanne tämä on? Kuka minä olen? Mitä tällainen henkilö tekee?"
   - SensoryModule: mitä NPC havaitsee ympäristöstä
 - Mutta: ei Concordia-riippuvuutta — nämä ovat omia komponentteja
 - GM-konsepti: RPG-moottori on jo GM — ei tarvetta Concordian LLM-GM:lle

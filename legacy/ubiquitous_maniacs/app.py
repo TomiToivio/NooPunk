@@ -92,7 +92,7 @@ def render_reception_interaction() -> None:
         status = game.scene.enrollment_status
         if status is EnrollmentStatus.ACCEPTED:
             st.success(
-                "**Teidät on valittu kokeeseen.**\n\n"
+                "**Tämä on koe, ja teidät on valittu siihen.**\n\n"
                 "CUT. Kohtaus päättyy lomakkeisiin ennen podille siirtymistä."
             )
         elif status is EnrollmentStatus.REJECTED:
