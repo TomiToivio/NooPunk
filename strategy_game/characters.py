@@ -687,7 +687,13 @@ def render_front(card: CharacterCard) -> str:
 
     An NHI card's front shows *observable* facts while its identity stays unestablished, which is
     the issue's own UX requirement: a photographic glint never uniquely identifies a sphere.
+
+    A card whose ``visibility`` is not ``PUBLIC`` is **not** rendered: a private or concealed card
+    reads as a hidden back, because the front of a private card would leak exactly the content the
+    visibility policy withholds. ``render_detail`` is the explicit-reveal path.
     """
+    if card.visibility is not CardVisibility.PUBLIC:
+        return f"[{card.visibility.value} card — content withheld]"
     lines = [f"{card.display_name} — {card.role or card.family.value}"]
     if card.faction_ids:
         lines.append("factions: " + ", ".join(card.faction_ids))

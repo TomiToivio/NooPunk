@@ -17,6 +17,7 @@ from pathlib import Path
 
 from ..characters import load_character_cards
 from ..core import WorldState
+from .redaction import emit, redact
 from .text import LOCAL_SLICE_DATA, TextMapProvider, render_board_text, render_roster_text, state_from_local_slice
 
 
@@ -42,12 +43,12 @@ def main(argv: list[str] | None = None) -> int:
 
     state = build_state(args)
     if args.json:
-        print(json.dumps(TextMapProvider().describe(state), ensure_ascii=False, indent=2))
+        emit(json.dumps(TextMapProvider().describe(state), ensure_ascii=False, indent=2))
         return 0
-    print(render_board_text(state))
+    emit(render_board_text(state))
     if args.cards:
         print()
-        print(render_roster_text(load_character_cards()))
+        emit(render_roster_text(load_character_cards()))
     return 0
 
 
