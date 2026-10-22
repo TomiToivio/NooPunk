@@ -1,0 +1,7 @@
+# Phenomenology
+2026 makes everything converge into one big beautiful Weltanschauung. 
+I wonder how to check if this happens to anybody else. As it would be a a rather high level of personal philosophy.
+Because the normal setting is that you compartmentalize everything and your sociology / technology / scifi scenarios / philosophy are in completely different boxes and remain there. 
+What if everybody else is getting a convergent mix of every idea at the same time? How could you research it? That is a massive change in the way you metaprogam your own ideology. 
+Like some people apparently don't have internal speech which is funny but easy to understand cause I also have these multidimensional internal graphs and then just spacetime sensations that are probably similar to how chimpanzees and dogs think. Like I can see how you can think without internal speech. However, the more abstract multidimensional graph which is before internal speech is very interesting, I have seen people say they have it phenomenologically but very little analysis beyond that. Maybe it is because you cannot convert all of it into language, you cannot communicate it. So you could say what is possible to say in human language which will cut off a lot of the real human phenomenology? 
+You just suppose other people have internal speech and compartmentalized Weltanschauung, then you realize your own version works very differently in 2026 compared to 2006. So how do you even begin to analyze the psychic discourse in somebody else's qualia field. 
