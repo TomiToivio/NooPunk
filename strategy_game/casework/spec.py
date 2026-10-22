@@ -247,6 +247,16 @@ class ActionSpec:
     psi: PsiGate | None = None
     #: A finding the action assembles from held clues, with no dice. The deduction is the action.
     finding: str = ""
+    #: **TUNING_CHAIN_WITHHOLD.** *Does a failure still hand over this action's fragment?*
+    #: ``False`` (the repository's long-standing behaviour) means the clue is not hostage to the
+    #: dice: a tie pays the minor price and a failure the serious one, and both grant it. ``True``
+    #: means a **failure** withholds the fragment and charges the price — Fate's other reading of
+    #: an overcome, *"you do not get it"* — which is what makes a chain able to end short. It stays
+    #: fail-forward because the price still lands, because the case reaches every fragment by more
+    #: than one action, and because a short chain still assembles a *partial* finding or closes on
+    #: the weaker resolution; it never dead-ends. Which actions carry it is scenario tuning, not a
+    #: rule: the resolver simply honours the flag the case declares.
+    withhold_on_failure: bool = False
     #: Presentation: the character the scene reads as the natural actor for this action.
     suggested_actor: str = ""
     #: The scene this action moves the party to, if it ends the current one.
@@ -283,6 +293,7 @@ class ActionSpec:
             "cyber": None if self.cyber is None else self.cyber.to_dict(),
             "psi": None if self.psi is None else self.psi.to_dict(),
             "finding": self.finding,
+            "withhold_on_failure": self.withhold_on_failure,
             "suggested_actor": self.suggested_actor,
             "next_scene": self.next_scene,
         }
@@ -290,13 +301,24 @@ class ActionSpec:
 
 @dataclass(frozen=True)
 class SceneSpec:
-    """One scene: a place, the prose that opens it, and what can be attempted there."""
+    """One scene: a place, the prose that opens it, and what can be attempted there.
+
+    ``aspects`` are the scene's **declared situation aspects** — the facts the fiction already
+    establishes when the party walks in (*"The night report is already too clean"*). They are on the
+    scene from its first moment, so any check in it may invoke one for +2 in the resolver's own
+    currency: a free invocation if the scene has one to spare (it does not, by default), otherwise a
+    Fate point from the character attempting the check. That is Fate's existing invoke rule, not a
+    second one; what was missing was a case that *declares* anything to invoke. Aspects a party
+    creates with a create-advantage action are added to the same register by the session.
+    """
 
     id: str
     title: str
     location: str
     prose: str
     actions: tuple[ActionSpec, ...]
+    #: Declared situation aspects, present from the scene's start with no free invocation.
+    aspects: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         if not self.actions:
@@ -304,6 +326,18 @@ class SceneSpec:
         ids = [action.id for action in self.actions]
         if len(set(ids)) != len(ids):
             raise CaseSpecError(f"scene {self.id!r} repeats an action id")
+        names = [name.strip() for name in self.aspects]
+        if any(not name for name in names):
+            raise CaseSpecError(f"scene {self.id!r} declares an empty aspect name")
+        if len(set(names)) != len(names):
+            raise CaseSpecError(f"scene {self.id!r} declares the same aspect twice")
+        created = [action.aspect for action in self.actions if action.aspect]
+        clash = sorted(set(names) & set(created))
+        if clash:
+            raise CaseSpecError(
+                f"scene {self.id!r} declares {clash} both as a situation aspect and as an aspect an "
+                "action creates; the scene's aspect register would hold one entry for two things"
+            )
 
     def action(self, action_id: str) -> ActionSpec:
         for action in self.actions:
@@ -319,6 +353,7 @@ class SceneSpec:
             "title": self.title,
             "location": self.location,
             "prose": self.prose,
+            "aspects": list(self.aspects),
             "actions": [action.to_dict() for action in self.actions],
         }
 
@@ -394,9 +429,22 @@ class ResolutionSpec:
     requires: tuple[str, ...] = ()
     #: Active opposition (a character id) for a confrontation; empty for passive difficulty.
     opposed_by: str = ""
-    #: The named mild consequence a lost confrontation writes on the party member.
+    #: A named mild consequence a lost confrontation writes on the party member.
     consequence: str = ""
     mental: bool = False
+    #: **TUNING_OPPOSED_ATTACK_SKILL.** Which skill a *force* exchange attacks with. Empty (the
+    #: default, and the shipped case's setting) reads :attr:`skill` — the code's long-standing
+    #: behaviour. Naming a skill here reads that one instead, which is what the case document's
+    #: *"REF opposed attack"* wording describes. It is an option rather than a change because
+    #: choosing between them is author row D-queue F2: the playtest measures both, and this module
+    #: does not pick.
+    force_attack_skill: str = ""
+    #: **TUNING_CONFRONTATION_TIE.** ``False`` (the default, and the shipped case's setting) leaves a
+    #: tie on a confrontation where the code has always put it: total failure and a fall back to the
+    #: weaker resolution. ``True`` lets the requested resolution stand on a tie and records the tie
+    #: as the closing outcome, which is the *shape* of "success at a cost" without inventing the
+    #: cost — what a tie should cost is author row D32, so this option deliberately prices nothing.
+    tie_is_not_total_failure: bool = False
     #: What the faction's books record when this resolution lands.
     objective: str = ""
     reputation: tuple[str, ...] = ()
@@ -410,6 +458,8 @@ class ResolutionSpec:
             raise CaseSpecError("a resolution needs an id and the objective label it completes")
         individual_skill(self.skill)
         band_difficulty(self.band)
+        if self.force_attack_skill:
+            individual_skill(self.force_attack_skill)
 
     @property
     def difficulty(self) -> int:
@@ -429,6 +479,10 @@ class ResolutionSpec:
             "opposed_by": self.opposed_by,
             "consequence": self.consequence,
             "mental": self.mental,
+            "force_attack_skill": (
+                "" if not self.force_attack_skill else individual_skill(self.force_attack_skill).key
+            ),
+            "tie_is_not_total_failure": self.tie_is_not_total_failure,
             "objective": self.objective,
             "reputation": list(self.reputation),
             "intel": list(self.intel),
@@ -599,6 +653,13 @@ class CaseFile:
                     problems.append(
                         f"resolution {resolution.id!r}: requires unknown clue {required!r}"
                     )
+            if (resolution.force_attack_skill or resolution.tie_is_not_total_failure) and not (
+                resolution.opposed_by
+            ):
+                problems.append(
+                    f"resolution {resolution.id!r}: carries a confrontation option but names no "
+                    "opposition, so the option could never apply"
+                )
             if resolution.requires_fragments and not set(self.chain).intersection(produced):
                 problems.append(
                     f"resolution {resolution.id!r}: requires fragments, but no action yields any"

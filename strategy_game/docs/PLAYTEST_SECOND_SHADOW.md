@@ -13,6 +13,14 @@ Refs [#516](https://github.com/TomiToivio/NooPunk/issues/516),
 [#482](https://github.com/TomiToivio/NooPunk/issues/482).
 Case design record: [`RPG_FIRST_CASE.md`](RPG_FIRST_CASE.md).
 
+**These numbers describe the case as it was before the mechanics changed.** The aspects/free-invoke
+wiring, the optional withholding of a fragment on a failed check, and the two actions that give `REF`
+and `SOM` a tool were added afterwards; every table below was measured on the case *without* them, and
+several — F4, the "100% chain" rows, F7's "never rolled" — are now historical. The current measurement,
+with before/after on each of those findings and both readings of each author question, is
+[`CASE_MECHANICS_OPTIONS.md`](CASE_MECHANICS_OPTIONS.md). Nothing in this document is retracted: it is
+the evidence that asked for the change.
+
 Every table below is printed by the harness, pasted unedited; the prose reads them.
 
 ---

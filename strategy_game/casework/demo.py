@@ -19,7 +19,7 @@ from pathlib import Path
 from typing import Any
 
 from . import kallio
-from .session import ActionResult, CaseSession, load_session
+from .session import ActionResult, CaseSession, CaseworkError, load_session
 
 __all__ = ["APPROACHES", "DEMO_SEED", "RESULT_LABELS", "ROUTES", "play", "render_text", "run_demo"]
 
@@ -119,6 +119,10 @@ def play(
 
     log.append(_action(session.act("laura_falk", "interview_nila")))
     log.append(_action(session.act("harri_romppainen", "scan_the_stack")))
+    # A failure withholds the fragment, so the demo does what a table does: takes the *other* route
+    # to the same fact while a seat is still free. Both routes failing is the partial chain.
+    if "stack-manifest" not in session.clues:
+        log.append(_action(session.act("laura_univaara", "ask_the_clinic")))
     session.save(target)
     before = (session.scene_spec.id, len(session.clues), session.turn)
     session = load_session(target, kallio.CASE)
@@ -137,6 +141,9 @@ def play(
     log.append(_action(session.act("sebastian_virtanen", "read_the_stairwell")))
     log.append(_action(session.act("harri_romppainen", "pull_the_mesh_log")))
     log.append(_action(session.act("laura_falk", "search_the_landing")))
+    # A free seat holds the hatch: the action is open to any seat (only ``suggested_actor`` is
+    # presentation), and the suggested actor has already acted this scene.
+    log.append(_action(session.act("pc_leader", "hold_the_hatch")))
     session.end_scene()
     log.append(_scene_entry(session))
 
@@ -155,12 +162,27 @@ def play(
         log.append(_action(session.act("harri_romppainen", "pull_the_batch_signout")))
         log.append(_action(session.act("sebastian_virtanen", "read_his_file")))
         log.append(_action(session.act("laura_univaara", "brief_the_liaison_early")))
+        log.append(_action(session.act("laura_falk", "get_to_the_bay_first")))
 
-    resolution = session.resolve(
-        RESULT_LABELS[route],
-        seat_id="pc_leader",
-        approach=approach if route == "confront" else "",
+    # The case's one spendable aspect reaches the closing check, free, if the party earned it.
+    free = next(
+        (name for name, aspect in session.scene.aspects.items() if aspect.free_invocations > 0),
+        None,
     )
+    detail = "" if free is None else f" invoking {free!r} (free)"
+    log.append(_entry("note", f"the closing check is rolled{detail}"))
+    try:
+        resolution = session.resolve(
+            RESULT_LABELS[route],
+            seat_id="pc_leader",
+            approach=approach if route == "confront" else "",
+            free_invoke=free,
+        )
+    except CaseworkError as refused:
+        # The requested ending needs something the party did not get. The case still closes — on the
+        # weaker record — which is what the demo shows rather than crashing on.
+        log.append(_entry("note", f"{RESULT_LABELS[route]} is not available: {refused}"))
+        resolution = session.resolve("closed_by_withdrawal", seat_id="pc_leader")
     log.append(
         _entry(
             "resolution",

@@ -56,6 +56,13 @@ SUSPECT_ID = "vesa_lahtinen"
 #: The three facts the chain is assembled from, in the order the reasoning meets them.
 CHAIN = ("stack-manifest", "camera-gap", "impression-double")
 
+#: The chain-yielding actions carry ``withhold_on_failure``: a failed check does not get its
+#: fragment. Every fragment still has **two** routes, so a failure never removes the party's last
+#: way to it — it makes the second route the one that matters. Which actions carry the flag is
+#: scenario tuning (``TUNING_CHAIN_WITHHOLD``), measured in
+#: ``strategy_game/docs/CASE_MECHANICS_OPTIONS.md`` against the always-grant setting; it is not a
+#: rule, and ``casework.options`` can turn it off for a whole case in one call.
+
 #: Fate's own mild consequence. A named injury, never a number on a faction book.
 MILD = 2
 
@@ -217,6 +224,7 @@ _BRIEFING = SceneSpec(
             suggested_actor=LEADER_ID,
         ),
     ),
+    aspects=("The night report is already too clean",),
 )
 
 _VICTIM = SceneSpec(
@@ -258,6 +266,7 @@ _VICTIM = SceneSpec(
             requires=("stack-card",),
             gives=("stack-manifest",),
             intel=("stores-batch-serial",),
+            withhold_on_failure=True,
             on_tie=Cost(complications=("clinic-logged-the-scan",)),
             on_fail=Cost(complications=("clinic-logged-the-scan",), stress=2, mental=True),
             suggested_actor="harri_romppainen",
@@ -274,6 +283,7 @@ _VICTIM = SceneSpec(
             requires=("stack-card",),
             gives=("stack-manifest",),
             intel=("clinic-told-her-it-was-standard",),
+            withhold_on_failure=True,
             on_tie=Cost(complications=("clinic-nurse-nervous",)),
             on_fail=Cost(complications=("clinic-nurse-nervous",), stress=1, mental=True),
             suggested_actor="laura_falk",
@@ -293,6 +303,7 @@ _VICTIM = SceneSpec(
             suggested_actor="laura_univaara",
         ),
     ),
+    aspects=("Two doctors in the corridor",),
 )
 
 _STAIRWELL = SceneSpec(
@@ -317,6 +328,7 @@ _STAIRWELL = SceneSpec(
             check=CheckSpec(Action.OVERCOME, "INT", "Fair"),
             gives=("camera-gap",),
             intel=("camera-gap-is-a-fault",),
+            withhold_on_failure=True,
             on_tie=Cost(complications=("supervisor-watching",)),
             on_fail=Cost(complications=("supervisor-watching",), stress=1, mental=True),
             suggested_actor="sebastian_virtanen",
@@ -333,6 +345,7 @@ _STAIRWELL = SceneSpec(
             requires=("raid-log",),
             gives=("camera-gap",),
             intel=("mesh-maintenance-window", "mesh-service-ticket"),
+            withhold_on_failure=True,
             cyber=CyberGate(
                 target_class="local_only",
                 era="after_crisis",
@@ -362,7 +375,27 @@ _STAIRWELL = SceneSpec(
             on_fail=Cost(complications=("scene-contaminated",)),
             suggested_actor="harri_romppainen",
         ),
+        ActionSpec(
+            id="hold_the_hatch",
+            label="Hold the sealed hatch up and read the tag under it",
+            text=(
+                "The maintenance hatch is a service shutter with a counterweight that has not been "
+                "serviced since the building changed owners. Someone has to hold it at shoulder "
+                "height while somebody else reads the Field Office tag screwed to the frame — and "
+                "the tag is dated this morning, before the raid."
+            ),
+            # SOM is the natural tool: strength, stamina, sustained positioning. A REF or INT
+            # reading would be a different action (getting through the hatch, not holding it), and
+            # the case already has the INT one next door.
+            check=CheckSpec(Action.CREATE_ADVANTAGE, "SOM", "Average"),
+            aspect="A shoulder under the hatch",
+            intel=("hatch-tag-dated-this-morning",),
+            on_tie=Cost(complications=("hatch-shutter-slipped",)),
+            on_fail=Cost(complications=("hatch-shutter-slipped",), stress=1),
+            suggested_actor="sebastian_virtanen",
+        ),
     ),
+    aspects=("Forty-one seconds nobody saw",),
 )
 
 _WITNESS = SceneSpec(
@@ -390,6 +423,7 @@ _WITNESS = SceneSpec(
             psi=PsiGate(witness_id=WITNESS_ID, capability="TELEPATH"),
             gives=("impression-double",),
             intel=("psi-impression",),
+            withhold_on_failure=True,
             on_tie=Cost(stress=1, mental=True),
             on_fail=Cost(
                 stress=MILD, mental=True, consequence="A nail behind the eyes"
@@ -407,6 +441,7 @@ _WITNESS = SceneSpec(
             check=CheckSpec(Action.OVERCOME, "COG", "Fair"),
             gives=("impression-double",),
             intel=("thermal-two-bodies",),
+            withhold_on_failure=True,
             on_tie=Cost(complications=("thermal-log-sealed",)),
             on_fail=Cost(complications=("thermal-log-sealed",), stress=1, mental=True),
             suggested_actor="harri_romppainen",
@@ -426,6 +461,7 @@ _WITNESS = SceneSpec(
             suggested_actor="laura_falk",
         ),
     ),
+    aspects=("A woman who was not believed the first time",),
 )
 
 _RESOLUTION = SceneSpec(
@@ -492,7 +528,25 @@ _RESOLUTION = SceneSpec(
             on_fail=Cost(complications=("liaison-doubt",)),
             suggested_actor=LEADER_ID,
         ),
+        ActionSpec(
+            id="get_to_the_bay_first",
+            label="Get to the loading bay before the shift lets out",
+            text=(
+                "He is on shift until twelve and the bay has two doors. Whoever is standing at the "
+                "right one when the shift lets out has the conversation on their terms; whoever is "
+                "thirty seconds late has it in a yard full of people who owe him favours."
+            ),
+            # REF: the action is a foot race through a building, and the reward is position — an
+            # aspect the closing check can invoke, exactly as the liaison aspect next door.
+            check=CheckSpec(Action.CREATE_ADVANTAGE, "REF", "Fair"),
+            aspect="First to the loading bay",
+            intel=("shift-change-at-noon",),
+            on_tie=Cost(complications=("bay-already-busy",)),
+            on_fail=Cost(complications=("bay-already-busy",), stress=1),
+            suggested_actor="laura_falk",
+        ),
     ),
+    aspects=("A loading bay until twelve", "Ketonen is upstairs with the draft"),
 )
 
 CASE = CaseFile(
@@ -707,8 +761,13 @@ def build_campaign() -> Campaign:
     )
 
 
-def build_session(*, seed: int = 502, rng=None):
-    """A ready-to-play session on a fresh campaign (import kept local to avoid a cycle)."""
+def build_session(*, seed: int = 502, rng=None, spec=None):
+    """A ready-to-play session on a fresh campaign (import kept local to avoid a cycle).
+
+    ``spec`` lets a caller play a **variant** of the case (see :mod:`strategy_game.casework.options`)
+    on the same campaign, which is how the playtest measures an option against the shipped setting.
+    Omitting it plays the packaged declaration exactly.
+    """
     from .session import CaseSession
 
-    return CaseSession(CASE, build_campaign(), seed=seed, rng=rng)
+    return CaseSession(CASE if spec is None else spec, build_campaign(), seed=seed, rng=rng)
