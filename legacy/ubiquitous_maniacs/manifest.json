@@ -7,7 +7,7 @@
   "source": {
     "repository": "TomiToivio/Panpsychic-Cyborg-Multitude",
     "path_in_repository": "noopunk/ubiquitous_maniacs",
-    "commit": null,
+    "commit": "895bdc1078233c1d061e60852ad86de3c01e5c51",
     "relationship": "Separate repository. This corpus was developed there and is imported here as a source-of-record; it is not tracked by any automated sync."
   },
   "licence_status": {
@@ -46,11 +46,6 @@
       "path": "AGENTS.md",
       "reason": "the corpus's own agent instructions, which would otherwise claim authority",
       "detail": "A banner was prepended marking the file as archived material that is not in force, and naming the repository-root AGENTS.md as the authority. The corpus's text below the banner is unchanged. The upstream blob sha in this manifest is the original file's, so the difference between it and the local sha256 is exactly this banner."
-    },
-    {
-      "path": "docs/STYLISTIC_INFLUENCES_MANIAC_RIGET.md",
-      "reason": "it quoted third-party dialogue verbatim",
-      "detail": "The upstream file carried twenty-one verbatim quotations from the Netflix miniseries *Maniac* (2018) and from *Riget / The Kingdom* (1994), including the corpus's own Finnish realisation of the same lines. Those quotations were removed on 2026-10-22: the analysis of which stylistic devices were borrowed, and how they were realised, is kept, and each section now says what was removed and why. The upstream blob sha in this manifest is the original file's, so the difference between it and the local sha256 is exactly the removed quotations. A guard, tests/test_third_party_expression_absent.py, fails if the quotations reappear in the working tree or in a commit."
     }
   ],
   "locally_cleaned": [
@@ -134,54 +129,13 @@
       "detail": "The corpus README names `data/lab_people.csv` and `data/lab_relationships.csv` as the people and relationship data, and `app.py` loads them at runtime. The directory was never committed to the source repository, so the import cannot include it and the Streamlit app in this archive cannot run as shipped."
     }
   ],
-  "third_party_retained": [
-    {
-      "path": "references/maniac_transcripts/README.md",
-      "work": "*Maniac* (Netflix, 2018)",
-      "nature": "episode index and motif summary written by the corpus author"
-    },
-    {
-      "path": "references/maniac_transcripts/riget_wikipedia_episodes.txt",
-      "work": "*Riget* / *The Kingdom* (1994) — Wikipedia episode summaries",
-      "nature": "Wikipedia episode summaries, quoted as summaries; the source attribution is stated in the file header"
-    },
-    {
-      "path": "references/maniac_transcripts/s01e04_furs_by_sebastian.txt",
-      "work": "*Maniac* (Netflix, 2018)",
-      "nature": "episode summary with key scenes, not dialogue"
-    },
-    {
-      "path": "references/maniac_transcripts/s01e05_exactly_like_you.txt",
-      "work": "*Maniac* (Netflix, 2018)",
-      "nature": "episode summary with key scenes, not dialogue"
-    },
-    {
-      "path": "references/maniac_transcripts/s01e06_larger_structural_issues.txt",
-      "work": "*Maniac* (Netflix, 2018)",
-      "nature": "episode summary with key scenes, not dialogue"
-    },
-    {
-      "path": "references/maniac_transcripts/s01e07_ceci_nest_pas_une_drill.txt",
-      "work": "*Maniac* (Netflix, 2018)",
-      "nature": "episode summary with key scenes, not dialogue"
-    },
-    {
-      "path": "references/maniac_transcripts/s01e08_the_lake_of_the_clouds.txt",
-      "work": "*Maniac* (Netflix, 2018)",
-      "nature": "episode summary with key scenes, not dialogue"
-    },
-    {
-      "path": "references/maniac_transcripts/s01e09_utangatta.txt",
-      "work": "*Maniac* (Netflix, 2018)",
-      "nature": "episode summary with key scenes, not dialogue"
-    }
-  ],
+  "third_party_retained": [],
   "counts": {
-    "files_imported": 280,
+    "files_imported": 279,
     "files_excluded": 5,
     "by_class": {
       "corpus root document": 30,
-      "design and research documentation": 129,
+      "design and research documentation": 128,
       "entry-point script": 4,
       "reference (LaclauGPT import)": 11,
       "source": 64,
@@ -195,8 +149,8 @@
       "bytes": 9884,
       "sha256": "1ac79da23ae38b87537855d99a3279c460733510094fd8b1f32d4b087c118038",
       "source_path": "noopunk/ubiquitous_maniacs/AGENTS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "68d7ae1603784cfde81b19ec834a496bdacd5ae9",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -204,8 +158,8 @@
       "bytes": 4002,
       "sha256": "e546120057148a47c0fe481d77ea88b70228576bf92547d19cb7116001aca587",
       "source_path": "noopunk/ubiquitous_maniacs/ASKEL_1.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "1ff1ec6a29801301a0cac9f75de69994cdd91ef1",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -213,8 +167,8 @@
       "bytes": 708,
       "sha256": "a5dad5943825de83eff246ab629a15d5351db6e994f72f1f6b8be5a7c875a899",
       "source_path": "noopunk/ubiquitous_maniacs/CONSCIOUS_AGENT_NETWORK.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "78695df3f278859ab7874aa744fadd819a6f9dde",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -222,8 +176,8 @@
       "bytes": 4035,
       "sha256": "e00e7d533f27078fa43dd59247114314e1f08d167a86736f0693c4d84ca7c2ac",
       "source_path": "noopunk/ubiquitous_maniacs/DEVELOPMENT_NOTES_DAY_1.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "1589fa0005f472a331f9c753700c3b07df150844",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -231,8 +185,8 @@
       "bytes": 9034,
       "sha256": "195fee2012e848ccc88803640559f4e3ae8f6e9d654a4c5240c211455d1595f2",
       "source_path": "noopunk/ubiquitous_maniacs/DEV_NOTES.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "063afadbb1775288b8a09f8be72818755abf912f",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -240,8 +194,8 @@
       "bytes": 4613,
       "sha256": "46bd9fa2275654826d313de7309ea65beff57dc9feeb532468d2ce1bfdf70ee1",
       "source_path": "noopunk/ubiquitous_maniacs/ECLIPSE_PHASE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "baa89400c177f196bbeb9bcf8efda43b54e65597",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -249,8 +203,8 @@
       "bytes": 29797,
       "sha256": "7a054036bdaa085a0f8598221a12991140a9b92cccacce839a01426bdf718552",
       "source_path": "noopunk/ubiquitous_maniacs/GLOCAL.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "095a3bca8873b1e65bdb098be7c18e8f84bf3ac0",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -258,8 +212,8 @@
       "bytes": 24050,
       "sha256": "ba5ee51ebae2898d3109c434ce61b8be58dc98c3f9f56ae65025316f9ac5db69",
       "source_path": "noopunk/ubiquitous_maniacs/HAHMOT.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "2d9c3cbecf22326f3b32c296714107fddab77089",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -267,8 +221,8 @@
       "bytes": 1973,
       "sha256": "545907fae72c6d0f178cb2c6d45394e3c42c652efafef33a69344e6ea0b4eaa2",
       "source_path": "noopunk/ubiquitous_maniacs/INGRID-ROMPPAINEN.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "a7013337ca460caa3145521b6388eaf9b881313d",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -276,8 +230,8 @@
       "bytes": 2958,
       "sha256": "1ed74a0923163deabb3ecdb3ffe3a5e98767745abe8a4f89f5129d9fb51b041a",
       "source_path": "noopunk/ubiquitous_maniacs/KIRJA.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "34f0ff6f6c0e233a318791357a231f6fae1dc2ba",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -285,8 +239,8 @@
       "bytes": 18312,
       "sha256": "207253fbe7b692857d502671f0300949bc8cf1a3eed05de42083aba9f62e2150",
       "source_path": "noopunk/ubiquitous_maniacs/KIRJA_KONE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "ed619e8ace7a5275133172809fb7f5802b7cf921",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -294,8 +248,8 @@
       "bytes": 33966,
       "sha256": "63e68226a5ee89a24a49b7ab4713e124db36357ff34a22911a76d2e39199e0f4",
       "source_path": "noopunk/ubiquitous_maniacs/KYBER.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "695671a0b1569a54b2660b438cab69af9ba77152",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -303,8 +257,8 @@
       "bytes": 2036,
       "sha256": "58174ee557c7ef7228f4b0c8b536b0685350d04aaa6ad14f5dc18304dc8c8075",
       "source_path": "noopunk/ubiquitous_maniacs/LABRA_NET.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "6d193d3f1c2876a7bec6f09ca667ab74df6f9582",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -312,8 +266,8 @@
       "bytes": 1885,
       "sha256": "33ff27e67a6141c8fcc3b70ee0839cfcb109583d6b5354395ce3021151588381",
       "source_path": "noopunk/ubiquitous_maniacs/NETWORKX.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "cdf75b8fef8613d5ca125a3e18d5cac105b65037",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -321,8 +275,8 @@
       "bytes": 18912,
       "sha256": "b604a51c28dc8dbd6573572de580cee6268f10faba59c3b83b15151935380301",
       "source_path": "noopunk/ubiquitous_maniacs/NHI.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "1fce31ada4ede391b3e0cc45c13787beebb04c73",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -330,8 +284,8 @@
       "bytes": 425,
       "sha256": "d307f164d0a48928ce6ba0531a6430f9eab360fb3bc069b9e55182daf6f5e767",
       "source_path": "noopunk/ubiquitous_maniacs/PERSOONA.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "7ce8861c783204135b7ca971e71b679849f21707",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -339,8 +293,8 @@
       "bytes": 1539,
       "sha256": "8eaabd978f8204a85ad49d60c613cba958fcc5c0dd172db01b50f4c7643fdfb3",
       "source_path": "noopunk/ubiquitous_maniacs/PHENOMENOLOGY.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "bb678235b3ecf31b8bd79fcea5913952adb9db9c",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -348,8 +302,8 @@
       "bytes": 17713,
       "sha256": "327e6cda140b56821e45d033539d5758c8c92525884f02a6506ed90ffa8928c3",
       "source_path": "noopunk/ubiquitous_maniacs/PHILOSOPHICAL_ZOMBIES.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "ecfdc1eda676685a58a27e60daec3606a3881171",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -357,8 +311,8 @@
       "bytes": 293,
       "sha256": "93873ea3dc2b4ed1774676b4c4f53919da031851bee2ab3457a5e18c760e2557",
       "source_path": "noopunk/ubiquitous_maniacs/PSIONICS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "556c961cbb85becb1fda3de698864205bc119641",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -366,8 +320,8 @@
       "bytes": 23646,
       "sha256": "903eee052a8607717e73790f32ea32d0d9e770bf4e2585b78b0429b6af65e7e4",
       "source_path": "noopunk/ubiquitous_maniacs/PÄIVÄ_1.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "4d023da1f6dc45a4eef9600cfe1f1f36591bc12c",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -375,8 +329,8 @@
       "bytes": 26889,
       "sha256": "858cd0f6211d89ae0036d6f24a668ced506c4af2790e2c8a4237b637f8ea7214",
       "source_path": "noopunk/ubiquitous_maniacs/PÄIVÄ_2_HISTORIA.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "81603f07fbc5ba23470209fb646b053cebcec2c9",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -384,8 +338,8 @@
       "bytes": 6153,
       "sha256": "b9ee062641e1afe278dd2ad440ca0dcf2c06957f02d5844607214cab4fa1ca2e",
       "source_path": "noopunk/ubiquitous_maniacs/README_DAY1_PROTOTYPE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "48e73d47f819a5207e19f4223d6744422810c9fd",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -393,8 +347,8 @@
       "bytes": 2408,
       "sha256": "e454a5152835902acf2afac2654c738b3693868abaa6e6849115b57a8b22077c",
       "source_path": "noopunk/ubiquitous_maniacs/ROMPPAINEN.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "77fa46a6eb6a77bb26aed747a78c712a09dbaad0",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -402,8 +356,8 @@
       "bytes": 27921,
       "sha256": "452dc6471fe5afb43baee233356ca1c2929c660481c91d88bd46bd32be2a773d",
       "source_path": "noopunk/ubiquitous_maniacs/RULEBOOK.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "4410ca7694ca99e10da675539dddb3a422e9eb05",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -411,8 +365,8 @@
       "bytes": 7467,
       "sha256": "ece4b23bcc15ded2e49cced524b48116e9e5bf764b316cf91a15194a2069e558",
       "source_path": "noopunk/ubiquitous_maniacs/SISÄAVARUUS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "aad5f37fba362a045ef29f31c6e933b1c2172c44",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -420,8 +374,8 @@
       "bytes": 5309,
       "sha256": "34619352ac96d54299b0d27758d3a21858869fdcd1010384c00b78cb3f6d1cf3",
       "source_path": "noopunk/ubiquitous_maniacs/SKILLS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "751da2b0d9426c577d323ca59596547b23660bcd",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -429,8 +383,8 @@
       "bytes": 3838,
       "sha256": "5694a3304edbc01b88f84ace45a50375914bea0c84a68fc5a2b9681b16b6ced3",
       "source_path": "noopunk/ubiquitous_maniacs/TERAPIASESSIO.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "b332a6731564daca92a66d92d3081f4b6dfb1fc8",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -438,8 +392,8 @@
       "bytes": 2643,
       "sha256": "e5db4ff209e74bf55aeca0bca5dc1b1aad23c879bed2ebf80696edcb41d5d745",
       "source_path": "noopunk/ubiquitous_maniacs/VUOROVAIKUTUS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "11dd160ee5e9340c1a754177a1f2410bccb8c72a",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -447,8 +401,8 @@
       "bytes": 21390,
       "sha256": "7a69ad48dc406bfcf980bc54852221112498389c378e41fe65205fc3a912dddb",
       "source_path": "noopunk/ubiquitous_maniacs/app.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "f99b5a38cd285d3b1ab69d1a3dd2a91ba68c0d08",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "entry-point script"
     },
     {
@@ -456,8 +410,8 @@
       "bytes": 11003,
       "sha256": "22a5f693a8fc9c887310a007caa3914fc591672cf09eab2c86f58298caac0214",
       "source_path": "noopunk/ubiquitous_maniacs/docs/16_PSYCHE_CG_JUNG_RESEARCH_CITY.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "3c3acd5e5b514fe1af83b1da44aaa185bcc3dc65",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -465,8 +419,8 @@
       "bytes": 15606,
       "sha256": "00b2ee8caef1b33015a32029bf64186f9e430bbb872c5a25007e039b9e9243a1",
       "source_path": "noopunk/ubiquitous_maniacs/docs/16_PSYCHE_UFAB_NEOPLATONIC_MEDICAL_ORDER.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "bbe0328ebe33682beb4c0f212b65d3ca7e6bc717",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -474,8 +428,8 @@
       "bytes": 7317,
       "sha256": "70843b23032a1e7395d9c7baa80b557b19782e9d7c2a9bb517747568d2d3cd1d",
       "source_path": "noopunk/ubiquitous_maniacs/docs/ALTERED_CARBON_TRANSHUMANISM_INFLUENCE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "054b965f63f843c3322b21ffd8be46fd080c6217",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -483,8 +437,8 @@
       "bytes": 22564,
       "sha256": "caa0496c7062aa8ecf3f46e4f74cefe1cfe1376aacc643e832588ac010d2067c",
       "source_path": "noopunk/ubiquitous_maniacs/docs/BOSTROM_BACKGROUND_INFLUENCE_AND_CRITIQUE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "e70ec481497a5a677ec4cee06ce34cbafd6dc4f0",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -492,8 +446,8 @@
       "bytes": 11774,
       "sha256": "bafa24bc5cf77d0a4eb7b8b1f504475c5a17786aa7dac381ac02766f7b6f8513",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CAN_GOERTZEL_PSI_NEUROPUNK_COMPATIBILITY.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "a220cf52d507185f0c605369f1a88ae88287b79f",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -501,8 +455,8 @@
       "bytes": 48825,
       "sha256": "1471424fbe13c242bf9810db047bc0b04d3627a19908f769f7bc72720aab338c",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CAN_MICROFOUNDATION_HOFFMAN_FAGGIN.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "5a80b572d162207b0ea8265aad828b549a8d3df5",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -510,8 +464,8 @@
       "bytes": 6272,
       "sha256": "da3f43f1cfe701f63a098eceffd7b95b601baafd206f0ff22c21e62addae9a25",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CAN_SUBSET_LAYER_PROMPT.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "c799d4ea04e494f67a5c278f9945c2295e914bf8",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -519,8 +473,8 @@
       "bytes": 8148,
       "sha256": "3861b51013e107700336b51c9b237318888124e19cb9eaae286601e92ba89af9",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CKJ_EURODEF_SECURITY_ORDER.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "f39ec1f85f4ae96701e0772a951c56d4121cf881",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -528,8 +482,8 @@
       "bytes": 57978,
       "sha256": "5fe3c6fc4e7d05b617dc30bbbe09d9d5765fe464c4807ac070a593cabae76eaa",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CONSCIOUS_AGENT_NETWORK.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "c2869b4f37500acf34e610c478f4b9ef198d2f89",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -537,8 +491,8 @@
       "bytes": 1288,
       "sha256": "37da517da0469f80bd2b3f1a8edcbfeaad54d9548dbb17a903773f6d71791bf7",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CONVERSATION_DECISIONS_2026-07-25_AUTHORITY_SCHISM.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "dc0c1468eaee1a1ef95950eb61fb6c13d28eeb5f",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -546,8 +500,8 @@
       "bytes": 917,
       "sha256": "893b48b02050ddb9e7bd1fa434c636d2e42d3c0cc7418bd9f8c23732d73e0800",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CONVERSATION_DECISIONS_2026-07-25_DAILY_LOOP.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "69edc994710821cb9d65a22ccbcd80f251b04e77",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -555,8 +509,8 @@
       "bytes": 1703,
       "sha256": "c0be76a50a95dda111cf5eab523076c5c34a5fa5faf6377166f69ce7a1cd8329",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CONVERSATION_DECISIONS_2026-07-25_INGRID_INTERACTION_SERIES_01.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "e5ee9ee649071db2899035d3bb8aed36d64b67d7",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -564,8 +518,8 @@
       "bytes": 901,
       "sha256": "d3aca60a5d6a5109e52a126ccd1bec6e97b5f6adab2c1ddd8109bd84f4f1780d",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CONVERSATION_DECISIONS_2026-07-25_IRUNGU_WAKINI.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "ff6207c9ec45349e7a37d6b9dbdc455677b95a86",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -573,8 +527,8 @@
       "bytes": 2419,
       "sha256": "d1764295e69425a8d5b9927cc4404bb6d811463ba7dca79b9d6b0f5f555edde6",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CONVERSATION_DECISIONS_2026-07-25_MYTHOLOGY.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "587ac047696f3ca64bf5a7427a4ccb4c622c3bb7",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -582,8 +536,8 @@
       "bytes": 434,
       "sha256": "9e506c4e36a5264f4c3461d633efcf54dda2520ffd5c9ed0f0b7071c4079cd47",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CONVERSATION_DECISIONS_2026-07-25_NAME_PROVENANCE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "076c0ce3311ee60aba32e23ce911f53f92d0dd2b",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -591,8 +545,8 @@
       "bytes": 1270,
       "sha256": "8dcbdb9bf3d8a1118854a5207def75fb17717043ebbf088603a6e97e1a879a5e",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CONVERSATION_DECISIONS_2026-07-25_ORCH_OR.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "04ec5b279eb3daf1663d4d7af862141b9e606c5e",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -600,8 +554,8 @@
       "bytes": 721,
       "sha256": "02fa9e8ecc2d785517d9f85b8f420f9f8da71d459b722b92bd286e9405e2ce56",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CONVERSATION_DECISIONS_2026-07-25_PERSONALITY_TAGS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "3229978f91fcc69f078fbe6f9a3144cb4542a004",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -609,8 +563,8 @@
       "bytes": 2494,
       "sha256": "9e626508a612a360728794ab5a257d6a4be2006c0e69fced3dc522b5e25f52a2",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CONVERSATION_DECISIONS_2026-07-25_ROMANTIC_ARCS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "53570ab126bbf2568b9a35804c1985aaa9d9a9f6",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -618,8 +572,8 @@
       "bytes": 1012,
       "sha256": "4677cfee42dae584f01cd8ca6d57866980fc152fb9ecabaae820a3250208e920",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CONVERSATION_DECISIONS_2026-07-25_ROMPPAINEN_ARC.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "0511ecf75c3ae2a64e3197cd4256df182419b19b",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -627,8 +581,8 @@
       "bytes": 2126,
       "sha256": "3dec4bfbac32db9e966ebf6bda7bcc9c67fcaf5ecdd7fe0bbc1bdf039666d540",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CONVERSATION_DECISIONS_2026-07-25_ROMPPAINEN_BEHAVIOR_PHASES.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "473cf0b2e4df58e230a3422f2c82bb5399d6c2f1",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -636,8 +590,8 @@
       "bytes": 680,
       "sha256": "8388a255d1c20c48679ae71b8cc1ed258cb58a541062d0a10b0f24d16245f2aa",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CONVERSATION_DECISIONS_2026-07-25_UFAB_ADDICTION_PRIORITY.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "04365f20c7bb6235d624f79ab52645a215105f83",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -645,8 +599,8 @@
       "bytes": 2086,
       "sha256": "99cb22071d0c7c2f88a30ab010b76c52f552d4bb781f215d1e1047725f664278",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CONVERSATION_DECISIONS_2026-07-25_UFAB_NANOPILL_IMPLANT.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "1b97510ad59ba18d85700c370f46a1dc5df516d1",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -654,8 +608,8 @@
       "bytes": 1283,
       "sha256": "4fb9f516ba09287081e870b80f1adb8235ca018eaf05cdbac2ae397ee900269d",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CONVERSATION_DECISIONS_2026-07-25_UFAB_RAGNAROK_AI.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "4003ce4d2da564e4fbaeff971791c179144a7cc4",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -663,8 +617,8 @@
       "bytes": 1149,
       "sha256": "6163f5522f4b0a5ffc909825f847ea5a01fe89de9267c04e27ff4132cb3df7ba",
       "source_path": "noopunk/ubiquitous_maniacs/docs/CONVERSATION_DECISIONS_2026-07-25_UFAB_STAFF.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "27039f00033eca88fc18a39cd2d753a4a2eeff4f",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -672,8 +626,8 @@
       "bytes": 30359,
       "sha256": "b604fc230186ad99f2d298015552ff656e4f48042bf8d13b3ca3f01d2c6e954d",
       "source_path": "noopunk/ubiquitous_maniacs/docs/COSMIST_MANIFESTO_NOOPUNK_ANALYSIS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "7c44e976bbcc0fa6cd81a1da158b11de3aab20b8",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -681,8 +635,8 @@
       "bytes": 7240,
       "sha256": "d4de3c5359355020b13f6977df5ce6dbe2a10e7f860d4cd926cb53635a5a9f21",
       "source_path": "noopunk/ubiquitous_maniacs/docs/DAILY_LOOP.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "fa388215e3f58f9b70cc3edd8aebd63f1e4bf7f5",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -690,8 +644,8 @@
       "bytes": 8328,
       "sha256": "136428bd3366ef653381ff1f9674d4baf456952916498f6d2f3161e70d1e726c",
       "source_path": "noopunk/ubiquitous_maniacs/docs/DAYS_1_4_80MG_RAGNAROK_AND_KALLIO_CANON.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "c0b727003923a8ef659278a20cf8a24407c4b4c3",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -699,8 +653,8 @@
       "bytes": 9896,
       "sha256": "bb17de9af17455e3f8b55d320475e7b04561fdf2886c65927c5f0ce7761d87b9",
       "source_path": "noopunk/ubiquitous_maniacs/docs/DAY_1_BIG_NEWS_NOTE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "f3f86e3057b651d3adfdfea13ba9be16bca63d74",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -708,8 +662,8 @@
       "bytes": 12830,
       "sha256": "24fc5050138370e21696dc653eed12f7271b8cc584be4414199d22bea55f2c31",
       "source_path": "noopunk/ubiquitous_maniacs/docs/DAY_2_MARIN_YUE_NOTE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "523f2910c9b4953497a2ee45e26dd8dbbf0e72f0",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -717,8 +671,8 @@
       "bytes": 5437,
       "sha256": "a618de286b57fe5cfd5392a9e22256b9fef5c47d051047824788b67452e1c226",
       "source_path": "noopunk/ubiquitous_maniacs/docs/DREAM_MASTER_VAIKUTTEET.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "be80dd7c9a9b2aeec660695f264d4e565708f663",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -726,8 +680,8 @@
       "bytes": 5496,
       "sha256": "32b0163a8233c28d047548e39bffb83dd567bdf53be7ca52dfe47b217fb266de",
       "source_path": "noopunk/ubiquitous_maniacs/docs/EARTH_POST_FALL_CANON.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "89b982e064d75fc7811efd42febb7cd8c7de7ada",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -735,8 +689,8 @@
       "bytes": 15748,
       "sha256": "30fc8d4e8bdc8524ad6ad6c1c64e001252931b4b4a339025c04ba301c6c28ae4",
       "source_path": "noopunk/ubiquitous_maniacs/docs/ECLIPSE_PHASE_RULES.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "4c390cc31190aab8796bcf16e6d9df3963a662f0",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -744,8 +698,8 @@
       "bytes": 7501,
       "sha256": "af768b2869fe7f57aac925a9d2fe3c4535f298914a690d78cf3b640fafc64f2b",
       "source_path": "noopunk/ubiquitous_maniacs/docs/FIVE_PARADIGM_SHIFTS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "78ba0c8f71b1e60bad0e0157f5dad21e3c5eb097",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -753,8 +707,8 @@
       "bytes": 6447,
       "sha256": "0540cb2221771111a447cadd6977dffa2af794aca667294b220256b8b8088e1c",
       "source_path": "noopunk/ubiquitous_maniacs/docs/FUTURE_MULTIDIMENSIONAL_NETWORK_NOTE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "2eee7c07d674a39344b5401948677288541a9a8c",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -762,8 +716,8 @@
       "bytes": 3995,
       "sha256": "b6440217bc41188fa6992d99d4571dde0961bf3bba09f1c675f742db30ca80af",
       "source_path": "noopunk/ubiquitous_maniacs/docs/FUTURE_OCCUPATIONS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "af2af0225b55d3da0078050e399346663a0994fc",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -771,8 +725,8 @@
       "bytes": 24486,
       "sha256": "90f15a80aaf3d30f1b1fa4a448ff48869e06ac8e91d7c9f0bb5abed6a8466c8b",
       "source_path": "noopunk/ubiquitous_maniacs/docs/GOERTZEL_CORPUS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "5e7537f9e2fdbaba84d0f33c5f95a648864aafc1",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -780,8 +734,8 @@
       "bytes": 6392,
       "sha256": "a8ed196596b240efb55a5a2009a71038c12eef7526434e69d46fd8cf607026a8",
       "source_path": "noopunk/ubiquitous_maniacs/docs/GOERTZEL_MAP.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "9153d4349981072436a1bf0af92011d5deb13b30",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -789,8 +743,8 @@
       "bytes": 9936,
       "sha256": "3868eb82356c9153ef3e01ee770297f21efa439cb93d1421aab089ecde982849",
       "source_path": "noopunk/ubiquitous_maniacs/docs/GOERTZEL_NEUROPUNK_CAN_YHTEENSOPIVUUS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "f5fac362e99449c7d724531c8e75b33cc9f589b2",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -798,8 +752,8 @@
       "bytes": 7922,
       "sha256": "ae62a87edef641b71e081c408732f7fa3a7df981b45133fb281b0589d60dd9ae",
       "source_path": "noopunk/ubiquitous_maniacs/docs/GOERTZEL_NOOPUNK_INTEGRATION.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "2337f808fa5fbbe06169652f2ed24ceb9d04b760",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -807,8 +761,8 @@
       "bytes": 17349,
       "sha256": "fa397f6f8052717393a028630dff0f4c3e9fb91d5c1538560847a84ae2cd3bff",
       "source_path": "noopunk/ubiquitous_maniacs/docs/GOERTZEL_PAPERS_READING_NOTE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "e9c1e69e72c37b2a5523675a75d6f3eea0fba1d8",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -816,8 +770,8 @@
       "bytes": 47562,
       "sha256": "90496252b956e99a9f40b5f504f8ac6b7937289c0c363daf7a8e2dc492eb89c1",
       "source_path": "noopunk/ubiquitous_maniacs/docs/GQ_CAN_PSIONICS_MODEL.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "a5e661360ba7524baf6c7864aa8fb168b0570e8e",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -825,8 +779,8 @@
       "bytes": 4257,
       "sha256": "488c5961c8eb81da774cde97d46d22ceeac69cfb5af87feff797dfe27999f367",
       "source_path": "noopunk/ubiquitous_maniacs/docs/HACKING_SYSTEM_IMPLEMENTATION.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "888808d2c0b40254cf329f9de4f3504e0255734e",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -834,8 +788,8 @@
       "bytes": 7039,
       "sha256": "a8d61457e29c2aa2b93d063aec32512129c7f6b4c167642da357275694f63e88",
       "source_path": "noopunk/ubiquitous_maniacs/docs/HELSINKI_DISAPPEARANCES_SCENARIO.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "9c8b88e2d0819dddeff542e4fdc7ec16e4b54e31",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -843,8 +797,8 @@
       "bytes": 4174,
       "sha256": "fcb159fe36c4149406e9d88efc57609bf7877a0cbfd911f06987ad48634382f9",
       "source_path": "noopunk/ubiquitous_maniacs/docs/IMPORTED_NHI_FACTION_MATRIX.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "591904526a80f963b5449a592934f3b7dae89090",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -852,8 +806,8 @@
       "bytes": 2094,
       "sha256": "2d53bd9f411b8c4db412ef5556b24e879e9aabb49c573d09f87fe6be28450f74",
       "source_path": "noopunk/ubiquitous_maniacs/docs/IMPORTED_RULES_SALVAGE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "24f3d57739b49936d9fc07237126e35487a0576d",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -861,8 +815,8 @@
       "bytes": 3838,
       "sha256": "81a85acda95240ddf8900683587182ecb53b255bec31d1a09d02c54811ec1250",
       "source_path": "noopunk/ubiquitous_maniacs/docs/IMPORTED_TIMELINE_RECONCILIATION.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "94e0eab4c3269a525c81302175b226a73c0847a7",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -870,8 +824,8 @@
       "bytes": 4128,
       "sha256": "ef0e462085dd9925ed3bbe7814331199dad385909bc0e5b0ec89a0c4e7809ec3",
       "source_path": "noopunk/ubiquitous_maniacs/docs/IMPORT_CONFLICT_LEDGER.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "d1de850a02dcb6392d73ee9d21c6f8c58a15da88",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -879,8 +833,8 @@
       "bytes": 3812,
       "sha256": "b59e33f3323fe789280360b9e06e454ff8e1febd29ddbee0b79dffd2116f6aa8",
       "source_path": "noopunk/ubiquitous_maniacs/docs/INTELLIGENCE_AUTHORITY_SCHISM.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "c42442eb1ba304af4c1558274d135ee21be2fc83",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -888,8 +842,8 @@
       "bytes": 7329,
       "sha256": "5040f9fab7bff4fd1af724942e521d9e765b0c4e6ac125f9030838f6292de1a0",
       "source_path": "noopunk/ubiquitous_maniacs/docs/LACLAUGPT_INTEGRATION_PLAN.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "4c07797b422045cb766afc56e6748dd8be94f72f",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -897,8 +851,8 @@
       "bytes": 6497,
       "sha256": "eabff1685c7c7906fb2de93bd9cc378c3ca52b5f41b0e0f2b65231b8428da0c6",
       "source_path": "noopunk/ubiquitous_maniacs/docs/LATHE_OF_HEAVEN_VAIKUTTEET.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "d1ce17cc52cd0b92cf2b37a43aaf33dc32b57b4a",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -906,8 +860,8 @@
       "bytes": 14582,
       "sha256": "b8b312946ae2953795ecefa57141b175d66b0dedc587a78127d73d36138c2259",
       "source_path": "noopunk/ubiquitous_maniacs/docs/LAYERED_GAMEPLAN_FUTURE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "d068ee700628b3a60962ecf402e5d4ca81d8c113",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -915,8 +869,8 @@
       "bytes": 8646,
       "sha256": "d323201463bccdcc5f34352a40e5c6a1321212d908f8e089f711e5d375e059a7",
       "source_path": "noopunk/ubiquitous_maniacs/docs/LEVIATHAN_WAKES_HARD_SF_INFLUENCE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "15d2b815d38ae336b1ee72e4f67f51660d8d6d73",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -924,8 +878,8 @@
       "bytes": 16418,
       "sha256": "6051eaf13722c9dc892704f766ffa7bfd1ba0c1b704d23dd1422f0c7ce65159a",
       "source_path": "noopunk/ubiquitous_maniacs/docs/LLM_STRUCTURALISM_AND_NOOPUNK.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "87e3469edd47d55e2ab4d454fdd4900a5f9cc6c6",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -933,8 +887,8 @@
       "bytes": 15970,
       "sha256": "38c6f81ae1222bdb937e6fee84c794b31baa7b544a9213f5c19acf1fd26ff7d1",
       "source_path": "noopunk/ubiquitous_maniacs/docs/LONG_TERM_COSMOLOGICAL_HISTORY.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "b9cf18a334fbe2c92f5f170358faf92d2e5ea8e0",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -942,8 +896,8 @@
       "bytes": 8569,
       "sha256": "238e2502cc898d3c62c938da60305ca4f8a2eafa8784c47555cf9ea25b1e62cf",
       "source_path": "noopunk/ubiquitous_maniacs/docs/MANIAC_RESONANCE_DESIGN_NOTE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "685b64f568054c2118316242ce3a38261fed7d3d",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -951,17 +905,8 @@
       "bytes": 6721,
       "sha256": "f756f8fb5e306b58510bfb6ea93a0c9a650c90b8972a0afdf6cdd738986e5e19",
       "source_path": "noopunk/ubiquitous_maniacs/docs/MANIAC_RIGET_INFLUENCE_NOTE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
-      "class": "design and research documentation"
-    },
-    {
-      "path": "docs/MANIAC_RIGET_STYLE_ANALYSIS.md",
-      "bytes": 11839,
-      "sha256": "c77c5a54f82a25fc3af152b6c9a4f8cc8f30858a5b83ff4c749ad1a21614da66",
-      "source_path": "noopunk/ubiquitous_maniacs/docs/MANIAC_RIGET_STYLE_ANALYSIS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "68a07475e043f08b352b710f47c655be13594c8d",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -969,8 +914,8 @@
       "bytes": 6321,
       "sha256": "858aafafcc06cc4cad9f20d4f8c84133f785c278d82bc8adb5d4cb093c921728",
       "source_path": "noopunk/ubiquitous_maniacs/docs/MARS_ELDRICH_CORPORATION_AND_VESTERLUND.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "b39a22c0678448477190b265f72707851261782c",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -978,8 +923,8 @@
       "bytes": 5335,
       "sha256": "40e9c05d8a8dc10c50dfdabc138a687c63bde7513d8fa56dfa06d76855ec6cfe",
       "source_path": "noopunk/ubiquitous_maniacs/docs/MYSTERY_AND_TIMELINE_SUPERPOSITION.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "dd11e327a8367a5d726b721c06c25b8e0c32e161",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -987,8 +932,8 @@
       "bytes": 619,
       "sha256": "95a4ef9ab0ad0e4a1cb619651c34968863bb72f6646e46bef8cd9973c2e53b9a",
       "source_path": "noopunk/ubiquitous_maniacs/docs/NAME_PROVENANCE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "17aba207a82f0450c074b5dc789763c9af8ab23f",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -996,8 +941,8 @@
       "bytes": 26565,
       "sha256": "58ee76df3ed09c5b336dc195df536945c1ec2b68323b427dfac431abffe4b91a",
       "source_path": "noopunk/ubiquitous_maniacs/docs/NEUROPUNK_NOOPUNK_ANALYSIS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "330877f87c8c384ad740e0fbaef449c742bf6736",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1005,8 +950,8 @@
       "bytes": 12290,
       "sha256": "bc2590f180fe6146b60bee18d961782e3ca5d0ddd5c31953cfa0b9e016e7c09b",
       "source_path": "noopunk/ubiquitous_maniacs/docs/NHI_ONTOLOGY.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "075cfead595b8e9ecc0babbf3c07405f1d4e03b1",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1014,8 +959,8 @@
       "bytes": 8343,
       "sha256": "0db1651ff12b95858c7edb324f8e51e5b932f4fce0a527bf0686b27ea7683b99",
       "source_path": "noopunk/ubiquitous_maniacs/docs/NOOPUNK_1974_2026_GENRE_ENGINE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "92e2e035aa7885d572317ed58eff7e8e1fc3f327",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1023,8 +968,8 @@
       "bytes": 13486,
       "sha256": "6bcb07238cc8f61390ef8bef2f3703b05637978df639f03610d6706dc0f12673",
       "source_path": "noopunk/ubiquitous_maniacs/docs/NOOPUNK_EPISTEMIC_ARCHITECTURE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "ecc4929f378a676682f174c234065dca92a42dd1",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1032,8 +977,8 @@
       "bytes": 9018,
       "sha256": "c8b73918b735f320cbdb68da73fdcd6de9b4656861251d9ff9cc66f8a85f0844",
       "source_path": "noopunk/ubiquitous_maniacs/docs/NOOPUNK_FATE_FUDGE_SYNTHESIS_REVIEW.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "32a28bcb4c5a01e29a5ff20fc479c7c8792ab685",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1041,8 +986,8 @@
       "bytes": 12714,
       "sha256": "aa168f022ba1c1c2e9a3fda74eeafbb5dacaf854e98afeaa7f48d43cf5c5e30c",
       "source_path": "noopunk/ubiquitous_maniacs/docs/NOOPUNK_PARADIGM_COLLAPSE_MODE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "64c6fe21005074f5b9be1a7eeea50e9fdeb36452",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1050,8 +995,8 @@
       "bytes": 21439,
       "sha256": "75ecc9c0a384e312f870c62c0616d43a10d0cf1d9fdbc01aa2ab98219c89d50a",
       "source_path": "noopunk/ubiquitous_maniacs/docs/NOOPUNK_RPG_RULES_V0_1.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "e87c8c1982f9f118421365fc53187874bf71b1bd",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1059,8 +1004,8 @@
       "bytes": 5642,
       "sha256": "1d178a187871beebe9adbf3aeb888538f892bc217c0ba88d30ab1a17d3e02688",
       "source_path": "noopunk/ubiquitous_maniacs/docs/NORDIC_LANGUAGE_MYTHOLOGY_AND_ONTOLOGY_CANON.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "3550d08375c09f8457a104fb541d2c0ff2d809cf",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1068,8 +1013,8 @@
       "bytes": 18130,
       "sha256": "09eb6c658723d8d1254d78dd8bcb88bc7b4b238132a29205939fa727cfdc97ce",
       "source_path": "noopunk/ubiquitous_maniacs/docs/OLLAMA_RPG_ARCHITECTURE_PLAN.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "59ade2d7b8e5e7f563cdf2f2d73181815cc3b965",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1077,8 +1022,8 @@
       "bytes": 15181,
       "sha256": "acef8fbaeee5cb198614c84e7f92e5f2f28feded7974158855de41961c26427e",
       "source_path": "noopunk/ubiquitous_maniacs/docs/PANOPTICON_SURVEILLANCE_POWER_AND_NOOPUNK.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "2df762385adf1d5b6015d09686f0eebdc2697b24",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1086,8 +1031,8 @@
       "bytes": 5223,
       "sha256": "3a9e0ae0c07065c97fa0e78097f0fc28fd740bfca1d9b31d544ade61dc45f797",
       "source_path": "noopunk/ubiquitous_maniacs/docs/PAPRIKA_INFLUENCE_NOTE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "5ff5bf4bf71810710821bdfb7d6df39c6e37f351",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1095,8 +1040,8 @@
       "bytes": 8126,
       "sha256": "c8a0981bfa4781a467dd92ce7dca2c9e701e95f79c9143a06c9048ab4c7398e5",
       "source_path": "noopunk/ubiquitous_maniacs/docs/PAPRIKA_VAIKUTTEET.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "4466cdfda71f149a23e8462a7c3d7867f43e6b2c",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1104,8 +1049,8 @@
       "bytes": 2248,
       "sha256": "94bd5c2b860335812fcfc398728d44764872b0991c3f9f6322c1cf9002509811",
       "source_path": "noopunk/ubiquitous_maniacs/docs/PERSONALITY_TAGS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "a05985586cf4967cea80f70a0e9f5ca1c86b21ae",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1113,8 +1058,8 @@
       "bytes": 10719,
       "sha256": "854718ab1d49c00bb8cd51a670f73e0f8dbd019307f2f5e70299701357359356",
       "source_path": "noopunk/ubiquitous_maniacs/docs/PHILIP_K_DICK_INFLUENCE_MAP.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "bfa8f200a9066d806edbda7d4d803cb0ac16edf3",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1122,8 +1067,8 @@
       "bytes": 8538,
       "sha256": "d7c7670e6a1302d429707e333714181ff5e2bf0fd66fef87700a9af319f4fc32",
       "source_path": "noopunk/ubiquitous_maniacs/docs/PHILOSOPHICAL_FRAMEWORK.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "af31b8cadba4fe506b76e865ad5b26881628706d",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1131,8 +1076,8 @@
       "bytes": 20870,
       "sha256": "6f5025f36b52fc692187362eda7323d7370823063747965145131d2e8619e290",
       "source_path": "noopunk/ubiquitous_maniacs/docs/PHILOSOPHICAL_ZOMBIES.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "b7809aabe9edfcc6bf47daccd3c656a518a2ec33",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1140,8 +1085,8 @@
       "bytes": 5977,
       "sha256": "434f7c0016990b10e254e89ea22f8f77425d43923f10ccfc7cb705af8e4e8a30",
       "source_path": "noopunk/ubiquitous_maniacs/docs/PILGRIM_ORCH_OR_THEORY.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "d74f9c6704b838e47aa028666d4708b1ee84dc85",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1149,8 +1094,8 @@
       "bytes": 4718,
       "sha256": "e0a734115ab7ad45a927522b730ed0bdc546c17f292eed53b1ea400ff4da44a1",
       "source_path": "noopunk/ubiquitous_maniacs/docs/PSIONICS_SECURITY_DISCOURSE_INFLUENCE_NOTE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "0b049619a52ffb4577c7f703fc3f7c681f665c24",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1158,8 +1103,8 @@
       "bytes": 18181,
       "sha256": "971eb560e39965fecb1921462cff770afa9dcb8de731a0b4a1a8dfab8327f5a5",
       "source_path": "noopunk/ubiquitous_maniacs/docs/PSI_PUNK_RULES_AND_INFLUENCE_REVIEW.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "aa128d940368ae2f0b9bf5664c6b6d94b9c618a7",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1167,8 +1112,8 @@
       "bytes": 9427,
       "sha256": "59f5376536a2ecf45e5c0202711c6fea84e4fc101a3849c2f567a21b38101c2e",
       "source_path": "noopunk/ubiquitous_maniacs/docs/PSI_VOIMAT.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "1a46c6dff09286587d791cd5f085bb359b4c34a0",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1176,8 +1121,8 @@
       "bytes": 9386,
       "sha256": "9ade791688bcd6602e3f112c2248d01a88256077290007237b813a2629bb38f2",
       "source_path": "noopunk/ubiquitous_maniacs/docs/PSYCHE_CROSS_LAYER_HACKING.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "023539d2a78929c2f190cba39535ace362179660",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1185,8 +1130,8 @@
       "bytes": 6005,
       "sha256": "118a15d81cc2feafebc9d5235c6f3acf36e45364cccec32c0a8743e86023bde9",
       "source_path": "noopunk/ubiquitous_maniacs/docs/PSYKOKURGIA_NELIKON_MALLI.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "7da630adecfa3e649ea00819022ea8db8654caa0",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1194,8 +1139,8 @@
       "bytes": 3915,
       "sha256": "cae2398d2326ad893a5c229b3e98dc71b9256f1ee35bcbfdc7b95ac54de4743a",
       "source_path": "noopunk/ubiquitous_maniacs/docs/QIP_CAN_IMPORT_AUDIT.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "89ad977ef058b2402966d5fb8679b19f60035e10",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1203,8 +1148,8 @@
       "bytes": 15585,
       "sha256": "268e8396f3560bea1eb96bd670e121cc4ed81095bdbce485f07f3f27e432674f",
       "source_path": "noopunk/ubiquitous_maniacs/docs/REDDIT_NOOPUNK_ZEITGEIST_SNAPSHOT_2026_08.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "bcc13e65b27500f973b0c4db91d7488317744072",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1212,8 +1157,8 @@
       "bytes": 7950,
       "sha256": "1abda64c6045288e8703990366c9ce6b8002be5637323427ffd34d113cad5ebd",
       "source_path": "noopunk/ubiquitous_maniacs/docs/RESEARCH_SIMULATION_PARADIGM.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "76fc1201b06d73cf010f490e03e17e0786a20f84",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1221,8 +1166,8 @@
       "bytes": 5843,
       "sha256": "be91057a7e6fc922f34e30548b43e2f56fe70441067ecb5f2c9cc7b6fb18f9f9",
       "source_path": "noopunk/ubiquitous_maniacs/docs/ROMPPAINEN_BEHAVIOR_PHASES.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "35b495a4166078f4f862c8aab303e9cb0ff8c01b",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1230,8 +1175,8 @@
       "bytes": 18106,
       "sha256": "688f12145049f9187e31e1f06948818d906022fe8466762605f988a4cf096feb",
       "source_path": "noopunk/ubiquitous_maniacs/docs/ROMPPAINEN_INGRID_AND_THE_FALL.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "47c0310d44431874857ba8acaed616fbe5339685",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1239,8 +1184,8 @@
       "bytes": 9684,
       "sha256": "29c2fb56ff7bad9758767c22c78d9667093c8f28a157ba9a5dde85aea0ccea13",
       "source_path": "noopunk/ubiquitous_maniacs/docs/ROMPPAINEN_INGRID_INTERACTION_SERIES_01.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "b42bebdbcfa7ceabd41015290ebfe2c961e80e2b",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1248,8 +1193,8 @@
       "bytes": 5671,
       "sha256": "83cc540c54875f61851b4f08173443d6cef20fba6835a52ff06dfa73960eca07",
       "source_path": "noopunk/ubiquitous_maniacs/docs/ROMPPAINEN_ROMANTIC_ARCS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "74ebbd2c6d18c1dd9c9165ee598a911a5d0ddb2d",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1257,8 +1202,8 @@
       "bytes": 6501,
       "sha256": "ccb709f0455955a3e98fe469ac08159bf12c66f0b653e6cc0a3a5fdfedfe578c",
       "source_path": "noopunk/ubiquitous_maniacs/docs/ROMPPAINEN_SEVEN_DAY_ARC.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "7a0dddb83c90873965e3f73b78bc23af13a9493a",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1266,8 +1211,8 @@
       "bytes": 5221,
       "sha256": "2f2bbaff3f442a2cad3f77111b9806ad54e2ef783684c6c7629ebfd698d651aa",
       "source_path": "noopunk/ubiquitous_maniacs/docs/ROMPPAINEN_TEAM_NOTE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "dfcbd24c7cd1897c38aa30fe8af3d7999fd116bb",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1275,8 +1220,8 @@
       "bytes": 8041,
       "sha256": "74d3fcb902deb5cbd65d969da7d272c16cf2fadaa964dc22faf5e4dc48715eca",
       "source_path": "noopunk/ubiquitous_maniacs/docs/RPG_ATTRIBUTE_SKILL_DIRECTION.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "03ffc373b714f8f066d77b00110f48f2b1cd2463",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1284,8 +1229,8 @@
       "bytes": 5230,
       "sha256": "03e56645e9bc113ff40e2e1874acc5249c5253e93d273db568d886214d703fa2",
       "source_path": "noopunk/ubiquitous_maniacs/docs/RPG_CODE_REVIEW_2026_08_01.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "80a44cafb160df868962ba1c3bac137a3f09d1ae",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1293,8 +1238,8 @@
       "bytes": 9592,
       "sha256": "4c1fc838ff0be71482529e6e1af7b654151402cd6e394699ae8abe3b38052329",
       "source_path": "noopunk/ubiquitous_maniacs/docs/RPG_MODULE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "d3f41a438a51f486bc0ab5c1e0c31a78d2087610",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1302,8 +1247,8 @@
       "bytes": 15842,
       "sha256": "98a9d0599a076bcfd9f770bc8e3a75a73df4aaaa731934eb68c4092c96a26615",
       "source_path": "noopunk/ubiquitous_maniacs/docs/RULE_SYSTEM_BEST_OF_COMPARISON.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "1e82c196b5e44b6b47454cbf145e4cf66f278cb2",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1311,8 +1256,8 @@
       "bytes": 8309,
       "sha256": "341dfd8f1daf5b65e80af7f244d934cd26ef2b7f97bd3f080b051fdc7d53f208",
       "source_path": "noopunk/ubiquitous_maniacs/docs/SHADOWRUN_INFLUENCE_AND_RESKIN.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "9297504ad4cd6b6ab31006cf27adbf34d7cb7a02",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1320,8 +1265,8 @@
       "bytes": 3007,
       "sha256": "07322a98c495777ceeeb2da37bc8ba18e1f1ec72a757cfa57db540993c3e2e58",
       "source_path": "noopunk/ubiquitous_maniacs/docs/SIMULATION_DEMOS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "05aa7a54eb660501f6d3da39fde247d3796fa1e2",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1329,8 +1274,8 @@
       "bytes": 20724,
       "sha256": "f564832f3809f5866a132ad8250a3e3154d86bfe2614c3213962fcc176127326",
       "source_path": "noopunk/ubiquitous_maniacs/docs/SIMULATION_PLATFORM_EVALUATION.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "4a594d4d5b7e8a09100151cc1b824694267e497d",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1338,8 +1283,8 @@
       "bytes": 7664,
       "sha256": "f3c7087e3652b499d46bf8e411378e74976268ce70bc96d06f23f8f6bdcabd25",
       "source_path": "noopunk/ubiquitous_maniacs/docs/SISAAVARYS_LACAN_JUNG.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "cd806de44effe1a856045b193a82ce861e93114c",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1347,8 +1292,8 @@
       "bytes": 12294,
       "sha256": "84b5fde6008d5660e13f38320286155b1fafd3e4952127fa9450b87b8e4375b3",
       "source_path": "noopunk/ubiquitous_maniacs/docs/SISAKKAISET_VERKOSTOKERROKSET.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "f1c5cc72e6551083d0843c2b207b91f056bb51c2",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1356,8 +1301,8 @@
       "bytes": 4534,
       "sha256": "1d58407ff3ecc738ea321411024b6247803b86c7c0ff8905d6b70f95135642f5",
       "source_path": "noopunk/ubiquitous_maniacs/docs/SKENAARIO_16_PSYCHE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "a846c89761775e7624c448445b7de3c65d8368e3",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1365,22 +1310,17 @@
       "bytes": 3926,
       "sha256": "c56ac7d8a070050e2f609f350e8ae454ddb7ab0f53a47d2906ce777e35a67e60",
       "source_path": "noopunk/ubiquitous_maniacs/docs/SOURCE_ETHICS_AND_ANTI_SOURCE_HYPOTHESIS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "fe8b46ae83b220cf49b3afc155977d532a3b397d",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
       "path": "docs/STYLISTIC_INFLUENCES_MANIAC_RIGET.md",
-<<<<<<< HEAD:archive/ubiquitous-maniacs-2026-10/manifest.json
-      "bytes": 10271,
-      "sha256": "7b32397c9c11f1ef8e7fae5ba14164a33e64ca0a2f5fca0c02b7388406c914df",
-=======
-      "bytes": 9982,
-      "sha256": "6b0f527c1585ed5f187b8c1a59996459d0cfb3441abab3f4e672ac1d546d6905",
->>>>>>> e5cfc9a (chore: clean the Ubiquitous Maniacs archive of third-party expression):legacy/ubiquitous_maniacs/manifest.json
+      "bytes": 9917,
+      "sha256": "05743efcc7b6f532db9c6489e6fcf2e2db98a67fc235c140e2a5bad92f7a2452",
       "source_path": "noopunk/ubiquitous_maniacs/docs/STYLISTIC_INFLUENCES_MANIAC_RIGET.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "cc78f4b9796abf151fb4d11994fa58ea5ff1e0f1",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1388,8 +1328,8 @@
       "bytes": 17748,
       "sha256": "6113bdb59cb8890ba02a88fda684bd6cff421db052ad6a1fc8e16aa17f789947",
       "source_path": "noopunk/ubiquitous_maniacs/docs/SUBJECT_ARRIVAL_NOTE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "5c8217b27503e302eb625cfd1d71a4c8e3fb1359",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1397,8 +1337,8 @@
       "bytes": 6467,
       "sha256": "e61588fc886553a142f4ce05d8c9cf8c21472b9b244a316d3d1730d661bf481f",
       "source_path": "noopunk/ubiquitous_maniacs/docs/SUPERVILLAIN_ARCHITECTURE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "852f08e77c1b5f3aef4d06cfb5a391053e254a7c",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1406,8 +1346,8 @@
       "bytes": 4775,
       "sha256": "0bc2b4d738d7c5a50629eb42389c8fb1222dc89baa477d4e233b45a6cceae076",
       "source_path": "noopunk/ubiquitous_maniacs/docs/TAROT_ORACLE_MODULE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "5313f90bf00f3e70bcf1ebfabec9dcac90f3824a",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1415,8 +1355,8 @@
       "bytes": 7182,
       "sha256": "21b3f33776e2eea5c9aaad86e2e0724f1432db973d3dcfbea61585189be8bcd3",
       "source_path": "noopunk/ubiquitous_maniacs/docs/THEORETICAL_SUPERPOSITIONS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "642d950e37910ba75b3ce3162055af7430d84191",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1424,8 +1364,8 @@
       "bytes": 18278,
       "sha256": "217175cd3fe828b7b5557ef69ca30a906228d04e3990bba34f5373be1a19cd07",
       "source_path": "noopunk/ubiquitous_maniacs/docs/THERAPY_DAY_1_DRAFT.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "7d555f031a5db117893b0ca65e1dab82d5bce0ac",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1433,8 +1373,8 @@
       "bytes": 24079,
       "sha256": "76da3623eaf56b103c0cece7e5eaea4fb2fe3f714381ecdbb84c6c25f50d0099",
       "source_path": "noopunk/ubiquitous_maniacs/docs/THERAPY_DAY_1_MAIN_PLOT.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "48a002778d69cbe470e4676864c44bf83ab44314",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1442,8 +1382,8 @@
       "bytes": 4964,
       "sha256": "cf843acd838f057e88829241807f4bc6b5dca542fdda5fa18f34f80e621735aa",
       "source_path": "noopunk/ubiquitous_maniacs/docs/THERAPY_DAY_2_PLANNING.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "cc81a357b2150176b41a0a5a697089d635eb7cc7",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1451,8 +1391,8 @@
       "bytes": 20308,
       "sha256": "b5a045a5277534d7b729615cf812f112acb9a63eced344647794b02249079555",
       "source_path": "noopunk/ubiquitous_maniacs/docs/THERAPY_SESSION_DAY_1_PROPOSAL.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "896c46829531b7bb21e5fd9a56a10a9ad0b2ddfa",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1460,8 +1400,8 @@
       "bytes": 7138,
       "sha256": "9abb190dd58d3800b0c713b7d5020b5f7d19875f050af56c353b957fe3e07ed1",
       "source_path": "noopunk/ubiquitous_maniacs/docs/THERAPY_SESSION_MODEL.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "74c90b6e2fc00d583f88ab2ee5325df3c7162f07",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1469,8 +1409,8 @@
       "bytes": 4508,
       "sha256": "2597b69e59bb4e1f857002ad194d678b133b1487aeb6ed7a941b691d7556dbb4",
       "source_path": "noopunk/ubiquitous_maniacs/docs/THE_STACK_PROTOCOL_AND_CYBERSPACE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "27ba90010153255c764cfd050015e41703d4879f",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1478,8 +1418,8 @@
       "bytes": 11724,
       "sha256": "98d702daebc5111a4bd4c7d1ca3e2f5d615bdd1e3d2540be5d79cfd7c05dac0a",
       "source_path": "noopunk/ubiquitous_maniacs/docs/TOMI_TOIVIO_1974_AUTHOR_FRAME.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "6ec7989f316765f49dd085c9f41a8e82b526e3e1",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1487,8 +1427,8 @@
       "bytes": 3849,
       "sha256": "d46630bab503cbb621487181da74f1df2e2a40ec0886698decc6b533cb3336ff",
       "source_path": "noopunk/ubiquitous_maniacs/docs/TOMI_TOIVIO_FINNISH_VOICE_ENGINE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "b36756f94c369d608678087092e7bff25e8e1303",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1496,8 +1436,8 @@
       "bytes": 20887,
       "sha256": "742907c4919e38d6d88999dbe8498da786919d602a89829d7cfce0db2340372c",
       "source_path": "noopunk/ubiquitous_maniacs/docs/TOMMY_PILGRIM.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "6e95318a158b0350e1c05ba22a9ae5788c5d7a37",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1505,8 +1445,8 @@
       "bytes": 15056,
       "sha256": "c8728011c818c26de858e8899e5255ad4f9af2e6107f02e01166d21dc707d418",
       "source_path": "noopunk/ubiquitous_maniacs/docs/TOMMY_PILGRIM_1974_AUTHOR_FRAME.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "0eff4ad794e3f8c0222821089a1c2c3031e681eb",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1514,8 +1454,8 @@
       "bytes": 7923,
       "sha256": "8101742f568acf80ccf285b75466b3d264a8749483e9a45bcc4c5f590ef10e1f",
       "source_path": "noopunk/ubiquitous_maniacs/docs/TOMMY_PILGRIM_VOCABULARY.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "02ab1efa82e945a59b5138334e8d1e83b12f00fd",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1523,8 +1463,8 @@
       "bytes": 4855,
       "sha256": "21eba053d68c2ece899f490d25cad4cc2bb09acd786dc5fb43b992ac47977eae",
       "source_path": "noopunk/ubiquitous_maniacs/docs/TRANSHUMANITY_FATE_COMPATIBILITY.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "d71bb056a849ab6a4eaf5ad0a241a19819fd1d87",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1532,8 +1472,8 @@
       "bytes": 3409,
       "sha256": "5945061c4cff8cdcf3e68fd1a1e423ed496a3ee1b8a2cb56b3ea6fcdcd327702",
       "source_path": "noopunk/ubiquitous_maniacs/docs/TWO_TIME_MODEL.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "58eee6f8fd542a0fc0b8df061b05a7218dcd28da",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1541,8 +1481,8 @@
       "bytes": 5212,
       "sha256": "0621c8832c84d610af977fbf1139bc087d4b7a7b799d2f1e151554fbd838a143",
       "source_path": "noopunk/ubiquitous_maniacs/docs/UFAB_NANOPILL_IMPLANT.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "a526e9a550f395fc56bbba5680525be3db0d0cd3",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1550,8 +1490,8 @@
       "bytes": 6793,
       "sha256": "7805450376c4323485a2b36edddb419c94177aceb3c451dc183c5652d2d30047",
       "source_path": "noopunk/ubiquitous_maniacs/docs/UFAB_RAGNAROK_AI.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "53ba9bef080164541eed635297fa4c3082c56d0a",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1559,8 +1499,8 @@
       "bytes": 6848,
       "sha256": "e3bb4c27eb0b4203f788cf85a8505ca0083ad3c04619886f65986c9d360ae888",
       "source_path": "noopunk/ubiquitous_maniacs/docs/UPLIFTED_ANIMALS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "8d0d8b335e784decadcec57d3f0859463b19e601",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1568,8 +1508,8 @@
       "bytes": 11929,
       "sha256": "2d01b594abb36f371678e7882dc0416c7b18de4f4a00b49b8bbb52ebd82587ab",
       "source_path": "noopunk/ubiquitous_maniacs/docs/VALIS_NOOSPHERE_METAPHYSICS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "d13c52e9dbce77a03b5a00498b28ad60e9644add",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1577,8 +1517,8 @@
       "bytes": 11999,
       "sha256": "e0ca2a79c790469d024eeea36e52a4d571a7c7306700382034c9b4ea20a2436a",
       "source_path": "noopunk/ubiquitous_maniacs/docs/VALLEE_DIMENSIONS_UFO_THEORY.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "efdcab0c129ccceccbb2af0335d58d3928006152",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1586,8 +1526,8 @@
       "bytes": 9010,
       "sha256": "e46bf90eed7ae041a8ccd34e36acb6c9ae9a12bc8eabc056c8a227be1e7746fd",
       "source_path": "noopunk/ubiquitous_maniacs/docs/WENDT_CAN_CASTELLS_BRIDGE.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "deb2378be822b7811ef38a1f9d20d75e3fec24b5",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1595,8 +1535,8 @@
       "bytes": 13205,
       "sha256": "e9c9e3322530d9adeac43a985151fbccf4ca98bb2307e8b19b6437f0275202eb",
       "source_path": "noopunk/ubiquitous_maniacs/docs/WENDT_CRITICAL_AI_THREE_PARADIGM_SHIFTS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "de4ccd91097b66201bc068e4cec5572b8601563d",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1604,8 +1544,8 @@
       "bytes": 10259,
       "sha256": "3f77f7104b676e1f59d816df13522bb9b2c40770055d320fc527360860a84f46",
       "source_path": "noopunk/ubiquitous_maniacs/docs/WENDT_PSI_RULES.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "ab7dc6b37317804a64042519d5feda03b531fdd9",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1613,8 +1553,8 @@
       "bytes": 2646,
       "sha256": "bfa8c5c0c25c77974296cff23bd6326302cc8e9b4fbf6920731b885e58ca0db2",
       "source_path": "noopunk/ubiquitous_maniacs/docs/XENOFEMINISM_AND_NOOPUNK.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "d0d82d1c60339bf038f21664077772891e2bd8de",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
     {
@@ -1622,8 +1562,8 @@
       "bytes": 25720,
       "sha256": "cb4d44a21d367bce433ad88a2c8b552a59b2bd0ef1e41c6eaebffdf5719d8d00",
       "source_path": "noopunk/ubiquitous_maniacs/docs/reference/laclaugpt/CAMPAIGN.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "835f140cd83585ccb9cd19de4e858f69e6218195",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "reference (LaclauGPT import)"
     },
     {
@@ -1631,8 +1571,8 @@
       "bytes": 39098,
       "sha256": "620036d5dac860645d7c4c61eceeb51c3456f3586fd4e33991f7df374c8eea56",
       "source_path": "noopunk/ubiquitous_maniacs/docs/reference/laclaugpt/HELSINKI.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "a7384688146546a13cf9b662342297f953c0e286",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "reference (LaclauGPT import)"
     },
     {
@@ -1640,8 +1580,8 @@
       "bytes": 10549,
       "sha256": "8efd8dadf61fafc0b9c7ca2f6c2b5a329c2c81574ed3e335fd5ddd0e8f0858fe",
       "source_path": "noopunk/ubiquitous_maniacs/docs/reference/laclaugpt/INTEGRATION_PLAN.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "984b62ec66fb4467b5f7e0c5f80abb3ee41c8dfa",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "reference (LaclauGPT import)"
     },
     {
@@ -1649,8 +1589,8 @@
       "bytes": 12291,
       "sha256": "4dec438b4ef2dac18f5624fddbd9fa327a4dafffa357d2dbe7539520893218a5",
       "source_path": "noopunk/ubiquitous_maniacs/docs/reference/laclaugpt/NHI_FACTIONS.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "957bebffd447395b25daf50599e582e3102c4a0a",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "reference (LaclauGPT import)"
     },
     {
@@ -1658,8 +1598,8 @@
       "bytes": 26461,
       "sha256": "c05e79883393a79e4f6db57478c59be0ab1167d5fc185cd331bb6f88a64d9ff5",
       "source_path": "noopunk/ubiquitous_maniacs/docs/reference/laclaugpt/NHI_SINGULARITY.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "bddc3747544279168dd5a7c0917a564ade854859",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "reference (LaclauGPT import)"
     },
     {
@@ -1667,8 +1607,8 @@
       "bytes": 22411,
       "sha256": "541bf02b7291485599dd67f6435f9517e46c2dc09e1c218a0bb5e10002609962",
       "source_path": "noopunk/ubiquitous_maniacs/docs/reference/laclaugpt/NOÖPUNK.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "27b14161a7203282a03c46a2601515d72d2f54b0",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "reference (LaclauGPT import)"
     },
     {
@@ -1676,8 +1616,8 @@
       "bytes": 32559,
       "sha256": "18db6dab7c3fbbf45cf7e6514e709faed16e5358761c01ca358178f90415a7ec",
       "source_path": "noopunk/ubiquitous_maniacs/docs/reference/laclaugpt/QIP.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "27620b8180d694404c61ede79eb3b2d077e3c243",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "reference (LaclauGPT import)"
     },
     {
@@ -1685,8 +1625,8 @@
       "bytes": 3248,
       "sha256": "450529a0779b5e1872b8f4191c47ca1d1596c6ba15461b8c5ba3da4c80f18465",
       "source_path": "noopunk/ubiquitous_maniacs/docs/reference/laclaugpt/README.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "70b1790c17167bf79d1c4a0b6f4706fc3913adf5",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "reference (LaclauGPT import)"
     },
     {
@@ -1694,8 +1634,8 @@
       "bytes": 18729,
       "sha256": "f6a1c04c541902988dff224fb474eb8b2bcd89b7a571f7d7b238f43cc19e462b",
       "source_path": "noopunk/ubiquitous_maniacs/docs/reference/laclaugpt/RULES.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "075531e10b7c793c08b3c60cc28bba4b0a271938",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "reference (LaclauGPT import)"
     },
     {
@@ -1703,8 +1643,8 @@
       "bytes": 2570,
       "sha256": "53c27e1f41ea0ebeae4988002424da3e90fe54dbbccce4cfd7e9754425d8a325",
       "source_path": "noopunk/ubiquitous_maniacs/docs/reference/laclaugpt/TAROT.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "058e855999322648a1aa20687f5cea1e4fb4a13d",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "reference (LaclauGPT import)"
     },
     {
@@ -1712,8 +1652,8 @@
       "bytes": 14777,
       "sha256": "52aacbf558c6638fd936a36dc115fa8a5d96c20a7c6290fb56742ad7f884fb09",
       "source_path": "noopunk/ubiquitous_maniacs/docs/reference/laclaugpt/WORLD.md",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "8fbc335312f8b1931536343cb4fbe028b5607536",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "reference (LaclauGPT import)"
     },
     {
@@ -1721,8 +1661,8 @@
       "bytes": 7091,
       "sha256": "91690e9185dfa12ade190b91cd461f7541140368a720e273e6dc88420a9bc1bc",
       "source_path": "noopunk/ubiquitous_maniacs/hacking_demo.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "1b5a6375f63c085895470e4351c2b5345d1a7d5a",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "entry-point script"
     },
     {
@@ -1730,8 +1670,8 @@
       "bytes": 34626,
       "sha256": "941ef29503535d23395ebd414eb18b39868c904b4d0a7108d2353d3f87ae80ad",
       "source_path": "noopunk/ubiquitous_maniacs/play.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "d4a43978e48508af63fd9b2e62ef7c882688afe4",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "entry-point script"
     },
     {
@@ -1748,8 +1688,8 @@
       "bytes": 1133,
       "sha256": "348ed63881441e93b13d6c10cce1cb1f202b7d91ec463d30c383f62d3f32679a",
       "source_path": "noopunk/ubiquitous_maniacs/requirements-llm.txt",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "9496765fd4eb0ddeecba027c2dabac04fd561619",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -1757,8 +1697,8 @@
       "bytes": 54,
       "sha256": "48902cfde76eebb32336fd8a7a1b8f771819a5e53523bcfb0ec7062fb4d853c2",
       "source_path": "noopunk/ubiquitous_maniacs/requirements.txt",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "909f76c0577c52c63cc9926d01f2ad2345da899d",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "corpus root document"
     },
     {
@@ -1766,8 +1706,8 @@
       "bytes": 1711,
       "sha256": "a2084828d85db456979ef9c33d7da8a0edbb5f91a11094e54597e95d14916e52",
       "source_path": "noopunk/ubiquitous_maniacs/social_demo.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "d7ae6cc4538da14bfb642b679f7a1e2ae0da8729",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "entry-point script"
     },
     {
@@ -1775,8 +1715,8 @@
       "bytes": 171,
       "sha256": "8f1286ce765f95b0e856e0e5a2a7e65c57bc91f2aa4963808a50e26f5b63788f",
       "source_path": "noopunk/ubiquitous_maniacs/src/__init__.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "490bfb622b4e745ac86c828895db2fd84e4d1f0a",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1784,8 +1724,8 @@
       "bytes": 434,
       "sha256": "963ebf4c2868da4bbf4e3de8d203bfe78c4e4915af82a638445e36700072de37",
       "source_path": "noopunk/ubiquitous_maniacs/src/cyber/__init__.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "af5e9a798ec56e0a482d9c86f39eac4bde105fac",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1793,8 +1733,8 @@
       "bytes": 413,
       "sha256": "73d0f36433fed584935cc2a78b54c2ed0665af877074cd874db749b5d3fdda7a",
       "source_path": "noopunk/ubiquitous_maniacs/src/cyber/graph.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "e02d00ff3b63bfe077cb2549bc113726f55f5fa0",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1802,8 +1742,8 @@
       "bytes": 1610,
       "sha256": "c53af57e0833ee5b1acde1eaab639d0f76f5663a2a45f026f4baf765bfad4997",
       "source_path": "noopunk/ubiquitous_maniacs/src/cyber/ontology.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "fa34b77fd5f3cad9f83bfb4953c23099a2e62a1f",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1811,8 +1751,8 @@
       "bytes": 213,
       "sha256": "8b4dfc342d6b43c0f4ec3caa179fb2885ba132ddad2dd058d61c81133e128f61",
       "source_path": "noopunk/ubiquitous_maniacs/src/data_loader.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "e2f1f04aa56455fe8d97dba9e9c9914084e6e86a",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1820,8 +1760,8 @@
       "bytes": 488,
       "sha256": "5d44809e1c574e36a07660f13ab124c2b569343533486589c0df77a9c328acc4",
       "source_path": "noopunk/ubiquitous_maniacs/src/game/__init__.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "72d5cdbe8c94a43faa1c88c9e7dcee09b52176de",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1829,8 +1769,8 @@
       "bytes": 2935,
       "sha256": "406e420f14caa872711aba8686f369650ed379d84a5ef0f34a9352302748cbd2",
       "source_path": "noopunk/ubiquitous_maniacs/src/game/day1_web_save.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "ab515f799540aea088aced300e4d45cb66a86804",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1838,8 +1778,8 @@
       "bytes": 4536,
       "sha256": "30b6c9ff99d549205608bd66a1c48b43130171793bf8eab2f9f5cc957953f1f4",
       "source_path": "noopunk/ubiquitous_maniacs/src/game/npc_autonomy.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "6f6b0ba4c19fa083c72731d3b24d590eedadb7f7",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1847,8 +1787,8 @@
       "bytes": 13394,
       "sha256": "26c971c03d7a647d11acdc9009b738e2e4ef7d422134a6f62f235920abd4e897",
       "source_path": "noopunk/ubiquitous_maniacs/src/game/social_graph.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "ee2af98b2284d40de922eff0d0cbbfd7debb0fec",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1856,8 +1796,8 @@
       "bytes": 21674,
       "sha256": "a4f3b8b210a9351aca12b401a90f155f5100d63d6b9b3b00ac798bd0993393c3",
       "source_path": "noopunk/ubiquitous_maniacs/src/game/state.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "56a7a69296c93c7578b873384bc1ddb95e15713f",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1865,8 +1805,8 @@
       "bytes": 444,
       "sha256": "a577b7db421b276d23e27cb3ef9525b8afa6d82dfff713350c48bf43382764bf",
       "source_path": "noopunk/ubiquitous_maniacs/src/graph_model.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "3d22951d04dd56b35baac4a4ddbd5fb53971551d",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1874,8 +1814,8 @@
       "bytes": 2524,
       "sha256": "db081d9cc664330bc7047a15a5cdd56406ec2be6b4dcde78c11065f5645d523f",
       "source_path": "noopunk/ubiquitous_maniacs/src/graph_serialization.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "20f05d0dee89ada1262649f869175fcbdd2ef3f2",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1883,8 +1823,8 @@
       "bytes": 583,
       "sha256": "c896a3a2555601a6a751fa938f03af5ee6abad9476e1682e3a87bd61665f0bca",
       "source_path": "noopunk/ubiquitous_maniacs/src/hacking/__init__.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "0e90b764c2692af5dad7f5c0d657e359c4c32a7b",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1892,8 +1832,8 @@
       "bytes": 41513,
       "sha256": "953bfad7bf10b8492c507269162b189835e6d8b299ae8a647e54b839ab8a5291",
       "source_path": "noopunk/ubiquitous_maniacs/src/hacking/layered.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "6945c09611b73cfdaa3007f5ae98571aeca6df71",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1901,8 +1841,8 @@
       "bytes": 9881,
       "sha256": "3d37674c706ea52140161cb605d7d8201a85960ede02db2c6fec8a505ff177a4",
       "source_path": "noopunk/ubiquitous_maniacs/src/hacking/simulation.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "c3c9bf96c67bcb80a005fbe39b586cd4e436982b",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1910,8 +1850,8 @@
       "bytes": 568,
       "sha256": "85c321cb7bc526b6136a1adf0e8e942d596cdbe673241b489d3f628c63a89e45",
       "source_path": "noopunk/ubiquitous_maniacs/src/interaction/__init__.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "a86e44b420c340eae041694e59b9f5679a15d9cd",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1919,8 +1859,8 @@
       "bytes": 3033,
       "sha256": "62d8b3d1c32cd13878456de892f886e6595ddff270889b6513590ebacb97df6f",
       "source_path": "noopunk/ubiquitous_maniacs/src/interaction/cli.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "ecc29220b6a0f20d1b7e485cda526e93feb79142",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1928,8 +1868,8 @@
       "bytes": 9491,
       "sha256": "8ede44974bc63ff6ce7a1bd63429502d0ba45c65c8771645b808bb62b60111b3",
       "source_path": "noopunk/ubiquitous_maniacs/src/interaction/dialogue.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "45dbf00e5b8af01986aeef70b14907e4b9bbb6f6",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1937,8 +1877,8 @@
       "bytes": 385,
       "sha256": "35ec5440c65190e74ae0ce57445afd22abc171aa6914528377112346d674722d",
       "source_path": "noopunk/ubiquitous_maniacs/src/interaction/game.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "5a9694ce2a1cec176be84a51cbfd7875ead99f08",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1946,8 +1886,8 @@
       "bytes": 880,
       "sha256": "98746c52a178784f9538804a0f74d11b2e531a2f9abaa3420ea74724c8cd1539",
       "source_path": "noopunk/ubiquitous_maniacs/src/interaction/skills.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "b6d8b1d6ac68e4a7589b6237539661f898b39651",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1955,8 +1895,8 @@
       "bytes": 2170,
       "sha256": "7d905fcb35988d3bed4e31a633201d097432e5ee296e6ec6364293dcd0f5bb16",
       "source_path": "noopunk/ubiquitous_maniacs/src/interaction/state.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "9cba2ff74d7ff188d30e1fc6dbaf313b1080a59d",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1964,8 +1904,8 @@
       "bytes": 178,
       "sha256": "22bee231d4f3c9dad31f6f8b75655dacff04e0c3d9aa27de43e5121fefe4a269",
       "source_path": "noopunk/ubiquitous_maniacs/src/noetic/__init__.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "b7aee2fa9a608304269ae0e4c24d36635594ac12",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1973,8 +1913,8 @@
       "bytes": 418,
       "sha256": "a863e5e3a51c48c8373015673180a0687b254b35ba2d46ff70cdd2c5edf59b8a",
       "source_path": "noopunk/ubiquitous_maniacs/src/noetic/graph.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "0b8cbc88021c128ae54251f603ce098797b7957d",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1982,8 +1922,8 @@
       "bytes": 410,
       "sha256": "8a14c91dd8ce4d6cb672137a31865129bb3f2222a4f339fcb818db27ae6e8f76",
       "source_path": "noopunk/ubiquitous_maniacs/src/ontology.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "d5a37891ecec1531004d5752415f919599f05c74",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -1991,8 +1931,8 @@
       "bytes": 182,
       "sha256": "2164214e230c89deed0a67df99d7ea202bd4e06fc955f91bed6e40050b75f891",
       "source_path": "noopunk/ubiquitous_maniacs/src/physical/__init__.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "b6c3df1e14554a475dba03bf9f0167f8092f86d1",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2000,8 +1940,8 @@
       "bytes": 420,
       "sha256": "42969319929c38620d357ad68137a1d7e3d0d949054290bfc087433e6c6eb35e",
       "source_path": "noopunk/ubiquitous_maniacs/src/physical/graph.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "bd09873554f1c63cb55deaf051c74237ee529838",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2009,8 +1949,8 @@
       "bytes": 1367,
       "sha256": "caaab956adca9fbe7da05a429ab4402668da9c0a12882d1ba66e6afabfd5899b",
       "source_path": "noopunk/ubiquitous_maniacs/src/political/classifier.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "123b60a7c3e005a3ed99d1108342e22976cbfc56",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2018,8 +1958,8 @@
       "bytes": 9758,
       "sha256": "4fd6ed56e2204d2545548f6aa9a3922c48ee5259c1bb24a43c05284a3915f499",
       "source_path": "noopunk/ubiquitous_maniacs/src/political/discourse_adapter.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "a8ac18d3586a59885ef075ceae92386a165b07f2",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2027,8 +1967,8 @@
       "bytes": 6697,
       "sha256": "87a6bb22176ef2de618732b05f38a7991031b5bf3e46a3a7574911d33740bf8b",
       "source_path": "noopunk/ubiquitous_maniacs/src/political/discourse_graph.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "efd371306b90e2bb52c2073883a6bedc23adf935",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2036,8 +1976,8 @@
       "bytes": 24286,
       "sha256": "4f301b45000d9bef9cebcb2ec6739b3e636f5e9caa1333dbed29983b2163acc6",
       "source_path": "noopunk/ubiquitous_maniacs/src/political/laclaugpt_v3.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "6172d58ed928ae1bb710c7ab6010355ad1fbcf6c",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2045,8 +1985,8 @@
       "bytes": 30380,
       "sha256": "6099b4a6a635a50df5868d6b538df92aa50397d6f7ca9f5a8acc243cf814a140",
       "source_path": "noopunk/ubiquitous_maniacs/src/political/laclaugpt_v3_prompts.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "6feb626a7e571e9856405da54419046d1bf0b3ff",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2054,8 +1994,8 @@
       "bytes": 13743,
       "sha256": "0e11448fb4a7626e2a4a70874aa8f5d19fe7a446e82956da35c6154036152898",
       "source_path": "noopunk/ubiquitous_maniacs/src/political/populism_analysis.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "e69dcc31bca6ef9b100d225288484eb81eed064b",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2063,8 +2003,8 @@
       "bytes": 1478,
       "sha256": "7085c887ce1519a740d3db5bd1d48c69aecf1368053a7724048e7bf035e072e8",
       "source_path": "noopunk/ubiquitous_maniacs/src/political/sentiment.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "3df998d941c704679bf4e0102b944aa3ce707c73",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2072,8 +2012,8 @@
       "bytes": 3118,
       "sha256": "803beab8736217d97e98234be74295b4604c4c02db16d947e486f2ce4dfc732a",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/__init__.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "8e37d30e502ffb4c42468dd47a0027bc029e60d3",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2081,8 +2021,8 @@
       "bytes": 2868,
       "sha256": "6020178c7d9de1519e50bf5d46c3989787ac4445deab81ed63751d600d7f01a2",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/actions.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "956f478d553f5f5d26ea2b9371c1bbbedf6ece12",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2090,8 +2030,8 @@
       "bytes": 6778,
       "sha256": "57ea3a6e7aa70c6bfa116f3c9140e7ef429d74eb5a6f1add0c24b266d437064e",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/astral.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "3ec9ca9d77330caa9f295e293e20ce37c1933536",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2099,8 +2039,8 @@
       "bytes": 2856,
       "sha256": "eba553ff81af333b9ac77d4ec528b8503e19812008f993d880525df6a366ae80",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/conflict.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "ac3dd8fecbe9067cbfbbc6696732dcf87ec8ca33",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2108,8 +2048,8 @@
       "bytes": 4884,
       "sha256": "e138b2758e1d82a1a3ee46ebe157d5a12e013904fec1e19cad017877205d63c2",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/cyber.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "128ac3aa9a44f10eceee28e21ccf1d3270b83e59",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2117,8 +2057,8 @@
       "bytes": 911,
       "sha256": "8d289a99ea9dba39668e0224cfb99bfb8949322b02bc9df765a7ef103636de8e",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/dice.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "97b023d7bdde42510a3816f3aa30ce31cd539596",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2126,8 +2066,8 @@
       "bytes": 1096,
       "sha256": "b6b5c2100ecfa918e902f04ab3bb5cff3f677d9b774f7be05b69deddc6271928",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/effects.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "f49cadb349b9bef2abd9f3cb57d3313d1a6fd5f5",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2135,8 +2075,8 @@
       "bytes": 9361,
       "sha256": "09caf583b2458d79f00592b9156e220cbb325b133a0cbdc4a569835072d90a51",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/engine.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "8a12bab0c3c4aa6a0339fb70772bce454342fa6f",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2144,8 +2084,8 @@
       "bytes": 5382,
       "sha256": "3ae7d36cd242abc075c74d9b7fc9e5b2bced2c247d6c4c63448d8b3296d00c2b",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/factions.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "9be54755144d7dca6a197cb0b2627956b3bca708",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2153,8 +2093,8 @@
       "bytes": 1658,
       "sha256": "89cfc3e6d8e886c46bb63d8ec3d38b948aa3e28bd056187b39c2e063c68ebf62",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/integration.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "2a532118de776e9dba262bdf0b5f0dedee72eaa3",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2162,8 +2102,8 @@
       "bytes": 13711,
       "sha256": "63346bed564299947c6037c0d92d66e3711d87833ff01d70689ac87a07c7fcdf",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/loaders.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "66a7d0d787ef6ecb98e88c8bc7bb9d79635b5d38",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2171,8 +2111,8 @@
       "bytes": 5918,
       "sha256": "e251c6e12746880792412cb8d34b553fe7f6bed0b1d8c704051528d72001d5c0",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/models.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "da9a4ee915dde3e152b0f218f01a922b0e8914a4",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2180,8 +2120,8 @@
       "bytes": 858,
       "sha256": "9ccb7ebe008406eea1086663493b0f43b95b9a30bde0aef4853c98091f6ac128",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/npcs.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "55c61733495dac401f33566492353816b3051efa",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2189,8 +2129,8 @@
       "bytes": 5620,
       "sha256": "7c73613a42b3e3a4d38fed182ced05d162c5c49930a39c0e5c20949464e922b4",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/persistence.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "4ebeaf7570a7077c8c29961f509ae259bb7d2b19",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2198,8 +2138,8 @@
       "bytes": 14057,
       "sha256": "d5953c244694f82fd48ca2beee623222ed176106751e45c3dc75a6454c9d1a07",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/psi.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "1ae8fb83ef3c033688d9d84cf9f7c5a063ee77c0",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2207,8 +2147,8 @@
       "bytes": 1540,
       "sha256": "9f7f60db7a5a786bcce16dd614530de023533ec24131294a110ea9f0715eb756",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/psychosurgery.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "e59f11c9fb6049356dee306fba2fe5835aeb1efb",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2216,8 +2156,8 @@
       "bytes": 3504,
       "sha256": "e8357e0cd5a34b53201b008911fd9b2d1915da953e5ca26c63d134ab7d75aaf1",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/rules.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "8d9c89955bb864134d3e61bf891d64d958f82aa6",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2225,8 +2165,8 @@
       "bytes": 829,
       "sha256": "bd73b4f9a7ad017ee069305939e70dc0b21bb368d99f0a701c6359bc8bea9e30",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/social.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "6ce9af0c204e7ce39e5e878474a250cda19887fd",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2234,8 +2174,8 @@
       "bytes": 9958,
       "sha256": "83ac5d4a4494a685ec74e7ae0903ef94920d31a6da072f3cb6d89391d81fe039",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/tarot.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "dac654890b9094686e3755d1065e1d3cd4926363",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2243,8 +2183,8 @@
       "bytes": 1552,
       "sha256": "bb53bc7650434d0e46de35440cf9fdd8b16923ec4d3c8c93cbee84b4d8ebd002",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/traits.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "8c0d6b1dc868e8bb432e32c3b88b96aee3037c83",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2252,8 +2192,8 @@
       "bytes": 2346,
       "sha256": "7140878ebe5cb41749c4413e9e2087659de415653e5a9cf53ec81fc7399ed1ce",
       "source_path": "noopunk/ubiquitous_maniacs/src/rpg/ui.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "2b3085d2a3bbc3413fb148bfd05e936dd59a4f05",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2261,8 +2201,8 @@
       "bytes": 0,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "source_path": "noopunk/ubiquitous_maniacs/src/sim/__init__.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2270,8 +2210,8 @@
       "bytes": 19570,
       "sha256": "563d592defc90569ef35ea05012a6b068cc5444c6a5dc87cc304ef70cb4780b7",
       "source_path": "noopunk/ubiquitous_maniacs/src/sim/hacking/__init__.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "1fa6c2047e3607bb9a91940a52be375e659f315a",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2279,8 +2219,8 @@
       "bytes": 11792,
       "sha256": "1e611b3438219722c81ac0831aa4939e5b66fc3d3767cba95b062de780459675",
       "source_path": "noopunk/ubiquitous_maniacs/src/sim/social/__init__.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "496d64927be5e4093b0ec5bf736e039bcb09c15b",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2288,8 +2228,8 @@
       "bytes": 774,
       "sha256": "e7a44246315d6b25432c210a9001c2e42103733fd6b2cd034cc655bc4ca30263",
       "source_path": "noopunk/ubiquitous_maniacs/src/social/__init__.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "9aea76e4a9e3a76515e6bdd9c4d9f760f19e7f73",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2297,8 +2237,8 @@
       "bytes": 1163,
       "sha256": "2a62287062afbb2977004d38cba4d74ef2ef3074dfcfaa0cf703842fc827b1b9",
       "source_path": "noopunk/ubiquitous_maniacs/src/social/data_loader.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "341b51f91344e9e6ca8850c69e903eded879a354",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2306,8 +2246,8 @@
       "bytes": 4412,
       "sha256": "d21e7c109af0d209d9114468a9d9eefee084a91cdb9f82cae9317bf8fc5d37d7",
       "source_path": "noopunk/ubiquitous_maniacs/src/social/graph.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "9e0530d848d301e65820f3076d3f587142dba80b",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2315,8 +2255,8 @@
       "bytes": 1561,
       "sha256": "3e1facf74de3ed39499457170b3e6fae68a515276393105069c0b3b438770d5b",
       "source_path": "noopunk/ubiquitous_maniacs/src/social/ontology.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "0bdb38e829ecd92e998152a68384de5394d904bd",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2324,8 +2264,8 @@
       "bytes": 5034,
       "sha256": "755382b84843ef64cc2416f0b6facc44940dc97a519d0d48187779418a32e476",
       "source_path": "noopunk/ubiquitous_maniacs/src/social/simulation.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "fea8e00946c669289f27c808e4f7551ca601537f",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2333,8 +2273,8 @@
       "bytes": 491,
       "sha256": "b904da1762d9ba71c37fdfd3924221c4350e2d672bf83fd44b6fe574e46a0c1f",
       "source_path": "noopunk/ubiquitous_maniacs/src/therapy/__init__.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "cbacd404401349f1f33fbd8770c8117c7fd96f62",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2342,8 +2282,8 @@
       "bytes": 4744,
       "sha256": "d0ac9767546fa014bae56fde91b5d5392ea0072954a344213fa53aa96f7b8457",
       "source_path": "noopunk/ubiquitous_maniacs/src/therapy/model.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "69e5e028d3dc9dfa10bbe7cadd7a65b055b271a5",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "source"
     },
     {
@@ -2351,8 +2291,8 @@
       "bytes": 205,
       "sha256": "ad3f05c57239b5feed4721b4867bc92816ac2ac9ccafabdf0e5dbf6e9043da75",
       "source_path": "noopunk/ubiquitous_maniacs/tests/conftest.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "23fcc5814aef5d84ce3f305efcdacb8184320dd0",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2360,8 +2300,8 @@
       "bytes": 1507,
       "sha256": "cc4481550622f0a85eeff33540e8c9f701d1009a695cde74b4a5f938254340fb",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_astral_projection.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "72eaff2b85d2b8c8d27b6aec810bfc75e0190be5",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2369,8 +2309,8 @@
       "bytes": 2074,
       "sha256": "33e0381b436c340dc4e177bd935b7612d2ebac06e4ac98a58a0a1cf17e53bc28",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_campaign_playthrough.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "d81c97da585b1d298163778cb8e7ec190041e7d0",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2378,8 +2318,8 @@
       "bytes": 10483,
       "sha256": "3891ce3bcd00331de3c97968e7dbb6600ce82430e196dab5ece0a73c937e366d",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_cross_layer_hacking.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "6383530d7ae1e7dd26aadb4bf2689fb11e7e52c2",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2387,8 +2327,8 @@
       "bytes": 4254,
       "sha256": "cb6e5b8e8a66476d1615a498441827d161ddca5b4f9c4d352a439eb530db8c81",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_cyber_deterritorialized.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "023007c6815088b224a1f56dea0df583cee2abab",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2396,8 +2336,8 @@
       "bytes": 841,
       "sha256": "686b55e927f72316d8c3606027e1f17930e317461c0ca00b150a5ab8527b455f",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_cyber_ontology.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "124e1a44fbe748faf363b5e2b641bee0fa3737ce",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2405,8 +2345,8 @@
       "bytes": 929,
       "sha256": "9d73b58c61e1ccf95a24f5181a56e08935b587c9b42cd82a247ee3f73fe46759",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_data_loader.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "881d7b2d47b1353394b0653c4fe40f5d03011fa2",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2414,8 +2354,8 @@
       "bytes": 3083,
       "sha256": "4afa069cfe93a2eba06b2b793c2b7345b4032dd3b29e25a59194d4c9c7b35c5d",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_day1_web_save.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "682fc1c92c714b4940a6b14a8292450138208c07",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2423,8 +2363,8 @@
       "bytes": 7657,
       "sha256": "ed2fbca1ac21fc98a00a3036a6bdd8e90727658d68686c65fa47784764e6b13d",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_day2_scenario.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "42a30c758d28eecd487b645b4e69a69644342143",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2432,8 +2372,8 @@
       "bytes": 11023,
       "sha256": "fd6b06c27074757caba7007e873b1b884929f3871759e96a906e031c202a5b15",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_day_1.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "5a29926bb081163a784bdfd61c6403de86542dc1",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2441,8 +2381,8 @@
       "bytes": 4188,
       "sha256": "d4761f153a5412c2d02feebf2a0bc83c4153ba14bf7c81d97e6d265b56f9356c",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_day_1_completion_review.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "3fdf844d49d9c0a8a0829ec539c9724df9a7cc28",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2450,8 +2390,8 @@
       "bytes": 6610,
       "sha256": "8ab1ed7888afc96dd01693e94223f1d868a883a0a4db704375f87e12d3e6a0bf",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_day_1_scenario.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "d8e134592696eb630c370ceff7c53e2f112d4d30",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2459,8 +2399,8 @@
       "bytes": 7635,
       "sha256": "8970a76daca76ddc0e6ba4634d1db53805c13cabd4b9726c2c1b73a2324f64bb",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_discourse_adapter.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "34724820cddb81eaed0c6aeca15189cf9a9b37d6",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2468,8 +2408,8 @@
       "bytes": 14573,
       "sha256": "a9787cc530b0c6863193b75e53a265d9dee395b10bffddf7a433891bc54f2f3a",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_game_integration.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "69db8b47865df80b5625654a8c394547321580d6",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2477,8 +2417,8 @@
       "bytes": 3342,
       "sha256": "4c2c8b4d9cb911526948ff1c921388ce111b1b2b06622841e9ccbad88edf963d",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_graph_model.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "69c6037e20eb0eceef47653fed8b42270e6b2ca4",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2486,8 +2426,8 @@
       "bytes": 15438,
       "sha256": "c17f22be0b11b4091337d29ca36b922f7a3d8414a394c5888668444317ae95dd",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_hacking_console.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "5073a078c937d95379a851d58e9013a80dfaf1f9",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2495,8 +2435,8 @@
       "bytes": 2132,
       "sha256": "0bec3fee7ad7ea95f8d973c01a7d2a281f2013ca4e2cedc2d3e0d5d8d4282f25",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_hacking_simulation.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "58b418a806a55e787893b6eb04471fd0246b1761",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2504,8 +2444,8 @@
       "bytes": 6670,
       "sha256": "b9deb0fd5e3ad42de9e378b1ab8e82d58ddfb53844ad07672c850ba76e91e63f",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_helsinki_campaign.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "84731d171b7c8613c033a308e73c61ff881ea38d",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2513,8 +2453,8 @@
       "bytes": 4298,
       "sha256": "c39b0e265a875cc0c16fbbccd4d10563fff01c058e3b45c50e55d825b6a833ce",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_interaction.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "f090d541e8d37924928ee453a6979423f1ba5d8b",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2522,8 +2462,8 @@
       "bytes": 16952,
       "sha256": "214db1d243d93088f13ab343fc611a8301042615657ead7cd0c99b07332f4fc9",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_laclaugpt_v3.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "ffa29b839f79c76daeefc1ef4f67fc9ebf5f45be",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2531,8 +2471,8 @@
       "bytes": 9378,
       "sha256": "83784e553fd6703c822c078dd282da51192fd5f554ccc227686f79826167872f",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_layered_hacking.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "e03a157e817e096329fe7d9da8f045fe127c117a",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2540,8 +2480,8 @@
       "bytes": 3330,
       "sha256": "4566e4447fe756682ebe5fceece0d127d6921dddd998f3caa9d03a6509dbd82d",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_location_model.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "a52561777f4f2b5c1188c342d12284e34b1bc712",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2549,8 +2489,8 @@
       "bytes": 6884,
       "sha256": "68eb73609652ac102e14b291a94602f66261e2be45517d4b32b250d7d52ff600",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_lotta_kallio_node.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "a0342e5adc9ce68abca49e9c631d7312f5fff6fb",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2558,8 +2498,8 @@
       "bytes": 6569,
       "sha256": "de15f2ab2c8cc1fe6652d9703f9e6ebe78922022f72579ee3f58f9007d9de5c6",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_maniac_riget_style.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "24848d55a76099f05c29d99eda4a2523fb196a5c",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2567,8 +2507,8 @@
       "bytes": 2078,
       "sha256": "86fe9f5bd026d74fd14a4063be5d95d8031904dd363a6c46c5d48c56977b768b",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_npc_autonomy.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "f9dfd096b13e8797fc677d46c79dad99b26663fd",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2576,8 +2516,8 @@
       "bytes": 3096,
       "sha256": "441345aa899c073c404997e1b5c1d9fc781f4b3b3dcf6a64fc32fd7eeca2bd5c",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_npc_memory_loader.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "6c63c979f9492fab280ae47e4d17ff4ac75d76ee",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2585,8 +2525,8 @@
       "bytes": 14747,
       "sha256": "60fa53413cf31d7e5c709a5e5319d52ad796c8706c0084e6aa2f232d55638dfe",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_npc_memory_ui.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "cbe33706b995e29d79a3c168286e950e28f971ed",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2594,8 +2534,8 @@
       "bytes": 1300,
       "sha256": "789a641c7a0fd336d70af36f0333f9406c0d773fddf3337e1ad73a21a2005a11",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_ontology.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "13a5f2a613b934005cc3726a06ec74d9cb5c6af3",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2603,8 +2543,8 @@
       "bytes": 6625,
       "sha256": "ff293e56f52d6bc151f138cf16767bf0db1e16ed3a2712958067fe0e7b593a7b",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_populism_lens.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "91b01c461f0f259177497524b77813fd3c03290b",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2612,8 +2552,8 @@
       "bytes": 4861,
       "sha256": "81c9437438e9776ced652a896cdb7f2324485d9eecd417c8df25b2dfe329950b",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_psi_escalation.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "4eb8b37503c1e28e99a06e56a45c1b9a1e5b6cbf",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2621,8 +2561,8 @@
       "bytes": 1696,
       "sha256": "f010249a3bb0ae0f5cdc83da1d2bdec51a3a0a90549a4312fb536c59cf53f5a9",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_rpg_integration.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "e1ae4f656ebd0d1a3031fa01e4909eae277400b6",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2630,8 +2570,8 @@
       "bytes": 6910,
       "sha256": "fde9683ec3c79122efadfbf9dc873a59176c34301819d1d533a66647dbe76bea",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_rpg_module.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "912623a34277fdf674dc480659a012fa679ea7b8",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2639,8 +2579,8 @@
       "bytes": 4415,
       "sha256": "19f9321419946b0ecb700751a6fef93eaf6fc253244ac99419b6adeec0bd77e7",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_rpg_persistence.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "885449d76e18119c252df9ef6339dc5b5e24bcac",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2648,8 +2588,8 @@
       "bytes": 11777,
       "sha256": "60d1393564b8af6425b8719549d852cdca3874a4753508ed1e210317e1ed0215",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_rpg_rules_v01.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "1ad04d7ecf98744bf0bb79c33460eb5710aeb997",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2657,8 +2597,8 @@
       "bytes": 4758,
       "sha256": "0d3cd1e40e514eaa040ae20f8c9f0a28b9aba0d86143bcf827ed29812aaa5537",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_sim_hacking.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "2a87342fc93dbad9bed0d1423766f0635b36b103",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2666,8 +2606,8 @@
       "bytes": 3768,
       "sha256": "d2e622bed28b61b788d5cc7166eb6427e1026894fe8ef2a5d3572dff47340337",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_sim_social.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "7a854987a72a4a73c23516ca480d4eb7add75df2",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2675,8 +2615,8 @@
       "bytes": 1155,
       "sha256": "da5f1c49065967648d9fdee7eb70394d2ac14f6bca94b159f5d150d4716870d4",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_social_simulation.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "5f3dab3400e15ea47afaab7743a25998cd99f44f",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2684,8 +2624,8 @@
       "bytes": 11179,
       "sha256": "7ec83d488d47bf42c4aa9d712650f509774af15a4e07b400e090906f016a6533",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_tarot.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "4551d9170f27ef3bf5332f2e737d74d606ccaf0b",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2693,8 +2633,8 @@
       "bytes": 1441,
       "sha256": "80db6982b5dbe82098abae5d7d6a48ecbd76a59c083052548419ea8acaafdb27",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_therapy_model.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "c30398eb7b90a00e361bd52500a2f0dc9d9e8c51",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2702,8 +2642,8 @@
       "bytes": 1677,
       "sha256": "01b82f39b7b0c4f1c863a5d401444996d848857addceabcf7388e48039bcd333",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_transhumanity_fate_compatibility.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "c827c213c70ceb3d3e41baaaa81ab82b4c1f1897",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     },
     {
@@ -2711,8 +2651,8 @@
       "bytes": 1644,
       "sha256": "7480b0b0724afdc4702eaa77bc7449f784bf1aa4b787e18692897feb6f454338",
       "source_path": "noopunk/ubiquitous_maniacs/tests/test_world_graph_modules.py",
-      "source_blob_sha": null,
-      "source_commit": null,
+      "source_blob_sha": "f55d892f6f816ec281c5e0f2d6cdb5c156f3f392",
+      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "tests"
     }
   ]
