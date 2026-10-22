@@ -12,8 +12,8 @@ Complete inventory of the *Ubiquitous Maniacs* corpus imported from `TomiToivio/
 | source path | `noopunk/ubiquitous_maniacs/` |
 | source commit at import | `895bdc1078233c1d061e60852ad86de3c01e5c51` |
 | import date | 2026-10-22 |
-| files imported | **279** |
-| bytes imported | **2,432,102** |
+| files imported | **278** |
+| bytes imported | **2,420,344** |
 | files excluded | **5** |
 | sync | none — this is a snapshot, not a mirror |
 
@@ -56,7 +56,7 @@ Every file below carries the sha256 of the imported copy, the upstream git blob 
 | `requirements-llm.txt` | 1,133 | `348ed63881441e93` | `9496765fd4eb` |
 | `requirements.txt` | 54 | `48902cfde76eebb3` | `909f76c0577c` |
 
-### design and research documentation — 129 files, 1,277,073 bytes
+### design and research documentation — 128 files, 1,265,315 bytes
 
 | path | bytes | sha256 (first 16) | upstream blob sha |
 | --- | --- | --- | --- |
@@ -116,7 +116,6 @@ Every file below carries the sha256 of the imported copy, the upstream git blob 
 | `docs/LONG_TERM_COSMOLOGICAL_HISTORY.md` | 15,970 | `38c6f81ae1222bdb` | `b9cf18a334fb` |
 | `docs/MANIAC_RESONANCE_DESIGN_NOTE.md` | 8,569 | `238e2502cc898d3c` | `685b64f56805` |
 | `docs/MANIAC_RIGET_INFLUENCE_NOTE.md` | 6,978 | `fca7673388e05a2d` | `68a07475e043` |
-| `docs/MANIAC_RIGET_STYLE_ANALYSIS.md` | 11,758 | `fab4f94d75718dff` | `331d1d29982d` |
 | `docs/MARS_ELDRICH_CORPORATION_AND_VESTERLUND.md` | 6,321 | `858aafafcc06cc4c` | `b39a22c06784` |
 | `docs/MYSTERY_AND_TIMELINE_SUPERPOSITION.md` | 5,335 | `40e9c05d8a8dc10c` | `dd11e327a836` |
 | `docs/NAME_PROVENANCE.md` | 619 | `95a4ef9ab0ad0e4a` | `17aba207a82f` |

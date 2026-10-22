@@ -57,11 +57,11 @@
   ],
   "third_party_retained": [],
   "counts": {
-    "files_imported": 279,
+    "files_imported": 278,
     "files_excluded": 5,
     "by_class": {
       "corpus root document": 30,
-      "design and research documentation": 129,
+      "design and research documentation": 128,
       "entry-point script": 4,
       "reference (LaclauGPT import)": 11,
       "source": 64,
@@ -831,15 +831,6 @@
       "sha256": "fca7673388e05a2d4d3ed4fdc1e404419c87f87505f810b60735a81f49fbf031",
       "source_path": "noopunk/ubiquitous_maniacs/docs/MANIAC_RIGET_INFLUENCE_NOTE.md",
       "source_blob_sha": "68a07475e043f08b352b710f47c655be13594c8d",
-      "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
-      "class": "design and research documentation"
-    },
-    {
-      "path": "docs/MANIAC_RIGET_STYLE_ANALYSIS.md",
-      "bytes": 11758,
-      "sha256": "fab4f94d75718dfff7d9360a9f569f5e7c24f7e8f8cd022ff09e9961f975ad57",
-      "source_path": "noopunk/ubiquitous_maniacs/docs/MANIAC_RIGET_STYLE_ANALYSIS.md",
-      "source_blob_sha": "331d1d29982dc186f10f0f5bd984d8e267061e94",
       "source_commit": "dad90432845c5b243382b036d28756c7dc8160ac",
       "class": "design and research documentation"
     },
