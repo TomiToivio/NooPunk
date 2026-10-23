@@ -1,5 +1,7 @@
 # Confederacy: The Source, quarantine infrastructure and contact protocols
 
+> **Current NHI moral/political framing (2026-10-23):** Read [NHI political economy and sovereignty](23_NHI_POLITICAL_ECONOMY_AND_SOVEREIGNTY.md). Orion is an internally divided market-opening imperial power, not an inherently evil species; the Confederacy is genuinely altruistic, but its invitation to spiritual and collective-mind integration raises serious questions of freedom and consent. Earth's Biosphere and Noösphere are at stake.
+
 > **Status:** NoöPunk tabletop/worldbook expansion for [issue #191](https://github.com/TomiToivio/NooPunk/issues/191).
 > Read alongside [ontology](11_ONTOLOGY.md), [beings](12_BEINGS.md), [psychic systems](6_PSYCHIC.md), [equipment](13_EQUIPMENT.md), and [xenopolitics](15_XENOPOLITICS.md).
 > **Source discipline:** the Ra Material is a channeled esoteric text, not verified alien testimony. Radin's PSI claims, Faggin's QIP, Jackson's Sphere Network and modern UAP witnesses carry different evidence statuses. Their similarities are **inspirations**, not independent corroboration.
