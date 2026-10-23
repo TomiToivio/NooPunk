@@ -42,3 +42,5 @@ Rules for editing the narrative-first edition:
 - Retain `data/rules/skills.json` unchanged pending the [#263](https://github.com/TomiToivio/NooPunk/issues/263) crosswalk.
 - Regenerate and verify the archive with `python3 tools/build_rulebook_archive.py` and
   `python3 tools/build_rulebook_archive.py --check`.
+
+The [2026-10-23 NHI political-economy update](23_NHI_POLITICAL_ECONOMY_AND_SOVEREIGNTY.md) supersedes binary moral descriptions of Orion and the Confederacy without erasing established events or introducing mechanics.
