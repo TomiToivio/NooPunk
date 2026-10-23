@@ -1,5 +1,7 @@
 # First Contact: Return of the Messengers, Orion Diplomacy and the PSI Awakening
 
+> **Current NHI moral/political framing (2026-10-23):** Read [NHI political economy and sovereignty](23_NHI_POLITICAL_ECONOMY_AND_SOVEREIGNTY.md). Orion is an internally divided market-opening imperial power, not an inherently evil species; the Confederacy is genuinely altruistic, but its invitation to spiritual and collective-mind integration raises serious questions of freedom and consent. Earth's Biosphere and Noösphere are at stake.
+
 > **Status:** canonical lore chapter for [#497](https://github.com/TomiToivio/NooPunk/issues/497), set in **2045** by the author's ruling of 2026-10-16. This chapter does not replace [the unordered paradigm-shift background](7_TIMELINE.md), [the legacy post-Crisis xenopolitics](15_XENOPOLITICS.md), or the independently evolving human PSI ontology in [Psychic Systems](6_PSYCHIC.md).
 >
 > **Fiction / evidence boundary:** Contact events, verified PSI, QIP's explanatory success, and NHI political arrangements described below are **fictional NoöPunk propositions**. Real-world reports, parapsychology, quantum-consciousness models and claims of survival after death are not established scientific facts. This is not a statement about the truth or falsity of any religion.
