@@ -1,5 +1,7 @@
 # Xenopolitics after the NHI Crisis
 
+> **Current NHI moral/political framing (2026-10-23):** Read [NHI political economy and sovereignty](23_NHI_POLITICAL_ECONOMY_AND_SOVEREIGNTY.md). Orion is an internally divided market-opening imperial power, not an inherently evil species; the Confederacy is genuinely altruistic, but its invitation to spiritual and collective-mind integration raises serious questions of freedom and consent. Earth's Biosphere and Noösphere are at stake.
+
 > **Status: NOÖPUNK NATIVE lore — issues #187 and #197.** This chapter is the setting's
 > **post-Crisis xenopolitical framework**: how Earth is governed, contested and rebuilt
 > roughly **ten years after the NHI Crisis**, with two major non-human factions present and
