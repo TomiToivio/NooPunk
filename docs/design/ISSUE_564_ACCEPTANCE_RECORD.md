@@ -24,9 +24,17 @@ deferrals are numeric either way.
 
 Two items, both author numbers, both already recorded elsewhere rather than invented here:
 
-1. **STAT generation.** The epic names "3d6 attribute generation and modifier range −3..+3" as the author's
-   choice, but no generation rule exists in the tree and the modifier *bands* are not authored (a −3..+3 range
-   over 3–18 admits several band shapes). Implementing one would mean choosing the bands.
+1. **STAT generation — and it is a conflict, not a gap.** The epic names "3d6 attribute generation and modifier
+   range −3..+3" as the author's existing choice. **`data/rules/core.json` says the six STATs are `1..10`**, with
+   `_note`: *"The six base STATs are locked by explicit author direction on issue #131 (2026-10-05) … They remain
+   the universal 1..10 character attributes."* The kernel consumes a STAT **directly** (`STAT + Skill + 1d10 ≥ DV`);
+   there is no modifier band anywhere in the resolution path. The 3d6 / −3..+3 model is the **retired sketch**
+   recorded in `AGENTS.md` §4 (the one that also used `CHA`), not the live rule.
+
+   So implementing the epic's sentence would not fill a gap — it would replace the #131 canon, introduce a
+   modifier band the kernel does not use, and move every DV's relationship to a character's capability. That is a
+   rules change, not a completion task. What is genuinely missing is narrower: **a generation method that yields
+   `1..10`** (roll, array, or point-buy — the author's choice), which no document currently states.
 2. **Advancement.** Queue D23 records the 25-point / Great-cap baseline without approving a distribution;
    levels are forbidden by this epic.
 
