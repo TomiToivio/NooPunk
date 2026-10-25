@@ -21,6 +21,20 @@ class NetworkTests(unittest.TestCase):
         self.assertFalse(reach((Link("agent", "archive", "bci", authorized=False),),
                                "agent", "archive", require_authorization=True).reachable)
 
+    def test_psi_channels_are_not_network_routes_by_default(self):
+        """#572: PSI resolves where the network does not -- a psychic hop is not a login."""
+        links = (Link("operator", "archive", "psychic"),)
+        self.assertFalse(reach(links, "operator", "archive").reachable)
+        self.assertTrue(reach(links, "operator", "archive", allow_psi_channels=True).reachable)
+        self.assertFalse(reach((Link("operator", "archive", "psychotronic"),),
+                               "operator", "archive").reachable)
+
+    def test_disciplines_are_the_six_canonical_psi_skills(self):
+        from src.rules import noopunk_extensions as ext
+        self.assertEqual(set(ext.DISCIPLINES),
+                         {"esp", "telepathy", "psychokinesis", "precognition",
+                          "psychic_defence", "noospace"})
+
     def test_failed_link_does_not_become_access(self):
         self.assertFalse(reach((Link("agent", "target", "mesh", operational=False),),
                                "agent", "target").reachable)
@@ -41,14 +55,14 @@ class PsiTests(unittest.TestCase):
         psi = NaturalPsi(capacity=1)
         with self.assertRaises(ValueError):
             psi.commit("untrained", "telepathy")
-        psi.learn("perception")
-        psi.commit("vision", "perception")
+        psi.learn("esp")
+        psi.commit("vision", "esp")
         with self.assertRaises(ValueError):
-            psi.commit("second", "perception")
+            psi.commit("second", "esp")
         psi.rest()
         self.assertEqual(psi.available, 1)
         with self.assertRaises(ValueError):
-            NaturalPsi(aptitude=False).learn("perception")
+            NaturalPsi(aptitude=False).learn("esp")
 
 
 if __name__ == "__main__":

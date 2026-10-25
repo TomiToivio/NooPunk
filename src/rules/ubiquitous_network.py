@@ -241,7 +241,9 @@ class IntrusionSession:
                                     rng=self.rng, die=die)
         outcome = "success" if result.success else "failure"
         margin = result.total - dv
-        added = TUNING_EXPOSURE_PER_ACTION + (max(0, margin) // 2 if not quiet else 0)
+        added = TUNING_EXPOSURE_PER_ACTION
+        if not quiet:
+            added += TUNING_EXPOSURE_PER_MARGIN * (max(0, margin) // 2)
         if not result.success:
             added += TUNING_EXPOSURE_PER_ACTION  # a failed attempt is logged too
         self.exposure += added
