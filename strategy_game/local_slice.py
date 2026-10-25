@@ -187,11 +187,11 @@ class Game:
                                       "roll": roll, "success": success})
         # At most one sparse relationship choice in the whole game per turn.
         if self.turn % 4 == 2 and self.relations:
-            relation = self.relations[0]
-            relation.trust = max(-3, min(3, relation.trust + 1))
+            bond = self.relations[0]  # not `relation`: that name holds an int above
+            bond.trust = max(-3, min(3, bond.trust + 1))
             report["character_event"] = {"choice": "share evidence",
-                                         "actors": [relation.a, relation.b],
-                                         "trust_after": relation.trust}
+                                         "actors": [bond.a, bond.b],
+                                         "trust_after": bond.trust}
         self.turn += 1
         self.history.append(report)
         return report

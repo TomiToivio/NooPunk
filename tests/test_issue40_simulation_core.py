@@ -246,6 +246,21 @@ class EventLogTests(unittest.TestCase):
         self.assertEqual(append(self.connection, event), 0, "duplicate must be skipped")
         self.assertEqual(count_events(self.connection, "sim-test"), 1)
 
+    def test_duplicate_replay_does_not_break_integrity_check(self) -> None:
+        first = _event(turn=0)
+        second = _event(turn=1)
+        append(self.connection, first)
+        self.assertEqual(append(self.connection, first, second, second), 1)
+        append(self.connection, _event(turn=2))
+        assert_append_only(self.connection)
+        self.assertEqual(count_events(self.connection, "sim-test"), 3)
+
+    def test_mixed_provenance_cannot_be_exported_as_either_kind(self) -> None:
+        append(self.connection, _event(turn=0), _event(turn=1, synthetic=False))
+        for synthetic in (True, False):
+            with self.subTest(synthetic=synthetic), self.assertRaises(EventLogError):
+                list_exchanges_for_export(self.connection, "sim-test", synthetic=synthetic)
+
     def test_log_survives_reopening(self) -> None:
         append(self.connection, _event())
         reopened = connect(self.path)

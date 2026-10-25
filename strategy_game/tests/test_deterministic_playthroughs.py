@@ -203,6 +203,7 @@ class DeterministicPlaythroughTests(unittest.TestCase):
             text=True,
             capture_output=True,
             timeout=180,
+            check=False,  # the return code is asserted by the caller, not raised here
         )
 
     def _play_once(

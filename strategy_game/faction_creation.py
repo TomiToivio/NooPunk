@@ -405,20 +405,20 @@ class FactionCreationModel:
                 "only honest with the reason it is empty"
             )
         seen: set[str] = set()
-        for field in self.first_turn_fields():
-            identifier = str(field.get("id") or "").strip()
+        for entry in self.first_turn_fields():
+            identifier = str(entry.get("id") or "").strip()
             if not identifier:
                 problems.append("a first-turn field has no identifier")
             elif identifier in seen:
                 problems.append(f"first-turn field {identifier!r} appears more than once")
             seen.add(identifier)
-            extra = sorted(key for key in field if key not in {"id", "label", "note"})
+            extra = sorted(key for key in entry if key not in {"id", "label", "note"})
             if extra:
                 problems.append(
                     f"first-turn field {identifier!r} carries {extra}: the container names the fields "
                     "a constraint would occupy and holds no value, so a value here is an invented one"
                 )
-            for key, value in field.items():
+            for key, value in entry.items():
                 if key in {"id", "label", "note"} and isinstance(value, (int, float)) and not isinstance(
                     value, bool
                 ):
