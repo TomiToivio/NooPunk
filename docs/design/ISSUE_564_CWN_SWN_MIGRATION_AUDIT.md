@@ -81,3 +81,23 @@ This repository contains **two games sharing one world** (AGENTS.md §0):
 ## Progress is not completion
 
 This audit **does not implement a new dice system, change active character sheets, port campaigns, or establish the legality of directly redistributing deluxe material**. Those would require the explicit outstanding decisions and working tests. Issue #564 remains open.
+
+## Four-book extension: Worlds and Ashes Without Number (2026-10-25)
+
+The #564 review now covers **CWN + SWN + WWN + AWN**, not just CWN/SWN. Original tabletop work has begun at [`docs/rules/ISSUE_564_FOUR_BOOK_TABLETOP_PROCEDURES.md`](../rules/ISSUE_564_FOUR_BOOK_TABLETOP_PROCEDURES.md): a crisis-linked investigation mission workflow, optional regional disruption/recovery module, institution/major-project turn, and example scenario. These are **playtest drafts**, not numeric changes or tested digital engine implementations.
+
+| Added comparison | Printed book chapters | Decision for NoöPunk | Status |
+|---|---|---|---|
+| WWN exploration, site mysteries | Creating Your Campaign (114); Creating Adventures (222) | **MODIFY:** adapt question/location/evidence scaffolding for NoöPunk investigations and Noösphere anomalies; no Latter Earth content | Draft tabletop procedure |
+| WWN factions and major projects | Factions and Major Projects (322) | **MODIFY:** projects as qualitative institutional change tracking; no second asset economy | Draft tabletop procedure |
+| WWN fantasy magic / heroic classes | Magic and the Arcane Traditions (60); Heroic Classes (356) | **OMIT:** PSI is not spellcasting and NoöPunk does not gain classes by default | Explicit exclusion |
+| AWN regional crisis and survival | Rules (36), Overland Travel (60), Hunger/Thirst/Supplies (62) | **MODIFY:** optional access, supplies and travel constraints in real *localized* disruptions, using existing core rules | Draft tabletop procedure |
+| AWN settlements and enclave management | Enclaves and Settlements (104) | **DEFER:** compare with SWN factions and WWN projects; choose one compatible institution model before numeric implementation | Qualitative draft only |
+| AWN crisis/expedition/social adventures | Crisis Campaigns (142); Exploration Campaigns (143); Social Adventures (196) | **MODIFY:** consequences, recoveries and local social dilemmas, without total-collapse assumption | Draft mission worksheet |
+| AWN injury, disease, radiation, stress | Injury (52), Disease (54), Radiation (55), Stress (56) | **DEFER:** compare with NoöPunk's harm and health rules without importing numeric tracks | Not implemented |
+| AWN scrap, repair, high-tech | Equipment (70), Tech Levels/Scrap (72), Repair (73) | **DEFER:** condition-based logistics first, later equipment and resource audit | Not implemented |
+| AWN zombies, mutations, setting | Character Creation/Mutations (16), Creatures (202), Albuquerque Death Zone (230) | **OMIT** as defaults; any rare encounter is a separately authored scenario decision | Explicit exclusion |
+
+**Licensing:** the WWN deluxe (2021) and AWN free (2025) PDFs are **reference copies, not open-content grants**. No copyrighted prose/tables or publisher-specific setting was incorporated. This also applies to the CWN/SWN deluxe editions. Four-book mechanical inspiration alone does not confer copyright permission.
+
+**Acceptance update:** the issue now additionally requires a four-book subsystem map and coherent WWN exploration + AWN crisis/enclave fit with NoöPunk's two distinct games. Numeric engine conversion, scenario migration, reproducible gameplay and CI remain uncompleted.
