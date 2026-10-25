@@ -13,23 +13,23 @@
   "files": [
     {
       "source": "RULEBOOK.md",
-      "bytes": 322211,
-      "sha256": "a9814eb2258778168ecb608fb98b01de24dfd62d5e0868b6c8966afdb9dd6d16",
-      "git_blob_sha": "510fd30f94ea8585102913ad0afdfed356441852",
+      "bytes": 340270,
+      "sha256": "ff9bc92a87535f7b294998e0e22763a029c753a4da804f6e31d60bc0411cf575",
+      "git_blob_sha": "a21342f680a080b548d89a3e8857dceb26d09bcb",
       "preserved_at": "rulebook/source_snapshots/root/RULEBOOK.md"
     },
     {
       "source": "rulebook/00_INDEX.md",
-      "bytes": 15685,
-      "sha256": "3d47b5ac50a1d82ace7abba67534f2977ab1c550f2bfcad70e4894e5ebac4a01",
-      "git_blob_sha": "8d652f7414fdd119be9f06fbfde97a105a32d53e",
+      "bytes": 16054,
+      "sha256": "814da28b9b9f920032259cec44fb4b5bd9eebaf0734598a45218406be4199c40",
+      "git_blob_sha": "e90895bfe0860f2e91a65473a23d6f36b5822113",
       "preserved_at": "in place (not deleted)"
     },
     {
       "source": "rulebook/10_SINGULARITY_CRISIS.md",
-      "bytes": 35600,
-      "sha256": "11361132286c9e3bf57a135fd21b47d92cb54c192ab03a2d3a788b8d48714148",
-      "git_blob_sha": "f9761248f9591e06cd34df2099ff74cc1348f872",
+      "bytes": 41344,
+      "sha256": "02617af26ebccd96fdfde2f585ed789f97092acbaa2ba2fb99a507a8fd661057",
+      "git_blob_sha": "10dc136a8892e9a11f09c64dc433221d96ef436c",
       "preserved_at": "in place (not deleted)"
     },
     {
@@ -62,16 +62,16 @@
     },
     {
       "source": "rulebook/15_XENOPOLITICS.md",
-      "bytes": 30365,
-      "sha256": "2c62979b6a3f9b2a7eda449598e037129851bcf816ebcfeec83f5654d2ee6019",
-      "git_blob_sha": "d471f1ef7056e068cf107b969476e9a47335d2d2",
+      "bytes": 39021,
+      "sha256": "3a6147daa4c431466149aeb2546db9e381f1bc4768ec87fb58432e6a29a62c1b",
+      "git_blob_sha": "2f0246654c3e932b6e7783595806219fd0ec3f44",
       "preserved_at": "in place (not deleted)"
     },
     {
       "source": "rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md",
-      "bytes": 17833,
-      "sha256": "ec72e5d05a46e3160a907ee0273098b6570d0859669c668764ef62539a7240fa",
-      "git_blob_sha": "15b95fe853ba887a7fee414b4c20745d621aef79",
+      "bytes": 26594,
+      "sha256": "fedc5e0d565df77a498572a07ae642d095735b7ac6c3b6f12a29a72ebc7b5460",
+      "git_blob_sha": "2194dd605a49bce383bada2bad2dd8a02dfdcd39",
       "preserved_at": "in place (not deleted)"
     },
     {
@@ -98,8 +98,36 @@
     {
       "source": "rulebook/1_NO\u00d6PUNK.md",
       "bytes": 226,
-      "sha256": "447ce7cd866bef73787fbc0c426cce99deff5af35d20add52a8ad64c5294a18f",
-      "git_blob_sha": "52689139e6ee3b488f124a70c6def204d6d021eb",
+      "sha256": "15b51d3b4a53e65d983d58fe357dab4b4544d349c06c5c9a5ab509aa7d1840a5",
+      "git_blob_sha": "2311e0570396580160334c7096236da71e4e3514",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/20_FIRST_CONTACT_AND_PSI_AWAKENING.md",
+      "bytes": 16931,
+      "sha256": "afe3a7d3a3aab353ea6e75bf82e114ab5dfea2372ec4aec97f09d0e5d4b9b497",
+      "git_blob_sha": "5a57eebecaf8820b035acf24168d55b99165f0c4",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/21_PSI_PARADIGM_SHIFT.md",
+      "bytes": 12906,
+      "sha256": "99dd0db25ccfa5233c60f07f2658755eb2a8254cc9b21610f549e4a2f23fe066",
+      "git_blob_sha": "73446b51e80864347053de08576bc1c1d740f370",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/22_CYBERSPACE_AFTER_THE_CRISIS.md",
+      "bytes": 59656,
+      "sha256": "b1340a3d8f38fc3ba1177aa9dc3ec16641fdb39681efe6e33debd8498eb4c475",
+      "git_blob_sha": "421858b907be00b36757bc88f6de741556cbcefd",
+      "preserved_at": "in place (not deleted)"
+    },
+    {
+      "source": "rulebook/23_NHI_POLITICAL_ECONOMY_AND_SOVEREIGNTY.md",
+      "bytes": 7862,
+      "sha256": "b173c6d9c03c404ec38c1640f99bf1f96b3192e1a8b0af35a12d476ff2e6679b",
+      "git_blob_sha": "afbca27324ea33be636e460c3bdbf157aa01e50d",
       "preserved_at": "in place (not deleted)"
     },
     {
@@ -125,9 +153,9 @@
     },
     {
       "source": "rulebook/5_CYBERNETIC.md",
-      "bytes": 13843,
-      "sha256": "f1cb553d157c362d346bdb2bdce3295dcc8621e48e4a524273c01dc9dc362065",
-      "git_blob_sha": "fcd0d9fd8dadb9ac308cf12e3e9f512e9ec6e1cc",
+      "bytes": 15301,
+      "sha256": "73cdd33067bfb573bc9a839c070935640c269d3e343e857c348f2a2b6cbeb7cd",
+      "git_blob_sha": "9e314f5067d64a8fea128f93f29236cab3562289",
       "preserved_at": "in place (not deleted)"
     },
     {
@@ -139,9 +167,9 @@
     },
     {
       "source": "rulebook/7_TIMELINE.md",
-      "bytes": 16134,
-      "sha256": "9201a37812c52756fc5144e2fa3f58a657f422952242075e46114fb73be28247",
-      "git_blob_sha": "853d78c7abbadf04619673aeade198c5dbc35869",
+      "bytes": 21967,
+      "sha256": "b2f8dbadcbeee788f2d31d7fbdd4ae02a3b8cac4e4718541468921705071ac70",
+      "git_blob_sha": "3bbb2a14cf3ee22366899d3edb19123c9ed5fa5c",
       "preserved_at": "in place (not deleted)"
     },
     {
@@ -160,9 +188,9 @@
     },
     {
       "source": "rulebook/parts/01_basic_rules.md",
-      "bytes": 16638,
-      "sha256": "78502986e171a1ccd92ff9aade8a56b9ee129818821ee20e68dda63a852b493e",
-      "git_blob_sha": "f7a9c5f27549bdcc35dac2872d4640d72d25f7a0",
+      "bytes": 22591,
+      "sha256": "62f5ddfbbe91dadd826d48345a54fc69a373fa15a83f1d0acbdafac23638d200",
+      "git_blob_sha": "7f8ed4219a570e76b5d6c07c2fcbe23f955c5606",
       "preserved_at": "in place (not deleted)"
     },
     {
@@ -237,9 +265,9 @@
     },
     {
       "source": "rulebook/parts/12_glossary_sources_catalogs.md",
-      "bytes": 32273,
-      "sha256": "5831cf48035d4295c2ee8456ccd6641cd8e722e88ffbf7c57dfc70b7d7097241",
-      "git_blob_sha": "b4d2a0e3465ee689b6661d86900b4c07f1d2dac2",
+      "bytes": 41359,
+      "sha256": "c9ae35215345e8d149fe9a11b355980231c09883e682e53bce1df5c0c3b11393",
+      "git_blob_sha": "6fd9ff4f6382f52dd0b54f5e0a55c8b2045a7214",
       "preserved_at": "in place (not deleted)"
     },
     {
@@ -349,9 +377,9 @@
     },
     {
       "source": "docs/rulebook_segments/07_GLOSSARY_AND_SOURCES.md",
-      "bytes": 30458,
-      "sha256": "3a22c6693e0a8d0598b7ce94149ad5f0d195307432d309d48567cb89dff8fc3a",
-      "git_blob_sha": "fca85f638754915ab651eee0c5341c6271fef512",
+      "bytes": 31268,
+      "sha256": "4604bb2b1cd7f13110cd73292e0721c54adccb87dce05bc8007a33bbb7cb1166",
+      "git_blob_sha": "a39570b6b2359425ada23181f9646b932ff5d85c",
       "preserved_at": "in place (not deleted)"
     },
     {
@@ -370,9 +398,9 @@
     },
     {
       "source": "docs/rulebook_segments/README.md",
-      "bytes": 6884,
-      "sha256": "ab07b749372fa2949e53a6ee91946ce1dece80d71fadad30a3186cb3a2311be9",
-      "git_blob_sha": "bed247c104dad3b57e07f1726b701adab11be88c",
+      "bytes": 6968,
+      "sha256": "bf1dc169e356ce33e1bce117d22bb5d51f87e4fb984aae44c642f44477b09f71",
+      "git_blob_sha": "6f8dc0900760fe711332bfdf266e639c9c2132f5",
       "preserved_at": "in place (not deleted)"
     },
     {
@@ -399,8 +427,8 @@
     {
       "source": "data/rules/rulebook_split_manifest.json",
       "bytes": 19191,
-      "sha256": "9e138a46caaa7b0bfd6f520e75f5d2f6f73052fc21c3692ac5986e3521f75e75",
-      "git_blob_sha": "bacf171de04b71f32af7cb324ae5f6f263d8b5ef",
+      "sha256": "48909ac5cf61089cae426fa4eb23a949e75620ed962adb0c8a82c8e653b4db32",
+      "git_blob_sha": "0a37192e53aa32a0ff51c1127a664e98b869232b",
       "preserved_at": "in place (not deleted)"
     },
     {

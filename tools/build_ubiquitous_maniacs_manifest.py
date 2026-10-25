@@ -421,7 +421,45 @@ def _resolve_source_root() -> Path:
 SOURCE_ROOT = _resolve_source_root()
 
 
+def _recorded_source_commit() -> str | None:
+    """The commit the corpus was *actually* imported from, as already recorded.
+
+    ``source commit at import`` is a historical fact, not a live reading. The corpus was
+    imported from one commit on one date, and that does not change because the upstream
+    repository has since moved on.
+    """
+    try:
+        data = json.loads(MANIFEST_JSON.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    commit = ((data.get("source") or {}).get("commit") or "").strip()
+    if len(commit) == 40 and all(c in "0123456789abcdef" for c in commit.lower()):
+        return commit
+    return None
+
+
 def _source_commit() -> str | None:
+    """Resolve ``source commit at import``.
+
+    This used to return the upstream checkout's **current** ``HEAD``. That is a bug with a
+    long tail: the field is labelled *at import*, so stamping it from live state rewrites
+    history. Once the upstream repository advanced past the imported commit, every run
+    rewrote the manifest and ``--check`` could never pass again — the generator reported its
+    own recorded fact as drift, forever, on any machine that had the upstream clone.
+
+    Order of resolution:
+
+    1. ``NOOPUNK_PCM_SOURCE_COMMIT`` — an explicit re-import pin, so refreshing the record
+       is a deliberate act rather than a side effect of running the tool.
+    2. the commit already recorded in ``manifest.json`` — the historical fact wins.
+    3. the upstream ``HEAD`` — first build only, when there is nothing recorded yet.
+    """
+    override = (os.environ.get("NOOPUNK_PCM_SOURCE_COMMIT") or "").strip()
+    if override:
+        return override
+    recorded = _recorded_source_commit()
+    if recorded:
+        return recorded
     try:
         result = subprocess.run(
             ["git", "-C", str(SOURCE_ROOT), "rev-parse", "HEAD"],
