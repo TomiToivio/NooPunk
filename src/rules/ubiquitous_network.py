@@ -288,3 +288,102 @@ def ubiquity_table() -> dict[str, float]:
 def coverage(era: Era) -> float:
     """The fraction of the world a class-2-or-better route reaches in `era` (TUNING)."""
     return ubiquity_table()[era.value]
+
+
+# --------------------------------------------------------------------------- #
+# Who is noticing: the four-tier opposition (rulebook/22 §22.6.4)
+# --------------------------------------------------------------------------- #
+# The chapter's own rule is that the four tiers must *feel* different and that an encounter is "a
+# scene with a price, never a save-or-die". That is a set of **preconditions and guarantees**, not a
+# stat block, so it is modelled as data plus three assertions — no numbers, no dice.
+
+class Opposition(str, Enum):
+    """The four things that can notice an intrusion, by the chapter's own names."""
+
+    ORDINARY = "ordinary"        # crime scene / corporate security
+    PANOPTICON = "panopticon"    # the only legally authorised ASI
+    NOOSPHERE = "noosphere"      # it offers; it does not police
+    THANATOS = "thanatos"        # the surviving antagonist ASI
+
+
+@dataclass(frozen=True)
+class OppositionProfile:
+    """What each tier wants, how it acts, what it costs, how you survive it, what it leaves."""
+
+    wants: str
+    acts: str
+    costs: str
+    survives_by: str
+    leaves: str
+
+
+OPPOSITION: dict[Opposition, OppositionProfile] = {
+    Opposition.ORDINARY: OppositionProfile(
+        wants="the intruder caught, the loss recovered, the incident closed",
+        acts="people, contracts, guards, lawyers, reputations",
+        costs="money, liberty, reputation, a contact",
+        survives_by="lawyers, leverage, silence, restitution",
+        leaves="a police report",
+    ),
+    Opposition.PANOPTICON: OppositionProfile(
+        wants="the risk classified, the anomaly filed, the pattern contained",
+        acts="forms, flags, freezes, warrants, referrals",
+        costs="access, legality, time, and the presumption of innocence",
+        survives_by="jurisdiction, appeal, a human reviewer, a legitimate argument",
+        leaves="a record people you will never meet can read",
+    ),
+    Opposition.NOOSPHERE: OppositionProfile(
+        wants="nothing; it offers",
+        acts="openings, repairs, coincidences",
+        costs="certainty, and the chain of custody",
+        survives_by="consent, refusal, honesty about what you were given",
+        leaves="a fact you cannot source",
+    ),
+    Opposition.THANATOS: OppositionProfile(
+        wants="a foothold",
+        acts="copies, waits, trades, probes",
+        costs="a device, a memory, a colleague's trust",
+        survives_by="unplug, airgap, destroy, hand it to someone else",
+        leaves="evidence, and a device that is no longer yours",
+    ),
+}
+
+
+def can_notice(tier: Opposition, *, breach: bool = False, foothold: bool = False) -> tuple[bool, str]:
+    """Whether this tier can be the one noticing, given what the scene actually contains.
+
+    The chapter's constraint on Thanatos is material, not moral: *"it cannot act where it has no
+    path"*, and every foothold it holds is physical. So a scene may only present it when the scene
+    has already given it a medium — a containment breach or an existing foothold. Presenting Thanatos
+    without one is the "monster" reading the chapter forbids.
+    """
+    if tier is Opposition.THANATOS and not (breach or foothold):
+        return False, "Thanatos needs a material path: no breach and no foothold in this scene"
+    if tier is Opposition.NOOSPHERE:
+        return True, "the Noösphere offers rather than polices: it is never security"
+    return True, f"{tier.value} may be the tier that notices"
+
+
+def scene_guarantees() -> dict[str, bool]:
+    """The three properties every tier must keep. Pinned by the tests, not by prose.
+
+    A scene that violates one of these is not a NoöPunk intrusion scene, whatever its numbers say.
+    """
+    return {
+        "leaves_evidence": True,     # every tier leaves a trace the players can find later
+        "refusal_is_real": True,     # the characters may always walk away, at a price
+        "save_or_die": False,        # never one roll between the party and the end
+    }
+
+
+def consequence(tier: Opposition) -> dict[str, str]:
+    """One scene's cost, in the chapter's five columns — for a GM writing the scene down."""
+    profile = OPPOSITION[tier]
+    return {
+        "tier": tier.value,
+        "wants": profile.wants,
+        "acts": profile.acts,
+        "costs": profile.costs,
+        "survive_by": profile.survives_by,
+        "leaves": profile.leaves,
+    }
