@@ -165,3 +165,17 @@ pretending the item was met.
   `1d10` stays (#111) and `4dF` stays for the crossover. The 2d6 reversal is not taken — it would
   have touched 80 `1d10` sites across 41 files and 41 test files. Classes and levels are declined;
   **Edges are admitted**. Record: `ISSUE_566_ACCEPTANCE.md` and `docs/CWN_CHASSIS.md`.
+
+## Row raised 2026-10-25
+
+- **D43 — PSI discipline vocabulary.** `src/rules/noopunk_extensions.py` (a scenario prototype,
+  explicitly **not** the rules owner — `natural_psi.py` is) accepts seven discipline slugs;
+  `influence`, `healing` and `shielding` are **not** among the six locked PSI skills (#159: ESP,
+  Telepathy, Psychokinesis, Precognition, Psychic Defence, Noöspace). The conflict is already
+  recorded as prose in `docs/rules/ISSUE_572_NATIVE_SUBSYSTEMS.md` §7, and the module carries a scope
+  note saying no rule may be built on those three names. **What is missing is the decision itself:**
+  are they admitted (and if so, as skills of their own or as capability tags under an existing
+  skill), or dropped? Deleting them from the prototype asserts they are not canon; keeping them
+  without a ruling leaves a trap for the next implementer. Both are canon calls, so neither is taken
+  here. Siblings queued D41 (exposure economy) and D42 (Effort curve) from the same round; this row
+  is the third and the only one that is a canon question rather than a balance question.
