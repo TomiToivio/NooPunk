@@ -4,10 +4,21 @@
 author's.**
 
 `AGENTS.md` §4 reserves *hacking / cyberspace mechanics* and *psionic powers or psionic mechanics*
-until the author defines original subsystems. The author's direction of **2026-10-25** asks for exactly
-that — *"hacking as ubiquitous network as in NoöPunk, PSI as in SWN rules but learnable natural human
-ability, generally create new subsystems where CWN/SWN/AWN/WWN has no equivalent"* — so this round
-writes the arithmetic for those two, and maps the rest. It is a **proposal with running code**, not a
+until the author defines original subsystems. **The author ruled on 2026-10-25** (#566, recorded in
+[`ISSUE_566_ACCEPTANCE.md`](../design/ISSUE_566_ACCEPTANCE.md) and `docs/CWN_CHASSIS.md`):
+
+1. **scope = layer A only**; layer B keeps its approved `4dF`;
+2. **`1d10` stays** — `STAT + Skill + 1d10 ≥ DV` (#111), no die replaced;
+3. **`FIT/REF/INT/SOC/CYB/PSY` survive**; `CHA` is not adopted;
+4. **classes and levels declined**, with **Edges admitted** as the classless differentiation mechanism;
+
+and three rulings that decide what kind of import this is: **hacking runs on a ubiquitous network**
+("access is not the scarce thing; CWN supplies the resolution procedure only, never the access
+model"), **PSI = the family's rules for a learnable natural human ability — Effort adopted, ontology
+preserved**, and **new NoöPunk subsystems wherever the family has no equivalent**.
+
+Both modules below implement exactly that direction. The *numbers* are still the author's (D41/D42),
+and gates A–D stay open. It is a **proposal with running code**, not a
 ratification: `IS_CANONICAL = False` in both modules, and the TUNING blocks below are the author's to
 set.
 
@@ -136,12 +147,20 @@ it does mechanically *today*, what the family offers, and what this round adds.
 
 | extension | mechanical owner today | family equivalent | this round |
 | --- | --- | --- | --- |
-| **AGI / ASI** | `rulebook/22` §22.6 (three swarms), §22.7 AI law; the four-tier opposition | none — SWN's AI tags are setting-specific and licence-blocked | **recorded as an opposition model**, not a stat block: what each tier wants, costs and leaves (§22.6.4). No new numbers |
+| **AGI / ASI** | `rulebook/22` §22.6 (three swarms), §22.7 AI law | none — SWN's AI tags are setting-specific and licence-blocked | **implemented as an opposition model** in `ubiquitous_network.py`: `OPPOSITION` (the four tiers' five columns as data), `can_notice()` (Thanatos needs a material path — no breach, no foothold, no appearance) and `scene_guarantees()` (leaves evidence, refusal is real, never save-or-die). No stat block, no numbers |
 | **NHI contact** | `rulebook/11_ONTOLOGY.md`, `12_BEINGS.md`; scenario canon (§497) | none | **prose-only**: contact is an ontological event, and giving it a check would flatten it |
 | **Noösphere / Noöspace** | `src/rules/noospace_projection.py`, `cross_domain_state.py` (both explicitly non-canonical) | none | **consumed, not promoted**: regions, navigation DV and elapsed-time arithmetic stay PROVISIONAL |
 | **BCI cognition** | `strategy_game/cyber.py` reachability; `rulebook/5_CYBERNETIC.md` capability-level | CWN's System Strain is *bodily*, the wrong axis | **Effort is the candidate**: a sustained BCI load is committed capacity, not implant tolerance. Stays a proposal (queue D36) |
 | **Crisis connectivity** | §22.4 Safenet, §22.5 geography, #344 classes | none | **the era dial**: `safenet_up()` and the ubiquity coverage table make "the network is down here" a switch, not a mood |
 | **Psychotronics** | §6.2's continuum; `13_EQUIPMENT.md` lists devices | none | **separate channel, deliberately unmodelled** — a device-mediated session must not silently reuse natural-PSI rules |
+
+### 4b. What the ruling admitted and this round did not build
+
+The author admitted **Edges** as the classless differentiation mechanism, and that is now the largest
+named-but-unbuilt piece: no Edge registry, no admission rule, no starting count exists in layer A
+today. It is deliberately *not* improvised here, because count and frequency are **D23** and the
+mechanism has to state what an Edge may do (a capability, a one-step shift, a permission) before any
+list is written.
 
 ## 5. What stays the author's
 

@@ -238,5 +238,37 @@ class NaturalPsiTests(unittest.TestCase):
         self.assertEqual(run(3), run(3))
 
 
+class SwarmOppositionTests(unittest.TestCase):
+    """§22.6.4: the four tiers are preconditions and guarantees, not a stat block."""
+
+    def test_all_four_tiers_have_a_profile_with_the_five_columns(self) -> None:
+        self.assertEqual(set(net.OPPOSITION), set(net.Opposition))
+        for tier in net.Opposition:
+            row = net.consequence(tier)
+            self.assertEqual(set(row), {"tier", "wants", "acts", "costs", "survive_by", "leaves"})
+            self.assertTrue(all(row[k] for k in row), tier)
+
+    def test_thanatos_needs_a_material_path(self) -> None:
+        """The chapter's constraint: it cannot act where it has no path, so a scene needs one."""
+        self.assertFalse(net.can_notice(net.Opposition.THANATOS)[0])
+        self.assertTrue(net.can_notice(net.Opposition.THANATOS, breach=True)[0])
+        self.assertTrue(net.can_notice(net.Opposition.THANATOS, foothold=True)[0])
+
+    def test_the_noosphere_never_polices(self) -> None:
+        possible, reason = net.can_notice(net.Opposition.NOOSPHERE)
+        self.assertTrue(possible)
+        self.assertIn("offers", reason)
+
+    def test_every_tier_keeps_the_three_scene_guarantees(self) -> None:
+        guarantees = net.scene_guarantees()
+        self.assertTrue(guarantees["leaves_evidence"])
+        self.assertTrue(guarantees["refusal_is_real"])
+        self.assertFalse(guarantees["save_or_die"], "an encounter is a scene with a price")
+
+    def test_ordinary_and_panopticon_are_always_available(self) -> None:
+        for tier in (net.Opposition.ORDINARY, net.Opposition.PANOPTICON):
+            self.assertTrue(net.can_notice(tier)[0], tier)
+
+
 if __name__ == "__main__":
     unittest.main()
