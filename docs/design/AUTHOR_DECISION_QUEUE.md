@@ -165,3 +165,14 @@ pretending the item was met.
   `1d10` stays (#111) and `4dF` stays for the crossover. The 2d6 reversal is not taken — it would
   have touched 80 `1d10` sites across 41 files and 41 test files. Classes and levels are declined;
   **Edges are admitted**. Record: `ISSUE_566_ACCEPTANCE.md` and `docs/CWN_CHASSIS.md`.
+
+## Row raised 2026-10-25
+
+- **D43 — PSI discipline vocabulary.** `src/rules/noopunk_extensions.py` (a scenario prototype,
+  explicitly **not** the rules owner) accepts seven discipline slugs; `influence`, `healing` and
+  `shielding` are **not** among the six locked PSI skills (#159: ESP, Telepathy, Psychokinesis,
+  Precognition, Psychic Defence, Noöspace). No rule may be built on those three names while this row
+  is open. **The question is canon, not code:** are those three admitted as disciplines (and if so,
+  as skills of their own or as capability tags under an existing skill), or dropped? Deleting them
+  from the prototype asserts they are not canon; keeping them without a ruling leaves a trap. See
+  `docs/rules/ISSUE_572_NATIVE_SUBSYSTEMS.md` §8.5.
