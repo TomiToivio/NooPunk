@@ -276,18 +276,27 @@ def _pressure(outcome: Outcome, training: Training) -> Pressure:
 # Learnability, stated as a procedure rather than a promise
 # --------------------------------------------------------------------------- #
 
-def practice(discipline: Discipline, *, hours: int, supervised: bool = True) -> dict[str, Any]:
+def practice(discipline: Discipline, *, hours: int, supervised: bool = True,
+             prior_hours: int = 0) -> dict[str, Any]:
     """What a training block does. Unsupervised hours count half — a teacher is not decoration.
+
+    `prior_hours` is what the character had already accumulated in this discipline. It is
+    required for a correct tier report: the tier is a property of the *total*, so 100 hours
+    plus a 30-hour block is mastery, even though neither number reaches the threshold alone.
 
     This is the whole of "learnable": no class, no feat, no level, and no cap other than the
     discipline's own rating scale. A table can track it on the character sheet as hours.
     """
     if hours < 0:
         raise PsiError("practice hours cannot be negative")
+    if prior_hours < 0:
+        raise PsiError("prior practice hours cannot be negative")
     effective = hours if supervised else hours // 2
+    total = prior_hours + effective
     return {
         "discipline": discipline.value,
         "hours": effective,
-        "training_after": training_for(effective).value,
+        "total_hours": total,
+        "training_after": training_for(total).value,
         "note": "supervised" if supervised else "unsupervised: half credit",
     }
