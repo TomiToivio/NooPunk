@@ -192,6 +192,8 @@ class Practitioner:
 
     def recover(self, *, scenes: int = 1) -> None:
         """Psyche load bleeds off between scenes; commitments do **not** expire on their own."""
+        if scenes < 0:
+            raise PsiError("recovery scenes cannot be negative")
         self.psyche_load = max(0, self.psyche_load - TUNING_PRESSURE_RECOVERY_PER_SCENE * scenes)
 
     # -- the attempt ---------------------------------------------------------------------
