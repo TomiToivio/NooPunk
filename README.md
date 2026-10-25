@@ -155,6 +155,21 @@ python scripts/noopunk_text.py
 
 Ollama is optional for basic play.
 
+### The optional Ubiquitous Maniacs case
+
+*The Listening Ward* is a self-contained, non-canonical investigation that runs on the current
+RPG engine and needs **nothing but the standard library** — none of the packages above are
+required for it:
+
+```bash
+python -m strategy_game.rpg --scenario ubiquitous-maniacs --save ward.json --new
+```
+
+Resume by leaving off `--new`. It needs **Python 3.11 or newer**; on an older interpreter it
+stops with a message naming the version and the remedy instead of an `ImportError`. Scope,
+troubleshooting and the end-to-end tests are in
+[docs/UBIQUITOUS_MANIACS_INTEGRATION.md](docs/UBIQUITOUS_MANIACS_INTEGRATION.md).
+
 ## First-player cheat sheet
 
 At the prompt, try:
