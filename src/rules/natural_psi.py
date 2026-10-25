@@ -228,19 +228,24 @@ class Practitioner:
                 f"attempting it"
             )
         if effort:
+            # Committed, not borrowed: this capacity stays locked until the caller
+            # releases the label. Effort is a pool of *held* capacity, so refunding it
+            # at the end of the attempt made spending it free and therefore pointless.
             self.commit(f"attempt:{discipline.value}", cost=effort)
 
         modifier = consensus_modifier(believers, doubters)
-        if learnt is Training.MASTERED:
-            # Mastery is not a bigger number: it is a cheaper failure.
-            modifier += 0
-        result = core.resolve_check(stat=self.psy, skill=rating, target=dv,
+        # The kernel resolves STAT + Skill + 1d10 >= DV and takes no modifier argument,
+        # so a situational modifier is applied as the same arithmetic on the other side:
+        # +m on the roll is identical to -m on the target. Without this the consensus
+        # value was computed, reported, and silently ignored.
+        target = dv - modifier
+        result = core.resolve_check(stat=self.psy, skill=rating, target=target,
                                     rng=rng if rng is not None else self.rng, die=die)
-        outcome = _outcome(result.total - dv)
+        total = result.total + modifier
+        outcome = _outcome(total - dv)
         pressure = _pressure(outcome, learnt)
         self.psyche_load += pressure.psyche_load
-        self.release(f"attempt:{discipline.value}")
-        return Attempt(discipline, learnt, outcome, result.total, dv, pressure, effort, modifier)
+        return Attempt(discipline, learnt, outcome, total, dv, pressure, effort, modifier)
 
 
 def _outcome(margin: int) -> Outcome:
