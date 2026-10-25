@@ -146,6 +146,27 @@ SCENARIOS = (
         save_name="unused.json",
         saves=False,
     ),
+    # --- layer A, the legacy tabletop runtime (#570 lists it explicitly) -------------------
+    # `scripts/noopunk_text.py --seed` is what makes these replayable: the layer-A kernel
+    # otherwise consumes the global generator, so two runs would differ on the roll line.
+    # The save files are not compared: `simulation_id` is minted per process, so the JSON is
+    # deliberately unique even when the play is identical (the play is what is asserted).
+    _Run(
+        name="legacy layer A: prefall (seeded)",
+        argv=[str(ROOT / "scripts" / "noopunk_text.py"), "--scenario", "prefall", "--seed", "42"],
+        stdin="look\ntest skill Perceive\nquit\n",
+        marker="Perceive test:",
+        save_name="layer-a-prefall.json",
+        saves=False,
+    ),
+    _Run(
+        name="legacy layer A: issue74 (seeded)",
+        argv=[str(ROOT / "scripts" / "noopunk_text.py"), "--scenario", "issue74", "--seed", "7"],
+        stdin="look\ntest skill Perceive\nquit\n",
+        marker="Perceive test:",
+        save_name="layer-a-issue74.json",
+        saves=False,
+    ),
 )
 
 

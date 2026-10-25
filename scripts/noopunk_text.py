@@ -9,6 +9,7 @@ regression testing. LLM use is optional.
 from __future__ import annotations
 
 import argparse
+import random
 from pathlib import Path
 import sys
 
@@ -86,12 +87,16 @@ def _build_engine(args: argparse.Namespace) -> tuple[GameEngine, object | None, 
             controllers[STARGATE_ANALYST_ID] = llm
             controllers[MARS_ARCHIVE_ID] = llm
 
+    # A seeded run is replayable (#570); an unseeded one uses the global generator, like a tabletop.
+    rng = random.Random(args.seed) if args.seed is not None else None
+
     if args.load:
         engine = load_game(
             args.load,
             connection=connection,
             controllers=controllers,
             gm_controller=llm if args.llm_gm else None,
+            rng=rng,
         )
     else:
         engine = GameEngine(
@@ -99,6 +104,7 @@ def _build_engine(args: argparse.Namespace) -> tuple[GameEngine, object | None, 
             connection=connection,
             controllers=controllers,
             gm_controller=llm if args.llm_gm else None,
+            rng=rng,
         )
     return engine, llm, human_id
 
@@ -114,6 +120,10 @@ def main() -> int:
     parser.add_argument("--db", default="", help="SQLite event-log path (default: in-memory)")
     parser.add_argument("--load", default="", help="Load JSON save")
     parser.add_argument("--save", default="noopunk-save.json", help="Default JSON save path")
+    parser.add_argument(
+        "--seed", type=int, default=None,
+        help="Seed the layer-A dice so a run is replayable; omit for tabletop-style randomness",
+    )
     parser.add_argument("--ollama", action="store_true", help="Enable optional Ollama/Concordia actors")
     parser.add_argument("--llm-gm", action="store_true", help="Use the Ollama controller for brief GM narration")
     args = parser.parse_args()
@@ -170,6 +180,7 @@ def main() -> int:
                 connection=engine.connection,
                 controllers=engine.controllers,
                 gm_controller=engine.gm_controller,
+                rng=engine.rng,
             )
             print(f"Loaded: {path}")
             print(engine.describe_room(human_id))

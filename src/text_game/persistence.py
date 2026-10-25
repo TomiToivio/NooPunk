@@ -33,6 +33,7 @@ def load_game(
     connection: sqlite3.Connection | None = None,
     controllers: dict | None = None,
     gm_controller=None,
+    rng=None,
 ) -> GameEngine:
     payload = json.loads(Path(path).read_text(encoding="utf-8"))
     events = [Event.from_dict(item) for item in payload.get("events", [])]
@@ -43,6 +44,7 @@ def load_game(
         connection=connection,
         controllers=dict(controllers or {}),
         gm_controller=gm_controller,
+        rng=rng,
         events=events,
     )
     if connection is not None and events:
