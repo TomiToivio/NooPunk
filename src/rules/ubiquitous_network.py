@@ -123,8 +123,6 @@ def reach(target: ConnectivityClass, access: AccessClass, era: Era) -> tuple[boo
     of the setting, not a guarantee at every hour of the crisis.
     """
     if access in CONTAINMENT_BREACH_CLASSES:
-        if target is ConnectivityClass.ISOLATED:
-            return False, "an isolated target requires local physical access, even across quarantine"
         return True, "a deliberate bridge: possible, and a grave international crime in every era"
     if access is AccessClass.SAFENET and era is Era.NHI_CRISIS and not safenet_up(era):
         return False, "the public network is degraded in this era: find a foothold (class 3)"
