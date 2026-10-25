@@ -104,7 +104,13 @@ def roll_d10(rng: DiceSource | None = None) -> int:
 
 
 def roll_check_dice(rng: DiceSource | None = None) -> int:
-    return roll_d10(rng)
+    """Sum the canon's declared check dice: ``skill_check.dice_count`` × ``dice_sides``.
+
+    The count is read from ``data/rules/core.json`` rather than assumed, so a canon change from
+    `1d10` to a multi-die kernel is a data edit instead of a silent no-op. Until now this function
+    rolled exactly one die whatever the canon declared, which made ``CHECK_DICE_COUNT`` decorative.
+    """
+    return sum(roll_d10(rng) for _ in range(CHECK_DICE_COUNT))
 
 
 def _validate_rating(label: str, value: int, minimum: int, maximum: int) -> int:
@@ -144,9 +150,10 @@ def resolve_check(
 
     stat_value = _validate_rating("STAT", stat, STAT_MIN, STAT_MAX)
     skill_value = _validate_rating("Skill", skill, SKILL_LEVEL_MIN, SKILL_LEVEL_MAX)
-    rolled = roll_d10(rng) if die is None else int(die)
-    if not 1 <= rolled <= CHECK_DICE_SIDES:
-        raise ValueError("A 1d10 check roll must be in 1..10.")
+    rolled = roll_check_dice(rng) if die is None else int(die)
+    highest = CHECK_DICE_SIDES * CHECK_DICE_COUNT
+    if not 1 <= rolled <= highest:
+        raise ValueError(f"A {CHECK_DICE} check roll must be in 1..{highest}.")
 
     total = stat_value + skill_value + rolled
     return CheckResult(

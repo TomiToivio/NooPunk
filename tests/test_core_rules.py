@@ -5,12 +5,14 @@ from __future__ import annotations
 from pathlib import Path
 import json
 import sys
+import random
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from concordia_runtime import resolve_structured_check
+from rules import core
 from rules import (
     AttributeSet,
     CHECK_DICE,
@@ -24,6 +26,30 @@ from rules import (
     resolve_check,
     roll_d10,
 )
+
+
+class DeclaredDiceTests(unittest.TestCase):
+    """The kernel must roll what the canon declares, not a hard-coded single die."""
+
+    def test_the_declared_count_is_what_gets_rolled(self) -> None:
+        from unittest import mock
+
+        self.assertEqual(core.CHECK_DICE_COUNT, 1)
+        for _ in range(20):
+            self.assertEqual(core.roll_check_dice(random.Random(7)), core.roll_check_dice(random.Random(7)))
+        with mock.patch.object(core, "CHECK_DICE_COUNT", 2):
+            values = [core.roll_check_dice(random.Random(seed)) for seed in range(50)]
+            self.assertTrue(all(2 <= v <= 20 for v in values), values)
+            self.assertGreater(len({v for v in values if v > 10}), 0, "two dice can exceed 10")
+
+    def test_a_pinned_die_is_validated_against_the_declared_range(self) -> None:
+        from unittest import mock
+
+        with mock.patch.object(core, "CHECK_DICE_COUNT", 2):
+            result = core.resolve_check(stat=3, skill=2, target=10, die=20)
+            self.assertEqual(result.total, 25)
+            with self.assertRaises(ValueError):
+                core.resolve_check(stat=3, skill=2, target=10, die=21)
 
 
 class FixedDice:
