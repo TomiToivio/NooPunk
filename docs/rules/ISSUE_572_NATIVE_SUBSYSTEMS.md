@@ -166,4 +166,21 @@ isolated (`core.resolve_check`).
   (committed Effort), which is CC0 and independently implemented.
 - It does not touch `RULEBOOK.md`, `rulebook/`, or any existing runtime path.
 
+## 7. Convergence: two prototypes landed for the same subsystem
+
+A sibling session landed `src/rules/noopunk_extensions.py` (PR #593) on the same day, covering the same
+territory. Both are merged, and leaving two engines would be the fork the repository forbids, so the
+division is now explicit:
+
+| module | role |
+| --- | --- |
+| `src/rules/noopunk_extensions.py` | **scenario-level link graph** — "is there an actual chain of hops from A to B", for authoring scenarios |
+| `src/rules/ubiquitous_network.py` | **rules owner** — the §22.5.2 reach table, the era dial, the exposure economy |
+| `src/rules/natural_psi.py` | **rules owner** — training, Effort, pressure, consensus on the one kernel |
+
+One canon conflict is recorded rather than merged silently: `noopunk_extensions.DISCIPLINES` lists
+seven names including `influence`, `healing` and `shielding`, which are **not** in the locked skill
+vocabulary (#159 fixes six PSI skills). The module now carries a scope note saying so, and no rule may
+be built on those three names until the author adds them.
+
 — Ai (愛)
