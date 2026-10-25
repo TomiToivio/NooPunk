@@ -10,7 +10,90 @@ python -m strategy_game.rpg --scenario ubiquitous-maniacs --save ward.json --new
 
 Resume by leaving off `--new`. Within the prompt, use `help`, `status`, `act SEAT ACTION`, `next`, `assemble`, `resolve closed_by_evidence` (or `closed_by_withdrawal`), `save`, `quit`. The live implementation is `strategy_game/casework/ubiquitous_maniacs.py`; direct invocation of `python -m strategy_game.casework.ubiquitous_maniacs_play` is equivalent.
 
-The older two-day narrative prototype is retained separately for compatibility at `python -m strategy_game.rpg --scenario ubiquitous-maniacs-legacy`. The `ubiquitous-maniacs-case` selector remains an alias for the canonical case. It shares RPG Fate checks but **is not** the canonical five-seat investigation. Do not mistake its self-contained story state for a full campaign save or merge its rules into the current engine. Existing saves from the two adapters are not interchangeable.
+The older two-day narrative prototype is retained separately for compatibility at `python -m strategy_game.rpg --scenario ubiquitous-maniacs-legacy`. The `ubiquitous-maniacs-case` selector remains an alias for the canonical case. It shares RPG Fate checks but **is not** the canonical five-seat investigation. Do not mistake its self-contained story state for a full campaign save or merge its rules into the current engine. Existing saves from the two adapters are not interchangeable — the canonical loader refuses a legacy save by schema, rather than half-loading it.
+
+## Scope: what this case is, and what it is not
+
+**It is one case, not a campaign, and not the legacy story.** *The Listening Ward* is a two-scene
+investigation: an arrival, a records room, three clues, one assembles-able finding, and two
+endings. A single sitting finishes it.
+
+**It is not a retelling of the historical two-day prototype.** The legacy material in
+`archive/ubiquitous-maniacs-2026-10/` and `legacy/ubiquitous_maniacs/` contains a two-day
+narrative with a therapy sequence, a persona-phase protagonist, a dream layer and a second day
+that the canonical case does **not** cover. That story remains reachable only through the
+separate `ubiquitous-maniacs-legacy` selector and the archived corpus. Nothing in this case
+promises to cover it.
+
+Whether the legacy beats should become *stages* of the canonical scenario is an open design
+question, not a completed one. What was taken from the corpus is its **premise** — treatment
+traded for access to memory — and its mechanics (below). What was not taken is its plot.
+
+The case is **non-canonical**: an optional side case, labelled as such in its own `detail` record
+(`"OPTIONAL SCENARIO, NOT CANON"`). It uses the canonical frame — the 2045 campaign present, the
+UNSA Helsinki Field Office, the post-Crisis network — and adds no institution, no character and
+no world fact to canon.
+
+## Requirements
+
+**Python 3.12** is the tested version (CI), and **3.11 is the minimum**: the rules layer uses
+`enum.StrEnum` and `datetime.UTC`, both added in 3.11.
+
+**No third-party package is needed to play.** The scenario imports only the Python standard
+library. Verified by running it with site-packages disabled:
+
+```sh
+python3.11 -S -m strategy_game.rpg --scenario ubiquitous-maniacs --save ward.json --new
+```
+
+`requirements.txt` installs `gdm-concordia` from a pinned git revision, which is the **optional**
+Concordia and Ollama runtime. It is not required by this case; `requirements-concordia.txt`
+carries the same pin for the optional path.
+
+## Troubleshooting
+
+| symptom | cause | remedy |
+| --- | --- | --- |
+| `Ubiquitous Maniacs / NoöPunk RPG needs Python 3.11 or newer` (exit 2) | an older interpreter | install 3.11+ and run with it; the message names the commands. Before the gate existed this was a bare `ImportError: cannot import name 'StrEnum'` from inside the rules layer, which named neither the interpreter nor a remedy. |
+| `cannot resume saved case: … is not valid JSON` (exit 2) | a corrupt or truncated save | start a new case with `--new`, or delete the save file |
+| `cannot resume saved case: unsupported session schema_version …` (exit 2) | a save from the legacy adapter, or a schema this build does not know | the two adapters are not interchangeable; play with the adapter that wrote the save, or start fresh |
+| `Cannot do that: … has already acted this scene` | Fate's one-action-per-character-per-scene rule | use another seat, or `next` to open a new scene |
+| `Cannot do that: this is the last scene; close the case with resolve(...)` | `next` at the end of the case | close it with `resolve closed_by_evidence` or `resolve closed_by_withdrawal` |
+
+Errors are printed as one line beginning `Cannot do that:` and the prompt continues; the process
+does not raise. A save or load failure exits **2** and prints to stderr.
+
+## Validation
+
+```sh
+python -m unittest strategy_game.tests.test_ubiquitous_maniacs_case strategy_game.tests.test_unified_ubiquitous_maniacs strategy_game.tests.test_ubiquitous_entrypoint
+python -m unittest strategy_game.tests.test_ubiquitous_maniacs_mechanics strategy_game.tests.test_rpg_corpus_ports
+```
+
+**End-to-end CLI smoke tests** drive the real command in a subprocess, exactly as a player does:
+
+```sh
+python -m unittest strategy_game.tests.test_ubiquitous_maniacs_e2e -v
+```
+
+They cover a full playthrough to each of the two endings, determinism across two runs of the same
+route and seed (and that a different seed changes the dice), save/resume at the beginning,
+mid-case and after resolution, a corrupt save, a save from the other adapter, and every invalid
+input a player is likely to type. The suite prints the interpreter it verified against.
+
+Observed, on Python 3.11.14 / Linux:
+
+```
+Ran 18 tests ... OK
+  e2e verified on Python 3.11.14 (linux)
+```
+
+The full strategy suite ran **1772 tests OK** and the repository root suite **600 tests OK** on the
+same interpreter, with `python tools/audit_corpus_expression.py --check` reporting
+`clean: no third-party expression in 284 archived file(s)`.
+
+These checks test wiring and case behaviour, **not copyright clearance**. Review CI before
+release or merging new content.
 
 ## Rights and provenance boundaries
 
@@ -69,15 +152,6 @@ The audit's exemptions are deliberate and narrow. The provenance records (`MANIF
 that cannot be audited is not a removal. The influence-analysis documents may name the source's
 devices, because naming an influence is not reproducing one. What may not survive is the
 source's **words**, and a real performer's name as a **blueprint**.
-
-## Validation
-
-```sh
-python -m unittest strategy_game.tests.test_ubiquitous_maniacs_case strategy_game.tests.test_unified_ubiquitous_maniacs strategy_game.tests.test_ubiquitous_entrypoint
-python -m unittest strategy_game.tests.test_ubiquitous_maniacs_mechanics strategy_game.tests.test_rpg_corpus_ports
-```
-
-These checks test wiring and case behavior, **not copyright clearance**. Review CI before release or merging new content.
 
 ## Distribution boundary
 
