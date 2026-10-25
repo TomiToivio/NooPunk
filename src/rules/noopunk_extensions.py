@@ -1,166 +1,134 @@
-"""Additive, standard-library NoöPunk extension kernel (#572/#564).
+"""Original NoöPunk extension kernel: ubiquitous networks and learnable natural PSI.
 
-Ubiquitous *reachability* is not omnipotent access: networked objects can relay
-messages along connected edges; local-only nodes remain local. This module does
-not replace the existing 1d10 or Fate checks, and does not import rulebook text.
+Opt-in subsystem, not a replacement for the existing tabletop 1d10 or Fate resolvers.
+All operations are deterministic, offline, and serializable. No publisher prose.
+
+**Scope note (2026-10-25, after both prototypes landed).** This module is a *scenario-level link
+graph*: it answers "is there an actual chain of hops from A to B", which is what a scenario author
+needs. The **rules owner** for the same territory is
+`src/rules/ubiquitous_network.py` (reach table, era dial, exposure economy) and
+`src/rules/natural_psi.py` (training, Effort, pressure). Do not grow a second rule engine here.
+
+`DISCIPLINES` below is **illustrative, not canonical**: `rulebook`/`data/rules/skills.json` fix PSI
+to exactly six skills (#159) — `ESP`, `Telepathy`, `Psychokinesis`, `Precognition`,
+`Psychic Defence`, `Noöspace` — so `influence`, `healing` and `shielding` have no canon standing.
+See `docs/rules/ISSUE_572_NATIVE_SUBSYSTEMS.md` §7.
 """
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from collections import deque
-from random import Random
+
+CHANNELS = frozenset({"wired", "radio", "mesh", "bci", "courier", "psychic", "psychotronic"})
+DISCIPLINES = frozenset({"telepathy", "perception", "precognition", "influence", "psychokinesis", "healing", "shielding"})
 
 
 @dataclass(frozen=True)
-class Node:
-    id: str
-    online: bool = True
-    protected: bool = False
-    # Users/agents can reach a protected node only if it is an authorized endpoint
-    owner: str = ""
+class Link:
+    source: str
+    target: str
+    channel: str
+    operational: bool = True
+    authorized: bool = False
+
+    def __post_init__(self):
+        if self.channel not in CHANNELS:
+            raise ValueError("unknown channel")
+        if not self.source or not self.target:
+            raise ValueError("endpoints required")
 
 
-@dataclass
-class UbiquitousNetwork:
-    nodes: dict[str, Node] = field(default_factory=dict)
-    links: set[tuple[str, str]] = field(default_factory=set)
-
-    def add(self, node: Node) -> None:
-        if not node.id:
-            raise ValueError("node ID required")
-        self.nodes[node.id] = node
-
-    def connect(self, a: str, b: str) -> None:
-        if a == b or a not in self.nodes or b not in self.nodes:
-            raise ValueError("links need two distinct existing nodes")
-        self.links.add(tuple(sorted((a, b))))
-
-    def route(self, source: str, target: str) -> tuple[str, ...] | None:
-        if source not in self.nodes or target not in self.nodes:
-            return None
-        if not self.nodes[source].online or not self.nodes[target].online:
-            return None
-        frontier = deque([(source,)])
-        visited = {source}
-        while frontier:
-            path = frontier.popleft()
-            if path[-1] == target:
-                return path
-            for a, b in sorted(self.links):
-                nxt = b if a == path[-1] else a if b == path[-1] else None
-                if nxt and nxt not in visited and self.nodes[nxt].online:
-                    visited.add(nxt)
-                    frontier.append((*path, nxt))
-        return None
-
-    def assess(self, source: str, target: str, actor: str, *,
-               physical_presence: bool = False) -> str:
-        """Return blocked / contested / permitted; never silently authorize hacking."""
-        if target not in self.nodes or source not in self.nodes:
-            return "blocked"
-        endpoint = self.nodes[target]
-        if not endpoint.online and not physical_presence:
-            return "blocked"
-        if not physical_presence and self.route(source, target) is None:
-            return "blocked"
-        if endpoint.protected and endpoint.owner != actor:
-            return "contested"
-        return "permitted"
+@dataclass(frozen=True)
+class Reach:
+    reachable: bool
+    channel_path: tuple[str, ...] = ()
+    reason: str = ""
 
 
-PSI_DISCIPLINES = ("perception", "telepathy", "psychokinesis", "precognition", "noetic_defense")
+def reach(links: tuple[Link, ...], source: str, target: str,
+          *, channels: frozenset[str] = CHANNELS,
+          require_authorization: bool = False) -> Reach:
+    """Enumerate actual hops, not inferred social ties or a magical omninet.
 
-
-@dataclass
-class HumanPsi:
-    """Learnable human PSI: training grants competence, not a separate species/class.
-
-    The Effort-inspired committed pool is original implementation.  All actions
-    requiring PSI spend or commit finite effort and may resolve using the owning
-    RPG layer's check.  Training is possible for every human character.
+    Ubiquitous means heterogeneous reachable devices and media can form a mesh;
+    neither physical air gaps nor psychic ability automatically provide TCP access.
     """
-    training: dict[str, int] = field(default_factory=dict)
-    capacity: int = 2
-    spent: int = 0
-    committed: dict[str, int] = field(default_factory=dict)
+    if source == target:
+        return Reach(True, (), "local")
+    if not source or not target:
+        return Reach(False, (), "unknown endpoint")
+    queue = [(source, ())]
+    seen = {source}
+    for node, path in queue:
+        for link in links:
+            if (not link.operational or link.channel not in channels
+                    or (require_authorization and not link.authorized)
+                    or link.source != node or link.target in seen):
+                continue
+            new_path = path + (link.channel,)
+            if link.target == target:
+                return Reach(True, new_path, "connected")
+            seen.add(link.target)
+            queue.append((link.target, new_path))
+    return Reach(False, (), "no concrete route")
 
-    def __post_init__(self) -> None:
-        if self.capacity < 1 or self.spent < 0:
-            raise ValueError("invalid effort")
-        if any(k not in PSI_DISCIPLINES or not isinstance(v, int) or v < 0 or v > 4
-               for k, v in self.training.items()):
-            raise ValueError("invalid PSI training")
-        if self.spent + sum(self.committed.values()) > self.capacity:
-            raise ValueError("effort exceeds capacity")
+
+@dataclass
+class NaturalPsi:
+    """Learning requires practice, not a class, mutation, virus or equipment.
+
+    Discipline ratings 0..4 are an *optional* extension profile. Effort is
+    committed to named effects and restored by releasing the effect or resting.
+    """
+    aptitude: bool = True
+    disciplines: dict[str, int] = field(default_factory=dict)
+    capacity: int = 1
+    commitments: dict[str, int] = field(default_factory=dict)
+
+    def __post_init__(self):
+        if self.capacity < 0 or any(k not in DISCIPLINES or not 0 <= v <= 4
+                                   for k, v in self.disciplines.items()):
+            raise ValueError("invalid PSI sheet")
+        if any(v <= 0 for v in self.commitments.values()) or self.used > self.capacity:
+            raise ValueError("invalid PSI commitments")
+
+    @property
+    def used(self) -> int:
+        return sum(self.commitments.values())
 
     @property
     def available(self) -> int:
-        return self.capacity - self.spent - sum(self.committed.values())
+        return self.capacity - self.used
 
     def learn(self, discipline: str) -> int:
-        if discipline not in PSI_DISCIPLINES:
-            raise ValueError("unknown PSI discipline")
-        level = self.training.get(discipline, 0)
-        if level >= 4:
-            raise ValueError("PSI discipline already mastered")
-        self.training[discipline] = level + 1
-        return level + 1
+        if not self.aptitude or discipline not in DISCIPLINES:
+            raise ValueError("natural aptitude and known discipline required")
+        current = self.disciplines.get(discipline, -1)
+        if current >= 4:
+            raise ValueError("already mastered")
+        self.disciplines[discipline] = current + 1
+        return current + 1
 
-    def activate(self, discipline: str, *, ongoing_id: str | None = None) -> bool:
-        if discipline not in PSI_DISCIPLINES or self.training.get(discipline, 0) < 1:
-            return False
-        if self.available < 1:
-            return False
-        if ongoing_id is None:
-            self.spent += 1
-        else:
-            if not ongoing_id or ongoing_id in self.committed:
-                return False
-            self.committed[ongoing_id] = 1
-        return True
+    def commit(self, effect_id: str, discipline: str, cost: int = 1) -> None:
+        if not effect_id or effect_id in self.commitments:
+            raise ValueError("unique effect ID required")
+        if discipline not in self.disciplines:
+            raise ValueError("discipline not learned")
+        if cost <= 0 or cost > self.available:
+            raise ValueError("insufficient Effort")
+        self.commitments[effect_id] = cost
 
-    def release(self, ongoing_id: str) -> None:
-        del self.committed[ongoing_id]
+    def release(self, effect_id: str) -> None:
+        if effect_id not in self.commitments:
+            raise KeyError(effect_id)
+        del self.commitments[effect_id]
 
     def rest(self) -> None:
-        """Rest restores spent effort, not effort bound to sustained powers."""
-        self.spent = 0
+        self.commitments.clear()
 
-    def snapshot(self) -> dict:
-        return {"training": dict(sorted(self.training.items())), "capacity": self.capacity,
-                "spent": self.spent, "committed": dict(sorted(self.committed.items()))}
+    def to_dict(self) -> dict:
+        return {"aptitude": self.aptitude, "disciplines": dict(self.disciplines),
+                "capacity": self.capacity, "commitments": dict(self.commitments)}
 
     @classmethod
-    def restore(cls, snapshot: dict) -> "HumanPsi":
-        return cls(training=dict(snapshot["training"]), capacity=snapshot["capacity"],
-                   spent=snapshot["spent"], committed=dict(snapshot["committed"]))
-
-
-@dataclass
-class Crisis:
-    """Optional local crisis pressure; no universal apocalypse assumption."""
-    scarcity: int = 0
-    trust: int = 3
-    exposure: int = 0
-
-    def event(self, *, supply_loss: int = 0, solidarity: int = 0,
-              exposure_gain: int = 0) -> None:
-        self.scarcity = max(0, self.scarcity + supply_loss)
-        self.trust = max(0, min(6, self.trust + solidarity))
-        self.exposure = max(0, self.exposure + exposure_gain)
-
-
-@dataclass
-class Contact:
-    """NHI contact is negotiation across differing goals, not good/evil alignment."""
-    reciprocity: int = 0
-    autonomy: int = 3
-
-    def negotiate(self, *, exchange: int, pressure: int) -> None:
-        self.reciprocity = max(-6, min(6, self.reciprocity + exchange))
-        self.autonomy = max(0, min(6, self.autonomy - pressure))
-
-
-def seeded_scene(seed: int, aptitude: int, difficulty: int) -> bool:
-    """Optional standalone d10 demonstration, NOT a replacement RPG resolver."""
-    return Random(seed).randint(1, 10) + aptitude >= difficulty
+    def from_dict(cls, data: dict) -> "NaturalPsi":
+        return cls(**data)

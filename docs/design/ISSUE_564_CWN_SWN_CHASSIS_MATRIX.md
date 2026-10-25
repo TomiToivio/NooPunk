@@ -137,7 +137,7 @@ citation; every row that says "SWN" is licence-blocked (§5).
 | 9 | **Healing** | Time-based recovery, medical checks, cyberware-assisted healing | **DEFER** | NoöPunk's psychosurgery is a four-layer construct (Jungian + psychedelic + cybernetic + psychotronic) and healing must not flatten it into a medkit roll. CWN has nothing to say about it. Note the author has **not** authored the injury-recovery timings (D3 `status_consequence_rows`). | SRD `rules-of-the-game/injury-healing-system-strain/natural-healing-first-aid-poisons/`; queue D3; canon §psychosurgery | blocked on D3 |
 | 10 | **Armour and equipment** | Armour as damage reduction with an encumbrance cost; gear lists with prices | **OMIT armour-as-reduction; DEFER encumbrance** — **CORRECTED** | Armour-as-reduction is a **canon conflict**: `rulebook/3_PHYSICAL.md` §Armor states armour's effect is "a **ladder step**, never a subtraction", that it does not stack, and that cover and armour apply in that order. Measured difference: a Heavy Pistol removes an unarmoured 5-HP CWN target in **1.89** attacks and needs **12.21** against Soak 5 — subtraction can zero a hit, a one-step shift cannot. Encumbrance is a reserved numeric area and stays `DEFER`. The *gear list* is not portable either: NoöPunk's signature objects are setting artefacts. | SRD `gear-vehicles-cyberware/armor/armor-types/`, `…/weapons/weapon-stats-and-definitions/`; `rulebook/3_PHYSICAL.md` §Armor; `RULEBOOK.md` §51/§52; `ISSUE_571_COMBAT_INJURY_TRAUMA.md` §5.5 | none for armour; encumbrance blocked |
 | 11 | **Cyberware / BCI** | Cyberware with **System Strain** as a capacity limit | **MODIFY** | System Strain is the single most useful CWN import for this setting: it makes cybernetic cognition *cost* something, which is the whole point of a BCI that thinks with you. But queue D36 proposes "no capacity number, the implant is a permission plus a tag" and lists slots as the cheap alternative; a strain number was already rejected there as option C4. **This row and D36 are the same question** and must be answered together. | SRD `gear-vehicles-cyberware/cyberware/`, `…/cyberware/cyberware-alienation/`, `…/cyberware/system-strain/`; queue D36; canon §cybernetics | blocked on D36 |
-| 12 | **Hacking / network access** | Hacking as a skill check against a target, with hardware and access prerequisites | **MODIFY** | CWN's *prerequisite structure* — you need physical or credentialed access first — is exactly the "disconnected devices and physical ingress" the epic asks for, and it matches `ISSUE_222_CYBERSPACE_SCOPE.md`. The dice are item 4's problem. | SRD `hacking/hacking-mechanics/`, `hacking/programs/program-verbs/`; `ISSUE_222_CYBERSPACE_SCOPE.md` | after item 4 |
+| 12 | **Hacking / network access** | Hacking as a skill check against a target, with hardware and access prerequisites | **MODIFY — resolution procedure only; the access model stays NoöPunk's** | CWN's *prerequisite structure* — you need physical or credentialed access first — is exactly the "disconnected devices and physical ingress" the epic asks for, and it matches `ISSUE_222_CYBERSPACE_SCOPE.md`. The dice are item 4's problem. | SRD `hacking/hacking-mechanics/`, `hacking/programs/program-verbs/`; `ISSUE_222_CYBERSPACE_SCOPE.md` | after item 4 |
 | 13 | **Drones and vehicles** | Vehicle operation as a skill; drone control as a check; vehicle combat as an extension | **DEFER** | NoöPunk has no vehicle subsystem today and the epic does not require one. Adding it would be inventing a subsystem the setting does not yet need. Revisit if a scenario calls for it. | SRD `gear-vehicles-cyberware/drones/`, `…/vehicles/`, `rules-of-the-game/combat/vehicle-combat/`; — | not started |
 | 14 | **Character creation** | Pick attributes, pick skills, pick a **class/background**, roll or choose | **MODIFY** | The *procedure* is useful; the **class** is forbidden — the epic says no standard classes or levels, and #197 recorded "Geeks/Jocks/Freaks" as slang, explicitly *"not official or mandatory classes"*. NoöPunk's Lifepath framework (#144) is the creation spine and must not be replaced by a CWN background table. | SRD `character-creation/`, `…/backgrounds/`, `…/foci/`; #144; `rulebook/14_CHARACTER_GENERATION.md` §13.8; #197 scope | none — Lifepath is canonical |
 | 15 | **Advancement** | XP thresholds, level-ups, skill point spends | **DEFER** | The epic forbids levels. Fate advances by milestone and refresh; CWN by XP and levels. These are incompatible and the choice is the author's. `RULEBOOK.md` §3 records skill allocation as unspecified and queue D23 records the 25-point / Great-cap baseline without approving a distribution. | SRD `rules-of-the-game/character-advancement/`; queue D23 | blocked on D23 |
@@ -218,7 +218,7 @@ Additional rows created by the family:
 
 | # | Subsystem | Disposition | Rationale |
 | --- | --- | --- | --- |
-| 21 | **Effort as a committed-resource model** (WWN/SWN) | **MODIFY — leading candidate for D36** | The one portable mechanic that solves "the mind pays for the mind's work" without a third stress track: a lasting PSI effect or an active BCI link *commits* capacity rather than subtracting a number. Replaces D36's three weak options with a fourth. Specified in `ISSUE_564_RULES_COMPATIBILITY_SPEC.md` §3.1. |
+| 21 | **Effort as a committed-resource model** (WWN/SWN) | **ADOPT** — author ruling 2026-10-25: SWN's rules, for a learnable natural human ability | The one portable mechanic that solves "the mind pays for the mind's work" without a third stress track: a lasting PSI effect or an active BCI link *commits* capacity rather than subtracting a number. Replaces D36's three weak options with a fourth. Specified in `ISSUE_564_RULES_COMPATIBILITY_SPEC.md` §3.1. |
 | 22 | **Mutations and salvage** (AWN) | **MODIFY** | Directly serves the epic's "growing stranger as the shocks accelerate" and crisis-era scarcity, and it does so **without implying a Fall** — the pre-Fall canon holds. Needs an authored source of mutation in the setting before it can enter play. |
 | 23 | **Foci as a two-tier stunt shape** (WWN) | **MODIFY** | Stunts are approved but *"the full stunt catalogue"* is not (`strategy_game/RULEBOOK.md` §16). Foci supply a shape — two tiers, explicit prerequisite, no tree — not a mechanic. Spec §3.2. |
 | 24 | **Edges as classless differentiation** (CWN/AWN) | **MODIFY — candidate answer to D23** | The family's own answer to "differentiate without classes", which is exactly what this epic requires. Spec §3.4. |
@@ -339,3 +339,25 @@ The epic asks for these explicitly, and they are separable. Each is small enough
   that reading (§3.3).
 - It does **not** edit `RULEBOOK.md`, `strategy_game/RULEBOOK.md`, or any rulebook section. Those are
   author-owned and, for the legacy file, canonical.
+
+## 9. Author rulings (2026-10-25)
+
+Three rulings from the author settle the character of the conversion. Recorded in full in
+`docs/CWN_CHASSIS.md`; this section is the pointer so the matrix cannot be read as still-open advice.
+
+1. **Hacking runs on a ubiquitous network.** Access is **not** the scarce thing, and no CWN-style
+   reachability model is imported. `strategy_game/cyber.py` decides reachability *before* any check,
+   and that ordering is canonical. **Row 12 is thereby corrected**: CWN's access-prerequisite
+   structure is *not* adopted, and CWN supplies only the resolution procedure.
+2. **PSI = SWN's rules, for a learnable natural human ability.** **Row 21 (Effort) moves from
+   "leading candidate" to ADOPT.** The ontology stays NoöPunk's: natural, learnable, open to anyone —
+   not a virus, not an implant, not a class feature.
+3. **Where the family has no equivalent, author a NoöPunk-native subsystem.** The default for
+   Noösphere/cross-domain state, psychotronics, NHI contact, AGI/ASI and crisis-era network topology
+   is a new subsystem with its own spec, not prose and not a forced conversion row.
+
+**Scope ruling:** #564 governs **layer A only**; `1d10` stays (#111), `4dF` stays for the crossover
+(#389/#482). The 2d6 reversal is *not* taken — it would have touched 80 `1d10` sites across 41 files
+plus 41 test files.
+
+Gates A–D remain open. No number is approved by these rulings.
