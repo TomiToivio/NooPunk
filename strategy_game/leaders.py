@@ -367,6 +367,8 @@ def load_ukweli_leaders(path: Path | str | None = None) -> LeaderRoster:
     except json.JSONDecodeError as exc:
         raise RosterError(f"roster data is not valid JSON: {exc}") from exc
 
+    if not isinstance(data, dict):
+        raise RosterError(f"{target} must contain a JSON object, got {type(data).__name__}")
     if data.get("format") != ROSTER_FORMAT:
         raise RosterError(f"{target} declares format {data.get('format')!r}, expected {ROSTER_FORMAT!r}")
     return roster_from_dict(data)
