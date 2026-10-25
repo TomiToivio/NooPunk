@@ -175,4 +175,5 @@ pretending the item was met.
   is open. **The question is canon, not code:** are those three admitted as disciplines (and if so,
   as skills of their own or as capability tags under an existing skill), or dropped? Deleting them
   from the prototype asserts they are not canon; keeping them without a ruling leaves a trap. See
-  `docs/rules/ISSUE_572_NATIVE_SUBSYSTEMS.md` §8.5.
+  `docs/rules/ISSUE_572_NATIVE_SUBSYSTEMS.md` §7 and
+  `docs/design/ISSUE_572_ACCEPTANCE.md` §6.
