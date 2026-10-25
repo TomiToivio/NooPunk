@@ -160,6 +160,28 @@ the question had been answered.
 | 23 | **Program composition (verbs × subjects)** | Programs are a **Verb + Subject** pair with an Access cost | **MODIFY (proposal), layer A only** | Layer A has the escalation ladder (T0–T4, Trace/ICE) and the access classes but **no composition grammar**: an operator chooses a capability, not a program built from parts. The grammar is a naming/assembly convention over canon `Program`/`Infosec` checks, so it adds no dice and no new Skill — but it is a mechanical layer, so it needs the author's word. | CWN SRD `hacking/hacking-mechanics/`, `hacking/programs/program-verbs/`, `…/program-subjects/`; `rulebook/22_CYBERSPACE_AFTER_THE_CRISIS.md` | blocked on author approval |
 | 24 | **Encumbrance, crafting and gear maintenance** | Encumbrance slots; crafting and maintaining mods | **DEFER** | Reserved numeric area (`AGENTS.md` §4: equipment statistics), and the capability-not-catalogue doctrine (`rulebook/13_EQUIPMENT.md` §12.1) is the opposite of a slot count. Recorded so the row is not silently missing. | `AGENTS.md` §4; `rulebook/13_EQUIPMENT.md` §12.1 | blocked: reserved |
 
+### The Worlds Without Number and Ashes Without Number rows (#564 extension, 2026-10-25)
+
+The epic was extended to the whole Without Number family, and the extension promised "a small number
+of genuinely new rows (Effort as a committed-resource model; Foci↔stunts; mutations; Edges; salvage)".
+Those rows were **not in this matrix** — the file had zero mentions of either book — so they are added
+here, numbered on from row 24 and written to the same standard: measured against the tree, not argued.
+
+| # | Subsystem | WWN / AWN offers | Disposition | Rationale | Authoritative reference | Migration |
+| --- | --- | --- | --- | --- | --- | --- |
+| 25 | **Effort** | WWN: a committed-resource pool. Max Effort = `1 + relevant skill level + the class's attribute modifier`; a *partial* class gets one fewer, minimum 1. Powers **Commit Effort for the duration** (reclaimable as an Instant action) or **for the scene** (returns only at scene end). Pools are tracked per class and do not mix. | **MODIFY (proposal) — the leading candidate for the PSI / cybernetic-cognition cost model (D36)** | It is the only model in the family where an *ongoing* effect keeps a resource tied up, which is what "the mind pays for the mind's work" needs: a sustained psychic or BCI burden is represented **without a second hit-point track**, and the duration/scene split gives two grades of persistence for free. Crucially the shape is **content-free** — it carries no spells and no psionics — so it does not drag in SWN's virus-derived psi ontology that row 18 and the canon rulebook reject. What it needs is re-expression in layer A's currency (**exchanges and scenes**), and the pool size is an unauthored number. | WWN SRD `1.0 Character Creation/1.4.0 Classes.html` — **CC0** | blocked on D36 (same question as row 11) + D40; no code |
+| 26 | **Foci** | WWN: two-tier talents. First selection grants **Level 1**; selecting the same Focus again **adds Level 2** to Level 1. Any PC may take any Focus if the player can explain how they acquired it. | **MODIFY (proposal) — take the structure, never the catalogue** | A two-tier Focus is structurally identical to an approved **stunt plus its upgrade** (#389/#482), which means the crossover's stunt system does not need a new skeleton — it needs its existing one named consistently. The trap is the catalogue: WWN's Focus text is CC0 and therefore *legally* copyable, which makes it **more** important not to copy it, because NoöPunk's stunts must be authored for this setting (AGENTS.md §1) rather than ported from a fantasy default. | WWN SRD `1.0 Character Creation/1.6.0 Foci.html` — **CC0** | after the stunt catalogue exists; no code |
+| 27 | **Mutations** | AWN: mutation points bought at creation, with **damaging mutations granting points** (a debt economy) | **DEFER — with a canon conflict to settle first** | Mutation-as-mechanic implies a **mutagenic cause**, and NoöPunk's PSI is explicitly natural rather than virus-derived. The epic's "growing stranger as the shocks accelerate" requirement may want this, but it needs the author to decide whether strangeness has a *mutagenic explanation* in canon or a panpsychic one — the two produce different fiction. Separately, **AWN has no SRD**, so its text is not CC0; the mechanic could be reproduced independently but that is a design act, not an import. | AWN Free Edition (2025, 257 pp) — **no SRD; no page citation is admissible until the licensing pass admits it** | blocked on canon + licence |
+| 28 | **Edges** | CWN and AWN both answer advancement with **a single class plus Edges** instead of a class list | **DEFER — but the only family answer that is compatible with the epic's class ban** | It differentiates characters without **levels**, which is what the epic forbids. Whether one shared class still counts as "a class" is precisely the question rows 14–15 leave open, so this row is recorded next to them rather than decided. CWN's Edges are citable (subject to §5); AWN's are licence-blocked. | CWN SRD `character-creation/` (Edges path to be pinned by the licensing pass); AWN — **no SRD** | blocked on the class/level question (rows 14–15) |
+| 29 | **Salvage and survival** | AWN: salvage, scarcity and survival procedures, built for three apocalypse models | **DEFER** | The *scarcity* framing is usable for crisis-era economy **without** implying a Fall, which canon requires (pre-Fall alternate timeline). But its text is licence-blocked, and the epic's "disconnected devices and physical ingress" need is already met by CWN's **access prerequisites** (row 12), so nothing here is load-bearing. Recorded so the omission is deliberate rather than an oversight. | AWN — **no SRD** | not started; blocked on licence |
+
+**Net, and it is a licensing asymmetry rather than a design one.** WWN contributes two *structures*
+(Effort, Foci) and is the **only one of the four whose SRD text may be copied verbatim** — which is
+also why it is the one to copy least from, since the copyable material is fantasy content NoöPunk would
+have to re-author anyway. AWN contributes genre procedures but **no SRD exists**, so no AWN text may
+enter the tree at all; every AWN-derived row above is therefore either `DEFER` or a design act rather
+than an import. CWN's SRD is the community compile described in §5.
+
 ### SWN: what actually enters
 
 | SWN element | Disposition | Why |
@@ -232,6 +254,14 @@ governs is #566's question**, which this section must not pre-answer.
 
 A secondary answer is needed for §3.2: **does "the present 3d6 core-check model" mean attribute
 generation, or a third kernel?**
+
+**Effect of the four-book extension on this choice (2026-10-25).** The `2d6` option is no longer
+"CWN's engine": CWN, SWN, WWN and AWN are **one chassis with per-book extensions**, so adopting it is
+adopting a single engine that already spans cyberpunk, space, fantasy and post-apocalypse — the same
+range NoöPunk's own setting crosses (cities, crisis infrastructure, NHI contact). That makes it a
+*coherent* option rather than a patchwork, which is the strongest argument the extension adds. It does
+not change the price: the Fate `4dF` kernel stays **approved** until it is explicitly overruled, and
+the extension's rows 25–29 are all gated on this answer and on D36/D40.
 
 ## 7. Proposed sub-issues
 
