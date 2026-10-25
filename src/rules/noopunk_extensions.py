@@ -16,10 +16,18 @@ See `docs/rules/ISSUE_572_NATIVE_SUBSYSTEMS.md` §7.
 """
 from __future__ import annotations
 
+from collections import deque
 from dataclasses import dataclass, field
 
-CHANNELS = frozenset({"wired", "radio", "mesh", "bci", "courier", "psychic", "psychotronic"})
-DISCIPLINES = frozenset({"telepathy", "perception", "precognition", "influence", "psychokinesis", "healing", "shielding"})
+#: Media that actually carry a network hop. A psychic or psychotronic link does **not**: PSI is
+#: resolved where the network is not (#572's own contract), and a device channel is not a login.
+NETWORK_CHANNELS = frozenset({"wired", "radio", "mesh", "bci", "courier"})
+PSI_CHANNELS = frozenset({"psychic", "psychotronic"})
+CHANNELS = NETWORK_CHANNELS | PSI_CHANNELS
+
+#: The six canonical PSI skills (#159), lowercased for this module's string vocabulary.
+DISCIPLINES = frozenset({"esp", "telepathy", "psychokinesis", "precognition",
+                         "psychic_defence", "noospace"})
 
 
 @dataclass(frozen=True)
@@ -45,22 +53,27 @@ class Reach:
 
 
 def reach(links: tuple[Link, ...], source: str, target: str,
-          *, channels: frozenset[str] = CHANNELS,
-          require_authorization: bool = False) -> Reach:
+          *, channels: frozenset[str] = NETWORK_CHANNELS,
+          require_authorization: bool = False,
+          allow_psi_channels: bool = False) -> Reach:
     """Enumerate actual hops, not inferred social ties or a magical omninet.
 
     Ubiquitous means heterogeneous reachable devices and media can form a mesh;
     neither physical air gaps nor psychic ability automatically provide TCP access.
+    Psychic and psychotronic links are excluded unless `allow_psi_channels` is passed: they
+    reach a *mind* or a device-mediated mind, never a network endpoint.
     """
     if source == target:
         return Reach(True, (), "local")
     if not source or not target:
         return Reach(False, (), "unknown endpoint")
-    queue = [(source, ())]
+    allowed = channels | PSI_CHANNELS if allow_psi_channels else channels
+    queue: deque[tuple[str, tuple[str, ...]]] = deque([(source, ())])
     seen = {source}
-    for node, path in queue:
+    while queue:
+        node, path = queue.popleft()
         for link in links:
-            if (not link.operational or link.channel not in channels
+            if (not link.operational or link.channel not in allowed
                     or (require_authorization and not link.authorized)
                     or link.source != node or link.target in seen):
                 continue

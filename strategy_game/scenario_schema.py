@@ -230,7 +230,7 @@ def build_local_game(path: Path | str | None = None):
         from .local_slice import DATA
 
         path = DATA
-    data, problems = load_scenario(path)
+    _data, problems = load_scenario(path)
     if problems:
         raise ScenarioSchemaError("; ".join(problems))
     from .local_slice import Game

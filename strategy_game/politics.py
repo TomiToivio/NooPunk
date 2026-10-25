@@ -144,7 +144,7 @@ class Signifier:
         return {
             "identifier": self.identifier,
             "label": self.label,
-            "kind": self.kind.value,
+            "kind": SignifierKind(self.kind).value,
             "provenance": self.provenance.to_dict(),
         }
 
