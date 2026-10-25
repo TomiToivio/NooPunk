@@ -56,6 +56,14 @@ class ShippedRosterTests(unittest.TestCase):
             with self.assertRaises(RosterError):
                 load_ukweli_leaders(path)
 
+    def test_non_object_json_root_is_refused_cleanly(self) -> None:
+        for raw in ([], None, "not a roster", 42):
+            with self.subTest(root=raw), tempfile.TemporaryDirectory() as tmp:
+                path = Path(tmp) / "roster.json"
+                path.write_text(json.dumps(raw), encoding="utf-8")
+                with self.assertRaisesRegex(RosterError, "must contain a JSON object"):
+                    load_ukweli_leaders(path)
+
     def test_round_trip_is_lossless_for_the_validator(self) -> None:
         again = roster_from_dict(self.roster.to_dict())
         self.assertEqual(again.off_vocabulary(), ())
