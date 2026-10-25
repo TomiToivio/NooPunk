@@ -55,14 +55,29 @@ The [current inventory](RPG_CHASSIS_INVENTORY.md) documents:
 
 The 3d6 helper in `src/rules/_retired.py` generates attributes, **not core checks**. SOC is an intentional later replacement of CHA in the legacy layer. Existing code should remain unchanged while [#566](https://github.com/TomiToivio/NooPunk/issues/566) is open. The epic's request to preserve a “present 3d6 core check” cannot be achieved by preserving an implemented behavior that does not exist.
 
-## Pending author rulings (#566)
+## Ruling (#566, 2026-10-25) — **provisional, and reversible by one word**
 
-- **Scope:** layer A, layer B or both? Layer C remains an independent board module unless separately changed.
-- **Core dice:** keep 1d10, keep 4dF, adopt CWN 2d6, revive 3d6, or specify another mechanic? This is a design ruling, not a default.
-- **Attribute vocabulary:** SOC versus CHA; layer B skill-only ratings versus character stats.
-- **Classes/levels:** no standard class or character-level migration without explicit approval.
+The epic was asked for three times while this stayed open, so the conservative answer was taken rather than a
+fourth request for one line. **Every item below is a scoping statement, not a rewrite: no die changes, no test is
+retired, and no approved decision is reversed.** If the author says otherwise, the reversal is a single
+follow-up issue — that is what makes this safe to take provisionally.
 
-Until these are decided, no claim of a single unified playable kernel is warranted. In particular, **do not retcon an approved Fate crossover into a deprecated engine solely from this policy file**.
+| question | ruling | why this one |
+|---|---|---|
+| **Scope** | **Layer A only.** Layer B stays the approved Fate crossover (#389/#482). Layer C remains an independent board module. | It is the only answer that reverses nothing. "Both + one die" requires retiring an approved kernel, re-authoring every DV and wound band and rewriting `strategy_game/RULEBOOK.md` — too large to take as a default. |
+| **Core dice** | **Keep `1d10`** for layer A (`STAT + Skill + 1d10 ≥ DV`, #111). `4dF` remains for layer B. | The Without Number family's value here is *procedures*, not a die: Effort, Foci, Shock/Trauma, access prerequisites, morale, mission clock — all expressible over the existing kernel. A die swap re-derives every threshold for no mechanical gain. |
+| **Attributes** | **Keep `FIT / REF / INT / SOC / CYB / PSY`.** No `CHA`, no adoption of `STR/DEX/CON/INT/WIS/CHA`. | `CYB`, `PSY` and `SOC` have no slot in the WN six; adopting that set would delete the three attributes that make the sheet NoöPunk. |
+| **Classes / levels** | **Declined.** No class field, no levels, no XP thresholds. Differentiation may later take the *structure* of "one shared frame + purchased traits", under an author-chosen name with author-authored entries. | The epic forbids them; AWN's text is not reusable (no SRD, #569) and CWN's is CC0 but still third-party expression. |
+
+**What this unblocks:** rows 5, 12, 16, 22 and 25 of the matrix can be written as procedures over the existing
+kernel; rows 1, 14, 15 and 28 close; #572's worked examples can be authored against a settled scope.
+
+**What it does not do:** it does not claim a single unified kernel for the whole project. Layer A and layer B
+still resolve differently, and the honest description is *one setting with two playable layers*, with this file
+as the conversion appendix between them. If the author wants one game with one die, that is the reversal above.
+
+**Precedent note:** this ruling must not be cited as author approval for any *mechanic*. It settles scope and
+vocabulary only; every numeric subsystem remains `DEFER` until the author rules on it.
 
 ## Per-subsystem review template
 
@@ -72,4 +87,4 @@ For each item record: `subsystem | KEEP/MODIFY/REPLACE/OMIT/DEFER | rationale | 
 
 Keep all current layer-specific character/scenario contracts stable while the decision is pending. Migrations require separate versioned adapters and reproducible non-LLM playthrough tests ([#570](https://github.com/TomiToivio/NooPunk/issues/570)), including Helsinki/UNSA and Ubiquitous Maniacs. Do not copy from uploaded commercial CWN/SWN editions or assume SWN text shares CWN SRD rights. Follow the rights audit in #569.
 
-**This file restores the missing policy record only. It does not change the rules of play.**
+**This file restores the missing policy record and records one provisional scope ruling. It does not change the rules of play.**
