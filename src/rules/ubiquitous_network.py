@@ -231,8 +231,10 @@ class IntrusionSession:
         `CYB` for `Interface`/`Infosec` — supplied by the caller from `data/rules/skills.json`
         rather than guessed here.
 
-        `quiet=True` is the deliberate, slower attempt: it costs the same AP but halves the
-        exposure a success adds (TUNING), which is the only way to trade time for silence.
+        `quiet=True` is the deliberate attempt: it costs the same AP but **drops the margin
+        term**, so a quiet success adds only the base action cost instead of growing with how
+        far the check passed. (It does not literally halve the total — at large margins it is
+        more generous than that, which is why a quiet success still costs less than a failure.)
         """
         self._spend()
         result = core.resolve_check(stat=stat, skill=skill_rating, target=dv,
@@ -259,9 +261,15 @@ class IntrusionSession:
         return step
 
     def exit(self) -> Step:
-        """Leave. Always available, always costs something — the canon rule for projected states."""
-        self._spend()
-        step = Step("exit", TUNING_AP_PER_ACTION, 0, self.exposure, self.alert,
+        """Leave. Always available, always costs something — the canon rule for projected states.
+
+        "Always available" has to mean it: spending the last AP and then being unable to
+        disengage is the one state an intrusion must never trap you in. The price is the
+        rest of the exchange's AP, not a refusal.
+        """
+        forfeited = self.ap
+        self.ap = 0
+        step = Step("exit", forfeited, 0, self.exposure, self.alert,
                     outcome="disconnected", breach=self.breach)
         self.log.append(step)
         return step
