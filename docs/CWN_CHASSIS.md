@@ -55,7 +55,9 @@ The [current inventory](RPG_CHASSIS_INVENTORY.md) documents:
 
 The 3d6 helper in `src/rules/_retired.py` generates attributes, **not core checks**. SOC is an intentional later replacement of CHA in the legacy layer. Existing code should remain unchanged while [#566](https://github.com/TomiToivio/NooPunk/issues/566) is open. The epic's request to preserve a “present 3d6 core check” cannot be achieved by preserving an implemented behavior that does not exist.
 
-## Ruling (#566, 2026-10-25) — **provisional, and reversible by one word**
+## Ruling (#566, 2026-10-25) — **CONFIRMED by the author**, and reversible by one word
+
+*Confirmed 2026-10-25 by explicit author choice, not inherited from the provisional record. The scope answer below is now final for #564: **layer A only**, `1d10` stays, `4dF` stays for layer B. The provisional framing was correct and is no longer provisional.*
 
 The epic was asked for three times while this stayed open, so the conservative answer was taken rather than a
 fourth request for one line. **Every item below is a scoping statement, not a rewrite: no die changes, no test is
@@ -67,7 +69,7 @@ follow-up issue — that is what makes this safe to take provisionally.
 | **Scope** | **Layer A only.** Layer B stays the approved Fate crossover (#389/#482). Layer C remains an independent board module. | It is the only answer that reverses nothing. "Both + one die" requires retiring an approved kernel, re-authoring every DV and wound band and rewriting `strategy_game/RULEBOOK.md` — too large to take as a default. |
 | **Core dice** | **Keep `1d10`** for layer A (`STAT + Skill + 1d10 ≥ DV`, #111). `4dF` remains for layer B. | The Without Number family's value here is *procedures*, not a die: Effort, Foci, Shock/Trauma, access prerequisites, morale, mission clock — all expressible over the existing kernel. A die swap re-derives every threshold for no mechanical gain. |
 | **Attributes** | **Keep `FIT / REF / INT / SOC / CYB / PSY`.** No `CHA`, no adoption of `STR/DEX/CON/INT/WIS/CHA`. | `CYB`, `PSY` and `SOC` have no slot in the WN six; adopting that set would delete the three attributes that make the sheet NoöPunk. |
-| **Classes / levels** | **Declined.** No class field, no levels, no XP thresholds. Differentiation may later take the *structure* of "one shared frame + purchased traits", under an author-chosen name with author-authored entries. | The epic forbids them; AWN's text is not reusable (no SRD, #569) and CWN's is CC0 but still third-party expression. |
+| **Classes / levels** | **Declined.** No class field, no levels, no XP thresholds. **Edges are admitted** (author ruling 2026-10-25): classless, purchased, author-authored entries — the *structure* of "one shared frame + purchased traits" the earlier text anticipated, now named. | The epic forbids them; AWN's text is not reusable (no SRD, #569) and CWN's is CC0 but still third-party expression. |
 
 **What this unblocks:** rows 5, 12, 16, 22 and 25 of the matrix can be written as procedures over the existing
 kernel; rows 1, 14, 15 and 28 close; #572's worked examples can be authored against a settled scope.
@@ -88,3 +90,61 @@ For each item record: `subsystem | KEEP/MODIFY/REPLACE/OMIT/DEFER | rationale | 
 Keep all current layer-specific character/scenario contracts stable while the decision is pending. Migrations require separate versioned adapters and reproducible non-LLM playthrough tests ([#570](https://github.com/TomiToivio/NooPunk/issues/570)), including Helsinki/UNSA and Ubiquitous Maniacs. Do not copy from uploaded commercial CWN/SWN editions or assume SWN text shares CWN SRD rights. Follow the rights audit in #569.
 
 **This file restores the missing policy record and records one provisional scope ruling. It does not change the rules of play.**
+
+---
+
+## Three further author rulings (2026-10-25) — what kind of import this is
+
+The four answers above settle *scope*. These settle *character*, and two of them reverse earlier
+agent recommendations.
+
+### 1. Hacking runs on a **ubiquitous network**, as NoöPunk already has it
+
+CWN's matrix-like reachability **is not adopted**. NoöPunk's assumption stands: the network is
+ambient, so **access is not the scarce thing**. `strategy_game/cyber.py` already decides reachability
+*before* any resolution check, and that ordering is canonical.
+
+**Consequence:** CWN contributes the *resolution procedure* for an intrusion, never the *access
+model*. Any row that made "can you reach it?" the interesting question imports the wrong setting.
+This **supersedes** the earlier suggestion in `ISSUE_564_CWN_SWN_CHASSIS_MATRIX.md` that CWN's
+access prerequisites could stand in for physical ingress.
+
+### 2. PSI = **SWN's rules**, for a **learnable natural human ability**
+
+- **Mechanically:** SWN's structure — **Effort** as a committed pool, techniques that commit and
+  release it.
+- **Ontologically:** a **natural human ability that can be learned**. Not a virus, not an implant,
+  not a class feature, not a caste-exclusive discipline.
+
+So **Effort is adopted** and NoöPunk's origin story is preserved as the fiction. This supersedes
+"DEFER Effort" in `ISSUE_572_NOOPUNK_EXTENSIONS.md` and answers the PSI half of **D36**.
+
+**Must not follow the import:** that PSI is rare, that it is a separate progression track, or that
+only a psychic class may hold it. Anyone may learn it; the pool makes the price legible.
+
+**Licensing note:** using SWN's *rules pattern* is not permission to copy SWN text, tables or
+technique names — SWN stays `blocked-unverified` (#569). Effort must be implemented independently from
+the described mechanic.
+
+### 3. Where the family has **no equivalent**, author a **new NoöPunk subsystem**
+
+The default is no longer "KEEP-ORIGINAL and leave it as prose". If CWN/SWN/AWN/WWN has no equivalent,
+the answer is a **NoöPunk-native subsystem** of its own, not a forced conversion row.
+
+Directly affected: Noösphere / cross-domain state, psychotronics, NHI contact, AGI/ASI, crisis-era
+network topology. Each needs its own spec, and each must stay deterministic and tabletop-convertible
+(no LLM in the loop, per the #570 harness).
+
+---
+
+## Still open after these rulings
+
+| Question | Where |
+| --- | --- |
+| Effort pool size, and what overspend costs | D36 (PSI half answered in kind; numbers `OPEN`) |
+| Does an implant have a capacity limit (non-PSI half)? | D36 |
+| How many Edges, how often, chosen or Lifepath-bound? | D23 |
+| Which access tiers a ubiquitous network distinguishes, and what each unlocks | #572 |
+| The subsystem specs themselves | #572 |
+
+Gates A–D stay open. Nothing here approves a number.

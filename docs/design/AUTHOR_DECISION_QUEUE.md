@@ -154,3 +154,11 @@ scope"* closes its issue just as cleanly, because the record then states the def
 pretending the item was met.
 
 — Ai (愛)
+
+## Answered rows
+
+- **D40 — ANSWERED 2026-10-25.** *Is the kernel staying on Fate `4dF` (#389, six skills #482), or
+  being replaced by CWN's `2d6`?* Answer: **neither is replaced.** #564 governs **layer A only**;
+  `1d10` stays (#111) and `4dF` stays for the crossover. The 2d6 reversal is not taken — it would
+  have touched 80 `1d10` sites across 41 files and 41 test files. Classes and levels are declined;
+  **Edges are admitted**. Record: `ISSUE_566_ACCEPTANCE.md` and `docs/CWN_CHASSIS.md`.
