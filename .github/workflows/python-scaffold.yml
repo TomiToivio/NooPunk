@@ -26,6 +26,10 @@ jobs:
         # issue #282: strategy_game is a standalone package with its own tests, and
         # `discover -s tests` never reaches it. Without this step its tests exist and never run.
         run: python -m unittest discover -s strategy_game/tests -p "test_*.py"
+      - name: Seeded offline scenario playthroughs (#570)
+        # Separate CI gate: a generic unit-test discovery pass must never mask
+        # missing scenario completion, replay, or persistence coverage.
+        run: python -m unittest strategy_game.tests.test_deterministic_playthroughs -v
       - name: Smoke-check the strategy-game view model
         run: python -m strategy_game | python -c "import json,sys; d=json.load(sys.stdin); assert set(d) == {'schema_version','locations','network_nodes','network_edges','assets'}, d"
       - name: Smoke-check executable game commands
