@@ -99,8 +99,10 @@ SCENARIOS = (
         save_name="ward.json",
     ),
     _Run(
-        name="ubiquitous-maniacs (legacy two-day prototype)",
-        argv=["-m", "strategy_game.rpg", "--scenario", "ubiquitous-maniacs", "--new"],
+        name="ubiquitous-maniacs-legacy (two-day prototype)",
+        # `--scenario ubiquitous-maniacs` now routes to the five-seat case (main, after #565);
+        # the old prototype is the explicit `-legacy` route.
+        argv=["-m", "strategy_game.rpg", "--scenario", "ubiquitous-maniacs-legacy", "--new"],
         stdin=(
             "read_form\n"
             "enter_chamber\n"
