@@ -78,14 +78,19 @@ def append(connection: sqlite3.Connection, *events: Event) -> int:
     Duplicates (same ``simulation_id`` + ``event_id``) are skipped, which is what
     makes replaying a log into a live database safe.
     """
+    # Filter duplicates before INSERT: INSERT OR IGNORE still advances SQLite's
+    # AUTOINCREMENT counter and creates false deletion alarms on later appends.
     written = 0
     for event in events:
         cursor = connection.execute(
             """
-            INSERT OR IGNORE INTO events (
+            INSERT INTO events (
                 simulation_id, event_id, turn, occurrence, timestamp, actor,
                 action_type, target, content, location, visibility, source, synthetic
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ) SELECT ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+            WHERE NOT EXISTS (
+                SELECT 1 FROM events WHERE simulation_id = ? AND event_id = ?
+            )
             """,
             (
                 event.simulation_id,
@@ -101,6 +106,8 @@ def append(connection: sqlite3.Connection, *events: Event) -> int:
                 event.visibility,
                 event.source,
                 1 if event.synthetic else 0,
+                event.simulation_id,
+                event.event_id,
             ),
         )
         written += cursor.rowcount
@@ -195,6 +202,11 @@ def list_exchanges_for_export(
     )
     if run is None:
         return []
+    if run["mixed_synthetic"]:
+        raise EventLogError(
+            f"refusing to export simulation {simulation_id!r}: mixed synthetic "
+            "and empirical data cannot be exported as a single provenance kind."
+        )
     if run["synthetic"] != synthetic:
         raise EventLogError(
             f"refusing to export simulation {simulation_id!r}: it is "
