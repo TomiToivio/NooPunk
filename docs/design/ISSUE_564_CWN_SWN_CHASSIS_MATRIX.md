@@ -198,6 +198,51 @@ not a second rulebook here, which is what the epic asked for.
 
 ---
 
+## 4b. The four-book family (added 2026-10-25)
+
+CWN, SWN, **AWN** and **WWN** are one engine with per-book extensions, so they are disposed of as a
+family rather than four times over.
+
+**Shared by all four:** `2d6 + attribute modifier + skill` vs a target; `d20 + attack bonus` vs AC;
+four saves (Physical, Evasion, Mental, Luck); Shock and Trauma for lethality; Foci as two-tier feat
+packages; **Effort** as a committed-resource pool.
+
+| Book | Adds | Disposition |
+| --- | --- | --- |
+| **CWN** | single class + Edges; hacking access prerequisites; cyberware + System Strain | **MODIFY** — rows 11, 12, 14 |
+| **SWN** | Effort psionics; starships; faction turn; world/sector tags | **BLOCKED (licence)** — `blocked-unverified` in the rights ledger, so **nothing may be adapted**. CWN supplies the same saves and morale procedures (CC0-verified), so no capability is lost. Rows 18, 20 stay OMIT on setting grounds anyway. |
+| **AWN** | single class + Edges; Trauma; mutations (bought with points; damaging ones grant points); salvage/survival | **MODIFY** — rows 21, 22 |
+| **WWN** | Foci in full; Effort-based High/Low Magic; Legate tier; world tags | **MODIFY** Foci + Effort; **OMIT** magic and Legates |
+
+Additional rows created by the family:
+
+| # | Subsystem | Disposition | Rationale |
+| --- | --- | --- | --- |
+| 21 | **Effort as a committed-resource model** (WWN/SWN) | **MODIFY — leading candidate for D36** | The one portable mechanic that solves "the mind pays for the mind's work" without a third stress track: a lasting PSI effect or an active BCI link *commits* capacity rather than subtracting a number. Replaces D36's three weak options with a fourth. Specified in `ISSUE_564_RULES_COMPATIBILITY_SPEC.md` §3.1. |
+| 22 | **Mutations and salvage** (AWN) | **MODIFY** | Directly serves the epic's "growing stranger as the shocks accelerate" and crisis-era scarcity, and it does so **without implying a Fall** — the pre-Fall canon holds. Needs an authored source of mutation in the setting before it can enter play. |
+| 23 | **Foci as a two-tier stunt shape** (WWN) | **MODIFY** | Stunts are approved but *"the full stunt catalogue"* is not (`strategy_game/RULEBOOK.md` §16). Foci supply a shape — two tiers, explicit prerequisite, no tree — not a mechanic. Spec §3.2. |
+| 24 | **Edges as classless differentiation** (CWN/AWN) | **MODIFY — candidate answer to D23** | The family's own answer to "differentiate without classes", which is exactly what this epic requires. Spec §3.4. |
+| 25 | **Four named saves** | **MODIFY** | Vocabulary, not arithmetic: a save is a check against a fixed trait under any kernel. `Luck` is a real tonal question — a game about structural power may want to refuse it. Spec §3.3. |
+
+**Specification:** `ISSUE_564_RULES_COMPATIBILITY_SPEC.md` carries the procedures themselves, written
+kernel-agnostically so that D40 chooses one line rather than rewriting the file. Combat, Shock,
+Trauma and healing are **not** re-specified there — they are `ISSUE_571`'s.
+
+**Licensing, per the repository's own ledger — not per an assumption.** `data/sources/game_system_rights.json`
+(read by `tools/release_packaging_guard.py`) records each source with its evidence and access date:
+
+| Source | Ledger decision | Consequence here |
+| --- | --- | --- |
+| **CWN SRD** | `verified-public-domain` (CC0, three agreeing readings, checked 2026-10-10) | SRD text **and** mechanics reusable; scope limited to the SRD. **This is the only book this epic may adapt today.** |
+| **SWN** | `blocked-unverified` | **Nothing may be adapted.** Sine Nomine publishes a free *edition* for SWN, not an SRD; the CWN/WWN CC0 listings do not cover it. |
+| **WWN** | **not yet in the ledger** | The SRD's own introduction waives copyright via **CC0** and states its purpose is to show *"exactly what I consider to be freely-usable game mechanics"*, including the right *"to use its text verbatim in a commercial product"*. Verified at the source — but it needs a **ledger entry with its access date** before this repo may rely on it, exactly as CWN has. |
+| **AWN** | **not yet in the ledger, and unverified** | Published 2025. **No SRD availability is established.** Do not adapt its text until an entry exists. |
+
+The licensing sub-issue is **#569**; nothing here presumes its outcome. Net effect: the epic is
+**CWN-only in practice**, and the WWN/AWN material above is *candidate* material pending ledger
+entries — which is why the family is described as one engine rather than treated as four available
+sources.
+
 ## 5. Licensing
 
 > **CORRECTED 2026-10-25.** The first version of this section said *"CWN and SWN SRDs are usable
