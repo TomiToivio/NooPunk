@@ -113,6 +113,14 @@ class NaturalPsi:
         return self.capacity - self.used
 
     def learn(self, discipline: str) -> int:
+        """Take one learning step; returns the new rating.
+
+        A discipline enters at **0**, which means *known but unrated*: it appears in
+        `disciplines` (so it can hold Effort, which gates on presence rather than rating)
+        but has no rating yet. Each further call raises it by one, to the 4 cap — so the
+        climb is 0, 1, 2, 3, 4: five steps, the first of which unlocks rather than rates.
+        A new discipline is seeded at -1 precisely so that this first step lands on 0.
+        """
         if not self.aptitude or discipline not in DISCIPLINES:
             raise ValueError("natural aptitude and known discipline required")
         current = self.disciplines.get(discipline, -1)
