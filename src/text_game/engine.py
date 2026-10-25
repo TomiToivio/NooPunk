@@ -63,6 +63,9 @@ class GameEngine:
     connection: sqlite3.Connection | None = None
     controllers: dict[str, Any] = field(default_factory=dict)
     gm_controller: Any | None = None
+    #: Dice source for the layer-A kernel. `None` means the global `random`, which is what a
+    #: tabletop session does; `random.Random(seed)` makes a run replayable (#570).
+    rng: Any | None = None
     events: list[Event] = field(default_factory=list)
 
     def __post_init__(self) -> None:
@@ -363,6 +366,9 @@ class GameEngine:
             "skill": skill,
             "modifier": modifier,
             "roll": roll,
+            # A pinned `roll` still wins inside the kernel; otherwise the engine's own dice source
+            # decides, so a seeded run and a tabletop run use the same path.
+            "rng": self.rng,
         }
         if defender is not None:
             kwargs["defender_sheet"] = defender[1]
