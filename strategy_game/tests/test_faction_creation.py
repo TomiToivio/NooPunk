@@ -109,6 +109,21 @@ class VocabularyTests(unittest.TestCase):
         self.assertIs(model.numeric_scale_approved, False)
 
 
+class MalformedRootTests(unittest.TestCase):
+    """A JSON array, null or scalar is refused as the wrong document, not as an AttributeError."""
+
+    def test_a_non_object_root_is_refused_cleanly(self) -> None:
+        import json
+        import tempfile
+
+        for raw in ([], None, "a roster", 42):
+            with self.subTest(root=raw), tempfile.TemporaryDirectory() as tmp:
+                path = Path(tmp) / "faction_creation.json"
+                path.write_text(json.dumps(raw), encoding="utf-8")
+                with self.assertRaisesRegex(ValueError, "must contain a JSON object"):
+                    load_faction_creation(path)
+
+
 class TagKindTests(unittest.TestCase):
     """Issue #346: distinguish belief, competence, equipment, relationship, asset and goal."""
 

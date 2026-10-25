@@ -608,6 +608,8 @@ def load_faction_creation(path: Path | str | None = None) -> FactionCreationMode
     target = Path(path) if path is not None else DATA_PATH
     with open(target, encoding="utf-8") as handle:
         data = json.load(handle)
+    if not isinstance(data, dict):
+        raise ValueError(f"{target} must contain a JSON object, got {type(data).__name__}")
     declared = data.get("format")
     if declared is not None and declared != CREATION_FORMAT:
         raise ValueError(f"not a NoöPunk faction-creation document: format={declared!r}")
