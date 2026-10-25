@@ -239,6 +239,8 @@ def load_map_spec(path: Path | str | None = None) -> MapSpec:
         raise MapSpecError(f"scenario data not found at {target}") from exc
     except json.JSONDecodeError as exc:
         raise MapSpecError(f"scenario data is not valid JSON: {exc}") from exc
+    if not isinstance(data, dict):
+        raise MapSpecError(f"{target} must contain a JSON object, got {type(data).__name__}")
 
     declared = str(data.get("format", ""))
     if not declared.startswith(DATA_FORMAT_PREFIX):

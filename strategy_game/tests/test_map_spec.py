@@ -172,6 +172,20 @@ class DiagramAntiDriftTests(unittest.TestCase):
         self.assertIn("open question", self.text.lower())
 
 
+class MalformedRootTests(unittest.TestCase):
+    """The map loader refuses a foreign root type with its own error, not an AttributeError."""
+
+    def test_a_non_object_root_is_refused_cleanly(self) -> None:
+        import tempfile
+
+        for raw in ("[]", "null", '"map"', "7"):
+            with self.subTest(root=raw), tempfile.TemporaryDirectory() as tmp:
+                path = Path(tmp) / "map.json"
+                path.write_text(raw, encoding="utf-8")
+                with self.assertRaisesRegex(ms.MapSpecError, "must contain a JSON object"):
+                    ms.load_map_spec(path)
+
+
 class ValidatorTests(unittest.TestCase):
     """The validator reports rather than raises."""
 
