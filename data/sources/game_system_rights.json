@@ -154,6 +154,32 @@
       "attribution": null
     },
     {
+      "id": "ashes-without-number-srd",
+      "source": "Ashes Without Number (Kevin Crawford / Sine Nomine)",
+      "url": null,
+      "kind": "published-book",
+      "license": "NOT ESTABLISHED from an authoritative source",
+      "license_url": null,
+      "decision": "blocked-unverified",
+      "role_in_noopunk": "Candidate gamist influence for the acceleration-era material in #564: Edges, Trauma, mutations, salvage. NOT adopted.",
+      "license_checked": "2026-10-25",
+      "how_verified": "NOT VERIFIED. No Ashes Without Number SRD was located. The book is a 2025 commercial release; the CWN and WWN CC0 SRDs do not extend to it, and stars-without-number-srd is the precedent that a free edition of a book is not an SRD. Recorded as blocked, NOT as a negative finding about its terms.",
+      "notes": "Nothing from AWN may be imported while this entry stands. Promote only after reading an Ashes Without Number SRD's own licence page and recording the URL and access date, as a separate entry clearly distinguished from the commercial book. The #564 matrix already treats AWN material as candidate-only for exactly this reason."
+    },
+    {
+      "id": "worlds-without-number-srd",
+      "source": "Worlds Without Number System Reference Document (Kevin Crawford / Sine Nomine)",
+      "url": "https://wwn.quadrifons.com/",
+      "kind": "srd-text",
+      "license": "CC0 (public-domain dedication)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "decision": "verified-public-domain",
+      "role_in_noopunk": "Gamist influence: Foci (two-tier feat packages), Effort as a committed-resource pool, world tags, faction turn. Candidate material for the #564 chassis question; not adopted.",
+      "license_checked": "2026-10-25",
+      "how_verified": "Read directly at the SRD's own introduction, the same pattern that makes the CWN entry load-bearing. The document states: 'Regarding this document, its copyright and related rights are waived via CC0'. It states its purpose is 'to give other RPG designers an explicit document showing exactly what I consider to be freely-usable game mechanics', and that the right it confers is 'the right to use its text verbatim in a commercial product'. The author adds that he has 'absolutely no right to edit, approve, police, or restrict materials created with it'.",
+      "notes": "SCOPE MATTERS, exactly as for CWN: the CC0 dedication covers the SYSTEM REFERENCE DOCUMENT, not the full commercial book, its art, or its protected setting material. This entry closes a gap: stars-without-number-srd already observed that 'the CWN and Worlds Without Number SRD listings both carry the CC0 waiver', but WWN had no entry of its own, so no artefact in this repo actually recorded its terms. Recorded 2026-10-25 for issue #569."
+    },
+    {
       "id": "apocalypse-world",
       "source": "Apocalypse World (D. Vincent and Meguey Baker)",
       "url": "http://apocalypse-world.com/pbta/policy",
