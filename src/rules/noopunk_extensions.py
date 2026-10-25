@@ -2,6 +2,17 @@
 
 Opt-in subsystem, not a replacement for the existing tabletop 1d10 or Fate resolvers.
 All operations are deterministic, offline, and serializable. No publisher prose.
+
+**Scope note (2026-10-25, after both prototypes landed).** This module is a *scenario-level link
+graph*: it answers "is there an actual chain of hops from A to B", which is what a scenario author
+needs. The **rules owner** for the same territory is
+`src/rules/ubiquitous_network.py` (reach table, era dial, exposure economy) and
+`src/rules/natural_psi.py` (training, Effort, pressure). Do not grow a second rule engine here.
+
+`DISCIPLINES` below is **illustrative, not canonical**: `rulebook`/`data/rules/skills.json` fix PSI
+to exactly six skills (#159) — `ESP`, `Telepathy`, `Psychokinesis`, `Precognition`,
+`Psychic Defence`, `Noöspace` — so `influence`, `healing` and `shielding` have no canon standing.
+See `docs/rules/ISSUE_572_NATIVE_SUBSYSTEMS.md` §7.
 """
 from __future__ import annotations
 
