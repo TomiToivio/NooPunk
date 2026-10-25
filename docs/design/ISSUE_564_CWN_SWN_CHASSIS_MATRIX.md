@@ -15,7 +15,8 @@ not do what it may not: choose a chassis or write mechanics.
 
 Issue #564 wants NoöPunk's playable rules converted onto an adapted **Cities Without Number (CWN)**
 chassis with **Stars Without Number (SWN)** brought in selectively. It asks for an inventory, a
-CWN/SWN → NoöPunk mapping matrix over eighteen named subsystems, a playable tabletop vertical slice,
+CWN/SWN → NoöPunk mapping matrix over the epic's eighteen named subsystems (twenty-four rows, after
+the four the first pass omitted — §4), a playable tabletop vertical slice,
 a unified digital kernel, scenario migration, validation, and documentation cleanup — and it asks
 that the work be **broken into linked sub-issues rather than landed as one rewrite**.
 
@@ -112,18 +113,24 @@ For each subsystem: what CWN (and, where it would enter, SWN) offers; the dispos
 
 Dispositions are proposals. `DEFER` means the subsystem cannot be decided before §6.
 
+**Corrections of 2026-10-25, after the rows were first written.** Six rows below carried a premise
+the tree does not support, or a verdict that a *measurement* contradicts; they are marked
+**CORRECTED** and the evidence is in the row. The numbers for rows 6–8 and 10 come from
+`tools/issue571_lethality_lab.py` and its record `ISSUE_571_COMBAT_INJURY_TRAUMA.md` (exact
+enumeration, deterministic, 16 code tests), not from an argument.
+
 | # | Subsystem | CWN / SWN offers | Disposition | Rationale | Authoritative reference | Migration |
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | **Attributes** | Six: STR/DEX/CON/INT/WIS/CHA, 3–18, `-1..+2` modifier band (SWN same) | **OMIT** as a set | NoöPunk's six are FIT/REF/INT/SOC/PSY/CYB and `SOC`/`PSY`/`CYB` carry meanings CWN's set has no slot for: `CYB` is cybernetic integration as a *rated* capacity and `PSY` is PSI capacity, not a wisdom score. Adopting CWN's names would delete the three attributes that make the sheet NoöPunk. | `RULEBOOK.md` STAT section; `RPG_CONVERSION_REFERENCE.md:214` | none needed — the conversion table already maps CWN→NoöPunk |
-| 2 | **Attribute generation** | 3d6 per attribute, or an array | **KEEP** NoöPunk's own | Ordinary-human 3d6 generation with a `-3..+3` modifier range is exactly what the issue asks to preserve, and it is the one place 3d6 legitimately appears. | issue #564 constraints; `RULEBOOK.md` generation | verify which generation rule is canonical per game |
-| 3 | **Skills** | Level 0–4, `untrained` at `-1`, specialisations as narrow bonuses | **MODIFY** | Levels and specialisations are useful and already correspond in `RPG_CONVERSION_REFERENCE.md:235`–`:247`. But the **roster** is settled elsewhere: #482 approved six individual skills, and the strategic roster is unapproved (D22). CWN's level *scale* may inform the six; CWN's *list* may not replace them. | `RPG_CONVERSION_REFERENCE.md:235`; queue D22/D23 | conversion table exists; no code change |
+| 2 | **Attribute generation** | 3d6 per attribute, or an array | **DEFER** — **CORRECTED** | There is **no live generation rule to keep**. `data/rules/core.json` defines the six STATs, the check and the DV ladder, and no generator at all; `AGENTS.md` §4 records the old `FIT/REF/INT/CHA/CYB/PSY` sketch *and its 3d6 generator* as porting debt that survives only in the retired module (`src/rules/_retired.py`, "do not extend"). The issue's "3d6 generation" premise is the same stale premise §3.2 corrects, so this row cannot KEEP what does not exist. CWN's array (`14/12/11/10/9/7`) and a 3d6 roll are *options* for the author, never imports. | `data/rules/core.json` (no `generation` key); `AGENTS.md` §4; `src/rules/_retired.py` | blocked: generation is an open design area |
+| 3 | **Skills** | Level 0–4, `untrained` at `-1`, specialisations as narrow bonuses | **MODIFY — layer B only; KEEP layer A untouched** — **CORRECTED** | The row previously read #482's six Fate skills (`COG/INT/REF/SAV/SOM/WIL`) as *the* roster. Those six are **layer B's**, approved for the crossover; **layer A's roster is 40 skills at 1–10, locked by #159** (`data/rules/skills.json`, `RULEBOOK.md` §4.1) and is not in play here. What CWN's scale may inform is the crossover's six-skill allocation (D22/D23) — not the legacy 40. | `data/rules/skills.json` (#159); `strategy_game/rpg/skills.py` (#482); queue D22/D23 | layer A: none needed; layer B: conversion table exists |
 | 4 | **Core resolution** | `2d6 + skill + attribute modifier` vs fixed targets (6 / 8 / 10), no opposed-roll culture | **DEFER** — and this is *the* decision | The legacy kernel is `1d10`, the crossover kernel is `4dF` and **approved**. Adopting 2d6 would retire an approved kernel and invalidate its tests. Queue D31 already lists "replace the kernel (2d6 or d10)" as option **D** and recommends against it. #564 must either accept D31's answer or explicitly overrule it. | `RULEBOOK.md:41`; `strategy_game/RULEBOOK.md:14`; queue D31 | blocks items 5–13 |
 | 5 | **Saves** | Attribute-based saves, rolled against a target | **MODIFY** | Worth taking *in shape*: a named save is faster to call than "roll this skill". Must be expressed in whichever kernel survives item 4 — a save is a check with a fixed trait, not a new dice convention. | queue D31 outcome | after item 4 |
-| 6 | **Initiative** | `1d8 + DEX` modifier, descending order | **MODIFY** | The arithmetic is trivial and portable, but `DEX` becomes `REF`, and the legacy game already orders turns. Adopt only if item 4 leaves a d8 in the toolbox — under `4dF` + skill it can be expressed directly. | `RULEBOOK.md` combat order | after item 4 |
-| 7 | **Combat** | Attack vs AC, **Shock** damage on a miss against low-armour targets, **Trauma Die** for lethal hits, action economy with move+act | **MODIFY**, selectively | **Shock** and **Trauma** are the two genuinely valuable imports: they make armour a decision and make a hit *dangerous* without a hit-point spiral, which is what "deadly combat" needs. The AC/attack-roll structure is not needed if item 4 keeps an opposed or target-number check. Queue D34 proposes a zone conflict with one action + one reaction; that is compatible with Shock/Trauma as *damage adjudication*, not as an engine. | queue D34; `ISSUE_219_PHYSICAL_CONFLICT.md` | after items 4 and D34 |
-| 8 | **Injuries and trauma** | Trauma Die severity, mortal wounds, lingering injuries | **MODIFY** | Directly serves "dangerous combat" and pairs with the approved Fate **consequence** ladder rather than replacing it: a consequence names the injury, Trauma decides whether it is mortal. Note D35 leaves persisted consequences deliberately unwired. | queue D35; `ISSUE_219_PHYSICAL_CONFLICT.md` | after item 7 |
+| 6 | **Initiative** | `1d8 + DEX` modifier, descending order | **OMIT (layer A)** — **CORRECTED** | Not "the legacy game already orders turns" vaguely: layer A orders **every realm** by **descending REF** on the one shared clock, and the chapter forbids forking it (`rulebook/18_CROSS_DOMAIN_STATE.md` §Initiative). A CWN d8 initiative would be a second order for the same clock. Layer B's D34 decides its own economy. | `rulebook/18_CROSS_DOMAIN_STATE.md` §Initiative; #225 | none — already defined |
+| 7 | **Combat** | Attack vs AC, **Shock** damage on a miss against low-armour targets, **Trauma Die** for lethal hits, action economy with move+act | **OMIT (layer A); DEFER (layer B)** — **CORRECTED** | Measured, not argued: (a) **Shock already exists in shape** — in layer A a miss lands on **Scratched**, 100 % of the time at a hopeless check, so CWN needs a second number to state the same fiction; (b) **layer A's margin already encodes severity** — the band function maps margin to rung, and adding the Trauma Die turns **26 % of Everyday-difficulty Wounded results into Down** (18.8 % at DV 15, 11.2 % at DV 17): a double count; (c) the action economy would be a second clock (`rulebook/18`, 3 AP). Layer B's combat is D34's and is already recommended as a Fate zone conflict. | `rulebook/3_PHYSICAL.md` §Attacking/§Wounds; `rulebook/18_CROSS_DOMAIN_STATE.md`; `ISSUE_571_COMBAT_INJURY_TRAUMA.md` §4–§5 | layer A: none; layer B: D34 |
+| 8 | **Injuries and trauma** | Trauma Die severity, mortal wounds, lingering injuries | **OMIT the Trauma Die; DEFER the two clock/table ideas** — **CORRECTED** | The Trauma Die is row 7's double count. What *is* worth taking is CWN's **clock after the injury**: "Mortally Injured, dies at the end of the sixth round unless stabilised at `8 + rounds since the fall`" converts layer A's `Down` state into a scene-level countdown with a rising price. It must be re-expressed in layer A's currency (**exchanges**, not six-second rounds) and its length is unauthored, so it is a question, not an import. The d12 Major Injury table is CWN expression *and* would need author-authored entries (`AGENTS.md` §1). | `RULEBOOK.md` §51; `rulebook/3_PHYSICAL.md` §Wounds; D3/D35 | blocked on D3/D35 |
 | 9 | **Healing** | Time-based recovery, medical checks, cyberware-assisted healing | **DEFER** | NoöPunk's psychosurgery is a four-layer construct (Jungian + psychedelic + cybernetic + psychotronic) and healing must not flatten it into a medkit roll. CWN has nothing to say about it. Note the author has **not** authored the injury-recovery timings (D3 `status_consequence_rows`). | queue D3; canon §psychosurgery | blocked on D3 |
-| 10 | **Armour and equipment** | Armour as damage reduction with an encumbrance cost; gear lists with prices | **MODIFY** | Encumbrance and armour-as-reduction are portable and give equipment weight. The *gear list* is not: NoöPunk's signature objects (80MG, psychotronics, decks) are setting artefacts, and a generic CWN price list would replace authored canon with a shopping list. | `RULEBOOK.md` equipment; setting canon | after item 7 |
+| 10 | **Armour and equipment** | Armour as damage reduction with an encumbrance cost; gear lists with prices | **OMIT armour-as-reduction; DEFER encumbrance** — **CORRECTED** | Armour-as-reduction is a **canon conflict**: `rulebook/3_PHYSICAL.md` §Armor states armour's effect is "a **ladder step**, never a subtraction", that it does not stack, and that cover and armour apply in that order. Measured difference: a Heavy Pistol removes an unarmoured 5-HP CWN target in **1.89** attacks and needs **12.21** against Soak 5 — subtraction can zero a hit, a one-step shift cannot. Encumbrance is a reserved numeric area and stays `DEFER`. The *gear list* is not portable either: NoöPunk's signature objects are setting artefacts. | `rulebook/3_PHYSICAL.md` §Armor; `RULEBOOK.md` §51/§52; `ISSUE_571_COMBAT_INJURY_TRAUMA.md` §5.5 | none for armour; encumbrance blocked |
 | 11 | **Cyberware / BCI** | Cyberware with **System Strain** as a capacity limit | **MODIFY** | System Strain is the single most useful CWN import for this setting: it makes cybernetic cognition *cost* something, which is the whole point of a BCI that thinks with you. But queue D36 proposes "no capacity number, the implant is a permission plus a tag" and lists slots as the cheap alternative; a strain number was already rejected there as option C4. **This row and D36 are the same question** and must be answered together. | queue D36; canon §cybernetics | blocked on D36 |
 | 12 | **Hacking / network access** | Hacking as a skill check against a target, with hardware and access prerequisites | **MODIFY** | CWN's *prerequisite structure* — you need physical or credentialed access first — is exactly the "disconnected devices and physical ingress" the epic asks for, and it matches `ISSUE_222_CYBERSPACE_SCOPE.md`. The dice are item 4's problem. | `ISSUE_222_CYBERSPACE_SCOPE.md` | after item 4 |
 | 13 | **Drones and vehicles** | Vehicle operation as a skill; drone control as a check; vehicle combat as an extension | **DEFER** | NoöPunk has no vehicle subsystem today and the epic does not require one. Adding it would be inventing a subsystem the setting does not yet need. Revisit if a scenario calls for it. | — | not started |
@@ -134,6 +141,19 @@ Dispositions are proposals. `DEFER` means the subsystem cannot be decided before
 | 18 | **Factions** | SWN's faction turn: assets, HP, attacks, goals on a faction scale | **DEFER to the strategy layer** | SWN's faction game is genuinely good and genuinely a *different* layer. NoöPunk already has a boundary: `rpg/boundary.py` refuses the join to `WorldState` on purpose, and #502 leaves `MissionOutcome.effects` empty. Importing SWN's faction turn would collapse the character-to-faction boundary the epic says to retain. Gate C governs the strategic layer and is open. | `rpg/boundary.py`; queue D35; Gate C | blocked on Gate C |
 | 19 | **NPCs** | Statlines as NPC stat blocks with hit dice | **MODIFY** | A statline convention is useful and queue D30 already contemplates keeping FIT…CYB as "the conversion vocabulary for NPC statlines". Hit *dice* are a level artefact and do not survive. | queue D30 | after items 1 and 4 |
 | 20 | **World and mission procedures** | SWN world tags, sector generation, mission generators | **OMIT** | NoöPunk's world is authored, not generated: an authored Helsinki/UNSA setting with canon institutions, and `AGENTS.md` §1 forbids inventing canon. A sector generator would manufacture setting, which is the one thing an agent may not do. SWN tags could inform a *naming* convention at most. | `AGENTS.md` §1; canon rulebook | none |
+
+### Four rows the epic names that this matrix did not have
+
+CWN procedures that are gaps on our side, each a candidate `MODIFY` rather than an `OMIT`. They are
+added here because the epic's own subsystem list names them and a matrix that skips them reads as if
+the question had been answered.
+
+| # | Subsystem | CWN / SWN offers | Disposition | Rationale | Authoritative reference | Migration |
+| --- | --- | --- | --- | --- | --- | --- |
+| 21 | **Chases and pursuit** | A dedicated pursuit procedure with ranges, obstacles and a clock | **MODIFY (proposal)** | The clearest real gap: NoöPunk has **no** chase procedure at all, and a chase is one of the three things a scene can be (`rulebook/3_PHYSICAL.md` §"What a fight is made of" names chases only as time). CWN's *shape* — distance bands and a clock — fits layer A's difficulty-step vocabulary (`simple_target_number` already moves a step per cover/aim), so it can be expressed without a second engine. Numbers are unauthored. | CWN SRD `rules-of-the-game/chases-and-pursuit/`; `rulebook/3_PHYSICAL.md`; `rulebook/18_CROSS_DOMAIN_STATE.md` | not started; no code |
+| 22 | **Scenes, rounds and mission time** | Three named time measures: scene, round (≈6 s), mission time | **MODIFY (proposal)** | Layer A has an **exchange** clock and a scene vocabulary, but **no mission clock** — nothing lets an infiltration *cost time*. CWN's third measure is one word and one rule; it would give #517's access/heat model and the action clock a shared unit. Must be named against the existing exchange, not instead of it. | CWN SRD `rules-of-the-game/scenes-rounds-mission-time/`; `rulebook/18_CROSS_DOMAIN_STATE.md`; #517 | not started; no code |
+| 23 | **Program composition (verbs × subjects)** | Programs are a **Verb + Subject** pair with an Access cost | **MODIFY (proposal), layer A only** | Layer A has the escalation ladder (T0–T4, Trace/ICE) and the access classes but **no composition grammar**: an operator chooses a capability, not a program built from parts. The grammar is a naming/assembly convention over canon `Program`/`Infosec` checks, so it adds no dice and no new Skill — but it is a mechanical layer, so it needs the author's word. | CWN SRD `hacking/hacking-mechanics/`, `hacking/programs/program-verbs/`, `…/program-subjects/`; `rulebook/22_CYBERSPACE_AFTER_THE_CRISIS.md` | blocked on author approval |
+| 24 | **Encumbrance, crafting and gear maintenance** | Encumbrance slots; crafting and maintaining mods | **DEFER** | Reserved numeric area (`AGENTS.md` §4: equipment statistics), and the capability-not-catalogue doctrine (`rulebook/13_EQUIPMENT.md` §12.1) is the opposite of a slot count. Recorded so the row is not silently missing. | `AGENTS.md` §4; `rulebook/13_EQUIPMENT.md` §12.1 | blocked: reserved |
 
 ### SWN: what actually enters
 
@@ -153,9 +173,24 @@ not a second rulebook here, which is what the epic asked for.
 
 ## 5. Licensing
 
-- **CWN and SWN SRDs** are usable under their published SRD terms. Before any text is adapted, the
-  exact terms must be read and recorded in `docs/sources/GAME_SYSTEM_RIGHTS.md`, which already tracks
-  the other sources.
+> **CORRECTED 2026-10-25.** The first version of this section said *"CWN and SWN SRDs are usable
+> under their published SRD terms"*, which is **wrong for SWN** and contradicts this repository's
+> own dated audit. The audit is not a to-do: it exists.
+
+`data/sources/game_system_rights.json` (read by `tools/release_packaging_guard.py`, so it is not
+decorative) records both sources with their evidence and access dates:
+
+| Source | Decision in the ledger | What that permits |
+| --- | --- | --- |
+| **Cities Without Number SRD** (`cities-without-number-srd`) | `verified-public-domain` — **CC0**, three agreeing readings, `license_checked` 2026-10-10 | Reuse of **SRD text and mechanics**, with the scope limited to the SRD. Not the full book, not the art, not protected setting material. |
+| **Stars Without Number** (`stars-without-number-srd`) | `blocked-unverified` — **not established** | **Nothing may be adapted.** No SWN SRD was located; what Sine Nomine publishes for SWN is a free **edition**, and the CWN/WWN CC0 listings do not cover it. |
+
+Human-readable detail, same finding: `docs/sources/GAME_SYSTEM_RIGHTS.md` §"Cities Without Number
+SRD — verified, CC0, and the scope is the point" and §"Stars Without Number — deliberately not
+promoted". So **this epic is CWN-only in practice**: every row that says "SWN" above is either
+`OMIT` (sector generation, starships, classes) or `DEFER` behind a licence that does not yet exist
+(faction turn, psionics). The licensing sub-issue is **#569**; nothing here presumes its outcome.
+
 - **Do not import full-book prose, art, protected settings or faction names.** The epic says this
   explicitly, and `docs/sources/ATTRIBUTION.md` is the place the attribution lands.
 - A **licence is not selected** in this repository by an agent. Queue **D10** holds the licence pair
@@ -170,6 +205,15 @@ D31** because it asks whether the *implemented* chassis changes:
 
 > **Is NoöPunk's playable kernel staying on Fate Core `4dF` (approved in #389, with six skills in
 > #482), or is it being replaced by a CWN `2d6` chassis?**
+
+**Correction of 2026-10-25 — the status quo is not one kernel, so the question above is one option
+short.** Layer A (the canonical legacy rulebook, `RULEBOOK.md` + `rulebook/`) resolves on
+**`1d10`** (`src/rules/core.py`, `data/rules/core.json` `_canon_revision: issue-111-d10-independent`);
+layer B (the crossover) resolves on **`4dF`**. #564's "playable RPG rules" most plausibly names
+layer A, so a row that offers only "stay on 4dF or move to 2d6" can be answered without ever
+mentioning the kernel the epic is about. The four honest options are therefore
+**1d10 (A) / 4dF (B) / 2d6 (CWN) / two kernels + one conversion appendix**, and **which layer #564
+governs is #566's question**, which this section must not pre-answer.
 
 - **Stay on 4dF** — then #564's CWN material enters as *adjudication procedures* (Shock, Trauma,
   access prerequisites, morale, saves) over the existing kernel, and the epic is largely a rules
