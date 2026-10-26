@@ -18,7 +18,6 @@ var hud: CanvasLayer
 var player: CharacterBody3D
 var _interactables: Array = []
 var _active: Node3D = null
-var _ending_offered := false
 
 func _ready() -> void:
 	layout = _load_json(LEVEL_PATH)
@@ -57,6 +56,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		if hud == null or not hud.has_modal_open():
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		return
+	if hud != null and hud.has_modal_open():
+		return
 	if event.is_action_pressed("interact"):
 		interact()
 	elif event.is_action_pressed("toggle_journal"):
@@ -69,7 +70,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 ## Talk to an NPC or inspect a prop. A prop is a piece of the case: what it yields is data, not script.
 func interact() -> void:
-	if _active == null:
+	if _active == null or (hud != null and hud.has_modal_open()):
 		return
 	var kind := String(_active.get_meta("kind", "npc"))
 	if kind == "npc":
@@ -105,13 +106,12 @@ func _on_dialogue_choice(index: int) -> void:
 		hud.show_dialogue(node, runner.choices())
 
 func _offer_ending() -> void:
-	if _ending_offered:
+	if not GameState.ending.is_empty() or (hud != null and hud.has_modal_open()):
 		return
 	var endings := GameState.available_endings()
 	if endings.is_empty():
 		GameState.add_journal("The case is not ready to close: the file is still sealed.")
 		return
-	_ending_offered = true
 	hud.close_dialogue()
 	hud.offer_endings(endings)
 
