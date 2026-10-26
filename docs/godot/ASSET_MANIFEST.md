@@ -5,6 +5,12 @@
 deliberate choice for the first milestone: a playable case with placeholder art is reviewable, whereas a
 licence problem in the repository is not.
 
+## Researched shortlist
+
+See [the 2026-10-26 asset shortlist](ASSET_SHORTLIST_2026-10-26.md) for specific free/CC0 art,
+MIT dialogue tools, conditional paid voxel packs, observed prices and an isometric art-test proposal.
+These are sourcing candidates only; none has been imported or added to this shipped manifest.
+
 ## Intended sources for the next milestone
 
 Listed because the issue names them; **none is used yet**, and each must be checked per pack before use.
