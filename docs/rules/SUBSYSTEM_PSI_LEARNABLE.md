@@ -6,6 +6,8 @@ is **approved (#482) and unchanged**.
 
 ## 1. The two author rulings this encodes
 
+> **Scientific framing (not rules):** the field-coupling vocabulary this subsystem borrows, and its limits, are recorded in [`docs/research/SOUL_AS_QUASI_FIELDS_NOTES.md`](../research/SOUL_AS_QUASI_FIELDS_NOTES.md). That note is a preprint-based framework, not evidence; the rules below stand on their own.
+
 1. **PSI is learnable.** It is a human capacity that can be trained, taught and practised — not a birthright,
    not a class feature, not a mutation, and not a virus. Canon already supports this and is the reason the
    structure below is a *training* structure rather than a talent list:
