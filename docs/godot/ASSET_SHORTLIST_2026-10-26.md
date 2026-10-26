@@ -1,5 +1,9 @@
 # Godot asset shortlist — isometric voxel detective RPG
 
+> **Summary view: [`ASSETS.md`](ASSETS.md).** This page stays as the long-form per-pack detail
+> (import notes, triangle counts, tier prices) that the summary condenses; where they disagree,
+> the licence text on the vendor's own page wins.
+
 Researched 2026-10-26. Scope: the legacy NoöPunk RPG / Godot front end, not the strategy crossover.
 This is a sourcing and presentation proposal, not a change to rules or setting canon.
 No packs purchased, downloaded, imported, or tested in Godot during this research.
