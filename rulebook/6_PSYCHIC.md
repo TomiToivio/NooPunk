@@ -307,7 +307,7 @@ verified near-death experience — has not been run.
 NoöPunk uses it as vocabulary for what §6.1–6.2 already asserts (PSI access is a coupling, not a
 radius) and as a scenario seed. It supplies no rules, no numbers and no proof, and it does not touch
 the Φ axis. Full register, rights finding and open author decisions:
-[`docs/design/SOUL_FIELD_MODEL.md`](../docs/design/SOUL_FIELD_MODEL.md).
+[`docs/research/SOUL_AS_QUASI_FIELDS_NOTES.md`](../docs/research/SOUL_AS_QUASI_FIELDS_NOTES.md).
 
 ## 6.4 Sleep and dream nights
 

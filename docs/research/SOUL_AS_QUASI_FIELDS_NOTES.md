@@ -185,3 +185,42 @@ Cited within the paper and worth retrieving separately if the setting leans on t
 Woollacott & Peyton (2021, *Explore* 17:213–219); Pinotsis & Miller (2022, *NeuroImage* 253);
 Anastassiou, Perin, Markram & Koch (2011, *Nature Neuroscience* 14:217–223); Pinotsis, Fridman &
 Miller (2023, *Progress in Neurobiology* 226).
+
+## 6. Open author decisions
+
+Recorded rather than taken — these are the author's to rule:
+
+1. Does **"soul field"** become an in-world term of art (a school, a programme, a funding body), or stay
+   a named external hypothesis that characters merely cite?
+2. Is **reincarnation** admitted as timeline-relevant in the 20XX setting, or confined to in-world
+   testimony and literature?
+3. Does the **photon-shadow experiment** (the paper's own unperformed test: look for missing photons at
+   the site of a verified NDE) become a scenario seed — and if so, is it the hospital case's referral
+   partner or a separate case?
+4. Is **remote viewing via field expansion** allowed as one in-world explanation of an existing PSI
+   channel, or rejected in favour of entanglement-only coupling?
+
+Until the author rules, this file is a source note: cited, linked, and not converted into canon prose
+or code.
+
+## 7. Guardrails and cross-links
+
+What the model must not become:
+
+| Risk | Rule |
+| --- | --- |
+| "Proof" of a soul | It is a hypothesis with no measurements, and says so; NoöPunk's uncertainty vocabulary governs |
+| A physics licence for arbitrary effects | No effect follows from the model; effects come only from canon PSI rules and `psionics.py` |
+| A second PSI mechanic | Ψ/Φ stays the ontology, Effort stays the mechanic; this page adds no numbers |
+| A Ψ → Φ collapse | The model is about soul-fields, not integration; the Φ (IIT) axis is untouched |
+| Reincarnation as a rule | A contested in-world claim with factions, not a character mechanic |
+
+Where it touches canon:
+
+- `rulebook/6_PSYCHIC.md` §6.3 — dual-aspect monism (Atmanspacher): the neighbouring philosophical
+  proposal this field model does not replace;
+- `rulebook/6_PSYCHIC.md` §6.1 — PSI is natural, not viral: compatible with a natural capacity,
+  incompatible with an infectious origin;
+- `rulebook/11_ONTOLOGY.md` §10.6 — vehicles versus entities: the model says nothing about vehicles and
+  must not be used to classify them;
+- `docs/design/COSMISM_NEUROPUNK_IA_AUDIT.md` — the wider speculative-science audit.
