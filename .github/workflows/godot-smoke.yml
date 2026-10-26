@@ -1,0 +1,30 @@
+name: Godot detective slice smoke test
+on:
+  push:
+    paths:
+      - 'project.godot'
+      - 'scenes/**'
+      - 'src/godot/**'
+      - 'tests/godot/**'
+      - '.github/workflows/godot-smoke.yml'
+  pull_request:
+    paths:
+      - 'project.godot'
+      - 'scenes/**'
+      - 'src/godot/**'
+      - 'tests/godot/**'
+      - '.github/workflows/godot-smoke.yml'
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download Godot 4.4.1
+        run: |
+          curl -fL --retry 3 -o godot.zip https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_linux.x86_64.zip
+          unzip -q godot.zip
+          chmod +x Godot_v4.4.1-stable_linux.x86_64
+      - name: Import project and run deterministic smoke test
+        run: |
+          ./Godot_v4.4.1-stable_linux.x86_64 --headless --path . --editor --quit
+          ./Godot_v4.4.1-stable_linux.x86_64 --headless --path . --script tests/godot/test_lakkahaltia.gd
