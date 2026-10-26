@@ -422,6 +422,27 @@ With the dependencies from `requirements.txt` installed, also check the real Con
 python scripts/concordia_smoke.py --build-concordia-config
 ```
 
+## Without Number sources and credits
+
+The *Without Number* family by **Kevin Crawford / Sine Nomine Publishing** is the mechanical reference the
+current tabletop work is built around: *Cities Without Number* and *Stars Without Number* as the primary
+references, with *Worlds Without Number* and *Ashes Without Number* as situational toolkits. The design decision,
+the per-genre mapping and the conflict register live in
+[`docs/rules/RULES_FOUNDATION_POLICY.md`](docs/rules/RULES_FOUNDATION_POLICY.md).
+
+**Reuse is scoped per document, not per game name** — the full audit is
+[`docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md`](docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md):
+
+| Source | Status |
+|---|---|
+| Cities Without Number **SRD** | published SRD; reuse within its own terms (the community browser mirror omits sections, so cite the published document) |
+| Worlds Without Number **SRD** | **CC0** for the SRD material; the Latter Earth setting and excluded material are reserved |
+| Stars Without Number **Revised** | **no standalone public SRD identified** — mechanics reimplemented independently, no text, tables, art or setting imported |
+| Ashes Without Number | **no separately licensed public SRD identified** — a free edition is readable, not a reuse right |
+
+NoöPunk is an unofficial, independent fan/homebrew project. It is **not endorsed by, affiliated with, or
+licensed by Kevin Crawford or Sine Nomine Publishing**, and nothing here should be read as an official product.
+
 ## Eclipse Phase sources and license
 
 Eclipse Phase is created by **Posthuman Studios**. Eclipse Phase-derived material in this repository must follow the applicable Eclipse Phase Creative Commons terms and attribution requirements.
