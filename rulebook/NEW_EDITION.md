@@ -1,3 +1,5 @@
+> **Current mechanics (2026-10-26):** [Without Number baseline v1](WITHOUT_NUMBER_BASELINE.md) supersedes conflicting historical stats, dice and skill rules below. Preserve setting and characters; existing software still requires migration.
+
 # NoöPunk RULEBOOK
 
 ## Humanity Is No Longer Alone

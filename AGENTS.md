@@ -1,3 +1,9 @@
+# Current author override — 2026-10-26
+
+Use `rulebook/WITHOUT_NUMBER_BASELINE.md` for all new rules work: CWN primary, SWN PSI/space/factions, AWN crisis survival, WWN otherworld exploration/projects. Standard STR/DEX/CON/INT/WIS/CHA, 3–18 scores, 0–4 skills, 2d6 checks, d20 combat/saves, and source character progression supersede older reservations below. The user explicitly authorized this change; do not ask again whether to preserve d10, Fate, FIT/REF/SOC/CYB/PSY, or the old skill list. Defer bespoke mechanics until later revisions. Keep both games’ world/scenario identities and preserve legacy software pending explicit ports. Tabletop-first and executable-code-only testing policies remain binding. No tests or CI gates for prose.
+
+The earlier directions below are retained for context and apply only where consistent with this override.
+
 # AGENTS.md
 
 ## NoöPunk agent rules

@@ -1,3 +1,5 @@
+> **Rules superseded, 2026-10-26:** [Without Number baseline v1](../../rulebook/WITHOUT_NUMBER_BASELINE.md) is the current mechanical authority under the author’s explicit CWN/SWN/AWN/WWN instruction. Conflicting stats, skills, dice, custom rules and approval gates below are historical. Preserve the setting material. Existing software remains legacy until ported.
+
 # Rules foundation policy (#615)
 
 **Status: governing design policy. It records decisions and conflicts; it changes no mechanic.**
