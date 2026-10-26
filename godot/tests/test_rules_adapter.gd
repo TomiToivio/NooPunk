@@ -53,6 +53,20 @@ func run() -> Array:
 	rows.append(_eq("physical save", rules.save_target("physical", 1, {"STR": 0, "CON": 2}), 13))
 	rows.append(_eq("luck save", rules.save_target("luck", 2, {"WIS": 2}), 14))
 
+	# CWN attacks use d20, untrained -2 (not the 2d6 skill-check penalty).
+	var combat_a = RulesAdapterScript.new(RulesAdapterScript.DEFAULT_KERNEL_PATH, 616)
+	var combat_b = RulesAdapterScript.new(RulesAdapterScript.DEFAULT_KERNEL_PATH, 616)
+	var trained_attack: Dictionary = combat_a.attack_roll(14, 1, 2, 15)
+	var repeated_attack: Dictionary = combat_b.attack_roll(14, 1, 2, 15)
+	rows.append(_eq("CWN attack deterministic", trained_attack["die"], repeated_attack["die"]))
+	rows.append(_eq("CWN attack d20 face", int(trained_attack["die"]) >= 1 and int(trained_attack["die"]) <= 20, true))
+	rows.append(_eq("CWN attack arithmetic", trained_attack["total"],
+		int(trained_attack["die"]) + 1 + 1 + 2))
+	var untrained_attack: Dictionary = combat_a.attack_roll(10, -1, 0, 12)
+	rows.append(_eq("CWN untrained attack penalty", untrained_attack["skill_modifier"], -2))
+	rows.append(_eq("CWN attack margin", untrained_attack["margin"],
+		int(untrained_attack["total"]) - 12))
+
 	return rows
 
 func _eq(label: String, actual: Variant, expected: Variant) -> Array:
