@@ -267,3 +267,98 @@ def resolve_attack(
     damage = damage_floor(damage, would_be_shock)
     return {"damage": damage, "shock": 0, "shock_floor": would_be_shock,
             "trauma": trauma, "trauma_die": trauma_die}
+
+# --------------------------------------------------------------------------- #
+# Major Injuries (SRD 2.5.6)
+# --------------------------------------------------------------------------- #
+# The trigger is narrow and easy to get wrong: it is not "reduced to zero", it is "reduced to zero by
+# LETHAL damage during the same scene in which the subject suffered a Traumatic Hit". The damage that
+# brings them down need not be the Traumatic Hit itself -- they stay vulnerable until the scene ends.
+
+@dataclass(frozen=True)
+class Injury:
+    """One row of the d12 Major Injury table."""
+
+    id: str
+    note: str
+    fatal: bool = False
+    coma: bool = False
+    limb: str | None = None
+    needs_prosthetic: bool = False
+
+
+#: Rolls 1-10 are individual; 11 and 12 are the same outcome ("Just a Flesh Wound").
+MAJOR_INJURY_TABLE: dict[int, Injury] = {
+    1: Injury("instant_death", "Wrong place, wrong time.", fatal=True),
+    2: Injury("internal_damage", "Dead in an hour without a street doc; coma until a Prosthetic Cyber implant.",
+              coma=True, needs_prosthetic=True),
+    3: Injury("brain_damage", "Coma until a Prosthetic Cyber implant.", coma=True, needs_prosthetic=True),
+    4: Injury("eye_damage", "Blind until cybereyes; existing cybereyes are critically damaged."),
+    5: Injury("gut_wound", "-1 Con modifier after an hour until a Prosthetic Cyber implant.",
+              needs_prosthetic=True),
+    6: Injury("right_leg_ruined", "Can crawl at best once stabilized.", limb="right leg"),
+    7: Injury("left_leg_ruined", "Can crawl at best once stabilized.", limb="left leg"),
+    8: Injury("right_arm_ruined", "Only one functional hand.", limb="right arm"),
+    9: Injury("left_arm_ruined", "Only one functional hand.", limb="left arm"),
+    10: Injury("system_damage", "The most System Strain-expensive implant is critically damaged."),
+    11: Injury("flesh_wound", "Not that bad of a hit after all."),
+    12: Injury("flesh_wound", "Not that bad of a hit after all."),
+}
+
+INJURY_MIN, INJURY_MAX = 1, 12
+
+
+def major_injury_risk(*, lethal: bool, hit_points: int, traumatic_this_scene: bool) -> bool:
+    """SRD 2.5.6: lethal damage to zero HP, in a scene where a Traumatic Hit already landed.
+
+    All three conditions are required. Zero HP from a non-lethal beating, or from lethal damage in a
+    scene with no Traumatic Hit, does **not** put the subject on this table.
+    """
+    return lethal and hit_points <= 0 and traumatic_this_scene
+
+
+def clamp_injury_roll(roll: int) -> int:
+    """SRD 2.5.6: "a roll less than 1 still counts as 1, and one more than 12 still counts as 12"."""
+    return max(INJURY_MIN, min(INJURY_MAX, roll))
+
+
+def injury_for_roll(roll: int) -> Injury:
+    return MAJOR_INJURY_TABLE[clamp_injury_roll(roll)]
+
+
+def resolve_downed(
+    *,
+    lethal: bool,
+    hit_points: int,
+    traumatic_this_scene: bool,
+    level: int,
+    attributes: Mapping[str, int],
+    save_bonus: int = 0,
+    save_die: int | None = None,
+    injury_roll: int | None = None,
+    rng: Any = None,
+) -> dict[str, Any]:
+    """What happens when a subject reaches zero hit points.
+
+    Returns ``{"at_risk", "mortally_wounded", "saved", "injury"}``. A subject at risk who passes the
+    **Physical** save is still *Mortally Wounded* — they may be stabilized and recover normally — but
+    takes no Major Injury. A subject not at risk is simply down.
+    """
+    at_risk = major_injury_risk(lethal=lethal, hit_points=hit_points,
+                                traumatic_this_scene=traumatic_this_scene)
+    if not at_risk:
+        return {"at_risk": False, "mortally_wounded": hit_points <= 0,
+                "saved": None, "injury": None, "injury_roll": None}
+
+    save = saving_throw("Physical", level=level, attributes=attributes,
+                        bonus=save_bonus, rng=rng, die=save_die)
+    if save.success:
+        return {"at_risk": True, "mortally_wounded": True, "saved": True,
+                "injury": None, "injury_roll": None}
+
+    if injury_roll is None:
+        source = rng if rng is not None else random.Random()
+        injury_roll = source.randint(INJURY_MIN, INJURY_MAX)
+    roll = clamp_injury_roll(int(injury_roll))
+    return {"at_risk": True, "mortally_wounded": True, "saved": False,
+            "injury": injury_for_roll(roll), "injury_roll": roll}
