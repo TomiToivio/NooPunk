@@ -1,5 +1,5 @@
 """SWN Effort resource tests; mechanics are tested without copying technique text."""
-import pytest
+import unittest
 
 from src.rules.swn_psionics import Psychic, Duration, PsiRulesError, DISCIPLINES
 
@@ -16,9 +16,9 @@ def test_scene_day_and_active_commitments_do_not_refund_early():
     p.commit("insight", "Telepathy", duration=Duration.SCENE)
     p.commit("vision", "Telepathy", duration=Duration.DAY)
     assert p.free == 0
-    with pytest.raises(PsiRulesError):
+    with unittest.TestCase().assertRaises(PsiRulesError):
         p.release("vision")
-    with pytest.raises(PsiRulesError):
+    with unittest.TestCase().assertRaises(PsiRulesError):
         p.commit("extra", "Telepathy")
     assert p.release("contact")
     assert p.free == 1
@@ -30,12 +30,12 @@ def test_scene_day_and_active_commitments_do_not_refund_early():
 
 def test_skill_access_and_duplicate_technique_key():
     p = Psychic(12, 12, {"Telepathy": 0})
-    with pytest.raises(PsiRulesError):
+    with unittest.TestCase().assertRaises(PsiRulesError):
         p.commit("unlearned", "Precognition")
-    with pytest.raises(PsiRulesError):
+    with unittest.TestCase().assertRaises(PsiRulesError):
         p.commit("advanced", "Telepathy", minimum_rank=1)
     p.commit("contact", "Telepathy")
-    with pytest.raises(PsiRulesError):
+    with unittest.TestCase().assertRaises(PsiRulesError):
         p.commit("contact", "Telepathy")
 
 
@@ -52,12 +52,12 @@ def test_snapshot_recovery_preserves_committed_effort():
 
 
 def test_reject_malformed_restores_and_scores():
-    with pytest.raises(ValueError):
+    with unittest.TestCase().assertRaises(ValueError):
         Psychic(2, 10, {})
-    with pytest.raises(PsiRulesError):
+    with unittest.TestCase().assertRaises(PsiRulesError):
         Psychic(12, 12, {"Unknown": 1})
     p = Psychic(12, 12, {"Telepathy": 0})
     state = p.snapshot()
     state["reservations"] = {"bad": {"amount": 99, "duration": "day"}}
-    with pytest.raises(PsiRulesError):
+    with unittest.TestCase().assertRaises(PsiRulesError):
         Psychic.from_snapshot(state)
