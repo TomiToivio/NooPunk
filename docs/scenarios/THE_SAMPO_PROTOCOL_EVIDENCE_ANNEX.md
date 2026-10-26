@@ -1,6 +1,13 @@
-# The Sampo Protocol — playable pilot draft (#626)
+# The Sampo Protocol — evidence annex (#626)
 
-**Status: playable draft for playtesting, not canon.** No new named characters, no mandates, no dates,
+**Status: an annex to [`THE_SAMPO_PROTOCOL.md`](THE_SAMPO_PROTOCOL.md), not a competing scenario.** That file
+is the tabletop-ready scenario: GM truth layer, guaranteed clue network, scene map, endings, pacing,
+handouts. This annex adds the three things a table needs once it starts playing and a scenario outline
+does not carry: a **clue ledger with provenance and custody**, **how each falsifiable lead is cleared**,
+and **what a null result looks like per act** — plus explicit ending triggers. Nothing here replaces or
+contradicts the scenario; where they differ, the scenario wins.
+
+**Not canon.** No new named characters, no mandates, no dates,
 no rules changes. Names below are **placeholders** until the author rules; the people, the ward and the
 outcome of this case are fiction written for the table, exactly as `strategy_game/casework/kallio.py`
 treats the canonical 2045 frame.
@@ -12,7 +19,7 @@ mechanical baseline in [`../rules/WN_BASE_SYSTEM.md`](../rules/WN_BASE_SYSTEM.md
 
 ---
 
-## 0. What this pilot is for
+## 0. What this annex is for
 
 It tests one thing the setting claims and has never yet had to prove at a table: **a case that can
 legitimately end "this was illness", "this was fraud", "this was an intelligence we do not understand" —
@@ -104,7 +111,7 @@ and its imagery archive.
 | E9 | Washout protocol was shortened to hit a funding milestone | physical | lab notebook, printed | misconduct exists, independent of any anomaly | misconduct explains everything | INT, diff 8 |
 | E10 | A staff member's private note: "they describe our forest site, we never published it" | testimony | a researcher who wants out | a location the trial never disclosed | the researcher is the source of the leak | CHA, diff 10 |
 
-Act 2 ends with E8 or E10. **E8 is the load-bearing clue of the whole pilot**: it kills the simplest
+Act 2 ends with E8 or E10. **E8 is the load-bearing clue of the whole scenario**: it kills the simplest
 technical explanation without replacing it with an anomalous one.
 
 ## 5. Act 3 — X-Files (the archive and the permit)
@@ -192,11 +199,11 @@ about method rather than monsters:
 Any of these is a finished, playable case. If a table reaches one, the anomaly was not disproved — it was
 not demonstrated, which is a different sentence and the one the setting needs.
 
-## 10. Open items this draft does not decide
+## 10. Open items this annex does not decide
 
 Carried to [`../design/ISSUE_626_OPEN_QUESTIONS.md`](../design/ISSUE_626_OPEN_QUESTIONS.md): the unit's
 institutional home, whether the leader is the canon patient or another person of the same name, how far
 the *Maniac* touchstone is imported, whether patients are playable, and how many anomalies may be
-confirmed before the Crisis tipping point. This draft is written so that **any** answer to those leaves
+confirmed before the Crisis tipping point. The annex is written so that **any** answer to those leaves
 the case playable: the team is described by role, the ward is generic Helsinki, the faction that arrives
 is whichever one the author wants, and no patient is named.

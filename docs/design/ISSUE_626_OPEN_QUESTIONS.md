@@ -5,7 +5,7 @@ their consequences, and what unblocks once answered. Answering a row turns it in
 and a PR; it does not require a new subsystem.
 
 Companion: [`ISSUE_626_NORTHERN_NOOSPHERE.md`](ISSUE_626_NORTHERN_NOOSPHERE.md) (memo, canon conflicts,
-ontology), [`../scenarios/626_SAMPO_PROTOCOL_PILOT.md`](../scenarios/626_SAMPO_PROTOCOL_PILOT.md) (the
+ontology), [`../scenarios/THE_SAMPO_PROTOCOL.md`](../scenarios/THE_SAMPO_PROTOCOL.md) (the
 playable draft these answers plug into). Queue rows **D40–D47** in
 [`AUTHOR_DECISION_QUEUE.md`](AUTHOR_DECISION_QUEUE.md) carry these one sentence at a time.
 
@@ -22,11 +22,11 @@ branch, no triple mandate and no psi-rated agents
 
 | Option | What it costs |
 | --- | --- |
-| **A. Desk grows under joint-investigation-team cover** (recommended shape) | nothing in canon moves; the growth is a story event. A multi-person team is then a *result*, not a premise — which also means the pilot's Act 1 team can be smaller than the memo's six roles |
+| **A. Desk grows under joint-investigation-team cover** (recommended shape) | nothing in canon moves; the growth is a story event. A multi-person team is then a *result*, not a premise — which also means the scenario's Act 1 team can be smaller than the memo's six roles |
 | **B. New standing Europol cell** | contradicts the one-analyst Desk; requires an explicit canon edit and a reason nobody noticed a new unit |
 | **C. National unit with Europol liaison** | cheapest legally, weakest for the memo's "cross-border cluster" premise |
 
-**Unblocks:** the pilot's team composition and who may arrest, search or compel — today the police
+**Unblocks:** the scenario's team composition and who may arrest, search or compel — today the police
 investigator holds those powers and the coordinator does not.
 
 ## Q2 — Who is "Dr. Inspector Harri Romppainen"? (and *which* Romppainen?)
@@ -47,7 +47,7 @@ investigator holds those powers and the coordinator does not.
 | **D. Same man, integrated and recovered, leading the unit** | keeps the name and the unit; asserts a clinical outcome canon has never stated — the largest unearned claim of the four |
 
 **Sub-question the memo asks and canon leaves open:** how does *Dr. Inspector* work — a medical doctor
-with police authority, or two titles from two systems? The pilot deliberately writes the role as
+with police authority, or two titles from two systems? The scenario deliberately writes the role as
 "clinician + a separate investigator with the powers", so it plays under any answer.
 
 **Unblocks:** naming anyone else in the unit (a leader's identity fixes the chain of command), and whether
@@ -61,14 +61,14 @@ explains why UNSA exists), **partner** (two bodies, one case, competing files), 
 campaign, no crossover). Precursor is the only one that spends canon; separate is the only one that costs
 nothing.
 
-**Unblocks:** whether UNSA appears in the pilot as a referral partner (as drafted) or as a rival.
+**Unblocks:** whether UNSA appears in the scenario as a referral partner (as drafted) or as a rival.
 
 ## Q4 — How much *Maniac* is imported?
 
 The memo itself flags the ambiguity: Norwegian original (2014) and Netflix adaptation (2018) differ in
 tone, in the trial's ethics and in what the shared simulation is *for*. Options: **thematic only**
 (psychiatry, trial ethics, shared imagery — no plot), **one specific work as touchstone** (naming which),
-**both, deliberately contrasted**. The pilot as drafted uses thematic only, which is the only option that
+**both, deliberately contrasted**. The scenario as drafted uses thematic only, which is the only option that
 commits to nothing.
 
 **Unblocks:** how much of Act 2 is a homage and how much is original — and therefore the attribution
@@ -79,16 +79,16 @@ review.
 Canon has no hospital cast. Options: **witnesses only** (safest: they are people with accounts, not
 mechanics), **witnesses + one recurring patient** (gives the series a face), **one playable patient**
 (the ethics rule becomes a live constraint at the table: your own character's credibility is at stake).
-The pilot supports all three; it names no patient so that option 2 or 3 stays open.
+The scenario supports all three; it names no patient so that option 2 or 3 stays open.
 
-**Unblocks:** the pilot's session-2 and session-4 scene ownership, and whether a patient character sheet
+**Unblocks:** the scenario's session-2 and session-4 scene ownership, and whether a patient character sheet
 ever exists.
 
 ## Q6 — How many anomalies may be verified before the Crisis tipping point?
 
 This is a *setting-scale* question with mechanical consequences: if verification is possible, then the
 pipeline (evidence → substantiation → institutional response) needs a threshold; if it is never possible,
-the setting stays permanently contested and no faction can be proven right. The pilot's design assumes
+the setting stays permanently contested and no faction can be proven right. The scenario's design assumes
 **demonstrated ≠ confirmed**: the team can substantiate that an account is structurally anchored to a
 place (E13), never that a nonhuman intelligence exists.
 
@@ -98,9 +98,9 @@ Crisis is a reveal or a permanent condition.
 ## Q7 — Is the Sampo one artefact, a class, a misread legend, or observer-dependent?
 
 Three readings are already drafted in the memo (§3 of the planning doc): scientific / noetic / political.
-Adding "a class of technology" or "different things to different observers" changes what the pilot's Act 4
+Adding "a class of technology" or "different things to different observers" changes what the scenario's Act 4
 can do: a single artefact supports a heist plot; a class supports an economy; observer-dependence supports
-the Vallée-style reading the memo prefers. The pilot is written so the site's *reading* is contested and
+the Vallée-style reading the memo prefers. The scenario is written so the site's *reading* is contested and
 never resolved, which survives all four.
 
 **Unblocks:** whether later material may name a second Sampo-like site.
@@ -120,14 +120,14 @@ reimplemented but their text, tables and trade dress may not be copied. Any "SWN
 cheaper than it sounds, and is an argument for keeping these two procedures original rather than
 borrowed.
 
-**Unblocks:** whether the pilot stays a scenario document or becomes a `strategy_game/casework` case with
+**Unblocks:** whether the scenario stays a scenario document or becomes a `strategy_game/casework` case with
 code — which would then need tests, because it would be code.
 
 ---
 
 ## What answering these does *not* require
 
-No canon edit is needed to play the pilot. Every question above is written so the draft plays under any
+No canon edit is needed to play the scenario. Every question above is written so the draft plays under any
 answer: the team is described by role, the ward is generic, patients are unnamed, the faction that arrives
 is the author's choice, and the case's truth is never stated. Answers change *what the material claims*,
 not whether it can be run.

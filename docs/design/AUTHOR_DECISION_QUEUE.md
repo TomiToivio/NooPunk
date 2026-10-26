@@ -155,7 +155,7 @@ Eleventh update (2026-10-26). Issue **#626** is a planning memo, not canon, and 
 questions it explicitly leaves to the author. They are carried here one sentence at a time so answering
 one does not require re-reading the memo. The decision support is
 [`ISSUE_626_OPEN_QUESTIONS.md`](ISSUE_626_OPEN_QUESTIONS.md); the playable draft that survives any answer
-is `docs/scenarios/626_SAMPO_PROTOCOL_PILOT.md`. **No row asks for a new subsystem**, and none blocks
+is `docs/scenarios/THE_SAMPO_PROTOCOL_EVIDENCE_ANNEX.md`. **No row asks for a new subsystem**, and none blocks
 play: the pilot is written so that every answer changes what the material *claims*, not whether it runs.
 
 | # | Decision | Blocks | Smallest useful answer |

@@ -166,6 +166,6 @@ international task force never asked for.
 
 **Where the next round lives.** The playable draft (clue ledger with provenance and custody, four
 red herrings with their disconfirming evidence, four branch points, five endings with triggers,
-and a null result for every act) is `docs/scenarios/626_SAMPO_PROTOCOL_PILOT.md`. The eight
+and a null result for every act) is `docs/scenarios/THE_SAMPO_PROTOCOL_EVIDENCE_ANNEX.md`. The eight
 questions are written out as decision support in `docs/design/ISSUE_626_OPEN_QUESTIONS.md` and
 carried on the author queue as rows **D43–D50**.
