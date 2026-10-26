@@ -24,7 +24,7 @@ func capacity() -> int:
 			highest = maxi(highest, int(ranks[name]))
 	return maxi(1, 1 + maxi(kernel.attribute_modifier(wisdom), kernel.attribute_modifier(constitution)) + highest)
 
-func free() -> int:
+func available_effort() -> int:
 	var used := 0
 	for commitment in commitments.values():
 		used += int(commitment["amount"])
@@ -35,7 +35,7 @@ func commit(key: String, discipline: String, rank: int = 0, duration: String = "
 		return false
 	if int(ranks[discipline]) < rank or rank < 0 or not duration in ["active", "scene", "day"]:
 		return false
-	if amount < 1 or amount > free():
+	if amount < 1 or amount > available_effort():
 		return false
 	commitments[key] = {"amount": amount, "duration": duration, "discipline": discipline}
 	return true
