@@ -14,6 +14,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from .cwn_strain import SystemStrain as CoreStrain
+
 MORTAL_WOUND_ROUNDS = 6
 STABILIZE_BASE_DIFFICULTY = 8
 NO_MEDKIT_PENALTY = 2
@@ -26,63 +28,60 @@ class HealingRulesError(ValueError):
     """Raised when a call is outside the procedure rather than merely unlucky."""
 
 
-@dataclass
-class SystemStrain:
-    """A body's tolerance for biochemical manipulation, capped by Constitution.
+class SystemStrain(CoreStrain):
+    """A compatibility view over :class:`cwn_strain.SystemStrain`.
 
-    ``permanent`` holds the share from cyberware and other lasting changes: those
-    points never come back while the implant is in place, so they are tracked
-    apart from what a night's sleep can clear.
+    ``cwn_strain`` is the single source of truth for Strain: permanent cyberware
+    load, temporary recoverable load, fractional amounts, the Constitution
+    ceiling, and the forced-overflow unconsciousness rule. This subclass adds the
+    flat ``current``/``can_accept``/``add``/``nights_sleep`` vocabulary that the
+    healing procedures were written against, so there is one implementation of
+    the rule rather than two that can drift.
     """
 
-    constitution: int
-    current: int = 0
-    permanent: int = 0
-
-    def __post_init__(self) -> None:
-        if self.constitution < 1:
+    def __init__(self, constitution: int, current: int = 0, permanent: int = 0) -> None:
+        if constitution < 1:
             raise HealingRulesError("Constitution must be at least 1")
-        if self.permanent < 0 or self.current < 0:
-            raise HealingRulesError("System Strain cannot be negative")
-        if self.permanent > self.constitution:
-            raise HealingRulesError("permanent strain cannot exceed the maximum")
+        super().__init__(
+            constitution=constitution,
+            temporary=float(current) - float(permanent),
+            permanent=float(permanent),
+        )
 
     @property
-    def maximum(self) -> int:
-        return self.constitution
+    def current(self) -> float:
+        """Total Strain carried: permanent load plus what rest can clear."""
+        return self.total
+
+    @current.setter
+    def current(self, value: float) -> None:
+        self.temporary = float(value) - self.permanent
 
     @property
-    def shedable(self) -> int:
-        return max(0, self.current - self.permanent)
+    def shedable(self) -> float:
+        """The share a good night's sleep can clear; implant load never is."""
+        return max(0.0, self.temporary)
 
-    def can_accept(self, amount: int = 1) -> bool:
-        """A body already at its maximum gains nothing from further intervention."""
-        if amount < 0:
-            raise HealingRulesError("strain cannot be negative")
-        return self.current + amount <= self.maximum
+    def can_accept(self, amount: float = 1) -> bool:
+        return self.can_absorb(amount)
 
-    def add(self, amount: int = 1) -> bool:
-        """Apply strain if there is room; report whether the effect took hold."""
-        if not self.can_accept(amount):
-            return False
-        self.current += amount
-        return True
+    def add(self, amount: float = 1) -> bool:
+        """Apply strain if there is room; a body at its maximum gains nothing."""
+        return self.absorb(amount)
 
-    def add_permanent(self, amount: int) -> None:
-        """Cyberware and similar: taken from the ceiling permanently."""
-        if amount < 0:
-            raise HealingRulesError("strain cannot be negative")
-        if self.current + amount > self.maximum:
+    def add_permanent(self, amount: float) -> None:
+        """Cyberware: taken from the ceiling, never shed while the implant stays."""
+        if not self.can_absorb(amount):
             raise HealingRulesError("an implant that exceeds the maximum is not installable")
-        self.current += amount
-        self.permanent += amount
+        self.permanent += float(amount)
 
-    def nights_sleep(self, nights: int = 1) -> int:
-        """One shedable point leaves per night of good sleep; permanent never does."""
+    def nights_sleep(self, nights: int = 1) -> float:
+        """One shedable point leaves per qualifying night; permanent never does."""
         if nights < 0:
             raise HealingRulesError("nights cannot be negative")
-        shed = min(self.shedable, nights)
-        self.current -= shed
+        shed = 0.0
+        for _ in range(nights):
+            shed += self.rest_night()
         return shed
 
 

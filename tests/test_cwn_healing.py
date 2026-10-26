@@ -14,6 +14,31 @@ from src.rules.cwn_healing import (
 )
 
 
+class StrainAgreementTest(unittest.TestCase):
+    """cwn_healing must delegate Strain to cwn_strain, never restate it."""
+
+    def test_totals_agree_with_the_canonical_strain_module(self):
+        from src.rules import cwn_strain
+        mine = SystemStrain(constitution=10, current=4)
+        theirs = cwn_strain.SystemStrain(constitution=10, temporary=4)
+        self.assertEqual(mine.current, theirs.total)
+
+    def test_refusal_at_the_ceiling_agrees_with_the_canonical_module(self):
+        from src.rules import cwn_strain
+        mine = SystemStrain(constitution=3, current=3)
+        theirs = cwn_strain.SystemStrain(constitution=3, temporary=3)
+        self.assertFalse(mine.add(1))
+        self.assertFalse(theirs.absorb(1))
+        self.assertEqual(mine.current, theirs.total)
+
+    def test_sleep_recovers_the_same_amount_as_the_canonical_module(self):
+        from src.rules import cwn_strain
+        mine = SystemStrain(constitution=10, current=5)
+        theirs = cwn_strain.SystemStrain(constitution=10, temporary=5)
+        self.assertEqual(mine.nights_sleep(2), theirs.rest_night() + theirs.rest_night())
+        self.assertEqual(mine.current, theirs.total)
+
+
 class MortalWoundTest(unittest.TestCase):
     def test_a_downed_patient_dies_at_the_end_of_the_sixth_round(self):
         p = Patient(hit_points=0, level_or_hit_dice=3, downed_round=10)
