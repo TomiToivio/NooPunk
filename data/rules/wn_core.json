@@ -128,6 +128,48 @@
         "11": "flesh-wound",
         "12": "flesh-wound"
       }
+    },
+    "attack_modifiers": {
+      "_source": "CWN SRD: rules-of-the-game/combat/attacks-in-combat/",
+      "table": {
+        "target_prone_not_in_melee": -2,
+        "target_prone_adjacent": 2,
+        "beyond_normal_range": -2,
+        "attacker_prone_melee": -4,
+        "target_half_cover": -2,
+        "target_almost_full_cover": -4,
+        "thrown_while_in_melee": -4,
+        "one_handed_gun_in_melee": -4,
+        "target_unseen_position_known": -4
+      },
+      "impossible": {
+        "two_handed_gun_in_melee": "a two-handed gun cannot be fired while in melee",
+        "target_unseen_position_unknown": "the target's position is unknown, so it cannot be attacked"
+      }
+    },
+    "actions": {
+      "_source": "CWN SRD: rules-of-the-game/combat/combat-actions",
+      "main_per_round": 1,
+      "move_per_round": 1,
+      "main_can_buy_second_move": true,
+      "on_turn_limited": false,
+      "instant_limited": false,
+      "snap_attack_penalty": -4,
+      "swarm": {
+        "per_other_hit": 2,
+        "per_other_damage": 1,
+        "max_other_assailants": 3
+      },
+      "charge": {
+        "to_hit": 2,
+        "ac_penalty": -2,
+        "min_distance_metres": 3,
+        "speed_multiplier": 2
+      },
+      "total_defense": {
+        "ac_bonus": 2,
+        "shock_immune": true
+      }
     }
   },
   "generation": {
