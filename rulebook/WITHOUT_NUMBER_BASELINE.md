@@ -66,6 +66,8 @@ The following are adopted procedures, not merely inspirations. Consult the named
 | Initiative, rounds, movement, actions, attacks, grappling, suppression and vehicles | CWN: Combat | Preserve Main/Move/On Turn/Instant distinctions and source action costs |
 | HP, damage, Shock, Trauma, mortal injury, stabilization, healing | CWN: Damage, Trauma, and Shock; Injury, Healing, and System Strain | No parallel NoöPunk wound or stress track |
 | Weapons, armor, ammunition, prices, encumbrance, drugs, crafting | CWN: Gear; Crafting; Encumbrance | Keep each item's complete stat line and limitations |
+| Weapon, armor, drone and cyberdeck mods; crafting quality; mod maintenance; factory mods | CWN: Crafting and Modifying Gear; the mod lists in Gear | Mods are a data catalogue; the +3 cap on mod hit/damage/Shock and the maintenance score are kernel rules |
+| Vehicles, fittings, vehicle mods, vehicle combat, crashes, ramming, foot and vehicle chases | CWN: Vehicles; Vehicle Combat; Chases and Pursuit | Hulls use the same HP/save grammar as characters; Power and Mass are budgets that refuse an illegal build |
 | Cyberware, installation, maintenance, strain and alienation | CWN: Cyberware | Source costs and limits; no character CYB attribute |
 | Hacking, programs, decks, security, drones | CWN: Hacking; Cyberdecks; Drones | Access and reachability first, then the actual source procedure |
 | PSI powers, disciplines, Effort, recovery and overexertion | SWN Revised: Psionics | Use full technique prerequisites, effects and commitment durations |
@@ -101,12 +103,25 @@ Digital conversion follows the repository's tabletop-first order. The versioned 
 
 **Porting status, 2026-10-26 (evening):** the procedure layer now runs in code — attributes, checks,
 saves, attacks, Trauma/Shock, mortal and Major Injuries, System Strain, healing, encumbrance,
-advancement, hacking, and Effort-shaped psionics with a package-and-rank gate. The first case's sheet,
-dialogue checks and NPC stat lines use the chassis, and its psionic choice spends Effort through
-`GameState`. The SRD's weapon and armour tables are transcribed as data (`data/rules/cwn_equipment.json`: 35
-weapons, 15 armour rows) with `src/rules/cwn_equipment.py` decomposing a row into the shape combat
-takes, and the first case's numbers are validated against it. Still unported: weapon and armour
-mods, drones, vehicles, the Edges/Foci text, and the AWN/WWN survival and exploration modules. Gaps and the licence boundary:
+advancement, hacking, drones, Edges/Foci, and Effort-shaped psionics with a package-and-rank gate.
+The first case's sheet, dialogue checks and NPC stat lines use the chassis, and its psionic choice
+spends Effort through `GameState`. The SRD's weapon and armour tables are transcribed as data
+(`data/rules/cwn_equipment.json`: 35 weapons, 15 armour rows) with `src/rules/cwn_equipment.py`
+decomposing a row into the shape combat takes, and the first case's numbers are validated against it.
+
+The movement and craft layer landed after that (`cwn_vehicles`, `cwn_gear_mods`), together with the
+two campaign procedures the baseline adopts from the other books (`awn_survival`, `wwn_projects`):
+hulls, fittings, vehicle mods, vehicle combat, crashes, ramming, both chase procedures, the whole
+mod catalogue with its maintenance score and +3 cap, crisis-zone travel/supplies/privation/foraging,
+and the Renown-based major-project clock. The first case now *drills* every ported procedure on one
+seed rather than only naming them in a sheet: `data/scenarios/lakkahaltia/chassis_drill.json` +
+`src/rules/first_case_drill.py` + `tests/test_first_case_drill.py`.
+
+Still unported, and named so nobody has to guess: the numeric tables deliberately not transcribed
+(the AWN forage-difficulty-by-terrain table, the WWN money-per-Renown ladder), SWN/AWN setting
+material, WWN magic and spellcasting, and the Godot wiring of the new beats — the Godot slice is
+still the older dialogue graph. Gaps, the licence boundary and the four rules that were easy to
+flatten: [`docs/rules/CWN_VEHICLES_CHASES_CRAFT.md`](../docs/rules/CWN_VEHICLES_CHASES_CRAFT.md) and
 [`docs/design/CWN_SWN_FIRST_SCENARIOS_IMPLEMENTATION.md`](../docs/design/CWN_SWN_FIRST_SCENARIOS_IMPLEMENTATION.md).
 
 Future changes require a versioned deviation identifying the original source, concrete change and playtest reason. Until then use the source procedure, including limits that would be inconvenient for a character. Fate, PbtA, Eclipse Phase and Transhumanity's Fate remain design references for later revisions, not active extra mechanics.

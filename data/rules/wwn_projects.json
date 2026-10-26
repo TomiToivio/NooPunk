@@ -1,0 +1,42 @@
+{
+  "$comment": "Worlds Without Number: Major Projects, the campaign-scale goal procedure NooPunk adopts for institutional change (rulebook/WITHOUT_NUMBER_BASELINE.md row 'Major projects'). The WWN SRD is CC0 (verified in data/sources/game_system_rights.json), so the procedure and its multipliers may be re-expressed; the descriptive strings here are original NooPunk wording. src/rules/wwn_projects.py owns the arithmetic. This does NOT duplicate the SWN faction turn: a project is what a party wants the world to become, a faction turn is what organisations do about it.",
+  "format": "noopunk.rules.wwn_projects",
+  "version": 1,
+  "issue": "https://github.com/TomiToivio/NooPunk/issues/564",
+  "source": {
+    "system": "Worlds Without Number",
+    "edition": "Deluxe, 2021-04-02",
+    "licence": "CC0",
+    "chapter": "Major Projects and Party Goals",
+    "printed_pages": "336-340"
+  },
+  "renown": {
+    "$comment": "Renown is the currency of a major project. One point per adventure is the normal award, with extra for work that visibly changes the campaign world. A PC starting the system late takes their accumulated experience points as their Renown score.",
+    "per_adventure": 1,
+    "starting_equals_experience_points": true,
+    "pooled_by_agreement": true,
+    "permanent_working_multiplier": 4
+  },
+  "probability": {"plausible": 1, "improbable": 2, "impossible": 4},
+  "scope": {"village": 2, "city": 4, "region": 8, "kingdom": 16, "known_world": 32},
+  "opposition": {
+    "none": 1,
+    "minor_figures": 2,
+    "local_leaders": 4,
+    "major_noble_or_famed_beast": 8,
+    "king_or_legendary_power": 16,
+    "$comment": "Only the greatest opponent counts. Once the greatest is quelled, the next one down becomes the multiplier."
+  },
+  "disapproval_multiplier": 2,
+  "decreasing_difficulty": {
+    "adventures": "the referee privately decides how many relevant adventures the goal is worth and awards a share each time",
+    "money": "the source prices Renown points on an escalating ladder",
+    "institutions": "an allied institution may simply build the thing",
+    "allied_faction_share": 0.25,
+    "$money_gap": "The money-per-Renown ladder was NOT transcribed. The kernel refuses to invent prices for it: see src/rules/wwn_projects.py::money_purchase_is_modelled."
+  },
+  "completion": {
+    "time_is_referee_judgement": true,
+    "prior_work_shortens_time": true
+  }
+}
