@@ -53,6 +53,14 @@ from dataclasses import dataclass
 from typing import Any
 
 from . import wn_core
+from .cwn_major_injury import (
+    INJURY_MAX,
+    INJURY_MIN,
+    MAJOR_INJURY_TABLE,
+    MajorInjury,
+    clamp_injury_roll,
+    injury_for_roll,
+)
 
 #: The four saves, in SRD order.
 SAVE_KINDS: tuple[str, ...] = ("Physical", "Evasion", "Mental", "Luck")
@@ -275,37 +283,10 @@ def resolve_attack(
 # LETHAL damage during the same scene in which the subject suffered a Traumatic Hit". The damage that
 # brings them down need not be the Traumatic Hit itself -- they stay vulnerable until the scene ends.
 
-@dataclass(frozen=True)
-class Injury:
-    """One row of the d12 Major Injury table."""
-
-    id: str
-    note: str
-    fatal: bool = False
-    coma: bool = False
-    limb: str | None = None
-    needs_prosthetic: bool = False
-
-
-#: Rolls 1-10 are individual; 11 and 12 are the same outcome ("Just a Flesh Wound").
-MAJOR_INJURY_TABLE: dict[int, Injury] = {
-    1: Injury("instant_death", "Wrong place, wrong time.", fatal=True),
-    2: Injury("internal_damage", "Dead in an hour without a street doc; coma until a Prosthetic Cyber implant.",
-              coma=True, needs_prosthetic=True),
-    3: Injury("brain_damage", "Coma until a Prosthetic Cyber implant.", coma=True, needs_prosthetic=True),
-    4: Injury("eye_damage", "Blind until cybereyes; existing cybereyes are critically damaged."),
-    5: Injury("gut_wound", "-1 Con modifier after an hour until a Prosthetic Cyber implant.",
-              needs_prosthetic=True),
-    6: Injury("right_leg_ruined", "Can crawl at best once stabilized.", limb="right leg"),
-    7: Injury("left_leg_ruined", "Can crawl at best once stabilized.", limb="left leg"),
-    8: Injury("right_arm_ruined", "Only one functional hand.", limb="right arm"),
-    9: Injury("left_arm_ruined", "Only one functional hand.", limb="left arm"),
-    10: Injury("system_damage", "The most System Strain-expensive implant is critically damaged."),
-    11: Injury("flesh_wound", "Not that bad of a hit after all."),
-    12: Injury("flesh_wound", "Not that bad of a hit after all."),
-}
-
-INJURY_MIN, INJURY_MAX = 1, 12
+# The Major Injury table lives in one module only. `cwn_major_injury` owns the rows and their
+# consequences; this module keeps the public names (`Injury`, `injury_for_roll`, `clamp_injury_roll`)
+# that earlier callers used, so the consolidation is invisible to them.
+Injury = MajorInjury
 
 
 def major_injury_risk(*, lethal: bool, hit_points: int, traumatic_this_scene: bool) -> bool:
@@ -315,15 +296,6 @@ def major_injury_risk(*, lethal: bool, hit_points: int, traumatic_this_scene: bo
     scene with no Traumatic Hit, does **not** put the subject on this table.
     """
     return lethal and hit_points <= 0 and traumatic_this_scene
-
-
-def clamp_injury_roll(roll: int) -> int:
-    """SRD 2.5.6: "a roll less than 1 still counts as 1, and one more than 12 still counts as 12"."""
-    return max(INJURY_MIN, min(INJURY_MAX, roll))
-
-
-def injury_for_roll(roll: int) -> Injury:
-    return MAJOR_INJURY_TABLE[clamp_injury_roll(roll)]
 
 
 def resolve_downed(

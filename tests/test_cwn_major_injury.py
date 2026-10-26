@@ -12,12 +12,12 @@ class TableTests(unittest.TestCase):
                 self.assertEqual(outcome.roll, roll)
 
     def test_rolls_below_one_count_as_one(self) -> None:
-        self.assertEqual(injury.resolve_major_injury(0).id, "instant-death")
-        self.assertEqual(injury.resolve_major_injury(-5).id, "instant-death")
+        self.assertEqual(injury.resolve_major_injury(0).id, "instant_death")
+        self.assertEqual(injury.resolve_major_injury(-5).id, "instant_death")
 
     def test_rolls_above_twelve_count_as_twelve(self) -> None:
-        self.assertEqual(injury.resolve_major_injury(13).id, "flesh-wound")
-        self.assertEqual(injury.resolve_major_injury(40).id, "flesh-wound")
+        self.assertEqual(injury.resolve_major_injury(13).id, "flesh_wound")
+        self.assertEqual(injury.resolve_major_injury(40).id, "flesh_wound")
 
     def test_a_modifier_moves_the_row_and_still_clamps(self) -> None:
         self.assertEqual(injury.resolve_major_injury(5, modifier=1).roll, 6)
