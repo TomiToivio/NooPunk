@@ -56,6 +56,7 @@ from . import wn_core
 from .cwn_major_injury import (
     INJURY_MAX,
     INJURY_MIN,
+    MAJOR_INJURY_TABLE,
     MajorInjury,
     clamp_injury_roll,
     injury_for_roll,
