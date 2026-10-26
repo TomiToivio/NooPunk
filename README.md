@@ -307,6 +307,17 @@ shared deterministic rules for text / Concordia / future Godot use
 
 NoöPunk is **not an Eclipse Phase conversion and not a hack of any single parent system**. Its six-STAT + separate-Skill kernel is NoöPunk's own (issue #200); Eclipse Phase remains important for transhuman concepts; Fate, PbtA, CY_BORG, Cities Without Number/OSR, Citizen Sleeper, The Expanse and other games inform different design problems.
 
+### Playable slice: the hospital case in Godot 4
+
+A ten-minute vertical slice of the detective RPG runs now, offline and without an LLM: one hospital,
+three conversations, six pieces of evidence, a sealed research file and two endings that both stay
+ambiguous. Godot **4.7.2** is pinned; run and test commands, controls, the save format, the rules
+adapter and the known limitations are in [`docs/godot/README.md`](docs/godot/README.md).
+
+The rules come from the approved Without Number kernel through a single adapter
+(`godot/core/rules_adapter.gd` reads `data/rules/wn_core.json`); no mechanic is invented in engine code,
+and #564's unresolved 3d6 question is a data-level override that the game reports, not a silent choice.
+
 The current core work is [issue #111](https://github.com/TomiToivio/NooPunk/issues/111).
 
 ## What NoöPunk is about

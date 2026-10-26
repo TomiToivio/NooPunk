@@ -1,0 +1,59 @@
+{
+  "_note": "Evidence for the slice. `provenance` mirrors the repository's evidence ledger vocabulary (src/rules/investigation_evidence.py): physical | digital | testimony | psi_lead | other. Nothing here is proof; each entry records what it can substantiate.",
+  "items": [
+    {
+      "id": "E1",
+      "label": "Ward roster does not match the handover sheet",
+      "provenance": "digital",
+      "found_at": "Reception terminal",
+      "substantiates": "One person was on the ward who is not recorded.",
+      "falsely_suggests": "An intruder, or an abduction.",
+      "flags": ["roster_seen"]
+    },
+    {
+      "id": "E2",
+      "label": "Patient's drawing: a red door, a bog road, a low ridge",
+      "provenance": "physical",
+      "found_at": "Consultation room",
+      "substantiates": "The account has structure, and repeats across patients.",
+      "falsely_suggests": "A shared story picked up in the ward.",
+      "flags": ["drawing_seen"]
+    },
+    {
+      "id": "E3",
+      "label": "Nurse: thirty-four minutes missing from the night log",
+      "provenance": "testimony",
+      "found_at": "Corridor, night shift",
+      "substantiates": "The record has a gap the staff know about.",
+      "falsely_suggests": "A cover-up by the staff.",
+      "flags": ["gap_known"]
+    },
+    {
+      "id": "E4",
+      "label": "The file is sealed by a research ethics board, not by psychiatry",
+      "provenance": "physical",
+      "found_at": "Records office",
+      "substantiates": "The patient arrived through a study.",
+      "falsely_suggests": "A conspiracy inside the hospital.",
+      "flags": ["annex_seen"]
+    },
+    {
+      "id": "E5",
+      "label": "The described place is on the 1987 permit map, 40 km east",
+      "provenance": "digital",
+      "found_at": "Reception terminal, municipal register",
+      "substantiates": "The account is anchored to a real place the study never published.",
+      "falsely_suggests": "The patient read it somewhere.",
+      "flags": ["place_anchored"]
+    },
+    {
+      "id": "E6",
+      "label": "Lakkahaltia: the small guardian of the cloudberry bog",
+      "provenance": "psi_lead",
+      "found_at": "Consultation room, after the interpretation check",
+      "substantiates": "A second, non-clinical reading of the account is available to the team.",
+      "falsely_suggests": "That the encounter happened.",
+      "flags": ["lakkahaltia_noted"]
+    }
+  ]
+}

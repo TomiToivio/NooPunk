@@ -1,0 +1,217 @@
+{
+  "_note": "Branching dialogue. A node has text, optional choices, and either choices or a next node. Conditions are evaluated against GameState flags/evidence/attributes; effects mutate it. See godot/narrative/dialogue.gd for the vocabulary. No patient is named beyond a family name used in the ward; nothing here asserts a supernatural cause.",
+  "nodes": {
+    "doctor_1": {
+      "speaker": "Dr. Laine",
+      "text": "Three patients, three units, and the same red door. I have been a psychiatrist for nineteen years and I do not know what to do with that sentence.",
+      "choices": [
+        {
+          "text": "Then start with what the record says. [Investigate]",
+          "check": {
+            "attribute": "INT",
+            "skill": "Investigate",
+            "difficulty": 8,
+            "success_node": "doctor_record",
+            "failure_node": "doctor_deflect"
+          }
+        },
+        {
+          "text": "Who sealed the patient's file? [Talk]",
+          "check": {
+            "attribute": "CHA",
+            "skill": "Talk",
+            "difficulty": 10,
+            "success_node": "doctor_annex",
+            "failure_node": "doctor_deflect"
+          }
+        },
+        {
+          "text": "Thank you. I will come back with the patient's consent.",
+          "effects": { "set_flags": ["safeguarding_first"] },
+          "next": "doctor_end"
+        }
+      ]
+    },
+    "doctor_record": {
+      "speaker": "Dr. Laine",
+      "text": "The record is complete, doctor, which is the strange part. Every test is normal and every observation agrees with the patient. Usually the record argues with the patient.",
+      "effects": { "add_evidence": ["E1"], "add_journal": "The ward record is unusually unanimous." },
+      "next": "doctor_1"
+    },
+    "doctor_annex": {
+      "speaker": "Dr. Laine",
+      "text": "Not me. A research ethics board, and they are not psychiatrists. The patient came to us through a study, and the study is not part of my ward.",
+      "effects": { "add_evidence": ["E4"], "set_flags": ["annex_hinted"] },
+      "next": "doctor_1"
+    },
+    "doctor_deflect": {
+      "speaker": "Dr. Laine",
+      "text": "Ask the administrator. I have a ward to run and a shift that is two people short.",
+      "effects": { "add_journal": "Dr. Laine closed the subject." },
+      "next": "doctor_1"
+    },
+    "doctor_end": {
+      "speaker": "Dr. Laine",
+      "text": "Good. The patient has said no twice already, and I will not have that walked over.",
+      "next": null
+    },
+
+    "nurse_1": {
+      "speaker": "Nurse Aho",
+      "text": "You want the night log. Everyone wants the night log. There is nothing in it.",
+      "choices": [
+        {
+          "text": "There is a gap of thirty-four minutes in it. [Notice]",
+          "check": {
+            "attribute": "WIS",
+            "skill": "Notice",
+            "difficulty": 8,
+            "success_node": "nurse_gap",
+            "failure_node": "nurse_shrug"
+          }
+        },
+        {
+          "text": "I am not here to blame the shift. I am here because a patient is frightened.",
+          "effects": { "set_flags": ["trust_nurse"], "add_evidence": ["E3"] },
+          "next": "nurse_gap"
+        },
+        {
+          "text": "Then I will have to treat it as an obstruction.",
+          "effects": { "set_flags": ["staff_hostile"], "add_journal": "The shift stopped talking." },
+          "next": "nurse_hostile"
+        }
+      ]
+    },
+    "nurse_gap": {
+      "speaker": "Nurse Aho",
+      "text": "Thirty-four minutes. We were with a patient who would not stop describing a road, and the deputy head was in the corridor asking why we had called a code that we had not called.",
+      "effects": { "add_evidence": ["E3"], "add_journal": "An unlogged code call during the gap." },
+      "next": "nurse_1"
+    },
+    "nurse_shrug": {
+      "speaker": "Nurse Aho",
+      "text": "It is a paper log on a bad night. You have never written one.",
+      "next": "nurse_1"
+    },
+    "nurse_hostile": {
+      "speaker": "Nurse Aho",
+      "text": "Then talk to the union. I have patients.",
+      "next": null
+    },
+
+    "patient_1": {
+      "speaker": "Patient Korhonen",
+      "text": "Are you a doctor or a policeman? It matters, because I have already told one of each and neither believed me.",
+      "choices": [
+        {
+          "text": "I am here to listen. Nothing goes into your file that you do not agree to. [Consent]",
+          "effects": { "set_flags": ["consent_given"], "add_journal": "Interview conducted with consent, on the record." },
+          "next": "patient_2"
+        },
+        {
+          "text": "Both. Now describe the door again, exactly.",
+          "effects": { "add_journal": "The patient was pressed before consenting.", "set_flags": ["consent_skipped"] },
+          "next": "patient_2"
+        },
+        {
+          "text": "Then we will stop here and I will come back with the ward's advocate present.",
+          "effects": { "set_flags": ["safeguarding_first", "advocate_offered"] },
+          "next": "patient_refuse"
+        }
+      ]
+    },
+    "patient_2": {
+      "speaker": "Patient Korhonen",
+      "text": "The door is red and it is in a bog road with a low ridge behind it. There is a small thing in the cloudberry moss that wants you to keep walking. It is not frightening. That is the part I cannot explain to them.",
+      "effects": { "add_evidence": ["E2"] },
+      "choices": [
+        {
+          "text": "Read the account clinically, and say what it supports. [Psychology]",
+          "check": {
+            "attribute": "INT",
+            "skill": "Psychology",
+            "difficulty": 10,
+            "success_node": "patient_interpret",
+            "failure_node": "patient_plain"
+          }
+        },
+        {
+          "text": "Ask whether the place is somewhere they have been before.",
+          "next": "patient_place"
+        },
+        {
+          "text": "Thank them and leave the reading to the file.",
+          "effects": { "add_journal": "The account was taken down without interpretation." },
+          "next": "patient_end"
+        }
+      ]
+    },
+    "patient_interpret": {
+      "speaker": "Patient Korhonen",
+      "text": "You are writing something down. Nobody has written anything down before.",
+      "effects": {
+        "set_flags": ["account_interpreted"],
+        "add_evidence": ["E6"],
+        "add_journal": "The account is coherent under interview, and it names a place that the trial never published."
+      },
+      "next": "patient_place"
+    },
+    "patient_plain": {
+      "speaker": "Patient Korhonen",
+      "text": "You look like the others. It is all right. I have said it before and I will say it again.",
+      "effects": { "add_journal": "The clinical reading was attempted and did not hold." },
+      "next": "patient_place"
+    },
+    "patient_place": {
+      "speaker": "Patient Korhonen",
+      "text": "East of here, past the second ridge. My mother's family picked cloudberries there. There is nothing there now. There was never a building, whatever the others say.",
+      "choices": [
+        {
+          "text": "Check whether the place exists on any public map. [Administer]",
+          "check": {
+            "attribute": "INT",
+            "skill": "Administer",
+            "difficulty": 10,
+            "success_node": "patient_place_found",
+            "failure_node": "patient_place_fail"
+          }
+        },
+        {
+          "text": "Leave it for the referral partner.",
+          "next": "patient_end"
+        }
+      ]
+    },
+    "patient_place_found": {
+      "speaker": "Reception terminal",
+      "text": "The 1987 permit register lists a research station on that ridge. The permit was withdrawn in 1994. The study never mentions it.",
+      "effects": {
+        "add_evidence": ["E5"],
+        "set_flags": ["place_anchored"],
+        "add_journal": "The described place exists, and the study never published it."
+      },
+      "next": "patient_end"
+    },
+    "patient_place_fail": {
+      "speaker": "Reception terminal",
+      "text": "The register is incomplete for 1985-1990. The request has to be filed on paper.",
+      "next": "patient_end"
+    },
+    "patient_refuse": {
+      "speaker": "Patient Korhonen",
+      "text": "With the advocate, then. Not today.",
+      "next": null
+    },
+    "patient_end": {
+      "speaker": "Patient Korhonen",
+      "text": "If you go out there, do not take the moss home with you. That is all the advice I have.",
+      "next": null
+    }
+  },
+  "entry_node": "doctor_1",
+  "npcs": {
+    "doctor": "doctor_1",
+    "nurse": "nurse_1",
+    "patient": "patient_1"
+  }
+}

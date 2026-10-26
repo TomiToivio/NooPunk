@@ -1,12 +1,40 @@
 [gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://src/godot/title.gd" id="1_title"]
+[ext_resource type="Script" path="res://godot/ui/main_menu.gd" id="1_menu"]
 
 [node name="Main" type="Control"]
+script = ExtResource("1_menu")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_title")
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Stack" type="VBoxContainer" parent="Center"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Title" type="Label" parent="Center/Stack"]
+layout_mode = 2
+text = "NoöPunk"
+horizontal_alignment = 1
+
+[node name="Status" type="Label" parent="Center/Stack"]
+layout_mode = 2
+text = "RPG foundation scaffold"
+horizontal_alignment = 1
+
+[node name="Note" type="Label" parent="Center/Stack"]
+layout_mode = 2
+text = "Core attributes/checks specified; other systems remain intentionally unresolved."
+horizontal_alignment = 1

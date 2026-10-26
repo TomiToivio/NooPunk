@@ -1,8 +1,20 @@
-name: Godot slice
+name: Godot verification (legacy ward + detective slice)
 
 on:
+  push:
+    paths:
+      - "godot/**"
+      - "project.godot"
+      - "scenes/**"
+      - "src/godot/**"
+      - "data/scenarios/**"
+      - "data/rules/**"
+      - "tests/godot/**"
+      - "tools/**"
+      - ".github/workflows/godot.yml"
   pull_request:
     paths:
+      - "godot/**"
       - "project.godot"
       - "scenes/**"
       - "src/godot/**"
@@ -32,3 +44,29 @@ jobs:
         env:
           GODOT: /tmp/godot/Godot_v4.5.1-stable_linux.x86_64
         run: bash tools/godot_smoke.sh
+
+  slice:
+    runs-on: ubuntu-latest
+    env:
+      GODOT_VERSION: "4.7.2"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch Godot ${{ env.GODOT_VERSION }}
+        run: |
+          set -euo pipefail
+          curl -sSLo godot.zip \
+            "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
+          unzip -q godot.zip
+          mv "Godot_v${GODOT_VERSION}-stable_linux.x86_64" godot
+          chmod +x godot
+          ./godot --version
+
+      - name: Import the project (headless)
+        run: ./godot --headless --path . --import
+
+      - name: Rules, state, dialogue and scenario-data suites
+        run: ./godot --headless --path . --script res://godot/tests/run_tests.gd
+
+      - name: Headless playthrough of the assembled level
+        run: ./godot --headless --path . res://godot/tests/playthrough.tscn --quit-after 300
