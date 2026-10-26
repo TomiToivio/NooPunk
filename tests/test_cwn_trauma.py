@@ -66,6 +66,25 @@ class ShockTest(unittest.TestCase):
         self.assertEqual(r.total_damage, 4)
 
 
+class SingleSourceOfTruthTest(unittest.TestCase):
+    """cwn_trauma must delegate to cwn_core, never restate it."""
+
+    def test_trauma_decisions_agree_with_the_core(self):
+        from src.rules.cwn_core import is_traumatic_hit
+        for die in range(1, 9):
+            for target in range(3, 10):
+                self.assertEqual(is_traumatic(die, target), is_traumatic_hit(die, target))
+
+    def test_shock_agrees_with_the_core_on_a_miss(self):
+        from src.rules.cwn_core import shock_damage
+        for ac in (None, 10, 13, 15, 18):
+            for target_ac in (8, 13, 16):
+                mine = shock_on_miss(Shock(3, ac), target_ac, attribute_modifier=1)
+                theirs = shock_damage(hit=False, shock_value=3, shock_ac=ac,
+                                      target_melee_ac=target_ac, attribute_modifier=1)
+                self.assertEqual(mine, max(0, theirs))
+
+
 class SoakTest(unittest.TestCase):
     def test_soak_is_spent_down_rather_than_static(self):
         through, left = absorb_with_soak(7, 3)
