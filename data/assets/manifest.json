@@ -1,0 +1,22 @@
+{
+  "_comment": "Asset manifest for the Godot slice (#631). Every visible object in the vertical slice is generated from Godot primitives in scenes/lakkahaltia/ward.gd; no third-party file is committed. This manifest records that decision and the packs reviewed for a later art pass, so the next contributor starts from licence facts rather than assumptions.",
+  "format": "noopunk.assets.manifest",
+  "version": 1,
+  "project": "godot",
+  "committed_assets": [],
+  "procedural": [
+    { "what": "ward geometry (floor, walls, partitions, furniture)", "how": "BoxMesh + StaticBody3D in ward.gd", "licence": "none required (generated)" },
+    { "what": "player and NPC bodies", "how": "CapsuleMesh in ward.gd", "licence": "none required (generated)" },
+    { "what": "clue markers, lighting, HUD", "how": "BoxMesh, OmniLight3D, Control nodes", "licence": "none required (generated)" }
+  ],
+  "reviewed_for_later_use": [
+    { "pack": "Kenney", "url": "https://kenney.nl/assets", "licence": "CC0 for most packs; verify per pack", "status": "candidate, nothing downloaded" },
+    { "pack": "Quaternius", "url": "https://quaternius.com/", "licence": "CC0 for most packs; verify per pack", "status": "candidate, nothing downloaded" },
+    { "pack": "Poly Haven", "url": "https://polyhaven.com/", "licence": "CC0; verify per asset", "status": "candidate, nothing downloaded" },
+    { "pack": "Synty Studios", "url": "https://syntystore.com/", "licence": "commercial, per-licence; redistribution terms vary", "status": "optional; do not commit purchased files unless the licence permits public redistribution" }
+  ],
+  "rules": [
+    "No asset enters this repository without a per-pack licence check, an attribution line if required, and a public-repo redistribution check.",
+    "Placeholder art must be either generated (as here) or explicitly CC0; 'found online' is not a licence."
+  ]
+}

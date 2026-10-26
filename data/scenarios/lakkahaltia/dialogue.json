@@ -1,0 +1,128 @@
+{
+  "_comment": "Dialogue graphs for the Lakkahaltia case. Portable: each node is plain data a tabletop GM can read aloud. Conditions/effects are evaluated by src/godot/case_state.gd; there is no prose in code.",
+  "doctor": {
+    "start": "d1",
+    "nodes": {
+      "d1": {
+        "speaker": "Dr. Aino Kivi",
+        "text": "You are early. The ward does not open until nine, and the ward is not open at all. Which is it, Inspector?",
+        "choices": [
+          { "text": "\"UNSA received a call from this address.\"", "next": "d2", "effects": [{ "flag": "met_doctor" }] },
+          { "text": "\"I am here about patient sixteen.\"", "next": "d3", "effects": [{ "flag": "met_doctor" }, { "journal": "Kivi recognized the patient number before I said it." }] }
+        ]
+      },
+      "d2": {
+        "speaker": "Dr. Aino Kivi",
+        "text": "The line was disconnected in March. I signed the order myself. If someone called you, they called from a room that has no telephone.",
+        "choices": [
+          { "text": "\"Who else has keys?\"", "next": "d3" },
+          { "text": "\"Show me the duty roster.\"", "next": "d4", "effects": [{ "clue": "nurse-inconsistency" }] }
+        ]
+      },
+      "d3": {
+        "speaker": "Dr. Aino Kivi",
+        "text": "Sixteen was discharged in March with the others. She came back in June. I did not ask how. The paperwork for her return is in the record — one file, two admissions. I have stopped trying to make it consistent.",
+        "choices": [
+          { "text": "\"That is not how files work.\"", "next": "d5", "effects": [{ "journal": "Kivi is not lying. She is afraid of the paperwork." }] },
+          { "text": "\"May I read it?\"", "next": "d5", "effects": [{ "flag": "record_permitted" }] }
+        ]
+      },
+      "d4": {
+        "speaker": "Dr. Aino Kivi",
+        "text": "The roster runs to June. I signed it every week until June. I remember signing it in a room that smelled of cloudberry, which is not a thing that grows in Helsinki.",
+        "choices": [
+          { "text": "\"You are describing a hallucination.\"", "next": "d5", "effects": [{ "flag": "sceptic" }] },
+          { "text": "\"Or a memory that does not fit the building.\"", "next": "d5", "effects": [{ "flag": "open_mind" }] }
+        ]
+      },
+      "d5": {
+        "speaker": "Dr. Aino Kivi",
+        "text": "Read whatever you like. Talk to Salmi before you go — he was on nights in June. And Inspector: do not look into the mirror in sixteen. The patients asked me to take it down. I did not.",
+        "effects": [{ "flag": "doctor_done" }],
+        "choices": [
+          { "text": "Leave.", "next": null }
+        ]
+      }
+    }
+  },
+  "nurse": {
+    "start": "n1",
+    "nodes": {
+      "n1": {
+        "speaker": "Nurse Väinö Salmi",
+        "text": "Visitors sign in. Nobody signed in. That is the whole of what I know, and I have said it four times to four different people who all wrote it down differently.",
+        "choices": [
+          { "text": "\"Who were the four people?\"", "next": "n2", "effects": [{ "flag": "met_nurse" }] },
+          { "text": "\"When did the ward close?\"", "next": "n3", "effects": [{ "flag": "met_nurse" }] }
+        ]
+      },
+      "n2": {
+        "speaker": "Nurse Väinö Salmi",
+        "text": "Two from the city, one from the university, one who did not give a name and smelled of cloudberry. The last one sat with sixteen all night. In the morning there was a second admission in the book and no visitor.",
+        "choices": [
+          { "text": "\"What did the visitor look like?\"", "next": "n4" },
+          { "text": "\"You let a stranger sit with a patient?\"", "next": "n4", "effects": [{ "flag": "sceptic" }] }
+        ]
+      },
+      "n3": {
+        "speaker": "Nurse Väinö Salmi",
+        "text": "March. The order says March. But I worked nights until June, and so did the roster, and so did the light in the corridor. You tell me which of those is the record and which is the ward.",
+        "choices": [
+          { "text": "\"The paper is the record.\"", "next": "n4", "effects": [{ "clue": "nurse-inconsistency" }] },
+          { "text": "\"The ward you worked is the record.\"", "next": "n4", "effects": [{ "clue": "nurse-inconsistency" }, { "flag": "open_mind" }] }
+        ]
+      },
+      "n4": {
+        "speaker": "Nurse Väinö Salmi",
+        "text": "Small. Polite. Wore a coat that was too warm for June. Asked whether we had cloudberry jam in the kitchen. Sixteen says it asked her the same question. I have not slept properly since.",
+        "effects": [{ "journal": "Salmi's visitor and Patient 16's visitor agree on cloudberries." }],
+        "choices": [
+          { "text": "Leave.", "next": null }
+        ]
+      }
+    }
+  },
+  "patient": {
+    "start": "p1",
+    "nodes": {
+      "p1": {
+        "speaker": "Patient 16",
+        "text": "You are the one from the mirror. No — you are the one who has not looked yet. Sit down. The chair is real. I have checked.",
+        "choices": [
+          { "text": "\"What is your name?\"", "next": "p2", "effects": [{ "flag": "met_patient" }] },
+          { "text": "\"Who visited you in June?\"", "next": "p3", "effects": [{ "flag": "met_patient" }] }
+        ]
+      },
+      "p2": {
+        "speaker": "Patient 16",
+        "text": "Eeva, on the days the ward is open. On the other days I am sixteen. The visitor called me by the number and asked for cloudberries, so I think it had read the file and not the person.",
+        "choices": [
+          { "text": "\"What did it look like?\"", "next": "p3" },
+          { "text": "\"That is a delusion. You know that.\"", "next": "p4", "effects": [{ "flag": "sceptic" }] }
+        ]
+      },
+      "p3": {
+        "speaker": "Patient 16",
+        "text": "Small. Too many eyes for a face, but it was not frightening. It came out of the mirror and went back through it. It left a stain on the sheet. Kivi had the sheet tested. The result was 'no result', which is not the same as nothing.",
+        "effects": [{ "clue": "patient-testimony" }, { "journal": "The sheet was tested. Check what the lab returned." }],
+        "choices": [
+          { "text": "\"I will look at the mirror.\"", "next": "p5", "effects": [{ "flag": "promised_mirror" }] },
+          { "text": "\"Thank you, Eeva.\"", "next": "p5" }
+        ]
+      },
+      "p4": {
+        "speaker": "Patient 16",
+        "text": "Yes. I know that. I also know the mirror is still on the wall, and that you will look into it, because everyone does. When you do, remember that it was polite. That is the part nobody writes down.",
+        "effects": [{ "clue": "patient-testimony" }],
+        "choices": [
+          { "text": "Leave.", "next": "p5" }
+        ]
+      },
+      "p5": {
+        "speaker": "Patient 16",
+        "text": "The door sticks. Push it with your shoulder, not your hand.",
+        "choices": [{ "text": "Leave.", "next": null }]
+      }
+    }
+  }
+}
