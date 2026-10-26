@@ -37,7 +37,7 @@ func commit(key: String, discipline: String, rank: int = 0, duration: String = "
 		return false
 	if amount < 1 or amount > free():
 		return false
-	commitments[key] = {"amount": amount, "duration": duration}
+	commitments[key] = {"amount": amount, "duration": duration, "discipline": discipline}
 	return true
 
 func release(key: String) -> bool:
