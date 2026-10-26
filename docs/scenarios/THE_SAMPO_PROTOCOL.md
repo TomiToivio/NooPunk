@@ -2,6 +2,10 @@
 
 > **Status:** tabletop-ready, system-neutral investigative scenario outline for #626. **Fictional events and invented institutions**; not statements about actual hospitals or patients. Use [Without Number baseline](../../rulebook/WITHOUT_NUMBER_BASELINE.md). Pre-crisis Ö-Mappi / Europol version by default; later UNSA framing possible.
 
+> **Detail annex:** clue-ledger provenance and custody, red-herring disconfirmation, ending triggers
+> and per-act null results are in
+> [`THE_SAMPO_PROTOCOL_EVIDENCE_ANNEX.md`](THE_SAMPO_PROTOCOL_EVIDENCE_ANNEX.md).
+
 ## Pitch
 
 Three patients in separate units report a red door and an unfamiliar forest road during unrelated clinical interviews. One also writes a grid of numbers. A clinician notices their exact descriptions appear in sealed study data from another Nordic country. The hospital fears a privacy breach; an external research sponsor demands the study continue. Romppainen's cell is invited to investigate possible cross-border research misconduct, **not to diagnose supernatural ability**.
