@@ -124,6 +124,18 @@ func _process(_delta: float) -> bool:
 			ward._offer_ending()
 			if ward.hud._ending_buttons.get_child_count() < 3:
 				_problem("the ending panel did not offer endings and a way to back out")
+			# A modal must stop world interaction, even if interact() is called directly.
+			var count_before: int = state.journal.size()
+			ward.interact()
+			if state.journal.size() != count_before:
+				_problem("world interaction remained active behind the ending panel")
+			# Backing out must not permanently consume the opportunity to end the case.
+			ward.hud._ending_buttons.get_child(0).pressed.emit()
+			if ward.hud.has_modal_open():
+				_problem("Not yet did not close the ending panel")
+			ward._offer_ending()
+			if not ward.hud.has_modal_open() or ward.hud._ending_buttons.get_child_count() < 3:
+				_problem("ending selection cannot be reopened after Not yet")
 			step = 6
 			frame = 0
 		6:
