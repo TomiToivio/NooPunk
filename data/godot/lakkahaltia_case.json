@@ -1,0 +1,126 @@
+{
+  "id": "lakkahaltia",
+  "title": "Etsivä Romppainen ja Lakkahaltian Salaisuus",
+  "version": 1,
+  "note": "First vertical slice. Content is data, not code: the scene reads this file.",
+  "player": {
+    "name": "Romppainen",
+    "stats": {
+      "Strength": 8,
+      "Dexterity": 11,
+      "Constitution": 10,
+      "Intelligence": 14,
+      "Wisdom": 12,
+      "Charisma": 9
+    },
+    "skills": {
+      "Investigation": 2,
+      "Empathy": 1,
+      "Medicine": 1
+    }
+  },
+  "npcs": [
+    {
+      "id": "doctor",
+      "display": "Ward physician",
+      "pos": [
+        -4,
+        0,
+        -6
+      ],
+      "topics": [
+        {
+          "id": "records",
+          "label": "Ask about the shared forest detail",
+          "text": "Three patients, one forest. None of them have met. The detail is not in any discharge leaflet we print.",
+          "evidence": "ev_shared_detail"
+        },
+        {
+          "id": "ethics",
+          "label": "Ask about the trial",
+          "text": "There is a BCI pilot on this ward. I signed the protocol. I did not read the appendix.",
+          "evidence": "ev_trial"
+        }
+      ]
+    },
+    {
+      "id": "nurse",
+      "display": "Night nurse",
+      "pos": [
+        4,
+        0,
+        -6
+      ],
+      "topics": [
+        {
+          "id": "night",
+          "label": "Ask what happens at night",
+          "text": "They draw the same building. A hall with no doors. Room 12 has been empty since spring.",
+          "evidence": "ev_drawings"
+        },
+        {
+          "id": "permits",
+          "label": "Ask who maintains the forest road",
+          "text": "The municipality. Though if you ask the inspector, the permit file is older than the road.",
+          "evidence": "ev_permits"
+        }
+      ]
+    },
+    {
+      "id": "patient",
+      "display": "Patient, room 12",
+      "pos": [
+        0,
+        0,
+        2
+      ],
+      "topics": [
+        {
+          "id": "story",
+          "label": "Listen to what she remembers",
+          "text": "I remember a door with no hospital behind it. And a sound like someone tasting something for the first time.",
+          "evidence": "ev_testimony",
+          "check": {
+            "attribute": "Wisdom",
+            "skill": "Empathy",
+            "difficulty": 8,
+            "on_success": "You can tell she is describing an experience, not reciting one.",
+            "on_failure": "You cannot tell. She notices that you cannot."
+          }
+        },
+        {
+          "id": "medical",
+          "label": "Read her chart (Medicine)",
+          "text": "No psychosis history. No substance use. Normal scans. Whatever this is, the chart does not contain it.",
+          "evidence": "ev_chart",
+          "check": {
+            "attribute": "Intelligence",
+            "skill": "Medicine",
+            "difficulty": 10,
+            "on_success": "The medication notes contradict the trial consent form.",
+            "on_failure": "The notes are ambiguous. You would need the trial file."
+          }
+        }
+      ]
+    }
+  ],
+  "clues": {
+    "ev_shared_detail": "Three patients name the same forest detail, absent from printed material.",
+    "ev_trial": "A BCI pilot runs on the ward; the physician signed an appendix he never read.",
+    "ev_drawings": "Night drawings show a hall with no doors. Room 12 is empty.",
+    "ev_permits": "The forest road permit file predates the road.",
+    "ev_testimony": "The patient describes an experience rather than reciting one.",
+    "ev_chart": "Chart contradicts the trial consent form."
+  },
+  "endings": {
+    "publish": {
+      "title": "Ending: Publish",
+      "text": "You publish. The patients are named in a leaked appendix. Something in the forest is now a permit question, and the trial resumes under a new number."
+    },
+    "contain": {
+      "title": "Ending: Contain",
+      "text": "You refer the file to UNSA and sign the containment order. The ward reopens on Monday. Nothing is explained, and nobody is told."
+    }
+  },
+  "ending_threshold": 4
+}
