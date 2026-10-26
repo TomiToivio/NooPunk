@@ -358,6 +358,24 @@ Current important influences include:
 
 Directly adapted material keeps its source and licensing provenance. No external ruleset supplies default mechanics automatically.
 
+**Design baseline (issue #615).** The *Without Number* family is the primary **procedure**
+reference: *Cities Without Number* for urban/network fieldwork and dangerous action, *Stars Without
+Number* for space, NHI and PSI framing, *Worlds Without Number* for noetic and interdimensional
+regions, and *Ashes Without Number* for crisis-ruin salvage and scarcity. Genre modules change **what
+you roll for** and **what a failure costs**; they never change **how you roll** — the check kernel
+stays NoöPunk's own (layer A `1d10`, the crossover's Fate `4dF`). See
+[`docs/design/ISSUE_615_RULES_BASELINE.md`](docs/design/ISSUE_615_RULES_BASELINE.md).
+
+**Licensing, stated precisely.** Of that family, only the *Cities Without Number* SRD and the *Worlds
+Without Number* SRD are verified CC0 reusable sources, and the dedication covers the SRD rather than
+the commercial book, its art or its setting. *Stars Without Number* and *Ashes Without Number* have no
+verified SRD and are used as **design references only** — no text or tables from them are reproduced.
+Credit is not a licence, and no single licence covers the whole family.
+
+NoöPunk is an unofficial, independent project. It is not endorsed by or affiliated with Sine Nomine
+Publishing, Posthuman Studios, Evil Hat Productions, lumpley games, or the creators of any game named
+above.
+
 ## Rules and world documentation
 
 Active canonical documents:
