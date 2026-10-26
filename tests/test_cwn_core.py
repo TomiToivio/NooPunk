@@ -167,5 +167,80 @@ class AttackResolutionTests(unittest.TestCase):
         self.assertEqual(out["damage"], 5)
 
 
+class MajorInjuryTests(unittest.TestCase):
+    """SRD 2.5.6: lethal zero HP + a Traumatic Hit in the same scene -> Physical save -> d12."""
+
+    def test_all_three_conditions_are_required(self) -> None:
+        self.assertTrue(cwn.major_injury_risk(lethal=True, hit_points=0, traumatic_this_scene=True))
+        self.assertFalse(cwn.major_injury_risk(lethal=False, hit_points=0, traumatic_this_scene=True),
+                         "a non-lethal beating does not put you on this table")
+        self.assertFalse(cwn.major_injury_risk(lethal=True, hit_points=3, traumatic_this_scene=True),
+                         "you must actually be at zero")
+        self.assertFalse(cwn.major_injury_risk(lethal=True, hit_points=0, traumatic_this_scene=False),
+                         "no Traumatic Hit in this scene means no risk")
+
+    def test_the_table_is_the_srd_table(self) -> None:
+        self.assertEqual(cwn.injury_for_roll(1).id, "instant_death")
+        self.assertTrue(cwn.injury_for_roll(1).fatal)
+        self.assertEqual(cwn.injury_for_roll(3).id, "brain_damage")
+        self.assertTrue(cwn.injury_for_roll(3).coma)
+        self.assertEqual(cwn.injury_for_roll(4).id, "eye_damage")
+        self.assertEqual(cwn.injury_for_roll(5).id, "gut_wound")
+        for roll, limb in ((6, "right leg"), (7, "left leg"), (8, "right arm"), (9, "left arm")):
+            with self.subTest(roll=roll):
+                self.assertEqual(cwn.injury_for_roll(roll).limb, limb)
+        self.assertEqual(cwn.injury_for_roll(10).id, "system_damage")
+        self.assertEqual(cwn.injury_for_roll(11).id, "flesh_wound")
+        self.assertEqual(cwn.injury_for_roll(12).id, "flesh_wound")
+
+    def test_rolls_outside_the_table_clamp_rather_than_fail(self) -> None:
+        # "a roll less than 1 still counts as 1, and one more than 12 still counts as 12"
+        self.assertEqual(cwn.clamp_injury_roll(-3), 1)
+        self.assertEqual(cwn.clamp_injury_roll(0), 1)
+        self.assertEqual(cwn.clamp_injury_roll(13), 12)
+        self.assertEqual(cwn.injury_for_roll(99).id, "flesh_wound")
+
+    def test_passing_the_physical_save_leaves_you_mortally_wounded_but_uninjured(self) -> None:
+        out = cwn.resolve_downed(lethal=True, hit_points=0, traumatic_this_scene=True,
+                                 level=1, attributes=SHEET, save_die=20)
+        self.assertTrue(out["at_risk"])
+        self.assertTrue(out["mortally_wounded"])
+        self.assertTrue(out["saved"])
+        self.assertIsNone(out["injury"])
+
+    def test_failing_the_save_rolls_a_major_injury(self) -> None:
+        out = cwn.resolve_downed(lethal=True, hit_points=0, traumatic_this_scene=True,
+                                 level=1, attributes=SHEET, save_die=1, injury_roll=3)
+        self.assertFalse(out["saved"])
+        self.assertEqual(out["injury"].id, "brain_damage")
+        self.assertEqual(out["injury_roll"], 3)
+
+    def test_no_risk_returns_a_plain_zero_hit_point_result(self) -> None:
+        out = cwn.resolve_downed(lethal=True, hit_points=0, traumatic_this_scene=False,
+                                 level=1, attributes=SHEET)
+        self.assertFalse(out["at_risk"])
+        self.assertIsNone(out["saved"])
+        self.assertIsNone(out["injury"])
+
+    def test_the_save_is_physical_not_luck(self) -> None:
+        # A Physical save at level 1 uses best(STR, CON); the target must match save_target("Physical").
+        expected = cwn.save_target("Physical", level=1, attributes=SHEET)
+        out = cwn.resolve_downed(lethal=True, hit_points=0, traumatic_this_scene=True,
+                                 level=1, attributes=SHEET, save_die=expected)
+        self.assertTrue(out["saved"])
+        out_below = cwn.resolve_downed(lethal=True, hit_points=0, traumatic_this_scene=True,
+                                       level=1, attributes=SHEET, save_die=expected - 1, injury_roll=12)
+        self.assertFalse(out_below["saved"])
+
+    def test_a_seeded_resolution_replays(self) -> None:
+        import random as _r
+        a = cwn.resolve_downed(lethal=True, hit_points=0, traumatic_this_scene=True, level=1,
+                               attributes=SHEET, rng=_r.Random(5))
+        b = cwn.resolve_downed(lethal=True, hit_points=0, traumatic_this_scene=True, level=1,
+                               attributes=SHEET, rng=_r.Random(5))
+        self.assertEqual(a["saved"], b["saved"])
+        self.assertEqual(a["injury_roll"], b["injury_roll"])
+
+
 if __name__ == "__main__":
     unittest.main()
