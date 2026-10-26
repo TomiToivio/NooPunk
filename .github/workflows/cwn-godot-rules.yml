@@ -1,0 +1,26 @@
+name: CWN Godot rules tests
+on:
+  push:
+    paths:
+      - 'src/godot/cwn_rules.gd'
+      - 'tests/godot/test_cwn_rules.gd'
+      - '.github/workflows/cwn-godot-rules.yml'
+  pull_request:
+    paths:
+      - 'src/godot/cwn_rules.gd'
+      - 'tests/godot/test_cwn_rules.gd'
+      - '.github/workflows/cwn-godot-rules.yml'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download Godot 4.4.1
+        run: |
+          curl -fL --retry 3 -o godot.zip https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_linux.x86_64.zip
+          unzip -q godot.zip
+          chmod +x Godot_v4.4.1-stable_linux.x86_64
+      - name: Import and exercise rules
+        run: |
+          ./Godot_v4.4.1-stable_linux.x86_64 --headless --path . --editor --quit
+          ./Godot_v4.4.1-stable_linux.x86_64 --headless --path . --script tests/godot/test_cwn_rules.gd
