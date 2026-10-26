@@ -1,7 +1,7 @@
 {
   "_comment": "Asset manifest for the Godot slice (#631). Every visible object in the current slice is generated from Godot primitives in the scene scripts; no third-party file is committed. This manifest records that decision, the licence facts of every free pack we intend to use, and the paid packs worth buying later. Verified 2026-10-26; the human-readable version with the aesthetic reasoning is docs/godot/ASSETS.md.",
   "format": "noopunk.assets.manifest",
-  "version": 3,
+  "version": 4,
   "project": "godot",
   "committed_assets": [],
   "procedural": [
@@ -193,6 +193,18 @@
       "licence": "free for personal and commercial projects - NOT stated as CC0",
       "commit_safe": false,
       "use": "small 2D isometric building set; record the exact wording and ask before shipping"
+    },
+    {
+      "pack": "Quaternius - Ultimate Animated Character Pack",
+      "url": "https://quaternius.com/packs/ultimatedanimatedcharacter.html",
+      "licence": "CC0",
+      "formats": [
+        "fbx",
+        "obj",
+        "blend"
+      ],
+      "commit_safe": true,
+      "use": "52 animated character models as NPC stand-ins; FBX or Blender->glTF for rigs, OBJ carries none"
     }
   ],
   "free_tooling": [
@@ -310,6 +322,50 @@
       "commit_safe": false,
       "priority": "later",
       "why": "a bar/club location outside the ward"
+    },
+    {
+      "pack": "POLYGON - Sci-Fi City (store page variant)",
+      "store": "Synty",
+      "url": "https://syntystore.com/products/polygon-sci-fi-city",
+      "price_eur": null,
+      "price_note": "USD 49.99 listed on the store page; EUR price seen for the pack in the EUR store was 57.27",
+      "licence": "commercial; no raw redistribution",
+      "commit_safe": false,
+      "priority": "medium",
+      "why": "509 assets, 20 unrigged characters, urban modules; the one Synty pack that also ships a Godot 4.6.2 project"
+    },
+    {
+      "pack": "monogon Voxel Cyberpunk City",
+      "store": "itch.io / maxparata",
+      "url": "https://maxparata.itch.io/cyberpunkcity-monogon",
+      "price_eur": 12.95,
+      "price_note": "Base 12.95 / Source 30 / Dev 49.90; free sample available",
+      "licence": "CC BY-ND 4.0 (NoDerivatives)",
+      "commit_safe": false,
+      "priority": "blocked on the ND decision",
+      "why": "closest stylistic match to Cloudpunk (39 building modules, 56 props, 17 billboards, 14 road modules, 1 rigged character), but ND forbids the modification a game needs"
+    },
+    {
+      "pack": "monogon Voxel Noir Crime Detective",
+      "store": "itch.io / maxparata",
+      "url": "https://maxparata.itch.io/voxelnoir",
+      "price_eur": null,
+      "price_note": "USD 12.95 / 30 / 39.90 listed; verify checkout currency",
+      "licence": "CC BY-ND 4.0 (NoDerivatives)",
+      "commit_safe": false,
+      "priority": "blocked on the ND decision",
+      "why": "detective/urban palette (30 buildings, 60 modules, 6 props); not a furnished hospital"
+    },
+    {
+      "pack": "monogon Voxel City",
+      "store": "itch.io / maxparata",
+      "url": "https://maxparata.itch.io/voxelcity",
+      "price_eur": null,
+      "price_note": "USD 15.95 / 30 / 49.90 listed; Starter ships unoptimised OBJ",
+      "licence": "CC BY-ND 4.0 (NoDerivatives)",
+      "commit_safe": false,
+      "priority": "blocked on the ND decision",
+      "why": "146 items including transit, ambulance and street furniture - grounded-city complement"
     }
   ],
   "minimum_art_pass_eur": 264.0,
@@ -337,6 +393,14 @@
       "licence": "CC BY-ND 4.0 (NoDerivatives)",
       "commit_safe": false,
       "why": "attractive voxel-tagged sprite sets (250+ / 130+), but ND forbids the recolouring, cropping and re-posing a game needs; references only"
+    },
+    {
+      "pack": "monogon free voxel character downloads",
+      "url": "https://maxparata.itch.io/voxel-dystopian-characters",
+      "licence": "page permits commercial and noncommercial projects but names no licence",
+      "commit_safe": false,
+      "why": "VOX/PNG/OBJ supplied, no rigging implied; modification and source-redistribution terms are unestablished, so it must not be labelled CC0"
     }
-  ]
+  ],
+  "contract_note": "Every paid row carries a price: `price_eur` when the EUR store showed one, otherwise `price_note` with the currency as listed."
 }

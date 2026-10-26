@@ -1,5 +1,11 @@
 # Art and audio assets for the NoöPunk detective RPG (#631)
 
+**This is the single summary of the art-direction question.** Three research passes were merged into it
+(`#640`, `#642`, and the per-pack detail in
+[`ASSET_SHORTLIST_2026-10-26.md`](ASSET_SHORTLIST_2026-10-26.md), which stays as the long-form import and
+price notes). The machine-readable list is [`data/assets/manifest.json`](../../data/assets/manifest.json);
+[`ASSET_MANIFEST.md`](ASSET_MANIFEST.md) is kept only as the earlier placeholder-asset record.
+
 **Status: research note. No asset is approved, imported or purchased.** Every licence line below was read
 off the source's own page or API on **2026-10-26**; where a store blocked automated reading, the row says
 so instead of guessing. Re-read every licence at download time — store pages change, and a licence summary
@@ -44,6 +50,7 @@ deliberately simple.
 | **Quaternius — Cyberpunk Game Kit** | <https://quaternius.com/packs/cyberpunkgamekit.html> | **CC0** | `.blend`, FBX, OBJ, glTF | neon street furniture, signs, terminals — closest free match to Cloudpunk's street layer |
 | **Quaternius — Cube World Kit** | <https://quaternius.com/packs/cubeworldkit.html> | **CC0** | glTF/FBX/OBJ, cube-based | blocky/voxel-adjacent look without a voxel engine |
 | **Quaternius — Downtown City Mega Kit / Buildings** | <https://quaternius.com/> | CC0 (same site-wide statement) | glTF/FBX/OBJ | city blocks, low-rise Helsinki massing |
+| **Quaternius — Ultimate Animated Character Pack** | <https://quaternius.com/packs/ultimatedanimatedcharacter.html> | **CC0**, 52 models | FBX, OBJ, `.blend` | NPC stand-ins with animation; FBX or Blender→glTF for rigs (OBJ carries none). Style needs harmonising |
 | **Kenney — Mini Dungeon / Mini Forest / Tiny City**, **Furniture Kit**, **Space Kit**, **City Kit (Commercial / Suburban / Industrial / Roads)** | `https://kenney.nl/assets/<slug>` | **CC0** (each asset page states it) | glTF/OBJ | chunky readable props; hospital interiors, reception, wards, streets |
 | **KayKit — Dungeon / Block Bits / Furniture Bits / City Builder Bits** | <https://kaylousberg.itch.io/kaykit-dungeon> · Godot Asset Library 2123 for City Builder Bits | **CC0** ("Creative Commons Zero") | FBX/glTF/OBJ | modular interiors; Block Bits is the voxel-flavoured one; City Builder Bits is a 32+ model street shell with a single gradient atlas |
 | **Poly Haven** | <https://polyhaven.com/license> | **CC0 / public domain** | HDRIs, textures, some models | the single biggest mood win: night HDRIs, wet asphalt, frosted glass |
@@ -84,6 +91,13 @@ forms). **Check ä and ö before committing** — a UI font that mangles Finnish
 
 `godot_voxel` + MagicaVoxel is the whole Shadows-of-Doubt-shaped pipeline.
 
+**The monogon question is a licensing decision, not a taste decision.** All three monogon packs list
+**CC BY-ND 4.0**: perfect stylistic fit, free samples to assess scale, paid tiers from about €13 — and a
+*NoDerivatives* term that forbids the recolouring, re-posing and cropping a game normally needs. Their free
+character downloads say "commercial and noncommercial projects" without naming a licence. Treat all of it
+as usable only if the author is willing to ship the packs unmodified; otherwise buy nothing from monogon and
+budget either bespoke voxel art (MagicaVoxel) or a CC0 kit.
+
 ## Licence traps — read these before buying or downloading
 
 1. **CC BY-ND forbids the modification a game needs.** `maxparata.itch.io/isometric-cyberpunk-streets` and
@@ -119,7 +133,11 @@ Quaternius packs are CC0, so buying those is safe to commit.
 | 8 | **Sci-Fi Civilians – Sidekick Modular Characters** | Synty | **€229.10** | no | modular people, if 3D characters replace 2D portraits | later |
 | 9 | **POLYGON – Nightclubs** | Synty | **€114.55** | no | a bar/club location outside the ward | later |
 | 10 | **Synty bundles via Humble Bundle / Fanatical** | various | historically ~€25 for a bundle; not verified today | no | best value if the art direction lands on Synty; bundles mix CC0 and proprietary — check each pack | watch |
-| 11 | **SyntyPass** | <https://syntystore.com/> | price on the product page, **not verified** | no | a month of library access instead of buying packs | evaluate at art-pass time |
+| 11 | **monogon Voxel Cyberpunk City** | <https://maxparata.itch.io/cyberpunkcity-monogon> | Base **€12.95** · Source €30 · Dev €49.90 | no (**CC BY-ND**) | 39 building modules, 6 buildings, 56 props, 17 billboards, 14 road modules, 1 rigged character — the closest stylistic match to Cloudpunk, *if* the ND terms can be lived with | blocked on D-listing below |
+| 12 | **monogon Voxel Noir Crime Detective** | <https://maxparata.itch.io/voxelnoir> | Base **$12.95** · Source $30 · Dev $39.90 (verify checkout currency) | no (**CC BY-ND**) | 30 buildings, 60 modules, 1 vehicle, 1 character, 6 props, 3 ground tiles — a detective palette, but not a furnished hospital | blocked on D-listing below |
+| 13 | **monogon Voxel City** | <https://maxparata.itch.io/voxelcity> | Starter **$15.95** · Source $30 · Dev $49.90 | no (**CC BY-ND**) | 146 items incl. transit, ambulance, street furniture, vehicles — grounded-city complement; Starter ships unoptimised OBJ | blocked on D-listing below |
+| 14 | **POLYGON – Sci-Fi City** (store page variant) | <https://syntystore.com/products/polygon-sci-fi-city> | **$49.99 USD** listed | no | 509 assets, 20 characters (unrigged), urban modules; publisher lists a **Godot 4.6.2 project** plus FBX sources | medium — the one Synty pack that ships a Godot project |
+| 15 | **SyntyPass** | <https://syntystore.com/> | price on the product page, **not verified** | no | a month of library access instead of buying packs | evaluate at art-pass time |
 
 **Minimum viable art pass:** 1 + 2 + 3 + 4 = **≈ €264** (KayKit Complete, Sci-Fi City, Sci-Fi Horror on
 sale, City Pack) — characters, interiors, hospital dread and a street, with the CC0 half committable and

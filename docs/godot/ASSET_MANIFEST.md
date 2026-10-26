@@ -1,5 +1,10 @@
 # Asset manifest — Godot slice (#631)
 
+> **Superseded for the shopping decision by [`ASSETS.md`](ASSETS.md)** — that file now carries the
+> free and paid packs with verified licences and the machine-readable list in
+> `data/assets/manifest.json`. This page is kept because it records the *placeholder* asset
+> decision of the first slice (primitives only, nothing third-party committed).
+
 **Nothing third-party is committed in this slice.** Every visible object is a `BoxMesh`, `CapsuleMesh` or
 `Label3D` created by `godot/scenes/level_builder.gd`, with flat `StandardMaterial3D` colours. That is a
 deliberate choice for the first milestone: a playable case with placeholder art is reviewable, whereas a
