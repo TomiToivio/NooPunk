@@ -291,6 +291,24 @@ is not causally connected — and the reason the Noösphere can communicate thro
 
 ---
 
+### 6.3.6 A field-domain proposal: quasi-fields (external hypothesis, 2025)
+
+**Status: EXTERNAL DESIGN SOURCE — not canon, not proof, and not a mechanic.**
+
+A 2025 OSF preprint (Kamen & Kamen) proposes the soul as a collection of *quasi-fields* —
+quantum-like fields in a domain outside the physical universe whose quanta are unmeasurable. Its
+move is to couple the soul to **fields rather than to matter**: electromagnetic waves and electric
+fields, whose quanta are photons, so no term in the Dirac equation is required. The electric fields
+of neural ensembles are read as working memory; ephaptic and cytoelectric coupling give a route to
+write back; a distributed field explains remote viewing without an Akashic field. The paper's own
+unresolved problem is energy conservation, and its proposed test — missing photons at the site of a
+verified near-death experience — has not been run.
+
+NoöPunk uses it as vocabulary for what §6.1–6.2 already asserts (PSI access is a coupling, not a
+radius) and as a scenario seed. It supplies no rules, no numbers and no proof, and it does not touch
+the Φ axis. Full register, rights finding and open author decisions:
+[`docs/design/SOUL_FIELD_MODEL.md`](../docs/design/SOUL_FIELD_MODEL.md).
+
 ## 6.4 Sleep and dream nights
 
 **Status: NOÖPUNK NATIVE phase design, issue #175. Mechanics light and partly DEFERRED.**

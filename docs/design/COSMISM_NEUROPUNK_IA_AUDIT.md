@@ -495,3 +495,9 @@ High-value future issues, in rough order:
 - Kenta Kitamura. "Assessing Human Intelligence Augmentation Strategies Using Brain
   Machine Interfaces and Brain Organoids in the Era of AI Advancement." 2025.
   https://arxiv.org/abs/2503.15508
+
+## Related science registers
+
+- [`SOUL_FIELD_MODEL.md`](SOUL_FIELD_MODEL.md) — Kamen & Kamen (2025), the soul as a collection of
+  quantum-like fields: a field-coupling vocabulary for non-local PSI, an unresolved energy-conservation
+  problem, and a proposed photon-shadow test. External hypothesis; no rules, no proof.
