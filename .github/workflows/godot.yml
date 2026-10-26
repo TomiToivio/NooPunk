@@ -26,6 +26,9 @@ on:
       - ".github/workflows/godot.yml"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   headless:
     name: Headless import, gameplay tests and ward smoke
