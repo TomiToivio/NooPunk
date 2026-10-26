@@ -5,9 +5,13 @@ content, not a transcription of SWN Revised's proprietary power catalogue.
 """
 from __future__ import annotations
 
+import json
+from collections.abc import Mapping
 from dataclasses import dataclass
+from pathlib import Path
 
-from .swn_psionics import DISCIPLINES, Duration, PsiRulesError, Psychic as _EffortPsychic
+from .swn_psionics import DISCIPLINES, Duration, PsiRulesError
+from .swn_psionics import Psychic as _EffortPsychic
 
 PSYCHIC_PACKAGES = frozenset({"swn_psychic", "swn_partial_psychic"})
 TECHNIQUES = {
@@ -49,7 +53,7 @@ class Psychic(_EffortPsychic):
                     duration=duration or Duration.SCENE)
 
     @classmethod
-    def from_snapshot(cls, state: dict) -> "Psychic":
+    def from_snapshot(cls, state: dict) -> Psychic:
         # Validate snapshot through the original strict resource parser, then
         # reconstruct the concrete gated type without spending Effort again.
         legacy = _EffortPsychic.from_snapshot(state)
@@ -62,5 +66,75 @@ class Psychic(_EffortPsychic):
         return psychic
 
 
-__all__ = ["DISCIPLINES", "Duration", "PsiRulesError", "Psychic",
-           "Technique", "TECHNIQUES", "PSYCHIC_PACKAGES", "authorized"]
+__all__ = [
+    "DISCIPLINES",
+    "PSYCHIC_PACKAGES",
+    "TECHNIQUES",
+    "Duration",
+    "PsiRulesError",
+    "Psychic",
+    "Technique",
+    "authorized",
+]
+
+
+# --------------------------------------------------------------------------- #
+# The authored technique catalogue (#652)
+# --------------------------------------------------------------------------- #
+#
+# `TECHNIQUES` above is the authorization gate: a technique id, its discipline and the rank it needs.
+# The catalogue in `data/rules/psionics_techniques.json` adds what a table needs to *play* one — its
+# Effort cost, how long the commitment lasts, whether it calls for a check, and its effect text. The
+# effect text is NoöPunk content; SWN has no verified SRD licence, so none of its power text or names
+# is reproduced (docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md).
+
+CATALOGUE_PATH = Path(__file__).resolve().parents[2] / "data" / "rules" / "psionics_techniques.json"
+
+_CATALOGUE: dict[str, dict] | None = None
+
+
+def load_catalogue(path: Path | str | None = None) -> dict[str, dict]:
+    """Load the authored catalogue, keyed by technique id.
+
+    The catalogue is validated by the scenario data-contract test, not here: a malformed entry is a
+    content bug, and this function's job is only to make the content reachable.
+    """
+    global _CATALOGUE
+    if path is None and _CATALOGUE is not None:
+        return _CATALOGUE
+    raw = json.loads(Path(path or CATALOGUE_PATH).read_text(encoding="utf-8"))
+    entries: dict[str, dict] = {}
+    for discipline, core in (raw.get("discipline_cores") or {}).items():
+        entry = dict(core)
+        entry.setdefault("discipline", discipline)
+        entry["core"] = True
+        entries[str(entry["id"])] = entry
+    for entry in raw.get("techniques", []):
+        entries[str(entry["id"])] = dict(entry)
+    if path is None:
+        _CATALOGUE = entries
+    return entries
+
+
+def may_use(disciplines: Mapping[str, int], technique_id: str,
+            *, catalogue: dict[str, dict] | None = None) -> bool:
+    """The training gate: a permission check, never a difficulty penalty.
+
+    An untaught character cannot attempt the technique at all; a taught one still has to pass its
+    check and pay its Effort.
+    """
+    entry = (catalogue or load_catalogue()).get(technique_id)
+    if entry is None:
+        return False
+    discipline = str(entry.get("discipline", ""))
+    return int(disciplines.get(discipline, -1)) >= int(entry.get("min_skill", 0))
+
+
+def effort_duration(technique_id: str, *, catalogue: dict[str, dict] | None = None) -> str:
+    """``none``, ``scene`` or ``day``: what using this technique does to the Effort pool."""
+    entry = (catalogue or load_catalogue()).get(technique_id, {})
+    cost = str(entry.get("effort", "none"))
+    return {"commit_scene": "scene", "commit_day": "day"}.get(cost, "none")
+
+
+__all__ += ["CATALOGUE_PATH", "effort_duration", "load_catalogue", "may_use"]

@@ -13,10 +13,10 @@ func run() -> Array:
 
 	var opening: Dictionary = runner.start("doctor_1")
 	rows.append(_eq("doctor opens", String(opening.get("speaker", "")), "Dr. Laine"))
-	rows.append(_eq("doctor offers three choices", runner.choices().size(), 3))
+	rows.append(_eq("doctor offers four entry choices", runner.choices().size(), 4))
 
 	# The consent path: a flag, no dice, and the conversation closes.
-	var closing: Dictionary = runner.choose(2)
+	var closing: Dictionary = runner.choose(3)
 	rows.append(_eq("safeguarding flag set", state.has_flag("safeguarding_first"), true))
 	rows.append(_eq("the consent line closes on its own node", String(closing.get("id", "")), "doctor_end"))
 	rows.append(_eq("that node offers no further choices", runner.choices().size(), 0))
@@ -40,7 +40,7 @@ func run() -> Array:
 	var patient_runner = RunnerScript.new(patient.dialogue_nodes, patient)
 	patient_runner.start("patient_1")
 	patient_runner.choose(0) # consent
-	var body: Dictionary = patient_runner.choose(1) # "is the place somewhere you have been"
+	var body: Dictionary = patient_runner.choose(2) # "is the place somewhere you have been"
 	rows.append(_eq("the drawing is recorded", patient.has_evidence("E2"), true))
 	rows.append(_eq("the place node follows", String(body.get("id", "")), "patient_place"))
 

@@ -146,7 +146,25 @@
         0.55,
         0.62,
         0.7
-      ]
+      ],
+      "stat_line": {
+        "hit_dice": 2,
+        "attack_bonus": 2,
+        "ac_melee": 10,
+        "ac_ranged": 10,
+        "hit_points": 7,
+        "trauma_target": 6,
+        "weapon": {
+          "label": "Unarmed",
+          "damage_count": 1,
+          "damage_sides": 2,
+          "damage_bonus": 0,
+          "shock": 0,
+          "shock_ac": -1,
+          "trauma_die": 0,
+          "trauma_rating": 1
+        }
+      }
     },
     {
       "id": "nurse",
@@ -161,7 +179,25 @@
         0.42,
         0.58,
         0.52
-      ]
+      ],
+      "stat_line": {
+        "hit_dice": 1,
+        "attack_bonus": 1,
+        "ac_melee": 10,
+        "ac_ranged": 10,
+        "hit_points": 4,
+        "trauma_target": 6,
+        "weapon": {
+          "label": "Unarmed",
+          "damage_count": 1,
+          "damage_sides": 2,
+          "damage_bonus": 0,
+          "shock": 0,
+          "shock_ac": -1,
+          "trauma_die": 0,
+          "trauma_rating": 1
+        }
+      }
     },
     {
       "id": "patient",
@@ -176,7 +212,25 @@
         0.62,
         0.52,
         0.46
-      ]
+      ],
+      "stat_line": {
+        "hit_dice": 1,
+        "attack_bonus": 1,
+        "ac_melee": 10,
+        "ac_ranged": 10,
+        "hit_points": 3,
+        "trauma_target": 6,
+        "weapon": {
+          "label": "Unarmed",
+          "damage_count": 1,
+          "damage_sides": 2,
+          "damage_bonus": 0,
+          "shock": 0,
+          "shock_ac": -1,
+          "trauma_die": 0,
+          "trauma_rating": 1
+        }
+      }
     }
   ],
   "doorways": [
