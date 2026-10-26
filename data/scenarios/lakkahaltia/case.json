@@ -1,0 +1,190 @@
+{
+  "_comment": "NooPunk: Etsiva Romppainen ja Lakkahaltian Salaisuus. Portable case data: the same file feeds the Godot slice, a tabletop GM and later scenario tools. Rules data stays in data/rules/wn_core.json; this file contains no dice math.",
+  "id": "lakkahaltia",
+  "title": "Etsivä Romppainen ja Lakkahaltian Salaisuus",
+  "subtitle": "A NoöPunk detective case — Helsinki, 20XX, before the overt NHI Crisis",
+  "version": 1,
+  "character": {
+    "id": "harri_romppainen",
+    "name": "Dr. Inspector Harri Romppainen",
+    "role": "Special investigative team — pre-crisis hospital case",
+    "stats": {
+      "STR": 9,
+      "DEX": 12,
+      "CON": 10,
+      "INT": 14,
+      "WIS": 11,
+      "CHA": 7
+    },
+    "skills": {
+      "Program": 1,
+      "Notice": 0,
+      "Talk": 0
+    },
+    "_note": "Minimal investigation demo sheet; baseline illustrative attributes, not full character generation."
+  },
+  "start_location": "entrance",
+  "spawn": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 2.0
+  },
+  "locations": [
+    {
+      "id": "entrance",
+      "name": "Entrance",
+      "z": 0.0,
+      "prose": "The ward's front door is unlocked. It should not be."
+    },
+    {
+      "id": "corridor",
+      "name": "Corridor",
+      "z": -10.0,
+      "prose": "Fluorescent light, one bulb stuttering. The linoleum has been polished recently."
+    },
+    {
+      "id": "reception",
+      "name": "Reception",
+      "z": -20.0,
+      "prose": "A reception desk with a paper appointment book and a terminal that is not plugged in."
+    },
+    {
+      "id": "patient_room",
+      "name": "Patient room 16",
+      "z": -30.0,
+      "prose": "One bed, made. A mirror above the sink. The window looks into birch trees that are not on the site plan."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "doctor",
+      "name": "Dr. Aino Kivi",
+      "role": "ward physician",
+      "location": "reception",
+      "position": {
+        "x": -2.2,
+        "y": 0.0,
+        "z": -20.0
+      },
+      "colour": "#7d8fa8",
+      "dialogue": "doctor"
+    },
+    {
+      "id": "nurse",
+      "name": "Nurse Väinö Salmi",
+      "role": "night nurse",
+      "location": "corridor",
+      "position": {
+        "x": 2.4,
+        "y": 0.0,
+        "z": -10.0
+      },
+      "colour": "#8fa87d",
+      "dialogue": "nurse"
+    },
+    {
+      "id": "patient",
+      "name": "Patient 16",
+      "role": "unnamed patient",
+      "location": "patient_room",
+      "position": {
+        "x": 1.6,
+        "y": 0.0,
+        "z": -30.5
+      },
+      "colour": "#a88f7d",
+      "dialogue": "patient"
+    }
+  ],
+  "objects": [
+    {
+      "id": "record",
+      "name": "Medical record 1601",
+      "location": "reception",
+      "position": {
+        "x": 2.4,
+        "y": 0.9,
+        "z": -21.2
+      },
+      "prompt": "Read the medical record",
+      "check": {
+        "stat": "INT",
+        "skill": "Program",
+        "dv": 8
+      },
+      "on_success": {
+        "clue": "record-1601",
+        "text": "Two admissions on the same night, one file number, two different dates of birth. The second page is typed on a machine the ward does not own."
+      },
+      "on_failure": {
+        "clue": "record-1601",
+        "complication": "records-inconsistent",
+        "text": "The file resists a clean reading: pages are out of order and one line has been overtyped. You photograph what you can."
+      }
+    },
+    {
+      "id": "mirror",
+      "name": "Mirror above the sink",
+      "location": "patient_room",
+      "position": {
+        "x": -2.6,
+        "y": 1.4,
+        "z": -31.4
+      },
+      "prompt": "Look into the mirror",
+      "requires_flag": "met_patient",
+      "check": {
+        "stat": "WIS",
+        "skill": "Notice",
+        "dv": 8
+      },
+      "on_success": {
+        "clue": "lakkahaltia-sighting",
+        "flag": "anomaly_seen",
+        "text": "For a moment the reflection is a room with no door, and something small and many-eyed is sitting on the bed, eating cloudberry. Then it is only your own face, tired, and the birch trees outside."
+      },
+      "on_failure": {
+        "complication": "doubt",
+        "text": "The glass shows the room and you in it. Nothing else. Your hands are shaking anyway."
+      }
+    }
+  ],
+  "clues": {
+    "record-1601": {
+      "label": "Medical record 1601",
+      "prose": "One file number, two admissions, two birth dates. The second page was typed on a machine the ward does not own."
+    },
+    "nurse-inconsistency": {
+      "label": "The nurse's timeline",
+      "prose": "Salmi says the ward closed in March. The duty roster in reception runs to June."
+    },
+    "patient-testimony": {
+      "label": "Patient 16's account",
+      "prose": "She describes a visitor who came through the mirror and asked for cloudberries. She says the visitor was polite."
+    },
+    "lakkahaltia-sighting": {
+      "label": "The thing in the mirror",
+      "prose": "A small many-eyed figure in a room with no door. Cloudberry stain on the bed sheet matches nothing in the ward's stores."
+    }
+  },
+  "endings": {
+    "closed_by_evidence": {
+      "label": "Close the case on the record",
+      "prose": "The file goes to UNSA with the inconsistencies intact and no explanation attached. The ward is closed pending audit. Patient 16 is transferred to a facility with better lighting. Nobody says the word 'anomaly'.",
+      "requires": []
+    },
+    "referred_anomalous": {
+      "label": "Refer the anomaly upward",
+      "prose": "You attach the mirror account to the file under 'unresolved environmental factors'. It disappears into a queue you have never seen the end of. The birch trees are gone from the window by morning. The bed sheet still smells of cloudberry.",
+      "requires": [
+        "anomaly_seen"
+      ]
+    }
+  },
+  "resolution": {
+    "prompt": "How does Romppainen close the case?",
+    "requires_clues": [
+      "record-1601"
+    ]
+  }
+}

@@ -4,7 +4,7 @@ func _initialize() -> void:
 	call_deferred("_run")
 
 func _run() -> void:
-	var scene: PackedScene = load("res://scenes/main.tscn")
+	var scene: PackedScene = load("res://scenes/lakkahaltia/prototype.tscn")
 	assert(scene != null, "Main Godot scene must load")
 	var game = scene.instantiate()
 	root.add_child(game)

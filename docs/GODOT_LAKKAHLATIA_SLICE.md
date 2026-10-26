@@ -1,14 +1,14 @@
 # NoöPunk Godot detective vertical slice (#631)
 
-Godot 4 native prototype. Default entrypoint is `res://scenes/main.tscn` and the gameplay script is `src/godot/lakkahaltia_case.gd`.
+Godot 4 native prototype. Standalone prototype scene is `res://scenes/lakkahaltia/prototype.tscn` (the existing main title screen and ward scenario remain the default) and the gameplay script is `src/godot/lakkahaltia_case.gd`.
 
 ## Run
 
-Install Godot 4 and open the repository root containing `project.godot`, then **Run Project (F6/F5 depending on editor setup)**. From a terminal:
+Install Godot 4 and open the repository root containing `project.godot`, then open `scenes/lakkahaltia/prototype.tscn` and **Run Current Scene (F6)**. F5 runs the existing project title/ward flow. From a terminal:
 
 ```sh
 godot --path . --editor
-godot --path . 
+godot --path . res://scenes/lakkahaltia/prototype.tscn
 godot --headless --path . --script tests/godot/test_lakkahaltia.gd
 ```
 
