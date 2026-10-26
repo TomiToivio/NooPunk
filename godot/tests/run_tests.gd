@@ -12,6 +12,7 @@ const SUITES := [
 	"res://godot/tests/test_game_state.gd",
 	"res://godot/tests/test_dialogue.gd",
 	"res://godot/tests/test_scenario_data.gd",
+	"res://godot/tests/test_level_doors.gd",
 ]
 
 func _initialize() -> void:

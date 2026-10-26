@@ -37,6 +37,13 @@ func _init(kernel_path: String = DEFAULT_KERNEL_PATH, roll_seed: int = 1, approv
 func reseed(roll_seed: int) -> void:
 	_dice.reseed(roll_seed)
 
+## Save/load hooks: the adapter owns the stream, so the state never touches the RNG directly.
+func snapshot() -> Dictionary:
+	return _dice.snapshot()
+
+func restore_dice(roll_seed: int, rolls: int) -> void:
+	_dice.restore(roll_seed, rolls)
+
 func die_pool_label() -> String:
 	return "%dd%d (%s)" % [die_count, die_sides, die_pool_source]
 

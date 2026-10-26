@@ -28,6 +28,7 @@ func _ready() -> void:
 	runner = DialogueRunner.new(dialogue.get("nodes", {}), GameState)
 
 	_build_rooms()
+	_build_environment()
 	_build_props()
 	_build_npcs()
 	_build_player()
@@ -45,10 +46,21 @@ func _process(_delta: float) -> void:
 		hud.set_prompt("Press E to inspect %s" % String(_active.get_meta("label", "this")))
 
 func _unhandled_input(event: InputEvent) -> void:
+	# While a panel is open, 1-9 pick its choices so the keyboard is as usable as the mouse.
+	if hud != null and hud.is_dialogue_open() and event is InputEventKey and event.pressed and not event.echo:
+		var number := int(event.keycode) - int(KEY_1)
+		if number >= 0 and number < hud.choice_count():
+			_on_dialogue_choice(number)
+			return
+	if event is InputEventMouseButton and event.pressed and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		# Clicking back into the world returns look control; clicking a button must not.
+		if hud == null or not hud.has_modal_open():
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		return
 	if event.is_action_pressed("interact"):
 		interact()
 	elif event.is_action_pressed("toggle_journal"):
-		hud.visible = not hud.visible
+		hud.toggle_journal()
 	elif event.is_action_pressed("save_case"):
 		var err := GameState.save_to_file()
 		GameState.add_journal("Case saved (%s)." % ("ok" if err == OK else "failed: %d" % err))
@@ -100,6 +112,7 @@ func _offer_ending() -> void:
 		GameState.add_journal("The case is not ready to close: the file is still sealed.")
 		return
 	_ending_offered = true
+	hud.close_dialogue()
 	hud.offer_endings(endings)
 
 func _on_ending_chosen(ending_id: String) -> void:
@@ -129,35 +142,111 @@ func _build_rooms() -> void:
 			Vector3(size.x, 0.2, size.z), _color(room.get("floor_color", [0.16, 0.16, 0.18])), true)
 		_add_box("Ceiling_" + String(room["id"]), center + Vector3(0, size.y * 0.5, 0),
 			Vector3(size.x, 0.2, size.z), Color(0.09, 0.09, 0.11), true)
-		_build_walls(String(room["id"]), center, size)
+		_build_walls(room)
 
-func _build_walls(room_id: String, center: Vector3, size: Vector3) -> void:
-	var wall_color := Color(0.30, 0.31, 0.34)
+## Builds the four walls of a room, leaving a real opening wherever `doorways` says a door is.
+##
+## Two bugs made the first version of this level unplayable: the "gap" segments were sized to exactly
+## tile the wall (so every room was sealed), and the corridor's own side walls were solid (so the side
+## rooms could not be entered even through a gap). Doors are now data, and every wall is split around
+## them.
+func _build_walls(room: Dictionary) -> void:
+	var room_id := String(room["id"])
+	var center := _vec(room["center"])
+	var size := _vec(room["size"])
+	for wall in ["north", "south", "west", "east"]:
+		_build_wall(room_id, center, size, wall, _openings(room_id, wall))
+
+func _openings(room_id: String, wall: String) -> Array:
+	var out: Array = []
+	for door in layout.get("doorways", []):
+		if String(door.get("room", "")) == room_id and String(door.get("wall", "")) == wall:
+			out.append({ "offset": float(door.get("offset", 0.0)), "width": float(door.get("width", 1.8)) })
+	return out
+
+func _build_wall(room_id: String, center: Vector3, size: Vector3, wall: String, openings: Array) -> void:
+	var horizontal := wall == "north" or wall == "south"
+	var length := size.x if horizontal else size.z
 	var thickness := 0.2
-	var height := size.y
-	# Doorway rules: the corridor opens at both ends, side rooms open toward the corridor. Two segments
-	# per gapped wall, one solid wall otherwise. Crude, legible, and enough to walk a case through.
-	var open_x_positive := center.x <= 0.0
-	var open_x_negative := center.x > 0.0
-	var is_corridor := absf(center.x) < 0.01
+	var fixed := 0.0
+	match wall:
+		"north": fixed = center.z - size.z * 0.5
+		"south": fixed = center.z + size.z * 0.5
+		"west": fixed = center.x - size.x * 0.5
+		"east": fixed = center.x + size.x * 0.5
 
-	if is_corridor:
-		_add_wall_segment(room_id + "_w", Vector3(center.x - size.x * 0.5, center.y, center.z), Vector3(thickness, height, size.z), wall_color)
-		_add_wall_segment(room_id + "_e", Vector3(center.x + size.x * 0.5, center.y, center.z), Vector3(thickness, height, size.z), wall_color)
-		_add_wall_segment(room_id + "_n_gap_a", Vector3(center.x - size.x * 0.25, center.y, center.z - size.z * 0.5), Vector3(size.x * 0.5, height, thickness), wall_color)
-		_add_wall_segment(room_id + "_n_gap_b", Vector3(center.x + size.x * 0.25, center.y, center.z - size.z * 0.5), Vector3(size.x * 0.5, height, thickness), wall_color)
-		return
+	# Openings as intervals measured from the wall's centre, clipped to the wall.
+	var cuts: Array = []
+	for opening in openings:
+		var half := float(opening["width"]) * 0.5
+		var offset := float(opening["offset"])
+		var a := maxf(-length * 0.5, offset - half)
+		var b := minf(length * 0.5, offset + half)
+		if b > a:
+			cuts.append(Vector2(a, b))
+	cuts.sort_custom(func(left: Vector2, right: Vector2) -> bool: return left.x < right.x)
 
-	_add_wall_segment(room_id + "_n", Vector3(center.x, center.y, center.z - size.z * 0.5), Vector3(size.x, height, thickness), wall_color)
-	_add_wall_segment(room_id + "_s", Vector3(center.x, center.y, center.z + size.z * 0.5), Vector3(size.x, height, thickness), wall_color)
-	if open_x_positive:
-		_add_wall_segment(room_id + "_e_gap_a", Vector3(center.x + size.x * 0.5, center.y, center.z - size.z * 0.25), Vector3(thickness, height, size.z * 0.5), wall_color)
-		_add_wall_segment(room_id + "_e_gap_b", Vector3(center.x + size.x * 0.5, center.y, center.z + size.z * 0.25), Vector3(thickness, height, size.z * 0.5), wall_color)
-		_add_wall_segment(room_id + "_w", Vector3(center.x - size.x * 0.5, center.y, center.z), Vector3(thickness, height, size.z), wall_color)
-	if open_x_negative:
-		_add_wall_segment(room_id + "_w_gap_a", Vector3(center.x - size.x * 0.5, center.y, center.z - size.z * 0.25), Vector3(thickness, height, size.z * 0.5), wall_color)
-		_add_wall_segment(room_id + "_w_gap_b", Vector3(center.x - size.x * 0.5, center.y, center.z + size.z * 0.25), Vector3(thickness, height, size.z * 0.5), wall_color)
-		_add_wall_segment(room_id + "_e", Vector3(center.x + size.x * 0.5, center.y, center.z), Vector3(thickness, height, size.z), wall_color)
+	# Solid runs between the openings.
+	var spans: Array = []
+	var cursor := -length * 0.5
+	for cut in cuts:
+		if cut.x > cursor + 0.01:
+			spans.append(Vector2(cursor, cut.x))
+		cursor = maxf(cursor, cut.y)
+	if cursor < length * 0.5 - 0.01:
+		spans.append(Vector2(cursor, length * 0.5))
+
+	var wall_color := Color(0.24, 0.25, 0.28)
+	var index := 0
+	# Lintel above each opening: without it the door is a floor-to-ceiling hole.
+	var door_height := 2.15
+	var lintel_height := maxf(0.0, size.y - door_height)
+	for cut in cuts:
+		if lintel_height <= 0.01:
+			continue
+		var opening_length: float = cut.y - cut.x
+		var middle: float = (cut.x + cut.y) * 0.5
+		var lintel_y: float = center.y + size.y * 0.5 - lintel_height * 0.5
+		var lintel_position := Vector3(center.x + middle, lintel_y, fixed) if horizontal else Vector3(fixed, lintel_y, center.z + middle)
+		var lintel_box := Vector3(opening_length, lintel_height, thickness) if horizontal else Vector3(thickness, lintel_height, opening_length)
+		_add_box("%s_%s_lintel_%d" % [room_id, wall, index], lintel_position, lintel_box, wall_color, true)
+	for span in spans:
+		var segment_length: float = span.y - span.x
+		var middle: float = (span.x + span.y) * 0.5
+		var position := Vector3(center.x + middle, center.y, fixed) if horizontal else Vector3(fixed, center.y, center.z + middle)
+		var box := Vector3(segment_length, size.y, thickness) if horizontal else Vector3(thickness, size.y, segment_length)
+		_add_box("%s_%s_%d" % [room_id, wall, index], position, box, wall_color, true)
+		index += 1
+
+## Ward lighting: without this the whole level rendered black, because nothing lit the meshes.
+func _build_environment() -> void:
+	var world := WorldEnvironment.new()
+	world.name = "WardEnvironment"
+	var environment := Environment.new()
+	environment.background_mode = Environment.BG_COLOR
+	environment.background_color = Color(0.045, 0.05, 0.062)
+	environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	environment.ambient_light_color = Color(0.52, 0.57, 0.68)
+	environment.ambient_light_energy = 0.42
+	world.environment = environment
+	add_child(world)
+
+	var sun := DirectionalLight3D.new()
+	sun.name = "WardSun"
+	sun.light_energy = 0.30
+	sun.rotation_degrees = Vector3(-52, -35, 0)
+	add_child(sun)
+
+	for room in layout.get("rooms", []):
+		var center := _vec(room["center"])
+		var size := _vec(room["size"])
+		var lamp := OmniLight3D.new()
+		lamp.name = "Lamp_" + String(room["id"])
+		lamp.position = Vector3(center.x, center.y + size.y * 0.4, center.z)
+		lamp.light_energy = 3.2
+		lamp.omni_range = maxf(size.x, size.z) * 1.25
+		lamp.light_color = Color(0.86, 0.92, 1.0)
+		add_child(lamp)
 
 func _build_props() -> void:
 	for prop in layout.get("props", []):
@@ -207,9 +296,18 @@ func _build_npcs() -> void:
 
 		var label := Label3D.new()
 		label.text = String(npc.get("name", npc["id"]))
-		label.position = Vector3(0, 1.25, 0)
+		label.position = Vector3(0, 1.32, 0)
 		label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-		label.font_size = 48
+		label.font_size = 28
+		# Explicit pixel size: the default made the names enormous, overlapping each other and the HUD.
+		label.pixel_size = 0.0022
+		label.outline_size = 8
+		label.modulate = Color(0.88, 0.92, 1.0, 0.92)
+		label.visibility_range_begin = 2.2
+		label.visibility_range_begin_margin = 0.4
+		label.visibility_range_end = 9.0
+		label.visibility_range_end_margin = 1.5
+		label.visibility_range_fade_mode = GeometryInstance3D.VISIBILITY_RANGE_FADE_SELF
 		body.add_child(label)
 
 		body.set_meta("kind", "npc")

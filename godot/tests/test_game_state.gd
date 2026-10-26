@@ -67,6 +67,42 @@ func run() -> Array:
 	rows.append(_eq("version mismatch refused", reloaded.load_from_file(path), ERR_FILE_UNRECOGNIZED))
 
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
+
+	# --- regressions from playing the scene (2026-10-26) ----------------------------------------
+	# Every one of these passed the data-integrity suite while being broken in play.
+	var probe = GameStateScript.new()
+	probe.new_case(11)
+	var trained: Dictionary = probe.resolve_check("INT", "Psychology", 8)
+	var untrained: Dictionary = probe.resolve_check("INT", "Forensics", 8)
+	rows.append(_eq("a check applies the named skill", int(trained["skill_level"]), 3))
+	rows.append(_eq("an unknown skill is untrained", int(untrained["skill_level"]), -1))
+
+	probe.add_evidence("E4")
+	rows.append(_eq("evidence applies the flag it declares", probe.has_flag("annex_seen"), true))
+	probe.add_evidence("E5")
+	rows.append(_eq("second evidence applies its flag", probe.has_flag("place_anchored"), true))
+	rows.append(_eq("endings unlock once the evidence is in", probe.available_endings().size(), 2))
+
+	var gate = GameStateScript.new()
+	gate.new_case(11)
+	gate.add_evidence("E1")
+	gate.add_evidence("E2")
+	gate.add_evidence("E3")
+	rows.append(_eq("objectives advance as far as their gates allow",
+		gate.current_objective, "obj_annex"))
+
+	var stream = GameStateScript.new()
+	stream.new_case(11)
+	stream.resolve_check("INT", "Psychology", 8)
+	stream.resolve_check("INT", "Psychology", 8)
+	var dice_state: Dictionary = stream.rules.snapshot()
+	var expected_next: Array = stream.rules.skill_check(14, 3, 8)["dice"]
+	var resumed = GameStateScript.new()
+	resumed.new_case(11)
+	resumed.rules.restore_dice(int(dice_state["seed"]), int(dice_state["rolls"]))
+	rows.append(_eq("the dice stream resumes where it stopped",
+		resumed.rules.skill_check(14, 3, 8)["dice"], expected_next))
+
 	return rows
 
 func _eq(label: String, actual: Variant, expected: Variant) -> Array:

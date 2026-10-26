@@ -19,6 +19,7 @@ var _ending_panel: PanelContainer
 var _ending_title: Label
 var _ending_body: Label
 var _ending_buttons: HBoxContainer
+var _side: VBoxContainer
 
 func _ready() -> void:
 	_build()
@@ -51,24 +52,35 @@ func _build() -> void:
 	_prompt.modulate = Color(1, 0.92, 0.6)
 	top.add_child(_prompt)
 
+	var side_panel := PanelContainer.new()
+	side_panel.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	side_panel.offset_left = -332
+	side_panel.offset_right = -16
+	side_panel.offset_top = 84
+	var side_style := StyleBoxFlat.new()
+	side_style.bg_color = Color(0.04, 0.05, 0.07, 0.74)
+	side_style.set_corner_radius_all(6)
+	side_style.set_content_margin_all(12)
+	side_panel.add_theme_stylebox_override("panel", side_style)
+	root.add_child(side_panel)
+
 	var side := VBoxContainer.new()
-	side.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	side.offset_left = -420
-	side.offset_right = -16
-	side.offset_top = 96
-	side.custom_minimum_size = Vector2(400, 0)
-	root.add_child(side)
+	_side = side
+	side.custom_minimum_size = Vector2(300, 0)
+	side.add_theme_constant_override("separation", 10)
+	side_panel.add_child(side)
 
 	_evidence = RichTextLabel.new()
 	_evidence.bbcode_enabled = true
 	_evidence.fit_content = true
-	_evidence.custom_minimum_size = Vector2(400, 180)
+	_evidence.custom_minimum_size = Vector2(300, 0)
 	side.add_child(_evidence)
 
 	_journal = RichTextLabel.new()
 	_journal.bbcode_enabled = true
 	_journal.scroll_following = true
-	_journal.custom_minimum_size = Vector2(400, 240)
+	_journal.fit_content = true
+	_journal.custom_minimum_size = Vector2(300, 90)
 	side.add_child(_journal)
 
 	_dialogue_panel = PanelContainer.new()
@@ -107,7 +119,11 @@ func _build() -> void:
 	_check_panel.add_child(_check_text)
 
 	_ending_panel = PanelContainer.new()
-	_ending_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_ending_panel.set_anchors_preset(Control.PRESET_CENTER)
+	_ending_panel.offset_left = -340
+	_ending_panel.offset_right = 340
+	_ending_panel.offset_top = -230
+	_ending_panel.offset_bottom = 230
 	_ending_panel.visible = false
 	root.add_child(_ending_panel)
 	var ending_box := VBoxContainer.new()
@@ -137,6 +153,8 @@ func _refresh_case() -> void:
 	_evidence.text = "\n".join(evidence_lines)
 
 	var journal_lines: Array = ["[b]Case journal[/b]"]
+	if GameState.journal.is_empty():
+		journal_lines.append("[i]no entries yet[/i]")
 	for line in GameState.journal.slice(max(0, GameState.journal.size() - 12)):
 		journal_lines.append("• " + String(line))
 	_journal.text = "\n".join(journal_lines)
@@ -144,10 +162,20 @@ func _refresh_case() -> void:
 func set_prompt(text: String) -> void:
 	_prompt.text = text
 
+## J toggles the evidence/journal column, not the whole HUD.
+##
+## The level used to flip `visible` on the CanvasLayer, which hid the objective, the prompt and the
+## dialogue along with the journal, leaving a black screen with no way to read what was said.
+func toggle_journal() -> void:
+	if _side != null:
+		_side.visible = not _side.visible
+
 func show_dialogue(node: Dictionary, offered: Array) -> void:
 	if node.is_empty():
 		close_dialogue()
 		return
+	# With the mouse captured for first-person look, the player cannot click a choice button.
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	_dialogue_panel.visible = true
 	_speaker.text = String(node.get("speaker", ""))
 	_line.text = String(node.get("text", ""))
@@ -175,6 +203,18 @@ func close_dialogue() -> void:
 	_dialogue_panel.visible = false
 	for child in _choices.get_children():
 		child.queue_free()
+	if not _ending_panel.visible:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func is_dialogue_open() -> bool:
+	return _dialogue_panel.visible
+
+## True while a panel owns the pointer: the level must not re-capture the mouse under it.
+func has_modal_open() -> bool:
+	return _dialogue_panel.visible or _ending_panel.visible
+
+func choice_count() -> int:
+	return _choices.get_child_count()
 
 func _on_choice_pressed(index: int) -> void:
 	_dialogue_choice.emit(index)
@@ -201,16 +241,31 @@ func _on_check_resolved(result: Dictionary) -> void:
 
 func _on_ending(candidate: Dictionary) -> void:
 	close_dialogue()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	_ending_panel.visible = true
 	_ending_title.text = String(candidate.get("title", "Ending"))
 	_ending_body.text = String(candidate.get("text", ""))
+	for child in _ending_buttons.get_children():
+		child.queue_free()
+	var restart := Button.new()
+	restart.text = "Return to the title screen"
+	restart.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main.tscn"))
+	_ending_buttons.add_child(restart)
 
 func offer_endings(endings: Array) -> void:
+	close_dialogue()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	_ending_panel.visible = true
 	_ending_title.text = "How does the case end?"
 	_ending_body.text = "Both outcomes are defensible. Neither states what the phenomenon was."
 	for child in _ending_buttons.get_children():
 		child.queue_free()
+	var back := Button.new()
+	back.text = "Not yet"
+	back.pressed.connect(func() -> void:
+		_ending_panel.visible = false
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED)
+	_ending_buttons.add_child(back)
 	for candidate in endings:
 		var button := Button.new()
 		button.text = String(candidate.get("title", String(candidate.get("id", "ending"))))
