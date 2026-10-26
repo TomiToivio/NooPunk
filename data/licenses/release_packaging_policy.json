@@ -80,10 +80,11 @@
         "data/world/**",
         "data/simulation/**",
         "data/paradigm_shifts.yaml",
-        "strategy_game/data/**"
+        "strategy_game/data/**",
+        "data/scenarios/**"
       ],
       "licence": "author-decision",
-      "note": "The rules in machine-readable syntax; grouped with the rulebook, not with the code."
+      "note": "The rules in machine-readable syntax; grouped with the rulebook, not with the code. Scenario and dialogue data ships with the rules because it is content, not code."
     },
     {
       "id": "licensing-and-source-records",
@@ -91,10 +92,11 @@
         "data/licenses/**",
         "data/sources/**",
         "docs/licenses/**",
-        "docs/sources/**"
+        "docs/sources/**",
+        "data/assets/**"
       ],
       "licence": "author-decision",
-      "note": "Rights ledgers, licence plan and provenance inventories. Must follow the rulebook, not a software licence."
+      "note": "Rights ledgers, licence plan and provenance inventories. Must follow the rulebook, not a software licence. Asset manifests record source and licence status per pack."
     },
     {
       "id": "design-and-audit-records",
