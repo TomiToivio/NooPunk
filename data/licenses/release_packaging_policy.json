@@ -139,7 +139,9 @@
         "fixtures/**",
         "scenes/**",
         "deploy/**",
-        "project.godot"
+        "project.godot",
+        "godot/**",
+        "*.uid"
       ],
       "licence": "author-decision-follows-code",
       "note": "Godot project files are code, not prose."
