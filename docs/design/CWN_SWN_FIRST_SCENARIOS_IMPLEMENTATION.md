@@ -8,8 +8,8 @@
 
 | Rules surface | Authority | Implementation status and next gate |
 | --- | --- | --- |
-| Attributes, modifiers, skill checks, saves | CWN pp. 4–31 | Python `src/rules/wn_core.py`; Godot `rules_adapter.gd`; verify all edge cases |
-| Character backgrounds, contacts, Edges, Foci | CWN pp. 4–26 | Tabletop baseline only; requires data contract and Godot character builder |
+| Attributes, modifiers, skill checks, saves | CWN pp. 4–31 | `wn_core.py` (modifiers, checks), `cwn_core.py` (saves), `cwn_character.py` (**attribute generation: 3d6 in order, the one 14 substitution, the fixed array and its forfeit, the ±2 modifier band**; **starting skill pool: 0 → 1 and no third level**); Godot `rules_adapter.gd` still needs the same rules |
+| Character backgrounds, contacts, Edges, Foci | CWN pp. 4–26 | Attributes and the skill pool are implemented in `cwn_character.py`; **backgrounds, contacts, Edges and Foci still need a data contract** — their catalogues are commercial content, so only structure and original mechanics may enter the repo |
 | Initiative, actions, movement, attack, grappling | CWN pp. 32–39 | Not a complete Godot combat implementation |
 | HP, trauma, injuries, healing and strain | CWN pp. 32–43 | Python `cwn_trauma.py` (damage, Trauma, Shock, Damage Soak, Major-Injury condition) and `cwn_healing.py` (mortal-wound clock, stabilization, Frail, first aid, System Strain), each with tests: **implemented**; the Major-Injury *tables* and the Godot injury layer still pending |
 | Cyberware, drugs, drones and vehicles | CWN pp. 48–89 | Equipment and effects not fully ported |
