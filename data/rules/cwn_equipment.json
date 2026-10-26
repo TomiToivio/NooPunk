@@ -1,0 +1,881 @@
+{
+  "_note": "Cities Without Number equipment, transcribed from the CWN SRD (CC0). Damage notation is kept verbatim; the SRD's footnotes define it. NooPunk does not add, rename or rebalance a row: a house weapon belongs in scenario data, not here.",
+  "_source_of_truth": "https://cwn.quadrifons.com/gear-vehicles-cyberware/",
+  "_canon_revision": "2026-10-26",
+  "format": "noopunk.rules.equipment",
+  "version": 1,
+  "weapons": [
+    {
+      "id": "light_pistol",
+      "name": "Light Pistol",
+      "kind": "firearm",
+      "damage": "1d6",
+      "range": "10/80",
+      "cost": 200,
+      "magazine": 15,
+      "magazine_raw": "15",
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": 1,
+      "shock": null,
+      "trauma_die": "1d8",
+      "trauma_rating": "x2",
+      "srd": "gear-vehicles-cyberware/weapons/firearms/"
+    },
+    {
+      "id": "heavy_pistol",
+      "name": "Heavy Pistol",
+      "kind": "firearm",
+      "damage": "1d8",
+      "range": "10/100",
+      "cost": 200,
+      "magazine": 8,
+      "magazine_raw": "8",
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": 1,
+      "shock": null,
+      "trauma_die": "1d6",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/firearms/"
+    },
+    {
+      "id": "advanced_bow",
+      "name": "Advanced Bow",
+      "kind": "firearm",
+      "damage": "1d8",
+      "range": "30/200",
+      "cost": 500,
+      "magazine": null,
+      "magazine_raw": "1§",
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": 2,
+      "shock": null,
+      "trauma_die": "1d8+1",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/firearms/"
+    },
+    {
+      "id": "rifle",
+      "name": "Rifle",
+      "kind": "firearm",
+      "damage": "1d10+2",
+      "range": "200/400",
+      "cost": 1000,
+      "magazine": 10,
+      "magazine_raw": "10",
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": 2,
+      "shock": null,
+      "trauma_die": "1d8",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/firearms/"
+    },
+    {
+      "id": "combat_rifle",
+      "name": "Combat Rifle",
+      "kind": "firearm",
+      "damage": "1d12*",
+      "range": "100/300",
+      "cost": 2500,
+      "magazine": 30,
+      "magazine_raw": "30",
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": 2,
+      "shock": null,
+      "trauma_die": "1d8",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/firearms/"
+    },
+    {
+      "id": "submachine_gun",
+      "name": "Submachine Gun",
+      "kind": "firearm",
+      "damage": "1d8*",
+      "range": "30/100",
+      "cost": 2000,
+      "magazine": 20,
+      "magazine_raw": "20",
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": 1,
+      "shock": null,
+      "trauma_die": "1d6",
+      "trauma_rating": "x2",
+      "srd": "gear-vehicles-cyberware/weapons/firearms/"
+    },
+    {
+      "id": "shotgun",
+      "name": "Shotgun",
+      "kind": "firearm",
+      "damage": "3d4",
+      "range": "10/30",
+      "cost": 200,
+      "magazine": 2,
+      "magazine_raw": "2",
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": 2,
+      "shock": null,
+      "trauma_die": "1d10",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/firearms/"
+    },
+    {
+      "id": "semi-auto_shotgun",
+      "name": "Semi-Auto Shotgun",
+      "kind": "firearm",
+      "damage": "3d4",
+      "range": "10/30",
+      "cost": 1000,
+      "magazine": 6,
+      "magazine_raw": "6",
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": 2,
+      "shock": null,
+      "trauma_die": "1d10",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/firearms/"
+    },
+    {
+      "id": "combat_shotgun",
+      "name": "Combat Shotgun",
+      "kind": "firearm",
+      "damage": "3d4*",
+      "range": "10/30",
+      "cost": 3000,
+      "magazine": 12,
+      "magazine_raw": "12",
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": 2,
+      "shock": null,
+      "trauma_die": "1d10",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/firearms/"
+    },
+    {
+      "id": "sniper_rifle",
+      "name": "Sniper Rifle¶",
+      "kind": "firearm",
+      "damage": "2d8",
+      "range": "1,000/2,000",
+      "cost": 3000,
+      "magazine": null,
+      "magazine_raw": "1§",
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": 2,
+      "shock": null,
+      "trauma_die": "1d10",
+      "trauma_rating": "x4",
+      "srd": "gear-vehicles-cyberware/weapons/firearms/"
+    },
+    {
+      "id": "taser_pistol",
+      "name": "Taser Pistol",
+      "kind": "firearm",
+      "damage": "1d8",
+      "range": "10/15",
+      "cost": 500,
+      "magazine": 2,
+      "magazine_raw": "2",
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": 1,
+      "shock": null,
+      "trauma_die": null,
+      "trauma_rating": null,
+      "srd": "gear-vehicles-cyberware/weapons/firearms/"
+    },
+    {
+      "id": "automatic_rifle",
+      "name": "Automatic Rifle",
+      "kind": "firearm",
+      "damage": "2d8#",
+      "range": "200/400",
+      "cost": 10000,
+      "magazine": 10,
+      "magazine_raw": "10",
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": 4,
+      "shock": null,
+      "trauma_die": "1d10",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/firearms/"
+    },
+    {
+      "id": "anti-materiel_rifle",
+      "name": "Anti-Materiel Rifle ¶",
+      "kind": "heavy",
+      "damage": "3d8!",
+      "range": "1K/2K",
+      "cost": 8000,
+      "magazine": 5,
+      "magazine_raw": "5",
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": 3,
+      "shock": null,
+      "trauma_die": "1d12",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/heavy-weapons/"
+    },
+    {
+      "id": "grnd_launcher",
+      "name": "Grnd. Launcher",
+      "kind": "heavy",
+      "damage": "Gren.",
+      "range": "150/350",
+      "cost": 3000,
+      "magazine": 3,
+      "magazine_raw": "3",
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": 1,
+      "shock": null,
+      "trauma_die": null,
+      "trauma_rating": null,
+      "srd": "gear-vehicles-cyberware/weapons/heavy-weapons/"
+    },
+    {
+      "id": "demo_charge",
+      "name": "Demo Charge",
+      "kind": "heavy",
+      "damage": "3d10!",
+      "range": "20/20",
+      "cost": 1000,
+      "magazine": null,
+      "magazine_raw": null,
+      "attribute": null,
+      "encumbrance": 1,
+      "shock": null,
+      "trauma_die": "1d10",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/heavy-weapons/"
+    },
+    {
+      "id": "hvy_machine_gun",
+      "name": "Hvy Machine Gun ¶",
+      "kind": "heavy",
+      "damage": "3d6#!",
+      "range": "500/2K",
+      "cost": 10000,
+      "magazine": 10,
+      "magazine_raw": "10",
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": 3,
+      "shock": null,
+      "trauma_die": "1d12",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/heavy-weapons/"
+    },
+    {
+      "id": "mortar",
+      "name": "Mortar",
+      "kind": "heavy",
+      "damage": "3d6",
+      "range": "1K/2K",
+      "cost": 5000,
+      "magazine": 1,
+      "magazine_raw": "1",
+      "attribute": [
+        "WIS"
+      ],
+      "encumbrance": 3,
+      "shock": null,
+      "trauma_die": "1d12",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/heavy-weapons/"
+    },
+    {
+      "id": "rocket_launcher",
+      "name": "Rocket Launcher",
+      "kind": "heavy",
+      "damage": "3d10!",
+      "range": "2K/4K",
+      "cost": 5000,
+      "magazine": null,
+      "magazine_raw": null,
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": 2,
+      "shock": null,
+      "trauma_die": "1d10",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/heavy-weapons/"
+    },
+    {
+      "id": "land_mine_anti-pers",
+      "name": "Land Mine, Anti-Pers.",
+      "kind": "heavy",
+      "damage": "1d8",
+      "range": null,
+      "cost": 150,
+      "magazine": null,
+      "magazine_raw": null,
+      "attribute": null,
+      "encumbrance": 1,
+      "shock": null,
+      "trauma_die": "1d10",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/heavy-weapons/"
+    },
+    {
+      "id": "land_mine_anti-vehc",
+      "name": "Land Mine, Anti-Vehc.",
+      "kind": "heavy",
+      "damage": "3d8!",
+      "range": null,
+      "cost": null,
+      "magazine": null,
+      "magazine_raw": "$1,000@",
+      "attribute": null,
+      "encumbrance": 2,
+      "shock": null,
+      "trauma_die": "1d20",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/heavy-weapons/"
+    },
+    {
+      "id": "unarmed_attack",
+      "name": "Unarmed Attack",
+      "kind": "melee",
+      "damage": "1d2^",
+      "range": null,
+      "cost": null,
+      "magazine": null,
+      "magazine_raw": null,
+      "attribute": [
+        "STR",
+        "DEX"
+      ],
+      "encumbrance": null,
+      "shock": null,
+      "trauma_die": "1d6",
+      "trauma_rating": "x1",
+      "srd": "gear-vehicles-cyberware/weapons/melee-thrown-weapons/"
+    },
+    {
+      "id": "knife",
+      "name": "Knife",
+      "kind": "melee",
+      "damage": "1d4",
+      "range": "10/20",
+      "cost": 20,
+      "magazine": null,
+      "magazine_raw": null,
+      "attribute": [
+        "STR",
+        "DEX"
+      ],
+      "encumbrance": 1,
+      "shock": {
+        "damage": 1,
+        "max_ac": 15
+      },
+      "trauma_die": "1d6",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/melee-thrown-weapons/"
+    },
+    {
+      "id": "club",
+      "name": "Club",
+      "kind": "melee",
+      "damage": "1d4^",
+      "range": "10/20",
+      "cost": null,
+      "magazine": null,
+      "magazine_raw": null,
+      "attribute": [
+        "STR"
+      ],
+      "encumbrance": null,
+      "shock": {
+        "damage": 1,
+        "max_ac": 18
+      },
+      "trauma_die": "1d6",
+      "trauma_rating": "x2",
+      "srd": "gear-vehicles-cyberware/weapons/melee-thrown-weapons/"
+    },
+    {
+      "id": "spear",
+      "name": "Spear",
+      "kind": "melee",
+      "damage": "1d6",
+      "range": "10/20",
+      "cost": 50,
+      "magazine": null,
+      "magazine_raw": null,
+      "attribute": [
+        "STR",
+        "DEX"
+      ],
+      "encumbrance": 1,
+      "shock": {
+        "damage": 2,
+        "max_ac": 13
+      },
+      "trauma_die": "1d8",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/melee-thrown-weapons/"
+    },
+    {
+      "id": "sword",
+      "name": "Sword",
+      "kind": "melee",
+      "damage": "1d8",
+      "range": null,
+      "cost": 200,
+      "magazine": null,
+      "magazine_raw": null,
+      "attribute": [
+        "STR",
+        "DEX"
+      ],
+      "encumbrance": 1,
+      "shock": {
+        "damage": 2,
+        "max_ac": 13
+      },
+      "trauma_die": "1d8",
+      "trauma_rating": "x2",
+      "srd": "gear-vehicles-cyberware/weapons/melee-thrown-weapons/"
+    },
+    {
+      "id": "big_sword",
+      "name": "Big Sword",
+      "kind": "melee",
+      "damage": "2d6",
+      "range": null,
+      "cost": 500,
+      "magazine": null,
+      "magazine_raw": null,
+      "attribute": [
+        "STR"
+      ],
+      "encumbrance": null,
+      "shock": {
+        "damage": 2,
+        "max_ac": 15
+      },
+      "trauma_die": "1d8",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/melee-thrown-weapons/"
+    },
+    {
+      "id": "big_club",
+      "name": "Big Club",
+      "kind": "melee",
+      "damage": "1d10^",
+      "range": null,
+      "cost": 100,
+      "magazine": null,
+      "magazine_raw": null,
+      "attribute": [
+        "STR"
+      ],
+      "encumbrance": null,
+      "shock": {
+        "damage": 2,
+        "max_ac": 18
+      },
+      "trauma_die": "1d8",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/melee-thrown-weapons/"
+    },
+    {
+      "id": "advanced_knife",
+      "name": "Advanced Knife",
+      "kind": "melee",
+      "damage": "1d6",
+      "range": "10/20",
+      "cost": 200,
+      "magazine": null,
+      "magazine_raw": null,
+      "attribute": [
+        "STR",
+        "DEX"
+      ],
+      "encumbrance": 1,
+      "shock": {
+        "damage": 2,
+        "max_ac": 15
+      },
+      "trauma_die": "1d8",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/melee-thrown-weapons/"
+    },
+    {
+      "id": "advanced_sword",
+      "name": "Advanced Sword",
+      "kind": "melee",
+      "damage": "1d10",
+      "range": null,
+      "cost": 1000,
+      "magazine": null,
+      "magazine_raw": null,
+      "attribute": [
+        "STR",
+        "DEX"
+      ],
+      "encumbrance": 1,
+      "shock": {
+        "damage": 3,
+        "max_ac": 15
+      },
+      "trauma_die": "1d8",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/melee-thrown-weapons/"
+    },
+    {
+      "id": "advanced_big_sword",
+      "name": "Advanced Big Sword",
+      "kind": "melee",
+      "damage": "2d8",
+      "range": null,
+      "cost": 2500,
+      "magazine": null,
+      "magazine_raw": null,
+      "attribute": [
+        "STR"
+      ],
+      "encumbrance": null,
+      "shock": {
+        "damage": 4,
+        "max_ac": 15
+      },
+      "trauma_die": "1d8",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/melee-thrown-weapons/"
+    },
+    {
+      "id": "advanced_club",
+      "name": "Advanced Club",
+      "kind": "melee",
+      "damage": "1d8^",
+      "range": null,
+      "cost": 500,
+      "magazine": null,
+      "magazine_raw": null,
+      "attribute": [
+        "STR"
+      ],
+      "encumbrance": null,
+      "shock": {
+        "damage": 2,
+        "max_ac": 18
+      },
+      "trauma_die": "1d8",
+      "trauma_rating": "x3",
+      "srd": "gear-vehicles-cyberware/weapons/melee-thrown-weapons/"
+    },
+    {
+      "id": "grenade_flash",
+      "name": "Grenade, Flash",
+      "kind": "melee",
+      "damage": "Spec.",
+      "range": "10/30",
+      "cost": 50,
+      "magazine": null,
+      "magazine_raw": null,
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": null,
+      "shock": null,
+      "trauma_die": "1d2",
+      "trauma_rating": "x2",
+      "srd": "gear-vehicles-cyberware/weapons/melee-thrown-weapons/"
+    },
+    {
+      "id": "grenade_frag",
+      "name": "Grenade, Frag",
+      "kind": "melee",
+      "damage": "2d6",
+      "range": "10/30",
+      "cost": 100,
+      "magazine": null,
+      "magazine_raw": null,
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": null,
+      "shock": null,
+      "trauma_die": "1d8",
+      "trauma_rating": "x2",
+      "srd": "gear-vehicles-cyberware/weapons/melee-thrown-weapons/"
+    },
+    {
+      "id": "grenade_gas",
+      "name": "Grenade, Gas",
+      "kind": "melee",
+      "damage": "1d10^",
+      "range": "10/30",
+      "cost": 50,
+      "magazine": null,
+      "magazine_raw": null,
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": null,
+      "shock": null,
+      "trauma_die": "1d2",
+      "trauma_rating": "x2",
+      "srd": "gear-vehicles-cyberware/weapons/melee-thrown-weapons/"
+    },
+    {
+      "id": "grenade_smoke",
+      "name": "Grenade, Smoke",
+      "kind": "melee",
+      "damage": "-",
+      "range": "10/30",
+      "cost": 25,
+      "magazine": null,
+      "magazine_raw": null,
+      "attribute": [
+        "DEX"
+      ],
+      "encumbrance": null,
+      "shock": null,
+      "trauma_die": "1d2",
+      "trauma_rating": "x2",
+      "srd": "gear-vehicles-cyberware/weapons/melee-thrown-weapons/"
+    }
+  ],
+  "armor": [
+    {
+      "id": "ordinary_clothing",
+      "name": "Ordinary Clothing",
+      "tier": "civilian",
+      "ac_ranged": 10,
+      "ac_melee": 10,
+      "damage_soak": 0,
+      "encumbrance": 0,
+      "trauma_target_modifier": 0,
+      "subtle": true,
+      "cost": 25,
+      "note": null,
+      "srd": "gear-vehicles-cyberware/armor/armor-types/"
+    },
+    {
+      "id": "reinforced_clothing",
+      "name": "Reinforced Clothing",
+      "tier": "civilian",
+      "ac_ranged": 13,
+      "ac_melee": 10,
+      "damage_soak": 2,
+      "encumbrance": 0,
+      "trauma_target_modifier": 0,
+      "subtle": true,
+      "cost": 100,
+      "note": null,
+      "srd": "gear-vehicles-cyberware/armor/armor-types/"
+    },
+    {
+      "id": "war_harness",
+      "name": "War Harness",
+      "tier": "civilian",
+      "ac_ranged": 13,
+      "ac_melee": 14,
+      "damage_soak": 5,
+      "encumbrance": 1,
+      "trauma_target_modifier": 0,
+      "subtle": false,
+      "cost": 200,
+      "note": null,
+      "srd": "gear-vehicles-cyberware/armor/armor-types/"
+    },
+    {
+      "id": "street_leathers",
+      "name": "Street Leathers",
+      "tier": "civilian",
+      "ac_ranged": 13,
+      "ac_melee": 12,
+      "damage_soak": 3,
+      "encumbrance": 0,
+      "trauma_target_modifier": 0,
+      "subtle": true,
+      "cost": 250,
+      "note": null,
+      "srd": "gear-vehicles-cyberware/armor/armor-types/"
+    },
+    {
+      "id": "reinforced_longcoat",
+      "name": "Reinforced Longcoat",
+      "tier": "civilian",
+      "ac_ranged": 15,
+      "ac_melee": 13,
+      "damage_soak": 5,
+      "encumbrance": 1,
+      "trauma_target_modifier": 1,
+      "subtle": true,
+      "cost": 500,
+      "note": null,
+      "srd": "gear-vehicles-cyberware/armor/armor-types/"
+    },
+    {
+      "id": "armored_clothing",
+      "name": "Armored Clothing",
+      "tier": "civilian",
+      "ac_ranged": 16,
+      "ac_melee": 14,
+      "damage_soak": 5,
+      "encumbrance": 2,
+      "trauma_target_modifier": 1,
+      "subtle": true,
+      "cost": 1000,
+      "note": null,
+      "srd": "gear-vehicles-cyberware/armor/armor-types/"
+    },
+    {
+      "id": "plated_longcoat",
+      "name": "Plated Longcoat",
+      "tier": "civilian",
+      "ac_ranged": 17,
+      "ac_melee": 15,
+      "damage_soak": 5,
+      "encumbrance": 3,
+      "trauma_target_modifier": 1,
+      "subtle": false,
+      "cost": 2000,
+      "note": "H",
+      "srd": "gear-vehicles-cyberware/armor/armor-types/"
+    },
+    {
+      "id": "impact_jacket",
+      "name": "Impact Jacket",
+      "tier": "civilian",
+      "ac_ranged": 12,
+      "ac_melee": 14,
+      "damage_soak": 8,
+      "encumbrance": 1,
+      "trauma_target_modifier": 1,
+      "subtle": false,
+      "cost": 1000,
+      "note": null,
+      "srd": "gear-vehicles-cyberware/armor/armor-types/"
+    },
+    {
+      "id": "light_armored_suit",
+      "name": "Light Armored Suit",
+      "tier": "suit",
+      "ac_ranged": 16,
+      "ac_melee": 13,
+      "damage_soak": 5,
+      "encumbrance": 2,
+      "trauma_target_modifier": 2,
+      "subtle": false,
+      "cost": null,
+      "note": null,
+      "srd": "gear-vehicles-cyberware/armor/armor-types/"
+    },
+    {
+      "id": "medium_armored_suit",
+      "name": "Medium Armored Suit",
+      "tier": "suit",
+      "ac_ranged": 18,
+      "ac_melee": 14,
+      "damage_soak": 10,
+      "encumbrance": 3,
+      "trauma_target_modifier": 2,
+      "subtle": false,
+      "cost": null,
+      "note": null,
+      "srd": "gear-vehicles-cyberware/armor/armor-types/"
+    },
+    {
+      "id": "heavy_armored_suit",
+      "name": "Heavy Armored Suit",
+      "tier": "suit",
+      "ac_ranged": 20,
+      "ac_melee": 18,
+      "damage_soak": 15,
+      "encumbrance": 3,
+      "trauma_target_modifier": 3,
+      "subtle": false,
+      "cost": null,
+      "note": "H",
+      "srd": "gear-vehicles-cyberware/armor/armor-types/"
+    },
+    {
+      "id": "riot_shield",
+      "name": "Riot Shield",
+      "tier": "armor accessories",
+      "ac_ranged": 2,
+      "ac_melee": 4,
+      "damage_soak": 0,
+      "encumbrance": 2,
+      "trauma_target_modifier": 0,
+      "subtle": false,
+      "cost": 1000,
+      "note": null,
+      "srd": "gear-vehicles-cyberware/armor/armor-types/"
+    },
+    {
+      "id": "absorption_plates",
+      "name": "Absorption Plates",
+      "tier": "armor accessories",
+      "ac_ranged": 2,
+      "ac_melee": 2,
+      "damage_soak": 3,
+      "encumbrance": 1,
+      "trauma_target_modifier": 0,
+      "subtle": false,
+      "cost": 500,
+      "note": "H, NS",
+      "srd": "gear-vehicles-cyberware/armor/armor-types/"
+    },
+    {
+      "id": "joint_reinforcement",
+      "name": "Joint Reinforcement",
+      "tier": "armor accessories",
+      "ac_ranged": 1,
+      "ac_melee": 1,
+      "damage_soak": 0,
+      "encumbrance": 0,
+      "trauma_target_modifier": 0,
+      "subtle": true,
+      "cost": 250,
+      "note": "H, NS",
+      "srd": "gear-vehicles-cyberware/armor/armor-types/"
+    },
+    {
+      "id": "obsolete_tech",
+      "name": "Obsolete Tech",
+      "tier": "armor accessories",
+      "ac_ranged": null,
+      "ac_melee": null,
+      "damage_soak": null,
+      "encumbrance": 0,
+      "trauma_target_modifier": 0,
+      "subtle": false,
+      "cost": null,
+      "note": null,
+      "srd": "gear-vehicles-cyberware/armor/armor-types/"
+    }
+  ]
+}

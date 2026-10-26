@@ -161,8 +161,9 @@
           "damage_bonus": 0,
           "shock": 0,
           "shock_ac": -1,
-          "trauma_die": 0,
-          "trauma_rating": 1
+          "trauma_die": 6,
+          "trauma_rating": 1,
+          "id": "unarmed_attack"
         }
       }
     },
@@ -194,8 +195,9 @@
           "damage_bonus": 0,
           "shock": 0,
           "shock_ac": -1,
-          "trauma_die": 0,
-          "trauma_rating": 1
+          "trauma_die": 6,
+          "trauma_rating": 1,
+          "id": "unarmed_attack"
         }
       }
     },
@@ -227,8 +229,9 @@
           "damage_bonus": 0,
           "shock": 0,
           "shock_ac": -1,
-          "trauma_die": 0,
-          "trauma_rating": 1
+          "trauma_die": 6,
+          "trauma_rating": 1,
+          "id": "unarmed_attack"
         }
       }
     }

@@ -19,6 +19,9 @@
 | Psychic technique prerequisites, effects, overexertion | SWN Revised pp. 29–43 | **Not implemented**; must be sourced from the purchased book, not improvised from names |
 | Otherworld exploration | WWN pp. 38 onward | Activate in special sites with explicit WWN procedure |
 | Crisis zones, hazards, supplies, enclaves | AWN pp. 36 onward | Activate for hazardous districts; no second HP/XP system |
+| Weapons, armour, gear tables | CWN gear chapter | `data/rules/cwn_equipment.json` (35 weapons,
+  15 armour rows, SRD-cited) + `src/rules/cwn_equipment.py`: rows decomposed into the combat shape,
+  and scenario stat lines validated against them. Weapon/armour mods and drones are separate chapters |
 
 ## Playable scenario integration plan
 
