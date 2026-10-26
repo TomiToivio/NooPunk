@@ -10,7 +10,10 @@ extends RefCounted
 ##
 ## Save format is versioned and plain JSON (`user://lakkahaltia_save.json` in game).
 
-const SAVE_VERSION := 1
+const SAVE_VERSION := 2
+
+var check_results: Dictionary = {}
+var player_position: Array = [0.0, 0.0, 2.0]
 
 signal state_changed
 
@@ -55,7 +58,7 @@ func stat(name: String) -> int:
 	return int(character().get("stats", {}).get(name, 0))
 
 func skill(name: String) -> int:
-	return int(character().get("skills", {}).get(name, 0))
+	return int(character().get("skills", {}).get(name, -1))
 
 # -- state ---------------------------------------------------------------------------------
 
@@ -241,6 +244,9 @@ func ending_label(ending_id: String) -> String:
 func to_dict() -> Dictionary:
 	return {
 		"save_version": SAVE_VERSION,
+		"character": character().duplicate(true),
+		"check_results": check_results.duplicate(true),
+		"player_position": player_position.duplicate(),
 		"case_id": str(case_data.get("id", "")),
 		"clues": clues.duplicate(),
 		"flags": flags.duplicate(true),
@@ -253,6 +259,52 @@ func to_dict() -> Dictionary:
 func from_dict(data: Dictionary) -> bool:
 	if int(data.get("save_version", -1)) != SAVE_VERSION:
 		return false
+	if data.get("case_id") != case_data.get("id"):
+		return false
+	if not data.get("character") is Dictionary or not data.get("check_results") is Dictionary or not data.get("player_position") is Array:
+		return false
+	var saved_character: Dictionary = data.character
+	if not saved_character.get("stats") is Dictionary or not saved_character.get("skills") is Dictionary:
+		return false
+	for stat_name in character().stats:
+		var score = saved_character.stats.get(stat_name)
+		if not (score is float or score is int) or score != int(score) or score < 3 or score > 18:
+			return false
+	for skill_name in saved_character.skills:
+		var rank = saved_character.skills[skill_name]
+		if not (rank is float or rank is int) or rank != int(rank) or rank < -1 or rank > 4:
+			return false
+	if data.player_position.size() != 3:
+		return false
+	for coordinate in data.player_position:
+		if not (coordinate is float or coordinate is int) or not is_finite(float(coordinate)):
+			return false
+	for key in ["clues", "journal", "complications"]:
+		if not data.get(key) is Array:
+			return false
+		for item in data[key]:
+			if not item is String:
+				return false
+	if not data.get("flags") is Dictionary or not data.get("finished") is bool or not data.get("chosen_ending") is String:
+		return false
+	for object_id in data.check_results:
+		var result = data.check_results[object_id]
+		if object_definition(object_id).is_empty() or not result is Dictionary:
+			return false
+		for key in ["dice", "modifier", "skill_level", "total", "difficulty", "success"]:
+			if not result.has(key):
+				return false
+		if not result.dice is Array or result.dice.size() != 2 or not result.success is bool:
+			return false
+		for face in result.dice:
+			if not (face is float or face is int) or face != int(face) or face < 1 or face > 6:
+				return false
+		for key in ["modifier", "skill_level", "total", "difficulty"]:
+			if not (result[key] is float or result[key] is int):
+				return false
+	case_data.character = saved_character.duplicate(true)
+	check_results = data.check_results.duplicate(true)
+	player_position = data.player_position.duplicate()
 	clues.clear()
 	flags.clear()
 	journal.clear()

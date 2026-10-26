@@ -4,7 +4,7 @@ extends Node3D
 ##
 ## The level is built procedurally from primitives so the repository carries no third-party
 ## art and the scene stays reviewable as code. Every rule number comes from
-## res://data/rules/core.json through NooPunkCoreRules; every line of prose comes from
+## res://data/rules/wn_core.json through NooPunkWnRules; every line of prose comes from
 ## res://data/scenarios/lakkahaltia/*.json through NooPunkCaseState. This script is glue and
 ## presentation only: it decides nothing about the game's rules.
 
@@ -21,7 +21,7 @@ const WALK_SPEED := 4.2
 const INTERACT_RANGE := 2.6
 
 var state: NooPunkCaseState
-var rules: NooPunkCoreRules
+var rules: NooPunkWnRules
 var rng := RandomNumberGenerator.new()
 
 var player: CharacterBody3D
@@ -48,7 +48,7 @@ var ending_buttons: VBoxContainer
 func _ready() -> void:
 	rng.seed = ROLL_SEED
 	state = NooPunkCaseState.new(CASE_PATH, DIALOGUE_PATH)
-	rules = NooPunkCoreRules.new()
+	rules = NooPunkWnRules.new()
 	state.state_changed.connect(_refresh_status)
 	_build_rooms()
 	_build_player()
@@ -57,6 +57,7 @@ func _ready() -> void:
 	_build_hud()
 	if Engine.has_meta("lakkahaltia_resume") and bool(Engine.get_meta("lakkahaltia_resume")):
 		if state.load_from(SAVE_PATH):
+			_restore_position()
 			_toast("Resumed the saved case.")
 	_refresh_status()
 	print("WARD_READY npcs=%d objects=%d clues=%d" % [
@@ -380,10 +381,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	var key: int = event.keycode
 	if key == KEY_F5:
+		state.player_position = [player.position.x, player.position.y, player.position.z]
 		_toast("Saved." if state.save_to(SAVE_PATH) else "Save failed.")
 		return
 	if key == KEY_F9:
-		_toast("Loaded." if state.load_from(SAVE_PATH) else "No save to load.")
+		if state.load_from(SAVE_PATH):
+			_restore_position()
+			_toast("Loaded.")
+		else:
+			_toast("No compatible save to load.")
 		return
 	if key == KEY_J and not ending_active:
 		journal_panel.visible = not journal_panel.visible
@@ -424,12 +430,18 @@ func _interact(item: Dictionary) -> void:
 		return
 	var definition: Dictionary = state.object_definition(object_id)
 	var check: Dictionary = definition.get("check", {})
-	var result: Dictionary = rules.resolve_check(
-		rng,
-		state.stat(str(check.get("stat", "INT"))),
-		state.skill(str(check.get("skill", "Investigate"))),
-		int(check.get("dv", 12))
-	)
+	var result: Dictionary = state.check_results.get(object_id, {})
+	if result.is_empty():
+		result = rules.skill_check(
+			state.stat(str(check.get("stat", "INT"))),
+			state.skill(str(check.get("skill", "Program"))),
+			int(check.get("dv", 8)), rng
+		)
+		if result.is_empty():
+			_toast("Invalid check configuration.")
+			return
+		state.check_results[object_id] = result
+
 	var branch: Dictionary = definition.get("on_success", {}) if result["success"] else definition.get("on_failure", {})
 	if branch.has("clue"):
 		state.add_clue(str(branch["clue"]))
@@ -438,11 +450,11 @@ func _interact(item: Dictionary) -> void:
 	if branch.has("complication"):
 		state.add_complication(str(branch["complication"]))
 	var verdict := "SUCCESS" if result["success"] else "FAILURE"
-	_toast("%s · %s %d + %s %d + 1d10 %d = %d vs DV %d\n%s" % [
+	_toast("%s · %s modifier %d + %s %d + 2d6 %s = %d vs difficulty %d\n%s" % [
 		verdict,
-		str(check.get("stat", "INT")), result["stat"],
-		str(check.get("skill", "Investigate")), result["skill"],
-		result["die"], result["total"], result["target"],
+		str(check.get("stat", "INT")), result["modifier"],
+		str(check.get("skill", "Program")), result["skill_level"],
+		str(result["dice"]), result["total"], result["difficulty"],
 		str(branch.get("text", ""))
 	])
 	_refresh_status()
@@ -527,6 +539,10 @@ func _current_location() -> String:
 
 func _refresh_journal() -> void:
 	var lines: Array[String] = []
+	lines.append("CHARACTER — " + str(state.character().get("name", "")))
+	lines.append(JSON.stringify(state.character().get("stats", {})))
+	lines.append(JSON.stringify(state.character().get("skills", {})))
+	lines.append("")
 	lines.append("CLUES")
 	if state.clues.is_empty():
 		lines.append("  (none yet)")
@@ -550,3 +566,7 @@ func _toast(message: String) -> void:
 	toast_label.visible = true
 	var timer := get_tree().create_timer(7.0)
 	timer.timeout.connect(func() -> void: toast_label.visible = false)
+
+func _restore_position() -> void:
+	var p := state.player_position
+	player.position = Vector3(p[0], p[1], p[2])

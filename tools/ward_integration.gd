@@ -3,7 +3,7 @@ extends SceneTree
 ## Headless integration driver for the ward scene (issue #631).
 ##
 ## Boots the real scene, then exercises the same calls the input handler makes: walk to an
-## NPC, start a dialogue, take a choice, examine the record (a real 1d10 check), and save.
+## NPC, start a dialogue, take a choice, examine the record (a real 2d6 check), and save.
 ## It proves the playable loop is wired, not merely that the scene constructs.
 
 var ward: Node
@@ -55,6 +55,10 @@ func _process(_delta: float) -> bool:
 		return _finish()
 	ward.player.position = record["position"] + Vector3(0, 0, 0.9)
 	ward._interact(record)
+	var first_result: Dictionary = ward.state.check_results.get("record", {}).duplicate(true)
+	ward._interact(record)
+	if first_result.is_empty() or first_result != ward.state.check_results.get("record"):
+		problems.append("repeated examination rerolled the check")
 	if not ward.state.has_clue("record-1601"):
 		problems.append("examining the record did not produce its clue (pass or fail both grant it)")
 

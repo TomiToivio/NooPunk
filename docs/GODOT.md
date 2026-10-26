@@ -1,16 +1,15 @@
 # The Godot slice — running the Lakkahaltia case
 
 Native **Godot 4** project, GDScript, no RPG-in-a-Box step and no external service. This is the
-first playable vertical slice of #631: a detective case in the NoöPunk ward, playable offline in
-about ten minutes.
+first playable vertical slice of #631: a detective case in the NoöPunk ward, playable offline. The target ten-minute pacing needs a desktop playtest.
 
 ## Tested engine and platforms
 
 | | |
 | --- | --- |
-| verified engine | **Godot 4.3.stable** (`4.3.stable.official.77dcf97d8`), Linux x86_64, headless |
+| verified engine | **Godot 4.5.1.stable** (`4.5.1.stable.official.f62fdbde1`), Linux x86_64, headless |
 | project renderer | `gl_compatibility` (set in `project.godot`) |
-| expected elsewhere | any Godot 4.3+ with the Compatibility renderer; 4.4/4.5 are untested here and should be checked before being claimed |
+| expected elsewhere | use 4.5.1 with the Compatibility renderer; desktop visual verification remains outstanding |
 
 ## Run it
 
@@ -41,9 +40,9 @@ Press **Begin the case**. The case saves to `user://lakkahaltia_save.json` (on L
   primitives, with a follow camera and collision.
 * Three conversational NPCs: Dr. Aino Kivi, Nurse Väinö Salmi, Patient 16. Branching dialogue
   with conditions on flags and clues; choices set flags, record clues and add journal notes.
-* Two mechanically meaningful checks, resolved as **STAT + Skill + 1d10 vs DV** with the roll
-  shown: the medical record (`INT + Investigate`, DV 12) and the mirror (`PSY + Awareness`,
-  DV 13, only after speaking to the patient). Failure still moves the case forward with a
+* Two mechanically meaningful checks, resolved as **2d6 + attribute modifier + skill vs difficulty** with the roll
+  shown: the medical record (`INT / Program`, difficulty 8) and the mirror (`WIS / Notice`,
+  difficulty 8, only after speaking to the patient). Failure still moves the case forward with a
   complication. The ward uses a fixed roll seed (`20261026`) so a run is reproducible.
 * Four clues and an evidence board (`J`).
 * An optional Lakkahaltia encounter behind the mirror check.
@@ -55,22 +54,25 @@ Press **Begin the case**. The case saves to `user://lakkahaltia_save.json` (on L
 
 ## Rules basis (important)
 
-The engine implements the **recorded #566 rulings**: layer A only, **1d10**, the six STATs
-`FIT / REF / INT / SOC / CYB / PSY`, no classes or levels. Numbers live in
-`data/rules/core.json` and are read by `src/godot/core_rules.gd`; the scene contains no dice math.
+The current author override in `AGENTS.md` and `rulebook/WITHOUT_NUMBER_BASELINE.md`
+supersedes the historical #566 ruling: standard STR/DEX/CON/INT/WIS/CHA, scores
+3–18, skills 0–4 (untrained −1), 2d6 checks. The active ward now calls
+`wn_rules.gd` over `wn_core.json`. The old d10 adapter remains only for legacy consumers.
+The demo uses the baseline's illustrative attributes and only investigation skills;
+it is not a complete generated operator. The character is visible in the journal.
 
-The issue text mentions a "3d6" core; no 3d6 rule exists in the repository — `docs/RPG_CHASSIS_INVENTORY.md`
-§3.1 records that the canonical check is `STAT + Skill + 1d10`. Nothing here substitutes stock
-2d6 or invents a new die. If the author later changes the core, only `core_rules.gd` and
-`data/rules/core.json` change; the scene and tests read both.
+Save version 2 persists the character, position, completed check results and case
+state. Old d10 version-1 saves are rejected instead of reinterpreting their numbers.
+Each object check is rolled once per case; subsequent inspections and reloads reuse
+its result. A failed check continues through its authored complication route.
 
 ## Layout
 
 ```
-project.godot                     existing project, pinned to 4.3 features
+project.godot                     existing project, tested with 4.5.1
 scenes/main.tscn                  title screen (script: src/godot/title.gd)
 scenes/lakkahaltia/ward.tscn      the case scene (script: scenes/lakkahaltia/ward.gd)
-src/godot/core_rules.gd           rules adapter over data/rules/core.json
+src/godot/wn_rules.gd             rules adapter over data/rules/wn_core.json
 src/godot/case_state.gd           authoritative state: clues, flags, journal, endings, save
 src/godot/title.gd                title screen
 data/scenarios/lakkahaltia/       case.json + dialogue.json — portable, no code
@@ -91,7 +93,7 @@ GODOT=/path/to/godot tools/godot_smoke.sh
 That runs three things:
 
 1. a headless import (rebuilds the class cache),
-2. `tools/run_godot_tests.gd` — **19 tests, 257 checks** covering the rules adapter, the case
+2. `tools/run_godot_tests.gd` — **20 tests, 264 checks** covering the rules adapter, the case
    state, dialogue navigation integrity and an end-to-end playthrough of both endings,
 3. the ward scene loaded headless, asserting the `WARD_READY` marker and no script errors.
 

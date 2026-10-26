@@ -50,6 +50,8 @@ func skill_check(
 ) -> Dictionary:
 	## 2d6 + attribute modifier + skill level against a difficulty. `skill_level = -1` is the
 	## untrained penalty and is not a numbered level.
+	if attribute_score < 3 or attribute_score > 18 or skill_level < -1 or skill_level > 4 or difficulty_value < 1:
+		return {}
 	var rolled: Array = dice.duplicate()
 	if rolled.is_empty():
 		if rng == null:
@@ -60,7 +62,7 @@ func skill_check(
 		push_error("a 2d6 check needs exactly two dice")
 		return {}
 	for face in rolled:
-		if int(face) < 1 or int(face) > 6:
+		if not (face is int or face is float) or face != int(face) or int(face) < 1 or int(face) > 6:
 			push_error("a d6 shows 1..6, got %s" % str(face))
 			return {}
 	var modifier := attribute_modifier(attribute_score)
