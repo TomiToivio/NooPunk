@@ -105,6 +105,7 @@
       "disciplines": {
         "Telepathy": 1
       },
+      "packages": ["swn_partial_psychic"],
       "effort_maximum": 3,
       "known_techniques": ["surface_read", "thread"],
       "_note": "Effort maximum follows the SWN shape adopted in the baseline: 1 + the better of WIS/CON + the highest psionic skill."

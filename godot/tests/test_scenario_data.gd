@@ -85,6 +85,69 @@ func run() -> Array:
 				flag_problems.append("objective %s -> %s" % [objective.get("id", ""), evidence_id])
 	rows.append(_eq("objective gates reference real evidence", flag_problems, []))
 
+	rows.append_array(_chassis_rows(scenario, dialogue, level))
+	return rows
+
+
+## The sheet, the dialogue checks and the NPC stat lines must all speak the adopted chassis.
+##
+## This is the guard against the failure mode a rename leaves behind: a check naming a skill the sheet
+## does not have resolves as *untrained*, so the character rolls -1 and nobody learns why. It reads the
+## canonical vocabulary from the kernel, never from prose.
+func _chassis_rows(scenario: Dictionary, dialogue: Dictionary, level: Dictionary) -> Array:
+	var rows: Array = []
+	var kernel: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/rules/wn_core.json"))
+	var attributes: Array = kernel.get("stats", {}).get("final_list", [])
+	# The skill vocabulary lives in the versioned baseline; the psionic disciplines live on the
+	# psionics class. Reading them from one place each keeps this guard pointed at the real contract.
+	var baseline: Dictionary = JSON.parse_string(
+		FileAccess.get_file_as_string("res://data/rules/without_number.json"))
+	var skills: Array = (baseline.get("skills", {}).get("names", []) as Array).duplicate()
+	for psionic_skill in NoopunkPsionics.DISCIPLINES:
+		skills.append(psionic_skill)
+
+	var sheet: Dictionary = scenario.get("player_sheet", {})
+	var sheet_skills: Dictionary = sheet.get("skills", {})
+	var sheet_attributes: Dictionary = sheet.get("attributes", {})
+
+	var bad_attributes: Array = []
+	var bad_skills: Array = []
+	var unmakeable: Array = []
+	for node_id in (dialogue.get("nodes", {}) as Dictionary).keys():
+		var node: Dictionary = (dialogue["nodes"] as Dictionary)[node_id]
+		for choice in node.get("choices", []):
+			if not choice.has("check"):
+				continue
+			var spec: Dictionary = choice["check"]
+			var attribute := String(spec.get("attribute", ""))
+			var skill := String(spec.get("skill", ""))
+			if not attributes.has(attribute):
+				bad_attributes.append("%s -> %s" % [node_id, attribute])
+			if not skills.has(skill):
+				bad_skills.append("%s -> %s" % [node_id, skill])
+			if not sheet_attributes.has(attribute) or not sheet_skills.has(skill):
+				unmakeable.append("%s -> %s/%s" % [node_id, attribute, skill])
+	rows.append(_eq("every check uses a canonical attribute", bad_attributes, []))
+	rows.append(_eq("every check uses a canonical CWN or psionic skill", bad_skills, []))
+	rows.append(_eq("the sheet can make every check it is offered", unmakeable, []))
+
+	var psi: Dictionary = sheet.get("psionics", {})
+	var best := 0
+	for discipline in (psi.get("disciplines", {}) as Dictionary).keys():
+		best = maxi(best, int((psi["disciplines"] as Dictionary)[discipline]))
+	var table: Dictionary = kernel.get("stats", {}).get("modifier_table", {})
+	var wisdom := int(table.get(str(int(sheet_attributes.get("WIS", 10))), 0))
+	var constitution := int(table.get(str(int(sheet_attributes.get("CON", 10))), 0))
+	rows.append(_eq("the sheet's Effort maximum follows the adopted formula",
+		int(psi.get("effort_maximum", -1)), 1 + maxi(wisdom, constitution) + best))
+
+	var incomplete: Array = []
+	for npc in level.get("npcs", []):
+		var stat_line: Dictionary = npc.get("stat_line", {})
+		for field in ["hit_dice", "attack_bonus", "ac_melee", "ac_ranged", "hit_points", "trauma_target", "weapon"]:
+			if not stat_line.has(field):
+				incomplete.append("%s -> %s" % [npc.get("id", ""), field])
+	rows.append(_eq("every level NPC carries a complete CWN stat line", incomplete, []))
 	return rows
 
 func _load(file_name: String) -> Dictionary:

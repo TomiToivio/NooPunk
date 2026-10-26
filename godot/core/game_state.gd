@@ -31,6 +31,9 @@ var current_objective: String = ""
 var ending: Dictionary = {}
 var run_seed: int = 1
 var rules: RulesAdapter
+var psionics: NoopunkPsionics
+var psi_disciplines: Dictionary = {}
+var psi_packages: Array = []
 
 func _ready() -> void:
 	rules = RulesAdapter.new(RulesAdapter.DEFAULT_KERNEL_PATH, run_seed)
@@ -41,6 +44,7 @@ func new_case(roll_seed: int = 1) -> void:
 	var dialogue := _load_json(SCENARIO_DIR + "dialogue.json")
 	dialogue_nodes = dialogue.get("nodes", {})
 	character = (scenario.get("player_sheet", {}) as Dictionary).duplicate(true)
+	_load_psionics()
 
 	# evidence.json stores an array; the state keys it by id. Anything that is not an object with an id
 	# is skipped rather than silently becoming a `null` entry the UI would then have to defend against.
@@ -74,6 +78,45 @@ func skill(skill_name: String) -> int:
 	if skills.has(skill_name):
 		return int(skills[skill_name])
 	return UNTRAINED
+
+# --- psionics (#652) ------------------------------------------------------------------------------
+#
+# The Effort pool and its package/rank gates live in `godot/core/psionics.gd`; a case only keeps the
+# instance and its save record. A refused technique is a permission failure and spends nothing.
+
+func _load_psionics() -> void:
+	var sheet: Dictionary = character.get("psionics", {})
+	psi_disciplines = (sheet.get("disciplines", {}) as Dictionary).duplicate(true)
+	psi_packages = (sheet.get("packages", []) as Array).duplicate()
+	psionics = NoopunkPsionics.new(attribute("WIS"), attribute("CON"), psi_disciplines, psi_packages)
+
+## Uses a technique through the package and rank gates. Returns `{ok, reason|technique}`.
+func use_technique(technique_id: String) -> Dictionary:
+	if psionics == null:
+		return { "ok": false, "reason": "psionics are not loaded" }
+	var key := technique_id
+	var index := 2
+	while psionics.commitments.has(key):
+		key = "%s#%d" % [technique_id, index]
+		index += 1
+	if not psionics.use_technique(key, technique_id):
+		return { "ok": false, "reason": "not authorized or not trained for %s" % technique_id }
+	add_journal("Psionic technique used: %s." % technique_id)
+	return { "ok": true, "technique": technique_id }
+
+func effort_maximum() -> int:
+	return psionics.capacity() if psionics != null else 0
+
+func effort_available() -> int:
+	return psionics.available_effort() if psionics != null else 0
+
+func end_scene() -> void:
+	if psionics != null:
+		psionics.end_scene()
+
+func night_rest() -> void:
+	if psionics != null:
+		psionics.rest()
 
 func add_evidence(evidence_id: String) -> bool:
 	if evidence_id == "" or evidence.has(evidence_id) or not evidence_items.has(evidence_id):
@@ -200,6 +243,7 @@ func save_to_file(path: String = "user://save_lakkahaltia.json") -> Error:
 		"current_objective": current_objective,
 		"ending": ending,
 		"dice": rules.snapshot(),
+		"psionics": psionics.snapshot() if psionics != null else {},
 	}
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	if file == null:
@@ -233,6 +277,13 @@ func load_from_file(path: String = "user://save_lakkahaltia.json") -> Error:
 	var dice_state: Dictionary = payload.get("dice", {})
 	if not dice_state.is_empty():
 		rules.restore_dice(int(dice_state.get("seed", run_seed)), int(dice_state.get("rolls", 0)))
+
+	# The Effort pool resumes where the save left it; a save written before the pool existed keeps
+	# the sheet's own block.
+	var psi_state: Dictionary = payload.get("psionics", {})
+	if not psi_state.is_empty() and psionics != null:
+		if not psionics.restore(psi_state):
+			push_error("GameState: the saved Effort state is malformed; the pool starts unspent")
 
 	flags_changed.emit()
 	journal_updated.emit("Case reloaded.")

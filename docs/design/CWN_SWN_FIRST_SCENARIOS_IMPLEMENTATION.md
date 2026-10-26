@@ -13,7 +13,7 @@
 | Initiative, actions, movement, attack, grappling | CWN pp. 32–39 | Not a complete Godot combat implementation |
 | HP, trauma, injuries, healing and strain | CWN pp. 32–43 | Python `cwn_trauma.py` (damage, Trauma, Shock, Damage Soak, Major-Injury condition) and `cwn_healing.py` (mortal-wound clock, stabilization, Frail, first aid, System Strain), each with tests: **implemented**; the Major-Injury *tables* and the Godot injury layer still pending |
 | Cyberware, drugs, drones and vehicles | CWN pp. 48–89 | Equipment and effects not fully ported |
-| Hacking programs, defenses, actions | CWN pp. 90–105 | Not a complete Godot hacking implementation; NoöPunk ubiquitous-network lore is fictional context |
+| Hacking programs, defenses, actions | CWN pp. 90–105 | `src/rules/cwn_hacking.py` implements the procedure — Access pool, 7–12 security ladder, connection penalties, cyberware/drone difficulty, alert clock. Verbs/Subjects/programs remain catalogue content; NoöPunk's ubiquitous-network lore is fictional context |
 | Mission rewards, Heat, reactions and NPCs | CWN pp. 132–195 | Requires encounter and mission integration |
 | Six psychic disciplines and Effort lifecycle | SWN Revised pp. 29–43 | `src/rules/swn_psionics.py` and unit tests: **resource layer implemented**; techniques and role/package advancement pending |
 | Psychic technique prerequisites, effects, overexertion | SWN Revised pp. 29–43 | **Not implemented**; must be sourced from the purchased book, not improvised from names |

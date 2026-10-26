@@ -99,6 +99,14 @@ Existing chapters retain worldbuilding but their conflicting rules are historica
 
 Digital conversion follows the repository's tabletop-first order. The versioned machine-readable baseline is `data/rules/without_number.json`. The old `core.json` and `skills.json` still serve unconverted software and are not current tabletop authority. Replacing every runtime, NPC sheet and scenario number is subsequent porting work; this baseline does not claim that port is complete.
 
+**Porting status, 2026-10-26 (evening):** the procedure layer now runs in code — attributes, checks,
+saves, attacks, Trauma/Shock, mortal and Major Injuries, System Strain, healing, encumbrance,
+advancement, hacking, and Effort-shaped psionics with a package-and-rank gate. The first case's sheet,
+dialogue checks and NPC stat lines use the chassis, and its psionic choice spends Effort through
+`GameState`. Still unported: the equipment catalogue, Edges/Foci text, drones, vehicles, faction turns,
+and the AWN/WWN survival and exploration modules. Gaps and the licence boundary:
+[`docs/design/CWN_SWN_FIRST_SCENARIOS_IMPLEMENTATION.md`](../docs/design/CWN_SWN_FIRST_SCENARIOS_IMPLEMENTATION.md).
+
 Future changes require a versioned deviation identifying the original source, concrete change and playtest reason. Until then use the source procedure, including limits that would be inconvenient for a character. Fate, PbtA, Eclipse Phase and Transhumanity's Fate remain design references for later revisions, not active extra mechanics.
 
 ## 9. Sources and rights

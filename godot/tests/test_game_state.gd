@@ -103,6 +103,21 @@ func run() -> Array:
 	rows.append(_eq("the dice stream resumes where it stopped",
 		resumed.rules.skill_check(14, 3, 8)["dice"], expected_next))
 
+
+	# Psionics (#652): a real pool, a permission gate, and Effort that comes back at the end of a scene.
+	var psi_state = GameStateScript.new()
+	psi_state.new_case(31)
+	rows.append(_eq("Effort maximum is 1 + the better modifier + the best skill",
+		psi_state.effort_maximum(), 3))
+	rows.append(_eq("a trained committed technique is allowed",
+		bool(psi_state.use_technique("thread").get("ok", false)), true))
+	rows.append(_eq("its Effort is unavailable until the scene ends",
+		psi_state.effort_available(), 2))
+	psi_state.end_scene()
+	rows.append(_eq("the scene returns the commitment", psi_state.effort_available(), 3))
+	rows.append(_eq("a technique above the trained rank is refused",
+		bool(psi_state.use_technique("command").get("ok", true)), false))
+
 	return rows
 
 func _eq(label: String, actual: Variant, expected: Variant) -> Array:

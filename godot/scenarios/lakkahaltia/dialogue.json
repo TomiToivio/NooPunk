@@ -161,6 +161,7 @@
             "attribute": "WIS",
             "skill": "Telepathy",
             "difficulty": 8,
+            "technique": "surface_read",
             "success_node": "patient_psi",
             "failure_node": "patient_plain"
           }
