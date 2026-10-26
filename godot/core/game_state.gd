@@ -64,16 +64,25 @@ func new_case(roll_seed: int = 1) -> void:
 func attribute(stat: String) -> int:
 	return int((character.get("attributes", {}) as Dictionary).get(stat, 0))
 
-func skill(stat: String) -> int:
+## The character's level in a named skill, or UNTRAINED.
+##
+## Looked up by *skill* name ("Investigate", "Talk"), never by attribute name: the sheet keys its
+## skills by their own names, so an attribute-keyed lookup silently returned UNTRAINED for every
+## check in the game.
+func skill(skill_name: String) -> int:
 	var skills: Dictionary = character.get("skills", {})
-	if skills.has(stat):
-		return int(skills[stat])
+	if skills.has(skill_name):
+		return int(skills[skill_name])
 	return UNTRAINED
 
 func add_evidence(evidence_id: String) -> bool:
 	if evidence_id == "" or evidence.has(evidence_id) or not evidence_items.has(evidence_id):
 		return false
 	evidence.append(evidence_id)
+	# An evidence item can carry the flags its discovery sets (E4 seals the annex, E5 anchors the place).
+	# Applying them here is what makes those facts part of the state instead of prose in a data file.
+	for flag in (evidence_items.get(evidence_id, {}) as Dictionary).get("flags", []):
+		set_flag(String(flag))
 	evidence_added.emit(evidence_id)
 	_refresh_objective()
 	return true
@@ -100,7 +109,7 @@ func has_flag(flag: String) -> bool:
 ## The one call the dialogue layer makes for a mechanic. The roll is public: the result carries the
 ## faces, the modifier, the skill level and the target, so the UI shows the maths rather than a verdict.
 func resolve_check(stat: String, skill_name: String, difficulty: int) -> Dictionary:
-	var result := rules.skill_check(attribute(stat), skill(stat), difficulty)
+	var result := rules.skill_check(attribute(stat), skill(skill_name), difficulty)
 	result["stat"] = stat
 	result["skill"] = skill_name
 	var faces := ", ".join(result["dice"].map(func(face): return str(face)))
@@ -123,20 +132,26 @@ func objective_text() -> String:
 	return String(scenario.get("opening_objective", ""))
 
 func _refresh_objective() -> void:
-	# Objectives are an ordered list. The current one advances as soon as *its own* requirements are met,
-	# whether or not the next one's are — the next objective is allowed to be the harder one.
+	# Objectives are an ordered list. Advance through every gate whose requirements are already met, so
+	# that acquiring the last piece of evidence in one action cannot leave the HUD one objective behind.
 	var objectives: Array = scenario.get("objectives", [])
-	var index := -1
-	for i in objectives.size():
-		if String(objectives[i].get("id", "")) == current_objective:
-			index = i
-			break
-	if index < 0:
-		return
-	for required in objectives[index].get("requires_evidence", []):
-		if not has_evidence(String(required)):
+	var guard := objectives.size() + 1
+	while guard > 0:
+		guard -= 1
+		var index := -1
+		for i in objectives.size():
+			if String(objectives[i].get("id", "")) == current_objective:
+				index = i
+				break
+		if index < 0 or index + 1 >= objectives.size():
 			return
-	if index + 1 < objectives.size():
+		var satisfied := true
+		for required in objectives[index].get("requires_evidence", []):
+			if not has_evidence(String(required)):
+				satisfied = false
+				break
+		if not satisfied:
+			return
 		current_objective = String(objectives[index + 1].get("id", ""))
 		objective_changed.emit(current_objective)
 
@@ -184,6 +199,7 @@ func save_to_file(path: String = "user://save_lakkahaltia.json") -> Error:
 		"flags": flags,
 		"current_objective": current_objective,
 		"ending": ending,
+		"dice": rules.snapshot(),
 	}
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	if file == null:
@@ -214,6 +230,9 @@ func load_from_file(path: String = "user://save_lakkahaltia.json") -> Error:
 	# The dice stream resumes where the save left it: same seed, and the same number of rolls already spent.
 	run_seed = int(payload.get("run_seed", 1))
 	rules = RulesAdapter.new(RulesAdapter.DEFAULT_KERNEL_PATH, run_seed)
+	var dice_state: Dictionary = payload.get("dice", {})
+	if not dice_state.is_empty():
+		rules.restore_dice(int(dice_state.get("seed", run_seed)), int(dice_state.get("rolls", 0)))
 
 	flags_changed.emit()
 	journal_updated.emit("Case reloaded.")

@@ -20,6 +20,14 @@ func _ready() -> void:
 	start.pressed.connect(_on_start_pressed)
 	stack.add_child(start)
 
+	# A finished case leaves GameState holding its ending; the autoload must be reset for a new run,
+	# otherwise "Begin" silently resumes the old case with all its evidence.
+	if FileAccess.file_exists("user://save_lakkahaltia.json"):
+		var resume := Button.new()
+		resume.text = "Continue the saved case"
+		resume.pressed.connect(_on_resume_pressed)
+		stack.add_child(resume)
+
 	var controls := Label.new()
 	controls.text = "WASD move · mouse look · E interact · J journal · F5 save · F6 end the case"
 	controls.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -27,4 +35,12 @@ func _ready() -> void:
 	stack.add_child(controls)
 
 func _on_start_pressed() -> void:
+	GameState.new_case(GameState.run_seed)
+	get_tree().change_scene_to_file("res://godot/scenes/hospital.tscn")
+
+func _on_resume_pressed() -> void:
+	GameState.new_case(GameState.run_seed)
+	var err: int = GameState.load_from_file()
+	if err != OK:
+		push_error("main_menu: could not load the saved case (%d)" % err)
 	get_tree().change_scene_to_file("res://godot/scenes/hospital.tscn")
