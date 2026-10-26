@@ -11,7 +11,7 @@
 | Attributes, modifiers, skill checks, saves | CWN pp. 4–31 | Python `src/rules/wn_core.py`; Godot `rules_adapter.gd`; verify all edge cases |
 | Character backgrounds, contacts, Edges, Foci | CWN pp. 4–26 | Tabletop baseline only; requires data contract and Godot character builder |
 | Initiative, actions, movement, attack, grappling | CWN pp. 32–39 | Not a complete Godot combat implementation |
-| HP, trauma, injuries, healing and strain | CWN pp. 32–43 | Not a complete Godot injury implementation |
+| HP, trauma, injuries, healing and strain | CWN pp. 32–43 | Python `src/rules/cwn_trauma.py` and `tests/test_cwn_trauma.py`: **damage, Trauma, Shock, Damage Soak and the Major-Injury condition implemented**; Major Injury tables, healing rates, System Strain and the Godot injury layer still pending |
 | Cyberware, drugs, drones and vehicles | CWN pp. 48–89 | Equipment and effects not fully ported |
 | Hacking programs, defenses, actions | CWN pp. 90–105 | Not a complete Godot hacking implementation; NoöPunk ubiquitous-network lore is fictional context |
 | Mission rewards, Heat, reactions and NPCs | CWN pp. 132–195 | Requires encounter and mission integration |
