@@ -146,6 +146,19 @@ honest.
 
 ---
 
+**(C) Cytoelectric coupling is not the authors' discovery, and citing it does not extend its
+standing to the soul field.** The abstract describes it as a *"recently proposed mechanism"* by
+others. Whether it holds is a separate empirical question, and either way it does not licence the
+soul-field inference. Attributing the mechanism to this paper would misstate the literature.
+
+**(C) No test is proposed.** A hypothesis that cannot fail in principle cannot be confirmed by
+argument. This is the strongest single limit in this sheet: the framework is not yet falsifiable, so
+"the paper shows" is never a sentence the setting may use.
+
+**(C) No reuse terms are asserted.** The OSF licence record lists no reuse licence, so the text is
+paraphrased and never quoted, and it is deliberately **not** promoted to `docs/sources/` as a
+rights-bearing source — the same rule the commercial rulebooks follow.
+
 ## 4. Why it belongs in this repository at all
 
 The setting's whole premise is that a thinking layer is real enough to argue about. That premise
