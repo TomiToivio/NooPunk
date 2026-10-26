@@ -1,22 +1,342 @@
 {
-  "_comment": "Asset manifest for the Godot slice (#631). Every visible object in the vertical slice is generated from Godot primitives in scenes/lakkahaltia/ward.gd; no third-party file is committed. This manifest records that decision and the packs reviewed for a later art pass, so the next contributor starts from licence facts rather than assumptions.",
+  "_comment": "Asset manifest for the Godot slice (#631). Every visible object in the current slice is generated from Godot primitives in the scene scripts; no third-party file is committed. This manifest records that decision, the licence facts of every free pack we intend to use, and the paid packs worth buying later. Verified 2026-10-26; the human-readable version with the aesthetic reasoning is docs/godot/ASSETS.md.",
   "format": "noopunk.assets.manifest",
-  "version": 1,
+  "version": 3,
   "project": "godot",
   "committed_assets": [],
   "procedural": [
-    { "what": "ward geometry (floor, walls, partitions, furniture)", "how": "BoxMesh + StaticBody3D in ward.gd", "licence": "none required (generated)" },
-    { "what": "player and NPC bodies", "how": "CapsuleMesh in ward.gd", "licence": "none required (generated)" },
-    { "what": "clue markers, lighting, HUD", "how": "BoxMesh, OmniLight3D, Control nodes", "licence": "none required (generated)" }
+    {
+      "what": "ward geometry (floor, walls, partitions, furniture)",
+      "how": "BoxMesh + StaticBody3D in ward.gd",
+      "licence": "none required (generated)"
+    },
+    {
+      "what": "player and NPC bodies",
+      "how": "CapsuleMesh in ward.gd",
+      "licence": "none required (generated)"
+    },
+    {
+      "what": "clue markers, lighting, HUD",
+      "how": "BoxMesh, OmniLight3D, Control nodes",
+      "licence": "none required (generated)"
+    }
   ],
   "reviewed_for_later_use": [
-    { "pack": "Kenney", "url": "https://kenney.nl/assets", "licence": "CC0 for most packs; verify per pack", "status": "candidate, nothing downloaded" },
-    { "pack": "Quaternius", "url": "https://quaternius.com/", "licence": "CC0 for most packs; verify per pack", "status": "candidate, nothing downloaded" },
-    { "pack": "Poly Haven", "url": "https://polyhaven.com/", "licence": "CC0; verify per asset", "status": "candidate, nothing downloaded" },
-    { "pack": "Synty Studios", "url": "https://syntystore.com/", "licence": "commercial, per-licence; redistribution terms vary", "status": "optional; do not commit purchased files unless the licence permits public redistribution" }
+    {
+      "pack": "Kenney",
+      "url": "https://kenney.nl/assets",
+      "licence": "CC0 for most packs; verify per pack",
+      "status": "candidate, nothing downloaded"
+    },
+    {
+      "pack": "Quaternius",
+      "url": "https://quaternius.com/",
+      "licence": "CC0 for most packs; verify per pack",
+      "status": "candidate, nothing downloaded"
+    },
+    {
+      "pack": "Poly Haven",
+      "url": "https://polyhaven.com/",
+      "licence": "CC0; verify per asset",
+      "status": "candidate, nothing downloaded"
+    },
+    {
+      "pack": "Synty Studios",
+      "url": "https://syntystore.com/",
+      "licence": "commercial, per-licence; redistribution terms vary",
+      "status": "optional; do not commit purchased files unless the licence permits public redistribution"
+    }
   ],
   "rules": [
     "No asset enters this repository without a per-pack licence check, an attribution line if required, and a public-repo redistribution check.",
-    "Placeholder art must be either generated (as here) or explicitly CC0; 'found online' is not a licence."
+    "Placeholder art must be either generated or explicitly CC0; 'found online' is not a licence.",
+    "Commercial 'use inside a game only' licences (Synty and similar) never allow committing the raw files: keep them git-ignored and document how to obtain them.",
+    "CC0 packs may be bought and committed; that is why KayKit Complete is the first purchase."
+  ],
+  "verified_on": "2026-10-26",
+  "aesthetic_target": {
+    "camera": "3D diorama, isometric or near-isometric; Disco Elysium framing built with low-poly/voxel art",
+    "people": "2D portraits for every speaker; 3D bodies only when the tactical layer exists",
+    "city": "voxel-or-chunky low-poly at night, wet surfaces, fog and bloom (Cloudpunk); voxel interiors the player can read at a glance (Shadows of Doubt)",
+    "narrative": "dialogue- and UI-forward, dice-driven action economy (Disco Elysium, Citizen Sleeper)",
+    "combat": "none in the detective slice; isometric turn-based (Shadowrun: Dragonfall) is a later milestone"
+  },
+  "free_candidates": [
+    {
+      "pack": "Quaternius - Cyberpunk Game Kit",
+      "url": "https://quaternius.com/packs/cyberpunkgamekit.html",
+      "licence": "CC0",
+      "formats": [
+        "blend",
+        "fbx",
+        "obj",
+        "gltf"
+      ],
+      "commit_safe": true,
+      "use": "neon street furniture, signs, terminals"
+    },
+    {
+      "pack": "Quaternius - Cube World Kit",
+      "url": "https://quaternius.com/packs/cubeworldkit.html",
+      "licence": "CC0",
+      "formats": [
+        "gltf",
+        "fbx",
+        "obj"
+      ],
+      "commit_safe": true,
+      "use": "blocky/voxel-adjacent look without a voxel engine"
+    },
+    {
+      "pack": "Quaternius - Downtown City Mega Kit / Buildings",
+      "url": "https://quaternius.com/",
+      "licence": "CC0",
+      "formats": [
+        "gltf",
+        "fbx",
+        "obj"
+      ],
+      "commit_safe": true,
+      "use": "city massing for exteriors"
+    },
+    {
+      "pack": "Kenney - Furniture Kit",
+      "url": "https://kenney.nl/assets/furniture-kit",
+      "licence": "CC0",
+      "commit_safe": true,
+      "use": "hospital interiors, reception, ward"
+    },
+    {
+      "pack": "Kenney - City Kit (Commercial / Suburban / Industrial / Roads)",
+      "url": "https://kenney.nl/assets/city-kit-commercial",
+      "licence": "CC0",
+      "commit_safe": true,
+      "use": "Helsinki streets"
+    },
+    {
+      "pack": "Kenney - Mini Dungeon / Mini Forest / Tiny City",
+      "url": "https://kenney.nl/assets/mini-dungeon",
+      "licence": "CC0",
+      "commit_safe": true,
+      "use": "chunky miniature props and readable placeholders"
+    },
+    {
+      "pack": "Kenney - UI Pack / Input Prompts / Skyboxes",
+      "url": "https://kenney.nl/assets/ui-pack",
+      "licence": "CC0",
+      "commit_safe": true,
+      "use": "HUD, journal, evidence board, key prompts, night sky"
+    },
+    {
+      "pack": "Kenney - RPG Audio / Interface Sounds",
+      "url": "https://kenney.nl/assets/rpg-audio",
+      "licence": "CC0",
+      "commit_safe": true,
+      "use": "UI, doors, footsteps, ward ambience"
+    },
+    {
+      "pack": "KayKit - Dungeon / Block Bits / Furniture Bits / City Builder Bits",
+      "url": "https://kaylousberg.itch.io/kaykit-dungeon",
+      "licence": "CC0",
+      "commit_safe": true,
+      "use": "modular interiors; Block Bits is the voxel-flavoured one"
+    },
+    {
+      "pack": "Poly Haven",
+      "url": "https://polyhaven.com/license",
+      "licence": "CC0",
+      "commit_safe": true,
+      "use": "night HDRIs, wet asphalt, frosted glass"
+    },
+    {
+      "pack": "ambientCG",
+      "url": "https://ambientcg.com/license",
+      "licence": "CC0",
+      "commit_safe": true,
+      "use": "PBR surfaces (lino, concrete, tile)"
+    },
+    {
+      "pack": "Google Fonts (Chakra Petch, Rajdhani, Space Grotesk, IBM Plex)",
+      "url": "https://fonts.google.com/",
+      "licence": "OFL or Apache per family",
+      "commit_safe": true,
+      "use": "UI and signage typography"
+    },
+    {
+      "pack": "OpenGameArt / Freesound",
+      "url": "https://opengameart.org/",
+      "licence": "per item (CC0 or CC-BY; some CC-BY-NC) - never assume",
+      "commit_safe": false,
+      "use": "HVAC hum, fluorescent buzz, rain; record the licence per file"
+    },
+    {
+      "pack": "Industrial Cyberpunk 3D Tilepack (slipperhat)",
+      "url": "https://slipperhat.itch.io/industrial-cyberpunk-3d-tilepack",
+      "licence": "CC0 (free for commercial use, no attribution required)",
+      "formats": [
+        "glb",
+        "obj"
+      ],
+      "commit_safe": true,
+      "use": "24 low-poly industrial tiles with PBR and an explicit Godot ORM workflow"
+    },
+    {
+      "pack": "KayKit City Builder Bits (Godot Asset Library 2123)",
+      "url": "https://godotengine.org/asset-library/asset/2123",
+      "licence": "CC0",
+      "commit_safe": true,
+      "use": "32+ model street shell, single gradient atlas, mobile-friendly"
+    },
+    {
+      "pack": "Cyberpunk Isometric Pixel Art Pack (crabcrabcrabs)",
+      "url": "https://crabcrabcrabs.itch.io/cyberpunk-isometric-city-pack",
+      "licence": "free for personal and commercial projects - NOT stated as CC0",
+      "commit_safe": false,
+      "use": "small 2D isometric building set; record the exact wording and ask before shipping"
+    }
+  ],
+  "free_tooling": [
+    {
+      "tool": "Zylann/godot_voxel",
+      "url": "https://github.com/Zylann/godot_voxel",
+      "licence": "MIT",
+      "why": "runtime voxel meshes in Godot 4 - the Shadows of Doubt interior route"
+    },
+    {
+      "tool": "nathanhoad/godot_dialogue_manager",
+      "url": "https://github.com/nathanhoad/godot_dialogue_manager",
+      "licence": "MIT",
+      "why": "dialogue as data once one JSON graph stops being enough"
+    },
+    {
+      "tool": "dialogic-godot/dialogic",
+      "url": "https://github.com/dialogic-godot/dialogic",
+      "licence": "MIT",
+      "why": "visual-novel authoring; weaker on state conditions"
+    },
+    {
+      "tool": "ramokz/phantom-camera",
+      "url": "https://github.com/ramokz/phantom-camera",
+      "licence": "MIT",
+      "why": "Cinemachine-like camera control for a diorama/isometric camera"
+    },
+    {
+      "tool": "MagicaVoxel",
+      "url": "https://ephtracy.github.io/",
+      "licence": "free, NOT open source",
+      "why": "voxel authoring; exports .obj/.glb that Godot imports"
+    }
+  ],
+  "paid_candidates": [
+    {
+      "pack": "KayKit Complete",
+      "store": "itch.io / Kay Lousberg",
+      "url": "https://kaylousberg.itch.io/kaykit-complete",
+      "price_eur": 150.0,
+      "licence": "CC0",
+      "commit_safe": true,
+      "priority": "buy first",
+      "why": "the whole KayKit library incl. character animations, and CC0 so it can be committed"
+    },
+    {
+      "pack": "POLYGON - Sci-Fi City Pack",
+      "store": "Synty",
+      "price_eur": 57.27,
+      "licence": "commercial; no raw redistribution",
+      "commit_safe": false,
+      "priority": "high",
+      "why": "neon city blocks for Cloudpunk-ish exteriors"
+    },
+    {
+      "pack": "POLYGON - Sci-Fi Horror",
+      "store": "Synty",
+      "price_eur": 34.37,
+      "price_note": "80% off, regular 171.82",
+      "licence": "commercial",
+      "commit_safe": false,
+      "priority": "high, while on sale",
+      "why": "hospital corridors and institutional dread"
+    },
+    {
+      "pack": "POLYGON - City Pack",
+      "store": "Synty",
+      "price_eur": 22.9,
+      "licence": "commercial",
+      "commit_safe": false,
+      "priority": "medium",
+      "why": "ordinary streets, cars, street furniture"
+    },
+    {
+      "pack": "POLYGON - Heist Pack",
+      "store": "Synty",
+      "price_eur": 34.36,
+      "licence": "commercial",
+      "commit_safe": false,
+      "priority": "medium",
+      "why": "offices and vaults; modern interiors"
+    },
+    {
+      "pack": "SIMPLE Office / SIMPLE House Interiors",
+      "store": "Synty",
+      "price_eur": 11.45,
+      "licence": "commercial",
+      "commit_safe": false,
+      "priority": "low",
+      "why": "cheap cartoon furniture for greyboxing"
+    },
+    {
+      "pack": "POLYGON - Sci-Fi Cyber City",
+      "store": "Synty",
+      "price_eur": 229.1,
+      "licence": "commercial",
+      "commit_safe": false,
+      "priority": "later",
+      "why": "the big neon city"
+    },
+    {
+      "pack": "Sci-Fi Civilians - Sidekick Modular Characters",
+      "store": "Synty",
+      "price_eur": 229.1,
+      "licence": "commercial",
+      "commit_safe": false,
+      "priority": "later",
+      "why": "modular people if 3D characters replace portraits"
+    },
+    {
+      "pack": "POLYGON - Nightclubs",
+      "store": "Synty",
+      "price_eur": 114.55,
+      "licence": "commercial",
+      "commit_safe": false,
+      "priority": "later",
+      "why": "a bar/club location outside the ward"
+    }
+  ],
+  "minimum_art_pass_eur": 264.0,
+  "minimum_art_pass_note": "KayKit Complete (150) + Sci-Fi City (57.27) + Sci-Fi Horror on sale (34.37) + City Pack (22.90). The CC0 half is committable; the Synty half stays local.",
+  "pipeline": [
+    "Free CC0 kits replace the primitive geometry in the ward first; nothing is bought until the camera and post-processing are proven.",
+    "Blender -> glTF 2.0 for anything 3D; keep source files out of the repo unless the licence covers them.",
+    "Voxel route (if Shadows of Doubt is the target): MagicaVoxel -> glb, or godot_voxel for runtime volumes. Do not mix a voxel corridor with a low-poly ward.",
+    "Portraits are commissioned or made in-house; no stock pack is recommended for them.",
+    "Every file added gets a manifest row before it is committed."
+  ],
+  "licence_notes": [
+    {
+      "store": "Synty",
+      "url": "https://syntystore.com/pages/licensing-terms",
+      "licence": "use in a game only; raw asset redistribution not permitted",
+      "commit_safe": false,
+      "why": "purchased packs stay in a git-ignored directory and never enter this public repository"
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "pack": "maxparata isometric cyberpunk streets / buildings",
+      "url": "https://maxparata.itch.io/",
+      "licence": "CC BY-ND 4.0 (NoDerivatives)",
+      "commit_safe": false,
+      "why": "attractive voxel-tagged sprite sets (250+ / 130+), but ND forbids the recolouring, cropping and re-posing a game needs; references only"
+    }
   ]
 }

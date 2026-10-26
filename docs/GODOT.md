@@ -111,6 +111,13 @@ No third-party asset is committed. Everything visible is built from Godot primit
 (Kenney, Quaternius, Poly Haven, and Synty as optional commercial) with their licence terms, so
 a later art pass starts from a reviewed list rather than an assumption. Do not commit purchased
 packs to this public repository unless their licence explicitly permits redistribution.
+The full research is in [`docs/godot/ASSETS.md`](godot/ASSETS.md): every free pack with the licence read off
+its own page (Quaternius Cyberpunk Game Kit and Cube World Kit, Kenney Furniture/City/UI/audio, KayKit,
+Poly Haven, ambientCG), the paid packs with the prices seen on the store on 2026-10-26 (KayKit Complete
+EUR 150 as the one CC0 purchase worth committing; Synty Sci-Fi City / Sci-Fi Horror / City Pack for the
+art pass, never committable), the Godot tooling that decides what art is cheap (godot_voxel,
+godot_dialogue_manager, phantom-camera), and the order to do it in: free kits and a proven camera first,
+purchases only after the framing works.
 
 ## Known limitations (deliberate, for the next milestones)
 
