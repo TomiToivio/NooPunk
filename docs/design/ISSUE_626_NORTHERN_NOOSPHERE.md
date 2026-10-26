@@ -126,7 +126,7 @@ Without Number engine already implemented in `src/rules/wn_core.py`:
 | Clinical assessment | `2d6 + INT/WIS modifier + relevant skill` vs difficulty 8–10 |
 | Forensic corroboration | same kernel, different skill and attribute |
 | Network intrusion | CWN-style procedures over the **ubiquitous network** (access is ambient; exposure is the cost) |
-| PSI / psychotronic scene | SWN-style **Effort** commitments on a learnable natural ability |
+| PSI / psychotronic scene | SWN-style **Effort** commitments on a learnable natural ability. *Licensing: SWN publishes no separately licensed SRD, so the procedure must be NoöPunk's own wording over a borrowed shape — see `docs/rules/RULES_FOUNDATION_POLICY.md` §4 and `docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md`.* |
 | Cross-domain / noetic | WWN-style realm procedures; AWN-style hazard and salvage for crisis zones |
 | Credibility, not truth | a check establishes *what the character can substantiate*, never what is objectively true |
 
@@ -163,3 +163,9 @@ international task force never asked for.
    relationship. §1 records the conflict; it does not settle it.
 3. **No canon was written.** No new named characters, no mandates, no dates, no canonisation.
 4. **No code and no rules were changed.**
+
+**Where the next round lives.** The playable draft (clue ledger with provenance and custody, four
+red herrings with their disconfirming evidence, four branch points, five endings with triggers,
+and a null result for every act) is `docs/scenarios/626_SAMPO_PROTOCOL_PILOT.md`. The eight
+questions are written out as decision support in `docs/design/ISSUE_626_OPEN_QUESTIONS.md` and
+carried on the author queue as rows **D43–D50**.

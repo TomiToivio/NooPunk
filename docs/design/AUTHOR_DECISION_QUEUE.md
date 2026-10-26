@@ -149,6 +149,26 @@ divergence, trade, espionage) stays unbuilt.
   §8 artifacts now exist as files, and its only remaining items are author decisions carried as rows D10,
   D14 and D15. Nothing was lost by closing it, which is the test this section exists to apply.
 
+## #626 — Northern Noösphere + the psychiatric-origin NHI team (rows D43–D50)
+
+Eleventh update (2026-10-26). Issue **#626** is a planning memo, not canon, and it closes with eight
+questions it explicitly leaves to the author. They are carried here one sentence at a time so answering
+one does not require re-reading the memo. The decision support is
+[`ISSUE_626_OPEN_QUESTIONS.md`](ISSUE_626_OPEN_QUESTIONS.md); the playable draft that survives any answer
+is `docs/scenarios/626_SAMPO_PROTOCOL_PILOT.md`. **No row asks for a new subsystem**, and none blocks
+play: the pilot is written so that every answer changes what the material *claims*, not whether it runs.
+
+| # | Decision | Blocks | Smallest useful answer |
+| --- | --- | --- | --- |
+| D43 | **#626's institutional home.** Europol canon has exactly one **NHI Desk** (one analyst, The Hague basement, coordinating authority only, no PSI/AGI branch); UNSA holds the Helsinki frame. Options: the Desk grows under joint-investigation-team cover (canon unchanged, team size becomes a story event) / a new standing Europol cell (contradicts the Desk) / a national unit with a Europol liaison (weakest fit for "cross-border cluster"). | the pilot's team composition, and who may arrest, search or compel | *joint investigation team* / *new cell* / *national unit* |
+| D44 | **Which Romppainen leads (if any).** `docs/scenarios/01_FIRST_DAY_IN_OMAPPI.md` names Dr. Harri Romppainen deliberately; `docs/archive/NARRATIVE_TIMELINE_VARIANTS.md` has him as Supo, PhD psychology; the Ubiquitous Maniacs legacy corpus has him as a **patient**, "vielä dissosioituneessa sivupersoonassaan". Options: same man, his dissociation is the case / different man, same name / he is a consulted witness and the "investigator" framing is dropped / same man, integrated and recovered. | every other named role in the unit, and whether the leader can be a player character | *same man* / *different man* / *witness only* / *recovered* |
+| D45 | **The cell's relation to Helsinki UNSA.** Precursor (its failure or success explains UNSA's existence) / partner (one case, competing files) / separate campaign (no crossover). | whether UNSA is the pilot's referral partner or its rival | *precursor* / *partner* / *separate* |
+| D46 | **How much *Maniac* is imported.** The memo itself leaves the touchstone ambiguous (Norwegian original 2014 vs Netflix 2018). Options: thematic only (psychiatry, trial ethics, shared imagery — no plot) / one named work as touchstone / both, deliberately contrasted. | how much of the pilot's Act 2 is homage, and therefore the attribution review | *thematic only* / *name the work* / *both* |
+| D47 | **What patients are.** Witnesses only / witnesses plus one recurring patient / one playable patient (their credibility becomes a live constraint at the table). | the pilot's session-2 and session-4 scene ownership; whether a patient character sheet ever exists | *witnesses* / *recurring* / *playable* |
+| D48 | **How many anomalies may be verified before the Crisis tipping point.** If verification is possible, the evidence → substantiation → institutional-response pipeline needs a threshold; if it is never possible, the setting stays permanently contested and no faction can be proven right. The pilot assumes **demonstrated ≠ confirmed** (a place-anchored account can be substantiated; a nonhuman intelligence cannot). | whether any future case may end with the word "confirmed", and whether the Crisis is a reveal or a permanent condition | *never confirmed* / *threshold* / *confirmable late* |
+| D49 | **The Sampo's ontology.** One artefact / a class of technology / a misread legend / different things to different observers. The memo drafts three readings (scientific, noetic, political) and forbids settling them; a single artefact supports a heist plot, a class supports an economy, observer-dependence supports the Vallée-style reading the memo prefers. | whether later material may name a second Sampo-like site | *one* / *class* / *legend* / *observer-dependent* |
+| D50 | **Are medical phenomenology and data analysis core mechanics?** Canon has the WN kernel and the evidence ledger (`src/rules/investigation_evidence.py`), and no clinical-differential or cohort-comparison procedure. Making either a mechanic means a new subsystem; the licensing boundary already recorded on this board is unchanged (SWN and AWN stay `blocked-unverified`, so any "Effort" or hazard procedure must be NoöPunk's own wording over a borrowed shape). | whether the pilot stays a scenario document or becomes a `strategy_game/casework` case with code and tests | *prose only* / *clinical procedure* / *data-analysis procedure* |
+
 ## After an answer
 
 Each answered row becomes: a criterion check against `main` → an acceptance record in
