@@ -40,6 +40,9 @@ ATTRIBUTES: tuple[str, ...] = (
     "Charisma",
 )
 
+#: Short codes for the same six attributes, used by saves and by the migration map.
+ATTRIBUTE_CODES: tuple[str, ...] = tuple(name[:3].upper() for name in ATTRIBUTES)
+
 ATTRIBUTE_MIN = 3
 ATTRIBUTE_MAX = 18
 MODIFIER_CAP = 2
@@ -57,6 +60,9 @@ AID_BONUS_MAX = 1
 
 SKILL_CHECK_DICE = 2
 SKILL_CHECK_FACES = 6
+
+#: No level-0 in the skill: the SRD applies -1. Level-0 itself is basic competence, not a penalty.
+UNSKILLED_PENALTY = -1
 
 
 class WnError(ValueError):
@@ -108,11 +114,13 @@ class Check:
     situational: int
     aid: int
     difficulty: int
+    #: True when the character does not even have level-0 in the skill: the SRD's -1 applies.
+    untrained: bool = False
 
     @property
     def total(self) -> int:
         return (sum(self.dice) + self.attribute_modifier + self.skill_level
-                + self.situational + self.aid)
+                + self.situational + self.aid + (UNSKILLED_PENALTY if self.untrained else 0))
 
     @property
     def success(self) -> bool:
@@ -136,7 +144,7 @@ def _roll(rng: Any = None, dice: Sequence[int] | None = None) -> tuple[int, int]
 def skill_check(
     *,
     attribute_score: int,
-    skill_level: int,
+    skill_level: int | None,
     difficulty: int,
     situational: int = 0,
     aid: int = 0,
@@ -148,12 +156,14 @@ def skill_check(
     The dice may be supplied directly (`dice=(3, 5)`) for a table that rolled real dice, or a
     seeded `rng` may be passed for a replayable digital resolution.
     """
-    if skill_level < 0:
+    untrained = skill_level is None
+    if not untrained and skill_level < 0:
         raise WnError(f"skill level cannot be negative, got {skill_level}")
     return Check(
         dice=_roll(rng, dice),
         attribute_modifier=attribute_modifier(attribute_score),
-        skill_level=skill_level,
+        skill_level=0 if untrained else skill_level,
+        untrained=untrained,
         situational=clamp_situational(situational),
         aid=clamp_aid(aid),
         difficulty=difficulty,
@@ -175,3 +185,110 @@ def opposed_check(
     if ta == tb:
         return None
     return "a" if ta > tb else "b"
+
+
+# --------------------------------------------------------------------------- #
+# Saving throws (CWN SRD 2.02)
+# --------------------------------------------------------------------------- #
+
+SAVE_DIE = 20
+SAVE_TARGET_BASE = 16
+SAVE_TYPES: tuple[str, ...] = ("physical", "evasion", "mental", "luck")
+
+
+@dataclass(frozen=True)
+class Save:
+    """One resolved saving throw."""
+
+    kind: str
+    target: int
+    die: int
+    natural: bool
+
+    @property
+    def success(self) -> bool:
+        return (self.die >= self.target) if not self.natural else self.die == SAVE_DIE
+
+
+def save_target(
+    kind: str,
+    *,
+    level: int = 1,
+    modifiers: dict[str, int] | None = None,
+) -> int:
+    """``16 - level - the higher of the two listed attribute modifiers``; Luck has none.
+
+    The SRD subtracts *character level*, which is why an unlevelled character (level 1 here) has a
+    harder target than a veteran. The two modifiers are the category's own pair — Physical uses
+    Strength or Constitution, Evasion Dexterity or Intelligence, Mental Wisdom or Charisma.
+    """
+    key = _require_save(kind)
+    attrs = SAVE_ATTRIBUTES[key]
+    mods = modifiers or {}
+    best = max((int(mods.get(attr, 0)) for attr in attrs), default=0) if attrs else 0
+    return SAVE_TARGET_BASE - int(level) - best
+
+
+def roll_save(
+    kind: str,
+    *,
+    level: int = 1,
+    modifiers: dict[str, int] | None = None,
+    rng: Any = None,
+    die: int | None = None,
+) -> Save:
+    """Roll a save: a natural 1 always fails and a natural 20 always succeeds."""
+    key = _require_save(kind)
+    target = save_target(key, level=level, modifiers=modifiers)
+    source = rng if rng is not None else random.Random()
+    rolled = source.randint(1, SAVE_DIE) if die is None else int(die)
+    if not 1 <= rolled <= SAVE_DIE:
+        raise WnError(f"a save roll must be 1..{SAVE_DIE}, got {rolled}")
+    return Save(kind=key, target=target, die=rolled, natural=rolled in (1, SAVE_DIE))
+
+
+SAVE_ATTRIBUTES: dict[str, tuple[str, ...]] = {
+    "physical": ("STR", "CON"),
+    "evasion": ("DEX", "INT"),
+    "mental": ("WIS", "CHA"),
+    "luck": (),
+}
+
+
+def _require_save(kind: str) -> str:
+    key = str(kind).lower()
+    if key not in SAVE_TYPES:
+        raise WnError(f"unknown save type {kind!r}; expected one of {SAVE_TYPES}")
+    return key
+
+
+# --------------------------------------------------------------------------- #
+# Migration from the transitional 1d10 layer
+# --------------------------------------------------------------------------- #
+
+#: The six legacy STATs folded onto the family's six attributes. CYB and PSY have no attribute of
+#: their own: cybernetic and psychic capacity become skills, Edges and permissions (migration step M4).
+LEGACY_STAT_MAP: dict[str, str] = {
+    "FIT": "STR",
+    "REF": "DEX",
+    "INT": "INT",
+    "SOC": "CHA",
+    "CYB": "INT",
+    "PSY": "WIS",
+}
+
+
+def from_legacy_stat(value: int) -> int:
+    """Map a legacy 1..10 STAT onto a 3..18 attribute, preserving rank order (1 -> 3, 10 -> 18)."""
+    value = int(value)
+    if not 1 <= value <= 10:
+        raise WnError(f"a legacy STAT is 1..10, got {value}")
+    return ATTRIBUTE_MIN + round((value - 1) * (ATTRIBUTE_MAX - ATTRIBUTE_MIN) / 9)
+
+
+def from_legacy_skill(value: int) -> int:
+    """Map a legacy 1..10 skill rating onto a level 0..4 (1..2 -> 0, 3..4 -> 1, ... 9..10 -> 4)."""
+    value = int(value)
+    if not 1 <= value <= 10:
+        raise WnError(f"a legacy skill rating is 1..10, got {value}")
+    return min(4, (value - 1) // 2)

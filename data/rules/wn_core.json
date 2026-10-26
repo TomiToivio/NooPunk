@@ -72,16 +72,33 @@
     "aid_bonus_max": 1
   },
   "saves": {
-    "dice": "d20",
-    "base_target": 15,
+    "die": "d20",
+    "base_target": 16,
+    "formula": "d20 >= 16 - level - the highest of the two listed attribute modifiers",
+    "natural_one": "always fails",
+    "natural_twenty": "always succeeds",
     "categories": [
       "Physical",
       "Evasion",
       "Mental",
       "Luck"
     ],
-    "formula": "d20 >= 15 - best relevant attribute modifier",
-    "luck_target": 15
+    "attributes": {
+      "physical": [
+        "STR",
+        "CON"
+      ],
+      "evasion": [
+        "DEX",
+        "INT"
+      ],
+      "mental": [
+        "WIS",
+        "CHA"
+      ],
+      "luck": []
+    },
+    "_note": "CWN SRD 2.02. The earlier draft of this file had base 15 and no level term; both were wrong against the SRD and are corrected here. Luck carries no attribute modifiers."
   },
   "combat": {
     "attack": {
