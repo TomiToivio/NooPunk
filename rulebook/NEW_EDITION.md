@@ -36,7 +36,7 @@ Play as an individual investigating the impossible, or as a faction shaping the 
 
 Every NoöPunk character has six attributes. They describe *how a character approaches the world*, not predetermined character classes.
 
-**The base system is the *Without Number* shape** (author direction, 2026-10-26: *use CWN/SWN/AWN/WWN for everything; we will modify later*). The attributes are therefore the family's six, rated **3–18**, and they are used the way that family uses them:
+**The base system is the *Without Number* shape** — author direction, 2026-10-26: *use CWN/SWN/AWN/WWN for everything; we will modify later*. The attributes are therefore the family's six, rated **3–18**, used the way that family uses them:
 
 | Attribute | Modifier | What it describes |
 |---|---|---|
@@ -47,7 +47,9 @@ Every NoöPunk character has six attributes. They describe *how a character appr
 | **WIS** Wisdom | same bands | Noticing, judgement, reading a situation, intuition |
 | **CHA** Charisma | same bands | Commanding, charming, being taken seriously |
 
-Attributes work alongside **separately rated learned skills**, rated **level 0–4** (level-0 is basic competence, −1 when untrained). A check is `2d6 + attribute modifier + skill level ≥ difficulty`, with the difficulty ladder **6 · 8 · 10 · 12 · 14**; saving throws are `1d20 ≥ 16 − level − the higher of two listed attribute modifiers`. The values live in `data/rules/wn_core.json`, the implementation in `src/rules/wn.py`, and the full contract in [docs/rules/WN_BASE_SYSTEM.md](../docs/rules/WN_BASE_SYSTEM.md).
+Attributes work alongside **separately rated learned skills**, rated **level 0–4** — level-0 is basic competence, and a character without even level-0 takes **−1**. A check is `2d6 + attribute modifier + skill level ≥ difficulty`, on the ladder **6 · 8 · 10 · 12 · 14**, with situational modifiers of **−2 … +2** and aid worth at most **+1**. Saving throws are `1d20 ≥ 16 − level − the higher of the two listed attribute modifiers`, with a natural 1 always failing and a natural 20 always succeeding.
+
+The values live in [`data/rules/wn_core.json`](../data/rules/wn_core.json), the implementation in [`src/rules/wn_core.py`](../src/rules/wn_core.py), and the contract in [docs/rules/WN_BASE_SYSTEM.md](../docs/rules/WN_BASE_SYSTEM.md).
 
 The setting's earlier six attributes (**FIT / REF / INT / SOC / CYB / PSY**) are the *concepts* this sheet still describes — fitness, reflexes, intelligence, social presence, cybernetic affinity and psyche — and they survive as skills, Edges and fictional permissions rather than as attribute names. That migration is deliberately unfinished: its steps are listed as M1–M9 in the base-system document. Do not interpret **WIS** or **PSY** as automatically granting **PSI**: paranormal abilities require their own permissions.
 

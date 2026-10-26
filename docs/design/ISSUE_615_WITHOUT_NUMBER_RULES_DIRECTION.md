@@ -1,5 +1,7 @@
 # Without Number family: NoöPunk rules direction (#615)
 
+> **2026-10-26 UPDATE, author decision:** Initial rules for the NoöPunk RPG should use the standard **CWN/SWN/WWN/AWN** family chassis wholesale as the baseline, including the six STR/DEX/CON/INT/WIS/CHA attributes, 2d6 skill checks, d20 attacks/saves, skill levels, classes/Edges/Foci, advancement, equipment and other relevant procedures. Original NoöPunk customization is deferred until after that baseline is playable. This **supersedes** the earlier #566 decision to retain the 1d10/FIT/REF/INT/SOC/CYB/PSY legacy chassis **for the target RPG**, and resolves the former #615 non-regression policy *for new development*. Migration of existing legacy and crossover saves/code still requires explicit adapters and regression tests. New executable baseline begins in `src/rules/without_number.py`; this is an **initial partial implementation**, not yet a complete conversion of combat, classes, gear, scenarios or the crossover. The four environment toolkits continue to use one character sheet. The separate Fate crossover remains legacy until ported, not the target design. No protected source-book prose is imported.
+
 > **Status:** author-approved **design direction**, not a new executable engine, license choice, or permission to replace established rules. Implementation is tracked through [#564](https://github.com/TomiToivio/NooPunk/issues/564). The legacy RPG and crossover retain their distinct approved rules until separately migrated.
 
 ## Source priority and genre modules

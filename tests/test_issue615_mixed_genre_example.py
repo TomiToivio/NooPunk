@@ -1,19 +1,18 @@
-"""Issue #615 acceptance test: one sheet, one kernel, four environment types, no model.
+"""The mixed-genre example as a running artefact: one sheet, one kernel per run, four environments.
 
-Author direction (2026-10-26) makes the *Without Number* shape the base system, so the demo's **default**
-run must be `rules.wn` (2d6 + attribute modifier + skill level). The transitional 1d10 layer stays
-runnable with `--system legacy`, and both are asserted here so neither can drift silently.
+The base system (`src/rules/wn_core.py`) is the **default**; `--system legacy` keeps the transitional
+`1d10` layer runnable beside it. Both are asserted, so neither can drift silently.
 
-The claims are falsifiable, so they are falsified rather than asserted:
+What is proven here, rather than claimed:
 
-* the demo runs **offline** (an audit hook in the child refuses sockets and resolvers),
-* it is **deterministic** (same seed => byte-identical transcript),
-* it uses **one kernel per run** (every check line's arithmetic is reproduced exactly),
-* it uses **one sheet** (one sheet line, unchanged at the end),
-* it covers **four environment types** (cyberpunk, crisis ruins, NHI outpost, noetic realm),
-* it respects the **shared action clock** (never more than three AP in one exchange).
+* the demo runs **offline** — an audit hook in the child refuses sockets and resolvers;
+* it is **deterministic** — the same seed replays byte for byte, a different seed moves the dice;
+* it uses **one kernel per run** — every check line's arithmetic is recomputed exactly;
+* it uses **one sheet** — one sheet line, unchanged at the end;
+* it covers **four environment types** — cyberpunk, crisis ruins, NHI outpost, noetic realm;
+* it respects the **shared action clock** — never more than three AP in an exchange.
 
-Code-only, per `AGENTS.md` and issue #271: what is tested is the running artefact, not the prose.
+Code-only, per `AGENTS.md` and issue #271: the running artefact, not the prose.
 """
 from __future__ import annotations
 
@@ -28,8 +27,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "scripts" / "mixed_genre_demo.py"
 
-#: The same audit-hook blocker the playthrough harness uses; a demo that reached for a model or a
-#: resolver would raise instead of producing a transcript.
 _NETWORK_BLOCKER = '''\
 """Refuse every outbound network call in the mixed-genre demo."""
 import sys
@@ -99,7 +96,8 @@ class MixedGenreExampleTests(unittest.TestCase):
     def test_the_same_seed_replays_byte_for_byte(self) -> None:
         for system in ("wn", "legacy"):
             with self.subTest(system=system):
-                first, second = self._run(615, "--system", system), self._run(615, "--system", system)
+                first = self._run(615, "--system", system)
+                second = self._run(615, "--system", system)
                 self.assertEqual(first.stdout, second.stdout)
                 self.assertNotEqual(first.stdout, self._run(616, "--system", system).stdout,
                                     "the seed must reach the dice")

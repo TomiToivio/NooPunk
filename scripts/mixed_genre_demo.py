@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
-"""One character sheet, one base system, four environment types — the #615 mixed-genre example.
+"""One sheet, one base system, four environment types — the #615 mixed-genre example.
 
-Author direction (2026-10-26): *"For beginning, use CWN/SWN/AWN/WWN system for everything. Make the
-stats, skills, all rules based on them. We will modify later."* So the **default** here is the base
-system (`rules.wn`: 2d6 + attribute modifier + skill level), and `--system legacy` runs the same sheet
-through the transitional `1d10` layer (`rules.core`) so the difference is visible side by side.
+The base system is the *Without Number* shape (`src/rules/wn_core.py`, canon `data/rules/wn_core.json`);
+`--system legacy` runs the same sheet through the transitional `1d10` layer (`src/rules/core.py`) so
+the difference is visible side by side.
 
-What stays constant across all four scenes, in both systems:
+Constant across all four scenes, in both systems:
 
 * **one sheet** — printed before the first scene, unchanged after the last;
-* **one grammar** — every outcome comes from a single kernel call, never a second dice convention;
-* **the four modules** contribute procedure only: a network route, a local scarcity track, a contact
-  exchange, a realm's navigation DV.
+* **one kernel per run** — every outcome is one call, never a second dice convention;
+* **the four modules contribute procedure only**: a network route, a local scarcity track, a contact
+  exchange, a realm's navigation difficulty.
 
 Deterministic under `--seed`, offline, no model.
 
@@ -36,16 +35,15 @@ from src.rules import cross_domain_state as cds  # noqa: E402
 from src.rules import noospace_projection as nsp  # noqa: E402
 from src.rules import noopunk_social_extensions as social  # noqa: E402
 from src.rules import ubiquitous_network as un  # noqa: E402
-from src.rules import wn  # noqa: E402
+from src.rules import wn_core as wn  # noqa: E402
 
 CANON_SKILLS = {
     entry["name"]: entry["stat"]
     for entry in json.loads((ROOT / "data" / "rules" / "skills.json").read_text(encoding="utf-8"))["skills"]
 }
 
-#: The one sheet, written in the legacy vocabulary and converted to the base system on the fly, so the
-#: demonstration shows the *migration* as well as the play. 1..10 -> 3..18 attributes, 1..10 -> 0..4
-#: skill levels, via `rules.wn`.
+#: One sheet, written in the legacy vocabulary and converted on the fly, so the demonstration shows the
+#: migration as well as the play: 1..10 -> 3..18 attributes, 1..10 -> 0..4 skill levels.
 SHEET: dict[str, Any] = {
     "name": "Vera Kallio",
     "role": "UNSA field analyst, seconded to the Noetic Office",
@@ -72,7 +70,6 @@ class Scene:
         self.ap += cost
 
     def check(self, skill: str, dv: int, *, cost: int = 1) -> bool:
-        """Resolve one check on the selected kernel; returns success."""
         self._spend(cost)
         self.checks += 1
         legacy_stat = CANON_SKILLS[skill]
@@ -90,8 +87,8 @@ class Scene:
         code = wn.LEGACY_STAT_MAP[legacy_stat]
         score = wn.from_legacy_stat(SHEET["stats"][legacy_stat])
         level = wn.from_legacy_skill(SHEET["skills"][skill])
-        result = wn.resolve_skill_check(attribute=code, score=score, skill_level=level,
-                                        difficulty=dv, rng=self.rng)
+        result = wn.skill_check(attribute_score=score, skill_level=level, difficulty=dv,
+                                rng=self.rng)
         dice = ",".join(str(d) for d in result.dice)
         print(f"    check  {code} {score}({result.attribute_modifier:+d}) + {skill} {level}"
               f" + 2d6({dice}) = {result.total} vs DV {dv}"
@@ -150,7 +147,7 @@ def scene_noetic_realm(scene: Scene, dvs: dict[str, int]) -> None:
     print("\nSCENE 4 — the shallows of the noetic realm (WWN module: interdimensional)")
     here = nsp.shift_region(nsp.Region.NEAR, nsp.Direction.DEEPER, steps=2)
     realm_dv = nsp.navigation_dv(region=here, resonance=0.5)
-    scale = (f" -> base-system difficulty {dvs['esp']}" if scene.system == "wn" else "")
+    scale = f" -> base-system difficulty {dvs['esp']}" if scene.system == "wn" else ""
     print(f"    realm  shifted to {here.value}; the realm's navigation DV {realm_dv}"
           f" at resonance 0.50{scale} (the realm sets the difficulty, not the character's comfort)")
     scene.check("ESP", dvs["esp"])
@@ -163,17 +160,18 @@ def main(argv: list[str] | None = None) -> int:
                         help="wn = the base system (default); legacy = the transitional 1d10 layer")
     args = parser.parse_args(argv)
 
-    # The two systems have different ladders, so the same scene is priced on each system's own scale.
+    # The two systems have different ladders, so each scene is priced on its own system's scale.
     dvs = ({"intrusion": 10, "survival": 8, "perceive": 10, "esp": 12} if args.system == "wn"
            else {"intrusion": 13, "survival": 13, "perceive": 15, "esp": 20})
-    kernel = f"{wn.CHECK_DICE} + attribute modifier + skill level" if args.system == "wn" else core.CHECK_DICE
+    kernel = (f"{wn.SKILL_CHECK_DICE}d{wn.SKILL_CHECK_FACES} + attribute modifier + skill level"
+              if args.system == "wn" else core.CHECK_DICE)
 
     print(f"NoöPunk mixed-genre example — system {args.system}, seed {args.seed}")
     print("sheet  " + json.dumps(SHEET, ensure_ascii=False, sort_keys=True))
     if args.system == "wn":
         converted = {code: wn.from_legacy_stat(SHEET["stats"][legacy])
                      for legacy, code in wn.LEGACY_STAT_MAP.items()}
-        print("attrs  " + json.dumps(converted, sort_keys=True) + f"  (base system {wn.REVISION})")
+        print("attrs  " + json.dumps(converted, sort_keys=True) + "  (base system wn_core)")
 
     scene = Scene(random.Random(args.seed), args.system)
     for run in (scene_helsinki, scene_exclusion_zone, scene_alien_outpost, scene_noetic_realm):
