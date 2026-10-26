@@ -4195,6 +4195,9 @@ the single correct ideology.
 
 ##### Other non-fiction source families
 
+- **Edward W. Kamen & Roger D. Kamen — _The Human Soul as a Manifestation of Quantum-Like Fields_ (2025; [OSF preprint, version 5](https://osf.io/preprints/osf/x93mz_v5)).** **Non-fiction speculative hypothesis, not established science.** Proposes hypothetical quantum-like or quasi-fields associated with consciousness and possible coupling to neural electromagnetic activity. **NoöPunk role:** inspiration for competing scientific models of Psyche/Noöspace, natural PSI, psychotronic instrumentation and experimental BCI diagnostics, especially psychiatric investigations where ordinary explanations must be tested first. **Epistemic caution:** no verified evidence of such soul fields, photon-mediated communication with them, or survival of consciousness follows from this proposal; do not treat it as real-world proof of the setting's ontology.
+
+
 The bibliography should continue to grow across the source families already used by the
 rulebook, including:
 
