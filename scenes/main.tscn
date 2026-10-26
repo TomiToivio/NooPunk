@@ -1,6 +1,9 @@
-[gd_scene format=3]
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://godot/ui/main_menu.gd" id="1_menu"]
 
 [node name="Main" type="Control"]
+script = ExtResource("1_menu")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

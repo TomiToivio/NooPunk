@@ -1,0 +1,48 @@
+name: godot slice
+
+# The first playable slice (#631). Godot is pinned: the project is authored against 4.7.2-stable and the
+# workflow downloads exactly that build, so "runs on a clean checkout" is a claim CI checks rather than a
+# claim in a README.
+
+on:
+  push:
+    paths:
+      - "godot/**"
+      - "project.godot"
+      - "scenes/**"
+      - "data/rules/wn_core.json"
+      - ".github/workflows/godot.yml"
+  pull_request:
+    paths:
+      - "godot/**"
+      - "project.godot"
+      - "scenes/**"
+      - "data/rules/wn_core.json"
+      - ".github/workflows/godot.yml"
+
+jobs:
+  slice:
+    runs-on: ubuntu-latest
+    env:
+      GODOT_VERSION: "4.7.2"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch Godot ${{ env.GODOT_VERSION }}
+        run: |
+          set -euo pipefail
+          curl -sSLo godot.zip \
+            "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
+          unzip -q godot.zip
+          mv "Godot_v${GODOT_VERSION}-stable_linux.x86_64" godot
+          chmod +x godot
+          ./godot --version
+
+      - name: Import the project (headless)
+        run: ./godot --headless --path . --import
+
+      - name: Rules, state, dialogue and scenario-data suites
+        run: ./godot --headless --path . --script res://godot/tests/run_tests.gd
+
+      - name: Headless playthrough of the assembled level
+        run: ./godot --headless --path . res://godot/tests/playthrough.tscn --quit-after 300

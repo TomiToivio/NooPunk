@@ -1,0 +1,62 @@
+{
+  "_note": "Scenario-local data for the first playable slice (#631). Data, not rules: the rules kernel is read from res://data/rules/wn_core.json via godot/core/rules_adapter.gd.",
+  "id": "lakkahaltia",
+  "title": "Etsivä Romppainen ja Lakkahaltian Salaisuus",
+  "subtitle": "A ward, a sealed annex, and a place nobody published",
+  "player_sheet": {
+    "name": "Dr. Harri S. Romppainen",
+    "role": "Investigator, anomalous-psychology unit",
+    "level": 3,
+    "attributes": {
+      "STR": 8,
+      "DEX": 10,
+      "CON": 10,
+      "INT": 14,
+      "WIS": 16,
+      "CHA": 12
+    },
+    "skills": {
+      "Psychology": 3,
+      "Notice": 2,
+      "Talk": 2,
+      "Investigate": 1,
+      "Administer": 1
+    },
+    "_skill_names_note": "Scenario-local labels. The canonical skill vocabulary is settled on the tabletop side (#615); renaming them here needs no code change."
+  },
+  "opening_objective": "Interview the ward staff, then the patient. Consent before questions.",
+  "objectives": [
+    {
+      "id": "obj_interviews",
+      "text": "Interview the doctor, the nurse and the patient.",
+      "requires_evidence": ["E1", "E3", "E2"]
+    },
+    {
+      "id": "obj_annex",
+      "text": "Find out why the patient's file is sealed by a research ethics board.",
+      "requires_evidence": ["E4"]
+    },
+    {
+      "id": "obj_reading",
+      "text": "Decide what the account is: a shared ward story, misconduct — or something anchored to a place.",
+      "requires_evidence": ["E4"]
+    }
+  ],
+  "endings": [
+    {
+      "id": "mundane",
+      "title": "Filed as an ethics breach",
+      "requires_flags": ["annex_seen"],
+      "forbids_flags": [],
+      "text": "The cluster is ward culture plus a resealed trial and a real consent failure. Nobody is helped today, but nothing false is written down either. The report names no anomaly."
+    },
+    {
+      "id": "anomalous",
+      "title": "Referred, not resolved",
+      "requires_flags": ["annex_seen"],
+      "forbids_flags": [],
+      "requires_any_flags": ["account_interpreted", "place_anchored"],
+      "text": "The account is anchored to a place the study never published, and the file shows the trial knew. The case goes to the referral partner with the anomaly stated as an open question, never as a finding."
+    }
+  ]
+}

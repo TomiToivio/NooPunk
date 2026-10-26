@@ -1,0 +1,20 @@
+{
+  "_note": "Level layout for the slice, consumed by godot/scenes/level_builder.gd. Metres. Rooms are axis-aligned boxes; props and NPCs are placed by name so the scene can be re-arranged without touching GDScript.",
+  "spawn": { "position": [0.0, 1.0, 6.5], "yaw_degrees": 180.0 },
+  "rooms": [
+    { "id": "lobby", "center": [0.0, 1.5, 4.0], "size": [9.0, 3.0, 6.0], "floor_color": [0.16, 0.17, 0.19] },
+    { "id": "corridor", "center": [0.0, 1.5, -1.0], "size": [3.0, 3.0, 5.0], "floor_color": [0.14, 0.15, 0.16] },
+    { "id": "reception", "center": [-4.0, 1.5, -1.0], "size": [5.0, 3.0, 5.0], "floor_color": [0.18, 0.17, 0.15] },
+    { "id": "consultation", "center": [4.0, 1.5, -1.0], "size": [5.0, 3.0, 5.0], "floor_color": [0.19, 0.18, 0.20] }
+  ],
+  "props": [
+    { "id": "reception_terminal", "room": "reception", "position": [-4.0, 1.0, -2.2], "size": [1.2, 1.0, 0.6], "label": "Reception terminal", "interaction": "terminal" },
+    { "id": "records_cabinet", "room": "reception", "position": [-5.8, 1.1, -0.2], "size": [0.8, 1.4, 0.6], "label": "Records cabinet", "interaction": "records" },
+    { "id": "consultation_desk", "room": "consultation", "position": [4.0, 0.9, -2.0], "size": [1.6, 0.9, 0.9], "label": "Consultation desk", "interaction": "drawing" }
+  ],
+  "npcs": [
+    { "id": "doctor", "name": "Dr. Laine", "room": "corridor", "position": [0.0, 0.0, -2.4], "color": [0.55, 0.62, 0.70] },
+    { "id": "nurse", "name": "Nurse Aho", "room": "corridor", "position": [-1.0, 0.0, 0.4], "color": [0.42, 0.58, 0.52] },
+    { "id": "patient", "name": "Patient Korhonen", "room": "consultation", "position": [5.0, 0.0, 0.4], "color": [0.62, 0.52, 0.46] }
+  ]
+}
