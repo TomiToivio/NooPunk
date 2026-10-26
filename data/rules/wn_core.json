@@ -1,0 +1,70 @@
+{
+  "_note": "NoöPunk base system, revision wn-2d6-cwn. Author direction 2026-10-26: 'For beginning, use CWN/SWN/AWN/WWN system for everything. Make the stats, skills, all rules based on them. We will modify later.' These values are the CWN SRD (CC0) facts written as data: six attributes 3-18 with the modifier band, skills level-0..4 with -1 untrained, skill checks 2d6 + attribute modifier + skill level vs a 6/8/10/12/14 ladder, and 1d20 saving throws with a 16-minus-level-minus-modifier target. The implementation in src/rules/wn.py is original expression over these facts; the SRD wording is not reproduced.",
+  "_source_of_truth": "Cities Without Number System Reference Document v1.0 (CC0) sections 1.01 Attributes, 1.02 Skills, 2.02 Saving Throws, 2.03 Skill Checks. Verified 2026-10-26 against the published SRD. Stars Without Number and Ashes Without Number share the shape; no text from them is used because no SRD licence is established for either.",
+  "_canon_revision": "wn-2d6-cwn",
+  "_status": "base system for new play; the legacy 1d10 layer is transitional (see docs/rules/WN_BASE_SYSTEM.md)",
+  "attributes": {
+    "min": 3,
+    "max": 18,
+    "list": ["STR", "DEX", "CON", "INT", "WIS", "CHA"],
+    "names": {
+      "STR": "Strength",
+      "DEX": "Dexterity",
+      "CON": "Constitution",
+      "INT": "Intelligence",
+      "WIS": "Wisdom",
+      "CHA": "Charisma"
+    },
+    "modifier_bands": [
+      {"low": 3, "high": 3, "modifier": -2},
+      {"low": 4, "high": 7, "modifier": -1},
+      {"low": 8, "high": 13, "modifier": 0},
+      {"low": 14, "high": 17, "modifier": 1},
+      {"low": 18, "high": 18, "modifier": 2}
+    ],
+    "modifier_floor": -2,
+    "modifier_ceiling": 2,
+    "generation": {
+      "method": "3d6 in order, one score may be replaced with 14 before final touches",
+      "substitution": 14,
+      "array": [14, 12, 11, 10, 9, 7],
+      "array_note": "an array may be assigned freely, but then no 14 substitution is allowed"
+    }
+  },
+  "skills": {
+    "min": 0,
+    "max": 4,
+    "untrained_penalty": -1,
+    "_note": "level-0 is basic competence; the first pick makes a skill level-0. Starting characters cannot exceed level-1."
+  },
+  "skill_check": {
+    "dice": "2d6",
+    "dice_count": 2,
+    "dice_sides": 6,
+    "formula": "2d6 + attribute modifier + skill level",
+    "success": "total >= difficulty",
+    "failure": "an outright failure, bad luck, or success at a cost the referee names"
+  },
+  "difficulties": {
+    "6": "simple; anything easier is not worth a check",
+    "8": "a significant challenge to a competent professional",
+    "10": "skilled-expert work; even an expert may fail",
+    "12": "a true master's task",
+    "14": "only a true master has any chance"
+  },
+  "situational_modifier_band": {"min": -2, "max": 2},
+  "aid_bonus": {"max": 1, "_note": "an aider checks against the same difficulty; failure costs nothing"},
+  "saves": {
+    "die": "1d20",
+    "target_base": 16,
+    "formula": "16 - level - the highest of the two listed attribute modifiers",
+    "natural_one": "always fails",
+    "natural_twenty": "always succeeds",
+    "types": {
+      "physical": {"attributes": ["STR", "CON"], "resists": "exhaustion, poison, disease, bodily affliction"},
+      "evasion": {"attributes": ["DEX", "INT"], "resists": "explosions, traps, sudden peril"},
+      "mental": {"attributes": ["WIS", "CHA"], "resists": "cyberware intrusion, psychotropic influence, psychological trauma"},
+      "luck": {"attributes": [], "resists": "pure chance and misadventure", "_note": "no attribute modifiers; target is 16 - level"}
+    }
+  }
+}

@@ -1,7 +1,14 @@
 """Shared NoöPunk rules.
 
-NoöPunk is an independent system. Core resolution is STAT + Skill + 1d10 vs DV.
+The **base system** is the *Without Number* shape (author direction 2026-10-26): six attributes 3..18,
+skills level 0..4, `2d6 + attribute modifier + skill level >= difficulty`, 1d20 saves. It lives in
+:mod:`rules.wn`, driven by `data/rules/wn_core.json`.
+
+:mod:`rules.core` (`STAT + Skill + 1d10`) is the **transitional** legacy layer: it still runs the
+legacy game while the layers that consume it are migrated. New play should use :mod:`rules.wn`.
 """
+
+from . import wn
 
 # Retired compatibility surface (see the module docstring). Kept only so callers
 # mid-migration keep importing; it is not canonical mechanics.
