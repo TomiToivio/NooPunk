@@ -13,10 +13,10 @@ func run() -> Array:
 
 	var opening: Dictionary = runner.start("doctor_1")
 	rows.append(_eq("doctor opens", String(opening.get("speaker", "")), "Dr. Laine"))
-	rows.append(_eq("doctor offers three choices", runner.choices().size(), 3))
+	rows.append(_eq("doctor offers four entry choices", runner.choices().size(), 4))
 
 	# The consent path: a flag, no dice, and the conversation closes.
-	var closing: Dictionary = runner.choose(2)
+	var closing: Dictionary = runner.choose(3)
 	rows.append(_eq("safeguarding flag set", state.has_flag("safeguarding_first"), true))
 	rows.append(_eq("the consent line closes on its own node", String(closing.get("id", "")), "doctor_end"))
 	rows.append(_eq("that node offers no further choices", runner.choices().size(), 0))
@@ -40,12 +40,37 @@ func run() -> Array:
 	var patient_runner = RunnerScript.new(patient.dialogue_nodes, patient)
 	patient_runner.start("patient_1")
 	patient_runner.choose(0) # consent
-	var body: Dictionary = patient_runner.choose(1) # "is the place somewhere you have been"
+	var body: Dictionary = patient_runner.choose(2) # "is the place somewhere you have been"
 	rows.append(_eq("the drawing is recorded", patient.has_evidence("E2"), true))
 	rows.append(_eq("the place node follows", String(body.get("id", "")), "patient_place"))
 
 	# A choice index that does not exist is a no-op rather than a crash.
 	rows.append(_eq("out-of-range choice is empty", runner.choose(99).is_empty(), true))
+
+	# The psionic path (#C4): the training gate runs *before* the dice, so an untaught character
+	# takes the failure branch without a roll and without spending Effort.
+	var psychic = GameStateScript.new()
+	psychic.new_case(31)
+	var psychic_runner = RunnerScript.new(psychic.dialogue_nodes, psychic)
+	psychic_runner.start("patient_1")
+	psychic_runner.choose(0) # consent
+	var psi_node: Dictionary = psychic_runner.choose(1) # Surface Read
+	rows.append(_eq("Effort maximum comes from the sheet's psionics block", psychic.effort_maximum(), 3))
+	rows.append(_eq("a core technique commits no Effort", psychic.effort_committed(), 0))
+	rows.append(_eq("a trained reading reaches the psi node or the plain one",
+		["patient_psi", "patient_plain"].has(String(psi_node.get("id", ""))), true))
+
+	var untaught = GameStateScript.new()
+	untaught.new_case(31)
+	untaught.psi_disciplines = {}
+	var untaught_runner = RunnerScript.new(untaught.dialogue_nodes, untaught)
+	untaught_runner.start("patient_1")
+	untaught_runner.choose(0)
+	var refused: Dictionary = untaught_runner.choose(1)
+	rows.append(_eq("an untaught technique takes the failure branch",
+		String(refused.get("id", "")), "patient_plain"))
+	rows.append(_eq("and the journal says why",
+		untaught.journal.any(func(line): return String(line).contains("not available")), true))
 
 	return rows
 

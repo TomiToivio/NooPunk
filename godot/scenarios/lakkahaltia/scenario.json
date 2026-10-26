@@ -1,8 +1,24 @@
 {
-  "_note": "Scenario-local data for the first playable slice (#631). Data, not rules: the rules kernel is read from res://data/rules/wn_core.json via godot/core/rules_adapter.gd.",
+  "_note": "Scenario-local data for the first playable slice (#631). Data, not rules: every number the engine resolves is read from res://data/rules/wn_core.json (the CWN contract) through godot/core/rules_adapter.gd, and psionics from res://data/rules/psionics_techniques.json through godot/core/psionics.gd. The sheet below is a CWN operator stat line, per rulebook/WITHOUT_NUMBER_BASELINE.md.",
   "id": "lakkahaltia",
   "title": "Etsivä Romppainen ja Lakkahaltian Salaisuus",
   "subtitle": "A ward, a sealed annex, and a place nobody published",
+  "rules_profile": {
+    "chassis": "cwn",
+    "contract": "res://data/rules/wn_core.json",
+    "psionics": "res://data/rules/psionics_techniques.json",
+    "uses": [
+      "attributes",
+      "skill_checks",
+      "saves",
+      "attack_rolls",
+      "damage_shock_trauma",
+      "system_strain",
+      "cyberware",
+      "hacking",
+      "psionics"
+    ]
+  },
   "player_sheet": {
     "name": "Dr. Harri S. Romppainen",
     "role": "Investigator, anomalous-psychology unit",
@@ -16,13 +32,84 @@
       "CHA": 12
     },
     "skills": {
-      "Psychology": 3,
+      "Know": 2,
       "Notice": 2,
       "Talk": 2,
-      "Investigate": 1,
-      "Administer": 1
+      "Administer": 1,
+      "Heal": 1,
+      "Program": 1,
+      "Telepathy": 1
     },
-    "_skill_names_note": "Scenario-local labels. The canonical skill vocabulary is settled on the tabletop side (#615); renaming them here needs no code change."
+    "hit_points": 14,
+    "max_hit_points": 14,
+    "attack_bonus": 1,
+    "armor_class": {
+      "melee": 13,
+      "ranged": 15,
+      "damage_soak": 5,
+      "trauma_target_mod": 1,
+      "source": "reinforced longcoat"
+    },
+    "saves": {
+      "physical": 13,
+      "evasion": 13,
+      "mental": 12,
+      "luck": 13
+    },
+    "system_strain": {
+      "maximum": 10,
+      "permanent": 1.0,
+      "current": 1.0
+    },
+    "cyberware": [
+      {
+        "id": "cybereyes",
+        "label": "Paired cybereyes",
+        "system_strain": 0.5,
+        "maintenance_percent": 5
+      },
+      {
+        "id": "cranial_jack",
+        "label": "Cranial jack (deck link)",
+        "system_strain": 0.5,
+        "maintenance_percent": 5
+      }
+    ],
+    "weapons": [
+      {
+        "id": "light_pistol",
+        "label": "Light pistol",
+        "damage_count": 1,
+        "damage_sides": 6,
+        "damage_bonus": 0,
+        "attribute": "DEX",
+        "shock": 0,
+        "shock_ac": -1,
+        "trauma_die": 8,
+        "trauma_rating": 2
+      },
+      {
+        "id": "knife",
+        "label": "Knife",
+        "damage_count": 1,
+        "damage_sides": 4,
+        "damage_bonus": 0,
+        "attribute": "STR",
+        "shock": 1,
+        "shock_ac": 15,
+        "trauma_die": 6,
+        "trauma_rating": 3
+      }
+    ],
+    "psionics": {
+      "disciplines": {
+        "Telepathy": 1
+      },
+      "effort_maximum": 3,
+      "known_techniques": ["surface_read", "thread"],
+      "_note": "Effort maximum follows the SWN shape adopted in the baseline: 1 + the better of WIS/CON + the highest psionic skill."
+    },
+    "_skill_names_note": "CWN skill vocabulary. The retired scenario-local labels (Investigate, Psychology) map to Know and are not used by any check."
   },
   "opening_objective": "Interview the ward staff, then the patient. Consent before questions.",
   "objectives": [

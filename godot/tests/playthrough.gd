@@ -53,8 +53,8 @@ func _process(_delta: float) -> void:
 			_check("talking to the doctor opens his node",
 				String(runner.get("current_id")) == "doctor_1", String(runner.get("current_id")))
 		8:
-			# Choice 2 is the consent line: no dice, a flag, and a closing node.
-			_scene.call("_on_dialogue_choice", 2)
+			# Choice 3 is the consent line: no dice, a flag, and a closing node.
+			_scene.call("_on_dialogue_choice", 3)
 		9:
 			_check("consent recorded", GameState.has_flag("safeguarding_first"), "flag missing")
 		10:

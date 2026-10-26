@@ -1,7 +1,12 @@
 {
-  "_note": "Machine-readable contract for the Without Number core. Author direction 2026-10-26: use the CWN/SWN/AWN/WWN system for everything; stats, skills and all rules based on them. Implementation: src/rules/wn_core.py; ruling: docs/design/RULING_2026-10-26_WN_BASELINE.md.",
-  "_source_of_truth": "data/rules/wn_core.json is the contract; src/rules/wn_core.py is the kernel; tests/test_wn_core_contract.py asserts they agree.",
-  "_canon_revision": "issue-615-wn-baseline-2026-10-26",
+  "_note": "Machine-readable contract for the Without Number core. Author direction 2026-10-26: use the CWN/SWN/AWN/WWN system for everything; stats, skills and all rules based on them. Implementation: src/rules/wn_core.py; ruling: docs/design/RULING_2026-10-26_WN_BASELINE.md; conversion record: docs/rules/CWN_CONVERSION.md.",
+  "_source_of_truth": "data/rules/wn_core.json is the contract; src/rules/wn_core.py is the kernel; tests/test_wn_core_contract.py and tests/test_cwn_procedures.py assert they agree.",
+  "_canon_revision": "cwn-core-conversion-2026-10-26",
+  "_sources": {
+    "chassis": "Cities Without Number SRD (CC0) - cwn.quadrifons.com",
+    "effort_shape": "Worlds Without Number SRD (CC0)",
+    "psionics_shape": "Stars Without Number Revised (mechanics re-expressed; no text or tables copied - see docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md)"
+  },
   "system_identity": {
     "family": "Without Number",
     "primary": "Cities Without Number",
@@ -50,8 +55,39 @@
       3,
       4
     ],
+    "list": [
+      "Administer",
+      "Connect",
+      "Drive",
+      "Exert",
+      "Fix",
+      "Heal",
+      "Know",
+      "Lead",
+      "Notice",
+      "Perform",
+      "Program",
+      "Punch",
+      "Shoot",
+      "Sneak",
+      "Stab",
+      "Survive",
+      "Talk",
+      "Trade",
+      "Work"
+    ],
+    "psionic_skills": [
+      "Biopsionics",
+      "Metapsionics",
+      "Precognition",
+      "Telekinesis",
+      "Telepathy",
+      "Teleportation"
+    ],
     "untrained_modifier": -1,
-    "untrained_is_numbered_level": false
+    "untrained_attack_modifier": -2,
+    "untrained_is_numbered_level": false,
+    "attribute_binding": "none: the attribute is chosen per action, never fixed per skill"
   },
   "skill_check": {
     "dice": "2d6",
@@ -98,13 +134,438 @@
       ],
       "luck": []
     },
-    "_note": "CWN SRD 2.02. The earlier draft of this file had base 15 and no level term; both were wrong against the SRD and are corrected here. Luck carries no attribute modifiers."
+    "_note": "CWN SRD 2.02 and 1.8.x. The earlier draft of this file had base 15 and no level term; both were wrong against the SRD and are corrected here. Luck carries no attribute modifiers. At level 1 the target is 15, which is the number the advancement chapter quotes."
   },
   "combat": {
     "attack": {
       "dice": "d20",
-      "formula": "d20 + attack bonus vs AC",
-      "success": "total >= AC"
+      "formula": "d20 + attack bonus + attribute modifier + combat skill level",
+      "success": "total >= the relevant Melee or Ranged Armor Class",
+      "unskilled_penalty": -2,
+      "natural_one": "always misses",
+      "natural_twenty": "always hits",
+      "attribute_choice": "a weapon listing two attributes uses whichever modifier is better"
+    },
+    "armor_class": {
+      "kinds": [
+        "Melee",
+        "Ranged"
+      ],
+      "formula": "armor's base AC for that kind + the wearer's DEX modifier",
+      "note": "a target may have two different ACs; the attack kind decides which one applies"
+    },
+    "damage": {
+      "formula": "weapon damage dice + the weapon's attribute modifier",
+      "unarmed_skill_to_damage": "Punch adds to a purely unarmed attack, never to artificial weaponry using Punch",
+      "soak": {
+        "applies": "before hit points",
+        "ablation": "depleted for the rest of the fight",
+        "refresh": "after combat"
+      }
+    },
+    "shock": {
+      "applies": "on a missed melee attack",
+      "condition": "target melee AC <= the weapon's Shock AC rating, or the rating is unlimited",
+      "unlimited_marker": "-",
+      "adds": [
+        "wielder's relevant attribute modifier",
+        "bonuses that explicitly add to Shock"
+      ],
+      "cannot_cause": "a Traumatic Hit",
+      "floor": "a hit can never do less damage than the Shock the same weapon would have inflicted on a miss"
+    },
+    "trauma": {
+      "die": "weapon Trauma Die",
+      "default_target": 6,
+      "formula": "if Trauma Die roll >= target Trauma Target then the hit's total damage is multiplied by the weapon's Trauma Rating",
+      "target_modifiers": "armor, cyber and abilities may raise the Trauma Target",
+      "non_lethal": "non-lethal attacks do not roll the Trauma Die",
+      "dice": [
+        "1d6",
+        "1d8",
+        "1d10",
+        "1d12"
+      ]
+    },
+    "actions": {
+      "types": [
+        "Main",
+        "Move",
+        "On Turn",
+        "Instant"
+      ],
+      "main_per_round": 1,
+      "move_per_round": 1,
+      "move_as_main": "a character may spend the Main action to take a second Move action",
+      "on_turn_per_round": "as many as the referee finds plausible",
+      "instant_per_round": "as many as the referee finds plausible",
+      "movement_meters": 10
+    },
+    "initiative": {
+      "die": "1d8",
+      "group": "1d8 + the side's best DEX modifier",
+      "individual": "1d8 + own DEX modifier",
+      "ties": "PC side wins",
+      "reroll": "not re-rolled during a fight",
+      "surprise": "a wholly unaware side can lose a free round before initiative"
+    },
+    "mortal_injury": {
+      "trigger": "reduced to 0 hit points by a lethal attack",
+      "rounds_until_death": 6,
+      "stabilize": {
+        "action": "Main",
+        "check": "DEX/Heal or INT/Heal",
+        "difficulty": "8 + full rounds since the target fell",
+        "no_tools_penalty": 2,
+        "attempts": "one ally per round; may be retried each round"
+      },
+      "recovery_minutes": 10,
+      "recovery_hit_points": 1,
+      "frail": {
+        "removal": "a week of bed rest with medical care",
+        "field_attempt": "DEX/Heal or INT/Heal difficulty 10 with a medkit and an hour",
+        "while_frail": "dropping to 0 hit points again is instant death"
+      },
+      "non_lethal": "0 hit points from non-lethal damage is incapacitation for ten minutes, then 1 hit point, and no Frail",
+      "npc": "unnamed NPCs die at 0 hit points"
+    },
+    "major_injury": {
+      "trigger": "reduced to 0 hit points by lethal damage in the same scene as a Traumatic Hit",
+      "save": "Physical",
+      "on_success": "Mortally Wounded but stabilizable and recoverable",
+      "on_failure": "roll the Major Injury die",
+      "die": "d12",
+      "roll_clamp": [
+        1,
+        12
+      ],
+      "table": {
+        "1": "instant_death",
+        "2": "internal_damage",
+        "3": "brain_damage",
+        "4": "eye_damage",
+        "5": "gut_wound",
+        "6": "right_leg_ruined",
+        "7": "left_leg_ruined",
+        "8": "right_arm_ruined",
+        "9": "left_arm_ruined",
+        "10": "system_damage",
+        "11": "flesh_wound",
+        "12": "flesh_wound"
+      },
+      "cyberware_damage": "cyber in the ruined location is disabled until repaired (Fix-0 and Heal-0, one day per system, 20% of cost in parts)"
+    }
+  },
+  "strain": {
+    "name": "System Strain",
+    "maximum": "CON score",
+    "starts_at": 0,
+    "permanent": "cyberware installation adds its System Strain as permanent Strain",
+    "cannot_exceed": true,
+    "over_maximum": "an unavoidable effect that forces the total over the maximum knocks the character unconscious for at least an hour",
+    "blocks": "an activation or drug that would exceed the maximum cannot be used",
+    "recovery": "one point is lost after each night's rest with eight uninterrupted hours"
+  },
+  "healing": {
+    "first_aid": {
+      "time_minutes": 1,
+      "dice": "1d6",
+      "adds_skill": "Heal",
+      "untrained": "1d6-1",
+      "strain_cost": 1,
+      "frail": "restores hit points but never removes Frailty"
+    },
+    "natural_healing": {
+      "per_night": "character level",
+      "npc": "hit dice",
+      "requires": "warm, fed and comfortable",
+      "frail": "no natural healing until Frailty is cured"
+    },
+    "frail_removal": {
+      "minimum_care": "Heal-0 and a medkit",
+      "bed_rest_days": 7,
+      "without_care": "a Physical save after a week; failure is death within the week, success loses Frailty after another month"
+    },
+    "poison": {
+      "save": "Physical",
+      "weak_modifier": 4,
+      "dire_modifier": -4,
+      "medic_bonus": "twice Heal skill within a minute, or +1 with Heal-0 only"
+    }
+  },
+  "cyberware": {
+    "installation": {
+      "surgeon_minimum": "Heal-1",
+      "check": "INT/Heal or DEX/Heal",
+      "difficulty_by_strain": [
+        {
+          "max_strain": 0,
+          "difficulty": 7,
+          "cost": 100,
+          "recovery": "1 hour"
+        },
+        {
+          "max_strain": 0.5,
+          "difficulty": 8,
+          "cost": 500,
+          "recovery": "1 day"
+        },
+        {
+          "max_strain": 1.0,
+          "difficulty": 10,
+          "cost": 2500,
+          "recovery": "4 days"
+        },
+        {
+          "max_strain": 3.0,
+          "difficulty": 11,
+          "cost": 12500,
+          "recovery": "2 weeks"
+        },
+        {
+          "max_strain": null,
+          "difficulty": 12,
+          "cost": 50000,
+          "recovery": "1 month"
+        }
+      ],
+      "failure_by_three_or_more": "surgery fails, System Strain is maximized, the target drops to 1 hit point, and the cyber counts as used",
+      "failure_by_one_or_two": "surgery succeeds but the user takes a random implant complication"
+    },
+    "maintenance": {
+      "monthly_cost_fraction_of_base": 0.05,
+      "work_hours": "the system's System Strain, minimum fifteen minutes",
+      "minimum_skill": "Fix-0 or Heal-0",
+      "neglect": "an implant complication applies until the system is maintained"
+    },
+    "alienation": {
+      "optional": true,
+      "starts_at": 0,
+      "maximum": "WIS score plus chrome-syndrome allowances",
+      "exceeding": "the character becomes an NPC",
+      "note": "the default CWN rule is that chrome alone causes no mechanical alienation; the alternate rule is recorded here and is off unless a campaign turns it on"
+    }
+  },
+  "hacking": {
+    "access": {
+      "formula": "INT modifier + Program skill level + the cyberdeck's bonus Access",
+      "spent_on": "running a Verb",
+      "refresh": "one hour of deck reprogramming, once per day",
+      "bonus": "inside information can add network-specific Access and perishes within weeks"
+    },
+    "connection": {
+      "physical": "field manipulation cable, no penalty",
+      "wireless": {
+        "range_meters": 30,
+        "line_of_sight": "unobstructed",
+        "penalty": -2,
+        "restriction": "the avatar cannot leave the entry node"
+      },
+      "vr_crown": {
+        "penalty": -1
+      }
+    },
+    "security_levels": {
+      "7": "private home network",
+      "8": "small business, minor gang or minor government office",
+      "9": "corp branch office, major gang or important government facility",
+      "10": "corp high-security network",
+      "12": "corp or government black site"
+    },
+    "modifiers": {
+      "network_alerted": 1,
+      "device_very_important": 1,
+      "poor_or_makeshift_tech": [
+        -2,
+        -1
+      ],
+      "unusually_good_tech": [
+        1,
+        2
+      ],
+      "inside_security_info": [
+        -3,
+        -1
+      ]
+    },
+    "check": {
+      "formula": "2d6 + INT modifier + Program skill level + verb modifier + situation",
+      "against": "the target network's security difficulty"
+    },
+    "cyberware_and_drones": {
+      "difficulty": "7 + ceil(HD or level / 3)",
+      "drone_without_operator": 8,
+      "wireless_penalty_applies": true
+    },
+    "alert": {
+      "failures_per_alert_action": 2,
+      "alert_actions_to_alert_network": 2,
+      "window": "up to an hour between the two alert actions"
+    },
+    "cpu": {
+      "free_point_required": true,
+      "self_terminating_returns_slot": true
+    }
+  },
+  "encumbrance": {
+    "points": {
+      "pocket": 0,
+      "one_hand": 1,
+      "two_hands": 2,
+      "whole_body": 5,
+      "dragging_a_teammate": 12
+    },
+    "stowed_capacity": "STR score",
+    "readied_capacity": "floor(STR / 2)",
+    "stowed_action": "a Main action to draw",
+    "overload": [
+      {
+        "extra_readied": 2,
+        "extra_stowed": 4,
+        "movement_multiplier": 0.7
+      },
+      {
+        "extra_readied": 2,
+        "extra_stowed": 4,
+        "movement_multiplier": 0.5
+      }
+    ],
+    "bulk_kg_per_ten_points": 25
+  },
+  "advancement": {
+    "max_level": 10,
+    "xp_per_average_mission": 3,
+    "xp": {
+      "fast": [
+        0,
+        3,
+        6,
+        12,
+        18,
+        27,
+        39,
+        54,
+        72,
+        93
+      ],
+      "slow": [
+        0,
+        6,
+        15,
+        24,
+        36,
+        51,
+        69,
+        87,
+        105,
+        139
+      ]
+    },
+    "skill_points_per_level": 3,
+    "educated_bonus_point": 1,
+    "skill_costs": [
+      {
+        "level": 0,
+        "points": 1,
+        "min_character_level": 1
+      },
+      {
+        "level": 1,
+        "points": 2,
+        "min_character_level": 1
+      },
+      {
+        "level": 2,
+        "points": 3,
+        "min_character_level": 3
+      },
+      {
+        "level": 3,
+        "points": 4,
+        "min_character_level": 6
+      },
+      {
+        "level": 4,
+        "points": 5,
+        "min_character_level": 9
+      }
+    ],
+    "attribute_improvement": {
+      "cost_per_step": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "maximum_steps": 5,
+      "min_level_for_steps": [
+        1,
+        1,
+        3,
+        6,
+        9
+      ]
+    },
+    "attack_bonus": {
+      "formula": "floor(level / 2)",
+      "on_target_edge": "full character level"
+    },
+    "hit_points": {
+      "level_one": "1d6 + CON modifier, minimum 1 per die",
+      "per_level": "1d6 + CON modifier per character level; if the total does not exceed the current maximum, the maximum rises by 1",
+      "hard_to_kill_edge": "1d6+2 per level",
+      "minimum_per_die": 1
+    },
+    "focus_levels": [
+      2,
+      5,
+      7,
+      10
+    ],
+    "third_edge_level": 5
+  },
+  "psionics": {
+    "_note": "Shape from SWN Revised, mechanics re-expressed. No SWN text, power names or tables are reproduced; see docs/rules/CWN_CONVERSION.md and the rights audit. WWN's Effort pattern supplies the pool shape and is CC0.",
+    "effort": {
+      "formula": "1 + max(WIS modifier, CON modifier) + the highest psionic skill level",
+      "commitment": "every power that requires Effort commits exactly one point",
+      "durations": [
+        "instant",
+        "scene",
+        "day"
+      ],
+      "refresh": "all Effort returns after a good night's rest",
+      "returns_when": "the commitment's duration ends"
+    },
+    "torching": {
+      "action": "Instant",
+      "per_round": 1,
+      "grants": "one Effort for the rest of the scene, even above the maximum",
+      "die": "d6",
+      "table": {
+        "1": "lose_1_wisdom",
+        "2": "lose_1_wisdom",
+        "3": "lose_1_constitution",
+        "4": "lose_1_constitution",
+        "5": "lose_1_chosen_attribute",
+        "6": "no_harm"
+      },
+      "feral_below_wisdom": 3,
+      "cure": "none"
+    },
+    "progression": {
+      "level_zero_grants": "the discipline's core technique",
+      "technique_per_skill_level": true,
+      "core_scales_with": "skill level",
+      "core_costs": "no training pick",
+      "technique_gate": "a technique may only be taken at or above its minimum skill level",
+      "saving_picks": false
+    },
+    "discipline_structure": {
+      "core_technique": "one per discipline, automatic at level 0",
+      "techniques": "learned individually, one per skill level gained",
+      "technique_record": "data/rules/psionics_techniques.json"
     }
   },
   "generation": {
@@ -118,7 +579,18 @@
       9,
       7
     ],
-    "free_fourteen": true
+    "free_fourteen": true,
+    "starting_funds": 500,
+    "free_item_max_cost": 1000,
+    "edges_at_start": 2,
+    "focus_at_start": 1,
+    "free_skill_pick": 1
+  },
+  "npc": {
+    "attack_bonus": "usually equal to hit dice",
+    "skill_checks": "a flat bonus instead of attribute plus skill",
+    "saves": "no attribute modifiers unless the stat line says so",
+    "unnamed_at_zero_hp": "dies"
   },
   "resolution_rules": {
     "determinism": "every roll takes an injected rng or explicit dice values",

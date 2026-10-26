@@ -15,8 +15,8 @@
 | Cyberware, drugs, drones and vehicles | CWN pp. 48–89 | Equipment and effects not fully ported |
 | Hacking programs, defenses, actions | CWN pp. 90–105 | Not a complete Godot hacking implementation; NoöPunk ubiquitous-network lore is fictional context |
 | Mission rewards, Heat, reactions and NPCs | CWN pp. 132–195 | Requires encounter and mission integration |
-| Six psychic disciplines and Effort lifecycle | SWN Revised pp. 29–43 | `src/rules/swn_psionics.py` and unit tests: **resource layer implemented**; techniques and role/package advancement pending |
-| Psychic technique prerequisites, effects, overexertion | SWN Revised pp. 29–43 | **Not implemented**; must be sourced from the purchased book, not improvised from names |
+| Six psychic disciplines and Effort lifecycle | SWN Revised pp. 29–43 | `src/rules/psionics.py` + `godot/core/psionics.gd` (supersedes #648's module, see [PSIONICS_SUPERSESSION_648](../rules/PSIONICS_SUPERSESSION_648.md)): **pool, lifecycle, snapshot/restore, training gate and torching implemented** |
+| Psychic technique prerequisites, effects, overexertion | SWN Revised pp. 29–43 | SWN's own technique list is **not reproduced** (no verified SRD licence). A provisional NoöPunk catalogue lives in `data/rules/psionics_techniques.json`; a table with the book should use its effect text |
 | Otherworld exploration | WWN pp. 38 onward | Activate in special sites with explicit WWN procedure |
 | Crisis zones, hazards, supplies, enclaves | AWN pp. 36 onward | Activate for hazardous districts; no second HP/XP system |
 
@@ -24,7 +24,7 @@
 
 1. **CWN character sheet first.** Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, ordinary CWN skills, level, Edges/Foci, two Armor Classes, HP, attacks, saves, System Strain, gear, cyberware and XP. No replacement PSY or CYB attributes.
 2. **Psychic character package.** Only a properly acquired SWN Psychic/Partial Psychic package can grant discipline ranks or techniques. No automatic free psychic powers for all investigators. Natural ability is the setting explanation; package access is a game-rule gate.
-3. **PSI interfaces.** Implement SWN technique IDs, minimum ranks, authorized package, target rules, duration and Effort commitment types, with a data audit of each first-scenario technique. `swn_psionics.Psychic` already handles basic commitments, recovery and persistence; it **does not** yet execute techniques.
+3. **PSI interfaces.** SWN technique IDs, minimum ranks, authorized package, target rules, duration and Effort commitment types are implemented in `src/rules/psionics.py` and `godot/core/psionics.gd`; the first-scenario techniques are audited in `data/rules/psionics_techniques.json`. The gate runs before the dice, and a refused technique spends nothing.
 4. **First cases.** Telepathy: consent-based mental contact; Precognition: uncertain forewarning; Biopsionics: medically accountable aid; Metapsionics: detection/defence. Telekinesis and Teleportation remain available to characters with legal prerequisites, not automatic opening powers. Specific mechanical effects must come from the relevant source entries.
 5. **Regression tests.** Verify deterministic dice, no double spend, scene/day recovery, save/reload, skill prerequisites, class-package authorization, Godot headless import and a scenario playthrough with evidence and psychic consequences.
 6. **Complete CWN backlog.** Implement and test the **entire** CWN subsystems listed above, including advancement, Edges, Foci, combat, Trauma, cyberware, hacking, drones, vehicles, NPCs and mission procedures. Mark each as complete **only after** end-to-end playthrough coverage, not merely a rulebook reference.

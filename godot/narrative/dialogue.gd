@@ -58,6 +58,15 @@ func choose(index: int) -> Dictionary:
 
 	if choice.has("check"):
 		var spec: Dictionary = choice["check"]
+		# A psionic choice has to pass the training gate before it rolls. A refusal is not a failed
+		# roll: the character was never taught the technique, so the branch is the failure branch and
+		# no Effort is spent.
+		if spec.has("technique"):
+			var used: Dictionary = state.use_technique(String(spec["technique"]))
+			if not bool(used.get("ok", false)):
+				state.add_journal("The technique was not available: %s." % String(used.get("reason", "")))
+				last_result = {}
+				return _advance(String(spec.get("failure_node", "")))
 		var result: Dictionary = state.resolve_check(
 			String(spec.get("attribute", "INT")),
 			String(spec.get("skill", "")),

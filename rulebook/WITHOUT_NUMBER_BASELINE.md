@@ -97,7 +97,17 @@ This decision resolves #615 C1–C3: 2d6 skill checks, standard six attributes, 
 
 Existing chapters retain worldbuilding but their conflicting rules are historical. Existing d10/Fate saves and executable prototypes must remain explicitly identified as legacy until ported. Do not silently reinterpret their values, and do not describe a passing legacy test suite as proof of Without Number compatibility. Preserve old campaigns for deliberate rebuilds.
 
-Digital conversion follows the repository's tabletop-first order. The versioned machine-readable baseline is `data/rules/without_number.json`. The old `core.json` and `skills.json` still serve unconverted software and are not current tabletop authority. Replacing every runtime, NPC sheet and scenario number is subsequent porting work; this baseline does not claim that port is complete.
+Digital conversion follows the repository's tabletop-first order. The versioned machine-readable contract
+is `data/rules/wn_core.json`; `data/rules/without_number.json` remains the earlier thin baseline. The old
+`core.json` and `skills.json` still serve unconverted software and are not current tabletop authority.
+
+**Porting status, 2026-10-26:** the core procedures are ported — attributes, checks, saves, attacks,
+damage/Shock/Trauma, mortal and Major Injuries, System Strain and healing, cyberware installation and
+maintenance, hacking, encumbrance, advancement, and Effort-shaped psionics — in the Python kernel and in
+the Godot runtime, with contract tests on both sides. The first scenario's sheet, dialogue checks and NPC
+stat lines now use the chassis. The **equipment catalogue, Edges/Foci text, drones, vehicles, faction
+turns, and the AWN/WWN survival and exploration modules are not ported**. Details, gaps and the licence
+boundary: [`docs/rules/CWN_CONVERSION.md`](../docs/rules/CWN_CONVERSION.md).
 
 Future changes require a versioned deviation identifying the original source, concrete change and playtest reason. Until then use the source procedure, including limits that would be inconvenient for a character. Fate, PbtA, Eclipse Phase and Transhumanity's Fate remain design references for later revisions, not active extra mechanics.
 
