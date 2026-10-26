@@ -18,7 +18,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 import unittest  # noqa: E402
 
-from rules import cwn_advancement, cwn_strain, wn_core  # noqa: E402
+from rules import cwn_advancement, cwn_encumbrance, cwn_major_injury, cwn_strain, wn_core  # noqa: E402
 
 CONTRACT = json.loads((ROOT / "data" / "rules" / "wn_core.json").read_text(encoding="utf-8"))
 
@@ -153,3 +153,33 @@ class AdvancementContractTests(unittest.TestCase):
                          CONTRACT["advancement"]["skill_points_per_level"])
         self.assertEqual(cwn_advancement.EDUCATED_BONUS_POINTS,
                          CONTRACT["advancement"]["educated_bonus"])
+
+
+class MajorInjuryContractTests(unittest.TestCase):
+    def test_the_table_rows_match(self) -> None:
+        documented = {int(k): v for k, v in CONTRACT["combat"]["major_injury"]["rows"].items()}
+        kernel = {roll: outcome.id for roll, outcome in cwn_major_injury.MAJOR_INJURY_TABLE.items()}
+        self.assertEqual(kernel, documented)
+
+    def test_the_clamp_matches(self) -> None:
+        clamp = CONTRACT["combat"]["major_injury"]["clamp"]
+        self.assertEqual(cwn_major_injury.MIN_ROLL, clamp["min"])
+        self.assertEqual(cwn_major_injury.MAX_ROLL, clamp["max"])
+
+
+class EncumbranceContractTests(unittest.TestCase):
+    def test_the_overload_step_matches(self) -> None:
+        step = CONTRACT["encumbrance"]["overload_step"]
+        self.assertEqual(cwn_encumbrance.OVERLOAD_READIED_BONUS, step["readied"])
+        self.assertEqual(cwn_encumbrance.OVERLOAD_STOWED_BONUS, step["stowed"])
+
+    def test_the_speed_factors_match(self) -> None:
+        speed = CONTRACT["encumbrance"]["speed"]
+        self.assertEqual(cwn_encumbrance.BASE_MOVE_METRES, speed["base_metres"])
+        self.assertAlmostEqual(cwn_encumbrance.HEAVY_LOAD_SPEED_FACTOR, speed["heavy_factor"])
+        self.assertAlmostEqual(cwn_encumbrance.OVERLOADED_SPEED_FACTOR, speed["overloaded_factor"])
+
+    def test_bundles_and_kilograms_match(self) -> None:
+        self.assertEqual(cwn_encumbrance.BUNDLE_SIZE, CONTRACT["encumbrance"]["bundle_size"])
+        self.assertEqual(cwn_encumbrance.KILOGRAMS_PER_TEN_POINTS,
+                         CONTRACT["encumbrance"]["kilograms_per_ten_points"])
