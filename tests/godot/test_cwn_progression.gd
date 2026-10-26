@@ -1,0 +1,35 @@
+extends SceneTree
+const Rules = preload("res://src/godot/cwn_progression.gd")
+
+func _initialize() -> void:
+	call_deferred("_run")
+
+func _run() -> void:
+	assert(Rules.level_for_xp(0) == 1)
+	assert(Rules.level_for_xp(3) == 2)
+	assert(Rules.level_for_xp(93) == 10)
+	assert(Rules.level_for_xp(5, false) == 1)
+	assert(Rules.level_for_xp(6, false) == 2)
+	assert(Rules.skill_upgrade_cost(-1, 1, 1) == 3)
+	assert(Rules.skill_upgrade_cost(1, 2, 2) == -1)
+	assert(Rules.skill_upgrade_cost(1, 2, 3) == 3)
+	assert(Rules.skill_upgrade_cost(2, 4, 9) == 9)
+	assert(Rules.attack_bonus(5) == 2)
+	assert(Rules.attack_bonus(5, true) == 5)
+	assert(Rules.focus_award(7) and not Rules.focus_award(6))
+	assert(Rules.edge_award(5) and not Rules.edge_award(6))
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 123
+	var hp := Rules.roll_max_hp(rng, 1, -2)
+	assert(hp >= 1)
+	assert(Rules.improved_max_hp(9, 8) == 10)
+	assert(Rules.improved_max_hp(9, 14) == 14)
+	assert(Rules.can_apply_strain(2.0, 3.5, 4.0, 10))
+	assert(not Rules.can_apply_strain(2.0, 3.5, 5.0, 10))
+	assert(Rules.strain_after_rest(5.5, 3.5, true, true) == 4.5)
+	assert(Rules.strain_after_rest(3.5, 3.5, true, true) == 3.5)
+	assert(Rules.strain_after_rest(5.5, 3.5, false, true) == 5.5)
+	assert(Rules.natural_healing(4, 9, 3, true) == 7)
+	assert(Rules.natural_healing(4, 9, 3, true, true) == 4)
+	print("PASS: CWN progression, HP, strain, natural healing")
+	quit(0)
