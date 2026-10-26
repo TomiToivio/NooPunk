@@ -17,6 +17,7 @@ from typing import Literal
 __all__ = [
     "FOCI",
     "GEAR_BUDGET",
+    "GEAR_BUDGET_FOCI",
     "PICK_LEVELS",
     "Focus",
     "FocusError",
@@ -24,7 +25,6 @@ __all__ = [
     "can_take_level",
     "focused_edge",
     "gear_budget",
-    "GEAR_BUDGET_FOCI",
     "max_level",
     "new_character_picks",
     "take_level",
