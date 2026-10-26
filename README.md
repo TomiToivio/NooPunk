@@ -48,6 +48,10 @@ NoöPunk is an experimental **computer RPG and social simulation** set in **20XX
 
 The project is currently a **playable text-based prototype**. You can run the normal game entirely without Ollama or an LLM.
 
+### Rules direction (issue #615)
+
+The **Without Number** family is the primary *future rules design reference*: **Cities Without Number** and **Stars Without Number** provide the mechanical starting point, with **Worlds Without Number** for interdimensional/noetic science fantasy and **Ashes Without Number** for locally devastated NHI Crisis zones. *Eclipse Phase*, *Fate Core / Transhumanity's Fate*, *Apocalypse World* and *The Veil* remain important simulationist and narrative influences. This is a **design direction, not an implemented replacement**: current legacy-RPG and crossover dice engines and their author-approved differences remain in place. The [design decision and compatibility ledger](docs/design/ISSUE_615_WITHOUT_NUMBER_RULES_DIRECTION.md) and [conversion epic #564](https://github.com/TomiToivio/NooPunk/issues/564) describe the migration gates and source licensing distinctions.
+
 ## Motivation: social science first, science fiction second
 
 **My primary motivation is sociological modeling of possible near-future paradigm-shift scenarios.** NoöPunk is an experiment at the intersection of **social science, social data science, and social science fiction**. The game is a way to build and explore simple, explicit models of how societies, institutions, networks, ideologies, and political factions might respond to interacting transformations in AI, nonhuman intelligence (NHI), and consciousness/PSI. These are exploratory scenarios, not predictions or empirical claims that contested phenomena are real.
