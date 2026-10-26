@@ -29,7 +29,7 @@ static func skill_upgrade_cost(current_rank: int, new_rank: int, character_level
 
 static func attack_bonus(level: int, on_target: bool = false) -> int:
 	assert(level >= 1 and level <= 10)
-	return level if on_target else level / 2
+	return level if on_target else floori(float(level) / 2.0)
 
 static func focus_award(level: int) -> bool:
 	return level in [2, 5, 7, 10]
