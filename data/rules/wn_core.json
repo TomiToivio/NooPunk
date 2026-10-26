@@ -105,6 +105,29 @@
       "dice": "d20",
       "formula": "d20 + attack bonus vs AC",
       "success": "total >= AC"
+    },
+    "major_injury": {
+      "_source": "CWN SRD: rules-of-the-game/injury-healing-system-strain/major-injuries/",
+      "die": "d12",
+      "clamp": {
+        "min": 1,
+        "max": 12
+      },
+      "save": "Physical save when reduced to 0 HP by lethal damage in the same scene as a Traumatic Hit",
+      "rows": {
+        "1": "instant-death",
+        "2": "internal-damage",
+        "3": "brain-damage",
+        "4": "eye-damage",
+        "5": "gut-wound",
+        "6": "right-leg",
+        "7": "left-leg",
+        "8": "right-arm",
+        "9": "left-arm",
+        "10": "system-damage",
+        "11": "flesh-wound",
+        "12": "flesh-wound"
+      }
     }
   },
   "generation": {
@@ -204,5 +227,21 @@
       10
     ],
     "third_edge_level": 5
+  },
+  "encumbrance": {
+    "_source": "CWN SRD: rules-of-the-game/encumbrance/",
+    "stowed": "Strength score",
+    "readied": "half Strength, rounded down",
+    "overload_step": {
+      "readied": 2,
+      "stowed": 4
+    },
+    "speed": {
+      "base_metres": 10,
+      "heavy_factor": 0.7,
+      "overloaded_factor": 0.5
+    },
+    "bundle_size": 3,
+    "kilograms_per_ten_points": 25
   }
 }
