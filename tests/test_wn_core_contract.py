@@ -18,7 +18,15 @@ sys.path.insert(0, str(ROOT / "src"))
 
 import unittest  # noqa: E402
 
-from rules import cwn_advancement, cwn_encumbrance, cwn_major_injury, cwn_strain, wn_core  # noqa: E402
+from rules import (  # noqa: E402
+    cwn_advancement,
+    cwn_attack_modifiers,
+    cwn_combat_actions,
+    cwn_encumbrance,
+    cwn_major_injury,
+    cwn_strain,
+    wn_core,
+)
 
 CONTRACT = json.loads((ROOT / "data" / "rules" / "wn_core.json").read_text(encoding="utf-8"))
 
@@ -183,3 +191,36 @@ class EncumbranceContractTests(unittest.TestCase):
         self.assertEqual(cwn_encumbrance.BUNDLE_SIZE, CONTRACT["encumbrance"]["bundle_size"])
         self.assertEqual(cwn_encumbrance.KILOGRAMS_PER_TEN_POINTS,
                          CONTRACT["encumbrance"]["kilograms_per_ten_points"])
+
+
+class AttackModifierContractTests(unittest.TestCase):
+    def test_the_modifier_table_matches(self) -> None:
+        documented = CONTRACT["combat"]["attack_modifiers"]["table"]
+        self.assertEqual(dict(cwn_attack_modifiers.ATTACK_MODIFIER_TABLE), documented)
+
+    def test_the_impossible_circumstances_match(self) -> None:
+        documented = CONTRACT["combat"]["attack_modifiers"]["impossible"]
+        self.assertEqual(dict(cwn_attack_modifiers.IMPOSSIBLE_CIRCUMSTANCES), documented)
+
+
+class CombatActionContractTests(unittest.TestCase):
+    def test_the_action_allowance_matches(self) -> None:
+        actions = CONTRACT["combat"]["actions"]
+        self.assertEqual(cwn_combat_actions.MAIN_ACTIONS_PER_ROUND, actions["main_per_round"])
+        self.assertEqual(cwn_combat_actions.MOVE_ACTIONS_PER_ROUND, actions["move_per_round"])
+        self.assertEqual(cwn_combat_actions.ON_TURN_LIMITED, actions["on_turn_limited"])
+        self.assertEqual(cwn_combat_actions.INSTANT_LIMITED, actions["instant_limited"])
+
+    def test_the_maneuver_numbers_match(self) -> None:
+        actions = CONTRACT["combat"]["actions"]
+        self.assertEqual(cwn_combat_actions.SNAP_ATTACK_PENALTY, actions["snap_attack_penalty"])
+        self.assertEqual(cwn_combat_actions.SWARM_PER_OTHER_HIT, actions["swarm"]["per_other_hit"])
+        self.assertEqual(cwn_combat_actions.SWARM_PER_OTHER_DAMAGE, actions["swarm"]["per_other_damage"])
+        self.assertEqual(cwn_combat_actions.SWARM_MAX_OTHER_ASSAILANTS,
+                         actions["swarm"]["max_other_assailants"])
+        self.assertEqual(cwn_combat_actions.CHARGE_TO_HIT_BONUS, actions["charge"]["to_hit"])
+        self.assertEqual(cwn_combat_actions.CHARGE_AC_PENALTY, actions["charge"]["ac_penalty"])
+        self.assertAlmostEqual(cwn_combat_actions.CHARGE_MIN_DISTANCE_METRES,
+                               actions["charge"]["min_distance_metres"])
+        self.assertEqual(cwn_combat_actions.TOTAL_DEFENSE_AC_BONUS,
+                         actions["total_defense"]["ac_bonus"])
