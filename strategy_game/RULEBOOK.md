@@ -1,3 +1,5 @@
+> **Rules superseded, 2026-10-26:** [Without Number baseline v1](../rulebook/WITHOUT_NUMBER_BASELINE.md) is the current mechanical authority under the author’s explicit CWN/SWN/AWN/WWN instruction. Conflicting stats, skills, dice, custom rules and approval gates below are historical. Preserve the setting material. Existing software remains legacy until ported.
+
 # NoöPunk Strategy Game: Rulebook
 
 **Status (issue #389): Fate Core RPG foundation approved.** An original, bounded Fate-based Python RPG implementation and a tabletop-playtest manual exist at [rpg/RULEBOOK.md](rpg/RULEBOOK.md).

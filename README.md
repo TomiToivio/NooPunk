@@ -50,7 +50,9 @@ The project is currently a **playable text-based prototype**. You can run the no
 
 ### Rules direction (issue #615)
 
-The **Without Number** family is the primary *future rules design reference*: **Cities Without Number** and **Stars Without Number** provide the mechanical starting point, with **Worlds Without Number** for interdimensional/noetic science fantasy and **Ashes Without Number** for locally devastated NHI Crisis zones. *Eclipse Phase*, *Fate Core / Transhumanity's Fate*, *Apocalypse World* and *The Veil* remain important simulationist and narrative influences. This is a **design direction, not an implemented replacement**: current legacy-RPG and crossover dice engines and their author-approved differences remain in place. The [design decision and compatibility ledger](docs/design/ISSUE_615_WITHOUT_NUMBER_RULES_DIRECTION.md) and [conversion epic #564](https://github.com/TomiToivio/NooPunk/issues/564) describe the migration gates and source licensing distinctions.
+**Current rules: [Without Number baseline v1](rulebook/WITHOUT_NUMBER_BASELINE.md).** CWN supplies the core stats, skills, combat, saves, character creation and progression; SWN supplies PSI, space and factions; AWN supplies crisis survival; WWN supplies otherworld exploration and major projects. The author's 26 October instruction replaces the old d10/Fate mechanical reservations. Custom rules will be revised later.
+
+This is a tabletop adoption using the source books. The runnable prototypes and their saved characters still use legacy mechanics; they are not yet a complete implementation of this baseline. [Machine-readable specification](data/rules/without_number.json).
 
 ## Motivation: social science first, science fiction second
 

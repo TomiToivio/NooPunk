@@ -1,3 +1,5 @@
+> **Rules superseded, 2026-10-26:** [Without Number baseline v1](../../rulebook/WITHOUT_NUMBER_BASELINE.md) is the current mechanical authority under the author’s explicit CWN/SWN/AWN/WWN instruction. Conflicting stats, skills, dice, custom rules and approval gates below are historical. Preserve the setting material. Existing software remains legacy until ported.
+
 # NoöPunk tabletop field procedures: the four Without Number influences
 
 > **Status:** first *playtest draft* for #564. Does not supersede the canonical `RULEBOOK.md` or the separately governed crossover `strategy_game/RULEBOOK.md`. Does not introduce new dice, skill, combat, advancement or resource magnitudes.

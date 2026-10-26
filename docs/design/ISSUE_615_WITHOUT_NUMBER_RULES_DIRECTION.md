@@ -1,3 +1,5 @@
+> **Rules superseded, 2026-10-26:** [Without Number baseline v1](../../rulebook/WITHOUT_NUMBER_BASELINE.md) is the current mechanical authority under the author’s explicit CWN/SWN/AWN/WWN instruction. Conflicting stats, skills, dice, custom rules and approval gates below are historical. Preserve the setting material. Existing software remains legacy until ported.
+
 # Without Number family: NoöPunk rules direction (#615)
 
 > **Status:** author-approved **design direction**, not a new executable engine, license choice, or permission to replace established rules. Implementation is tracked through [#564](https://github.com/TomiToivio/NooPunk/issues/564). The legacy RPG and crossover retain their distinct approved rules until separately migrated.

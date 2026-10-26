@@ -1,0 +1,113 @@
+{
+  "version": "without-number-v1",
+  "status": "current_tabletop_baseline",
+  "source_of_truth": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+  "primary": "CWN 2023",
+  "modules": {
+    "psi": "SWN Revised 2017",
+    "space": "SWN Revised 2017",
+    "factions": "SWN Revised 2017",
+    "survival": "AWN 2025",
+    "exploration": "WWN 2021",
+    "projects": "WWN 2021"
+  },
+  "attributes": {
+    "names": {
+      "STR": "Strength",
+      "DEX": "Dexterity",
+      "CON": "Constitution",
+      "INT": "Intelligence",
+      "WIS": "Wisdom",
+      "CHA": "Charisma"
+    },
+    "min": 3,
+    "max": 18,
+    "modifier_upper_bounds": [
+      [
+        3,
+        -2
+      ],
+      [
+        7,
+        -1
+      ],
+      [
+        13,
+        0
+      ],
+      [
+        17,
+        1
+      ],
+      [
+        18,
+        2
+      ]
+    ],
+    "array": [
+      14,
+      12,
+      11,
+      10,
+      9,
+      7
+    ]
+  },
+  "skills": {
+    "names": [
+      "Administer",
+      "Connect",
+      "Drive",
+      "Exert",
+      "Fix",
+      "Heal",
+      "Know",
+      "Lead",
+      "Notice",
+      "Perform",
+      "Program",
+      "Punch",
+      "Shoot",
+      "Sneak",
+      "Stab",
+      "Survive",
+      "Talk",
+      "Trade",
+      "Work"
+    ],
+    "min": 0,
+    "max": 4,
+    "untrained_check": -1,
+    "untrained_attack": -2
+  },
+  "check": {
+    "count": 2,
+    "sides": 6,
+    "difficulties": [
+      6,
+      8,
+      10,
+      12,
+      14
+    ]
+  },
+  "saves": {
+    "base": 16,
+    "attributes": {
+      "Physical": [
+        "STR",
+        "CON"
+      ],
+      "Evasion": [
+        "DEX",
+        "INT"
+      ],
+      "Mental": [
+        "WIS",
+        "CHA"
+      ],
+      "Luck": []
+    }
+  },
+  "software_status": "legacy_runtimes_not_yet_ported"
+}
