@@ -56,7 +56,6 @@ from . import wn_core
 from .cwn_major_injury import (
     INJURY_MAX,
     INJURY_MIN,
-    MAJOR_INJURY_TABLE,
     MajorInjury,
     clamp_injury_roll,
     injury_for_roll,
@@ -334,3 +333,123 @@ def resolve_downed(
     roll = clamp_injury_roll(int(injury_roll))
     return {"at_risk": True, "mortally_wounded": True, "saved": False,
             "injury": injury_for_roll(roll), "injury_roll": roll}
+
+# --------------------------------------------------------------------------- #
+# System Strain and cyberware (SRD 3.6.x)
+# --------------------------------------------------------------------------- #
+# Capacity: "A healthy character normally starts at zero System Strain and has their Constitution
+# score as their allowed maximum." Cyberware adds PERMANENT strain (which may be fractional); healing
+# and chems add ordinary strain that recovers. The two are the same counter -- permanent strain simply
+# never comes back while the implant is in.
+
+#: Lifestyle modifies the maximum (SRD 3.5.2 cost-of-living table). The $1,000 "ordinary" life is +0.
+LIFESTYLE_STRAIN: dict[str, int] = {
+    "squatter": -2,   # abandoned building
+    "slum": -1,       # dirty shared apartment
+    "ordinary": 0,
+    "fine": 1,        # clean, secure building
+    "luxury": 2,
+}
+
+
+def strain_maximum(constitution: int, *, lifestyle: str = "ordinary") -> int:
+    """Allowed maximum System Strain = Constitution score, adjusted by lifestyle.
+
+    Never below zero: a squatter with Con 3 has a maximum of 1, not -1.
+    """
+    if lifestyle not in LIFESTYLE_STRAIN:
+        raise CwnError(f"unknown lifestyle {lifestyle!r}; expected one of {sorted(LIFESTYLE_STRAIN)}")
+    if not 3 <= constitution <= 18:
+        raise CwnError("Constitution must be within the Without Number range 3-18")
+    return max(0, constitution + LIFESTYLE_STRAIN[lifestyle])
+
+
+#: SRD 3.6.1 installation table: (upper bound of the strain band, cost, recovery, difficulty).
+#: The bands are inclusive at the upper bound; 3.1 or more is the open-ended last band.
+INSTALL_BANDS: tuple[tuple[float | None, int, str, int], ...] = (
+    (0.0, 100, "1 hour", 7),
+    (0.5, 500, "1 day", 8),
+    (1.0, 2500, "4 days", 10),
+    (3.0, 12500, "2 weeks", 11),
+    (None, 50000, "1 month", 12),
+)
+
+
+def installation_terms(strain: float) -> dict[str, Any]:
+    """Cost, recovery time and surgery difficulty for an implant of a given strain cost (SRD 3.6.1)."""
+    if strain < 0:
+        raise CwnError("System Strain cost cannot be negative")
+    for upper, cost, recovery, difficulty in INSTALL_BANDS:
+        if upper is None or strain <= upper:
+            return {"strain": strain, "cost": cost, "recovery": recovery, "difficulty": difficulty}
+    raise AssertionError("unreachable: the last band is open-ended")
+
+
+def can_accept_implant(*, current_strain: float, implant_strain: float, maximum: int) -> bool:
+    """SRD 3.6.1: "A subject cannot accept cyber if it would put their System Strain above their maximum"."""
+    return current_strain + implant_strain <= maximum
+
+
+def resolve_implant_surgery(
+    *,
+    strain: float,
+    current_strain: float,
+    maximum: int,
+    check_total: int,
+    difficulty: int | None = None,
+) -> dict[str, Any]:
+    """The outcome of implant surgery.
+
+    Three outcomes, and the third is the one that is easy to forget:
+
+    * the implant is refused outright if the strain would exceed the maximum -- no roll happens;
+    * the check succeeds at or above the difficulty -> implanted, strain becomes permanent;
+    * the check fails by **two or less** -> the surgery simply fails;
+    * the check fails by **more than two** -> "the surgery is unsuccessful, the target's System Strain
+      is maximized, and the target is reduced to 1 hit point" (SRD 3.6.1).
+    """
+    if not can_accept_implant(current_strain=current_strain, implant_strain=strain, maximum=maximum):
+        return {"outcome": "refused", "strain_after": current_strain, "hit_points": None,
+                "detail": "implant would exceed the subject's maximum System Strain"}
+
+    need = installation_terms(strain)["difficulty"] if difficulty is None else difficulty
+    if check_total >= need:
+        return {"outcome": "installed", "strain_after": current_strain + strain,
+                "hit_points": None, "detail": f"check {check_total} vs difficulty {need}"}
+
+    shortfall = need - check_total
+    if shortfall > 2:
+        return {"outcome": "catastrophic", "strain_after": maximum, "hit_points": 1,
+                "detail": f"failed by {shortfall}; System Strain maximized, reduced to 1 hit point"}
+    return {"outcome": "failed", "strain_after": current_strain, "hit_points": None,
+            "detail": f"failed by {shortfall}; implant not installed"}
+
+
+def maintenance_minutes(strain: float) -> int:
+    """SRD 3.6.4: upkeep takes hours equal to the system's System Strain, minimum fifteen minutes."""
+    if strain < 0:
+        raise CwnError("System Strain cost cannot be negative")
+    return max(15, round(strain * 60))
+
+
+def maintenance_overdue(months_since_upkeep: float) -> bool:
+    """SRD 3.6.4: "If a system goes more than a month without upkeep, it starts to malfunction"."""
+    return months_since_upkeep > 1
+
+
+def first_aid(*, heal_skill: int = 0, die: int | None = None, rng: Any = None) -> dict[str, Any]:
+    """SRD 2.5.1: a medkit patch-up restores ``1d6 + Heal``, or ``1d6 - 1`` with no Heal skill at all.
+
+    Every application adds one System Strain to the target -- the cost the SRD makes easy to skip.
+    """
+    if heal_skill < 0:
+        raise CwnError("Heal skill cannot be negative")
+    roll: int
+    if die is None:
+        roll = (rng if rng is not None else random.Random()).randint(1, 6)
+    else:
+        if not 1 <= die <= 6:
+            raise CwnError("first aid uses a d6")
+        roll = die
+    healed = max(0, roll + heal_skill if heal_skill > 0 else roll - 1)
+    return {"roll": roll, "healed": healed, "strain_cost": 1}

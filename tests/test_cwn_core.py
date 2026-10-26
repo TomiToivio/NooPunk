@@ -242,5 +242,81 @@ class MajorInjuryTests(unittest.TestCase):
         self.assertEqual(a["injury_roll"], b["injury_roll"])
 
 
+SHEET_CON = {"Strength": 10, "Dexterity": 10, "Constitution": 14,
+             "Intelligence": 10, "Wisdom": 10, "Charisma": 10}
+
+
+class SystemStrainTests(unittest.TestCase):
+    """SRD 3.6.x: capacity is the Constitution score; cyberware adds permanent strain."""
+
+    def test_capacity_is_the_constitution_score(self) -> None:
+        self.assertEqual(cwn.strain_maximum(14), 14)
+        self.assertEqual(cwn.strain_maximum(3), 3)
+
+    def test_lifestyle_modifies_the_maximum_but_never_below_zero(self) -> None:
+        self.assertEqual(cwn.strain_maximum(14, lifestyle="slum"), 13)
+        self.assertEqual(cwn.strain_maximum(14, lifestyle="squatter"), 12)
+        self.assertEqual(cwn.strain_maximum(14, lifestyle="fine"), 15)
+        self.assertEqual(cwn.strain_maximum(14, lifestyle="luxury"), 16)
+        self.assertEqual(cwn.strain_maximum(3, lifestyle="squatter"), 1,
+                         "a Con 3 squatter has a maximum of 1, not a negative number")
+
+    def test_unknown_lifestyle_is_an_error_not_a_silent_zero(self) -> None:
+        with self.assertRaises(cwn.CwnError):
+            cwn.strain_maximum(10, lifestyle="palace")
+
+    def test_installation_bands_match_the_srd_table(self) -> None:
+        self.assertEqual(cwn.installation_terms(0)["difficulty"], 7)
+        self.assertEqual(cwn.installation_terms(0)["cost"], 100)
+        self.assertEqual(cwn.installation_terms(0.5)["difficulty"], 8)
+        self.assertEqual(cwn.installation_terms(0.6)["difficulty"], 10)
+        self.assertEqual(cwn.installation_terms(1)["difficulty"], 10)
+        self.assertEqual(cwn.installation_terms(1.1)["difficulty"], 11)
+        self.assertEqual(cwn.installation_terms(3)["difficulty"], 11)
+        self.assertEqual(cwn.installation_terms(3.1)["difficulty"], 12)
+        self.assertEqual(cwn.installation_terms(9)["difficulty"], 12,
+                         "the last band is open-ended")
+
+    def test_an_implant_that_would_exceed_the_maximum_is_refused_before_any_roll(self) -> None:
+        out = cwn.resolve_implant_surgery(strain=3, current_strain=12, maximum=14, check_total=99)
+        self.assertEqual(out["outcome"], "refused")
+        self.assertEqual(out["strain_after"], 12)
+
+    def test_failing_by_two_or_less_just_fails_the_surgery(self) -> None:
+        out = cwn.resolve_implant_surgery(strain=1.5, current_strain=0, maximum=14, check_total=9)
+        self.assertEqual(out["outcome"], "failed")
+        self.assertEqual(out["strain_after"], 0)
+
+    def test_failing_by_more_than_two_maximizes_strain_and_drops_to_one_hp(self) -> None:
+        out = cwn.resolve_implant_surgery(strain=1.5, current_strain=2, maximum=14, check_total=8)
+        self.assertEqual(out["outcome"], "catastrophic")
+        self.assertEqual(out["strain_after"], 14)
+        self.assertEqual(out["hit_points"], 1)
+
+    def test_success_adds_permanent_strain_fractionally(self) -> None:
+        out = cwn.resolve_implant_surgery(strain=0.5, current_strain=2.5, maximum=14, check_total=12)
+        self.assertEqual(out["outcome"], "installed")
+        self.assertEqual(out["strain_after"], 3.0)
+
+    def test_maintenance_is_hours_equal_to_strain_with_a_fifteen_minute_floor(self) -> None:
+        self.assertEqual(cwn.maintenance_minutes(2), 120)
+        self.assertEqual(cwn.maintenance_minutes(0.25), 15)
+        self.assertEqual(cwn.maintenance_minutes(0), 15)
+
+    def test_overdue_maintenance_starts_after_a_month(self) -> None:
+        self.assertFalse(cwn.maintenance_overdue(1.0))
+        self.assertTrue(cwn.maintenance_overdue(1.1))
+
+    def test_first_aid_heals_and_costs_one_strain(self) -> None:
+        self.assertEqual(cwn.first_aid(heal_skill=2, die=4)["healed"], 6)
+        self.assertEqual(cwn.first_aid(heal_skill=2, die=4)["strain_cost"], 1)
+        self.assertEqual(cwn.first_aid(heal_skill=0, die=4)["healed"], 3,
+                         "no Heal skill at all: 1d6-1")
+        self.assertEqual(cwn.first_aid(heal_skill=0, die=1)["healed"], 0,
+                         "1d6-1 cannot heal less than zero")
+        with self.assertRaises(cwn.CwnError):
+            cwn.first_aid(die=7)
+
+
 if __name__ == "__main__":
     unittest.main()
