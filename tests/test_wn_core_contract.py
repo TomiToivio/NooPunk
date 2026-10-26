@@ -18,7 +18,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 import unittest  # noqa: E402
 
-from rules import wn_core  # noqa: E402
+from rules import cwn_advancement, cwn_strain, wn_core  # noqa: E402
 
 CONTRACT = json.loads((ROOT / "data" / "rules" / "wn_core.json").read_text(encoding="utf-8"))
 
@@ -103,3 +103,53 @@ class KernelBehaviourTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class StrainContractTests(unittest.TestCase):
+    """Strain's numbers live in the contract too; a change to one must fail here."""
+
+    def test_recovery_rate_matches(self) -> None:
+        self.assertEqual(CONTRACT["strain"]["recovery_per_night"], cwn_strain.RECOVERY_PER_NIGHT)
+
+    def test_the_maximum_is_the_constitution_score(self) -> None:
+        self.assertEqual(CONTRACT["strain"]["maximum"], "Constitution score")
+        self.assertEqual(cwn_strain.MAXIMUM_ATTRIBUTE, "Constitution")
+
+    def test_the_rest_requirement_matches(self) -> None:
+        self.assertEqual(CONTRACT["strain"]["recovery_conditions"],
+                         "warm, fed, comfortable, at least 8 uninterrupted hours of sleep")
+        self.assertEqual(cwn_strain.REST_HOURS_REQUIRED, 8.0)
+
+
+class AdvancementContractTests(unittest.TestCase):
+    def test_the_level_range_matches(self) -> None:
+        self.assertEqual(cwn_advancement.MIN_LEVEL, CONTRACT["advancement"]["min_level"])
+        self.assertEqual(cwn_advancement.MAX_LEVEL, CONTRACT["advancement"]["max_level"])
+
+    def test_both_xp_tables_match(self) -> None:
+        for track in ("fast", "slow"):
+            with self.subTest(track=track):
+                documented = {int(k): v for k, v in CONTRACT["advancement"]["xp"][track].items()}
+                self.assertEqual(dict(cwn_advancement.XP_FOR_LEVEL[track]), documented)
+
+    def test_skill_point_costs_match(self) -> None:
+        documented = {int(k): v for k, v in CONTRACT["advancement"]["skill_point_cost"].items()}
+        self.assertEqual(dict(cwn_advancement.SKILL_POINT_COST), documented)
+
+    def test_skill_level_gates_match(self) -> None:
+        documented = {int(k): v for k, v in CONTRACT["advancement"]["skill_min_character_level"].items()}
+        self.assertEqual(dict(cwn_advancement.SKILL_MIN_CHARACTER_LEVEL), documented)
+
+    def test_attribute_boost_gates_match(self) -> None:
+        documented = {int(k): v for k, v in CONTRACT["advancement"]["attribute_boost_min_character_level"].items()}
+        self.assertEqual(dict(cwn_advancement.ATTRIBUTE_BOOST_MIN_CHARACTER_LEVEL), documented)
+
+    def test_focus_levels_and_third_edge_match(self) -> None:
+        self.assertEqual(list(cwn_advancement.FOCUS_LEVELS), CONTRACT["advancement"]["focus_levels"])
+        self.assertEqual(cwn_advancement.THIRD_EDGE_LEVEL, CONTRACT["advancement"]["third_edge_level"])
+
+    def test_points_per_level_match(self) -> None:
+        self.assertEqual(cwn_advancement.SKILL_POINTS_PER_LEVEL,
+                         CONTRACT["advancement"]["skill_points_per_level"])
+        self.assertEqual(cwn_advancement.EDUCATED_BONUS_POINTS,
+                         CONTRACT["advancement"]["educated_bonus"])
