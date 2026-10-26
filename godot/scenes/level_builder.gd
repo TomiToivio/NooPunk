@@ -106,7 +106,7 @@ func _on_dialogue_choice(index: int) -> void:
 		hud.show_dialogue(node, runner.choices())
 
 func _offer_ending() -> void:
-	if not GameState.ending.is_empty() or (hud != null and hud.has_modal_open()):
+	if not GameState.ending.is_empty() or (hud != null and hud._ending_panel.visible):
 		return
 	var endings := GameState.available_endings()
 	if endings.is_empty():
