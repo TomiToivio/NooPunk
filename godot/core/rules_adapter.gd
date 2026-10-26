@@ -126,6 +126,29 @@ func save_target(category: String, level: int, modifiers: Dictionary) -> int:
 	var second := int(modifiers.get(String(pair[1]), 0))
 	return base - level - max(first, second)
 
+## CWN d20 attack against a caller-selected melee or ranged Armor Class.
+## Trained combat ranks are 0..4; -1 signifies an untrained attack (-2).
+## Damage, Trauma and Shock belong to the later complete combat module.
+func attack_roll(attribute_score: int, combat_rank: int, attack_bonus: int, armor_class: int, other_modifier: int = 0) -> Dictionary:
+	if combat_rank < -1 or combat_rank > 4 or armor_class < 1:
+		push_error("RulesAdapter: invalid combat rank or Armor Class")
+		return {}
+	var face := _dice.roll(20)
+	var skill_bonus := -2 if combat_rank == -1 else combat_rank
+	var attr_bonus := attribute_modifier(attribute_score)
+	var total := face + attack_bonus + attr_bonus + skill_bonus + other_modifier
+	return {
+		"die": face,
+		"attack_bonus": attack_bonus,
+		"attribute_modifier": attr_bonus,
+		"skill_modifier": skill_bonus,
+		"other_modifier": other_modifier,
+		"armor_class": armor_class,
+		"total": total,
+		"hit": total >= armor_class,
+		"margin": total - armor_class,
+	}
+
 func _load_json(path: String) -> Dictionary:
 	if not FileAccess.file_exists(path):
 		push_error("RulesAdapter: kernel not found at %s" % path)
