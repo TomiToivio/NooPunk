@@ -1,40 +1,58 @@
-"""Damage, Trauma and Shock on the CWN chassis.
+"""Injury consequences on the CWN chassis: Damage Soak and Major Injury.
 
-Original implementation of the numerical mechanics described in the Cities
-Without Number SRD, "Damage, Trauma, and Shock". The prose here is our own; no
-SRD text is reproduced. The SRD omits the antagonists chapter, so NPC stat
-blocks are out of scope at this layer.
+``src/rules/cwn_core.py`` is the single source of truth for the resolution
+primitives - the Trauma Die against the Trauma Target, the Trauma Rating
+multiplication, Shock applicability and its value, and the "a hit is never
+weaker than the Shock it avoided" floor. This module does not restate any of
+them; it delegates.
 
-The three ideas that make CWN violence feel different from a hit-point slugfest:
+What lives here is what the core does not model: **Damage Soak** as a per-fight
+pool that spends down rather than a static armour value, and the **Major Injury**
+condition, which is only possible once a Traumatic Hit has landed in that fight
+and the victim reaches zero hit points. Both are consequences of a resolved
+attack rather than parts of resolving one.
 
-* **Trauma** - a lethal hit rolls a Trauma Die against the victim's Trauma
-  Target. Beating it multiplies the whole hit, so a high Trauma Rating weapon
-  is swingy rather than merely strong.
-* **Shock** - an armed melee miss still hurts an insufficiently armoured
-  target. Combat is dangerous even when you lose the roll.
-* **Damage Soak** - armour can absorb a finite amount per fight and then stops
-  helping, which models luck running out rather than ablative plating.
-
-All dice enter as explicit values. Nothing here rolls anything, so a table roll
-and a replay produce identical results.
+All dice enter as explicit values, so a table roll and a replay agree.
 """
 from __future__ import annotations
 
 from dataclasses import dataclass
 
-DEFAULT_TRAUMA_TARGET = 6
+from .cwn_core import (
+    DEFAULT_TRAUMA_TARGET,
+    CwnError,
+    damage_floor,
+    is_traumatic_hit,
+    shock_applies,
+    shock_damage,
+    trauma_damage,
+)
 
+# The name this module used before the core existed. Keeping the alias means a
+# caller catching either name catches the same class, rather than silently
+# missing an error because two modules defined their own.
+TraumaRulesError = CwnError
 
-class TraumaRulesError(ValueError):
-    """Raised when a call is outside the rules rather than merely unlucky."""
+__all__ = [
+    "DEFAULT_TRAUMA_TARGET",
+    "AttackResult",
+    "Shock",
+    "TraumaRulesError",
+    "Weapon",
+    "absorb_with_soak",
+    "is_traumatic",
+    "major_injury_risk",
+    "resolve_hit",
+    "shock_on_miss",
+]
 
 
 @dataclass(frozen=True)
 class Shock:
-    """Shock is recorded as a value and the highest Melee AC it reaches.
+    """A Shock rating: its value and the highest Melee AC it reaches.
 
-    ``max_ac=None`` is the SRD's ``Shock N/-`` form: it applies against any
-    Armour Class. It is not "no shock"; it is shock without an AC ceiling.
+    ``max_ac=None`` is the SRD's ``Shock n/-`` form - no Armour Class ceiling.
+    That is not the same as no Shock, and confusing the two is easy.
     """
 
     value: int
@@ -45,16 +63,15 @@ class Shock:
             raise TraumaRulesError("Shock value cannot be negative")
 
     def applies_to(self, melee_ac: int, *, immune: bool = False) -> bool:
+        """Whether a miss would reach a target at this Armour Class."""
         if immune:
             return False
-        if self.max_ac is None:
-            return True
-        return melee_ac <= self.max_ac
+        return shock_applies(hit=False, shock_ac=self.max_ac, target_melee_ac=melee_ac)
 
 
 @dataclass(frozen=True)
 class Weapon:
-    """The weapon facts the damage layer needs, and no more."""
+    """The weapon facts the injury layer needs, and no more."""
 
     damage_die: str
     trauma_rating: int = 1
@@ -62,14 +79,10 @@ class Weapon:
     lethal: bool = True
     unarmed: bool = False
 
-    def __post_init__(self) -> None:
-        if self.trauma_rating < 1:
-            raise TraumaRulesError("Trauma Rating is at least x1")
-
 
 @dataclass(frozen=True)
 class AttackResult:
-    """What a resolved hit did, itemised so a UI can explain the number."""
+    """A resolved hit, itemised so a UI can explain the number."""
 
     base_damage: int
     total_damage: int
@@ -81,11 +94,10 @@ class AttackResult:
 
 
 def absorb_with_soak(damage: int, soak: int) -> tuple[int, int]:
-    """Return (damage that reaches hit points, soak remaining).
+    """Return (damage reaching hit points, soak remaining).
 
-    Soak is spent down within a fight and does not regenerate until the fight
-    ends, so callers must carry the remainder forward rather than re-reading a
-    static armour value each hit.
+    Soak is spent down inside a fight and refreshes only after it ends, so the
+    remainder has to be carried forward instead of re-reading a static value.
     """
     if damage < 0 or soak < 0:
         raise TraumaRulesError("damage and soak cannot be negative")
@@ -94,15 +106,8 @@ def absorb_with_soak(damage: int, soak: int) -> tuple[int, int]:
 
 
 def is_traumatic(trauma_die_roll: int, trauma_target: int = DEFAULT_TRAUMA_TARGET) -> bool:
-    """A Traumatic Hit is a Trauma Die that reaches the Trauma Target.
-
-    Equalling the target counts: the SRD says "equals or exceeds".
-    """
-    if trauma_die_roll < 1:
-        raise TraumaRulesError("a Trauma Die roll is at least 1")
-    if trauma_target < 1:
-        raise TraumaRulesError("a Trauma Target is at least 1")
-    return trauma_die_roll >= trauma_target
+    """Delegate to the core: the Trauma Die meeting or exceeding the target."""
+    return is_traumatic_hit(trauma_die_roll, trauma_target)
 
 
 def shock_on_miss(
@@ -113,24 +118,29 @@ def shock_on_miss(
     immune: bool = False,
     barrier_spent: bool = False,
 ) -> int:
-    """Shock inflicted by a missed attack, or 0.
+    """Shock from a missed attack, or 0.
 
-    ``barrier_spent`` models a riot shield or similar: it negates the first
-    source of Shock in a round. Only the wielder's attribute modifier adds to
-    Shock; generic damage bonuses do not.
+    Immunity and a spent barrier are NoöPunk-side effects with no field in the
+    core signature, so they are decided here and only the surviving case is
+    delegated.
     """
-    if shock is None or barrier_spent:
+    if shock is None or immune or barrier_spent:
         return 0
-    if not shock.applies_to(melee_ac, immune=immune):
-        return 0
-    return max(0, shock.value + attribute_modifier)
+    value = shock_damage(
+        hit=False,
+        shock_value=shock.value,
+        shock_ac=shock.max_ac,
+        target_melee_ac=melee_ac,
+        attribute_modifier=attribute_modifier,
+    )
+    return max(0, value)
 
 
 def major_injury_risk(hit_points_after: int, *, traumatic_in_fight: bool) -> bool:
     """Zero hit points only threaten a Major Injury once trauma has landed.
 
-    Being knocked to zero by ordinary damage is a knockout; being knocked to
-    zero after a Traumatic Hit in the same fight is a wound that persists.
+    Being knocked out by ordinary damage is a knockout. Being knocked to zero
+    after a Traumatic Hit in the same fight is a wound that persists.
     """
     return hit_points_after <= 0 and traumatic_in_fight
 
@@ -153,18 +163,15 @@ def resolve_hit(
 ) -> AttackResult:
     """Resolve a hit that has already landed.
 
-    ``lethal=False`` suppresses the Trauma Die entirely, which is how non-lethal
-    attacks stay survivable. ``skill_bonus`` only applies to a purely unarmed
-    attack; artificial weapons that merely use the Punch skill do not receive it,
-    so the caller passes it only for ``weapon.unarmed``.
+    ``lethal=False`` suppresses the Trauma Die entirely, which is what keeps a
+    non-lethal attack survivable. ``skill_bonus`` belongs to a purely unarmed
+    attack only, so the caller passes it only for ``weapon.unarmed``.
     """
     if damage_roll < 1:
         raise TraumaRulesError("a damage roll is at least 1")
-    is_lethal = weapon.lethal if lethal is None else lethal
 
-    base = damage_roll + attribute_modifier
-    if weapon.unarmed:
-        base += skill_bonus
+    is_lethal = weapon.lethal if lethal is None else lethal
+    base = damage_roll + attribute_modifier + (skill_bonus if weapon.unarmed else 0)
 
     traumatic = False
     if is_lethal:
@@ -172,24 +179,18 @@ def resolve_hit(
             raise TraumaRulesError("a lethal hit needs its Trauma Die roll")
         traumatic = is_traumatic(trauma_die_roll, trauma_target)
 
-    total = base * weapon.trauma_rating if traumatic else base
+    total = trauma_damage(base, weapon.trauma_rating, traumatic=traumatic)
 
-    # A hit can never do less than the Shock it would have inflicted on a miss.
     floor = shock_on_miss(
         weapon.shock, target_melee_ac, attribute_modifier,
         immune=shock_immune, barrier_spent=barrier_spent,
     )
-    floor_applied = total < floor
-    if floor_applied:
-        total = floor
+    floored = damage_floor(total, floor)
+    floor_applied = floored > total
+    total = floored
 
     through, _remaining = absorb_with_soak(total, soak)
 
-    # A Major Injury is only in play once a Traumatic Hit has landed in this
-    # fight and the victim is at zero: trauma is what makes zero dangerous.
-    # The caller supplies the victim's hit points, because damage dealt and hit
-    # points remaining are different quantities and conflating them is how this
-    # layer produced a false negative on its own first test run.
     major = False
     if current_hit_points is not None:
         major = major_injury_risk(
