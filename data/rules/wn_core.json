@@ -1,0 +1,74 @@
+{
+  "_note": "The canonical NooPunk core contract, on the Without Number chassis. Author direction 2026-10-26: 'For beginning, use CWN/SWN/AWN/WWN system for everything. Make the stats, skills, all rules based on them. We will modify later.' This file is the machine-readable source of truth for the WN-based core; src/rules/core.json remains the legacy 1d10 contract until its migration lands.",
+  "_source_of_truth": "data/rules/wn_core.json is authoritative for the WN-based core. Implemented by src/rules/wn_core.py. Decisions: issue #615 (rules foundation policy), #564 (conversion epic).",
+  "_canon_revision": "issue-615-wn-chassis-2026-10-26",
+  "system_identity": {
+    "family": "Without Number (Cities / Stars / Ashes / Worlds)",
+    "primary_reference": "Cities Without Number",
+    "co_primary_reference": "Stars Without Number",
+    "situational_references": ["Worlds Without Number", "Ashes Without Number"],
+    "status": "adopted for everything at the beginning; NooPunk-specific modification follows later"
+  },
+  "stats": {
+    "final_list": ["STR", "DEX", "CON", "INT", "WIS", "CHA"],
+    "min": 3,
+    "max": 18,
+    "_note": "The Without Number six. NooPunk's FIT/REF/INT/SOC/CYB/PSY names are retired as the core stat set; any survival of SOC/CYB/PSY is a later modification, not a second stat block.",
+    "modifier_table": {
+      "3": -2,
+      "4": -1, "5": -1, "6": -1, "7": -1,
+      "8": 0, "9": 0, "10": 0, "11": 0, "12": 0, "13": 0,
+      "14": 1, "15": 1, "16": 1, "17": 1,
+      "18": 2
+    }
+  },
+  "generation": {
+    "method": "roll 3d6 six times in order, or assign the array",
+    "dice": "3d6",
+    "array": [14, 12, 11, 10, 9, 7],
+    "free_fourteen": true,
+    "_note": "One rolled attribute may be changed to 14. Assigning the array does not grant the free 14."
+  },
+  "skills": {
+    "scale": [0, 1, 2, 3, 4],
+    "untrained_modifier": -1,
+    "untrained_is_numbered_level": false,
+    "_note": "Level 0 is ordinary competence. Unattrained is not a level: the attempt is either at -1 or blocked where training is required."
+  },
+  "skill_check": {
+    "dice": "2d6",
+    "dice_count": 2,
+    "dice_sides": 6,
+    "formula": "2d6 + attribute modifier + skill level",
+    "untrained_formula": "2d6 + attribute modifier - 1",
+    "success": "total >= difficulty",
+    "difficulties": {
+      "6": "Easy",
+      "8": "Standard",
+      "10": "Hard",
+      "12": "Very hard"
+    }
+  },
+  "saves": {
+    "dice": "d20",
+    "base_target": 15,
+    "categories": ["Physical", "Evasion", "Mental", "Luck"],
+    "formula": "d20 >= 15 - best relevant attribute modifier",
+    "luck_target": 15,
+    "_note": "Physical uses the better of STR/CON; Evasion the better of INT/DEX; Mental the better of WIS/CHA; Luck is flat 15."
+  },
+  "combat": {
+    "attack": {
+      "dice": "d20",
+      "formula": "d20 + attack bonus vs AC",
+      "success": "total >= AC"
+    },
+    "unskilled_penalty": -2,
+    "_note": "Attack total is base attack bonus + weapon skill + relevant attribute modifier. A character with no combat skill takes -2."
+  },
+  "resolution_rules": {
+    "determinism": "every roll takes an injected RNG; explicit dice values are accepted so tests and replays are exact",
+    "no_llm": true,
+    "opposed": "both sides roll 2d6 as skill checks; higher total wins, ties favour the defender unless a rule says otherwise"
+  }
+}

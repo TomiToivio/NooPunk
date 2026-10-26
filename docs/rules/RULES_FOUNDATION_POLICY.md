@@ -39,6 +39,33 @@ principle that genre modules may coexist in a single encounter without duplicati
 **Does not settle — and says so:** the core die, the attribute list and scale, whether classes exist, whether
 PSI follows SWN's structure, and whether the already-approved Fate layer survives. Those are §3.
 
+## 3. Decision (author, 2026-10-26): the Without Number chassis governs everything
+
+> *"For beginning, use CWN/SWN/AWN/WWN system for everything. Make the stats, skills, all rules based on them.
+> We will modify later."*
+
+This **settles the register below** in favour of the chassis. It reverses the provisional #566 ruling (which kept
+`1d10`, `SOC`, and no classes) and it demotes layer B's approved Fate kernel, because "everything" admits no
+exception.
+
+| # | conflict | **decision** |
+|---|---|---|
+| C1 | core die | **`2d6`** for skill checks, `d20` for attacks and saves. `1d10` and `4dF` retire as *core* resolution. |
+| C2 | attributes | **`STR / DEX / CON / INT / WIS / CHA`**, scale `3..18`, modifier band `-2..+2`. `FIT/REF/INT/SOC/CYB/PSY` retire as the core stat set. |
+| C3 | classes and levels | the chassis' own structure applies; NoöPunk modification follows later. |
+| C4 | PSI | SWN's shape governs. The natural-origin canon stays a *content* claim, not a mechanical exception. |
+| C5 | Fate | **demoted to a secondary influence**, as §1 already said. The approved `4dF` kernel is superseded for core resolution, not deleted: its implementation and tests stay until the migration retires them. |
+| C6 | hacking | CWN's network access governs; the ubiquitous-network design becomes a **setting overlay on WN procedures**, not a rival engine. |
+| C7 | one grammar | now assertable: one chassis, four setting modules. |
+
+**Implemented so far:** `data/rules/wn_core.json` (the machine contract) and `src/rules/wn_core.py` (the kernel:
+modifiers, `2d6` skill checks with the `-1` untrained penalty, `d20` saves against `15 - modifier`, `d20` attacks
+against AC, `3d6` generation), with 22 tests.
+
+**Deliberately not done in the same step:** the legacy `1d10` kernel and every scenario that resolves on it are
+untouched. A chassis swap that rewrites all active play in one commit is the destructive rewrite #564 forbids;
+the migration proceeds subsystem by subsystem, with the legacy kernel marked superseded rather than deleted.
+
 ## 3. Conflict-and-resolution register
 
 The register exists because four documents currently describe NoöPunk mechanics in four vocabularies, and this
