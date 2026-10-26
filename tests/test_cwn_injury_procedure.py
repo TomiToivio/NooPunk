@@ -25,6 +25,20 @@ class NoRiskTest(unittest.TestCase):
         self.assertIsNone(out.save)
 
 
+class LethalityTest(unittest.TestCase):
+    def test_a_non_lethal_beating_to_zero_is_still_only_a_knockout(self):
+        out = resolve_zero_hit_points(hit_points_after=0, traumatic_in_fight=True,
+                                      lethal=False, level=1, attributes=ATTRIBUTES)
+        self.assertTrue(out.mortally_wounded)
+        self.assertFalse(out.risked_major_injury)
+        self.assertIsNone(out.save)
+
+    def test_lethal_damage_at_zero_with_trauma_does_force_the_save(self):
+        with self.assertRaises(ProcedureError):
+            resolve_zero_hit_points(hit_points_after=0, traumatic_in_fight=True,
+                                    lethal=True, level=1, attributes=ATTRIBUTES)
+
+
 class SaveGateTest(unittest.TestCase):
     def test_trauma_at_zero_demands_a_physical_save(self):
         with self.assertRaises(ProcedureError):

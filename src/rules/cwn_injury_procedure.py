@@ -20,9 +20,8 @@ from __future__ import annotations
 from collections.abc import Mapping
 from dataclasses import dataclass
 
-from .cwn_core import Save, saving_throw
+from .cwn_core import Save, major_injury_risk, saving_throw
 from .cwn_major_injury import MajorInjury, resolve_major_injury
-from .cwn_trauma import major_injury_risk
 
 
 class ProcedureError(ValueError):
@@ -47,6 +46,7 @@ def resolve_zero_hit_points(
     *,
     hit_points_after: int,
     traumatic_in_fight: bool,
+    lethal: bool = True,
     level: int,
     attributes: Mapping[str, int],
     save_die: int | None = None,
@@ -66,7 +66,15 @@ def resolve_zero_hit_points(
             mortally_wounded=False, risked_major_injury=False, save=None, injury=None
         )
 
-    risked = major_injury_risk(hit_points_after, traumatic_in_fight=traumatic_in_fight)
+    # The risk predicate belongs to `cwn_core`, and it tests THREE conditions:
+    # lethal damage, zero hit points, and a Traumatic Hit in the same scene. A
+    # non-lethal beating to zero is a knockout even when trauma has landed, so
+    # defaulting `lethal` here and passing it through is not cosmetic.
+    risked = major_injury_risk(
+        lethal=lethal,
+        hit_points=hit_points_after,
+        traumatic_this_scene=traumatic_in_fight,
+    )
     if not risked:
         # Zero hit points without trauma is a knockout, not a wound.
         return ZeroHitPointOutcome(
