@@ -1,91 +1,144 @@
-"""NoöPunk core on the Without Number chassis (#615).
+"""The Without Number kernel, adopted as NoöPunk's baseline.
 
-Author direction (2026-10-26): *"For beginning, use CWN/SWN/AWN/WWN system for everything. Make the stats,
-skills, all rules based on them. We will modify later."*
+**Author ruling, 2026-10-26:** *"use CWN/SWN/AWN/WWN system for everything. Make the stats,
+skills, all rules based on them. We will modify later."* This module is the arithmetic of that
+decision, and it supersedes the earlier "`1d10` stays" ruling (#566 / D40) for the tabletop layer.
 
-This module implements the contract in `data/rules/wn_core.json` and nothing else. It is deliberately
-**additive**: `src/rules/core.py` remains the legacy `STAT + Skill + 1d10 ≥ DV` kernel until its migration
-lands, because a chassis swap that breaks every scenario in one commit is the destructive rewrite the
-conversion epic forbids. Two kernels coexist during the migration and exactly one of them is named
-canonical here.
+What is implemented here is what was **verified against the SRD**, not what seemed plausible:
 
-Design rules, so a result from this module can be trusted:
+* six attributes on a 3-18 scale (``1.1.1``), and the modifier bands from ``1.1.2``;
+* the skill check as ``2d6 + attribute modifier + skill level`` against a difficulty;
+* the difficulty bands ``6 / 8 / 10 / 12 / 14`` (``2.3.1``);
+* situational circumstances bounded at ``-2..+2``, aid capped at ``+1``, opposed checks won by the
+  higher roll (``2.3.3``/``2.3.4``).
 
-* **Every roll takes an injected RNG.** No module-level `random`. A seeded `random.Random` and an explicit
-  dice value both work, so a replay is reproducible and a test is exact.
-* **Dice are validated, never clamped.** A `d6` of 7 is an error, not a 6 — silent clamping is how a
-  distribution test passes while the distribution is wrong.
-* **The arithmetic is the contract.** Nothing here decides difficulty, adds situational modifiers or
-  invents a stat; callers pass those in.
+**Deliberately absent:** saving throws, classes and Edges, Foci, Effort, Shock/Trauma and
+progression. Each needs its own verified reading, and inventing any of them would put a number in
+the repo that no source supports. They are the next slices, not omissions by accident.
+
+Provenance: mechanics taken from the *Worlds Without Number* SRD, which is CC0 (verified
+2026-10-25 in ``data/sources/game_system_rights.json``). *Cities Without Number* shares this engine
+and is also CC0. *Stars Without Number* and *Ashes Without Number* have no verified SRD and remain
+``blocked-unverified`` — this module therefore cites neither, and their material stays a design
+reference. No SRD prose is reproduced; the expression here is original.
 """
 from __future__ import annotations
 
 import random
+from collections.abc import Sequence
 from dataclasses import dataclass
-from typing import Final, Protocol
+from typing import Any
 
-#: Attribute score -> modifier, per the Without Number band.
-_MODIFIER_BY_SCORE: Final[dict[int, int]] = {
-    3: -2,
-    4: -1, 5: -1, 6: -1, 7: -1,
-    8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0,
-    14: 1, 15: 1, 16: 1, 17: 1,
-    18: 2,
-}
+#: The six attribute names, in the SRD's order. These replace NooPunk's earlier
+#: FIT/REF/INT/SOC/CYB/PSY set for the tabletop layer, by author ruling 2026-10-26.
+ATTRIBUTES: tuple[str, ...] = (
+    "Strength",
+    "Dexterity",
+    "Constitution",
+    "Intelligence",
+    "Wisdom",
+    "Charisma",
+)
 
-STAT_MIN: Final = 3
-STAT_MAX: Final = 18
-UNSKILLED_CHECK_PENALTY: Final = -1
-UNSKILLED_ATTACK_PENALTY: Final = -2
-SAVE_BASE_TARGET: Final = 15
-SAVE_CATEGORIES: Final = ("Physical", "Evasion", "Mental", "Luck")
+#: Short codes for the same six attributes, used by saves and by the migration map.
+ATTRIBUTE_CODES: tuple[str, ...] = tuple(name[:3].upper() for name in ATTRIBUTES)
 
-#: Which attributes a save may draw its modifier from; the better one applies.
-_SAVE_STATS: Final[dict[str, tuple[str, ...]]] = {
-    "Physical": ("STR", "CON"),
-    "Evasion": ("INT", "DEX"),
-    "Mental": ("WIS", "CHA"),
-    "Luck": (),
-}
+ATTRIBUTE_MIN = 3
+ATTRIBUTE_MAX = 18
+MODIFIER_CAP = 2
+
+#: Difficulty bands, verified from SRD 2.3.1. Names paraphrase the SRD's own descriptions.
+DIFFICULTY_SIMPLE = 6        # still more than the PC's background would cover
+DIFFICULTY_SIGNIFICANT = 8   # a competent professional, succeeding more often than not
+DIFFICULTY_EXPERT = 10       # beyond anyone but a skilled expert
+DIFFICULTY_MASTER = 12       # only a true master, reliably
+DIFFICULTY_EXTREME = 14      # only a true master, and probably failing
+
+SITUATIONAL_MIN = -2
+SITUATIONAL_MAX = 2
+AID_BONUS_MAX = 1
+
+SKILL_CHECK_DICE = 2
+SKILL_CHECK_FACES = 6
+
+#: No level-0 in the skill: the SRD applies -1. Level-0 itself is basic competence, not a penalty.
+UNSKILLED_PENALTY = -1
 
 
-class Dice(Protocol):
-    """Anything that can produce a die result, so tests can inject one."""
-
-    def randint(self, a: int, b: int) -> int:  # pragma: no cover - protocol
-        ...
+class WnError(ValueError):
+    """A constraint from the SRD was about to be violated."""
 
 
 def attribute_modifier(score: int) -> int:
-    """The Without Number modifier for an attribute score of 3..18."""
-    if not isinstance(score, int) or isinstance(score, bool):
-        raise TypeError(f"attribute score must be an int, got {type(score).__name__}")
-    if score < STAT_MIN or score > STAT_MAX:
-        raise ValueError(
-            f"attribute score {score} is outside {STAT_MIN}..{STAT_MAX}; "
-            "scores are not clamped, because a silent clamp hides a generation bug"
-        )
-    return _MODIFIER_BY_SCORE[score]
+    """The modifier for an attribute score (SRD 1.1.2).
+
+    3 -> -2, 4-7 -> -1, 8-13 -> +0, 14-17 -> +1, 18 -> +2.
+
+    The +/-2 bound is the *base* modifier cap; abilities may raise it, which is why the
+    cap is applied here as a band rather than clamped on the result.
+    """
+    if not ATTRIBUTE_MIN <= score <= ATTRIBUTE_MAX:
+        raise WnError(f"attribute score must be {ATTRIBUTE_MIN}..{ATTRIBUTE_MAX}, got {score}")
+    if score <= 3:
+        return -2
+    if score <= 7:
+        return -1
+    if score <= 13:
+        return 0
+    if score <= 17:
+        return 1
+    return 2
 
 
-def _roll(rng: Dice, sides: int, count: int = 1) -> list[int]:
-    return [rng.randint(1, sides) for _ in range(count)]
+def clamp_situational(value: int) -> int:
+    """Circumstances adjust a check by at most -2..+2 (SRD 2.3.1).
+
+    Gear mods, magic items and aid are explicitly outside this bound, so only caller-supplied
+    circumstance lives here. Clamping rather than raising keeps a referee's table moving.
+    """
+    return max(SITUATIONAL_MIN, min(SITUATIONAL_MAX, value))
+
+
+def clamp_aid(value: int) -> int:
+    """Aid tops out at +1 however many allies help (SRD 2.3.3)."""
+    return max(0, min(AID_BONUS_MAX, value))
 
 
 @dataclass(frozen=True)
-class CheckResult:
-    """The outcome of one skill check, with the arithmetic that produced it."""
+class Check:
+    """One resolved skill check."""
 
-    dice: tuple[int, ...]
-    modifier: int
+    dice: tuple[int, int]
+    attribute_modifier: int
     skill_level: int
-    total: int
+    situational: int
+    aid: int
     difficulty: int
-    untrained: bool
+    #: True when the character does not even have level-0 in the skill: the SRD's -1 applies.
+    untrained: bool = False
+
+    @property
+    def total(self) -> int:
+        return (sum(self.dice) + self.attribute_modifier + self.skill_level
+                + self.situational + self.aid + (UNSKILLED_PENALTY if self.untrained else 0))
 
     @property
     def success(self) -> bool:
         return self.total >= self.difficulty
+
+    @property
+    def margin(self) -> int:
+        return self.total - self.difficulty
+
+
+def _roll(rng: Any = None, dice: Sequence[int] | None = None) -> tuple[int, int]:
+    if dice is not None:
+        pair = tuple(int(d) for d in dice)
+        if len(pair) != 2 or any(not 1 <= d <= SKILL_CHECK_FACES for d in pair):
+            raise WnError(f"each die must be 1..{SKILL_CHECK_FACES}, got {dice}")
+        return pair  # type: ignore[return-value]
+    source = rng if rng is not None else random.Random()
+    return (source.randint(1, SKILL_CHECK_FACES), source.randint(1, SKILL_CHECK_FACES))
 
 
 def skill_check(
@@ -93,117 +146,149 @@ def skill_check(
     attribute_score: int,
     skill_level: int | None,
     difficulty: int,
-    rng: Dice | None = None,
-    dice: tuple[int, int] | None = None,
-) -> CheckResult:
-    """`2d6 + attribute modifier + skill level >= difficulty`.
+    situational: int = 0,
+    aid: int = 0,
+    rng: Any = None,
+    dice: Sequence[int] | None = None,
+) -> Check:
+    """`2d6 + attribute modifier + skill level` against a difficulty.
 
-    ``skill_level=None`` means untrained: the attempt is at **-1**, and untrained is not a numbered level.
-    Blocking an untrained attempt where training is required is the caller's decision, not a -1 here.
+    The dice may be supplied directly (`dice=(3, 5)`) for a table that rolled real dice, or a
+    seeded `rng` may be passed for a replayable digital resolution.
     """
-    if skill_level is not None and not 0 <= skill_level <= 4:
-        raise ValueError(f"skill level must be 0..4 or None (untrained), got {skill_level}")
-    if difficulty <= 0:
-        raise ValueError(f"difficulty must be positive, got {difficulty}")
-
-    if dice is not None:
-        if len(dice) != 2:
-            raise ValueError(f"a 2d6 check needs exactly two dice, got {len(dice)}")
-        rolled = tuple(int(d) for d in dice)
-        for face in rolled:
-            if not 1 <= face <= 6:
-                raise ValueError(f"a d6 shows 1..6, got {face}")
-    else:
-        rolled = tuple(_roll(rng or random.Random(), 6, 2))
-
     untrained = skill_level is None
-    level = UNSKILLED_CHECK_PENALTY if untrained else int(skill_level)
-    modifier = attribute_modifier(attribute_score)
-    total = sum(rolled) + modifier + level
-    return CheckResult(
-        dice=rolled,
-        modifier=modifier,
-        skill_level=level,
-        total=total,
-        difficulty=difficulty,
+    if not untrained and skill_level < 0:
+        raise WnError(f"skill level cannot be negative, got {skill_level}")
+    return Check(
+        dice=_roll(rng, dice),
+        attribute_modifier=attribute_modifier(attribute_score),
+        skill_level=0 if untrained else skill_level,
         untrained=untrained,
+        situational=clamp_situational(situational),
+        aid=clamp_aid(aid),
+        difficulty=difficulty,
     )
 
 
+def opposed_check(
+    *,
+    a: Sequence[int],
+    b: Sequence[int],
+) -> str | None:
+    """Opposed checks: the higher roll wins (SRD 2.3.4).
+
+    Returns "a", "b", or **None on a tie** — the SRD states the winner is the one who rolls
+    higher and does not say what a tie means, so this reports the ambiguity instead of inventing
+    a tie-break. A caller that needs one must supply its own procedure.
+    """
+    ta, tb = sum(a), sum(b)
+    if ta == tb:
+        return None
+    return "a" if ta > tb else "b"
+
+
+# --------------------------------------------------------------------------- #
+# Saving throws (CWN SRD 2.02)
+# --------------------------------------------------------------------------- #
+
+SAVE_DIE = 20
+SAVE_TARGET_BASE = 16
+SAVE_TYPES: tuple[str, ...] = ("physical", "evasion", "mental", "luck")
+
+
 @dataclass(frozen=True)
-class SaveResult:
-    die: int
+class Save:
+    """One resolved saving throw."""
+
+    kind: str
     target: int
-    category: str
+    die: int
+    natural: bool
 
     @property
     def success(self) -> bool:
-        return self.die >= self.target
+        return (self.die >= self.target) if not self.natural else self.die == SAVE_DIE
 
 
-def saving_throw(
+def save_target(
+    kind: str,
     *,
-    category: str,
-    scores: dict[str, int],
-    rng: Dice | None = None,
-    die: int | None = None,
-) -> SaveResult:
-    """`d20 >= 15 - best relevant attribute modifier`; Luck is a flat 15."""
-    if category not in SAVE_CATEGORIES:
-        raise ValueError(f"save category must be one of {SAVE_CATEGORIES}, got {category!r}")
+    level: int = 1,
+    modifiers: dict[str, int] | None = None,
+) -> int:
+    """``16 - level - the higher of the two listed attribute modifiers``; Luck has none.
 
-    relevant = _SAVE_STATS[category]
-    target = SAVE_BASE_TARGET
-    if relevant:
-        missing = [stat for stat in relevant if stat not in scores]
-        if missing:
-            raise ValueError(f"a {category} save needs {relevant}; missing {missing}")
-        target = SAVE_BASE_TARGET - max(attribute_modifier(scores[stat]) for stat in relevant)
-
-    if die is None:
-        rolled = _roll(rng or random.Random(), 20)[0]
-    else:
-        rolled = int(die)
-        if not 1 <= rolled <= 20:
-            raise ValueError(f"a d20 shows 1..20, got {rolled}")
-    return SaveResult(die=rolled, target=target, category=category)
-
-
-@dataclass(frozen=True)
-class AttackResult:
-    die: int
-    total: int
-    ac: int
-
-    @property
-    def hit(self) -> bool:
-        return self.total >= self.ac
-
-
-def attack_roll(
-    *,
-    attack_bonus: int,
-    ac: int,
-    rng: Dice | None = None,
-    die: int | None = None,
-) -> AttackResult:
-    """`d20 + attack bonus vs AC`. The unskilled -2 belongs in ``attack_bonus``; it is not applied twice."""
-    if die is None:
-        rolled = _roll(rng or random.Random(), 20)[0]
-    else:
-        rolled = int(die)
-        if not 1 <= rolled <= 20:
-            raise ValueError(f"a d20 shows 1..20, got {rolled}")
-    total = rolled + int(attack_bonus)
-    return AttackResult(die=rolled, total=total, ac=int(ac))
-
-
-def roll_attributes(rng: Dice | None = None) -> dict[str, int]:
-    """Roll six attributes in order on 3d6.
-
-    The contract also offers the array ``14/12/11/10/9/7`` and one free score of 14; those are assignment
-    choices made by the table, so they live in the JSON contract rather than in a generator.
+    The SRD subtracts *character level*, which is why an unlevelled character (level 1 here) has a
+    harder target than a veteran. The two modifiers are the category's own pair — Physical uses
+    Strength or Constitution, Evasion Dexterity or Intelligence, Mental Wisdom or Charisma.
     """
-    source = rng or random.Random()
-    order = ("STR", "DEX", "CON", "INT", "WIS", "CHA")
-    return {stat: sum(_roll(source, 6, 3)) for stat in order}
+    key = _require_save(kind)
+    attrs = SAVE_ATTRIBUTES[key]
+    mods = modifiers or {}
+    best = max((int(mods.get(attr, 0)) for attr in attrs), default=0) if attrs else 0
+    return SAVE_TARGET_BASE - int(level) - best
+
+
+def roll_save(
+    kind: str,
+    *,
+    level: int = 1,
+    modifiers: dict[str, int] | None = None,
+    rng: Any = None,
+    die: int | None = None,
+) -> Save:
+    """Roll a save: a natural 1 always fails and a natural 20 always succeeds."""
+    key = _require_save(kind)
+    target = save_target(key, level=level, modifiers=modifiers)
+    source = rng if rng is not None else random.Random()
+    rolled = source.randint(1, SAVE_DIE) if die is None else int(die)
+    if not 1 <= rolled <= SAVE_DIE:
+        raise WnError(f"a save roll must be 1..{SAVE_DIE}, got {rolled}")
+    return Save(kind=key, target=target, die=rolled, natural=rolled in (1, SAVE_DIE))
+
+
+SAVE_ATTRIBUTES: dict[str, tuple[str, ...]] = {
+    "physical": ("STR", "CON"),
+    "evasion": ("DEX", "INT"),
+    "mental": ("WIS", "CHA"),
+    "luck": (),
+}
+
+
+def _require_save(kind: str) -> str:
+    key = str(kind).lower()
+    if key not in SAVE_TYPES:
+        raise WnError(f"unknown save type {kind!r}; expected one of {SAVE_TYPES}")
+    return key
+
+
+# --------------------------------------------------------------------------- #
+# Migration from the transitional 1d10 layer
+# --------------------------------------------------------------------------- #
+
+#: The six legacy STATs folded onto the family's six attributes. CYB and PSY have no attribute of
+#: their own: cybernetic and psychic capacity become skills, Edges and permissions (migration step M4).
+LEGACY_STAT_MAP: dict[str, str] = {
+    "FIT": "STR",
+    "REF": "DEX",
+    "INT": "INT",
+    "SOC": "CHA",
+    "CYB": "INT",
+    "PSY": "WIS",
+}
+
+
+def from_legacy_stat(value: int) -> int:
+    """Map a legacy 1..10 STAT onto a 3..18 attribute, preserving rank order (1 -> 3, 10 -> 18)."""
+    value = int(value)
+    if not 1 <= value <= 10:
+        raise WnError(f"a legacy STAT is 1..10, got {value}")
+    return ATTRIBUTE_MIN + round((value - 1) * (ATTRIBUTE_MAX - ATTRIBUTE_MIN) / 9)
+
+
+def from_legacy_skill(value: int) -> int:
+    """Map a legacy 1..10 skill rating onto a level 0..4 (1..2 -> 0, 3..4 -> 1, ... 9..10 -> 4)."""
+    value = int(value)
+    if not 1 <= value <= 10:
+        raise WnError(f"a legacy skill rating is 1..10, got {value}")
+    return min(4, (value - 1) // 2)
