@@ -1,0 +1,327 @@
+{
+  "_note": "PROVISIONAL NooPunk technique catalogue. The mechanics follow the psionic shape adopted in rulebook/WITHOUT_NUMBER_BASELINE.md section 6 (core capability, individually learned techniques, Effort commitment). Every technique name and every sentence of effect text here is original NooPunk content: Stars Without Number has no verified SRD licence, so none of its power names, tables or prose is reproduced (docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md). The author owns every number in this file; IS_CANONICAL is false until ruled otherwise.",
+  "version": "noopunk-psi-techniques-0.1",
+  "status": "provisional",
+  "is_canonical": false,
+  "source_shape": "SWN Revised psionics (mechanics re-expressed) + WWN SRD Effort pattern (CC0)",
+  "discipline_cores": {
+    "Biopsionics": {
+      "id": "mending_touch",
+      "name": "Mending Touch",
+      "min_skill": 0,
+      "effort": "none",
+      "duration": "instant",
+      "check": null,
+      "consent_required": true,
+      "effect": "Restore 1d6 + Biopsionics skill in hit points to a touched subject. A mortally wounded subject stabilizes instead of healing. Once per subject per scene."
+    },
+    "Metapsionics": {
+      "id": "weave_sight",
+      "name": "Weave Sight",
+      "min_skill": 0,
+      "effort": "none",
+      "duration": "scene",
+      "check": null,
+      "consent_required": false,
+      "effect": "Sense whether psionic effects are active within 30 metres and in which direction, but not who or what caused them."
+    },
+    "Precognition": {
+      "id": "hunch",
+      "name": "Hunch",
+      "min_skill": 0,
+      "effort": "none",
+      "duration": "instant",
+      "check": {
+        "attribute": "INT",
+        "difficulty": 8
+      },
+      "consent_required": false,
+      "effect": "Ask one question about what is about to happen in the next few minutes. The answer is a fragment: yes, no, both, or a single image. It is evidence, never a verdict."
+    },
+    "Telekinesis": {
+      "id": "lift",
+      "name": "Lift",
+      "min_skill": 0,
+      "effort": "none",
+      "duration": "scene",
+      "check": null,
+      "consent_required": false,
+      "effect": "Move up to ten kilograms within ten metres without touching it. Fine manipulation is impossible; a held object cannot be used as a weapon."
+    },
+    "Telepathy": {
+      "id": "surface_read",
+      "name": "Surface Read",
+      "min_skill": 0,
+      "effort": "none",
+      "duration": "instant",
+      "check": {
+        "attribute": "WIS",
+        "difficulty": 8
+      },
+      "consent_required": true,
+      "effect": "Read the dominant emotion and immediate intent of a visible mind. The subject feels an unnamed unease, not the reading itself."
+    },
+    "Teleportation": {
+      "id": "blink",
+      "name": "Blink",
+      "min_skill": 0,
+      "effort": "none",
+      "duration": "instant",
+      "check": null,
+      "consent_required": false,
+      "effect": "Shift up to three metres to a point you can see. You cannot arrive inside solid matter; if you cannot see the destination, you cannot go."
+    }
+  },
+  "techniques": [
+    {
+      "id": "staunch",
+      "name": "Staunch",
+      "discipline": "Biopsionics",
+      "min_skill": 1,
+      "effort": "commit_scene",
+      "duration": "instant",
+      "check": null,
+      "consent_required": true,
+      "effect": "Stabilize a mortally wounded subject you can touch, with no check. The subject still recovers as a stabilized mortal wound does."
+    },
+    {
+      "id": "purge",
+      "name": "Purge",
+      "discipline": "Biopsionics",
+      "min_skill": 2,
+      "effort": "commit_day",
+      "duration": "instant",
+      "check": {
+        "attribute": "WIS",
+        "difficulty": 10
+      },
+      "consent_required": true,
+      "effect": "Neutralize one poison or disease in a touched subject on a successful check. Congenital conditions are not affected."
+    },
+    {
+      "id": "rebuild",
+      "name": "Rebuild",
+      "discipline": "Biopsionics",
+      "min_skill": 3,
+      "effort": "commit_day",
+      "duration": "instant",
+      "check": null,
+      "consent_required": true,
+      "effect": "After an hour of work, remove the Frail condition from one subject. The hour is spent whether or not the subject later relapses."
+    },
+    {
+      "id": "dampen",
+      "name": "Dampen",
+      "discipline": "Metapsionics",
+      "min_skill": 1,
+      "effort": "commit_scene",
+      "duration": "scene",
+      "check": {
+        "attribute": "WIS",
+        "difficulty": 9
+      },
+      "consent_required": false,
+      "effect": "One named psionic effect on a subject you can see ends if you beat its user in an opposed WIS/Metapsionics check. If the effect has no user present, the difficulty is 9."
+    },
+    {
+      "id": "torch_shield",
+      "name": "Torch Shield",
+      "discipline": "Metapsionics",
+      "min_skill": 2,
+      "effort": "commit_day",
+      "duration": "day",
+      "check": null,
+      "consent_required": false,
+      "effect": "While this is committed, roll twice when you torch and take the better result."
+    },
+    {
+      "id": "sever",
+      "name": "Sever",
+      "discipline": "Metapsionics",
+      "min_skill": 3,
+      "effort": "commit_day",
+      "duration": "instant",
+      "check": {
+        "attribute": "WIS",
+        "difficulty": 11
+      },
+      "consent_required": false,
+      "effect": "End every sustained psionic effect on one subject. Each effect beyond the first raises the difficulty by 1."
+    },
+    {
+      "id": "danger_sense",
+      "name": "Danger Sense",
+      "discipline": "Precognition",
+      "min_skill": 1,
+      "effort": "commit_scene",
+      "duration": "scene",
+      "check": null,
+      "consent_required": false,
+      "effect": "Add +2 to your initiative and +1 to both Armor Classes for the scene. You cannot be surprised."
+    },
+    {
+      "id": "flash_forward",
+      "name": "Flash Forward",
+      "discipline": "Precognition",
+      "min_skill": 2,
+      "effort": "commit_scene",
+      "duration": "scene",
+      "check": null,
+      "consent_required": false,
+      "effect": "Act first in the round regardless of initiative. If another combatant also acts first, resolve between you normally."
+    },
+    {
+      "id": "probability_lock",
+      "name": "Probability Lock",
+      "discipline": "Precognition",
+      "min_skill": 3,
+      "effort": "commit_day",
+      "duration": "instant",
+      "check": null,
+      "consent_required": false,
+      "effect": "Reroll one check you have just failed, keeping the second result. Declaring it after the dice are known is the point."
+    },
+    {
+      "id": "shove",
+      "name": "Shove",
+      "discipline": "Telekinesis",
+      "min_skill": 1,
+      "effort": "none",
+      "duration": "instant",
+      "check": {
+        "attribute": "WIS",
+        "difficulty": 8
+      },
+      "consent_required": false,
+      "effect": "Push a target up to ten metres away: 1d6 damage and a chance to knock them prone. Resolve as a normal attack against Evasion AC."
+    },
+    {
+      "id": "barrier",
+      "name": "Barrier",
+      "discipline": "Telekinesis",
+      "min_skill": 2,
+      "effort": "commit_scene",
+      "duration": "scene",
+      "check": null,
+      "consent_required": false,
+      "effect": "Add +2 Melee AC against incoming attacks. The barrier is invisible and provides no cover against suppressive fire."
+    },
+    {
+      "id": "crush",
+      "name": "Crush",
+      "discipline": "Telekinesis",
+      "min_skill": 3,
+      "effort": "commit_day",
+      "duration": "instant",
+      "check": {
+        "attribute": "WIS",
+        "difficulty": 10
+      },
+      "consent_required": false,
+      "effect": "2d6 damage to one target at close range, ignoring armor's Damage Soak. This attack can inflict a Traumatic Hit."
+    },
+    {
+      "id": "thread",
+      "name": "Thread",
+      "discipline": "Telepathy",
+      "min_skill": 1,
+      "effort": "commit_scene",
+      "duration": "scene",
+      "check": null,
+      "consent_required": true,
+      "effect": "A silent two-way link with one willing mind within 100 metres. Words only; no images, no commands."
+    },
+    {
+      "id": "command",
+      "name": "Command",
+      "discipline": "Telepathy",
+      "min_skill": 2,
+      "effort": "commit_day",
+      "duration": "instant",
+      "check": {
+        "attribute": "WIS",
+        "difficulty": 10
+      },
+      "consent_required": true,
+      "effect": "One short imperative that the subject must obey unless it would obviously kill them. A Mental save resists. Using this without consent is an assault, in law and in the fiction."
+    },
+    {
+      "id": "deep_scan",
+      "name": "Deep Scan",
+      "discipline": "Telepathy",
+      "min_skill": 3,
+      "effort": "commit_day",
+      "duration": "instant",
+      "check": {
+        "attribute": "WIS",
+        "difficulty": 11
+      },
+      "consent_required": true,
+      "effect": "Read one specific memory from a touched mind. A subject who passes a Mental save knows a scan was attempted and by whom."
+    },
+    {
+      "id": "step",
+      "name": "Step",
+      "discipline": "Teleportation",
+      "min_skill": 1,
+      "effort": "commit_scene",
+      "duration": "instant",
+      "check": null,
+      "consent_required": false,
+      "effect": "Shift up to thirty metres to a point you can see. Arriving inside solid matter is impossible."
+    },
+    {
+      "id": "carry",
+      "name": "Carry",
+      "discipline": "Teleportation",
+      "min_skill": 2,
+      "effort": "commit_scene",
+      "duration": "instant",
+      "check": null,
+      "consent_required": true,
+      "effect": "Take one willing touched person with you on a teleportation you are already performing."
+    },
+    {
+      "id": "fold",
+      "name": "Fold",
+      "discipline": "Teleportation",
+      "min_skill": 3,
+      "effort": "commit_day",
+      "duration": "instant",
+      "check": {
+        "attribute": "WIS",
+        "difficulty": 11
+      },
+      "consent_required": false,
+      "effect": "Travel up to one kilometre to a place you have seen before. A failed check means you arrive somewhere close but wrong, and the referee decides where."
+    },
+    {
+      "id": "empathic_trace",
+      "name": "Empathic Trace",
+      "discipline": "Telepathy",
+      "min_skill": 1,
+      "effort": "commit_scene",
+      "duration": "instant",
+      "check": {
+        "attribute": "WIS",
+        "difficulty": 9
+      },
+      "consent_required": false,
+      "effect": "Read the emotional residue a person left on a place or an object they handled. The trace is a feeling and a rough impression of intent, never a name, a face or a memory."
+    },
+    {
+      "id": "premonition",
+      "name": "Premonition",
+      "discipline": "Precognition",
+      "min_skill": 0,
+      "effort": "none",
+      "duration": "instant",
+      "check": {
+        "attribute": "WIS",
+        "difficulty": 8
+      },
+      "consent_required": false,
+      "effect": "A warning of immediate danger: one sentence about the next few seconds, true but always incomplete. It cannot be repeated for the same danger."
+    }
+  ]
+}

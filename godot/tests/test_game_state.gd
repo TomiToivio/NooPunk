@@ -13,7 +13,7 @@ func run() -> Array:
 	rows.append(_eq("six evidence items", state.evidence_items.size(), 6))
 	rows.append(_eq("attribute read from the sheet", state.attribute("INT"), 14))
 	rows.append(_eq("untrained skill is -1", state.skill("Forensics"), -1))
-	rows.append(_eq("trained skill", state.skill("Psychology"), 3))
+	rows.append(_eq("trained skill", state.skill("Know"), 2))
 
 	rows.append(_eq("evidence added", state.add_evidence("E1"), true))
 	rows.append(_eq("evidence not added twice", state.add_evidence("E1"), false))
@@ -40,7 +40,7 @@ func run() -> Array:
 
 	# A check records the roll in the journal and publishes its parts.
 	var before: int = state.journal.size()
-	var result: Dictionary = state.resolve_check("INT", "Psychology", 10)
+	var result: Dictionary = state.resolve_check("INT", "Know", 10)
 	rows.append(_eq("check publishes its die pool", String(result["die_pool"]), "2d6 (kernel)"))
 	rows.append(_eq("check appends one journal line", state.journal.size(), before + 1))
 
@@ -72,9 +72,9 @@ func run() -> Array:
 	# Every one of these passed the data-integrity suite while being broken in play.
 	var probe = GameStateScript.new()
 	probe.new_case(11)
-	var trained: Dictionary = probe.resolve_check("INT", "Psychology", 8)
+	var trained: Dictionary = probe.resolve_check("INT", "Know", 8)
 	var untrained: Dictionary = probe.resolve_check("INT", "Forensics", 8)
-	rows.append(_eq("a check applies the named skill", int(trained["skill_level"]), 3))
+	rows.append(_eq("a check applies the named skill", int(trained["skill_level"]), 2))
 	rows.append(_eq("an unknown skill is untrained", int(untrained["skill_level"]), -1))
 
 	probe.add_evidence("E4")
@@ -93,8 +93,8 @@ func run() -> Array:
 
 	var stream = GameStateScript.new()
 	stream.new_case(11)
-	stream.resolve_check("INT", "Psychology", 8)
-	stream.resolve_check("INT", "Psychology", 8)
+	stream.resolve_check("INT", "Know", 8)
+	stream.resolve_check("INT", "Know", 8)
 	var dice_state: Dictionary = stream.rules.snapshot()
 	var expected_next: Array = stream.rules.skill_check(14, 3, 8)["dice"]
 	var resumed = GameStateScript.new()

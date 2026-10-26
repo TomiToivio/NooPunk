@@ -6,12 +6,22 @@
       "text": "Three patients, three units, and the same red door. I have been a psychiatrist for nineteen years and I do not know what to do with that sentence.",
       "choices": [
         {
-          "text": "Then start with what the record says. [Investigate]",
+          "text": "Then start with what the record says. [Know]",
           "check": {
             "attribute": "INT",
-            "skill": "Investigate",
+            "skill": "Know",
             "difficulty": 8,
             "success_node": "doctor_record",
+            "failure_node": "doctor_deflect"
+          }
+        },
+        {
+          "text": "Ask the ward network who touched the file. [Program]",
+          "check": {
+            "attribute": "INT",
+            "skill": "Program",
+            "difficulty": 9,
+            "success_node": "doctor_network",
             "failure_node": "doctor_deflect"
           }
         },
@@ -42,6 +52,16 @@
       "speaker": "Dr. Laine",
       "text": "Not me. A research ethics board, and they are not psychiatrists. The patient came to us through a study, and the study is not part of my ward.",
       "effects": { "add_evidence": ["E4"], "set_flags": ["annex_hinted"] },
+      "next": "doctor_1"
+    },
+    "doctor_network": {
+      "speaker": "Reception terminal",
+      "text": "The ward's own access log answers: the file was opened eleven times from an address outside the hospital, all eleven after the patient was admitted, none of them by the ward. Program-1 and an Access pool got this far; the sealed annex itself would need a Verb the deck does not carry.",
+      "effects": {
+        "add_evidence": ["E4"],
+        "set_flags": ["annex_hinted"],
+        "add_journal": "The ward network shows the file read from outside the hospital, eleven times."
+      },
       "next": "doctor_1"
     },
     "doctor_deflect": {
@@ -126,12 +146,22 @@
       "effects": { "add_evidence": ["E2"] },
       "choices": [
         {
-          "text": "Read the account clinically, and say what it supports. [Psychology]",
+          "text": "Read the account clinically, and say what it supports. [Know]",
           "check": {
             "attribute": "INT",
-            "skill": "Psychology",
+            "skill": "Know",
             "difficulty": 10,
             "success_node": "patient_interpret",
+            "failure_node": "patient_plain"
+          }
+        },
+        {
+          "text": "Sit with them and read the room, not the memory. [Surface Read — Telepathy]",
+          "check": {
+            "attribute": "WIS",
+            "skill": "Telepathy",
+            "difficulty": 8,
+            "success_node": "patient_psi",
             "failure_node": "patient_plain"
           }
         },
@@ -153,6 +183,16 @@
         "set_flags": ["account_interpreted"],
         "add_evidence": ["E6"],
         "add_journal": "The account is coherent under interview, and it names a place that the trial never published."
+      },
+      "next": "patient_place"
+    },
+    "patient_psi": {
+      "speaker": "Patient Korhonen",
+      "text": "You went quiet. The way the night staff go quiet when they are counting something they cannot see. Whatever you picked up, it is not testimony and it goes in the file as an impression, not as a fact.",
+      "effects": {
+        "set_flags": ["account_interpreted", "psi_reading_on_record"],
+        "add_evidence": ["E6"],
+        "add_journal": "A surface reading was taken with consent. It corroborates the account and proves nothing; the file records it as an impression."
       },
       "next": "patient_place"
     },
