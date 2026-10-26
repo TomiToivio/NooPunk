@@ -63,3 +63,60 @@ Build the vertical slice with **CC0 only**: the slipperhat tilepack for structur
 shell, and MagicaVoxel for the few props the hospital case needs. That proves the gameplay loop without
 committing to an art pipeline. Revisit the paid list only after the slice is playable and the art
 direction is chosen.
+
+---
+
+## Free and open-source shortlist — verified 2026-10-26
+
+Each licence was read at the source on 2026-10-26. **Re-read at download time**: store pages change and
+a summary is not a licence.
+
+| Source | Licence (as stated by the source) | Commercial | Attribution | Safe to commit to the public repo? | What it gives |
+| --- | --- | --- | --- | --- | --- |
+| **Kenney** — <https://kenney.nl/assets> | *"all game assets on the asset pages are public domain licensed (CC0)"* | yes | **not required** | **yes** — CC0 | Voxel Kit, Voxel Pack, Isometric Miniature Library / Prototype, UI packs. The fastest way to furnish a hospital interior |
+| **KayKit** (Kay Lousberg) — <https://kaylousberg.itch.io/> | *"Free for personal and commercial use, no attribution required. (CC0 Licensed)"* | yes | **not required** | **yes** — CC0 | Character packs and modular kits; a good source of readable low-poly people |
+| **Poly Haven** — <https://polyhaven.com/> | CC0 (asset licence page) | yes | not required | **yes** — CC0 | HDRIs, textures, models. The cheapest way to make an isometric scene *look* lit rather than flat |
+| **Quaternius** — <https://quaternius.com/> | **Quaternius Asset License (QAL) v1.0** — free for personal, educational **and commercial** use, no credit required, but **"you can't resell or redistribute the assets"** | yes | **not required** | **NO** — QAL forbids redistribution *as assets*; committing a raw pack to a public repo is exactly that | Cyberpunk Game Kit and a large low-poly library |
+| **Godot Asset Library** — <https://godotengine.org/asset-library/> | per-addon, mixed | varies | varies | per-addon | Editor plugins only; verify each |
+
+**The Quaternius row is the trap worth naming.** It reads like CC0 and is *freer than CC0 in use* — no
+credit, commercial allowed — but it explicitly forbids redistributing the assets themselves. So the
+Cyberpunk Game Kit is usable **in the game** and must **not** be committed to the public repository.
+Record it in the manifest and keep the pack outside git, exactly like purchased material.
+
+## Paid shortlist — to purchase later, not now
+
+Prices are deliberately **not quoted**: Synty's store uses dynamic sale pricing and any number written
+here would be stale by the time it is read. Check the product page.
+
+| Vendor | Pack | Why it is on the list | Caveat |
+| --- | --- | --- | --- |
+| **Synty** | [POLYGON — Sci-Fi Cyber City](https://syntystore.com/products/polygon-sci-fi-cyber-city) | Closest off-the-shelf match to a dense near-future Helsinki street | Unity-first; check Godot/GLB notes and animation rework cost |
+| **Synty** | [POLYGON — Gang Warfare](https://syntystore.com/products/polygon-gang-warfare-pack) | Street-level factions, civilians, props | Same pipeline caveat |
+| **Synty** | [POLYGON — Heist Pack](https://syntystore.com/products/polygon-heist-pack) | Interiors, security, urban props | Same |
+| **monogon** | [Voxel Cyberpunk City](https://maxparata.itch.io/cyberpunkcity-monogon) | **Directly on the Cloudpunk axis** — voxel city blocks | Itch licence varies per product; read it before buying |
+| **Synty bundles via Humble/Fanatical** | — | Historically the cheapest route to a whole Synty library | Bundles mix licence types — check each pack |
+| **Synty 5-seat studio licence** | — | The base Synty licence covers 5 seats | Confirm it covers a solo project shipping on multiple storefronts |
+
+**Do not buy yet.** See the art-direction note below: the choice between voxel-3D, low-poly-3D and
+pixel-2D decides *which* of these is even usable, and the three pipelines do not mix.
+
+## Art direction, translated into asset requirements
+
+The references point in one direction, and it is worth saying plainly because it decides the budget:
+
+| Reference | What it actually contributes | What it implies for assets |
+| --- | --- | --- |
+| **Cloudpunk** | Voxel city, isometric-ish camera, neon night, dense verticality | **Voxel props and city blocks**; strong emissive materials; fog |
+| **Shadows of Doubt** | Voxel look, believable modular city, procedural density | Voxel character and prop kit; modularity over hero art |
+| **Shadowrun: Dragonfall** | Isometric, turn-based tactics, readable silhouettes | A **grid-friendly** isometric camera and clear unit silhouettes |
+| **Disco Elysium** | Dialogue-first, portrait art, skill voices | **Portrait system + dialogue UI kit**; art budget belongs in UI and portraits, not props |
+| **Citizen Sleeper** | Text-forward, dice as a resource, UI-driven tension | Typographic UI, dice/check presentation |
+
+**The conclusion this supports (a recommendation, not a decision):** *voxel 3D viewed through an
+isometric camera*. It is the only option that satisfies Cloudpunk/Shadows of Doubt **and** keeps the
+existing Godot 3D slice — a pixel-art 2D isometric pipeline would discard `src/godot/lakkahaltia_scene.gd`
+and every 3D node it builds, and a low-poly non-voxel kit loses the specific Cloudpunk read.
+
+If that holds, the buy order becomes: **Kenney Voxel Kit + Poly Haven HDRI first (free, prove the look) →
+MagicaVoxel for bespoke props (free) → one Synty or monogon pack only after the look is proven**.
