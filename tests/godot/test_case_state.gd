@@ -11,8 +11,8 @@ func _state() -> NooPunkCaseState:
 func test_the_case_file_loads_with_a_playable_character() -> void:
 	var state := _state()
 	check_eq(state.case_data.get("id"), "lakkahaltia", "case id")
-	check_eq(state.stat("INT"), 7, "Romppainen INT comes from the case file")
-	check_eq(state.skill("Investigate"), 3, "skill level comes from the case file")
+	check_eq(state.stat("INT"), 14, "Romppainen INT comes from the case file")
+	check_eq(state.skill("Program"), 1, "skill level comes from the case file")
 	check_eq(state.case_data.get("npcs", []).size(), 3, "three conversational NPCs")
 
 func test_effects_are_idempotent_and_typed() -> void:
@@ -74,3 +74,21 @@ func test_a_save_from_another_version_is_refused() -> void:
 	var payload := state.to_dict()
 	payload["save_version"] = 999
 	check_eq(state.from_dict(payload), false, "future save versions are refused")
+
+func test_character_position_and_checks_survive_and_legacy_is_rejected() -> void:
+	var state := _state()
+	state.character().stats.INT = 18
+	state.player_position = [1.0, 0.0, -10.0]
+	state.check_results.record = NooPunkWnRules.new().skill_check(18, 1, 8, null, [2, 3])
+	var loaded := _state()
+	check(loaded.from_dict(JSON.parse_string(JSON.stringify(state.to_dict()))), "JSON payload loads")
+	check_eq(loaded.stat("INT"), 18, "character survives")
+	check_eq(loaded.player_position[2], -10.0, "position survives")
+	check(loaded.check_results.record.success, "check survives")
+	var invalid := state.to_dict()
+	invalid.save_version = 1
+	check(not loaded.from_dict(invalid), "d10 saves are not silently reinterpreted")
+	invalid = state.to_dict()
+	invalid.character.stats.INT = "bad"
+	check(not loaded.from_dict(invalid), "invalid character rejected")
+	check_eq(loaded.stat("INT"), 18, "failed load preserves live state")

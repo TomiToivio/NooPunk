@@ -25,10 +25,10 @@ func test_mundane_ending_is_reachable_and_ambiguous() -> void:
 	_talk(state, "nurse", [1, 0, 0])
 	check(state.has_clue("nurse-inconsistency"), "the nurse's roster contradiction is a clue")
 	# The record check is a real roll; a fixed die makes this test deterministic.
-	var rules := NooPunkCoreRules.new()
+	var rules := NooPunkWnRules.new()
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 1
-	var roll := rules.resolve_check(rng, state.stat("INT"), state.skill("Investigate"), 12, 9)
+	var roll := rules.skill_check(state.stat("INT"), state.skill("Program"), 8, rng, [3, 3])
 	check(roll["success"], "a good roll reads the record")
 	state.add_clue("record-1601")
 	var endings := state.available_endings()
@@ -43,10 +43,10 @@ func test_anomalous_ending_requires_the_encounter_and_stays_ambiguous() -> void:
 	_talk(state, "patient", [1, 0, 0])
 	check(state.has_flag("met_patient"), "the patient conversation happened")
 	check(state.has_clue("patient-testimony"), "her account is a clue")
-	var rules := NooPunkCoreRules.new()
+	var rules := NooPunkWnRules.new()
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 3
-	var roll := rules.resolve_check(rng, state.stat("PSY"), state.skill("Awareness"), 13, 10)
+	var roll := rules.skill_check(state.stat("WIS"), state.skill("Notice"), 8, rng, [4, 4])
 	check(roll["success"], "the mirror check can succeed")
 	state.add_clue("lakkahaltia-sighting")
 	state.set_flag("anomaly_seen")
