@@ -1,3 +1,7 @@
+## Play the Godot hospital prototype
+
+Open `project.godot` with Godot **4.5.1** and press F5. Offline investigation, three witnesses, evidence journal, skill check, two reports and save/load. [Run instructions, controls and limitations](docs/godot/GODOT_SLICE_631.md).
+
 # NoöPunk
 
 ## Reality has changed. You are still expected at work.

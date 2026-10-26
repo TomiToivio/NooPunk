@@ -1,0 +1,25 @@
+name: Godot detective slice
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  godot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Godot
+        run: |
+          curl --fail --location --retry 3 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip /tmp/godot.zip -d /tmp/godot
+          echo '/tmp/godot' >> "$GITHUB_PATH"
+      - name: Import, test executable behavior, smoke launch
+        run: |
+          set -o pipefail
+          Godot_v4.5.1-stable_linux.x86_64 --headless --path . --editor --quit 2>&1 | tee /tmp/import.log
+          ! grep -E 'SCRIPT ERROR|ERROR:' /tmp/import.log
+          timeout 60 Godot_v4.5.1-stable_linux.x86_64 --headless --path . --script tests/godot/test_slice.gd 2>&1 | tee /tmp/tests.log
+          ! grep -E 'SCRIPT ERROR|ERROR:' /tmp/tests.log
+          Godot_v4.5.1-stable_linux.x86_64 --headless --path . --quit-after 120 2>&1 | tee /tmp/smoke.log
+          ! grep -E 'SCRIPT ERROR|ERROR:' /tmp/smoke.log

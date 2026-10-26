@@ -1,45 +1,106 @@
-# Godot detective slice (#631): what exists what is missing and the gate
+# Godot hospital slice — issue #631
 
-**Status: groundwork only. The milestone is not runnable yet, and this issue must not be closed.**
+The root Godot project now launches a small offline hospital investigation. Tested
+with **Godot 4.5.1 stable**, Linux x86_64, using the headless compatibility renderer.
+This is a playable prototype with primitive geometry, not a finished art/pacing pass.
+Graphical desktop playtesting and the target 10–15 minute duration remain unverified.
 
-## What the repository already has
+## Run from a clean checkout
 
-| Artefact | State |
-|---|---|
-| `project.godot` | Godot 4 project, `main.tscn` as the entry point |
-| `scenes/main.tscn` | a **Control**-based menu/placeholder, not a 2.5D level |
-| `src/godot/core_rules.gd` | rules adapter over `data/rules/core.json` - **the superseded 1d10 kernel** |
-| `src/godot/wn_rules.gd` | **new**: adapter over `data/rules/wn_core.json`, the Without Number baseline |
+Install the standard (non-.NET) Godot 4.5.1 editor from
+https://github.com/godotengine/godot/releases/tag/4.5.1-stable . No Python, addons,
+LLM, credentials or network connection is needed at runtime.
 
-## The finding this issue depends on
+```sh
+godot --path . --editor --import
+# Open project.godot in the editor and press F6/F5, or:
+godot --path .
+# Automated executable tests:
+godot --headless --path . --editor --quit
+godot --headless --path . --script tests/godot/test_slice.gd
+godot --headless --path . --quit-after 120
+```
 
-`core_rules.gd` documents its resolution as `STAT + Skill + 1d10 vs DV`, reading `data/rules/core.json`.
-That kernel was superseded on 2026-10-26 when the author directed the Without Number chassis for
-everything (#615, implemented in #620). New Godot work must go through `wn_rules.gd`; the old adapter is
-left in place only because existing scenarios still resolve on it.
+Use the actual engine executable name if it is not installed as `godot`.
+Select New case. WASD/arrows move relative to the isometric camera. Approach a
+labelled person/object and press E. Mouse selects dialogue choices. J opens the
+scrollable evidence journal, C the demo sheet, F5 saves, F9 loads, Escape opens
+the menu. Movement pauses while a panel is open. No controller support yet.
 
-The instruction in #631 - *do not substitute stock 2d6 for a currently approved 3d6 rule* - is answered by
-the timeline: there is no approved 3d6 check anywhere in the tree, and the current approved baseline
-**is** `2d6`. That is recorded here rather than assumed, because the issue asks for the full #564
-timeline to be inspected first.
+Walkthrough: doctor in the records room (northwest), nurse at reception
+(southwest), patient in consultation (northeast). Each offers two interview
+branches, and leaving an interview is allowed. Inspect the records-room terminal:
+INT/Program against 8 displays the dice and locks that attempt. Success adds a
+clock-comparison clue; failure directs you to the nurse and never blocks finishing.
+After the patient interview and record inspection, visit the consultation-room
+window for the possible Lakkahaltia encounter. File a mundane or anomalous
+working hypothesis at the report desk (southeast). All three interviews plus the
+record are required; the anomalous route also requires the window encounter.
+You can continue investigating and revise the report afterwards.
 
-## What a playable vertical slice still needs
+Saves: `user://lakkahaltia-v1.json` in Godot's application user-data directory.
+The schema stores character, interviews, evidence, journal, check result, ending
+and player location. Write-to-temp then rename avoids replacing a good save with
+a partially written one. Missing, malformed and unsupported saves leave the
+current case intact. Legacy Python/Fate/d10 saves are deliberately not imported.
 
-1. A 2.5D/isometric level scene (entrance, corridor, reception, consultation room) with a
-   `CharacterBody3D` player, camera rig and collision.
-2. Interaction system: raycast/area prompts, an interaction interface, and data-driven dialogue.
-3. Branching interview content for doctor, nurse and patient, plus a persistent evidence journal.
-4. A record/clue inspection flow calling `wn_rules.skill_check` with a **visible** roll and result.
-5. Choice-dependent state, the Lakkahaltia encounter, and two ambiguous endings (mundane vs anomalous).
-6. Save/load of case state, dialogue flags and evidence.
-7. Fully offline; no LLM, no network.
+## Audit and reuse
 
-## The gate stated plainly
+Read root `AGENTS.md`, `RULEBOOK.md` and its current baseline override,
+`rulebook/WITHOUT_NUMBER_BASELINE.md`, `docs/archive/DESIGN_PRINCIPLES.md`,
+`docs/design/ISSUE_626_ROMPPAINEN_EUROPOL_UNIT.md`, #564 timeline and #615.
+No nested instructions apply to the changed directories. No private/external
+NoöPunk-specific agent skill file was available in this workspace to update.
+Tests exercise executable behavior only; no prose/canon tests or gates were added.
 
-None of the above can be verified on the machine this was written on: **there is no `godot` binary
-installed**. The issue's own closing rule is *do not close until a clean checkout can run the
-milestone*. That condition is not met, and the rules adapter alone does not meet it.
+PR #632 already supplied `src/godot/wn_rules.gd`; this implementation extends it
+and the existing root `project.godot` / `scenes/main.tscn`, rather than introducing
+a competing project. Existing Python, Concordia and crossover runtimes remain.
+The superseded `core_rules.gd` stays available to legacy consumers.
 
-To proceed, either install Godot 4 on Laskin so the slice can actually be launched and tested, or run
-the slice authoring on a workstation that has it. Until then this stays a groundwork PR: one adapter,
-one honest status document, no claim of playability.
+The latest explicit author override adopts STR/DEX/CON/INT/WIS/CHA, 3–18 scores,
+and 2d6 checks. #564's historical restrictions do not override that later decision.
+The adapter reads the existing `wn_core.json` contract; investigation resolution
+uses it directly. The demonstration character uses the baseline's illustrative
+attributes, not a newly specified character-creation system. Only skills needed
+for this slice are exposed. No combat, progression or psychic ability is implied.
+
+## Structure and scope
+
+- `data/scenarios/lakkahaltia.json`: original draft scenario, interview branches,
+  evidence and competing interpretations, endings, minimal demonstration sheet.
+- `src/godot/investigation/case_state.gd`: authoritative case state, quest gates,
+  rules call, versioned persistence. Independent of scene nodes.
+- `src/godot/investigation/hospital.gd`: primitive 3D layout, collision, orthographic
+  camera, proximity interaction and UI; presentation separated from case logic.
+- `tests/godot/test_slice.gd`: deterministic checks, both success/failure routes,
+  endings, persistence, invalid save, real scene and button wiring, collision.
+- `.github/workflows/godot-slice.yml`: pinned engine import/tests/launch.
+
+Scenario dialogue is an editable demonstration authored for #631, not a new
+universal canon ruling. Uses #626's consent/corroboration procedure and pre-crisis
+hospital frame. No illness-as-proof-of-PSI mechanic, truth detector or supernatural
+classification. The requested podcast is an inspiration reference only: its
+contents were not transcribed or independently verified for this implementation.
+
+## Asset manifest
+
+| Asset | Source | Rights / attribution | Redistribution |
+|---|---|---|---|
+| Hospital, props, people | Godot BoxMesh/CapsuleMesh primitives constructed by original project code | No third-party art files | Safe to include as code |
+| Interface font | Godot built-in default | Distributed with Godot; retain Godot distribution notices in builds | No font copied into repo |
+| Dialogue, evidence | Original draft JSON for #631 | Project-authored, no source-book expression | No purchased or external art |
+
+No external asset packs or addons are included. Future Kenney/Quaternius/etc. pack
+selection must record the exact pack license before import. No publisher art,
+book PDFs or purchased assets were committed. Without Number is by Kevin Crawford /
+Sine Nomine Publishing; this unofficial project is not endorsed by the publisher.
+
+## Follow-on milestones
+
+1. Desktop playtest, responsive UI, reusable authored room/prop scenes, licensed
+   art, accessibility and expanded investigation pacing.
+2. CWN hacking/cybernetics behind case actions, with access prerequisites.
+3. SWN PSI only through the approved package/technique adapter; keep testimony
+   separate from mechanical evidence. WWN exploration and AWN survival when needed.
+4. Tactical combat, then global strategy through explicit shared-rule adapters.

@@ -1,0 +1,108 @@
+{
+  "title": "Etsivä Romppainen ja Lakkahaltian Salaisuus",
+  "character": {
+    "name": "Harri Romppainen",
+    "attributes": {
+      "STR": 9,
+      "DEX": 12,
+      "CON": 10,
+      "INT": 14,
+      "WIS": 11,
+      "CHA": 7
+    },
+    "skills": {
+      "Notice": 0,
+      "Program": 1,
+      "Talk": 0
+    }
+  },
+  "interviews": {
+    "doctor": {
+      "name": "Doctor",
+      "position": [
+        -5,
+        0,
+        -3
+      ],
+      "intro": "The automated summary says the patient never left the room. I signed it before checking the underlying log.",
+      "choices": [
+        {
+          "label": "Ask for the original log",
+          "reply": "The original clock and the summary disagree. Please preserve both.",
+          "flag": "log"
+        },
+        {
+          "label": "Ask about the diagnosis",
+          "reply": "A diagnosis cannot tell you who opened a door. Start with the building.",
+          "flag": "clinical"
+        }
+      ]
+    },
+    "nurse": {
+      "name": "Ward nurse",
+      "position": [
+        -5,
+        0,
+        3
+      ],
+      "intro": "The night doors opened during a network restart. I remember a visitor, but the camera remembers an empty corridor.",
+      "choices": [
+        {
+          "label": "Ask for the shift chronology",
+          "reply": "The restart came first. The footsteps came later. I wrote them separately.",
+          "flag": "chronology"
+        },
+        {
+          "label": "Ask about the visitor",
+          "reply": "A coat, perhaps. The reflection made it look green. Please do not put certainty in my mouth.",
+          "flag": "visitor"
+        }
+      ]
+    },
+    "patient": {
+      "name": "Patient",
+      "position": [
+        5,
+        0,
+        -3
+      ],
+      "intro": "I will talk if I can stop whenever I want. The name was Lakkahaltia. I heard it years ago, before this ward.",
+      "choices": [
+        {
+          "label": "Listen without suggesting an explanation",
+          "reply": "Someone waited by the window. Or I remembered someone waiting. Write that down too.",
+          "flag": "testimony"
+        },
+        {
+          "label": "Ask whether the screen suggested the name",
+          "reply": "The screen has been showing old city photographs. I cannot separate the dream from the picture.",
+          "flag": "screen"
+        }
+      ]
+    }
+  },
+  "evidence": {
+    "record": {
+      "title": "Authorized medical-record extract",
+      "text": "A consented, redacted extract records a corridor visit at 02:14. The automated summary says the patient slept. Neither establishes why.",
+      "mundane": "Clock mismatch or summarization error.",
+      "anomalous": "A shared interruption in remembered time."
+    },
+    "reflection": {
+      "title": "Window reflection",
+      "text": "A greenish outline appears beside your reflection. A passing coat, display bleed, or a visitor?",
+      "mundane": "Reflection from a hallway display.",
+      "anomalous": "The figure described as Lakkahaltia."
+    },
+    "audit": {
+      "title": "Clock comparison",
+      "text": "The door log precedes the summary by eleven minutes; the discrepancy survives a local export.",
+      "mundane": "Independent devices drifted during the restart.",
+      "anomalous": "The witnesses describe the same missing interval."
+    }
+  },
+  "endings": {
+    "mundane": "Report: system failure remains the working explanation. Preserve the witness accounts and request an independent log audit. As you leave, the corrected summary includes a sentence nobody recalls dictating.",
+    "anomalous": "Report: retain an unexplained encounter as a hypothesis. Arrange a voluntary follow-up and preserve the original logs. Outside, the green shape resolves into a coat. You cannot tell whether anyone is wearing it."
+  }
+}
