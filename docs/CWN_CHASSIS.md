@@ -55,15 +55,17 @@ The [current inventory](RPG_CHASSIS_INVENTORY.md) documents:
 
 The 3d6 helper in `src/rules/_retired.py` generates attributes, **not core checks**. SOC is an intentional later replacement of CHA in the legacy layer. Existing code should remain unchanged while [#566](https://github.com/TomiToivio/NooPunk/issues/566) is open. The epic's request to preserve a “present 3d6 core check” cannot be achieved by preserving an implemented behavior that does not exist.
 
-## Ruling (#566, 2026-10-25) — **SUPERSEDED 2026-10-26 by the author's #615 direction**
+## Ruling (#566, 2026-10-25) — **SUPERSEDED 2026-10-26 by the Without Number baseline**
 
 > *"For beginning, use CWN/SWN/AWN/WWN system for everything. Make the stats, skills, all rules based on them.
 > We will modify later."*
 
-This ruling (kept below as the record) kept `1d10`, `SOC` and no classes. **It no longer governs.** The Without
-Number chassis now applies to everything: `2d6` skill checks, `d20` attacks and saves, `STR/DEX/CON/INT/WIS/CHA`
-on `3..18`, implemented in `data/rules/wn_core.json` and `src/rules/wn_core.py`. What follows is history, not
-current policy.
+The ruling below kept `1d10`, `SOC` and no classes. **It no longer governs.** The WN baseline (#620,
+`docs/design/RULING_2026-10-26_WN_BASELINE.md`) now applies to everything: `2d6 + modifier + skill` against the
+`6/8/10/12/14` ladder, `d20` attacks and saves, `STR/DEX/CON/INT/WIS/CHA` on `3..18`. Implementation:
+`src/rules/wn_core.py`; contract: `data/rules/wn_core.json`.
+
+What follows is the record of what was provisionally decided and why it was reversed — not current policy.
 
 *Confirmed 2026-10-25 by explicit author choice, not inherited from the provisional record. The scope answer below is now final for #564: **layer A only**, `1d10` stays, `4dF` stays for layer B. The provisional framing was correct and is no longer provisional.*
 
