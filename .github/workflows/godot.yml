@@ -58,15 +58,19 @@ jobs:
           curl -sSLo godot.zip \
             "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
           unzip -q godot.zip
-          mv "Godot_v${GODOT_VERSION}-stable_linux.x86_64" godot
-          chmod +x godot
-          ./godot --version
+          mkdir -p "$RUNNER_TEMP/godot-bin"
+          # The checkout already has a `godot/` directory; putting the binary there makes the next
+          # command try to execute a folder.
+          mv "Godot_v${GODOT_VERSION}-stable_linux.x86_64" "$RUNNER_TEMP/godot-bin/godot"
+          chmod +x "$RUNNER_TEMP/godot-bin/godot"
+          echo "$RUNNER_TEMP/godot-bin" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/godot-bin/godot" --version
 
       - name: Import the project (headless)
-        run: ./godot --headless --path . --import
+        run: godot --headless --path . --import
 
       - name: Rules, state, dialogue and scenario-data suites
-        run: ./godot --headless --path . --script res://godot/tests/run_tests.gd
+        run: godot --headless --path . --script res://godot/tests/run_tests.gd
 
       - name: Headless playthrough of the assembled level
-        run: ./godot --headless --path . res://godot/tests/playthrough.tscn --quit-after 300
+        run: godot --headless --path . res://godot/tests/playthrough.tscn --quit-after 300
