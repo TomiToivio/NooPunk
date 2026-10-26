@@ -48,6 +48,10 @@ NoöPunk is an experimental **computer RPG and social simulation** set in **20XX
 
 The project is currently a **playable text-based prototype**. You can run the normal game entirely without Ollama or an LLM.
 
+### Rules direction (issue #615)
+
+**New author decision (2026-10-26):** NoöPunk's target RPG begins with the **standard Without Number family** rules rather than a bespoke 1d10/Fate hybrid. **Cities Without Number** and **Stars Without Number** provide the shared attributes, skills and fundamental dice grammar; **Worlds Without Number** adds noetic/interdimensional science fantasy and **Ashes Without Number** adds local NHI Crisis survival and salvage. Start from existing procedures; customize after a functioning, single-sheet cross-genre RPG exists. The first independent Python chassis is `src/rules/without_number.py`. **Migration is incomplete:** existing legacy 1d10 and strategy crossover Fate code still runs separately while its callers, saves and scenarios are adapted. See the [#615 decision and progress record](docs/design/ISSUE_615_WITHOUT_NUMBER_RULES_DIRECTION.md) and [conversion epic #564](https://github.com/TomiToivio/NooPunk/issues/564) for remaining work, license restrictions and compatibility requirements.
+
 ## Motivation: social science first, science fiction second
 
 **My primary motivation is sociological modeling of possible near-future paradigm-shift scenarios.** NoöPunk is an experiment at the intersection of **social science, social data science, and social science fiction**. The game is a way to build and explore simple, explicit models of how societies, institutions, networks, ideologies, and political factions might respond to interacting transformations in AI, nonhuman intelligence (NHI), and consciousness/PSI. These are exploratory scenarios, not predictions or empirical claims that contested phenomena are real.
@@ -353,6 +357,24 @@ Current important influences include:
 - **The Expanse** and other science-fiction RPGs where specific subsystem ideas fit.
 
 Directly adapted material keeps its source and licensing provenance. No external ruleset supplies default mechanics automatically.
+
+**Design baseline (issue #615).** The *Without Number* family is the primary **procedure**
+reference: *Cities Without Number* for urban/network fieldwork and dangerous action, *Stars Without
+Number* for space, NHI and PSI framing, *Worlds Without Number* for noetic and interdimensional
+regions, and *Ashes Without Number* for crisis-ruin salvage and scarcity. Genre modules change **what
+you roll for** and **what a failure costs**; they never change **how you roll** — the check kernel
+stays NoöPunk's own (layer A `1d10`, the crossover's Fate `4dF`). See
+[`docs/design/ISSUE_615_RULES_BASELINE.md`](docs/design/ISSUE_615_RULES_BASELINE.md).
+
+**Licensing, stated precisely.** Of that family, only the *Cities Without Number* SRD and the *Worlds
+Without Number* SRD are verified CC0 reusable sources, and the dedication covers the SRD rather than
+the commercial book, its art or its setting. *Stars Without Number* and *Ashes Without Number* have no
+verified SRD and are used as **design references only** — no text or tables from them are reproduced.
+Credit is not a licence, and no single licence covers the whole family.
+
+NoöPunk is an unofficial, independent project. It is not endorsed by or affiliated with Sine Nomine
+Publishing, Posthuman Studios, Evil Hat Productions, lumpley games, or the creators of any game named
+above.
 
 ## Rules and world documentation
 
