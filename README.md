@@ -50,9 +50,7 @@ The project is currently a **playable text-based prototype**. You can run the no
 
 ### Rules direction (issue #615)
 
-**Current rules: [Without Number baseline v1](rulebook/WITHOUT_NUMBER_BASELINE.md).** CWN supplies the core stats, skills, combat, saves, character creation and progression; SWN supplies PSI, space and factions; AWN supplies crisis survival; WWN supplies otherworld exploration and major projects. The author's 26 October instruction replaces the old d10/Fate mechanical reservations. Custom rules will be revised later.
-
-This is a tabletop adoption using the source books. The runnable prototypes and their saved characters still use legacy mechanics; they are not yet a complete implementation of this baseline. [Machine-readable specification](data/rules/without_number.json).
+**New author decision (2026-10-26):** NoöPunk's target RPG begins with the **standard Without Number family** rules rather than a bespoke 1d10/Fate hybrid. **Cities Without Number** and **Stars Without Number** provide the shared attributes, skills and fundamental dice grammar; **Worlds Without Number** adds noetic/interdimensional science fantasy and **Ashes Without Number** adds local NHI Crisis survival and salvage. Start from existing procedures; customize after a functioning, single-sheet cross-genre RPG exists. The first independent Python chassis is `src/rules/without_number.py`. **Migration is incomplete:** existing legacy 1d10 and strategy crossover Fate code still runs separately while its callers, saves and scenarios are adapted. See the [#615 decision and progress record](docs/design/ISSUE_615_WITHOUT_NUMBER_RULES_DIRECTION.md) and [conversion epic #564](https://github.com/TomiToivio/NooPunk/issues/564) for remaining work, license restrictions and compatibility requirements.
 
 ## Motivation: social science first, science fiction second
 

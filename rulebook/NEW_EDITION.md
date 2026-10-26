@@ -1,4 +1,4 @@
-> **Rules superseded, 2026-10-26:** [Without Number baseline v1](WITHOUT_NUMBER_BASELINE.md) is the current mechanical authority under the author’s explicit CWN/SWN/AWN/WWN instruction. Conflicting stats, skills, dice, custom rules and approval gates below are historical. Preserve the setting material. Existing software remains legacy until ported.
+> **Current mechanics (2026-10-26):** [Without Number baseline v1](WITHOUT_NUMBER_BASELINE.md) supersedes conflicting historical stats, dice and skill rules below. Preserve setting and characters; existing software still requires migration.
 
 # NoöPunk RULEBOOK
 
@@ -36,20 +36,26 @@ Play as an individual investigating the impossible, or as a faction shaping the 
 
 ## 1. Your character: six attributes
 
-Every NoöPunk character has six distinct attributes. They describe *how a character approaches the world*, not predetermined character classes.
+Every NoöPunk character has six attributes. They describe *how a character approaches the world*, not predetermined character classes.
 
-| Attribute | Name | What it describes |
+**The base system is the *Without Number* shape** — author direction, 2026-10-26: *use CWN/SWN/AWN/WWN for everything; we will modify later*. The attributes are therefore the family's six, rated **3–18**, used the way that family uses them:
+
+| Attribute | Modifier | What it describes |
 |---|---|---|
-| **FIT** | Fitness | Strength, endurance, physical resilience and bodily capability |
-| **REF** | Reflexes | Speed, coordination, precision, balance and reaction |
-| **INT** | Intelligence | Learning, logic, evidence, research, deduction and technical understanding |
-| **SOC** | Social | Empathy, dialogue, persuasion, relationships, presence and influence |
-| **PSY** | Psyche | Inner life, emotions, motivation, will, intuition, identity and psychological resilience |
-| **CYB** | Cyber | Cybernetics, computers, networks, interfacing, AI systems and hacking |
+| **STR** Strength | 3 → −2 · 4–7 → −1 · 8–13 → +0 · 14–17 → +1 · 18 → +2 | Physical prowess, melee, carrying, brute force |
+| **DEX** Dexterity | same bands | Speed, evasion, manual precision, reaction, initiative |
+| **CON** Constitution | same bands | Hardiness, enduring injury, tolerating cyberware |
+| **INT** Intelligence | same bands | Memory, reasoning, technical skill, general education |
+| **WIS** Wisdom | same bands | Noticing, judgement, reading a situation, intuition |
+| **CHA** Charisma | same bands | Commanding, charming, being taken seriously |
 
-Attributes work alongside **separately rated learned skills**. The existing skill catalogue remains available as a migration baseline; its final narrative-edition presentation is being reviewed in [#263](https://github.com/TomiToivio/NooPunk/issues/263). Do not interpret **PSY** as automatically granting **PSI** (paranormal abilities). PSI and Astral phenomena require their own fictional permissions.
+Attributes work alongside **separately rated learned skills**, rated **level 0–4** — level-0 is basic competence, and a character without even level-0 takes **−1**. A check is `2d6 + attribute modifier + skill level ≥ difficulty`, on the ladder **6 · 8 · 10 · 12 · 14**, with situational modifiers of **−2 … +2** and aid worth at most **+1**. Saving throws are `1d20 ≥ 16 − level − the higher of the two listed attribute modifiers`, with a natural 1 always failing and a natural 20 always succeeding.
 
-**Resolution dice, difficulty numbers and advancement values have not yet been chosen.** Play scenes through consequential decisions and agreed fictional outcomes until those mechanics are author-approved. This playtest foundation does not silently adopt a prior edition's numeric engine.
+The values live in [`data/rules/wn_core.json`](../data/rules/wn_core.json), the implementation in [`src/rules/wn_core.py`](../src/rules/wn_core.py), and the contract in [docs/rules/WN_BASE_SYSTEM.md](../docs/rules/WN_BASE_SYSTEM.md).
+
+The setting's earlier six attributes (**FIT / REF / INT / SOC / CYB / PSY**) are the *concepts* this sheet still describes — fitness, reflexes, intelligence, social presence, cybernetic affinity and psyche — and they survive as skills, Edges and fictional permissions rather than as attribute names. That migration is deliberately unfinished: its steps are listed as M1–M9 in the base-system document. Do not interpret **WIS** or **PSY** as automatically granting **PSI**: paranormal abilities require their own permissions.
+
+**Still open by design:** the action economy (3 AP per exchange vs the family's Move + Main round), combat and injury numbers, cyberware tolerance, and advancement values. Playtest them; do not assume a number because a source book prints one.
 
 ## 2. What the game is about
 

@@ -179,3 +179,10 @@ pretending the item was met.
   without a ruling leaves a trap for the next implementer. Both are canon calls, so neither is taken
   here. Siblings queued D41 (exposure economy) and D42 (Effort curve) from the same round; this row
   is the third and the only one that is a canon question rather than a balance question.
+
+- **D40 — SUPERSEDED 2026-10-26.** The answer recorded on 2026-10-25 (*"layer A only, `1d10`
+  stays"*) is replaced by the author's ruling: *"use CWN/SWN/AWN/WWN system for everything. Make the
+  stats, skills, all rules based on them. We will modify later."* The tabletop baseline is now the
+  Without Number engine (`2d6 + attribute modifier + skill level`), with the WN attribute set.
+  See `docs/design/RULING_2026-10-26_WN_BASELINE.md`. The licensing boundary is unchanged: SWN and
+  AWN stay `blocked-unverified`, so the engine is implemented from the CC0 CWN/WWN SRDs.
