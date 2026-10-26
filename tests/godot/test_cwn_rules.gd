@@ -1,0 +1,35 @@
+extends SceneTree
+const Rules = preload("res://src/godot/cwn_rules.gd")
+
+func _initialize() -> void:
+	call_deferred("_run")
+
+func _run() -> void:
+	assert(Rules.ability_modifier(3) == -2)
+	assert(Rules.ability_modifier(7) == -1)
+	assert(Rules.ability_modifier(8) == 0)
+	assert(Rules.ability_modifier(14) == 1)
+	assert(Rules.ability_modifier(18) == 2)
+	var check := Rules.evaluate_skill(4, 3, 14, 1, 8)
+	assert(check["total"] == 9 and check["success"])
+	var novice := Rules.evaluate_skill(3, 3, 10, -1, 8)
+	assert(novice["total"] == 5 and not novice["success"])
+	assert(Rules.opposed_result(8, 8)["pc_wins"])
+	assert(not Rules.opposed_result(7, 8)["pc_wins"])
+	var stats := {"STR": 9, "DEX": 12, "CON": 10, "INT": 14, "WIS": 11, "CHA": 7}
+	assert(Rules.saving_throw_target("Physical", 1, stats) == 15)
+	assert(Rules.saving_throw_target("Evasion", 1, stats) == 14)
+	assert(Rules.saving_throw_target("Mental", 1, stats) == 15)
+	assert(Rules.saving_throw_target("Luck", 1, stats) == 15)
+	assert(not Rules.evaluate_save(1, 15, 20))
+	assert(Rules.evaluate_save(20, 25))
+	assert(Rules.evaluate_attack(15, 0, 1, 0, 16)["hit"])
+	assert(not Rules.evaluate_attack(5, 0, 1, -2, 16)["hit"])
+	assert(not Rules.check_hacking_reach(false, false, false, 3, 2, 1)["allowed"])
+	assert(not Rules.check_hacking_reach(false, true, true, 0, 2, 1)["allowed"])
+	assert(not Rules.check_hacking_reach(false, true, true, 1, 0, 1)["allowed"])
+	var wireless := Rules.check_hacking_reach(false, true, true, 1, 2, 1, true)
+	assert(wireless["allowed"] and wireless["check_modifier"] == -3)
+	assert(Rules.check_hacking_reach(true, false, false, 1, 2, 1)["check_modifier"] == 0)
+	print("PASS: CWN attribute, skill, opposed, saves, combat and hacking prerequisite tests")
+	quit(0)
