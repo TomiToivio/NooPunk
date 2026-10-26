@@ -224,3 +224,19 @@ class CombatActionContractTests(unittest.TestCase):
                                actions["charge"]["min_distance_metres"])
         self.assertEqual(cwn_combat_actions.TOTAL_DEFENSE_AC_BONUS,
                          actions["total_defense"]["ac_bonus"])
+
+
+class SingleMajorInjuryTableTests(unittest.TestCase):
+    """The table existed twice for one day: here and inside cwn_core. It must not again."""
+
+    def test_cwn_core_uses_the_shared_table(self) -> None:
+        from rules import cwn_core
+
+        self.assertIs(cwn_core.MAJOR_INJURY_TABLE, cwn_major_injury.MAJOR_INJURY_TABLE)
+
+    def test_the_compatibility_names_still_resolve(self) -> None:
+        from rules import cwn_core
+
+        self.assertEqual(cwn_core.injury_for_roll(1).id, "instant_death")
+        self.assertTrue(cwn_core.injury_for_roll(1).fatal)
+        self.assertEqual(cwn_core.clamp_injury_roll(99), 12)

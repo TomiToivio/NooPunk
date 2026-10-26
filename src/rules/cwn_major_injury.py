@@ -32,6 +32,10 @@ from dataclasses import dataclass, field
 MIN_ROLL = 1
 MAX_ROLL = 12
 
+#: Compatibility aliases for the names `cwn_core` exported before the tables were consolidated.
+INJURY_MIN = MIN_ROLL
+INJURY_MAX = MAX_ROLL
+
 #: SRD: Internal Damage (2) and Gut Wound (5) kill within an hour without a street doc.
 HOURS_TO_DEATH_WITHOUT_CARE = 1
 
@@ -54,6 +58,24 @@ class MajorInjury:
     requires_prosthetic: bool = False
     flesh_wound: bool = False
 
+    # Compatibility names used by the earlier in-module table in `cwn_core`; both spellings
+    # describe the same row, so callers of either API keep working.
+    @property
+    def fatal(self) -> bool:
+        return self.lethal
+
+    @property
+    def coma(self) -> bool:
+        return self.coma_until_prosthetic
+
+    @property
+    def limb(self) -> str | None:
+        return self.ruined_limb
+
+    @property
+    def needs_prosthetic(self) -> bool:
+        return self.requires_prosthetic
+
     @property
     def is_permanent_without_treatment(self) -> bool:
         """Whether ordinary stabilisation is not enough to restore the character."""
@@ -68,71 +90,76 @@ class MajorInjury:
 
 #: The twelve outcomes. ``11`` and ``12`` share one row in the SRD.
 MAJOR_INJURY_TABLE: dict[int, MajorInjury] = {
-    1: MajorInjury(1, "instant-death", "Instant Death",
+    1: MajorInjury(1, "instant_death", "Instant Death",
                    "Dead; no recovery.",
                    lethal=True),
-    2: MajorInjury(2, "internal-damage", "Internal Damage",
+    2: MajorInjury(2, "internal_damage", "Internal Damage",
                    "Coma until a Prosthetic Cyber is installed; dead in an hour without a street doc.",
                    coma_until_prosthetic=True,
                    dies_within_hours=HOURS_TO_DEATH_WITHOUT_CARE,
                    damaged_cyber_locations=("Body", "Nerves"),
                    requires_prosthetic=True),
-    3: MajorInjury(3, "brain-damage", "Brain Damage",
+    3: MajorInjury(3, "brain_damage", "Brain Damage",
                    "Coma until a Prosthetic Cyber is installed.",
                    coma_until_prosthetic=True,
                    damaged_cyber_locations=("Head", "Nerves"),
                    requires_prosthetic=True),
-    4: MajorInjury(4, "eye-damage", "Eye Damage",
+    4: MajorInjury(4, "eye_damage", "Eye Damage",
                    "Blind until cybereyes; existing cybereyes and their implants are destroyed.",
                    blinded_until_cybereyes=True,
                    # The SRD names cybereyes and "implants in them" but no body location; the
                    # table therefore does not claim one.
                    requires_prosthetic=True),
-    5: MajorInjury(5, "gut-wound", "Gut Wound",
+    5: MajorInjury(5, "gut_wound", "Gut Wound",
                    "-1 to the Con modifier until a Prosthetic Cyber is installed; dead in an hour "
                    "without a street doc.",
                    dies_within_hours=HOURS_TO_DEATH_WITHOUT_CARE,
                    requires_prosthetic=True),
-    6: MajorInjury(6, "right-leg", "Right Leg Ruined",
+    6: MajorInjury(6, "right_leg_ruined", "Right Leg Ruined",
                    "Can crawl at best once stabilised.",
                    ruined_limb="right leg",
                    damaged_cyber_locations=("right leg",),
                    requires_prosthetic=True),
-    7: MajorInjury(7, "left-leg", "Left Leg Ruined",
+    7: MajorInjury(7, "left_leg_ruined", "Left Leg Ruined",
                    "Can crawl at best once stabilised.",
                    ruined_limb="left leg",
                    damaged_cyber_locations=("left leg",),
                    requires_prosthetic=True),
-    8: MajorInjury(8, "right-arm", "Right Arm Ruined",
+    8: MajorInjury(8, "right_arm_ruined", "Right Arm Ruined",
                    "One functional hand only.",
                    ruined_limb="right arm",
                    damaged_cyber_locations=("right arm",),
                    requires_prosthetic=True),
-    9: MajorInjury(9, "left-arm", "Left Arm Ruined",
+    9: MajorInjury(9, "left_arm_ruined", "Left Arm Ruined",
                    "One functional hand only.",
                    ruined_limb="left arm",
                    damaged_cyber_locations=("left arm",),
                    requires_prosthetic=True),
-    10: MajorInjury(10, "system-damage", "System Damage",
+    10: MajorInjury(10, "system_damage", "System Damage",
                     "The most System Strain-expensive implant is critically damaged.",
                     damaged_most_expensive_implant=True),
-    11: MajorInjury(11, "flesh-wound", "Just a Flesh Wound",
+    11: MajorInjury(11, "flesh_wound", "Just a Flesh Wound",
                     "Not as bad as it looked.",
                     flesh_wound=True),
-    12: MajorInjury(12, "flesh-wound", "Just a Flesh Wound",
+    12: MajorInjury(12, "flesh_wound", "Just a Flesh Wound",
                     "Not as bad as it looked.",
                     flesh_wound=True),
 }
 
 
+def clamp_injury_roll(roll: int) -> int:
+    """Clamp a d12 roll into 1..12, as the SRD requires."""
+    return max(MIN_ROLL, min(MAX_ROLL, roll))
+
+
+def injury_for_roll(roll: int) -> MajorInjury:
+    """The row for a roll, clamped."""
+    return MAJOR_INJURY_TABLE[clamp_injury_roll(roll)]
+
+
 def resolve_major_injury(roll: int, *, modifier: int = 0) -> MajorInjury:
     """Apply the table, clamping the adjusted roll into 1..12 as the SRD requires."""
-    adjusted = roll + modifier
-    if adjusted < MIN_ROLL:
-        adjusted = MIN_ROLL
-    if adjusted > MAX_ROLL:
-        adjusted = MAX_ROLL
-    return MAJOR_INJURY_TABLE[adjusted]
+    return injury_for_roll(roll + modifier)
 
 
 def requires_prosthetic(injury: MajorInjury) -> bool:

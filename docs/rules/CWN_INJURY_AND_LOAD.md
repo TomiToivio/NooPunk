@@ -16,6 +16,11 @@ Sources (CWN SRD, CC0):
 `tests/test_wn_core_contract.py` fails if either the table or the numbers drift from
 `data/rules/wn_core.json`.
 
+**One table, two names.** `cwn_core` also exposes `Injury`, `MAJOR_INJURY_TABLE`, `injury_for_roll()`
+and `clamp_injury_roll()`; these are re-exports of `cwn_major_injury`, not a second table. The table
+was briefly implemented twice (once here, once inside `cwn_core`), with two id spellings; a guard test
+now asserts the two names point at the *same object*, so it cannot happen again.
+
 ## The injury chain
 
 The kernel now covers every step the SRD's injury section states, across three modules:

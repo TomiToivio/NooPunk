@@ -115,18 +115,18 @@
       },
       "save": "Physical save when reduced to 0 HP by lethal damage in the same scene as a Traumatic Hit",
       "rows": {
-        "1": "instant-death",
-        "2": "internal-damage",
-        "3": "brain-damage",
-        "4": "eye-damage",
-        "5": "gut-wound",
-        "6": "right-leg",
-        "7": "left-leg",
-        "8": "right-arm",
-        "9": "left-arm",
-        "10": "system-damage",
-        "11": "flesh-wound",
-        "12": "flesh-wound"
+        "1": "instant_death",
+        "2": "internal_damage",
+        "3": "brain_damage",
+        "4": "eye_damage",
+        "5": "gut_wound",
+        "6": "right_leg_ruined",
+        "7": "left_leg_ruined",
+        "8": "right_arm_ruined",
+        "9": "left_arm_ruined",
+        "10": "system_damage",
+        "11": "flesh_wound",
+        "12": "flesh_wound"
       }
     },
     "attack_modifiers": {
