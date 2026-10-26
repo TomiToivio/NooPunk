@@ -103,8 +103,10 @@ Digital conversion follows the repository's tabletop-first order. The versioned 
 saves, attacks, Trauma/Shock, mortal and Major Injuries, System Strain, healing, encumbrance,
 advancement, hacking, and Effort-shaped psionics with a package-and-rank gate. The first case's sheet,
 dialogue checks and NPC stat lines use the chassis, and its psionic choice spends Effort through
-`GameState`. Still unported: the equipment catalogue, Edges/Foci text, drones, vehicles, faction turns,
-and the AWN/WWN survival and exploration modules. Gaps and the licence boundary:
+`GameState`. The SRD's weapon and armour tables are transcribed as data (`data/rules/cwn_equipment.json`: 35
+weapons, 15 armour rows) with `src/rules/cwn_equipment.py` decomposing a row into the shape combat
+takes, and the first case's numbers are validated against it. Still unported: weapon and armour
+mods, drones, vehicles, the Edges/Foci text, and the AWN/WWN survival and exploration modules. Gaps and the licence boundary:
 [`docs/design/CWN_SWN_FIRST_SCENARIOS_IMPLEMENTATION.md`](../docs/design/CWN_SWN_FIRST_SCENARIOS_IMPLEMENTATION.md).
 
 Future changes require a versioned deviation identifying the original source, concrete change and playtest reason. Until then use the source procedure, including limits that would be inconvenient for a character. Fate, PbtA, Eclipse Phase and Transhumanity's Fate remain design references for later revisions, not active extra mechanics.
