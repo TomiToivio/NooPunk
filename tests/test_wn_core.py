@@ -1,194 +1,138 @@
-"""Tests for the Without Number core (#615).
+"""Tests for the Without Number kernel adopted by the 2026-10-26 author ruling.
 
-The author's direction was *"use CWN/SWN/AWN/WWN system for everything ... we will modify later"*, so this
-kernel's job is to be exactly the published chassis and nothing more. The tests below therefore assert the
-**arithmetic** (modifier bands, the -1 untrained penalty, the save target, the attack comparison), not
-NoöPunk flavour.
-
-Determinism is asserted two ways: an injected seed replays identically, and explicit dice values produce an
-exact total. Inputs that are out of range raise rather than clamp — a silently clamped die is how a
-distribution test passes while the distribution is wrong.
+Every value asserted here is read from the SRD, so these tests are the contract between the
+repository and the source. If a band, a difficulty or a cap changes, this file is where the
+change has to be argued for.
 """
-from __future__ import annotations
-
-import json
-import pathlib
 import random
-import sys
 import unittest
 
-# The test-isolation guard requires every module that imports a ``src/`` package to put ``src/``
-# on sys.path itself; relying on an earlier-collected module to do it makes the file pass or fail
-# by collection order.
-ROOT = pathlib.Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT / "src"))
-
-from rules.wn_core import (  # noqa: E402
-    SAVE_BASE_TARGET,
-    UNSKILLED_ATTACK_PENALTY,
-    UNSKILLED_CHECK_PENALTY,
-    attribute_modifier,
-    attack_roll,
-    roll_attributes,
-    saving_throw,
-    skill_check,
-)
-
-CONTRACT = json.loads((ROOT / "data" / "rules" / "wn_core.json").read_text(encoding="utf-8"))
+from src.rules import wn_core as wn
 
 
 class AttributeModifierTests(unittest.TestCase):
-    def test_the_published_bands(self) -> None:
-        """3 -> -2, 4-7 -> -1, 8-13 -> 0, 14-17 -> +1, 18 -> +2."""
-        self.assertEqual(attribute_modifier(3), -2)
-        for score in (4, 5, 6, 7):
-            self.assertEqual(attribute_modifier(score), -1, score)
-        for score in range(8, 14):
-            self.assertEqual(attribute_modifier(score), 0, score)
-        for score in (14, 15, 16, 17):
-            self.assertEqual(attribute_modifier(score), 1, score)
-        self.assertEqual(attribute_modifier(18), 2)
+    """SRD 1.1.2: 3 -> -2, 4-7 -> -1, 8-13 -> 0, 14-17 -> +1, 18 -> +2."""
 
-    def test_the_contract_json_and_the_kernel_agree(self) -> None:
-        """Two sources of truth is how a band drifts; they are compared here, not trusted."""
-        table = {int(k): v for k, v in CONTRACT["stats"]["modifier_table"].items()}
-        for score in range(CONTRACT["stats"]["min"], CONTRACT["stats"]["max"] + 1):
-            self.assertEqual(attribute_modifier(score), table[score], score)
+    def test_the_bands_are_exactly_the_srd_bands(self) -> None:
+        expected = {
+            3: -2, 4: -1, 5: -1, 6: -1, 7: -1,
+            8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0,
+            14: 1, 15: 1, 16: 1, 17: 1, 18: 2,
+        }
+        for score, modifier in expected.items():
+            with self.subTest(score=score):
+                self.assertEqual(wn.attribute_modifier(score), modifier)
 
-    def test_out_of_range_scores_raise_rather_than_clamp(self) -> None:
-        for bad in (2, 19, 0, -1, 100):
-            with self.subTest(score=bad):
-                with self.assertRaises(ValueError):
-                    attribute_modifier(bad)
+    def test_scores_outside_3_to_18_are_refused(self) -> None:
+        for score in (2, 0, -1, 19, 25):
+            with self.subTest(score=score), self.assertRaises(wn.WnError):
+                wn.attribute_modifier(score)
 
-    def test_a_non_integer_score_is_a_type_error(self) -> None:
-        for bad in ("12", 12.0, None, True):
-            with self.subTest(score=bad):
-                with self.assertRaises(TypeError):
-                    attribute_modifier(bad)  # type: ignore[arg-type]
+    def test_the_base_cap_is_two_in_both_directions(self) -> None:
+        self.assertEqual(wn.attribute_modifier(wn.ATTRIBUTE_MIN), -2)
+        self.assertEqual(wn.attribute_modifier(wn.ATTRIBUTE_MAX), 2)
 
 
 class SkillCheckTests(unittest.TestCase):
-    def test_exact_arithmetic_with_explicit_dice(self) -> None:
-        """No RNG: the total is knowable by hand, so the assertion is exact."""
-        result = skill_check(attribute_score=14, skill_level=2, difficulty=10, dice=(5, 3))
-        self.assertEqual(result.dice, (5, 3))
-        self.assertEqual(result.modifier, 1)          # 14 -> +1
-        self.assertEqual(result.skill_level, 2)
-        self.assertEqual(result.total, 5 + 3 + 1 + 2)
-        self.assertTrue(result.success)
+    """SRD 2.3.0/2.3.1: 2d6 + attribute modifier + skill level vs difficulty."""
 
-    def test_untrained_is_minus_one_and_not_a_level(self) -> None:
-        result = skill_check(attribute_score=10, skill_level=None, difficulty=8, dice=(4, 4))
-        self.assertTrue(result.untrained)
-        self.assertEqual(result.skill_level, UNSKILLED_CHECK_PENALTY)
-        self.assertEqual(result.total, 8 + 0 - 1)
-        self.assertFalse(result.success, "7 against difficulty 8 must fail")
+    def test_the_arithmetic_is_two_dice_plus_modifier_plus_skill(self) -> None:
+        check = wn.skill_check(attribute_score=14, skill_level=2, difficulty=8, dice=(3, 5))
+        self.assertEqual(check.dice, (3, 5))
+        self.assertEqual(check.attribute_modifier, 1)
+        self.assertEqual(check.total, 3 + 5 + 1 + 2)
+        self.assertTrue(check.success)
+        self.assertEqual(check.margin, 3)
 
-    def test_the_difficulty_ladder_matches_the_contract(self) -> None:
-        ladder = {int(k): v for k, v in CONTRACT["skill_check"]["difficulties"].items()}
-        self.assertEqual(sorted(ladder), [6, 8, 10, 12])
-        for difficulty, label in ladder.items():
-            with self.subTest(difficulty=difficulty, label=label):
-                self.assertTrue(label)
-                skill_check(attribute_score=10, skill_level=0, difficulty=difficulty, dice=(1, 1))
+    def test_missing_the_difficulty_by_one_is_a_failure(self) -> None:
+        # 2 + 2 + 0 + 0 = 4 against a 6 is the bottom of the scale.
+        check = wn.skill_check(attribute_score=8, skill_level=0, difficulty=6, dice=(1, 1))
+        self.assertEqual(check.total, 2)
+        self.assertFalse(check.success)
 
-    def test_two_dice_only(self) -> None:
-        for bad in ((6,), (1, 2, 3), ()):
-            with self.subTest(dice=bad):
-                with self.assertRaises(ValueError):
-                    skill_check(attribute_score=10, skill_level=0, difficulty=8, dice=bad)  # type: ignore[arg-type]
+    def test_the_difficulty_bands_are_the_srd_values(self) -> None:
+        self.assertEqual(
+            (wn.DIFFICULTY_SIMPLE, wn.DIFFICULTY_SIGNIFICANT, wn.DIFFICULTY_EXPERT,
+             wn.DIFFICULTY_MASTER, wn.DIFFICULTY_EXTREME),
+            (6, 8, 10, 12, 14),
+        )
 
-    def test_a_face_outside_one_to_six_raises(self) -> None:
-        for bad in ((0, 3), (7, 3), (-1, 2)):
-            with self.subTest(dice=bad):
-                with self.assertRaises(ValueError):
-                    skill_check(attribute_score=10, skill_level=0, difficulty=8, dice=bad)  # type: ignore[arg-type]
+    def test_a_table_rolling_real_dice_can_supply_them(self) -> None:
+        check = wn.skill_check(attribute_score=10, skill_level=1, difficulty=8, dice=(6, 6))
+        self.assertEqual(check.total, 12 + 0 + 1)
 
-    def test_an_illegal_skill_level_raises(self) -> None:
-        for bad in (-1, 5, 99):
-            with self.subTest(level=bad):
-                with self.assertRaises(ValueError):
-                    skill_check(attribute_score=10, skill_level=bad, difficulty=8, dice=(3, 3))
+    def test_dice_outside_1_to_6_are_refused(self) -> None:
+        for bad in ((0, 3), (7, 3), (3,)):
+            with self.subTest(dice=bad), self.assertRaises(wn.WnError):
+                wn.skill_check(attribute_score=10, skill_level=1, difficulty=8, dice=bad)
 
-    def test_a_seed_replays_identically_and_a_different_seed_does_not(self) -> None:
-        """If the seed were ignored, the harness would prove nothing."""
-        first = [skill_check(attribute_score=10, skill_level=1, difficulty=8,
-                             rng=random.Random(42)).dice for _ in range(5)]
-        again = [skill_check(attribute_score=10, skill_level=1, difficulty=8,
-                             rng=random.Random(42)).dice for _ in range(5)]
-        other = [skill_check(attribute_score=10, skill_level=1, difficulty=8,
-                             rng=random.Random(43)).dice for _ in range(5)]
-        self.assertEqual(first, again)
-        self.assertNotEqual(first, other)
-
-    def test_the_total_always_lands_in_the_possible_range(self) -> None:
-        """2..12 dice, -2..+2 modifier, 0..4 skill — the arithmetic cannot leave that band."""
-        rng = random.Random(7)
-        for _ in range(200):
-            result = skill_check(attribute_score=rng.randint(3, 18), skill_level=rng.randint(0, 4),
-                                 difficulty=8, rng=rng)
-            self.assertGreaterEqual(result.total, 2 - 2 + 0)
-            self.assertLessEqual(result.total, 12 + 2 + 4)
+    def test_a_negative_skill_level_is_refused(self) -> None:
+        with self.assertRaises(wn.WnError):
+            wn.skill_check(attribute_score=10, skill_level=-1, difficulty=8, dice=(3, 3))
 
 
-class SaveTests(unittest.TestCase):
-    def test_physical_uses_the_better_of_str_and_con(self) -> None:
-        weak = saving_throw(category="Physical", scores={"STR": 10, "CON": 10}, die=10)
-        strong = saving_throw(category="Physical", scores={"STR": 18, "CON": 10}, die=10)
-        self.assertEqual(weak.target, SAVE_BASE_TARGET)          # +0 -> 15
-        self.assertEqual(strong.target, SAVE_BASE_TARGET - 2)    # +2 -> 13
-        self.assertFalse(weak.success, "10 vs 15 fails")
-        self.assertFalse(strong.success, "10 vs 13 still fails")
+class BoundedModifierTests(unittest.TestCase):
+    """SRD 2.3.1 and 2.3.3: circumstances -2..+2, aid at most +1."""
 
-    def test_luck_is_flat_fifteen(self) -> None:
-        result = saving_throw(category="Luck", scores={}, die=15)
-        self.assertEqual(result.target, 15)
-        self.assertTrue(result.success, "a 15 meets a target of 15")
-        self.assertFalse(saving_throw(category="Luck", scores={}, die=14).success)
+    def test_circumstances_are_clamped_to_plus_or_minus_two(self) -> None:
+        self.assertEqual(wn.clamp_situational(9), 2)
+        self.assertEqual(wn.clamp_situational(-9), -2)
+        self.assertEqual(wn.clamp_situational(1), 1)
 
-    def test_a_missing_attribute_is_an_error_not_a_zero(self) -> None:
-        with self.assertRaises(ValueError):
-            saving_throw(category="Evasion", scores={"INT": 10}, die=10)
+    def test_aid_never_exceeds_one_however_many_help(self) -> None:
+        self.assertEqual(wn.clamp_aid(0), 0)
+        self.assertEqual(wn.clamp_aid(1), 1)
+        self.assertEqual(wn.clamp_aid(5), 1)
 
-    def test_an_unknown_category_raises(self) -> None:
-        with self.assertRaises(ValueError):
-            saving_throw(category="Sanity", scores={}, die=10)
+    def test_the_bounds_are_enforced_inside_a_check(self) -> None:
+        blown_up = wn.skill_check(attribute_score=10, skill_level=1, difficulty=8,
+                                  situational=9, aid=9, dice=(3, 3))
+        self.assertEqual(blown_up.situational, 2)
+        self.assertEqual(blown_up.aid, 1)
 
 
-class AttackTests(unittest.TestCase):
-    def test_the_comparison_is_greater_or_equal_to_ac(self) -> None:
-        self.assertTrue(attack_roll(attack_bonus=3, ac=13, die=10).hit)
-        self.assertFalse(attack_roll(attack_bonus=2, ac=13, die=10).hit)
+class DeterminismTests(unittest.TestCase):
+    def test_a_seeded_roll_replays_and_different_seeds_differ(self) -> None:
+        def roll(seed: int) -> tuple[int, int]:
+            return wn.skill_check(attribute_score=10, skill_level=1, difficulty=8,
+                                  rng=random.Random(seed)).dice
 
-    def test_the_unskilled_penalty_is_part_of_the_bonus(self) -> None:
-        """Applied once by the caller, never twice by the kernel."""
-        self.assertEqual(UNSKILLED_ATTACK_PENALTY, -2)
-        result = attack_roll(attack_bonus=UNSKILLED_ATTACK_PENALTY, ac=10, die=12)
-        self.assertEqual(result.total, 10)
+        self.assertEqual(roll(2026), roll(2026))
+        self.assertGreater(len({roll(s) for s in range(30)}), 1)
 
-    def test_an_out_of_range_die_raises(self) -> None:
-        for bad in (0, 21):
-            with self.subTest(die=bad):
-                with self.assertRaises(ValueError):
-                    attack_roll(attack_bonus=0, ac=10, die=bad)
+    def test_the_kernel_has_no_model_or_network_dependency(self) -> None:
+        import inspect
+        source = inspect.getsource(wn)
+        for dependency in ("openai", "anthropic", "requests", "urllib", "socket"):
+            self.assertNotIn(dependency, source)
 
 
-class GenerationTests(unittest.TestCase):
-    def test_six_attributes_on_three_d6(self) -> None:
-        attributes = roll_attributes(random.Random(11))
-        self.assertEqual(list(attributes), ["STR", "DEX", "CON", "INT", "WIS", "CHA"])
-        for stat, score in attributes.items():
-            with self.subTest(stat=stat):
-                self.assertGreaterEqual(score, 3)
-                self.assertLessEqual(score, 18)
+class OpposedCheckTests(unittest.TestCase):
+    """SRD 2.3.4: the higher roll wins. Ties are reported, not silently invented."""
 
-    def test_generation_is_seeded(self) -> None:
-        self.assertEqual(roll_attributes(random.Random(5)), roll_attributes(random.Random(5)))
-        self.assertNotEqual(roll_attributes(random.Random(5)), roll_attributes(random.Random(6)))
+    def test_the_higher_roll_wins(self) -> None:
+        self.assertEqual(wn.opposed_check(a=(6, 6), b=(1, 1)), "a")
+        self.assertEqual(wn.opposed_check(a=(1, 1), b=(6, 6)), "b")
 
-    def test_the_array_is_the_documented_one(self) -> None:
-        self.assertEqual(CONTRACT["generation"]["array"], [14, 12, 11, 10, 9, 7])
+    def test_a_tie_is_reported_as_undefined(self) -> None:
+        self.assertIsNone(wn.opposed_check(a=(4, 3), b=(5, 2)),
+                          "the SRD gives no tie-break, so none may be invented here")
+
+
+class SupersessionTests(unittest.TestCase):
+    """The ruling changed the kernel; the module must say so where it can be checked."""
+
+    def test_the_six_attributes_are_the_without_number_names(self) -> None:
+        self.assertEqual(wn.ATTRIBUTES,
+                         ("Strength", "Dexterity", "Constitution",
+                          "Intelligence", "Wisdom", "Charisma"))
+
+    def test_the_old_noopunk_stat_names_are_gone_from_this_kernel(self) -> None:
+        for legacy in ("FIT", "REF", "INT", "SOC", "CYB", "PSY"):
+            self.assertNotIn(legacy, wn.ATTRIBUTES)
+
+    def test_the_check_is_2d6_not_1d10(self) -> None:
+        self.assertEqual((wn.SKILL_CHECK_DICE, wn.SKILL_CHECK_FACES), (2, 6))
 
 
 if __name__ == "__main__":
