@@ -1,0 +1,600 @@
+{
+  "$comment": "Cities Without Number SRD 3.1.3 (armor mods), 3.4.5 (weapon mods), 3.5.x (cyberware mods, not yet listed), 3.7.3 (vehicle mods), 3.8.2 (drone mods), 3.9.1 (cyberdeck mods) and 2.8 (crafting and modifying gear). The CWN SRD is CC0; every number is the SRD's and every descriptive string here is an original NooPunk summary. src/rules/cwn_gear_mods.py holds the arithmetic; data/rules/cwn_vehicles.json holds vehicle mods. Do not restate the +3 mod cap or the maintenance formula anywhere else.",
+  "format": "noopunk.rules.cwn_gear_mods",
+  "version": 1,
+  "issue": "https://github.com/TomiToivio/NooPunk/issues/564",
+  "source": {
+    "system": "Cities Without Number",
+    "edition": "Deluxe, 2023-08-11",
+    "licence": "CC0",
+    "sections": {
+      "weapon_mods": "gear-vehicles-cyberware/weapons/weapon-mods/",
+      "armor_mods": "gear-vehicles-cyberware/armor/armor-mods/",
+      "drone_mods": "gear-vehicles-cyberware/drones/#drone-mods",
+      "deck_mods": "gear-vehicles-cyberware/cyberdecks/#cyberdeck-mods",
+      "crafting": "rules-of-the-game/crafting-modifying-gear/crafting-gear/",
+      "modifying": "rules-of-the-game/crafting-modifying-gear/modifying-gear/",
+      "maintaining": "rules-of-the-game/crafting-modifying-gear/maintaining-mods/",
+      "factory": "rules-of-the-game/crafting-modifying-gear/factory-mods/#factory-mods"
+    }
+  },
+  "crafting": {
+    "weeks_per_minimum_skill_level": 1,
+    "assistant_min_fix": 0,
+    "assistant_time_divisor": 2,
+    "obsessive_time_divisor": 2,
+    "prebuilt_install_days": 1,
+    "workshop_rent_per_day": 500,
+    "workshop_purchase": 20000,
+    "build_time_days": {
+      "vehicle": 30,
+      "portable_complex_device": 7
+    },
+    "quality": {
+      "jury_rigged": {
+        "time_divisor": 2,
+        "parts_percent_of_market": 25,
+        "counts_as_mod": 0,
+        "stops_after_hours_without_maintenance": 24,
+        "further_modding": false
+      },
+      "normal": {
+        "time_divisor": 1,
+        "parts_percent_of_market": 100,
+        "salvage_allowed": false
+      },
+      "mastercrafted": {
+        "time_multiplier": 2,
+        "parts_percent_of_market": 1000,
+        "first_mod_needs_no_maintenance": true
+      }
+    },
+    "consumables_must_be_normal": true,
+    "$comment": "Jury-rigged gear counts as a mod requiring Fix-0 to maintain, and a mod going 24 h without maintenance stops working."
+  },
+  "maintenance": {
+    "score_formula": "INT modifier + CON modifier + 3 * Fix skill",
+    "full_time_multiplier": 2,
+    "lapse_hours_mod_stops": 24,
+    "lapse_days_item_stops": 7,
+    "backlog_clear_hours": 1,
+    "must_have_build_skill": true
+  },
+  "mod_bonus_cap": {
+    "$comment": "SRD 3.4.5 shock burst: its 2d6 is explicitly not affected by the +3 cap to mod hit and damage bonuses.",
+    "hit": 3,
+    "damage": 3,
+    "shock": 3
+  },
+  "weapon_mods": [
+    {
+      "id": "autotargeting",
+      "name": "Autotargeting",
+      "min_fix": 1,
+      "cost": 5000,
+      "components": 0,
+      "applies_to": [
+        "firearm",
+        "heavy"
+      ],
+      "requires_connection": [
+        "gunlink",
+        "cranial_jack"
+      ],
+      "effects": {
+        "hit": 1
+      }
+    },
+    {
+      "id": "concealed",
+      "name": "Concealed",
+      "min_fix": 2,
+      "cost": 5000,
+      "components": 1,
+      "applies_to": [
+        "firearm",
+        "heavy",
+        "melee"
+      ],
+      "effects": {
+        "concealment": "pistol_undetectable_below_pistol",
+        "conceal_rifle_as_pistol": true
+      }
+    },
+    {
+      "id": "customized",
+      "name": "Customized",
+      "min_fix": 1,
+      "cost": 1000,
+      "components": 0,
+      "applies_to": [
+        "firearm",
+        "heavy",
+        "melee",
+        "thrown"
+      ],
+      "effects": {
+        "hit": 1,
+        "single_owner": true
+      }
+    },
+    {
+      "id": "extended_mag",
+      "name": "Extended Magazine",
+      "min_fix": 1,
+      "cost": 1000,
+      "components": 0,
+      "applies_to": [
+        "firearm",
+        "heavy"
+      ],
+      "effects": {
+        "magazine_multiplier": 2
+      }
+    },
+    {
+      "id": "heavy_sabot",
+      "name": "Heavy Sabot",
+      "min_fix": 1,
+      "cost": 2000,
+      "components": 0,
+      "applies_to": [
+        "firearm",
+        "heavy"
+      ],
+      "effects": {
+        "vehicle_trauma": true
+      }
+    },
+    {
+      "id": "integral_toxins",
+      "name": "Integral Toxins",
+      "min_fix": 2,
+      "cost": 10000,
+      "components": 1,
+      "applies_to": [
+        "melee",
+        "thrown"
+      ],
+      "effects": {
+        "damage": 2,
+        "shock": 2,
+        "target_must_not_be_poison_immune": true
+      }
+    },
+    {
+      "id": "onboard_gunlink",
+      "name": "Onboard Gunlink",
+      "min_fix": 2,
+      "cost": 10000,
+      "components": 1,
+      "applies_to": [
+        "firearm",
+        "heavy"
+      ],
+      "requires_connection": [
+        "cranial_jack"
+      ],
+      "effects": {
+        "gunlink": true
+      }
+    },
+    {
+      "id": "predictive_guidance",
+      "name": "Predictive Guidance",
+      "min_fix": 3,
+      "cost": 15000,
+      "components": 2,
+      "applies_to": [
+        "firearm",
+        "heavy"
+      ],
+      "requires_connection": [
+        "gunlink",
+        "cranial_jack"
+      ],
+      "effects": {
+        "hit": 1,
+        "damage": 1,
+        "shock": 1
+      }
+    },
+    {
+      "id": "reel_wires",
+      "name": "Reel Wires",
+      "min_fix": 1,
+      "cost": 2500,
+      "components": 0,
+      "applies_to": [
+        "thrown"
+      ],
+      "effects": {
+        "retrieval_action": "on_turn",
+        "drag_kg": 20,
+        "rewire_minutes": 15
+      }
+    },
+    {
+      "id": "savage_impact",
+      "name": "Savage Impact",
+      "min_fix": 1,
+      "cost": 5000,
+      "components": 0,
+      "applies_to": [
+        "melee"
+      ],
+      "effects": {
+        "damage": 1,
+        "shock": 1
+      }
+    },
+    {
+      "id": "shock_burst",
+      "name": "Shock Burst",
+      "min_fix": 2,
+      "cost": 5000,
+      "components": 0,
+      "applies_to": [
+        "firearm",
+        "heavy",
+        "melee",
+        "thrown"
+      ],
+      "effects": {
+        "once_per_fight_damage": "2d6",
+        "melee_shock_bonus": 2,
+        "uncapped": true
+      }
+    },
+    {
+      "id": "stun_rounds",
+      "name": "Stun Rounds",
+      "min_fix": 2,
+      "cost": 5000,
+      "components": 0,
+      "applies_to": [
+        "firearm",
+        "heavy"
+      ],
+      "effects": {
+        "range_multiplier": 0.5,
+        "damage": -2,
+        "loses_trauma_die": true,
+        "nonlethal": true
+      }
+    },
+    {
+      "id": "thermal_charge",
+      "name": "Thermal Charge",
+      "min_fix": 2,
+      "cost": 7500,
+      "components": 0,
+      "applies_to": [
+        "melee",
+        "thrown"
+      ],
+      "effects": {
+        "damage": 2,
+        "shock": 2,
+        "fights_per_charge": 2,
+        "recharge_hours": 1
+      }
+    }
+  ],
+  "armor_mods": [
+    {
+      "id": "absorption_pads",
+      "name": "Absorption Pads",
+      "min_fix": 2,
+      "cost": 2000,
+      "components": 0,
+      "effects": {
+        "soak": 5,
+        "per_fight": true
+      }
+    },
+    {
+      "id": "active_response",
+      "name": "Active Response",
+      "min_fix": 3,
+      "cost": 20000,
+      "components": 2,
+      "effects": {
+        "trauma_target": 1
+      }
+    },
+    {
+      "id": "biostabilizing",
+      "name": "Biostabilizing",
+      "min_fix": 1,
+      "cost": 2500,
+      "components": 0,
+      "effects": {
+        "stabilize_check": "2d6+2",
+        "stabilize_difficulty": 8,
+        "uses_before_recalibration": 1,
+        "recalibration_hours": 1
+      }
+    },
+    {
+      "id": "customized",
+      "name": "Customized",
+      "min_fix": 1,
+      "cost": 1000,
+      "components": 0,
+      "effects": {
+        "ac_melee": 1,
+        "ac_ranged": 1,
+        "single_owner": true
+      }
+    },
+    {
+      "id": "discreet_design",
+      "name": "Discreet Design",
+      "min_fix": 2,
+      "cost": 5000,
+      "components": 1,
+      "effects": {
+        "obviousness": "subtle",
+        "ac_melee": -2,
+        "ac_ranged": -2
+      }
+    },
+    {
+      "id": "flexible",
+      "name": "Flexible",
+      "min_fix": 2,
+      "cost": 10000,
+      "components": 1,
+      "effects": {
+        "removes_quality": "heavy"
+      }
+    },
+    {
+      "id": "quickchange",
+      "name": "Quickchange",
+      "min_fix": 1,
+      "cost": 1000,
+      "components": 0,
+      "effects": {
+        "disguise": true,
+        "action": "main",
+        "setup_minutes": 60
+      }
+    },
+    {
+      "id": "sealed",
+      "name": "Sealed",
+      "min_fix": 1,
+      "cost": 2500,
+      "components": 0,
+      "effects": {
+        "gas_immunity_minutes": 30,
+        "refresh_hours": 1
+      }
+    },
+    {
+      "id": "tailored_rig",
+      "name": "Tailored Rig",
+      "min_fix": 1,
+      "cost": 2000,
+      "components": 0,
+      "effects": {
+        "readied_encumbrance": 1,
+        "stowed_encumbrance": 2,
+        "concealable": false
+      }
+    },
+    {
+      "id": "trauma_dampers",
+      "name": "Trauma Dampers",
+      "min_fix": 3,
+      "cost": 10000,
+      "components": 1,
+      "requires_mod": "absorption_pads",
+      "effects": {
+        "soak": 5,
+        "per_fight": true
+      }
+    },
+    {
+      "id": "whisperlight",
+      "name": "Whisperlight",
+      "min_fix": 2,
+      "cost": 10000,
+      "components": 1,
+      "effects": {
+        "encumbrance": -1
+      }
+    }
+  ],
+  "drone_mods": [
+    {
+      "id": "additional_fitting",
+      "name": "Additional Fitting",
+      "skills": {
+        "Fix": 1,
+        "Drive": 1
+      },
+      "cost_percent": 50,
+      "components": 0,
+      "effects": {
+        "drone_fittings": 1,
+        "portable_encumbrance": 1
+      }
+    },
+    {
+      "id": "additional_hardpoint",
+      "name": "Additional Hardpoint",
+      "skills": {
+        "Fix": 1,
+        "Drive": 1
+      },
+      "cost_percent": 50,
+      "components": 0,
+      "effects": {
+        "drone_hardpoints": 1,
+        "portable_encumbrance": 1
+      }
+    },
+    {
+      "id": "battery_swapping",
+      "name": "Battery Swapping",
+      "skills": {
+        "Fix": 1,
+        "Drive": 1
+      },
+      "cost_percent": 10,
+      "components": 0,
+      "effects": {
+        "swap_minutes": 1,
+        "spare_battery_cost_percent": 10
+      }
+    },
+    {
+      "id": "boosted_engine",
+      "name": "Boosted Engine",
+      "skills": {
+        "Fix": 1,
+        "Drive": 2
+      },
+      "cost_percent": 25,
+      "components": 0,
+      "effects": {
+        "move_bonus_m": 10
+      }
+    },
+    {
+      "id": "heavy_plating",
+      "name": "Heavy Plating",
+      "skills": {
+        "Fix": 1,
+        "Drive": 2
+      },
+      "cost_percent": 25,
+      "components": 0,
+      "effects": {
+        "ac": 2,
+        "move_bonus_m": -5,
+        "portable_encumbrance": 1
+      }
+    },
+    {
+      "id": "quick_launch",
+      "name": "Quick Launch",
+      "skills": {
+        "Fix": 1,
+        "Drive": 2
+      },
+      "cost_percent": 10,
+      "components": 0,
+      "effects": {
+        "deploy_action": "on_turn",
+        "works_when_stowed": true
+      }
+    },
+    {
+      "id": "redundant_systems",
+      "name": "Redundant Systems",
+      "skills": {
+        "Fix": 2,
+        "Drive": 2
+      },
+      "cost_percent": 50,
+      "components": 0,
+      "effects": {
+        "hit_points_percent": 25,
+        "portable_encumbrance": 1
+      }
+    },
+    {
+      "id": "stripped_fittings",
+      "name": "Stripped Fittings",
+      "skills": {
+        "Fix": 2,
+        "Drive": 1
+      },
+      "cost_percent": 10,
+      "components": 0,
+      "effects": {
+        "drone_fittings": -1,
+        "portable_encumbrance": -1
+      }
+    }
+  ],
+  "deck_mods": [
+    {
+      "id": "bespoke_code_optimization",
+      "name": "Bespoke Code Optimization",
+      "min_fix": 1,
+      "cost_percent": 20,
+      "components": 0,
+      "effects": {
+        "memory_free_verb_subject": 1
+      }
+    },
+    {
+      "id": "buffer_circuits",
+      "name": "Buffer Circuits",
+      "min_fix": 1,
+      "cost_percent": 20,
+      "components": 0,
+      "effects": {
+        "shielding": 5
+      }
+    },
+    {
+      "id": "cpu_overclocking",
+      "name": "CPU Overclocking",
+      "min_fix": 2,
+      "cost_percent": 30,
+      "components": 0,
+      "effects": {
+        "cpu": 1
+      }
+    },
+    {
+      "id": "memory_expansion",
+      "name": "Memory Expansion",
+      "min_fix": 1,
+      "cost_percent": 20,
+      "components": 0,
+      "effects": {
+        "memory": 4
+      }
+    },
+    {
+      "id": "polymorphic_intrusion_algorithms",
+      "name": "Polymorphic Intrusion Algorithms",
+      "min_fix": 1,
+      "cost_percent": 10,
+      "components": 0,
+      "effects": {
+        "bonus_access": 1,
+        "cpu": -1
+      }
+    },
+    {
+      "id": "skeletal_case",
+      "name": "Skeletal Case",
+      "min_fix": 1,
+      "cost_percent": 10,
+      "components": 0,
+      "effects": {
+        "encumbrance": -1,
+        "memory": -2
+      }
+    },
+    {
+      "id": "thermal_exhaust_case",
+      "name": "Thermal Exhaust Case",
+      "min_fix": 2,
+      "cost_percent": 30,
+      "components": 0,
+      "effects": {
+        "encumbrance": 1,
+        "cpu": 1
+      }
+    }
+  ]
+}

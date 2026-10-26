@@ -1,0 +1,330 @@
+{
+  "$comment": "The first case, drilled through every ported Without Number procedure. This is not a second rules layer: each beat names a subsystem and the parameters the kernel needs, and src/rules/first_case_drill.py calls the real modules. It exists so 'the first scenario uses all CWN rules and SWN psionics' is a runnable claim with an assertion behind it, not a sentence in a doc. Seeded and deterministic.",
+  "format": "noopunk.scenario.chassis_drill",
+  "version": 1,
+  "issue": "https://github.com/TomiToivio/NooPunk/issues/564",
+  "case": "data/scenarios/lakkahaltia/case.json",
+  "seed": 20451026,
+  "required_subsystems": [
+    "advancement",
+    "armor_mods",
+    "chases",
+    "combat",
+    "crisis_survival",
+    "cyberware",
+    "drones",
+    "encumbrance",
+    "gear_mods",
+    "hacking",
+    "healing",
+    "injury",
+    "major_injury",
+    "projects",
+    "psionics",
+    "saves",
+    "shock",
+    "skill_checks",
+    "strain",
+    "trauma",
+    "vehicles"
+  ],
+  "sheet": {
+    "name": "Dr. Harri S. Romppainen",
+    "level": 3,
+    "attributes": {
+      "STR": 8,
+      "DEX": 10,
+      "CON": 10,
+      "INT": 14,
+      "WIS": 16,
+      "CHA": 12
+    },
+    "skills": {
+      "Administer": 1,
+      "Heal": 1,
+      "Know": 2,
+      "Notice": 2,
+      "Program": 1,
+      "Talk": 2,
+      "Telepathy": 1
+    },
+    "hit_points": 14,
+    "attack_bonus": 1,
+    "armor": "reinforced_longcoat",
+    "armor_mods": [
+      "absorption_pads"
+    ],
+    "cyberware_strain": 1.0,
+    "psionics": {
+      "disciplines": {
+        "Telepathy": 1
+      },
+      "packages": [
+        "swn_partial_psychic"
+      ],
+      "effort_maximum": 3
+    },
+    "vehicle": {
+      "hull": "car",
+      "fittings": [
+        "tool_rack"
+      ],
+      "mods": [
+        "reinforced_chassis"
+      ]
+    },
+    "drone": "hummingbird"
+  },
+  "beats": [
+    {
+      "id": "briefing_notice",
+      "where": "UNSA briefing room",
+      "tags": [
+        "skill_checks"
+      ],
+      "params": {
+        "attribute": "WIS",
+        "skill": "Notice",
+        "difficulty": 8
+      }
+    },
+    {
+      "id": "ward_terminal",
+      "where": "ward reception",
+      "tags": [
+        "hacking",
+        "skill_checks"
+      ],
+      "params": {
+        "security": 8,
+        "wireless": true,
+        "vr_crown": true,
+        "verb_modifier": 0
+      }
+    },
+    {
+      "id": "doctor_opposed",
+      "where": "ward reception",
+      "tags": [
+        "skill_checks"
+      ],
+      "params": {
+        "attribute": "CHA",
+        "skill": "Talk",
+        "difficulty": 10,
+        "opponent_total": 9
+      }
+    },
+    {
+      "id": "mirror_effort",
+      "where": "patient room 16",
+      "tags": [
+        "psionics"
+      ],
+      "params": {
+        "discipline": "Telepathy",
+        "technique": "thread",
+        "key": "mirror_thread"
+      }
+    },
+    {
+      "id": "stair_ambush",
+      "where": "stairwell",
+      "tags": [
+        "combat",
+        "shock",
+        "trauma",
+        "saves"
+      ],
+      "params": {
+        "weapon": "light_pistol",
+        "attacker": {
+          "attribute_score": 10,
+          "skill": 2,
+          "attack_bonus": 1
+        },
+        "target_ranged_ac": 15,
+        "target_trauma_target": 14
+      }
+    },
+    {
+      "id": "roof_chase",
+      "where": "service road behind the ward",
+      "tags": [
+        "vehicles",
+        "chases",
+        "skill_checks"
+      ],
+      "params": {
+        "fleeing": {
+          "attribute_score": 12,
+          "skill": 1
+        },
+        "pursuer": {
+          "attribute_score": 10,
+          "skill": 0
+        },
+        "modifiers": {
+          "spotter": true,
+          "terrain_knowledge": -1
+        }
+      }
+    },
+    {
+      "id": "crash_landing",
+      "where": "service road behind the ward",
+      "tags": [
+        "vehicles",
+        "saves",
+        "injury"
+      ],
+      "params": {
+        "damage": 31
+      }
+    },
+    {
+      "id": "gunfire_with_mods",
+      "where": "service road behind the ward",
+      "tags": [
+        "combat",
+        "trauma",
+        "shock",
+        "gear_mods",
+        "armor_mods"
+      ],
+      "params": {
+        "weapon": "light_pistol",
+        "weapon_mods": [
+          "customized",
+          "extended_mag"
+        ],
+        "connected": true,
+        "damage_roll": 11,
+        "trauma_die_roll": 7
+      }
+    },
+    {
+      "id": "zero_hp",
+      "where": "service road behind the ward",
+      "tags": [
+        "injury",
+        "major_injury",
+        "saves"
+      ],
+      "params": {
+        "damage_taken": 14,
+        "traumatic_in_fight": true
+      }
+    },
+    {
+      "id": "stabilise",
+      "where": "ambulance",
+      "tags": [
+        "healing",
+        "skill_checks"
+      ],
+      "params": {
+        "rounds_since_downed": 2,
+        "has_medkit": true
+      }
+    },
+    {
+      "id": "strain_night",
+      "where": "home",
+      "tags": [
+        "strain",
+        "cyberware"
+      ],
+      "params": {
+        "implant_strain": 1.0,
+        "nights": 2
+      }
+    },
+    {
+      "id": "kit_load",
+      "where": "before the shift",
+      "tags": [
+        "encumbrance"
+      ],
+      "params": {
+        "stowed": 9,
+        "readied": 3
+      }
+    },
+    {
+      "id": "drone_recon",
+      "where": "roof",
+      "tags": [
+        "drones",
+        "hacking"
+      ],
+      "params": {
+        "distance_m": 900,
+        "controller": "board",
+        "cranial_jack": true
+      }
+    },
+    {
+      "id": "rain_watch",
+      "where": "outer ward",
+      "tags": [
+        "crisis_survival",
+        "strain"
+      ],
+      "params": {
+        "terrain": "heavy_forest_hills_urban",
+        "mode": "walking",
+        "road": false,
+        "privation": "night_without_adequate_shelter",
+        "current_strain": 2,
+        "forage_difficulty": 9,
+        "survive_levels": -1
+      }
+    },
+    {
+      "id": "referral_project",
+      "where": "UNSA records",
+      "tags": [
+        "projects"
+      ],
+      "params": {
+        "probability": "improbable",
+        "scope": "city",
+        "opposition": "local_leaders",
+        "disapproval": false,
+        "renown_spent": 4
+      }
+    },
+    {
+      "id": "advancement",
+      "where": "quarterly review",
+      "tags": [
+        "advancement"
+      ],
+      "params": {
+        "xp": 27
+      }
+    },
+    {
+      "id": "modding_kit",
+      "where": "workshop",
+      "tags": [
+        "gear_mods",
+        "armor_mods"
+      ],
+      "params": {
+        "weapon_mods": [
+          "customized",
+          "extended_mag"
+        ],
+        "armor_mods": [
+          "tailored_rig",
+          "whisperlight"
+        ],
+        "int_modifier": 1,
+        "con_modifier": 0,
+        "fix_skill": 2
+      }
+    }
+  ]
+}

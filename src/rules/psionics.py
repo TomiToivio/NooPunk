@@ -20,6 +20,13 @@ TECHNIQUES = {
     "premonition": ("Precognition", 0),
 }
 
+#: The catalogue's ``effort`` vocabulary mapped onto the Effort engine's durations.
+DURATION_BY_EFFORT = {
+    "commit_scene": Duration.SCENE,
+    "commit_day": Duration.DAY,
+    "none": Duration.ACTIVE,
+}
+
 
 @dataclass(frozen=True)
 class Technique:
@@ -45,10 +52,24 @@ class Psychic(_EffortPsychic):
 
     def use_technique(self, key: str, technique_id: str,
                       *, duration: Duration | None = None) -> None:
+        """Commit Effort for a technique, resolving it through the authored catalogue.
+
+        ``may_use`` reads the catalogue, so this must too: an id the gate accepts
+        but this method rejects is the silent contradiction that made the first
+        case's psionic beat unrunnable. The legacy ``TECHNIQUES`` map stays as a
+        fallback for ids authored before the catalogue existed.
+        """
         try:
             discipline, rank = TECHNIQUES[technique_id]
-        except KeyError as exc:
-            raise PsiRulesError(f"unknown NoöPunk technique: {technique_id}") from exc
+        except KeyError:
+            entry = load_catalogue().get(technique_id)
+            if entry is None:
+                raise PsiRulesError(f"unknown NoöPunk technique: {technique_id}") from None
+            discipline = str(entry.get("discipline", ""))
+            rank = int(entry.get("min_skill", 0))
+            if duration is None:
+                duration = DURATION_BY_EFFORT.get(str(entry.get("effort", "none")),
+                                                  Duration.SCENE)
         self.commit(key, discipline, minimum_rank=rank,
                     duration=duration or Duration.SCENE)
 

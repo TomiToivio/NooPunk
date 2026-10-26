@@ -1,0 +1,72 @@
+{
+  "$comment": "Ashes Without Number (2025 free edition): the crisis-zone survival procedures NooPunk adopts as its local-scarcity layer. AWN has no verified SRD or open licence (docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md), so this file records the *procedure* — terrain time costs, the privation ladder, foraging, scouting — re-expressed in original NooPunk wording. No source sentence, table heading, hazard list or setting material is reproduced. src/rules/awn_survival.py owns the arithmetic. Nothing here replaces CWN hit points, saves or System Strain: privation feeds System Strain, which CWN already governs.",
+  "format": "noopunk.rules.awn_survival",
+  "version": 1,
+  "issue": "https://github.com/TomiToivio/NooPunk/issues/564",
+  "source": {
+    "system": "Ashes Without Number",
+    "edition": "Free edition, 2025-07-10",
+    "licence": "no verified open licence — procedure re-expressed, no text or table copied",
+    "chapters": {
+      "travel": "Overland Travel and Scouting",
+      "supplies": "Food, Water, Shelter, and Fire",
+      "privation": "Starving, Thirsting, and Freezing",
+      "foraging": "Foraging"
+    },
+    "rights_record": "docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md"
+  },
+  "travel": {
+    "hex_km": 5,
+    "travel_hours_per_day": 10,
+    "forced_march_hours": 4,
+    "forced_march_is_exposed": true,
+    "soft_party_hours_lost": [1, 4],
+    "exposed_when_driving": true,
+    "astray_die": 8,
+    "astray_encounter_on_or_below": 1,
+    "road_walking_multiplier": 0.5,
+    "road_minimum_hours": 1,
+    "road_vehicular_minimum_hours": 1,
+    "road_never_astray": true,
+    "terrain": [
+      {"id": "plains_or_scrubland", "label": "Plains or scrubland", "walking_hours": 1, "vehicular_hours": 0.2, "scouting_days": 1, "astray_difficulty": null},
+      {"id": "light_forest_suburbs_desert", "label": "Light forest, suburbs, sandy desert", "walking_hours": 2, "vehicular_hours": 0.5, "scouting_days": 2, "astray_difficulty": 8},
+      {"id": "heavy_forest_hills_urban", "label": "Heavy forest, hills, intact urban cores", "walking_hours": 3, "vehicular_hours": 1, "scouting_days": 3, "astray_difficulty": 9},
+      {"id": "jungle_swamp_ruins", "label": "Jungle, swamp, destroyed urban cores", "walking_hours": 4, "vehicular_hours": null, "scouting_days": 4, "astray_difficulty": 10},
+      {"id": "mountains", "label": "Mountains", "walking_hours": 8, "vehicular_hours": null, "scouting_days": 8, "astray_difficulty": 11}
+    ],
+    "$terrain_note": "A null vehicular column means a ground vehicle cannot cross without a road; with a road it takes 2 hours per hex."
+  },
+  "supplies": {
+    "food_encumbrance_per_day": 1,
+    "travel_rations_week_encumbrance": 4,
+    "untreated_water": "a disease check each day it is drunk unboiled and unfiltered",
+    "shelter_skill": "Survive-0",
+    "fire_needed_for": ["cooking", "boiling water", "warmth"]
+  },
+  "privation": {
+    "$comment": "System Strain gained per circumstance. A character already at maximum who gains more must make a Physical save or die by dawn without rescue; a success leaves them helpless.",
+    "first_day_without_food": 0,
+    "consecutive_day_without_food": 1,
+    "first_day_without_water": 2,
+    "consecutive_day_without_water": 3,
+    "night_without_adequate_shelter": 0,
+    "harsh_night_without_shelter": 1,
+    "blocks_recovery": true,
+    "overflow_save": "physical",
+    "overflow_success": "helpless until rescued or dead"
+  },
+  "foraging": {
+    "half_day_hours": 5,
+    "full_day_hours": 10,
+    "check": "WIS/Survive",
+    "units_die": "1d6",
+    "add_survive_levels": true,
+    "maximum_units": 10,
+    "untrained_penalty": -1,
+    "minimum_units": 1,
+    "unit_worth": ["one day of scavenged food for one person", "one day of untreated water for one person in arid ground", "one night of firewood for the party"],
+    "difficulty_table_transcribed": false,
+    "$difficulty_gap": "The source's forage difficulty by terrain was not transcribed. The referee supplies a difficulty and the kernel does not invent one."
+  }
+}
