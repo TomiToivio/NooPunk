@@ -498,6 +498,6 @@ High-value future issues, in rough order:
 
 ## Related science registers
 
-- [`SOUL_FIELD_MODEL.md`](SOUL_FIELD_MODEL.md) — Kamen & Kamen (2025), the soul as a collection of
+- [`SOUL_AS_QUASI_FIELDS_NOTES.md`](../research/SOUL_AS_QUASI_FIELDS_NOTES.md) — Kamen & Kamen (2025), the soul as a collection of
   quantum-like fields: a field-coupling vocabulary for non-local PSI, an unresolved energy-conservation
   problem, and a proposed photon-shadow test. External hypothesis; no rules, no proof.
