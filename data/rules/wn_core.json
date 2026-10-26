@@ -1,0 +1,110 @@
+{
+  "_note": "Machine-readable contract for the Without Number core. Author direction 2026-10-26: use the CWN/SWN/AWN/WWN system for everything; stats, skills and all rules based on them. Implementation: src/rules/wn_core.py; ruling: docs/design/RULING_2026-10-26_WN_BASELINE.md.",
+  "_source_of_truth": "data/rules/wn_core.json is the contract; src/rules/wn_core.py is the kernel; tests/test_wn_core_contract.py asserts they agree.",
+  "_canon_revision": "issue-615-wn-baseline-2026-10-26",
+  "system_identity": {
+    "family": "Without Number",
+    "primary": "Cities Without Number",
+    "co_primary": "Stars Without Number",
+    "situational": [
+      "Worlds Without Number",
+      "Ashes Without Number"
+    ]
+  },
+  "stats": {
+    "final_list": [
+      "STR",
+      "DEX",
+      "CON",
+      "INT",
+      "WIS",
+      "CHA"
+    ],
+    "min": 3,
+    "max": 18,
+    "modifier_table": {
+      "3": -2,
+      "4": -1,
+      "5": -1,
+      "6": -1,
+      "7": -1,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 1,
+      "15": 1,
+      "16": 1,
+      "17": 1,
+      "18": 2
+    },
+    "base_modifier_cap": 2
+  },
+  "skills": {
+    "scale": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "untrained_modifier": -1,
+    "untrained_is_numbered_level": false
+  },
+  "skill_check": {
+    "dice": "2d6",
+    "dice_count": 2,
+    "dice_sides": 6,
+    "formula": "2d6 + attribute modifier + skill level + situational + aid",
+    "difficulties": {
+      "6": "Simple",
+      "8": "Significant",
+      "10": "Expert",
+      "12": "Master",
+      "14": "Extreme"
+    }
+  },
+  "modifiers": {
+    "situational_min": -2,
+    "situational_max": 2,
+    "aid_bonus_max": 1
+  },
+  "saves": {
+    "dice": "d20",
+    "base_target": 15,
+    "categories": [
+      "Physical",
+      "Evasion",
+      "Mental",
+      "Luck"
+    ],
+    "formula": "d20 >= 15 - best relevant attribute modifier",
+    "luck_target": 15
+  },
+  "combat": {
+    "attack": {
+      "dice": "d20",
+      "formula": "d20 + attack bonus vs AC",
+      "success": "total >= AC"
+    }
+  },
+  "generation": {
+    "method": "3d6 in order, or the array",
+    "dice": "3d6",
+    "array": [
+      14,
+      12,
+      11,
+      10,
+      9,
+      7
+    ],
+    "free_fourteen": true
+  },
+  "resolution_rules": {
+    "determinism": "every roll takes an injected rng or explicit dice values",
+    "no_llm": true
+  }
+}
