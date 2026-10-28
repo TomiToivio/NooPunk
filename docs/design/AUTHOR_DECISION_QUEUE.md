@@ -206,3 +206,43 @@ pretending the item was met.
   Without Number engine (`2d6 + attribute modifier + skill level`), with the WN attribute set.
   See `docs/design/RULING_2026-10-26_WN_BASELINE.md`. The licensing boundary is unchanged: SWN and
   AWN stay `blocked-unverified`, so the engine is implemented from the CC0 CWN/WWN SRDs.
+
+- **D41 — the optional narrative layer survives the Without Number baseline, re-anchored on
+  `2d6`.** Its two safety rules were justified on the retired 4dF kernel; re-measured on the
+  real dice, a +2 invoke at DV 8 is worth **+30.6 pp** against 4dF's **+32.1 pp**
+  (`docs/design/NARRATIVE_LAYER_2D6_CALIBRATION.md`, `tools/narrative_layer_2d6_calibration.py`).
+  `rulebook/19_NARRATIVE_LAYER.md` and `src/rules/narrative_layer.py` must be rewritten
+  against `2d6 + attribute modifier + skill` / `6·8·10·12·14`.
+
+- **D42 — one invoke per roll; aspects never stack.** Four stacked steps reach 91.7% at the
+  standard difficulty, which is worse than certainty: failure then reads as bad luck rather
+  than as a broken rule.
+
+- **D43 — an aspect's worth is difficulty-dependent.** +16.7 pp at DV 8, +0.0 pp at DV 14.
+  Any rule pricing an aspect as a fixed "+X" must name the difficulty.
+
+- **D44 — no second dice system. Closes C1.** Checks on `2d6`; attacks and saves on the CWN
+  `d20`; `4dF` survives only inside `strategy_game/` as legacy.
+
+- **D45 — Fate is retired as a baseline, not as vocabulary. Closes C5.** The aspect/compel
+  *shape* is kept; the kernel is not. Any note describing Fate Core as the approved kernel
+  predates the 2026-10-26 ruling and must not be reapplied by implication.
+
+- **D46 — PROVISIONAL: mental load is conditions, not a track.** No second harm economy
+  beside CWN's Trauma / Frail / Strain. A condition constrains choices; it does not drain a bar.
+
+- **D47 — PROVISIONAL: the four-layer exposure model** — observable event → acute response →
+  persistent condition → worldview state.
+
+- **D48 — worldview change is a player decision, never a failed save.** A contradicting shock
+  presents a choice with two different costs; a roll may never overwrite a conviction.
+
+- **D49 — EP-grade stress/trauma/disorder is deferred, not rejected**, and only revisited when
+  a written case demonstrably cannot be carried by conditions.
+
+- **D50 — PbtA contributes clocks only.** Moves-as-catalogue refused; partial success not
+  adopted.
+
+- **#689 design gate closed** by these records (`docs/design/DECISION_689_NARRATIVE_AND_MIND.md`).
+  D46–D50 are provisional and reversible in one sentence. Implementation is not authorized:
+  follow-up issues carry it, each with executable tests.
