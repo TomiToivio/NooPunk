@@ -21,7 +21,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from src.rules.investigation import Case, ClueKind, InvestigationError
+from .investigation import Case, ClueKind, InvestigationError
 
 
 class GateError(InvestigationError):
