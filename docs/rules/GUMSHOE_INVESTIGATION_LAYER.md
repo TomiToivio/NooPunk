@@ -118,10 +118,16 @@ written**. The mapping proposed here:
 | GUMSHOE spend | NoöPunk cost |
 |---|---|
 | extra detail beyond the core clue | **time** — a scene of mission time, which in a live case is a real cost |
-| a favour, a records pull, a lab rush | **Strain** or money, whichever the fiction names |
+| a favour, a records pull, a lab rush | **credits, time, or a favour owed** — never System Strain |
 | pushing past resistance | **the CWN check**, with its normal consequences |
 
 This keeps spending meaningful without inventing a fourth resource bar.
+
+**Correction (#709).** An earlier version of this table listed System Strain as an acceptable
+price for an ordinary favour. That was wrong: Strain is *biochemical* load in CWN — cyberware,
+drugs, harsh privation — and a records pull does not cost the body anything. Using it as a
+generic social currency would blur the one track the injury rules depend on. Favours cost
+credits, mission time, or an obligation the referee remembers.
 
 ## 5. Worked example — Lakkahaltia, mundane and anomalous
 
