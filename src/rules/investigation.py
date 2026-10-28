@@ -95,6 +95,9 @@ class Scene:
     id: str
     title: str
     clues: tuple[Clue, ...] = ()
+    #: A terminal scene is an ending: confrontation, arrest, the last interview. It needs no exit,
+    #: so the "every scene must hold a core clue" rule is wrong for it (#709).
+    terminal: bool = False
 
     def core_clues(self) -> tuple[Clue, ...]:
         return tuple(c for c in self.clues if c.kind is ClueKind.CORE)
@@ -130,9 +133,11 @@ class Case:
             raise InvestigationError("duplicate scene id")
         for scene in self.scenes:
             core = scene.core_clues()
-            if not core:
-                raise InvestigationError(f"scene {scene.id!r} has no core clue; it is a dead end")
-            if all(clue.obscure for clue in core):
+            if not core and not scene.terminal:
+                raise InvestigationError(
+                    f"scene {scene.id!r} has no core clue and is not marked terminal; it is a dead end"
+                )
+            if core and all(clue.obscure for clue in core):
                 raise InvestigationError(
                     f"scene {scene.id!r} gates its only exit behind an obscure competency"
                 )
