@@ -99,3 +99,28 @@ Recommended **now: A or B** as a nonbreaking first step; C is a separate, delibe
 - [ ] Verify hacking permissions, medical-record privacy and SWN Effort expenditures remain binding.
 - [ ] Decide A/B/C attribute reskin policy; then update only approved rulebook material and follow with a versioned digital migration.
 - [ ] Compare paper case execution against a future Godot implementation and add runtime tests only after code exists.
+
+## 8. The anomaly gate: keeping uncertainty after the clues are free
+
+Making clues automatic removes the stalled-plot failure mode and introduces its opposite: a table that
+collects every fact and then treats the strangest reading as established, because it is the most
+memorable. The gate is the discipline that prevents it, and it is implemented in
+`src/rules/anomaly_gate.py`.
+
+**Every core clue carries four things**: the fact, the ordinary reading, the anomalous reading, and —
+named *in advance* — the **discriminator**, the test that would separate them. A discriminator that is
+blank, or a pair of readings that are identical, is refused when the dossier is built: one reading
+dressed twice cannot preserve uncertainty.
+
+**A case may not conclude as anomalous while any core discriminator is unrun.** `require_open()` names
+the outstanding tests. Failure to *think of* an ordinary explanation is not a discriminator; a test must
+actually be attempted and its result recorded. `tally()` returns counts only — there is no verdict
+function, because the module does not believe anything.
+
+Two authoring notes, recorded rather than enforced: a discriminator should be **possible** for the
+characters (a wall is not a test) and should **cost something** (a formality is not a test).
+
+Applied to *Etsivä Romppainen ja Lakkahaltian Salaisuus*: the future-tense files have both a template
+artifact reading and a precognitive reading, and the separating test is the template deployment history
+against the file timestamps. Until that test runs, both hypotheses stay live and the table may act only
+on what is common to them — protecting the remaining patients and securing the files.

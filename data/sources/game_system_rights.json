@@ -266,6 +266,20 @@
       "role_in_noopunk": "Experience design references for the Godot/Concordia detective RPG: narrative identity and branching dialogue, clue-driven investigation, graph/node/edge hacking with comprehensible topology, lively local AR/IoT interaction.",
       "license_checked": "2026-10-10",
       "notes": "ABSTRACT GAMEPLAY DESIGN LESSONS ONLY. No licensed assets, code, text or proprietary worlds are incorporated. In particular: do not import their mechanics, and do NOT generalise any of them into universal neural hacking -- #200 forbids that."
+    },
+    {
+      "id": "gumshoe-srd",
+      "source": "GUMSHOE System Reference Document, Creative Commons version (Pelgrane Press, 2024-12-09, 303 pp)",
+      "url": "https://pelgranepress.com/gumshoe/files/GUMSHOESRDCC-3%20241209.pdf",
+      "kind": "srd-text",
+      "license": "CC BY 3.0 Unported",
+      "license_url": "https://creativecommons.org/licenses/by/3.0/",
+      "attribution": "GUMSHOE SRD (c) 2024 Pelgrane Press, developed, written and edited by Robin D. Laws with additional material by Kenneth Hite and Kevin Kulp. Licensed under CC BY 3.0 Unported. The SRD supplies a required attribution sentence that must appear at the same place and size as NooPunk's own copyright notice; see docs/rules/GUMSHOE_INVESTIGATION_LAYER.md for the recorded wording.",
+      "decision": "verified-permissive",
+      "role_in_noopunk": "Investigation procedure only: guaranteed core clues, investigative versus general abilities, clue-grade and spend structure, no-dead-end authoring rule. Never a character, combat or resolution engine.",
+      "license_checked": "2026-10-28",
+      "how_verified": "Downloaded the CC file from Pelgrane's own domain and read the copyright notice, attribution instructions and trademark clauses directly. The URL named in issue #704 (GUMSHOE_SRD_CC_3.pdf) now returns 'Multisite support not enabled'; the 2024-12-09 filename is the live document.",
+      "notes": "Trademark: 'GUMSHOE' may be used without implying endorsement; the GUMSHOE logo may NOT be used; the other Pelgrane game trademarks (Trail of Cthulhu, Night's Black Agents, Esoterrorists, Mutant City Blues, Ashen Stars, Fear Itself, TimeWatch, Cthulhu Confidential, The Yellow King RPG) are NOT granted and may not appear in derivative works -- so NooPunk must not describe the layer as '<game>-style'. CC BY permits commercial reuse with attribution, which distinguishes it from NooPunk's own BY-NC-SA material and matters for Vasama: Vasama must derive from the SRD itself with its own attribution, not lift NooPunk text. TO VERIFY: the exact ShareAlike interaction between BY 3.0 source material and a BY-NC-SA 4.0 collective work -- recorded as a licensing decision for the author, not asserted here. NO SRD prose, table or formula has been reproduced in NooPunk; the module implements the procedure with section citations. Related design: docs/design/ISSUE_704_GUMSHOE_INVESTIGATION.md and src/rules/anomaly_gate.py."
     }
   ],
   "sibling_artifacts": {
