@@ -115,7 +115,7 @@ Material about psychosis, dissociation and institutional psychiatry is not abstr
 ## 10. Worked scenes
 
 **Integration succeeds.** Mira fails a tier-3 exposure: Condition *"the ward breathes when nobody is
-watching"* — scope: `Perceive` in the hospital; lasting; effect: one step against; cancellation: a
+watching"* — scope: `Notice` in the hospital; lasting; effect: one step against; cancellation: a
 WWN project proving what the breathing is. Three sessions later the project completes: it becomes a
 permission, *"you can hear a building lie"*, and it never goes away.
 
