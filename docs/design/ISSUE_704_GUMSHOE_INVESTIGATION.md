@@ -1,290 +1,126 @@
-# #704 — the GUMSHOE-inspired investigation procedure
+# CWN-first investigation system: GUMSHOE research and NoöPunk design proposal
 
-**Status:** design proposal for author review. Speaks **baseline v1** (2d6 + modifier + skill, CWN six
-attributes). Adds no new attribute, no new die and no new ability score.
+**Issue:** [#704](https://github.com/TomiToivio/NooPunk/issues/704) · **Status:** tabletop-first proposal, not approved canon or implemented engine.
 
-This document answers the research task #704 names: *should a character with the right competency who
-performs the relevant inquiry automatically discover essential clues, while CWN rolls still adjudicate
-danger, time, quality, resistance, costs and complications?* **It should, and the division can be made
-sharp enough to implement.**
+## 1. Authority and existing implementation
 
----
+Read [the authoritative Without Number baseline](../../rulebook/WITHOUT_NUMBER_BASELINE.md) first. The 2026-10-26 ruling adopts CWN's STR/DEX/CON/INT/WIS/CHA, 2d6 skills, d20 attacks/saves, and source-specific CWN/SWN/AWN/WWN procedures. The former FIT/REF/INT/SOC/PSY/CYB system is **legacy**, not presently canonical, despite appearances in `rulebook/00_START_HERE.md`. Renaming attributes remains a **future proposal** and must not silently change the baseline.
 
-## 1. What the GUMSHOE SRD actually says
+Existing digital layers are **not yet converted uniformly**: `src/rules/wn_core.py` and `data/rules/wn_core.json` carry the WN baseline; `src/rules/swn_psionics.py` is a SWN-inspired effort implementation; `strategy_game/rpg/investigation.py` is a *separate crossover game's* Fate-based demo with branching stages; older `src/rules/core.py` retains an independent d10 kernel. Do not import the crossover Fate implementation into the primary RPG by accident.
 
-Read from the CC version dated 2024-12-09. Cited so each claim is checkable; **no SRD prose is copied
-into NoöPunk**.
+The following is an **original investigation procedure inspired by the GUMSHOE design literature**, with CWN retaining authority over uncertain consequential actions. It introduces no new dice, currency, skill ranks, or automatic psychic powers.
 
-**Gathering clues (SRD p. 50).** Three conditions must hold: (1) get into a scene where relevant
-information can be gathered, (2) have the right ability, (3) tell the referee you are using it. If all
-three hold, *"you will never fail to gain a piece of necessary information. It is never dependent on a
-die roll. If you ask for it, you will get it."*
+## 2. GUMSHOE research
 
-**Core clues.** For each scene the referee designates the clue needed to reach the next scene. The
-designated ability is *"just one possibility, not a straight jacket"* — if players propose another
-plausible method, the information is given anyway. Passive clues are handed out without prompting when
-the group is stuck.
+**Primary source:** Pelgrane Press, [GUMSHOE System Reference Document, version 3](https://pelgranepress.com/2013/10/24/the-gumshoe-system-reference-document/) (PDF linked on the official page; CC BY 3.0). Source version 3 was released February 2020 and includes material from GUMSHOE One-2-One and QuickShock. See also [GUMSHOE design overview](https://pelgranepress.com/2018/02/14/gumshoe/) and [design guidance](https://pelgranepress.com/2020/10/16/see-page-xx-how-to-design-for-gumshoe/).
 
-**Special benefits.** Extra value from a clue is bought by spending points from the relevant
-investigative pool — never for the core fact itself.
+Concepts worth adapting:
+1. **Investigative abilities vs general abilities:** knowing how and where to look for information is distinct from winning a contest under pressure. Rather than cloning GUMSHOE's ability lists or spends, map investigation domains onto existing CWN skills.
+2. **Core clues:** an indispensable fact or viable lead is provided when players have appropriate fictional access, bring relevant expertise, and undertake a sensible action. Do not roll to decide if the scenario can continue.
+3. **Additional information:** deeper context, corroboration, strategic advantage and optional discoveries may require resource costs, additional actions, special access, or checks.
+4. **Scene/lead design:** clues point to locations, persons, events, contradictions or investigative actions, not a single compulsory next scene. Multiple routes support open-ended play.
+5. **Failure is consequential:** use the existing CWN system to decide exposure, restricted access, interference, hazards, deadlines, negotiations, or whether optional advantages are obtained. Avoid 'roll again until clue appears'.
+6. **Unreliable inferences:** guaranteed *observations* are not guaranteed *interpretations*. A genuine anomaly is not automatically proof of extraterrestrials, psionics or a specific psychiatric diagnosis.
 
-**Ratings versus pools.** The rating is static; the pool starts each case equal to the rating and is
-spent down. General abilities refresh to rating at the start of a scenario; partial refreshes exist.
+**Not recommended:** replace CWN's 2d6 resolution with GUMSHOE's general-ability rules; transplant investigative point-spend economies; bypass physical access or ethics; turn SWN psychic powers into free truth detection; require players to solve the mystery by guessing which prewritten skill to name.
 
-**General abilities.** Roll one d6 against a Difficulty Number (usually 4); each point spent adds 1 to
-the roll.
+### CWN skill crosswalk (proposed, no new skills)
 
-**Why this design exists.** A failed "find the clue" roll stalls the plot and teaches players to stop
-engaging; the SRD's own answer is that *failure belongs in the risky, contested, physical parts of the
-story*, not in the reading of evidence.
+| Inquiry | CWN competence and fictional prerequisites | Risky action remains under CWN |
+| --- | --- | --- |
+| Trace physical evidence, reconstruction, observation | Notice; Know for specialist science; Fix for technical artefacts | Seizing guarded evidence, preserving chain of custody under pressure |
+| Psychiatry, treatment records, clinical anomalies | Heal plus appropriate professional background; Know for research | Access to private records, patient trust, time-sensitive treatment |
+| Interviews, motive, testimony | Talk, Connect, Lead and contextual familiarity | Coercion, deception, persuasion, surveillance or resistance |
+| Archives, bureaucracy, institutional records | Administer, Know, Connect | Unauthorized access, deadlines, concealment |
+| Digital forensics | Program, Fix, Notice; authenticated reachable devices | Intrusion, countermeasures, limited resources, air gaps |
+| Noetic evidence | Ordinary Notice/Know for observable signs; SWN psychic skill only with a legitimate psychic package | SWN Effort/technique rules and CWN consequences where applicable |
 
-## 2. The adaptation: **no roll to find, roll to explain**
+**Permission first:** qualifications alone do not grant access to locked rooms, classified files, privately held medical information, unreachable servers, or another person's thoughts. A core clue must have at least one reachable, fair path, potentially involving meaningful access challenges; if that path can fail, offer another independent path or an attainable consequence-based route.
 
-NoöPunk keeps CWN resolution for everything dangerous, contested or costly, and removes the die from
-one place only: **acquiring a clue you are competent to acquire.**
+## 3. Proposed tabletop procedure
 
-| question | who answers it | die? |
-|---|---|---|
-| Is there a clue here, and can I reach it? | scene access — CWN checks for stealth, entry, warrants, danger | **yes** |
-| Do I have the competency? | skill rating | no |
-| Do I get the core fact? | **guaranteed** | **no** |
-| What else do I get? | investigative **spend** | no |
-| What does it *mean*? | CWN skill check vs difficulty | **yes** |
-| Do I believe my own reading? | the evidence, later | — |
-| What does acting on it cost? | CWN consequences | yes |
+Before play the referee writes a small **case graph** with nodes (scenes, witnesses, records), edges (leads), facts (observations), and hypotheses (inferences). Mark each clue as **core** or **optional**, and note its evidence provenance, access condition, method and recipient. At least two independent leads should sustain each crucial progression whenever feasible. Do not preselect a single correct explanation if the case is deliberately unresolved.
 
-This is the whole of the borrowing. Everything else in NoöPunk stays CWN.
+During play:
+1. Player states an investigative intention and method, naming their character's plausible access or expertise. Referee may suggest fitting CWN skill; no keyword guessing.
+2. If the investigator has credible competence and access, reveal the **core observation** without rolling. If they lack either, describe the missing prerequisite and leave accessible alternatives.
+3. If circumstances create a materially uncertain *consequential* action, use normal CWN resolution with announced difficulty, risks and resources. The result affects cost, optional evidence, speed, safety, credibility or access, not whether an already legitimately found core observation disappears.
+4. Record **who asserted what**, the source and medium, time, physical/cyber/psychic channel, reliability, and whether evidence is observation, inference or testimony. A psychic impression is a reported experience, not confirmed objective history.
+5. Allow characters to reason incorrectly. Different leads may conflict. No roll dictates what a player must believe.
+6. Clock/faction consequences are GM-authored events or existing source procedures, not a new free-floating PbtA economy. Failure may close *one* route, but not every route to a required fact.
 
-### 2.1 The three conditions, in NoöPunk terms
+### Example: *Etsivä Romppainen ja Lakkahaltian Salaisuus*
 
-1. **Access** — the character is in the scene and able to examine it. Getting there may have cost
-   something (a Sneak check, a warrant, a favour, a bribe, a psychic risk).
-2. **Competency** — the character has the relevant skill at a rating that covers the method. Untrained
-   use (`untrained_modifier`) does **not** trigger the guarantee: you may still try, and then it is an
-   ordinary check with ordinary failure.
-3. **Declaration** — the player says what they are doing and how. *"I run the ward's access logs
-   against the duty roster for the missing four hours"* is a declaration; *"I investigate"* is not.
+**Illustrative investigation only, not setting canon or a claim about mental illness or paranormal events.**
 
-### 2.2 Three grades of clue
+| Node | Core observation available with relevant access and method | Leads onward | Optional action/risk |
+| --- | --- | --- | --- |
+| A. Ward interview | Patient and nurse independently describe an incident occurring during an unscheduled blackout | Security log (B); pharmacy records (C) | Talk check for willingness to testify publicly |
+| B. Camera/security room | Time-stamped gap overlaps a local system restart; logs cannot by themselves establish a supernatural cause | Technician (D); power meter (E) | CWN Program/hacking to access protected backups |
+| C. Medication audit | A treatment entry was amended after the reported event | Prescriber (F); archive (E) | Administer/Heal expertise to contextualize drugs and records |
+| D. Technician | Work order documents an unexplained maintenance request | Power meter (E); staff rota (F) | Social pressure or threatened job security |
+| E. Archive and meter | Discrepancy between official outage time and recorded power use | Compare with A/B/C; independent inquiry | Concealment, privacy obligations, time pressure |
+| F. Staff and prescriber | Conflicting accounts remain plausible; neither conclusively establishes an NHI or PSI event | Follow-up witnesses and corroboration | Consequences for trust and reputation |
 
-| grade | guaranteed? | what it does | example |
-|---|---|---|---|
-| **core** | **yes**, if the three conditions hold | opens the next scene; the case cannot dead-end | the duty files are written in the future tense |
-| **optional** | no — bought with a spend, or found by a declared extra method | corroborates, shortcuts, or unlocks a *better* ending | the ink is dated nine days before the admission |
-| **colour** | free on arrival | atmosphere, motive texture, no mechanical weight | the ward smells of chlorine and old carpet |
+A patient can be accurately describing an experience without the explanation being established. The referee should not treat psychiatric care as evidence of unreliability or illness as a paranormal diagnostic category.
 
-### 2.3 No dead ends — an authoring rule, not a referee virtue
+**Example play:** A qualified investigator inspects an accessible ward register: provide the amended-record clue. Roll only if they try to remove it unseen before security arrives, or access a protected off-site original. A trained SWN telepath may use a source-defined technique if permitted and pay its real Effort; the result has that technique's actual limits, not author-granted omniscience.
 
-Every core clue must be reachable by **at least two** of:
+## 4. Narrative overlays: optional, subordinate
 
-- two different skills (e.g. `Forensics` *or* `Medicine` for a body; `Infosec` *or* `Interface` for a
-  log), or
-- two different scenes (the same fact obtainable in the ward and again in the archive), or
-- one skill plus one **institutional** route (a contact, a warrant, an AI query) that costs something.
+- **Fate-style aspects:** record descriptive situational tags such as *Staff Fear Retaliation* or *Inconsistent Timestamps*. Do not introduce Fate points or free rerolls without a separately approved migration.
+- **PbtA-style consequences:** prepare choices such as delay, exposure, strained relationships, damaged equipment or advancing adversary response. Apply them through ordinary CWN referee adjudication; do not turn a CWN 2d6 into a PbtA move roll.
+- **Eclipse Phase:** use its treatment of forks, testimony by alternate selves, memory provenance and psychological stakes as *design prompts*. No new sanity or identity currency without further review.
+- **SWN psionics:** use the existing source psychic package, skills, Effort commitment, technique restrictions and recovery. BCI, psychotronic tools and natural PSI are distinct access channels; none bypasses the investigative process automatically.
 
-A core clue with exactly one path is an authoring defect and should be caught in review, not discovered
-when a table stalls. This is the single most important rule in this document.
+## 5. Attribute reskin options (decision pending)
 
-### 2.4 Spends without a new resource
+| Candidate | Scope | Compatibility |
+| --- | --- | --- |
+| A. **Keep CWN codes**, add NoöPunk-specific explanatory descriptions/examples | Presentation only | No numeric changes; safest now |
+| B. **Alias only** (e.g., STR=Body Power, DEX=Coordination, CON=Resilience, INT=Reason, WIS=Awareness, CHA=Presence) | Character-sheet labels | Maintain canonical STR/DEX/CON/INT/WIS/CHA identifiers in data, saves and rules references |
+| C. **Design six new NoöPunk attributes** including reconsideration of FIT/REF/SOC/PSY/CYB | Mechanical replacement | Requires explicit mapping and revised saves, psychics, progression, equipment, skills, NPCs, character creation and migrations |
 
-GUMSHOE's investigative pools do not come across as a new economy. A **spend** in NoöPunk is one of:
+Recommended **now: A or B** as a nonbreaking first step; C is a separate, deliberately larger author decision. Cybernetics is currently equipment under CWN, and psychic capability is a SWN specialist package, so conflating either with a universal innate attribute has substantial mechanical costs.
 
-- **time** — a scene's worth of work, which advances a pressure clock;
-- **a resource** — a favour, a warrant, a consumable, a charge;
-- **risk** — a check you would otherwise not have to make (the entry, the trace, the psychic contact);
-- **credibility** — a social cost with an institution that will remember.
+## 6. Source, rights and implementation guardrails
 
-What a spend buys is always **optional** information: a second reading, a witness, a corroboration, a
-shortcut, a name. It never buys the core fact, and it never buys the *truth* of an interpretation.
+- Cite the GUMSHOE SRD under **CC BY 3.0** if incorporating its licensed expression; give credit, source link, licence link and note modifications. This document uses original paraphrase and procedures inspired by general concepts, not copied source prose.
+- CWN's SRD [https://cwn.quadrifons.com/](https://cwn.quadrifons.com/) is not proof that **all** text in the commercial CWN/SWN/AWN/WWN books can be reproduced. See repository rights audit [#569](https://github.com/TomiToivio/NooPunk/issues/569).
+- Keep the primary game's case data separated from the independent crossover game's `strategy_game/rpg/investigation.py` Fate demo.
+- **Tabletop-first:** test the case graph at a table before adding any Python, Godot or CI code. Automated tests, when added, should test executable behavior rather than prose.
+- Do not modify the authoritative baseline until the attribute reskin and clue procedure receive explicit sign-off.
 
-## 3. The clue is a fact; the reading is a hypothesis
+## 7. Acceptance / playtest checklist
 
-The mechanism that keeps NoöPunk's uncertainty intact: **every clue is written twice.**
-
-A clue record carries:
-
-- **fact** — what is physically/socially/digitally there, stated without interpretation;
-- **mundane reading** — the ordinary explanation a competent sceptic would reach;
-- **anomalous reading** — the explanation that requires the weird;
-- **discriminator** — the test, record or witness that would separate them, *named in advance*.
-
-The guarantee attaches to the **fact**. It never attaches to a reading. A table that finds every fact
-and still argues about what they mean is playing the game correctly.
-
-### 3.1 The anomaly gate
-
-A case may not be resolved as anomalous until every discriminator for the anomalous reading has been
-**attempted and recorded** — including the ones that failed. "We couldn't think of an ordinary
-explanation" is not a discriminator. This is what preserves #704's requirement that *the possibility
-that an anomaly has an ordinary explanation* survives contact with play.
-
-### 3.2 The uncertainty ledger
-
-Each hypothesis carries supporting and contradicting clue ids. A hypothesis becomes **actionable** at
-two *independent* supporting clues with no unaddressed contradiction; it becomes **closed** only when a
-discriminator is resolved against it. Independence matters: two facts from the same document are one
-fact wearing two hats.
-
----
-
-## 4. The procedure at the table
-
-Mapped onto the canonical loop in `docs/design/DEFAULT_INVESTIGATION_FANTASY.md` §9, which already fixes
-the order (secure → physical → cyber → social → psychic → compare → hypothesise → test → classify → act
-→ preserve).
-
-1. **Frame the scene.** Name the four layers present. State which clues are passive (handed over on
-   arrival) and which require declaration.
-2. **Declare.** Player names method and target. Referee checks the three conditions.
-3. **Fact.** If conditions hold: give the fact, plainly, once. No roll. If they do not hold: say what
-   is missing (access, competency or specificity) — never "you find nothing".
-4. **Spend, if offered.** Player may pay time/resource/risk/credibility for optional information.
-5. **Interpret.** This is where dice live. A `Research`, `Forensics`, `Kinesiology`, `Intelligence
-   Analysis` or `Talk` check establishes *which reading holds*, at a difficulty set by how much the
-   evidence actually supports it.
-6. **Complicate.** On a cost or miss band, the information is still true — but something else moves: a
-   clock advances, an institution notices, a suspect learns.
-7. **Record.** Update the ledger: clue added, hypotheses re-scored, contradictions noted.
-8. **Test.** Run a discriminator. Only a resolved discriminator closes a hypothesis.
-
-**Failure is never "you learn nothing."** Failure means: the reading you reach is incomplete or
-overconfident, the cost is paid, or the world reacts. The clue was already yours.
-
----
-
-## 5. Mystery graph — an example
-
-Nodes are scenes; **bold** edges are core clues (guaranteed once reached); dotted edges are optional
-clues that shortcut or enrich.
-
-```
-                    [1. Intake]
-                         |
-                   core: files in future tense
-                         |
-        +----------------+----------------+
-        |                                 |
-  [2. Ward office]                  [3. Morgue]
-   core: duty roster gap             core: no lividity
-        |                                 |
-        +--------+--------------+---------+
-                 |              |
-          [4.Archive]      [5. Chapel]
-        core: 1974 admission   optional: the choir's hymn book
-                 |              |
-                 +------+-------+
-                        |
-                  [6. Confrontation]
-             requires: two independent supports
-             and no unaddressed contradiction
-```
-
-Each core edge is reachable at least twice: scene 2 by `Infosec` (roster) **or** `Talk` (night nurse);
-scene 3 by `Medicine` **or** `Forensics`; scene 4 by `Research` **or** `Administrate` (records request);
-scene 5 by `Perceive` **or** `Kinesics`; scene 6 by the ledger, not by a die.
-
-## 6. Worked case — Dr. Inspector Romppainen and the Lakkahaltia ward
-
-Setting per the canonical investigation fantasy: UNSA investigator, field partner, controller, embedded
-forensic AI, four analytical layers. Nothing below is canon; it is a design fixture, and the ward's name
-follows the existing Northern Noösphere material.
-
-### 6.1 The situation
-
-Four admissions in eleven days at Lakkahaltia psychiatric hospital. One patient is dead. The duty files
-for the last four admissions are written in the **future tense**; one describes what Romppainen will do
-tomorrow.
-
-### 6.2 Clue table
-
-| # | scene | fact (guaranteed) | mundane reading | anomalous reading | discriminator |
-|---|---|---|---|---|---|
-| C1 | intake | four files use future tense | a documentation template bug, or a clerk writing prospective care plans | the files describe events before they occur | compare file timestamps to the hospital's template version history |
-| C2 | ward office | duty roster has a four-hour gap for the night of the death | shift swap never logged | someone was present who is not on any roster | interview the night nurse; check door controller logs |
-| C3 | morgue | body shows no lividity | position at death, or post-mortem movement | the body was placed, not found | `Medicine` check; ambient temperature log |
-| C4 | archive | a 1974 admission with the same name and the same handwriting | a family name reused; a clerk's hand resembling another's | recurrence across fifty years | handwriting analysis; personnel file of the 1974 clerk |
-| C5 | chapel | hymn book has a date nine days in the future | someone wrote the wrong date | a document from after the event | compare ink age by `Forensics`; check who holds the key |
-
-### 6.3 The two hypotheses, both live
-
-**H1 (mundane).** A records clerk with a prospective-care template, a genuine roster gap caused by an
-unlogged swap, and a body moved after death by staff following an old protocol. Every fact has an
-ordinary explanation; the "future tense" is a template artefact.
-
-**H2 (anomalous).** The ward's documentation is precognitive, the 1974 file is the same document
-recurring, and the death was known before it happened.
-
-They are **not** distinguished by the facts — both explain C1–C5. They are distinguished by C1's
-template-history check and C3's lividity test. Until those run, the ledger keeps both actionable and the
-table can act only on what is common to both (protect the remaining patients, secure the files).
-
-That is the design working as intended: **clues are guaranteed, truth is not.**
-
-### 6.4 What the layers contribute
-
-- **Physical** — C3, C5 (ink, body, room).
-- **Cybernetic** — C1 (template version history), C2 (door controller logs, roster export).
-- **Social** — C2 (night nurse), C4 (personnel file), institutional resistance from the hospital.
-- **Psychic** — a `Telepathy` or `Precognition` probe is a **clue source**, never a verdict: it may
-  produce a *new fact* (C1 corroborated by a second observer), and it may produce a *reading* that is
-  indistinguishable from H1's. It cannot close the anomaly gate on its own.
-
-### 6.5 A play transcript in miniature
-
-> **Player:** I pull the template history for the admission forms — version, deployment date, who can
-> edit. `Infosec`, I have it trained.
-> **Referee:** Access is fine, competency is fine, declaration is specific. Fact: the future-tense
-> template was deployed to this ward **six weeks after** the earliest of the four files. No roll.
-> **Player:** Then the files were written against a template that did not exist yet. That's C1's
-> discriminator, and it points at H2.
-> **Referee:** It points. It doesn't close: the roll for the *reading* is `Research` at Difficult,
-> because one deployment record is one document. Take the check, and we'll see whether you also notice
-> that the deployment was rolled back — which is a contradiction you will have to address.
-
-Note what happened: the **fact** was free, the **interpretation** cost a check, and the check produced a
-complication that keeps H1 alive.
-
----
-
-## 7. Overlay boundaries (Fate / PbtA)
-
-| overlay | allowed | forbidden |
-|---|---|---|
-| **Fate aspects** | one invoke per roll; grants a **band**, not a number; compels create cost, not information | an aspect may never *find* a clue or *establish* a reading |
-| **PbtA moves** | outcome vocabulary (clean / cost / miss), fronts as pressure clocks, "what do you do?" framing | a move list replacing skill checks; "success with complication" granting facts the scene does not contain |
-| **Clocks** | institutional pressure (the hospital's lawyers, the press, the patient's decline) | clocks that secretly contain the solution |
-
-The boundary in one line: **overlays colour the outcome; they never author the world.**
-
-## 8. Psionics, cybernetics and BCI
-
-- **SWN psionics** supplies *sources of clues* and *ways to reach scenes*: telepathy is an interview
-  method, precognition is an evidence stream with its own reliability problems, psychometry is a
-  forensic method on an object.
-- **Effort** is spent inside the existing economy; psionics adds no second resolution die and no second
-  difficulty ladder.
-- **Cybernetics** contributes `Infosec`/`Interface` methods and device statistics (COMPUTE / INTERFACE /
-  NETWORK are properties of hardware, not attributes — see the crosswalk).
-- **BCI** is a *forensic surface*: neural logs are evidence like any other, with the same guarantee for
-  the fact and the same checks for the reading.
-- **Consent and personhood** stay live questions (the canonical fantasy's §6): a telepathic reading of a
-  patient is evidence *and* an ethical act with consequences.
-
-## 9. Verification plan
-
-| criterion | how |
-|---|---|
-| core clues never dead-end | authoring lint: every core clue has ≥2 paths (implemented in `src/rules/investigation.py`, tested) |
-| finding is free, interpretation is not | unit tests over the procedure model |
-| mundane explanation survives | anomaly gate: resolution requires every discriminator attempted |
-| tabletop | one session, three scenes, two referees; measure: minutes to first core clue, rolls spent on finding vs interpreting, whether both hypotheses stayed live |
-| Godot | regression on existing tests; no engine change proposed here |
-| migration | none — this layer reads skills by name and does not touch `core.json` |
-
-## 10. Follow-ups this proposal implies
-
-1. Migrate `core.json` to baseline v1 (2d6, CWN six, skill list) — blocks every later numeric module.
-2. Implement the investigation runtime in Godot once the tabletop procedure has one playtest.
-3. SWN psionic disciplines as clue-sources (needs the SWN licence question settled first).
-4. A second worked case where the **mundane** reading is true, so the anomaly gate is exercised in the
-   other direction — a design that only ever confirms the weird is not preserving uncertainty.
+- [ ] Playtest interviews, cyber-forensics, clinical records and optional PSI using existing CWN/SWN character sheets.
+- [ ] Verify that missing a skill or failing a roll never makes *all* core lead paths inaccessible.
+- [ ] Verify that players can pursue misleading hypotheses, that claims retain provenance, and that no core clue asserts an unsupported paranormal conclusion.
+- [ ] Verify hacking permissions, medical-record privacy and SWN Effort expenditures remain binding.
+- [ ] Decide A/B/C attribute reskin policy; then update only approved rulebook material and follow with a versioned digital migration.
+- [ ] Compare paper case execution against a future Godot implementation and add runtime tests only after code exists.
+
+## 8. The anomaly gate: keeping uncertainty after the clues are free
+
+Making clues automatic removes the stalled-plot failure mode and introduces its opposite: a table that
+collects every fact and then treats the strangest reading as established, because it is the most
+memorable. The gate is the discipline that prevents it, and it is implemented in
+`src/rules/anomaly_gate.py`.
+
+**Every core clue carries four things**: the fact, the ordinary reading, the anomalous reading, and —
+named *in advance* — the **discriminator**, the test that would separate them. A discriminator that is
+blank, or a pair of readings that are identical, is refused when the dossier is built: one reading
+dressed twice cannot preserve uncertainty.
+
+**A case may not conclude as anomalous while any core discriminator is unrun.** `require_open()` names
+the outstanding tests. Failure to *think of* an ordinary explanation is not a discriminator; a test must
+actually be attempted and its result recorded. `tally()` returns counts only — there is no verdict
+function, because the module does not believe anything.
+
+Two authoring notes, recorded rather than enforced: a discriminator should be **possible** for the
+characters (a wall is not a test) and should **cost something** (a formality is not a test).
+
+Applied to *Etsivä Romppainen ja Lakkahaltian Salaisuus*: the future-tense files have both a template
+artifact reading and a precognitive reading, and the separating test is the template deployment history
+against the file timestamps. Until that test runs, both hypotheses stay live and the table may act only
+on what is common to them — protecting the remaining patients and securing the files.

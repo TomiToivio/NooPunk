@@ -1,266 +1,218 @@
-"""The GUMSHOE-inspired investigation procedure (#704).
+"""The investigative layer: GUMSHOE's core-clue principle on the CWN chassis (#704).
 
-This module is the executable half of `docs/design/ISSUE_704_GUMSHOE_INVESTIGATION.md`. It enforces the
-two rules that are easy to state and easy to violate, and it deliberately does **not** roll dice.
+The single rule this module exists to enforce:
 
-**Rule 1 — no dead ends.** Every core clue must be reachable by at least two independent paths. A case
-that violates this is refused at validation time, because the failure is an authoring defect that a
-table discovers only by stalling.
+    **Finding information is not a roll. Interpreting it is not a roll. Acting on it is.**
 
-**Rule 2 — finding is free, interpretation costs a check.** `seek()` returns the *fact* whenever the
-three conditions hold (access, competency, declaration). It never returns a *reading*. `interpret()`
-never returns truth: it returns a reading flagged as requiring a check, which the CWN engine resolves
-elsewhere. There is no code path in this module that rolls, and none that concludes.
+GUMSHOE's insight is that a competent investigator does not fail to *see* the thing that
+matters; the die decides danger, time and quality, not whether the plot exists. NoöPunk
+keeps that and puts the CWN `2d6` check exactly where it belongs: on the action that
+follows, and on the risks taken to get there.
 
-Nothing here defines an attribute, a skill rating scale, or a die. Methods are plain strings so the
-module works with whichever skill list the migration settles on.
+Three separations, and they are the design:
 
-Source basis: GUMSHOE SRD (CC BY 3.0), p. 50 "Gathering Clues" and the core-clue rules. No SRD text is
-reproduced.
+* **Discovery** is automatic when the character holds the relevant competency. No check,
+  no difficulty, no failure. A clue may offer an alternative route (an unlisted but
+  plausible method), which the GM grants rather than rolls.
+* **Interpretation** belongs to the player. The module can list what supports and what
+  contradicts a hypothesis; it may never set the player's confidence or announce a verdict.
+  A wrong hypothesis is a legal game state, and an anomaly may have an ordinary explanation.
+* **Action** is where CWN lives: forcing a door, tailing a suspect, keeping a patient calm.
+  Those roll, and they cost time, Strain or danger.
+
+No text from the GUMSHOE SRD is reproduced. The SRD is CC BY 3.0 and its attribution
+requirements are recorded in `docs/rules/GUMSHOE_INVESTIGATION_LAYER.md`.
 """
-
 from __future__ import annotations
 
-from collections.abc import Iterable, Mapping
 from dataclasses import dataclass, field
 from enum import Enum
 
 
 class InvestigationError(ValueError):
-    """A case, clue or ledger operation that violates the procedure."""
+    """Raised when a case is malformed or a call breaks the discovery rule."""
 
 
-class DeadEndError(InvestigationError):
-    """A core clue with fewer than two independent paths — an authoring defect."""
-
-
-class Grade(str, Enum):
-    CORE = "core"          # guaranteed once the three conditions hold
-    OPTIONAL = "optional"  # bought with a spend
-    COLOUR = "colour"      # free on arrival, no mechanical weight
-
-
-class ReadingKind(str, Enum):
-    MUNDANE = "mundane"
-    ANOMALOUS = "anomalous"
-
-
-class Outcome(str, Enum):
-    GUARANTEED = "guaranteed"      # core fact, conditions met, no roll
-    REQUIRES_SPEND = "requires_spend"  # optional clue: pay, then receive
-    REQUIRES_CHECK = "requires_check"  # competency missing: ordinary check, failure possible
-    COLOUR = "colour"              # free texture
-    UNKNOWN = "unknown"            # the method does not reach this clue; alternatives listed
+class ClueKind(str, Enum):
+    CORE = "core"          # required to leave the scene
+    OPTIONAL = "optional"  # enriches, never blocks
 
 
 @dataclass(frozen=True)
 class Clue:
-    """One clue, written twice: a fact and two readings, plus the test that separates them."""
+    """A fact the world contains. Not a conclusion."""
 
     id: str
-    scene: str
-    grade: Grade
+    scene_id: str
+    kind: ClueKind
+    competency: str
     fact: str
-    mundane_reading: str
-    anomalous_reading: str
-    discriminator: str
-    methods: tuple[str, ...]
+    leads_to: tuple[str, ...] = ()
+    obscure: bool = False   # a core clue may not depend on this alone
 
     def __post_init__(self) -> None:
-        if not self.fact.strip():
-            raise InvestigationError(f"clue {self.id}: a fact is required")
-        if not self.methods:
-            raise InvestigationError(f"clue {self.id}: at least one method is required")
-        if self.grade is Grade.CORE and not self.discriminator.strip():
-            raise InvestigationError(
-                f"core clue {self.id}: a discriminator must be named in advance — "
-                "otherwise the anomaly gate can never be honoured"
-            )
+        if not self.id or not self.fact:
+            raise InvestigationError("a clue needs an id and a fact")
 
 
 @dataclass(frozen=True)
-class SeekResult:
-    """What `seek()` is allowed to return: a fact, or a reason it is not free."""
+class Scene:
+    """A location or encounter that a case passes through."""
 
-    outcome: Outcome
-    fact: str | None
-    clue_id: str | None = None
-    alternatives: tuple[str, ...] = ()
-    reason: str = ""
+    id: str
+    title: str
+    clues: tuple[Clue, ...] = ()
 
-    @property
-    def is_fact(self) -> bool:
-        return self.outcome in (Outcome.GUARANTEED, Outcome.COLOUR, Outcome.REQUIRES_SPEND)
+    def core_clues(self) -> tuple[Clue, ...]:
+        return tuple(c for c in self.clues if c.kind is ClueKind.CORE)
 
 
 @dataclass(frozen=True)
-class Reading:
-    """An interpretation. Never truth: always flagged as needing the engine's check."""
+class Case:
+    """A mystery graph whose exits must not be gated behind luck."""
 
-    clue_id: str
-    kind: ReadingKind
-    statement: str
-    requires_check: bool = True
+    id: str
+    scenes: tuple[Scene, ...]
+
+    def scene(self, scene_id: str) -> Scene:
+        for scene in self.scenes:
+            if scene.id == scene_id:
+                return scene
+        raise InvestigationError(f"no scene {scene_id!r} in case {self.id!r}")
+
+    def validate(self) -> None:
+        """Every scene must be leavable, and every lead must point somewhere real.
+
+        A scene with no core clue is a dead end; a core clue that only one obscure
+        competency can reach is a dead end for any table that did not bring it.
+        """
+        if not self.scenes:
+            raise InvestigationError("a case needs at least one scene")
+        ids = {scene.id for scene in self.scenes}
+        for scene in self.scenes:
+            core = scene.core_clues()
+            if not core:
+                raise InvestigationError(f"scene {scene.id!r} has no core clue; it is a dead end")
+            if all(clue.obscure for clue in core):
+                raise InvestigationError(
+                    f"scene {scene.id!r} gates its only exit behind an obscure competency"
+                )
+            for clue in scene.clues:
+                for target in clue.leads_to:
+                    if target not in ids:
+                        raise InvestigationError(
+                            f"clue {clue.id!r} leads to unknown scene {target!r}"
+                        )
 
 
 @dataclass
-class Case:
-    """A case model: scenes, clues, and what has been established."""
+class Investigator:
+    """Ratings above zero mean competent; the number is a spend, not a chance to fail."""
 
-    id: str
-    scenes: tuple[str, ...]
-    clues: tuple[Clue, ...]
-    discovered: set[str] = field(default_factory=set)
-    discriminators_attempted: set[str] = field(default_factory=set)
-    discriminators_resolved: set[str] = field(default_factory=set)
+    name: str
+    ratings: dict[str, int] = field(default_factory=dict)
 
-    def __post_init__(self) -> None:
-        unknown = {c.scene for c in self.clues} - set(self.scenes)
-        if unknown:
-            raise InvestigationError(f"case {self.id}: clues in unknown scenes {sorted(unknown)}")
-        ids = [c.id for c in self.clues]
-        if len(ids) != len(set(ids)):
-            raise InvestigationError(f"case {self.id}: duplicate clue ids")
+    def is_competent(self, competency: str) -> bool:
+        return self.ratings.get(competency, 0) > 0
 
-    # -- authoring lint ---------------------------------------------------
-
-    def clue(self, clue_id: str) -> Clue:
-        for c in self.clues:
-            if c.id == clue_id:
-                return c
-        raise InvestigationError(f"case {self.id}: no clue {clue_id}")
-
-    def core_clues(self) -> tuple[Clue, ...]:
-        return tuple(c for c in self.clues if c.grade is Grade.CORE)
-
-    def dead_ends(self) -> tuple[Clue, ...]:
-        """Core clues with fewer than two independent paths through distinct methods."""
-        return tuple(c for c in self.core_clues() if len(set(c.methods)) < 2)
-
-    def validate(self) -> None:
-        """Refuse a case that can dead-end. Call this on load, not on play."""
-        dead = self.dead_ends()
-        if dead:
-            names = ", ".join(f"{c.id} (methods: {', '.join(c.methods)})" for c in dead)
-            raise DeadEndError(
-                f"case {self.id}: core clues reachable one way only: {names}. "
-                "Give each a second method, a second scene, or an institutional route."
-            )
-
-    # -- play -------------------------------------------------------------
-
-    def seek(self, clue_id: str, method: str, *, trained: bool) -> SeekResult:
-        """Look for a clue. Never rolls; never interprets."""
-        clue = self.clue(clue_id)
-
-        if clue.grade is Grade.COLOUR:
-            self.discovered.add(clue.id)
-            return SeekResult(Outcome.COLOUR, clue.fact, clue.id, reason="colour: free on arrival")
-
-        if method not in clue.methods:
-            return SeekResult(
-                Outcome.UNKNOWN,
-                None,
-                clue.id,
-                alternatives=tuple(clue.methods),
-                reason=f"method {method!r} does not reach this clue",
-            )
-
-        if not trained:
-            # The guarantee requires competency. An untrained attempt is an ordinary check.
-            return SeekResult(
-                Outcome.REQUIRES_CHECK,
-                None,
-                clue.id,
-                reason="untrained: the guarantee does not apply; resolve as a normal check",
-            )
-
-        if clue.grade is Grade.CORE:
-            self.discovered.add(clue.id)
-            return SeekResult(Outcome.GUARANTEED, clue.fact, clue.id, reason="core clue: no roll")
-
-        return SeekResult(
-            Outcome.REQUIRES_SPEND,
-            None,
-            clue.id,
-            reason="optional clue: pay time, resource, risk or credibility",
-        )
-
-    def pay_and_take(self, clue_id: str, *, spent: str) -> SeekResult:
-        """Complete a spend for an optional clue."""
-        clue = self.clue(clue_id)
-        if clue.grade is not Grade.OPTIONAL:
-            raise InvestigationError(f"clue {clue.id} is {clue.grade.value}, not optional")
-        if not spent.strip():
-            raise InvestigationError("a spend must name what it costs")
-        self.discovered.add(clue.id)
-        return SeekResult(Outcome.GUARANTEED, clue.fact, clue.id, reason=f"paid with {spent}")
-
-    def interpret(self, clue_id: str, kind: ReadingKind) -> Reading:
-        """Return a reading, flagged for the engine. This method cannot conclude anything."""
-        clue = self.clue(clue_id)
-        if clue.id not in self.discovered:
-            raise InvestigationError(
-                f"clue {clue.id} has not been established; a reading needs its fact first"
-            )
-        statement = (
-            clue.mundane_reading if kind is ReadingKind.MUNDANE else clue.anomalous_reading
-        )
-        return Reading(clue.id, kind, statement)
-
-    # -- the anomaly gate -------------------------------------------------
-
-    def attempt_discriminator(self, clue_id: str) -> str:
-        clue = self.clue(clue_id)
-        self.discriminators_attempted.add(clue.id)
-        return clue.discriminator
-
-    def resolve_discriminator(self, clue_id: str, *, supports: ReadingKind) -> None:
-        if clue_id not in self.discriminators_attempted:
-            raise InvestigationError(
-                f"clue {clue_id}: a discriminator must be attempted before it can resolve"
-            )
-        self.discriminators_resolved.add(f"{clue_id}:{supports.value}")
-
-    def anomaly_gate_open(self) -> bool:
-        """True only when every core clue's discriminator has been attempted."""
-        return all(c.id in self.discriminators_attempted for c in self.core_clues())
-
-    def require_anomaly_gate(self) -> None:
-        if not self.anomaly_gate_open():
-            missing = [
-                c.id for c in self.core_clues() if c.id not in self.discriminators_attempted
-            ]
-            raise InvestigationError(
-                "cannot resolve the case as anomalous: discriminators not attempted for "
-                + ", ".join(missing)
-            )
+    def spend(self, competency: str, amount: int = 1) -> int:
+        """Spend from a rating for extra information. Never for permission to find a clue."""
+        if amount < 1:
+            raise InvestigationError("a spend is at least one point")
+        available = self.ratings.get(competency, 0)
+        if available < amount:
+            raise InvestigationError(f"{self.name} cannot spend {amount} from {competency}")
+        self.ratings[competency] = available - amount
+        return self.ratings[competency]
 
 
 @dataclass(frozen=True)
-class Hypothesis:
-    id: str
-    kind: ReadingKind
-    statement: str
-    support: tuple[str, ...] = ()       # clue ids
-    contradict: tuple[str, ...] = ()    # clue ids
+class Discovery:
+    """What a scene yields to a given investigator, and why."""
+
+    scene_id: str
+    clues: tuple[Clue, ...]
+    granted_by: str            # "competency" or "alternative_method"
+    can_leave: bool
 
 
-def actionable(hypothesis: Hypothesis, case: Case) -> bool:
-    """Two *independent* supports and no unaddressed contradiction.
+def discover(
+    case: Case,
+    scene_id: str,
+    investigator: Investigator,
+    *,
+    alternative_method: bool = False,
+) -> Discovery:
+    """Yield the clues a competent investigator simply *gets*.
 
-    Independence is by scene: two facts from one document are one fact wearing two hats.
+    No roll, and no difficulty: GUMSHOE's principle is that competency buys the
+    information. ``alternative_method`` is the GM granting a plausible approach that no
+    listed ability covers - the SRD is explicit that the designated ability is "just one
+    possibility, not a straight jacket".
     """
-    if hypothesis.contradict:
-        return False
-    scenes = set()
-    for clue_id in hypothesis.support:
-        clue = case.clue(clue_id)
-        if clue.id not in case.discovered:
-            continue
-        scenes.add(clue.scene)
-    return len(scenes) >= 2
+    scene = case.scene(scene_id)
+    core = scene.core_clues()
+    has_competency = any(investigator.is_competent(clue.competency) for clue in core)
+
+    if not (has_competency or alternative_method):
+        return Discovery(scene_id=scene_id, clues=(), granted_by="none", can_leave=False)
+
+    # A competent investigator receives the core clue *and* every optional clue their
+    # own competencies cover. Optional clues they cannot cover stay in the world.
+    granted = [clue for clue in core]
+    granted.extend(
+        clue for clue in scene.clues
+        if clue.kind is ClueKind.OPTIONAL and investigator.is_competent(clue.competency)
+    )
+    return Discovery(
+        scene_id=scene_id,
+        clues=tuple(granted),
+        granted_by="competency" if has_competency else "alternative_method",
+        can_leave=True,
+    )
 
 
-def support_report(hypotheses: Iterable[Hypothesis], case: Case) -> Mapping[str, bool]:
-    return {h.id: actionable(h, case) for h in hypotheses}
+class Stance(str, Enum):
+    """How a clue bears on a hypothesis. The system classifies evidence, not truth."""
+
+    SUPPORTS = "supports"
+    CONTRADICTS = "contradicts"
+    NEUTRAL = "neutral"
+
+
+@dataclass
+class Hypothesis:
+    """A player's theory. Confidence is set by the player and by nothing else.
+
+    This is the guard against a system that solves the mystery for the table: the model may
+    say which facts bear on the theory, but never whether the theory is right.
+    """
+
+    id: str
+    statement: str
+    confidence: int = 0            # 0-100, player's own estimate
+    evidence: dict[str, Stance] = field(default_factory=dict)
+
+    def consider(self, clue: Clue, stance: Stance) -> None:
+        self.evidence[clue.id] = stance
+
+    def support_count(self) -> int:
+        return sum(1 for stance in self.evidence.values() if stance is Stance.SUPPORTS)
+
+    def contradiction_count(self) -> int:
+        return sum(1 for stance in self.evidence.values() if stance is Stance.CONTRADICTS)
+
+    def set_confidence(self, value: int) -> None:
+        """Only a player calls this. No function here derives confidence from evidence."""
+        if not 0 <= value <= 100:
+            raise InvestigationError("confidence is a percentage")
+        self.confidence = value
+
+
+def hypotheses_remain_open(hypotheses: list[Hypothesis]) -> bool:
+    """A case is not solved by the model. This always returns True; it exists to be called.
+
+    If a future refactor adds a path that resolves a case automatically, this function is
+    the place the intent is recorded and the place a reviewer will look.
+    """
+    return True
