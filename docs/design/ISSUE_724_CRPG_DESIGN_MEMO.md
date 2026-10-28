@@ -169,9 +169,40 @@ Reuses what exists; nothing new is invented.
 **Acceptance for the slice:** a full run with zero combat is possible; the anomaly stays
 ambiguous at the end; no core clue is ever gated behind a roll.
 
+## 12. Atmosphere: a grounded world, and the Weird as evidence (issue question 9)
+
+The atmosphere is the one thing a *presentation* decision can destroy while every rule stays
+correct. The rule that keeps it: **the world is rendered ordinary, and the Weird arrives only as
+evidence and consequence.** Nothing in the fiction is strange until a clue says it is.
+
+| constraint | why |
+| --- | --- |
+| **No ambient strangeness.** Lighting, sound and art stay hospital-corridor ordinary; the palette does not "go weird" as a mood signal. | A mood shift pre-announces the answer, which is the presentation version of the anomaly gate being bypassed. |
+| **The anomaly is rendered only after a discerner is attempted.** `src/rules/anomaly_gate.py` records attempts; the presentation layer may shift only on a recorded clue, never on elapsed time or a dice result. | The gate exists so the weird reading must be *earned*; the renderer must not do the earning for the player. |
+| **The mundane must stay renderable at every moment.** Every anomalous beat has a visible ordinary counterpart in the same scene: a power cut beside a figure in the mirror, a filing error beside a second birth date. | If the ordinary reading cannot be staged, the case is not ambiguous — it is a reveal with a delay. |
+| **The reader's vocabulary is clinical and institutional, not gothic.** Nurses write rosters; doctors write amendments; the state writes referral forms. | The horror in *Riget* and *Maniac* is bureaucratic before it is supernatural. |
+| **One Weird beat per case, at most, that costs the player something.** | Scarcity is what makes it land; a second one turns the setting into fantasy. |
+| **High-stakes tactical is a consequence, never a random encounter.** Violence follows a chosen confrontation or a forced entry, and the case remains completable without it. | The memo's loop rule: a session with no shot fired must be a legitimate run. |
+
+Two dials, both data rather than prose:
+
+1. **The case's hypothesis families** (`case_graph.json`) determine what the UI may show as
+   contested: while mundane, deliberate, psychological and anomalous are all open, every scene is
+   presented as an ordinary institutional problem.
+2. **The paradigm ledger** (#689 stage 2, still a document) would set the *world's* baseline: how
+   much of the Weird is publicly admissible in this district at this time. Until that lands, the
+   default is "publicly: none, privately: rumour", which is what the Lakkahaltia case already
+   assumes.
+
+The test of the atmosphere, in one line: **a player who never resolves the anomaly should still be
+able to describe the case as a hospital records scandal that bothered them.**
+
+Companion reading: [`ISSUE_724_CRPG_DESIGN_SYNTHESIS.md`](ISSUE_724_CRPG_DESIGN_SYNTHESIS.md)
+(#726) covers the influence synthesis; this section covers how it is *rendered*.
+
 ---
 
-## 12. What this memo does not decide
+## 13. What this memo does not decide
 
 Numbers (action budgets, clock lengths, condition severities), whether the thought cabinet
 belongs, and whether procedural cases are ever in scope. All are author decisions.
