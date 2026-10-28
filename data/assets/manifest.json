@@ -1,7 +1,7 @@
 {
-  "_comment": "Asset manifest for the Godot slice (#631). Every visible object in the current slice is generated from Godot primitives in the scene scripts; no third-party file is committed. This manifest records that decision, the licence facts of every free pack we intend to use, and the paid packs worth buying later. Verified 2026-10-26; the human-readable version with the aesthetic reasoning is docs/godot/ASSETS.md.",
+  "_comment": "Asset manifest for the Godot slice (#631). Every visible object in the current slice is generated from Godot primitives in the scene scripts; no third-party file is committed. This manifest records that decision, the licence facts of every free pack we intend to use, and the paid packs worth buying later. Verified 2026-10-26; the human-readable version with the aesthetic reasoning is docs/godot/ASSETS.md. Version 5 (2026-10-28, #728): addon and asset candidates re-verified for the Godot implementation blueprint, including the one candidate refused on its licence.",
   "format": "noopunk.assets.manifest",
-  "version": 4,
+  "version": 5,
   "project": "godot",
   "committed_assets": [],
   "procedural": [
@@ -45,6 +45,60 @@
       "url": "https://syntystore.com/",
       "licence": "commercial, per-licence; redistribution terms vary",
       "status": "optional; do not commit purchased files unless the licence permits public redistribution"
+    },
+    {
+      "pack": "Dialogue Manager",
+      "url": "https://github.com/nathanhoad/godot_dialogue_manager",
+      "licence": "MIT (GitHub API spdx_id, verified 2026-10-28)",
+      "status": "addon candidate; spike only if authored dialogue outgrows the JSON runner"
+    },
+    {
+      "pack": "Dialogic",
+      "url": "https://github.com/dialogic-godot/dialogic",
+      "licence": "MIT (GitHub API spdx_id, verified 2026-10-28)",
+      "status": "addon candidate; owns its own state, so never the case ledger"
+    },
+    {
+      "pack": "LimboAI",
+      "url": "https://github.com/limbonaut/limboai",
+      "licence": "MIT (GitHub API spdx_id, verified 2026-10-28)",
+      "status": "not needed for 4-6 scripted NPCs"
+    },
+    {
+      "pack": "godot_voxel",
+      "url": "https://github.com/Zylann/godot_voxel",
+      "licence": "MIT (GitHub API spdx_id, verified 2026-10-28)",
+      "status": "refused for the slice; static chunky GLB only"
+    },
+    {
+      "pack": "Phantom Camera",
+      "url": "https://github.com/ramokz/phantom-camera",
+      "licence": "MIT (GitHub API spdx_id, verified 2026-10-28)",
+      "status": "optional after a native orthographic camera is proven"
+    },
+    {
+      "pack": "Kenney furniture kit",
+      "url": "https://kenney.nl/assets/furniture-kit",
+      "licence": "CC0 (stated on the asset page, verified 2026-10-28)",
+      "status": "preferred hospital props, nothing downloaded"
+    },
+    {
+      "pack": "Quaternius Cyberpunk Game Kit",
+      "url": "https://quaternius.com/packs/cyberpunkgamekit.html",
+      "licence": "CC0 (stated on the pack page, verified 2026-10-28)",
+      "status": "preferred street/props, nothing downloaded"
+    },
+    {
+      "pack": "monogon Voxel Cyberpunk City",
+      "url": "https://maxparata.itch.io/cyberpunkcity-monogon",
+      "licence": "CC BY-ND 4.0 (stated on the itch page, verified 2026-10-28)",
+      "status": "refused as-is: NoDerivatives, and importing/rescaling/materials is a derivative; needs paid clarification"
+    },
+    {
+      "pack": "Synty POLYGON Sci-Fi City",
+      "url": "https://syntystore.com/products/polygon-sci-fi-city",
+      "licence": "commercial, EULA not fetched this session (page reachable, verified 2026-10-28)",
+      "status": "deferred to phase 5; buy only if the CC0 substitutes fail in the real scene"
     }
   ],
   "rules": [
