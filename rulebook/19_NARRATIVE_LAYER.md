@@ -35,6 +35,14 @@ stacking therefore survives the kernel change, with a new reason.
 Because `2d6` has ±1 granularity, the step is literally `+1`: `invoke_step()` returns 1 and no
 argument can raise it. The layer adds no arithmetic of its own.
 
+**An aspect's worth is difficulty-dependent, and the text must say so.** The same one step is worth
+**+16.7 pp at difficulty 8**, +11.1 pp at 10, +5.6 pp at 12 and **+0.0 pp at difficulty 14** — at
+14 with a modifier of 0 or 1 the check is impossible before the invoke and impossible after it.
+That is not a bug: an aspect rescues a *contested* check and cannot manufacture a roll the dice
+cannot make. But it means any sentence that converts an aspect to "about +X" is wrong by a factor of
+two unless it names the difficulty, and a referee who prices an invoke at a high difficulty will feel
+cheated by a rule that promised more than the die can deliver.
+
 ## Aspect anatomy
 
 An aspect is a **bounded, cancellable tag** with five parts. Every part is required; an aspect
