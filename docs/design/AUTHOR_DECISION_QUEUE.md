@@ -250,3 +250,25 @@ pretending the item was met.
 - **#689 design gate closed** by these records (`docs/design/DECISION_689_NARRATIVE_AND_MIND.md`).
   D46–D50 are provisional and reversible in one sentence. Implementation is not authorized:
   follow-up issues carry it, each with executable tests.
+
+- **D51 — six attributes remain canonical; overload is answered by derived tracks (Option H).**
+  `WIS` carries perception, judgement, willpower and psionic focus at once; `CHA` carries presence
+  and connection. That is two overloaded attributes, not three missing axes. An eight-attribute
+  split was rejected on arithmetic: it is free only if the generation budget rises with the count
+  (`docs/design/ISSUE_735_ATTRIBUTE_OPTIONS.md` §3). **PROVISIONAL.**
+
+- **D52 — EMP is not Humanity, and neither is morality.** Empathy is a capacity; morality is a
+  judgement; an android with high empathy and no legal personhood is coherent. Humanity / Identity
+  / Alienation is an **optional track**, never a score that falls when cyberware is installed.
+  **PROVISIONAL.**
+
+- **D53 — CYB is not an attribute.** Capacity is `System Strain`, aptitude is `Interface` /
+  `Program` / `Hardware`, and the rest is gear. As an attribute it penalises unaugmented
+  characters by definition. **PROVISIONAL.**
+
+- **D54 — investigation never depends on an attribute roll.** A competent investigator obtains the
+  core clue without a check (#704). Attributes govern the quality of the *extra* reading of
+  evidence, never whether the clue exists. **PROVISIONAL.**
+
+- **#735 closed** on these four records. No code, rulebook or data change: the six codes are
+  untouched, so every stored character and the full test suite remain valid.

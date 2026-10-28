@@ -367,3 +367,45 @@ resolution path (which would give CYB something to own).
 None is recorded as decided. **D51–D54 were added to `docs/design/AUTHOR_DECISION_QUEUE.md` on
 2026-10-28** so the questions are tracked rather than living only in this memo. The substance above is
 unchanged, and no row has an answer.
+
+---
+
+## 17. Decision recorded 2026-10-28
+
+The author authorised closing this issue with the recommendation above adopted. **Option H.**
+
+**D51 — six attributes stay canonical.** `STR / DEX / CON / INT / WIS / CHA` remain the codes,
+the 3–18 scale, the modifier bands, the saves and every derived quantity. The genuine problem
+was not missing axes but **overload in two places** — `WIS` carrying perception, judgement,
+willpower and psionic focus at once; `CHA` carrying both presence and connection — and that is
+answered by **derived tracks**, not by a wider attribute row.
+
+*Rejected:* **S** (eight attributes) because the arithmetic in §3 shows a split is free only if
+the generation budget rises with the attribute count; keeping the six-stat array would have made
+every character quietly worse at everything. **7** for the same reason with one fewer axis.
+**M** (pure cosmetic reskin) survives as the presentation layer of H rather than as a separate
+option.
+
+**D52 — EMP and Humanity are not the same axis, and neither is morality.** Empathy is a capacity;
+morality is a judgement; an android with high empathy and no legal personhood is a coherent
+character and must not be punished by the sheet. Humanity / Identity / Alienation is an
+**optional track**, never a score that falls when you install cyberware.
+
+**D53 — CYB is not an attribute.** Technological capacity is `System Strain` (how much the body
+will take), aptitude is `Interface` / `Program` / `Hardware` (what the character has learned) and
+gear is gear. As an attribute it would penalise unaugmented characters by definition.
+
+**D54 — investigation never hangs on an attribute roll.** #704 already settles that a competent
+investigator obtains a core clue without a check. The attribute question is therefore only *how
+good the extra reading of the evidence is*, never whether the clue can be found. Any future
+change that makes a clue roll-dependent has broken the investigation layer.
+
+**What this does not do:** it changes no code, no rulebook, no `data/rules/*.json`, and no Godot
+adapter. The six codes are untouched, so the 1,429-test suite and every stored character remain
+valid. The presentation vocabulary (`Might / Reflexes / Vitality / Intellect / Presence`) and any
+derived track are **later, separate** work items.
+
+**Reversibility:** D51–D54 are provisional and reversible in one sentence, like the other design
+records here. If playtesting shows the sheet cannot express a genuinely warm but weak-willed
+character, promoting one derived track to a real attribute is a smaller change than walking back
+an eight-stat redesign — and this document is where that argument lives.
