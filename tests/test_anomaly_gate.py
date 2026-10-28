@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import unittest
 
-from src.rules.anomaly_gate import Dossier, GateError, Readings
+from src.rules.anomaly_gate import Dossier, GateError, HypothesisLedger, Readings
 from src.rules.investigation import Case, Clue, ClueKind, Scene
 
 
@@ -124,3 +124,85 @@ class TestResolution(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestInconclusiveResults(unittest.TestCase):
+    """#709: an attempted discriminator is not a conclusive result."""
+
+    def setUp(self):
+        self.d = dossier()
+        self.d.attempt("C1")
+
+    def test_an_inconclusive_test_is_recorded_as_its_own_result(self):
+        self.d.resolve("C1", anomalous=None)
+        self.assertEqual(self.d.resolved["C1"], "inconclusive")
+
+    def test_the_tally_counts_inconclusive_separately(self):
+        self.d.resolve("C1", anomalous=None)
+        tally = self.d.tally()
+        self.assertEqual(tally["inconclusive"], 1)
+        self.assertEqual(tally["resolved_anomalous"], 0)
+        self.assertEqual(tally["resolved_mundane"], 0)
+
+    def test_an_inconclusive_test_still_counts_as_attempted(self):
+        # Otherwise a table could stall forever on a test that settles nothing.
+        self.d.attempt("C3")
+        self.d.resolve("C1", anomalous=None)
+        self.d.resolve("C3", anomalous=None)
+        self.assertTrue(self.d.gate_open())
+
+
+class TestProvisionalReferral(unittest.TestCase):
+    """#709: a provisional referral must not require proving an ontology."""
+
+    def test_a_referral_is_possible_while_the_gate_is_closed(self):
+        d = dossier()
+        d.attempt("C1")
+        d.resolve("C1", anomalous=None)
+        referral = d.provisional_referral("one strange fact and a test that settled nothing")
+        self.assertTrue(referral["provisional"])
+        self.assertFalse(referral["gate_open"])
+        self.assertEqual(referral["outstanding"], ("C3",))
+
+    def test_a_referral_needs_a_reason(self):
+        with self.assertRaises(GateError):
+            dossier().provisional_referral("  ")
+
+    def test_a_referral_is_not_a_conclusion(self):
+        referral = dossier().provisional_referral("escalate")
+        self.assertNotIn("verdict", referral)
+        self.assertNotIn("conclusion", referral)
+
+
+class TestMoreThanTwoHypotheses(unittest.TestCase):
+    def setUp(self):
+        self.ledger = HypothesisLedger()
+        for hid, st in (
+            ("H1", "a template artifact"),
+            ("H2", "a clerk writing prospectively"),
+            ("H3", "precognition"),
+            ("H4", "deliberate deception by staff"),
+        ):
+            self.ledger.add(hid, st)
+
+    def test_four_hypotheses_stay_representable(self):
+        self.assertEqual(self.ledger.count(), 4)
+
+    def test_resolving_evidence_does_not_retire_rivals(self):
+        self.ledger.add("H5", "an unlogged shift swap")
+        self.assertEqual(set(self.ledger.live()), {"H1", "H2", "H3", "H4", "H5"})
+
+    def test_withdrawal_requires_a_reason(self):
+        with self.assertRaises(GateError):
+            self.ledger.withdraw("H1", reason="  ")
+        self.ledger.withdraw("H1", reason="the template deployment predates the files")
+        self.assertEqual(self.ledger.count(), 3)
+        self.assertNotIn("H1", self.ledger.live())
+
+    def test_duplicate_ids_are_refused(self):
+        with self.assertRaises(GateError):
+            self.ledger.add("H1", "again")
+
+    def test_a_hypothesis_needs_a_statement(self):
+        with self.assertRaises(GateError):
+            self.ledger.add("H9", "   ")

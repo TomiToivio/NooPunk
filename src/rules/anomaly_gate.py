@@ -100,13 +100,20 @@ class Dossier:
         self.attempted.add(clue_id)
         return self.readings[clue_id].discriminator
 
-    def resolve(self, clue_id: str, *, anomalous: bool) -> None:
-        """Record what a completed test showed. Requires the attempt to have happened."""
+    def resolve(self, clue_id: str, *, anomalous: bool | None) -> None:
+        """Record what a completed test showed.
+
+        ``anomalous=None`` means **inconclusive**, which is a real result and a common one: the
+        test was run and settled nothing. An attempted discriminator is not a conclusive result,
+        and a model that can only say yes/no quietly rewards the first test anybody runs (#709).
+        """
         if clue_id not in self.attempted:
             raise GateError(
                 f"clue {clue_id!r}: a discriminator cannot resolve a question it never asked"
             )
-        self.resolved[clue_id] = "anomalous" if anomalous else "mundane"
+        self.resolved[clue_id] = (
+            "inconclusive" if anomalous is None else "anomalous" if anomalous else "mundane"
+        )
 
     # -- the gate ---------------------------------------------------------
 
@@ -127,11 +134,63 @@ class Dossier:
                 + ", ".join(self.untested_core())
             )
 
+    def provisional_referral(self, reason: str) -> dict[str, object]:
+        """Refer a case upward without proving an ontology.
+
+        An investigator can say "this needs the anomaly desk" on one strange fact and an
+        inconclusive test; requiring the gate to be fully open before a *referral* would make the
+        procedure demand proof of the thing under investigation (#709). A referral is explicitly
+        provisional and is not a conclusion.
+        """
+        if not reason.strip():
+            raise GateError("a referral must give a reason")
+        return {
+            "provisional": True,
+            "reason": reason,
+            "gate_open": self.gate_open(),
+            "outstanding": self.untested_core(),
+        }
+
     def tally(self) -> dict[str, int]:
         """Counts only. This is a record, not a verdict."""
         return {
             "attempted": len(self.attempted),
             "resolved_mundane": sum(1 for v in self.resolved.values() if v == "mundane"),
             "resolved_anomalous": sum(1 for v in self.resolved.values() if v == "anomalous"),
+            "inconclusive": sum(1 for v in self.resolved.values() if v == "inconclusive"),
             "outstanding": len(self.untested_core()),
         }
+
+
+@dataclass
+class HypothesisLedger:
+    """An arbitrary number of live hypotheses, none of which the model may retire.
+
+    Two readings per clue is how a *clue* is written; it is not a claim that a case has only two
+    explanations. A table may hold a template artifact, a clerk, a precognition and a deception at
+    once, and resolving one discriminator must not delete the others (#709).
+    """
+
+    entries: dict[str, str] = field(default_factory=dict)   # id -> statement
+    withdrawn: set[str] = field(default_factory=set)
+
+    def add(self, hypothesis_id: str, statement: str) -> None:
+        if not hypothesis_id.strip() or not statement.strip():
+            raise GateError("a hypothesis needs an id and a statement")
+        if hypothesis_id in self.entries:
+            raise GateError(f"hypothesis {hypothesis_id!r} already exists")
+        self.entries[hypothesis_id] = statement
+
+    def withdraw(self, hypothesis_id: str, *, reason: str) -> None:
+        """Only a player or referee retires a hypothesis, and only for a stated reason."""
+        if hypothesis_id not in self.entries:
+            raise GateError(f"no hypothesis {hypothesis_id!r}")
+        if not reason.strip():
+            raise GateError("a hypothesis is withdrawn for a reason, not silently")
+        self.withdrawn.add(hypothesis_id)
+
+    def live(self) -> tuple[str, ...]:
+        return tuple(h for h in self.entries if h not in self.withdrawn)
+
+    def count(self) -> int:
+        return len(self.live())
