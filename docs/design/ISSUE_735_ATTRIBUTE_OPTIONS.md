@@ -67,6 +67,32 @@ axis because the word is missing.
 
 ---
 
+### 2.1 Which skill list each name comes from (added 2026-10-28)
+
+The memo cites skill names from **three different vocabularies in this repository**, and only one of them
+is the adopted baseline. Naming them matters, because several arguments above say "this concept is already
+covered by that skill" — and the answer changes with the list.
+
+| vocabulary | file | status |
+|---|---|---|
+| **WN baseline, 19 skills** — `Administer`, `Connect`, `Drive`, `Exert`, `Fix`, `Heal`, `Know`, `Lead`, `Notice`, `Perform`, `Program`, `Punch`, `Shoot`, `Sneak`, `Stab`, `Survive`, `Talk`, `Trade`, `Work` | `data/rules/without_number.json` (`primary: CWN 2023`) | **authoritative** under the 2026-10-26 ruling |
+| **PSI six** — `ESP`, `Telepathy`, `Psychokinesis`, `Precognition`, `Psychic Defence`, `Noöspace` | `data/rules/skills.json`, locked by #159 | authoritative **as the psionic subsystem**, and deliberately *not* part of the 19 |
+| **legacy 40** — `Interface`, `Hardware`, `Perceive`, `Provoke`, `Investigation`, `Kinesics`, … | `data/rules/core.json` | **superseded** by the baseline; do not cite as current |
+
+**Consequences for the arguments above**, so nobody implements against a retired name:
+
+- "CYB is already covered" holds through **`Program` and `Fix`** (WN baseline), not `Interface` / `Hardware`
+  (legacy). Hacking still resolves as `INT` + `Program`.
+- "EMP is already covered" holds through **`Connect`, `Talk`** and **`Notice`**, not `Kinesics` / `Perceive`.
+- "WIL is already covered" holds through **`WIS`** (Mental save, Effort) plus **`Psychic Defence`** — but
+  that last one is a PSI skill, so it belongs to the psionic subsystem rather than to the 19.
+- `Investigation` and `Provoke` are legacy names for things now done with `Notice`/`Know` and
+  `Talk`/`Lead` respectively.
+
+None of this changes an option, a cost or a recommendation: the overload finding survives, because the WN
+baseline's `Notice` still carries perception while `WIS` carries judgment and willpower. It changes only
+which name to write in an implementation.
+
 ## 3. Option M — minimal reskin (six codes, presentation only)
 
 Keep `STR / DEX / CON / INT / WIS / CHA` in every file, save, check and test. Change what the player
@@ -331,11 +357,13 @@ resolution path (which would give CYB something to own).
 7. Should the **legacy `FIT/REF/INT/SOC/CYB/PSY`** layer be renamed to match, left alone, or retired?
 8. Is **seven** the ceiling of table complexity the author wants, regardless of what eight would model?
 
-## 16. Decision-queue entries this memo would create (proposed, not added)
+## 16. Decision-queue entries this memo creates
 
 - **D51** — attribute presentation: keep codes / display aliases / new set (#716's A/B/C).
 - **D52** — structural choice: six / seven (EMP+WIL) / eight (+CYB) / six + derived tracks.
 - **D53** — empathy and humanity: skills + skills / optional track / attribute.
 - **D54** — CYB: attribute / derived / skill-only.
 
-None is recorded as decided. The queue file is deliberately untouched by this memo.
+None is recorded as decided. **D51–D54 were added to `docs/design/AUTHOR_DECISION_QUEUE.md` on
+2026-10-28** so the questions are tracked rather than living only in this memo. The substance above is
+unchanged, and no row has an answer.
