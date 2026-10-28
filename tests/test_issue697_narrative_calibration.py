@@ -1,9 +1,11 @@
 """Pin the measured numbers the narrative layer's safety rules rest on (#697).
 
-The rulebook claims a one-step invoke is worth "+16.7 pp at difficulty 8" and "+0.0 pp at 14". Those
-are load-bearing claims: if the dice or the difficulty ladder move, the claim becomes false and the
-safety rules built on it become decoration. These tests recompute the numbers from the repository's
-own calibration tool rather than restating them.
+These tests recompute the numbers from the repository's own calibration tool rather than restating
+them, and pin the code-level vocabulary the bands use.
+
+**No rulebook assertions here:** issue #271 makes automated tests the business of executable game code
+only. The rulebook's prose is Tomi's to review editorially, so whether it states the DV-14 pricing is a
+reading task, not a test.
 
 Stdlib unittest only — the repository's CI has no pytest.
 """
@@ -53,17 +55,6 @@ class TestTheCalibrationNumbers(unittest.TestCase):
     def test_the_curve_is_monotonic(self):
         values = [cal.table()[d]["shift1"] for d in (8, 10, 12, 14)]
         self.assertEqual(values, sorted(values, reverse=True))
-
-
-class TestTheRulebookStatesWhatTheDiceDo(unittest.TestCase):
-    def setUp(self):
-        self.text = (ROOT / "rulebook" / "19_NARRATIVE_LAYER.md").read_text(encoding="utf-8")
-
-    def test_the_rulebook_prices_the_high_end(self):
-        self.assertIn("+0.0 pp at difficulty 14", self.text)
-
-    def test_the_rulebook_names_the_low_end(self):
-        self.assertIn("+16.7 pp at difficulty 8", self.text)
 
 
 class TestTheRetiredVocabularyIsGone(unittest.TestCase):
