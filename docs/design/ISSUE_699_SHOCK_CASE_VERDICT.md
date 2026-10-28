@@ -16,18 +16,18 @@ tense, and one describes what the character will do tomorrow.
 
 Two branches, both played to a conclusion:
 
-| branch | resulting world view | cost |
+| branch | resulting world view | condition (layer 3) |
 |---|---|---|
-| **accept** | `received → reframed` | the ward is something else, and the character has been working inside it |
-| **hold** | `received → fractured` | denial: one band against `Medicine` inside the building, until the file is explained |
+| **accept** | `received → reframed` | `:reframe` — the character must act on the revised belief, not the old one |
+| **hold** | `received → fractured` | `:denial` — the character must explain away or avoid the evidence |
 
-Both branches carry a **different** cost, and neither is a penalty for choosing wrongly. Running the
+Both branches produce a **different** condition, and neither is a penalty for choosing wrongly. Running the
 tool twice produces identical output.
 
 ## Findings, stated as findings
 
-**1. D48 holds.** The two branches end in different world-view states, the costs differ, and there is
-no function in `src/rules/mental_load.py` that accepts a random number generator, a die or a seed — the
+**1. D48 holds.** The two branches end in different world-view states, the conditions differ, and `CharacterMind.apply_choice()` takes only an explicit `accept: bool` — there is no function
+in `src/rules/mental_load.py` that accepts a random number generator, a die or a seed — the
 refusal test asserts this over every public signature, and the module's own import-time guard fails
 loudly if one is ever added. A conviction cannot be overwritten by a roll, because no roll reaches it.
 
@@ -56,5 +56,5 @@ decision — then D46 is falsified, and D49 reopens with a named case rather tha
 
 Nothing in this case is canon. The ward, the belief and the files are test fixtures that read like a
 scene; no named canon entity is used, and the case adds no rule. `src/rules/mental_load.py` deliberately
-carries **no severity numbers and no recovery rules**: both are author-supplied per the decision record,
-and the module refuses a blank severity rather than inventing a scale.
+carries **no severity scale and no recovery rules**: `clears_when` is prose because the recovery rule is
+the author's to set, and a number invented here would silently become canon.

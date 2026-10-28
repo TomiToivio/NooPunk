@@ -27,25 +27,32 @@ class TestTheCaseRunsHeadless:
         assert set(case["branches"]) == {"accept", "hold"}
         for branch in case["branches"].values():
             assert branch["state_after"] in {"reframed", "fractured"}
-            assert branch["cost"].strip()
+            assert branch["condition"].strip()
+            assert branch["constrains"].strip()
 
     def test_the_branches_diverge(self, tmp_path):
         case = run_case(tmp_path)
         assert case["diverged"] is True
-        assert case["costs_differ"] is True
+        assert case["conditions_differ"] is True
         assert case["branches"]["accept"]["state_after"] != case["branches"]["hold"]["state_after"]
+
+    def test_both_layers_appear_in_the_journal(self, tmp_path):
+        # D47: the event and the world view are recorded separately.
+        branch = run_case(tmp_path)["branches"]["accept"]
+        assert any(e.startswith("layer 1") for e in branch["events"])
+        assert any(e.startswith("layer 3") for e in branch["events"])
+        assert any(e.startswith("layer 4") for e in branch["events"])
 
     def test_the_same_case_twice_gives_the_same_journal(self, tmp_path):
         # D48 in one assertion: nothing in this path can roll.
-        first = run_case(tmp_path)
-        second = run_case(tmp_path)
-        assert first == second
+        assert run_case(tmp_path) == run_case(tmp_path)
 
     def test_the_verdict_does_not_overclaim(self, tmp_path):
         verdict = run_case(tmp_path)["verdict"]
         assert verdict["d48_holds"] is True
         assert verdict["d46_exercised"] is False, (
-            "this case is carried by layer 4; claiming it tests D46 would be the overclaim the "
-            "issue exists to prevent"
+            "this case is carried by the journal, not by play; claiming it tests D46 would be the "
+            "overclaim the issue exists to prevent"
         )
+        assert verdict["d49_triggered"] is False
         assert "second case" in verdict["next"]

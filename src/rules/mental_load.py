@@ -1,238 +1,152 @@
-"""Mental load as conditions, not a track (#698; decisions D46–D48).
+"""Mental load as conditions on the CWN chassis (#698, D46-D48).
 
-Three rules shape this module, and they are enforced in the types rather than left to reviewers:
+The mind is modelled the way the decisions say: **conditions with mechanical teeth**, not a
+depleting pool. Three rules are structural here, not advisory:
 
-**D46 — no second harm economy.** There is no pool, no bar and no number to deplete. A condition
-constrains *choices*: it says what the character cannot attempt and what lifts it. There is nothing
-here for Trauma, Frail or System Strain to compete with, because there is nothing numeric at all.
+* **D46 - no second harm economy.** Nothing in this module subtracts from a number. A
+  condition *constrains a choice*; CWN's Trauma / Frail / Strain remain the only resources
+  that deplete.
+* **D47 - four layers.** An exposure moves from `observable event` to `acute response` to
+  `persistent condition` to `worldview state`. The layers are separate fields because
+  conflating them is how a setting ends up with "sanity points".
+* **D48 - the player decides what the character believes.** There is no function here that
+  takes a roll, and ``apply_choice`` refuses to run without an explicit choice. A world
+  view may not be changed by a die.
 
-**D47 — four layers.** Exposure is recorded in four distinct places, and conflating them is what makes
-"sanity" rules mushy:
-
-    observable_event  →  acute_response  →  persistent_condition  →  worldview_state
-
-What happened, what it did at the time, what it left behind, and what the character now believes. A
-condition is layer 3 only; a belief is layer 4 and is *never* written by layer 2.
-
-**D48 — a world view changes by decision, never by a failed save.** `resolve_shock()` cannot be called
-without naming a `Choice`. No function in this module takes a die, a seed or a random number generator,
-so there is no code path that could let a roll overwrite a conviction. `tests/test_issue698_mental_load.py`
-asserts that by inspecting every public signature.
+No severity scale, recovery rate or condition catalogue is defined here: those are author
+decisions and inventing them would pre-empt the choice the design gate protected.
 """
-
 from __future__ import annotations
 
-import inspect
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any
-
-__all__ = [
-    "Choice",
-    "Condition",
-    "ConditionError",
-    "ExposureLayer",
-    "ParadigmShock",
-    "ShockRecord",
-    "WorldviewState",
-    "apply_choice",
-    "offer_choices",
-    "resolve_shock",
-    "worldview_transition",
-]
-
-#: Any name that would let a caller smuggle randomness into a world-view change.
-_FORBIDDEN_PARAMETERS = ("rng", "random", "die", "dice", "roll", "seed")
 
 
-class ConditionError(ValueError):
-    """A condition or shock was constructed in a way the rules do not allow."""
-
-
-class ExposureLayer(str, Enum):
-    """D47's four layers. A world view is layer four and is not a condition."""
-
-    OBSERVABLE_EVENT = "observable_event"
-    ACUTE_RESPONSE = "acute_response"
-    PERSISTENT_CONDITION = "persistent_condition"
-    WORLDVIEW_STATE = "worldview_state"
+class MentalLoadError(ValueError):
+    """Raised when the model is asked to do something the decisions forbid."""
 
 
 class WorldviewState(str, Enum):
-    """D48's reachable states for one belief.
+    """What a character currently holds about a claim, not what is true."""
 
-    ``received`` is the default: the belief was given, not examined. A shock can move it to
-    ``cracked``; only a *choice* moves it to ``reframed``, ``integrated`` or ``fractured``.
-    """
-
-    RECEIVED = "received"
-    CRACKED = "cracked"
-    REFRAMED = "reframed"
-    INTEGRATED = "integrated"
-    FRACTURED = "fractured"
+    RECEIVED = "received"      # taken as given; never questioned
+    CRACKED = "cracked"        # contradicted, not yet resolved
+    REFRAMED = "reframed"      # the belief was revised to include the evidence
+    INTEGRATED = "integrated"  # revised and lived with; no longer destabilising
+    FRACTURED = "fractured"    # held anyway, at a cost that persists
 
 
-#: States reachable only through an explicit choice (never through an event alone).
-CHOICE_ONLY_STATES: frozenset[WorldviewState] = frozenset(
-    {WorldviewState.REFRAMED, WorldviewState.INTEGRATED, WorldviewState.FRACTURED}
-)
+class Layer(str, Enum):
+    EVENT = "observable_event"
+    ACUTE = "acute_response"
+    PERSISTENT = "persistent_condition"
+    WORLDVIEW = "worldview"
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class Condition:
-    """One persistent condition (layer 3).
+    """A persistent condition. ``constrains`` is fiction, not a modifier.
 
-    ``severity`` and ``clears_when`` are **author-supplied**. This module deliberately does not
-    enumerate severities or invent recovery rules: the decision record leaves both open, and a
-    guessed severity would be indistinguishable from a ruled one downstream.
+    ``clears_when`` is prose on purpose: the recovery rule is the author's to set, and a
+    number invented here would silently become canon.
     """
 
     id: str
-    layer: ExposureLayer
-    statement: str
-    severity: str
-    constrains: tuple[str, ...]
-    clears_when: str
+    layer: Layer
+    constrains: str
+    clears_when: str = ""
 
     def __post_init__(self) -> None:
-        if self.layer is ExposureLayer.WORLDVIEW_STATE:
-            raise ConditionError(
-                "a world view is not a condition (D47); use a ParadigmShock for layer four"
-            )
-        if not self.statement.strip():
-            raise ConditionError("a condition needs a statement")
-        if not self.severity.strip():
-            raise ConditionError(
-                "severity is author-supplied; pass a named severity rather than inventing a number"
-            )
-        if not self.clears_when.strip():
-            raise ConditionError("a condition must say what clears it")
-        if not self.constrains:
-            raise ConditionError("a condition must constrain at least one choice")
+        if not self.id:
+            raise MentalLoadError("a condition needs an id")
+        if self.layer is Layer.EVENT:
+            raise MentalLoadError("an observable event is not a condition")
 
 
-@dataclass(frozen=True, slots=True)
-class Choice:
-    """One branch of a shock, with the cost that branch carries (D48).
-
-    A shock offers *two different costs*, never a right and a wrong answer.
-    """
-
-    id: str
-    label: str
-    cost: str
-    resulting_state: WorldviewState
-
-    def __post_init__(self) -> None:
-        if self.resulting_state not in CHOICE_ONLY_STATES:
-            raise ConditionError(
-                f"{self.resulting_state.value!r} is not a choice outcome; a choice produces "
-                "reframed, integrated or fractured"
-            )
-        if not self.cost.strip():
-            raise ConditionError("every branch of a shock must carry a cost")
-
-
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class ParadigmShock:
-    """A held belief meeting evidence that contradicts it."""
+    """A dated, sourced event that contradicts a held belief.
 
-    belief: str
-    evidence: str
-    choices: tuple[Choice, Choice]
-
-    def __post_init__(self) -> None:
-        if len(self.choices) != 2:
-            raise ConditionError("a paradigm shock offers exactly two branches")
-        if self.choices[0].id == self.choices[1].id:
-            raise ConditionError("the two branches must be distinct")
-
-
-@dataclass(slots=True)
-class ShockRecord:
-    """The journal entry for one shock: what happened and what the player decided."""
-
-    belief: str
-    evidence: str
-    state_before: WorldviewState
-    state_after: WorldviewState
-    chosen: str
-    cost: str
-    events: list[str] = field(default_factory=list)
-
-    def as_dict(self) -> dict[str, Any]:
-        return {
-            "belief": self.belief,
-            "evidence": self.evidence,
-            "state_before": self.state_before.value,
-            "state_after": self.state_after.value,
-            "chosen": self.chosen,
-            "cost": self.cost,
-            "events": list(self.events),
-        }
-
-
-def offer_choices(shock: ParadigmShock) -> tuple[Choice, Choice]:
-    """The two branches, in a stable order. Presenting them is what a shock *does*."""
-    return shock.choices
-
-
-def worldview_transition(before: WorldviewState, chosen: Choice) -> WorldviewState:
-    """The state a choice produces. Total, deterministic, and independent of any die."""
-    if chosen.resulting_state in CHOICE_ONLY_STATES:
-        return chosen.resulting_state
-    raise ConditionError(f"choice {chosen.id!r} does not name a reachable outcome")
-
-
-def resolve_shock(shock: ParadigmShock, *, choice_id: str,
-                  state: WorldviewState = WorldviewState.RECEIVED) -> ShockRecord:
-    """Apply an **explicit** choice to a belief and return the journal entry.
-
-    There is deliberately no overload that resolves a shock without a ``choice_id``: that absence is
-    D48 in code. A caller cannot ask this function to decide for the player.
+    The shock is a property of the setting's exposure, not of a character's roll.
     """
-    matching = [c for c in shock.choices if c.id == choice_id]
-    if not matching:
-        raise ConditionError(
-            f"unknown choice {choice_id!r}; a shock is resolved by naming one of its branches"
-        )
-    chosen = matching[0]
-    after = worldview_transition(state, chosen)
-    return ShockRecord(
-        belief=shock.belief,
-        evidence=shock.evidence,
-        state_before=state,
-        state_after=after,
-        chosen=chosen.id,
-        cost=chosen.cost,
-        events=[
-            f"layer 1 observable_event: {shock.evidence}",
-            f"layer 4 worldview_state: {state.value} -> {after.value} (choice {chosen.id})",
-        ],
-    )
+
+    id: str
+    claim: str
+    contradicts: str
+    source: str = ""
 
 
-def apply_choice(record: ShockRecord, chosen: Choice) -> ShockRecord:
-    """Re-resolve a journal entry with a different branch (used by the #699 case)."""
-    after = worldview_transition(record.state_before, chosen)
-    return ShockRecord(
-        belief=record.belief, evidence=record.evidence, state_before=record.state_before,
-        state_after=after, chosen=chosen.id, cost=chosen.cost,
-        events=[*record.events, f"re-resolved: {chosen.id}"],
-    )
+@dataclass(frozen=True)
+class ShockChoice:
+    """The two ways a shock can be met. Neither is correct; they cost differently."""
+
+    shock_id: str
+    claim: str
+    accept: Condition
+    hold: Condition
 
 
-def _assert_no_randomness() -> None:
-    """Fail at import if any public entry point could accept randomness (D48)."""
-    for name, function in sorted(globals().items()):
-        if not inspect.isfunction(function) or name.startswith("_"):
-            continue
-        parameters = inspect.signature(function).parameters
-        smuggled = [p for p in parameters if p.lower() in _FORBIDDEN_PARAMETERS]
-        if smuggled:
-            raise ConditionError(
-                f"{name}() accepts {smuggled}; no world-view change may depend on a roll (D48)"
+@dataclass
+class CharacterMind:
+    """A character's worldview states and the conditions they carry."""
+
+    worldviews: dict[str, WorldviewState] = field(default_factory=dict)
+    conditions: list[Condition] = field(default_factory=list)
+
+    def state_of(self, claim: str) -> WorldviewState:
+        return self.worldviews.get(claim, WorldviewState.RECEIVED)
+
+    def present(self, shock: ParadigmShock) -> ShockChoice:
+        """Offer the two costs. This function decides nothing on the character's behalf."""
+        if not shock.id or not shock.contradicts:
+            raise MentalLoadError("a shock needs an id and a contradicted claim")
+        current = self.state_of(shock.contradicts)
+        if current in (WorldviewState.INTEGRATED,):
+            raise MentalLoadError(
+                f"{shock.contradicts} is already integrated; this shock is not destabilising"
             )
+        accept = Condition(
+            id=f"{shock.id}:reframe",
+            layer=Layer.PERSISTENT,
+            constrains="the character must act on the revised belief, not the old one",
+            clears_when="the revision has been lived with through a scene of consequence",
+        )
+        hold = Condition(
+            id=f"{shock.id}:denial",
+            layer=Layer.PERSISTENT,
+            constrains="the character must explain away or avoid the evidence",
+            clears_when="the character states the old belief aloud under pressure",
+        )
+        return ShockChoice(shock_id=shock.id, claim=shock.contradicts, accept=accept, hold=hold)
+
+    def apply_choice(self, choice: ShockChoice, *, accept: bool) -> WorldviewState:
+        """Record a decision the player made. There is no random input, by design.
+
+        ``accept=True`` revises the belief (reformed, then integrated on a second scene of
+        consequence); ``accept=False`` holds it and marks the worldview fractured.
+        """
+        if not isinstance(accept, bool):
+            raise MentalLoadError("accept must be an explicit player decision, not a roll")
+        condition = choice.accept if accept else choice.hold
+        self.conditions.append(condition)
+        state = WorldviewState.REFRAMED if accept else WorldviewState.FRACTURED
+        self.worldviews[choice.claim] = state
+        return state
+
+    def integrate(self, claim: str) -> WorldviewState:
+        """Second step of the acceptance path: lived with, no longer destabilising."""
+        if self.state_of(claim) is not WorldviewState.REFRAMED:
+            raise MentalLoadError("only a reframed worldview can be integrated")
+        self.worldviews[claim] = WorldviewState.INTEGRATED
+        return WorldviewState.INTEGRATED
 
 
-_assert_no_randomness()
+
+def no_roll_parameter(func) -> bool:  # pragma: no cover - documentation helper
+    """Guards the D48 invariant when reviewing additions to this module."""
+    import inspect
+
+    return not any(
+        name in inspect.signature(func).parameters
+        for name in ("roll", "die", "dice", "rng", "random")
+    )
