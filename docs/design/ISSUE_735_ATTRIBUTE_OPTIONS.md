@@ -23,7 +23,7 @@ deliberately or leave them alone.
 | Saves | `16 − level − best pair`: Physical `STR+CON`, Evasion `DEX+INT`, Mental `WIS+CHA`, Luck none | `without_number.json` → `saves` |
 | System Strain cap | equals **CON** | `src/rules/cwn_strain.py` |
 | Max Effort | `1 + highest psychic skill + better of WIS or CON modifier` | `docs/rules/SWN_PSIONICS_ADAPTATION.md` |
-| Skills | 40 named skills, each bound to an attribute; includes `Interface`, `Perceive`, `Talk`, `Connect`, `Kinesics`, `Investigation`, `Program` | `data/rules/skills.json` |
+| Skills | **19 WN skills** bound to attributes (`Talk`, `Connect`, `Notice`, `Know`, `Program`, `Fix`, …) plus the **PSI six** from #159; the legacy 40-name list also exists in `core.json` and is superseded — see §2.1 | `data/rules/without_number.json`, `data/rules/skills.json` |
 | Scenario validation | every scenario check's attribute must be in the baseline list | `tests/test_scenario_data.gd` |
 | A second, legacy set | `FIT / REF / INT / SOC / CYB / PSY` on 1–10, still implemented | `data/rules/core.json` |
 
@@ -55,8 +55,8 @@ Now the proposed additions:
 
 | Proposed | Would need to own | Exists today as |
 | --- | --- | --- |
-| **CYB / Interface / Tech** | cyberware tolerance, hacking aptitude, BCI | `System Strain` (limit), `Interface` + `Program` skills, `Hardware` |
-| **EMP** | reading people, emotional connection | `Connect`, `Talk`, `Kinesics`, `Perceive` skills |
+| **CYB / Interface / Tech** | cyberware tolerance, hacking aptitude, BCI | `System Strain` (limit), `Program` + `Fix` skills (legacy names: `Interface`, `Hardware` — see §2.1) |
+| **EMP** | reading people, emotional connection | `Connect`, `Talk`, `Notice` skills (legacy names: `Kinesics`, `Perceive` — see §2.1) |
 | **WIL** | mental discipline, resistance, psionic focus | `WIS` (Mental save, Effort), `Psychic Defence` skill |
 | **PRE** | presence, coercion, performance | `CHA`, `Talk`, `Provoke`, `Lead`, `Perform` |
 | **NOE / Noesis** | noetic sensitivity | `Noöspace`, `ESP`, `Precognition` skills; PSI techniques |
@@ -91,7 +91,8 @@ covered by that skill" — and the answer changes with the list.
 
 None of this changes an option, a cost or a recommendation: the overload finding survives, because the WN
 baseline's `Notice` still carries perception while `WIS` carries judgment and willpower. It changes only
-which name to write in an implementation.
+which name to write in an implementation. Where the body below still says "40" (the size of the retired
+list), read "every live skill" — the arithmetic of re-binding is the same either way.
 
 ## 3. Option M — minimal reskin (six codes, presentation only)
 
@@ -160,7 +161,7 @@ balance change disguised as a reskin.
   through Effort and resistance procedures — otherwise it is a stat only psions care about.
 - **Effort** must name its source: `1 + psi skill + better of WIL or VIT` (replacing WIS/CON). This is a
   real rule edit, not a rename, and belongs in `docs/rules/SWN_PSIONICS_ADAPTATION.md` if chosen.
-- **Skills must be re-bound** across 40 entries — every one currently points at a code.
+- **Skills must be re-bound** across every entry in the live lists — 19 WN skills plus the PSI six — since each currently points at a code.
 - **NPC stat lines** (HD-based, no attributes) are unaffected, which is a hidden benefit: NPCs do not
   need migration.
 - **CYB still has no procedure.** CWN's hacking is `INT/Program`; cyberware is gear + Strain. Adding CYB
@@ -172,7 +173,7 @@ balance change disguised as a reskin.
 
 Real mechanical separation of *warmth* from *will*, and a place for "humanity" that is not a morality
 meter. That is the strongest thematic case in the issue. It is also the option that requires a new
-save pairing, a new array, an Effort edit and a 40-skill re-bind.
+save pairing, a new array, an Effort edit and a re-bind of every live skill.
 
 ---
 
@@ -184,8 +185,8 @@ properly attributes:
 | Concept | Modelled as | Why not an attribute |
 | --- | --- | --- |
 | Cybernetic load | **System Strain** (already) | it is a capacity, not a capability; gear already modifies it |
-| Technological aptitude | **`Interface` + `Program` skills** | CWN resolves hacking as `INT/Program`; a CYB attribute would need a new procedure |
-| Empathy | **`Connect` / `Talk` / `Kinesics` skills** | expressible at skill granularity today |
+| Technological aptitude | **`Program` + `Fix` skills** | CWN resolves hacking as `INT/Program`; a CYB attribute would need a new procedure |
+| Empathy | **`Connect` / `Talk` / `Notice` skills** | expressible at skill granularity today |
 | Will / noetic focus | **`WIS` + `Psychic Defence`** | WIS already feeds Effort; splitting it is Option S's cost |
 | Humanity / identity | optional **track** (0–10), never a modifier | a track can move with choices without rewriting every check |
 | Noetic sensitivity | **derived**: `WIS modifier + highest psychic skill` (for gates/descriptions only) | keeps SWN's Effort formula intact |
@@ -209,7 +210,7 @@ Split only the overloaded axis: **MIG, REF, VIT, INT, EMP, WIL, PRE** (no CYB).
 - Array for seven: `14, 13, 11, 10, 10, 8, 7` (sum 73 ≈ 7 × 10.5), or reuse 63 if weaker characters are
   acceptable.
 - Saves: Physical `MIG+VIT`, Evasion `REF+INT`, Mental `EMP+PRE`; WIL earns Effort + resistance.
-- Cost: half of Option S (one split, no new axis), but still a 40-skill re-bind and an Effort edit.
+- Cost: half of Option S (one split, no new axis), but still a full skill re-bind and an Effort edit.
 - This is the **cheapest way to get the empathy/will distinction**, which is the issue's first idea and
   its most thematically load-bearing one.
 
@@ -227,7 +228,7 @@ If the author wants exactly one structural change, this is the one with the best
 | Saves | unchanged | re-paired (WIL out) | re-paired (WIL out) | unchanged |
 | System Strain (CON) | unchanged | VIT | VIT | unchanged |
 | Effort formula | unchanged | WIL+VIT | WIL+VIT | unchanged |
-| Skills (40) | unchanged | re-bind all | re-bind all | unchanged |
+| Skills (19 WN + 6 PSI) | unchanged | re-bind all | re-bind all | unchanged |
 | Scenario checks | unchanged | must add code to baseline list | same | unchanged |
 | Existing saves | valid | migration | migration | valid |
 | Godot sheet | label change | schema + migration | schema + migration | label change |
