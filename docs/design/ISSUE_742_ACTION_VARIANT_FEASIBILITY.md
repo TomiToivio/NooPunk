@@ -233,4 +233,61 @@ Coarse on purpose — the issue asks for no false precision.
 - **The project's actual Godot version**, which decides whether `TileMapLayer` (4.3+) or the older
   `TileMap` applies.
 
+---
+
+## 7. Measured baseline (added later)
+
+Sections 1–6 were written as a design study. This section is different in kind: it was produced by
+reading `main` and running its suites, and it exists because two of the questions §6 lists as
+unverifiable are in fact verifiable here — and because the answer changes the cost estimate in §5.
+
+**Engine, settled.** `project.godot` declares `config_version=5` and
+`config/features = ("4.7", "GL Compatibility")`, and both Godot workflows pin **4.7.2-stable**. So the
+`TileMapLayer` (4.3+) question in §6 resolves to *`TileMapLayer`*, and there is no `TileMap` in any
+scene to migrate — the project currently uses **no tilemap node at all**, so a tile-based view costs
+nothing in migration.
+
+**The shared seam already exists.** §3 proposes sharing state rather than forking. The repository already
+does this for one consumer: `godot/core/rules_adapter.gd` is the GDScript runtime seam over the Python
+rules, and it already exposes `attack_roll`, `skill_check`, `save_target`, `difficulty_value` and
+`attribute_modifier` — plus `reseed(seed)`, `snapshot()` and `restore_dice(seed, rolls)`, which make the
+rules layer **already deterministic and replayable**. An action mode is therefore a *second consumer of
+an existing seam*, not a new layer to build. The inventory behind it: **61 modules in `src/rules/`,
+mirrored into 39 `.gd` files, over 19 JSON datasets in `data/rules/`**, with the turn-based scenario
+(`lakkahaltia`) already driving it.
+
+**The rules already say what the action mode needs them to say.** Four findings, each read rather than
+assumed:
+
+- `cwn_attack_modifiers.py` encodes geometry as named tokens — `target_half_cover` (−2),
+  `target_almost_full_cover` (−4), `beyond_normal_range` (−2), `target_prone_adjacent` (+2),
+  `one_handed_gun_in_melee` (−4) — **and it has an impossible class**: `two_handed_gun_in_melee` and
+  `target_unseen_position_unknown` raise `AttackImpossibleError` instead of applying a penalty. So
+  *"you cannot attack what you cannot perceive"* is already a rule, which is precisely the bridge
+  between a declared target in turn-based play and an acquired target in real time. No new rule is
+  needed to make perception load-bearing.
+- `cwn_hacking.AlertClock` already models intrusion as **accumulation** rather than a single check —
+  the tension device real-time stealth needs and turn-based play cannot express well.
+- `psionics.py` already prices abilities in effort (`may_use`, `effort_duration`), so the three telepathy
+  interfaces can differ by cost rather than by new subsystems.
+- `investigation_evidence.py` already provides `Evidence`, `CustodyEvent` and `EvidenceLedger`, so a clue
+  found in action mode enters **the same chain of custody** as one found in the turn-based game.
+- `cwn_trauma.py` provides `is_traumatic`, `shock_on_miss`, `major_injury_risk`, `absorb_with_soak` and
+  `resolve_hit` — the trauma mechanism that §2.3 rightly identifies as the identity that must stay
+  dice-driven rather than dodgeable.
+
+**Consequence for §5.** The *engineering* half of the slice is materially cheaper than §5's range
+implies, because the adapter, the determinism and the rule vocabulary already exist; the remaining risk
+is concentrated where §5 already puts it — input feel and animation coverage. That does not alter the
+recommendation, which is the same one this section would make: **prototype the slice; adopt nothing,
+shelve nothing.**
+
+**What is still genuinely unverifiable here:** how Deadeye Deepfake Simulacrum actually implements its
+mechanics (§6, first bullet). That remains a hands-on-play question.
+
+**Note on duplication.** Two documents now exist for this issue —
+`ISSUE_742_ACTION_RPG_FEASIBILITY.md` and this one — written independently in the same window. They cover
+the same six deliverables and should be collapsed into one by the author rather than maintained in
+parallel. This section is additive and preserves the rest of this document verbatim.
+
 — Ai 愛
