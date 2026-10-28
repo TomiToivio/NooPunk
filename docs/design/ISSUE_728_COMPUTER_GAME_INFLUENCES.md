@@ -1,195 +1,188 @@
-# #728 — computer-game influences and the shared rules-to-interface architecture
+# Issue #728: Computer-game influence research and unified-interface design
 
-**Status:** research and design. Not an implementation request, not canon, no code changed.
+**Status:** Research/design proposal, not approved new mechanics or implementation.  
+**Scope:** The legacy NoöPunk tabletop RPG and its Godot CRPG presentation, **not** the independent `strategy_game/` crossover.  
+**Rule authority:** [Without Number baseline](../../rulebook/WITHOUT_NUMBER_BASELINE.md): CWN for characters, standard STR/DEX/CON/INT/WIS/CHA, 2d6 checks, d20 attacks/saves, action economy, gear, hacking; SWN for approved PSI. Follow [AGENTS.md](../../AGENTS.md).  
+**Related:** [#724 design synthesis](ISSUE_724_CRPG_DESIGN_SYNTHESIS.md), [#704 GUMSHOE investigation](ISSUE_704_GUMSHOE_INVESTIGATION.md), [#704 decision register](ISSUE_704_DECISION_REGISTER.md). This memo *extends* those proposals and does not override them.
 
-Companion documents: `ISSUE_724_CRPG_DESIGN_MEMO.md` and `ISSUE_724_CRPG_DESIGN_SYNTHESIS.md` (the CRPG
-baseline: loop, Disco/Citizen Sleeper study, Fate/PbtA in dialogue, vertical slice), and
-`ISSUE_704_GUMSHOE_INVESTIGATION.md` (the investigation layer). This document does not repeat them; it
-adds the **game-specific** research and the **interface architecture** they do not cover.
+## Research method and limits
 
----
+This is a **desk review of publicly described gameplay, reference-game identity and proposed design applications**, not a claim of fresh hands-on playtesting, exhaustive feature verification, license clearance or a working Godot prototype. Linked game pages are reference starting points. Decisions below are recommendations for tabletop playtesting; a designer should verify detailed gameplay, difficulty and UX in the actual games before committing to imitation.
 
-## 0. Method, and what "observed" means here
+**Principle: one rule adjudication, multiple views.** A player selecting a node in a network diagram and a player pointing to that node on a tabletop sketch state the same intention, satisfy the same access prerequisites, take the same game action, make the same check (if required), and get the same consequences. A UI may reduce friction but may not supply game-only privileges.
 
-No listed title was played for this issue. Notes are drawn from published descriptions, store pages and
-reviews, so:
+## Influence matrix
 
-- **OBSERVED** — a documented feature of the shipped game (mechanic or UX pattern that reviews and
-  official descriptions agree on).
-- **PROPOSED** — NoöPunk's adaptation. Always labelled, never presented as a fact about the source game.
-- **AVOID** — a feature that would break the one-engine rule or the licence.
+**ADOPT:** use as a target experience or presentation principle. **ADAPT:** translate to existing CWN/SWN procedures. **INVESTIGATE:** benchmark/playtest before taking a decision. **AVOID:** explicitly not in the NoöPunk design. All examples below are **original proposed translations**, not descriptions of licensed mechanics or imports of third-party rules.
 
-Any claim about how a game *feels* is PROPOSED, not OBSERVED. The value of the matrix is the mapping, not
-a review score.
+| Game / reference | Focus | Decision and boundary | Tabletop equivalent | Godot view | Phase / risk |
+| --- | --- | --- | --- | --- | --- |
+| [Shadowrun: Dragonfall](https://store.steampowered.com/app/300550/Shadowrun_Dragonfall_Directors_Cut/) | Mission briefing, party roles, turn-based position and dialogue | **ADOPT** ensemble tactical+investigative structure; **AVOID** importing Shadowrun's rules | CWN briefing, preparations, action sequence, movement and combat | Party roster, tactical grid, briefings | First slice; UI complexity, licensed world/rules |
+| [Disco Elysium](https://store.steampowered.com/app/632470/Disco_Elysium_The_Final_Cut/) | Ideological dialogues, investigator interiority, consequence-rich decisions | **ADAPT** conversation framing and mutually conflicting testimony; **AVOID** new psyche stats or involuntary internal-voice checks | CWN Talk/Connect/Know checks, GM dialogue options, faction consequence log | Dialogue, journal with speaker/source, reactive choices | First slice; writing scope |
+| [Citizen Sleeper](https://store.steampowered.com/app/1578650/Citizen_Sleeper/) | Limited time, relationships, visible pressure | **ADAPT** a scenario deadline using explicit GM events; **AVOID** a second dice economy | Scheduled event and resource ledger | Calendar/clock in journal | First slice; over-gamified meters |
+| [DROP: System Breach](https://store.steampowered.com/app/1902300/DROP_System_Breach/) | Readable node/network cyber-intrusion aesthetic | **ADAPT** legible host graph; **AVOID** twitch/real-time hacking as a gate | Diagram of reachable devices and guarded edges | Graph UI, access highlights and log | First slice; mapping actual CWN programs |
+| [Midnight Protocol](https://store.steampowered.com/app/1162700/Midnight_Protocol/) | Deliberate, command-oriented network interactions | **INVESTIGATE** concise commands as *input aliases*, not new mechanics | Player names a CWN hacking action, GM adjudicates | Select node + command/action menu | First/later; usability and rule drift |
+| [Blade Runner: Enhanced Edition](https://store.steampowered.com/app/1678420/Blade_Runner_Enhanced_Edition/) | Detective atmosphere, interviews and competing leads | **ADOPT** multi-lead case structure; **AVOID** pixel hunts for required clues | GM scenes, evidence cards, interview notes | Witness dialogues, source-labelled case board | First slice; pre-scripted branching explosion |
+| [Observer: System Redux](https://store.steampowered.com/app/1386900/Observer_System_Redux/) | Subjective/psychological cyberpunk horror | **ADAPT** unreliable perspective as *presentation*, not infallible psi | Describe perceptions and distinguish claims from corroboration | Distorted visuals with accessible plain-text testimony | Later; accessibility and sensitive mental-health depiction |
+| [Song of Farca](https://store.steampowered.com/app/1435670/Song_of_Farca/) | Remote investigations and linking surveillance leads | **ADAPT** desk investigation and evidence provenance | Records, interview transcripts, network diagram | Multi-panel case board and remote-records view | First slice; avoid magical all-access surveillance |
+| [Cyberpunk 2077](https://store.steampowered.com/app/1091500/Cyberpunk_2077/) | Social density, factional city storytelling | **INVESTIGATE** environmental/world cues; **AVOID** FPS/action pacing and AAA scope | Location briefs and NPC/faction reactions | Small dense block, dialogue hotspots | Later; unsustainable production scope |
+| [Deadeye Deepfake Simulacrum](https://store.steampowered.com/app/1545990/Deadeye_Deepfake_Simulacrum/) | Low-budget cyberpunk visual punch and readable interface | **ADAPT** density and stylization; **AVOID** reflex combat as core | Distinct tokens/maps and equipment cards | Economical silhouettes, UI-first spaces | First slice; legibility at target resolution |
+| [Cloudpunk](https://store.steampowered.com/app/746850/Cloudpunk/) | Voxel city silhouettes, neon atmosphere and scale illusion | **ADOPT** mood and modular environmental language; **AVOID** requiring open-world driving | Scene/location descriptions and district maps | Modular voxel-ish street/ward interior | First/later; navigation/asset costs |
 
----
+## Shared domain/state contract (design proposal)
 
-## 1. Influence matrix
+The **tabletop referee sheet** is the reference, not a separate rules translation. The eventual digital save should represent the same fields, without freezing new mechanical numbers:
 
-| game | what it demonstrably does (OBSERVED) | NoöPunk subsystem | verdict | tabletop procedure | Godot presentation | risk |
-|---|---|---|---|---|---|---|
-| **Shadowrun: Dragonfall** | turn-based squad combat on a grid; action points; a separate node-based Matrix layer for hacking; dialogue options gated by character tags | tactical encounters; hacking; party | **ADAPT** | CWN initiative, actions, attack/skill checks on a grid drawn on paper | tactical map, AP pips, same rolls surfaced in a log | the Matrix as a *second* ruleset — see §3 |
-| **Disco Elysium** | 24 skills that speak as voices; white/red checks; Thought Cabinet; health and morale as two pools | social/narrative checks; inner voices | **ADAPT (voice only)** | referee voices the highest-relevant skill; checks already exist | skill-voice barks over dialogue | a second mental-damage economy — #698 conditions already own this |
-| **Citizen Sleeper** | dice allocated to actions each cycle; clocks and drives; a time economy driven by scarcity | pressure and clocks | **AVOID the dice economy**; adopt clocks | existing clocks; one turn = one scene | clock ring + cycle summary | dice-as-actions is a second engine |
-| **DROP – System Breach** | node-graph intrusion; breach nodes, escalate, trace/alert | hacking UI | **ADAPT (view only)** | nodes drawn as boxes, edges as links | interactive graph, same actions | inventing actions the rules do not have |
-| **Midnight Protocol** | terminal/keyboard interface; commands typed against a network; stealth vs force | hacking *feel*; command vocabulary | **ADAPT (vocabulary)** | players speak the command verbs aloud | terminal overlay, tab-complete | a bespoke command grammar that is not CWN's verbs |
-| **Blade Runner (1997)** | real-time adventure; photo enhancement as evidence tool; a KIA-style clue linker; multiple endings from evidence choices | case board; evidence analysis | **ADAPT (case board)** | index cards + string | case board over existing state | pixel hunting / adventure-game logic |
-| **Observer** | interrogation and "dream-eater" sequences; psychological investigation | interrogation; psychic evidence | **ADAPT (scene framing)** | a scene with a stated risk | first-person-ish interrogation framing | making PSI a minigame |
-| **Song of Farca** | hacker-protagonist investigation; surveillance and evidence assembly under time pressure | surveillance; time pressure | **ADAPT (situations)** | clocks + evidence ledger | camera/log views | scripted deductions |
-| **Cyberpunk 2077** | dense city, factions, braindance reconstruction | atmosphere; braindance as evidence | **AVOID the combat model**; adapt braindance | a reconstruction is a `Forensics` check producing a fact | scene playback | production values mistaken for design |
-| **Deadeye Deepfake Simulacrum** | dense, stylised low-budget presentation | visual density | **ADAPT (scope model)** | — | tight palette, few assets, high contrast | imitating its action gameplay |
-| **Cloudpunk** | voxel city, neon fog, driving-through-mood presentation | city mood | **ADOPT (primary visual reference)** | — | voxel blocks + fog + light | open-world driving scope |
+- **Characters:** canonical CWN sheet (attributes, skill ranks, edges/foci, equipment and resources); specialist SWN PSI only when legitimately acquired.
+- **Case facts:** stable evidence ID; observable claim/content; type (observation/testimony/inference); who/what produced it; location, timestamp, provenance and access prerequisite; whether a *core* lead or optional detail; citations to related items. The journal must distinguish player conclusions from established observations.
+- **Access graph:** nodes are devices/records/people/rooms; edges are actual physical, wireless, credentialed or social routes; access state, current permissions and security descriptions. An edge never grants access because the UI draws it.
+- **Pressure:** GM-authored scheduled events/deadlines, time spent on actions, named consequences. Do **not** invent a Citizen Sleeper dice pool or another currency.
+- **Relations:** explicit NPC/institution attitudes, contacts, permissions and consequences in scenario notes; avoid unapproved numerical ideology meters.
+- **Encounter:** existing CWN round/action/initiative, location, cover, equipment, damage and conditions; no parallel adventure-combat kernel.
+- **Trace:** intention, prerequisite, governing source procedure, roll/result when applicable, state change and presented explanation, to support referee replay and Godot debugging.
 
----
+Suggested interface boundary: `propose_action(state, actor, target, intent)` → list prerequisites and applicable *existing* CWN options; `resolve_with_authoritative_rules(...)` → event/result → `render_tabletop(...)` or `render_godot(...)`. These are conceptual contracts, **not approved APIs**, and no new resolution formulas are specified. Random outcomes, time costs, range, decks/programs and cyber-security capabilities must be taken from actual CWN rules rather than guessed here.
 
-## 2. The one-engine rule, stated as an architecture
+### One-to-one UI mapping
 
-> **Rules are authoritative; interfaces are replaceable.**
+| Action intention | Tabletop procedure | Computer presentation | Must stay identical |
+| --- | --- | --- | --- |
+| Get an intake log | State relevant method and permission; core clue on accessible competent inspection | Inspect record → provenance card | Access, fact and follow-up leads |
+| Persuade a technician to cooperate under risk | CWN Talk or context-appropriate skill check with declared stakes | Dialogue choice shows intent and relevant check | Difficulty, modifiers, possible cost/consequence |
+| Examine a host | Determine physical/link reachability and permissions before CWN hacking | Highlight only actually reachable nodes | No magical remote access |
+| Execute a cyber action | Choose a source-defined CWN program/action and meet its restrictions and costs | Command list + log, no timed button minigame | Same costs, checks, alarms and state |
+| Investigate a suspicious discrepancy | Notice/Know/Program as appropriate; core observations not roll-gated | Case board links the facts, hypotheses separately | Observation versus speculation |
+| Respond to a deadline | GM-announced scheduled pressure plus real action consequences | Visible timeline/clock | No hidden turn tax |
+| Confront guards or de-escalate | CWN checks or combat actions where scene calls for them | Dialogue or tactical mode | Same stats, initiative and outcomes |
 
-One canonical game state; every interface — paper sheet, GM procedure, Godot panel — reads and writes
-*that* state and nothing else. A UI may add **affordances** (camera, animation, logs, auto-bookkeeping,
-sorting, search). A UI may not add **choices, probabilities, costs or consequences**.
+## Graph hacking: worked paper/digital parity example
 
-| activity | canonical state | rules (authoritative) | paper affordance | digital affordance |
-|---|---|---|---|---|
-| tactical confrontation | positions, initiative order, HP/Strain, conditions | CWN initiative, actions, attack/save/skill checks | grid sketch, tokens, scratch HP | map, AP pips, hover ranges, roll log |
-| conversation / ideology | disposition, faction standing, conditions, known facts | CWN social checks; #719 hegemony tracks | index card per faction | dialogue UI, standing meter |
-| time / pressure | clocks, turn count, deadlines | existing clocks; one scene = one turn | ticks on paper | clock ring, cycle summary |
-| hacking | nodes, access state, alert clock, trace | `src/rules/cwn_hacking.py` | node diagram + tokens | clickable graph |
-| investigation | facts found, discriminators attempted, hypotheses | `src/rules/investigation.py`, `anomaly_gate.py` | case board, string | case board view, filters |
-| exploration | scene graph, discovered exits, danger state | CWN movement/perception checks | map + notes | scene navigation |
+**Illustrative graph, not canon and not a substitute for CWN's program and security text:**
 
-**The test for any proposed feature:** could a table run it with paper and the same numbers? If no, it is
-a new rule and goes through design review — not into a UI.
-
----
-
-## 3. Graph hacking, mapped onto CWN rather than beside it
-
-`src/rules/cwn_hacking.py` already owns the mechanics: `access_pool(intelligence_modifier, program_skill,
-deck_bonus)`, `security_difficulty(...)`, `hacking_check(...)` with a flat `WIRELESS_PENALTY = -2` and
-`VR_CROWN_PENALTY = -1`, and an `AlertClock` where `FAILURES_PER_ALERT = 2` and
-`ALERT_ACTIONS_TO_ALERT = 2`.
-
-**A host is a graph; the graph is a picture of that state.** Nodes are devices, accounts, daemons and
-archives. Edges are connections you must already have permission or a successful action to cross. Nothing
-in the graph introduces a roll the module does not already make.
-
-### Paper example — one node, one action
-
-```
-[Reception terminal] --1--> [Ward server] --2--> [Patient records]
-         |                        |
-       (camera)                (daemon)
+```text
+[Investigator's deck] --(local, reachable)--> [Ward terminal]
+                                           |
+                                     (requires access)
+                                           v
+                                     [Audit host] --(protected link)--> [Backup archive]
 ```
 
-1. The decker is on the reception terminal. Crossing **edge 1** to the ward server requires a
-   `security_difficulty` for the server; the player rolls `hacking_check(...)`.
-2. A failure records `AlertClock.record_failure()`; two failures raise one alert action, two alert actions
-   raise the alert — the clock is on the table as two boxes.
-3. The daemon on the ward server may spend its action to `record_alert_action()`.
+1. The team first obtains legitimate access to the ward terminal, or establishes another **fictionally and mechanically valid route**. On paper the GM draws the devices and marks reachable links; in Godot reachable links illuminate. A glowing node is information, not access.
+2. The player requests access to the audit host. The GM/engine checks the applicable CWN hacking permissions, tool/program/deck limits, timing and opposing security. A task roll occurs **only where the source procedure calls for one**. Do not assume every edge is a generic `Program` test.
+3. The host contains an **audit discrepancy** (core observation) if a valid examination route succeeds. Failure of one risky intrusion can cause source-defined alarms, resource loss, exposure or denial; it must leave a separately authored lead via the technician interview or a lawful records request. Do not grant the protected clue for free through a locked system.
+4. On paper, write `audit_host: access [as established by rules]` and `E-04: event timestamp differs from maintenance log; provenance: audit export`. In Godot, the identical evidence item populates the journal and the action log records the same adjudication.
+5. A link to the backup archive is a **new permission challenge**, not a free traversal. No bespoke timer, stealth meter, graph-puzzle key or hacking minigame decides success.
 
-Everything on that diagram is a rule that already exists. The diagram is how a table remembers it.
+**Playtest checkpoint:** a paper referee and Godot facilitator take an identical starting sheet, deck, access state, chosen actions and roll sequence; their resulting evidence, costs, alarms, and access states must agree. Until current CWN cyber procedures and approved equipment are mapped, treat the above as a **workflow sketch**, not numeric rules.
 
-### Digital equivalent
+## Investigation: scene graph and non-dead-end clues
 
-The same JSON — nodes, edges, security values, daemon flags — rendered as boxes; clicking an edge runs the
-same `hacking_check` through the same adapter pattern as `godot/core/rules_adapter.gd`. **What the UI may
-add:** hover reveals the check's inputs; the clock animates; the log shows each roll. **What it may not
-add:** a reflex component, a timing bar, or an action the module lacks.
+Example case: *a disputed incident at a hospital*. This is a **noncanonical scenario outline**, deliberately grounded; psychiatric treatment is not evidence that a witness is inherently unreliable, nor is any alleged anomaly proven paranormal.
 
-DROP and Midnight Protocol are valuable for *legibility* (what a breach looks like) and for *verb
-vocabulary* (what you say you are doing). They are not the source of the rules.
+```text
+Briefing
+  ├─ Ward witness interview ──────────┐
+  ├─ Accessible intake register ──────┼─ Timestamp discrepancy ──┬─ Technical review
+  └─ Clinician interview ─────────────┘                          └─ Audit-host inquiry
+                                                                  │
+                                              Technician interview / lawful archive request
+                                                                  │
+                                         Report choice / referral / optional tactical intervention
+```
 
----
+- **Core evidence E-01:** intake register shows the original report time, once a competent investigator obtains access through normal institutional procedures. A good Notice/Know result can supply *extra* contextual detail, not determine whether the register exists.
+- **Core evidence E-02:** a ward witness reports a conflicting time. It is **testimony**, not proof of cause. A Talk check under pressure can affect cooperation, consent to publicity or trust, not erase the witness's basic account where they are willing to speak.
+- **Core evidence E-03:** clinician provides an independently sourced timeline. Different accounts may remain inconsistent.
+- **Optional evidence E-04:** authenticated audit export shows a maintenance change. Access to restricted systems follows CWN hacking or legitimate authorization. At least one additional way to continue exists even if intrusion fails.
+- **Interpretation:** investigator may conclude error, misconduct, technical sabotage or unresolved anomaly, but no UI silently declares the hypothesis true.
+- **Access and privacy:** protected patient records require actual legal/ethical permission or risky consequences. Neither the tabletop GM nor Godot should reward needless disclosure of sensitive medical data.
 
-## 4. Investigation, shared
+**Shared procedure:** investigate intentions → establish credible physical/social/digital access → expose reachable core *observations* without arbitrary clue rolls → use CWN checks for uncertain consequential steps → update case/evidence ledger → offer two independent routes forward → let player interpret and intervene. This aligns with #704, and does not add a second GUMSHOE point economy.
 
-`src/rules/investigation.py` gives the fact to a competent declaration and never rolls for it;
-`anomaly_gate.py` records attempted discriminators and refuses an anomalous conclusion while any core
-discriminator is unrun. The case board is a **view of that state**: facts found, discriminators attempted,
-hypotheses live. Blade Runner's clue-linker and Song of Farca's evidence assembly are good *presentations*
-of exactly this state and bad *sources of it* — a board that draws a connection the table has not
-established would be the UI inventing a fact.
+## Integrated vertical slice, in six scenes
 
-Pixel hunting is excluded by the same rule: a fact that exists must be reachable by a declared competent
-inquiry, not by clicking the right pixel. If the game needs a highlight to make a fact findable, that is an
-affordance, and it must never be the only route.
+| Scene | Player decision | Shared rules & journal effect | Godot-only presentation |
+| --- | --- | --- | --- |
+| 1. Case briefing | Accept mandate and pick an approach | Record mandate, known witnesses, constraints and sources | Case overview and compact city/hospital view |
+| 2. Social inquiry | Interview nurse/clinician; negotiate cooperation | CWN Talk/Connect or no roll for routine access; update testimony, relationships | Dialogue and tagged statements |
+| 3. Evidence analysis | Compare timestamps and hypotheses | Notice/Know as appropriate for optional depth; all reachable core observations preserved | Source-labelled evidence board |
+| 4. Network access | Choose lawful terminal access, technician help or risky intrusion | Actual CWN reachability, programs, security, resources and consequences | DROP/Midnight Protocol-inspired graph view |
+| 5. Ideological/ethical choice | Respect privacy, escalate to oversight, or publish limited findings | Record chosen disclosure, changed access and named institutional reactions; no invented ideology meter | Dialogue alternatives and consequence preview |
+| 6. Optional confrontation | Negotiate, withdraw, infiltrate or fight | CWN Talk/Sneak or existing combat rounds, position, injury and gear; no forced combat | Shadowrun-inspired turn-based tactical room |
 
----
+The case ends with a **source-aware report**, open questions and different relationships/permissions depending on chosen actions, even if no combat occurs. A sample tabletop session should be run **before** any Godot port; existing legacy Godot systems are not claimed to implement this proposed flow.
 
-## 5. Vertical slice — briefing → social → clue → intrusion → ideology → tactics
+## Visual and UX direction (small-team Godot)
 
-| beat | what happens | rule | where it lives |
-|---|---|---|---|
-| 1. Briefing | the case, the client, the clock | clock + scene framing | tabletop: GM; digital: briefing screen |
-| 2. Social | the ward administrator refuses records | CWN `Talk`/`Connect` check vs a stated difficulty | same check both sides |
-| 3. Clue analysis | the roster gap and the future-tense file | guaranteed fact (competent declaration) + `Forensics`/`Know` check for the reading | `investigation.py` |
-| 4. Intrusion | the ward server, one daemon | `hacking_check` + `AlertClock` | `cwn_hacking.py` |
-| 5. Ideological choice | whose account the evidence serves | #719 hegemony: Articulation / Legitimacy / Frontier | tabletop: faction card; digital: standing panel |
-| 6. Optional tactics | a security response | CWN initiative, actions, attack and save checks | grid / map |
+Use **Cloudpunk** as an atmospheric benchmark, not a commitment to a streaming voxel metropolis. Target **one small street block, two hospital rooms, an evidence-board screen and one network graph**, with modular interiors, subdued near-contemporary props, selectively lit signage, readable silhouettes and strategic lighting. Use **Deadeye Deepfake Simulacrum** as a reference for strong indie identity, not twitch combat. Treat **Cyberpunk 2077** as a world-density and incidental-quest inspiration, not a fidelity target.
 
-Every row is one rule executed twice through different interfaces. The slice is deliberately small: two
-rooms, three NPCs, one network, one possible fight.
+Keep UI legible at desktop and smaller screens: a clear focus state, keyboard interaction for nodes/commands, color-independent access indicators, text alternatives for sensory distortion and reduced-animation options. Detective evidence needs provenance and contradiction markers, not just glowing conspiracy strings. A network link should have a tooltip stating whether it means *known*, *reachable*, *authorized* or *blocked*.
 
----
+Do not spend initial scope on open-world traversal, vehicle driving, fully voiced branching dialogue, real-time intrusion, mass NPC simulation, combat VFX or speculative psychic-vision minigames.
 
-## 6. Visual direction, at small-team scale
+## Rules gaps, to be decided **before** any code
 
-**Primary reference: Cloudpunk** — voxel blocks, heavy fog, saturated neon, wet reflections, a city read
-mostly at distance and in motion. **Secondary: Deadeye Deepfake Simulacrum** — density bought with palette
-and contrast rather than asset count.
+| Question | Current safe stance | Decision gate |
+| --- | --- | --- |
+| Are core clues a permanent NoöPunk rule? | #704 proposed referee principle, *not* imported point economy | Tabletop case playtest + author editorial approval |
+| How exactly are computer network nodes represented? | Use actual CWN device reachability, hacking actions, permissions and security | Audit against CWN chapter with concrete program and deck example |
+| How much elapsed time does each investigation action cost? | Use source and scenario authored timing; no new universal mechanic | Tabletop session and GM schedule |
+| How are relationships/ideological consequences tracked? | Descriptive notes and access consequences, no new numerical meter | Author decision if quantitative mechanics become necessary |
+| How does Godot share rules rather than approximate them? | Keep source-accurate adapter boundary and event log proposal | Separate implementation issue with code behavior tests |
+| How can PSI perception be presented? | Use only properly acquired SWN techniques, and distinguish testimony | Author-approved scenario and source restrictions |
 
-What that actually means for scope:
+## Verification and acceptance
 
-- **isometric or fixed-angle 3D**, not first person; the camera does the atmosphere, the team does not;
-- **voxel/proxy geometry** for exteriors, hand-authored interiors only where play happens;
-- **one city block per chapter**, not a city; fog and lighting hide the boundary;
-- **2D portraits + text** for conversation — the cheapest depth in the genre;
-- **UI-first subsystems**: the case board and the node graph are 2D panels and are where the game looks
-  most like itself;
-- **no driving, no crowds, no open world** — those are where Cloudpunk's budget went, and they buy mood,
-  not decisions.
+- [x] Reference matrix covers every game in #728 with use, tabletop equivalent, Godot view and scope/risk.
+- [x] Architecture proposal separates canonical rules and case state from presentation.
+- [x] Paper/digital graph-hacking parity example and CWN-first restrictions.
+- [x] Investigation graph includes independent continuation routes, evidence provenance and meaningful uncertainty.
+- [x] Integrated six-scene vertical slice uses shared rules throughout and keeps combat optional.
+- [x] Feasible small-team visual direction and named open decisions.
+- [x] No new rules, source text, runtime minigames or doc-only CI tests introduced.
+- [ ] Hands-on comparison/playtesting of all commercial references: **not performed**.
+- [ ] Tabletop case playtest and precise CWN hacking chapter audit: **not performed**.
+- [ ] Godot prototype and parity tests: **not implemented** (requires separate authorization/issue).
 
-Atmosphere is cheap; *scale* is expensive. The design should spend on density of meaning, not square
-kilometres.
+### Reference links and further reading
 
----
+The eleven game links appear in the matrix. Existing related research: [CRPG synthesis #724](ISSUE_724_CRPG_DESIGN_SYNTHESIS.md), [GUMSHOE #704](ISSUE_704_GUMSHOE_INVESTIGATION.md), [CWN baseline](../../rulebook/WITHOUT_NUMBER_BASELINE.md), and [Godot guidance](../GODOT.md). Original game UI, art, dialogue, code and settings remain their respective rights holders' property; this document specifies independently authored abstractions and examples, not license grants.
 
-## 7. What would require NEW NoöPunk rules
+## Appendix — verified rule bindings (added from the parallel draft)
 
-This is the list that matters, because everything else is a UI.
+Two things the body above describes in prose are worth pinning to code, because a UI that drifts from
+these is drifting from the rules.
 
-| idea | source | needs a new rule? | why / what it would be |
-|---|---|---|---|
-| Thought Cabinet / internalising ideas | Disco Elysium | **YES** | a second progression track; would need its own design (and would collide with #698 conditions) |
-| dice-as-actions per cycle | Citizen Sleeper | **YES** | a new action economy beside CWN turns; rejected as a second engine |
-| braindance reconstruction | Cyberpunk 2077 | **NO** | a `Forensics` check producing a fact through the existing clue layer |
-| clue-linker / KIA | Blade Runner | **NO** | a view over `investigation.py` state |
-| node-graph hacking | DROP / Midnight Protocol | **NO** | a view over `cwn_hacking.py` |
-| ideology standing | Disco Elysium / #719 | **YES (already proposed)** | #719's Articulation/Legitimacy/Frontier; needs acceptance before any UI |
-| psychological "voices" | Disco Elysium | **NO (presentation)** | referee/UI voices the relevant skill; the check is unchanged |
-| real-time pressure | Blade Runner / Song of Farca | **NO** | clocks already exist; real time is an affordance, not a rule |
+**Graph hacking is a picture of state `src/rules/cwn_hacking.py` already owns.** Verified against the
+module on 2026-10-29:
 
-Everything marked NO is safe to prototype. The two marked YES must not enter a UI before the rule exists,
-or the interface will become the rules.
+- `access_pool(*, intelligence_modifier, program_skill, deck_bonus)` — the pool is `INT modifier + Program
+  + deck Bonus Access`, never negative, refreshed by an hour of reprogramming once a day (the caller owns
+  the clock);
+- `security_difficulty(...)` sets the target; `hacking_check(..., wireless=, vr_crown=)` applies flat
+  penalties `WIRELESS_PENALTY = -2` and `VR_CROWN_PENALTY = -1`;
+- `AlertClock` — `FAILURES_PER_ALERT = 2` failed checks raise one alert action, `ALERT_ACTIONS_TO_ALERT = 2`
+  alert actions raise the network alert.
 
----
+So a node diagram may show nodes, edges, security values and daemon flags; it may not invent a roll, a
+timing bar or an action the module lacks. What it may add is legibility: hover reveals the check's inputs,
+the clock animates as two boxes, the log shows each roll.
 
-## 8. Acceptance criteria, mapped
+**Which ideas are views and which are rules.** This is the classification that decides what may be
+prototyped now:
 
-1. **Game-by-game mechanics/UX/limitations** → §1 matrix, OBSERVED/PROPOSED separated, method stated in §0.
-2. **Influence matrix with adopt/adapt/avoid** → §1, including the tabletop procedure and Godot presentation columns.
-3. **Shared-rules architecture** → §2, with the affordance/choice test.
-4. **Graph hacking vs CWN, paper example + digital** → §3, mapped onto real constants in `cwn_hacking.py`.
-5. **Investigative workflow, identical both sides** → §4.
-6. **One integrated vertical slice, rule-by-rule** → §5.
-7. **Restrained visual direction, small-team scope** → §6.
-8. **What needs new rules** → §7.
-9. **Cross-references, no duplication** → header; #724 covers the CRPG loop, #704 the investigation layer, #719 the ideology tracks.
+| idea | source | needs a new rule? |
+|---|---|---|
+| braindance reconstruction | Cyberpunk 2077 | **no** — a `Forensics` check producing a fact through the existing clue layer |
+| clue-linker / KIA-style board | Blade Runner | **no** — a view over `src/rules/investigation.py` state |
+| node-graph intrusion | DROP / Midnight Protocol | **no** — a view over `cwn_hacking.py` |
+| real-time pressure | Blade Runner / Song of Farca | **no** — clocks already exist; real time is an affordance |
+| psychological "voices" | Disco Elysium | **no** — the referee or UI voices the relevant skill; the check is unchanged |
+| **Thought Cabinet / internalising ideas** | Disco Elysium | **yes** — a second progression track, and it would collide with #698 conditions |
+| **dice-as-actions per cycle** | Citizen Sleeper | **yes** — a second action economy beside CWN turns; rejected as a second engine |
+| ideology standing | Disco Elysium → #719 | **yes, already proposed** — Articulation / Legitimacy / Frontier must be accepted before any UI |
 
-## 9. What this document does not decide
-
-No new rule is adopted; #719's hegemony tracks remain proposals; the visual direction is a constraint, not
-an art bible; and no Godot work starts from this document. The next step, if any, is a single vertical-slice
-prototype issue that reuses `godot/core/rules_adapter.gd` and adds no mechanics.
+**Evidence labels used in §Research method.** OBSERVED = a documented feature of the shipped game;
+PROPOSED = NoöPunk's adaptation; AVOID = would break the one-engine rule or the licence. No listed title
+was played for this issue, so any claim about how a game *feels* is PROPOSED. The value is the mapping,
+not a review score.
