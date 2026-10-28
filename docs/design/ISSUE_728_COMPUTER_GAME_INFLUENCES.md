@@ -147,3 +147,42 @@ Do not spend initial scope on open-world traversal, vehicle driving, fully voice
 ### Reference links and further reading
 
 The eleven game links appear in the matrix. Existing related research: [CRPG synthesis #724](ISSUE_724_CRPG_DESIGN_SYNTHESIS.md), [GUMSHOE #704](ISSUE_704_GUMSHOE_INVESTIGATION.md), [CWN baseline](../../rulebook/WITHOUT_NUMBER_BASELINE.md), and [Godot guidance](../GODOT.md). Original game UI, art, dialogue, code and settings remain their respective rights holders' property; this document specifies independently authored abstractions and examples, not license grants.
+
+## Appendix — verified rule bindings (added from the parallel draft)
+
+Two things the body above describes in prose are worth pinning to code, because a UI that drifts from
+these is drifting from the rules.
+
+**Graph hacking is a picture of state `src/rules/cwn_hacking.py` already owns.** Verified against the
+module on 2026-10-29:
+
+- `access_pool(*, intelligence_modifier, program_skill, deck_bonus)` — the pool is `INT modifier + Program
+  + deck Bonus Access`, never negative, refreshed by an hour of reprogramming once a day (the caller owns
+  the clock);
+- `security_difficulty(...)` sets the target; `hacking_check(..., wireless=, vr_crown=)` applies flat
+  penalties `WIRELESS_PENALTY = -2` and `VR_CROWN_PENALTY = -1`;
+- `AlertClock` — `FAILURES_PER_ALERT = 2` failed checks raise one alert action, `ALERT_ACTIONS_TO_ALERT = 2`
+  alert actions raise the network alert.
+
+So a node diagram may show nodes, edges, security values and daemon flags; it may not invent a roll, a
+timing bar or an action the module lacks. What it may add is legibility: hover reveals the check's inputs,
+the clock animates as two boxes, the log shows each roll.
+
+**Which ideas are views and which are rules.** This is the classification that decides what may be
+prototyped now:
+
+| idea | source | needs a new rule? |
+|---|---|---|
+| braindance reconstruction | Cyberpunk 2077 | **no** — a `Forensics` check producing a fact through the existing clue layer |
+| clue-linker / KIA-style board | Blade Runner | **no** — a view over `src/rules/investigation.py` state |
+| node-graph intrusion | DROP / Midnight Protocol | **no** — a view over `cwn_hacking.py` |
+| real-time pressure | Blade Runner / Song of Farca | **no** — clocks already exist; real time is an affordance |
+| psychological "voices" | Disco Elysium | **no** — the referee or UI voices the relevant skill; the check is unchanged |
+| **Thought Cabinet / internalising ideas** | Disco Elysium | **yes** — a second progression track, and it would collide with #698 conditions |
+| **dice-as-actions per cycle** | Citizen Sleeper | **yes** — a second action economy beside CWN turns; rejected as a second engine |
+| ideology standing | Disco Elysium → #719 | **yes, already proposed** — Articulation / Legitimacy / Frontier must be accepted before any UI |
+
+**Evidence labels used in §Research method.** OBSERVED = a documented feature of the shipped game;
+PROPOSED = NoöPunk's adaptation; AVOID = would break the one-engine rule or the licence. No listed title
+was played for this issue, so any claim about how a game *feels* is PROPOSED. The value is the mapping,
+not a review score.
