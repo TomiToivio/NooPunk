@@ -1,6 +1,7 @@
 # #735 — Reskin and possible expansion of the CWN/SWN attributes
 
-**Design memo. No decision, no canon change, no code change.** This extends `#716`'s A/B/C framing
+**Design memo. No decision, no canon change, no code change.** Claims checked against `origin/main`
+on 2026-10-28: §2.1 (#737) maps the three skill vocabularies, and §17 records the remaining corrections. This extends `#716`'s A/B/C framing
 (keep / display aliases / full new set) with the structural question #716 did not open: *should the
 mental and technological axes be split, and should anything new become an attribute at all?*
 
@@ -24,7 +25,7 @@ deliberately or leave them alone.
 | System Strain cap | equals **CON** | `src/rules/cwn_strain.py` |
 | Max Effort | `1 + highest psychic skill + better of WIS or CON modifier` | `docs/rules/SWN_PSIONICS_ADAPTATION.md` |
 | Skills | 40 named skills, each bound to an attribute; includes `Interface`, `Perceive`, `Talk`, `Connect`, `Kinesics`, `Investigation`, `Program` | `data/rules/skills.json` |
-| Scenario validation | every scenario check's attribute must be in the baseline list | `tests/test_scenario_data.gd` |
+| Check validation | `skill_check()` raises on an attribute outside `ATTRIBUTES`; the drill indexes `sheet["attributes"][code]` directly | `src/rules/without_number.py:13,99`, `src/rules/first_case_drill.py:119` |
 | A second, legacy set | `FIT / REF / INT / SOC / CYB / PSY` on 1–10, still implemented | `data/rules/core.json` |
 
 Two consequences follow immediately.
@@ -45,7 +46,7 @@ which rules would break if it vanished, and what a new code would have to own.
 | Code | Procedures it drives | If removed |
 | --- | --- | --- |
 | STR | melee attack/damage choice, **encumbrance capacity** (`Stowed = STR`), Physical save | encumbrance and melee both lose their base |
-| DEX | ranged attack/damage choice, Evasion save, AC | the shooting half of combat loses its modifier |
+| DEX | ranged attack/damage choice, Evasion save | the shooting half of combat loses its modifier. **Not AC:** CWN has two armour-derived ACs (Melee, Ranged) and `src/rules/cwn_core.py` receives `target_melee_ac` from the caller |
 | CON | **HP per level**, **System Strain cap**, Physical save, **Effort** | three separate subsystems lose their number |
 | INT | most knowledge/tech checks, Evasion save, hacking (`Int/Program`) | the skill system's largest domain collapses |
 | WIS | Mental save, **Effort**, perception/insight checks | psionics and resistance to manipulation lose their base |
@@ -160,7 +161,10 @@ balance change disguised as a reskin.
   through Effort and resistance procedures — otherwise it is a stat only psions care about.
 - **Effort** must name its source: `1 + psi skill + better of WIL or VIT` (replacing WIS/CON). This is a
   real rule edit, not a rename, and belongs in `docs/rules/SWN_PSIONICS_ADAPTATION.md` if chosen.
-- **Skills must be re-bound** across 40 entries — every one currently points at a code.
+- **Skills are not the cost.** The governing baseline's 19 skills carry no fixed attribute binding, and
+  `skill_check(character, attribute, skill)` takes the attribute per action — so a split changes *which*
+  code a check may name, not a binding table. Only the superseded 40-entry `data/rules/skills.json` is
+  bound (§2.1), and re-binding it is work on a layer `AGENTS.md` says not to preserve.
 - **NPC stat lines** (HD-based, no attributes) are unaffected, which is a hidden benefit: NPCs do not
   need migration.
 - **CYB still has no procedure.** CWN's hacking is `INT/Program`; cyberware is gear + Strain. Adding CYB
@@ -172,7 +176,7 @@ balance change disguised as a reskin.
 
 Real mechanical separation of *warmth* from *will*, and a place for "humanity" that is not a morality
 meter. That is the strongest thematic case in the issue. It is also the option that requires a new
-save pairing, a new array, an Effort edit and a 40-skill re-bind.
+save pairing, a new array, an Effort edit and a `LEGACY_STAT_MAP` decision — but no skill re-bind.
 
 ---
 
@@ -209,7 +213,8 @@ Split only the overloaded axis: **MIG, REF, VIT, INT, EMP, WIL, PRE** (no CYB).
 - Array for seven: `14, 13, 11, 10, 10, 8, 7` (sum 73 ≈ 7 × 10.5), or reuse 63 if weaker characters are
   acceptable.
 - Saves: Physical `MIG+VIT`, Evasion `REF+INT`, Mental `EMP+PRE`; WIL earns Effort + resistance.
-- Cost: half of Option S (one split, no new axis), but still a 40-skill re-bind and an Effort edit.
+- Cost: half of Option S (one split, no new axis) — an Effort edit, a save re-pairing and a
+  `LEGACY_STAT_MAP` decision, but no skill re-bind (§4).
 - This is the **cheapest way to get the empathy/will distinction**, which is the issue's first idea and
   its most thematically load-bearing one.
 
@@ -227,8 +232,10 @@ If the author wants exactly one structural change, this is the one with the best
 | Saves | unchanged | re-paired (WIL out) | re-paired (WIL out) | unchanged |
 | System Strain (CON) | unchanged | VIT | VIT | unchanged |
 | Effort formula | unchanged | WIL+VIT | WIL+VIT | unchanged |
-| Skills (40) | unchanged | re-bind all | re-bind all | unchanged |
-| Scenario checks | unchanged | must add code to baseline list | same | unchanged |
+| Skills (19 baseline, unbound) | unchanged | unchanged | unchanged | unchanged |
+| Superseded 40-skill list | untouched | optional | optional | untouched |
+| Scenario checks | unchanged | new codes must pass `skill_check` validation | same | unchanged |
+| `LEGACY_STAT_MAP` (`wn_core.py:271`) | unchanged | `PSY →` WIS or WIL must be named | same, plus `CYB →` | unchanged |
 | Existing saves | valid | migration | migration | valid |
 | Godot sheet | label change | schema + migration | schema + migration | label change |
 | NPC stat lines | unaffected | unaffected | unaffected | unaffected |
@@ -316,7 +323,8 @@ sketch implies, and it is exactly what the seven-stat option fixes.
 ## 13. Tabletop and Godot (Q8)
 
 - **Data contract:** every option except M/H introduces a new code list, which means a save-version
-  bump, a migration, a new array, re-bound skills and an updated `tests/test_scenario_data.gd` list.
+  bump, a migration, a new array and new codes that must pass `skill_check`'s attribute validation
+  (`src/rules/without_number.py:13`). No binding table changes: the baseline has none.
   M and H change no schema.
 - **One sheet, two runtimes:** the Godot sheet reads `without_number.json`; display aliases can live in
   the same file, so tabletop and CRPG cannot drift.
@@ -367,3 +375,69 @@ resolution path (which would give CYB something to own).
 None is recorded as decided. **D51–D54 were added to `docs/design/AUTHOR_DECISION_QUEUE.md` on
 2026-10-28** so the questions are tracked rather than living only in this memo. The substance above is
 unchanged, and no row has an answer.
+
+---
+
+## 17. Verification of the remaining claims (2026-10-28)
+
+§2.1 already reconciled the memo's skill **names** with the adopted baseline (#737). This section checks
+what was left: the file paths, the cost lines and the mechanical claims. Every item is a direct read of
+`origin/main`, and §4's arithmetic was recomputed from `data/rules/wn_core.json` → `stats.modifier_table`
+(six/63 → 0; eight/63 → −4; eight/84 → 0; eight/96 → +2 — unchanged).
+
+### Corrections
+
+| # | Earlier version said | Repository says | Effect |
+| --- | --- | --- | --- |
+| 1 | scenario checks are guarded by `tests/test_scenario_data.gd` | **no such file**. The guard is `skill_check()` raising on an attribute outside `ATTRIBUTES` (`src/rules/without_number.py:13,99`); the drill indexes `sheet["attributes"][code]` (`src/rules/first_case_drill.py:119`) | nothing to update in a test list; the failure mode is a `KeyError` in the drill, not a red build |
+| 2 | "re-bind all 40 skills" as an Option 7/S cost | the baseline's 19 skills are **unbound** — `skill_check(character, attribute, skill)` takes the attribute per action; bindings exist only in the superseded `data/rules/skills.json` (§2.1) | Options 7 and S are **cheaper** than priced: no skill re-bind. §4, §6, §7 and §13 corrected |
+| 3 | DEX drives AC | CWN has **two armour-derived ACs**; `src/rules/cwn_core.py` receives `target_melee_ac` from the caller. DEX drives the ranged attack roll and the Evasion save | renaming DEX touches no AC arithmetic |
+
+### The migration contract the memo did not mention
+
+`src/rules/wn_core.py:271` already defines, with tests
+(`tests/test_wn_saves_and_migration.py:113`, `tests/test_wn_core.py:131`):
+
+```
+LEGACY_STAT_MAP = {FIT: STR, REF: DEX, INT: INT, SOC: CHA, CYB: INT, PSY: WIS}
+```
+
+commented *"CYB and PSY have no attribute of their own: cybernetic and psychic capacity become skills,
+Edges and permissions (migration step M4)."* Two consequences for the options above:
+
+- **CYB is not an open axis.** It already migrates onto `INT`. Adding CYB as an attribute would have to
+  undo M4, not just add a column — which is why §14's "do not add CYB" is a consistency argument as well
+  as a design one.
+- **A `WIS` split has an existing tenant.** `PSY` currently migrates onto `WIS`. Options 7 and S must say
+  which of `EMP`/`WIL` inherits `PSY` (and, if the PSI six of §2.1 are in play, `Psychic Defence`,
+  `Noöspace`, `ESP`, `Precognition`), and extend `LEGACY_STAT_MAP` with a test. Neither §4 nor §6 says
+  this today; §7 now carries the row.
+
+### One repository inconsistency, reported and not fixed here
+
+| Surface | Says | Authority claimed |
+| --- | --- | --- |
+| `AGENTS.md:3`, `rulebook/WITHOUT_NUMBER_BASELINE.md` §2–§3 (26 Oct 2026) | `STR/DEX/CON/INT/WIS/CHA` 3–18; `FIT/REF/INT/SOC/CYB/PSY` **retired**; CWN's 19 skills with no fixed bindings; *"do not ask again whether to preserve … FIT/REF/SOC/CYB/PSY, or the old skill list"* | author decision |
+| `RULEBOOK.md` §4.1, `data/rules/core.json` (`_note`), `data/rules/skills.json` (`status: canonical`) | 1–10 skill scale; 40 skills bound to `FIT/REF/INT/SOC/CYB/PSY`; stats *"locked by explicit author direction on issue #131"* | author direction on #131 |
+
+The memo (and §2.1) treats the Without Number baseline as operative, which `AGENTS.md` supports, so the
+1–10 surface is **data debt rather than a live option**. It is not harmless debt: it is still greppable,
+`skills.json` still calls itself canonical, and it produced the naming error §2.1 had to correct. Archiving
+or annotating it is an author decision and was not done here.
+
+**Proposed for the queue (not added): D55 — retire or annotate the 1–10 canon surface (`RULEBOOK.md` §4.1,
+`data/rules/core.json`, `data/rules/skills.json`) so that exactly one attribute system is canonical.**
+
+### Verification commands
+
+```bash
+python3 -c "import json;d=json.load(open('data/rules/without_number.json'));print(d['attributes']['array'],len(d['skills']['names']))"
+python3 -c "import json;print(json.load(open('data/rules/wn_core.json'))['stats']['modifier_table'])"
+grep -n "ATTRIBUTES\|def skill_check" src/rules/without_number.py
+grep -n "LEGACY_STAT_MAP" -A 8 src/rules/wn_core.py
+grep -n "retired as mechanical attributes" rulebook/WITHOUT_NUMBER_BASELINE.md
+python -m pytest -q tests/test_wn_saves_and_migration.py tests/test_wn_core.py tests/test_core_rules.py
+```
+
+Only claims inside this memo were corrected. No option, no recommendation, no code, no rule, no canon and
+no queue row was changed, and nothing here decides any of D51–D55.
