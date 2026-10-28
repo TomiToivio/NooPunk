@@ -1,4 +1,4 @@
-"""Narrative layer — the executable half of issue #229.
+"""Narrative layer — the executable half of issue #229, re-anchored on 2d6 by #689.
 
 `rulebook/19_NARRATIVE_LAYER.md` states the layer; this module enforces its two safety
 rules in code, because both are the kind of promise prose cannot keep:
@@ -9,6 +9,10 @@ rules in code, because both are the kind of promise prose cannot keep:
 * **An aspect never produces a rating.** There is no code path from an `Aspect` to a STAT
   or Skill value, and none is exposed.
 
+Since #689 the bands and the step are read on the Without Number die (`2d6 + attribute
+modifier + skill rank`), not on the retired d10 ladder. The boundary arithmetic is
+measured, not inherited: `band_distribution()` enumerates all 36 outcomes.
+
 **Status: PROVISIONAL, not canonical.** `IS_CANONICAL = False`; nothing in the shipped
 `src/rules/core.py` path imports it.
 """
@@ -16,6 +20,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
+from fractions import Fraction
 
 #: PROVISIONAL. The author owns calibration.
 IS_CANONICAL = False
@@ -46,10 +51,10 @@ class EffectClass(str, Enum):
 
 #: Every GM move is a description of what the fiction does next -- never a modifier.
 GM_MOVES: dict[str, str] = {
-    "reward": "a clean win, plus an aspect in the character's favour",
+    "reward": "they get it cleanly",
+    "reward_and_aspect": "they get it cleanly, and an aspect goes in their favour",
     "cost": "they get it, but something is spent, owed or noticed",
-    "complication": "they get it AND a consequence; a difficult choice may be offered",
-    "escalate": "the situation worsens, or a new threat appears",
+    "escalate": "the situation worsens, an aspect turns against them, or a new threat appears",
 }
 
 #: Play styles that must all resolve through ONE core.
@@ -159,26 +164,65 @@ class ResourcePool:
 
 
 # --------------------------------------------------------------------------- #
-# GM moves and precedence
+# Outcome bands: the 2d6 reading (#689)
 # --------------------------------------------------------------------------- #
+
+#: The four outcomes, ascending. A roll's band is read off its margin, never re-rolled.
+OUTCOME_BANDS: tuple[str, ...] = ("miss", "cost", "clean", "style")
+
+#: Lowest margin that earns each band; everything below zero is a miss.
+#:
+#: The boundaries are PROVISIONAL, and they are *measured*: at the standard difficulty
+#: (DV 8, modifier 0) the 36 outcomes split 21 miss / 9 cost / 6 clean / 0 style, and one
+#: step moves mass from miss into cost. `band_distribution()` recomputes that.
+BAND_MIN_MARGIN: dict[str, int] = {"cost": 0, "clean": 2, "style": 5}
+
+
+def band_for(margin: int) -> str:
+    """Read a margin into its band. Deterministic, and never a second roll."""
+    if not isinstance(margin, int) or isinstance(margin, bool):
+        raise NarrativeError(f"margin must be an integer, got {margin!r}")
+    for band in reversed(OUTCOME_BANDS):
+        if band != "miss" and margin >= BAND_MIN_MARGIN[band]:
+            return band
+    return "miss"
+
+
+def outcome_band(total: int, difficulty: int) -> str:
+    """The single entry point a resolver needs: a core total and its difficulty."""
+    return band_for(total - difficulty)
+
+
+def band_distribution(*, modifier: int = 0, difficulty: int = 8) -> dict[str, Fraction]:
+    """Exact share of the 36 two-die outcomes in each band.
+
+    Exists so the boundaries can be re-derived instead of inherited. It is calibration,
+    not resolution: nothing at the table calls it.
+    """
+    counts = dict.fromkeys(OUTCOME_BANDS, 0)
+    for first in range(1, 7):
+        for second in range(1, 7):
+            counts[band_for(first + second + modifier - difficulty)] += 1
+    return {band: Fraction(counts[band], 36) for band in OUTCOME_BANDS}
+
 
 #: Band -> GM move. The move describes the fiction; it never alters the number rolled.
 BAND_TO_MOVE: dict[str, str] = {
-    "brutal": "reward",
-    "severe": "reward",
-    "solid": "cost",
-    "glancing": "complication",
+    "miss": "escalate",
+    "cost": "cost",
+    "clean": "reward",
+    "style": "reward_and_aspect",
 }
 
 
-def gm_move(*, band: str, success: bool) -> str:
+def gm_move(*, band: str) -> str:
     """Choose the GM move from the band the core already produced. Adds no randomness."""
-    if not success:
-        return "escalate"
     try:
         return BAND_TO_MOVE[band]
     except KeyError:
-        raise NarrativeError(f"unknown band: {band!r}") from None
+        raise NarrativeError(
+            f"unknown band: {band!r} (expected one of {', '.join(OUTCOME_BANDS)})"
+        ) from None
 
 
 @dataclass(slots=True)

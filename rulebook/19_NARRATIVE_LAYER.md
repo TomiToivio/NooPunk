@@ -1,8 +1,14 @@
 # Narrative layer: aspects, consequences and GM moves
 
-**Status: NOÖPUNK NATIVE — issue #229.** This is the canonical, **optional** narrative layer. It
-sits **on top of** the numeric core and never replaces it: STATs and Skills stay readable, and an
-aspect is never a rating. Every number is **PROVISIONAL pending author calibration**.
+**Status: NOÖPUNK NATIVE — issue #229, re-anchored on the Without Number die by issue #689.** This
+is the canonical, **optional** narrative layer. It sits **on top of** the numeric core and never
+replaces it: STATs and Skills stay readable, and an aspect is never a rating. Every number is
+**PROVISIONAL pending author calibration**.
+
+The dice are the baseline's: `2d6 + attribute modifier + skill rank` against difficulty 6, 8, 10,
+12 or 14, and `1d20` for saves. The chapter's earlier `1d10` figures, its directed `−3…+3` ladder and
+its `brutal / severe / solid / glancing` band names describe the retired core and are no longer used
+anywhere in play.
 
 It canonises the tested prototype (`docs/design/ISSUE_200_ASPECTS_PROTOTYPE.md`, #233) rather than
 starting again; the measurements there are the reason for the two design rules below.
@@ -14,15 +20,20 @@ Both come from measurement, not taste, and both are asserted by the guard.
 > **1. An aspect grants ONE ladder step — never a number of its own.**
 > **2. Invocations are capped at one per roll.**
 
-The prototype measured why. On a 4dF core, 63% of all outcomes fall within ±1, so a **+2** invoke
-moves the odds by **+32.1 percentage points** — turning "likely" into "near-certain" — while a
-single step moves them **+19.8**. And **without the per-roll cap, four stacked aspects reach exactly
-100%: auto-success, with no roll that can fail.** That is the "uncapped numerical exploit" #200
-names, and it costs a player four tags to buy.
+Both rules were re-measured on the die the game actually uses, because a safety rule nobody can
+re-derive is a rule the first inconvenient table erodes. On `2d6` at the standard difficulty (8),
+success with a modifier of 0 is 15 of 36 outcomes (41.7%); one step takes it to 21 of 36 (58.3%),
+which is **+16.7 percentage points** — and two steps land exactly where an unmodified roll lands at
+difficulty 6. So **one step is worth a whole difficulty step**: the layer can move a check one notch,
+which is what it is for, and cannot move it two, which is what the cap is for.
 
-Because the step is expressed as **one step on the core ladder** rather than a fixed number, the
-rule survives the pending scale migration intact: it means the same thing whether the die is the
-current d10 or the directed -3…+3 core. The layer adds no arithmetic of its own.
+Stacking would no longer reach certainty — four steps reach 91.7% at difficulty 8, not 100% — and
+that is *worse*, not better: a table that stacks would win nearly every standard check and still lose
+one in twelve for no visible reason, which reads as bad luck rather than as a broken rule. The ban on
+stacking therefore survives the kernel change, with a new reason.
+
+Because `2d6` has ±1 granularity, the step is literally `+1`: `invoke_step()` returns 1 and no
+argument can raise it. The layer adds no arithmetic of its own.
 
 ## Aspect anatomy
 
@@ -56,10 +67,10 @@ whole section exists to prevent.
 When an aspect and the core disagree about a number, the core wins. Always. The resolution order is
 fixed:
 
-1. **The core check resolves** — `STAT + Skill + 1d10` against its target (or the opposed roll).
-2. **The margin is read into its band** — the one band arithmetic shared by physical
-   ([`rulebook/3_PHYSICAL.md`](3_PHYSICAL.md), #219) and social ([`rulebook/4_SOCIAL.md`](4_SOCIAL.md), #220).
-3. **At most one invoked aspect applies**, moving the result **one step**.
+1. **The core check resolves** — `2d6 + attribute modifier + skill rank` against its difficulty
+   (or the opposed check), or `1d20` for a save.
+2. **The margin is read into its band** — the one band table this chapter states, below.
+3. **At most one invoked aspect applies**, moving the result **one step** (`+1`).
 4. **A GM move is chosen from the band** — see below.
 5. **An LLM may narrate** the resolved outcome and **propose** aspects or consequences.
 
@@ -107,15 +118,53 @@ guard asserts the chapter says so.
 
 GM moves are **read off the band** the core already produced — the layer adds no new randomness.
 
-| Outcome | GM move (PROVISIONAL) |
-| --- | --- |
-| **Success, wide margin** | *Reward* — a clean win, plus an aspect in the character's favour |
-| **Success, narrow margin** | *Cost* — they get it, but something is spent, owed or noticed |
-| **Partial / tie** | *Complication* — they get it **and** a consequence; a difficult choice may be offered |
-| **Failure** | *Escalate* — the situation worsens, an aspect turns against them, or a new threat appears |
+The band is read off the **margin** — total minus difficulty. It is never a second roll.
 
-The moves are **descriptions of what the fiction does next**, not modifiers. A "partial success" is
-a band result, not a second roll, and it never silently changes the number that was rolled.
+| Margin | Band | GM move (PROVISIONAL) |
+| --- | --- | --- |
+| −1 or less | **miss** | *Escalate* — the situation worsens, an aspect turns against them, or a new threat appears |
+| 0–1 | **cost** | *Cost* — they get it, but something is spent, owed or noticed |
+| 2–4 | **clean** | *Reward* — they get it cleanly |
+| 5 or more | **style** | *Reward and an aspect* — they get it, and an aspect goes in their favour |
+
+The boundaries are measured rather than chosen for flavour. At difficulty 8 with a modifier of 0 the
+thirty-six outcomes fall **21 miss / 9 cost / 6 clean / 0 style**; one step moves six outcomes out of
+miss. `band_distribution()` in `src/rules/narrative_layer.py` recomputes those shares, so the table
+cannot drift away from the dice without a test failing.
+
+The moves are **descriptions of what the fiction does next**, not modifiers. A band is a reading of
+the roll, not a second roll, and it never silently changes the number that was rolled. The referee's
+judgement enters here and only here: a *cost* is a licence to spend something the fiction has already
+put on the table, not a tariff.
+
+## The closed move set
+
+Eight procedures, and no ninth without an argument. Each is a **trigger** plus the four banded
+outcomes above; none of them adds a die, a modifier or a currency. They exist so the referee has a
+shared vocabulary instead of nine improvised rulings, and so the digital runtime can resolve a
+narrative action without a language model.
+
+| Move | Roll | Trigger |
+| --- | --- | --- |
+| **Read a situation** | `Notice` + INT check | you take a moment and ask what is really going on |
+| **Read a person** | `Talk` + CHA check | you watch someone under pressure and want the truth |
+| **Apply pressure** | `Talk` + CHA check | you push with leverage you actually hold |
+| **Hold steady** | mental save (`1d20`) | what you are seeing contradicts what you know |
+| **Cross a threshold** | `Sneak` + DEX check | you get past a barrier that is actively guarded |
+| **Set up** | any check the preparation uses | you spend your action preparing rather than acting |
+| **Ground yourself** | `Heal` + WIS check | you take a scene to come back to yourself |
+| **Contact the noösphere** | `Know` + WIS check | you open your mind to the Noösphere and let it answer |
+
+Three of them buy **questions** (one on a *cost*, two or three on a *clean* or *style* hit), *set up*
+buys an **aspect**, and *ground yourself* **cancels** a temporary condition. Nothing grants a
+modifier: that is what an invocation is for, and it is capped at one per roll.
+
+A save-based move is rolled on `1d20` against the save target and its margin is read into the same
+four bands. It is not a `2d6` check and must not be turned into one.
+
+The catalogue is `data/rules/narrative_moves.json`; the resolver is `src/rules/narrative_moves.py`;
+the bands live in `src/rules/narrative_layer.py`. A move that is not in the catalogue does not exist,
+and the catalogue's size is asserted, so a ninth move has to change this chapter too.
 
 ## Character drives
 
@@ -162,6 +211,11 @@ keeps the fight a fight.
 ## What this chapter deliberately does not do
 
 - **No new Skills, STATs or derived statistics**, and no rating may come from an aspect.
+- **No second dice mechanic.** Checks are `2d6 + modifier + rank`, saves are `1d20`. A move never
+  changes either, and a grant is never a bonus.
+- **No resurrection of the retired core.** `src/rules/aspects_prototype.py` (the 4dF measurement),
+  `strategy_game/rpg/fate.py` (the 4dF crossover engine) and the d10 band names are legacy, kept as
+  evidence of how the rules were derived, not as mechanics in play.
 - **No name for the resource pool** — that is the author's canon to write.
 - **No numeric stress track.** `RULEBOOK.md` §51 is a fiction-first consequence vocabulary and harm
   does not advance by arithmetic, so a stress track would contradict canon rather than extend it.
