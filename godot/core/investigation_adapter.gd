@@ -1,33 +1,27 @@
-## The investigation adapter: the *only* place the Godot slice reads the investigative layer (#718).
+## The investigation adapter: the *only* place Godot reads a clue rule (#718).
 ##
-## Why an adapter and not an implementation: `AGENTS.md` §14 puts the order at
-## tabletop rule -> digital specification -> Godot -> Concordia, and the repository already owns the
-## approved layer in `src/rules/investigation.py` with its data in
-## `data/scenarios/lakkahaltia/case_graph.json`. This class *reads* that graph and applies it; it
-## hardcodes no clue, no competency, no scene and no band.
+## Why an adapter: `AGENTS.md` §14 orders tabletop rule -> digital specification -> Godot, and the
+## rule is already implemented and tested in `src/rules/investigation.py`. This class reads the
+## **same** `noopunk-case-graph` JSON and applies the same three rules; it computes no clue, no
+## band and no difficulty locally.
 ##
-## What is deliberately explicit rather than assumed:
-##   * the graph is `noopunk-case-graph` format and is validated by the Python loader, not here; this
-##     adapter refuses a file whose `format` is not the known one rather than guessing;
-##   * discovery is automatic: a competent investigator receives the clue. Nothing here rolls;
-##   * an unknown scene is an error, not an empty result. An empty result and a missing scene must not
-##     look the same to a caller.
-##
-## UNVERIFIED AT RUNTIME: this file was written on a host with no Godot binary (see #718). The contract
-## it depends on is tested in `tests/test_case_graph_contract.py`, which runs in CI; the GDScript itself
-## still needs one `godot --headless` smoke run before it can be called proven.
+## The three rules, restated because Godot must not drift from Python:
+##   1. competence is the *presence* of a skill entry - CWN rank 0 is trained;
+##   2. competence is necessary, never sufficient: a clue may also require ``access`` and a
+##      declared kind of ``inquiry`` (a passive clue needs no inquiry);
+##   3. nothing here rolls. Discovery is not a check.
 class_name InvestigationAdapter
 extends RefCounted
 
-const DEFAULT_GRAPH_PATH := "res://data/scenarios/lakkahaltia/case_graph.json"
-const FORMAT := "noopunk-case-graph"
+const DEFAULT_CASE_PATH := "res://data/scenarios/lakkahaltia/case_graph.json"
+const DEFAULT_KERNEL_PATH := "res://data/rules/without_number.json"
 
-var graph: Dictionary = {}
+var case_graph: Dictionary = {}
+var kernel: Dictionary = {}
 
-func _init(graph_path: String = DEFAULT_GRAPH_PATH) -> void:
-	graph = _load_json(graph_path)
-	if graph.get("format", "") != FORMAT:
-		push_error("InvestigationAdapter: %s is not a %s file" % [graph_path, FORMAT])
+func _init(case_path: String = DEFAULT_CASE_PATH, kernel_path: String = DEFAULT_KERNEL_PATH) -> void:
+	case_graph = _load_json(case_path)
+	kernel = _load_json(kernel_path)
 
 func _load_json(path: String) -> Dictionary:
 	if not FileAccess.file_exists(path):
@@ -35,48 +29,80 @@ func _load_json(path: String) -> Dictionary:
 		return {}
 	var text := FileAccess.get_file_as_string(path)
 	var parsed: Variant = JSON.parse_string(text)
-	return parsed if parsed is Dictionary else {}
-
-func case_id() -> String:
-	return String(graph.get("case_id", ""))
+	if typeof(parsed) != TYPE_DICTIONARY:
+		push_error("InvestigationAdapter: %s is not a JSON object" % path)
+		return {}
+	return parsed
 
 func scene_ids() -> Array:
 	var ids: Array = []
-	for scene in graph.get("scenes", []):
+	for scene in case_graph.get("scenes", []):
 		ids.append(String(scene.get("id", "")))
 	return ids
 
 func scene(scene_id: String) -> Dictionary:
-	for entry in graph.get("scenes", []):
-		if String(entry.get("id", "")) == scene_id:
-			return entry
+	for scene in case_graph.get("scenes", []):
+		if String(scene.get("id", "")) == scene_id:
+			return scene
+	push_error("InvestigationAdapter: no scene %s" % scene_id)
 	return {}
 
-## The discovery call. `sheet` maps competency -> rank; rank 0 is trained, absence is untrained.
-## Returns the clues the investigator simply receives, and whether the scene can be left.
-## No die, no difficulty, no band: if the caller wants a roll, it is for action, not for finding.
-func discover(scene_id: String, sheet: Dictionary) -> Dictionary:
-	var entry := scene(scene_id)
-	if entry.is_empty():
-		push_error("InvestigationAdapter: unknown scene %s" % scene_id)
-		return {"scene_id": scene_id, "clues": [], "can_leave": false, "error": "unknown_scene"}
+## Competence is the presence of a skill entry. Rank 0 counts: CWN 0 is basic competence.
+func is_competent(sheet: Dictionary, competency: String) -> bool:
+	return sheet.has(competency)
 
-	var granted: Array = []
+## What a competent investigator gets in this scene, and what the scene withheld.
+##
+## `access` and `inquiry` are arrays of strings. A clue with an `access` key needs that
+## permission; a clue with an `inquiry` key needs that declared approach unless it is passive.
+func discover(scene_id: String, sheet: Dictionary, access: Array = [], inquiry: Array = []) -> Dictionary:
+	var target := scene(scene_id)
+	if target.is_empty():
+		return {"scene": scene_id, "clues": [], "withheld": [], "can_leave": false}
+	var clues: Array = []
+	var withheld: Array = []
 	var can_leave := false
-	for clue in entry.get("clues", []):
-		var competency := String(clue.get("competency", ""))
-		if sheet.has(competency):
-			granted.append(clue)
+	for clue in target.get("clues", []):
+		if _permits(clue, sheet, access, inquiry):
+			clues.append(clue)
 			if String(clue.get("kind", "")) == "core":
 				can_leave = true
+		else:
+			withheld.append(String(clue.get("id", "")))
+	return {"scene": scene_id, "clues": clues, "withheld": withheld, "can_leave": can_leave}
 
-	return {
-		"scene_id": scene_id,
-		"clues": granted,
-		"can_leave": can_leave,
-		"granted_by": "competency" if not granted.is_empty() else "none",
-	}
+func _permits(clue: Dictionary, sheet: Dictionary, access: Array, inquiry: Array) -> bool:
+	if not is_competent(sheet, String(clue.get("competency", ""))):
+		return false
+	var required_access := String(clue.get("access", ""))
+	if required_access != "" and not access.has(required_access):
+		return false
+	var required_inquiry := String(clue.get("inquiry", ""))
+	if required_inquiry != "" and not bool(clue.get("passive", false)) and not inquiry.has(required_inquiry):
+		return false
+	return true
 
-## Hypotheses are data, not a verdict. The adapter can list them and their family; it never decides.
-func hypotheses() -> Array:
-	return graph.get("hypotheses", [])
+## Every scene must be leavable, so the Godot slice cannot ship a dead-ended case.
+func validate() -> Array:
+	var problems: Array = []
+	if case_graph.get("scenes", []).is_empty():
+		problems.append("case has no scenes")
+	for scene in case_graph.get("scenes", []):
+		var has_core := false
+		for clue in scene.get("clues", []):
+			if String(clue.get("kind", "")) == "core":
+				has_core = true
+		if not has_core and not bool(scene.get("terminal", false)):
+			problems.append("scene %s has no core clue" % String(scene.get("id", "")))
+	return problems
+
+## Every competency named in the case graph must exist in the WN skill list.
+func unknown_competencies() -> Array:
+	var known: Array = kernel.get("skills", {}).get("names", [])
+	var unknown: Array = []
+	for scene in case_graph.get("scenes", []):
+		for clue in scene.get("clues", []):
+			var competency := String(clue.get("competency", ""))
+			if competency != "" and not known.has(competency):
+				unknown.append(competency)
+	return unknown
