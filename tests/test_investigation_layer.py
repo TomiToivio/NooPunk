@@ -125,21 +125,27 @@ class HypothesisTest(unittest.TestCase):
         self.assertTrue(hypotheses_remain_open([Hypothesis(id="h", statement="...")]))
 
 
-class SpendTest(unittest.TestCase):
-    def test_a_spend_buys_extra_information_not_permission_to_find_a_clue(self):
-        investigator = Investigator(name="Romppainen", ratings={"Forensics": 2})
-        self.assertEqual(investigator.spend("Forensics", 1), 1)
-        # still competent at 1: spending does not remove the ability
-        self.assertTrue(investigator.is_competent("Forensics"))
+class NoPoolEconomyTest(unittest.TestCase):
+    """GUMSHOE buys extra information with spends. NoöPunk refuses a second currency.
 
-    def test_a_spend_beyond_the_rating_is_refused(self):
-        investigator = Investigator(name="R", ratings={"Forensics": 1})
-        with self.assertRaises(InvestigationError):
-            investigator.spend("Forensics", 2)
+    SWN Effort is the game's one spendable pool and CWN ranks are training, not fuel, so the
+    layer exposes a benefit's price in CWN terms (a check, a scene, a favour, credits) and never
+    charges it. These three assertions are the structural guard on that refusal.
+    """
 
-    def test_an_unrated_competency_cannot_be_spent(self):
-        with self.assertRaises(InvestigationError):
-            Investigator(name="R").spend("Forensics", 1)
+    def test_the_investigator_cannot_spend(self):
+        self.assertFalse(hasattr(Investigator, "spend"))
+
+    def test_a_rank_is_not_a_pool(self):
+        self.assertFalse(hasattr(Investigator, "pool"))
+
+    def test_a_benefit_names_a_cwn_cost_instead(self):
+        clue = Clue(id="c", scene_id="ward", kind=ClueKind.OPTIONAL, competency="Forensics",
+                    fact="...", benefit="The stain predates the admission.",
+                    benefit_cost="a Forensics check, an hour")
+        scene = Scene(id="ward", title="Ward", clues=(clue,))
+        found = discover(Case(id="x", scenes=(scene,)), "ward", FORENSIC)
+        self.assertEqual(found.benefits[0].cost, "a Forensics check, an hour")
 
 
 if __name__ == "__main__":

@@ -11,11 +11,24 @@ Nothing in the existing rulebook was rewritten.
 The GUMSHOE SRD is released by Pelgrane Press under **Creative Commons Attribution 3.0
 Unported (CC BY 3.0)**. Two consequences, and the second is the one people forget:
 
-1. **Attribution is required.** Any adaptation must credit *GUMSHOE SRD © Pelgrane Press*,
-   with the licence named and linked.
-2. **CC BY covers the text; it does not cover the marks.** "GUMSHOE", the Pelgrane logo and
-   the game lines built on it are trademarks, and the SRD grants no right to use them in a
-   product's title or branding. NoöPunk therefore uses the *method*, not the name.
+1. **Attribution has a prescribed form.** The SRD names the exact sentence to place where our
+   own copyright notice sits, at the same size — a paste, not a paraphrase: *"This work is
+   based on the GUMSHOE SRD (found at
+   https://pelgranepress.com/2013/10/24/the-gumshoe-system-reference-document/), a product of
+   Pelgrane Press, developed, written, and edited by Robin D. Laws with additional material by
+   Kenneth Hite and Kevin Kulp, and licensed for our use under the Creative Commons Attribution
+   3.0 Unported license."*
+2. **The GUMSHOE mark IS granted; the game lines are not.** Verified in the v3 copyright notice
+   (p. 1): permission is granted to use the GUMSHOE trademark in works produced under this
+   licence, provided it does not claim or suggest a relationship with, or endorsement by,
+   Pelgrane Press or Robin D. Laws. The **logo** is excluded. *The Esoterrorists*, *Mutant City
+   Blues*, *Ashen Stars*, *Fear Itself*, *TimeWatch*, *Trail of Cthulhu*, *Night's Black Agents*,
+   *Cthulhu Confidential* and *The Yellow King Roleplaying Game* are trademarks this licence does
+   **not** grant and must not appear in a derivative work.
+
+   So the constraint is narrower than "no trademark may be mentioned": a credits line may say
+   the investigation system is based on the GUMSHOE SRD, using the sentence above. NoöPunk still
+   keeps the method, not the name, in its own branding.
 
 **No SRD text is reproduced in this repository.** Everything below is our own description of
 a mechanism, which is what "interoperable mechanics" means in `docs/rules/RULES_FOUNDATION_POLICY.md`.
@@ -26,6 +39,9 @@ The PDF link given in #704 (`…/files/GUMSHOE_SRD_CC_3.pdf`) returned a **29-by
 reading "Multisite support not enabled" on 2026-10-28. The working sources are:
 
 - **v3 (2024-12-09), 303 pages** — <https://pelgranepress.com/gumshoe/files/GUMSHOESRDCC-3%20241209.pdf>
+  (verified 2026-10-28 from the Internet Archive mirror, because the publisher host answers
+  `curl` with a Cloudflare challenge; the core-clue rule is on pp. 50-51 and the copyright
+  notice on p. 1)
 - earlier CC version — <https://pelgranepress.com/gumshoe/files/GUMSHOE%20SRD%20CC%20version.pdf>
 - version history and licensing — <https://pelgranepress.com/2013/10/24/the-gumshoe-system-reference-document/>
 
@@ -74,10 +90,19 @@ patient waking, the lock that must be forced — is what rolls.
 - `Case.validate()` — refuses a case where **any scene has no core clue** (a dead end), where
   a scene's **only exit is gated behind an obscure competency**, or where a **lead points at
   a scene that does not exist**.
-- `discover(...)` — returns the core clue plus every optional clue the investigator's own
-  competencies cover. It takes **no roll parameter**, which is asserted by a test.
-- `Investigator.spend(...)` — spends a rating for supplementary information; spending never
-  removes competence, and an unrated ability cannot be spent.
+- `discover(...)` — returns the clues the investigator's own competencies cover: the scene's
+  core clue for each competency they hold, plus their optional clues, plus the **benefits** on
+  offer with the CWN cost each one takes. It takes **no roll parameter**, which a test asserts.
+- `Investigator.from_sheet(...)` — maps an ordinary CWN sheet to competencies. Competence is the
+  **presence** of the skill entry, because rank 0 is trained and untrained is its absence; a
+  layer that demanded a positive rating would disqualify every starting character. There is no
+  `spend()` and no pool: see §4.
+- `inconspicuous_finder(...)` — the SRD's rule for a clue in a place the party is only passing
+  through: whoever has the highest rank in the ability notices it, without anyone declaring a
+  search.
+- `Clue.passive` / `Clue.benefit` + `Clue.benefit_cost` — the extra information a clue can
+  yield, and the CWN price it takes (a check, a scene, a favour, credits). The module exposes
+  the price; it never charges it, and it never touches a skill rank.
 - `Hypothesis` — records `supports` / `contradicts` / `neutral`, and **confidence is set only
   by the player**. A test asserts that evidence does not move it.
 
@@ -131,8 +156,10 @@ point: the system classifies evidence, and the table decides.
 
 ## 7. Open decisions (author)
 
-- **G1** — Does an investigative rating come from CWN skills (any level > 0), or from a
-  separate competency list? Current implementation assumes the former, as a dict.
+- **G1** — Does an investigative competency come from the CWN skill list, or from a separate
+  competency list? **Settled in the implementation as: the CWN skills, by presence, with rank 0
+  counting as trained.** Reversible if the author prefers a separate list — that would be a data
+  change, not a rule change.
 - **G2** — Are spends tied to time, Strain, or both? The table in §4 is a proposal.
 - **G3** — Does a case ever gate a *scene* behind an action check (chase, forced entry), and
   if so, what happens on failure — a cost, or an alternative route?

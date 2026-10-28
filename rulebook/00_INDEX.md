@@ -59,6 +59,7 @@ Per-domain detail chapters:
 - [rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md](rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md) — noetic practice, grounding and debiasing, crystal/lattice technology, the artefact market and craft, as procedural rules (#191)
 - [21_PSI_PARADIGM_SHIFT.md](21_PSI_PARADIGM_SHIFT.md) — PSI as a civilization-level paradigm shift (#511)
 - [22_CYBERSPACE_AFTER_THE_CRISIS.md](22_CYBERSPACE_AFTER_THE_CRISIS.md) — the consolidated cyberspace canon (Safenet, the Blackwall, physical isolation, the three ASI swarms, AI law and the operator economy) and the narrative-first hacking procedure (#517)
+- [rulebook/24_INVESTIGATION.md](24_INVESTIGATION.md) — the investigative layer (#704): core clues found without a roll, benefits priced in CWN costs, interpretation left to the player
 
 ---
 
