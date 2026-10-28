@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "issue": 689,
+  "status": "PROVISIONAL",
+  "is_canonical": false,
+  "note": "The closed move set of rulebook/19_NARRATIVE_LAYER.md. A move is a trigger plus a banded outcome; it adds no dice, no modifier and no currency. Outcomes are read off the core total with src/rules/narrative_layer.band_for().",
+  "moves": [
+    {
+      "id": "read_a_sitch",
+      "name": "Read a situation",
+      "kind": "check",
+      "skill": "Notice",
+      "attribute": "INT",
+      "trigger": "You take a moment to look at a place — a room, a street, a terminal — and ask what is really going on.",
+      "outcomes": {
+        "miss": "You draw attention, and the situation answers: someone notices you noticing.",
+        "cost": "Ask one question from the list; the answer costs you something (time, cover, a favour).",
+        "clean": "Ask three questions from the list.",
+        "style": "Ask three questions, and take an aspect from what you found."
+      },
+      "grants": { "questions": { "cost": 1, "clean": 3, "style": 3 } }
+    },
+    {
+      "id": "read_a_person",
+      "name": "Read a person",
+      "kind": "check",
+      "skill": "Talk",
+      "attribute": "CHA",
+      "trigger": "You watch someone under pressure and want to know what they are actually doing.",
+      "outcomes": {
+        "miss": "They read you instead; they know what you were looking for.",
+        "cost": "Ask one question; they notice you asking, and the clock ticks.",
+        "clean": "Ask two questions.",
+        "style": "Ask two questions, and take an aspect on them."
+      },
+      "grants": { "questions": { "cost": 1, "clean": 2, "style": 2 } }
+    },
+    {
+      "id": "apply_pressure",
+      "name": "Apply pressure",
+      "kind": "check",
+      "skill": "Talk",
+      "attribute": "CHA",
+      "trigger": "You push someone with leverage you actually hold — a debt, a threat, a favour owed.",
+      "outcomes": {
+        "miss": "They dig in, and now they know what you want.",
+        "cost": "They comply, and name a price: a promise, a secret, a later favour.",
+        "clean": "They comply.",
+        "style": "They comply, and you keep the leverage for the next time."
+      }
+    },
+    {
+      "id": "hold_steady",
+      "name": "Hold steady",
+      "kind": "save",
+      "save": "mental",
+      "trigger": "Something you are seeing contradicts what you know to be true, and you have to keep functioning.",
+      "outcomes": {
+        "miss": "You hold, and it takes something with it — the mind system decides what.",
+        "cost": "You hold, visibly: your hands, your voice or your cover gives you away.",
+        "clean": "You hold, and nothing else does.",
+        "style": "You hold, and you can name the thing for what it is."
+      }
+    },
+    {
+      "id": "cross_a_threshold",
+      "name": "Cross a threshold",
+      "kind": "check",
+      "skill": "Sneak",
+      "attribute": "DEX",
+      "trigger": "You get past a barrier that someone is actively guarding — a door, a cordon, a checkpoint, a ward.",
+      "outcomes": {
+        "miss": "You are stopped, and whoever stopped you now has a decision to make about you.",
+        "cost": "You are through, and it cost noise, gear or time.",
+        "clean": "You are through, unnoticed.",
+        "style": "You are through, unnoticed, and you can bring someone with you or leave a way back."
+      }
+    },
+    {
+      "id": "set_up",
+      "name": "Set up",
+      "kind": "check",
+      "skill_policy": "action",
+      "trigger": "You spend your action preparing rather than acting: laying a wire, priming a witness, staging a room.",
+      "outcomes": {
+        "miss": "The preparation fails in a way the opposition can see.",
+        "cost": "It works, and it is obvious that it was set up.",
+        "clean": "It works: a permission aspect, or one step on a later roll.",
+        "style": "It works, and it is invisible until it is used."
+      },
+      "grants": { "aspects": { "clean": 1, "style": 1 } }
+    },
+    {
+      "id": "ground_yourself",
+      "name": "Ground yourself",
+      "kind": "check",
+      "skill": "Heal",
+      "attribute": "WIS",
+      "trigger": "You take a scene to come back to yourself — sleep, a trusted person, a hospital, a ritual.",
+      "outcomes": {
+        "miss": "It does not take; something else has your attention now.",
+        "cost": "You get a moment's relief, and nothing is resolved.",
+        "clean": "Cancel one temporary condition.",
+        "style": "Cancel one temporary condition, and the next one is harder to land."
+      },
+      "grants": { "conditions_cancelled": { "clean": 1, "style": 1 } }
+    },
+    {
+      "id": "contact_the_noosphere",
+      "name": "Contact the noösphere",
+      "kind": "check",
+      "skill": "Know",
+      "attribute": "WIS",
+      "trigger": "You open your mind to the Noösphere and let it answer.",
+      "outcomes": {
+        "miss": "Something answers that you did not ask for.",
+        "cost": "One true answer, and something else learns you were listening.",
+        "clean": "Two true answers.",
+        "style": "Three true answers, and one of them is about you."
+      },
+      "grants": { "questions": { "cost": 1, "clean": 2, "style": 3 } }
+    }
+  ]
+}

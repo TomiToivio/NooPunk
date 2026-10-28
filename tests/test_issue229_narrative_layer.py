@@ -158,16 +158,16 @@ class GMoveTests(unittest.TestCase):
     """AC2 — GM moves and partial success, read off the band the core already produced."""
 
     def test_a_failure_escalates(self) -> None:
-        self.assertEqual(nl.gm_move(band="glancing", success=False), "escalate")
+        self.assertEqual(nl.gm_move(band="miss"), "escalate")
 
     def test_moves_are_read_from_the_band(self) -> None:
-        self.assertEqual(nl.gm_move(band="brutal", success=True), "reward")
-        self.assertEqual(nl.gm_move(band="solid", success=True), "cost")
-        self.assertEqual(nl.gm_move(band="glancing", success=True), "complication")
+        self.assertEqual(nl.gm_move(band="clean"), "reward")
+        self.assertEqual(nl.gm_move(band="cost"), "cost")
+        self.assertEqual(nl.gm_move(band="style"), "reward_and_aspect")
 
     def test_an_unknown_band_is_refused(self) -> None:
         with self.assertRaises(nl.NarrativeError):
-            nl.gm_move(band="nope", success=True)
+            nl.gm_move(band="nope")
 
     def test_moves_carry_no_numbers(self) -> None:
         """A move describes the fiction; it must not smuggle a modifier."""
