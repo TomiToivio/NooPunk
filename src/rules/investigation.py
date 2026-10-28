@@ -65,6 +65,12 @@ class Clue:
     leads_to: tuple[str, ...] = ()
     obscure: bool = False   # a core clue may not rest on this alone
     passive: bool = False   # obvious on entering; needs no declared search
+    # #709: competence is not the only gate. A clue may also require the character to be
+    # somewhere they are allowed to be (``access``) and to have declared the right kind of
+    # inquiry (``inquiry``). Without these, a medically trained investigator read the ward
+    # terminal because they were competent at medicine, which is wrong.
+    access: str = ""        # e.g. "ward", "medical_records"; empty means no permission gate
+    inquiry: str = ""       # e.g. "search", "interview"; ignored when ``passive``
     benefit: str = ""       # extra information, available for a price
     benefit_cost: str = ""  # that price, in CWN terms -- a check, a scene, a favour, credits
 
@@ -95,6 +101,9 @@ class Scene:
     id: str
     title: str
     clues: tuple[Clue, ...] = ()
+    # #709: the last scene of a case, or a deliberately closed one, has no exit to gate.
+    # Requiring a core clue there forced authors to invent a fake lead just to pass validation.
+    terminal: bool = False
 
     def core_clues(self) -> tuple[Clue, ...]:
         return tuple(c for c in self.clues if c.kind is ClueKind.CORE)
@@ -130,9 +139,11 @@ class Case:
             raise InvestigationError("duplicate scene id")
         for scene in self.scenes:
             core = scene.core_clues()
-            if not core:
+            if not core and not scene.terminal:
                 raise InvestigationError(f"scene {scene.id!r} has no core clue; it is a dead end")
-            if all(clue.obscure for clue in core):
+            # ``all()`` over an empty tuple is True, so a terminal scene with no core clues
+            # was rejected for gating an exit it does not have. Guard the emptiness.
+            if core and all(clue.obscure for clue in core):
                 raise InvestigationError(
                     f"scene {scene.id!r} gates its only exit behind an obscure competency"
                 )
@@ -187,6 +198,7 @@ class Discovery:
     granted_by: str                 # "competency" | "alternative_method" | "none"
     can_leave: bool
     benefits: tuple[Benefit, ...] = ()
+    withheld_ids: tuple[str, ...] = ()   # present in the scene, blocked by access or inquiry
 
     @property
     def clue_ids(self) -> tuple[str, ...]:
@@ -199,6 +211,8 @@ def discover(
     investigator: Investigator,
     *,
     alternative_method: bool = False,
+    access: Iterable[str] = (),
+    inquiry: Iterable[str] = (),
 ) -> Discovery:
     """Yield the clues a competent investigator simply *gets*.
 
@@ -212,10 +226,19 @@ def discover(
     straight jacket" (we quote the idea, not the page).
     """
     scene = case.scene(scene_id)
-    granted = (
-        list(scene.clues) if alternative_method
-        else [clue for clue in scene.clues if investigator.is_competent(clue.competency)]
-    )
+    held_access = set(access)
+    declared = set(inquiry)
+
+    def permitted(clue: Clue) -> bool:
+        """Competence is necessary, never sufficient (#709)."""
+        if not investigator.is_competent(clue.competency):
+            return False
+        if clue.access and clue.access not in held_access:
+            return False
+        return not (clue.inquiry and not clue.passive and clue.inquiry not in declared)
+
+    granted = list(scene.clues) if alternative_method else [c for c in scene.clues if permitted(c)]
+
     return Discovery(
         scene_id=scene_id,
         clues=tuple(granted),
@@ -225,6 +248,9 @@ def discover(
         benefits=tuple(
             Benefit(clue_id=clue.id, text=clue.benefit, cost=clue.benefit_cost)
             for clue in granted if clue.benefit
+        ),
+        withheld_ids=tuple(
+            clue.id for clue in scene.clues if clue not in granted
         ),
     )
 
