@@ -1,0 +1,159 @@
+{
+  "$comment": "Investigation graph for 'Etsivä Romppainen ja Lakkahaltian Salaisuus' (#704). Scenes and clue ids bind to data/scenarios/lakkahaltia/case.json; competencies are the Without Number skill list. Nothing here decides what is true: the four hypotheses are all statable from the same evidence.",
+  "format": "noopunk-case-graph",
+  "version": 1,
+  "issue": 704,
+  "case_id": "lakkahaltia",
+  "source_case": "data/scenarios/lakkahaltia/case.json",
+  "scenes": [
+    {
+      "id": "entrance",
+      "title": "Entrance",
+      "clues": [
+        {
+          "id": "sign-in-sheet",
+          "kind": "core",
+          "competency": "Notice",
+          "fact": "The visitors' sheet has no entry between 01:10 and 04:40, but the door log records two openings.",
+          "leads_to": [
+            "corridor",
+            "reception"
+          ],
+          "passive": true
+        },
+        {
+          "id": "night-air",
+          "kind": "optional",
+          "competency": "Survive",
+          "fact": "The air in the stairwell is colder than the season accounts for, and the cold has a direction.",
+          "benefit": "It smells faintly of cloudberries, which are not in season and not in this building.",
+          "benefit_cost": "a Survive check under pressure"
+        }
+      ]
+    },
+    {
+      "id": "corridor",
+      "title": "Corridor",
+      "clues": [
+        {
+          "id": "nurse-inconsistency",
+          "kind": "core",
+          "competency": "Talk",
+          "fact": "Salmi says the ward closed in March. The duty roster in reception runs to June.",
+          "leads_to": [
+            "reception"
+          ]
+        },
+        {
+          "id": "shift-habit",
+          "kind": "optional",
+          "competency": "Connect",
+          "fact": "The night staff trade shifts informally; two of them owe each other favours they do not want written down.",
+          "benefit": "One of them will talk off the record, and will expect the favour returned.",
+          "benefit_cost": "a favour owed to the night staff"
+        }
+      ]
+    },
+    {
+      "id": "reception",
+      "title": "Reception",
+      "clues": [
+        {
+          "id": "record-1601",
+          "kind": "core",
+          "competency": "Administer",
+          "fact": "One file number, two admissions, two birth dates. The second page was typed on a machine the ward does not own.",
+          "leads_to": [
+            "patient_room"
+          ]
+        },
+        {
+          "id": "duty-roster",
+          "kind": "core",
+          "competency": "Notice",
+          "fact": "The roster runs to June and was amended after the night in question; the amendment is initialled, not signed.",
+          "leads_to": [
+            "corridor"
+          ],
+          "passive": true
+        },
+        {
+          "id": "prescriber-note",
+          "kind": "optional",
+          "competency": "Heal",
+          "fact": "A treatment entry was amended after the reported event, and the drug named would not produce the symptom the patient describes.",
+          "benefit": "The amendment was made by someone with ward access but not prescribing rights.",
+          "benefit_cost": "Heal access and an hour with the pharmacy log"
+        },
+        {
+          "id": "terminal-image",
+          "kind": "optional",
+          "competency": "Program",
+          "fact": "The ward terminal's local clock was reset twice that night, and the reset intervals bracket the blackout.",
+          "benefit": "The reset was issued from inside the ward network, not from the hospital's central system.",
+          "benefit_cost": "a Program check against the ward network"
+        }
+      ]
+    },
+    {
+      "id": "patient_room",
+      "title": "Patient room 16",
+      "clues": [
+        {
+          "id": "patient-testimony",
+          "kind": "core",
+          "competency": "Talk",
+          "fact": "She describes a visitor who came through the mirror and asked for cloudberries. She is precise about the request and vague about the face.",
+          "leads_to": [
+            "reception"
+          ]
+        },
+        {
+          "id": "lakkahaltia-sighting",
+          "kind": "core",
+          "competency": "Notice",
+          "fact": "A small many-eyed figure in a room with no door. The cloudberry stain on the bed sheet matches nothing in the ward's stores.",
+          "obscure": false
+        },
+        {
+          "id": "mirror-reading",
+          "kind": "optional",
+          "competency": "Know",
+          "fact": "In the folklore the ward staff grew up with, the lakkahaltia is a thing seen at a threshold, not a thing that travels.",
+          "benefit": "The same story names what it wants: to be let in, once, and not thanked.",
+          "benefit_cost": "time in the folklore archive and a Know check"
+        },
+        {
+          "id": "chart-history",
+          "kind": "optional",
+          "competency": "Heal",
+          "fact": "Her account is consistent across three interviews a week apart, which is unusual for confabulation and ordinary for testimony.",
+          "benefit": "Nothing in her chart supports a diagnosis that would explain the account away.",
+          "benefit_cost": "a Heal check and the patient's consent"
+        }
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "mundane_records_error",
+      "family": "mundane",
+      "statement": "Two admissions were merged by a filing error, the roster was amended to cover a staffing gap, and the patient's account is a confabulation built from ward folklore."
+    },
+    {
+      "id": "deliberate_falsification",
+      "family": "mundane",
+      "statement": "Someone with ward access edited the record and the roster to hide an unauthorised visit or an unauthorised treatment."
+    },
+    {
+      "id": "psychiatric_or_traumatic",
+      "family": "psychological",
+      "statement": "She is describing an experience she genuinely had, and the experience is hers — the question of an external visitor is separate from whether she is reliable."
+    },
+    {
+      "id": "anomalous_visitor",
+      "family": "anomalous",
+      "statement": "Something came through the mirror, asked for cloudberries, and left a stain that matches no store in the building."
+    }
+  ]
+}

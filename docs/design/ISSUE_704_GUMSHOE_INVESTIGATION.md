@@ -91,6 +91,30 @@ Recommended **now: A or B** as a nonbreaking first step; C is a separate, delibe
 - **Tabletop-first:** test the case graph at a table before adding any Python, Godot or CI code. Automated tests, when added, should test executable behavior rather than prose.
 - Do not modify the authoritative baseline until the attribute reskin and clue procedure receive explicit sign-off.
 
+## 6b. Implementation status (2026-10-28)
+
+Landed on the same branch as this document, so the proposal and the thing that runs cannot drift:
+
+| deliverable | where |
+| --- | --- |
+| the procedure in tabletop terms | `rulebook/24_INVESTIGATION.md` (PROVISIONAL) |
+| finding / interpreting / acting, enforced | `src/rules/investigation.py` |
+| the worked case, mundane and anomalous readings | `data/scenarios/lakkahaltia/case_graph.json` (`noopunk-case-graph`) |
+| the layer's design record and licensing | `docs/rules/GUMSHOE_INVESTIGATION_LAYER.md` |
+| tests | `tests/test_investigation_layer.py`, `tests/test_investigation_case_graph.py` |
+
+Two decisions were taken in code because the alternative contradicted canon, and both are
+reversible as data rather than as rules:
+
+1. **Competence is presence.** Rank 0 is trained in the Without Number baseline, so a positive
+   rating cannot be the test; `Investigator.from_sheet()` maps any listed skill to a competency.
+2. **No investigative pools.** The SRD's spends are refused (SWN Effort is the one currency), so a
+   clue's benefit names a CWN cost — a check, a scene, a favour, credits — and the referee charges
+   it. This is the §2 "not recommended" list made structural: `Investigator` has no `spend()`.
+
+Still absent, deliberately: the attribute reskin (§5, author decision), playtest evidence (stage 4),
+and any Godot wiring.
+
 ## 7. Acceptance / playtest checklist
 
 - [ ] Playtest interviews, cyber-forensics, clinical records and optional PSI using existing CWN/SWN character sheets.
@@ -99,28 +123,3 @@ Recommended **now: A or B** as a nonbreaking first step; C is a separate, delibe
 - [ ] Verify hacking permissions, medical-record privacy and SWN Effort expenditures remain binding.
 - [ ] Decide A/B/C attribute reskin policy; then update only approved rulebook material and follow with a versioned digital migration.
 - [ ] Compare paper case execution against a future Godot implementation and add runtime tests only after code exists.
-
-## 8. The anomaly gate: keeping uncertainty after the clues are free
-
-Making clues automatic removes the stalled-plot failure mode and introduces its opposite: a table that
-collects every fact and then treats the strangest reading as established, because it is the most
-memorable. The gate is the discipline that prevents it, and it is implemented in
-`src/rules/anomaly_gate.py`.
-
-**Every core clue carries four things**: the fact, the ordinary reading, the anomalous reading, and —
-named *in advance* — the **discriminator**, the test that would separate them. A discriminator that is
-blank, or a pair of readings that are identical, is refused when the dossier is built: one reading
-dressed twice cannot preserve uncertainty.
-
-**A case may not conclude as anomalous while any core discriminator is unrun.** `require_open()` names
-the outstanding tests. Failure to *think of* an ordinary explanation is not a discriminator; a test must
-actually be attempted and its result recorded. `tally()` returns counts only — there is no verdict
-function, because the module does not believe anything.
-
-Two authoring notes, recorded rather than enforced: a discriminator should be **possible** for the
-characters (a wall is not a test) and should **cost something** (a formality is not a test).
-
-Applied to *Etsivä Romppainen ja Lakkahaltian Salaisuus*: the future-tense files have both a template
-artifact reading and a precognitive reading, and the separating test is the template deployment history
-against the file timestamps. Until that test runs, both hypotheses stay live and the table may act only
-on what is common to them — protecting the remaining patients and securing the files.
