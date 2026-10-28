@@ -134,6 +134,100 @@ As of this writing, **nothing below was newly purchased, installed or runtime-te
 
 **Plugin gate:** no third-party addon can own rule resolution, save state or emit undebounced consequences without the shared coordinator. Keep candidate versions pinned, opt out cleanly, and headless-test export/scene import after adding.
 
+## Graph hacking that *is* the CWN procedure, not a minigame beside it
+
+The rule already exists in this repository: `src/rules/cwn_hacking.py`. Its docstring is the design
+constraint for the whole hacking view —
+
+> "Verbs, Subjects, programs, CPU slots, demons and watchdogs are catalogue content, not procedure…
+> The network's node graph is scenario state, not a rules object."
+
+So the graph is **content**, and every affordance on it must map to a symbol that already exists.
+Nothing in the UI may compute a difficulty, a modifier or a result.
+
+| UI affordance | Rules symbol (`src/rules/cwn_hacking.py`) | Tabletop equivalent |
+| --- | --- | --- |
+| deck + Program + INT shown as a budget | `access_pool(intelligence_modifier, program_skill, deck_bonus)` | the Access pool written on the sheet; refreshed by an hour of reprogramming, once a day |
+| host badge "security 8/10/12" | `SECURITY_LEVELS` (7, 8, 9, 10, 12 — nothing between them) | the referee's security note; values between are a referee call |
+| "important device" / "alerted" / "informant" toggles | `security_difficulty(…, alerted, important_device, tech_quality, inside_info)` | the modifiers the referee applies before the roll |
+| wireless edge | `WIRELESS_PENALTY = -2`, **and it cannot leave the entry node** | the −2 the referee states, plus the reachability limit |
+| command palette entry | a Verb row: Access cost + check modifier, passed to `hacking_check(…)` | the same row read off the catalogue |
+| outcome and alarm state | `AlertClock`: two failed checks = one alert action; two alert actions = alerted (+1 difficulty) | two tick marks, then the second, on paper |
+
+Four node states, and the UI must never collapse them: **unknown** (not rendered), **known** (shown,
+no interaction), **reachable** (an edge the deck can traverse — wireless stops at the entry node),
+**authorized** (a permission the character actually holds). Dragging a wire can therefore never
+grant access; only an adjudicated action can. Each node click reveals *known* attributes only, and a
+failed action logs its consequence rather than hiding it.
+
+### One paper node example, and its digital twin
+
+Paper, three hosts and a link, written on a card:
+
+```
+[deck] --wired--> [ward terminal, sec 8] --wired--> [audit host, sec 10, important device]
+   \--wireless(-2, entry node only)--> [backup spool, sec 9]
+INT +2, Program 1, deck Bonus Access 1  ->  Access pool 4
+```
+
+The tabletop procedure: the player says what they want and which Verb; the referee states the
+difficulty (`8`, or `10 + 1` for the important device), the connection (`wired`, or `wireless` at
+−2 and confined to the entry node), and the Access cost; the check is `2d6 + INT mod + Program +
+Verb modifier + connection penalty`; two failures mean one alert action, two alert actions mean the
+network is alerted and every further difficulty is +1.
+
+In Godot the *same* numbers are rendered: the pool on the deck panel, the badge on the node, the
+−2 on the wireless edge, the two-part alarm indicator, and a log line that names the Verb and the
+difficulty. The interaction differs — clicking instead of describing — and the arithmetic does not.
+
+## Verified addon and asset register (2026-10-28)
+
+The shortlist above said "per prior audit" and "inspect license/version". Checked today:
+
+| Candidate | Licence, and how it was verified | Engine | Verdict |
+| --- | --- | --- | --- |
+| [Dialogue Manager](https://github.com/nathanhoad/godot_dialogue_manager) | **MIT** — GitHub API `license.spdx_id`, repo pushed 2026-10-25 | Godot 4 | **spike only if authoring hurts**; keep the JSON runner as the only rules authority |
+| [Dialogic](https://github.com/dialogic-godot/dialogic) | **MIT** — GitHub API, pushed 2026-08-30 | Godot 4 | same; it owns its own state, so it may never become the case ledger |
+| [LimboAI](https://github.com/limbonaut/limboai) | **MIT** — GitHub API, pushed 2026-10-26 | Godot 4 | **not needed** for 4–6 scripted NPCs |
+| [godot_voxel](https://github.com/Zylann/godot_voxel) | **MIT** — GitHub API, pushed 2026-10-01 | Godot 4 | **refuse for the slice**; static chunky GLB only |
+| [Phantom Camera](https://github.com/ramokz/phantom-camera) | **MIT** — GitHub API, pushed 2026-10-27 | Godot 4 | optional, after a native orthographic camera is proven |
+| [Kenney furniture kit](https://kenney.nl/assets/furniture-kit) | **CC0** — stated on the asset page | any | **preferred** hospital props |
+| [Quaternius Cyberpunk Game Kit](https://quaternius.com/packs/cyberpunkgamekit.html) | **CC0** — stated on the pack page | any | **preferred** street/props |
+| [Poly Haven](https://polyhaven.com/license) | **CC0** — licence page reachable; terms re-read at download | any | textures and HDRI, preferred |
+| [monogon Voxel Cyberpunk City](https://maxparata.itch.io/cyberpunkcity-monogon) | **CC BY-ND 4.0** — stated on the itch page | any | **refuse as-is**: NoDerivatives, and importing/rescaling/materials is a derivative. Paid clarification required before it can be used at all |
+| [Synty POLYGON Sci-Fi City](https://syntystore.com/products/polygon-sci-fi-city) | commercial — page reachable; EULA **not** fetched this session | Godot-friendly FBX/GLB | **defer to Phase 5**, and buy only if the CC0 substitutes fail in the actual scene |
+
+**Decision, so the plan does not drift:** the slice ships with **zero paid dependencies and zero
+third-party addons**. Every candidate above is either CC0/MIT with a named fallback, or it waits for
+the purchase gate. A paid pack is a *visual* decision, and it must not arrive before Phase 4 makes
+the interaction legible.
+
+## The parity harness, as a thing that can be built
+
+Parity is claimed in the worksheet above; this is how it gets *checked* once code exists, without a
+second rules implementation:
+
+1. **One scenario file, two consumers.** `godot/tests/parity/<case>.json` holds an ordered list of
+   intents, the character sheets involved, and the dice supplied to each roll. The Python side runs
+   the same intents through `src/rules/` and emits the expected event ledger; the Godot runner
+   replays them headlessly and must produce the same ledger, field for field.
+2. **Runner:** `godot --headless --path . --script res://godot/tests/parity_runner.gd`. Same pattern
+   as the existing `run_tests.gd`, so the CI job that already boots headless keeps working.
+3. **What the ledger must contain** (and therefore what the coordinator must emit): action id,
+   intent, eligibility and the source permission that allowed it, dice if any, the resulting total
+   and success, Access/resources spent, time advanced, evidence ids granted, access/security state
+   changes, alarm state, and the consequence list. If a field is absent from both sides it cannot be
+   compared, so the ledger shape *is* the contract.
+4. **A drift audit, not a test:** `tools/audit_godot_rules.py` — a non-CI operator tool in the same
+   spirit as the corpus audits — fails if a `.gd` file outside `godot/core/*_adapter.gd` contains
+   dice construction (`RandomNumberGenerator`, `randi`), the outcome band names, or a difficulty
+   literal from `SECURITY_LEVELS`. The repository's test policy (#271) keeps prose out of CI; this
+   keeps *arithmetic* out of the presentation layer, and it is run by hand before a merge.
+
+What the harness cannot prove, and the plan should say so: that the *table* experience is the same.
+That is the Phase 1 paper packet plus a human running both, which is why Phase 1 exists before
+Phase 2.
+
 ## Remaining decisions and honest verification status
 
 - **Document completed:** subsystem plan, implementation order, controls/nodes, tabletop equivalence, sourcing priorities, licensing checks, and parity acceptance.
