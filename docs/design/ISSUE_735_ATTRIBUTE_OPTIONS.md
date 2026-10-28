@@ -24,7 +24,7 @@ deliberately or leave them alone.
 | Saves | `16 − level − best pair`: Physical `STR+CON`, Evasion `DEX+INT`, Mental `WIS+CHA`, Luck none | `without_number.json` → `saves` |
 | System Strain cap | equals **CON** | `src/rules/cwn_strain.py` |
 | Max Effort | `1 + highest psychic skill + better of WIS or CON modifier` | `docs/rules/SWN_PSIONICS_ADAPTATION.md` |
-| Skills | 40 named skills, each bound to an attribute; includes `Interface`, `Perceive`, `Talk`, `Connect`, `Kinesics`, `Investigation`, `Program` | `data/rules/skills.json` |
+| Skills | **19 WN skills, no fixed attribute binding** (`skill_check` takes the attribute per action) plus the **PSI six** from #159; the bound 40-name list in `data/rules/skills.json` is the superseded layer (§2.1) | `data/rules/without_number.json`, `data/rules/skills.json` |
 | Check validation | `skill_check()` raises on an attribute outside `ATTRIBUTES`; the drill indexes `sheet["attributes"][code]` directly | `src/rules/without_number.py:13,99`, `src/rules/first_case_drill.py:119` |
 | A second, legacy set | `FIT / REF / INT / SOC / CYB / PSY` on 1–10, still implemented | `data/rules/core.json` |
 
