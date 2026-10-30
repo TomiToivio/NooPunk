@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "source": "noopunk/rulebook/RULEBOOK.md \u00a71 and issue #835",
+  "attributes": [
+    {
+      "id": "fitness",
+      "name": "Fitness",
+      "definition": "Your physical strength and constitution"
+    },
+    {
+      "id": "reflexes",
+      "name": "Reflexes",
+      "definition": "Your physical dexterity, agility and coordination"
+    },
+    {
+      "id": "cognition",
+      "name": "Cognition",
+      "definition": "Your ability to process language and data"
+    },
+    {
+      "id": "cyber",
+      "name": "Cyber",
+      "definition": "Your ability to interface with technology"
+    },
+    {
+      "id": "awareness",
+      "name": "Awareness",
+      "definition": "Your intuition, perception and awareness"
+    },
+    {
+      "id": "agency",
+      "name": "Agency",
+      "definition": "Your free will"
+    },
+    {
+      "id": "empathy",
+      "name": "Empathy",
+      "definition": "Your loving kindness and humanity"
+    }
+  ],
+  "generation": {
+    "dice_count": 3,
+    "dice_sides": 6,
+    "table": [
+      {
+        "min": 3,
+        "max": 4,
+        "value": -3
+      },
+      {
+        "min": 5,
+        "max": 6,
+        "value": -2
+      },
+      {
+        "min": 7,
+        "max": 8,
+        "value": -1
+      },
+      {
+        "min": 9,
+        "max": 12,
+        "value": 0
+      },
+      {
+        "min": 13,
+        "max": 14,
+        "value": 1
+      },
+      {
+        "min": 15,
+        "max": 16,
+        "value": 2
+      },
+      {
+        "min": 17,
+        "max": 18,
+        "value": 3
+      }
+    ]
+  },
+  "human": {
+    "min": -3,
+    "max": 3,
+    "transhuman_above": 3
+  },
+  "difficulty": [
+    {
+      "target": 6,
+      "label": "Easiest"
+    },
+    {
+      "target": 8,
+      "label": "Easier"
+    },
+    {
+      "target": 10,
+      "label": "Easy"
+    },
+    {
+      "target": 12,
+      "label": "Average"
+    },
+    {
+      "target": 14,
+      "label": "Hard"
+    },
+    {
+      "target": 16,
+      "label": "Harder"
+    },
+    {
+      "target": 18,
+      "label": "Hardest"
+    }
+  ]
+}
