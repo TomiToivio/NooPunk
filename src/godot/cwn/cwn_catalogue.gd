@@ -27,7 +27,15 @@ static func _data() -> Dictionary:
 	return _cache
 
 static func tables() -> Dictionary:
-	return _data().get("tables", {})
+	var explicit: Dictionary = _data().get("tables", {})
+	if not explicit.is_empty():
+		return explicit
+	# Accept flat typed catalogues as well as SRD tables with row blocks.
+	var wrapped: Dictionary = {}
+	for key in _data().keys():
+		if _data()[key] is Array:
+			wrapped[key] = [{"rows": _data()[key]}]
+	return wrapped
 
 static func licence() -> String:
 	return str(_data().get("licence", ""))
@@ -151,21 +159,29 @@ static func _first_value(row: Dictionary) -> String:
 	return ""
 
 static func armour(name: String) -> Dictionary:
+	var wanted := name.strip_edges().to_lower()
+	if wanted == "":
+		return {}
 	for row in rows("armor"):
-		var candidate := _name_of(row)
+		var candidate := str(row.get("name", row.get("label", _name_of(row)))).strip_edges()
 		if candidate == "":
 			candidate = _first_value(row)
-		if candidate.to_lower() == name.to_lower():
-			return {
-				"name": candidate,
-				"ranged_ac": _int(_cell(row, ["Ranged AC"])),
-				"melee_ac": _int(_cell(row, ["Melee AC"])),
-				"soak": _int(_cell(row, ["Damage Soak", "Soak"])),
-				"encumbrance": _int(_cell(row, ["Enc.", "Encumbrance"])),
-				"trauma_mod": _int(_cell(row, ["Trauma Target Mod", "Trauma Mod"])),
-				"subtle": _cell(row, ["Subtle?"]).to_lower() == "subtle",
-				"cost": _money(_cell(row, ["Cost"])),
-			}
+		var ident := str(row.get("id", "")).strip_edges()
+		var hit := candidate.to_lower() == wanted or ident.to_lower() == wanted
+		if not hit:
+			hit = candidate.to_lower().contains(wanted) or ident.to_lower().contains(wanted)
+		if not hit:
+			continue
+		return {
+			"name": candidate if candidate != "" else ident,
+			"ranged_ac": int(row.get("ranged_ac", _int(_cell(row, ["Ranged AC"])))),
+			"melee_ac": int(row.get("melee_ac", _int(_cell(row, ["Melee AC"])))),
+			"soak": int(row.get("soak", _int(_cell(row, ["Damage Soak", "Soak"])))),
+			"encumbrance": int(row.get("enc", _int(_cell(row, ["Enc.", "Encumbrance"])))),
+			"trauma_mod": int(row.get("trauma_mod", _int(_cell(row, ["Trauma Target Mod", "Trauma Mod"])))),
+			"subtle": bool(row.get("subtle", _cell(row, ["Subtle?"]).to_lower() == "subtle")),
+			"cost": int(row.get("cost", _money(_cell(row, ["Cost"])))),
+		}
 	return {}
 
 static func cyberdeck(name: String) -> Dictionary:
