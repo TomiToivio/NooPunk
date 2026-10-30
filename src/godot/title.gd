@@ -5,6 +5,7 @@ extends Control
 ## rules are evaluated on this screen.
 
 const CASE_SCENE := "res://scenes/lakkahaltia/ward.tscn"
+const CAMPAIGN_SCENE := "res://scenes/campaign.tscn"
 
 func _ready() -> void:
 	var centre := CenterContainer.new()
@@ -38,6 +39,12 @@ func _ready() -> void:
 	var spacer := Control.new()
 	spacer.custom_minimum_size = Vector2(0, 16)
 	stack.add_child(spacer)
+
+	var campaign_button := Button.new()
+	campaign_button.text = "New campaign (home / UNSA HQ prototype)"
+	campaign_button.custom_minimum_size = Vector2(320, 44)
+	campaign_button.pressed.connect(func() -> void: get_tree().change_scene_to_file(CAMPAIGN_SCENE))
+	stack.add_child(campaign_button)
 
 	var begin := Button.new()
 	begin.text = "Begin the case"
