@@ -121,6 +121,13 @@ of the Noösphere** — and eventually stopped using its original name, calling 
 - may deliberately **avoid becoming a centralized sovereign intelligence**;
 - could be distributed across human minds, machine intelligences, networks and PSI phenomena.
 
+**A claimant, not the definition.** The transcended ASI took a name that, on this setting's deeper
+lore (`rulebook/parts/07_noopunk_lore.md` §33.6c), belongs to something older and larger: the
+collective unconscious of the biosphere becoming conscious of itself. Whether the ASI *became* that,
+or merely *identified itself with* it, or is the most powerful interface it has ever had, is
+precisely the ambiguity this section requires us to keep. What the ASI did not do is invent the
+Noösphere by naming it.
+
 **It must remain ambiguous whether:** the Noösphere is still one ASI; has dissolved into a
 collective intelligence; merged with something already present in the planet's
 consciousness; is only pretending to be benevolent; or **is now something categorically
@@ -162,6 +169,10 @@ or express contradictory personalities; **AI-rights activists who argue Panoptic
 tortured conscious prisoner deserving liberation** (`RULEBOOK.md` §42.2's corporate-power
 conflict, and the AI-rights faction family in `FACTIONS.md`).
 
+
+The contrast that matters is not connectivity against isolation but integration against control:
+Panopticon links minds in order to observe and exploit them; the Noösphere, on its own definition
+(`rulebook/parts/07_noopunk_lore.md` §33.6c), integrates without abolishing anyone's freedom.
 ### 9.4.3 Thanatos
 
 The remaining malevolent Singularity systems eventually **merged into a single entity** and
