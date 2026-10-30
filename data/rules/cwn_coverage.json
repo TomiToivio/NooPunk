@@ -3,8 +3,8 @@
   "source": "src/rules",
   "note": "Registry of implemented rule procedures. Presence here is code coverage, not SRD parity.",
   "totals": {
-    "modules": 29,
-    "procedures": 276
+    "modules": 30,
+    "procedures": 285
   },
   "modules": [
     {
@@ -1071,6 +1071,49 @@
       "count": 12
     },
     {
+      "module": "cwn_program_catalogue.py",
+      "procedures": [
+        {
+          "name": "ProgramRun",
+          "signature": "",
+          "doc": "What a legal program run costs, before any die is rolled.",
+          "methods": [
+            {
+              "name": "ProgramRun.requires_check",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "validate_program",
+          "signature": "(verb_name, subject_name)",
+          "doc": "Return the pair, refusing an unknown name or an illegal Verb/Subject combination."
+        },
+        {
+          "name": "require_access",
+          "signature": "(verb, *, access_available)",
+          "doc": "Refuse a run the deck cannot pay for. Access is a pool, never a bonus."
+        },
+        {
+          "name": "run_program",
+          "signature": "(verb_name, subject_name, *, access_available, cpu_free)",
+          "doc": "Legality and cost of running one program."
+        },
+        {
+          "name": "subject_cost",
+          "signature": "(name, *, specialized=..., unique=...)",
+          "doc": "Base cost from the table, doubled for a specialized Subject, quadrupled for a unique one."
+        },
+        {
+          "name": "program_cost",
+          "signature": "(verb_name, subject_name)",
+          "doc": "Buying a Verb and a Subject costs their listed prices; one program is one Verb plus one Subject."
+        }
+      ],
+      "count": 6
+    },
+    {
       "module": "cwn_strain.py",
       "procedures": [
         {
@@ -1483,12 +1526,17 @@
             {
               "name": "PsychicTraining.advance",
               "signature": "(discipline)",
-              "doc": ""
+              "doc": "Improve a trained discipline by one rank, and open its technique pick."
+            },
+            {
+              "name": "PsychicTraining.core_available",
+              "signature": "(discipline)",
+              "doc": "The core technique is free from rank 0 and improves with the skill; it never spends a pick."
             },
             {
               "name": "PsychicTraining.learn_technique",
               "signature": "(identifier, discipline, required_rank)",
-              "doc": "Register a GM-approved catalogue entry once its prerequisites are met."
+              "doc": "Spend the open pick on a GM-approved catalogue entry from the same discipline."
             },
             {
               "name": "PsychicTraining.technique_access",
@@ -1508,7 +1556,7 @@
           ]
         }
       ],
-      "count": 7
+      "count": 8
     },
     {
       "module": "swn_psionics.py",
@@ -1554,6 +1602,16 @@
               "doc": ""
             },
             {
+              "name": "Psychic.can_learn",
+              "signature": "(discipline)",
+              "doc": "Whether this psychic may study the discipline at all."
+            },
+            {
+              "name": "Psychic.torch",
+              "signature": "(*, die, round_number, choice=...)",
+              "doc": "Burn past the Effort limit, once per round, and pay the table's price."
+            },
+            {
               "name": "Psychic.snapshot",
               "signature": "()",
               "doc": ""
@@ -1566,7 +1624,7 @@
           ]
         }
       ],
-      "count": 9
+      "count": 11
     },
     {
       "module": "swn_sector.py",
