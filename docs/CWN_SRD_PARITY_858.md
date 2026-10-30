@@ -31,6 +31,17 @@ The Contacts rules kernel now models acquaintance/friend favors, starting contac
 
 All 18 worker daily wages are transcribed from [Common Wages](https://cwn.quadrifons.com/gear-vehicles-cyberware/lifestyles-wages-and-bribes/common-wages/) into `godot/core/cwn_wages.gd`. `godot/tests/test_cwn_wages.gd` compares each value to a separately encoded fixture and checks validation and hire-cost arithmetic. This establishes **table-value parity only**. It does not claim playable UI or coverage of the SRD hireling-loyalty narrative. The Godot headless suite has not been executed for this increment.
 
+## Playable network increment (#873)
+
+The MVP's H-key network view now supports node selection (J/K), verb selection
+(U/I), connecting nodes (Enter), and executing the selected verb (Space).
+Every effect goes through `NoopunkSession.hack_connect` / `hack_act` and the
+existing `NoopunkHacking` connectivity, Access, CPU and alert checks.
+This is a **playable vertical-slice interface**, not proof of comprehensive
+§4.5 server architecture parity. The MVP scenario uses its own short program
+list; the verified §4.3 catalogue is not yet integrated into program selection.
+There has been no windowed playtest or headless suite execution for this change.
+
 ## Status of each published section
 
 | § | Section | Code | Tested | Playable | SRD parity |
@@ -64,31 +75,23 @@ All 18 worker daily wages are transcribed from [Common Wages](https://cwn.quadri
 | 4.2 | Hacking mechanics | yes — `hacking.gd` (Access, security, alert clock) | yes | partial | **unverified** |
 | 4.3 | Programs | yes — `cwn_programs.gd`, `cwn_program_rules.gd`, **`cwn_hacking_catalogue.gd`** | yes — `test_cwn_hacking_catalogue.gd` | no | **verified for the 24 Verbs and 12 Subjects** (verbatim transcription, cited) |
 | 4.4 | Demons and watchdogs | partial — demons referenced in hacking | partial | no | **absent** |
-| 4.5 | Servers and architecture | yes — `godot/ui/hacking_screen.gd` over the `hacking.gd` node model | yes — `test_hacking_screen.gd` (20 rows) | **yes — node-link screen, reachable from the main menu** | **playable; verification pending** |
+| 4.5 | Servers and architecture | yes — `cwn_node_link.gd` | yes — `test_node_link.gd`, 34 checks reported in PR #877 | yes — `scenes/node_link.tscn` (jack in, Access, Verbs/Subjects, alert, disconnect) | **partial — procedure implemented, per-node architecture tables not included** |
 
-## Node-link screen (the item this issue called highest value)
+## Node-link and Alienation integration (#869, PR #877)
 
-`godot/ui/hacking_screen.gd` + `scenes/hacking/node_link.tscn`, reachable from the main menu as
-**Hacking — node link (warehouse network)**. It renders the network's nodes and links, connects them
-through the kernel (CPU and Access spent by the kernel, not by the screen), offers only the verbs the
-node actually has, and shows the alert clock and alarm state.
+PR #877 adds the playable node-link hacking screen and its rules-state machine, with 34 headless checks reported on the PR branch. `cwn_cyberware_ops.gd` delegates Alienation arithmetic to `cwn_alienation.gd`, restored as a required dependency. These reports are not a new post-merge test certification.
 
-The screen decides nothing: reachability, Access, CPU, the 2d6 check and the alert clock all come from
-`godot/core/hacking.gd`, and a refusal is displayed using the kernel's own `reason`. That is what keeps
-a UI from becoming a second rule implementation.
+## Additional node-link UI (PR #878)
 
-One integration detail worth recording: the Romppainen mission already carried `network` and `deck`, so
-the menu opens that data rather than a demo fixture invented for the screen.
-
-Verified: **1312 checks, 0 failed**; `godot --headless --path . --quit-after 60` launches clean.
+A second playable node-link presentation at `godot/ui/hacking_screen.gd` and `scenes/hacking/node_link.tscn` uses the existing `godot/core/hacking.gd` kernel and opens the Romppainen warehouse mission directly from the main menu. `godot/tests/test_hacking_screen.gd` covers this path (20 checks reported on the PR branch). This complements, but does not replace, the `cwn_node_link.gd` implementation documented above. Neither implementation alone establishes complete SRD §4.5 source parity. The 1312-check suite and clean launch reported on PR #878 were run on its branch before this integration, not verified on the merged tree.
 
 ## What the table says plainly
 
 - **One section is verified against the text**: §4.3, and only its catalogue half — 24 Verbs, 12 Subjects,
   transcribed verbatim with the SRD cited. Everything else is code that *may* be right.
-- **Seven sections remain structurally absent or data-only / without playable implementation**:
-  contacts (1.4), Foci (1.6), lifestyle costs (3.2), drugs (3.5), drones as a played system (3.8),
-  demons/watchdogs (4.4), and the node-link screen (4.5). PR #865 adds kernels for chases (2.6),
+- **Several sections remain structurally incomplete or without a playable implementation**:
+  Foci (1.6), drugs (3.5), drones as a played system (3.8),
+  and demons/watchdogs (4.4). Contacts and lifestyles have kernels, and node-link now has a screen. PR #865 adds kernels for chases (2.6),
   crafting (2.8), and cyberware Alienation (3.6), but does **not** establish end-to-end playability or SRD parity.
 - **"Playable" is the weakest column.** Most rules exist as procedures with tests and are reachable from
   the session/campaign scenes only indirectly. A rule a player cannot invoke is not parity.
@@ -103,11 +106,10 @@ Verified: **1312 checks, 0 failed**; `godot --headless --path . --quit-after 60`
 
 ## The next honest increments, in order
 
-1. **§4.5 node-link screen** — the hacking subsystem is the only one with a verified catalogue and no way
-   to play it. Wiring the screen converts three sections (4.2, 4.3, 4.5) from partial to playable.
+1. **§4.5 node-link verification** — the screen now exists; verify gameplay and server-architecture coverage against the SRD.
 2. **§3.6 cyberware** — Alienation arithmetic now has a kernel (PR #865); finish the d12 implant-complication table, playable integration, and SRD verification.
 3. **§1.4 contacts and §1.6 Foci** — character creation is where the other ten rows' assumptions are set.
-4. **§2.6 chases and §2.8 crafting** — now have kernels, but still need playable integration and source-by-source verification. **§3.2 lifestyles and §3.5 drugs** remain missing.
+4. **§2.6 chases and §2.8 crafting** — now have kernels, but still need playable integration and source-by-source verification. **§3.2 lifestyle integration and §3.5 drugs** remain incomplete.
 5. **Parity verification pass** — take each "unverified" row and compare procedure against the SRD text,
    one at a time, recording the exact section and the test that proves it.
 

@@ -35,13 +35,14 @@ func _ready() -> void:
 		get_tree().change_scene_to_file("res://godot/ui/mvp_game.tscn"))
 	stack.add_child(mvp)
 
-	# #858: the hacking rules had a verified catalogue and no way to play them. This opens the
-	# warehouse network from the Romppainen mission on the node-link screen.
+	# #878: Alternate node-link interface over the warehouse mission hacking kernel.
 	var hacking := Button.new()
 	hacking.text = "Hacking — node link (warehouse network)"
 	hacking.pressed.connect(func() -> void:
 		var screen: Node = load("res://scenes/hacking/node_link.tscn").instantiate()
-		screen.open_mission("res://godot/scenarios/mvp_romppainen/mission.json", 7)
+		if not screen.open_mission("res://godot/scenarios/mvp_romppainen/mission.json", 7):
+			screen.queue_free()
+			return
 		get_tree().root.add_child(screen)
 		get_tree().current_scene = screen)
 	stack.add_child(hacking)
