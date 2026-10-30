@@ -1,9 +1,9 @@
 name: NoöPunk restart smoke
 on:
   push:
-    paths: ["restart/**", ".github/workflows/restart-smoke.yml"]
+    paths: ["noopunk/**", ".github/workflows/restart-smoke.yml"]
   pull_request:
-    paths: ["restart/**", ".github/workflows/restart-smoke.yml"]
+    paths: ["noopunk/**", ".github/workflows/restart-smoke.yml"]
   workflow_dispatch:
 permissions:
   contents: read
@@ -20,5 +20,5 @@ jobs:
       - name: Import and run the starter's smoke test
         run: |
           GODOT=/tmp/godot/Godot_v4.7.2-stable_linux.x86_64
-          $GODOT --headless --path restart/game --import
-          $GODOT --headless --path restart/game --script res://tests/smoke.gd
+          $GODOT --headless --path noopunk/game --import
+          $GODOT --headless --path noopunk/game --script res://tests/smoke.gd

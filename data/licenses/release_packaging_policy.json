@@ -74,8 +74,8 @@
         "PLAYER.md",
         "ROMPPAINEN.md",
         "TERMINOLOGY.md",
-        "restart/START_HERE.md",
-        "restart/rulebook/**"
+        "noopunk/START_HERE.md",
+        "noopunk/rulebook/**"
       ],
       "licence": "author-decision",
       "note": "Original creative rulebook and worldbook prose."
@@ -83,7 +83,7 @@
     {
       "id": "rule-data",
       "globs": [
-        "restart/rulebook/**",
+        "noopunk/rulebook/**",
         "data/rules/**",
         "data/npcs/**",
         "data/world/**",
@@ -147,14 +147,14 @@
     {
       "id": "fixtures-and-scenes",
       "globs": [
-        "restart/game/**",
+        "noopunk/game/**",
         "fixtures/**",
         "scenes/**",
         "deploy/**",
         "project.godot",
         "godot/**",
         "*.uid",
-        "restart/game/**"
+        "noopunk/game/**"
       ],
       "licence": "author-decision-follows-code",
       "note": "Godot project files are code, not prose."

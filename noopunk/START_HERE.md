@@ -6,15 +6,15 @@ kernels; those stay readable reference.
 
 | what | canonical path |
 | --- | --- |
-| tabletop rulebook | `restart/rulebook/RULEBOOK.md` (index: `restart/rulebook/README.md`) |
-| Godot top-down RPG | `restart/game/` (Godot project, main scene `main.tscn`) |
+| tabletop rulebook | `noopunk/rulebook/RULEBOOK.md` (index: `noopunk/rulebook/README.md`) |
+| Godot top-down RPG | `noopunk/game/` (Godot project, main scene `main.tscn`) |
 
 ## Run the game
 
 ```bash
 # from the repository root, with a Godot 4.7.x binary
-godot --path restart/game            # opens the test room
-godot --headless --path restart/game --script res://tests/smoke.gd   # smoke test
+godot --path noopunk/game            # opens the test room
+godot --headless --path noopunk/game --script res://tests/smoke.gd   # smoke test
 ```
 
 Controls: **WASD** or the **arrow keys** move the player. The camera follows. Four walls bound the
@@ -37,8 +37,8 @@ piece at a time.
 ## How a child issue runs
 
 1. **Tomi** supplies one small rule, interaction or scenario fragment.
-2. The rule goes into `restart/rulebook/RULEBOOK.md`, in the section it belongs to.
-3. The same change implements its observable counterpart in `restart/game/`, playable immediately.
+2. The rule goes into `noopunk/rulebook/RULEBOOK.md`, in the section it belongs to.
+3. The same change implements its observable counterpart in `noopunk/game/`, playable immediately.
 4. Consistency is checked — the rulebook says what the game does, and the smoke test grows with the
    mechanic.
 5. Review and merge. **Only the child issue is closed.**
