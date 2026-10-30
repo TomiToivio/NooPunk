@@ -17,7 +17,7 @@ const SAVE_PATH := "user://noopunk_campaign_v2.json"
 const LOCATIONS := {
 	"home": ["hq"],
 	"hq": ["home", "mission"],
-	"mission": ["debrief", "hq"],
+	"mission": ["debrief"],
 	"debrief": ["hq"]
 }
 
