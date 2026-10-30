@@ -405,3 +405,7 @@ When adding or revising mechanics:
 6. prefer the smallest NoöPunk-native procedure that serves the game's human and Concordia/LLM play.
 
 Setting work should preserve current 20XX / Earth-intact anchors unless the author explicitly revises them.
+
+## Godot rule-module ownership clarification (#791)
+
+`godot/core/` is the canonical owner of CWN/SWN game-rule implementations. `src/godot/` remains a compatibility tree only. Port unique capabilities and preserve consumers and tests before retiring duplicates. The two catalogue APIs differ (instance ID lookup vs static named catalogue lookup), so do not mechanically repoint either caller. See `docs/godot/CANONICAL_GODOT_TREE.md` and `docs/godot/UNIFIED_IMPLEMENTATION.md`.
