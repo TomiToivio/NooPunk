@@ -1,0 +1,33 @@
+{
+ "format": "cwn-skills-v1",
+ "count": 19,
+ "levels": [
+  "level-0",
+  "level-1",
+  "level-2",
+  "level-3",
+  "level-4"
+ ],
+ "skills": [
+  "Administer",
+  "Connect",
+  "Drive",
+  "Exert",
+  "Fix",
+  "Heal",
+  "Know",
+  "Lead",
+  "Notice",
+  "Perform",
+  "Program",
+  "Punch",
+  "Shoot",
+  "Sneak",
+  "Stab",
+  "Survive",
+  "Talk",
+  "Trade",
+  "Work"
+ ],
+ "note": "Character creation caps at level-1; level-2+ requires a minimum character level."
+}

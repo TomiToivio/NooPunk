@@ -50,5 +50,14 @@
       "restriction": "one_discipline",
       "note": "may master one discipline and may not raise another"
     }
+  },
+  "progression": {
+    "core_technique_at_rank": 0,
+    "core_is_free": true,
+    "picks_per_skill_improvement": 1,
+    "picks_cannot_be_saved": true,
+    "max_discipline_rank": 4,
+    "partial_psychic_discipline_limit": 1,
+    "_note": "Each improvement of a discipline's skill level buys exactly one new technique from that discipline, chosen immediately; the core technique comes free at rank 0 and improves with the skill. No pick may be banked."
   }
 }

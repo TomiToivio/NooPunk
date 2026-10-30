@@ -30,9 +30,7 @@ static func tables() -> Dictionary:
 	var explicit: Dictionary = _data().get("tables", {})
 	if not explicit.is_empty():
 		return explicit
-	# The extractor stores flat arrays at the top level (`weapons`, `armor`, `cyberware`, ...).
-	# Wrap them in the block shape rows() expects so lookups work against either layout instead of
-	# silently returning nothing.
+	# Accept flat typed catalogues as well as SRD tables with row blocks.
 	var wrapped: Dictionary = {}
 	for key in _data().keys():
 		if _data()[key] is Array:
@@ -52,14 +50,21 @@ static func rows(key: String) -> Array:
 		out.append_array(block.get("rows", []))
 	return out
 
-static func _row_label(row: Dictionary) -> String:
-	# SRD tables head the first column with the table's own name ("Civilian Armor", "Firearm", ...),
-	# so the row's first string value is its label. Falling back to it makes lookups work regardless
-	# of what that header happens to be called.
-	for column in row.keys():
-		var value := str(row[column])
-		if value.strip_edges() != "":
-			return value.strip_edges()
+## The SRD names its catalogue rows with a different first column per sub-table: `Firearm`,
+## `Civilian Armor`, `Suit Armor`, `Armor Accessories`, `Melee Weapon`, `Heavy Weapon`, ... Reading
+## only a fixed list therefore finds no row at all for whole sub-tables. Try the known spellings,
+## then fall back to the first column that is not a number.
+static func _name_of(row: Dictionary, preferred: Array = []) -> String:
+	var names: Array = preferred.duplicate()
+	names.append_array(["Firearm", "Weapon", "Armor", "Armour", "Civilian Armor", "Suit Armor",
+		"Armor Accessories", "Melee Weapon", "Heavy Weapon", "Deck", "Cyberdeck", "Name"])
+	for n in names:
+		if row.has(n) and String(row[n]).strip_edges() != "":
+			return String(row[n]).strip_edges()
+	for key in row.keys():
+		var value := String(row[key]).strip_edges()
+		if value != "" and not value.is_valid_int() and not value.begins_with("$"):
+			return value
 	return ""
 
 static func _cell(row: Dictionary, names: Array) -> String:
@@ -124,12 +129,12 @@ static func parse_shock(text: String) -> Dictionary:
 static func weapon(name: String, groups: Array = ["firearms", "melee", "heavy"]) -> Dictionary:
 	for group in groups:
 		for row in rows(group):
-			if _cell(row, ["Firearm", "Weapon", "Name"]).to_lower() == name.to_lower():
+			if _name_of(row).to_lower() == name.to_lower():
 				var damage_text := _cell(row, ["Dmg", "Damage"])
 				var trauma_die := _cell(row, ["TD", "Trauma Die"])
 				var trauma_rating := _cell(row, ["TR", "Trauma Rating", "Trauma"])
 				return {
-					"name": _cell(row, ["Firearm", "Weapon", "Name"]),
+					"name": _name_of(row),
 					"group": group,
 					"damage": parse_dice(damage_text),
 					"damage_text": damage_text,
@@ -145,21 +150,30 @@ static func weapon(name: String, groups: Array = ["firearms", "melee", "heavy"])
 				}
 	return {}
 
+## The name column differs per SRD table ("Civilian Armor", "Suit Armor", "Armor Accessories"), and
+## a table with no recognised name column still has a first cell that is the name. Falling back to
+## it beats returning an empty dictionary that reads as "no such armour" to every caller.
+static func _first_value(row: Dictionary) -> String:
+	for key in row.keys():
+		return String(row[key]).strip_edges()
+	return ""
+
 static func armour(name: String) -> Dictionary:
-	var wanted := name.to_lower()
+	var wanted := name.strip_edges().to_lower()
+	if wanted == "":
+		return {}
 	for row in rows("armor"):
-		var label := _row_label(row).to_lower()
-		var ident := str(row.get("id", "")).to_lower()
-		# Exact id or name first; then a substring either way, so "leathers" finds "street_leathers".
-		var hit: bool = label == wanted or ident == wanted
-		if not hit and wanted != "":
-			hit = label.contains(wanted) or ident.contains(wanted)
+		var candidate := str(row.get("name", row.get("label", _name_of(row)))).strip_edges()
+		if candidate == "":
+			candidate = _first_value(row)
+		var ident := str(row.get("id", "")).strip_edges()
+		var hit := candidate.to_lower() == wanted or ident.to_lower() == wanted
+		if not hit:
+			hit = candidate.to_lower().contains(wanted) or ident.to_lower().contains(wanted)
 		if not hit:
 			continue
-		# The catalogue JSON carries typed numeric columns; the SRD tables carry text. Read the typed
-		# value when present and fall back to the parsed cell otherwise.
 		return {
-			"name": _row_label(row) if label != "" else str(row.get("id", "")),
+			"name": candidate if candidate != "" else ident,
 			"ranged_ac": int(row.get("ranged_ac", _int(_cell(row, ["Ranged AC"])))),
 			"melee_ac": int(row.get("melee_ac", _int(_cell(row, ["Melee AC"])))),
 			"soak": int(row.get("soak", _int(_cell(row, ["Damage Soak", "Soak"])))),
