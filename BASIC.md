@@ -1,3 +1,7 @@
+> **SUPERSEDED, REFERENCE ONLY (issue [#848](https://github.com/TomiToivio/NooPunk/issues/848)).** This is the abandoned seven-attribute proposal from #835, not a current character-creation procedure. Active characters use published vanilla **Cities Without Number** STR/DEX/CON/INT/WIS/CHA rules, and **Stars Without Number Revised** for permitted psionics. Follow [AGENTS.md](AGENTS.md), [START_HERE.md](START_HERE.md), and the canonical root `project.godot` / `res://scenes/main.tscn`. Keep this proposal as historical reference; do not implement it.
+
+---
+
 # Basic character creation
 The player character is a UNSA agent straight from the academy.
 
