@@ -269,8 +269,13 @@ func _build_hud() -> void:
 
 	toast_label = _label("", 17)
 	toast_label.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
-	toast_label.position = Vector2(-400, -170)
-	toast_label.size = Vector2(800, 90)
+	# Anchors, not `size`: PRESET_CENTER_BOTTOM leaves opposite anchors unequal, and Godot then
+	# overrides `size` after `_ready()` and warns about it (#883). Offsets express the same 800x90 box
+	# around the centre-bottom anchor without fighting the layout system.
+	toast_label.offset_left = -400
+	toast_label.offset_top = -170
+	toast_label.offset_right = 400
+	toast_label.offset_bottom = -80
 	toast_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	toast_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	toast_label.visible = false
@@ -278,8 +283,10 @@ func _build_hud() -> void:
 
 	dialogue_panel = _panel()
 	dialogue_panel.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	dialogue_panel.position = Vector2(0, -300)
-	dialogue_panel.size = Vector2(0, 300)
+	# Same reason as the toast: PRESET_BOTTOM_WIDE leaves the vertical anchors unequal, so the panel's
+	# size must be expressed as offsets or Godot overrides it after `_ready()` and warns (#883).
+	dialogue_panel.offset_top = -300
+	dialogue_panel.offset_bottom = 0
 	dialogue_panel.visible = false
 	layer.add_child(dialogue_panel)
 	var dialogue_box := VBoxContainer.new()

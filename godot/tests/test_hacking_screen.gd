@@ -100,4 +100,10 @@ func run() -> Array:
 	rows.append(_eq("a missing mission file is refused",
 		from_mission.open_mission("res://godot/scenarios/nope/mission.json"), false))
 
+	# Teardown: both screens are Controls that never enter the tree, and a Control owns Labels, buttons
+	# and rich-text buffers. Without this the headless run exits with ~140 leaked ObjectDB instances and
+	# leaked CanvasItem/text RIDs (#883).
+	screen.free()
+	no_program.free()
+	from_mission.free()
 	return rows

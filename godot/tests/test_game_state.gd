@@ -6,7 +6,7 @@ const GameStateScript := preload("res://godot/core/game_state.gd")
 
 func run() -> Array:
 	var rows: Array = []
-	var state = GameStateScript.new()
+	var state = _state()
 	state.new_case(11)
 
 	rows.append(_eq("scenario loaded", String(state.scenario.get("id", "")), "lakkahaltia"))
@@ -47,7 +47,7 @@ func run() -> Array:
 	# Save/load round trip.
 	var path := "user://test_save_lakkahaltia.json"
 	rows.append(_eq("save returns OK", state.save_to_file(path), OK))
-	var reloaded = GameStateScript.new()
+	var reloaded = _state()
 	reloaded.new_case(11)
 	rows.append(_eq("load returns OK", reloaded.load_from_file(path), OK))
 	rows.append(_eq("evidence survives", reloaded.evidence, state.evidence))
@@ -70,7 +70,7 @@ func run() -> Array:
 
 	# --- regressions from playing the scene (2026-10-26) ----------------------------------------
 	# Every one of these passed the data-integrity suite while being broken in play.
-	var probe = GameStateScript.new()
+	var probe = _state()
 	probe.new_case(11)
 	var trained: Dictionary = probe.resolve_check("INT", "Know", 8)
 	var untrained: Dictionary = probe.resolve_check("INT", "Forensics", 8)
@@ -83,7 +83,7 @@ func run() -> Array:
 	rows.append(_eq("second evidence applies its flag", probe.has_flag("place_anchored"), true))
 	rows.append(_eq("endings unlock once the evidence is in", probe.available_endings().size(), 2))
 
-	var gate = GameStateScript.new()
+	var gate = _state()
 	gate.new_case(11)
 	gate.add_evidence("E1")
 	gate.add_evidence("E2")
@@ -91,13 +91,13 @@ func run() -> Array:
 	rows.append(_eq("objectives advance as far as their gates allow",
 		gate.current_objective, "obj_annex"))
 
-	var stream = GameStateScript.new()
+	var stream = _state()
 	stream.new_case(11)
 	stream.resolve_check("INT", "Know", 8)
 	stream.resolve_check("INT", "Know", 8)
 	var dice_state: Dictionary = stream.rules.snapshot()
 	var expected_next: Array = stream.rules.skill_check(14, 3, 8)["dice"]
-	var resumed = GameStateScript.new()
+	var resumed = _state()
 	resumed.new_case(11)
 	resumed.rules.restore_dice(int(dice_state["seed"]), int(dice_state["rolls"]))
 	rows.append(_eq("the dice stream resumes where it stopped",
@@ -105,7 +105,7 @@ func run() -> Array:
 
 
 	# Psionics (#652): a real pool, a permission gate, and Effort that comes back at the end of a scene.
-	var psi_state = GameStateScript.new()
+	var psi_state = _state()
 	psi_state.new_case(31)
 	rows.append(_eq("Effort maximum is 1 + the better modifier + the best skill",
 		psi_state.effort_maximum(), 3))
@@ -118,7 +118,26 @@ func run() -> Array:
 	rows.append(_eq("a technique above the trained rank is refused",
 		bool(psi_state.use_technique("command").get("ok", true)), false))
 
+	_free_owned()
 	return rows
+
+# GameState extends Node, so every instance must be freed by hand or the headless run exits with
+# leaked ObjectDB instances (#883). Track them here and release them before `run()` returns.
+var _owned: Array[Node] = []
+
+
+func _state() -> Node:
+	var instance: Node = GameStateScript.new()
+	_owned.append(instance)
+	return instance
+
+
+func _free_owned() -> void:
+	for instance in _owned:
+		if is_instance_valid(instance):
+			instance.free()
+	_owned.clear()
+
 
 func _eq(label: String, actual: Variant, expected: Variant) -> Array:
 	return [label, actual == expected, "expected %s, got %s" % [str(expected), str(actual)]]

@@ -209,8 +209,13 @@ func _refresh() -> void:
 
 
 func _refresh_verbs() -> void:
+	# Free immediately rather than `queue_free()`: the screen is also built outside the scene tree (a
+	# headless suite constructs it, presses buttons and inspects it), and `queue_free()` on a tree-less
+	# node errors with "Cannot get path of node as it is not in a scene tree" and never actually frees —
+	# which is where #883's 15 leaked CanvasItem RIDs and ~67 ObjectDB instances came from.
 	for child in _verbs_panel.get_children():
-		child.queue_free()
+		_verbs_panel.remove_child(child)
+		child.free()
 	if _selected.is_empty():
 		_verbs_title.text = "Select a node"
 		return
