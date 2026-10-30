@@ -278,8 +278,11 @@ func _build_hud() -> void:
 
 	dialogue_panel = _panel()
 	dialogue_panel.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	dialogue_panel.position = Vector2(0, -300)
-	dialogue_panel.size = Vector2(0, 300)
+	# BOTTOM_WIDE uses opposing vertical anchors: set offsets rather than size.
+	dialogue_panel.offset_left = 0
+	dialogue_panel.offset_right = 0
+	dialogue_panel.offset_top = -300
+	dialogue_panel.offset_bottom = 0
 	dialogue_panel.visible = false
 	layer.add_child(dialogue_panel)
 	var dialogue_box := VBoxContainer.new()
