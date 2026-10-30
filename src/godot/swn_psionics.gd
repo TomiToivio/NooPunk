@@ -186,16 +186,15 @@ func restore(data: Dictionary) -> bool:
 		var row = data["learned"][id]
 		if not row is Dictionary or not candidate.learn_technique(str(id), str(row.get("discipline", "")), int(row.get("rank", -1)), true):
 			return false
+	var bonus := int(data.get("torch_bonus", 0))
+	if bonus < 0 or bonus > 1000:
+		return false
+	candidate.torch_bonus = bonus
 	for key in data["commitments"]:
 		var row = data["commitments"][key]
 		if not row is Dictionary or not candidate.activate(str(row.get("technique", "")), str(key), str(row.get("duration", "")), int(row.get("amount", 0))):
 			return false
-	var bonus := int(data.get("torch_bonus", 0))
-	if bonus < 0 or bonus > 1000:
-		return false
-	# Torch can make previously legal commitments exceed normal Effort.
-	# Re-check after restoring bonus and commitments, but do not invent lost points.
-	candidate.torch_bonus = bonus
+	# Check resources after restoring commitments.
 	if candidate.free_effort() < 0:
 		return false
 	candidate.scene_number = int(data.get("scene", 0))
