@@ -37,29 +37,34 @@ EXEMPT = {
 
 #: Known duplicates, oldest first. Each row names the domain and the file that is being merged away.
 #: Delete a row when its migration step in UNIFIED_IMPLEMENTATION.md lands.
-ALLOWED = {
-    "catalogue",      # godot/core/cwn_catalogue.gd  <- src/godot/cwn/cwn_catalogue.gd
-    "character",      # godot/core/cwn_character.gd  <- src/godot/cwn/cwn_character.gd
-    "combat",         # godot/core/cwn_combat_rules.gd <- src/godot/cwn/cwn_combat.gd
-    # "strain" retired in #791: src/godot/cwn/cwn_strain.gd was merged into godot/core/cwn_strain.gd
-    # and deleted. The guard now fails if the domain reappears, which is the intent.
-    "healing",        # godot/core/cwn_healing.gd    <- src/godot/cwn/cwn_healing.gd
-    # "psionics" retired in #791: src/godot/swn_psionics.gd was merged into godot/core/psionics.gd
-    # (its two core-technique statics came with it) and deleted.
-    "progression",    # godot/core/swn_progression.gd <- src/godot/cwn_progression.gd
-}
+#: Empty: the 2026-10-30 migration merged every duplicate rule domain into `godot/core/`.
+#: Adding an entry re-opens the drift this guard exists to stop; open an issue instead.
+ALLOWED: set[str] = set()
+
+#: Stems whose names collide with an unrelated domain. `swn_progression` is psychic training
+#: (disciplines, technique picks), not levelling, so treating it as the same domain as
+#: `cwn_progression` produced a false duplicate that would have justified keeping two modules.
+DOMAIN_OVERRIDE = {"swn_progression": "psychic_training"}
+
 
 #: A domain is the file stem with the system prefix and a trailing "_rules" removed, so
 #: `cwn_combat_rules` and `cwn_combat` collide on purpose.
 PREFIX = re.compile(r"^(cwn|swn|noopunk|wn)_")
+SYSTEM = re.compile(r"^(cwn|swn|noopunk|wn)")
 SUFFIX = re.compile(r"_(rules|procedures)$")
 
 
 def domain_of(path: Path) -> str:
+    """`<system>:<rule>`. The prefix stays because CWN and SWN are different games: `cwn_progression`
+    (character advancement) and `swn_progression` (psychic training) share a word and no rule."""
     stem = path.stem.lower()
+    if stem in DOMAIN_OVERRIDE:
+        return DOMAIN_OVERRIDE[stem]
+    match = SYSTEM.match(stem)
+    prefix = match.group(1) if match else "other"
     stem = PREFIX.sub("", stem)
     stem = SUFFIX.sub("", stem)
-    return stem
+    return f"{prefix}:{stem}"
 
 
 def scan() -> dict[str, list[str]]:

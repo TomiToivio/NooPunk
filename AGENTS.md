@@ -406,26 +406,6 @@ When adding or revising mechanics:
 
 Setting work should preserve current 20XX / Earth-intact anchors unless the author explicitly revises them.
 
-## CANONICAL NoöPunk project — restart (#827)
-
-**All new NoöPunk work targets these two paths and no others:**
-
-| What | Path |
-|---|---|
-| Tabletop rulebook | `noopunk/rulebook/RULEBOOK.md` |
-| Godot top-down RPG | `noopunk/game/` (`project.godot`) |
-
-Everything else is **frozen reference**: the legacy `rulebook/`, the earlier Godot projects under
-`godot/` and `src/godot/`, and the Python kernels under `src/rules/`. They are not deleted and not
-extended. If a task appears to belong to an old directory, stop and ask instead of resuming work there.
-
-The rulebook starts blank on purpose. Tomi supplies one rule, scenario concept, interaction or guideline
-at a time; each is implemented in **both** the rulebook and the game in the same pass, and nothing
-broader is invented. Do not operate as an independent design team, and do not create a third
-implementation.
-
-Meta-issue **#827 stays open permanently**. Only scoped child issues close.
-
 ### Tomi's drafts: two synchronised implementations (#814)
 
 Tomi is the authorial source of truth. When a draft arrives, read
@@ -443,3 +423,8 @@ Tomi is the authorial source of truth. When a draft arrives, read
 ## Godot rule-module ownership clarification (#791)
 
 `godot/core/` is the canonical owner of CWN/SWN game-rule implementations. `src/godot/` remains a compatibility tree only. Port unique capabilities and preserve consumers and tests before retiring duplicates. The two catalogue APIs differ (instance ID lookup vs static named catalogue lookup), so do not mechanically repoint either caller. See `docs/godot/CANONICAL_GODOT_TREE.md` and `docs/godot/UNIFIED_IMPLEMENTATION.md`.
+
+
+## NEW AUTHORITATIVE RESTART: issue #827 (supersedes #814 for new work)
+
+For all **new NoöPunk RPG development**, the canonical artifacts are `noopunk/rulebook/RULEBOOK.md` and the standalone minimal Godot project `noopunk/game/project.godot`. These two paths supersede the earlier root-project-only and #814 rules **for the restart**, while legacy files elsewhere remain preserved reference material. Do not extend older Godot or rulebook code for new tasks, and do not spawn other alternatives. Tomi defines one small feature at a time; update both of these SAME canonical artifacts together and verify their parity. Do not automatically import legacy CWN/SWN rules, seven attributes, lore, or frameworks. First milestone: blank rulebook and top-down player movement only. Keep meta-issue #827 open; close only implementation child issues. See `noopunk/README.md`.

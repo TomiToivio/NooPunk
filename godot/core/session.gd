@@ -8,6 +8,7 @@
 extends RefCounted
 class_name NoopunkSession
 
+const PLAYER_ID := "pc"
 const DATA_DIR := "res://godot/scenarios/mvp_romppainen/"
 const SAVE_VERSION := 1
 
@@ -18,6 +19,9 @@ var mission: Dictionary = {}
 var hacking: NoopunkHacking
 var combat: NoopunkCombat = null
 var hp: int = 0
+## #806/#809: the active party (1..4). The PC is the protagonist; Romppainen is a companion.
+var party: CwnParty = null
+var member_hp: Dictionary = {}
 var log: Array = []
 
 func _init(rules_adapter: RulesAdapter, data_dir: String = DATA_DIR) -> void:
@@ -105,8 +109,22 @@ func start_encounter() -> bool:
 			"ammo": int(enemy.get("ammo", -1)),
 		})
 	var attack: Dictionary = character.get("attack", {})
-	combat.add_actor({
-		"id": "romppainen", "side": "pc", "pos": Vector2i(1, 3),
+	# #809: every party member is an actor. The PC is no longer Romppainen, and a solo party of one
+	# must work exactly like a four-person squad - so this loops rather than naming a protagonist.
+	var pc_ids: Array = []
+	if party != null and party.size() > 0:
+		for member in party.members:
+			pc_ids.append(str(member.get("id", "")))
+	else:
+		# No party configured: the character record is the protagonist, whatever its id. This keeps
+		# existing single-protagonist scenarios working without naming a specific person here.
+		pc_ids.append(str(character.get("id", PLAYER_ID)))
+	var slot := 0
+	for actor_id in pc_ids:
+		var member_hp_value := int(member_hp.get(actor_id, hp))
+		member_hp[actor_id] = member_hp_value
+		combat.add_actor({
+		"id": actor_id, "side": "pc", "pos": Vector2i(1, 3 + slot),
 		"hp": hp, "ac": int(character.get("ac", 10)),
 		"dex": int(character.get("attributes", {}).get("DEX", 10)),
 		"attack_attribute": int(character.get("attributes", {}).get(String(attack.get("attribute", "DEX")), 10)),
@@ -123,7 +141,8 @@ func start_encounter() -> bool:
 		"lethal": bool(attack.get("lethal", true)),
 		"ammo": int(attack.get("ammo", -1)),
 		"ammo_max": int(attack.get("ammo_max", attack.get("ammo", -1))),
-	})
+		})
+		slot += 1
 	combat.start()
 	log.append({"event": "encounter_start"})
 	return true
@@ -132,10 +151,12 @@ func combat_attack(actor_id: String, target_id: String) -> Dictionary:
 	if combat == null:
 		return {"ok": false, "reason": "no_encounter"}
 	var result := combat.attack(actor_id, target_id)
-	if actor_id == "romppainen":
-		pass
-	elif target_id == "romppainen" and bool(result.get("hit", false)):
-		hp = max(0, hp - int(result.get("damage", 0)))
+	if bool(result.get("hit", false)) and member_hp.has(target_id):
+		member_hp[target_id] = max(0, int(member_hp[target_id]) - int(result.get("damage", 0)))
+		# The controlled member's hit points stay mirrored on `hp` for callers written against the
+		# single-protagonist slice; the roster is the source of truth.
+		if party == null or target_id == party.controlled_id:
+			hp = member_hp[target_id]
 	log.append({"event": "combat_attack", "actor": actor_id, "target": target_id,
 		"hit": result.get("hit", false)})
 	return result

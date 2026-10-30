@@ -230,9 +230,137 @@ STAT + Skill + 1d10
 
 Where an entity does not meaningfully possess a domain or STAT, use **N/A** in human-readable material and `null` in machine-readable data rather than treating zero as absence.
 
+> **Superseded for player characters (issue #821).** The seven tag-based attributes in §3.3 replace the 1–10 STAT ladder above for the current NoöPunk baseline. §3.2 remains for entities that still use the older notation; a character sheet uses §3.3.
+
 Augmentation may create effective capabilities above the ordinary human scale, but base capability and augmentation should remain distinguishable.
 
 ---
+
+
+### 3.3. NoöPunk tag-based attributes (#821)
+
+**Status: AUTHOR-SPECIFIED (#821, child of #814).** This section implements Tomi's draft. Where the
+draft leaves a question open, the open question is listed in §3.3.9 rather than answered here.
+
+NoöPunk character properties are **typed tags**. A tag carries its kind, name and value, and the
+display string is derived from those — never parsed back as the source of truth. This matters because
+`Firearms-1` (a skill level) and `wounded-1` (a penalty) are indistinguishable as text.
+
+```text
+tag := {type, name, value, permanence, duration, source, stacking, exclusive_group}
+type ∈ attribute | skill | status | trait
+```
+
+#### 3.3.1. The seven attributes
+
+| Attribute | Meaning |
+| --- | --- |
+| **Fitness** | How athletic, strong and healthy the body is |
+| **Cognition** | Searching, processing and understanding human language data, culture and the Safenet's language-encoded database |
+| **Awareness** | Consciousness, perception, intuition and wisdom |
+| **Agency** | Free will, coolness, willpower and identity |
+| **Reflexes** | Dexterity, agility and coordination |
+| **Cyber** | Technical aptitude, cyberspace ability and interfacing with machines |
+| **Empathy** | Loving kindness, empathy and humanity |
+
+#### 3.3.2. Generation and the human band
+
+Roll **3d6 once per attribute, seven times**, and record only the modifier. The raw score is not
+written on the sheet.
+
+| 3d6 | Tag value |
+| --- | --- |
+| 3 | −2 |
+| 4–7 | −1 |
+| 8–13 | 0 |
+| 14–17 | +1 |
+| 18 | +2 |
+
+The human band is **−2 through +2**; above +2 is transhuman. This table replaces nothing with another
+distribution, and the generator can never produce a value below −2 for a human.
+
+#### 3.3.3. The Empathy boundary
+
+**Empathy −3** is below the human range. Such a character is no longer human and **is not eligible as
+a player character**; NPCs may hold it. In the setting's ethics framework, low Empathy with high
+Agency reads as service-to-self and negative polarity — a setting mechanic, not a claim about real
+psychology. No numeric threshold for "low" or "high" is defined here.
+
+#### 3.3.4. Skills as tags
+
+Skills are rated **0–4** and displayed as named levels: `Firearms-1` means skill level 1, not a
+penalty. Untrained use supports two cases, and the draft leaves which tasks fall into each open:
+
+- **attempted at −1**, the default for ordinary tasks;
+- **impossible without the skill**, for tasks the table classifies as needing training.
+
+#### 3.3.5. Skill list and default attributes
+
+| Skill | Default attribute | Note |
+| --- | --- | --- |
+| Administer | Cognition | bureaucracy, institutions |
+| Connect | Empathy | requires further design |
+| Drive | Reflexes | |
+| Strength | Fitness | raw muscular power (replaces Exert) |
+| Stamina | Fitness | endurance (also replaces Exert) |
+| Hardware | Cyber | replaces Fix |
+| Wetware | Empathy | replaces Heal; biology and medicine |
+| Software | Cyber | replaces Program |
+| Noöware | Empathy | new: psyche, psychiatry, psychic integration |
+| Research | Cognition | replaces generic Know |
+| Know | *open* | domain-specific uses under review |
+| Lead | Agency | |
+| Notice | Awareness | |
+| Unarmed | Reflexes | replaces Punch |
+| Melee | Reflexes | replaces Stab |
+| Firearms | Reflexes | replaces Shoot |
+| Sneak | Awareness | |
+| Survive | Agency | |
+| Talk | *contextual* | Agency, Empathy or another attribute by approach |
+| Trade | Agency | |
+| Work | *open* | professional/domain uses under review |
+
+**Talk** is one skill, not two. Use Talk + Empathy for rapport and compassionate persuasion; Talk +
+Agency for authority, conviction and bluffing. **Strength** is a *skill*; the old Strength attribute
+is gone and its value feeds Fitness.
+
+#### 3.3.6. Statuses and traits
+
+Temporary statuses and permanent traits use the same tagged representation with explicit duration,
+stacking and exclusivity. Three stacking behaviours exist: **replace** (the stronger magnitude
+survives), **add** (values sum), and **exclusive group** (a new tag clears the others in its group).
+Permanent traits never expire. The catalogue of statuses is deliberately not fixed here.
+
+#### 3.3.7. Checks
+
+Checks keep the CWN baseline: **2d6 + attribute tag + skill level**, against the table's difficulty.
+A skill's default attribute is the one listed in §3.3.5; Talk and the open skills require the table to
+choose one before rolling.
+
+#### 3.3.8. Conversion from CWN/SWN
+
+| Old | New |
+| --- | --- |
+| Wisdom | Agency, Empathy, Awareness |
+| Strength, Constitution | Fitness |
+| Dexterity | Reflexes |
+| Intelligence | Cognition, Cyber |
+| Charisma | Empathy, Awareness, Agency |
+
+This is a **conceptual crosswalk, not a copy rule**: several old scores feed one new tag and one old
+score feeds several, so a conversion must be decided rather than mechanically duplicated. Legacy
+conversion is pending Tomi's ruling; the game reports ambiguity instead of choosing.
+
+#### 3.3.9. Open questions for the author
+
+1. Which tasks are **impossible** untrained rather than attempted at −1?
+2. What remains of **Know** once Research is generic, and which domains?
+3. What are the **Work** specialities?
+4. How should a legacy character's several old scores collapse into one new tag (e.g. STR + CON →
+   Fitness), and what happens to attributes fed by two old scores?
+5. Stacking and duration defaults for statuses (the mechanism exists; the catalogue does not).
+6. Nonhuman and transhuman ranges beyond +2.
+7. The Connect redesign and whether the whole skill list survives NoöPunk development.
 
 ## 4. Skills
 

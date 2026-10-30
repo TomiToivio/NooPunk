@@ -8,10 +8,16 @@
 extends SceneTree
 
 const SUITES := [
+	"res://godot/tests/test_party.gd",
+	"res://godot/tests/test_noopunk_tags.gd",
+	"res://godot/tests/test_tags.gd",
+	"res://godot/tests/test_member_sheet.gd",
+	"res://godot/tests/test_field_agent.gd",
+	"res://godot/tests/test_campaign_migration.gd",
+	"res://godot/tests/test_cwn_party.gd",
 	"res://godot/tests/test_campaign_state.gd",
 	"res://godot/tests/test_cwn_engine.gd",
 	"res://godot/tests/test_cwn_injury.gd",
-	"res://godot/tests/test_rules_parity.gd",
 	"res://godot/tests/test_rules_adapter.gd",
 	"res://godot/tests/test_combat.gd",
 	"res://godot/tests/test_hacking.gd",

@@ -30,14 +30,12 @@ KNOWN_LEGACY_WORKFLOWS = {
     "godot.yml",
 }
 
-KNOWN_DUPLICATES = {
-    "cwn_catalogue.gd",   # godot/core copy to be deleted; test repointed at src/godot
-    "cwn_character.gd",   # same
-    # Found by this guard on 2026-10-30: a later merge reintroduced these two. They are debt, not
-    # permission - deleting a name from this set is the completion signal for #791.
-    "cwn_healing.gd",
-    # "cwn_strain.gd" retired in #791: merged into godot/core/cwn_strain.gd and deleted.
-}
+#: Empty as of the #791 merge: every rule domain now exists once, in `godot/core/`.
+#: The set stays so a future duplicate has somewhere to be recorded — but recording one is a
+#: regression, not a plan.
+KNOWN_DUPLICATES: set[str] = set()
+# Retired: cwn_strain.gd (#799), cwn_healing.gd (#801), cwn_catalogue.gd and cwn_character.gd
+# (#804), all merged into `godot/core/` and deleted from `src/godot/`.
 
 
 def _basenames(root: Path) -> set[str]:

@@ -56,3 +56,26 @@ static func frail_week(has_medic_care: bool, physical_save_success: Variant = nu
 	if physical_save_success == null:
 		return {"ok": false, "reason": "without_care_the_week_needs_its_physical_save"}
 	return {"ok": true, "outcome": "month_more" if bool(physical_save_success) else "dying"}
+
+## Remaining SRD procedures previously exposed by the retired compatibility healing module.
+static func rounds_until_death(downed_round: int, current_round: int) -> int:
+	assert(current_round >= downed_round, "current round precedes downing")
+	return maxi(0, MORTAL_WOUND_ROUNDS - (current_round - downed_round))
+
+static func remove_frailty(skill_total: int, difficulty: int = 10,
+		already_attempted: bool = false) -> Dictionary:
+	if already_attempted:
+		return {"allowed": false, "succeeded": false}
+	return {"allowed": true, "succeeded": skill_total >= difficulty}
+
+## An optional Strain object is passed explicitly rather than held in a second game state.
+static func first_aid(die_roll: int, heal_skill: int = 0, has_medkit: bool = true,
+		strain = null) -> Dictionary:
+	assert(has_medkit, "first aid requires a medkit")
+	assert(die_roll >= 1 and heal_skill >= 0, "invalid roll or skill rank")
+	var healed := maxi(0, die_roll + heal_skill if heal_skill > 0 else die_roll - 1)
+	if strain != null and not strain.can_absorb(1.0):
+		return {"healed": 0, "strain_added": 0, "refused": true}
+	if strain != null:
+		strain.absorb(1.0)
+	return {"healed": healed, "strain_added": 1 if strain != null else 0, "refused": false}

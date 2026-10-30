@@ -1,5 +1,5 @@
 extends SceneTree
-const Rules = preload("res://src/godot/cwn_progression.gd")
+const Rules = preload("res://godot/core/cwn_progression.gd")
 
 func _initialize() -> void:
 	call_deferred("_run")
