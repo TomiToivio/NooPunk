@@ -1,5 +1,10 @@
 extends RefCounted
 
+## Preloaded rather than referenced by global class name: the global class cache only exists after an
+## import pass, so a headless run on a clean checkout cannot resolve `NooPunkCampaignState` and the
+## whole suite fails to load (the other suites here preload for the same reason).
+const NooPunkCampaignState := preload("res://src/godot/campaign_state.gd")
+
 func run() -> Array:
 	var rows: Array = []
 	var state := NooPunkCampaignState.new()
