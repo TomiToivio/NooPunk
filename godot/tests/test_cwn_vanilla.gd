@@ -8,6 +8,8 @@ const CH := preload("res://godot/core/cwn_chases.gd")
 const CW := preload("res://godot/core/cwn_cyberware_ops.gd")
 const MT := preload("res://godot/core/cwn_mission_time.gd")
 const GM := preload("res://godot/core/cwn_gear_mods.gd")
+const SC := preload("res://godot/core/cwn_social_costs.gd")
+const CC := preload("res://godot/core/cwn_cyberware_complications.gd")
 
 
 func _eq(name: String, actual: Variant, expected: Variant) -> Array:
@@ -132,5 +134,40 @@ func run() -> Array:
 	rows.append(_eq("the same mod cannot be applied twice", GM.apply_weapon_mods(["autotargeting", "autotargeting"], "firearm", true)["ok"], false))
 	rows.append(_eq("an unknown weapon mod is refused", GM.apply_weapon_mods(["phaser"], "firearm", true)["ok"], false))
 	rows.append(_eq("a firearm mod does not fit a melee weapon", GM.apply_weapon_mods(["autotargeting"], "melee", true)["ok"], false))
+
+	# ---- lifestyles, wages, bribes, chems ---------------------------------------------------
+	rows.append(_eq("middle-class life costs $1,000", SC.lifestyle_cost("middle_class")["cost_per_month"], 1000))
+	rows.append(_eq("middle-class life has no strain modifier", SC.lifestyle_cost("middle_class")["strain_modifier"], 0))
+	rows.append(_eq("squatting costs no cash but -2 strain", SC.lifestyle_cost("squatter")["strain_modifier"], -2))
+	rows.append(_eq("luxury grants +2 maximum strain", SC.lifestyle_cost("luxury")["strain_modifier"], 2))
+	rows.append(_eq("an unknown lifestyle is refused", SC.lifestyle_cost("penthouse")["ok"], false))
+	rows.append(_eq("an elite bodyguard earns $500 a day", SC.wage("elite_bodyguard")["daily"], 500))
+	rows.append(_eq("an unknown worker is refused", SC.wage("wizard")["ok"], false))
+	rows.append(_eq("a minor favor from a manager costs $500", SC.bribe_cost("corp_middle_manager", "look_other_way_minor")["cost"], 500))
+	rows.append(_eq("a job-threatening favor is flagged serious", SC.bribe_cost("corp_middle_manager", "favor_might_get_fired")["serious_risk"], true))
+	rows.append(_eq("a job-threatening favor costs 180 days", SC.bribe_cost("corp_middle_manager", "favor_might_get_fired")["multiple"], 180))
+	rows.append(_eq("an unknown favor is refused", SC.bribe_cost("corp_hacker", "kill_someone")["ok"], false))
+	rows.append(_eq("avalanche costs $100 and needs Heal-0", SC.drug("avalanche")["min_heal"], 0))
+	rows.append(_eq("sand needs no medical skill", SC.drug("sand")["min_heal"], -1))
+	rows.append(_eq("reset needs a contact", SC.drug("reset")["contact_required"], true))
+	rows.append(_eq("panacea cannot be given untrained", SC.can_administer(0, "panacea")["allowed"], false))
+	rows.append(_eq("panacea can be given by Heal-1", SC.can_administer(1, "panacea")["allowed"], true))
+	rows.append(_eq("anyone can administer sand", SC.can_administer(0, "sand")["allowed"], true))
+	rows.append(_eq("an unknown chem is refused", SC.can_administer(1, "ambrosia")["ok"], false))
+	rows.append(_eq("a chem within Strain grants its benefit", SC.strain_gate(8, 10, 2)["benefit"], true))
+	rows.append(_eq("overflowing Strain denies the benefit", SC.strain_gate(9, 10, 2)["benefit"], false))
+	rows.append(_eq("overflowing Strain still applies harm", SC.strain_gate(9, 10, 2)["harmful_effects_still_apply"], true))
+
+	# ---- implant complications -------------------------------------------------------------
+	rows.append(_eq("the complication table has twelve rows", CC.TABLE.size(), 12))
+	rows.append(_eq("roll 2 is Inefficient", CC.complication(2)["id"], "inefficient"))
+	rows.append(_eq("Inefficient adds half a Strain point", CC.complication(2)["extra_strain"], 0.5))
+	rows.append(_eq("roll 8 adds a point when a sibling implant exists", CC.extra_strain(8, true), 1.0))
+	rows.append(_eq("roll 8 adds nothing when it is the only implant", CC.extra_strain(8, false), 0.0))
+	rows.append(_eq("roll 12 is harmless", CC.complication(12)["id"], "petty_annoyance"))
+	rows.append(_eq("a non-applicable roll becomes 12", CC.complication(3, false)["used"], 12))
+	rows.append(_eq("the substitution is reported", CC.complication(3, false)["substituted"], true))
+	rows.append(_eq("an applicable roll is not substituted", CC.complication(3, true)["used"], 3))
+	rows.append(_eq("a d13 roll is refused", CC.complication(13)["ok"], false))
 
 	return rows
