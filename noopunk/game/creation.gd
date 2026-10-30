@@ -7,6 +7,9 @@ extends Control
 ## specialisation or background, because the issue specifies none.
 
 const MAIN_SCENE := "res://main.tscn"
+## Preloaded rather than referenced by the global class name: the global class cache only exists after
+## an import pass, so without this the screen cannot build on a clean checkout.
+const Attributes := preload("res://attributes.gd")
 
 var _rng := RandomNumberGenerator.new()
 var _rows: VBoxContainer
@@ -15,9 +18,8 @@ var _values: Dictionary = {}
 func _ready() -> void:
 	_ensure_built()
 
-## `_ready` does not run for nodes added by a `--script` runner before the main loop starts, so the
-## screen builds itself on first use as well. The headless check calls `row_count()`/`sheet_values()`
-## directly; in the running game `_ready` does it.
+## `_ready` is not called for nodes added by a `--script` runner before the main loop starts, so the
+## screen also builds itself on first use. A headless check gets the same screen as a window.
 var _built := false
 
 func _ensure_built() -> void:
@@ -28,8 +30,12 @@ func _ensure_built() -> void:
 	var root := VBoxContainer.new()
 	root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	root.add_theme_constant_override("separation", 6)
-	root.position = Vector2(24, 16)
-	root.size = Vector2(592, 328)
+	# Offsets, not `position`/`size`: with a full-rect preset the container's size is managed by the
+	# anchor layout and any explicit size is overridden after `_ready()`.
+	root.offset_left = 24
+	root.offset_top = 16
+	root.offset_right = -24
+	root.offset_bottom = -16
 	add_child(root)
 
 	var title := Label.new()
@@ -37,7 +43,7 @@ func _ensure_built() -> void:
 	root.add_child(title)
 
 	var premise := Label.new()
-	premise.text = NoopunkAttributes.premise()
+	premise.text = Attributes.premise()
 	premise.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	root.add_child(premise)
 
@@ -60,8 +66,8 @@ func _ensure_built() -> void:
 	_on_roll()
 
 func _on_roll() -> void:
-	var rolled := NoopunkAttributes.roll(_rng)
-	_values = NoopunkAttributes.sheet(rolled)
+	var rolled := Attributes.roll(_rng)
+	_values = Attributes.sheet(rolled)
 	# Autoloads do not exist when the project is run with `--script` (the headless checks), so the
 	# lookup is guarded; in the running game the singleton is always there.
 	var sheet = get_node_or_null("/root/Sheet") if is_inside_tree() else null
@@ -72,7 +78,7 @@ func _on_roll() -> void:
 func _render() -> void:
 	for child in _rows.get_children():
 		child.queue_free()
-	for definition in NoopunkAttributes.attribute_definitions():
+	for definition in Attributes.attribute_definitions():
 		var name := str(definition.get("name", ""))
 		var value := int(_values.get(name, 0))
 		var row := Label.new()
