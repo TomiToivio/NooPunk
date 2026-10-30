@@ -39,3 +39,14 @@ offset_top = 8.0
 offset_right = 320.0
 offset_bottom = 32.0
 text = "WASD / arrows to move"
+
+[node name="CharacterSheetLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="CharacterSheet" type="ColorRect" parent="CharacterSheetLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.045, 0.055, 0.09, 0.97)

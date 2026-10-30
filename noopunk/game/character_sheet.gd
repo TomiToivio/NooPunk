@@ -7,7 +7,20 @@ var overlay: ColorRect
 var entries: VBoxContainer
 var sheet_open := true
 
-func _ready() -> void:
+## Built in `_enter_tree`, not `_ready`.
+##
+## `_ready` is not called for nodes added to the tree by a `--script` runner before the main loop
+## starts, so a headless check would see a missing sheet while the window showed one. Building on
+## entering the tree is deterministic in both.
+func _enter_tree() -> void:
+	_ensure_built()
+
+var _built := false
+
+func _ensure_built() -> void:
+	if _built:
+		return
+	_built = true
 	rng.randomize()
 	_build_sheet()
 	roll_attributes()
@@ -34,20 +47,28 @@ func _refresh_sheet() -> void:
 		entries.add_child(row)
 
 func show_sheet(open: bool) -> void:
+	_ensure_built()
 	sheet_open = open
 	overlay.visible = open
 	$Player.set_physics_process(not open)
 
 func _build_sheet() -> void:
-	var layer := CanvasLayer.new()
-	layer.name = "CharacterSheetLayer"
-	layer.layer = 10
-	add_child(layer)
-	overlay = ColorRect.new()
-	overlay.name = "CharacterSheet"
-	overlay.color = Color(0.045, 0.055, 0.09, 0.97)
-	layer.add_child(overlay)
-	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	# The layer and overlay are declared in `main.tscn`, so they exist the moment the scene is
+	# instantiated - which is what a headless check sees. The script creates them only if a caller
+	# builds a sheet node without the scene.
+	var layer := get_node_or_null("CharacterSheetLayer") as CanvasLayer
+	if layer == null:
+		layer = CanvasLayer.new()
+		layer.name = "CharacterSheetLayer"
+		layer.layer = 10
+		add_child(layer)
+	overlay = layer.get_node_or_null("CharacterSheet") as ColorRect
+	if overlay == null:
+		overlay = ColorRect.new()
+		overlay.name = "CharacterSheet"
+		overlay.color = Color(0.045, 0.055, 0.09, 0.97)
+		layer.add_child(overlay)
+		overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var column := VBoxContainer.new()
 	column.position = Vector2(20, 16)
 	column.custom_minimum_size = Vector2(600, 0)
