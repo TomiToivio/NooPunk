@@ -217,6 +217,10 @@ rests on an underlying unity.
 - Advanced NHI, psychotronics, psionic adepts and AGI research may access **different
   slices** of it.
 
+The planetary extension of this idea — the collective unconscious becoming conscious of itself
+across the biosphere, and the reason the Noösphere is *not* the network that tries to reach it — is
+defined in [`11_ONTOLOGY.md`](11_ONTOLOGY.md) §10.12 (#748).
+
 **Why this is useful:** it avoids making Noöspace merely "another dimension with ghosts in
 it." It can be stranger — **a pre-physical / pre-mental domain from which both categories
 emerge.**
