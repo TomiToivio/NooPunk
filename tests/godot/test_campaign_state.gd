@@ -32,7 +32,9 @@ func test_accepting_the_mission_unlocks_it_and_return_works() -> void:
 	check(state.record_once("mission_accepted", "Took the case."), "the mission flag is set once")
 	check(state.travel("hq"), "home -> hq")
 	check(state.travel("mission"), "the accepted mission is reachable from hq")
-	check(state.travel("hq"), "mission -> hq returns")
+	check(state.resolve_mission("success", "investigative"), "mission is resolved")
+	check(state.travel("debrief"), "mission -> debrief")
+	check(state.travel("hq"), "debrief -> hq")
 	check_eq(state.current_location, "hq", "the debrief returns the campaign to hq")
 
 

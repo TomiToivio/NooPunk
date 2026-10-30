@@ -12,6 +12,8 @@ func test_campaign_starts_home_and_mission_is_locked() -> void:
 	check(not campaign.record_once("mission_accepted", "Assignment accepted."), "accept only once")
 	check_eq(campaign.journal.size(), 1, "journal not duplicated")
 	check(campaign.travel("mission"), "mission unlocked")
+	check(campaign.resolve_mission("success", "investigative"), "complete mission")
+	check(campaign.travel("debrief"), "proceed to debrief")
 	check(campaign.travel("hq"), "return to HQ")
 	check(campaign.record_once("debrief_complete", "Debrief"), "complete once")
 	check(not campaign.record_once("debrief_complete", "Debrief"), "debrief idempotent")
