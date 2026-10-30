@@ -118,7 +118,12 @@ func run() -> Array:
 	rows.append(_eq("a technique above the trained rank is refused",
 		bool(psi_state.use_technique("command").get("ok", true)), false))
 
+	# GameState is a Node: these instances never enter the tree, so free them explicitly.
+	for node in [state, reloaded, probe, gate, stream, resumed, psi_state]:
+		node.free()
+
 	return rows
 
 func _eq(label: String, actual: Variant, expected: Variant) -> Array:
 	return [label, actual == expected, "expected %s, got %s" % [str(expected), str(actual)]]
+
