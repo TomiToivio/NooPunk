@@ -50,16 +50,21 @@ DOMAIN_OVERRIDE = {"swn_progression": "psychic_training"}
 #: A domain is the file stem with the system prefix and a trailing "_rules" removed, so
 #: `cwn_combat_rules` and `cwn_combat` collide on purpose.
 PREFIX = re.compile(r"^(cwn|swn|noopunk|wn)_")
+SYSTEM = re.compile(r"^(cwn|swn|noopunk|wn)")
 SUFFIX = re.compile(r"_(rules|procedures)$")
 
 
 def domain_of(path: Path) -> str:
+    """`<system>:<rule>`. The prefix stays because CWN and SWN are different games: `cwn_progression`
+    (character advancement) and `swn_progression` (psychic training) share a word and no rule."""
     stem = path.stem.lower()
     if stem in DOMAIN_OVERRIDE:
         return DOMAIN_OVERRIDE[stem]
+    match = SYSTEM.match(stem)
+    prefix = match.group(1) if match else "other"
     stem = PREFIX.sub("", stem)
     stem = SUFFIX.sub("", stem)
-    return stem
+    return f"{prefix}:{stem}"
 
 
 def scan() -> dict[str, list[str]]:

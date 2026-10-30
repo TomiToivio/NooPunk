@@ -34,3 +34,7 @@ This change joins the existing campaign prototype to the **existing default titl
 - Document runtime-dependent checks honestly if Godot is unavailable.
 
 See `AGENTS.md` for binding agent coordination instructions.
+
+## #791 migration: CWN healing
+
+The duplicate `src/godot/cwn/cwn_healing.gd` is retired after porting `rounds_until_death`, `remove_frailty`, and `first_aid` into `godot/core/cwn_healing.gd`. The canonical dictionary-returning `stabilize`, `stabilize_difficulty`, and `frail_week` contracts remain intact, with legacy test callers migrated. The parity suite now asserts deterministic canonical SRD fixtures rather than preloading a deleted alternative. The duplicate-domain allowlist shrinks accordingly. The other legacy rule domains and case/state migrations remain outstanding.
