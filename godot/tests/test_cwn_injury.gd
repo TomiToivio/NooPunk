@@ -4,7 +4,7 @@ extends RefCounted
 ## as ported in `src/rules/cwn_{strain,major_injury,injury_procedure,healing}.py`.
 const Strain := preload("res://godot/core/cwn_strain.gd")
 const Injury := preload("res://src/godot/cwn/cwn_injury.gd")
-const Healing := preload("res://src/godot/cwn/cwn_healing.gd")
+const Healing := preload("res://godot/core/cwn_healing.gd")
 
 func _eq(name: String, got: Variant, want: Variant) -> Array:
 	return [name, got == want, "got %s want %s" % [got, want]]
@@ -98,20 +98,20 @@ func run() -> Array:
 	rows.append(_eq("death arrives on round six", Healing.rounds_until_death(3, 3), 6))
 	rows.append(_eq("the clock runs down", Healing.rounds_until_death(3, 7), 2))
 	rows.append(_eq("the clock never goes negative", Healing.rounds_until_death(3, 20), 0))
-	rows.append(_eq("stabilising starts at 8", Healing.stabilize_difficulty(0), 8))
-	rows.append(_eq("each round adds one", Healing.stabilize_difficulty(2), 10))
-	rows.append(_eq("no medkit is two harder", Healing.stabilize_difficulty(0, false), 10))
+	rows.append(_eq("stabilising starts at 8", Healing.stabilize_difficulty(0)["difficulty"], 8))
+	rows.append(_eq("each round adds one", Healing.stabilize_difficulty(2)["difficulty"], 10))
+	rows.append(_eq("no medkit is two harder", Healing.stabilize_difficulty(0, false)["difficulty"], 10))
 
-	var stabilised: Dictionary = Healing.stabilize({"hit_points": 0, "frail": false})
+	var stabilised: Dictionary = Healing.stabilize({"hit_points": 0, "frail": false, "mortally_wounded": true})["patient"]
 	rows.append(_eq("stabilising wakes at one", stabilised["hit_points"], 1))
 	rows.append(_eq("surviving costs frailty", stabilised["frail"], true))
 
 	rows.append(_eq("the frail do not heal naturally", Healing.natural_healing(3, true), 0))
 	rows.append(_eq("others heal their level", Healing.natural_healing(3, false), 3))
-	rows.append(_eq("care ends frailty", Healing.frail_week(true), "recovered"))
-	rows.append(_eq("no care and a failed save is dying", Healing.frail_week(false, false), "dying"))
+	rows.append(_eq("care ends frailty", Healing.frail_week(true)["outcome"], "recovered"))
+	rows.append(_eq("no care and a failed save is dying", Healing.frail_week(false, false)["outcome"], "dying"))
 	rows.append(_eq("no care and a passed save buys a month",
-		Healing.frail_week(false, true), "month_more"))
+		Healing.frail_week(false, true)["outcome"], "month_more"))
 	rows.append(_eq("one attempt only", Healing.remove_frailty(12, 10, true)["allowed"], false))
 	rows.append(_eq("a good roll clears frailty", Healing.remove_frailty(10, 10)["succeeded"], true))
 
