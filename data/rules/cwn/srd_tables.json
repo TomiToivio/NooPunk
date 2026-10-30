@@ -1,0 +1,4890 @@
+{
+ "source": "https://cwn.quadrifons.com",
+ "licence": "CC0 (verified-public-domain)",
+ "tables": {
+  "firearms": [
+   {
+    "columns": [
+     "Firearm",
+     "Dmg",
+     "Range",
+     "Cost",
+     "Mag",
+     "Attr.",
+     "Enc.",
+     "TD",
+     "TR"
+    ],
+    "rows": [
+     {
+      "Firearm": "Light Pistol",
+      "Dmg": "1d6",
+      "Range": "10/80",
+      "Cost": "$200",
+      "Mag": "15",
+      "Attr.": "Dex",
+      "Enc.": "1",
+      "TD": "1d8",
+      "TR": "x2"
+     },
+     {
+      "Firearm": "Heavy Pistol",
+      "Dmg": "1d8",
+      "Range": "10/100",
+      "Cost": "$200",
+      "Mag": "8",
+      "Attr.": "Dex",
+      "Enc.": "1",
+      "TD": "1d6",
+      "TR": "x3"
+     },
+     {
+      "Firearm": "Advanced Bow",
+      "Dmg": "1d8",
+      "Range": "30/200",
+      "Cost": "$500",
+      "Mag": "1§",
+      "Attr.": "Dex",
+      "Enc.": "2",
+      "TD": "1d8+1",
+      "TR": "x3"
+     },
+     {
+      "Firearm": "Rifle",
+      "Dmg": "1d10+2",
+      "Range": "200/400",
+      "Cost": "$1,000",
+      "Mag": "10",
+      "Attr.": "Dex",
+      "Enc.": "2",
+      "TD": "1d8",
+      "TR": "x3"
+     },
+     {
+      "Firearm": "Combat Rifle",
+      "Dmg": "1d12*",
+      "Range": "100/300",
+      "Cost": "$2,500",
+      "Mag": "30",
+      "Attr.": "Dex",
+      "Enc.": "2",
+      "TD": "1d8",
+      "TR": "x3"
+     },
+     {
+      "Firearm": "Submachine Gun",
+      "Dmg": "1d8*",
+      "Range": "30/100",
+      "Cost": "$2,000",
+      "Mag": "20",
+      "Attr.": "Dex",
+      "Enc.": "1",
+      "TD": "1d6",
+      "TR": "x2"
+     },
+     {
+      "Firearm": "Shotgun",
+      "Dmg": "3d4",
+      "Range": "10/30",
+      "Cost": "$200",
+      "Mag": "2",
+      "Attr.": "Dex",
+      "Enc.": "2",
+      "TD": "1d10",
+      "TR": "x3"
+     },
+     {
+      "Firearm": "Semi-Auto Shotgun",
+      "Dmg": "3d4",
+      "Range": "10/30",
+      "Cost": "$1,000",
+      "Mag": "6",
+      "Attr.": "Dex",
+      "Enc.": "2",
+      "TD": "1d10",
+      "TR": "x3"
+     },
+     {
+      "Firearm": "Combat Shotgun",
+      "Dmg": "3d4*",
+      "Range": "10/30",
+      "Cost": "$3,000",
+      "Mag": "12",
+      "Attr.": "Dex",
+      "Enc.": "2",
+      "TD": "1d10",
+      "TR": "x3"
+     },
+     {
+      "Firearm": "Sniper Rifle¶",
+      "Dmg": "2d8",
+      "Range": "1,000/2,000",
+      "Cost": "$3,000",
+      "Mag": "1§",
+      "Attr.": "Dex",
+      "Enc.": "2",
+      "TD": "1d10",
+      "TR": "x4"
+     },
+     {
+      "Firearm": "Taser Pistol",
+      "Dmg": "1d8",
+      "Range": "10/15",
+      "Cost": "$500",
+      "Mag": "2",
+      "Attr.": "Dex",
+      "Enc.": "1",
+      "TD": "-",
+      "TR": "-"
+     },
+     {
+      "Firearm": "Automatic Rifle",
+      "Dmg": "2d8#",
+      "Range": "200/400",
+      "Cost": "$10,000",
+      "Mag": "10",
+      "Attr.": "Dex",
+      "Enc.": "4",
+      "TD": "1d10",
+      "TR": "x3"
+     }
+    ]
+   }
+  ],
+  "melee": [
+   {
+    "columns": [
+     "Weapon",
+     "Dmg",
+     "Rng.",
+     "Cost",
+     "Shock",
+     "Attr.",
+     "Enc.",
+     "TD",
+     "TR"
+    ],
+    "rows": [
+     {
+      "Weapon": "Unarmed Attack",
+      "Dmg": "1d2^",
+      "Rng.": "-",
+      "Cost": "-",
+      "Shock": "-",
+      "Attr.": "Str/Dex",
+      "Enc.": "-",
+      "TD": "1d6",
+      "TR": "x1"
+     },
+     {
+      "Weapon": "Knife",
+      "Dmg": "1d4",
+      "Rng.": "10/20",
+      "Cost": "$20",
+      "Shock": "1/AC 15",
+      "Attr.": "Str/Dex",
+      "Enc.": "1",
+      "TD": "1d6",
+      "TR": "x3"
+     },
+     {
+      "Weapon": "Club",
+      "Dmg": "1d4^",
+      "Rng.": "10/20",
+      "Cost": "N/A",
+      "Shock": "1/AC 18",
+      "Attr.": "Str",
+      "Enc.": "-",
+      "TD": "1d6",
+      "TR": "x2"
+     },
+     {
+      "Weapon": "Spear",
+      "Dmg": "1d6",
+      "Rng.": "10/20",
+      "Cost": "$50",
+      "Shock": "2/AC 13",
+      "Attr.": "Str/Dex",
+      "Enc.": "1",
+      "TD": "1d8",
+      "TR": "x3"
+     },
+     {
+      "Weapon": "Sword",
+      "Dmg": "1d8",
+      "Rng.": "-",
+      "Cost": "$200",
+      "Shock": "2/AC 13",
+      "Attr.": "Str/Dex",
+      "Enc.": "1",
+      "TD": "1d8",
+      "TR": "x2"
+     },
+     {
+      "Weapon": "Big Sword",
+      "Dmg": "2d6",
+      "Rng.": "-",
+      "Cost": "$500",
+      "Shock": "2/AC 15",
+      "Attr.": "Str",
+      "Enc.": "-",
+      "TD": "1d8",
+      "TR": "x3"
+     },
+     {
+      "Weapon": "Big Club",
+      "Dmg": "1d10^",
+      "Rng.": "-",
+      "Cost": "$100",
+      "Shock": "2/AC 18",
+      "Attr.": "Str",
+      "Enc.": "-",
+      "TD": "1d8",
+      "TR": "x3"
+     },
+     {
+      "Weapon": "Advanced Knife",
+      "Dmg": "1d6",
+      "Rng.": "10/20",
+      "Cost": "$200",
+      "Shock": "2/AC 15",
+      "Attr.": "Str/Dex",
+      "Enc.": "1",
+      "TD": "1d8",
+      "TR": "x3"
+     },
+     {
+      "Weapon": "Advanced Sword",
+      "Dmg": "1d10",
+      "Rng.": "-",
+      "Cost": "$1,000",
+      "Shock": "3/AC 15",
+      "Attr.": "Str/Dex",
+      "Enc.": "1",
+      "TD": "1d8",
+      "TR": "x3"
+     },
+     {
+      "Weapon": "Advanced Big Sword",
+      "Dmg": "2d8",
+      "Rng.": "-",
+      "Cost": "$2,500",
+      "Shock": "4/AC 15",
+      "Attr.": "Str",
+      "Enc.": "-",
+      "TD": "1d8",
+      "TR": "x3"
+     },
+     {
+      "Weapon": "Advanced Club",
+      "Dmg": "1d8^",
+      "Rng.": "-",
+      "Cost": "$500",
+      "Shock": "2/AC 18",
+      "Attr.": "Str",
+      "Enc.": "-",
+      "TD": "1d8",
+      "TR": "x3"
+     },
+     {
+      "Weapon": "Grenade, Flash",
+      "Dmg": "Spec.",
+      "Rng.": "10/30",
+      "Cost": "$50",
+      "Shock": "None",
+      "Attr.": "Dex",
+      "Enc.": "-",
+      "TD": "1d2",
+      "TR": "x2"
+     },
+     {
+      "Weapon": "Grenade, Frag",
+      "Dmg": "2d6",
+      "Rng.": "10/30",
+      "Cost": "$100",
+      "Shock": "-",
+      "Attr.": "Dex",
+      "Enc.": "-",
+      "TD": "1d8",
+      "TR": "x2"
+     },
+     {
+      "Weapon": "Grenade, Gas",
+      "Dmg": "1d10^",
+      "Rng.": "10/30",
+      "Cost": "$50",
+      "Shock": "None",
+      "Attr.": "Dex",
+      "Enc.": "-",
+      "TD": "1d2",
+      "TR": "x2"
+     },
+     {
+      "Weapon": "Grenade, Smoke",
+      "Dmg": "-",
+      "Rng.": "10/30",
+      "Cost": "$25",
+      "Shock": "None",
+      "Attr.": "Dex",
+      "Enc.": "-",
+      "TD": "1d2",
+      "TR": "x2"
+     }
+    ]
+   }
+  ],
+  "heavy": [
+   {
+    "columns": [
+     "Heavy Weapon",
+     "Dmg",
+     "Range",
+     "Cost",
+     "Mag",
+     "Attr",
+     "Enc.",
+     "TD",
+     "TR"
+    ],
+    "rows": [
+     {
+      "Heavy Weapon": "Anti-Materiel Rifle ¶",
+      "Dmg": "3d8!",
+      "Range": "1K/2K",
+      "Cost": "$8,000",
+      "Mag": "5",
+      "Attr": "Dex",
+      "Enc.": "3",
+      "TD": "1d12",
+      "TR": "x3"
+     },
+     {
+      "Heavy Weapon": "Grnd. Launcher",
+      "Dmg": "Gren.",
+      "Range": "150/350",
+      "Cost": "$3,000",
+      "Mag": "3",
+      "Attr": "Dex",
+      "Enc.": "1",
+      "TD": "-",
+      "TR": "-"
+     },
+     {
+      "Heavy Weapon": "Demo Charge",
+      "Dmg": "3d10!",
+      "Range": "20/20",
+      "Cost": "$1,000",
+      "Mag": "-",
+      "Attr": "-",
+      "Enc.": "1",
+      "TD": "1d10",
+      "TR": "x3"
+     },
+     {
+      "Heavy Weapon": "Hvy Machine Gun ¶",
+      "Dmg": "3d6#!",
+      "Range": "500/2K",
+      "Cost": "$10K",
+      "Mag": "10",
+      "Attr": "Dex",
+      "Enc.": "3",
+      "TD": "1d12",
+      "TR": "x3"
+     },
+     {
+      "Heavy Weapon": "Mortar",
+      "Dmg": "3d6",
+      "Range": "1K/2K",
+      "Cost": "$5,000",
+      "Mag": "1",
+      "Attr": "Wis",
+      "Enc.": "3",
+      "TD": "1d12",
+      "TR": "x3"
+     },
+     {
+      "Heavy Weapon": "Rocket Launcher",
+      "Dmg": "3d10!",
+      "Range": "2K/4K",
+      "Cost": "$5,000",
+      "Mag": "-",
+      "Attr": "Dex",
+      "Enc.": "2",
+      "TD": "1d10",
+      "TR": "x3"
+     },
+     {
+      "Heavy Weapon": "Land Mine, Anti-Pers.",
+      "Dmg": "1d8",
+      "Range": "-",
+      "Cost": "$150",
+      "Mag": "-",
+      "Attr": "-",
+      "Enc.": "1",
+      "TD": "1d10",
+      "TR": "x3"
+     },
+     {
+      "Heavy Weapon": "Land Mine, Anti-Vehc.",
+      "Dmg": "3d8!",
+      "Range": "-",
+      "Cost": "-",
+      "Mag": "$1,000@",
+      "Attr": "-",
+      "Enc.": "2",
+      "TD": "1d20",
+      "TR": "x3"
+     }
+    ]
+   }
+  ],
+  "weapon_mods": [
+   {
+    "columns": [
+     "Mod",
+     "Skill",
+     "Cost",
+     "Special Components"
+    ],
+    "rows": [
+     {
+      "Mod": "Autotargeting",
+      "Skill": "Fix-1",
+      "Cost": "$5,000",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Concealed",
+      "Skill": "Fix-2",
+      "Cost": "$5,000",
+      "Special Components": "1"
+     },
+     {
+      "Mod": "Customized",
+      "Skill": "Fix-1",
+      "Cost": "$1,000",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Extended Mag",
+      "Skill": "Fix-1",
+      "Cost": "$1,000",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Heavy Sabot",
+      "Skill": "Fix-1",
+      "Cost": "$2,000",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Integral Toxins",
+      "Skill": "Fix-2",
+      "Cost": "$10,000",
+      "Special Components": "1"
+     },
+     {
+      "Mod": "Onboard Gunlink",
+      "Skill": "Fix-2",
+      "Cost": "$10,000",
+      "Special Components": "1"
+     },
+     {
+      "Mod": "Predictive Guidance",
+      "Skill": "Fix-3",
+      "Cost": "$15,000",
+      "Special Components": "2"
+     },
+     {
+      "Mod": "Reel Wires",
+      "Skill": "Fix-1",
+      "Cost": "$2,500",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Savage Impact",
+      "Skill": "Fix-1",
+      "Cost": "$5,000",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Shock Burst",
+      "Skill": "Fix-2",
+      "Cost": "$5,000",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Stun Rounds",
+      "Skill": "Fix-2",
+      "Cost": "$5,000",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Thermal Charge",
+      "Skill": "Fix-2",
+      "Cost": "$7,500",
+      "Special Components": "0"
+     }
+    ]
+   }
+  ],
+  "armor": [
+   {
+    "columns": [
+     "Civilian Armor",
+     "Ranged AC",
+     "Melee AC",
+     "Damage Soak",
+     "Enc.",
+     "Trauma Target Mod",
+     "Subtle?",
+     "Cost",
+     "Note"
+    ],
+    "rows": [
+     {
+      "Civilian Armor": "Ordinary Clothing",
+      "Ranged AC": "10",
+      "Melee AC": "10",
+      "Damage Soak": "0",
+      "Enc.": "0",
+      "Trauma Target Mod": "0",
+      "Subtle?": "Subtle",
+      "Cost": "$25",
+      "Note": ""
+     },
+     {
+      "Civilian Armor": "Reinforced Clothing",
+      "Ranged AC": "13",
+      "Melee AC": "10",
+      "Damage Soak": "2",
+      "Enc.": "0",
+      "Trauma Target Mod": "0",
+      "Subtle?": "Subtle",
+      "Cost": "$100",
+      "Note": ""
+     },
+     {
+      "Civilian Armor": "War Harness",
+      "Ranged AC": "13",
+      "Melee AC": "14",
+      "Damage Soak": "5",
+      "Enc.": "1",
+      "Trauma Target Mod": "0",
+      "Subtle?": "Obvious",
+      "Cost": "$200",
+      "Note": ""
+     },
+     {
+      "Civilian Armor": "Street Leathers",
+      "Ranged AC": "13",
+      "Melee AC": "12",
+      "Damage Soak": "3",
+      "Enc.": "0",
+      "Trauma Target Mod": "0",
+      "Subtle?": "Subtle",
+      "Cost": "$250",
+      "Note": ""
+     },
+     {
+      "Civilian Armor": "Reinforced Longcoat",
+      "Ranged AC": "15",
+      "Melee AC": "13",
+      "Damage Soak": "5",
+      "Enc.": "1",
+      "Trauma Target Mod": "+1",
+      "Subtle?": "Subtle",
+      "Cost": "$500",
+      "Note": ""
+     },
+     {
+      "Civilian Armor": "Armored Clothing",
+      "Ranged AC": "16",
+      "Melee AC": "14",
+      "Damage Soak": "5",
+      "Enc.": "2",
+      "Trauma Target Mod": "+1",
+      "Subtle?": "Subtle",
+      "Cost": "$1,000",
+      "Note": ""
+     },
+     {
+      "Civilian Armor": "Plated Longcoat",
+      "Ranged AC": "17",
+      "Melee AC": "15",
+      "Damage Soak": "5",
+      "Enc.": "3",
+      "Trauma Target Mod": "+1",
+      "Subtle?": "Obvious",
+      "Cost": "$2,000",
+      "Note": "H"
+     },
+     {
+      "Civilian Armor": "Impact Jacket",
+      "Ranged AC": "12",
+      "Melee AC": "14",
+      "Damage Soak": "8",
+      "Enc.": "1",
+      "Trauma Target Mod": "+1",
+      "Subtle?": "Obvious",
+      "Cost": "$1,000",
+      "Note": ""
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Suit Armor",
+     "Ranged AC",
+     "Melee AC",
+     "Damage Soak",
+     "Enc.",
+     "Trauma Target Mod",
+     "Subtle?",
+     "Cost",
+     "Note"
+    ],
+    "rows": [
+     {
+      "Suit Armor": "Light Armored Suit",
+      "Ranged AC": "16",
+      "Melee AC": "13",
+      "Damage Soak": "5",
+      "Enc.": "2",
+      "Trauma Target Mod": "+2",
+      "Subtle?": "Obvious",
+      "Cost": "$5,000@",
+      "Note": ""
+     },
+     {
+      "Suit Armor": "Medium Armored Suit",
+      "Ranged AC": "18",
+      "Melee AC": "14",
+      "Damage Soak": "10",
+      "Enc.": "3",
+      "Trauma Target Mod": "+2",
+      "Subtle?": "Obvious",
+      "Cost": "$10,000@",
+      "Note": ""
+     },
+     {
+      "Suit Armor": "Heavy Armored Suit",
+      "Ranged AC": "20",
+      "Melee AC": "18",
+      "Damage Soak": "15",
+      "Enc.": "3",
+      "Trauma Target Mod": "+3",
+      "Subtle?": "Obvious",
+      "Cost": "$20,000@",
+      "Note": "H"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Armor Accessories",
+     "Ranged AC",
+     "Melee AC",
+     "Damage Soak",
+     "Enc.",
+     "Trauma Target Mod",
+     "Subtle?",
+     "Cost",
+     "Note"
+    ],
+    "rows": [
+     {
+      "Armor Accessories": "Riot Shield",
+      "Ranged AC": "+2",
+      "Melee AC": "+4",
+      "Damage Soak": "0",
+      "Enc.": "2",
+      "Trauma Target Mod": "0",
+      "Subtle?": "Obvious",
+      "Cost": "$1,000",
+      "Note": ""
+     },
+     {
+      "Armor Accessories": "Absorption Plates",
+      "Ranged AC": "+2",
+      "Melee AC": "+2",
+      "Damage Soak": "3",
+      "Enc.": "1",
+      "Trauma Target Mod": "0",
+      "Subtle?": "Obvious",
+      "Cost": "$500",
+      "Note": "H, NS"
+     },
+     {
+      "Armor Accessories": "Joint Reinforcement",
+      "Ranged AC": "+1",
+      "Melee AC": "+1",
+      "Damage Soak": "0",
+      "Enc.": "0",
+      "Trauma Target Mod": "0",
+      "Subtle?": "Subtle",
+      "Cost": "$250",
+      "Note": "H, NS"
+     },
+     {
+      "Armor Accessories": "Obsolete Tech",
+      "Ranged AC": "–1d2",
+      "Melee AC": "–1d2",
+      "Damage Soak": "–1d4",
+      "Enc.": "0",
+      "Trauma Target Mod": "0",
+      "Subtle?": "–",
+      "Cost": "x50%",
+      "Note": ""
+     }
+    ]
+   }
+  ],
+  "armor_mods": [
+   {
+    "columns": [
+     "Mod",
+     "Skill",
+     "Cost",
+     "Special Tech"
+    ],
+    "rows": [
+     {
+      "Mod": "Absorption Pads",
+      "Skill": "Fix-2",
+      "Cost": "$2,000",
+      "Special Tech": "0"
+     },
+     {
+      "Mod": "Active Response",
+      "Skill": "Fix-3",
+      "Cost": "$20,000",
+      "Special Tech": "2"
+     },
+     {
+      "Mod": "Biostabilizing",
+      "Skill": "Fix-1",
+      "Cost": "$2,500",
+      "Special Tech": "0"
+     },
+     {
+      "Mod": "Customized",
+      "Skill": "Fix-1",
+      "Cost": "$1,000",
+      "Special Tech": "0"
+     },
+     {
+      "Mod": "Discreet Design",
+      "Skill": "Fix-2",
+      "Cost": "$5,000",
+      "Special Tech": "1"
+     },
+     {
+      "Mod": "Flexible",
+      "Skill": "Fix-2",
+      "Cost": "$10,000",
+      "Special Tech": "1"
+     },
+     {
+      "Mod": "Quickchange",
+      "Skill": "Fix-1",
+      "Cost": "$1,000",
+      "Special Tech": "0"
+     },
+     {
+      "Mod": "Sealed",
+      "Skill": "Fix-1",
+      "Cost": "$2,500",
+      "Special Tech": "0"
+     },
+     {
+      "Mod": "Tailored Rig",
+      "Skill": "Fix-1",
+      "Cost": "$2,000",
+      "Special Tech": "0"
+     },
+     {
+      "Mod": "Trauma Dampers",
+      "Skill": "Fix-3",
+      "Cost": "$10,000",
+      "Special Tech": "1"
+     },
+     {
+      "Mod": "Whisperlight",
+      "Skill": "Fix-2",
+      "Cost": "$10,000",
+      "Special Tech": "1"
+     }
+    ]
+   }
+  ],
+  "missions": [
+   {
+    "columns": [
+     "Gear",
+     "Cost",
+     "Encumbrance"
+    ],
+    "rows": [
+     {
+      "Gear": "Active hearing protection",
+      "Cost": "$250",
+      "Encumbrance": "1"
+     },
+     {
+      "Gear": "Ammunition, empty magazine",
+      "Cost": "$10",
+      "Encumbrance": "1"
+     },
+     {
+      "Gear": "Ammunition, per round",
+      "Cost": "$1",
+      "Encumbrance": "*"
+     },
+     {
+      "Gear": "Backpack or gear harness",
+      "Cost": "$25",
+      "Encumbrance": "1~"
+     },
+     {
+      "Gear": "Binoculars",
+      "Cost": "$100",
+      "Encumbrance": "1"
+     },
+     {
+      "Gear": "Bus pass, monthly",
+      "Cost": "$50",
+      "Encumbrance": "*"
+     },
+     {
+      "Gear": "Climbing kit",
+      "Cost": "$150",
+      "Encumbrance": "2"
+     },
+     {
+      "Gear": "Clothing, fashionable",
+      "Cost": "$500",
+      "Encumbrance": "1~"
+     },
+     {
+      "Gear": "Clothing, haute couture",
+      "Cost": "$10K",
+      "Encumbrance": "1~"
+     },
+     {
+      "Gear": "Clothing, ordinary",
+      "Cost": "$25",
+      "Encumbrance": "1~"
+     },
+     {
+      "Gear": "Gas mask",
+      "Cost": "$1K",
+      "Encumbrance": "1"
+     },
+     {
+      "Gear": "Goggles, Anti-Flash",
+      "Cost": "$100",
+      "Encumbrance": "1"
+     },
+     {
+      "Gear": "Goggles, IR",
+      "Cost": "$1K",
+      "Encumbrance": "1"
+     },
+     {
+      "Gear": "Kit, Basic Tools",
+      "Cost": "$100",
+      "Encumbrance": "2"
+     },
+     {
+      "Gear": "Kit, Cyberdoc",
+      "Cost": "$500",
+      "Encumbrance": "2"
+     },
+     {
+      "Gear": "Kit, Medkit",
+      "Cost": "$100",
+      "Encumbrance": "1"
+     },
+     {
+      "Gear": "Kit, Survival",
+      "Cost": "$100",
+      "Encumbrance": "2"
+     },
+     {
+      "Gear": "Lockpicks",
+      "Cost": "$100",
+      "Encumbrance": "1"
+     },
+     {
+      "Gear": "Military ration, per day",
+      "Cost": "$20",
+      "Encumbrance": "1"
+     },
+     {
+      "Gear": "Portable video camera",
+      "Cost": "$300",
+      "Encumbrance": "1"
+     },
+     {
+      "Gear": "Radio, handheld",
+      "Cost": "$50",
+      "Encumbrance": "1"
+     },
+     {
+      "Gear": "Radio, ultralight tab",
+      "Cost": "$500",
+      "Encumbrance": "0"
+     },
+     {
+      "Gear": "Smartphone service plan/month",
+      "Cost": "$10",
+      "Encumbrance": "-"
+     },
+     {
+      "Gear": "Smartphone, basic",
+      "Cost": "$50",
+      "Encumbrance": "-"
+     },
+     {
+      "Gear": "Smartphone, fashionable",
+      "Cost": "$2K",
+      "Encumbrance": "-"
+     },
+     {
+      "Gear": "VR crown, cheap",
+      "Cost": "$50",
+      "Encumbrance": "1"
+     },
+     {
+      "Gear": "Wearable light",
+      "Cost": "$25",
+      "Encumbrance": "1~"
+     }
+    ]
+   }
+  ],
+  "cyberdecks": [
+   {
+    "columns": [
+     "Cyberdeck",
+     "Cost",
+     "Bonus Access",
+     "Memory",
+     "Shielding",
+     "CPU",
+     "Encumbrance"
+    ],
+    "rows": [
+     {
+      "Cyberdeck": "Cranial Jack Only",
+      "Cost": "As cyber",
+      "Bonus Access": "0",
+      "Memory": "0",
+      "Shielding": "0",
+      "CPU": "1",
+      "Encumbrance": "N/A"
+     },
+     {
+      "Cyberdeck": "Scrap Deck",
+      "Cost": "$500",
+      "Bonus Access": "1",
+      "Memory": "8",
+      "Shielding": "5",
+      "CPU": "2",
+      "Encumbrance": "1"
+     },
+     {
+      "Cyberdeck": "Tanto",
+      "Cost": "$5,000",
+      "Bonus Access": "1",
+      "Memory": "10",
+      "Shielding": "10",
+      "CPU": "3",
+      "Encumbrance": "1"
+     },
+     {
+      "Cyberdeck": "Icepick",
+      "Cost": "$15,000",
+      "Bonus Access": "2",
+      "Memory": "10",
+      "Shielding": "10",
+      "CPU": "3",
+      "Encumbrance": "1"
+     },
+     {
+      "Cyberdeck": "Synapse",
+      "Cost": "$30,000",
+      "Bonus Access": "2",
+      "Memory": "11",
+      "Shielding": "5",
+      "CPU": "4",
+      "Encumbrance": "1"
+     },
+     {
+      "Cyberdeck": "Beowulf",
+      "Cost": "$60,000",
+      "Bonus Access": "2",
+      "Memory": "13",
+      "Shielding": "10",
+      "CPU": "4",
+      "Encumbrance": "1"
+     },
+     {
+      "Cyberdeck": "Tizona",
+      "Cost": "$100,000",
+      "Bonus Access": "3",
+      "Memory": "11",
+      "Shielding": "10",
+      "CPU": "5",
+      "Encumbrance": "1"
+     },
+     {
+      "Cyberdeck": "Taifu",
+      "Cost": "$250,000",
+      "Bonus Access": "3",
+      "Memory": "13",
+      "Shielding": "15",
+      "CPU": "5",
+      "Encumbrance": "1"
+     }
+    ]
+   }
+  ],
+  "drones": [
+   {
+    "columns": [
+     "Drone",
+     "Cost",
+     "AC",
+     "Trauma Target",
+     "HP",
+     "Fittings",
+     "Move",
+     "Hardpoints",
+     "Encumbrance"
+    ],
+    "rows": [
+     {
+      "Drone": "Mouse",
+      "Cost": "$500",
+      "AC": "13",
+      "Trauma Target": "6",
+      "HP": "1",
+      "Fittings": "0",
+      "Move": "5m ground",
+      "Hardpoints": "0",
+      "Encumbrance": "1"
+     },
+     {
+      "Drone": "Roach",
+      "Cost": "$1,000",
+      "AC": "13",
+      "Trauma Target": "6",
+      "HP": "8",
+      "Fittings": "3",
+      "Move": "10m ground",
+      "Hardpoints": "0",
+      "Encumbrance": "3"
+     },
+     {
+      "Drone": "Hummingbird",
+      "Cost": "$2,000",
+      "AC": "15",
+      "Trauma Target": "6",
+      "HP": "5",
+      "Fittings": "2",
+      "Move": "10m fly",
+      "Hardpoints": "0",
+      "Encumbrance": "3"
+     },
+     {
+      "Drone": "Sunfish",
+      "Cost": "$1,000",
+      "AC": "15",
+      "Trauma Target": "6",
+      "HP": "8",
+      "Fittings": "3",
+      "Move": "10m swim",
+      "Hardpoints": "0",
+      "Encumbrance": "3"
+     },
+     {
+      "Drone": "Pitbull",
+      "Cost": "$5,000",
+      "AC": "15",
+      "Trauma Target": "8",
+      "HP": "15",
+      "Fittings": "5",
+      "Move": "20m ground",
+      "Hardpoints": "1",
+      "Encumbrance": "5"
+     },
+     {
+      "Drone": "Javelin",
+      "Cost": "$10,000",
+      "AC": "16",
+      "Trauma Target": "6",
+      "HP": "12",
+      "Fittings": "5",
+      "Move": "20m fly",
+      "Hardpoints": "1",
+      "Encumbrance": "6"
+     },
+     {
+      "Drone": "Kerberos",
+      "Cost": "$15,000",
+      "AC": "18",
+      "Trauma Target": "8",
+      "HP": "25",
+      "Fittings": "6",
+      "Move": "20m ground",
+      "Hardpoints": "3",
+      "Encumbrance": "-"
+     },
+     {
+      "Drone": "Kraken",
+      "Cost": "$10,000",
+      "AC": "16",
+      "Trauma Target": "8",
+      "HP": "20",
+      "Fittings": "5",
+      "Move": "15m swim",
+      "Hardpoints": "2",
+      "Encumbrance": "-"
+     },
+     {
+      "Drone": "Shrike",
+      "Cost": "$25,000",
+      "AC": "18",
+      "Trauma Target": "8",
+      "HP": "20",
+      "Fittings": "6",
+      "Move": "30m fly",
+      "Hardpoints": "2",
+      "Encumbrance": "-"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Drone Fitting",
+     "Cost"
+    ],
+    "rows": [
+     {
+      "Drone Fitting": "Ablative Code Buffer",
+      "Cost": "10%"
+     },
+     {
+      "Drone Fitting": "Altitude Boost Unit",
+      "Cost": "10%"
+     },
+     {
+      "Drone Fitting": "Ammo Caddy",
+      "Cost": "10%"
+     },
+     {
+      "Drone Fitting": "Ammo Supply",
+      "Cost": "10%"
+     },
+     {
+      "Drone Fitting": "Assisted Boost Burner",
+      "Cost": "10%"
+     },
+     {
+      "Drone Fitting": "Cargo Space",
+      "Cost": "20%"
+     },
+     {
+      "Drone Fitting": "Command Deck/Follow",
+      "Cost": "10%"
+     },
+     {
+      "Drone Fitting": "Command Deck/Kill",
+      "Cost": "25%"
+     },
+     {
+      "Drone Fitting": "Command Deck/Patrol",
+      "Cost": "10%"
+     },
+     {
+      "Drone Fitting": "Command Deck/Watch",
+      "Cost": "10%"
+     },
+     {
+      "Drone Fitting": "Emergency Evac Litter",
+      "Cost": "25%"
+     },
+     {
+      "Drone Fitting": "Emissions Shielding",
+      "Cost": "20%"
+     },
+     {
+      "Drone Fitting": "Enhanced Structure",
+      "Cost": "25%"
+     },
+     {
+      "Drone Fitting": "Extended Range",
+      "Cost": "25%"
+     },
+     {
+      "Drone Fitting": "Glider Grips",
+      "Cost": "20%"
+     },
+     {
+      "Drone Fitting": "Improved Armor",
+      "Cost": "25%"
+     },
+     {
+      "Drone Fitting": "Improved Targeting Logic",
+      "Cost": "20%"
+     },
+     {
+      "Drone Fitting": "Laser Comms",
+      "Cost": "10%"
+     },
+     {
+      "Drone Fitting": "Manipulator Tendrils",
+      "Cost": "20%"
+     },
+     {
+      "Drone Fitting": "Memory Banks",
+      "Cost": "10%"
+     },
+     {
+      "Drone Fitting": "No Touch Web",
+      "Cost": "10%"
+     },
+     {
+      "Drone Fitting": "Sleep Mode",
+      "Cost": "10%"
+     },
+     {
+      "Drone Fitting": "Stealth Package",
+      "Cost": "25%"
+     },
+     {
+      "Drone Fitting": "Suicide Charge",
+      "Cost": "25%"
+     },
+     {
+      "Drone Fitting": "Telescopic Optics",
+      "Cost": "20%"
+     },
+     {
+      "Drone Fitting": "Thermal Optics",
+      "Cost": "20%"
+     },
+     {
+      "Drone Fitting": "Trauma Response Suite",
+      "Cost": "25%"
+     },
+     {
+      "Drone Fitting": "Voice Broadcast",
+      "Cost": "10%"
+     },
+     {
+      "Drone Fitting": "Wallcrawler",
+      "Cost": "20%"
+     },
+     {
+      "Drone Fitting": "Weapon Hardpoint",
+      "Cost": "25%"
+     }
+    ]
+   }
+  ],
+  "vehicles": [
+   {
+    "columns": [
+     "Vehicle",
+     "Cost",
+     "Speed",
+     "Armor",
+     "Trauma Target",
+     "AC",
+     "HP",
+     "Crew",
+     "Power",
+     "Mass",
+     "Size",
+     "Hardpoints"
+    ],
+    "rows": [
+     {
+      "Vehicle": "Motorcycle",
+      "Cost": "$1K",
+      "Speed": "1",
+      "Armor": "4",
+      "Trauma Target": "10",
+      "AC": "13",
+      "HP": "10",
+      "Crew": "1",
+      "Power": "1",
+      "Mass": "3",
+      "Size": "S",
+      "Hardpoints": "0"
+     },
+     {
+      "Vehicle": "Micro Flyer",
+      "Cost": "$3K",
+      "Speed": "0",
+      "Armor": "0",
+      "Trauma Target": "6",
+      "AC": "13",
+      "HP": "10",
+      "Crew": "1",
+      "Power": "1",
+      "Mass": "4",
+      "Size": "S",
+      "Hardpoints": "0"
+     },
+     {
+      "Vehicle": "Car",
+      "Cost": "$5K",
+      "Speed": "0",
+      "Armor": "6",
+      "Trauma Target": "12",
+      "AC": "11",
+      "HP": "30",
+      "Crew": "5",
+      "Power": "3",
+      "Mass": "7",
+      "Size": "M",
+      "Hardpoints": "1"
+     },
+     {
+      "Vehicle": "Truck",
+      "Cost": "$7.5K",
+      "Speed": "0",
+      "Armor": "6",
+      "Trauma Target": "12",
+      "AC": "11",
+      "HP": "35",
+      "Crew": "2",
+      "Power": "3",
+      "Mass": "14",
+      "Size": "L",
+      "Hardpoints": "1"
+     },
+     {
+      "Vehicle": "Helicopter",
+      "Cost": "$50K",
+      "Speed": "3",
+      "Armor": "6",
+      "Trauma Target": "10",
+      "AC": "14",
+      "HP": "20",
+      "Crew": "6",
+      "Power": "4",
+      "Mass": "9",
+      "Size": "M",
+      "Hardpoints": "1"
+     },
+     {
+      "Vehicle": "Tank",
+      "Cost": "$500K@",
+      "Speed": "0",
+      "Armor": "**",
+      "Trauma Target": "12",
+      "AC": "18",
+      "HP": "40",
+      "Crew": "3",
+      "Power": "8",
+      "Mass": "15",
+      "Size": "L",
+      "Hardpoints": "3"
+     },
+     {
+      "Vehicle": "APC",
+      "Cost": "$60K@",
+      "Speed": "-1",
+      "Armor": "*",
+      "Trauma Target": "10",
+      "AC": "16",
+      "HP": "30",
+      "Crew": "16",
+      "Power": "5",
+      "Mass": "14",
+      "Size": "L",
+      "Hardpoints": "1"
+     },
+     {
+      "Vehicle": "GEV",
+      "Cost": "$100K@",
+      "Speed": "1",
+      "Armor": "*",
+      "Trauma Target": "10",
+      "AC": "16",
+      "HP": "30",
+      "Crew": "3",
+      "Power": "6",
+      "Mass": "10",
+      "Size": "L",
+      "Hardpoints": "2"
+     },
+     {
+      "Vehicle": "CASRA",
+      "Cost": "$200K@",
+      "Speed": "2",
+      "Armor": "10",
+      "Trauma Target": "10",
+      "AC": "18",
+      "HP": "35",
+      "Crew": "2",
+      "Power": "7",
+      "Mass": "10",
+      "Size": "L",
+      "Hardpoints": "2"
+     },
+     {
+      "Vehicle": "Dropcraft",
+      "Cost": "$1M@",
+      "Speed": "3",
+      "Armor": "12",
+      "Trauma Target": "12",
+      "AC": "16",
+      "HP": "40",
+      "Crew": "13",
+      "Power": "8",
+      "Mass": "12",
+      "Size": "L",
+      "Hardpoints": "2"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Fitting",
+     "Cost",
+     "Power",
+     "Mass",
+     "Min. Size"
+    ],
+    "rows": [
+     {
+      "Fitting": "Advanced Sensors",
+      "Cost": "$8,000",
+      "Power": "1",
+      "Mass": "0",
+      "Min. Size": "S"
+     },
+     {
+      "Fitting": "Afterburners",
+      "Cost": "$5,000",
+      "Power": "1",
+      "Mass": "2",
+      "Min. Size": "S"
+     },
+     {
+      "Fitting": "Armor Plating",
+      "Cost": "$5,000",
+      "Power": "0",
+      "Mass": "3",
+      "Min. Size": "S"
+     },
+     {
+      "Fitting": "Cargo Space",
+      "Cost": "None",
+      "Power": "0",
+      "Mass": "1",
+      "Min. Size": "S"
+     },
+     {
+      "Fitting": "Crash Pod",
+      "Cost": "$2,500",
+      "Power": "0",
+      "Mass": "2",
+      "Min. Size": "M"
+     },
+     {
+      "Fitting": "ECM Emitter",
+      "Cost": "$10,000",
+      "Power": "2",
+      "Mass": "0",
+      "Min. Size": "M"
+     },
+     {
+      "Fitting": "Emissions Cloaking",
+      "Cost": "$10,000",
+      "Power": "1",
+      "Mass": "2",
+      "Min. Size": "S"
+     },
+     {
+      "Fitting": "Extra Durability",
+      "Cost": "$5,000",
+      "Power": "0",
+      "Mass": "4",
+      "Min. Size": "M"
+     },
+     {
+      "Fitting": "Extra Passengers",
+      "Cost": "$2,500",
+      "Power": "0",
+      "Mass": "2",
+      "Min. Size": "S"
+     },
+     {
+      "Fitting": "Field Portable",
+      "Cost": "$1,000",
+      "Power": "0",
+      "Mass": "2",
+      "Min. Size": "S"
+     },
+     {
+      "Fitting": "Ghost Driver",
+      "Cost": "$2,500",
+      "Power": "1",
+      "Mass": "1",
+      "Min. Size": "S"
+     },
+     {
+      "Fitting": "Hardpoint Support",
+      "Cost": "$5,000",
+      "Power": "1",
+      "Mass": "1",
+      "Min. Size": "M"
+     },
+     {
+      "Fitting": "Jack Control Port",
+      "Cost": "$5,000",
+      "Power": "2",
+      "Mass": "0",
+      "Min. Size": "S"
+     },
+     {
+      "Fitting": "Limpet Mount",
+      "Cost": "$5K/$10K",
+      "Power": "0",
+      "Mass": "3 or 6",
+      "Min. Size": "M"
+     },
+     {
+      "Fitting": "Living Quarters",
+      "Cost": "$8,000",
+      "Power": "0",
+      "Mass": "4",
+      "Min. Size": "L"
+     },
+     {
+      "Fitting": "Medbay",
+      "Cost": "$10,000",
+      "Power": "1",
+      "Mass": "2",
+      "Min. Size": "S"
+     },
+     {
+      "Fitting": "Offroad Package",
+      "Cost": "$5,000",
+      "Power": "1",
+      "Mass": "3",
+      "Min. Size": "L"
+     },
+     {
+      "Fitting": "Power System, Small",
+      "Cost": "$1,000",
+      "Power": "+2",
+      "Mass": "2",
+      "Min. Size": "S"
+     },
+     {
+      "Fitting": "Power System, Medium",
+      "Cost": "$5,000",
+      "Power": "+4",
+      "Mass": "3",
+      "Min. Size": "M"
+     },
+     {
+      "Fitting": "Power System, Large",
+      "Cost": "$10,000",
+      "Power": "+8",
+      "Mass": "5",
+      "Min. Size": "L"
+     },
+     {
+      "Fitting": "Sealed Atmosphere",
+      "Cost": "$5,000",
+      "Power": "1",
+      "Mass": "1",
+      "Min. Size": "M"
+     },
+     {
+      "Fitting": "Smuggler’s Hold",
+      "Cost": "$1,000",
+      "Power": "0",
+      "Mass": "1",
+      "Min. Size": "S"
+     },
+     {
+      "Fitting": "Targeting Board",
+      "Cost": "$2,500",
+      "Power": "1",
+      "Mass": "1",
+      "Min. Size": "M"
+     },
+     {
+      "Fitting": "Tool Rack",
+      "Cost": "$2,500",
+      "Power": "0",
+      "Mass": "2",
+      "Min. Size": "M"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Weapon",
+     "Dmg",
+     "Range",
+     "Cost",
+     "Mag",
+     "Attr",
+     "Enc.",
+     "TD",
+     "TR"
+    ],
+    "rows": [
+     {
+      "Weapon": "Drone Cannon",
+      "Dmg": "$2d8!",
+      "Range": "200/1,000",
+      "Cost": "$5,000",
+      "Mag": "10",
+      "Attr": "Dex",
+      "Enc.": "N/A",
+      "TD": "1d10",
+      "TR": "x3"
+     },
+     {
+      "Weapon": "Headshot Pod",
+      "Dmg": "$4d6!",
+      "Range": "1,000/2,000",
+      "Cost": "$20,000",
+      "Mag": "1",
+      "Attr": "Dex",
+      "Enc.": "N/A",
+      "TD": "1d20",
+      "TR": "x4"
+     },
+     {
+      "Weapon": "Main Tank Gun",
+      "Dmg": "$4d12!",
+      "Range": "1,000/3,000",
+      "Cost": "$100,000",
+      "Mag": "1",
+      "Attr": "Dex",
+      "Enc.": "N/A",
+      "TD": "1d20",
+      "TR": "x4"
+     },
+     {
+      "Weapon": "Mounted Autogun",
+      "Dmg": "$3d8#!",
+      "Range": "500/2,000",
+      "Cost": "$15,000",
+      "Mag": "10",
+      "Attr": "Dex",
+      "Enc.": "N/A",
+      "TD": "1d12",
+      "TR": "x2"
+     },
+     {
+      "Weapon": "Shrieker Gun",
+      "Dmg": "$2d6^#",
+      "Range": "100/400",
+      "Cost": "$10,000",
+      "Mag": "1",
+      "Attr": "Dex",
+      "Enc.": "N/A",
+      "TD": "-",
+      "TR": "-"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Mod",
+     "Skills",
+     "Cost",
+     "Special Components"
+    ],
+    "rows": [
+     {
+      "Mod": "Augmented Armor",
+      "Skills": "Fix-3/Drive-1",
+      "Cost": "25%",
+      "Special Components": "1"
+     },
+     {
+      "Mod": "Drone Hub",
+      "Skills": "Fix-1/Drive-0",
+      "Cost": "10%",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Extra Seating",
+      "Skills": "Fix-0/Drive-1",
+      "Cost": "10%",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Integrated Magazines",
+      "Skills": "Fix-1/Drive-0",
+      "Cost": "10%",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Personalized Controls",
+      "Skills": "Fix-1/Drive-2",
+      "Cost": "20%",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Power System Upgrade",
+      "Skills": "Fix-2/Drive-2",
+      "Cost": "25%",
+      "Special Components": "1"
+     },
+     {
+      "Mod": "Q-Cladding",
+      "Skills": "Fix-1/Drive-2",
+      "Cost": "20%",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Reactive Defenses",
+      "Skills": "Fix-2/Drive-2",
+      "Cost": "25%",
+      "Special Components": "1"
+     },
+     {
+      "Mod": "Reinforced Chassis",
+      "Skills": "Fix-2/Drive-1",
+      "Cost": "25%",
+      "Special Components": "1"
+     },
+     {
+      "Mod": "Remote Sensors",
+      "Skills": "Fix-1/Drive-0",
+      "Cost": "10%",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Supplementary Tanks",
+      "Skills": "Fix-0/Drive-1",
+      "Cost": "10%",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Ultralight Components",
+      "Skills": "Fix-2/Drive-1",
+      "Cost": "20%",
+      "Special Components": "1"
+     },
+     {
+      "Mod": "Upgraded Speed",
+      "Skills": "Fix-2/Drive-3",
+      "Cost": "25%",
+      "Special Components": "2"
+     }
+    ]
+   }
+  ],
+  "drugs": [
+   {
+    "columns": [
+     "Chem",
+     "Cost",
+     "Min. Heal"
+    ],
+    "rows": [
+     {
+      "Chem": "Avalanche",
+      "Cost": "$100",
+      "Min. Heal": "0"
+     },
+     {
+      "Chem": "Boneshaker",
+      "Cost": "$10",
+      "Min. Heal": "None"
+     },
+     {
+      "Chem": "Chokeout",
+      "Cost": "$50",
+      "Min. Heal": "None"
+     },
+     {
+      "Chem": "Control-Delete",
+      "Cost": "$25",
+      "Min. Heal": "None"
+     },
+     {
+      "Chem": "Hellbender",
+      "Cost": "$100",
+      "Min. Heal": "None"
+     },
+     {
+      "Chem": "Lurch",
+      "Cost": "$25",
+      "Min. Heal": "0"
+     },
+     {
+      "Chem": "Madeleine",
+      "Cost": "$100",
+      "Min. Heal": "None"
+     },
+     {
+      "Chem": "Medical prescription",
+      "Cost": "$20",
+      "Min. Heal": "None"
+     },
+     {
+      "Chem": "Olympus",
+      "Cost": "$100",
+      "Min. Heal": "0"
+     },
+     {
+      "Chem": "Panacea",
+      "Cost": "$200",
+      "Min. Heal": "1"
+     },
+     {
+      "Chem": "Pillow",
+      "Cost": "$10",
+      "Min. Heal": "0"
+     },
+     {
+      "Chem": "Psycho",
+      "Cost": "$10",
+      "Min. Heal": "None"
+     },
+     {
+      "Chem": "Reset",
+      "Cost": "$1,000@",
+      "Min. Heal": "None"
+     },
+     {
+      "Chem": "Sand",
+      "Cost": "$2",
+      "Min. Heal": "None"
+     },
+     {
+      "Chem": "Trauma Patch",
+      "Cost": "$50",
+      "Min. Heal": "None"
+     },
+     {
+      "Chem": "Window",
+      "Cost": "$200",
+      "Min. Heal": "1"
+     }
+    ]
+   }
+  ],
+  "verbs": [
+   {
+    "columns": [
+     "Verb",
+     "Cost",
+     "Target",
+     "Access Cost",
+     "Skill Check Mod"
+    ],
+    "rows": [
+     {
+      "Verb": "Activate",
+      "Cost": "$1,000",
+      "Target": "Device/Cyber",
+      "Access Cost": "1*",
+      "Skill Check Mod": "+1"
+     },
+     {
+      "Verb": "Analyze",
+      "Cost": "$500",
+      "Target": "Device/Data",
+      "Access Cost": "0*",
+      "Skill Check Mod": "+1"
+     },
+     {
+      "Verb": "Append",
+      "Cost": "$500",
+      "Target": "Data",
+      "Access Cost": "1*",
+      "Skill Check Mod": "+0"
+     },
+     {
+      "Verb": "Blind",
+      "Cost": "$2,000",
+      "Target": "Device/Cyber",
+      "Access Cost": "1",
+      "Skill Check Mod": "+0"
+     },
+     {
+      "Verb": "Deactivate",
+      "Cost": "$2,000",
+      "Target": "Device/Cyber",
+      "Access Cost": "1*",
+      "Skill Check Mod": "+1"
+     },
+     {
+      "Verb": "Decrypt",
+      "Cost": "$1,000",
+      "Target": "Data",
+      "Access Cost": "1*",
+      "Skill Check Mod": "+0"
+     },
+     {
+      "Verb": "Defend",
+      "Cost": "$1.000",
+      "Target": "Device/Cyber",
+      "Access Cost": "0",
+      "Skill Check Mod": "N/A"
+     },
+     {
+      "Verb": "Delude",
+      "Cost": "$5,000",
+      "Target": "Device",
+      "Access Cost": "1",
+      "Skill Check Mod": "-1"
+     },
+     {
+      "Verb": "Erase",
+      "Cost": "$500",
+      "Target": "Data",
+      "Access Cost": "1*",
+      "Skill Check Mod": "+1"
+     },
+     {
+      "Verb": "Frisk",
+      "Cost": "$500",
+      "Target": "Cyber",
+      "Access Cost": "0*",
+      "Skill Check Mod": "+1"
+     },
+     {
+      "Verb": "Ghost",
+      "Cost": "$2,000",
+      "Target": "Avatar",
+      "Access Cost": "1",
+      "Skill Check Mod": "+0"
+     },
+     {
+      "Verb": "Glitch",
+      "Cost": "$1,000",
+      "Target": "Device/Cyber",
+      "Access Cost": "0",
+      "Skill Check Mod": "+2"
+     },
+     {
+      "Verb": "Hijack",
+      "Cost": "$5,000",
+      "Target": "Device",
+      "Access Cost": "1",
+      "Skill Check Mod": "-1"
+     },
+     {
+      "Verb": "Kill",
+      "Cost": "$5,000",
+      "Target": "Avatar",
+      "Access Cost": "1*",
+      "Skill Check Mod": "+0"
+     },
+     {
+      "Verb": "Lock",
+      "Cost": "$1,000",
+      "Target": "Device/Data",
+      "Access Cost": "1",
+      "Skill Check Mod": "+1"
+     },
+     {
+      "Verb": "Paralyze",
+      "Cost": "$2,000",
+      "Target": "Avatar",
+      "Access Cost": "1",
+      "Skill Check Mod": "-2"
+     },
+     {
+      "Verb": "Replace",
+      "Cost": "$1,000",
+      "Target": "Data",
+      "Access Cost": "1*",
+      "Skill Check Mod": "+0"
+     },
+     {
+      "Verb": "Sabotage",
+      "Cost": "$2,000",
+      "Target": "Device/Cyber",
+      "Access Cost": "1*",
+      "Skill Check Mod": "-1"
+     },
+     {
+      "Verb": "Sense",
+      "Cost": "$1,000",
+      "Target": "Device/Data",
+      "Access Cost": "0",
+      "Skill Check Mod": "+0"
+     },
+     {
+      "Verb": "Siege",
+      "Cost": "$2,500",
+      "Target": "Device",
+      "Access Cost": "1",
+      "Skill Check Mod": "-2"
+     },
+     {
+      "Verb": "Silence",
+      "Cost": "$1,000",
+      "Target": "Avatar",
+      "Access Cost": "1",
+      "Skill Check Mod": "+1"
+     },
+     {
+      "Verb": "Stun",
+      "Cost": "$1,000",
+      "Target": "Avatar",
+      "Access Cost": "0*",
+      "Skill Check Mod": "+0"
+     },
+     {
+      "Verb": "Terminate",
+      "Cost": "$500",
+      "Target": "Program",
+      "Access Cost": "1*",
+      "Skill Check Mod": "+0"
+     },
+     {
+      "Verb": "Unlock",
+      "Cost": "$500",
+      "Target": "Device/Data",
+      "Access Cost": "1*",
+      "Skill Check Mod": "+1"
+     }
+    ]
+   }
+  ],
+  "subjects": [
+   {
+    "columns": [
+     "Subject",
+     "Cost",
+     "Subject Type"
+    ],
+    "rows": [
+     {
+      "Subject": "Avatar",
+      "Cost": "$500",
+      "Subject Type": "Avatar"
+     },
+     {
+      "Subject": "Barrier",
+      "Cost": "$1,000",
+      "Subject Type": "Data"
+     },
+     {
+      "Subject": "Camera",
+      "Cost": "$500",
+      "Subject Type": "Device"
+     },
+     {
+      "Subject": "Cyber",
+      "Cost": "$1,000",
+      "Subject Type": "Cyber"
+     },
+     {
+      "Subject": "Datafile",
+      "Cost": "$500",
+      "Subject Type": "Data"
+     },
+     {
+      "Subject": "Door",
+      "Cost": "$500",
+      "Subject Type": "Device"
+     },
+     {
+      "Subject": "Drone",
+      "Cost": "$1,000",
+      "Subject Type": "Device"
+     },
+     {
+      "Subject": "Machine",
+      "Cost": "$500",
+      "Subject Type": "Device"
+     },
+     {
+      "Subject": "Program",
+      "Cost": "$500",
+      "Subject Type": "Program"
+     },
+     {
+      "Subject": "Sensor",
+      "Cost": "$500",
+      "Subject Type": "Device"
+     },
+     {
+      "Subject": "Transmission",
+      "Cost": "$1,000",
+      "Subject Type": "Data"
+     },
+     {
+      "Subject": "Turret",
+      "Cost": "$1,000",
+      "Subject Type": "Device"
+     },
+     {
+      "Subject": "Specialized Subject",
+      "Cost": "$x2",
+      "Subject Type": "-"
+     },
+     {
+      "Subject": "Unique Subject",
+      "Cost": "$x4",
+      "Subject Type": "-"
+     }
+    ]
+   }
+  ],
+  "demons": [
+   {
+    "columns": [
+     "Demon",
+     "Cost",
+     "Lines",
+     "HP",
+     "Skill Bonus"
+    ],
+    "rows": [
+     {
+      "Demon": "Tripwire",
+      "Cost": "$5,000",
+      "Lines": "2",
+      "HP": "3",
+      "Skill Bonus": "+1"
+     },
+     {
+      "Demon": "Mastiff",
+      "Cost": "$10,000",
+      "Lines": "4",
+      "HP": "5",
+      "Skill Bonus": "+2"
+     },
+     {
+      "Demon": "Siren",
+      "Cost": "$15,000",
+      "Lines": "2",
+      "HP": "8",
+      "Skill Bonus": "+3"
+     },
+     {
+      "Demon": "Cataphract",
+      "Cost": "$25,000",
+      "Lines": "3",
+      "HP": "20",
+      "Skill Bonus": "+3"
+     },
+     {
+      "Demon": "Ogre",
+      "Cost": "$50,000",
+      "Lines": "4",
+      "HP": "25",
+      "Skill Bonus": "+2"
+     },
+     {
+      "Demon": "Headsman",
+      "Cost": "$100,000",
+      "Lines": "4",
+      "HP": "30",
+      "Skill Bonus": "+3"
+     },
+     {
+      "Demon": "Hydra",
+      "Cost": "$200,000",
+      "Lines": "7",
+      "HP": "40",
+      "Skill Bonus": "+4"
+     },
+     {
+      "Demon": "Nemesis",
+      "Cost": "$500,000",
+      "Lines": "5",
+      "HP": "50",
+      "Skill Bonus": "+5"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Watchdog Program",
+     "Skill",
+     "Int Mod.",
+     "Monthly Salary"
+    ],
+    "rows": [
+     {
+      "Watchdog Program": "Code Drone (1 HD)",
+      "Skill": "Level-0",
+      "Int Mod.": "+1",
+      "Monthly Salary": "$2,000"
+     },
+     {
+      "Watchdog Program": "Veteran Tech (2 HD)",
+      "Skill": "Level-1",
+      "Int Mod.": "+1",
+      "Monthly Salary": "$5,000"
+     },
+     {
+      "Watchdog Program": "Talented Pro (4 HD)",
+      "Skill": "Level-2",
+      "Int Mod.": "+1",
+      "Monthly Salary": "$10,000"
+     },
+     {
+      "Watchdog Program": "Big Name (6 HD)",
+      "Skill": "Level-3",
+      "Int Mod.": "+2",
+      "Monthly Salary": "$50,000"
+     },
+     {
+      "Watchdog Program": "Dire Legend (9 HD)",
+      "Skill": "Level-4",
+      "Int Mod.": "+2",
+      "Monthly Salary": "N/A"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Server",
+     "Cost",
+     "Max. Nodes",
+     "Max. Barriers",
+     "Max. Demons"
+    ],
+    "rows": [
+     {
+      "Server": "Databank",
+      "Cost": "$2,000",
+      "Max. Nodes": "0",
+      "Max. Barriers": "0",
+      "Max. Demons": "0"
+     },
+     {
+      "Server": "Alpha",
+      "Cost": "$10,000",
+      "Max. Nodes": "10",
+      "Max. Barriers": "1",
+      "Max. Demons": "2(1)"
+     },
+     {
+      "Server": "Beta",
+      "Cost": "$50,000",
+      "Max. Nodes": "15",
+      "Max. Barriers": "2",
+      "Max. Demons": "3(2)"
+     },
+     {
+      "Server": "Gamma",
+      "Cost": "$100K",
+      "Max. Nodes": "20",
+      "Max. Barriers": "4",
+      "Max. Demons": "5(2)"
+     },
+     {
+      "Server": "Delta",
+      "Cost": "$500K",
+      "Max. Nodes": "25",
+      "Max. Barriers": "6",
+      "Max. Demons": "8(2)"
+     },
+     {
+      "Server": "Epsilon",
+      "Cost": "$1M",
+      "Max. Nodes": "30",
+      "Max. Barriers": "10",
+      "Max. Demons": "12(3)"
+     }
+    ]
+   }
+  ],
+  "backgrounds": [
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Survive-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6 Growth",
+     "d8 Learning"
+    ],
+    "rows": [
+     {
+      "d6 Growth": "1. +1 Any Stat 2. +2 Physical 3. +2 Physical 4. +2 Mental 5. Survive 6. Any Skill",
+      "d8 Learning": "1. Any Combat 2. Survive 3. Connect 4. Sneak 5. Notice 6. Talk 7. Fix 8. Trade"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Administer-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6 Growth",
+     "d8 Learning"
+    ],
+    "rows": [
+     {
+      "d6 Growth": "1. +1 Any Stat 2. +2 Mental 3. +2 Mental 4. +2 Physical 5. Administer 6. Any Skill",
+      "d8 Learning": "1. Any Skill 2. Connect 3. Talk 4. Notice 5. Know 6. Work 7. Lead 8. Sneak"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Talk-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6 Growth",
+     "d8 Learning"
+    ],
+    "rows": [
+     {
+      "d6 Growth": "1. +1 Any Stat 2. +2 Mental 3. +2 Mental 4. +2 Physical 5. Talk 6. Any Skill",
+      "d8 Learning": "1. Any Skill 2. Heal 3. Lead 4. Connect 5. Know 6. Notice 7. Perform 8. Survive"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Program-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6 Growth",
+     "d8 Learning"
+    ],
+    "rows": [
+     {
+      "d6 Growth": "1. +1 Any Stat 2. +2 Mental 3. +2 Mental 4. +2 Physical 5. Program 6. Any Skill",
+      "d8 Learning": "1. Any Skill 2. Fix 3. Know 4. Connect 5. Talk 6. Notice 7. Work 8. Sneak"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Shoot-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6 Growth",
+     "d8 Learning"
+    ],
+    "rows": [
+     {
+      "d6 Growth": "1. +1 Any Stat 2. +2 Physical 3. +2 Physical 4. +2 Mental 5. Shoot 6. Any Skill",
+      "d8 Learning": "1. Any Combat 2. Notice 3. Lead 4. Connect 5. Talk 6. Survive 7. Drive 8. Sneak"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Administer-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Quick Skills, or roll three times on the table below"
+    ],
+    "rows": [
+     {
+      "Quick Skills, or roll three times on the table below": "Connect-0"
+     },
+     {
+      "Quick Skills, or roll three times on the table below": "Talk-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6",
+     "Growth",
+     "d8",
+     "Learning"
+    ],
+    "rows": [
+     {
+      "d6": "1",
+      "Growth": "+1 Any Stat",
+      "d8": "1",
+      "Learning": "Any Skill"
+     },
+     {
+      "d6": "2",
+      "Growth": "+2 Mental",
+      "d8": "2",
+      "Learning": "Connect"
+     },
+     {
+      "d6": "3",
+      "Growth": "+2 Mental",
+      "d8": "3",
+      "Learning": "Talk"
+     },
+     {
+      "d6": "4",
+      "Growth": "+2 Physical",
+      "d8": "4",
+      "Learning": "Notice"
+     },
+     {
+      "d6": "5",
+      "Growth": "Administer",
+      "d8": "5",
+      "Learning": "Know"
+     },
+     {
+      "d6": "6",
+      "Growth": "Any Skill",
+      "d8": "6",
+      "Learning": "Work"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "7",
+      "Learning": "Lead"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "8",
+      "Learning": "Sneak"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Sneak-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Quick Skills, or roll three times on the table below"
+    ],
+    "rows": [
+     {
+      "Quick Skills, or roll three times on the table below": "Connect-0"
+     },
+     {
+      "Quick Skills, or roll three times on the table below": "Notice-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6",
+     "Growth",
+     "d8",
+     "Learning"
+    ],
+    "rows": [
+     {
+      "d6": "1",
+      "Growth": "+1 Any Stat",
+      "d8": "1",
+      "Learning": "Any Combat"
+     },
+     {
+      "d6": "2",
+      "Growth": "+2 Physical",
+      "d8": "2",
+      "Learning": "Connect"
+     },
+     {
+      "d6": "3",
+      "Growth": "+2 Physical",
+      "d8": "3",
+      "Learning": "Notice"
+     },
+     {
+      "d6": "4",
+      "Growth": "+2 Mental",
+      "d8": "4",
+      "Learning": "Talk"
+     },
+     {
+      "d6": "5",
+      "Growth": "Sneak",
+      "d8": "5",
+      "Learning": "Survive"
+     },
+     {
+      "d6": "6",
+      "Growth": "Any Skill",
+      "d8": "6",
+      "Learning": "Fix"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "7",
+      "Learning": "Trade"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "8",
+      "Learning": "Work"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Heal-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Quick Skills, or roll three times on the table below"
+    ],
+    "rows": [
+     {
+      "Quick Skills, or roll three times on the table below": "Fix-0"
+     },
+     {
+      "Quick Skills, or roll three times on the table below": "Know-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6",
+     "Growth",
+     "d8",
+     "Learning"
+    ],
+    "rows": [
+     {
+      "d6": "1",
+      "Growth": "+1 Any Stat",
+      "d8": "1",
+      "Learning": "Any Skill"
+     },
+     {
+      "d6": "2",
+      "Growth": "+2 Mental",
+      "d8": "2",
+      "Learning": "Fix"
+     },
+     {
+      "d6": "3",
+      "Growth": "+2 Mental",
+      "d8": "3",
+      "Learning": "Know"
+     },
+     {
+      "d6": "4",
+      "Growth": "+2 Physical",
+      "d8": "4",
+      "Learning": "Connect"
+     },
+     {
+      "d6": "5",
+      "Growth": "Heal",
+      "d8": "5",
+      "Learning": "Talk"
+     },
+     {
+      "d6": "6",
+      "Growth": "Any Skill",
+      "d8": "6",
+      "Learning": "Notice"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "7",
+      "Learning": "Work"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "8",
+      "Learning": "Survive"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Drive-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Quick Skills, or roll three times on the table below"
+    ],
+    "rows": [
+     {
+      "Quick Skills, or roll three times on the table below": "Fix-0"
+     },
+     {
+      "Quick Skills, or roll three times on the table below": "Notice-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6",
+     "Growth",
+     "d8",
+     "Learning"
+    ],
+    "rows": [
+     {
+      "d6": "1",
+      "Growth": "+1 Any Stat",
+      "d8": "1",
+      "Learning": "Any Combat"
+     },
+     {
+      "d6": "2",
+      "Growth": "+2 Physical",
+      "d8": "2",
+      "Learning": "Fix"
+     },
+     {
+      "d6": "3",
+      "Growth": "+2 Physical",
+      "d8": "3",
+      "Learning": "Notice"
+     },
+     {
+      "d6": "4",
+      "Growth": "+2 Mental",
+      "d8": "4",
+      "Learning": "Connect"
+     },
+     {
+      "d6": "5",
+      "Growth": "Drive",
+      "d8": "5",
+      "Learning": "Talk"
+     },
+     {
+      "d6": "6",
+      "Growth": "Any Skill",
+      "d8": "6",
+      "Learning": "Program"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "7",
+      "Learning": "Work"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "8",
+      "Learning": "Sneak"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Any Combat-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Quick Skills, or roll three times on the table below"
+    ],
+    "rows": [
+     {
+      "Quick Skills, or roll three times on the table below": "Connect-0"
+     },
+     {
+      "Quick Skills, or roll three times on the table below": "Notice-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6",
+     "Growth",
+     "d8",
+     "Learning"
+    ],
+    "rows": [
+     {
+      "d6": "1",
+      "Growth": "+1 Any Stat",
+      "d8": "1",
+      "Learning": "Any Combat"
+     },
+     {
+      "d6": "2",
+      "Growth": "+2 Physical",
+      "d8": "2",
+      "Learning": "Connect"
+     },
+     {
+      "d6": "3",
+      "Growth": "+2 Physical",
+      "d8": "3",
+      "Learning": "Notice"
+     },
+     {
+      "d6": "4",
+      "Growth": "+2 Mental",
+      "d8": "4",
+      "Learning": "Talk"
+     },
+     {
+      "d6": "5",
+      "Growth": "Any Combat",
+      "d8": "5",
+      "Learning": "Survive"
+     },
+     {
+      "d6": "6",
+      "Growth": "Any Skill",
+      "d8": "6",
+      "Learning": "Fix"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "7",
+      "Learning": "Trade"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "8",
+      "Learning": "Work"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Exert-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Quick Skills, or roll three times on the table below"
+    ],
+    "rows": [
+     {
+      "Quick Skills, or roll three times on the table below": "Fix-0"
+     },
+     {
+      "Quick Skills, or roll three times on the table below": "Notice-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6",
+     "Growth",
+     "d8",
+     "Learning"
+    ],
+    "rows": [
+     {
+      "d6": "1",
+      "Growth": "+1 Any Stat",
+      "d8": "1",
+      "Learning": "Any Combat"
+     },
+     {
+      "d6": "2",
+      "Growth": "+2 Physical",
+      "d8": "2",
+      "Learning": "Fix"
+     },
+     {
+      "d6": "3",
+      "Growth": "+2 Physical",
+      "d8": "3",
+      "Learning": "Notice"
+     },
+     {
+      "d6": "4",
+      "Growth": "+2 Mental",
+      "d8": "4",
+      "Learning": "Connect"
+     },
+     {
+      "d6": "5",
+      "Growth": "Exert",
+      "d8": "5",
+      "Learning": "Talk"
+     },
+     {
+      "d6": "6",
+      "Growth": "Any Skill",
+      "d8": "6",
+      "Learning": "Survive"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "7",
+      "Learning": "Work"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "8",
+      "Learning": "Trade"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Notice-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Quick Skills, or roll three times on the table below"
+    ],
+    "rows": [
+     {
+      "Quick Skills, or roll three times on the table below": "Connect-0"
+     },
+     {
+      "Quick Skills, or roll three times on the table below": "Talk-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6",
+     "Growth",
+     "d8",
+     "Learning"
+    ],
+    "rows": [
+     {
+      "d6": "1",
+      "Growth": "+1 Any Stat",
+      "d8": "1",
+      "Learning": "Any Combat"
+     },
+     {
+      "d6": "2",
+      "Growth": "+2 Physical",
+      "d8": "2",
+      "Learning": "Connect"
+     },
+     {
+      "d6": "3",
+      "Growth": "+2 Physical",
+      "d8": "3",
+      "Learning": "Talk"
+     },
+     {
+      "d6": "4",
+      "Growth": "+2 Mental",
+      "d8": "4",
+      "Learning": "Lead"
+     },
+     {
+      "d6": "5",
+      "Growth": "Notice",
+      "d8": "5",
+      "Learning": "Survive"
+     },
+     {
+      "d6": "6",
+      "Growth": "Any Skill",
+      "d8": "6",
+      "Learning": "Fix"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "7",
+      "Learning": "Work"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "8",
+      "Learning": "Sneak"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Lead-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Quick Skills, or roll three times on the table below"
+    ],
+    "rows": [
+     {
+      "Quick Skills, or roll three times on the table below": "Connect-0"
+     },
+     {
+      "Quick Skills, or roll three times on the table below": "Talk-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6",
+     "Growth",
+     "d8",
+     "Learning"
+    ],
+    "rows": [
+     {
+      "d6": "1",
+      "Growth": "+1 Any Stat",
+      "d8": "1",
+      "Learning": "Any Skill"
+     },
+     {
+      "d6": "2",
+      "Growth": "+2 Mental",
+      "d8": "2",
+      "Learning": "Connect"
+     },
+     {
+      "d6": "3",
+      "Growth": "+2 Mental",
+      "d8": "3",
+      "Learning": "Talk"
+     },
+     {
+      "d6": "4",
+      "Growth": "+2 Physical",
+      "d8": "4",
+      "Learning": "Notice"
+     },
+     {
+      "d6": "5",
+      "Growth": "Lead",
+      "d8": "5",
+      "Learning": "Know"
+     },
+     {
+      "d6": "6",
+      "Growth": "Any Skill",
+      "d8": "6",
+      "Learning": "Work"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "7",
+      "Learning": "Administer"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "8",
+      "Learning": "Sneak"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Survive-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Quick Skills, or roll three times on the table below"
+    ],
+    "rows": [
+     {
+      "Quick Skills, or roll three times on the table below": "Connect-0"
+     },
+     {
+      "Quick Skills, or roll three times on the table below": "Notice-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6",
+     "Growth",
+     "d8",
+     "Learning"
+    ],
+    "rows": [
+     {
+      "d6": "1",
+      "Growth": "+1 Any Stat",
+      "d8": "1",
+      "Learning": "Any Combat"
+     },
+     {
+      "d6": "2",
+      "Growth": "+2 Physical",
+      "d8": "2",
+      "Learning": "Notice"
+     },
+     {
+      "d6": "3",
+      "Growth": "+2 Physical",
+      "d8": "3",
+      "Learning": "Connect"
+     },
+     {
+      "d6": "4",
+      "Growth": "+2 Mental",
+      "d8": "4",
+      "Learning": "Talk"
+     },
+     {
+      "d6": "5",
+      "Growth": "Survive",
+      "d8": "5",
+      "Learning": "Fix"
+     },
+     {
+      "d6": "6",
+      "Growth": "Any Skill",
+      "d8": "6",
+      "Learning": "Work"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "7",
+      "Learning": "Trade"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "8",
+      "Learning": "Sneak"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Perform-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Quick Skills, or roll three times on the table below"
+    ],
+    "rows": [
+     {
+      "Quick Skills, or roll three times on the table below": "Talk-0"
+     },
+     {
+      "Quick Skills, or roll three times on the table below": "Connect-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6",
+     "Growth",
+     "d8",
+     "Learning"
+    ],
+    "rows": [
+     {
+      "d6": "1",
+      "Growth": "+1 Any Stat",
+      "d8": "1",
+      "Learning": "Any Skill"
+     },
+     {
+      "d6": "2",
+      "Growth": "+2 Mental",
+      "d8": "2",
+      "Learning": "Talk"
+     },
+     {
+      "d6": "3",
+      "Growth": "+2 Mental",
+      "d8": "3",
+      "Learning": "Connect"
+     },
+     {
+      "d6": "4",
+      "Growth": "+2 Physical",
+      "d8": "4",
+      "Learning": "Notice"
+     },
+     {
+      "d6": "5",
+      "Growth": "Perform",
+      "d8": "5",
+      "Learning": "Lead"
+     },
+     {
+      "d6": "6",
+      "Growth": "Any Skill",
+      "d8": "6",
+      "Learning": "Work"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "7",
+      "Learning": "Survive"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "8",
+      "Learning": "Sneak"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Any Combat-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Quick Skills, or roll three times on the table below"
+    ],
+    "rows": [
+     {
+      "Quick Skills, or roll three times on the table below": "Notice-0"
+     },
+     {
+      "Quick Skills, or roll three times on the table below": "Lead-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6",
+     "Growth",
+     "d8",
+     "Learning"
+    ],
+    "rows": [
+     {
+      "d6": "1",
+      "Growth": "+1 Any Stat",
+      "d8": "1",
+      "Learning": "Any Combat"
+     },
+     {
+      "d6": "2",
+      "Growth": "+2 Physical",
+      "d8": "2",
+      "Learning": "Notice"
+     },
+     {
+      "d6": "3",
+      "Growth": "+2 Physical",
+      "d8": "3",
+      "Learning": "Lead"
+     },
+     {
+      "d6": "4",
+      "Growth": "+2 Mental",
+      "d8": "4",
+      "Learning": "Connect"
+     },
+     {
+      "d6": "5",
+      "Growth": "Any Combat",
+      "d8": "5",
+      "Learning": "Talk"
+     },
+     {
+      "d6": "6",
+      "Growth": "Any Skill",
+      "d8": "6",
+      "Learning": "Survive"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "7",
+      "Learning": "Fix"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "8",
+      "Learning": "Work"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Sneak-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Quick Skills, or roll three times on the table below"
+    ],
+    "rows": [
+     {
+      "Quick Skills, or roll three times on the table below": "Connect-0"
+     },
+     {
+      "Quick Skills, or roll three times on the table below": "Notice-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6",
+     "Growth",
+     "d8",
+     "Learning"
+    ],
+    "rows": [
+     {
+      "d6": "1",
+      "Growth": "+1 Any Stat",
+      "d8": "1",
+      "Learning": "Any Combat"
+     },
+     {
+      "d6": "2",
+      "Growth": "+2 Physical",
+      "d8": "2",
+      "Learning": "Notice"
+     },
+     {
+      "d6": "3",
+      "Growth": "+2 Physical",
+      "d8": "3",
+      "Learning": "Connect"
+     },
+     {
+      "d6": "4",
+      "Growth": "+2 Mental",
+      "d8": "4",
+      "Learning": "Talk"
+     },
+     {
+      "d6": "5",
+      "Growth": "Sneak",
+      "d8": "5",
+      "Learning": "Lead"
+     },
+     {
+      "d6": "6",
+      "Growth": "Any Skill",
+      "d8": "6",
+      "Learning": "Work"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "7",
+      "Learning": "Fix"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "8",
+      "Learning": "Survive"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Trade-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Quick Skills, or roll three times on the table below"
+    ],
+    "rows": [
+     {
+      "Quick Skills, or roll three times on the table below": "Talk-0"
+     },
+     {
+      "Quick Skills, or roll three times on the table below": "Connect-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6",
+     "Growth",
+     "d8",
+     "Learning"
+    ],
+    "rows": [
+     {
+      "d6": "1",
+      "Growth": "+1 Any Stat",
+      "d8": "1",
+      "Learning": "Any Skill"
+     },
+     {
+      "d6": "2",
+      "Growth": "+2 Mental",
+      "d8": "2",
+      "Learning": "Connect"
+     },
+     {
+      "d6": "3",
+      "Growth": "+2 Mental",
+      "d8": "3",
+      "Learning": "Talk"
+     },
+     {
+      "d6": "4",
+      "Growth": "+2 Physical",
+      "d8": "4",
+      "Learning": "Notice"
+     },
+     {
+      "d6": "5",
+      "Growth": "Trade",
+      "d8": "5",
+      "Learning": "Lead"
+     },
+     {
+      "d6": "6",
+      "Growth": "Any Skill",
+      "d8": "6",
+      "Learning": "Work"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "7",
+      "Learning": "Survive"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "8",
+      "Learning": "Sneak"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Talk-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Quick Skills, or roll three times on the table below"
+    ],
+    "rows": [
+     {
+      "Quick Skills, or roll three times on the table below": "Connect-0"
+     },
+     {
+      "Quick Skills, or roll three times on the table below": "Notice-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6",
+     "Growth",
+     "d8",
+     "Learning"
+    ],
+    "rows": [
+     {
+      "d6": "1",
+      "Growth": "+1 Any Stat",
+      "d8": "1",
+      "Learning": "Any Skill"
+     },
+     {
+      "d6": "2",
+      "Growth": "+2 Mental",
+      "d8": "2",
+      "Learning": "Connect"
+     },
+     {
+      "d6": "3",
+      "Growth": "+2 Mental",
+      "d8": "3",
+      "Learning": "Notice"
+     },
+     {
+      "d6": "4",
+      "Growth": "+2 Physical",
+      "d8": "4",
+      "Learning": "Perform"
+     },
+     {
+      "d6": "5",
+      "Growth": "Talk",
+      "d8": "5",
+      "Learning": "Lead"
+     },
+     {
+      "d6": "6",
+      "Growth": "Any Skill",
+      "d8": "6",
+      "Learning": "Work"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "7",
+      "Learning": "Survive"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "8",
+      "Learning": "Sneak"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Free Skill"
+    ],
+    "rows": [
+     {
+      "Free Skill": "Fix-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Quick Skills, or roll three times on the table below"
+    ],
+    "rows": [
+     {
+      "Quick Skills, or roll three times on the table below": "Know-0"
+     },
+     {
+      "Quick Skills, or roll three times on the table below": "Program-0"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "d6",
+     "Growth",
+     "d8",
+     "Learning"
+    ],
+    "rows": [
+     {
+      "d6": "1",
+      "Growth": "+1 Any Stat",
+      "d8": "1",
+      "Learning": "Any Skill"
+     },
+     {
+      "d6": "2",
+      "Growth": "+2 Mental",
+      "d8": "2",
+      "Learning": "Know"
+     },
+     {
+      "d6": "3",
+      "Growth": "+2 Mental",
+      "d8": "3",
+      "Learning": "Program"
+     },
+     {
+      "d6": "4",
+      "Growth": "+2 Physical",
+      "d8": "4",
+      "Learning": "Connect"
+     },
+     {
+      "d6": "5",
+      "Growth": "Fix",
+      "d8": "5",
+      "Learning": "Talk"
+     },
+     {
+      "d6": "6",
+      "Growth": "Any Skill",
+      "d8": "6",
+      "Learning": "Notice"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "7",
+      "Learning": "Work"
+     },
+     {
+      "d6": "",
+      "Growth": "",
+      "d8": "8",
+      "Learning": "Survive"
+     }
+    ]
+   }
+  ],
+  "advancement": [
+   {
+    "columns": [
+     "Level",
+     "Fast",
+     "Slow"
+    ],
+    "rows": [
+     {
+      "Level": "1",
+      "Fast": "0",
+      "Slow": "0"
+     },
+     {
+      "Level": "2",
+      "Fast": "3",
+      "Slow": "6"
+     },
+     {
+      "Level": "3",
+      "Fast": "6",
+      "Slow": "15"
+     },
+     {
+      "Level": "4",
+      "Fast": "12",
+      "Slow": "24"
+     },
+     {
+      "Level": "5",
+      "Fast": "18",
+      "Slow": "36"
+     },
+     {
+      "Level": "6",
+      "Fast": "27",
+      "Slow": "51"
+     },
+     {
+      "Level": "7",
+      "Fast": "39",
+      "Slow": "69"
+     },
+     {
+      "Level": "8",
+      "Fast": "54",
+      "Slow": "87"
+     },
+     {
+      "Level": "9",
+      "Fast": "72",
+      "Slow": "105"
+     },
+     {
+      "Level": "10",
+      "Fast": "93",
+      "Slow": "139"
+     }
+    ]
+   },
+   {
+    "columns": [
+     "Skill Level",
+     "Point Cost",
+     "Min. Character Level"
+    ],
+    "rows": [
+     {
+      "Skill Level": "0",
+      "Point Cost": "1",
+      "Min. Character Level": "1"
+     },
+     {
+      "Skill Level": "1",
+      "Point Cost": "2",
+      "Min. Character Level": "1"
+     },
+     {
+      "Skill Level": "2",
+      "Point Cost": "3",
+      "Min. Character Level": "3"
+     },
+     {
+      "Skill Level": "3",
+      "Point Cost": "4",
+      "Min. Character Level": "6"
+     },
+     {
+      "Skill Level": "4",
+      "Point Cost": "5",
+      "Min. Character Level": "9"
+     }
+    ]
+   }
+  ],
+  "combat_actions": [],
+  "damage": [],
+  "body": [
+   {
+    "columns": [
+     "Cyberware",
+     "Cost",
+     "Type",
+     "Concealment Level",
+     "System Strain"
+    ],
+    "rows": [
+     {
+      "Cyberware": "Aesthetic Augmentation Suite",
+      "Cost": "$50K",
+      "Type": "Body",
+      "Concealment Level": "Sight",
+      "System Strain": "2"
+     },
+     {
+      "Cyberware": "Assisted Glide System",
+      "Cost": "$50K",
+      "Type": "Body",
+      "Concealment Level": "Touch",
+      "System Strain": "2"
+     },
+     {
+      "Cyberware": "Banshee Module",
+      "Cost": "$30K",
+      "Type": "Body",
+      "Concealment Level": "Medical",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Cybernetic Infrastructure Baseline",
+      "Cost": "$20K",
+      "Type": "Body",
+      "Concealment Level": "Medical",
+      "System Strain": "0"
+     },
+     {
+      "Cyberware": "Deadman Circuit",
+      "Cost": "$10K",
+      "Type": "Body",
+      "Concealment Level": "Sight",
+      "System Strain": "0.25"
+     },
+     {
+      "Cyberware": "Dermal Armor/Trauma Shielding",
+      "Cost": "$100K",
+      "Type": "Body",
+      "Concealment Level": "Medical",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Emergency Stabilization Factor",
+      "Cost": "$30K",
+      "Type": "Body",
+      "Concealment Level": "Medical",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Fleshmod",
+      "Cost": "$20K",
+      "Type": "Body",
+      "Concealment Level": "Medical",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Full Body Conversion",
+      "Cost": "$6M",
+      "Type": "Body",
+      "Concealment Level": "Sight",
+      "System Strain": "0"
+     },
+     {
+      "Cyberware": "Hemosynthetic Filter System",
+      "Cost": "$25K",
+      "Type": "Body",
+      "Concealment Level": "Medical",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Holdout Cavity",
+      "Cost": "$10K",
+      "Type": "Body",
+      "Concealment Level": "Medical",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Medical Support Readout",
+      "Cost": "$10K",
+      "Type": "Body",
+      "Concealment Level": "Medical",
+      "System Strain": "0.25"
+     },
+     {
+      "Cyberware": "Recovery Support Unit",
+      "Cost": "$30K",
+      "Type": "Body",
+      "Concealment Level": "Medical",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Redundant Systems",
+      "Cost": "$15K",
+      "Type": "Body",
+      "Concealment Level": "Medical",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Retribution Shield",
+      "Cost": "$50K",
+      "Type": "Body",
+      "Concealment Level": "Touch",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Therapeutic Control Dampers",
+      "Cost": "$25K",
+      "Type": "Body",
+      "Concealment Level": "Medical",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Titan Gun System",
+      "Cost": "$100K",
+      "Type": "Body",
+      "Concealment Level": "Sight",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Viper Sting",
+      "Cost": "$25K",
+      "Type": "Body",
+      "Concealment Level": "Medical",
+      "System Strain": "0.5"
+     }
+    ]
+   }
+  ],
+  "head": [
+   {
+    "columns": [
+     "Cyberware",
+     "Cost",
+     "Type",
+     "Concealment Level",
+     "System Strain"
+    ],
+    "rows": [
+     {
+      "Cyberware": "Courier Memory",
+      "Cost": "$10K",
+      "Type": "Head",
+      "Concealment Level": "Medical",
+      "System Strain": "0.25"
+     },
+     {
+      "Cyberware": "Cranial Jack",
+      "Cost": "As cyber",
+      "Type": "Head",
+      "Concealment Level": "Touch",
+      "System Strain": "0.25"
+     },
+     {
+      "Cyberware": "Discretion Insurance Unit",
+      "Cost": "$10K",
+      "Type": "Head",
+      "Concealment Level": "Medical",
+      "System Strain": "0.5"
+     },
+     {
+      "Cyberware": "Eye Mod/Dazzler",
+      "Cost": "$15K",
+      "Type": "Head",
+      "Concealment Level": "Medical",
+      "System Strain": "0.5"
+     },
+     {
+      "Cyberware": "Eye Mod/Flechette Launcher",
+      "Cost": "$20K",
+      "Type": "Head",
+      "Concealment Level": "Medical",
+      "System Strain": "0.5"
+     },
+     {
+      "Cyberware": "Funes Complex",
+      "Cost": "$40K",
+      "Type": "Head",
+      "Concealment Level": "Medical",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Medusa Implant",
+      "Cost": "$20K",
+      "Type": "Head",
+      "Concealment Level": "Obvious",
+      "System Strain": ".5"
+     },
+     {
+      "Cyberware": "Neural Buffer",
+      "Cost": "As cyber",
+      "Type": "Head",
+      "Concealment Level": "Medical",
+      "System Strain": "0.25"
+     },
+     {
+      "Cyberware": "Skull Citadel",
+      "Cost": "$100K",
+      "Type": "Head",
+      "Concealment Level": "Medical",
+      "System Strain": "2"
+     }
+    ]
+   }
+  ],
+  "skin": [
+   {
+    "columns": [
+     "Cyberware",
+     "Cost",
+     "Type",
+     "Concealment Level",
+     "System Strain"
+    ],
+    "rows": [
+     {
+      "Cyberware": "Dermal Armor I",
+      "Cost": "$40K",
+      "Type": "Skin",
+      "Concealment Level": "Medical",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Dermal Armor II",
+      "Cost": "$80K",
+      "Type": "Skin",
+      "Concealment Level": "Touch",
+      "System Strain": "2"
+     },
+     {
+      "Cyberware": "Dermal Armor III",
+      "Cost": "$200K",
+      "Type": "Skin",
+      "Concealment Level": "Sight",
+      "System Strain": "3"
+     },
+     {
+      "Cyberware": "Poseidon Implants",
+      "Cost": "$30K",
+      "Type": "Skin",
+      "Concealment Level": "Touch",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Sealed Systems Implant",
+      "Cost": "$15K",
+      "Type": "Skin",
+      "Concealment Level": "Medical",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Sharkskin Electrodes",
+      "Cost": "$20K",
+      "Type": "Skin",
+      "Concealment Level": "Touch",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Skinmod",
+      "Cost": "$250",
+      "Type": "Skin",
+      "Concealment Level": "Sight",
+      "System Strain": "0"
+     },
+     {
+      "Cyberware": "Skyborn Shielding",
+      "Cost": "$40K",
+      "Type": "Skin",
+      "Concealment Level": "Sight",
+      "System Strain": "2"
+     }
+    ]
+   }
+  ],
+  "limb": [
+   {
+    "columns": [
+     "Cyberware",
+     "Cost",
+     "Type",
+     "Concealment Level",
+     "System Strain"
+    ],
+    "rows": [
+     {
+      "Cyberware": "Body Blades I",
+      "Cost": "$10K",
+      "Type": "Limb",
+      "Concealment Level": "Medical",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Body Blades II",
+      "Cost": "$25K",
+      "Type": "Limb",
+      "Concealment Level": "Sight",
+      "System Strain": "2"
+     },
+     {
+      "Cyberware": "Cyberlimb",
+      "Cost": "$10K",
+      "Type": "Limb",
+      "Concealment Level": "Touch",
+      "System Strain": "0.5"
+     },
+     {
+      "Cyberware": "Iron Hand Aegis",
+      "Cost": "$40K",
+      "Type": "Limb",
+      "Concealment Level": "Touch",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Limbgun",
+      "Cost": "$30K",
+      "Type": "Limb",
+      "Concealment Level": "Touch",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Muscle Fiber Replacement I",
+      "Cost": "$50K",
+      "Type": "Limb",
+      "Concealment Level": "Touch",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Muscle Fiber Replacement II",
+      "Cost": "$200K",
+      "Type": "Limb",
+      "Concealment Level": "Sight",
+      "System Strain": "2"
+     },
+     {
+      "Cyberware": "Neolimb",
+      "Cost": "$25K",
+      "Type": "Limb",
+      "Concealment Level": "Sight",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Omnihand",
+      "Cost": "$10K",
+      "Type": "Limb",
+      "Concealment Level": "Touch",
+      "System Strain": "0.25"
+     },
+     {
+      "Cyberware": "Shock Fists",
+      "Cost": "$10K",
+      "Type": "Limb",
+      "Concealment Level": "Touch",
+      "System Strain": "0.5"
+     },
+     {
+      "Cyberware": "Stick Pads",
+      "Cost": "$15K",
+      "Type": "Limb",
+      "Concealment Level": "Touch",
+      "System Strain": "0.5"
+     },
+     {
+      "Cyberware": "Synthlimb",
+      "Cost": "$25K",
+      "Type": "Limb",
+      "Concealment Level": "Medical",
+      "System Strain": "0.5"
+     }
+    ]
+   }
+  ],
+  "sensory": [
+   {
+    "columns": [
+     "Cyberware",
+     "Cost",
+     "Type",
+     "Concealment Level",
+     "System Strain"
+    ],
+    "rows": [
+     {
+      "Cyberware": "Active Sense Processor",
+      "Cost": "$50K",
+      "Type": "Sensory",
+      "Concealment Level": "Medical",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Cyberears (pair)",
+      "Cost": "$10K",
+      "Type": "Sensory",
+      "Concealment Level": "Touch",
+      "System Strain": "0.25"
+     },
+     {
+      "Cyberware": "Cybereyes (pair)",
+      "Cost": "$10K",
+      "Type": "Sensory",
+      "Concealment Level": "Sight",
+      "System Strain": "0.25"
+     },
+     {
+      "Cyberware": "Ear Mod/Filter",
+      "Cost": "$10K",
+      "Type": "Sensory",
+      "Concealment Level": "Medical",
+      "System Strain": "0.5"
+     },
+     {
+      "Cyberware": "Ear Mod/Positional Detection",
+      "Cost": "$15K",
+      "Type": "Sensory",
+      "Concealment Level": "Medical",
+      "System Strain": "0.5"
+     },
+     {
+      "Cyberware": "Ear Mod/Sonar",
+      "Cost": "$20K",
+      "Type": "Sensory",
+      "Concealment Level": "Medical",
+      "System Strain": "0.5"
+     },
+     {
+      "Cyberware": "Ear Mod/Tracer",
+      "Cost": "$10K",
+      "Type": "Sensory",
+      "Concealment Level": "Medical",
+      "System Strain": "0.5"
+     },
+     {
+      "Cyberware": "Eye Mod/Impostor",
+      "Cost": "$10K",
+      "Type": "Sensory",
+      "Concealment Level": "Medical",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Eye Mod/Infrared Vision",
+      "Cost": "$5K",
+      "Type": "Sensory",
+      "Concealment Level": "Medical",
+      "System Strain": "0.5"
+     },
+     {
+      "Cyberware": "Eye Mod/Low Light Vision",
+      "Cost": "$5K",
+      "Type": "Sensory",
+      "Concealment Level": "Medical",
+      "System Strain": "0.5"
+     },
+     {
+      "Cyberware": "Eye Mod/Tactical View",
+      "Cost": "$10K",
+      "Type": "Sensory",
+      "Concealment Level": "Medical",
+      "System Strain": "0.5"
+     },
+     {
+      "Cyberware": "Eye Mod/Zoom",
+      "Cost": "$10K",
+      "Type": "Sensory",
+      "Concealment Level": "Medical",
+      "System Strain": "0.5"
+     },
+     {
+      "Cyberware": "Gunlink",
+      "Cost": "$25K",
+      "Type": "Sensory",
+      "Concealment Level": "Touch",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Headcomm",
+      "Cost": "$1K",
+      "Type": "Sensory",
+      "Concealment Level": "Medical",
+      "System Strain": "0.25"
+     },
+     {
+      "Cyberware": "Sensory Recorder",
+      "Cost": "$10K",
+      "Type": "Sensory",
+      "Concealment Level": "Medical",
+      "System Strain": "0.5"
+     },
+     {
+      "Cyberware": "Synthears (pair)",
+      "Cost": "$25K",
+      "Type": "Sensory",
+      "Concealment Level": "Medical",
+      "System Strain": "0.25"
+     },
+     {
+      "Cyberware": "Syntheyes (pair)",
+      "Cost": "$25K",
+      "Type": "Sensory",
+      "Concealment Level": "Medical",
+      "System Strain": "0.25"
+     }
+    ]
+   }
+  ],
+  "medical": [
+   {
+    "columns": [
+     "Cyberware",
+     "Cost",
+     "Type",
+     "Concealment Level",
+     "System Strain"
+    ],
+    "rows": [
+     {
+      "Cyberware": "Prosthetic Cyber I",
+      "Cost": "$5K",
+      "Type": "None",
+      "Concealment Level": "Sight",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Prosthetic Cyber II",
+      "Cost": "$15K",
+      "Type": "None",
+      "Concealment Level": "Medical",
+      "System Strain": "0.25"
+     },
+     {
+      "Cyberware": "Regulated Anagathic Substrate",
+      "Cost": "$200K",
+      "Type": "None",
+      "Concealment Level": "Medical",
+      "System Strain": "1"
+     }
+    ]
+   }
+  ],
+  "nerve": [
+   {
+    "columns": [
+     "Cyberware",
+     "Cost",
+     "Type",
+     "Concealment Level",
+     "System Strain"
+    ],
+    "rows": [
+     {
+      "Cyberware": "Coordination Augment I",
+      "Cost": "$50K",
+      "Type": "Nerve",
+      "Concealment Level": "Medical",
+      "System Strain": "2"
+     },
+     {
+      "Cyberware": "Coordination Augment II",
+      "Cost": "$200K",
+      "Type": "Nerve",
+      "Concealment Level": "Touch",
+      "System Strain": "3"
+     },
+     {
+      "Cyberware": "Enhanced Reflexes I",
+      "Cost": "$100K",
+      "Type": "Nerve",
+      "Concealment Level": "Medical",
+      "System Strain": "2"
+     },
+     {
+      "Cyberware": "Enhanced Reflexes II",
+      "Cost": "$250K",
+      "Type": "Nerve",
+      "Concealment Level": "Medical",
+      "System Strain": "3"
+     },
+     {
+      "Cyberware": "Enhanced Reflexes III",
+      "Cost": "$750K",
+      "Type": "Nerve",
+      "Concealment Level": "Touch",
+      "System Strain": "4"
+     },
+     {
+      "Cyberware": "Reaction Booster I",
+      "Cost": "$50K",
+      "Type": "Nerve",
+      "Concealment Level": "Medical",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Reaction Booster II",
+      "Cost": "$100K",
+      "Type": "Nerve",
+      "Concealment Level": "Medical",
+      "System Strain": "2"
+     },
+     {
+      "Cyberware": "Remote Control Unit",
+      "Cost": "$10K",
+      "Type": "Nerve",
+      "Concealment Level": "Touch",
+      "System Strain": "2"
+     },
+     {
+      "Cyberware": "Skillplug Jack I",
+      "Cost": "$10K",
+      "Type": "Head",
+      "Concealment Level": "Touch",
+      "System Strain": "0.25"
+     },
+     {
+      "Cyberware": "Skillplug Jack II",
+      "Cost": "$25K",
+      "Type": "Head",
+      "Concealment Level": "Touch",
+      "System Strain": "0.5"
+     },
+     {
+      "Cyberware": "Skillplug Wiring",
+      "Cost": "$50K",
+      "Type": "Nerve",
+      "Concealment Level": "Medical",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Trajectory Optimization Node",
+      "Cost": "$50K",
+      "Type": "Nerve",
+      "Concealment Level": "Medical",
+      "System Strain": "1"
+     },
+     {
+      "Cyberware": "Zombie Wires",
+      "Cost": "$60K",
+      "Type": "Nerve",
+      "Concealment Level": "Medical",
+      "System Strain": "2"
+     }
+    ]
+   }
+  ],
+  "cyberware_mods": [
+   {
+    "columns": [
+     "Mod",
+     "Fix/Heal",
+     "Cost",
+     "Special Components"
+    ],
+    "rows": [
+     {
+      "Mod": "Biocapacitors",
+      "Fix/Heal": "1/2",
+      "Cost": "30%",
+      "Special Components": "1"
+     },
+     {
+      "Mod": "Durable System",
+      "Fix/Heal": "1/1",
+      "Cost": "20%",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Firewalled",
+      "Fix/Heal": "1/1",
+      "Cost": "20%",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Hardened Weave",
+      "Fix/Heal": "2/1",
+      "Cost": "30%",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Low Maintenance",
+      "Fix/Heal": "2/2",
+      "Cost": "10%",
+      "Special Components": "1"
+     },
+     {
+      "Mod": "Monoblade",
+      "Fix/Heal": "2/1",
+      "Cost": "20%",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Profile Adjustment",
+      "Fix/Heal": "1/2",
+      "Cost": "20%",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Quick Detach",
+      "Fix/Heal": "2/2",
+      "Cost": "30%",
+      "Special Components": "0"
+     },
+     {
+      "Mod": "Tailored Interface",
+      "Fix/Heal": "1/3",
+      "Cost": "30%",
+      "Special Components": "1"
+     },
+     {
+      "Mod": "Targeting Processor",
+      "Fix/Heal": "2/1",
+      "Cost": "30%",
+      "Special Components": "0"
+     }
+    ]
+   }
+  ]
+ },
+ "backgrounds": [
+  {
+   "name": "Bum",
+   "free_skill": "Survive-0",
+   "quick_skills": [],
+   "growth": [
+    {
+     "roll": 1,
+     "result": "+1 Any Stat"
+    },
+    {
+     "roll": 2,
+     "result": "+2 Physical"
+    },
+    {
+     "roll": 3,
+     "result": "+2 Physical"
+    },
+    {
+     "roll": 4,
+     "result": "+2 Mental"
+    },
+    {
+     "roll": 5,
+     "result": "Survive"
+    },
+    {
+     "roll": 6,
+     "result": "Any Skill"
+    }
+   ],
+   "learning": [
+    {
+     "roll": 1,
+     "result": "Any Combat"
+    },
+    {
+     "roll": 2,
+     "result": "Survive"
+    },
+    {
+     "roll": 3,
+     "result": "Connect"
+    },
+    {
+     "roll": 4,
+     "result": "Sneak"
+    },
+    {
+     "roll": 5,
+     "result": "Notice"
+    },
+    {
+     "roll": 6,
+     "result": "Talk"
+    },
+    {
+     "roll": 7,
+     "result": "Fix"
+    },
+    {
+     "roll": 8,
+     "result": "Trade"
+    }
+   ]
+  },
+  {
+   "name": "Bureaucrat",
+   "free_skill": "Administer-0",
+   "quick_skills": [],
+   "growth": [
+    {
+     "roll": 1,
+     "result": "+1 Any Stat"
+    },
+    {
+     "roll": 2,
+     "result": "+2 Mental"
+    },
+    {
+     "roll": 3,
+     "result": "+2 Mental"
+    },
+    {
+     "roll": 4,
+     "result": "+2 Physical"
+    },
+    {
+     "roll": 5,
+     "result": "Administer"
+    },
+    {
+     "roll": 6,
+     "result": "Any Skill"
+    }
+   ],
+   "learning": [
+    {
+     "roll": 1,
+     "result": "Any Skill"
+    },
+    {
+     "roll": 2,
+     "result": "Connect"
+    },
+    {
+     "roll": 3,
+     "result": "Talk"
+    },
+    {
+     "roll": 4,
+     "result": "Notice"
+    },
+    {
+     "roll": 5,
+     "result": "Know"
+    },
+    {
+     "roll": 6,
+     "result": "Work"
+    },
+    {
+     "roll": 7,
+     "result": "Lead"
+    },
+    {
+     "roll": 8,
+     "result": "Sneak"
+    }
+   ]
+  },
+  {
+   "name": "Clergy",
+   "free_skill": "Talk-0",
+   "quick_skills": [],
+   "growth": [
+    {
+     "roll": 1,
+     "result": "+1 Any Stat"
+    },
+    {
+     "roll": 2,
+     "result": "+2 Mental"
+    },
+    {
+     "roll": 3,
+     "result": "+2 Mental"
+    },
+    {
+     "roll": 4,
+     "result": "+2 Physical"
+    },
+    {
+     "roll": 5,
+     "result": "Talk"
+    },
+    {
+     "roll": 6,
+     "result": "Any Skill"
+    }
+   ],
+   "learning": [
+    {
+     "roll": 1,
+     "result": "Any Skill"
+    },
+    {
+     "roll": 2,
+     "result": "Heal"
+    },
+    {
+     "roll": 3,
+     "result": "Lead"
+    },
+    {
+     "roll": 4,
+     "result": "Connect"
+    },
+    {
+     "roll": 5,
+     "result": "Know"
+    },
+    {
+     "roll": 6,
+     "result": "Notice"
+    },
+    {
+     "roll": 7,
+     "result": "Perform"
+    },
+    {
+     "roll": 8,
+     "result": "Survive"
+    }
+   ]
+  },
+  {
+   "name": "Coder",
+   "free_skill": "Program-0",
+   "quick_skills": [],
+   "growth": [
+    {
+     "roll": 1,
+     "result": "+1 Any Stat"
+    },
+    {
+     "roll": 2,
+     "result": "+2 Mental"
+    },
+    {
+     "roll": 3,
+     "result": "+2 Mental"
+    },
+    {
+     "roll": 4,
+     "result": "+2 Physical"
+    },
+    {
+     "roll": 5,
+     "result": "Program"
+    },
+    {
+     "roll": 6,
+     "result": "Any Skill"
+    }
+   ],
+   "learning": [
+    {
+     "roll": 1,
+     "result": "Any Skill"
+    },
+    {
+     "roll": 2,
+     "result": "Fix"
+    },
+    {
+     "roll": 3,
+     "result": "Know"
+    },
+    {
+     "roll": 4,
+     "result": "Connect"
+    },
+    {
+     "roll": 5,
+     "result": "Talk"
+    },
+    {
+     "roll": 6,
+     "result": "Notice"
+    },
+    {
+     "roll": 7,
+     "result": "Work"
+    },
+    {
+     "roll": 8,
+     "result": "Sneak"
+    }
+   ]
+  },
+  {
+   "name": "Corp Security",
+   "free_skill": "Shoot-0",
+   "quick_skills": [],
+   "growth": [
+    {
+     "roll": 1,
+     "result": "+1 Any Stat"
+    },
+    {
+     "roll": 2,
+     "result": "+2 Physical"
+    },
+    {
+     "roll": 3,
+     "result": "+2 Physical"
+    },
+    {
+     "roll": 4,
+     "result": "+2 Mental"
+    },
+    {
+     "roll": 5,
+     "result": "Shoot"
+    },
+    {
+     "roll": 6,
+     "result": "Any Skill"
+    }
+   ],
+   "learning": [
+    {
+     "roll": 1,
+     "result": "Any Combat"
+    },
+    {
+     "roll": 2,
+     "result": "Notice"
+    },
+    {
+     "roll": 3,
+     "result": "Lead"
+    },
+    {
+     "roll": 4,
+     "result": "Connect"
+    },
+    {
+     "roll": 5,
+     "result": "Talk"
+    },
+    {
+     "roll": 6,
+     "result": "Survive"
+    },
+    {
+     "roll": 7,
+     "result": "Drive"
+    },
+    {
+     "roll": 8,
+     "result": "Sneak"
+    }
+   ]
+  },
+  {
+   "name": "Corper",
+   "free_skill": "Administer-0",
+   "quick_skills": [],
+   "growth": [],
+   "learning": []
+  },
+  {
+   "name": "Criminal",
+   "free_skill": "Sneak-0",
+   "quick_skills": [],
+   "growth": [],
+   "learning": []
+  },
+  {
+   "name": "Doctor",
+   "free_skill": "Heal-0",
+   "quick_skills": [],
+   "growth": [],
+   "learning": []
+  },
+  {
+   "name": "Drone Jockey",
+   "free_skill": "Drive-0",
+   "quick_skills": [],
+   "growth": [],
+   "learning": []
+  },
+  {
+   "name": "Ganger",
+   "free_skill": "Any Combat-0",
+   "quick_skills": [],
+   "growth": [],
+   "learning": []
+  },
+  {
+   "name": "Laborer",
+   "free_skill": "Exert-0",
+   "quick_skills": [],
+   "growth": [],
+   "learning": []
+  },
+  {
+   "name": "Law Enforcement",
+   "free_skill": "Notice-0",
+   "quick_skills": [],
+   "growth": [],
+   "learning": []
+  },
+  {
+   "name": "Manager",
+   "free_skill": "Lead-0",
+   "quick_skills": [],
+   "growth": [],
+   "learning": []
+  },
+  {
+   "name": "Outlander",
+   "free_skill": "Survive-0",
+   "quick_skills": [],
+   "growth": [],
+   "learning": []
+  },
+  {
+   "name": "Performer",
+   "free_skill": "Perform-0",
+   "quick_skills": [],
+   "growth": [],
+   "learning": []
+  },
+  {
+   "name": "Soldier",
+   "free_skill": "Any Combat-0",
+   "quick_skills": [],
+   "growth": [],
+   "learning": []
+  },
+  {
+   "name": "Spy",
+   "free_skill": "Sneak-0",
+   "quick_skills": [],
+   "growth": [],
+   "learning": []
+  },
+  {
+   "name": "Trader",
+   "free_skill": "Trade-0",
+   "quick_skills": [],
+   "growth": [],
+   "learning": []
+  },
+  {
+   "name": "Streetwalker",
+   "free_skill": "Talk-0",
+   "quick_skills": [],
+   "growth": [],
+   "learning": []
+  },
+  {
+   "name": "Technician",
+   "free_skill": "Fix-0",
+   "quick_skills": [],
+   "growth": [],
+   "learning": []
+  }
+ ]
+}
