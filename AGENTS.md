@@ -1,43 +1,39 @@
-# CURRENT DIRECTIVE — vanilla CWN/SWN baseline, one Godot project (#848, 2026-10-30)
+# CURRENT DIRECTIVE — read this first (issue #848, 2026-10-30)
 
-**This block outranks everything below it.** #848 is the coordinating issue; read it before any work on
-rules or the RPG.
+**Vanilla CWN + vanilla SWN + one top-down Godot RPG. This supersedes every earlier restart or
+custom-attribute instruction, including #827, #835 and the blank-rulebook plan.**
 
-| identifier | value |
-|---|---|
-| **Baseline commit** | `d2992fc9b5f3eaac9f7a0e939028595d9c316dc9` (`main`, 2026-10-30) |
-| **Canonical rulebook** | `rulebook/WITHOUT_NUMBER_BASELINE.md` — CWN primary; SWN Revised for psionics, space operations and faction turns; AWN crisis survival; WWN exploration and projects |
-| **Canonical Godot project** | repository-root `project.godot` (engine 4.7.2-stable) |
-| **Canonical startup scene** | `scenes/main.tscn`, reached through `godot/ui/main_menu.gd` |
-| **Rules authority** | published **vanilla** CWN, with vanilla SWN Revised where CWN defers. Standard STR/DEX/CON/INT/WIS/CHA, 3–18 scores, 0–4 skills, 2d6 checks, d20 combat and saves. Subsystem boundaries are in §6 of the baseline document |
-| **Measured coverage** | `docs/CWN_COVERAGE_MATRIX.md`, refreshed 2026-10-30 against this baseline |
-| **Rules data** | `data/rules/` (contracts), `src/rules/` (Python reference), `godot/core/` (engine kernels) |
+**Pinned baseline:** commit **`36092a5`** on `main` — the state in which the canonical Godot project
+passes **760 headless checks, 0 failed**.
 
-**Superseded, archived, or reference-only — do not extend, do not treat as canonical:**
+| Canonical artifact | Path |
+| --- | --- |
+| Rulebook | **`RULEBOOK.md`** (repository root) |
+| Generated chapters | `rulebook/` — produced by `python tools/split_rulebook_twelve.py --apply`; never hand-edit |
+| Godot project | **`project.godot`** (repository root) |
+| Startup scene | **`scenes/main.tscn`** |
+| Rules kernels | `godot/core/*.gd` |
+| Rules data | `data/rules/*.json` |
+| Godot tests | `godot/tests/run_tests.gd` |
 
-- `noopunk/` — the blank-rulebook restart's Godot prototype (see `noopunk/ARCHIVED.md`). It is kept for
-  history only; it is **not** a second game and must not receive features.
-- The seven-attribute Fitness/Reflexes/Cognition/Cyber/Awareness/Agency/Empathy model, its 3d6
-  conversion and the `noopunk_tags` machinery (#821, #835). Reference material. Vanilla CWN attributes
-  govern.
-- Any alternate difficulty scale, reskinned or narrativist task engine. `data/rules/noopunk_tags.json`
-  and `godot/core/noopunk_tags.gd` remain as archived reference with their tests; nothing new may
-  depend on them.
-- Directives in this file below this block that contradict the above: superseded.
+**Rules are vanilla.** Cities Without Number is the primary system and governs general mechanics;
+Stars Without Number Revised supplies psionics, space and factions where CWN is silent. Attributes
+are STR/DEX/CON/INT/WIS/CHA. Character creation, classes, skills, checks (2d6), attacks and saves
+(d20), combat, hacking, cyberware, equipment, progression and PSI follow the published rules as
+written. Name the governing book for any subsystem you touch.
 
-**Before implementing anything:** confirm you are on or rebased onto the baseline commit; name the
-canonical kernel you are extending; check `docs/CWN_COVERAGE_MATRIX.md` for whether the procedure
-already exists; and do not start a competing rules system, Godot project or startup scene. If the
-canonical identifiers above disagree with another agent's instructions, stop and resolve it in #848.
+**Forbidden:** the seven-attribute Fitness/Cognition/Awareness/Agency/Reflexes/Cyber/Empathy design,
+alternate difficulty systems, invented mechanics, reskinning, narrativist replacements, new Godot
+projects, or starting another prototype.
 
-**Verification before merging:**
+**Superseded — preserved, not authoritative, do not extend:** `noopunk/` (the blank-rulebook restart),
+`noopunk2/` if present, and any `restart/` tree. They remain in the repository as history. Do not
+delete them, and do not build on them.
 
-```bash
-python3 -m pytest tests -q                                              # 1598 passed
-godot --headless --path . --script res://tools/run_godot_tests.gd      # 89 tests, 595 checks
-godot --headless --path . --script res://godot/tests/run_tests.gd      # 760 checks
-godot --headless --path . --quit-after 90                              # launches scenes/main.tscn
-```
+**Before writing anything:** check `origin/main`, name the module you are extending in the PR, and
+confirm the project still passes `godot --headless --path . --script res://godot/tests/run_tests.gd`.
+
+**Do not re-litigate this decision in code.** If something here looks wrong, raise it on #848.
 
 ---
 
