@@ -1042,6 +1042,10 @@ Use the three-space distinction consistently:
   institutions, biospheric cognition, NHI, cultures, and collective symbolic structures
   increasingly organizing itself **within Noöspace**.
 
+That network reading is the technical sense only. The deeper Noösphere is the collective unconscious of
+the biosphere becoming conscious of itself; the network may be a scaffold toward it rather than its
+substance. See [`../world/NOOSPHERE.md`](../world/NOOSPHERE.md).
+
 The official scientific/technical term is **Noöspace**. QIP physicists, Noetic
 researchers, intelligence services, and technical institutions use it in formal work.
 Everybody else, and plenty of field operatives when the scientists are not listening,
