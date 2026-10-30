@@ -10,7 +10,7 @@ Evolved organic life, includes DNA-based life similar to Earth as well as other 
 Biological life system of Earth, giving birth to Noösphere.
 
 ## Conscious Agent
-Reality is a network of conscious agents interacting through exchange of information.
+Reality is a network of conscious agents interacting through exchange of information. Their properties are consciousness, agency and identity.
 
 ## Constructs
 Intelligences that are not biological, includes physical machines like robots and beings that exist purely in cyberspace as information.
