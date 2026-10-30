@@ -1,0 +1,40 @@
+{
+  "$comment": "Cities Without Number SRD 3.2.1 lifestyle costs and their maximum System Strain modifiers. Verbatim, cited. 3.2.2 wages are not transcribed yet and are tracked in the follow-up issue.",
+  "source": {
+    "title": "Cities Without Number SRD",
+    "section": "3.2.1",
+    "url": "https://cwn.quadrifons.com/"
+  },
+  "levels": [
+    {
+      "id": "squatter",
+      "name": "Squatter life in an abandoned building",
+      "monthly_cost": 0,
+      "max_strain_modifier": -2
+    },
+    {
+      "id": "slum",
+      "name": "Slum living in a dirty shared apartment",
+      "monthly_cost": 300,
+      "max_strain_modifier": -1
+    },
+    {
+      "id": "middle_class",
+      "name": "Middle-class corper life in a nice rental",
+      "monthly_cost": 1000,
+      "max_strain_modifier": 0
+    },
+    {
+      "id": "fine",
+      "name": "Fine living in a clean, secure building",
+      "monthly_cost": 5000,
+      "max_strain_modifier": 1
+    },
+    {
+      "id": "luxury",
+      "name": "Luxury life with all its little pleasures",
+      "monthly_cost": 20000,
+      "max_strain_modifier": 2
+    }
+  ]
+}
