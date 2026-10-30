@@ -108,7 +108,7 @@
     <section class="section">
       <div class="section-kicker">03 / THE SETTING</div>
       <h2>There is a world to save. It is still occupied.</h2>
-      <p class="wide">NoöPunk has its own continuity and independent rules, with Eclipse Phase among its transhuman influences. Earth remains the main stage. Artificial minds, augmentation and extraordinary contact change daily life without abolishing the people who must live it. The early strategy campaign and later RPG setting enter this transformation at different points.</p>
+      <p class="wide">NoöPunk has its own continuity and currently uses the Cities Without Number / Stars Without Number rules baseline. Earth remains the main stage. Artificial minds, augmentation and extraordinary contact change daily life without abolishing the people who must live it. The early strategy campaign and later RPG setting enter this transformation at different points.</p>
       <div class="grid system-grid">
         <article class="big"><div class="tag">EARTH</div><h3>Still here</h3><p>States, cities, corporations, movements and communities continue to struggle over authority, resources and identity. Climate change still matters. Ecological restoration, clean energy and biotechnology can make life better, provided people can govern and share them.</p></article>
         <article class="big"><div class="tag">TRANSHUMANITY</div><h3>A person, revised</h3><p>The developed setting includes morphs, artificial minds, cybernetic augmentation and advanced biotech. Bodies and capabilities change. Questions of identity, ownership and belonging become harder to leave to the philosophers.</p></article>
@@ -120,10 +120,10 @@
     <section id="game" class="section">
       <div class="section-kicker">04 / THE GAME</div>
       <h2>A person with a case. A faction with an explanation.</h2>
-      <p class="wide">The legacy text-first RPG and the strategy/RPG crossover share a world and retain distinct rules. Both use human-readable, tabletop-style design. Investigation brings the uncertainty close; faction strategy asks what happens when people organize around competing answers.</p>
+      <p class="wide">The canonical top-down Godot RPG and tabletop rulebook currently follow vanilla Cities Without Number (CWN), with Stars Without Number Revised (SWN) for psionics and other explicitly designated gaps. Older text-first and strategy prototypes remain historical or experimental work. Investigations bring the uncertainty close; faction strategy asks what happens when people organize around competing answers.</p>
       <div class="grid system-grid">
-        <article class="big"><div class="tag">RULES</div><h3>Homebrewed and modified rules</h3><p>NoöPunk uses a homebrewed rules implementation with modified or reskinned elements from Fate Core, Transhumanity’s Fate and Eclipse Phase. Some procedures are Powered by the Apocalypse-inspired: Apocalypse World is an influence, not text or rules recycled wholesale. The legacy d10 prototype and the newer crossover have distinct rule-approval boundaries.</p></article>
-        <article class="big"><div class="tag">RULEBOOK</div><h3>Human-readable canon</h3><p><strong>RULEBOOK.md</strong> is the living rules ledger. When a rule is inherited, modified or replaced, the human-readable rule should be written down there instead of disappearing into code or prompts.</p></article>
+        <article class="big"><div class="tag">RULES</div><h3>CWN / SWN first, homebrew later</h3><p>We are implementing the vanilla Cities Without Number rules in Godot and the tabletop rulebook, supplemented by Stars Without Number Revised for psionics. Only after that baseline is verified will we modify, reskin or homebrew the rules, one section at a time. Other RPG rule systems are not currently part of the mechanical foundation.</p></article>
+        <article class="big"><div class="tag">RULEBOOK</div><h3>Human-readable canon</h3><p><strong>rulebook/00_INDEX.md</strong> is the canonical tabletop rules entry point. When a rule is inherited, modified or replaced, the human-readable rule should be written down there instead of disappearing into code or prompts.</p></article>
         <article class="big"><div class="tag">PROTOTYPE</div><h3>Text first</h3><p>The earliest playable versions do not need a conventional game engine. A terminal-style or web text interface is enough to test characters, social interaction, conflict, exploration, hacking, psionics and persistent world state.</p></article>
         <article class="big"><div class="tag">SCENARIO</div><h3>The Republic of Ukweli</h3><p>The default named local scenario: one Indian Ocean port city with its islands and coastal hinterland, three parties with four leaders each, and a five-card event deck. Starting conditions and the canon-reuse note are in <a href="scenarios/REPUBLIC_OF_UKWELI.md">the scenario document</a>, the configuration in <a href="https://github.com/TomiToivio/NooPunk/blob/main/strategy_game/data/ukweli_local.json">ukweli_local.json</a>. Any city matching <a href="https://github.com/TomiToivio/NooPunk/blob/main/strategy_game/data/city_scenario_schema.json">the generic scenario schema</a> can be played instead — geography, culture and politics are scenario data, not engine assumptions.</p></article>
         <article class="big"><div class="tag">DESIGN PATH</div><h3>Modify by play</h3><p>The project starts from the independent NoöPunk d10 kernel and ports or adapts older prototype subsystems only when they serve the game. The goal is a playable world, not a perfect software transcription of an RPG book.</p></article>
@@ -160,18 +160,17 @@
         <div class="section-kicker">07 / CURRENT STATUS</div>
         <h2>Playable kernel under construction.</h2>
       </div>
-      <p>The current focus is the Concordia RPG / simulation prototype and its independent NoöPunk rules layer. The repository already contains the living rulebook, Python simulation scaffolding, Concordia requirements, tests and scenario material. The design is intentionally evolutionary: get a small world running, then modify, simplify and replace rules as NoöPunk develops its own identity.</p>
+      <p>The current focus is the top-down Godot RPG and its tabletop rules companion, implementing vanilla CWN/SWN as accurately as possible before later NoöPunk-specific modifications, reskins and homebrew. Parity work is in progress. Older Python, Concordia and strategy prototypes are retained as experiments rather than competing mechanical baselines.</p>
     </section>
 
     <section class="section">
       <div class="section-kicker">08 / LICENSING</div>
-      <h2>Homebrew, with the paperwork attached.</h2>
-      <p class="wide">NoöPunk uses <strong>homebrewed, modified and reskinned</strong> elements associated with <strong>Fate Core</strong> (Evil Hat Productions), <strong>Transhumanity’s Fate</strong> and <strong>Eclipse Phase</strong> (Posthuman Studios), and some <strong>Powered by the Apocalypse-inspired</strong> narrative techniques. PbtA means inspiration from Apocalypse World, <strong>not recycling its rules or text</strong>. NoöPunk has its own distinct lore and setting, unrelated to Eclipse Phase continuity. Fate Core's CC BY 3.0 license does not supersede the CC BY-NC-SA terms governing protected material adapted from the other two titles. Source notices, modification records, and license compatibility must be audited. This is an unofficial project, not affiliated with or endorsed by the publishers.</p>
+      <h2>Source rights, clearly separated.</h2>
+      <p class="wide"><strong>Cities Without Number</strong> and <strong>Stars Without Number Revised</strong> are created by Kevin Crawford / Sine Nomine Publishing. The identified <strong>CWN Systems Reference Document is CC0</strong>, but that dedication does not automatically cover the full commercial book, artwork or setting. <strong>SWN Revised has no verified reusable public SRD text license</strong> in our current rights audit: mechanics must be independently implemented and protected prose, tables, artwork and setting material must not be copied without permission. NoöPunk-original code and content have <strong>no project-wide license selected yet</strong>; repository visibility alone is not a reuse grant. NoöPunk is unofficial and neither affiliated with nor endorsed by Sine Nomine Publishing.</p>
       <div class="actions">
-        <a class="button" href="https://eclipsephase.com/cclicense/">Eclipse Phase license ↗</a>
-        <a class="button" href="https://fate-srd.com/official-licensing-fate/cc">Fate Core licensing ↗</a>
-        <a class="button" href="https://eclipsephase.com/2016/03/16/transhumanitys-fate-is-here/">Transhumanity’s Fate ↗</a>
-        <a class="button" href="https://eclipsephase.github.io/en/01/00-infamy.html">EP2 online rules ↗</a>
+        <a class="button" href="https://cwn.quadrifons.com/">CWN SRD ↗</a>
+        <a class="button" href="https://github.com/TomiToivio/NooPunk/blob/main/docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md">Rights audit ↗</a>
+        <a class="button" href="https://github.com/TomiToivio/NooPunk/blob/main/docs/ATTRIBUTION_POLICY.md">Attribution policy ↗</a>
         <a class="button" href="https://github.com/TomiToivio/NooPunk">Repository ↗</a>
       </div>
     </section>
@@ -179,7 +178,7 @@
 
   <footer>
     <div class="brand">NOÖ<span>PUNK</span></div>
-    <p>Noösphere + Cyberpunk · Concordia RPG / simulation · Independent NoöPunk rules</p>
+    <p>Noösphere + Cyberpunk · Concordia RPG / simulation · CWN / SWN baseline</p>
     <a href="https://github.com/TomiToivio/NooPunk">github.com/TomiToivio/NooPunk ↗</a>
   </footer>
 </body>
