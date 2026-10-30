@@ -3,7 +3,7 @@
 
 Two parallel agent sessions built the same rules in `godot/core/` and `src/godot/`, each with its
 own tests, and nothing failed — the repository simply grew two answers to every question. This guard
-makes the rule in `docs/godot/IMPLEMENTATION_CANON.md` executable instead of aspirational.
+makes the rule in `docs/godot/UNIFIED_IMPLEMENTATION.md` executable instead of aspirational.
 
 It compares *domains*, not filenames: `cwn_combat_rules.gd` and `cwn_combat.gd` are the same domain,
 as are `psionics.gd` and `swn_psionics.gd`. A domain implemented in two trees fails the check unless
@@ -36,7 +36,7 @@ EXEMPT = {
 }
 
 #: Known duplicates, oldest first. Each row names the domain and the file that is being merged away.
-#: Delete a row when its migration step in IMPLEMENTATION_CANON.md lands.
+#: Delete a row when its migration step in UNIFIED_IMPLEMENTATION.md lands.
 ALLOWED = {
     "catalogue",      # godot/core/cwn_catalogue.gd  <- src/godot/cwn/cwn_catalogue.gd
     "character",      # godot/core/cwn_character.gd  <- src/godot/cwn/cwn_character.gd
@@ -89,7 +89,7 @@ def main() -> int:
         print(
             "\nFAIL: new duplicate rule implementation(s): "
             + ", ".join(new)
-            + "\nAdd the rule to the single tree named in docs/godot/IMPLEMENTATION_CANON.md,"
+            + "\nAdd the rule to the single tree named in docs/godot/UNIFIED_IMPLEMENTATION.md,"
             " or delete the duplicate. Do not add to ALLOWED.",
             file=sys.stderr,
         )
