@@ -423,3 +423,8 @@ Tomi is the authorial source of truth. When a draft arrives, read
 ## Godot rule-module ownership clarification (#791)
 
 `godot/core/` is the canonical owner of CWN/SWN game-rule implementations. `src/godot/` remains a compatibility tree only. Port unique capabilities and preserve consumers and tests before retiring duplicates. The two catalogue APIs differ (instance ID lookup vs static named catalogue lookup), so do not mechanically repoint either caller. See `docs/godot/CANONICAL_GODOT_TREE.md` and `docs/godot/UNIFIED_IMPLEMENTATION.md`.
+
+
+## NEW AUTHORITATIVE RESTART: issue #827 (supersedes #814 for new work)
+
+For all **new NoöPunk RPG development**, the canonical artifacts are `noopunk/rulebook/RULEBOOK.md` and the standalone minimal Godot project `noopunk/game/project.godot`. These two paths supersede the earlier root-project-only and #814 rules **for the restart**, while legacy files elsewhere remain preserved reference material. Do not extend older Godot or rulebook code for new tasks, and do not spawn other alternatives. Tomi defines one small feature at a time; update both of these SAME canonical artifacts together and verify their parity. Do not automatically import legacy CWN/SWN rules, seven attributes, lore, or frameworks. First milestone: blank rulebook and top-down player movement only. Keep meta-issue #827 open; close only implementation child issues. See `noopunk/README.md`.
