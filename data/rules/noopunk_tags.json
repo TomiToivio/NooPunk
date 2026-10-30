@@ -1,0 +1,282 @@
+{
+  "_note": "NoöPunk tag-based attributes, skills and statuses (#821). Tomi's draft is the source of truth; this file is the contract both runtimes read. Values that the draft leaves undecided are listed under open_questions and are NOT decided here.",
+  "_licensing": "NoöPunk-authored. CWN/SWN supply the 3d6 chassis and the 0-4 skill scale, not the text.",
+  "attributes": {
+    "order": [
+      "Fitness",
+      "Cognition",
+      "Awareness",
+      "Agency",
+      "Reflexes",
+      "Cyber",
+      "Empathy"
+    ],
+    "meaning": {
+      "Fitness": "How athletic, strong and healthy your body is.",
+      "Cognition": "Ability to search, process and understand human language data, human culture and the language-encoded database of the Safenet.",
+      "Awareness": "Consciousness, awareness, perception, intuition and wisdom.",
+      "Agency": "Free will, coolness, willpower and identity.",
+      "Reflexes": "Physical dexterity, agility and coordination.",
+      "Cyber": "Technical aptitude, cyberspace abilities, the cyborg side and the ability to interface with machines.",
+      "Empathy": "Loving kindness, empathy and humanity."
+    },
+    "generation": {
+      "dice": "3d6",
+      "bands": [
+        [
+          3,
+          -2
+        ],
+        [
+          4,
+          -1
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          14,
+          1
+        ],
+        [
+          18,
+          2
+        ]
+      ],
+      "store": "modifier",
+      "display": "tag",
+      "_note": "Bands are inclusive lower bounds: 3 -> -2, 4-7 -> -1, 8-13 -> 0, 14-17 -> +1, 18 -> +2. The raw rolled score is never stored on the sheet."
+    },
+    "human_range": [
+      -2,
+      2
+    ],
+    "transhuman_above": 2,
+    "empathy_floor": {
+      "value": -3,
+      "pc_eligible": false,
+      "note": "Empathy -3 is outside the human generation range: the character is no longer human and cannot be a player character. The 3d6 generator can never produce it."
+    },
+    "storage_range": {
+      "min": -3,
+      "max": 6,
+      "_note": "Storage bound only. Human baseline is -2..+2; above +2 is transhuman and the draft sets no ceiling, so 6 is a serialisation guard, not a rule. -3 is the non-human floor the draft names for Empathy."
+    }
+  },
+  "tags": {
+    "kinds": [
+      "attribute",
+      "skill",
+      "status",
+      "other"
+    ],
+    "fields": [
+      "kind",
+      "name",
+      "value",
+      "sign",
+      "duration",
+      "source",
+      "stacking",
+      "exclusive_with"
+    ],
+    "display": {
+      "attribute": "{name}{sign}{value}",
+      "skill": "{name}-{value}",
+      "status": "{name}-{value}",
+      "trait": "{name}",
+      "positive_sign": "+",
+      "negative_sign": "-",
+      "_note": "A skill tag's number is its rank (0-4), never a penalty: Shoot-1 means skill level 1. A status tag's number is its penalty magnitude unless the tag is positive."
+    },
+    "duration": [
+      "permanent",
+      "scene",
+      "day",
+      "until_rest"
+    ],
+    "stacking": [
+      "stack",
+      "replace",
+      "highest"
+    ],
+    "unicode_names": true,
+    "_kinds_note": "`other` covers permanent traits and anything a later draft adds; #823's TagType uses the same four names."
+  },
+  "skills": {
+    "scale": [
+      0,
+      4
+    ],
+    "untrained": {
+      "default": "penalty",
+      "penalty": -1,
+      "impossible_without": [],
+      "_note": "The draft requires two untrained cases: attempted at -1, or impossible. Which skills are impossible untrained is NOT decided in the draft, so the list is empty and the question is recorded below."
+    },
+    "list": {
+      "Administer": {
+        "attribute": "Cognition",
+        "cwn": "Administer",
+        "note": "Bureaucracy, institutions, administration."
+      },
+      "Connect": {
+        "attribute": "Empathy",
+        "cwn": "Connect",
+        "note": "Networking and connections; NoöPunk design pending."
+      },
+      "Drive": {
+        "attribute": "Reflexes",
+        "cwn": "Drive"
+      },
+      "Strength": {
+        "attribute": "Fitness",
+        "cwn": "Exert",
+        "note": "Replaces Exert when raw muscular power is required. A skill, not the removed CWN Strength attribute."
+      },
+      "Stamina": {
+        "attribute": "Fitness",
+        "cwn": "Exert",
+        "note": "Replaces Exert when endurance is required."
+      },
+      "Hardware": {
+        "attribute": "Cyber",
+        "cwn": "Fix",
+        "note": "Renames Fix."
+      },
+      "Wetware": {
+        "attribute": "Empathy",
+        "cwn": "Heal",
+        "note": "Renames Heal for biology, medicine, physiology."
+      },
+      "Software": {
+        "attribute": "Cyber",
+        "cwn": "Program",
+        "note": "Renames Program; software and LLMs through a brain interface."
+      },
+      "Noöware": {
+        "attribute": "Empathy",
+        "cwn": null,
+        "note": "New: psychology, psychiatry, psychotherapy, psychic integration; the Heal-equivalent for the psyche."
+      },
+      "Research": {
+        "attribute": "Cognition",
+        "cwn": "Know",
+        "note": "Replaces generic Know: find, evaluate, read and understand text and information; the scientific method."
+      },
+      "Know": {
+        "attribute": null,
+        "cwn": "Know",
+        "note": "Domain-specific Know uses remain under review; generic Know is replaced by Research."
+      },
+      "Lead": {
+        "attribute": "Agency",
+        "cwn": "Lead"
+      },
+      "Notice": {
+        "attribute": "Awareness",
+        "cwn": "Notice"
+      },
+      "Unarmed": {
+        "attribute": "Reflexes",
+        "cwn": "Punch",
+        "note": "Renames Punch."
+      },
+      "Melee": {
+        "attribute": "Reflexes",
+        "cwn": "Stab",
+        "note": "Renames Stab."
+      },
+      "Firearms": {
+        "attribute": "Reflexes",
+        "cwn": "Shoot",
+        "note": "Renames Shoot."
+      },
+      "Sneak": {
+        "attribute": "Awareness",
+        "cwn": "Sneak"
+      },
+      "Survive": {
+        "attribute": "Agency",
+        "cwn": "Survive"
+      },
+      "Talk": {
+        "attribute": "contextual",
+        "cwn": "Talk",
+        "attribute_options": [
+          "Empathy",
+          "Agency"
+        ],
+        "note": "One skill, not two: Talk+Empathy for rapport and compassionate persuasion, Talk+Agency for forceful leadership, conviction, bluffing and authority; another attribute only when the fictional approach justifies it."
+      },
+      "Trade": {
+        "attribute": "Agency",
+        "cwn": "Trade"
+      },
+      "Work": {
+        "attribute": null,
+        "cwn": "Work",
+        "note": "Which professional Work skills remain useful is Tomi's decision."
+      }
+    },
+    "aliases": {
+      "Punch": "Unarmed",
+      "Stab": "Melee",
+      "Shoot": "Firearms",
+      "Exert": "Strength",
+      "Fix": "Hardware",
+      "Heal": "Wetware",
+      "Program": "Software",
+      "Bash": null
+    }
+  },
+  "checks": {
+    "formula": "2d6 + attribute tag + skill rank + situational",
+    "untrained": "A skill the character has no tag for uses the untrained rule, not rank 0 with no mark.",
+    "difficulties": [
+      6,
+      8,
+      10,
+      12,
+      14
+    ]
+  },
+  "migration_from_cwn": {
+    "_note": "Conceptual mapping from the draft. It is not a single-value copy: several old attributes feed one new tag, so a migration rule must be agreed before existing characters or saves are rewritten.",
+    "Wisdom": [
+      "Agency",
+      "Empathy",
+      "Awareness"
+    ],
+    "Strength": [
+      "Fitness"
+    ],
+    "Constitution": [
+      "Fitness"
+    ],
+    "Dexterity": [
+      "Reflexes"
+    ],
+    "Intelligence": [
+      "Cognition",
+      "Cyber"
+    ],
+    "Charisma": [
+      "Empathy",
+      "Awareness",
+      "Agency"
+    ],
+    "proposed_default": "take the source modifier of the named attribute; where two feed one tag, keep the higher and record the derivation",
+    "status": "awaiting_author_ruling"
+  },
+  "open_questions": [
+    "Which skills are impossible without training rather than attempted at -1?",
+    "What are the remaining domain-specific Know uses, and which professional Work skills survive?",
+    "What is the NoöPunk design for Connect?",
+    "May Talk use an attribute other than Empathy or Agency, and who adjudicates it?",
+    "What threshold (if any) marks 'low' Empathy or 'high' Agency for the StS / negative-polarity characterisation, and does alignment ever change automatically?",
+    "How are existing CWN characters and saves migrated when several old attributes feed one new tag?",
+    "Does the seven-tag model supersede the approved six STATs (FIT/REF/INT/SOC/PSY/CYB) in rulebook/2_ATTRIBUTES.md, or sit beside them?"
+  ]
+}
