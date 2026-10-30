@@ -1,44 +1,33 @@
+## Regression fixtures for all eighteen published CWN SRD §3.2.2 daily wages.
 extends RefCounted
-
-## #873: common wages, SRD 3.2.2.
-const Wages := preload("res://godot/core/cwn_wages.gd")
-
-func _eq(name: String, got: Variant, want: Variant) -> Array:
-	return [name, got == want, "got %s want %s" % [got, want]]
-
+const W := preload("res://godot/core/cwn_wages.gd")
+const EXPECTED := {
+	"unskilled_street_laborer": 10,
+	"low_level_ganger_or_street_thug": 15,
+	"common_streetwalker": 20,
+	"petty_street_stall_merchant": 25,
+	"capable_street_tech_or_cyberdoc": 50,
+	"competent_street_bodyguard": 50,
+	"entry_level_corp_worker": 30,
+	"low_level_corp_lifer": 40,
+	"street_cop_or_skilled_corp_worker": 100,
+	"professional_companion": 200,
+	"corp_employed_hacker": 200,
+	"corp_middle_manager": 250,
+	"corp_sponsored_cyberdoc": 250,
+	"elite_or_well_known_bodyguard": 500,
+	"successful_gang_boss": 750,
+	"corp_branch_office_manager": 1000,
+	"high_ranking_corp_exec": 5000,
+	"oligarchic_elite_of_a_city": 10000,
+}
 func run() -> Array:
 	var rows: Array = []
-
-	rows.append(_eq("eighteen published roles", Wages.all().size(), 18))
-	rows.append(_eq("unskilled laborer is 10 a day", Wages.daily("unskilled_laborer"), 10))
-	rows.append(_eq("street cop is 100", Wages.daily("street_cop"), 100))
-	rows.append(_eq("corp hacker is 200", Wages.daily("corp_hacker"), 200))
-	rows.append(_eq("gang boss is 750", Wages.daily("gang_boss"), 750))
-	rows.append(_eq("oligarch is 10000", Wages.daily("oligarch"), 10000))
-	rows.append(_eq("entry corp worker is 30, not a typo for 300", Wages.daily("entry_corp_worker"), 30))
-
-	# two roles share a price, and that is the SRD's own overlap, not a data error
-	rows.append(_eq("street tech is 50", Wages.daily("street_tech"), 50))
-	rows.append(_eq("street bodyguard is also 50", Wages.daily("street_bodyguard"), 50))
-
-	# durations are computed, never stored twice
-	rows.append(_eq("three days of a laborer", Wages.for_days("unskilled_laborer", 3), 30))
-	rows.append(_eq("one day is the daily rate", Wages.for_days("oligarch", 1), 10000))
-	rows.append(_eq("zero days costs nothing", Wages.for_days("street_cop", 0), 0))
-
-	# refusals rather than plausible defaults
-	rows.append(_eq("an unknown role earns nothing and warns", Wages.daily("not_a_role"), 0))
-	rows.append(_eq("an unknown role's entry is empty", Wages.entry("not_a_role"), {}))
-	rows.append(_eq("names resolve for prose lookups",
-		Wages.by_name("Successful gang boss").get("id"), "gang_boss"))
-
-	# bribes multiply the daily wage; the multiplier is the SRD's, passed in
-	rows.append(_eq("a x2 bribe for a street cop", Wages.bribe("street_cop", 2), 200))
-	rows.append(_eq("a x5 bribe for a middle manager", Wages.bribe("corp_middle_manager", 5), 1250))
-
-	# every role must carry a positive wage
-	for row in Wages.all():
-		var ok: bool = int(row.get("daily", 0)) > 0
-		rows.append(["%s has a positive wage" % row.get("id"), ok, str(row.get("daily"))])
-
+	rows.append(["complete SRD wage table has 18 entries", W.DAILY.size() == 18, "expected 18"])
+	for worker in EXPECTED:
+		var actual := W.daily_earnings(worker)
+		rows.append(["SRD daily wage: " + worker, actual.get("daily_earnings", -1) == EXPECTED[worker], str(actual)])
+	rows.append(["unknown worker rejected", not W.daily_earnings("dragon")["ok"], "unknown must not silently price at zero"])
+	rows.append(["three-day hire cost", W.hire_cost("competent_street_bodyguard", 3).get("cost", -1) == 150, "3 x 50"])
+	rows.append(["negative hire duration rejected", not W.hire_cost("competent_street_bodyguard", -1)["ok"], "negative"])
 	return rows
