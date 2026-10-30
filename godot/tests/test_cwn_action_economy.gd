@@ -1,0 +1,28 @@
+extends SceneTree
+## godot --headless --path . --script godot/tests/test_cwn_action_economy.gd
+
+func _initialize() -> void:
+	var a := CwnActionEconomy.new()
+	assert(a.take_action("run")["ok"])
+	assert(a.take_action("run")["ok"])
+	assert(not a.can_act("melee_attack"))
+	a.new_round()
+	assert(a.take_action("total_defense")["ok"])
+	assert(a.armor_class_modifier(false) == 2)
+	assert(not a.can_act("melee_attack"))
+	a.new_round()
+	assert(a.take_action("go_prone")["ok"])
+	assert(a.movement_meters() == 5.0)
+	assert(a.armor_class_modifier(true) == 2)
+	assert(a.armor_class_modifier(false) == -2)
+	assert(CwnActionEconomy.swarm_bonus(3)["attack"] == 6)
+	assert(not CwnActionEconomy.charge_modifier(2)["ok"])
+	assert(not a.ranged_attack_allowed(true, true)["allowed"])
+	assert(a.ranged_attack_allowed(false, true)["modifier"] == -4)
+	assert(CwnEncumbrance.stowed_capacity(11) == 11)
+	assert(CwnEncumbrance.readied_capacity(11) == 5)
+	assert(CwnEncumbrance.tier_for(11, 11, 5) == "normal")
+	assert(CwnEncumbrance.move_speed("heavy") == 7.0)
+	assert(CwnEncumbrance.bundled_points(7) == 3)
+	print("CWN action economy and existing encumbrance PASS")
+	quit(0)
