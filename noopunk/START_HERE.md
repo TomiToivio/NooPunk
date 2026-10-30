@@ -4,8 +4,8 @@
 
 # NoöPunk Step 2: UNSA rookie
 
-Canonical tabletop rules: `noopunk/rulebook/RULEBOOK.md`  
-Canonical playable Godot project: `noopunk/game/`
+~~Canonical tabletop rules: `noopunk/rulebook/RULEBOOK.md`~~ — superseded by #848; the canonical rules are the root `RULEBOOK.md`.  
+~~Canonical playable Godot project: `noopunk/game/`~~ — superseded; the canonical game is the root `project.godot` → `scenes/main.tscn`.
 
 Open `noopunk/game/project.godot` in Godot 4.3+ or run `godot --path noopunk/game` from the repository root. At launch, the character sheet displays a fresh seven-attribute 3d6 roll, with signed modifiers. Choose **Reroll seven attributes** to reroll, then **Continue** to walk with WASD or arrow keys. Press **C** to reopen the sheet; its values persist while navigating the room. No character statistics affect movement yet.
 
