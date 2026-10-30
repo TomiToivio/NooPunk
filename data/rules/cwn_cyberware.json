@@ -1,0 +1,736 @@
+{
+ "_source": {
+  "body": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-systems/body-cyberware/",
+  "head": ".../head-cyberware/",
+  "skin": ".../skin-cyberware/",
+  "limb": ".../limb-cyberware/",
+  "sensory": ".../sensory-cyberware/",
+  "medical": ".../medical-cyberware/",
+  "nerve": ".../nerve-cyberware/"
+ },
+ "_note": "CWN cyberware systems (#848): cost, body type, concealment level and permanent System Strain, transcribed from the CC0 SRD tables. Descriptions stay in the SRD; this file is the mechanical contract.",
+ "tables": [
+  {
+   "id": "aesthetic_augmentation_suite",
+   "name": "Aesthetic Augmentation Suite",
+   "table": "body",
+   "cost": 50000,
+   "type": "Body",
+   "concealment": "Sight",
+   "strain": 2.0
+  },
+  {
+   "id": "assisted_glide_system",
+   "name": "Assisted Glide System",
+   "table": "body",
+   "cost": 50000,
+   "type": "Body",
+   "concealment": "Touch",
+   "strain": 2.0
+  },
+  {
+   "id": "banshee_module",
+   "name": "Banshee Module",
+   "table": "body",
+   "cost": 30000,
+   "type": "Body",
+   "concealment": "Medical",
+   "strain": 1.0
+  },
+  {
+   "id": "cybernetic_infrastructure_baseline",
+   "name": "Cybernetic Infrastructure Baseline",
+   "table": "body",
+   "cost": 20000,
+   "type": "Body",
+   "concealment": "Medical",
+   "strain": 0.0
+  },
+  {
+   "id": "deadman_circuit",
+   "name": "Deadman Circuit",
+   "table": "body",
+   "cost": 10000,
+   "type": "Body",
+   "concealment": "Sight",
+   "strain": 0.25
+  },
+  {
+   "id": "dermal_armor_trauma_shielding",
+   "name": "Dermal Armor/Trauma Shielding",
+   "table": "body",
+   "cost": 100000,
+   "type": "Body",
+   "concealment": "Medical",
+   "strain": 1.0
+  },
+  {
+   "id": "emergency_stabilization_factor",
+   "name": "Emergency Stabilization Factor",
+   "table": "body",
+   "cost": 30000,
+   "type": "Body",
+   "concealment": "Medical",
+   "strain": 1.0
+  },
+  {
+   "id": "fleshmod",
+   "name": "Fleshmod",
+   "table": "body",
+   "cost": 20000,
+   "type": "Body",
+   "concealment": "Medical",
+   "strain": 1.0
+  },
+  {
+   "id": "full_body_conversion",
+   "name": "Full Body Conversion",
+   "table": "body",
+   "cost": 6000000,
+   "type": "Body",
+   "concealment": "Sight",
+   "strain": 0.0
+  },
+  {
+   "id": "hemosynthetic_filter_system",
+   "name": "Hemosynthetic Filter System",
+   "table": "body",
+   "cost": 25000,
+   "type": "Body",
+   "concealment": "Medical",
+   "strain": 1.0
+  },
+  {
+   "id": "holdout_cavity",
+   "name": "Holdout Cavity",
+   "table": "body",
+   "cost": 10000,
+   "type": "Body",
+   "concealment": "Medical",
+   "strain": 1.0
+  },
+  {
+   "id": "medical_support_readout",
+   "name": "Medical Support Readout",
+   "table": "body",
+   "cost": 10000,
+   "type": "Body",
+   "concealment": "Medical",
+   "strain": 0.25
+  },
+  {
+   "id": "recovery_support_unit",
+   "name": "Recovery Support Unit",
+   "table": "body",
+   "cost": 30000,
+   "type": "Body",
+   "concealment": "Medical",
+   "strain": 1.0
+  },
+  {
+   "id": "redundant_systems",
+   "name": "Redundant Systems",
+   "table": "body",
+   "cost": 15000,
+   "type": "Body",
+   "concealment": "Medical",
+   "strain": 1.0
+  },
+  {
+   "id": "retribution_shield",
+   "name": "Retribution Shield",
+   "table": "body",
+   "cost": 50000,
+   "type": "Body",
+   "concealment": "Touch",
+   "strain": 1.0
+  },
+  {
+   "id": "therapeutic_control_dampers",
+   "name": "Therapeutic Control Dampers",
+   "table": "body",
+   "cost": 25000,
+   "type": "Body",
+   "concealment": "Medical",
+   "strain": 1.0
+  },
+  {
+   "id": "titan_gun_system",
+   "name": "Titan Gun System",
+   "table": "body",
+   "cost": 100000,
+   "type": "Body",
+   "concealment": "Sight",
+   "strain": 1.0
+  },
+  {
+   "id": "viper_sting",
+   "name": "Viper Sting",
+   "table": "body",
+   "cost": 25000,
+   "type": "Body",
+   "concealment": "Medical",
+   "strain": 0.5
+  },
+  {
+   "id": "courier_memory",
+   "name": "Courier Memory",
+   "table": "head",
+   "cost": 10000,
+   "type": "Head",
+   "concealment": "Medical",
+   "strain": 0.25
+  },
+  {
+   "id": "cranial_jack",
+   "name": "Cranial Jack",
+   "table": "head",
+   "cost": null,
+   "type": "Head",
+   "concealment": "Touch",
+   "strain": 0.25,
+   "cost_note": "as cyber (SRD)"
+  },
+  {
+   "id": "discretion_insurance_unit",
+   "name": "Discretion Insurance Unit",
+   "table": "head",
+   "cost": 10000,
+   "type": "Head",
+   "concealment": "Medical",
+   "strain": 0.5
+  },
+  {
+   "id": "eye_mod_dazzler",
+   "name": "Eye Mod/Dazzler",
+   "table": "head",
+   "cost": 15000,
+   "type": "Head",
+   "concealment": "Medical",
+   "strain": 0.5
+  },
+  {
+   "id": "eye_mod_flechette_launcher",
+   "name": "Eye Mod/Flechette Launcher",
+   "table": "head",
+   "cost": 20000,
+   "type": "Head",
+   "concealment": "Medical",
+   "strain": 0.5
+  },
+  {
+   "id": "funes_complex",
+   "name": "Funes Complex",
+   "table": "head",
+   "cost": 40000,
+   "type": "Head",
+   "concealment": "Medical",
+   "strain": 1.0
+  },
+  {
+   "id": "medusa_implant",
+   "name": "Medusa Implant",
+   "table": "head",
+   "cost": 20000,
+   "type": "Head",
+   "concealment": "Obvious",
+   "strain": 0.5
+  },
+  {
+   "id": "neural_buffer",
+   "name": "Neural Buffer",
+   "table": "head",
+   "cost": null,
+   "type": "Head",
+   "concealment": "Medical",
+   "strain": 0.25,
+   "cost_note": "as cyber (SRD)"
+  },
+  {
+   "id": "skull_citadel",
+   "name": "Skull Citadel",
+   "table": "head",
+   "cost": 100000,
+   "type": "Head",
+   "concealment": "Medical",
+   "strain": 2.0
+  },
+  {
+   "id": "dermal_armor_i",
+   "name": "Dermal Armor I",
+   "table": "skin",
+   "cost": 40000,
+   "type": "Skin",
+   "concealment": "Medical",
+   "strain": 1.0
+  },
+  {
+   "id": "dermal_armor_ii",
+   "name": "Dermal Armor II",
+   "table": "skin",
+   "cost": 80000,
+   "type": "Skin",
+   "concealment": "Touch",
+   "strain": 2.0
+  },
+  {
+   "id": "dermal_armor_iii",
+   "name": "Dermal Armor III",
+   "table": "skin",
+   "cost": 200000,
+   "type": "Skin",
+   "concealment": "Sight",
+   "strain": 3.0
+  },
+  {
+   "id": "poseidon_implants",
+   "name": "Poseidon Implants",
+   "table": "skin",
+   "cost": 30000,
+   "type": "Skin",
+   "concealment": "Touch",
+   "strain": 1.0
+  },
+  {
+   "id": "sealed_systems_implant",
+   "name": "Sealed Systems Implant",
+   "table": "skin",
+   "cost": 15000,
+   "type": "Skin",
+   "concealment": "Medical",
+   "strain": 1.0
+  },
+  {
+   "id": "sharkskin_electrodes",
+   "name": "Sharkskin Electrodes",
+   "table": "skin",
+   "cost": 20000,
+   "type": "Skin",
+   "concealment": "Touch",
+   "strain": 1.0
+  },
+  {
+   "id": "skinmod",
+   "name": "Skinmod",
+   "table": "skin",
+   "cost": 250,
+   "type": "Skin",
+   "concealment": "Sight",
+   "strain": 0.0
+  },
+  {
+   "id": "skyborn_shielding",
+   "name": "Skyborn Shielding",
+   "table": "skin",
+   "cost": 40000,
+   "type": "Skin",
+   "concealment": "Sight",
+   "strain": 2.0
+  },
+  {
+   "id": "body_blades_i",
+   "name": "Body Blades I",
+   "table": "limb",
+   "cost": 10000,
+   "type": "Limb",
+   "concealment": "Medical",
+   "strain": 1.0
+  },
+  {
+   "id": "body_blades_ii",
+   "name": "Body Blades II",
+   "table": "limb",
+   "cost": 25000,
+   "type": "Limb",
+   "concealment": "Sight",
+   "strain": 2.0
+  },
+  {
+   "id": "cyberlimb",
+   "name": "Cyberlimb",
+   "table": "limb",
+   "cost": 10000,
+   "type": "Limb",
+   "concealment": "Touch",
+   "strain": 0.5
+  },
+  {
+   "id": "iron_hand_aegis",
+   "name": "Iron Hand Aegis",
+   "table": "limb",
+   "cost": 40000,
+   "type": "Limb",
+   "concealment": "Touch",
+   "strain": 1.0
+  },
+  {
+   "id": "limbgun",
+   "name": "Limbgun",
+   "table": "limb",
+   "cost": 30000,
+   "type": "Limb",
+   "concealment": "Touch",
+   "strain": 1.0
+  },
+  {
+   "id": "muscle_fiber_replacement_i",
+   "name": "Muscle Fiber Replacement I",
+   "table": "limb",
+   "cost": 50000,
+   "type": "Limb",
+   "concealment": "Touch",
+   "strain": 1.0
+  },
+  {
+   "id": "muscle_fiber_replacement_ii",
+   "name": "Muscle Fiber Replacement II",
+   "table": "limb",
+   "cost": 200000,
+   "type": "Limb",
+   "concealment": "Sight",
+   "strain": 2.0
+  },
+  {
+   "id": "neolimb",
+   "name": "Neolimb",
+   "table": "limb",
+   "cost": 25000,
+   "type": "Limb",
+   "concealment": "Sight",
+   "strain": 1.0
+  },
+  {
+   "id": "omnihand",
+   "name": "Omnihand",
+   "table": "limb",
+   "cost": 10000,
+   "type": "Limb",
+   "concealment": "Touch",
+   "strain": 0.25
+  },
+  {
+   "id": "shock_fists",
+   "name": "Shock Fists",
+   "table": "limb",
+   "cost": 10000,
+   "type": "Limb",
+   "concealment": "Touch",
+   "strain": 0.5
+  },
+  {
+   "id": "stick_pads",
+   "name": "Stick Pads",
+   "table": "limb",
+   "cost": 15000,
+   "type": "Limb",
+   "concealment": "Touch",
+   "strain": 0.5
+  },
+  {
+   "id": "synthlimb",
+   "name": "Synthlimb",
+   "table": "limb",
+   "cost": 25000,
+   "type": "Limb",
+   "concealment": "Medical",
+   "strain": 0.5
+  },
+  {
+   "id": "active_sense_processor",
+   "name": "Active Sense Processor",
+   "table": "sensory",
+   "cost": 50000,
+   "type": "Sensory",
+   "concealment": "Medical",
+   "strain": 1.0
+  },
+  {
+   "id": "cyberears_pair",
+   "name": "Cyberears (pair)",
+   "table": "sensory",
+   "cost": 10000,
+   "type": "Sensory",
+   "concealment": "Touch",
+   "strain": 0.25
+  },
+  {
+   "id": "cybereyes_pair",
+   "name": "Cybereyes (pair)",
+   "table": "sensory",
+   "cost": 10000,
+   "type": "Sensory",
+   "concealment": "Sight",
+   "strain": 0.25
+  },
+  {
+   "id": "ear_mod_filter",
+   "name": "Ear Mod/Filter",
+   "table": "sensory",
+   "cost": 10000,
+   "type": "Sensory",
+   "concealment": "Medical",
+   "strain": 0.5
+  },
+  {
+   "id": "ear_mod_positional_detection",
+   "name": "Ear Mod/Positional Detection",
+   "table": "sensory",
+   "cost": 15000,
+   "type": "Sensory",
+   "concealment": "Medical",
+   "strain": 0.5
+  },
+  {
+   "id": "ear_mod_sonar",
+   "name": "Ear Mod/Sonar",
+   "table": "sensory",
+   "cost": 20000,
+   "type": "Sensory",
+   "concealment": "Medical",
+   "strain": 0.5
+  },
+  {
+   "id": "ear_mod_tracer",
+   "name": "Ear Mod/Tracer",
+   "table": "sensory",
+   "cost": 10000,
+   "type": "Sensory",
+   "concealment": "Medical",
+   "strain": 0.5
+  },
+  {
+   "id": "eye_mod_impostor",
+   "name": "Eye Mod/Impostor",
+   "table": "sensory",
+   "cost": 10000,
+   "type": "Sensory",
+   "concealment": "Medical",
+   "strain": 1.0
+  },
+  {
+   "id": "eye_mod_infrared_vision",
+   "name": "Eye Mod/Infrared Vision",
+   "table": "sensory",
+   "cost": 5000,
+   "type": "Sensory",
+   "concealment": "Medical",
+   "strain": 0.5
+  },
+  {
+   "id": "eye_mod_low_light_vision",
+   "name": "Eye Mod/Low Light Vision",
+   "table": "sensory",
+   "cost": 5000,
+   "type": "Sensory",
+   "concealment": "Medical",
+   "strain": 0.5
+  },
+  {
+   "id": "eye_mod_tactical_view",
+   "name": "Eye Mod/Tactical View",
+   "table": "sensory",
+   "cost": 10000,
+   "type": "Sensory",
+   "concealment": "Medical",
+   "strain": 0.5
+  },
+  {
+   "id": "eye_mod_zoom",
+   "name": "Eye Mod/Zoom",
+   "table": "sensory",
+   "cost": 10000,
+   "type": "Sensory",
+   "concealment": "Medical",
+   "strain": 0.5
+  },
+  {
+   "id": "gunlink",
+   "name": "Gunlink",
+   "table": "sensory",
+   "cost": 25000,
+   "type": "Sensory",
+   "concealment": "Touch",
+   "strain": 1.0
+  },
+  {
+   "id": "headcomm",
+   "name": "Headcomm",
+   "table": "sensory",
+   "cost": 1000,
+   "type": "Sensory",
+   "concealment": "Medical",
+   "strain": 0.25
+  },
+  {
+   "id": "sensory_recorder",
+   "name": "Sensory Recorder",
+   "table": "sensory",
+   "cost": 10000,
+   "type": "Sensory",
+   "concealment": "Medical",
+   "strain": 0.5
+  },
+  {
+   "id": "synthears_pair",
+   "name": "Synthears (pair)",
+   "table": "sensory",
+   "cost": 25000,
+   "type": "Sensory",
+   "concealment": "Medical",
+   "strain": 0.25
+  },
+  {
+   "id": "syntheyes_pair",
+   "name": "Syntheyes (pair)",
+   "table": "sensory",
+   "cost": 25000,
+   "type": "Sensory",
+   "concealment": "Medical",
+   "strain": 0.25
+  },
+  {
+   "id": "prosthetic_cyber_i",
+   "name": "Prosthetic Cyber I",
+   "table": "medical",
+   "cost": 5000,
+   "type": "None",
+   "concealment": "Sight",
+   "strain": 1.0
+  },
+  {
+   "id": "prosthetic_cyber_ii",
+   "name": "Prosthetic Cyber II",
+   "table": "medical",
+   "cost": 15000,
+   "type": "None",
+   "concealment": "Medical",
+   "strain": 0.25
+  },
+  {
+   "id": "regulated_anagathic_substrate",
+   "name": "Regulated Anagathic Substrate",
+   "table": "medical",
+   "cost": 200000,
+   "type": "None",
+   "concealment": "Medical",
+   "strain": 1.0
+  },
+  {
+   "id": "coordination_augment_i",
+   "name": "Coordination Augment I",
+   "table": "nerve",
+   "cost": 50000,
+   "type": "Nerve",
+   "concealment": "Medical",
+   "strain": 2.0
+  },
+  {
+   "id": "coordination_augment_ii",
+   "name": "Coordination Augment II",
+   "table": "nerve",
+   "cost": 200000,
+   "type": "Nerve",
+   "concealment": "Touch",
+   "strain": 3.0
+  },
+  {
+   "id": "enhanced_reflexes_i",
+   "name": "Enhanced Reflexes I",
+   "table": "nerve",
+   "cost": 100000,
+   "type": "Nerve",
+   "concealment": "Medical",
+   "strain": 2.0
+  },
+  {
+   "id": "enhanced_reflexes_ii",
+   "name": "Enhanced Reflexes II",
+   "table": "nerve",
+   "cost": 250000,
+   "type": "Nerve",
+   "concealment": "Medical",
+   "strain": 3.0
+  },
+  {
+   "id": "enhanced_reflexes_iii",
+   "name": "Enhanced Reflexes III",
+   "table": "nerve",
+   "cost": 750000,
+   "type": "Nerve",
+   "concealment": "Touch",
+   "strain": 4.0
+  },
+  {
+   "id": "reaction_booster_i",
+   "name": "Reaction Booster I",
+   "table": "nerve",
+   "cost": 50000,
+   "type": "Nerve",
+   "concealment": "Medical",
+   "strain": 1.0
+  },
+  {
+   "id": "reaction_booster_ii",
+   "name": "Reaction Booster II",
+   "table": "nerve",
+   "cost": 100000,
+   "type": "Nerve",
+   "concealment": "Medical",
+   "strain": 2.0
+  },
+  {
+   "id": "remote_control_unit",
+   "name": "Remote Control Unit",
+   "table": "nerve",
+   "cost": 10000,
+   "type": "Nerve",
+   "concealment": "Touch",
+   "strain": 2.0
+  },
+  {
+   "id": "skillplug_jack_i",
+   "name": "Skillplug Jack I",
+   "table": "nerve",
+   "cost": 10000,
+   "type": "Head",
+   "concealment": "Touch",
+   "strain": 0.25
+  },
+  {
+   "id": "skillplug_jack_ii",
+   "name": "Skillplug Jack II",
+   "table": "nerve",
+   "cost": 25000,
+   "type": "Head",
+   "concealment": "Touch",
+   "strain": 0.5
+  },
+  {
+   "id": "skillplug_wiring",
+   "name": "Skillplug Wiring",
+   "table": "nerve",
+   "cost": 50000,
+   "type": "Nerve",
+   "concealment": "Medical",
+   "strain": 1.0
+  },
+  {
+   "id": "trajectory_optimization_node",
+   "name": "Trajectory Optimization Node",
+   "table": "nerve",
+   "cost": 50000,
+   "type": "Nerve",
+   "concealment": "Medical",
+   "strain": 1.0
+  },
+  {
+   "id": "zombie_wires",
+   "name": "Zombie Wires",
+   "table": "nerve",
+   "cost": 60000,
+   "type": "Nerve",
+   "concealment": "Medical",
+   "strain": 2.0
+  }
+ ]
+}

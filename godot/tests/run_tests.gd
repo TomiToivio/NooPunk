@@ -33,6 +33,8 @@ const SUITES := [
 	"res://godot/tests/test_cwn_catalogue.gd",
 	"res://godot/tests/test_cwn_vehicles.gd",
 	"res://godot/tests/test_cwn_srd_vehicles.gd",
+	"res://godot/tests/test_cwn_cyberware.gd",
+	"res://godot/tests/test_cwn_drones.gd",
 	"res://godot/tests/test_level_doors.gd",
 	"res://godot/tests/test_investigation_adapter.gd",
 ]
