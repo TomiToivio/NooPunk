@@ -1,6 +1,6 @@
 # NoöPunk
 
-**Version:** 0.0.1 · **Status:** blank draft
+**Version:** 0.1.0 · **Status:** draft — character sheet only
 
 > This rulebook is intentionally empty. It exists so that rules can be written into it one at a time,
 > together with the game, instead of being generated wholesale.
@@ -19,18 +19,82 @@ no combat, psionics, hacking, factions or scenarios — until that specific piec
 
 ## Contents
 
-1. [Characters](#characters) — *not yet written*
-2. [Core resolution](#core-resolution) — *not yet written*
+1. [Characters](#characters) — the UNSA rookie and the seven attributes
+2. [Core resolution](#core-resolution) — difficulty targets only; the dice mechanic is not yet written
 3. [Gameplay](#gameplay) — *not yet written*
 4. [Scenarios](#scenarios) — *not yet written*
 
 ## Characters
 
-*Placeholder. Character creation rules will be written here.*
+### The player character
+
+The player character is a **UNSA agent straight from the academy**. Nothing else about them is defined
+yet: no specialisations, professions, classes, skills, equipment, history or contacts exist until they
+are authored.
+
+### The seven attributes
+
+Every character has exactly seven attributes. There are no others.
+
+| Attribute | Definition |
+| --- | --- |
+| **Fitness** | Your physical strength and constitution |
+| **Reflexes** | Your physical dexterity, agility and coordination |
+| **Cognition** | Your ability to process language and data |
+| **Cyber** | Your ability to interface with technology |
+| **Awareness** | Your intuition, perception and awareness |
+| **Agency** | Your free will |
+| **Empathy** | Your loving kindness and humanity |
+
+### Rolling attributes
+
+Roll **3d6 separately for each attribute** — seven independent rolls. Convert each total to the
+attribute's value with this table, and record **the converted value**, not the dice total.
+
+| 3d6 total | Attribute value |
+| --- | --- |
+| 3–4 | −3 |
+| 5–6 | −2 |
+| 7–8 | −1 |
+| 9–12 | 0 |
+| 13–14 | +1 |
+| 15–16 | +2 |
+| 17–18 | +3 |
+
+**Basic human range is −3 to +3.** A value of −3 is a legitimate basic-human score for any attribute,
+Empathy included. Values **above +3 are transhuman**; the academy roll never produces them.
+
+### The character sheet
+
+A starting sheet is only this: the character's name, the fact that they are a UNSA agent fresh from
+the academy, and the seven signed attribute values. Nothing else is recorded yet.
+
+> **Machine-readable copy.** The table above is also stored as data in
+> [`noopunk/game/data/attributes.json`](../game/data/attributes.json), which the Godot game reads. The
+> game does not hold a second copy of the bands: this book and the game consume one table.
+
 
 ## Core resolution
 
-*Placeholder. The dice mechanic will be written here.*
+*The dice mechanic is not yet written. This section records the difficulty targets, which are reference
+data until that mechanic exists.*
+
+### Difficulty targets
+
+| Target | Label |
+| --- | --- |
+| 6 | Easiest |
+| 8 | Easier |
+| 10 | Easy |
+| 12 | Average |
+| 14 | Hard |
+| 16 | Harder |
+| 18 | Hardest |
+
+**No resolution mechanic has been specified for these targets.** Do not assume 2d6, d20, 3d6 or an
+automatic success: how a character reaches a target will be authored as its own rule. These are the
+same values the game stores in `noopunk/game/data/attributes.json`.
+
 
 ## Gameplay
 
