@@ -46,8 +46,8 @@ func _build_sheet() -> void:
 	overlay = ColorRect.new()
 	overlay.name = "CharacterSheet"
 	overlay.color = Color(0.045, 0.055, 0.09, 0.97)
-	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	layer.add_child(overlay)
+	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var column := VBoxContainer.new()
 	column.position = Vector2(20, 16)
 	column.custom_minimum_size = Vector2(600, 0)
