@@ -286,9 +286,8 @@ Parallel agents previously landed two catalogues, two character modules and two 
 tested, neither wrong — so a rule fixed in one was silently missing from the other. Before touching
 Godot code, read [`docs/godot/CANONICAL_GODOT_TREE.md`](docs/godot/CANONICAL_GODOT_TREE.md).
 
-- **`src/godot/`** — the only home for CWN/SWN rule logic and rule data.
-- **`godot/core/`** — scene-side and engine glue only. It may read rule data; it may not contain a
-  second implementation of a rule.
+- **`godot/core/`** — the canonical owner of CWN/SWN rule modules (issue #791).
+- **`src/godot/`** — legacy tree. Port unique modules into `godot/core/`; do not add new rules here.
 - **`godot/tests/`** — the only test root CI runs. `tests/godot/` is legacy; do not add to it.
 - The same basename must not exist in both `src/godot/` and `godot/core/`;
   `tests/test_godot_single_implementation.py` enforces this.

@@ -24,16 +24,36 @@ obviously wrong. A rule change made in one is silently absent from the other.
 
 ## The rule
 
-1. **`src/godot/` is the single home for CWN/SWN rule logic and rule data.** Any new rule module goes
-   there, under `src/godot/` or `src/godot/cwn/`.
-2. **`godot/core/` is for scene-side and engine glue only** — adapters that read rule data, autoloads,
-   scene flow, RNG plumbing. It may call into `src/godot/`; it may not contain a second copy of a rule.
+1. **`godot/core/` is the canonical owner of CWN/SWN rule modules** (issue #791). `src/godot/` is
+   the legacy tree: port unique modules into `godot/core/`, keep call sites working, then delete the
+   legacy copy. No new rule module goes into `src/godot/`.
+2. **Scene-side glue may live beside the rules in `godot/core/`** (adapters, autoloads, scene flow,
+   RNG plumbing). What it may not do is host a *second* implementation of a rule that also exists in
+   `src/godot/`.
 3. **`godot/tests/` is the only test root that CI runs.** `tests/godot/` is legacy: no new tests go
    there, and files move out of it as they are touched.
 4. **A basename may not exist in both `src/godot/` and `godot/core/`.** `tests/test_godot_single_implementation.py`
    enforces this and will fail CI if a duplicate reappears.
 5. When two agents touch the same mechanic, the second one reads this file first and extends the
    canonical module rather than writing a parallel one.
+
+## Why a mechanical merge fails today (measured 2026-10-30)
+
+`cwn_catalogue.gd` is not merely duplicated — the two copies are **API-incompatible**:
+
+| | `godot/core/cwn_catalogue.gd` (canonical) | `src/godot/cwn/cwn_catalogue.gd` (legacy) |
+|---|---|---|
+| style | instance methods | `static func` |
+| lookup | `weapon(id)` — one argument | `weapon(name, groups)` — two arguments |
+| API surface | `apply_soak(armor_id, damage)` | `licence()`, `rows(key)`, `armour(name)`, `background(name)`, `background_names()`, `weapon_names()` |
+
+Deleting either copy and repointing the one preload site immediately breaks the other's consumers:
+repointing `test_cwn_engine.gd` at the `godot/core` copy produced
+`Static function "licence()" not found in base "CwnCatalogue"` and
+`Too many arguments for "weapon()" call. Expected at most 1 but received 2`.
+
+So the port is: move the richer static API into `godot/core/cwn_catalogue.gd` as instance methods
+(or keep statics, but consistently), keep `apply_soak`, then repoint. That is real work, not a delete.
 
 ## Known debt this guard does not pretend is fixed
 
