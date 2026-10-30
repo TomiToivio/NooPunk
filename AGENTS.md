@@ -389,3 +389,31 @@ When adding or revising mechanics:
 6. prefer the smallest NoöPunk-native procedure that serves the game's human and Concordia/LLM play.
 
 Setting work should preserve current 20XX / Earth-intact anchors unless the author explicitly revises them.
+
+### 16. One Godot implementation per rule
+
+The engine has one canonical rules tree: **`godot/core/`**, and one canonical entry point:
+`scenes/main.tscn`. `src/godot/` is transitional plumbing that is being drained into it, and
+`scenes/lakkahaltia/` holds fixtures, not rival implementations. See
+`docs/godot/ARCHITECTURE_CONSOLIDATION.md` and issue #791.
+
+When a rule, resource pool or procedure is needed in the engine:
+
+1. **Search before you write.** Grep `godot/core/` for the procedure, the class name and the
+   constant. If it exists, extend it; do not write a second one next to it.
+2. **A new procedure means a kernel plus its contract.** Mechanics live in a kernel under
+   `godot/core/`, the numbers live in `data/rules/*.json`, and the Python module
+   (`src/rules/`) stays the layer of record. A contract test pins the JSON to Python, and a
+   behavioural test pins the kernel to the JSON. A kernel with no contract is a recollection.
+3. **Never add a second copy to make a test pass.** If a duplicate is needed because an API does
+   not fit, change that API or write an adapter — a parallel class is how three rule trees grew.
+4. **Moving a procedure is a rename, not a rewrite.** When consolidating, preserve behaviour,
+   re-point the call sites and the preload paths in the same change, and keep the suites green.
+5. **`src/godot/` receives no new rules, pools or procedures.** It may hold UI, state and
+   scenarios that are being migrated; anything a rule depends on belongs in `godot/core/`.
+6. **Two test entry points, both required:** `tools/run_godot_tests.gd` (rule kernels,
+   `tests/godot/`) and `godot/tests/run_tests.gd` (slice suites). A change to a rule kernel runs
+   both, plus the Python suite. Do not add a third runner.
+7. **Do not delete a working path to tidy up**, and do not count a passing suite of one tree as
+   evidence about another. A duplicate is removed only when its call sites have moved, and the
+   issue records the decision and the evidence.

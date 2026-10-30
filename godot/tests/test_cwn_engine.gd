@@ -4,7 +4,7 @@ extends RefCounted
 ##
 ## Preloaded rather than referenced by global class name: the class cache only exists after an
 ## import pass, so a clean checkout cannot resolve `CWNCatalogue` here.
-const Catalogue := preload("res://src/godot/cwn/cwn_catalogue.gd")
+const Catalogue := preload("res://godot/core/cwn/cwn_catalogue.gd")
 const Character := preload("res://src/godot/cwn/cwn_character.gd")
 const Combat := preload("res://src/godot/cwn/cwn_combat.gd")
 

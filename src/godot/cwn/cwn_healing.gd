@@ -61,7 +61,7 @@ static func frail_week(has_medic_care: bool, physical_save_success: Variant = nu
 ## Each application costs one System Strain, and a body at its maximum gains nothing — the
 ## intervention is simply too much for it.
 static func first_aid(die_roll: int, heal_skill: int = 0, has_medkit: bool = true,
-		strain: CWNStrain = null) -> Dictionary:
+		strain = null) -> Dictionary:
 	assert(has_medkit, "first aid needs a medkit")
 	assert(die_roll >= 1, "a die roll is at least 1")
 	assert(heal_skill >= 0, "Heal skill cannot be negative")
