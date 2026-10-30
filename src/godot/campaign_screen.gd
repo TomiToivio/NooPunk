@@ -43,7 +43,7 @@ func _draw() -> void:
 			_action("Accept investigation", func(): _record("mission_accepted", "An investigation has been assigned."))
 			if bool(campaign.flags.get("mission_accepted", false)):
 				_action("Visit investigation site", func(): _travel("mission"))
-			if bool(campaign.flags.get("mission_visited", false)):
+			if bool(campaign.flags.get("mission_visited", false)) and not bool(campaign.flags.get("debrief_complete", false)):
 				_action("File debrief", func(): _record("debrief_complete", "Debrief recorded at UNSA HQ."))
 			_action("Return home", func(): _travel("home"))
 		"mission":
