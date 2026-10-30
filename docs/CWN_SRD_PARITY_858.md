@@ -23,25 +23,9 @@ Section list taken from the SRD itself (1.1.0 → 4.5.0 present in the source te
 
 PR #865 (`890d4168bf581e1a92f3086db7b0794c4aa285b7`) merged new Godot kernels for chases, cyberware operations, mission time, attack modifiers, and gear modifications. The original audit measurements and historical 791-check count below remain a snapshot, **not current verification**. This reconciliation updates only the affected evidence rows. No local test suite or windowed playtest was run for this documentation change. The source-parity and playable columns remain conservative.
 
-## Reconciliation after the #858 parity pass
+## Contacts integration (#869, PR #872)
 
-Added since the measurements above:
-
-- §3.2 **lifestyles, wages and bribes** — `cwn_social_costs.gd`: five lifestyle tiers with their
-  maximum-System-Strain modifiers, eighteen daily wages, eight favor multiples with the serious-risk
-  flag, and bribe prices computed as wage × multiple.
-- §3.5 **pharmaceuticals** — same module: sixteen chems with cost, minimum Heal (the SRD's "None" is
-  `-1`), the rare-chem contact gate, and the **Strain gate** — a chem that would overflow maximum
-  System Strain grants no benefit while its harmful effects still apply.
-- §3.6 **implant complications** — `cwn_cyberware_complications.gd`: the full d12 table with each
-  row's mechanical hook, plus the SRD's instruction that a complication which cannot apply to the
-  implant counts as **12**, implemented as a function rather than a comment.
-
-Verified after the change: `godot --headless --path . --script res://godot/tests/run_tests.gd` →
-**1247 checks, 0 failed**.
-
-These three rows were "absent" in the table above and are now code plus tests. The **playable** column
-is unchanged, and that is the honest state: a rule a player cannot invoke is not parity.
+The Contacts rules kernel now models acquaintance/friend favors, starting contact choices, limits on risky or expensive favors, one call per session, no mission participation, and trust changes. Its behavior has regression checks in `godot/tests/test_cwn_vanilla.gd`. It is not yet exposed as an end-to-end playable interface; full §1.4 source parity remains unverified.
 
 ## Status of each published section
 
@@ -50,7 +34,7 @@ is unchanged, and that is the honest state: a rule a player cannot invoke is not
 | 1.1 | Attributes | yes — `cwn_character.gd`, `catalogue` | yes — `test_cwn_engine.gd` | yes — `campaign.tscn` sheet | **unverified** |
 | 1.2 | Skills | yes — `cwn_catalogue.gd`, `data/rules/cwn/skills.json` | yes — `test_cwn_catalogue.gd` | partial | **unverified** |
 | 1.3 | Backgrounds | yes — `cwn_character.gd` | yes | partial | **unverified** |
-| 1.4 | Contacts | partial — contact handling exists in 2 files | no dedicated test | no | **absent** |
+| 1.4 | Contacts | yes — `cwn_contacts.gd` rules kernel | yes — `test_cwn_vanilla.gd` | no complete player interface | **unverified** |
 | 1.5 | Edges | yes — 13 files reference Edges | partial | partial | **unverified** |
 | 1.6 | Foci | partial — 4 files | partial | no | **absent** |
 | 1.7 | Final creation steps | yes — `field_agent.gd`, `cwn_character.gd` | yes | yes | **unverified** |
@@ -64,11 +48,11 @@ is unchanged, and that is the honest state: a rule a player cannot invoke is not
 | 2.8 | Crafting and modifying gear | yes — `cwn_gear_mods.gd`, `data/rules/cwn_gear_mods.json` | yes — deterministic checks reported in PR #865 | no dedicated crafting interface demonstrated | **unverified** |
 | 2.9 | Encumbrance | yes — `cwn_encumbrance.gd` | yes | partial | **unverified** |
 | 3.1 | Mission gear | data only — `srd_tables.json` | no | no | **unverified** |
-| 3.2 | Lifestyles, wages, bribes | yes — `cwn_social_costs.gd` (5 lifestyles, 18 wages, 8 favors) | yes — `test_cwn_vanilla.gd` | no dedicated screen | **verified for the three tables** |
+| 3.2 | Lifestyles, wages, bribes | data only | no | no | **absent** |
 | 3.3 | Armor | yes — catalogue + soak | yes — `test_cwn_catalogue.gd` | partial | **unverified** |
 | 3.4 | Weapons | yes — catalogue | yes | yes | **unverified** |
-| 3.5 | Pharmaceuticals and street drugs | yes — `cwn_social_costs.gd` (16 chems, cost, min Heal, contact gate, Strain gate) | yes — `test_cwn_vanilla.gd` | no dedicated screen | **verified for the catalogue and the Strain gate** |
-| 3.6 | Cyberware | yes — `cwn_cyberware_ops.gd` (installation, removal, Alienation) plus catalogue | yes — plus `cwn_cyberware_complications.gd` (d12, with the SRD's non-applicable→12 fallback); operational tests in `test_cwn_vanilla.gd` | partial | **unverified** |
+| 3.5 | Pharmaceuticals and street drugs | thin — 2 files | no | no | **absent** |
+| 3.6 | Cyberware | yes — `cwn_cyberware_ops.gd` (installation, removal, Alienation) plus catalogue | partial — operational tests reported in PR #865; d12 complication table still missing | partial | **unverified** |
 | 3.7 | Cyberdecks | yes — `hacking.gd`, `cwn_hacking.gd` | yes — `test_hacking.gd` | partial | **unverified** |
 | 3.8 | Drones | partial — 10 files reference drones | partial | no | **absent** |
 | 3.9 | Vehicles | yes — `cwn_vehicles.gd`, `cwn_srd_vehicles.gd` | yes — `test_cwn_srd_vehicles.gd` | no | **unverified** |
