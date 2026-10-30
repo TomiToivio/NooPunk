@@ -1,55 +1,28 @@
-# START HERE — NoöPunk: vanilla CWN/SWN + one top-down Godot RPG
+# START HERE — NoöPunk vanilla CWN/SWN baseline (issue #848)
 
-**Directive:** issue **#848** (2026-10-30). This supersedes the blank-rulebook restart (#827, #835) and
-every custom-attribute variant. **Pinned baseline: `36092a5`** — the commit at which the canonical game
-passes 760 headless checks.
+> **CURRENT DIRECTIVE (2026-10-30).** Issue [#848](https://github.com/TomiToivio/NooPunk/issues/848) supersedes the blank-rulebook and seven-attribute restart (#827, #835). Follow [AGENTS.md](AGENTS.md) and [the baseline decision record](docs/NOOPUNK_BASELINE_848.md). Do not resume the restart or create another Godot project.
 
-## The canonical artifacts
+## Canonical entry points
 
-| Artifact | Path |
-| --- | --- |
-| Rulebook | [`RULEBOOK.md`](RULEBOOK.md) |
-| Generated chapters | `rulebook/` — regenerate, never hand-edit |
-| Godot project | [`project.godot`](project.godot) |
-| Startup scene | [`scenes/main.tscn`](scenes/main.tscn) |
-| Rules kernels | `godot/core/*.gd` |
-| Rules data | `data/rules/*.json` |
-| Coverage matrix | [`docs/rules/CWN_GODOT_COVERAGE.md`](docs/rules/CWN_GODOT_COVERAGE.md) |
-
-## The rules
-
-**Cities Without Number** is the primary system; **Stars Without Number Revised** supplies psionics,
-space and factions where CWN is silent. No custom attributes, no alternate difficulty system, no
-invented mechanics.
-
-- attributes: STR, DEX, CON, INT, WIS, CHA (3–18, modifiers −2..+2)
-- skills: 0–4, checks on 2d6 + attribute + skill
-- attacks and saves: d20
-- character creation, classes, combat, hacking, cyberware, equipment, progression: as published
-- psionics: SWN Revised class/discipline rules
-
-Name the governing book for whatever subsystem you touch. Where the two games differ, the more
-specific book wins for that subsystem and the choice is recorded.
+- **Pinned baseline SHA:** `36092a56a7637145c805129511eb2b6b688f6ca0` (audited main snapshot; not a rollback instruction).
+- **Tabletop rules:** [`rulebook/00_INDEX.md`](rulebook/00_INDEX.md), with vanilla **Cities Without Number** as the primary mechanics and vanilla **Stars Without Number Revised** governing psionics. Use published STR/DEX/CON/INT/WIS/CHA, classes, character generation, checks, combat, hacking, equipment and progression. No NoöPunk-specific statistical modifications.
+- **Godot:** repository-root [`project.godot`](project.godot), startup `res://scenes/main.tscn`. Target **2D top-down turn-based** play, not a parallel action RPG.
+- **Source-of-truth implementation:** `godot/`, with `src/godot/` compatibility modules audited before consolidation. Existing lore, scenarios, alternate prototypes and history are retained for reference, not promoted into a second rules authority.
+- **Superseded:** `noopunk/game/project.godot`, `noopunk/rulebook/RULEBOOK.md` and custom seven-attribute/typed-tag systems. They remain on disk as archive/reference only.
+- **Scope exception:** independently authorized `strategy_game/` is not part of this Godot consolidation.
 
 ## Run and verify
 
+From the repository root with the project-pinned Godot version (see `project.godot`):
+
 ```sh
-godot --path .                                             # play
-godot --headless --path . --script res://godot/tests/run_tests.gd   # engine tests
-python3.11 -m pytest tests/ -q                              # Python rules layer
+godot --headless --path . --import
+godot --headless --path . --script res://godot/tests/run_tests.gd
+godot --path .
 ```
 
-Baseline result: **760 Godot checks, 0 failed**; Python suite green.
+These are verification commands, **not** a claim that they passed in this documentation change. A passing test suite cannot establish complete CWN/SWN coverage. Record missing procedures and their authoritative published source in the coverage matrix.
 
-## Superseded, preserved, not authoritative
+## Work on one shared baseline
 
-`noopunk/` — the blank-rulebook restart built under #827/#835 — stays in the repository as history.
-Do not extend it, do not build a fourth prototype, and do not delete it.
-
-## Working rules
-
-1. Check `origin/main` and open PRs before writing.
-2. Name the canonical module you are extending in the PR.
-3. Tests prove behaviour: a subsystem is "done" only with a test that fails without it.
-4. Never claim full rule coverage without the coverage matrix and evidence.
-5. Mechanics may be implemented; published prose and non-redistributable tables may not be copied.
+Before editing, inspect issue #848, `AGENTS.md`, `docs/NOOPUNK_BASELINE_848.md`, and overlapping PRs. Preserve saves and existing gameplay. Implement and test one vanilla, book-traceable subsystem at a time in the canonical root game and tabletop documentation. Every related PR must record its baseline SHA, canonical paths, rules authority, superseded work and actually run tests. **Keep #848 open** until the migration and playable vertical slice are verified.

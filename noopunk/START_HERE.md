@@ -1,14 +1,6 @@
-> ## ⚠ SUPERSEDED — issue #848
->
-> This file belongs to the **blank-rulebook / seven-attribute restart** (#827, #835). It is **not** the
-> NoöPunk RPG and nothing here governs play.
->
-> **Canonical:** `RULEBOOK.md` (root) for rules, and the repository-root `project.godot` →
-> `scenes/main.tscn` for the game, running **vanilla Cities Without Number primary + vanilla Stars
-> Without Number Revised** where CWN is silent. Read [../AGENTS.md](../AGENTS.md) before writing
-> anything; it opens with the CURRENT DIRECTIVE and pins the baseline commit.
->
-> Preserved as history. Do not extend it, do not run a feature from it, do not delete it.
+> **ARCHIVED / REFERENCE ONLY (issue [#848](https://github.com/TomiToivio/NooPunk/issues/848)).** This walkthrough describes the superseded #827/#835 custom-attribute experiment. It is **not** the current development or playtest entry point. Follow [root START_HERE.md](../START_HERE.md), [AGENTS.md](../AGENTS.md) and the canonical root `project.godot`, startup `res://scenes/main.tscn`. Vanilla CWN/SWN and STR/DEX/CON/INT/WIS/CHA govern active rules. Baseline: `36092a56a7637145c805129511eb2b6b688f6ca0`.
+
+---
 
 # NoöPunk Step 2: UNSA rookie
 

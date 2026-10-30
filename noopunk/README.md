@@ -1,9 +1,10 @@
-> ## ⚠ SUPERSEDED — issue #848
+> ## ARCHIVED — SUPERSEDED BY #848
 >
-> This tree is the **blank-rulebook restart** (#827/#835) and is **not** the NoöPunk RPG. The
-> canonical game is the repository-root `project.godot` → `scenes/main.tscn`, with vanilla CWN/SWN
-> rules in `RULEBOOK.md`. This directory is preserved as history only: do not extend it, do not run a
-> feature from it, and do not delete it.
+> This directory came from the blank-rulebook restart (#827) and its custom seven-attribute sheet
+> (#835). **Issue #848 restored vanilla CWN/SWN and the root `project.godot` as canonical.** Nothing here
+> is authoritative; it is kept as reference until the author reauthorises or a migration removes it.
+>
+> Canonical: rulebook `rulebook/00_INDEX.md`, Godot `project.godot`, startup scene `res://scenes/main.tscn`.
 
 # NoöPunk — canonical restart (issue #827)
 
