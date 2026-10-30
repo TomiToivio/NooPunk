@@ -76,11 +76,16 @@ static func sheet(rolled: Dictionary) -> Dictionary:
 
 ## A human-readable summary, e.g. "Fitness +1  Reflexes 0  Cognition -2 ...".
 static func format_sheet(values: Dictionary) -> String:
+	# Two rows: seven attributes on one 640 px line overflowed and clipped "Empathy".
 	var parts: Array = []
 	for name in attribute_names():
 		var value := int(values.get(name, 0))
 		parts.append("%s %s%d" % [name, "+" if value >= 0 else "", value])
-	return "   ".join(parts)
+	var lines: Array[String] = []
+	lines.append("   ".join(parts.slice(0, 4)))
+	if parts.size() > 4:
+		lines.append("   ".join(parts.slice(4)))
+	return "\n".join(lines)
 
 static func difficulty_scale() -> Array:
 	return data().get("difficulty", [])
