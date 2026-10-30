@@ -23,16 +23,9 @@ Section list taken from the SRD itself (1.1.0 → 4.5.0 present in the source te
 
 PR #865 (`890d4168bf581e1a92f3086db7b0794c4aa285b7`) merged new Godot kernels for chases, cyberware operations, mission time, attack modifiers, and gear modifications. The original audit measurements and historical 791-check count below remain a snapshot, **not current verification**. This reconciliation updates only the affected evidence rows. No local test suite or windowed playtest was run for this documentation change. The source-parity and playable columns remain conservative.
 
-## Reconciliation after the #869 follow-up
+## Contacts integration (#869, PR #872)
 
-- §1.4 **Contacts** — `cwn_contacts.gd`: acquaintance versus friend expressed as what each will risk
-  and spend (not as flavour), the starting choice of two acquaintances or one friend, one call per
-  contact per session, no contact ever joins a mission, and trust moving the level up or down.
-- **Alienation consolidated.** `cwn_cyberware_ops.gd` no longer computes its own Alienation; it
-  delegates to `cwn_alienation.gd` (§3.6.8), which now also owns the chrome-syndrome table that raises
-  the ceiling. Two copies of a rounding rule is how a rule drifts.
-
-Verified: `godot --headless --path . --script res://godot/tests/run_tests.gd` → **1232 checks, 0 failed**.
+The Contacts rules kernel now models acquaintance/friend favors, starting contact choices, limits on risky or expensive favors, one call per session, no mission participation, and trust changes. Its behavior has regression checks in `godot/tests/test_cwn_vanilla.gd`. It is not yet exposed as an end-to-end playable interface; full §1.4 source parity remains unverified.
 
 ## Status of each published section
 
@@ -41,7 +34,7 @@ Verified: `godot --headless --path . --script res://godot/tests/run_tests.gd` �
 | 1.1 | Attributes | yes — `cwn_character.gd`, `catalogue` | yes — `test_cwn_engine.gd` | yes — `campaign.tscn` sheet | **unverified** |
 | 1.2 | Skills | yes — `cwn_catalogue.gd`, `data/rules/cwn/skills.json` | yes — `test_cwn_catalogue.gd` | partial | **unverified** |
 | 1.3 | Backgrounds | yes — `cwn_character.gd` | yes | partial | **unverified** |
-| 1.4 | Contacts | yes — `cwn_contacts.gd` (two levels, starting roster, ask limits, call budget, upgrade/downgrade) | yes — `test_cwn_vanilla.gd` | creation-time only | **verified for §1.4** |
+| 1.4 | Contacts | yes — `cwn_contacts.gd` rules kernel | yes — `test_cwn_vanilla.gd` | no complete player interface | **unverified** |
 | 1.5 | Edges | yes — 13 files reference Edges | partial | partial | **unverified** |
 | 1.6 | Foci | partial — 4 files | partial | no | **absent** |
 | 1.7 | Final creation steps | yes — `field_agent.gd`, `cwn_character.gd` | yes | yes | **unverified** |
