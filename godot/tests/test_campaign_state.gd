@@ -1,0 +1,31 @@
+extends RefCounted
+
+static func run() -> void:
+	var state := NooPunkCampaignState.new()
+	assert(state.current_location == "home")
+	assert(not state.travel("mission"))
+	assert(state.record_once("home_note", "Find HQ"))
+	assert(not state.record_once("home_note", "Find HQ"))
+	assert(state.journal.size() == 1)
+	assert(state.travel("hq"))
+	assert(not state.travel("mission"))
+	assert(state.record_once("mission_accepted", "Mission assigned"))
+	assert(state.travel("mission"))
+	assert(state.record_once("mission_visited", "Investigation"))
+	assert(state.travel("hq"))
+	assert(state.record_once("debrief_complete", "Debrief"))
+	var copy := NooPunkCampaignState.new()
+	assert(copy.from_data(state.to_data()))
+	assert(copy.current_location == "hq")
+	assert(copy.journal.size() == 4)
+	assert(copy.flags.has("debrief_complete"))
+	var bad := state.to_data()
+	bad["version"] = 999
+	assert(not copy.from_data(bad))
+	assert(copy.current_location == "hq")
+	var path := "user://campaign_gate1_test.json"
+	assert(state.save(path))
+	var reloaded := NooPunkCampaignState.new()
+	assert(reloaded.load_save(path))
+	assert(reloaded.to_data() == state.to_data())
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
