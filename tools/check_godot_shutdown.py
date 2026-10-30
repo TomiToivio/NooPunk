@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import argparse
 import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -39,7 +40,11 @@ ALLOWED_ERROR_LINES = (
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--godot", default=str(Path.home() / ".local/bin/godot"))
+    parser.add_argument(
+        "--godot",
+        default=shutil.which("godot") or str(Path.home() / ".local/bin/godot"),
+        help="Godot binary; defaults to PATH, then ~/.local/bin/godot",
+    )
     parser.add_argument("--baseline", type=int, default=BASELINE_OBJECTS)
     args = parser.parse_args()
 
