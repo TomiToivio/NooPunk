@@ -1,14 +1,13 @@
 [gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://character_sheet.gd" id="2_sheet"]
-
 [ext_resource type="Script" path="res://player.gd" id="1_player"]
+[ext_resource type="Script" path="res://main.gd" id="2_main"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
 size = Vector2(24, 24)
 
 [node name="Main" type="Node2D"]
-script = ExtResource("2_sheet")
+script = ExtResource("2_main")
 
 [node name="Floor" type="ColorRect" parent="."]
 offset_right = 640.0
@@ -40,13 +39,11 @@ offset_right = 320.0
 offset_bottom = 32.0
 text = "WASD / arrows to move"
 
-[node name="CharacterSheetLayer" type="CanvasLayer" parent="."]
-layer = 10
+[node name="Sheet" type="CanvasLayer" parent="."]
 
-[node name="CharacterSheet" type="ColorRect" parent="CharacterSheetLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.045, 0.055, 0.09, 0.97)
+[node name="Label" type="Label" parent="Sheet"]
+offset_left = 12.0
+offset_top = 312.0
+offset_right = 628.0
+offset_bottom = 356.0
+text = "No character sheet yet"

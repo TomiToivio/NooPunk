@@ -22,3 +22,5 @@ jobs:
           G=/tmp/godot/Godot_v4.7.2-stable_linux.x86_64
           $G --headless --path noopunk/game --import
           $G --headless --path noopunk/game --script res://tests/smoke.gd
+          $G --headless --path noopunk/game --script res://tests/attributes_smoke.gd
+          $G --headless --path noopunk/game --script res://tests/character.gd

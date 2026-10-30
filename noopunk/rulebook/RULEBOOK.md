@@ -1,50 +1,87 @@
 # NoöPunk
 
-**Version:** 0.0.2 · **Status:** incremental draft
+**Version:** 0.1.0 · **Status:** draft — character sheet only
 
-> Tomi authors one rule at a time; each approved rule is implemented in this rulebook and the same canonical Godot game (`noopunk/game/`).
+> This rulebook is intentionally empty. It exists so that rules can be written into it one at a time,
+> together with the game, instead of being generated wholesale.
 
 ## Premise
 
-Noöpunk is a tabletop role-playing game set in the 20XX near future, in a world where the Noösphere has become a place people can enter. The player character is a **UNSA agent straight from the academy**. No further character background or specialization has been decided.
+Noöpunk is a tabletop role-playing game set in the 20XX near future, in a world where the Noösphere has
+become a place people can enter. This paragraph will be replaced when the author supplies the real
+premise; until then it is a placeholder and carries no rules weight.
+
+## How this book is written
+
+Every rule in this book arrives from Tomi, one piece at a time, and is implemented in the accompanying
+Godot game in the same pass. Nothing is added here speculatively — no attribute tables, no skill lists,
+no combat, psionics, hacking, factions or scenarios — until that specific piece is authored.
+
+## Contents
+
+1. [Characters](#characters) — the UNSA rookie and the seven attributes
+2. [Core resolution](#core-resolution) — difficulty targets only; the dice mechanic is not yet written
+3. [Gameplay](#gameplay) — *not yet written*
+4. [Scenarios](#scenarios) — *not yet written*
 
 ## Characters
 
-### Seven attributes
+### The player character
+
+The player character is a **UNSA agent straight from the academy**. Nothing else about them is defined
+yet: no specialisations, professions, classes, skills, equipment, history or contacts exist until they
+are authored.
+
+### The seven attributes
+
+Every character has exactly seven attributes. There are no others.
 
 | Attribute | Definition |
 | --- | --- |
-| Fitness | Your physical strength and constitution |
-| Reflexes | Your physical dexterity, agility and coordination |
-| Cognition | Your ability to process language and data |
-| Cyber | Your ability to interface with technology |
-| Awareness | Your intuition, perception and awareness |
-| Agency | Your free will |
-| Empathy | Your loving kindness and humanity |
+| **Fitness** | Your physical strength and constitution |
+| **Reflexes** | Your physical dexterity, agility and coordination |
+| **Cognition** | Your ability to process language and data |
+| **Cyber** | Your ability to interface with technology |
+| **Awareness** | Your intuition, perception and awareness |
+| **Agency** | Your free will |
+| **Empathy** | Your loving kindness and humanity |
 
-### Generation
+### Rolling attributes
 
-Roll **3d6 independently for each** of the seven attributes and convert each total into its displayed signed attribute value. The character sheet records the converted values, not the dice totals.
+Roll **3d6 separately for each attribute** — seven independent rolls. Convert each total to the
+attribute's value with this table, and record **the converted value**, not the dice total.
 
 | 3d6 total | Attribute value |
 | --- | --- |
-| 3–4 | -3 |
-| 5–6 | -2 |
-| 7–8 | -1 |
+| 3–4 | −3 |
+| 5–6 | −2 |
+| 7–8 | −1 |
 | 9–12 | 0 |
 | 13–14 | +1 |
 | 15–16 | +2 |
 | 17–18 | +3 |
 
-The basic human range is **-3 to +3** for *every* attribute, including Empathy. Scores **above +3** are transhuman. No restrictions on player characters with -3 Empathy have been specified.
+**Basic human range is −3 to +3.** A value of −3 is a legitimate basic-human score for any attribute,
+Empathy included. Values **above +3 are transhuman**; the academy roll never produces them.
 
-In Godot the same generation is in `noopunk/game/attributes.gd`; the character screen rolls or rerolls all seven values, displays the signed values, and preserves the selected roll when the player walks around.
+### The character sheet
+
+A starting sheet is only this: the character's name, the fact that they are a UNSA agent fresh from
+the academy, and the seven signed attribute values. Nothing else is recorded yet.
+
+> **Machine-readable copy.** The table above is also stored as data in
+> [`noopunk/game/data/attributes.json`](../game/data/attributes.json), which the Godot game reads. The
+> game does not hold a second copy of the bands: this book and the game consume one table.
+
 
 ## Core resolution
 
-### Difficulty ratings (reference only)
+*The dice mechanic is not yet written. This section records the difficulty targets, which are reference
+data until that mechanic exists.*
 
-| Target difficulty | Label |
+### Difficulty targets
+
+| Target | Label |
 | --- | --- |
 | 6 | Easiest |
 | 8 | Easier |
@@ -54,11 +91,14 @@ In Godot the same generation is in `noopunk/game/attributes.gd`; the character s
 | 16 | Harder |
 | 18 | Hardest |
 
-**No resolution dice mechanic has been specified.** These targets have no check or roll implementation yet.
+**No resolution mechanic has been specified for these targets.** Do not assume 2d6, d20, 3d6 or an
+automatic success: how a character reaches a target will be authored as its own rule. These are the
+same values the game stores in `noopunk/game/data/attributes.json`.
+
 
 ## Gameplay
 
-*Placeholder. Further gameplay and interaction rules are not yet written.*
+*Placeholder. Turn structure, movement and interaction will be written here.*
 
 ## Scenarios
 
