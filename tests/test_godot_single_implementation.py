@@ -35,7 +35,7 @@ KNOWN_DUPLICATES = {
     "cwn_character.gd",   # same
     # Found by this guard on 2026-10-30: a later merge reintroduced these two. They are debt, not
     # permission - deleting a name from this set is the completion signal for #791.
-    "cwn_healing.gd",
+    # "cwn_healing.gd" retired in #791: merged into godot/core/cwn_healing.gd and deleted.
     # "cwn_strain.gd" retired in #791: merged into godot/core/cwn_strain.gd and deleted.
 }
 

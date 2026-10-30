@@ -34,3 +34,22 @@ This change joins the existing campaign prototype to the **existing default titl
 - Document runtime-dependent checks honestly if Godot is unavailable.
 
 See `AGENTS.md` for binding agent coordination instructions.
+
+## Duplicate domains — live status (#791)
+
+`tools/check_godot_rule_duplicates.py` fails CI on any rule implemented in both `godot/core/` and
+`src/godot/` unless it is listed as known debt. Current debt, after the phase-2 merges:
+
+| domain | status |
+| --- | --- |
+| `cwn:catalogue` | duplicate. The APIs differ by design (instance-id lookup vs static named catalogue), so the resolution is a call-site decision, not a copy. |
+| `cwn:character` | duplicate, **blocked**: the trees disagree on level-1 hit points (`hit_points(level, con, rolls)` adds a 6 + CON base on top of the rolls; `max_hit_points(roll, con_mod, htk)` is a single-level roll). Needs an author ruling against the tabletop rule before either side is canonical. |
+| `cwn:combat` | duplicate. The alternative exposes Shock as `shock_damage(weapon, roll, ac)`, the canonical kernel as `shock_damage(hit, amount, max_ac, ac, modifier)`. Needs an adapter, not a second implementation. |
+
+Retired in phase 2 (merged into the canonical kernel, then deleted, with the guard tightened so
+they cannot return): **psionics** (`src/godot/swn_psionics.gd`; `psychic_succor`,
+`teleport_range_meters` and the activation aliases were ported first), **strain**
+(`src/godot/cwn/cwn_strain.gd`; `install_cyber`/`remove_cyber` ported), **healing**
+(`src/godot/cwn/cwn_healing.gd`; `rounds_until_death`, `remove_frailty`, `first_aid` ported).
+`cwn:progression` was never a duplicate — CWN character advancement and SWN psychic training share a
+word, so the domain key is now `<system>:<rule>`.

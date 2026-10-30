@@ -38,28 +38,35 @@ EXEMPT = {
 #: Known duplicates, oldest first. Each row names the domain and the file that is being merged away.
 #: Delete a row when its migration step in UNIFIED_IMPLEMENTATION.md lands.
 ALLOWED = {
-    "catalogue",      # godot/core/cwn_catalogue.gd  <- src/godot/cwn/cwn_catalogue.gd
-    "character",      # godot/core/cwn_character.gd  <- src/godot/cwn/cwn_character.gd
-    "combat",         # godot/core/cwn_combat_rules.gd <- src/godot/cwn/cwn_combat.gd
+    "cwn:catalogue",  # godot/core/cwn_catalogue.gd  <- src/godot/cwn/cwn_catalogue.gd
+    "cwn:character",  # godot/core/cwn_character.gd  <- src/godot/cwn/cwn_character.gd
+    "cwn:combat",     # godot/core/cwn_combat_rules.gd <- src/godot/cwn/cwn_combat.gd
     # "strain" retired in #791: src/godot/cwn/cwn_strain.gd was merged into godot/core/cwn_strain.gd
     # and deleted. The guard now fails if the domain reappears, which is the intent.
-    "healing",        # godot/core/cwn_healing.gd    <- src/godot/cwn/cwn_healing.gd
+    # "healing" retired in #791: src/godot/cwn/cwn_healing.gd merged into godot/core/cwn_healing.gd
+    # (rounds_until_death, remove_frailty and first_aid came with it) and deleted.
     # "psionics" retired in #791: src/godot/swn_psionics.gd was merged into godot/core/psionics.gd
     # (its two core-technique statics came with it) and deleted.
-    "progression",    # godot/core/swn_progression.gd <- src/godot/cwn_progression.gd
 }
 
 #: A domain is the file stem with the system prefix and a trailing "_rules" removed, so
 #: `cwn_combat_rules` and `cwn_combat` collide on purpose.
+#: The system prefix is part of the domain: `cwn_progression` (character advancement) and
+#: `swn_progression` (psychic training) are not the same rule, and the guard must not report them as
+#: a duplicate pair. The same prefix on both sides still collides, which is the case it exists for.
 PREFIX = re.compile(r"^(cwn|swn|noopunk|wn)_")
+SYSTEM = re.compile(r"^(cwn|swn|noopunk|wn)")
 SUFFIX = re.compile(r"_(rules|procedures)$")
 
 
 def domain_of(path: Path) -> str:
+    """`<system>:<rule>` — the system prefix stays, because CWN and SWN are different rules."""
     stem = path.stem.lower()
+    system = SYSTEM.match(stem)
+    prefix = system.group(1) if system else "noopunk"
     stem = PREFIX.sub("", stem)
     stem = SUFFIX.sub("", stem)
-    return stem
+    return f"{prefix}:{stem}"
 
 
 def scan() -> dict[str, list[str]]:

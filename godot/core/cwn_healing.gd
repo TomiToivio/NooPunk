@@ -18,6 +18,8 @@ const STABILIZE_BASE_DIFFICULTY := 8
 const NO_MEDKIT_PENALTY := 2
 const STABILIZED_REST_MINUTES := 10
 const FRAIL_BED_REST_WEEK := 7
+## One medkit, one hour, one roll — and only one chance per Frailty.
+const FRAIL_REMOVAL_DIFFICULTY := 10
 
 ## Difficulty 8 plus each full round elapsed, two harder without a medkit.
 static func stabilize_difficulty(rounds_since_downed: int, has_medkit: bool = true) -> Dictionary:
@@ -31,6 +33,34 @@ static func stabilize_difficulty(rounds_since_downed: int, has_medkit: bool = tr
 ## Past this round the patient is dead, whatever the dice say.
 static func mortal_wound_expired(rounds_since_downed: int) -> bool:
 	return rounds_since_downed >= MORTAL_WOUND_ROUNDS
+
+## Rounds left before the sixth round after downing has passed. Zero means the clock ran out.
+static func rounds_until_death(downed_round: int, current_round: int) -> int:
+	if current_round < downed_round:
+		return -1
+	return maxi(0, MORTAL_WOUND_ROUNDS - (current_round - downed_round))
+
+## The single attempt to shed Frailty: one medkit, one hour, one check.
+static func remove_frailty(skill_total: int, difficulty: int = FRAIL_REMOVAL_DIFFICULTY,
+		already_attempted: bool = false) -> Dictionary:
+	if already_attempted:
+		return {"ok": false, "reason": "frailty_removal_can_only_be_attempted_once"}
+	return {"ok": true, "removed": skill_total >= difficulty, "difficulty": difficulty}
+
+## Minutes of care: 1d6 plus Heal rank, or 1d6-1 with no Heal skill at all. Each application costs
+## one System Strain, and a body at its maximum gains nothing — the intervention is too much for it.
+static func first_aid(die_roll: int, heal_skill: int = 0, has_medkit: bool = true,
+		strain = null) -> Dictionary:
+	if not has_medkit:
+		return {"ok": false, "reason": "first_aid_needs_a_medkit"}
+	if die_roll < 1 or heal_skill < 0:
+		return {"ok": false, "reason": "invalid_roll_or_skill"}
+	var healed := maxi(0, die_roll + heal_skill if heal_skill > 0 else die_roll - 1)
+	if strain != null and not strain.can_absorb(1.0):
+		return {"ok": false, "reason": "system_strain", "healed": 0, "strain_added": 0}
+	if strain != null:
+		strain.absorb(1.0)
+	return {"ok": true, "healed": healed, "strain_added": 1 if strain != null else 0}
 
 ## A stabilized patient: one hit point, Frail, and no longer on the clock.
 static func stabilize(patient: Dictionary) -> Dictionary:
