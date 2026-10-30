@@ -5,7 +5,7 @@
   "issue": 232,
   "source": "RULEBOOK.md",
   "$only_edit": "The navigation block linking this index. Never the body.",
-  "source_sha256": "94bd0b2ebd20f593dcd9df6095f853c632e6b700aa35a43cd8df428a5539266b",
+  "source_sha256": "0d663aca80f3395503eb0cab2eaa871b5ff07f11a7ecee77c5c36f23df58d0e1",
   "appendix_marker": "# Extended canon and reference material",
   "section_count": 63,
   "parts": {
@@ -31,8 +31,8 @@
           "kind": "core",
           "number": 3,
           "heading": "## 3. Stats",
-          "body_sha256": "17fa37ec03e16f0a1e3e5fb3bf3d5de4281171785b31f3b382780dc088fb4758",
-          "body_lines": 30
+          "body_sha256": "9ea72bf08fb5ad5422389d33ebc096817498e5703a1303905944e36f49ecfd1d",
+          "body_lines": 158
         },
         {
           "kind": "core",

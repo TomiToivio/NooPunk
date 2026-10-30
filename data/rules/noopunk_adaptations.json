@@ -1,16 +1,72 @@
 {
-  "_status": "none_approved",
-  "_note": "Home for approved NoöPunk departures from the CWN/SWN baseline (#814). Empty until Tomi approves a draft. Numeric values live here once and are read by Godot; RULEBOOK.md quotes the same numbers. No entry may be added by an agent without a linked draft and a decision.",
-  "_schema": {
-    "id": "stable snake_case identifier",
-    "title": "short name",
-    "status": "approved | open_question",
-    "draft": "link to Tomi's draft (child issue or commit)",
-    "tabletop": "RULEBOOK.md section id",
-    "godot": ["data/rules file", "godot/core procedure", "test id"],
-    "baseline": "CWN/SWN rule it departs from, with SRD section URL",
-    "values": "the numbers the rule uses",
-    "differences": "deliberate tabletop ↔ Godot differences"
-  },
-  "adaptations": []
+ "_status": "adaptations_approved",
+ "_note": "Home for approved NoöPunk departures from the CWN/SWN baseline (#814). Empty until Tomi approves a draft. Numeric values live here once and are read by Godot; RULEBOOK.md quotes the same numbers. No entry may be added by an agent without a linked draft and a decision.",
+ "_schema": {
+  "id": "stable snake_case identifier",
+  "title": "short name",
+  "status": "approved | open_question",
+  "draft": "link to Tomi's draft (child issue or commit)",
+  "tabletop": "RULEBOOK.md section id",
+  "godot": [
+   "data/rules file",
+   "godot/core procedure",
+   "test id"
+  ],
+  "baseline": "CWN/SWN rule it departs from, with SRD section URL",
+  "values": "the numbers the rule uses",
+  "differences": "deliberate tabletop ↔ Godot differences"
+ },
+ "adaptations": [
+  {
+   "id": "tag_attributes_seven",
+   "title": "Seven tag-based attributes, skill tags and status tags",
+   "status": "approved",
+   "draft": "https://github.com/TomiToivio/NooPunk/issues/821",
+   "tabletop": "RULEBOOK.md 3.3",
+   "godot": [
+    "data/rules/noopunk_adaptations.json",
+    "godot/core/cwn_tags.gd",
+    "godot/tests/test_tags.gd"
+   ],
+   "baseline": "CWN six attributes (STR/DEX/CON/INT/WIS/CHA) at 3-18; skills Punch/Stab/Shoot/Fix/Heal/Program/Exert — https://cwn.quadrifons.com/character-creation/attributes/",
+   "values": {
+    "attributes": [
+     "Fitness",
+     "Cognition",
+     "Awareness",
+     "Agency",
+     "Reflexes",
+     "Cyber",
+     "Empathy"
+    ],
+    "bands_3d6": {
+     "3": -2,
+     "4-7": -1,
+     "8-13": 0,
+     "14-17": 1,
+     "18": 2
+    },
+    "human_range": [
+     -2,
+     2
+    ],
+    "empathy_inhuman": -3,
+    "skills_range": [
+     0,
+     4
+    ],
+    "untrained_modifier": -1,
+    "skill_aliases": {
+     "Punch": "Unarmed",
+     "Stab": "Melee",
+     "Shoot": "Firearms",
+     "Fix": "Hardware",
+     "Heal": "Wetware",
+     "Program": "Software",
+     "Exert": "Strength"
+    }
+   },
+   "differences": "None between tabletop and Godot for the bands, tag display, skill levels or the Empathy boundary; both read the same numbers. The status catalogue is a mechanism only in both."
+  }
+ ]
 }

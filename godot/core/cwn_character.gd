@@ -307,3 +307,73 @@ static func romppainen_companion(level: int = 6) -> Dictionary:
 		"controllable": true,
 		"inventory": [],
 	}
+
+## --- #821: NoöPunk tag-based attributes and skills ---------------------------------------------
+
+## Seven attributes, each generated from its own 3d6 roll, stored and displayed as a modifier only.
+## The raw score is deliberately not kept: the draft says the sheet shows the modifier.
+static func generate_noopunk_attributes(rolls: Array) -> Dictionary:
+	if rolls.size() != CwnTags.ATTRIBUTES.size():
+		return {"ok": false, "reason": "seven_attribute_rolls_required"}
+	var tags: Array = CwnTags.attributes_from_rolls(rolls)
+	if tags.is_empty():
+		return {"ok": false, "reason": "seven_attribute_rolls_required"}
+	var by_name := {}
+	for tag in tags:
+		by_name[str(tag["name"])] = int(tag["value"])
+	return {
+		"ok": true,
+		"tags": tags,
+		"values": by_name,
+		"eligible_as_pc": CwnTags.is_player_character_eligible(tags),
+		"transhuman": by_name.values().any(func(v): return int(v) > CwnTags.ATTRIBUTE_MAX_HUMAN),
+	}
+
+## A skill tag at a legal level (0..4). Returns {} when the level or the name is not legal.
+static func skill_tag(skill: String, level: int) -> Dictionary:
+	if not (skill in CwnTags.SKILLS):
+		return {}
+	if level < CwnTags.SKILL_MIN or level > CwnTags.SKILL_MAX:
+		return {}
+	return CwnTags.make(CwnTags.TYPE_SKILL, skill, level)
+
+## The attribute a skill check uses. Most skills have a fixed default; Talk is contextual by design
+## and Know/Work are awaiting the author's decision, so those return "" and the caller must choose
+## rather than being handed an invented default.
+static func skill_attribute(skill: String, approach: String = "") -> String:
+	if skill == "Talk":
+		match approach.to_lower():
+			"rapport", "empathy", "compassion", "understanding":
+				return "Empathy"
+			"authority", "conviction", "bluff", "leadership", "force":
+				return "Agency"
+			_:
+				return ""
+	return str(CwnTags.SKILLS.get(skill, ""))
+
+## Untrained resolution: either attempted at -1, or impossible without the skill. The draft leaves
+## which tasks are prohibited undecided, so this takes the answer as an argument and never guesses.
+static func untrained_outcome(prohibited_without_training: bool = false) -> Dictionary:
+	if prohibited_without_training:
+		return {"allowed": false, "modifier": 0, "reason": "requires_training"}
+	return {"allowed": true, "modifier": CwnTags.UNTRAINED_MODIFIER, "reason": ""}
+
+## Convert a legacy CWN character record into NoöPunk tags.
+##
+## The crosswalk is many-to-one and one-to-many, so this deliberately does **not** copy a value into
+## every new attribute: doing so would multiply a +1 Wisdom into three +1s. It reports the mapping and
+## leaves the assignment to a decision, which is what the draft asks for.
+static func crosswalk_legacy_attributes(attributes: Dictionary) -> Dictionary:
+	var proposed := {}
+	for old_name in attributes:
+		var new_names: Array = CwnTags.ATTRIBUTE_CROSSWALK.get(str(old_name), [])
+		for new_name in new_names:
+			if not proposed.has(new_name):
+				proposed[new_name] = []
+			proposed[new_name].append({"from": str(old_name), "value": int(attributes[old_name])})
+	var ambiguous: Array = []
+	for new_name in proposed.keys():
+		if proposed[new_name].size() > 1:
+			ambiguous.append(new_name)
+	return {"ok": true, "proposed": proposed, "ambiguous": ambiguous,
+		"needs_author_decision": ambiguous}
