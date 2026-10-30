@@ -1,3 +1,8 @@
+> **ARCHIVED (issue #848).** This tree is the blank-rulebook / seven-attribute restart (#827, #835).
+> It is preserved for history and must not be extended. The canonical rules are vanilla CWN/SWN and
+> the canonical game is the repository-root `project.godot`; see `docs/design/ISSUE_848_BASELINE.md`
+> and the CURRENT DIRECTIVE at the top of `AGENTS.md`.
+
 # NoöPunk Step 2: UNSA rookie
 
 Canonical tabletop rules: `noopunk/rulebook/RULEBOOK.md`  

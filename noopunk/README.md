@@ -1,3 +1,8 @@
+> **ARCHIVED (issue #848).** This tree is the blank-rulebook / seven-attribute restart (#827, #835).
+> It is preserved for history and must not be extended. The canonical rules are vanilla CWN/SWN and
+> the canonical game is the repository-root `project.godot`; see `docs/design/ISSUE_848_BASELINE.md`
+> and the CURRENT DIRECTIVE at the top of `AGENTS.md`.
+
 # NoöPunk — canonical restart (issue #827)
 
 **This directory is the canonical NoöPunk project from now on.** Everything here is new and intentionally

@@ -1,3 +1,24 @@
+# CURRENT DIRECTIVE — issue #848 (2026-10-30)
+
+**Read this first. It supersedes every contradictory instruction below, including the #827 restart
+section.**
+
+- **Rules:** plain vanilla **Cities Without Number** primary, plain vanilla **Stars Without Number
+  Revised** for psionics. Keep published attributes (STR/DEX/CON/INT/WIS/CHA), classes, skills, 2d6
+  checks, d20 attacks/saves, combat, equipment, cyberware, hacking, progression and PSI as written.
+  No seven-attribute Fitness/Reflexes/Cognition/Cyber/Awareness/Agency/Empathy conversion, no custom
+  difficulty ladder, no reskin or narrativist replacement.
+- **One Godot RPG:** the repository-root **`project.godot`**, startup **`scenes/main.tscn`**, rules
+  kernel **`godot/core/`**, data contracts **`data/rules/`**, tests **`godot/tests/run_tests.gd`**.
+  2D top-down, turn-based tactical play, source-faithful hacking and PSI. No second `project.godot`,
+  no parallel prototype, no action-RPG redesign.
+- **Baseline commit: `36092a5`.** Work from it, rebase on `main`, and name the canonical module you
+  extend in the PR.
+- **Archived, not canonical:** `noopunk/` (blank rulebook and seven-attribute sheet, #827/#835),
+  `restart/` (history only), and the #821 seven-attribute tags (reference until reauthorized).
+  Preserve their files and history; do not extend them.
+- **Full record and handoff block:** `docs/design/ISSUE_848_BASELINE.md`. Keep **#848** open.
+
 # Godot single-project directive (2026-10-30; applies to every coding agent)
 
 **ONE GODOT PROJECT:** the repository-root `project.godot` is the only Godot project. Do not create another `project.godot`, standalone demo, competing startup screen, or another save/state/rules engine for the same gameplay. All Godot branches and agents must target this project and its existing `scenes/main.tscn` launch flow. This directive governs the Godot implementation of the RPG; it does not merge the separately authorized Python `strategy_game/` crossover.
@@ -425,6 +446,11 @@ Tomi is the authorial source of truth. When a draft arrives, read
 `godot/core/` is the canonical owner of CWN/SWN game-rule implementations. `src/godot/` remains a compatibility tree only. Port unique capabilities and preserve consumers and tests before retiring duplicates. The two catalogue APIs differ (instance ID lookup vs static named catalogue lookup), so do not mechanically repoint either caller. See `docs/godot/CANONICAL_GODOT_TREE.md` and `docs/godot/UNIFIED_IMPLEMENTATION.md`.
 
 
-## NEW AUTHORITATIVE RESTART: issue #827 (supersedes #814 for new work)
+## ARCHIVED — the #827 blank-rulebook restart (superseded by #848)
 
-For all **new NoöPunk RPG development**, the canonical artifacts are `noopunk/rulebook/RULEBOOK.md` and the standalone minimal Godot project `noopunk/game/project.godot`. These two paths supersede the earlier root-project-only and #814 rules **for the restart**, while legacy files elsewhere remain preserved reference material. Do not extend older Godot or rulebook code for new tasks, and do not spawn other alternatives. Tomi defines one small feature at a time; update both of these SAME canonical artifacts together and verify their parity. Do not automatically import legacy CWN/SWN rules, seven attributes, lore, or frameworks. First milestone: blank rulebook and top-down player movement only. Keep meta-issue #827 open; close only implementation child issues. See `noopunk/README.md`.
+The `noopunk/` tree (blank rulebook, seven-attribute sheet, one-room starter) is **archive only** as of
+issue #848. It is preserved for history and must not be extended. The canonical project is the
+repository-root `project.godot` with vanilla CWN/SWN rules; see the CURRENT DIRECTIVE at the top of this
+file and `docs/design/ISSUE_848_BASELINE.md`.
+
+Do not read the earlier #827 instructions below as current: they are retained in git history, not here.

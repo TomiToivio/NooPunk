@@ -1,55 +1,55 @@
-# START HERE — the NoöPunk restart (issue #827)
+# START HERE — NoöPunk (issue #848)
 
-The tabletop rulebook and the Godot game are being restarted **together**, from the smallest
-foundation that can be played. Everything that came before stays in the repository, untouched, as
-legacy material — it is not the current game, and new work must not drift back into it.
+**The vanilla CWN/SWN baseline and the one Godot RPG.** Issue #848 supersedes the blank-rulebook
+restart (#827, #835): the tabletop rules are published Cities Without Number, the game is the
+repository-root Godot project, and no second prototype is current.
 
-## The two canonical artifacts
+## Canonical artifacts
 
-| Artifact | Canonical path | Status |
-| --- | --- | --- |
-| Tabletop rulebook | [`noopunk/rulebook/RULEBOOK.md`](noopunk/rulebook/RULEBOOK.md) | **blank by design** |
-| Godot game | [`noopunk/game/`](noopunk/game/) (`noopunk/game/project.godot`) | one room, one player, movement |
-| Rules of the process | this file + issue **#827** | meta-issue, stays open |
+| What | Where |
+| --- | --- |
+| Tabletop authority | CWN SRD <https://cwn.quadrifons.com/> (primary); SWN Revised SRD for psionics |
+| Rules record in-repo | [`docs/rules/`](docs/rules/) — coverage and procedure notes; [`data/rules/`](data/rules/) — machine-readable |
+| Godot project | [`project.godot`](project.godot) (repository root) |
+| Startup scene | [`scenes/main.tscn`](scenes/main.tscn) → `godot/ui/main_menu.gd` |
+| Rules kernel | [`godot/core/`](godot/core/) (canonical owner; `src/godot/` is legacy) |
+| Godot tests CI runs | [`godot/tests/run_tests.gd`](godot/tests/run_tests.gd) |
+| Decision record | [`docs/design/ISSUE_848_BASELINE.md`](docs/design/ISSUE_848_BASELINE.md) |
 
-**Legacy, frozen — do not add to it:** the root `RULEBOOK.md`, `rulebook/`, the root
-`project.godot`, `godot/`, `src/godot/`, `src/rules/`, `data/rules/`, `strategy_game/`. They keep
-working and keep their history. They are not where the new NoöPunk is being designed.
+**Baseline commit:** `36092a5`. Rebase on `main`; name the canonical module you extend in the PR.
+
+**Archived, do not extend:** `noopunk/` (blank rulebook and seven-attribute sheet), `restart/`
+(history only), the #821 seven-attribute tags until Tomi reauthorizes them. Their files and history
+stay; they are not the current design.
 
 ## Run the game
 
 ```sh
-godot --path noopunk/game
+godot --path .            # from the repository root
 ```
 
-Controls: **WASD** or **arrow keys** to move. **Esc** quits. The window opens directly into the
-playable room.
+The window opens at `scenes/main.tscn` (main menu). Existing play routes: the ward/campaign scenes
+reachable from that menu. The top-down gameplay scene is the next implementation slice, not yet on
+`main` — see the decision record.
 
-Headless sanity check (the one CI can run):
+Headless checks CI runs:
 
 ```sh
-godot --headless --path noopunk/game --script res://tests/smoke.gd
+godot --headless --path . --import
+godot --headless --path . --script res://godot/tests/run_tests.gd
 ```
 
-```
-PASS: noopunk starter — scene loads, player is centred and movable, bounds hold
-```
+Current result at the baseline: **760 checks, 0 failed.**
 
-## How the next piece of work arrives
+## Rules boundaries
 
-Tomi supplies **one** rule, interaction or scenario fragment. Then:
+CWN governs attributes, creation, classes, skills, checks, saves, combat, equipment, cyberware,
+hacking and progression. SWN Revised governs psionics whole (Psychic class, disciplines, Effort).
+Do not blend the two inside one procedure, and do not reintroduce custom mechanics as if they were
+published rules.
 
-1. It is written into `noopunk/rulebook/RULEBOOK.md`, in its section.
-2. The same decision is implemented in `noopunk/game/` so it can be played.
-3. Both are checked together — the rulebook says what the game does; the game does what the
-   rulebook says.
-4. Only the child issue closes. **#827 stays open.**
+## How work arrives
 
-A child issue must name **both** artifacts it changes. If a proposed change touches only one side,
-the issue says why: a presentation-only change is legitimate; a rule that exists only in code is not.
-
-## What does not exist yet, on purpose
-
-No attributes, no skills, no dice, no combat, no injury, no inventory, no dialogue system, no NPCs,
-no quests, no factions, no psionics, no hacking, no economy, no LLM integration. Each arrives when
-the author writes it, not before. **An empty section in the rulebook is the current design state.**
+One small piece from Tomi at a time, implemented in `godot/core/` and the root project, with the
+tabletop procedure it follows named in the PR. If it departs from published CWN/SWN, it is a tracked
+deviation, not silent design. **#848 stays open** until alignment and migration are verified.
