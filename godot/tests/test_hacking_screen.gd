@@ -100,4 +100,8 @@ func run() -> Array:
 	rows.append(_eq("a missing mission file is refused",
 		from_mission.open_mission("res://godot/scenarios/nope/mission.json"), false))
 
+	# Node subclasses created outside the scene tree are not automatically released.
+	from_mission.free()
+	no_program.free()
+	screen.free()
 	return rows
