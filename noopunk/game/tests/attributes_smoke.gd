@@ -7,6 +7,9 @@ func check(ok: bool, description: String) -> void:
 		failures.append(description)
 
 func _initialize() -> void:
+	_run.call_deferred()
+
+func _run() -> void:
 	var totals := [3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 18]
 	var expected := [-3, -3, -2, -2, -1, -1, 0, 0, 1, 1, 2, 2, 3, 3]
 	for i in range(totals.size()):
