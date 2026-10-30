@@ -19,12 +19,16 @@ var hacking: NoopunkHacking
 var combat: NoopunkCombat = null
 var hp: int = 0
 var log: Array = []
+## Who the slice's player-side actor is (#809). The scenario names it: a created field agent now,
+## Romppainen in the legacy slice. Nothing downstream may assume the id.
+var pc_id: String = "pc"
 
 func _init(rules_adapter: RulesAdapter, data_dir: String = DATA_DIR) -> void:
 	adapter = rules_adapter
 	flow = NoopunkSceneFlow.new()
 	character = _load_json(data_dir + "character.json")
 	mission = _load_json(data_dir + "mission.json")
+	pc_id = String(character.get("id", "pc"))
 	hp = int(character.get("hp_max", 1))
 	log.append({"event": "new_session"})
 
@@ -106,7 +110,7 @@ func start_encounter() -> bool:
 		})
 	var attack: Dictionary = character.get("attack", {})
 	combat.add_actor({
-		"id": "romppainen", "side": "pc", "pos": Vector2i(1, 3),
+		"id": pc_id, "side": "pc", "pos": Vector2i(1, 3),
 		"hp": hp, "ac": int(character.get("ac", 10)),
 		"dex": int(character.get("attributes", {}).get("DEX", 10)),
 		"attack_attribute": int(character.get("attributes", {}).get(String(attack.get("attribute", "DEX")), 10)),
@@ -132,9 +136,9 @@ func combat_attack(actor_id: String, target_id: String) -> Dictionary:
 	if combat == null:
 		return {"ok": false, "reason": "no_encounter"}
 	var result := combat.attack(actor_id, target_id)
-	if actor_id == "romppainen":
+	if actor_id == pc_id:
 		pass
-	elif target_id == "romppainen" and bool(result.get("hit", false)):
+	elif target_id == pc_id and bool(result.get("hit", false)):
 		hp = max(0, hp - int(result.get("damage", 0)))
 	log.append({"event": "combat_attack", "actor": actor_id, "target": target_id,
 		"hit": result.get("hit", false)})
