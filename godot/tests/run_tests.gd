@@ -65,6 +65,9 @@ func _initialize() -> void:
 				failures += 1
 			print("  %s  %s%s" % ["PASS" if ok else "FAIL", String(row[0]),
 				"" if ok else "  — " + String(row[2])])
+		# Release suite references before engine shutdown.
+		suite = null
+		rows.clear()
 	print("%d checks, %d failed" % [total, failures])
 
 	# Free what the suites attached to the tree. Without this, every scene a test instantiated is still

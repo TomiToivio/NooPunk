@@ -19,4 +19,5 @@ func run() -> Array:
 	rows.append(_eq("vehicle tie remains in chase", vehicle["any_caught"], true))
 	var dropped: Dictionary = screen.resolve_values(true, 10, 9)
 	rows.append(_eq("vehicle slower pursuer drops out", dropped["any_caught"], false))
+	screen.free()
 	return rows

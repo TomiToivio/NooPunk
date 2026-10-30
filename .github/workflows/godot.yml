@@ -73,7 +73,19 @@ jobs:
         run: godot --headless --path . --import
 
       - name: Rules, state, dialogue and scenario-data suites
-        run: godot --headless --path . --script res://godot/tests/run_tests.gd
+        shell: bash
+        run: |
+          set -o pipefail
+          godot --headless --path . --script res://godot/tests/run_tests.gd 2>&1 | tee /tmp/noopunk-slice.log
+          # The three negative-path messages below are expected test diagnostics.
+          grep -E '^(SCRIPT ERROR:|ERROR:|WARNING:.*(leaked|still in use))' /tmp/noopunk-slice.log \
+            | grep -Ev '^ERROR: (NoopunkSceneFlow: unusable save data|DialogueRunner: no choice 99|InvestigationAdapter: no scene no_such_scene)' \
+            > /tmp/noopunk-unexpected.log || true
+          if [ -s /tmp/noopunk-unexpected.log ]; then
+            echo 'Unexpected Godot diagnostics:' >&2
+            cat /tmp/noopunk-unexpected.log >&2
+            exit 1
+          fi
 
       - name: Headless playthrough of the assembled level
         run: godot --headless --path . res://godot/tests/playthrough.tscn --quit-after 300
