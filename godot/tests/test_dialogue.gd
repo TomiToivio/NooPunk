@@ -7,7 +7,7 @@ const RunnerScript := preload("res://godot/narrative/dialogue.gd")
 
 func run() -> Array:
 	var rows: Array = []
-	var state = GameStateScript.new()
+	var state = _state()
 	state.new_case(31)
 	var runner = RunnerScript.new(state.dialogue_nodes, state)
 
@@ -22,7 +22,7 @@ func run() -> Array:
 	rows.append(_eq("that node offers no further choices", runner.choices().size(), 0))
 
 	# The check path is deterministic for a fixed seed, and success records evidence.
-	var seeded = GameStateScript.new()
+	var seeded = _state()
 	seeded.new_case(31)
 	var seeded_runner = RunnerScript.new(seeded.dialogue_nodes, seeded)
 	seeded_runner.start("doctor_1")
@@ -35,7 +35,7 @@ func run() -> Array:
 		rows.append(_eq("success added E1", seeded.has_evidence("E1"), true))
 
 	# The patient will not talk about the place until the account has been taken down.
-	var patient = GameStateScript.new()
+	var patient = _state()
 	patient.new_case(31)
 	var patient_runner = RunnerScript.new(patient.dialogue_nodes, patient)
 	patient_runner.start("patient_1")
@@ -50,7 +50,7 @@ func run() -> Array:
 
 	# The psionic path (#652): the package-and-rank gate runs *before* the dice, so an unauthorized
 	# character takes the failure branch without a roll and without spending Effort.
-	var psychic = GameStateScript.new()
+	var psychic = _state()
 	psychic.new_case(31)
 	var psychic_runner = RunnerScript.new(psychic.dialogue_nodes, psychic)
 	psychic_runner.start("patient_1")
@@ -62,7 +62,7 @@ func run() -> Array:
 	rows.append(_eq("a trained reading reaches the psi node or the plain one",
 		["patient_psi", "patient_plain"].has(String(psi_node.get("id", ""))), true))
 
-	var unauthorized = GameStateScript.new()
+	var unauthorized = _state()
 	unauthorized.new_case(31)
 	unauthorized.psionics = NoopunkPsionics.new(10, 10, {}, [])
 	var unauthorized_runner = RunnerScript.new(unauthorized.dialogue_nodes, unauthorized)
@@ -74,7 +74,26 @@ func run() -> Array:
 	rows.append(_eq("and the journal says why",
 		unauthorized.journal.any(func(line): return String(line).contains("not available")), true))
 
+	_free_owned()
 	return rows
+
+# GameState extends Node, so every instance must be freed by hand or the headless run exits with
+# leaked ObjectDB instances (#883). Track them here and release them before `run()` returns.
+var _owned: Array[Node] = []
+
+
+func _state() -> Node:
+	var instance: Node = GameStateScript.new()
+	_owned.append(instance)
+	return instance
+
+
+func _free_owned() -> void:
+	for instance in _owned:
+		if is_instance_valid(instance):
+			instance.free()
+	_owned.clear()
+
 
 func _eq(label: String, actual: Variant, expected: Variant) -> Array:
 	return [label, actual == expected, "expected %s, got %s" % [str(expected), str(actual)]]

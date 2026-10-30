@@ -112,3 +112,5 @@ jobs:
 
       - name: Scene integration playthrough (movement, props, dialogue, endings)
         run: godot --headless --path . --script res://godot/tests/integration_playthrough.gd
+      - name: Shutdown noise gate (leaks, script errors, expected diagnostics)
+        run: GODOT=godot python3 tools/godot_verify.py
