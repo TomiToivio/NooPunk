@@ -89,9 +89,7 @@ func to_dict() -> Dictionary:
 	}
 
 static func from_dict(data: Dictionary) -> CWNStrain:
-	var result := CWNStrain.new(
+	return CWNStrain.new(
 		int(data.get("constitution", 10)),
 		float(data.get("temporary", 0.0)),
 		float(data.get("permanent", 0.0)))
-	result.unconscious_hours = float(data.get("unconscious_hours", 0.0))
-	return result

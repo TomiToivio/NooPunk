@@ -71,3 +71,50 @@ approved baseline since the 2026-10-26 ruling is the Without Number kernel, whic
 - It does not decide the art or gameplay direction.
 - It does not claim the trees are identical: they are not, and establishing exactly how they differ is the
   first step of the retirement above, not something to assume.
+
+## Duplicate rule domains — measured 2026-10-30
+
+Beyond the four playable entry points, the *rules* are implemented twice. Both are substantial and
+both pass their own suites, which is why the split survived review: nothing fails, the repository
+just answers each rules question twice.
+
+| Domain | `godot/core/` (canonical) | `src/godot/` (compatibility) |
+| --- | --- | --- |
+| Weapon / armour catalogue | `cwn_catalogue.gd` | `cwn/cwn_catalogue.gd` |
+| Character creation | `cwn_character.gd` | `cwn/cwn_character.gd` |
+| Attack, Shock, trauma | `cwn_combat_rules.gd`, `combat.gd` | `cwn/cwn_combat.gd` |
+| System Strain | `cwn_strain.gd` | `cwn/cwn_strain.gd` |
+| Healing | `cwn_healing.gd` | `cwn/cwn_healing.gd` |
+| Encumbrance | `cwn_encumbrance.gd` | `cwn/cwn_encumbrance.gd` (branch) |
+| Progression | `swn_progression.gd` | `cwn_progression.gd` |
+| Psionics | `psionics.gd`, `psychic_effort.gd` | `swn_psionics.gd` |
+
+### Parity evidence
+
+`godot/tests/test_rules_parity.gd` runs both implementations over the same matrix — Strain ceilings
+and forced overflow at four Constitution scores, Shock across four target ACs, the trauma threshold at
+six rolls, the hit floor, stabilisation difficulty with and without a medkit, and natural healing for
+the frail and the hale — and reports any disagreement as a failure.
+
+The matrix currently passes: **512 checks, 0 failed**. One difference is a *contract* difference
+rather than a rule difference, recorded in the suite: the canonical kernel takes `hit` and encodes
+"Shock only applies on a miss" inside the function, while the compatibility module is miss-only by
+contract and callers invoke it from the miss branch. Same rule, different signature.
+
+### The guard
+
+`python3.11 tools/check_godot_rule_duplicates.py` fails when a rule domain is implemented in more than
+one tree, allowing today's list so migration can proceed in steps. The allowlist may only shrink.
+
+### Deletion order
+
+Parity first, then deletion — never the reverse:
+
+1. Strain and healing: the matrix already proves equivalence; port the fractional/forced-overflow
+   behaviour into `godot/core/` and delete the `src/godot/cwn/` copies.
+2. Catalogue: keep `godot/core/`'s combat helpers, add the SRD-extracted loader from
+   `src/godot/cwn/`, then delete the duplicate.
+3. Character: keep `godot/core/`'s `hit_points`/`saves`, add the creation rules, then delete.
+4. Combat: merge the Shock floor and trauma multiplication into `cwn_combat_rules.gd`.
+5. Progression, then psionics.
+6. Fold `tests/godot/` into `godot/tests/run_tests.gd` so one command runs every gate.

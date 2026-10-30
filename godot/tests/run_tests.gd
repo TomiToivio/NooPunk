@@ -12,6 +12,7 @@ const SUITES := [
 	"res://godot/tests/test_cwn_engine.gd",
 	"res://godot/tests/test_cwn_injury.gd",
 	"res://godot/tests/test_cwn_strain_parity.gd",
+	"res://godot/tests/test_rules_parity.gd",
 	"res://godot/tests/test_rules_adapter.gd",
 	"res://godot/tests/test_combat.gd",
 	"res://godot/tests/test_hacking.gd",
