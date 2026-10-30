@@ -2,38 +2,48 @@
 ##
 ## The procedure is the source's: a character needs **access** to a node, must reach it through
 ## **connectivity** from an already-connected node, needs a **program** that provides the verb,
-## pays **CPU**, and every action risks **trace** that eventually trips an alarm.
+## pays **CPU**, and failed checks accumulate against network Security. The SRD's clock is not a
+## trace meter: **every two failed checks count as one Alert the Network action**
+## (hacking/hacking-mechanics/#hacking-a-device-or-server), and that action must be taken twice
+## before the network is alerted (hacking/cyberspace-actions/#alert-the-network). This file
+## implements that clock and refuses the invented trace die the first slice shipped.
 ##
-## What this file does NOT do is assert the numbers. CPU costs, trace increments and security
-## targets are loaded from data (`godot/scenarios/mvp_romppainen/hacking.json`) and marked there
-## as slice calibration pending a source-by-source check against the CWN SRD. Hard-coding them
-## here would turn a calibration into a claimed rule.
+## What this file does NOT do is assert the catalogue: Verb costs, CPU prices and Security values
+## are loaded from data (`godot/scenarios/mvp_romppainen/hacking.json`) and remain slice
+## calibration pending a source-by-source check against the CWN SRD.
 ##
 ## Deliberately out of scope for v0: cyberdeck hardware modifiers, program stacking, ICE/deadly
 ## countermeasures, and multiple simultaneous intruders.
 extends RefCounted
 class_name NoopunkHacking
 
-var adapter: RulesAdapter
+var adapter: Object
 var nodes: Dictionary = {}
 var deck: Dictionary = {}
 var costs: Dictionary = {}
 var connected: Array = []
-var trace := 0
+var failures := 0
+var alert_actions := 0
 var alarm := false
 var log: Array = []
 var verbs_done: Dictionary = {}
 
+#: SRD: every two failed checks against network Security count as one Alert action.
+const FAILURES_PER_ALERT_ACTION := 2
+#: SRD: the Alert the Network action must be taken twice before the network is alerted.
+const ALERT_ACTIONS_TO_TRIGGER := 2
+#: SRD: wireless link -2 on every cyberspace check; a VR crown adds a further -1.
+const WIRELESS_PENALTY := -2
+const VR_CROWN_PENALTY := -1
+
 const DEFAULT_COSTS := {
 	"connect_cpu": 1,
 	"verb_cpu": 1,
-	"trace_per_action": 1,
-	"trace_on_failure": 2,
-	"alarm_threshold": 5,
+	"access_per_verb": 1,
 	"program_skill": 1,
 }
 
-func _init(rules_adapter: RulesAdapter, network: Dictionary, deck_spec: Dictionary = {}) -> void:
+func _init(rules_adapter: Object, network: Dictionary, deck_spec: Dictionary = {}) -> void:
 	adapter = rules_adapter
 	nodes = network.get("nodes", {})
 	costs = DEFAULT_COSTS.duplicate()
@@ -46,6 +56,8 @@ func _init(rules_adapter: RulesAdapter, network: Dictionary, deck_spec: Dictiona
 		"programs": deck_spec.get("programs", []),
 		"int": int(deck_spec.get("int", 10)),
 		"program_rank": int(deck_spec.get("program_rank", costs["program_skill"])),
+		"wireless": bool(deck_spec.get("wireless", false)),
+		"vr_crown": bool(deck_spec.get("vr_crown", false)),
 	}
 	var entry := String(network.get("entry", ""))
 	if entry.is_empty() and not nodes.is_empty():
@@ -81,11 +93,13 @@ func connect_node(node_id: String) -> Dictionary:
 	if int(deck["cpu"]) < cpu_cost:
 		return {"ok": false, "reason": "no_cpu"}
 	deck["cpu"] = int(deck["cpu"]) - cpu_cost
+	if needed > 0:
+		# SRD: crossing a barrier is what Access is spent on; Jack In itself is a Move action.
+		deck["access"] = int(deck["access"]) - needed
 	connected.append(node_id)
-	_add_trace(int(costs["trace_per_action"]))
-	var entry := {"action": "connect", "node": node_id, "cpu": deck["cpu"], "trace": trace}
+	var entry := {"action": "connect", "node": node_id, "cpu": deck["cpu"], "access": deck["access"]}
 	log.append(entry)
-	return {"ok": true, "cpu": deck["cpu"], "trace": trace}
+	return {"ok": true, "cpu": deck["cpu"], "access": deck["access"]}
 
 ## Perform a verb (query/control/…) against a connected node.
 func act(node_id: String, verb: String) -> Dictionary:
@@ -103,26 +117,36 @@ func act(node_id: String, verb: String) -> Dictionary:
 	var cpu_cost := int(costs["verb_cpu"])
 	if int(deck["cpu"]) < cpu_cost:
 		return {"ok": false, "reason": "no_cpu"}
+	var access_cost := int(costs["access_per_verb"])
+	if int(deck["access"]) < access_cost:
+		return {"ok": false, "reason": "insufficient_access", "needed": access_cost}
 	deck["cpu"] = int(deck["cpu"]) - cpu_cost
-	var check := adapter.skill_check(
-		int(deck["int"]), int(deck["program_rank"]), int(node.get("security", 8))
+	deck["access"] = int(deck["access"]) - access_cost
+	var penalty := 0
+	if bool(deck["wireless"]):
+		penalty += WIRELESS_PENALTY
+	if bool(deck["vr_crown"]):
+		penalty += VR_CROWN_PENALTY
+	var check: Dictionary = adapter.skill_check(
+		int(deck["int"]), int(deck["program_rank"]), int(node.get("security", 8)), penalty
 	)
 	var success := bool(check.get("success", false))
-	_add_trace(int(costs["trace_per_action"]) + (0 if success else int(costs["trace_on_failure"])))
+	if not success:
+		# The SRD's clock: two failed checks are one Alert action; two Alert actions alert the net.
+		failures += 1
+		alert_actions = failures / FAILURES_PER_ALERT_ACTION
+		if alert_actions >= ALERT_ACTIONS_TO_TRIGGER:
+			alarm = true
 	var key := "%s:%s" % [node_id, verb]
 	if success:
 		verbs_done[key] = true
 	var entry := {
 		"action": "verb", "node": node_id, "verb": verb, "check": check,
-		"success": success, "cpu": deck["cpu"], "trace": trace, "alarm": alarm,
+		"success": success, "cpu": deck["cpu"], "access": deck["access"],
+		"failures": failures, "alert_actions": alert_actions, "alarm": alarm,
 	}
 	log.append(entry)
 	return entry
-
-func _add_trace(amount: int) -> void:
-	trace += amount
-	if trace >= int(costs["alarm_threshold"]):
-		alarm = true
 
 func done(node_id: String, verb: String) -> bool:
 	return bool(verbs_done.get("%s:%s" % [node_id, verb], false))
