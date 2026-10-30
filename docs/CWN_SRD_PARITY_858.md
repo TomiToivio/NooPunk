@@ -83,7 +83,7 @@ PR #877 adds the playable node-link hacking screen and its rules-state machine, 
 
 ## Additional node-link UI (PR #878)
 
-A second playable node-link presentation at `godot/ui/hacking_screen.gd` and `scenes/hacking/node_link.tscn` uses the existing `godot/core/hacking.gd` kernel and opens the Romppainen warehouse mission directly from the main menu. `godot/tests/test_hacking_screen.gd` covers this path (20 checks reported on the PR branch). This complements, but does not replace, the `cwn_node_link.gd` implementation documented above. Neither implementation alone establishes complete SRD §4.5 source parity. The 1312-check suite and clean launch reported on PR #878 were run on its branch before this integration, not verified on the merged tree.
+An additional playable node-link presentation at `godot/ui/hacking_screen.gd` and `scenes/hacking/node_link.tscn` uses `godot/core/hacking.gd` and opens the Romppainen warehouse mission from the main menu. `godot/tests/test_hacking_screen.gd` covers this path (20 checks reported on the PR branch). This complements the `cwn_node_link.gd` and MVP H-key interfaces documented above; full SRD §4.5 parity remains unverified. The 1312 checks reported on PR #878 were not rerun on this integration.
 
 ## What the table says plainly
 
