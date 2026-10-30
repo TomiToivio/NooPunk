@@ -68,7 +68,12 @@
         "COMPARISON.md",
         "rulebook/**",
         "rulebook_parts/**",
-        "strategy_game/README.md"
+        "strategy_game/README.md",
+        "ATTRIBUTES.md",
+        "MARS_ELDRICH.md",
+        "PLAYER.md",
+        "ROMPPAINEN.md",
+        "TERMINOLOGY.md"
       ],
       "licence": "author-decision",
       "note": "Original creative rulebook and worldbook prose."
