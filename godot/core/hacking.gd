@@ -17,6 +17,12 @@
 extends RefCounted
 class_name NoopunkHacking
 
+## The rule numbers live in `godot/core/cwn_hacking.gd`, which reads
+## `data/rules/cwn_hacking.json` and is pinned to the Python rules layer by
+## `tests/test_cwn_hacking_contract.py`. This file owns the node graph and the run's bookkeeping; it
+## does not own the ladder, the check arithmetic or the clock's numbers.
+const Rules := preload("res://godot/core/cwn_hacking.gd")
+
 var adapter: Object
 var nodes: Dictionary = {}
 var deck: Dictionary = {}
@@ -49,10 +55,21 @@ func _init(rules_adapter: Object, network: Dictionary, deck_spec: Dictionary = {
 	costs = DEFAULT_COSTS.duplicate()
 	for key in network.get("costs", {}):
 		costs[key] = network.get("costs", {})[key]
+	# The Access pool is `INT modifier + Program rank + the deck's Bonus Access`. An explicit
+	# `access` in the deck spec is the pool handed in by a caller that already computed it (the
+	# fixtures do this); otherwise the source formula computes it, so no scenario can quietly
+	# choose its own pool size.
+	var deck_bonus := int(deck_spec.get("access_bonus", 0))
+	var computed_pool := Rules.access_pool(
+		adapter.attribute_modifier(int(deck_spec.get("int", 10))),
+		int(deck_spec.get("program_rank", costs["program_skill"])),
+		deck_bonus
+	)
 	deck = {
 		"cpu": int(deck_spec.get("cpu", 6)),
 		"cpu_max": int(deck_spec.get("cpu", 6)),
-		"access": int(deck_spec.get("access", 1)),
+		"access": int(deck_spec["access"]) if deck_spec.has("access") else computed_pool,
+		"access_bonus": deck_bonus,
 		"programs": deck_spec.get("programs", []),
 		"int": int(deck_spec.get("int", 10)),
 		"program_rank": int(deck_spec.get("program_rank", costs["program_skill"])),
@@ -122,13 +139,29 @@ func act(node_id: String, verb: String) -> Dictionary:
 		return {"ok": false, "reason": "insufficient_access", "needed": access_cost}
 	deck["cpu"] = int(deck["cpu"]) - cpu_cost
 	deck["access"] = int(deck["access"]) - access_cost
-	var penalty := 0
-	if bool(deck["wireless"]):
-		penalty += WIRELESS_PENALTY
-	if bool(deck["vr_crown"]):
-		penalty += VR_CROWN_PENALTY
-	var check: Dictionary = adapter.skill_check(
-		int(deck["int"]), int(deck["program_rank"]), int(node.get("security", 8)), penalty
+	# The network's target comes from the recorded ladder, plus the situation modifiers the
+	# scenario declares. A value off the ladder is refused rather than guessed.
+	var target := Rules.security_difficulty(
+		int(node.get("security", 0)),
+		alarm,
+		bool(node.get("important_device", false)),
+		int(node.get("tech_quality", 0)),
+		int(node.get("inside_info", 0))
+	)
+	if not bool(target.get("ok", false)):
+		# Nothing was spent on a node whose security the source does not record.
+		deck["cpu"] = int(deck["cpu"]) + cpu_cost
+		deck["access"] = int(deck["access"]) + access_cost
+		return {"ok": false, "reason": String(target.get("reason", "bad_security")),
+			"expected": target.get("expected", [])}
+	var check: Dictionary = Rules.hacking_check(
+		[adapter.roll_die(6), adapter.roll_die(6)],
+		adapter.attribute_modifier(int(deck["int"])),
+		int(deck["program_rank"]),
+		int(target["difficulty"]),
+		bool(deck["wireless"]),
+		bool(deck["vr_crown"]),
+		int(costs.get("verb_modifier", 0))
 	)
 	var success := bool(check.get("success", false))
 	if not success:

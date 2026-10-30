@@ -1,0 +1,50 @@
+{
+  "_note": "Cities Without Number hacking constants, transcribed from the CWN SRD (CC0). This file is the engine-neutral contract: the Python rules layer (src/rules/cwn_hacking.py) and the Godot kernel (godot/core/cwn_hacking.gd) both read the same numbers, so the two runtimes cannot disagree. No SRD sentence, table or program catalogue is reproduced here.",
+  "_source_of_truth": "src/rules/cwn_hacking.py",
+  "_canon_revision": "issue-752-cwn-hacking-2026-10-30",
+  "licence": "CC0",
+  "sources": {
+    "access": "https://cwn.quadrifons.com/hacking/cyberspace-basics/#access",
+    "connecting": "https://cwn.quadrifons.com/hacking/cyberspace-basics/#connecting-to-cyberspace",
+    "security_levels": "https://cwn.quadrifons.com/hacking/hacking-mechanics/#common-cyberspace-security-levels",
+    "run_program": "https://cwn.quadrifons.com/hacking/hacking-mechanics/#hacking-a-device-or-server",
+    "cyberware": "https://cwn.quadrifons.com/hacking/hacking-mechanics/#hacking-cyberware-or-drones"
+  },
+  "security_levels": {
+    "7": "private home network",
+    "8": "small business, minor gang or minor government office",
+    "9": "corp branch office, major gang or important government facility",
+    "10": "corp high-security network",
+    "12": "corp or government black site"
+  },
+  "connection": {
+    "wireless_penalty": -2,
+    "vr_crown_penalty": -1
+  },
+  "alert": {
+    "failures_per_alert_action": 2,
+    "alert_actions_to_alert": 2
+  },
+  "cyberware": {
+    "base_difficulty": 7,
+    "hit_dice_divisor": 3,
+    "unoperated_drone_difficulty": 8
+  },
+  "access_pool": {
+    "formula": "INT modifier + Program rank + the deck's Bonus Access",
+    "minimum": 0
+  },
+  "security_modifiers": {
+    "alerted": 1,
+    "important_device": 1,
+    "tech_quality_range": [
+      -2,
+      2
+    ],
+    "inside_information_range": [
+      1,
+      3
+    ],
+    "_note": "inside_information_range is a positive magnitude 1..3 that lowers the target, which is the convention src/rules/cwn_hacking.py uses and tests/test_cwn_hacking.py pins (security_difficulty(9, inside_info=3) == 6)."
+  }
+}

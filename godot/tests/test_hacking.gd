@@ -8,8 +8,16 @@ const Adapter := preload("res://godot/core/rules_adapter.gd")
 const Hacking := preload("res://godot/core/hacking.gd")
 
 ## Forces the failure path so the alert clock is tested without depending on a dice seed.
+## Since #752 the check is resolved by `godot/core/cwn_hacking.gd`, which needs the modifier and the
+## dice from the adapter — so the fixture supplies both rather than only the check.
 class FailingAdapter:
 	extends RefCounted
+
+	func attribute_modifier(_score: int) -> int:
+		return 0
+
+	func roll_die(_sides: int) -> int:
+		return 1
 
 	func skill_check(_score: int, _level: int, difficulty: Variant, situational: int = 0,
 			_aid: int = 0) -> Dictionary:
@@ -103,8 +111,10 @@ func run() -> Array:
 		_network(), _deck({"wireless": true, "vr_crown": true, "access": 4}))
 	wireless.connect_node("desk")
 	var wireless_step := wireless.act("desk", "query")
-	rows.append(_eq("wireless and VR crown reach the check as -3",
-		int(wireless_step["check"]["situational"]), -3))
+	rows.append(_eq("wireless and VR crown reach the check as a flat -3, outside the circumstance clamp",
+		int(wireless_step["check"]["connection_penalty"]), -3))
+	rows.append(_eq("and the circumstance slot itself stays untouched",
+		int(wireless_step["check"]["situational"]), 0))
 
 	# --- determinism ---------------------------------------------------------------
 	var a: NoopunkHacking = Hacking.new(Adapter.new("res://data/rules/wn_core.json", 31), _network(), _deck())
