@@ -85,6 +85,10 @@ PR #877 adds the playable node-link hacking screen and its rules-state machine, 
 
 An additional playable node-link presentation at `godot/ui/hacking_screen.gd` and `scenes/hacking/node_link.tscn` uses `godot/core/hacking.gd` and opens the Romppainen warehouse mission from the main menu. `godot/tests/test_hacking_screen.gd` covers this path (20 checks reported on the PR branch). This complements the `cwn_node_link.gd` and MVP H-key interfaces documented above; full SRD §4.5 parity remains unverified. The 1312 checks reported on PR #878 were not rerun on this integration.
 
+## §2.6 playable chase console (#873, follow-up)
+
+`scenes/chase_screen.tscn` and `godot/ui/chase_screen.gd` expose foot and single-pursuer vehicle checks from the main menu. The console delegates outcomes to `cwn_chases.gd`; `test_chase_screen.gd` covers catches, ties, hindrance and vehicle dropouts. This is **partial playability** (check totals are manually entered): circumstance modifiers, multiple pursuers and in-world campaign progression are not wired. SRD parity has **not** been independently established, and no test execution is claimed for this follow-up.
+
 ## What the table says plainly
 
 - **One section is verified against the text**: §4.3, and only its catalogue half — 24 Verbs, 12 Subjects,
