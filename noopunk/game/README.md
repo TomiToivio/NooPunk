@@ -1,3 +1,7 @@
+> **SUPERSEDED, ARCHIVED PROTOTYPE (issue [#848](https://github.com/TomiToivio/NooPunk/issues/848)).** This is the old #827/#835 seven-attribute experiment, **not** the canonical Godot game. The sole active RPG project is the repository-root `project.godot`, startup `res://scenes/main.tscn`; its rules are vanilla CWN primary plus vanilla SWN Revised psionics. See [root START_HERE](../../START_HERE.md) and [AGENTS.md](../../AGENTS.md). Preserve this prototype for historical reference, but do not extend or use its character creation.
+
+---
+
 # NoöPunk — Godot game
 
 Top-down 2D project. It opens into **character creation**: seven attributes, each rolled as 3d6 and
