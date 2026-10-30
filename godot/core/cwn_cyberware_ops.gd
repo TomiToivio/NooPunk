@@ -9,6 +9,10 @@
 extends RefCounted
 class_name CwnCyberwareOps
 
+## Alienation arithmetic lives in `cwn_alienation.gd` (SRD 3.6.8). This module delegates to it so the
+## rounding rule exists once; a second copy is how a rule drifts.
+const Alienation := preload("res://godot/core/cwn_alienation.gd")
+
 ##: Installation terms by the implant's System Strain cost. `max_strain` is inclusive.
 const STRAIN_TIERS := [
 	{"max_strain": 0.0, "cost": 100, "recovery": "1 hour", "difficulty": 7},
@@ -29,17 +33,8 @@ const ROOM_MODIFIERS := {
 	"clinic": 2,
 }
 
-##: Chrome syndromes and their Alienation-maximum bonus. Each may be taken once.
-const SYNDROMES := {
-	"brutal": 4,
-	"candid": 3,
-	"cold": 4,
-	"distant": 3,
-	"exultant": 3,
-	"fearless": 4,
-	"hypervigilant": 3,
-	"murderous": 6,
-}
+##: Chrome syndromes, re-exported from the authority so callers can read the table here.
+const SYNDROMES := Alienation.SYNDROMES
 
 
 ## Cost, recovery time and difficulty of implanting a system of the given System Strain cost.
@@ -135,33 +130,28 @@ static func resolve_reuse(check_total: int, difficulty: int = 10) -> Dictionary:
 
 ## Alienation gained by implanting: the System Strain cost rounded up, plus 2 for Nerve cyberware.
 static func alienation_gain(system_strain: float, nerve: bool = false) -> int:
-	if system_strain <= 0.0:
-		return 0
-	return ceili(system_strain) + (2 if nerve else 0)
+	return Alienation.alienation_for_system(system_strain, nerve)
 
 
 ## A character's maximum Alienation: Wisdom plus the bonuses of the chrome syndromes they carry.
 ##
 ## Repeats are refused — the SRD says the same syndrome cannot be picked twice.
 static func max_alienation(wisdom: int, syndromes: Array = []) -> Dictionary:
-	var bonus := 0
-	var seen: Array = []
-	var unknown: Array = []
-	for syndrome in syndromes:
-		var key := String(syndrome)
-		if not SYNDROMES.has(key):
-			unknown.append(key)
-		elif seen.has(key):
-			return {"ok": false, "reason": "syndrome taken twice: %s" % key}
-		else:
-			seen.append(key)
-			bonus += int(SYNDROMES[key])
-	return {"ok": unknown.is_empty(), "maximum": wisdom + bonus, "unknown": unknown}
+	var validation := Alienation.validate_syndromes(syndromes)
+	if not bool(validation["ok"]):
+		return {"ok": false, "reason": validation.get("reason", "invalid syndrome list")}
+	return {
+		"ok": bool(validation["ok"]),
+		"maximum": Alienation.maximum(wisdom, syndromes),
+		"unknown": validation["unknown"],
+	}
 
 
 ## The Alienation check: roll 1d20; equal to or under current Alienation gains one point.
 static func alienation_check(roll: int, current: int) -> Dictionary:
-	return {"ok": roll >= 1 and roll <= 20, "gains_point": roll <= current, "roll": roll}
+	if roll < 1 or roll > 20:
+		return {"ok": false, "gains_point": false, "roll": roll}
+	return {"ok": true, "gains_point": Alienation.check_gains_point(roll, current), "roll": roll}
 
 
 ## One week of therapy lowers Alienation by one, never below the permanent amount the cyber imposes.

@@ -19,6 +19,18 @@ class_name CwnAlienation
 const THERAPY_COST_PER_WEEK := 2000
 const NERVE_SURCHARGE := 2
 
+##: Chrome syndromes and the Alienation-maximum bonus each grants (§3.6.8.2). Each may be taken once.
+const SYNDROMES := {
+	"brutal": 4,
+	"candid": 3,
+	"cold": 4,
+	"distant": 3,
+	"exultant": 3,
+	"fearless": 4,
+	"hypervigilant": 3,
+	"murderous": 6,
+}
+
 enum Outcome { NONE, PICK_SYNDROME, PSYCHOSIS }
 
 
@@ -40,8 +52,27 @@ static func permanent_total(systems: Array) -> int:
 	return total
 
 
-static func maximum(wisdom: int) -> int:
-	return wisdom
+static func maximum(wisdom: int, syndromes: Array = []) -> int:
+	## The SRD allows a chrome syndrome to raise the ceiling; repeats are refused by the caller.
+	var bonus := 0
+	for syndrome in syndromes:
+		bonus += int(SYNDROMES.get(String(syndrome), 0))
+	return wisdom + bonus
+
+
+## Validate a syndrome list: every name known, none repeated.
+static func validate_syndromes(syndromes: Array) -> Dictionary:
+	var seen: Array = []
+	var unknown: Array = []
+	for syndrome in syndromes:
+		var key := String(syndrome)
+		if not SYNDROMES.has(key):
+			unknown.append(key)
+		elif seen.has(key):
+			return {"ok": false, "reason": "syndrome taken twice: %s" % key, "unknown": []}
+		else:
+			seen.append(key)
+	return {"ok": unknown.is_empty(), "unknown": unknown}
 
 
 static func is_psychotic(alienation: int, wisdom: int) -> bool:

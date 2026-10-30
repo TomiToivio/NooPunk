@@ -8,6 +8,7 @@ const CH := preload("res://godot/core/cwn_chases.gd")
 const CW := preload("res://godot/core/cwn_cyberware_ops.gd")
 const MT := preload("res://godot/core/cwn_mission_time.gd")
 const GM := preload("res://godot/core/cwn_gear_mods.gd")
+const CO := preload("res://godot/core/cwn_contacts.gd")
 
 
 func _eq(name: String, actual: Variant, expected: Variant) -> Array:
@@ -132,5 +133,25 @@ func run() -> Array:
 	rows.append(_eq("the same mod cannot be applied twice", GM.apply_weapon_mods(["autotargeting", "autotargeting"], "firearm", true)["ok"], false))
 	rows.append(_eq("an unknown weapon mod is refused", GM.apply_weapon_mods(["phaser"], "firearm", true)["ok"], false))
 	rows.append(_eq("a firearm mod does not fit a melee weapon", GM.apply_weapon_mods(["autotargeting"], "melee", true)["ok"], false))
+
+	# ---- contacts --------------------------------------------------------------------------
+	rows.append(_eq("a new PC may take two acquaintances", CO.starting_set("two_acquaintances")["contacts"].size(), 2))
+	rows.append(_eq("a new PC may take one friend instead", CO.starting_set("one_friend")["contacts"][0]["level"], "friend"))
+	rows.append(_eq("any other starting choice is refused", CO.starting_set("three_friends")["ok"], false))
+	var ok_contact := {"name": "Mira", "profession": "street cyberdoc", "history": "patched me up after the Kallas job", "level": "acquaintance"}
+	rows.append(_eq("a complete contact validates", CO.validate(ok_contact)["ok"], true))
+	var partial_contact := {"name": "Mira", "profession": "", "history": "", "level": "friend"}
+	rows.append(_eq("a contact without a profession is incomplete", CO.validate(partial_contact)["missing"], ["profession", "history"]))
+	rows.append(_eq("an unknown level is incomplete", CO.validate({"name": "X", "profession": "y", "history": "z", "level": "buddy"})["missing"], ["level"]))
+	rows.append(_eq("an acquaintance does small favors", CO.can_ask("acquaintance", false, false)["allowed"], true))
+	rows.append(_eq("an acquaintance refuses real risk", CO.can_ask("acquaintance", true, false)["allowed"], false))
+	rows.append(_eq("an acquaintance refuses significant expense", CO.can_ask("acquaintance", false, true)["allowed"], false))
+	rows.append(_eq("a friend takes on risk", CO.can_ask("friend", true, true)["allowed"], true))
+	rows.append(_eq("a refusal explains itself", CO.can_ask("acquaintance", true)["refusal"].is_empty(), false))
+	rows.append(_eq("contacts never join a mission", CO.can_join_mission(), false))
+	rows.append(_eq("one call per session", CO.calls_per_session(), 1))
+	rows.append(_eq("burning a friend leaves an acquaintance", CO.downgrade("friend"), "acquaintance"))
+	rows.append(_eq("burning an acquaintance loses them", CO.downgrade("acquaintance"), "none"))
+	rows.append(_eq("trust upgrades an acquaintance", CO.upgrade("acquaintance"), "friend"))
 
 	return rows
