@@ -57,11 +57,19 @@ func from_data(data: Dictionary) -> bool:
 	var location: String = str(data.get("current_location", ""))
 	if not LOCATIONS.has(location):
 		return false
+	if location == "mission" and not bool((data.get("flags", {}) as Dictionary).get("mission_accepted", false)):
+		return false
 	for key in ["flags", "dialogue_choices", "character", "encounter", "network"]:
 		if typeof(data.get(key, null)) != TYPE_DICTIONARY:
 			return false
 	for key in ["journal", "inventory"]:
 		if typeof(data.get(key, null)) != TYPE_ARRAY:
+			return false
+	for flag_value in (data["flags"] as Dictionary).values():
+		if typeof(flag_value) != TYPE_BOOL:
+			return false
+	for choice in (data["dialogue_choices"] as Dictionary).values():
+		if typeof(choice) != TYPE_STRING and typeof(choice) != TYPE_INT:
 			return false
 	var next_journal: Array[String] = []
 	for entry in data["journal"]:
