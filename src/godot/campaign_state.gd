@@ -11,11 +11,13 @@ const VERSION := 2
 const SAVE_PATH := "user://noopunk_campaign_v2.json"
 
 ## Home -> HQ -> mission -> debrief. The mission is locked until accepted, and the debrief is locked
-## until the mission is resolved, so no leg can be skipped by travelling directly.
+## until the mission is resolved, so the debrief cannot report on a mission that never happened.
+## A character may also walk straight back to HQ from a resolved mission; the debrief is the
+## formal debriefing, not a corridor the story is forced down.
 const LOCATIONS := {
 	"home": ["hq"],
 	"hq": ["home", "mission"],
-	"mission": ["debrief"],
+	"mission": ["debrief", "hq"],
 	"debrief": ["hq"]
 }
 
