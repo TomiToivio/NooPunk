@@ -1,0 +1,368 @@
+{
+  "$comment": "Cities Without Number SRD, Hacking chapter (4.3.2 Verbs, 4.3.3 Subjects). Verbatim mechanics, cited. The SRD is public domain / CC0; transcription with citation is permitted. CPU column: the SRD's numeric column, persistent=true where the SRD marks it with an asterisk (keeps its CPU slot until terminated, per 4.2.1 step 4).",
+  "source": {
+    "title": "Cities Without Number SRD",
+    "sections": [
+      "4.3.2",
+      "4.3.3"
+    ],
+    "url": "https://cwn.quadrifons.com/"
+  },
+  "verbs": [
+    {
+      "name": "Activate",
+      "price": 1000,
+      "target_types": [
+        "Device",
+        "Cyber"
+      ],
+      "cpu": 1,
+      "persistent": true,
+      "difficulty_modifier": 1,
+      "effect": "Turn on a device or piece of cyberware"
+    },
+    {
+      "name": "Analyze",
+      "price": 500,
+      "target_types": [
+        "Device",
+        "Data"
+      ],
+      "cpu": 0,
+      "persistent": true,
+      "difficulty_modifier": 1,
+      "effect": "Identify a target device or a file's topic"
+    },
+    {
+      "name": "Append",
+      "price": 500,
+      "target_types": [
+        "Data"
+      ],
+      "cpu": 1,
+      "persistent": true,
+      "difficulty_modifier": 0,
+      "effect": "Add a new entry or data into a file"
+    },
+    {
+      "name": "Blind",
+      "price": 2000,
+      "target_types": [
+        "Device",
+        "Cyber"
+      ],
+      "cpu": 1,
+      "persistent": false,
+      "difficulty_modifier": 0,
+      "effect": "Turn off sensory input to a device or cyber"
+    },
+    {
+      "name": "Deactivate",
+      "price": 2000,
+      "target_types": [
+        "Device",
+        "Cyber"
+      ],
+      "cpu": 1,
+      "persistent": true,
+      "difficulty_modifier": 1,
+      "effect": "Turn off the target for at least a round"
+    },
+    {
+      "name": "Decrypt",
+      "price": 1000,
+      "target_types": [
+        "Data"
+      ],
+      "cpu": 1,
+      "persistent": true,
+      "difficulty_modifier": 0,
+      "effect": "Decrypt a file or radio transmission"
+    },
+    {
+      "name": "Defend",
+      "price": 1000,
+      "target_types": [
+        "Device",
+        "Cyber"
+      ],
+      "cpu": 0,
+      "persistent": false,
+      "difficulty_modifier": null,
+      "effect": "Shield a friendly device or cyber system"
+    },
+    {
+      "name": "Delude",
+      "price": 5000,
+      "target_types": [
+        "Device"
+      ],
+      "cpu": 1,
+      "persistent": false,
+      "difficulty_modifier": -1,
+      "effect": "Spoof a device with false sensor input"
+    },
+    {
+      "name": "Erase",
+      "price": 500,
+      "target_types": [
+        "Data"
+      ],
+      "cpu": 1,
+      "persistent": true,
+      "difficulty_modifier": 1,
+      "effect": "Erase a data file and corrupt backups"
+    },
+    {
+      "name": "Frisk",
+      "price": 500,
+      "target_types": [
+        "Cyber"
+      ],
+      "cpu": 0,
+      "persistent": true,
+      "difficulty_modifier": 1,
+      "effect": "Get a list of a target person's cyberware"
+    },
+    {
+      "name": "Ghost",
+      "price": 2000,
+      "target_types": [
+        "Avatar"
+      ],
+      "cpu": 1,
+      "persistent": false,
+      "difficulty_modifier": 0,
+      "effect": "Turn invisible so long as you only move"
+    },
+    {
+      "name": "Glitch",
+      "price": 1000,
+      "target_types": [
+        "Device",
+        "Cyber"
+      ],
+      "cpu": 0,
+      "persistent": false,
+      "difficulty_modifier": 2,
+      "effect": "Briefly deactivate a device or cyber"
+    },
+    {
+      "name": "Hijack",
+      "price": 5000,
+      "target_types": [
+        "Device"
+      ],
+      "cpu": 1,
+      "persistent": false,
+      "difficulty_modifier": -1,
+      "effect": "Take remote control of a device"
+    },
+    {
+      "name": "Kill",
+      "price": 5000,
+      "target_types": [
+        "Avatar"
+      ],
+      "cpu": 1,
+      "persistent": true,
+      "difficulty_modifier": 0,
+      "effect": "Inflict lethal feedback on a human avatar"
+    },
+    {
+      "name": "Lock",
+      "price": 1000,
+      "target_types": [
+        "Device",
+        "Data"
+      ],
+      "cpu": 1,
+      "persistent": false,
+      "difficulty_modifier": 1,
+      "effect": "Lock an electronic lock or node barrier"
+    },
+    {
+      "name": "Paralyze",
+      "price": 2000,
+      "target_types": [
+        "Avatar"
+      ],
+      "cpu": 1,
+      "persistent": false,
+      "difficulty_modifier": -1,
+      "effect": "Paralyze an avatar's owner via network"
+    },
+    {
+      "name": "Replace",
+      "price": 1000,
+      "target_types": [
+        "Data"
+      ],
+      "cpu": 1,
+      "persistent": true,
+      "difficulty_modifier": 0,
+      "effect": "Change file data to something else"
+    },
+    {
+      "name": "Sabotage",
+      "price": 2000,
+      "target_types": [
+        "Device",
+        "Cyber"
+      ],
+      "cpu": 1,
+      "persistent": true,
+      "difficulty_modifier": -1,
+      "effect": "Make the target damage itself"
+    },
+    {
+      "name": "Sense",
+      "price": 1000,
+      "target_types": [
+        "Device",
+        "Cyber"
+      ],
+      "cpu": 0,
+      "persistent": false,
+      "difficulty_modifier": 0,
+      "effect": "Piggyback on a sensor feed or cyber"
+    },
+    {
+      "name": "Siege",
+      "price": 2500,
+      "target_types": [
+        "Device"
+      ],
+      "cpu": 1,
+      "persistent": false,
+      "difficulty_modifier": -2,
+      "effect": "Cut off a device's node from the network"
+    },
+    {
+      "name": "Silence",
+      "price": 1000,
+      "target_types": [
+        "Avatar"
+      ],
+      "cpu": 1,
+      "persistent": false,
+      "difficulty_modifier": 1,
+      "effect": "Lock out the Send Message action"
+    },
+    {
+      "name": "Stun",
+      "price": 1000,
+      "target_types": [
+        "Avatar"
+      ],
+      "cpu": 0,
+      "persistent": true,
+      "difficulty_modifier": 1,
+      "effect": "Inflict non-lethal damage on an avatar"
+    },
+    {
+      "name": "Terminate",
+      "price": 500,
+      "target_types": [
+        "Program"
+      ],
+      "cpu": 1,
+      "persistent": true,
+      "difficulty_modifier": 0,
+      "effect": "Forcibly end an unwanted program"
+    },
+    {
+      "name": "Unlock",
+      "price": 500,
+      "target_types": [
+        "Device",
+        "Data"
+      ],
+      "cpu": 1,
+      "persistent": true,
+      "difficulty_modifier": 1,
+      "effect": "Unlock an electric lock or node barrier"
+    }
+  ],
+  "subjects": [
+    {
+      "name": "Avatar",
+      "price": 500,
+      "target_type": "Avatar"
+    },
+    {
+      "name": "Barrier",
+      "price": 1000,
+      "target_type": "Data"
+    },
+    {
+      "name": "Camera",
+      "price": 500,
+      "target_type": "Device"
+    },
+    {
+      "name": "Cyber",
+      "price": 1000,
+      "target_type": "Cyber"
+    },
+    {
+      "name": "Datafile",
+      "price": 500,
+      "target_type": "Data"
+    },
+    {
+      "name": "Door",
+      "price": 500,
+      "target_type": "Device"
+    },
+    {
+      "name": "Drone",
+      "price": 1000,
+      "target_type": "Device"
+    },
+    {
+      "name": "Machine",
+      "price": 500,
+      "target_type": "Device"
+    },
+    {
+      "name": "Program",
+      "price": 500,
+      "target_type": "Program"
+    },
+    {
+      "name": "Sensor",
+      "price": 500,
+      "target_type": "Device"
+    },
+    {
+      "name": "Transmission",
+      "price": 1000,
+      "target_type": "Data"
+    },
+    {
+      "name": "Turret",
+      "price": 1000,
+      "target_type": "Device"
+    }
+  ],
+  "special_subjects": [
+    {
+      "name": "Specialized Subject",
+      "price_multiplier": 2,
+      "note": "double the base Subject price"
+    },
+    {
+      "name": "Unique Subject",
+      "price_multiplier": 4,
+      "note": "quadruple the base Subject price"
+    }
+  ],
+  "target_types": [
+    "Device",
+    "Cyber",
+    "Data",
+    "Avatar",
+    "Program"
+  ]
+}
