@@ -1,0 +1,306 @@
+{
+  "license": "CC0 \u2014 transcription of the Cities Without Number SRD",
+  "source": "https://cwn.quadrifons.com/hacking/programs/",
+  "subjects": {
+    "Avatar": {
+      "cost_usd": 500,
+      "subject_type": "Avatar"
+    },
+    "Barrier": {
+      "cost_usd": 1000,
+      "subject_type": "Data"
+    },
+    "Camera": {
+      "cost_usd": 500,
+      "subject_type": "Device"
+    },
+    "Cyber": {
+      "cost_usd": 1000,
+      "subject_type": "Cyber"
+    },
+    "Datafile": {
+      "cost_usd": 500,
+      "subject_type": "Data"
+    },
+    "Door": {
+      "cost_usd": 500,
+      "subject_type": "Device"
+    },
+    "Drone": {
+      "cost_usd": 1000,
+      "subject_type": "Device"
+    },
+    "Machine": {
+      "cost_usd": 500,
+      "subject_type": "Device"
+    },
+    "Program": {
+      "cost_usd": 500,
+      "subject_type": "Program"
+    },
+    "Sensor": {
+      "cost_usd": 500,
+      "subject_type": "Device"
+    },
+    "Transmission": {
+      "cost_usd": 1000,
+      "subject_type": "Data"
+    },
+    "Turret": {
+      "cost_usd": 1000,
+      "subject_type": "Device"
+    }
+  },
+  "verbs": {
+    "Activate": {
+      "access_cost": 1,
+      "cost_usd": 1000,
+      "requires_check": true,
+      "self_terminating": true,
+      "skill_modifier": 1,
+      "target_types": [
+        "Cyber",
+        "Device"
+      ]
+    },
+    "Analyze": {
+      "access_cost": 0,
+      "cost_usd": 500,
+      "requires_check": true,
+      "self_terminating": true,
+      "skill_modifier": 1,
+      "target_types": [
+        "Data",
+        "Device"
+      ]
+    },
+    "Append": {
+      "access_cost": 1,
+      "cost_usd": 500,
+      "requires_check": true,
+      "self_terminating": true,
+      "skill_modifier": 0,
+      "target_types": [
+        "Data"
+      ]
+    },
+    "Blind": {
+      "access_cost": 1,
+      "cost_usd": 2000,
+      "requires_check": true,
+      "self_terminating": false,
+      "skill_modifier": 0,
+      "target_types": [
+        "Cyber",
+        "Device"
+      ]
+    },
+    "Deactivate": {
+      "access_cost": 1,
+      "cost_usd": 2000,
+      "requires_check": true,
+      "self_terminating": true,
+      "skill_modifier": 1,
+      "target_types": [
+        "Cyber",
+        "Device"
+      ]
+    },
+    "Decrypt": {
+      "access_cost": 1,
+      "cost_usd": 1000,
+      "requires_check": true,
+      "self_terminating": true,
+      "skill_modifier": 0,
+      "target_types": [
+        "Data"
+      ]
+    },
+    "Defend": {
+      "access_cost": 0,
+      "cost_usd": 1000,
+      "requires_check": false,
+      "self_terminating": false,
+      "skill_modifier": null,
+      "target_types": [
+        "Cyber",
+        "Device"
+      ]
+    },
+    "Delude": {
+      "access_cost": 1,
+      "cost_usd": 5000,
+      "requires_check": true,
+      "self_terminating": false,
+      "skill_modifier": -1,
+      "target_types": [
+        "Device"
+      ]
+    },
+    "Erase": {
+      "access_cost": 1,
+      "cost_usd": 500,
+      "requires_check": true,
+      "self_terminating": true,
+      "skill_modifier": 1,
+      "target_types": [
+        "Data"
+      ]
+    },
+    "Frisk": {
+      "access_cost": 0,
+      "cost_usd": 500,
+      "requires_check": true,
+      "self_terminating": true,
+      "skill_modifier": 1,
+      "target_types": [
+        "Cyber"
+      ]
+    },
+    "Ghost": {
+      "access_cost": 1,
+      "cost_usd": 2000,
+      "requires_check": true,
+      "self_terminating": false,
+      "skill_modifier": 0,
+      "target_types": [
+        "Avatar"
+      ]
+    },
+    "Glitch": {
+      "access_cost": 0,
+      "cost_usd": 1000,
+      "requires_check": true,
+      "self_terminating": false,
+      "skill_modifier": 2,
+      "target_types": [
+        "Cyber",
+        "Device"
+      ]
+    },
+    "Hijack": {
+      "access_cost": 1,
+      "cost_usd": 5000,
+      "requires_check": true,
+      "self_terminating": false,
+      "skill_modifier": -1,
+      "target_types": [
+        "Device"
+      ]
+    },
+    "Kill": {
+      "access_cost": 1,
+      "cost_usd": 5000,
+      "requires_check": true,
+      "self_terminating": true,
+      "skill_modifier": 0,
+      "target_types": [
+        "Avatar"
+      ]
+    },
+    "Lock": {
+      "access_cost": 1,
+      "cost_usd": 1000,
+      "requires_check": true,
+      "self_terminating": false,
+      "skill_modifier": 1,
+      "target_types": [
+        "Data",
+        "Device"
+      ]
+    },
+    "Paralyze": {
+      "access_cost": 1,
+      "cost_usd": 2000,
+      "requires_check": true,
+      "self_terminating": false,
+      "skill_modifier": -2,
+      "target_types": [
+        "Avatar"
+      ]
+    },
+    "Replace": {
+      "access_cost": 1,
+      "cost_usd": 1000,
+      "requires_check": true,
+      "self_terminating": true,
+      "skill_modifier": 0,
+      "target_types": [
+        "Data"
+      ]
+    },
+    "Sabotage": {
+      "access_cost": 1,
+      "cost_usd": 2000,
+      "requires_check": true,
+      "self_terminating": true,
+      "skill_modifier": -1,
+      "target_types": [
+        "Cyber",
+        "Device"
+      ]
+    },
+    "Sense": {
+      "access_cost": 0,
+      "cost_usd": 1000,
+      "requires_check": true,
+      "self_terminating": false,
+      "skill_modifier": 0,
+      "target_types": [
+        "Data",
+        "Device"
+      ]
+    },
+    "Siege": {
+      "access_cost": 1,
+      "cost_usd": 2500,
+      "requires_check": true,
+      "self_terminating": false,
+      "skill_modifier": -2,
+      "target_types": [
+        "Device"
+      ]
+    },
+    "Silence": {
+      "access_cost": 1,
+      "cost_usd": 1000,
+      "requires_check": true,
+      "self_terminating": false,
+      "skill_modifier": 1,
+      "target_types": [
+        "Avatar"
+      ]
+    },
+    "Stun": {
+      "access_cost": 0,
+      "cost_usd": 1000,
+      "requires_check": true,
+      "self_terminating": true,
+      "skill_modifier": 0,
+      "target_types": [
+        "Avatar"
+      ]
+    },
+    "Terminate": {
+      "access_cost": 1,
+      "cost_usd": 500,
+      "requires_check": true,
+      "self_terminating": true,
+      "skill_modifier": 0,
+      "target_types": [
+        "Program"
+      ]
+    },
+    "Unlock": {
+      "access_cost": 1,
+      "cost_usd": 500,
+      "requires_check": true,
+      "self_terminating": true,
+      "skill_modifier": 1,
+      "target_types": [
+        "Data",
+        "Device"
+      ]
+    }
+  }
+}
