@@ -27,7 +27,17 @@ static func _data() -> Dictionary:
 	return _cache
 
 static func tables() -> Dictionary:
-	return _data().get("tables", {})
+	var explicit: Dictionary = _data().get("tables", {})
+	if not explicit.is_empty():
+		return explicit
+	# The extractor stores flat arrays at the top level (`weapons`, `armor`, `cyberware`, ...).
+	# Wrap them in the block shape rows() expects so lookups work against either layout instead of
+	# silently returning nothing.
+	var wrapped: Dictionary = {}
+	for key in _data().keys():
+		if _data()[key] is Array:
+			wrapped[key] = [{"rows": _data()[key]}]
+	return wrapped
 
 static func licence() -> String:
 	return str(_data().get("licence", ""))
@@ -41,6 +51,16 @@ static func rows(key: String) -> Array:
 	for block in tables().get(key, []):
 		out.append_array(block.get("rows", []))
 	return out
+
+static func _row_label(row: Dictionary) -> String:
+	# SRD tables head the first column with the table's own name ("Civilian Armor", "Firearm", ...),
+	# so the row's first string value is its label. Falling back to it makes lookups work regardless
+	# of what that header happens to be called.
+	for column in row.keys():
+		var value := str(row[column])
+		if value.strip_edges() != "":
+			return value.strip_edges()
+	return ""
 
 static func _cell(row: Dictionary, names: Array) -> String:
 	for name in names:
@@ -126,18 +146,28 @@ static func weapon(name: String, groups: Array = ["firearms", "melee", "heavy"])
 	return {}
 
 static func armour(name: String) -> Dictionary:
+	var wanted := name.to_lower()
 	for row in rows("armor"):
-		if _cell(row, ["Armor", "Armour", "Name"]).to_lower() == name.to_lower():
-			return {
-				"name": _cell(row, ["Armor", "Armour", "Name"]),
-				"ranged_ac": _int(_cell(row, ["Ranged AC"])),
-				"melee_ac": _int(_cell(row, ["Melee AC"])),
-				"soak": _int(_cell(row, ["Damage Soak", "Soak"])),
-				"encumbrance": _int(_cell(row, ["Enc.", "Encumbrance"])),
-				"trauma_mod": _int(_cell(row, ["Trauma Target Mod", "Trauma Mod"])),
-				"subtle": _cell(row, ["Subtle?"]).to_lower() == "subtle",
-				"cost": _money(_cell(row, ["Cost"])),
-			}
+		var label := _row_label(row).to_lower()
+		var ident := str(row.get("id", "")).to_lower()
+		# Exact id or name first; then a substring either way, so "leathers" finds "street_leathers".
+		var hit: bool = label == wanted or ident == wanted
+		if not hit and wanted != "":
+			hit = label.contains(wanted) or ident.contains(wanted)
+		if not hit:
+			continue
+		# The catalogue JSON carries typed numeric columns; the SRD tables carry text. Read the typed
+		# value when present and fall back to the parsed cell otherwise.
+		return {
+			"name": _row_label(row) if label != "" else str(row.get("id", "")),
+			"ranged_ac": int(row.get("ranged_ac", _int(_cell(row, ["Ranged AC"])))),
+			"melee_ac": int(row.get("melee_ac", _int(_cell(row, ["Melee AC"])))),
+			"soak": int(row.get("soak", _int(_cell(row, ["Damage Soak", "Soak"])))),
+			"encumbrance": int(row.get("enc", _int(_cell(row, ["Enc.", "Encumbrance"])))),
+			"trauma_mod": int(row.get("trauma_mod", _int(_cell(row, ["Trauma Target Mod", "Trauma Mod"])))),
+			"subtle": bool(row.get("subtle", _cell(row, ["Subtle?"]).to_lower() == "subtle")),
+			"cost": int(row.get("cost", _money(_cell(row, ["Cost"])))),
+		}
 	return {}
 
 static func cyberdeck(name: String) -> Dictionary:
