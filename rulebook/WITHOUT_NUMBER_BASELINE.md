@@ -93,6 +93,19 @@ In Helsinki, an authorized terminal investigation uses INT/Program: a 2d6 total 
 
 At modifier 0 and rank 0, difficulty 8 succeeds on 15 of 36 2d6 outcomes (41.67%). At modifier +1 and rank 1, it succeeds on 26 of 36 (72.22%). By comparison the retired STAT 5 + Skill 3 d10 check against DV 15 succeeded 40% of the time. These are different scales, not a conversion formula.
 
+## 7a. Where the deltas and their evidence live
+
+This document states the baseline. It does not enumerate every deviation from the source books or
+the evidence behind them:
+
+- **[`docs/design/ISSUE_747_RESKIN_INVENTORY.md`](../docs/design/ISSUE_747_RESKIN_INVENTORY.md)** —
+  the as-is / reskin / change disposition for each area, with the consequence of every change.
+- **[`docs/CWN_COVERAGE_MATRIX.md`](../docs/CWN_COVERAGE_MATRIX.md)** — what is actually
+  implemented, measured by enumerating the repository and running the suites, not by assertion.
+
+Both are proposals and measurements, never authority: where they and this baseline disagree, this
+baseline wins until the author rules otherwise.
+
 ## 8. Migration and implementation status
 
 This decision resolves #615 C1–C3: 2d6 skill checks, standard six attributes, and source classes/levels are adopted. C4 uses SWN PSI mechanics with the retained natural-training premise. C5 retires Fate as a current mechanical baseline, including future crossover work. C6 retains network geography while adopting CWN hacking. C7 is one shared character grammar with specialist source procedures.
