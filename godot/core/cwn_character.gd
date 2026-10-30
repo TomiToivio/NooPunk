@@ -15,6 +15,8 @@ extends RefCounted
 class_name CwnCharacter
 
 const ATTRIBUTES := ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
+## The three agencies a player character may serve (#806).
+const AGENCIES := ["Suojelupoliisi", "Europol", "UNSA"]
 const ARRAY := [14, 12, 11, 10, 9, 7]
 const SUBSTITUTE_SCORE := 14
 const MAX_CREATION_SKILL_LEVEL := 1
@@ -200,3 +202,58 @@ static func extra_languages(know_rank: int, connect_rank: int) -> int:
 	count += 2 if know_rank >= 1 else (1 if know_rank == 0 else 0)
 	count += 2 if connect_rank >= 1 else (1 if connect_rank == 0 else 0)
 	return count
+
+## --- #806: the player character and the companion who used to be the protagonist ---------------
+
+## A player-created level-1 field agent of Supo, Europol or UNSA.
+##
+## The player is not Romppainen any more: this returns the *persistent protagonist* record, with the
+## agency as the only campaign-side choice the source does not fix, skills from creation picks, and
+## hit points rolled on the actual d6 rather than assumed.
+static func create_field_agent(params: Dictionary) -> Dictionary:
+	var agency := str(params.get("agency", "")).strip_edges()
+	if not (agency in AGENCIES):
+		return {"ok": false, "reason": "unknown_agency", "expected": AGENCIES}
+	var rolls: Array = params.get("rolls", [])
+	if rolls.size() != ATTRIBUTES.size():
+		return {"ok": false, "reason": "six_attribute_rolls_required"}
+	var identity := from_rolls(rolls, int(params.get("substitute_at", -1)))
+	var con_mod := int(identity["modifiers"].get("CON", 0))
+	var hp := max_hit_points(int(params.get("hp_roll", 1)), con_mod,
+		bool(params.get("hard_to_kill", false)))
+	var name := str(params.get("name", "")).strip_edges()
+	return {
+		"ok": true,
+		"member": {
+			"id": str(params.get("id", "pc")),
+			"name": name if not name.is_empty() else "Field Agent",
+			"agency": agency,
+			"role": "field_agent",
+			"level": 1,
+			"is_pc": true,
+			"controllable": true,
+			"attributes": identity["attributes"],
+			"modifiers": identity["modifiers"],
+			"hit_points": hp,
+			"max_hit_points": hp,
+			"saves": {},
+			"skills": Dictionary(params.get("skills", {})).duplicate(true),
+			"inventory": Array(params.get("inventory", [])).duplicate(true),
+			"xp": 0,
+		},
+	}
+
+## Romppainen as an experienced companion: never level 1, never the protagonist, not always present.
+## `level` is scenario-driven; the default reflects "more experienced than a starting agent" without
+## fixing a campaign number the author has not ruled on.
+static func romppainen_companion(level: int = 6) -> Dictionary:
+	return {
+		"id": "romppainen",
+		"name": "Dr. Inspector Harri Romppainen",
+		"agency": "Suojelupoliisi",
+		"role": "investigator",
+		"level": maxi(2, level),
+		"is_pc": false,
+		"controllable": true,
+		"inventory": [],
+	}
