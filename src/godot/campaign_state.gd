@@ -7,8 +7,14 @@ extends RefCounted
 ## the campaign slice cannot fight over globals. The save stores *choices the player made* and
 ## *undecided build options*, never assumed CWN statistics: writing a background or an edge into
 ## the save because the default felt reasonable is exactly the kind of silent invention #751 forbids.
-const VERSION := 2
+## Version 3 adds the party roster (#806/#809). Version 2 saves still load: migrating by *adding* an
+## empty party is safe because a v2 campaign had exactly one protagonist and no companions, so there
+## is nothing to reconstruct. The save path is deliberately unchanged - renaming it would orphan every
+## existing player save in order to gain a tidier filename.
+const VERSION := 3
+const SUPPORTED_VERSIONS := [2, 3]
 const SAVE_PATH := "user://noopunk_campaign_v2.json"
+## The path keeps its v2 name on purpose: the version lives in the payload, not the filename.
 
 ## Home -> HQ -> mission -> debrief. The mission is locked until accepted, and the debrief is locked
 ## until the mission is resolved, so the debrief cannot report on a mission that never happened.
@@ -32,6 +38,8 @@ var character: Dictionary = {}
 var inventory: Array = []
 var encounter: Dictionary = {}
 var network: Dictionary = {}
+## The active party, as `CwnParty.to_dict()`. Empty in a migrated v2 save (#806).
+var party: Dictionary = {}
 
 var objective: Dictionary = {"id": "", "text": "", "resolved": false}
 var outcome: String = ""
@@ -108,13 +116,15 @@ func to_data() -> Dictionary:
 		"inventory": inventory.duplicate(true),
 		"encounter": encounter.duplicate(true),
 		"network": network.duplicate(true),
+		"party": party.duplicate(true),
 		"objective": objective.duplicate(true),
 		"outcome": outcome,
 		"approach": approach
 	}
 
 func from_data(data: Dictionary) -> bool:
-	if int(data.get("version", -1)) != VERSION:
+	var incoming_version := int(data.get("version", -1))
+	if not (incoming_version in SUPPORTED_VERSIONS):
 		return false
 	var location: String = str(data.get("current_location", ""))
 	if not LOCATIONS.has(location):
@@ -130,6 +140,8 @@ func from_data(data: Dictionary) -> bool:
 	for key in ["journal", "inventory"]:
 		if typeof(data.get(key, null)) != TYPE_ARRAY:
 			return false
+	if incoming_version >= 3 and typeof(data.get("party", {})) != TYPE_DICTIONARY:
+		return false
 	var next_journal: Array[String] = []
 	for entry in data["journal"]:
 		if typeof(entry) != TYPE_STRING:
@@ -152,6 +164,9 @@ func from_data(data: Dictionary) -> bool:
 	inventory = data["inventory"].duplicate(true)
 	encounter = data["encounter"].duplicate(true)
 	network = data["network"].duplicate(true)
+	# A v2 save predates parties; it had one protagonist and no companions, so an empty roster is the
+	# faithful migration rather than a guess.
+	party = Dictionary(data.get("party", {})).duplicate(true) if incoming_version >= 3 else {}
 	objective = data["objective"].duplicate(true)
 	outcome = next_outcome
 	approach = next_approach
