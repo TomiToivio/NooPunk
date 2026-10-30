@@ -7,9 +7,11 @@
 [#262](https://github.com/TomiToivio/NooPunk/issues/262). This page opens the new rulebook. It is
 short on purpose: it is what a table brings to the table, not a systems reference.
 
-> **The resolution formula is UNDECIDED.** No dice, threshold or ladder is chosen here. Earlier
-> engines (1d10, 4dF, Fate/Fudge, PbtA, Eclipse Phase) are **reference and history**, never
-> assumptions. Nothing in this book should be read as selecting one.
+> **The resolution formula is decided by the source books, not by this page.** Since the author's
+> ruling of 2026-10-26 the tabletop baseline is [Without Number baseline v1](WITHOUT_NUMBER_BASELINE.md):
+> `2d6 + attribute modifier + skill rank` against `6 / 8 / 10 / 12 / 14`, with `d20` attacks and saves.
+> The earlier engines (1d10, 4dF, Fate/Fudge, PbtA, Eclipse Phase) are **reference and history**, and
+> no chapter of this book may re-introduce one of them as an assumption.
 
 **Pre-narrative material is preserved, not deleted.** The previous rulebook corpus remains readable
 under `archive/rulebook-pre-narrative-2026-10/` (manifest with hashes, and a section-by-section

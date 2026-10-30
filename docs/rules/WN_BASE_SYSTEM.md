@@ -76,7 +76,12 @@ NoöPunk-original, and each is a real gap rather than an assumed success:
 | **M8** | Advancement | open | the family's XP model is the default candidate |
 | **M9** | NPCs | mixed | the family's stat-line convention (no attribute sheets) |
 
-M1, M3, M7 and M8 are **author decisions**; the rest are mechanical ports.
+**Corrected 2026-10-30:** M1, M3, M7 and M8 are no longer open decisions. The 2026-10-26
+[Without Number baseline](../../rulebook/WITHOUT_NUMBER_BASELINE.md) settles all four in favour of the
+source — generation and the array (§2), CWN advancement (§5), CWN action costs and System Strain (§6).
+What remains for them is **porting into the code paths that still run the legacy rules**, not a ruling.
+This queue is therefore a migration queue, not a decision queue; the open questions that do remain are
+carried in [`AUTHOR_DECISION_QUEUE.md`](../design/AUTHOR_DECISION_QUEUE.md).
 
 ## 5. Licence note
 
