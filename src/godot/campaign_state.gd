@@ -11,11 +11,13 @@ const VERSION := 2
 const SAVE_PATH := "user://noopunk_campaign_v2.json"
 
 ## Home -> HQ -> mission -> debrief. The mission is locked until accepted, and the debrief is locked
-## until the mission is resolved, so no leg can be skipped by travelling directly.
+## until the mission is resolved, so the debrief cannot report on a mission that never happened.
+## A character may also walk straight back to HQ from a resolved mission; the debrief is the
+## formal debriefing, not a corridor the story is forced down.
 const LOCATIONS := {
 	"home": ["hq"],
 	"hq": ["home", "mission"],
-	"mission": ["debrief"],
+	"mission": ["debrief", "hq"],
 	"debrief": ["hq"]
 }
 
@@ -119,6 +121,11 @@ func from_data(data: Dictionary) -> bool:
 		return false
 	for key in ["flags", "dialogue_choices", "character", "encounter", "network", "objective"]:
 		if typeof(data.get(key, null)) != TYPE_DICTIONARY:
+			return false
+	# A save is a claim about state, and an unverifiable claim must be refused before it is applied.
+	# A flag that is not a boolean would read as `true` through `bool()` later; refuse it here.
+	for flag in data["flags"].values():
+		if typeof(flag) != TYPE_BOOL:
 			return false
 	for key in ["journal", "inventory"]:
 		if typeof(data.get(key, null)) != TYPE_ARRAY:
