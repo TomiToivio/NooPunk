@@ -8,8 +8,8 @@ legacy material — it is not the current game, and new work must not drift back
 
 | Artifact | Canonical path | Status |
 | --- | --- | --- |
-| Tabletop rulebook | [`noopunk2/rulebook/RULEBOOK.md`](noopunk2/rulebook/RULEBOOK.md) | **blank by design** |
-| Godot game | [`noopunk2/`](noopunk2/) (`noopunk2/project.godot`) | one room, one player, movement |
+| Tabletop rulebook | [`noopunk/rulebook/RULEBOOK.md`](noopunk/rulebook/RULEBOOK.md) | **blank by design** |
+| Godot game | [`noopunk/game/`](noopunk/game/) (`noopunk/game/project.godot`) | one room, one player, movement |
 | Rules of the process | this file + issue **#827** | meta-issue, stays open |
 
 **Legacy, frozen — do not add to it:** the root `RULEBOOK.md`, `rulebook/`, the root
@@ -19,7 +19,7 @@ working and keep their history. They are not where the new NoöPunk is being des
 ## Run the game
 
 ```sh
-godot --path noopunk2
+godot --path noopunk/game
 ```
 
 Controls: **WASD** or **arrow keys** to move. **Esc** quits. The window opens directly into the
@@ -28,19 +28,19 @@ playable room.
 Headless sanity check (the one CI can run):
 
 ```sh
-godot --headless --path noopunk2 --script res://tests/smoke.gd
+godot --headless --path noopunk/game --script res://tests/smoke.gd
 ```
 
 ```
-PASS: noopunk2 starter — scene loads, player moves, bounds hold, camera present
+PASS: noopunk starter — scene loads, player is centred and movable, bounds hold
 ```
 
 ## How the next piece of work arrives
 
 Tomi supplies **one** rule, interaction or scenario fragment. Then:
 
-1. It is written into `noopunk2/rulebook/RULEBOOK.md`, in its section.
-2. The same decision is implemented in `noopunk2/` so it can be played.
+1. It is written into `noopunk/rulebook/RULEBOOK.md`, in its section.
+2. The same decision is implemented in `noopunk/game/` so it can be played.
 3. Both are checked together — the rulebook says what the game does; the game does what the
    rulebook says.
 4. Only the child issue closes. **#827 stays open.**

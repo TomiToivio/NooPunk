@@ -81,6 +81,7 @@
     {
       "id": "rule-data",
       "globs": [
+        "restart/rulebook/**",
         "data/rules/**",
         "data/npcs/**",
         "data/world/**",
@@ -90,7 +91,8 @@
         "data/scenarios/**"
       ],
       "licence": "author-decision",
-      "note": "The rules in machine-readable syntax; grouped with the rulebook, not with the code. Scenario and dialogue data ships with the rules because it is content, not code."
+      "note": "The rules in machine-readable syntax; grouped with the rulebook, not with the code. Scenario and dialogue data ships with the rules because it is content, not code.",
+      "_restart_note": "The restart rulebook (#827) is author-written; no third-party material is imported into it."
     },
     {
       "id": "licensing-and-source-records",
@@ -108,6 +110,7 @@
       "id": "design-and-audit-records",
       "globs": [
         "docs/**",
+        "restart/**",
         "AGENTS.md",
         ".hermes/**",
         "strategy_game/docs/**",
@@ -142,6 +145,7 @@
     {
       "id": "fixtures-and-scenes",
       "globs": [
+        "restart/game/**",
         "fixtures/**",
         "scenes/**",
         "deploy/**",
@@ -168,7 +172,7 @@
     {
       "id": "restart-project",
       "globs": [
-        "noopunk2/**",
+        "noopunk/**",
         "START_HERE.md"
       ],
       "licence": "author-decision",
