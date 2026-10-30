@@ -406,6 +406,26 @@ When adding or revising mechanics:
 
 Setting work should preserve current 20XX / Earth-intact anchors unless the author explicitly revises them.
 
+## CANONICAL NoöPunk project — restart (#827)
+
+**All new NoöPunk work targets these two paths and no others:**
+
+| What | Path |
+|---|---|
+| Tabletop rulebook | `noopunk/rulebook/RULEBOOK.md` |
+| Godot top-down RPG | `noopunk/game/` (`project.godot`) |
+
+Everything else is **frozen reference**: the legacy `rulebook/`, the earlier Godot projects under
+`godot/` and `src/godot/`, and the Python kernels under `src/rules/`. They are not deleted and not
+extended. If a task appears to belong to an old directory, stop and ask instead of resuming work there.
+
+The rulebook starts blank on purpose. Tomi supplies one rule, scenario concept, interaction or guideline
+at a time; each is implemented in **both** the rulebook and the game in the same pass, and nothing
+broader is invented. Do not operate as an independent design team, and do not create a third
+implementation.
+
+Meta-issue **#827 stays open permanently**. Only scoped child issues close.
+
 ### Tomi's drafts: two synchronised implementations (#814)
 
 Tomi is the authorial source of truth. When a draft arrives, read
