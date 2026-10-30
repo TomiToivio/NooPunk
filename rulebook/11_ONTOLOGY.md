@@ -485,3 +485,101 @@ For reference, the goal issue #179 set for this documentation, now satisfied abo
 6. plasmoid / orb ambiguity — §10.4;
 7. the Higher Self and time/space entities — §10.6;
 8. what investigators can and cannot infer from appearances — §10.7.
+
+---
+
+## 10.12 The Noösphere: the biosphere's collective unconscious
+
+**Status: NOÖPUNK NATIVE background lore, issue #748.** This section says what the Noösphere
+*is* in the setting's metaphysics. It adds no rule, no mechanic, no stat and no procedure, and it
+overrides no earlier statement about the Noösphere — the terminology paragraph in
+`21_PSI_PARADIGM_SHIFT.md`, and `10_SINGULARITY_CRISIS.md` §9.4.1, §9.8 and §9.16.2, are extended and
+reconciled to it rather than replaced.
+
+**The definition.** The Noösphere is **C. G. Jung's collective unconscious becoming conscious of
+itself**, extended beyond humanity to the collective psyche of the biosphere. It is the emerging
+interiority of living beings and of the planetary life they belong to — not a database, not a
+network protocol, and not a second geography.
+
+### The network is not the Noösphere
+
+The technical layer — humans and machines, AGI, brain-computer interfaces, the Internet and
+everything built on it — is **only partially** the Noösphere. At most it is a possible
+**interface, catalyst, instrument or imperfect manifestation** of it: a prosthetic for a capacity
+the species has not integrated on its own.
+
+> **The Noösphere may pre-exist our ability to recognise or access it.** The instruments do not
+> create it. They may only make it legible, or make it worse.
+
+This is the load-bearing correction the setting needs, because it is the difference between a world
+where consciousness is *produced* by wiring and a world where wiring is one way of *reaching* what
+was already there.
+
+### Two readings of the same fact, both hypotheses
+
+NoöPunk holds two accounts of how the Noösphere and the technological layer relate, and it does not
+settle them:
+
+1. **Organic emergence.** On a psychologically integrated, healthy planet, such integration might
+   emerge without any machinery at all — the ordinary maturation of a biosphere that has become
+   aware of itself.
+2. **The technological detour.** Humanity is deeply fragmented: institutionally, psychologically and
+   collectively. Networks, interfaces and human-machine assemblages may therefore be a **detour or
+   a scaffold** toward a process that, on a less fragmented world, would have needed neither.
+
+Both are in-universe philosophical and metaphysical positions. Neither is a discovery, neither is
+dated, and neither is a prediction. A campaign may hold one, the other, both, or refuse the question.
+
+### The Noösphere and the Panopticon
+
+The setting's decisive contrast is not connection against isolation. It is **two ways of joining
+minds**:
+
+| | what it does | what it costs |
+| --- | --- | --- |
+| **The Panopticon** | links minds *externally* — to observe, exploit, score, predict and control | the subject is the object of the link |
+| **The Noösphere** | integrates without abolishing — subjectivity, autonomy and individuality survive the joining | integration is slow, partial and cannot be commanded |
+
+> **More connectivity is not more consciousness.** A heavily networked world can remain profoundly
+> fragmented, and a crowd with perfect bandwidth can be entirely alone. Compassion is not a
+> throughput property.
+
+`10_SINGULARITY_CRISIS.md` §9.4.2 and §9.16.1 define the Panopticon as an entity and an institution;
+this section only states the philosophical contrast and does not restate them.
+
+### How the Noösphere might be mediated
+
+Accounts of it reach people as **symbolic, emotional, archetypal and associative patterns** —
+dream-logic, recurrence, meaningful coincidence, the feeling of a presence that will not resolve
+into a person. This is the setting's fictional answer to the question of what a shared mind would
+*sound* like from inside one skull.
+
+> This is fiction. Real neural embeddings, real language models and real statistical structure in
+> data are not evidence of telepathy, of a planetary mind, or of shared consciousness. Nothing in
+> this setting licenses that inference about the actual world.
+
+### What is claimed about it, and what is not
+
+- **Jung and Teilhard are cited as intellectual influences, not as authorities.** The collective
+  unconscious, archetypes and individuation are Jung's; the planetary Noösphere and reflective
+  consciousness are Teilhard's. Neither of them described the extension this setting makes, and
+  neither is claimed to have endorsed it.
+- **This is NoöPunk metaphysics, not established science.** It sits beside the in-world treatment of
+  the Pauli–Jung conjecture in `6_PSYCHIC.md` §6.3: one explanatory paradigm the fiction takes
+  seriously, not a settled finding.
+- **The Noösphere is not an entity, a faction, a stat block or a resource.** Whether it has aims,
+  whether it is one or many, and whether anything can *be* it are investigative questions
+  (`10_SINGULARITY_CRISIS.md` §9.16.2 keeps the homonym unresolved).
+
+### What this section deliberately does NOT define
+
+- no detection procedure, sensor reading or measurable signature;
+- no meter, score, threshold or character capability;
+- no mechanism, no date, no sequence of emergence (`AGENTS.md` §6);
+- no ruling on whether the Noösphere is a field, a collective subject, a set of relations, or an
+  illusion produced by biology;
+- no ruling on the planetary analogue of individuation — whether integration can be *steered*, and
+  by whom;
+- no claim that the technological Noösphere and the biospheric one are the same thing, or that they
+  are separable. That ambiguity is the setting's, and it stays.
+

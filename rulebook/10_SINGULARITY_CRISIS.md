@@ -368,6 +368,11 @@ The developmental sequence:
 > **This gives the Noösphere a technological and social genealogy instead of making it purely
 > mystical.**
 
+The genealogy is **how humanity reached** a Noösphere, not an account of **what the Noösphere is**
+(#748): [`11_ONTOLOGY.md`](11_ONTOLOGY.md) §10.12 holds that the deeper Noösphere may pre-exist
+recognition, and that this network is at most its interface or its scaffold. Both statements stand,
+and neither is the whole of the concept.
+
 Teilhard, Vernadsky, global-brain theory, cybernetics, network society and modern AI become
 **different historical descriptions of the same emerging process** — which is precisely how
 a syncretic setting should hold them.
@@ -708,6 +713,10 @@ position**, which is the setting's central irony:
   neither, is **deliberately investigable and unresolved**. The homonym is the hook, not a
   mistake: `21_PSI_PARADIGM_SHIFT.md` defines the Noösphere as the emergent planetary network of
   conscious agents, and the entity uses the name without the setting granting the identity.
+  `11_ONTOLOGY.md` §10.12 adds a third referent without resolving the question — the biospheric
+  collective unconscious that the network may only mediate — so the name now carries the entity,
+  the network and the deeper Noösphere at once, and the identity claim stays exactly as open as
+  this section requires.
 
 ### 9.16.3 Thanatos is responsible, and it did not leave wholly
 
