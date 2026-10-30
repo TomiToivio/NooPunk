@@ -7,13 +7,23 @@ extends Control
 ## specialisation or background, because the issue specifies none.
 
 const MAIN_SCENE := "res://main.tscn"
-const RNG := RandomNumberGenerator
 
 var _rng := RandomNumberGenerator.new()
 var _rows: VBoxContainer
 var _values: Dictionary = {}
 
 func _ready() -> void:
+	_ensure_built()
+
+## `_ready` does not run for nodes added by a `--script` runner before the main loop starts, so the
+## screen builds itself on first use as well. The headless check calls `row_count()`/`sheet_values()`
+## directly; in the running game `_ready` does it.
+var _built := false
+
+func _ensure_built() -> void:
+	if _built:
+		return
+	_built = true
 	_rng.randomize()
 	var root := VBoxContainer.new()
 	root.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -54,7 +64,7 @@ func _on_roll() -> void:
 	_values = NoopunkAttributes.sheet(rolled)
 	# Autoloads do not exist when the project is run with `--script` (the headless checks), so the
 	# lookup is guarded; in the running game the singleton is always there.
-	var sheet := get_node_or_null("/root/Sheet")
+	var sheet = get_node_or_null("/root/Sheet") if is_inside_tree() else null
 	if sheet != null:
 		sheet.set_roll(rolled)
 	_render()
@@ -72,10 +82,12 @@ func _render() -> void:
 
 ## The values currently on the sheet, for the headless check.
 func sheet_values() -> Dictionary:
+	_ensure_built()
 	return _values.duplicate()
 
 ## How many attribute rows the screen is showing.
 func row_count() -> int:
+	_ensure_built()
 	return _rows.get_child_count() if _rows != null else 0
 
 func _on_continue() -> void:
