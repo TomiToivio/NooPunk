@@ -64,7 +64,23 @@ All 18 worker daily wages are transcribed from [Common Wages](https://cwn.quadri
 | 4.2 | Hacking mechanics | yes — `hacking.gd` (Access, security, alert clock) | yes | partial | **unverified** |
 | 4.3 | Programs | yes — `cwn_programs.gd`, `cwn_program_rules.gd`, **`cwn_hacking_catalogue.gd`** | yes — `test_cwn_hacking_catalogue.gd` | no | **verified for the 24 Verbs and 12 Subjects** (verbatim transcription, cited) |
 | 4.4 | Demons and watchdogs | partial — demons referenced in hacking | partial | no | **absent** |
-| 4.5 | Servers and architecture | partial — node linking in `hacking.gd` | yes | **no — no node-link screen** | **absent** |
+| 4.5 | Servers and architecture | yes — `godot/ui/hacking_screen.gd` over the `hacking.gd` node model | yes — `test_hacking_screen.gd` (20 rows) | **yes — node-link screen, reachable from the main menu** | **playable; verification pending** |
+
+## Node-link screen (the item this issue called highest value)
+
+`godot/ui/hacking_screen.gd` + `scenes/hacking/node_link.tscn`, reachable from the main menu as
+**Hacking — node link (warehouse network)**. It renders the network's nodes and links, connects them
+through the kernel (CPU and Access spent by the kernel, not by the screen), offers only the verbs the
+node actually has, and shows the alert clock and alarm state.
+
+The screen decides nothing: reachability, Access, CPU, the 2d6 check and the alert clock all come from
+`godot/core/hacking.gd`, and a refusal is displayed using the kernel's own `reason`. That is what keeps
+a UI from becoming a second rule implementation.
+
+One integration detail worth recording: the Romppainen mission already carried `network` and `deck`, so
+the menu opens that data rather than a demo fixture invented for the screen.
+
+Verified: **1312 checks, 0 failed**; `godot --headless --path . --quit-after 60` launches clean.
 
 ## What the table says plainly
 

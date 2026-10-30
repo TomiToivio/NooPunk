@@ -23,6 +23,7 @@ const SUITES := [
 	"res://godot/tests/test_cwn_wages.gd",
 	"res://godot/tests/test_rules_adapter.gd",
 	"res://godot/tests/test_combat.gd",
+	"res://godot/tests/test_hacking_screen.gd",
 	"res://godot/tests/test_hacking.gd",
 	"res://godot/tests/test_cwn_hacking_catalogue.gd",
 	"res://godot/tests/test_scene_flow.gd",
