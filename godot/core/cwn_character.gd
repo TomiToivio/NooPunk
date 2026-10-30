@@ -15,6 +15,8 @@ extends RefCounted
 class_name CwnCharacter
 
 const ATTRIBUTES := ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
+## The three agencies a player character may serve (#806).
+const AGENCIES := ["Suojelupoliisi", "Europol", "UNSA"]
 const ARRAY := [14, 12, 11, 10, 9, 7]
 const SUBSTITUTE_SCORE := 14
 const MAX_CREATION_SKILL_LEVEL := 1
@@ -127,3 +129,181 @@ class SkillPool extends RefCounted:
 			levels[skill] = current + 1
 			return int(levels[skill])
 		return -1  # already at the creation cap: the pick must go elsewhere
+
+## --- Creation and consequence helpers merged from the compatibility tree (#791) ---------------
+## These are views over the same rules above, not a second implementation: `from_rolls` delegates to
+## `roll_attributes`, `from_array` to `assign_array`. They exist because callers and tests written
+## against the `src/godot/` copy used this shape, and a merge should not make working call sites
+## rewrite themselves for no rules reason.
+
+## Six rolls taken in order, with the optional single 14 substitution applied.
+static func from_rolls(rolls: Array, substitute_at: int = -1) -> Dictionary:
+	var scores := {}
+	for index in range(mini(rolls.size(), ATTRIBUTES.size())):
+		var score := int(rolls[index])
+		if index == substitute_at:
+			score = maxi(score, SUBSTITUTE_SCORE)
+		scores[ATTRIBUTES[index]] = score
+	var modifiers := {}
+	for name in ATTRIBUTES:
+		modifiers[name] = Kernel.ability_modifier(int(scores.get(name, 10)))
+	return {"attributes": scores, "modifiers": modifiers,
+		"substituted": substitute_at >= 0}
+
+## The fixed array assigned in attribute order, which forfeits the substitution.
+static func from_array(order: Array = ARRAY) -> Dictionary:
+	var assignment := {}
+	for index in range(mini(order.size(), ATTRIBUTES.size())):
+		assignment[ATTRIBUTES[index]] = int(order[index])
+	var result := assign_array(assignment)
+	return {"attributes": result.get("scores", {}), "modifiers": {},
+		"substituted": true, "ok": result.get("ok", false)}
+
+## The creation-time pick rule: first pick rank 0, second rank 1, third refused.
+static func creation_skill_pick(current_rank: int) -> Dictionary:
+	if current_rank < 0:
+		return {"rank": 0, "allowed": true, "reason": "first pick"}
+	if current_rank == 0:
+		return {"rank": 1, "allowed": true, "reason": "second pick"}
+	return {"rank": current_rank, "allowed": false, "reason": "already level-1 at creation"}
+
+## A new character's maximum hit points: **1d6** plus the Constitution modifier, never below 1.
+## `hit_points()` above answers a different question (total at a level, with average allowance);
+## this one exists because assuming a 6 at level 1 hands every character three extra hit points and
+## is not what the source says.
+static func max_hit_points(roll: int, con_modifier: int, hard_to_kill: bool = false) -> int:
+	var total := clampi(roll, 1, 6) + (2 if hard_to_kill else 0) + con_modifier
+	return maxi(1, total)
+
+## A save target from modifiers rather than scores, for callers holding a modifier set.
+## Must agree with `saves()`; `test_cwn_engine` asserts the agreement so they cannot drift.
+static func save_target(kind: String, level: int, modifiers: Dictionary) -> int:
+	var best := 0
+	match kind.to_lower():
+		"physical":
+			best = maxi(int(modifiers.get("STR", 0)), int(modifiers.get("CON", 0)))
+		"evasion":
+			best = maxi(int(modifiers.get("DEX", 0)), int(modifiers.get("INT", 0)))
+		"mental":
+			best = maxi(int(modifiers.get("WIS", 0)), int(modifiers.get("CHA", 0)))
+		"luck":
+			best = 0
+		_:
+			return 15 - (level - 1)
+	return 15 - (level - 1) - best
+
+## NPCs use one target: 15 minus half their hit dice, rounded down.
+static func npc_save_target(hit_dice: int) -> int:
+	return 15 - int(floor(float(maxi(1, hit_dice)) / 2.0))
+
+## Extra languages beyond the campaign lingua franca: level-0 grants one, level-1 grants two.
+static func extra_languages(know_rank: int, connect_rank: int) -> int:
+	var count := 0
+	count += 2 if know_rank >= 1 else (1 if know_rank == 0 else 0)
+	count += 2 if connect_rank >= 1 else (1 if connect_rank == 0 else 0)
+	return count
+
+## --- #806: the player character and the companion who used to be the protagonist ---------------
+
+## A player-created level-1 field agent of Supo, Europol or UNSA.
+##
+## The player is not Romppainen any more: this returns the *persistent protagonist* record, with the
+## agency as the only campaign-side choice the source does not fix, skills from creation picks, and
+## hit points rolled on the actual d6 rather than assumed.
+static func create_field_agent(params: Dictionary) -> Dictionary:
+	var agency := str(params.get("agency", "")).strip_edges()
+	if not (agency in AGENCIES):
+		return {"ok": false, "reason": "unknown_agency", "expected": AGENCIES}
+	var rolls: Array = params.get("rolls", [])
+	if rolls.size() != ATTRIBUTES.size():
+		return {"ok": false, "reason": "six_attribute_rolls_required"}
+	var identity := from_rolls(rolls, int(params.get("substitute_at", -1)))
+	var con_mod := int(identity["modifiers"].get("CON", 0))
+	var hp := max_hit_points(int(params.get("hp_roll", 1)), con_mod,
+		bool(params.get("hard_to_kill", false)))
+	var name := str(params.get("name", "")).strip_edges()
+	return {
+		"ok": true,
+		"member": {
+			"id": str(params.get("id", "pc")),
+			"name": name if not name.is_empty() else "Field Agent",
+			"agency": agency,
+			"role": "field_agent",
+			"level": 1,
+			"is_pc": true,
+			"controllable": true,
+			"attributes": identity["attributes"],
+			"modifiers": identity["modifiers"],
+			"hit_points": hp,
+			"max_hit_points": hp,
+			"saves": {},
+			"skills": Dictionary(params.get("skills", {})).duplicate(true),
+			"inventory": Array(params.get("inventory", [])).duplicate(true),
+			"xp": 0,
+		},
+	}
+
+## Bridge from a created member record to the sheet the slice consumes (#809/#814 step 4).
+##
+## `create_field_agent()` and `romppainen_companion()` produce *member* records: what the party
+## roster needs. `session.gd`, `combat.gd` and the scene flow read a *character sheet*:
+## `hp_max`, `ac`, an `attack` block, Strain, gear. Both shapes are legitimate; this converts one to
+## the other so a created agent can be played without the scenario shipping a hand-written sheet.
+##
+## Values that the member record does not carry come from `extras` — a scenario's gear choice, an
+## unarmed attack, a psionic package — never from a hidden default that would silently change a rule.
+static func to_session_sheet(member: Dictionary, extras: Dictionary = {}) -> Dictionary:
+	var attributes: Dictionary = Dictionary(member.get("attributes", {})).duplicate(true)
+	# A member record may carry only the scores its build names; a sheet needs all six, because saves
+	# read them. An absent score is 10 (+0), never a missing key.
+	for score_name in ATTRIBUTES:
+		if not attributes.has(score_name):
+			attributes[score_name] = 10
+	var dexterity := int(attributes.get("DEX", 10))
+	var constitution := int(attributes.get("CON", 10))
+	var dex_mod := effective_modifier(dexterity)
+	var hit_points := int(member.get("hit_points", member.get("max_hit_points", 1)))
+	var ac := int(extras.get("ac", 10 + dex_mod))
+	var attack: Dictionary = Dictionary(extras.get("attack", DEFAULT_ATTACK)).duplicate(true)
+	var sheet := {
+		"id": str(member.get("id", "pc")),
+		"name": str(member.get("name", "Field Agent")),
+		"level": int(member.get("level", 1)),
+		"role": str(member.get("role", "field_agent")),
+		"kind": "pc" if bool(member.get("is_pc", false)) else "npc",
+		"attributes": attributes,
+		"skills": Dictionary(member.get("skills", {})).duplicate(true),
+		"hp_max": hit_points, "hp": hit_points,
+		"ac": ac, "ac_melee": int(extras.get("ac_melee", ac)), "ac_ranged": int(extras.get("ac_ranged", ac)),
+		"attack": attack,
+		"saves": saves(int(member.get("level", 1)), attributes),
+		"strain": {"max": constitution, "used": 0},
+		"gear": Array(member.get("inventory", [])).duplicate(true),
+		"psionics": Dictionary(extras.get("psionics", {"disciplines": {}, "packages": []})).duplicate(true),
+		"source": "NoöPunk member record -> session sheet bridge",
+	}
+	if member.has("agency"):
+		sheet["agency"] = str(member["agency"])
+	return sheet
+
+## An unarmed or generic holdout attack, so a sheet is never unusable for want of a weapon line.
+const DEFAULT_ATTACK := {
+	"name": "sidearm", "weapon_kind": "ranged", "attribute": "DEX", "combat_rank": 0,
+	"attack_bonus": 1, "damage": [1, 6, 0], "trauma_rating": 1, "trauma_target": 6,
+	"shock_value": 0, "shock_ac": -1, "ammo": 8, "ammo_max": 8, "lethal": true,
+}
+
+## Romppainen as an experienced companion: never level 1, never the protagonist, not always present.
+## `level` is scenario-driven; the default reflects "more experienced than a starting agent" without
+## fixing a campaign number the author has not ruled on.
+static func romppainen_companion(level: int = 6) -> Dictionary:
+	return {
+		"id": "romppainen",
+		"name": "Dr. Inspector Harri Romppainen",
+		"agency": "Suojelupoliisi",
+		"role": "investigator",
+		"level": maxi(2, level),
+		"is_pc": false,
+		"controllable": true,
+		"inventory": [],
+	}

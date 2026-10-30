@@ -1,0 +1,13 @@
+{
+  "_note": "Romppainen is an experienced senior investigator and an optional companion, never the player avatar (#809). His sheet is the legacy slice's character.json; scenarios may recruit him.",
+  "id": "romppainen",
+  "name": "Dr. Harri S. Romppainen",
+  "kind": "npc",
+  "role": "senior_investigator",
+  "level": 5,
+  "control": "ai",
+  "temporary_control": true,
+  "availability": "scenario",
+  "recruitable": true,
+  "sheet_source": "mvp_romppainen/character.json"
+}

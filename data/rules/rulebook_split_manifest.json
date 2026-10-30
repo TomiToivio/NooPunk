@@ -5,7 +5,7 @@
   "issue": 232,
   "source": "RULEBOOK.md",
   "$only_edit": "The navigation block linking this index. Never the body.",
-  "source_sha256": "b67ba3171ba540c9655a770e6513f6ea0111fdfdac66c3043155846fd915f6c3",
+  "source_sha256": "94bd0b2ebd20f593dcd9df6095f853c632e6b700aa35a43cd8df428a5539266b",
   "appendix_marker": "# Extended canon and reference material",
   "section_count": 63,
   "parts": {
@@ -139,8 +139,8 @@
           "kind": "core",
           "number": 8,
           "heading": "## 8. Psychic Systems",
-          "body_sha256": "4acdadab0b2b1866898806a79c56bab51e6a74ff1bced27b196fec942d474284",
-          "body_lines": 86
+          "body_sha256": "c05856feb9d1193f81c46a39362082fd1ab53dd4afe8d429c8caa3cda5b20ce2",
+          "body_lines": 88
         },
         {
           "kind": "appendix",
@@ -503,15 +503,15 @@
           "kind": "appendix",
           "number": 34,
           "heading": "## 34. NoöPunk glossary",
-          "body_sha256": "0f2a878b687effae7e334a84bac421a2855c7334236dc8f2ba18730d5061218e",
-          "body_lines": 390
+          "body_sha256": "3c7b7e0bb673054c5aac967cfe96e3f8fefe8fa2ac72942a8e883b91ed258dde",
+          "body_lines": 392
         },
         {
           "kind": "appendix",
           "number": 35,
           "heading": "## 35. Sources, recommended reading, and influences",
-          "body_sha256": "579f73af0af7ef6bfed0623fd4acd5b1da861f856e3277b57fd121727fe5344a",
-          "body_lines": 257
+          "body_sha256": "e129c2efb2777cfbe1adbe23f04c594483ac6c7be1948cbfb5a02ac5adb26d31",
+          "body_lines": 267
         },
         {
           "kind": "appendix",

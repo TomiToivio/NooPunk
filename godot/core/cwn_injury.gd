@@ -1,9 +1,11 @@
-class_name CWNInjury
+class_name CwnInjury
 extends RefCounted
 
 ## Major Injuries and the zero-hit-point procedure.
 ##
-## Ported from `src/rules/cwn_major_injury.py` and `src/rules/cwn_injury_procedure.py`.
+## Port of `src/rules/cwn_major_injury.py` and `src/rules/cwn_injury_procedure.py`, merged into the
+## canonical `godot/core/` tree (#791). The `src/godot/` copy is deleted; this file is the only
+## implementation.
 ##
 ## The sequence is the part a runtime cannot guess, and the part three modules previously each half
 ## owned: reaching zero hit points is **not automatically** a Major Injury. The risk predicate tests
@@ -118,7 +120,7 @@ static func resolve_zero_hit_points(params: Dictionary) -> Dictionary:
 	if not major_injury_risk(hit_points_after, traumatic, lethal):
 		return {"mortally_wounded": true, "risked_major_injury": false, "save": {}, "injury": {}}
 
-	var target := CWNCharacter.save_target("physical", level, modifiers)
+	var target := CwnCharacter.save_target("physical", level, modifiers)
 	var die: int = int(params.get("save_die", 0))
 	assert(die >= 1 and die <= 20, "a risked Major Injury needs its Physical save roll")
 	var passed := save_succeeds(die, target)

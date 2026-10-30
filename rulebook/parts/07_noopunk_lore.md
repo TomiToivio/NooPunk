@@ -184,43 +184,9 @@ PSI existed before the NHI Crisis, but was generally weak, noisy and controversi
 became more common, reliable, powerful and scientifically tractable after the **Noösphere
 began to awaken during the crisis**.
 
-The Noösphere is, in its deepest sense, the **collective unconscious of the biosphere becoming
-conscious of itself**. Only partially is it the emergent planetary / transplanetary layer of
-interconnected cognition, information, consciousness, culture, technology and agency: that layer
-is its technological interface and, so far, an imperfect manifestation of it. See §33.6c.
-
-### 33.6c What the Noösphere is, and what it is not
-
-The Noösphere is not the network of humans and machines. It is the collective unconscious of the
-biosphere becoming conscious of itself. Our networks and neural interfaces may be humanity's
-technological detour toward a mode of integration that, on a less fragmented planet, might have
-arisen naturally. The Panopticon connects minds to control them; the Noösphere connects without
-abolishing their freedom.
-
-**Sources of the idea.** The definition joins three lines of speculation, without claiming any of
-them as science:
-
-- **C. G. Jung** — the collective unconscious, archetypes and individuation, imagined at planetary
-  scale: an integration that does not erase the individuals who take part in it.
-- **Pierre Teilhard de Chardin** — the Noösphere as the evolution of reflective consciousness on
-  Earth.
-- **Panpsychist and idealist philosophy** — interiority extended beyond humanity toward the
-  collective psyche of the biosphere.
-
-**In-universe status.** This is NoöPunk metaphysics, not an established scientific finding, and not
-a claim that Jung or Teilhard endorsed it. The setting treats it as a live hypothesis: some
-characters and institutions believe it, some deny it, and the text does not settle it.
-
-**The technological question stays open.** On a psychologically integrated planet, such integration
-might emerge organically. Humanity is deeply fragmented, so brain-computer interfaces, artificial
-networks and human–machine assemblages may be a technological detour or scaffold toward something
-that might otherwise have unfolded without them. The network is at most an interface, catalyst,
-instrument or imperfect manifestation — and the Noösphere may pre-exist our ability to recognise or
-reach it.
-
-**More connectivity is not more consciousness.** A heavily networked world can remain profoundly
-fragmented. Connectivity, compassion and psychological integration are not the same quantity, and a
-society can confuse the first for the others.
+The Noösphere is an emergent planetary / transplanetary layer of interconnected cognition,
+information, consciousness, culture, technology and agency. In the setting's more
+metaphysical language, the old **collective unconscious is becoming conscious**.
 
 ### 33.6a The Law of One is real, distorted, and incomplete
 
@@ -871,10 +837,6 @@ Communities form to compare pieces of the signal, and reconstructing the message
 The signal may be less an explanation than an **activation event**.
 
 Historians later identify it as the moment the human **Noösphere becomes consciously active**.
-
-On the definition in §33.6c, what activates is not the Noösphere's existence but humanity's
-*recognition of and participation in* it. Whether the VALIS event created a new collective mind or
-merely opened an existing one is left deliberately unresolved.
 
 After the VALIS event:
 
