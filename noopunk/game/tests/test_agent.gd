@@ -17,8 +17,7 @@ func _init() -> void:
 	for total in bands:
 		check("total %d" % total, Agent.value_for_total(total), bands[total])
 
-	check("human min", Agent.HUMAN_MIN, -3)
-	check("human max", Agent.HUMAN_MAX, 3)
+	check("human range", Agent.human_range(), [-3, 3])
 	check("signed positive", Agent.signed(2), "+2")
 	check("signed negative", Agent.signed(-3), "-3")
 	check("signed zero", Agent.signed(0), "+0")
@@ -39,6 +38,18 @@ func _init() -> void:
 		if Agent.is_transhuman(Agent.roll_sheet()):
 			failures += 1
 			print("FAIL rolled sheet reported transhuman")
+
+	# the sheet puts itself away without losing the rolled agent
+	var main: Node2D = load("res://main.tscn").instantiate()
+	root.add_child(main)
+	var sheet = main.get_node("Sheet")
+	sheet._ready()
+	var body: Label = sheet.get_node("Panel/VBox/Body")
+	var rolled := body.text
+	sheet.continue_to_world()
+	check("continue hides the sheet", sheet.get_node("Panel").visible, false)
+	check("continue keeps the roll", body.text, rolled)
+	main.queue_free()
 
 	print("checks done, failures: %d" % failures)
 	quit(0 if failures == 0 else 1)

@@ -15,17 +15,27 @@ into `main.tscn`.
 ## What you see
 
 A UNSA agent's sheet on the left — seven attributes rolled on 3d6 and shown as signed values — and the
-walking scene behind it. **R** rolls a new agent; **WASD / arrows** move. The sheet stays as it is while
-you walk, so the rolled agent is the one you are playing.
+walking scene behind it.
+
+| Key | Action |
+|---|---|
+| **R** | roll a new agent (sheet open) |
+| **Enter / Space** | put the sheet away and walk |
+| **Tab** | bring the sheet back |
+| **WASD / arrows** | move |
+
+The roll is kept when the sheet is put away, so the agent you walk as is the one you rolled.
 
 ## Tests
 
 ```bash
 godot --headless --path noopunk/game --script res://tests/test_agent.gd
+godot --headless --path noopunk/game --script res://tests/smoke.gd
 ```
 
-Covers every band boundary (3–18), the seven attributes, the −3…+3 human range, and that a rolled sheet
-is never transhuman.
+`test_agent.gd` covers every band boundary (3–18), the seven attributes, the −3…+3 human range read from
+the shared table, and that a rolled sheet is never transhuman. `smoke.gd` covers the scene, movement,
+bounds and the continue/reopen behaviour.
 
 ## Files
 
@@ -38,6 +48,7 @@ is never transhuman.
 | `sheet.gd` | the character sheet overlay and reroll key |
 | `data/attributes.json` | **single source of truth** for the tables |
 | `tests/test_agent.gd` | headless rules test |
+| `tests/smoke.gd` | headless scene/movement test |
 
 ## Growing this project
 

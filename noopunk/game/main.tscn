@@ -14,7 +14,7 @@ offset_bottom = 360.0
 color = Color(0.07, 0.08, 0.11, 1)
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(320, 260)
+position = Vector2(320, 180)
 script = ExtResource("1_player")
 
 [node name="Body" type="ColorRect" parent="Player"]
@@ -47,4 +47,15 @@ text = "UNSA AGENT"
 text = "..."
 
 [node name="Hint" type="Label" parent="Sheet/Panel/VBox"]
-text = "R — roll"
+text = "R — roll   ·   Enter — continue"
+
+[node name="Continue" type="Button" parent="Sheet/Panel/VBox"]
+text = "Continue (Enter)"
+
+[node name="Reopen" type="Label" parent="Sheet"]
+offset_left = 12.0
+offset_top = 328.0
+offset_right = 300.0
+offset_bottom = 348.0
+text = "Tab — sheet"
+visible = false

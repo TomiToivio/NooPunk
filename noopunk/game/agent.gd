@@ -6,8 +6,6 @@ class_name Agent
 ## rulebook cites the same file, so the book and the game cannot drift into two tables.
 
 const DATA_PATH := "res://data/attributes.json"
-const HUMAN_MIN := -3
-const HUMAN_MAX := 3
 
 static var _doc: Dictionary = {}
 
@@ -55,5 +53,18 @@ static func roll_sheet() -> Array:
 	return rows
 
 
+static func human_range() -> Array:
+	## The author's range, read from the shared file rather than restated here. JSON numbers
+	## arrive as floats, so they are narrowed once here for the rest of the game.
+	var raw: Array = _data().get("human_range", [])
+	if raw.size() != 2:
+		return []
+	return [int(raw[0]), int(raw[1])]
+
+
 static func is_transhuman(rows: Array) -> bool:
-	return rows.any(func(row): return row[2] > HUMAN_MAX)
+	var limits := human_range()
+	if limits.size() != 2:
+		push_error("attributes.json has no human_range")
+		return false
+	return rows.any(func(row): return row[2] > int(limits[1]))
