@@ -1,5 +1,10 @@
 # Issue #564 — CWN/SWN chassis: measured baseline, disposition matrix, and the ruling it needs
 
+> **Dispositions superseded, 2026-10-30:** the verdicts below were measured against the retired
+> 1d10 / FIT-REF-INT-SOC-CYB-PSY baseline. Under the 2026-10-26 [Without Number baseline](../../rulebook/WITHOUT_NUMBER_BASELINE.md)
+> almost every row flips to **AS-IS**. The **measurements stand and are still cited**; the
+> **classifications do not**. Current dispositions: [`ISSUE_747_WN_RESKIN_MATRIX.md`](ISSUE_747_WN_RESKIN_MATRIX.md).
+
 **Status: design record and decision support. Not rules. No mechanic is approved or implemented by
 this file.**
 

@@ -1,5 +1,11 @@
 # SWN Revised → NoöPunk conversion matrix
 
+> **Coverage column partly superseded, 2026-10-30:** "pending" cells below describe the state before
+> the 2026-10-26 [Without Number baseline](../../rulebook/WITHOUT_NUMBER_BASELINE.md) and before #749's
+> Godot slice. The chapter map and the licence boundary stand. Current per-subsystem dispositions:
+> [`ISSUE_747_WN_RESKIN_MATRIX.md`](../design/ISSUE_747_WN_RESKIN_MATRIX.md); the Godot engine gaps are
+> measured in [`ISSUE_749_MVP_DELIVERY_LEDGER.md`](../godot/ISSUE_749_MVP_DELIVERY_LEDGER.md).
+
 Source: *Stars Without Number Revised* (Kevin Crawford, Sine Nomine, © 2017), user-supplied deluxe PDF, 325 PDF pages. Printed chapter starting pages below follow the book table of contents. This is a design and implementation map **not a reproduction of copyrighted source prose or tables**. Refer to the authorized book for power, item, ship and faction asset catalogues.
 
 **Architecture:** Cities Without Number remains the primary rules chassis for ordinary characters, combat, injury, cyberware and hacking. SWN is supplementary for psionics, space, alien creatures, strategic factions and appropriate science-fiction equipment; WWN is supplementary for interdimensional worlds and AWN for disaster regions. Preserve the grounded Nordic investigative starting scenarios; spacefaring is optional and appears later.

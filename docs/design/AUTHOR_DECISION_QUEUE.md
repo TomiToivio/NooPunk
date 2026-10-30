@@ -173,6 +173,21 @@ play: the pilot is written so that every answer changes what the material *claim
 | D53 | **Empathy and humanity: attribute, track, or skills only?** Canon already resolves empathy through `Connect`, `Talk`, `Kinesics` and `Perceive`, so a new EMP attribute would duplicate them. The memo also insists empathy is **not morality**: an android, hybrid or augmented character can be empathetic. The question is whether *humanity / identity / alienation* needs numbers at all, or belongs in prose plus an optional track rather than a meter that would quietly become an alignment score. | any humanity or alienation subsystem; the android and manipulator builds in §12 | *skills only* / *optional track* / *EMP attribute* |
 | D54 | **CYB: attribute, derived statistic, or skill-only?** `System Strain` already prices the body's cost, and CWN resolves hacking as `INT/Program` with `Interface` / `Program` / `Hardware` as aptitude — so a CYB attribute risks counting the same thing twice and penalising unaugmented characters by definition. The counter-case is that technological intuition is a real axis the six cannot express. Terminology rides along: `Interface` is already a skill, so an attribute called Cybernetics or Tech must not collide with it. | any CYB attribute or derived track; the augmented-hacker build in §12; terminology in §11 | *attribute* / *derived* / *skill-only* |
 
+## #747 — the reskin review (rows D55–D57)
+
+Thirteenth update (2026-10-30). Issue **#747** asks for a chapter-by-chapter review of CWN/SWN and a
+minimal reskin. The disposition matrix re-derived against the 2026-10-26 baseline is
+[`ISSUE_747_WN_RESKIN_MATRIX.md`](ISSUE_747_WN_RESKIN_MATRIX.md): **21 of its 30 rows are AS-IS or
+AS-IS-with-optional-scope**, four are NoöPunk-native modules that already exist and switch off
+independently, two are cosmetic, and **one is a genuine conflict between two rulings**. These three
+rows are what that review cannot settle by itself. None of them blocks play today.
+
+| # | Decision | Blocks | Smallest useful answer |
+| --- | --- | --- | --- |
+| D55 | **The hacking access model.** Two rulings are both on record: #566 (2026-10-25, `docs/CWN_CHASSIS.md`) says *"CWN's matrix-like reachability **is not adopted** … access is not the scarce thing"*; the 2026-10-26 `WITHOUT_NUMBER_BASELINE.md` §6 says *"**Access and reachability first**, then the actual source procedure"*. They decide different games: a scene that begins with "can you reach it?" versus one that begins with "you are already inside — what does it cost you?". The code carries both sides (`src/rules/cwn_hacking.py` preconditions vs `src/rules/ubiquitous_network.py` exposure economy), and #749's Godot slice implements a reach→access→program→trace chain with calibrated numbers. | #752's node-link hacking screen; every intrusion scene in both games; whether `ubiquitous_network.py` or `cwn_hacking.py` is the reference for reachability | *ambient network (access is not scarce)* / *reachability first (source)* / *ambient, but reach is still a scene-level fact* |
+| D56 | **The reskin pass itself.** D51 left the attribute *presentation* deferred as its own work item: do the six display aliases ship (STR→Might, DEX→Reflexes, CON→Vitality, INT→Intellect, WIS→Psyche/Insight, CHA→Presence), and does the same pass rename skills, gear and NPC job titles for a 2045 Nordic setting — with `STR…CHA` and every existing identifier unchanged in data, saves and rules text? | any renaming work; character-sheet labels; #747's rows 29–30 | *keep codes and source vocabulary* / *display aliases only* / *aliases + skill and gear vocabulary* |
+| D57 | **Whether any MINOR-MOD departure is approved.** After the re-derivation only one row is a departure, and it is not a NoöPunk design choice but a contradiction (D55). Approving none keeps NoöPunk literally "CWN/SWN as-is" plus four optional native modules; approving one requires the source rule, the ruling that forces it and the file it lives in. | the overlay document `rulebook/NOOPUNK_WN_OVERLAY.md`, whose deviations table is empty until this is answered | *approve none (overlay = hierarchy + vocabulary + optional modules)* / *approve the rows you name* |
+
 ## After an answer
 
 Each answered row becomes: a criterion check against `main` → an acceptance record in

@@ -1,5 +1,10 @@
 # NoöPunk RPG chassis inventory (#564, step 1)
 
+> **Superseded as current state, 2026-10-30:** this inventory describes the two-kernel world
+> (1d10 legacy / 4dF crossover) that the 2026-10-26 [Without Number baseline](../rulebook/WITHOUT_NUMBER_BASELINE.md)
+> replaced for the tabletop. It remains a correct historical inventory of the code as it was.
+> Current dispositions: [`ISSUE_747_WN_RESKIN_MATRIX.md`](design/ISSUE_747_WN_RESKIN_MATRIX.md).
+
 **Status: inventory only. Nothing in this document approves, changes or retires a rule.**
 It records what exists, what each part claims to be, and where #564's own premise disagrees
 with the code. Every "needs a decision" row is the author's, not this document's.
