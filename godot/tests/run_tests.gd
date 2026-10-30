@@ -66,5 +66,8 @@ func _initialize() -> void:
 				failures += 1
 			print("  %s  %s%s" % ["PASS" if ok else "FAIL", String(row[0]),
 				"" if ok else "  — " + String(row[2])])
+		# The suite may own RefCounted objects; release them before engine shutdown.
+		suite = null
+		rows.clear()
 	print("%d checks, %d failed" % [total, failures])
 	quit(1 if failures > 0 else 0)
