@@ -18,6 +18,8 @@ const STABILIZE_BASE_DIFFICULTY := 8
 const NO_MEDKIT_PENALTY := 2
 const STABILIZED_REST_MINUTES := 10
 const FRAIL_BED_REST_WEEK := 7
+## Removing Frailty: one medkit, one hour, one roll against difficulty 10.
+const FRAIL_REMOVAL_DIFFICULTY := 10
 
 ## Difficulty 8 plus each full round elapsed, two harder without a medkit.
 static func stabilize_difficulty(rounds_since_downed: int, has_medkit: bool = true) -> Dictionary:
@@ -56,3 +58,37 @@ static func frail_week(has_medic_care: bool, physical_save_success: Variant = nu
 	if physical_save_success == null:
 		return {"ok": false, "reason": "without_care_the_week_needs_its_physical_save"}
 	return {"ok": true, "outcome": "month_more" if bool(physical_save_success) else "dying"}
+
+## --- Procedures merged from the compatibility tree (#791) --------------------------------------
+
+## Rounds left before the sixth round after downing has passed.
+static func rounds_until_death(downed_round: int, current_round: int) -> int:
+	if current_round < downed_round:
+		return 0
+	return maxi(0, MORTAL_WOUND_ROUNDS - (current_round - downed_round))
+
+## One medkit, one hour, one roll — and only one chance per Frailty.
+static func remove_frailty(skill_total: int, difficulty: int = FRAIL_REMOVAL_DIFFICULTY,
+		already_attempted: bool = false) -> Dictionary:
+	if already_attempted:
+		return {"allowed": false, "succeeded": false}
+	return {"allowed": true, "succeeded": skill_total >= difficulty}
+
+## Minutes of care: 1d6 plus Heal rank, or 1d6-1 with no Heal skill at all. Each application costs
+## the patient one System Strain, and a body at its maximum refuses the intervention rather than
+## gaining nothing from it silently.
+static func first_aid(die_roll: int, heal_skill: int = 0, has_medkit: bool = true,
+		strain: CwnStrain = null) -> Dictionary:
+	if not has_medkit:
+		return {"ok": false, "reason": "first_aid_needs_a_medkit"}
+	if die_roll < 1:
+		return {"ok": false, "reason": "a_die_roll_is_at_least_1"}
+	if heal_skill < 0:
+		return {"ok": false, "reason": "heal_skill_cannot_be_negative"}
+	var healed := maxi(0, die_roll + heal_skill if heal_skill > 0 else die_roll - 1)
+	if strain != null and not strain.can_absorb(1.0):
+		return {"ok": true, "healed": 0, "strain_added": 0, "refused": true}
+	if strain != null:
+		strain.absorb(1.0)
+	return {"ok": true, "healed": healed, "strain_added": 1 if strain != null else 0,
+		"refused": false}

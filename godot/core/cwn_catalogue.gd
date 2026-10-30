@@ -229,3 +229,134 @@ func program_cost(verb_id: String, subject_id: String) -> Dictionary:
 		"self_terminating": bool(v.get("self_terminating", false)),
 		"difficulty_modifier": int(subject(subject_id).get("difficulty_modifier", 0)),
 	}
+
+## --- SRD-extracted catalogue access, merged from the compatibility tree (#791) ----------------
+## The instance API above reads the curated `data/rules/cwn_catalogue.json`. This static API reads
+## `data/rules/cwn/srd_tables.json`, produced by `tools/extract_cwn_srd.py` from the CC0 SRD, so the
+## game can see every catalogue row the source publishes rather than only the curated subset.
+## One module, two data sources by design: the curated file is hand-checked content, the extracted
+## file is completeness, and neither is a second implementation of a rule.
+const SRD_PATH := "res://data/rules/cwn/srd_tables.json"
+static var _srd_cache: Dictionary = {}
+
+static func srd_data() -> Dictionary:
+	if _srd_cache.is_empty():
+		if not FileAccess.file_exists(SRD_PATH):
+			push_error("CwnCatalogue: missing SRD tables at %s" % SRD_PATH)
+			return {}
+		var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(SRD_PATH))
+		_srd_cache = parsed if typeof(parsed) == TYPE_DICTIONARY else {}
+	return _srd_cache
+
+static func srd_licence() -> String:
+	return str(srd_data().get("licence", ""))
+
+static func srd_rows(key: String) -> Array:
+	var out: Array = []
+	for block in srd_data().get("tables", {}).get(key, []):
+		out.append_array(block.get("rows", []))
+	return out
+
+static func _srd_cell(row: Dictionary, names: Array) -> String:
+	for name in names:
+		if row.has(name):
+			return str(row[name]).strip_edges()
+	for column in row.keys():
+		for name in names:
+			if str(column).to_lower() == str(name).to_lower():
+				return str(row[column]).strip_edges()
+	return ""
+
+static func _srd_int(text: String, fallback: int = 0) -> int:
+	var digits := ""
+	for ch in text:
+		if ch >= "0" and ch <= "9":
+			digits += ch
+		elif digits != "":
+			break
+	return int(digits) if digits != "" else fallback
+
+## "1d10+2" -> {"count": 1, "sides": 10, "bonus": 2}
+static func parse_dice(text: String) -> Dictionary:
+	var clean := text.strip_edges().to_lower().replace(" ", "")
+	if clean == "" or clean == "-":
+		return {"count": 0, "sides": 0, "bonus": 0}
+	var bonus := 0
+	var plus := clean.find("+")
+	if plus >= 0:
+		bonus = _srd_int(clean.substr(plus + 1))
+		clean = clean.substr(0, plus)
+	var parts := clean.split("d")
+	var count := 1 if parts.size() != 2 or parts[0] == "" else _srd_int(parts[0], 1)
+	var sides := _srd_int(parts[parts.size() - 1]) if parts.size() > 0 else 0
+	return {"count": count, "sides": sides, "bonus": bonus}
+
+## "2/15" -> {"amount": 2, "max_ac": 15}; "5/-" is unconditional (max_ac 99)
+static func parse_shock(text: String) -> Dictionary:
+	var clean := text.strip_edges()
+	if clean == "" or clean == "-":
+		return {"amount": 0, "max_ac": -99}
+	var parts := clean.split("/")
+	var amount := _srd_int(parts[0])
+	if parts.size() < 2:
+		return {"amount": amount, "max_ac": -99}
+	var ac := parts[1].strip_edges()
+	return {"amount": amount, "max_ac": 99 if ac == "-" or ac == "" else _srd_int(ac)}
+
+static func srd_weapon(name: String, groups: Array = ["firearms", "melee", "heavy"]) -> Dictionary:
+	for group in groups:
+		for row in srd_rows(group):
+			var candidate := _srd_cell(row, ["Firearm", "Weapon", "Name"])
+			if candidate == "":
+				for key in row.keys():
+					candidate = str(row[key]).strip_edges()
+					break
+			if candidate.to_lower() != name.to_lower():
+				continue
+			return {
+				"name": candidate,
+				"group": group,
+				"damage_text": _srd_cell(row, ["Dmg", "Damage"]),
+				"damage": parse_dice(_srd_cell(row, ["Dmg", "Damage"])),
+				"range": _srd_cell(row, ["Range"]),
+				"cost": _srd_int(_srd_cell(row, ["Cost"]).replace(",", "")),
+				"magazine": _srd_int(_srd_cell(row, ["Mag", "Magazine"])),
+				"attribute": _srd_cell(row, ["Attr.", "Attribute"]),
+				"encumbrance": _srd_int(_srd_cell(row, ["Enc.", "Encumbrance"])),
+				"trauma_die": parse_dice(_srd_cell(row, ["TD", "Trauma Die"])),
+				"trauma_rating": _srd_int(_srd_cell(row, ["TR", "Trauma Rating"]).replace("x", ""), 1),
+				"shock": parse_shock(_srd_cell(row, ["Shock"])),
+			}
+	return {}
+
+static func srd_armour(name: String) -> Dictionary:
+	for row in srd_rows("armor"):
+		var candidate := _srd_cell(row, ["Armor", "Armour", "Name"])
+		if candidate == "":
+			for key in row.keys():
+				candidate = str(row[key]).strip_edges()
+				break
+		if candidate.to_lower() != name.to_lower():
+			continue
+		return {
+			"name": candidate,
+			"ranged_ac": _srd_int(_srd_cell(row, ["Ranged AC"])),
+			"melee_ac": _srd_int(_srd_cell(row, ["Melee AC"])),
+			"soak": _srd_int(_srd_cell(row, ["Damage Soak", "Soak"])),
+			"encumbrance": _srd_int(_srd_cell(row, ["Enc.", "Encumbrance"])),
+			"trauma_mod": _srd_int(_srd_cell(row, ["Trauma Target Mod", "Trauma Mod"])),
+			"cost": _srd_int(_srd_cell(row, ["Cost"]).replace(",", "")),
+		}
+	return {}
+
+static func srd_background_names() -> Array:
+	var out: Array = []
+	for entry in srd_data().get("backgrounds", []):
+		out.append(str(entry.get("name", "")))
+	return out
+
+static func srd_background(name: String) -> Dictionary:
+	for entry in srd_data().get("backgrounds", []):
+		if str(entry.get("name", "")).to_lower() == name.to_lower():
+			return entry
+	return {}

@@ -118,3 +118,29 @@ Parity first, then deletion — never the reverse:
 4. Combat: merge the Shock floor and trauma multiplication into `cwn_combat_rules.gd`.
 5. Progression, then psionics.
 6. Fold `tests/godot/` into `godot/tests/run_tests.gd` so one command runs every gate.
+
+## Migration landed — 2026-10-30
+
+The duplicate rule tree is gone. `src/godot/cwn/` no longer exists; every rule module now has one
+home in `godot/core/`, and `python3.11 tools/check_godot_rule_duplicates.py` reports **0 duplicate
+domains**.
+
+| Module | Outcome |
+| --- | --- |
+| `cwn_catalogue` | canonical module gained a static SRD API (`srd_weapon`, `srd_armour`, `srd_rows`, `srd_background*`, `parse_dice`, `parse_shock`) reading `data/rules/cwn/srd_tables.json`; the compatibility copy was deleted. The instance API over the curated `data/rules/cwn_catalogue.json` is untouched — two data sources, one module. |
+| `cwn_character` | creation helpers merged in (`from_rolls`, `from_array`, `creation_skill_pick`, `max_hit_points`, `save_target`, `npc_save_target`, `extra_languages`). **This fixed a rule defect**: the canonical `hit_points()` assumed a 6 on the level-1 d6, handing every new character up to five extra hit points. `max_hit_points()` rolls the actual die. |
+| `cwn_combat` | the compatibility copy was deleted; `cwn_combat_rules.resolve_attack` already computed the Shock the miss would have dealt and applied it as the hit floor. |
+| `cwn_strain`, `cwn_healing` | parity was proven first, then the compatibility copies were deleted; the canonical healing module gained `rounds_until_death`, `remove_frailty`, `first_aid` and the missing `FRAIL_REMOVAL_DIFFICULTY` constant. |
+| `cwn_injury` | moved whole into the canonical tree as `CwnInjury` (the only implementation). |
+| `cwn_progression` | moved from `src/godot/` to `godot/core/`; its test now preloads the canonical path. |
+| `swn_progression` | **not** a duplicate — it is psychic training, not levelling. The guard was taught the difference (`DOMAIN_OVERRIDE`) instead of accepting a false positive that would have justified keeping two modules. |
+
+### Verified
+
+- `godot/tests/run_tests.gd` — **454 checks, 0 failed**
+- `tests/godot/test_cwn_rules.gd` — PASS
+- `tests/godot/test_cwn_progression.gd` — PASS
+
+Deleting a `class_name` script requires clearing `.godot/` and re-importing, or the stale global class
+cache keeps the old one alive and the run fails with "hides a global script class". Worth knowing
+before the next deletion.
