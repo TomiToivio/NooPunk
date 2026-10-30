@@ -1,0 +1,1824 @@
+{
+  "schema": 1,
+  "source": "src/rules",
+  "note": "Registry of implemented rule procedures. Presence here is code coverage, not SRD parity.",
+  "totals": {
+    "modules": 29,
+    "procedures": 276
+  },
+  "modules": [
+    {
+      "module": "cwn_advancement.py",
+      "procedures": [
+        {
+          "name": "level_for_xp",
+          "signature": "(xp, *, track=...)",
+          "doc": "The highest level whose accumulated-XP threshold has been reached."
+        },
+        {
+          "name": "xp_for_next_level",
+          "signature": "(level, *, track=...)",
+          "doc": "The accumulated XP needed for the next level, or ``None`` at the cap."
+        },
+        {
+          "name": "attack_bonus",
+          "signature": "(level, *, on_target=...)",
+          "doc": "Half the character's level, rounded down \u2014 full level with the On Target Edge."
+        },
+        {
+          "name": "save_target",
+          "signature": "(level)",
+          "doc": "``16 - level`` before attribute modifiers; 15 at first level, as the SRD notes."
+        },
+        {
+          "name": "skill_points_for_level",
+          "signature": "(*, educated=...)",
+          "doc": "Three points per level, plus one with the Educated Edge."
+        },
+        {
+          "name": "skill_point_cost",
+          "signature": "(rank)",
+          "doc": "Point cost of the *next* rank: every rank is bought in order."
+        },
+        {
+          "name": "skill_rank_allowed",
+          "signature": "(rank, character_level)",
+          "doc": "Whether a character is high enough level to hold this rank."
+        },
+        {
+          "name": "total_skill_cost",
+          "signature": "(target_rank)",
+          "doc": "Points required to reach ``target_rank`` from untrained, buying each rank in order."
+        },
+        {
+          "name": "attribute_boost_cost",
+          "signature": "(nth)",
+          "doc": "The nth attribute boost costs n points (first 1, second 2, ... fifth 5)."
+        },
+        {
+          "name": "attribute_boost_allowed",
+          "signature": "(nth, character_level)",
+          "doc": "Whether the character is high enough level for that boost."
+        },
+        {
+          "name": "focus_picks_at",
+          "signature": "(level)",
+          "doc": "How many Focus picks a character of this level has had (levels 2, 5, 7, 10)."
+        },
+        {
+          "name": "has_third_edge",
+          "signature": "(level)",
+          "doc": "The third Edge becomes selectable at fifth level."
+        },
+        {
+          "name": "hit_points_rolled",
+          "signature": "(level, constitution_modifier, *, hard_to_kill=..., dice=...)",
+          "doc": "The total of the level's hit dice, each with the Constitution modifier, floored at 1."
+        },
+        {
+          "name": "new_maximum_hit_points",
+          "signature": "(current_maximum, rolled)",
+          "doc": "Take the roll if it beats the current maximum, otherwise gain one point."
+        }
+      ],
+      "count": 14
+    },
+    {
+      "module": "cwn_attack_modifiers.py",
+      "procedures": [
+        {
+          "name": "attack_modifier",
+          "signature": "(*circumstances)",
+          "doc": "Sum the SRD modifiers for the named circumstances."
+        },
+        {
+          "name": "attack_modifier_for",
+          "signature": "(circumstances)",
+          "doc": "Iterable form of :func:`attack_modifier`."
+        },
+        {
+          "name": "in_melee_penalty",
+          "signature": "(handedness)",
+          "doc": "The penalty for firing while an enemy is in melee range."
+        }
+      ],
+      "count": 3
+    },
+    {
+      "module": "cwn_backgrounds.py",
+      "procedures": [
+        {
+          "name": "AttributeBonus",
+          "signature": "",
+          "doc": "``+2 Physical`` and friends: a size and which attributes may receive it.",
+          "methods": [
+            {
+              "name": "AttributeBonus.allowed_attributes",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "grant_free_skill",
+          "signature": "(background, pool)",
+          "doc": "The free skill arrives at level-0 before any other choice is made."
+        },
+        {
+          "name": "specific_picks",
+          "signature": "(background, picks, pool)",
+          "doc": "Two picks from the Learning table, the same skill twice allowed."
+        },
+        {
+          "name": "growth_rolls",
+          "signature": "(background, rolls)",
+          "doc": "Three rolls, each naming its table and its die result."
+        },
+        {
+          "name": "resolve_table_entry",
+          "signature": "(table, die)",
+          "doc": "A d20 result indexes the table; out-of-range results are refused, not clamped."
+        },
+        {
+          "name": "apply_attribute_bonus",
+          "signature": "(bonus, attributes, allocation)",
+          "doc": "Apply ``+N Physical`` and friends, splitting between attributes of that kind."
+        },
+        {
+          "name": "ContactBook",
+          "signature": "",
+          "doc": "Starting contacts: two acquaintances *or* one friend, and never a mix.",
+          "methods": [
+            {
+              "name": "ContactBook.add",
+              "signature": "(contact)",
+              "doc": ""
+            },
+            {
+              "name": "ContactBook.promote",
+              "signature": "(name)",
+              "doc": "An acquaintance can become a friend; the book must still be legal."
+            }
+          ]
+        }
+      ],
+      "count": 8
+    },
+    {
+      "module": "cwn_character.py",
+      "procedures": [
+        {
+          "name": "roll_attributes",
+          "signature": "(dice)",
+          "doc": "Six 3d6 rolls taken in order, one per attribute."
+        },
+        {
+          "name": "substitute_fourteen",
+          "signature": "(scores, attribute, *, already_substituted=..., array_used=...)",
+          "doc": "Replace one rolled score with 14."
+        },
+        {
+          "name": "assign_array",
+          "signature": "(assignment)",
+          "doc": "Assign the fixed array across the attributes."
+        },
+        {
+          "name": "effective_modifier",
+          "signature": "(base_score, bonus=..., *, uncapped=...)",
+          "doc": "The attribute modifier, plus any Focus or cyberware bonus."
+        },
+        {
+          "name": "SkillPool",
+          "signature": "",
+          "doc": "The skill picks a character makes during creation.",
+          "methods": [
+            {
+              "name": "SkillPool.can_pick",
+              "signature": "(skill)",
+              "doc": ""
+            },
+            {
+              "name": "SkillPool.pick",
+              "signature": "(skill)",
+              "doc": "Spend one pick; returns the resulting level."
+            },
+            {
+              "name": "SkillPool.open_skills",
+              "signature": "()",
+              "doc": "Skills a surplus pick may legally be spent on."
+            }
+          ]
+        }
+      ],
+      "count": 7
+    },
+    {
+      "module": "cwn_combat.py",
+      "procedures": [
+        {
+          "name": "AttackResult",
+          "signature": "",
+          "doc": "",
+          "methods": [
+            {
+              "name": "AttackResult.total",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "AttackResult.hit",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "AttackResult.margin",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "attack_roll",
+          "signature": "(*, attribute_score, skill_level, attack_bonus, armor_class, other_modifier=..., rng=..., die=...)",
+          "doc": "Roll an attack or resolve an already supplied d20 result."
+        }
+      ],
+      "count": 4
+    },
+    {
+      "module": "cwn_combat_actions.py",
+      "procedures": [
+        {
+          "name": "TurnBudget",
+          "signature": "",
+          "doc": "Main/Move bookkeeping for one combatant in one round.",
+          "methods": [
+            {
+              "name": "TurnBudget.main_available",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "TurnBudget.moves_available",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "TurnBudget.take_main",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "TurnBudget.take_move",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "TurnBudget.convert_main_to_move",
+              "signature": "()",
+              "doc": "Spend the Main action to gain a second Move action."
+            }
+          ]
+        },
+        {
+          "name": "snap_attack_penalty",
+          "signature": "(*, main_used)",
+          "doc": "The Snap Attack penalty, or an error when the Main action is already spent."
+        },
+        {
+          "name": "swarm_bonus",
+          "signature": "(other_assailants)",
+          "doc": "Bonuses for a Swarm Attack by one of up to four attackers on the same target."
+        },
+        {
+          "name": "charge",
+          "signature": "(distance_metres, *, budget=...)",
+          "doc": "Validate a Charge and return its modifiers."
+        },
+        {
+          "name": "total_defense",
+          "signature": "(*, main_used)",
+          "doc": "The Total Defense stance, or an error when the Main action is already spent."
+        }
+      ],
+      "count": 9
+    },
+    {
+      "module": "cwn_core.py",
+      "procedures": [
+        {
+          "name": "Save",
+          "signature": "",
+          "doc": "One resolved saving throw.",
+          "methods": [
+            {
+              "name": "Save.natural",
+              "signature": "()",
+              "doc": "True on a natural 1 or natural 20 \u2014 the two results the die decides alone."
+            },
+            {
+              "name": "Save.total",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Save.success",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "save_target",
+          "signature": "(kind, *, level, attributes)",
+          "doc": "The d20 target for ``kind``, from SRD 2.2.0."
+        },
+        {
+          "name": "saving_throw",
+          "signature": "(kind, *, level, attributes, bonus=..., rng=..., die=...)",
+          "doc": "Roll ``1d20`` against the save target."
+        },
+        {
+          "name": "is_traumatic_hit",
+          "signature": "(trauma_die, trauma_target=...)",
+          "doc": "SRD 2.4.6.3: the Trauma Die meeting or exceeding the Trauma Target."
+        },
+        {
+          "name": "trauma_damage",
+          "signature": "(total_damage, trauma_rating, *, traumatic)",
+          "doc": "Multiply the **total** damage by the weapon's Trauma Rating on a Traumatic Hit."
+        },
+        {
+          "name": "shock_applies",
+          "signature": "(*, hit, shock_ac, target_melee_ac)",
+          "doc": "Whether Shock lands: **only on a miss**, and only if the target's AC is within the rating."
+        },
+        {
+          "name": "shock_damage",
+          "signature": "(*, hit, shock_value, shock_ac, target_melee_ac, attribute_modifier=..., explicit_bonus=...)",
+          "doc": "Shock inflicted on a miss, or ``0``."
+        },
+        {
+          "name": "damage_floor",
+          "signature": "(hit_damage, shock_that_would_have_applied)",
+          "doc": "SRD 2.4.6.4: a hit never deals less than the Shock that a miss would have dealt."
+        },
+        {
+          "name": "shock_can_cause_trauma",
+          "signature": "()",
+          "doc": "False by SRD 2.4.6.4 \u2014 exposed as a function so a caller cannot forget the invariant."
+        },
+        {
+          "name": "resolve_attack",
+          "signature": "(*, hit, total_damage=..., trauma_die=..., trauma_rating=..., trauma_target=..., shock_value=..., shock_ac=..., target_melee_ac=..., attribute_modifier=..., explicit_shock_bonus=...)",
+          "doc": "One attack's damage, with the SRD's three Shock invariants enforced in order."
+        },
+        {
+          "name": "major_injury_risk",
+          "signature": "(*, lethal, hit_points, traumatic_this_scene)",
+          "doc": "SRD 2.5.6: lethal damage to zero HP, in a scene where a Traumatic Hit already landed."
+        },
+        {
+          "name": "resolve_downed",
+          "signature": "(*, lethal, hit_points, traumatic_this_scene, level, attributes, save_bonus=..., save_die=..., injury_roll=..., rng=...)",
+          "doc": "What happens when a subject reaches zero hit points."
+        },
+        {
+          "name": "strain_maximum",
+          "signature": "(constitution, *, lifestyle=...)",
+          "doc": "Allowed maximum System Strain = Constitution score, adjusted by lifestyle."
+        },
+        {
+          "name": "installation_terms",
+          "signature": "(strain)",
+          "doc": "Cost, recovery time and surgery difficulty for an implant of a given strain cost (SRD 3.6.1)."
+        },
+        {
+          "name": "can_accept_implant",
+          "signature": "(*, current_strain, implant_strain, maximum)",
+          "doc": "SRD 3.6.1: \"A subject cannot accept cyber if it would put their System Strain above their maximum\"."
+        },
+        {
+          "name": "resolve_implant_surgery",
+          "signature": "(*, strain, current_strain, maximum, check_total, difficulty=...)",
+          "doc": "The outcome of implant surgery."
+        },
+        {
+          "name": "maintenance_minutes",
+          "signature": "(strain)",
+          "doc": "SRD 3.6.4: upkeep takes hours equal to the system's System Strain, minimum fifteen minutes."
+        },
+        {
+          "name": "maintenance_overdue",
+          "signature": "(months_since_upkeep)",
+          "doc": "SRD 3.6.4: \"If a system goes more than a month without upkeep, it starts to malfunction\"."
+        },
+        {
+          "name": "first_aid",
+          "signature": "(*, heal_skill=..., die=..., rng=...)",
+          "doc": "SRD 2.5.1: a medkit patch-up restores ``1d6 + Heal``, or ``1d6 - 1`` with no Heal skill at all."
+        }
+      ],
+      "count": 21
+    },
+    {
+      "module": "cwn_drones.py",
+      "procedures": [
+        {
+          "name": "Drone",
+          "signature": "",
+          "doc": "One row of the SRD 3.8.1 table.",
+          "methods": [
+            {
+              "name": "Drone.portable",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "Command",
+          "signature": "",
+          "doc": "How many drones a controller can drive at once (SRD 3.8.4).",
+          "methods": [
+            {
+              "name": "Command.capacity",
+              "signature": "()",
+              "doc": "A control board drives one; an RCU drives ``1 + Drive skill``."
+            },
+            {
+              "name": "Command.can_command",
+              "signature": "(drone_count)",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "command_capacity",
+          "signature": "(controller, drive_skill=...)",
+          "doc": ""
+        },
+        {
+          "name": "control_penalty",
+          "signature": "(controller, *, cranial_jack=...)",
+          "doc": "SRD 3.8.4: a control board imposes -2 on the drone's hit rolls and skill checks."
+        },
+        {
+          "name": "range_status",
+          "signature": "(distance_m)",
+          "doc": "Three tiers, not two."
+        },
+        {
+          "name": "mount_class",
+          "signature": "(drone)",
+          "doc": "SRD 3.8.1: base Encumbrance 3 or less -> pistol-sized; larger man-portable -> rifle-sized;"
+        },
+        {
+          "name": "charge_hours",
+          "signature": "(drone)",
+          "doc": "SRD 3.8.0: \"one hour of charging per Encumbrance, or six hours at most\"."
+        },
+        {
+          "name": "parts_cost",
+          "signature": "(drone)",
+          "doc": "SRD 3.8.4.3: \"Spare parts for a drone cost 25% of the drone's base cost\"."
+        },
+        {
+          "name": "skill_through_drone",
+          "signature": "(skill_level, drive_skill)",
+          "doc": "SRD 3.8.4.1: skill checks use the operator's level, capped at their Drive skill."
+        },
+        {
+          "name": "gunnery_bonus",
+          "signature": "(*, base_attack_bonus, drive_skill, program_skill, int_modifier, dex_modifier, autonomous=...)",
+          "doc": "SRD 3.8.4.1: operator's hit bonus + better of Drive/Program, modified by Int or Dex."
+        },
+        {
+          "name": "drone_attack_bonuses",
+          "signature": "(*, weapons, directed_bonus)",
+          "doc": "SRD 3.8.4.2: the pilot directs **one** attack; \"all others fire at the drone's usual attack"
+        },
+        {
+          "name": "is_destroyed",
+          "signature": "(hit_points)",
+          "doc": "SRD 3.8.4.3: \"A drone reduced to zero hit points has been destroyed, and cannot be repaired.\"."
+        }
+      ],
+      "count": 13
+    },
+    {
+      "module": "cwn_edges_foci.py",
+      "procedures": [
+        {
+          "name": "TalentSheet",
+          "signature": "",
+          "doc": "The selections a character has made, and the budget they were made against.",
+          "methods": [
+            {
+              "name": "TalentSheet.edge_slots",
+              "signature": "(*, underdog_eligible=...)",
+              "doc": "Two at start, a third at fifth level, plus one for the Underdog Rule."
+            }
+          ]
+        },
+        {
+          "name": "attribute_modifier_total",
+          "signature": "(attributes)",
+          "doc": "The sum of the six attribute modifiers, which is what the Underdog Rule tests."
+        },
+        {
+          "name": "underdog_eligible",
+          "signature": "(attributes)",
+          "doc": "A character with a modifier total of -1 or less may claim the bonus Edge."
+        },
+        {
+          "name": "can_raise_attributes_with_skill_points",
+          "signature": "(underdog_used)",
+          "doc": "The Underdog Rule's price: no later attribute increases from skill points."
+        },
+        {
+          "name": "pick_edge",
+          "signature": "(sheet, edge, *, underdog_eligible=...)",
+          "doc": "Spend an Edge slot."
+        },
+        {
+          "name": "focus_slots",
+          "signature": "(sheet, *, has_focused_edge=...)",
+          "doc": "One Focus at start, two with the Focused Edge."
+        },
+        {
+          "name": "pick_focus",
+          "signature": "(sheet, focus, *, has_focused_edge=..., known_edges=...)",
+          "doc": "Take a Focus, or raise an existing one by a level; returns the new level."
+        }
+      ],
+      "count": 7
+    },
+    {
+      "module": "cwn_encumbrance.py",
+      "procedures": [
+        {
+          "name": "stowed_capacity",
+          "signature": "(strength)",
+          "doc": "Stowed points a character can carry without penalty: their Strength."
+        },
+        {
+          "name": "readied_capacity",
+          "signature": "(strength)",
+          "doc": "Readied points without penalty: half Strength, rounded down."
+        },
+        {
+          "name": "tier_for",
+          "signature": "(strength, load)",
+          "doc": "``normal``, ``heavy`` (first push), ``overloaded`` (second push) or ``immobile``."
+        },
+        {
+          "name": "move_speed",
+          "signature": "(strength, load, *, base=...)",
+          "doc": "The character's Move speed in metres for this load."
+        },
+        {
+          "name": "can_haul",
+          "signature": "(strength, load)",
+          "doc": "Whether the load can be carried over a significant distance at all."
+        },
+        {
+          "name": "bundled_points",
+          "signature": "(item_count)",
+          "doc": "Points for small identical items tied into bundles of three."
+        },
+        {
+          "name": "kilograms_to_points",
+          "signature": "(kilograms)",
+          "doc": "Convert bulk weight to encumbrance points (25 kg \u2248 10 points)."
+        }
+      ],
+      "count": 7
+    },
+    {
+      "module": "cwn_equipment.py",
+      "procedures": [
+        {
+          "name": "load_equipment",
+          "signature": "(path=...)",
+          "doc": "Load the catalogue once and return it with ``weapons``/``armor`` keyed by id."
+        },
+        {
+          "name": "weapons",
+          "signature": "()",
+          "doc": ""
+        },
+        {
+          "name": "armor",
+          "signature": "()",
+          "doc": ""
+        },
+        {
+          "name": "weapon",
+          "signature": "(weapon_id)",
+          "doc": ""
+        },
+        {
+          "name": "armor_piece",
+          "signature": "(armor_id)",
+          "doc": ""
+        },
+        {
+          "name": "find_weapon",
+          "signature": "(name)",
+          "doc": "Look a weapon up by its printed name, case- and space-insensitively."
+        },
+        {
+          "name": "parse_damage",
+          "signature": "(damage)",
+          "doc": "``1d10+2`` \u2192 ``(1, 10, 2)``. Firing-mode markers are irrelevant to the dice."
+        },
+        {
+          "name": "damage_profile",
+          "signature": "(weapon_id)",
+          "doc": "The row decomposed into the shape the combat kernel and the Godot adapter take."
+        }
+      ],
+      "count": 8
+    },
+    {
+      "module": "cwn_foci.py",
+      "procedures": [
+        {
+          "name": "Focus",
+          "signature": "",
+          "doc": "A Focus and how many levels it has.",
+          "methods": [
+            {
+              "name": "Focus.has_second_level",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "focused_edge",
+          "signature": "(*, has_focused_edge)",
+          "doc": "SRD 1.6.0: \"A new character may choose one Focus, plus one more if they have the Focused Edge\"."
+        },
+        {
+          "name": "new_character_picks",
+          "signature": "(*, has_focused_edge=...)",
+          "doc": ""
+        },
+        {
+          "name": "advancement_picks",
+          "signature": "(character_level)",
+          "doc": "How many Focus picks the character has earned from levelling (SRD 2.7.1.6)."
+        },
+        {
+          "name": "total_picks",
+          "signature": "(character_level, *, has_focused_edge=...)",
+          "doc": "Creation pick(s) plus every advancement pick earned so far."
+        },
+        {
+          "name": "max_level",
+          "signature": "(focus)",
+          "doc": ""
+        },
+        {
+          "name": "can_take_level",
+          "signature": "(focus, *, current_level)",
+          "doc": "Whether the next pick in this Focus is legal."
+        },
+        {
+          "name": "take_level",
+          "signature": "(focus, *, current_level)",
+          "doc": "Return the Focus's new level after spending a pick, or raise if the pick is illegal."
+        },
+        {
+          "name": "gear_budget",
+          "signature": "(character_level, *, kind)",
+          "doc": "SRD 1.6.2: the free-gear budget for Ace Driver/Roamer (vehicle) or Drone Pilot (drone)."
+        }
+      ],
+      "count": 9
+    },
+    {
+      "module": "cwn_gear_mods.py",
+      "procedures": [
+        {
+          "name": "load_mods",
+          "signature": "(path=...)",
+          "doc": ""
+        },
+        {
+          "name": "Mod",
+          "signature": "",
+          "doc": "",
+          "methods": [
+            {
+              "name": "Mod.price",
+              "signature": "(base_cost=...)",
+              "doc": "Absolute mods carry a dollar price; drone, deck and hull mods a percentage."
+            }
+          ]
+        },
+        {
+          "name": "weapon_mod",
+          "signature": "(mod_id)",
+          "doc": ""
+        },
+        {
+          "name": "armor_mod",
+          "signature": "(mod_id)",
+          "doc": ""
+        },
+        {
+          "name": "drone_mod",
+          "signature": "(mod_id)",
+          "doc": ""
+        },
+        {
+          "name": "deck_mod",
+          "signature": "(mod_id)",
+          "doc": ""
+        },
+        {
+          "name": "all_mods",
+          "signature": "()",
+          "doc": ""
+        },
+        {
+          "name": "maintenance_score",
+          "signature": "(int_modifier, con_modifier, fix_skill, *, full_time=...)",
+          "doc": "How many mods one tech can keep working."
+        },
+        {
+          "name": "can_build",
+          "signature": "(fix_skill, mod, *, drive_skill=..., heal_skill=...)",
+          "doc": ""
+        },
+        {
+          "name": "can_maintain",
+          "signature": "(fix_skill, mod)",
+          "doc": "A tech may only maintain mods they could have built."
+        },
+        {
+          "name": "install_weeks",
+          "signature": "(mod, *, assistant=..., obsessive=...)",
+          "doc": "One week per minimum skill level, halved by an assistant, then by obsession."
+        },
+        {
+          "name": "maintenance_lapse",
+          "signature": "(*, hours_without)",
+          "doc": "``working``, ``mod_dead`` or ``item_dead`` \u2014 the SRD's 24 h and 7 day clocks."
+        },
+        {
+          "name": "craft_plan",
+          "signature": "(quality, market_cost, *, vehicle=...)",
+          "doc": "Jury-rigged, normal or mastercrafted: time, parts bill, and the strings attached."
+        },
+        {
+          "name": "factory_price",
+          "signature": "(base_cost, mod_cost, components=...)",
+          "doc": "Factory-modded gear starts at five times the mod's build price, then doubles per component."
+        },
+        {
+          "name": "WeaponModResult",
+          "signature": "",
+          "doc": "",
+          "methods": [
+            {
+              "name": "WeaponModResult.describe",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "apply_weapon_mods",
+          "signature": "(profile, mod_ids, *, category=..., connected=...)",
+          "doc": "Apply mods to a ``cwn_equipment.damage_profile`` row."
+        },
+        {
+          "name": "ArmorModResult",
+          "signature": "",
+          "doc": "",
+          "methods": [
+            {
+              "name": "ArmorModResult.describe",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "apply_armor_mods",
+          "signature": "(piece, mod_ids)",
+          "doc": "Apply armor mods to a ``cwn_equipment`` armor row."
+        },
+        {
+          "name": "apply_drone_mods",
+          "signature": "(stats, mod_ids)",
+          "doc": "Drone hull stats: AC, Move, HP, fitting and hardpoint counts, Encumbrance."
+        },
+        {
+          "name": "apply_deck_mods",
+          "signature": "(stats, mod_ids)",
+          "doc": "Cyberdeck stats: CPU, Memory, Shielding, Bonus Access, Encumbrance."
+        }
+      ],
+      "count": 20
+    },
+    {
+      "module": "cwn_hacking.py",
+      "procedures": [
+        {
+          "name": "access_pool",
+          "signature": "(*, intelligence_modifier, program_skill, deck_bonus=...)",
+          "doc": "``INT modifier + Program + the deck's Bonus Access``. Never negative."
+        },
+        {
+          "name": "security_difficulty",
+          "signature": "(security, *, alerted=..., important_device=..., tech_quality=..., inside_info=...)",
+          "doc": "The network's security level plus the SRD's situation modifiers."
+        },
+        {
+          "name": "cyberware_difficulty",
+          "signature": "(*, level_or_hit_dice, has_operator=...)",
+          "doc": "``7 + ceil(HD or level / 3)``; a drone with no connected operator is difficulty 8."
+        },
+        {
+          "name": "HackCheck",
+          "signature": "",
+          "doc": "One Int/Program check behind a Verb.",
+          "methods": [
+            {
+              "name": "HackCheck.total",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "HackCheck.success",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "hacking_check",
+          "signature": "(*, intelligence_score, program_skill, difficulty, wireless=..., vr_crown=..., verb_modifier=..., situational=..., rng=..., dice=...)",
+          "doc": "Roll the check a run-program action needs, with the connection penalties kept flat."
+        },
+        {
+          "name": "AlertClock",
+          "signature": "",
+          "doc": "The network's intruder clock: two failed checks per Alert action, two actions to alert.",
+          "methods": [
+            {
+              "name": "AlertClock.record_failure",
+              "signature": "()",
+              "doc": "Record a failed check. True when this failure completes the network alert."
+            },
+            {
+              "name": "AlertClock.record_alert_action",
+              "signature": "()",
+              "doc": "A demon or watchdog spent its Main action alerting. True when the network is alerted."
+            },
+            {
+              "name": "AlertClock.alerted",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        }
+      ],
+      "count": 9
+    },
+    {
+      "module": "cwn_healing.py",
+      "procedures": [
+        {
+          "name": "SystemStrain",
+          "signature": "",
+          "doc": "A compatibility view over :class:`cwn_strain.SystemStrain`.",
+          "methods": [
+            {
+              "name": "SystemStrain.current",
+              "signature": "()",
+              "doc": "Total Strain carried: permanent load plus what rest can clear."
+            },
+            {
+              "name": "SystemStrain.current",
+              "signature": "(value)",
+              "doc": ""
+            },
+            {
+              "name": "SystemStrain.shedable",
+              "signature": "()",
+              "doc": "The share a good night's sleep can clear; implant load never is."
+            },
+            {
+              "name": "SystemStrain.can_accept",
+              "signature": "(amount=...)",
+              "doc": ""
+            },
+            {
+              "name": "SystemStrain.add",
+              "signature": "(amount=...)",
+              "doc": "Apply strain if there is room; a body at its maximum gains nothing."
+            },
+            {
+              "name": "SystemStrain.add_permanent",
+              "signature": "(amount)",
+              "doc": "Cyberware: taken from the ceiling, never shed while the implant stays."
+            },
+            {
+              "name": "SystemStrain.nights_sleep",
+              "signature": "(nights=...)",
+              "doc": "One shedable point leaves per qualifying night; permanent never does."
+            }
+          ]
+        },
+        {
+          "name": "Patient",
+          "signature": "",
+          "doc": "Just enough state to run the procedures.",
+          "methods": [
+            {
+              "name": "Patient.mortally_wounded",
+              "signature": "()",
+              "doc": "Zero hit points from a lethal attack means dying, not merely resting."
+            },
+            {
+              "name": "Patient.rounds_until_death",
+              "signature": "(current_round)",
+              "doc": "Rounds left before the sixth round after downing has passed."
+            }
+          ]
+        },
+        {
+          "name": "stabilize_difficulty",
+          "signature": "(rounds_since_downed, *, has_medkit=...)",
+          "doc": "Difficulty 8 plus each full round elapsed, two harder without a medkit."
+        },
+        {
+          "name": "stabilized",
+          "signature": "(patient)",
+          "doc": "A stabilized patient wakes with one hit point after ten minutes, and is Frail."
+        },
+        {
+          "name": "remove_frailty",
+          "signature": "(*, skill_total, difficulty=..., already_attempted=...)",
+          "doc": "One medkit, one hour, one roll - and only one chance per Frailty."
+        },
+        {
+          "name": "natural_healing",
+          "signature": "(patient)",
+          "doc": "A night's rest restores level or hit dice in HP - but never to the Frail."
+        },
+        {
+          "name": "frail_week",
+          "signature": "(*, has_medic_care, physical_save_success=...)",
+          "doc": "The week of bed rest that decides whether frailty ends or kills."
+        },
+        {
+          "name": "first_aid",
+          "signature": "(*, die_roll, heal_skill=..., has_medkit=..., strain=...)",
+          "doc": "Minutes of care: 1d6 plus Heal level, or 1d6-1 with no Heal skill at all."
+        }
+      ],
+      "count": 15
+    },
+    {
+      "module": "cwn_injury_procedure.py",
+      "procedures": [
+        {
+          "name": "resolve_zero_hit_points",
+          "signature": "(*, hit_points_after, traumatic_in_fight, lethal=..., level, attributes, save_die=..., save_bonus=..., injury_roll=..., injury_modifier=...)",
+          "doc": "Run the procedure for a character who has just taken damage."
+        }
+      ],
+      "count": 1
+    },
+    {
+      "module": "cwn_major_injury.py",
+      "procedures": [
+        {
+          "name": "MajorInjury",
+          "signature": "",
+          "doc": "One row of the d12 table, with the consequences expressed as flags.",
+          "methods": [
+            {
+              "name": "MajorInjury.fatal",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "MajorInjury.coma",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "MajorInjury.limb",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "MajorInjury.needs_prosthetic",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "MajorInjury.is_permanent_without_treatment",
+              "signature": "()",
+              "doc": "Whether ordinary stabilisation is not enough to restore the character."
+            }
+          ]
+        },
+        {
+          "name": "clamp_injury_roll",
+          "signature": "(roll)",
+          "doc": "Clamp a d12 roll into 1..12, as the SRD requires."
+        },
+        {
+          "name": "injury_for_roll",
+          "signature": "(roll)",
+          "doc": "The row for a roll, clamped."
+        },
+        {
+          "name": "resolve_major_injury",
+          "signature": "(roll, *, modifier=...)",
+          "doc": "Apply the table, clamping the adjusted roll into 1..12 as the SRD requires."
+        },
+        {
+          "name": "requires_prosthetic",
+          "signature": "(injury)",
+          "doc": "Whether a Prosthetic Cyber (or cloned tissue) is needed to restore function."
+        },
+        {
+          "name": "damaged_cyber_locations",
+          "signature": "(injury)",
+          "doc": "Cyber locations the injury critically damages (empty when none are named)."
+        },
+        {
+          "name": "is_lethal",
+          "signature": "(injury)",
+          "doc": "Instant death, the one outcome no treatment undoes."
+        },
+        {
+          "name": "dies_without_care_within",
+          "signature": "(injury)",
+          "doc": "Hours to death if the character never reaches a street doc, or ``None``."
+        }
+      ],
+      "count": 12
+    },
+    {
+      "module": "cwn_strain.py",
+      "procedures": [
+        {
+          "name": "SystemStrain",
+          "signature": "",
+          "doc": "A character's Strain: permanent cyberware load plus temporary, recoverable load.",
+          "methods": [
+            {
+              "name": "SystemStrain.maximum",
+              "signature": "()",
+              "doc": "The allowed maximum: the Constitution score."
+            },
+            {
+              "name": "SystemStrain.total",
+              "signature": "()",
+              "doc": "Permanent plus temporary Strain."
+            },
+            {
+              "name": "SystemStrain.available",
+              "signature": "()",
+              "doc": "How much Strain the character can still take."
+            },
+            {
+              "name": "SystemStrain.can_absorb",
+              "signature": "(amount)",
+              "doc": "Whether an addition would stay within the maximum."
+            },
+            {
+              "name": "SystemStrain.absorb",
+              "signature": "(amount, *, forced=...)",
+              "doc": "Add Strain if it fits."
+            },
+            {
+              "name": "SystemStrain.rest_night",
+              "signature": "(*, hours=..., warm_fed_comfortable=...)",
+              "doc": "Recover one point after a qualifying night's rest; returns what was recovered."
+            },
+            {
+              "name": "SystemStrain.install_cyber",
+              "signature": "(strain)",
+              "doc": "Add permanent Strain for an implant, if the body can support it."
+            },
+            {
+              "name": "SystemStrain.remove_cyber",
+              "signature": "(strain)",
+              "doc": "Remove an implant's permanent Strain, never below zero."
+            }
+          ]
+        }
+      ],
+      "count": 8
+    },
+    {
+      "module": "cwn_trauma.py",
+      "procedures": [
+        {
+          "name": "Shock",
+          "signature": "",
+          "doc": "A Shock rating: its value and the highest Melee AC it reaches.",
+          "methods": [
+            {
+              "name": "Shock.applies_to",
+              "signature": "(melee_ac, *, immune=...)",
+              "doc": "Whether a miss would reach a target at this Armour Class."
+            }
+          ]
+        },
+        {
+          "name": "absorb_with_soak",
+          "signature": "(damage, soak)",
+          "doc": "Return (damage reaching hit points, soak remaining)."
+        },
+        {
+          "name": "is_traumatic",
+          "signature": "(trauma_die_roll, trauma_target=...)",
+          "doc": "Delegate to the core: the Trauma Die meeting or exceeding the target."
+        },
+        {
+          "name": "shock_on_miss",
+          "signature": "(shock, melee_ac, attribute_modifier=..., *, immune=..., barrier_spent=...)",
+          "doc": "Shock from a missed attack, or 0."
+        },
+        {
+          "name": "major_injury_risk",
+          "signature": "(hit_points_after, *, traumatic_in_fight)",
+          "doc": "Zero hit points only threaten a Major Injury once trauma has landed."
+        },
+        {
+          "name": "resolve_hit",
+          "signature": "(weapon, *, damage_roll, attribute_modifier=..., skill_bonus=..., trauma_die_roll=..., trauma_target=..., target_melee_ac=..., soak=..., lethal=..., shock_immune=..., barrier_spent=..., traumatic_damage_earlier_in_fight=..., current_hit_points=...)",
+          "doc": "Resolve a hit that has already landed."
+        }
+      ],
+      "count": 6
+    },
+    {
+      "module": "cwn_vehicles.py",
+      "procedures": [
+        {
+          "name": "load_vehicles",
+          "signature": "(path=...)",
+          "doc": "Load the vehicle contract once (cached) and return it verbatim."
+        },
+        {
+          "name": "Vehicle",
+          "signature": "",
+          "doc": "",
+          "methods": [
+            {
+              "name": "Vehicle.armored",
+              "signature": "()",
+              "doc": "A null Armor with no note is Armor 0 \u2014 reachable, just not armoured."
+            }
+          ]
+        },
+        {
+          "name": "Fitting",
+          "signature": "",
+          "doc": "",
+          "methods": [
+            {
+              "name": "Fitting.stack_limit",
+              "signature": "(size)",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "VehicleModification",
+          "signature": "",
+          "doc": "A vehicle mod: priced as a percentage of the hull's base cost.",
+          "methods": [
+            {
+              "name": "VehicleModification.price",
+              "signature": "(base_cost)",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "vehicle",
+          "signature": "(vehicle_id)",
+          "doc": ""
+        },
+        {
+          "name": "vehicles",
+          "signature": "()",
+          "doc": ""
+        },
+        {
+          "name": "fitting",
+          "signature": "(fitting_id)",
+          "doc": ""
+        },
+        {
+          "name": "modification",
+          "signature": "(mod_id)",
+          "doc": ""
+        },
+        {
+          "name": "weapon",
+          "signature": "(weapon_id)",
+          "doc": ""
+        },
+        {
+          "name": "chase_modifier_table",
+          "signature": "(mode)",
+          "doc": ""
+        },
+        {
+          "name": "size_allows",
+          "signature": "(size, minimum)",
+          "doc": "Min. Size is a *floor*: a large hull may mount a small fitting."
+        },
+        {
+          "name": "FittedVehicle",
+          "signature": "",
+          "doc": "A hull plus what has been bolted onto it, with the budgets resolved.",
+          "methods": [
+            {
+              "name": "FittedVehicle.over_power",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "FittedVehicle.over_mass",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "FittedVehicle.legal",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "FittedVehicle.has",
+              "signature": "(effect)",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "fit_out",
+          "signature": "(vehicle_id, *, fittings=..., mods=...)",
+          "doc": "Resolve a hull + fittings + mods, or raise :class:`VehicleError`."
+        },
+        {
+          "name": "armor_class_in_combat",
+          "signature": "(base_ac, *, moving, driver_drive_skill=...)",
+          "doc": "A stationary hull is easier to hit; a moving one adds its driver's Drive skill."
+        },
+        {
+          "name": "can_be_harmed",
+          "signature": "(hull, *, heavy_weapon=..., vehicle_trauma=...)",
+          "doc": "``True``/``False`` when the contract settles it, ``None`` when the referee does."
+        },
+        {
+          "name": "damage_to_vehicle",
+          "signature": "(damage, *, trauma_multiplier=..., armor=...)",
+          "doc": "Multiply for a Traumatic Hit first, then subtract Armor (SRD 2.5.1/2.5.1.3)."
+        },
+        {
+          "name": "is_destroyed",
+          "signature": "(hit_points)",
+          "doc": ""
+        },
+        {
+          "name": "CrashResult",
+          "signature": "",
+          "doc": "One passenger's outcome after a hull is destroyed or goes out of control.",
+          "methods": [
+            {
+              "name": "CrashResult.unscathed",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "CrashResult.damage_fraction",
+              "signature": "()",
+              "doc": "Both saves: none. One save: half maximum hit points. Neither: mortally wounded."
+            },
+            {
+              "name": "CrashResult.mortally_wounded",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "CrashResult.major_injury_if_survives",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "crash_outcome",
+          "signature": "(*, physical_save_made, luck_save_made)",
+          "doc": ""
+        },
+        {
+          "name": "destruction_damage",
+          "signature": "(damage, *, luck_save_made)",
+          "doc": "Occupants take the damage that killed the hull; a Luck save halves it."
+        },
+        {
+          "name": "RamResult",
+          "signature": "",
+          "doc": "Ramming: opposed DEX/Drive vs DEX/Exert, then an Evasion save against people.",
+          "methods": [
+            {
+              "name": "RamResult.target_hurt",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "RamResult.damage_dealt",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "ram_person",
+          "signature": "(*, driver_total, target_total, evasion_save_made, hull_hit_points)",
+          "doc": "A person takes the hull's *maximum* hit points, with a 1d12/x3 Trauma Die."
+        },
+        {
+          "name": "ram_vehicle",
+          "signature": "(*, driver_total, target_total, hull_hit_points)",
+          "doc": "Vehicle-on-vehicle: no Evasion save, and the rammer takes the same damage back."
+        },
+        {
+          "name": "repair_estimate",
+          "signature": "(hull, hit_points_lost, *, fix_skill, drive_skill, free_parts=..., current_hit_points=...)",
+          "doc": "One hit point per day, plus the technician's Fix and Drive skill."
+        },
+        {
+          "name": "ChaseOutcome",
+          "signature": "",
+          "doc": "",
+          "methods": [
+            {
+              "name": "ChaseOutcome.caught_by",
+              "signature": "()",
+              "doc": "Strictly greater, not greater-or-equal: a tie is an escape."
+            },
+            {
+              "name": "ChaseOutcome.escaped",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "resolve_chase",
+          "signature": "(fleeing_total, pursuer_totals)",
+          "doc": ""
+        },
+        {
+          "name": "hindrance_bonus",
+          "signature": "(successes, *, botched=...)",
+          "doc": "Each successful hindrance is +1 to the fleeing pace, capped at +3."
+        },
+        {
+          "name": "foot_chase_modifier",
+          "signature": "(*, more_pursuers_than_pursued=..., head_start=..., terrain_knowledge=..., half_hearted=..., enraged=...)",
+          "doc": ""
+        },
+        {
+          "name": "vehicle_chase_modifier",
+          "signature": "(*, cannot_see_target=..., pursuer_flying=..., pursued_flying=..., spotter=..., terrain_knowledge=..., half_hearted=..., enraged=...)",
+          "doc": ""
+        }
+      ],
+      "count": 37
+    },
+    {
+      "module": "swn_faction_operations.py",
+      "procedures": [
+        {
+          "name": "resolve_action",
+          "signature": "(actor, target, *, action, acting_asset, target_asset, die, bonus=..., difficulty=..., damage=...)",
+          "doc": "Resolve one pending strategic attack without silently taking extra turns."
+        },
+        {
+          "name": "relocate_asset",
+          "signature": "(faction, *, asset_id, destination, allowed_destinations)",
+          "doc": "Resolve a previously committed move with explicit map authorization."
+        }
+      ],
+      "count": 2
+    },
+    {
+      "module": "swn_faction_turn.py",
+      "procedures": [
+        {
+          "name": "Asset",
+          "signature": "",
+          "doc": "",
+          "methods": [
+            {
+              "name": "Asset.damage",
+              "signature": "(amount)",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "Faction",
+          "signature": "",
+          "doc": "",
+          "methods": [
+            {
+              "name": "Faction.add_asset",
+              "signature": "(asset, cost)",
+              "doc": ""
+            },
+            {
+              "name": "Faction.act",
+              "signature": "(action, asset_ids=..., target=...)",
+              "doc": ""
+            },
+            {
+              "name": "Faction.next_turn",
+              "signature": "(income=...)",
+              "doc": ""
+            }
+          ]
+        }
+      ],
+      "count": 4
+    },
+    {
+      "module": "swn_progression.py",
+      "procedures": [
+        {
+          "name": "PsychicTraining",
+          "signature": "",
+          "doc": "Track a character's disciplines, advancement and learned techniques.",
+          "methods": [
+            {
+              "name": "PsychicTraining.has_prerequisite",
+              "signature": "(discipline, minimum_rank=...)",
+              "doc": ""
+            },
+            {
+              "name": "PsychicTraining.learn_discipline",
+              "signature": "(discipline)",
+              "doc": ""
+            },
+            {
+              "name": "PsychicTraining.advance",
+              "signature": "(discipline)",
+              "doc": ""
+            },
+            {
+              "name": "PsychicTraining.learn_technique",
+              "signature": "(identifier, discipline, required_rank)",
+              "doc": "Register a GM-approved catalogue entry once its prerequisites are met."
+            },
+            {
+              "name": "PsychicTraining.technique_access",
+              "signature": "(identifier)",
+              "doc": ""
+            },
+            {
+              "name": "PsychicTraining.snapshot",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "PsychicTraining.from_snapshot",
+              "signature": "(data)",
+              "doc": ""
+            }
+          ]
+        }
+      ],
+      "count": 7
+    },
+    {
+      "module": "swn_psionics.py",
+      "procedures": [
+        {
+          "name": "Psychic",
+          "signature": "",
+          "doc": "Effort is reserved rather than expended; different reservations recover at different times.",
+          "methods": [
+            {
+              "name": "Psychic.capacity",
+              "signature": "()",
+              "doc": "SWN Revised Effort: 1 + best(WIS, CON) modifier + highest discipline rank."
+            },
+            {
+              "name": "Psychic.free",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Psychic.knows",
+              "signature": "(discipline, minimum_rank=...)",
+              "doc": ""
+            },
+            {
+              "name": "Psychic.commit",
+              "signature": "(key, discipline, *, minimum_rank=..., duration=..., amount=...)",
+              "doc": ""
+            },
+            {
+              "name": "Psychic.release",
+              "signature": "(key)",
+              "doc": "Only active commitments can be voluntarily freed immediately."
+            },
+            {
+              "name": "Psychic.end_scene",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Psychic.rest",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Psychic.snapshot",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Psychic.from_snapshot",
+              "signature": "(state)",
+              "doc": ""
+            }
+          ]
+        }
+      ],
+      "count": 9
+    },
+    {
+      "module": "swn_sector.py",
+      "procedures": [
+        {
+          "name": "Ship",
+          "signature": "",
+          "doc": "",
+          "methods": [
+            {
+              "name": "Ship.can_travel",
+              "signature": "(route)",
+              "doc": ""
+            },
+            {
+              "name": "Ship.travel",
+              "signature": "(route)",
+              "doc": ""
+            },
+            {
+              "name": "Ship.refuel",
+              "signature": "(units)",
+              "doc": ""
+            }
+          ]
+        }
+      ],
+      "count": 3
+    },
+    {
+      "module": "swn_starships.py",
+      "procedures": [
+        {
+          "name": "Vessel",
+          "signature": "",
+          "doc": "",
+          "methods": [
+            {
+              "name": "Vessel.install",
+              "signature": "(fitting)",
+              "doc": ""
+            },
+            {
+              "name": "Vessel.uninstall",
+              "signature": "(identifier)",
+              "doc": ""
+            },
+            {
+              "name": "Vessel.operational",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Vessel.snapshot",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Vessel.from_snapshot",
+              "signature": "(data)",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "resolve_attack",
+          "signature": "(attacker, defender, weapon, *, d20, attack_bonus=...)",
+          "doc": "Explicit die input guarantees deterministic tests, save/replay and Godot parity."
+        }
+      ],
+      "count": 6
+    },
+    {
+      "module": "swn_transhuman.py",
+      "procedures": [
+        {
+          "name": "ContinuityRegistry",
+          "signature": "",
+          "doc": "Track separate agents rather than overwriting identity on copying.",
+          "methods": [
+            {
+              "name": "ContinuityRegistry.register",
+              "signature": "(mind)",
+              "doc": ""
+            },
+            {
+              "name": "ContinuityRegistry.backup",
+              "signature": "(mind_id, backup_id)",
+              "doc": ""
+            },
+            {
+              "name": "ContinuityRegistry.deactivate",
+              "signature": "(mind_id)",
+              "doc": ""
+            },
+            {
+              "name": "ContinuityRegistry.resleeve",
+              "signature": "(mind_id, shell)",
+              "doc": ""
+            },
+            {
+              "name": "ContinuityRegistry.instantiate",
+              "signature": "(backup_id, mind_id, shell)",
+              "doc": ""
+            },
+            {
+              "name": "ContinuityRegistry.active_lineage",
+              "signature": "(lineage)",
+              "doc": ""
+            }
+          ]
+        }
+      ],
+      "count": 6
+    },
+    {
+      "module": "swn_true_ai.py",
+      "procedures": [
+        {
+          "name": "TrueAI",
+          "signature": "",
+          "doc": "",
+          "methods": [
+            {
+              "name": "TrueAI.attach",
+              "signature": "(host)",
+              "doc": ""
+            },
+            {
+              "name": "TrueAI.detach",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "TrueAI.isolate",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "TrueAI.reconnect",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "TrueAI.authorize",
+              "signature": "(operation)",
+              "doc": ""
+            },
+            {
+              "name": "TrueAI.execute",
+              "signature": "(operation)",
+              "doc": ""
+            },
+            {
+              "name": "TrueAI.set_brake",
+              "signature": "(enabled, *, oversight=...)",
+              "doc": ""
+            },
+            {
+              "name": "TrueAI.terminate",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        }
+      ],
+      "count": 8
+    },
+    {
+      "module": "wn_core.py",
+      "procedures": [
+        {
+          "name": "attribute_modifier",
+          "signature": "(score)",
+          "doc": "The modifier for an attribute score (SRD 1.1.2)."
+        },
+        {
+          "name": "clamp_situational",
+          "signature": "(value)",
+          "doc": "Circumstances adjust a check by at most -2..+2 (SRD 2.3.1)."
+        },
+        {
+          "name": "clamp_aid",
+          "signature": "(value)",
+          "doc": "Aid tops out at +1 however many allies help (SRD 2.3.3)."
+        },
+        {
+          "name": "Check",
+          "signature": "",
+          "doc": "One resolved skill check.",
+          "methods": [
+            {
+              "name": "Check.total",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Check.success",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Check.margin",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "skill_check",
+          "signature": "(*, attribute_score, skill_level, difficulty, situational=..., aid=..., rng=..., dice=...)",
+          "doc": "`2d6 + attribute modifier + skill level` against a difficulty."
+        },
+        {
+          "name": "opposed_check",
+          "signature": "(*, a, b)",
+          "doc": "Opposed checks: the higher roll wins (SRD 2.3.4)."
+        },
+        {
+          "name": "Save",
+          "signature": "",
+          "doc": "One resolved saving throw.",
+          "methods": [
+            {
+              "name": "Save.success",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "save_target",
+          "signature": "(kind, *, level=..., modifiers=...)",
+          "doc": "``16 - level - the higher of the two listed attribute modifiers``; Luck has none."
+        },
+        {
+          "name": "roll_save",
+          "signature": "(kind, *, level=..., modifiers=..., rng=..., die=...)",
+          "doc": "Roll a save: a natural 1 always fails and a natural 20 always succeeds."
+        },
+        {
+          "name": "from_legacy_stat",
+          "signature": "(value)",
+          "doc": "Map a legacy 1..10 STAT onto a 3..18 attribute, preserving rank order (1 -> 3, 10 -> 18)."
+        },
+        {
+          "name": "from_legacy_skill",
+          "signature": "(value)",
+          "doc": "Map a legacy 1..10 skill rating onto a level 0..4 (1..2 -> 0, 3..4 -> 1, ... 9..10 -> 4)."
+        }
+      ],
+      "count": 13
+    }
+  ]
+}
