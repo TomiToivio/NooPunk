@@ -1,0 +1,101 @@
+{
+  "$comment": "Cities Without Number SRD 3.2.2 common wages, verbatim, cited. Bribes (3.2.3) are deliberately not transcribed: the source text available to me is truncated mid-table, and an incomplete price list is worse than none.",
+  "source": {
+    "title": "Cities Without Number SRD",
+    "section": "3.2.2",
+    "url": "https://cwn.quadrifons.com/"
+  },
+  "period": "day",
+  "wages": [
+    {
+      "id": "unskilled_laborer",
+      "name": "Unskilled street laborer",
+      "daily": 10
+    },
+    {
+      "id": "low_ganger",
+      "name": "Low-level ganger or street thug",
+      "daily": 15
+    },
+    {
+      "id": "streetwalker",
+      "name": "Common streetwalker",
+      "daily": 20
+    },
+    {
+      "id": "stall_merchant",
+      "name": "Petty street stall merchant",
+      "daily": 25
+    },
+    {
+      "id": "street_tech",
+      "name": "Capable street tech or cyberdoc",
+      "daily": 50
+    },
+    {
+      "id": "street_bodyguard",
+      "name": "Competent street bodyguard",
+      "daily": 50
+    },
+    {
+      "id": "entry_corp_worker",
+      "name": "Entry-level corp worker",
+      "daily": 30
+    },
+    {
+      "id": "low_corp_lifer",
+      "name": "Low-level corp lifer",
+      "daily": 40
+    },
+    {
+      "id": "street_cop",
+      "name": "Street cop or skilled corp worker",
+      "daily": 100
+    },
+    {
+      "id": "professional_companion",
+      "name": "Professional companion",
+      "daily": 200
+    },
+    {
+      "id": "corp_hacker",
+      "name": "Corp-employed hacker",
+      "daily": 200
+    },
+    {
+      "id": "corp_middle_manager",
+      "name": "Corp middle manager",
+      "daily": 250
+    },
+    {
+      "id": "corp_cyberdoc",
+      "name": "Corp-sponsored cyberdoc",
+      "daily": 250
+    },
+    {
+      "id": "elite_bodyguard",
+      "name": "Elite or well-known bodyguard",
+      "daily": 500
+    },
+    {
+      "id": "gang_boss",
+      "name": "Successful gang boss",
+      "daily": 750
+    },
+    {
+      "id": "branch_manager",
+      "name": "Corp branch office manager",
+      "daily": 1000
+    },
+    {
+      "id": "high_exec",
+      "name": "High-ranking corp exec",
+      "daily": 5000
+    },
+    {
+      "id": "oligarch",
+      "name": "Oligarchic elite of a city",
+      "daily": 10000
+    }
+  ]
+}
