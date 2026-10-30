@@ -2,6 +2,9 @@ extends RefCounted
 
 ## #821 parity suite: typed tags, seven attributes, skill tags, statuses and the Empathy boundary.
 const Tags := preload("res://godot/core/cwn_tags.gd")
+## The contract-backed model. #824 merged both implementations, so the agreement between them is now
+## a tested property rather than a review promise (#791: one source of truth).
+const Contract := preload("res://godot/core/noopunk_tags.gd")
 const Character := preload("res://godot/core/cwn_character.gd")
 
 func _eq(name: String, got: Variant, want: Variant) -> Array:
@@ -138,5 +141,23 @@ func run() -> Array:
 		cross["needs_author_decision"].has("Fitness"), true))
 	rows.append(["the crosswalk does not assign a final value",
 		not cross.has("assigned"), ""])
+
+	# --- agreement with the contract-backed model (#824) ---
+	for score in range(3, 19):
+		rows.append(_eq("band agreement at %d" % score,
+			Tags.attribute_value_for_3d6(score), Contract.modifier_for_score(score)))
+	var mine: Array = Tags.ATTRIBUTES.duplicate()
+	var theirs: Array = Contract.attributes().duplicate()
+	mine.sort()
+	theirs.sort()
+	rows.append(_eq("the same seven attributes", mine, theirs))
+	rows.append(_eq("the same Empathy floor", Tags.EMPATHY_INHUMAN, Contract.empathy_floor()))
+	rows.append(_eq("the same untrained penalty",
+		Tags.UNTRAINED_MODIFIER, Contract.untrained_penalty()))
+	var my_skills: Array = Tags.SKILLS.keys()
+	var their_skills: Array = Contract.skill_names()
+	my_skills.sort()
+	their_skills.sort()
+	rows.append(_eq("the same skill list", my_skills, their_skills))
 
 	return rows

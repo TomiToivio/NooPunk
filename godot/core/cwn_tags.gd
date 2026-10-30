@@ -11,6 +11,11 @@ extends RefCounted
 ##
 ## Human attribute range is -2..+2; above +2 is transhuman and is representable but never generated.
 ## Empathy -3 is below the human range and means the character is not a player character.
+##
+## **Numbers come from `NoopunkTags`** (and through it `data/rules/noopunk_tags.json`). This module
+## keeps the formatting, parsing and status-stacking helpers; it does not hold a second copy of the
+## bands, the skill names or the Empathy floor. Two modules agreeing by construction is worth more
+## than two modules agreeing by review.
 
 const TYPE_ATTRIBUTE := "attribute"
 const TYPE_SKILL := "skill"
@@ -85,15 +90,8 @@ const ATTRIBUTE_CROSSWALK := {
 static func attribute_value_for_3d6(total: int) -> int:
 	if total < 3 or total > 18:
 		return 0
-	if total == 3:
-		return -2
-	if total <= 7:
-		return -1
-	if total <= 13:
-		return 0
-	if total <= 17:
-		return 1
-	return 2
+	# The band table lives in the contract; this delegates so the two implementations cannot drift.
+	return NoopunkTags.modifier_for_score(total)
 
 ## Build a tag. `kind` is one of the TYPE_* constants; the value's legality depends on the kind.
 static func make(kind: String, name: String, value: int, extra: Dictionary = {}) -> Dictionary:
@@ -113,7 +111,7 @@ static func is_human_attribute(tag: Dictionary) -> bool:
 static func is_player_character_eligible(tags: Array) -> bool:
 	for tag in tags:
 		if tag.get("type") == TYPE_ATTRIBUTE and str(tag.get("name", "")) == "Empathy":
-			return int(tag.get("value", 0)) > EMPATHY_INHUMAN
+			return int(tag.get("value", 0)) > NoopunkTags.empathy_floor()
 	return true
 
 ## Display syntax. Attributes and statuses carry a sign, skills do not (a skill is a level, not a
