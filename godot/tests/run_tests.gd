@@ -25,9 +25,8 @@ const SUITES := [
 	"res://godot/tests/test_cwn_drugs.gd",
 	"res://godot/tests/test_rules_adapter.gd",
 	"res://godot/tests/test_combat.gd",
-	"res://godot/tests/test_hacking_screen.gd",
-	"res://godot/tests/test_chase_screen.gd",
 	"res://godot/tests/test_hacking.gd",
+	"res://godot/tests/test_chase_screen.gd",
 	"res://godot/tests/test_cwn_hacking_catalogue.gd",
 	"res://godot/tests/test_scene_flow.gd",
 	"res://godot/tests/test_session.gd",
@@ -66,7 +65,7 @@ func _initialize() -> void:
 				failures += 1
 			print("  %s  %s%s" % ["PASS" if ok else "FAIL", String(row[0]),
 				"" if ok else "  — " + String(row[2])])
-		# The suite may own RefCounted objects; release them before engine shutdown.
+		# Release suite references before engine shutdown.
 		suite = null
 		rows.clear()
 	print("%d checks, %d failed" % [total, failures])

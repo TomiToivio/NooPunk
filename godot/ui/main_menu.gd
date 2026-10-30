@@ -39,8 +39,8 @@ func _ready() -> void:
 	var hacking := Button.new()
 	hacking.text = "Hacking — node link (warehouse network)"
 	hacking.pressed.connect(func() -> void:
-		var screen: Node = load("res://scenes/hacking/node_link.tscn").instantiate()
-		if not screen.open_mission("res://godot/scenarios/mvp_romppainen/mission.json", 7):
+		var screen: Node = load("res://scenes/node_link.tscn").instantiate()
+		if not screen.open_mission("res://godot/scenarios/mvp_romppainen/mission.json", 2, 2, 2):
 			screen.queue_free()
 			return
 		get_tree().root.add_child(screen)

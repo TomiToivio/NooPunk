@@ -77,8 +77,7 @@ jobs:
         run: |
           set -o pipefail
           godot --headless --path . --script res://godot/tests/run_tests.gd 2>&1 | tee /tmp/noopunk-slice.log
-          # Negative-path tests intentionally log these three diagnostics. Everything else
-          # matching an engine/script error or shutdown leak must be investigated.
+          # The three negative-path messages below are expected test diagnostics.
           grep -E '^(SCRIPT ERROR:|ERROR:|WARNING:.*(leaked|still in use))' /tmp/noopunk-slice.log \
             | grep -Ev '^ERROR: (NoopunkSceneFlow: unusable save data|DialogueRunner: no choice 99|InvestigationAdapter: no scene no_such_scene)' \
             > /tmp/noopunk-unexpected.log || true
