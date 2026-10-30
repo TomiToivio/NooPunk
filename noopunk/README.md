@@ -1,7 +1,10 @@
-> **ARCHIVED (issue #848).** This tree is the blank-rulebook / seven-attribute restart (#827, #835).
-> It is preserved for history and must not be extended. The canonical rules are vanilla CWN/SWN and
-> the canonical game is the repository-root `project.godot`; see `docs/design/ISSUE_848_BASELINE.md`
-> and the CURRENT DIRECTIVE at the top of `AGENTS.md`.
+> ## ARCHIVED — SUPERSEDED BY #848
+>
+> This directory came from the blank-rulebook restart (#827) and its custom seven-attribute sheet
+> (#835). **Issue #848 restored vanilla CWN/SWN and the root `project.godot` as canonical.** Nothing here
+> is authoritative; it is kept as reference until the author reauthorises or a migration removes it.
+>
+> Canonical: rulebook `rulebook/00_INDEX.md`, Godot `project.godot`, startup scene `res://scenes/main.tscn`.
 
 # NoöPunk — canonical restart (issue #827)
 

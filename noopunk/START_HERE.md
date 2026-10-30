@@ -1,7 +1,6 @@
-> **ARCHIVED (issue #848).** This tree is the blank-rulebook / seven-attribute restart (#827, #835).
-> It is preserved for history and must not be extended. The canonical rules are vanilla CWN/SWN and
-> the canonical game is the repository-root `project.godot`; see `docs/design/ISSUE_848_BASELINE.md`
-> and the CURRENT DIRECTIVE at the top of `AGENTS.md`.
+> **ARCHIVED / REFERENCE ONLY (issue [#848](https://github.com/TomiToivio/NooPunk/issues/848)).** This walkthrough describes the superseded #827/#835 custom-attribute experiment. It is **not** the current development or playtest entry point. Follow [root START_HERE.md](../START_HERE.md), [AGENTS.md](../AGENTS.md) and the canonical root `project.godot`, startup `res://scenes/main.tscn`. Vanilla CWN/SWN and STR/DEX/CON/INT/WIS/CHA govern active rules. Baseline: `36092a56a7637145c805129511eb2b6b688f6ca0`.
+
+---
 
 # NoöPunk Step 2: UNSA rookie
 
