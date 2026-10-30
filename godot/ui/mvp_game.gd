@@ -27,6 +27,8 @@ const GRID_H := 8
 var session: NoopunkSession
 var player := Vector2i(2, 4)
 var hacking_open := false
+var selected_node := 0
+var selected_verb := 0
 var encounter_open := false
 var status := ""
 
@@ -61,6 +63,8 @@ func _update_labels() -> void:
 	lines.append("HP %d/%d   AC %d" % [session.hp, int(session.character.get("hp_max", 1)), int(session.character.get("ac", 10))])
 	if session.hacking != null:
 		lines.append("CPU %d   failures %d/4   alerts %d/2%s" % [int(session.hacking.deck["cpu"]), session.hacking.failures, session.hacking.alert_actions, "   ALARM" if session.hacking.alarm else ""])
+	if hacking_open and session.hacking != null:
+		lines.append_array(_network_lines())
 	lines.append("Objectives: %s" % str(session.objectives_done()))
 	if session.flow.resolved:
 		lines.append("Debrief: %s, %s" % [session.flow.approach, session.flow.conclusion])
@@ -80,6 +84,9 @@ func _announce(text: String) -> void:
 
 func _input(event: InputEvent) -> void:
 	if not (event is InputEventKey) or not event.pressed or event.echo:
+		return
+	if hacking_open and _network_input(event.keycode):
+		queue_redraw()
 		return
 	match event.keycode:
 		KEY_W, KEY_UP: _step(Vector2i(0, -1))
@@ -147,6 +154,9 @@ func _toggle_network() -> void:
 		_announce("No network worth entering here.")
 		return
 	hacking_open = not hacking_open
+	if hacking_open:
+		selected_node = 0
+		selected_verb = 0
 	if hacking_open and session.hacking == null:
 		session.open_network()
 	_announce("Network view open." if hacking_open else "Network view closed.")
@@ -213,3 +223,79 @@ func _draw_network() -> void:
 		var colour := COLOUR_TERMINAL if session.hacking.is_node_connected(String(node_id)) else COLOUR_DIM
 		draw_rect(Rect2(pos, Vector2(20, 20)), colour)
 		i += 1
+
+
+# Network controls use the session's rules API. Selection alone never spends resources.
+func _node_ids() -> Array:
+	if session.hacking == null:
+		return []
+	var ids := session.hacking.nodes.keys()
+	ids.sort()
+	return ids
+
+func _selected_node_id() -> String:
+	var ids := _node_ids()
+	if ids.is_empty():
+		return ""
+	return String(ids[clampi(selected_node, 0, ids.size() - 1)])
+
+func _node_verbs() -> Array:
+	var id := _selected_node_id()
+	if id.is_empty():
+		return []
+	return Array(session.hacking.nodes[id].get("verbs", []))
+
+func _network_lines() -> Array:
+	var lines: Array = ["", "NETWORK  J/K: node  U/I: verb  ENTER: connect  SPACE: run"]
+	var ids := _node_ids()
+	for i in range(ids.size()):
+		var id := String(ids[i])
+		var connected := session.hacking.is_node_connected(id)
+		var marker := ">" if i == selected_node else " "
+		lines.append("%s %s %s  [%s]" % [marker, id, "ONLINE" if connected else "LOCKED",
+			", ".join(session.hacking.nodes[id].get("links", []))])
+	var selected := _selected_node_id()
+	if not selected.is_empty():
+		var node: Dictionary = session.hacking.nodes[selected]
+		lines.append("Selected: %s  Security %s  Access required %s" % [
+			selected, str(node.get("security", "?")), str(node.get("access_required", "?"))])
+		var verbs := _node_verbs()
+		for i in range(verbs.size()):
+			var verb := String(verbs[i])
+			var ready := session.hacking.can_act(selected, verb)
+			lines.append("%s %s (%s)" % [
+				">" if i == selected_verb else " ", verb,
+				"ready" if ready else "unavailable"])
+		lines.append("Access %d  CPU %d" % [int(session.hacking.deck["access"]),
+			int(session.hacking.deck["cpu"])])
+	return lines
+
+func _network_input(key: Key) -> bool:
+	if session.hacking == null:
+		return false
+	var ids := _node_ids()
+	match key:
+		KEY_J:
+			selected_node = maxi(0, selected_node - 1)
+			selected_verb = 0
+		KEY_K:
+			selected_node = mini(ids.size() - 1, selected_node + 1)
+			selected_verb = 0
+		KEY_U:
+			selected_verb = maxi(0, selected_verb - 1)
+		KEY_I:
+			selected_verb = mini(_node_verbs().size() - 1, selected_verb + 1)
+		KEY_ENTER, KEY_KP_ENTER:
+			var result := session.hack_connect(_selected_node_id())
+			_announce("Connect: %s" % ("connected" if result.get("ok", false) else str(result.get("reason", "failed"))))
+		KEY_SPACE:
+			var verbs := _node_verbs()
+			if verbs.is_empty():
+				_announce("This node offers no actions.")
+			else:
+				var result := session.hack_act(_selected_node_id(), String(verbs[clampi(selected_verb, 0, verbs.size() - 1)]))
+				_announce("Program: %s" % ("success" if result.get("success", false) else str(result.get("reason", "check failed"))))
+		_:
+			return false
+	_update_labels()
+	return true
