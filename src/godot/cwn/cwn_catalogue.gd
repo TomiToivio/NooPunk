@@ -45,12 +45,12 @@ static func rows(key: String) -> Array:
 static func _cell(row: Dictionary, names: Array) -> String:
 	for name in names:
 		if row.has(name):
-			return str(row[name]).strip()
+			return str(row[name]).strip_edges()
 	# Case-insensitive fallback: the extractor preserves SRD capitalisation exactly.
 	for column in row.keys():
 		for name in names:
 			if str(column).to_lower() == str(name).to_lower():
-				return str(row[column]).strip()
+				return str(row[column]).strip_edges()
 	return ""
 
 static func _int(text: String, fallback: int = 0) -> int:
