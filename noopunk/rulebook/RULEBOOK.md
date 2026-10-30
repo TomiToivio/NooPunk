@@ -1,78 +1,51 @@
 # NoöPunk
 
-**Version:** 0.0.1 · **Status:** draft
+**Version:** 0.0.2 · **Status:** incremental draft
 
-> This rulebook is written one piece at a time. Only what is written here exists as rules.
+> Tomi authors one rule at a time; each approved rule is implemented in this rulebook and the same canonical Godot game (`noopunk/game/`).
 
 ## Premise
 
-Noöpunk is a tabletop role-playing game set in the 20XX near future, where the Noösphere has become a
-place people can enter. The player character is a **UNSA agent, fresh from the academy**.
-
-## How this book is written
-
-Rules arrive from the author one piece at a time and are implemented in the accompanying Godot game in
-the same pass. Nothing is added speculatively.
-
-## Contents
-
-1. [Characters](#characters)
-2. [Difficulty](#difficulty)
-3. [Core resolution](#core-resolution) — *not yet written*
-4. [Gameplay](#gameplay) — *not yet written*
-5. [Scenarios](#scenarios) — *not yet written*
-
----
+Noöpunk is a tabletop role-playing game set in the 20XX near future, in a world where the Noösphere has become a place people can enter. The player character is a **UNSA agent straight from the academy**. No further character background or specialization has been decided.
 
 ## Characters
 
-### The seven attributes
+### Seven attributes
 
 | Attribute | Definition |
-|---|---|
-| **Fitness** | Your physical strength and constitution |
-| **Reflexes** | Your physical dexterity, agility and coordination |
-| **Cognition** | Your ability to process language and data |
-| **Cyber** | Your ability to interface with technology |
-| **Awareness** | Your intuition, perception and awareness |
-| **Agency** | Your free will |
-| **Empathy** | Your loving kindness and humanity |
+| --- | --- |
+| Fitness | Your physical strength and constitution |
+| Reflexes | Your physical dexterity, agility and coordination |
+| Cognition | Your ability to process language and data |
+| Cyber | Your ability to interface with technology |
+| Awareness | Your intuition, perception and awareness |
+| Agency | Your free will |
+| Empathy | Your loving kindness and humanity |
 
-### Generating attributes
+### Generation
 
-Roll **3d6 separately for each attribute**, then convert the total using this table. The converted,
-signed value is what appears on the character sheet; raw 3d6 totals are not the final stats.
+Roll **3d6 independently for each** of the seven attributes and convert each total into its displayed signed attribute value. The character sheet records the converted values, not the dice totals.
 
-| 3d6 total | Attribute |
-|---|---|
-| 3–4 | −3 |
-| 5–6 | −2 |
-| 7–8 | −1 |
+| 3d6 total | Attribute value |
+| --- | --- |
+| 3–4 | -3 |
+| 5–6 | -2 |
+| 7–8 | -1 |
 | 9–12 | 0 |
 | 13–14 | +1 |
 | 15–16 | +2 |
 | 17–18 | +3 |
 
-The machine-readable copy of both tables below is [`noopunk/game/data/attributes.json`](../game/data/attributes.json);
-the game reads that file, so the book and the game cannot drift apart.
+The basic human range is **-3 to +3** for *every* attribute, including Empathy. Scores **above +3** are transhuman. No restrictions on player characters with -3 Empathy have been specified.
 
-**Basic human range:** −3 to +3. Above +3 is **transhuman**. A score of −3 is a legitimate basic-human
-value for any attribute, including Empathy.
+In Godot the same generation is in `noopunk/game/attributes.gd`; the character screen rolls or rerolls all seven values, displays the signed values, and preserves the selected roll when the player walks around.
 
-### The character sheet
+## Core resolution
 
-A UNSA academy graduate has the seven attributes and nothing else yet: no skills, equipment,
-specialisations or history. Those are later steps.
-
----
-
-## Difficulty
-
-Target numbers used by checks that have not yet been specified. This table is reference data for later
-rules; **no resolution mechanic has been chosen**.
+### Difficulty ratings (reference only)
 
 | Target difficulty | Label |
-|---|---|
+| --- | --- |
 | 6 | Easiest |
 | 8 | Easier |
 | 10 | Easy |
@@ -81,16 +54,12 @@ rules; **no resolution mechanic has been chosen**.
 | 16 | Harder |
 | 18 | Hardest |
 
----
-
-## Core resolution
-
-*Not yet written.*
+**No resolution dice mechanic has been specified.** These targets have no check or roll implementation yet.
 
 ## Gameplay
 
-*Not yet written.*
+*Placeholder. Further gameplay and interaction rules are not yet written.*
 
 ## Scenarios
 
-*Not yet written.*
+*Placeholder. Scenarios will be listed here as they are authored.*
