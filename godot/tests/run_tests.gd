@@ -66,4 +66,25 @@ func _initialize() -> void:
 			print("  %s  %s%s" % ["PASS" if ok else "FAIL", String(row[0]),
 				"" if ok else "  — " + String(row[2])])
 	print("%d checks, %d failed" % [total, failures])
+
+	# Free what the suites attached to the tree. Without this, every scene a test instantiated is still
+	# alive when the process exits, Godot reports it as leaked, and the leak counter becomes background
+	# noise - which is exactly how a real leak survives. Autoloads are left alone: they are the project's
+	# own singletons, not test fixtures.
+	for child in root.get_children():
+		if child is Window:
+			continue
+		if child.name in _autoload_names():
+			continue
+		child.free()
+
 	quit(1 if failures > 0 else 0)
+
+
+func _autoload_names() -> Array:
+	var names: Array = []
+	for prop in ProjectSettings.get_property_list():
+		var key: String = String(prop.get("name", ""))
+		if key.begins_with("autoload/"):
+			names.append(key.substr("autoload/".length()))
+	return names
