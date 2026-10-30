@@ -6,6 +6,9 @@ Baseline skill of a character in a type of a task, divided into physical, social
 ## Biosphere
 Biological life system of Earth, giving birth to Noösphere.
 
+## Conscious Agent
+Reality is a network of conscious agents interacting through exchange of information.
+
 ## Constructs
 Intelligences that are not biological, includes physical machines like robots and beings that exist purely in cyberspace as information.
 
@@ -24,5 +27,11 @@ Intelligences other than human. This is used to refer to Extraterrestrial Intell
 ## Noösphere
 The collective unconscious of the biosphere which is now awakening and becoming conscious. This would be achieved naturally on many planets, but humans need to construct a cybernetic communication network consisting of machines and humans to achieve it. So the Noösphere of Earth is both cybernetic and psychic.
 
+## Psionics
+Natural ability of a conscious agent to interact with other conscious agents. Mostly latent in humans, 
+
 ## Quantum Information Panpsychism
-Theory of consciousness existing in the quantum field. 
+Theory of consciousness existing in the quantum field. The universe is a network of interacting conscious agents.
+
+## Spacetime
+The universe experienced by biologics like humans, three dimensions of space and one dimension of time. It is a subset of Hilbert space.
