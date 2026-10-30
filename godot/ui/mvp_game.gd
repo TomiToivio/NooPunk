@@ -253,7 +253,7 @@ func _network_lines() -> Array:
 		var connected := session.hacking.is_node_connected(id)
 		var marker := ">" if i == selected_node else " "
 		lines.append("%s %s %s  [%s]" % [marker, id, "ONLINE" if connected else "LOCKED",
-			", ".join(session.hacking.nodes[id].get("links", []))])
+			str(session.hacking.nodes[id].get("links", []))])
 	var selected := _selected_node_id()
 	if not selected.is_empty():
 		var node: Dictionary = session.hacking.nodes[selected]
@@ -279,12 +279,12 @@ func _network_input(key: Key) -> bool:
 			selected_node = maxi(0, selected_node - 1)
 			selected_verb = 0
 		KEY_K:
-			selected_node = mini(ids.size() - 1, selected_node + 1)
+			selected_node = clampi(selected_node + 1, 0, maxi(0, ids.size() - 1))
 			selected_verb = 0
 		KEY_U:
 			selected_verb = maxi(0, selected_verb - 1)
 		KEY_I:
-			selected_verb = mini(_node_verbs().size() - 1, selected_verb + 1)
+			selected_verb = clampi(selected_verb + 1, 0, maxi(0, _node_verbs().size() - 1))
 		KEY_ENTER, KEY_KP_ENTER:
 			var result := session.hack_connect(_selected_node_id())
 			_announce("Connect: %s" % ("connected" if result.get("ok", false) else str(result.get("reason", "failed"))))
