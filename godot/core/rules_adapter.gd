@@ -126,6 +126,22 @@ func save_target(category: String, level: int, modifiers: Dictionary) -> int:
 	var second := int(modifiers.get(String(pair[1]), 0))
 	return base - level - max(first, second)
 
+## Public die rolls for modules that need dice but must not own a second RNG (#749).
+##
+## Combat, hacking and encounter resolution all draw from this stream, so one seed reproduces an
+## entire vertical slice rather than one module of it.
+func roll_die(sides: int) -> int:
+	return _dice.roll(sides)
+
+func roll_dice(count: int, sides: int) -> int:
+	if count < 0 or sides < 2:
+		push_error("RulesAdapter: invalid dice pool")
+		return 0
+	var total := 0
+	for _i in range(count):
+		total += _dice.roll(sides)
+	return total
+
 ## CWN d20 attack against a caller-selected melee or ranged Armor Class.
 ## Trained combat ranks are 0..4; -1 signifies an untrained attack (-2).
 ## Damage, Trauma and Shock belong to the later complete combat module.

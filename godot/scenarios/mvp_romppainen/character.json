@@ -1,0 +1,21 @@
+{
+  "id": "romppainen",
+  "name": "Detective Romppainen",
+  "source": "Cities Without Number, published character creation",
+  "note": "Every entry marked \"choice\" is an undecided player option, not canon. Attributes use the standard 3-18 scale; skills are 0-4 ranks.",
+  "attributes": {"STR": 9, "DEX": 12, "CON": 10, "INT": 14, "WIS": 12, "CHA": 8},
+  "level": 1,
+  "hp_max": 7,
+  "ac": 13,
+  "attack": {
+    "name": "sidearm",
+    "attribute": "DEX",
+    "combat_rank": 1,
+    "attack_bonus": 1,
+    "damage": [1, 6, 1]
+  },
+  "skills": {"Program": 2, "Notice": 1, "Shoot": 1, "Talk": 1, "Survive": 0},
+  "gear": ["sidearm", "cyberdeck (CPU 6, access 1)", "notebook", "coat"],
+  "choices": ["background", "edge", "focus", "starting equipment package"],
+  "undecided": true
+}
