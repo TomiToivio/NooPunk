@@ -1,0 +1,60 @@
+name: NoöPunk rule or scenario draft
+description: One Tomi-authored draft, implemented in the tabletop rulebook and the Godot RPG (#814)
+title: "Draft: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        One draft, one section or one scenario. The draft is the source of truth; anything it
+        leaves open is a question for Tomi, not a decision for the implementer.
+        Process: `docs/design/ISSUE_814_DRAFT_WORKFLOW.md`.
+  - type: textarea
+    id: draft
+    attributes:
+      label: The draft
+      description: Tomi's draft, quoted verbatim or linked. Do not paraphrase decisions.
+      placeholder: Paste the draft, or link the document/commit that holds it.
+    validations:
+      required: true
+  - type: input
+    id: scope
+    attributes:
+      label: Scope, in one sentence
+      description: Which single rule section or scenario this draft changes.
+    validations:
+      required: true
+  - type: input
+    id: tabletop
+    attributes:
+      label: Tabletop target
+      description: RULEBOOK.md chapter/section that will carry it.
+      placeholder: e.g. 03_physical_systems — injuries
+  - type: dropdown
+    id: godot
+    attributes:
+      label: Godot surface
+      description: Where the computer RPG must express it.
+      multiple: true
+      options:
+        - data/rules only (numbers)
+        - core procedure
+        - UI / character sheet
+        - scenario / mission content
+        - not applicable to the computer RPG
+  - type: textarea
+    id: parity
+    attributes:
+      label: Parity evidence
+      description: Which executable behaviour will the Godot test assert, and which tabletop example uses the same numbers?
+      placeholder: e.g. "test_cwn_procedures.gd asserts X; RULEBOOK example rolls the same case"
+  - type: textarea
+    id: open_questions
+    attributes:
+      label: Open questions for Tomi
+      description: Anything the draft does not settle. Leave unresolved until answered.
+  - type: textarea
+    id: licensing
+    attributes:
+      label: Source and licensing notes
+      description: CWN/SWN section references; confirm no non-open prose is copied.
