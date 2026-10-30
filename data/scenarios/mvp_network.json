@@ -1,0 +1,52 @@
+{
+  "id": "mvp_security_map",
+  "note": "Illustrative read-only topology, not executable CWN programs or canon security",
+  "nodes": [
+    {
+      "id": "terminal",
+      "label": "Terminal",
+      "position": [
+        90,
+        100
+      ]
+    },
+    {
+      "id": "switch",
+      "label": "Switch",
+      "position": [
+        260,
+        100
+      ]
+    },
+    {
+      "id": "archive",
+      "label": "Archive",
+      "position": [
+        440,
+        70
+      ]
+    },
+    {
+      "id": "camera",
+      "label": "Camera",
+      "position": [
+        430,
+        220
+      ]
+    }
+  ],
+  "edges": [
+    [
+      "terminal",
+      "switch"
+    ],
+    [
+      "switch",
+      "archive"
+    ],
+    [
+      "switch",
+      "camera"
+    ]
+  ]
+}
