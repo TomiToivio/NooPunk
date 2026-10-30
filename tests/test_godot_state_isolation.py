@@ -56,8 +56,15 @@ class GodotStateIsolationTest(unittest.TestCase):
         text = CAMPAIGN_STATE.read_text(encoding="utf-8")
         self.assertRegex(text, r"const VERSION := \d+")
         self.assertIn("from_data", text)
-        # The version check must reject, not coerce: a save from another build is refused.
-        self.assertRegex(text, r'data\.get\("version"[^\n]*!= VERSION')
+        # The version gate must reject, not coerce. It became an allow-list when version 3 added the
+        # party and version 2 still had to load, so this asserts the mechanism rather than one
+        # comparison expression - the previous assertion failed the whole suite the moment the gate
+        # changed shape, which is a test pinning its own implementation.
+        self.assertRegex(text, r"const SUPPORTED_VERSIONS := \[")
+        self.assertRegex(text, r"incoming_version in SUPPORTED_VERSIONS")
+        version = re.search(r"const VERSION := (\d+)", text).group(1)
+        supported = text.split("SUPPORTED_VERSIONS := [", 1)[1].split("]", 1)[0]
+        self.assertIn(version, supported, "the current version must be loadable")
 
 
 class ScenarioFixtureTest(unittest.TestCase):
