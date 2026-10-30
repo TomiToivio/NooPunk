@@ -6,8 +6,12 @@ config_version=5
 [application]
 
 config/name="NoöPunk"
-run/main_scene="res://main.tscn"
+run/main_scene="res://creation.tscn"
 config/features=PackedStringArray("4.3")
+
+[autoload]
+
+Sheet="*res://sheet.gd"
 
 [display]
 
