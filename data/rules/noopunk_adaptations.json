@@ -1,0 +1,16 @@
+{
+  "_status": "none_approved",
+  "_note": "Home for approved NoöPunk departures from the CWN/SWN baseline (#814). Empty until Tomi approves a draft. Numeric values live here once and are read by Godot; RULEBOOK.md quotes the same numbers. No entry may be added by an agent without a linked draft and a decision.",
+  "_schema": {
+    "id": "stable snake_case identifier",
+    "title": "short name",
+    "status": "approved | open_question",
+    "draft": "link to Tomi's draft (child issue or commit)",
+    "tabletop": "RULEBOOK.md section id",
+    "godot": ["data/rules file", "godot/core procedure", "test id"],
+    "baseline": "CWN/SWN rule it departs from, with SRD section URL",
+    "values": "the numbers the rule uses",
+    "differences": "deliberate tabletop ↔ Godot differences"
+  },
+  "adaptations": []
+}
