@@ -13,6 +13,11 @@ Status vocabulary: **implemented + tested**, **partial**, **pending**.
 | Saving throws (d20 ≥ 16 − level − best of pair) | rules-of-the-game/saving-throws | implemented — `save_target` |
 | Attacks (d20 + bonus vs AC) | rules-of-the-game/combat | implemented — `attack_roll` |
 | Action economy: 1 Main, 1 Move, buy a second Move, snap −4, charge +2/−2, total defence | combat/combat-actions | implemented as data — `action_economy`, `combat_action_modifier` |
+| Attack-roll modifiers (cover −2/−4, range −2, melee −4, prone +2/−2, two N/A rows) | combat/attacks-in-combat | **implemented + tested** — `cwn_attack_modifiers.gd`; the two N/A rows block the attack instead of becoming a number, and an unknown id is refused rather than read as zero |
+| Chases and pursuit (foot pace with +3 hindrance cap, vehicle pace, head-start and terrain rows) | rules-of-the-game/chases-and-pursuit | **implemented + tested** — `cwn_chases.gd`; ties escape, terrain clamped −2..+2, vehicle pursuers that miss the pace drop out |
+| Scenes, rounds and mission time (6 s round, 10 min scene refresh, minute-per-action clock) | rules-of-the-game/scenes-rounds-mission-time | **implemented + tested** — `cwn_mission_time.gd`; a long action reports how many scenes it crossed |
+| Cyberware installation, removal, salvage, reuse, Alienation and chrome syndromes | gear-vehicles-cyberware/cyberware/* | **implemented + tested** — `cwn_cyberware_ops.gd`: strain-tier cost/recovery/difficulty table, surgery modifiers, fail-by-one-or-two as a complication, fail-by-three as strain-max plus 1 hp, removal and salvage clocks, Alienation rounding with the Nerve +2, syndrome maxima, therapy floor and psychosis threshold |
+| Crafting, modifying and maintaining gear (mod cap +3, maintenance count, workshop weeks, jury-rigged/normal/mastercrafted, factory mods) | rules-of-the-game/crafting-and-modifying-gear/* | **implemented + tested** — `cwn_gear_mods.gd` over `data/rules/cwn_gear_mods.json` (13 weapon, 11 armour, 8 drone, 7 deck mods); connection mods without a Gunlink are reported inactive, not silently applied |
 | System Strain (max = CON, cyberware permanent, forced overflow = 1 h unconscious, 1/night) | injury-healing-system-strain/system-strain | implemented — `strain_max`, `strain_absorb`, `strain_recover` |
 | Major injuries (d12 clamped 1..12, row effects) | injury-healing-system-strain/major-injuries | implemented (row lookup) — `major_injury` |
 | Encumbrance (stowed = STR, readied = ⌊STR/2⌋, 70 % / 50 % speed) | rules-of-the-game/encumbrance | implemented — `encumbrance`, `speed_for_load` |
@@ -42,3 +47,28 @@ Implementing them without the source text would mean inventing numbers, which th
 `godot --headless --path . --script res://godot/tests/run_tests.gd` → **309 checks, 0 failed**,
 including `test_cwn_procedures.gd` (creation, strain, advancement, encumbrance, major injury,
 action economy), the combat and hacking suites, and the Lakkahaltia regression suites.
+
+## Vanilla CWN pass — 2026-10-30
+
+The four procedures above were added because they existed in the Python reference or in the SRD but
+had no Godot home: attack modifiers, chases, cyberware operations and mission time, plus the crafting
+and gear-mod arithmetic. With them the game can resolve the SRD's procedures from data instead of from
+a referee's memory.
+
+**Verification:** `godot --headless --path . --script res://godot/tests/run_tests.gd` →
+**951 checks, 0 failed** (baseline before this pass: 760).
+
+### Still honestly pending
+
+| Gap | What is missing |
+| --- | --- |
+| Cyberware catalogue breadth | strain costs are transcribed for body implants; head, limb, nerve, sensory, medical and skin tables still need extraction |
+| Implant complications | the d12 table is referenced by name; roll the table from the SRD before calling installation "complete" |
+| Hacking: air gap, program memory, demons/watchdogs | procedures not implemented |
+| Edges and Foci | catalogue and per-level effects exist in the Python layer (`cwn_edges_foci.py`, `cwn_foci.py`) but no Godot module |
+| Character creation content | backgrounds, contacts and the focus gear budget are data, not yet wired into the creation screen |
+| Progression | arithmetic exists; no end-to-end advancement test |
+| Desktop playtest | headless suites prove behaviour, not legibility |
+
+Nothing in this file claims full CWN coverage. A row is "implemented" only where a test would fail
+without the code.
