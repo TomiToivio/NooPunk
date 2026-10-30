@@ -127,3 +127,76 @@ class SkillPool extends RefCounted:
 			levels[skill] = current + 1
 			return int(levels[skill])
 		return -1  # already at the creation cap: the pick must go elsewhere
+
+## --- Creation and consequence helpers merged from the compatibility tree (#791) ---------------
+## These are views over the same rules above, not a second implementation: `from_rolls` delegates to
+## `roll_attributes`, `from_array` to `assign_array`. They exist because callers and tests written
+## against the `src/godot/` copy used this shape, and a merge should not make working call sites
+## rewrite themselves for no rules reason.
+
+## Six rolls taken in order, with the optional single 14 substitution applied.
+static func from_rolls(rolls: Array, substitute_at: int = -1) -> Dictionary:
+	var scores := {}
+	for index in range(mini(rolls.size(), ATTRIBUTES.size())):
+		var score := int(rolls[index])
+		if index == substitute_at:
+			score = maxi(score, SUBSTITUTE_SCORE)
+		scores[ATTRIBUTES[index]] = score
+	var modifiers := {}
+	for name in ATTRIBUTES:
+		modifiers[name] = Kernel.ability_modifier(int(scores.get(name, 10)))
+	return {"attributes": scores, "modifiers": modifiers,
+		"substituted": substitute_at >= 0}
+
+## The fixed array assigned in attribute order, which forfeits the substitution.
+static func from_array(order: Array = ARRAY) -> Dictionary:
+	var assignment := {}
+	for index in range(mini(order.size(), ATTRIBUTES.size())):
+		assignment[ATTRIBUTES[index]] = int(order[index])
+	var result := assign_array(assignment)
+	return {"attributes": result.get("scores", {}), "modifiers": {},
+		"substituted": true, "ok": result.get("ok", false)}
+
+## The creation-time pick rule: first pick rank 0, second rank 1, third refused.
+static func creation_skill_pick(current_rank: int) -> Dictionary:
+	if current_rank < 0:
+		return {"rank": 0, "allowed": true, "reason": "first pick"}
+	if current_rank == 0:
+		return {"rank": 1, "allowed": true, "reason": "second pick"}
+	return {"rank": current_rank, "allowed": false, "reason": "already level-1 at creation"}
+
+## A new character's maximum hit points: **1d6** plus the Constitution modifier, never below 1.
+## `hit_points()` above answers a different question (total at a level, with average allowance);
+## this one exists because assuming a 6 at level 1 hands every character three extra hit points and
+## is not what the source says.
+static func max_hit_points(roll: int, con_modifier: int, hard_to_kill: bool = false) -> int:
+	var total := clampi(roll, 1, 6) + (2 if hard_to_kill else 0) + con_modifier
+	return maxi(1, total)
+
+## A save target from modifiers rather than scores, for callers holding a modifier set.
+## Must agree with `saves()`; `test_cwn_engine` asserts the agreement so they cannot drift.
+static func save_target(kind: String, level: int, modifiers: Dictionary) -> int:
+	var best := 0
+	match kind.to_lower():
+		"physical":
+			best = maxi(int(modifiers.get("STR", 0)), int(modifiers.get("CON", 0)))
+		"evasion":
+			best = maxi(int(modifiers.get("DEX", 0)), int(modifiers.get("INT", 0)))
+		"mental":
+			best = maxi(int(modifiers.get("WIS", 0)), int(modifiers.get("CHA", 0)))
+		"luck":
+			best = 0
+		_:
+			return 15 - (level - 1)
+	return 15 - (level - 1) - best
+
+## NPCs use one target: 15 minus half their hit dice, rounded down.
+static func npc_save_target(hit_dice: int) -> int:
+	return 15 - int(floor(float(maxi(1, hit_dice)) / 2.0))
+
+## Extra languages beyond the campaign lingua franca: level-0 grants one, level-1 grants two.
+static func extra_languages(know_rank: int, connect_rank: int) -> int:
+	var count := 0
+	count += 2 if know_rank >= 1 else (1 if know_rank == 0 else 0)
+	count += 2 if connect_rank >= 1 else (1 if connect_rank == 0 else 0)
+	return count
