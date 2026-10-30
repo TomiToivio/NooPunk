@@ -26,6 +26,16 @@ func _fight(seed_value: int) -> NoopunkCombat:
 	combat.add_actor(_actor("thug", "enemy", Vector2i(4, 1), {"hp": 6}))
 	return combat
 
+## Start a fight and advance to the PC's turn, so Shock/ammo assertions are not initiative-dependent.
+func _pc_turn(seed_value: int) -> NoopunkCombat:
+	var combat: NoopunkCombat = _fight(seed_value)
+	combat.start()
+	var guard := 0
+	while combat.current_id() != "romppainen" and guard < 8:
+		guard += 1
+		combat.end_turn()
+	return combat
+
 func run() -> Array:
 	var rows: Array = []
 
@@ -126,5 +136,36 @@ func run() -> Array:
 	var covered_result := covered.attack(c_atk, c_def)
 	rows.append(_eq("cover raises the target's effective Armor Class",
 		int(covered_result["roll"]["armor_class"]), int(covered.actors[c_def]["ac"]) + 4))
+
+	# --- Shock, Trauma and ammunition in the turn loop (#751) -------------------------
+	var shock_fight := _pc_turn(11)
+	shock_fight.actors["romppainen"]["shock_value"] = 2
+	shock_fight.actors["romppainen"]["shock_ac"] = 20
+	shock_fight.actors["romppainen"]["weapon_kind"] = "melee"
+	var before_hp := int(shock_fight.actors["thug"]["hp"])
+	var swing := shock_fight.attack("romppainen", "thug")
+	rows.append(_eq("a melee attack is resolved against the melee Armour Class",
+		int(swing["armor_class"]),
+		int(shock_fight.actors["thug"]["ac_melee"]) + int(shock_fight.actors["thug"]["cover"])))
+	if bool(swing.get("hit", false)):
+		rows.append(_eq("a hit deals its rolled damage and no Shock", int(swing["shock"]), 0))
+	else:
+		rows.append(_eq("a miss within the rating deals the weapon's Shock",
+			int(swing["damage"]), 2))
+		rows.append(_eq("and the target loses exactly that",
+			int(shock_fight.actors["thug"]["hp"]), before_hp - 2))
+
+	var ammo_fight := _pc_turn(12)
+	ammo_fight.actors["romppainen"]["ammo"] = 1
+	ammo_fight.actors["romppainen"]["ammo_max"] = 1
+	ammo_fight.actors["romppainen"]["weapon_kind"] = "ranged"
+	ammo_fight.attack("romppainen", "thug")
+	rows.append(_eq("firing spends a round", int(ammo_fight.actors["romppainen"]["ammo"]), 0))
+	ammo_fight.end_turn()
+	ammo_fight.end_turn()
+	rows.append(_eq("an empty weapon cannot fire",
+		ammo_fight.attack("romppainen", "thug").get("reason", ""), "empty_magazine"))
+	rows.append(_eq("reloading refills the magazine",
+		int(ammo_fight.reload("romppainen").get("ammo", -1)), 1))
 
 	return rows

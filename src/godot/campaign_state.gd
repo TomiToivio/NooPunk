@@ -122,11 +122,11 @@ func from_data(data: Dictionary) -> bool:
 	for key in ["flags", "dialogue_choices", "character", "encounter", "network", "objective"]:
 		if typeof(data.get(key, null)) != TYPE_DICTIONARY:
 			return false
-	# A save is a claim about state, and an unverifiable claim must be refused before it is applied.
-	# A flag that is not a boolean would read as `true` through `bool()` later; refuse it here.
-	for flag in data["flags"].values():
-		if typeof(flag) != TYPE_BOOL:
+	for value in (data["flags"] as Dictionary).values():
+		if typeof(value) != TYPE_BOOL:
 			return false
+	if location == "mission" and not bool((data["flags"] as Dictionary).get("mission_accepted", false)):
+		return false
 	for key in ["journal", "inventory"]:
 		if typeof(data.get(key, null)) != TYPE_ARRAY:
 			return false
