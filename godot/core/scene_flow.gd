@@ -118,7 +118,10 @@ func to_dict() -> Dictionary:
 
 func from_dict(data: Dictionary) -> bool:
 	if not data.has("location") or not (String(data["location"]) in LOCATIONS):
-		push_error("NoopunkSceneFlow: unusable save data")
+		# Invalid caller input, not an internal failure: the call refuses and returns false, which is
+		# what the suite asserts. Logged as a warning so a shutdown gate can treat every `ERROR:` as
+		# genuinely unexpected (#883).
+		push_warning("NoopunkSceneFlow: unusable save data (refused)")
 		return false
 	location = String(data["location"])
 	briefed = bool(data.get("briefed", false))
