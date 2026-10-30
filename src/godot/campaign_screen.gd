@@ -48,6 +48,7 @@ func _draw() -> void:
 			_action("Return home", func(): _travel("home"))
 		"mission":
 			_action("Examine scene", func(): _record("mission_visited", "Investigation site visited; initial observation recorded."))
+			_action("Inspect network map (read-only)", func(): _show_network())
 			_action("Return to HQ", func(): _travel("hq"))
 	_action("Save campaign", func(): _save())
 	_action("Load campaign", func(): _load())
@@ -71,3 +72,29 @@ func _load() -> void:
 		_draw()
 	else:
 		status.text = "No valid campaign save. Older versions are not silently migrated."
+
+func _show_network() -> void:
+	var file := FileAccess.open("res://data/scenarios/mvp_network.json", FileAccess.READ)
+	if file == null:
+		status.text = "Network map data unavailable."
+		return
+	var data: Variant = JSON.parse_string(file.get_as_text())
+	if not data is Dictionary:
+		status.text = "Network map data invalid."
+		return
+	var dialog := AcceptDialog.new()
+	dialog.title = "Network topology · visualization only"
+	dialog.size = Vector2i(640, 420)
+	add_child(dialog)
+	var panel := VBoxContainer.new()
+	dialog.add_child(panel)
+	var note := Label.new()
+	note.text = "Read-only topology. CWN hacking actions are not yet implemented."
+	panel.add_child(note)
+	var map := NooPunkNetworkMap.new()
+	map.custom_minimum_size = Vector2(570, 290)
+	map.set_graph(data)
+	panel.add_child(map)
+	dialog.confirmed.connect(func() -> void: dialog.queue_free())
+	dialog.close_requested.connect(func() -> void: dialog.queue_free())
+	dialog.popup_centered(Vector2i(640, 420))
