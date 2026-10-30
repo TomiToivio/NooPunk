@@ -137,6 +137,16 @@ func from_data(data: Dictionary) -> bool:
 		return false
 	if location == "debrief" and next_outcome.is_empty():
 		return false
+	# The graph's own rule, enforced on load as well as on travel: a save cannot claim a leg the
+	# campaign has not earned. A flag is a boolean; anything else is a corrupted or hand-edited file.
+	if location != "home" and location != "hq":
+		if typeof(data["flags"].get("mission_accepted", false)) != TYPE_BOOL:
+			return false
+		if not bool(data["flags"].get("mission_accepted", false)):
+			return false
+	for key in data["flags"].keys():
+		if typeof(data["flags"][key]) != TYPE_BOOL:
+			return false
 	current_location = location
 	flags = data["flags"].duplicate(true)
 	journal = next_journal
