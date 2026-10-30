@@ -291,3 +291,47 @@ func action_economy() -> Dictionary:
 func combat_action_modifier(action: String) -> Dictionary:
 	var actions: Dictionary = kernel.get("combat", {}).get("actions", {})
 	return (actions.get(action, {}) as Dictionary).duplicate(true)
+
+
+# CWN hacking bridge (SRD: Hacking Mechanics / Program Verbs).
+# Use the existing canonical CWN kernels and the adapter's seeded dice stream.
+# The rules layer never silently fabricates a program, cost, or security target.
+const HackingRules := preload("res://godot/core/cwn_hacking.gd")
+const ProgramRules := preload("res://godot/core/cwn_program_rules.gd")
+
+func hacking_security_target(security: int, alerted: bool = false,
+		important_device: bool = false, tech_quality: int = 0,
+		inside_info: int = 0) -> Dictionary:
+	return HackingRules.security_difficulty(
+		security, alerted, important_device, tech_quality, inside_info)
+
+func hacking_access(intelligence_score: int, program_rank: int,
+		deck_bonus_access: int = 0) -> int:
+	if program_rank < 0:
+		# Untrained Program skill has no usable Access reserve.
+		return 0
+	return HackingRules.access_pool(attribute_modifier(intelligence_score),
+		program_rank, deck_bonus_access)
+
+func hacking_preflight(verb: String, target_family: String, access: int,
+		cpu_used: int, cpu_total: int, loaded_verbs: Array,
+		loaded_subjects: Array, subject: String,
+		target_is_friendly: bool = true) -> Dictionary:
+	return ProgramRules.preflight(verb, target_family, access, cpu_used,
+		cpu_total, loaded_verbs, loaded_subjects, subject, target_is_friendly)
+
+func hacking_check(intelligence_score: int, program_rank: int, difficulty: int,
+		wireless: bool = false, vr_crown: bool = false,
+		verb_modifier: int = 0, situational: int = 0) -> Dictionary:
+	if program_rank < -1 or program_rank > 4:
+		return {"ok": false, "reason": "invalid_program_rank"}
+	return HackingRules.hacking_check(
+		[_dice.roll(6), _dice.roll(6)],
+		attribute_modifier(intelligence_score), program_rank, difficulty,
+		wireless, vr_crown, verb_modifier, situational)
+
+func hacking_resolve(preflight_result: Dictionary, access: int,
+		cpu_used: int, check_success: bool,
+		program_id: String = "") -> Dictionary:
+	return ProgramRules.resolve(preflight_result, access, cpu_used,
+		check_success, program_id)
