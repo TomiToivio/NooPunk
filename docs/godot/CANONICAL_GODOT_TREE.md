@@ -37,7 +37,27 @@ obviously wrong. A rule change made in one is silently absent from the other.
 5. When two agents touch the same mechanic, the second one reads this file first and extends the
    canonical module rather than writing a parallel one.
 
-## Why a mechanical merge fails today (measured 2026-10-30)
+## Correction: the two `cwn_catalogue.gd` files are not duplicates
+
+An earlier pass in this file called them API-incompatible duplicates. They are not duplicates at all —
+they share a filename and nothing else:
+
+| | `godot/core/cwn_catalogue.gd` | `src/godot/cwn/cwn_catalogue.gd` |
+|---|---|---|
+| `class_name` | `CwnCatalogue` | `CWNCatalogue` |
+| role | **procedures**: range bands, burst, ammo, trauma, shock, soak, strain totals, verb/subject legality | **extraction**: `licence()`, `tables()`, `rows()`, `weapon(name)`, `armour(name)`, `background(s)` |
+| data | `data/rules/cwn_catalogue.json` | `data/rules/cwn/srd_tables.json` |
+
+They are complementary halves of one pipeline: the SRD is extracted into tables, and the tables feed
+procedures. The defect is not that both exist — it is that they live in **two trees**, each with its own
+parallel stack (`cwn_character`, `cwn_combat*`, `cwn_hacking`) and its own test root.
+
+So the consolidation is not "delete one of these". It is: keep the procedure layer under `godot/core/`,
+move the extraction layer to `godot/core/cwn_data.gd` with `class_name CwnData`, and repoint
+`godot/tests/test_cwn_engine.gd` from the `src/godot` stack to the `godot/core` stack — then delete
+`src/godot/cwn/` and its parallel modules.
+
+### Historical note: why an earlier delete attempt failed (measured 2026-10-30)
 
 `cwn_catalogue.gd` is not merely duplicated — the two copies are **API-incompatible**:
 
