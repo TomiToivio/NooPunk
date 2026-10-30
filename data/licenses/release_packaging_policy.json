@@ -74,8 +74,8 @@
         "PLAYER.md",
         "ROMPPAINEN.md",
         "TERMINOLOGY.md",
-        "noopunk/README.md",
-        "noopunk/rulebook/**"
+        "restart/START_HERE.md",
+        "restart/rulebook/**"
       ],
       "licence": "author-decision",
       "note": "Original creative rulebook and worldbook prose."
@@ -154,7 +154,7 @@
         "project.godot",
         "godot/**",
         "*.uid",
-        "noopunk/game/**"
+        "restart/game/**"
       ],
       "licence": "author-decision-follows-code",
       "note": "Godot project files are code, not prose."
