@@ -73,7 +73,9 @@
         "MARS_ELDRICH.md",
         "PLAYER.md",
         "ROMPPAINEN.md",
-        "TERMINOLOGY.md"
+        "TERMINOLOGY.md",
+        "noopunk/README.md",
+        "noopunk/rulebook/**"
       ],
       "licence": "author-decision",
       "note": "Original creative rulebook and worldbook prose."
@@ -151,7 +153,8 @@
         "deploy/**",
         "project.godot",
         "godot/**",
-        "*.uid"
+        "*.uid",
+        "noopunk/game/**"
       ],
       "licence": "author-decision-follows-code",
       "note": "Godot project files are code, not prose."
