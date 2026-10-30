@@ -1,3 +1,46 @@
+# CURRENT DIRECTIVE — vanilla CWN/SWN baseline, one Godot project (#848, 2026-10-30)
+
+**This block outranks everything below it.** #848 is the coordinating issue; read it before any work on
+rules or the RPG.
+
+| identifier | value |
+|---|---|
+| **Baseline commit** | `d2992fc9b5f3eaac9f7a0e939028595d9c316dc9` (`main`, 2026-10-30) |
+| **Canonical rulebook** | `rulebook/WITHOUT_NUMBER_BASELINE.md` — CWN primary; SWN Revised for psionics, space operations and faction turns; AWN crisis survival; WWN exploration and projects |
+| **Canonical Godot project** | repository-root `project.godot` (engine 4.7.2-stable) |
+| **Canonical startup scene** | `scenes/main.tscn`, reached through `godot/ui/main_menu.gd` |
+| **Rules authority** | published **vanilla** CWN, with vanilla SWN Revised where CWN defers. Standard STR/DEX/CON/INT/WIS/CHA, 3–18 scores, 0–4 skills, 2d6 checks, d20 combat and saves. Subsystem boundaries are in §6 of the baseline document |
+| **Measured coverage** | `docs/CWN_COVERAGE_MATRIX.md`, refreshed 2026-10-30 against this baseline |
+| **Rules data** | `data/rules/` (contracts), `src/rules/` (Python reference), `godot/core/` (engine kernels) |
+
+**Superseded, archived, or reference-only — do not extend, do not treat as canonical:**
+
+- `noopunk/` — the blank-rulebook restart's Godot prototype (see `noopunk/ARCHIVED.md`). It is kept for
+  history only; it is **not** a second game and must not receive features.
+- The seven-attribute Fitness/Reflexes/Cognition/Cyber/Awareness/Agency/Empathy model, its 3d6
+  conversion and the `noopunk_tags` machinery (#821, #835). Reference material. Vanilla CWN attributes
+  govern.
+- Any alternate difficulty scale, reskinned or narrativist task engine. `data/rules/noopunk_tags.json`
+  and `godot/core/noopunk_tags.gd` remain as archived reference with their tests; nothing new may
+  depend on them.
+- Directives in this file below this block that contradict the above: superseded.
+
+**Before implementing anything:** confirm you are on or rebased onto the baseline commit; name the
+canonical kernel you are extending; check `docs/CWN_COVERAGE_MATRIX.md` for whether the procedure
+already exists; and do not start a competing rules system, Godot project or startup scene. If the
+canonical identifiers above disagree with another agent's instructions, stop and resolve it in #848.
+
+**Verification before merging:**
+
+```bash
+python3 -m pytest tests -q                                              # 1598 passed
+godot --headless --path . --script res://tools/run_godot_tests.gd      # 89 tests, 595 checks
+godot --headless --path . --script res://godot/tests/run_tests.gd      # 760 checks
+godot --headless --path . --quit-after 90                              # launches scenes/main.tscn
+```
+
+---
+
 # Godot single-project directive (2026-10-30; applies to every coding agent)
 
 **ONE GODOT PROJECT:** the repository-root `project.godot` is the only Godot project. Do not create another `project.godot`, standalone demo, competing startup screen, or another save/state/rules engine for the same gameplay. All Godot branches and agents must target this project and its existing `scenes/main.tscn` launch flow. This directive governs the Godot implementation of the RPG; it does not merge the separately authorized Python `strategy_game/` crossover.
