@@ -120,6 +120,11 @@ func from_data(data: Dictionary) -> bool:
 	for key in ["flags", "dialogue_choices", "character", "encounter", "network", "objective"]:
 		if typeof(data.get(key, null)) != TYPE_DICTIONARY:
 			return false
+	for value in (data["flags"] as Dictionary).values():
+		if typeof(value) != TYPE_BOOL:
+			return false
+	if location == "mission" and not bool((data["flags"] as Dictionary).get("mission_accepted", false)):
+		return false
 	for key in ["journal", "inventory"]:
 		if typeof(data.get(key, null)) != TYPE_ARRAY:
 			return false
@@ -137,16 +142,6 @@ func from_data(data: Dictionary) -> bool:
 		return false
 	if location == "debrief" and next_outcome.is_empty():
 		return false
-	# The graph's own rule, enforced on load as well as on travel: a save cannot claim a leg the
-	# campaign has not earned. A flag is a boolean; anything else is a corrupted or hand-edited file.
-	if location != "home" and location != "hq":
-		if typeof(data["flags"].get("mission_accepted", false)) != TYPE_BOOL:
-			return false
-		if not bool(data["flags"].get("mission_accepted", false)):
-			return false
-	for key in data["flags"].keys():
-		if typeof(data["flags"][key]) != TYPE_BOOL:
-			return false
 	current_location = location
 	flags = data["flags"].duplicate(true)
 	journal = next_journal

@@ -84,7 +84,14 @@
           6,
           0
         ],
-        "cover": 2
+        "cover": 2,
+        "ac_melee": 13,
+        "ac_ranged": 13,
+        "weapon_kind": "melee",
+        "trauma_rating": 1,
+        "shock_value": 1,
+        "shock_ac": 13,
+        "ammo": -1
       }
     ]
   },

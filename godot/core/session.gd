@@ -94,6 +94,15 @@ func start_encounter() -> bool:
 			"attack_bonus": int(enemy.get("attack_bonus", 0)),
 			"damage": enemy.get("damage", [1, 6, 0]),
 			"cover": int(enemy.get("cover", 0)),
+			"weapon_kind": String(enemy.get("weapon_kind", "melee")),
+			"ac_melee": int(enemy.get("ac_melee", enemy.get("ac", 12))),
+			"ac_ranged": int(enemy.get("ac_ranged", enemy.get("ac", 12))),
+			"trauma_rating": int(enemy.get("trauma_rating", 1)),
+			"trauma_target": int(enemy.get("trauma_target", 6)),
+			"shock_value": int(enemy.get("shock_value", 0)),
+			"shock_ac": int(enemy.get("shock_ac", -1)),
+			"lethal": bool(enemy.get("lethal", true)),
+			"ammo": int(enemy.get("ammo", -1)),
 		})
 	var attack: Dictionary = character.get("attack", {})
 	combat.add_actor({
@@ -104,6 +113,16 @@ func start_encounter() -> bool:
 		"combat_rank": int(attack.get("combat_rank", 0)),
 		"attack_bonus": int(attack.get("attack_bonus", 0)),
 		"damage": attack.get("damage", [1, 6, 0]),
+		"weapon_kind": String(attack.get("weapon_kind", "ranged")),
+		"ac_melee": int(character.get("ac_melee", character.get("ac", 10))),
+		"ac_ranged": int(character.get("ac_ranged", character.get("ac", 10))),
+		"trauma_rating": int(attack.get("trauma_rating", 1)),
+		"trauma_target": int(attack.get("trauma_target", 6)),
+		"shock_value": int(attack.get("shock_value", 0)),
+		"shock_ac": int(attack.get("shock_ac", -1)),
+		"lethal": bool(attack.get("lethal", true)),
+		"ammo": int(attack.get("ammo", -1)),
+		"ammo_max": int(attack.get("ammo_max", attack.get("ammo", -1))),
 	})
 	combat.start()
 	log.append({"event": "encounter_start"})

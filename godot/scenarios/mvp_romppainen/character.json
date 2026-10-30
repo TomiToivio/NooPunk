@@ -1,21 +1,81 @@
 {
   "id": "romppainen",
   "name": "Detective Romppainen",
-  "source": "Cities Without Number, published character creation",
-  "note": "Every entry marked \"choice\" is an undecided player option, not canon. Attributes use the standard 3-18 scale; skills are 0-4 ranks.",
-  "attributes": {"STR": 9, "DEX": 12, "CON": 10, "INT": 14, "WIS": 12, "CHA": 8},
+  "source": "Cities Without Number: Character Creation (attributes, background, skills, Edges, Foci, equipment), Rules of the Game (saves, checks), Gear (weapons and armour stat lines)",
+  "note": "Every entry under \"choices\" is an undecided player option, not canon: the sheet lists what the slice needs to be playable and marks the rest as the player's. Attributes are 3-18, skills 0-4, and the two Armour Classes are CWN's melee and ranged values.",
+  "attributes": {
+    "STR": 9,
+    "DEX": 12,
+    "CON": 10,
+    "INT": 14,
+    "WIS": 12,
+    "CHA": 8
+  },
   "level": 1,
   "hp_max": 7,
   "ac": 13,
   "attack": {
     "name": "sidearm",
+    "weapon_kind": "ranged",
     "attribute": "DEX",
     "combat_rank": 1,
     "attack_bonus": 1,
-    "damage": [1, 6, 1]
+    "damage": [
+      1,
+      6,
+      1
+    ],
+    "trauma_rating": 2,
+    "trauma_target": 6,
+    "shock_value": 0,
+    "shock_ac": -1,
+    "ammo": 8,
+    "ammo_max": 8,
+    "lethal": true
   },
-  "skills": {"Program": 2, "Notice": 1, "Shoot": 1, "Talk": 1, "Survive": 0},
-  "gear": ["sidearm", "cyberdeck (CPU 6, access 1)", "notebook", "coat"],
-  "choices": ["background", "edge", "focus", "starting equipment package"],
-  "undecided": true
+  "skills": {
+    "Program": 2,
+    "Notice": 1,
+    "Shoot": 1,
+    "Talk": 1,
+    "Survive": 0
+  },
+  "gear": [
+    "sidearm",
+    "cyberdeck",
+    "notebook",
+    "coat",
+    "spare magazine"
+  ],
+  "choices": [
+    "background",
+    "edge",
+    "focus",
+    "starting equipment package"
+  ],
+  "undecided": true,
+  "saves": {
+    "Physical": 15,
+    "Evasion": 14,
+    "Mental": 15,
+    "Luck": 15
+  },
+  "strain": {
+    "max": 10,
+    "used": 1
+  },
+  "ac_melee": 13,
+  "ac_ranged": 13,
+  "inventory": {
+    "readied": [
+      "sidearm",
+      "cyberdeck"
+    ],
+    "stowed": [
+      "notebook",
+      "coat",
+      "spare magazine"
+    ],
+    "note": "Encumbrance is CWN's Stowed/Readied capacity; this sheet lists the items the slice uses and does not compute a load total."
+  }
 }
