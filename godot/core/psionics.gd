@@ -98,6 +98,47 @@ func use_technique(key: String, technique_id: String, duration: String = "") -> 
         return authorized() and int(ranks.get(String(entry["discipline"]), -1)) >= int(entry.get("min_skill", 0))
     return commit(key, String(entry["discipline"]), int(entry.get("min_skill", 0)), resolved)
 
+## Biopsionics' core technique, scaled by rank: a rank-0 psychic stabilises, and higher ranks heal
+## increasing dice and bonuses. A refusal returns a reason and spends nothing.
+static func psychic_succor(rank: int, dice: Array, target_hp: int, target_max: int,
+        strain: int, constitution: int, mortal: bool) -> Dictionary:
+    if rank < 0 or rank > 4 or constitution < 3 or constitution > 18 \
+            or target_max < 1 or target_hp < 0 or target_hp > target_max:
+        return {"ok": false}
+    var added_strain := 2 if mortal else 1
+    if strain < 0 or strain + added_strain > constitution:
+        return {"ok": false, "reason": "system_strain"}
+    var die_count: int = [0, 1, 2, 2, 3][rank]
+    var bonus: int = [0, 1, 2, 6, 8][rank]
+    if dice.size() != die_count:
+        return {"ok": false}
+    var healed := bonus
+    for die in dice:
+        if typeof(die) != TYPE_INT or die < 1 or die > 6:
+            return {"ok": false}
+        healed += int(die)
+    if rank == 0 and not mortal:
+        return {"ok": false, "reason": "stabilization_only"}
+    var new_hp: int = mini(target_max, healed if mortal else target_hp + healed)
+    return {"ok": true, "hp": new_hp, "strain": strain + added_strain,
+        "stabilized": mortal, "healed": healed}
+
+## Teleportation's core technique range by rank; -1 is "planetary / near orbit", not a distance.
+const TELEPORT_METERS := [10.0, 100.0, 10000.0, 1000000.0, -1.0]
+
+static func teleport_range_meters(rank: int) -> float:
+    if rank < 0 or rank > 4:
+        return 0.0
+    return TELEPORT_METERS[rank]
+
+## Activate a known technique by id: package, rank gate and the Effort the catalogue names.
+func activate(technique_id: String, key: String, duration: String = "") -> bool:
+    return use_technique(key, technique_id, duration)
+
+## Release an active commitment early. Scene and day Effort cannot be refunded.
+func release_active(key: String) -> bool:
+    return release(key)
+
 func snapshot() -> Dictionary:
     var state: Dictionary = super.snapshot()
     state["permissions"] = permissions.duplicate()
