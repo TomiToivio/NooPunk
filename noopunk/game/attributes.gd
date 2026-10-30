@@ -89,3 +89,31 @@ static func format_sheet(values: Dictionary) -> String:
 
 static func difficulty_scale() -> Array:
 	return data().get("difficulty", [])
+
+## --- API used by the merged character sheet (#835) ----------------------------------------------
+## `character_sheet.gd` and `tests/attributes_smoke.gd` address attributes by constant name and call
+## `modifier`/`roll_character`/`display_value`. Those views live here rather than in a second module so
+## the JSON above stays the only table.
+
+static var NAMES: Array = []
+static var DEFINITIONS: Array = []
+static var DIFFICULTIES: Dictionary = {}
+
+static func _static_init() -> void:
+	for entry in attribute_definitions():
+		NAMES.append(str(entry.get("name", "")))
+		DEFINITIONS.append(str(entry.get("definition", "")))
+	for row in difficulty_scale():
+		DIFFICULTIES[int(row["target"])] = str(row["label"])
+
+## Alias kept because the sheet calls `modifier`, while this module's own name is `modifier_for`.
+static func modifier(total: int) -> int:
+	return modifier_for(total)
+
+## Roll one 3d6 per attribute and return {name: value} - the sheet's shape, not the raw dice.
+static func roll_character(rng: RandomNumberGenerator) -> Dictionary:
+	return sheet(roll(rng))
+
+## Signed display for a value: "+1", "0", "-3".
+static func display_value(value: int) -> String:
+	return "%s%d" % ["+" if value >= 0 else "", value]
