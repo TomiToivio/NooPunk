@@ -2,7 +2,7 @@ extends RefCounted
 
 ## Strain, Major Injury and healing procedures (#752/#751 surface), checked against the SRD rules
 ## as ported in `src/rules/cwn_{strain,major_injury,injury_procedure,healing}.py`.
-const Strain := preload("res://src/godot/cwn/cwn_strain.gd")
+const Strain := preload("res://godot/core/cwn_strain.gd")
 const Injury := preload("res://src/godot/cwn/cwn_injury.gd")
 const Healing := preload("res://src/godot/cwn/cwn_healing.gd")
 
