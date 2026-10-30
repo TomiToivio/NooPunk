@@ -150,8 +150,8 @@ static func psychic_succor(rank: int, dice: Array, target_hp: int, target_max: i
 	var added_strain := 2 if mortal else 1
 	if strain < 0 or strain + added_strain > con:
 		return {"ok": false, "reason": "system_strain"}
-	var die_count := [0, 1, 2, 2, 3][rank]
-	var bonus := [0, 1, 2, 6, 8][rank]
+	var die_count: int = int(([0, 1, 2, 2, 3] as Array)[rank])
+	var bonus: int = int(([0, 1, 2, 6, 8] as Array)[rank])
 	if dice.size() != die_count:
 		return {"ok": false}
 	var healed := bonus
@@ -161,7 +161,7 @@ static func psychic_succor(rank: int, dice: Array, target_hp: int, target_max: i
 		healed += int(die)
 	if rank == 0 and not mortal:
 		return {"ok": false, "reason": "stabilization_only"}
-	var new_hp := mini(target_max, healed if mortal else target_hp + healed)
+	var new_hp: int = mini(target_max, healed if mortal else target_hp + healed)
 	return {"ok": true, "hp": new_hp, "strain": strain + added_strain, "stabilized": mortal, "healed": healed}
 
 static func teleport_range_meters(rank: int) -> float:
