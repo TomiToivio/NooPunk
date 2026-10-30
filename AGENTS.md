@@ -1,3 +1,25 @@
+# CURRENT DIRECTIVE (2026-10-30) — read this before anything else
+
+**Issue [#848](https://github.com/TomiToivio/NooPunk/issues/848) governs all NoöPunk tabletop and Godot
+work. It supersedes the blank-rulebook and custom-attribute restart (#827, #835, #821).**
+
+- **Rules: vanilla CWN**, primary. **Vanilla SWN Revised** where CWN has no equivalent (psionics).
+  Published mechanics as written — STR/DEX/CON/INT/WIS/CHA, classes, skills, 2d6 checks, d20 attacks and
+  saves, combat, equipment, cyberware, hacking, progression, PSI. **No custom attribute set, no alternate
+  difficulty system, no reskin, no narrativist replacement.**
+- **Game: the root `project.godot`** — 2D top-down, turn-based tactical, source-faithful hacking/PSI.
+  Startup scene `res://scenes/main.tscn`. Not a new prototype, not `noopunk/game/`.
+- **Rulebook: `rulebook/`** — entry point `rulebook/00_INDEX.md`.
+- **`noopunk/`, the #821 tag model and the seven-attribute sheet are archived reference.** Do not extend
+  them, do not treat them as canonical, and do not delete them without an audited migration.
+- **Subsystem boundaries must be named** whenever both books have an opinion: CWN unless it is psionics.
+- **Do not claim completeness from a green suite.** Coverage against the books is a separate measurement
+  (`docs/CWN_COVERAGE_MATRIX.md`).
+
+Full record, audit and migration order: [`docs/NOOPUNK_BASELINE_848.md`](docs/NOOPUNK_BASELINE_848.md).
+
+---
+
 # Godot single-project directive (2026-10-30; applies to every coding agent)
 
 **ONE GODOT PROJECT:** the repository-root `project.godot` is the only Godot project. Do not create another `project.godot`, standalone demo, competing startup screen, or another save/state/rules engine for the same gameplay. All Godot branches and agents must target this project and its existing `scenes/main.tscn` launch flow. This directive governs the Godot implementation of the RPG; it does not merge the separately authorized Python `strategy_game/` crossover.

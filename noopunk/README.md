@@ -1,3 +1,11 @@
+> ## ARCHIVED — SUPERSEDED BY #848
+>
+> This directory came from the blank-rulebook restart (#827) and its custom seven-attribute sheet
+> (#835). **Issue #848 restored vanilla CWN/SWN and the root `project.godot` as canonical.** Nothing here
+> is authoritative; it is kept as reference until the author reauthorises or a migration removes it.
+>
+> Canonical: rulebook `rulebook/00_INDEX.md`, Godot `project.godot`, startup scene `res://scenes/main.tscn`.
+
 # NoöPunk — canonical restart (issue #827)
 
 **This directory is the canonical NoöPunk project from now on.** Everything here is new and intentionally
