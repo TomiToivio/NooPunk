@@ -64,9 +64,7 @@ migration below.
 
 ## Migration, in the order it should happen
 
-1. `godot/core/cwn_catalogue.gd` → delete; repoint `godot/tests/test_cwn_catalogue.gd` at
-   `res://src/godot/cwn/cwn_catalogue.gd`, folding in anything unique to the core copy (it has
-   `apply_soak`, the src copy may not).
+1. Port the unique `src/godot/cwn/cwn_catalogue.gd` static/name-based API into the canonical `godot/core/cwn_catalogue.gd` without losing its existing instance/ID-based API and `apply_soak`; migrate callers after executable parity checks. ot).
 2. `godot/core/cwn_character.gd` → delete; repoint `tests/godot/test_cwn_ruleset.gd` likewise.
 3. Move the surviving `tests/godot/*.gd` files into `godot/tests/` and delete the second root.
 4. Fold the four Godot workflows into one that runs `godot/tests/run_tests.gd`, then delete

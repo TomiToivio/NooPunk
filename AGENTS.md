@@ -279,21 +279,6 @@ Recognized influences include old-school Cyberpunk, Shadowrun, Philip K. Dick, H
 
 Those remain tonal/comparative references. **Eclipse Phase is also an influence, not NoöPunk's parent rules engine.** It remains valuable for transhuman technology, morphs/embodiment, mesh, reputation, space and existential-risk concepts. Use directly adapted EP material only within the applicable licensing and attribution boundaries, and preserve provenance rather than treating EP2 mechanics as automatic defaults.
 
-
-### Godot: one implementation, one test root
-
-Parallel agents previously landed two catalogues, two character modules and two test roots, each
-tested, neither wrong — so a rule fixed in one was silently missing from the other. Before touching
-Godot code, read [`docs/godot/CANONICAL_GODOT_TREE.md`](docs/godot/CANONICAL_GODOT_TREE.md).
-
-- **`godot/core/`** — the canonical owner of CWN/SWN rule modules (issue #791).
-- **`src/godot/`** — legacy tree. Port unique modules into `godot/core/`; do not add new rules here.
-- **`godot/tests/`** — the only test root CI runs. `tests/godot/` is legacy; do not add to it.
-- The same basename must not exist in both `src/godot/` and `godot/core/`;
-  `tests/test_godot_single_implementation.py` enforces this.
-- If another agent already implements a mechanic, extend that module. Do not write a parallel one and
-  leave both alive.
-
 ### 8. Minimal Godot foundation
 
 When asked to create the initial Godot RPG base, build only generic infrastructure needed for later author-defined systems, such as:
@@ -420,3 +405,7 @@ When adding or revising mechanics:
 6. prefer the smallest NoöPunk-native procedure that serves the game's human and Concordia/LLM play.
 
 Setting work should preserve current 20XX / Earth-intact anchors unless the author explicitly revises them.
+
+## Godot rule-module ownership clarification (#791)
+
+`godot/core/` is the canonical owner of CWN/SWN game-rule implementations. `src/godot/` remains a compatibility tree only. Port unique capabilities and preserve consumers and tests before retiring duplicates. The two catalogue APIs differ (instance ID lookup vs static named catalogue lookup), so do not mechanically repoint either caller. See `docs/godot/CANONICAL_GODOT_TREE.md` and `docs/godot/UNIFIED_IMPLEMENTATION.md`.
