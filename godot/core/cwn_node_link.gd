@@ -116,7 +116,7 @@ static func attempt_access(net: Dictionary, dice: Array, int_modifier: int, prog
 
 	target["accessed"] = true
 	net["current"] = target_id
-	_say(net, "Access gained on %s (%d vs %d). Access pool %d." % [target["name"],
+	_say(net, "Accessed %s (%d vs %d). Access pool %d." % [target["name"],
 		int(check["total"]), int(difficulty["difficulty"]), int(net.get("access", 0))])
 	return {"ok": true, "success": true, "net": net, "check": check}
 
