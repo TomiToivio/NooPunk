@@ -17,11 +17,12 @@ Status vocabulary: **implemented + tested**, **partial**, **pending**.
 | Major injuries (d12 clamped 1..12, row effects) | injury-healing-system-strain/major-injuries | implemented (row lookup) — `major_injury` |
 | Encumbrance (stowed = STR, readied = ⌊STR/2⌋, 70 % / 50 % speed) | rules-of-the-game/encumbrance | implemented — `encumbrance`, `speed_for_load` |
 | Advancement (fast/slow XP, level, attack bonus, HP, skill points, rank gates, foci levels, edges) | rules-of-the-game/character-advancement | implemented for XP/level/attack/HP/skill points/rank gates; foci and edge tables are in the kernel but **no UI** |
-| Hacking: Access pool, Jack In/Move/Run, two failures = one Alert action, two actions = alert, wireless −2, VR −1 | hacking/hacking-mechanics, hacking/cyberspace-actions | **partial** — clock, Access, CPU and penalties implemented and tested; air gap/range, the Verb/Subject catalogue, demons/watchdogs and program memory are pending |
-| Equipment, armour, weapons catalogue, shock/trauma, ammo/reload | rules-of-the-game/equipment, combat | **pending** — the kernel has no weapon table, so none was invented |
-| Cyberware catalogue and strain costs | cyberware | **pending** — strain procedure exists; the implant list does not |
+| Hacking: Access/CPU, alert clock, wireless −2, VR −1 | hacking/hacking-mechanics, cyberspace-actions | **implemented** |
+| Equipment, armour, weapons catalogue, shock/trauma, ammo/reload | gear-vehicles-cyberware/weapons, /armor | **implemented** — `data/rules/cwn_catalogue.json` (23 weapons, 8 armour) with `CwnCatalogue`: range bands, burst, ammo, trauma, shock, soak |
+| Cyberware catalogue and strain costs | gear-vehicles-cyberware/cyberware | **partial** — 17 body implants with strain transcribed; head/limb/nerve/sensory/medical/skin tables pending |
 | Drones, vehicles | drones, vehicles | **pending** |
-| Demons, watchdogs, network security ladder | hacking/demons-and-watchdogs | **pending** (security values are scenario data) |
+| Program Verbs and Subjects (24 + 12) and legality/costs | hacking/programs/program-verbs, program-subjects | **implemented** — `CwnCatalogue.can_pair`, `program_cost` |
+| Air gap/range, program memory, Demons/watchdogs | hacking/cyberspace-basics, demons-watchdogs | **pending** |
 | SWN Revised psionics | (SWN SRD, separate system) | **partial** — `psychic_effort.gd` plus Effort tests exist; no MVP psychic character or technique catalogue |
 
 ## Why "all rules" is not a single patch
