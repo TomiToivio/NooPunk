@@ -553,6 +553,8 @@ Detailed powers are consolidated here over time from the existing psionics mater
 
 Spacetime is physical reality. Cyberspace is computational information space. Noöspace is the Noetic domain. The Noösphere is the emerging planetary network of minds, AIs, Noetics, institutions, biospheric cognition, NHI and collective symbols increasingly organizing itself within Noöspace.
 
+That is the *technical and planetary* sense. The deeper Noösphere is the collective unconscious of the biosphere becoming conscious of itself; networks and interfaces may be humanity's scaffold toward it rather than its substance. See [the background-lore definition](docs/world/NOOSPHERE.md).
+
 Noöspace can be accessed through OOBEs, remote viewing, lucid dreams, meditation, psychedelics, psychotronics, QIP interfaces, ritual and some forms of NHI contact. Detailed topology and ontology are preserved in the extended canon material.
 
 ### 8.6. Psychic Attack

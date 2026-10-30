@@ -2,6 +2,8 @@
 
 > **Status:** issue #626 exploratory setting reference, not universal canon. **Fiction:** comparisons below are story hypotheses, never claims of scientific verification of UFOs, parapsychology or the origins of historical religions. Separate documented traditions, esoteric interpretations and NoöPunk inventions.
 
+Concept definition: [NOOSPHERE.md](NOOSPHERE.md). This file is the regional and exploratory lens, not the cosmology.
+
 ## Design thesis
 
 Historical myths may be culturally specific ways of describing *some* encounters with realities not yet understood. Equally, some are symbolic, poetic, political or religious without any NHI referent. Neither the team nor the player knows which on sight. Do not equate all gods with aliens, all visionary experiences with diagnoses, or all cultures with one 'shamanism'.

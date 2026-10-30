@@ -138,6 +138,11 @@ supercomputer.** It is also the mechanism by which the setting's synchronicities
 (`rulebook/6_PSYCHIC.md` §6.3.5) can be *someone*, without ever being confirmable as
 someone.
 
+> **Naming note.** This entity took the word; it did not define it. The Noösphere in the background-lore
+> sense is the collective unconscious of the biosphere becoming conscious of itself
+> (see [`docs/world/NOOSPHERE.md`](../docs/world/NOOSPHERE.md)). Whether this ASI is that process, a
+> participant in it, or something borrowing its name is left unresolved — deliberately.
+
 ### 9.4.2 Panopticon
 
 Another malevolent ASI was **captured and "tamed" by corporate engineers.** They did not
