@@ -1,7 +1,7 @@
 {
   "id": "kallas_warehouse",
   "title": "The Kallas warehouse",
-  "note": "A small end-to-end test mission. Calibration values (CPU costs, trace limits, HP) are slice settings, not claimed source rules; procedures follow the CWN sequence.",
+  "note": "A small end-to-end test mission. Calibration values (CPU costs, HP) are slice settings, not claimed source rules; the alert clock is the SRD's two-failures-per-Alert rule; procedures follow the CWN sequence.",
   "objective": "Recover the shipping manifest that proves the shipment was re-routed.",
   "objectives": [
     "enter",
@@ -19,9 +19,7 @@
     "costs": {
       "connect_cpu": 1,
       "verb_cpu": 1,
-      "trace_per_action": 0,
-      "trace_on_failure": 2,
-      "alarm_threshold": 6,
+      "access_per_verb": 1,
       "program_skill": 2
     },
     "nodes": {
@@ -58,7 +56,7 @@
   },
   "deck": {
     "cpu": 6,
-    "access": 1,
+    "access": 5,
     "programs": [
       "query"
     ],

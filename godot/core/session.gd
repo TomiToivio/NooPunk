@@ -155,7 +155,7 @@ func to_dict() -> Dictionary:
 			"turn": combat.turn, "over": combat.over, "outcome": combat.outcome()}
 	var hack_state := {}
 	if hacking != null:
-		hack_state = {"connected": hacking.connected.duplicate(), "trace": hacking.trace,
+		hack_state = {"connected": hacking.connected.duplicate(), "failures": hacking.failures, "alert_actions": hacking.alert_actions,
 			"alarm": hacking.alarm, "cpu": int(hacking.deck["cpu"]),
 			"verbs_done": hacking.verbs_done.duplicate()}
 	return {
@@ -180,7 +180,8 @@ func from_dict(data: Dictionary) -> bool:
 	if not hack_state.is_empty():
 		_open_network()
 		hacking.connected = Array(hack_state.get("connected", [])).duplicate()
-		hacking.trace = int(hack_state.get("trace", 0))
+		hacking.failures = int(hack_state.get("failures", 0))
+		hacking.alert_actions = int(hack_state.get("alert_actions", 0))
 		hacking.alarm = bool(hack_state.get("alarm", false))
 		hacking.deck["cpu"] = int(hack_state.get("cpu", hacking.deck["cpu"]))
 		hacking.verbs_done = Dictionary(hack_state.get("verbs_done", {})).duplicate()

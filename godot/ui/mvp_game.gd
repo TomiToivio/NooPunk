@@ -60,7 +60,7 @@ func _update_labels() -> void:
 	lines.append("Location: %s" % loc.capitalize())
 	lines.append("HP %d/%d   AC %d" % [session.hp, int(session.character.get("hp_max", 1)), int(session.character.get("ac", 10))])
 	if session.hacking != null:
-		lines.append("CPU %d   trace %d/4%s" % [int(session.hacking.deck["cpu"]), session.hacking.trace, "   ALARM" if session.hacking.alarm else ""])
+		lines.append("CPU %d   failures %d/4   alerts %d/2%s" % [int(session.hacking.deck["cpu"]), session.hacking.failures, session.hacking.alert_actions, "   ALARM" if session.hacking.alarm else ""])
 	lines.append("Objectives: %s" % str(session.objectives_done()))
 	if session.flow.resolved:
 		lines.append("Debrief: %s, %s" % [session.flow.approach, session.flow.conclusion])
