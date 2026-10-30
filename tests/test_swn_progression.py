@@ -27,9 +27,33 @@ class PsychicProgressionTests(unittest.TestCase):
         with self.assertRaises(PsiRulesError):
             p.learn_technique("noo_heal", "Biopsionics", 2)
         p.advance("Biopsionics")
+        p.learn_technique("noo_mend", "Biopsionics", 1)
         p.advance("Biopsionics")
         p.learn_technique("noo_heal", "Biopsionics", 2)
         self.assertTrue(p.technique_access("noo_heal"))
+
+    def test_one_pick_per_improvement_and_no_banking(self):
+        p = PsychicTraining("swn_psychic", {"Telepathy": 0})
+        with self.assertRaises(PsiRulesError):
+            p.learn_technique("noo_sense", "Telepathy", 0)  # nothing has been improved yet
+        p.advance("Telepathy")
+        with self.assertRaises(PsiRulesError):
+            p.advance("Telepathy")  # the open pick must be spent first
+        p.learn_technique("noo_sense", "Telepathy", 1)
+        self.assertEqual(p.pending_pick, "")
+        with self.assertRaises(PsiRulesError):
+            p.learn_technique("noo_second", "Telepathy", 1)  # one improvement, one technique
+        p.advance("Telepathy")
+        p.learn_technique("noo_second", "Telepathy", 1)
+        self.assertTrue(p.technique_access("noo_second"))
+
+    def test_the_core_technique_is_free_and_never_spends_a_pick(self):
+        p = PsychicTraining("swn_psychic", {"Precognition": 0})
+        self.assertTrue(p.core_available("Precognition"))
+        self.assertFalse(p.core_available("Telepathy"))
+        self.assertEqual(p.pending_pick, "")  # free does not open a pick
+        with self.assertRaises(PsiRulesError):
+            p.learn_technique("noo_hunch", "Precognition", 0)
 
     def test_invalid_snapshots_rejected(self):
         for state in [
