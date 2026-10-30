@@ -31,6 +31,17 @@ The Contacts rules kernel now models acquaintance/friend favors, starting contac
 
 All 18 worker daily wages are transcribed from [Common Wages](https://cwn.quadrifons.com/gear-vehicles-cyberware/lifestyles-wages-and-bribes/common-wages/) into `godot/core/cwn_wages.gd`. `godot/tests/test_cwn_wages.gd` compares each value to a separately encoded fixture and checks validation and hire-cost arithmetic. This establishes **table-value parity only**. It does not claim playable UI or coverage of the SRD hireling-loyalty narrative. The Godot headless suite has not been executed for this increment.
 
+## Playable network increment (#873)
+
+The MVP's H-key network view now supports node selection (J/K), verb selection
+(U/I), connecting nodes (Enter), and executing the selected verb (Space).
+Every effect goes through `NoopunkSession.hack_connect` / `hack_act` and the
+existing `NoopunkHacking` connectivity, Access, CPU and alert checks.
+This is a **playable vertical-slice interface**, not proof of comprehensive
+§4.5 server architecture parity. The MVP scenario uses its own short program
+list; the verified §4.3 catalogue is not yet integrated into program selection.
+There has been no windowed playtest or headless suite execution for this change.
+
 ## Status of each published section
 
 | § | Section | Code | Tested | Playable | SRD parity |
