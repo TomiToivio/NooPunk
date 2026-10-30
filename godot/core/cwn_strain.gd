@@ -54,7 +54,20 @@ func rest_night(hours: float = REST_HOURS_REQUIRED, warm_fed_comfortable: bool =
 		return 0.0
 	var recovered := minf(RECOVERY_PER_NIGHT, temporary)
 	temporary -= recovered
+	unconscious_hours = 0.0
 	return recovered
+
+## Cyberware consumes permanent Strain; removal restores the available ceiling.
+func install_cyber(strain: float) -> bool:
+	if strain < 0.0 or total() + strain > float(maximum()):
+		return false
+	permanent += strain
+	return true
+
+func remove_cyber(strain: float) -> void:
+	if strain < 0.0:
+		return
+	permanent = maxf(0.0, permanent - strain)
 
 func to_dict() -> Dictionary:
 	return {"constitution": constitution, "temporary": temporary, "permanent": permanent,
