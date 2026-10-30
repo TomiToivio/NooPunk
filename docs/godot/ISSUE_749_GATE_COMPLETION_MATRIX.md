@@ -115,3 +115,31 @@ Ranked by what blocks a truthful "MVP is playable end to end" claim:
 
 Nothing on this list is architectural. Each is additive to a green, deterministic base, and item 1 is
 the only one that cannot be done headlessly.
+
+---
+
+## Addendum — commits landed after the measurement
+
+This matrix was measured at `36df421`. Three merges landed while it was being written, and two of them
+change details above without changing any gate verdict. Recorded here so the table is not read as
+current beyond its commit.
+
+| commit | PR | what it changes |
+| --- | --- | --- |
+| `60dbc50` | #769 | completes the campaign state contract — the debrief leg, mission outcomes, and the undecided build choices. Strengthens Gate 1, which was already complete. |
+| `77b1b4c` | #770 | adds `src/godot/cwn_combat_round.gd` (130 lines) — **CWN Deluxe pp.33–34 side initiative and action budgets**, with `tests/godot/test_cwn_combat_round.gd`. |
+| `b7da289` | #771 | this document. |
+
+**The #770 nuance matters for Gate 2, and the table above understates it.** A legal action-economy
+kernel now exists and is tested. But it is **not wired into the playable encounter**: nothing outside
+its own test references it, and `godot/core/combat.gd` — the 216-line kernel the slice actually drives —
+still carries only the `moved` and `acted` booleans, with no Main / Move / On Turn / Instant vocabulary.
+
+So the correct statement is not "action types are absent" but: **the rules exist, and the encounter
+does not use them.** That is a smaller gap than the table implies and a more misleading one to leave
+unstated, because two combat kernels for one slice is precisely the drift this repository's audits keep
+warning about. Wiring `cwn_combat_round.gd` into the encounter, or deleting one of the two, is the next
+decision there.
+
+Suite on `main` at `b7da289`: **266 checks, 0 failed.**
+
