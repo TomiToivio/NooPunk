@@ -23,6 +23,14 @@ Section list taken from the SRD itself (1.1.0 → 4.5.0 present in the source te
 
 PR #865 (`890d4168bf581e1a92f3086db7b0794c4aa285b7`) merged new Godot kernels for chases, cyberware operations, mission time, attack modifiers, and gear modifications. The original audit measurements and historical 791-check count below remain a snapshot, **not current verification**. This reconciliation updates only the affected evidence rows. No local test suite or windowed playtest was run for this documentation change. The source-parity and playable columns remain conservative.
 
+## Contacts integration (#869, PR #872)
+
+The Contacts rules kernel now models acquaintance/friend favors, starting contact choices, limits on risky or expensive favors, one call per session, no mission participation, and trust changes. Its behavior has regression checks in `godot/tests/test_cwn_vanilla.gd`. It is not yet exposed as an end-to-end playable interface; full §1.4 source parity remains unverified.
+
+## §3.2.2 wage parity increment (#873)
+
+All 18 worker daily wages are transcribed from [Common Wages](https://cwn.quadrifons.com/gear-vehicles-cyberware/lifestyles-wages-and-bribes/common-wages/) into `godot/core/cwn_wages.gd`. `godot/tests/test_cwn_wages.gd` compares each value to a separately encoded fixture and checks validation and hire-cost arithmetic. This establishes **table-value parity only**. It does not claim playable UI or coverage of the SRD hireling-loyalty narrative. The Godot headless suite has not been executed for this increment.
+
 ## Status of each published section
 
 | § | Section | Code | Tested | Playable | SRD parity |
@@ -30,7 +38,7 @@ PR #865 (`890d4168bf581e1a92f3086db7b0794c4aa285b7`) merged new Godot kernels fo
 | 1.1 | Attributes | yes — `cwn_character.gd`, `catalogue` | yes — `test_cwn_engine.gd` | yes — `campaign.tscn` sheet | **unverified** |
 | 1.2 | Skills | yes — `cwn_catalogue.gd`, `data/rules/cwn/skills.json` | yes — `test_cwn_catalogue.gd` | partial | **unverified** |
 | 1.3 | Backgrounds | yes — `cwn_character.gd` | yes | partial | **unverified** |
-| 1.4 | Contacts | partial — contact handling exists in 2 files | no dedicated test | no | **absent** |
+| 1.4 | Contacts | yes — `cwn_contacts.gd` rules kernel | yes — `test_cwn_vanilla.gd` | no complete player interface | **unverified** |
 | 1.5 | Edges | yes — 13 files reference Edges | partial | partial | **unverified** |
 | 1.6 | Foci | partial — 4 files | partial | no | **absent** |
 | 1.7 | Final creation steps | yes — `field_agent.gd`, `cwn_character.gd` | yes | yes | **unverified** |
@@ -39,12 +47,12 @@ PR #865 (`890d4168bf581e1a92f3086db7b0794c4aa285b7`) merged new Godot kernels fo
 | 2.3 | Skill checks | yes — `dice.gd`, `rules_adapter.gd` | yes | yes | **unverified** |
 | 2.4 | Combat | yes — `combat.gd`, `cwn_combat_actions.gd`, `cwn_combat_rules.gd` | yes — `test_combat.gd` | yes | **unverified** |
 | 2.5 | Injury, healing, strain | yes — `cwn_injury.gd`, `cwn_healing.gd`, `cwn_strain.gd` | yes — `test_cwn_injury.gd` | partial | **unverified** |
-| 2.6 | Chases and pursuit | yes — `cwn_chases.gd` plus `cwn_vehicles.gd` (foot and vehicle modifiers, hindrance bonus, escape on a tie) | yes — `test_cwn_vehicles.gd` | no dedicated chase interface demonstrated | **unverified** |
+| 2.6 | Chases and pursuit | yes — `cwn_chases.gd` (foot and vehicle) | yes — deterministic checks reported in PR #865 | no dedicated chase interface demonstrated | **unverified** |
 | 2.7 | Advancement | yes — `cwn_progression.gd`, `swn_progression.gd` | yes | partial | **unverified** |
 | 2.8 | Crafting and modifying gear | yes — `cwn_gear_mods.gd`, `data/rules/cwn_gear_mods.json` | yes — deterministic checks reported in PR #865 | no dedicated crafting interface demonstrated | **unverified** |
 | 2.9 | Encumbrance | yes — `cwn_encumbrance.gd` | yes | partial | **unverified** |
 | 3.1 | Mission gear | data only — `srd_tables.json` | no | no | **unverified** |
-| 3.2 | Lifestyles, wages, bribes | data only | no | no | **absent** |
+| 3.2 | Lifestyles, wages, bribes | `cwn_lifestyles.gd` plus `cwn_wages.gd` (18 wages) | `test_cwn_lifestyles.gd`, `test_cwn_wages.gd` | no wage UI | **§3.2.2 wage values verified; other subsections unverified** |
 | 3.3 | Armor | yes — catalogue + soak | yes — `test_cwn_catalogue.gd` | partial | **unverified** |
 | 3.4 | Weapons | yes — catalogue | yes | yes | **unverified** |
 | 3.5 | Pharmaceuticals and street drugs | thin — 2 files | no | no | **absent** |
@@ -56,23 +64,19 @@ PR #865 (`890d4168bf581e1a92f3086db7b0794c4aa285b7`) merged new Godot kernels fo
 | 4.2 | Hacking mechanics | yes — `hacking.gd` (Access, security, alert clock) | yes | partial | **unverified** |
 | 4.3 | Programs | yes — `cwn_programs.gd`, `cwn_program_rules.gd`, **`cwn_hacking_catalogue.gd`** | yes — `test_cwn_hacking_catalogue.gd` | no | **verified for the 24 Verbs and 12 Subjects** (verbatim transcription, cited) |
 | 4.4 | Demons and watchdogs | partial — demons referenced in hacking | partial | no | **absent** |
-| 4.5 | Servers and architecture | yes — `cwn_node_link.gd` (network state machine over `CwnHackingRules` + `CwnProgramRules`) | yes — `test_node_link.gd`, 34 checks | **yes — `scenes/node_link.tscn`, playable: jack in, Access, Verbs×Subjects, alert, disconnect** | **partial — the procedure is played end to end; per-node architecture tables are not reproduced (licensing)** |
+| 4.5 | Servers and architecture | yes — `cwn_node_link.gd` | yes — `test_node_link.gd`, 34 checks reported in PR #877 | yes — `scenes/node_link.tscn` (jack in, Access, Verbs/Subjects, alert, disconnect) | **partial — procedure implemented, per-node architecture tables not included** |
+
+## Node-link and Alienation integration (#869, PR #877)
+
+PR #877 adds the playable node-link hacking screen and its rules-state machine, with 34 headless checks reported on the PR branch. `cwn_cyberware_ops.gd` delegates Alienation arithmetic to `cwn_alienation.gd`, restored as a required dependency. These reports are not a new post-merge test certification.
 
 ## What the table says plainly
 
-- **§4.5 is now playable** (#869): `scenes/node_link.tscn` drives `cwn_node_link.gd`, which defers
-  every number to `CwnHackingRules` / `CwnProgramRules`. The run — jack in, Access per node, a Verb on
-  a Subject, the alert clock, disconnect — is asserted headlessly in `test_node_link.gd` (34 checks).
-  What is *not* covered is per-server architecture content, which is catalogue material.
-- **Alienation has one owner** (#869): `cwn_cyberware_ops.gd` delegates `alienation_gain`,
-  `therapy_week` and the maximum to `cwn_alienation.gd`, so the ceil-plus-nerve rounding rule exists in
-  exactly one place.
-
 - **One section is verified against the text**: §4.3, and only its catalogue half — 24 Verbs, 12 Subjects,
   transcribed verbatim with the SRD cited. Everything else is code that *may* be right.
-- **Seven sections remain structurally absent or data-only / without playable implementation**:
-  contacts (1.4), Foci (1.6), lifestyle costs (3.2), drugs (3.5), drones as a played system (3.8),
-  demons/watchdogs (4.4), and the node-link screen (4.5). PR #865 adds kernels for chases (2.6),
+- **Several sections remain structurally incomplete or without a playable implementation**:
+  Foci (1.6), drugs (3.5), drones as a played system (3.8),
+  and demons/watchdogs (4.4). Contacts and lifestyles have kernels, and node-link now has a screen. PR #865 adds kernels for chases (2.6),
   crafting (2.8), and cyberware Alienation (3.6), but does **not** establish end-to-end playability or SRD parity.
 - **"Playable" is the weakest column.** Most rules exist as procedures with tests and are reachable from
   the session/campaign scenes only indirectly. A rule a player cannot invoke is not parity.
@@ -87,11 +91,10 @@ PR #865 (`890d4168bf581e1a92f3086db7b0794c4aa285b7`) merged new Godot kernels fo
 
 ## The next honest increments, in order
 
-1. **§4.5 node-link screen** — the hacking subsystem is the only one with a verified catalogue and no way
-   to play it. Wiring the screen converts three sections (4.2, 4.3, 4.5) from partial to playable.
+1. **§4.5 node-link verification** — the screen now exists; verify gameplay and server-architecture coverage against the SRD.
 2. **§3.6 cyberware** — Alienation arithmetic now has a kernel (PR #865); finish the d12 implant-complication table, playable integration, and SRD verification.
 3. **§1.4 contacts and §1.6 Foci** — character creation is where the other ten rows' assumptions are set.
-4. **§2.6 chases and §2.8 crafting** — now have kernels, but still need playable integration and source-by-source verification. **§3.2 lifestyles and §3.5 drugs** remain missing.
+4. **§2.6 chases and §2.8 crafting** — now have kernels, but still need playable integration and source-by-source verification. **§3.2 lifestyle integration and §3.5 drugs** remain incomplete.
 5. **Parity verification pass** — take each "unverified" row and compare procedure against the SRD text,
    one at a time, recording the exact section and the test that proves it.
 
