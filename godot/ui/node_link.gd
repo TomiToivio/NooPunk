@@ -17,6 +17,8 @@ var _int_modifier := 2
 var _program_rank := 2
 var _deck_bonus := 1
 var _rng := RandomNumberGenerator.new()
+var _message := ""
+var _built := false
 
 
 func _ready() -> void:
@@ -26,8 +28,9 @@ func _ready() -> void:
 ## Build the network and the widgets. Separate from `_ready` so a headless test can drive the screen in
 ## the same frame it instantiates it, instead of waiting for the tree to tick.
 func build() -> void:
-	if not net.is_empty():
+	if _built:
 		return
+	_built = true
 	_rng.randomize()
 	_build_sample_network()
 	_build_ui()
@@ -44,6 +47,44 @@ func _build_sample_network() -> void:
 		NodeLink.node("conference", "Conference Room", 8, "Camera", []),
 		NodeLink.node("vault", "Vault Controller", 12, "Device", []),
 	], "entrance")
+
+
+## Load a mission's recorded network and rebuild the screen around it.
+##
+## The mission stores nodes keyed by id with `security`, `verbs` and `links`; this screen's subject model
+## is the SRD's, so each node's verbs pick the Subject it exposes. A file that cannot be read leaves the
+## current network untouched rather than showing an empty screen.
+func open_mission(path: String, int_modifier: int = 2, program_rank: int = 2, deck_bonus: int = 1) -> bool:
+	var text := FileAccess.get_file_as_string(path)
+	if text.is_empty():
+		return false
+	var parsed: Variant = JSON.parse_string(text)
+	if not (parsed is Dictionary) or not Dictionary(parsed).has("network"):
+		return false
+	var network: Dictionary = Dictionary(parsed)["network"]
+	var nodes: Array = []
+	for node_id in Dictionary(network.get("nodes", {})).keys():
+		var row: Dictionary = Dictionary(network["nodes"][node_id])
+		var subject := "Datafile"
+		for verb in Array(row.get("verbs", [])):
+			if String(verb) == "control":
+				subject = "Device"
+			elif String(verb) == "query":
+				subject = "Datafile"
+		nodes.append(NodeLink.node(String(node_id), String(node_id).capitalize(),
+			int(row.get("security", 7)), subject, Array(row.get("links", []))))
+	if nodes.is_empty():
+		return false
+	net = NodeLink.network(nodes, String(network.get("entry", nodes[0]["id"])))
+	_int_modifier = int_modifier
+	_program_rank = program_rank
+	_deck_bonus = deck_bonus
+	if not _built:
+		_built = true
+		_build_ui()
+	_message = "Loaded " + path.get_file()
+	_refresh()
+	return true
 
 
 func _build_ui() -> void:
@@ -123,6 +164,10 @@ func _on_attempt(node_id: String) -> void:
 		_deck_bonus)
 	if result.has("error"):
 		_flash(String(result["error"]))
+	elif bool(result.get("success", false)):
+		_message = ""
+	_sync_subject_to_node()
+	_sync_verb_to_node()
 	_refresh()
 
 
@@ -136,8 +181,50 @@ func _on_run() -> void:
 	_refresh()
 
 
+## Point the Subject dropdown at what the current node actually exposes.
+##
+## `run_verb` acts on the current node, so a dropdown left on the catalogue's first entry guarantees the
+## player's first Run is refused with a reason that does not say what was wanted.
+func _sync_subject_to_node() -> void:
+	if _subjects == null:
+		return
+	var current := String(net.get("current", ""))
+	var wanted := ""
+	for node in net.get("nodes", []):
+		if String(node.get("id", "")) == current:
+			wanted = String(node.get("subject", ""))
+			break
+	if wanted.is_empty():
+		return
+	for index in _subjects.item_count:
+		if _subjects.get_item_text(index) == wanted:
+			_subjects.select(index)
+			return
+
+
+## Point the Verb dropdown at something the node's Subject actually allows.
+##
+## Same defect as the Subject default: the catalogue's first Verb need not be able to target the
+## Subject on the node, so the player's first click was refused for a reason they could not act on.
+func _sync_verb_to_node() -> void:
+	if _verbs == null or _subjects == null:
+		return
+	var subject_name := _subjects.get_item_text(_subjects.selected)
+	var subject: Dictionary = NodeLink.subjects().get(subject_name, {})
+	if subject.is_empty():
+		return
+	var wanted_type := String(subject.get("subject_type", ""))
+	for index in _verbs.item_count:
+		var verb: Dictionary = NodeLink.verbs().get(_verbs.get_item_text(index), {})
+		if Array(verb.get("target_types", [])).has(wanted_type):
+			_verbs.select(index)
+			return
+
+
 func _flash(message: String) -> void:
-	_status.text = "Refused: " + message.replace("_", " ")
+	## Kept in state rather than written straight to the label: `_refresh()` runs immediately after and
+	## would overwrite it, so the player never saw why an attempt was refused.
+	_message = "Refused: " + message.replace("_", " ")
 
 
 func _refresh() -> void:
@@ -164,7 +251,8 @@ func _refresh() -> void:
 		var node_id := String(entry["id"])
 		row.pressed.connect(func() -> void: _on_attempt(node_id))
 		_node_rows.add_child(row)
-	_status.text = "Access %d   Alert %d   %s" % [int(net.get("access", 0)), int(net.get("alert", 0)),
-		"connected" if bool(net.get("jacked_in", false)) else "disconnected"]
+	_status.text = "Access %d   Alert %d   %s%s" % [int(net.get("access", 0)), int(net.get("alert", 0)),
+		"connected" if bool(net.get("jacked_in", false)) else "disconnected",
+		("   — " + _message) if not _message.is_empty() else ""]
 	var log: Array = net.get("log", [])
 	_log.text = "\n".join(log.slice(maxi(0, log.size() - 6)))

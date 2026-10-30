@@ -262,7 +262,7 @@ func _build_hud() -> void:
 	prompt_label = _label("", 18)
 	prompt_label.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
 	prompt_label.position = Vector2(-260, -70)
-	prompt_label.size = Vector2(520, 32)
+	prompt_label.set_deferred("size", Vector2(520, 32))
 	prompt_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	prompt_label.modulate = Color(0.95, 0.88, 0.6)
 	layer.add_child(prompt_label)
@@ -270,7 +270,7 @@ func _build_hud() -> void:
 	toast_label = _label("", 17)
 	toast_label.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
 	toast_label.position = Vector2(-400, -170)
-	toast_label.size = Vector2(800, 90)
+	toast_label.set_deferred("size", Vector2(800, 90))
 	toast_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	toast_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	toast_label.visible = false
