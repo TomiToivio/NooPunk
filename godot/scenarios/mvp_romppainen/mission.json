@@ -56,7 +56,7 @@
   },
   "deck": {
     "cpu": 6,
-    "access": 3,
+    "access": 5,
     "programs": [
       "query"
     ],

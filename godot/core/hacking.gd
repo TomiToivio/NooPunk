@@ -86,12 +86,12 @@ func connect_node(node_id: String) -> Dictionary:
 			break
 	if not reachable:
 		return {"ok": false, "reason": "no_path"}
-	var needed := int(node.get("access_required", 0))
-	if int(deck["access"]) < needed:
-		return {"ok": false, "reason": "insufficient_access", "needed": needed}
 	var cpu_cost := int(costs["connect_cpu"])
 	if int(deck["cpu"]) < cpu_cost:
 		return {"ok": false, "reason": "no_cpu"}
+	var needed := int(node.get("access_required", 0))
+	if int(deck["access"]) < needed:
+		return {"ok": false, "reason": "insufficient_access", "needed": needed}
 	deck["cpu"] = int(deck["cpu"]) - cpu_cost
 	if needed > 0:
 		# SRD: crossing a barrier is what Access is spent on; Jack In itself is a Move action.

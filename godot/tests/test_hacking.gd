@@ -52,7 +52,7 @@ func run() -> Array:
 	var step := connected.connect_node("desk")
 	rows.append(_eq("a node linked to a connected node can be reached", step["ok"], true))
 	rows.append(_eq("connecting costs CPU", int(step["cpu"]) < 6, true))
-	rows.append(_eq("crossing the barrier spends its Access", int(step["access"]), 0))
+	rows.append(_eq("crossing the barrier spends its Access", int(step["access"]), 3))
 
 	# --- access gate ---------------------------------------------------------------
 	var low_access: NoopunkHacking = Hacking.new(Adapter.new("res://data/rules/wn_core.json", 22),
