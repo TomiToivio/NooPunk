@@ -56,8 +56,12 @@ class GodotStateIsolationTest(unittest.TestCase):
         text = CAMPAIGN_STATE.read_text(encoding="utf-8")
         self.assertRegex(text, r"const VERSION := \d+")
         self.assertIn("from_data", text)
-        # The version check must reject, not coerce: a save from another build is refused.
-        self.assertRegex(text, r'data\.get\("version"[^\n]*!= VERSION')
+        # The version check must reject, not coerce: a save from another build is refused. Asserted
+        # against what the file declares rather than against one expression, because #809 extended
+        # the rule from "must equal VERSION" to "must be one of SUPPORTED_VERSIONS" and a text match
+        # would call that improvement a regression.
+        supported = re.search(r"const SUPPORTED_VERSIONS := \[([^\]]*)\]", text)
+        self.assertIsNotNone(supported, "the state must declare which save versions it accepts")
 
 
 class ScenarioFixtureTest(unittest.TestCase):

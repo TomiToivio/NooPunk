@@ -409,3 +409,24 @@ Setting work should preserve current 20XX / Earth-intact anchors unless the auth
 ## Godot rule-module ownership clarification (#791)
 
 `godot/core/` is the canonical owner of CWN/SWN game-rule implementations. `src/godot/` remains a compatibility tree only. Port unique capabilities and preserve consumers and tests before retiring duplicates. The two catalogue APIs differ (instance ID lookup vs static named catalogue lookup), so do not mechanically repoint either caller. See `docs/godot/CANONICAL_GODOT_TREE.md` and `docs/godot/UNIFIED_IMPLEMENTATION.md`.
+\n
+## Tomi-led draft cycle (#814)
+
+**#814 is a permanent meta-issue and is never closed** — not by hand, and not by a PR keyword.
+It records the standing workflow: Tomi writes a draft for **one** section or scenario; agents
+implement it in the tabletop rulebook and the Godot RPG, with tabletop first (AGENTS.md §14) and one
+canonical Godot implementation per mechanic (AGENTS.md §16).
+
+The operating procedure is `docs/workflow/NOOPUNK_DRAFT_PROTOCOL.md`, and the child-issue template is
+`.github/ISSUE_TEMPLATE/noopunk_draft.md`. In short:
+
+1. paste the draft verbatim into a child issue of #814;
+2. restate the decisions it makes and list its ambiguities **before** writing anything;
+3. tabletop text first, then the `data/rules/*.json` contract, then the Godot kernel and its call sites;
+4. prove parity three ways — JSON ↔ Python, JSON ↔ Godot, and one worked example that appears both as
+   a rulebook example and as a test;
+5. record departures and open questions for Tomi's decision, then PR with `Refs #814` and
+   `Closes #<child>`.
+
+Tomi is the authorial source of truth. Agents may raise ambiguities and trade-offs; they may not
+substitute their own design for an undecided mechanic.
