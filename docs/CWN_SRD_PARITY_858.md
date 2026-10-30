@@ -27,6 +27,10 @@ PR #865 (`890d4168bf581e1a92f3086db7b0794c4aa285b7`) merged new Godot kernels fo
 
 The Contacts rules kernel now models acquaintance/friend favors, starting contact choices, limits on risky or expensive favors, one call per session, no mission participation, and trust changes. Its behavior has regression checks in `godot/tests/test_cwn_vanilla.gd`. It is not yet exposed as an end-to-end playable interface; full §1.4 source parity remains unverified.
 
+## §3.2.2 wage parity increment (#873)
+
+All 18 worker daily wages are transcribed from [Common Wages](https://cwn.quadrifons.com/gear-vehicles-cyberware/lifestyles-wages-and-bribes/common-wages/) into `godot/core/cwn_wages.gd`. `godot/tests/test_cwn_wages.gd` compares each value to a separately encoded fixture and checks validation and hire-cost arithmetic. This establishes **table-value parity only**. It does not claim playable UI or coverage of the SRD hireling-loyalty narrative. The Godot headless suite has not been executed for this increment.
+
 ## Status of each published section
 
 | § | Section | Code | Tested | Playable | SRD parity |
@@ -48,7 +52,7 @@ The Contacts rules kernel now models acquaintance/friend favors, starting contac
 | 2.8 | Crafting and modifying gear | yes — `cwn_gear_mods.gd`, `data/rules/cwn_gear_mods.json` | yes — deterministic checks reported in PR #865 | no dedicated crafting interface demonstrated | **unverified** |
 | 2.9 | Encumbrance | yes — `cwn_encumbrance.gd` | yes | partial | **unverified** |
 | 3.1 | Mission gear | data only — `srd_tables.json` | no | no | **unverified** |
-| 3.2 | Lifestyles, wages, bribes | data only | no | no | **absent** |
+| 3.2 | Lifestyles, wages, bribes | `cwn_lifestyles.gd` plus `cwn_wages.gd` (18 wages) | `test_cwn_lifestyles.gd`, `test_cwn_wages.gd` | no wage UI | **§3.2.2 wage values verified; other subsections unverified** |
 | 3.3 | Armor | yes — catalogue + soak | yes — `test_cwn_catalogue.gd` | partial | **unverified** |
 | 3.4 | Weapons | yes — catalogue | yes | yes | **unverified** |
 | 3.5 | Pharmaceuticals and street drugs | thin — 2 files | no | no | **absent** |
