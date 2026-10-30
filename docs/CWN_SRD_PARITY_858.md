@@ -19,6 +19,10 @@ godot --headless --path . --script res://godot/tests/run_tests.gd   # 791 checks
 Section list taken from the SRD itself (1.1.0 → 4.5.0 present in the source text; 5.x antagonists and
 6.x magic are **not on the linked site** and are out of scope below).
 
+## Reconciliation after PR #865
+
+PR #865 (`890d4168bf581e1a92f3086db7b0794c4aa285b7`) merged new Godot kernels for chases, cyberware operations, mission time, attack modifiers, and gear modifications. The original audit measurements and historical 791-check count below remain a snapshot, **not current verification**. This reconciliation updates only the affected evidence rows. No local test suite or windowed playtest was run for this documentation change. The source-parity and playable columns remain conservative.
+
 ## Status of each published section
 
 | § | Section | Code | Tested | Playable | SRD parity |
@@ -30,21 +34,21 @@ Section list taken from the SRD itself (1.1.0 → 4.5.0 present in the source te
 | 1.5 | Edges | yes — 13 files reference Edges | partial | partial | **unverified** |
 | 1.6 | Foci | partial — 4 files | partial | no | **absent** |
 | 1.7 | Final creation steps | yes — `field_agent.gd`, `cwn_character.gd` | yes | yes | **unverified** |
-| 2.1 | Scenes, rounds, mission time | yes — `combat.gd`, `session.gd` | yes — `test_combat.gd` | yes | **unverified** |
+| 2.1 | Scenes, rounds, mission time | yes — `cwn_mission_time.gd`, `combat.gd`, `session.gd` | yes — mission-time kernel tests reported in PR #865 | partial — dedicated mission-clock UI not independently demonstrated | **unverified** |
 | 2.2 | Saving throws | yes — `dice.gd`, `cwn_combat_rules.gd` | yes | yes | **unverified** |
 | 2.3 | Skill checks | yes — `dice.gd`, `rules_adapter.gd` | yes | yes | **unverified** |
 | 2.4 | Combat | yes — `combat.gd`, `cwn_combat_actions.gd`, `cwn_combat_rules.gd` | yes — `test_combat.gd` | yes | **unverified** |
 | 2.5 | Injury, healing, strain | yes — `cwn_injury.gd`, `cwn_healing.gd`, `cwn_strain.gd` | yes — `test_cwn_injury.gd` | partial | **unverified** |
-| 2.6 | Chases and pursuit | partial — pursuit referenced once | no | no | **absent** |
+| 2.6 | Chases and pursuit | yes — `cwn_chases.gd` (foot and vehicle) | yes — deterministic checks reported in PR #865 | no dedicated chase interface demonstrated | **unverified** |
 | 2.7 | Advancement | yes — `cwn_progression.gd`, `swn_progression.gd` | yes | partial | **unverified** |
-| 2.8 | Crafting and modifying gear | thin — one file each for craft/modify | no | no | **absent** |
+| 2.8 | Crafting and modifying gear | yes — `cwn_gear_mods.gd`, `data/rules/cwn_gear_mods.json` | yes — deterministic checks reported in PR #865 | no dedicated crafting interface demonstrated | **unverified** |
 | 2.9 | Encumbrance | yes — `cwn_encumbrance.gd` | yes | partial | **unverified** |
 | 3.1 | Mission gear | data only — `srd_tables.json` | no | no | **unverified** |
 | 3.2 | Lifestyles, wages, bribes | data only | no | no | **absent** |
 | 3.3 | Armor | yes — catalogue + soak | yes — `test_cwn_catalogue.gd` | partial | **unverified** |
 | 3.4 | Weapons | yes — catalogue | yes | yes | **unverified** |
 | 3.5 | Pharmaceuticals and street drugs | thin — 2 files | no | no | **absent** |
-| 3.6 | Cyberware | data only — catalogue; **alienation has zero hits** | partial | partial | **absent** |
+| 3.6 | Cyberware | yes — `cwn_cyberware_ops.gd` (installation, removal, Alienation) plus catalogue | partial — operational tests reported in PR #865; d12 complication table still missing | partial | **unverified** |
 | 3.7 | Cyberdecks | yes — `hacking.gd`, `cwn_hacking.gd` | yes — `test_hacking.gd` | partial | **unverified** |
 | 3.8 | Drones | partial — 10 files reference drones | partial | no | **absent** |
 | 3.9 | Vehicles | yes — `cwn_vehicles.gd`, `cwn_srd_vehicles.gd` | yes — `test_cwn_srd_vehicles.gd` | no | **unverified** |
@@ -58,9 +62,10 @@ Section list taken from the SRD itself (1.1.0 → 4.5.0 present in the source te
 
 - **One section is verified against the text**: §4.3, and only its catalogue half — 24 Verbs, 12 Subjects,
   transcribed verbatim with the SRD cited. Everything else is code that *may* be right.
-- **Nine sections are structurally absent or data-only**: contacts (1.4), foci (1.6), chases (2.6),
-  crafting (2.8), lifestyle costs (3.2), drugs (3.5), cyberware alienation (3.6), drones as a played
-  system (3.8), demons/watchdogs (4.4), and the node-link screen (4.5).
+- **Seven sections remain structurally absent or data-only / without playable implementation**:
+  contacts (1.4), Foci (1.6), lifestyle costs (3.2), drugs (3.5), drones as a played system (3.8),
+  demons/watchdogs (4.4), and the node-link screen (4.5). PR #865 adds kernels for chases (2.6),
+  crafting (2.8), and cyberware Alienation (3.6), but does **not** establish end-to-end playability or SRD parity.
 - **"Playable" is the weakest column.** Most rules exist as procedures with tests and are reachable from
   the session/campaign scenes only indirectly. A rule a player cannot invoke is not parity.
 
@@ -76,9 +81,9 @@ Section list taken from the SRD itself (1.1.0 → 4.5.0 present in the source te
 
 1. **§4.5 node-link screen** — the hacking subsystem is the only one with a verified catalogue and no way
    to play it. Wiring the screen converts three sections (4.2, 4.3, 4.5) from partial to playable.
-2. **§3.6 alienation** — zero code today; it is a core cyberpunk rule, not an optional one.
+2. **§3.6 cyberware** — Alienation arithmetic now has a kernel (PR #865); finish the d12 implant-complication table, playable integration, and SRD verification.
 3. **§1.4 contacts and §1.6 Foci** — character creation is where the other ten rows' assumptions are set.
-4. **§2.6 chases, §2.8 crafting, §3.2 lifestyles, §3.5 drugs** — each small, each currently absent.
+4. **§2.6 chases and §2.8 crafting** — now have kernels, but still need playable integration and source-by-source verification. **§3.2 lifestyles and §3.5 drugs** remain missing.
 5. **Parity verification pass** — take each "unverified" row and compare procedure against the SRD text,
    one at a time, recording the exact section and the test that proves it.
 
