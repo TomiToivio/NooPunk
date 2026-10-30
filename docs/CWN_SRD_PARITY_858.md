@@ -81,6 +81,10 @@ There has been no windowed playtest or headless suite execution for this change.
 
 PR #877 adds the playable node-link hacking screen and its rules-state machine, with 34 headless checks reported on the PR branch. `cwn_cyberware_ops.gd` delegates Alienation arithmetic to `cwn_alienation.gd`, restored as a required dependency. These reports are not a new post-merge test certification.
 
+## Additional node-link UI (PR #878)
+
+An additional playable node-link presentation at `godot/ui/hacking_screen.gd` and `scenes/hacking/node_link.tscn` uses `godot/core/hacking.gd` and opens the Romppainen warehouse mission from the main menu. `godot/tests/test_hacking_screen.gd` covers this path (20 checks reported on the PR branch). This complements the `cwn_node_link.gd` and MVP H-key interfaces documented above; full SRD §4.5 parity remains unverified. The 1312 checks reported on PR #878 were not rerun on this integration.
+
 ## What the table says plainly
 
 - **One section is verified against the text**: §4.3, and only its catalogue half — 24 Verbs, 12 Subjects,
