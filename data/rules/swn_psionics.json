@@ -1,0 +1,54 @@
+{
+  "_note": "Stars Without Number Revised psionics: the mechanics this engine implements, re-expressed. SWN has no verified SRD licence, so no power names, tables or prose from the book are reproduced here - only the resource arithmetic the rules require (Effort, Commitment durations, Torching, and the restricted/unrestricted package distinction). See docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md.",
+  "_source_of_truth": "src/rules/swn_psionics.py",
+  "_canon_revision": "issue-751-swn-psionics-2026-10-30",
+  "licence": "no-verified-srd-shape-only",
+  "sources": {
+    "psionics": "Stars Without Number Revised (2017), Psionics pp.29-31 (printed): Psionic Skills, Effort and Psychic Abilities, Torching"
+  },
+  "effort": {
+    "base": 1,
+    "use_best_of": [
+      "WIS",
+      "CON"
+    ],
+    "plus_highest_psychic_skill": true,
+    "minimum": 1
+  },
+  "durations": [
+    "active",
+    "scene",
+    "day"
+  ],
+  "torching": {
+    "instant_action": true,
+    "once_per_round": true,
+    "grants_effort": 1,
+    "lasts": "scene",
+    "may_exceed_maximum": true,
+    "table": {
+      "1": "wisdom",
+      "2": "wisdom",
+      "3": "constitution",
+      "4": "constitution",
+      "5": "choice",
+      "6": "none"
+    },
+    "attribute_floor": 3,
+    "at_or_below_floor": {
+      "wisdom": "feral",
+      "other": "dead"
+    },
+    "cure": "none"
+  },
+  "packages": {
+    "swn_psychic": {
+      "restriction": "unrestricted",
+      "note": "may raise any psionic skill"
+    },
+    "swn_partial_psychic": {
+      "restriction": "one_discipline",
+      "note": "may master one discipline and may not raise another"
+    }
+  }
+}

@@ -16,9 +16,13 @@ const CATALOGUE_PATH := "res://data/rules/psionics_techniques.json"
 
 var catalogue: Dictionary = {}
 
-func _init(wis: int = 10, con: int = 10, skills: Dictionary = {}, packages: Array = []) -> void:
+## `restricted_to` names the single discipline a Partial Psychic package grants. Empty is
+## unrestricted, which is what the Psychic package is.
+func _init(wis: int = 10, con: int = 10, skills: Dictionary = {}, packages: Array = [],
+        restricted_to: String = "") -> void:
     super(wis, con, skills)
     permissions = packages.duplicate()
+    restricted_discipline = restricted_to
     if FileAccess.file_exists(CATALOGUE_PATH):
         var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(CATALOGUE_PATH))
         if typeof(parsed) == TYPE_DICTIONARY:
@@ -33,7 +37,28 @@ func authorized() -> bool:
 func commit(key: String, discipline: String, rank: int = 0, duration: String = "scene", amount: int = 1) -> bool:
     if not authorized():
         return false
+    # The package decides *which* disciplines may be studied; the rank gate then decides whether
+    # this particular technique has been taught.
+    if not can_learn_raw(discipline):
+        return false
     return super.commit(key, discipline, rank, duration, amount)
+
+## `can_learn` is inherited, but a package-restricted psychic whose restriction was not supplied
+## defaults to the discipline they already rate highest — the one the sheet shows them training.
+func can_learn_raw(discipline: String) -> bool:
+    if restricted_discipline.is_empty() and "swn_partial_psychic" in permissions \
+            and not ("swn_psychic" in permissions):
+        restricted_discipline = _highest_ranked_discipline()
+    return can_learn(discipline)
+
+func _highest_ranked_discipline() -> String:
+    var best := ""
+    var best_rank := -1
+    for name in ranks.keys():
+        if String(name) in DISCIPLINES and int(ranks[name]) > best_rank:
+            best = String(name)
+            best_rank = int(ranks[name])
+    return best
 
 ## A technique's catalogue entry, or the authorization map's fallback row. The catalogue is the one
 ## source of truth for rank, cost and duration; `TECHNIQUES` stays as the package-era fallback so an id
