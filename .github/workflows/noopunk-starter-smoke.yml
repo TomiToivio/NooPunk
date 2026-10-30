@@ -1,0 +1,24 @@
+name: NoöPunk starter smoke
+on:
+  push:
+    paths: ["noopunk/**", ".github/workflows/noopunk-starter-smoke.yml"]
+  pull_request:
+    paths: ["noopunk/**", ".github/workflows/noopunk-starter-smoke.yml"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.7.2
+        run: |
+          curl --fail -sSL -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          chmod +x /tmp/godot/Godot_v4.7.2-stable_linux.x86_64
+      - name: Import and smoke the starter
+        run: |
+          G=/tmp/godot/Godot_v4.7.2-stable_linux.x86_64
+          $G --headless --path noopunk/game --import
+          $G --headless --path noopunk/game --script res://tests/smoke.gd

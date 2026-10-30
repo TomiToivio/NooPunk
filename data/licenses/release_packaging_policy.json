@@ -83,7 +83,7 @@
     {
       "id": "rule-data",
       "globs": [
-        "restart/rulebook/**",
+        "noopunk/rulebook/**",
         "data/rules/**",
         "data/npcs/**",
         "data/world/**",
@@ -94,7 +94,7 @@
       ],
       "licence": "author-decision",
       "note": "The rules in machine-readable syntax; grouped with the rulebook, not with the code. Scenario and dialogue data ships with the rules because it is content, not code.",
-      "_restart_note": "The restart rulebook (#827) is author-written; no third-party material is imported into it."
+      "_noopunk_note": "The restart rulebook (#827) is author-written; no third-party material is imported into it."
     },
     {
       "id": "licensing-and-source-records",
@@ -112,7 +112,7 @@
       "id": "design-and-audit-records",
       "globs": [
         "docs/**",
-        "restart/**",
+        "noopunk/**",
         "AGENTS.md",
         ".hermes/**",
         "strategy_game/docs/**",
@@ -147,7 +147,7 @@
     {
       "id": "fixtures-and-scenes",
       "globs": [
-        "restart/game/**",
+        "noopunk/game/**",
         "fixtures/**",
         "scenes/**",
         "deploy/**",
@@ -171,6 +171,15 @@
       ],
       "licence": "author-decision-follows-code",
       "note": "CI, dependency and release-packaging plumbing."
+    },
+    {
+      "id": "restart-project",
+      "globs": [
+        "noopunk/**",
+        "START_HERE.md"
+      ],
+      "licence": "author-decision",
+      "note": "The restart rulebook and Godot starter (#827): original prose, scenes and scripts. No third-party assets are used; the player is a primitive rectangle."
     }
   ],
   "release_modes": {
