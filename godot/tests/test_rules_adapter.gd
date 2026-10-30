@@ -67,6 +67,34 @@ func run() -> Array:
 	rows.append(_eq("CWN attack margin", untrained_attack["margin"],
 		int(untrained_attack["total"]) - 12))
 
+	# CWN hacking must run through this seeded adapter, not a parallel RNG.
+	var hack_a = RulesAdapterScript.new(RulesAdapterScript.DEFAULT_KERNEL_PATH, 1201)
+	var hack_b = RulesAdapterScript.new(RulesAdapterScript.DEFAULT_KERNEL_PATH, 1201)
+	var hack_result: Dictionary = hack_a.hacking_check(14, 1, 9, true, true, 1)
+	rows.append(_eq("hacking repeatable dice",
+		hack_result.get("dice"), hack_b.hacking_check(14, 1, 9, true, true, 1).get("dice")))
+	rows.append(_eq("hacking wireless and crown penalties stack",
+		hack_result.get("connection_penalty"), -3))
+	rows.append(_eq("hacking uses Program, intelligence, Verb and connection",
+		hack_result.get("total"),
+		int(hack_result["dice"][0]) + int(hack_result["dice"][1]) + 1 + 1 + 1 - 3))
+	rows.append(_eq("hacking security uses canonical ladder",
+		rules.hacking_security_target(9).get("difficulty"), 9))
+	rows.append(_eq("hacking Access is a pool",
+		rules.hacking_access(14, 2, 1), 4))
+	var preflight: Dictionary = rules.hacking_preflight(
+		"Activate", "Device", 2, 0, 1, ["Activate"], ["Camera"], "Camera")
+	rows.append(_eq("hacking valid loaded program", preflight.get("ok"), true))
+	var settled: Dictionary = rules.hacking_resolve(preflight, 2, 0, true, "Activate Camera")
+	rows.append(_eq("hacking consumes SRD Access", settled.get("access"), 1))
+	rows.append(_eq("self terminating program frees CPU", settled.get("cpu_used"), 0))
+	rows.append(_eq("invalid target is refused",
+		rules.hacking_preflight("Activate", "Avatar", 2, 0, 1,
+			["Activate"], ["Avatar"], "Avatar").get("ok"), false))
+	rows.append(_eq("unloaded program is refused",
+		rules.hacking_preflight("Activate", "Device", 2, 0, 1,
+			[], ["Camera"], "Camera").get("ok"), false))
+
 	return rows
 
 func _eq(label: String, actual: Variant, expected: Variant) -> Array:

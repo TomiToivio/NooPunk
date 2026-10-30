@@ -1,3 +1,8 @@
+> ## ARCHIVED — SUPERSEDED BY #848
+>
+> The seven-attribute system in this file is **not canon**. Issue #848 restored vanilla CWN (primary) and
+> vanilla SWN Revised psionics; the canonical rulebook is `rulebook/00_INDEX.md`.
+
 # NoöPunk
 
 **Version:** 0.1.0 · **Status:** draft — character sheet only

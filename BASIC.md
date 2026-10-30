@@ -1,3 +1,15 @@
+> ## ⚠ SUPERSEDED — issue #848
+>
+> This document describes the **seven-attribute restart** (#827, #835) — Fitness / Reflexes /
+> Cognition / Cyber / Awareness / Agency / Empathy — which **#848 supersedes**. NoöPunk uses **vanilla
+> Cities Without Number** attributes: STR / DEX / CON / INT / WIS / CHA.
+>
+> **Canonical rules:** [`RULEBOOK.md`](RULEBOOK.md). **Canonical game:** [`project.godot`](project.godot)
+> → `scenes/main.tscn`. Read [`AGENTS.md`](AGENTS.md) first; it opens with the CURRENT DIRECTIVE and
+> pins the baseline commit.
+>
+> Kept as history. Do not treat this file as a rule source.
+
 # Basic character creation
 The player character is a UNSA agent straight from the academy.
 

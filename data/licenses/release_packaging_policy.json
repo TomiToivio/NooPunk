@@ -181,6 +181,14 @@
       ],
       "licence": "author-decision",
       "note": "The restart rulebook and Godot starter (#827): original prose, scenes and scripts. No third-party assets are used; the player is a primitive rectangle."
+    },
+    {
+      "id": "unclassified-docs",
+      "globs": [
+        "*.md"
+      ],
+      "licence": "author-decision",
+      "note": "Catch-all for Markdown that no earlier class claims (currently BASIC.md and similar root notes). Placed last so specific classes win. It exists because new root documents arrive faster than the policy is updated, and an unclassified file fails the whole suite for every open PR."
     }
   ],
   "release_modes": {

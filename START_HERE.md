@@ -1,55 +1,28 @@
-# START HERE — NoöPunk (issue #848)
+# START HERE — NoöPunk vanilla CWN/SWN baseline (issue #848)
 
-**The vanilla CWN/SWN baseline and the one Godot RPG.** Issue #848 supersedes the blank-rulebook
-restart (#827, #835): the tabletop rules are published Cities Without Number, the game is the
-repository-root Godot project, and no second prototype is current.
+> **CURRENT DIRECTIVE (2026-10-30).** Issue [#848](https://github.com/TomiToivio/NooPunk/issues/848) supersedes the blank-rulebook and seven-attribute restart (#827, #835). Follow [AGENTS.md](AGENTS.md) and [the baseline decision record](docs/NOOPUNK_BASELINE_848.md). Do not resume the restart or create another Godot project.
 
-## Canonical artifacts
+## Canonical entry points
 
-| What | Where |
-| --- | --- |
-| Tabletop authority | CWN SRD <https://cwn.quadrifons.com/> (primary); SWN Revised SRD for psionics |
-| Rules record in-repo | [`docs/rules/`](docs/rules/) — coverage and procedure notes; [`data/rules/`](data/rules/) — machine-readable |
-| Godot project | [`project.godot`](project.godot) (repository root) |
-| Startup scene | [`scenes/main.tscn`](scenes/main.tscn) → `godot/ui/main_menu.gd` |
-| Rules kernel | [`godot/core/`](godot/core/) (canonical owner; `src/godot/` is legacy) |
-| Godot tests CI runs | [`godot/tests/run_tests.gd`](godot/tests/run_tests.gd) |
-| Decision record | [`docs/design/ISSUE_848_BASELINE.md`](docs/design/ISSUE_848_BASELINE.md) |
+- **Pinned baseline SHA:** `36092a56a7637145c805129511eb2b6b688f6ca0` (audited main snapshot; not a rollback instruction).
+- **Tabletop rules:** [`rulebook/00_INDEX.md`](rulebook/00_INDEX.md), with vanilla **Cities Without Number** as the primary mechanics and vanilla **Stars Without Number Revised** governing psionics. Use published STR/DEX/CON/INT/WIS/CHA, classes, character generation, checks, combat, hacking, equipment and progression. No NoöPunk-specific statistical modifications.
+- **Godot:** repository-root [`project.godot`](project.godot), startup `res://scenes/main.tscn`. Target **2D top-down turn-based** play, not a parallel action RPG.
+- **Source-of-truth implementation:** `godot/`, with `src/godot/` compatibility modules audited before consolidation. Existing lore, scenarios, alternate prototypes and history are retained for reference, not promoted into a second rules authority.
+- **Superseded:** `noopunk/game/project.godot`, `noopunk/rulebook/RULEBOOK.md` and custom seven-attribute/typed-tag systems. They remain on disk as archive/reference only.
+- **Scope exception:** independently authorized `strategy_game/` is not part of this Godot consolidation.
 
-**Baseline commit:** `36092a5`. Rebase on `main`; name the canonical module you extend in the PR.
+## Run and verify
 
-**Archived, do not extend:** `noopunk/` (blank rulebook and seven-attribute sheet), `restart/`
-(history only), the #821 seven-attribute tags until Tomi reauthorizes them. Their files and history
-stay; they are not the current design.
-
-## Run the game
-
-```sh
-godot --path .            # from the repository root
-```
-
-The window opens at `scenes/main.tscn` (main menu). Existing play routes: the ward/campaign scenes
-reachable from that menu. The top-down gameplay scene is the next implementation slice, not yet on
-`main` — see the decision record.
-
-Headless checks CI runs:
+From the repository root with the project-pinned Godot version (see `project.godot`):
 
 ```sh
 godot --headless --path . --import
 godot --headless --path . --script res://godot/tests/run_tests.gd
+godot --path .
 ```
 
-Current result at the baseline: **760 checks, 0 failed.**
+These are verification commands, **not** a claim that they passed in this documentation change. A passing test suite cannot establish complete CWN/SWN coverage. Record missing procedures and their authoritative published source in the coverage matrix.
 
-## Rules boundaries
+## Work on one shared baseline
 
-CWN governs attributes, creation, classes, skills, checks, saves, combat, equipment, cyberware,
-hacking and progression. SWN Revised governs psionics whole (Psychic class, disciplines, Effort).
-Do not blend the two inside one procedure, and do not reintroduce custom mechanics as if they were
-published rules.
-
-## How work arrives
-
-One small piece from Tomi at a time, implemented in `godot/core/` and the root project, with the
-tabletop procedure it follows named in the PR. If it departs from published CWN/SWN, it is a tracked
-deviation, not silent design. **#848 stays open** until alignment and migration are verified.
+Before editing, inspect issue #848, `AGENTS.md`, `docs/NOOPUNK_BASELINE_848.md`, and overlapping PRs. Preserve saves and existing gameplay. Implement and test one vanilla, book-traceable subsystem at a time in the canonical root game and tabletop documentation. Every related PR must record its baseline SHA, canonical paths, rules authority, superseded work and actually run tests. **Keep #848 open** until the migration and playable vertical slice are verified.
