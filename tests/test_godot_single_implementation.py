@@ -33,6 +33,9 @@ KNOWN_LEGACY_WORKFLOWS = {
 KNOWN_DUPLICATES = {
     "cwn_catalogue.gd",   # godot/core copy to be deleted; test repointed at src/godot
     "cwn_character.gd",   # same
+    # Debt, not permission: deleting a name from this set is the completion signal for #791.
+    # "cwn_healing.gd" retired by #801: merged into godot/core/cwn_healing.gd and deleted.
+    # "cwn_strain.gd" retired by #799: merged into godot/core/cwn_strain.gd and deleted.
 }
 
 

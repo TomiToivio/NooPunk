@@ -54,19 +54,18 @@ func rest_night(hours: float = REST_HOURS_REQUIRED, warm_fed_comfortable: bool =
 		return 0.0
 	var recovered := minf(RECOVERY_PER_NIGHT, temporary)
 	temporary -= recovered
-	unconscious_hours = 0.0
 	return recovered
 
-## Cyberware consumes permanent Strain; removal restores the available ceiling.
+## Installed cyberware is *permanent* Strain: it occupies capacity for good and cannot be rested off.
+## Refused, not clamped — the body either fits the implant or it does not.
 func install_cyber(strain: float) -> bool:
-	if strain < 0.0 or total() + strain > float(maximum()):
+	if strain < 0.0 or total() + strain > maximum():
 		return false
 	permanent += strain
 	return true
 
+## Removing an implant frees its capacity, never below zero.
 func remove_cyber(strain: float) -> void:
-	if strain < 0.0:
-		return
 	permanent = maxf(0.0, permanent - strain)
 
 func to_dict() -> Dictionary:
