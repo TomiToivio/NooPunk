@@ -94,3 +94,40 @@ bookkeeping, content not yet built in 3D. Record them in the child issue under
   `docs/rules/CWN_GODOT_COVERAGE.md`.
 - The strategy game is a separate game with **no approved rules**; do not route an RPG draft into
   `strategy_game/` and do not route a strategy draft into `RULEBOOK.md`.
+
+## Readiness check — verified 2026-10-30
+
+The pipeline was exercised before inviting drafts into it, because a workflow whose first step is
+broken wastes the author's time.
+
+| Check | Result |
+| --- | --- |
+| `python tools/split_rulebook_twelve.py --apply` | runs; **idempotent** (a second run changes nothing) |
+| Generated parts vs `RULEBOOK.md` | **were drifted, now regenerated.** Three parts had been hand-edited; the canonical text is the rulebook and the parts are output |
+| `data/rules/noopunk_adaptations.json` | present, `_status: none_approved`, `adaptations: []` |
+| `docs/rules/CWN_GODOT_COVERAGE.md` | present — the Godot coverage matrix to extend with each draft |
+| Issue templates | `noopunk-draft.yml` parses (8 fields); `tomi_draft_child.md` present |
+| Godot suite | 530 checks, 0 failed |
+
+### What the drift taught
+
+`rulebook/parts/` is **generated**, and three parts had been edited directly — including a full
+§33.6c Noösphere section that existed nowhere in `RULEBOOK.md`. Regenerating would have deleted it,
+which is how "generated" directories lose work.
+
+The section's substance was already in canonical files (`docs/world/NOOSPHERE.md` carries the
+definition and its Jung/Teilhard sourcing; `rulebook/10_SINGULARITY_CRISIS.md` carries the
+*claimant, not the definition* reconciliation), and `RULEBOOK.md` links to it. So the regeneration
+lost nothing — but it would have lost everything if the only copy had been the part.
+
+**Rule for every draft:** edit `RULEBOOK.md`, regenerate, commit both. A hand-edited part is a
+future deletion.
+
+### First-draft checklist
+
+1. Child issue from the **NoöPunk rule draft** form.
+2. Draft quoted verbatim; anything it leaves open becomes an open question.
+3. Tabletop: `RULEBOOK.md` → `python tools/split_rulebook_twelve.py --apply` → tabletop example.
+4. Godot: numbers in `data/rules/*.json`, procedure in `godot/core/*.gd`, test in `godot/tests/`.
+5. Parity: one headless test and one tabletop example walking the same numbers.
+6. PR linked back to #814; close the child, never the meta-issue.

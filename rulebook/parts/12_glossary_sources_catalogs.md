@@ -393,6 +393,8 @@ legible enough to play.
 
 ---
 
+> **PSI / Astral design expansion (#511):** The civilization-level implications of astral projection, noetic exploration, public institutions, cognitive liberty and evidence are developed in [PSI as a civilization-level paradigm shift](rulebook/21_PSI_PARADIGM_SHIFT.md). This is design-facing worldbuilding; no new numeric PSI mechanics are approved by this cross-reference.
+
 ## 35. Sources, recommended reading, and influences
 
 **Status: LIVING BIBLIOGRAPHY / SOURCE MAP.**
