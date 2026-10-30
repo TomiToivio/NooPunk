@@ -9,6 +9,7 @@ extends SceneTree
 
 const SUITES := [
 	"res://godot/tests/test_party.gd",
+	"res://godot/tests/test_field_agent.gd",
 	"res://godot/tests/test_campaign_migration.gd",
 	"res://godot/tests/test_cwn_party.gd",
 	"res://godot/tests/test_campaign_state.gd",
