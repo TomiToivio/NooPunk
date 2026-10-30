@@ -53,6 +53,32 @@ Skill levels remain 0 to 4 as in Cities Without Number.
 There is one difference: some tasks can be attempted with -1 modifier without relevant skill, some cannot be attempted at all.
 Also mark skills as tags, such as shooting-1 etc.
 
+This is the list of modified CWN skills:
+
+* Administer (Cognition) - bureaucracy etc, very important skill!
+* Connect (Empathy) - has to be considered how this would even work in NoöPunk RPG. Most likely to be modified.
+* Drive (Reflexes) - same as before
+* Strength (Fitness) - use this instead of Exert when raw power and muscles are required
+* Stamina (Fitness) - use this instead of Exert when stamina is required. 
+* Hardware (Cyber) - replaces "Fix" which sounds stupid
+* Wetware (Empathy) - replaces "Heal" which sounds stupid
+* Software (Cyber) - replaces program because you use the LLM in your brain
+* Noöware (Empathy) - Psychology, psychiatry, psychotherapy, psychic integration (replaces heal for psyche)
+* Research (Cognition) - use instead of generic "Know", it is not useful to remember stuff when you have a BCI connected to the Slownet and local networks. It is more about finding and understanding text data. Also your understanding of scientific method in general. 
+* Know - Have to consider which know skills are relevant in NoöPunk. Let's use Research instead of generic "Know".
+* Lead (Agency) - As before.
+* Notice (Awareness) - As before.
+* Unarmed (Reflexes) - Renamed Punch
+* Melee (Reflexes) - Renamed Stab
+* Firearms (Reflexes) - Renamed Shoot
+* Sneak (Awareness) - Same as before
+* Survive (Agency) - Same as before
+* Talk (Agency/Empathy etc.) - The used attribute should depend on the situation. 
+* Trade (Agency) - Same as before.
+* Work - Has to be considered which skills would be useful!
+
+Note: the skill list will probably change as we proceed with NoöPunk rules.
+
 ## Other tags
 Besides attribute and skill tags there will be other positive and negative tags. 
 Some tags are temporary statuses, for an example wounded-1.
