@@ -1,3 +1,10 @@
+> ## ⚠ SUPERSEDED — issue #848
+>
+> This tree is the **blank-rulebook restart** (#827/#835) and is **not** the NoöPunk RPG. The
+> canonical game is the repository-root `project.godot` → `scenes/main.tscn`, with vanilla CWN/SWN
+> rules in `RULEBOOK.md`. This directory is preserved as history only: do not extend it, do not run a
+> feature from it, and do not delete it.
+
 # NoöPunk — canonical restart (issue #827)
 
 **This directory is the canonical NoöPunk project from now on.** Everything here is new and intentionally

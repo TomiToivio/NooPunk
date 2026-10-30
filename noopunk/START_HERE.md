@@ -1,3 +1,15 @@
+> ## ⚠ SUPERSEDED — issue #848
+>
+> This file belongs to the **blank-rulebook / seven-attribute restart** (#827, #835). It is **not** the
+> NoöPunk RPG and nothing here governs play.
+>
+> **Canonical:** `RULEBOOK.md` (root) for rules, and the repository-root `project.godot` →
+> `scenes/main.tscn` for the game, running **vanilla Cities Without Number primary + vanilla Stars
+> Without Number Revised** where CWN is silent. Read [../AGENTS.md](../AGENTS.md) before writing
+> anything; it opens with the CURRENT DIRECTIVE and pins the baseline commit.
+>
+> Preserved as history. Do not extend it, do not run a feature from it, do not delete it.
+
 # NoöPunk Step 2: UNSA rookie
 
 Canonical tabletop rules: `noopunk/rulebook/RULEBOOK.md`  
