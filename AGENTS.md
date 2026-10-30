@@ -423,3 +423,39 @@ Tomi is the authorial source of truth. When a draft arrives, read
 ## Godot rule-module ownership clarification (#791)
 
 `godot/core/` is the canonical owner of CWN/SWN game-rule implementations. `src/godot/` remains a compatibility tree only. Port unique capabilities and preserve consumers and tests before retiring duplicates. The two catalogue APIs differ (instance ID lookup vs static named catalogue lookup), so do not mechanically repoint either caller. See `docs/godot/CANONICAL_GODOT_TREE.md` and `docs/godot/UNIFIED_IMPLEMENTATION.md`.
+
+## THE RESTART: canonical paths and the one-project rule, revised (#827)
+
+Tomi has restarted the tabletop rulebook and the Godot game together from a blank foundation. This
+**supersedes** the earlier "one Godot project at the repository root" directive and the #814 draft
+pipeline for new work.
+
+**Canonical artifacts — put new work here, and only here:**
+
+| Artifact | Path |
+| --- | --- |
+| Rulebook | `noopunk2/rulebook/RULEBOOK.md` — blank by design |
+| Godot game | `noopunk2/project.godot` — one room, one player, movement |
+| Process | `START_HERE.md` and meta-issue **#827** (stays open) |
+
+**Frozen legacy — do not extend:** root `RULEBOOK.md`, `rulebook/`, root `project.godot`, `godot/`,
+`src/godot/`, `src/rules/`, `data/rules/`, `strategy_game/`. They keep working and keep their history;
+they are not where the new game is designed. Bug fixes needed to keep them running are allowed; new
+features and new rules are not.
+
+**Rules for every subsequent task:**
+
+1. **One piece at a time.** Implement exactly the rule, interaction or scenario fragment Tomi
+   supplied. Do not add neighbouring systems because they look necessary.
+2. **Two outputs, one decision.** The rule goes into `noopunk2/rulebook/RULEBOOK.md`; the same
+   decision is implemented in `noopunk2/`. A rule that exists only in code is a defect, and a rulebook
+   entry with no implementation is unfinished work.
+3. **Do not invent.** No attributes, skills, dice, combat, injury, inventory, dialogue, NPCs, quests,
+   factions, psionics, hacking or economy until the author writes them.
+4. **Say which artifacts you changed** in the PR: both, or one with a reason.
+5. **Close the child issue; never close #827.** Do not use `Fixes #827` / `Closes #827`.
+6. **The smoke test is the CI gate for the new project:**
+   `godot --headless --path noopunk2 --script res://tests/smoke.gd`.
+
+The legacy tree's rules (`docs/godot/`, `docs/design/TOMI_DRAFT_WORKFLOW.md`, the CWN/SWN layers) stay
+readable as reference. They no longer govern what the new game does.

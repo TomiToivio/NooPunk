@@ -1,0 +1,26 @@
+; NoöPunk restart — minimal top-down 2D starter (#827).
+;
+; This is a SEPARATE Godot project from the legacy root project.godot. Run it with:
+;   godot --path noopunk2
+; Nothing here depends on the legacy game's state, rules, scenes or autoloads.
+
+config_version=5
+
+[application]
+
+config/name="NoöPunk (restart)"
+config/description="Minimal top-down 2D starter: one room, one player, movement."
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
+window/stretch/mode="canvas_items"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.07, 0.08, 0.1, 1)

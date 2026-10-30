@@ -164,6 +164,15 @@
       ],
       "licence": "author-decision-follows-code",
       "note": "CI, dependency and release-packaging plumbing."
+    },
+    {
+      "id": "restart-project",
+      "globs": [
+        "noopunk2/**",
+        "START_HERE.md"
+      ],
+      "licence": "author-decision",
+      "note": "The restart rulebook and Godot starter (#827): original prose, scenes and scripts. No third-party assets are used; the player is a primitive rectangle."
     }
   ],
   "release_modes": {
