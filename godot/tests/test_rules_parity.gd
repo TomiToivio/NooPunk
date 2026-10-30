@@ -73,7 +73,7 @@ func run() -> Array:
 	for rounds in [0, 1, 3]:
 		for medkit in [true, false]:
 			var canon_diff: Dictionary = CanonHealing.stabilize_difficulty(rounds, medkit)
-						rows.append(_row("stabilise rounds=%d medkit=%s" % [rounds, medkit],
+			rows.append(_row("stabilise rounds=%d medkit=%s" % [rounds, medkit],
 				int(canon_diff.get("difficulty", -1)), 8 + rounds + (0 if medkit else 2)))
 
 	for frail in [true, false]:
