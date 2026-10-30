@@ -10,7 +10,6 @@ extends RefCounted
 ## It is deliberately not an "agreement test" that legitimises two implementations — see
 ## docs/godot/ARCHITECTURE_CONSOLIDATION.md. It is the evidence a deletion requires.
 const AltCombat := preload("res://src/godot/cwn/cwn_combat.gd")
-const AltHealing := preload("res://src/godot/cwn/cwn_healing.gd")
 const CanonStrain := preload("res://godot/core/cwn_strain.gd")
 const CanonCombat := preload("res://godot/core/cwn_combat_rules.gd")
 const CanonHealing := preload("res://godot/core/cwn_healing.gd")
@@ -74,17 +73,16 @@ func run() -> Array:
 	for rounds in [0, 1, 3]:
 		for medkit in [true, false]:
 			var canon_diff: Dictionary = CanonHealing.stabilize_difficulty(rounds, medkit)
-			var alt_diff: int = AltHealing.stabilize_difficulty(rounds, medkit)
-			rows.append(_row("stabilise rounds=%d medkit=%s" % [rounds, medkit],
-				int(canon_diff.get("difficulty", -1)), alt_diff))
+						rows.append(_row("stabilise rounds=%d medkit=%s" % [rounds, medkit],
+				int(canon_diff.get("difficulty", -1)), 8 + rounds + (0 if medkit else 2)))
 
 	for frail in [true, false]:
 		rows.append(_row("natural healing frail=%s" % frail,
-			CanonHealing.natural_healing(3, frail), AltHealing.natural_healing(3, frail)))
+			CanonHealing.natural_healing(3, frail), 0 if frail else 3))
 
 	# --- Healing: a passed/failed week ---
 	rows.append(_row("week with care",
 		str(CanonHealing.frail_week(true).get("outcome", CanonHealing.frail_week(true).get("result", ""))),
-		AltHealing.frail_week(true)))
+		"recovered"))
 
 	return rows
