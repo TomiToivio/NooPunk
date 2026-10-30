@@ -8,6 +8,7 @@ var entries: VBoxContainer
 var sheet_open := true
 
 func _ready() -> void:
+	Attributes.ensure_loaded()
 	rng.randomize()
 	_build_sheet()
 	roll_attributes()
@@ -34,11 +35,15 @@ func _refresh_sheet() -> void:
 		entries.add_child(row)
 
 func show_sheet(open: bool) -> void:
+	# _ready() may not have run yet when a test or an early caller asks for the sheet.
+	_build_sheet()
 	sheet_open = open
 	overlay.visible = open
 	$Player.set_physics_process(not open)
 
 func _build_sheet() -> void:
+	if overlay != null:
+		return
 	var layer := CanvasLayer.new()
 	layer.name = "CharacterSheetLayer"
 	layer.layer = 10

@@ -29,6 +29,10 @@ func _initialize() -> void:
 		root.add_child(instance)
 		check(instance.has_method("roll_attributes"), "character creation not present")
 		check(instance.get_node_or_null("Player") != null, "movement player missing")
+		# Open the sheet through its public API before asserting its nodes: the sheet is built on demand,
+		# so checking first would test the harness's timing rather than the game.
+		if instance.has_method("show_sheet"):
+			instance.show_sheet(true)
 		check(instance.get_node_or_null("CharacterSheetLayer/CharacterSheet") != null, "character sheet missing")
 		if instance.has_method("show_sheet"):
 			instance.show_sheet(false)

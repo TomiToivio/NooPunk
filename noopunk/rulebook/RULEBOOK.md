@@ -63,3 +63,9 @@ In Godot the same generation is in `noopunk/game/attributes.gd`; the character s
 ## Scenarios
 
 *Placeholder. Scenarios will be listed here as they are authored.*
+
+
+---
+
+The machine-readable copy of the attribute and difficulty tables is
+`noopunk/game/data/attributes.json`; the game reads that file.
