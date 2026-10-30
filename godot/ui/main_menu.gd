@@ -47,7 +47,7 @@ func _ready() -> void:
 		get_tree().current_scene = screen)
 	stack.add_child(hacking)
 
-	# #873: expose existing CWN pursuit kernel without duplicating its rules.
+	# #873: CWN chase console via the existing kernel.
 	var chase := Button.new()
 	chase.text = "CWN — chase and pursuit"
 	chase.pressed.connect(func() -> void:

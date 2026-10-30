@@ -51,7 +51,7 @@ There has been no windowed playtest or headless suite execution for this change.
 | 1.3 | Backgrounds | yes — `cwn_character.gd` | yes | partial | **unverified** |
 | 1.4 | Contacts | yes — `cwn_contacts.gd` rules kernel | yes — `test_cwn_vanilla.gd` | no complete player interface | **unverified** |
 | 1.5 | Edges | yes — 13 files reference Edges | partial | partial | **unverified** |
-| 1.6 | Foci | partial — 4 files | partial | no | **absent** |
+| 1.6 | Foci | yes — `cwn_foci.gd` (26 Foci, 22 with two levels, pick levels, gear budgets) | yes — `test_cwn_vanilla.gd` | creation/advancement UI pending | **verified for the engine** |
 | 1.7 | Final creation steps | yes — `field_agent.gd`, `cwn_character.gd` | yes | yes | **unverified** |
 | 2.1 | Scenes, rounds, mission time | yes — `cwn_mission_time.gd`, `combat.gd`, `session.gd` | yes — mission-time kernel tests reported in PR #865 | partial — dedicated mission-clock UI not independently demonstrated | **unverified** |
 | 2.2 | Saving throws | yes — `dice.gd`, `cwn_combat_rules.gd` | yes | yes | **unverified** |
@@ -74,7 +74,7 @@ There has been no windowed playtest or headless suite execution for this change.
 | 4.1 | Cyberspace basics | yes — `hacking.gd` | yes | partial | **unverified** |
 | 4.2 | Hacking mechanics | yes — `hacking.gd` (Access, security, alert clock) | yes | partial | **unverified** |
 | 4.3 | Programs | yes — `cwn_programs.gd`, `cwn_program_rules.gd`, **`cwn_hacking_catalogue.gd`** | yes — `test_cwn_hacking_catalogue.gd` | no | **verified for the 24 Verbs and 12 Subjects** (verbatim transcription, cited) |
-| 4.4 | Demons and watchdogs | partial — demons referenced in hacking | partial | no | **absent** |
+| 4.4 | Demons and watchdogs | yes — `cwn_demons.gd` (8 demons, lines, HP, frag/reboot, node and network capacity, watchdog shift) | yes — `test_cwn_vanilla.gd` | no demon UI | **verified for the table and the procedures** |
 | 4.5 | Servers and architecture | yes — `cwn_node_link.gd` | yes — `test_node_link.gd`, 34 checks reported in PR #877 | yes — `scenes/node_link.tscn` (jack in, Access, Verbs/Subjects, alert, disconnect) | **partial — procedure implemented, per-node architecture tables not included** |
 
 ## Node-link and Alienation integration (#869, PR #877)
@@ -85,9 +85,23 @@ PR #877 adds the playable node-link hacking screen and its rules-state machine, 
 
 An additional playable node-link presentation at `godot/ui/hacking_screen.gd` and `scenes/hacking/node_link.tscn` uses `godot/core/hacking.gd` and opens the Romppainen warehouse mission from the main menu. `godot/tests/test_hacking_screen.gd` covers this path (20 checks reported on the PR branch). This complements the `cwn_node_link.gd` and MVP H-key interfaces documented above; full SRD §4.5 parity remains unverified. The 1312 checks reported on PR #878 were not rerun on this integration.
 
-## §2.6 playable chase console (#873, follow-up)
+## Foci engine and Demons (#873 remnants)
 
-`scenes/chase_screen.tscn` and `godot/ui/chase_screen.gd` expose foot and single-pursuer vehicle checks from the main menu. The console delegates outcomes to `cwn_chases.gd`; `test_chase_screen.gd` covers catches, ties, hindrance and vehicle dropouts. This is **partial playability** (check totals are manually entered): circumstance modifiers, multiple pursuers and in-world campaign progression are not wired. SRD parity has **not** been independently established, and no test execution is claimed for this follow-up.
+- **§1.6 Foci** — `cwn_foci.gd`, ported from the verified Python layer so the two cannot disagree:
+  26 Foci with 22 having a second level, one pick at creation plus one with the Focused Edge, picks at
+  character levels 2/5/7/10, and the §1.6.2 gear budgets for Ace Driver, Roamer and Drone Pilot.
+  A one-level Focus **refuses** a second pick rather than silently capping it.
+- **§4.4 Demons and watchdogs** — `cwn_demons.gd`: the eight-demons table (cost, command lines, HP,
+  skill bonus), the admin privileges (ignores barriers, spends no Access), command-list capacity,
+  damage with **frag at zero HP** and an hour's reboot while the slot stays occupied, per-node crowding
+  (extras may only Move Nodes) and per-network capacity, and the watchdog facts that distinguish a human
+  presence from a program.
+
+Verified: **1353 checks, 0 failed**.
+
+## §2.6 chase console (#873, PR #882)
+
+The `scenes/chase_screen.tscn` console opens from the menu and routes foot and single-pursuer vehicle outcomes through `cwn_chases.gd`. Six regression assertions are registered in `test_chase_screen.gd`. Check totals must currently be entered manually; modifiers, multiple vehicles and campaign state are not integrated. This is **partial playability**, not verified full SRD parity. This merge-resolution branch has not run Godot checks.
 
 ## What the table says plainly
 
