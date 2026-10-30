@@ -243,6 +243,56 @@ static func create_field_agent(params: Dictionary) -> Dictionary:
 		},
 	}
 
+## Bridge from a created member record to the sheet the slice consumes (#809/#814 step 4).
+##
+## `create_field_agent()` and `romppainen_companion()` produce *member* records: what the party
+## roster needs. `session.gd`, `combat.gd` and the scene flow read a *character sheet*:
+## `hp_max`, `ac`, an `attack` block, Strain, gear. Both shapes are legitimate; this converts one to
+## the other so a created agent can be played without the scenario shipping a hand-written sheet.
+##
+## Values that the member record does not carry come from `extras` — a scenario's gear choice, an
+## unarmed attack, a psionic package — never from a hidden default that would silently change a rule.
+static func to_session_sheet(member: Dictionary, extras: Dictionary = {}) -> Dictionary:
+	var attributes: Dictionary = Dictionary(member.get("attributes", {})).duplicate(true)
+	# A member record may carry only the scores its build names; a sheet needs all six, because saves
+	# read them. An absent score is 10 (+0), never a missing key.
+	for score_name in ATTRIBUTES:
+		if not attributes.has(score_name):
+			attributes[score_name] = 10
+	var dexterity := int(attributes.get("DEX", 10))
+	var constitution := int(attributes.get("CON", 10))
+	var dex_mod := effective_modifier(dexterity)
+	var hit_points := int(member.get("hit_points", member.get("max_hit_points", 1)))
+	var ac := int(extras.get("ac", 10 + dex_mod))
+	var attack: Dictionary = Dictionary(extras.get("attack", DEFAULT_ATTACK)).duplicate(true)
+	var sheet := {
+		"id": str(member.get("id", "pc")),
+		"name": str(member.get("name", "Field Agent")),
+		"level": int(member.get("level", 1)),
+		"role": str(member.get("role", "field_agent")),
+		"kind": "pc" if bool(member.get("is_pc", false)) else "npc",
+		"attributes": attributes,
+		"skills": Dictionary(member.get("skills", {})).duplicate(true),
+		"hp_max": hit_points, "hp": hit_points,
+		"ac": ac, "ac_melee": int(extras.get("ac_melee", ac)), "ac_ranged": int(extras.get("ac_ranged", ac)),
+		"attack": attack,
+		"saves": saves(int(member.get("level", 1)), attributes),
+		"strain": {"max": constitution, "used": 0},
+		"gear": Array(member.get("inventory", [])).duplicate(true),
+		"psionics": Dictionary(extras.get("psionics", {"disciplines": {}, "packages": []})).duplicate(true),
+		"source": "NoöPunk member record -> session sheet bridge",
+	}
+	if member.has("agency"):
+		sheet["agency"] = str(member["agency"])
+	return sheet
+
+## An unarmed or generic holdout attack, so a sheet is never unusable for want of a weapon line.
+const DEFAULT_ATTACK := {
+	"name": "sidearm", "weapon_kind": "ranged", "attribute": "DEX", "combat_rank": 0,
+	"attack_bonus": 1, "damage": [1, 6, 0], "trauma_rating": 1, "trauma_target": 6,
+	"shock_value": 0, "shock_ac": -1, "ammo": 8, "ammo_max": 8, "lethal": true,
+}
+
 ## Romppainen as an experienced companion: never level 1, never the protagonist, not always present.
 ## `level` is scenario-driven; the default reflects "more experienced than a starting agent" without
 ## fixing a campaign number the author has not ruled on.
