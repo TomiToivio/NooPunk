@@ -14,3 +14,5 @@ Thumbs.db
 # Agent-internal working notes (plans, session scratch). They are not project
 # documentation and must never be published (issue #78, meta repo TomiToivio/LaclauGPT).
 .hermes/
+# Godot import cache for the restart project
+noopunk2/.godot/
