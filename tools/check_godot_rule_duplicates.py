@@ -43,7 +43,7 @@ ALLOWED = {
     "combat",         # godot/core/cwn_combat_rules.gd <- src/godot/cwn/cwn_combat.gd
     # "strain" retired in #791: src/godot/cwn/cwn_strain.gd was merged into godot/core/cwn_strain.gd
     # and deleted. The guard now fails if the domain reappears, which is the intent.
-    "healing",        # godot/core/cwn_healing.gd    <- src/godot/cwn/cwn_healing.gd
+    # "healing" retired after porting the unique first-aid and frailty APIs into godot/core/cwn_healing.gd
     # "psionics" retired in #791: src/godot/swn_psionics.gd was merged into godot/core/psionics.gd
     # (its two core-technique statics came with it) and deleted.
     "progression",    # godot/core/swn_progression.gd <- src/godot/cwn_progression.gd
