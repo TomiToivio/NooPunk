@@ -10,6 +10,10 @@ extends RefCounted
 class_name CwnCyberwareOps
 
 ##: Installation terms by the implant's System Strain cost. `max_strain` is inclusive.
+## The Alienation arithmetic has one owner: `cwn_alienation.gd`. This file delegates to it so the
+## rounding rule (ceil, plus the nerve surcharge) cannot drift into two copies (issue #869).
+const Alienation := preload("res://godot/core/cwn_alienation.gd")
+
 const STRAIN_TIERS := [
 	{"max_strain": 0.0, "cost": 100, "recovery": "1 hour", "difficulty": 7},
 	{"max_strain": 0.5, "cost": 500, "recovery": "1 day", "difficulty": 8},
@@ -137,7 +141,7 @@ static func resolve_reuse(check_total: int, difficulty: int = 10) -> Dictionary:
 static func alienation_gain(system_strain: float, nerve: bool = false) -> int:
 	if system_strain <= 0.0:
 		return 0
-	return ceili(system_strain) + (2 if nerve else 0)
+	return Alienation.alienation_for_system(system_strain, nerve)
 
 
 ## A character's maximum Alienation: Wisdom plus the bonuses of the chrome syndromes they carry.
@@ -147,6 +151,7 @@ static func max_alienation(wisdom: int, syndromes: Array = []) -> Dictionary:
 	var bonus := 0
 	var seen: Array = []
 	var unknown: Array = []
+	var base := Alienation.maximum(wisdom)
 	for syndrome in syndromes:
 		var key := String(syndrome)
 		if not SYNDROMES.has(key):
@@ -156,7 +161,7 @@ static func max_alienation(wisdom: int, syndromes: Array = []) -> Dictionary:
 		else:
 			seen.append(key)
 			bonus += int(SYNDROMES[key])
-	return {"ok": unknown.is_empty(), "maximum": wisdom + bonus, "unknown": unknown}
+	return {"ok": unknown.is_empty(), "maximum": base + bonus, "unknown": unknown}
 
 
 ## The Alienation check: roll 1d20; equal to or under current Alienation gains one point.
@@ -166,7 +171,7 @@ static func alienation_check(roll: int, current: int) -> Dictionary:
 
 ## One week of therapy lowers Alienation by one, never below the permanent amount the cyber imposes.
 static func therapy_week(current: int, permanent: int) -> int:
-	return maxi(permanent, current - 1)
+	return Alienation.after_therapy(current, permanent)
 
 
 ## Alienation above the character's maximum is cyber-induced psychosis; the character becomes an NPC.

@@ -39,7 +39,7 @@ PR #865 (`890d4168bf581e1a92f3086db7b0794c4aa285b7`) merged new Godot kernels fo
 | 2.3 | Skill checks | yes — `dice.gd`, `rules_adapter.gd` | yes | yes | **unverified** |
 | 2.4 | Combat | yes — `combat.gd`, `cwn_combat_actions.gd`, `cwn_combat_rules.gd` | yes — `test_combat.gd` | yes | **unverified** |
 | 2.5 | Injury, healing, strain | yes — `cwn_injury.gd`, `cwn_healing.gd`, `cwn_strain.gd` | yes — `test_cwn_injury.gd` | partial | **unverified** |
-| 2.6 | Chases and pursuit | yes — `cwn_chases.gd` (foot and vehicle) | yes — deterministic checks reported in PR #865 | no dedicated chase interface demonstrated | **unverified** |
+| 2.6 | Chases and pursuit | yes — `cwn_chases.gd` plus `cwn_vehicles.gd` (foot and vehicle modifiers, hindrance bonus, escape on a tie) | yes — `test_cwn_vehicles.gd` | no dedicated chase interface demonstrated | **unverified** |
 | 2.7 | Advancement | yes — `cwn_progression.gd`, `swn_progression.gd` | yes | partial | **unverified** |
 | 2.8 | Crafting and modifying gear | yes — `cwn_gear_mods.gd`, `data/rules/cwn_gear_mods.json` | yes — deterministic checks reported in PR #865 | no dedicated crafting interface demonstrated | **unverified** |
 | 2.9 | Encumbrance | yes — `cwn_encumbrance.gd` | yes | partial | **unverified** |
@@ -56,9 +56,17 @@ PR #865 (`890d4168bf581e1a92f3086db7b0794c4aa285b7`) merged new Godot kernels fo
 | 4.2 | Hacking mechanics | yes — `hacking.gd` (Access, security, alert clock) | yes | partial | **unverified** |
 | 4.3 | Programs | yes — `cwn_programs.gd`, `cwn_program_rules.gd`, **`cwn_hacking_catalogue.gd`** | yes — `test_cwn_hacking_catalogue.gd` | no | **verified for the 24 Verbs and 12 Subjects** (verbatim transcription, cited) |
 | 4.4 | Demons and watchdogs | partial — demons referenced in hacking | partial | no | **absent** |
-| 4.5 | Servers and architecture | partial — node linking in `hacking.gd` | yes | **no — no node-link screen** | **absent** |
+| 4.5 | Servers and architecture | yes — `cwn_node_link.gd` (network state machine over `CwnHackingRules` + `CwnProgramRules`) | yes — `test_node_link.gd`, 34 checks | **yes — `scenes/node_link.tscn`, playable: jack in, Access, Verbs×Subjects, alert, disconnect** | **partial — the procedure is played end to end; per-node architecture tables are not reproduced (licensing)** |
 
 ## What the table says plainly
+
+- **§4.5 is now playable** (#869): `scenes/node_link.tscn` drives `cwn_node_link.gd`, which defers
+  every number to `CwnHackingRules` / `CwnProgramRules`. The run — jack in, Access per node, a Verb on
+  a Subject, the alert clock, disconnect — is asserted headlessly in `test_node_link.gd` (34 checks).
+  What is *not* covered is per-server architecture content, which is catalogue material.
+- **Alienation has one owner** (#869): `cwn_cyberware_ops.gd` delegates `alienation_gain`,
+  `therapy_week` and the maximum to `cwn_alienation.gd`, so the ceil-plus-nerve rounding rule exists in
+  exactly one place.
 
 - **One section is verified against the text**: §4.3, and only its catalogue half — 24 Verbs, 12 Subjects,
   transcribed verbatim with the SRD cited. Everything else is code that *may* be right.
