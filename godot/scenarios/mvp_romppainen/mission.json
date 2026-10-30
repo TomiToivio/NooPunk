@@ -24,7 +24,7 @@
     },
     "nodes": {
       "lobby": {
-        "security": 6,
+        "security": 7,
         "access_required": 0,
         "verbs": [],
         "links": [
@@ -56,7 +56,7 @@
   },
   "deck": {
     "cpu": 6,
-    "access": 5,
+    "access_bonus": 2,
     "programs": [
       "query"
     ],

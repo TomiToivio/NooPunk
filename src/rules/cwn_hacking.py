@@ -57,6 +57,11 @@ FAILURES_PER_ALERT = 2
 ALERT_ACTIONS_TO_ALERT = 2
 #: SRD: a drone without a connected operator is difficulty 8.
 UNOPERATED_DRONE_DIFFICULTY = 8
+#: SRD: the referee's judgement of the network's tech quality, and what an informant buys.
+#: Both are magnitudes the *caller* supplies; the ranges are declared here so the Godot kernel in
+#: `godot/core/cwn_hacking.gd` clamps them identically instead of inventing its own bounds.
+TECH_QUALITY_RANGE = (-2, 2)
+INSIDE_INFORMATION_RANGE = (1, 3)
 
 
 class HackError(ValueError):
@@ -83,15 +88,18 @@ def security_difficulty(
 ) -> int:
     """The network's security level plus the SRD's situation modifiers.
 
-    ``tech_quality`` is the referee's −2..+2, ``inside_info`` the −3..−1 an informant buys.
+    ``tech_quality`` is the referee's −2..+2; ``inside_info`` is the positive 1..3 an informant
+    buys, which *lowers* the target. Both are clamped to their declared range, because a value
+    outside it is a caller error that would otherwise silently move the difficulty.
     """
     if security not in SECURITY_LEVELS:
         raise HackError(f"{security} is not a recorded security level; expected {sorted(SECURITY_LEVELS)}")
     difficulty = int(security)
     difficulty += 1 if alerted else 0
     difficulty += 1 if important_device else 0
-    difficulty += int(tech_quality)
-    difficulty -= int(inside_info)
+    difficulty += max(TECH_QUALITY_RANGE[0], min(TECH_QUALITY_RANGE[1], int(tech_quality)))
+    if inside_info:
+        difficulty -= max(INSIDE_INFORMATION_RANGE[0], min(INSIDE_INFORMATION_RANGE[1], int(inside_info)))
     return difficulty
 
 
@@ -199,7 +207,9 @@ class AlertClock:
 __all__ = [
     "ALERT_ACTIONS_TO_ALERT",
     "FAILURES_PER_ALERT",
+    "INSIDE_INFORMATION_RANGE",
     "SECURITY_LEVELS",
+    "TECH_QUALITY_RANGE",
     "UNOPERATED_DRONE_DIFFICULTY",
     "VR_CROWN_PENALTY",
     "WIRELESS_PENALTY",
