@@ -1,0 +1,38 @@
+extends SceneTree
+const Combat = preload("res://src/godot/cwn_combat_turn.gd")
+
+func _initialize() -> void:
+	call_deferred("_run")
+
+func _run() -> void:
+	assert(Combat.initiative_total(1, -2) == -1)
+	assert(Combat.initiative_total(8, 2) == 10)
+	assert(Combat.side_precedes(5, true, 5, false))
+	assert(not Combat.side_precedes(5, false, 5, true))
+	assert(Combat.side_precedes(6, false, 5, true))
+	var turn := Combat.new()
+	assert(turn.spend_move())
+	assert(turn.spend_move()) # Main traded for second move.
+	assert(not turn.spend_main())
+	assert(not turn.spend_move())
+	turn.reset_round()
+	assert(turn.snap_attack())
+	assert(not turn.snap_attack())
+	assert(not turn.total_defense())
+	turn.reset_round()
+	assert(turn.total_defense())
+	assert(not turn.charge())
+	turn.reset_round()
+	assert(turn.charge())
+	assert(not turn.spend_move())
+	turn.reset_round()
+	assert(turn.hold_action())
+	assert(not turn.spend_main())
+	assert(turn.release_held_actions())
+	assert(turn.spend_main())
+	turn.reset_round()
+	assert(turn.hold_action())
+	turn.expire_held_actions()
+	assert(not turn.spend_main())
+	print("PASS: vanilla CWN initiative and action-budget tests")
+	quit(0)

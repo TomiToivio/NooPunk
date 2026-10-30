@@ -13,6 +13,7 @@ const Attributes := preload("res://attributes.gd")
 const SheetScript := preload("res://sheet.gd")
 
 var failures: Array[String] = []
+var _scene_pending := false
 
 func _check(condition: bool, message: String) -> void:
 	if not condition:
@@ -26,9 +27,9 @@ func _initialize() -> void:
 	_seven_attributes()
 	_human_range()
 	_roll_and_reroll()
-	_creation_screen()
-	_retention_into_walking_scene()
-	_finish()
+	# Scene checks wait for the first frame: `add_child()` defers `_ready()`, so the creation screen
+	# would still report zero rows here even though it builds them correctly.
+	_scene_pending = true
 
 func _bands() -> void:
 	# Every boundary the issue names, plus the gaps between them.
@@ -81,6 +82,15 @@ func _roll_and_reroll() -> void:
 	var b: Dictionary = Attributes.roll(reroll)
 	_eq(Attributes.sheet(b).size(), 7, "reroll still yields seven values")
 	_check(Attributes.sheet(b) != Attributes.sheet(a), "a different seed should differ")
+
+func _process(_delta: float) -> bool:
+	if not _scene_pending:
+		return false
+	_scene_pending = false
+	_creation_screen()
+	_retention_into_walking_scene()
+	_finish()
+	return false
 
 func _creation_screen() -> void:
 	var packed: PackedScene = load("res://creation.tscn")

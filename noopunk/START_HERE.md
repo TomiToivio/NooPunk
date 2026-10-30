@@ -1,7 +1,11 @@
+> **ARCHIVED / REFERENCE ONLY (issue [#848](https://github.com/TomiToivio/NooPunk/issues/848)).** This walkthrough describes the superseded #827/#835 custom-attribute experiment. It is **not** the current development or playtest entry point. Follow [root START_HERE.md](../START_HERE.md), [AGENTS.md](../AGENTS.md) and the canonical root `project.godot`, startup `res://scenes/main.tscn`. Vanilla CWN/SWN and STR/DEX/CON/INT/WIS/CHA govern active rules. Baseline: `36092a56a7637145c805129511eb2b6b688f6ca0`.
+
+---
+
 # NoöPunk Step 2: UNSA rookie
 
-Canonical tabletop rules: `noopunk/rulebook/RULEBOOK.md`  
-Canonical playable Godot project: `noopunk/game/`
+~~Canonical tabletop rules: `noopunk/rulebook/RULEBOOK.md`~~ — superseded by #848; the canonical rules are the root `RULEBOOK.md`.  
+~~Canonical playable Godot project: `noopunk/game/`~~ — superseded; the canonical game is the root `project.godot` → `scenes/main.tscn`.
 
 Open `noopunk/game/project.godot` in Godot 4.3+ or run `godot --path noopunk/game` from the repository root. At launch, the character sheet displays a fresh seven-attribute 3d6 roll, with signed modifiers. Choose **Reroll seven attributes** to reroll, then **Continue** to walk with WASD or arrow keys. Press **C** to reopen the sheet; its values persist while navigating the room. No character statistics affect movement yet.
 

@@ -1,55 +1,28 @@
-# START HERE — the NoöPunk restart (issue #827)
+# START HERE — NoöPunk vanilla CWN/SWN baseline (issue #848)
 
-The tabletop rulebook and the Godot game are being restarted **together**, from the smallest
-foundation that can be played. Everything that came before stays in the repository, untouched, as
-legacy material — it is not the current game, and new work must not drift back into it.
+> **CURRENT DIRECTIVE (2026-10-30).** Issue [#848](https://github.com/TomiToivio/NooPunk/issues/848) supersedes the blank-rulebook and seven-attribute restart (#827, #835). Follow [AGENTS.md](AGENTS.md) and [the baseline decision record](docs/NOOPUNK_BASELINE_848.md). Do not resume the restart or create another Godot project.
 
-## The two canonical artifacts
+## Canonical entry points
 
-| Artifact | Canonical path | Status |
-| --- | --- | --- |
-| Tabletop rulebook | [`noopunk/rulebook/RULEBOOK.md`](noopunk/rulebook/RULEBOOK.md) | **blank by design** |
-| Godot game | [`noopunk/game/`](noopunk/game/) (`noopunk/game/project.godot`) | one room, one player, movement |
-| Rules of the process | this file + issue **#827** | meta-issue, stays open |
+- **Pinned baseline SHA:** `36092a56a7637145c805129511eb2b6b688f6ca0` (audited main snapshot; not a rollback instruction).
+- **Tabletop rules:** [`rulebook/00_INDEX.md`](rulebook/00_INDEX.md), with vanilla **Cities Without Number** as the primary mechanics and vanilla **Stars Without Number Revised** governing psionics. Use published STR/DEX/CON/INT/WIS/CHA, classes, character generation, checks, combat, hacking, equipment and progression. No NoöPunk-specific statistical modifications.
+- **Godot:** repository-root [`project.godot`](project.godot), startup `res://scenes/main.tscn`. Target **2D top-down turn-based** play, not a parallel action RPG.
+- **Source-of-truth implementation:** `godot/`, with `src/godot/` compatibility modules audited before consolidation. Existing lore, scenarios, alternate prototypes and history are retained for reference, not promoted into a second rules authority.
+- **Superseded:** `noopunk/game/project.godot`, `noopunk/rulebook/RULEBOOK.md` and custom seven-attribute/typed-tag systems. They remain on disk as archive/reference only.
+- **Scope exception:** independently authorized `strategy_game/` is not part of this Godot consolidation.
 
-**Legacy, frozen — do not add to it:** the root `RULEBOOK.md`, `rulebook/`, the root
-`project.godot`, `godot/`, `src/godot/`, `src/rules/`, `data/rules/`, `strategy_game/`. They keep
-working and keep their history. They are not where the new NoöPunk is being designed.
+## Run and verify
 
-## Run the game
+From the repository root with the project-pinned Godot version (see `project.godot`):
 
 ```sh
-godot --path noopunk/game
+godot --headless --path . --import
+godot --headless --path . --script res://godot/tests/run_tests.gd
+godot --path .
 ```
 
-Controls: **WASD** or **arrow keys** to move. **Esc** quits. The window opens directly into the
-playable room.
+These are verification commands, **not** a claim that they passed in this documentation change. A passing test suite cannot establish complete CWN/SWN coverage. Record missing procedures and their authoritative published source in the coverage matrix.
 
-Headless sanity check (the one CI can run):
+## Work on one shared baseline
 
-```sh
-godot --headless --path noopunk/game --script res://tests/smoke.gd
-```
-
-```
-PASS: noopunk starter — scene loads, player is centred and movable, bounds hold
-```
-
-## How the next piece of work arrives
-
-Tomi supplies **one** rule, interaction or scenario fragment. Then:
-
-1. It is written into `noopunk/rulebook/RULEBOOK.md`, in its section.
-2. The same decision is implemented in `noopunk/game/` so it can be played.
-3. Both are checked together — the rulebook says what the game does; the game does what the
-   rulebook says.
-4. Only the child issue closes. **#827 stays open.**
-
-A child issue must name **both** artifacts it changes. If a proposed change touches only one side,
-the issue says why: a presentation-only change is legitimate; a rule that exists only in code is not.
-
-## What does not exist yet, on purpose
-
-No attributes, no skills, no dice, no combat, no injury, no inventory, no dialogue system, no NPCs,
-no quests, no factions, no psionics, no hacking, no economy, no LLM integration. Each arrives when
-the author writes it, not before. **An empty section in the rulebook is the current design state.**
+Before editing, inspect issue #848, `AGENTS.md`, `docs/NOOPUNK_BASELINE_848.md`, and overlapping PRs. Preserve saves and existing gameplay. Implement and test one vanilla, book-traceable subsystem at a time in the canonical root game and tabletop documentation. Every related PR must record its baseline SHA, canonical paths, rules authority, superseded work and actually run tests. **Keep #848 open** until the migration and playable vertical slice are verified.

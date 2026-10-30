@@ -43,7 +43,7 @@ text = "WASD / arrows to move"
 
 [node name="Label" type="Label" parent="Sheet"]
 offset_left = 12.0
-offset_top = 330.0
+offset_top = 312.0
 offset_right = 628.0
-offset_bottom = 354.0
+offset_bottom = 356.0
 text = "No character sheet yet"

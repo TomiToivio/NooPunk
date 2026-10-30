@@ -22,7 +22,7 @@ Three paradigm shifts make certainty difficult:
 - **NHI: Non-Human Intelligence.** We were not alone. This answered one question and made most of the others worse.
 - **PSI: Psionics and Consciousness.** Mind and reality proved more intimately connected than expected. The discovery did not make it easier to agree about either.
 
-**NoöPunk** is an experimental **New Weird / Social Science Fiction RPG and political strategy project**, growing into cyberpunk science fantasy as its world changes. Investigate the impossible at the scale of a person; contest the future at the scale of a faction. The legacy RPG and the strategy/RPG crossover share a world, with distinct rules and scenario entry points.
+**NoöPunk** is an experimental **New Weird / Social Science Fiction RPG and political strategy project**, growing into cyberpunk science fantasy as its world changes. Investigate the impossible at the scale of a person; contest the future at the scale of a faction. The canonical tabletop and top-down Godot RPG currently follow CWN/SWN rules; older prototypes remain experimental.
 
 A breakthrough can become a political crisis. A crisis can become somebody's career. Behind both is the awkward question of who needs help, and whether you can still do something for them.
 
@@ -291,21 +291,7 @@ LLMs may decide what an agent attempts. They do not get to invent dice rolls or 
 
 ## Current status
 
-NoöPunk is an experimental text-based RPG/social-simulation prototype under active development.
-
-The current direction is:
-
-```text
-Independent NoöPunk RPG
-        ↓
-1–10 STAT + 1–10 Skill + 1d10 core
-        ↓
-subsystems selectively inspired by many games
-        ↓
-shared deterministic rules for text / Concordia / future Godot use
-```
-
-NoöPunk is **not an Eclipse Phase conversion and not a hack of any single parent system**. Its six-STAT + separate-Skill kernel is NoöPunk's own (issue #200); Eclipse Phase remains important for transhuman concepts; Fate, PbtA, CY_BORG, Cities Without Number/OSR, Citizen Sleeper, The Expanse and other games inform different design problems.
+NoöPunk is an experimental RPG and social-simulation project under active development. **The top-down Godot game and tabletop rulebook use vanilla CWN/SWN as the canonical baseline**. Rules parity is an ongoing task, not a claim of full implementation. Legacy text, Python and strategy prototypes remain in the repository as historical or experimental work, not alternative rule authorities.
 
 ### Playable slice: the hospital case in Godot 4
 
@@ -350,42 +336,22 @@ agent.observe(result)
 
 Important characters, factions, and institutions may use LLM cognition. Simpler background NPCs can use deterministic or lightweight scripted behaviour where rich language interaction is unnecessary.
 
-## Rules influences
+## Current rules baseline: Cities Without Number / Stars Without Number
 
-NoöPunk's tabletop-style mechanics are **homebrewed, modified and reskinned**, drawing on **Fate Core**, **Transhumanity's Fate** and **Eclipse Phase**. Some narrative procedures are **Powered by the Apocalypse (PbtA)-influenced**, meaning inspired by *Apocalypse World*'s approach to moves and consequences, **not** copied or recycled from that game. NoöPunk is not set in the Eclipse Phase universe: its scenario, timeline, lore, factions, NHI and PSI are original and different. The precise implementation and source attributions vary between the legacy RPG and the newer strategy/RPG crossover, whose mechanics remain subject to approval. Fate Core's CC BY 3.0 terms do not cancel the CC BY-NC-SA obligations on material adapted from Transhumanity's Fate or Eclipse Phase; see [the attribution policy](docs/ATTRIBUTION_POLICY.md) and [design issue #447](https://github.com/TomiToivio/NooPunk/issues/447).
+**The current canonical rules are vanilla *Cities Without Number* (CWN), supplemented by *Stars Without Number Revised* (SWN) where CWN does not cover a subsystem, especially psionics.** The canonical computer-game implementation is the top-down Godot project at `project.godot`; the canonical tabletop rules live in [`rulebook/`](rulebook/00_INDEX.md). We begin by reproducing the original rules faithfully. **Modifying, reskinning and homebrewing CWN/SWN is a future, section-by-section phase**, after the vanilla baseline has been implemented and checked. No other RPG system is part of the current rules baseline.
 
+The [vanilla baseline decision](docs/NOOPUNK_BASELINE_848.md) and [CWN coverage matrix](docs/CWN_COVERAGE_MATRIX.md) define the implementation scope and outstanding gaps. Older prototypes, archived documents and experiments do not override this baseline.
 
-NoöPunk is an independent RPG. External games are **influences rather than compatibility targets**.
+## Licensing and attribution
 
-Current important influences include:
+*Cites and rights are specific to each source and file; this repository does not grant a blanket license to third-party material.*
 
-- **Fudge / Fate** for the Attribute-versus-Skill split, the trait ladder and narrative consequences (the #200 centre);
-- **Eclipse Phase** for transhuman technology, morphs/embodiment, mesh, reputation, space and existential-risk ideas;
-- **Fate** for aspects/stunts and fiction-facing flexibility;
-- **PbtA / The Sprawl / The Veil** for moves, consequences and narrative pressure;
-- **Cities Without Number / Stars Without Number (OSR)** for fast, compact procedures and generators; **CY_BORG** as a design goal for extreme compression, not a rules source;
-- **Citizen Sleeper 1/2** for text-RPG structure, clocks and pressures;
-- **The Expanse** and other science-fiction RPGs where specific subsystem ideas fit.
+- **Cities Without Number (CWN)**, by Kevin Crawford / Sine Nomine Publishing: the specifically published **CWN Systems Reference Document (SRD)** is dedicated to **CC0**. This applies to the identified SRD material, not automatically to the complete commercial books, artwork, or protected setting material. [CWN SRD browser](https://cwn.quadrifons.com/).
+- **Stars Without Number Revised (SWN)**, by Kevin Crawford / Sine Nomine Publishing: **no independently verified publicly reusable SRD text license** has been established in the repository rights audit. No claim is made that SWN book prose, tables, art or setting are CC0 or otherwise freely redistributable. Implement mechanics independently and write explanations in original wording; do not copy protected SWN expression without permission.
+- **NoöPunk-original source code and creative content:** no project-wide software or content license has yet been selected. Do not assume that public GitHub access means permission to reuse all code, writing, assets or third-party materials. Any future license must be chosen and documented separately.
+- **Independence:** NoöPunk is an unofficial, independent project and is not affiliated with, licensed by, or endorsed by Kevin Crawford or Sine Nomine Publishing.
 
-Directly adapted material keeps its source and licensing provenance. No external ruleset supplies default mechanics automatically.
-
-**Design baseline (issue #615).** The *Without Number* family is the primary **procedure**
-reference: *Cities Without Number* for urban/network fieldwork and dangerous action, *Stars Without
-Number* for space, NHI and PSI framing, *Worlds Without Number* for noetic and interdimensional
-regions, and *Ashes Without Number* for crisis-ruin salvage and scarcity. Genre modules change **what
-you roll for** and **what a failure costs**; they never change **how you roll** — the check kernel
-stays NoöPunk's own (layer A `1d10`, the crossover's Fate `4dF`). See
-[`docs/design/ISSUE_615_RULES_BASELINE.md`](docs/design/ISSUE_615_RULES_BASELINE.md).
-
-**Licensing, stated precisely.** Of that family, only the *Cities Without Number* SRD and the *Worlds
-Without Number* SRD are verified CC0 reusable sources, and the dedication covers the SRD rather than
-the commercial book, its art or its setting. *Stars Without Number* and *Ashes Without Number* have no
-verified SRD and are used as **design references only** — no text or tables from them are reproduced.
-Credit is not a licence, and no single licence covers the whole family.
-
-NoöPunk is an unofficial, independent project. It is not endorsed by or affiliated with Sine Nomine
-Publishing, Posthuman Studios, Evil Hat Productions, lumpley games, or the creators of any game named
-above.
+See the [source rights audit](docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md), [attribution policy](docs/ATTRIBUTION_POLICY.md), and [publication policy](docs/licenses/ATTRIBUTION_AND_PUBLICATION_POLICY.md) for provenance and release checks.
 
 ## Rules and world documentation
 
@@ -455,41 +421,3 @@ With the dependencies from `requirements.txt` installed, also check the real Con
 python scripts/concordia_smoke.py --build-concordia-config
 ```
 
-## Without Number sources and credits
-
-The *Without Number* family by **Kevin Crawford / Sine Nomine Publishing** is the mechanical reference the
-current tabletop work is built around: *Cities Without Number* and *Stars Without Number* as the primary
-references, with *Worlds Without Number* and *Ashes Without Number* as situational toolkits. The design decision,
-the per-genre mapping and the conflict register live in
-[`docs/rules/RULES_FOUNDATION_POLICY.md`](docs/rules/RULES_FOUNDATION_POLICY.md).
-
-**Reuse is scoped per document, not per game name** — the full audit is
-[`docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md`](docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md):
-
-| Source | Status |
-|---|---|
-| Cities Without Number **SRD** | published SRD; reuse within its own terms (the community browser mirror omits sections, so cite the published document) |
-| Worlds Without Number **SRD** | **CC0** for the SRD material; the Latter Earth setting and excluded material are reserved |
-| Stars Without Number **Revised** | **no standalone public SRD identified** — mechanics reimplemented independently, no text, tables, art or setting imported |
-| Ashes Without Number | **no separately licensed public SRD identified** — a free edition is readable, not a reuse right |
-
-NoöPunk is an unofficial, independent fan/homebrew project. It is **not endorsed by, affiliated with, or
-licensed by Kevin Crawford or Sine Nomine Publishing**, and nothing here should be read as an official product.
-
-## Eclipse Phase sources and license
-
-Eclipse Phase is created by **Posthuman Studios**. Eclipse Phase-derived material in this repository must follow the applicable Eclipse Phase Creative Commons terms and attribution requirements.
-
-License information and source references:
-
-- [Eclipse Phase Creative Commons license](https://eclipsephase.com/cclicense/)
-- [Eclipse Phase 2E online rules](https://eclipsephase.github.io/en/01/00-infamy.html)
-- [Eclipse Phase 2E Quick-Start Rules](https://eclipsephase.com/wp-content/uploads/2024/02/PS10001_EclipsePhaseSecondEdition_QuickStartRulesAcrimony_Nov2023.pdf)
-
-The Eclipse Phase material used for this homebrew is generally published under a **Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)** license. EP-derived material must remain appropriately attributed, noncommercial where required, and shared under compatible ShareAlike terms.
-
-NoöPunk-original setting material and code should be kept clearly distinguishable from directly copied or adapted Eclipse Phase material. Imported rules text, game data, or code should record its source, license, and modifications.
-
-The aim is to implement and transform the rules, not to mirror the Eclipse Phase books. Prefer code, structured data, compact rule summaries, conversion notes, and provenance records over copying large amounts of rulebook prose.
-
-**NoöPunk is an unofficial fan/homebrew project and is not affiliated with or endorsed by Posthuman Studios.**
