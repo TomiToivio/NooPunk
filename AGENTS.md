@@ -406,6 +406,20 @@ When adding or revising mechanics:
 
 Setting work should preserve current 20XX / Earth-intact anchors unless the author explicitly revises them.
 
+### Tomi's drafts: two synchronised implementations (#814)
+
+Tomi is the authorial source of truth. When a draft arrives, read
+[`docs/design/TOMI_DRAFT_WORKFLOW.md`](docs/design/TOMI_DRAFT_WORKFLOW.md) first.
+
+- **One section or scenario per task.** No speculative expansion into neighbouring rules.
+- **Two outputs:** tabletop text *and* the Godot implementation, expressing the same rules. Platform
+  differences are documented, not smuggled.
+- **Never fill a gap in the draft with a plausible invention.** An undecided mechanic is a question for
+  Tomi; record it and stop.
+- **Every draft gets its own child issue**, linked back to #814. Template:
+  `.github/ISSUE_TEMPLATE/tomi_draft_child.md`.
+- **Never close #814**, including via `Fixes`/`Closes` keywords in a PR.
+
 ## Godot rule-module ownership clarification (#791)
 
 `godot/core/` is the canonical owner of CWN/SWN game-rule implementations. `src/godot/` remains a compatibility tree only. Port unique capabilities and preserve consumers and tests before retiring duplicates. The two catalogue APIs differ (instance ID lookup vs static named catalogue lookup), so do not mechanically repoint either caller. See `docs/godot/CANONICAL_GODOT_TREE.md` and `docs/godot/UNIFIED_IMPLEMENTATION.md`.
