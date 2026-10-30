@@ -81,7 +81,6 @@
     {
       "id": "rule-data",
       "globs": [
-        "restart/rulebook/**",
         "data/rules/**",
         "data/npcs/**",
         "data/world/**",
@@ -110,7 +109,7 @@
       "id": "design-and-audit-records",
       "globs": [
         "docs/**",
-        "restart/**",
+        "noopunk/**",
         "AGENTS.md",
         ".hermes/**",
         "strategy_game/docs/**",
@@ -145,7 +144,6 @@
     {
       "id": "fixtures-and-scenes",
       "globs": [
-        "restart/game/**",
         "fixtures/**",
         "scenes/**",
         "deploy/**",

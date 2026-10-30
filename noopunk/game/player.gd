@@ -8,7 +8,10 @@ const SPEED := 120.0
 const HALF := 12.0
 
 
-func _physics_process(_delta: float) -> void:
+## Where the keys are asking the player to go. Split out from `_physics_process` so the headless test
+## can verify movement without faking key events, and so the first movement rule has one place to
+## change.
+func movement_direction() -> Vector2:
 	var direction := Vector2.ZERO
 	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
 		direction.x -= 1.0
@@ -18,8 +21,16 @@ func _physics_process(_delta: float) -> void:
 		direction.y -= 1.0
 	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN):
 		direction.y += 1.0
+	return direction
 
-	velocity = direction.normalized() * SPEED
+
+## A diagonal must not be faster than a straight line, and no input must mean no motion at all.
+func movement_velocity(direction: Vector2) -> Vector2:
+	return direction.normalized() * SPEED if direction.length() > 0.0 else Vector2.ZERO
+
+
+func _physics_process(_delta: float) -> void:
+	velocity = movement_velocity(movement_direction())
 	move_and_slide()
 
 	# Stay inside the room instead of drifting off-screen.

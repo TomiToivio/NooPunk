@@ -1,0 +1,105 @@
+{
+  "_note": "NoöPunk step 2 (#835): the seven attributes, the 3d6 conversion and the difficulty scale. noopunk/rulebook/RULEBOOK.md states these in prose and quotes this table; the Godot game reads this file. One table, two readers — if they ever disagree, that is a defect, not a variant rule.",
+  "_authority": "Tomi Toivio. Anything not in this file is undecided.",
+  "attributes": [
+    "Fitness",
+    "Reflexes",
+    "Cognition",
+    "Cyber",
+    "Awareness",
+    "Agency",
+    "Empathy"
+  ],
+  "definitions": {
+    "Fitness": "Your physical strength and constitution.",
+    "Reflexes": "Your physical dexterity, agility and coordination.",
+    "Cognition": "Your ability to process language and data.",
+    "Cyber": "Your ability to interface with technology.",
+    "Awareness": "Your intuition, perception and awareness.",
+    "Agency": "Your free will.",
+    "Empathy": "Your loving kindness and humanity."
+  },
+  "generation": {
+    "dice": "3d6",
+    "per_attribute": true,
+    "bands": [
+      {
+        "low": 3,
+        "high": 4,
+        "value": -3
+      },
+      {
+        "low": 5,
+        "high": 6,
+        "value": -2
+      },
+      {
+        "low": 7,
+        "high": 8,
+        "value": -1
+      },
+      {
+        "low": 9,
+        "high": 12,
+        "value": 0
+      },
+      {
+        "low": 13,
+        "high": 14,
+        "value": 1
+      },
+      {
+        "low": 15,
+        "high": 16,
+        "value": 2
+      },
+      {
+        "low": 17,
+        "high": 18,
+        "value": 3
+      }
+    ],
+    "human_range": [
+      -3,
+      3
+    ],
+    "transhuman_above": 3,
+    "store": "converted value",
+    "_note": "-3 is a legitimate basic-human score for every attribute, Empathy included (#835). The sheet shows the converted signed value, never the raw 3d6 total."
+  },
+  "difficulty": [
+    {
+      "target": 6,
+      "label": "Easiest"
+    },
+    {
+      "target": 8,
+      "label": "Easier"
+    },
+    {
+      "target": 10,
+      "label": "Easy"
+    },
+    {
+      "target": 12,
+      "label": "Average"
+    },
+    {
+      "target": 14,
+      "label": "Hard"
+    },
+    {
+      "target": 16,
+      "label": "Harder"
+    },
+    {
+      "target": 18,
+      "label": "Hardest"
+    }
+  ],
+  "undecided": [
+    "The resolution dice mechanic for a difficulty target (2d6, d20, 3d6, automatic — not chosen).",
+    "Skills, checks, combat, injury, inventory, experience, encounters.",
+    "Academy specialisations, professions, classes, equipment, history and NPCs."
+  ]
+}
