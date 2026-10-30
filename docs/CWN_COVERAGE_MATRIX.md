@@ -1,3 +1,5 @@
+> **See also:** [`CWN_SRD_PARITY_858.md`](CWN_SRD_PARITY_858.md) — the four-column audit (code / tested / playable / verified SRD parity) required by #858. This matrix lists what is implemented; that file asks whether it is *right* and *reachable*.
+
 # CWN / SWN rules coverage matrix (#749 work package A, refreshed for #848)
 
 **Status:** measured audit, 2026-10-30, against baseline commit `d2992fc`. This is *measurement*, not
