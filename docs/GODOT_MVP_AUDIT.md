@@ -102,3 +102,41 @@ Ordered by dependency, not by glamour:
   a standing drift risk that this MVP does not solve — it only avoids making it worse.
 - The Godot layer has **no** representation of gear, inventory or encumbrance, so the
   "equipment" and "reload" requirements of #749 B are currently unimplemented, not partial.
+
+## 7. Autoload audit (required by #750 before adding one)
+
+Gate 1 says: *audit overlapping Godot autoloads before adding one.* Measured on `main`:
+
+**There is exactly one autoload.**
+
+| autoload | script | role |
+| --- | --- | --- |
+| `GameState` | `godot/core/game_state.gd` | the legacy case-state singleton: scenario, evidence, journal, flags, objective, character, dialogue nodes, psionics; its own save format at version 1 |
+
+Its consumers are the legacy case path only — `godot/ui/hud.gd`, `godot/ui/main_menu.gd`,
+`godot/narrative/dialogue.gd`, `godot/scenes/level_builder.gd`, and the corresponding suites.
+
+**The MVP path does not touch it.** `godot/ui/mvp_game.gd`, `godot/core/session.gd`,
+`godot/core/scene_flow.gd`, `src/godot/campaign_state.gd` and `src/godot/campaign_screen.gd`
+reference `GameState` zero times: `NooPunkCampaignState` is instantiated explicitly and passed
+by the caller. That is deliberate — an autoload is global mutable state, and a second campaign
+state reachable from anywhere is exactly how two save schemas start disagreeing.
+
+**Overlap risk, stated plainly.** `GameState` and `NooPunkCampaignState` share a vocabulary —
+journal, flags, character, evidence — but not a schema, and they version independently (1
+versus the campaign state's own version). If a scene ever held both, the same clue could be
+recorded twice in two formats and one would silently win on save. The MVP avoids this by never
+having two states in scope at once.
+
+**Decision: no second autoload was added for #750.** State is passed explicitly through
+`CampaignState` → `NoopunkSession` → the view.
+
+**Rule for any future autoload:** it may not serialize a field that `NooPunkCampaignState`
+already serializes. If a subsystem needs shared read access, pass the state instance; do not
+promote it to a singleton. Two save formats for one campaign is the failure this rule exists
+to prevent.
+
+**Verified rather than assumed:** the headless suite loads the legacy `GameState` suites and
+the MVP suites **in the same process** (246 checks, 0 failed), so the two paths coexisting is
+exercised on every run, not merely asserted here.
+
