@@ -1,0 +1,110 @@
+{
+  "$comment": "Single source of truth for the NoöPunk attribute tables (#835). Read by the Godot game; referenced by noopunk/rulebook/RULEBOOK.md.",
+  "version": "0.0.1",
+  "attributes": [
+    {
+      "name": "Fitness",
+      "definition": "physical strength and constitution"
+    },
+    {
+      "name": "Reflexes",
+      "definition": "physical dexterity, agility and coordination"
+    },
+    {
+      "name": "Cognition",
+      "definition": "ability to process language and data"
+    },
+    {
+      "name": "Cyber",
+      "definition": "ability to interface with technology"
+    },
+    {
+      "name": "Awareness",
+      "definition": "intuition, perception and awareness"
+    },
+    {
+      "name": "Agency",
+      "definition": "free will"
+    },
+    {
+      "name": "Empathy",
+      "definition": "loving kindness and humanity"
+    }
+  ],
+  "generation": {
+    "dice": "3d6",
+    "per_attribute": true,
+    "bands": [
+      [
+        3,
+        4,
+        -3
+      ],
+      [
+        5,
+        6,
+        -2
+      ],
+      [
+        7,
+        8,
+        -1
+      ],
+      [
+        9,
+        12,
+        0
+      ],
+      [
+        13,
+        14,
+        1
+      ],
+      [
+        15,
+        16,
+        2
+      ],
+      [
+        17,
+        18,
+        3
+      ]
+    ]
+  },
+  "human_range": [
+    -3,
+    3
+  ],
+  "transhuman_above": 3,
+  "difficulty": [
+    {
+      "target": 6,
+      "label": "Easiest"
+    },
+    {
+      "target": 8,
+      "label": "Easier"
+    },
+    {
+      "target": 10,
+      "label": "Easy"
+    },
+    {
+      "target": 12,
+      "label": "Average"
+    },
+    {
+      "target": 14,
+      "label": "Hard"
+    },
+    {
+      "target": 16,
+      "label": "Harder"
+    },
+    {
+      "target": 18,
+      "label": "Hardest"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://player.gd" id="1_player"]
+[ext_resource type="Script" path="res://sheet.gd" id="2_sheet"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
 size = Vector2(24, 24)
@@ -13,7 +14,7 @@ offset_bottom = 360.0
 color = Color(0.07, 0.08, 0.11, 1)
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(320, 180)
+position = Vector2(320, 260)
 script = ExtResource("1_player")
 
 [node name="Body" type="ColorRect" parent="Player"]
@@ -28,11 +29,22 @@ shape = SubResource("RectangleShape2D_player")
 
 [node name="Camera" type="Camera2D" parent="Player"]
 
-[node name="Hint" type="CanvasLayer" parent="."]
+[node name="Sheet" type="CanvasLayer" parent="."]
+script = ExtResource("2_sheet")
 
-[node name="Label" type="Label" parent="Hint"]
+[node name="Panel" type="PanelContainer" parent="Sheet"]
 offset_left = 12.0
-offset_top = 8.0
-offset_right = 320.0
-offset_bottom = 32.0
-text = "WASD / arrows to move"
+offset_top = 12.0
+offset_right = 300.0
+offset_bottom = 210.0
+
+[node name="VBox" type="VBoxContainer" parent="Sheet/Panel"]
+
+[node name="Title" type="Label" parent="Sheet/Panel/VBox"]
+text = "UNSA AGENT"
+
+[node name="Body" type="Label" parent="Sheet/Panel/VBox"]
+text = "..."
+
+[node name="Hint" type="Label" parent="Sheet/Panel/VBox"]
+text = "R — roll"
