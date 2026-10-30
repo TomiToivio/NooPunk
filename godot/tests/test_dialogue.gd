@@ -74,7 +74,12 @@ func run() -> Array:
 	rows.append(_eq("and the journal says why",
 		unauthorized.journal.any(func(line): return String(line).contains("not available")), true))
 
+	# GameState is a Node: these instances never enter the tree, so free them explicitly.
+	for node in [state, seeded, patient, psychic, unauthorized]:
+		node.free()
+
 	return rows
 
 func _eq(label: String, actual: Variant, expected: Variant) -> Array:
 	return [label, actual == expected, "expected %s, got %s" % [str(expected), str(actual)]]
+

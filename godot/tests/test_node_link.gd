@@ -121,7 +121,7 @@ func run() -> Array:
 		screen._on_jack_in()
 		_ok("jacking in updates the screen", String(screen._status.text).contains("connected"))
 		_ok("the network rows are drawn", screen._node_rows.get_child_count() == 4)
-		screen.queue_free()
+		screen.free()
 
 	# --- a refusal must survive the refresh that follows it (it used to be overwritten) ---
 	var screen2: Node = scene.instantiate() if scene != null else null

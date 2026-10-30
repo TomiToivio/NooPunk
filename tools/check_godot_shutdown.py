@@ -9,11 +9,9 @@ Runs the headless suite and classifies its output:
 * **Expected refusals** — product code logs a `push_warning(..., refused)` for invalid caller input
   (an unreadable save, a missing dialogue choice, an unknown scene). Those are warnings, not errors,
   which is what makes "any ERROR line is unexpected" a usable rule.
-* **Leak bookkeeping** — Godot reports anonymous `GDScript` class objects at exit in `--script` mode.
-  Per-suite isolation shows 0–2; a single process running every suite accumulates them, and they are not
-  freed by dropping the suite reference or freeing scene nodes. The gate therefore pins a baseline and
-  fails when the count **grows** past it, so new leakage is caught without pretending the engine
-  bookkeeping is our bug.
+* **Leak bookkeeping** — the suites free the Nodes they create, so the full run reports zero leaked
+  objects, resources and RIDs. The gate pins that at zero: any leak line fails, because it is new
+  leakage rather than tolerated engine bookkeeping.
 
 Usage:
     python3 tools/check_godot_shutdown.py [--godot ~/.local/bin/godot] [--baseline 90]
@@ -28,10 +26,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-#: ObjectDB instances Godot reports at exit for the full multi-suite run. Pinned so growth fails.
-BASELINE_OBJECTS = 90
-BASELINE_RESOURCES = 8
-BASELINE_RIDS = 2
+#: The suites free the nodes they create, so a clean run reports nothing at exit. Pinned at zero:
+#: any leak line is new leakage, not tolerated engine bookkeeping.
+BASELINE_OBJECTS = 0
+BASELINE_RESOURCES = 0
+BASELINE_RIDS = 0
 
 ALLOWED_ERROR_LINES = (
     "resources still in use at exit",
