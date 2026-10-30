@@ -5,6 +5,7 @@ extends RefCounted
 ## The failures worth guarding: rounding down a 0.5 system to zero Alienation, forgetting the Nerve
 ## surcharge, treating "equal to Wisdom" as breakdown, and collapsing the save's two outcomes into one.
 const Alienation := preload("res://godot/core/cwn_alienation.gd")
+const CyberwareOps := preload("res://godot/core/cwn_cyberware_ops.gd")
 
 func _eq(name: String, got: Variant, want: Variant) -> Array:
 	return [name, got == want, "got %s want %s" % [got, want]]
@@ -52,5 +53,23 @@ func run() -> Array:
 	rows.append(_eq("therapy reduces by one", Alienation.after_therapy(8, 3), 7))
 	rows.append(_eq("therapy cannot pass the floor", Alienation.after_therapy(3, 3), 3))
 	rows.append(_eq("therapy cost is 2000 per week", Alienation.THERAPY_COST_PER_WEEK, 2000))
+
+	# Public cyberware-operations adapters must follow the single canonical formula.
+	for cost in [0.0, 0.5, 1.0, 2.0, 2.5]:
+		for nerve in [false, true]:
+			rows.append(_eq("ops alienation matches canonical cost %s nerve %s" % [cost, nerve],
+				CyberwareOps.alienation_gain(cost, nerve),
+				Alienation.alienation_for_system(cost, nerve)))
+	for score in [0, 1, 10, 20]:
+		for roll in [1, 10, 20]:
+			rows.append(_eq("ops check delegates score %d roll %d" % [score, roll],
+				CyberwareOps.alienation_check(roll, score)["gains_point"],
+				Alienation.check_gains_point(roll, score)))
+	rows.append(_eq("ops refuses invalid d20 low", CyberwareOps.alienation_check(0, 10)["ok"], false))
+	rows.append(_eq("ops refuses invalid d20 high", CyberwareOps.alienation_check(21, 10)["ok"], false))
+	rows.append(_eq("ops therapy delegates", CyberwareOps.therapy_week(8, 3),
+		Alienation.after_therapy(8, 3)))
+	rows.append(_eq("ops psychosis delegates", CyberwareOps.is_psychotic(11, 10),
+		Alienation.is_psychotic(11, 10)))
 
 	return rows
