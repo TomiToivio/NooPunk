@@ -1,22 +1,39 @@
-# CURRENT DIRECTIVE (2026-10-30) — read this before anything else
+# CURRENT DIRECTIVE — read this first (issue #848, 2026-10-30)
 
-**Issue [#848](https://github.com/TomiToivio/NooPunk/issues/848) governs all NoöPunk tabletop and Godot
-work. It supersedes the blank-rulebook and custom-attribute restart (#827, #835, #821).**
+**Vanilla CWN + vanilla SWN + one top-down Godot RPG. This supersedes every earlier restart or
+custom-attribute instruction, including #827, #835 and the blank-rulebook plan.**
 
-- **Rules: vanilla CWN**, primary. **Vanilla SWN Revised** where CWN has no equivalent (psionics).
-  Published mechanics as written — STR/DEX/CON/INT/WIS/CHA, classes, skills, 2d6 checks, d20 attacks and
-  saves, combat, equipment, cyberware, hacking, progression, PSI. **No custom attribute set, no alternate
-  difficulty system, no reskin, no narrativist replacement.**
-- **Game: the root `project.godot`** — 2D top-down, turn-based tactical, source-faithful hacking/PSI.
-  Startup scene `res://scenes/main.tscn`. Not a new prototype, not `noopunk/game/`.
-- **Rulebook: `rulebook/`** — entry point `rulebook/00_INDEX.md`.
-- **`noopunk/`, the #821 tag model and the seven-attribute sheet are archived reference.** Do not extend
-  them, do not treat them as canonical, and do not delete them without an audited migration.
-- **Subsystem boundaries must be named** whenever both books have an opinion: CWN unless it is psionics.
-- **Do not claim completeness from a green suite.** Coverage against the books is a separate measurement
-  (`docs/CWN_COVERAGE_MATRIX.md`).
+**Pinned baseline:** commit **`36092a5`** on `main` — the state in which the canonical Godot project
+passes **760 headless checks, 0 failed**.
 
-Full record, audit and migration order: [`docs/NOOPUNK_BASELINE_848.md`](docs/NOOPUNK_BASELINE_848.md).
+| Canonical artifact | Path |
+| --- | --- |
+| Rulebook | **`RULEBOOK.md`** (repository root) |
+| Generated chapters | `rulebook/` — produced by `python tools/split_rulebook_twelve.py --apply`; never hand-edit |
+| Godot project | **`project.godot`** (repository root) |
+| Startup scene | **`scenes/main.tscn`** |
+| Rules kernels | `godot/core/*.gd` |
+| Rules data | `data/rules/*.json` |
+| Godot tests | `godot/tests/run_tests.gd` |
+
+**Rules are vanilla.** Cities Without Number is the primary system and governs general mechanics;
+Stars Without Number Revised supplies psionics, space and factions where CWN is silent. Attributes
+are STR/DEX/CON/INT/WIS/CHA. Character creation, classes, skills, checks (2d6), attacks and saves
+(d20), combat, hacking, cyberware, equipment, progression and PSI follow the published rules as
+written. Name the governing book for any subsystem you touch.
+
+**Forbidden:** the seven-attribute Fitness/Cognition/Awareness/Agency/Reflexes/Cyber/Empathy design,
+alternate difficulty systems, invented mechanics, reskinning, narrativist replacements, new Godot
+projects, or starting another prototype.
+
+**Superseded — preserved, not authoritative, do not extend:** `noopunk/` (the blank-rulebook restart),
+`noopunk2/` if present, and any `restart/` tree. They remain in the repository as history. Do not
+delete them, and do not build on them.
+
+**Before writing anything:** check `origin/main`, name the module you are extending in the PR, and
+confirm the project still passes `godot --headless --path . --script res://godot/tests/run_tests.gd`.
+
+**Do not re-litigate this decision in code.** If something here looks wrong, raise it on #848.
 
 ---
 
