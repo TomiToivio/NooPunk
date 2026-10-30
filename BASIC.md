@@ -1,6 +1,14 @@
-> **SUPERSEDED, REFERENCE ONLY (issue [#848](https://github.com/TomiToivio/NooPunk/issues/848)).** This is the abandoned seven-attribute proposal from #835, not a current character-creation procedure. Active characters use published vanilla **Cities Without Number** STR/DEX/CON/INT/WIS/CHA rules, and **Stars Without Number Revised** for permitted psionics. Follow [AGENTS.md](AGENTS.md), [START_HERE.md](START_HERE.md), and the canonical root `project.godot` / `res://scenes/main.tscn`. Keep this proposal as historical reference; do not implement it.
-
----
+> ## ⚠ SUPERSEDED — issue #848
+>
+> This document describes the **seven-attribute restart** (#827, #835) — Fitness / Reflexes /
+> Cognition / Cyber / Awareness / Agency / Empathy — which **#848 supersedes**. NoöPunk uses **vanilla
+> Cities Without Number** attributes: STR / DEX / CON / INT / WIS / CHA.
+>
+> **Canonical rules:** [`RULEBOOK.md`](RULEBOOK.md). **Canonical game:** [`project.godot`](project.godot)
+> → `scenes/main.tscn`. Read [`AGENTS.md`](AGENTS.md) first; it opens with the CURRENT DIRECTIVE and
+> pins the baseline commit.
+>
+> Kept as history. Do not treat this file as a rule source.
 
 # Basic character creation
 The player character is a UNSA agent straight from the academy.

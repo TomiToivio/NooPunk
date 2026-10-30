@@ -1,6 +1,14 @@
-> **SUPERSEDED, ARCHIVED PROTOTYPE (issue [#848](https://github.com/TomiToivio/NooPunk/issues/848)).** This is the old #827/#835 seven-attribute experiment, **not** the canonical Godot game. The sole active RPG project is the repository-root `project.godot`, startup `res://scenes/main.tscn`; its rules are vanilla CWN primary plus vanilla SWN Revised psionics. See [root START_HERE](../../START_HERE.md) and [AGENTS.md](../../AGENTS.md). Preserve this prototype for historical reference, but do not extend or use its character creation.
-
----
+> ## ⚠ SUPERSEDED — issue #848
+>
+> This file belongs to the **blank-rulebook / seven-attribute restart** (#827, #835). It is **not** the
+> NoöPunk RPG and nothing here governs play.
+>
+> **Canonical:** `RULEBOOK.md` (root) for rules, and the repository-root `project.godot` →
+> `scenes/main.tscn` for the game, running **vanilla Cities Without Number primary + vanilla Stars
+> Without Number Revised** where CWN is silent. Read [../AGENTS.md](../AGENTS.md) before writing
+> anything; it opens with the CURRENT DIRECTIVE and pins the baseline commit.
+>
+> Preserved as history. Do not extend it, do not run a feature from it, do not delete it.
 
 # NoöPunk — Godot game
 
