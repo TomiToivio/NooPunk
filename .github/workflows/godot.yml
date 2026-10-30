@@ -93,13 +93,15 @@ jobs:
             fi
           done
 
-          grep -E '^(SCRIPT ERROR:|ERROR:)' /tmp/noopunk-slice.log \
-            > /tmp/noopunk-unexpected.log || true
-          if [ -s /tmp/noopunk-unexpected.log ]; then
-            echo 'Unexpected Godot diagnostics:' >&2
-            cat /tmp/noopunk-unexpected.log >&2
-            exit 1
-          fi
+          # Diagnostics are judged once, by the checker below, and not by grepping this log as well.
+          # A plain `^ERROR:` match also catches Godot's `ERROR: N resources still in use at exit`,
+          # which that checker accepts inside its pinned baseline - so the two gates returned opposite
+          # verdicts on the same run and this step failed while reporting "clean shutdown".
+          #
+          # `SCRIPT ERROR` / `Parse Error` are still always failures: check_godot_shutdown.py treats
+          # them that way, and the expected refusals above can no longer be confused with them because
+          # they are warnings carrying "(refused)".
+          #
           # Leak bookkeeping is checked against a pinned baseline rather than by presence (#883).
           # Godot reports anonymous GDScript class objects at exit in --script mode: 0-2 per isolated
           # suite, accumulating across a single process that runs all of them, and not released by
