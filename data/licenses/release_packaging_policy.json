@@ -62,6 +62,7 @@
     {
       "id": "rulebook-prose",
       "globs": [
+        "BASIC.md",
         "RULEBOOK.md",
         "FACTIONS.md",
         "README.md",

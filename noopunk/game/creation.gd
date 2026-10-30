@@ -7,7 +7,6 @@ extends Control
 ## specialisation or background, because the issue specifies none.
 
 const MAIN_SCENE := "res://main.tscn"
-const RNG := RandomNumberGenerator
 
 var _rng := RandomNumberGenerator.new()
 var _rows: VBoxContainer
@@ -19,7 +18,9 @@ func _ready() -> void:
 	root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	root.add_theme_constant_override("separation", 6)
 	root.position = Vector2(24, 16)
-	root.size = Vector2(592, 328)
+	# The layout is driven by anchors and the container itself; assigning `size` here makes Godot
+	# refuse the layout ("container-managed"), which silently left the screen empty.
+	root.custom_minimum_size = Vector2(592, 328)
 	add_child(root)
 
 	var title := Label.new()
@@ -60,8 +61,11 @@ func _on_roll() -> void:
 	_render()
 
 func _render() -> void:
+	# Freed immediately rather than queued: `row_count()` is asserted by the headless check, and a
+	# queued free would leave the previous rows visible to it until the next idle frame.
 	for child in _rows.get_children():
-		child.queue_free()
+		_rows.remove_child(child)
+		child.free()
 	for definition in NoopunkAttributes.attribute_definitions():
 		var name := str(definition.get("name", ""))
 		var value := int(_values.get(name, 0))

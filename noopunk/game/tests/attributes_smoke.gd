@@ -25,6 +25,8 @@ func _initialize() -> void:
 	if creation != null:
 		var instance := creation.instantiate()
 		root.add_child(instance)
+		# The screen builds itself in `_ready`, which runs on the first frame.
+		await process_frame
 		check(instance.row_count() == 7, "seven attribute rows")
 		check(instance.sheet_values().size() == 7, "creation must roll seven attributes")
 	var walking := load("res://main.tscn") as PackedScene

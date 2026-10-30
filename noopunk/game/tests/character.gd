@@ -89,6 +89,8 @@ func _creation_screen() -> void:
 		return
 	var screen: Node = packed.instantiate()
 	root.add_child(screen)
+	# The screen builds itself in `_ready`, which runs on the first frame.
+	await process_frame
 	_check(screen.row_count() == 7, "the creation screen lists seven attributes, got %d" % screen.row_count())
 	_eq(screen.sheet_values().size(), 7, "the creation screen rolls seven values")
 	for name in screen.sheet_values().keys():
