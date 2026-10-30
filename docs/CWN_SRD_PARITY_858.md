@@ -99,6 +99,10 @@ An additional playable node-link presentation at `godot/ui/hacking_screen.gd` an
 
 Verified: **1353 checks, 0 failed**.
 
+## §2.6 chase console (#873, PR #882)
+
+The `scenes/chase_screen.tscn` console opens from the menu and routes foot and single-pursuer vehicle outcomes through `cwn_chases.gd`. Six regression assertions are registered in `test_chase_screen.gd`. Check totals must currently be entered manually; modifiers, multiple vehicles and campaign state are not integrated. This is **partial playability**, not verified full SRD parity. This merge-resolution branch has not run Godot checks.
+
 ## What the table says plainly
 
 - **One section is verified against the text**: §4.3, and only its catalogue half — 24 Verbs, 12 Subjects,

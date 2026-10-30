@@ -47,6 +47,13 @@ func _ready() -> void:
 		get_tree().current_scene = screen)
 	stack.add_child(hacking)
 
+	# #873: CWN chase console via the existing kernel.
+	var chase := Button.new()
+	chase.text = "CWN — chase and pursuit"
+	chase.pressed.connect(func() -> void:
+		get_tree().change_scene_to_file("res://scenes/chase_screen.tscn"))
+	stack.add_child(chase)
+
 	# The campaign is an existing feature of the same root Godot project.
 	# Keep it accessible here rather than requiring agents to maintain a rival title scene.
 	var campaign := Button.new()
