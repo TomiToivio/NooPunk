@@ -35,6 +35,14 @@ func _ready() -> void:
 		get_tree().change_scene_to_file("res://godot/ui/mvp_game.tscn"))
 	stack.add_child(mvp)
 
+	# The campaign is an existing feature of the same root Godot project.
+	# Keep it accessible here rather than requiring agents to maintain a rival title scene.
+	var campaign := Button.new()
+	campaign.text = "Campaign prototype (home / UNSA HQ)"
+	campaign.pressed.connect(func() -> void:
+		get_tree().change_scene_to_file("res://scenes/campaign.tscn"))
+	stack.add_child(campaign)
+
 	var controls := Label.new()
 	controls.text = "WASD move · mouse look · E interact · J journal · F5 save · F6 end the case"
 	controls.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
