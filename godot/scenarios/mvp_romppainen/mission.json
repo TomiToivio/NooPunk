@@ -1,0 +1,105 @@
+{
+  "id": "kallas_warehouse",
+  "title": "The Kallas warehouse",
+  "note": "A small end-to-end test mission. Calibration values (CPU costs, trace limits, HP) are slice settings, not claimed source rules; procedures follow the CWN sequence.",
+  "objective": "Recover the shipping manifest that proves the shipment was re-routed.",
+  "objectives": [
+    "enter",
+    "manifest",
+    "exit"
+  ],
+  "core_clue": "manifest",
+  "approaches": {
+    "investigative": "Persuade the night clerk that the discrepancy is in his employer's interest, and he fetches the manifest.",
+    "tactical": "A guard blocks the loading bay; the manifest is on the terminal behind him.",
+    "mixed": "Talk past the clerk, then take the terminal under the guard's nose."
+  },
+  "network": {
+    "entry": "lobby",
+    "costs": {
+      "connect_cpu": 1,
+      "verb_cpu": 1,
+      "trace_per_action": 0,
+      "trace_on_failure": 2,
+      "alarm_threshold": 6,
+      "program_skill": 2
+    },
+    "nodes": {
+      "lobby": {
+        "security": 6,
+        "access_required": 0,
+        "verbs": [],
+        "links": [
+          "shipping"
+        ]
+      },
+      "shipping": {
+        "security": 7,
+        "access_required": 1,
+        "verbs": [
+          "query"
+        ],
+        "links": [
+          "lobby",
+          "manifest"
+        ]
+      },
+      "manifest": {
+        "security": 9,
+        "access_required": 1,
+        "verbs": [
+          "query"
+        ],
+        "links": [
+          "shipping"
+        ]
+      }
+    }
+  },
+  "deck": {
+    "cpu": 6,
+    "access": 1,
+    "programs": [
+      "query"
+    ],
+    "int": 14,
+    "program_rank": 2
+  },
+  "encounter": {
+    "id": "loading_bay",
+    "note": "Optional. The mission is completable without fighting.",
+    "actors": [
+      {
+        "id": "guard",
+        "side": "enemy",
+        "pos": [
+          4,
+          3
+        ],
+        "hp": 6,
+        "ac": 13,
+        "dex": 11,
+        "combat_rank": 1,
+        "attack_bonus": 1,
+        "damage": [
+          1,
+          6,
+          0
+        ],
+        "cover": 2
+      }
+    ]
+  },
+  "clues": {
+    "manifest": {
+      "scene": "shipping",
+      "competency": "Program",
+      "passive": true
+    },
+    "clerk_statement": {
+      "scene": "lobby",
+      "competency": "Talk",
+      "passive": false
+    }
+  }
+}

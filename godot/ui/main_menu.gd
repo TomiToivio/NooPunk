@@ -28,6 +28,13 @@ func _ready() -> void:
 		resume.pressed.connect(_on_resume_pressed)
 		stack.add_child(resume)
 
+	# #749: the vertical slice is launched from the same menu rather than replacing the case.
+	var mvp := Button.new()
+	mvp.text = "Romppainen — MVP (home → HQ → mission)"
+	mvp.pressed.connect(func() -> void:
+		get_tree().change_scene_to_file("res://godot/ui/mvp_game.tscn"))
+	stack.add_child(mvp)
+
 	var controls := Label.new()
 	controls.text = "WASD move · mouse look · E interact · J journal · F5 save · F6 end the case"
 	controls.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
