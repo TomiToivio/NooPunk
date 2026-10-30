@@ -175,3 +175,119 @@ func _load_json(path: String) -> Dictionary:
 		push_error("RulesAdapter: kernel at %s is not a JSON object" % path)
 		return {}
 	return parsed
+
+# --- CWN procedures the kernel records but the first slice did not expose (#749/#751) -----------
+
+## 3d6 down the line, in the kernel's attribute order. Returns scores and modifiers.
+func roll_attributes(dice: NoopunkDice = null) -> Dictionary:
+	var names: Array = attribute_names()
+	var scores: Dictionary = {}
+	var modifiers: Dictionary = {}
+	for name in names:
+		var total := 0
+		for _i in 3:
+			total += (dice.roll(6) if dice != null else _dice.roll(6))
+		scores[name] = total
+		modifiers[name] = attribute_modifier(total)
+	return {"scores": scores, "modifiers": modifiers}
+
+
+## System Strain (#SRD injury-healing-system-strain/system-strain): maximum equals Constitution,
+## cyberware is permanent strain, and forcing past the maximum knocks the character out for an hour.
+func strain_max(constitution: int) -> int:
+	return int(constitution)
+
+
+func strain_absorb(current: float, amount: float, constitution: int, force: bool = false) -> Dictionary:
+	var maximum := strain_max(constitution)
+	var total := float(current) + float(amount)
+	if total > maximum:
+		if not force:
+			return {"ok": false, "reason": "overflow refused", "total": current, "maximum": maximum}
+		return {"ok": true, "total": maximum, "unconscious_hours": 1, "forced": true, "maximum": maximum}
+	return {"ok": true, "total": total, "forced": false, "maximum": maximum}
+
+
+func strain_recover(current: float, warm_fed_rested: bool = true) -> float:
+	if not warm_fed_rested:
+		return float(current)
+	var per_night := float(kernel.get("strain", {}).get("recovery_per_night", 1))
+	return maxf(0.0, float(current) - per_night)
+
+
+## Advancement (#SRD character-advancement): fast/slow XP ladders, level for XP, attack bonus and
+## the per-level hit point and skill point budgets.
+func xp_threshold(level: int, pace: String = "fast") -> int:
+	var ladder: Dictionary = kernel.get("advancement", {}).get("xp", {}).get(pace, {})
+	return int(ladder.get(str(clampi(level, 1, 10)), 0))
+
+
+func level_for_xp(xp: int, pace: String = "fast") -> int:
+	var ladder: Dictionary = kernel.get("advancement", {}).get("xp", {}).get(pace, {})
+	var best := 1
+	for level in range(1, 11):
+		if xp >= int(ladder.get(str(level), 0)):
+			best = level
+	return best
+
+
+func attack_bonus_for_level(level: int, on_target_edge: bool = false) -> int:
+	if on_target_edge:
+		return level
+	return int(floor(float(level) / 2.0))
+
+
+func hp_gain(level: int, constitution_modifier: int, hard_to_kill: bool = false) -> int:
+	var total := 0
+	for _i in maxi(1, level):
+		var die := maxi(1, _dice.roll(6))
+		total += maxi(1, die + constitution_modifier + (2 if hard_to_kill else 0))
+	return total
+
+
+func skill_points_for_level(level: int, educated: bool = false) -> int:
+	var per_level := int(kernel.get("advancement", {}).get("skill_points_per_level", 3))
+	return maxi(1, level) * per_level + (int(kernel.get("advancement", {}).get("educated_bonus", 1)) if educated else 0)
+
+
+func skill_rank_allowed(rank: int, character_level: int) -> bool:
+	var minimums: Dictionary = kernel.get("advancement", {}).get("skill_min_character_level", {})
+	return character_level >= int(minimums.get(str(clampi(rank, 0, 4)), 1))
+
+
+## Encumbrance (#SRD encumbrance): stowed = Strength, readied = half Strength, and overload
+## costs speed in two steps.
+func encumbrance(strength: int) -> Dictionary:
+	return {
+		"stowed": strength,
+		"readied": int(floor(float(strength) / 2.0)),
+		"overload_step": kernel.get("encumbrance", {}).get("overload_step", {}),
+	}
+
+
+func speed_for_load(base_metres: float, heavy: bool = false, overloaded: bool = false) -> float:
+	var speed := float(base_metres)
+	if heavy:
+		speed *= 0.7
+	if overloaded:
+		speed *= 0.5
+	return snappedf(speed, 0.1)
+
+
+## Major injury (#SRD injury-healing-system-strain/major-injuries): d12 + modifiers, clamped 1..12.
+func major_injury(roll: int, modifier: int = 0) -> Dictionary:
+	var table: Dictionary = kernel.get("combat", {}).get("major_injury", {})
+	var clamped := clampi(roll + modifier, 1, 12)
+	var rows: Dictionary = table.get("rows", {})
+	return {"roll": roll, "modifier": modifier, "result": clamped, "injury": String(rows.get(str(clamped), ""))}
+
+
+## Action economy flags (#SRD combat/combat-actions).
+func action_economy() -> Dictionary:
+	return kernel.get("combat", {}).get("actions", {}).duplicate(true)
+
+
+## Charge and total-defence modifiers, kept as data so combat code cannot drift from the kernel.
+func combat_action_modifier(action: String) -> Dictionary:
+	var actions: Dictionary = kernel.get("combat", {}).get("actions", {})
+	return (actions.get(action, {}) as Dictionary).duplicate(true)
