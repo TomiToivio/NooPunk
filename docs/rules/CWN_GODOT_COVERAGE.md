@@ -19,8 +19,9 @@ Status vocabulary: **implemented + tested**, **partial**, **pending**.
 | Advancement (fast/slow XP, level, attack bonus, HP, skill points, rank gates, foci levels, edges) | rules-of-the-game/character-advancement | implemented for XP/level/attack/HP/skill points/rank gates; foci and edge tables are in the kernel but **no UI** |
 | Hacking: Access/CPU, alert clock, wireless −2, VR −1 | hacking/hacking-mechanics, cyberspace-actions | **implemented** |
 | Equipment, armour, weapons catalogue, shock/trauma, ammo/reload | gear-vehicles-cyberware/weapons, /armor | **implemented** — `data/rules/cwn_catalogue.json` (23 weapons, 8 armour) with `CwnCatalogue`: range bands, burst, ammo, trauma, shock, soak |
-| Cyberware catalogue and strain costs | gear-vehicles-cyberware/cyberware | **partial** — 17 body implants with strain transcribed; head/limb/nerve/sensory/medical/skin tables pending |
-| Drones, vehicles | drones, vehicles | **pending** |
+| Cyberware catalogue and strain costs | gear-vehicles-cyberware/cyberware/cyberware-systems | **implemented** — all 80 implants across the seven tables (`data/rules/cwn_cyberware.json`, `CwnCyberware`): cost, body table, concealment, permanent strain, set totals, and type-based destruction on a Major Injury. Two headware items priced "as cyber" keep the SRD note instead of an invented cost. |
+| Drones: nine models, 30 fittings, 8 mods, deployment, control range, battery, hardpoint class | gear-vehicles-cyberware/drones | **implemented** — `data/rules/cwn_drones.json`, `CwnDrones`; mod-derived AC/HP/move/Enc and fitting prices tested |
+| Vehicles and chases | gear-vehicles-cyberware/vehicles, rules-of-the-game/chases-and-pursuit | **partial** — `data/rules/cwn_vehicles.json` carries models, fittings, chase modifiers and repair costs; no Godot procedure consumes it yet |
 | Program Verbs and Subjects (24 + 12) and legality/costs | hacking/programs/program-verbs, program-subjects | **implemented** — `CwnCatalogue.can_pair`, `program_cost` |
 | Air gap/range, program memory, Demons/watchdogs | hacking/cyberspace-basics, demons-watchdogs | **pending** |
 | SWN Revised psionics | (SWN SRD, separate system) | **partial** — `psychic_effort.gd` plus Effort tests exist; no MVP psychic character or technique catalogue |

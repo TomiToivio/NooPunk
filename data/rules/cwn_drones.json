@@ -1,0 +1,385 @@
+{
+ "_source": "https://cwn.quadrifons.com/gear-vehicles-cyberware/drones/",
+ "_note": "CWN drones (#848): the nine SRD models, fittings and mods with their mechanical effects. Model and fitting descriptions remain in the CC0 SRD.",
+ "models": [
+  {
+   "id": "mouse",
+   "name": "Mouse",
+   "cost": 500,
+   "ac": 13,
+   "trauma_target": 6,
+   "hp": 1,
+   "fittings": 0,
+   "move": {
+    "rate": 5,
+    "mode": "ground"
+   },
+   "hardpoints": 0,
+   "encumbrance": 1,
+   "portable": true
+  },
+  {
+   "id": "roach",
+   "name": "Roach",
+   "cost": 1000,
+   "ac": 13,
+   "trauma_target": 6,
+   "hp": 8,
+   "fittings": 3,
+   "move": {
+    "rate": 10,
+    "mode": "ground"
+   },
+   "hardpoints": 0,
+   "encumbrance": 3,
+   "portable": true
+  },
+  {
+   "id": "hummingbird",
+   "name": "Hummingbird",
+   "cost": 2000,
+   "ac": 15,
+   "trauma_target": 6,
+   "hp": 5,
+   "fittings": 2,
+   "move": {
+    "rate": 10,
+    "mode": "fly"
+   },
+   "hardpoints": 0,
+   "encumbrance": 3,
+   "portable": true
+  },
+  {
+   "id": "sunfish",
+   "name": "Sunfish",
+   "cost": 1000,
+   "ac": 15,
+   "trauma_target": 6,
+   "hp": 8,
+   "fittings": 3,
+   "move": {
+    "rate": 10,
+    "mode": "swim"
+   },
+   "hardpoints": 0,
+   "encumbrance": 3,
+   "portable": true
+  },
+  {
+   "id": "pitbull",
+   "name": "Pitbull",
+   "cost": 5000,
+   "ac": 15,
+   "trauma_target": 8,
+   "hp": 15,
+   "fittings": 5,
+   "move": {
+    "rate": 20,
+    "mode": "ground"
+   },
+   "hardpoints": 1,
+   "encumbrance": 5,
+   "portable": true
+  },
+  {
+   "id": "javelin",
+   "name": "Javelin",
+   "cost": 10000,
+   "ac": 16,
+   "trauma_target": 6,
+   "hp": 12,
+   "fittings": 5,
+   "move": {
+    "rate": 20,
+    "mode": "fly"
+   },
+   "hardpoints": 1,
+   "encumbrance": 6,
+   "portable": true
+  },
+  {
+   "id": "kerberos",
+   "name": "Kerberos",
+   "cost": 15000,
+   "ac": 18,
+   "trauma_target": 8,
+   "hp": 25,
+   "fittings": 6,
+   "move": {
+    "rate": 20,
+    "mode": "ground"
+   },
+   "hardpoints": 3,
+   "encumbrance": null,
+   "portable": false
+  },
+  {
+   "id": "kraken",
+   "name": "Kraken",
+   "cost": 10000,
+   "ac": 16,
+   "trauma_target": 8,
+   "hp": 20,
+   "fittings": 5,
+   "move": {
+    "rate": 15,
+    "mode": "swim"
+   },
+   "hardpoints": 2,
+   "encumbrance": null,
+   "portable": false
+  },
+  {
+   "id": "shrike",
+   "name": "Shrike",
+   "cost": 25000,
+   "ac": 18,
+   "trauma_target": 8,
+   "hp": 20,
+   "fittings": 6,
+   "move": {
+    "rate": 30,
+    "mode": "fly"
+   },
+   "hardpoints": 2,
+   "encumbrance": null,
+   "portable": false
+  }
+ ],
+ "fittings": [
+  {
+   "name": "Ablative Code Buffer",
+   "cost_pct": 10
+  },
+  {
+   "name": "Altitude Boost Unit",
+   "cost_pct": 10
+  },
+  {
+   "name": "Ammo Caddy",
+   "cost_pct": 10
+  },
+  {
+   "name": "Ammo Supply",
+   "cost_pct": 10
+  },
+  {
+   "name": "Assisted Boost Burner",
+   "cost_pct": 10
+  },
+  {
+   "name": "Cargo Space",
+   "cost_pct": 20
+  },
+  {
+   "name": "Command Deck/Follow",
+   "cost_pct": 10
+  },
+  {
+   "name": "Command Deck/Kill",
+   "cost_pct": 25
+  },
+  {
+   "name": "Command Deck/Patrol",
+   "cost_pct": 10
+  },
+  {
+   "name": "Command Deck/Watch",
+   "cost_pct": 10
+  },
+  {
+   "name": "Emergency Evac Litter",
+   "cost_pct": 25
+  },
+  {
+   "name": "Emissions Shielding",
+   "cost_pct": 20
+  },
+  {
+   "name": "Enhanced Structure",
+   "cost_pct": 25
+  },
+  {
+   "name": "Extended Range",
+   "cost_pct": 25
+  },
+  {
+   "name": "Glider Grips",
+   "cost_pct": 20
+  },
+  {
+   "name": "Improved Armor",
+   "cost_pct": 25
+  },
+  {
+   "name": "Improved Targeting Logic",
+   "cost_pct": 20
+  },
+  {
+   "name": "Laser Comms",
+   "cost_pct": 10
+  },
+  {
+   "name": "Manipulator Tendrils",
+   "cost_pct": 20
+  },
+  {
+   "name": "Memory Banks",
+   "cost_pct": 10
+  },
+  {
+   "name": "No Touch Web",
+   "cost_pct": 10
+  },
+  {
+   "name": "Sleep Mode",
+   "cost_pct": 10
+  },
+  {
+   "name": "Stealth Package",
+   "cost_pct": 25
+  },
+  {
+   "name": "Suicide Charge",
+   "cost_pct": 25
+  },
+  {
+   "name": "Telescopic Optics",
+   "cost_pct": 20
+  },
+  {
+   "name": "Thermal Optics",
+   "cost_pct": 20
+  },
+  {
+   "name": "Trauma Response Suite",
+   "cost_pct": 25
+  },
+  {
+   "name": "Voice Broadcast",
+   "cost_pct": 10
+  },
+  {
+   "name": "Wallcrawler",
+   "cost_pct": 20
+  },
+  {
+   "name": "Weapon Hardpoint",
+   "cost_pct": 25
+  }
+ ],
+ "mods": [
+  {
+   "id": "additional_fitting",
+   "name": "Additional Fitting",
+   "skills": [
+    "Fix-1",
+    "Drive-1"
+   ],
+   "cost_pct": 50,
+   "fittings": 1,
+   "encumbrance": 1
+  },
+  {
+   "id": "additional_hardpoint",
+   "name": "Additional Hardpoint",
+   "skills": [
+    "Fix-1",
+    "Drive-1"
+   ],
+   "cost_pct": 50,
+   "hardpoints": 1,
+   "encumbrance": 1
+  },
+  {
+   "id": "battery_swapping",
+   "name": "Battery Swapping",
+   "skills": [
+    "Fix-1",
+    "Drive-1"
+   ],
+   "cost_pct": 10
+  },
+  {
+   "id": "boosted_engine",
+   "name": "Boosted Engine",
+   "skills": [
+    "Fix-1",
+    "Drive-2"
+   ],
+   "cost_pct": 25,
+   "move": 10
+  },
+  {
+   "id": "heavy_plating",
+   "name": "Heavy Plating",
+   "skills": [
+    "Fix-1",
+    "Drive-2"
+   ],
+   "cost_pct": 25,
+   "ac": 2,
+   "move": -5,
+   "encumbrance": 1
+  },
+  {
+   "id": "quick_launch",
+   "name": "Quick Launch",
+   "skills": [
+    "Fix-1",
+    "Drive-2"
+   ],
+   "cost_pct": 10
+  },
+  {
+   "id": "redundant_systems",
+   "name": "Redundant Systems",
+   "skills": [
+    "Fix-2",
+    "Drive-2"
+   ],
+   "cost_pct": 50,
+   "hp_pct": 25,
+   "encumbrance": 1
+  },
+  {
+   "id": "stripped_fittings",
+   "name": "Stripped Fittings",
+   "skills": [
+    "Fix-2",
+    "Drive-1"
+   ],
+   "cost_pct": 10,
+   "fittings": -1,
+   "encumbrance": -1
+  }
+ ],
+ "rules": {
+  "deploy": {
+   "unpack": "main",
+   "online": [
+    "main",
+    "move"
+   ],
+   "pack": "main",
+   "quick_launch": "on_turn"
+  },
+  "control_range_m": {
+   "safe": 1000,
+   "maximum": 8000
+  },
+  "altitude_max_m": 1000,
+  "battery_hours": 1,
+  "charge_hours_per_encumbrance": 1,
+  "charge_hours_max": 6,
+  "hardpoint_capacity": {
+   "portable_max_enc_for_pistols": 3,
+   "portable": "rifle",
+   "non_portable": "heavy"
+  },
+  "melee_mountable": false,
+  "weapon_swap": "one day in the shop",
+  "magazine_included": 1
+ }
+}
