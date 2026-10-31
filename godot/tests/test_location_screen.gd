@@ -53,6 +53,12 @@ func run() -> Array:
 
 	# the notebook is visible to the player
 	rows.append(_eq("leads are shown", with_lead._clues.text.contains("leads"), true))
+
+	# Free what we built. A Control left alive holds its labels, fonts and RichTextLabel items, and the
+	# shutdown gate reports those as leaked RIDs at exit (#883). A suite that measures something must also
+	# clean up after itself.
+	for screen_object in [screen, no_lead, with_lead]:
+		screen_object.free()
 	return rows
 
 
