@@ -21,10 +21,9 @@ Unported (CC BY 3.0)**. Two consequences, and the second is the one people forge
 2. **The GUMSHOE mark IS granted; the game lines are not.** Verified in the v3 copyright notice
    (p. 1): permission is granted to use the GUMSHOE trademark in works produced under this
    licence, provided it does not claim or suggest a relationship with, or endorsement by,
-   Pelgrane Press or Robin D. Laws. The **logo** is excluded. *The Esoterrorists*, *Mutant City
-   Blues*, *Ashen Stars*, *Fear Itself*, *TimeWatch*, *Trail of Cthulhu*, *Night's Black Agents*,
-   *Cthulhu Confidential* and *The Yellow King Roleplaying Game* are trademarks this licence does
-   **not** grant and must not appear in a derivative work.
+   Pelgrane Press or Robin D. Laws. The **logo** is excluded. The licence grants the GUMSHOE mark but **not** the marks of the commercial
+   game lines built on it; those product names are Product Identity, and NoöPunk neither uses them nor
+   needs them — the SRD is a complete, setting-neutral rules source.
 
    So the constraint is narrower than "no trademark may be mentioned": a credits line may say
    the investigation system is based on the GUMSHOE SRD, using the sentence above. NoöPunk still
