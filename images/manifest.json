@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "root": "res://images/",
+  "categories": [
+    "characters/portraits",
+    "social_encounters",
+    "locations",
+    "events"
+  ],
+  "assets": [],
+  "pending": [
+    {
+      "id": "harri_romppainen_helsinki_street",
+      "category": "characters/portraits",
+      "target_path": "res://images/characters/portraits/harri_romppainen_helsinki_street.png",
+      "status": "awaiting_binary_upload",
+      "approval": "approved visual style and portrait by user",
+      "description": "Helsinki street corner full body character sheet art: green eyes, moustache, cigarette, trench coat; 1970s European comics."
+    }
+  ]
+}

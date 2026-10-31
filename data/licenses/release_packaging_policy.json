@@ -148,6 +148,14 @@
       "note": "Needs its own software licence, separate from the CC instrument. pytest.ini is test configuration: it tells pytest which directories not to collect, so the preserved corpora under archive/ do not shadow this repository's own src/ package. It is configuration for the test suite, so it travels with the code it configures."
     },
     {
+      "id": "visual-assets",
+      "globs": [
+        "images/**"
+      ],
+      "licence": "author-decision-visual-assets",
+      "note": "First-party Godot illustration library, metadata and placeholder paths. Any artwork must carry per-asset provenance, consent, and rights review before public release. This classification is not a licence clearance."
+    },
+    {
       "id": "fixtures-and-scenes",
       "globs": [
         "data/ui/**",
