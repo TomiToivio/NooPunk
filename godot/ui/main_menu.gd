@@ -78,6 +78,18 @@ func _ready() -> void:
 		get_tree().current_scene = screen)
 	stack.add_child(locations_button)
 
+	var investigation_button := Button.new()
+	investigation_button.text = "Investigation — UNSA intake records"
+	investigation_button.pressed.connect(func() -> void:
+		var screen: Node = load("res://scenes/narrative/investigation.tscn").instantiate()
+		var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(
+			"res://data/world/investigation_scene_intake.json"))
+		screen.setup({"skills": {"Administer": 1, "Talk": 1, "Notice": 0, "Program": -1}},
+			parsed if parsed is Dictionary else {})
+		get_tree().root.add_child(screen)
+		get_tree().current_scene = screen)
+	stack.add_child(investigation_button)
+
 	# #928: the optional AWN Stress ledger, an overlay on the CWN core.
 	var stress_button := Button.new()
 	stress_button.text = "CWN — stress ledger (optional AWN module)"

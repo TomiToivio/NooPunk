@@ -87,3 +87,31 @@ The evidence notebook from #897/#913 keeps the clue graph; this overlay adds the
 | no second resolution engine | `delegate_to_cwn()`; suite asserts `engine == "cwn"` |
 | no GUMSHOE d6 tests | not implemented, deliberately |
 | uncanny tone preserved | the overlay never decides whether a clue is *true* |
+
+## From a CWN sheet to an investigative rating
+
+**No second advancement economy.** A CWN skill rank of 0 already means *trained*; GUMSHOE's rating 1 already
+means *professionally competent*. So:
+
+```
+rating = 0            if the CWN skill is untrained (-1)
+rating = rank + 1     otherwise
+```
+
+`ratings_from_sheet()` does exactly this, and `from_sheet()` builds the overlay from it. One trained CWN skill
+covers several investigative angles — `Administer` feeds bureaucracy, law and textual analysis — which is why
+a thin character sheet still offers a range of approaches. Buying investigative ability separately would be a
+second track for competence the character already paid for.
+
+## The screen
+
+`godot/ui/investigation_screen.gd` (+ `scenes/narrative/investigation.tscn`, menu entry **Investigation —
+UNSA intake records**) drives the overlay from a scene file (`data/world/investigation_scene_intake.json`):
+
+- **Gather** has no failure path — clicking it cannot produce "you found nothing";
+- abilities the sheet does not pay for are not listed at all;
+- a benefit's button is disabled when the pool cannot pay, rather than failing on click;
+- the log states what was learned in words, not in mechanics.
+
+The fixture is the *accessible UNSA intake records* example from this issue's guardrails — original, generic,
+scenario-independent. No commercial case material is used or needed.

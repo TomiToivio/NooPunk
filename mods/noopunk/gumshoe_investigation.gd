@@ -185,3 +185,31 @@ func from_dict(data: Dictionary) -> void:
 	benefits = []
 	for benefit in Array(data.get("benefits", [])):
 		benefits.append(String(benefit))
+
+# ---- character-sheet integration -----------------------------------------------------------------
+
+## Derive investigative ratings from a CWN character sheet.
+##
+## **No second economy.** A CWN skill rank of 0 already means "trained", and GUMSHOE's rating 1 already means
+## "professionally competent", so rank 0 maps to rating 1 and an untrained skill maps to rating 0. Buying
+## investigative ability would be a second advancement track for competence the character has already paid
+## for — exactly what the #897 lock forbids.
+##
+## `skills` in a CWN sheet is `{skill name: rank}`, where `-1` means untrained.
+static func ratings_from_sheet(sheet: Dictionary) -> Dictionary:
+	var skills: Dictionary = sheet.get("skills", {})
+	var ratings: Dictionary = {}
+	for entry in Array(load_data().get("abilities", [])):
+		var ability: Dictionary = entry
+		var ability_id := String(ability.get("id", ""))
+		var cwn_skill := String(ability.get("cwn_skill", ""))
+		if ability_id.is_empty() or cwn_skill.is_empty():
+			continue
+		var rank := int(skills.get(cwn_skill, -1))
+		ratings[ability_id] = 0 if rank < 0 else rank + 1
+	return ratings
+
+
+## Build the overlay directly from a character sheet.
+static func from_sheet(sheet: Dictionary) -> NoopunkGumshoe:
+	return from_data(load_data(), ratings_from_sheet(sheet))
