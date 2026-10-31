@@ -1,3 +1,17 @@
+# FOUNDATIONAL AUTHOR DECISION — issue #897 (2026-10-31)
+
+This decision supersedes the **presentation and gameplay** portions of #848 and older directives where they conflict. The **rules foundation remains the same**: published Cities Without Number (CWN) is permanently the primary OSR chassis; compatible Stars Without Number (SWN) psionics/space/factions and selective WWN/AWN material can extend it where appropriate. Do **not** propose or introduce a replacement core dice engine, attribute scheme, tactical framework or bespoke rulebook. Godot uses the repository-root `project.godot`, `scenes/main.tscn`, and `godot/core/` CWN rules. Historical 1d10/Fate prototypes are not authoritative.
+
+**Only NoöPunk extensions may be homebrewed:** modular social relationships/reputation, LaclauGPT-style ideological factions, noösphere/Psyche/ontological shock, and clue-forward PbtA/GUMSHOE-inspired narrative procedures. These are optional **overlays** that invoke CWN rather than overwrite it. Player active PSI remains undecided: prefer passive/minor powers as a design hypothesis, not a locked rule.
+
+**Current Godot direction changes:** prioritize a Citizen Sleeper-inspired **location-node** Helsinki narrative campaign, discoverable destinations, dialogue/investigation, 1–4 UNSA-agent missions, CWN character sheet, graph-based CWN hacking (DROP-inspired interface) and non-tactical CWN combat resolution. **Suspend** tactical top-down development; preserve existing scenes, saves and tests as compatibility paths until deliberate tested migration. Do not create a second Godot project or delete working systems.
+
+**Visual lock:** everything appears as an acid-fueled 1974 science-fiction vision of 2045: Hawkwind's *Space Ritual*, krautrock, **Zardoz > Barbarella > Rocky Horror**, Mœbius and Valérian. Later media influence mechanics and stories, not the graphic style. Avoid generic 1980s neon cyberpunk. Start from reusable color/type/UI tokens; use original or appropriately licensed assets.
+
+**Agent handoff:** review `docs/design/ISSUE_897_FOUNDATIONAL_LOCK.md` and `docs/design/ISSUE_897_VISUAL_BIBLE.md` before implementation. This is an author decision, not a request to re-litigate rules. Preserve executable-code-only test policy and honest Godot runtime validation.
+
+---
+
 # CURRENT DIRECTIVE — read this first (issue #848, 2026-10-30)
 
 **Vanilla CWN + vanilla SWN + one top-down Godot RPG. This supersedes every earlier restart or

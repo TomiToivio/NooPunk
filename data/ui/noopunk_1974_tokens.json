@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "source_issue": 897,
+  "style": "VALIS 1974 psychedelic retrofuture",
+  "colors": {
+    "void_plum": "#190E24",
+    "midnight_ink": "#2C1837",
+    "ultraviolet": "#8E44C6",
+    "cosmic_magenta": "#E54B9B",
+    "acid_chartreuse": "#D1E85B",
+    "analog_amber": "#F2B45E",
+    "mint_terminal": "#72E1B2",
+    "paper_ivory": "#F5E8C9",
+    "dim_lilac": "#BBAACA",
+    "danger_coral": "#F17570"
+  },
+  "typography": {
+    "display": "licensed geometric 1970s display font or platform fallback",
+    "body": "system sans-serif; minimum readable size",
+    "monospace": "system monospace for terminal and code"
+  },
+  "motion": {
+    "reduced_motion_supported": true,
+    "decorative_noise_optional": true
+  },
+  "ui_modes": [
+    "helsinki_map",
+    "character_sheet",
+    "investigation",
+    "hacking_graph",
+    "non_tactical_combat"
+  ]
+}
