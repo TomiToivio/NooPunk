@@ -252,6 +252,27 @@ not read case graphs.
 | --- | --- | --- | --- |
 | D61 | **Which module owns discovery, and which shape does a clue carry?** (a) **The adapter owns discovery, the overlay only prices benefits** (recommended): `investigation.py` stays the rule, #935's pool is an optional module, one line in each file says so, and the screen reads a case graph through the adapter. (b) **The overlay owns discovery**: the adapter retires for investigation use and `Investigator`'s no-pool test is retired on purpose. (c) **Both stay, per campaign**: acceptable only if each file names the other and the screen records which one a scene used. Independent of (a)/(b)/(c): **unify the clue shape** — either a clue names a GUMSHOE ability or a CWN competency, not both, and a test then fails when a case asks for a competency no ability covers (`Survive` is the living example). | any further work on either module; what a scenario author may assume about spending; whether the screen ever reads a case graph | *adapter owns discovery* / *overlay owns discovery* / *per campaign, both named* ; and *abilities* / *competencies* as the one clue shape |
 
+## #943 — the Noösphere / ontological-apocalypse module (rows D62–D64)
+
+Eighteenth update (2026-10-31). #943 asked for a PbtA-inspired narrative overlay on the CWN chassis.
+The module is [`ISSUE_943_NOOSPHERE_APOCALYPSE.md`](ISSUE_943_NOOSPHERE_APOCALYPSE.md), the criterion walk is
+[`ISSUE_943_ACCEPTANCE.md`](ISSUE_943_ACCEPTANCE.md), and the executable half is `mods/noopunk/noosphere.gd`
+with 46 assertion rows in `godot/tests/test_noosphere_943.gd`. It adds no dice, no modifier, no second cost
+track and no new move; it keeps a percept/hypothesis record and an event-driven, reversible clock.
+
+Two things need the author rather than another agent. The first is approval of the extension: **D50** already
+rules that PbtA contributes clocks and nothing else *yet*, and this module goes further around the dice
+without touching them. The second is a procedural deviation worth an explicit ruling rather than a silent
+inheritance: the first increment merged a GDScript module **before** the design document existed, which is the
+opposite of #943's own eleventh criterion. The module changes no rule and imports nothing from `godot/core/`,
+so the deviation cost a merge and not a rule — but whether it stays in `main` is the author's.
+
+| # | Decision | Blocks | Smallest useful answer |
+| --- | --- | --- | --- |
+| D62 | **Approve the module, and in what form?** (a) **Approve as written**: an isolated overlay module plus the design document, no rulebook chapter until a playtest exercises a clock to its terminal segment. (b) **Approve the document only**: hold `mods/noopunk/noosphere.gd` out of `main` until a chapter exists, keeping the 46 test rows as the specification. (c) **Refuse the extension beyond D50 and keep clocks only**: drop N1–N3, keep the clock, and the module shrinks to a state machine. D62 also covers the deviation: the module landed before its design was reviewed, against #943's criterion 11. | any further work on the module; whether `mods/noopunk/noosphere.gd` is canonical, provisional or removed; whether a rulebook chapter may be drafted | *approve both* / *document only* / *clocks only* |
+| D63 | **Which clocks ship, and how long are they?** §9.2 proposes five (NHI disclosure, rogue ASI acceleration, cyber-psychic convergence, UNSA authority, local crisis) at the 4/6 segments of the #689 spec. A published campaign would need three to five of them named, and a rule for what happens when two fill on the same event. The named clocks are proposals, not timeline: the disclosure clock's terminal segment is the panic depth of `RULEBOOK.md` §41.1, which is a *regional* condition, not a global one. | what a scenario author may assume about escalation; whether a case may declare its own clock count | *all five, 4/6 as specced* / *name a subset* / *local crisis only* ; and *one clock per question, table decides* / *a fixed precedence* |
+| D64 | **May any of *The Veil*'s text ever be quoted?** The book licenses its **text** CC BY-SA 3.0 and reserves its art separately; *Apocalypse World* 2e establishes no open licence at all. The module as written quotes neither and re-expresses mechanics with page references, which keeps the tree clear of ShareAlike. Quoting a paragraph of *The Veil* would put ShareAlike obligations on the file that carries it — and `tests/test_third_party_expression_absent.py` exists precisely because expression once entered this tree and had to be removed. | whether the design documents may quote, and the licence status of any document that does | *no quotations, ever* / *quote and accept ShareAlike in that file* / *quote only from the CC BY-SA text and mark the file* |
+
 ## After an answer
 
 Each answered row becomes: a criterion check against `main` → an acceptance record in
