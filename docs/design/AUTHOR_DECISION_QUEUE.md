@@ -225,19 +225,32 @@ over a core clue, while NoöPunk counts CWN rank 0 as trained.)
 | D59 | **Approve the investigative crosswalk and the expertise tags.** The crosswalk maps all **40** book investigative abilities and the 13 general ones onto CWN skills, backgrounds and Foci as *suggested approaches*, never gates — completeness is verified against the book's own ability list; what is open is whether the mapping is the one to print, and whether the 2–4 **expertise tags** per character are adopted as free descriptive prompts (recommended) or dropped. Tags add no dice, points or progression; adopting them changes no rule, only what the GM reads off the sheet. | the GM reference page, and whether `Investigator` ever grows a tag field | *accept the crosswalk as printed* / *tweak named rows* ; *tags yes* / *tags no* |
 | D60 | **Approve the GUMSHOE-generic → NoöPunk institutional mapping.** UNSA as the investigating agency with its own case file and support staff; human collaborators and hostile factions as organised adversaries; NHI/noetic phenomena **classified case by case**; evidence security and its ethical dilemma as the containment question; a recurring Helsinki base with local contacts under the NPC supervisor. The rule that must survive any approval: a case may be a hoax, a misidentified phenomenon, institutional malfeasance, rogue-AGI activity, human conspiracy **or** genuinely inexplicable, and the characters' beliefs are never evidence. | the scenario/campaign layer, and what the pilot case may assume | *approve as mapped* / *amend named rows* |
 
-## #932 follow-up — two investigative implementations (row D61)
+## #932 follow-up — which module owns discovery (row D61, narrowed)
 
-Sixteenth update (2026-10-31). The licence re-base (#936) and the pool overlay (#935) both landed for
-#932, and together they expose one question the board did not yet carry: the repository now has **two**
-investigative procedures with opposite pool rules, both tested. `src/rules/investigation.py` (#704)
-refuses a pool and prices a benefit in CWN costs; `mods/noopunk/gumshoe_investigation.gd` (#935) ships the
-GUMSHOE SRD's pool, spends it only on special benefits, gates clues on a rating of at least 1 and hands
-general tests to CWN. A core clue never depends on a roll or a spend in either one, so nothing is broken
-today — but a table must not run both, and a future agent must not extend both.
+Seventeenth update (2026-10-31). #939 (the notebook's SRD clue procedures) and #940 (the screen, plus
+`Gumshoe.ratings_from_sheet`) landed after this row was written, and #940 **answered the half of it that was
+about the rating gate**. `rating = rank + 1` (an untrained skill, rank -1, is 0) means a CWN rank of 0 — which
+CWN already calls trained — becomes a GUMSHOE rating of 1, which the SRD already calls competent. The two
+systems stop disagreeing, no second advancement track is created, and G1 no longer needs to describe a
+divergence: there is none left to describe. That half is **settled by construction**, not by a ruling.
+
+What remains is the other half, and it is smaller than it looked: the repository still has **two procedures
+that both claim to decide whether a clue is found** — `src/rules/investigation.py` with
+`godot/core/investigation_adapter.gd` (competence by presence, no pool, benefits priced in CWN costs) and
+`mods/noopunk/gumshoe_investigation.gd` with the new screen (rating ≥ 1, a pool spent only on benefits). A
+core clue never depends on a roll or a spend in either, so nothing is broken; but a table must not run both
+and an agent must not extend both.
+
+Underneath it is a **data** question that will bite before the rules question does: the screen reads
+`data/world/investigation_scene_intake.json`, where a clue names a GUMSHOE ability directly
+(`"ability": "bureaucracy"`), while `case_graph.json` names a **CWN competency** and is read by the adapter
+and the notebook. Nothing checks that every competency a case asks for is covered by some ability, and one
+is not — `Survive` (the `night-air` clue) maps to none of the sixteen. Latent today because the screen does
+not read case graphs.
 
 | # | Decision | Blocks | Smallest useful answer |
 | --- | --- | --- | --- |
-| D61 | **Which investigative procedure is authoritative — the no-pool core or the SRD pool overlay?** (a) **The core stands and pools are optional furniture** (recommended for a CWN-first table): keep `investigation.py` as the rule, treat #935's pool as an optional module a table switches on, and say so in one line in both files. (b) **The SRD pool is the rule**: then `Investigator` grows a pool and the no-pool test is retired, which re-opens #704's refusal on purpose. (c) **Both are legitimate and the choice is per campaign**: acceptable only if each document names the other and says a scene uses one, because two live currencies in one scene is the failure this row exists to prevent. Sub-question: does the rating gate follow the SRD (**rating ≥ 1**) or CWN (**rank 0 counts as trained**, G1)? The two implementations currently differ exactly there. | any further work on either module; what a scenario author may assume about spending; whether G1 stays as recorded | *core stands, pool optional* / *SRD pool is the rule* / *per campaign, both named* ; and *rating ≥ 1* / *rank 0 counts* |
+| D61 | **Which module owns discovery, and which shape does a clue carry?** (a) **The adapter owns discovery, the overlay only prices benefits** (recommended): `investigation.py` stays the rule, #935's pool is an optional module, one line in each file says so, and the screen reads a case graph through the adapter. (b) **The overlay owns discovery**: the adapter retires for investigation use and `Investigator`'s no-pool test is retired on purpose. (c) **Both stay, per campaign**: acceptable only if each file names the other and the screen records which one a scene used. Independent of (a)/(b)/(c): **unify the clue shape** — either a clue names a GUMSHOE ability or a CWN competency, not both, and a test then fails when a case asks for a competency no ability covers (`Survive` is the living example). | any further work on either module; what a scenario author may assume about spending; whether the screen ever reads a case graph | *adapter owns discovery* / *overlay owns discovery* / *per campaign, both named* ; and *abilities* / *competencies* as the one clue shape |
 
 ## After an answer
 
