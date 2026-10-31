@@ -20,6 +20,7 @@ const SUITES := [
 	"res://godot/tests/test_cwn_engine.gd",
 	"res://godot/tests/test_cwn_sheet.gd",
 	"res://godot/tests/test_image_library.gd",
+	"res://godot/tests/test_city_map.gd",
 	"res://godot/tests/test_cwn_injury.gd",
 	"res://godot/tests/test_cwn_alienation.gd",
 	"res://godot/tests/test_cwn_lifestyles.gd",
