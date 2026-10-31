@@ -61,6 +61,23 @@ func _ready() -> void:
 		get_tree().change_scene_to_file("res://godot/ui/narrative_screen.tscn"))
 	stack.add_child(narrative)
 
+	# #897 §4: the narrative campaign's first playable surface.
+	var locations_button := Button.new()
+	locations_button.text = "Narrative — Helsinki locations"
+	locations_button.pressed.connect(func() -> void:
+		var screen: Node = load("res://scenes/narrative/location_screen.tscn").instantiate()
+		var map_script: Script = load("res://godot/narrative/location_map.gd")
+		var book_script: Script = load("res://godot/narrative/investigation.gd")
+		var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(
+			"res://data/world/lakkahaltia_clues.json"))
+		var clues: Dictionary = parsed if parsed is Dictionary else {}
+		screen.setup(map_script.from_data(map_script.load_data()),
+			book_script.from_data(clues),
+			{"case_opened": true, "has_lead": true})
+		get_tree().root.add_child(screen)
+		get_tree().current_scene = screen)
+	stack.add_child(locations_button)
+
 	# The campaign is an existing feature of the same root Godot project.
 	# Keep it accessible here rather than requiring agents to maintain a rival title scene.
 	var campaign := Button.new()

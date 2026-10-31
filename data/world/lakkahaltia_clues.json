@@ -1,0 +1,42 @@
+{
+  "$comment": "Clue graph for the opening case (#897 §4). Essential clues are never gated by a roll; non-essential ones are. Locations named in `opens` must exist in data/world/helsinki_locations.json.",
+  "version": 1,
+  "case": "opening_case",
+  "clues": [
+    {
+      "id": "manifest_discrepancy",
+      "essential": true,
+      "requires": ["case_opened"],
+      "opens": ["container_yard"],
+      "contradicts": ["official_manifest"]
+    },
+    {
+      "id": "witness_account",
+      "essential": true,
+      "requires": ["case_opened"],
+      "opens": ["night_bar"],
+      "contradicts": []
+    },
+    {
+      "id": "official_manifest",
+      "essential": false,
+      "requires": ["case_opened"],
+      "opens": [],
+      "contradicts": ["manifest_discrepancy"]
+    },
+    {
+      "id": "informant_rumour",
+      "essential": false,
+      "requires": ["met_informant"],
+      "opens": ["archive"],
+      "contradicts": []
+    },
+    {
+      "id": "clinic_record",
+      "essential": false,
+      "requires": ["injury_known"],
+      "opens": ["clinic"],
+      "contradicts": ["witness_account"]
+    }
+  ]
+}
