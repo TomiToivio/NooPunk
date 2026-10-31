@@ -70,6 +70,21 @@
       "approval": "required from the author before use",
       "description": "Helsinki location art for map node unsa_underground (Ö-Mappi underground complex): ordinary street or interior, 1970s European comic style per docs/ART_DIRECTION_IMAGES.md.",
       "map_node": "unsa_underground"
+    },
+    {
+      "id": "unsa_field_agent_uniform_dossier",
+      "category": "characters/portraits",
+      "target_path": "res://images/characters/portraits/unsa_field_agent_uniform_dossier.png",
+      "status": "awaiting_binary_upload",
+      "approval": "approved by user in ChatGPT conversation on 2026-10-31",
+      "description": "Original 1024×1536 retro European comic concept sheet of a UNSA field agent in olive uniform, with front/side/back views, insignia, field communicator, ID, gloves, boots and document pouch.",
+      "source": "ChatGPT image generation, 2026-10-31; original image provided to user in same conversation",
+      "license": "Original AI-generated concept artwork; verify applicable project licensing before publication",
+      "dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "narrative_location": "UNSA field operations / character design reference"
     }
   ]
 }
