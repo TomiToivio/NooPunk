@@ -1,6 +1,48 @@
-# NoöPunk MUD (issue #946)
+# NoöPunk MUD
 
-**This is the separate Python/Evennia MUD, NOT the NoöPunk Godot game.** Same setting, scenarios, canonical CWN rules and optional overlays; different runtime, commands, persistence and tests. Do not edit `godot/`, `project.godot`, `scenes/` or canonical rules to implement MUD features.
+A **separate, text-based, persistent multiplayer** game built on [Evennia](https://www.evennia.com/), sharing
+NoöPunk canon and CWN rules with the Godot game but **no runtime**.
+
+**Status: first implementation scaffold added in PR #948.** Evennia runtime and multiplayer behaviour have not yet been verified; see the implementation notes below.
+
+## The boundary, in one table
+
+| | NoöPunk Godot | NoöPunk MUD (this directory) |
+|---|---|---|
+| Runtime | Godot 4, `project.godot` at repository root | Python 3, Evennia server |
+| Interface | graphical, `scenes/`, `godot/` | text commands, telnet/web client |
+| Tests | `godot --headless --script res://godot/tests/run_tests.gd` | Python unittest under `mud/tests/` |
+| Entry point | `project.godot` | `mud/server/` (Evennia layout) |
+| Dependencies | Godot binary, no Python runtime | `mud/requirements.txt` |
+
+## What is shared
+
+Canon, scenario data, CWN mechanics **as specifications**, and platform-neutral schemas. Shared inputs are
+read, not forked: if a rule changes, it changes once and both games follow.
+
+## What is never shared
+
+Runtime assumptions, UI code, scene files, and release automation. A MUD change must not be able to alter
+Godot behaviour, and a Godot change must not be able to alter the MUD's.
+
+## Rules of engagement for agents
+
+1. **Identify the target game before editing.** MUD work stays under `mud/`; Godot work stays under
+   `godot/`, `scenes/` and the root `project.godot`.
+2. **No cross-imports.** `mud/` must not reference `res://`, `.gd`, `.tscn`; Godot code must not import
+   `mud.*`. `tests/test_mud_godot_boundary.py` enforces this.
+3. **CWN is not forked.** Noösphere, ideology, social ties and ontological shock are modules layered on the
+   CWN baseline, never edits to it.
+
+## Remaining steps, in order
+
+1. Run and smoke-test the Evennia server in a Python environment; correct any Evennia version-specific integration issues.
+2. Expand CWN conformance using shared `data/rules/` without forking rules.
+3. Implement a real, optional LLM provider behind the validated intent boundary.
+4. Persist/reconcile Mesa social simulation through authoritative game-world handlers.
+5. Add multiplayer end-to-end coverage and server-restart persistence tests.
+
+## Implementation scaffold and commands
 
 ## Quick start
 
