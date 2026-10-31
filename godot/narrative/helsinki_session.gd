@@ -7,7 +7,7 @@ extends RefCounted
 
 const DATA := "res://godot/narrative/helsinki_case.json"
 const PARTY_CAP := 4
-const PC := {"id": "pc", "name": "You", "role": "UNSA Academy graduate"}
+const PC := {"id": "tony_german", "name": "Tony German", "role": "UNSA Academy graduate"}
 
 var data: Dictionary = {}
 var current := ""

@@ -107,14 +107,14 @@
   "party_cap": 4,
   "recruits": [
     {
-      "id": "romppainen",
-      "name": "Harri Romppainen",
-      "role": "Inspector, UNSA"
+      "id": "laura_wendt",
+      "name": "Laura Wendt",
+      "role": "UNSA field agent, tactical specialist"
     },
     {
-      "id": "aalto",
-      "name": "Aalto",
-      "role": "Forensic technician, UNSA"
+      "id": "harri_romppainen",
+      "name": "Harri Romppainen",
+      "role": "Senior UNSA Inspector"
     }
   ],
   "clues": {
