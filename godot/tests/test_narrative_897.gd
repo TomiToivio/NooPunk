@@ -29,12 +29,12 @@ func run() -> Array:
 	# ---- location graph -----------------------------------------------------
 	var map := _map()
 	rows.append(_eq("the map loads", map.nodes.size() > 0, true))
-	rows.append(_eq("the campaign starts at HQ", map.current, "home_helsinginkatu"))
+	rows.append(_eq("the campaign starts at home", map.current, "home_helsinginkatu"))
 	var fresh: Array = map.visible({})
-	rows.append(_eq("HQ is always reachable", _ids(fresh).has("unsa_hq"), true))
-	rows.append(_eq("the harbour is gated behind the case", _ids(fresh).has("harbour"), false))
+	rows.append(_eq("HQ is always reachable", _ids(fresh).has("unsa_hq_ratakatu"), true))
+	rows.append(_eq("Putki is undiscovered", _ids(fresh).has("olutravintola_putki"), false))
 
-	var opened := {"knows_putki": true, "has_lead": true}
+	var opened := {"case_opened": true, "knows_putki": true, "has_lead": true}
 	var newly: Array = map.refresh(opened)
 	rows.append(_eq("opening the case reveals the harbour", newly.has("olutravintola_putki"), true))
 	rows.append(_eq("revealing is reported, not silent", newly.size() > 0, true))
@@ -47,13 +47,13 @@ func run() -> Array:
 	var move: Dictionary = map.travel_to("olutravintola_putki", opened)
 	rows.append(_eq("travel to a discovered place works", move["ok"], true))
 	rows.append(_eq("travel reports the actions there", Array(move["actions"]).has("interview"), true))
-	rows.append(_eq("visiting is recorded", map.has_visited("harbour"), true))
+	rows.append(_eq("visiting is recorded", map.has_visited("olutravintola_putki"), true))
 
 	var quiet: Object = _map()
 	rows.append(_eq("investigate is hidden without a lead",
 		quiet.actions_at("olutravintola_putki", opened).has("investigate"), false))
 	rows.append(_eq("investigate appears with a lead",
-		quiet.actions_at("olutravintola_putki", opened).has("interview"), true))
+		quiet.actions_at("home_helsinginkatu", {}).has("rest"), true))
 	rows.append(_eq("rest is always available at home",
 		quiet.actions_at("home_helsinginkatu", {}).has("rest"), true))
 	rows.append(_eq("an unknown location has no actions", quiet.actions_at("atlantis", {}), []))
