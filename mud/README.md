@@ -3,9 +3,9 @@
 A **separate, text-based, persistent multiplayer** game built on [Evennia](https://www.evennia.com/), sharing
 NoöPunk canon and CWN rules with the Godot game but **no runtime**.
 
-**Status: boundary established, platform-neutral core implemented (#949).** The Evennia server, the text command
-set, the browser client, a real LLM provider and Mesa are **not** started — what runs today is the core those
-will host, built first precisely so that "the LLM must not decide" and "the simulation must not write" are
+**Status: boundary established (#947), platform-neutral core implemented (#949), Evennia scaffold added (#948).**
+The Evennia runtime and multiplayer behaviour have **not** been verified; what is tested today is the core the
+server will host — precisely so that "the LLM must not decide" and "the simulation must not write" are
 properties with tests rather than intentions.
 
 ## The boundary, in one table
@@ -14,7 +14,7 @@ properties with tests rather than intentions.
 |---|---|---|
 | Runtime | Godot 4, `project.godot` at repository root | Python 3, Evennia server |
 | Interface | graphical, `scenes/`, `godot/` | text commands, telnet/web client |
-| Tests | `godot --headless --script res://godot/tests/run_tests.gd` | pytest under `mud/tests/` |
+| Tests | `godot --headless --script res://godot/tests/run_tests.gd` | Python unittest under `mud/tests/` |
 | Entry point | `project.godot` | `mud/server/` (Evennia layout) |
 | Dependencies | Godot binary, no Python runtime | `mud/requirements.txt`, `mud/pyproject.toml` |
 
@@ -72,3 +72,10 @@ The architecture decision behind these is
 
 The four steps above remain unstarted. The core underneath them is not: it is tested, and it is what Evennia
 will host.
+
+## Evennia scaffold (PR #948)
+
+A first Evennia project skeleton exists under `mud/` with its own requirements and configuration, so the server
+layout is decided before game content is written. **It has not been started or verified in this environment.**
+Treat it as a scaffold, not as a running MUD: no multiplayer behaviour, no command set and no browser client
+have been exercised.
