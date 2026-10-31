@@ -533,3 +533,16 @@ Baseline paths remain root `project.godot`, `scenes/main.tscn`, `godot/core/`, `
 No further core-rule replacement by default. Replacing CWN requires a separately approved foundational
 decision; brainstorming a mechanic does not authorise it. The seven-attribute UNSA sheet (#835) is a
 **mod**, not the baseline.
+
+
+## Two games, one repository (#946)
+
+**NoöPunk Godot** is the graphical game: `project.godot`, `godot/`, `scenes/`.
+**NoöPunk MUD** is a separate text multiplayer game under `mud/` (Evennia + Python), sharing canon and CWN
+rules but **no runtime**.
+
+- Identify the target game before editing. MUD work stays under `mud/`; Godot work stays in the Godot tree.
+- No cross-imports: `mud/` must not reference `res://`, `.gd` or `.tscn`; Godot code must not import `mud.*`.
+  `tests/test_mud_godot_boundary.py` enforces both directions.
+- CWN is shared input, never forked. Noösphere, ideology, social ties and ontological shock are modules on
+  top of the baseline.

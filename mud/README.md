@@ -1,44 +1,74 @@
 # NoöPunk MUD
 
-A **second game** in the NoöPunk universe: persistent, text-only, multiplayer. Python. It shares the canon and
-the CWN rules with NoöPunk Godot and nothing else — no scenes, no assets, no runtime.
+A **separate, text-based, persistent multiplayer** game built on [Evennia](https://www.evennia.com/), sharing
+NoöPunk canon and CWN rules with the Godot game but **no runtime**.
 
-Authority: [`docs/design/ADR_946_NOPUNK_MUD_BOUNDARY.md`](../docs/design/ADR_946_NOPUNK_MUD_BOUNDARY.md),
-issue #946.
+**Status: boundary established, platform-neutral core implemented (#949).** The Evennia server, the text command
+set, the browser client, a real LLM provider and Mesa are **not** started — what runs today is the core those
+will host, built first precisely so that "the LLM must not decide" and "the simulation must not write" are
+properties with tests rather than intentions.
 
-## Which game am I in?
+## The boundary, in one table
 
-| | NoöPunk Godot | NoöPunk MUD |
+| | NoöPunk Godot | NoöPunk MUD (this directory) |
 |---|---|---|
-| Where | repository root (`project.godot`, `scenes/`, `godot/`) | `mud/` |
-| Runtime | Godot 4 | Python (Evennia will host it) |
-| Interface | graphical | text commands |
-| Players | single player | persistent multiplayer |
-| Shared | `data/rules/`, `data/world/`, canon documents | the same files, **read-only** |
+| Runtime | Godot 4, `project.godot` at repository root | Python 3, Evennia server |
+| Interface | graphical, `scenes/`, `godot/` | text commands, telnet/web client |
+| Tests | `godot --headless --script res://godot/tests/run_tests.gd` | pytest under `mud/tests/` |
+| Entry point | `project.godot` | `mud/server/` (Evennia layout) |
+| Dependencies | Godot binary, no Python runtime | `mud/requirements.txt`, `mud/pyproject.toml` |
 
-Editing a `.gd` file means you are in the Godot game. Editing a `.py` file under `mud/` means you are in the
-MUD. Neither may import the other; `tests/test_mud_core.py` fails if that changes.
+## What is shared
 
-## Run the core
+Canon, scenario data, CWN mechanics **as specifications**, and platform-neutral schemas. Shared inputs are
+read, not forked: if a rule changes, it changes once and both games follow.
 
-The platform-neutral core runs today, without Evennia or Mesa installed:
+## What is never shared
+
+Runtime assumptions, UI code, scene files, and release automation. A MUD change must not be able to alter
+Godot behaviour, and a Godot change must not be able to alter the MUD's.
+
+## Rules of engagement for agents
+
+1. **Identify the target game before editing.** MUD work stays under `mud/`; Godot work stays under
+   `godot/`, `scenes/` and the root `project.godot`.
+2. **No cross-imports.** `mud/` must not reference `res://`, `.gd`, `.tscn`; Godot code must not import
+   `mud.*`. `tests/test_mud_godot_boundary.py` enforces this.
+3. **CWN is not forked.** Noösphere, ideology, social ties and ontological shock are modules layered on the
+   CWN baseline, never edits to it.
+
+
+## What exists today
 
 ```bash
 cd mud
-python -m pytest tests -q
+python -m pytest tests -q        # 22 passed
 ```
-
-## What exists
 
 | Module | Responsibility |
 |---|---|
-| `nopunk_mud/rules_contract.py` | the shared CWN facts (difficulties, untrained modifier, bounds) and the `RulesEngine` protocol the host implements |
-| `nopunk_mud/world_state.py` | the authoritative world: rooms, characters, resources, UNSA faction, validated events, JSON persistence and an event log |
-| `nopunk_mud/llm_gateway.py` | agents return **proposals**; forbidden intents are refused; a deterministic fallback runs with no provider |
-| `nopunk_mud/sim_bridge.py` | simulations emit `SimEvent`s; `reconcile()` applies them as clamped world events |
+| `nopunk_mud/rules_contract.py` | the shared CWN facts (difficulty bands, untrained modifier, bounds) read from `data/rules/without_number.json`, a `Check` type, and a `RulesEngine` protocol the host implements |
+| `nopunk_mud/world_state.py` | the authoritative world — rooms, characters, items, the **UNSA** faction — with validated events, idempotent ids, JSON persistence and an append-only log |
+| `nopunk_mud/llm_gateway.py` | agents return **proposals**; `add_item`, `grant_success`, `teleport` and friends are refused by name; a deterministic fallback runs with no provider |
+| `nopunk_mud/sim_bridge.py` | simulations emit `SimEvent`s carrying faction pressure only; deltas are capped at ±3 and refusals are reported, not retried |
 
-## What does not exist yet (milestones 2–7 of #946)
+The architecture decision behind these is
+[`docs/design/ADR_946_NOPUNK_MUD_BOUNDARY.md`](../docs/design/ADR_946_NOPUNK_MUD_BOUNDARY.md).
 
-Evennia bootstrap, the text command set, the browser client, the Concordia-style GM and NPCs wired to a real
-provider, Mesa as an actual dependency, and the multiplayer integration test. The core above is what those
-will host — which is why it was built first and tested without them.
+### Two bugs the tests caught on day one
+
+1. **Rank 0 was treated as untrained.** In Without Number `-1` is untrained and `0` is trained; the first
+   version penalised every starting character by −1.
+2. **`join` was missing from the event schema**, so no character could enter the world at all.
+
+## Next steps, in order
+
+
+1. Evennia project skeleton under `mud/` with its own requirements and a smoke test that the server starts
+   headless — nothing about game content yet.
+2. A CWN character bridge that reads `data/rules/` without copying it.
+3. Concordia-style LLM agent orchestration, kept behind an interface so the MUD is playable without it.
+4. Mesa-based faction/social simulation, consuming the same canon data.
+
+The four steps above remain unstarted. The core underneath them is not: it is tested, and it is what Evennia
+will host.
