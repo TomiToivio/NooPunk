@@ -38,6 +38,7 @@ class MudBoundaryTest(unittest.TestCase):
         """
         offenders = []
         for path in _files(MUD, (".py", ".md", ".json", ".txt")):
+            # A boundary test may name the literal it forbids; only runtime code is scanned.
             if "tests" in path.relative_to(MUD).parts:
                 continue
             text = path.read_text(encoding="utf-8", errors="ignore")

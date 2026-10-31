@@ -20,10 +20,13 @@ def seed_helsinki():
     street = _room("Helsinginkatu", "Trams rumble past shuttered shops. No one agrees what happened last night.", scavengeable=True, food_cache=8)
     kurvi = _room("Kurvi", "A restless crowd trades conflicting news and scavenged batteries.", scavengeable=True, food_cache=4)
     unsa = _room("UNSA safehouse", "A former office now staffed by exhausted volunteers. A notice promises water and registration.", unsa_recruitment=True)
+    university = _room("University of Helsinki", "An unattended terminal hums in the quiet department corridor.")
     _exit("east", street, kurvi)
     _exit("west", kurvi, street)
     _exit("north", street, unsa)
     _exit("south", unsa, street)
+    _exit("east", unsa, university)
+    _exit("west", university, unsa)
     if not search_object("UNSA dispatcher", exact=True):
         npc = create_object("evennia.DefaultCharacter", key="UNSA dispatcher", location=unsa)
         npc.db.npc_dialogue = "We need food, first aid, and people who can keep their heads. You can sign up here."
