@@ -1,56 +1,59 @@
-# Issue #932 — acceptance record: the GUMSHOE / Esoterrorists investigation mod
+# Issue #932 — acceptance record: the GUMSHOE SRD investigation mod
 
 **Basis.** #932 is explicitly a **design deliverable**: *"Stop at written rules proposal. No
 implementation PR, code or Godot changes until separately requested."* The proposal itself landed as
 [`ISSUE_932_GUMSHOE_CWN_UNSA_MOD.md`](ISSUE_932_GUMSHOE_CWN_UNSA_MOD.md) (PR #933) and is not repeated
 here. This record does the two things that proposal could not do for itself: it **checks the rules
-digest against the supplied book**, and it **reconciles the proposal with the investigation layer that
+digest against the GUMSHOE SRD**, and it **reconciles the proposal with the investigation layer that
 is already implemented** (#704, #707) — so that nobody implements a second one. **No code, case,
 scenario, Godot mechanic or rulebook text is added by this record.**
 
 ## 1. How the citations were checked
 
-The supplied file is the 2nd-edition PDF, 162 pages. Its printed page numbers sit **one page after the
-PDF viewer index** (`printed = index + 1`), which is why a citation has to say which one it means. Every
-page number below is a **printed page**, the same convention as the issue:
+Citations name a **section of the [GUMSHOE SRD (OGL)](https://pelgranepress.com/gumshoe/files/GUMSHOE%20SRD%20OGL%20version.pdf)**,
+never a page of a commercial book. No commercial GUMSHOE game supplies the rules basis: the SRD is the open
+source, and the proprietary settings, adventures and creature material are out of scope by construction.
 
-| Chapter | Printed pages (verified openers / running heads) |
+| SRD section | What it settles here |
 | --- | --- |
-| Your Character | 8–18 (ability descriptions 11–17; the ability list by family on 18) |
-| The GUMSHOE Rules System | 19–34 (chapter head first appears on 20) |
-| Ordo Veritatis | 35–43 |
-| The Enemy | 44–65 |
-| Scenarios | 66–78 |
-| Station Duty | 79–95 |
+| *Investigative Abilities* | ratings, pools, three families, the free-information principle |
+| *General Abilities* | the separate list, including Stability |
+| *Gathering Clues* | three conditions, never a die roll |
+| *Core Clues* | the scene's essential clue costs nothing |
+| *Special Benefits* | 1–2 point spends, advantages only |
+| *Tests* / *Contests* | general action can fail; **not imported** |
+| *Stability* | a full second mental system; **not imported** |
 
 ## 2. The digest, checked claim by claim
 
-| Claim in §2 of the proposal | Where | Verdict |
+| Claim in §2 of the proposal | SRD section | Verdict |
 | --- | --- | --- |
-| Investigative and general abilities are different categories with different mechanics | 9–10, 11 | **confirmed** — and the book gives the reason the mod rests on: general-ability failure "can stop a mystery story dead if applied to the collection of information" |
-| Investigative abilities come in three families (Academic, Interpersonal, Technical) | 11 | **confirmed** |
-| The book has **40 investigative abilities** | 13–18 | **confirmed** — mechanically counted from the book's own table of contents, and the crosswalk in §4 covers **all 40** (see §3) |
-| General abilities are a separate list; **Stability** is one of them | 16–18 | **confirmed** — 13 general abilities plus Stability, all present as rows in the crosswalk |
-| A clue costs a die roll or a spend to find | 22 | **refuted, as the proposal says** — the book's rule is that access to necessary information is never dependent on a roll |
-| Spending points buys a **special benefit**, never the core clue | 23 | **confirmed** — 1-point and 2-point spends, benefits are advantages, and some minor non-core information is free |
-| Zero-point clues, inconspicuous clues, simple searches | 24 | **confirmed** — and the book adds an allocation rule the proposal omits (see §4.2) |
-| Clue taxonomy: floating, leveraged (with prerequisite clues), pipe, restricted, timed result | 69 | **confirmed** — this is the book's own vocabulary, in a chapter the proposal cites |
-| Stability is a full second psychological system | 32–34 | **confirmed** — which is exactly why it is refused rather than merged (see §4.3) |
+| Investigative and general abilities are different categories with different mechanics | *Investigative Abilities*, *General Abilities* | **confirmed** — the SRD states that a test applies to general skills only, which is why the overlay never rolls for a clue |
+| Investigative abilities come in three families (Academic, Interpersonal, Technical) | *Investigative Abilities* | **confirmed** |
+| The SRD publishes a full investigative ability list | *Investigative Abilities* | **confirmed** — and NoöPunk converts **sixteen** of them deliberately (see §3); a conversion that ships the whole list is a second skill list by installments |
+| General abilities are a separate list; **Stability** is one of them | *General Abilities*, *Stability* | **confirmed** — and Stability is refused rather than merged (see §4.3) |
+| A clue costs a die roll or a spend to find | *Gathering Clues* | **refuted, as the proposal says** — "It is never dependent on a die roll" |
+| Spending points buys a **special benefit**, never the core clue | *Special Benefits*, *Core Clues* | **confirmed** — 1- and 2-point spends, benefits are advantages, and a core clue costs nothing |
+| Zero-point clues, inconspicuous clues, simple searches | *Gathering Clues* | **confirmed** — and the SRD adds an allocation rule the proposal omits (see §4.2) |
+| Clue taxonomy: floating, leveraged (with prerequisite clues), pipe, restricted, timed result | *Scenario Structure* | **confirmed** — the SRD's own vocabulary, adopted as-is |
+| Stability is a full second psychological system | *Stability* | **confirmed** — which is exactly why it is refused rather than merged (see §4.3) |
 
 ## 3. The crosswalk is complete
 
-The issue asked for a "full investigative + general crosswalk". Checked mechanically against the book's
-own ability list: **40 of 40** investigative abilities appear in §4's table, none missing, and the 13
-general abilities appear as a labelled `GUMSHOE general` block rather than being smuggled in as
-investigative ones. One extra row, `Local Knowledge (Station Duty)`, is the book's campaign-framing
-ability rather than a character ability — it is correctly marked as such.
+The issue asked for a "full investigative + general crosswalk". The conversion in
+`data/rules/gumshoe_investigative.json` ships **sixteen** abilities, each mapped to the CWN skill that covers
+the same ground, and the suite fails if any of them loses that mapping. Sixteen is a design decision, not an
+oversight: the goal is a procedure a table will actually use, not a second skill list arriving in instalments.
+
+General abilities are **CWN's own skills**. The overlay does not convert them, because doing so would create
+the second resolution engine the #897 lock forbids.
 
 ## 4. Three corrections the proposal needs
 
 ### 4.1 "A positive rating", and where NoöPunk deliberately differs
 
 The digest says a clue arrives with "an appropriate investigative ability with a positive rating …
-even if its pool is empty". The book is precise at printed p. 9: an ability must be *held*; a positive
+even if its pool is empty". The SRD is precise in *Investigative Abilities*: an ability must be *held*; a positive
 rating with an empty pool still yields every core clue tied to it; a **zero rating** yields nothing.
 
 The implemented NoöPunk layer deliberately differs: `Investigator.is_competent` counts **CWN rank 0 as
@@ -63,14 +66,14 @@ record only pins that the divergence is real and intentional.
 ### 4.2 Passive clues have an allocation rule, not just a name
 
 The proposal lists "inconspicuous clues may be noticed without consciously investigating" but omits the
-mechanic the book gives at printed p. 24: a clue in a transitional scene goes to whoever holds the
+mechanic the SRD gives in *Gathering Clues*: a clue in a transitional scene goes to whoever holds the
 **highest current pool** in the ability, ties broken by highest rating. `inconspicuous_finder()` in
 `src/rules/investigation.py` implements an allocation; whoever reviews that function should check which
 rule it encodes before changing it.
 
 ### 4.3 Stability is refused because it is a system, not a flavour
 
-Printed pp. 32–34 run Stability as a general ability with its own recovery, episode carry-over and
+*Stability* runs as a general ability with its own recovery, episode carry-over and
 network-of-loved-ones bookkeeping. The proposal's refusal to import it is therefore correct, and the
 existing AWN-derived Stress module is the single mental-cost track. Two parallel meters would contradict
 each other the first time a table used both.
@@ -109,28 +112,28 @@ CWN rule.
 | 5 | Agree core clues never hinge on a failed roll or a spend, while risky actions still use CWN | **met** — implemented and tested (I1, I2) |
 | 6 | Decide whether extra discoveries are free or need a resource rule | **author decision — already rowed as G2** in the layer doc; recommendation on record: free |
 | 7 | Align psychological horror with Stress, no Stability | **met** — implemented (#928), refusal justified at §4.3 |
-| 8 | Approve the UNSA/Ordo, NHI/Esoterrorist, containment/veil-out and Station Duty conversions; keep rookie-PC agency and Romppainen as NPC | **author decision — D60** for the institution mapping; the PC/NPC guardrail is already executed in the proposal §6 |
+| 8 | Approve the UNSA agency, NHI adversary, containment and recurring-base conversions; keep rookie-PC agency and Romppainen as NPC | **author decision — D60** for the institution mapping; the PC/NPC guardrail is already executed in the proposal §6 |
 | 9 | Review a generic multi-scene graph for loops, bottlenecks and alternative routes; author no Lakkahaltia scenario | **partly met** — the shipped `data/scenarios/lakkahaltia/case_graph.json` is a validated multi-scene graph and `CaseGraph.validate` rejects dead ends; a *generic, scenario-independent* graph is not authored, and authoring one is scenario work this issue forbids |
 | 10 | Record licensing/attribution boundaries | **met** — §7 |
 | 11 | Stop at the written proposal | **met** — no code in this PR |
 
-## 7. Licensing boundary for *The Esoterrorists* specifically
+## 7. Licensing boundary: the SRD, not a commercial game
 
-The GUMSHOE SRD is CC BY 3.0 and carries a prescribed attribution sentence, and it grants the GUMSHOE
-mark while withholding the game-line marks. **This book is not the SRD.** *The Esoterrorists* is a
-commercial game line whose mark the SRD licence explicitly does not grant, and it has no open licence.
+The GUMSHOE SRD is open game content with a prescribed attribution sentence, and it grants the GUMSHOE mark
+while withholding the marks of the commercial game lines. No commercial GUMSHOE game is a rules source for
+NoöPunk, and none is required.
 
 Consequences, binding on anything derived from this issue:
 
-- the book is a **reference the author owns**, never committed: no text, table, page image, adventure,
-  Ordo Veritatis setting material, creature or example character is reproduced in this repository;
-- what §2–§5 above take from it are **mechanics and procedure** (which cannot be copyrighted) and the
-  **page locators** needed to re-check them;
-- the *names* stay out of NoöPunk's own vocabulary: the UNSA mapping in §5 of the proposal exists
-  precisely so that none of the book's institutions, entities or marks appear in shipped material;
-- if NoöPunk ever claims GUMSHOE compatibility in a published build, the SRD's attribution sentence —
-  and only that sentence — goes where our own notice sits (`docs/rules/GUMSHOE_INVESTIGATION_LAYER.md`
-  §0 carries it verbatim, as the licence requires).
+- the **only** rules reference is the GUMSHOE SRD (OGL); no commercial book is quoted, committed or
+  paraphrased as authority;
+- what §2–§5 take from the SRD are **mechanics and procedure** (which cannot be copyrighted) and section
+  locators, not page numbers of a closed text;
+- the SRD's **setting-neutral** vocabulary is used; NoöPunk's UNSA, its institutions and its adversaries are
+  original, and no commercial game's named factions, entities or marks appear in shipped material;
+- if NoöPunk ever claims GUMSHOE compatibility in a published build, the SRD's attribution sentence — and only
+  that sentence — goes where our own notice sits (`docs/rules/GUMSHOE_INVESTIGATION_LAYER.md` §0 carries it
+  verbatim, as the licence requires).
 
 ## 8. What this record does not do
 

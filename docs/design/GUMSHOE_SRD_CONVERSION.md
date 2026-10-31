@@ -73,7 +73,7 @@ The evidence notebook from #897/#913 keeps the clue graph; this overlay adds the
 - **No d6 general tests.** CWN resolves uncertainty.
 - **No second ability list.** Investigative abilities are an overlay; general competence is CWN skills.
 - **No Stability or Stress import.** NoöPunk has its own Psyche overlay (`mods/noopunk/psyche.gd`).
-- **No copied Esoterrorists text, creatures or cases.** The SRD is the source; original cases are authored.
+- **No copied commercial-game text, creatures or cases.** The SRD is the only rules source; original cases are authored.
 - **No automatic truth.** An occult clue is evidence, not a cosmology.
 
 ## Acceptance mapping (#932)
