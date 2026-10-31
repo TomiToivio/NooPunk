@@ -1,0 +1,37 @@
+name: NoöPunk MUD
+
+# The MUD is a separate game with its own environment (#946). This job exists so its tests never depend on the
+# Godot job, and so a MUD change cannot break the Godot build by accident.
+
+on:
+  push:
+    paths:
+      - "mud/**"
+      - "data/rules/**"
+      - "data/world/**"
+      - ".github/workflows/mud.yml"
+  pull_request:
+    paths:
+      - "mud/**"
+      - "data/rules/**"
+      - "data/world/**"
+      - ".github/workflows/mud.yml"
+  workflow_dispatch:
+
+jobs:
+  mud-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install the MUD package
+        working-directory: mud
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install pytest
+      - name: Tests (boundary, rules contract, world state, agents, simulation)
+        working-directory: mud
+        run: python -m pytest tests -q

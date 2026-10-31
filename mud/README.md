@@ -74,3 +74,29 @@ Commands: `look`, `say`, `north` / `south` / exits, `sheet`, `check <skill>=<dif
 ## Current scope
 
 This PR provides an isolated playable-text vertical-slice scaffold and unit-tested pure mechanics/contracts. Survival, GM, NPC and Mesa integration are intentionally minimal, not a claim of full #946 acceptance. The first faction is UNSA; rogue factions and player-founded organizations come later.
+
+## Platform-neutral core (PR #949)
+
+This is an additional, engine-independent layer intended for eventual integration with the Evennia scaffold above. Read [`docs/design/ADR_946_NOPUNK_MUD_BOUNDARY.md`](../docs/design/ADR_946_NOPUNK_MUD_BOUNDARY.md) for the architecture decision. Neither MUD layer imports Godot runtime code.
+
+## Run the core
+
+The platform-neutral core runs today, without Evennia or Mesa installed:
+
+```bash
+cd mud
+python -m pytest tests -q
+```
+
+## What exists
+
+| Module | Responsibility |
+|---|---|
+| `nopunk_mud/rules_contract.py` | the shared CWN facts (difficulties, untrained modifier, bounds) and the `RulesEngine` protocol the host implements |
+| `nopunk_mud/world_state.py` | the authoritative world: rooms, characters, resources, UNSA faction, validated events, JSON persistence and an event log |
+| `nopunk_mud/llm_gateway.py` | agents return **proposals**; forbidden intents are refused; a deterministic fallback runs with no provider |
+| `nopunk_mud/sim_bridge.py` | simulations emit `SimEvent`s; `reconcile()` applies them as clamped world events |
+
+## Integration work still required
+
+The separate Evennia command-and-room scaffold exists under `mud/server/`, `mud/commands/`, `mud/typeclasses/` and `mud/world/` (PR #948), but has **not been smoke-tested on a live Evennia server**. The platform-neutral `nopunk_mud` core added here is not yet wired to those Evennia handlers. Provider-backed Concordia-style GM/NPCs, an authoritative Mesa reconciliation loop and multiplayer integration tests remain future work. Do not claim the two layers are already connected.
