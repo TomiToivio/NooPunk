@@ -16,6 +16,60 @@
       "status": "awaiting_binary_upload",
       "approval": "approved visual style and portrait by user",
       "description": "Helsinki street corner full body character sheet art: green eyes, moustache, cigarette, trench coat; 1970s European comics."
+    },
+    {
+      "id": "helsinki_home_helsinginkatu",
+      "category": "locations",
+      "target_path": "res://images/locations/helsinki_home_helsinginkatu.png",
+      "status": "awaiting_artwork",
+      "approval": "required from the author before use",
+      "description": "Helsinki location art for map node home_helsinginkatu (Home · Helsinginkatu): ordinary street or interior, 1970s European comic style per docs/ART_DIRECTION_IMAGES.md.",
+      "map_node": "home_helsinginkatu"
+    },
+    {
+      "id": "helsinki_unsa_hq_ratakatu",
+      "category": "locations",
+      "target_path": "res://images/locations/helsinki_unsa_hq_ratakatu.png",
+      "status": "awaiting_artwork",
+      "approval": "required from the author before use",
+      "description": "Helsinki location art for map node unsa_hq_ratakatu (UNSA Helsinki Field Office · Ratakatu): ordinary street or interior, 1970s European comic style per docs/ART_DIRECTION_IMAGES.md.",
+      "map_node": "unsa_hq_ratakatu"
+    },
+    {
+      "id": "helsinki_olutravintola_putki",
+      "category": "locations",
+      "target_path": "res://images/locations/helsinki_olutravintola_putki.png",
+      "status": "awaiting_artwork",
+      "approval": "required from the author before use",
+      "description": "Helsinki location art for map node olutravintola_putki (Olutravintola Putki): ordinary street or interior, 1970s European comic style per docs/ART_DIRECTION_IMAGES.md.",
+      "map_node": "olutravintola_putki"
+    },
+    {
+      "id": "helsinki_university_of_helsinki",
+      "category": "locations",
+      "target_path": "res://images/locations/helsinki_university_of_helsinki.png",
+      "status": "awaiting_artwork",
+      "approval": "required from the author before use",
+      "description": "Helsinki location art for map node university_of_helsinki (University of Helsinki): ordinary street or interior, 1970s European comic style per docs/ART_DIRECTION_IMAGES.md.",
+      "map_node": "university_of_helsinki"
+    },
+    {
+      "id": "helsinki_kurvi",
+      "category": "locations",
+      "target_path": "res://images/locations/helsinki_kurvi.png",
+      "status": "awaiting_artwork",
+      "approval": "required from the author before use",
+      "description": "Helsinki location art for map node kurvi (Kurvi): ordinary street or interior, 1970s European comic style per docs/ART_DIRECTION_IMAGES.md.",
+      "map_node": "kurvi"
+    },
+    {
+      "id": "helsinki_unsa_underground",
+      "category": "locations",
+      "target_path": "res://images/locations/helsinki_unsa_underground.png",
+      "status": "awaiting_artwork",
+      "approval": "required from the author before use",
+      "description": "Helsinki location art for map node unsa_underground (Ö-Mappi underground complex): ordinary street or interior, 1970s European comic style per docs/ART_DIRECTION_IMAGES.md.",
+      "map_node": "unsa_underground"
     }
   ]
 }

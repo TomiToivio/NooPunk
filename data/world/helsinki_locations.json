@@ -12,7 +12,7 @@
         0.69,
         0.31
       ],
-      "illustration": "",
+      "illustration": "res://images/locations/helsinki_home_helsinginkatu.png",
       "actions": [
         "inspect_apartment",
         "rest",
@@ -31,7 +31,7 @@
         0.38,
         0.76
       ],
-      "illustration": "",
+      "illustration": "res://images/locations/helsinki_unsa_hq_ratakatu.png",
       "actions": [
         "reception",
         "rookie_welcome",
@@ -51,7 +51,7 @@
         0.51,
         0.49
       ],
-      "illustration": "",
+      "illustration": "res://images/locations/helsinki_olutravintola_putki.png",
       "actions": [
         "interview",
         "listen",
@@ -71,7 +71,7 @@
         0.52,
         0.54
       ],
-      "illustration": "",
+      "illustration": "res://images/locations/helsinki_university_of_helsinki.png",
       "actions": [
         "research",
         "interview",
@@ -91,7 +91,7 @@
         0.73,
         0.23
       ],
-      "illustration": "",
+      "illustration": "res://images/locations/helsinki_kurvi.png",
       "actions": [
         "explore",
         "interview",
@@ -111,7 +111,7 @@
         0.39,
         0.78
       ],
-      "illustration": "",
+      "illustration": "res://images/locations/helsinki_unsa_underground.png",
       "actions": [
         "investigate",
         "travel"
