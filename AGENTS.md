@@ -1,3 +1,15 @@
+# PRIORITY OVERRIDE #950 — authoritative (31 Oct 2026)
+
+**The Python Evennia MUD in `mud/` is the flagship and default target for all NoöPunk game implementation.** All older Godot-first directives below are historical if they conflict. Godot remains in maintenance-only mode unless an issue explicitly names it. Never delete legacy Godot work.
+
+**Implement in this order:** (1) complete CWN Deluxe/SRD conformance in tested pure-Python mechanics and wire to Evennia, (2) a *finished deterministic single-player UNSA campaign with side quests*, requiring no human/LLM GM or other player, (3) optional multiplayer, Concordia LLM agents/GM, Mesa simulation and non-UNSA factions. Don't make 3 a prerequisite for 2.
+
+**Rulebook parity:** for every mechanical MUD change update tabletop `rulebook/WITHOUT_NUMBER_BASELINE.md` or `RULEBOOK.md` as appropriate, the traceability matrix `docs/design/ISSUE_950_CWN_DELUXE_AUDIT.md`, and matching tests. CWN is locked as core; narrativist NoöPunk mods are separate extensions. The uploaded CWN Deluxe rulebook is a reference, not a file to commit or reproduce.
+
+**Scope:** `mud/` for implementation, `docs/` and canonical tabletop rules only for coordinated docs, not Godot runtime. See issue #950.
+
+---
+
 # FOUNDATIONAL AUTHOR DECISION — issue #897 (2026-10-31)
 
 This decision supersedes the **presentation and gameplay** portions of #848 and older directives where they conflict. The **rules foundation remains the same**: published Cities Without Number (CWN) is permanently the primary OSR chassis; compatible Stars Without Number (SWN) psionics/space/factions and selective WWN/AWN material can extend it where appropriate. Do **not** propose or introduce a replacement core dice engine, attribute scheme, tactical framework or bespoke rulebook. Godot uses the repository-root `project.godot`, `scenes/main.tscn`, and `godot/core/` CWN rules. Historical 1d10/Fate prototypes are not authoritative.
