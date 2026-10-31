@@ -1,42 +1,39 @@
 # GUMSHOE investigation overlay for CWN: UNSA design specification
 
-**Status:** proposed rules only. **Issue:** #932. **Rules basis:** user-supplied *The Esoterrorists*, 2nd ed. (book pp. 8–34, 35–65, 66–77, 79–95). **Authority:** #897 CWN foundational lock.
+**Status:** proposed rules only. **Issue:** #932. **Rules basis:** user-supplied *The commercial GUMSHOE title*, 2nd ed. (book pp. 8–34, 35–65, 66–77, 79–95). **Authority:** #897 CWN foundational lock.
 
 ## 1. Goals / non-goals
 
-- Enable genuinely satisfying **X-Files / Esoterrorists / Nordic psychiatric-horror investigations** starring a **player-created, tabula-rasa rookie UNSA agent** whose personality and investigative identity emerge from the player's choices. **Inspector Dr. Harri S. Romppainen is an NPC supervisor**, not the PC; he may join the field party occasionally when a mission warrants it.
+- Enable genuinely satisfying **paranoid-conspiracy / Nordic psychiatric-horror investigations** starring a **player-created, tabula-rasa rookie UNSA agent** whose personality and investigative identity emerge from the player's choices. **Inspector Dr. Harri S. Romppainen is an NPC supervisor**, not the PC; he may join the field party occasionally when a mission warrants it.
 - Preserve the original CWN character sheet, skills, 2d6 attribute + skill checks, saves, hacking, combat, Edges/Foci, equipment, leveling and compatible Without Number modules.
 - Preserve GUMSHOE's breakthrough: **a mystery cannot stop because someone missed a roll for essential information**. Finding clues and interpreting them are different actions.
-- Let original *Esoterrorists* cases be translated/adapted scene-by-scene with a GM-only mapping table.
+- Let legally reusable GUMSHOE SRD-based generic investigative scenes be translated into CWN with a GM-only mapping table; proprietary adventures are not implementation sources.
 - Preserve the subtly uncanny NoöPunk tone; do not make NHI explanations automatically conclusive, or define anomalous reports as true in real life.
-- **Not now:** implement in Godot, add second skill tree, replace CWN, introduce GUMSHOE d6 general tests, duplicate Stability/Stress, convert copyrighted creatures verbatim, or import the full Esoterrorists game.
+- **Not now:** implement in Godot, add second skill tree, replace CWN, introduce GUMSHOE d6 general tests, duplicate Stability/Stress, copy proprietary monsters, settings or adventures, or import a full GUMSHOE game.
 
-## 2. GUMSHOE rules digest from the uploaded *The Esoterrorists*, 2nd Edition (Robin D. Laws; Gareth Ryder-Hanrahan)
+## 2. GUMSHOE rules digest: OGL SRD only
 
-**Source**: user-supplied PDF `Esoterrorists_2nd_Edition_linked.pdf` (2013 printing, 162 PDF pages). *Book page numbers* below, not PDF viewer numbering. This is an original operational summary, not replacement/reproduction of the book.
+**Sole external GUMSHOE rules source:** [Pelgrane Press, *GUMSHOE SRD OGL Version*](https://pelgranepress.com/gumshoe/files/GUMSHOE%20SRD%20OGL%20version.pdf), © 2013 Pelgrane Press; Robin D. Laws, additional material by Kenneth Hite. This is a 68-page generic system reference, not a license to use any publisher game settings. Cite SRD PDF page numbers for source claims.
 
-### Character / resolution division (book pp. 8–10, 19–34)
-- GUMSHOE divides abilities into **Investigative** (Academic, Interpersonal, Technical) and **General** abilities. Investigative ratings are professional competence; investigative **pools** are separate, depletable points. General ability ratings/pools support uncertain action and conflict; the two categories have different mechanics.
-- An appropriate investigative ability with a positive **rating** discovers essential clues **even if its pool is empty**. Spending investigative points gives **special benefits** (usually 1–2 pool points), never core clues. Relevant free information may also be **zero-point clues**.
-- To discover a clue, the investigator must reach a relevant scene, bring suitable expertise, and investigate/indicate an appropriate approach. A plausible alternative to the listed ability works. Obvious/passive clues can be volunteered; players should actively pursue leads.
-- **Core clue**: points the PCs onward, never hidden behind a die roll or spend. **Special benefit**: extra color, advantage, earlier insight, NPC goodwill or tactical preparation, not required to finish the case.
-- **Inconspicuous clues** may be noticed without consciously investigating; **simple searches** cover ordinary searching without making the mystery hinge on dice.
-- GUMSHOE's full general system includes simple tests, contests, spends, combat, Health, Stability, recovery and improvement. **Do not import these mechanics**; equivalent actions remain CWN.
+### Core system principles (SRD, pp. 1–6 and clue/mystery sections)
+- GUMSHOE distinguishes **investigative** expertise (discovering information that advances a case) from **general** abilities (uncertain actions, conflict, risk and survival).
+- The original system uses **ratings** and expendable **pools**. With appropriate expertise and circumstances, *core clues* necessary to progress are discovered without a roll; point spends provide additional special benefits, never mandatory core information.
+- Clue delivery depends on plausible access, a relevant investigative approach and appropriate fictional competency. The referee can accept alternate methods and volunteer conspicuous/basic observations.
+- Core clues, optional benefits, zero-point clues, simple searches, evidence provenance and non-mandatory ancillary discoveries serve different purposes.
+- GUMSHOE's general tests, contests, combat, health and other pools **are not imported into CWN**. Use existing CWN and approved Without Number procedures instead.
 
-### Mystery design (book pp. 20–24, 66–77)
-- Design meaningful scenes and pathways between them. Distinguish core / optional / alternative scenes, antagonist reactions, hazardous scenes, conclusion, and running clocks. An investigation is not a railroad: many approaches and sequences can reach the essential information.
-- **Floating core clue**: place an essential lead at any one of several credible scenes to keep momentum.
-- **Leveraged clue**: a previously found fact is presented to a reluctant witness so they reveal further information.
-- **Pipe clue**: planted information that becomes significant later when combined with new evidence.
-- **Restricted clue**: obscure knowledge held by a particular investigator; choose narratively based on background, expertise and spotlight, without blocking progress.
-- **Timed result**: a lab/UNSA support analysis arrives later (potentially bringing a core clue).
-- Scenario structure should allow alternate methods, redundancy and sensible fallback leads. Distinguish discovery from figuring out motives, assembling theory and choosing actions.
+### Investigative design (SRD generic principles, adapted for NoöPunk)
+- Build scenes and meaningful, non-linear links between people, locations, records and actionable leads.
+- Allow alternate avenues and floating essential clues where needed. Earlier evidence may become useful later, and additional sources can contextualize it.
+- NPCs and hostile factions react to investigations; challenges can cost time, exposure, trust or safety, without making a required fact depend on one failed roll.
+- Keep *observations*, *testimony* and *interpretations* distinct; a clue does not prove which NHI/noetic/AI explanation is true.
+- These are NoöPunk scenario-authoring proposals drawn from generic GUMSHOE principles, **not imported copyrighted setting lore**.
 
-### Esoterrorists institutional / horror components (book pp. 35–65, 79–95)
-- **Ordo Veritatis** covert cells, briefings, support stations, deployment, investigation, counter-operations, neutralization, **veil-out**/containment, protocols and ethics → UNSA team and organizational play.
-- **Esoterrorist** cells and **Outer Dark Entities**, with the **Membrane**/reality-breach ideas → NoöPunk NHI threats, human collaborators, noetic anomalies, disinformation and disputed in-world models.
-- **Station Duty** supplies a small-area, ongoing investigation framework with local contacts, local knowledge, a standing station, recurring characters and town/city relationships; particularly relevant for Helsinki neighborhoods, hospitals, university and UNSA.
-- The book has its own **Stability** and psychological horror system. Retain ONLY useful horror/storytelling principles; NoöPunk's existing CWN/AWN-derived Stress/ontological-shock module governs checks and consequences. Avoid two parallel mental-health meters. Do not treat real psychiatric diagnoses as evidence of NHI activity.
+### Rights boundary
+- The cited PDF states that its open content is offered under the **Open Game License v1.0**, with designated **Product Identity** excluded. Its front matter also discusses Creative Commons attribution. The exact PDF's copyright and license notices govern use.
+- **Do not copy product names, named factions, fictional cosmologies, monsters, game-world concepts, trade dress, publisher logos or proprietary scenarios** from any commercial GUMSHOE game.
+- Original UNSA/NHI/NoöPunk setting content remains separately authored. Keep applicable OGL notices/attribution when redistributing SRD-derived Open Game Content, and do a separate licensing review before publication.
+- The mapping tables below are **proposed NoöPunk conversion guidance**; they do not imply that a particular publisher game's ability list or setting is open.
 
 ## 3. Proposed NoöPunk GUMSHOE mod v0.1
 
@@ -44,7 +41,7 @@
 1. **CWN** rules determine character build, mechanical challenges and consequences.
 2. Compatible **SWN/WWN/AWN** additions as previously agreed (e.g., existing Stress).
 3. **GUMSHOE investigation mod** determines clue classification and flow only.
-4. **Esoterrorists → UNSA/NHI** provides campaign institutions, situations and inspiration, not mandatory metaphysical truth or GUMSHOE combat rules.
+4. **NoöPunk UNSA/NHI** supplies original organizations, threats, tone and mysteries; GUMSHOE SRD supplies generic investigative mechanics only.
 
 ### Proposed rules, all subject to tabletop playtest
 **I1. Core clue guarantee.** For each scene, GM writes essential fact(s), plausible investigative approaches and lead destinations. If an investigator reaches the relevant scene and makes a credible attempt, they obtain the core clue **without rolling**. No resource spend or narrowly unique skill prerequisite. Provide alternate approaches if a specialist is absent. Automatic *access to information* is not automatic access to a locked/hostile site.
@@ -67,7 +64,7 @@
 
 **I10. Conversion mode.** When running an original GUMSHOE case, keep the clue/scene map; translate any GUMSHOE *general action* to CWN skills/checks, convert NPCs/threats separately into CWN-compatible stats, and mark unsupported mechanics for GM judgment. This is a **semantic** conversion, not an arbitrary numeric one-to-one formula.
 
-## 4. GM-only crosswalk: Esoterrorists investigative abilities → CWN
+## 4. GM-only crosswalk: GUMSHOE SRD-style investigative domains → CWN
 
 **CWN skills below are suggested approaches, not strict replacements or compulsory gates.** Specific expertise comes from background, profession and fiction. `Work` denotes a relevant professional specialty. `Program` is the relevant computer/data skill; use established CWN hacking procedures for actual intrusion.
 
@@ -100,7 +97,7 @@
 | Impersonate | Perform, Talk, Sneak | Context dependent |
 | Interrogation | Talk, Notice | Formal police interviewing |
 | Intimidation | Talk | If physical force, normal CWN action |
-| Local Knowledge (Station Duty) | Connect, Know, Survive | Local Helsinki networks |
+| Local Knowledge | Connect, Know, Survive | Local Helsinki networks; original NoöPunk specialization |
 | Languages | Know, Connect | Track spoken languages descriptively; no free fluency from skill level |
 | Law | Administer, Know | Legal background |
 | Linguistics | Know | Language structures / discourse |
@@ -135,24 +132,22 @@
 
 **Translation of published scenarios:** A GUMSHOE investigative rating requirement becomes “credible CWN skill/background/expertise”; a general test becomes “choose a fitting CWN check/difficulty”; GUMSHOE numerical pools/spends are **not** transferred. In genuine ambiguous cases the GM decides transparently. Do not grant a flat skill bonus solely because of the mapping.
 
-## 5. Setting conversion: Esoterrorists → NoöPunk
+## 5. Original NoöPunk UNSA investigation framework (not SRD setting material)
 
-| Esoterrorists | NoöPunk adaptation |
+| Generic investigative-campaign function | Original NoöPunk interpretation |
 |---|---|
-| Ordo Veritatis | UNSA, specifically its NHI investigation / containment apparatus |
-| OV secret field cell | Rookie UNSA player-agent's investigation team, supervised by NPC Romppainen (occasional party companion) |
-| OV briefing / analysis station | UNSA situation room, scientific lab, psychiatric/forensic support |
-| OV Station Duty | Recurring Helsinki base, neighborhoods, local contacts and hospital networks, with the rookie PC leading investigations under NPC Romppainen |
-| Esoterrorists | Human NHI collaborators, hostile clandestine factions, cults, opportunists and disinformation operators |
-| Outer Dark Entities | NHI / noetic / anomalous manifestations; classify case-by-case |
-| The Membrane | One **in-universe hypothesis** about noösphere, consensus reality or boundary phenomena; not settled cosmology |
-| Counter-ops / neutralization | UNSA counterintelligence, containment, tactical intervention |
-| Veil-out | UNSA evidence security, public information, cover story and ethical dilemma |
-| Stability / traumatic encounters | Existing NoöPunk Stress and consequences |
-| Esoterrorist cell worksheet / adversary record | UNSA case file, faction graph, suspects, contacts, adversary response |
-| Clue maps | NoöPunk investigation board; optionally LaclauGPT-style actor/relationship links |
+| Agency employing investigators | UNSA NHI investigation and containment services |
+| Field investigation team | Rookie UNSA player-agent and their field partners |
+| Field supervisor / occasional companion | NPC Dr. Inspector Harri S. Romppainen |
+| Case briefing and analysis support | UNSA situation room, technical/forensic support, psychiatric expertise |
+| Recurring local area | Helsinki streets, workplaces, hospitals, local institutions and social networks |
+| Conspiratorial opposition | Human NHI collaborators, hostile clandestine factions and opportunists |
+| Anomalous threat | NHI / noetic / technological incidents, classified by actual evidence |
+| Institutional responses | Safety, containment, lawful intervention, counterintelligence and accountable public information |
+| Psychological horror | Existing NoöPunk Stress/ontological shock; no new Stability pool |
+| Evidence/adversary records | Original UNSA case files, factual source ledger, actors, faction graph and clue links |
 
-**Principle:** The team is not automatically fighting “occult terrorists” every time. Some cases are hoaxes, misidentified phenomena, institutional malfeasance, rogue AGI activity, human conspiracies or genuinely inexplicable events. Distinguish characters' beliefs from verified case evidence.
+This table is original NoöPunk game design, **not an adaptation of licensed GUMSHOE settings**. Not every case is an NHI attack: misidentifications, rogue AI, ordinary crimes, institutional failures and genuine unknowns are all possible.
 
 ## 6. Protagonist and campaign guardrails (author corrections, 2026-10-31)
 
@@ -174,17 +169,17 @@ Potential later design: GM-facing `investigation` object containing scenes, `cor
 ## 8. Design-stage checklist / acceptance criteria
 
 - [ ] Agree CWN is unchanged and always primary.
-- [ ] Review and approve the GUMSHOE rules summary against uploaded Esoterrorists book pp. 8–34, 35–65, 66–77 and 79–95.
+- [ ] Verify the GUMSHOE summary and concepts against the linked OGL SRD only.
 - [ ] Approve/tweak the full investigative + general crosswalk (GM reference, not new player skills).
 - [ ] Agree on expertise tags as optional descriptors, not a second character-builder economy.
 - [ ] Agree core clues never hinge on failed skill rolls or expenditure, while risky ACTIONS still use CWN.
 - [ ] Decide whether optional special discoveries are freely adjudicated (recommended) or receive a **separately proposed** resource rule.
 - [ ] Align psychological horror with existing Stress rather than adding Stability.
-- [ ] Approve UNSA/Ordo, NHI/Esoterrorist, containment/veil-out and Station Duty conversions; preserve rookie-PC agency, Romppainen's NPC-supervisor role and occasional party availability.
+- [ ] Approve **original UNSA/NHI agency, threats, response and recurring-location design**; preserve rookie-PC agency, Romppainen's NPC-supervisor role and occasional party availability.
 - [ ] Review a **generic, scenario-independent** multi-scene investigation graph for loops, bottlenecks, and alternative clue routes; do not author a Lakkahaltia scenario.
-- [ ] Record licensing/attribution boundaries: reference published book, do not copy copyrighted text or adventures wholesale.
+- [ ] Record OGL v1.0, Product Identity exclusions, required copyright/license notices and logo/trademark restrictions; do not import proprietary game material.
 - [ ] **Stop at written rules proposal**. No implementation PR, code or Godot changes until separately requested.
 
 ## Source / related
-- Primary rules reference: **Robin D. Laws, with Gareth Ryder-Hanrahan, _The Esoterrorists_, 2nd ed.** User-uploaded `Esoterrorists_2nd_Edition_linked.pdf`. Key book sections: Your Character pp. 8–17; GUMSHOE Rules System pp. 19–34; Ordo Veritatis pp. 35–43; The Enemy pp. 44–65; Scenarios pp. 66–77; Station Duty pp. 79–95.
+- **Only GUMSHOE implementation reference:** [GUMSHOE SRD OGL Version](https://pelgranepress.com/gumshoe/files/GUMSHOE%20SRD%20OGL%20version.pdf), © 2013 Pelgrane Press. Follow its OGL v1.0 terms, exclusions and attribution.
 - NoöPunk rule foundation: #897.
