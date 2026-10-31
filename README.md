@@ -1,5 +1,7 @@
 # NoöPunk
 
+> **Primary game (#950):** the Python/Evennia [NoöPunk MUD](mud/README.md). Default engineering priority is CWN rules parity and a complete offline-independent single-player UNSA campaign; Godot is now maintenance-only, and multiplayer/LLM/Mesa features follow later. The [CWN Deluxe audit](docs/design/ISSUE_950_CWN_DELUXE_AUDIT.md) tracks the migration. Older Godot-first paragraphs below are historical.
+
 ## Reality has changed. You are still expected at work.
 
 *The future of humanity is no longer exclusively a human concern.*
