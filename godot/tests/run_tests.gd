@@ -68,6 +68,10 @@ func _initialize() -> void:
 		# Release suite references before engine shutdown.
 		suite = null
 		rows.clear()
+		script = null
+	# Give queued Control frees and renderer cleanup a chance to run before the summary and quit.
+	await process_frame
+	await process_frame
 	print("%d checks, %d failed" % [total, failures])
 
 	# Free what the suites attached to the tree. Without this, every scene a test instantiated is still
