@@ -54,6 +54,13 @@ func _ready() -> void:
 		get_tree().change_scene_to_file("res://scenes/chase_screen.tscn"))
 	stack.add_child(chase)
 
+	# #897: location-based narrative mode (Citizen Sleeper-style, CWN underneath, no tactical view).
+	var narrative := Button.new()
+	narrative.text = "Helsinki — narrative case (no tactical view)"
+	narrative.pressed.connect(func() -> void:
+		get_tree().change_scene_to_file("res://godot/ui/narrative_screen.tscn"))
+	stack.add_child(narrative)
+
 	# The campaign is an existing feature of the same root Godot project.
 	# Keep it accessible here rather than requiring agents to maintain a rival title scene.
 	var campaign := Button.new()
