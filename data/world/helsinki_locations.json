@@ -1,0 +1,71 @@
+{
+  "$comment": "Helsinki location graph for the narrative campaign (#897 §4). Data only: no prose beyond what a menu needs, no quest text. Every node is discoverable through play; nothing is hardcoded in the UI. Locations are fictional; real Helsinki geography is used as texture, not as a claim about actual institutions.",
+  "version": 1,
+  "start": "unsa_hq",
+  "nodes": [
+    {
+      "id": "unsa_hq",
+      "name": "UNSA Helsinki HQ",
+      "district": "Kruununhaka",
+      "actions": ["briefing", "case_board", "requisition", "travel"],
+      "requires": [],
+      "reveals": ["home", "market_hall", "harbour"]
+    },
+    {
+      "id": "home",
+      "name": "Your flat",
+      "district": "Kallio",
+      "actions": ["rest", "journal", "recover", "travel"],
+      "requires": [],
+      "reveals": ["night_bar"]
+    },
+    {
+      "id": "market_hall",
+      "name": "Old Market Hall",
+      "district": "Eteläsatama",
+      "actions": ["interview", "buy", "travel"],
+      "requires": [],
+      "reveals": ["harbour"]
+    },
+    {
+      "id": "harbour",
+      "name": "West Harbour",
+      "district": "Jätkäsaari",
+      "actions": ["investigate", "interview", "travel"],
+      "requires": ["case_opened"],
+      "reveals": ["container_yard"]
+    },
+    {
+      "id": "night_bar",
+      "name": "Bar Valo",
+      "district": "Kallio",
+      "actions": ["interview", "recruit", "travel"],
+      "requires": ["met_informant"],
+      "reveals": ["archive"]
+    },
+    {
+      "id": "archive",
+      "name": "City Archive Annexe",
+      "district": "Vallila",
+      "actions": ["investigate", "access_terminal", "travel"],
+      "requires": ["case_opened"],
+      "reveals": ["clinic"]
+    },
+    {
+      "id": "clinic",
+      "name": "Night Clinic",
+      "district": "Sörnäinen",
+      "actions": ["recover", "interview", "travel"],
+      "requires": ["injury_known"],
+      "reveals": []
+    },
+    {
+      "id": "container_yard",
+      "name": "Container Yard",
+      "district": "Jätkäsaari",
+      "actions": ["investigate", "access_terminal", "confront", "travel"],
+      "requires": ["manifest_read"],
+      "reveals": []
+    }
+  ]
+}
