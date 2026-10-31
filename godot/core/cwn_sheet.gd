@@ -51,7 +51,11 @@ static func _attributes(member: Dictionary) -> Dictionary:
 				key = LONG_NAMES[key]
 		if not raw.has(key):
 			continue
-		out[name] = {"score": int(raw[key]), "modifier": modifier_for(int(raw[key]))}
+		var score := int(raw[key])
+		# An out-of-range score gets no modifier: asking the kernel for one trips its assertion, and an
+		# assertion is not a report. validate() names the offending attribute instead.
+		var mod := modifier_for(score) if score >= SCORE_MIN and score <= SCORE_MAX else 0
+		out[name] = {"score": score, "modifier": mod}
 	return out
 
 
@@ -99,7 +103,10 @@ static func build(member: Dictionary, options: Dictionary = {}) -> Dictionary:
 		# An out-of-range score must not blow up the kernel assertion: the sheet is built anyway and
 		# validate() reports the problem, because a crash tells the caller nothing useful.
 		"saves": Character.saves(level, scores) if _scores_in_range(scores) else {},
-		"hp": {"max": int(member.get("hp_max", Character.hit_points(level, constitution)))},
+		# Same reasoning as the saves: an out-of-range score must reach validate() instead of tripping a
+		# kernel assertion before the caller can be told what is wrong.
+		"hp": {"max": int(member.get("hp_max", Character.hit_points(level, constitution)
+			if constitution >= SCORE_MIN and constitution <= SCORE_MAX else 0))},
 		"attack": {"bonus": Progression.attack_bonus(level, bool(member.get("on_target", false)))},
 		"strain": {"capacity": Progression.strain_capacity(constitution)},
 		"encumbrance": {
