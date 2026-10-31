@@ -8,6 +8,7 @@
 extends SceneTree
 
 const SUITES := [
+	"res://godot/tests/test_faction_intelligence_922.gd",
 	"res://godot/tests/test_party.gd",
 	"res://godot/tests/test_noopunk_tags.gd",
 	"res://godot/tests/test_tags.gd",
