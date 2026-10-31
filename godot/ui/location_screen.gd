@@ -25,6 +25,7 @@ var _log: RichTextLabel
 var _clues: Label
 var _status: Label
 var _description: Label
+var _city_canvas: Control
 
 
 func setup(location_map: Object, notebook: Object, campaign_flags: Dictionary = {}) -> void:
@@ -85,6 +86,23 @@ func _build() -> void:
 	_travel.custom_minimum_size = Vector2(300, 240)
 	add_child(_travel)
 
+	# An understated spatial city view. No mystery locations are painted or labelled here.
+	var city_panel := PanelContainer.new()
+	city_panel.position = Vector2(720, 115)
+	city_panel.custom_minimum_size = Vector2(520, 465)
+	add_child(city_panel)
+	_city_canvas = Control.new()
+	_city_canvas.custom_minimum_size = Vector2(510, 440)
+	city_panel.add_child(_city_canvas)
+	var city_title := Label.new()
+	city_title.text = "HELSINKI  /  CITY DIRECTORY"
+	city_title.position = Vector2(20, 14)
+	_city_canvas.add_child(city_title)
+	var city_note := Label.new()
+	city_note.text = "Map nodes shown only after discovery"
+	city_note.position = Vector2(20, 36)
+	_city_canvas.add_child(city_note)
+
 	_clues = Label.new()
 	_clues.position = Vector2(380, 380)
 	_clues.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -128,7 +146,21 @@ func _refresh() -> void:
 	heading.text = "Travel"
 	_travel.add_child(heading)
 	# Undiscovered nodes are not instantiated at all. Even greyed-out labels would spoil the story.
+	# Clear the plotted destination markers before redrawing the discovered city.
+	for marker in _city_canvas.get_children():
+		if marker is Button:
+			_city_canvas.remove_child(marker)
+			marker.free()
 	for place in map.visible(flags):
+		var point: Array = place.get("map_position", [0.5, 0.5])
+		var marker := Button.new()
+		marker.text = String(place.get("name", ""))
+		marker.tooltip_text = String(place.get("district", ""))
+		marker.position = Vector2(20 + float(point[0]) * 340, 65 + float(point[1]) * 300)
+		marker.custom_minimum_size = Vector2(136, 38)
+		marker.disabled = String(place.get("id", "")) == map.current
+		marker.pressed.connect(_on_travel.bind(String(place.get("id", ""))))
+		_city_canvas.add_child(marker)
 		var button := Button.new()
 		button.text = "%s (%s)" % [String(place.get("name", "")), String(place.get("district", ""))]
 		button.disabled = String(place.get("id", "")) == map.current
