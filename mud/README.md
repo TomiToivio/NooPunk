@@ -3,8 +3,7 @@
 A **separate, text-based, persistent multiplayer** game built on [Evennia](https://www.evennia.com/), sharing
 NoöPunk canon and CWN rules with the Godot game but **no runtime**.
 
-**Status: boundary established, implementation not started.** Nothing here runs yet. This file exists so
-that the boundary is decided before the first line of MUD code, which is what #946 asks for.
+**Status: first implementation scaffold added in PR #948.** Evennia runtime and multiplayer behaviour have not yet been verified; see the implementation notes below.
 
 ## The boundary, in one table
 
@@ -12,7 +11,7 @@ that the boundary is decided before the first line of MUD code, which is what #9
 |---|---|---|
 | Runtime | Godot 4, `project.godot` at repository root | Python 3, Evennia server |
 | Interface | graphical, `scenes/`, `godot/` | text commands, telnet/web client |
-| Tests | `godot --headless --script res://godot/tests/run_tests.gd` | pytest under `mud/tests/` |
+| Tests | `godot --headless --script res://godot/tests/run_tests.gd` | Python unittest under `mud/tests/` |
 | Entry point | `project.godot` | `mud/server/` (Evennia layout) |
 | Dependencies | Godot binary, no Python runtime | `mud/requirements.txt` |
 
@@ -35,12 +34,43 @@ Godot behaviour, and a Godot change must not be able to alter the MUD's.
 3. **CWN is not forked.** Noösphere, ideology, social ties and ontological shock are modules layered on the
    CWN baseline, never edits to it.
 
-## Next steps, in order
+## Remaining steps, in order
 
-1. Evennia project skeleton under `mud/` with its own requirements and a smoke test that the server starts
-   headless — nothing about game content yet.
-2. A CWN character bridge that reads `data/rules/` without copying it.
-3. Concordia-style LLM agent orchestration, kept behind an interface so the MUD is playable without it.
-4. Mesa-based faction/social simulation, consuming the same canon data.
+1. Run and smoke-test the Evennia server in a Python environment; correct any Evennia version-specific integration issues.
+2. Expand CWN conformance using shared `data/rules/` without forking rules.
+3. Implement a real, optional LLM provider behind the validated intent boundary.
+4. Persist/reconcile Mesa social simulation through authoritative game-world handlers.
+5. Add multiplayer end-to-end coverage and server-restart persistence tests.
 
-None of that is started. Claiming otherwise is how a second game gets half-built in two places.
+## Implementation scaffold and commands
+
+## Quick start
+
+Requires Python 3.12+ and a compatible Evennia release.
+
+```sh
+cd mud
+python -m venv .venv
+. .venv/bin/activate
+pip install -r requirements.txt
+evennia migrate
+evennia start
+```
+
+Use Evennia's browser client at http://localhost:4001 or a telnet client at localhost:4000. Create two separate accounts to test concurrent presence. **Not validated on a running Evennia server in this PR.** Evennia owns durable character/room state; the game setup hook seeds three connected Helsinki rooms once.
+
+Commands: `look`, `say`, `north` / `south` / exits, `sheet`, `check <skill>=<difficulty>`, `supplies`, `scavenge`, `unsa`, `faction`, `talk <npc>`. Standard Evennia multiplayer communication and connection commands remain available.
+
+## Architecture contract
+
+- `server/`, `commands/`, `typeclasses/`, `world/`: **Evennia only**; persists authoritative rooms, characters and faction inventory.
+- `systems/cwn.py`: a **small verified CWN skill-check slice** (2d6 + skill + attribute modifier against difficulty), not a complete CWN implementation. CWN's remaining character creation, combat, hacking, equipment and progression are future work.
+- `systems/agents.py`: bounded, provider-neutral Concordia-*style* narration and validated intents; no dependence on Concordia internals and no LLM controlling player characters.
+- `systems/simulation.py`: optional Mesa resource agents, emitting proposals only. World mutations must be applied separately by validated Evennia code.
+- `world/seed.py`: starter Helsinki, UNSA safehouse and NPC. The Noösphere / ideology system is deferred as an optional overlay.
+
+**Authority:** Never treat LLM prose or Mesa events as CWN rolls or inventory mutations. Players choose actions. The MUD and Godot share **specification and canon**, not runtime classes. MUD agents must read `mud/AGENTS.md` before changing code.
+
+## Current scope
+
+This PR provides an isolated playable-text vertical-slice scaffold and unit-tested pure mechanics/contracts. Survival, GM, NPC and Mesa integration are intentionally minimal, not a claim of full #946 acceptance. The first faction is UNSA; rogue factions and player-founded organizations come later.
