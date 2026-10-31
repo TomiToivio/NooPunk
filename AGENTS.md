@@ -1,3 +1,38 @@
+# CURRENT DIRECTIVE — read this first (issues #897 + #848, 2026-11-02)
+
+**Rules engine: Cities Without Number, locked. Gameplay: location-based narrative RPG. Art: 1974's
+psychedelic vision of 2045.** This supersedes the *gameplay form* of #848 (top-down movement/combat) and
+every earlier ruleset, while keeping #848's vanilla-CWN baseline.
+
+**Never replace the rules engine again.** No new attribute set, no universal resolution system, no
+narrative substitute for checks. A NoöPunk rule is an **overlay**: it reads core state and may not
+compute core resolution. Changing the core requires a separately approved foundational decision, recorded
+in `docs/design/FOUNDATIONAL_LOCK_897.md` — brainstorming a mechanic is not authorisation.
+
+| Canonical artifact | Path |
+| --- | --- |
+| Foundational lock (authority) | `docs/design/FOUNDATIONAL_LOCK_897.md` |
+| Verbatim / adapted / mod matrix | `docs/design/CORE_VS_MOD_MATRIX_897.md` |
+| Art bible + tokens | `docs/art/ART_BIBLE_1974.md`, `docs/art/design_tokens.json` |
+| Core CWN rules | `godot/core/*.gd` (must not import from `mods/`) |
+| NoöPunk overlays | `mods/noopunk/` |
+| Rulebook | `RULEBOOK.md` (root) |
+| Godot project | `project.godot` → `scenes/main.tscn` |
+| Godot verification | `godot --headless --path . --script res://godot/tests/run_tests.gd` |
+
+**Boundary, enforced by test:** `godot/core/` may not import `mods/`; overlays return data and never
+mutate a core result in place; a mod that needs a roll asks the core for it.
+
+**Dormant, not deleted:** the tactical top-down encounter. It stays in the tree, off the default path.
+Do not delete it and do not build on it; the playable campaign routes through location and conversation
+screens.
+
+**Before writing anything:** check `git log origin/main --oneline -5` **and** open PRs. Three sessions
+have now built the same feature twice in this repository because that check happened at merge time
+instead of first.
+
+---
+
 # CURRENT DIRECTIVE — read this first (issue #848, 2026-10-30)
 
 **Vanilla CWN + vanilla SWN + one top-down Godot RPG. This supersedes every earlier restart or
