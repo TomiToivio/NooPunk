@@ -1,4 +1,4 @@
-"""Cities Without Number: the program catalogue — Verbs, Subjects and what a run costs.
+r"""Cities Without Number: the program catalogue — Verbs, Subjects and what a run costs.
 
 Transcribed from the **Cities Without Number SRD** (CC0) at
 <https://cwn.quadrifons.com/hacking/programs/program-verbs/> and

@@ -36,6 +36,8 @@ def demo(save_path: Path | None = None) -> dict:
     state.apply({"id": "join-1", "type": "join", "character": character.name, "room": "street"})
     state.apply({"id": "faction-1", "type": "faction_join", "character": character.name,
                  "faction": "unsa"})
+    # Mission time is state, so the smoke proves it survives the same save/load as everything else.
+    state.apply({"id": "time-1", "type": "advance_time", "minutes": 12})
 
     # A published check: Notice, routine difficulty, fixed dice so the smoke is reproducible.
     check = character.check("Notice", difficulty=cwn.DIFFICULTIES["routine"], dice=(3, 4))
@@ -52,6 +54,8 @@ def demo(save_path: Path | None = None) -> dict:
         "check": {"total": check.total, "target": check.target, "success": check.success},
         "room": restored.room_of(character.name),
         "faction": restored.characters[character.name]["faction"],
+        "minute": restored.clock().minute,
+        "scene": restored.scene,
         "persisted": path.exists(),
         "llm_calls": 0,
         "other_players": 0,
