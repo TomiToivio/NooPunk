@@ -33,6 +33,8 @@ class State:
     ending: str = ""
     turns: int = 0
     seed: int = 7
+    enemy_hp: dict[str, int] = field(default_factory=dict)
+    consequences: list[str] = field(default_factory=list)
 
 
 class CampaignEngine:
@@ -211,16 +213,26 @@ class CampaignEngine:
         return self._fight(encounter)
 
     def _fight(self, encounter: dict) -> str:
+        key = encounter["npc"]
+        current_hp = self.state.enemy_hp.get(key, encounter["enemy_hp"])
+        if current_hp <= 0:
+            return self._say("The encounter is already over.")
         hit = cwn.attack_roll(attack_bonus=0, attribute=self.attributes["Dexterity"],
                               combat_rank=self.skills.get("Shoot", -1),
                               armor_class=encounter["enemy_ac"], die=self.rng.randint(1, 20))
         if not hit.hit:
-            return self._say(f"You miss. {encounter['enemy_name']} does not.")
+            self.state.consequences.append("missed_shot")
+            incoming = cwn.damage_roll(weapon_die=encounter["enemy_damage_die"],
+                                      roll=self.rng.randint(1, encounter["enemy_damage_die"]),
+                                      attribute=10)
+            self.state.hp = max(0, self.state.hp - incoming)
+            return self._say(f"You miss. {encounter['enemy_name']} hits back for {incoming}. "
+                             f"HP {self.state.hp}/{self.state.max_hp}.")
         dealt = cwn.damage_roll(weapon_die=encounter["player_weapon_die"],
                                 roll=self.rng.randint(1, encounter["player_weapon_die"]),
                                 attribute=self.attributes["Dexterity"])
-        encounter["enemy_hp"] = max(0, encounter["enemy_hp"] - dealt)
-        if encounter["enemy_hp"] <= 0:
+        self.state.enemy_hp[key] = max(0, current_hp - dealt)
+        if self.state.enemy_hp[key] <= 0:
             self._grant(["van_cleared"])
             return self._say(f"You hit for {dealt}. {encounter['enemy_name']} goes down and stays down. "
                              f"The van door is unlocked.")
@@ -236,6 +248,7 @@ class CampaignEngine:
                           if e["location"] == self.state.location), None)
         if encounter is None:
             return self._say("There is nothing to run from.")
+        self.state.consequences.append("fled_encounter")
         self.state.location = encounter["flee_to"]
         return self._say("You run. The case will have to survive without that answer.") + "\n" \
             + self._cmd_look([])
@@ -249,6 +262,8 @@ class CampaignEngine:
             return self._say("You have no evidence. Romppainen would sign it and think less of you.")
         solved = self.knows("access_log") and self.knows("witness_badge")
         self.state.ending = "solved" if solved else "incomplete"
+        if not solved:
+            self.state.consequences.append("insufficient_evidence")
         return self._say(self._ending_text())
 
     def _ending_text(self) -> str:
@@ -277,13 +292,29 @@ class CampaignEngine:
             "talked": self.state.talked,
             "ending": self.state.ending,
             "turns": self.state.turns,
+            "seed": self.state.seed,
+            "rng_state": self._rng_state_json(),
+            "enemy_hp": dict(self.state.enemy_hp),
+            "consequences": list(self.state.consequences),
         }
+
+    def _rng_state_json(self) -> list:
+        # random.Random state is a tuple tree; JSON requires lists.
+        version, values, gaussian = self.rng.getstate()
+        return [version, list(values), gaussian]
 
     @classmethod
     def from_dict(cls, data: dict) -> "CampaignEngine":
         if int(data.get("schema_version", 0)) != SCHEMA_VERSION:
             raise ValueError(f"unsupported campaign schema: {data.get('schema_version')}")
-        engine = cls()
+        engine = cls(seed=int(data.get("seed", 7)))
+        if "rng_state" in data:
+            version, values, gaussian = data["rng_state"]
+            engine.rng.setstate((int(version), tuple(int(v) for v in values), gaussian))
+        else:
+            # Backward compatibility for older saves that only stored turns.
+            # Replays are not inferred; this save continues from its original seed.
+            pass
         engine.state.location = str(data.get("location", "safehouse"))
         engine.state.max_hp = int(data.get("max_hp", engine.state.max_hp))
         engine.state.hp = int(data.get("hp", engine.state.hp))
@@ -293,6 +324,8 @@ class CampaignEngine:
         engine.state.talked = list(data.get("talked", []))
         engine.state.ending = str(data.get("ending", ""))
         engine.state.turns = int(data.get("turns", 0))
+        engine.state.enemy_hp = {str(k): int(v) for k, v in dict(data.get("enemy_hp", {})).items()}
+        engine.state.consequences = list(data.get("consequences", []))
         return engine
 
 

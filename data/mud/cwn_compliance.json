@@ -119,7 +119,7 @@
       "tests": [
         "tests/test_cwn_mission_time.py"
       ],
-      "note": "Ported from the Godot kernel and the SRD: round 6 s, scene 10 min, standard action 1 min; a long jump reports every scene it crossed, and end_scene() refreshes without moving the clock."
+      "note": "Ported from the Godot kernel and the SRD: round 6 s, scene 10 min, standard action 1 min; a long jump reports every scene it crossed. Wired into the MUD's authoritative state as the `advance_time` event — minutes are stored, the scene index is derived, and a save round-trip keeps both."
     },
     {
       "id": "saves",

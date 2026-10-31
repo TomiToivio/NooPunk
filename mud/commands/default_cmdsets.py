@@ -3,7 +3,6 @@ from evennia import Command
 from evennia.commands.default.cmdset_character import CharacterCmdSet
 from systems.cwn import skill_check, attribute_modifier, ATTRIBUTES, SKILLS
 from nopunk_mud.solo_campaign import Campaign, advance
-from commands.solo_arc_cmds import CmdAssignment, CmdRecruitSheet
 
 class CmdSheet(Command):
     key = "sheet"
@@ -105,6 +104,40 @@ class CmdCase(Command):
         self.caller.db.unsa_campaign = state.to_dict()
         self.caller.msg(feedback)
 
+class CmdSolo(Command):
+    """Run the headless UNSA investigation inside Evennia, persistently.
+
+    Usage: solo look | solo status | solo go street | solo examine terminal
+    The solo case maintains its own map, inventory and HP; it never changes the
+    shared Evennia room, combat state, or possessions.
+    """
+    key = "solo"
+    aliases = ["unsa-solo"]
+
+    def func(self):
+        from nopunk_mud.campaign import CampaignEngine
+
+        stored = self.caller.db.unsa_solo_state
+        try:
+            engine = CampaignEngine.from_dict(dict(stored)) if stored else CampaignEngine()
+        except (TypeError, ValueError, KeyError) as exc:
+            self.caller.msg(
+                f"Saved solo case could not be loaded ({exc}). "
+                "No state was overwritten; ask an administrator to inspect the save."
+            )
+            return
+
+        action = self.args.strip() or "look"
+        # CampaignEngine's CLI 'save' writes arbitrary local paths; Evennia already persists state, so reject
+        # that command at the multiplayer command boundary.
+        if action.split()[0].lower() == "save":
+            self.caller.msg("Your solo case is saved automatically after each command.")
+            return
+        output = engine.command(action)
+        self.caller.db.unsa_solo_state = engine.to_dict()
+        self.caller.msg(output)
+
+
 class NoopunkCharacterCmdSet(CharacterCmdSet):
     key = "NoopunkCharacterCmdSet"
     def at_cmdset_creation(self):
@@ -112,8 +145,7 @@ class NoopunkCharacterCmdSet(CharacterCmdSet):
         self.add(CmdSheet())
         self.add(CmdCheckAttr())
         self.add(CmdCase())
-        self.add(CmdAssignment())
-        self.add(CmdRecruitSheet())
+        self.add(CmdSolo())
         self.add(CmdCheck())
         self.add(CmdSupplies())
         self.add(CmdScavenge())

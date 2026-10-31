@@ -1,5 +1,7 @@
 # The investigative layer: GUMSHOE on the CWN chassis (#704)
 
+> **Edition scope, #966 (2026-10-31):** This earlier #704 design document uses the separate CC BY 3.0 SRD edition. Issue #932 explicitly selected the **68-page OGL edition**. These are two legitimately separate publisher documents, not conflicting licenses for the same document. For new #932-derived content, consult [the edition/rights decision](../design/ISSUE_966_PHASE1_STATUS.md) and `gumshoe-srd-ogl-932` in the rights registry. Do not use the CC statements below as license guidance for the OGL PDF.
+
 **Status: design record plus a first implementation.** `src/rules/investigation.py` and
 `tests/test_investigation_layer.py` implement the discovery/interpretation/action split.
 Nothing in the existing rulebook was rewritten.

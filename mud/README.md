@@ -17,10 +17,10 @@ below is the work queue, not a description of finished code.
 | | NoöPunk MUD (this directory) — **primary** | NoöPunk Godot — **secondary/legacy** |
 |---|---|---|
 | Runtime | Python 3, Evennia server | Godot 4, `project.godot` at repository root |
-| Interface | graphical, `scenes/`, `godot/` | text commands, telnet/web client |
-| Tests | `godot --headless --script res://godot/tests/run_tests.gd` | Python unittest under `mud/tests/` |
-| Entry point | `project.godot` | `mud/server/` (Evennia layout) |
-| Dependencies | Godot binary, no Python runtime | `mud/requirements.txt` |
+| Interface | text commands, telnet/web client | graphical, `scenes/`, `godot/` |
+| Tests | Python pytest under `mud/tests/` | `godot --headless --script res://godot/tests/run_tests.gd` |
+| Entry point | `mud/server/` (Evennia layout) | `project.godot` |
+| Dependencies | `mud/requirements.txt` | Godot binary, no Python runtime |
 
 ## What is shared
 
@@ -148,41 +148,14 @@ The engine (`nopunk_mud/campaign/`) owns the state and validates every command; 
 (`nopunk_mud/campaign/content.py`) is data. Core clues are never behind a roll — the case cannot stop because
 of a die — and optional clues cost a check.
 
-## The Evennia layer (#966)
+## Evennia solo case bridge (#950)
 
-The command layer is real: a logged-in character gets the arc through `assignment`, and the state lives on the
-character, not in the process.
+The `solo <command>` command runs the headless `nopunk_mud.campaign.CampaignEngine` inside an Evennia character session. For example: `solo look`, `solo go street`, `solo go university`, `solo examine terminal`, `solo status`. The player character's `db.unsa_solo_state` stores the saved case after every command, including between logins and server restarts when Evennia database persistence is configured. `solo save` is intentionally disabled because arbitrary server-file writes from player input are unsafe. Invalid saves are preserved for inspection rather than overwritten.
 
-```bash
-cd mud
-pip install evennia            # Evennia is a server dependency, not a CI dependency
-mkdir -p server/logs           # Evennia creates this on first start; git does not carry empty dirs
-evennia migrate --noinput
-evennia start                  # then connect to the game port and log in
-```
+The solo case is a self-contained story instance: its room, inventory and combat states do not yet interact with the shared Evennia world. The preexisting `case` command is a separate earlier prologue, not an alias for `solo`. Evennia boot and cross-restart behavior require an actual server test; the bridge has a headless mocked-command test, not a verified running-server smoke test. No new tabletop mechanics are introduced by this adapter.
 
-In game:
-
-```
-assignment            what happened so far, and what you can do
-assignment accept     take the case
-assignment interview  question the witness in Kurvi
-assignment leave      move on to the university
-assignment records    pull the access logs
-assignment press      put the second badge to the man carrying it
-assignment submit     file the case
-recruitsheet          the attributes and skills the checks are resolved against
-case                  the freeform campaign (separate system, same world)
-```
-
-Every check the arc makes is resolved by `nopunk_mud.cwn` — the parity-tested core — through
-`nopunk_mud.kernel_resolver`. The command layer resolves nothing itself.
-
-Run the server-side test with an Evennia-enabled interpreter:
+Server-side test (skips without Evennia):
 
 ```bash
 python -m django test tests.test_evennia_layer_966 --settings=server.conf.settings
 ```
-
-Without Evennia that test skips, so CI stays green; the bridge it exercises is covered without Evennia by
-`tests/test_evennia_bridge_966.py`.
