@@ -147,3 +147,42 @@ python -m nopunk_mud.cli --campaign --script "go street,go university,examine te
 The engine (`nopunk_mud/campaign/`) owns the state and validates every command; the content
 (`nopunk_mud/campaign/content.py`) is data. Core clues are never behind a roll — the case cannot stop because
 of a die — and optional clues cost a check.
+
+## The Evennia layer (#966)
+
+The command layer is real: a logged-in character gets the arc through `assignment`, and the state lives on the
+character, not in the process.
+
+```bash
+cd mud
+pip install evennia            # Evennia is a server dependency, not a CI dependency
+mkdir -p server/logs           # Evennia creates this on first start; git does not carry empty dirs
+evennia migrate --noinput
+evennia start                  # then connect to the game port and log in
+```
+
+In game:
+
+```
+assignment            what happened so far, and what you can do
+assignment accept     take the case
+assignment interview  question the witness in Kurvi
+assignment leave      move on to the university
+assignment records    pull the access logs
+assignment press      put the second badge to the man carrying it
+assignment submit     file the case
+recruitsheet          the attributes and skills the checks are resolved against
+case                  the freeform campaign (separate system, same world)
+```
+
+Every check the arc makes is resolved by `nopunk_mud.cwn` — the parity-tested core — through
+`nopunk_mud.kernel_resolver`. The command layer resolves nothing itself.
+
+Run the server-side test with an Evennia-enabled interpreter:
+
+```bash
+python -m django test tests.test_evennia_layer_966 --settings=server.conf.settings
+```
+
+Without Evennia that test skips, so CI stays green; the bridge it exercises is covered without Evennia by
+`tests/test_evennia_bridge_966.py`.

@@ -330,12 +330,15 @@
         "src/rules/cwn_hacking.py",
         "src/rules/cwn_program_catalogue.py"
       ],
-      "mud": [],
+      "mud": [
+        "mud/nopunk_mud/kernel_resolver.py"
+      ],
       "coverage": "partial",
       "tests": [
-        "tests/test_cwn_hacking_contract.py"
+        "tests/test_cwn_hacking_contract.py",
+        "tests/test_kernel_resolver_966.py"
       ],
-      "divergence": "Playable in Godot as a node-link screen; no MUD command surface.",
+      "divergence": "Kernel arithmetic and the check are implemented and tested in the MUD (mud/nopunk_mud/kernel_resolver.py); no in-game hacking command yet, so still partial.",
       "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
     },
     {

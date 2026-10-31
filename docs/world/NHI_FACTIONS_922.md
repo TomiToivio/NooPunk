@@ -111,7 +111,7 @@ Encounters should center on **witness interviews, human informants, corporate ne
 - [ ] Preserve hybrid/android civil-rights, identification and use-of-force constraints as an important theme.
 - [ ] Support location-based faction discovery so Helsinki starts grounded and the cosmic picture emerges gradually.
 - [ ] Integrate with existing CWN-based gameplay and narrative faction overlays; do **not** redesign the base rules.
-- [ ] Review canon consistency (notably **UNSA vs. UNHA** in the source draft, and spelling/naming variants such as Pleyadian/Pleiadian).
+- [ ] Review canon consistency (notably **UNSA vs. UNSA** in the source draft, and spelling/naming variants such as Pleiadian/Pleiadian).
 
 ## Tone and source handling
 

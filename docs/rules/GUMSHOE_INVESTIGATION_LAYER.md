@@ -8,18 +8,19 @@ Nothing in the existing rulebook was rewritten.
 
 ## 0. Licensing, first because it binds
 
-The GUMSHOE SRD is released by Pelgrane Press under **Creative Commons Attribution 3.0
-Unported (CC BY 3.0)**. Two consequences, and the second is the one people forget:
+**Licence, settled (#966).** The document this repository actually cites is the **GUMSHOE SRD, OGL
+version** — its own title page says so: *"published under the Open Game License v1.0, Copyright 2000,
+Wizards of the Coast, Inc. GUMSHOE SRD © 2013 Pelgrane Press."* Its introduction also notes that Pelgrane makes
+the SRD available *"via the terms of the Open Gaming and Creative Commons-By Attribution licenses"*, which is
+where the CC BY 3.0 statement came from — but **the notice printed on this file is the OGL**, and that notice
+governs the text we use. Both statements were true of different documents; only one of them is this one.
 
-1. **Attribution has a prescribed form.** The SRD names the exact sentence to place where our
-   own copyright notice sits, at the same size — a paste, not a paraphrase: *"This work is
-   based on the GUMSHOE SRD (found at
-   https://pelgranepress.com/2013/10/24/the-gumshoe-system-reference-document/), a product of
-   Pelgrane Press, developed, written, and edited by Robin D. Laws with additional material by
-   Kenneth Hite and Kevin Kulp, and licensed for our use under the Creative Commons Attribution
-   3.0 Unported license."*
-2. **The GUMSHOE mark IS granted; the game lines are not.** Verified in the v3 copyright notice
-   (p. 1): permission is granted to use the GUMSHOE trademark in works produced under this
+Two consequences, and the second is the one people forget:
+
+1. **Attribution is prescribed by the OGL.** The section-15 style notice carried by this document — title,
+   copyright holder, and the OGL v1.0a text it includes — is what has to travel with derived material. It is
+   copied, not paraphrased, and it appears in Appendix I of the SRD itself.
+2. **The GUMSHOE mark IS granted; the game lines are not.** Stated in the OGL version's copyright notice (p. 1): permission is granted to use the GUMSHOE trademark in works produced under this
    licence, provided it does not claim or suggest a relationship with, or endorsement by,
    Pelgrane Press or Robin D. Laws. The **logo** is excluded. The licence grants the GUMSHOE mark but **not** the marks of the commercial
    game lines built on it; those product names are Product Identity, and NoöPunk neither uses them nor

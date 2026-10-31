@@ -3,6 +3,7 @@ from evennia import Command
 from evennia.commands.default.cmdset_character import CharacterCmdSet
 from systems.cwn import skill_check, attribute_modifier, ATTRIBUTES, SKILLS
 from nopunk_mud.solo_campaign import Campaign, advance
+from commands.solo_arc_cmds import CmdAssignment, CmdRecruitSheet
 
 class CmdSheet(Command):
     key = "sheet"
@@ -111,6 +112,8 @@ class NoopunkCharacterCmdSet(CharacterCmdSet):
         self.add(CmdSheet())
         self.add(CmdCheckAttr())
         self.add(CmdCase())
+        self.add(CmdAssignment())
+        self.add(CmdRecruitSheet())
         self.add(CmdCheck())
         self.add(CmdSupplies())
         self.add(CmdScavenge())
