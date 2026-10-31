@@ -32,6 +32,7 @@ class State:
     talked: list[str] = field(default_factory=list)
     ending: str = ""
     turns: int = 0
+    minute: int = 0  # Elapsed mission minutes; distinct from player command count.
     seed: int = 7
     enemy_hp: dict[str, int] = field(default_factory=dict)
     consequences: list[str] = field(default_factory=list)
@@ -89,7 +90,7 @@ class CampaignEngine:
 
     def _cmd_help(self, args: list[str]) -> str:
         return self._say("look · status · go <place> · talk <person> · ask <person> <topic> · "
-                         "examine <thing> · take <item> · attack <person> · flee · report · save")
+                         "examine <thing> · take <item> · attack <person> · flee · wait <minutes> · report · save")
 
     def _cmd_look(self, args: list[str]) -> str:
         place = content.location(self.state.location)
@@ -107,8 +108,29 @@ class CampaignEngine:
         known = ", ".join(self.state.clues) if self.state.clues else "nothing yet"
         return self._say(
             f"HP {self.state.hp}/{self.state.max_hp} · at {place['name'] if place else '?'} · "
-            f"clues: {known}"
+            f"clues: {known} · mission minute: {self.state.minute} · scene: {self.state.minute // 10}"
             + (f" · case: {self.state.ending}" if self.state.ending else ""))
+
+    def _cmd_wait(self, args: list[str]) -> str:
+        """Advance mission time without changing the CWN round/scene durations.
+
+        A deterministic radio bulletin fires once at the first ten-minute scene
+        boundary. It is flavour, never a gate for a core investigative clue.
+        """
+        if len(args) != 1 or not args[0].isdecimal():
+            return self._say("Usage: wait <minutes 1-60>.")
+        minutes = int(args[0])
+        if not 1 <= minutes <= 60:
+            return self._say("Wait between 1 and 60 whole minutes.")
+        previous_scene = self.state.minute // 10
+        self.state.minute += minutes
+        current_scene = self.state.minute // 10
+        response = f"You wait {minutes} minute(s). Mission minute {self.state.minute}, scene {current_scene}."
+        if previous_scene < 1 <= current_scene and not self.has("radio_bulletin"):
+            self._grant(["radio_bulletin"])
+            response += ("\\nUNSA radio: a second university access badge remains unaccounted for. "
+                         "The bulletin is a lead, not evidence.")
+        return self._say(response)
 
     def _cmd_go(self, args: list[str]) -> str:
         if not args:
@@ -292,6 +314,7 @@ class CampaignEngine:
             "talked": self.state.talked,
             "ending": self.state.ending,
             "turns": self.state.turns,
+            "minute": self.state.minute,
             "seed": self.state.seed,
             "rng_state": self._rng_state_json(),
             "enemy_hp": dict(self.state.enemy_hp),
@@ -324,6 +347,9 @@ class CampaignEngine:
         engine.state.talked = list(data.get("talked", []))
         engine.state.ending = str(data.get("ending", ""))
         engine.state.turns = int(data.get("turns", 0))
+        engine.state.minute = int(data.get("minute", 0))
+        if engine.state.minute < 0:
+            raise ValueError("mission minute cannot be negative")
         engine.state.enemy_hp = {str(k): int(v) for k, v in dict(data.get("enemy_hp", {})).items()}
         engine.state.consequences = list(data.get("consequences", []))
         return engine
