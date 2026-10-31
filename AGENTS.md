@@ -4,6 +4,27 @@ This decision supersedes the **presentation and gameplay** portions of #848 and 
 
 **Only NoöPunk extensions may be homebrewed:** modular social relationships/reputation, LaclauGPT-style ideological factions, noösphere/Psyche/ontological shock, and clue-forward PbtA/GUMSHOE-inspired narrative procedures. These are optional **overlays** that invoke CWN rather than overwrite it. Player active PSI remains undecided: prefer passive/minor powers as a design hypothesis, not a locked rule.
 
+## Where the lock lives (added with the enforcement PR)
+
+| Artifact | Owns |
+| --- | --- |
+| This directive | the decision an agent reads first |
+| `docs/design/FOUNDATIONAL_LOCK_897.md` | what is locked, the four mechanic classes, the boundary, the narrative pivot |
+| `docs/design/CORE_VS_MOD_MATRIX_897.md` | the per-mechanic inventory — **the only copy** |
+| `docs/art/ART_BIBLE_1974.md` + `design_tokens.json` | the 1974 visual grammar |
+| `mods/noopunk/` | the overlays themselves — the only place homebrew rules may live |
+
+**Boundary, enforced by test:** `godot/core/` may not import `mods/`; an overlay returns data and never
+mutates a core result in place; a mod that needs a roll asks the core for it
+(`tests/test_foundational_lock_897.py`).
+
+**Dormant, not deleted:** the tactical top-down encounter stays in the tree, off the default path. Do not
+delete it; do not build on it.
+
+**Before writing anything:** check `git log origin/main --oneline -5` **and** open PRs. Three sessions in
+this repository have built the same feature twice because that check happened at merge time instead of
+first.
+
 **Current Godot direction changes:** prioritize a Citizen Sleeper-inspired **location-node** Helsinki narrative campaign, discoverable destinations, dialogue/investigation, 1–4 UNSA-agent missions, CWN character sheet, graph-based CWN hacking (DROP-inspired interface) and non-tactical CWN combat resolution. **Suspend** tactical top-down development; preserve existing scenes, saves and tests as compatibility paths until deliberate tested migration. Do not create a second Godot project or delete working systems.
 
 **Visual lock:** everything appears as an acid-fueled 1974 science-fiction vision of 2045: Hawkwind's *Space Ritual*, krautrock, **Zardoz > Barbarella > Rocky Horror**, Mœbius and Valérian. Later media influence mechanics and stories, not the graphic style. Avoid generic 1980s neon cyberpunk. Start from reusable color/type/UI tokens; use original or appropriately licensed assets.

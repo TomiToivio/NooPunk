@@ -1,0 +1,110 @@
+{
+  "format": "noopunk-art-tokens-v1",
+  "issue": "#897",
+  "note": "Machine-readable half of docs/art/ART_BIBLE_1974.md. The game and the bible read the same values; do not hand-copy a hex into code. Regenerate or extend here first, then describe it in the bible.",
+  "principle": "A future imagined in 1974, not a future photographed in 2045. Period materials, period limits, period optimism and dread.",
+  "palette": {
+    "core": {
+      "ink":        "#0B0A0E",
+      "shell":      "#14121A",
+      "paper":      "#E8DFC8",
+      "chalk":      "#F4EFE2"
+    },
+    "acid": {
+      "acid_green": "#B8E986",
+      "lime":       "#9FE870",
+      "mustard":    "#D9A227",
+      "amber":      "#E8A33D"
+    },
+    "psychedelic": {
+      "hot_magenta": "#D7266B",
+      "coral":       "#F26B3A",
+      "violet":      "#7B5EA7",
+      "deep_violet": "#4B3A73",
+      "teal":        "#2FA3A0",
+      "cyan_glow":   "#7FE3D4"
+    },
+    "machine": {
+      "phosphor":   "#35FF6A",
+      "crt_blue":   "#5AA9E6",
+      "relay_red":  "#C7362F",
+      "brass":      "#B08D57",
+      "steel":      "#8A8F98"
+    },
+    "semantic": {
+      "bg":            "ink",
+      "surface":       "shell",
+      "text":          "paper",
+      "text_strong":   "chalk",
+      "accent":        "acid_green",
+      "danger":        "relay_red",
+      "success":       "phosphor",
+      "link":          "cyan_glow",
+      "disabled":      "steel"
+    },
+    "notes": [
+      "No 1980s neon-on-black grid. Glow exists, but as phosphor and CRT bloom, not as magenta-and-cyan gradient.",
+      "Earth tones carry weight: mustard, brass, paper, steel. The psychedelia is in the accent, not the base.",
+      "Every colour pair used for text must pass WCAG AA contrast; the acid family is for surfaces and accents, not for body text on paper."
+    ]
+  },
+  "typography": {
+    "licence_requirement": "SIL OFL or Apache-2.0 only. No commercial film or album lettering, no traced logotypes.",
+    "display": {
+      "category": "heavy geometric or poster grotesque; the lettering of a 1974 science-fiction paperback or concert bill",
+      "ofl_candidates": ["Bungee", "Rubik Mono One", "Monoton", "Bricolage Grotesque"],
+      "usage": "titles, location names, section headers; never below 24 px"
+    },
+    "body": {
+      "category": "humanist sans with high legibility at small sizes",
+      "ofl_candidates": ["Atkinson Hyperlegible", "Inter", "Source Sans 3"],
+      "usage": "dialogue, evidence text, descriptions; 16-18 px minimum"
+    },
+    "mono": {
+      "category": "terminal and oscilloscope readouts",
+      "ofl_candidates": ["JetBrains Mono", "IBM Plex Mono"],
+      "usage": "hacking graph labels, timestamps, logs"
+    },
+    "scale_px": [12, 14, 16, 18, 22, 28, 36, 48, 64],
+    "rules": [
+      "Body text is never set in a display face.",
+      "All-caps is for labels and headers only, never for prose.",
+      "No lower-case-only gimmick that costs readability."
+    ]
+  },
+  "texture": {
+    "layers": ["film grain", "CRT scanlines", "halftone dots", "analog print registration offset", "vector wireframe"],
+    "grain_opacity_max": 0.12,
+    "scanline_period_px": 3,
+    "rule": "Texture is a layer over readable content and must be switchable off; it never dims text."
+  },
+  "motion": {
+    "tempo": "slow drift over snappy cuts; the camera should feel hand-cranked, not eased",
+    "signature": ["film-gate weave", "phosphor decay on text", "op-art rotation at low speed", "relay sequence clicks"],
+    "reduced_motion": "every signature move has a static equivalent; honour the OS setting",
+    "max_transition_ms": 600
+  },
+  "audio_interface": {
+    "palette": ["relay click", "tape hiss", "oscillator sweep", "modem handshake", "telephone exchange chatter"],
+    "rule": "all interface sound is original or licensed; no sampled film or record audio"
+  },
+  "layout": {
+    "grid_base_px": 8,
+    "spacing_scale_px": [4, 8, 12, 16, 24, 32, 48, 64],
+    "radius_px": [0, 2, 4],
+    "rule": "Corners are square or nearly square; heavy rounding reads 2010s, not 1974."
+  },
+  "accessibility": {
+    "min_body_px": 16,
+    "contrast_target": "WCAG AA (4.5:1 body, 3:1 large)",
+    "not_colour_alone": "every state also carries shape, icon or label",
+    "reduced_motion_supported": true,
+    "texture_toggle": true,
+    "screen_reader": "all evidence, dialogue and graph nodes are text-labelled"
+  },
+  "reference_screens": [
+    {"id": "city_map",        "label": "Helsinki location map",   "must_prove": "node discovery, readability at a glance, period cartography"},
+    {"id": "character_sheet", "label": "CWN character sheet",     "must_prove": "dense table legibility, mods separated visually from core"},
+    {"id": "hacking_graph",   "label": "Network node/edge view",  "must_prove": "topology readable at speed, CWN values visible"}
+  ]
+}
