@@ -12,7 +12,7 @@ feasible"). A `missing` row means *no Python module anywhere*, not *no module in
 **Issue:** https://github.com/TomiToivio/NooPunk/issues/950 · **Rules source:** the linked SRD, <https://cwn.quadrifons.com/>
 · **Full book:** Cities Without Number, Deluxe edition (user-supplied PDF) — used only to mark what the linked SRD omits; no text is reproduced
 
-**Rows:** 46 — **30** implemented · **7** partial · **6** godot-only · **1** missing · **2** omitted-by-srd
+**Rows:** 46 — **32** implemented · **7** partial · **4** godot-only · **1** missing · **2** omitted-by-srd
 
 | # | SRD section | Python target | Godot status | Coverage | Tests | Note |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -22,9 +22,9 @@ feasible"). A `missing` row means *no Python module anywhere*, not *no module in
 | 4 | [Character Creation / Contacts](https://cwn.quadrifons.com/character-creation/contacts/) | `src/rules/cwn_backgrounds.py` | `godot/core/cwn_contacts.gd` | **partial** | `test_cwn_backgrounds.py` | Contacts exist as background output; the free-contact rolls and their maintenance are GDScript only. |
 | 5 | [Character Creation / Edges](https://cwn.quadrifons.com/character-creation/edges/) | `src/rules/cwn_edges_foci.py` | `godot/core/cwn_foci.gd` | **implemented** | `test_cwn_edges_foci.py` |  |
 | 6 | [Character Creation / Foci](https://cwn.quadrifons.com/character-creation/foci/) | `src/rules/cwn_foci.py` | `godot/core/cwn_foci.gd` | **implemented** | `test_cwn_foci.py` |  |
-| 7 | [Character Creation / Focus Gear Budget](https://cwn.quadrifons.com/character-creation/focus-gear-budget/) | — | `godot/core/cwn_foci.gd` | **godot-only** | `test_cwn_sheet.gd` | The per-focus starting gear allowance has no Python path yet; this is a first migration target. |
+| 7 | [Character Creation / Focus Gear Budget](https://cwn.quadrifons.com/character-creation/focus-gear-budget/) | `src/rules/cwn_foci.py` | `godot/core/cwn_foci.gd` | **implemented** | `test_cwn_foci.py` | GEAR_BUDGET/GEAR_BUDGET_FOCI were already here; an earlier pass of this audit grepped for the phrase 'focus gear' and missed them. Corrected, not re-implemented. |
 | 8 | [Character Creation / Final Steps](https://cwn.quadrifons.com/character-creation/final-steps/) | `src/rules/cwn_character.py` | `godot/core/cwn_character.gd` | **partial** | `test_cwn_character.py` | Attribute/skill finalisation is implemented; the shopping and contact-writing steps are scenario work, not rules. |
-| 9 | [Rules / Scenes, Rounds and Mission Time](https://cwn.quadrifons.com/rules-of-the-game/scenes-rounds-mission-time/) | — | `godot/core/cwn_mission_time.gd` | **godot-only** | — | A MUD needs the same clock; port before the single-player campaign is scheduled. |
+| 9 | [Rules / Scenes, Rounds and Mission Time](https://cwn.quadrifons.com/rules-of-the-game/scenes-rounds-mission-time/) | `src/rules/cwn_mission_time.py` | `godot/core/cwn_mission_time.gd` | **implemented** | `test_cwn_mission_time.py` | Ported from the Godot kernel and the SRD: round 6 s, scene 10 min, standard action 1 min; a long jump reports every scene it crossed, and end_scene() refreshes without moving the clock. |
 | 10 | [Rules / Saving Throws](https://cwn.quadrifons.com/rules-of-the-game/saving-throws/) | `src/rules/cwn_core.py` | `godot/core/cwn_combat_rules.gd` | **implemented** | `test_cwn_core.py` | Physical / Evasion / Mental / Luck, d20 against a target. |
 | 11 | [Rules / Skill Checks](https://cwn.quadrifons.com/rules-of-the-game/skill-checks/) | `src/rules/wn_core.py` | `godot/core/cwn_combat_rules.gd` | **implemented** | `test_wn_core.py`, `test_wn_core_contract.py` | 2d6 + attribute modifier + skill; the ONE resolution the MUD calls (mud/world/cwn.py). |
 | 12 | [Combat / The Combat Sequence](https://cwn.quadrifons.com/rules-of-the-game/combat/combat-sequence) | `src/rules/cwn_combat.py` | `godot/core/combat.gd` | **implemented** | `test_cwn_combat.py` |  |

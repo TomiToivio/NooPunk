@@ -26,13 +26,18 @@ named module must **import**, each named test file must **exist**, and a row may
 
 ```
 rows: 46
-  implemented     30
+  implemented     32
   partial         7
-  godot-only      6
+  godot-only      4
   missing         1
   omitted-by-srd  2
 OK: every named module imports and every named test file exists
 ```
+
+Two rows have moved since this record was written: the focus gear budget was a false negative in this
+audit (the table was in `cwn_foci.py` all along) and mission time was ported to Python on the same day.
+Both are now `implemented` with tests, and the gap table below says so rather than being silently
+edited.
 
 The code that exists, and is exercised:
 
@@ -57,10 +62,10 @@ Ran 441 tests ... OK
 The same audit, read the other way. These are the only real gaps, in the order the solo campaign
 needs them:
 
-| Gap | Size | Note |
+| Gap | Size | Status |
 | --- | --- | --- |
-| focus gear budget | small | character creation cannot be finished without it |
-| mission time (scenes, rounds, mission clocks) | small | every MUD scene needs the clock; also quest timing |
+| ~~focus gear budget~~ | — | **closed 2026-10-31** — it was never missing: `cwn_foci.GEAR_BUDGET` was already implemented and tested. The earlier pass of this audit grepped for the phrase and missed it; the row is corrected rather than re-written |
+| ~~mission time (scenes, rounds, mission clocks)~~ | — | **closed 2026-10-31** — ported from `godot/core/cwn_mission_time.gd` to `src/rules/cwn_mission_time.py` with 16 tests, and registered in `data/rules/cwn_coverage.json` |
 | wages and bribes | small | prices before the first shopping scene |
 | pharmaceuticals / street drugs | medium | effects + the catalogue Godot already has |
 | cyberware mods and systems | medium | catalogue + effect procedures |
