@@ -268,6 +268,19 @@
       "notes": "ABSTRACT GAMEPLAY DESIGN LESSONS ONLY. No licensed assets, code, text or proprietary worlds are incorporated. In particular: do not import their mechanics, and do NOT generalise any of them into universal neural hacking -- #200 forbids that."
     },
     {
+      "id": "gumshoe-srd-ogl-932",
+      "source": "GUMSHOE System Reference Document, OGL version (Pelgrane Press, 2013, 68 pp)",
+      "url": "https://pelgranepress.com/gumshoe/files/GUMSHOE%20SRD%20OGL%20version.pdf",
+      "kind": "srd-text",
+      "license": "Open Game License 1.0",
+      "license_url": "https://pelgranepress.com/gumshoe/files/GUMSHOE%20SRD%20OGL%20version.pdf",
+      "decision": "verified-open-content-with-conditions",
+      "role_in_noopunk": "Issue #932 investigation-procedure design only; no imported game-line Product Identity, no new independent dice engine.",
+      "license_checked": "2026-10-31",
+      "how_verified": "Directly inspected page 1 of publisher-hosted 68-page OGL PDF and publisher's separate CC version history.",
+      "notes": "Distinct edition from the CC BY 3.0 SRD recorded in gumshoe-srd. The OGL text declares game-line trademarks Product Identity, excludes logo, and includes OGL compliance requirements for distributed Open Game Content. Do not conflate these editions or copy text without compliance review."
+    },
+    {
       "id": "gumshoe-srd",
       "source": "GUMSHOE System Reference Document, Creative Commons version (Pelgrane Press, 2024-12-09, 303 pp)",
       "url": "https://pelgranepress.com/gumshoe/files/GUMSHOESRDCC-3%20241209.pdf",
