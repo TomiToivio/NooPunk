@@ -1,0 +1,35 @@
+{
+  "$comment": "A generic, scenario-independent investigation scene for #933's screen. No proprietary case material: this is the 'accessible UNSA intake records' example from #932, written out as data.",
+  "version": 1,
+  "id": "unsa_intake_records",
+  "name": "UNSA intake records",
+  "summary": "A corridor desk, two cabinets and a terminal that logs every query. The intake file for the case is here, and the clerk has stepped out.",
+  "clues": [
+    {
+      "id": "intake_discrepancy",
+      "ability": "bureaucracy",
+      "core": true,
+      "text": "The intake file records a referral date two days before the incident was reported."
+    },
+    {
+      "id": "clerk_note",
+      "ability": "reassurance",
+      "core": false,
+      "text": "A handwritten note in the margin: 'asked again about the second badge — told them to file it'."
+    }
+  ],
+  "benefits": [
+    {
+      "id": "metadata_copy",
+      "ability": "bureaucracy",
+      "cost": 1,
+      "text": "Copy the terminal's metadata"
+    },
+    {
+      "id": "clerk_returns",
+      "ability": "reassurance",
+      "cost": 2,
+      "text": "Wait for the clerk and ask her directly"
+    }
+  ]
+}
