@@ -1,5 +1,18 @@
 # NoöPunk
 
+## Two implementations, one priority (#950)
+
+**The playable game is the Evennia MUD in [`mud/`](mud/README.md).** It is the default target for new work: a
+text-based, single-player UNSA investigation that must run with **no LLM, no simulation service and no other
+players**, before anything multiplayer exists.
+
+The Godot project at the repository root is the secondary, maintenance-only graphical implementation. It keeps
+working and it stays in this repository; new generic RPG features do not go there.
+
+Rules coverage is tracked honestly in
+[`docs/rules/CWN_COMPLIANCE_MATRIX_950.md`](docs/rules/CWN_COMPLIANCE_MATRIX_950.md) — `implemented` only where a
+test exists, and `missing` where the linked SRD omits the section.
+
 ## Reality has changed. You are still expected at work.
 
 *The future of humanity is no longer exclusively a human concern.*

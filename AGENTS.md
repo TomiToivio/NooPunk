@@ -1,3 +1,25 @@
+# CURRENT PRIORITY — issue #950 (supersedes #946 and the Godot-first framing of #897)
+
+**The Evennia MUD in `mud/` is the default target for all coding agents.** Godot is a secondary, maintenance-only
+graphical implementation: it stays in the tree, it keeps working, and it is not where new game features go
+unless a task explicitly names Godot.
+
+1. **Default target:** `mud/` — Python, Evennia. Confirm the layout before editing.
+2. **First deliverable:** a complete **single-player UNSA** story that runs with **zero LLM, zero Mesa, zero
+   other players**, and no network dependency. Scripted NPCs, quests, clues, combat and saves must work
+   headlessly.
+3. **First engineering action:** the Godot → Evennia CWN migration and the linked-SRD coverage audit. The matrix
+   is `data/rules/cwn_compliance_matrix.json`, rendered to
+   [`docs/rules/CWN_COMPLIANCE_MATRIX_950.md`](docs/rules/CWN_COMPLIANCE_MATRIX_950.md) and validated by
+   `tools/check_cwn_compliance.py`. It says `implemented` only where a test exists, and it marks the sections
+   the linked SRD omits as `missing` rather than claiming them.
+4. **Rulebook parity is compulsory:** a mechanic change lands with its matrix row, its test, and the
+   corresponding tabletop text — or an explicit "no tabletop mechanics change".
+5. **Godot is preserved, not deleted.** Do not route generic RPG features there. Do not rewrite its work
+   unreviewed.
+6. **Later phase:** multiplayer, Concordia-style LLM GM/NPCs, Mesa simulation and non-UNSA factions are not MVP
+   prerequisites. The solo campaign comes first.
+
 # FOUNDATIONAL AUTHOR DECISION — issue #897 (2026-10-31)
 
 This decision supersedes the **presentation and gameplay** portions of #848 and older directives where they conflict. The **rules foundation remains the same**: published Cities Without Number (CWN) is permanently the primary OSR chassis; compatible Stars Without Number (SWN) psionics/space/factions and selective WWN/AWN material can extend it where appropriate. Do **not** propose or introduce a replacement core dice engine, attribute scheme, tactical framework or bespoke rulebook. Godot uses the repository-root `project.godot`, `scenes/main.tscn`, and `godot/core/` CWN rules. Historical 1d10/Fate prototypes are not authoritative.
