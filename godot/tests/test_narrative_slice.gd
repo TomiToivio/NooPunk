@@ -35,10 +35,10 @@ func run() -> Array:
 	rows.append(_ok("briefing discovers the market", s.is_discovered("market")))
 	rows.append(_ok("travel after discovery works", bool(s.travel("unsa_hq").get("ok", false))))
 
-	rows.append(_ok("Romppainen joins", bool(s.recruit("romppainen").get("ok", false))))
+	rows.append(_ok("Laura joins", bool(s.recruit("laura_wendt").get("ok", false))))
 	rows.append(_ok("party is two", s.party.size() == 2))
-	rows.append(_ok("duplicate recruit is refused", not bool(s.recruit("romppainen").get("ok", true))))
-	s.recruit("aalto")
+	rows.append(_ok("duplicate recruit is refused", not bool(s.recruit("laura_wendt").get("ok", true))))
+	s.recruit("harri_romppainen")
 	rows.append(_ok("party is three", s.party.size() == 3))
 	rows.append(_ok("party cap is four", Session.PARTY_CAP == 4))
 

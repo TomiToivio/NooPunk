@@ -1,0 +1,95 @@
+{
+  "_source": "Issue #920: UNSA field party, 1-4 including Tony, situational allies, scripted PSI and triple jurisdiction.",
+  "cap": 4,
+  "pc": "tony_german",
+  "members": [
+    {
+      "id": "tony_german",
+      "name": "Tony German",
+      "role": "UNSA field agent, academy graduate",
+      "pc": true,
+      "active_psi": false,
+      "implant": "passive_psi_defence_and_limited_esp",
+      "prerequisites": {}
+    },
+    {
+      "id": "laura_wendt",
+      "name": "Laura Wendt",
+      "role": "UNSA field agent, tactical specialist",
+      "pc": false,
+      "active_psi": false,
+      "implant": "",
+      "prerequisites": {
+        "mission_tags": [
+          "partner"
+        ],
+        "min_trust": 1
+      }
+    },
+    {
+      "id": "harri_romppainen",
+      "name": "Harri Romppainen",
+      "role": "Senior UNSA Inspector, psychologist",
+      "pc": false,
+      "active_psi": false,
+      "implant": "",
+      "prerequisites": {
+        "mission_tags": [
+          "nhi",
+          "noetic"
+        ],
+        "authorization": "unsa_inspector"
+      }
+    },
+    {
+      "id": "cyber_specialist",
+      "name": "UNSA cyber-operations specialist",
+      "role": "Hacker, mission-specific",
+      "pc": false,
+      "active_psi": false,
+      "implant": "",
+      "prerequisites": {
+        "mission_tags": [
+          "cyber"
+        ],
+        "authorization": "unsa_field_office"
+      }
+    },
+    {
+      "id": "psi_asset",
+      "name": "Authorized psionic asset",
+      "role": "Sworn UNSA psionic specialist, story-controlled",
+      "pc": false,
+      "active_psi": true,
+      "implant": "",
+      "prerequisites": {
+        "mission_tags": [
+          "psi"
+        ],
+        "authorization": "unsa_psi_office"
+      }
+    }
+  ],
+  "remote_support": [
+    {
+      "id": "human_controller",
+      "name": "Remote human controller",
+      "counts_toward_cap": false
+    },
+    {
+      "id": "field_ai",
+      "name": "Field AI assistant (narrow forensic and retrieval)",
+      "counts_toward_cap": false
+    }
+  ],
+  "authorities": [
+    "supo",
+    "europol",
+    "unsa",
+    "unsa_psi_office"
+  ],
+  "scripted_psi_scenes": [
+    "warehouse_signal",
+    "clinic_reading"
+  ]
+}
