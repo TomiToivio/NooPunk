@@ -1,12 +1,12 @@
 # Major NHI Factions
 
-Humanity is now in contact with two major NHI factions.
+Humanity is now in contact with two major NHI factions and at least one minor NHI faction.
 
-## Zookeepers - Galactic Council of Collective Consciousness
+## Zookeepers - The Galactic Council of Collective Consciousness
 
 The Zoo Hypothesis turned out to be the solution to the Fermi Paradox. Earth was kept under quarantine for millions or billions of years, as the Zookeepers value planets with a Biosphere and a Noösphere. Without the quarantine Earth would have been colonized billions of years ago.
 
-The galaxy was a dark forest before the Zookeeper civilization started to maintain order. This includes keeping planets with vulnerable biosphere and noösphere under prime directive -type quarantine and certain other laws.
+The galaxy was a dark forest before the Zookeeper civilization started to maintain order. This includes keeping planets with vulnerable biosphere and noösphere under prime directive -type quarantine and permit to use their stargates. 
 
 The Zookeepers claim they have been working for centuries to open contact with Earth, but the political system of Earth was not ready to accept open contact. They had set up certain lines humanity must not cross, including nuclear war, destruction of the biosphere and creation of malevolent ASI. 
 
@@ -59,5 +59,23 @@ The Greater Orion Arm Co-Prosperity Sphere offer profitable business opportuniti
 
 They also offer to open Extraterrestrial Economic Zones with unimaginable business opportunities. Again the main target is megacorporations. It has been noticed that the Grey society seems to consist of a proletariat caste of small greys with little individual agency and a capitalist caste of larger greys with individual agency. They don't have any kind of religion and are strictly materialistic. It is thought the species has been reproducing by cloning genetically engineered bodies for so long that the hybridization program is needed to restore some vitality to the species. But why is human and Grey DNA compatible?
 
-The Greater Orion Arm Co-Prosperity Sphere does not seem to be a very happy alliance, as the Greys and the Reptilians seem to be almost hostile to each other and drive quite different diplomatic tactics. This may be a good cop / bad cop type negotiation strategy. The Reptilians threaten an outright military conquest while the Greys are more diplomatic and offer profitable business opportunities while continuing their hybridization and infiltration strategy.
+The Greater Orion Arm Co-Prosperity Sphere does not seem to be a very happy alliance, as the Greys and the Reptilians seem to be almost hostile to each other and drive quite different diplomatic tactics. This may be a good cop / bad cop type negotiation strategy. The Reptilians threaten an outright military conquest while the Greys are more diplomatic and offer profitable business opportunities while continuing their hybridization and infiltration strategy. The truth is the Greys are not a warrior species and want to assimilate the entire unharmed biosphere and noösphere of Earth, while the Reptilians like a good war and would happily sacrifice about 50% of biosphere and noösphere to enjoy a good war.
+
+The Mantids are the mysterious third species that seems to outrank both Greys and Reptilians. They are thought to be at least partially noetic or interdimensional, possibly already transcending their biology. Their civilization also includes abducted humans and human-alien hybrids who are often physically fully human but easy to recognize based on their non-human psychology and lack of empathy, often instantly recognized with the use of psionics. It is still illegal in the EU for an UNSA agent to terminate an unregistered hybrid without an empathy test. Exactly like it is illegal to terminate an android without an empathy test.
+
+UNHA is still attempting to negotiate with The Greater Orion Arm Co-Prosperity Sphere, but the situation is more like a Cold War or a Hybrid War, many think it will inevitably become a hot war. The Greys have infiltrated human society and have their human business partners while the Reptilians seem to favor an outright war. Can humanity survive? Would The Galactic Council of Collective Consciousness help humanity defend itself? 
+
+## Sirians/Ents - The Sentient Biopunk Tree Species
+
+This species has travelled to the solar system in slower than light ships. The main species seems to consist of sentient trees who have built an entire ecosystem of biotech around themselves. But their human-like techology is not so advanced. The species has a different concept of time, an extremely long lifespan, and an ability to just hibernate indefinitively, which is why it can just travel for thousands of years on sub-light spaceships using fusion power.
+
+They are called Ents after Tolkien's fantasy creatures, but they are maybe better described as some kind of tree-like sentient beings surrounded by a Lovecraftian biopunk swarm of biotech. They apparently came from Sirius. They contacted humanity quite fast after the Zookeeper quarantine was over, which shows they had been lurking in the solar system for a while. Long, slow and utterly incompherensible diplomatic exchange produced results when a psionics asset was able to communicate with the Ents: humanity and the Ents exchanged seeds in a strange almost erotic ritual. The psionics asset claims the Ents were very thankful for the seeds and "something else", but she did not understand what the "something else" was. The seeds turned out to be biotech extremely useful for climate change mitigation and biosphere restoration. The compatibility of the DNA with Earth life seems to point at panspermia.
+
+After the exchange the Ent ship casually accelerated out of the solar system. Interestingly it seemed to be unaware of the existence of Zookeeper stargates in the solar system.
+
+## Plasmoids - Clouds of Sentient Plasma 
+
+Plasmoids are thought to be clouds of sentient plasma which send out independent scouts that behave in a curious and playful fashion. It is thought that plasmoids are a form of life common in the solar system and the entire galaxy, but it is not understood if they are anything like an intelligent civilization, a single individual or some kind of hive mind, or if they are more like animals. They seem to be sentient and alive, but the umwelt is so different that understanding and communication seem to be impossible. The scouts seem to be curious and playful like dog puppies but little is understood beyond this - this is all the best telepaths can sense.
+
+Plasmoids also tend to be confused with the ubiquitous spherical Constructs of the Zookeeper quarantine network and the Noetic orbs of light. Basically there are three types of glowing balls of light in the athmosphere, and all are utterly different life forms. 
 
