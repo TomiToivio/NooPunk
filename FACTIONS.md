@@ -18,9 +18,9 @@ The main Zookeeper base is in the orbit of Saturn, an autonomous AI network of m
 
 Zookeepers want the name of their civilization to be translated as something like Galaktinen Kollektiivisen Tietoisuuden Neuvosto or Galactic Council of Collective Consciousness. They sound like they are some kind of Hindu or Buddhist Soviet Union. This seems to be an accurate description. 
 
-Amazingly the only biologics representing the Zookeepers on Earth are fully human Pleiadians. They are Nordic blue-eyed blondes who seem perfect. DNA tests have shown they are indeed humans, apparently genetically manipulated to perfection. They do not have visible cybernetics, apparently bionics are used to make them transhuman. They claim to be humans who live in the Pleiades star cluster but are unable to explain their origin in an understandable fashion. The appearance of aryan space blondes has caused suspicions of racism and fascism, but Pleiadians are friendly and make Zookeepers a lot less alien. Despite their friendliness and beautiful human appearance there is something alien in them, giving many uncanny valley vibes.
+Amazingly the only biologics representing the Zookeepers on Earth are fully human Pleyadians. They are Nordic blue-eyed blondes who seem perfect. DNA tests have shown they are indeed humans, apparently genetically manipulated to perfection. They do not have visible cybernetics, apparently bionics are used to make them transhuman. They claim to be humans who live in the Pleyades star cluster but are unable to explain their origin in an understandable fashion. The appearance of aryan space blondes has caused suspicions of racism and fascism, but Pleyadians are friendly and make Zookeepers a lot less alien. Despite their friendliness and beautiful human appearance there is something alien in them, giving many uncanny valley vibes.
 
-Beyond Pleiadian biologics the Zookeepers are represented by Noetic beings interfacing with human consciousness, appearing as orbs of light, different energy/light beings or humanoid forms that are very similar to apparitions of human religions. They also operate constructs, most commonly the ubiquitous metallic spheres, as well as large ships that may be unmanned or manned. The Zookeepers claim they choose to be represented by the Pleiadian biologics most suitable for Earth.
+Beyond Pleiadian biologics the Zookeepers are represented by Noetic beings interfacing with human consciousness, appearing as orbs of light, different energy/light beings or humanoid forms that are very similar to apparitions of human religions. They also operate constructs, most commonly the ubiquitous metallic spheres, as well as large ships that may be unmanned or manned. The Zookeepers claim they choose to be represented by the Pleyadian biologics most suitable for Earth.
 
 Then the demands start. The Zookeepers have their cultists who have already converted to their alien religion, they are seen as more benevolent than The Greater Orion Co-Prosperity Sphere, majority of humans see their demands as impossible. UNSA continues diplomatic negotiations with the Zookeepers who have embassies in many cities on Earth. Their opponents call them temples as the Zookeeper supporters are rather religious and gather around the embassies.
 
@@ -65,7 +65,7 @@ The Greater Orion Arm Co-Prosperity Sphere does not seem to be a very happy alli
 
 The Mantids are the mysterious third species that seems to outrank both Greys and Reptilians. They are thought to be at least partially noetic or interdimensional, possibly already transcending their biology. Their civilization also includes abducted humans and human-alien hybrids who are often physically fully human but easy to recognize based on their non-human psychology and lack of empathy, often instantly recognized with the use of psionics. It is still illegal in the EU for an UNSA agent to terminate an unregistered hybrid without an empathy test. Exactly like it is illegal to terminate an android without an empathy test.
 
-UNSA is still attempting to negotiate with The Greater Orion Arm Co-Prosperity Sphere, but the situation is more like a Cold War or a Hybrid War, many think it will inevitably become a hot war. The Greys have infiltrated human society and have their human business partners while the Reptilians seem to favor an outright war. Can humanity survive? Would The Galactic Council of Collective Consciousness help humanity defend itself? 
+UNHA is still attempting to negotiate with The Greater Orion Arm Co-Prosperity Sphere, but the situation is more like a Cold War or a Hybrid War, many think it will inevitably become a hot war. The Greys have infiltrated human society and have their human business partners while the Reptilians seem to favor an outright war. Can humanity survive? Would The Galactic Council of Collective Consciousness help humanity defend itself? 
 
 ## Sirians/Ents - The Sentient Biopunk Tree Species
 
@@ -85,7 +85,7 @@ Plasmoids also tend to be confused with the ubiquitous spherical Constructs of t
 
 There is still simple life remaining on Mars as well as archaeological findings of an ancient civilization of a human-like species. The civilization and biosphere were destroyed in a nuclear war. Mars Eldrich promotes a theory of Mars being the previous Zookeepers experiment to create humans, until the communist Zookeepers decided to nuke the earlier humans. 
 
-There is a lot of speculation about this - what is the origin of the fully human Pleiadians? Why is Grey and Human DNA compatible? At least the Zookeepers claim to have genetically manipulated humans 70000 years ago, while The Greys are genetically manipulating humans in 2045. Panspermia or directed panspermia has to be real, as the biologics analyzed so far seem to share a common origin.
+There is a lot of speculation about this - what is the origin of the fully human Pleyadians? Why is Grey and Human DNA compatible? At least the Zookeepers claim to have genetically manipulated humans 70000 years ago, while The Greys are genetically manipulating humans in 2045. Panspermia or directed panspermia has to be real, as the biologics analyzed so far seem to share a common origin.
 
 ## Constructs
 
@@ -97,7 +97,7 @@ Noetics includes (former?) humans and beings from Earth. A person doing astral p
 
 ## Biologics
 
-As stated above, the most common biologics include all types of Earth life as well as extraterrestrials like Greys, Reptilians, Mantids, Pleiadians and Hybrids. A species like Dolphins should be classified as an NHI: They are highly intelligent beings who are quite happy and playful philosophers and storytellers. Dolphins don't have a need to build technology but they have an anarchistic civilization. And of course there are uplifted dolphins, octopuses, chimpanzees and dogs. 
+As stated above, the most common biologics include all types of Earth life as well as extraterrestrials like Greys, Reptilians, Mantids, Pleyadians and Hybrids. A species like Dolphins should be classified as an NHI: They are highly intelligent beings who are quite happy and playful philosophers and storytellers. Dolphins don't have a need to build technology but they have an anarchistic civilization. And of course there are uplifted dolphins, octopuses, chimpanzees and dogs. 
 
 ## UFOs and UAPs
 
