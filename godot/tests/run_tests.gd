@@ -18,6 +18,9 @@ const SUITES := [
 	"res://godot/tests/test_node_link.gd",
 	"res://godot/tests/test_campaign_state.gd",
 	"res://godot/tests/test_cwn_engine.gd",
+	"res://godot/tests/test_cwn_sheet.gd",
+	"res://godot/tests/test_image_library.gd",
+	"res://godot/tests/test_city_map.gd",
 	"res://godot/tests/test_cwn_injury.gd",
 	"res://godot/tests/test_cwn_alienation.gd",
 	"res://godot/tests/test_cwn_lifestyles.gd",
@@ -37,11 +40,17 @@ const SUITES := [
 	"res://godot/tests/test_scenario_data.gd",
 	"res://godot/tests/test_cwn_procedures.gd",
 	"res://godot/tests/test_cwn_catalogue.gd",
+	"res://godot/tests/test_noopunk_psyche.gd",
+	"res://godot/tests/test_helsinki_913.gd",
+	"res://godot/tests/test_narrative_897.gd",
+	"res://godot/tests/test_location_screen.gd",
+	"res://godot/tests/test_images_908.gd",
 	"res://godot/tests/test_cwn_vanilla.gd",
 	"res://godot/tests/test_cwn_vehicles.gd",
 	"res://godot/tests/test_cwn_srd_vehicles.gd",
 	"res://godot/tests/test_cwn_cyberware.gd",
 	"res://godot/tests/test_cwn_drones.gd",
+	"res://godot/tests/test_narrative_slice.gd",
 	"res://godot/tests/test_level_doors.gd",
 	"res://godot/tests/test_investigation_adapter.gd",
 ]
@@ -68,6 +77,10 @@ func _initialize() -> void:
 		# Release suite references before engine shutdown.
 		suite = null
 		rows.clear()
+		script = null
+	# Give queued Control frees and renderer cleanup a chance to run before the summary and quit.
+	await process_frame
+	await process_frame
 	print("%d checks, %d failed" % [total, failures])
 
 	# Free what the suites attached to the tree. Without this, every scene a test instantiated is still

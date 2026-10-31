@@ -1,0 +1,77 @@
+{
+  "$comment": "Starting Helsinki city map (#913). Exactly two nodes are selectable at game start; everything else is locked and must not look playable. Grounded 1974 Helsinki - no saucers, no floating traffic, no neon skyline.",
+  "version": 1,
+  "start_nodes": [
+    "home_helsinginkatu",
+    "unsa_hq_ratakatu"
+  ],
+  "district_note": "Sörnäinen/Kallio and Punavuori are real neighbourhoods; the map distinguishes them rather than inventing a fantasy city.",
+  "nodes": [
+    {
+      "id": "home_helsinginkatu",
+      "name": "Home, Helsinginkatu",
+      "district": "Sörnäinen / Kallio",
+      "kind": "home",
+      "unlocked": true,
+      "art": "locations/helsinginkatu_home",
+      "summary": "Agency-provided starter apartment, moved into yesterday. Bare, unpersonalised, boxes still unpacked.",
+      "anchors": [
+        "rest",
+        "time passage",
+        "local contacts",
+        "agency communications",
+        "visitor events"
+      ],
+      "grounding": "Working-class and bohemian Helsinginkatu: tram traffic, kiosks, bars, left intellectuals, artists, a neighbourhood gentrifying unevenly. Class contradiction with complexity, not caricature."
+    },
+    {
+      "id": "unsa_hq_ratakatu",
+      "name": "UNSA Helsinki Field Office, Ratakatu",
+      "district": "Punavuori",
+      "kind": "hq",
+      "unlocked": true,
+      "art": "locations/ratakatu_hq",
+      "summary": "The former Suojelupoliisi headquarters, now the UNSA field office. It cannot decide whether it is SuPo, Europol or UNSA.",
+      "anchors": [
+        "briefings",
+        "case assignment",
+        "records",
+        "confused chains of command"
+      ],
+      "grounding": "Overlapping authority and mixed paperwork, played straight. Any retrofuturist element belongs to the later-unlocked underground, not the street."
+    },
+    {
+      "id": "market_square",
+      "name": "Kauppatori",
+      "district": "Kruununhaka",
+      "kind": "location",
+      "unlocked": false,
+      "art": "locations/kauppatori",
+      "summary": "Locked: discoverable later.",
+      "anchors": [],
+      "grounding": ""
+    },
+    {
+      "id": "tram_depot",
+      "name": "Tram depot, Vallila",
+      "district": "Vallila",
+      "kind": "location",
+      "unlocked": false,
+      "art": "locations/vallila_depot",
+      "summary": "Locked: discoverable later.",
+      "anchors": [],
+      "grounding": ""
+    },
+    {
+      "id": "harju_baths",
+      "name": "Yrjönkatu swimming hall",
+      "district": "Kamppi",
+      "kind": "location",
+      "unlocked": false,
+      "art": "locations/yrjonkatu",
+      "summary": "Locked: discoverable later.",
+      "anchors": [],
+      "grounding": ""
+    }
+  ]
+}

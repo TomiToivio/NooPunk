@@ -54,6 +54,39 @@ func _ready() -> void:
 		get_tree().change_scene_to_file("res://scenes/chase_screen.tscn"))
 	stack.add_child(chase)
 
+	# #897: location-based narrative mode (Citizen Sleeper-style, CWN underneath, no tactical view).
+	var narrative := Button.new()
+	narrative.text = "Helsinki — narrative case (no tactical view)"
+	narrative.pressed.connect(func() -> void:
+		get_tree().change_scene_to_file("res://godot/ui/narrative_screen.tscn"))
+	stack.add_child(narrative)
+
+	# #897 §4: the narrative campaign's first playable surface.
+	var locations_button := Button.new()
+	locations_button.text = "Narrative — Helsinki locations"
+	locations_button.pressed.connect(func() -> void:
+		var screen: Node = load("res://scenes/narrative/location_screen.tscn").instantiate()
+		var map_script: Script = load("res://godot/narrative/location_map.gd")
+		var book_script: Script = load("res://godot/narrative/investigation.gd")
+		var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(
+			"res://data/world/lakkahaltia_clues.json"))
+		var clues: Dictionary = parsed if parsed is Dictionary else {}
+		screen.setup(map_script.from_data(map_script.load_data()),
+			book_script.from_data(clues),
+			{})
+		get_tree().root.add_child(screen)
+		get_tree().current_scene = screen)
+	stack.add_child(locations_button)
+
+	var images_button := Button.new()
+	images_button.text = "Images — portrait and encounter layouts"
+	images_button.pressed.connect(func() -> void:
+		var preview: Node = load("res://scenes/images/preview.tscn").instantiate()
+		get_tree().root.add_child(preview)
+		get_tree().current_scene = preview)
+	stack.add_child(images_button)
+
+
 	# The campaign is an existing feature of the same root Godot project.
 	# Keep it accessible here rather than requiring agents to maintain a rival title scene.
 	var campaign := Button.new()

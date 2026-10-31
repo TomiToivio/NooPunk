@@ -18,6 +18,7 @@ Runs each command CI relies on and classifies its output:
 Usage:
     python3 tools/check_godot_shutdown.py [--godot ~/.local/bin/godot] [--baseline 90]
     python3 tools/check_godot_shutdown.py --only slice rules
+    python3 tools/check_godot_shutdown.py --only slice --log /tmp/noopunk-slice.log
 """
 from __future__ import annotations
 
@@ -106,6 +107,8 @@ def main() -> int:
     parser.add_argument("--baseline", type=int, default=BASELINE_OBJECTS)
     parser.add_argument("--only", nargs="+", metavar="NAME",
                        help="run just these commands (slice, rules, playthrough, ward, interaction)")
+    parser.add_argument("--log", type=Path,
+                       help="read an already-captured Godot log instead of running the command again")
     args = parser.parse_args()
 
     wanted = [entry for entry in COMMANDS if not args.only or entry[0] in args.only]
@@ -113,11 +116,19 @@ def main() -> int:
         print(f"no such command; choose from {[entry[0] for entry in COMMANDS]}")
         return 2
 
+    if args.log is not None and len(wanted) != 1:
+        print("--log needs exactly one command: pass --only NAME")
+        return 2
+
     results: list[Result] = []
     for name, argv, marker in wanted:
-        proc = subprocess.run([args.godot, "--headless", "--path", str(ROOT), *argv],
-                              cwd=ROOT, capture_output=True, text=True, timeout=900)
-        results.append(check(name, proc.stdout + proc.stderr, marker, args.baseline))
+        if args.log is not None:
+            out = args.log.read_text(encoding="utf-8", errors="replace")
+        else:
+            proc = subprocess.run([args.godot, "--headless", "--path", str(ROOT), *argv],
+                                  cwd=ROOT, capture_output=True, text=True, timeout=900)
+            out = proc.stdout + proc.stderr
+        results.append(check(name, out, marker, args.baseline))
 
     failures = 0
     for result in results:

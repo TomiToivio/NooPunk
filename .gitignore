@@ -16,3 +16,7 @@ Thumbs.db
 .hermes/
 # Godot import cache for the restart project
 noopunk2/.godot/
+
+# #908: reference art is internal and consent-controlled; never commit real photographs.
+images/reference/*
+!images/reference/README.md

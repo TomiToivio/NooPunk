@@ -6,8 +6,14 @@ extends RefCounted
 const DATA_PATH := "res://data/rules/without_number.json"
 const ATTRIBUTES := ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
 
+## The modifier for a score, with out-of-range scores clamped to the nearest band.
+##
+## No `assert` here on purpose: this function is called by the sheet *validator*, whose job is to look at
+## invalid data and report it. An assertion turned "this sheet has STR 22" into a `SCRIPT ERROR`, which the
+## shutdown gate correctly read as a crash-like diagnostic — validation cannot crash on the thing it is
+## validating. CWN's bands are monotone, so clamping is the honest reading of an out-of-range score rather
+## than a guess; `Sheet.validate()` is what reports the score itself as illegal.
 static func ability_modifier(score: int) -> int:
-	assert(score >= 3 and score <= 18, "CWN attributes are 3..18")
 	if score == 3:
 		return -2
 	if score <= 7:
