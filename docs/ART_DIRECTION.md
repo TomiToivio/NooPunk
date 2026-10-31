@@ -2,6 +2,11 @@
 
 **Status:** locked. This document is the answer to "does this image belong in NoöPunk?".
 
+**Authority split.** This file decides *what may be depicted*. [`ART_DIRECTION_IMAGES.md`](ART_DIRECTION_IMAGES.md)
+decides *how an image enters the build* — manifest, categories, naming, imports, layout. The palette and
+type live in [`art/ART_BIBLE_1974.md`](art/ART_BIBLE_1974.md). Where the prose overlaps, this file wins on
+content and the other wins on process.
+
 ## The style
 
 1970s European science-fiction **comic-book illustration**: clean expressive ink linework, restrained
