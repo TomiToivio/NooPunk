@@ -128,7 +128,7 @@ class CampaignEngine:
         response = f"You wait {minutes} minute(s). Mission minute {self.state.minute}, scene {current_scene}."
         if previous_scene < 1 <= current_scene and not self.has("radio_bulletin"):
             self._grant(["radio_bulletin"])
-            response += ("\\nUNSA radio: a second university access badge remains unaccounted for. "
+            response += ("\nUNSA radio: a second university access badge remains unaccounted for. "
                          "The bulletin is a lead, not evidence.")
         return self._say(response)
 
