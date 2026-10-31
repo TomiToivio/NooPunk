@@ -89,13 +89,13 @@
       "id": "focus-gear-budget",
       "srd": "Character Creation / Focus Gear Budget",
       "srd_path": "/character-creation/focus-gear-budget/",
-      "python": null,
+      "python": "src/rules/cwn_foci.py",
       "godot": "godot/core/cwn_foci.gd",
-      "coverage": "godot-only",
+      "coverage": "implemented",
       "tests": [
-        "godot/tests/test_cwn_sheet.gd"
+        "tests/test_cwn_foci.py"
       ],
-      "note": "The per-focus starting gear allowance has no Python path yet; this is a first migration target."
+      "note": "GEAR_BUDGET/GEAR_BUDGET_FOCI were already here; an earlier pass of this audit grepped for the phrase 'focus gear' and missed them. Corrected, not re-implemented."
     },
     {
       "id": "final-steps",
@@ -113,11 +113,13 @@
       "id": "mission-time",
       "srd": "Rules / Scenes, Rounds and Mission Time",
       "srd_path": "/rules-of-the-game/scenes-rounds-mission-time/",
-      "python": null,
+      "python": "src/rules/cwn_mission_time.py",
       "godot": "godot/core/cwn_mission_time.gd",
-      "coverage": "godot-only",
-      "tests": [],
-      "note": "A MUD needs the same clock; port before the single-player campaign is scheduled."
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_mission_time.py"
+      ],
+      "note": "Ported from the Godot kernel and the SRD: round 6 s, scene 10 min, standard action 1 min; a long jump reports every scene it crossed, and end_scene() refreshes without moving the clock."
     },
     {
       "id": "saves",

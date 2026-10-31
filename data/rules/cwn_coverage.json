@@ -3,8 +3,8 @@
   "source": "src/rules",
   "note": "Registry of implemented rule procedures. Presence here is code coverage, not SRD parity.",
   "totals": {
-    "modules": 30,
-    "procedures": 285
+    "modules": 31,
+    "procedures": 290
   },
   "modules": [
     {
@@ -1069,6 +1069,51 @@
         }
       ],
       "count": 12
+    },
+    {
+      "module": "cwn_mission_time.py",
+      "procedures": [
+        {
+          "name": "Tick",
+          "signature": "",
+          "doc": "What one advance did: where the clock is now, and what crossed on the way.",
+          "methods": [
+            {
+              "name": "Tick.scene_refreshed",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "MissionClock",
+          "signature": "",
+          "doc": "Minutes from minute zero, and how many scenes that is.",
+          "methods": [
+            {
+              "name": "MissionClock.advance",
+              "signature": "(minutes=...)",
+              "doc": "Move the clock forward; report whether that crossed a scene boundary."
+            },
+            {
+              "name": "MissionClock.spend_action",
+              "signature": "(minutes=...)",
+              "doc": "A standard action, one minute by the SRD. Named so callers read as the rules do."
+            },
+            {
+              "name": "MissionClock.end_scene",
+              "signature": "()",
+              "doc": "End the current scene early \u2014 a fight that finished inside the ten minutes."
+            },
+            {
+              "name": "MissionClock.minutes_into_scene",
+              "signature": "()",
+              "doc": "How far into the current ten-minute window the clock stands."
+            }
+          ]
+        }
+      ],
+      "count": 5
     },
     {
       "module": "cwn_program_catalogue.py",
