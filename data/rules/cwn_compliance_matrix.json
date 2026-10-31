@@ -1,0 +1,367 @@
+{
+  "$comment": "CWN rules compliance matrix (#950). One row per SRD system. Status is deliberately conservative: 'implemented' requires a test path that exists; a module without a test is 'partial'. The linked hosted SRD (cwn.quadrifons.com) omits optional rules and the Antagonists/NPC sections - rows that depend on omitted material say so instead of claiming coverage. Validated by tools/check_cwn_compliance.py.",
+  "version": 1,
+  "srd": {
+    "source": "https://cwn.quadrifons.com/",
+    "scope_note": "The linked SRD omits some optional rules and the Antagonists/NPC sections. Coverage here describes the linked SRD; the full published rulebook is out of scope until legally available text is used."
+  },
+  "statuses": [
+    "implemented",
+    "partial",
+    "missing",
+    "not_applicable"
+  ],
+  "rows": [
+    {
+      "id": "attributes",
+      "system": "Attributes and modifiers",
+      "srd": "Character Creation — Attributes",
+      "godot": [
+        "godot/core/cwn_character.gd"
+      ],
+      "python": [
+        "src/rules/wn_core.py",
+        "src/rules/cwn_character.py"
+      ],
+      "mud": [
+        "mud/nopunk_mud/cwn/__init__.py"
+      ],
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_mud_cwn_parity_950.py",
+        "tests/godot/test_cwn_rules.gd"
+      ],
+      "divergence": "",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    },
+    {
+      "id": "skill_checks",
+      "system": "Skill checks (2d6 + rank + modifier vs band)",
+      "srd": "Rules of the Game — Skill Checks",
+      "godot": [
+        "godot/core/rules_adapter.gd"
+      ],
+      "python": [
+        "src/rules/wn_core.py"
+      ],
+      "mud": [
+        "mud/nopunk_mud/cwn/__init__.py"
+      ],
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_mud_cwn_parity_950.py"
+      ],
+      "divergence": "",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    },
+    {
+      "id": "saves",
+      "system": "Saving throws (Physical / Evasion / Mental / Luck)",
+      "srd": "Rules of the Game — Saving Throws",
+      "godot": [
+        "godot/core/cwn_character.gd"
+      ],
+      "python": [
+        "src/rules/cwn_core.py"
+      ],
+      "mud": [
+        "mud/nopunk_mud/cwn/__init__.py"
+      ],
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_mud_cwn_parity_950.py"
+      ],
+      "divergence": "",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    },
+    {
+      "id": "hit_points",
+      "system": "Hit points and advancement rolls",
+      "srd": "Character Creation — Hit Points; Advancement",
+      "godot": [
+        "godot/core/cwn_character.gd",
+        "godot/core/cwn_progression.gd"
+      ],
+      "python": [
+        "src/rules/cwn_advancement.py"
+      ],
+      "mud": [
+        "mud/nopunk_mud/cwn/__init__.py"
+      ],
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_mud_cwn_parity_950.py"
+      ],
+      "divergence": "",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    },
+    {
+      "id": "strain",
+      "system": "System Strain (capacity, lifestyle, cyberware cost)",
+      "srd": "Equipment — System Strain; Cyberware",
+      "godot": [
+        "godot/core/cwn_cyberware_ops.gd"
+      ],
+      "python": [
+        "src/rules/cwn_strain.py",
+        "src/rules/cwn_core.py"
+      ],
+      "mud": [
+        "mud/nopunk_mud/cwn/__init__.py"
+      ],
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_mud_cwn_parity_950.py"
+      ],
+      "divergence": "",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    },
+    {
+      "id": "backgrounds",
+      "system": "Backgrounds",
+      "srd": "Character Creation — Backgrounds",
+      "godot": [
+        "godot/core/cwn_character.gd"
+      ],
+      "python": [
+        "src/rules/cwn_backgrounds.py"
+      ],
+      "mud": [],
+      "coverage": "partial",
+      "tests": [],
+      "divergence": "Data and selection exist; no MUD character-creation flow yet.",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    },
+    {
+      "id": "edges_foci",
+      "system": "Edges and Foci",
+      "srd": "Character Creation — Edges and Foci",
+      "godot": [
+        "godot/core/cwn_character.gd"
+      ],
+      "python": [
+        "src/rules/cwn_edges_foci.py",
+        "src/rules/cwn_foci.py"
+      ],
+      "mud": [],
+      "coverage": "partial",
+      "tests": [],
+      "divergence": "Implemented in Python and Godot; not yet reachable from a MUD command.",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    },
+    {
+      "id": "combat_core",
+      "system": "Combat: initiative, action economy, attacks, damage",
+      "srd": "Combat",
+      "godot": [
+        "godot/core/combat.gd",
+        "godot/core/cwn_attack_modifiers.gd"
+      ],
+      "python": [
+        "src/rules/cwn_combat.py",
+        "src/rules/cwn_combat_actions.py",
+        "src/rules/cwn_core.py"
+      ],
+      "mud": [],
+      "coverage": "partial",
+      "tests": [
+        "tests/test_cwn_combat.py",
+        "tests/test_cwn_combat_actions.py"
+      ],
+      "divergence": "Resolution exists on both sides; no Evennia combat command or turn loop yet.",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    },
+    {
+      "id": "trauma_shock",
+      "system": "Trauma, Shock and major injury",
+      "srd": "Combat — Trauma and Shock",
+      "godot": [
+        "godot/core/combat.gd"
+      ],
+      "python": [
+        "src/rules/cwn_trauma.py",
+        "src/rules/cwn_major_injury.py"
+      ],
+      "mud": [],
+      "coverage": "partial",
+      "tests": [],
+      "divergence": "Python kernels exist and are tested; the MUD has no combat loop to call them from.",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    },
+    {
+      "id": "healing",
+      "system": "Injury, stabilisation, healing",
+      "srd": "Combat — Injury and Healing",
+      "godot": [
+        "godot/core/cwn_healing.gd"
+      ],
+      "python": [
+        "src/rules/cwn_healing.py",
+        "src/rules/cwn_injury_procedure.py"
+      ],
+      "mud": [],
+      "coverage": "partial",
+      "tests": [],
+      "divergence": "Not yet wired to MUD state persistence.",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    },
+    {
+      "id": "equipment",
+      "system": "Weapons, armour, encumbrance, gear",
+      "srd": "Equipment",
+      "godot": [],
+      "python": [
+        "src/rules/cwn_equipment.py",
+        "src/rules/cwn_encumbrance.py"
+      ],
+      "mud": [],
+      "coverage": "partial",
+      "tests": [],
+      "divergence": "Catalogues and encumbrance exist; MUD inventory is currently a simple dict.",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    },
+    {
+      "id": "gear_mods",
+      "system": "Gear modifications and crafting",
+      "srd": "Equipment — Modifications; Crafting",
+      "godot": [
+        "godot/core/cwn_gear_mods.gd"
+      ],
+      "python": [
+        "src/rules/cwn_gear_mods.py"
+      ],
+      "mud": [],
+      "coverage": "partial",
+      "tests": [],
+      "divergence": "",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    },
+    {
+      "id": "lifestyles",
+      "system": "Lifestyles, wages and bribes",
+      "srd": "Equipment — Cost of Living",
+      "godot": [
+        "godot/core/cwn_contacts.gd"
+      ],
+      "python": [
+        "src/rules/cwn_core.py"
+      ],
+      "mud": [],
+      "coverage": "partial",
+      "tests": [],
+      "divergence": "Strain-by-lifestyle is ported to the MUD; wages and bribes are not.",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    },
+    {
+      "id": "vehicles",
+      "system": "Vehicles and vehicle combat",
+      "srd": "Equipment — Vehicles; Vehicle Combat",
+      "godot": [
+        "godot/core/cwn_vehicles.gd"
+      ],
+      "python": [
+        "src/rules/cwn_vehicles.py"
+      ],
+      "mud": [],
+      "coverage": "partial",
+      "tests": [],
+      "divergence": "",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    },
+    {
+      "id": "drones",
+      "system": "Drones",
+      "srd": "Equipment — Drones",
+      "godot": [
+        "godot/core/cwn_drones.gd"
+      ],
+      "python": [
+        "src/rules/cwn_drones.py"
+      ],
+      "mud": [],
+      "coverage": "partial",
+      "tests": [],
+      "divergence": "",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    },
+    {
+      "id": "chases",
+      "system": "Chases and pursuit",
+      "srd": "Rules of the Game — Chases",
+      "godot": [
+        "godot/core/cwn_chases.gd"
+      ],
+      "python": [],
+      "mud": [],
+      "coverage": "partial",
+      "tests": [],
+      "divergence": "Godot-only; no Python or MUD implementation.",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    },
+    {
+      "id": "cyberware",
+      "system": "Cyberware installation, complications, maintenance, Alienation",
+      "srd": "Cyberware",
+      "godot": [
+        "godot/core/cwn_cyberware_ops.gd",
+        "godot/core/cwn_alienation.gd"
+      ],
+      "python": [
+        "src/rules/cwn_core.py"
+      ],
+      "mud": [],
+      "coverage": "partial",
+      "tests": [],
+      "divergence": "Installation terms and Alienation tables exist; the MUD has no implant inventory yet.",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    },
+    {
+      "id": "hacking",
+      "system": "Hacking: decks, access, programs, subjects and verbs",
+      "srd": "Hacking",
+      "godot": [
+        "godot/core/hacking.gd",
+        "godot/core/cwn_node_link.gd"
+      ],
+      "python": [
+        "src/rules/cwn_hacking.py",
+        "src/rules/cwn_program_catalogue.py"
+      ],
+      "mud": [],
+      "coverage": "partial",
+      "tests": [
+        "tests/test_cwn_hacking_contract.py"
+      ],
+      "divergence": "Playable in Godot as a node-link screen; no MUD command surface.",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    },
+    {
+      "id": "demons_watchdogs",
+      "system": "Demons, watchdogs and countermeasures",
+      "srd": "Hacking — Intrusion Countermeasures",
+      "godot": [
+        "godot/core/hacking.gd"
+      ],
+      "python": [
+        "src/rules/cwn_hacking.py"
+      ],
+      "mud": [],
+      "coverage": "partial",
+      "tests": [],
+      "divergence": "Partial on both sides; the linked SRD's treatment is limited.",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    },
+    {
+      "id": "antagonists",
+      "system": "Antagonists and NPC statistics",
+      "srd": "Antagonists (not included in the linked SRD)",
+      "godot": [],
+      "python": [],
+      "mud": [],
+      "coverage": "missing",
+      "tests": [],
+      "divergence": "The linked hosted SRD omits the Antagonists/NPC section. Not implemented and not claimed; needs legally available official text.",
+      "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
+    }
+  ]
+}

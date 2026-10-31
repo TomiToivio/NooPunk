@@ -8,7 +8,20 @@ For mechanics: update `docs/design/ISSUE_950_CWN_DELUXE_AUDIT.md`, conformance t
 
 # AI contributor boundary: NoöPunk MUD
 
-This directory is **NoöPunk MUD**, a Python Evennia application. It is NOT the Godot game. Do not change the Godot project, scenes, game kernels or images while working on MUD issues. Consult repository-root AGENTS.md for the CWN foundation lock (#897).
+---
+
+## Boundary, restated for this directory
+
+This directory is the **default target** for new game work (#950) and it is **not** the Godot game. Nothing here
+imports the Godot project, and the Godot project does not import this package; `tests/test_mud_godot_boundary.py`
+enforces both directions. Canon data under `data/` is read-only input.
+
+The MUD's CWN core is `nopunk_mud/cwn/`, which imports nothing from `src/rules` — the parity comparison lives at
+the repository root (`tests/test_mud_cwn_parity_950.py`) so that the package stays installable on its own.
+
+This directory is **NoöPunk MUD**, a Python Evennia application, and since #950 it is the
+**default target** for new game work: the first deliverable is a complete single-player UNSA story with no LLM,
+no Mesa and no other players. It is still NOT the Godot game. Do not change the Godot project, scenes, game kernels or images while working on MUD issues. Consult repository-root AGENTS.md for the priority order (#950) and the CWN foundation lock (#897).
 
 Core rules: Cities Without Number, with Stars Without Number additions only where authorized. Keep Noösphere, ontological stress, and ideological factions as overlays, never alternative dice mechanics.
 

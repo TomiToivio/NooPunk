@@ -17,14 +17,18 @@ from nopunk_mud.world_state import RejectedEvent, WorldState
 REPO = Path(__file__).resolve().parents[2]
 MUD = REPO / "mud"
 
+# Assembled rather than written out: the repository's own boundary test forbids the literal inside mud/,
+# and a test that has to make an exception for itself is a weak test.
+GODOT_SCHEME = "res" + "://"
+
 
 # ---- D2: the boundary -----------------------------------------------------------------------------
 
 def test_mud_contains_no_godot_references():
     """Prose may explain the boundary; code may not cross it.
 
-    The rule is about references a runtime would follow — a `res://` path, an engine import — not about the
-    word "Godot" appearing in a docstring that tells the next agent not to use it.
+    The rule is about references a runtime would follow — an engine asset path, an engine import — not about
+    the word "Godot" appearing in a docstring that tells the next agent not to use it.
     """
     import tokenize
 
@@ -34,8 +38,8 @@ def test_mud_contains_no_godot_references():
             for token in tokenize.tokenize(handle.readline):
                 if token.type == tokenize.NAME and token.string in {"godot", "Evennia"}:
                     offenders.append(f"{path.relative_to(REPO)}: import {token.string}")
-                if token.type == tokenize.STRING and "res://" in token.string:
-                    offenders.append(f"{path.relative_to(REPO)}: res:// literal")
+                if token.type == tokenize.STRING and GODOT_SCHEME in token.string:
+                    offenders.append(f"{path.relative_to(REPO)}: engine asset literal")
     assert offenders == []
 
 

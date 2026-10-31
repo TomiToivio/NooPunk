@@ -10,6 +10,16 @@
 
 ---
 
+**NoöPunk overlays still live in `mods/noopunk/`** and still invoke CWN rather than replace it; moving the
+game to the MUD does not move the rules out from under it.
+
+**Concrete pointers** (added with the matrix PR): the audited coverage lives in
+`data/rules/cwn_compliance_matrix.json`, rendered to [`docs/rules/CWN_COMPLIANCE_MATRIX_950.md`](docs/rules/CWN_COMPLIANCE_MATRIX_950.md)
+and validated by `tools/check_cwn_compliance.py` — `implemented` requires an existing test, and a section the
+linked SRD omits (Antagonists) is marked `missing` rather than claimed. The MUD's own CWN core is
+`mud/nopunk_mud/cwn/`, parity-tested against `src/rules` by `tests/test_mud_cwn_parity_950.py`. The headless solo
+smoke is `cd mud && python -m nopunk_mud.cli --demo`.
+
 # FOUNDATIONAL AUTHOR DECISION — issue #897 (2026-10-31)
 
 This decision supersedes the **presentation and gameplay** portions of #848 and older directives where they conflict. The **rules foundation remains the same**: published Cities Without Number (CWN) is permanently the primary OSR chassis; compatible Stars Without Number (SWN) psionics/space/factions and selective WWN/AWN material can extend it where appropriate. Do **not** propose or introduce a replacement core dice engine, attribute scheme, tactical framework or bespoke rulebook. Godot uses the repository-root `project.godot`, `scenes/main.tscn`, and `godot/core/` CWN rules. Historical 1d10/Fate prototypes are not authoritative.

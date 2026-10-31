@@ -2,6 +2,12 @@
 
 > **Primary game (#950):** the Python/Evennia [NoöPunk MUD](mud/README.md). Default engineering priority is CWN rules parity and a complete offline-independent single-player UNSA campaign; Godot is now maintenance-only, and multiplayer/LLM/Mesa features follow later. The [CWN Deluxe audit](docs/design/ISSUE_950_CWN_DELUXE_AUDIT.md) tracks the migration. Older Godot-first paragraphs below are historical.
 
+Rules coverage is tracked honestly in
+[`docs/rules/CWN_COMPLIANCE_MATRIX_950.md`](docs/rules/CWN_COMPLIANCE_MATRIX_950.md) — `implemented` only where a
+test exists, and `missing` where the linked SRD omits the section. The MUD's own CWN core lives in
+`mud/nopunk_mud/cwn/` and is parity-tested against `src/rules`; `cd mud && python -m nopunk_mud.cli --demo` runs
+the solo smoke with no LLM, no Mesa and no second player.
+
 ## Reality has changed. You are still expected at work.
 
 *The future of humanity is no longer exclusively a human concern.*
