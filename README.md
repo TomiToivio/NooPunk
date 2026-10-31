@@ -22,7 +22,7 @@ Three paradigm shifts make certainty difficult:
 - **NHI: Non-Human Intelligence.** We were not alone. This answered one question and made most of the others worse.
 - **PSI: Psionics and Consciousness.** Mind and reality proved more intimately connected than expected. The discovery did not make it easier to agree about either.
 
-**NoöPunk** is an experimental **New Weird / Social Science Fiction RPG and political strategy project**, growing into cyberpunk science fantasy as its world changes. Investigate the impossible at the scale of a person; contest the future at the scale of a faction. The canonical tabletop and top-down Godot RPG currently follow CWN/SWN rules; older prototypes remain experimental.
+**NoöPunk** is an experimental **New Weird / Social Science Fiction RPG and political strategy project**, growing into cyberpunk science fantasy as its world changes. Investigate the impossible at the scale of a person; contest the future at the scale of a faction. The canonical tabletop and Godot RPG permanently use CWN as their OSR rules chassis, with compatible SWN/WWN modules. The new primary Godot direction is location-based, social/investigative play rather than tactical top-down movement; older scenes remain for compatibility. See [foundational decision #897](docs/design/ISSUE_897_FOUNDATIONAL_LOCK.md).
 
 A breakthrough can become a political crisis. A crisis can become somebody's career. Behind both is the awkward question of who needs help, and whether you can still do something for them.
 
@@ -44,13 +44,15 @@ Films, television, tabletop and computer games followed, along with a NoöPunk s
 
 **NoöPunk = Noösphere + Cyberpunk.**
 
-NoöPunk is an experimental **computer RPG and social simulation** set in **20XX**, using an **independent NoöPunk rules system**, a deterministic Python RPG kernel, and **Google DeepMind Concordia** for optional LLM-driven agents and narration. Earth still exists. Transhuman technology is already here. AGI, cyborgification, NHI contact, psionics, panpsychism, and the emerging Noösphere are destabilizing the old world at the same time.
+NoöPunk is an experimental **computer RPG and social simulation** set in **20XX**, using a **CWN-first rules foundation with optional NoöPunk narrative modules**, a deterministic Python RPG kernel, and **Google DeepMind Concordia** for optional LLM-driven agents and narration. Earth still exists. Transhuman technology is already here. AGI, cyborgification, NHI contact, psionics, panpsychism, and the emerging Noösphere are destabilizing the old world at the same time.
 
 The project is currently a **playable text-based prototype**. You can run the normal game entirely without Ollama or an LLM.
 
 ### Rules direction (issue #615)
 
 **New author decision (2026-10-26):** NoöPunk's target RPG begins with the **standard Without Number family** rules rather than a bespoke 1d10/Fate hybrid. **Cities Without Number** and **Stars Without Number** provide the shared attributes, skills and fundamental dice grammar; **Worlds Without Number** adds noetic/interdimensional science fantasy and **Ashes Without Number** adds local NHI Crisis survival and salvage. Start from existing procedures; customize after a functioning, single-sheet cross-genre RPG exists. The first independent Python chassis is `src/rules/without_number.py`. **Migration is incomplete:** existing legacy 1d10 and strategy crossover Fate code still runs separately while its callers, saves and scenarios are adapted. See the [#615 decision and progress record](docs/design/ISSUE_615_WITHOUT_NUMBER_RULES_DIRECTION.md) and [conversion epic #564](https://github.com/TomiToivio/NooPunk/issues/564) for remaining work, license restrictions and compatibility requirements.
+
+**Visual identity:** *A 1974 Hawkwind concert, an acid trip, and a VALIS transmission showing 2045.* Zardoz, Barbarella and The Rocky Horror Picture Show govern the aesthetic, not later glossy cyberpunk. [Art-direction bible](docs/design/ISSUE_897_VISUAL_BIBLE.md).
 
 ## Motivation: social science first, science fiction second
 
