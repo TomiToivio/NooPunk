@@ -1,0 +1,1120 @@
+{
+ "format": "cwn-srd-page-coverage-v1",
+ "source": "https://cwn.quadrifons.com/",
+ "coverage_values": [
+  "implemented",
+  "partial",
+  "missing",
+  "not_applicable"
+ ],
+ "rows": [
+  {
+   "srd": "character-creation",
+   "srd_url": "https://cwn.quadrifons.com/character-creation",
+   "section": "character-creation",
+   "godot": [],
+   "godot_symbols": [],
+   "python": [],
+   "coverage": "not_applicable",
+   "tests": [],
+   "overlay": null,
+   "note": "section landing page; its rules live on the child pages"
+  },
+  {
+   "srd": "character-creation__attributes",
+   "srd_url": "https://cwn.quadrifons.com/character-creation/attributes",
+   "section": "character-creation",
+   "godot": [
+    "godot/core/cwn_character.gd"
+   ],
+   "python": [
+    "attribute_modifier",
+    "roll_attributes",
+    "assign_array",
+    "hit_points"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "mud/tests/test_cwn_core.py::TestAttributes",
+    "mud/tests/test_cwn_core.py::TestDerived"
+   ],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "character-creation__backgrounds",
+   "srd_url": "https://cwn.quadrifons.com/character-creation/backgrounds",
+   "section": "character-creation",
+   "godot": [
+    "godot/core/cwn_character.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": "selection and granted skills not ported"
+  },
+  {
+   "srd": "character-creation__contacts",
+   "srd_url": "https://cwn.quadrifons.com/character-creation/contacts",
+   "section": "character-creation",
+   "godot": [
+    "godot/core/cwn_contacts.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "character-creation__edges",
+   "srd_url": "https://cwn.quadrifons.com/character-creation/edges",
+   "section": "character-creation",
+   "godot": [],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": "no Godot edges module either; data only"
+  },
+  {
+   "srd": "character-creation__final-steps",
+   "srd_url": "https://cwn.quadrifons.com/character-creation/final-steps",
+   "section": "character-creation",
+   "godot": [],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": "procedure page, no engine path"
+  },
+  {
+   "srd": "character-creation__foci",
+   "srd_url": "https://cwn.quadrifons.com/character-creation/foci",
+   "section": "character-creation",
+   "godot": [
+    "godot/core/cwn_foci.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "character-creation__focus-gear-budget",
+   "srd_url": "https://cwn.quadrifons.com/character-creation/focus-gear-budget",
+   "section": "character-creation",
+   "godot": [
+    "godot/core/cwn_foci.gd",
+    "godot/core/cwn_catalogue.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "character-creation__skills",
+   "srd_url": "https://cwn.quadrifons.com/character-creation/skills",
+   "section": "character-creation",
+   "godot": [
+    "godot/core/cwn_character.gd"
+   ],
+   "python": [
+    "skill_check"
+   ],
+   "coverage": "partial",
+   "tests": [
+    "mud/tests/test_cwn_core.py::TestChecks"
+   ],
+   "overlay": null,
+   "note": "the check is ported; the skill list and granting are not"
+  },
+  {
+   "srd": "gear-vehicles-cyberware",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware",
+   "section": "gear-vehicles-cyberware",
+   "godot": [],
+   "godot_symbols": [],
+   "python": [],
+   "coverage": "not_applicable",
+   "tests": [],
+   "overlay": null,
+   "note": "section landing page; its rules live on the child pages"
+  },
+  {
+   "srd": "gear-vehicles-cyberware__armor",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/armor",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_catalogue.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__armor__armor-accessories",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/armor/armor-accessories",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_catalogue.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__armor__armor-mods",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/armor/armor-mods",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_gear_mods.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__armor__armor-terms-definitions",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/armor/armor-terms-definitions",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_catalogue.gd"
+   ],
+   "python": [],
+   "coverage": "not_applicable",
+   "tests": [],
+   "overlay": null,
+   "note": "terminology page; values carried in data/rules/cwn"
+  },
+  {
+   "srd": "gear-vehicles-cyberware__armor__armor-types",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/armor/armor-types",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_catalogue.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__cyberdecks",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberdecks",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_hacking_catalogue.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__cyberware",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_cyberware.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__cyberware__concealing-detecting-cyberware",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/concealing-detecting-cyberware",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_cyberware.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__cyberware__cyberdoc-tools",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberdoc-tools",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_cyberware_ops.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__cyberware__cyberware-alienation",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-alienation",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_alienation.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__cyberware__cyberware-maintenance",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-maintenance",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_cyberware_ops.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__cyberware__cyberware-mods",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-mods",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_cyberware.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-systems",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_cyberware.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__body-cyberware",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-systems/body-cyberware",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_cyberware.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__head-cyberware",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-systems/head-cyberware",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_cyberware.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__limb-cyberware",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-systems/limb-cyberware",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_cyberware.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__medical-cyberware",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-systems/medical-cyberware",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_cyberware.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__nerve-cyberware",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-systems/nerve-cyberware",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_cyberware.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__sensory-cyberware",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-systems/sensory-cyberware",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_cyberware.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__skin-cyberware",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-systems/skin-cyberware",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_cyberware.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__cyberware__implant-complications",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/implant-complications",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_cyberware_complications.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__cyberware__installing-cyberware",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/installing-cyberware",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_cyberware_ops.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__cyberware__removing-cyberware",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/removing-cyberware",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_cyberware_ops.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__cyberware__skillplugs",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/skillplugs",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_cyberware.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__drones",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/drones",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_drones.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__lifestyles-wages-and-bribes",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/lifestyles-wages-and-bribes",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_lifestyles.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__lifestyles-wages-and-bribes__bribe-costs",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/lifestyles-wages-and-bribes/bribe-costs",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_social_costs.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__lifestyles-wages-and-bribes__common-wages",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/lifestyles-wages-and-bribes/common-wages",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_wages.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__lifestyles-wages-and-bribes__lifestyle-costs",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/lifestyles-wages-and-bribes/lifestyle-costs",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_lifestyles.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__mission-gear",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/mission-gear",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_catalogue.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__pharmaceuticals-street-drugs",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/pharmaceuticals-street-drugs",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_drugs.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__vehicles",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/vehicles",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_vehicles.gd",
+    "godot/core/cwn_srd_vehicles.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__weapons",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/weapons",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_catalogue.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__weapons__firearms",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/weapons/firearms",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_catalogue.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__weapons__heavy-weapons",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/weapons/heavy-weapons",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_catalogue.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__weapons__melee-thrown-weapons",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/weapons/melee-thrown-weapons",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_catalogue.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__weapons__weapon-mods",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/weapons/weapon-mods",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_gear_mods.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "gear-vehicles-cyberware__weapons__weapon-stats-and-definitions",
+   "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/weapons/weapon-stats-and-definitions",
+   "section": "gear-vehicles-cyberware",
+   "godot": [
+    "godot/core/cwn_catalogue.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "hacking",
+   "srd_url": "https://cwn.quadrifons.com/hacking",
+   "section": "hacking",
+   "godot": [],
+   "godot_symbols": [],
+   "python": [],
+   "coverage": "not_applicable",
+   "tests": [],
+   "overlay": null,
+   "note": "section landing page; its rules live on the child pages"
+  },
+  {
+   "srd": "hacking__cyberspace-actions",
+   "srd_url": "https://cwn.quadrifons.com/hacking/cyberspace-actions",
+   "section": "hacking",
+   "godot": [
+    "godot/core/cwn_hacking.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "hacking__cyberspace-basics",
+   "srd_url": "https://cwn.quadrifons.com/hacking/cyberspace-basics",
+   "section": "hacking",
+   "godot": [
+    "godot/core/cwn_hacking.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "hacking__demons-watchdogs",
+   "srd_url": "https://cwn.quadrifons.com/hacking/demons-watchdogs",
+   "section": "hacking",
+   "godot": [
+    "godot/core/cwn_demons.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "hacking__hacking-mechanics",
+   "srd_url": "https://cwn.quadrifons.com/hacking/hacking-mechanics",
+   "section": "hacking",
+   "godot": [
+    "godot/core/cwn_hacking.gd",
+    "godot/core/cwn_node_link.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "hacking__programs",
+   "srd_url": "https://cwn.quadrifons.com/hacking/programs",
+   "section": "hacking",
+   "godot": [
+    "godot/core/cwn_programs.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "hacking__programs__acquiring-writing-programs",
+   "srd_url": "https://cwn.quadrifons.com/hacking/programs/acquiring-writing-programs",
+   "section": "hacking",
+   "godot": [
+    "godot/core/cwn_program_rules.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "hacking__programs__program-subjects",
+   "srd_url": "https://cwn.quadrifons.com/hacking/programs/program-subjects",
+   "section": "hacking",
+   "godot": [
+    "godot/core/cwn_program_rules.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "hacking__programs__program-verbs",
+   "srd_url": "https://cwn.quadrifons.com/hacking/programs/program-verbs",
+   "section": "hacking",
+   "godot": [
+    "godot/core/cwn_program_rules.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game",
+   "section": "rules-of-the-game",
+   "godot": [],
+   "godot_symbols": [],
+   "python": [],
+   "coverage": "not_applicable",
+   "tests": [],
+   "overlay": null,
+   "note": "section landing page; its rules live on the child pages"
+  },
+  {
+   "srd": "rules-of-the-game__character-advancement",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/character-advancement",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_progression.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game__chases-and-pursuit",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/chases-and-pursuit",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_chases.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game__combat",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/combat",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_combat_rules.gd"
+   ],
+   "python": [
+    "attack_roll",
+    "damage"
+   ],
+   "coverage": "partial",
+   "tests": [
+    "mud/tests/test_cwn_core.py::TestChecks",
+    "mud/tests/test_cwn_core.py::TestDamageAndStrain"
+   ],
+   "overlay": null,
+   "note": "attack and damage resolution ported; sequence and initiative are not"
+  },
+  {
+   "srd": "rules-of-the-game__combat__attacks-in-combat",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/combat/attacks-in-combat",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_combat_rules.gd",
+    "godot/core/cwn_attack_modifiers.gd"
+   ],
+   "python": [
+    "attack_roll"
+   ],
+   "coverage": "partial",
+   "tests": [
+    "mud/tests/test_cwn_core.py::TestChecks"
+   ],
+   "overlay": null,
+   "note": "impossible-attack class handled in Godot, not yet in Python"
+  },
+  {
+   "srd": "rules-of-the-game__combat__combat-actions",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/combat/combat-actions",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_combat_actions.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game__combat__combat-initiative",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/combat/combat-initiative",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_combat_rules.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game__combat__combat-sequence",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/combat/combat-sequence",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_combat_rules.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game__combat__damage-trauma-shock",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/combat/damage-trauma-shock",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_combat_rules.gd"
+   ],
+   "python": [
+    "damage"
+   ],
+   "coverage": "partial",
+   "tests": [
+    "mud/tests/test_cwn_core.py::TestDamageAndStrain"
+   ],
+   "overlay": null,
+   "note": "trauma multiplier ported; Shock is not"
+  },
+  {
+   "srd": "rules-of-the-game__combat__special-combat-maneuvers",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/combat/special-combat-maneuvers",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_combat_actions.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game__combat__vehicle-combat",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/combat/vehicle-combat",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_vehicles.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game__crafting-modifying-gear",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/crafting-modifying-gear",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_gear_mods.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game__crafting-modifying-gear__crafting-gear",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/crafting-modifying-gear/crafting-gear",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_gear_mods.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game__crafting-modifying-gear__factory-mods",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/crafting-modifying-gear/factory-mods",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_gear_mods.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game__crafting-modifying-gear__maintaining-mods",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/crafting-modifying-gear/maintaining-mods",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_gear_mods.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game__crafting-modifying-gear__modifying-gear",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/crafting-modifying-gear/modifying-gear",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_gear_mods.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game__encumbrance",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/encumbrance",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_encumbrance.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game__injury-healing-system-strain",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/injury-healing-system-strain",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_injury.gd",
+    "godot/core/cwn_healing.gd",
+    "godot/core/cwn_strain.gd"
+   ],
+   "python": [
+    "strain_max",
+    "strain_absorb"
+   ],
+   "coverage": "partial",
+   "tests": [
+    "mud/tests/test_cwn_core.py::TestDamageAndStrain"
+   ],
+   "overlay": null,
+   "note": "System Strain ported; injuries and healing are not"
+  },
+  {
+   "srd": "rules-of-the-game__injury-healing-system-strain__major-injuries",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/injury-healing-system-strain/major-injuries",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_injury.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game__injury-healing-system-strain__mortal-injury-stabilization",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/injury-healing-system-strain/mortal-injury-stabilization",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_healing.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game__injury-healing-system-strain__natural-healing-first-aid-poisons",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/injury-healing-system-strain/natural-healing-first-aid-poisons",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_healing.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game__injury-healing-system-strain__system-strain",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/injury-healing-system-strain/system-strain",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_strain.gd"
+   ],
+   "python": [
+    "strain_max",
+    "strain_absorb"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "mud/tests/test_cwn_core.py::TestDamageAndStrain"
+   ],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game__saving-throws",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/saving-throws",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_character.gd"
+   ],
+   "python": [
+    "save_target"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "mud/tests/test_cwn_core.py::TestDerived"
+   ],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game__scenes-rounds-mission-time",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/scenes-rounds-mission-time",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_mission_time.gd"
+   ],
+   "python": [],
+   "coverage": "missing",
+   "tests": [],
+   "overlay": null,
+   "note": null
+  },
+  {
+   "srd": "rules-of-the-game__skill-checks",
+   "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/skill-checks",
+   "section": "rules-of-the-game",
+   "godot": [
+    "godot/core/cwn_character.gd"
+   ],
+   "python": [
+    "skill_check"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "mud/tests/test_cwn_core.py::TestChecks"
+   ],
+   "overlay": null,
+   "note": null
+  }
+ ]
+}
