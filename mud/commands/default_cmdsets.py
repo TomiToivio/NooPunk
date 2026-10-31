@@ -1,7 +1,8 @@
 """Text commands for the separate NoöPunk MUD."""
 from evennia import Command
 from evennia.commands.default.cmdset_character import CharacterCmdSet
-from systems.cwn import skill_check
+from systems.cwn import skill_check, attribute_modifier, ATTRIBUTES, SKILLS
+from nopunk_mud.solo_campaign import Campaign, advance
 
 class CmdSheet(Command):
     key = "sheet"
@@ -14,7 +15,7 @@ class CmdCheck(Command):
     def func(self):
         try:
             skill, difficulty = (x.strip() for x in self.args.split("=", 1))
-            if not skill or skill not in (self.caller.db.skills or {}):
+            if not skill or skill.lower() not in SKILLS:
                 raise ValueError()
             difficulty = int(difficulty)
             if difficulty not in (6, 8, 10, 12, 14):
@@ -22,9 +23,17 @@ class CmdCheck(Command):
         except (ValueError, TypeError):
             self.caller.msg("Usage: check <trained skill>=<difficulty 6/8/10/12/14>")
             return
-        rank = self.caller.db.skills[skill]
-        result = skill_check(rank=rank, attribute_modifier=0, difficulty=difficulty)
-        self.caller.msg(f"{skill}: {result.total} vs {difficulty}, {'success' if result.success else 'failure'} ({result.dice[0]}+{result.dice[1]}+{rank}). Attribute modifiers TBD.")
+        skill = skill.lower()
+        ranks = self.caller.db.skills or {}
+        rank = ranks.get(skill, -1)
+        # Attribute is selected by situation rather than fixed to each skill.
+        # Explicit caller-selected attribute makes the choice visible.
+        attr_name = (self.caller.db.check_attribute or "intelligence").lower()
+        if attr_name not in ATTRIBUTES:
+            attr_name = "intelligence"
+        mod = attribute_modifier(int(getattr(self.caller.db, attr_name) or 10))
+        result = skill_check(rank=rank, attribute_modifier=mod, difficulty=difficulty)
+        self.caller.msg(f"{skill} ({attr_name}): {result.total} vs {difficulty}, {'success' if result.success else 'failure'} ({result.dice[0]}+{result.dice[1]}{rank:+d}{mod:+d}). Set attribute with 'checkattr <attribute>'.")
 
 class CmdSupplies(Command):
     key = "supplies"
@@ -74,11 +83,34 @@ class CmdTalk(Command):
             return
         self.caller.msg(f"{target.key} says: \"{target.db.npc_dialogue}\"")
 
+
+class CmdCheckAttr(Command):
+    key = "checkattr"
+    def func(self):
+        attr = self.args.strip().lower()
+        if attr not in ATTRIBUTES:
+            self.caller.msg("Usage: checkattr strength|dexterity|constitution|intelligence|wisdom|charisma")
+            return
+        self.caller.db.check_attribute = attr
+        self.caller.msg(f"Skill checks now use {attr.upper()} where narratively appropriate.")
+
+class CmdCase(Command):
+    """A deterministic UNSA case, fully playable with no external GM."""
+    key = "case"
+    def func(self):
+        campaign = Campaign.from_dict(self.caller.db.unsa_campaign or {})
+        state, feedback = advance(campaign, self.args.strip() or "status",
+                                  self.caller.location.key if self.caller.location else "")
+        self.caller.db.unsa_campaign = state.to_dict()
+        self.caller.msg(feedback)
+
 class NoopunkCharacterCmdSet(CharacterCmdSet):
     key = "NoopunkCharacterCmdSet"
     def at_cmdset_creation(self):
         super().at_cmdset_creation()
         self.add(CmdSheet())
+        self.add(CmdCheckAttr())
+        self.add(CmdCase())
         self.add(CmdCheck())
         self.add(CmdSupplies())
         self.add(CmdScavenge())

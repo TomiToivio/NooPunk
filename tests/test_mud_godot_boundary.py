@@ -32,6 +32,9 @@ class MudBoundaryTest(unittest.TestCase):
     def test_the_mud_does_not_reference_godot_resources(self):
         offenders = []
         for path in _files(MUD, (".py", ".md", ".json", ".txt")):
+            # A boundary test may name the literal it forbids; only runtime code is scanned.
+            if "tests" in path.relative_to(MUD).parts:
+                continue
             text = path.read_text(encoding="utf-8", errors="ignore")
             if "res://" in text and path.name != "README.md":
                 offenders.append(str(path.relative_to(ROOT)))
@@ -50,6 +53,18 @@ class MudBoundaryTest(unittest.TestCase):
         agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8", errors="ignore")
         self.assertIn("mud/", agents, "AGENTS.md must name the MUD boundary")
         self.assertIn("Godot", agents)
+
+    def test_agent_guidance_states_mud_primacy(self):
+        """#950: if primacy is not written where agents read, the next agent builds Godot features."""
+        agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8", errors="ignore")
+        self.assertIn("#950", agents, "AGENTS.md must record the #950 pivot")
+        self.assertIn("primary", agents.lower())
+        self.assertIn("secondary/legacy", agents.lower())
+
+    def test_the_mud_readme_declares_phase_one_without_llm(self):
+        readme = (MUD / "README.md").read_text(encoding="utf-8")
+        self.assertIn("#950", readme)
+        self.assertIn("no LLM", readme.replace("no** LLM", "no LLM"))
 
 
 if __name__ == "__main__":

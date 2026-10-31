@@ -1,24 +1,24 @@
-# CURRENT PRIORITY — issue #950 (supersedes #946 and the Godot-first framing of #897)
+# PRIORITY OVERRIDE #950 — authoritative (31 Oct 2026)
 
-**The Evennia MUD in `mud/` is the default target for all coding agents.** Godot is a secondary, maintenance-only
-graphical implementation: it stays in the tree, it keeps working, and it is not where new game features go
-unless a task explicitly names Godot.
+**The Python Evennia MUD in `mud/` is the flagship and default target for all NoöPunk game implementation.** All older Godot-first directives below are historical if they conflict. Godot remains in maintenance-only mode unless an issue explicitly names it. Never delete legacy Godot work.
 
-1. **Default target:** `mud/` — Python, Evennia. Confirm the layout before editing.
-2. **First deliverable:** a complete **single-player UNSA** story that runs with **zero LLM, zero Mesa, zero
-   other players**, and no network dependency. Scripted NPCs, quests, clues, combat and saves must work
-   headlessly.
-3. **First engineering action:** the Godot → Evennia CWN migration and the linked-SRD coverage audit. The matrix
-   is `data/rules/cwn_compliance_matrix.json`, rendered to
-   [`docs/rules/CWN_COMPLIANCE_MATRIX_950.md`](docs/rules/CWN_COMPLIANCE_MATRIX_950.md) and validated by
-   `tools/check_cwn_compliance.py`. It says `implemented` only where a test exists, and it marks the sections
-   the linked SRD omits as `missing` rather than claiming them.
-4. **Rulebook parity is compulsory:** a mechanic change lands with its matrix row, its test, and the
-   corresponding tabletop text — or an explicit "no tabletop mechanics change".
-5. **Godot is preserved, not deleted.** Do not route generic RPG features there. Do not rewrite its work
-   unreviewed.
-6. **Later phase:** multiplayer, Concordia-style LLM GM/NPCs, Mesa simulation and non-UNSA factions are not MVP
-   prerequisites. The solo campaign comes first.
+**Implement in this order:** (1) complete CWN Deluxe/SRD conformance in tested pure-Python mechanics and wire to Evennia, (2) a *finished deterministic single-player UNSA campaign with side quests*, requiring no human/LLM GM or other player, (3) optional multiplayer, Concordia LLM agents/GM, Mesa simulation and non-UNSA factions. Don't make 3 a prerequisite for 2.
+
+**Rulebook parity:** for every mechanical MUD change update tabletop `rulebook/WITHOUT_NUMBER_BASELINE.md` or `RULEBOOK.md` as appropriate, the traceability matrix `docs/design/ISSUE_950_CWN_DELUXE_AUDIT.md`, and matching tests. CWN is locked as core; narrativist NoöPunk mods are separate extensions. The uploaded CWN Deluxe rulebook is a reference, not a file to commit or reproduce.
+
+**Scope:** `mud/` for implementation, `docs/` and canonical tabletop rules only for coordinated docs, not Godot runtime. See issue #950.
+
+---
+
+**NoöPunk overlays still live in `mods/noopunk/`** and still invoke CWN rather than replace it; moving the
+game to the MUD does not move the rules out from under it.
+
+**Concrete pointers** (added with the matrix PR): the audited coverage lives in
+`data/rules/cwn_compliance_matrix.json`, rendered to [`docs/rules/CWN_COMPLIANCE_MATRIX_950.md`](docs/rules/CWN_COMPLIANCE_MATRIX_950.md)
+and validated by `tools/check_cwn_compliance.py` — `implemented` requires an existing test, and a section the
+linked SRD omits (Antagonists) is marked `missing` rather than claimed. The MUD's own CWN core is
+`mud/nopunk_mud/cwn/`, parity-tested against `src/rules` by `tests/test_mud_cwn_parity_950.py`. The headless solo
+smoke is `cd mud && python -m nopunk_mud.cli --demo`.
 
 # FOUNDATIONAL AUTHOR DECISION — issue #897 (2026-10-31)
 
@@ -557,14 +557,21 @@ decision; brainstorming a mechanic does not authorise it. The seven-attribute UN
 **mod**, not the baseline.
 
 
-## Two games, one repository (#946)
+## MUD is the main game (#950)
 
-**NoöPunk Godot** is the graphical game: `project.godot`, `godot/`, `scenes/`.
-**NoöPunk MUD** is a separate text multiplayer game under `mud/` (Evennia + Python), sharing canon and CWN
-rules but **no runtime**.
+**Effective immediately: the NoöPunk MUD (Python/Evennia) under `mud/` is the primary playable
+implementation and the default target for all coding agents.** The Godot project (`project.godot`, `godot/`,
+`scenes/`) is a **secondary/legacy experimental graphical implementation**, maintained only for specifically
+scoped work. Do not continue parallel feature development in Godot by default.
 
-- Identify the target game before editing. MUD work stays under `mud/`; Godot work stays in the Godot tree.
+This supersedes the equal-priority direction of #946 and the Godot-first implementation order of #897. It does
+**not** supersede the canonical CWN rules lock, the setting, the scenario work, or the NoöPunk modules — those
+remain shared input that both implementations read.
+
+- New game code goes under `mud/`. Godot changes need a scoped issue that says why.
+- Shared input (canon, scenario data, CWN as specifications) is read, never forked.
 - No cross-imports: `mud/` must not reference `res://`, `.gd` or `.tscn`; Godot code must not import `mud.*`.
-  `tests/test_mud_godot_boundary.py` enforces both directions.
-- CWN is shared input, never forked. Noösphere, ideology, social ties and ontological shock are modules on
-  top of the baseline.
+  `tests/test_mud_godot_boundary.py` enforces both directions and asserts this primacy section exists.
+- Phase 1 target: a complete offline single-player UNSA investigation in the text interface with **no**
+  multiplayer, **no** LLM and **no** external API. Deterministic scripted GM, headless-testable. Any AI
+  enhancement needs a no-AI fallback that still finishes the campaign.

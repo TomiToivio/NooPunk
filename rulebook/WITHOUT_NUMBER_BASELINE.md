@@ -150,3 +150,10 @@ NoöPunk is an unofficial independent setting using the Without Number family by
 - [Existing rights audit](../docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md).
 
 Use the books at the table for complete catalogs and detailed exceptions. No full source-book text or PDF is added to this repository.
+
+
+## Implementation parity register (#950, October 2026)
+
+**Preferred computer implementation:** Python/Evennia `mud/` is the main NoöPunk game. The tabletop rulebook remains a separately playable interpretation of the *same* published CWN baseline. Godot is legacy/maintenance only. No LLM is necessary to complete the initial UNSA campaign.
+
+**Confirmed first Python slice:** CWN six attribute scores and modifiers (Deluxe p. 5), the 19 skill names and 2d6 check grammar (pp. 5–6, 31), default skill difficulty bands, and Physical/Evasion/Mental saving target formula (p. 30). The MUD's `checkattr` command chooses the situational attribute explicitly. The original Missing Researcher UNSA investigation is a narrative quest example, not a published CWN rule. These are partial implementations, not a claim of full CWN compliance. See `docs/design/ISSUE_950_CWN_DELUXE_AUDIT.md` for missing systems and tests.

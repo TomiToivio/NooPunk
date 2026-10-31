@@ -1,15 +1,22 @@
 # NoöPunk MUD
 
+> **New authority #950:** This is the **primary NoöPunk game**. Implement CWN first, then a self-contained UNSA solo campaign, before optional multiplayer/LLM/Mesa and other factions. The existing paragraphs describing an equal-priority sandbox are historical. See [CWN Deluxe audit](../docs/design/ISSUE_950_CWN_DELUXE_AUDIT.md).
+
+The first original solo case can be played via `case status`, `case accept` at UNSA safehouse, `case interview` at Kurvi, `case records` at University of Helsinki, then `case report` and `case submit` at UNSA safehouse. The case state persists on the player character; this is a **prologue**, not a complete campaign. The linked Python unit test exercises it without LLM/Evennia. Use `checkattr <attribute>` to set the attribute for skill checks, then `check <skill>=<difficulty>`.
+
 A **separate, text-based, persistent multiplayer** game built on [Evennia](https://www.evennia.com/), sharing
 NoöPunk canon and CWN rules with the Godot game but **no runtime**.
 
-**Status: first implementation scaffold added in PR #948.** Evennia runtime and multiplayer behaviour have not yet been verified; see the implementation notes below.
+**Status: MAIN GAME (#950) — first implementation scaffold added in PR #948.** Per #950 this directory is the
+primary playable implementation and the default target for coding agents; the Godot project is
+secondary/legacy. Evennia runtime and multiplayer behaviour are **not yet verified** — the phase-1 build order
+below is the work queue, not a description of finished code.
 
 ## The boundary, in one table
 
-| | NoöPunk Godot | NoöPunk MUD (this directory) |
+| | NoöPunk MUD (this directory) — **primary** | NoöPunk Godot — **secondary/legacy** |
 |---|---|---|
-| Runtime | Godot 4, `project.godot` at repository root | Python 3, Evennia server |
+| Runtime | Python 3, Evennia server | Godot 4, `project.godot` at repository root |
 | Interface | graphical, `scenes/`, `godot/` | text commands, telnet/web client |
 | Tests | `godot --headless --script res://godot/tests/run_tests.gd` | Python unittest under `mud/tests/` |
 | Entry point | `project.godot` | `mud/server/` (Evennia layout) |
@@ -34,13 +41,35 @@ Godot behaviour, and a Godot change must not be able to alter the MUD's.
 3. **CWN is not forked.** Noösphere, ideology, social ties and ontological shock are modules layered on the
    CWN baseline, never edits to it.
 
-## Remaining steps, in order
+## Phase 1 — offline single-player UNSA campaign (#950)
+
+The first target is a **complete playable solo game with no multiplayer, no LLM and no external API**: create a
+UNSA Academy graduate in Helsinki, take the first assignment, play several scenes, investigate, resolve
+skill/combat/hacking checks, complete the quest, live with the consequences, save and resume.
+
+Build order:
+
+1. Evennia project skeleton under `mud/` with its own requirements and a smoke test that the server starts
+   headless — nothing about game content yet.
+2. CWN character bridge reading `data/rules/` without copying it.
+3. Deterministic scripted GM: scenes, triggers, clue progression, adjudication, endings — all headless.
+4. Investigation, travel, inventory, combat, hacking, progression, persistence.
+5. GUMSHOE investigative overlay, PbtA Noösphere/Psyche/ontological shock, LaclauGPT ideology/reputation —
+   modular, never replacements for the CWN baseline.
+
+Phase 2 (multiplayer, LLM agents/GMs, Mesa population simulation) starts only after phase 1 is playable
+without any of it.
+
+### Scaffold follow-ups (PR #948)
 
 1. Run and smoke-test the Evennia server in a Python environment; correct any Evennia version-specific integration issues.
 2. Expand CWN conformance using shared `data/rules/` without forking rules.
 3. Implement a real, optional LLM provider behind the validated intent boundary.
 4. Persist/reconcile Mesa social simulation through authoritative game-world handlers.
 5. Add multiplayer end-to-end coverage and server-restart persistence tests.
+
+The ordering above is unchanged: the deterministic headless GM comes before any LLM provider, and
+multiplayer coverage comes after the solo campaign is playable.
 
 ## Implementation scaffold and commands
 
