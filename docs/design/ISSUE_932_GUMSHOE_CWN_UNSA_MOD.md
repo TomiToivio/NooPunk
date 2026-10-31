@@ -2,6 +2,13 @@
 
 **Status:** proposed rules only. **Issue:** #932. **Rules basis:** user-supplied *The Esoterrorists*, 2nd ed. (book pp. 8–34, 35–65, 66–77, 79–95). **Authority:** #897 CWN foundational lock.
 
+> **Read with [`ISSUE_932_ACCEPTANCE.md`](ISSUE_932_ACCEPTANCE.md).** That record checks this digest
+> claim by claim against the supplied book (printed page = PDF index + 1), corrects three points, and
+> lists which of rules I1–I10 are **already implemented** in `src/rules/investigation.py` /
+> `anomaly_gate.py`. Do not implement what is already code; the open surface is the five unrepresented
+> clue types and the expertise tags, and neither is authorised. Approvals are queued as **D59–D60** in
+> [`AUTHOR_DECISION_QUEUE.md`](AUTHOR_DECISION_QUEUE.md).
+
 ## 1. Goals / non-goals
 
 - Enable genuinely satisfying **X-Files / Esoterrorists / Nordic psychiatric-horror investigations** starring a **player-created, tabula-rasa rookie UNSA agent** whose personality and investigative identity emerge from the player's choices. **Inspector Dr. Harri S. Romppainen is an NPC supervisor**, not the PC; he may join the field party occasionally when a mission warrants it.
