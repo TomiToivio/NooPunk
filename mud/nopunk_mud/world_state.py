@@ -15,6 +15,17 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+import sys as _sys
+from pathlib import Path as _Path
+
+# The MUD lives in mud/ but the mission clock lives in the repository's shared src/ tree, and the engine must be
+# importable both as `python -m nopunk_mud.cli` from mud/ and as `python -m mud.nopunk_mud.cli` from the root.
+# Adding the repository root to the path is what makes one command work from both places; without it the demo
+# fails at import time with "No module named 'src'".
+_repository_root = _Path(__file__).resolve().parents[2]
+if str(_repository_root) not in _sys.path:
+    _sys.path.append(str(_repository_root))
+
 from src.rules.cwn_mission_time import STANDARD_ACTION_MINUTES, MissionClock
 
 SCHEMA_VERSION = 1
