@@ -8,9 +8,9 @@ This decision supersedes the **presentation and gameplay** portions of #848 and 
 
 Every picture follows [`docs/ART_DIRECTION_IMAGES.md`](docs/ART_DIRECTION_IMAGES.md): 1970s European comic
 illustration, a lived-in Helsinki, and **no sci-fi background unless a scene asks for it and the story
-justifies it**. Assets are referenced by manifest id through `godot/ui/image_library.gd`, never by a raw
-`res://images/...` path in a scene, and `python3 tools/check_image_manifest.py` must pass before an image is
-committed. Do not claim an image is imported until the binary is committed and the path resolves.
+justifies it**. Assets are resolved through `godot/core/image_library.gd`, never by a raw `res://images/...` path in a
+scene, and `tools/image_manifest.py` is the checker (`python3 -m unittest tests.test_issue908_image_manifest`) and an
+unapproved asset cannot be listed at all. Do not claim an image is imported until the binary is committed and the path resolves.
 
 ## Where the lock lives (added with the enforcement PR)
 

@@ -1,16 +1,25 @@
 ## Image preview: portrait and social-encounter layouts in the real renderer (#908).
 ##
-## Two modes, one screen. The geometry comes from `image_layout.gd` and the textures from
-## `image_library.gd`; this node only applies the rects. Toggle with the button or the `M` key.
+## Two modes, one screen. The geometry comes from `image_layout.gd`; the pixels are drawn here from the
+## design-token palette, because **no artwork is approved yet** and a screen that needs a committed image to
+## open would be a screen nobody can look at.
+##
+## When the first approved portrait lands, replace `_procedural_texture()` with the manifest id and
+## `ImageLibrary.resolve()` — the layout does not care where the pixels came from.
 ##
 ## Built in `setup()`/`_ensure_build()`, not `_ready()`: a `--script` runner adds nodes before the main loop
 ## starts, so `_ready` never fires and a test would measure an empty control.
 extends Control
 
-const Library := preload("res://godot/core/image_library.gd")
 const Layout := preload("res://godot/ui/image_layout.gd")
 
-var library: Object = null
+## Palette, mirrored from docs/art/design_tokens.json. Kept as constants here rather than loaded, because
+## this screen must open on a fresh clone with no assets at all.
+const INK := Color(0.10, 0.086, 0.07)
+const OCHRE := Color(0.77, 0.54, 0.23)
+const RUST := Color(0.61, 0.29, 0.17)
+const BONE := Color(0.91, 0.86, 0.77)
+
 var mode: String = "portrait"
 var problems: Array = []
 
@@ -24,7 +33,6 @@ var _mode_button: Button
 
 func setup(start_mode: String = "portrait") -> void:
 	mode = start_mode
-	library = Library.from_manifest()
 	_ensure_build()
 	_relayout()
 
@@ -39,12 +47,10 @@ func _ensure_build() -> void:
 		return
 	_built = true
 	set_anchors_preset(Control.PRESET_FULL_RECT)
-	if library == null:
-		library = Library.from_manifest()
 
 	var background := ColorRect.new()
 	background.set_anchors_preset(Control.PRESET_FULL_RECT)
-	background.color = Color(0.10, 0.086, 0.07)
+	background.color = INK
 	background.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(background)
 
@@ -52,11 +58,13 @@ func _ensure_build() -> void:
 	_background.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_background.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	_background.visible = false
+	_background.texture = _procedural_texture(800, 600, OCHRE)
 	add_child(_background)
 
 	_image = TextureRect.new()
 	_image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	_image.texture = _procedural_texture(600, 800, RUST)
 	add_child(_image)
 
 	_caption = Label.new()
@@ -72,6 +80,19 @@ func _ensure_build() -> void:
 	_mode_button.text = "Encounter layout"
 	_mode_button.pressed.connect(_toggle_mode)
 	add_child(_mode_button)
+
+
+## A flat two-tone field with a border, so letterboxing and aspect choices are visible without art.
+static func _procedural_texture(width: int, height: int, field: Color) -> Texture2D:
+	var image := Image.create_empty(width, height, false, Image.FORMAT_RGBA8)
+	image.fill(field)
+	for x in width:
+		image.set_pixel(x, 0, BONE)
+		image.set_pixel(x, height - 1, BONE)
+	for y in height:
+		image.set_pixel(0, y, BONE)
+		image.set_pixel(width - 1, y, BONE)
+	return ImageTexture.create_from_image(image)
 
 
 func _toggle_mode() -> void:
@@ -95,7 +116,7 @@ func _relayout() -> void:
 		var frame: Dictionary = Layout.portrait_frame(viewport)
 		problems.append_array(frame["problems"])
 		_background.visible = false
-		_apply(_image, "probe_portrait", frame["image"])
+		_place(_image, frame["image"])
 		_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		_caption.position = frame["caption"].position
 		_caption.size = frame["caption"].size
@@ -106,10 +127,8 @@ func _relayout() -> void:
 		var frame: Dictionary = Layout.encounter_frame(viewport)
 		problems.append_array(frame["problems"])
 		_background.visible = true
-		_background.position = frame["background"].position
-		_background.size = frame["background"].size
-		_background.texture = library.texture_by_id("probe_encounter")
-		_apply(_image, "probe_portrait", frame["portrait"])
+		_place(_background, frame["background"])
+		_place(_image, frame["portrait"])
 		_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		_caption.position = Vector2(frame["portrait"].position.x,
 			frame["portrait"].position.y + frame["portrait"].size.y + 6.0)
@@ -122,8 +141,6 @@ func _relayout() -> void:
 		_mode_button.text = "Portrait layout"
 
 
-func _apply(rect: TextureRect, asset_id: String, frame: Rect2) -> void:
-	if not library.apply_to(rect, asset_id):
-		problems.append_array(library.problems)
+func _place(rect: TextureRect, frame: Rect2) -> void:
 	rect.position = frame.position
 	rect.size = frame.size
