@@ -41,6 +41,7 @@ const SUITES := [
 	"res://godot/tests/test_noopunk_psyche.gd",
 	"res://godot/tests/test_narrative_897.gd",
 	"res://godot/tests/test_location_screen.gd",
+	"res://godot/tests/test_images_908.gd",
 	"res://godot/tests/test_cwn_vanilla.gd",
 	"res://godot/tests/test_cwn_vehicles.gd",
 	"res://godot/tests/test_cwn_srd_vehicles.gd",
