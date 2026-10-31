@@ -155,3 +155,14 @@ def surprise_free_round(surprised: Sequence[str], ready: Sequence[str]) -> list[
     if not ready:
         raise InitiativeError("a surprise round needs a side that is ready")
     return list(ready)
+
+
+def surprise_applies(*, surprised: bool, anticipating: bool) -> bool:
+    """Surprise cannot be imposed on a group already expecting a fight (SRD 2.4.1).
+
+    The SRD is explicit: *"Groups cannot be surprised if they are actively anticipating the possibility
+    of combat; at most, they might suffer an initiative penalty at the GM's discretion."* Encoding that
+    here keeps the carve-out with the rest of the surprise rule instead of leaving it to a caller's
+    memory.
+    """
+    return surprised and not anticipating

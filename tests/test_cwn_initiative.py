@@ -105,3 +105,13 @@ class SurpriseTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+from src.rules.cwn_initiative import surprise_applies  # noqa: E402
+
+
+def test_an_anticipating_group_cannot_be_surprised() -> None:
+    """SRD 2.4.1: anticipating combat rules out surprise, whatever the GM intended."""
+    assert surprise_applies(surprised=True, anticipating=True) is False
+    assert surprise_applies(surprised=True, anticipating=False) is True
+    assert surprise_applies(surprised=False, anticipating=False) is False
