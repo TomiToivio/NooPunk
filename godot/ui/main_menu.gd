@@ -85,6 +85,13 @@ func _ready() -> void:
 		get_tree().change_scene_to_file("res://scenes/stress_screen.tscn"))
 	stack.add_child(stress_button)
 
+	# #932: the GUMSHOE SRD investigation console, an overlay on the CWN core.
+	var investigation_button := Button.new()
+	investigation_button.text = "CWN — investigation console (GUMSHOE SRD overlay)"
+	investigation_button.pressed.connect(func() -> void:
+		get_tree().change_scene_to_file("res://scenes/investigation_screen.tscn"))
+	stack.add_child(investigation_button)
+
 	var images_button := Button.new()
 	images_button.text = "Images — portrait and encounter layouts"
 	images_button.pressed.connect(func() -> void:

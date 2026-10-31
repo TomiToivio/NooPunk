@@ -87,3 +87,50 @@ The evidence notebook from #897/#913 keeps the clue graph; this overlay adds the
 | no second resolution engine | `delegate_to_cwn()`; suite asserts `engine == "cwn"` |
 | no GUMSHOE d6 tests | not implemented, deliberately |
 | uncanny tone preserved | the overlay never decides whether a clue is *true* |
+
+## The console: where the overlay meets a human (#932, item 2)
+
+`godot/ui/investigation_screen.gd` + `scenes/investigation_screen.tscn`, reached from the main menu as
+*"CWN — investigation console (GUMSHOE SRD overlay)"*. It adds no fourth rule; it is the meeting point of
+three that already existed:
+
+| Module | What it decides here |
+| --- | --- |
+| `godot/core/investigation_adapter.gd` (#718) | **whether** a clue may be found: competence is the presence of a CWN rank, rank 0 included, and nothing rolls |
+| `mods/noopunk/gumshoe_investigation.gd` (#935) | **what points can buy**: abilities, ratings, pools, special benefits |
+| `godot/narrative/investigation.gd` | **what the case now holds**: found clues, leads, contradictions, can the case be closed |
+
+### The rating gate is a switch, because D61 is unanswered
+
+CWN says rank 0 is trained; the SRD says a rating of at least 1 is needed. Rather than deciding that in a
+UI commit, the console exposes both:
+
+- **CWN — rank 0 is trained** (default): the adapter's rule decides, and the overlay is consulted only
+  where its own gate is satisfied, so it cannot veto a competent investigator.
+- **SRD — rating at least 1**: a competency whose ability maps at rating 0 is refused, and the refusal says
+  `rating_below_one`.
+
+Every gather reports which gate let it through, so a table can read its own history.
+
+### What the screen refuses to do
+
+- **It never rolls.** There is no RNG in the file; gathering records, it does not resolve.
+- **A benefit is never a clue.** Benefit buttons call `buy_benefit()` and log; the notebook count is
+  measured before and after and the result carries `touched_notebook`, which is `false` because buying
+  cannot move it.
+- **It never edits the CWN sheet.** Skill ranks are copied in; state lives at
+  `user://gumshoe_investigation_state.json`, beside the core save rather than inside it.
+
+### A gap it surfaced
+
+The shipped case asks for one competency that **no** investigative ability maps: `Survive` (`night-air`,
+the optional clue in the entrance). Under the CWN gate that clue is reachable — the skill is on the sheet —
+but under the SRD gate it is out of reach, and `uncovered_competencies()` reports it in the interface
+instead of hiding it. A test pins the list to exactly `["Survive"]`, so widening the gap requires changing
+the test on purpose.
+
+### Verified
+
+`godot --headless --path . --script res://godot/tests/run_tests.gd` → **1899 checks, 0 failed** (44 of them
+in `godot/tests/test_gumshoe_screen_932.gd`, which also loads the `.tscn` so that a screen nobody opens
+cannot pass as a feature).
