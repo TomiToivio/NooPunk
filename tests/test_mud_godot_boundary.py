@@ -30,8 +30,16 @@ class MudBoundaryTest(unittest.TestCase):
         self.assertEqual([str(p.relative_to(ROOT)) for p in strays], [])
 
     def test_the_mud_does_not_reference_godot_resources(self):
+        """Runtime code must not reach into the Godot tree.
+
+        A boundary guard has to be able to name the thing it forbids, so MUD tests are exempt: a test that
+        scans for `res://` literals would otherwise trip this rule on itself. The .gd/.tscn rule above still
+        covers every file under mud/, tests included.
+        """
         offenders = []
         for path in _files(MUD, (".py", ".md", ".json", ".txt")):
+            if "tests" in path.relative_to(MUD).parts:
+                continue
             text = path.read_text(encoding="utf-8", errors="ignore")
             if "res://" in text and path.name != "README.md":
                 offenders.append(str(path.relative_to(ROOT)))
