@@ -535,14 +535,21 @@ decision; brainstorming a mechanic does not authorise it. The seven-attribute UN
 **mod**, not the baseline.
 
 
-## Two games, one repository (#946)
+## MUD is the main game (#950)
 
-**NoöPunk Godot** is the graphical game: `project.godot`, `godot/`, `scenes/`.
-**NoöPunk MUD** is a separate text multiplayer game under `mud/` (Evennia + Python), sharing canon and CWN
-rules but **no runtime**.
+**Effective immediately: the NoöPunk MUD (Python/Evennia) under `mud/` is the primary playable
+implementation and the default target for all coding agents.** The Godot project (`project.godot`, `godot/`,
+`scenes/`) is a **secondary/legacy experimental graphical implementation**, maintained only for specifically
+scoped work. Do not continue parallel feature development in Godot by default.
 
-- Identify the target game before editing. MUD work stays under `mud/`; Godot work stays in the Godot tree.
+This supersedes the equal-priority direction of #946 and the Godot-first implementation order of #897. It does
+**not** supersede the canonical CWN rules lock, the setting, the scenario work, or the NoöPunk modules — those
+remain shared input that both implementations read.
+
+- New game code goes under `mud/`. Godot changes need a scoped issue that says why.
+- Shared input (canon, scenario data, CWN as specifications) is read, never forked.
 - No cross-imports: `mud/` must not reference `res://`, `.gd` or `.tscn`; Godot code must not import `mud.*`.
-  `tests/test_mud_godot_boundary.py` enforces both directions.
-- CWN is shared input, never forked. Noösphere, ideology, social ties and ontological shock are modules on
-  top of the baseline.
+  `tests/test_mud_godot_boundary.py` enforces both directions and asserts this primacy section exists.
+- Phase 1 target: a complete offline single-player UNSA investigation in the text interface with **no**
+  multiplayer, **no** LLM and **no** external API. Deterministic scripted GM, headless-testable. Any AI
+  enhancement needs a no-AI fallback that still finishes the campaign.

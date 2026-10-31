@@ -3,14 +3,15 @@
 A **separate, text-based, persistent multiplayer** game built on [Evennia](https://www.evennia.com/), sharing
 NoöPunk canon and CWN rules with the Godot game but **no runtime**.
 
-**Status: boundary established, implementation not started.** Nothing here runs yet. This file exists so
-that the boundary is decided before the first line of MUD code, which is what #946 asks for.
+**Status: MAIN GAME, implementation not started.** Per #950 this directory is the primary playable
+implementation and the default target for coding agents; the Godot project is secondary/legacy. Nothing here
+runs yet — the phase-1 build order below is the work queue, not a description of existing code.
 
 ## The boundary, in one table
 
-| | NoöPunk Godot | NoöPunk MUD (this directory) |
+| | NoöPunk MUD (this directory) — **primary** | NoöPunk Godot — **secondary/legacy** |
 |---|---|---|
-| Runtime | Godot 4, `project.godot` at repository root | Python 3, Evennia server |
+| Runtime | Python 3, Evennia server | Godot 4, `project.godot` at repository root |
 | Interface | graphical, `scenes/`, `godot/` | text commands, telnet/web client |
 | Tests | `godot --headless --script res://godot/tests/run_tests.gd` | pytest under `mud/tests/` |
 | Entry point | `project.godot` | `mud/server/` (Evennia layout) |
@@ -35,12 +36,23 @@ Godot behaviour, and a Godot change must not be able to alter the MUD's.
 3. **CWN is not forked.** Noösphere, ideology, social ties and ontological shock are modules layered on the
    CWN baseline, never edits to it.
 
-## Next steps, in order
+## Phase 1 — offline single-player UNSA campaign (#950)
+
+The first target is a **complete playable solo game with no multiplayer, no LLM and no external API**: create a
+UNSA Academy graduate in Helsinki, take the first assignment, play several scenes, investigate, resolve
+skill/combat/hacking checks, complete the quest, live with the consequences, save and resume.
+
+Build order:
 
 1. Evennia project skeleton under `mud/` with its own requirements and a smoke test that the server starts
    headless — nothing about game content yet.
-2. A CWN character bridge that reads `data/rules/` without copying it.
-3. Concordia-style LLM agent orchestration, kept behind an interface so the MUD is playable without it.
-4. Mesa-based faction/social simulation, consuming the same canon data.
+2. CWN character bridge reading `data/rules/` without copying it.
+3. Deterministic scripted GM: scenes, triggers, clue progression, adjudication, endings — all headless.
+4. Investigation, travel, inventory, combat, hacking, progression, persistence.
+5. GUMSHOE investigative overlay, PbtA Noösphere/Psyche/ontological shock, LaclauGPT ideology/reputation —
+   modular, never replacements for the CWN baseline.
+
+Phase 2 (multiplayer, LLM agents/GMs, Mesa population simulation) starts only after phase 1 is playable
+without any of it.
 
 None of that is started. Claiming otherwise is how a second game gets half-built in two places.
