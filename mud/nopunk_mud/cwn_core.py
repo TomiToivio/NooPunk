@@ -160,3 +160,95 @@ def strain_absorb(current: int, amount: int, constitution: int) -> dict:
     if current + amount > capacity:
         return {"ok": False, "current": current, "capacity": capacity, "overflow": current + amount - capacity}
     return {"ok": True, "current": current + amount, "capacity": capacity, "overflow": 0}
+
+
+# --- Action economy, encumbrance, shock and catalogue lookups (#950) ------------------------------
+# Numbers are transcribed from the CWN SRD and the existing Python/Godot kernels; this module does
+# not invent alternatives.
+
+CATALOGUE_PATH = REPO_ROOT / "data" / "rules" / "cwn_catalogue.json"
+
+ACTION_ECONOMY = {
+    "main_per_round": 1,
+    "move_per_round": 1,
+    "snap_attack_penalty": -4,
+    "charge_to_hit": 2,
+    "charge_ac_penalty": -2,
+    "charge_min_metres": 3.0,
+    "swarm_per_other_hit": 2,
+    "swarm_max_other": 3,
+    "total_defense_ac": 2,
+}
+
+READIED_DIVISOR = 2
+OVERLOAD_READIED_BONUS = 2
+OVERLOAD_STOWED_BONUS = 4
+BASE_MOVE_METRES = 10.0
+
+
+def _catalogue() -> dict:
+    return json.loads(CATALOGUE_PATH.read_text(encoding="utf-8"))
+
+
+def weapon(weapon_id: str) -> dict:
+    for row in _catalogue()["weapons"]:
+        if row["id"] == weapon_id:
+            return row
+    raise ValueError(f"unknown weapon {weapon_id!r}")
+
+
+def armour(armour_id: str) -> dict:
+    for row in _catalogue()["armor"]:
+        if row["id"] == armour_id:
+            return row
+    raise ValueError(f"unknown armour {armour_id!r}")
+
+
+def shock_on_miss(weapon_id: str, target_ac: int) -> int:
+    """Shock damage applies on a miss when the target's AC is at or below the weapon's Shock AC."""
+    shock = weapon(weapon_id).get("shock")
+    if not shock or target_ac > int(shock["ac"]):
+        return 0
+    return int(shock["damage"])
+
+
+def combat_action(action: str, *, main_unspent: bool = True) -> dict:
+    """The published modifiers for the named combat actions."""
+    if action == "snap":
+        if not main_unspent:
+            raise ValueError("Snap Attack needs an unspent Main action")
+        return {"to_hit": ACTION_ECONOMY["snap_attack_penalty"]}
+    if action == "charge":
+        return {"to_hit": ACTION_ECONOMY["charge_to_hit"], "ac": ACTION_ECONOMY["charge_ac_penalty"],
+                "min_distance_metres": ACTION_ECONOMY["charge_min_metres"]}
+    if action == "total_defense":
+        if not main_unspent:
+            raise ValueError("Total Defense needs an unspent Main action")
+        return {"ac": ACTION_ECONOMY["total_defense_ac"], "immune_to_shock": True}
+    if action == "swarm":
+        return {"per_other_to_hit": ACTION_ECONOMY["swarm_per_other_hit"],
+                "max_other": ACTION_ECONOMY["swarm_max_other"]}
+    raise ValueError(f"unknown combat action {action!r}")
+
+
+def encumbrance(strength: int, *, stowed: float = 0.0, readied: float = 0.0) -> dict:
+    """Fits and movement tier: base limits, then +2 Readied/+4 Stowed per overload step.
+
+    One step costs 30 % of Move (10 m -> 7 m), the second 50 % (10 m -> 5 m); beyond that the load
+    cannot be hauled any significant distance.
+    """
+    if not 3 <= strength <= 18:
+        raise ValueError("strength outside 3..18")
+    if stowed < 0 or readied < 0:
+        raise ValueError("load cannot be negative")
+    stowed_max = float(strength)
+    readied_max = float(strength // READIED_DIVISOR)
+    for step in range(3):
+        limit_stowed = stowed_max + step * OVERLOAD_STOWED_BONUS
+        limit_readied = readied_max + step * OVERLOAD_READIED_BONUS
+        if stowed <= limit_stowed and readied <= limit_readied:
+            speed = BASE_MOVE_METRES * (1.0 if step == 0 else 0.7 if step == 1 else 0.5)
+            return {"fits": True, "overload_steps": step, "stowed_max": limit_stowed,
+                    "readied_max": limit_readied, "speed_metres": speed}
+    return {"fits": False, "overload_steps": 3, "stowed_max": stowed_max + 2 * OVERLOAD_STOWED_BONUS,
+            "readied_max": readied_max + 2 * OVERLOAD_READIED_BONUS, "speed_metres": 0.0}
