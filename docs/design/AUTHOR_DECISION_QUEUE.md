@@ -205,25 +205,28 @@ the two placements has to lose. The record is
 | --- | --- | --- | --- |
 | D58 | **Which layer owns the AWN Stress rule — core or `mods/`?** (a) **Core owns it and the overlay retires** (recommended): `godot/core/awn_stress.gd` reads `data/rules/awn_stress.json`, absorbs participation, the addiction lifecycle, the three scar exceptions and the seven labelled NoöPunk triggers (minus any ontology-shock entry), and `mods/noopunk/stress.gd` is deleted with the screen re-homed under `godot/ui/`. This is the house pattern — AWN is an imported *published* subsystem like `cwn_*`/`swn_*`, NoöPunk code already lives in core (`noopunk_tags.gd`), and #848 names only the homebrew overlays as `mods/` material. (b) **Overlay owns it and the core module retires** — blocked unless `GameState` loses the Stress API, because core may not import `mods/`. (c) **Both stay** — cheapest today, and it needs the ontology-shock question answered one way plus one contract read by both; two arithmetics and two save formats is the drift `UNIFIED_IMPLEMENTATION.md` exists to stop. The sub-question either way: **is ontology shock Stress (+2), or does it stay the Psyche module's business and out of the Stress table?** | nothing today (no rule is applied to a sheet yet); every future AWN Stress change, which otherwise has to be made twice; the #689 Psyche boundary | *core owns it, overlay retires* / *overlay only (re-opens the #897 lock)* / *both stay* ; and *ontology shock: Stress or Psyche only* |
 
-## #932 — the GUMSHOE investigation mod (rows D59–D60)
+## #932 — the GUMSHOE SRD investigation mod (rows D59–D60)
 
-Fifteenth update (2026-10-31). Issue **#932** is a design deliverable whose proposal landed as
-`ISSUE_932_GUMSHOE_CWN_UNSA_MOD.md` (PR #933); `docs/design/ISSUE_932_ACCEPTANCE.md` now checks that
-proposal against the supplied book and against the investigation layer **already implemented** in #704
-and #707. Two things follow. First, most of the proposal is not new work: the core-clue guarantee
-(no roll, no spend), the discovery/interpretation split, the refusal of a spend pool, the CWN-skill
-basis and the alternative-method rule are code with tests, so the open implementation surface is only
-the five unrepresented clue types (floating, leveraged, pipe, restricted, timed) and the expertise tags,
-and none of it is authorised yet. Second, the approvals the issue asks for are author calls, and two of
-them were not on the board: the tags, and the institutional conversion. (The spend/resource question is
-already **G2** in `docs/rules/GUMSHOE_INVESTIGATION_LAYER.md` §7, and G1 records the one place where the
-implementation is deliberately more generous than the book: GUMSHOE needs a *positive* rating to hand
-over a core clue, while NoöPunk counts CWN rank 0 as trained.)
+Fifteenth update (2026-10-31, revised). Issue **#932** is a design deliverable whose proposal is
+`ISSUE_932_GUMSHOE_CWN_UNSA_MOD.md`; `docs/design/ISSUE_932_ACCEPTANCE.md` checks that proposal against
+the **GUMSHOE SRD (OGL version)** and against the investigation layer **already implemented** in #704 and
+#707. The proposal was re-based from a commercial GUMSHOE game onto that SRD: the book is not open, its
+game-line name is declared Product Identity, and the SRD is the correctable, open rules reference. Two
+things follow. First, most of the proposal is not new work: the core-clue guarantee (no roll, no spend),
+the discovery/interpretation split, the refusal of a spend pool, the CWN-skill basis and the
+alternative-method rule are code with tests, so the open implementation surface is only the five
+unrepresented clue types (floating, leveraged, pipe, restricted, timed) and the expertise tags, and none
+of it is authorised yet. Second, the approvals the issue asks for are author calls, and two of them were
+not on the board: the tags, and the institution mapping. (The spend/resource question is already **G2** in
+`docs/rules/GUMSHOE_INVESTIGATION_LAYER.md` §7, and G1 records where the implementation is deliberately
+more generous than the SRD: GUMSHOE needs a *positive* rating to hand over a core clue, while NoöPunk
+counts CWN rank 0 as trained.)
 
 | # | Decision | Blocks | Smallest useful answer |
 | --- | --- | --- | --- |
-| D59 | **Approve the investigative crosswalk and the expertise tags.** The crosswalk maps all **40** book investigative abilities and the 13 general ones onto CWN skills, backgrounds and Foci as *suggested approaches*, never gates — completeness is verified against the book's own ability list; what is open is whether the mapping is the one to print, and whether the 2–4 **expertise tags** per character are adopted as free descriptive prompts (recommended) or dropped. Tags add no dice, points or progression; adopting them changes no rule, only what the GM reads off the sheet. | the GM reference page, and whether `Investigator` ever grows a tag field | *accept the crosswalk as printed* / *tweak named rows* ; *tags yes* / *tags no* |
-| D60 | **Approve the Esoterrorists → NoöPunk institutional mapping.** UNSA as the Ordo Veritatis analogue with its own case file and support stations; human collaborators and hostile factions as the Esoterrorist analogue; NHI/noetic phenomena as the Outer Dark analogue **classified case by case**; veil-out as UNSA evidence security and its ethical dilemma; Station Duty as a recurring Helsinki base with local contacts under the NPC supervisor. The rule that must survive any approval: a case may be a hoax, a misidentified phenomenon, institutional malfeasance, rogue-AGI activity, human conspiracy **or** genuinely inexplicable, and the characters' beliefs are never evidence. | the scenario/campaign layer, and what the pilot case may assume | *approve as mapped* / *amend named rows* |
+| D59 | **Approve the investigative crosswalk and the expertise tags.** The crosswalk maps all **52** investigative abilities and the **24** general ones of the GUMSHOE SRD onto CWN skills, backgrounds and Foci as *suggested approaches*, never gates — completeness is verified against the SRD's own ability descriptions; what is open is whether the mapping is the one to print, and whether the 2–4 **expertise tags** per character are adopted as free descriptive prompts (recommended) or dropped. Tags add no dice, points or progression; adopting them changes no rule, only what the GM reads off the sheet. | the GM reference page, and whether `Investigator` ever grows a tag field | *accept the crosswalk as printed* / *tweak named rows* ; *tags yes* / *tags no* |
+| D60 | **Approve the NoöPunk institution mapping.** UNSA with its NHI investigation apparatus, case files and support stations; the rookie field cell under the NPC supervisor; human collaborators, hostile factions and disinformation operators as the antagonist space; NHI/noetic phenomena **classified case by case**; containment and evidence security with their ethical dilemma; a recurring Helsinki base with local hospital and university networks. None of this is adapted from any published game — the SRD carries procedure only — so the question is whether this is the campaign's institutional shape. The rule that must survive any approval: a case may be a hoax, a misidentified phenomenon, institutional malfeasance, rogue-AGI activity, human conspiracy **or** genuinely inexplicable, and the characters' beliefs are never evidence. | the scenario/campaign layer, and what the pilot case may assume | *approve as mapped* / *amend named rows* |
+
 
 ## After an answer
 

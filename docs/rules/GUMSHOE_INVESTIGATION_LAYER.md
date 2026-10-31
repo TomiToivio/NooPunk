@@ -30,6 +30,21 @@ Unported (CC BY 3.0)**. Two consequences, and the second is the one people forge
    the investigation system is based on the GUMSHOE SRD, using the sentence above. NoöPunk still
    keeps the method, not the name, in its own branding.
 
+### Two SRD editions, two licence paths — do not conflate them
+
+There are two published SRDs and they do not say the same thing about marks:
+
+| Edition | Licence | Marks |
+| --- | --- | --- |
+| v3, 2024-12-09, 303 pp. (`GUMSHOESRDCC-3 241209.pdf`) | **CC BY 3.0** | GUMSHOE mark **granted** for works under the licence (no implied endorsement); logo excluded; the game-line names withheld |
+| OGL version, 2013, 68 pp. (`GUMSHOE SRD OGL version.pdf`) | **Open Game License v1.0** | all content open **except declared Product Identity** — the game-line trademarks; **no** mark granted, and not the GUMSHOE logo |
+
+The rules text above follows the CC BY v3 edition. **#932 cites the OGL version**, because that is the
+file the author directed us to and its open-content declaration is unambiguous. A published derivative
+must pick one path and then meet *that* path's obligations: CC BY's single attribution sentence, or the
+OGL's licence text plus its Section 15 copyright notice and an open-content/product-identity
+declaration. Choosing neither is not an option; choosing both is confusing.
+
 **No SRD text is reproduced in this repository.** Everything below is our own description of
 a mechanism, which is what "interoperable mechanics" means in `docs/rules/RULES_FOUNDATION_POLICY.md`.
 
