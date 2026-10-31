@@ -32,6 +32,9 @@ class MudBoundaryTest(unittest.TestCase):
     def test_the_mud_does_not_reference_godot_resources(self):
         offenders = []
         for path in _files(MUD, (".py", ".md", ".json", ".txt")):
+            # A boundary test may name the literal it forbids; only runtime code is scanned.
+            if "tests" in path.relative_to(MUD).parts:
+                continue
             text = path.read_text(encoding="utf-8", errors="ignore")
             if "res://" in text and path.name != "README.md":
                 offenders.append(str(path.relative_to(ROOT)))
