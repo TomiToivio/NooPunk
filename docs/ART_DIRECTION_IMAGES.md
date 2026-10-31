@@ -1,5 +1,10 @@
 # NoöPunk images and Godot art direction
 
+**Authority split.** [`ART_DIRECTION.md`](ART_DIRECTION.md) is the locked answer to "does this image belong
+in NoöPunk?" — the visual contract and the grounding rule. **This** file is the pipeline: how an image is
+named, filed, described in the manifest and loaded by a screen. Palette and type live in
+[`art/ART_BIBLE_1974.md`](art/ART_BIBLE_1974.md).
+
 **Authority:** [issue #908](https://github.com/TomiToivio/NooPunk/issues/908) and [foundational issue #897](https://github.com/TomiToivio/NooPunk/issues/897).
 
 ## Visual contract

@@ -7,7 +7,7 @@
 ## starts, so `_ready` never fires and a test would measure an empty control.
 extends Control
 
-const Library := preload("res://godot/ui/image_library.gd")
+const Library := preload("res://godot/core/image_library.gd")
 const Layout := preload("res://godot/ui/image_layout.gd")
 
 var library: Object = null
@@ -24,7 +24,7 @@ var _mode_button: Button
 
 func setup(start_mode: String = "portrait") -> void:
 	mode = start_mode
-	library = Library.load_library()
+	library = Library.from_manifest()
 	_ensure_build()
 	_relayout()
 
@@ -40,7 +40,7 @@ func _ensure_build() -> void:
 	_built = true
 	set_anchors_preset(Control.PRESET_FULL_RECT)
 	if library == null:
-		library = Library.load_library()
+		library = Library.from_manifest()
 
 	var background := ColorRect.new()
 	background.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -108,7 +108,7 @@ func _relayout() -> void:
 		_background.visible = true
 		_background.position = frame["background"].position
 		_background.size = frame["background"].size
-		_background.texture = library.texture("probe_encounter")
+		_background.texture = library.texture_by_id("probe_encounter")
 		_apply(_image, "probe_portrait", frame["portrait"])
 		_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		_caption.position = Vector2(frame["portrait"].position.x,

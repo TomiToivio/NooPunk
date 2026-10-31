@@ -1,7 +1,7 @@
 ## The image pipeline: manifest, textures, and the layout rules that keep faces on screen (#908).
 extends RefCounted
 
-const Library := preload("res://godot/ui/image_library.gd")
+const Library := preload("res://godot/core/image_library.gd")
 const Layout := preload("res://godot/ui/image_layout.gd")
 
 
@@ -16,16 +16,16 @@ func _close(name: String, actual: float, expected: float, tolerance: float = 0.0
 
 func run() -> Array:
 	var rows: Array = []
-	var library := Library.load_library()
+	var library := Library.from_manifest()
 	rows.append(_eq("the manifest loads", library.entries.size(), 4))
 	rows.append(_eq("loading reports no problems", library.problems.size(), 0))
 
-	var portrait := library.texture("probe_portrait")
+	var portrait := library.texture_by_id("probe_portrait")
 	rows.append(_eq("a texture loads by id", portrait != null, true))
 	if portrait != null:
 		rows.append(_eq("the texture has the declared size", portrait.get_size(), Vector2(600, 800)))
 
-	rows.append(_eq("an unknown id returns null", library.texture("no_such_asset"), null))
+	rows.append(_eq("an unknown id returns null", library.texture_by_id("no_such_asset"), null))
 	rows.append(_eq("and says why", library.problems.size() > 0, true))
 
 	# stretch policy comes from the asset class, not from each screen
