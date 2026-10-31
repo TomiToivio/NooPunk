@@ -31,12 +31,14 @@ var current_objective: String = ""
 var ending: Dictionary = {}
 var run_seed: int = 1
 var rules: RulesAdapter
+var stress_rules: AwnStress
 var psionics: NoopunkPsionics
 var psi_disciplines: Dictionary = {}
 var psi_packages: Array = []
 
 func _ready() -> void:
 	rules = RulesAdapter.new(RulesAdapter.DEFAULT_KERNEL_PATH, run_seed)
+	stress_rules = AwnStress.new(false)
 
 ## Loads the scenario bundle. Safe to call twice; the second call resets the case.
 func new_case(roll_seed: int = 1) -> void:
@@ -45,6 +47,7 @@ func new_case(roll_seed: int = 1) -> void:
 	dialogue_nodes = dialogue.get("nodes", {})
 	character = (scenario.get("player_sheet", {}) as Dictionary).duplicate(true)
 	_load_psionics()
+	stress_rules = AwnStress.new(bool((scenario.get("options", {}) as Dictionary).get("awn_stress", false)))
 
 	# evidence.json stores an array; the state keys it by id. Anything that is not an object with an id
 	# is skipped rather than silently becoming a `null` entry the UI would then have to defend against.
@@ -109,6 +112,19 @@ func effort_maximum() -> int:
 
 func effort_available() -> int:
 	return psionics.available_effort() if psionics != null else 0
+
+
+## GM-facing: stage psychological stress now, resolve it at scene end with the CWN Mental save.
+func queue_stress_event(event_id: String, extra: int = 0, custom_points: int = -1) -> bool:
+	return stress_rules != null and stress_rules.queue_event(event_id, extra, custom_points)
+
+func resolve_scene_stress(mental_save_roll: int) -> Dictionary:
+	if stress_rules == null:
+		return {"status": "disabled"}
+	var target := int(CwnCharacter.saves(int(character.get("level", 1)), character.get("attributes", {})).get("Mental", 15))
+	var outcome := stress_rules.end_scene(attribute("WIS"), target, mental_save_roll)
+	add_journal("Stress: %s (%d/%d)." % [str(outcome.get("status", "")), stress_rules.stress, attribute("WIS")])
+	return outcome
 
 func end_scene() -> void:
 	if psionics != null:
@@ -244,6 +260,7 @@ func save_to_file(path: String = "user://save_lakkahaltia.json") -> Error:
 		"ending": ending,
 		"dice": rules.snapshot(),
 		"psionics": psionics.snapshot() if psionics != null else {},
+		"awn_stress": stress_rules.snapshot() if stress_rules != null else {},
 	}
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	if file == null:
@@ -265,6 +282,9 @@ func load_from_file(path: String = "user://save_lakkahaltia.json") -> Error:
 		return ERR_INVALID_DATA
 
 	character = (payload.get("character", {}) as Dictionary).duplicate(true)
+	if stress_rules == null:
+		stress_rules = AwnStress.new(false)
+	stress_rules.restore(payload.get("awn_stress", {}))
 	evidence = payload.get("evidence", [])
 	journal = payload.get("journal", [])
 	flags = payload.get("flags", {})
