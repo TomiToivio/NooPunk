@@ -14,6 +14,8 @@ var clues: Dictionary = {}
 var found: Array = []
 var contradictions: Array = []
 var leads: Array = []
+## Descriptive expertise never gates a core clue.
+var expertise_tags: Array = []
 
 
 static func from_data(data: Dictionary) -> NoopunkInvestigation:
@@ -35,6 +37,13 @@ func gather(clue_id: String, success: bool, flags: Dictionary = {}) -> Dictionar
 	if found.has(clue_id):
 		return {"ok": false, "reason": "already_found"}
 	var clue: Dictionary = clues[clue_id]
+	# Optional leverages and timed evidence, without a new dice engine.
+	for previous in Array(clue.get("prerequisite_clues", [])):
+		if not found.has(String(previous)):
+			return {"ok": false, "reason": "prerequisite_not_found", "clue": String(previous)}
+	var ready_after := int(clue.get("available_after", 0))
+	if ready_after > int(flags.get("elapsed", 0)):
+		return {"ok": false, "reason": "not_ready", "available_after": ready_after}
 	for flag in Array(clue.get("requires", [])):
 		if not bool(flags.get(String(flag), false)):
 			return {"ok": false, "reason": "requirements_not_met", "flag": String(flag)}
@@ -59,6 +68,10 @@ func gather(clue_id: String, success: bool, flags: Dictionary = {}) -> Dictionar
 		"contradicts": Array(clue.get("contradicts", [])),
 		"opens": Array(clue.get("opens", [])),
 	}
+
+
+func set_expertise(tags: Array) -> void:
+	expertise_tags = tags.duplicate()
 
 
 func has(clue_id: String) -> bool:
