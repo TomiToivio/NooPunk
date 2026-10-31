@@ -15,12 +15,14 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+from src.rules.cwn_mission_time import STANDARD_ACTION_MINUTES, MissionClock
+
 SCHEMA_VERSION = 1
 
 #: Event types the state understands. Adding one is a deliberate schema change with its own validation.
 EVENT_TYPES = {
     "join", "move", "say", "take", "drop", "spend", "gain", "damage", "heal",
-    "faction_join", "faction_leave", "reputation", "flag", "sim_reconcile",
+    "faction_join", "faction_leave", "reputation", "flag", "sim_reconcile", "advance_time",
 }
 
 
@@ -36,6 +38,10 @@ class WorldState:
     characters: dict[str, dict[str, Any]] = field(default_factory=dict)
     items: dict[str, dict[str, Any]] = field(default_factory=dict)
     factions: dict[str, dict[str, Any]] = field(default_factory=dict)
+    #: Mission time (#950, SRD ``rules-of-the-game/scenes-rounds-mission-time``): minutes from
+    #: minute zero. Stored as minutes only — the scene index is derived by the shared kernel, so
+    #: two fields that must agree cannot drift apart in a save file.
+    time: dict[str, Any] = field(default_factory=dict)
     #: Applied event ids, so a reconnect or a replay cannot apply the same event twice.
     applied: list[str] = field(default_factory=list)
     #: Append-only history: what was proposed, what was accepted, what changed.
@@ -61,7 +67,8 @@ class WorldState:
         return {
             "schema_version": SCHEMA_VERSION,
             "rooms": self.rooms, "characters": self.characters, "items": self.items,
-            "factions": self.factions, "applied": self.applied, "log": self.log,
+            "factions": self.factions, "time": self.time, "applied": self.applied,
+            "log": self.log,
         }
 
     def room_of(self, character: str) -> str | None:
@@ -72,6 +79,14 @@ class WorldState:
 
     def has_applied(self, event_id: str) -> bool:
         return event_id in self.applied
+
+    def clock(self) -> MissionClock:
+        """The mission clock as the shared kernel sees it. Absent `time` means minute zero."""
+        return MissionClock(minute=int(self.time.get("minute", 0)))
+
+    @property
+    def scene(self) -> int:
+        return self.clock().scenes
 
     # ---- the only way state changes --------------------------------------------------------------
 
@@ -241,6 +256,21 @@ class WorldState:
         character.setdefault("flags", {})[key] = event.get("value", True)
         return {"character": name, "key": key}
 
+    def _apply_advance_time(self, event: dict[str, Any]) -> dict[str, Any]:
+        """Move mission time. One standard action (one minute) unless the event says otherwise.
+
+        Time is the one thing every scene, quest timer and patrol check reads, so it lives in the
+        authoritative state and moves only through an event — never as a side effect of narration.
+        """
+        minutes = int(event.get("minutes", STANDARD_ACTION_MINUTES))
+        if minutes <= 0:
+            raise RejectedEvent("advance_time needs a positive number of minutes")
+        clock = self.clock()
+        tick = clock.advance(minutes)
+        self.time["minute"] = tick.minute
+        return {"minute": tick.minute, "scene": tick.scene,
+                "scenes_elapsed": tick.scenes_elapsed}
+
     def _apply_sim_reconcile(self, event: dict[str, Any]) -> dict[str, Any]:
         """A simulation's summary becomes state only through a clamped, explicit delta."""
         faction = str(event.get("faction", ""))
@@ -268,4 +298,5 @@ class WorldState:
             raise RejectedEvent(f"unsupported world schema: {data.get('schema_version')}")
         return cls(rooms=data.get("rooms", {}), characters=data.get("characters", {}),
                    items=data.get("items", {}), factions=data.get("factions", {}),
+                   time=dict(data.get("time", {})),
                    applied=list(data.get("applied", [])), log=list(data.get("log", [])))
