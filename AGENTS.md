@@ -1,35 +1,14 @@
-# CURRENT DIRECTIVE — read this first (issues #897 + #848, 2026-11-02)
+# FOUNDATIONAL AUTHOR DECISION — issue #897 (2026-10-31)
 
-**Rules engine: Cities Without Number, locked. Gameplay: location-based narrative RPG. Art: 1974's
-psychedelic vision of 2045.** This supersedes the *gameplay form* of #848 (top-down movement/combat) and
-every earlier ruleset, while keeping #848's vanilla-CWN baseline.
+This decision supersedes the **presentation and gameplay** portions of #848 and older directives where they conflict. The **rules foundation remains the same**: published Cities Without Number (CWN) is permanently the primary OSR chassis; compatible Stars Without Number (SWN) psionics/space/factions and selective WWN/AWN material can extend it where appropriate. Do **not** propose or introduce a replacement core dice engine, attribute scheme, tactical framework or bespoke rulebook. Godot uses the repository-root `project.godot`, `scenes/main.tscn`, and `godot/core/` CWN rules. Historical 1d10/Fate prototypes are not authoritative.
 
-**Never replace the rules engine again.** No new attribute set, no universal resolution system, no
-narrative substitute for checks. A NoöPunk rule is an **overlay**: it reads core state and may not
-compute core resolution. Changing the core requires a separately approved foundational decision, recorded
-in `docs/design/FOUNDATIONAL_LOCK_897.md` — brainstorming a mechanic is not authorisation.
+**Only NoöPunk extensions may be homebrewed:** modular social relationships/reputation, LaclauGPT-style ideological factions, noösphere/Psyche/ontological shock, and clue-forward PbtA/GUMSHOE-inspired narrative procedures. These are optional **overlays** that invoke CWN rather than overwrite it. Player active PSI remains undecided: prefer passive/minor powers as a design hypothesis, not a locked rule.
 
-| Canonical artifact | Path |
-| --- | --- |
-| Foundational lock (authority) | `docs/design/FOUNDATIONAL_LOCK_897.md` |
-| Verbatim / adapted / mod matrix | `docs/design/CORE_VS_MOD_MATRIX_897.md` |
-| Art bible + tokens | `docs/art/ART_BIBLE_1974.md`, `docs/art/design_tokens.json` |
-| Core CWN rules | `godot/core/*.gd` (must not import from `mods/`) |
-| NoöPunk overlays | `mods/noopunk/` |
-| Rulebook | `RULEBOOK.md` (root) |
-| Godot project | `project.godot` → `scenes/main.tscn` |
-| Godot verification | `godot --headless --path . --script res://godot/tests/run_tests.gd` |
+**Current Godot direction changes:** prioritize a Citizen Sleeper-inspired **location-node** Helsinki narrative campaign, discoverable destinations, dialogue/investigation, 1–4 UNSA-agent missions, CWN character sheet, graph-based CWN hacking (DROP-inspired interface) and non-tactical CWN combat resolution. **Suspend** tactical top-down development; preserve existing scenes, saves and tests as compatibility paths until deliberate tested migration. Do not create a second Godot project or delete working systems.
 
-**Boundary, enforced by test:** `godot/core/` may not import `mods/`; overlays return data and never
-mutate a core result in place; a mod that needs a roll asks the core for it.
+**Visual lock:** everything appears as an acid-fueled 1974 science-fiction vision of 2045: Hawkwind's *Space Ritual*, krautrock, **Zardoz > Barbarella > Rocky Horror**, Mœbius and Valérian. Later media influence mechanics and stories, not the graphic style. Avoid generic 1980s neon cyberpunk. Start from reusable color/type/UI tokens; use original or appropriately licensed assets.
 
-**Dormant, not deleted:** the tactical top-down encounter. It stays in the tree, off the default path.
-Do not delete it and do not build on it; the playable campaign routes through location and conversation
-screens.
-
-**Before writing anything:** check `git log origin/main --oneline -5` **and** open PRs. Three sessions
-have now built the same feature twice in this repository because that check happened at merge time
-instead of first.
+**Agent handoff:** review `docs/design/ISSUE_897_FOUNDATIONAL_LOCK.md` and `docs/design/ISSUE_897_VISUAL_BIBLE.md` before implementation. This is an author decision, not a request to re-litigate rules. Preserve executable-code-only test policy and honest Godot runtime validation.
 
 ---
 
@@ -510,3 +489,37 @@ Tomi is the authorial source of truth. When a draft arrives, read
 ## ~~NEW AUTHORITATIVE RESTART: issue #827~~
 
 For all **new NoöPunk RPG development**, the canonical artifacts are `noopunk/rulebook/RULEBOOK.md` and the standalone minimal Godot project `noopunk/game/project.godot`. These two paths supersede the earlier root-project-only and #814 rules **for the restart**, while legacy files elsewhere remain preserved reference material. Do not extend older Godot or rulebook code for new tasks, and do not spawn other alternatives. Tomi defines one small feature at a time; update both of these SAME canonical artifacts together and verify their parity. Do not automatically import legacy CWN/SWN rules, seven attributes, lore, or frameworks. First milestone: blank rulebook and top-down player movement only. Keep meta-issue #827 open; close only implementation child issues. See `noopunk/README.md`.
+
+## FOUNDATIONAL LOCK: CWN is the rules engine (#897, 2026-10-31)
+
+**Permanent, and it outranks earlier ruleset directions.** CWN governs every procedure it covers, as
+written. SWN/WWN fill gaps CWN does not cover, whole-procedure, one row each. NoöPunk material is a
+**mod, never an edit**: it reads CWN state and adds narrative state, and may not change a CWN target
+number, die, band or progression cost. Reskin is free; new mechanics are a documented mod with a test.
+
+Canonical record and the core-versus-mod matrix: [`docs/rules/RULES_BASIS_LOCK.md`](docs/rules/RULES_BASIS_LOCK.md).
+Baseline paths remain root `project.godot`, `scenes/main.tscn`, `godot/core/`, `data/rules/`.
+
+No further core-rule replacement by default. Replacing CWN requires a separately approved foundational
+decision; brainstorming a mechanic does not authorise it. The seven-attribute UNSA sheet (#835) is a
+**mod**, not the baseline.
+
+## Where the lock lives (added with the enforcement PR)
+
+| Artifact | Owns |
+| --- | --- |
+| This directive | the decision an agent reads first |
+| `docs/design/FOUNDATIONAL_LOCK_897.md` | what is locked, the four mechanic classes, the boundary, the narrative pivot |
+| `docs/design/CORE_VS_MOD_MATRIX_897.md` | the per-mechanic inventory — **the only copy** |
+| `docs/art/ART_BIBLE_1974.md` + `design_tokens.json` | the 1974 visual grammar |
+
+**Boundary, enforced by test:** `godot/core/` may not import `mods/`; an overlay returns data and never
+mutates a core result in place; a mod that needs a roll asks the core for it
+(`tests/test_foundational_lock_897.py`).
+
+**Dormant, not deleted:** the tactical top-down encounter stays in the tree, off the default path. Do not
+delete it; do not build on it.
+
+**Before writing anything:** check `git log origin/main --oneline -5` **and** open PRs. Three sessions in
+this repository have built the same feature twice because that check happened at merge time instead of
+first.

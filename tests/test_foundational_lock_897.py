@@ -66,7 +66,10 @@ def test_agents_carries_the_current_directive() -> None:
     agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
     head = agents[:4000]
     assert "#897" in head, "the #897 lock must be in the top of AGENTS.md, where agents read"
-    assert "Never replace the rules engine" in head
+    # Wording may change; the prohibition may not. Accept either phrasing of the same decision.
+    assert ("Never replace the rules engine" in head
+            or "Do **not** propose or introduce a replacement core" in head), \
+        "AGENTS.md must prohibit replacing the core"
     assert "mods/noopunk" in head
 
 
