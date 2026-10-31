@@ -51,6 +51,18 @@ class MudBoundaryTest(unittest.TestCase):
         self.assertIn("mud/", agents, "AGENTS.md must name the MUD boundary")
         self.assertIn("Godot", agents)
 
+    def test_agent_guidance_states_mud_primacy(self):
+        """#950: if primacy is not written where agents read, the next agent builds Godot features."""
+        agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8", errors="ignore")
+        self.assertIn("#950", agents, "AGENTS.md must record the #950 pivot")
+        self.assertIn("primary", agents.lower())
+        self.assertIn("secondary/legacy", agents.lower())
+
+    def test_the_mud_readme_declares_phase_one_without_llm(self):
+        readme = (MUD / "README.md").read_text(encoding="utf-8")
+        self.assertIn("#950", readme)
+        self.assertIn("no LLM", readme.replace("no** LLM", "no LLM"))
+
 
 if __name__ == "__main__":
     unittest.main()
