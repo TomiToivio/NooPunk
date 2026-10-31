@@ -32,6 +32,21 @@ NoöPunk also uses a **three-system lens**: living/biological systems (biopunk, 
 
 *Setting note: 2045 depicts the developed NHI Crisis era. The earlier strategy campaign begins around 2027, before these outcomes are settled, allowing players to shape the future rather than treating it as inevitable.*
 
+## Two implementations, one universe — and which one is the game
+
+**NoöPunk MUD (Python / Evennia) is the main playable game.** It is a persistent, text-first
+multiplayer-capable server, and the target of current development: a single-player UNSA investigation
+campaign first, multiplayer and AI-agent layers later. Start at [`mud/README.md`](mud/README.md).
+
+**NoöPunk Godot** is the preserved graphical implementation, maintained for specifically scoped work.
+It is not deleted and not abandoned — it is simply no longer where new gameplay goes.
+
+The two share the setting, the canonical CWN rules (one Python kernel in `src/rules/`, one tabletop
+baseline in [`rulebook/WITHOUT_NUMBER_BASELINE.md`](rulebook/WITHOUT_NUMBER_BASELINE.md)) and
+platform-neutral data. They share no runtime, no dependency environment and no CI job. The routing
+decision is [`docs/design/ISSUE_950_MUD_IS_THE_MAIN_GAME.md`](docs/design/ISSUE_950_MUD_IS_THE_MAIN_GAME.md);
+SRD coverage is tracked in [`docs/mud/CWN_COMPLIANCE_MATRIX.md`](docs/mud/CWN_COMPLIANCE_MATRIX.md).
+
 ## Before NoöPunk: a transmission, possibly
 
 In **1974**, **Tommy Pilgrim**, a left-wing science-fiction writer, took LSD at a **Hawkwind concert** and experienced what he called a transmission from **VALIS**. It appeared to contain humanity's future. Artificial minds, alien encounters, psychic phenomena, political upheaval. An unreasonable amount of information for one evening.

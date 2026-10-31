@@ -1,0 +1,45 @@
+name: NoöPunk MUD (Evennia)
+
+# The MUD's own gate (#950). Deliberately a separate job with a separate dependency
+# environment: `requirements.txt` is the Godot/tabletop tree and must not grow Evennia's
+# Django, and this job must never be the reason a Godot check fails or vice versa.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  mud:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mud
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install the MUD's own dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-mud.txt
+
+      - name: Migrate the test database
+        run: evennia migrate --noinput
+
+      - name: MUD suites (CWN sharing, boundary, world, two humans)
+        run: |
+          set -o pipefail
+          evennia test --settings settings.py tests 2>&1 | tee /tmp/mud-tests.log
+          grep -qE "^OK$" /tmp/mud-tests.log
+
+      - name: The compliance matrix still resolves
+        # Data audit, not a prose gate: every named module must import and every named test
+        # file must exist (#271 keeps prose out of CI; this asserts relationships only).
+        working-directory: .
+        run: python3 tools/cwn_compliance_audit.py --check

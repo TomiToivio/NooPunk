@@ -118,7 +118,8 @@
         "AGENTS.md",
         ".hermes/**",
         "strategy_game/docs/**",
-        "archive/**"
+        "archive/**",
+        "mud/README.md"
       ],
       "licence": "author-decision",
       "note": "Design, audit, scenario and record material. Publication scope of .hermes/ agent plans is an author decision."
@@ -142,7 +143,8 @@
         "strategy_game/**",
         "gen_migration.py",
         "pytest.ini",
-        "mods/**"
+        "mods/**",
+        "mud/**"
       ],
       "licence": "author-decision-separate-software-licence",
       "note": "Needs its own software licence, separate from the CC instrument. pytest.ini is test configuration: it tells pytest which directories not to collect, so the preserved corpora under archive/ do not shadow this repository's own src/ package. It is configuration for the test suite, so it travels with the code it configures."
@@ -179,7 +181,8 @@
         "requirements.txt",
         "requirements-concordia.txt",
         "LICENSE*",
-        "NOTICE*"
+        "NOTICE*",
+        "mud/requirements-mud.txt"
       ],
       "licence": "author-decision-follows-code",
       "note": "CI, dependency and release-packaging plumbing."

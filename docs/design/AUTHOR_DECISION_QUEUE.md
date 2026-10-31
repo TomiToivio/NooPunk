@@ -273,6 +273,27 @@ so the deviation cost a merge and not a rule — but whether it stays in `main` 
 | D63 | **Which clocks ship, and how long are they?** §9.2 proposes five (NHI disclosure, rogue ASI acceleration, cyber-psychic convergence, UNSA authority, local crisis) at the 4/6 segments of the #689 spec. A published campaign would need three to five of them named, and a rule for what happens when two fill on the same event. The named clocks are proposals, not timeline: the disclosure clock's terminal segment is the panic depth of `RULEBOOK.md` §41.1, which is a *regional* condition, not a global one. | what a scenario author may assume about escalation; whether a case may declare its own clock count | *all five, 4/6 as specced* / *name a subset* / *local crisis only* ; and *one clock per question, table decides* / *a fixed precedence* |
 | D64 | **May any of *The Veil*'s text ever be quoted?** The book licenses its **text** CC BY-SA 3.0 and reserves its art separately; *Apocalypse World* 2e establishes no open licence at all. The module as written quotes neither and re-expresses mechanics with page references, which keeps the tree clear of ShareAlike. Quoting a paragraph of *The Veil* would put ShareAlike obligations on the file that carries it — and `tests/test_third_party_expression_absent.py` exists precisely because expression once entered this tree and had to be removed. | whether the design documents may quote, and the licence status of any document that does | *no quotations, ever* / *quote and accept ShareAlike in that file* / *quote only from the CC BY-SA text and mark the file* |
 
+## #950 — the MUD pivot (rows D65–D67)
+
+Twentieth update (2026-10-31). #950 makes the Evennia MUD the main game: the default coding target is
+`mud/`, the first deliverable is a single-player UNSA story with no LLM or multiplayer dependency, and
+Godot becomes maintenance-only. The routing record is
+[`ISSUE_950_MUD_IS_THE_MAIN_GAME.md`](ISSUE_950_MUD_IS_THE_MAIN_GAME.md); the rules audit is
+[`docs/mud/CWN_COMPLIANCE_MATRIX.md`](../mud/CWN_COMPLIANCE_MATRIX.md), generated from
+`data/mud/cwn_compliance.json`. Three things in it are the author's, not an agent's.
+
+The audit's own numbers, so the rows can be weighed: of **46** linked-SRD rows, **30** are implemented
+in Python with a test, **7** partial, **6** Godot-only, **1** missing in both games, and **2** are
+sections the linked SRD itself omits. The Python CWN kernel is not a greenfield port — twenty
+`src/rules/cwn_*.py` modules already exist and are exercised. What is missing is the list, not the
+engine.
+
+| # | Decision | Blocks | Smallest useful answer |
+| --- | --- | --- | --- |
+| D65 | **Repository shape: `mud/` in this repository, or a dedicated one?** #946 asked for this to be decided before implementation and #950 confirms MUD as the main game. The bootstrap is landed under `mud/` as the reversible default: it has its own `requirements-mud.txt`, its own CI job (`mud.yml`), its own settings and no runtime import of Godot, so `git subtree split --prefix=mud` can extract it later without rewriting history. A dedicated repository would make release cadence, issue scoping and dependency isolation cleaner; it also splits the shared `src/rules` kernel, which is the one thing the MUD genuinely shares. | whether new MUD issues carry `mud/` paths; where the shared kernel lives; which repository owns the shared canon | *`mud/` in this repo (recommended, reversible)* / *dedicated repository, kernel vendored as a package* / *dedicated repository, kernel published separately* |
+| D66 | **What does "Godot is maintenance-only" mean in practice?** Three readings: **frozen** (no commits at all; CI may be switched off), **bugfix-only** (existing behaviour stays correct, no new features), or **buildable but feature-frozen** (tests and CI kept green indefinitely). The concrete decisions behind it: do the Godot CI jobs and `godot/tests` stay gating on every PR, and does `godot/` keep its own release? Note that `tests/` already contains guards that read the Godot tree (`test_release_packaging_guard`, the Godot-expression audits), so "delete Godot" would fail them and would delete working code. | CI cost; whether a Godot-only regression blocks a MUD PR; whether `godot/` still ships | *frozen* / *bugfix-only* / *buildable but feature-frozen (recommended)* |
+| D67 | **How is rulebook parity enforced?** #950 makes "update the rulebook section and matrix row, or say no tabletop mechanics change" compulsory. That can be a PR-template checklist, a documentation audit tool comparing matrix rows to `rulebook/` sections, or both. A *test* is not available for this: #271 forbids prose gates in CI, and the matrix already carries the machine-checkable half (every named module imports, every named test exists). | whether a MUD mechanics PR can merge without a rulebook edit; how much parity checking is automated | *PR checklist only* / *checklist + `tools/cwn_compliance_audit.py --check` in CI (already wired)* / *a further documentation audit for section links* |
+
 ## After an answer
 
 Each answered row becomes: a criterion check against `main` → an acceptance record in

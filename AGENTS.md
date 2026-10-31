@@ -1,3 +1,35 @@
+# MUD IS THE DEFAULT TARGET — issue #950 (2026-10-31, newest authority)
+
+**The Evennia MUD in `mud/` is the main NoöPunk game and the default target for every coding agent.
+`mud/` is Python; the Godot project at the repository root is secondary and maintenance-only.**
+This supersedes the equal-priority two-game routing of #946 and the Godot-first implementation routing
+of #897. It does **not** change the rules lock below: CWN is still the only resolution engine, and the
+setting, scenario and NoöPunk-module work are still canonical. Record:
+[`docs/design/ISSUE_950_MUD_IS_THE_MAIN_GAME.md`](docs/design/ISSUE_950_MUD_IS_THE_MAIN_GAME.md).
+
+1. **Default target = `mud/`.** New RPG features, commands, world content, quests and rules wiring go
+   there. Identify your target game in the PR before editing.
+2. **First deliverable = a complete single-player UNSA story with zero LLM, Mesa or multiplayer
+   dependencies.** Deterministic scripted NPCs and GM-equivalent scene handling are the product; a
+   model is an optional enhancement with a no-AI fallback.
+3. **First engineering action = the Godot → Python CWN migration and the linked-SRD coverage audit.**
+   The matrix is [`docs/mud/CWN_COMPLIANCE_MATRIX.md`](docs/mud/CWN_COMPLIANCE_MATRIX.md), generated
+   from `data/mud/cwn_compliance.json`; regenerate with
+   `python3 tools/cwn_compliance_audit.py --markdown`, never edit it by hand.
+4. **Rulebook parity is compulsory.** A mechanic change in `mud/` updates the matching `rulebook/`
+   section and matrix row, or says "no tabletop mechanics change" and why.
+5. **Godot is maintenance-only** unless a task explicitly targets Godot. Preserve existing work; do
+   not delete it, do not port generic RPG features into it by default.
+6. **Multiplayer, Concordia LLM agents, Mesa and non-UNSA factions are phase 2**, not MVP
+   prerequisites. Do not put them in the critical path of the solo campaign.
+
+**MUD vs Godot, in one line each:** the MUD owns persistent text play, the CWN kernel calls, quests
+and the campaign; Godot owns the preserved graphical implementation and its existing scenes. They
+share canon, rules data and platform-neutral schemas, and share no runtime, no dependency
+environment, no CI job and no release.
+
+---
+
 # FOUNDATIONAL AUTHOR DECISION — issue #897 (2026-10-31)
 
 This decision supersedes the **presentation and gameplay** portions of #848 and older directives where they conflict. The **rules foundation remains the same**: published Cities Without Number (CWN) is permanently the primary OSR chassis; compatible Stars Without Number (SWN) psionics/space/factions and selective WWN/AWN material can extend it where appropriate. Do **not** propose or introduce a replacement core dice engine, attribute scheme, tactical framework or bespoke rulebook. Godot uses the repository-root `project.godot`, `scenes/main.tscn`, and `godot/core/` CWN rules. Historical 1d10/Fate prototypes are not authoritative.

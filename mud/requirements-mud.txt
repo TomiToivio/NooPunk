@@ -1,0 +1,11 @@
+# NoöPunk MUD (#946) — a separate dependency environment.
+#
+# This file is deliberately NOT merged into the repository-root requirements.txt: the MUD
+# and the Godot/tabletop tree must not entangle their dependency environments (issue #946,
+# "non-negotiable project boundary"). Install with:
+#
+#     python -m venv .venv && .venv/bin/pip install -r mud/requirements-mud.txt
+#     cd mud && ../.venv/bin/evennia migrate && ../.venv/bin/evennia start
+#
+# Evennia owns its own Django; it is not used by the Godot game or by the tabletop scripts.
+evennia==6.1.0
