@@ -21,6 +21,8 @@ func _screen(flags: Dictionary = {}) -> Object:
 func run() -> Array:
 	var rows: Array = []
 	var screen := _screen({})
+	rows.append(_eq("only two Helsinki locations at start", screen.map.visible({}).size(), 2))
+	rows.append(_eq("university initially hidden", screen.map.revealed.has("university_of_helsinki"), false))
 	rows.append(_eq("the screen names the current place", screen._title.text, "Home · Helsinginkatu"))
 	rows.append(_eq("the district is shown", screen._district.text != "", true))
 	rows.append(_eq("actions are offered", screen._actions.get_child_count() > 0, true))
@@ -41,14 +43,14 @@ func run() -> Array:
 	rows.append(_eq("an undiscovered place is refused", screen._log.get_parsed_text().contains("cannot travel"), true))
 
 	# investigate is conditional on a lead, in the screen as in the model
-	var no_lead := _screen({"case_opened": true})
-	rows.append(_eq("no investigate without a lead", _has_action(no_lead, "investigate"), false))
+	var no_lead := _screen({})
+	rows.append(_eq("no investigate without a lead", _has_action(no_lead, "interview"), false))
 	var with_lead := _screen({"knows_university": true, "has_lead": true})
 	with_lead._on_travel("university_of_helsinki")  # investigate lives at the harbour, not at HQ
-	rows.append(_eq("investigate appears with a lead", _has_action(with_lead, "investigate"), true))
+	rows.append(_eq("investigate appears with a lead", _has_action(with_lead, "interview"), true))
 
 	# placeholder actions admit they are placeholders rather than faking an outcome
-	with_lead._on_action("investigate")
+	with_lead._on_action("interview")
 	rows.append(_eq("a placeholder says so", with_lead._log.get_parsed_text().contains("not yet wired"), true))
 
 	# the notebook is visible to the player
