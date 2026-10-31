@@ -1,7 +1,9 @@
 # Major NHI Factions
+
 Humanity is now in contact with two major NHI factions.
 
 ## Zookeepers - Galactic Council of Collective Consciousness
+
 The Zoo Hypothesis turned out to be the solution to the Fermi Paradox. Earth was kept under quarantine for millions or billions of years, as the Zookeepers value planets with a Biosphere and a Noösphere. Without the quarantine Earth would have been colonized billions of years ago.
 
 The galaxy was a dark forest before the Zookeeper civilization started to maintain order. This includes keeping planets with vulnerable biosphere and noösphere under prime directive -type quarantine and certain other laws.
@@ -47,4 +49,15 @@ The stories about Zookeepers are rather confusing, as they often communicate acc
 
 Additionally the Zookeepers have completely destabilized Earth religions due to their appearance as religious apparitions: Some see this as validating their religion, others think it means their religion is fake and become atheists, fundamentalists see them as demonic deception, some religions assimilate Zookeeper teachings, others convert to the Zookeeper religion. Basically Hinduism and Buddhism survive intact, Abrahamic religions are in chaos.
 
-Galactic Council of Collective Consciousness
+Galactic Council of Collective Consciousness and The Orion Arm Greater Co-Prosperity Sphere are openly hostile and their relationship is similar to Cold War.
+
+## The Grays - The Orion Arm Greater Co-Prosperity Sphere
+
+The Orion Arm Greater Co-Prosperity Sphere is the other major interstellar faction which was able to penetrate the quarantine and establish bases on Earth. They consist of the well-known species of ufology: Grays, Reptilians, Mantids and Hybrids. Their campaign of abductions and human-alien hybridization is causing people to view them as malevolent. So the generic attitude towards The Greater Orion Arm Co-Prosperity Sphere is very hostile.
+
+The Greater Orion Arm Co-Prosperity Sphere offer profitable business opportunities and technologies including immortality without any of the moralistic communist consciousness crap of the Zookeepers. The Greys have cortical stacks that are used to upload their consciousness and then resleeve it into genetically engineered bodies. This and other technological gifts have won The Greys a great number of supporters. They mostly offer technologies to megacorporations to form profitable joint businesses.
+
+They also offer to open Extraterrestrial Economic Zones with unimaginable business opportunities. Again the main target is megacorporations. It has been noticed that the Grey society seems to consist of a proletariat caste of small greys with little individual agency and a capitalist caste of larger greys with individual agency. They don't have any kind of religion and are strictly materialistic. It is thought the species has been reproducing by cloning genetically engineered bodies for so long that the hybridization program is needed to restore some vitality to the species. But why is human and Grey DNA compatible?
+
+The Greater Orion Arm Co-Prosperity Sphere does not seem to be a very happy alliance, as the Greys and the Reptilians seem to be almost hostile to each other and drive quite different diplomatic tactics. This may be a good cop / bad cop type negotiation strategy. The Reptilians threaten an outright military conquest while the Greys are more diplomatic and offer profitable business opportunities while continuing their hybridization and infiltration strategy.
+
