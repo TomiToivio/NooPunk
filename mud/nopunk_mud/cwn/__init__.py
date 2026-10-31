@@ -222,3 +222,49 @@ def create_character(name: str, *, attributes: Mapping[str, int], skills: Mappin
     return Character(name=str(name), attributes={k: int(v) for k, v in attributes.items()},
                      skills={k: int(v) for k, v in dict(skills or {}).items()},
                      level=int(level), background=str(background))
+
+# ---- combat ---------------------------------------------------------------------------------------
+# Ported from the same procedures as the rest of this module: no second resolution system.
+
+ATTACK_DIE_FACES = 20
+
+
+@dataclass(frozen=True)
+class Attack:
+    die: int
+    total: int
+    armor_class: int
+    hit: bool
+
+
+def attack_roll(*, attack_bonus: int, attribute: int, combat_rank: int, armor_class: int,
+                die: int) -> Attack:
+    """d20 + attack bonus + attribute modifier + combat rank versus AC."""
+    if not SKILL_RANK_MIN <= combat_rank <= SKILL_RANK_MAX:
+        raise CwnError("combat rank outside -1..4")
+    if armor_class < 1:
+        raise CwnError("armour class must be positive")
+    if not 1 <= die <= ATTACK_DIE_FACES:
+        raise CwnError(f"attack die must be 1..{ATTACK_DIE_FACES}")
+    total = die + attack_bonus + attribute_modifier(attribute) + combat_rank
+    return Attack(die=die, total=total, armor_class=armor_class, hit=total >= armor_class)
+
+
+def damage_roll(*, weapon_die: int, roll: int, attribute: int) -> int:
+    """One weapon die plus the attribute modifier, never below zero."""
+    if weapon_die not in (4, 6, 8, 10, 12):
+        raise CwnError("unsupported weapon die")
+    if not 1 <= roll <= weapon_die:
+        raise CwnError(f"damage roll must be 1..{weapon_die}")
+    return max(0, roll + attribute_modifier(attribute))
+
+
+def strain_absorb(current: int, amount: int, constitution: int) -> dict[str, object]:
+    """Absorb strain up to capacity; overflow is refused, never silently clamped."""
+    if amount < 0 or current < 0:
+        raise CwnError("strain values cannot be negative")
+    capacity = strain_maximum(constitution)
+    if current + amount > capacity:
+        return {"ok": False, "current": current, "capacity": capacity,
+                "overflow": current + amount - capacity}
+    return {"ok": True, "current": current + amount, "capacity": capacity, "overflow": 0}
