@@ -3,9 +3,10 @@
 A **separate, text-based, persistent multiplayer** game built on [Evennia](https://www.evennia.com/), sharing
 NoöPunk canon and CWN rules with the Godot game but **no runtime**.
 
-**Status: MAIN GAME, implementation not started.** Per #950 this directory is the primary playable
-implementation and the default target for coding agents; the Godot project is secondary/legacy. Nothing here
-runs yet — the phase-1 build order below is the work queue, not a description of existing code.
+**Status: MAIN GAME (#950) — first implementation scaffold added in PR #948.** Per #950 this directory is the
+primary playable implementation and the default target for coding agents; the Godot project is
+secondary/legacy. Evennia runtime and multiplayer behaviour are **not yet verified** — the phase-1 build order
+below is the work queue, not a description of finished code.
 
 ## The boundary, in one table
 
@@ -13,7 +14,7 @@ runs yet — the phase-1 build order below is the work queue, not a description 
 |---|---|---|
 | Runtime | Python 3, Evennia server | Godot 4, `project.godot` at repository root |
 | Interface | graphical, `scenes/`, `godot/` | text commands, telnet/web client |
-| Tests | `godot --headless --script res://godot/tests/run_tests.gd` | pytest under `mud/tests/` |
+| Tests | `godot --headless --script res://godot/tests/run_tests.gd` | Python unittest under `mud/tests/` |
 | Entry point | `project.godot` | `mud/server/` (Evennia layout) |
 | Dependencies | Godot binary, no Python runtime | `mud/requirements.txt` |
 
@@ -55,4 +56,72 @@ Build order:
 Phase 2 (multiplayer, LLM agents/GMs, Mesa population simulation) starts only after phase 1 is playable
 without any of it.
 
-None of that is started. Claiming otherwise is how a second game gets half-built in two places.
+### Scaffold follow-ups (PR #948)
+
+1. Run and smoke-test the Evennia server in a Python environment; correct any Evennia version-specific integration issues.
+2. Expand CWN conformance using shared `data/rules/` without forking rules.
+3. Implement a real, optional LLM provider behind the validated intent boundary.
+4. Persist/reconcile Mesa social simulation through authoritative game-world handlers.
+5. Add multiplayer end-to-end coverage and server-restart persistence tests.
+
+The ordering above is unchanged: the deterministic headless GM comes before any LLM provider, and
+multiplayer coverage comes after the solo campaign is playable.
+
+## Implementation scaffold and commands
+
+## Quick start
+
+Requires Python 3.12+ and a compatible Evennia release.
+
+```sh
+cd mud
+python -m venv .venv
+. .venv/bin/activate
+pip install -r requirements.txt
+evennia migrate
+evennia start
+```
+
+Use Evennia's browser client at http://localhost:4001 or a telnet client at localhost:4000. Create two separate accounts to test concurrent presence. **Not validated on a running Evennia server in this PR.** Evennia owns durable character/room state; the game setup hook seeds three connected Helsinki rooms once.
+
+Commands: `look`, `say`, `north` / `south` / exits, `sheet`, `check <skill>=<difficulty>`, `supplies`, `scavenge`, `unsa`, `faction`, `talk <npc>`. Standard Evennia multiplayer communication and connection commands remain available.
+
+## Architecture contract
+
+- `server/`, `commands/`, `typeclasses/`, `world/`: **Evennia only**; persists authoritative rooms, characters and faction inventory.
+- `systems/cwn.py`: a **small verified CWN skill-check slice** (2d6 + skill + attribute modifier against difficulty), not a complete CWN implementation. CWN's remaining character creation, combat, hacking, equipment and progression are future work.
+- `systems/agents.py`: bounded, provider-neutral Concordia-*style* narration and validated intents; no dependence on Concordia internals and no LLM controlling player characters.
+- `systems/simulation.py`: optional Mesa resource agents, emitting proposals only. World mutations must be applied separately by validated Evennia code.
+- `world/seed.py`: starter Helsinki, UNSA safehouse and NPC. The Noösphere / ideology system is deferred as an optional overlay.
+
+**Authority:** Never treat LLM prose or Mesa events as CWN rolls or inventory mutations. Players choose actions. The MUD and Godot share **specification and canon**, not runtime classes. MUD agents must read `mud/AGENTS.md` before changing code.
+
+## Current scope
+
+This PR provides an isolated playable-text vertical-slice scaffold and unit-tested pure mechanics/contracts. Survival, GM, NPC and Mesa integration are intentionally minimal, not a claim of full #946 acceptance. The first faction is UNSA; rogue factions and player-founded organizations come later.
+
+## Platform-neutral core (PR #949)
+
+This is an additional, engine-independent layer intended for eventual integration with the Evennia scaffold above. Read [`docs/design/ADR_946_NOPUNK_MUD_BOUNDARY.md`](../docs/design/ADR_946_NOPUNK_MUD_BOUNDARY.md) for the architecture decision. Neither MUD layer imports Godot runtime code.
+
+## Run the core
+
+The platform-neutral core runs today, without Evennia or Mesa installed:
+
+```bash
+cd mud
+python -m pytest tests -q
+```
+
+## What exists
+
+| Module | Responsibility |
+|---|---|
+| `nopunk_mud/rules_contract.py` | the shared CWN facts (difficulties, untrained modifier, bounds) and the `RulesEngine` protocol the host implements |
+| `nopunk_mud/world_state.py` | the authoritative world: rooms, characters, resources, UNSA faction, validated events, JSON persistence and an event log |
+| `nopunk_mud/llm_gateway.py` | agents return **proposals**; forbidden intents are refused; a deterministic fallback runs with no provider |
+| `nopunk_mud/sim_bridge.py` | simulations emit `SimEvent`s; `reconcile()` applies them as clamped world events |
+
+## Integration work still required
+
+The separate Evennia command-and-room scaffold exists under `mud/server/`, `mud/commands/`, `mud/typeclasses/` and `mud/world/` (PR #948), but has **not been smoke-tested on a live Evennia server**. The platform-neutral `nopunk_mud` core added here is not yet wired to those Evennia handlers. Provider-backed Concordia-style GM/NPCs, an authoritative Mesa reconciliation loop and multiplayer integration tests remain future work. Do not claim the two layers are already connected.

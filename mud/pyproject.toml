@@ -1,0 +1,13 @@
+[project]
+name = "nopunk-mud"
+version = "0.1.0"
+description = "NooPunk MUD - persistent text multiplayer sandbox in the NooPunk universe (#946)"
+requires-python = ">=3.11"
+
+[tool.setuptools]
+packages = ["nopunk_mud"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-q"

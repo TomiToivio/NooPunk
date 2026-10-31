@@ -1,0 +1,8 @@
+.venv/
+server/logs/
+server/portal.restart
+server/server.restart
+server/secret_settings.py
+server/evennia.db3
+__pycache__/
+*.pyc
