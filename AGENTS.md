@@ -12,6 +12,7 @@ This decision supersedes the **presentation and gameplay** portions of #848 and 
 | `docs/design/FOUNDATIONAL_LOCK_897.md` | what is locked, the four mechanic classes, the boundary, the narrative pivot |
 | `docs/design/CORE_VS_MOD_MATRIX_897.md` | the per-mechanic inventory — **the only copy** |
 | `docs/art/ART_BIBLE_1974.md` + `design_tokens.json` | the 1974 visual grammar |
+| `docs/ART_DIRECTION.md` + `docs/ART_DIRECTION_IMAGES.md` + `images/manifest.json` | **#908**: the image library — read before generating or integrating artwork; only `approved` assets are loadable, checked by `tools/image_manifest.py` |
 | `mods/noopunk/` | the overlays themselves — the only place homebrew rules may live |
 
 **Boundary, enforced by test:** `godot/core/` may not import `mods/`; an overlay returns data and never
