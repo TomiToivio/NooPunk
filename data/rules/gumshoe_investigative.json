@@ -1,0 +1,120 @@
+{
+  "$comment": "GUMSHOE investigative abilities converted to CWN skills (#932). Source: GUMSHOE SRD (OGL), 'Investigative Abilities' and 'Gathering Clues'. Each entry names the CWN skill an investigator uses when the ability is not on their sheet, so a character who never bought GUMSHOE abilities can still work the case. General abilities are deliberately absent: CWN's own skills are the general layer, and this file must not become a second skill list.",
+  "version": 1,
+  "source": "GUMSHOE SRD (OGL version), pelgranepress.com",
+  "kinds": ["academic", "interpersonal", "technical"],
+  "abilities": [
+    {
+      "id": "research",
+      "name": "Research",
+      "kind": "academic",
+      "cwn_skill": "Know",
+      "notes": "Library, archive, records. The default way to turn a name into a file."
+    },
+    {
+      "id": "textual_analysis",
+      "name": "Textual Analysis",
+      "kind": "academic",
+      "cwn_skill": "Administer",
+      "notes": "Who really wrote it, what was removed, what the format gives away."
+    },
+    {
+      "id": "history",
+      "name": "History",
+      "kind": "academic",
+      "cwn_skill": "Know",
+      "notes": "Institutional memory: which agency did what, and what it was called then."
+    },
+    {
+      "id": "law",
+      "name": "Law",
+      "kind": "academic",
+      "cwn_skill": "Administer",
+      "notes": "Jurisdiction, warrants, and which of the three badges actually authorises this."
+    },
+    {
+      "id": "occultism",
+      "name": "Occultism",
+      "kind": "academic",
+      "cwn_skill": "Know",
+      "notes": "Cults, syncretic movements, noetic claims. Distinguishes belief from evidence."
+    },
+    {
+      "id": "forensic_pathology",
+      "name": "Forensic Pathology",
+      "kind": "academic",
+      "cwn_skill": "Heal",
+      "notes": "Cause, time, and what the body disagrees with the report about."
+    },
+    {
+      "id": "biology",
+      "name": "Biology",
+      "kind": "academic",
+      "cwn_skill": "Heal",
+      "notes": "Non-human tissue, contamination, the plausibility of a claim about a specimen."
+    },
+    {
+      "id": "cryptography",
+      "name": "Cryptography",
+      "kind": "technical",
+      "cwn_skill": "Program",
+      "notes": "Ciphers and signatures. Feeds the node-link layer; never replaces it."
+    },
+    {
+      "id": "data_retrieval",
+      "name": "Data Retrieval",
+      "kind": "technical",
+      "cwn_skill": "Program",
+      "notes": "Finding the record that exists. Access is a separate question, answered by hacking."
+    },
+    {
+      "id": "evidence_collection",
+      "name": "Evidence Collection",
+      "kind": "technical",
+      "cwn_skill": "Notice",
+      "notes": "Scene search. The clue is there; the search finds it."
+    },
+    {
+      "id": "ballistics",
+      "name": "Ballistics",
+      "kind": "technical",
+      "cwn_skill": "Fix",
+      "notes": "Weapons and damage reconstruction."
+    },
+    {
+      "id": "chemistry",
+      "name": "Chemistry",
+      "kind": "technical",
+      "cwn_skill": "Fix",
+      "notes": "Substances, residues, and what a lab can honestly tell you."
+    },
+    {
+      "id": "interrogation",
+      "name": "Interrogation",
+      "kind": "interpersonal",
+      "cwn_skill": "Talk",
+      "notes": "Pressure. Elicits statements, not truth."
+    },
+    {
+      "id": "reassurance",
+      "name": "Reassurance",
+      "kind": "interpersonal",
+      "cwn_skill": "Talk",
+      "notes": "Witness care. Often the only way a frightened person says anything."
+    },
+    {
+      "id": "streetwise",
+      "name": "Streetwise",
+      "kind": "interpersonal",
+      "cwn_skill": "Connect",
+      "notes": "Who to ask, and what not to ask them."
+    },
+    {
+      "id": "bureaucracy",
+      "name": "Bureaucracy",
+      "kind": "interpersonal",
+      "cwn_skill": "Administer",
+      "notes": "Which form unlocks the door, and who has to sign it."
+    }
+  ]
+}
