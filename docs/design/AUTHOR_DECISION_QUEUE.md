@@ -225,6 +225,20 @@ over a core clue, while NoöPunk counts CWN rank 0 as trained.)
 | D59 | **Approve the investigative crosswalk and the expertise tags.** The crosswalk maps all **40** book investigative abilities and the 13 general ones onto CWN skills, backgrounds and Foci as *suggested approaches*, never gates — completeness is verified against the book's own ability list; what is open is whether the mapping is the one to print, and whether the 2–4 **expertise tags** per character are adopted as free descriptive prompts (recommended) or dropped. Tags add no dice, points or progression; adopting them changes no rule, only what the GM reads off the sheet. | the GM reference page, and whether `Investigator` ever grows a tag field | *accept the crosswalk as printed* / *tweak named rows* ; *tags yes* / *tags no* |
 | D60 | **Approve the GUMSHOE-generic → NoöPunk institutional mapping.** UNSA as the investigating agency with its own case file and support staff; human collaborators and hostile factions as organised adversaries; NHI/noetic phenomena **classified case by case**; evidence security and its ethical dilemma as the containment question; a recurring Helsinki base with local contacts under the NPC supervisor. The rule that must survive any approval: a case may be a hoax, a misidentified phenomenon, institutional malfeasance, rogue-AGI activity, human conspiracy **or** genuinely inexplicable, and the characters' beliefs are never evidence. | the scenario/campaign layer, and what the pilot case may assume | *approve as mapped* / *amend named rows* |
 
+## #932 follow-up — two investigative implementations (row D61)
+
+Sixteenth update (2026-10-31). The licence re-base (#936) and the pool overlay (#935) both landed for
+#932, and together they expose one question the board did not yet carry: the repository now has **two**
+investigative procedures with opposite pool rules, both tested. `src/rules/investigation.py` (#704)
+refuses a pool and prices a benefit in CWN costs; `mods/noopunk/gumshoe_investigation.gd` (#935) ships the
+GUMSHOE SRD's pool, spends it only on special benefits, gates clues on a rating of at least 1 and hands
+general tests to CWN. A core clue never depends on a roll or a spend in either one, so nothing is broken
+today — but a table must not run both, and a future agent must not extend both.
+
+| # | Decision | Blocks | Smallest useful answer |
+| --- | --- | --- | --- |
+| D61 | **Which investigative procedure is authoritative — the no-pool core or the SRD pool overlay?** (a) **The core stands and pools are optional furniture** (recommended for a CWN-first table): keep `investigation.py` as the rule, treat #935's pool as an optional module a table switches on, and say so in one line in both files. (b) **The SRD pool is the rule**: then `Investigator` grows a pool and the no-pool test is retired, which re-opens #704's refusal on purpose. (c) **Both are legitimate and the choice is per campaign**: acceptable only if each document names the other and says a scene uses one, because two live currencies in one scene is the failure this row exists to prevent. Sub-question: does the rating gate follow the SRD (**rating ≥ 1**) or CWN (**rank 0 counts as trained**, G1)? The two implementations currently differ exactly there. | any further work on either module; what a scenario author may assume about spending; whether G1 stays as recorded | *core stands, pool optional* / *SRD pool is the rule* / *per campaign, both named* ; and *rating ≥ 1* / *rank 0 counts* |
+
 ## After an answer
 
 Each answered row becomes: a criterion check against `main` → an acceptance record in
