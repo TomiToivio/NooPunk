@@ -4,17 +4,12 @@
 ## names explicitly: travel discovers nothing by itself, and an essential clue is never lost to one roll.
 extends RefCounted
 
-const Map := preload("res://godot/narrative/location_map.gd")
 const Invest := preload("res://godot/narrative/investigation.gd")
 const Tokens := preload("res://godot/ui/noopunk_theme.gd")
 
 
 func _eq(name: String, actual: Variant, expected: Variant) -> Array:
 	return [name, actual == expected, "got %s; expected %s" % [str(actual), str(expected)]]
-
-
-func _map() -> Object:
-	return Map.from_data(Map.load_data())
 
 
 func _notebook() -> Object:
@@ -26,39 +21,8 @@ func _notebook() -> Object:
 func run() -> Array:
 	var rows: Array = []
 
-	# ---- location graph -----------------------------------------------------
-	var map := _map()
-	rows.append(_eq("the map loads", map.nodes.size() > 0, true))
-	rows.append(_eq("the campaign starts at HQ", map.current, "unsa_hq"))
-	var fresh: Array = map.visible({})
-	rows.append(_eq("HQ is always reachable", _ids(fresh).has("unsa_hq"), true))
-	rows.append(_eq("the harbour is gated behind the case", _ids(fresh).has("harbour"), false))
-
-	var opened := {"case_opened": true}
-	var newly: Array = map.refresh(opened)
-	rows.append(_eq("opening the case reveals the harbour", newly.has("harbour"), true))
-	rows.append(_eq("revealing is reported, not silent", newly.size() > 0, true))
-	rows.append(_eq("the archive opens with the case", _ids(map.visible(opened)).has("archive"), true))
-
-	var blocked: Dictionary = map.travel_to("clinic", opened)
-	rows.append(_eq("travel to an undiscovered place is refused", blocked["ok"], false))
-	rows.append(_eq("and says why", blocked["reason"], "not_discovered"))
-
-	var move: Dictionary = map.travel_to("harbour", {"case_opened": true, "has_lead": true})
-	rows.append(_eq("travel to a discovered place works", move["ok"], true))
-	rows.append(_eq("travel reports the actions there", Array(move["actions"]).has("investigate"), true))
-	rows.append(_eq("visiting is recorded", map.has_visited("harbour"), true))
-
-	var quiet: Object = _map()
-	rows.append(_eq("investigate is hidden without a lead",
-		quiet.actions_at("harbour", opened).has("investigate"), false))
-	rows.append(_eq("investigate appears with a lead",
-		quiet.actions_at("harbour", {"case_opened": true, "has_lead": true}).has("investigate"), true))
-	rows.append(_eq("rest is always available at home",
-		quiet.actions_at("home", {}).has("rest"), true))
-	rows.append(_eq("an unknown location has no actions", quiet.actions_at("atlantis", {}), []))
-
 	# ---- investigation notebook ---------------------------------------------
+	var opened := {"case_opened": true, "met_informant": true, "injury_known": true}
 	var book := _notebook()
 	rows.append(_eq("the clue graph loads", book.clues.size(), 5))
 	rows.append(_eq("an unknown clue is refused", book.gather("nope", true)["ok"], false))
@@ -105,8 +69,3 @@ func run() -> Array:
 	return rows
 
 
-func _ids(nodes: Array) -> Array:
-	var out: Array = []
-	for node in nodes:
-		out.append(String(node.get("id", "")))
-	return out

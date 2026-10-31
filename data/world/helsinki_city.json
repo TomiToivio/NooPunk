@@ -1,0 +1,78 @@
+{
+  "$comment": "Helsinki city map (#913). Positions are normalized 0..1 on the map panel, arranged to match the real city's rough geography: Kallio/Sörnäinen north-east, Kamppi/Punavuori south, the university in the centre. Ordinary 1970s Helsinki: no invented districts. `visible_at_start` is true for exactly two nodes; everything else needs a discovery flag. The underground is `hidden_always_until` - it must not appear as a greyed marker.",
+  "version": 2,
+  "city": "helsinki",
+  "start": "home_helsinginkatu",
+  "nodes": [
+    {
+      "id": "home_helsinginkatu",
+      "name": "Home, Helsinginkatu",
+      "district": "Sörnäinen / Kallio",
+      "position": [0.70, 0.34],
+      "visible_at_start": true,
+      "underground": false,
+      "description": "A UNSA-provided flat you moved into yesterday. Boxes still stacked by the door, no pictures on the walls, a kitchen that smells of fresh paint and someone else's cleaning products. Helsinginkatu runs below the window: trams, kiosks, bar lights, and the long argument between the neighbourhood's working-class past and its gentrifying present.",
+      "illustration": "res://images/locations/helsinki_helsinginkatu_home.png",
+      "actions": ["inspect_boxes", "rest", "check_comms"]
+    },
+    {
+      "id": "unsa_hq_ratakatu",
+      "name": "UNSA HQ, Ratakatu",
+      "district": "Punavuori",
+      "position": [0.44, 0.72],
+      "visible_at_start": true,
+      "underground": false,
+      "description": "The former Suojelupoliisi headquarters on Ratakatu, now the UNSA Helsinki Field Office. The building has not decided whether it is SuPo's archive, a Europol liaison desk or a UN scientific agency, so it is all three at once: three badge colours, four filing systems, and a reception desk that is aggressively, blandly friendly.",
+      "illustration": "res://images/locations/helsinki_unsa_hq_ratakatu.png",
+      "actions": ["reception", "rookie_welcome", "briefing"]
+    },
+    {
+      "id": "olutravintola_putki",
+      "name": "Olutravintola Putki",
+      "district": "Centre, near the University",
+      "position": [0.52, 0.58],
+      "visible_at_start": false,
+      "discovery": {"flag": "putki_recommended"},
+      "underground": false,
+      "description": "Romppainen's bar, a fictional place in the orbit of the real student taverns. Students, lecturers, anarchists, exiles and people who have been arguing about the same paragraph since 1968. Cheap beer, loud theory.",
+      "illustration": "res://images/locations/helsinki_olutravintola_putki.png",
+      "actions": ["talk", "listen", "order_drink"]
+    },
+    {
+      "id": "university_of_helsinki",
+      "name": "University of Helsinki",
+      "district": "City Centre",
+      "position": [0.50, 0.50],
+      "visible_at_start": false,
+      "discovery": {"flag": "university_lead"},
+      "underground": false,
+      "description": "Lecture halls, corridors, a department library that keeps its own rules. The place to find the person who knows the thing nobody else bothered to write down.",
+      "illustration": "res://images/locations/helsinki_university.png",
+      "actions": ["research", "find_contact", "read_archive"]
+    },
+    {
+      "id": "kurvi",
+      "name": "Kurvi",
+      "district": "Kallio / Sörnäinen",
+      "position": [0.66, 0.40],
+      "visible_at_start": false,
+      "discovery": {"flag": "kurvi_mentioned"},
+      "underground": false,
+      "description": "The crossroads where Kallio changes its mind about itself: working-class corners, nightlife, kiosks, a bohemian crowd that treats the whole junction as a living room.",
+      "illustration": "res://images/locations/helsinki_kurvi.png",
+      "actions": ["walk", "observe", "ask_around"]
+    },
+    {
+      "id": "unsa_underground",
+      "name": "UNSA Underground Complex",
+      "district": "Below Ratakatu",
+      "position": [0.44, 0.76],
+      "visible_at_start": false,
+      "hidden_until": "underground_clearance",
+      "underground": true,
+      "description": "Layered archives and command spaces beneath the field office, reportedly in continuous use since about 1920. Not on any map the player is given until someone with clearance says so.",
+      "illustration": "res://images/locations/helsinki_unsa_underground.png",
+      "actions": ["descend"]
+    }
+  ]
+}

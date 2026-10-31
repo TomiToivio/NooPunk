@@ -62,21 +62,13 @@ func _ready() -> void:
 	stack.add_child(narrative)
 
 	# #897 §4: the narrative campaign's first playable surface.
-	var locations_button := Button.new()
-	locations_button.text = "Narrative — Helsinki locations"
-	locations_button.pressed.connect(func() -> void:
-		var screen: Node = load("res://scenes/narrative/location_screen.tscn").instantiate()
-		var map_script: Script = load("res://godot/narrative/location_map.gd")
-		var book_script: Script = load("res://godot/narrative/investigation.gd")
-		var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(
-			"res://data/world/lakkahaltia_clues.json"))
-		var clues: Dictionary = parsed if parsed is Dictionary else {}
-		screen.setup(map_script.from_data(map_script.load_data()),
-			book_script.from_data(clues),
-			{"case_opened": true, "has_lead": true})
+	var city_button := Button.new()
+	city_button.text = "Helsinki — city map"
+	city_button.pressed.connect(func() -> void:
+		var screen: Node = load("res://scenes/narrative/city_map.tscn").instantiate()
 		get_tree().root.add_child(screen)
 		get_tree().current_scene = screen)
-	stack.add_child(locations_button)
+	stack.add_child(city_button)
 
 	var images_button := Button.new()
 	images_button.text = "Images — portrait and encounter layouts"
