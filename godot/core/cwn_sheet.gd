@@ -33,15 +33,6 @@ static func modifier_for(score: int) -> int:
 	return Character.effective_modifier(score)
 
 
-static func _modifier_or_null(score: int) -> Variant:
-	## An impossible score is a *validation* problem, so it must not assert here: the kernel's
-	## `ability_modifier()` asserts 3..18 (`src/godot/cwn_rules.gd:10`), and a sheet that dies while being
-	## rejected tells the caller nothing. Out-of-range yields null, which `validate()` reports.
-	if score < SCORE_MIN or score > SCORE_MAX:
-		return null
-	return modifier_for(score)
-
-
 static func _attributes(member: Dictionary) -> Dictionary:
 	## Every attribute is present and numeric. A missing score is refused rather than defaulted: 10 would
 	## be a silent rule change, and the sheet is where a player would notice it.
@@ -61,7 +52,10 @@ static func _attributes(member: Dictionary) -> Dictionary:
 		if not raw.has(key):
 			continue
 		var score := int(raw[key])
-		out[name] = {"score": score, "modifier": _modifier_or_null(score)}
+		# An out-of-range score gets no modifier: asking the kernel for one trips its assertion, and an
+		# assertion is not a report. validate() names the offending attribute instead.
+		var mod := modifier_for(score) if score >= SCORE_MIN and score <= SCORE_MAX else 0
+		out[name] = {"score": score, "modifier": mod}
 	return out
 
 
@@ -109,7 +103,10 @@ static func build(member: Dictionary, options: Dictionary = {}) -> Dictionary:
 		# An out-of-range score must not blow up the kernel assertion: the sheet is built anyway and
 		# validate() reports the problem, because a crash tells the caller nothing useful.
 		"saves": Character.saves(level, scores) if _scores_in_range(scores) else {},
-		"hp": {"max": int(member.get("hp_max", Character.hit_points(level, constitution)))},
+		# Same reasoning as the saves: an out-of-range score must reach validate() instead of tripping a
+		# kernel assertion before the caller can be told what is wrong.
+		"hp": {"max": int(member.get("hp_max", Character.hit_points(level, constitution)
+			if constitution >= SCORE_MIN and constitution <= SCORE_MAX else 0))},
 		"attack": {"bonus": Progression.attack_bonus(level, bool(member.get("on_target", false)))},
 		"strain": {"capacity": Progression.strain_capacity(constitution)},
 		"encumbrance": {
@@ -147,9 +144,7 @@ static func validate(sheet: Dictionary) -> Array:
 			continue
 		var score := int(attributes[name].get("score", 0))
 		if score < SCORE_MIN or score > SCORE_MAX:
-			# Reported, then skipped: asking the kernel for the modifier of an impossible score asserts.
 			problems.append("%s=%d outside %d..%d" % [name, score, SCORE_MIN, SCORE_MAX])
-			continue
 		var expected := modifier_for(score)
 		if int(attributes[name].get("modifier", 999)) != expected:
 			problems.append("%s modifier does not match its score" % name)
