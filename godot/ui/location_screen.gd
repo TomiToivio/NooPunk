@@ -158,9 +158,11 @@ func _on_action(action: String) -> void:
 		"rookie_welcome":
 			_append("Romppainen's eyes twinkle: only the rookie wears that spectacular new UNSA uniform.")
 			flags["met_romppainen"] = true
+			flags["knows_putki"] = true
 		"briefing":
 			_append("The case points toward researchers at the University of Helsinki.")
 			flags["knows_university"] = true
+			flags["knows_kurvi"] = true
 		"case_board":
 			_append("Romppainen recommends his regular, Olutravintola Putki, near the university.")
 			flags["knows_putki"] = true
