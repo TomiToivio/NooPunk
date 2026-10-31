@@ -153,3 +153,9 @@ of a die — and optional clues cost a check.
 The `solo <command>` command runs the headless `nopunk_mud.campaign.CampaignEngine` inside an Evennia character session. For example: `solo look`, `solo go street`, `solo go university`, `solo examine terminal`, `solo status`. The player character's `db.unsa_solo_state` stores the saved case after every command, including between logins and server restarts when Evennia database persistence is configured. `solo save` is intentionally disabled because arbitrary server-file writes from player input are unsafe. Invalid saves are preserved for inspection rather than overwritten.
 
 The solo case is a self-contained story instance: its room, inventory and combat states do not yet interact with the shared Evennia world. The preexisting `case` command is a separate earlier prologue, not an alias for `solo`. Evennia boot and cross-restart behavior require an actual server test; the bridge has a headless mocked-command test, not a verified running-server smoke test. No new tabletop mechanics are introduced by this adapter.
+
+Server-side test (skips without Evennia):
+
+```bash
+python -m django test tests.test_evennia_layer_966 --settings=server.conf.settings
+```

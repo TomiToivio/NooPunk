@@ -293,6 +293,20 @@
       "license_checked": "2026-10-28",
       "how_verified": "Downloaded the CC file from Pelgrane's own domain and read the copyright notice, attribution instructions and trademark clauses directly. The URL named in issue #704 (GUMSHOE_SRD_CC_3.pdf) now returns 'Multisite support not enabled'; the 2024-12-09 filename is the live document.",
       "notes": "Trademark: 'GUMSHOE' may be used without implying endorsement; the GUMSHOE logo may NOT be used; the other Pelgrane game-line trademarks are NOT granted and may not appear in derivative works -- so NooPunk must not describe the layer as '<game>-style'. CC BY permits commercial reuse with attribution, which distinguishes it from NooPunk's own BY-NC-SA material and matters for Vasama: Vasama must derive from the SRD itself with its own attribution, not lift NooPunk text. TO VERIFY: the exact ShareAlike interaction between BY 3.0 source material and a BY-NC-SA 4.0 collective work -- recorded as a licensing decision for the author, not asserted here. NO SRD prose, table or formula has been reproduced in NooPunk; the module implements the procedure with section citations. Related design: docs/design/ISSUE_704_GUMSHOE_INVESTIGATION.md and src/rules/anomaly_gate.py."
+    },
+    {
+      "id": "gumshoe-srd-ogl",
+      "source": "GUMSHOE SRD, OGL version (Pelgrane Press, 2013, 68 pp) - the document issue #932 cites",
+      "url": "https://pelgranepress.com/gumshoe/files/GUMSHOE%20SRD%20OGL%20version.pdf",
+      "kind": "srd-text",
+      "license": "Open Game License v1.0a",
+      "license_url": "https://www.wizards.com/default.asp?x=d20/oglfaq/20040123f",
+      "attribution": "GUMSHOE SRD OGL VERSION. 'The GUMSHOE SRD is published under the Open Game License v1.0, Copyright 2000, Wizards of the Coast, Inc. GUMSHOE SRD (c) 2013 Pelgrane Press. Developed, written, and edited by Robin D. Laws, with additional material by Kenneth Hite.' The document's own section 15 notice and the OGL v1.0a text in its Appendix I travel with any derived material.",
+      "decision": "Cite the OGL edition for #932 work; keep the CC edition recorded for any future material derived from it. Never mix notices inside one derived work.",
+      "role_in_noopunk": "Investigation procedure only: guaranteed core clues, investigative versus general abilities, clue-grade and spend structure, no-dead-end authoring rule. Never a character, combat or resolution engine.",
+      "license_checked": "2026-10-28",
+      "how_verified": "Downloaded the OGL edition from Pelgrane's domain and read its title page: it states the OGL v1.0 notice and the Product Identity list. Its introduction also mentions that Pelgrane offers the SRD via 'the Open Gaming and Creative Commons-By Attribution licenses', which is where the CC BY 3.0 statement came from; that statement describes the other file, not this one.",
+      "notes": "Two GUMSHOE SRD files exist and they are not interchangeable: the CC BY 3.0 edition (2024) and this OGL edition (2013). Material quoting or deriving from a file follows THAT file's notice. NooPunk's GUMSHOE overlay (#932) cites the OGL edition by section and reproduces no SRD prose, so the OGL notice governs for it. Product Identity (the commercial game-line marks) is excluded by both."
     }
   ],
   "sibling_artifacts": {

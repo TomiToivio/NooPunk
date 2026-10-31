@@ -128,8 +128,8 @@ class CmdSolo(Command):
             return
 
         action = self.args.strip() or "look"
-        # CampaignEngine's CLI 'save' writes arbitrary local paths; Evennia already
-        # persists state, so reject that command at the multiplayer command boundary.
+        # CampaignEngine's CLI 'save' writes arbitrary local paths; Evennia already persists state, so reject
+        # that command at the multiplayer command boundary.
         if action.split()[0].lower() == "save":
             self.caller.msg("Your solo case is saved automatically after each command.")
             return

@@ -335,7 +335,7 @@
       "tests": [
         "tests/test_cwn_hacking_contract.py"
       ],
-      "divergence": "Playable in Godot as a node-link screen; no MUD command surface.",
+      "divergence": "Playable in Godot as a node-link screen; no MUD hacking command yet.",
       "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
     },
     {
