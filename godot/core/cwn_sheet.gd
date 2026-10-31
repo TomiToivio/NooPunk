@@ -33,6 +33,15 @@ static func modifier_for(score: int) -> int:
 	return Character.effective_modifier(score)
 
 
+static func _modifier_or_null(score: int) -> Variant:
+	## An impossible score is a *validation* problem, so it must not assert here: the kernel's
+	## `ability_modifier()` asserts 3..18 (`src/godot/cwn_rules.gd:10`), and a sheet that dies while being
+	## rejected tells the caller nothing. Out-of-range yields null, which `validate()` reports.
+	if score < SCORE_MIN or score > SCORE_MAX:
+		return null
+	return modifier_for(score)
+
+
 static func _attributes(member: Dictionary) -> Dictionary:
 	## Every attribute is present and numeric. A missing score is refused rather than defaulted: 10 would
 	## be a silent rule change, and the sheet is where a player would notice it.
@@ -51,7 +60,8 @@ static func _attributes(member: Dictionary) -> Dictionary:
 				key = LONG_NAMES[key]
 		if not raw.has(key):
 			continue
-		out[name] = {"score": int(raw[key]), "modifier": modifier_for(int(raw[key]))}
+		var score := int(raw[key])
+		out[name] = {"score": score, "modifier": _modifier_or_null(score)}
 	return out
 
 
@@ -137,7 +147,9 @@ static func validate(sheet: Dictionary) -> Array:
 			continue
 		var score := int(attributes[name].get("score", 0))
 		if score < SCORE_MIN or score > SCORE_MAX:
+			# Reported, then skipped: asking the kernel for the modifier of an impossible score asserts.
 			problems.append("%s=%d outside %d..%d" % [name, score, SCORE_MIN, SCORE_MAX])
+			continue
 		var expected := modifier_for(score)
 		if int(attributes[name].get("modifier", 999)) != expected:
 			problems.append("%s modifier does not match its score" % name)
