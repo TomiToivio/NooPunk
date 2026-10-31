@@ -94,3 +94,36 @@ class TestDamageAndStrain:
         assert cwn.strain_absorb(2, 3, 12)["current"] == 5
         overflow = cwn.strain_absorb(11, 3, 12)
         assert overflow["ok"] is False and overflow["overflow"] == 2
+
+
+class TestCatalogueAndActions:
+    def test_weapon_and_armour_lookup(self):
+        assert cwn.weapon("knife")["shock"] == {"damage": 1, "ac": 15}
+        assert cwn.armour("ordinary_clothing")["ranged_ac"] == 10
+        with pytest.raises(ValueError):
+            cwn.weapon("plasma_banana")
+
+    def test_shock_only_when_ac_is_low_enough(self):
+        assert cwn.shock_on_miss("knife", 15) == 1
+        assert cwn.shock_on_miss("knife", 16) == 0
+        assert cwn.shock_on_miss("rifle", 10) == 0
+
+    def test_action_modifiers(self):
+        assert cwn.combat_action("snap")["to_hit"] == -4
+        assert cwn.combat_action("charge")["to_hit"] == 2
+        assert cwn.combat_action("total_defense")["immune_to_shock"] is True
+        with pytest.raises(ValueError):
+            cwn.combat_action("snap", main_unspent=False)
+
+    def test_encumbrance_tiers(self):
+        base = cwn.encumbrance(10, stowed=10, readied=5)
+        assert base["fits"] and base["overload_steps"] == 0 and base["speed_metres"] == 10.0
+        heavy = cwn.encumbrance(10, stowed=12, readied=5)
+        assert heavy["overload_steps"] == 1 and heavy["speed_metres"] == 7.0
+        over = cwn.encumbrance(10, stowed=15, readied=5)
+        assert over["overload_steps"] == 2 and over["speed_metres"] == 5.0
+        assert not cwn.encumbrance(10, stowed=19, readied=5)["fits"]
+
+    def test_encumbrance_rejects_bad_input(self):
+        with pytest.raises(ValueError):
+            cwn.encumbrance(10, stowed=-1)
