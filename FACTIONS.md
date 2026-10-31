@@ -87,6 +87,18 @@ There is still simple life remaining on Mars as well as archaeological findings 
 
 There is a lot of speculation about this - what is the origin of the fully human Pleyadians? Why is Grey and Human DNA compatible? At least the Zookeepers claim to have genetically manipulated humans 70000 years ago, while The Greys are genetically manipulating humans in 2045. Panspermia or directed panspermia has to be real, as the biologics analyzed so far seem to share a common origin.
 
+## Constructs
+
+Now the category of Constructs includes human-created rogue AGIs and ASIs - naturally highly illegal. The old internet is firewalled and physically cut off from the Safenet and limited city and organizations networks. But numerous rogue AGIs and the rogue ASI still lurk out there. And they will construct realistic androids who try to infiltrate human society. And there is the lurking benevolent ASI who has already merged with the Noösphere.
+
+## Noetics
+
+Noetics includes (former?) humans and beings from Earth. A person doing astral projection (like Robert Monroe) would basically be perceived as a Noetic. A dead person would be a Noetic. So psychics can perceive Noetics that are fully human - or at least from Earth.  
+
+## Biologics
+
+As stated above, the most common biologics include all types of Earth life as well as extraterrestrials like Greys, Reptilians, Mantids, Pleyadians and Hybrids. A species like Dolphins should be classified as an NHI: They are highly intelligent beings who are quite happy and playful philosophers and storytellers. Dolphins don't have a need to build technology but they have an anarchistic civilization. And of course there are uplifted dolphins, octopuses, chimpanzees and dogs. 
+
 ## UFOs and UAPs
 
 After the UFO Disclosure, NHI Crisis and open contact people are still asking what the UFOs and UAPs are. There are still many unrecognizable types of UAPs and UFOs that don't fit the recognized categories. Somebody should demand Zookeepers to disclose what their UFOs are.
