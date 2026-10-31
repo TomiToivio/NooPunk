@@ -4,6 +4,14 @@ This decision supersedes the **presentation and gameplay** portions of #848 and 
 
 **Only NoöPunk extensions may be homebrewed:** modular social relationships/reputation, LaclauGPT-style ideological factions, noösphere/Psyche/ontological shock, and clue-forward PbtA/GUMSHOE-inspired narrative procedures. These are optional **overlays** that invoke CWN rather than overwrite it. Player active PSI remains undecided: prefer passive/minor powers as a design hypothesis, not a locked rule.
 
+## Images
+
+Every picture follows [`docs/ART_DIRECTION_IMAGES.md`](docs/ART_DIRECTION_IMAGES.md): 1970s European comic
+illustration, a lived-in Helsinki, and **no sci-fi background unless a scene asks for it and the story
+justifies it**. Assets are resolved through `godot/core/image_library.gd`, never by a raw `res://images/...` path in a
+scene, and `tools/image_manifest.py` is the checker (`python3 -m unittest tests.test_issue908_image_manifest`) and an
+unapproved asset cannot be listed at all. Do not claim an image is imported until the binary is committed and the path resolves.
+
 ## Where the lock lives (added with the enforcement PR)
 
 | Artifact | Owns |

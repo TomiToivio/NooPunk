@@ -84,3 +84,92 @@ static func variant(base_id: String, variant_name: String) -> String:
 	if clean_base.is_empty() or clean_variant.is_empty():
 		return ""
 	return "%s_%s" % [clean_base, clean_variant]
+
+## ---- manifest-backed lookup (#908) --------------------------------------------------------------
+##
+## The functions above resolve by convention (`class/id.png`). The manifest is the other half: it says
+## which assets exist, what they depict, and how a screen may present them. Screens ask for an **id** and
+## the manifest answers; a hardcoded `res://images/...` in a scene is a second copy of this table.
+
+const MANIFEST_PATH := "res://images/manifest.json"
+
+var entries: Dictionary = {}
+var problems: Array = []
+var _cache: Dictionary = {}
+
+
+static func from_manifest(path: String = MANIFEST_PATH) -> ImageLibrary:
+	var library := ImageLibrary.new()
+	var file := FileAccess.open(path, FileAccess.READ)
+	if file == null:
+		library.problems.append("manifest missing: %s" % path)
+		return library
+	var parsed: Variant = JSON.parse_string(file.get_as_text())
+	if not (parsed is Dictionary):
+		library.problems.append("manifest is not an object: %s" % path)
+		return library
+	for entry in Array((parsed as Dictionary).get("assets", [])):
+		if entry is Dictionary and entry.has("id"):
+			library.entries[String(entry["id"])] = entry
+	return library
+
+
+func entry(asset_id: String) -> Dictionary:
+	if entries.has(asset_id):
+		return entries[asset_id]
+	problems.append("unknown asset id: %s" % asset_id)
+	return {}
+
+
+## Load the texture for an id. Cached: a dialogue screen asks for the same portrait repeatedly.
+func texture_by_id(asset_id: String) -> Texture2D:
+	if _cache.has(asset_id):
+		return _cache[asset_id]
+	var record: Dictionary = entry(asset_id)
+	if record.is_empty():
+		return null
+	var path := String(record.get("path", ""))
+	if not (ResourceLoader.exists(path) or FileAccess.file_exists(path)):
+		problems.append("file missing for %s: %s" % [asset_id, path])
+		return null
+	var loaded: Resource = load(path)
+	if not (loaded is Texture2D):
+		problems.append("%s is not a texture: %s" % [asset_id, path])
+		return null
+	_cache[asset_id] = loaded
+	return loaded
+
+
+## The stretch mode a category implies. Portraits are never cropped; a place may fill the frame.
+static func stretch_mode_for(category: String) -> TextureRect.StretchMode:
+	match category:
+		"characters/portraits", "social_encounters":
+			# Letterbox rather than crop: a face at the edge of a 3:4 portrait must not be lost to a
+			# widescreen frame.
+			return TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		"locations":
+			return TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		_:
+			return TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+
+
+## Point a TextureRect at an asset. Geometry is not decided here - see `godot/ui/image_layout.gd`.
+func apply_to(rect: TextureRect, asset_id: String) -> bool:
+	var record: Dictionary = entry(asset_id)
+	if record.is_empty():
+		return false
+	var loaded := texture_by_id(asset_id)
+	if loaded == null:
+		return false
+	rect.texture = loaded
+	rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	rect.stretch_mode = stretch_mode_for(String(record.get("category", "")))
+	return true
+
+
+func approved_count() -> int:
+	var count := 0
+	for asset_id in entries:
+		if bool(entries[asset_id].get("approved", false)):
+			count += 1
+	return count
