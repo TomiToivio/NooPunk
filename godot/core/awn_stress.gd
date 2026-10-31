@@ -65,6 +65,7 @@ func end_scene(wisdom: int, mental_target: int, save_roll: int = 0) -> Dictionar
 	var penalty := -2 * (failed_check_count + 1)
 	failed_check_count += 1
 	if save_roll < 1 or save_roll > 20:
+		failed_check_count -= 1
 		return {"status": "save_required", "penalty": penalty, "stress": stress}
 	var passed := save_roll + penalty >= mental_target
 	if passed:
