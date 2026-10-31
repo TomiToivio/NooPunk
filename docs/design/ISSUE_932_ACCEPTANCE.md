@@ -34,7 +34,7 @@ source, and the proprietary settings, adventures and creature material are out o
 | General abilities are a separate list; **Stability** is one of them | *General Abilities*, *Stability* | **confirmed** — and Stability is refused rather than merged (see §4.3) |
 | A clue costs a die roll or a spend to find | *Gathering Clues* | **refuted, as the proposal says** — "It is never dependent on a die roll" |
 | Spending points buys a **special benefit**, never the core clue | *Special Benefits*, *Core Clues* | **confirmed** — 1- and 2-point spends, benefits are advantages, and a core clue costs nothing |
-| Zero-point clues, inconspicuous clues, simple searches | *Gathering Clues* | **confirmed** — and the SRD adds an allocation rule the proposal omits (see §4.2) |
+| Inconspicuous clues, simple searches, passive clues | *Gathering Clues* | **confirmed** — and the SRD adds an allocation rule the proposal omits (§4.2). *Zero-point clue* is **not** an SRD term and is not used here |
 | Clue taxonomy: floating, leveraged (with prerequisite clues), pipe, restricted, timed result | *Scenario Structure* | **confirmed** — the SRD's own vocabulary, adopted as-is |
 | Stability is a full second psychological system | *Stability* | **confirmed** — which is exactly why it is refused rather than merged (see §4.3) |
 
@@ -88,9 +88,9 @@ play — approval is the author's (§6).
 | **I1** core clue never behind a roll or a spend | **implemented** | `discover()` has no roll parameter; `tests/test_investigation_layer.py` asserts no die/RNG in the path |
 | **I2** risky *actions* roll normally, and a failed action does not erase the lead | **implemented as the split**, the failure branch is author policy | `src/rules/investigation.py` (discovery vs action), G3 in the layer doc |
 | **I3** expertise tags as descriptors, never locks | **proposal only** | nothing in code; queued as **D59** |
-| **I4** extra discoveries, no investigative pool | **implemented as the refusal** — no `spend()`/`pool()` exists and a test asserts their absence | `Investigator`; the resource variant stays **G2** |
+| **I4** extra discoveries; pools only for benefits | **implemented twice, differently** — `Investigator` has no `spend()`/`pool()` and a test asserts their absence; the #935 overlay ships the SRD's pool, spent only on benefits and never on a clue | `src/rules/investigation.py` vs `mods/noopunk/gumshoe_investigation.gd`; which one is authoritative is **D61** |
 | **I5** evidence vs interpretation recorded separately | **implemented** | `Clue.fact` vs `Hypothesis`/`Stance`; `CaseGraph.validate` requires a mundane *and* an anomalous hypothesis |
-| **I6** clue types: passive, zero-point, core, floating, leveraged, pipe, restricted, timed | **partly implemented** — core/passive/terminal exist; floating, leveraged, pipe, restricted and timed are book vocabulary with no representation yet | `ClueKind`, `Scene.passive_clues`, `terminal:` scenes |
+| **I6** clue types: passive, core, floating, leveraged, pipe, restricted, timed | **partly implemented** — core/passive/terminal exist; the five SRD clue types have no representation yet | `ClueKind`, `Scene.passive_clues`, `terminal:` scenes |
 | **I7** CWN skills govern expertise; no GUMSHOE ratings | **implemented** | `Investigator.from_sheet` over the CWN skill list |
 | **I8** Stress instead of Stability; no clinical claims | **implemented** elsewhere | `mods/noopunk/stress.gd` + `data/rules/awn_stress.json` (#928) |
 | **I9** accept a plausible method not written in the scenario | **implemented** | `discover(..., alternative_method=True)` |
@@ -106,7 +106,7 @@ CWN rule.
 | # | Criterion | Position |
 | --- | --- | --- |
 | 1 | Agree CWN is unchanged and always primary | **met** — restated in the proposal's precedence order and enforced by the #897 lock |
-| 2 | Review the GUMSHOE summary against book pp. 8–34, 35–65, 66–77, 79–95 | **met by this record** (§1–§2): every load-bearing claim checked, three corrections recorded |
+| 2 | Review the GUMSHOE summary against the **GUMSHOE SRD (OGL)**: *Ratings and Pools*, *Investigative Abilities*, *General Abilities*, *Core Clues*, *Special Benefits*, *Inconspicuous Clues*, *Simple Searches*, *Clue Types*, *Scene Types* | **met by this record** (§1–§2): every load-bearing claim checked, three corrections recorded |
 | 3 | Approve or tweak the full crosswalk | **author decision** — completeness *verified* (§3); approval is queued as part of **D59** |
 | 4 | Agree expertise tags as optional descriptors | **author decision — D59** |
 | 5 | Agree core clues never hinge on a failed roll or a spend, while risky actions still use CWN | **met** — implemented and tested (I1, I2) |
@@ -135,7 +135,26 @@ Consequences, binding on anything derived from this issue:
   that sentence — goes where our own notice sits (`docs/rules/GUMSHOE_INVESTIGATION_LAYER.md` §0 carries it
   verbatim, as the licence requires).
 
-## 8. What this record does not do
+## 8. Two investigative implementations, and no ruling yet
+
+#704 built the discovery/interpretation split with **no** pool. #935 later shipped the SRD's
+**investigative pool** as an overlay. Both are on `main`, both are tested, and they disagree about the one
+thing a pool is for:
+
+| | `src/rules/investigation.py` (#704) | `mods/noopunk/gumshoe_investigation.gd` (#935) |
+| --- | --- | --- |
+| Pool | none — `NoPoolEconomyTest` asserts `spend()`/`pool()` do not exist | per-ability pool, restored at the start of the next investigation |
+| Rating gate | competence by **presence** (rank 0 counts) | **rating ≥ 1**, as the SRD says |
+| Spend buys | nothing — a benefit's price is a CWN cost (a check, a scene, a favour) | a **special benefit**, 1–2 points, never a clue |
+| General tests | CWN's own check | `delegate_to_cwn()` takes the CWN result and adds only the spend |
+| Abilities | the 19 CWN skills | sixteen SRD abilities, each mapped to a CWN skill |
+
+Neither is wrong in isolation: #704 answers "what does a CWN character need to run a case", #935 answers
+"what does the SRD's spend actually buy". They must not both be running in one scene. **D61** asks which is
+authoritative; until it is answered this record treats the *guarantee* (a core clue never depends on a roll
+or a spend) as settled, because both implementations keep it.
+
+## 9. What this record does not do
 
 It adds no rule, no case, no scenario, no Godot or Python change and no test — the issue forbids all of
 them, and #271 forbids prose guards. It does not approve the crosswalk, the tags or the institution

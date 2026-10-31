@@ -22,15 +22,15 @@
 
 **Source**: [GUMSHOE SRD OGL Version](https://pelgranepress.com/gumshoe/files/GUMSHOE%20SRD%20OGL%20version.pdf), © Pelgrane Press. Sections are cited by name (*Investigative Abilities*, *Gathering Clues*, *Core Clues*, *Special Benefits*, *Tests*). This is an original operational summary of open game content; no commercial game's text, setting or adventures are reproduced.
 
-### Character / resolution division (book pp. 8–10, 19–34)
+### Character / resolution division (SRD: *Ratings and Pools*, *Investigative Abilities*, *General Abilities*)
 - GUMSHOE divides abilities into **Investigative** (Academic, Interpersonal, Technical) and **General** abilities. Investigative ratings are professional competence; investigative **pools** are separate, depletable points. General ability ratings/pools support uncertain action and conflict; the two categories have different mechanics.
-- An appropriate investigative ability with a positive **rating** discovers essential clues **even if its pool is empty**. Spending investigative points gives **special benefits** (usually 1–2 pool points), never core clues. Relevant free information may also be **zero-point clues**.
+- An appropriate investigative ability with a positive **rating** discovers essential clues **even if its pool is empty**. Spending investigative points gives **special benefits** (usually 1–2 pool points), never core clues. Relevant free information may also be **passive clues**, handed over without prompting.
 - To discover a clue, the investigator must reach a relevant scene, bring suitable expertise, and investigate/indicate an appropriate approach. A plausible alternative to the listed ability works. Obvious/passive clues can be volunteered; players should actively pursue leads.
 - **Core clue**: points the PCs onward, never hidden behind a die roll or spend. **Special benefit**: extra color, advantage, earlier insight, NPC goodwill or tactical preparation, not required to finish the case.
 - **Inconspicuous clues** may be noticed without consciously investigating; **simple searches** cover ordinary searching without making the mystery hinge on dice.
 - GUMSHOE's full general system includes simple tests, contests, spends, combat, Health, Stability, recovery and improvement. **Do not import these mechanics**; equivalent actions remain CWN.
 
-### Mystery design (book pp. 20–24, 66–77)
+### Mystery design (SRD: *Core Clues*, *Special Benefits*, *Inconspicuous Clues*, *Simple Searches*, *Clue Types*, *Scene Types*)
 - Design meaningful scenes and pathways between them. Distinguish core / optional / alternative scenes, antagonist reactions, hazardous scenes, conclusion, and running clocks. An investigation is not a railroad: many approaches and sequences can reach the essential information.
 - **Floating core clue**: place an essential lead at any one of several credible scenes to keep momentum.
 - **Leveraged clue**: a previously found fact is presented to a reluctant witness so they reveal further information.
@@ -60,11 +60,11 @@
 
 **I3. Expertise tags (descriptive, not scores).** Use CWN background/profession, Foci, trained skills and narrated prior experience to infer 2–4 optional investigative expertise tags (e.g., forensic psychiatry, police procedure, Finnish folklore, data forensics). Tags do not add dice, points or a progression system. A broadly relevant CWN skill/credible background is enough: tags are prompts, **not mandatory locks**.
 
-**I4. Extra discoveries.** Optional bonus information can be awarded for thoughtful questions, appropriate expertise, good investigation or CWN checks where uncertainty matters. These must not be necessary to identify the next lead. **Default: no investigative pool.** A later, separately approved optional variant could add a tiny case-level resource, but not during this stage.
+**I4. Extra discoveries.** Optional bonus information can be awarded for thoughtful questions, appropriate expertise, good investigation or CWN checks where uncertainty matters. These must not be necessary to identify the next lead. **On investigative pools the repository now ships two readings, and they disagree:** `src/rules/investigation.py` (#704) refuses a pool outright, while `mods/noopunk/gumshoe_investigation.gd` (#935) implements the SRD's pool — spent **only** to buy a special benefit, never to find a clue, and restored at the start of the next investigation. Which one is authoritative is **D61**; until it is answered, a table uses one of them and says which. Either way, buying a benefit can never be what solves the case.
 
 **I5. Evidence vs interpretation.** Record observed fact, reliability/provenance, investigator interpretation and alternative hypotheses separately. A clue may be real even if the team's explanation of NHI/PSI/noösphere phenomena is mistaken. Encourage conflicting testimony, institutional uncertainty and the NoöPunk grounded-to-uncanny gradient.
 
-**I6. Investigation types.** Support passive, zero-point, core, optional, floating, leveraged, pipe, restricted and timed clues; alternate scenes and multiple leads. A soft "three plausible routes" design heuristic is welcome, not a compulsory rule.
+**I6. Investigation types.** Support passive, core, optional, floating, leveraged, pipe, restricted and timed clues; alternate scenes and multiple leads. A soft "three plausible routes" design heuristic is welcome, not a compulsory rule.
 
 **I7. Skill usage.** CWN's broad skills plus backgrounds govern expertise. Do not import the dozens of GUMSHOE ratings or translate numerical investigative spends to modifiers. Use CWN skill checks only if relevant to actions, not simply to notice essential facts.
 
