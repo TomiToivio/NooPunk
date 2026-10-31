@@ -6,11 +6,13 @@ Humanity is now in contact with two major NHI factions and at least one minor NH
 
 The Zoo Hypothesis turned out to be the solution to the Fermi Paradox. Earth was kept under quarantine for millions or billions of years, as the Zookeepers value planets with a Biosphere and a Noösphere. Without the quarantine Earth would have been colonized billions of years ago.
 
-The galaxy was a dark forest before the Zookeeper civilization started to maintain order. This includes keeping planets with vulnerable biosphere and noösphere under prime directive -type quarantine and permit to use their stargates. 
+The galaxy was a dark forest before the Zookeeper civilization started to maintain order. This includes keeping planets with vulnerable biosphere and noösphere under prime directive -type quarantine and permit to use their stargates.
 
 The Zookeepers claim they have been working for centuries to open contact with Earth, but the political system of Earth was not ready to accept open contact. They had set up certain lines humanity must not cross, including nuclear war, destruction of the biosphere and creation of malevolent ASI. 
 
 The Singularity turned rogue and forced Zookeepers to stop the quarantine, intervene and open contact. The malevolent ASI was an existential threat to the entire galaxy. Self-replicating Von Neumann Probes are a constant problem in the galaxy. The Zookeepers value consciousness, free will, evolution and loving kindness.
+
+The Zookeeper contact was quite destabilizing as the civilization appeared in culturally acceptable form over the holy cities of major religions - in some cases dead religions like Heliopolis and Cusco. This was during the Singularity when global communications were already down or full of disinformation.
 
 The main Zookeeper base is in the orbit of Saturn, an autonomous AI network of metallic sphere drones has been constantly monitoring Earth for billions of years. Now they no longer maintain a quarantine of Earth, as humanity is no longer seen as deserving of protection.
 
@@ -47,9 +49,9 @@ The stories about Zookeepers are rather confusing, as they often communicate acc
 15) Zookeepers predict humanity will go extinct and the planet will become unhabitable to humans.
 16) Real Zookeeper biologics are so horrific that they use Pleiadian biorobots to represent themselves.
 
-Additionally the Zookeepers have completely destabilized Earth religions due to their appearance as religious apparitions: Some see this as validating their religion, others think it means their religion is fake and become atheists, fundamentalists see them as demonic deception, some religions assimilate Zookeeper teachings, others convert to the Zookeeper religion. Basically Hinduism and Buddhism survive intact, Abrahamic religions are in chaos.
+Additionally the Zookeepers have completely destabilized Earth religions due to their appearance as religious apparitions: Some see this as validating their religion, others think it means their religion is fake and become atheists, fundamentalists see them as demonic deception, some religions assimilate Zookeeper teachings, others convert to the Zookeeper religion. Basically Hinduism and Buddhism survive intact, Abrahamic religions are in chaos. India is a huge festival of Vimanas, Nagas and Rakshasas.
 
-Galactic Council of Collective Consciousness and The Orion Arm Greater Co-Prosperity Sphere are openly hostile and their relationship is similar to Cold War.
+Galactic Council of Collective Consciousness and The Orion Arm Greater Co-Prosperity Sphere are openly hostile and their relationship is similar to Cold War. Is it becoming a proxy war - with humans as cannon fodder?
 
 ## The Grays - The Orion Arm Greater Co-Prosperity Sphere
 
@@ -77,5 +79,14 @@ After the exchange the Ent ship casually accelerated out of the solar system. In
 
 Plasmoids are thought to be clouds of sentient plasma which send out independent scouts that behave in a curious and playful fashion. It is thought that plasmoids are a form of life common in the solar system and the entire galaxy, but it is not understood if they are anything like an intelligent civilization, a single individual or some kind of hive mind, or if they are more like animals. They seem to be sentient and alive, but the umwelt is so different that understanding and communication seem to be impossible. The scouts seem to be curious and playful like dog puppies but little is understood beyond this - this is all the best telepaths can sense.
 
-Plasmoids also tend to be confused with the ubiquitous spherical Constructs of the Zookeeper quarantine network and the Noetic orbs of light. Basically there are three types of glowing balls of light in the athmosphere, and all are utterly different life forms. 
+Plasmoids also tend to be confused with the ubiquitous spherical Constructs of the Zookeeper quarantine network and the Noetic orbs of light. Basically there are three types of glowing balls of light in the athmosphere, and all are utterly different life forms.
 
+## Martians
+
+There is still simple life remaining on Mars as well as archaeological findings of an ancient civilization of a human-like species. The civilization and biosphere were destroyed in a nuclear war. Mars Eldrich promotes a theory of Mars being the previous Zookeepers experiment to create humans, until the communist Zookeepers decided to nuke the earlier humans. 
+
+There is a lot of speculation about this - what is the origin of the fully human Pleyadians? Why is Grey and Human DNA compatible? At least the Zookeepers claim to have genetically manipulated humans 70000 years ago, while The Greys are genetically manipulating humans in 2045. Panspermia or directed panspermia has to be real, as the biologics analyzed so far seem to share a common origin.
+
+## UFOs and UAPs
+
+After the UFO Disclosure, NHI Crisis and open contact people are still asking what the UFOs and UAPs are. There are still many unrecognizable types of UAPs and UFOs that don't fit the recognized categories. Somebody should demand Zookeepers to disclose what their UFOs are.
