@@ -1,0 +1,567 @@
+{
+  "format": "noopunk.mud.cwn_compliance",
+  "version": 1,
+  "issue": "https://github.com/TomiToivio/NooPunk/issues/950",
+  "srd_source": "https://cwn.quadrifons.com/",
+  "full_book_reference": "Cities Without Number, Deluxe edition (user-supplied PDF) — used only to mark what the linked SRD omits; no text is reproduced",
+  "generated_doc": "docs/rules/MUD_CWN_COMPLIANCE.md",
+  "coverage_vocabulary": {
+    "implemented": "a Python module owns the procedure and an automated test exercises it",
+    "partial": "a Python module covers part of the procedure; the missing part is named in `note`",
+    "godot-only": "the procedure exists only as GDScript; it is a migration target for the MUD",
+    "missing": "no implementation in either game",
+    "omitted-by-srd": "the linked SRD does not publish this section; the full book is the only source"
+  },
+  "rows": [
+    {
+      "id": "attributes",
+      "srd": "Character Creation / Attributes",
+      "srd_path": "/character-creation/attributes/",
+      "python": "src/rules/cwn_character.py",
+      "godot": "godot/core/cwn_character.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_character.py"
+      ],
+      "note": "3d6 in order or the fixed array; one optional 14; the two routes are exclusive."
+    },
+    {
+      "id": "skills",
+      "srd": "Character Creation / Skills",
+      "srd_path": "/character-creation/skills/",
+      "python": "src/rules/cwn_character.py",
+      "godot": "godot/core/cwn_character.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_character.py"
+      ],
+      "note": "The creation-time skill pool (0 then 1 then a second skill) — not the 19-skill list, which lives in data/rules/without_number.json."
+    },
+    {
+      "id": "backgrounds",
+      "srd": "Character Creation / Backgrounds",
+      "srd_path": "/character-creation/backgrounds/",
+      "python": "src/rules/cwn_backgrounds.py",
+      "godot": "godot/core/cwn_character.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_backgrounds.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "contacts",
+      "srd": "Character Creation / Contacts",
+      "srd_path": "/character-creation/contacts/",
+      "python": "src/rules/cwn_backgrounds.py",
+      "godot": "godot/core/cwn_contacts.gd",
+      "coverage": "partial",
+      "tests": [
+        "tests/test_cwn_backgrounds.py"
+      ],
+      "note": "Contacts exist as background output; the free-contact rolls and their maintenance are GDScript only."
+    },
+    {
+      "id": "edges",
+      "srd": "Character Creation / Edges",
+      "srd_path": "/character-creation/edges/",
+      "python": "src/rules/cwn_edges_foci.py",
+      "godot": "godot/core/cwn_foci.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_edges_foci.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "foci",
+      "srd": "Character Creation / Foci",
+      "srd_path": "/character-creation/foci/",
+      "python": "src/rules/cwn_foci.py",
+      "godot": "godot/core/cwn_foci.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_foci.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "focus-gear-budget",
+      "srd": "Character Creation / Focus Gear Budget",
+      "srd_path": "/character-creation/focus-gear-budget/",
+      "python": null,
+      "godot": "godot/core/cwn_foci.gd",
+      "coverage": "godot-only",
+      "tests": [
+        "godot/tests/test_cwn_sheet.gd"
+      ],
+      "note": "The per-focus starting gear allowance has no Python path yet; this is a first migration target."
+    },
+    {
+      "id": "final-steps",
+      "srd": "Character Creation / Final Steps",
+      "srd_path": "/character-creation/final-steps/",
+      "python": "src/rules/cwn_character.py",
+      "godot": "godot/core/cwn_character.gd",
+      "coverage": "partial",
+      "tests": [
+        "tests/test_cwn_character.py"
+      ],
+      "note": "Attribute/skill finalisation is implemented; the shopping and contact-writing steps are scenario work, not rules."
+    },
+    {
+      "id": "mission-time",
+      "srd": "Rules / Scenes, Rounds and Mission Time",
+      "srd_path": "/rules-of-the-game/scenes-rounds-mission-time/",
+      "python": null,
+      "godot": "godot/core/cwn_mission_time.gd",
+      "coverage": "godot-only",
+      "tests": [],
+      "note": "A MUD needs the same clock; port before the single-player campaign is scheduled."
+    },
+    {
+      "id": "saves",
+      "srd": "Rules / Saving Throws",
+      "srd_path": "/rules-of-the-game/saving-throws/",
+      "python": "src/rules/cwn_core.py",
+      "godot": "godot/core/cwn_combat_rules.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_core.py"
+      ],
+      "note": "Physical / Evasion / Mental / Luck, d20 against a target."
+    },
+    {
+      "id": "skill-checks",
+      "srd": "Rules / Skill Checks",
+      "srd_path": "/rules-of-the-game/skill-checks/",
+      "python": "src/rules/wn_core.py",
+      "godot": "godot/core/cwn_combat_rules.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_wn_core.py",
+        "tests/test_wn_core_contract.py"
+      ],
+      "note": "2d6 + attribute modifier + skill; the ONE resolution the MUD calls (mud/world/cwn.py)."
+    },
+    {
+      "id": "combat-sequence",
+      "srd": "Combat / The Combat Sequence",
+      "srd_path": "/rules-of-the-game/combat/combat-sequence",
+      "python": "src/rules/cwn_combat.py",
+      "godot": "godot/core/combat.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_combat.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "initiative",
+      "srd": "Combat / Combat Initiative",
+      "srd_path": "/rules-of-the-game/combat/combat-initiative/",
+      "python": "src/rules/cwn_combat.py",
+      "godot": "godot/core/combat.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_combat.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "combat-actions",
+      "srd": "Combat / Combat Actions",
+      "srd_path": "/rules-of-the-game/combat/combat-actions/",
+      "python": "src/rules/cwn_combat_actions.py",
+      "godot": "godot/core/cwn_combat_actions.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_combat_actions.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "attacks",
+      "srd": "Combat / Attacks in Combat",
+      "srd_path": "/rules-of-the-game/combat/attacks-in-combat/",
+      "python": "src/rules/cwn_core.py",
+      "godot": "godot/core/cwn_combat_rules.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_core.py",
+        "tests/test_cwn_attack_modifiers.py"
+      ],
+      "note": "Attack roll, hit, and the modifiers table."
+    },
+    {
+      "id": "damage-trauma-shock",
+      "srd": "Combat / Damage, Trauma and Shock",
+      "srd_path": "/rules-of-the-game/combat/damage-trauma-shock/",
+      "python": "src/rules/cwn_trauma.py",
+      "godot": "godot/core/cwn_combat_rules.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_trauma.py",
+        "tests/test_cwn_core.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "special-maneuvers",
+      "srd": "Combat / Special Combat Maneuvers",
+      "srd_path": "/rules-of-the-game/combat/special-combat-maneuvers/",
+      "python": "src/rules/cwn_combat.py",
+      "godot": "godot/core/cwn_combat_actions.gd",
+      "coverage": "partial",
+      "tests": [
+        "tests/test_cwn_combat.py"
+      ],
+      "note": "Maneuver resolution exists; the full maneuver list is data the MUD has not yet needed."
+    },
+    {
+      "id": "vehicle-combat",
+      "srd": "Combat / Vehicle Combat",
+      "srd_path": "/rules-of-the-game/combat/vehicle-combat/",
+      "python": "src/rules/cwn_vehicles.py",
+      "godot": "godot/core/cwn_srd_vehicles.gd",
+      "coverage": "partial",
+      "tests": [
+        "tests/test_cwn_vehicles.py"
+      ],
+      "note": "Vehicle statistics and attacks; the chase procedure is the remaining piece."
+    },
+    {
+      "id": "injury-healing-strain",
+      "srd": "Rules / Injury, Healing and System Strain",
+      "srd_path": "/rules-of-the-game/injury-healing-system-strain",
+      "python": "src/rules/cwn_injury_procedure.py",
+      "godot": "godot/core/cwn_injury.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_injury_procedure.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "mortal-injury",
+      "srd": "Injury / Mortal Injury and Stabilization",
+      "srd_path": "/rules-of-the-game/injury-healing-system-strain/mortal-injury-stabilization/",
+      "python": "src/rules/cwn_major_injury.py",
+      "godot": "godot/core/cwn_injury.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_major_injury.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "system-strain",
+      "srd": "Injury / System Strain",
+      "srd_path": "/rules-of-the-game/injury-healing-system-strain/system-strain/",
+      "python": "src/rules/cwn_strain.py",
+      "godot": "godot/core/cwn_strain.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_strain.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "healing-poisons",
+      "srd": "Injury / Natural Healing, First Aid and Poisons",
+      "srd_path": "/rules-of-the-game/injury-healing-system-strain/natural-healing-first-aid-poisons/",
+      "python": "src/rules/cwn_healing.py",
+      "godot": "godot/core/cwn_healing.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_healing.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "major-injuries",
+      "srd": "Injury / Major Injuries",
+      "srd_path": "/rules-of-the-game/injury-healing-system-strain/major-injuries/",
+      "python": "src/rules/cwn_major_injury.py",
+      "godot": "godot/core/cwn_injury.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_major_injury.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "chases",
+      "srd": "Rules / Chases and Pursuit",
+      "srd_path": "/rules-of-the-game/chases-and-pursuit/",
+      "python": "src/rules/cwn_vehicles.py",
+      "godot": "godot/core/cwn_chases.gd",
+      "coverage": "godot-only",
+      "tests": [
+        "godot/tests/test_cwn_vehicles.gd"
+      ],
+      "note": "The Python module has chase-related vehicle data; the pursuit round structure is GDScript only."
+    },
+    {
+      "id": "advancement",
+      "srd": "Rules / Character Advancement",
+      "srd_path": "/rules-of-the-game/character-advancement/",
+      "python": "src/rules/cwn_advancement.py",
+      "godot": "godot/core/cwn_progression.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_advancement.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "crafting",
+      "srd": "Rules / Crafting and Modifying Gear",
+      "srd_path": "/rules-of-the-game/crafting-modifying-gear/",
+      "python": "src/rules/cwn_gear_mods.py",
+      "godot": "godot/core/cwn_gear_mods.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_gear_mods.py"
+      ],
+      "note": "Crafting, modifying, maintaining and factory mods."
+    },
+    {
+      "id": "encumbrance",
+      "srd": "Rules / Encumbrance",
+      "srd_path": "/rules-of-the-game/encumbrance/",
+      "python": "src/rules/cwn_encumbrance.py",
+      "godot": "godot/core/cwn_encumbrance.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_encumbrance.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "mission-gear",
+      "srd": "Gear / Mission Gear",
+      "srd_path": "/gear-vehicles-cyberware/mission-gear/",
+      "python": "src/rules/cwn_equipment.py",
+      "godot": "godot/core/cwn_catalogue.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_equipment.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "lifestyles-wages-bribes",
+      "srd": "Gear / Lifestyles, Wages and Bribes",
+      "srd_path": "/gear-vehicles-cyberware/lifestyles-wages-and-bribes/",
+      "python": "src/rules/cwn_core.py",
+      "godot": "godot/core/cwn_lifestyles.gd, godot/core/cwn_wages.gd",
+      "coverage": "partial",
+      "tests": [
+        "godot/tests/test_cwn_lifestyles.gd",
+        "godot/tests/test_cwn_wages.gd"
+      ],
+      "note": "Lifestyle costs are referenced in Python; the wages and bribe tables are GDScript only. Migration target."
+    },
+    {
+      "id": "armor",
+      "srd": "Gear / Armor",
+      "srd_path": "/gear-vehicles-cyberware/armor/",
+      "python": "src/rules/cwn_equipment.py",
+      "godot": "godot/core/cwn_catalogue.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_equipment.py"
+      ],
+      "note": "Armour types, accessories and mods; encumbrance interaction in cwn_encumbrance."
+    },
+    {
+      "id": "weapons",
+      "srd": "Gear / Weapons",
+      "srd_path": "/gear-vehicles-cyberware/weapons/",
+      "python": "src/rules/cwn_equipment.py",
+      "godot": "godot/core/cwn_catalogue.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_equipment.py"
+      ],
+      "note": "Firearms, melee, heavy weapons, mods and damage profiles."
+    },
+    {
+      "id": "pharmaceuticals",
+      "srd": "Gear / Pharmaceuticals and Street Drugs",
+      "srd_path": "/gear-vehicles-cyberware/pharmaceuticals-street-drugs/",
+      "python": null,
+      "godot": "godot/core/cwn_drugs.gd",
+      "coverage": "godot-only",
+      "tests": [
+        "godot/tests/test_cwn_drugs.gd"
+      ],
+      "note": "A data table plus effect procedures; the MUD needs it for any medical scene."
+    },
+    {
+      "id": "cyberware-install",
+      "srd": "Gear / Cyberware (installation, complications, tools, removal, concealing, maintenance)",
+      "srd_path": "/gear-vehicles-cyberware/cyberware/",
+      "python": "src/rules/cwn_core.py",
+      "godot": "godot/core/cwn_cyberware.gd, godot/core/cwn_cyberware_ops.gd",
+      "coverage": "partial",
+      "tests": [
+        "tests/test_cwn_core.py",
+        "godot/tests/test_cwn_cyberware.gd"
+      ],
+      "note": "Installation terms, surgery and maintenance minutes are in Python; the complication table and cyberdoc tools are GDScript only."
+    },
+    {
+      "id": "skillplugs",
+      "srd": "Gear / Cyberware / Skillplugs",
+      "srd_path": "/gear-vehicles-cyberware/cyberware/skillplugs/",
+      "python": null,
+      "godot": null,
+      "coverage": "missing",
+      "tests": [],
+      "note": "No implementation anywhere. Small and self-contained: a good first MUD-era port."
+    },
+    {
+      "id": "cyberware-mods-systems",
+      "srd": "Gear / Cyberware Mods and Systems",
+      "srd_path": "/gear-vehicles-cyberware/cyberware/cyberware-systems/",
+      "python": null,
+      "godot": "godot/core/cwn_cyberware.gd",
+      "coverage": "godot-only",
+      "tests": [
+        "godot/tests/test_cwn_cyberware.gd"
+      ],
+      "note": "Body/head/skin/limb/sensory/medical/nerve systems are catalogue data plus effect procedures."
+    },
+    {
+      "id": "cyberware-alienation",
+      "srd": "Gear / Cyberware Alienation",
+      "srd_path": "/gear-vehicles-cyberware/cyberware/cyberware-alienation/",
+      "python": null,
+      "godot": "godot/core/cwn_alienation.gd",
+      "coverage": "godot-only",
+      "tests": [
+        "godot/tests/test_cwn_alienation.gd"
+      ],
+      "note": "The clearest migration gap: a full subsystem with tests on the Godot side and nothing in Python."
+    },
+    {
+      "id": "cyberdecks",
+      "srd": "Gear / Cyberdecks",
+      "srd_path": "/gear-vehicles-cyberware/cyberdecks/",
+      "python": "src/rules/cwn_hacking.py",
+      "godot": "godot/core/cwn_catalogue.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_hacking.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "drones",
+      "srd": "Gear / Drones",
+      "srd_path": "/gear-vehicles-cyberware/drones/",
+      "python": "src/rules/cwn_drones.py",
+      "godot": "godot/core/cwn_drones.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_drones.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "vehicles",
+      "srd": "Gear / Vehicles",
+      "srd_path": "/gear-vehicles-cyberware/vehicles/",
+      "python": "src/rules/cwn_vehicles.py",
+      "godot": "godot/core/cwn_vehicles.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_vehicles.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "cyberspace-basics",
+      "srd": "Hacking / Cyberspace Basics",
+      "srd_path": "/hacking/cyberspace-basics/",
+      "python": "src/rules/cwn_hacking.py",
+      "godot": "godot/core/cwn_hacking.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_hacking.py"
+      ],
+      "note": "Access pools and security difficulty; see also D55 (the access model is an open author question)."
+    },
+    {
+      "id": "programs",
+      "srd": "Hacking / Programs: acquiring, writing, verbs, subjects",
+      "srd_path": "/hacking/programs/",
+      "python": "src/rules/cwn_program_catalogue.py",
+      "godot": "godot/core/cwn_programs.gd, godot/core/cwn_program_rules.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_program_catalogue.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "hacking-mechanics",
+      "srd": "Hacking / Hacking Mechanics",
+      "srd_path": "/hacking/hacking-mechanics/",
+      "python": "src/rules/cwn_hacking.py",
+      "godot": "godot/core/cwn_hacking.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_hacking.py"
+      ],
+      "note": "Includes the Trace clock (AlertClock)."
+    },
+    {
+      "id": "cyberspace-actions",
+      "srd": "Hacking / Cyberspace Actions",
+      "srd_path": "/hacking/cyberspace-actions/",
+      "python": "src/rules/cwn_hacking.py",
+      "godot": "godot/core/cwn_hacking.gd",
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_hacking.py"
+      ],
+      "note": ""
+    },
+    {
+      "id": "demons-watchdogs",
+      "srd": "Hacking / Demons and Watchdogs",
+      "srd_path": "/hacking/demons-watchdogs/",
+      "python": "src/rules/cwn_hacking.py",
+      "godot": "godot/core/cwn_demons.gd",
+      "coverage": "partial",
+      "tests": [
+        "tests/test_cwn_hacking.py"
+      ],
+      "note": "Opposition is modelled; the demon catalogues are GDScript data."
+    },
+    {
+      "id": "antagonists",
+      "srd": "Antagonists and NPCs",
+      "srd_path": null,
+      "python": null,
+      "godot": null,
+      "coverage": "omitted-by-srd",
+      "tests": [],
+      "note": "The linked SRD states it omits this section. Coverage of the full book is therefore NOT claimed anywhere in this matrix; the Deluxe PDF is the only source and is not open content."
+    },
+    {
+      "id": "optional-rules",
+      "srd": "Optional rules",
+      "srd_path": null,
+      "python": null,
+      "godot": null,
+      "coverage": "omitted-by-srd",
+      "tests": [],
+      "note": "Same limitation, stated by the SRD itself. Any later row claiming an optional rule must cite the full book, not the SRD."
+    }
+  ],
+  "mud_entry_point": "mud/nopunk_mud/cwn_core.py (the MUD-facing wrapper; it calls src/rules, it does not replace it)"
+}
