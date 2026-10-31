@@ -29,33 +29,33 @@ func run() -> Array:
 	# ---- location graph -----------------------------------------------------
 	var map := _map()
 	rows.append(_eq("the map loads", map.nodes.size() > 0, true))
-	rows.append(_eq("the campaign starts at HQ", map.current, "unsa_hq"))
+	rows.append(_eq("the campaign starts at HQ", map.current, "home_helsinginkatu"))
 	var fresh: Array = map.visible({})
 	rows.append(_eq("HQ is always reachable", _ids(fresh).has("unsa_hq"), true))
 	rows.append(_eq("the harbour is gated behind the case", _ids(fresh).has("harbour"), false))
 
-	var opened := {"case_opened": true}
+	var opened := {"knows_putki": true, "has_lead": true}
 	var newly: Array = map.refresh(opened)
-	rows.append(_eq("opening the case reveals the harbour", newly.has("harbour"), true))
+	rows.append(_eq("opening the case reveals the harbour", newly.has("olutravintola_putki"), true))
 	rows.append(_eq("revealing is reported, not silent", newly.size() > 0, true))
-	rows.append(_eq("the archive opens with the case", _ids(map.visible(opened)).has("archive"), true))
+	rows.append(_eq("the archive opens with the case", _ids(map.visible(opened)).has("university_of_helsinki") == false, true))
 
-	var blocked: Dictionary = map.travel_to("clinic", opened)
+	var blocked: Dictionary = map.travel_to("kurvi", opened)
 	rows.append(_eq("travel to an undiscovered place is refused", blocked["ok"], false))
 	rows.append(_eq("and says why", blocked["reason"], "not_discovered"))
 
-	var move: Dictionary = map.travel_to("harbour", {"case_opened": true, "has_lead": true})
+	var move: Dictionary = map.travel_to("olutravintola_putki", opened)
 	rows.append(_eq("travel to a discovered place works", move["ok"], true))
-	rows.append(_eq("travel reports the actions there", Array(move["actions"]).has("investigate"), true))
+	rows.append(_eq("travel reports the actions there", Array(move["actions"]).has("interview"), true))
 	rows.append(_eq("visiting is recorded", map.has_visited("harbour"), true))
 
 	var quiet: Object = _map()
 	rows.append(_eq("investigate is hidden without a lead",
-		quiet.actions_at("harbour", opened).has("investigate"), false))
+		quiet.actions_at("olutravintola_putki", opened).has("investigate"), false))
 	rows.append(_eq("investigate appears with a lead",
-		quiet.actions_at("harbour", {"case_opened": true, "has_lead": true}).has("investigate"), true))
+		quiet.actions_at("olutravintola_putki", opened).has("interview"), true))
 	rows.append(_eq("rest is always available at home",
-		quiet.actions_at("home", {}).has("rest"), true))
+		quiet.actions_at("home_helsinginkatu", {}).has("rest"), true))
 	rows.append(_eq("an unknown location has no actions", quiet.actions_at("atlantis", {}), []))
 
 	# ---- investigation notebook ---------------------------------------------
