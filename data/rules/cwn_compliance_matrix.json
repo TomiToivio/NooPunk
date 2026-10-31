@@ -162,13 +162,16 @@
         "src/rules/cwn_combat_actions.py",
         "src/rules/cwn_core.py"
       ],
-      "mud": [],
+      "mud": [
+        "mud/nopunk_mud/cwn/__init__.py",
+        "mud/nopunk_mud/campaign/engine.py"
+      ],
       "coverage": "partial",
       "tests": [
-        "tests/test_cwn_combat.py",
-        "tests/test_cwn_combat_actions.py"
+        "tests/test_solo_campaign_950.py",
+        "tests/test_cwn_combat.py"
       ],
-      "divergence": "Resolution exists on both sides; no Evennia combat command or turn loop yet.",
+      "divergence": "Attack and damage now live in the MUD core and are exercised by the solo campaign; initiative, action economy and an Evennia command loop are not built.",
       "tabletop": "docs/rulebook_segments/04_CORE_REFERENCE.md"
     },
     {

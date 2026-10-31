@@ -129,3 +129,21 @@ python -m pytest tests -q
 ## Integration work still required
 
 The separate Evennia command-and-room scaffold exists under `mud/server/`, `mud/commands/`, `mud/typeclasses/` and `mud/world/` (PR #948), but has **not been smoke-tested on a live Evennia server**. The platform-neutral `nopunk_mud` core added here is not yet wired to those Evennia handlers. Provider-backed Concordia-style GM/NPCs, an authoritative Mesa reconciliation loop and multiplayer integration tests remain future work. Do not claim the two layers are already connected.
+
+## Play the solo case (#950)
+
+```bash
+cd mud
+python -m nopunk_mud.cli --campaign
+```
+
+A deterministic, single-player UNSA case: four places, two colleagues, one fight, three endings. No LLM, no
+Mesa, no Evennia, no other players, no network. A scripted run for CI:
+
+```bash
+python -m nopunk_mud.cli --campaign --script "go street,go university,examine terminal,go street,go kurvi,talk witness,ask witness badge,examine woman,go street,go safehouse,report"
+```
+
+The engine (`nopunk_mud/campaign/`) owns the state and validates every command; the content
+(`nopunk_mud/campaign/content.py`) is data. Core clues are never behind a roll — the case cannot stop because
+of a die — and optional clues cost a check.
