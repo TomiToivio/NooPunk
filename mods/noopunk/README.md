@@ -14,7 +14,11 @@ game; they do not resolve it.
    missing.
 
 `tests/test_foundational_lock_897.py` enforces rule 1 and the folder's existence; the overlay's own tests
-cover its behaviour.
+cover its behaviour (`godot/tests/test_noopunk_psyche.gd`, `godot/tests/test_noopunk_investigation.gd`).
+
+**Where a rule already has a home, the overlay does not repeat it.** GUMSHOE discovery is implemented
+once, in `godot/core/investigation_adapter.gd` (#718) and `src/rules/investigation.py`; the investigation
+overlay carries only what those do not — interpretation, which stays the player's act.
 
 ## What lives here
 
@@ -23,7 +27,7 @@ cover its behaviour.
 | `psyche.gd` | Noösphere exposure, Psyche tiers, recovery, active-PSI gate | implemented |
 | *ideology* | Laclau-style identification, faction drift, antagonism | design only — needs a rule reference and tests before code |
 | *obligations* | contact trust, debts, institutional standing | design only |
-| *investigation* | clue-forward framing: essential clues are never gated behind one roll | design only |
+| `investigation.gd` | clue-forward framing: the system names evidence, the player decides | implemented (interpretation; discovery stays in `godot/core/investigation_adapter.gd`, #718) |
 
 A new overlay is accepted when it has: a rule reference, examples, tests, and a flag that turns it off.
 "Needs a mechanic" is not enough — the matrix in `docs/design/CORE_VS_MOD_MATRIX_897.md` gets the row
