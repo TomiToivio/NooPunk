@@ -73,7 +73,7 @@ func _ready() -> void:
 		var clues: Dictionary = parsed if parsed is Dictionary else {}
 		screen.setup(map_script.from_data(map_script.load_data()),
 			book_script.from_data(clues),
-			{"case_opened": true, "has_lead": true})
+			{})
 		get_tree().root.add_child(screen)
 		get_tree().current_scene = screen)
 	stack.add_child(locations_button)

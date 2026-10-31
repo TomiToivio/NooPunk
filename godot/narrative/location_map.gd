@@ -40,6 +40,32 @@ static func from_data(data: Dictionary) -> NoopunkLocationMap:
 	return map
 
 
+## Serialized map progress. The node definitions are not saved: they remain canonical in JSON.
+func to_dict() -> Dictionary:
+	return {"current": current, "visited": visited.duplicate(), "revealed": revealed.duplicate()}
+
+
+## Reject corrupt or spoiler-leaking save states, keeping known locations only.
+func from_dict(state: Dictionary) -> bool:
+	var destination := String(state.get("current", ""))
+	if not nodes.has(destination):
+		return false
+	var loaded_revealed: Array = []
+	for value in Array(state.get("revealed", [])):
+		if nodes.has(String(value)) and not loaded_revealed.has(String(value)):
+			loaded_revealed.append(String(value))
+	if not loaded_revealed.has(destination):
+		return false
+	var loaded_visited: Array = []
+	for value in Array(state.get("visited", [])):
+		if loaded_revealed.has(String(value)) and not loaded_visited.has(String(value)):
+			loaded_visited.append(String(value))
+	current = destination
+	revealed = loaded_revealed
+	visited = loaded_visited
+	return true
+
+
 ## A node is available when every flag it requires is true. Empty requirement means always available.
 static func requirements_met(node: Dictionary, flags: Dictionary) -> bool:
 	for flag in Array(node.get("requires", [])):
@@ -75,7 +101,7 @@ func visible(flags: Dictionary) -> Array:
 
 ## Actions offered at a location. `rest` and `recover` are gated by nothing; `travel` is always last.
 func actions_at(node_id: String, flags: Dictionary) -> Array:
-	if not nodes.has(node_id):
+	if not nodes.has(node_id) or not revealed.has(node_id):
 		return []
 	var node: Dictionary = nodes[node_id]
 	var out: Array = []

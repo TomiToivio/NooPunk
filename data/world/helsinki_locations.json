@@ -1,70 +1,124 @@
 {
-  "$comment": "Helsinki location graph for the narrative campaign (#897 §4). Data only: no prose beyond what a menu needs, no quest text. Every node is discoverable through play; nothing is hardcoded in the UI. Locations are fictional; real Helsinki geography is used as texture, not as a claim about actual institutions.",
-  "version": 1,
-  "start": "unsa_hq",
+  "$comment": "#913 canonical opening Helsinki location graph. Only Home and Ratakatu HQ are initially visible. Explicit story knowledge flags reveal all other places; no speculative buildings in map art. Fictional establishments and agency jurisdiction.",
+  "version": 2,
+  "start": "home_helsinginkatu",
   "nodes": [
     {
-      "id": "unsa_hq",
-      "name": "UNSA Helsinki HQ",
-      "district": "Kruununhaka",
-      "actions": ["briefing", "case_board", "requisition", "travel"],
+      "id": "home_helsinginkatu",
+      "name": "Home · Helsinginkatu",
+      "district": "Sörnäinen / Kallio",
+      "description": "Yesterday you moved into a modest UNSA-provided flat on Helsinginkatu. Unpacked boxes, passing trams, cheap bars and an uneasy meeting of old working-class and new bohemian Helsinki.",
+      "map_position": [
+        0.69,
+        0.31
+      ],
+      "illustration": "",
+      "actions": [
+        "inspect_apartment",
+        "rest",
+        "check_messages",
+        "travel"
+      ],
       "requires": [],
-      "reveals": ["home", "market_hall", "harbour"]
-    },
-    {
-      "id": "home",
-      "name": "Your flat",
-      "district": "Kallio",
-      "actions": ["rest", "journal", "recover", "travel"],
-      "requires": [],
-      "reveals": ["night_bar"]
-    },
-    {
-      "id": "market_hall",
-      "name": "Old Market Hall",
-      "district": "Eteläsatama",
-      "actions": ["interview", "buy", "travel"],
-      "requires": [],
-      "reveals": ["harbour"]
-    },
-    {
-      "id": "harbour",
-      "name": "West Harbour",
-      "district": "Jätkäsaari",
-      "actions": ["investigate", "interview", "travel"],
-      "requires": ["case_opened"],
-      "reveals": ["container_yard"]
-    },
-    {
-      "id": "night_bar",
-      "name": "Bar Valo",
-      "district": "Kallio",
-      "actions": ["interview", "recruit", "travel"],
-      "requires": ["met_informant"],
-      "reveals": ["archive"]
-    },
-    {
-      "id": "archive",
-      "name": "City Archive Annexe",
-      "district": "Vallila",
-      "actions": ["investigate", "access_terminal", "travel"],
-      "requires": ["case_opened"],
-      "reveals": ["clinic"]
-    },
-    {
-      "id": "clinic",
-      "name": "Night Clinic",
-      "district": "Sörnäinen",
-      "actions": ["recover", "interview", "travel"],
-      "requires": ["injury_known"],
       "reveals": []
     },
     {
-      "id": "container_yard",
-      "name": "Container Yard",
-      "district": "Jätkäsaari",
-      "actions": ["investigate", "access_terminal", "confront", "travel"],
-      "requires": ["manifest_read"],
+      "id": "unsa_hq_ratakatu",
+      "name": "UNSA Helsinki Field Office · Ratakatu",
+      "district": "Punavuori",
+      "description": "Former Suojelupoliisi office. Above ground: bland, friendly Nordic UNSA branding and bewildering Supo/Europol/UNSA badge jurisdictions. Rookies alone must wear the absurd new uniform.",
+      "map_position": [
+        0.38,
+        0.76
+      ],
+      "illustration": "",
+      "actions": [
+        "reception",
+        "rookie_welcome",
+        "briefing",
+        "case_board",
+        "travel"
+      ],
+      "requires": [],
+      "reveals": []
+    },
+    {
+      "id": "olutravintola_putki",
+      "name": "Olutravintola Putki",
+      "district": "University area",
+      "description": "Romppainen's beloved academic and underground bar. Students, intellectuals, anarchists, migrants and artists trade ideas, gossip and leads.",
+      "map_position": [
+        0.51,
+        0.49
+      ],
+      "illustration": "",
+      "actions": [
+        "interview",
+        "listen",
+        "travel"
+      ],
+      "requires": [
+        "knows_putki"
+      ],
+      "reveals": []
+    },
+    {
+      "id": "university_of_helsinki",
+      "name": "University of Helsinki",
+      "district": "Kluuvi",
+      "description": "An ordinary Helsinki university, useful for scholarly contacts, expert interviews, archives and investigation.",
+      "map_position": [
+        0.52,
+        0.54
+      ],
+      "illustration": "",
+      "actions": [
+        "research",
+        "interview",
+        "travel"
+      ],
+      "requires": [
+        "knows_university"
+      ],
+      "reveals": []
+    },
+    {
+      "id": "kurvi",
+      "name": "Kurvi",
+      "district": "Sörnäinen",
+      "description": "Bohemian crossroads of trams, nightlife, working-class memory and changing Helsinki street culture.",
+      "map_position": [
+        0.73,
+        0.23
+      ],
+      "illustration": "",
+      "actions": [
+        "explore",
+        "interview",
+        "travel"
+      ],
+      "requires": [
+        "knows_kurvi"
+      ],
+      "reveals": []
+    },
+    {
+      "id": "unsa_underground",
+      "name": "Ö-Mappi underground complex",
+      "district": "Classified",
+      "description": "Hidden UNSA/Supo installation with subterranean institutional layers dating back to circa 1920.",
+      "map_position": [
+        0.39,
+        0.78
+      ],
+      "illustration": "",
+      "actions": [
+        "investigate",
+        "travel"
+      ],
+      "requires": [
+        "underground_clearance"
+      ],
       "reveals": []
     }
   ]

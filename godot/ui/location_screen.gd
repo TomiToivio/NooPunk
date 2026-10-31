@@ -24,6 +24,7 @@ var _travel: VBoxContainer
 var _log: RichTextLabel
 var _clues: Label
 var _status: Label
+var _description: Label
 
 
 func setup(location_map: Object, notebook: Object, campaign_flags: Dictionary = {}) -> void:
@@ -69,7 +70,13 @@ func _build() -> void:
 	add_child(_status)
 
 	_actions = VBoxContainer.new()
-	_actions.position = Vector2(24, 120)
+	_description = Label.new()
+	_description.position = Vector2(24, 112)
+	_description.custom_minimum_size = Vector2(320, 110)
+	_description.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	add_child(_description)
+
+	_actions.position = Vector2(24, 238)
 	_actions.custom_minimum_size = Vector2(320, 200)
 	add_child(_actions)
 
@@ -85,7 +92,7 @@ func _build() -> void:
 	add_child(_clues)
 
 	_log = RichTextLabel.new()
-	_log.position = Vector2(24, 400)
+	_log.position = Vector2(24, 480)
 	_log.custom_minimum_size = Vector2(660, 140)
 	_log.bbcode_enabled = false
 	_log.scroll_active = true
@@ -98,6 +105,7 @@ func _refresh() -> void:
 	var node: Dictionary = map.nodes.get(map.current, {})
 	_title.text = String(node.get("name", "unknown place"))
 	_district.text = String(node.get("district", ""))
+	_description.text = String(node.get("description", ""))
 	_status.text = "visited %d · clues %d" % [map.visited.size(), book.count() if book else 0]
 	_clues.text = "leads: " + (", ".join(book.open_leads()) if book and book.open_leads().size() > 0
 		else "none")
@@ -119,6 +127,7 @@ func _refresh() -> void:
 	var heading := Label.new()
 	heading.text = "Travel"
 	_travel.add_child(heading)
+	# Undiscovered nodes are not instantiated at all. Even greyed-out labels would spoil the story.
 	for place in map.visible(flags):
 		var button := Button.new()
 		button.text = "%s (%s)" % [String(place.get("name", "")), String(place.get("district", ""))]
@@ -140,6 +149,28 @@ func _on_action(action: String) -> void:
 	# The screen does not invent outcomes. An action either has a model behind it or it is a placeholder,
 	# and placeholders say so rather than pretending something happened.
 	match action:
+		"inspect_apartment":
+			_append("You moved into this UNSA flat yesterday. Half-unpacked boxes; Helsinginkatu murmurs outside.")
+		"check_messages":
+			_append("The welcome packet contains three incompatible agency letterheads.")
+		"reception":
+			_append("A friendly clerk asks whether your badge is Supo, Europol or UNSA. Nobody agrees which form applies.")
+		"rookie_welcome":
+			_append("Romppainen's eyes twinkle: only the rookie wears that spectacular new UNSA uniform.")
+			flags["met_romppainen"] = true
+			flags["knows_putki"] = true
+		"briefing":
+			_append("The case points toward researchers at the University of Helsinki.")
+			flags["knows_university"] = true
+			flags["knows_kurvi"] = true
+		"case_board":
+			_append("Romppainen recommends his regular, Olutravintola Putki, near the university.")
+			flags["knows_putki"] = true
+		"journal":
+			_append("The notebook awaits your first Helsinki investigation.")
+		"explore":
+			_append("A local contact mentions Kurvi, the bohemian crossroads up the street.")
+			flags["knows_kurvi"] = true
 		"investigate":
 			_append("investigation: pick a lead in the notebook (not yet wired to a scene)")
 		"interview":
