@@ -78,6 +78,13 @@ func _ready() -> void:
 		get_tree().current_scene = screen)
 	stack.add_child(locations_button)
 
+	# #928: the optional AWN Stress ledger, an overlay on the CWN core.
+	var stress_button := Button.new()
+	stress_button.text = "CWN — stress ledger (optional AWN module)"
+	stress_button.pressed.connect(func() -> void:
+		get_tree().change_scene_to_file("res://scenes/stress_screen.tscn"))
+	stack.add_child(stress_button)
+
 	var images_button := Button.new()
 	images_button.text = "Images — portrait and encounter layouts"
 	images_button.pressed.connect(func() -> void:

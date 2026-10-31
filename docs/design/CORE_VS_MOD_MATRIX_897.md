@@ -68,16 +68,17 @@ CWN remains primary wherever the two overlap. A procedure that exists in CWN is 
 
 ## D. NoöPunk optional modules
 
-**None of these are implemented.** They are design-stage overlays with no code, listed so they are not
+Two rows are implemented; the rest are design-stage overlays with no code, listed so they are not
 mistaken for core rules, and so nothing invents them accidentally.
 
 | Module | Purpose | Core interaction | Status |
 | --- | --- | --- | --- |
-| Noösphere / ontological shock / Psyche | exposure, perception, instability, resilience, awakening, recovery | reads core state; adds narrative consequences, not real-world psychiatric claims | design only |
+| Noösphere / ontological shock / Psyche | exposure, perception, instability, resilience, awakening, recovery | reads core state; adds narrative consequences, not real-world psychiatric claims | **implemented** — `mods/noopunk/psyche.gd`, `godot/tests/test_noopunk_psyche.gd` |
 | Ideology and factions | Laclau-inspired identification, shifting alliances, antagonisms, faction standing | reads social state; must not predetermine the player's ideology | design only |
 | Relationships, reputation, contacts | NPC trust, obligations, social capital, institutional standing | reads `cwn_contacts.gd`; adds standing, does not replace reaction rolls | design only |
 | Investigative mode | clue discovery and synthesis, contradictions, lead progression | borrows GUMSHOE's *never block an essential clue behind one failed roll* as an **optional** module; CWN checks remain the resolution | design only |
 | Active vs passive PSI | **open design question** | tentative: PC gets passive/minor PSI, stronger active PSI mostly NPC | **not canonised — do not build on it** |
+| Stress / Breakdowns / Hardening (#928) | AWN's psychological Stress as an optional psychological layer: a WIS-ceilinged meter, escalating −2 Mental saves, Breakdowns, irreversible Hardening with psychic scars, an opt-in addiction submodule | reads WIS, the Mental-save outcome, Heal/Lead check outcomes and System Strain; **never rolls and never edits the sheet**; state in `user://awn_stress_state.json` beside the core save. Distinct from Alienation, which keeps its own ceiling | **implemented** — `mods/noopunk/stress.gd`, `data/rules/awn_stress.json`, screen `scenes/stress_screen.tscn`, tests `test_noopunk_stress*.gd`; off by default |
 
 The rule for every row: **core CWN rulebooks must remain intelligible, and the core suites must pass,
 with all mods disabled.**
