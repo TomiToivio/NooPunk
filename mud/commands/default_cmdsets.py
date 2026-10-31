@@ -1,5 +1,6 @@
 """Text commands for the separate NoöPunk MUD."""
-from evennia import CmdSet, Command
+from evennia import Command
+from evennia.commands.default.cmdset_character import CharacterCmdSet
 from systems.cwn import skill_check
 
 class CmdSheet(Command):
@@ -73,10 +74,10 @@ class CmdTalk(Command):
             return
         self.caller.msg(f"{target.key} says: \"{target.db.npc_dialogue}\"")
 
-class NoopunkCharacterCmdSet(CmdSet):
+class NoopunkCharacterCmdSet(CharacterCmdSet):
     key = "NoopunkCharacterCmdSet"
     def at_cmdset_creation(self):
-        from evennia.commands.default.cmdset_character import CharacterCmdSet
+        super().at_cmdset_creation()
         self.add(CmdSheet())
         self.add(CmdCheck())
         self.add(CmdSupplies())
