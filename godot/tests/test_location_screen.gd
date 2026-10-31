@@ -20,8 +20,8 @@ func _screen(flags: Dictionary = {}) -> Object:
 
 func run() -> Array:
 	var rows: Array = []
-	var screen := _screen({"case_opened": true})
-	rows.append(_eq("the screen names the current place", screen._title.text, "UNSA Helsinki HQ"))
+	var screen := _screen({})
+	rows.append(_eq("the screen names the current place", screen._title.text, "Home · Helsinginkatu"))
 	rows.append(_eq("the district is shown", screen._district.text != "", true))
 	rows.append(_eq("actions are offered", screen._actions.get_child_count() > 0, true))
 	rows.append(_eq("travel destinations are drawn", screen._travel.get_child_count() > 1, true))
@@ -30,21 +30,21 @@ func run() -> Array:
 	rows.append(_eq("the status line counts visits", screen._status.text.contains("visited"), true))
 
 	# travel updates the screen, not just the model
-	screen._on_travel("home")
-	rows.append(_eq("travel moves the title", screen._title.text, "Your flat"))
+	screen._on_travel("unsa_hq_ratakatu")
+	rows.append(_eq("travel moves the title", screen._title.text, "UNSA Helsinki Field Office · Ratakatu"))
 	rows.append(_eq("travel is logged", screen._log.get_parsed_text().contains("arrived"), true))
 	rows.append(_eq("the current place is not offered as a destination",
-		_travel_disabled(screen, "home"), true))
+		_travel_disabled(screen, "unsa_hq_ratakatu"), true))
 
 	# an undiscovered place cannot be reached from the UI either
-	screen._on_travel("container_yard")
+	screen._on_travel("olutravintola_putki")
 	rows.append(_eq("an undiscovered place is refused", screen._log.get_parsed_text().contains("cannot travel"), true))
 
 	# investigate is conditional on a lead, in the screen as in the model
 	var no_lead := _screen({"case_opened": true})
 	rows.append(_eq("no investigate without a lead", _has_action(no_lead, "investigate"), false))
-	var with_lead := _screen({"case_opened": true, "has_lead": true})
-	with_lead._on_travel("harbour")  # investigate lives at the harbour, not at HQ
+	var with_lead := _screen({"knows_university": true, "has_lead": true})
+	with_lead._on_travel("university_of_helsinki")  # investigate lives at the harbour, not at HQ
 	rows.append(_eq("investigate appears with a lead", _has_action(with_lead, "investigate"), true))
 
 	# placeholder actions admit they are placeholders rather than faking an outcome
