@@ -1,5 +1,5 @@
 {
-  "$comment": "#913 canonical opening Helsinki location graph. Only Home and Ratakatu HQ are initially visible. Explicit story knowledge flags reveal all other places; no speculative buildings in map art. Fictional establishments and agency jurisdiction.",
+  "$comment": "#913 canonical opening Helsinki location graph. Only Home and Ratakatu HQ are initially visible. Explicit story knowledge flags reveal all other places; no speculative buildings in map art. Fictional establishments and agency jurisdiction. `position` is normalized 0..1 on the map panel: x east, y south. Kallio/Sörnäinen sits north-east, Punavuori south, the university in the centre. The underground shares HQ's latitude because it is beneath it, and must not be drawn until clearance.",
   "version": 2,
   "start": "home_helsinginkatu",
   "nodes": [
@@ -20,7 +20,11 @@
         "travel"
       ],
       "requires": [],
-      "reveals": []
+      "reveals": [],
+      "position": [
+        0.7,
+        0.32
+      ]
     },
     {
       "id": "unsa_hq_ratakatu",
@@ -40,7 +44,11 @@
         "travel"
       ],
       "requires": [],
-      "reveals": []
+      "reveals": [],
+      "position": [
+        0.44,
+        0.72
+      ]
     },
     {
       "id": "olutravintola_putki",
@@ -60,7 +68,11 @@
       "requires": [
         "knows_putki"
       ],
-      "reveals": []
+      "reveals": [],
+      "position": [
+        0.52,
+        0.58
+      ]
     },
     {
       "id": "university_of_helsinki",
@@ -80,7 +92,11 @@
       "requires": [
         "knows_university"
       ],
-      "reveals": []
+      "reveals": [],
+      "position": [
+        0.5,
+        0.5
+      ]
     },
     {
       "id": "kurvi",
@@ -100,7 +116,11 @@
       "requires": [
         "knows_kurvi"
       ],
-      "reveals": []
+      "reveals": [],
+      "position": [
+        0.66,
+        0.4
+      ]
     },
     {
       "id": "unsa_underground",
@@ -119,7 +139,11 @@
       "requires": [
         "underground_clearance"
       ],
-      "reveals": []
+      "reveals": [],
+      "position": [
+        0.44,
+        0.76
+      ]
     }
   ]
 }
