@@ -1,5 +1,10 @@
 # NoöPunk images and Godot art direction
 
+**Authority split.** [`ART_DIRECTION.md`](ART_DIRECTION.md) is the locked answer to "does this image belong
+in NoöPunk?" — the visual contract and the grounding rule. **This** file is the pipeline: how an image is
+named, filed, described in the manifest and loaded by a screen. Palette and type live in
+[`art/ART_BIBLE_1974.md`](art/ART_BIBLE_1974.md).
+
 **Authority:** [issue #908](https://github.com/TomiToivio/NooPunk/issues/908) and [foundational issue #897](https://github.com/TomiToivio/NooPunk/issues/897).
 
 ## Visual contract
@@ -41,3 +46,41 @@ Tommy Pilgrim is a distinct character, not an alternative label or model for Rom
 4. No generic 1980s cyberpunk/glossy neon.
 5. Valid licensing/provenance and actual file in Git.
 6. Godot imports and layout verified at different aspect ratios.
+
+## Enforced by tooling, not by good intentions
+
+The rules above are only real if something fails when they are broken. `images/manifest.json` describes
+every committed binary, and `tools/image_manifest.py` refuses:
+
+- a file that does not exist, or a path that is not `res://images/...`
+- an entry filed under a category whose directory does not hold it
+- duplicate ids, or filenames that are not `lowercase_snake_case`
+- declared dimensions that disagree with the actual pixels
+- `motifs: ["sci_fi"]` **without a `justification`**, or on anything other than an `events` asset
+- a `placeholders` asset marked `approved`
+
+The reasoning behind the sci-fi rule: **early Helsinki is a lived-in 1970s city, and the uncanny is an
+event, not a backdrop.** A tag anyone could sprinkle would rot into a comment; a tag that requires an
+argument does not.
+
+Screens never hardcode a path. They resolve it through `godot/core/image_library.gd`; the class's stretch policy (portraits and encounters letterbox so a face is never cropped;
+locations may fill the frame), and records a loud problem when art is missing. A silent blank texture looks
+like a design decision, and nobody investigates a design decision.
+
+Layout is geometry, not vibes: `godot/ui/image_layout.gd` computes the safe area, the image rect and the
+caption/dialogue panels from the viewport size, and the suite asserts at 1280x720, 1920x1080, 1024x768 and
+800x600 that nothing leaves the safe area, no aspect ratio changes, and the portrait never overlaps the
+dialogue panel.
+
+## Status
+
+No approved artwork is committed, and the manifest's `assets` list is empty on purpose: #912's checker
+refuses any listed asset that is not `approved: true` with a matching sha256, so a fixture cannot be smuggled
+into the art manifest.
+
+The approved Romppainen street portrait stays in `pending` as `awaiting_binary_upload`. `tools/image_manifest.py`
+refuses a pending entry whose file already exists — promoting the binary is the act that makes it showable.
+
+`godot/ui/image_preview.gd` (main menu: **Images — portrait and encounter layouts**) therefore draws its own
+flat two-tone textures: the layout can be inspected, and no fake art enters the tree. Replace
+`_procedural_texture()` with the manifest id once real art exists.

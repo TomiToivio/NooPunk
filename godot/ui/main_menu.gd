@@ -78,6 +78,15 @@ func _ready() -> void:
 		get_tree().current_scene = screen)
 	stack.add_child(locations_button)
 
+	var images_button := Button.new()
+	images_button.text = "Images — portrait and encounter layouts"
+	images_button.pressed.connect(func() -> void:
+		var preview: Node = load("res://scenes/images/preview.tscn").instantiate()
+		get_tree().root.add_child(preview)
+		get_tree().current_scene = preview)
+	stack.add_child(images_button)
+
+
 	# The campaign is an existing feature of the same root Godot project.
 	# Keep it accessible here rather than requiring agents to maintain a rival title scene.
 	var campaign := Button.new()

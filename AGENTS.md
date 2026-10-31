@@ -4,6 +4,14 @@ This decision supersedes the **presentation and gameplay** portions of #848 and 
 
 **Only NoöPunk extensions may be homebrewed:** modular social relationships/reputation, LaclauGPT-style ideological factions, noösphere/Psyche/ontological shock, and clue-forward PbtA/GUMSHOE-inspired narrative procedures. These are optional **overlays** that invoke CWN rather than overwrite it. Player active PSI remains undecided: prefer passive/minor powers as a design hypothesis, not a locked rule.
 
+## Images
+
+Every picture follows [`docs/ART_DIRECTION_IMAGES.md`](docs/ART_DIRECTION_IMAGES.md): 1970s European comic
+illustration, a lived-in Helsinki, and **no sci-fi background unless a scene asks for it and the story
+justifies it**. Assets are resolved through `godot/core/image_library.gd`, never by a raw `res://images/...` path in a
+scene, and `tools/image_manifest.py` is the checker (`python3 -m unittest tests.test_issue908_image_manifest`) and an
+unapproved asset cannot be listed at all. Do not claim an image is imported until the binary is committed and the path resolves.
+
 ## Where the lock lives (added with the enforcement PR)
 
 | Artifact | Owns |
@@ -12,6 +20,7 @@ This decision supersedes the **presentation and gameplay** portions of #848 and 
 | `docs/design/FOUNDATIONAL_LOCK_897.md` | what is locked, the four mechanic classes, the boundary, the narrative pivot |
 | `docs/design/CORE_VS_MOD_MATRIX_897.md` | the per-mechanic inventory — **the only copy** |
 | `docs/art/ART_BIBLE_1974.md` + `design_tokens.json` | the 1974 visual grammar |
+| `docs/ART_DIRECTION.md` + `docs/ART_DIRECTION_IMAGES.md` + `images/manifest.json` | **#908**: the image library — read before generating or integrating artwork; only `approved` assets are loadable, checked by `tools/image_manifest.py` |
 | `mods/noopunk/` | the overlays themselves — the only place homebrew rules may live |
 
 **Boundary, enforced by test:** `godot/core/` may not import `mods/`; an overlay returns data and never
