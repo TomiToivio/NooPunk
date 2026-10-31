@@ -41,6 +41,13 @@
       "changes_core_mechanics": false,
       "reads": ["character state"],
       "adds": "narrative state only"
+    },
+    {
+      "name": "awn_stress",
+      "summary": "Ashes Without Number Stress, Breakdowns, Hardening and the opt-in addiction submodule",
+      "changes_core_mechanics": false,
+      "reads": ["WIS score", "mental save outcome", "skill check outcome", "system strain"],
+      "adds": "character state only - a Stress meter, consequence codes and the modifiers the table applies; CWN attributes, checks, saves, combat and progression are untouched"
     }
   ]
 }

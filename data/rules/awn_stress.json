@@ -1,0 +1,538 @@
+{
+  "$comment": "Ashes Without Number (2025): the psychological Stress procedure NooPunk adopts as an OPTIONAL overlay on Cities Without Number. AWN has no verified open licence (docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md), so this file records the *procedure* in original NooPunk wording and its numeric values. No source sentence, table heading, heading label, example character or setting material is reproduced. src-owned arithmetic: mods/noopunk/stress.gd. CWN remains the core: this module adds one character meter and consequence codes; it never rolls dice, changes an attribute, re-targets a save, or replaces System Strain, Alienation or progression.",
+  "format": "noopunk.rules.awn_stress",
+  "version": 1,
+  "issue": "https://github.com/TomiToivio/NooPunk/issues/928",
+  "module": {
+    "id": "awn_stress",
+    "flag": "awn_stress",
+    "label": "Stress, Breakdowns and Hardening",
+    "optional": true,
+    "default_enabled": false,
+    "layer": "character",
+    "precedence": "additive overlay on CWN; CWN attributes, checks, saves, combat, damage, System Strain, Alienation and progression are unchanged",
+    "why_optional": "A post-collapse or wartime table may want it; a table that free-hands moral drift, or whose characters were raised in a violent society, should leave it off. Nothing else in the game depends on it."
+  },
+  "source": {
+    "system": "Ashes Without Number",
+    "edition": "Deluxe edition, 2025-11-06 (author-supplied PDF)",
+    "pages": "printed pp. 56-58",
+    "chapters": {
+      "stress": "Stress: gaining and losing it",
+      "breakdown": "Breakdowns; Stress and Hardening; Psychic Scars",
+      "addiction": "Addiction and Recovery"
+    },
+    "licence": "no verified open licence - procedure re-expressed, no text, table heading or example copied",
+    "rights_record": "docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md"
+  },
+  "threshold": {
+    "attribute": "WIS",
+    "crosses_when": "above",
+    "equality_is_safe": true,
+    "save": "mental",
+    "save_die": "d20",
+    "save_owner": "CWN core - the caller resolves the save and passes the outcome in",
+    "first_penalty": -2,
+    "penalty_step": -2,
+    "penalty_stacks_while_over": true,
+    "penalty_cap": null,
+    "penalty_resets_when": "stress_at_or_below_wisdom",
+    "success_does_not_reduce_stress": true,
+    "check_trigger": "a new gain of Stress raises the total above WIS",
+    "check_timing": "end of the scene in which the Stress was gained"
+  },
+  "gaining": {
+    "timing": "end_of_scene",
+    "applies_to": "active_participants_only",
+    "presence_is_participation": false,
+    "warn_player_before": true,
+    "note": "A character who never attacks in a violent scene may escape the guilt; one who attacks and misses is as implicated as one who hits.",
+    "events": [
+      {
+        "id": "kill_human",
+        "label": "Killing another human being",
+        "system": "awn",
+        "stress": 2,
+        "modifiers": [
+          {
+            "id": "first_kill",
+            "label": "and it is the character's first kill",
+            "stress": "1d6",
+            "once_per_character": true
+          },
+          {
+            "id": "several_in_scene",
+            "label": "and more than one person dies in the scene",
+            "stress": 1,
+            "condition": "more_than_one_in_scene"
+          },
+          {
+            "id": "not_a_threat",
+            "label": "and the victim was not threatening the character's life",
+            "stress": 2,
+            "condition": "victim_not_threatening_life"
+          },
+          {
+            "id": "helpless",
+            "label": "and the victim was helpless or non-violent",
+            "stress": 2,
+            "condition": "victim_helpless_or_nonviolent"
+          }
+        ]
+      },
+      {
+        "id": "friend_mortal_wound",
+        "label": "A friend suffers a mortal wound",
+        "system": "awn",
+        "stress": 1,
+        "modifiers": [
+          {
+            "id": "then_dies",
+            "label": "and then dies",
+            "stress": 2,
+            "condition": "friend_dies"
+          }
+        ]
+      },
+      {
+        "id": "own_mortal_wound",
+        "label": "The character suffers a mortal wound",
+        "system": "awn",
+        "stress": 2,
+        "modifiers": [
+          {
+            "id": "major_injury",
+            "label": "and takes a major injury from it",
+            "stress": 2,
+            "condition": "major_injury"
+          }
+        ]
+      },
+      {
+        "id": "steal_from_non_enemy",
+        "label": "Stealing valuables from someone who is not an enemy",
+        "system": "awn",
+        "stress": 1,
+        "modifiers": [
+          {
+            "id": "they_will_probably_die",
+            "label": "and they will probably die without what was taken",
+            "stress": 1,
+            "condition": "victim_will_probably_die"
+          }
+        ]
+      },
+      {
+        "id": "witness_atrocity",
+        "label": "Witnessing an atrocity or a massacre site",
+        "system": "awn",
+        "stress": 1,
+        "modifiers": []
+      },
+      {
+        "id": "great_cruelty",
+        "label": "Committing an act of great cruelty",
+        "system": "awn",
+        "stress": 1,
+        "stress_range": [1, 3],
+        "modifiers": [],
+        "note": "The table picks within the range; the caller passes the chosen value."
+      },
+      {
+        "id": "privations",
+        "label": "Enduring hunger or severe privation",
+        "system": "awn",
+        "stress": 2,
+        "per": "week",
+        "modifiers": []
+      }
+    ]
+  },
+  "recovery": {
+    "events": [
+      {
+        "id": "safe_day",
+        "label": "A day of rest in a safe, familiar place, fed and comfortable",
+        "stress": -1,
+        "per_day": 1,
+        "cost": {}
+      },
+      {
+        "id": "indulgence",
+        "label": "An evening of heavy drinking, feasting or other indulgence",
+        "stress": -1,
+        "cost": {
+          "system_strain": 1
+        },
+        "blocks_other_recovery": true,
+        "note": "The System Strain is CWN's; the overlay asks for it and the core applies it."
+      },
+      {
+        "id": "talk",
+        "label": "An hour of supportive conversation",
+        "stress": -1,
+        "per_day": 1,
+        "check": {
+          "difficulty": 9,
+          "skills": ["Heal", "Lead"],
+          "attributes": ["CHA", "WIS"],
+          "owner": "CWN core - the caller resolves the check and passes the outcome in"
+        },
+        "on_failure": {
+          "helper_stress": 1
+        },
+        "blocked_by_scar": "loner"
+      },
+      {
+        "id": "major_goal",
+        "label": "Accomplishing a major personal or community purpose that justifies the suffering",
+        "stress": "-1d10",
+        "requires": "a goal worth at least one adventure",
+        "once_per_goal": true
+      }
+    ],
+    "gm_may_allow_other_means": true
+  },
+  "hardening": {
+    "trigger": "the character would suffer a Breakdown",
+    "player_choice": true,
+    "clears_stress_to": 0,
+    "scene_resistance": 1,
+    "resistance_scope": "per_scene",
+    "resistance_stacks": true,
+    "grants_psychic_scar": true,
+    "irreversible": true,
+    "note": "Each Hardening clears Stress, ignores one further point of Stress per scene, and adds one more scar. A scar cannot be traded away and the process cannot be undone."
+  },
+  "breakdowns": {
+    "blocks_further_stress": true,
+    "ends_when": "stress_at_or_below_wisdom",
+    "player_picks": true,
+    "options": [
+      {
+        "id": "deathwish",
+        "label": "Deathwish",
+        "effects": {
+          "cannot_willingly_retreat": true,
+          "hp_per_level": -2,
+          "hp_per_level_minimum": 1
+        }
+      },
+      {
+        "id": "withdrawal",
+        "label": "Withdrawal",
+        "effects": {
+          "fights_only_in_self_defence": true,
+          "cannot_use_skill_checks": true,
+          "can_handle_simple_tasks": true
+        }
+      },
+      {
+        "id": "indulgence",
+        "label": "Indulgence",
+        "effects": {
+          "consumes_all_food_and_drugs_available": true,
+          "fights_only_to_save_own_life": true,
+          "skill_check_penalty": -2,
+          "cannot_refuse_an_offered_indulgence": true
+        }
+      },
+      {
+        "id": "cowardice",
+        "label": "Cowardice",
+        "effects": {
+          "cannot_fight": true,
+          "flees_or_hides_from_all_peril": true
+        }
+      },
+      {
+        "id": "confusion",
+        "label": "Confusion",
+        "effects": {
+          "cannot_act_on_own_initiative": true,
+          "needs_direction_from_a_trusted_person": true,
+          "directed_action_lasts": "one_scene"
+        }
+      }
+    ]
+  },
+  "scars": {
+    "pick_on_hardening": true,
+    "one_each": true,
+    "options": [
+      {
+        "id": "self_destructive",
+        "label": "Self-destructive",
+        "effects": {
+          "hit_die_penalty": -2,
+          "hit_die_minimum": 1,
+          "hp_per_level": -2
+        }
+      },
+      {
+        "id": "addicted",
+        "label": "Addicted",
+        "effects": {
+          "grants_addiction": true,
+          "ignores_one_stress_point": true,
+          "addiction_is_changeable_not_curable": true
+        }
+      },
+      {
+        "id": "self_doubting",
+        "label": "Self-doubting",
+        "effects": {
+          "auto_fails_skill_check_on_natural": 12,
+          "rerolls_cannot_save_the_check": true
+        }
+      },
+      {
+        "id": "loner",
+        "label": "Loner",
+        "effects": {
+          "auto_fails_all_lead_checks": true,
+          "cannot_have_henchmen_or_followers": true,
+          "social_check_penalty": -2,
+          "social_penalty_excludes_intimidation_and_hostility": true,
+          "cannot_reduce_stress_by_talking": true
+        }
+      },
+      {
+        "id": "nightmares",
+        "label": "Nightmares",
+        "effects": {
+          "con_modifier": -1,
+          "con_modifier_floor": -2,
+          "save_penalty": -2
+        }
+      },
+      {
+        "id": "delusional",
+        "label": "Delusional",
+        "effects": {
+          "wis_penalty": -3,
+          "wis_floor": 3,
+          "belief_cannot_be_shaken": true
+        }
+      },
+      {
+        "id": "bloodthirsty",
+        "label": "Bloodthirsty",
+        "effects": {
+          "cannot_fight_non_lethally": true,
+          "kills_prisoners_left_alone_with_them": true,
+          "no_stress_from_killing": true,
+          "recovery_fails_chance": 0.5
+        }
+      },
+      {
+        "id": "penitent",
+        "label": "Penitent",
+        "effects": {
+          "cannot_directly_kill": true,
+          "taboo_breach": {
+            "sets_stress_to": "wisdom_plus_2",
+            "forces_breakdown": true,
+            "must_trade_scar": true,
+            "cannot_be_chosen_again": true
+          }
+        }
+      },
+      {
+        "id": "dependent",
+        "label": "Dependent",
+        "effects": {
+          "hardening_does_not_resist_friend_mortal_wound": true,
+          "extra_stress_on_friend_death": "1d6",
+          "cha_penalty": -3,
+          "cha_floor": 3
+        }
+      }
+    ]
+  },
+  "addiction": {
+    "enabled_by_default": false,
+    "requires": "the Addicted scar, or the table opting in explicitly",
+    "becoming_addicted": {
+      "player_choice": true,
+      "gm_may_require_for_constant_use": true
+    },
+    "daily": {
+      "hours_indulging": 1,
+      "doses": 1,
+      "one_hour_per_addiction": true,
+      "partner_addiction_mental_save": {
+        "after_each_day": true,
+        "on_failure": "that partner no longer sates the addiction"
+      },
+      "can_fight_in_self_defence_while_interrupted": true,
+      "otherwise_useless": true
+    },
+    "missed_day": {
+      "counts_as_privation": true,
+      "blocks_rest_recovery": true,
+      "stress": 1,
+      "negated_by_hardening": false
+    },
+    "effects_while_indulged": {
+      "incoming_stress_reduction": 1,
+      "daily_stress_removed": "1d4",
+      "stacks_per_addiction": true
+    },
+    "monthly": {
+      "save": "physical",
+      "on_failure": {
+        "system_strain": 1,
+        "locked_while_addicted": true
+      },
+      "at_capacity_death_window_days": 30
+    },
+    "breaking": {
+      "must_avoid_all_addictions": true,
+      "daily_penalties_apply": true,
+      "check_each_week": {
+        "saves": ["physical", "mental"],
+        "may_add_helper_heal_skill": true
+      }
+    }
+  },
+  "noopunk_events": {
+    "note": "NooPunk-authored triggers, NOT Ashes Without Number entries. Separate table, separate id space, values authored for this project and open to playtest revision. They record moral residue - what a character did or witnessed because of the anomalous - never the ontological shock itself, which is the Psyche overlay's business.",
+    "values_authority": "NooPunk extension (#928), not the source book",
+    "events": [
+      {
+        "id": "nhi_disclosure_confirmed",
+        "label": "Learning that the NHI presence is real, and that the institutions knew",
+        "system": "noopunk",
+        "stress": 2,
+        "modifiers": [
+          {
+            "id": "publicly_unfolding",
+            "label": "and it is unfolding in public while the character must keep working",
+            "stress": 1,
+            "condition": "disclosure_is_public"
+          }
+        ],
+        "rationale": "The moral weight is withheld knowledge, not the metaphysics; a character who only learns the facts loses no more than this."
+      },
+      {
+        "id": "nhi_contact_personal",
+        "label": "Being contacted directly by an NHI",
+        "system": "noopunk",
+        "stress": 3,
+        "modifiers": [
+          {
+            "id": "contact_was_invited",
+            "label": "and the character sought the contact deliberately",
+            "stress": -1,
+            "condition": "contact_invited"
+          }
+        ],
+        "rationale": "Consent changes the residue: a deliberate contact costs less than an intrusion, and the Psyche overlay carries the exposure either way."
+      },
+      {
+        "id": "rogue_agi_casualties",
+        "label": "Surviving a rogue AGI incident that killed people",
+        "system": "noopunk",
+        "stress": 2,
+        "modifiers": [
+          {
+            "id": "deaths_were_preventable",
+            "label": "and the deaths were preventable by a decision the character took part in",
+            "stress": 2,
+            "condition": "deaths_preventable"
+          }
+        ],
+        "rationale": "Sized against the source's own mortal-wound and atrocity entries: comparable loss of life, comparable weight."
+      },
+      {
+        "id": "decommission_sapient_agent",
+        "label": "Terminating, wiping or abandoning a construct the character knew to be sapient",
+        "system": "noopunk",
+        "stress": 2,
+        "modifiers": [
+          {
+            "id": "agent_asked_to_live",
+            "label": "and it asked to live",
+            "stress": 3,
+            "condition": "agent_pleaded"
+          }
+        ],
+        "rationale": "The setting's own 'killing another human being' analogue; the modifier mirrors the helpless-victim rule rather than inventing a new scale."
+      },
+      {
+        "id": "psychic_case_harm",
+        "label": "A PSI or noosphere operation the character ran injured someone",
+        "system": "noopunk",
+        "stress": 2,
+        "modifiers": [
+          {
+            "id": "target_did_not_consent",
+            "label": "and the person affected had not consented",
+            "stress": 2,
+            "condition": "no_consent"
+          }
+        ],
+        "rationale": "Moral injury from professional practice, not from the anomaly. The anomaly itself is Psyche exposure."
+      },
+      {
+        "id": "field_investigation_remains",
+        "label": "Working a death scene or a disappearance that cannot be resolved",
+        "system": "noopunk",
+        "stress": 1,
+        "modifiers": [
+          {
+            "id": "the_dead_were_known",
+            "label": "and the character knew the dead or the missing",
+            "stress": 1,
+            "condition": "victim_known"
+          }
+        ],
+        "rationale": "Deliberately the cheapest NooPunk entry: routine investigative work should not break an agent, only accumulate."
+      },
+      {
+        "id": "moral_injury_ordered",
+        "label": "Carrying out, or covering for, an order the character believes to be wrong",
+        "system": "noopunk",
+        "stress": 1,
+        "stress_range": [1, 3],
+        "modifiers": [
+          {
+            "id": "concealed_it_from_colleagues",
+            "label": "and the character concealed it from colleagues",
+            "stress": 1,
+            "condition": "concealed"
+          }
+        ],
+        "rationale": "Same shape and range as the source's great-cruelty entry; the table sets the value."
+      }
+    ]
+  },
+  "ontology_shock_boundary": {
+    "owner": "noosphere_psyche overlay (#689)",
+    "rule": "Ontological shock, noosphere exposure and PSI pressure are tracked by the Psyche overlay. This module never scores the anomaly itself; it scores what the character did or witnessed because of it.",
+    "integration": "Both overlays may be on at once. They store state in separate namespaces and neither reads the other's numbers.",
+    "why": "Folding shock into Stress would make a worldview crisis and a moral injury the same currency, and would let Hardening erase the former."
+  },
+  "cwn_compatibility": {
+    "reused_vocabulary": ["WIS", "mental save", "d20", "skill checks", "Heal", "Lead", "System Strain", "HP per level", "CON modifier", "CHA score"],
+    "adjacent_core_mechanic": "godot/core/cwn_alienation.gd",
+    "adjacency_note": "CWN Alienation already governs cyberware-induced psychosis with a Wisdom ceiling and a Mental save. Stress is a second, separately tracked meter with its own ceiling; a character can be over one and not the other. Neither module reads the other's value.",
+    "no_second_save_system": true,
+    "no_second_hp_track": true,
+    "hp_effects_apply_as_cwn_modifiers": true
+  },
+  "consent_and_tone": {
+    "table_consent_required": true,
+    "session_zero_topics": ["violence", "death of companions", "addiction", "mental distress"],
+    "intensity_dials": ["off", "stress_only_no_breakdowns", "full_with_hardening", "full_with_addiction"],
+    "not_a_diagnosis": "Breakdowns and psychic scars are fictional game consequences. They are not clinical categories, are not modelled on any diagnosis, and carry no claim about real mental illness.",
+    "x_card": true
+  },
+  "not_transcribed": [
+    "the source's section prose and examples",
+    "the source's table headings and column labels",
+    "the source's named example characters and settings",
+    "any page image or scan"
+  ]
+}

@@ -21,6 +21,7 @@ cover its behaviour.
 | Module | Overlay | Status |
 | --- | --- | --- |
 | `psyche.gd` | Noösphere exposure, Psyche tiers, recovery, active-PSI gate | implemented |
+| `stress.gd` | AWN Stress, Breakdowns, Hardening and psychic scars; opt-in addiction submodule (#928) | implemented — optional, off by default |
 | *ideology* | Laclau-style identification, faction drift, antagonism | design only — needs a rule reference and tests before code |
 | *obligations* | contact trust, debts, institutional standing | design only |
 | *investigation* | clue-forward framing: essential clues are never gated behind one roll | design only |
