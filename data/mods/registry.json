@@ -1,0 +1,46 @@
+{
+  "_comment": "Machine-readable half of the core-versus-mod matrix (#897). Every NooPunk overlay is listed here and none may claim the CWN baseline. See docs/rules/RULES_BASIS_LOCK.md.",
+  "schema": 1,
+  "baseline": {
+    "engine": "Cities Without Number",
+    "gap_fill": ["Stars Without Number Revised: psionics, whole procedure"],
+    "may_be_changed_by_a_mod": false
+  },
+  "mods": [
+    {
+      "name": "noosphere_psyche",
+      "summary": "Noosphere exposure, ontological shock, Psyche instability and recovery",
+      "changes_core_mechanics": false,
+      "reads": ["character attributes", "saves", "system strain"],
+      "adds": "narrative state only"
+    },
+    {
+      "name": "ideology_factions",
+      "summary": "Discursive identification, faction standings, antagonisms and political temptation",
+      "changes_core_mechanics": false,
+      "reads": ["reaction rolls", "skill check outcomes"],
+      "adds": "narrative state only"
+    },
+    {
+      "name": "relationships_reputation",
+      "summary": "NPC trust, obligations, social capital, institutional standing",
+      "changes_core_mechanics": false,
+      "reads": ["social skill outcomes"],
+      "adds": "narrative state only"
+    },
+    {
+      "name": "investigative_mode",
+      "summary": "Clue discovery and synthesis; essential clues are never gated behind one failed roll",
+      "changes_core_mechanics": false,
+      "reads": ["skill check outcomes"],
+      "adds": "narrative state only"
+    },
+    {
+      "name": "vices_temptations",
+      "summary": "Career ambition, status, trauma, corruption and solidarity as recurring pressures",
+      "changes_core_mechanics": false,
+      "reads": ["character state"],
+      "adds": "narrative state only"
+    }
+  ]
+}

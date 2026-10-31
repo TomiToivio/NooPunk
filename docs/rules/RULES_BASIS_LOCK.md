@@ -42,6 +42,10 @@ layer is not.
 - Baseline resolution lives behind an **adapter boundary**. NoöPunk mods read the resolved state and add
   narrative state; they do not sit inside the resolution function.
 - **Parity tests** guard the baseline: a mod that changes a CWN outcome must fail the suite.
+  Implemented in `src/rules/mod_boundary.py`: a mod declares `changes_core_mechanics`, receives the
+  resolved outcome behind a read-only view, and may return narrative state only — an effect that shadows
+  a baseline key raises `BaselineViolation`. Every overlay is registered in `data/mods/registry.json`,
+  and `tests/test_issue897_core_mod_boundary.py` is the parity guard.
 - Where a `mods/noopunk/` tree exists or is introduced, it may depend on `core/`, never the reverse.
 
 ## 4. What this lock settles, and what it does not
