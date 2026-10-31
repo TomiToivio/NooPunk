@@ -475,3 +475,17 @@ Tomi is the authorial source of truth. When a draft arrives, read
 ## ~~NEW AUTHORITATIVE RESTART: issue #827~~
 
 For all **new NoöPunk RPG development**, the canonical artifacts are `noopunk/rulebook/RULEBOOK.md` and the standalone minimal Godot project `noopunk/game/project.godot`. These two paths supersede the earlier root-project-only and #814 rules **for the restart**, while legacy files elsewhere remain preserved reference material. Do not extend older Godot or rulebook code for new tasks, and do not spawn other alternatives. Tomi defines one small feature at a time; update both of these SAME canonical artifacts together and verify their parity. Do not automatically import legacy CWN/SWN rules, seven attributes, lore, or frameworks. First milestone: blank rulebook and top-down player movement only. Keep meta-issue #827 open; close only implementation child issues. See `noopunk/README.md`.
+
+## FOUNDATIONAL LOCK: CWN is the rules engine (#897, 2026-10-31)
+
+**Permanent, and it outranks earlier ruleset directions.** CWN governs every procedure it covers, as
+written. SWN/WWN fill gaps CWN does not cover, whole-procedure, one row each. NoöPunk material is a
+**mod, never an edit**: it reads CWN state and adds narrative state, and may not change a CWN target
+number, die, band or progression cost. Reskin is free; new mechanics are a documented mod with a test.
+
+Canonical record and the core-versus-mod matrix: [`docs/rules/RULES_BASIS_LOCK.md`](docs/rules/RULES_BASIS_LOCK.md).
+Baseline paths remain root `project.godot`, `scenes/main.tscn`, `godot/core/`, `data/rules/`.
+
+No further core-rule replacement by default. Replacing CWN requires a separately approved foundational
+decision; brainstorming a mechanic does not authorise it. The seven-attribute UNSA sheet (#835) is a
+**mod**, not the baseline.
