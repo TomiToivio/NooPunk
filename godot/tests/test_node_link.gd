@@ -121,7 +121,56 @@ func run() -> Array:
 		screen._on_jack_in()
 		_ok("jacking in updates the screen", String(screen._status.text).contains("connected"))
 		_ok("the network rows are drawn", screen._node_rows.get_child_count() == 4)
-		screen.queue_free()
+		screen.free()
+
+	# --- a refusal must survive the refresh that follows it (it used to be overwritten) ---
+	var screen2: Node = scene.instantiate() if scene != null else null
+	if screen2 != null:
+		Engine.get_main_loop().root.add_child(screen2)
+		screen2.build()
+		screen2._on_run()
+		_ok("a refused action is still visible after the refresh",
+			String(screen2._status.text).contains("Refused"))
+		screen2.queue_free()
+
+	# --- the mission's recorded network can be played, not just the sample ---
+	var mission_screen: Node = load("res://scenes/node_link.tscn").instantiate()
+	Engine.get_main_loop().root.add_child(mission_screen)
+	_ok("the warehouse mission loads",
+		mission_screen.open_mission("res://godot/scenarios/mvp_romppainen/mission.json", 2, 2, 2))
+	_eq("the mission's three nodes are drawn", mission_screen.net["nodes"].size(), 3)
+	_eq("the mission entry point is kept", String(mission_screen.net["entry"]), "lobby")
+	_ok("a missing mission file is refused",
+		not mission_screen.open_mission("res://godot/scenarios/absent/mission.json"))
+	_ok("a refusal leaves the loaded network in place",
+		int(mission_screen.net["nodes"].size()) == 3)
+	mission_screen.queue_free()
+
+	# --- the dropdowns must follow the node, or the first Run is always refused ---
+	var follow: Node = load("res://scenes/node_link.tscn").instantiate()
+	Engine.get_main_loop().root.add_child(follow)
+	follow.build()
+	follow.net["nodes"][0]["accessed"] = true
+	follow.net["current"] = String(follow.net["nodes"][0]["id"])
+	follow._sync_subject_to_node()
+	follow._sync_verb_to_node()
+	_eq("the Subject follows the node",
+		follow._subjects.get_item_text(follow._subjects.selected),
+		String(follow.net["nodes"][0]["subject"]))
+	var chosen_verb: Dictionary = NodeLink.verbs().get(
+		follow._verbs.get_item_text(follow._verbs.selected), {})
+	var chosen_subject: Dictionary = NodeLink.subjects().get(
+		follow._subjects.get_item_text(follow._subjects.selected), {})
+	_ok("the Verb can target that Subject",
+		Array(chosen_verb.get("target_types", [])).has(String(chosen_subject.get("subject_type", ""))))
+
+	# --- the log says what happened: a node was accessed, the pool did not grow ---
+	var wording := NodeLink.network([NodeLink.node("a", "A", 7, "Datafile", [])], "a")
+	NodeLink.jack_in(wording, 2, 2, 2)
+	NodeLink.attempt_access(wording, [6, 6], 2, 2, "a", 2)
+	_ok("the log records the access, not a gain of pool",
+		String(Array(wording["log"])[-1]).begins_with("Accessed"))
+	follow.queue_free()
 
 	return _rows
 

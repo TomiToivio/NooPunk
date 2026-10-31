@@ -25,12 +25,12 @@ func _init(case_path: String = DEFAULT_CASE_PATH, kernel_path: String = DEFAULT_
 
 func _load_json(path: String) -> Dictionary:
 	if not FileAccess.file_exists(path):
-		push_error("InvestigationAdapter: missing %s" % path)
+		push_warning("InvestigationAdapter: missing %s" % path)
 		return {}
 	var text := FileAccess.get_file_as_string(path)
 	var parsed: Variant = JSON.parse_string(text)
 	if typeof(parsed) != TYPE_DICTIONARY:
-		push_error("InvestigationAdapter: %s is not a JSON object" % path)
+		push_warning("InvestigationAdapter: %s is not a JSON object" % path)
 		return {}
 	return parsed
 
@@ -44,7 +44,9 @@ func scene(scene_id: String) -> Dictionary:
 	for scene in case_graph.get("scenes", []):
 		if String(scene.get("id", "")) == scene_id:
 			return scene
-	push_error("InvestigationAdapter: no scene %s" % scene_id)
+	# An unknown scene id is caller input; the adapter fails closed and returns nothing. The two
+	# `push_error` calls above stay errors: a missing or malformed scenario file is a real defect (#883).
+	push_warning("InvestigationAdapter: no scene %s (refused)" % scene_id)
 	return {}
 
 ## Competence is the presence of a skill entry. Rank 0 counts: CWN 0 is basic competence.

@@ -1,0 +1,127 @@
+{
+  "$comment": "Cities Without Number SRD 3.5 pharmaceuticals and street drugs: the published table plus the section's three general rules. Per-drug effect text is NOT modelled here; only the table facts (price, minimum Heal skill, rarity) and the general rules are. Verbatim facts, cited.",
+  "source": {
+    "title": "Cities Without Number SRD",
+    "section": "3.5.0",
+    "url": "https://cwn.quadrifons.com/"
+  },
+  "general_rules": {
+    "administration_action": "Main Action",
+    "stacking": "only the highest bonus applies when multiple drugs are active",
+    "strain_overflow": "if the System Strain would exceed the maximum, the user gains no benefit but suffers negative effects normally"
+  },
+  "drugs": [
+    {
+      "id": "avalanche",
+      "name": "Avalanche",
+      "price": 100,
+      "min_heal": 0,
+      "rare": false
+    },
+    {
+      "id": "boneshaker",
+      "name": "Boneshaker",
+      "price": 10,
+      "min_heal": null,
+      "rare": false
+    },
+    {
+      "id": "chokeout",
+      "name": "Chokeout",
+      "price": 50,
+      "min_heal": null,
+      "rare": false
+    },
+    {
+      "id": "control_delete",
+      "name": "Control-Delete",
+      "price": 25,
+      "min_heal": null,
+      "rare": false
+    },
+    {
+      "id": "hellbender",
+      "name": "Hellbender",
+      "price": 100,
+      "min_heal": null,
+      "rare": false
+    },
+    {
+      "id": "lurch",
+      "name": "Lurch",
+      "price": 25,
+      "min_heal": 0,
+      "rare": false
+    },
+    {
+      "id": "madeleine",
+      "name": "Madeleine",
+      "price": 100,
+      "min_heal": null,
+      "rare": false
+    },
+    {
+      "id": "medical_prescription",
+      "name": "Medical prescription",
+      "price": 20,
+      "min_heal": null,
+      "rare": false
+    },
+    {
+      "id": "olympus",
+      "name": "Olympus",
+      "price": 100,
+      "min_heal": 0,
+      "rare": false
+    },
+    {
+      "id": "panacea",
+      "name": "Panacea",
+      "price": 200,
+      "min_heal": 1,
+      "rare": false
+    },
+    {
+      "id": "pillow",
+      "name": "Pillow",
+      "price": 10,
+      "min_heal": 0,
+      "rare": false
+    },
+    {
+      "id": "psycho",
+      "name": "Psycho",
+      "price": 10,
+      "min_heal": null,
+      "rare": false
+    },
+    {
+      "id": "reset",
+      "name": "Reset",
+      "price": 1000,
+      "min_heal": null,
+      "rare": true
+    },
+    {
+      "id": "sand",
+      "name": "Sand",
+      "price": 2,
+      "min_heal": null,
+      "rare": false
+    },
+    {
+      "id": "trauma_patch",
+      "name": "Trauma Patch",
+      "price": 50,
+      "min_heal": null,
+      "rare": false
+    },
+    {
+      "id": "window",
+      "name": "Window",
+      "price": 200,
+      "min_heal": 1,
+      "rare": false
+    }
+  ]
+}

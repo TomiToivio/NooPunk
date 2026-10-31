@@ -51,7 +51,8 @@ func choose(index: int) -> Dictionary:
 	var node := current()
 	var offered: Array = node.get("choices", [])
 	if index < 0 or index >= offered.size():
-		push_error("DialogueRunner: no choice %d at node %s" % [index, current_id])
+		# A bad choice index is caller input the runner refuses and reports; see scene_flow.gd (#883).
+		push_warning("DialogueRunner: no choice %d at node %s (refused)" % [index, current_id])
 		return {}
 	var choice: Dictionary = offered[index]
 	_apply(choice.get("effects", {}))

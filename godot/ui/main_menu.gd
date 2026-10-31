@@ -35,6 +35,25 @@ func _ready() -> void:
 		get_tree().change_scene_to_file("res://godot/ui/mvp_game.tscn"))
 	stack.add_child(mvp)
 
+	# #878: Alternate node-link interface over the warehouse mission hacking kernel.
+	var hacking := Button.new()
+	hacking.text = "Hacking — node link (warehouse network)"
+	hacking.pressed.connect(func() -> void:
+		var screen: Node = load("res://scenes/node_link.tscn").instantiate()
+		if not screen.open_mission("res://godot/scenarios/mvp_romppainen/mission.json", 2, 2, 2):
+			screen.queue_free()
+			return
+		get_tree().root.add_child(screen)
+		get_tree().current_scene = screen)
+	stack.add_child(hacking)
+
+	# #873: CWN chase console via the existing kernel.
+	var chase := Button.new()
+	chase.text = "CWN — chase and pursuit"
+	chase.pressed.connect(func() -> void:
+		get_tree().change_scene_to_file("res://scenes/chase_screen.tscn"))
+	stack.add_child(chase)
+
 	# The campaign is an existing feature of the same root Godot project.
 	# Keep it accessible here rather than requiring agents to maintain a rival title scene.
 	var campaign := Button.new()
