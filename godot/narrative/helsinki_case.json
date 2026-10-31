@@ -1,0 +1,126 @@
+{
+  "_source": "Original No\u00f6Punk case material (#897). Mechanics are vanilla CWN; the fiction is 1974 psychedelic retrofuture Helsinki.",
+  "title": "The Lakkahaltia Signal",
+  "start": "home",
+  "locations": [
+    {
+      "id": "home",
+      "name": "Your flat, Kallio",
+      "subtitle": "Rain on the window; the radio will not stop humming.",
+      "discovered": true,
+      "actions": [
+        {
+          "id": "rest",
+          "label": "Sleep until the static fades"
+        },
+        {
+          "id": "read_notes",
+          "label": "Read the Academy file again"
+        }
+      ]
+    },
+    {
+      "id": "unsa_hq",
+      "name": "UNSA Headquarters",
+      "subtitle": "A concrete slab above the tram lines. Somewhere a telex is printing.",
+      "discovered": true,
+      "actions": [
+        {
+          "id": "briefing",
+          "label": "Take the Lakkahaltia briefing"
+        },
+        {
+          "id": "recruit_romppainen",
+          "label": "Ask Romppainen to join the party"
+        },
+        {
+          "id": "case_board",
+          "label": "Study the case board"
+        }
+      ]
+    },
+    {
+      "id": "market",
+      "name": "Hakaniemi market hall",
+      "subtitle": "Fish, amphetamines, and a woman who saw the sky open.",
+      "discovered": false,
+      "actions": [
+        {
+          "id": "interview_witness",
+          "label": "Interview the stallkeeper"
+        },
+        {
+          "id": "buy_stimulants",
+          "label": "Buy stimulants (2 credits)"
+        }
+      ]
+    },
+    {
+      "id": "harbor",
+      "name": "S\u00f6rn\u00e4inen harbour terminal",
+      "subtitle": "Container cranes move like praying mantises under sodium light.",
+      "discovered": false,
+      "actions": [
+        {
+          "id": "search_terminal",
+          "label": "Search the harbour terminal"
+        },
+        {
+          "id": "confront_guard",
+          "label": "Confront the night guard"
+        }
+      ]
+    },
+    {
+      "id": "clinic",
+      "name": "Noetic clinic, T\u00f6\u00f6l\u00f6",
+      "subtitle": "The wallpaper is avocado. The doctor's eyes are not quite synchronised.",
+      "discovered": false,
+      "actions": [
+        {
+          "id": "interview_doctor",
+          "label": "Interview Dr. Vainio"
+        },
+        {
+          "id": "treat_shock",
+          "label": "Treat ontological shock"
+        }
+      ]
+    },
+    {
+      "id": "warehouse",
+      "name": "Lakkahaltia warehouse",
+      "subtitle": "A mission location. The signal is strongest behind the freezer door.",
+      "discovered": false,
+      "actions": [
+        {
+          "id": "confront",
+          "label": "Confront what is behind the freezer door"
+        },
+        {
+          "id": "recover_device",
+          "label": "Recover the transmitter"
+        }
+      ]
+    }
+  ],
+  "party_cap": 4,
+  "recruits": [
+    {
+      "id": "romppainen",
+      "name": "Harri Romppainen",
+      "role": "Inspector, UNSA"
+    },
+    {
+      "id": "aalto",
+      "name": "Aalto",
+      "role": "Forensic technician, UNSA"
+    }
+  ],
+  "clues": {
+    "witness": "The sky over Lakkahaltia opened for eleven seconds at 03:14.",
+    "terminal": "The harbour terminal logged an inbound container with no ship attached.",
+    "doctor": "Dr. Vainio treated three agents for the same dream in one week.",
+    "device": "The transmitter is tuned to a frequency that is not in the radio band."
+  }
+}

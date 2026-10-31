@@ -148,6 +148,7 @@
     {
       "id": "fixtures-and-scenes",
       "globs": [
+        "data/ui/**",
         "noopunk/game/**",
         "fixtures/**",
         "scenes/**",
