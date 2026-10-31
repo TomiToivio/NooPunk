@@ -109,8 +109,6 @@ def main() -> int:
                        help="run just these commands (slice, rules, playthrough, ward, interaction)")
     parser.add_argument("--log", type=Path,
                        help="read an already-captured Godot log instead of running the command again")
-    parser.add_argument("--log", type=Path,
-                       help="read an already-captured Godot log instead of running the command again")
     args = parser.parse_args()
 
     wanted = [entry for entry in COMMANDS if not args.only or entry[0] in args.only]
