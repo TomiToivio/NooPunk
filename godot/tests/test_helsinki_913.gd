@@ -41,4 +41,34 @@ func run() -> Array:
 	rows.append(_eq("bunker still secret", _ids(restored.visible(flags)).has("unsa_underground"), false))
 	flags["underground_clearance"] = true
 	rows.append(_eq("clearance reveals bunker", restored.refresh(flags).has("unsa_underground"), true))
+
+	# Map placement: the illustrated map (#908) needs coordinates, and a list of nodes is not a map.
+	var placed := Map.from_data(Map.load_data())
+	var seen: Array = []
+	var all_inside := true
+	for node_id in placed.nodes:
+		var point: Array = placed.nodes[node_id].get("position", [])
+		if point.size() != 2:
+			all_inside = false
+			continue
+		if float(point[0]) < 0.0 or float(point[0]) > 1.0 or float(point[1]) < 0.0 or float(point[1]) > 1.0:
+			all_inside = false
+		seen.append("%.3f,%.3f" % [float(point[0]), float(point[1])])
+	rows.append(_eq("every location has a map position", all_inside, true))
+	rows.append(_eq("no two locations share a point", seen.size(), _unique(seen).size()))
+	var home: Array = placed.nodes["home_helsinginkatu"]["position"]
+	var hq: Array = placed.nodes["unsa_hq_ratakatu"]["position"]
+	rows.append(_eq("home is north of HQ", float(home[1]) < float(hq[1]), true))
+	rows.append(_eq("home is east of HQ", float(home[0]) > float(hq[0]), true))
+	var bunker: Array = placed.nodes["unsa_underground"]["position"]
+	rows.append(_eq("the bunker sits below HQ, not across the city",
+		absf(float(bunker[0]) - float(hq[0])) < 0.05 and float(bunker[1]) > float(hq[1]), true))
 	return rows
+
+
+func _unique(values: Array) -> Array:
+	var out: Array = []
+	for value in values:
+		if not out.has(value):
+			out.append(value)
+	return out
