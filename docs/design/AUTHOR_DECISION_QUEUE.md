@@ -188,6 +188,23 @@ rows are what that review cannot settle by itself. None of them blocks play toda
 | D56 | **The reskin pass itself.** D51 left the attribute *presentation* deferred as its own work item: do the six display aliases ship (STR→Might, DEX→Reflexes, CON→Vitality, INT→Intellect, WIS→Psyche/Insight, CHA→Presence), and does the same pass rename skills, gear and NPC job titles for a 2045 Nordic setting — with `STR…CHA` and every existing identifier unchanged in data, saves and rules text? | any renaming work; character-sheet labels; #747's rows 29–30 | *keep codes and source vocabulary* / *display aliases only* / *aliases + skill and gear vocabulary* |
 | D57 | **Whether any MINOR-MOD departure is approved.** After the re-derivation only one row is a departure, and it is not a NoöPunk design choice but a contradiction (D55). Approving none keeps NoöPunk literally "CWN/SWN as-is" plus four optional native modules; approving one requires the source rule, the ruling that forces it and the file it lives in. | the overlay document `rulebook/NOOPUNK_WN_OVERLAY.md`, whose deviations table is empty until this is answered | *approve none (overlay = hierarchy + vocabulary + optional modules)* / *approve the rows you name* |
 
+## #928 — two Stress engines on `main` (row D58)
+
+Fourteenth update (2026-10-31). Issue **#928** was implemented **twice within minutes** by two sessions —
+PR #930 (an overlay in `mods/noopunk/`) merged first, PR #929 (a core module wired into `GameState`)
+merged second — and both are on `main` at `1010ab8`. They agree on the spine of the rule and differ on
+participation, the addiction lifecycle, the scar exceptions, where the values live, and **whether
+ontological shock is Stress at all**: #928's own text says keep the two distinct, the overlay routes it to
+the Psyche module, the core module scores it +2. Neither session can resolve the duplication alone: the
+overlay may not import `godot/core/` and the core may not import `mods/`, so a single engine means one of
+the two placements has to lose. The record is
+[`AWN_STRESS_RECONCILIATION_928.md`](AWN_STRESS_RECONCILIATION_928.md); `main` is green with both
+(1822 Godot checks, 1652 Python tests), so this gates nothing today.
+
+| # | Decision | Blocks | Smallest useful answer |
+| --- | --- | --- | --- |
+| D58 | **Which layer owns the AWN Stress rule — core or `mods/`?** (a) **Core owns it and the overlay retires** (recommended): `godot/core/awn_stress.gd` reads `data/rules/awn_stress.json`, absorbs participation, the addiction lifecycle, the three scar exceptions and the seven labelled NoöPunk triggers (minus any ontology-shock entry), and `mods/noopunk/stress.gd` is deleted with the screen re-homed under `godot/ui/`. This is the house pattern — AWN is an imported *published* subsystem like `cwn_*`/`swn_*`, NoöPunk code already lives in core (`noopunk_tags.gd`), and #848 names only the homebrew overlays as `mods/` material. (b) **Overlay owns it and the core module retires** — blocked unless `GameState` loses the Stress API, because core may not import `mods/`. (c) **Both stay** — cheapest today, and it needs the ontology-shock question answered one way plus one contract read by both; two arithmetics and two save formats is the drift `UNIFIED_IMPLEMENTATION.md` exists to stop. The sub-question either way: **is ontology shock Stress (+2), or does it stay the Psyche module's business and out of the Stress table?** | nothing today (no rule is applied to a sheet yet); every future AWN Stress change, which otherwise has to be made twice; the #689 Psyche boundary | *core owns it, overlay retires* / *overlay only (re-opens the #897 lock)* / *both stay* ; and *ontology shock: Stress or Psyche only* |
+
 ## After an answer
 
 Each answered row becomes: a criterion check against `main` → an acceptance record in

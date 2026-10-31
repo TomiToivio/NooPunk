@@ -6,6 +6,12 @@
 > #848 / #897 override). This module adds one character meter and its consequences; it does not
 > replace attributes, checks, saves, combat, damage, System Strain, Alienation or progression.
 
+> **Read this with [`AWN_STRESS_RECONCILIATION_928.md`](AWN_STRESS_RECONCILIATION_928.md).** A second
+> implementation of the same rule landed in `godot/core/awn_stress.gd` (#929) minutes after this one
+> (#930). Both are on `main`; the duplication and the one rule difference between them (whether
+> ontological shock is Stress) are recorded there, and the placement ruling is row **D58** in
+> [`AUTHOR_DECISION_QUEUE.md`](AUTHOR_DECISION_QUEUE.md).
+
 ## Where it lives
 
 | Artefact | Path | Role |
