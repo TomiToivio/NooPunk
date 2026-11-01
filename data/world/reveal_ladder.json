@@ -1,0 +1,57 @@
+{
+  "$comment": "The reveal ladder (#1007). NoöPunk starts as recognisable cyberpunk and earns its cosmology through investigation. This file is the machine-readable half: a quest, a scene or an NPC may only show what its stage allows. tests/test_reveal_ladder.py checks the structure; the content rule is the author's.",
+  "format": "noopunk.reveal_ladder",
+  "version": 1,
+  "issue": "https://github.com/TomiToivio/NooPunk/issues/1007",
+  "principle": "Cyberpunk first, cosmic second. The player begins as a skeptical rookie in a recognizable city; UFO/NHI, PSI, occult and Noösphere material arrives through cases, evidence and escalating ontological shocks, never through exposition.",
+  "stages": [
+    {
+      "id": "street",
+      "order": 1,
+      "name": "Cyberpunk",
+      "what_the_rookie_knows": "UNSA is a UN agency with too many files and not enough staff. Cyberware, corporate crime, corruption, rationing, ordinary politics.",
+      "may_appear": ["cyberware", "hacking", "corporate crime", "bureaucracy", "street culture", "routine UNSA procedure"],
+      "may_not_appear": ["named NHI factions", "density or social-memory-complex vocabulary", "StO/StS framing", "wormholes", "Sirian refugees"],
+      "exit_condition": "A case that cannot be closed with a mundane explanation, and a superior who declines to explain why."
+    },
+    {
+      "id": "anomaly",
+      "order": 2,
+      "name": "Anomaly and PSI",
+      "what_the_rookie_knows": "Some incidents do not fit. Colleagues vary between denial, euphemism and dread. PSI is real but officially a research problem.",
+      "may_appear": ["psi phenomena", "noetic impressions", "anomalous evidence", "witness testimony", "ontological shock", "classified archives"],
+      "may_not_appear": ["NHI as a political actor with a name", "the Ghost Rocket question answered", "any faction's metaphysics confirmed"],
+      "exit_condition": "Evidence that survives every mundane explanation, and a decision about whether to report it."
+    },
+    {
+      "id": "disclosure",
+      "order": 3,
+      "name": "Partial disclosure",
+      "what_the_rookie_knows": "Non-human intelligence exists and has been negotiated with. Whose version of events is true is a live political fight.",
+      "may_appear": ["NHI factions by name", "UNSA–NHI diplomacy", "refugee politics", "1946 Ghost Rocket material", "competing interpretations"],
+      "may_not_appear": ["proof that any faction's cosmology is objectively correct", "the Sirian question answered", "the extinction claim settled either way"],
+      "exit_condition": "A case whose outcome is decided by interpretation rather than by evidence."
+    },
+    {
+      "id": "cosmic",
+      "order": 4,
+      "name": "The open question",
+      "what_the_rookie_knows": "The paradigms are public, the answers are not. Every faction is a political actor with an interest in being believed.",
+      "may_appear": ["wormhole politics", "Sirian arrival", "StO/StS as contested framing", "density vocabulary as in-world claim", "cosmology as argument"],
+      "may_not_appear": ["confirmation of any metaphysical system as fact", "removal of player agency to refuse a faction's offer"],
+      "exit_condition": null
+    }
+  ],
+  "rules": [
+    "A stage may show anything its predecessors allow; it may never show what a later stage owns.",
+    "Ontological shock is a consequence of play, not a cutscene: it is earned through evidence the player gathered.",
+    "Every faction's cosmology is a claim by an actor with interests. The game never confirms one as objectively true.",
+    "Ordinary cyberpunk problems stay relevant at every stage: rent, work, corruption and inequality do not stop being real because the sky is strange.",
+    "Romppainen may hint, joke, deflect, stage experiences and withhold what he does not know or may not say. He never lectures the lore and never takes a decision from the player."
+  ],
+  "perspective": {
+    "player_character": "A young UNSA Academy rookie field agent in Helsinki: inexperienced, skeptical, partially and sometimes incorrectly briefed.",
+    "mentor": "Dr. Harri S. Romppainen — an eccentric UNSA supervisor in the trickster-magician register: vastly more informed than he says, unreliable in method rather than in intent.",
+    "forbidden": "Never assume the player's character accepts an unbelievable proposition on trust; never resolve a mystery by having an NPC explain it."
+  }
+}

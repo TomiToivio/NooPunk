@@ -1,0 +1,361 @@
+{
+  "$comment": "Permanent rules foundation for NooPunk (#1006). Machine-readable companion to docs/rules/RULES_CONSTITUTION.md, which is authoritative if they disagree. Purpose: make it impossible to add a rules source, or change a source's role, without a test noticing.",
+  "format": "noopunk.rules.constitution",
+  "version": 1,
+  "issue": "https://github.com/TomiToivio/NooPunk/issues/1006",
+  "precedence": [
+    "CWN",
+    "SWN",
+    "WWN",
+    "AWN"
+  ],
+  "minimum_playable": [
+    "CWN",
+    "SWN"
+  ],
+  "layers": [
+    "core",
+    "module",
+    "mod"
+  ],
+  "prohibitions": [
+    "redesign_core",
+    "replace_attributes",
+    "rewrite_skill_mechanics",
+    "simplify_rules",
+    "silent_behaviour_change",
+    "fork_rule_into_mod"
+  ],
+  "sources": {
+    "CWN": {
+      "role": "core",
+      "status": "locked",
+      "licence": "CC0 (SRD)",
+      "licence_status": "verified",
+      "provides": [
+        "attributes",
+        "skills",
+        "advancement",
+        "combat",
+        "saves",
+        "equipment",
+        "resolution"
+      ]
+    },
+    "SWN": {
+      "role": "module",
+      "status": "adopted",
+      "licence": "SRD — not yet verified in this repository",
+      "licence_status": "unverified",
+      "provides": [
+        "psionics"
+      ]
+    },
+    "WWN": {
+      "role": "mod",
+      "status": "optional",
+      "licence": "CC0 (SRD)",
+      "licence_status": "verified",
+      "provides": []
+    },
+    "AWN": {
+      "role": "mod",
+      "status": "optional",
+      "licence": "SRD — not yet verified in this repository",
+      "licence_status": "unverified",
+      "provides": []
+    }
+  },
+  "module_tiers": {
+    "$comment": "Which tier each file under src/rules belongs to. The constitution above is about sources (CWN/SWN/WWN/AWN) and roles; this is the same decision expressed where it can be checked against the code tree. tools/rules_constitution_audit.py --check fails if a module is unclassified, duplicated or missing, or if a cwn-core module imports a noopunk-mod one; tests/test_rules_constitution_modules.py additionally runs the baseline with every noopunk-mod module blocked.",
+    "tier_vocabulary": {
+      "cwn-core": "Cities Without Number, as written. The baseline.",
+      "swn-companion": "Stars Without Number, imported whole-procedure. Psionics is the essential companion.",
+      "optional-source": "WWN / AWN, opt-in, one procedure, named in the module docstring.",
+      "noopunk-mod": "Original NoöPunk overlays: they read core state and add narrative state, never core resolution.",
+      "infrastructure": "Boundary, tag vocabulary and catalogues; not rules.",
+      "experimental": "Prototypes and labs that are NOT canonical and not part of play.",
+      "legacy": "Retired code kept for import compatibility. Never authoritative."
+    },
+    "baseline": "cwn-core",
+    "overlay": "noopunk-mod",
+    "vanilla_minimum": [
+      "cwn-core",
+      "swn-companion"
+    ],
+    "modules": [
+      {
+        "module": "src/rules/__init__.py",
+        "tier": "legacy"
+      },
+      {
+        "module": "src/rules/_retired.py",
+        "tier": "legacy"
+      },
+      {
+        "module": "src/rules/anomaly_gate.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/aspects_prototype.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/awn_survival.py",
+        "tier": "optional-source"
+      },
+      {
+        "module": "src/rules/core.py",
+        "tier": "legacy"
+      },
+      {
+        "module": "src/rules/cross_domain_state.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/cwn_advancement.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_attack_modifiers.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_backgrounds.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_character.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_combat.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_combat_actions.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_core.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_drones.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_edges_foci.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_encumbrance.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_equipment.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_foci.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_gear_mods.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_hacking.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_healing.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_initiative.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_injury_procedure.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_major_injury.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_mission_time.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_program_catalogue.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_strain.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_trauma.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_vehicles.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/equipment_catalog_index.py",
+        "tier": "infrastructure"
+      },
+      {
+        "module": "src/rules/field_agent.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/first_case_drill.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/investigation.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/investigation_evidence.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/issue200_cross_system_converter.py",
+        "tier": "experimental"
+      },
+      {
+        "module": "src/rules/issue200_resolution_lab.py",
+        "tier": "experimental"
+      },
+      {
+        "module": "src/rules/issue200_scale_migration.py",
+        "tier": "experimental"
+      },
+      {
+        "module": "src/rules/issue217_resolution.py",
+        "tier": "experimental"
+      },
+      {
+        "module": "src/rules/kernel_prototype.py",
+        "tier": "experimental"
+      },
+      {
+        "module": "src/rules/mental_load.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/mod_boundary.py",
+        "tier": "infrastructure"
+      },
+      {
+        "module": "src/rules/narrative_layer.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/narrative_moves.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/natural_psi.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/noopunk_crisis_contact.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/noopunk_extensions.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/noopunk_social_extensions.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/noopunk_tags.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/noospace_projection.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/party.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/physical_combat.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/psionics.py",
+        "tier": "swn-companion"
+      },
+      {
+        "module": "src/rules/social.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/swn_faction_operations.py",
+        "tier": "swn-companion"
+      },
+      {
+        "module": "src/rules/swn_faction_turn.py",
+        "tier": "swn-companion"
+      },
+      {
+        "module": "src/rules/swn_progression.py",
+        "tier": "swn-companion"
+      },
+      {
+        "module": "src/rules/swn_psionics.py",
+        "tier": "swn-companion"
+      },
+      {
+        "module": "src/rules/swn_sector.py",
+        "tier": "swn-companion"
+      },
+      {
+        "module": "src/rules/swn_starships.py",
+        "tier": "swn-companion"
+      },
+      {
+        "module": "src/rules/swn_transhuman.py",
+        "tier": "swn-companion"
+      },
+      {
+        "module": "src/rules/swn_true_ai.py",
+        "tier": "swn-companion"
+      },
+      {
+        "module": "src/rules/tag_fixtures.py",
+        "tier": "infrastructure"
+      },
+      {
+        "module": "src/rules/tags.py",
+        "tier": "infrastructure"
+      },
+      {
+        "module": "src/rules/ubiquitous_network.py",
+        "tier": "noopunk-mod"
+      },
+      {
+        "module": "src/rules/without_number.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/wn_core.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/wwn_projects.py",
+        "tier": "optional-source"
+      }
+    ]
+  }
+}

@@ -1,14 +1,14 @@
 # The Romppainen–Fujita psychotronic empathy assessment
 
-**Status:** canon, approved by Tomi (2026-11-01), issue #985. Final protocol and device name:
-**Romppainen–Fujita**. Player-facing Finnish copy remains Tomi's.
+**Status:** canon draft for issue #985. The protocol exists in-world; its final name and co-author
+require Tomi's approval. The game has one canonical Finglish language (#996); agents use English-led Finglish in player-visible text, and preserve all Tomi-authored dialogue verbatim. Non-player-facing documentation is in English.
 
 ## Origin
 
-UNSA Helsinki's consciousness and empathy assessment was developed by **Dr. Harri S. Romppainen** —
-field psychologist, fully qualified psychiatrist, neuroscientist and psychotronics engineer — with
-his former lover, **Dr. 愛 Fujita**, at the University of Helsinki. Their relationship is part of the
-bunker's quiet, uncomfortable weather; it is not exposition the early campaign dumps on the player.
+UNSA Helsinki uses an original consciousness and empathy assessment developed by **Dr. Harri S.
+Romppainen**, UNSA Supervisory Special Agent (SSA) and psychologist, with a colleague at the **University of Helsinki**.
+The collaborator's name, discipline and personality are still open; the protocol is referred to here
+as the **Helsinki protocol** until Tomi names it.
 
 Romppainen runs the psychotronics programme from the **UNSA underground bunker laboratory** beneath the
 Helsinki field office. The register is *Maniac* by way of *Riget*: institutional humour, fluorescent
@@ -101,3 +101,11 @@ does.
 - Whether the PSI channel is canonically part of the device or a separate Noösphere interface.
 - How openly UNSA publishes the method; the transparency-versus-classification tension applies.
 - Finnish voice for Romppainen's explanation of the test.
+
+## Links
+
+- #985 — this design.
+- #950 — MUD is the main game.
+- #996 / `docs/FINNISH.md` — canonical Finglish, no localizations; preserve Tomi's writing.
+- #981 — gradual narrative revelation and spoiler discipline (outdated localization rules superseded by #996).
+- #897 — CWN rules lock; this is a mod/procedure, not a new core.

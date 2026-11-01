@@ -10,5 +10,7 @@ class Survivor(DefaultCharacter):
         self.db.skills = {"notice": 0, "survive": 0, "talk": 0}
         self.db.food = 1
         self.db.water = 1
-        self.db.faction = None
-        self.db.reputation = 0
+        self.db.faction = "UNSA"  # legacy compatibility
+        self.db.reputation = 0  # legacy compatibility; scoped reputation lives separately
+        from nopunk_mud.faction_tags import initial_state
+        self.db.faction_tags = initial_state()

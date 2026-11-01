@@ -70,8 +70,43 @@ class CmdUnsa(Command):
 
 class CmdFaction(Command):
     key = "faction"
+    aliases = ["factions", "rank"]
     def func(self):
-        self.caller.msg(f"Faction: {self.caller.db.faction or 'independent'} | Reputation: {self.caller.db.reputation or 0}")
+        from nopunk_mud.faction_tags import normalize, rank, RANKS, REWARDS
+        state = normalize(self.caller.db.faction_tags)
+        level = rank(state)
+        self.caller.msg(
+            f"UNSA | {RANKS[level]} (rank {level}) | "
+            f"training: {REWARDS[level]['training']} | equipment: {REWARDS[level]['equipment']}"
+            if level is not None else "No active UNSA membership."
+        )
+
+
+class CmdReputation(Command):
+    key = "reputation"
+    aliases = ["rep"]
+    def func(self):
+        from nopunk_mud.faction_tags import normalize, NETWORKS, visible_reputations
+        state = normalize(self.caller.db.faction_tags)
+        entries = visible_reputations(state, viewer="owner")
+        lines = [f"{name}: {entries.get('network:'+name, {}).get('value', 0):+d}"
+                 for name in NETWORKS]
+        lines += [f"{k}: {v['value']:+d}" for k, v in sorted(entries.items())
+                  if k not in {'network:'+n for n in NETWORKS}]
+        self.caller.msg("Reputation | " + " | ".join(lines))
+
+
+class CmdGoals(Command):
+    key = "goals"
+    def func(self):
+        from nopunk_mud.faction_tags import normalize, visible_goals
+        state = normalize(self.caller.db.faction_tags)
+        goals = visible_goals(state)
+        self.caller.msg("Goals: " + (
+            "; ".join(f"{key}: {value['description']} [{value['status']}]"
+                      for key, value in sorted(goals.items())) if goals else "none yet"
+        ))
+
 
 class CmdTalk(Command):
     key = "talk"
@@ -167,9 +202,14 @@ class NoopunkCharacterCmdSet(CharacterCmdSet):
         self.add(CmdCheckAttr())
         self.add(CmdCase())
         self.add(CmdSolo())
+        # #985: the Romppainen assessment was implemented and tested but never registered, so a player
+        # could not run it. `test_every_command_is_registered` now fails if a command is defined and not added.
+        self.add(CmdAssess())
         self.add(CmdCheck())
         self.add(CmdSupplies())
         self.add(CmdScavenge())
         self.add(CmdUnsa())
         self.add(CmdFaction())
+        self.add(CmdReputation())
+        self.add(CmdGoals())
         self.add(CmdTalk())
