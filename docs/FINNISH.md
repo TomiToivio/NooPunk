@@ -1,3 +1,5 @@
+# Finnish localization
+
 We should consider the language of NoöPunk. It should be Finnish and English. At this stage only user interface, dialogue and story of the MUD is important. Rulebook language is not important.
 
 - Tomi should write the dialogue and story in Finnish. This is to make the language more authentic and original.&#x20;
@@ -8,6 +10,8 @@ We should consider the language of NoöPunk. It should be Finnish and English. A
 - Tomi should write like he speaks, it is a mix of Stadin Slangi and Finglish. The language will also be influenced by retrofuturistic languages like Nadsat (which is actually very similar to Stadin Slangi, both have numerous Russian loan words) and Doublespeak.&#x20;
 - In real life the Finglish is probably 50% English: don't worry if the game is a mix of English and Finnish. Also a lot of Russian loan words, straight from Stadin Slangi and Nadsat influences.
 - We should also create a glossary with common Helsinki slang and terminology of the game universe. Words like "Cyberspace" have been used IRL for decades, no worry about William Gibson plagiarism there.
+
+## NoöPunk world
 
 Notes about the game world:
 
