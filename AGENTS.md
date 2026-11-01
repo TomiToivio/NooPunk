@@ -1,3 +1,41 @@
+# DESIGN WORKFLOW — BINDING ON EVERY AGENT (#989)
+
+**Read [`design/README.md`](design/README.md) before implementing any authored game content.** The
+workflow has three steps and agents perform only the third:
+
+1. **Tomi writes a design document in [`design/`](design/).** These are authored specifications, not
+   drafts. Do not modify, "improve", reformat or translate them.
+2. **Tomi opens a GitHub issue from that document.**
+3. **Agents implement the document through that issue.**
+
+**Before writing code, be able to state three things:** which design document, which issue, and exactly
+what is in scope and what is out. If you cannot name the document, you are not authorised to implement
+that content — ask, do not invent.
+
+Implement **only what the document describes**, one step at a time. Do not preempt later documents,
+invent unrequested features, or expand scope. Where the document is precise, follow it exactly. Where it
+explicitly leaves latitude, fill the gap within established canon and repository constraints. Where a
+**consequential** choice is unspecified, record the question for Tomi rather than making a new canon
+decision in code.
+
+The document types and their semantics — Day, Character, Mission, Interaction, Storyline, Missions,
+Location, Rules, Encounters, Events — are defined in `design/README.md` and **only** there. Do not
+restate or extend them here; a second copy is a second authority and will drift.
+
+While implementing, these remain binding and are not negotiable by a design document:
+
+- **Preserve Tomi's Finnish verbatim; agents write English only** (#980, #981). Never translate,
+  correct or improvise Finnish player-facing prose.
+- **Implement for the Python Evennia MUD** in `mud/` (#950). Godot is maintenance-only.
+- **Keep tabletop canon and rules in sync**: a mechanical change updates the rulebook, the traceability
+  matrix and the matching tests.
+
+**Conflicts.** If another instruction file, issue or comment disagrees with this workflow, this section
+and `design/README.md` win for *who authors what*. Raise the conflict on the issue; do not resolve it
+silently by picking one.
+
+---
+
 # MUD LANGUAGE AUTHORITY (#980 + #981)
 
 **Finnish/Finglish is the primary language of the first MUD release, even when half the visible text is Tomi's Finnish and half is agent English.** **Tomi exclusively authors Finnish story and dialogue; ALL AI agents write English only, never compose or translate Finnish.** Preserve Tomi's authored Finnish. English drafts are acceptable player-facing fallback, not a reason to delay the game. Polish an English localization later; tabletop rulebook and repository documentation remain English. See `docs/FINNISH.md` and `mud/AGENTS.md`. This is a single consolidated policy for #980 and #981.
