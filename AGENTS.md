@@ -12,6 +12,69 @@
 
 **Scope:** `mud/` for implementation, `docs/` and canonical tabletop rules only for coordinated docs, not Godot runtime. See issue #950.
 
+# DESIGN WORKFLOW — MANDATORY (#989)
+
+**No authored content is implemented without Tomi's design document and its issue.** The single source
+of truth is [`design/README.md`](design/README.md); this section summarizes it for agents and must not
+evolve into a second workflow. If the two disagree, `design/README.md` wins.
+
+1. **Tomi writes a design document in `design/`.**
+2. **Tomi opens an issue based on that document.**
+3. **Agents implement that document through that issue.**
+
+Before writing code, an agent must:
+
+- read the linked design document **in full**, plus `design/README.md`;
+- state which design document and issue authorize the work;
+- state what is in scope and what is out of scope for this increment;
+- implement **only** what the document describes, one step at a time, and report what remains.
+
+Do not preempt later documents, invent unrequested features or silently widen scope. Where the document
+is precise, implement it faithfully. Where it explicitly leaves latitude, fill gaps creatively within
+established canon and repository constraints. A consequential choice the document does not settle is a
+**question for Tomi**, not a new canon decision.
+
+## Document types and their semantics
+
+| Type | Meaning |
+|---|---|
+| **Day** | Calendar/world-time events independent of player progress; no Day document means no special event that day |
+| **Character** | NPCs |
+| **Mission** | Scripted PC/party missions |
+| **Interaction** | Dialogue and social encounter scripts |
+| **Storyline** | Progress-gated main story |
+| **Missions** | Side missions, scripted or repeatable/procedural |
+| **Location** | Visitable locations and nested sublocations (Helsinki → UNSA HQ → Romppainen's office) |
+| **Rules** | CWN-compatible mods, equipment and extra mechanics |
+| **Encounters** | Random encounters independent of the main story |
+| **Events** | Random events independent of the main story |
+
+**Day is not Storyline.** Daily events follow world time even when the player has not advanced; the main
+story follows player progress. Keep authored missions distinct from repeatable side content, and both
+distinct from random encounters/events.
+
+## Non-negotiable boundaries
+
+- **Finnish:** never translate, rewrite or correct Tomi's Finnish. Agents author **English only**; the
+  Finglish mix is intentional. See `docs/FINNISH.md` and `mud/AGENTS.md`.
+- **Runtime:** implement the **Python Evennia MUD in `mud/`**, not the deprecated Godot-first game,
+  unless Tomi explicitly says otherwise. The first solo UNSA campaign must run without a human/LLM GM
+  or other players (#950).
+- **Rules:** CWN is the locked foundation; new rules are mods/overlays, never an alternate core (#897).
+  Update the tabletop rulebook material alongside mechanical changes.
+- **Canon sync:** add implemented campaign scenarios and lore to the NoöPunk tabletop RPG rulebook with
+  references and spoiler safeguards; do not leak gated reveals or duplicate text blindly.
+- **Verification:** test deterministic mechanics, quests, dialogue/content routing, day-vs-storyline
+  triggers and location hierarchy where applicable, and report implemented vs open.
+
+**Related priorities, not superseded:** #950 (MUD is primary), #897 (CWN lock), #980/#981 (language).
+
+## Manual compliance check
+
+There is deliberately no prose test for this policy (see #271). Reviewers check: the PR names a design
+document and issue; the diff stays inside that scope; Finnish text is preserved verbatim; English-only
+authoring; tests or an explicit untested note; tabletop sync or a stated reason it does not apply.
+
 ## Language — Finnish-first MUD, agents write English only (#980, #981)
 
 **Tomi writes all Finnish dialogue, story and player-facing copy. Agents must never write Finnish** — no prose, no translation, no imitation of Tomi's voice, no "approximate Finnish" placeholders. Agents write English source lines and stable keys; Tomi adapts them to Finnish later. The development build is deliberately mixed Finnish/English and must mark English placeholders visibly. Rulebook, docs, issues and code stay English. Canonical policy and glossary: `docs/FINNISH.md`, `docs/world/HELSINKI_SLANG_GLOSSARY.md`. Enforced in code by `mud/nopunk_mud/i18n.py` (fi/en catalogue; agents fill `en` only; missing Finnish falls back visibly).
