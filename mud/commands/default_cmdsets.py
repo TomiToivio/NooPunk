@@ -175,12 +175,62 @@ class CmdSolo(Command):
 
 
 class CmdAssess(Command):
+    """Run the helmet-based Helsinki device, max four uses per in-world day.
+
+    Usage: assess status | assess equip | assess run
+    A successful run saves the character's use counter in Evennia Attributes.
+    The campaign may advance caller.db.unsa_day; real-world midnight never does.
+    """
     key = "assess"
+
     def func(self):
+        from nopunk_mud.romppainen_fujita import (
+            DeviceUnavailable, HELMET_DESCRIPTION, Use, available, perform,
+        )
+
+        action = self.args.strip().lower() or "status"
+        # A game-world day is an explicit persisted campaign attribute, not wall time.
+        day = self.caller.db.unsa_day
+        if day is None:
+            day = 1
+        record = self.caller.db.romppainen_fujita_uses
+        if action == "status":
+            try:
+                remaining = available(record, day=day)
+            except DeviceUnavailable as exc:
+                self.caller.msg(str(exc))
+                return
+            self.caller.msg(f"Romppainen–Fujita: {remaining} of 4 tests remain on in-world day {day}. "
+                            "Use 'assess equip' then 'assess run'.")
+            return
+        if action == "equip":
+            self.caller.db.romppainen_fujita_helmets = True
+            self.caller.msg(HELMET_DESCRIPTION)
+            return
+        if action != "run":
+            self.caller.msg("Usage: assess status | assess equip | assess run")
+            return
+        try:
+            updated = perform(
+                record, day=day, office=self.caller.db.unsa_office or "Helsinki",
+                administrator_helmet=bool(self.caller.db.romppainen_fujita_helmets),
+                subject_helmet=bool(self.caller.db.romppainen_fujita_helmets),
+            )
+        except DeviceUnavailable as exc:
+            self.caller.msg(str(exc) + " The investigation can proceed using interviews and records.")
+            return
+        # No mutations until validation succeeds; the interview never gates core clues.
         result = run_case()
-        self.caller.msg(f"Consciousness assessment: {result.assessment.classification} "
-                        f"(score {result.assessment.score}, confidence {result.assessment.confidence})")
+        self.caller.db.romppainen_fujita_uses = updated.to_dict()
+        self.caller.db.romppainen_fujita_helmets = False
+        self.caller.msg("The console beeps and its tiny lights blink. Both helmets hum.")
+        self.caller.msg(f"Assessment pattern: {result.assessment.classification} "
+                        f"(score {result.assessment.score}, confidence {result.assessment.confidence}). "
+                        "Pattern, not proof of consciousness.")
+        for clue in result.clues:
+            self.caller.msg("Clue: " + clue)
         self.caller.msg("Lead: " + result.assessment.core_clue)
+        self.caller.msg(f"{4 - updated.count} test(s) remain today.")
 
 
 class CmdDictionary(Command):
