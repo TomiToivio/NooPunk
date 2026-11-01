@@ -35,4 +35,14 @@
 | cyberdeck | computing/hacking equipment | Established genre word |
 | cyberspace | connected digital environment | Established generic genre vocabulary |
 
+## Contemporary and author-provided expressions
+
+| Term | Brief English meaning | Provenance | Public? |
+| --- | --- | --- | --- |
+| Wallah! | An emphatic oath or assertion | Tomi-provided contemporary expression; usage varies | Yes |
+| Mä vannon! | I swear! | Tomi-provided Finnish expression | Yes |
+| Suomi Perkele Saatana! | Emphatic exclamation invoking Finland and Finnish swearing | Tomi-provided expression | Yes |
+
+These are **contextual vocabulary aids**, not translations of scenes. Do not make unsupported claims about etymology. The player-facing `dictionary` command is spoiler-safe and separate from developer documentation. No localizations of the game are planned.
+
 Record provenance for new terms and distinguish documented slang from original NoöPunk neologisms and literary inspiration. Consult Tomi-authored content for speaker-appropriate vocabulary before reuse. Russian, Chinese, Swedish or other loanwords can appear occasionally in player-facing English-dominant Finglish when situationally natural. No automatic translation, unverified claims of authentic slang, or reproduction of distinctive Nadsat inventions/dialogue.

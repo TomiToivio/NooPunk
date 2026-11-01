@@ -1,35 +1,24 @@
-# NoöPunk MUD Finglish and narrative policy (#992; updates #980/#981)
+# NoöPunk canonical Finglish policy (#996)
 
-> **Binding boundary:** Player-visible NoöPunk MUD text is primarily **English with occasional simple, contextual Finnish and other loanwords**: our distinctive Finglish. Everything else written by agents is **plain English**. **Never translate, correct, overwrite, or imitate Tomi-authored Finnish/Finglish passages.**
+**One canonical game language: NoöPunk Finglish. There will be no Finnish, English, or other localized editions.** This supersedes the separate-edition/localization plans of #980, #981 and #992.
 
-## Where the policy applies
+## The player-facing language
 
-| Surface | Agent language |
-| --- | --- |
-| Text directly shown to the MUD player: UI, dialogue, descriptions, quests, in-world messages, narrative | **English-dominant Finglish**. Mostly English, occasionally short and basic Finnish expressions and suitable Swedish, Russian, Chinese or other borrowings. |
-| Future Concordia LLM GM and NPC responses **shown to the player** | Same **English-dominant Finglish** rule, tuned to the speaker and situation. |
-| Design documents, issues, PRs, tabletop rules, agent instructions, internal LLM prompts, code, comments, tests, technical documents and other non-player-visible content | **Plain English**. Do not insert multilingual stylistic flourishes. |
-| Tomi-authored dialogue, descriptions, or UI text already present in the game | **Preserve verbatim**, including Finnish, English, slang, punctuation and code-switching. No automatic translation or rewriting. |
+The NoöPunk MUD uses a distinctive, evolving Helsinki contact language inspired by contemporary Finnish, Stadin slangi, English, Swedish, Russian, Chinese and other contextual borrowings. Nadsat and Blade Runner Cityspeak are influences on the *method* of mixing languages, not text or fictional lexicons to reproduce. Contemporary usage includes expressions supplied by Tomi such as “Wallah!”, “Mä vannon!” and “Suomi Perkele Saatana!”. Do not assign unverified etymologies or stereotypes to speakers.
 
-**This is a player-visibility boundary, not an author-identity boundary.** Agents may write *limited* Finnish within otherwise English player-visible prose; they must **not** try to produce fluent Finnish, counterfeit Tomi's Helsinki voice, or automatically translate his copy. When uncertain, default to natural English. Do not impose a percentage, require a non-English word in every message, or make informational UI unclear.
+Agents write **mostly English** with occasional very simple Finnish or appropriate loanwords in player-visible dialogue, narration, descriptions, quests, command feedback and future Concordia GM/NPC output. Characters differ in register; no quotas, no gratuitous slang, no fabricated fluency. Tomi may author much more Finnish/Finglish. **Never translate, correct, normalize, remove or overwrite his authored text**. Preserve exact original content and attribution.
 
-## Voice and vocabulary
+All **non-player-facing** text, including rulebooks, design documents, code, tests, issue and PR discussion, development instructions, internal agent prompts and logs, stays **plain English**. English tabletop rules are not a game localization.
 
-- The intended agent voice is a foreigner who knows just a little simple, sometimes imperfect Finnish: brief greetings, interjections and commonplace phrases rather than long Finnish sentences. Do not manufacture errors mechanically.
-- Occasionally reuse **Tomi-authored/approved** Stadin slangi and Finglish vocabulary in character-appropriate contexts. Consult [the glossary](world/HELSINKI_SLANG_GLOSSARY.md) and relevant Tomi-authored design/game text before using it; do not silently promote unverified vocabulary into canon.
-- Russian- and Chinese-influenced borrowings, Swedish and other languages are welcome when justified by a character, place, or situation. This is **Nadsat-inspired linguistic texture**, not permission to reproduce distinctive invented Nadsat words, passages or dialogue from *A Clockwork Orange*.
-- Register matters: Romppainen, UNSA personnel, Helsinki locals, international agents, NHI-facing specialists, and corporate NPCs need not code-switch in identical ways. Keep text comprehensible and avoid exoticizing speakers.
-- Bureaucratic institutional double-speak can influence style without reproducing another author's prose.
-- A substantial percentage of the **overall game** can still be original Finnish written by Tomi. No translation-completeness threshold blocks release.
+## Dictionary, not localization
 
-## Authoring, provenance and runtime
+Offer the optional `dictionary` / `lexicon` command to explain terms in short English definitions. Its public entries must not reveal classified NHI, PSI or Noösphere information. Track whether a word is documented slang, Tomi-approved terminology or a fictional proposal. Later classified dossiers may expose gated definitions, never through the public dictionary. Keep core commands, safety instructions and vital gameplay feedback understandable without studying the glossary.
 
-1. Tomi owns his own authored text. Reproduce it faithfully when implementing a design document: do not translate, fix, polish, modify or overwrite Finnish/Finglish. Changes require his explicit authorization.
-2. Agents author new player-facing MUD strings in **English-dominant Finglish**, preserving stable, locale-neutral IDs and attribution/source metadata. Agent-originated English-dominant Finglish is **not** a Finnish translation and should not be misrepresented as Tomi-authored `fi` content.
-3. Existing `mud/nopunk_mud/i18n.py` locale machinery can use an English-source field containing occasional loanwords; preserve the separately authored Finnish field, and any fallback markers or language metadata. Do not circumvent provenance checks by mislabeling agent content as Tomi's.
-4. The finished MUD may intentionally contain mixed Tomi-Finnish and agent-Finglish; this is a feature, not a localization defect. A polished English-only edition is a separate later milestone.
-5. **Future Concordia LLM GM/NPC implementation:** include these instructions in the runtime *player-facing output contract* and test sample outputs. Internal prompts, reasoning summaries, JSON state, mechanics and logs remain English. Keep the first deterministic UNSA single-player campaign usable without Concordia/LLM GM (#950).
-6. Keep quest state, game identifiers and save formats language-neutral. Test fallback, UTF-8 round-tripping and preservation of Tomi's authored material when localization machinery changes.
+## Data and save compatibility
+
+Stable content keys and campaign-state identifiers are language-neutral. Legacy `en` and `fi` catalogues can be read for compatibility, but **are not language editions**. The canonical resolver selects preserved Tomi-authored text where present and otherwise the original agent-authored Finglish source. No locale switch, translation backlog, automatic translation or translation-completeness gate. Preserve old files, source metadata, UTF-8 text and existing saved games during migration.
+
+Future Concordia LLM NPC and GM player-visible output must follow this same single-language policy and each speaker's register. Internal prompts remain English. Concordia is not required for the deterministic solo UNSA campaign (#950).
 
 ## Narrative revelation: grounded Helsinki first
 
@@ -52,4 +41,4 @@ Use explicit knowledge gates in scene data and avoid spoilers from UI, achieveme
 
 ## Scope
 
-The Finglish exception applies **only to text shown to the MUD player**, including future Concordia GM/NPC output. Documentation, rules, design documents, and all internal agent/code text remain plain English. This policy supersedes the old absolute English-only language restriction in #980/#981 while retaining the protection for Tomi-authored text.
+Canonical NoöPunk Finglish is **the only MUD language**; there are **no localized game editions**. This policy governs all agents, authored player text and future Concordia output. The author-led workflow in `design/README.md` remains binding.

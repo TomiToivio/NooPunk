@@ -1,8 +1,4 @@
-"""The fi/en content contract (#981 item 2).
-
-Pins the policy as executable rules: English is the fallback, a missing Finnish string is *pending*, an
-agent must not have copied English into `fi`, and there is no translation machinery anywhere.
-"""
+"""Legacy source storage tests under the single canonical Finglish policy (#996)."""
 from __future__ import annotations
 
 import json
@@ -29,16 +25,16 @@ def test_the_shipped_catalogues_load_and_are_valid() -> None:
     assert validate_catalogue(catalogues) == [], "the shipped catalogues must satisfy the contract"
 
 
-def test_every_english_key_is_pending_finnish_on_the_first_pass() -> None:
+def test_historical_finnish_backlog_is_retired() -> None:
     catalogues = {loc: load_catalogue(loc) for loc in ("fi", "en")}
     pending = pending_finnish(catalogues)
-    assert pending == sorted(catalogues["en"]), "nothing is translated yet, and that is the honest state"
+    assert pending == [], "canonical Finglish never requires a separate Finnish translation"
 
 
-def test_the_translator_falls_back_to_english_and_records_it() -> None:
+def test_canonical_resolver_uses_original_source_without_translation_backlog() -> None:
     translator = Translator(DEFAULT_LOCALE)
     assert translator.text("ui.prompt.default") == "What do you do?"
-    assert translator.missing == ["ui.prompt.default"]
+    assert translator.missing == []
     assert translator.has("ui.prompt.default") is True
 
 
@@ -69,21 +65,19 @@ def test_trauma_and_shock_have_player_facing_strings() -> None:
     assert "shock" in translator.text("combat.shock", target="B", shock=2)
 
 
-def test_finnish_that_merely_repeats_the_english_is_flagged() -> None:
-    """An agent pasting English into `fi` makes the gap look closed; the validator says no."""
-    problems = validate_catalogue({"en": {"a.key": "Same"}, "fi": {"a.key": "Same"}})
-    assert any("identical to its English text" in p for p in problems)
+def test_historical_catalogues_are_not_mandatory_distinct_localizations() -> None:
+    assert validate_catalogue({"en": {"a.key": "Same"}, "fi": {"a.key": "Same"}}) == []
 
 
 def test_a_malformed_key_or_empty_string_is_rejected(tmp_path) -> None:
     (tmp_path / "fi.json").write_text(json.dumps({}), encoding="utf-8")
     (tmp_path / "en.json").write_text(json.dumps({"Bad Key": "x"}), encoding="utf-8")
-    with pytest.raises(I18nError, match="malformed key"):
+    with pytest.raises(I18nError, match="invalid key"):
         load_catalogue("en", directory=tmp_path)
     (tmp_path / "en.json").write_text(json.dumps({"a.key": "   "}), encoding="utf-8")
-    with pytest.raises(I18nError, match="non-empty"):
+    with pytest.raises(I18nError, match="invalid content"):
         load_catalogue("en", directory=tmp_path)
-    with pytest.raises(I18nError, match="unknown locale"):
+    with pytest.raises(I18nError, match="unknown historical catalogue"):
         load_catalogue("de")
 
 

@@ -148,11 +148,21 @@ class CmdAssess(Command):
         self.caller.msg("Lead: " + result.assessment.core_clue)
 
 
+class CmdDictionary(Command):
+    """Explain public Finglish vocabulary without revealing story secrets."""
+    key = "dictionary"
+    aliases = ["lexicon"]
+
+    def func(self):
+        from nopunk_mud.lexicon import lookup
+        self.caller.msg(lookup(self.args))
+
+
 class NoopunkCharacterCmdSet(CharacterCmdSet):
     key = "NoopunkCharacterCmdSet"
     def at_cmdset_creation(self):
         super().at_cmdset_creation()
-        self.add(CmdSheet())
+        self.add(CmdDictionary())\n        self.add(CmdSheet())
         self.add(CmdCheckAttr())
         self.add(CmdCase())
         self.add(CmdSolo())
