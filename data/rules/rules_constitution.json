@@ -45,7 +45,7 @@
     "SWN": {
       "role": "module",
       "status": "adopted",
-      "licence": "SRD — not yet verified in this repository",
+      "licence": "SRD \u2014 not yet verified in this repository",
       "licence_status": "unverified",
       "provides": [
         "psionics"
@@ -61,7 +61,7 @@
     "AWN": {
       "role": "mod",
       "status": "optional",
-      "licence": "SRD — not yet verified in this repository",
+      "licence": "SRD \u2014 not yet verified in this repository",
       "licence_status": "unverified",
       "provides": []
     }
@@ -72,7 +72,7 @@
       "cwn-core": "Cities Without Number, as written. The baseline.",
       "swn-companion": "Stars Without Number, imported whole-procedure. Psionics is the essential companion.",
       "optional-source": "WWN / AWN, opt-in, one procedure, named in the module docstring.",
-      "noopunk-mod": "Original NoöPunk overlays: they read core state and add narrative state, never core resolution.",
+      "noopunk-mod": "Original No\u00f6Punk overlays: they read core state and add narrative state, never core resolution.",
       "infrastructure": "Boundary, tag vocabulary and catalogues; not rules.",
       "experimental": "Prototypes and labs that are NOT canonical and not part of play.",
       "legacy": "Retired code kept for import compatibility. Never authoritative."
@@ -173,6 +173,10 @@
         "tier": "cwn-core"
       },
       {
+        "module": "src/rules/cwn_heat.py",
+        "tier": "cwn-core"
+      },
+      {
         "module": "src/rules/cwn_initiative.py",
         "tier": "cwn-core"
       },
@@ -186,6 +190,10 @@
       },
       {
         "module": "src/rules/cwn_mission_time.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_npcs.py",
         "tier": "cwn-core"
       },
       {

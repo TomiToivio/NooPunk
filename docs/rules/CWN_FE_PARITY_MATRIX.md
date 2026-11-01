@@ -21,9 +21,9 @@ Silence is never read as done.
 
 | Status | Sections |
 |---|---:|
-| tested | 43 |
+| tested | 45 |
 | untested | 0 |
-| missing | 30 |
+| missing | 28 |
 | setting | 25 |
 | **total** | **98** |
 
@@ -48,13 +48,13 @@ Silence is never read as done.
 | Saving Throws | 30 | `cwn_core` | 19 | `test_cwn_core.py`, `test_cwn_coverage_manifest.py` | tested | — |
 | Skill Checks | 31 | `wn_core` | 11 | `test_cwn_combat.py`, `test_cwn_core.py` | tested | — |
 | Combat | 32 | `cwn_combat`, `cwn_core` | 21 | `test_cwn_attack_modifiers.py`, `test_cwn_combat.py` | tested | — |
-| The Combat Round | 33 | `cwn_initiative`, `cwn_combat_actions` | 12 | `test_cwn_combat_actions.py`, `test_cwn_initiative.py` | tested | — |
+| The Combat Round | 33 | `cwn_initiative`, `cwn_combat_actions` | 13 | `test_cwn_combat_actions.py`, `test_cwn_initiative.py` | tested | — |
 | Actions in Combat | 34 | `cwn_combat_actions` | 5 | `test_cwn_combat_actions.py`, `test_wn_core_contract.py` | tested | — |
 | Combat Maneuvers and Definitions | 36 | `cwn_combat_actions`, `cwn_attack_modifiers` | 8 | `test_cwn_attack_modifiers.py`, `test_cwn_combat_actions.py` | tested | — |
 | Injury, Healing, and System Strain | 40 | `cwn_core`, `cwn_strain`, `cwn_healing` | 28 | `test_cwn_core.py`, `test_cwn_coverage_manifest.py` | tested | — |
 | Major Injuries and Damaging Cyberware | 41 | `cwn_major_injury`, `cwn_injury_procedure` | 9 | `test_cwn_injury_procedure.py`, `test_cwn_major_injury.py` | tested | — |
 | Vehicle Combat | 42 | `cwn_vehicles` | 29 | `test_cwn_vehicles.py` | tested | — |
-| Chases and Pursuit | 43 | `cwn_vehicles` | 29 | `test_cwn_vehicles.py` | tested | — |
+| Chases and Pursuit | 43 | — | 0 | — | missing | no module implements this section |
 | Character Advancement | 44 | `cwn_advancement` | 14 | `test_cwn_advancement.py`, `test_mud_cwn_parity_950.py` | tested | — |
 | Crafting and Modifying Gear | 46 | `cwn_gear_mods` | 20 | `test_cwn_gear_mods.py` | tested | — |
 | The Tools of the Trade | 48 | — | 0 | — | setting | chapter divider |
@@ -101,10 +101,10 @@ Silence is never read as done.
 | Creating an Intrusion Mission | 169 | — | 0 | — | missing | no module implements this section |
 | Playing the Mission | 172 | — | 0 | — | missing | no module implements this section |
 | Mission Rewards and Experience | 176 | — | 0 | — | missing | no module implements this section |
-| Heat | 178 | — | 0 | — | missing | no module implements this section |
+| Heat | 178 | `cwn_heat` | 2 | `test_cwn_npcs_heat.py` | tested | — |
 | aces On the Street | 180 | — | 0 | — | setting | NPC chapter divider |
-| Reaction Rolls and Morale | 182 | — | 0 | — | missing | no module implements this section |
-| Morale and Morale Checks | 183 | — | 0 | — | missing | no module implements this section |
+| Reaction Rolls and Morale | 182 | `cwn_npcs` | 3 | `test_cwn_npcs_heat.py` | tested | — |
+| Morale and Morale Checks | 183 | `cwn_npcs` | 3 | `test_cwn_npcs_heat.py` | tested | — |
 | Beasts and Guard Animals | 185 | — | 0 | — | missing | no module implements this section |
 | Corp Guards and Law Enforcement | 186 | — | 0 | — | missing | no module implements this section |
 | Gangers and Criminals | 188 | — | 0 | — | missing | no module implements this section |
