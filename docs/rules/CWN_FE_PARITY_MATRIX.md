@@ -21,9 +21,9 @@ Silence is never read as done.
 
 | Status | Sections |
 |---|---:|
-| tested | 45 |
+| tested | 48 |
 | untested | 0 |
-| missing | 28 |
+| missing | 25 |
 | setting | 25 |
 | **total** | **98** |
 
@@ -54,7 +54,7 @@ Silence is never read as done.
 | Injury, Healing, and System Strain | 40 | `cwn_core`, `cwn_strain`, `cwn_healing` | 28 | `test_cwn_core.py`, `test_cwn_coverage_manifest.py` | tested | — |
 | Major Injuries and Damaging Cyberware | 41 | `cwn_major_injury`, `cwn_injury_procedure` | 9 | `test_cwn_injury_procedure.py`, `test_cwn_major_injury.py` | tested | — |
 | Vehicle Combat | 42 | `cwn_vehicles` | 29 | `test_cwn_vehicles.py` | tested | — |
-| Chases and Pursuit | 43 | — | 0 | — | missing | no module implements this section |
+| Chases and Pursuit | 43 | `cwn_vehicles` | 29 | `test_cwn_vehicles.py` | tested | — |
 | Character Advancement | 44 | `cwn_advancement` | 14 | `test_cwn_advancement.py`, `test_mud_cwn_parity_950.py` | tested | — |
 | Crafting and Modifying Gear | 46 | `cwn_gear_mods` | 20 | `test_cwn_gear_mods.py` | tested | — |
 | The Tools of the Trade | 48 | — | 0 | — | setting | chapter divider |
@@ -65,8 +65,8 @@ Silence is never read as done.
 | Weapons | 54 | `cwn_equipment` | 8 | `test_cwn_equipment.py`, `test_cwn_gear_mods.py` | tested | — |
 | Armor and Weapon Mods | 58 | `cwn_gear_mods` | 20 | `test_cwn_gear_mods.py` | tested | — |
 | Pharmaceuticals and Street Drugs | 60 | — | 0 | — | missing | no module implements this section |
-| Cyberware | 62 | — | 0 | — | missing | no module implements this section |
-| Cyberware Mods | 74 | — | 0 | — | missing | no module implements this section |
+| Cyberware | 62 | `cwn_cyberware` | 37 | `test_cwn_cyberware.py` | tested | — |
+| Cyberware Mods | 74 | `cwn_cyberware` | 37 | `test_cwn_cyberware.py` | tested | — |
 | Cyberdecks | 75 | — | 0 | — | missing | no module implements this section |
 | Drones | 76 | `cwn_drones` | 12 | `test_cwn_drones.py` | tested | — |
 | Drone Fittings | 78 | `cwn_drones` | 12 | `test_cwn_drones.py` | tested | — |
@@ -130,13 +130,35 @@ Silence is never read as done.
 | ndex | 222 | — | 0 | — | setting | index |
 | unificent Kickstarter Backers | 224 | — | 0 | — | setting | credits |
 
-## Reading the gaps
+## The gaps, generated
 
-The rules half (character creation through hacking) is largely implemented and tested. The **GM half is
-not**: dystopia and city generation, megacorp and gang generators, NPC creation and stat blocks, schemes,
-mission tags and types, intrusion missions, rewards, **Heat**, reaction rolls, morale, and the NPC
-roster chapters have no implementing module at all. Cyberware, cyberdecks, pharmaceuticals, demons and
-watchdogs, and network architecture are likewise missing on the Python side.
+**25 sections have no implementing module.** This list is generated from the matrix, so it cannot go stale the way a hand-written summary would:
 
-Those are the actual backlog. This matrix does not claim otherwise, and no section is marked `tested`
-on the strength of a data file or a filename.
+- Pharmaceuticals and Street Drugs (p60)
+- Cyberdecks (p75)
+- Demons and Watchdogs (p102)
+- Network Servers and Architecture (p104)
+- Creating The World (p110)
+- Creating The City (p114)
+- Building Your Districts (p121)
+- Creating Megacorps (p126)
+- Creating Gangs (p128)
+- Creating NPCs (p130)
+- reating and Running Missions (p132)
+- Creating Schemes (p133)
+- NPC Operator Teams (p138)
+- NPC Scheme Results (p140)
+- How To Create a Mission (p142)
+- Mission Tags (p144)
+- Mission Types (p158)
+- Creating an Intrusion Mission (p169)
+- Playing the Mission (p172)
+- Mission Rewards and Experience (p176)
+- Beasts and Guard Animals (p185)
+- Corp Guards and Law Enforcement (p186)
+- Gangers and Criminals (p188)
+- Hackers and Pilots (p190)
+- NPC Cyber Descriptions (p194)
+
+No section is marked `tested` on the strength of a data file or a filename, and `tested` is not a claim
+that every subprocedure on those pages is covered.

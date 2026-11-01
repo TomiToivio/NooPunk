@@ -54,7 +54,7 @@ MAPPING: dict[str, object] = {
     "Injury, Healing, and System Strain": ["cwn_core", "cwn_strain", "cwn_healing"],
     "Major Injuries and Damaging Cyberware": ["cwn_major_injury", "cwn_injury_procedure"],
     "Vehicle Combat": ["cwn_vehicles"],
-    "Chases and Pursuit": [],
+    "Chases and Pursuit": ["cwn_vehicles"],
     "Character Advancement": ["cwn_advancement"],
     "Crafting and Modifying Gear": ["cwn_gear_mods"],
     "The Tools of the Trade": ("setting", "chapter divider"),
@@ -65,8 +65,8 @@ MAPPING: dict[str, object] = {
     "Weapons": ["cwn_equipment"],
     "Armor and Weapon Mods": ["cwn_gear_mods"],
     "Pharmaceuticals and Street Drugs": [],
-    "Cyberware": [],
-    "Cyberware Mods": [],
+    "Cyberware": ["cwn_cyberware"],
+    "Cyberware Mods": ["cwn_cyberware"],
     "Cyberdecks": [],
     "Drones": ["cwn_drones"],
     "Drone Fittings": ["cwn_drones"],
@@ -232,18 +232,20 @@ def render(rows: list[dict]) -> str:
         note = (row["note"] or "—").replace("|", "\\|")
         lines.append(f"| {row['title']} | {row['pdf_page']} | {mods} | {row['procedures']} | {tests} "
                      f"| {row['status']} | {note} |")
+    missing = [f"{row['title']} (p{row['pdf_page']})" for row in rows if row["status"] == "missing"]
+    lines += ["", "## The gaps, generated", ""]
+    if missing:
+        lines.append(f"**{len(missing)} sections have no implementing module.** This list is generated from the "
+                     "matrix, so it cannot go stale the way a hand-written summary would:")
+        lines.append("")
+        for entry in missing:
+            lines.append(f"- {entry}")
+    else:
+        lines.append("Every mechanical section has an implementing module.")
     lines += [
         "",
-        "## Reading the gaps",
-        "",
-        "The rules half (character creation through hacking) is largely implemented and tested. The **GM half is",
-        "not**: dystopia and city generation, megacorp and gang generators, NPC creation and stat blocks, schemes,",
-        "mission tags and types, intrusion missions, rewards, **Heat**, reaction rolls, morale, and the NPC",
-        "roster chapters have no implementing module at all. Cyberware, cyberdecks, pharmaceuticals, demons and",
-        "watchdogs, and network architecture are likewise missing on the Python side.",
-        "",
-        "Those are the actual backlog. This matrix does not claim otherwise, and no section is marked `tested`",
-        "on the strength of a data file or a filename.",
+        "No section is marked `tested` on the strength of a data file or a filename, and `tested` is not a claim",
+        "that every subprocedure on those pages is covered.",
         "",
     ]
     return "\n".join(lines)
