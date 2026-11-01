@@ -14,6 +14,11 @@ All **non-player-facing** text, including rulebooks, design documents, code, tes
 
 Offer the optional `dictionary` / `lexicon` command to explain terms in short English definitions. Its public entries must not reveal classified NHI, PSI or Noösphere information. Track whether a word is documented slang, Tomi-approved terminology or a fictional proposal. Later classified dossiers may expose gated definitions, never through the public dictionary. Keep core commands, safety instructions and vital gameplay feedback understandable without studying the glossary.
 
+**The vocabulary source of truth is root [`GLOSSARY.md`](../GLOSSARY.md) (#1000).** Read it before writing or
+interpreting player-facing dialogue. `data/world/lexicon.json` is **generated** from it by
+`tools/glossary_to_lexicon.py` and read by `mud/nopunk_mud/lexicon.py`: never hand-edit the JSON, never keep a
+second word list, and treat a term that is not in the glossary as not existing.
+
 ## Data and save compatibility
 
 Stable content keys and campaign-state identifiers are language-neutral. Legacy `en` and `fi` catalogues can be read for compatibility, but **are not language editions**. The canonical resolver selects preserved Tomi-authored text where present and otherwise the original agent-authored Finglish source. No locale switch, translation backlog, automatic translation or translation-completeness gate. Preserve old files, source metadata, UTF-8 text and existing saved games during migration.

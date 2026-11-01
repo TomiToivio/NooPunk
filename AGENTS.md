@@ -51,6 +51,13 @@ silently by picking one.
 
 ## Finglish implementation pointer (#996)
 
+**Vocabulary source of truth: root [`GLOSSARY.md`](GLOSSARY.md) (#1000).** Read it before writing or
+interpreting player-facing dialogue or narration. The in-game `dictionary` is **generated** from it by
+`tools/glossary_to_lexicon.py`; never hand-edit `data/world/lexicon.json` and never keep a second word list.
+Every headword carries a category, provenance and spoiler tier — mark new terms the same way, never invent an
+etymology, and reuse Tomi's approved words rather than coining synonyms. Future Concordia prompting should
+retrieve only the entries relevant to the speaker, the situation and the player's current knowledge.
+
 Follow `docs/FINNISH.md`: a single canonical player-facing Finglish language, without any locale-switching or future translation editions. Never overwrite Tomi's writing; preserve old catalogue files for compatibility. All non-player-facing writing is English.
 
 ---

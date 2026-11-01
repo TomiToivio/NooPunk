@@ -1,0 +1,511 @@
+{
+ "format": "nopunk-glossary-v1",
+ "source": "GLOSSARY.md",
+ "note": "Generated from GLOSSARY.md by tools/glossary_to_lexicon.py; do not edit. Definitions live in the glossary, classification in its table.",
+ "terms": [
+  {
+   "word": "BCI",
+   "meaning": "brain-computer interface",
+   "category": "universe",
+   "provenance": "agent_proposed",
+   "register": "technical",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Bönde",
+   "meaning": "Finland that is not Helsinki",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Bonjata",
+   "meaning": "to understand",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Construct",
+   "meaning": "synthetic or instantiated being in the setting",
+   "category": "universe",
+   "provenance": "agent_proposed",
+   "register": "canon",
+   "spoiler": "gated",
+   "note": "Unlocks when the player encounters one"
+  },
+  {
+   "word": "Crusti",
+   "meaning": "crust punk",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "subculture",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "cyberdeck",
+   "meaning": "computing/hacking equipment",
+   "category": "universe",
+   "provenance": "agent_proposed",
+   "register": "technical",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "cyberspace",
+   "meaning": "connected digital environment",
+   "category": "universe",
+   "provenance": "agent_proposed",
+   "register": "technical",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Dänkki",
+   "meaning": "cannabis",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Diili",
+   "meaning": "deal",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Dokata",
+   "meaning": "to drink alcohol",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "dösä",
+   "meaning": "bus",
+   "category": "attested_modern",
+   "provenance": "documented",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Europol",
+   "meaning": "European policing cooperation agency",
+   "category": "universe",
+   "provenance": "documented",
+   "register": "institutional",
+   "spoiler": "public",
+   "note": "Real institution"
+  },
+  {
+   "word": "faija",
+   "meaning": "father",
+   "category": "attested_modern",
+   "provenance": "documented",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Fiilis",
+   "meaning": "feeling",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Finglish",
+   "meaning": "code-switching between Finnish and English",
+   "category": "universe",
+   "provenance": "tomi",
+   "register": "authorial",
+   "spoiler": "public",
+   "note": "Tomi's term for the game's voice"
+  },
+  {
+   "word": "Frendi",
+   "meaning": "friend",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Fyrkka",
+   "meaning": "money",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Hiisata",
+   "meaning": "to smoke cannabis",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "hima",
+   "meaning": "home",
+   "category": "attested_modern",
+   "provenance": "documented",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "jees",
+   "meaning": "okay / nice",
+   "category": "attested_modern",
+   "provenance": "documented",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Jepari",
+   "meaning": "cop",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Kännykkä",
+   "meaning": "mobile phone",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "everyday",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "kundi",
+   "meaning": "guy or young man",
+   "category": "attested_modern",
+   "provenance": "documented",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Kyttä",
+   "meaning": "cop",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Landepaukku",
+   "meaning": "person who lives outside of Helsinki",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Leffa",
+   "meaning": "movie",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "everyday",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Mä vannon!",
+   "meaning": "I swear!",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "urban",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Mesta",
+   "meaning": "place",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "mutsi",
+   "meaning": "mother",
+   "category": "attested_modern",
+   "provenance": "documented",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Narkata",
+   "meaning": "to use drugs",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Narkkari",
+   "meaning": "junkie",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "NHI",
+   "meaning": "non-human intelligence",
+   "category": "universe",
+   "provenance": "agent_proposed",
+   "register": "canon",
+   "spoiler": "gated",
+   "note": "Unlocks after first confirmed non-human contact"
+  },
+  {
+   "word": "niinku",
+   "meaning": "conversational filler, roughly 'like'",
+   "category": "attested_modern",
+   "provenance": "documented",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Nisti",
+   "meaning": "junkie",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Noösphere",
+   "meaning": "emerging collective psychic consciousness, partly mediated by networks",
+   "category": "universe",
+   "provenance": "agent_proposed",
+   "register": "canon",
+   "spoiler": "gated",
+   "note": "Unlocks once the player has met the concept in play; it is the central revelation, not vocabulary"
+  },
+  {
+   "word": "ontological shock",
+   "meaning": "crisis of assumptions about reality",
+   "category": "universe",
+   "provenance": "agent_proposed",
+   "register": "canon",
+   "spoiler": "gated",
+   "note": "Unlocks after the first paradigm break the player experiences firsthand"
+  },
+  {
+   "word": "Pleiadian",
+   "meaning": "NHI-related designation",
+   "category": "universe",
+   "provenance": "agent_proposed",
+   "register": "canon",
+   "spoiler": "gated",
+   "note": "Unlocks with the later NHI disclosures"
+  },
+  {
+   "word": "psychotronics",
+   "meaning": "psi-linked technological practice",
+   "category": "universe",
+   "provenance": "agent_proposed",
+   "register": "technical",
+   "spoiler": "gated",
+   "note": "Unlocks once the player meets psi technology in play"
+  },
+  {
+   "word": "Pummi",
+   "meaning": "bum",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Punkkari",
+   "meaning": "punk rocker",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "subculture",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Rafla",
+   "meaning": "restaurant",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Sika",
+   "meaning": "cop",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Skoude",
+   "meaning": "cop",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "snadi",
+   "meaning": "small",
+   "category": "attested_modern",
+   "provenance": "documented",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "spora",
+   "meaning": "tram",
+   "category": "attested_modern",
+   "provenance": "documented",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Stadi",
+   "meaning": "Helsinki, colloquial city name",
+   "category": "attested_modern",
+   "provenance": "documented",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Stadin slangi",
+   "meaning": "the Helsinki urban slang tradition",
+   "category": "attested_modern",
+   "provenance": "documented",
+   "register": "dialect",
+   "spoiler": "public",
+   "note": "Named tradition"
+  },
+  {
+   "word": "steissi",
+   "meaning": "railway station",
+   "category": "attested_modern",
+   "provenance": "documented",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Stevari",
+   "meaning": "corporate cop",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Suomi Perkele Saatana!",
+   "meaning": "an emphatic exclamation invoking Finland and Finnish swearing",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "exclamation",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Supo",
+   "meaning": "Finnish security intelligence service",
+   "category": "universe",
+   "provenance": "documented",
+   "register": "institutional",
+   "spoiler": "public",
+   "note": "Real institution"
+  },
+  {
+   "word": "tsiga",
+   "meaning": "cigarette",
+   "category": "attested_modern",
+   "provenance": "documented",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "UNSA",
+   "meaning": "global human-security agency",
+   "category": "universe",
+   "provenance": "agent_proposed",
+   "register": "institutional",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Venaa",
+   "meaning": "wait",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "street",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Wallah",
+   "meaning": "I swear",
+   "category": "attested_modern",
+   "provenance": "tomi",
+   "register": "urban",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Zookeeper",
+   "meaning": "nickname for a collective-consciousness NHI faction",
+   "category": "universe",
+   "provenance": "agent_proposed",
+   "register": "canon",
+   "spoiler": "gated",
+   "note": "Unlocks when the faction is named in play"
+  }
+ ]
+}
