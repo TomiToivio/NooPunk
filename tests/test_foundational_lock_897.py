@@ -65,9 +65,20 @@ class FoundationalLockTests(unittest.TestCase):
         self.assertIn("Verbatim", text)
         self.assertIn("Mod", text)
 
+    @staticmethod
+    def _top_sections(text: str, count: int) -> str:
+        """The first ``count`` top-level sections of AGENTS.md, however long they are.
+
+        A byte window is the wrong unit. #990 added a binding design-workflow section at the top and thereby
+        pushed #897 past 4000 characters, failing this guard for a reason that had nothing to do with the rule
+        it protects. Agents read sections, so the guard reads sections.
+        """
+        parts = re.split(r"(?m)^# ", text)
+        return "\n".join("# " + part for part in parts[:count + 1] if part.strip())
+
     def test_agents_carries_the_current_directive(self) -> None:
         agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
-        head = agents[:4000]
+        head = self._top_sections(agents, 4)
         self.assertIn("#897", head, "the #897 lock must be in the top of AGENTS.md, where agents read")
         # Wording may change; the prohibition may not. Accept either phrasing of the same decision.
         self.assertTrue(
