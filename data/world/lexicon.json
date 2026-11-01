@@ -1,0 +1,511 @@
+{
+ "format": "nopunk-glossary-v1",
+ "source": "GLOSSARY.md",
+ "note": "Generated from GLOSSARY.md by tools/glossary_to_lexicon.py; do not edit. Classification is 'unknown' until Tomi assigns one - an agent must not guess a category, an etymology or an attestation.",
+ "terms": [
+  {
+   "word": "BCI",
+   "meaning": "brain-computer interface",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Bönde",
+   "meaning": "Finland that is not Helsinki",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Bonjata",
+   "meaning": "to understand",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Construct",
+   "meaning": "synthetic or instantiated being in the setting",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "gated",
+   "note": ""
+  },
+  {
+   "word": "Crusti",
+   "meaning": "crust punk",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "cyberdeck",
+   "meaning": "computing/hacking equipment",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "cyberspace",
+   "meaning": "connected digital environment",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Dänkki",
+   "meaning": "cannabis",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Diili",
+   "meaning": "deal",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Dokata",
+   "meaning": "to drink alcohol",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "dösä",
+   "meaning": "bus",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Europol",
+   "meaning": "European policing cooperation agency",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "faija",
+   "meaning": "father",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Fiilis",
+   "meaning": "feeling",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Finglish",
+   "meaning": "code-switching between Finnish and English",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Frendi",
+   "meaning": "friend",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Fyrkka",
+   "meaning": "money",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Hiisata",
+   "meaning": "to smoke cannabis",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "hima",
+   "meaning": "home",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "jees",
+   "meaning": "okay / nice",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Jepari",
+   "meaning": "cop",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Kännykkä",
+   "meaning": "mobile phone",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "kundi",
+   "meaning": "guy or young man",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Kyttä",
+   "meaning": "cop",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Landepaukku",
+   "meaning": "person who lives outside of Helsinki",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Leffa",
+   "meaning": "movie",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Mä vannon!",
+   "meaning": "I swear!",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Mesta",
+   "meaning": "place",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "mutsi",
+   "meaning": "mother",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Narkata",
+   "meaning": "to use drugs",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Narkkari",
+   "meaning": "junkie",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "NHI",
+   "meaning": "non-human intelligence",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "gated",
+   "note": ""
+  },
+  {
+   "word": "niinku",
+   "meaning": "conversational filler, roughly 'like'",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Nisti",
+   "meaning": "junkie",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Noösphere",
+   "meaning": "emerging collective psychic consciousness, partly mediated by networks",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "gated",
+   "note": ""
+  },
+  {
+   "word": "ontological shock",
+   "meaning": "crisis of assumptions about reality",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "gated",
+   "note": ""
+  },
+  {
+   "word": "Pleiadian",
+   "meaning": "NHI-related designation",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "gated",
+   "note": ""
+  },
+  {
+   "word": "psychotronics",
+   "meaning": "psi-linked technological practice",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "gated",
+   "note": ""
+  },
+  {
+   "word": "Pummi",
+   "meaning": "bum",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Punkkari",
+   "meaning": "punk rocker",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Rafla",
+   "meaning": "restaurant",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Sika",
+   "meaning": "cop",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Skoude",
+   "meaning": "cop",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "snadi",
+   "meaning": "small",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "spora",
+   "meaning": "tram",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Stadi",
+   "meaning": "Helsinki, colloquial city name",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Stadin slangi",
+   "meaning": "the Helsinki urban slang tradition",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "steissi",
+   "meaning": "railway station",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Stevari",
+   "meaning": "corporate cop",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Suomi Perkele Saatana!",
+   "meaning": "an emphatic exclamation invoking Finland and Finnish swearing",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Supo",
+   "meaning": "Finnish security intelligence service",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "tsiga",
+   "meaning": "cigarette",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "UNSA",
+   "meaning": "global human-security agency",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Venaa",
+   "meaning": "wait",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Wallah",
+   "meaning": "I swear",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "public",
+   "note": ""
+  },
+  {
+   "word": "Zookeeper",
+   "meaning": "nickname for a collective-consciousness NHI faction",
+   "classification": "unknown",
+   "provenance": "tomi",
+   "register": "",
+   "spoiler": "gated",
+   "note": ""
+  }
+ ]
+}
