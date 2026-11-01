@@ -1,8 +1,6 @@
-# Mandatory player-visible Finglish rule (#992 updates #980/#981)
+# Canonical Finglish, no localizations (#996)
 
-For all **MUD player-visible** UI, dialogue, quests, narrative and future Concordia GM/NPC speech, agents write **predominantly English**, with *occasional* very simple Finnish expressions and context-appropriate Stadin slangi, Swedish, Russian, Chinese or other loanwords. The voice should resemble a foreigner who knows a little Finnish, not an attempt at fluent native Finnish. Reuse only suitable, verified terms from Tomi's authored material and the shared glossary. **Never translate, rewrite, correct or overwrite Tomi-authored Finnish/Finglish.**
-
-For **all non-player-visible** content (design documents, rulebooks, code/comments, tests, internal LLM prompts and tools), agents write **plain English**. Do not confuse an English-dominant Finglish source string with a Tomi-authored Finnish translation in i18n metadata. Read canonical `docs/FINNISH.md`. Future Concordia prompts must enforce this player-facing output boundary, but the solo game remains independent of LLMs (#950).
+The NoöPunk MUD has **one canonical player-facing language: Finglish**. No separate Finnish, English or other localized editions. In player-visible UI, quests, narration, dialogue and future Concordia NPC/GM responses, agents write mostly English with occasional basic Finnish, appropriate contemporary Stadin slangi and context-specific Swedish/Russian/Chinese/other loanwords. Check the glossary and Tomi's authored text for register. Never translate, correct, replace or overwrite Tomi-authored Finnish/Finglish. Non-player-facing docs, internal prompts, code and rulebooks stay plain English. See `docs/FINNISH.md`. Use optional spoiler-safe dictionary help rather than language editions; don't change save IDs or require LLMs for the solo campaign.
 
 # Authoritative agent instructions: MUD is primary (#950)
 
