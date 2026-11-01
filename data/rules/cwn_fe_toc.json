@@ -1,0 +1,394 @@
+[
+ {
+  "title": "A Slow Chrome Apocalypse",
+  "pdf_page": 1
+ },
+ {
+  "title": "Character Creation",
+  "pdf_page": 4
+ },
+ {
+  "title": "Attributes",
+  "pdf_page": 5
+ },
+ {
+  "title": "Skills",
+  "pdf_page": 5
+ },
+ {
+  "title": "Choosing a Background",
+  "pdf_page": 7
+ },
+ {
+  "title": "Contacts",
+  "pdf_page": 14
+ },
+ {
+  "title": "One-Roll Contact Tables",
+  "pdf_page": 15
+ },
+ {
+  "title": "Edges",
+  "pdf_page": 16
+ },
+ {
+  "title": "Foci",
+  "pdf_page": 18
+ },
+ {
+  "title": "Hit Points, Attack Bonus, and Saves",
+  "pdf_page": 24
+ },
+ {
+  "title": "Starting Gear",
+  "pdf_page": 25
+ },
+ {
+  "title": "Fi n a l To u c h e s",
+  "pdf_page": 26
+ },
+ {
+  "title": "The Rules of the Game",
+  "pdf_page": 28
+ },
+ {
+  "title": "Scenes, Rounds, and Mission Time",
+  "pdf_page": 30
+ },
+ {
+  "title": "Saving Throws",
+  "pdf_page": 30
+ },
+ {
+  "title": "Skill Checks",
+  "pdf_page": 31
+ },
+ {
+  "title": "Combat",
+  "pdf_page": 32
+ },
+ {
+  "title": "The Combat Round",
+  "pdf_page": 33
+ },
+ {
+  "title": "Actions in Combat",
+  "pdf_page": 34
+ },
+ {
+  "title": "Combat Maneuvers and Definitions",
+  "pdf_page": 36
+ },
+ {
+  "title": "Injury, Healing, and System Strain",
+  "pdf_page": 40
+ },
+ {
+  "title": "Major Injuries and Damaging Cyberware",
+  "pdf_page": 41
+ },
+ {
+  "title": "Vehicle Combat",
+  "pdf_page": 42
+ },
+ {
+  "title": "Chases and Pursuit",
+  "pdf_page": 43
+ },
+ {
+  "title": "Character Advancement",
+  "pdf_page": 44
+ },
+ {
+  "title": "Crafting and Modifying Gear",
+  "pdf_page": 46
+ },
+ {
+  "title": "The Tools of the Trade",
+  "pdf_page": 48
+ },
+ {
+  "title": "Encumbrance",
+  "pdf_page": 48
+ },
+ {
+  "title": "Acquiring Gear",
+  "pdf_page": 49
+ },
+ {
+  "title": "Gear, Lifestyles, and Services",
+  "pdf_page": 50
+ },
+ {
+  "title": "Armor",
+  "pdf_page": 52
+ },
+ {
+  "title": "Weapons",
+  "pdf_page": 54
+ },
+ {
+  "title": "Armor and Weapon Mods",
+  "pdf_page": 58
+ },
+ {
+  "title": "Pharmaceuticals and Street Drugs",
+  "pdf_page": 60
+ },
+ {
+  "title": "Cyberware",
+  "pdf_page": 62
+ },
+ {
+  "title": "Cyberware Mods",
+  "pdf_page": 74
+ },
+ {
+  "title": "Cyberdecks",
+  "pdf_page": 75
+ },
+ {
+  "title": "Drones",
+  "pdf_page": 76
+ },
+ {
+  "title": "Drone Fittings",
+  "pdf_page": 78
+ },
+ {
+  "title": "Drone Operation",
+  "pdf_page": 81
+ },
+ {
+  "title": "Vehicles",
+  "pdf_page": 82
+ },
+ {
+  "title": "Vehicle Fittings",
+  "pdf_page": 84
+ },
+ {
+  "title": "Vehicle-Mounted Weaponry",
+  "pdf_page": 86
+ },
+ {
+  "title": "Vehicle Mods",
+  "pdf_page": 87
+ },
+ {
+  "title": "Example Vehicles",
+  "pdf_page": 88
+ },
+ {
+  "title": "Hacking",
+  "pdf_page": 90
+ },
+ {
+  "title": "Cyberspace, Nodes, and Access",
+  "pdf_page": 92
+ },
+ {
+  "title": "Hacking Mechanics",
+  "pdf_page": 94
+ },
+ {
+  "title": "Programs",
+  "pdf_page": 96
+ },
+ {
+  "title": "Cyberspace Actions",
+  "pdf_page": 100
+ },
+ {
+  "title": "Demons and Watchdogs",
+  "pdf_page": 102
+ },
+ {
+  "title": "Network Servers and Architecture",
+  "pdf_page": 104
+ },
+ {
+  "title": "reating Your Dystopia",
+  "pdf_page": 106
+ },
+ {
+  "title": "Cyberpunk Themes",
+  "pdf_page": 108
+ },
+ {
+  "title": "Creating The World",
+  "pdf_page": 110
+ },
+ {
+  "title": "Creating The City",
+  "pdf_page": 114
+ },
+ {
+  "title": "Building Your Districts",
+  "pdf_page": 121
+ },
+ {
+  "title": "Creating Megacorps",
+  "pdf_page": 126
+ },
+ {
+  "title": "Creating Gangs",
+  "pdf_page": 128
+ },
+ {
+  "title": "Creating NPCs",
+  "pdf_page": 130
+ },
+ {
+  "title": "reating and Running Missions",
+  "pdf_page": 132
+ },
+ {
+  "title": "Creating Schemes",
+  "pdf_page": 133
+ },
+ {
+  "title": "NPC Operator Teams",
+  "pdf_page": 138
+ },
+ {
+  "title": "NPC Scheme Results",
+  "pdf_page": 140
+ },
+ {
+  "title": "How To Create a Mission",
+  "pdf_page": 142
+ },
+ {
+  "title": "Mission Tags",
+  "pdf_page": 144
+ },
+ {
+  "title": "Mission Types",
+  "pdf_page": 158
+ },
+ {
+  "title": "Creating an Intrusion Mission",
+  "pdf_page": 169
+ },
+ {
+  "title": "Playing the Mission",
+  "pdf_page": 172
+ },
+ {
+  "title": "Mission Rewards and Experience",
+  "pdf_page": 176
+ },
+ {
+  "title": "Heat",
+  "pdf_page": 178
+ },
+ {
+  "title": "aces On the Street",
+  "pdf_page": 180
+ },
+ {
+  "title": "Reaction Rolls and Morale",
+  "pdf_page": 182
+ },
+ {
+  "title": "Morale and Morale Checks",
+  "pdf_page": 183
+ },
+ {
+  "title": "Beasts and Guard Animals",
+  "pdf_page": 185
+ },
+ {
+  "title": "Corp Guards and Law Enforcement",
+  "pdf_page": 186
+ },
+ {
+  "title": "Gangers and Criminals",
+  "pdf_page": 188
+ },
+ {
+  "title": "Hackers and Pilots",
+  "pdf_page": 190
+ },
+ {
+  "title": "NPC Cyber Descriptions",
+  "pdf_page": 194
+ },
+ {
+  "title": "he City",
+  "pdf_page": 196
+ },
+ {
+  "title": "A Timeline of Collapse",
+  "pdf_page": 198
+ },
+ {
+  "title": "The Megacorps",
+  "pdf_page": 200
+ },
+ {
+  "title": "Other Groups and Organizations",
+  "pdf_page": 203
+ },
+ {
+  "title": "The Ethos of the City",
+  "pdf_page": 204
+ },
+ {
+  "title": "The City Government",
+  "pdf_page": 206
+ },
+ {
+  "title": "Crime and Punishment",
+  "pdf_page": 207
+ },
+ {
+  "title": "Social Relationships in the City",
+  "pdf_page": 208
+ },
+ {
+  "title": "Gender and Identity",
+  "pdf_page": 209
+ },
+ {
+  "title": "The Districts of the City",
+  "pdf_page": 210
+ },
+ {
+  "title": "The Citadel",
+  "pdf_page": 212
+ },
+ {
+  "title": "The Flats",
+  "pdf_page": 213
+ },
+ {
+  "title": "Fogtown",
+  "pdf_page": 214
+ },
+ {
+  "title": "Gannett",
+  "pdf_page": 215
+ },
+ {
+  "title": "Portside",
+  "pdf_page": 216
+ },
+ {
+  "title": "Rachowski",
+  "pdf_page": 217
+ },
+ {
+  "title": "ixing Sine Nomine Games Together",
+  "pdf_page": 218
+ },
+ {
+  "title": "ndex",
+  "pdf_page": 222
+ },
+ {
+  "title": "unificent Kickstarter Backers",
+  "pdf_page": 224
+ }
+]
