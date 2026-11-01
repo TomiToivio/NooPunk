@@ -8,6 +8,7 @@ no LLM provider, no Mesa, no Godot, no second player, no network.
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 import unittest
@@ -58,7 +59,11 @@ class Routing(unittest.TestCase):
         self.assertIn("primary", mud_agents.lower())
 
     def test_the_897_lock_is_still_in_the_first_screen(self):
-        head = (ROOT / "AGENTS.md").read_text(encoding="utf-8")[:4000]
+        # Sections, not bytes. #990 added a binding design-workflow section at the top, which pushed #897
+        # past a 4000-character window and failed this guard for a reason unrelated to the rule it protects.
+        # Agents read sections, so the guard reads sections.
+        agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        head = "\n".join("# " + part for part in re.split(r"(?m)^# ", agents)[:5] if part.strip())
         self.assertIn("#897", head)
         self.assertIn("mods/noopunk", head)
 

@@ -1,14 +1,6 @@
-# Design-document workflow (#989)
+# Canonical Finglish, no localizations (#996)
 
-Before implementing game content here, read [`design/README.md`](../design/README.md) and the design
-document linked from the issue. The rule is: **Tomi writes the design document, Tomi opens the issue,
-agents implement only that document through that issue.** State the document, the issue, the in-scope
-increment and what is out of scope before coding. Do not edit files in `design/` and do not invent canon
-the document leaves silent. `design/README.md` is the single source of truth.
-
-# Mandatory MUD language rule (#980 and #981)
-
-**Finnish (Finglish) is the official primary language of the MUD, but all agents MUST author ONLY English. Never create, translate, correct, or improvise Finnish UI, story, dialogue or examples. Tomi alone writes Finnish story/dialogue. Do not overwrite Tomi-authored Finnish.** The first playable build may intentionally contain 50% Tomi Finnish and 50% agent English (or any mix), without a localization-completeness gate. Show English draft text as fallback where Finnish is not yet available. A separately edited English localization comes later. Rulebooks and docs remain English. Read `docs/FINNISH.md` before working on player-facing content. Treat #980 and #981 as one workstream.
+The NoöPunk MUD has **one canonical player-facing language: Finglish**. No separate Finnish, English or other localized editions. In player-visible UI, quests, narration, dialogue and future Concordia NPC/GM responses, agents write mostly English with occasional basic Finnish, appropriate contemporary Stadin slangi and context-specific Swedish/Russian/Chinese/other loanwords. Check the glossary and Tomi's authored text for register. Never translate, correct, replace or overwrite Tomi-authored Finnish/Finglish. Non-player-facing docs, internal prompts, code and rulebooks stay plain English. See `docs/FINNISH.md`. Use optional spoiler-safe dictionary help rather than language editions; don't change save IDs or require LLMs for the solo campaign.
 
 # Authoritative agent instructions: MUD is primary (#950)
 
@@ -40,3 +32,7 @@ Core rules: Cities Without Number, with Stars Without Number additions only wher
 Evennia is authoritative for multiplayer and persistent world state. LLM GM and NPCs may describe or *propose* actions; validated CWN/Evennia handlers alone execute them. Mesa is for coarse social/resource simulation, not deterministic rules adjudication. Never control human PCs through an agent, and do not let an AI mint resources, override a roll, or rewrite canon.
 
 Changes in this folder should be testable with pure Python unit tests where possible. No secrets or hard-coded external LLM endpoints. Label any untested Evennia integration accurately.
+
+## Design workflow (#989)
+
+Authored game content — days, characters, missions, interactions, storylines, locations, rules, encounters and events — is specified by Tomi in [`design/`](../design/) and implemented through the issue raised from each document. Read [`design/README.md`](../design/README.md) and the root [`AGENTS.md`](../AGENTS.md) section *DESIGN WORKFLOW* before implementing any of it: implement only what the document describes, one step at a time, and preserve Tomi's Finnish/Finglish verbatim.

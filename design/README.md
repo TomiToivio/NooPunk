@@ -20,8 +20,8 @@ There will be several types of documents:
 * Events - this is for random events that are not related to the main storyline.
 
 ## Guidelines
-* Do not translate Tomi's Finnish dialogue and descriptions. 
-* Agents should only write English. Do not worry about the mix of Finnish and English - this is like the Finglish localization. It is just realistic to mix Finnish and English! 
+* Preserve Tomi's Finnish/Finglish dialogue and descriptions exactly; never translate, edit or normalize them.
+* The MUD has one canonical language: Finglish, with no separate localizations (#996). For player-visible material, agents write English-led Finglish with occasional contextual Finnish and other loanwords; never translate Tomi-authored prose. All other agent-written material (including design documents and tabletop rulebooks) remains plain English. See `docs/FINNISH.md`.
 * Do one step at a time - do only what is described in the design document. 
 * Sometimes dialogues etc. are described in a detailed fashion and you should implement them exactly as described. 
 * Sometimes there are more open-ended tasks and you can use your imagination to implement them. 

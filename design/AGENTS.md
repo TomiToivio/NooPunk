@@ -1,59 +1,17 @@
-# Agents working in `design/` and from design documents (#989)
+# Design documents: scoped agent instructions (#989, #993)
 
-**This directory is Tomi's.** Agents do not author, rewrite, translate or "improve" design documents
-unless Tomi explicitly asks for that specific edit. The canonical workflow is
-[`README.md`](README.md); this file only tells an agent how to work from it, and must not become a
-second source of truth.
+This directory contains Tomi's authored game-design specifications. **Read [README.md](README.md) first.** It is the *single source of truth* for the design workflow and all document-type meanings; this file adds agent operating instructions, not another workflow.
 
-## The three steps
+1. Tomi authors a design document in `design/`.
+2. Tomi creates a GitHub issue based on that document.
+3. Agents implement the specified document under that issue.
 
-1. Tomi writes a design document here.
-2. Tomi creates an issue from that document.
-3. Agents implement the document through that issue.
+Before implementing **authored game content**, identify the **specific design file, issue, and in-scope/out-of-scope work**. Read the entire document. Implement only the current described step; do not preempt future designs. Follow detailed text exactly, and use creativity only for gaps the document leaves open. Raise consequential undefined canon decisions for Tomi rather than guessing.
 
-No design document means no implementation of that content. An issue without a design document does
-not authorize agent-invented canon.
+**Author boundary:** Do not rewrite, translate, correct, or expand Tomi-authored Finnish/Finglish design and player-facing text. Do not edit design documents unless Tomi explicitly requests that edit. Agent-written development documents and tabletop rules are plain English. Player-visible MUD writing uses **one canonical Finglish language without localized editions**; agents generally write English-led Finglish, with occasional contextual slang. Consult [../docs/FINNISH.md](../docs/FINNISH.md) (#996) and [../GLOSSARY.md](../GLOSSARY.md) for language.
 
-## Before writing code
+**Implementation boundary:** Implement in the Python Evennia MUD (`mud/`) by default (#950), retain the CWN core and modular overlays (#897), and keep tabletop rules, scenarios, and lore in sync as appropriate. Respect spoiler/knowledge gates. Test deterministic code changes and report anything not verified. Future LLM GM/NPCs do not replace the playable solo campaign.
 
-- Read the linked design document **in full** and `design/README.md`.
-- State in the PR/issue: the document, the issue, the scope, and what is deliberately out of scope.
-- Implement only the described increment. Do not preempt later documents or add unrequested features.
-- Where the document is precise, follow it exactly. Where it explicitly allows latitude, use judgment
-  inside existing canon. Where it is silent on something consequential, ask Tomi; do not invent canon.
+**Manual review:** Check the author document, issue and scope; compare implementation to the precise text; verify Tomi's material remains unchanged, canonical Finglish conventions are used only for player-visible text, and matching tests/tabletop updates exist where relevant.
 
-## Document types
-
-| Type | Meaning |
-|---|---|
-| Day | Calendar/world-time events, independent of player progress. No Day document = no special event that day. |
-| Character | NPCs. |
-| Mission | Scripted PC/party missions. |
-| Interaction | Dialogue and social encounter scripts. |
-| Storyline | Progress-gated main story. |
-| Missions | Side missions; scripted or repeatable/procedural. |
-| Location | Visitable places and nested sublocations (Helsinki → UNSA HQ → Romppainen's office). |
-| Rules | CWN-compatible mods, equipment and extra mechanics. |
-| Encounters | Random encounters, independent of the main story. |
-| Events | Random events, independent of the main story. |
-
-**Day ≠ Storyline.** Day content follows world time; the storyline follows player progress. Authored
-missions, repeatable side content and random encounters/events are different categories.
-
-## Boundaries
-
-- **Finnish:** preserve Tomi's Finnish verbatim. Agents author **English only**; never translate,
-  correct or imitate. The Finglish mix is intentional. See `docs/FINNISH.md`.
-- **Runtime:** implement the Python Evennia MUD in `mud/` unless Tomi says otherwise (#950).
-- **Rules:** CWN is the locked core; additions are mods/overlays (#897). Update the tabletop rulebook
-  when mechanics change.
-- **Canon sync:** implemented scenarios/lore go into the tabletop rules with references and spoiler
-  safeguards; do not leak gated reveals.
-- **Verification:** test deterministic mechanics, routing, day-vs-storyline triggers and location
-  hierarchy; state what was implemented and what remains.
-
-## Manual compliance check
-
-There is no prose test for this workflow (per #271). Reviewers verify: a named design document and
-issue, a diff inside that scope, Tomi's Finnish preserved, English-only authorship, tests or an
-explicit untested note, and tabletop sync or a stated reason it does not apply.
+For **Day vs Storyline**, missions, random events, locations and other categories, consult the *definitions in README.md* rather than maintaining a second copy here.
