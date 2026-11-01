@@ -1,4 +1,4 @@
-# The Romppainen–Fujita device
+# The Romppainen–Fujita psychotronic empathy assessment
 
 **Status:** canon. The name and the collaborator were approved by Tomi on 2026-11-01 and supersede the earlier
 "working title / Helsinki protocol / unnamed colleague" placeholders in this file. The game has one canonical
@@ -11,35 +11,24 @@ UNSA Helsinki uses an original consciousness and empathy assessment: the **Rompp
 **Dr. Harri S. Romppainen**, UNSA Supervisory Special Agent (SSA) and psychologist, together with his former
 lover **Dr. 愛 Fujita** of the **University of Helsinki**.
 
-The name is **Romppainen–Fujita**, and the Japanese character in her name is part of it. Do not silently rename
-her *Azumi Fujita*: that name belongs to a separate *Maniac* inspiration, not to this character. She is a
-distinct scientist in her own right, not an assistant and not a renamed television character.
+Romppainen runs the psychotronics programme from the **UNSA underground bunker laboratory** beneath the
+Helsinki field office. The register is *Maniac* by way of *Riget*: institutional humour, fluorescent
+dread, two brilliant people who finish each other's sentences about things nobody should be measuring.
+Dr. Azumi Fujita and Dr. James K. Mantleray are the tonal reference, not templates to copy.
 
-Romppainen is a psychologist and, apparently, also a fully qualified **psychiatrist, neuroscientist and
-psychotronics engineer**. Preserve the slightly suspicious breadth of those qualifications as characterization
-rather than resolving it with invented credentials or diplomas.
+The assessment is an original *Voigt-Kampff* homage in spirit — an interview that reads affect,
+narrative coherence, physiology and empathy — not a copy of its script, apparatus or mythology.
 
-The two of them run a psychotronic research programme in the **UNSA Helsinki underground bunker laboratory**.
-The device is **only used by the Helsinki UNSA Field Office**; it is not standard UNSA equipment elsewhere.
+## The device
 
-It is a *Voigt-Kampff* homage in spirit — an interview that reads affect, narrative coherence and physiology —
-not a copy of its script, apparatus or mythology.
+The **Romppainen–Fujita psychotronic empathy device** is retrofuturistic, bulky and faintly ridiculous:
+administrator and subject both wear a goofy psychotronic helmet, wired to a console of blinking lights
+that makes strange beeping sounds. It is installed **only in the UNSA Helsinki Field Office**.
 
-## The apparatus
-
-Unmistakably **retrofuturistic**, and faintly ridiculous: **both the administrator and the test subject wear
-conspicuously goofy psychotronic helmets**, the rig carries many blinking lights, and it emits strange beeping
-sounds. Two professionals conduct a serious assessment while wearing this, and the comedy is not accidental.
-
-Keep that comic awkwardness *while the results become unsettling*. The comedy is what makes the later
-implications land: an absurd helmet is funny until you understand what it is measuring and who is watching the
-data.
-
-### The four-a-day rule
-
-**A field agent may sit for at most four tests per in-game day.** Beyond that, agents start to feel strange —
-"goofy" is the word they use — so the limit is a practical field-safety rule, not interface convenience. It is a
-**device-specific NoöPunk overlay**: do not turn it into a core CWN rule, and do not model it as fatigue damage.
+Field agents start to feel goofy after more than four tests in a row, so the office permits **at most
+four tests per agent per day**; a fifth is refused, and readings taken past the limit are not
+evidence. The deterministic implementation lives in `mud/nopunk_mud/consciousness.py`
+(`DeviceSession`).
 
 ## What it measures
 
@@ -52,42 +41,43 @@ Four observed channels, scored by the interviewer:
 | BCI telemetry | Arousal, hesitation, load and incongruence between stated and measured response |
 | Empathy | Perspective-taking and concern, including toward inconvenient subjects |
 
-An optional fifth channel, psychotronic/PSI response, is not used in early cases and is never required for a
-valid assessment.
+An optional fifth channel, psychotronic/PSI response, is not used in early cases and is never required
+for a valid assessment.
 
-**Consciousness is not intelligence, and neither is empathy.** An eloquent, caring-seeming subject may be
-nonconscious; a genuine NHI consciousness may fail anthropocentric empathy criteria. The device reports a
-*pattern* with caveats, not a metaphysical verdict — and the helmets must never make it look more certain than
-it is.
+**Consciousness is not intelligence, and neither is empathy.** An eloquent, caring-seeming subject may
+be nonconscious; a genuine NHI consciousness may fail anthropocentric empathy criteria. The protocol
+reports a *pattern*, not a metaphysical verdict.
 
 ## Why UNSA Helsinki prefers it
 
-- Better triage in comparative casework: fewer false classifications than the corporate affect suites and the
-  older security-services interview.
-- It produces investigative leads, not just a label: the strongest channel and its contradictions point to the
-  next interview, record or witness.
+- Better triage in comparative casework: fewer false classifications than corporate affect suites and
+  the older security-services interview.
+- It produces investigative leads, not just a label: the strongest channel and its contradictions point
+  to the next interview, record or witness.
 - It records dissent and uncertainty instead of forcing a binary.
-- It is cheap, hard to game with a prepared script, and portable enough to run in a bunker.
+- It is cheap, portable and hard to game with a prepared script — and its absurd helmets put subjects
+  off balance in a way polished corporate suites do not.
 
-It is not infallible. Cultural and language bias, interviewer skill, BCI quality and the subject's cooperation
-all move the result. UNSA knows this; Romppainen knows it best and says so least.
+It is not infallible. Cultural and language bias, interviewer skill, BCI quality, the daily goofiness
+limit and the subject's cooperation all move the result. Romppainen knows this best and says so, usually
+at length.
 
 ## Procedure at the table
 
 1. **Brief** the subject and obtain consent; the assessment is evidence, not interrogation.
-2. **Fit the helmets** to both administrator and subject. Refusing the apparatus is refusing the procedure.
-3. **Interview** through a short scripted scene. Use CWN skill checks (typically Empathy or Cognition,
-   difficulty by subject) to open channels; a failed check costs time or raises suspicion, never the core clue.
+2. **Fit both helmets** and run the device in the Helsinki field office; check the daily limit first.
+3. **Interview** through a short scripted scene. CWN skill checks (typically Empathy or Cognition,
+   difficulty by subject) open channels; a failed check costs time or raises suspicion, never the core
+   clue.
 4. **Score** the four channels from the observed answers and telemetry.
-5. **Classify** into a pattern band with a confidence value and explicit caveats.
+5. **Classify** into a pattern band with confidence and explicit caveats.
 6. **Follow the lead**: the strongest channel names the next investigative step.
 
 ### GUMSHOE rule
 
-The **core clue is never behind a roll**. Whatever the check result, the interview yields the fact that the
-subject's account contradicts a record, or that a channel is incongruent. Rolls decide how much extra detail
-and how much suspicion the interviewer earns — and whether the daily cap leaves a test for later — not whether
-the case can proceed.
+The **core clue is never behind a roll**. Whatever the check result, the interview yields the fact that
+the subject's account contradicts a record, or that a channel is incongruent. Rolls decide how much
+extra detail and how much suspicion the interviewer earns, not whether the case can proceed.
 
 ## Bands (working values, pending playtest)
 
@@ -99,24 +89,19 @@ the case can proceed.
 | `nonconscious_pattern` | Simulated affect with no coherent interior account |
 | `nhi_nonanthropocentric` | Coherent interior account that fails human empathy criteria |
 
-## The bunker, and what is underneath it
+## Bunker secrets — knowledge-gated
 
-**Tone:** the clinical psychedelic absurdity and fraught scientist relationships of **_Maniac_** — including
-Dr. Azumi Fujita and Dr. James K. Mantleray — blended with the institutional dread of **_Riget_**. Homage
-through tone and original characterization, never through their dialogue, scripts, characters or apparatus.
+The player may eventually learn that the bunker contains more than an empathy lab. Romppainen presents
+the **Hiisi project** — reverse-engineering of crash-retrieval technology from **1934 and 1946** — and
+only later that **Louhi**, **Lemminkäinen** and **Sampo** are far more secret. These are story gates,
+not public dictionary entries; the `dictionary` command must never expose them before the narrative
+does.
 
-The bunker should feel simultaneously bureaucratic, faintly ridiculous, scientifically curious and seriously
-ominous, with **MKULTRA-like ethical unease**. Rumours stay rumours until an investigation earns them.
+## Open questions for Tomi
 
-**The reveal ladder** (stage through #1007 and #981 epistemic gating; leak nothing early):
-
-1. An apparently ordinary interview, with the helmets played for comedy.
-2. Strange aftereffects, the daily cap, and the first hint that the lab's work is not ordinary assessment.
-3. The bunker's deeper floors, and the sense that the research programme has a history.
-4. **Hiisi** — Romppainen personally introduces a reverse-engineering programme studying **crash-retrieval
-   technology from 1934 and 1946**. Its connection to the Ghost Rocket legacy and his earlier Ö-Mappi work can
-   unfold through clues.
-5. Much later: that **Louhi**, **Lemminkäinen** and **Sampo** exist and are **far more secret than Hiisi**.
+- Whether the PSI channel is canonically part of the device or a separate Noösphere interface.
+- How openly UNSA publishes the method; the transparency-versus-classification tension applies.
+- Finnish voice for Romppainen's explanation of the test.
 
 The *names* and their *relative secrecy* are canon. **Do not invent or reveal what Louhi, Lemminkäinen and
 Sampo actually do** until Tomi establishes it in a design document. And never leak classified project names

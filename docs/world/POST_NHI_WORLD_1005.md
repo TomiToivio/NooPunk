@@ -242,3 +242,9 @@ have begun.*
 - [`NHI_CRISIS_921.md`](NHI_CRISIS_921.md) — the historical phases
 - [`NHI_FACTIONS_922.md`](NHI_FACTIONS_922.md) — the faction taxonomy and confidence model
 - `mud/nopunk_mud/campaign/content.py` — the playable case that draws on this material
+
+**Consolidation note (2026-11-01).** #1005 was written up three times while the issue was open
+(`docs/lore/WORLD_ORDER_2045.md` and `docs/world/WORLD_ORDER_1005.md` were the other two). Both have
+been retired: this file is the single consolidated reference, because it is the one the timeline and
+faction chapters already cross-reference. Nothing unique was lost — the three were written from the
+same issue text — and a second world order would have been a second authority.
