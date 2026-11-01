@@ -141,16 +141,13 @@ def assess(signals: Signals) -> Assessment:
 # A device-specific NooPunk overlay: it constrains who may be tested and how often. It is not a CWN rule
 # and it must not be modelled as fatigue damage or as a modifier to the assessment score.
 
-DEVICE_NAME = "Romppainen–Fujita"
-#: The device is not standard UNSA equipment; only the Helsinki field office runs one.
+#: The device is not standard UNSA equipment; only the Helsinki field office runs one. Its name lives in
+#: DEVICE_NAME above - do not redefine it here, or this block shadows the canonical constant.
+
 FIELD_OFFICE = "helsinki"
 #: More than this in one in-world day leaves a field agent feeling "goofy". The rule is a safety limit,
 #: not a convenience: the counter is per agent and per in-world day.
 DAILY_TEST_LIMIT = 4
-
-
-class DeviceError(ValueError):
-    """The device refuses the session; nothing is recorded."""
 
 
 @dataclass(frozen=True)
