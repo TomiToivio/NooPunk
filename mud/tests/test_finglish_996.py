@@ -12,7 +12,8 @@ def test_historical_locale_does_not_change_canonical_output(tmp_path):
     assert pending_finnish({"en": {"ui.other": "x"}, "fi": {}}) == []
 
 def test_public_dictionary_is_searchable_and_spoiler_safe():
-    assert "Wallah!" in lookup()
+    # Tomi's GLOSSARY.md headword is "Wallah"; the earlier hand-coded list had "Wallah!" (#1000).
+    assert "Wallah" in lookup()
     assert "I swear!" in lookup("Mä vannon!")
     assert "Stadi:" in lookup("Stadi")
     assert "No public dictionary entry" in lookup("unpublished")

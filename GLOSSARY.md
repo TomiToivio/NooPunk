@@ -72,4 +72,45 @@ The official language of NoöPunk is Finglish as spoken in the Helsinki area ("S
 * Venaa - wait
 * Wallah - I swear
 
+## Migrated from the older secondary glossary
+
+`docs/world/HELSINKI_SLANG_GLOSSARY.md` used to hold a second, competing list. It is now a pointer to this
+file, and its unique terms are migrated here so nothing was dropped in the merge.
+
+**Their classification is unknown.** The words and meanings below are the ones already in the repository; an
+agent migrated them and did **not** decide whether they are attested, borrowed, futuristic or universe
+vocabulary — that judgement is Tomi's, per the rules above. `[gated]` marks a term whose meaning reveals a
+knowledge-gated fact, so the public dictionary stays silent until the story unlocks it; those markers are
+spoiler bookkeeping, not an attestation claim.
+
+* Stadi - Helsinki, colloquial city name
+* spora - tram
+* dösä - bus
+* steissi - railway station
+* kundi - guy or young man
+* tsiga - cigarette
+* mutsi - mother
+* faija - father
+* hima - home
+* snadi - small
+* jees - okay / nice
+* niinku - conversational filler, roughly 'like'
+* Finglish - code-switching between Finnish and English
+* Stadin slangi - the Helsinki urban slang tradition
+* Mä vannon! - I swear!
+* Suomi Perkele Saatana! - an emphatic exclamation invoking Finland and Finnish swearing
+* Noösphere - emerging collective psychic consciousness, partly mediated by networks [gated]
+* ontological shock - crisis of assumptions about reality [gated]
+* BCI - brain-computer interface
+* psychotronics - psi-linked technological practice [gated]
+* UNSA - global human-security agency
+* Supo - Finnish security intelligence service
+* Europol - European policing cooperation agency
+* NHI - non-human intelligence [gated]
+* Pleiadian - NHI-related designation [gated]
+* Construct - synthetic or instantiated being in the setting [gated]
+* Zookeeper - nickname for a collective-consciousness NHI faction [gated]
+* cyberdeck - computing/hacking equipment
+* cyberspace - connected digital environment
+
 
