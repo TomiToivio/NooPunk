@@ -141,6 +141,10 @@
         "tier": "cwn-core"
       },
       {
+        "module": "src/rules/cwn_cyberware.py",
+        "tier": "cwn-core"
+      },
+      {
         "module": "src/rules/cwn_drones.py",
         "tier": "cwn-core"
       },
@@ -173,6 +177,10 @@
         "tier": "cwn-core"
       },
       {
+        "module": "src/rules/cwn_heat.py",
+        "tier": "cwn-core"
+      },
+      {
         "module": "src/rules/cwn_initiative.py",
         "tier": "cwn-core"
       },
@@ -186,6 +194,10 @@
       },
       {
         "module": "src/rules/cwn_mission_time.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_npcs.py",
         "tier": "cwn-core"
       },
       {

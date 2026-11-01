@@ -283,10 +283,10 @@
    ],
    "godot_symbols": [],
    "python": [],
-   "coverage": "missing",
+   "coverage": "not_applicable",
    "tests": [],
    "overlay": null,
-   "note": "no Python cyberware catalogue; only godot/core/cwn_cyberware.gd"
+   "note": "Section introduction (SRD 3.6.0). It defines cyberware and points at the child pages; it states no procedure of its own."
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__concealing-detecting-cyberware",
@@ -294,11 +294,17 @@
    "section": "gear-vehicles-cyberware",
    "godot": [],
    "godot_symbols": [],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "python": [
+    "detectable",
+    "concealment_rank",
+    "profile_adjusted"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_cyberware.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "Medical/Touch/Sight grades with their inspection methods, plus Profile Adjustment's one-step drop."
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__cyberdoc-tools",
@@ -306,11 +312,15 @@
    "section": "gear-vehicles-cyberware",
    "godot": [],
    "godot_symbols": [],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "python": [
+    "surgery_check_modifier"
+   ],
+   "coverage": "partial",
+   "tests": [
+    "tests/test_cwn_cyberware.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "The tool and theatre *modifiers* are implemented; the kit/theatre prices and Encumbrance rows are catalogue data that has not been added yet."
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-alienation",
@@ -320,11 +330,20 @@
     "godot/core/cwn_alienation.gd"
    ],
    "godot_symbols": [],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "python": [
+    "alienation_for_system",
+    "permanent_alienation",
+    "max_alienation",
+    "resolve_alienation_check",
+    "therapy_week",
+    "rescue_from_cip"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_cyberware.py"
+   ],
    "overlay": null,
-   "note": "Godot cwn_alienation.gd exists; nothing in Python"
+   "note": "Optional rule, declared optional in code. Twelve chrome syndromes; the mental save that separates 'pick a syndrome' from psychosis; weekly therapy with its permanent floor."
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-maintenance",
@@ -333,19 +352,17 @@
    "godot": [],
    "godot_symbols": [],
    "python": [
-    "maintenance_minutes",
-    "maintenance_overdue"
+    "monthly_upkeep",
+    "can_maintain",
+    "maintenance_required",
+    "maintenance_minutes"
    ],
    "coverage": "implemented",
    "tests": [
-    "mud/tests/test_cwn_core.py",
-    "tests/test_cwn_core.py",
-    "tests/test_cwn_coverage_manifest.py",
-    "tests/test_cwn_trauma.py",
-    "tests/test_mud_cwn_parity_950.py"
+    "tests/test_cwn_cyberware.py"
    ],
    "overlay": null,
-   "note": null
+   "note": "5% of base cost monthly, hours equal to System Strain at a 15-minute floor, Fix-0/Heal-0, and the malfunction that starts after a month without upkeep."
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-mods",
@@ -353,11 +370,17 @@
    "section": "gear-vehicles-cyberware",
    "godot": [],
    "godot_symbols": [],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "python": [
+    "mod_cost",
+    "mod_requirements",
+    "can_install_mod"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_cyberware.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "All ten SRD mods: Fix/Heal levels, percentage cost of the host system, special components, one copy per system, Tailored Interface's 2+ strain gate."
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems",
@@ -365,11 +388,17 @@
    "section": "gear-vehicles-cyberware",
    "godot": [],
    "godot_symbols": [],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "python": [
+    "load_systems",
+    "system",
+    "CyberSystem"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_cyberware.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "The catalogue intro: all seven body-category tables are loaded from data/rules/cwn_cyberware.json with cost, type, concealment and permanent System Strain."
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__body-cyberware",
@@ -377,11 +406,17 @@
    "section": "gear-vehicles-cyberware",
    "godot": [],
    "godot_symbols": [],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "python": [
+    "load_systems",
+    "system",
+    "CyberSystem"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_cyberware.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "The committed catalogue carries the body rows (cost, type, concealment, permanent System Strain). Per-system effect prose stays in the SRD, which is CC0 and is cited, not copied."
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__head-cyberware",
@@ -389,11 +424,17 @@
    "section": "gear-vehicles-cyberware",
    "godot": [],
    "godot_symbols": [],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "python": [
+    "load_systems",
+    "system",
+    "CyberSystem"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_cyberware.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "The committed catalogue carries the head rows (cost, type, concealment, permanent System Strain). Per-system effect prose stays in the SRD, which is CC0 and is cited, not copied."
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__limb-cyberware",
@@ -401,11 +442,17 @@
    "section": "gear-vehicles-cyberware",
    "godot": [],
    "godot_symbols": [],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "python": [
+    "load_systems",
+    "system",
+    "CyberSystem"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_cyberware.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "The committed catalogue carries the limb rows (cost, type, concealment, permanent System Strain). Per-system effect prose stays in the SRD, which is CC0 and is cited, not copied."
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__medical-cyberware",
@@ -413,11 +460,17 @@
    "section": "gear-vehicles-cyberware",
    "godot": [],
    "godot_symbols": [],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "python": [
+    "load_systems",
+    "system",
+    "CyberSystem"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_cyberware.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "The committed catalogue carries the medical rows (cost, type, concealment, permanent System Strain). Per-system effect prose stays in the SRD, which is CC0 and is cited, not copied."
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__nerve-cyberware",
@@ -425,11 +478,17 @@
    "section": "gear-vehicles-cyberware",
    "godot": [],
    "godot_symbols": [],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "python": [
+    "load_systems",
+    "system",
+    "CyberSystem"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_cyberware.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "The committed catalogue carries the nerve rows (cost, type, concealment, permanent System Strain). Per-system effect prose stays in the SRD, which is CC0 and is cited, not copied."
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__sensory-cyberware",
@@ -437,11 +496,17 @@
    "section": "gear-vehicles-cyberware",
    "godot": [],
    "godot_symbols": [],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "python": [
+    "load_systems",
+    "system",
+    "CyberSystem"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_cyberware.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "The committed catalogue carries the sensory rows (cost, type, concealment, permanent System Strain). Per-system effect prose stays in the SRD, which is CC0 and is cited, not copied."
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__skin-cyberware",
@@ -449,11 +514,17 @@
    "section": "gear-vehicles-cyberware",
    "godot": [],
    "godot_symbols": [],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "python": [
+    "load_systems",
+    "system",
+    "CyberSystem"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_cyberware.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "The committed catalogue carries the skin rows (cost, type, concealment, permanent System Strain). Per-system effect prose stays in the SRD, which is CC0 and is cited, not copied."
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__implant-complications",
@@ -464,19 +535,15 @@
    ],
    "godot_symbols": [],
    "python": [
-    "can_accept_implant",
-    "installation_terms"
+    "complication",
+    "complication_extra_strain"
    ],
-   "coverage": "partial",
+   "coverage": "implemented",
    "tests": [
-    "mud/tests/test_cwn_core.py",
-    "tests/test_cwn_core.py",
-    "tests/test_cwn_coverage_manifest.py",
-    "tests/test_cwn_trauma.py",
-    "tests/test_mud_cwn_parity_950.py"
+    "tests/test_cwn_cyberware.py"
    ],
    "overlay": null,
-   "note": "strain/installation terms ported; the complication table is not"
+   "note": "The d12 table with its hooks and the SRD's 'if it does not apply, treat it as 12' fallback."
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__installing-cyberware",
@@ -488,18 +555,18 @@
    "godot_symbols": [],
    "python": [
     "resolve_implant_surgery",
-    "installation_terms"
+    "installation_terms",
+    "surgery_check_modifier",
+    "surgery_difficulty",
+    "installation_attempt_penalty",
+    "installation_cost"
    ],
    "coverage": "implemented",
    "tests": [
-    "mud/tests/test_cwn_core.py",
-    "tests/test_cwn_core.py",
-    "tests/test_cwn_coverage_manifest.py",
-    "tests/test_cwn_trauma.py",
-    "tests/test_mud_cwn_parity_950.py"
+    "tests/test_cwn_cyberware.py"
    ],
    "overlay": null,
-   "note": null
+   "note": "Strain bands and outcomes in src/rules/cwn_core.py; equipment/room modifiers, retry penalty and donated work in src/rules/cwn_cyberware.py. The 1-2 point failure now implants with a complication, as the SRD says, instead of reporting a plain failure."
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__removing-cyberware",
@@ -510,19 +577,18 @@
    ],
    "godot_symbols": [],
    "python": [
-    "can_accept_implant",
-    "strain_maximum"
+    "removal_terms",
+    "resolve_removal",
+    "resolve_brutal_removal",
+    "resolve_salvage",
+    "resolve_reuse"
    ],
-   "coverage": "partial",
+   "coverage": "implemented",
    "tests": [
-    "mud/tests/test_cwn_core.py",
-    "tests/test_cwn_core.py",
-    "tests/test_cwn_coverage_manifest.py",
-    "tests/test_cwn_trauma.py",
-    "tests/test_mud_cwn_parity_950.py"
+    "tests/test_cwn_cyberware.py"
    ],
    "overlay": null,
-   "note": "capacity recomputation ported; removal surgery is not"
+   "note": "Gentle removal at the installation difficulty, the ten-minute ungentle version, salvage from a corpse (24-hour limit) and the used/secondhand re-use check."
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__skillplugs",
@@ -530,11 +596,18 @@
    "section": "gear-vehicles-cyberware",
    "godot": [],
    "godot_symbols": [],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "python": [
+    "skillplug_cost",
+    "skillplug_jack_allows",
+    "auto_failure_faces",
+    "resolve_skillplug_roll"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_cyberware.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "Price table, Jack I/II physical-skill gate, Wiring requirement for level 2+, and the automatic-failure range that widens by one point per extra plug run."
   },
   {
    "srd": "gear-vehicles-cyberware__drones",
