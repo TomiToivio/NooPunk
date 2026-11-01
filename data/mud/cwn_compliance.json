@@ -405,48 +405,50 @@
       "id": "cyberware-install",
       "srd": "Gear / Cyberware (installation, complications, tools, removal, concealing, maintenance)",
       "srd_path": "/gear-vehicles-cyberware/cyberware/",
-      "python": "src/rules/cwn_core.py",
+      "python": "src/rules/cwn_cyberware.py",
       "godot": "godot/core/cwn_cyberware.gd, godot/core/cwn_cyberware_ops.gd",
-      "coverage": "partial",
+      "coverage": "implemented",
       "tests": [
         "tests/test_cwn_core.py",
-        "godot/tests/test_cwn_cyberware.gd"
+        "tests/test_cwn_cyberware.py"
       ],
-      "note": "Installation terms, surgery and maintenance minutes are in Python; the complication table and cyberdoc tools are GDScript only."
+      "note": "The strain bands, the ceiling check and resolve_implant_surgery stay in src/rules/cwn_core.py (fixed by #1025: failing by 1-2 points implants the cyber and forces a complication roll, which the old code reported as a plain failure). cwn_cyberware adds the equipment/room modifiers, retry penalty, donated work, the d12 complication table, removal, salvage and re-use grading."
     },
     {
       "id": "skillplugs",
       "srd": "Gear / Cyberware / Skillplugs",
       "srd_path": "/gear-vehicles-cyberware/cyberware/skillplugs/",
-      "python": null,
+      "python": "src/rules/cwn_cyberware.py",
       "godot": null,
-      "coverage": "missing",
-      "tests": [],
-      "note": "No implementation anywhere. Small and self-contained: a good first MUD-era port."
+      "coverage": "implemented",
+      "tests": [
+        "tests/test_cwn_cyberware.py"
+      ],
+      "note": "Price table (level 3 is mission loot, not a purchase), the Jack I/II physical-skill gate, the Wiring requirement for level 2+, and the automatic-failure range that widens by one point per extra plug run."
     },
     {
       "id": "cyberware-mods-systems",
       "srd": "Gear / Cyberware Mods and Systems",
       "srd_path": "/gear-vehicles-cyberware/cyberware/cyberware-systems/",
-      "python": null,
+      "python": "src/rules/cwn_cyberware.py",
       "godot": "godot/core/cwn_cyberware.gd",
-      "coverage": "godot-only",
+      "coverage": "implemented",
       "tests": [
-        "godot/tests/test_cwn_cyberware.gd"
+        "tests/test_cwn_cyberware.py"
       ],
-      "note": "Body/head/skin/limb/sensory/medical/nerve systems are catalogue data plus effect procedures."
+      "note": "All ten SRD mods with their Fix/Heal levels, percentage costs, component counts and one-copy-per-system rule; the 80-row systems catalogue is loaded from the committed data/rules/cwn_cyberware.json. Per-system effect prose stays in the SRD."
     },
     {
       "id": "cyberware-alienation",
       "srd": "Gear / Cyberware Alienation",
       "srd_path": "/gear-vehicles-cyberware/cyberware/cyberware-alienation/",
-      "python": null,
+      "python": "src/rules/cwn_cyberware.py",
       "godot": "godot/core/cwn_alienation.gd",
-      "coverage": "godot-only",
+      "coverage": "implemented",
       "tests": [
-        "godot/tests/test_cwn_alienation.gd"
+        "tests/test_cwn_cyberware.py"
       ],
-      "note": "The clearest migration gap: a full subsystem with tests on the Godot side and nothing in Python."
+      "note": "Optional rule, declared optional in code. Strain rounded up plus +2 per Nerve system, all twelve chrome syndromes, the 1d20 check, the mental save that separates picking a syndrome from psychosis, weekly therapy with its permanent floor, and the CIP rescue save. The retired Godot kernel listed only eight syndromes."
     },
     {
       "id": "cyberdecks",

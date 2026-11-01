@@ -282,10 +282,23 @@ class SystemStrainTests(unittest.TestCase):
         self.assertEqual(out["outcome"], "refused")
         self.assertEqual(out["strain_after"], 12)
 
-    def test_failing_by_two_or_less_just_fails_the_surgery(self) -> None:
-        out = cwn.resolve_implant_surgery(strain=1.5, current_strain=0, maximum=14, check_total=9)
-        self.assertEqual(out["outcome"], "failed")
-        self.assertEqual(out["strain_after"], 0)
+    def test_failing_by_one_still_implants_but_demands_a_complication_roll(self) -> None:
+        # SRD 3.6.1: "If they fail by one or two points, the surgery is successful, but the user
+        # suffers a random implant complication from the table in section 3.6.1.1."
+        # 1.5 strain sits in the 1.1-3 band, so the installation difficulty is 11.
+        out = cwn.resolve_implant_surgery(strain=1.5, current_strain=0, maximum=14, check_total=10)
+        self.assertEqual(out["outcome"], "installed_with_complication")
+        self.assertEqual(out["strain_after"], 1.5, "the implant is in, so its strain is paid")
+
+    def test_failing_by_two_still_implants_but_demands_a_complication_roll(self) -> None:
+        out = cwn.resolve_implant_surgery(strain=1.5, current_strain=2, maximum=14, check_total=9)
+        self.assertEqual(out["outcome"], "installed_with_complication")
+        self.assertEqual(out["strain_after"], 3.5)
+
+    def test_failing_by_exactly_three_is_catastrophic_not_a_complication(self) -> None:
+        out = cwn.resolve_implant_surgery(strain=1.5, current_strain=2, maximum=14, check_total=7)
+        self.assertEqual(out["outcome"], "catastrophic",
+                         "the boundary is >2 points short, not >=2")
 
     def test_failing_by_more_than_two_maximizes_strain_and_drops_to_one_hp(self) -> None:
         out = cwn.resolve_implant_surgery(strain=1.5, current_strain=2, maximum=14, check_total=8)

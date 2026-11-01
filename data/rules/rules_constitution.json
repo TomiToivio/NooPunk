@@ -141,6 +141,10 @@
         "tier": "cwn-core"
       },
       {
+        "module": "src/rules/cwn_cyberware.py",
+        "tier": "cwn-core"
+      },
+      {
         "module": "src/rules/cwn_drones.py",
         "tier": "cwn-core"
       },

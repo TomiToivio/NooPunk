@@ -405,9 +405,14 @@ def resolve_implant_surgery(
 
     * the implant is refused outright if the strain would exceed the maximum -- no roll happens;
     * the check succeeds at or above the difficulty -> implanted, strain becomes permanent;
-    * the check fails by **two or less** -> the surgery simply fails;
+    * the check fails by **one or two** -> the surgery *succeeds*, but the user suffers a random
+      implant complication (SRD 3.6.1: "If they fail by one or two points, the surgery is successful,
+      but the user suffers a random implant complication"). The strain is still paid;
     * the check fails by **more than two** -> "the surgery is unsuccessful, the target's System Strain
       is maximized, and the target is reduced to 1 hit point" (SRD 3.6.1).
+
+    The middle outcome was wrong here until #1025: it reported a plain ``failed`` and refunded the
+    strain, which silently deleted the complication roll the SRD requires.
     """
     if not can_accept_implant(current_strain=current_strain, implant_strain=strain, maximum=maximum):
         return {"outcome": "refused", "strain_after": current_strain, "hit_points": None,
@@ -422,8 +427,9 @@ def resolve_implant_surgery(
     if shortfall > 2:
         return {"outcome": "catastrophic", "strain_after": maximum, "hit_points": 1,
                 "detail": f"failed by {shortfall}; System Strain maximized, reduced to 1 hit point"}
-    return {"outcome": "failed", "strain_after": current_strain, "hit_points": None,
-            "detail": f"failed by {shortfall}; implant not installed"}
+    return {"outcome": "installed_with_complication", "strain_after": current_strain + strain,
+            "hit_points": None,
+            "detail": f"failed by {shortfall}; implanted, roll d12 on the implant complication table"}
 
 
 def maintenance_minutes(strain: float) -> int:

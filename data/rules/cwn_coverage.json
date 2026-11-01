@@ -3,8 +3,8 @@
   "source": "src/rules",
   "note": "Registry of implemented rule procedures. Presence here is code coverage, not SRD parity.",
   "totals": {
-    "modules": 34,
-    "procedures": 309
+    "modules": 35,
+    "procedures": 347
   },
   "modules": [
     {
@@ -420,6 +420,209 @@
         }
       ],
       "count": 21
+    },
+    {
+      "module": "cwn_cyberware.py",
+      "procedures": [
+        {
+          "name": "surgery_check_modifier",
+          "signature": "(*, theatre_level=..., room=..., new_cyber=..., manufacturers_kit=...)",
+          "doc": "The surgeon's modifier from equipment, room quality and the implant's provenance."
+        },
+        {
+          "name": "surgery_difficulty",
+          "signature": "(strain)",
+          "doc": "The flat installation difficulty for a system of this permanent System Strain cost."
+        },
+        {
+          "name": "installation_attempt_penalty",
+          "signature": "(prior_attempts)",
+          "doc": "Cumulative -1 per attempt after the first (SRD 3.6.1, re-implantation paragraph)."
+        },
+        {
+          "name": "installation_cost",
+          "signature": "(strain, *, surgeon_donates=...)",
+          "doc": "SRD 3.6.1: \"If the surgeon donates their work, the installation cost is halved\"."
+        },
+        {
+          "name": "complication",
+          "signature": "(roll, *, applies=...)",
+          "doc": "The complication a d12 roll produces, with the SRD's substitute-12 rule applied."
+        },
+        {
+          "name": "complication_extra_strain",
+          "signature": "(roll, *, shares_category=...)",
+          "doc": "The System Strain a complication adds, honouring Uncooperative's \"only implant of its"
+        },
+        {
+          "name": "removal_terms",
+          "signature": "(install_difficulty, *, gentle=...)",
+          "doc": "SRD 3.6.2: safe removal is an hour at the installation difficulty; a doc who does not care"
+        },
+        {
+          "name": "resolve_removal",
+          "signature": "(check_total, difficulty)",
+          "doc": "Gentle removal: the implant survives on a success; either way the patient is healthy and the"
+        },
+        {
+          "name": "resolve_brutal_removal",
+          "signature": "(*, minimally_invasive)",
+          "doc": "SRD 3.6.2: no roll, ten minutes, and the subject \"almost always dies\" \u2014 the exception is a"
+        },
+        {
+          "name": "resolve_salvage",
+          "signature": "(check_total, hours_dead, difficulty=...)",
+          "doc": "SRD 3.6.2: salvaging from a corpse is an Int or Dex/Heal check against 10, and \"subjects dead"
+        },
+        {
+          "name": "resolve_reuse",
+          "signature": "(check_total, difficulty=...)",
+          "doc": "SRD 3.6.2: a second Heal check against 10 \u2014 success leaves the ware used but functional,"
+        },
+        {
+          "name": "concealment_rank",
+          "signature": "(level)",
+          "doc": "0 Medical, 1 Touch, 2 Sight. Unknown values raise rather than defaulting to the loudest."
+        },
+        {
+          "name": "detectable",
+          "signature": "(level, method)",
+          "doc": "Whether a given inspection method finds this grade of cyber."
+        },
+        {
+          "name": "profile_adjusted",
+          "signature": "(level)",
+          "doc": "SRD 3.6.6 Profile Adjustment: lower the obviousness one step; no benefit at Medical."
+        },
+        {
+          "name": "monthly_upkeep",
+          "signature": "(base_cost)",
+          "doc": "The monthly maintenance and subscription charge for a system of this base cost."
+        },
+        {
+          "name": "can_maintain",
+          "signature": "(*, fix_level=..., heal_level=...)",
+          "doc": "Fix-0 or Heal-0 (or better) suffices. Untrained is -1 in the Without Number scale."
+        },
+        {
+          "name": "maintenance_required",
+          "signature": "(months_since_upkeep)",
+          "doc": "True once a month has passed: the SRD then has the GM pick or roll a complication."
+        },
+        {
+          "name": "skillplug_cost",
+          "signature": "(level, *, physical=...)",
+          "doc": "Price of a skillplug, doubled for physical skills. Level 3 has no price: it is mission loot."
+        },
+        {
+          "name": "skillplug_jack_allows",
+          "signature": "(jack, *, physical)",
+          "doc": "Whether this plug jack can run a physical skillplug at all."
+        },
+        {
+          "name": "auto_failure_faces",
+          "signature": "(*, attack=..., plugs_running=...)",
+          "doc": "The natural-roll faces that are automatic failures for a skillplug-augmented roll."
+        },
+        {
+          "name": "is_auto_failure",
+          "signature": "(die, *, attack=..., plugs_running=...)",
+          "doc": "Whether a natural roll on the d20 falls inside the automatic-failure range."
+        },
+        {
+          "name": "resolve_skillplug_roll",
+          "signature": "(die, *, attack=..., plugs_running=...)",
+          "doc": "The SRD's consequence bundle for one skillplug-augmented natural roll."
+        },
+        {
+          "name": "mod_cost",
+          "signature": "(system_cost, mod)",
+          "doc": "SRD 3.6.6: \"Cyberware mod costs are expressed as a percentage cost of the system\"."
+        },
+        {
+          "name": "mod_requirements",
+          "signature": "(mod)",
+          "doc": "The Fix and Heal levels the mod demands, and whether it consumes a special component."
+        },
+        {
+          "name": "can_install_mod",
+          "signature": "(mod, *, installed=..., system_strain=...)",
+          "doc": "Whether a mod can go on this system."
+        },
+        {
+          "name": "alienation_for_system",
+          "signature": "(strain_cost, *, nerve=...)",
+          "doc": "Alienation a system imposes: its System Strain **rounded up**, plus 2 if it is Nerve cyber."
+        },
+        {
+          "name": "permanent_alienation",
+          "signature": "(systems)",
+          "doc": "The floor Alienation imposed by the cyber a character still carries."
+        },
+        {
+          "name": "max_alienation",
+          "signature": "(wisdom, syndromes=...)",
+          "doc": "Wisdom plus the bonuses of the chrome syndromes carried. A syndrome taken twice raises."
+        },
+        {
+          "name": "gains_alienation_point",
+          "signature": "(d20, current)",
+          "doc": "SRD 3.6.8.1: \"the user rolls 1d20; if the result is equal or less than their current"
+        },
+        {
+          "name": "is_psychotic",
+          "signature": "(total, wisdom, syndromes=...)",
+          "doc": "Strictly above the maximum: a character sitting exactly at their limit is still themselves."
+        },
+        {
+          "name": "resolve_alienation_check",
+          "signature": "(*, d20, current, wisdom, syndromes=..., mental_save=...)",
+          "doc": "One Alienation check, including the two different outcomes above the maximum."
+        },
+        {
+          "name": "therapy_week",
+          "signature": "(current, permanent_floor)",
+          "doc": "One week of cyberpsychological therapy: -1, never below the floor the remaining cyber sets."
+        },
+        {
+          "name": "rescue_from_cip",
+          "signature": "(*, alienation, wisdom, syndromes=..., cyber_removed_except_medical, mental_save_total, save_target, therapist_bonus=...)",
+          "doc": "SRD 3.6.8.2: the only way back from cyber-induced psychosis."
+        },
+        {
+          "name": "CyberSystem",
+          "signature": "",
+          "doc": "One row of the SRD's cyberware tables: price, body type, concealment, permanent strain.",
+          "methods": [
+            {
+              "name": "CyberSystem.is_nerve",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "CyberSystem.alienation",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "load_systems",
+          "signature": "(path=...)",
+          "doc": "The mechanical rows of SRD 3.6.7, read from ``data/rules/cwn_cyberware.json`` (CC0)."
+        },
+        {
+          "name": "system",
+          "signature": "(name, systems=...)",
+          "doc": "Look a system up by its printed name, normalising typographic punctuation first."
+        },
+        {
+          "name": "permanent_strain_total",
+          "signature": "(systems)",
+          "doc": "Total permanent System Strain the listed systems impose on their user."
+        }
+      ],
+      "count": 38
     },
     {
       "module": "cwn_drones.py",
