@@ -1,6 +1,8 @@
-# Mandatory MUD language rule (#980 and #981)
+# Mandatory player-visible Finglish rule (#992 updates #980/#981)
 
-**Finnish (Finglish) is the official primary language of the MUD, but all agents MUST author ONLY English. Never create, translate, correct, or improvise Finnish UI, story, dialogue or examples. Tomi alone writes Finnish story/dialogue. Do not overwrite Tomi-authored Finnish.** The first playable build may intentionally contain 50% Tomi Finnish and 50% agent English (or any mix), without a localization-completeness gate. Show English draft text as fallback where Finnish is not yet available. A separately edited English localization comes later. Rulebooks and docs remain English. Read `docs/FINNISH.md` before working on player-facing content. Treat #980 and #981 as one workstream.
+For all **MUD player-visible** UI, dialogue, quests, narrative and future Concordia GM/NPC speech, agents write **predominantly English**, with *occasional* very simple Finnish expressions and context-appropriate Stadin slangi, Swedish, Russian, Chinese or other loanwords. The voice should resemble a foreigner who knows a little Finnish, not an attempt at fluent native Finnish. Reuse only suitable, verified terms from Tomi's authored material and the shared glossary. **Never translate, rewrite, correct or overwrite Tomi-authored Finnish/Finglish.**
+
+For **all non-player-visible** content (design documents, rulebooks, code/comments, tests, internal LLM prompts and tools), agents write **plain English**. Do not confuse an English-dominant Finglish source string with a Tomi-authored Finnish translation in i18n metadata. Read canonical `docs/FINNISH.md`. Future Concordia prompts must enforce this player-facing output boundary, but the solo game remains independent of LLMs (#950).
 
 # Authoritative agent instructions: MUD is primary (#950)
 
@@ -35,4 +37,4 @@ Changes in this folder should be testable with pure Python unit tests where poss
 
 ## Design workflow (#989)
 
-Authored game content — days, characters, missions, interactions, storylines, locations, rules, encounters and events — is specified by Tomi in [`design/`](../design/) and implemented through the issue raised from each document. Read [`design/README.md`](../design/README.md) and the root [`AGENTS.md`](../AGENTS.md) section *DESIGN WORKFLOW* before implementing any of it: implement only what the document describes, one step at a time, and preserve Tomi's Finnish verbatim.
+Authored game content — days, characters, missions, interactions, storylines, locations, rules, encounters and events — is specified by Tomi in [`design/`](../design/) and implemented through the issue raised from each document. Read [`design/README.md`](../design/README.md) and the root [`AGENTS.md`](../AGENTS.md) section *DESIGN WORKFLOW* before implementing any of it: implement only what the document describes, one step at a time, and preserve Tomi's Finnish/Finglish verbatim.
