@@ -39,6 +39,13 @@ silently by picking one.
 where a case needs it**, with every original NoöPunk feature built **on top** as an overlay. CWN is the base
 engine and wins where sources disagree; SWN psionics is the essential companion module.
 
+**Content follows the reveal ladder.** [`data/world/reveal_ladder.json`](data/world/reveal_ladder.json) is the
+authority for what a scene may show: the game opens as recognisable cyberpunk and earns NHI/PSI/cosmic material
+through investigation. A quest, NPC or scene belongs to a stage; it may not use a later stage's vocabulary
+before the play has paid for it. The reading, and Romppainen's constraints as a mentor, are in
+[`docs/design/ISSUE_1007_DESIGN_CANON.md`](docs/design/ISSUE_1007_DESIGN_CANON.md); `tests/test_reveal_ladder.py`
+keeps the ladder monotonic.
+
 Read [`docs/rules/RULES_CONSTITUTION.md`](docs/rules/RULES_CONSTITUTION.md) before touching rules. Its
 machine-readable half is [`data/rules/rules_constitution.json`](data/rules/rules_constitution.json), and
 [`data/rules/overlay_registry.json`](data/rules/overlay_registry.json) records which layer is backed by which
@@ -47,6 +54,15 @@ no replacement skill list, no overlay that rolls its own dice, no planned module
 
 **Never replace the rules engine.** The six attributes, the skill list and the resolution rules are CWN's and
 stay CWN's; NoöPunk adds `mods/noopunk` overlays around them.
+
+**Classify every rule module, and prove the vanilla game still runs.** The registry above also carries a
+`module_tiers` block: every file under `src/rules/` belongs to exactly one tier, and
+`python3 tools/rules_constitution_audit.py --check` fails on an unclassified, duplicated or phantom module —
+or on a `cwn-core` module that imports a `noopunk-mod` one. The tier table is generated into
+[`docs/rules/RULES_CONSTITUTION_TIERS.md`](docs/rules/RULES_CONSTITUTION_TIERS.md).
+`tests/test_rules_constitution_modules.py` then runs the baseline in a subprocess whose import hook **refuses
+every overlay module**, so "turning the mods off leaves a working CWN game" is a fact rather than a promise.
+A new module added under `src/rules/` is classified in the same commit.
 
 **A vague instruction is not authorisation to change the core.** "Improve the rules", "make PSI deeper",
 "implement this subsystem" mean *write a mod*. Amending the constitution requires an explicit author decision
