@@ -5,9 +5,21 @@ yields a usable core clue: the case cannot dead-end on a bad roll or a rude answ
 """
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass
 
 from nopunk_mud.consciousness import Assessment, Signals, assess
+from nopunk_mud.cwn_core import REPO_ROOT, attribute_modifier  # re-exported for MUD commands
+
+#: Lower-case attribute names used by the Evennia character sheet.
+ATTRIBUTES = ("strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma")
+
+#: CWN skill names, lower-cased for command lookup, read from the published list.
+SKILLS = {
+    str(name).lower()
+    for name in json.loads((REPO_ROOT / "data" / "rules" / "cwn" / "skills.json")
+                           .read_text(encoding="utf-8"))["skills"]
+}
 
 SUBJECT = "Aino Lahtinen, night-shift dispatcher, Lakkahaltia warehouse"
 
