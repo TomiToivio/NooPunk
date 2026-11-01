@@ -3,8 +3,8 @@
   "source": "src/rules",
   "note": "Registry of implemented rule procedures. Presence here is code coverage, not SRD parity.",
   "totals": {
-    "modules": 32,
-    "procedures": 300
+    "modules": 34,
+    "procedures": 309
   },
   "modules": [
     {
@@ -987,6 +987,44 @@
       "count": 15
     },
     {
+      "module": "cwn_heat.py",
+      "procedures": [
+        {
+          "name": "heat_band",
+          "signature": "(score)",
+          "doc": ""
+        },
+        {
+          "name": "HeatTrack",
+          "signature": "",
+          "doc": "",
+          "methods": [
+            {
+              "name": "HeatTrack.add",
+              "signature": "(amount)",
+              "doc": ""
+            },
+            {
+              "name": "HeatTrack.reduce",
+              "signature": "(amount)",
+              "doc": ""
+            },
+            {
+              "name": "HeatTrack.band",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "HeatTrack.consequence",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        }
+      ],
+      "count": 5
+    },
+    {
       "module": "cwn_initiative.py",
       "procedures": [
         {
@@ -1059,9 +1097,14 @@
           "name": "surprise_free_round",
           "signature": "(surprised, ready)",
           "doc": "The order for the free round granted by surprise: the ready side acts, then normal initiative."
+        },
+        {
+          "name": "surprise_applies",
+          "signature": "(*, surprised, anticipating)",
+          "doc": "Surprise cannot be imposed on a group already expecting a fight (SRD 2.4.1)."
         }
       ],
-      "count": 10
+      "count": 11
     },
     {
       "module": "cwn_injury_procedure.py",
@@ -1191,6 +1234,27 @@
         }
       ],
       "count": 5
+    },
+    {
+      "module": "cwn_npcs.py",
+      "procedures": [
+        {
+          "name": "reaction_band",
+          "signature": "(total)",
+          "doc": "Map a modified 2d6 reaction total to its printed band."
+        },
+        {
+          "name": "reaction_roll",
+          "signature": "(die_a, die_b, charisma_modifier=...)",
+          "doc": "2d6 + the spokesman's Charisma modifier, using the printed reaction table."
+        },
+        {
+          "name": "morale_check",
+          "signature": "(die_a, die_b, morale)",
+          "doc": "2d6 against Morale; equal or higher breaks, exactly as printed on p. 183."
+        }
+      ],
+      "count": 3
     },
     {
       "module": "cwn_program_catalogue.py",
