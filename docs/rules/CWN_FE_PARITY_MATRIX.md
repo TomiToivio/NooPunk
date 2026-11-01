@@ -48,7 +48,7 @@ Silence is never read as done.
 | Saving Throws | 30 | `cwn_core` | 19 | `test_cwn_core.py`, `test_cwn_coverage_manifest.py` | tested | — |
 | Skill Checks | 31 | `wn_core` | 11 | `test_cwn_combat.py`, `test_cwn_core.py` | tested | — |
 | Combat | 32 | `cwn_combat`, `cwn_core` | 21 | `test_cwn_attack_modifiers.py`, `test_cwn_combat.py` | tested | — |
-| The Combat Round | 33 | `cwn_initiative`, `cwn_combat_actions` | 12 | `test_cwn_combat_actions.py`, `test_cwn_initiative.py` | tested | — |
+| The Combat Round | 33 | `cwn_initiative`, `cwn_combat_actions` | 13 | `test_cwn_combat_actions.py`, `test_cwn_initiative.py` | tested | — |
 | Actions in Combat | 34 | `cwn_combat_actions` | 5 | `test_cwn_combat_actions.py`, `test_wn_core_contract.py` | tested | — |
 | Combat Maneuvers and Definitions | 36 | `cwn_combat_actions`, `cwn_attack_modifiers` | 8 | `test_cwn_attack_modifiers.py`, `test_cwn_combat_actions.py` | tested | — |
 | Injury, Healing, and System Strain | 40 | `cwn_core`, `cwn_strain`, `cwn_healing` | 28 | `test_cwn_core.py`, `test_cwn_coverage_manifest.py` | tested | — |
