@@ -162,7 +162,8 @@ class NoopunkCharacterCmdSet(CharacterCmdSet):
     key = "NoopunkCharacterCmdSet"
     def at_cmdset_creation(self):
         super().at_cmdset_creation()
-        self.add(CmdDictionary())\n        self.add(CmdSheet())
+        self.add(CmdDictionary())
+        self.add(CmdSheet())
         self.add(CmdCheckAttr())
         self.add(CmdCase())
         self.add(CmdSolo())
