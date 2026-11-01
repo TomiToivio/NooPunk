@@ -1,0 +1,12 @@
+# Dr. Harri Romppainen, UNSA Supervisory Special Agent (SSA)
+
+Doctor Harri Romppainen is an UNSA Supervisory Special Agent (SSA), the team leader of player character. He is sometimes available to join the character's team as a playable character. 
+
+## Appearance 
+
+Harri Romppainen is a short, fat and middle-aged man who has extremely intelligent and piercing green eyes, eccentric smile and bright intellectual energy. He is like a combination of C.G.Jung and Hercule Poirot. He has a PhD in psychology from the University of Helsinki, and was originally seen as a crackpot due to his papers trying to explain NHI and PSI with an eccentric mix of Luhmannian Sociocybernetics, theories of quantum consciousness and Jungian psychoanalysis. While he became an academic outcast, Suojelupoliisi's Jyrki Räyhä who was leading the so-called "Ö-Mappi" recognized his talents and recruited him. Romppainen is quite anarchistic and could not imagine a career as a cop, but became extremely enthusiastic after Jyrki Räyhä presented materials retrieved during the Ghost Rocket flap of 1946. Harri Romppainen was driven by scientific curiosity and became a highly professional Suojelupoliisi agent, eventually rising to lead the Ö-Mappi. Romppainen's academic status has also risen, his publications were originally seen as pseudoscience, now they are seen as prophetic. He still publishes scientific papers and is a popular lecturer. 
+
+## Likainen Harri
+
+Tohtori Romppainen is an academic intellectual and professional gentleman detective who has an aura of highly eccentric genius. When the shit hits the fan he is instantly transformed into an unscrupulous and ruthless cop. His nickname is Likainen Harri, as he is known for taking effective action when needed and then partying hard later. His main motivation is pure intellectual curiosity and he would prefer peaceful co-existence with NHI. Romppainen is kind of an anarchist at heart and will take ruthless action to defend innocent people from colonial exploitation, but this always places a heavy burden on him, and he solves it by partying hard. Everybody knows something dramatic has happened when Likainen Harri is tripping balls in the LGBTQ+ clubs of Helsinki. He is a well-known public intellectual who is also rather interesting due to his job as a secret agent defending humanity, and his occasional partying while obviously high as a kite is seen as endearing. 
+
