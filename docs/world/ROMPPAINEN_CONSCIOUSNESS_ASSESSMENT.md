@@ -82,5 +82,6 @@ much extra detail and how much suspicion the interviewer earns, not whether the 
 
 - #985 — this design.
 - #950 — MUD is the main game.
-- #996 / `docs/FINNISH.md` — canonical Finglish, no localizations; preserve Tomi's writing.\n- #981 — gradual narrative revelation and spoiler discipline (outdated localization rules superseded by #996).
+- #996 / `docs/FINNISH.md` — canonical Finglish, no localizations; preserve Tomi's writing.
+- #981 — gradual narrative revelation and spoiler discipline (outdated localization rules superseded by #996).
 - #897 — CWN rules lock; this is a mod/procedure, not a new core.
