@@ -33,6 +33,25 @@ While implementing, these remain binding and are not negotiable by a design docu
 and `design/README.md` win for *who authors what*. Raise the conflict on the issue; do not resolve it
 silently by picking one.
 
+# RULES CONSTITUTION — LOCKED (#1006)
+
+**This is the wider lock that the #897 foundational decision began.** The Without Number foundation is locked. NoöPunk uses **all CWN rules, many SWN rules, and WWN/AWN material
+where a case needs it**, with every original NoöPunk feature built **on top** as an overlay. CWN is the base
+engine and wins where sources disagree; SWN psionics is the essential companion module.
+
+Read [`docs/rules/RULES_CONSTITUTION_1006.md`](docs/rules/RULES_CONSTITUTION_1006.md) before touching rules. Its
+machine-readable half is [`data/rules/rules_constitution.json`](data/rules/rules_constitution.json), and
+`tests/test_rules_constitution_1006.py` enforces it: no second attribute set, no replacement skill list, no
+overlay that rolls its own dice, no planned module described as implemented.
+
+**Never replace the rules engine.** The six attributes, the skill list and the resolution rules are CWN's and
+stay CWN's; NoöPunk adds `mods/noopunk` overlays around them.
+
+**A vague instruction is not authorisation to change the core.** "Improve the rules", "make PSI deeper",
+"implement this subsystem" mean *write a mod*. Amending the constitution requires an explicit author decision
+that names it. Overlays live in `mods/noopunk/` and in the MUD's overlay modules; they ask the core for a roll
+and never roll for it.
+
 ---
 
 # MUD LANGUAGE AUTHORITY (#996: ONE FINGLISH, NO LOCALIZATIONS)

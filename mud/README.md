@@ -1,6 +1,10 @@
 # NoöPunk MUD
 
 > **New authority #950:** This is the **primary NoöPunk game**. Implement CWN first, then a self-contained UNSA solo campaign, before optional multiplayer/LLM/Mesa and other factions. The existing paragraphs describing an equal-priority sandbox are historical. See [CWN Deluxe audit](../docs/design/ISSUE_950_CWN_DELUXE_AUDIT.md).
+**Rules are locked (#1006):** all CWN, many SWN rules, WWN/AWN where needed — every NoöPunk feature is an
+overlay on top. Read [`docs/rules/RULES_CONSTITUTION_1006.md`](../docs/rules/RULES_CONSTITUTION_1006.md)
+before changing any rule, and do not add a second attribute set, skill list or resolution mechanic.
+
 
 The first original solo case can be played via `case status`, `case accept` at UNSA safehouse, `case interview` at Kurvi, `case records` at University of Helsinki, then `case report` and `case submit` at UNSA safehouse. The case state persists on the player character; this is a **prologue**, not a complete campaign. The linked Python unit test exercises it without LLM/Evennia. Use `checkattr <attribute>` to set the attribute for skill checks, then `check <skill>=<difficulty>`.
 

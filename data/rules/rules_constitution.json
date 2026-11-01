@@ -1,0 +1,247 @@
+{
+  "$comment": "The rules constitution (#1006). This file is the machine-readable half of docs/rules/RULES_CONSTITUTION_1006.md and is checked by tests/test_rules_constitution_1006.py. Purpose: make it impossible for an agent to quietly replace, rebalance or 'improve' the Without Number foundation. A layer may only claim a status it can evidence with a path that exists, and an implemented layer must name a test that proves it.",
+  "issue": 1006,
+  "locked": true,
+  "author_statement": "We will use all CWN rules, many SWN rules and potentially some WWN/AWN rules. The NoöPunk Mods are built on top of plain vanilla CWN/SWN/WWN/AWN rules.",
+  "precedence": [
+    "cwn",
+    "swn",
+    "wwn",
+    "awn"
+  ],
+  "rules": [
+    {
+      "id": "preserve-cwn-behaviour",
+      "text": "CWN is preserved in behaviour: six attributes, the original skill list and definitions, skill levels and advancement, character creation, combat, saves, equipment procedures and the fundamental resolution rules. No replacement attributes, no rewritten skill mechanics.",
+      "enforced_by": "tests/test_rules_constitution_1006.py::CoreIsNotRebuilt"
+    },
+    {
+      "id": "all-cwn-rules",
+      "text": "The target is all of CWN, not a convenient subset. Rules that are not yet implemented are recorded as such in the compliance matrix rather than declared out of scope.",
+      "enforced_by": "tools/check_cwn_compliance.py"
+    },
+    {
+      "id": "swn-psionics-essential",
+      "text": "SWN psionics is the essential companion module for the PSI premise. It is imported as a separate, identified module; bridging lives in the module, never as an edit to CWN.",
+      "enforced_by": "rules_constitution.json modules[swn-psionics]"
+    },
+    {
+      "id": "many-swn-rules",
+      "text": "A substantial part of SWN is imported as modules - space travel, factions, equipment, psionics - because the setting needs them. Each import is its own module with its own tests.",
+      "enforced_by": "rules_constitution.json modules[*].source"
+    },
+    {
+      "id": "optional-wwn-awn",
+      "text": "WWN and AWN material is optional and may be imported as explicit modules when a case needs it. Nothing from either replaces a CWN procedure.",
+      "enforced_by": "rules_constitution.json modules[*].class"
+    },
+    {
+      "id": "noopunk-is-overlay",
+      "text": "Every original NoöPunk feature is an overlay: Noösphere, ontological shock, StO/StS framing, density awakening, GUMSHOE investigation, PbtA moves, LaclauGPT factions, NHI species, psychotronics, wormholes. Overlays add behaviour around the core and never inside it.",
+      "enforced_by": "tests/test_rules_constitution_1006.py::OverlaysAreOverlays"
+    },
+    {
+      "id": "vanilla-playable",
+      "text": "With every overlay disabled the game is still a faithful CWN game. The vanilla profile contains no overlay path.",
+      "enforced_by": "tests/test_rules_constitution_1006.py::Profiles"
+    },
+    {
+      "id": "one-contract",
+      "text": "Tabletop, the Evennia MUD and the Godot maintenance build use the same rule contracts. There is no second mechanical baseline and Godot is not the main game.",
+      "enforced_by": "tests/test_mud_cwn_parity_950.py"
+    },
+    {
+      "id": "refuse-core-refactors",
+      "text": "A vague request ('improve the rules', 'make PSI deeper', 'implement this subsystem') is never authorisation to change the core. Core amendments require an explicit, exceptional author decision that names this constitution.",
+      "enforced_by": "docs/rules/RULES_CONSTITUTION_1006.md section 'What agents may not do'"
+    }
+  ],
+  "layers": {
+    "core": [
+      {
+        "id": "cwn-core",
+        "name": "Cities Without Number",
+        "class": "core",
+        "source": "cwn",
+        "status": "implemented",
+        "paths": [
+          "mud/nopunk_mud/cwn/__init__.py",
+          "mud/nopunk_mud/cwn_core.py",
+          "src/rules/cwn_core.py",
+          "godot/core/rules_adapter.gd"
+        ],
+        "tests": [
+          "tests/test_mud_cwn_parity_950.py",
+          "tests/godot/test_cwn_rules.gd"
+        ],
+        "note": "Two Python cores and one Godot core exist; the MUD package is parity-tested against src/rules. Consolidating them is tracked debt, not an invitation to change arithmetic."
+      }
+    ],
+    "modules": [
+      {
+        "id": "swn-psionics",
+        "name": "SWN psionics",
+        "class": "module",
+        "source": "swn",
+        "status": "planned",
+        "paths": [],
+        "tests": [],
+        "required_for": [
+          "minimum-playable",
+          "full-noopunk"
+        ],
+        "note": "Required by the constitution and not yet implemented. The Noosphere overlay models exposure, not the SWN psionic disciplines themselves; do not present one as the other."
+      },
+      {
+        "id": "swn-space-and-factions",
+        "name": "SWN space travel, ships and faction turns",
+        "class": "module",
+        "source": "swn",
+        "status": "planned",
+        "paths": [],
+        "tests": [],
+        "required_for": [
+          "full-noopunk"
+        ],
+        "note": "Wormhole travel in NoöPunk needs a transit procedure; take SWN's rather than inventing one."
+      },
+      {
+        "id": "awn-survival-stress",
+        "name": "AWN survival and stress",
+        "class": "module",
+        "source": "awn",
+        "status": "partial",
+        "paths": [
+          "mods/noopunk/stress.gd",
+          "data/rules/awn_stress.json",
+          "data/rules/awn_survival.json"
+        ],
+        "tests": [
+          "godot/tests/test_awn_stress_928.gd",
+          "tests/test_awn_wwn_campaign_procedures.py"
+        ],
+        "required_for": [],
+        "note": "Data and a Godot overlay exist; no MUD implementation yet."
+      },
+      {
+        "id": "wwn-additional",
+        "name": "WWN additional material",
+        "class": "module",
+        "source": "wwn",
+        "status": "planned",
+        "paths": [],
+        "tests": [],
+        "required_for": [],
+        "note": "Imported only when a case needs it."
+      }
+    ],
+    "overlays": [
+      {
+        "id": "gumshoe-investigation",
+        "name": "GUMSHOE-inspired investigation",
+        "class": "overlay",
+        "source": "noopunk",
+        "status": "implemented",
+        "paths": [
+          "mods/noopunk/gumshoe_investigation.gd",
+          "data/rules/gumshoe_investigative.json",
+          "godot/ui/investigation_screen.gd"
+        ],
+        "tests": [
+          "godot/tests/test_gumshoe_932.gd",
+          "godot/tests/test_investigation_screen_933.gd"
+        ],
+        "required_for": [
+          "full-noopunk"
+        ],
+        "note": "Pools buy benefits; a core clue is never gated by a roll. SRD-cited, no commercial-game text."
+      },
+      {
+        "id": "noosphere-pbta",
+        "name": "Noösphere, ontological shock and PbtA moves",
+        "class": "overlay",
+        "source": "noopunk",
+        "status": "implemented",
+        "paths": [
+          "mods/noopunk/noosphere.gd",
+          "mud/nopunk_mud/consciousness.py"
+        ],
+        "tests": [
+          "godot/tests/test_noosphere_943.gd",
+          "mud/tests/test_consciousness.py"
+        ],
+        "required_for": [
+          "full-noopunk"
+        ],
+        "note": "Exposure is narrative pressure, not an illness, and never overrides a CWN result."
+      },
+      {
+        "id": "psyche",
+        "name": "Psyche states",
+        "class": "overlay",
+        "source": "noopunk",
+        "status": "implemented",
+        "paths": [
+          "mods/noopunk/psyche.gd"
+        ],
+        "tests": [
+          "godot/tests/test_noopunk_psyche.gd"
+        ],
+        "required_for": [],
+        "note": "The overlay reads state and returns it; it never rolls."
+      },
+      {
+        "id": "laclau-ideology",
+        "name": "LaclauGPT-inspired ideology, factions and reputation",
+        "class": "overlay",
+        "source": "noopunk",
+        "status": "partial",
+        "paths": [
+          "mud/nopunk_mud/world_state.py"
+        ],
+        "tests": [
+          "mud/tests/test_mud_core.py"
+        ],
+        "required_for": [
+          "full-noopunk"
+        ],
+        "note": "Faction state and reputation exist; signifier/articulation mechanics do not. A full faction simulation is later scope."
+      }
+    ]
+  },
+  "profiles": {
+    "vanilla-cwn": {
+      "description": "Faithful CWN with no NoöPunk features. Must stay playable.",
+      "layers": [
+        "cwn-core"
+      ]
+    },
+    "minimum-playable": {
+      "description": "CWN plus SWN psionics: the smallest build that supports the PSI premise.",
+      "layers": [
+        "cwn-core",
+        "swn-psionics"
+      ]
+    },
+    "full-noopunk": {
+      "description": "The intended experience: core, psionics, investigation, Noösphere, ideology.",
+      "layers": [
+        "cwn-core",
+        "swn-psionics",
+        "swn-space-and-factions",
+        "gumshoe-investigation",
+        "noosphere-pbta",
+        "laclau-ideology"
+      ]
+    }
+  },
+  "forbidden": [
+    "a second attribute set",
+    "a replacement skill list",
+    "a modified skill-check resolution rule",
+    "a rebalanced combat procedure",
+    "a NoöPunk rule implemented by editing a core file",
+    "an overlay that owns its own dice arithmetic for a CWN procedure",
+    "presenting a planned module as implemented"
+  ]
+}
