@@ -1,0 +1,69 @@
+{
+  "$comment": "Permanent rules foundation for NooPunk (#1006). Machine-readable companion to docs/rules/RULES_CONSTITUTION.md, which is authoritative if they disagree. Purpose: make it impossible to add a rules source, or change a source's role, without a test noticing.",
+  "format": "noopunk.rules.constitution",
+  "version": 1,
+  "issue": "https://github.com/TomiToivio/NooPunk/issues/1006",
+  "precedence": [
+    "CWN",
+    "SWN",
+    "WWN",
+    "AWN"
+  ],
+  "minimum_playable": [
+    "CWN",
+    "SWN"
+  ],
+  "layers": [
+    "core",
+    "module",
+    "mod"
+  ],
+  "prohibitions": [
+    "redesign_core",
+    "replace_attributes",
+    "rewrite_skill_mechanics",
+    "simplify_rules",
+    "silent_behaviour_change",
+    "fork_rule_into_mod"
+  ],
+  "sources": {
+    "CWN": {
+      "role": "core",
+      "status": "locked",
+      "licence": "CC0 (SRD)",
+      "licence_status": "verified",
+      "provides": [
+        "attributes",
+        "skills",
+        "advancement",
+        "combat",
+        "saves",
+        "equipment",
+        "resolution"
+      ]
+    },
+    "SWN": {
+      "role": "module",
+      "status": "adopted",
+      "licence": "SRD \u2014 not yet verified in this repository",
+      "licence_status": "unverified",
+      "provides": [
+        "psionics"
+      ]
+    },
+    "WWN": {
+      "role": "mod",
+      "status": "optional",
+      "licence": "CC0 (SRD)",
+      "licence_status": "verified",
+      "provides": []
+    },
+    "AWN": {
+      "role": "mod",
+      "status": "optional",
+      "licence": "SRD \u2014 not yet verified in this repository",
+      "licence_status": "unverified",
+      "provides": []
+    }
+  }
+}
