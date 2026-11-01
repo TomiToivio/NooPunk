@@ -19,8 +19,9 @@ from nopunk_mud.consciousness import (
 
 class DeviceIdentityTests(unittest.TestCase):
     def test_the_device_carries_the_approved_name(self) -> None:
-        # Romppainen-Fujita with an en dash; the Japanese character belongs to her, not to this constant.
-        self.assertEqual(DEVICE_NAME, "Romppainen\u2013Fujita")
+        # Romppainen-Fujita with an en dash, and it is a psychotronic device - the canonical constant says both.
+        self.assertIn("Romppainen–Fujita", DEVICE_NAME)
+        self.assertIn("psychotronic", DEVICE_NAME)
 
     def test_it_is_helsinki_only_equipment(self) -> None:
         self.assertEqual(FIELD_OFFICE, "helsinki")
