@@ -2,7 +2,7 @@
 
 > **New authority #950:** This is the **primary NoöPunk game**. Implement CWN first, then a self-contained UNSA solo campaign, before optional multiplayer/LLM/Mesa and other factions. The existing paragraphs describing an equal-priority sandbox are historical. See [CWN Deluxe audit](../docs/design/ISSUE_950_CWN_DELUXE_AUDIT.md).
 **Rules are locked (#1006):** all CWN, many SWN rules, WWN/AWN where needed — every NoöPunk feature is an
-overlay on top. Read [`docs/rules/RULES_CONSTITUTION_1006.md`](../docs/rules/RULES_CONSTITUTION_1006.md)
+overlay on top. Read [`docs/rules/RULES_CONSTITUTION.md`](../docs/rules/RULES_CONSTITUTION.md)
 before changing any rule, and do not add a second attribute set, skill list or resolution mechanic.
 
 

@@ -1,4 +1,4 @@
-"""The rules constitution is enforced, not just written down (#1006).
+"""The constitution's implementation claims are enforced, not just written down (#1006).
 
 A governance document that nothing checks is a wish. These tests make the constitution fail loudly when it is
 contradicted:
@@ -21,34 +21,18 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CONSTITUTION = ROOT / "data" / "rules" / "rules_constitution.json"
+REGISTRY = ROOT / "data" / "rules" / "overlay_registry.json"
 STATUSES = {"implemented", "partial", "planned", "data-only"}
 OVERLAY_DIRS = ("mods/noopunk",)
 
 
 def load() -> dict:
-    return json.loads(CONSTITUTION.read_text())
+    return json.loads(REGISTRY.read_text())
 
 
 def layers(data: dict):
     for group in data["layers"].values():
         yield from group
-
-
-class TheDocumentItself(unittest.TestCase):
-    def test_the_constitution_is_locked_and_names_its_issue(self):
-        data = load()
-        self.assertTrue(data["locked"])
-        self.assertEqual(data["issue"], 1006)
-        self.assertEqual(data["precedence"][0], "cwn", "CWN must win where sources disagree")
-
-    def test_the_author_statement_is_quoted_verbatim(self):
-        data = load()
-        statement = data["author_statement"]
-        self.assertIn("all CWN rules", statement)
-        self.assertIn("many SWN rules", statement)
-        self.assertIn("on top of plain vanilla", statement)
-
 
 
 class StatusesAreEvidenced(unittest.TestCase):

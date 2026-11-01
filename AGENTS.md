@@ -39,10 +39,11 @@ silently by picking one.
 where a case needs it**, with every original NoöPunk feature built **on top** as an overlay. CWN is the base
 engine and wins where sources disagree; SWN psionics is the essential companion module.
 
-Read [`docs/rules/RULES_CONSTITUTION_1006.md`](docs/rules/RULES_CONSTITUTION_1006.md) before touching rules. Its
+Read [`docs/rules/RULES_CONSTITUTION.md`](docs/rules/RULES_CONSTITUTION.md) before touching rules. Its
 machine-readable half is [`data/rules/rules_constitution.json`](data/rules/rules_constitution.json), and
-`tests/test_rules_constitution_1006.py` enforces it: no second attribute set, no replacement skill list, no
-overlay that rolls its own dice, no planned module described as implemented.
+[`data/rules/overlay_registry.json`](data/rules/overlay_registry.json) records which layer is backed by which
+code. `tests/test_overlay_registry_1006.py` enforces the boundary that matters in code: no second attribute set,
+no replacement skill list, no overlay that rolls its own dice, no planned module described as implemented.
 
 **Never replace the rules engine.** The six attributes, the skill list and the resolution rules are CWN's and
 stay CWN's; NoöPunk adds `mods/noopunk` overlays around them.
