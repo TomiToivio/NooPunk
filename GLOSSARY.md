@@ -4,6 +4,7 @@ The official language of NoöPunk is Finglish as spoken in the Helsinki area ("S
 
 * Bonjata - to understand
 * Bönde - Finland that is not Helsinki
+* Crusti - crust punk
 * Diili - deal
 * Dokata - to drink alcohol
 * Dänkki - cannabis
@@ -21,6 +22,7 @@ The official language of NoöPunk is Finglish as spoken in the Helsinki area ("S
 * Nisti - junkie
 * Hiisata - to smoke cannabis
 * Pummi - bum
+* Punkkari - punk rocker
 * Rafla - restaurant
 * Sika - cop
 * Skoude - cop
