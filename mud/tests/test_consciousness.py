@@ -54,3 +54,33 @@ def test_psi_channel_adds_a_caveat_not_a_requirement():
     with_psi = assess(Signals(1, 1, 1, 1, psi=1))
     assert any("No psychotronic" in caveat for caveat in without.caveats)
     assert not any("No psychotronic" in caveat for caveat in with_psi.caveats)
+
+
+def test_romppainen_fujita_daily_limit_is_four_tests():
+    from nopunk_mud.consciousness import DeviceError, DeviceSession
+
+    session = DeviceSession()
+    assert [session.administer() for _ in range(4)] == [1, 2, 3, 4]
+    assert session.goofy
+    with pytest.raises(DeviceError, match="daily limit"):
+        session.administer()
+
+
+def test_romppainen_fujita_is_helsinki_only_and_needs_both_helmets():
+    from nopunk_mud.consciousness import DeviceError, DeviceSession
+
+    with pytest.raises(DeviceError, match="Helsinki"):
+        DeviceSession(location="UNSA New York").administer()
+    with pytest.raises(DeviceError, match="helmet"):
+        DeviceSession(administrator_helmet=False).administer()
+    with pytest.raises(DeviceError, match="helmet"):
+        DeviceSession(subject_helmet=False).administer()
+
+
+def test_protocol_carries_the_approved_name():
+    from nopunk_mud.consciousness import DEVICE_NAME, PROTOCOL, PROTOCOL_NAME, assess, Signals
+
+    assert PROTOCOL == "romppainen_fujita"
+    assert "Romppainen–Fujita" in PROTOCOL_NAME
+    assert "psychotronic" in DEVICE_NAME
+    assert assess(Signals(1, 1, 1, 1)).protocol == PROTOCOL

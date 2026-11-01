@@ -1,4 +1,4 @@
-"""Romppainen–Fujita consciousness assessment (#985).
+"""Romppainen consciousness assessment (#985).
 
 A deterministic, CWN-compatible interview procedure. It scores four observed channels, returns a
 pattern band with confidence and caveats, and always yields a core investigative clue — a failed
@@ -12,6 +12,42 @@ CHANNELS = ("affect", "coherence", "bci", "empathy")
 WEIGHTS = {"affect": 0.30, "coherence": 0.25, "bci": 0.25, "empathy": 0.20}
 SIGNAL_MIN, SIGNAL_MAX = -2, 2
 PROTOCOL = "romppainen_fujita"
+PROTOCOL_NAME = "Romppainen–Fujita psychotronic empathy assessment"
+DEVICE_NAME = "Romppainen–Fujita psychotronic empathy device"
+MAX_DAILY_TESTS = 4
+DEVICE_LOCATION = "UNSA Helsinki Field Office"
+
+
+class DeviceError(ValueError):
+    """The device cannot be used as requested; it refuses rather than improvising."""
+
+
+@dataclass
+class DeviceSession:
+    """Daily-use rules for the Romppainen–Fujita device (#985).
+
+    The device is only installed in the Helsinki field office, both people wear the helmet, and a
+    field agent may run at most four tests a day before the goofiness makes further readings junk.
+    """
+
+    tests_today: int = 0
+    location: str = DEVICE_LOCATION
+    administrator_helmet: bool = True
+    subject_helmet: bool = True
+
+    def administer(self) -> int:
+        if self.location != DEVICE_LOCATION:
+            raise DeviceError("the device is only used by the Helsinki UNSA Field Office")
+        if not (self.administrator_helmet and self.subject_helmet):
+            raise DeviceError("both administrator and subject must wear the psychotronic helmet")
+        if self.tests_today >= MAX_DAILY_TESTS:
+            raise DeviceError("daily limit reached: more than four tests makes the readings goofy")
+        self.tests_today += 1
+        return self.tests_today
+
+    @property
+    def goofy(self) -> bool:
+        return self.tests_today >= MAX_DAILY_TESTS
 
 
 class AssessmentError(ValueError):
