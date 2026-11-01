@@ -1,31 +1,43 @@
-"""Deterministic, spoiler-safe player lexicon for the single Finglish edition."""
+"""Deterministic, spoiler-safe player lexicon generated from the canonical GLOSSARY.md (#1000)."""
 from __future__ import annotations
+
 from dataclasses import dataclass
+from pathlib import Path
+
+GLOSSARY_PATH = Path(__file__).resolve().parents[2] / "GLOSSARY.md"
+PUBLIC = "public"
+
 
 @dataclass(frozen=True)
 class Term:
     word: str
     meaning: str
+    category: str
     provenance: str
     register: str = "general"
+    variants: str = ""
+    notes: str = ""
+    spoiler: str = PUBLIC
 
-# Public terms only. Classified revelations belong in progress-gated dossiers, never here.
-PUBLIC_TERMS = (
-    Term("Stadi", "Helsinki.", "attested slang", "Helsinki"),
-    Term("spora", "Tram.", "attested slang", "Helsinki"),
-    Term("dösä", "Bus.", "attested slang", "Helsinki"),
-    Term("steissi", "Railway station.", "attested slang", "Helsinki"),
-    Term("kundi", "Guy or young man.", "attested slang", "Helsinki"),
-    Term("hima", "Home.", "attested slang", "Helsinki"),
-    Term("duuni", "Work or job.", "attested slang", "Helsinki"),
-    Term("fyrkka", "Money.", "attested slang", "Helsinki"),
-    Term("Wallah!", "Emphatic oath or assertion; meaning depends on context.", "Tomi-provided contemporary expression", "urban"),
-    Term("Mä vannon!", "I swear!", "Tomi-provided Finnish expression", "urban"),
-    Term("Suomi Perkele Saatana!", "An emphatic exclamation invoking Finland and Finnish swearing.", "Tomi-provided expression", "exclamation"),
-    Term("UNSA", "The organization employing the player character.", "established game term", "institutional"),
-    Term("BCI", "Brain-computer interface.", "technical term", "technical"),
-)
+
+def parse_glossary(path: Path = GLOSSARY_PATH) -> tuple[Term, ...]:
+    """Read the canonical Markdown table. The file is the authority; no second list exists."""
+    rows: list[Term] = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.startswith("|") or set(line.replace("|", "").strip()) <= {"-", " "}:
+            continue
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+        if len(cells) != 8 or cells[0] in {"Term", "---"}:
+            continue
+        rows.append(Term(*cells))
+    if not rows:
+        raise ValueError(f"no glossary entries parsed from {path}")
+    return tuple(rows)
+
+
+PUBLIC_TERMS = tuple(term for term in parse_glossary() if term.spoiler == PUBLIC)
 _INDEX = {term.word.casefold(): term for term in PUBLIC_TERMS}
+
 
 def lookup(query: str = "") -> str:
     """Find public terms, including substring search, without progress or secret state."""
@@ -33,7 +45,11 @@ def lookup(query: str = "") -> str:
     if not query:
         return "Dictionary: " + ", ".join(term.word for term in PUBLIC_TERMS) + "\nUsage: dictionary <word or search>"
     exact = _INDEX.get(query)
-    matches = [exact] if exact else [term for term in PUBLIC_TERMS if query in term.word.casefold() or query in term.meaning.casefold()]
+    matches = [exact] if exact else [
+        term for term in PUBLIC_TERMS
+        if query in term.word.casefold() or query in term.meaning.casefold()]
     if not matches:
         return "No public dictionary entry. Some terms may require investigation."
-    return "\n".join(f"{term.word}: {term.meaning} [{term.provenance}; {term.register}]" for term in matches)
+    return "\n".join(
+        f"{term.word}: {term.meaning} [{term.category}; {term.provenance}; {term.register}]"
+        for term in matches)

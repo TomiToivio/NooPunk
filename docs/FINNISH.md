@@ -12,7 +12,7 @@ All **non-player-facing** text, including rulebooks, design documents, code, tes
 
 ## Dictionary, not localization
 
-Offer the optional `dictionary` / `lexicon` command to explain terms in short English definitions. Its public entries must not reveal classified NHI, PSI or Noösphere information. Track whether a word is documented slang, Tomi-approved terminology or a fictional proposal. Later classified dossiers may expose gated definitions, never through the public dictionary. Keep core commands, safety instructions and vital gameplay feedback understandable without studying the glossary.
+The canonical vocabulary is the repository-root [`GLOSSARY.md`](../GLOSSARY.md); read and reuse it before writing player-visible text. The optional `dictionary` / `lexicon` command to explain terms in short English definitions. Its public entries must not reveal classified NHI, PSI or Noösphere information. Track whether a word is documented slang, Tomi-approved terminology or a fictional proposal. Later classified dossiers may expose gated definitions, never through the public dictionary. Keep core commands, safety instructions and vital gameplay feedback understandable without studying the glossary.
 
 ## Data and save compatibility
 
