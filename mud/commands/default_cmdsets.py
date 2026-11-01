@@ -1,7 +1,8 @@
 """Text commands for the separate NoöPunk MUD."""
 from evennia import Command
 from evennia.commands.default.cmdset_character import CharacterCmdSet
-from systems.cwn import skill_check, attribute_modifier, ATTRIBUTES, SKILLS
+from systems.cwn import skill_check
+from nopunk_mud.case_consciousness import run_case, attribute_modifier, ATTRIBUTES, SKILLS
 from nopunk_mud.solo_campaign import Campaign, advance
 
 class CmdSheet(Command):
@@ -136,6 +137,15 @@ class CmdSolo(Command):
         output = engine.command(action)
         self.caller.db.unsa_solo_state = engine.to_dict()
         self.caller.msg(output)
+
+
+class CmdAssess(Command):
+    key = "assess"
+    def func(self):
+        result = run_case()
+        self.caller.msg(f"Consciousness assessment: {result.assessment.classification} "
+                        f"(score {result.assessment.score}, confidence {result.assessment.confidence})")
+        self.caller.msg("Lead: " + result.assessment.core_clue)
 
 
 class NoopunkCharacterCmdSet(CharacterCmdSet):
