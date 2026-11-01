@@ -32,6 +32,7 @@ class State:
     talked: list[str] = field(default_factory=list)
     ending: str = ""
     turns: int = 0
+    minute: int = 0  # Elapsed mission minutes; distinct from player command count.
     seed: int = 7
     enemy_hp: dict[str, int] = field(default_factory=dict)
     consequences: list[str] = field(default_factory=list)
@@ -89,7 +90,7 @@ class CampaignEngine:
 
     def _cmd_help(self, args: list[str]) -> str:
         return self._say("look · status · go <place> · talk <person> · ask <person> <topic> · "
-                         "examine <thing> · take <item> · attack <person> · flee · report · save")
+                         "examine <thing> · take <item> · attack <person> · flee · wait <minutes> · radio · trace · resolve protect|disclose · report · save")
 
     def _cmd_look(self, args: list[str]) -> str:
         place = content.location(self.state.location)
@@ -107,8 +108,78 @@ class CampaignEngine:
         known = ", ".join(self.state.clues) if self.state.clues else "nothing yet"
         return self._say(
             f"HP {self.state.hp}/{self.state.max_hp} · at {place['name'] if place else '?'} · "
-            f"clues: {known}"
-            + (f" · case: {self.state.ending}" if self.state.ending else ""))
+            f"clues: {known} · mission minute: {self.state.minute} · scene: {self.state.minute // 10}"
+            + (f" · case: {self.state.ending}" if self.state.ending else "")
+            + (" · radio side case: " + ("complete" if self.has("radio_resolved") else "active")
+               if self.has("radio_accepted") else ""))
+
+    def _cmd_wait(self, args: list[str]) -> str:
+        """Advance mission time without changing the CWN round/scene durations.
+
+        A deterministic radio bulletin fires once at the first ten-minute scene
+        boundary. It is flavour, never a gate for a core investigative clue.
+        """
+        if len(args) != 1 or not args[0].isdecimal():
+            return self._say("Usage: wait <minutes 1-60>.")
+        minutes = int(args[0])
+        if not 1 <= minutes <= 60:
+            return self._say("Wait between 1 and 60 whole minutes.")
+        previous_scene = self.state.minute // 10
+        self.state.minute += minutes
+        current_scene = self.state.minute // 10
+        response = f"You wait {minutes} minute(s). Mission minute {self.state.minute}, scene {current_scene}."
+        if previous_scene < 1 <= current_scene and not self.has("radio_bulletin"):
+            self._grant(["radio_bulletin"])
+            response += ("\nUNSA radio: a second university access badge remains unaccounted for. "
+                         "The bulletin is a lead, not evidence.")
+        return self._say(response)
+
+    def _cmd_radio(self, args: list[str]) -> str:
+        """Optional radio privacy side case. No main-case evidence is locked here."""
+        if args:
+            return self._say("Usage: radio.")
+        if self.has("radio_resolved"):
+            return self._say("The radio privacy case is closed. Its outcome is in your status.")
+        if not self.has("radio_bulletin"):
+            return self._say("No open radio dispatch. Wait until the first scene bulletin.")
+        self._grant(["radio_accepted"])
+        return self._say(
+            "UNSA dispatch: a technician's private call was copied into the university access log. "
+            "Trace it at the university, then decide whether to protect the caller's identity "
+            "or disclose it to the UNSA archive.")
+
+    def _cmd_trace(self, args: list[str]) -> str:
+        if args:
+            return self._say("Usage: trace.")
+        if not self.has("radio_accepted"):
+            return self._say("Accept the radio dispatch first with `radio`.")
+        if self.state.location != "university":
+            return self._say("Trace the dispatch at the university terminal.")
+        if self.has("radio_traced"):
+            return self._say("The dispatch trace is already in your private notes.")
+        self._grant(["radio_traced"])
+        return self._say(
+            "A call from an unnamed technician was mirrored into a public access feed. "
+            "The breach is confirmed without exposing their name. Return to the UNSA "
+            "safehouse and choose `resolve protect` or `resolve disclose`.")
+
+    def _cmd_resolve(self, args: list[str]) -> str:
+        if len(args) != 1 or args[0].lower() not in {"protect", "disclose"}:
+            return self._say("Usage: resolve protect|disclose.")
+        if not self.has("radio_traced"):
+            return self._say("Trace the radio incident at the university first.")
+        if self.state.location != "safehouse":
+            return self._say("File the radio decision at the UNSA safehouse.")
+        if self.has("radio_resolved"):
+            return self._say("That side case is already resolved; the decision cannot be filed twice.")
+        decision = args[0].lower()
+        self._grant(["radio_resolved", "radio_" + decision])
+        self.state.consequences.append("radio_" + decision)
+        if decision == "protect":
+            return self._say("You seal the technician's identity. UNSA loses a convenient lead, "
+                             "but the source can still trust you. Side case complete.")
+        return self._say("You disclose the technician's identity to the UNSA archive. "
+                         "The records team gets a lead; your source loses anonymity. Side case complete.")
 
     def _cmd_go(self, args: list[str]) -> str:
         if not args:
@@ -292,6 +363,7 @@ class CampaignEngine:
             "talked": self.state.talked,
             "ending": self.state.ending,
             "turns": self.state.turns,
+            "minute": self.state.minute,
             "seed": self.state.seed,
             "rng_state": self._rng_state_json(),
             "enemy_hp": dict(self.state.enemy_hp),
@@ -324,6 +396,9 @@ class CampaignEngine:
         engine.state.talked = list(data.get("talked", []))
         engine.state.ending = str(data.get("ending", ""))
         engine.state.turns = int(data.get("turns", 0))
+        engine.state.minute = int(data.get("minute", 0))
+        if engine.state.minute < 0:
+            raise ValueError("mission minute cannot be negative")
         engine.state.enemy_hp = {str(k): int(v) for k, v in dict(data.get("enemy_hp", {})).items()}
         engine.state.consequences = list(data.get("consequences", []))
         return engine

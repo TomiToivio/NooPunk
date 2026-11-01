@@ -1,0 +1,12 @@
+{
+  "ui.command.unknown": null,
+  "ui.session.greeting": null,
+  "ui.prompt.default": null,
+  "case.clue.recorded": null,
+  "case.place.unknown": null,
+  "case.roll.refused": null,
+  "combat.attack.hit": null,
+  "combat.attack.miss": null,
+  "combat.trauma": null,
+  "combat.shock": null
+}

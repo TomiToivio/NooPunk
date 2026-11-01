@@ -268,3 +268,11 @@ def strain_absorb(current: int, amount: int, constitution: int) -> dict[str, obj
         return {"ok": False, "current": current, "capacity": capacity,
                 "overflow": current + amount - capacity}
     return {"ok": True, "current": current + amount, "capacity": capacity, "overflow": 0}
+
+
+from .combat import (  # noqa: E402  (kept last so the package surface stays unchanged until imported)
+    INSTANT,
+    CombatTurn,
+    shock_damage,
+    trauma_hit,
+)

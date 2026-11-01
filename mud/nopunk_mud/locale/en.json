@@ -1,0 +1,12 @@
+{
+  "ui.command.unknown": "I don't know that command.",
+  "ui.session.greeting": "UNSA field terminal ready.",
+  "ui.prompt.default": "What do you do?",
+  "case.clue.recorded": "Clue recorded: {name}",
+  "case.place.unknown": "There is no such place here.",
+  "case.roll.refused": "You need {skill} for that.",
+  "combat.attack.hit": "{actor} hits {target} for {damage} damage.",
+  "combat.attack.miss": "{actor} misses {target}.",
+  "combat.trauma": "A traumatic hit! Damage multiplied by {rating}.",
+  "combat.shock": "{target} takes {shock} shock."
+}

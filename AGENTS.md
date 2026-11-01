@@ -1,3 +1,7 @@
+# MUD LANGUAGE AUTHORITY (#980 + #981)
+
+**Finnish/Finglish is the primary language of the first MUD release, even when half the visible text is Tomi's Finnish and half is agent English.** **Tomi exclusively authors Finnish story and dialogue; ALL AI agents write English only, never compose or translate Finnish.** Preserve Tomi's authored Finnish. English drafts are acceptable player-facing fallback, not a reason to delay the game. Polish an English localization later; tabletop rulebook and repository documentation remain English. See `docs/FINNISH.md` and `mud/AGENTS.md`. This is a single consolidated policy for #980 and #981.
+
 # PRIORITY OVERRIDE #950 — authoritative (31 Oct 2026)
 
 **The Python Evennia MUD in `mud/` is the flagship and default target for all NoöPunk game implementation.** All older Godot-first directives below are historical if they conflict. Godot remains in maintenance-only mode unless an issue explicitly names it. Never delete legacy Godot work.
@@ -7,10 +11,6 @@
 **Rulebook parity:** for every mechanical MUD change update tabletop `rulebook/WITHOUT_NUMBER_BASELINE.md` or `RULEBOOK.md` as appropriate, the traceability matrix `docs/design/ISSUE_950_CWN_DELUXE_AUDIT.md`, and matching tests. CWN is locked as core; narrativist NoöPunk mods are separate extensions. The uploaded CWN Deluxe rulebook is a reference, not a file to commit or reproduce.
 
 **Scope:** `mud/` for implementation, `docs/` and canonical tabletop rules only for coordinated docs, not Godot runtime. See issue #950.
-
-## Language — Finnish-first MUD, agents write English only (#980, #981)
-
-**Tomi writes all Finnish dialogue, story and player-facing copy. Agents must never write Finnish** — no prose, no translation, no imitation of Tomi's voice, no "approximate Finnish" placeholders. Agents write English source lines and stable keys; Tomi adapts them to Finnish later. The development build is deliberately mixed Finnish/English and must mark English placeholders visibly. Rulebook, docs, issues and code stay English. Canonical policy and glossary: `docs/FINNISH.md`, `docs/world/HELSINKI_SLANG_GLOSSARY.md`. Enforced in code by `mud/nopunk_mud/localization.py`.
 
 ---
 

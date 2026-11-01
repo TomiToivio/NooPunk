@@ -7,6 +7,10 @@
   "missing",
   "not_applicable"
  ],
+ "python_globs": [
+  "src/rules/cwn_*.py",
+  "mud/nopunk_mud/cwn_core.py"
+ ],
  "rows": [
   {
    "srd": "character-creation",
@@ -27,16 +31,18 @@
    "godot": [
     "godot/core/cwn_character.gd"
    ],
+   "godot_symbols": [],
    "python": [
-    "attribute_modifier",
     "roll_attributes",
-    "assign_array",
+    "effective_modifier",
     "hit_points"
    ],
    "coverage": "implemented",
    "tests": [
-    "mud/tests/test_cwn_core.py::TestAttributes",
-    "mud/tests/test_cwn_core.py::TestDerived"
+    "tests/test_cwn_backgrounds.py",
+    "tests/test_cwn_character.py",
+    "tests/test_cwn_coverage_manifest.py",
+    "tests/test_cwn_edges_foci.py"
    ],
    "overlay": null,
    "note": null
@@ -48,11 +54,18 @@
    "godot": [
     "godot/core/cwn_character.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "grant_free_skill",
+    "growth_rolls",
+    "resolve_table_entry"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_backgrounds.py"
+   ],
    "overlay": null,
-   "note": "selection and granted skills not ported"
+   "note": "tables from the SRD only"
   },
   {
    "srd": "character-creation__contacts",
@@ -61,33 +74,40 @@
    "godot": [
     "godot/core/cwn_contacts.gd"
    ],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
    "overlay": null,
-   "note": null
+   "note": "no Python contacts module; only the Godot cwn_contacts.gd exists"
   },
   {
    "srd": "character-creation__edges",
    "srd_url": "https://cwn.quadrifons.com/character-creation/edges",
    "section": "character-creation",
    "godot": [],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "pick_edge"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_edges_foci.py"
+   ],
    "overlay": null,
-   "note": "no Godot edges module either; data only"
+   "note": null
   },
   {
    "srd": "character-creation__final-steps",
    "srd_url": "https://cwn.quadrifons.com/character-creation/final-steps",
    "section": "character-creation",
    "godot": [],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
    "overlay": null,
-   "note": "procedure page, no engine path"
+   "note": "procedure page with no engine path"
   },
   {
    "srd": "character-creation__foci",
@@ -96,9 +116,16 @@
    "godot": [
     "godot/core/cwn_foci.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "pick_focus",
+    "total_picks",
+    "can_take_level"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_foci.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -110,9 +137,17 @@
     "godot/core/cwn_foci.gd",
     "godot/core/cwn_catalogue.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "total_picks",
+    "load_equipment"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_equipment.py",
+    "tests/test_cwn_foci.py",
+    "tests/test_cwn_gear_mods.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -120,18 +155,18 @@
    "srd": "character-creation__skills",
    "srd_url": "https://cwn.quadrifons.com/character-creation/skills",
    "section": "character-creation",
-   "godot": [
-    "godot/core/cwn_character.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [
+    "grant_free_skill",
     "skill_check"
    ],
    "coverage": "partial",
    "tests": [
-    "mud/tests/test_cwn_core.py::TestChecks"
+    "tests/test_cwn_backgrounds.py"
    ],
    "overlay": null,
-   "note": "the check is ported; the skill list and granting are not"
+   "note": "skill checks and granting exist; per-skill descriptions are data, not code"
   },
   {
    "srd": "gear-vehicles-cyberware",
@@ -152,9 +187,16 @@
    "godot": [
     "godot/core/cwn_catalogue.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "armor",
+    "armor_piece"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_equipment.py",
+    "tests/test_cwn_gear_mods.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -162,25 +204,32 @@
    "srd": "gear-vehicles-cyberware__armor__armor-accessories",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/armor/armor-accessories",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_catalogue.gd"
+   "godot": [],
+   "godot_symbols": [],
+   "python": [
+    "armor_piece"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "coverage": "partial",
+   "tests": [
+    "tests/test_cwn_equipment.py",
+    "tests/test_cwn_gear_mods.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "accessories are carried as data"
   },
   {
    "srd": "gear-vehicles-cyberware__armor__armor-mods",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/armor/armor-mods",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_gear_mods.gd"
+   "godot": [],
+   "godot_symbols": [],
+   "python": [
+    "armor_mod"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_gear_mods.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -188,25 +237,28 @@
    "srd": "gear-vehicles-cyberware__armor__armor-terms-definitions",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/armor/armor-terms-definitions",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_catalogue.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [],
    "coverage": "not_applicable",
    "tests": [],
    "overlay": null,
-   "note": "terminology page; values carried in data/rules/cwn"
+   "note": "terminology page; values live in data/rules"
   },
   {
    "srd": "gear-vehicles-cyberware__armor__armor-types",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/armor/armor-types",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_catalogue.gd"
+   "godot": [],
+   "godot_symbols": [],
+   "python": [
+    "armor"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_equipment.py",
+    "tests/test_cwn_gear_mods.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -214,14 +266,13 @@
    "srd": "gear-vehicles-cyberware__cyberdecks",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberdecks",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_hacking_catalogue.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
    "overlay": null,
-   "note": null
+   "note": "no Python cyberdeck module; the Godot cwn_hacking_catalogue.gd carries the data"
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware",
@@ -230,19 +281,19 @@
    "godot": [
     "godot/core/cwn_cyberware.gd"
    ],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
    "overlay": null,
-   "note": null
+   "note": "no Python cyberware catalogue; only godot/core/cwn_cyberware.gd"
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__concealing-detecting-cyberware",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/concealing-detecting-cyberware",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_cyberware.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
@@ -253,9 +304,8 @@
    "srd": "gear-vehicles-cyberware__cyberware__cyberdoc-tools",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberdoc-tools",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_cyberware_ops.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
@@ -269,22 +319,31 @@
    "godot": [
     "godot/core/cwn_alienation.gd"
    ],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
    "overlay": null,
-   "note": null
+   "note": "Godot cwn_alienation.gd exists; nothing in Python"
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-maintenance",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-maintenance",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_cyberware_ops.gd"
+   "godot": [],
+   "godot_symbols": [],
+   "python": [
+    "maintenance_minutes",
+    "maintenance_overdue"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "coverage": "implemented",
+   "tests": [
+    "mud/tests/test_cwn_core.py",
+    "tests/test_cwn_core.py",
+    "tests/test_cwn_coverage_manifest.py",
+    "tests/test_cwn_trauma.py",
+    "tests/test_mud_cwn_parity_950.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -292,9 +351,8 @@
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-mods",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-mods",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_cyberware.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
@@ -305,9 +363,8 @@
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-systems",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_cyberware.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
@@ -318,9 +375,8 @@
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__body-cyberware",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-systems/body-cyberware",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_cyberware.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
@@ -331,9 +387,8 @@
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__head-cyberware",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-systems/head-cyberware",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_cyberware.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
@@ -344,9 +399,8 @@
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__limb-cyberware",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-systems/limb-cyberware",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_cyberware.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
@@ -357,9 +411,8 @@
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__medical-cyberware",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-systems/medical-cyberware",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_cyberware.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
@@ -370,9 +423,8 @@
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__nerve-cyberware",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-systems/nerve-cyberware",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_cyberware.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
@@ -383,9 +435,8 @@
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__sensory-cyberware",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-systems/sensory-cyberware",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_cyberware.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
@@ -396,9 +447,8 @@
    "srd": "gear-vehicles-cyberware__cyberware__cyberware-systems__skin-cyberware",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberware-systems/skin-cyberware",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_cyberware.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
@@ -412,11 +462,21 @@
    "godot": [
     "godot/core/cwn_cyberware_complications.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "can_accept_implant",
+    "installation_terms"
+   ],
+   "coverage": "partial",
+   "tests": [
+    "mud/tests/test_cwn_core.py",
+    "tests/test_cwn_core.py",
+    "tests/test_cwn_coverage_manifest.py",
+    "tests/test_cwn_trauma.py",
+    "tests/test_mud_cwn_parity_950.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "strain/installation terms ported; the complication table is not"
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__installing-cyberware",
@@ -425,9 +485,19 @@
    "godot": [
     "godot/core/cwn_cyberware_ops.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "resolve_implant_surgery",
+    "installation_terms"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "mud/tests/test_cwn_core.py",
+    "tests/test_cwn_core.py",
+    "tests/test_cwn_coverage_manifest.py",
+    "tests/test_cwn_trauma.py",
+    "tests/test_mud_cwn_parity_950.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -438,19 +508,28 @@
    "godot": [
     "godot/core/cwn_cyberware_ops.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "can_accept_implant",
+    "strain_maximum"
+   ],
+   "coverage": "partial",
+   "tests": [
+    "mud/tests/test_cwn_core.py",
+    "tests/test_cwn_core.py",
+    "tests/test_cwn_coverage_manifest.py",
+    "tests/test_cwn_trauma.py",
+    "tests/test_mud_cwn_parity_950.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "capacity recomputation ported; removal surgery is not"
   },
   {
    "srd": "gear-vehicles-cyberware__cyberware__skillplugs",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/skillplugs",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_cyberware.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
@@ -464,9 +543,16 @@
    "godot": [
     "godot/core/cwn_drones.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "command_capacity",
+    "range_status",
+    "charge_hours"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_drones.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -477,19 +563,19 @@
    "godot": [
     "godot/core/cwn_lifestyles.gd"
    ],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
    "overlay": null,
-   "note": null
+   "note": "no Python economy module; Godot has cwn_lifestyles/cwn_wages/cwn_social_costs"
   },
   {
    "srd": "gear-vehicles-cyberware__lifestyles-wages-and-bribes__bribe-costs",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/lifestyles-wages-and-bribes/bribe-costs",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_social_costs.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
@@ -500,9 +586,8 @@
    "srd": "gear-vehicles-cyberware__lifestyles-wages-and-bribes__common-wages",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/lifestyles-wages-and-bribes/common-wages",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_wages.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
@@ -513,9 +598,8 @@
    "srd": "gear-vehicles-cyberware__lifestyles-wages-and-bribes__lifestyle-costs",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/lifestyles-wages-and-bribes/lifestyle-costs",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_lifestyles.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
@@ -526,14 +610,18 @@
    "srd": "gear-vehicles-cyberware__mission-gear",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/mission-gear",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_catalogue.gd"
+   "godot": [],
+   "godot_symbols": [],
+   "python": [
+    "load_equipment"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "coverage": "partial",
+   "tests": [
+    "tests/test_cwn_equipment.py",
+    "tests/test_cwn_gear_mods.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "gear is loadable; the mission-kit bundles are not"
   },
   {
    "srd": "gear-vehicles-cyberware__pharmaceuticals-street-drugs",
@@ -542,11 +630,12 @@
    "godot": [
     "godot/core/cwn_drugs.gd"
    ],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
    "overlay": null,
-   "note": null
+   "note": "no Python drugs module; Godot has cwn_drugs.gd"
   },
   {
    "srd": "gear-vehicles-cyberware__vehicles",
@@ -556,9 +645,17 @@
     "godot/core/cwn_vehicles.gd",
     "godot/core/cwn_srd_vehicles.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "vehicle",
+    "vehicles",
+    "fitting",
+    "armor_class_in_combat"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_vehicles.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -569,9 +666,17 @@
    "godot": [
     "godot/core/cwn_catalogue.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "weapons",
+    "weapon",
+    "find_weapon"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_equipment.py",
+    "tests/test_cwn_gear_mods.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -579,12 +684,16 @@
    "srd": "gear-vehicles-cyberware__weapons__firearms",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/weapons/firearms",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_catalogue.gd"
+   "godot": [],
+   "godot_symbols": [],
+   "python": [
+    "find_weapon"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_equipment.py",
+    "tests/test_cwn_gear_mods.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -592,12 +701,16 @@
    "srd": "gear-vehicles-cyberware__weapons__heavy-weapons",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/weapons/heavy-weapons",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_catalogue.gd"
+   "godot": [],
+   "godot_symbols": [],
+   "python": [
+    "find_weapon"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_equipment.py",
+    "tests/test_cwn_gear_mods.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -605,12 +718,16 @@
    "srd": "gear-vehicles-cyberware__weapons__melee-thrown-weapons",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/weapons/melee-thrown-weapons",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_catalogue.gd"
+   "godot": [],
+   "godot_symbols": [],
+   "python": [
+    "find_weapon"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_equipment.py",
+    "tests/test_cwn_gear_mods.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -618,12 +735,15 @@
    "srd": "gear-vehicles-cyberware__weapons__weapon-mods",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/weapons/weapon-mods",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_gear_mods.gd"
+   "godot": [],
+   "godot_symbols": [],
+   "python": [
+    "weapon_mod"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_gear_mods.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -631,12 +751,16 @@
    "srd": "gear-vehicles-cyberware__weapons__weapon-stats-and-definitions",
    "srd_url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/weapons/weapon-stats-and-definitions",
    "section": "gear-vehicles-cyberware",
-   "godot": [
-    "godot/core/cwn_catalogue.gd"
+   "godot": [],
+   "godot_symbols": [],
+   "python": [
+    "weapon"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_equipment.py",
+    "tests/test_cwn_gear_mods.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -659,22 +783,35 @@
    "godot": [
     "godot/core/cwn_hacking.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "hacking_check"
+   ],
+   "coverage": "partial",
+   "tests": [
+    "tests/test_cwn_hacking.py",
+    "tests/test_cwn_hacking_contract.py",
+    "tests/test_cwn_program_catalogue.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "the check is ported; the per-action costs are not"
   },
   {
    "srd": "hacking__cyberspace-basics",
    "srd_url": "https://cwn.quadrifons.com/hacking/cyberspace-basics",
    "section": "hacking",
-   "godot": [
-    "godot/core/cwn_hacking.gd"
+   "godot": [],
+   "godot_symbols": [],
+   "python": [
+    "security_difficulty",
+    "cyberware_difficulty"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "coverage": "partial",
+   "tests": [
+    "tests/test_cwn_hacking.py",
+    "tests/test_cwn_hacking_contract.py",
+    "tests/test_cwn_program_catalogue.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -685,11 +822,12 @@
    "godot": [
     "godot/core/cwn_demons.gd"
    ],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
    "overlay": null,
-   "note": null
+   "note": "Godot cwn_demons.gd exists; nothing in Python"
   },
   {
    "srd": "hacking__hacking-mechanics",
@@ -699,9 +837,18 @@
     "godot/core/cwn_hacking.gd",
     "godot/core/cwn_node_link.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "access_pool",
+    "hacking_check",
+    "security_difficulty"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_hacking.py",
+    "tests/test_cwn_hacking_contract.py",
+    "tests/test_cwn_program_catalogue.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -712,9 +859,16 @@
    "godot": [
     "godot/core/cwn_programs.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "validate_program",
+    "program_cost",
+    "run_program"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_program_catalogue.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -722,25 +876,32 @@
    "srd": "hacking__programs__acquiring-writing-programs",
    "srd_url": "https://cwn.quadrifons.com/hacking/programs/acquiring-writing-programs",
    "section": "hacking",
-   "godot": [
-    "godot/core/cwn_program_rules.gd"
+   "godot": [],
+   "godot_symbols": [],
+   "python": [
+    "program_cost",
+    "validate_program"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "coverage": "partial",
+   "tests": [
+    "tests/test_cwn_program_catalogue.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "cost and validation ported; writing time is not"
   },
   {
    "srd": "hacking__programs__program-subjects",
    "srd_url": "https://cwn.quadrifons.com/hacking/programs/program-subjects",
    "section": "hacking",
-   "godot": [
-    "godot/core/cwn_program_rules.gd"
+   "godot": [],
+   "godot_symbols": [],
+   "python": [
+    "subject_cost"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "coverage": "partial",
+   "tests": [
+    "tests/test_cwn_program_catalogue.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -748,12 +909,16 @@
    "srd": "hacking__programs__program-verbs",
    "srd_url": "https://cwn.quadrifons.com/hacking/programs/program-verbs",
    "section": "hacking",
-   "godot": [
-    "godot/core/cwn_program_rules.gd"
+   "godot": [],
+   "godot_symbols": [],
+   "python": [
+    "run_program",
+    "require_access"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "coverage": "partial",
+   "tests": [
+    "tests/test_cwn_program_catalogue.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -776,9 +941,17 @@
    "godot": [
     "godot/core/cwn_progression.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "level_for_xp",
+    "attack_bonus",
+    "skill_points_for_level"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_advancement.py",
+    "tests/test_mud_cwn_parity_950.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -789,9 +962,17 @@
    "godot": [
     "godot/core/cwn_chases.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "resolve_chase",
+    "chase_modifier_table",
+    "foot_chase_modifier",
+    "vehicle_chase_modifier"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_vehicles.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -802,35 +983,44 @@
    "godot": [
     "godot/core/cwn_combat_rules.gd"
    ],
+   "godot_symbols": [],
    "python": [
     "attack_roll",
-    "damage"
+    "resolve_attack"
    ],
    "coverage": "partial",
    "tests": [
-    "mud/tests/test_cwn_core.py::TestChecks",
-    "mud/tests/test_cwn_core.py::TestDamageAndStrain"
+    "mud/tests/test_cwn_core.py",
+    "tests/test_cwn_attack_modifiers.py",
+    "tests/test_cwn_combat.py",
+    "tests/test_cwn_core.py",
+    "tests/test_cwn_coverage_manifest.py",
+    "tests/test_cwn_trauma.py",
+    "tests/test_mud_cwn_parity_950.py"
    ],
    "overlay": null,
-   "note": "attack and damage resolution ported; sequence and initiative are not"
+   "note": "attack and damage resolve; initiative and the round sequence do not"
   },
   {
    "srd": "rules-of-the-game__combat__attacks-in-combat",
    "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/combat/attacks-in-combat",
    "section": "rules-of-the-game",
    "godot": [
-    "godot/core/cwn_combat_rules.gd",
-    "godot/core/cwn_attack_modifiers.gd"
+    "godot/core/cwn_attack_modifiers.gd",
+    "godot/core/cwn_combat_rules.gd"
    ],
+   "godot_symbols": [],
    "python": [
-    "attack_roll"
+    "attack_modifier",
+    "in_melee_penalty"
    ],
-   "coverage": "partial",
+   "coverage": "implemented",
    "tests": [
-    "mud/tests/test_cwn_core.py::TestChecks"
+    "tests/test_cwn_attack_modifiers.py",
+    "tests/test_cwn_coverage_manifest.py"
    ],
    "overlay": null,
-   "note": "impossible-attack class handled in Godot, not yet in Python"
+   "note": null
   },
   {
    "srd": "rules-of-the-game__combat__combat-actions",
@@ -839,9 +1029,17 @@
    "godot": [
     "godot/core/cwn_combat_actions.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "snap_attack_penalty",
+    "swarm_bonus",
+    "charge",
+    "total_defense"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_combat_actions.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -852,11 +1050,18 @@
    "godot": [
     "godot/core/cwn_combat_rules.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "initiative_roll",
+    "order_sides",
+    "order_individual"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_initiative.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "1d8 + the side's best Dexterity, player characters win ties; individual initiative available"
   },
   {
    "srd": "rules-of-the-game__combat__combat-sequence",
@@ -865,11 +1070,16 @@
    "godot": [
     "godot/core/cwn_combat_rules.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "CombatRound"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_initiative.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "sides act in order; initiative is not re-rolled; surprise grants one free round"
   },
   {
    "srd": "rules-of-the-game__combat__damage-trauma-shock",
@@ -878,28 +1088,41 @@
    "godot": [
     "godot/core/cwn_combat_rules.gd"
    ],
+   "godot_symbols": [],
    "python": [
-    "damage"
+    "damage_floor",
+    "shock_applies",
+    "shock_damage",
+    "is_traumatic_hit"
    ],
-   "coverage": "partial",
+   "coverage": "implemented",
    "tests": [
-    "mud/tests/test_cwn_core.py::TestDamageAndStrain"
+    "mud/tests/test_cwn_core.py",
+    "tests/test_cwn_core.py",
+    "tests/test_cwn_coverage_manifest.py",
+    "tests/test_cwn_trauma.py",
+    "tests/test_mud_cwn_parity_950.py"
    ],
    "overlay": null,
-   "note": "trauma multiplier ported; Shock is not"
+   "note": null
   },
   {
    "srd": "rules-of-the-game__combat__special-combat-maneuvers",
    "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/combat/special-combat-maneuvers",
    "section": "rules-of-the-game",
-   "godot": [
-    "godot/core/cwn_combat_actions.gd"
+   "godot": [],
+   "godot_symbols": [],
+   "python": [
+    "charge",
+    "total_defense",
+    "swarm_bonus"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "coverage": "partial",
+   "tests": [
+    "tests/test_cwn_combat_actions.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "charge, total defence and swarming ported; the rest of the manoeuvre list is not"
   },
   {
    "srd": "rules-of-the-game__combat__vehicle-combat",
@@ -908,9 +1131,18 @@
    "godot": [
     "godot/core/cwn_vehicles.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "armor_class_in_combat",
+    "damage_to_vehicle",
+    "crash_outcome",
+    "ram_vehicle",
+    "is_destroyed"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_vehicles.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -921,35 +1153,45 @@
    "godot": [
     "godot/core/cwn_gear_mods.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "weapon_mod",
+    "armor_mod",
+    "load_mods"
+   ],
+   "coverage": "partial",
+   "tests": [
+    "tests/test_cwn_gear_mods.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "mod catalogues and legality ported; crafting time and checks are not"
   },
   {
    "srd": "rules-of-the-game__crafting-modifying-gear__crafting-gear",
    "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/crafting-modifying-gear/crafting-gear",
    "section": "rules-of-the-game",
-   "godot": [
-    "godot/core/cwn_gear_mods.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [],
    "coverage": "missing",
    "tests": [],
    "overlay": null,
-   "note": null
+   "note": "no crafting procedure in Python"
   },
   {
    "srd": "rules-of-the-game__crafting-modifying-gear__factory-mods",
    "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/crafting-modifying-gear/factory-mods",
    "section": "rules-of-the-game",
-   "godot": [
-    "godot/core/cwn_gear_mods.gd"
+   "godot": [],
+   "godot_symbols": [],
+   "python": [
+    "load_mods",
+    "all_mods"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "coverage": "partial",
+   "tests": [
+    "tests/test_cwn_gear_mods.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -957,12 +1199,20 @@
    "srd": "rules-of-the-game__crafting-modifying-gear__maintaining-mods",
    "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/crafting-modifying-gear/maintaining-mods",
    "section": "rules-of-the-game",
-   "godot": [
-    "godot/core/cwn_gear_mods.gd"
+   "godot": [],
+   "godot_symbols": [],
+   "python": [
+    "maintenance_minutes",
+    "maintenance_overdue"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "coverage": "partial",
+   "tests": [
+    "mud/tests/test_cwn_core.py",
+    "tests/test_cwn_core.py",
+    "tests/test_cwn_coverage_manifest.py",
+    "tests/test_cwn_trauma.py",
+    "tests/test_mud_cwn_parity_950.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -970,12 +1220,16 @@
    "srd": "rules-of-the-game__crafting-modifying-gear__modifying-gear",
    "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/crafting-modifying-gear/modifying-gear",
    "section": "rules-of-the-game",
-   "godot": [
-    "godot/core/cwn_gear_mods.gd"
+   "godot": [],
+   "godot_symbols": [],
+   "python": [
+    "weapon_mod",
+    "armor_mod"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "coverage": "partial",
+   "tests": [
+    "tests/test_cwn_gear_mods.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -986,9 +1240,17 @@
    "godot": [
     "godot/core/cwn_encumbrance.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "stowed_capacity",
+    "tier_for",
+    "move_speed",
+    "can_haul"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_encumbrance.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -1001,16 +1263,24 @@
     "godot/core/cwn_healing.gd",
     "godot/core/cwn_strain.gd"
    ],
+   "godot_symbols": [],
    "python": [
-    "strain_max",
-    "strain_absorb"
+    "resolve_zero_hit_points",
+    "stabilize_difficulty",
+    "strain_maximum"
    ],
-   "coverage": "partial",
+   "coverage": "implemented",
    "tests": [
-    "mud/tests/test_cwn_core.py::TestDamageAndStrain"
+    "mud/tests/test_cwn_core.py",
+    "tests/test_cwn_core.py",
+    "tests/test_cwn_coverage_manifest.py",
+    "tests/test_cwn_healing.py",
+    "tests/test_cwn_injury_procedure.py",
+    "tests/test_cwn_trauma.py",
+    "tests/test_mud_cwn_parity_950.py"
    ],
    "overlay": null,
-   "note": "System Strain ported; injuries and healing are not"
+   "note": null
   },
   {
    "srd": "rules-of-the-game__injury-healing-system-strain__major-injuries",
@@ -1019,9 +1289,17 @@
    "godot": [
     "godot/core/cwn_injury.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "resolve_major_injury",
+    "injury_for_roll",
+    "is_lethal"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_injury_procedure.py",
+    "tests/test_cwn_major_injury.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -1032,9 +1310,15 @@
    "godot": [
     "godot/core/cwn_healing.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "stabilize_difficulty",
+    "stabilized"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_healing.py"
+   ],
    "overlay": null,
    "note": null
   },
@@ -1042,14 +1326,18 @@
    "srd": "rules-of-the-game__injury-healing-system-strain__natural-healing-first-aid-poisons",
    "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/injury-healing-system-strain/natural-healing-first-aid-poisons",
    "section": "rules-of-the-game",
-   "godot": [
-    "godot/core/cwn_healing.gd"
+   "godot": [],
+   "godot_symbols": [],
+   "python": [
+    "natural_healing",
+    "first_aid"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "coverage": "partial",
+   "tests": [
+    "tests/test_cwn_healing.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "healing and first aid ported; poisons are not"
   },
   {
    "srd": "rules-of-the-game__injury-healing-system-strain__system-strain",
@@ -1058,13 +1346,20 @@
    "godot": [
     "godot/core/cwn_strain.gd"
    ],
+   "godot_symbols": [],
    "python": [
-    "strain_max",
-    "strain_absorb"
+    "strain_maximum",
+    "can_accept_implant"
    ],
    "coverage": "implemented",
    "tests": [
-    "mud/tests/test_cwn_core.py::TestDamageAndStrain"
+    "mud/tests/test_cwn_core.py",
+    "tests/test_cwn_core.py",
+    "tests/test_cwn_coverage_manifest.py",
+    "tests/test_cwn_healing.py",
+    "tests/test_cwn_strain.py",
+    "tests/test_cwn_trauma.py",
+    "tests/test_mud_cwn_parity_950.py"
    ],
    "overlay": null,
    "note": null
@@ -1073,15 +1368,19 @@
    "srd": "rules-of-the-game__saving-throws",
    "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/saving-throws",
    "section": "rules-of-the-game",
-   "godot": [
-    "godot/core/cwn_character.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [
-    "save_target"
+    "save_target",
+    "saving_throw"
    ],
    "coverage": "implemented",
    "tests": [
-    "mud/tests/test_cwn_core.py::TestDerived"
+    "mud/tests/test_cwn_core.py",
+    "tests/test_cwn_core.py",
+    "tests/test_cwn_coverage_manifest.py",
+    "tests/test_cwn_trauma.py",
+    "tests/test_mud_cwn_parity_950.py"
    ],
    "overlay": null,
    "note": null
@@ -1093,25 +1392,33 @@
    "godot": [
     "godot/core/cwn_mission_time.gd"
    ],
-   "python": [],
-   "coverage": "missing",
-   "tests": [],
+   "godot_symbols": [],
+   "python": [
+    "MissionClock"
+   ],
+   "coverage": "implemented",
+   "tests": [
+    "tests/test_cwn_mission_time.py"
+   ],
    "overlay": null,
-   "note": null
+   "note": "round = 6 s, scene = 10 min, standard action = 1 min; MissionClock advances them"
   },
   {
    "srd": "rules-of-the-game__skill-checks",
    "srd_url": "https://cwn.quadrifons.com/rules-of-the-game/skill-checks",
    "section": "rules-of-the-game",
-   "godot": [
-    "godot/core/cwn_character.gd"
-   ],
+   "godot": [],
+   "godot_symbols": [],
    "python": [
     "skill_check"
    ],
    "coverage": "implemented",
    "tests": [
-    "mud/tests/test_cwn_core.py::TestChecks"
+    "mud/tests/test_cwn_core.py",
+    "tests/test_cwn_core.py",
+    "tests/test_cwn_coverage_manifest.py",
+    "tests/test_cwn_trauma.py",
+    "tests/test_mud_cwn_parity_950.py"
    ],
    "overlay": null,
    "note": null

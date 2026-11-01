@@ -3,8 +3,8 @@
   "source": "src/rules",
   "note": "Registry of implemented rule procedures. Presence here is code coverage, not SRD parity.",
   "totals": {
-    "modules": 31,
-    "procedures": 290
+    "modules": 32,
+    "procedures": 300
   },
   "modules": [
     {
@@ -985,6 +985,83 @@
         }
       ],
       "count": 15
+    },
+    {
+      "module": "cwn_initiative.py",
+      "procedures": [
+        {
+          "name": "Side",
+          "signature": "",
+          "doc": "One group in a fight, with the Dexterity scores of everyone in it.",
+          "methods": [
+            {
+              "name": "Side.best_modifier",
+              "signature": "()",
+              "doc": "The side's best Dexterity modifier; an NPC side with no scores adds nothing."
+            }
+          ]
+        },
+        {
+          "name": "InitiativeEntry",
+          "signature": "",
+          "doc": "",
+          "methods": [
+            {
+              "name": "InitiativeEntry.total",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "initiative_roll",
+          "signature": "(side, *, die=..., rng=...)",
+          "doc": "Roll 1d8 for one side and add that side's best Dexterity modifier."
+        },
+        {
+          "name": "order_sides",
+          "signature": "(sides, *, dice=..., rng=...)",
+          "doc": "Sides from highest to lowest, player characters winning ties."
+        },
+        {
+          "name": "order_individual",
+          "signature": "(combatants, *, dice=..., rng=...)",
+          "doc": "Individual initiative: 1d8 + own Dexterity modifier, PCs winning ties."
+        },
+        {
+          "name": "CombatRound",
+          "signature": "",
+          "doc": "Turn order across rounds. Initiative is rolled once and kept.",
+          "methods": [
+            {
+              "name": "CombatRound.order",
+              "signature": "()",
+              "doc": "Sides in the order they act, including automatic-initiative actors first."
+            },
+            {
+              "name": "CombatRound.current",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "CombatRound.advance",
+              "signature": "()",
+              "doc": "Finish the current side's turn and return the next side to act."
+            },
+            {
+              "name": "CombatRound.run_round",
+              "signature": "()",
+              "doc": "Every side acts once, in order, and the round advances."
+            }
+          ]
+        },
+        {
+          "name": "surprise_free_round",
+          "signature": "(surprised, ready)",
+          "doc": "The order for the free round granted by surprise: the ready side acts, then normal initiative."
+        }
+      ],
+      "count": 10
     },
     {
       "module": "cwn_injury_procedure.py",

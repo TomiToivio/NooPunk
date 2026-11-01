@@ -1,136 +1,50 @@
-# NoöPunk language policy — Finnish-first MUD, English-only agents
+# NoöPunk MUD language and narrative policy (issues #980 and #981)
 
-**Status:** canonical for the MUD. Consolidates issues **#980**, **#981** and the earlier notes in this
-file. Rules text and repository documentation remain English.
+> **Binding rule for every AI agent:** Tomi writes Finnish. Agents write English only. Never generate, translate into, correct, or improvise Finnish player-facing prose. Do not overwrite Tomi's authored Finnish. This rule applies to the MUD, not the English tabletop rulebook or general repository documentation.
 
-**Scope:** the Evennia MUD's player-facing UI, dialogue, narrative, quests and story. Not the tabletop
-rulebook, not GitHub issues, not code comments, not design docs.
+## Language of the first release
 
-## 1. The rule in one paragraph
+The **official primary language is Finnish, including natural Finglish**. The first playable release is allowed, and expected, to be **mixed-language**: for example 50% Tomi-authored Finnish and 50% agent-authored English. There is **no minimum translated percentage**, purity requirement, or release gate demanding fully Finnish text. Do not characterize English lines in the Finnish-first build as defects.
 
-The finished MUD is **Finnish-first**. **Tomi writes the Finnish dialogue and story** in his own
-Helsinki voice. **Agents write English only — never Finnish, never machine-translated Finnish, never
-an imitation of Tomi's voice.** During development the Finnish build is deliberately mixed: Tomi's
-Finnish plus agents' English placeholders awaiting his adaptation. That mix is allowed and is not a
-bug. A proper English localization is a later, separate edition.
+**Tomi is the only author/editor of the Finnish dialogue and story.** Agents author new UI, dialogue, quest and narrative drafts **in English only**. Tomi may eventually rewrite these in his own Finnish. The later polished **English localization is a separate milestone**; agent drafts are not automatically approved English translations. English remains the language of code, commit messages, issues, documentation, and tabletop rulebooks.
 
-## 2. Who writes what
+Avoid an ambiguous instruction to "translate to English first": agents already write the draft in English, and Tomi adapts it into Finnish when he chooses. Do not automatically translate existing Finnish into English either.
 
-| Who | Writes | Must not |
-|---|---|---|
-| **Tomi** | Finnish dialogue, story, UI copy, slang, final phrasing and terminology | — |
-| **Agents** | English source lines, stable content keys, English definitions, code, tests, docs | Write Finnish prose; translate into Finnish; "fix" Tomi's Finnish; overwrite Finnish with English |
-| **Reviewers** | Check the policy, keys and fallbacks | Approve agent-authored Finnish as canon |
+### Required content workflow
 
-Agents may quote Tomi-authored Finnish verbatim when referencing an existing string, and may record
-Finnish glossary headwords that Tomi has supplied. Quoting is not authoring.
+1. Agents create an **English draft** with a stable, locale-neutral content ID and intent/context/voice metadata. Do not invent Finnish text.
+2. The Finnish-primary client can display a **Tomi-authored Finnish line** where one exists, otherwise the original **English draft**. Mixed-language scenes and screens are allowed, even at 50/50.
+3. Track provenance and status, for example `author: "agent"`, `source_lang: "en"`, `status: "awaiting_tomi"`; or `author: "Tomi"`, `source_lang: "fi"`, `status: "approved"`. Never write an English fallback into a Finnish field or delete Finnish when changing a draft.
+4. Tomi writes or revises authentic Finnish in his own voice. AI agents must not perform this step or edit those lines without an explicit narrow instruction from Tomi that overrides this repository workflow.
+5. Eventually a human-reviewed English edition may be maintained independently. **Do not block the MUD MVP on it.**
 
-## 3. Voice
+Keep quest states, IDs and saves independent of language; test deterministic fallback, UTF-8, preservation of authored content, and save compatibility. An agent may **quote existing approved terms as data** (for example proper names), but must not compose Finnish sentences, example dialogue, or localized strings.
 
-Finnish should sound like **Tomi talking**, not literary Standard Finnish:
+### Voice and glossary
 
-- **Stadin Slangi** and **Finglish**, with Russian loanwords; roughly half English in ordinary speech
-  is normal, not a failure.
-- Register shifts by speaker: street, academy, bureaucratic, UNSA/military, corporate, online youth,
-  cultic/Noösphere.
-- **Nadsat** and **Doublespeak** are inspirations for texture (Russian loans; institutional
-  euphemism), never sources to copy. Do not reproduce distinctive passages or invented vocabulary.
-- Bureaucratic language may conceal horrifying facts; that is a feature.
-- Established genre words such as *cyberspace* are ordinary vocabulary, not plagiarism.
+Tomi's voice is conversational Helsinki **Stadin slangi + Finglish**, with Russian loanwords, and retrofuturist inspiration from Nadsat and bureaucratic Doublespeak. A substantial portion of speech can be English. No percentages are imposed, and agents must not counterfeit a Finnish sociolect. Preserve variation by setting and NPC: street, university, UNSA bureaucracy, security, corporate, online, and the Noösphere. Avoid copying distinctive passages or invented phrasing from other authors.
 
-English working text should be plain and translatable. Do not fake Finnish word order or invent
-slang. Where code-switching must survive translation, note it on the key, not by writing Finnish.
+The shared glossary is [HELSINKI_SLANG_GLOSSARY.md](world/HELSINKI_SLANG_GLOSSARY.md). Agents contribute **English definitions and context only**; Finnish usage examples, inflections, original neologisms and creative wording are reserved for Tomi. Established genre vocabulary (such as *cyberspace*) may be used normally.
 
-## 4. Mixed build and fallback behaviour
+## Narrative revelation: grounded Helsinki first
 
-- Every player-facing string has a **stable key**, a `lang` (`fi` / `en`), an author and a status:
-  `tomi_finnish`, `english_placeholder`, `approved_english`.
-- The MUD renders Finnish when it exists; otherwise it renders the English placeholder **visibly
-  marked** (for example a leading `[EN]` or a UI locale badge). It never silently pretends English is
-  Finnish.
-- **Finnish content is never overwritten by an English fallback.** Missing English is acceptable;
-  missing Finnish is expected until Tomi writes it.
-- Content IDs, flags, choices and quest state are language-neutral, so saves survive localization.
-- UTF-8 everywhere; Finnish characters (`ä`, `ö`, `å`) must round-trip through data files and tests.
+Initially sell an intelligible **Nordic/European cyberpunk police investigation**, not a cosmic encyclopedia. The new UNSA rookie is a moral blank slate. Start with familiar crimes, cyberware, AI slop, AR/VR and bureaucracy; introduce strange evidence ambiguously and reveal **NHI/PSI, the emerging conscious Noösphere, and the ontological crisis** in stages through clues, decisions, and consequences. Keep author-only truth and UNSA classified files separate from the player's knowledge. Romppainen knows more than he tells rookies, and even UNSA does not know everything.
 
-## 5. Glossary
+Worldbuilding heuristic, **not deterministic NPC assignment**: ~50% deny or normalize the paradigm shift, ~25% turn doomer/bioconservative, ~25% accelerationist. The denial sustains day-to-day society and its *Don't Look Up* satirical mood. Ubiquitous AI and AR/VR make undeniable anomalies dismissible as slop or misinformation.
 
-A living glossary lives at [`docs/world/HELSINKI_SLANG_GLOSSARY.md`](world/HELSINKI_SLANG_GLOSSARY.md).
+The Noösphere initially appears technological, though consciousness, psychic experience and ideological struggle ultimately complicate that account. UNSA sincerely values transparency, open science and citizen participation yet classifies destabilizing discoveries for fear of public panic. It fears becoming an MJ-12 analogue while gradually assuming global-government functions. Treat this as a tension, not a simplistic good/evil reveal.
 
-- Tomi supplies or approves Finnish headwords, inflections and examples.
-- Agents write **English definitions, register notes and usage guidance only**; Finnish example
-  fields stay empty until Tomi fills them.
-- Distinguish attested Stadin Slangi from invented NoöPunk slang and from literary inspiration.
-- The glossary is a reference, not a spellchecker or a prescription for every sentence.
+Do not force a moral alignment: let the player develop heroic, compassionate, cynical, compromised, corrupt, traitorous, or self-destructive tendencies through choices and sustained consequences.
 
-## 6. Narrative disclosure: grounded first, New Weird later
+### Spoiler discipline
 
-The player should initially believe this is a grounded cyberpunk / Nordic-European social-SF
-investigation: a rookie UNSA agent, institutional secrecy, local crime, cyberware, AI-generated media,
-ubiquitous AR/VR and political tension. The wilder setting arrives through evidence, not exposition.
+- **Opening:** grounded Helsinki casework; anomalies have mundane explanations available.
+- **Investigative escalation:** contradictory records, suspicious AR/AI phenomena, partial classified disclosures.
+- **Later:** PSI/NHI evidence and the Noösphere become increasingly difficult to explain away.
+- **Late revelations:** the full ontological stakes and geopolitical/NHI background, when earned by play.
 
-- **Early:** mundane explanations remain available. No lore dumps, no omniscient narrator, no
-  encyclopedia screens.
-- **Middle:** the Noösphere, PSI and NHI become undeniable to the player while remaining deniable to
-  most of society.
-- **Late:** the NHI Cold War, the nature of the Noösphere and what UNSA actually knows.
-- **Knowledge is diegetic:** places, clues, dossiers, contradictions, NPC motives and choices. Keep
-  character knowledge separate from world canon.
-- **UNSA is not omniscient.** Romppainen knows more than rookies and deliberately doses disclosure;
-  senior officials also lack the full picture.
+Use explicit knowledge gates in scene data and avoid spoilers from UI, achievements, logs, or narration.
 
-### Population response (setting heuristic, not forced NPC psychology)
+## Scope
 
-- **50 %** cannot or will not switch paradigm, even with a craft on the lawn. This is the recurring
-  *Don't Look Up* comedy.
-- **25 %** go doomer: extremist anti-NHI/anti-AGI movements, survivalism, Mad Max.
-- **25 %** go accelerationist: cyborgization, uploading, alien cults, joining the new powers.
-
-Governments classify to avoid panic. Ubiquitous AR/VR is entangled with the psychic Noösphere, and
-people dismiss real weirdness as AI slop or misinformation. Society still functions because most
-people refuse to update.
-
-### The Noösphere and UNSA
-
-- The **Noösphere** is the natural psychic collective consciousness of a sane planet. Humans are not
-  the sanest species and need BCIs, LLM augmentation and global cybernetic VR/AR to reach it.
-- It is only becoming conscious, and an ideological struggle is underway inside it. It appears purely
-  technological until the player reaches a level of psychic awakening; it is a psychic maelstrom,
-  not a network.
-- **UNSA** was founded on transparency, open science and democratic participation, and believes in
-  them. It also classifies the most destabilising information and fears becoming another MJ-12 while
-  becoming the de facto global government.
-- **Player character:** a blank-slate academy graduate. Idealistic, humanitarian, empathetic,
-  cynical, heroic, compromised, corrupt, traitorous or addicted trajectories are all playable; none
-  is the default.
-- **Theme:** Ontological Shock, Paradigm Shift and the Noösphere. Even UNSA is not sure what is going
-  on.
-
-## 7. Implementation requirements
-
-- [x] Locale-aware string layer (`mud/nopunk_mud/localization.py`): stable keys, `fi`/`en`, author and
-  status, visible fallback, refusal to let an agent author Finnish, refusal to overwrite Finnish with
-  English.
-- [ ] Migrate MUD UI/dialogue strings to keys; no hardcoded English in a Finnish-labelled screen.
-- [ ] Story/dialogue files record `lang` per line or node; mixed scenes only as authored
-  code-switching.
-- [ ] Seed the glossary; Tomi fills Finnish examples.
-- [ ] Write the reveal ladder as a scene/act document with gates.
-- [ ] First playable act contains no unambiguous aliens, AGI apocalypse or Noösphere explanation.
-- [ ] Tomi reviews all Finnish; no agent PR may claim Finnish localization.
-
-## 8. Acceptance criteria
-
-1. Finnish UI/story renders where Tomi has written it; English is visibly marked elsewhere.
-2. No agent-authored commit contains Finnish prose beyond quoted or approved glossary terms.
-3. The glossary exists, is used consistently and separates attested slang from invention.
-4. The reveal ladder is documented and the first act respects the grounded tone.
-5. The theme is playable, not lore-dumped.
-
-## 9. Links
-
-- **#950** — MUD is the main game; this is its language and disclosure contract.
-- **#980 / #981** — source issues consolidated here.
-- **#897** — CWN/art lock; language does not change rules.
-- **#920** — Tony, Laura, Romppainen; their voices must fit their registers.
-- **#921 / #922** — Crisis history and NHI factions; disclosure rules constrain surfacing.
+These directives apply to **MUD player-facing UI, story and dialogue only**. Leave tabletop rulebooks and all other documentation **in English**. This document is written in English on purpose: agents must be able to follow it. Both #980 and #981 are a **single consolidated workstream**, not competing language specifications.
