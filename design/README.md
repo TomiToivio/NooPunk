@@ -27,3 +27,9 @@ There will be several types of documents:
 * Sometimes there are more open-ended tasks and you can use your imagination to implement them. 
 * You should implement the Python code for NoöPunk MUD. 
 * You should add implemented rules, campaign scenarios and lore to the NoöPunk tabletop RPG rulebook. 
+
+## Vocabulary
+
+[`GLOSSARY.md`](../GLOSSARY.md) at the repository root is the canonical vocabulary for player-facing
+text. Design documents may use those terms freely; a design document that needs a **new** term should
+propose it there rather than assume it.

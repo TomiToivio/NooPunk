@@ -42,3 +42,9 @@ Use explicit knowledge gates in scene data and avoid spoilers from UI, achieveme
 ## Scope
 
 Canonical NoöPunk Finglish is **the only MUD language**; there are **no localized game editions**. This policy governs all agents, authored player text and future Concordia output. The author-led workflow in `design/README.md` remains binding.
+
+## Vocabulary
+
+[`GLOSSARY.md`](../GLOSSARY.md) is the canonical list of Stadin slangi and NoöPunk terms used in
+player-visible Finglish. Reuse its vocabulary; do not invent or re-derive it, and do not claim an
+attestation that is not recorded there.

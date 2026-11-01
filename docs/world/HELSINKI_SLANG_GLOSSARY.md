@@ -1,3 +1,5 @@
+> **Canonical vocabulary lives in the repository-root [`GLOSSARY.md`](../../GLOSSARY.md)** (issue #1000). This file is retained for provenance and any content unique to it; it is not a second authority, and new terms belong in the root glossary.
+
 # Helsinki slang and NoöPunk universe glossary (MUD)
 
 **Editorial boundary:** This is a glossary of *terms already known in the world or proposed for Tomi's review*. AI agents document meanings in English only. Entries below are word references, **not agent-authored Finnish dialogue, translated lines, or approvals of any Finnish wording**. Tomi controls and authors his own Finnish/Finglish passages and may add examples in his own voice. For player-visible MUD prose only, agents may reuse verified glossary headwords or brief simple Finnish expressions sparingly within English text; this does not authorize modifying Tomi's passages. Internal documentation remains English. See [the binding policy](../FINNISH.md).

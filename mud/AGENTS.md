@@ -36,3 +36,9 @@ Changes in this folder should be testable with pure Python unit tests where poss
 ## Design workflow (#989)
 
 Authored game content — days, characters, missions, interactions, storylines, locations, rules, encounters and events — is specified by Tomi in [`design/`](../design/) and implemented through the issue raised from each document. Read [`design/README.md`](../design/README.md) and the root [`AGENTS.md`](../AGENTS.md) section *DESIGN WORKFLOW* before implementing any of it: implement only what the document describes, one step at a time, and preserve Tomi's Finnish/Finglish verbatim.
+
+## Vocabulary authority (#1000)
+
+Read the repository-root [`GLOSSARY.md`](../GLOSSARY.md) before writing player-facing dialogue or
+narration. It is the canonical list of Stadin slangi and NoöPunk terms: reuse what is there, propose
+rather than coin, and do not invent attestations. Tomi's entries are immutable.
