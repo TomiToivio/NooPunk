@@ -97,3 +97,74 @@ def assess(signals: Signals) -> Assessment:
     return Assessment(score=score, classification=classification, confidence=confidence,
                        strongest_channel=strongest, core_clue=CORE_CLUES[strongest],
                        caveats=tuple(caveats))
+
+
+# --------------------------------------------------------------------------------------------------
+# The device itself (#985)
+# --------------------------------------------------------------------------------------------------
+# A device-specific NooPunk overlay: it constrains who may be tested and how often. It is not a CWN rule
+# and it must not be modelled as fatigue damage or as a modifier to the assessment score.
+
+DEVICE_NAME = "Romppainen–Fujita"
+#: The device is not standard UNSA equipment; only the Helsinki field office runs one.
+FIELD_OFFICE = "helsinki"
+#: More than this in one in-world day leaves a field agent feeling "goofy". The rule is a safety limit,
+#: not a convenience: the counter is per agent and per in-world day.
+DAILY_TEST_LIMIT = 4
+
+
+class DeviceError(ValueError):
+    """The device refuses the session; nothing is recorded."""
+
+
+@dataclass(frozen=True)
+class DeviceState:
+    """How many tests one agent has taken on one in-world day.
+
+    Plain data so it survives a save: ``day`` is the in-world day ordinal, ``used`` the tests taken that day.
+    A different ``day`` means the counter has rolled over.
+    """
+
+    day: int = 0
+    used: int = 0
+
+    def to_dict(self) -> dict[str, int]:
+        return {"day": self.day, "used": self.used}
+
+    @classmethod
+    def from_dict(cls, data: dict) -> DeviceState:
+        return cls(day=int(data.get("day", 0)), used=int(data.get("used", 0)))
+
+
+def _that_day(state: DeviceState, day: int) -> DeviceState:
+    """Roll the counter over when the in-world day has changed."""
+    return DeviceState(day=day, used=0) if state.day != day else state
+
+
+def check_fit(*, administrator_helmet: bool, subject_helmet: bool) -> None:
+    """Both the administrator and the subject must wear the helmet. One helmet is not a test."""
+    if not administrator_helmet:
+        raise DeviceError("the administrator must wear the psychotronic helmet too")
+    if not subject_helmet:
+        raise DeviceError("the subject must wear the psychotronic helmet")
+
+
+def remaining(state: DeviceState, *, day: int) -> int:
+    """How many tests this agent may still take today."""
+    return DAILY_TEST_LIMIT - _that_day(state, day).used
+
+
+def begin_test(state: DeviceState, *, day: int,
+               administrator_helmet: bool, subject_helmet: bool) -> DeviceState:
+    """Validate a session and return the state with the test recorded.
+
+    Refuses, without recording anything, when the helmets are not worn or the daily cap is reached. The
+    case still yields its core clue by another path - the cap must never make a case unsolvable.
+    """
+    check_fit(administrator_helmet=administrator_helmet, subject_helmet=subject_helmet)
+    current = _that_day(state, day)
+    if current.used >= DAILY_TEST_LIMIT:
+        raise DeviceError(
+            f"this agent has already taken {DAILY_TEST_LIMIT} tests today; "
+            f"more than that leaves them goofy. Try again on the next in-world day.")
+    return DeviceState(day=current.day, used=current.used + 1)
