@@ -1,3 +1,7 @@
+# Mandatory MUD language rule (#980 and #981)
+
+**Finnish (Finglish) is the official primary language of the MUD, but all agents MUST author ONLY English. Never create, translate, correct, or improvise Finnish UI, story, dialogue or examples. Tomi alone writes Finnish story/dialogue. Do not overwrite Tomi-authored Finnish.** The first playable build may intentionally contain 50% Tomi Finnish and 50% agent English (or any mix), without a localization-completeness gate. Show English draft text as fallback where Finnish is not yet available. A separately edited English localization comes later. Rulebooks and docs remain English. Read `docs/FINNISH.md` before working on player-facing content. Treat #980 and #981 as one workstream.
+
 # Authoritative agent instructions: MUD is primary (#950)
 
 This is the default game target for general NoöPunk coding. Preserve the Godot legacy but do not develop parallel Godot features without explicit instructions. First finish tested CWN rules migration from Godot and the reference book, then a complete solo UNSA campaign and optional side quests, all **without LLM, other players or live GM**. Multiplayer, LLM agents/GM, Mesa and non-UNSA factions are follow-on features only.

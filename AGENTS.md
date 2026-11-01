@@ -1,3 +1,7 @@
+# MUD LANGUAGE AUTHORITY (#980 + #981)
+
+**Finnish/Finglish is the primary language of the first MUD release, even when half the visible text is Tomi's Finnish and half is agent English.** **Tomi exclusively authors Finnish story and dialogue; ALL AI agents write English only, never compose or translate Finnish.** Preserve Tomi's authored Finnish. English drafts are acceptable player-facing fallback, not a reason to delay the game. Polish an English localization later; tabletop rulebook and repository documentation remain English. See `docs/FINNISH.md` and `mud/AGENTS.md`. This is a single consolidated policy for #980 and #981.
+
 # PRIORITY OVERRIDE #950 — authoritative (31 Oct 2026)
 
 **The Python Evennia MUD in `mud/` is the flagship and default target for all NoöPunk game implementation.** All older Godot-first directives below are historical if they conflict. Godot remains in maintenance-only mode unless an issue explicitly names it. Never delete legacy Godot work.
