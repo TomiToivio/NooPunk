@@ -1,28 +1,50 @@
-# Helsinki slang glossary — moved
+> **Canonical vocabulary lives in the repository-root [`GLOSSARY.md`](../../GLOSSARY.md)** (issue #1000). This file is retained for provenance and any content unique to it; it is not a second authority, and new terms belong in the root glossary.
 
-**The vocabulary list that used to live here is now the root [`GLOSSARY.md`](../../GLOSSARY.md), which is the
-single source of truth (#1000).** Everything unique to this file was migrated there under *Migrated from the
-older secondary glossary*; nothing was dropped.
+# Helsinki slang and NoöPunk universe glossary (MUD)
 
-Do not add words here. A second word list is a second authority, and the two drift. The in-game `dictionary`
-is generated from `GLOSSARY.md` by `tools/glossary_to_lexicon.py`, so a term that is not in the glossary does
-not exist as far as the game is concerned.
+**Editorial boundary:** This is a glossary of *terms already known in the world or proposed for Tomi's review*. AI agents document meanings in English only. Entries below are word references, **not agent-authored Finnish dialogue, translated lines, or approvals of any Finnish wording**. Tomi controls and authors his own Finnish/Finglish passages and may add examples in his own voice. For player-visible MUD prose only, agents may reuse verified glossary headwords or brief simple Finnish expressions sparingly within English text; this does not authorize modifying Tomi's passages. Internal documentation remains English. See [the binding policy](../FINNISH.md).
 
-## Provenance rules (kept here because they are editorial, not vocabulary)
-
-| Provenance | Means | Requires |
+| Existing term / candidate | English meaning or usage | Register or approval note |
 | --- | --- | --- |
-| `documented` | documented contemporary or historical usage | a **source** |
-| `tomi` | supplied or approved by Tomi | his authorship |
-| `agent_proposed` | recorded for consideration, not yet canon | nothing — but must not be described as established |
+| Stadi | Helsinki, colloquial city name | Existing local slang; Tomi approves contextual use |
+| spora | tram | Existing Helsinki slang; contextual use by Tomi |
+| dösä | bus | Existing Helsinki slang; contextual use by Tomi |
+| steissi | railway station | Existing slang; context by Tomi |
+| kundi | guy or young man | Existing slang; inflection by Tomi |
+| tsiga | cigarette | Existing slang; contextual use by Tomi |
+| mutsi | mother | Existing slang; Tomi supplies examples |
+| faija | father | Existing slang; Tomi supplies examples |
+| hima | home | Existing slang; Tomi supplies examples |
+| dokata | drink alcohol | Existing slang; Tomi supplies examples |
+| fyrkka | money | Existing slang; Tomi supplies examples |
+| duuni | work or job | Existing colloquialism; Tomi supplies examples |
+| snadi | small | Existing slang; Tomi supplies examples |
+| jees | okay / nice | Existing colloquialism; Tomi supplies examples |
+| niinku | conversational filler, approximately 'like' | Existing colloquialism; Tomi supplies examples |
+| Finglish | code-switching between Finnish and English | Authorial voice; never enforce a percentage |
+| Stadin slangi | the Helsinki urban slang tradition | Dialect/register, not a mandatory vocabulary list |
+| Noösphere | emerging collective psychic consciousness, partially mediated by networks | Universe term, reveal only when story permits |
+| ontological shock | crisis of reality assumptions | Theme; player knowledge gated |
+| BCI | brain-computer interface | Tech register |
+| psychotronics | psychic or psi-linked technological practices | Late-stage lore gate |
+| UNSA | global human-security agency | Initially a recognisable employer |
+| Supo | Finnish security intelligence service | Institutional register |
+| Europol | European policing cooperation agency | Institutional register |
+| NHI | non-human intelligence | Classified until disclosed |
+| Pleiadian | NHI-related designation | Classified world lore |
+| Construct | synthetic or instantiated being in setting | Reveal only as encountered |
+| Zookeeper | nickname for a collective-consciousness NHI faction | Classified faction slang |
+| cyberdeck | computing/hacking equipment | Established genre word |
+| cyberspace | connected digital environment | Established generic genre vocabulary |
 
-An agent must never present a guess as authentic slang or an invention as etymology. Where Tomi's own
-introduction says *some* headwords are NoöPunk inventions without saying which, they stay classified as
-attested-modern and the gap is recorded in `GLOSSARY.md` rather than filled by guesswork.
+## Contemporary and author-provided expressions
 
-## Player-facing behaviour
+| Term | Brief English meaning | Provenance | Public? |
+| --- | --- | --- | --- |
+| Wallah! | An emphatic oath or assertion | Tomi-provided contemporary expression; usage varies | Yes |
+| Mä vannon! | I swear! | Tomi-provided Finnish expression | Yes |
+| Suomi Perkele Saatana! | Emphatic exclamation invoking Finland and Finnish swearing | Tomi-provided expression | Yes |
 
-The dictionary gives short English explanations in context — never translated scene text — and shows the term's
-provenance so the game does not pass a guess off as established usage. Knowledge-gated terms stay silent until
-the story unlocks them, and a gated lookup answers exactly as an unknown word does, so the refusal cannot
-confirm that a secret exists. See [`docs/FINNISH.md`](../FINNISH.md) for the language policy.
+These are **contextual vocabulary aids**, not translations of scenes. Do not make unsupported claims about etymology. The player-facing `dictionary` command is spoiler-safe and separate from developer documentation. No localizations of the game are planned.
+
+Record provenance for new terms and distinguish documented slang from original NoöPunk neologisms and literary inspiration. Consult Tomi-authored content for speaker-appropriate vocabulary before reuse. Russian, Chinese, Swedish or other loanwords can appear occasionally in player-facing English-dominant Finglish when situationally natural. No automatic translation, unverified claims of authentic slang, or reproduction of distinctive Nadsat inventions/dialogue.

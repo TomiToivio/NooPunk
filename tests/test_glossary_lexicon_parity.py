@@ -1,9 +1,9 @@
 """GLOSSARY.md is the vocabulary authority; the game lexicon is generated from it (#1000).
 
-These are executable checks, not prose checks: the generated JSON is input to the running game dictionary, so
-parity here means the dictionary a player actually sees cannot drift from the glossary the author maintains.
+These are executable checks on a generated artefact the running game reads, not prose checks: parity here means
+the dictionary a player sees cannot drift from the glossary the author maintains.
 
-`unittest.TestCase` rather than bare functions: CI runs `python -m unittest discover`, which collects nothing
+`unittest.TestCase` rather than bare functions — CI runs `python -m unittest discover`, which collects nothing
 from module-level `def test_*()`.
 """
 from __future__ import annotations
@@ -20,39 +20,16 @@ ROOT = Path(__file__).resolve().parents[1]
 GLOSSARY = ROOT / "GLOSSARY.md"
 LEXICON = ROOT / "data" / "world" / "lexicon.json"
 
-#: Tomi's original headwords. Every one of these must survive, with its meaning intact.
+#: Tomi's original headwords. Every one must survive, with its meaning intact.
 TOMI_HEADWORDS = {
-    "Bonjata": "to understand",
-    "Bönde": "Finland that is not Helsinki",
-    "Crusti": "crust punk",
-    "Diili": "deal",
-    "Dokata": "to drink alcohol",
-    "Dänkki": "cannabis",
-    "Fiilis": "feeling",
-    "Frendi": "friend",
-    "Fyrkka": "money",
-    "Jepari": "cop",
-    "Kännykkä": "mobile phone",
-    "Kyttä": "cop",
-    "Landepaukku": "person who lives outside of Helsinki",
-    "Leffa": "movie",
-    "Mesta": "place",
-    "Narkata": "to use drugs",
-    "Narkkari": "junkie",
-    "Nisti": "junkie",
-    "Hiisata": "to smoke cannabis",
-    "Pummi": "bum",
-    "Punkkari": "punk rocker",
-    "Rafla": "restaurant",
-    "Sika": "cop",
-    "Skoude": "cop",
-    "Stevari": "corporate cop",
-    "Venaa": "wait",
-    "Wallah": "I swear",
+    "Bonjata": "to understand", "Bönde": "Finland that is not Helsinki", "Crusti": "crust punk",
+    "Diili": "deal", "Dokata": "to drink alcohol", "Dänkki": "cannabis", "Fiilis": "feeling",
+    "Frendi": "friend", "Fyrkka": "money", "Jepari": "cop", "Kännykkä": "mobile phone",
+    "Kyttä": "cop", "Landepaukku": "person who lives outside of Helsinki", "Leffa": "movie",
+    "Mesta": "place", "Narkata": "to use drugs", "Narkkari": "junkie", "Nisti": "junkie",
+    "Hiisata": "to smoke cannabis", "Pummi": "bum", "Punkkari": "punk rocker", "Rafla": "restaurant",
+    "Sika": "cop", "Skoude": "cop", "Stevari": "corporate cop", "Venaa": "wait", "Wallah": "I swear",
 }
-
-CATEGORIES = {"attested_modern", "attested_older", "real_borrowing", "noopunk_slang", "universe"}
-PROVENANCE = {"tomi", "documented", "agent_proposed"}
 
 
 def fold(value: str) -> str:
@@ -65,7 +42,7 @@ def load() -> dict:
 
 
 def mud_lexicon():
-    """Import the MUD package by path, the same way the other root-level tests do."""
+    """Import the MUD package by path, the way the other root-level tests do."""
     path = str(ROOT / "mud")
     if path not in sys.path:
         sys.path.insert(0, path)
@@ -95,22 +72,27 @@ class GlossaryParityTests(unittest.TestCase):
             self.assertEqual(by_word[key]["meaning"], meaning,
                              f"{word}: the definition changed to {by_word[key]['meaning']!r}")
 
-    def test_every_term_declares_a_category_and_provenance(self) -> None:
-        for term in load()["terms"]:
-            self.assertIn(term["category"], CATEGORIES, term["word"])
-            self.assertIn(term["provenance"], PROVENANCE, term["word"])
-            self.assertIn(term["spoiler"], {"public", "gated"}, term["word"])
 
-    def test_gated_terms_say_when_they_unlock(self) -> None:
+class NoAgentClassifiedAnythingTests(unittest.TestCase):
+    def test_every_term_is_still_unclassified(self) -> None:
+        """The glossary says an agent must not assign a category or an etymology.
+
+        'unknown' is the honest state. If a row ever claims `attested` or `futuristic`, an agent has quietly
+        done Tomi's job, and this fails so it can be reviewed rather than shipped.
+        """
         for term in load()["terms"]:
-            if term["spoiler"] == "gated":
-                self.assertTrue(term["note"].strip(), f"{term['word']}: needs an unlock note")
+            self.assertEqual(term["classification"], "unknown", term["word"])
+            self.assertEqual(term["provenance"], "tomi", term["word"])
+
+    def test_gated_markers_are_only_in_the_glossary(self) -> None:
+        text = GLOSSARY.read_text(encoding="utf-8")
+        marked = {fold(m.group(1)) for m in re.finditer(r"(?m)^\*\s+([^–\-]+?)\s+[-–]\s+.*\[gated\]", text)}
+        gated = {fold(t["word"]) for t in load()["terms"] if t["spoiler"] == "gated"}
+        self.assertEqual(marked, gated)
+        self.assertTrue(gated, "the glossary should exercise the gated tier")
 
 
 class SpoilerSafetyTests(unittest.TestCase):
-    def test_the_glossary_exercises_the_gated_tier(self) -> None:
-        self.assertTrue([t for t in load()["terms"] if t["spoiler"] == "gated"])
-
     def test_no_gated_term_is_offered_to_players(self) -> None:
         gated = {fold(t["word"]) for t in load()["terms"] if t["spoiler"] == "gated"}
         public = {fold(term.word) for term in mud_lexicon().public_terms()}
@@ -120,13 +102,12 @@ class SpoilerSafetyTests(unittest.TestCase):
     def test_the_dictionary_does_not_confirm_a_gated_word_exists(self) -> None:
         """A refusal that differs from 'unknown' would leak the secret as surely as the entry would."""
         lexicon = mud_lexicon()
-        gated = [t["word"] for t in load()["terms"] if t["spoiler"] == "gated"]
+        gated = sorted(t["word"] for t in load()["terms"] if t["spoiler"] == "gated")
         self.assertEqual(lexicon.lookup(gated[0]), lexicon.lookup("not-a-word-at-all"))
 
     def test_the_dictionary_reads_the_generated_file_not_a_private_list(self) -> None:
         """If the words were still hard-coded, regenerating the glossary would not change them."""
         lexicon = mud_lexicon()
-        self.assertGreaterEqual(len(lexicon.terms()), len(load()["terms"]))
         self.assertEqual({fold(t.word) for t in lexicon.terms()},
                          {fold(t["word"]) for t in load()["terms"]})
 

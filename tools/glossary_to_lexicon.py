@@ -1,21 +1,22 @@
 #!/usr/bin/env python3
 """Generate the player lexicon from GLOSSARY.md (#1000).
 
-`GLOSSARY.md` is the vocabulary source of truth. The game dictionary is **generated from it**, never edited
-independently, so the two cannot drift. This tool parses the glossary, joins Tomi's headwords and definitions
-to their classification, and writes ``data/world/lexicon.json``.
+`GLOSSARY.md` is the vocabulary source of truth; the game dictionary is **generated** from it, never edited
+independently, so the two cannot drift.
 
-The glossary has two halves on purpose:
+The glossary forbids an agent from assigning a category or an etymology, so this tool does not try. It reads
+what the glossary actually states:
 
-* the **definitions** stay in Tomi's prose, as bullet lines ``* Term - meaning``, untouched;
-* the **classification** is a table keyed by term, giving category, provenance, register and spoiler tier.
+* every `* Term - meaning` line becomes an entry;
+* a trailing `[gated]` marker means the dictionary must stay silent until the story unlocks the term;
+* nothing else is invented. Categories are not written here because the glossary says they are Tomi's to give.
 
-Nothing is restated: the meaning lives in exactly one place, the metadata in another, and the join is checked.
-That is what makes the parity test meaningful rather than decorative.
+The generated JSON therefore carries `classification: "unknown"` for every term until Tomi fills it in, which
+is the honest state rather than a plausible-looking guess.
 
 Usage:
     python3 tools/glossary_to_lexicon.py            # write the JSON
-    python3 tools/glossary_to_lexicon.py --check    # fail if the JSON is stale or a term is unclassified
+    python3 tools/glossary_to_lexicon.py --check    # fail if the JSON is stale
 
 Exit codes: 0 = consistent, 1 = the glossary and the generated lexicon disagree.
 """
@@ -33,22 +34,11 @@ GLOSSARY = ROOT / "GLOSSARY.md"
 OUTPUT = ROOT / "data/world/lexicon.json"
 
 BULLET = re.compile(r"^\*\s+(?P<term>[^–\-]+?)\s+[-–]\s+(?P<meaning>.+?)\s*$")
-ROW = re.compile(r"^\|(?P<cells>.+)\|\s*$")
-
-#: How a word relates to the world. The distinction is the point of the issue.
-CATEGORIES = {
-    "attested_modern": "real Stadin slangi in current use",
-    "attested_older": "older Stadin slangi, still recognised",
-    "real_borrowing": "a loanword in ordinary use",
-    "noopunk_slang": "futuristic NoöPunk Helsinki slang",
-    "universe": "NoöPunk universe terminology",
-}
-PROVENANCE = ("tomi", "documented", "agent_proposed")
-SPOILER = ("public", "gated")
+GATED = re.compile(r"\s*\[gated\]\s*$", re.IGNORECASE)
 
 
 class GlossaryError(ValueError):
-    """The glossary and its classification disagree."""
+    """The glossary cannot be turned into a lexicon."""
 
 
 def fold(value: str) -> str:
@@ -57,97 +47,45 @@ def fold(value: str) -> str:
     return "".join(ch for ch in decomposed if not unicodedata.combining(ch)).strip()
 
 
-def parse_glossary(text: str) -> tuple[list[tuple[str, str]], dict[str, dict[str, str]]]:
-    """Return ``(headwords, classification)`` parsed from the glossary Markdown."""
-    headwords: list[tuple[str, str]] = []
-    classification: dict[str, dict[str, str]] = {}
-    in_table = False
+def build(text: str) -> dict:
+    """Read the glossary's headwords into lexicon entries."""
+    terms: list[dict] = []
+    seen: set[str] = set()
 
     for line in text.splitlines():
-        stripped = line.strip()
-        if stripped.startswith("#") and "classification" in stripped.lower():
-            in_table = True
+        match = BULLET.match(line.strip())
+        if not match:
             continue
-        if stripped.startswith("#") and in_table:
-            in_table = False
-
-        if in_table:
-            match = ROW.match(stripped)
-            if not match:
-                continue
-            cells = [cell.strip() for cell in match.group("cells").split("|")]
-            if not cells or set(cells[0]) <= {"-", ":"}:
-                continue  # the header separator
-            if cells[0].lower() == "term":
-                continue  # the header row
-            if len(cells) < 5:
-                raise GlossaryError(f"classification row needs 5 columns: {stripped}")
-            term, category, provenance, register, spoiler = cells[:5]
-            note = cells[5] if len(cells) > 5 else ""
-            key = fold(term)
-            if key in classification:
-                raise GlossaryError(f"{term!r}: classified twice")
-            classification[key] = {
-                "term": term, "category": category, "provenance": provenance,
-                "register": register, "spoiler": spoiler, "note": note,
-            }
-            continue
-
-        match = BULLET.match(stripped)
-        if match:
-            headwords.append((match.group("term").strip(), match.group("meaning").strip()))
-
-    return headwords, classification
-
-
-def build(text: str) -> dict:
-    """Join the headwords to their classification and validate the result."""
-    headwords, classification = parse_glossary(text)
-    if not headwords:
-        raise GlossaryError("no headwords found; GLOSSARY.md must list `* Term - meaning` lines")
-
-    seen: set[str] = set()
-    terms = []
-    for term, meaning in headwords:
+        term = match.group("term").strip()
+        meaning = match.group("meaning").strip()
+        gated = bool(GATED.search(meaning))
+        if gated:
+            meaning = GATED.sub("", meaning).strip()
+        if not meaning:
+            raise GlossaryError(f"{term!r}: a headword needs a definition")
         key = fold(term)
         if key in seen:
             raise GlossaryError(f"{term!r}: headword listed twice")
         seen.add(key)
-        meta = classification.get(key)
-        if meta is None:
-            raise GlossaryError(
-                f"{term!r}: no classification row. Every headword needs a category, provenance, "
-                f"register and spoiler tier.")
-        if meta["category"] not in CATEGORIES:
-            raise GlossaryError(f"{term!r}: unknown category {meta['category']!r}")
-        if meta["provenance"] not in PROVENANCE:
-            raise GlossaryError(f"{term!r}: unknown provenance {meta['provenance']!r}")
-        if meta["spoiler"] not in SPOILER:
-            raise GlossaryError(f"{term!r}: unknown spoiler tier {meta['spoiler']!r}")
-        if meta["spoiler"] == "gated" and not meta["note"]:
-            raise GlossaryError(
-                f"{term!r}: a gated term needs a note saying when it unlocks, "
-                f"or the dictionary cannot explain why it is silent.")
         terms.append({
             "word": term,
             "meaning": meaning,
-            "category": meta["category"],
-            "provenance": meta["provenance"],
-            "register": meta["register"],
-            "spoiler": meta["spoiler"],
-            "note": meta["note"],
+            "classification": "unknown",   # the glossary leaves this to Tomi
+            "provenance": "tomi",
+            "register": "",
+            "spoiler": "gated" if gated else "public",
+            "note": "",
         })
 
-    unclassified = [meta["term"] for key, meta in classification.items() if key not in seen]
-    if unclassified:
-        raise GlossaryError(
-            "classification names terms that are not headwords: " + ", ".join(sorted(unclassified)))
+    if not terms:
+        raise GlossaryError("no headwords found; GLOSSARY.md must list `* Term - meaning` lines")
 
     return {
         "format": "nopunk-glossary-v1",
         "source": "GLOSSARY.md",
         "note": ("Generated from GLOSSARY.md by tools/glossary_to_lexicon.py; do not edit. "
-                 "Definitions live in the glossary, classification in its table."),
+                 "Classification is 'unknown' until Tomi assigns one - an agent must not guess a category, "
+                 "an etymology or an attestation."),
         "terms": sorted(terms, key=lambda entry: fold(entry["word"])),
     }
 

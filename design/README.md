@@ -22,9 +22,14 @@ There will be several types of documents:
 ## Guidelines
 * Preserve Tomi's Finnish/Finglish dialogue and descriptions exactly; never translate, edit or normalize them.
 * The MUD has one canonical language: Finglish, with no separate localizations (#996). For player-visible material, agents write English-led Finglish with occasional contextual Finnish and other loanwords; never translate Tomi-authored prose. All other agent-written material (including design documents and tabletop rulebooks) remains plain English. See `docs/FINNISH.md`.
-* Read root [`GLOSSARY.md`](../GLOSSARY.md) before writing or interpreting player-facing dialogue: it is the canonical vocabulary for real Stadin slangi, futuristic NoöPunk slang and universe terminology alike. Reuse Tomi's approved words naturally instead of inventing synonyms, and mark any new term with its category, provenance and spoiler tier so the generated game dictionary stays in step.
 * Do one step at a time - do only what is described in the design document. 
 * Sometimes dialogues etc. are described in a detailed fashion and you should implement them exactly as described. 
 * Sometimes there are more open-ended tasks and you can use your imagination to implement them. 
 * You should implement the Python code for NoöPunk MUD. 
 * You should add implemented rules, campaign scenarios and lore to the NoöPunk tabletop RPG rulebook. 
+
+## Vocabulary
+
+[`GLOSSARY.md`](../GLOSSARY.md) at the repository root is the canonical vocabulary for player-facing
+text. Design documents may use those terms freely; a design document that needs a **new** term should
+propose it there rather than assume it.

@@ -37,7 +37,7 @@ silently by picking one.
 
 # MUD LANGUAGE AUTHORITY (#996: ONE FINGLISH, NO LOCALIZATIONS)
 
-**NoöPunk Finglish is the one canonical player-facing language; no Finnish, English or other localized game editions will be made.** Agents write mostly English with sparse contextual Finnish, Stadin slangi and suitable Swedish, Russian, Chinese or other words in player-visible MUD content and future Concordia NPC/GM responses. Tomi-authored prose is preserved **verbatim**, never translated, corrected or overwritten. All development material and tabletop rules remain plain English. The MUD has a spoiler-safe `dictionary` command instead of translations. Read `docs/FINNISH.md` and `docs/world/HELSINKI_SLANG_GLOSSARY.md`. Legacy `fi`/`en` storage is compatibility data, not locale editions. Keep #950 solo-first and #989 author-led workflow.
+**NoöPunk Finglish is the one canonical player-facing language; no Finnish, English or other localized game editions will be made.** Agents write mostly English with sparse contextual Finnish, Stadin slangi and suitable Swedish, Russian, Chinese or other words in player-visible MUD content and future Concordia NPC/GM responses. Tomi-authored prose is preserved **verbatim**, never translated, corrected or overwritten. All development material and tabletop rules remain plain English. The MUD has a spoiler-safe `dictionary` command instead of translations. Read `docs/FINNISH.md`. The **canonical vocabulary is the repository-root [`GLOSSARY.md`](GLOSSARY.md)** (#1000); `docs/world/HELSINKI_SLANG_GLOSSARY.md` is retained for provenance only and is not a second authority. Reuse that vocabulary in contexts that fit, never coin a term into shipped text as though it were established, and never assign a category or etymology you cannot evidence. Legacy `fi`/`en` storage is compatibility data, not locale editions. Keep #950 solo-first and #989 author-led workflow.
 
 # PRIORITY OVERRIDE #950 — authoritative (31 Oct 2026)
 
@@ -50,13 +50,6 @@ silently by picking one.
 **Scope:** `mud/` for implementation, `docs/` and canonical tabletop rules only for coordinated docs, not Godot runtime. See issue #950.
 
 ## Finglish implementation pointer (#996)
-
-**Vocabulary source of truth: root [`GLOSSARY.md`](GLOSSARY.md) (#1000).** Read it before writing or
-interpreting player-facing dialogue or narration. The in-game `dictionary` is **generated** from it by
-`tools/glossary_to_lexicon.py`; never hand-edit `data/world/lexicon.json` and never keep a second word list.
-Every headword carries a category, provenance and spoiler tier — mark new terms the same way, never invent an
-etymology, and reuse Tomi's approved words rather than coining synonyms. Future Concordia prompting should
-retrieve only the entries relevant to the speaker, the situation and the player's current knowledge.
 
 Follow `docs/FINNISH.md`: a single canonical player-facing Finglish language, without any locale-switching or future translation editions. Never overwrite Tomi's writing; preserve old catalogue files for compatibility. All non-player-facing writing is English.
 

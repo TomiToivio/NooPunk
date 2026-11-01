@@ -2,8 +2,8 @@
 
 The words are **not** kept here. `GLOSSARY.md` is the vocabulary source of truth, and
 `tools/glossary_to_lexicon.py` generates `data/world/lexicon.json` from it. This module only reads that
-generated file, so the game dictionary cannot drift away from the glossary: an entry the glossary does not
-have does not exist, and a gated term stays silent until the story earns it.
+generated file, so the dictionary a player sees cannot drift away from the glossary the author maintains: a
+term the glossary does not have does not exist, and a gated term stays silent until the story earns it.
 """
 from __future__ import annotations
 
@@ -28,13 +28,13 @@ class LexiconError(RuntimeError):
 
 @dataclass(frozen=True)
 class Term:
-    """One headword, as the glossary defines it."""
+    """One headword, exactly as the glossary defines it."""
 
     word: str
     meaning: str
-    provenance: str
+    provenance: str = ""
     register: str = "general"
-    category: str = ""
+    category: str = "unknown"
     spoiler: str = "public"
 
 
@@ -55,20 +55,23 @@ def _candidate_paths() -> list[Path]:
 
 def _load() -> tuple[Term, ...]:
     for path in _candidate_paths():
-        if path.exists():
-            data = json.loads(path.read_text(encoding="utf-8"))
-            if data.get("format") != "nopunk-glossary-v1":
-                raise LexiconError(f"{path}: unexpected lexicon format {data.get('format')!r}")
-            return tuple(
-                Term(
-                    word=row["word"],
-                    meaning=row["meaning"],
-                    provenance=row.get("provenance", ""),
-                    register=row.get("register", "general"),
-                    category=row.get("category", ""),
-                    spoiler=row.get("spoiler", "public"),
-                )
-                for row in data.get("terms", []))
+        if not path.exists():
+            continue
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if data.get("format") != "nopunk-glossary-v1":
+            raise LexiconError(f"{path}: unexpected lexicon format {data.get('format')!r}")
+        return tuple(
+            Term(
+                word=row["word"],
+                meaning=row["meaning"],
+                provenance=row.get("provenance", ""),
+                register=row.get("register", "") or "general",
+                # The glossary leaves classification to Tomi. "unknown" is the honest default,
+                # not a category an agent invented.
+                category=row.get("classification", "unknown"),
+                spoiler=row.get("spoiler", "public"),
+            )
+            for row in data.get("terms", []))
     raise LexiconError(
         "generated lexicon not found; run python3 tools/glossary_to_lexicon.py "
         f"(looked in {', '.join(str(p) for p in _candidate_paths())})")
@@ -82,16 +85,12 @@ def terms() -> tuple[Term, ...]:
 
 @lru_cache(maxsize=1)
 def public_terms() -> tuple[Term, ...]:
-    """The public subset. Gated terms are the story's, not the dictionary's."""
+    """The public subset. Gated terms belong to the story, not to the dictionary."""
     return tuple(term for term in terms() if term.spoiler == "public")
 
 
 #: Backwards-compatible view of the public vocabulary.
 PUBLIC_TERMS = public_terms()
-
-
-def _index() -> dict[str, Term]:
-    return {_fold(term.word): term for term in public_terms()}
 
 
 def lookup(query: str = "") -> str:
@@ -101,17 +100,17 @@ def lookup(query: str = "") -> str:
     waiting to be unlocked.
     """
     query = query.strip()
+    public = public_terms()
     if not query:
-        listing = ", ".join(term.word for term in public_terms())
+        listing = ", ".join(term.word for term in public)
         return f"Dictionary: {listing}\nUsage: dictionary <word or search>"
 
     needle = _fold(query)
-    index = _index()
+    index = {_fold(term.word): term for term in public}
     exact = index.get(needle)
     matches = [exact] if exact else [
-        term for term in public_terms()
+        term for term in public
         if needle in _fold(term.word) or needle in _fold(term.meaning)]
     if not matches:
         return MISSING
-    return "\n".join(
-        f"{term.word}: {term.meaning} [{term.provenance}; {term.register}]" for term in matches)
+    return "\n".join(f"{term.word}: {term.meaning}" for term in matches)
