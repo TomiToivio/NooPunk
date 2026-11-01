@@ -28,6 +28,16 @@ While implementing, these remain binding and are not negotiable by a design docu
 - **Implement for the Python Evennia MUD** in `mud/` (#950). Godot is maintenance-only.
 - **Keep tabletop canon and rules in sync**: a mechanical change updates the rulebook, the traceability
   matrix and the matching tests.
+- **The rules constitution binds you** ([`docs/rules/RULES_CONSTITUTION.md`](docs/rules/RULES_CONSTITUTION.md)):
+  vanilla CWN with SWN psionics as the essential companion is the base, AWN/WWN material is opt-in, and
+  every NoöPunk addition is an overlay on top. Classify any new module under `src/rules/` in
+  `data/rules/rules_constitution.json` in the same commit — `python3 tools/rules_constitution_audit.py
+  --check` fails otherwise, and `tests/test_rules_constitution.py` proves the baseline still runs with
+  every overlay module blocked.
+- **The reveal ladder binds the writing** ([`data/world/reveal_ladder.json`](data/world/reveal_ladder.json),
+  [`docs/design/ISSUE_1007_DESIGN_CANON.md`](docs/design/ISSUE_1007_DESIGN_CANON.md)): content starts as
+  recognisable cyberpunk and earns NHI/PSI/cosmic material through investigation, never through
+  exposition.
 
 **Conflicts.** If another instruction file, issue or comment disagrees with this workflow, this section
 and `design/README.md` win for *who authors what*. Raise the conflict on the issue; do not resolve it

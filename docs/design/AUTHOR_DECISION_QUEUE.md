@@ -273,6 +273,22 @@ so the deviation cost a merge and not a rule — but whether it stays in `main` 
 | D63 | **Which clocks ship, and how long are they?** §9.2 proposes five (NHI disclosure, rogue ASI acceleration, cyber-psychic convergence, UNSA authority, local crisis) at the 4/6 segments of the #689 spec. A published campaign would need three to five of them named, and a rule for what happens when two fill on the same event. The named clocks are proposals, not timeline: the disclosure clock's terminal segment is the panic depth of `RULEBOOK.md` §41.1, which is a *regional* condition, not a global one. | what a scenario author may assume about escalation; whether a case may declare its own clock count | *all five, 4/6 as specced* / *name a subset* / *local crisis only* ; and *one clock per question, table decides* / *a fixed precedence* |
 | D64 | **May any of *The Veil*'s text ever be quoted?** The book licenses its **text** CC BY-SA 3.0 and reserves its art separately; *Apocalypse World* 2e establishes no open licence at all. The module as written quotes neither and re-expresses mechanics with page references, which keeps the tree clear of ShareAlike. Quoting a paragraph of *The Veil* would put ShareAlike obligations on the file that carries it — and `tests/test_third_party_expression_absent.py` exists precisely because expression once entered this tree and had to be removed. | whether the design documents may quote, and the licence status of any document that does | *no quotations, ever* / *quote and accept ShareAlike in that file* / *quote only from the CC BY-SA text and mark the file* |
 
+## #1006 — the Rules Constitution (rows D68–D69)
+
+Twenty-first update (2026-11-01). #1006 permanently locks the OSR base: **vanilla CWN, with SWN psionics
+as the essential companion**, and everything NoöPunk adds as an overlay on top. The record is
+[`docs/rules/RULES_CONSTITUTION.md`](../rules/RULES_CONSTITUTION.md) with the generated tier table
+beside it; the registry is `data/rules/rules_constitution.json` (68 modules, each in exactly one tier)
+and `tests/test_rules_constitution.py` proves the vanilla tiers still run with every overlay module
+blocked by an import hook.
+
+Two questions are genuinely open, and neither is a rules redesign:
+
+| # | Decision | Blocks | Smallest useful answer |
+| --- | --- | --- | --- |
+| D68 | **May a NoöPunk mod add a new *skill*?** The constitution says a mod may not touch CWN's skill list. Empathy or Awareness as **additional mod skills** — never replacing `Notice`, `Know` or `Work` — is the one place where "overlay, not edit" is arguable, because a skill is a shared vocabulary rather than a procedure. The alternative is to express the same ground through existing skills plus typed competence tags. | any character-sheet skill field; how an investigator's empathy or anomaly-awareness is modelled in the MUD | *mod skills allowed, additive only* / *existing skills plus tags* / *no new skills, ever* |
+| D69 | **Which optional-source modules ship?** `wwn_projects.py` (WWN) and `awn_survival.py` (AWN) exist, pass their tests and are tiered `optional-source`. Whether the base game includes them or they stay opt-in modules a campaign may enable is a content decision, not a mechanical one. | what a new player gets by default; which rulebook chapters describe the shipped game | *both opt-in* / *AWN survival in, WWN projects opt-in* / *both in the base* |
+
 ## After an answer
 
 Each answered row becomes: a criterion check against `main` → an acceptance record in
