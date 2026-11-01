@@ -1,4 +1,4 @@
-"""Romppainen consciousness assessment (#985).
+"""Romppainen–Fujita consciousness assessment (#985).
 
 A deterministic, CWN-compatible interview procedure. It scores four observed channels, returns a
 pattern band with confidence and caveats, and always yields a core investigative clue — a failed
@@ -11,7 +11,7 @@ from dataclasses import dataclass, field
 CHANNELS = ("affect", "coherence", "bci", "empathy")
 WEIGHTS = {"affect": 0.30, "coherence": 0.25, "bci": 0.25, "empathy": 0.20}
 SIGNAL_MIN, SIGNAL_MAX = -2, 2
-PROTOCOL = "helsinki"
+PROTOCOL = "romppainen_fujita"
 
 
 class AssessmentError(ValueError):
