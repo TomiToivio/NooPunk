@@ -46,3 +46,15 @@ from.
 
 `data/rules/rules_constitution.json` carries the same decision in a form tests can enforce. If the two ever
 disagree, this document is the authority and the JSON is the bug.
+
+## Where the implementation stands
+
+The constitution says what the layers *are*; it does not say which of them exist. That is
+[`data/rules/overlay_registry.json`](../../data/rules/overlay_registry.json): one entry per core, module and
+overlay, each carrying a status and the paths and tests that back it. A layer claiming `implemented` must name a
+test that exists; a layer claiming `planned` must name no paths. `tests/test_overlay_registry_1006.py` enforces
+that, and enforces the boundary in code rather than in prose — an overlay that declares its own attribute set or
+its own difficulty bands fails.
+
+Current honest position: **SWN psionics is `planned`**, so the `minimum-playable` profile named above is not yet
+buildable. The registry says so instead of implying otherwise.

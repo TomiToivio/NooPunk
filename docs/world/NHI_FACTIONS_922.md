@@ -1,5 +1,7 @@
 # Major NHI factions — source text (source: #922)
 
+> **Consolidated reference (#1005):** [`POST_NHI_WORLD_1005.md`](POST_NHI_WORLD_1005.md) — this file remains the taxonomy and confidence model; that one carries the political economy (Mantids, Greys, Reptilians, Sirians) and the case seeds.
+
 <!--
 PROVENANCE: transcribed from the author's own issue text, unedited in substance.
 This file is source material, not canon-by-accident: anything the source marks as disputed, rumoured or
