@@ -167,6 +167,9 @@ class NoopunkCharacterCmdSet(CharacterCmdSet):
         self.add(CmdCheckAttr())
         self.add(CmdCase())
         self.add(CmdSolo())
+        # #985: the Romppainen assessment was implemented and tested but never registered, so a player
+        # could not run it. `test_every_command_is_registered` now fails if a command is defined and not added.
+        self.add(CmdAssess())
         self.add(CmdCheck())
         self.add(CmdSupplies())
         self.add(CmdScavenge())
