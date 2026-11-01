@@ -32,3 +32,7 @@ Core rules: Cities Without Number, with Stars Without Number additions only wher
 Evennia is authoritative for multiplayer and persistent world state. LLM GM and NPCs may describe or *propose* actions; validated CWN/Evennia handlers alone execute them. Mesa is for coarse social/resource simulation, not deterministic rules adjudication. Never control human PCs through an agent, and do not let an AI mint resources, override a roll, or rewrite canon.
 
 Changes in this folder should be testable with pure Python unit tests where possible. No secrets or hard-coded external LLM endpoints. Label any untested Evennia integration accurately.
+
+## Design workflow (#989)
+
+Authored game content — days, characters, missions, interactions, storylines, locations, rules, encounters and events — is specified by Tomi in [`design/`](../design/) and implemented through the issue raised from each document. Read [`design/README.md`](../design/README.md) and the root [`AGENTS.md`](../AGENTS.md) section *DESIGN WORKFLOW* before implementing any of it: implement only what the document describes, one step at a time, and preserve Tomi's Finnish verbatim.
