@@ -1,0 +1,111 @@
+{
+  "format": "nopunk-lexicon-v1",
+  "issue": "#996",
+  "note": "Player-facing lexicon. Glosses are short English explanations, never translations of scenes. Every seeded entry is 'proposed' because an agent cannot assert that a Helsinki slang word is attested usage without a source, and the loader refuses 'attested' entries that have none. Tomi upgrades an entry by confirming its provenance and supplying a source; nothing here should be described as authentic slang until he does.",
+  "entries": [
+    {
+      "term": "Stadi",
+      "gloss": "Helsinki, in the local register. Used by people who live there, often with affection and sometimes with complaint.",
+      "register": "street",
+      "provenance": "proposed",
+      "tier": "public",
+      "notes": "Provenance and exact usage note await Tomi's confirmation."
+    },
+    {
+      "term": "spora",
+      "gloss": "A tram. The thing that grinds past the steissi in the rain.",
+      "register": "street",
+      "provenance": "proposed",
+      "tier": "public",
+      "notes": "Provenance awaits confirmation."
+    },
+    {
+      "term": "dösä",
+      "gloss": "A bus.",
+      "register": "street",
+      "provenance": "proposed",
+      "tier": "public",
+      "notes": "Provenance awaits confirmation."
+    },
+    {
+      "term": "steissi",
+      "gloss": "The central railway station, and the square in front of it.",
+      "register": "street",
+      "provenance": "proposed",
+      "tier": "public",
+      "notes": "Provenance awaits confirmation."
+    },
+    {
+      "term": "fyrkka",
+      "gloss": "Money, especially the ordinary kind you are short of.",
+      "register": "street",
+      "provenance": "proposed",
+      "tier": "public",
+      "notes": "Provenance awaits confirmation."
+    },
+    {
+      "term": "duuni",
+      "gloss": "Work, or a job. Also used of the thing you would rather not be doing.",
+      "register": "street",
+      "provenance": "proposed",
+      "tier": "public",
+      "notes": "Provenance awaits confirmation."
+    },
+    {
+      "term": "snadi",
+      "gloss": "Small. Often used to soften what follows.",
+      "register": "street",
+      "provenance": "proposed",
+      "tier": "public",
+      "notes": "Provenance awaits confirmation."
+    },
+    {
+      "term": "Noösphere",
+      "gloss": "The thinking layer of the planet: what a collective consciousness looks like from outside. In NoöPunk it is becoming aware, and not everyone finds that reassuring.",
+      "register": "canon",
+      "provenance": "proposed",
+      "tier": "public",
+      "notes": "Setting term. Definition is the game's usage, not a claim about its origin."
+    },
+    {
+      "term": "ontological shock",
+      "gloss": "The damage done to a person's model of reality when the world turns out to work differently than they were sure it did.",
+      "register": "canon",
+      "provenance": "proposed",
+      "tier": "public",
+      "notes": "Setting term."
+    },
+    {
+      "term": "UNSA",
+      "gloss": "The agency you work for: global, transparent by charter, and increasingly classified in practice.",
+      "register": "institutional",
+      "provenance": "proposed",
+      "tier": "public",
+      "notes": "Setting term."
+    },
+    {
+      "term": "BCI",
+      "gloss": "Brain-computer interface. The ordinary, unremarkable way people reach the Noösphere.",
+      "register": "technical",
+      "provenance": "proposed",
+      "tier": "public",
+      "notes": "Setting term."
+    },
+    {
+      "term": "Zookeeper",
+      "gloss": "One of the powers that offers protection to a biosphere and a thinking layer, and means something particular by protection.",
+      "register": "canon",
+      "provenance": "proposed",
+      "tier": "dossier",
+      "notes": "Dossier tier: revealing this early gives away a story beat. Unlocks with progress."
+    },
+    {
+      "term": "psychotronics",
+      "gloss": "Machinery that works on minds rather than matter, or claims to.",
+      "register": "technical",
+      "provenance": "proposed",
+      "tier": "dossier",
+      "notes": "Dossier tier: unlocked once the player has met the concept in play."
+    }
+  ]
+}

@@ -21,6 +21,7 @@ There will be several types of documents:
 
 ## Guidelines
 * Preserve Tomi's Finnish/Finglish dialogue and descriptions exactly; never translate, edit or normalize them.
+* **NoöPunk has one canonical language: Finglish. There are no localizations and no alternate-language editions** — do not design, plan or promise a Finnish, English or other translated version of the game. Players learn vocabulary from the game and from the in-game `dictionary`.
 * Agent-written texts visible to players in the NoöPunk MUD should be predominantly English, optionally seasoned with occasional simple Finnish and situation-appropriate borrowed slang. All other agent-written texts (including design documents and tabletop rulebooks) remain plain English. See `docs/FINNISH.md` for the authoritative policy.
 * Do one step at a time - do only what is described in the design document. 
 * Sometimes dialogues etc. are described in a detailed fashion and you should implement them exactly as described. 

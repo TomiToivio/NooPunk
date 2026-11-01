@@ -1,35 +1,67 @@
-# NoöPunk MUD Finglish and narrative policy (#992; updates #980/#981)
+# NoöPunk Finglish and narrative policy (#996; supersedes the localization plans of #992, #980, #981)
 
-> **Binding boundary:** Player-visible NoöPunk MUD text is primarily **English with occasional simple, contextual Finnish and other loanwords**: our distinctive Finglish. Everything else written by agents is **plain English**. **Never translate, correct, overwrite, or imitate Tomi-authored Finnish/Finglish passages.**
+> **Binding decision:** the NoöPunk MUD ships in **one canonical language — NoöPunk Finglish — and there will
+> be no localizations.** Not Finnish, not English, not any other language. Players learn the vocabulary from
+> the game and from an in-game `dictionary`. **Never translate, correct, normalize, or overwrite Tomi-authored
+> dialogue, narration or descriptions.**
 
-## Where the policy applies
+This is a worldbuilding and literary identity decision, not a temporary translation workflow. Everything that
+followed from the old localization plan — translation targets, completeness gates, a promised polished
+English edition — is withdrawn. All development documentation, tabletop rulebooks, design documents, code,
+tests, logs, internal prompts, issue/PR text and agent instructions remain **plain English**; a rulebook
+written in English is not a localized edition of the MUD.
 
-| Surface | Agent language |
+## One game language, not one language per locale
+
+| Surface | Language |
 | --- | --- |
-| Text directly shown to the MUD player: UI, dialogue, descriptions, quests, in-world messages, narrative | **English-dominant Finglish**. Mostly English, occasionally short and basic Finnish expressions and suitable Swedish, Russian, Chinese or other borrowings. |
-| Future Concordia LLM GM and NPC responses **shown to the player** | Same **English-dominant Finglish** rule, tuned to the speaker and situation. |
-| Design documents, issues, PRs, tabletop rules, agent instructions, internal LLM prompts, code, comments, tests, technical documents and other non-player-visible content | **Plain English**. Do not insert multilingual stylistic flourishes. |
-| Tomi-authored dialogue, descriptions, or UI text already present in the game | **Preserve verbatim**, including Finnish, English, slang, punctuation and code-switching. No automatic translation or rewriting. |
+| Player-visible MUD text: UI, dialogue, narration, quests, diegetic messages, future Concordia GM/NPC output | **Canonical NoöPunk Finglish** — one text per key. |
+| Design docs, issues, PRs, rulebooks, agent instructions, internal prompts, code, tests, logs | **Plain English.** No multilingual styling. |
+| Tomi-authored text already in the game | **Byte-for-byte intact.** |
+| In-game `dictionary` entries | **English explanations** of unfamiliar terms — an aid, not a translation of scenes. |
 
-**This is a player-visibility boundary, not an author-identity boundary.** Agents may write *limited* Finnish within otherwise English player-visible prose; they must **not** try to produce fluent Finnish, counterfeit Tomi's Helsinki voice, or automatically translate his copy. When uncertain, default to natural English. Do not impose a percentage, require a non-English word in every message, or make informational UI unclear.
+There is **no localization pipeline, no translation target, no completeness gate and no alternate-language
+edition.** Do not add one, and do not promise one in a comment or a document.
 
-## Voice and vocabulary
+## Finglish is a living contact language
 
-- The intended agent voice is a foreigner who knows just a little simple, sometimes imperfect Finnish: brief greetings, interjections and commonplace phrases rather than long Finnish sentences. Do not manufacture errors mechanically.
-- Occasionally reuse **Tomi-authored/approved** Stadin slangi and Finglish vocabulary in character-appropriate contexts. Consult [the glossary](world/HELSINKI_SLANG_GLOSSARY.md) and relevant Tomi-authored design/game text before using it; do not silently promote unverified vocabulary into canon.
-- Russian- and Chinese-influenced borrowings, Swedish and other languages are welcome when justified by a character, place, or situation. This is **Nadsat-inspired linguistic texture**, not permission to reproduce distinctive invented Nadsat words, passages or dialogue from *A Clockwork Orange*.
-- Register matters: Romppainen, UNSA personnel, Helsinki locals, international agents, NHI-facing specialists, and corporate NPCs need not code-switch in identical ways. Keep text comprehensible and avoid exoticizing speakers.
-- Bureaucratic institutional double-speak can influence style without reproducing another author's prose.
-- A substantial percentage of the **overall game** can still be original Finnish written by Tomi. No translation-completeness threshold blocks release.
+Not a fixed 50/50 split. English, contemporary Finnish, **Stadin slangi**, Swedish, Russian, Chinese and other
+borrowings, plus NoöPunk terminology and code-switching — the way a future Helsinki would actually sound.
 
-## Authoring, provenance and runtime
+- Contemporary urban Finnish like **“Wallah!”** or **“Mä vannon!”** belongs when it suits the speaker and the
+  moment. Slang is not a costume: do not stereotype speakers or pile it on.
+- **Agent-written player text** is normally comprehensible English as the base, with occasional simple Finnish
+  and situation-appropriate expressions, or attested/author-approved vocabulary. Tomi may write far more
+  fully in Finnish; that material is canonical and his alone.
+- **Register is individual.** Romppainen can carry idiosyncratic old and new slang, university vocabulary and
+  bureaucratic jargon. An international UNSA agent might mostly speak English with a little clumsy Finnish.
+  Helsinki youth and different factions code-switch differently.
+- Ordinary English is sometimes the right register. Do not force a slang word into every sentence.
+- **Creative influences are method, not text:** *A Clockwork Orange*'s Nadsat and *Blade Runner*'s Cityspeak
+  supply the polyglot *technique and atmosphere*. Do not reproduce their invented lexicons or dialogue.
 
-1. Tomi owns his own authored text. Reproduce it faithfully when implementing a design document: do not translate, fix, polish, modify or overwrite Finnish/Finglish. Changes require his explicit authorization.
-2. Agents author new player-facing MUD strings in **English-dominant Finglish**, preserving stable, locale-neutral IDs and attribution/source metadata. Agent-originated English-dominant Finglish is **not** a Finnish translation and should not be misrepresented as Tomi-authored `fi` content.
-3. Existing `mud/nopunk_mud/i18n.py` locale machinery can use an English-source field containing occasional loanwords; preserve the separately authored Finnish field, and any fallback markers or language metadata. Do not circumvent provenance checks by mislabeling agent content as Tomi's.
-4. The finished MUD may intentionally contain mixed Tomi-Finnish and agent-Finglish; this is a feature, not a localization defect. A polished English-only edition is a separate later milestone.
-5. **Future Concordia LLM GM/NPC implementation:** include these instructions in the runtime *player-facing output contract* and test sample outputs. Internal prompts, reasoning summaries, JSON state, mechanics and logs remain English. Keep the first deterministic UNSA single-player campaign usable without Concordia/LLM GM (#950).
-6. Keep quest state, game identifiers and save formats language-neutral. Test fallback, UTF-8 round-tripping and preservation of Tomi's authored material when localization machinery changes.
+### String storage during migration
+
+`mud/nopunk_mud/i18n.py` currently carries `fi` and `en` catalogues. Under this policy they are **provenance
+layers, not supported locales**: `en` holds the agent-written source, `fi` holds Tomi's authored text where it
+exists. Neither is a locale a player selects, and neither may be used to translate the canonical writing.
+Keep both for save compatibility while the migration to **one canonical Finglish string per content key** is
+carried out; see [`I18N_TO_CANONICAL_MIGRATION.md`](I18N_TO_CANONICAL_MIGRATION.md). Do not delete Tomi-authored
+material, and do not silently rewrite text a save already points at.
+
+## Dictionary, not translations
+
+The in-game **`dictionary`** / **`lexicon`** command lets a player ask what a word means. See
+`mud/nopunk_mud/lexicon.py` and `data/world/lexicon.json`.
+
+- Glosses are **short English explanations** in context, not translated scenes.
+- Every entry states **provenance**: attested contemporary or historical usage (which *requires* a source),
+  an author neologism by Tomi, or a proposed expression. Speculation is never presented as etymology; the
+  loader refuses an `attested` entry that cites nothing.
+- **Spoiler-safe.** Public entries are always readable. `dossier` entries unlock through game progress, and a
+  locked entry is indistinguishable from an unknown one so the refusal itself cannot confirm a secret.
+- Keep core commands and critical feedback clear. Immersion must not make the mechanics unusable; clarify
+  important instructions and explain words on demand.
 
 ## Narrative revelation: grounded Helsinki first
 
@@ -48,8 +80,17 @@ Do not force a moral alignment: let the player develop heroic, compassionate, cy
 - **Later:** PSI/NHI evidence and the Noösphere become increasingly difficult to explain away.
 - **Late revelations:** the full ontological stakes and geopolitical/NHI background, when earned by play.
 
-Use explicit knowledge gates in scene data and avoid spoilers from UI, achievements, logs, or narration.
+Use explicit knowledge gates in scene data and avoid spoilers from UI, achievements, logs, narration, **or the
+dictionary**.
 
-## Scope
+## Future Concordia output
 
-The Finglish exception applies **only to text shown to the MUD player**, including future Concordia GM/NPC output. Documentation, rules, design documents, and all internal agent/code text remain plain English. This policy supersedes the old absolute English-only language restriction in #980/#981 while retaining the protection for Tomi-authored text.
+Runtime GM and NPC generation is bound by the same rule: **canonical Finglish, speaker-specific register, no
+automatic translation**. Those instructions belong in the player-facing output contract, while internal
+prompts, reasoning summaries, JSON state, mechanics and logs stay English. Concordia is not a prerequisite for
+the solo campaign, which must remain completable with no LLM at all (#950).
+
+## What an agent states when asked
+
+**One NoöPunk MUD language, Finglish. No localizations, ever.** Tomi's text is untouched; agents write
+English-led multilingual player text; everything not shown to the player is plain English.
