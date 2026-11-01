@@ -1,6 +1,6 @@
 # Helsinki slang and NoöPunk universe glossary (MUD)
 
-**Editorial boundary:** This is a glossary of *terms already known in the world or proposed for Tomi's review*. AI agents document meanings in English only. Entries below are word references, **not agent-authored Finnish dialogue, translated lines, or approvals of any Finnish wording**. Tomi controls Finnish usage and adds examples in his own voice. See [the binding policy](../FINNISH.md).
+**Editorial boundary:** This is a glossary of *terms already known in the world or proposed for Tomi's review*. AI agents document meanings in English only. Entries below are word references, **not agent-authored Finnish dialogue, translated lines, or approvals of any Finnish wording**. Tomi controls and authors his own Finnish/Finglish passages and may add examples in his own voice. For player-visible MUD prose only, agents may reuse verified glossary headwords or brief simple Finnish expressions sparingly within English text; this does not authorize modifying Tomi's passages. Internal documentation remains English. See [the binding policy](../FINNISH.md).
 
 | Existing term / candidate | English meaning or usage | Register or approval note |
 | --- | --- | --- |
@@ -35,4 +35,4 @@
 | cyberdeck | computing/hacking equipment | Established genre word |
 | cyberspace | connected digital environment | Established generic genre vocabulary |
 
-Record provenance for new terms and distinguish documented slang from original NoöPunk neologisms and literary inspiration. No automatic translations or imitation of Nadsat dialogue.
+Record provenance for new terms and distinguish documented slang from original NoöPunk neologisms and literary inspiration. Consult Tomi-authored content for speaker-appropriate vocabulary before reuse. Russian, Chinese, Swedish or other loanwords can appear occasionally in player-facing English-dominant Finglish when situationally natural. No automatic translation, unverified claims of authentic slang, or reproduction of distinctive Nadsat inventions/dialogue.

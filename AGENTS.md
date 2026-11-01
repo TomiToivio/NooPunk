@@ -24,8 +24,7 @@ restate or extend them here; a second copy is a second authority and will drift.
 
 While implementing, these remain binding and are not negotiable by a design document:
 
-- **Preserve Tomi's Finnish verbatim; agents write English only** (#980, #981). Never translate,
-  correct or improvise Finnish player-facing prose.
+- **Preserve Tomi's Finnish/Finglish verbatim** (#992 updates #980/#981). Agents write plain English outside the game; player-visible MUD prose may contain occasional simple Finnish or context-appropriate loanwords. Never translate or correct Tomi's authored text.
 - **Implement for the Python Evennia MUD** in `mud/` (#950). Godot is maintenance-only.
 - **Keep tabletop canon and rules in sync**: a mechanical change updates the rulebook, the traceability
   matrix and the matching tests.
@@ -36,9 +35,9 @@ silently by picking one.
 
 ---
 
-# MUD LANGUAGE AUTHORITY (#980 + #981)
+# MUD LANGUAGE AUTHORITY (#992 updates #980/#981)
 
-**Finnish/Finglish is the primary language of the first MUD release, even when half the visible text is Tomi's Finnish and half is agent English.** **Tomi exclusively authors Finnish story and dialogue; ALL AI agents write English only, never compose or translate Finnish.** Preserve Tomi's authored Finnish. English drafts are acceptable player-facing fallback, not a reason to delay the game. Polish an English localization later; tabletop rulebook and repository documentation remain English. See `docs/FINNISH.md` and `mud/AGENTS.md`. This is a single consolidated policy for #980 and #981.
+**Scope, not blanket prohibition:** Agents write **plain English** in docs, rulebooks, design, code, internal prompts and every other non-player-facing surface. New **player-visible MUD UI, dialogue, story and eventual Concordia GM/NPC responses** are **English-dominant Finglish**: mostly English, occasional very simple Finnish and character/situation-appropriate Stadin slangi, Swedish, Russian, Chinese or other borrowings. Draw on Tomi-confirmed vocabulary; avoid copying invented Nadsat phrasing. **Never translate, edit or overwrite Tomi-authored Finnish/Finglish.** See canonical `docs/FINNISH.md` and `docs/world/HELSINKI_SLANG_GLOSSARY.md`; retain source metadata and correct i18n fallback. Future Concordia output adopts this style without becoming a dependency of the solo-first MUD.
 
 # PRIORITY OVERRIDE #950 — authoritative (31 Oct 2026)
 
@@ -50,9 +49,9 @@ silently by picking one.
 
 **Scope:** `mud/` for implementation, `docs/` and canonical tabletop rules only for coordinated docs, not Godot runtime. See issue #950.
 
-## Language — Finnish-first MUD, agents write English only (#980, #981)
+## Language implementation pointer (#992)
 
-**Tomi writes all Finnish dialogue, story and player-facing copy. Agents must never write Finnish** — no prose, no translation, no imitation of Tomi's voice, no "approximate Finnish" placeholders. Agents write English source lines and stable keys; Tomi adapts them to Finnish later. The development build is deliberately mixed Finnish/English and must mark English placeholders visibly. Rulebook, docs, issues and code stay English. Canonical policy and glossary: `docs/FINNISH.md`, `docs/world/HELSINKI_SLANG_GLOSSARY.md`. Enforced in code by `mud/nopunk_mud/i18n.py` (fi/en catalogue; agents fill `en` only; missing Finnish falls back visibly).
+Follow the canonical `docs/FINNISH.md`: agent-written **player-visible** MUD text is predominantly English with sparing simple Finnish and situational loanwords. Other agent output is plain English; Tomi-authored Finnish/Finglish is immutable absent his explicit direction. The `mud/nopunk_mud/i18n.py` en/fi catalogue must retain provenance; do not label an agent's mixed-English draft as Tomi-authored Finnish.
 
 ---
 
