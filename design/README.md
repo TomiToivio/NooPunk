@@ -21,7 +21,7 @@ There will be several types of documents:
 
 ## Guidelines
 * Preserve Tomi's Finnish/Finglish dialogue and descriptions exactly; never translate, edit or normalize them.
-* Agent-written texts visible to players in the NoöPunk MUD should be predominantly English, optionally seasoned with occasional simple Finnish and situation-appropriate borrowed slang. All other agent-written texts (including design documents and tabletop rulebooks) remain plain English. See `docs/FINNISH.md` for the authoritative policy.
+* The MUD has one canonical language: Finglish, with no separate localizations (#996). For player-visible material, agents write English-led Finglish with occasional contextual Finnish and other loanwords; never translate Tomi-authored prose. All other agent-written material (including design documents and tabletop rulebooks) remains plain English. See `docs/FINNISH.md`.
 * Do one step at a time - do only what is described in the design document. 
 * Sometimes dialogues etc. are described in a detailed fashion and you should implement them exactly as described. 
 * Sometimes there are more open-ended tasks and you can use your imagination to implement them. 
