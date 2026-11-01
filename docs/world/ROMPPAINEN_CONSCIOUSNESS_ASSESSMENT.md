@@ -75,7 +75,9 @@ much extra detail and how much suspicion the interviewer earns, not whether the 
 - How openly UNSA publishes the method; the transparency-versus-classification tension applies.
 - Finnish voice for Romppainen's explanation of the test.
 
-## Links
+The *names* and their *relative secrecy* are canon. **Do not invent or reveal what Louhi, Lemminkäinen and
+Sampo actually do** until Tomi establishes it in a design document. And never leak classified project names
+through public UI, the player dictionary or early-scene exposition.
 
 - #985 — this design.
 - #950 — MUD is the main game.
