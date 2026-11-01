@@ -8,6 +8,26 @@
 
 **Scope:** `mud/` for implementation, `docs/` and canonical tabletop rules only for coordinated docs, not Godot runtime. See issue #950.
 
+## Language: Tomi writes Finnish, agents write English (#980, #981)
+
+**Binding on every agent, in this repository and in the MUD.** [`docs/FINNISH.md`](docs/FINNISH.md) is the
+authority; this is the summary you must not have to go looking for.
+
+- **Finnish is the NoöPunk MUD's primary language.** Tomi writes the Finnish dialogue, story, UI phrasing,
+  slang and in-world terminology, in his own Helsinki voice. He is the final editorial authority on it.
+- **Agents write only English.** Never author Finnish prose, never produce approximate or machine-translated
+  Finnish, never imitate Tomi's voice. Write the English working text and a stable key; Tomi adapts it later.
+- **Never overwrite Tomi's Finnish**, including by a display fallback. English fallback is shown, not stored.
+- **A mixed build is the intended first version** - Finnish where Tomi has written it, English where an agent
+  has - and roughly half of spoken Finglish is English anyway. Do not auto-translate it and do not block a
+  feature because strings are still English.
+- **This covers game content only.** Rulebook, `RULEBOOK.md`, design docs, code comments, commit messages,
+  issues and these instructions stay **English**.
+
+The rule is enforced mechanically, not just written down: in `mud/nopunk_mud/strings.py` an entry with status
+`english_placeholder` **cannot** store Finnish, and `mud/tests/test_strings.py` proves it. Player-facing text
+is externalized as stable keys with `fi`/`en` fields and a status, so saves survive localization.
+
 ---
 
 **NoöPunk overlays still live in `mods/noopunk/`** and still invoke CWN rather than replace it; moving the

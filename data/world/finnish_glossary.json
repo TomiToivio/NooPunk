@@ -1,0 +1,35 @@
+{
+  "format": "noopunk-finnish-glossary-v1",
+  "source": "issues #980 / #981; policy in docs/FINNISH.md",
+  "note": "Living glossary of Helsinki slang and NooPunk terminology. `english` is an agent-written gloss. `finnish_note` is Tomi's usage note and stays empty until he writes it - an agent must not invent Finnish usage. `needs_tomi` marks that debt.",
+  "entries": [
+    {"term": "Stadi", "register": "street", "english": "Helsinki", "finnish_note": "", "needs_tomi": true},
+    {"term": "spora", "register": "street", "english": "tram", "finnish_note": "", "needs_tomi": true},
+    {"term": "dösä", "register": "street", "english": "bus", "finnish_note": "", "needs_tomi": true},
+    {"term": "steissi", "register": "street", "english": "the central railway station", "finnish_note": "", "needs_tomi": true},
+    {"term": "kundi", "register": "street", "english": "guy, bloke", "finnish_note": "", "needs_tomi": true},
+    {"term": "tsiga", "register": "street", "english": "cigarette", "finnish_note": "", "needs_tomi": true},
+    {"term": "mutsi", "register": "street", "english": "mother, mum", "finnish_note": "", "needs_tomi": true},
+    {"term": "faija", "register": "street", "english": "father, dad", "finnish_note": "", "needs_tomi": true},
+    {"term": "hima", "register": "street", "english": "home", "finnish_note": "", "needs_tomi": true},
+    {"term": "dokata", "register": "street", "english": "to drink, to booze", "finnish_note": "", "needs_tomi": true},
+    {"term": "fyrkka", "register": "street", "english": "money", "finnish_note": "", "needs_tomi": true},
+    {"term": "duuni", "register": "street", "english": "work, job", "finnish_note": "", "needs_tomi": true},
+    {"term": "snadi", "register": "street", "english": "small", "finnish_note": "", "needs_tomi": true},
+    {"term": "jees", "register": "street", "english": "okay, fine", "finnish_note": "", "needs_tomi": true},
+    {"term": "niinku", "register": "street", "english": "like, as it were (filler)", "finnish_note": "", "needs_tomi": true},
+
+    {"term": "Noösphere", "register": "canon", "english": "the psychic thinking-layer of Earth, becoming conscious", "finnish_note": "", "needs_tomi": true},
+    {"term": "ontological shock", "register": "canon", "english": "the paradigm break when reality contradicts a held worldview", "finnish_note": "", "needs_tomi": true},
+    {"term": "BCI", "register": "technical", "english": "brain-computer interface; the ordinary route into the Noösphere", "finnish_note": "", "needs_tomi": true},
+    {"term": "psychotronics", "register": "technical", "english": "engineered psi technology", "finnish_note": "", "needs_tomi": true},
+    {"term": "UNSA", "register": "institutional", "english": "the global agency for human security and survival", "finnish_note": "", "needs_tomi": true},
+    {"term": "Supo", "register": "institutional", "english": "Finnish Security Intelligence Service", "finnish_note": "", "needs_tomi": true},
+    {"term": "Europol", "register": "institutional", "english": "EU law-enforcement agency", "finnish_note": "", "needs_tomi": true},
+    {"term": "NHI", "register": "canon", "english": "non-human intelligence", "finnish_note": "", "needs_tomi": true},
+    {"term": "Pleiadian", "register": "canon", "english": "one of the NHI groups in the setting", "finnish_note": "", "needs_tomi": true},
+    {"term": "Construct", "register": "canon", "english": "an artificial mind of the setting", "finnish_note": "", "needs_tomi": true},
+    {"term": "Zookeeper", "register": "canon", "english": "NHI bloc acting as guardian of biospheres and noöspheres", "finnish_note": "", "needs_tomi": true},
+    {"term": "cyberdeck", "register": "technical", "english": "the hardware used to enter and fight in cyberspace", "finnish_note": "", "needs_tomi": true}
+  ]
+}
