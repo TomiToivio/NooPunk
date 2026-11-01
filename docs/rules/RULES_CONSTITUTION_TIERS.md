@@ -1,15 +1,14 @@
 # Rules Constitution — module tiers
 
-**Generated** by `python3 tools/rules_constitution_audit.py --markdown` from
-`data/rules/rules_constitution.json`. Do not edit by hand.
+**Generated** by `python3 tools/rules_constitution_audit.py --markdown` from the
+`module_tiers` block of `data/rules/rules_constitution.json`. Do not edit by hand.
 
-**Issue:** https://github.com/TomiToivio/NooPunk/issues/1006
+**Issue:** https://github.com/TomiToivio/NooPunk/issues/1006 · **Sources and precedence:** `docs/rules/RULES_CONSTITUTION.md`
 
-**Authority order:** `cwn-core` → `swn-companion` → `optional-source` → `noopunk-mod`
+**Precedence:** `CWN` → `SWN` → `WWN` → `AWN`
 
-**Precedence.** CWN governs. Where sources disagree, cwn-core wins; an optional-source module may override only inside the procedure it owns, and must say so in its docstring. A noopunk-mod never changes a CWN target number, die, band or progression cost.
-
-**Vanilla minimum:** `cwn-core`, `swn-companion` — Vanilla NoöPunk is cwn-core + swn-companion. With every noopunk-mod module blocked, the game must still create a character, resolve a check, a save, an attack and a wound, and keep System Strain. tests/test_rules_constitution.py proves it by importing with an import hook that refuses the overlays.
+**Minimum playable:** `CWN` + `SWN` — which in module terms is `cwn-core` + `swn-companion`. `tests/test_rules_constitution_modules.py` proves it by running the baseline with every
+`noopunk-mod` module refused by an import hook.
 
 | Tier | Modules |
 | --- | ---: |
@@ -23,12 +22,12 @@
 
 ## What each tier is
 
-* **`cwn-core`** — Cities Without Number, implemented as written. The baseline: attributes, creation, skills, checks, saves, combat, injuries, strain, equipment, cyberware, hacking, advancement.
-* **`swn-companion`** — Stars Without Number, imported whole-procedure as its own module. Psionics is the essential companion; the rest are optional companions that fill a gap CWN does not cover.
-* **`optional-source`** — Worlds Without Number / Ashes Without Number, imported as an explicit module when a procedure is needed and CWN has no equivalent.
-* **`noopunk-mod`** — Original NoöPunk overlays. They read core state and add narrative state; they never compute core resolution.
-* **`infrastructure`** — Boundary, tag vocabulary and catalogues that are not themselves rules.
-* **`experimental`** — Prototypes and labs that are NOT canonical and are not part of play.
+* **`cwn-core`** — Cities Without Number, as written. The baseline.
+* **`swn-companion`** — Stars Without Number, imported whole-procedure. Psionics is the essential companion.
+* **`optional-source`** — WWN / AWN, opt-in, one procedure, named in the module docstring.
+* **`noopunk-mod`** — Original NoöPunk overlays: they read core state and add narrative state, never core resolution.
+* **`infrastructure`** — Boundary, tag vocabulary and catalogues; not rules.
+* **`experimental`** — Prototypes and labs that are NOT canonical and not part of play.
 * **`legacy`** — Retired code kept for import compatibility. Never authoritative.
 
 ### `cwn-core`
@@ -120,5 +119,6 @@
 * `src/rules/_retired.py`
 * `src/rules/core.py`
 
-**Classification rule.** Every file under src/rules is classified exactly once. A new module must be added to this file in the same commit; the audit fails otherwise.
+**Maintenance rule.** A new module under `src/rules/` must be classified here in the
+same commit. An unclassified module is a rule nobody has agreed to.
 

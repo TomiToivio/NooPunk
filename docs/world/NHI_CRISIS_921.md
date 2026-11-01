@@ -1,5 +1,7 @@
 # The NHI Crisis — canonical history (source: #921)
 
+> **Consolidated reference (#1005):** [`POST_NHI_WORLD_1005.md`](POST_NHI_WORLD_1005.md) — this file remains the phase-by-phase history; that one carries the current author direction on geopolitics and factions.
+
 <!--
 PROVENANCE: transcribed from the author's own issue text, unedited in substance.
 This file is source material, not canon-by-accident: anything the source marks as disputed, rumoured or

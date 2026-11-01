@@ -1,12 +1,12 @@
 # The Romppainen consciousness assessment (working title)
 
 **Status:** canon draft for issue #985. The protocol exists in-world; its final name and co-author
-require Tomi's approval. Agents write English only; Finnish player-facing copy is Tomi's.
+require Tomi's approval. The game has one canonical Finglish language (#996); agents use English-led Finglish in player-visible text, and preserve all Tomi-authored dialogue verbatim. Non-player-facing documentation is in English.
 
 ## Origin
 
 UNSA Helsinki uses an original consciousness and empathy assessment developed by **Dr. Harri S.
-Romppainen**, UNSA inspector and psychologist, with a colleague at the **University of Helsinki**.
+Romppainen**, UNSA Supervisory Special Agent (SSA) and psychologist, with a colleague at the **University of Helsinki**.
 The collaborator's name, discipline and personality are still open; the protocol is referred to here
 as the **Helsinki protocol** until Tomi names it.
 
@@ -82,5 +82,6 @@ much extra detail and how much suspicion the interviewer earns, not whether the 
 
 - #985 — this design.
 - #950 — MUD is the main game.
-- #980 / #981 / `docs/FINNISH.md` — language rules (Tomi writes Finnish, agents English).
+- #996 / `docs/FINNISH.md` — canonical Finglish, no localizations; preserve Tomi's writing.
+- #981 — gradual narrative revelation and spoiler discipline (outdated localization rules superseded by #996).
 - #897 — CWN rules lock; this is a mod/procedure, not a new core.

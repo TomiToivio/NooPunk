@@ -1,0 +1,186 @@
+{
+  "$comment": "Implementation registry for the rules constitution (#1006). The constitution itself is docs/rules/RULES_CONSTITUTION.md with data/rules/rules_constitution.json; this file answers a different question: which CWN/SWN/WWN/AWN layer is actually backed by code in this repository, and which NooPunk overlays exist. A layer may only claim a status it can evidence with a path that exists, and `implemented` additionally requires a test that exists. Checked by tests/test_overlay_registry_1006.py.",
+  "format": "noopunk.rules.overlay_registry",
+  "version": 1,
+  "issue": "https://github.com/TomiToivio/NooPunk/issues/1006",
+  "constitution": "data/rules/rules_constitution.json",
+  "layers": {
+    "core": [
+      {
+        "id": "cwn-core",
+        "name": "Cities Without Number",
+        "class": "core",
+        "source": "cwn",
+        "status": "implemented",
+        "paths": [
+          "mud/nopunk_mud/cwn/__init__.py",
+          "mud/nopunk_mud/cwn_core.py",
+          "src/rules/cwn_core.py",
+          "godot/core/rules_adapter.gd"
+        ],
+        "tests": [
+          "tests/test_mud_cwn_parity_950.py",
+          "tests/godot/test_cwn_rules.gd"
+        ],
+        "note": "Two Python cores and one Godot core exist; the MUD package is parity-tested against src/rules. Consolidating them is tracked debt, not an invitation to change arithmetic."
+      }
+    ],
+    "modules": [
+      {
+        "id": "swn-psionics",
+        "name": "SWN psionics",
+        "class": "module",
+        "source": "swn",
+        "status": "planned",
+        "paths": [],
+        "tests": [],
+        "required_for": [
+          "minimum-playable",
+          "full-noopunk"
+        ],
+        "note": "Required by the constitution and not yet implemented. The Noosphere overlay models exposure, not the SWN psionic disciplines themselves; do not present one as the other."
+      },
+      {
+        "id": "swn-space-and-factions",
+        "name": "SWN space travel, ships and faction turns",
+        "class": "module",
+        "source": "swn",
+        "status": "planned",
+        "paths": [],
+        "tests": [],
+        "required_for": [
+          "full-noopunk"
+        ],
+        "note": "Wormhole travel in NoöPunk needs a transit procedure; take SWN's rather than inventing one."
+      },
+      {
+        "id": "awn-survival-stress",
+        "name": "AWN survival and stress",
+        "class": "module",
+        "source": "awn",
+        "status": "partial",
+        "paths": [
+          "mods/noopunk/stress.gd",
+          "data/rules/awn_stress.json",
+          "data/rules/awn_survival.json"
+        ],
+        "tests": [
+          "godot/tests/test_awn_stress_928.gd",
+          "tests/test_awn_wwn_campaign_procedures.py"
+        ],
+        "required_for": [],
+        "note": "Data and a Godot overlay exist; no MUD implementation yet."
+      },
+      {
+        "id": "wwn-additional",
+        "name": "WWN additional material",
+        "class": "module",
+        "source": "wwn",
+        "status": "planned",
+        "paths": [],
+        "tests": [],
+        "required_for": [],
+        "note": "Imported only when a case needs it."
+      }
+    ],
+    "overlays": [
+      {
+        "id": "gumshoe-investigation",
+        "name": "GUMSHOE-inspired investigation",
+        "class": "overlay",
+        "source": "noopunk",
+        "status": "implemented",
+        "paths": [
+          "mods/noopunk/gumshoe_investigation.gd",
+          "data/rules/gumshoe_investigative.json",
+          "godot/ui/investigation_screen.gd"
+        ],
+        "tests": [
+          "godot/tests/test_gumshoe_932.gd",
+          "godot/tests/test_investigation_screen_933.gd"
+        ],
+        "required_for": [
+          "full-noopunk"
+        ],
+        "note": "Pools buy benefits; a core clue is never gated by a roll. SRD-cited, no commercial-game text."
+      },
+      {
+        "id": "noosphere-pbta",
+        "name": "Noösphere, ontological shock and PbtA moves",
+        "class": "overlay",
+        "source": "noopunk",
+        "status": "implemented",
+        "paths": [
+          "mods/noopunk/noosphere.gd",
+          "mud/nopunk_mud/consciousness.py"
+        ],
+        "tests": [
+          "godot/tests/test_noosphere_943.gd",
+          "mud/tests/test_consciousness.py"
+        ],
+        "required_for": [
+          "full-noopunk"
+        ],
+        "note": "Exposure is narrative pressure, not an illness, and never overrides a CWN result."
+      },
+      {
+        "id": "psyche",
+        "name": "Psyche states",
+        "class": "overlay",
+        "source": "noopunk",
+        "status": "implemented",
+        "paths": [
+          "mods/noopunk/psyche.gd"
+        ],
+        "tests": [
+          "godot/tests/test_noopunk_psyche.gd"
+        ],
+        "required_for": [],
+        "note": "The overlay reads state and returns it; it never rolls."
+      },
+      {
+        "id": "laclau-ideology",
+        "name": "LaclauGPT-inspired ideology, factions and reputation",
+        "class": "overlay",
+        "source": "noopunk",
+        "status": "partial",
+        "paths": [
+          "mud/nopunk_mud/world_state.py"
+        ],
+        "tests": [
+          "mud/tests/test_mud_core.py"
+        ],
+        "required_for": [
+          "full-noopunk"
+        ],
+        "note": "Faction state and reputation exist; signifier/articulation mechanics do not. A full faction simulation is later scope."
+      }
+    ]
+  },
+  "profiles": {
+    "vanilla-cwn": {
+      "description": "Faithful CWN with no NoöPunk features. Must stay playable.",
+      "layers": [
+        "cwn-core"
+      ]
+    },
+    "minimum-playable": {
+      "description": "CWN plus SWN psionics: the smallest build that supports the PSI premise.",
+      "layers": [
+        "cwn-core",
+        "swn-psionics"
+      ]
+    },
+    "full-noopunk": {
+      "description": "The intended experience: core, psionics, investigation, Noösphere, ideology.",
+      "layers": [
+        "cwn-core",
+        "swn-psionics",
+        "swn-space-and-factions",
+        "gumshoe-investigation",
+        "noosphere-pbta",
+        "laclau-ideology"
+      ]
+    }
+  }
+}

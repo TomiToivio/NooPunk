@@ -28,20 +28,46 @@ While implementing, these remain binding and are not negotiable by a design docu
 - **Implement for the Python Evennia MUD** in `mud/` (#950). Godot is maintenance-only.
 - **Keep tabletop canon and rules in sync**: a mechanical change updates the rulebook, the traceability
   matrix and the matching tests.
-- **The rules constitution binds you** ([`docs/rules/RULES_CONSTITUTION.md`](docs/rules/RULES_CONSTITUTION.md)):
-  vanilla CWN with SWN psionics as the essential companion is the base, AWN/WWN material is opt-in, and
-  every NoöPunk addition is an overlay on top. Classify any new module under `src/rules/` in
-  `data/rules/rules_constitution.json` in the same commit — `python3 tools/rules_constitution_audit.py
-  --check` fails otherwise, and `tests/test_rules_constitution.py` proves the baseline still runs with
-  every overlay module blocked.
-- **The reveal ladder binds the writing** ([`data/world/reveal_ladder.json`](data/world/reveal_ladder.json),
-  [`docs/design/ISSUE_1007_DESIGN_CANON.md`](docs/design/ISSUE_1007_DESIGN_CANON.md)): content starts as
-  recognisable cyberpunk and earns NHI/PSI/cosmic material through investigation, never through
-  exposition.
 
 **Conflicts.** If another instruction file, issue or comment disagrees with this workflow, this section
 and `design/README.md` win for *who authors what*. Raise the conflict on the issue; do not resolve it
 silently by picking one.
+
+# RULES CONSTITUTION — LOCKED (#1006)
+
+**This is the wider lock that the #897 foundational decision began.** The Without Number foundation is locked. NoöPunk uses **all CWN rules, many SWN rules, and WWN/AWN material
+where a case needs it**, with every original NoöPunk feature built **on top** as an overlay. CWN is the base
+engine and wins where sources disagree; SWN psionics is the essential companion module.
+
+**Content follows the reveal ladder.** [`data/world/reveal_ladder.json`](data/world/reveal_ladder.json) is the
+authority for what a scene may show: the game opens as recognisable cyberpunk and earns NHI/PSI/cosmic material
+through investigation. A quest, NPC or scene belongs to a stage; it may not use a later stage's vocabulary
+before the play has paid for it. The reading, and Romppainen's constraints as a mentor, are in
+[`docs/design/ISSUE_1007_DESIGN_CANON.md`](docs/design/ISSUE_1007_DESIGN_CANON.md); `tests/test_reveal_ladder.py`
+keeps the ladder monotonic.
+
+Read [`docs/rules/RULES_CONSTITUTION.md`](docs/rules/RULES_CONSTITUTION.md) before touching rules. Its
+machine-readable half is [`data/rules/rules_constitution.json`](data/rules/rules_constitution.json), and
+[`data/rules/overlay_registry.json`](data/rules/overlay_registry.json) records which layer is backed by which
+code. `tests/test_overlay_registry_1006.py` enforces the boundary that matters in code: no second attribute set,
+no replacement skill list, no overlay that rolls its own dice, no planned module described as implemented.
+
+**Never replace the rules engine.** The six attributes, the skill list and the resolution rules are CWN's and
+stay CWN's; NoöPunk adds `mods/noopunk` overlays around them.
+
+**Classify every rule module, and prove the vanilla game still runs.** The registry above also carries a
+`module_tiers` block: every file under `src/rules/` belongs to exactly one tier, and
+`python3 tools/rules_constitution_audit.py --check` fails on an unclassified, duplicated or phantom module —
+or on a `cwn-core` module that imports a `noopunk-mod` one. The tier table is generated into
+[`docs/rules/RULES_CONSTITUTION_TIERS.md`](docs/rules/RULES_CONSTITUTION_TIERS.md).
+`tests/test_rules_constitution_modules.py` then runs the baseline in a subprocess whose import hook **refuses
+every overlay module**, so "turning the mods off leaves a working CWN game" is a fact rather than a promise.
+A new module added under `src/rules/` is classified in the same commit.
+
+**A vague instruction is not authorisation to change the core.** "Improve the rules", "make PSI deeper",
+"implement this subsystem" mean *write a mod*. Amending the constitution requires an explicit author decision
+that names it. Overlays live in `mods/noopunk/` and in the MUD's overlay modules; they ask the core for a roll
+and never roll for it.
 
 ---
 
