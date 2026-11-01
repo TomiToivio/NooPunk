@@ -12,6 +12,10 @@
 
 **Scope:** `mud/` for implementation, `docs/` and canonical tabletop rules only for coordinated docs, not Godot runtime. See issue #950.
 
+## Language — Finnish-first MUD, agents write English only (#980, #981)
+
+**Tomi writes all Finnish dialogue, story and player-facing copy. Agents must never write Finnish** — no prose, no translation, no imitation of Tomi's voice, no "approximate Finnish" placeholders. Agents write English source lines and stable keys; Tomi adapts them to Finnish later. The development build is deliberately mixed Finnish/English and must mark English placeholders visibly. Rulebook, docs, issues and code stay English. Canonical policy and glossary: `docs/FINNISH.md`, `docs/world/HELSINKI_SLANG_GLOSSARY.md`. Enforced in code by `mud/nopunk_mud/localization.py`.
+
 ---
 
 **NoöPunk overlays still live in `mods/noopunk/`** and still invoke CWN rather than replace it; moving the
