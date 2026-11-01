@@ -10,7 +10,8 @@
     "implemented",
     "partial",
     "missing",
-    "not_applicable"
+    "not_applicable",
+    "unverified"
   ],
   "rows": [
     {
@@ -100,16 +101,18 @@
       "srd": "https://cwn.quadrifons.com/character-creation/skills/",
       "pdf_page": null,
       "godot": [],
-      "python": [],
+      "python": [
+        "src/rules/cwn_character.py"
+      ],
       "mud": [],
       "command": [],
-      "coverage": "missing",
+      "coverage": "unverified",
       "tests": [],
       "tested_against_book": false,
       "save_safe": false,
       "playtested": false,
       "classification": "cwn_rule",
-      "divergence": ""
+      "divergence": "Concept appears in code but the procedure is not verified against the book; matched by keyword in tools/cwn_parity_audit.py KEYWORDS."
     },
     {
       "id": "character-creation:backgrounds",
@@ -244,16 +247,19 @@
       "srd": "https://cwn.quadrifons.com/character-creation/final-steps/",
       "pdf_page": null,
       "godot": [],
-      "python": [],
+      "python": [
+        "src/rules/equipment_catalog_index.py",
+        "src/rules/tags.py"
+      ],
       "mud": [],
       "command": [],
-      "coverage": "missing",
+      "coverage": "unverified",
       "tests": [],
       "tested_against_book": false,
       "save_safe": false,
       "playtested": false,
       "classification": "cwn_rule",
-      "divergence": ""
+      "divergence": "Concept appears in code but the procedure is not verified against the book; matched by keyword in tools/cwn_parity_audit.py KEYWORDS."
     },
     {
       "id": "rules-of-the-game",
@@ -281,6 +287,7 @@
         "src/rules/cwn_injury_procedure.py",
         "src/rules/cwn_major_injury.py",
         "src/rules/cwn_mission_time.py",
+        "src/rules/cwn_npcs.py",
         "src/rules/cwn_program_catalogue.py",
         "src/rules/cwn_trauma.py",
         "src/rules/cwn_vehicles.py",
@@ -317,6 +324,7 @@
         "tests/test_cwn_injury_procedure.py",
         "tests/test_cwn_major_injury.py",
         "tests/test_cwn_mission_time.py",
+        "tests/test_cwn_npcs_heat.py",
         "tests/test_cwn_program_catalogue.py",
         "tests/test_cwn_trauma.py",
         "tests/test_cwn_vehicles.py",
@@ -497,6 +505,7 @@
         "src/rules/cwn_injury_procedure.py",
         "src/rules/cwn_major_injury.py",
         "src/rules/cwn_mission_time.py",
+        "src/rules/cwn_npcs.py",
         "src/rules/cwn_program_catalogue.py",
         "src/rules/cwn_trauma.py",
         "src/rules/cwn_vehicles.py",
@@ -539,6 +548,7 @@
         "tests/test_cwn_injury_procedure.py",
         "tests/test_cwn_major_injury.py",
         "tests/test_cwn_mission_time.py",
+        "tests/test_cwn_npcs_heat.py",
         "tests/test_cwn_program_catalogue.py",
         "tests/test_cwn_trauma.py",
         "tests/test_cwn_vehicles.py",
@@ -628,16 +638,23 @@
       "srd": "https://cwn.quadrifons.com/rules-of-the-game/combat/attacks-in-combat/",
       "pdf_page": null,
       "godot": [],
-      "python": [],
+      "python": [
+        "mud/nopunk_mud/cwn/__init__.py",
+        "src/rules/cwn_attack_modifiers.py",
+        "src/rules/cwn_combat.py",
+        "src/rules/cwn_core.py",
+        "src/rules/first_case_drill.py",
+        "src/rules/swn_starships.py"
+      ],
       "mud": [],
       "command": [],
-      "coverage": "missing",
+      "coverage": "unverified",
       "tests": [],
       "tested_against_book": false,
       "save_safe": false,
       "playtested": false,
       "classification": "cwn_rule",
-      "divergence": ""
+      "divergence": "Concept appears in code but the procedure is not verified against the book; matched by keyword in tools/cwn_parity_audit.py KEYWORDS."
     },
     {
       "id": "rules-of-the-game:combat:damage-trauma-shock",
@@ -686,16 +703,18 @@
       "srd": "https://cwn.quadrifons.com/rules-of-the-game/combat/special-combat-maneuvers/",
       "pdf_page": null,
       "godot": [],
-      "python": [],
+      "python": [
+        "src/rules/cwn_combat.py"
+      ],
       "mud": [],
       "command": [],
-      "coverage": "missing",
+      "coverage": "unverified",
       "tests": [],
       "tested_against_book": false,
       "save_safe": false,
       "playtested": false,
       "classification": "cwn_rule",
-      "divergence": ""
+      "divergence": "Concept appears in code but the procedure is not verified against the book; matched by keyword in tools/cwn_parity_audit.py KEYWORDS."
     },
     {
       "id": "rules-of-the-game:combat:vehicle-combat",
@@ -747,6 +766,7 @@
         "src/rules/cwn_injury_procedure.py",
         "src/rules/cwn_major_injury.py",
         "src/rules/cwn_mission_time.py",
+        "src/rules/cwn_npcs.py",
         "src/rules/cwn_program_catalogue.py",
         "src/rules/cwn_strain.py",
         "src/rules/cwn_trauma.py",
@@ -785,6 +805,7 @@
         "tests/test_cwn_injury_procedure.py",
         "tests/test_cwn_major_injury.py",
         "tests/test_cwn_mission_time.py",
+        "tests/test_cwn_npcs_heat.py",
         "tests/test_cwn_program_catalogue.py",
         "tests/test_cwn_strain.py",
         "tests/test_cwn_trauma.py",
@@ -815,16 +836,20 @@
       "srd": "https://cwn.quadrifons.com/rules-of-the-game/injury-healing-system-strain/mortal-injury-stabilization/",
       "pdf_page": null,
       "godot": [],
-      "python": [],
+      "python": [
+        "src/rules/cwn_core.py",
+        "src/rules/cwn_healing.py",
+        "src/rules/first_case_drill.py"
+      ],
       "mud": [],
       "command": [],
-      "coverage": "missing",
+      "coverage": "unverified",
       "tests": [],
       "tested_against_book": false,
       "save_safe": false,
       "playtested": false,
       "classification": "cwn_rule",
-      "divergence": ""
+      "divergence": "Concept appears in code but the procedure is not verified against the book; matched by keyword in tools/cwn_parity_audit.py KEYWORDS."
     },
     {
       "id": "rules-of-the-game:injury-healing-system-strain:system-strain",
@@ -852,6 +877,7 @@
         "src/rules/cwn_injury_procedure.py",
         "src/rules/cwn_major_injury.py",
         "src/rules/cwn_mission_time.py",
+        "src/rules/cwn_npcs.py",
         "src/rules/cwn_program_catalogue.py",
         "src/rules/cwn_strain.py",
         "src/rules/cwn_trauma.py",
@@ -890,6 +916,7 @@
         "tests/test_cwn_injury_procedure.py",
         "tests/test_cwn_major_injury.py",
         "tests/test_cwn_mission_time.py",
+        "tests/test_cwn_npcs_heat.py",
         "tests/test_cwn_program_catalogue.py",
         "tests/test_cwn_strain.py",
         "tests/test_cwn_trauma.py",
@@ -970,16 +997,23 @@
       "srd": "https://cwn.quadrifons.com/rules-of-the-game/injury-healing-system-strain/major-injuries/",
       "pdf_page": null,
       "godot": [],
-      "python": [],
+      "python": [
+        "src/rules/cwn_core.py",
+        "src/rules/cwn_injury_procedure.py",
+        "src/rules/cwn_major_injury.py",
+        "src/rules/cwn_trauma.py",
+        "src/rules/cwn_vehicles.py",
+        "src/rules/first_case_drill.py"
+      ],
       "mud": [],
       "command": [],
-      "coverage": "missing",
+      "coverage": "unverified",
       "tests": [],
       "tested_against_book": false,
       "save_safe": false,
       "playtested": false,
       "classification": "cwn_rule",
-      "divergence": ""
+      "divergence": "Concept appears in code but the procedure is not verified against the book; matched by keyword in tools/cwn_parity_audit.py KEYWORDS."
     },
     {
       "id": "rules-of-the-game:chases-and-pursuit",
@@ -988,16 +1022,25 @@
       "srd": "https://cwn.quadrifons.com/rules-of-the-game/chases-and-pursuit/",
       "pdf_page": null,
       "godot": [],
-      "python": [],
+      "python": [
+        "src/rules/cwn_heat.py",
+        "src/rules/cwn_mission_time.py",
+        "src/rules/cwn_vehicles.py",
+        "src/rules/first_case_drill.py",
+        "src/rules/swn_faction_turn.py",
+        "src/rules/swn_progression.py",
+        "src/rules/swn_psionics.py",
+        "src/rules/wwn_projects.py"
+      ],
       "mud": [],
       "command": [],
-      "coverage": "missing",
+      "coverage": "unverified",
       "tests": [],
       "tested_against_book": false,
       "save_safe": false,
       "playtested": false,
       "classification": "cwn_rule",
-      "divergence": ""
+      "divergence": "Concept appears in code but the procedure is not verified against the book; matched by keyword in tools/cwn_parity_audit.py KEYWORDS."
     },
     {
       "id": "rules-of-the-game:character-advancement",
@@ -1231,16 +1274,24 @@
       "srd": "https://cwn.quadrifons.com/gear-vehicles-cyberware/weapons/firearms/",
       "pdf_page": null,
       "godot": [],
-      "python": [],
+      "python": [
+        "src/rules/cwn_drones.py",
+        "src/rules/cwn_equipment.py",
+        "src/rules/cwn_gear_mods.py",
+        "src/rules/first_case_drill.py",
+        "src/rules/noopunk_tags.py",
+        "src/rules/tag_fixtures.py",
+        "src/rules/tags.py"
+      ],
       "mud": [],
       "command": [],
-      "coverage": "missing",
+      "coverage": "unverified",
       "tests": [],
       "tested_against_book": false,
       "save_safe": false,
       "playtested": false,
       "classification": "cwn_rule",
-      "divergence": ""
+      "divergence": "Concept appears in code but the procedure is not verified against the book; matched by keyword in tools/cwn_parity_audit.py KEYWORDS."
     },
     {
       "id": "gear-vehicles-cyberware:weapons:heavy-weapons",
@@ -1483,16 +1534,18 @@
       "srd": "https://cwn.quadrifons.com/gear-vehicles-cyberware/armor/armor-accessories/",
       "pdf_page": null,
       "godot": [],
-      "python": [],
+      "python": [
+        "src/rules/cwn_equipment.py"
+      ],
       "mud": [],
       "command": [],
-      "coverage": "missing",
+      "coverage": "unverified",
       "tests": [],
       "tested_against_book": false,
       "save_safe": false,
       "playtested": false,
       "classification": "cwn_rule",
-      "divergence": ""
+      "divergence": "Concept appears in code but the procedure is not verified against the book; matched by keyword in tools/cwn_parity_audit.py KEYWORDS."
     },
     {
       "id": "gear-vehicles-cyberware:cyberware",
@@ -1585,16 +1638,25 @@
       "srd": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/installing-cyberware/",
       "pdf_page": null,
       "godot": [],
-      "python": [],
+      "python": [
+        "src/rules/cwn_core.py",
+        "src/rules/cwn_gear_mods.py",
+        "src/rules/cwn_healing.py",
+        "src/rules/cwn_major_injury.py",
+        "src/rules/cwn_strain.py",
+        "src/rules/cwn_vehicles.py",
+        "src/rules/first_case_drill.py",
+        "src/rules/swn_starships.py"
+      ],
       "mud": [],
       "command": [],
-      "coverage": "missing",
+      "coverage": "unverified",
       "tests": [],
       "tested_against_book": false,
       "save_safe": false,
       "playtested": false,
       "classification": "cwn_rule",
-      "divergence": ""
+      "divergence": "Concept appears in code but the procedure is not verified against the book; matched by keyword in tools/cwn_parity_audit.py KEYWORDS."
     },
     {
       "id": "gear-vehicles-cyberware:cyberware:removing-cyberware",
@@ -1603,16 +1665,28 @@
       "srd": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/removing-cyberware/",
       "pdf_page": null,
       "godot": [],
-      "python": [],
+      "python": [
+        "src/rules/__init__.py",
+        "src/rules/_retired.py",
+        "src/rules/cwn_equipment.py",
+        "src/rules/cwn_gear_mods.py",
+        "src/rules/cwn_healing.py",
+        "src/rules/cwn_strain.py",
+        "src/rules/issue217_resolution.py",
+        "src/rules/kernel_prototype.py",
+        "src/rules/natural_psi.py",
+        "src/rules/party.py",
+        "src/rules/ubiquitous_network.py"
+      ],
       "mud": [],
       "command": [],
-      "coverage": "missing",
+      "coverage": "unverified",
       "tests": [],
       "tested_against_book": false,
       "save_safe": false,
       "playtested": false,
       "classification": "cwn_rule",
-      "divergence": ""
+      "divergence": "Concept appears in code but the procedure is not verified against the book; matched by keyword in tools/cwn_parity_audit.py KEYWORDS."
     },
     {
       "id": "gear-vehicles-cyberware:cyberware:cyberware-maintenance",
@@ -1720,16 +1794,18 @@
       "srd": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/concealing-detecting-cyberware/",
       "pdf_page": null,
       "godot": [],
-      "python": [],
+      "python": [
+        "src/rules/ubiquitous_network.py"
+      ],
       "mud": [],
       "command": [],
-      "coverage": "missing",
+      "coverage": "unverified",
       "tests": [],
       "tested_against_book": false,
       "save_safe": false,
       "playtested": false,
       "classification": "cwn_rule",
-      "divergence": ""
+      "divergence": "Concept appears in code but the procedure is not verified against the book; matched by keyword in tools/cwn_parity_audit.py KEYWORDS."
     },
     {
       "id": "gear-vehicles-cyberware:cyberware:skillplugs",
@@ -1756,16 +1832,18 @@
       "srd": "https://cwn.quadrifons.com/gear-vehicles-cyberware/cyberware/cyberdoc-tools/",
       "pdf_page": null,
       "godot": [],
-      "python": [],
+      "python": [
+        "src/rules/cwn_foci.py"
+      ],
       "mud": [],
       "command": [],
-      "coverage": "missing",
+      "coverage": "unverified",
       "tests": [],
       "tested_against_book": false,
       "save_safe": false,
       "playtested": false,
       "classification": "cwn_rule",
-      "divergence": ""
+      "divergence": "Concept appears in code but the procedure is not verified against the book; matched by keyword in tools/cwn_parity_audit.py KEYWORDS."
     },
     {
       "id": "gear-vehicles-cyberware:drones",
@@ -1885,16 +1963,19 @@
       "srd": "https://cwn.quadrifons.com/gear-vehicles-cyberware/lifestyles-wages-and-bribes/",
       "pdf_page": null,
       "godot": [],
-      "python": [],
+      "python": [
+        "mud/nopunk_mud/cwn/__init__.py",
+        "src/rules/cwn_core.py"
+      ],
       "mud": [],
       "command": [],
-      "coverage": "missing",
+      "coverage": "unverified",
       "tests": [],
       "tested_against_book": false,
       "save_safe": false,
       "playtested": false,
       "classification": "cwn_rule",
-      "divergence": ""
+      "divergence": "Concept appears in code but the procedure is not verified against the book; matched by keyword in tools/cwn_parity_audit.py KEYWORDS."
     },
     {
       "id": "gear-vehicles-cyberware:lifestyles-wages-and-bribes:lifestyle-costs",
@@ -2003,16 +2084,25 @@
       "srd": "https://cwn.quadrifons.com/hacking/programs/",
       "pdf_page": null,
       "godot": [],
-      "python": [],
+      "python": [
+        "src/rules/cwn_drones.py",
+        "src/rules/cwn_foci.py",
+        "src/rules/cwn_hacking.py",
+        "src/rules/cwn_program_catalogue.py",
+        "src/rules/first_case_drill.py",
+        "src/rules/noopunk_tags.py",
+        "src/rules/ubiquitous_network.py",
+        "src/rules/without_number.py"
+      ],
       "mud": [],
       "command": [],
-      "coverage": "missing",
+      "coverage": "unverified",
       "tests": [],
       "tested_against_book": false,
       "save_safe": false,
       "playtested": false,
       "classification": "cwn_rule",
-      "divergence": ""
+      "divergence": "Concept appears in code but the procedure is not verified against the book; matched by keyword in tools/cwn_parity_audit.py KEYWORDS."
     },
     {
       "id": "hacking:cyberdecks",
@@ -2021,16 +2111,18 @@
       "srd": "https://cwn.quadrifons.com/hacking/cyberdecks/",
       "pdf_page": null,
       "godot": [],
-      "python": [],
+      "python": [
+        "src/rules/cwn_gear_mods.py"
+      ],
       "mud": [],
       "command": [],
-      "coverage": "missing",
+      "coverage": "unverified",
       "tests": [],
       "tested_against_book": false,
       "save_safe": false,
       "playtested": false,
       "classification": "cwn_rule",
-      "divergence": ""
+      "divergence": "Concept appears in code but the procedure is not verified against the book; matched by keyword in tools/cwn_parity_audit.py KEYWORDS."
     },
     {
       "id": "hacking:cyberdeck-mods",
