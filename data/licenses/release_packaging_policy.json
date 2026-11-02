@@ -182,8 +182,7 @@
         "requirements.txt",
         "requirements-concordia.txt",
         "LICENSE*",
-        "NOTICE*",
-        "pyproject.toml"
+        "NOTICE*"
       ],
       "licence": "author-decision-follows-code",
       "note": "CI, dependency and release-packaging plumbing."
