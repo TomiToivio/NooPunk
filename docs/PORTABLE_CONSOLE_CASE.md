@@ -94,6 +94,24 @@ diff a.json b.json     # identical
 `--seed 8` moves the dice but not the clues: discovery is not stochastic, and the tests assert exactly
 that (`test_a_different_seed_moves_the_dice_but_not_the_clues`).
 
+## One implementation, three surfaces
+
+`portable_noopunk` (the `Game`/`Action`/`Outcome` API the web/textual/nicegui frontends use) is a
+**façade** over the same session, not a second game. It used to carry its own narrative prototype —
+invented locations `unsa_hq`/`hospital`/`library`, invented clues, and a sidequest found nowhere in the
+case material — which invented canon the author had not specified. It now translates every command into
+a `CaseSession` call, so:
+
+| surface | entry point | rules |
+| --- | --- | --- |
+| console (reference) | `scripts/noopunk_case.py`, `python -m console`, `noopunk-case` | `rules.investigation` |
+| portable API + web/textual/nicegui frontends | `portable_noopunk` | the same, through `console.session` |
+| MUD | `mud/` (Evennia) | its own CWN **port**, kept honest by `tests/test_cwn_mud_parity_1025.py` (ADR #946) — the one duplicate left, and the next one worth retiring |
+
+A save written by one of the first two loads in the other; a save written by the old prototype (which
+has no `case_id` and names `unsa_hq`) is refused rather than migrated, because it describes a game that
+never existed in this repository.
+
 ## What is not here yet
 
 * an Evennia adapter over this session (the MUD still plays its own loop);
