@@ -1,0 +1,137 @@
+{
+ "$comment": "Book-verified numbers for CWN chapters 1-5, in the form a test can re-derive from the code. This is the #1080 fidelity pass made machine-readable: before this file, the coverage matrix could only say 'there is code with this name'. Each row names the printed page of Cities Without Number (Deluxe, 081123), the claim read off that page, and the Python symbol that must reproduce it. tests/test_cwn_ch1_5_fidelity_1080.py recomputes every row from the library, so a refactor that moves a number fails here instead of at a table.",
+ "format": "noopunk.rules.cwn_ch1_5_fidelity",
+ "version": 1,
+ "issue": "https://github.com/TomiToivio/NooPunk/issues/1080",
+ "source": {
+  "book": "Cities Without Number, Deluxe Edition (lightweight PDF, 081123)",
+  "printed_pages": 265,
+  "pdf_page_offset": 4,
+  "verified": "2026-11-03"
+ },
+ "rows": [
+  {
+   "id": "attributes.modifier_bands",
+   "printed_page": 5,
+   "claim": "Attribute modifiers are 3:-2, 4-7:-1, 8-13:+0, 14-17:+1, 18:+2.",
+   "module": "src/rules/wn_core.py",
+   "symbol": "attribute_modifier",
+   "table": {
+    "3": -2,
+    "4": -1,
+    "7": -1,
+    "8": 0,
+    "13": 0,
+    "14": 1,
+    "17": 1,
+    "18": 2
+   }
+  },
+  {
+   "id": "creation.level_table.saves",
+   "printed_page": 24,
+   "claim": "A level 1 character's four save targets are 15+, and each level lowers them by one: 15,14,13,12,11,10,9,8,7,6 for levels 1-10.",
+   "module": "src/rules/cwn_core.py",
+   "symbol": "save_target",
+   "table": [
+    15,
+    14,
+    13,
+    12,
+    11,
+    10,
+    9,
+    8,
+    7,
+    6
+   ]
+  },
+  {
+   "id": "creation.level_table.attack_bonus",
+   "printed_page": 24,
+   "claim": "Normal attack bonus by level is +0,+1,+1,+2,+2,+3,+3,+4,+4,+5; the On Target Edge grants +level instead.",
+   "module": "src/rules/cwn_advancement.py",
+   "symbol": "attack_bonus",
+   "table": [
+    0,
+    1,
+    1,
+    2,
+    2,
+    3,
+    3,
+    4,
+    4,
+    5
+   ]
+  },
+  {
+   "id": "creation.hit_points.hard_to_kill",
+   "printed_page": 24,
+   "claim": "Hit points are 1d6 per level; the Hard to Kill Edge adds +2 per die (1d6+2 at level 1, 10d6+20 at level 10).",
+   "module": "src/rules/cwn_advancement.py",
+   "symbol": "HARD_TO_KILL_BONUS",
+   "table": {
+    "hard_to_kill_bonus_per_die": 2
+   }
+  },
+  {
+   "id": "rules.skill_checks.formula",
+   "printed_page": 31,
+   "claim": "A skill check is 2d6 + the most applicable attribute modifier + skill level against the difficulty; a character without level-0 in the skill takes -1.",
+   "module": "src/rules/wn_core.py",
+   "symbol": "skill_check",
+   "table": {
+    "die_faces": 6,
+    "dice": 2,
+    "untrained_penalty": -1
+   }
+  },
+  {
+   "id": "rules.skill_checks.difficulty_bands",
+   "printed_page": 31,
+   "claim": "Difficulty bands are 6 (still beyond a background), 8 (a significant challenge), 10 (expert), 12 (master), 14+ (a master, probably failing).",
+   "module": "src/rules/wn_core.py",
+   "symbol": "DIFFICULTY_*",
+   "table": [
+    6,
+    8,
+    10,
+    12,
+    14
+   ]
+  },
+  {
+   "id": "rules.saving_throw.categories",
+   "printed_page": 30,
+   "claim": "Physical subtracts the better of Strength or Constitution, Evasion Dexterity or Intelligence, Mental Wisdom or Charisma, and Luck ignores attributes entirely.",
+   "module": "src/rules/cwn_core.py",
+   "symbol": "SAVE_ATTRIBUTES",
+   "table": {
+    "Physical": [
+     "Strength",
+     "Constitution"
+    ],
+    "Evasion": [
+     "Dexterity",
+     "Intelligence"
+    ],
+    "Mental": [
+     "Wisdom",
+     "Charisma"
+    ],
+    "Luck": []
+   }
+  },
+  {
+   "id": "injury.system_strain.maximum",
+   "printed_page": 40,
+   "claim": "The System Strain maximum is the character's Constitution score.",
+   "module": "src/rules/cwn_strain.py",
+   "symbol": "SystemStrain.maximum",
+   "table": {
+    "constitution": 11
+   }
+  }
+ ]
+}
