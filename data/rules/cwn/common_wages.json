@@ -1,0 +1,30 @@
+{
+  "$comment": "Common Wages, Cities Without Number SRD (public domain), Gear 3.6.5. Daily earnings by worker type. NooPunk uses these as the economy baseline; nothing here changes CWN.",
+  "source": {
+    "title": "Cities Without Number SRD",
+    "section": "Lifestyles, Wages, and Bribes — Common Wages",
+    "url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/lifestyles-wages-and-bribes/common-wages/"
+  },
+  "currency": "USD",
+  "period": "day",
+  "wages": {
+    "unskilled_street_laborer": 10,
+    "low_level_ganger_or_street_thug": 15,
+    "common_streetwalker": 20,
+    "petty_street_stall_merchant": 25,
+    "capable_street_tech_or_cyberdoc": 50,
+    "competent_street_bodyguard": 50,
+    "entry_level_corp_worker": 30,
+    "low_level_corp_lifer": 40,
+    "street_cop_or_skilled_corp_worker": 100,
+    "professional_companion": 200,
+    "corp_employed_hacker": 200,
+    "corp_middle_manager": 250,
+    "corp_sponsored_cyberdoc": 250,
+    "elite_or_well_known_bodyguard": 500,
+    "successful_gang_boss": 750,
+    "corp_branch_office_manager": 1000,
+    "high_ranking_corp_exec": 5000,
+    "oligarchic_elite_of_a_city": 10000
+  }
+}

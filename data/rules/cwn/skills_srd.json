@@ -1,0 +1,36 @@
+{
+  "$comment": "The Cities Without Number skill list, SRD (public domain), Character Creation — Skills. Names only: the SRD's descriptions are prose and are not copied. This is the baseline list; data/rules/cwn/skills.json is the seven-attribute UNSA mod and is not the CWN baseline.",
+  "source": {
+    "title": "Cities Without Number SRD",
+    "section": "Character Creation — The Skill List",
+    "url": "https://cwn.quadrifons.com/character-creation/skills/"
+  },
+  "levels": [
+    "level-0",
+    "level-1",
+    "level-2",
+    "level-3",
+    "level-4"
+  ],
+  "skills": [
+    "Administer",
+    "Connect",
+    "Drive",
+    "Exert",
+    "Fix",
+    "Heal",
+    "Know",
+    "Lead",
+    "Notice",
+    "Perform",
+    "Program",
+    "Punch",
+    "Shoot",
+    "Sneak",
+    "Stab",
+    "Survive",
+    "Talk",
+    "Trade",
+    "Work"
+  ]
+}
