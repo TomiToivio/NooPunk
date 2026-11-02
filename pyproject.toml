@@ -9,7 +9,14 @@ description = "NoöPunk headless tabletop-parity prototype (not comprehensive CW
 requires-python = ">=3.10"
 
 [tool.setuptools]
-packages = ["portable_noopunk"]
+
+
+[project.optional-dependencies]
+web = ["nicegui>=2"]
+textual = ["textual>=1"]
+
+[tool.setuptools.packages.find]
+include = ["portable_noopunk*"]
 
 [project.scripts]
 noopunk-slice = "portable_noopunk.console:main"
