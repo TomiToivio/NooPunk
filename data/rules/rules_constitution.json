@@ -105,6 +105,10 @@
         "tier": "optional-source"
       },
       {
+        "module": "src/rules/awn_stress_tracker.py",
+        "tier": "optional-source"
+      },
+      {
         "module": "src/rules/awn_survival.py",
         "tier": "optional-source"
       },
@@ -141,11 +145,11 @@
         "tier": "cwn-core"
       },
       {
-        "module": "src/rules/cwn_combat_actions.py",
+        "module": "src/rules/cwn_combat.py",
         "tier": "cwn-core"
       },
       {
-        "module": "src/rules/cwn_combat.py",
+        "module": "src/rules/cwn_combat_actions.py",
         "tier": "cwn-core"
       },
       {
@@ -209,11 +213,11 @@
         "tier": "cwn-core"
       },
       {
-        "module": "src/rules/cwn_magic_items.py",
+        "module": "src/rules/cwn_magic.py",
         "tier": "cwn-core"
       },
       {
-        "module": "src/rules/cwn_magic.py",
+        "module": "src/rules/cwn_magic_items.py",
         "tier": "cwn-core"
       },
       {
@@ -281,11 +285,11 @@
         "tier": "noopunk-mod"
       },
       {
-        "module": "src/rules/investigation_evidence.py",
+        "module": "src/rules/investigation.py",
         "tier": "noopunk-mod"
       },
       {
-        "module": "src/rules/investigation.py",
+        "module": "src/rules/investigation_evidence.py",
         "tier": "noopunk-mod"
       },
       {
