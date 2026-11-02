@@ -193,6 +193,32 @@ class CmdDictionary(Command):
         self.caller.msg(lookup(self.args))
 
 
+class CmdDossier(Command):
+    """
+    What UNSA knows about a person, in three separate layers.
+
+    Usage:
+      dossier                 people and organisations you have on record
+      dossier <name>          their discourse profile, recorded positions and known ties
+
+    Discourse (what they say they want), positions (where they stand on a concept) and the network
+    (who they actually deal with) are kept apart on purpose: no friend/enemy score exists.
+    `?` marks a concept nobody has given a position on, and a conflict is shown rather than averaged.
+    """
+
+    key = "dossier"
+    locks = "cmd:all()"
+    help_category = "NoöPunk"
+
+    def func(self) -> None:
+        from nopunk_mud.discourse import render_actor_list, render_dossier
+        from nopunk_mud.social_seed import world_for
+
+        world = world_for(self.caller)
+        name = (self.args or "").strip()
+        self.caller.msg(render_dossier(world, name) if name else render_actor_list(world))
+
+
 class NoopunkCharacterCmdSet(CharacterCmdSet):
     key = "NoopunkCharacterCmdSet"
     def at_cmdset_creation(self):
@@ -212,4 +238,5 @@ class NoopunkCharacterCmdSet(CharacterCmdSet):
         self.add(CmdFaction())
         self.add(CmdReputation())
         self.add(CmdGoals())
+        self.add(CmdDossier())
         self.add(CmdTalk())

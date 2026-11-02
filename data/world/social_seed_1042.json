@@ -1,0 +1,183 @@
+{
+  "$comment": "Seed social world for the UNSA Helsinki case (#1042). Actors, roles and quoted positions are drawn from the existing campaign content; nothing here adds canon. Provenance kinds follow the model: evidence (observed), fiction (rumour/interpretation), gameplay (what the player did).",
+  "schema_version": 1,
+  "actors": [
+    {
+      "id": "romppainen",
+      "kind": "person",
+      "name": "Dr. Harri Romppainen",
+      "aliases": [
+        "Harri"
+      ]
+    },
+    {
+      "id": "witness",
+      "kind": "person",
+      "name": "Woman in a raincoat",
+      "aliases": [
+        "the woman"
+      ]
+    },
+    {
+      "id": "watcher",
+      "kind": "person",
+      "name": "Man by the van"
+    },
+    {
+      "id": "virtanen",
+      "kind": "person",
+      "name": "Virtanen",
+      "aliases": [
+        "the researcher"
+      ]
+    },
+    {
+      "id": "unsa",
+      "kind": "organisation",
+      "name": "UNSA"
+    }
+  ],
+  "profiles": {
+    "romppainen": {
+      "actor": "romppainen",
+      "values": [
+        "curiosity",
+        "accountability"
+      ],
+      "identities": [
+        "UNSA supervisory special agent"
+      ],
+      "demands": [
+        "paper first: read the record before the people"
+      ],
+      "signifiers": [
+        "the badge",
+        "the folder"
+      ],
+      "antagonisms": [
+        "institutional secrecy he does not control"
+      ],
+      "goals": [
+        "find Virtanen",
+        "keep the case documented"
+      ],
+      "uncertainty": {
+        "psi": "will not say whether he believes it"
+      }
+    },
+    "witness": {
+      "actor": "witness",
+      "values": [
+        "being left alone"
+      ],
+      "identities": [
+        "neighbour"
+      ],
+      "demands": [],
+      "signifiers": [
+        "the tram at eleven",
+        "the sky"
+      ],
+      "antagonisms": [],
+      "goals": [],
+      "uncertainty": {
+        "van": "her account is precise about time and vague about the vehicle"
+      }
+    }
+  },
+  "events": [
+    {
+      "id": "seed-1",
+      "at": "2026-11-01T09:00:00Z",
+      "kind": "affiliation",
+      "actor": "romppainen",
+      "source": "evidence",
+      "concept": "unsa",
+      "role": "SSA",
+      "text": "UNSA supervisory special agent"
+    },
+    {
+      "id": "seed-2",
+      "at": "2026-11-01T09:10:00Z",
+      "kind": "statement",
+      "actor": "romppainen",
+      "source": "evidence",
+      "concept": "virtanen",
+      "polarity": 1,
+      "text": "a researcher stopped answering her phone"
+    },
+    {
+      "id": "seed-3",
+      "at": "2026-11-01T10:00:00Z",
+      "kind": "statement",
+      "actor": "witness",
+      "source": "evidence",
+      "concept": "virtanen",
+      "polarity": 1,
+      "text": "the only person who looked at the sky"
+    },
+    {
+      "id": "seed-4",
+      "at": "2026-11-01T10:05:00Z",
+      "kind": "statement",
+      "actor": "witness",
+      "source": "evidence",
+      "concept": "van",
+      "polarity": -1,
+      "text": "grey, unmarked, already there at midnight"
+    },
+    {
+      "id": "seed-5",
+      "at": "2026-11-01T10:06:00Z",
+      "kind": "contact",
+      "actor": "witness",
+      "other": "virtanen",
+      "source": "evidence",
+      "tie": "communication",
+      "text": "saw her pass at eleven"
+    },
+    {
+      "id": "seed-6",
+      "at": "2026-11-01T18:00:00Z",
+      "kind": "contact",
+      "actor": "watcher",
+      "other": "unsa",
+      "source": "evidence",
+      "tie": "obligation",
+      "other_known_by": [
+        "romppainen"
+      ],
+      "text": "not with the agency that hired me"
+    },
+    {
+      "id": "seed-7",
+      "at": "2026-11-01T18:30:00Z",
+      "kind": "statement",
+      "actor": "watcher",
+      "source": "evidence",
+      "concept": "unsa",
+      "polarity": -1,
+      "text": "you are not with the agency that hired me"
+    },
+    {
+      "id": "seed-8",
+      "at": "2026-11-01T19:00:00Z",
+      "kind": "statement",
+      "actor": "romppainen",
+      "source": "fiction",
+      "concept": "virtanen",
+      "polarity": 2,
+      "text": "rumour in the corridor: she left on purpose"
+    }
+  ],
+  "positions": [],
+  "ties": [],
+  "affiliations": [
+    {
+      "actor": "romppainen",
+      "organisation": "unsa",
+      "role": "SSA",
+      "event_id": "seed-m1"
+    }
+  ]
+}
