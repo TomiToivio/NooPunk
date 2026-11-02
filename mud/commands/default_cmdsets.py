@@ -243,6 +243,46 @@ class CmdDictionary(Command):
         self.caller.msg(lookup(self.args))
 
 
+class CmdDossier(Command):
+    """
+    Read the discourse: what people said, where that puts them, and who they actually know.
+
+    Usage:
+      dossier                     who is on record, and which signifiers are contested
+      dossier <actor>             that actor's statements, positions and relationships
+      dossier <a> vs <b>          how much two actors agree, beside how much they trust
+
+    Three layers stay apart: what was said (DA), where an actor stands (DNA), who they know (SNA).
+    Agreement and trust are printed next to each other and never merged; a rumour is shown as a
+    rumour, and the evidence-only position is printed separately from the position on all claims.
+    """
+
+    key = "dossier"
+    locks = "cmd:all()"
+    help_category = "NoöPunk"
+
+    def func(self) -> None:
+        from nopunk_mud.ideology_seed import (
+            discourse_for,
+            render_actor,
+            render_overview,
+            render_pair,
+            viewer_scope,
+        )
+
+        discourse = discourse_for(self.caller)
+        scope = viewer_scope()
+        text = (self.args or "").strip()
+
+        if not text:
+            self.caller.msg(render_overview(discourse, scope=scope))
+        elif " vs " in text:
+            left, _, right = text.partition(" vs ")
+            self.caller.msg(render_pair(discourse, left, right))
+        else:
+            self.caller.msg(render_actor(discourse, text, scope=scope))
+
+
 class NoopunkCharacterCmdSet(CharacterCmdSet):
     key = "NoopunkCharacterCmdSet"
     def at_cmdset_creation(self):
@@ -262,4 +302,5 @@ class NoopunkCharacterCmdSet(CharacterCmdSet):
         self.add(CmdFaction())
         self.add(CmdReputation())
         self.add(CmdGoals())
+        self.add(CmdDossier())
         self.add(CmdTalk())
