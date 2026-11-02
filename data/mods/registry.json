@@ -1,9 +1,11 @@
 {
-  "_comment": "Machine-readable half of the core-versus-mod matrix (#897). Every NooPunk overlay is listed here and none may claim the CWN baseline. See docs/rules/RULES_BASIS_LOCK.md.",
-  "schema": 1,
+  "_comment": "Machine-readable half of the core-versus-mod matrix (#897). Every NooPunk overlay is listed here and none may claim the CWN baseline. See docs/rules/RULES_BASIS_LOCK.md. Schema 2 adds the machine-readable half of the mod activation contract (ADR_1054): `implementation` paths must exist, `tabletop_procedure` names the printed procedure or carries a `tabletop_gap`, and tools/check_mod_activation.py reports which mods no test actually references.",
+  "schema": 2,
   "baseline": {
     "engine": "Cities Without Number",
-    "gap_fill": ["Stars Without Number Revised: psionics, whole procedure"],
+    "gap_fill": [
+      "Stars Without Number Revised: psionics, whole procedure"
+    ],
     "may_be_changed_by_a_mod": false
   },
   "mods": [
@@ -11,43 +13,94 @@
       "name": "noosphere_psyche",
       "summary": "Noosphere exposure, ontological shock, Psyche instability and recovery",
       "changes_core_mechanics": false,
-      "reads": ["character attributes", "saves", "system strain"],
-      "adds": "narrative state only"
+      "reads": [
+        "character attributes",
+        "saves",
+        "system strain"
+      ],
+      "adds": "narrative state only",
+      "implementation": [
+        "mods/noopunk/noosphere.gd",
+        "mods/noopunk/psyche.gd"
+      ],
+      "tabletop_procedure": null,
+      "tabletop_gap": "no printed procedure for this overlay yet"
     },
     {
       "name": "ideology_factions",
       "summary": "Discursive identification, faction standings, antagonisms and political temptation",
       "changes_core_mechanics": false,
-      "reads": ["reaction rolls", "skill check outcomes"],
-      "adds": "narrative state only"
+      "reads": [
+        "reaction rolls",
+        "skill check outcomes"
+      ],
+      "adds": "narrative state only",
+      "implementation": [
+        "mud/nopunk_mud/ideology.py",
+        "mud/nopunk_mud/discourse_network.py",
+        "mud/nopunk_mud/faction_overlay.py",
+        "data/world/ideology.json"
+      ],
+      "tabletop_procedure": null,
+      "tabletop_gap": "no printed procedure for this overlay yet"
     },
     {
       "name": "relationships_reputation",
       "summary": "NPC trust, obligations, social capital, institutional standing",
       "changes_core_mechanics": false,
-      "reads": ["social skill outcomes"],
-      "adds": "narrative state only"
+      "reads": [
+        "social skill outcomes"
+      ],
+      "adds": "narrative state only",
+      "implementation": [
+        "mud/nopunk_mud/social.py"
+      ],
+      "tabletop_procedure": null,
+      "tabletop_gap": "no printed procedure for this overlay yet"
     },
     {
       "name": "investigative_mode",
       "summary": "Clue discovery and synthesis; essential clues are never gated behind one failed roll",
       "changes_core_mechanics": false,
-      "reads": ["skill check outcomes"],
-      "adds": "narrative state only"
+      "reads": [
+        "skill check outcomes"
+      ],
+      "adds": "narrative state only",
+      "implementation": [
+        "mods/noopunk/gumshoe_investigation.gd"
+      ],
+      "tabletop_procedure": "docs/rules/GUMSHOE_INVESTIGATION_LAYER.md",
+      "tabletop_gap": null
     },
     {
       "name": "vices_temptations",
       "summary": "Career ambition, status, trauma, corruption and solidarity as recurring pressures",
       "changes_core_mechanics": false,
-      "reads": ["character state"],
-      "adds": "narrative state only"
+      "reads": [
+        "character state"
+      ],
+      "adds": "narrative state only",
+      "implementation": [],
+      "tabletop_procedure": null,
+      "tabletop_gap": "no printed procedure for this overlay yet"
     },
     {
       "name": "awn_stress",
       "summary": "Ashes Without Number Stress, Breakdowns, Hardening and the opt-in addiction submodule",
       "changes_core_mechanics": false,
-      "reads": ["WIS score", "mental save outcome", "skill check outcome", "system strain"],
-      "adds": "character state only - a Stress meter, consequence codes and the modifiers the table applies; CWN attributes, checks, saves, combat and progression are untouched"
+      "reads": [
+        "WIS score",
+        "mental save outcome",
+        "skill check outcome",
+        "system strain"
+      ],
+      "adds": "character state only - a Stress meter, consequence codes and the modifiers the table applies; CWN attributes, checks, saves, combat and progression are untouched",
+      "implementation": [
+        "mods/noopunk/stress.gd",
+        "data/rules/awn_stress.json"
+      ],
+      "tabletop_procedure": null,
+      "tabletop_gap": "no printed procedure for this overlay yet"
     }
   ]
 }
