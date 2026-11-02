@@ -1,6 +1,6 @@
 {
-  "_comment": "Machine-readable half of the core-versus-mod matrix (#897). Every NooPunk overlay is listed here and none may claim the CWN baseline. See docs/rules/RULES_BASIS_LOCK.md. Schema 2 adds the machine-readable half of the mod activation contract (ADR_1054): `implementation` paths must exist, `tabletop_procedure` names the printed procedure or carries a `tabletop_gap`, and tools/check_mod_activation.py reports which mods no test actually references.",
-  "schema": 2,
+  "_comment": "Canonical mod activation contract (#1091, ADR_1054). Schemas 1–2 are historical. Hooks name actual entry points; tabletop_gap explicitly blocks paper-playable claims; off_switch means omit overlay without altering CWN or persisted source data. Validation: src/rules/mod_boundary.py and tools/check_mod_activation.py.",
+  "schema": 3,
   "baseline": {
     "engine": "Cities Without Number",
     "gap_fill": [
@@ -24,7 +24,41 @@
         "mods/noopunk/psyche.gd"
       ],
       "tabletop_procedure": null,
-      "tabletop_gap": "no printed procedure for this overlay yet"
+      "tabletop_gap": "no printed procedure for this overlay yet",
+      "hooks": [
+        {
+          "path": "mods/noopunk/noosphere.gd",
+          "symbol": "record_perception"
+        },
+        {
+          "path": "mods/noopunk/noosphere.gd",
+          "symbol": "change_clock"
+        },
+        {
+          "path": "mods/noopunk/psyche.gd",
+          "symbol": "expose"
+        },
+        {
+          "path": "mods/noopunk/psyche.gd",
+          "symbol": "recover"
+        }
+      ],
+      "state": [
+        "evidence",
+        "interpretations",
+        "clocks",
+        "events",
+        "emotional_state",
+        "identity_choices",
+        "exposure"
+      ],
+      "dependencies": [
+        "cwn-core"
+      ],
+      "off_switch": {
+        "default_enabled": false,
+        "behavior": "Do not invoke Noosphere or Psyche methods; preserve existing overlay save data without modifying CWN state."
+      }
     },
     {
       "name": "ideology_factions",
@@ -42,7 +76,37 @@
         "data/world/ideology.json"
       ],
       "tabletop_procedure": null,
-      "tabletop_gap": "no printed procedure for this overlay yet"
+      "tabletop_gap": "no printed procedure for this overlay yet",
+      "hooks": [
+        {
+          "path": "mud/nopunk_mud/ideology.py",
+          "symbol": "articulate"
+        },
+        {
+          "path": "mud/nopunk_mud/discourse_network.py",
+          "symbol": "statement"
+        },
+        {
+          "path": "mud/nopunk_mud/faction_overlay.py",
+          "symbol": "set_reputation"
+        }
+      ],
+      "state": [
+        "actors",
+        "statements",
+        "positions",
+        "relations",
+        "faction memberships",
+        "reputation ledger",
+        "dated events"
+      ],
+      "dependencies": [
+        "cwn-core"
+      ],
+      "off_switch": {
+        "default_enabled": false,
+        "behavior": "Bypass optional discourse, ideology and faction reputation presentation; leave CWN reaction and social checks untouched."
+      }
     },
     {
       "name": "relationships_reputation",
@@ -56,7 +120,29 @@
         "mud/nopunk_mud/social.py"
       ],
       "tabletop_procedure": null,
-      "tabletop_gap": "no printed procedure for this overlay yet"
+      "tabletop_gap": "no printed procedure for this overlay yet",
+      "hooks": [
+        {
+          "path": "mud/nopunk_mud/social.py",
+          "symbol": "reaction_modifier"
+        },
+        {
+          "path": "mud/nopunk_mud/social.py",
+          "symbol": "promote"
+        }
+      ],
+      "state": [
+        "memberships",
+        "reputations",
+        "goals"
+      ],
+      "dependencies": [
+        "cwn-core"
+      ],
+      "off_switch": {
+        "default_enabled": false,
+        "behavior": "Omit scoped social modifiers and authority overlay; preserve original CWN reaction resolution."
+      }
     },
     {
       "name": "investigative_mode",
@@ -70,7 +156,33 @@
         "mods/noopunk/gumshoe_investigation.gd"
       ],
       "tabletop_procedure": "docs/rules/GUMSHOE_INVESTIGATION_LAYER.md",
-      "tabletop_gap": null
+      "tabletop_gap": null,
+      "hooks": [
+        {
+          "path": "mods/noopunk/gumshoe_investigation.gd",
+          "symbol": "gather"
+        },
+        {
+          "path": "mods/noopunk/gumshoe_investigation.gd",
+          "symbol": "buy_benefit"
+        },
+        {
+          "path": "mods/noopunk/gumshoe_investigation.gd",
+          "symbol": "refresh"
+        }
+      ],
+      "state": [
+        "abilities",
+        "order",
+        "benefits"
+      ],
+      "dependencies": [
+        "cwn-core"
+      ],
+      "off_switch": {
+        "default_enabled": false,
+        "behavior": "Do not invoke investigative pools; delegate uncertainty to CWN, without destroying existing investigative save data."
+      }
     },
     {
       "name": "vices_temptations",
@@ -82,7 +194,16 @@
       "adds": "narrative state only",
       "implementation": [],
       "tabletop_procedure": null,
-      "tabletop_gap": "no printed procedure for this overlay yet"
+      "tabletop_gap": "no printed procedure for this overlay yet",
+      "hooks": [],
+      "state": [],
+      "dependencies": [
+        "cwn-core"
+      ],
+      "off_switch": {
+        "default_enabled": false,
+        "behavior": "No implementation exists; keep inactive and use unchanged CWN procedures."
+      }
     },
     {
       "name": "awn_stress",
@@ -97,10 +218,43 @@
       "adds": "character state only - a Stress meter, consequence codes and the modifiers the table applies; CWN attributes, checks, saves, combat and progression are untouched",
       "implementation": [
         "mods/noopunk/stress.gd",
-        "data/rules/awn_stress.json"
+        "data/rules/awn_stress.json",
+        "src/rules/awn_stress_tracker.py"
       ],
       "tabletop_procedure": null,
-      "tabletop_gap": "no printed procedure for this overlay yet"
+      "tabletop_gap": "no printed procedure for this overlay yet",
+      "hooks": [
+        {
+          "path": "mods/noopunk/stress.gd",
+          "symbol": "new_tracker"
+        },
+        {
+          "path": "mods/noopunk/stress.gd",
+          "symbol": "award"
+        },
+        {
+          "path": "mods/noopunk/stress.gd",
+          "symbol": "resolve_save"
+        },
+        {
+          "path": "mods/noopunk/stress.gd",
+          "symbol": "harden"
+        }
+      ],
+      "state": [
+        "stress tracker",
+        "scars",
+        "hardening",
+        "breakdown",
+        "audit"
+      ],
+      "dependencies": [
+        "cwn-core"
+      ],
+      "off_switch": {
+        "default_enabled": false,
+        "behavior": "Do not apply Stress events or penalties, and retain CWN WIS, saves and System Strain; do not erase existing Stress save data."
+      }
     }
   ]
 }

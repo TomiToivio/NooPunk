@@ -94,23 +94,70 @@ def apply_mods(
     return resolved, narrative
 
 
-def validate_registry(entries: Iterable[Mapping[str, Any]]) -> tuple[str, ...]:
-    """Check a mod registry (``data/mods/registry.json``) and return the accepted mod names.
+def validate_registry(entries: Iterable[Mapping[str, Any]], *, root: str | None = None) -> tuple[str, ...]:
+    """Validate the complete ADR_1054 mod contract (#1091), never just the baseline flag.
 
-    The registry is the machine-readable half of the core-versus-mod matrix: every overlay is listed,
-    and none may claim the baseline.
+    Unknown/unimplemented mods may have empty hooks and state, but may not claim a
+    tabletop procedure or silently omit an explicit tabletop gap. This validates
+    declarations, not runtime integration or whether an authored procedure is correct.
     """
-    names: list[str] = []
-    for entry in entries:
-        name = str(entry.get("name") or "").strip()
-        if not name:
-            raise BaselineViolation("registry entry without a name")
-        if entry.get("changes_core_mechanics"):
-            raise BaselineViolation(
-                f"registry entry {name!r} declares changes_core_mechanics: it is a rules change, "
-                f"not a mod")
-        names.append(name)
-    duplicates = {name for name in names if names.count(name) > 1}
-    if duplicates:
-        raise BaselineViolation(f"duplicate mod names in registry: {sorted(duplicates)}")
+    from pathlib import Path
+
+    base = Path(root) if root is not None else Path(__file__).resolve().parents[2]
+    records = list(entries)
+    names = [str(entry.get("name") or "").strip() for entry in records]
+    if any(not name for name in names):
+        raise BaselineViolation("registry entry without a name")
+    if len(set(names)) != len(names):
+        raise BaselineViolation(f"duplicate mod names in registry: {sorted(n for n in set(names) if names.count(n) > 1)}")
+
+    def file_at(path: str, label: str) -> Path:
+        if not isinstance(path, str) or not path or Path(path).is_absolute() or ".." in Path(path).parts:
+            raise BaselineViolation(f"{label}: invalid repository-relative path {path!r}")
+        target = (base / path).resolve()
+        if not target.is_relative_to(base.resolve()) or not target.is_file():
+            raise BaselineViolation(f"{label}: path does not exist: {path}")
+        return target
+
+    for entry, name in zip(records, names):
+        if entry.get("changes_core_mechanics") is not False:
+            raise BaselineViolation(f"registry entry {name!r} must declare changes_core_mechanics=false")
+        implementations = entry.get("implementation")
+        if not isinstance(implementations, list) or any(not isinstance(p, str) for p in implementations):
+            raise BaselineViolation(f"{name}: implementation must be a list of paths")
+        for path in implementations:
+            file_at(path, name + " implementation")
+        hooks = entry.get("hooks")
+        state = entry.get("state")
+        deps = entry.get("dependencies")
+        off = entry.get("off_switch")
+        if not isinstance(hooks, list) or not isinstance(state, list) or not isinstance(deps, list):
+            raise BaselineViolation(f"{name}: hooks, state and dependencies must be arrays")
+        if any(not isinstance(s, str) or not s.strip() for s in state + deps) or len(set(deps)) != len(deps):
+            raise BaselineViolation(f"{name}: invalid state/dependency declarations")
+        if any(d != "cwn-core" and d not in names for d in deps) or name in deps:
+            raise BaselineViolation(f"{name}: unknown/self dependency")
+        if not isinstance(off, Mapping) or type(off.get("default_enabled")) is not bool or not isinstance(off.get("behavior"), str) or not off["behavior"].strip():
+            raise BaselineViolation(f"{name}: explicit off_switch default_enabled and behavior required")
+        if not implementations and (hooks or state or off["default_enabled"]):
+            raise BaselineViolation(f"{name}: unimplemented mod must have no hooks/state and must default off")
+        for hook in hooks:
+            if not isinstance(hook, Mapping) or not isinstance(hook.get("path"), str) or not isinstance(hook.get("symbol"), str):
+                raise BaselineViolation(f"{name}: hook needs path and symbol")
+            if hook["path"] not in implementations:
+                raise BaselineViolation(f"{name}: hook path is not a registered implementation: {hook['path']}")
+            if not hook["symbol"].isidentifier():
+                raise BaselineViolation(f"{name}: invalid hook symbol")
+            source = file_at(hook["path"], name + " hook").read_text(encoding="utf-8")
+            import re
+            escaped = re.escape(hook["symbol"])
+            if not re.search(r"(?m)^\s*(?:static\s+)?(?:func|def)\s+" + escaped + r"\s*\(", source):
+                raise BaselineViolation(f"{name}: hook symbol not found: {hook['path']}:{hook['symbol']}")
+        procedure, gap = entry.get("tabletop_procedure"), entry.get("tabletop_gap")
+        if procedure is not None:
+            if not isinstance(procedure, str):
+                raise BaselineViolation(f"{name}: tabletop_procedure must be a path or null")
+            file_at(procedure, name + " tabletop_procedure")
+        elif not isinstance(gap, str) or not gap.strip():
+            raise BaselineViolation(f"{name}: missing tabletop procedure must declare tabletop_gap")
     return tuple(names)
