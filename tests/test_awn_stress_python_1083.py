@@ -8,11 +8,34 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-import pytest
+try:  # `unittest discover -s tests` puts tests/ on sys.path
+    from _pytest_compat import pytest, register_module_functions
+except ModuleNotFoundError:  # pytest.ini uses --import-mode=importlib, which does not
+    import importlib.util as _ilu
+    import pathlib as _pl
 
-from src.rules.awn_stress_tracker import (CONTRACT, StressError, apply_event, event_ids, harden, is_over,
-                                          new_tracker, over_by, penalty, recover, recovery_ids, stress,
-                                          threshold)
+    _spec = _ilu.spec_from_file_location(
+        "_pytest_compat", _pl.Path(__file__).with_name("_pytest_compat.py"))
+    assert _spec and _spec.loader
+    _compat = _ilu.module_from_spec(_spec)
+    _spec.loader.exec_module(_compat)
+    pytest, register_module_functions = _compat.pytest, _compat.register_module_functions
+
+from src.rules.awn_stress_tracker import (
+    CONTRACT,
+    StressError,
+    apply_event,
+    event_ids,
+    harden,
+    is_over,
+    new_tracker,
+    over_by,
+    penalty,
+    recover,
+    recovery_ids,
+    stress,
+    threshold,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 MODULE = ROOT / "src/rules/awn_stress_tracker.py"
@@ -88,3 +111,7 @@ def test_hardening_is_a_choice_that_clears_stress_and_leaves_a_scar():
 def test_an_unknown_event_is_an_error_not_a_zero():
     with pytest.raises(StressError):
         apply_event(new_tracker(wisdom=10), "had_a_bad_day")
+
+
+# CI runs `unittest discover`, which needs a TestCase rather than module-level functions.
+ModuleLevelTests = register_module_functions(globals())

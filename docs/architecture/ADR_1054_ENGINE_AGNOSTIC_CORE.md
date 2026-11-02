@@ -49,7 +49,7 @@ Two facts follow, and both are checkable rather than asserted:
 | rules kernel (attributes, checks, combat, strain, saves) | `mud/nopunk_mud/cwn_core.py` + `src/rules/` | implemented, tested |
 | campaign engine (commands, state, endings, save/load, seeded RNG) | `mud/nopunk_mud/campaign/engine.py` | implemented, tested |
 | typed adapter boundary (`Action` → `ActionResult` + events) | `mud/nopunk_mud/session.py` | implemented, tested |
-| console slice (plain text, no engine) | `mud/nopunk_mud/console.py`, flags in `cli.py` | implemented, tested |
+| console slice (plain text, no engine) | `mud/nopunk_mud/cli_console.py`, flags in `cli.py` | implemented, tested |
 | social layer (rank, scoped reputation) | `mud/nopunk_mud/social.py` | implemented, tested |
 | ideology layer (DA/DNA/SNA) | `mud/nopunk_mud/ideology.py` | implemented, tested |
 | Evennia adapter | `mud/commands/`, `mud/typeclasses/` | exists, owns no rule |
