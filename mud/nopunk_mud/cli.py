@@ -16,6 +16,7 @@ from pathlib import Path
 
 from nopunk_mud import cwn
 from nopunk_mud.campaign import CampaignEngine
+from nopunk_mud.console import Console
 from nopunk_mud.world_state import WorldState
 
 #: A legal UNSA recruit: Academy graduate, middling in everything, trained where it matters.
@@ -70,29 +71,50 @@ def main() -> int:
                         help="play the solo UNSA case (interactive; stdin is a command per line)")
     parser.add_argument("--script", default="",
                         help="run a comma-separated script instead of reading stdin")
+    parser.add_argument("--seed", type=int, default=7,
+                        help="deterministic campaign seed (the same seed and commands replay exactly)")
+    parser.add_argument("--load", type=Path, default=None,
+                        help="resume a saved campaign; the case continues where it stopped")
     args = parser.parse_args()
     if args.campaign:
-        engine = CampaignEngine()
+        # One console loop for both entry points: `nopunk_mud.console` owns the shell, this reuses it
+        # rather than keeping a second copy of the same read-print-persist cycle.
+        console = Console(seed=args.seed)
+        if args.load:
+            console.engine = CampaignEngine.from_dict(json.loads(args.load.read_text(encoding="utf-8")))
+        save_file = args.save or args.load
+
+        def persist() -> None:
+            """Write after every command: a case closed by Ctrl-C is still resumable."""
+            if save_file is not None:
+                save_file.parent.mkdir(parents=True, exist_ok=True)
+                save_file.write_text(json.dumps(console.engine.to_dict(), indent=2), encoding="utf-8")
+
         commands = ([part.strip() for part in args.script.split(",") if part.strip()]
                     if args.script else None)
         if commands is None:
-            print(engine.command("look"))
+            print(console.engine.command("look"))
             for line in sys.stdin:
                 line = line.strip()
                 if not line:
                     continue
                 if line in {"quit", "exit"}:
                     break
-                print("\n" + engine.command(line))
-                if engine.state.ending:
+                console.handle(line)
+                persist()
+                if console.engine.state.ending:
                     break
         else:
             for line in commands:
                 print("> " + line)
-                print(engine.command(line))
-        print(json.dumps({"ending": engine.state.ending, "clues": engine.state.clues,
-                          "hp": engine.state.hp, "turns": engine.state.turns}, indent=2))
-        return 0 if engine.state.ending else 1
+                console.handle(line)
+                persist()
+        persist()
+        print(json.dumps({"ending": console.engine.state.ending, "clues": console.engine.state.clues,
+                          "hp": console.engine.state.hp, "turns": console.engine.state.turns,
+                          "seed": console.engine.state.seed,
+                          "save": str(save_file) if save_file else None}, indent=2))
+        return 0 if console.engine.state.ending else 1
     if not args.demo:
         parser.print_help()
         return 2
