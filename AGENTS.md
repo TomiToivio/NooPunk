@@ -1,3 +1,19 @@
+# MANDATORY ANTI-DUPLICATION GATE (2026-11-03)
+
+**Every agent MUST perform this gate BEFORE creating a branch, opening an issue/PR, writing code, or claiming work remains undone.** This gate takes precedence over historical workflow descriptions below.
+
+1. **Refresh reality:** inspect the current `main` HEAD and its recent commits, open and recently merged PRs, open and recently closed issues (including follow-up issues), and relevant changed-file paths. Search by issue number, feature synonyms, Python module, test, tabletop chapter and adapter. Do not trust issue checkbox state or an old local branch over current `main`.
+2. **Build an overlap ledger** in the issue or PR description: existing canonical implementation and tests; merged PRs/SHAs; active PRs and owners; genuinely missing acceptance criteria; exact files planned. If another open PR owns the same deliverable, coordinate on that PR instead of starting another branch.
+3. **One authoritative implementation:** published CWN rules belong in `src/rules/cwn_*.py`, reusable rules in `src/rules/`, tabletop text in `RULEBOOK.md` / `rulebook/`, and engines are adapters. Never build a second session, game loop, rule resolver, data catalogue, ADR, tracking matrix, or rulebook merely because an issue uses different wording. Prefer delegation, imports and thin compatibility facades. Preserve distinct behavior and saves when consolidating.
+4. **Do not duplicate an existing issue or PR:** if identical acceptance criteria already have a canonical tracker, add missing specifics there and cross-link the duplicate; close a redundant issue with a pointer and explicit carryover. If two PRs overlap, compare actual files and semantics; integrate unique tested changes into one canonical PR, then close the superseded PR with a clear reason. **Never merge two incompatible implementations just to clear a queue.**
+5. **Recheck immediately before merge:** refresh `main`, review PR changed filenames and diff against recently merged work, check whether another PR delivered the same functionality, run relevant tests plus architecture, parity and rulebook/traceability checks. Use expected head SHA on merge. If superseded, close rather than merge; if complementary, keep one implementation and merge only the missing increment.
+6. **Report honestly:** distinguish `already implemented`, `partially implemented`, `unverified`, `blocked`, and `not implemented`. A merged PR or passing test is not proof that the entire issue is completed. Never reopen finished work because a stale tracker says it is missing.
+7. **At handoff:** record canonical modules, documented rules, linked issues/PRs, actual test commands/results and remaining work. Explicitly tell future agents what **not** to reimplement.
+
+**Failure mode already observed:** #1056/#1058/#1061 and #1057/#1059/#1060 competed on portable sessions/console/architecture; #1069–#1082 created overlapping CWN guards and required #1082 reconciliation. Treat these as regression examples, not feature requests. Current open work must be compared against the merged fixes first.
+
+---
+
 # CANONICAL RULES LOCATIONS — READ FIRST (#1068, 2026-11-03)
 
 This section overrides conflicting historical Godot-first, MUD-owned-rules, and blank-rulebook guidance below. The [binding architecture](docs/DESIGN_PRINCIPLES.md) governs changes.
