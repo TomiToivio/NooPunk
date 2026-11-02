@@ -24,6 +24,7 @@ import argparse
 import json
 import sys
 from pathlib import Path
+from src.rules.mod_boundary import BaselineViolation, validate_registry
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "data" / "mods" / "registry.json"
@@ -58,8 +59,12 @@ def audit(data: dict, corpus: dict[str, str]) -> tuple[list[str], list[str], lis
     warnings: list[str] = []
     rows: list[dict] = []
 
-    if data.get("schema", 0) < 2:
-        errors.append("registry schema must be 2: the activation fields are part of the record")
+    if data.get("schema") != 3:
+        errors.append("registry schema must be 3: hooks/state/dependencies/off_switch are mandatory")
+    try:
+        validate_registry(data.get("mods", []), root=str(ROOT))
+    except (BaselineViolation, TypeError, ValueError) as exc:
+        errors.append(str(exc))
 
     for mod in data.get("mods", []):
         name = mod.get("name", "<unnamed>")
