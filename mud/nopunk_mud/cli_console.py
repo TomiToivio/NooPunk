@@ -1,12 +1,12 @@
-"""Plain-text console for the first UNSA investigation (#1053, Priority 0).
+"""The MUD CLI's plain-text shell over `campaign.engine` (#1053, Priority 0).
 
 No Evennia, no Concordia, no Pygame, no LLM, no network. This is the interface the issue asks to exist *first*,
 because a rules engine that can only run inside a MUD has not been separated from the MUD — it has been buried
 in it.
 
-    python -m nopunk_mud.console                 # interactive
-    python -m nopunk_mud.console --script s.txt  # non-interactive, for tests and for CI
-    python -m nopunk_mud.console --seed 7 --script s.txt
+    python -m nopunk_mud.cli_console                 # interactive
+    python -m nopunk_mud.cli_console --script s.txt  # non-interactive, for tests and for CI
+    python -m nopunk_mud.cli_console --seed 7 --script s.txt
 
 The console owns no rules. It reads a line, hands it to the campaign engine, prints what comes back, and knows
 exactly four things the engine does not: how to read input, how to quit, and how to save or load a game to a
@@ -23,7 +23,7 @@ from nopunk_mud.campaign import CampaignEngine
 BANNER = "NooPunk — UNSA Helsinki. Type 'help' for commands, 'quit' to leave."
 
 
-class Console:
+class MudConsole:
     """A thin shell over CampaignEngine. Deliberately thin: any rule here would be a rule in two places."""
 
     def __init__(self, *, seed: int = 7, out: TextIO | None = None) -> None:

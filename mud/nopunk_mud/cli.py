@@ -16,7 +16,7 @@ from pathlib import Path
 
 from nopunk_mud import cwn
 from nopunk_mud.campaign import CampaignEngine
-from nopunk_mud.console import Console
+from nopunk_mud.cli_console import MudConsole
 from nopunk_mud.world_state import WorldState
 
 #: A legal UNSA recruit: Academy graduate, middling in everything, trained where it matters.
@@ -77,9 +77,9 @@ def main() -> int:
                         help="resume a saved campaign; the case continues where it stopped")
     args = parser.parse_args()
     if args.campaign:
-        # One console loop for both entry points: `nopunk_mud.console` owns the shell, this reuses it
+        # One console loop for both entry points: `nopunk_mud.cli_console` owns the shell, this reuses it
         # rather than keeping a second copy of the same read-print-persist cycle.
-        console = Console(seed=args.seed)
+        console = MudConsole(seed=args.seed)
         if args.load:
             console.engine = CampaignEngine.from_dict(json.loads(args.load.read_text(encoding="utf-8")))
         save_file = args.save or args.load
