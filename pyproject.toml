@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "noopunk-rules"
 version = "0.1.0"
-description = "NoöPunk engine-neutral RPG rules, console, and portable tabletop prototype"
+description = "NoöPunk engine-neutral RPG rules, console, and portable interfaces"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "See LICENSE" }
@@ -13,6 +13,8 @@ dependencies = []
 
 [project.optional-dependencies]
 test = []
+web = ["nicegui>=2"]
+textual = ["textual>=1"]
 
 [project.scripts]
 noopunk-case = "console.play:main"
@@ -24,7 +26,7 @@ package-dir = {"" = "src", "portable_noopunk" = "portable_noopunk"}
 [tool.setuptools.packages.find]
 where = ["src", "."]
 include = [
-  "portable_noopunk",
+  "portable_noopunk", "portable_noopunk.*",
   "rules", "rules.*",
   "simulation", "simulation.*",
   "text_game", "text_game.*",
