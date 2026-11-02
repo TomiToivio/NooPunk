@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "noopunk-portable-slice"
+version = "0.1.0"
+description = "NoöPunk headless tabletop-parity prototype (not comprehensive CWN rules)"
+requires-python = ">=3.10"
+
+[tool.setuptools]
+packages = ["portable_noopunk"]
+
+[project.scripts]
+noopunk-slice = "portable_noopunk.console:main"
