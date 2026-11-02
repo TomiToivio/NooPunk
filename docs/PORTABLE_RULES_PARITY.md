@@ -41,7 +41,7 @@ Run with no GM, LLM or network:
 ```sh
 cd mud
 python -m nopunk_mud.portable_cli --script "accept hq;interview kurvi;report hq;submit hq"
-python -m unittest tests.test_portable_1053_1054
+python -m unittest discover -s tests -p 'test_portable_1053_1054.py'
 ```
 
 ## Review and release gate
