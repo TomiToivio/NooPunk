@@ -117,6 +117,10 @@
         "tier": "cwn-core"
       },
       {
+        "module": "src/rules/cwn_alienation.py",
+        "tier": "cwn-core"
+      },
+      {
         "module": "src/rules/cwn_attack_modifiers.py",
         "tier": "cwn-core"
       },
@@ -186,6 +190,10 @@
       },
       {
         "module": "src/rules/cwn_injury_procedure.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_magic.py",
         "tier": "cwn-core"
       },
       {
