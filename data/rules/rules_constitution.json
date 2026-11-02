@@ -313,6 +313,10 @@
         "tier": "noopunk-mod"
       },
       {
+        "module": "src/rules/swn_faction_engine.py",
+        "tier": "swn-companion"
+      },
+      {
         "module": "src/rules/swn_faction_operations.py",
         "tier": "swn-companion"
       },
