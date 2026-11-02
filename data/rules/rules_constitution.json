@@ -105,6 +105,10 @@
     "tier": "optional-source"
    },
    {
+    "module": "src/rules/awn_stress.py",
+    "tier": "optional-source"
+   },
+   {
     "module": "src/rules/awn_survival.py",
     "tier": "optional-source"
    },
@@ -422,6 +426,10 @@
    },
    {
     "module": "src/rules/wwn_projects.py",
+    "tier": "optional-source"
+   },
+   {
+    "module": "src/rules/wwn_spell_effects.py",
     "tier": "optional-source"
    },
    {

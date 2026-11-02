@@ -1,0 +1,151 @@
+{
+ "$comment": "WWN spell effects, batch 1: the thirteen High Magic level-1 spells. Source: the Worlds Without Number SRD (CC0, data/sources/game_system_rights.json), spells.md. Each row is a *structured paraphrase* of the mechanical content — range, duration, target counts, save category and any formula — not the SRD's prose. Rows the GM must still adjudicate carry \"manual\": true and say why in \"note\". Spells not listed here are untranscribed: the resolver refuses them rather than guessing.",
+ "format": "noopunk.rules.wwn_spell_effects",
+ "version": 1,
+ "issue": "https://github.com/TomiToivio/NooPunk/issues/1085",
+ "source": {
+  "system": "Worlds Without Number",
+  "document": "WWN SRD",
+  "url": "https://raw.githubusercontent.com/beaurancourt/wwn-srd/main/spells.md",
+  "licence": "CC0 (verified: data/sources/game_system_rights.json)",
+  "batch": "High Magic, level 1",
+  "transcribed": 13,
+  "remaining": {"high_magic": 39, "elementalist": 15, "necromancer": 16}
+ },
+ "effects": [
+  {
+   "id": "arcane_spark",
+   "kind": "damage",
+   "targets": "one visible creature",
+   "range": "100 ft per caster level",
+   "duration": "instant",
+   "save": {"category": "physical", "on_success": "half"},
+   "damage": {"die": "1d8", "per": "caster_level", "applies_to": "the target"},
+   "ignores": ["non-magical intervening barriers, if the caster can see the target unaided"],
+   "manual": false,
+   "note": "NPCs with a single hit die die regardless of the damage rolled."
+  },
+  {
+   "id": "blunt_contact",
+   "kind": "buff_or_debuff",
+   "targets": "one creature or one visible weapon",
+   "range": "200 ft",
+   "duration": "creature: one round per two caster levels, rounded up; weapon: the rest of the Turn",
+   "save": {"category": "physical", "on_success": "negates the hit, per hit", "applies_to": "creature form"},
+   "manual": true,
+   "note": "The creature form calls for a save on every weapon hit; the weapon form has no save. Once per Turn per target, natural weapons excluded, and the caster cannot be the creature target."
+  },
+  {
+   "id": "control_animal",
+   "kind": "control",
+   "targets": "one visible normal, non-magical animal or insect",
+   "range": "visible",
+   "duration": "until released, dispelled, or cast again",
+   "save": null,
+   "manual": true,
+   "note": "The beast obeys non-suicidal commands and shares its senses while the caster spends a Main Action focusing; it will not fight. What counts as suicidal or out of character is the table's call."
+  },
+  {
+   "id": "create_illusion",
+   "kind": "illusion",
+   "targets": "an area of 10-ft cubes equal to the caster's level",
+   "range": "visible point within 100 ft per caster level",
+   "duration": "until dispelled, dropped, or cast again",
+   "save": {"category": "mental", "on_success": "rejects the illusion for that creature", "timing": "each round, once the creature believes it false"},
+   "manual": true,
+   "note": "Phantasmal attackers use the caster's hit bonus, deal 1d8, have AC 10 and vanish if struck; at most one per two caster levels. Creatures dropped to zero hit points fall unconscious and wake after ten minutes with 1 hit point."
+  },
+  {
+   "id": "destroy_earth",
+   "kind": "damage_or_destruction",
+   "targets": "up to one contiguous 10-ft cube per caster level of non-magical plant matter, or plant-based monsters",
+   "range": "100 ft per caster level",
+   "duration": "instant",
+   "save": {"category": "physical", "on_success": "half", "applies_to": "plant-based monsters only"},
+   "damage": {"die": "1d10", "per": "caster_level", "applies_to": "plant-based monsters"},
+   "manual": false,
+   "note": "Ordinary plant matter is destroyed outright; enchanted plant matter is unaffected."
+  },
+  {
+   "id": "detect_thoughts",
+   "kind": "information",
+   "targets": "one visible living creature",
+   "range": "100 ft per caster level",
+   "duration": "the rest of the Turn",
+   "save": {"category": "mental", "on_success": "the spell ends", "timing": "before answering each memory question"},
+   "manual": true,
+   "note": "Surface thoughts come free; one memory question per caster level is asked at the risk of the spell ending. Casting is subtle — no visible gesture or audible word."
+  },
+  {
+   "id": "dominate_person",
+   "kind": "control",
+   "targets": "one visible living creature",
+   "range": "100 ft",
+   "duration": "until dispelled, or the caster dies or releases the subject",
+   "save": {"category": "mental", "penalty": "the caster's Magic skill", "on_success": "resists"},
+   "manual": true,
+   "note": "Commands must be physical and non-suicidal; no questions, judgment calls or non-physical abilities. Recasting gives every prior subject an unmodified save, and a subject with more hit dice than the caster saves daily against strongly objectionable orders."
+  },
+  {
+   "id": "dominate_sense",
+   "kind": "debuff",
+   "targets": "one visible creature",
+   "range": "200 ft",
+   "duration": "failure: the rest of the Turn; success: the next round only",
+   "save": {"category": "mental", "on_success": "the binding lasts one round"},
+   "manual": true,
+   "note": "One sense is controlled: false impressions, or blinding and deafening. Blinded creatures cannot make ranged attacks and roll melee twice, taking the worse. Tactile distraction costs a Physical save to act each round; a creature that believes itself in mortal peril may save at the end of each round."
+  },
+  {
+   "id": "invisibility",
+   "kind": "buff",
+   "targets": "up to one willing creature per caster level",
+   "range": "100 ft at casting; targets may separate afterwards",
+   "duration": "up to one hour per caster level",
+   "save": null,
+   "manual": false,
+   "note": "Missile attacks against invisible foes are largely impossible and melee attacks suffer -4. Any violent motion (running, attacking, casting) breaks it, and breaking it for one subject breaks it for all."
+  },
+  {
+   "id": "see_magic",
+   "kind": "information",
+   "targets": "the caster",
+   "range": "self",
+   "duration": "one Turn per character level",
+   "save": null,
+   "manual": false,
+   "note": "Reveals active magic as auras, identifies items with a one-sentence description, shows mages who have spells prepared, and grants normal sight in perfect darkness. Subtler readings need Wis/Magic checks at difficulty 8 or more."
+  },
+  {
+   "id": "speed",
+   "kind": "buff",
+   "targets": "up to one willing creature per caster level",
+   "range": "100 ft",
+   "duration": "the rest of the Turn",
+   "save": null,
+   "cost": {"system_strain": 1, "applies_to": "each creature that uses the movement"},
+   "manual": false,
+   "note": "Cast as a Free action. Doubles ground movement, allows running on walls and ceilings, avoids parting attacks without a Fighting Withdrawal, and lets the subject slip past armed foes who do not fully block the way."
+  },
+  {
+   "id": "statis",
+   "kind": "control",
+   "targets": "one willing or helpless creature the caster touches",
+   "range": "touch",
+   "duration": "up to one day per caster level",
+   "save": null,
+   "manual": false,
+   "note": "A Free spell, only if nothing else was cast this round. The subject is immune to all non-magical harm and weighs four items of Encumbrance. The caster may end it early unless the subject is the caster, in which case the full duration must elapse."
+  },
+  {
+   "id": "the_wind_of_final_repose",
+   "kind": "incapacitate",
+   "targets": "all living creatures within a 20-ft radius",
+   "range": "a visible point within 200 ft",
+   "duration": "until roused, or the end of the Turn",
+   "save": null,
+   "manual": false,
+   "note": "Creatures with 4 or fewer hit dice fall unconscious instantly; damage or a Main Action rouses them, and unroused targets wake at the end of the Turn. Creatures that do not sleep are immune."
+  }
+ ]
+}
