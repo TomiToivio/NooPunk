@@ -22,19 +22,22 @@ Track: **Current location** (HQ, hospital, library), **clues** (anomalous clock;
 | Two independent clues before concluding | `Game.apply` | `test_case_and_sidequest_and_save_roundtrip` | Implemented |
 | Optional library record sidequest | `Game.apply` | `test_case_and_sidequest_and_save_roundtrip` | Implemented |
 | Duplicate clues have no effect | `Game.apply` | `test_repeated_actions_do_not_duplicate_clues` | Implemented |
+| Cross-interface action/result parity | `portable_noopunk.adapters.LocalAdapter` | `test_same_actions_same_results` | Implemented for two headless entry paths |
+| Adapter save/load and read-only snapshots | `LocalAdapter.load/snapshot` | `test_save_round_trip_and_action_validation`, `test_snapshot_is_copy` | Implemented |
 | Portable campaign state | `Game.to_json/from_json` | `test_case_and_sidequest_and_save_roundtrip` | Implemented |
 | CWN full character creation/combat/skills | Existing published CWN rules; migration audit needed | Canonical examples needed | **NOT IMPLEMENTED BY THIS SLICE** |
 | SWN/WWN/AWN additional systems, modifiers, Tarot | Separate future modules | Not yet | Deferred |
 
 ## Architecture and run instructions
 
-The Python slice depends only on the standard library. `portable_noopunk.campaign` owns state/action resolution. `portable_noopunk.console` is a disposable thin frontend. Existing Evennia logic is untouched. Other adapters may issue the exact same `Action` commands to the same `Game` instance; LLMs cannot circumvent `available_actions`.
+The Python slice depends only on the standard library. `portable_noopunk.campaign` owns state/action resolution. `portable_noopunk.console` is a disposable thin frontend. Existing Evennia logic is untouched. `portable_noopunk.adapters.LocalAdapter` is the engine-neutral adapter facade: it dispatches validated actions, returns the legal action list, supports portable save/load, and exposes copied state snapshots. Both direct Python play and adapter play must produce identical outcomes for the same action sequence. Future Evennia/Concordia/Pygame adapters should translate framework input/output through this interface, never duplicate mechanics. LLMs cannot circumvent `available_actions`.
 
 Run from repository root:
 
 ```bash
 python -m portable_noopunk.console
-python -m unittest discover -s tests -p 'test_portable_campaign.py'
+python -m unittest discover -s tests -p 'test_portable_*.py'
+# Optional package install: python -m pip install -e .
 ```
 
 **Every new rule or mod must update both the tabletop rulebook and shared Python code in one PR**, with matching manual procedures, tests and a rule-to-code mapping. Avoid claiming complete book-rule parity until independently audited. See `docs/DESIGN_PRINCIPLES.md` and issues #1053 and #1054.
