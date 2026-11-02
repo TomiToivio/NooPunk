@@ -3,8 +3,8 @@
   "source": "src/rules",
   "note": "Registry of implemented rule procedures. Presence here is code coverage, not SRD parity.",
   "totals": {
-    "modules": 39,
-    "procedures": 402
+    "modules": 43,
+    "procedures": 425
   },
   "modules": [
     {
@@ -1098,6 +1098,44 @@
       "count": 20
     },
     {
+      "module": "cwn_graced.py",
+      "procedures": [
+        {
+          "name": "art_points",
+          "signature": "(level)",
+          "doc": "Cumulative art points available at a level; points are saved, never reset."
+        },
+        {
+          "name": "Graced",
+          "signature": "",
+          "doc": "",
+          "methods": [
+            {
+              "name": "Graced.available",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Graced.buy",
+              "signature": "(art)",
+              "doc": ""
+            },
+            {
+              "name": "Graced.upgrade",
+              "signature": "(old, new)",
+              "doc": "The Alacrity exception: a lower version may be upgraded, nothing else may."
+            }
+          ]
+        },
+        {
+          "name": "may_take_edge",
+          "signature": "(edge)",
+          "doc": ""
+        }
+      ],
+      "count": 5
+    },
+    {
       "module": "cwn_hacking.py",
       "procedures": [
         {
@@ -1392,109 +1430,149 @@
       "module": "cwn_magic.py",
       "procedures": [
         {
-          "name": "cyber_effort_penalty",
+          "name": "cyberware_penalty",
           "signature": "(strain_costs)",
-          "doc": "Effort lost to implants: the System Strain of each, and at least one point per implant."
+          "doc": "Effort lost to implants: each costs its System Strain, and at least one point each."
         },
         {
-          "name": "mage_effort_max",
-          "signature": "(int_mod, wis_mod, cast_skill, *, cyber_strain_costs=...)",
-          "doc": "Maximum Mage Effort (printed p. 231): max(Int, Wis) + Cast, minus every implant, minimum 1."
+          "name": "mage_effort",
+          "signature": "(*, intelligence, wisdom, cast_skill, strain_costs=...)",
+          "doc": "Max Mage Effort = max(INT, WIS modifier) + Cast, minimum 1, less every implant (6.1.1, 6.2.2)."
         },
         {
-          "name": "summoner_effort_max",
-          "signature": "(con_mod, cha_mod, summon_skill, *, cyber_strain_costs=...)",
-          "doc": "Summoner Effort: the better of Constitution or Charisma, plus Summon, minimum 1 (p. 236)."
+          "name": "summoner_effort",
+          "signature": "(*, constitution, charisma, summon_skill, strain_costs=...)",
+          "doc": "Summoner Effort = max(CON, CHA modifier) + Summon, minimum 1, less every implant (6.2.1)."
         },
         {
           "name": "prepared_slots",
           "signature": "(level, cast_skill)",
-          "doc": "ceil(level / 2) + Cast (printed p. 231)."
+          "doc": "ceil(level / 2) + Cast (p. 231): the book's level-1 and level-10 examples are tests."
+        },
+        {
+          "name": "can_cast",
+          "signature": "(*, free_hand, can_speak, disturbed=...)",
+          "doc": "One hand free, a voice, and no hit-point damage or grappling in the round (6.1.3.1)."
         },
         {
           "name": "overcast_result",
           "signature": "(total)",
-          "doc": "Map 1d20 + Cast + Con (\u22122 for day-commitment) onto the overcasting table."
+          "doc": "Map 1d20 + Cast + Con (\u22122 for a day-commitment spell) onto the overcasting table."
         },
         {
-          "name": "Mage",
+          "name": "EffortPool",
           "signature": "",
-          "doc": "A spellcaster's bookkeeping. Prepared spells are learned ones; Effort is committed, not spent.",
+          "doc": "One caster's pool, kept separate per class: a mage cannot borrow a summoner's Effort.",
           "methods": [
             {
-              "name": "Mage.effort_max",
+              "name": "EffortPool.available",
               "signature": "()",
               "doc": ""
             },
             {
-              "name": "Mage.committed_total",
+              "name": "EffortPool.committed",
               "signature": "()",
               "doc": ""
             },
             {
-              "name": "Mage.effort_free",
+              "name": "EffortPool.total_committed",
               "signature": "()",
               "doc": ""
             },
             {
-              "name": "Mage.slots",
+              "name": "EffortPool.commit",
+              "signature": "(amount, *, duration)",
+              "doc": ""
+            },
+            {
+              "name": "EffortPool.end_scene",
               "signature": "()",
               "doc": ""
             },
             {
-              "name": "Mage.learn",
-              "signature": "(spell)",
-              "doc": ""
-            },
-            {
-              "name": "Mage.prepare",
-              "signature": "(spells)",
-              "doc": "Fill the slots; the book allows changing them only when Effort refreshes."
-            },
-            {
-              "name": "Mage.can_cast",
-              "signature": "(*, hands_free=..., can_speak=..., disturbed=...)",
-              "doc": "One free hand, a voice, and no damage/grapple in the round (printed p. 232)."
-            },
-            {
-              "name": "Mage.cast",
-              "signature": "(spell, commitment, *, overcast=..., check=...)",
-              "doc": "Cast a prepared spell, committing Effort unless overcasting."
-            },
-            {
-              "name": "Mage.overcast_roll",
-              "signature": "(die, *, day_commitment=...)",
-              "doc": "The die is 1d20; Cast and Con are added, and a day-commitment spell subtracts 2."
-            },
-            {
-              "name": "Mage.struck_while_casting",
+              "name": "EffortPool.reclaim_duration",
               "signature": "()",
-              "doc": "A held action that lands mid-cast: the spell is lost and the Effort is wasted."
+              "doc": "Instant action; whatever the Effort fuelled ends immediately."
             },
             {
-              "name": "Mage.reclaim_duration",
-              "signature": "()",
-              "doc": "Commitment for the duration can be reclaimed at will; the effect ends when it is."
+              "name": "EffortPool.refresh_morning",
+              "signature": "(*, slept_eight_hours=..., comfortable=...)",
+              "doc": "Day commitments and everything else return \u2014 but only after an undisturbed night."
             },
             {
-              "name": "Mage.end_scene",
-              "signature": "()",
-              "doc": ""
-            },
-            {
-              "name": "Mage.refresh",
-              "signature": "(*, rested=...)",
-              "doc": "Eight undisturbed hours in reasonable comfort; day Effort and everything else returns."
+              "name": "EffortPool.overcast_roll",
+              "signature": "(die, *, cast_skill=..., constitution_mod=..., day_commitment=...)",
+              "doc": "1d20 + Cast + Con mod, \u22122 for a day-commitment spell (6.1.4)."
             }
           ]
         },
         {
-          "name": "summoner_spirit_binding",
-          "signature": "(*, effort, controlled=...)",
-          "doc": "Summoner Effort bound in a spirit stays spent until the morning after it is dispelled (p. 236)."
+          "name": "Spellbook",
+          "signature": "",
+          "doc": "What a caster has learned and prepared. Prepared spells are drawn from learned ones.",
+          "methods": [
+            {
+              "name": "Spellbook.slots",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Spellbook.learn",
+              "signature": "(spell)",
+              "doc": "One week of practice with a tutor or grimoire; the price is the caller's business."
+            },
+            {
+              "name": "Spellbook.prepare",
+              "signature": "(spells)",
+              "doc": ""
+            },
+            {
+              "name": "Spellbook.cast",
+              "signature": "(spell, pool, *, duration=..., overcast=..., free_hand=..., can_speak=..., disturbed=...)",
+              "doc": "Cast a prepared spell: one Effort committed unless this is an overcast."
+            }
+          ]
         }
       ],
-      "count": 19
+      "count": 18
+    },
+    {
+      "module": "cwn_magic_items.py",
+      "procedures": [
+        {
+          "name": "can_sense_magic",
+          "signature": "(*, has_magical_edge, cast_skill=..., summon_skill=...)",
+          "doc": "Feeling that an item is magical by touch: any Graced, mage or summoner."
+        },
+        {
+          "name": "can_identify",
+          "signature": "(*, minimum_magic_skill, cast_skill=..., summon_skill=..., days_of_study=...)",
+          "doc": "6.4.1: the item's minimum skill, or a day's study for an item without one."
+        },
+        {
+          "name": "can_link_unaided",
+          "signature": "(*, cast_skill=..., summon_skill=...)",
+          "doc": "6.4.2: an intellectual knowledge of the process is enough \u2014 Cast-0 or Summon-0 qualifies."
+        },
+        {
+          "name": "LinkedItem",
+          "signature": "",
+          "doc": "The bookkeeping the rules actually require while an item is worn.",
+          "methods": [
+            {
+              "name": "LinkedItem.link",
+              "signature": "(*, guided=..., cast_skill=..., summon_skill=...)",
+              "doc": ""
+            },
+            {
+              "name": "LinkedItem.unlink",
+              "signature": "()",
+              "doc": "Strain returns now; a committed Effort point returns the following morning."
+            }
+          ]
+        }
+      ],
+      "count": 5
     },
     {
       "module": "cwn_major_injury.py",
@@ -1677,6 +1755,95 @@
         }
       ],
       "count": 6
+    },
+    {
+      "module": "cwn_save_adapter.py",
+      "procedures": [
+        {
+          "name": "normalize_attribute_scores",
+          "signature": "(attributes)",
+          "doc": "Return code-keyed modifiers from full, abbreviated or lowercase score keys."
+        },
+        {
+          "name": "save_target",
+          "signature": "(kind, *, level, attributes)",
+          "doc": "Resolve a CWN save using the canonical formula for any sheet spelling."
+        }
+      ],
+      "count": 2
+    },
+    {
+      "module": "cwn_special_maneuvers.py",
+      "procedures": [
+        {
+          "name": "size_check_modifier",
+          "signature": "(size)",
+          "doc": "Apply to every grappling/shoving skill check against unusual targets."
+        },
+        {
+          "name": "shove",
+          "signature": "(*, melee_hit, attacker_check, defender_check, knock_prone=..., size=...)",
+          "doc": "A damaging melee attack is replaced by an opposed Str/Exert or Str/Punch check."
+        },
+        {
+          "name": "GrappleState",
+          "signature": "",
+          "doc": "One victim, with any number of reasonable attackers represented by their check rolls.",
+          "methods": [
+            {
+              "name": "GrappleState.movement_locked",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "GrappleState.unarmed_only",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "GrappleState.automatic_unarmed_damage_each_round",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "start_grapple",
+          "signature": "(*, unarmed_hit, hands_free, attacker_check, defender_check, size=...)",
+          "doc": "Both hands must be free; the initial unarmed attack deals no damage."
+        },
+        {
+          "name": "escape_grapple",
+          "signature": "(*, defender_check, assailant_checks)",
+          "doc": "Victim spends a Main Action; must beat *every* assailant's Str/Punch check."
+        },
+        {
+          "name": "move_grappled_target",
+          "signature": "(*, attacker_check, defender_check, throw=..., size=...)",
+          "doc": "Costs the grappler a Main Action; failure OR tie frees the target."
+        },
+        {
+          "name": "dual_wield",
+          "signature": "(*, first_skill, second_skill, target_in_both_ranges)",
+          "doc": "Choose one weapon to attack with: -1 hit, +2 damage (not Shock) if both in range."
+        },
+        {
+          "name": "execution_ranged_difficulty",
+          "signature": "(*, unsuspecting, uninterrupted_minute, range_band)",
+          "doc": "Dex/Shoot difficulty: point blank 6, normal range 8, long range 10."
+        },
+        {
+          "name": "execution_melee_auto_hit",
+          "signature": "(*, unsuspecting, uninterrupted_minute, within_reach)",
+          "doc": "A full minute of undisturbed proximity grants an automatic melee hit."
+        },
+        {
+          "name": "execution_hit",
+          "signature": "(*, combat_skill, physical_save_succeeded, nonlethal=...)",
+          "doc": "Call ONLY after a successful execution hit; apply normal/traumatic damage even on a save."
+        }
+      ],
+      "count": 12
     },
     {
       "module": "cwn_strain.py",

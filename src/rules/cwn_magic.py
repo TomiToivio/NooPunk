@@ -1,85 +1,123 @@
-"""CWN 6.1 — Mages, Mage Effort and spellcasting (issue #1068).
+"""CWN 6.1–6.2 — magic in the city: Mage/Summoner Effort, preparation, casting, overcasting (#1068).
 
-Implemented from the CWN SRD, including the two rules that are easiest to get subtly wrong: the Effort pool is
-*not* a flat number, and cyberware eats it.
+Implemented from *Cities Without Number, Deluxe Edition*, printed pp. 231–236, in original wording: the
+arithmetic and the tables, never the rulebook's prose.
 
-**Mage Effort** (6.1.1) = the higher of the Intelligence or Wisdom modifier, plus the Cast skill level, minimum 1.
-It refreshes completely after eight uninterrupted hours of reasonably comfortable sleep. A caster who is starved,
-freezing, thirsting, sick or otherwise physically distracted **does not refresh**.
+**Mage Effort** (6.1.1) = the higher of the Intelligence or Wisdom modifier plus the Cast skill level,
+minimum 1, refreshed after eight uninterrupted hours of comfortable sleep — and a caster who is starved,
+freezing, thirsting or sick does not refresh.
 
-Three commitment durations exist, and they are not interchangeable:
+**Cyberware eats the pool** (6.2.2). Each implant costs its System Strain *and at least one point*: the
+book's worked example (implants at 2, 0 and 0.5 costing four points) only balances under that reading, so
+the example is treated as evidence about the rule rather than as an error to be flagged. A mage who wants
+their pool back removes the chrome.
 
-* ``day``      — returns the next morning.
-* ``scene``    — returns at the end of the scene.
-* ``duration`` — reclaimable as an Instant action, but whatever it fuelled ends when it is reclaimed.
+Three commitment durations exist and are not interchangeable: ``day`` returns the next morning, ``scene``
+at the end of the scene, ``duration`` whenever the caster spends an Instant action to reclaim it — and the
+effect it fuelled ends the moment they do.
 
-**Cyberware** (6.2.2, applied to summoners but the same shape here) reduces the maximum by the System Strain of
-each implant, to a minimum of one point.
-
-Casting (6.1.3.2) needs at least one hand free and the ability to speak; heavy armour or partial restraint is
-fine, being severely jostled is not.
+Optional overlay, like the psionic packages: a campaign without magic never constructs a pool, and nothing
+here is imported by the immutable core.
 """
 from __future__ import annotations
 
 import math
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 
-from src.rules.wn_core import attribute_modifier
+from .cwn_character import attribute_modifier
 
+#: The three commitment durations, in the order the book presents them.
 COMMITMENTS = ("day", "scene", "duration")
+
+#: Overcasting bands (p. 232): inclusive lower bound, inclusive upper bound (None = open), consequence.
+OVERCAST_TABLE: tuple[tuple[int, int | None, str], ...] = (
+    (1, 1, "death"),
+    (2, 4, "mortal_wound"),
+    (5, 8, "unconscious_minute_4_strain"),
+    (9, 15, "stunned_2_strain"),
+    (16, 19, "lost_main_action_1_strain"),
+    (20, None, "1_strain"),
+)
+
+#: System Strain each overcasting band inflicts.
+OVERCAST_STRAIN = {"death": 0, "mortal_wound": 0, "unconscious_minute_4_strain": 4,
+                   "stunned_2_strain": 2, "lost_main_action_1_strain": 1, "1_strain": 1}
+
+#: Learning prices the book names (p. 231): a tutor, or a grimoire.
+TUTOR_COST = 5000
+GRIMOIRE_COST = 10000
 
 
 class MagicError(ValueError):
-    """A rule was about to be broken."""
+    pass
+
+
+def cyberware_penalty(strain_costs: Sequence[float]) -> int:
+    """Effort lost to implants: each costs its System Strain, and at least one point each.
+
+    The book's example (2, 0 and 0.5 → "lose four points") is the reason for the per-implant floor: a
+    sum-then-round reading gives three, and would make the book contradict itself.
+    """
+    penalty = 0
+    for cost in strain_costs:
+        if cost < 0:
+            raise MagicError("System Strain cannot be negative")
+        penalty += max(1, math.ceil(cost))
+    return penalty
 
 
 def mage_effort(*, intelligence: int, wisdom: int, cast_skill: int,
-                cyberware_strain: float = 0.0) -> int:
-    """Max Mage Effort = max(INT, WIS modifier) + Cast skill, min 1, less cyberware strain."""
+                strain_costs: Sequence[float] = ()) -> int:
+    """Max Mage Effort = max(INT, WIS modifier) + Cast, minimum 1, less every implant (6.1.1, 6.2.2)."""
     if cast_skill < 0:
         raise MagicError("Cast skill cannot be negative")
     if intelligence <= 0 or wisdom <= 0:
         raise MagicError("attributes must be positive")
     base = max(attribute_modifier(intelligence), attribute_modifier(wisdom)) + cast_skill
-    pool = base - math.ceil(cyberware_strain)
-    return max(1, pool)
+    return max(1, base - cyberware_penalty(strain_costs))
 
 
 def summoner_effort(*, constitution: int, charisma: int, summon_skill: int,
-                    cyberware_strain: float = 0.0) -> int:
-    """6.2.1: max(CON, CHA modifier) + Summon skill, min 1, reduced by each implant's System Strain."""
+                    strain_costs: Sequence[float] = ()) -> int:
+    """Summoner Effort = max(CON, CHA modifier) + Summon, minimum 1, less every implant (6.2.1)."""
     if summon_skill < 0:
         raise MagicError("Summon skill cannot be negative")
+    if constitution <= 0 or charisma <= 0:
+        raise MagicError("attributes must be positive")
     base = max(attribute_modifier(constitution), attribute_modifier(charisma)) + summon_skill
-    return max(1, base - math.ceil(cyberware_strain))
+    return max(1, base - cyberware_penalty(strain_costs))
 
 
-def cyberware_penalty(strains) -> int:
-    """Effort lost to implants: the System Strain of each, totalled and rounded up.
-
-    **Recorded discrepancy.** The SRD's worked example reads "System Strain costs of 2, 0, and 0.5 would lose four
-    points". 2 + 0 + 0.5 = 2.5, which rounds up to 3, not 4. This function implements the stated rule (sum, round
-    up, floor at one); the example is flagged in `SDT_EXAMPLE_MISMATCH` rather than quietly matched, because
-    guessing which of the three numbers was meant would bake a guess into a rule.
-    """
-    strains = [float(s) for s in strains]
-    if any(s < 0 for s in strains):
-        raise MagicError("System Strain cannot be negative")
-    return math.ceil(sum(strains))
+def prepared_slots(level: int, cast_skill: int) -> int:
+    """ceil(level / 2) + Cast (p. 231): the book's level-1 and level-10 examples are tests."""
+    if level < 1 or cast_skill < 0:
+        raise MagicError("level is at least 1 and skill levels are not negative")
+    return math.ceil(level / 2) + cast_skill
 
 
-SDT_EXAMPLE_MISMATCH = ("SRD 6.2.2 example: 2 + 0 + 0.5 is said to cost four points; the rule as stated "
-                        "gives three. Implemented as stated; the example is unverified.")
+def can_cast(*, free_hand: bool, can_speak: bool, disturbed: bool = False) -> bool:
+    """One hand free, a voice, and no hit-point damage or grappling in the round (6.1.3.1)."""
+    return bool(free_hand and can_speak and not disturbed)
+
+
+def overcast_result(total: int) -> dict:
+    """Map 1d20 + Cast + Con (−2 for a day-commitment spell) onto the overcasting table."""
+    for low, high, consequence in OVERCAST_TABLE:
+        if total >= low and (high is None or total <= high):
+            return {"consequence": consequence, "strain": OVERCAST_STRAIN[consequence]}
+    raise MagicError("an overcasting roll cannot be below 1")
 
 
 @dataclass
 class EffortPool:
-    """A pool with the three commitment durations, kept separate per caster class."""
+    """One caster's pool, kept separate per class: a mage cannot borrow a summoner's Effort."""
+
     maximum: int
     label: str = "mage"
     _committed: dict[str, int] = field(default_factory=lambda: {k: 0 for k in COMMITMENTS})
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         if self.maximum < 1:
             raise MagicError("an Effort pool is at least 1")
 
@@ -90,6 +128,10 @@ class EffortPool:
     @property
     def committed(self) -> dict[str, int]:
         return dict(self._committed)
+
+    @property
+    def total_committed(self) -> int:
+        return sum(self._committed.values())
 
     def commit(self, amount: int, *, duration: str) -> None:
         if duration not in COMMITMENTS:
@@ -110,13 +152,61 @@ class EffortPool:
         return released
 
     def refresh_morning(self, *, slept_eight_hours: bool = True, comfortable: bool = True) -> bool:
-        """6.1.1: day commitments and everything else return, but only with sleep and no hardship."""
+        """Day commitments and everything else return — but only after an undisturbed night."""
         if not slept_eight_hours or not comfortable:
             return False
         self._committed = {k: 0 for k in COMMITMENTS}
         return True
 
+    def overcast_roll(self, die: int, *, cast_skill: int = 0, constitution_mod: int = 0,
+                      day_commitment: bool = False) -> dict:
+        """1d20 + Cast + Con mod, −2 for a day-commitment spell (6.1.4)."""
+        if not 1 <= die <= 20:
+            raise MagicError("overcasting is resolved on a d20")
+        total = die + cast_skill + constitution_mod - (2 if day_commitment else 0)
+        result = overcast_result(total)
+        result.update({"die": die, "total": total})
+        return result
 
-def can_cast(*, free_hand: bool, can_speak: bool) -> bool:
-    """6.1.3.2: one hand free and the ability to speak. Heavy armour is explicitly fine."""
-    return bool(free_hand and can_speak)
+
+@dataclass
+class Spellbook:
+    """What a caster has learned and prepared. Prepared spells are drawn from learned ones."""
+
+    level: int
+    cast_skill: int
+    known: list[str] = field(default_factory=list)
+    prepared: list[str] = field(default_factory=list)
+
+    @property
+    def slots(self) -> int:
+        return prepared_slots(self.level, self.cast_skill)
+
+    def learn(self, spell: str) -> None:
+        """One week of practice with a tutor or grimoire; the price is the caller's business."""
+        if spell in self.known:
+            raise MagicError(f"{spell!r} is already known")
+        self.known.append(spell)
+
+    def prepare(self, spells: Sequence[str]) -> None:
+        if len(spells) > self.slots:
+            raise MagicError(f"{self.slots} slots at level {self.level} with Cast-{self.cast_skill}")
+        unknown = [spell for spell in spells if spell not in self.known]
+        if unknown:
+            raise MagicError(f"cannot prepare unlearned spells: {', '.join(unknown)}")
+        if len(set(spells)) != len(spells):
+            raise MagicError("the same spell prepared twice still takes one slot")
+        self.prepared = list(spells)
+
+    def cast(self, spell: str, pool: EffortPool, *, duration: str = "scene", overcast: bool = False,
+             free_hand: bool = True, can_speak: bool = True, disturbed: bool = False) -> dict:
+        """Cast a prepared spell: one Effort committed unless this is an overcast."""
+        if spell not in self.prepared:
+            raise MagicError(f"{spell!r} is not prepared")
+        if not can_cast(free_hand=free_hand, can_speak=can_speak, disturbed=disturbed):
+            raise MagicError("the caster needs a free hand, a voice and a steady round")
+        if overcast:
+            return {"spell": spell, "effort": 0, "overcast": True, "commitment": "scene",
+                    "note": "a duration-committed spell overcast lasts one scene"}
+        pool.commit(1, duration=duration)
+        return {"spell": spell, "effort": 1, "overcast": False, "commitment": duration}

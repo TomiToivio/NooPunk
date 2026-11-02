@@ -1,9 +1,10 @@
 """Issue #1068: adapters must not modify or duplicate the CWN save formula."""
-import pathlib
 import sys
 import unittest
+from pathlib import Path
 
-sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "src"))
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
 from rules import cwn_save_adapter, wn_core
 
 
