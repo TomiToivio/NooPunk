@@ -59,24 +59,24 @@ These keep the filename/keyword heuristic from #1025. Promoting a row to the ver
 
 | Section | Status | Modules (heuristic) |
 | --- | --- | --- |
-| Character Creation | not_applicable | cwn_advancement.py, cwn_character.py |
+| Character Creation | not_applicable | cwn_advancement.py, cwn_alienation.py |
 | Attributes | implemented | cwn_backgrounds.py, cwn_character.py |
 | Backgrounds | implemented | cwn_backgrounds.py |
 | Contacts | implemented | cwn_backgrounds.py |
 | Edges | implemented | cwn_edges_foci.py |
 | Foci | implemented | cwn_edges_foci.py, cwn_foci.py |
 | Focus Gear Budget | implemented | cwn_advancement.py, cwn_character.py |
-| Rules Of The Game | not_applicable | cwn_advancement.py, cwn_attack_modifiers.py |
+| Rules Of The Game | not_applicable | cwn_advancement.py, cwn_alienation.py |
 | Scenes Rounds Mission Time | implemented | cwn_backgrounds.py, cwn_core.py |
 | Saving Throws | implemented | cwn_core.py, wn_core.py |
 | Skill Checks | implemented | cwn_advancement.py, cwn_backgrounds.py |
-| Combat | implemented | cwn_advancement.py, cwn_attack_modifiers.py |
+| Combat | implemented | cwn_advancement.py, cwn_alienation.py |
 | Combat Initiative | implemented | cwn_initiative.py |
 | Combat Actions | implemented | cwn_combat_actions.py, cwn_hacking.py |
 | Damage Trauma Shock | implemented | cwn_core.py, cwn_equipment.py |
 | Vehicle Combat | implemented | cwn_foci.py, cwn_vehicles.py |
-| Injury Healing System Strain | implemented | cwn_advancement.py, cwn_attack_modifiers.py |
-| System Strain | implemented | cwn_advancement.py, cwn_attack_modifiers.py |
+| Injury Healing System Strain | implemented | cwn_advancement.py, cwn_alienation.py |
+| System Strain | implemented | cwn_advancement.py, cwn_alienation.py |
 | Natural Healing First Aid Poisons | implemented | cwn_advancement.py, cwn_core.py |
 | Character Advancement | implemented | cwn_advancement.py, cwn_foci.py |
 | Gear Vehicles Cyberware | not_applicable | cwn_character.py, cwn_cyberware.py |
