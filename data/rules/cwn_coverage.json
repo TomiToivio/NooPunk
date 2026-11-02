@@ -3,8 +3,8 @@
   "source": "src/rules",
   "note": "Registry of implemented rule procedures. Presence here is code coverage, not SRD parity.",
   "totals": {
-    "modules": 35,
-    "procedures": 347
+    "modules": 36,
+    "procedures": 362
   },
   "modules": [
     {
@@ -1837,6 +1837,108 @@
         }
       ],
       "count": 37
+    },
+    {
+      "module": "swn_faction_engine.py",
+      "procedures": [
+        {
+          "name": "Goal",
+          "signature": "",
+          "doc": "A faction's current aim. Progress is game state; no table decides it.",
+          "methods": [
+            {
+              "name": "Goal.complete",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Goal.advance",
+              "signature": "(amount=...)",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "FactionProfile",
+          "signature": "",
+          "doc": "Everything the engine needs beyond :class:`~.swn_faction_turn.Faction`'s credits and assets.",
+          "methods": [
+            {
+              "name": "FactionProfile.attribute",
+              "signature": "(which)",
+              "doc": ""
+            },
+            {
+              "name": "FactionProfile.hurt",
+              "signature": "(amount)",
+              "doc": ""
+            },
+            {
+              "name": "FactionProfile.defeated",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        },
+        {
+          "name": "FactionEngine",
+          "signature": "",
+          "doc": "One world's strategic layer: registered factions, a deterministic order, an audited turn.",
+          "methods": [
+            {
+              "name": "FactionEngine.register",
+              "signature": "(profile)",
+              "doc": ""
+            },
+            {
+              "name": "FactionEngine.profile",
+              "signature": "(identifier)",
+              "doc": ""
+            },
+            {
+              "name": "FactionEngine.order",
+              "signature": "()",
+              "doc": "Highest attribute first, tie broken by the configured attribute, then by id."
+            },
+            {
+              "name": "FactionEngine.action_available",
+              "signature": "(identifier)",
+              "doc": ""
+            },
+            {
+              "name": "FactionEngine.act",
+              "signature": "(identifier, action, *, asset_ids=..., target=...)",
+              "doc": "Record one strategic action, refusing everything the rules disallow."
+            },
+            {
+              "name": "FactionEngine.purchase",
+              "signature": "(identifier, asset, *, cost)",
+              "doc": "Buy an asset. The cost is scenario data; the engine only enforces affordability and caps."
+            },
+            {
+              "name": "FactionEngine.damage",
+              "signature": "(identifier, amount)",
+              "doc": ""
+            },
+            {
+              "name": "FactionEngine.end_round",
+              "signature": "()",
+              "doc": "Close the turn: income lands, actions reset, the round number advances."
+            },
+            {
+              "name": "FactionEngine.audit",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "FactionEngine.to_json",
+              "signature": "()",
+              "doc": ""
+            }
+          ]
+        }
+      ],
+      "count": 15
     },
     {
       "module": "swn_faction_operations.py",
