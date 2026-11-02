@@ -74,6 +74,26 @@ continues to `solved`. Both paths are tests, not anecdotes:
 `test_a_complete_case_is_played_and_finished_offline`,
 `test_a_saved_case_resumes_where_it_stopped`, `test_the_same_seed_and_commands_replay_exactly`.
 
+### Typed adapter boundary (this change)
+
+`mud/nopunk_mud/session.py` turns the engine's text-in/text-out surface into the envelope the
+architecture asks for:
+
+```
+Action(text) -> CampaignSession.execute(...) -> ActionResult(text, events, state, finished)
+```
+
+It holds no rule. Each event is derived from the **before/after state document** — `location_changed`,
+`clue_gained`, `flag_gained`, `hp_changed`, `ending_reached`, `turn`, or `rejected` when the engine
+did not accept the verb — so an adapter cannot narrate a change the engine did not make. `CmdSolo`
+now routes through it and stores `result.state`; the console keeps its own save/load shell.
+
+`mud/tests/test_session_adapter_1053.py` replays one seeded case through the engine, the session and
+the Evennia command with the framework stubbed, and compares **state documents**, including a
+save/load round trip. It also pins a defect the comparison exposed: `CampaignEngine.to_dict()` was
+returning live `clues`/`flags`/`talked` lists, so a document kept by an adapter silently changed under
+it. `to_dict()` now returns copies.
+
 ## 3. Priority 1 and 2 — not started, and why
 
 | item | status | note |
@@ -81,7 +101,7 @@ continues to `solved`. Both paths are tests, not anecdotes:
 | Evennia adapter uses the shared core | **already the case in part** — commands/typeclasses call `nopunk_mud`, which is engine-free; a dedicated adapter test is still missing | next step: a test that a command resolves through the engine rather than re-implementing a rule |
 | Concordia LLM actor/GM adapter | **deferred** (Milestone B) | must submit validated actions through `CampaignEngine.command`; never authoritative |
 | Pygame prototype | **deferred** (Milestone B) | after the console slice is complete |
-| Cross-adapter seeded scenario tests | **not yet** — only one adapter exists | becomes possible with the Pygame/Concordia adapters |
+| Cross-adapter seeded scenario tests | **console ↔ Evennia now compared** — `mud/tests/test_session_adapter_1053.py` replays one seeded case through the engine, the typed session and `CmdSolo`, and compares **state documents**; Pygame/Concordia remain deferred | the typed boundary is `nopunk_mud.session`; adding an adapter means implementing `Action -> ActionResult` over it |
 | GUMSHOE / PbtA / LaclauGPT / AWN / Tarot mods | **partial**: Laclau (ideology + dossier), GUMSHOE investigation, Noösphere and AWN stress exist as modules; Tarot is not started | Tarot needs card definitions + a physical procedure before any code |
 
 ## 4. Acceptance conditions, assessed honestly
@@ -99,8 +119,9 @@ continues to `solved`. Both paths are tests, not anecdotes:
 
 1. **Mark pre-ADR Godot-first docs superseded** (one line each, pointing at the ADR) so the repo does not
    teach two architectures.
-2. **Evennia adapter test**: a command that must route through `CampaignEngine`, proving no rule is
-   re-implemented in the MUD.
+2. **Evennia adapter test**: ~~a command that must route through `CampaignEngine`~~ — done for the
+   typed session: the command routes through `CampaignSession`, and the parity test compares its state
+   document with the engine's after the same seeded script.
 3. **Packaging decision** (`src.rules` → `noopunk.rules`) with a deprecation shim, so the import path
    matches the architecture without breaking 133 test files in one commit.
 4. **`solo_campaign.py` disposition**: supersede or fold into `campaign/engine.py`.

@@ -1,3 +1,8 @@
+> **Superseded as architecture (2026-11-03).** The binding decision is
+> [`docs/architecture/ADR_1054_ENGINE_AGNOSTIC_CORE.md`](architecture/ADR_1054_ENGINE_AGNOSTIC_CORE.md):
+> NoöPunk is a standalone, engine-independent Python rules library; Godot is one optional adapter.
+> This document is kept for the Godot adapter's history, not as the project's architecture.
+
 # Godot MVP audit — what exists, what the vertical slice still needs (#749)
 
 **Measured 2026-10-30** against `origin/main` @ `5758aeb`, Godot **4.7.2**, headless.

@@ -4,7 +4,7 @@
 **Issues:** #1054 (decision), #1053 (executable migration), #1006 (rules constitution), #1025 (CWN parity)
 **Enforced by:** `tools/check_engine_boundary.py`, `tools/check_godot_rule_duplicates.py`,
 `tools/rules_constitution_audit.py`, `tests/test_console_case_1053.py`,
-`tests/test_rules_constitution_modules.py`
+`mud/tests/test_session_adapter_1053.py`, `tests/test_rules_constitution_modules.py`
 
 ## Decision
 
@@ -48,6 +48,7 @@ Two facts follow, and both are checkable rather than asserted:
 | --- | --- | --- |
 | rules kernel (attributes, checks, combat, strain, saves) | `mud/nopunk_mud/cwn_core.py` + `src/rules/` | implemented, tested |
 | campaign engine (commands, state, endings, save/load, seeded RNG) | `mud/nopunk_mud/campaign/engine.py` | implemented, tested |
+| typed adapter boundary (`Action` → `ActionResult` + events) | `mud/nopunk_mud/session.py` | implemented, tested |
 | console slice (plain text, no engine) | `mud/nopunk_mud/console.py`, flags in `cli.py` | implemented, tested |
 | social layer (rank, scoped reputation) | `mud/nopunk_mud/social.py` | implemented, tested |
 | ideology layer (DA/DNA/SNA) | `mud/nopunk_mud/ideology.py` | implemented, tested |
@@ -87,6 +88,7 @@ importing a `noopunk-mod` module fails the audit, so no overlay can hide inside 
 | --- | --- |
 | domain rules | `src.rules.*` — pure functions and dataclasses, no global state |
 | campaign orchestration | `nopunk_mud.campaign.CampaignEngine` — `command(line)` in, text out; state in `engine.state` |
+| typed adapter boundary | `nopunk_mud.session.CampaignSession.execute(Action) -> ActionResult(text, events, state, finished)`; events are derived from the state transition, never from prose |
 | persistence | `CampaignEngine.to_dict()` / `.from_dict()` — versioned schema, RNG state included |
 | determinism | `CampaignEngine(seed=…)` — the same seed and commands replay exactly |
 | console adapter | `python -m nopunk_mud.cli --campaign [--seed N] [--save PATH] [--load PATH] [--script …]` |
