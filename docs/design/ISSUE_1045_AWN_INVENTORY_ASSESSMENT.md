@@ -29,12 +29,40 @@ table before code. `deferred` — deliberately not now.
 
 | AWN source | Mechanic | Status | Where / gap |
 |---|---|---|---|
-| pp. 56–58 | Stress, Breakdown, Hardening, Addiction, Recovery | **partial** | `awn_survival.py` covers privation → System Strain; the *stress/breakdown/hardening* subsystem of #928 is modelled in `mods/noopunk/stress.gd` (Godot) and **not** ported to the Python rules. Reconcile with #928 before writing a second tracker. |
+| pp. 56–58 | Stress, Breakdown, Hardening, Addiction, Recovery | **reconciled (#928)** | one contract, `data/rules/awn_stress.json`, is the only source of the numbers; `mods/noopunk/stress.gd` loads it and `tests/test_awn_stress_contract_928.py` verifies it line by line against printed pp. 56–58 (WIS ceiling, −2 stacking checks, the five Breakdowns, Hardening clearing Stress and resisting one point per scene, the five printed scars, the hour-and-a-dose addiction rule). The contract test also fails if a second stress contract file ever appears. A Python tracker is a port of the same contract, not a second rule. |
 | pp. 52–55 | Injury, healing, System Strain, Major Injuries, disease, radiation | **partial** | CWN already owns healing and strain (`cwn_healing.py`, `cwn_strain.py`, `cwn_major_injury.py`). AWN's *extensions* (crisis-zone disease/radiation) are not transcribed; the boundary is "add only what CWN lacks". |
 | pp. 59–63 | Hunger, thirst, supplies, overland travel, scouting | **implemented** | `awn_survival.py` + `data/rules/awn_survival.json`: travel hours per terrain/mode/road, exposed travel, encounter check, scouting days, going astray, food encumbrance, privation strain, forage (caller-supplied difficulty) |
 | pp. 72–75, 102–103 | Tech levels, scrap, damage/repair/build/modify gear, identifying tech | **not started** | CWN owns equipment/combat; AWN's scavenging and improvised repair are additive and unbuilt. Blocked on the book's tables. |
 | pp. 104–135 | Enclaves and settlements: Power, Cohesion, Features, Problems, Dominion, Interest, actions, turns, tags | **not started** | Design-relevant for UNSA field bases and quarantine districts. Must be modelled at a **different scale** from SWN factions — see the three-scale table below. |
 | pp. 152–189 | Encounter sites: tags, history, features, occupants, hazards, salvage | **not started** | Content data, not rules; best delivered as scenario files once a site format exists. |
+
+## P0 design → code: the region/world model, implemented
+
+`src/rules/awn_region.py` + `tests/test_awn_region.py` (17 cases) implement the two-level world model
+described below, because it is the one P0 item that needs no AWN table and is therefore not blocked:
+
+| rule | how the module enforces it |
+| --- | --- |
+| a functioning region plays as ordinary CWN | `RegionState.is_functioning` and `active_overlays()` → `()` |
+| an `after_the_fall` region activates the P0 overlays | `OVERLAYS` → travel/supplies, privation strain, site hazards; `emergency` activates privation only |
+| transitions are dated events with a cause | `RegionEvent` requires `date`, `region` and a non-empty `cause`; `transition()` refuses without one |
+| collapse is fast, recovery is slow | `transition_allowed()`: any number of rungs down, exactly one rung up |
+| the world layer is derived | `world_at(date)` aggregates the regions and reports `treats_collapse_as_global: False` |
+
+## Source verification (2026-11-03)
+
+The book was not available to the earlier passes, which is why several rows read "blocked". The
+author-supplied deluxe PDF is now readable at
+`…/Cyberpunk/Cities Without Number/AshesWithoutNumber_Deluxe_061125.pdf`, and the page references above
+were checked against its own table of contents: System Quick Reference 37, Injury/Healing/Strain 52,
+Major Injuries 53, Disease 54, Radiation 55, **Stress 56, Addiction and Recovery 58, Tracking 59,
+Overland Travel 60, Hunger/Thirst/Supplies 62**, Tech Levels and Scrap 72, Damaging and Repairing 73,
+Building 74, Modifying 75, Identifying Mysterious Tech 102, **Enclaves 104** (statistics 105, mechanics
+106, dominion 107, actions 108, creating 110, tags 112–135), Campaign 136 (genres 140, structuring 141,
+crisis 142, exploration 143, region 144, **Building Crises 146**), **Building Encounter Sites 152**
+(tags 154, past 171, features 172, occupants 174, hazards 178, loot 182–189), Adventures 190 (crisis
+192, exploration 194, social 196). The P0 rows above stand; the earlier note that the numbers could not
+be checked no longer applies to them.
 
 ## P1 — regional crisis progression
 
@@ -122,8 +150,9 @@ Any implementation that merges the three into one turn loop has failed the issue
 
 ## Backlog this implies
 
-1. **Reconcile stress** with #928 before any AWN stress code (P0, small, unblocks the rest).
-2. **Region/world state module** with the axes above, dated events and transitions (P0 design → code).
+1. ~~Reconcile stress with #928~~ — **done**: one contract, checked by
+   `tests/test_awn_stress_contract_928.py`. A Python tracker port remains open (see follow-ups).
+2. ~~Region/world state module~~ — **done**: `src/rules/awn_region.py`.
 3. **Enclave model** at settlement scale with an explicit mapping to SWN faction assets (P1).
 4. **Crisis procedure** (pressure, escalation, stabilisation) driven by events (P1).
 5. **Site format** for anomalous encounter locations (P1, content).

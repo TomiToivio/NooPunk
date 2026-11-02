@@ -1,0 +1,531 @@
+{
+ "$comment": "Worlds Without Number SRD (CC0) spell corpus, transcribed as catalogue identity only: tradition, name, level. Effect text is deliberately not reproduced \u2014 it belongs in the book the player reads, and a paraphrase would be a second rulebook nobody proof-reads. The SRD anchor below resolves to the authoritative entry.",
+ "format": "noopunk.rules.wwn_spells",
+ "version": 1,
+ "issue": "https://github.com/TomiToivio/NooPunk/issues/1044",
+ "source": {
+  "system": "Worlds Without Number",
+  "document": "WWN SRD",
+  "url": "https://raw.githubusercontent.com/beaurancourt/wwn-srd/main/spells.md",
+  "licence": "CC0 (verified: data/sources/game_system_rights.json)",
+  "retrieved": "2026-11-03",
+  "counts": {
+   "high_magic": 52,
+   "elementalist": 15,
+   "necromancer": 16
+  },
+  "counts_by_level_high_magic": {
+   "1": 13,
+   "2": 12,
+   "3": 11,
+   "4": 9,
+   "5": 7
+  }
+ },
+ "traditions": {
+  "high_magic": "the common corpus every spellcasting mage may learn",
+  "elementalist": "Elementalist-only",
+  "necromancer": "Necromancer-only"
+ },
+ "anchor": "https://github.com/beaurancourt/wwn-srd/blob/main/spells.md#{slug}",
+ "spells": [
+  {
+   "id": "arcane_spark",
+   "name": "Arcane Spark",
+   "level": 1,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "blunt_contact",
+   "name": "Blunt Contact",
+   "level": 1,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "control_animal",
+   "name": "Control Animal",
+   "level": 1,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "create_illusion",
+   "name": "Create Illusion",
+   "level": 1,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "destroy_earth",
+   "name": "Destroy Earth",
+   "level": 1,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "detect_thoughts",
+   "name": "Detect Thoughts",
+   "level": 1,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "dominate_person",
+   "name": "Dominate Person",
+   "level": 1,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "dominate_sense",
+   "name": "Dominate Sense",
+   "level": 1,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "invisibility",
+   "name": "Invisibility",
+   "level": 1,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "see_magic",
+   "name": "See Magic",
+   "level": 1,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "speed",
+   "name": "Speed",
+   "level": 1,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "statis",
+   "name": "Statis",
+   "level": 1,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "the_wind_of_final_repose",
+   "name": "The Wind of Final Repose",
+   "level": 1,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "destroy_plants",
+   "name": "Destroy Plants",
+   "level": 2,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "dimension_door",
+   "name": "Dimension Door",
+   "level": 2,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "dispel_magic",
+   "name": "Dispel Magic",
+   "level": 2,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "elemental_shield",
+   "name": "Elemental Shield",
+   "level": 2,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "fake_death",
+   "name": "Fake Death",
+   "level": 2,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "floating_palanquin",
+   "name": "Floating Palanquin",
+   "level": 2,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "haste",
+   "name": "Haste",
+   "level": 2,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "scry",
+   "name": "Scry",
+   "level": 2,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "shield_of_daggers",
+   "name": "Shield of Daggers",
+   "level": 2,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "suggestion",
+   "name": "Suggestion",
+   "level": 2,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "summon_familiar",
+   "name": "Summon Familiar",
+   "level": 2,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "vine_growth",
+   "name": "Vine Growth",
+   "level": 2,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "arctic_circle",
+   "name": "Arctic Circle",
+   "level": 3,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "augury",
+   "name": "Augury",
+   "level": 3,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "curse_of_boils",
+   "name": "Curse of Boils",
+   "level": 3,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "fear",
+   "name": "Fear",
+   "level": 3,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "magic_bomb",
+   "name": "Magic Bomb",
+   "level": 3,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "magic_wall",
+   "name": "Magic Wall",
+   "level": 3,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "message",
+   "name": "Message",
+   "level": 3,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "passwall",
+   "name": "Passwall",
+   "level": 3,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "transfer_life",
+   "name": "Transfer Life",
+   "level": 3,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "transfiguration",
+   "name": "Transfiguration",
+   "level": 3,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "wind_walk",
+   "name": "Wind Walk",
+   "level": 3,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "control_wind",
+   "name": "Control Wind",
+   "level": 4,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "delayed_dispel_magic",
+   "name": "Delayed Dispel Magic",
+   "level": 4,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "geas",
+   "name": "Geas",
+   "level": 4,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "greater_dominate_person",
+   "name": "Greater Dominate Person",
+   "level": 4,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "pull_object",
+   "name": "Pull Object",
+   "level": 4,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "rewind",
+   "name": "Rewind",
+   "level": 4,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "rift",
+   "name": "Rift",
+   "level": 4,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "summon_creature",
+   "name": "Summon Creature",
+   "level": 4,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "swapping_sigil",
+   "name": "Swapping Sigil",
+   "level": 4,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "color_bomb",
+   "name": "Color Bomb",
+   "level": 5,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "gate",
+   "name": "Gate",
+   "level": 5,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "impenatrable_dome",
+   "name": "Impenatrable Dome",
+   "level": 5,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "maze",
+   "name": "Maze",
+   "level": 5,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "mold_landscape",
+   "name": "Mold Landscape",
+   "level": 5,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "time_stop",
+   "name": "Time Stop",
+   "level": 5,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "typhoon",
+   "name": "Typhoon",
+   "level": 5,
+   "tradition": "high_magic"
+  },
+  {
+   "id": "elemental_spy",
+   "name": "Elemental Spy",
+   "level": 1,
+   "tradition": "elementalist"
+  },
+  {
+   "id": "flame_scrying",
+   "name": "Flame Scrying",
+   "level": 1,
+   "tradition": "elementalist"
+  },
+  {
+   "id": "one_with_water",
+   "name": "One With Water",
+   "level": 1,
+   "tradition": "elementalist"
+  },
+  {
+   "id": "shape_element",
+   "name": "Shape Element",
+   "level": 1,
+   "tradition": "elementalist"
+  },
+  {
+   "id": "continual_flame",
+   "name": "Continual Flame",
+   "level": 2,
+   "tradition": "elementalist"
+  },
+  {
+   "id": "elemental_resistance",
+   "name": "Elemental Resistance",
+   "level": 2,
+   "tradition": "elementalist"
+  },
+  {
+   "id": "fly",
+   "name": "Fly",
+   "level": 2,
+   "tradition": "elementalist"
+  },
+  {
+   "id": "form_tunnel",
+   "name": "Form Tunnel",
+   "level": 2,
+   "tradition": "elementalist"
+  },
+  {
+   "id": "become_element",
+   "name": "Become Element",
+   "level": 3,
+   "tradition": "elementalist"
+  },
+  {
+   "id": "elemental_wall",
+   "name": "Elemental Wall",
+   "level": 3,
+   "tradition": "elementalist"
+  },
+  {
+   "id": "gaseous_form",
+   "name": "Gaseous Form",
+   "level": 3,
+   "tradition": "elementalist"
+  },
+  {
+   "id": "calcify",
+   "name": "Calcify",
+   "level": 4,
+   "tradition": "elementalist"
+  },
+  {
+   "id": "elemental_guardian",
+   "name": "Elemental Guardian",
+   "level": 4,
+   "tradition": "elementalist"
+  },
+  {
+   "id": "earthquake",
+   "name": "Earthquake",
+   "level": 5,
+   "tradition": "elementalist"
+  },
+  {
+   "id": "fury_of_the_elements",
+   "name": "Fury of the Elements",
+   "level": 5,
+   "tradition": "elementalist"
+  },
+  {
+   "id": "command_the_dead",
+   "name": "Command the Dead",
+   "level": 1,
+   "tradition": "necromancer"
+  },
+  {
+   "id": "disguise_death",
+   "name": "Disguise Death",
+   "level": 1,
+   "tradition": "necromancer"
+  },
+  {
+   "id": "smite_the_dead",
+   "name": "Smite the Dead",
+   "level": 1,
+   "tradition": "necromancer"
+  },
+  {
+   "id": "speak_with_corpse",
+   "name": "Speak with Corpse",
+   "level": 1,
+   "tradition": "necromancer"
+  },
+  {
+   "id": "augment_vitality",
+   "name": "Augment Vitality",
+   "level": 2,
+   "tradition": "necromancer"
+  },
+  {
+   "id": "enfeebling_wave",
+   "name": "Enfeebling Wave",
+   "level": 2,
+   "tradition": "necromancer"
+  },
+  {
+   "id": "final_death",
+   "name": "Final Death",
+   "level": 2,
+   "tradition": "necromancer"
+  },
+  {
+   "id": "raise_corpse",
+   "name": "Raise Corpse",
+   "level": 2,
+   "tradition": "necromancer"
+  },
+  {
+   "id": "dominate_flesh",
+   "name": "Dominate Flesh",
+   "level": 3,
+   "tradition": "necromancer"
+  },
+  {
+   "id": "festering_curse",
+   "name": "Festering Curse",
+   "level": 3,
+   "tradition": "necromancer"
+  },
+  {
+   "id": "forgetting_the_grave",
+   "name": "Forgetting the Grave",
+   "level": 3,
+   "tradition": "necromancer"
+  },
+  {
+   "id": "share_vitality",
+   "name": "Share Vitality",
+   "level": 3,
+   "tradition": "necromancer"
+  },
+  {
+   "id": "boneshape",
+   "name": "Boneshape",
+   "level": 4,
+   "tradition": "necromancer"
+  },
+  {
+   "id": "raise_grave_knight",
+   "name": "Raise Grave Knight",
+   "level": 4,
+   "tradition": "necromancer"
+  },
+  {
+   "id": "call_of_the_tomb",
+   "name": "Call of the Tomb",
+   "level": 5,
+   "tradition": "necromancer"
+  },
+  {
+   "id": "everlasting",
+   "name": "Everlasting",
+   "level": 5,
+   "tradition": "necromancer"
+  }
+ ]
+}

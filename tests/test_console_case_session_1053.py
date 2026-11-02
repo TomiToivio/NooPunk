@@ -249,5 +249,30 @@ class BuildSessionTests(unittest.TestCase):
         self.assertIn("sign-in-sheet", session.discovered)
 
 
+
+class SharedRuleTests(unittest.TestCase):
+    """#1054: an adapter may not compute a check. These pin that the console delegates."""
+
+    def test_the_default_attribute_is_the_plus_zero_band(self) -> None:
+        roll = make_session().risk(8, "Notice")
+        self.assertEqual(roll["attribute"], 10)
+        self.assertEqual(roll["attribute_modifier"], 0)
+        self.assertEqual(roll["total"], sum(roll["dice"]) + roll["rank"])
+
+    def test_a_named_attribute_contributes_its_cwn_modifier(self) -> None:
+        # CWN bands: 14-17 is +1, 3 is -2. Before this parameter the console silently dropped both,
+        # which made every check a different rule from the one in the book.
+        roll = make_session().risk(8, "Notice", attribute=14)
+        self.assertEqual(roll["attribute_modifier"], 1)
+        self.assertEqual(roll["total"], sum(roll["dice"]) + roll["rank"] + 1)
+        weak = make_session().risk(8, "Notice", attribute=3)
+        self.assertEqual(weak["attribute_modifier"], -2)
+        self.assertEqual(weak["total"], sum(weak["dice"]) + weak["rank"] - 2)
+
+    def test_an_impossible_attribute_score_is_refused_by_the_shared_rule(self) -> None:
+        with self.assertRaises(Exception):
+            make_session().risk(8, "Notice", attribute=19)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -9,7 +9,9 @@ import json
 
 import pytest
 
-from mud.nopunk_mud.ideology import (Actor, Concept, Discourse, IdeologyError, Relationship, Statement)
+from mud.nopunk_mud.ideology import (
+    Actor, Concept, Discourse, Goal, IdeologyError, ProfileVersion, Relationship, Statement, reaction,
+)
 
 
 def _world() -> Discourse:
@@ -112,3 +114,124 @@ def test_the_whole_world_round_trips_through_json():
     d.relate(Relationship("unsa", "romppainen", trust=2))
     again = Discourse.from_dict(json.loads(json.dumps(d.to_dict())))
     assert again.to_dict() == d.to_dict()
+
+
+# --------------------------------------------------------------------------- #
+# Phase 1 residue (#1042): goals, append-only profile versions, outcome evidence
+# and the one place the three layers meet — a first reaction.
+# --------------------------------------------------------------------------- #
+
+
+def _politicised() -> Discourse:
+    """Two actors who agree about everything and cannot stand each other."""
+    d = _world()
+    for concept in ("humanity", "security", "consciousness"):
+        d.articulate(Statement("unsa", concept, "support"))
+        d.articulate(Statement("sipuli", concept, "support"))
+    d.relate(Relationship("unsa", "sipuli", trust=-4, debt="the van"))
+    return d
+
+
+def test_goals_keep_three_registers_apart():
+    d = _politicised()
+    d.add_goal(Goal("unsa", "institutional", "survive the audit"))
+    d.add_goal(Goal("unsa", "personal", "be proved right about the van"))
+    d.add_goal(Goal("unsa", "ideological", "keep the disclosure file public"))
+    assert d.goals_of("unsa", "institutional") == ["survive the audit"]
+    assert d.goals_of("unsa", "ideological") == ["keep the disclosure file public"]
+    assert len(d.goals_of("unsa")) == 3
+
+
+def test_a_goal_must_belong_to_a_known_actor_and_a_known_register():
+    d = _world()
+    with pytest.raises(IdeologyError):
+        d.add_goal(Goal("ghost", "personal", "haunt the archive"))
+    with pytest.raises(IdeologyError):
+        Goal("unsa", "budgetary", "cut costs")
+    with pytest.raises(IdeologyError):
+        Goal("unsa", "personal", "   ")
+
+
+def test_a_profile_version_is_append_only():
+    d = _politicised()
+    d.record_profile(ProfileVersion("unsa", "2026-03-01", "public line", ("humanity",)))
+    d.record_profile(ProfileVersion("unsa", "2026-09-01", "revised line", ("humanity", "psi")))
+    assert d.profile_at("unsa", "2026-05-01").label == "public line"
+    assert d.profile_at("unsa", "2026-09-01").label == "revised line"
+    assert d.profile_at("unsa", "2026-01-01") is None
+    # the history cannot be rewritten: an earlier or conflicting version is refused
+    with pytest.raises(IdeologyError):
+        d.record_profile(ProfileVersion("unsa", "2026-02-01", "backdated", ()))
+    with pytest.raises(IdeologyError):
+        d.record_profile(ProfileVersion("unsa", "2026-09-01", "same day, other line", ()))
+    # re-recording the identical version is a no-op rather than an error
+    d.record_profile(ProfileVersion("unsa", "2026-09-01", "revised line", ("humanity", "psi")))
+
+
+def test_an_outcome_is_evidence_when_the_rules_resolved_it():
+    d = _world()
+    d.articulate(Statement("unsa", "security", "support", evidence="outcome", source="check failed"))
+    d.articulate(Statement("sipuli", "security", "oppose", evidence="rumour"))
+    assert d.statements[0].is_evidence_backed
+    assert not d.statements[1].is_evidence_backed
+    assert d.positions(evidence_only=True) == {"unsa": {"security": 1}}
+
+
+def test_agreement_without_a_tie_is_open_not_warm():
+    d = _politicised()
+    stranger = Discourse()
+    for concept in ("humanity", "security", "consciousness"):
+        stranger.add_concept(Concept(concept, concept.title()))
+    stranger.add_actor(Actor("unsa", "faction", scope="UNSA"))
+    stranger.add_actor(Actor("passerby", "person", scope="Street"))
+    for concept in ("humanity", "security", "consciousness"):
+        stranger.articulate(Statement("unsa", concept, "support"))
+        stranger.articulate(Statement("passerby", concept, "support"))
+    result = stranger.reaction("unsa", "passerby", concept="security")
+    assert result["band"] == "open"
+    assert result["unknown"] == ["trust"]
+    assert result["means"]["band_is_trust"] is False
+
+
+def test_shared_signifiers_do_not_override_contempt():
+    d = _politicised()
+    result = d.reaction("unsa", "sipuli", concept="security")
+    assert result["inputs"] == {"overlap": 3, "stance": "support", "trust": -4}
+    assert result["band"] == "guarded", "agreement does not outrank contempt"
+    assert result["score"] == 1, "the score alone would say 'open'; the tie is what caps it"
+
+
+def test_disagreeing_with_a_trusted_colleague_is_not_hostility():
+    d = _world()
+    d.add_concept(Concept("psi", "PSI disclosure"))
+    d.articulate(Statement("unsa", "psi", "oppose"))
+    d.articulate(Statement("romppainen", "psi", "support"))
+    for concept in ("humanity", "security"):
+        d.articulate(Statement("unsa", concept, "support"))
+        d.articulate(Statement("romppainen", concept, "support"))
+    d.relate(Relationship("unsa", "romppainen", trust=2))
+    result = d.reaction("unsa", "romppainen", concept="psi")
+    assert result["inputs"] == {"overlap": 2, "stance": "oppose", "trust": 2}
+    assert result["band"] == "neutral", "-1 for disagreement, +1 overlap, +1 trust: still civil"
+    assert result["unknown"] == []
+    result_stranger = reaction(overlap=0, stance="oppose", trust=None)
+    assert result_stranger["band"] == "cold"
+    assert result_stranger["unknown"] == ["trust"]
+
+
+def test_reaction_refuses_inputs_outside_their_documented_ranges():
+    with pytest.raises(IdeologyError):
+        reaction(overlap=-1)
+    with pytest.raises(IdeologyError):
+        reaction(overlap=0, stance="undecided")
+    with pytest.raises(IdeologyError):
+        reaction(overlap=0, trust=5)
+
+
+def test_goals_and_profiles_survive_a_json_round_trip():
+    d = _politicised()
+    d.add_goal(Goal("sipuli", "ideological", "keep the tunnels open", date="2026-08-01"))
+    d.record_profile(ProfileVersion("sipuli", "2026-08-01", "hard line", ("humanity",)))
+    again = Discourse.from_dict(json.loads(json.dumps(d.to_dict())))
+    assert again.to_dict() == d.to_dict()
+    assert again.goals_of("sipuli", "ideological") == ["keep the tunnels open"]

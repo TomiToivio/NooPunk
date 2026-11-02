@@ -43,6 +43,33 @@ An LLM may later suggest an interpretation. It may not become the thing the game
 - **No automatic effect on reputation or reactions.** Ideology changes dialogue, access and what a faction asks of you; any movement of a reputation value is an explicit, logged event per Phase 1 rules.
 - **No Palonen index.** The formula is named in the plan; its coefficients come from the paper, not from taste.
 
+## Phase 1 residue, now closed
+
+Three items were left open after the model and the `dossier` view landed. All three are in
+`mud/nopunk_mud/ideology.py`, with tests in `mud/tests/test_ideology_1042.py`:
+
+| item | what it is | why it matters |
+| --- | --- | --- |
+| **Goals** | `Goal(actor, kind, text, date)` with `personal` / `institutional` / `ideological` | an institution can seek survival while its director seeks vindication; a single `goals` list makes every actor single-minded |
+| **Profile versions** | `ProfileVersion(actor, date, label, concepts, note)` with `record_profile()` / `profile_at()` | append-only and date-monotonic: a faction that changes its line in March leaves a trace instead of rewriting February. An earlier or conflicting date is refused |
+| **`outcome` evidence kind** | a consequence the *rules* resolved and recorded | previously every evidence kind was "somebody said or saw". A failed check or a found clue is now citable evidence without being promoted to a document |
+| **NPC reaction rule** | `reaction(overlap, stance, trust)` and `Discourse.reaction(actor, viewer, concept=…)` | the one place the three layers meet. It takes them as three separate inputs, reports which were unknown, and caps the band: no positive tie ⇒ at most `open`, negative tie ⇒ at most `guarded` |
+
+The caps are the load-bearing part, and they are what the tests assert: three shared signifiers plus
+mutual contempt (trust −4) reads `guarded`, not `warm`; a colleague who disagrees about the case with
+positive trust reads `neutral`, not `hostile`. A reaction is a first reaction, and `means` in the
+result says plainly that the band is neither an attitude score nor a trust value.
+
+## Still out of scope, by the issue's own instructions
+
+- **Phase 2**: the SWN faction layer, the Country Director metacharacter and the finite agent roster.
+  The engine they will sit on exists (`src/rules/swn_faction_engine.py`); the design constraints are
+  recorded in `docs/design/ISSUE_1043_PSIONICS_FACTIONS.md`.
+- **Event ingestion from actual dialogue**: the Helsinki seed is authored data
+  (`data/world/ideology_seed_1042.json`), not harvested from play.
+- **One discourse model**: `ideology.py` and `discourse_network.py` still coexist. Which one survives
+  is an author decision, and merging them without it would pick a semantics by accident.
+
 ## Next
 
 1. Authoring fixtures for the Helsinki starting cast — as data, reviewed, not generated.

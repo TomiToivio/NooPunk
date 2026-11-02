@@ -3,8 +3,8 @@
   "source": "src/rules",
   "note": "Registry of implemented rule procedures. Presence here is code coverage, not SRD parity.",
   "totals": {
-    "modules": 44,
-    "procedures": 430
+    "modules": 47,
+    "procedures": 445
   },
   "modules": [
     {
@@ -1745,6 +1745,37 @@
       "count": 3
     },
     {
+      "module": "cwn_pharmaceuticals.py",
+      "procedures": [
+        {
+          "name": "administer",
+          "signature": "(name, *, heal_rank, system_strain, strain_maximum, strain_cost=..., lurch_doses_today=...)",
+          "doc": "Check permission and Strain ceiling; negative effects still occur if blocked."
+        },
+        {
+          "name": "strongest_bonus",
+          "signature": "(*bonuses)",
+          "doc": "Multiple simultaneously active drugs do not stack the same benefit."
+        },
+        {
+          "name": "panacea_first_aid",
+          "signature": "(healed_hp)",
+          "doc": "Panacea doubles First Aid HP recovered, minimum six."
+        },
+        {
+          "name": "trauma_patch_difficulty",
+          "signature": "(rounds_elapsed)",
+          "doc": "Int/Heal or Dex/Heal difficulty 6 plus elapsed full rounds; useless after six."
+        },
+        {
+          "name": "trauma_patch_works",
+          "signature": "(*, rounds_elapsed, check_total, poison_or_disease=..., dismembered=...)",
+          "doc": ""
+        }
+      ],
+      "count": 5
+    },
+    {
       "module": "cwn_program_catalogue.py",
       "procedures": [
         {
@@ -1875,6 +1906,68 @@
         }
       ],
       "count": 12
+    },
+    {
+      "module": "cwn_spells.py",
+      "procedures": [
+        {
+          "name": "load_spells",
+          "signature": "(path=...)",
+          "doc": ""
+        },
+        {
+          "name": "spell",
+          "signature": "(name)",
+          "doc": ""
+        },
+        {
+          "name": "spells_committed",
+          "signature": "(commitment)",
+          "doc": ""
+        },
+        {
+          "name": "overcast_roll",
+          "signature": "(*, die, cast_skill, constitution, commits_for_day)",
+          "doc": "The number looked up on the overcasting table."
+        },
+        {
+          "name": "overcast_outcome",
+          "signature": "(total)",
+          "doc": "The published table, verbatim in its bands."
+        },
+        {
+          "name": "overcast",
+          "signature": "(*, die, cast_skill, constitution, commits_for_day, current_strain, max_strain)",
+          "doc": "Resolve an overcast attempt, including the unconsciousness rule (6.1.3.3)."
+        }
+      ],
+      "count": 6
+    },
+    {
+      "module": "cwn_spirit_powers.py",
+      "procedures": [
+        {
+          "name": "load_powers",
+          "signature": "(path=...)",
+          "doc": ""
+        },
+        {
+          "name": "power",
+          "signature": "(name)",
+          "doc": ""
+        },
+        {
+          "name": "total_cost",
+          "signature": "(names)",
+          "doc": "Sum of the listed powers' costs \u2014 the figure that becomes the summoning Effort cost."
+        },
+        {
+          "name": "max_power_level_requirement",
+          "signature": "(names)",
+          "doc": "Powers whose cost is high enough to require a minimum character level (book notes per power)."
+        }
+      ],
+      "count": 4
     },
     {
       "module": "cwn_strain.py",

@@ -413,3 +413,16 @@ to do.
 Both rows are authorship, not engineering. The register renders canon today; the companion command
 surface stays unbuilt until D71 has an answer, because a party member implemented against a guess
 becomes a player avatar.
+
+## #1053 / #1054 — the two consolidations and the missing content (rows D72–D74)
+
+Fifteenth update (2026-11-03), on closing the architecture issues. The enforceable half is landed and
+checked (see `docs/design/ISSUE_1053_1054_CLOSURE_REGISTER.md`). Three things remain that an agent must
+not decide alone: two consolidations that pick a semantics, and the content the acceptance criteria
+name but nobody has authored.
+
+| # | Decision | Blocks | Smallest useful answer |
+| --- | --- | --- | --- |
+| D72 | **Which CWN implementation survives in the MUD?** `mud/nopunk_mud/cwn_core.py` and `mud/nopunk_mud/cwn/` are twins with different call conventions; `docs/RULES_PARITY_1053.md` measures the disagreement (`save_target` answers `15`, or raises, depending on which you ask). (a) **Keep `cwn/` and reduce `cwn_core.py` to a re-export shim** — one contract, the shim keeps old call sites alive. (b) **Keep `cwn_core.py`** and retire the package. (c) **Both, with a translation table** — only if someone commits to maintaining it. | every future MUD rule call; whether the parity probe can ever exit 0; whether the MUD can consume `src/rules` directly | *cwn/ is canonical, cwn_core.py is a shim* / *cwn_core.py is canonical* / *both with a table* |
+| D73 | **Which discourse model is canonical?** `mud/nopunk_mud/ideology.py` (#1046, statements + positions + relationships + goals + profiles, with the player-facing `dossier` built on it) and `mud/nopunk_mud/discourse_network.py` (#1049, profiles + communication + alignment + snapshots) both persist and both pass their tests. Two answers to "where does this actor stand" is the same failure mode as two CWN cores. | any faction-level projection, any save format that stores either, and what `dossier` may show | *ideology.py, discourse_network retires* / *discourse_network, ideology retires* / *ideology at character scale, discourse_network at faction scale — named as such* |
+| D74 | **What are the side quests of the first UNSA case?** #1053/#1054 acceptance names "a complete UNSA single-player campaign **and side quests**". The playable case has four scenes and no side quest; inventing one would be authored canon written by an agent, which the same issues forbid. | the literal acceptance wording; whether the case graph gains optional scenes | *name one side quest and its clue* / *side quests are a later campaign issue, close on the main case* |
