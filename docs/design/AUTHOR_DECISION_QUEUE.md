@@ -395,3 +395,21 @@ pretending the item was met.
 
 - **#735 closed** on these four records. No code, rulebook or data change: the six codes are
   untouched, so every stored character and the full test suite remain valid.
+
+## #1037 / #1038 — literary direction and the party roster (rows D70–D71)
+
+Fourteenth update (2026-11-02). Two brainstorming issues ask for a NoöPunk that is a writing project
+as much as a game. Their documentation already landed (`docs/design/LITERARY_CROSS_MEDIA_1037.md`,
+`ROMPPAINEN_PARTY_1038.md`, `BRAINSTORM_1038_ROMPPAINEN_PARTY.md`) and one mechanism is now built —
+the in-world document register, `docs/design/ISSUE_1037_DOCUMENT_REGISTER.md`. What the repository
+cannot settle is authorship: which story comes first, and what a controllable companion may be told
+to do.
+
+| # | Decision | Blocks | Smallest useful answer |
+| --- | --- | --- | --- |
+| D70 | **#1037: which episode is the first one, and in which medium does it exist first?** The brainstorming issue asks for one small Romppainen episode that works as a short story *and* a playable UNSA case, and forbids agents from inventing it. A shape that needs no new mechanics: one location, one NPC, one core clue, one consequence. The sequencing question is the author's — prose first (so the game adapts a fixed voice), case first (so the prose describes something already playable), or both written in one sitting. Nothing in the repository unblocks this except the writing itself. | the first shared canon object, the canon cross-reference format (`ISSUE_1037_DOCUMENT_REGISTER.md` §"what this is not"), and whether prose or code is the source of truth for that scene | *prose first* / *case first* / *both at once* |
+| D71 | **#1038: what does "controllable" mean in code?** The party blueprint says Romppainen and the specialist assets are controllable *within the command architecture* without being present on every mission and without losing their own history — but that sentence has to exist somewhere an implementation will read it, or a later session will quietly turn party members into player avatars. The choice is how much of their autonomy survives a direct order, and it decides the shape of the companion command surface (issued orders vs. driving the actor) and of refusal. | every companion command, NPC refusal and autonomy rule; whether a controlled NPC can refuse an unlawful order; the 1–4 active-party cap from #806 | *issued orders only* / *direct control, personality via refusal* / *orders by default, control in scripted set-pieces* |
+
+Both rows are authorship, not engineering. The register renders canon today; the companion command
+surface stays unbuilt until D71 has an answer, because a party member implemented against a guess
+becomes a player avatar.
