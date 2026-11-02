@@ -180,7 +180,8 @@
         "requirements.txt",
         "requirements-concordia.txt",
         "LICENSE*",
-        "NOTICE*"
+        "NOTICE*",
+        "pyproject.toml"
       ],
       "licence": "author-decision-follows-code",
       "note": "CI, dependency and release-packaging plumbing."

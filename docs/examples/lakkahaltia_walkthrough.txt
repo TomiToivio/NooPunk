@@ -1,0 +1,22 @@
+# A complete tabletop-equivalent walkthrough of the Lakkahaltia case.
+# Every line is a command the console accepts; play the same sequence at a table with the graph and
+# ordinary dice and you get the same facts (discovery never rolls).
+look
+clues
+theory deliberate_falsification
+go corridor
+support nurse-inconsistency
+look
+support shift-habit
+go reception
+support duty-roster
+support record-1601
+look
+support prescriber-note
+go patient_room
+support patient-testimony
+contradict lakkahaltia-sighting
+support mirror-reading
+risk 8 Notice
+status
+conclude deliberate_falsification "the record and the roster were edited after the night"

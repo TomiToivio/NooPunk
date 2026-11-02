@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "noopunk-rules"
+version = "0.1.0"
+description = "Engine-neutral NooPunk RPG rules, campaign session and reference console (#1053, #1054)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "See LICENSE" }
+dependencies = []
+
+[project.optional-dependencies]
+# The rules and the console are stdlib-only on purpose: a tabletop rule must be runnable on a bare
+# Python. Evennia, Concordia and pygame live in their own deployment units and import this package.
+test = []
+
+[project.scripts]
+noopunk-case = "console.play:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = [
+  "rules",
+  "rules.*",
+  "simulation",
+  "simulation.*",
+  "text_game",
+  "text_game.*",
+  "console",
+  "console.*",
+  "world",
+  "world.*",
+  "concordia_runtime",
+  "concordia_runtime.*",
+  "eclipse_phase_homebrew",
+  "eclipse_phase_homebrew.*",
+]
