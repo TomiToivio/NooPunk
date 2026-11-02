@@ -1,0 +1,464 @@
+{
+  "format": "noopunk.rules.cwn_traceability",
+  "version": 2,
+  "issue": 1068,
+  "note": "Curated evidence for SRD sections whose implementation the filename/keyword heuristic cannot establish. tools/cwn_parity_audit.py VERIFIES these rows from the code itself - every module exists, every named procedure/class/constant exists in that module's AST, and every test file references the module it is cited for - and derives status from that verification instead of trusting this file. A curator may force 'missing', 'partial' or 'not_applicable' with a reason in notes; anything else is recomputed. rulebook anchors name the tabletop file that documents where the rule lives. NoöPunk chapters deliberately reference CWN for numeric content (author directive 2026-10-07), so 'documented' does not always mean 'numbers restated'.",
+  "srd": "https://cwn.quadrifons.com",
+  "rows": [
+    {
+      "id": "character-creation:skills",
+      "modules": [
+        {
+          "path": "src/rules/cwn_character.py",
+          "procedures": [
+            "SkillPool"
+          ]
+        },
+        {
+          "path": "src/rules/cwn_advancement.py",
+          "procedures": [
+            "skill_points_for_level",
+            "skill_point_cost",
+            "skill_rank_allowed",
+            "total_skill_cost"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_character.py",
+        "tests/test_cwn_advancement.py"
+      ],
+      "rulebook": "rulebook/14_CHARACTER_GENERATION.md",
+      "notes": "Skill pools, per-rank point costs and rank caps."
+    },
+    {
+      "id": "character-creation:final-steps",
+      "modules": [
+        {
+          "path": "src/rules/cwn_character.py",
+          "procedures": [
+            "roll_attributes",
+            "effective_modifier"
+          ]
+        },
+        {
+          "path": "src/rules/cwn_advancement.py",
+          "procedures": [
+            "hit_points_rolled",
+            "attack_bonus",
+            "save_target"
+          ]
+        },
+        {
+          "path": "src/rules/cwn_backgrounds.py",
+          "procedures": [
+            "ContactBook"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_character.py",
+        "tests/test_cwn_advancement.py",
+        "tests/test_cwn_backgrounds.py"
+      ],
+      "rulebook": "rulebook/14_CHARACTER_GENERATION.md",
+      "force_status": "partial",
+      "notes": "Derived numbers (HP, saves, attack bonus) and contacts are implemented. The starting-credits / equipment-package step has no procedure: a starting character's purse is a table decision in this implementation."
+    },
+    {
+      "id": "rules-of-the-game:combat:attacks-in-combat",
+      "modules": [
+        {
+          "path": "src/rules/cwn_core.py",
+          "procedures": [
+            "resolve_attack"
+          ]
+        },
+        {
+          "path": "src/rules/cwn_combat.py",
+          "procedures": [
+            "attack_roll"
+          ]
+        },
+        {
+          "path": "src/rules/cwn_attack_modifiers.py",
+          "procedures": [
+            "attack_modifier",
+            "attack_modifier_for",
+            "in_melee_penalty"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_core.py",
+        "tests/test_cwn_combat.py",
+        "tests/test_cwn_attack_modifiers.py"
+      ],
+      "rulebook": "rulebook/3_PHYSICAL.md",
+      "notes": "Hit resolution, target number and the situational modifier list."
+    },
+    {
+      "id": "rules-of-the-game:combat:special-combat-maneuvers",
+      "modules": [],
+      "tests": [],
+      "rulebook": "rulebook/3_PHYSICAL.md",
+      "force_status": "missing",
+      "notes": "The SRD section covers shoving and grappling (opposed Str/Punch, prone, escape, forced movement), the two-weapon penalty and execution attacks. No procedure in src/rules implements any of them and no test names them; filling this needs new code, not a re-reading of existing code."
+    },
+    {
+      "id": "rules-of-the-game:injury-healing-system-strain:mortal-injury-stabilization",
+      "modules": [
+        {
+          "path": "src/rules/cwn_healing.py",
+          "procedures": [
+            "stabilize_difficulty",
+            "stabilized",
+            "first_aid"
+          ]
+        },
+        {
+          "path": "src/rules/cwn_core.py",
+          "procedures": [
+            "resolve_downed"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_healing.py",
+        "tests/test_cwn_core.py"
+      ],
+      "rulebook": "rulebook/3_PHYSICAL.md",
+      "notes": "Mortals, stabilization difficulty and the downed procedure."
+    },
+    {
+      "id": "rules-of-the-game:injury-healing-system-strain:major-injuries",
+      "modules": [
+        {
+          "path": "src/rules/cwn_major_injury.py",
+          "procedures": [
+            "resolve_major_injury",
+            "injury_for_roll",
+            "clamp_injury_roll",
+            "requires_prosthetic"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_major_injury.py"
+      ],
+      "rulebook": "rulebook/3_PHYSICAL.md",
+      "notes": "The d12 major-injury table, its clamping and the prosthetic requirement."
+    },
+    {
+      "id": "rules-of-the-game:chases-and-pursuit",
+      "modules": [
+        {
+          "path": "src/rules/cwn_vehicles.py",
+          "procedures": [
+            "resolve_chase",
+            "chase_modifier_table",
+            "foot_chase_modifier",
+            "vehicle_chase_modifier",
+            "hindrance_bonus"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_vehicles.py"
+      ],
+      "rulebook": "rulebook/3_PHYSICAL.md",
+      "notes": "Chase rounds, hindrances and the foot/vehicle modifier split."
+    },
+    {
+      "id": "gear-vehicles-cyberware:weapons:firearms",
+      "modules": [
+        {
+          "path": "src/rules/cwn_equipment.py",
+          "procedures": [
+            "weapons",
+            "weapon",
+            "find_weapon",
+            "parse_damage",
+            "damage_profile"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_equipment.py"
+      ],
+      "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+      "notes": "The catalogue is data (data/rules/cwn_equipment.json, 35 weapons); the module resolves stats, damage and the trauma/shock flags. The NoöPunk equipment chapter is deliberately descriptive and defers numeric economy to CWN (author directive 2026-10-07); the rulebook anchor is therefore the baseline pointer, not a restatement of the numbers here."
+    },
+    {
+      "id": "gear-vehicles-cyberware:armor:armor-accessories",
+      "modules": [
+        {
+          "path": "src/rules/cwn_equipment.py",
+          "procedures": [
+            "armor",
+            "armor_piece"
+          ]
+        },
+        {
+          "path": "src/rules/cwn_gear_mods.py",
+          "procedures": [
+            "armor_mod",
+            "apply_armor_mods"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_equipment.py",
+        "tests/test_cwn_gear_mods.py"
+      ],
+      "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+      "force_status": "partial",
+      "notes": "Armour pieces and armour mods are implemented; the SRD's separate accessory items (comms, vision, environment gear) are not modelled as their own catalogue."
+    },
+    {
+      "id": "gear-vehicles-cyberware:cyberware:installing-cyberware",
+      "modules": [
+        {
+          "path": "src/rules/cwn_cyberware.py",
+          "procedures": [
+            "surgery_check_modifier",
+            "surgery_difficulty",
+            "installation_cost",
+            "installation_attempt_penalty"
+          ]
+        },
+        {
+          "path": "src/rules/cwn_core.py",
+          "procedures": [
+            "installation_terms",
+            "resolve_implant_surgery"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_cyberware.py",
+        "tests/test_cwn_core.py"
+      ],
+      "rulebook": "rulebook/5_CYBERNETIC.md",
+      "notes": "Surgeon modifiers, theatre grade, cost, repeat-attempt penalty and the surgery check."
+    },
+    {
+      "id": "gear-vehicles-cyberware:cyberware:removing-cyberware",
+      "modules": [
+        {
+          "path": "src/rules/cwn_cyberware.py",
+          "procedures": [
+            "removal_terms",
+            "resolve_removal",
+            "resolve_brutal_removal",
+            "resolve_salvage",
+            "resolve_reuse"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_cyberware.py"
+      ],
+      "rulebook": "rulebook/5_CYBERNETIC.md",
+      "notes": "Gentle and brutal removal, salvage from a corpse and reuse of recovered hardware."
+    },
+    {
+      "id": "gear-vehicles-cyberware:cyberware:concealing-detecting-cyberware",
+      "modules": [
+        {
+          "path": "src/rules/cwn_cyberware.py",
+          "procedures": [
+            "concealment_rank",
+            "detectable",
+            "profile_adjusted"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_cyberware.py"
+      ],
+      "rulebook": "rulebook/5_CYBERNETIC.md",
+      "notes": "Concealment ranks and scanner detection."
+    },
+    {
+      "id": "gear-vehicles-cyberware:cyberware:skillplugs",
+      "modules": [
+        {
+          "path": "src/rules/cwn_cyberware.py",
+          "procedures": [
+            "skillplug_cost",
+            "skillplug_jack_allows",
+            "auto_failure_faces",
+            "is_auto_failure",
+            "resolve_skillplug_roll"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_cyberware.py"
+      ],
+      "rulebook": "rulebook/5_CYBERNETIC.md",
+      "notes": "Levels, the jack I/II physical-skill gate, the automatic-failure range including crosstalk, and the scene lockout."
+    },
+    {
+      "id": "gear-vehicles-cyberware:cyberware:cyberdoc-tools",
+      "modules": [
+        {
+          "path": "src/rules/cwn_cyberware.py",
+          "procedures": [
+            "surgery_check_modifier",
+            "surgery_difficulty"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_cyberware.py"
+      ],
+      "rulebook": "rulebook/5_CYBERNETIC.md",
+      "force_status": "partial",
+      "notes": "Theatre grade 0 models 'a cyberdoc kit and nothing else' as the -1 row; there is no separate cyberdoc-tool catalogue with weights and prices."
+    },
+    {
+      "id": "gear-vehicles-cyberware:lifestyles-wages-and-bribes:common-wages",
+      "modules": [
+        {
+          "path": "src/rules/cwn_lifestyles.py",
+          "procedures": [
+            "wage",
+            "COMMON_WAGES"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_lifestyles.py"
+      ],
+      "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+      "notes": "Added by #1068 from the SRD's 18-row daily-wage table. The NoöPunk equipment chapter is deliberately descriptive and defers numeric economy to CWN (author directive 2026-10-07); the rulebook anchor is therefore the baseline pointer, not a restatement of the numbers here."
+    },
+    {
+      "id": "gear-vehicles-cyberware:lifestyles-wages-and-bribes:lifestyle-costs",
+      "modules": [
+        {
+          "path": "src/rules/cwn_lifestyles.py",
+          "procedures": [
+            "living_cost",
+            "LIFESTYLE_COSTS",
+            "strain_modifier"
+          ]
+        },
+        {
+          "path": "src/rules/cwn_core.py",
+          "procedures": [
+            "strain_maximum"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_lifestyles.py",
+        "tests/test_cwn_core.py"
+      ],
+      "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+      "notes": "Monthly costs added by #1068; the System Strain half already lived in cwn_core and is reused, not copied. The NoöPunk equipment chapter is deliberately descriptive and defers numeric economy to CWN (author directive 2026-10-07); the rulebook anchor is therefore the baseline pointer, not a restatement of the numbers here."
+    },
+    {
+      "id": "gear-vehicles-cyberware:lifestyles-wages-and-bribes:bribe-costs",
+      "modules": [
+        {
+          "path": "src/rules/cwn_lifestyles.py",
+          "procedures": [
+            "bribe_cost",
+            "bribe_needs_more_than_cash",
+            "BRIBE_MULTIPLES"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_lifestyles.py"
+      ],
+      "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+      "notes": "Added by #1068 from the SRD's favour-multiple table, including the 'serious risk' flag. The NoöPunk equipment chapter is deliberately descriptive and defers numeric economy to CWN (author directive 2026-10-07); the rulebook anchor is therefore the baseline pointer, not a restatement of the numbers here."
+    },
+    {
+      "id": "hacking:programs",
+      "modules": [
+        {
+          "path": "src/rules/cwn_program_catalogue.py",
+          "procedures": [
+            "validate_program",
+            "run_program",
+            "program_cost",
+            "subject_cost",
+            "require_access"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_program_catalogue.py"
+      ],
+      "rulebook": "rulebook/22_CYBERSPACE_AFTER_THE_CRISIS.md",
+      "notes": "Program catalogue, verb costs and access requirements."
+    },
+    {
+      "id": "hacking:cyberdecks",
+      "modules": [
+        {
+          "path": "src/rules/cwn_hacking.py",
+          "procedures": [
+            "access_pool"
+          ]
+        },
+        {
+          "path": "src/rules/cwn_gear_mods.py",
+          "procedures": [
+            "deck_mod",
+            "apply_deck_mods"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_hacking.py",
+        "tests/test_cwn_gear_mods.py"
+      ],
+      "rulebook": "rulebook/22_CYBERSPACE_AFTER_THE_CRISIS.md",
+      "force_status": "partial",
+      "notes": "The deck bonus feeds the access pool and deck mods are supported; the SRD's cyberdeck hardware catalogue (models, prices, slots) is not modelled."
+    },
+    {
+      "id": "hacking:node-links",
+      "modules": [
+        {
+          "path": "src/rules/cwn_hacking.py",
+          "procedures": [
+            "security_difficulty",
+            "AlertClock"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_hacking.py"
+      ],
+      "rulebook": "rulebook/22_CYBERSPACE_AFTER_THE_CRISIS.md",
+      "force_status": "partial",
+      "notes": "The module documents the wireless-link penalty and refuses to ship a node graph the author has not ruled on; node-to-node links and their verb costs are therefore not implemented."
+    },
+    {
+      "id": "antagonists",
+      "modules": [
+        {
+          "path": "src/rules/cwn_npcs.py",
+          "procedures": [
+            "reaction_roll",
+            "morale_check",
+            "reaction_band"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_npcs_heat.py"
+      ],
+      "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+      "force_status": "partial",
+      "notes": "NPC reaction and morale are implemented. The SRD navigation this audit walks omits the Antagonists chapter, so stat blocks cannot be audited without the Free Edition PDF. Recorded, not claimed."
+    }
+  ]
+}

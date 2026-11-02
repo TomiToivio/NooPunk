@@ -144,7 +144,8 @@
         "pytest.ini",
         "mods/**",
         "mud/**",
-        "portable_noopunk/**"
+        "portable_noopunk/**",
+        "pyproject.toml"
       ],
       "licence": "author-decision-separate-software-licence",
       "note": "Needs its own software licence, separate from the CC instrument. pytest.ini is test configuration: it tells pytest which directories not to collect, so the preserved corpora under archive/ do not shadow this repository's own src/ package. It is configuration for the test suite, so it travels with the code it configures."
@@ -181,8 +182,7 @@
         "requirements.txt",
         "requirements-concordia.txt",
         "LICENSE*",
-        "NOTICE*",
-        "pyproject.toml"
+        "NOTICE*"
       ],
       "licence": "author-decision-follows-code",
       "note": "CI, dependency and release-packaging plumbing."

@@ -197,14 +197,16 @@
    "python": [
     "src/rules/cwn_combat.py",
     "src/rules/cwn_combat_actions.py",
+    "src/rules/cwn_special_maneuvers.py",
     "src/rules/cwn_initiative.py",
     "src/rules/cwn_attack_modifiers.py"
    ],
    "tests": [
     "tests/test_cwn_combat.py",
-    "tests/test_cwn_combat_actions.py"
+    "tests/test_cwn_combat_actions.py",
+    "tests/test_cwn_special_maneuvers_1068.py"
    ],
-   "evidence": "attacks, actions, initiative, modifiers, shock/trauma"
+   "evidence": "attacks, actions, initiative, modifiers, shock/trauma and special manoeuvres"
   },
   {
    "id": "rules-of-the-game:injury-healing-strain",
@@ -834,14 +836,16 @@
    "chapter": "Supplemental Material",
    "section": "Summoners and Spirit Calling",
    "printed_page": 240,
-   "status": "partial",
+   "status": "implemented",
    "python": [
+    "src/rules/cwn_summoning.py",
     "src/rules/cwn_magic.py"
    ],
    "tests": [
+    "tests/test_cwn_summoning_1068.py",
     "tests/test_cwn_magic.py"
    ],
-   "evidence": "Summoner Effort and binding accounting only; spirit statistics are content"
+   "evidence": "summoning module implements Effort cost, HD cap, form tiers and commanding; cwn_magic covers Summoner Effort and binding accounting"
   },
   {
    "id": "supplemental:magic-user-foci",
@@ -851,27 +855,35 @@
    "status": "missing",
    "python": [],
    "tests": [],
-   "evidence": "no module"
+   "evidence": "no module: mage-only foci are not implemented"
   },
   {
    "id": "supplemental:graced",
    "chapter": "Supplemental Material",
    "section": "The Graced",
    "printed_page": 248,
-   "status": "missing",
-   "python": [],
-   "tests": [],
-   "evidence": "no module"
+   "status": "implemented",
+   "python": [
+    "src/rules/cwn_graced.py"
+   ],
+   "tests": [
+    "tests/test_cwn_graced_1068.py"
+   ],
+   "evidence": "Graced arts bought with art points; module landed with #1068 and carries its own tests"
   },
   {
    "id": "supplemental:magic-items",
    "chapter": "Supplemental Material",
    "section": "Magic Items",
    "printed_page": 250,
-   "status": "missing",
-   "python": [],
-   "tests": [],
-   "evidence": "no module"
+   "status": "implemented",
+   "python": [
+    "src/rules/cwn_magic_items.py"
+   ],
+   "tests": [
+    "tests/test_cwn_graced_1068.py"
+   ],
+   "evidence": "item identification and linking implemented in cwn_magic_items"
   }
  ]
 }

@@ -51,7 +51,8 @@ class InventoryTests(unittest.TestCase):
         statuses = {row["id"].split(":")[1]: row["status"] for row in supplemental}
         self.assertEqual(statuses["cyber-alienation"], "implemented")
         self.assertEqual(statuses["mages-spellcasting"], "implemented")
-        self.assertEqual(statuses["summoners-spirits"], "partial", "Effort only; spirit statistics are content")
+        self.assertEqual(statuses["summoners-spirits"], "implemented",
+                         "summoning landed in cwn_summoning; the row must follow the tree")
 
     def test_the_report_document_is_generated_from_the_data(self):
         document = ROOT / "docs" / "rules" / "CWN_RULE_INVENTORY.md"

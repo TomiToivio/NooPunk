@@ -1,3 +1,22 @@
+# CANONICAL RULES LOCATIONS — READ FIRST (#1068, 2026-11-03)
+
+This section overrides conflicting historical Godot-first, MUD-owned-rules, and blank-rulebook guidance below. The [binding architecture](docs/DESIGN_PRINCIPLES.md) governs changes.
+
+| Concern | Current authoritative location | What to do |
+| --- | --- | --- |
+| **Shared Python rules implementation** | **`src/rules/`**, especially `src/rules/cwn_*.py` for published CWN rules | Fix and test published mechanics here; other frontends call this library rather than reimplement it. This is the *current* implementation, not the proposed future `noopunk/rules/` target layout. |
+| **NoöPunk tabletop RPG rulebook** | **`RULEBOOK.md`** (root overview) and **`rulebook/00_INDEX.md`** plus the authoritative chapter files in **`rulebook/`**; specifically **`rulebook/WITHOUT_NUMBER_BASELINE.md`** for published Without Number mechanics | Treat these as parts of the *same* tabletop ruleset, not competing editions. Update the applicable chapter/baseline and root rulebook references together as needed; do not create another rulebook. |
+| **CWN traceability** | `data/rules/cwn_traceability.json`, `data/rules/cwn_compliance_matrix.json`, generated `docs/rules/CWN_COVERAGE_1068.md` | Link each mechanic to the published source, Python procedure/test and tabletop chapter. Regenerate the report with `python3 tools/cwn_parity_audit.py`; use `--check` to validate freshness. |
+| **CWN immutable core lock** | `data/rules/cwn_baseline_sha256.json` and `tests/test_cwn_traceability_1068.py` | Never silently rewrite published CWN procedures or repin hashes. New mechanics belong in isolated, explicitly labeled mods. |
+| **Other implementations/interfaces** | `mud/` (Evennia), `godot/` (legacy), `strategy_game/` and other frontends | Treat as adapters/legacy implementation debt, **not** alternative rules authorities; reconcile duplicates against `src/rules/`. |
+| **Mods** | `mods/noopunk/` and explicitly registered optional overlay modules | Keep NoöPunk changes separate from unchanged CWN. |
+
+**External rules references:** [CWN SRD](https://cwn.quadrifons.com/) and [CWN Free Edition PDF](https://tesera.ru/images/items/2301450/CWN_Free_Version_081123.pdf). Published CWN rules always take precedence over an erroneous local implementation or paraphrase; investigate discrepancies rather than silently changing the established baseline.
+
+**Mandatory rules-change PR workflow:** identify the published rule and its current Python implementation; update the shared Python procedure, tests, and corresponding tabletop chapter/entry in the **same PR**; update traceability; run relevant tests and `python3 tools/cwn_parity_audit.py --check`; report remaining divergence. Tabletop textual parity additionally requires human review/playtesting, not claims of automated prose verification. Do not move the canonical paths during a migration until the replacement and adapters are demonstrated and the instructions are updated atomically.
+
+---
+
 # DESIGN WORKFLOW — BINDING ON EVERY AGENT (#989)
 
 **Read [`design/README.md`](design/README.md) before implementing any authored game content.** The
@@ -63,6 +82,23 @@ or on a `cwn-core` module that imports a `noopunk-mod` one. The tier table is ge
 `tests/test_rules_constitution_modules.py` then runs the baseline in a subprocess whose import hook **refuses
 every overlay module**, so "turning the mods off leaves a working CWN game" is a fact rather than a promise.
 A new module added under `src/rules/` is classified in the same commit.
+
+**CWN coverage is tracked, and the CWN baseline is fingerprinted (#1068).**
+[`data/rules/cwn_traceability.json`](data/rules/cwn_traceability.json) records, per SRD section, the
+modules, the *named* procedures/classes/constants and the tests that implement it, plus the tabletop
+file that documents it. `python3 tools/cwn_parity_audit.py` verifies those claims against the code (a
+renamed function fails the build) and regenerates `data/rules/cwn_compliance_matrix.json`,
+`docs/rules/CWN_PARITY_MATRIX.md` and `docs/rules/CWN_COVERAGE_1068.md`;
+`tests/test_cwn_traceability_1068.py` fails when the committed matrix is stale.
+`data/rules/cwn_baseline_sha256.json` pins the SHA-256 of every `src/rules/cwn_*.py` file: **editing a
+CWN rule fails CI until someone re-pins the baseline in a PR that says it is changing CWN** — which this
+project has decided must never happen. A gap listed as `partial` or `missing` in the matrix is a gap with
+a recorded reason; filling one means adding code and tests, then curating its row, never editing a
+neighbouring rule to make the number look better.
+**Two-way sync for rules (#1053/#1054, enforced by this checklist rather than by CI):** a PR that adds or
+changes a playable procedure must update the Python implementation, its tests, and the tabletop
+documentation (the `rulebook` column of the traceability file) **in the same PR**. CI may not assert over
+Markdown prose (§#271), so the reviewer checks it; a one-sided rules PR is rejected.
 
 **A vague instruction is not authorisation to change the core.** "Improve the rules", "make PSI deeper",
 "implement this subsystem" mean *write a mod*. Amending the constitution requires an explicit author decision

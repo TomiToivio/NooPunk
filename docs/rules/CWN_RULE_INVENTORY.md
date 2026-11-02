@@ -2,7 +2,7 @@
 
 Source: *Cities Without Number, Deluxe Edition (lightweight PDF, 081123)*, printed pages as they appear in the book (PDF page = printed + 3). Generated from `data/rules/cwn_rule_inventory.json` by `tools/cwn_rule_inventory_audit.py --markdown`; do not edit this table by hand.
 
-**65 rows** — 38 implemented, 9 partial, 6 missing, 12 not_applicable
+**65 rows** — 41 implemented, 8 partial, 4 missing, 12 not_applicable
 
 | printed p. | section | status | python | tests | evidence |
 | --- | --- | --- | --- | --- | --- |
@@ -18,7 +18,7 @@ Source: *Cities Without Number, Deluxe Edition (lightweight PDF, 081123)*, print
 | 34 | The Rules of the Game — Scenes, Rounds, and Mission Time | implemented | `src/rules/cwn_mission_time.py` | `tests/test_cwn_mission_time.py` | scene/round/mission clock |
 | 34 | The Rules of the Game — Saving Throws | implemented | `src/rules/cwn_core.py` | `tests/test_cwn_core.py` | four saves, target numbers |
 | 35 | The Rules of the Game — Skill Checks | implemented | `src/rules/cwn_core.py` | `tests/test_cwn_core.py` | 2d6 + attribute + skill vs difficulty band |
-| 36 | The Rules of the Game — Combat | implemented | `src/rules/cwn_combat.py`<br>`src/rules/cwn_combat_actions.py`<br>`src/rules/cwn_initiative.py`<br>`src/rules/cwn_attack_modifiers.py` | `tests/test_cwn_combat.py`<br>`tests/test_cwn_combat_actions.py` | attacks, actions, initiative, modifiers, shock/trauma |
+| 36 | The Rules of the Game — Combat | implemented | `src/rules/cwn_combat.py`<br>`src/rules/cwn_combat_actions.py`<br>`src/rules/cwn_special_maneuvers.py`<br>`src/rules/cwn_initiative.py`<br>`src/rules/cwn_attack_modifiers.py` | `tests/test_cwn_combat.py`<br>`tests/test_cwn_combat_actions.py`<br>`tests/test_cwn_special_maneuvers_1068.py` | attacks, actions, initiative, modifiers, shock/trauma and special manoeuvres |
 | 44 | The Rules of the Game — Injury, Healing, and System Strain | implemented | `src/rules/cwn_healing.py`<br>`src/rules/cwn_strain.py`<br>`src/rules/cwn_major_injury.py`<br>`src/rules/cwn_injury_procedure.py`<br>`src/rules/cwn_trauma.py` | `tests/test_cwn_healing.py`<br>`tests/test_cwn_strain.py` | mortal wounds, stabilisation, healing, strain |
 | 46 | The Rules of the Game — Vehicle Combat | implemented | `src/rules/cwn_vehicles.py` | `tests/test_cwn_vehicles.py` | vehicle movement and damage |
 | 47 | The Rules of the Game — Chases and Pursuit | implemented | `src/rules/cwn_vehicles.py` | `tests/test_cwn_vehicles.py` | pursuit procedure lives beside vehicle combat in cwn_vehicles |
@@ -67,7 +67,7 @@ Source: *Cities Without Number, Deluxe Edition (lightweight PDF, 081123)*, print
 | 232 | Supplemental Material — Cheap Cyber | missing | — | — | no module; price/maintenance tables are content, the maintenance rule is not modelled |
 | 234 | Supplemental Material — Magic in the City | partial | `src/rules/cwn_magic.py` | `tests/test_cwn_magic.py` | the magic *economy* is implemented; campaign frame is prose |
 | 235 | Supplemental Material — Mages and Spellcasting | implemented | `src/rules/cwn_magic.py` | `tests/test_cwn_magic.py` | verified against printed pp. 231-233 in this pass |
-| 240 | Supplemental Material — Summoners and Spirit Calling | partial | `src/rules/cwn_magic.py` | `tests/test_cwn_magic.py` | Summoner Effort and binding accounting only; spirit statistics are content |
-| 247 | Supplemental Material — Magic-User Foci | missing | — | — | no module |
-| 248 | Supplemental Material — The Graced | missing | — | — | no module |
-| 250 | Supplemental Material — Magic Items | missing | — | — | no module |
+| 240 | Supplemental Material — Summoners and Spirit Calling | implemented | `src/rules/cwn_summoning.py`<br>`src/rules/cwn_magic.py` | `tests/test_cwn_summoning_1068.py`<br>`tests/test_cwn_magic.py` | summoning module implements Effort cost, HD cap, form tiers and commanding; cwn_magic covers Summoner Effort and binding accounting |
+| 247 | Supplemental Material — Magic-User Foci | missing | — | — | no module: mage-only foci are not implemented |
+| 248 | Supplemental Material — The Graced | implemented | `src/rules/cwn_graced.py` | `tests/test_cwn_graced_1068.py` | Graced arts bought with art points; module landed with #1068 and carries its own tests |
+| 250 | Supplemental Material — Magic Items | implemented | `src/rules/cwn_magic_items.py` | `tests/test_cwn_graced_1068.py` | item identification and linking implemented in cwn_magic_items |

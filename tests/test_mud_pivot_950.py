@@ -78,7 +78,11 @@ class ComplianceMatrix(unittest.TestCase):
         matrix = json.loads((ROOT / "data" / "rules" / "cwn_compliance_matrix.json").read_text())
         self.assertGreaterEqual(len(matrix["rows"]), 15)
         antagonists = [row for row in matrix["rows"] if row["id"] == "antagonists"][0]
-        self.assertEqual(antagonists["coverage"], "missing")
+        # The SRD the audit walks has no Antagonists chapter, so the row must never claim the chapter
+        # is covered. It may be `missing` or `partial` (NPC reaction and morale *are* implemented,
+        # after #1068), but it must say why in `divergence` - that is what keeps the omission visible.
+        self.assertIn(antagonists["coverage"], {"missing", "partial"})
+        self.assertTrue(antagonists["divergence"].strip())
 
 
 if __name__ == "__main__":
