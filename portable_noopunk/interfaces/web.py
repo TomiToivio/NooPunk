@@ -26,11 +26,11 @@ def render(adapter: LocalAdapter, message: str = "") -> str:
 button{background:#37265c;color:#fff;border:1px solid #ab87d9;padding:.7rem 1rem;cursor:pointer}
 form{display:inline-block;margin:.25rem} .panel{border:1px solid #66588b;padding:1rem;margin:1rem 0}</style>
 <h1>NoöPunk / UNSA</h1>
-<div class="panel"><p>Location: %s</p><p>Clues: %s</p><p>Case: %s</p><p>Sidequest: %s</p></div>
+<div class="panel"><p>Scene: %s</p><p>Clues: %s</p><p>Case: %s</p><p>Theory: %s</p></div>
 <div role="status" class="panel">%s</div><div class="panel">%s</div></html>""" % (
         escape(state["location"]), escape(clues),
         "Closed" if state["finished"] else "Open",
-        "Done" if state["sidequest_done"] else "Open",
+        escape(state["theory"] or "none"),
         escape(message), controls
     )
 

@@ -6,7 +6,7 @@ SAVE_PATH = Path("noopunk_campaign_save.json")
 
 def main() -> None:
     game = Game()
-    print("NoöPunk: UNSA hospital anomaly (original rules-neutral demo)")
+    print("NoöPunk: Lakkahaltia case (rules: src/rules/investigation.py)")
     print("Type an action, 'save', 'load', or 'quit'.")
     while True:
         print("\nAvailable:", ", ".join(game.available_actions()))
@@ -33,7 +33,7 @@ def main() -> None:
             result = game.apply(Action(command))
             print(result.message)
             if "case_completed" in result.events:
-                print("You can still inspect status or quit.")
+                print("Case recorded. Inspect status, save, or quit.")
 
 if __name__ == "__main__":
     main()

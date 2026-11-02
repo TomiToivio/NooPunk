@@ -82,6 +82,16 @@ a way to *reach* them.
    it is the same command sequence a table plays — but the full mapping table is not written.
 6. **SWN faction strategy / board/card conversions** (Milestone C). Untouched, per prioritisation.
 
+## A second surface that had to be consolidated
+
+`portable_noopunk/` and `mud/nopunk_mud/portable*.py` landed on `main` in the same minutes as this
+slice, each with its own idea of a playable case. `portable_noopunk` was a self-contained narrative
+prototype — invented locations (`unsa_hq`, `hospital`, `library`), invented clues (`anomalous_clock`,
+`witness_statement`) and a sidequest that exists nowhere in the case material — i.e. a second game that
+also invented canon. It is now a façade over `console.session.CaseSession` (see
+`docs/PORTABLE_CONSOLE_CASE.md`), with its frontends unchanged. `mud/nopunk_mud/portable.py` still drives
+the MUD's own campaign and its CWN port; retiring that is item 3 below.
+
 ## Order of work this survey recommends
 
 1. (this PR) installable package + engine-independent session + console slice + tests.
