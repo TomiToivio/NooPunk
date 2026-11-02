@@ -70,9 +70,22 @@ def main() -> int:
                         help="play the solo UNSA case (interactive; stdin is a command per line)")
     parser.add_argument("--script", default="",
                         help="run a comma-separated script instead of reading stdin")
+    parser.add_argument("--seed", type=int, default=7,
+                        help="deterministic campaign seed (the same seed and commands replay exactly)")
+    parser.add_argument("--load", type=Path, default=None,
+                        help="resume a saved campaign; the case continues where it stopped")
     args = parser.parse_args()
     if args.campaign:
-        engine = CampaignEngine()
+        engine = (CampaignEngine.from_dict(json.loads(args.load.read_text(encoding="utf-8")))
+                  if args.load else CampaignEngine(seed=args.seed))
+        save_file = args.save or args.load
+
+        def persist() -> None:
+            """Write after every command: a case closed by Ctrl-C is still resumable."""
+            if save_file is not None:
+                save_file.parent.mkdir(parents=True, exist_ok=True)
+                save_file.write_text(json.dumps(engine.to_dict(), indent=2), encoding="utf-8")
+
         commands = ([part.strip() for part in args.script.split(",") if part.strip()]
                     if args.script else None)
         if commands is None:
@@ -84,14 +97,19 @@ def main() -> int:
                 if line in {"quit", "exit"}:
                     break
                 print("\n" + engine.command(line))
+                persist()
                 if engine.state.ending:
                     break
         else:
             for line in commands:
                 print("> " + line)
                 print(engine.command(line))
+                persist()
+        persist()
         print(json.dumps({"ending": engine.state.ending, "clues": engine.state.clues,
-                          "hp": engine.state.hp, "turns": engine.state.turns}, indent=2))
+                          "hp": engine.state.hp, "turns": engine.state.turns,
+                          "seed": engine.state.seed, "save": str(save_file) if save_file else None},
+                         indent=2))
         return 0 if engine.state.ending else 1
     if not args.demo:
         parser.print_help()
