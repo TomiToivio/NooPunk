@@ -3,8 +3,8 @@
   "source": "src/rules",
   "note": "Registry of implemented rule procedures. Presence here is code coverage, not SRD parity.",
   "totals": {
-    "modules": 43,
-    "procedures": 425
+    "modules": 44,
+    "procedures": 430
   },
   "modules": [
     {
@@ -1425,6 +1425,37 @@
         }
       ],
       "count": 1
+    },
+    {
+      "module": "cwn_lifestyles.py",
+      "procedures": [
+        {
+          "name": "living_cost",
+          "signature": "(lifestyle)",
+          "doc": "Monthly cost of a lifestyle, in credits."
+        },
+        {
+          "name": "strain_modifier",
+          "signature": "(lifestyle)",
+          "doc": "The maximum-System-Strain modifier that applies while living that way."
+        },
+        {
+          "name": "wage",
+          "signature": "(worker)",
+          "doc": "Average daily earnings for a worker type, in credits."
+        },
+        {
+          "name": "bribe_cost",
+          "signature": "(favour, *, daily_wage)",
+          "doc": "What a favour costs, given the target's daily wage."
+        },
+        {
+          "name": "bribe_needs_more_than_cash",
+          "signature": "(favour)",
+          "doc": "Whether the SRD marks this favour as a serious risk needing more than money."
+        }
+      ],
+      "count": 5
     },
     {
       "module": "cwn_magic.py",
