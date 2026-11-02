@@ -83,7 +83,7 @@ def render(matrix: dict) -> str:
         "Generated from `data/rules/cwn_compliance_matrix.json` by `tools/check_cwn_compliance.py --render`.",
         "Do not edit by hand: edit the JSON and regenerate, or the matrix and its evidence disagree.",
         "",
-        f"**Source:** {matrix['srd']['source']}",
+        f"**Source:** {matrix['srd'].get('edition') or matrix['srd'].get('url', '')}",
         "",
         f"> {matrix['srd']['scope_note']}",
         "",
