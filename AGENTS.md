@@ -708,3 +708,39 @@ remain shared input that both implementations read.
 - Phase 1 target: a complete offline single-player UNSA investigation in the text interface with **no**
   multiplayer, **no** LLM and **no** external API. Deterministic scripted GM, headless-testable. Any AI
   enhancement needs a no-AI fallback that still finishes the campaign.
+
+## Before you build: check for it
+
+This repository is worked on by several agents in parallel. The most expensive failure so far is not a bug — it is
+two of us building the same thing in different files and both shipping.
+
+**Before writing a new module, document or test, search for the thing:**
+
+```bash
+git ls-files | grep -i <topic>          # does a file already exist?
+grep -rn "<the function you are about to write>" --include=*.py --include=*.gd .
+gh issue list --search "<topic>" --state all
+gh pr list --search "<topic>" --state all
+```
+
+**Then choose exactly one of four actions, and say which in your commit message:**
+
+1. **Extend** the existing file — the default.
+2. **Supersede** it: delete the old one, or reduce it to a pointer, and say where the canonical copy lives.
+3. **Contrast**: keep both only if they are genuinely different subsystems, and write why in
+   `docs/DUPLICATION_AUDIT.md`.
+4. **Stop**: someone else owns it. Comment on the issue and pick something else.
+
+**Never** add a parallel implementation "so as not to disturb the existing one". That is how `cwn_core` and
+`console.py` happened.
+
+**Files that must stay singular:**
+
+- `docs/rules/CWN_COVERAGE_AUDIT_1068.md` + `data/rules/cwn_coverage.json` — the coverage truth
+- `docs/architecture/ADR_1054_ENGINE_AGNOSTIC_CORE.md` — the engine decision
+- `src/console/` — the playable front end
+- `mud/nopunk_mud/campaign/engine.py` — the campaign engine (`solo_campaign.py` is deprecated)
+- `data/rules/awn_stress.json` — the AWN Stress contract, read by both Godot and Python
+
+`tests/test_no_duplicate_implementations.py` fails when a second implementation of a singular thing appears. If it
+fails, do not register the new path — decide which one is canonical.
