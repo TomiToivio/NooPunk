@@ -12,8 +12,10 @@ The existing pure-Python CWN implementation lives at
 `mud/nopunk_mud/solo_campaign.py` implements an original GM-less UNSA prologue.
 The `portable.py` layer wraps **existing** transitions and checks rather than
 copying or modifying CWN calculations. `portable_cli.py` is a plain-terminal
-reference adapter. Evennia, Concordia and Pygame integrations remain future
-tasks; no claim of tested cross-adapter parity yet.
+reference adapter. The Evennia command layer now routes through the typed
+`nopunk_mud.session.CampaignSession`, and `mud/tests/test_session_adapter_1053.py`
+replays one seeded case through the engine, the session and the command, comparing
+state documents. Concordia and Pygame integrations remain future tasks.
 
 ## Traceability matrix (first slice)
 
@@ -24,7 +26,7 @@ tasks; no claim of tested cross-adapter parity yet.
 | Portable commands, state and results | `mud/nopunk_mud/portable.py` | `test_complete_and_save_resume` | Initial application contract |
 | Offline text console | `mud/nopunk_mud/portable_cli.py` | Manual script command below | Initial adapter, not full campaign |
 | SWN psionics, WWN, AWN, richer mods | Existing modules, audit pending | Coverage matrix pending | Not certified by this change |
-| Evennia/Concordia/Pygame adapters | To be implemented | Future parity fixtures | Deferred |
+| Evennia adapter | `mud/nopunk_mud/session.py` + `CmdSolo` | `mud/tests/test_session_adapter_1053.py` | State-document parity tested; Concordia/Pygame deferred |
 
 ## Paper-play equivalent of the current prologue
 
