@@ -1,0 +1,154 @@
+{
+  "$comment": "Seed discourse for the UNSA Helsinki case (#1042), built on mud/nopunk_mud/ideology.py. Actors, concepts and quoted demands come only from material that already exists in the campaign and lore files; this adds no canon. Evidence kinds are honest: testimony and observation for what a witness said or saw, rumour for corridor talk, assertion for what nobody backs up.",
+  "viewer_scope": "unsa",
+  "concepts": [
+    {
+      "id": "virtanen",
+      "gloss": "the missing researcher"
+    },
+    {
+      "id": "unsa",
+      "gloss": "the agency the recruit works for"
+    },
+    {
+      "id": "disclosure",
+      "gloss": "whether the world is told what UNSA knows"
+    },
+    {
+      "id": "the_case",
+      "gloss": "how an investigation should be run"
+    }
+  ],
+  "actors": [
+    {
+      "id": "romppainen",
+      "kind": "person",
+      "scope": "unsa"
+    },
+    {
+      "id": "witness",
+      "kind": "person",
+      "scope": "kurvi"
+    },
+    {
+      "id": "watcher",
+      "kind": "person",
+      "scope": "unknown"
+    },
+    {
+      "id": "unsa_command",
+      "kind": "collective",
+      "scope": "unsa"
+    },
+    {
+      "id": "virtanen",
+      "kind": "person",
+      "scope": "university"
+    }
+  ],
+  "statements": [
+    {
+      "actor": "romppainen",
+      "concept": "the_case",
+      "stance": "support",
+      "demand": "paper first: read the record before the people",
+      "evidence": "testimony",
+      "confidence": 0.9,
+      "visibility": "public",
+      "source": "campaign:romppainen/advice"
+    },
+    {
+      "actor": "romppainen",
+      "concept": "disclosure",
+      "stance": "neutral",
+      "demand": "not everything is said at once",
+      "evidence": "observation",
+      "confidence": 0.6,
+      "visibility": "private",
+      "source": "campaign:romppainen/uniform"
+    },
+    {
+      "actor": "romppainen",
+      "concept": "virtanen",
+      "stance": "support",
+      "demand": "find her",
+      "evidence": "testimony",
+      "confidence": 0.8,
+      "visibility": "public",
+      "source": "campaign:romppainen/case"
+    },
+    {
+      "actor": "romppainen",
+      "concept": "virtanen",
+      "stance": "support",
+      "demand": "she left on purpose",
+      "evidence": "rumour",
+      "confidence": 0.3,
+      "visibility": "public",
+      "source": "corridor talk"
+    },
+    {
+      "actor": "witness",
+      "concept": "virtanen",
+      "stance": "support",
+      "demand": "leave me out of it",
+      "evidence": "testimony",
+      "confidence": 0.8,
+      "visibility": "public",
+      "source": "campaign:witness/badge"
+    },
+    {
+      "actor": "watcher",
+      "concept": "unsa",
+      "stance": "oppose",
+      "demand": "you are not with the agency that hired me",
+      "evidence": "testimony",
+      "confidence": 0.7,
+      "visibility": "public",
+      "source": "campaign:watcher/van"
+    },
+    {
+      "actor": "unsa_command",
+      "concept": "disclosure",
+      "stance": "oppose",
+      "demand": "containment before candour",
+      "evidence": "assertion",
+      "confidence": 0.4,
+      "visibility": "secret",
+      "source": "lore:unsa-institutional-pressure"
+    },
+    {
+      "actor": "unsa_command",
+      "concept": "unsa",
+      "stance": "support",
+      "demand": "the agency holds, whatever it costs",
+      "evidence": "assertion",
+      "confidence": 0.7,
+      "visibility": "public",
+      "source": "lore:unsa-institutional-pressure"
+    }
+  ],
+  "relationships": [
+    {
+      "a": "romppainen",
+      "b": "unsa_command",
+      "trust": 1,
+      "debt": "he is still employed, which is a debt both ways",
+      "visibility": "private"
+    },
+    {
+      "a": "witness",
+      "b": "virtanen",
+      "trust": 2,
+      "debt": "an unpaid favour, small",
+      "visibility": "public"
+    },
+    {
+      "a": "watcher",
+      "b": "unsa_command",
+      "trust": -3,
+      "debt": "somebody hired him and has not been named",
+      "visibility": "secret"
+    }
+  ]
+}
