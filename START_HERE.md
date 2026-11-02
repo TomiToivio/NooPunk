@@ -1,5 +1,8 @@
 # START HERE — NoöPunk vanilla CWN/SWN baseline (issue #848)
 
+> **CURRENT CANONICAL PATHS (#1068, 2026-11-03):** Shared Python rules: [`src/rules/`](src/rules/) (`cwn_*.py` for locked CWN). Tabletop RPG: [`RULEBOOK.md`](RULEBOOK.md) and [`rulebook/00_INDEX.md`](rulebook/00_INDEX.md), with [`rulebook/WITHOUT_NUMBER_BASELINE.md`](rulebook/WITHOUT_NUMBER_BASELINE.md) for published mechanics. Traceability: `data/rules/cwn_traceability.json`, report `docs/rules/CWN_COVERAGE_1068.md`. **All Godot-as-source-of-truth pointers below are historical and superseded.** Read [`AGENTS.md`](AGENTS.md) and [`docs/DESIGN_PRINCIPLES.md`](docs/DESIGN_PRINCIPLES.md) before changing rules.
+
+
 > **LATEST ARCHITECTURE DIRECTIVE (2026-11-03):** Read [binding design principles](docs/DESIGN_PRINCIPLES.md) first. CWN is immutable; rules and mods are portable, tabletop-playable **Python libraries**, independent of Evennia, Concordia, Pygame and console. The initial milestone is a GM-less single-player UNSA campaign. Older Godot-first and engine-specific guidance below is historical where conflicting.
 
 > **CURRENT DIRECTIVE (2026-10-30).** Issue [#848](https://github.com/TomiToivio/NooPunk/issues/848) supersedes the blank-rulebook and seven-attribute restart (#827, #835). Follow [AGENTS.md](AGENTS.md) and [the baseline decision record](docs/NOOPUNK_BASELINE_848.md). Do not resume the restart or create another Godot project.

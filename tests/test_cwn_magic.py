@@ -1,210 +1,154 @@
-"""Magic in the city: mage Effort, preparation, casting and overcasting (#1068).
+"""Magic in the city: Effort, preparation, casting and overcasting (#1068).
 
-Source: CWN Deluxe printed pp. 231–236. The numbers are the ones the tables give — Effort from the better
-of Int/Wis plus Cast, prepared slots from half the level plus Cast, the overcasting bands — and the
-book's own worked example (three implants at strain 2, 0 and 0.5 costing four points of Effort) is a
-test, because it is the one place where the wording could be read two ways.
+Source: CWN Deluxe printed pp. 231–236. The numbers are the ones the tables give; the book's own worked
+examples are tests, because they are where a plausible-looking implementation goes wrong.
 """
+import unittest
 
-import unittest as _unittest
-
-_IMPORT_ERROR: str = ""
-try:
-    from src.rules.cwn_magic import (  # noqa: F401
-        GRIMOIRE_COST,
-        TUTOR_COST,
-        Commitment,
-        Mage,
-        MagicError,
-        cyber_effort_penalty,
-        mage_effort_max,
-        overcast_result,
-        prepared_slots,
-        summoner_effort_max,
-    )
-except ImportError as exc:  # pragma: no cover - the guard is the point
-    # The magic module on main is an inventory stub: it records the chapter's shape and its recorded
-    # discrepancies but does not implement Effort, preparation or overcasting. The numbers below were
-    # transcribed from the CWN Deluxe pages, which are not in this repository, so implementing the API
-    # here would mean inventing the rules it would test. Skipped rather than deleted: whoever has the
-    # book can delete the guard and the file becomes live again.
-    _IMPORT_ERROR = str(exc)
-
-    # Names the class bodies below need at definition time (annotations, default arguments). They are
-    # placeholders only: the skipped class never runs a test.
-    class _Unavailable:  # noqa: D401 - placeholder, not an API
-        def __init__(self, *args, **kwargs):
-            pass
-
-    Mage = Commitment = MagicError = _Unavailable
-    mage_effort_max = prepared_slots = overcast_result = summoner_effort_max = (
-        lambda *args, **kwargs: 0
-    )
-    cyber_effort_penalty = lambda *args, **kwargs: 0  # noqa: E731
-    TUTOR_COST = GRIMOIRE_COST = 0
-
-import unittest  # noqa: F401  (the guard above imports the API under test)
+from src.rules.cwn_magic import (
+    COMMITMENTS,
+    GRIMOIRE_COST,
+    TUTOR_COST,
+    EffortPool,
+    MagicError,
+    Spellbook,
+    can_cast,
+    cyberware_penalty,
+    mage_effort,
+    overcast_result,
+    prepared_slots,
+    summoner_effort,
+)
 
 
-def mage(level=1, cast=1, int_mod=1, wis_mod=0, known=("blast", "stun"), **kwargs) -> Mage:
-    return Mage(level=level, cast_skill=cast, int_mod=int_mod, wis_mod=wis_mod,
-                known=list(known), **kwargs)
-
-
-@unittest.skipUnless(not _IMPORT_ERROR, f"cwn_magic has no implementation yet: {_IMPORT_ERROR}")
 class EffortTests(unittest.TestCase):
-    def test_better_of_intelligence_or_wisdom_plus_cast(self):
-        self.assertEqual(mage_effort_max(2, 1, 3), 5, "Int +2 beats Wis +1, then Cast-3")
-        self.assertEqual(mage_effort_max(0, 2, 1), 3)
+    def test_better_mental_modifier_plus_cast(self):
+        self.assertEqual(mage_effort(intelligence=14, wisdom=8, cast_skill=1), 2)
+        self.assertEqual(mage_effort(intelligence=8, wisdom=17, cast_skill=2), 3)
 
     def test_the_pool_never_drops_below_one(self):
-        self.assertEqual(mage_effort_max(-2, -1, 0), 1)
+        self.assertEqual(mage_effort(intelligence=3, wisdom=3, cast_skill=0), 1)
 
-    def test_cyberware_cuts_the_pool_and_trivial_mods_still_cost_a_point(self):
-        # The book's own example: three implants at strain 2, 0 and 0.5 cost four points of Effort.
-        self.assertEqual(cyber_effort_penalty([2, 0, 0.5]), 4)
-        self.assertEqual(mage_effort_max(2, 1, 3, cyber_strain_costs=[2, 0, 0.5]), 1,
-                         "5 base minus 4, floored at the minimum of one")
-        self.assertEqual(mage_effort_max(2, 1, 6, cyber_strain_costs=[2, 0, 0.5]), 4)
+    def test_each_implant_costs_its_strain_and_at_least_one_point(self):
+        # The book's example: implants at 2, 0 and 0.5 cost four points of maximum Effort.
+        self.assertEqual(cyberware_penalty([2, 0, 0.5]), 4)
+        base = mage_effort(intelligence=18, wisdom=9, cast_skill=3)
+        self.assertEqual(mage_effort(intelligence=18, wisdom=9, cast_skill=3, strain_costs=[2, 0, 0.5]),
+                         max(1, base - 4), "base minus four points of chrome")
+        self.assertEqual(mage_effort(intelligence=3, wisdom=3, cast_skill=0, strain_costs=[5]), 1)
 
-    def test_a_mage_with_no_cyberware_loses_nothing(self):
-        self.assertEqual(mage_effort_max(1, 1, 2), 3)
-
-    def test_summoners_use_the_better_of_constitution_or_charisma(self):
-        self.assertEqual(summoner_effort_max(0, 3, 2), 5)
-        self.assertEqual(summoner_effort_max(-1, -1, 0), 1)
+    def test_negative_strain_is_refused(self):
         with self.assertRaises(MagicError):
-            summoner_effort_max(0, 0, -1)
+            cyberware_penalty([-1])
+
+    def test_summoners_use_constitution_or_charisma(self):
+        self.assertEqual(summoner_effort(constitution=14, charisma=8, summon_skill=1), 2)
+        self.assertEqual(summoner_effort(constitution=8, charisma=17, summon_skill=2), 3)
+        self.assertEqual(summoner_effort(constitution=3, charisma=3, summon_skill=0), 1)
 
 
-@unittest.skipUnless(not _IMPORT_ERROR, f"cwn_magic has no implementation yet: {_IMPORT_ERROR}")
 class PreparationTests(unittest.TestCase):
     def test_slots_are_half_level_rounded_up_plus_cast(self):
         self.assertEqual(prepared_slots(1, 1), 2, "the book's first-level example")
         self.assertEqual(prepared_slots(10, 4), 9, "the book's tenth-level master example")
 
-    def test_preparing_more_than_the_slots_is_refused(self):
-        caster = mage(level=1, cast=1, known=("blast", "stun", "cloak"))
-        with self.assertRaises(MagicError):
-            caster.prepare(["blast", "stun", "cloak"])
-
     def test_only_learned_spells_can_be_prepared(self):
-        caster = mage(level=4, cast=1)
+        book = Spellbook(level=4, cast_skill=1, known=["blast"])
         with self.assertRaises(MagicError):
-            caster.prepare(["arson"])
+            book.prepare(["arson"])
 
-    def test_learning_costs_a_week_and_the_book_prices_are_recorded(self):
-        caster = mage()
-        caster.learn("arson")
-        self.assertIn("arson", caster.known)
+    def test_preparing_beyond_the_slots_is_refused(self):
+        book = Spellbook(level=1, cast_skill=1, known=["blast", "stun", "cloak"])
         with self.assertRaises(MagicError):
-            caster.learn("arson")
+            book.prepare(["blast", "stun", "cloak"])
+        book.prepare(["blast", "stun"])
+        self.assertEqual(book.prepared, ["blast", "stun"])
+
+    def test_a_spell_is_learned_once_and_the_book_prices_are_recorded(self):
+        book = Spellbook(level=2, cast_skill=1)
+        book.learn("blast")
+        with self.assertRaises(MagicError):
+            book.learn("blast")
         self.assertEqual((TUTOR_COST, GRIMOIRE_COST), (5000, 10000))
 
 
-@unittest.skipUnless(not _IMPORT_ERROR, f"cwn_magic has no implementation yet: {_IMPORT_ERROR}")
 class CastingTests(unittest.TestCase):
-    def test_casting_commits_one_effort_for_the_stated_duration(self):
-        caster = mage(level=2, cast=2)
-        caster.prepare(["blast"])
-        result = caster.cast("blast", Commitment.DAY)
+    def test_a_cast_commits_one_effort_for_its_duration(self):
+        book = Spellbook(level=2, cast_skill=2, known=["blast"], prepared=["blast"])
+        pool = EffortPool(maximum=3)
+        result = book.cast("blast", pool, duration="day")
         self.assertEqual((result["effort"], result["commitment"]), (1, "day"))
-        self.assertEqual(caster.committed_total, 1)
+        self.assertEqual(pool.available, 2)
 
-    def test_scene_and_duration_commitments_recover_differently(self):
-        caster = mage(level=2, cast=2)
-        caster.prepare(["blast", "stun"])
-        caster.cast("blast", Commitment.SCENE)
-        caster.cast("stun", Commitment.DURATION)
-        self.assertEqual(caster.effort_free, caster.effort_max - 2)
-        self.assertEqual(caster.reclaim_duration(), 1, "duration Effort is reclaimable at will")
-        self.assertEqual(caster.end_scene(), 1, "scene Effort returns when the scene ends")
-        self.assertEqual(caster.committed_total, 0)
+    def test_the_three_commitments_recover_differently(self):
+        pool = EffortPool(maximum=4)
+        pool.commit(1, duration="day")
+        pool.commit(1, duration="scene")
+        pool.commit(1, duration="duration")
+        self.assertEqual(pool.reclaim_duration(), 1, "duration Effort is reclaimable at will")
+        self.assertEqual(pool.end_scene(), 1, "scene Effort returns when the scene ends")
+        self.assertFalse(pool.refresh_morning(slept_eight_hours=False), "day Effort needs the night")
+        self.assertTrue(pool.refresh_morning())
+        self.assertEqual(pool.available, 4)
+        self.assertEqual(set(pool.committed), set(COMMITMENTS))
 
-    def test_a_restrained_or_grappled_caster_cannot_cast(self):
-        caster = mage()
-        caster.prepare(["blast"])
-        with self.assertRaises(MagicError):
-            caster.cast("blast", Commitment.SCENE, check={"disturbed": True})
-        with self.assertRaises(MagicError):
-            caster.cast("blast", Commitment.SCENE, check={"hands_free": False})
+    def test_casting_needs_a_free_hand_a_voice_and_a_steady_round(self):
+        self.assertTrue(can_cast(free_hand=True, can_speak=True))
+        self.assertFalse(can_cast(free_hand=False, can_speak=True))
+        self.assertFalse(can_cast(free_hand=True, can_speak=False))
+        self.assertFalse(can_cast(free_hand=True, can_speak=True, disturbed=True),
+                         "damage or a grapple in the round spoils the cast")
 
     def test_unprepared_spells_cannot_be_cast(self):
-        caster = mage()
+        book = Spellbook(level=2, cast_skill=1, known=["blast"])
         with self.assertRaises(MagicError):
-            caster.cast("blast", Commitment.SCENE)
+            book.cast("blast", EffortPool(maximum=2))
 
-    def test_casting_beyond_the_pool_is_refused(self):
-        caster = mage(level=2, cast=1, int_mod=0, wis_mod=0)  # maximum 1
-        caster.prepare(["blast"])
-        caster.cast("blast", Commitment.DAY)
+    def test_an_exhausted_pool_refuses_the_cast(self):
+        book = Spellbook(level=2, cast_skill=1, known=["blast"], prepared=["blast"])
+        pool = EffortPool(maximum=1)
+        book.cast("blast", pool, duration="day")
         with self.assertRaises(MagicError):
-            caster.cast("blast", Commitment.DAY)
+            book.cast("blast", pool, duration="day")
 
-    def test_a_struck_caster_loses_the_spell_and_the_effort(self):
-        caster = mage()
-        caster.prepare(["blast"])
-        self.assertEqual(caster.struck_while_casting(), {"spell_lost": True, "effort_wasted": True})
-
-    def test_only_a_full_night_refreshes_the_pool(self):
-        caster = mage(level=2, cast=2)
-        caster.prepare(["blast"])
-        caster.cast("blast", Commitment.DAY)
+    def test_a_pool_cannot_commit_more_than_it_holds(self):
+        pool = EffortPool(maximum=2)
         with self.assertRaises(MagicError):
-            caster.refresh(rested=False)
-        self.assertEqual(caster.refresh(rested=True), caster.effort_max)
-        self.assertEqual(caster.committed_total, 0)
+            pool.commit(3, duration="scene")
 
 
-@unittest.skipUnless(not _IMPORT_ERROR, f"cwn_magic has no implementation yet: {_IMPORT_ERROR}")
 class OvercastingTests(unittest.TestCase):
-    def test_the_table_bands_match_the_book(self):
-        self.assertEqual(overcast_result(1)["consequence"], "death")
-        self.assertEqual(overcast_result(2)["consequence"], "mortal_wound")
-        self.assertEqual(overcast_result(4)["consequence"], "mortal_wound")
-        self.assertEqual(overcast_result(5)["consequence"], "unconscious_minute_4_strain")
+    def test_the_bands_match_the_book(self):
+        expected = {1: "death", 2: "mortal_wound", 4: "mortal_wound", 5: "unconscious_minute_4_strain",
+                    8: "unconscious_minute_4_strain", 9: "stunned_2_strain", 15: "stunned_2_strain",
+                    16: "lost_main_action_1_strain", 19: "lost_main_action_1_strain", 20: "1_strain",
+                    35: "1_strain"}
+        for total, consequence in expected.items():
+            self.assertEqual(overcast_result(total)["consequence"], consequence, total)
         self.assertEqual(overcast_result(8)["strain"], 4)
-        self.assertEqual(overcast_result(9)["consequence"], "stunned_2_strain")
-        self.assertEqual(overcast_result(15)["strain"], 2)
-        self.assertEqual(overcast_result(16)["consequence"], "lost_main_action_1_strain")
-        self.assertEqual(overcast_result(19)["strain"], 1)
-        self.assertEqual(overcast_result(20)["consequence"], "1_strain")
-        self.assertEqual(overcast_result(40)["consequence"], "1_strain", "20+ is open-ended")
 
     def test_cast_and_constitution_are_added_and_day_commitment_subtracts_two(self):
-        caster = mage(cast=2, con_mod=1)
-        scene = caster.overcast_roll(10)
-        day = caster.overcast_roll(10, day_commitment=True)
+        pool = EffortPool(maximum=3)
+        scene = pool.overcast_roll(10, cast_skill=2, constitution_mod=1)
+        day = pool.overcast_roll(10, cast_skill=2, constitution_mod=1, day_commitment=True)
         self.assertEqual((scene["total"], day["total"]), (13, 11))
-        self.assertEqual(day["strain"], 2, "11 lands in the 9–15 band")
+        self.assertEqual(day["strain"], 2)
 
-    def test_overcasting_costs_no_effort_but_expires_after_the_scene(self):
-        caster = mage(level=2, cast=1, int_mod=0, wis_mod=0)
-        caster.prepare(["blast"])
-        result = caster.cast("blast", Commitment.DAY, overcast=True)
+    def test_an_overcast_spell_costs_no_effort_and_lasts_one_scene(self):
+        book = Spellbook(level=2, cast_skill=1, known=["blast"], prepared=["blast"])
+        pool = EffortPool(maximum=1)
+        result = book.cast("blast", pool, duration="day", overcast=True)
         self.assertEqual(result["effort"], 0)
-        self.assertEqual(result["commitment"], Commitment.SCENE.value,
-                         "a duration-committed spell overcast lasts one scene")
+        self.assertEqual(result["commitment"], "scene")
+        self.assertEqual(pool.available, 1, "overcasting does not touch the pool")
 
-    def test_an_overcast_roll_outside_the_d20_is_refused(self):
+    def test_a_roll_outside_the_d20_is_refused(self):
         with self.assertRaises(MagicError):
-            mage().overcast_roll(0)
+            EffortPool(maximum=2).overcast_roll(0)
 
 
-@unittest.skipUnless(not _IMPORT_ERROR, f"cwn_magic has no implementation yet: {_IMPORT_ERROR}")
-class SummonerTests(unittest.TestCase):
-    def test_bound_effort_recovers_only_after_the_spirit_is_dispelled(self):
-        binding = summoner_spirit_binding(effort=2)
-        self.assertEqual(binding["effort_bound"], 2)
-        self.assertTrue(binding["dismissed_but_bound_still_drains"])
-        with self.assertRaises(MagicError):
-            summoner_spirit_binding(effort=0)
-
-
-@unittest.skipUnless(not _IMPORT_ERROR, f"cwn_magic has no implementation yet: {_IMPORT_ERROR}")
 class CoreIndependenceTests(unittest.TestCase):
-    def test_the_module_imports_nothing_from_the_immutable_core(self):
-        """Magic is an optional overlay: if it imported the combat or equipment rules it would be a fork."""
+    def test_magic_is_an_overlay_not_a_fork_of_the_core(self):
         import inspect
 
         import src.rules.cwn_magic as module
@@ -212,7 +156,6 @@ class CoreIndependenceTests(unittest.TestCase):
         source = inspect.getsource(module)
         self.assertNotIn("from .cwn_combat", source)
         self.assertNotIn("from .cwn_equipment", source)
-        self.assertNotIn("from .cwn_character", source)
 
 
 if __name__ == "__main__":

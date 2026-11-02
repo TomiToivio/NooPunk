@@ -6,10 +6,21 @@ from __future__ import annotations
 
 import pytest
 
-from src.rules.cwn_magic import (EffortPool, MagicError, can_cast, cyberware_penalty, mage_effort,
-                                 summoner_effort, SDT_EXAMPLE_MISMATCH)
-from src.rules.cwn_magic_items import (LinkedItem, MagicItemError, can_identify, can_link_unaided,
-                                       can_sense_magic)
+from src.rules.cwn_magic import (
+    EffortPool,
+    MagicError,
+    can_cast,
+    cyberware_penalty,
+    mage_effort,
+    summoner_effort,
+)
+from src.rules.cwn_magic_items import (
+    LinkedItem,
+    MagicItemError,
+    can_identify,
+    can_link_unaided,
+    can_sense_magic,
+)
 
 
 def test_mage_effort_is_the_better_mental_modifier_plus_cast_skill():
@@ -29,14 +40,15 @@ def test_summoner_effort_uses_constitution_or_charisma():
 
 
 def test_cyberware_reduces_the_pool_but_never_below_one():
-    assert mage_effort(intelligence=14, wisdom=8, cast_skill=1, cyberware_strain=1) == 1
-    assert mage_effort(intelligence=3, wisdom=3, cast_skill=0, cyberware_strain=5) == 1
+    assert mage_effort(intelligence=14, wisdom=8, cast_skill=1, strain_costs=[1]) == 1
+    assert mage_effort(intelligence=3, wisdom=3, cast_skill=0, strain_costs=[5]) == 1
 
 
-def test_the_srd_cyberware_example_does_not_add_up_and_that_is_recorded():
+def test_each_implant_costs_at_least_one_point_so_the_book_example_balances():
     """2 + 0 + 0.5 is 2.5, which rounds up to 3; the SRD's example says four points."""
-    assert cyberware_penalty([2, 0, 0.5]) == 3
-    assert "four points" in SDT_EXAMPLE_MISMATCH
+    # 2 + 0 + 0.5 sums to 2.5, but the book says such a mage loses four points. The only reading that
+    # satisfies its own example is "each implant costs at least one", which is what the rule documents.
+    assert cyberware_penalty([2, 0, 0.5]) == 4
 
 
 def test_commitments_are_tracked_apart_and_released_apart():

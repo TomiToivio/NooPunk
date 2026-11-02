@@ -1,0 +1,143 @@
+{
+  "$comment": "CWN 6.1.3.5 spell list, transcribed from the CWN SRD (cwn.quadrifons.com). Names, Effort commitment and duration only; the effect text is not reproduced.",
+  "format": "noopunk.rules.cwn.spells",
+  "version": 1,
+  "source": "CWN SRD 6.1.3.5",
+  "spells": [
+    {
+      "name": "Arson",
+      "commitment": "Day",
+      "duration": "Instant"
+    },
+    {
+      "name": "Blast",
+      "commitment": "Day",
+      "duration": "Instant"
+    },
+    {
+      "name": "Blastwave",
+      "commitment": "Day",
+      "duration": "Instant"
+    },
+    {
+      "name": "Bless",
+      "commitment": "Scene",
+      "duration": "Scene"
+    },
+    {
+      "name": "Cleanse Toxin",
+      "commitment": "Day",
+      "duration": "Instant"
+    },
+    {
+      "name": "Cloak",
+      "commitment": "Day",
+      "duration": "Scene"
+    },
+    {
+      "name": "Combat Precognition",
+      "commitment": "Day",
+      "duration": "Scene"
+    },
+    {
+      "name": "Compulsion",
+      "commitment": "Scene",
+      "duration": "Scene"
+    },
+    {
+      "name": "Curse",
+      "commitment": "Scene",
+      "duration": "1 round/level"
+    },
+    {
+      "name": "Detect Target",
+      "commitment": "Scene",
+      "duration": "Scene"
+    },
+    {
+      "name": "Dispel",
+      "commitment": "Day",
+      "duration": "Instant"
+    },
+    {
+      "name": "Disrupt",
+      "commitment": "Day",
+      "duration": "Instant"
+    },
+    {
+      "name": "Emotion",
+      "commitment": "Scene/Day",
+      "duration": "Scene"
+    },
+    {
+      "name": "Far Senses",
+      "commitment": "Day",
+      "duration": "Concentration"
+    },
+    {
+      "name": "Glide",
+      "commitment": "Scene",
+      "duration": "Instant"
+    },
+    {
+      "name": "Haste",
+      "commitment": "Day",
+      "duration": "Scene"
+    },
+    {
+      "name": "Heal Injury",
+      "commitment": "Day",
+      "duration": "Instant"
+    },
+    {
+      "name": "Illumination",
+      "commitment": "None",
+      "duration": "Scene"
+    },
+    {
+      "name": "Mirage",
+      "commitment": "Scene",
+      "duration": "Scene"
+    },
+    {
+      "name": "Muffle",
+      "commitment": "Scene",
+      "duration": "Scene"
+    },
+    {
+      "name": "Paralysis",
+      "commitment": "Day",
+      "duration": "Scene"
+    },
+    {
+      "name": "Psychic Interrogation",
+      "commitment": "Day",
+      "duration": "Instant"
+    },
+    {
+      "name": "Slow",
+      "commitment": "Day",
+      "duration": "1 round/level"
+    },
+    {
+      "name": "Soul Link",
+      "commitment": "Scene",
+      "duration": "Scene"
+    },
+    {
+      "name": "Stun",
+      "commitment": "Scene/Day",
+      "duration": "Instant"
+    },
+    {
+      "name": "Stunwave",
+      "commitment": "Day",
+      "duration": "Instant"
+    },
+    {
+      "name": "Triage",
+      "commitment": "Scene/Day",
+      "duration": "Instant"
+    }
+  ]
+}

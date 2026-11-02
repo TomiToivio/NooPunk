@@ -10,9 +10,9 @@ own page numbers, not against filenames. The machine-readable claims live in
 
 | status | rows | meaning |
 | --- | --- | --- |
-| implemented | **38** | Python module + at least one Python test, and the mechanic exists as the book states it |
-| partial | **9** | a named piece of the rule is missing (listed below) |
-| missing | **6** | no implementation (listed below) |
+| implemented | **41** | Python module + at least one Python test, and the mechanic exists as the book states it |
+| partial | **8** | a named piece of the rule is missing (listed below) |
+| missing | **4** | no implementation (listed below) |
 | not_applicable | **12** | GM advice, generator tables or setting material — nothing to implement |
 | unverified | **0** | the inventory was rebuilt from the book this pass, so every row states what was actually checked; rows whose numbers I could not confirm were demoted to `partial` with the gap named rather than left vague |
 
@@ -75,8 +75,9 @@ that ignores them behaves exactly as before, which is what the optionality tests
 | Variant Humanity | 228 | variant human traits and their interaction with creation |
 | Cheap Cyber | 232 | the cheap-cyber price/maintenance rule (tables are content; maintenance bookkeeping is not modelled) |
 | Magic-User Foci | 247 | the mage-only foci |
-| The Graced | 248 | the Graced package |
-| Magic Items | 250 | item creation and activation |
+
+The Graced (p248), magic items (p250) and summoner spirits (p240) were implemented in parallel and are now
+counted as implemented — the inventory follows the tree, and the audit fails if it ever drifts.
 
 These six are the honest remainder. Each needs the printed tables read and its own module + tests; none
 of them may be guessed, and none of them touch the immutable core.

@@ -84,7 +84,7 @@ These keep the filename/keyword heuristic from #1025. Promoting a row to the ver
 | Mission Gear | implemented | cwn_cyberware.py, cwn_mission_time.py |
 | Weapons | implemented | cwn_character.py, cwn_cyberware.py |
 | Weapon Stats And Definitions | implemented | cwn_core.py, cwn_equipment.py |
-| Melee Thrown Weapons | implemented | cwn_attack_modifiers.py, cwn_trauma.py |
+| Melee Thrown Weapons | implemented | cwn_attack_modifiers.py, cwn_special_maneuvers.py |
 | Heavy Weapons | implemented | cwn_encumbrance.py |
 | Weapon Mods | implemented | cwn_core.py, cwn_equipment.py |
 | Armor | implemented | cwn_character.py, cwn_cyberware.py |
@@ -99,7 +99,7 @@ These keep the filename/keyword heuristic from #1025. Promoting a row to the ver
 | Drones | implemented | cwn_drones.py |
 | Vehicles | implemented | cwn_character.py, cwn_cyberware.py |
 | Vehicle Mods | implemented | cwn_foci.py, cwn_vehicles.py |
-| Pharmaceuticals Street Drugs | implemented | cwn_major_injury.py |
+| Pharmaceuticals Street Drugs | implemented | cwn_major_injury.py, cwn_pharmaceuticals.py |
 | Lifestyles Wages And Bribes | implemented | cwn_lifestyles.py |
 | Hacking | not_applicable | cwn_hacking.py |
 | Cyberdeck Mods | implemented | cwn_gear_mods.py |
