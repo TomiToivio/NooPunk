@@ -29,6 +29,7 @@ from rules.investigation import (
     Stance,
     discover,
 )
+from rules.wn_core import skill_check
 
 STATE_VERSION = 1
 
@@ -239,11 +240,18 @@ class CaseSession:
         self._record("theory", hypothesis=hypothesis_id)
         return hypothesis_id
 
-    def risk(self, difficulty: int, skill: str = "") -> dict[str, Any]:
-        """A CWN ``2d6`` check under pressure, plus the character's rank when they hold it.
+    def risk(self, difficulty: int, skill: str = "", attribute: int = 10) -> dict[str, Any]:
+        """A CWN ``2d6`` check under pressure, resolved by the shared rules — not by this adapter.
 
         The die decides danger, time and quality, never whether a clue exists -- that is what makes
         this a separate action from discovery.
+
+        ``attribute`` is the score of the attribute the referee named as most applicable (CWN: "roll
+        2d6 and add the most applicable attribute modifier and skill level"). It defaults to 10, the
+        +0 band, which is why a session that never passes one produces the same totals as before this
+        parameter existed. The arithmetic itself lives in ``rules.wn_core.skill_check``: an adapter
+        that added the dice up itself was a second implementation of the check, which is exactly what
+        #1054 forbids.
         """
         if difficulty < 2:
             raise SessionError("a CWN check difficulty is 8, 10 or 12; below 2 is not a check")
@@ -252,10 +260,12 @@ class CaseSession:
         assert self._rng is not None
         dice = (self._rng.randint(1, 6), self._rng.randint(1, 6))
         rank = self.investigator.ratings.get(skill, 0) if skill else 0
-        total = sum(dice) + rank
+        check = skill_check(attribute_score=attribute, skill_level=rank,
+                            difficulty=difficulty, dice=dice)
         self.turns += 1
-        result = {"dice": dice, "rank": rank, "total": total, "difficulty": difficulty,
-                  "success": total >= difficulty, "skill": skill}
+        result = {"dice": check.dice, "rank": check.skill_level, "total": check.total,
+                  "attribute_modifier": check.attribute_modifier, "attribute": attribute,
+                  "difficulty": difficulty, "success": check.success, "skill": skill}
         self._record("risk", **result)
         return result
 

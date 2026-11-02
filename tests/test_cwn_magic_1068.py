@@ -4,7 +4,18 @@ These are the numbers a mage's whole day hangs on, so they are pinned rather tha
 """
 from __future__ import annotations
 
-import pytest
+try:  # `unittest discover -s tests` puts tests/ on sys.path
+    from _pytest_compat import pytest, register_module_functions
+except ModuleNotFoundError:  # pytest.ini uses --import-mode=importlib, which does not
+    import importlib.util as _ilu
+    import pathlib as _pl
+
+    _spec = _ilu.spec_from_file_location(
+        "_pytest_compat", _pl.Path(__file__).with_name("_pytest_compat.py"))
+    assert _spec and _spec.loader
+    _compat = _ilu.module_from_spec(_spec)
+    _spec.loader.exec_module(_compat)
+    pytest, register_module_functions = _compat.pytest, _compat.register_module_functions
 
 from src.rules.cwn_magic import (
     EffortPool,
@@ -113,3 +124,8 @@ def test_linking_costs_permanent_strain_and_an_arcanist_effort_until_the_next_mo
     out = item.unlink()
     assert out == {"effort_returns": 1, "when": "next_morning"}
     assert item.strain_committed == 0
+
+
+# CI runs `unittest discover`, which needs a TestCase rather than module-level functions.
+# The shim keeps the pytest-style bodies and makes them discoverable without pytest.
+ModuleLevelTests = register_module_functions(globals())

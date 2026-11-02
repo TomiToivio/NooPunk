@@ -1,10 +1,28 @@
 """CWN 6.1.3.5 spells and 6.2.8 spirit powers — the two catalogues (#1068)."""
 from __future__ import annotations
 
-import pytest
+try:  # `unittest discover -s tests` puts tests/ on sys.path
+    from _pytest_compat import pytest, register_module_functions
+except ModuleNotFoundError:  # pytest.ini uses --import-mode=importlib, which does not
+    import importlib.util as _ilu
+    import pathlib as _pl
 
-from src.rules.cwn_spells import (SPELLS, SpellError, overcast, overcast_outcome, overcast_roll, spell,
-                                  spells_committed)
+    _spec = _ilu.spec_from_file_location(
+        "_pytest_compat", _pl.Path(__file__).with_name("_pytest_compat.py"))
+    assert _spec and _spec.loader
+    _compat = _ilu.module_from_spec(_spec)
+    _spec.loader.exec_module(_compat)
+    pytest, register_module_functions = _compat.pytest, _compat.register_module_functions
+
+from src.rules.cwn_spells import (
+    SPELLS,
+    SpellError,
+    overcast,
+    overcast_outcome,
+    overcast_roll,
+    spell,
+    spells_committed,
+)
 from src.rules.cwn_spirit_powers import POWERS, SpiritPowerError, power, total_cost
 
 
@@ -69,3 +87,8 @@ def test_spirit_power_totals_drive_the_summoning_cost():
 def test_an_unknown_power_is_an_error():
     with pytest.raises(SpiritPowerError):
         power("Summon Pizza")
+
+
+# CI runs `unittest discover`, which needs a TestCase rather than module-level functions.
+# The shim keeps the pytest-style bodies and makes them discoverable without pytest.
+ModuleLevelTests = register_module_functions(globals())

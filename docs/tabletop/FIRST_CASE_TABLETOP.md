@@ -23,9 +23,15 @@ Play the UNSA recruit the console uses, so examples carry over:
 Skills: **Notice 1**, **Administer 1**, **Talk 0**. Hit points 4 (a level-1 die rolled 4). System
 Strain capacity **11**. Saves: Physical 15, Evasion 15, Mental 15, Luck 15.
 
-Modifiers are the published CWN bands: 3 → −2, 4–5 → −1, 6–8 → 0, 9–12 → +1, 13–15 → +2, 16–17 → +3,
-18 → +4. This character's 13 in Intelligence is the only modifier that is not +0, which is why every
-example below is easy to check by hand.
+Modifiers are the published CWN bands (**printed p. 5**): 3 → −2, 4–7 → −1, 8–13 → +0, 14–17 → +1,
+18 → +2. These are *not* the WWN/SWN bands (which run 6–8 → 0, 9–12 → +1, 13–15 → +2, 16–17 → +3,
+18 → +4); an earlier revision of this page printed those, which contradicted both the table above and
+`rules.wn_core.attribute_modifier`. The code was right and the page was wrong; `tests/test_wn_core.py`
+pins the bands, and `tests/test_console_case_session_1053.py::SharedRuleTests` pins that the console
+passes the attribute modifier through instead of dropping it.
+
+This character's 13 in Intelligence is the only modifier that is not +0, which is why every example
+below is easy to check by hand.
 
 ## 2. Checks — 2d6 + attribute + skill vs difficulty
 

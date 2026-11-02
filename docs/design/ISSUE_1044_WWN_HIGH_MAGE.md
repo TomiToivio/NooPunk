@@ -45,17 +45,33 @@ exists to keep two resource pools apart, not to rank them.
 
 ## Coverage matrix: spells
 
-The SRD's High Magic corpus is **86 spells** (21 level 1, 20 level 2, 18 level 3, 13 level 4,
-11 level 5). Status:
+**Correction first.** An earlier revision of this document said the SRD's corpus is "86 spells
+(21/20/18/13/11)". Counted against the SRD mirror, that was wrong on both the total and the split.
+The corpus is **83 spells in three traditions**:
+
+| tradition | total | 1 | 2 | 3 | 4 | 5 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| High Magic (common) | 52 | 13 | 12 | 11 | 9 | 7 |
+| Elementalist | 15 | 4 | 4 | 3 | 2 | 2 |
+| Necromancer | 16 | 4 | 4 | 4 | 2 | 2 |
+
+`data/rules/wwn_spells.json` is that catalogue — identity only (id, name, level, tradition, SRD
+anchor). `src/rules/wwn_spells.py` reads it and implements the learning procedure that
+`wwn_high_mage` left out: `counts_by_level()`, `find()`, `can_learn()`, `learning_days()`,
+`rescribe_days()` and `free_spells_per_level()`. `tests/test_wwn_spells.py` pins the counts so the
+wrong number cannot come back.
 
 | Batch | Status | Note |
 | --- | --- | --- |
 | Casting/preparation rules that govern all spells | **implemented** | the economy above |
-| Spell identity and level | **implemented** | `Spell(identifier, name, level)` |
-| Individual spell effects | **not implemented — deliberate** | effects are content data. Writing 86 effect entries as Python would put a rule catalogue in the rule module and duplicate what the table reads at play time. The next increment is a data file plus an effect-resolver interface, one batch per level, with the coverage matrix below kept in sync. |
+| Spell identity and level, all three traditions | **implemented** | `data/rules/wwn_spells.json` + `wwn_spells.py` |
+| Learning from a tutor, scroll or another spellbook | **implemented** | one week per spell level less one week per Magic skill level, floor one day |
+| Re-scribing a lost spellbook | **implemented** | same cost per spell; the SRD requires no materials |
+| Individual spell effects | **not implemented — deliberate** | effects belong in the book the player reads. The catalogue stores an anchor to the SRD entry instead of a paraphrase, and the GM resolves the effect. |
 
-Until that data file exists, a spell may be *known and prepared* but has no automated effect: the GM
-resolves it. That is honest, not silent — the module never pretends an effect exists.
+Until an effect resolver exists, a spell may be *known and prepared* but has no automated effect: the
+GM resolves it. That is honest, not silent — the module never pretends an effect exists, and the
+catalogue says where the authoritative text lives.
 
 ## Coverage matrix: arts
 
@@ -82,12 +98,14 @@ duplicating them here would create a second action economy.
 - **No UI/help command yet.** The slice a player can run today is via the rules API and tests. The
   in-game surface (`practise`, `prepare`, `cast`, `arts`) needs an authored scene to be useful and
   belongs with the #1042 command increment.
-- **No spell effect automation** (see matrix).
+- **No spell effect automation** (see matrix). The catalogue and learning procedure are in;
+  effect resolution is the one piece still content, by design.
 - **P1 comparison** and **P2 inventories** are separate documents so the code stays reviewable.
 
 ## Follow-up issues this implies
 
-1. High Magic spell data file + effect-resolver interface, batched by level, with the matrix updated.
+1. ~~High Magic spell data file~~ — **done** (`data/rules/wwn_spells.json`, all three traditions).
+   What remains is the optional effect-resolver interface, which is content work, not rules work.
 2. In-game command surface for the practitioner package, gated by what the character has learned.
 3. WWN/SWN faction comparison (P1) — separate issue; touches `swn_faction_turn` and `wwn_projects`.
 4. Law of One concept matrix (P2) — separate issue; lore, not rules.
