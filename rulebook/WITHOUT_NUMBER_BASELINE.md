@@ -1,3 +1,17 @@
+
+## Rulebook ↔ Python synchronization (issues #1053 and #1054)
+
+**Mandatory review gate:** Every new NoöPunk playable procedure, including an
+optional mod, must be described here or in a linked tabletop rulebook chapter
+**and** implemented in the engine-neutral Python library **in the same PR**.
+Provide a hand-resolvable example and a corresponding golden test. Never
+rewrite the published CWN mechanics to make a mod or interface simpler.
+For published rulebook content, reference the authoritative book/section
+rather than copying protected text. See
+[portable code-to-rules traceability](../docs/PORTABLE_RULES_PARITY.md)
+for the current implementation matrix and the paper-playable Missing
+Researcher prologue. Current parity is **partial**, not comprehensive.
+
 # NoöPunk: Without Number baseline v1
 
 **Author decision, 26 October 2026:** “For beginning, use CWN/SWN/AWN/WWN system for everything. Make the stats, skills, all rules based on them. We will modify later.”
