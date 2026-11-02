@@ -1,0 +1,143 @@
+{
+  "$comment": "CWN 6.2.8 spirit powers, transcribed from the CWN SRD. Cost is the number of points added to the spirit's Effort cost.",
+  "format": "noopunk.rules.cwn.spirit_powers",
+  "version": 1,
+  "source": "CWN SRD 6.2.8",
+  "powers": [
+    {
+      "name": "Airy Steps",
+      "cost": 3,
+      "effect": "The spirit can fly at its normal Move rate. Physical spirits can carry a load."
+    },
+    {
+      "name": "Artifice-Wise",
+      "cost": 1,
+      "effect": "The spirit can use common modern technology, but not weapons or armor."
+    },
+    {
+      "name": "Aura of Destruction",
+      "cost": 5,
+      "effect": "Gain a damage bonus of half its hit dice and damage melee attackers"
+    },
+    {
+      "name": "Curse",
+      "cost": 1,
+      "effect": "Target a foe with -1 skill checks and -2 hit/damage. Increases with levels."
+    },
+    {
+      "name": "Ensnare",
+      "cost": 1,
+      "effect": "Make a target unable to move from their location until freed"
+    },
+    {
+      "name": "Favor",
+      "cost": 1,
+      "effect": "Target an ally with a bonus to checks or combat rolls for a particular end"
+    },
+    {
+      "name": "Feral Pact",
+      "cost": 1,
+      "effect": "Speak with and command animals of the same type as the animal-spirit"
+    },
+    {
+      "name": "Finned Swiftness",
+      "cost": 1,
+      "effect": "Swim at twice the spirit’s usual Move rate"
+    },
+    {
+      "name": "Flesh of Clay",
+      "cost": 1,
+      "effect": "The spirit cannot be affected by Traumatic Hits."
+    },
+    {
+      "name": "Ghostly Presence",
+      "cost": 5,
+      "effect": "The spirit is invisible until it takes a violent action or draws attention."
+    },
+    {
+      "name": "Hideous Talons",
+      "cost": 3,
+      "effect": "Gain a bonus to the combat statistics granted by Violent Will."
+    },
+    {
+      "name": "Iron Eidolon",
+      "cost": 10,
+      "effect": "A physical form is immune to non-magic weapons, but not unarmed hits."
+    },
+    {
+      "name": "Merciful Hands",
+      "cost": 1,
+      "effect": "Accept damage to the spirit in order to heal damage to a wounded ally."
+    },
+    {
+      "name": "Mighty Form",
+      "cost": 1,
+      "effect": "Gain tremendous physical strength, though it’s too slow to use in combat."
+    },
+    {
+      "name": "Mislead",
+      "cost": 3,
+      "effect": "Cause a moving target to move in whatever direction the spirit wishes."
+    },
+    {
+      "name": "Misty Form",
+      "cost": 1,
+      "effect": "The spirit can flow through any barrier that isn’t watertight."
+    },
+    {
+      "name": "Mortal Disguise",
+      "cost": 1,
+      "effect": "The spirit can look like a normal human being, except under close study."
+    },
+    {
+      "name": "Myrmidon’s Shield",
+      "cost": 3,
+      "effect": "When your summoner takes a Traumatic Hit, take it in their place."
+    },
+    {
+      "name": "Natural Immunity",
+      "cost": 1,
+      "effect": "Become immune to a substance or source of harm in line with its nature."
+    },
+    {
+      "name": "Poltergeist",
+      "cost": 1,
+      "effect": "Telekinetically manipulate objects at a distance with a weak strength."
+    },
+    {
+      "name": "Skilled",
+      "cost": 1,
+      "effect": "Pick a skill or role and add +2 to the spirit’s skill checks related to it."
+    },
+    {
+      "name": "Spiderlegs",
+      "cost": 1,
+      "effect": "Walk on vertical or overhanging surfaces as if they were flat ground."
+    },
+    {
+      "name": "Spirit of War",
+      "cost": 1,
+      "effect": "Enhance Violent Will’s combat abilities, but become merciless in combat."
+    },
+    {
+      "name": "Spirit Whispers",
+      "cost": 3,
+      "effect": "Make a suggestion to a listener that they do not find deeply objectionable."
+    },
+    {
+      "name": "Spirit’s Eye",
+      "cost": 1,
+      "effect": "Enhance the spirit’s senses and grant it a +2 bonus to Notice checks."
+    },
+    {
+      "name": "Swift Pursuit",
+      "cost": 1,
+      "effect": "The spirit’s Move increases by 10 meters and it gets +2 to chase things."
+    },
+    {
+      "name": "Violent Will",
+      "cost": 1,
+      "effect": "The spirit is capable of fighting, but will not use mortal arms or armor."
+    }
+  ]
+}
