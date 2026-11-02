@@ -133,11 +133,11 @@
         "tier": "cwn-core"
       },
       {
-        "module": "src/rules/cwn_combat_actions.py",
+        "module": "src/rules/cwn_combat.py",
         "tier": "cwn-core"
       },
       {
-        "module": "src/rules/cwn_combat.py",
+        "module": "src/rules/cwn_combat_actions.py",
         "tier": "cwn-core"
       },
       {
@@ -221,6 +221,10 @@
         "tier": "cwn-core"
       },
       {
+        "module": "src/rules/cwn_pharmaceuticals.py",
+        "tier": "cwn-core"
+      },
+      {
         "module": "src/rules/cwn_program_catalogue.py",
         "tier": "cwn-core"
       },
@@ -230,6 +234,14 @@
       },
       {
         "module": "src/rules/cwn_special_maneuvers.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_spells.py",
+        "tier": "cwn-core"
+      },
+      {
+        "module": "src/rules/cwn_spirit_powers.py",
         "tier": "cwn-core"
       },
       {
@@ -261,11 +273,11 @@
         "tier": "noopunk-mod"
       },
       {
-        "module": "src/rules/investigation_evidence.py",
+        "module": "src/rules/investigation.py",
         "tier": "noopunk-mod"
       },
       {
-        "module": "src/rules/investigation.py",
+        "module": "src/rules/investigation_evidence.py",
         "tier": "noopunk-mod"
       },
       {

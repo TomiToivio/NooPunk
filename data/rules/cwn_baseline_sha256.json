@@ -27,7 +27,7 @@
     "src/rules/cwn_injury_procedure.py": "ce1f10998d62b1481ef8e730f074c04fe1dd8832a5b7d2ebd6aa3177f54be267",
     "src/rules/cwn_lifestyles.py": "d0943d0e70a491a0ef58dc7b27fd500e2b5c830c1af30e376f53f8bd1c6e3121",
     "src/rules/cwn_magic_items.py": "e027b5667532f06d1dc86c2aa8ca4b607efb768f37d43fe58ecc0163773419d5",
-    "src/rules/cwn_magic.py": "8dcf12db86a30d246c831901ca6f88d0f1cb531442dc4b5027df6f99dd6d8683",
+    "src/rules/cwn_magic.py": "71178ab86b80ee8456001e2a3499a54c76821b6bcd27f5afda7fd2a4526fff71",
     "src/rules/cwn_major_injury.py": "26162ca8b9faa52b21c80532978bdc71a56ec486a390dc26eb8b897f8d597a07",
     "src/rules/cwn_mission_time.py": "54fec1054be9a640c9394ed360556984c33237a3f760a9c6c3270f2a85552bd6",
     "src/rules/cwn_npcs.py": "fd9d9be84fd7c1f4d1ef39d8d7e94ea52bf002d9b84073329e99dc4e4879af9b",
@@ -37,6 +37,9 @@
     "src/rules/cwn_strain.py": "f236db8f062328cfd36a920ab2bb3d628298a2750970cf2b9e444b87f131372f",
     "src/rules/cwn_summoning.py": "938994dab1aaa7c02df301ab39addb4aee6692d2963922b537226ef3c5d8767a",
     "src/rules/cwn_trauma.py": "e29dd3ded4bff4620aba7fd3a8d7cfe554a1cad14b0fd5166cba0d7fbb427d2a",
-    "src/rules/cwn_vehicles.py": "4e3bc47eb0135564d0448d70f2432acfc00d64bdf9e85229be19ac2fc94dfa7c"
+    "src/rules/cwn_vehicles.py": "4e3bc47eb0135564d0448d70f2432acfc00d64bdf9e85229be19ac2fc94dfa7c",
+    "src/rules/cwn_pharmaceuticals.py": "bc87dcea7d1b06e8ef8649aacc165062cb7b6f8ef2765cf0fde11891aac7551f",
+    "src/rules/cwn_spells.py": "71d082e0c6c7b0375e2c7051cb68722294d101ea4ff9b0f61c3a74e29066b54a",
+    "src/rules/cwn_spirit_powers.py": "7f2cdbf13183594067f36a6af0ea9b22079900ee797ccb2dfa90fbfebe5650eb"
   }
 }
