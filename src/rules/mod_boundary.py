@@ -151,7 +151,7 @@ def validate_registry(entries: Iterable[Mapping[str, Any]], *, root: str | None 
             source = file_at(hook["path"], name + " hook").read_text(encoding="utf-8")
             import re
             escaped = re.escape(hook["symbol"])
-            if not re.search(r"(?m)^\\s*(?:static\\s+)?(?:func|def)\\s+" + escaped + r"\\s*\\(", source):
+            if not re.search(r"(?m)^\s*(?:static\s+)?(?:func|def)\s+" + escaped + r"\s*\(", source):
                 raise BaselineViolation(f"{name}: hook symbol not found: {hook['path']}:{hook['symbol']}")
         procedure, gap = entry.get("tabletop_procedure"), entry.get("tabletop_gap")
         if procedure is not None:
