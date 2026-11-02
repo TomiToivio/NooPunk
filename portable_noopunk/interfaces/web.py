@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from html import escape
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from threading import Lock
+from threading import RLock
 from urllib.parse import parse_qs
 from portable_noopunk.adapters import LocalAdapter
 from portable_noopunk.campaign import Game
@@ -37,7 +37,7 @@ form{display:inline-block;margin:.25rem} .panel{border:1px solid #66588b;padding
 
 def handler_factory(adapter: LocalAdapter):
     """Share exactly one local campaign session; do not expose on public networks."""
-    lock = Lock()
+    lock = RLock()
 
     class Handler(BaseHTTPRequestHandler):
         def do_GET(self):
