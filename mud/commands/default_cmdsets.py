@@ -151,11 +151,13 @@ class CmdSolo(Command):
     aliases = ["unsa-solo"]
 
     def func(self):
-        from nopunk_mud.campaign import CampaignEngine
+        # The typed session is the adapter boundary (#1053/#1054): it owns the engine and
+        # derives events from the state transition. This command holds no rule and no story.
+        from nopunk_mud.session import Action, CampaignSession
 
         stored = self.caller.db.unsa_solo_state
         try:
-            engine = CampaignEngine.from_dict(dict(stored)) if stored else CampaignEngine()
+            session = CampaignSession.from_dict(dict(stored)) if stored else CampaignSession()
         except (TypeError, ValueError, KeyError) as exc:
             self.caller.msg(
                 f"Saved solo case could not be loaded ({exc}). "
@@ -169,9 +171,9 @@ class CmdSolo(Command):
         if action.split()[0].lower() == "save":
             self.caller.msg("Your solo case is saved automatically after each command.")
             return
-        output = engine.command(action)
-        self.caller.db.unsa_solo_state = engine.to_dict()
-        self.caller.msg(output)
+        result = session.execute(Action(action))
+        self.caller.db.unsa_solo_state = dict(result.state)
+        self.caller.msg(result.text)
 
 
 class CmdAssess(Command):

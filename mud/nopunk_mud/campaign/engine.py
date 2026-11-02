@@ -408,10 +408,12 @@ class CampaignEngine:
             "location": self.state.location,
             "hp": self.state.hp,
             "max_hp": self.state.max_hp,
-            "inventory": self.state.inventory,
-            "clues": self.state.clues,
-            "flags": self.state.flags,
-            "talked": self.state.talked,
+            "inventory": dict(self.state.inventory),
+            # A state document is a snapshot: a consumer that keeps it (a session result, an
+            # adapter, a save callback) must not watch the engine mutate its history.
+            "clues": list(self.state.clues),
+            "flags": list(self.state.flags),
+            "talked": list(self.state.talked),
             "ending": self.state.ending,
             "turns": self.state.turns,
             "minute": self.state.minute,

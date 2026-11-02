@@ -20,3 +20,8 @@ noopunk2/.godot/
 # #908: reference art is internal and consent-controlled; never commit real photographs.
 images/reference/*
 !images/reference/README.md
+
+# editable install metadata
+*.egg-info/
+build/
+dist/

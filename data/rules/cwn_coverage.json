@@ -3,8 +3,8 @@
   "source": "src/rules",
   "note": "Registry of implemented rule procedures. Presence here is code coverage, not SRD parity.",
   "totals": {
-    "modules": 36,
-    "procedures": 362
+    "modules": 38,
+    "procedures": 392
   },
   "modules": [
     {
@@ -82,6 +82,74 @@
         }
       ],
       "count": 14
+    },
+    {
+      "module": "cwn_alienation.py",
+      "procedures": [
+        {
+          "name": "system_cost",
+          "signature": "(strain_cost, *, nerve=..., discounted_sense=...)",
+          "doc": "Alienation gained by installing one system (printed p. 226)."
+        },
+        {
+          "name": "Alienation",
+          "signature": "",
+          "doc": "One character's chrome burden. Permanent only in the sense that chrome sets a floor.",
+          "methods": [
+            {
+              "name": "Alienation.maximum",
+              "signature": "()",
+              "doc": "Wisdom plus the ceiling bonus of every syndrome taken (printed pp. 227, 231)."
+            },
+            {
+              "name": "Alienation.broken",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Alienation.install",
+              "signature": "(strain_cost, *, nerve=..., discounted_sense=...)",
+              "doc": "Adding chrome raises both the score and the floor it can be treated down to."
+            },
+            {
+              "name": "Alienation.uninstall",
+              "signature": "(strain_cost, *, nerve=..., discounted_sense=...)",
+              "doc": "Removing chrome lowers the floor (printed p. 226: 'removing cyberware will lower this minimum')."
+            },
+            {
+              "name": "Alienation.take_syndrome",
+              "signature": "(name)",
+              "doc": ""
+            },
+            {
+              "name": "Alienation.drop_syndrome",
+              "signature": "(name)",
+              "doc": "Only by uninstalling the chrome that induced it and treating the Alienation it caused."
+            },
+            {
+              "name": "Alienation.check",
+              "signature": "(die)",
+              "doc": "A 1d20 Alienation check: at or under the current score, it rises by one."
+            },
+            {
+              "name": "Alienation.mental_save",
+              "signature": "(*, success)",
+              "doc": "Resolve a rise past the ceiling: a new syndrome, or cyber-induced psychosis."
+            },
+            {
+              "name": "Alienation.therapy_week",
+              "signature": "()",
+              "doc": "One week of therapy drops one point, never below the chrome's own cost."
+            }
+          ]
+        },
+        {
+          "name": "rescue_from_psychosis",
+          "signature": "(*, wisdom, score, chrome_removed, therapist_skill, die)",
+          "doc": "A psychosis victim's one way back (printed p. 226)."
+        }
+      ],
+      "count": 11
     },
     {
       "module": "cwn_attack_modifiers.py",
@@ -1319,6 +1387,114 @@
         }
       ],
       "count": 1
+    },
+    {
+      "module": "cwn_magic.py",
+      "procedures": [
+        {
+          "name": "cyber_effort_penalty",
+          "signature": "(strain_costs)",
+          "doc": "Effort lost to implants: the System Strain of each, and at least one point per implant."
+        },
+        {
+          "name": "mage_effort_max",
+          "signature": "(int_mod, wis_mod, cast_skill, *, cyber_strain_costs=...)",
+          "doc": "Maximum Mage Effort (printed p. 231): max(Int, Wis) + Cast, minus every implant, minimum 1."
+        },
+        {
+          "name": "summoner_effort_max",
+          "signature": "(con_mod, cha_mod, summon_skill, *, cyber_strain_costs=...)",
+          "doc": "Summoner Effort: the better of Constitution or Charisma, plus Summon, minimum 1 (p. 236)."
+        },
+        {
+          "name": "prepared_slots",
+          "signature": "(level, cast_skill)",
+          "doc": "ceil(level / 2) + Cast (printed p. 231)."
+        },
+        {
+          "name": "overcast_result",
+          "signature": "(total)",
+          "doc": "Map 1d20 + Cast + Con (\u22122 for day-commitment) onto the overcasting table."
+        },
+        {
+          "name": "Mage",
+          "signature": "",
+          "doc": "A spellcaster's bookkeeping. Prepared spells are learned ones; Effort is committed, not spent.",
+          "methods": [
+            {
+              "name": "Mage.effort_max",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Mage.committed_total",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Mage.effort_free",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Mage.slots",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Mage.learn",
+              "signature": "(spell)",
+              "doc": ""
+            },
+            {
+              "name": "Mage.prepare",
+              "signature": "(spells)",
+              "doc": "Fill the slots; the book allows changing them only when Effort refreshes."
+            },
+            {
+              "name": "Mage.can_cast",
+              "signature": "(*, hands_free=..., can_speak=..., disturbed=...)",
+              "doc": "One free hand, a voice, and no damage/grapple in the round (printed p. 232)."
+            },
+            {
+              "name": "Mage.cast",
+              "signature": "(spell, commitment, *, overcast=..., check=...)",
+              "doc": "Cast a prepared spell, committing Effort unless overcasting."
+            },
+            {
+              "name": "Mage.overcast_roll",
+              "signature": "(die, *, day_commitment=...)",
+              "doc": "The die is 1d20; Cast and Con are added, and a day-commitment spell subtracts 2."
+            },
+            {
+              "name": "Mage.struck_while_casting",
+              "signature": "()",
+              "doc": "A held action that lands mid-cast: the spell is lost and the Effort is wasted."
+            },
+            {
+              "name": "Mage.reclaim_duration",
+              "signature": "()",
+              "doc": "Commitment for the duration can be reclaimed at will; the effect ends when it is."
+            },
+            {
+              "name": "Mage.end_scene",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Mage.refresh",
+              "signature": "(*, rested=...)",
+              "doc": "Eight undisturbed hours in reasonable comfort; day Effort and everything else returns."
+            }
+          ]
+        },
+        {
+          "name": "summoner_spirit_binding",
+          "signature": "(*, effort, controlled=...)",
+          "doc": "Summoner Effort bound in a spirit stays spent until the morning after it is dispelled (p. 236)."
+        }
+      ],
+      "count": 19
     },
     {
       "module": "cwn_major_injury.py",

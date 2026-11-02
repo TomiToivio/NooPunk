@@ -59,19 +59,21 @@ Play as an individual investigating the impossible, or as a faction shaping the 
 *Setting note: 2045 depicts the developed NHI Crisis era. The earlier strategy campaign begins around 2027, before these outcomes are settled, allowing players to shape the future rather than treating it as inevitable.*
 
 
-> **STATUS: LIVING RULEBOOK / INDEPENDENT NOÖPUNK RPG**
+> **STATUS: LIVING RULEBOOK / NOÖPUNK SETTING ON THE WITHOUT NUMBER CORE**
 >
-> This is the canonical human-readable rules document for the NoöPunk RPG/social simulation.
+> This is the canonical human-readable **setting and rules** document for the NoöPunk RPG/social
+> simulation. NoöPunk is an independent setting; its **mechanical core is Cities Without Number**,
+> under the author decision of 2026-10-26, the Without Number baseline and the binding architecture in
+> [`docs/architecture/ADR_1054_ENGINE_AGNOSTIC_CORE.md`](docs/architecture/ADR_1054_ENGINE_AGNOSTIC_CORE.md).
 >
-> **NoöPunk is an independent rules system.** Cyberpunk 2020 / RED, Eclipse Phase, Fate, PbtA, CY_BORG, Cities Without Number, Citizen Sleeper and other games are influences, not parent systems.
+> **Mechanical authority:** [`rulebook/WITHOUT_NUMBER_BASELINE.md`](rulebook/WITHOUT_NUMBER_BASELINE.md).
+> Resolution is CWN's: **2d6 + attribute modifier + skill rank** against the difficulty for skill
+> checks; **1d20** against the target for saves and attacks. Attributes are
+> **STR, DEX, CON, INT, WIS, CHA** on the **3–18** scale. The setting year is **20XX**.
 >
-> Canonical resolution core:
->
-> ```text
-> STAT + Skill + 1d10 vs Difficulty Value
-> ```
->
-> Canonical STATs and trained Skills use a **1–10** scale. The setting year is **20XX**.
+> The 1–10 STAT / 1d10 material in later chapters is **historical** and is being replaced chapter by
+> chapter. Where a chapter conflicts with the baseline, the baseline wins. Complete CWN procedures
+> live in the CWN SRD and source book, not reproduced here.
 
 **This rulebook is also published as navigable parts.** This file remains the canonical text. For
 reading, the same content is segmented in [`rulebook/00_INDEX.md`](rulebook/00_INDEX.md), which
