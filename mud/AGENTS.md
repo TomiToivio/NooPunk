@@ -7,7 +7,7 @@ Keep `nopunk_mud.cwn_core` canonical for implemented rules; do not fork
 CWN mechanics in Evennia typeclasses or new UI code. Implement additions
 behind engine-neutral domain actions and retain a plain-console reference.
 Every rule/mod change includes corresponding tabletop rules, code and tests
-in the same PR. Python adapters are thin; Conan/LLM/Pygame frameworks are
+in the same PR. Python adapters are thin; Concordia/LLM/Pygame frameworks are
 never imported by portable rules. The first goal is a finished offline
 single-player UNSA campaign, not multiplayer or faction strategy.
 
