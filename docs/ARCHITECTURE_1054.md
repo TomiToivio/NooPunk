@@ -1,7 +1,9 @@
-# Architecture decision: immutable tabletop core, engine-independent Python rules (#1054)
+# Architecture decision #1054 — moved
 
-**Status: binding.** This records the decision in #1054 and the executable first slice from #1053. It does not
-authorize rewriting any published rule.
+The canonical decision record is
+[`docs/architecture/ADR_1054_ENGINE_AGNOSTIC_CORE.md`](architecture/ADR_1054_ENGINE_AGNOSTIC_CORE.md).
+It carries the layer map with measured sizes, the enforced engine boundary, the component inventory,
+the mods contract and the adapter API. This file is kept as a pointer so older links keep working.
 
 ## The five constraints
 
@@ -17,56 +19,5 @@ authorize rewriting any published rule.
 5. **A playable game beats speculative platform work.** The single-player UNSA campaign comes first; strategy and
    multiplayer are postponed until it is playable without either.
 
-## What exists today (measured, not planned)
-
-| Piece | Where | State |
-|---|---|---|
-| Rules kernel (attributes, checks, combat, strain, saves) | `mud/nopunk_mud/cwn_core.py` | implemented, tested |
-| Campaign engine (commands, state, endings, save/load) | `mud/nopunk_mud/campaign/engine.py` | implemented, tested |
-| **Console slice** — plain text, no engine | `mud/nopunk_mud/console.py` | **new in this change** |
-| Social layer (rank, scoped reputation) | `mud/nopunk_mud/social.py` | implemented, tested |
-| Ideology layer (DA/DNA/SNA) | `mud/nopunk_mud/ideology.py` | implemented, tested |
-| Evennia adapter | `mud/commands/`, `mud/typeclasses/` | exists, **not the owner of any rule** |
-
-## The console slice, and why it is the architectural test
-
-`python -m nopunk_mud.console` plays the first UNSA investigation end to end with **no Evennia, no Concordia, no
-Pygame, no LLM and no network**. A test blocks `evennia` at import time and runs the rules anyway; another plays
-the published winning chain to a `solved` ending and asserts both clues are held. If an engine ever becomes
-load-bearing for a rule, that first test fails — which is the cheapest possible alarm.
-
-```
-go street → go kurvi → ask witness badge → examine badge
-          → go street → go university → examine terminal
-          → go street → go safehouse → report        ⇒ solved
-```
-
-## Adapter contract
-
-An adapter may: read player input, render text/graphics, persist state through the documented save format, and
-schedule time. An adapter may **not**: compute a check, decide damage, resolve a clue, or hold a rule that the
-plain-Python package does not also expose.
-
-Cross-adapter parity is tested by replaying the same seeded script through two adapters and comparing the
-resulting state documents — not by comparing prose.
-
-## Mod contract
-
-Each mod declares, in one place: what it adds; where it hooks into CWN; its **tabletop procedure**; its input and
-output state; its dependencies; and how to switch it off. A mod that cannot be played with dice and paper is not
-a mod yet.
-
-## Coverage matrix and licensing
-
-The rules-coverage matrix lives in `docs/rules/` and records, per subsystem: rulebook section (with printed page),
-implementation, tests, and licence basis. A row without a page reference is a guess, and a guess does not go in
-the matrix.
-
-**Rule for every future change:** a rule and its tests change together, in the same pull request, and the matrix
-row moves with them. A rule change that does not update its row is a silent divergence from the tabletop game.
-
-## Migration of existing engine-specific code
-
-Evennia commands and typeclasses stay, as adapters. Nothing is deleted to satisfy the diagram. Where a rule is
-found inside an adapter, it moves to the plain package and the adapter keeps the presentation. The Godot
-project is secondary/legacy per #950 and is not a target for new rules work.
+The survey behind the numbers, and the tabletop procedure with golden examples, sit beside it:
+`architecture/ISSUE_1053_ARCHITECTURE_SURVEY.md` and `tabletop/FIRST_CASE_TABLETOP.md`.

@@ -42,6 +42,17 @@ Two facts follow, and both are checkable rather than asserted:
   only because it is tracked: `tools/check_godot_rule_duplicates.py` reports `0 known duplicate domains,
   no new ones`, so a GDScript rule that diverges from `src/rules` fails a check instead of drifting.
 
+## Component inventory (what exists today, not what is planned)
+
+| piece | where | state |
+| --- | --- | --- |
+| rules kernel (attributes, checks, combat, strain, saves) | `mud/nopunk_mud/cwn_core.py` + `src/rules/` | implemented, tested |
+| campaign engine (commands, state, endings, save/load, seeded RNG) | `mud/nopunk_mud/campaign/engine.py` | implemented, tested |
+| console slice (plain text, no engine) | `mud/nopunk_mud/console.py`, flags in `cli.py` | implemented, tested |
+| social layer (rank, scoped reputation) | `mud/nopunk_mud/social.py` | implemented, tested |
+| ideology layer (DA/DNA/SNA) | `mud/nopunk_mud/ideology.py` | implemented, tested |
+| Evennia adapter | `mud/commands/`, `mud/typeclasses/` | exists, owns no rule |
+
 ## The boundary rule, stated so it can be broken visibly
 
 > A module under `src/rules/` or `mud/nopunk_mud/` may import the standard library, other rule modules,
