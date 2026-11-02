@@ -64,6 +64,23 @@ or on a `cwn-core` module that imports a `noopunk-mod` one. The tier table is ge
 every overlay module**, so "turning the mods off leaves a working CWN game" is a fact rather than a promise.
 A new module added under `src/rules/` is classified in the same commit.
 
+**CWN coverage is tracked, and the CWN baseline is fingerprinted (#1068).**
+[`data/rules/cwn_traceability.json`](data/rules/cwn_traceability.json) records, per SRD section, the
+modules, the *named* procedures/classes/constants and the tests that implement it, plus the tabletop
+file that documents it. `python3 tools/cwn_parity_audit.py` verifies those claims against the code (a
+renamed function fails the build) and regenerates `data/rules/cwn_compliance_matrix.json`,
+`docs/rules/CWN_PARITY_MATRIX.md` and `docs/rules/CWN_COVERAGE_1068.md`;
+`tests/test_cwn_traceability_1068.py` fails when the committed matrix is stale.
+`data/rules/cwn_baseline_sha256.json` pins the SHA-256 of every `src/rules/cwn_*.py` file: **editing a
+CWN rule fails CI until someone re-pins the baseline in a PR that says it is changing CWN** — which this
+project has decided must never happen. A gap listed as `partial` or `missing` in the matrix is a gap with
+a recorded reason; filling one means adding code and tests, then curating its row, never editing a
+neighbouring rule to make the number look better.
+**Two-way sync for rules (#1053/#1054, enforced by this checklist rather than by CI):** a PR that adds or
+changes a playable procedure must update the Python implementation, its tests, and the tabletop
+documentation (the `rulebook` column of the traceability file) **in the same PR**. CI may not assert over
+Markdown prose (§#271), so the reviewer checks it; a one-sided rules PR is rejected.
+
 **A vague instruction is not authorisation to change the core.** "Improve the rules", "make PSI deeper",
 "implement this subsystem" mean *write a mod*. Amending the constitution requires an explicit author decision
 that names it. Overlays live in `mods/noopunk/` and in the MUD's overlay modules; they ask the core for a roll

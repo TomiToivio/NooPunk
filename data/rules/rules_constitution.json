@@ -189,6 +189,10 @@
         "tier": "cwn-core"
       },
       {
+        "module": "src/rules/cwn_lifestyles.py",
+        "tier": "cwn-core"
+      },
+      {
         "module": "src/rules/cwn_major_injury.py",
         "tier": "cwn-core"
       },

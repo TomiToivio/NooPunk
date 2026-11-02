@@ -29,6 +29,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import ast
 import json
 import re
 from pathlib import Path
@@ -36,6 +37,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MATRIX = ROOT / "data" / "rules" / "cwn_compliance_matrix.json"
 DOC = ROOT / "docs" / "rules" / "CWN_PARITY_MATRIX.md"
+CURATED = ROOT / "data" / "rules" / "cwn_traceability.json"
+REPORT = ROOT / "docs" / "rules" / "CWN_COVERAGE_1068.md"
 
 SRD = "https://cwn.quadrifons.com"
 
@@ -246,6 +249,122 @@ def commands_for(toks: list[str]) -> list[str]:
     return [t for t in toks if t in text]
 
 
+
+# --------------------------------------------------------------------------- #
+# Curated, verified evidence (#1068)
+# --------------------------------------------------------------------------- #
+
+#: Statuses a curator may force, with the reason carried in the row's notes.
+FORCEABLE = {"missing", "partial", "not_applicable"}
+
+
+def module_names(path: Path) -> set[str]:
+    """Top-level classes, functions and assigned names of a module, from its AST.
+
+    Reading the AST rather than importing keeps the audit free of import side effects (some modules
+    read data files at import time) while still proving the name exists in the file.
+    """
+    try:
+        tree = ast.parse(path.read_text(encoding="utf-8", errors="replace"))
+    except SyntaxError:
+        return set()
+    names: set[str] = set()
+    for node in tree.body:
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+            names.add(node.name)
+        elif isinstance(node, ast.Assign):
+            for target in node.targets:
+                if isinstance(target, ast.Name):
+                    names.add(target.id)
+        elif isinstance(node, ast.AnnAssign) and isinstance(node.target, ast.Name):
+            names.add(node.target.id)
+    return names
+
+
+def verify_entry(entry: dict) -> dict:
+    """Check every piece of evidence a curated row claims, and say what failed.
+
+    Evidence is attributed per module: a row cites ``{"path": ..., "procedures": [...]}`` so that
+    "``resolve_attack`` lives in ``cwn_core``" is what gets checked, instead of demanding that every
+    cited module export every cited name.
+    """
+    problems: list[str] = []
+    specs = entry.get("modules", [])
+    modules = [spec["path"] for spec in specs]
+    tests = entry.get("tests", [])
+
+    for spec in specs:
+        rel = spec["path"]
+        path = ROOT / rel
+        if not path.is_file():
+            problems.append(f"module missing: {rel}")
+            continue
+        names = module_names(path)
+        for procedure in spec.get("procedures", []):
+            if procedure not in names:
+                problems.append(f"{rel} has no {procedure!r}")
+
+    for rel in tests:
+        path = ROOT / rel
+        if not path.is_file():
+            problems.append(f"test missing: {rel}")
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        stems = [Path(m).stem for m in modules]
+        if stems and not any(stem in text for stem in stems):
+            problems.append(f"{rel} does not reference {stems}")
+
+    rulebook = entry.get("rulebook")
+    if rulebook and not (ROOT / rulebook).is_file():
+        problems.append(f"rulebook anchor missing: {rulebook}")
+
+    forced = entry.get("force_status")
+    if forced is not None and forced not in FORCEABLE:
+        problems.append(f"force_status {forced!r} is not one of {sorted(FORCEABLE)}")
+
+    if forced in FORCEABLE:
+        status = forced
+    elif problems:
+        status = "unverified"
+    elif modules and tests:
+        status = "implemented"
+    elif modules:
+        status = "partial"
+    else:
+        status = "missing"
+    return {"status": status, "problems": problems}
+
+
+def apply_curation(rows: list[dict]) -> dict[str, dict]:
+    """Overwrite heuristic rows with verified curated evidence. Returns the verification per id."""
+    if not CURATED.exists():
+        return {}
+    curated = json.loads(CURATED.read_text(encoding="utf-8"))
+    verified: dict[str, dict] = {}
+    by_id = {row["id"]: row for row in rows}
+    for entry in curated.get("rows", []):
+        row = by_id.get(entry["id"])
+        if row is None:
+            raise SystemExit(f"cwn_parity_audit: curated row {entry['id']!r} is not an SRD section")
+        result = verify_entry(entry)
+        verified[entry["id"]] = result
+        row.update(
+            python=[spec["path"] for spec in entry.get("modules", [])],
+            procedures=[name for spec in entry.get("modules", [])
+                        for name in spec.get("procedures", [])],
+            tests=list(entry.get("tests", [])),
+            rulebook=str(entry.get("rulebook", "")),
+            coverage=result["status"],
+            curated=True,
+            verified=result["status"] == "implemented" and not result["problems"],
+        )
+        if entry.get("notes"):
+            row["divergence"] = entry["notes"]
+        if result["problems"]:
+            row["divergence"] = "; ".join([row.get("divergence", "")] + result["problems"]).strip("; ")
+    return verified
+
+
 def build() -> dict:
     py, mud, tests = discover()
     rows = []
@@ -318,7 +437,14 @@ def build() -> dict:
             ),
         }
     )
+    verification = apply_curation(rows)
+    for row in rows:
+        row.setdefault("procedures", [])
+        row.setdefault("rulebook", "")
+        row.setdefault("curated", False)
+        row.setdefault("verified", False)
     return {
+        "verification": verification,
         "$comment": (
             "CWN Free Edition parity matrix (#1025). Generated by tools/cwn_parity_audit.py from the "
             "linked SRD's own navigation. Status is derived from evidence: 'implemented' requires a "
@@ -384,6 +510,102 @@ def render(matrix: dict) -> str:
     return "\n".join(lines)
 
 
+
+def render_report(matrix: dict) -> str:
+    """The #1068 coverage report: counts, the curated evidence, and the gaps with reasons."""
+    rows = matrix["rows"]
+    curated = [r for r in rows if r.get("curated")]
+    counts = {s: sum(1 for r in rows if r["coverage"] == s) for s in STATUSES}
+    verified_impl = [r for r in curated if r["coverage"] == "implemented" and r.get("verified")]
+    gaps = [r for r in rows if r["coverage"] in ("partial", "missing", "unverified")]
+
+    lines = [
+        "# CWN coverage report (#1068)",
+        "",
+        "Generated by `tools/cwn_parity_audit.py` — do not edit by hand. Regenerate with "
+        "`python3 tools/cwn_parity_audit.py`.",
+        "",
+        f"Reference: the Free Edition SRD at {SRD} (edition 081123). The Free Edition PDF is the "
+        "authoritative book; the linked SRD omits Antagonists and the GM chapter, which this report "
+        "records as a source limitation rather than filling from memory.",
+        "",
+        "## Counts",
+        "",
+        "| status | sections |",
+        "| --- | ---: |",
+    ]
+    for status in STATUSES:
+        lines.append(f"| {status} | {counts[status]} |")
+    lines += [
+        f"| **total** | **{len(rows)}** |",
+        "",
+        f"Of the {len(curated)} sections with curated evidence, **{len(verified_impl)}** are verified "
+        "`implemented`: every cited module exists, every cited procedure/class/constant exists in that "
+        "module's own AST, and every cited test file references the module it is cited for. The "
+        f"remaining **{len(rows) - len(curated)}** sections keep the name-matching heuristic and are "
+        "marked `provisional` below - they say 'there is code with this name and a "
+        "test that names it', not 'this rule is implemented'.",
+        "",
+        "## Curated evidence (verified)",
+        "",
+        "| Section | Status | Python | Named procedures | Test | Rulebook |",
+        "| --- | --- | --- | --- | --- | --- |",
+    ]
+    for row in curated:
+        modules = ", ".join(Path(m).name for m in row["python"]) or "—"
+        procedures = ", ".join(row.get("procedures", [])[:4]) or "—"
+        tests = ", ".join(Path(t).name for t in row["tests"][:2]) or "—"
+        rulebook = Path(row.get("rulebook", "")).name or "—"
+        lines.append(f"| {row['system']} | {row['coverage']} | {modules} | {procedures} | {tests} | "
+                     f"{rulebook} |")
+
+    lines += ["", "## Gaps, with the reason recorded next to each", ""]
+    if not gaps:
+        lines.append("None.")
+    for row in gaps:
+        reason = row.get("divergence") or "no reason recorded"
+        lines.append(f"- **{row['system']}** (`{row['coverage']}`) — {reason}")
+
+    provisional = [r for r in rows if not r.get("curated")]
+    lines += [
+        "",
+        f"## Provisional rows ({len(provisional)})",
+        "",
+        "These keep the filename/keyword heuristic from #1025. Promoting a row to the verified table "
+        "means adding it to `data/rules/cwn_traceability.json` with the module, the named procedures "
+        "and the test that exercises them; the audit then checks the claim against the code.",
+        "",
+        "| Section | Status | Modules (heuristic) |",
+        "| --- | --- | --- |",
+    ]
+    for row in provisional:
+        modules = ", ".join(Path(m).name for m in row["python"][:2]) or "—"
+        lines.append(f"| {row['system']} | {row['coverage']} | {modules} |")
+
+    lines += [
+        "",
+        "## No CWN core rule was modified",
+        "",
+        "This audit adds documentation, a traceability file and one new module "
+        "(`src/rules/cwn_lifestyles.py`, covering a section that had no implementation). It changes no "
+        "existing CWN procedure: `data/rules/cwn_baseline_sha256.json` pins the SHA-256 of every "
+        "`src/rules/cwn_*.py` file, and `tests/test_cwn_traceability_1068.py` fails if one of them "
+        "changes. Changing a CWN rule therefore cannot happen silently — it fails CI and requires the "
+        "baseline to be re-pinned in a PR that says so.",
+        "",
+        "## How the two-way parity is enforced",
+        "",
+        "The rules side is enforced in CI: the matrix is regenerated by the audit tool and compared "
+        "(`tools/cwn_parity_audit.py --check`), and the curated evidence is checked against the code. "
+        "The tabletop side is a documentation claim, and `AGENTS.md` §271 forbids CI assertions over "
+        "Markdown prose, so it is enforced by the PR checklist instead: a rules change must update "
+        "`rulebook/` and `data/rules/cwn_traceability.json`'s `rulebook` column in the same PR. That is "
+        "a deliberate, stated limitation of this mechanism, not an oversight.",
+        "",
+    ]
+    return "\n".join(lines)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true")
@@ -392,7 +614,9 @@ def main() -> int:
     text = json.dumps(matrix, indent=2, ensure_ascii=False) + "\n"
     doc = render(matrix)
     if args.check:
-        stale = not MATRIX.exists() or MATRIX.read_text(encoding="utf-8") != text
+        stale = (not MATRIX.exists() or MATRIX.read_text(encoding="utf-8") != text
+                 or not REPORT.exists()
+                 or REPORT.read_text(encoding="utf-8") != render_report(matrix))
         if stale:
             print("cwn_parity_audit: matrix is stale; run python3 tools/cwn_parity_audit.py")
             return 1
@@ -402,6 +626,8 @@ def main() -> int:
     DOC.parent.mkdir(parents=True, exist_ok=True)
     MATRIX.write_text(text, encoding="utf-8")
     DOC.write_text(doc, encoding="utf-8")
+    REPORT.parent.mkdir(parents=True, exist_ok=True)
+    REPORT.write_text(render_report(matrix), encoding="utf-8")
     counts = {s: sum(1 for r in matrix["rows"] if r["coverage"] == s) for s in STATUSES}
     print(f"cwn_parity_audit: {len(matrix['rows'])} sections -> {MATRIX.relative_to(ROOT)}")
     print(f"  implemented={counts['implemented']} unverified={counts['unverified']} "
