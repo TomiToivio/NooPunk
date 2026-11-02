@@ -1,6 +1,6 @@
 {
-  "_comment": "Machine-readable half of the core-versus-mod matrix (#897). Every NooPunk overlay is listed here and none may claim the CWN baseline. See docs/rules/RULES_BASIS_LOCK.md. Schema 2 adds the machine-readable half of the mod activation contract (ADR_1054): `implementation` paths must exist, `tabletop_procedure` names the printed procedure or carries a `tabletop_gap`, and tools/check_mod_activation.py reports which mods no test actually references.",
-  "schema": 2,
+  "_comment": "Machine-readable half of the core-versus-mod matrix (#897) and of the mod activation contract (#1091, ADR_1054 §2). Every NoöPunk overlay is listed here, none may claim the baseline, and each declares its hooks, state, dependencies, off-switch and tabletop procedure. `src/rules/mod_boundary.py::validate_registry` is the check.",
+  "schema": 3,
   "baseline": {
     "engine": "Cities Without Number",
     "gap_fill": [
@@ -24,7 +24,40 @@
         "mods/noopunk/psyche.gd"
       ],
       "tabletop_procedure": null,
-      "tabletop_gap": "no printed procedure for this overlay yet"
+      "tabletop_gap": "no printed procedure: the overlay is playable only through the Godot UI today",
+      "hooks": [
+        "NoopunkNoosphere",
+        "NoopunkPsyche.expose",
+        "NoopunkPsyche.recover",
+        "NoopunkPsyche.tier",
+        "NoopunkPsyche.owes_narrative_beat",
+        "NoopunkPsyche.active_psi_status"
+      ],
+      "state": [
+        "exposure",
+        "tier",
+        "psi_status",
+        "narrative_beat_owed"
+      ],
+      "dependencies": {
+        "mods": [],
+        "contracts": [],
+        "core": [
+          "CWN mental save - the caller resolves it"
+        ]
+      },
+      "off_switch": {
+        "kind": "flag",
+        "name": "campaign_flag",
+        "location": "mods/noopunk/psyche.gd::NoopunkPsyche.active_psi_status",
+        "values": [
+          "allowed",
+          "denied",
+          "undecided"
+        ],
+        "note": "denies psychic access; exposure and tier still accrue"
+      },
+      "status": "implemented"
     },
     {
       "name": "ideology_factions",
@@ -42,7 +75,33 @@
         "data/world/ideology.json"
       ],
       "tabletop_procedure": null,
-      "tabletop_gap": "no printed procedure for this overlay yet"
+      "tabletop_gap": "no printed procedure: discourse positions are a MUD model, not a table procedure",
+      "hooks": [
+        "Discourse",
+        "reaction",
+        "DiscourseLedger",
+        "FactionOverlay"
+      ],
+      "state": [
+        "discourse",
+        "stance",
+        "trust",
+        "faction_standing"
+      ],
+      "dependencies": {
+        "mods": [],
+        "contracts": [
+          "data/world/ideology.json"
+        ],
+        "core": [
+          "CWN reaction roll outcome - the mod reads it, never rolls it"
+        ]
+      },
+      "off_switch": {
+        "kind": "none",
+        "gap": "always active in the MUD; no constructor flag exists"
+      },
+      "status": "implemented"
     },
     {
       "name": "relationships_reputation",
@@ -56,7 +115,32 @@
         "mud/nopunk_mud/social.py"
       ],
       "tabletop_procedure": null,
-      "tabletop_gap": "no printed procedure for this overlay yet"
+      "tabletop_gap": "no printed procedure: the reaction modifier table lives in docs/rules only",
+      "hooks": [
+        "reaction_modifier",
+        "reaction",
+        "Reputation",
+        "SocialRecord"
+      ],
+      "state": [
+        "reputation",
+        "membership",
+        "goals"
+      ],
+      "dependencies": {
+        "mods": [
+          "ideology_factions"
+        ],
+        "contracts": [],
+        "core": [
+          "CWN 2d6 reaction roll - the mod supplies a modifier only"
+        ]
+      },
+      "off_switch": {
+        "kind": "none",
+        "gap": "always active in the MUD; no constructor flag exists"
+      },
+      "status": "implemented"
     },
     {
       "name": "investigative_mode",
@@ -70,7 +154,31 @@
         "mods/noopunk/gumshoe_investigation.gd"
       ],
       "tabletop_procedure": "docs/rules/GUMSHOE_INVESTIGATION_LAYER.md",
-      "tabletop_gap": null
+      "tabletop_gap": null,
+      "hooks": [
+        "NoopunkGumshoe",
+        "NoopunkGumshoe.from_sheet",
+        "NoopunkGumshoe.delegate_to_cwn",
+        "NoopunkGumshoe.cost_is_legal"
+      ],
+      "state": [
+        "investigative_ratings",
+        "spent_points"
+      ],
+      "dependencies": {
+        "mods": [],
+        "contracts": [
+          "data/rules/gumshoe_investigative.json"
+        ],
+        "core": [
+          "CWN skill check outcome - investigation spends points around it"
+        ]
+      },
+      "off_switch": {
+        "kind": "none",
+        "gap": "no flag: the layer is either present in the scene data or not"
+      },
+      "status": "implemented"
     },
     {
       "name": "vices_temptations",
@@ -82,7 +190,19 @@
       "adds": "narrative state only",
       "implementation": [],
       "tabletop_procedure": null,
-      "tabletop_gap": "no printed procedure for this overlay yet"
+      "tabletop_gap": "documented in the registry and nowhere else - no code, no procedure",
+      "hooks": [],
+      "state": [],
+      "dependencies": {
+        "mods": [],
+        "contracts": [],
+        "core": []
+      },
+      "off_switch": {
+        "kind": "none",
+        "gap": "nothing to switch off: no implementation exists"
+      },
+      "status": "documented"
     },
     {
       "name": "awn_stress",
@@ -97,10 +217,58 @@
       "adds": "character state only - a Stress meter, consequence codes and the modifiers the table applies; CWN attributes, checks, saves, combat and progression are untouched",
       "implementation": [
         "mods/noopunk/stress.gd",
+        "src/rules/awn_stress_tracker.py",
         "data/rules/awn_stress.json"
       ],
       "tabletop_procedure": null,
-      "tabletop_gap": "no printed procedure for this overlay yet"
+      "tabletop_gap": "contract is procedure-only; no printed Stress procedure exists yet",
+      "hooks": [
+        "NoopunkStress.new_tracker",
+        "NoopunkStress.award",
+        "NoopunkStress.end_scene",
+        "NoopunkStress.resolve_save",
+        "awn_stress_tracker.new_tracker"
+      ],
+      "state": [
+        "stress",
+        "scars",
+        "hardening_count",
+        "pending_save"
+      ],
+      "dependencies": {
+        "mods": [],
+        "contracts": [
+          "data/rules/awn_stress.json"
+        ],
+        "core": [
+          "CWN Mental save - the overlay flags it, the caller rolls it"
+        ]
+      },
+      "off_switch": {
+        "kind": "contract_flag",
+        "name": "awn_stress",
+        "location": "data/rules/awn_stress.json::module.flag",
+        "default_enabled": false
+      },
+      "status": "implemented"
+    }
+  ],
+  "overlays": [
+    {
+      "path": "mods/noopunk/noosphere.gd",
+      "mod": "noosphere_psyche"
+    },
+    {
+      "path": "mods/noopunk/psyche.gd",
+      "mod": "noosphere_psyche"
+    },
+    {
+      "path": "mods/noopunk/gumshoe_investigation.gd",
+      "mod": "investigative_mode"
+    },
+    {
+      "path": "mods/noopunk/stress.gd",
+      "mod": "awn_stress"
     }
   ]
 }
