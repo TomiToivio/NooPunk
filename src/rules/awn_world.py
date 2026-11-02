@@ -210,6 +210,17 @@ class WorldLedger:
             ledger.add_crisis(Crisis(**entry))
         for asset, (faction, enclave) in data["faction_assets"].items():
             ledger.link_faction_asset(asset, faction, enclave)
-        for entry in data["events"]:
-            ledger.record(WorldEvent(**entry))
+        # The crisis records above are already the *final* state. Do not replay
+        # their events while loading or pressure is applied twice.
+        events = [WorldEvent(**entry) for entry in data["events"]]
+        if len({event.id for event in events}) != len(events):
+            raise WorldModelError("duplicate persisted events")
+        if any(left.date > right.date for left, right in zip(events, events[1:])):
+            raise WorldModelError("persisted events are not date-monotonic")
+        for event in events:
+            if event.kind == "crisis" and event.target_id not in ledger.crises:
+                raise WorldModelError("persisted event points to unknown crisis")
+            if event.kind == "enclave":
+                ledger._enclave(event.target_id)
+        ledger.events = events
         return ledger
