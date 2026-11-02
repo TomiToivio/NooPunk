@@ -1,3 +1,16 @@
+
+## Portable Python / tabletop parity directive (#1053, #1054)
+
+Read [design principles](../docs/DESIGN_PRINCIPLES.md) and
+[the traceability matrix](../docs/PORTABLE_RULES_PARITY.md) first.
+Keep `nopunk_mud.cwn_core` canonical for implemented rules; do not fork
+CWN mechanics in Evennia typeclasses or new UI code. Implement additions
+behind engine-neutral domain actions and retain a plain-console reference.
+Every rule/mod change includes corresponding tabletop rules, code and tests
+in the same PR. Python adapters are thin; Conan/LLM/Pygame frameworks are
+never imported by portable rules. The first goal is a finished offline
+single-player UNSA campaign, not multiplayer or faction strategy.
+
 # Canonical Finglish, no localizations (#996)
 
 The NoöPunk MUD has **one canonical player-facing language: Finglish**. No separate Finnish, English or other localized editions. In player-visible UI, quests, narration, dialogue and future Concordia NPC/GM responses, agents write mostly English with occasional basic Finnish, appropriate contemporary Stadin slangi and context-specific Swedish/Russian/Chinese/other loanwords. Check the glossary and Tomi's authored text for register. Never translate, correct, replace or overwrite Tomi-authored Finnish/Finglish. Non-player-facing docs, internal prompts, code and rulebooks stay plain English. See `docs/FINNISH.md`. Use optional spoiler-safe dictionary help rather than language editions; don't change save IDs or require LLMs for the solo campaign.
