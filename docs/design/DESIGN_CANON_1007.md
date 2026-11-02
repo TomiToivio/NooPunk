@@ -1,5 +1,10 @@
 # Design canon: cyberpunk first, cosmic science fantasy underneath (source: #1007)
 
+> **This file is the source text.** The *decision record* — what is binding, with its machine-readable half
+> (`data/world/reveal_ladder.json`) — is
+> [`ISSUE_1007_DESIGN_CANON.md`](ISSUE_1007_DESIGN_CANON.md). They are complementary, not duplicates: this one
+> preserves the author's words, that one states what the code enforces.
+
 <!--
 PROVENANCE: transcribed from the author's own issue text, unedited in substance.
 

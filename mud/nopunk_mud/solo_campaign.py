@@ -1,4 +1,8 @@
-"""Deterministic, single-player UNSA prologue. No AI, Evennia or GM required.
+"""DEPRECATED — superseded by `nopunk_mud.campaign.engine` and `console.session` (#1080 follow-up).
+
+Kept only because `mud/commands/default_cmdsets.py` and the Evennia bridge test still import it. It is a 58-line
+prologue; the live campaign engine is 464 lines and is what the console, the CLI and any new work must use. Do not
+add features here: a second campaign model is how two versions of one scene start disagreeing.
 
 Pure transition function: caller persists the resulting JSON-compatible state.
 Scene content is original NoöPunk material, not copied from the CWN book.

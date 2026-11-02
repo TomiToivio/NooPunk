@@ -1,5 +1,8 @@
 # Design canon: cyberpunk first, cosmic second (#1007)
 
+> **This file is the decision record.** The author's own issue text, verbatim, is
+> [`DESIGN_CANON_1007.md`](DESIGN_CANON_1007.md). Do not restate the canon here — link to it.
+
 **Status: design decision, 2026-11-01.** This is the *presentation* constitution — the counterpart of
 `docs/rules/RULES_CONSTITUTION.md`, which governs the mechanics. One governs what the game is made of;
 this one governs what the player is allowed to see, and when.
