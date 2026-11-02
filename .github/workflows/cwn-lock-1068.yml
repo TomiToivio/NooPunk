@@ -1,0 +1,22 @@
+name: CWN immutable-core structural gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  cwn-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check immutable-core references and tabletop/Python audit anchors
+        run: python tools/check_cwn_lock_1068.py
+      - name: Run CWN lock regression test
+        run: python -m unittest discover -s tests -p 'test_cwn_lock_1068.py'
