@@ -2,7 +2,7 @@
 
 Source: *Cities Without Number, Deluxe Edition (lightweight PDF, 081123)*, printed pages as they appear in the book (PDF page = printed + 3). Generated from `data/rules/cwn_rule_inventory.json` by `tools/cwn_rule_inventory_audit.py --markdown`; do not edit this table by hand.
 
-**65 rows** — 38 implemented, 9 partial, 6 missing, 12 not_applicable
+**65 rows** — 39 implemented, 8 partial, 6 missing, 12 not_applicable
 
 | printed p. | section | status | python | tests | evidence |
 | --- | --- | --- | --- | --- | --- |
@@ -67,7 +67,7 @@ Source: *Cities Without Number, Deluxe Edition (lightweight PDF, 081123)*, print
 | 232 | Supplemental Material — Cheap Cyber | missing | — | — | no module; price/maintenance tables are content, the maintenance rule is not modelled |
 | 234 | Supplemental Material — Magic in the City | partial | `src/rules/cwn_magic.py` | `tests/test_cwn_magic.py` | the magic *economy* is implemented; campaign frame is prose |
 | 235 | Supplemental Material — Mages and Spellcasting | implemented | `src/rules/cwn_magic.py` | `tests/test_cwn_magic.py` | verified against printed pp. 231-233 in this pass |
-| 240 | Supplemental Material — Summoners and Spirit Calling | partial | `src/rules/cwn_magic.py` | `tests/test_cwn_magic.py` | Summoner Effort and binding accounting only; spirit statistics are content |
-| 247 | Supplemental Material — Magic-User Foci | missing | — | — | no module |
+| 240 | Supplemental Material — Summoners and Spirit Calling | implemented | `src/rules/cwn_summoning.py`<br>`src/rules/cwn_magic.py` | `tests/test_cwn_summoning_1068.py`<br>`tests/test_cwn_magic.py` | summoning module implements Effort cost, HD cap, form tiers and commanding; cwn_magic covers Summoner Effort and binding accounting |
+| 247 | Supplemental Material — Magic-User Foci | missing | — | — | no module: mage-only foci are not implemented |
 | 248 | Supplemental Material — The Graced | missing | — | — | no module |
 | 250 | Supplemental Material — Magic Items | missing | — | — | no module |

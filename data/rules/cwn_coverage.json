@@ -3,8 +3,8 @@
   "source": "src/rules",
   "note": "Registry of implemented rule procedures. Presence here is code coverage, not SRD parity.",
   "totals": {
-    "modules": 38,
-    "procedures": 392
+    "modules": 39,
+    "procedures": 402
   },
   "modules": [
     {
@@ -1730,6 +1730,69 @@
         }
       ],
       "count": 8
+    },
+    {
+      "module": "cwn_summoning.py",
+      "procedures": [
+        {
+          "name": "form_tier",
+          "signature": "(character_level)",
+          "doc": ""
+        },
+        {
+          "name": "effort_cost",
+          "signature": "(*, power_count, summon_skill, prior_summons_this_scene=...)",
+          "doc": "CWN 6.2.3 step 6: powers minus skill, floored at 1, +1 per earlier summon this scene."
+        },
+        {
+          "name": "may_summon",
+          "signature": "(*, character_level, current_spirit_hd, new_spirit_hd)",
+          "doc": "Total hit dice of spirits at once may not exceed the summoner's level (6.2.3 step 3)."
+        },
+        {
+          "name": "command_difficulty",
+          "signature": "(reason)",
+          "doc": ""
+        },
+        {
+          "name": "banish_damage",
+          "signature": "(*, summon_skill, rolls)",
+          "doc": "1d8 per Summon skill level (6.2.4). Rolls are supplied so the result is reproducible."
+        },
+        {
+          "name": "banish_target",
+          "signature": "(*, spirit_controlled, summoner_summon_skill=..., spirit_skill_bonus=...)",
+          "doc": "Opposed Cha/Summon vs the spirit's summoner, or the spirit's skill bonus +2 when uncontrolled."
+        },
+        {
+          "name": "Spirit",
+          "signature": "",
+          "doc": "One summoned spirit with the fields the rules actually use.",
+          "methods": [
+            {
+              "name": "Spirit.hd",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Spirit.stats",
+              "signature": "()",
+              "doc": ""
+            },
+            {
+              "name": "Spirit.damage",
+              "signature": "(amount)",
+              "doc": "Returns True if the spirit was destroyed (hp to zero means it vanishes)."
+            }
+          ]
+        },
+        {
+          "name": "summon",
+          "signature": "(*, summoner_level, summon_skill, spirit, prior_summons_this_scene=..., current_spirit_hd=...)",
+          "doc": "Apply every gate in 6.2.3, then return the spirit with its committed Effort."
+        }
+      ],
+      "count": 10
     },
     {
       "module": "cwn_trauma.py",

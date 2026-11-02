@@ -221,6 +221,10 @@
         "tier": "cwn-core"
       },
       {
+        "module": "src/rules/cwn_summoning.py",
+        "tier": "cwn-core"
+      },
+      {
         "module": "src/rules/cwn_trauma.py",
         "tier": "cwn-core"
       },

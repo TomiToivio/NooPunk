@@ -834,14 +834,16 @@
    "chapter": "Supplemental Material",
    "section": "Summoners and Spirit Calling",
    "printed_page": 240,
-   "status": "partial",
+   "status": "implemented",
    "python": [
+    "src/rules/cwn_summoning.py",
     "src/rules/cwn_magic.py"
    ],
    "tests": [
+    "tests/test_cwn_summoning_1068.py",
     "tests/test_cwn_magic.py"
    ],
-   "evidence": "Summoner Effort and binding accounting only; spirit statistics are content"
+   "evidence": "summoning module implements Effort cost, HD cap, form tiers and commanding; cwn_magic covers Summoner Effort and binding accounting"
   },
   {
    "id": "supplemental:magic-user-foci",
@@ -851,7 +853,7 @@
    "status": "missing",
    "python": [],
    "tests": [],
-   "evidence": "no module"
+   "evidence": "no module: mage-only foci are not implemented"
   },
   {
    "id": "supplemental:graced",
