@@ -179,3 +179,43 @@ def location(name: str) -> dict[str, Any] | None:
 
 def clue(name: str) -> dict[str, Any] | None:
     return CLUES.get(name)
+
+
+#: In-world documents — register 3 of the #1037 brainstorm (documentary / Situationist collage).
+#:
+#: A document renders **canon that already exists**: the case file prints the clue texts the
+#: investigator has actually collected and leaves the rest as blank form lines, and the activity
+#: log prints the consequences the engine has actually recorded. Nothing here adds a fact, a name
+#: or a place, so adding authored documents later is a writing decision, not a code change.
+DOCUMENTS: dict[str, dict[str, Any]] = {
+    "case_file": {
+        "title": "Case file — Lakkahaltia",
+        "kind": "dossier",
+        "issuer": "UNSA Helsinki field office",
+        "label": "the case file",
+        "requires_flag": "has_folder",
+        "refusal": "You are not carrying a case file. The folder is still on the desk at the university.",
+        "empty": "Every clue has a form line and every form line is blank.",
+        "footer": "Filed under: pending. Do not remove from the office.",
+        "source": "clues",
+    },
+    "activity_log": {
+        "title": "Field activity log",
+        "kind": "form",
+        "issuer": "UNSA Helsinki field office",
+        "label": "the activity log",
+        "requires_flag": None,
+        "refusal": "",
+        "empty": "Nothing has been logged yet. Go and do something worth countersigning.",
+        "footer": "Countersigned by nobody.",
+        "source": "consequences",
+    },
+}
+
+
+def document(name: str) -> dict[str, Any] | None:
+    return DOCUMENTS.get(name)
+
+
+def document_names() -> list[str]:
+    return list(DOCUMENTS)

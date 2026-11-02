@@ -90,7 +90,58 @@ class CampaignEngine:
 
     def _cmd_help(self, args: list[str]) -> str:
         return self._say("look · status · go <place> · talk <person> · ask <person> <topic> · "
-                         "examine <thing> · take <item> · attack <person> · flee · wait <minutes> · radio · trace · resolve protect|disclose · report · save")
+                         "examine <thing> · take <item> · read [document] · attack <person> · flee · "
+                         "wait <minutes> · radio · trace · resolve protect|disclose · report · save")
+
+    def _cmd_read(self, args: list[str]) -> str:
+        """Read an in-world document. Its body is canon already in play, never new text (#1037)."""
+        if not args:
+            lines = ["What you could read:"]
+            for name in content.document_names():
+                doc = content.document(name)
+                blocked = doc.get("requires_flag") and not self.has(doc["requires_flag"])
+                marker = " (not carried)" if blocked else ""
+                lines.append(f"  {name} — {doc['label']}, {doc['kind']}{marker}")
+            lines.append("")
+            lines.append("Try `read case_file`.")
+            return self._say("\n".join(lines))
+
+        wanted = " ".join(args).lower()
+        key = wanted.replace(" ", "_")
+        doc = content.document(key)
+        if doc is None:
+            doc = next(
+                (candidate for name in content.document_names()
+                 if wanted in content.document(name)["label"].lower()
+                 or wanted == name.replace("_", " ")
+                 for candidate in [content.document(name)]),
+                None,
+            )
+        if doc is None:
+            return self._say(f"There is no document called {wanted}. `read` lists what exists.")
+        if doc.get("requires_flag") and not self.has(doc["requires_flag"]):
+            return self._say(doc["refusal"])
+
+        body = self._document_body(doc)
+        header = [f"{doc['kind'].upper()} · {doc['title']}", f"Issuer: {doc['issuer']}", ""]
+        if not body:
+            body = [doc["empty"]]
+        return self._say("\n".join(header + body + ["", doc["footer"]]))
+
+    def _document_body(self, doc: dict) -> list[str]:
+        if doc.get("source") == "clues":
+            lines = []
+            for clue_id in content.CLUES:
+                entry = content.CLUES[clue_id]
+                if self.knows(clue_id):
+                    lines.append(f"[x] {entry['label'].capitalize()} — {entry['text']}")
+                else:
+                    lines.append(f"[ ] {entry['label'].capitalize()} — not in the file")
+            return lines
+        if doc.get("source") == "consequences":
+            return [f"{index}. {entry} — no countersignature on record"
+                    for index, entry in enumerate(self.state.consequences, start=1)]
+        return []
 
     def _cmd_look(self, args: list[str]) -> str:
         place = content.location(self.state.location)
