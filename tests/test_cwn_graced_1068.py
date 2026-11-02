@@ -1,9 +1,20 @@
 """CWN 6.3 The Graced (#1068)."""
 from __future__ import annotations
 
-import pytest
+try:  # `unittest discover -s tests` puts tests/ on sys.path
+    from _pytest_compat import pytest, register_module_functions
+except ModuleNotFoundError:  # pytest.ini uses --import-mode=importlib, which does not
+    import importlib.util as _ilu
+    import pathlib as _pl
 
-from src.rules.cwn_graced import ART_POINTS_BY_LEVEL, Graced, GracedError, art_points, may_take_edge
+    _spec = _ilu.spec_from_file_location(
+        "_pytest_compat", _pl.Path(__file__).with_name("_pytest_compat.py"))
+    assert _spec and _spec.loader
+    _compat = _ilu.module_from_spec(_spec)
+    _spec.loader.exec_module(_compat)
+    pytest, register_module_functions = _compat.pytest, _compat.register_module_functions
+
+from src.rules.cwn_graced import Graced, GracedError, art_points, may_take_edge
 
 
 def test_points_accumulate_and_are_never_reset():
@@ -55,3 +66,8 @@ def test_a_graced_may_never_take_spellcaster_or_summoner():
 def test_unknown_arts_are_refused():
     with pytest.raises(GracedError):
         Graced(level=10).buy("invisibility_plus")
+
+
+# CI runs `unittest discover`, which needs a TestCase rather than module-level functions.
+# The shim keeps the pytest-style bodies and makes them discoverable without pytest.
+ModuleLevelTests = register_module_functions(globals())

@@ -1,10 +1,29 @@
 """SRD examples and edge cases for CWN special combat maneuvers (#1068)."""
-import pytest
+try:  # `unittest discover -s tests` puts tests/ on sys.path
+    from _pytest_compat import pytest, register_module_functions
+except ModuleNotFoundError:  # pytest.ini uses --import-mode=importlib, which does not
+    import importlib.util as _ilu
+    import pathlib as _pl
+
+    _spec = _ilu.spec_from_file_location(
+        "_pytest_compat", _pl.Path(__file__).with_name("_pytest_compat.py"))
+    assert _spec and _spec.loader
+    _compat = _ilu.module_from_spec(_spec)
+    _spec.loader.exec_module(_compat)
+    pytest, register_module_functions = _compat.pytest, _compat.register_module_functions
 
 from src.rules.cwn_special_maneuvers import (
-    ManeuverError, TargetSize, dual_wield, escape_grapple, execution_hit,
-    execution_melee_auto_hit, execution_ranged_difficulty, move_grappled_target,
-    shove, size_check_modifier, start_grapple,
+    ManeuverError,
+    TargetSize,
+    dual_wield,
+    escape_grapple,
+    execution_hit,
+    execution_melee_auto_hit,
+    execution_ranged_difficulty,
+    move_grappled_target,
+    shove,
+    size_check_modifier,
+    start_grapple,
 )
 
 
@@ -68,3 +87,8 @@ def test_execution_save_and_trauma_even_on_save():
     saved = execution_hit(combat_skill=2, physical_save_succeeded=True)
     assert not saved.mortally_wounded and saved.normal_damage and saved.traumatic_hit
     assert execution_hit(combat_skill=2, physical_save_succeeded=False, nonlethal=True).unconscious
+
+
+# CI runs `unittest discover`, which needs a TestCase rather than module-level functions.
+# The shim keeps the pytest-style bodies and makes them discoverable without pytest.
+ModuleLevelTests = register_module_functions(globals())

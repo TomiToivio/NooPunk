@@ -6,10 +6,31 @@ that the SRD states in plain numbers, and they are written to fail if someone "s
 """
 from __future__ import annotations
 
-import pytest
+try:  # `unittest discover -s tests` puts tests/ on sys.path
+    from _pytest_compat import pytest, register_module_functions
+except ModuleNotFoundError:  # pytest.ini uses --import-mode=importlib, which does not
+    import importlib.util as _ilu
+    import pathlib as _pl
 
-from src.rules.cwn_summoning import (MANIFESTATIONS, Spirit, SummoningError, banish_damage, banish_target,
-                                     command_difficulty, effort_cost, form_tier, may_summon, summon)
+    _spec = _ilu.spec_from_file_location(
+        "_pytest_compat", _pl.Path(__file__).with_name("_pytest_compat.py"))
+    assert _spec and _spec.loader
+    _compat = _ilu.module_from_spec(_spec)
+    _spec.loader.exec_module(_compat)
+    pytest, register_module_functions = _compat.pytest, _compat.register_module_functions
+
+from src.rules.cwn_summoning import (
+    MANIFESTATIONS,
+    Spirit,
+    SummoningError,
+    banish_damage,
+    banish_target,
+    command_difficulty,
+    effort_cost,
+    form_tier,
+    may_summon,
+    summon,
+)
 
 
 def test_form_tiers_unlock_at_1_5_and_9():
@@ -80,3 +101,8 @@ def test_manifestation_statistics_match_the_published_table():
     assert MANIFESTATIONS[("physical", 3)]["hp"] == 40
     assert MANIFESTATIONS[("physical", 3)]["ac"] == 18
     assert MANIFESTATIONS[("spirit", 3)]["attack"] is None, "spirit forms cannot directly harm creatures"
+
+
+# CI runs `unittest discover`, which needs a TestCase rather than module-level functions.
+# The shim keeps the pytest-style bodies and makes them discoverable without pytest.
+ModuleLevelTests = register_module_functions(globals())
