@@ -567,6 +567,7 @@
         "mud/tests/test_portable_1053_1054.py",
         "mud/tests/test_solo_mission_clock_950.py",
         "mud/tests/test_world_time.py",
+        "tests/test_1105_psi_investigation_boundary.py",
         "tests/test_concordia_runtime.py",
         "tests/test_console_case_1053.py",
         "tests/test_cwn_alienation.py",
