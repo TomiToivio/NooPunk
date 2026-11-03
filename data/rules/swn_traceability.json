@@ -1,0 +1,1649 @@
+{
+ "format": "noopunk.rules.swn_traceability",
+ "version": 1,
+ "issue": 1105,
+ "source": {
+  "swn_deluxe": {
+   "title": "Stars Without Number: Revised Edition — Deluxe Edition",
+   "isbn": "978-1-936673-95-7",
+   "date": "2017-01-15",
+   "availability": "authorised copy supplied by the author; not redistributable, not in the repository",
+   "section_index": "data/rules/swn_sections.json",
+   "page_note": "SWN prints a running head on recto pages only, so a section that opens on an even page is first seen on the following odd page; the recorded page is therefore never later than the text it names."
+  },
+  "swn_srd": "no verified SRD licence for SWN power text; the register records procedures, not prose"
+ },
+ "statuses": {
+  "verified": "an SWN procedure implemented in src/rules with tests that pin the printed numbers",
+  "verified_reuse": "the identical procedure already exists for CWN; one resolver is shared and a test proves the SWN numbers",
+  "partial": "some of the section is implemented and the remainder is named",
+  "missing": "no implementation; the gap is recorded so it cannot be mistaken for coverage",
+  "unverified": "an equivalent CWN procedure exists but equivalence to the SWN numbers has not been proven",
+  "not_applicable": "setting text, an example, guidance, or a subsystem excluded by an explicit design decision"
+ },
+ "rows": [
+  {
+   "id": "summary-of-character-creation",
+   "title": "Summary of Character Creation",
+   "page": 4,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Checklist page; the procedures it lists are the rows below it, not a rule of its own."
+  },
+  {
+   "id": "attributes",
+   "title": "Attributes",
+   "page": 6,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "verified_reuse",
+   "modules": [
+    {
+     "path": "src/rules/wn_core.py",
+     "procedures": [
+      "attribute_modifier"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_wwn_shared_chassis.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "SWN's attribute band and modifiers are the same Without Number table CWN uses (p.6); one resolver, pinned by a test."
+  },
+  {
+   "id": "skills",
+   "title": "Skills",
+   "page": 7,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "verified_reuse",
+   "modules": [
+    {
+     "path": "src/rules/wn_core.py",
+     "procedures": [
+      "skill_check",
+      "Check"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_wwn_shared_chassis.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "2d6 + skill + attribute modifier with the -1 unskilled penalty (SWN p.7). CWN's resolver is used unchanged."
+  },
+  {
+   "id": "skill-checks",
+   "title": "Skill Checks",
+   "page": 47,
+   "chapter": "Systems",
+   "rights": "purchased_deluxe",
+   "status": "verified_reuse",
+   "modules": [
+    {
+     "path": "src/rules/wn_core.py",
+     "procedures": [
+      "skill_check"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_wwn_shared_chassis.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Same procedure as the Skills section (p.47); verified reuse rather than a second implementation."
+  },
+  {
+   "id": "backgrounds",
+   "title": "backgrounds",
+   "page": 9,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "SWN background tables (p.9) are not implemented; CWN's backgrounds are a different table."
+  },
+  {
+   "id": "character-classes",
+   "title": "Character Classes",
+   "page": 16,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/swn_progression.py",
+     "procedures": [
+      "PsychicTraining"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_swn_progression.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Progression arithmetic exists; the Warrior/Expert/Psychic/Adventurer class packages and their ability lists (p.16) are not implemented."
+  },
+  {
+   "id": "foci",
+   "title": "Foci",
+   "page": 19,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "SWN Foci (p.19) are a character-option subsystem with no CWN equivalent; nothing implemented."
+  },
+  {
+   "id": "final-touches",
+   "title": "Final Touches",
+   "page": 24,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "HP by class die, starting languages and equipment picks (p.24) depend on classes; not implemented."
+  },
+  {
+   "id": "quick-character-creation",
+   "title": "Quick Character Creation",
+   "page": 26,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The quick-generation tables (p.26) are unimplemented."
+  },
+  {
+   "id": "psionics",
+   "title": "Psionics",
+   "page": 30,
+   "chapter": "Psionics",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/swn_psionics.py",
+     "procedures": [
+      "Psychic",
+      "Duration"
+     ]
+    },
+    {
+     "path": "src/rules/psionics.py",
+     "procedures": [
+      "Psychic",
+      "may_use",
+      "load_catalogue",
+      "effort_duration",
+      "authorized"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_psionics_single_engine.py",
+    "tests/test_swn_psionics.py",
+    "tests/test_psionics_catalogue.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The Effort engine is one implementation after #1105's reconciliation: capacity 1 + best(WIS,CON) mod + highest discipline rank, reservations by duration, torching, and snapshot persistence. Every eligible SWN technique is not implemented: the catalogue holds the six discipline cores and 20 authored NoöPunk techniques, not the book's complete per-discipline lists."
+  },
+  {
+   "id": "biopsionics",
+   "title": "Biopsionics",
+   "page": 32,
+   "chapter": "Psionics",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/psionics.py",
+     "procedures": [
+      "Psychic",
+      "may_use",
+      "load_catalogue",
+      "effort_duration",
+      "authorized"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_psionics_catalogue.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The Biopsionics discipline core and any authored Biopsionics techniques resolve through the shared catalogue; the book's full technique list, prerequisites and effects for this discipline are not transcribed (SWN has no SRD licence for its power text)."
+  },
+  {
+   "id": "metapsionics",
+   "title": "Metapsionics",
+   "page": 34,
+   "chapter": "Psionics",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/psionics.py",
+     "procedures": [
+      "Psychic",
+      "may_use",
+      "load_catalogue",
+      "effort_duration",
+      "authorized"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_psionics_catalogue.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The Metapsionics discipline core and any authored Metapsionics techniques resolve through the shared catalogue; the book's full technique list, prerequisites and effects for this discipline are not transcribed (SWN has no SRD licence for its power text)."
+  },
+  {
+   "id": "precognition",
+   "title": "Precognition",
+   "page": 36,
+   "chapter": "Psionics",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/psionics.py",
+     "procedures": [
+      "Psychic",
+      "may_use",
+      "load_catalogue",
+      "effort_duration",
+      "authorized"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_psionics_catalogue.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The Precognition discipline core and any authored Precognition techniques resolve through the shared catalogue; the book's full technique list, prerequisites and effects for this discipline are not transcribed (SWN has no SRD licence for its power text)."
+  },
+  {
+   "id": "telekinesis",
+   "title": "Telekinesis",
+   "page": 38,
+   "chapter": "Psionics",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/psionics.py",
+     "procedures": [
+      "Psychic",
+      "may_use",
+      "load_catalogue",
+      "effort_duration",
+      "authorized"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_psionics_catalogue.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The Telekinesis discipline core and any authored Telekinesis techniques resolve through the shared catalogue; the book's full technique list, prerequisites and effects for this discipline are not transcribed (SWN has no SRD licence for its power text)."
+  },
+  {
+   "id": "telepathy",
+   "title": "Telepathy",
+   "page": 40,
+   "chapter": "Psionics",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/psionics.py",
+     "procedures": [
+      "Psychic",
+      "may_use",
+      "load_catalogue",
+      "effort_duration",
+      "authorized"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_psionics_catalogue.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The Telepathy discipline core and any authored Telepathy techniques resolve through the shared catalogue; the book's full technique list, prerequisites and effects for this discipline are not transcribed (SWN has no SRD licence for its power text)."
+  },
+  {
+   "id": "teleportation",
+   "title": "Teleportation",
+   "page": 42,
+   "chapter": "Psionics",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/psionics.py",
+     "procedures": [
+      "Psychic",
+      "may_use",
+      "load_catalogue",
+      "effort_duration",
+      "authorized"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_psionics_catalogue.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The Teleportation discipline core and any authored Teleportation techniques resolve through the shared catalogue; the book's full technique list, prerequisites and effects for this discipline are not transcribed (SWN has no SRD licence for its power text)."
+  },
+  {
+   "id": "systems",
+   "title": "Systems",
+   "page": 46,
+   "chapter": "Systems",
+   "rights": "purchased_deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Chapter introduction (p.46). Its procedures are the rows below; none is claimed."
+  },
+  {
+   "id": "combat",
+   "title": "Combat",
+   "page": 48,
+   "chapter": "Systems",
+   "rights": "purchased_deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "CWN implements combat resolution (src/rules/cwn_combat.py); equivalence with SWN's printed combat tables (p.48) has not been compared."
+  },
+  {
+   "id": "injury-death-and-healing",
+   "title": "Injury, Death, and Healing",
+   "page": 53,
+   "chapter": "Systems",
+   "rights": "purchased_deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "CWN implements injury and System Strain; SWN's death and healing text (p.53) is not compared against it."
+  },
+  {
+   "id": "hacking",
+   "title": "Hacking",
+   "page": 54,
+   "chapter": "Systems",
+   "rights": "purchased_deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "CWN implements hacking procedures; SWN's hacking section (p.54) is a different model and has not been compared."
+  },
+  {
+   "id": "advancement",
+   "title": "Advancement",
+   "page": 56,
+   "chapter": "Systems",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/swn_progression.py",
+     "procedures": [
+      "PsychicTraining"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_swn_progression.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "XP/skill-point arithmetic exists; SWN's advancement table and class-specific grants (p.56) are only partly represented."
+  },
+  {
+   "id": "environmental-hazards",
+   "title": "Environmental Hazards",
+   "page": 58,
+   "chapter": "Systems",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "SWN environmental hazards (p.58: radiation, vacuum, disease) are unimplemented."
+  },
+  {
+   "id": "equipment",
+   "title": "Equipment",
+   "page": 62,
+   "chapter": "Equipment and Vehicles",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Chapter introduction (p.62); the tables it introduces are the rows below."
+  },
+  {
+   "id": "technology-levels",
+   "title": "Technology Levels",
+   "page": 63,
+   "chapter": "Equipment and Vehicles",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "SWN's tech-level scale (p.63) is the backbone of #1105's access model and is not implemented."
+  },
+  {
+   "id": "armor",
+   "title": "Armor",
+   "page": 64,
+   "chapter": "Equipment and Vehicles",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "SWN armour table (p.64) is not implemented; CWN gear is authoritative for human-scale play."
+  },
+  {
+   "id": "ranged-weapons",
+   "title": "Ranged Weapons",
+   "page": 66,
+   "chapter": "Equipment and Vehicles",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "SWN ranged weapon table (p.66) is not implemented."
+  },
+  {
+   "id": "melee-weapons",
+   "title": "Melee Weapons",
+   "page": 68,
+   "chapter": "Equipment and Vehicles",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "SWN melee weapon table (p.68) is not implemented."
+  },
+  {
+   "id": "heavy-weapons",
+   "title": "Heavy Weapons",
+   "page": 69,
+   "chapter": "Equipment and Vehicles",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "SWN heavy weapon table (p.69) is not implemented."
+  },
+  {
+   "id": "general-equipment",
+   "title": "General Equipment",
+   "page": 70,
+   "chapter": "Equipment and Vehicles",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "SWN general equipment (p.70) is not implemented."
+  },
+  {
+   "id": "lifestyles-employees-and-services",
+   "title": "Lifestyles, Employees, and Services",
+   "page": 77,
+   "chapter": "Equipment and Vehicles",
+   "rights": "purchased_deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "CWN implements wages and lifestyles (rules.cwn_lifestyles); SWN's figures (p.77) have not been compared, so reuse is unproven."
+  },
+  {
+   "id": "vehicles",
+   "title": "Vehicles",
+   "page": 78,
+   "chapter": "Equipment and Vehicles",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "SWN vehicle rules (p.78) are unimplemented; CWN vehicles cover human-scale play."
+  },
+  {
+   "id": "drones",
+   "title": "Drones",
+   "page": 80,
+   "chapter": "Equipment and Vehicles",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "SWN drones (p.80) are unimplemented."
+  },
+  {
+   "id": "cyberware",
+   "title": "Cyberware",
+   "page": 82,
+   "chapter": "Equipment and Vehicles",
+   "rights": "purchased_deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "CWN implements cyberware fully; SWN's cyberware list and prices (p.82) are a different catalogue and are not compared."
+  },
+  {
+   "id": "artifacts",
+   "title": "Artifacts",
+   "page": 86,
+   "chapter": "Equipment and Vehicles",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "SWN artifact rules (p.86) are unimplemented."
+  },
+  {
+   "id": "modding-and-building-equipment",
+   "title": "Modding and Building Equipment",
+   "page": 90,
+   "chapter": "Equipment and Vehicles",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "SWN equipment modification and construction (p.90) are unimplemented."
+  },
+  {
+   "id": "building-a-starship",
+   "title": "Building a Starship",
+   "page": 94,
+   "chapter": "Starships",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/swn_starships.py",
+     "procedures": [
+      "Hull",
+      "Vessel"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_swn_starships.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Module describes itself as an SWN-inspired adapter, not the full hull/fitting catalogue; ship design (p.94) is partial."
+  },
+  {
+   "id": "example-starships",
+   "title": "Example Starships",
+   "page": 104,
+   "chapter": "Starships",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The example hulls (p.104) are not catalogued."
+  },
+  {
+   "id": "modifying-and-tuning-starships",
+   "title": "Modifying and Tuning Starships",
+   "page": 108,
+   "chapter": "Starships",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/swn_starships.py",
+     "procedures": [
+      "Hull",
+      "Fitting"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_swn_starships.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Modification exists only to the extent the adapter models it; the printed tuning rules (p.108) are not transcribed."
+  },
+  {
+   "id": "space-travel",
+   "title": "Space Travel",
+   "page": 110,
+   "chapter": "Starships",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "SWN spike-drive travel and fuel procedures (p.110) are deliberately not reproduced; NoöPunk uses original route rules in swn_sector.py."
+  },
+  {
+   "id": "sensors-and-detection",
+   "title": "Sensors and Detection",
+   "page": 112,
+   "chapter": "Starships",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Sensor and detection rules (p.112) are unimplemented."
+  },
+  {
+   "id": "space-combat",
+   "title": "Space Combat",
+   "page": 114,
+   "chapter": "Starships",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Space combat (p.114: crew actions, damage, repair) is unimplemented."
+  },
+  {
+   "id": "the-history-of-space",
+   "title": "The History of Space",
+   "page": 122,
+   "chapter": "The History of Space",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Setting history (p.122). NoöPunk's own canon replaces it; no rule to implement."
+  },
+  {
+   "id": "sector-creation",
+   "title": "Sector Creation",
+   "page": 130,
+   "chapter": "Sector Creation",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/swn_sector.py",
+     "procedures": [
+      "Route",
+      "Ship"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_swn_space_factions.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Route and fuel budgets exist as an original NoöPunk procedure; the printed sector generation tables (p.130) are not implemented."
+  },
+  {
+   "id": "world-tags",
+   "title": "World Tags",
+   "page": 132,
+   "chapter": "Sector Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "World tag tables (p.132) are unimplemented."
+  },
+  {
+   "id": "atmosphere",
+   "title": "Atmosphere",
+   "page": 160,
+   "chapter": "Sector Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Atmosphere generation (p.160) is unimplemented."
+  },
+  {
+   "id": "temperature",
+   "title": "Temperature",
+   "page": 162,
+   "chapter": "Sector Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Temperature generation (p.162) is unimplemented."
+  },
+  {
+   "id": "biosphere",
+   "title": "Biosphere",
+   "page": 164,
+   "chapter": "Sector Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Biosphere generation (p.164) is unimplemented."
+  },
+  {
+   "id": "population",
+   "title": "Population",
+   "page": 166,
+   "chapter": "Sector Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Population generation (p.166) is unimplemented."
+  },
+  {
+   "id": "tech-level",
+   "title": "Tech Level",
+   "page": 168,
+   "chapter": "Sector Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Tech-level generation (p.168) is unimplemented."
+  },
+  {
+   "id": "system-points-of-interest",
+   "title": "System Points of Interest",
+   "page": 170,
+   "chapter": "Sector Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "System point-of-interest generation (p.170) is unimplemented."
+  },
+  {
+   "id": "adventure-creation",
+   "title": "Adventure Creation",
+   "page": 174,
+   "chapter": "Adventure Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Adventure templates (p.174) are unimplemented."
+  },
+  {
+   "id": "adventure-rewards",
+   "title": "Adventure Rewards",
+   "page": 178,
+   "chapter": "Adventure Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Adventure rewards (p.178) are unimplemented."
+  },
+  {
+   "id": "problems",
+   "title": "Problems",
+   "page": 180,
+   "chapter": "Adventure Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The problems table (p.180) is unimplemented."
+  },
+  {
+   "id": "people",
+   "title": "People",
+   "page": 182,
+   "chapter": "Adventure Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The people table (p.182) is unimplemented."
+  },
+  {
+   "id": "places",
+   "title": "Places",
+   "page": 184,
+   "chapter": "Adventure Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The places table (p.184) is unimplemented."
+  },
+  {
+   "id": "adventure-seeds",
+   "title": "Adventure Seeds",
+   "page": 186,
+   "chapter": "Adventure Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Adventure seeds (p.186) are unimplemented."
+  },
+  {
+   "id": "an-example-of-adventure-creation",
+   "title": "An Example of Adventure Creation",
+   "page": 191,
+   "chapter": "Adventure Creation",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Worked example (p.191); not a rule."
+  },
+  {
+   "id": "humanity",
+   "title": "Humanity",
+   "page": 194,
+   "chapter": "Xenobestiary",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Chapter opening on humanity (p.194); setting framing."
+  },
+  {
+   "id": "robots-and-vis",
+   "title": "Robots and VIs",
+   "page": 196,
+   "chapter": "Xenobestiary",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Robot and VI stat blocks (p.196) are unimplemented."
+  },
+  {
+   "id": "vi-player-characters",
+   "title": "VI Player Characters",
+   "page": 199,
+   "chapter": "Xenobestiary",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "VI player-character rules (p.199) are unimplemented."
+  },
+  {
+   "id": "beasts",
+   "title": "Beasts",
+   "page": 200,
+   "chapter": "Xenobestiary",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Xenobestiary beasts (p.200) are unimplemented."
+  },
+  {
+   "id": "aliens",
+   "title": "Aliens",
+   "page": 202,
+   "chapter": "Xenobestiary",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Alien species creation and stat blocks (p.202) are unimplemented; NoöPunk species are authored separately."
+  },
+  {
+   "id": "alien-player-characters",
+   "title": "Alien Player Characters",
+   "page": 209,
+   "chapter": "Xenobestiary",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Alien PC rules (p.209) are unimplemented."
+  },
+  {
+   "id": "factions-assets-and-turns",
+   "title": "Factions, Assets, and Turns",
+   "page": 212,
+   "chapter": "Factions",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/swn_faction_engine.py",
+     "procedures": [
+      "FactionEngine"
+     ]
+    },
+    {
+     "path": "src/rules/swn_faction_turn.py",
+     "procedures": [
+      "Faction"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_swn_faction_engine.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Turn structure, FacCreds and action economy exist. The module states the asset catalogues and combat tables are reference-only, so the printed asset stats (p.212) are not verified."
+  },
+  {
+   "id": "faction-actions",
+   "title": "Faction Actions",
+   "page": 214,
+   "chapter": "Factions",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/swn_faction_operations.py",
+     "procedures": [
+      "resolve_action"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_swn_faction_operations.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Operations exist for the modelled subset; SWN's full action list (p.214) is not transcribed."
+  },
+  {
+   "id": "buying-and-using-assets",
+   "title": "Buying and Using Assets",
+   "page": 216,
+   "chapter": "Factions",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Asset purchase, movement and maintenance (p.216) are unimplemented beyond the modelled subset."
+  },
+  {
+   "id": "faction-goals",
+   "title": "Faction Goals",
+   "page": 217,
+   "chapter": "Factions",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Faction goals and XP (p.217) are unimplemented."
+  },
+  {
+   "id": "cunning-assets",
+   "title": "Cunning Assets",
+   "page": 218,
+   "chapter": "Factions",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Cunning asset catalogue (p.218) is reference-only in the engine, not modelled."
+  },
+  {
+   "id": "force-assets",
+   "title": "Force Assets",
+   "page": 220,
+   "chapter": "Factions",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Force asset catalogue (p.220) is reference-only in the engine, not modelled."
+  },
+  {
+   "id": "wealth-assets",
+   "title": "Wealth Assets",
+   "page": 222,
+   "chapter": "Factions",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Wealth asset catalogue (p.222) is reference-only in the engine, not modelled."
+  },
+  {
+   "id": "faction-tags",
+   "title": "Faction Tags",
+   "page": 224,
+   "chapter": "Factions",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Faction tags (p.224) are unimplemented."
+  },
+  {
+   "id": "factions-in-your-campaign",
+   "title": "Factions In Your Campaign",
+   "page": 226,
+   "chapter": "Factions",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Guidance (p.226); no procedure."
+  },
+  {
+   "id": "example-factions",
+   "title": "Example Factions",
+   "page": 227,
+   "chapter": "Factions",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Worked example (p.227); not a rule."
+  },
+  {
+   "id": "example-of-faction-play",
+   "title": "Example of Faction Play",
+   "page": 228,
+   "chapter": "Factions",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Worked example (p.228); not a rule."
+  },
+  {
+   "id": "complications",
+   "title": "Complications",
+   "page": 232,
+   "chapter": "Game Master Resources",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Complication tables (p.232) are unimplemented."
+  },
+  {
+   "id": "converting-first-edition",
+   "title": "Converting First Edition",
+   "page": 236,
+   "chapter": "Game Master Resources",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Conversion guidance (p.236); no procedure for a NoöPunk table."
+  },
+  {
+   "id": "house-rules",
+   "title": "House Rules",
+   "page": 237,
+   "chapter": "Game Master Resources",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "House-rule guidance (p.237); not a rule."
+  },
+  {
+   "id": "name-generators",
+   "title": "Name Generators",
+   "page": 238,
+   "chapter": "Game Master Resources",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Name generators (p.238) are unimplemented."
+  },
+  {
+   "id": "one-roll-npcs",
+   "title": "One-Roll NPCs",
+   "page": 244,
+   "chapter": "Game Master Resources",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "One-roll NPCs (p.244) are unimplemented."
+  },
+  {
+   "id": "one-roll-patrons",
+   "title": "One-Roll Patrons",
+   "page": 245,
+   "chapter": "Game Master Resources",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "One-roll patrons (p.245) are unimplemented."
+  },
+  {
+   "id": "one-roll-urban-encounters",
+   "title": "One-Roll Urban Encounters",
+   "page": 246,
+   "chapter": "Game Master Resources",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Urban encounter table (p.246) is unimplemented."
+  },
+  {
+   "id": "one-roll-wilderness-encounters",
+   "title": "One-Roll Wilderness Encounters",
+   "page": 247,
+   "chapter": "Game Master Resources",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Wilderness encounter table (p.247) is unimplemented."
+  },
+  {
+   "id": "transhuman-campaigns",
+   "title": "Transhuman Campaigns",
+   "page": 248,
+   "chapter": "Transhuman Campaigns",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/swn_transhuman.py",
+     "procedures": [
+      "Shell",
+      "Mind",
+      "ContinuityRegistry"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_swn_transhuman_true_ai.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Identity, shell and imprint logic exist as an SWN-inspired model; the Deluxe transhuman rules (p.248) are not verified faithful."
+  },
+  {
+   "id": "wealth-and-face",
+   "title": "Wealth and Face",
+   "page": 250,
+   "chapter": "Transhuman Campaigns",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Wealth and face rules (p.250) are unimplemented."
+  },
+  {
+   "id": "shells-and-swapping-bodies",
+   "title": "Shells and Swapping Bodies",
+   "page": 252,
+   "chapter": "Transhuman Campaigns",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/swn_transhuman.py",
+     "procedures": [
+      "Shell",
+      "Imprint"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_swn_transhuman_true_ai.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Shell swapping is modelled; the printed shell lists and costs (p.252) are not transcribed."
+  },
+  {
+   "id": "character-generation",
+   "title": "Character Generation",
+   "page": 253,
+   "chapter": "Transhuman Campaigns",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Transhuman character generation (p.253) is unimplemented."
+  },
+  {
+   "id": "organic-shells",
+   "title": "Organic Shells",
+   "page": 254,
+   "chapter": "Transhuman Campaigns",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Organic shell table (p.254) is unimplemented."
+  },
+  {
+   "id": "mechanical-shells",
+   "title": "Mechanical Shells",
+   "page": 256,
+   "chapter": "Transhuman Campaigns",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Mechanical shell table (p.256) is unimplemented."
+  },
+  {
+   "id": "the-net-and-digital-shells",
+   "title": "The Net and Digital Shells",
+   "page": 258,
+   "chapter": "Transhuman Campaigns",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Digital shell rules (p.258) are unimplemented."
+  },
+  {
+   "id": "digital-combat",
+   "title": "Digital Combat",
+   "page": 260,
+   "chapter": "Transhuman Campaigns",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Digital combat (p.260) is unimplemented."
+  },
+  {
+   "id": "digital-programs",
+   "title": "Digital Programs",
+   "page": 261,
+   "chapter": "Transhuman Campaigns",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Digital program rules (p.261) are unimplemented."
+  },
+  {
+   "id": "transhuman-polities",
+   "title": "Transhuman Polities",
+   "page": 262,
+   "chapter": "Transhuman Campaigns",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Transhuman polity rules (p.262) are unimplemented."
+  },
+  {
+   "id": "one-roll-polity-missions",
+   "title": "One-Roll Polity Missions",
+   "page": 264,
+   "chapter": "Transhuman Campaigns",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Polity mission table (p.264) is unimplemented."
+  },
+  {
+   "id": "polity-mission-rewards",
+   "title": "Polity Mission Rewards",
+   "page": 265,
+   "chapter": "Transhuman Campaigns",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Polity mission rewards (p.265) are unimplemented."
+  },
+  {
+   "id": "space-magic",
+   "title": "Space Magic",
+   "page": 266,
+   "chapter": "Space Magic",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Deluxe Space Magic (p.266) is an alternative magic system. NoöPunk uses WWN magic, so this is excluded by design rather than unimplemented."
+  },
+  {
+   "id": "the-arcanist",
+   "title": "The Arcanist",
+   "page": 268,
+   "chapter": "Space Magic",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Space Magic class (p.268); excluded with the Space Magic system."
+  },
+  {
+   "id": "the-magister",
+   "title": "The Magister",
+   "page": 269,
+   "chapter": "Space Magic",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Space Magic class (p.269); excluded with the Space Magic system."
+  },
+  {
+   "id": "the-adept",
+   "title": "The Adept",
+   "page": 270,
+   "chapter": "Space Magic",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Space Magic class (p.270); excluded with the Space Magic system."
+  },
+  {
+   "id": "arcane-foci",
+   "title": "Arcane Foci",
+   "page": 272,
+   "chapter": "Space Magic",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Space Magic foci (p.272); excluded with the Space Magic system."
+  },
+  {
+   "id": "heroic-characters",
+   "title": "Heroic Characters",
+   "page": 274,
+   "chapter": "Heroic Characters",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Heroic character rules (p.274) are unimplemented."
+  },
+  {
+   "id": "heroic-combat",
+   "title": "Heroic Combat",
+   "page": 276,
+   "chapter": "Heroic Characters",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Heroic combat (p.276) is unimplemented."
+  },
+  {
+   "id": "challenging-heroic-pcs",
+   "title": "Challenging Heroic PCs",
+   "page": 278,
+   "chapter": "Heroic Characters",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Challenging heroic PCs (p.278) is unimplemented."
+  },
+  {
+   "id": "true-artificial-intelligences",
+   "title": "True Artificial Intelligences",
+   "page": 280,
+   "chapter": "True Artificial Intelligences",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/swn_true_ai.py",
+     "procedures": [
+      "TrueAI",
+      "AIHost"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_swn_transhuman_true_ai.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Agency, hosts and containment are modelled; SWN's printed AI rules (p.280) are not verified against them."
+  },
+  {
+   "id": "creating-true-ais",
+   "title": "Creating True AIs",
+   "page": 283,
+   "chapter": "True Artificial Intelligences",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "True AI creation (p.283) is unimplemented."
+  },
+  {
+   "id": "true-ai-pcs",
+   "title": "True AI PCs",
+   "page": 285,
+   "chapter": "True Artificial Intelligences",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "True AI player characters (p.285) are unimplemented."
+  },
+  {
+   "id": "the-true-ai-class",
+   "title": "The True AI Class",
+   "page": 287,
+   "chapter": "True Artificial Intelligences",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The True AI class (p.287) is unimplemented."
+  },
+  {
+   "id": "routines",
+   "title": "Routines",
+   "page": 288,
+   "chapter": "True Artificial Intelligences",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "AI routines (p.288) are unimplemented."
+  },
+  {
+   "id": "societies",
+   "title": "Societies",
+   "page": 290,
+   "chapter": "Societies",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Deluxe society rules (p.290) are unimplemented."
+  },
+  {
+   "id": "origin-of-the-society",
+   "title": "Origin of the Society",
+   "page": 292,
+   "chapter": "Societies",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Society origin tables (p.292) are unimplemented."
+  },
+  {
+   "id": "rulers",
+   "title": "Rulers",
+   "page": 294,
+   "chapter": "Societies",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Society rulers table (p.294) is unimplemented."
+  },
+  {
+   "id": "ruled",
+   "title": "Ruled",
+   "page": 296,
+   "chapter": "Societies",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Society ruled table (p.296) is unimplemented."
+  },
+  {
+   "id": "flavoring-the-society",
+   "title": "Flavoring the Society",
+   "page": 298,
+   "chapter": "Societies",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Society flavour tables (p.298) are unimplemented."
+  },
+  {
+   "id": "mechs",
+   "title": "Mechs",
+   "page": 300,
+   "chapter": "Mechs",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Mech rules (p.300) are unimplemented."
+  },
+  {
+   "id": "designing-mechs",
+   "title": "Designing Mechs",
+   "page": 304,
+   "chapter": "Mechs",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Mech design (p.304) is unimplemented."
+  },
+  {
+   "id": "example-mech-designs",
+   "title": "Example Mech Designs",
+   "page": 310,
+   "chapter": "Mechs",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Example mech designs (p.310) are unimplemented."
+  },
+  {
+   "id": "backers",
+   "title": "Backers",
+   "page": 316,
+   "chapter": "Index",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Backer list (p.316); not a rule."
+  }
+ ]
+}
