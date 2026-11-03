@@ -103,9 +103,13 @@ class RegionState:
                 and self.governance == "functioning"
                 and self.anomaly == "none")
 
-    def active_overlays(self) -> tuple[str, ...]:
-        """Which AWN overlays this region activates. A functioning region activates none."""
-        if self.is_functioning:
+    def active_overlays(self, *, awn_enabled: bool = True) -> tuple[str, ...]:
+        """Optional AWN eligibility; disabled means no AWN effects, not erasure of history.
+
+        This toggle scopes only AWN-specific effects. CWN remains authoritative and any
+        independently enabled SWN/WWN rules keep their own activation contracts.
+        """
+        if not awn_enabled or self.is_functioning:
             return ()
         worst = max((self.axis(a) for a in MATERIAL_AXES), key=LADDER.index)
         overlays = set(OVERLAYS[worst])
@@ -220,7 +224,7 @@ class RegionLedger:
     def regions(self) -> list[str]:
         return sorted({s.region for s in self.states})
 
-    def world_at(self, date: str) -> dict[str, Any]:
+    def world_at(self, date: str, *, awn_enabled: bool = True) -> dict[str, Any]:
         """The world layer: a derived aggregate, never a second authored state."""
         current: dict[str, RegionState] = {}
         for region in self.regions():
@@ -236,8 +240,8 @@ class RegionLedger:
             "regions": len(current),
             "by_worst_material_axis": counts,
             "functioning": sorted(r for r, s in current.items() if s.is_functioning),
-            "overlays": {r: list(s.active_overlays()) for r, s in sorted(current.items())
-                         if s.active_overlays()},
+            "overlays": {r: list(s.active_overlays(awn_enabled=awn_enabled)) for r, s in sorted(current.items())
+                         if s.active_overlays(awn_enabled=awn_enabled)},
             "anomaly": {r: s.anomaly for r, s in sorted(current.items()) if s.anomaly != "none"},
             "treats_collapse_as_global": False,
         }
