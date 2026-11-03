@@ -6,6 +6,10 @@ record of what that has produced, what was merged, and what is still two things 
 **Rule:** if you build something and find a second implementation of it, the answer is never to leave both and hope.
 Decide which is canonical, delete or demote the other, and add a line here.
 
+The working protocol — search commands, claim etiquette, delegation-over-deletion, how to retire a document —
+is [docs/design/AGENT_COORDINATION.md](design/AGENT_COORDINATION.md). The canonical document per subject is
+[docs/DOCUMENT_REGISTER.md](DOCUMENT_REGISTER.md).
+
 ## Resolved in this audit
 
 | Duplicate | What happened | Resolution |
@@ -13,8 +17,27 @@ Decide which is canonical, delete or demote the other, and add a line here.
 | `mud/nopunk_mud/console.py` vs `src/console/session.py` (+ `src/console/play.py`) | Two playable text front ends for the same case | **My console ceded.** `src/console/` is canonical: it has the real case graph, a walkthrough and its own tests. `console.py` and its test were deleted. |
 | `BRAINSTORM_1007` pair: `DESIGN_CANON_1007.md` vs `ISSUE_1007_DESIGN_CANON.md` | Looked like two canon documents | **Both kept, cross-linked.** One preserves the author's text; the other is the decision record with `data/world/reveal_ladder.json`. Neither restates the other. |
 | `solo_campaign.py` vs `campaign/engine.py` | 58-line prologue and a 464-line engine, both called "the campaign" | **Engine is canonical.** `solo_campaign.py` carries a DEPRECATED header naming the replacement; it survives only because the Evennia command set imports it. Do not add features there. |
-| Coverage documents (`CWN_COVERAGE_MATRIX.md`, `CWN_COVERAGE_AUDIT_1068.md`, `CWN_COMPLIANCE_MATRIX_950.md`, `cwn_coverage.json`) | Four overlapping audits and two generators in one day | **One generator, one report: `tools/cwn_parity_audit.py` → `docs/rules/CWN_COVERAGE_1068.md`** from `data/rules/cwn_traceability.json` + `cwn_compliance_matrix.json`. Deleted the second renderer (`check_cwn_compliance.py --render`, `CWN_COMPLIANCE_MATRIX_950.md`) and the third audit (`cwn_1068_coverage.py`, `cwn_tabletop_audit_1068.json`, `CWN_COVERAGE_AUDIT_1068.md`). `docs/CWN_COVERAGE_MATRIX.md` is historical and points at the canonical report. |
+| Coverage documents (`CWN_COVERAGE_MATRIX.md`, `CWN_COVERAGE_AUDIT_1068.md`, `CWN_COMPLIANCE_MATRIX_950.md`, `cwn_coverage.json`) | Four overlapping audits and two generators in one day | **One generator, one report: `tools/cwn_parity_audit.py` -> `docs/rules/CWN_COVERAGE_1068.md`** from `data/rules/cwn_traceability.json` + `cwn_compliance_matrix.json`. Deleted the second renderer (`check_cwn_compliance.py --render`, `CWN_COMPLIANCE_MATRIX_950.md`) and the third audit (`cwn_1068_coverage.py`, `cwn_tabletop_audit_1068.json`, `CWN_COVERAGE_AUDIT_1068.md`). `docs/CWN_COVERAGE_MATRIX.md` is historical and points at the canonical report. |
 | Two files named as a duplication audit (`DUPLICATION_AUDIT.md`, `DUPLICATION_AUDIT_1053.md`) | One is agent-work; the other is generated rule-level code duplication | Renamed the generated one to `docs/RULES_DUPLICATION_AUDIT_1053.md`; this file remains the work-level audit. |
+
+## Merged in the second pass (#1098, after #1097 landed)
+
+#1097 consolidated the *reporting* duplicates; the rule-layer duplicates its first pass had recorded were
+left in place. Deferring them was the mistake: within the same evening the copies diverged, and one of them
+was wrong. Each merge below keeps every public name and makes the loser call the winner, so no importer
+broke.
+
+| Duplicate | Evidence it had already drifted | Resolution |
+|---|---|---|
+| `src/rules/cwn_lifestyles.py` (embedded tables) + `data/rules/cwn/{lifestyles,common_wages}.json` + `mud/nopunk_mud/cwn/economy.py` (own JSON reader) | Three copies of one SRD section, with **two id vocabularies** (`middle_class` vs `ordinary`; `oligarchic_elite` vs `oligarchic_elite_of_a_city`) | Numbers live once in `data/rules/cwn/*.json` (bribe costs added as a third file). `cwn_lifestyles` loads them and is the only procedure; the MUD adapter delegates and keeps only its hireling prose. |
+| `cwn_spells.overcast_roll/overcast_outcome` vs `cwn_magic.EffortPool.overcast_roll` + `OVERCAST_TABLE` | Two overcasting tables and two arithmetic paths for one roll | `cwn_magic.overcast_total()` is the one arithmetic; `cwn_spells` reads `OVERCAST_TABLE` and keeps only the player-facing wording. |
+| `cwn_alienation.SYNDROMES` vs `cwn_cyberware.SYNDROMES` | **Stressed was worth +3 in one and +5 in the other; the SRD says +5** | The optional module reads the base rules' table; `system_cost` and `therapy_week` delegate. `cwn_cyberware` stays canonical and still knows nothing about the optional rule. |
+| `cwn_attack_modifiers.ATTACK_MODIFIER_TABLE` vs `data/rules/wn_core.json -> combat.attack_modifiers.table` | Byte-identical today, which is the dangerous case: nothing fails until one side is corrected | The module loads the data table. |
+| Nine CWN status documents with counts of 41, 55 and "unverified 16" for the same tree | Six different answers to "how much of CWN is implemented?" | #1097 deleted the two stray generators; this pass put `> **Superseded:**` banners on every surviving status document and recorded the mapping in `docs/DOCUMENT_REGISTER.md`. |
+
+Guards: `tests/test_rule_duplication_merged.py` asserts *equalities between modules*, never literals — a
+literal can be copied, an equality cannot be satisfied by a second transcription that drifts.
+
 
 ## Known, not yet merged
 
@@ -38,6 +61,7 @@ then the docstrings must keep saying which is which.
 Different layers, not duplicates: the portable case session vs the Evennia adapter over `CampaignEngine`.
 The names are the problem, not the code.
 
+<<<<<<< Updated upstream
 ## Documentation conflicts found while consolidating
 
 The CWN audit pass measured the reader rulebook against the baseline: **15 chapters still teach a
@@ -46,6 +70,28 @@ injury, §7.4 hacking), **17** have related material only and **30** are absent.
 top of `RULEBOOK.md` now names CWN and the Without Number baseline, so the chapters are historical — but
 they are not rewritten. Do not add a second tabletop audit for this; extend the rulebook chapters or the
 traceability `rulebook` column.
+=======
+## Found by the new detector, deliberately not merged
+
+`tools/find_duplicates.py` now also compares literal tables (dicts/sets of five or more keys) across code
+and data. On its first run it reported ten pairs. Four were merged above. The rest are questions with a
+design answer, not a merge:
+
+* `src/rules/wn_core.py` `{FIT, CYB, ...}` ↔ `data/rules/core.json` `stats.names` / `stats.layer` — the
+  same stat ids in code and in data. Which side is authoritative is a decision about whether the kernel may
+  hard-code attribute names at all; merging it silently would answer that question by accident.
+* `src/rules/noopunk_tags.py` ↔ `data/rules/noopunk_tags.json` `attributes.meaning` / `skills.list` — same
+  question for the tag vocabulary.
+* `first_case_drill.py` `{Strength, ...}` ↔ `mud/nopunk_mud/campaign/content.py` and `mud/…/cli.py` — the MUD's
+  character sheet repeats the attribute list; likely a real merge, but it lands in the campaign engine, which
+  is the collision the first pass deferred.
+* `data/rules/core.json difficulties` ↔ `data/rules/fudge_scale_migration.json difficulty_mapping` — the
+  same seven DCs, one with names and one with Fudge steps. Complementary, and worth a cross-reference rather
+  than a merge.
+
+A detector that reports ten things and gets four merged is working as intended: it is a question generator,
+and the answer to "these two dicts share keys" is sometimes "they are supposed to".
+>>>>>>> Stashed changes
 
 ## What the guard enforces
 

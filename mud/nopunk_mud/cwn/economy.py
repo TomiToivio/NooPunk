@@ -1,14 +1,19 @@
-"""Daily wages, and what a hireling will and will not do (#1068).
+"""Daily wages, and what a hireling will and will not do.
 
 From the Cities Without Number SRD (public domain), Common Wages: average daily earnings by worker type,
 with the SRD's own caveat — a hireling is loyal within reason, not suicidal.
+
+The table and the lookup are **not** implemented here: ``rules.cwn_lifestyles`` owns them, over
+``data/rules/cwn/common_wages.json``. This module used to read that file itself, which made it the third
+copy of one SRD section; it now delegates and keeps only what is genuinely MUD-side — the prose about
+what a hireling will risk, and the budget arithmetic a MUD needs.
 """
 from __future__ import annotations
 
-import json
-from pathlib import Path
-
-WAGES_PATH = Path(__file__).resolve().parents[3] / "data" / "rules" / "cwn" / "common_wages.json"
+try:  # imported as part of the repository (CWD or repo root on sys.path)
+    from src.rules.cwn_lifestyles import COMMON_WAGES, LifestyleError, wage
+except ModuleNotFoundError:  # pragma: no cover - installed package layout
+    from rules.cwn_lifestyles import COMMON_WAGES, LifestyleError, wage
 
 #: How far a hireling will go. Descriptive, not a morale score: CWN has its own reaction rolls.
 RESOLVE: dict[str, str] = {
@@ -17,20 +22,27 @@ RESOLVE: dict[str, str] = {
     "ganger": "will commit extreme violence against rivals or the helpless; avoids a fair fight",
 }
 
+#: Short MUD names mapped onto the SRD wage table's own ids, so a MUD script can say "bodyguard".
+ROLE_ALIASES: dict[str, str] = {
+    "ordinary": "common_streetwalker",
+    "bodyguard": "competent_street_bodyguard",
+    "ganger": "low_level_ganger_or_street_thug",
+}
+
 
 class WageError(ValueError):
     """An unknown role, or a wage question the table cannot answer."""
 
 
 def wages() -> dict[str, int]:
-    return dict(json.loads(WAGES_PATH.read_text(encoding="utf-8"))["wages"])
+    return dict(COMMON_WAGES)
 
 
 def daily_wage(role: str) -> int:
-    table = wages()
-    if role not in table:
-        raise WageError(f"no wage for {role!r}; known roles: {len(table)}")
-    return table[role]
+    try:
+        return wage(ROLE_ALIASES.get(role, role))
+    except LifestyleError as exc:
+        raise WageError(str(exc)) from exc
 
 
 def hire_cost(role: str, days: int) -> int:

@@ -1,5 +1,10 @@
 # CWN SRD parity audit (#858)
 
+> **Superseded:** [CWN_COVERAGE_1068.md](/docs/rules/CWN_COVERAGE_1068.md) is the one document kept up to date for this
+> subject. This file is kept as history — it is a second answer to a question that already had one,
+> and the counts in it disagree with the audited ones. Do not update it; update the canonical file.
+
+
 **Measured:** 2026-10-30 against `origin/main` (`67539a2` era). **This is an audit, not a certificate.**
 `docs/CWN_COVERAGE_MATRIX.md` was the starting point; this file answers the harder question the issue
 asks: for each published section, is there **code**, a **tested procedure**, a **playable interface**, and

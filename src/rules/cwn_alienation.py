@@ -4,6 +4,13 @@ Source: *Cities Without Number, Deluxe Edition*, printed pp. 226–231. This is 
 default CWN rules say chrome does not change a user's thinking, and nothing here attaches itself to the
 cyberware procedures unless a campaign turns it on. Paraphrased mechanics, no rulebook text copied.
 
+The **table** and the two arithmetic rules are not restated here: `cwn_cyberware` already implements
+Alienation under the base rules (SRD "Cyberware Alienation"), and after #1068 there were two copies whose
+syndrome bonuses had already diverged — this module said Stressed was worth +3, the SRD and
+`cwn_cyberware` both say +5. The table now comes from `cwn_cyberware` and this module keeps only what the
+optional rule adds: the accumulating score with its floor, the check/save cycle as one object, and the
+rescue procedure the base module leaves to the GM.
+
 The shape of the rule, in one paragraph: Alienation is spent like System Strain but accumulates. Adding
 a system costs its System Strain rounded up (+2 for Nerveware); a chrome syndrome raises the ceiling by
 its listed amount; the ceiling is Wisdom plus those bonuses. Fighting a syndrome forces a 1d20 check —
@@ -13,28 +20,24 @@ never below what the installed chrome already costs.
 """
 from __future__ import annotations
 
-import math
 from dataclasses import dataclass, field
 
+from src.rules.cwn_cyberware import (
+    SYNDROMES as _SRD_SYNDROMES,
+    THERAPY_COST_PER_WEEK,
+    alienation_for_system,
+    therapy_week as _therapy_week,
+)
+
 #: How much each syndrome raises the Alienation ceiling, and the behaviour it imposes.
-#: Paraphrased from the printed table (p. 231) and the syndrome entries (pp. 227–228).
+#: Read out of `cwn_cyberware.SYNDROMES` — one table, so the two modules cannot disagree again.
 SYNDROMES: dict[str, dict] = {
-    "brutal": {"max_bonus": 4, "effect": "cannot fight non-lethally; check when trying"},
-    "candid": {"max_bonus": 3, "effect": "answers truthfully; check to stay silent"},
-    "cold": {"max_bonus": 4, "effect": "cannot feel love or affection; lose closest Contact"},
-    "distant": {"max_bonus": 3, "effect": "-1 on all social skill checks"},
-    "exultant": {"max_bonus": 3, "effect": "automatic skill failure on a natural 12"},
-    "fearless": {"max_bonus": 4, "effect": "maximum HP -20% (rounded down); NPC Morale 12"},
-    "hypervigilant": {"max_bonus": 3, "effect": "+1 permanent System Strain"},
-    "murderous": {"max_bonus": 6, "effect": "must kill weekly or check daily beyond"},
-    "ravenous": {"max_bonus": 4, "effect": "sensory vice; check when resisting; $100/week per point"},
-    "savage": {"max_bonus": 5, "effect": "cannot flee after taking damage; check if you do"},
-    "secretive": {"max_bonus": 3, "effect": "cannot answer truthfully; check per topic"},
-    "stressed": {"max_bonus": 3, "effect": "lowest attribute -1 modifier, floor of -3"},
+    name: {"max_bonus": int(row["bonus"]), "effect": str(row["effect"])}
+    for name, row in _SRD_SYNDROMES.items()
 }
 
-#: Cost of a week of cyberpsychological therapy, in the book's currency (printed p. 226).
-THERAPY_COST = 2000
+#: Cost of a week of cyberpsychological therapy, in the book's currency (SRD "Cyberware Alienation").
+THERAPY_COST = THERAPY_COST_PER_WEEK
 
 
 class AlienationError(ValueError):
@@ -50,11 +53,9 @@ def system_cost(strain_cost: float, *, nerve: bool = False,
     """
     if strain_cost < 0:
         raise AlienationError("System Strain cost cannot be negative")
-    cost = math.ceil(strain_cost)
+    cost = alienation_for_system(strain_cost, nerve=nerve)
     if discounted_sense:
         cost = max(1, cost)
-    if nerve:
-        cost += 2
     return cost
 
 
@@ -144,7 +145,7 @@ class Alienation:
         """One week of therapy drops one point, never below the chrome's own cost."""
         if self.score <= self.floor:
             return {"dropped": 0, "score": self.score, "cost": 0}
-        self.score -= 1
+        self.score = _therapy_week(self.score, self.floor)
         return {"dropped": 1, "score": self.score, "cost": THERAPY_COST}
 
 

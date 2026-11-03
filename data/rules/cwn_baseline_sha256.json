@@ -5,8 +5,8 @@
  "note": "SHA-256 of every CWN baseline module. Issue #1068 locks CWN; modifications to pinned code fail tests. Later independently implemented CWN modules are added to the manifest without altering the existing core procedures.",
  "files": {
   "src/rules/cwn_advancement.py": "da45d8bfaba956056fee2b28355d056500f7ccfedaf6431923c53c25eba92fe8",
-  "src/rules/cwn_alienation.py": "5679f7d68549bffbe87e130bdd43a86316f496687285591de466cacc30215a30",
-  "src/rules/cwn_attack_modifiers.py": "8b3ed8878febb0d7241d53e1fbbcbb908607a641e2966f9cbbfc466e4690e830",
+  "src/rules/cwn_alienation.py": "96e5ed7bd40de970822af13cfc6aac35e10e412631f6e5c44ab9afe47d7cfb0d",
+  "src/rules/cwn_attack_modifiers.py": "dbef9a1b23e91d7462c6f8ccb21e98b2bb2a648a435ad3c9818cf66385ef682f",
   "src/rules/cwn_backgrounds.py": "4cb320fd5e5ca2c690503b4bad52f7b98dacf4dd5ccd059a8624e51bc5ae84f8",
   "src/rules/cwn_character.py": "64ad706e137527234166ba80061acc54da62899924ae6f323c416572edd921e0",
   "src/rules/cwn_combat.py": "05d7f38fdfd350bde0e6b19d5edb4992741b08f0db4932d6c4512ac269365ac2",
@@ -25,8 +25,8 @@
   "src/rules/cwn_heat.py": "94628cbf251381339936ffa2bdee0c08f3b9497760cef8754ca4926da56ed228",
   "src/rules/cwn_initiative.py": "2b2282147209c31409fdbf1b4cb252f4fb3e3927a2b76ef325078b39d3505a0e",
   "src/rules/cwn_injury_procedure.py": "ce1f10998d62b1481ef8e730f074c04fe1dd8832a5b7d2ebd6aa3177f54be267",
-  "src/rules/cwn_lifestyles.py": "d0943d0e70a491a0ef58dc7b27fd500e2b5c830c1af30e376f53f8bd1c6e3121",
-  "src/rules/cwn_magic.py": "71178ab86b80ee8456001e2a3499a54c76821b6bcd27f5afda7fd2a4526fff71",
+  "src/rules/cwn_lifestyles.py": "5a6a01972624d5203b97f02a809fc09409d255595df1ed67bfc11a2f13f05119",
+  "src/rules/cwn_magic.py": "8030cbb142ec538ac3da98d7f184fd488bb083b56285949d4201d841556b80a6",
   "src/rules/cwn_magic_items.py": "e027b5667532f06d1dc86c2aa8ca4b607efb768f37d43fe58ecc0163773419d5",
   "src/rules/cwn_major_injury.py": "26162ca8b9faa52b21c80532978bdc71a56ec486a390dc26eb8b897f8d597a07",
   "src/rules/cwn_mission_time.py": "54fec1054be9a640c9394ed360556984c33237a3f760a9c6c3270f2a85552bd6",
@@ -35,11 +35,25 @@
   "src/rules/cwn_program_catalogue.py": "14680d8a76f6906f5ada2f5629a6afa1fe4f1cf97b6f7317772a4d3a6685bae1",
   "src/rules/cwn_save_adapter.py": "8bb10dfa9deeb800beed2709834f5c4555541227c1195e98f8adec64396dfae3",
   "src/rules/cwn_special_maneuvers.py": "299e6c693879a4d7de9fd1f05d520ff7220d5072c670f8be38c9591f49cd47bb",
-  "src/rules/cwn_spells.py": "71d082e0c6c7b0375e2c7051cb68722294d101ea4ff9b0f61c3a74e29066b54a",
+  "src/rules/cwn_spells.py": "37fbbe7d7d6a74ae3947ede9e21374047edd8141123e2a3adf5bb2388bfc6a4e",
   "src/rules/cwn_spirit_powers.py": "7f2cdbf13183594067f36a6af0ea9b22079900ee797ccb2dfa90fbfebe5650eb",
   "src/rules/cwn_strain.py": "f236db8f062328cfd36a920ab2bb3d628298a2750970cf2b9e444b87f131372f",
   "src/rules/cwn_summoning.py": "938994dab1aaa7c02df301ab39addb4aee6692d2963922b537226ef3c5d8767a",
   "src/rules/cwn_trauma.py": "e29dd3ded4bff4620aba7fd3a8d7cfe554a1cad14b0fd5166cba0d7fbb427d2a",
   "src/rules/cwn_vehicles.py": "4e3bc47eb0135564d0448d70f2432acfc00d64bdf9e85229be19ac2fc94dfa7c"
- }
+ },
+ "revisions": [
+  {
+   "date": "2026-11-03",
+   "pr_issue": "#1097 duplicate consolidation",
+   "why": "Consolidating three duplicate implementations found after a burst of parallel agent work on #1068. No rule changed in substance: cwn_lifestyles now loads its three tables from data/rules/cwn/*.json instead of embedding them; cwn_spells and EffortPool now share cwn_magic.overcast_total; cwn_alienation reads cwn_cyberware.SYNDROMES instead of restating it (and therewith corrects Stressed from +3 to the SRD's +5). Also: cwn_attack_modifiers now loads ATTACK_MODIFIER_TABLE from data/rules/wn_core.json, where it was byte-identical to a second copy. Merging four rule-layer duplicates that #1097 recorded but deferred. No rule changed in substance: cwn_lifestyles loads its three tables from data/rules/cwn/*.json; cwn_spells and EffortPool share cwn_magic.overcast_total(); cwn_alienation reads cwn_cyberware.SYNDROMES (correcting Stressed from +3 to the SRD's +5); cwn_attack_modifiers loads its table from data/rules/wn_core.json.",
+   "files": [
+    "src/rules/cwn_alienation.py",
+    "src/rules/cwn_attack_modifiers.py",
+    "src/rules/cwn_lifestyles.py",
+    "src/rules/cwn_magic.py",
+    "src/rules/cwn_spells.py"
+   ]
+  }
+ ]
 }

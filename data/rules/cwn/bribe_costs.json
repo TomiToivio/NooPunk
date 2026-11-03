@@ -1,0 +1,19 @@
+{
+  "$comment": "Cities Without Number SRD (public domain), Lifestyles, Wages and Bribes: Bribe Costs. Price of a favour as a multiple of the target's daily wage. 'serious' marks the rows the SRD asterisks: many NPCs will want more than cash before agreeing. Content only - the procedure is src/rules/cwn_lifestyles.py.",
+  "source": {
+    "title": "Cities Without Number SRD",
+    "section": "Lifestyles, Wages, and Bribes - Bribe Costs",
+    "url": "https://cwn.quadrifons.com/gear-vehicles-cyberware/lifestyles-wages-and-bribes/bribe-costs/"
+  },
+  "basis": "multiple of the target's daily wage",
+  "favours": [
+    {"id": "look_the_other_way_minor", "text": "Look the other way at a minor infraction", "multiple": 2, "serious": false},
+    {"id": "pass_out_information", "text": "Pass out information they should not", "multiple": 2, "serious": false},
+    {"id": "small_favour_within_authority", "text": "Do a small favour within their authority", "multiple": 5, "serious": false},
+    {"id": "blind_eye_when_it_might_trouble", "text": "Turn a blind eye when it might make trouble", "multiple": 14, "serious": true},
+    {"id": "blind_eye_when_it_will_trouble", "text": "Turn a blind eye when it will make trouble", "multiple": 60, "serious": true},
+    {"id": "favour_with_minor_backlash", "text": "Do a favour that could have minor backlash", "multiple": 30, "serious": true},
+    {"id": "favour_that_might_get_them_punished", "text": "Do a favour that might get them punished", "multiple": 90, "serious": true},
+    {"id": "favour_that_might_get_them_fired", "text": "Do a favour that might get them fired", "multiple": 180, "serious": true}
+  ]
+}

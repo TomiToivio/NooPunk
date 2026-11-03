@@ -7,6 +7,11 @@
 
 # CWN / SWN rules coverage matrix (#749 work package A, refreshed for #848)
 
+> **Superseded:** [CWN_COVERAGE_1068.md](/docs/rules/CWN_COVERAGE_1068.md) is the one document kept up to date for this
+> subject. This file is kept as history — it is a second answer to a question that already had one,
+> and the counts in it disagree with the audited ones. Do not update it; update the canonical file.
+
+
 **Status:** measured audit, 2026-10-30, against baseline commit `d2992fc`. This is *measurement*, not
 a claim of completeness. Every number below came from enumerating the repository and running the
 suites on this machine.

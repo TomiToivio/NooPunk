@@ -1,5 +1,10 @@
 # CWN Deluxe coverage report (#1068)
 
+> **Superseded:** [CWN_COVERAGE_1068.md](/docs/rules/CWN_COVERAGE_1068.md) is the one document kept up to date for this
+> subject. This file is kept as history — it is a second answer to a question that already had one,
+> and the counts in it disagree with the audited ones. Do not update it; update the canonical file.
+
+
 Audit of the NoöPunk Python rules library against *Cities Without Number, Deluxe Edition*
 (`CitiesWithoutNumber_Deluxe_Lightweight_081123.pdf`, 265 printed pages), performed against the book's
 own page numbers, not against filenames. The machine-readable claims live in

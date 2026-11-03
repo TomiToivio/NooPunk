@@ -142,21 +142,28 @@ class SyndromeTableTests(unittest.TestCase):
     def test_the_book_table_is_complete(self):
         expected = {"brutal": 4, "candid": 3, "cold": 4, "distant": 3, "exultant": 3, "fearless": 4,
                     "hypervigilant": 3, "murderous": 6, "ravenous": 4, "savage": 5, "secretive": 3,
-                    "stressed": 3}
+                    "stressed": 5}
         self.assertEqual({name: data["max_bonus"] for name, data in SYNDROMES.items()}, expected)
         for name, data in SYNDROMES.items():
             self.assertTrue(data["effect"], f"{name} must say what it does")
 
-    def test_the_module_is_optional_and_dependency_free(self):
+    def test_the_table_is_the_cyberware_modules_table(self):
+        """One table, two views: Alienation is not a second transcription of the SRD.
+
+        It used to be, and the copies had already diverged — this file said Stressed was worth +3 while
+        the SRD and `cwn_cyberware` both say +5. The dependency runs one way only: this optional module
+        reads the base rules, and the base rules know nothing about it.
+        """
         import inspect
 
-        import src.rules.cwn_alienation as module
+        from src.rules import cwn_cyberware
 
-        source = inspect.getsource(module)
-        for import_line in ("import src.rules.cwn_cyberware", "from .cwn_cyberware",
-                            "from src.rules.cwn_cyberware"):
-            self.assertNotIn(import_line, source,
-                             "Alienation must not attach itself to the default cyberware rules")
+        self.assertEqual({name: row["max_bonus"] for name, row in SYNDROMES.items()},
+                         {name: row["bonus"] for name, row in cwn_cyberware.SYNDROMES.items()})
+        for name, row in SYNDROMES.items():
+            self.assertEqual(row["effect"], cwn_cyberware.SYNDROMES[name]["effect"])
+        self.assertNotIn("cwn_alienation", inspect.getsource(cwn_cyberware),
+                         "the default cyberware rules must not depend on the optional Alienation module")
 
 
 if __name__ == "__main__":

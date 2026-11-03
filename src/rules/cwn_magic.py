@@ -101,6 +101,18 @@ def can_cast(*, free_hand: bool, can_speak: bool, disturbed: bool = False) -> bo
     return bool(free_hand and can_speak and not disturbed)
 
 
+def overcast_total(*, die: int, cast_skill: int = 0, constitution_mod: int = 0,
+                   day_commitment: bool = False) -> int:
+    """The overcasting total: 1d20 + Cast skill + Con modifier, -2 for a day-long commitment (6.1.4).
+
+    The single implementation of that arithmetic. ``EffortPool.overcast_roll`` and the spell corpus in
+    ``cwn_spells`` both call it, so the two cannot drift into two answers for one roll.
+    """
+    if not 1 <= die <= 20:
+        raise MagicError("overcasting is resolved on a d20")
+    return die + cast_skill + constitution_mod - (2 if day_commitment else 0)
+
+
 def overcast_result(total: int) -> dict:
     """Map 1d20 + Cast + Con (−2 for a day-commitment spell) onto the overcasting table."""
     for low, high, consequence in OVERCAST_TABLE:
@@ -161,9 +173,8 @@ class EffortPool:
     def overcast_roll(self, die: int, *, cast_skill: int = 0, constitution_mod: int = 0,
                       day_commitment: bool = False) -> dict:
         """1d20 + Cast + Con mod, −2 for a day-commitment spell (6.1.4)."""
-        if not 1 <= die <= 20:
-            raise MagicError("overcasting is resolved on a d20")
-        total = die + cast_skill + constitution_mod - (2 if day_commitment else 0)
+        total = overcast_total(die=die, cast_skill=cast_skill, constitution_mod=constitution_mod,
+                              day_commitment=day_commitment)
         result = overcast_result(total)
         result.update({"die": die, "total": total})
         return result
