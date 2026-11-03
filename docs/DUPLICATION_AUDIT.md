@@ -89,6 +89,11 @@ design answer, not a merge:
   same seven DCs, one with names and one with Fudge steps. Complementary, and worth a cross-reference rather
   than a merge.
 
+One reported pair was a false positive of a third kind: `cwn_gear_mods.drone_mods` and
+`cwn_vehicles.mods` share their *field names* (`skills`, `cost_percent`, `components`, `effects`) but not a
+single row. Shared schema, different rules — the detector compares keys, and two lists of the same shape
+always will.
+
 A detector that reports ten things and gets four merged is working as intended: it is a question generator,
 and the answer to "these two dicts share keys" is sometimes "they are supposed to".
 >>>>>>> Stashed changes
