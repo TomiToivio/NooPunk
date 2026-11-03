@@ -66,3 +66,20 @@ collapsed. Turning AWN off temporarily would have hidden effects without erasing
 **Python mirror:** `RegionState.active_overlays(awn_enabled=False)` returns `()`;
 `RegionLedger.world_at(date, awn_enabled=False)["overlays"]` returns `{}` while
 `to_dict()` remains unchanged. Test: `tests/test_awn_region.py::OptionalAWNActivation1109Tests`.
+
+
+### Evidence integrity at the table (#1109)
+
+Dates on the region and event sheets must be real calendar dates written as
+`YYYY-MM-DD` (for example, `2045-04-02`, not `2045-02-30`). Only change the
+seven listed axes: physical infrastructure, public safety, supplies,
+communications, governance, anomaly and ontological shock. A campaign date,
+region ID or source attribution is **not** an axis. Check the new axis value and
+recovery step before writing either the transition event or the new state. If a
+transition is invalid, cross out the proposed change; do not leave an orphan
+incident in the region history. This protects contested evidence and an aid
+convoy's recovery without inventing AWN rule numbers.
+
+The Python equivalent validates first and appends the event plus state only
+after both are valid. Regression: `tests/test_awn_region.py::RegionLedgerIntegrity1109Tests`.
+This is a NoöPunk ledger-integrity rule, **not** AWN crisis-turn source parity.
