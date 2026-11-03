@@ -50,12 +50,24 @@ class RegisterIntegrityTests(unittest.TestCase):
         self.assertEqual(present, set(CHAPTERS),
                          "the register must cover exactly the chapters #1105 lists, no more and no fewer")
 
-    def test_no_row_claims_verified_fidelity(self):
-        # This is the whole point. A verified row would mean someone compared the code to the printed book;
-        # nobody can, because the text may not be reproduced and the copy is not in the repository.
+    def test_verified_fidelity_is_only_claimed_against_a_readable_copy(self):
+        """A `verified` row means someone compared the code to the printed pages.
+
+        The earlier version of this test asserted that *no* row could be verified, because the book was not
+        in the repository. That premise died when the author supplied the copy and it was read and indexed:
+        a blanket ban would now be an excuse rather than a safeguard. What must hold instead is that every
+        `verified` row has something to have been verified against, and real evidence behind it.
+        """
+        readable = {source.get("rights") for source in self.register["sources"].values()
+                    if source.get("readable")}
+        self.assertTrue(readable, "no source in the register is marked readable")
         for row in self.register["rows"]:
+            if row["fidelity"] != "verified":
+                continue
             with self.subTest(row=row["id"]):
-                self.assertNotEqual(row["fidelity"], "verified")
+                self.assertIn(row["rights"], readable)
+                self.assertTrue(row["python"], "a verified row must name the code that was checked")
+                self.assertTrue(row["tests"], "a verified row must name the test that checks it")
 
     def test_rows_that_claim_code_state_a_fidelity(self):
         for row in self.register["rows"]:
@@ -100,11 +112,18 @@ class TrackerSpecificClaimsTests(unittest.TestCase):
         self.assertEqual(row["fidelity"], "unverified")
         self.assertIn("technique", row["notes"].lower())
 
-    def test_the_faction_asset_catalogue_is_recorded_as_the_gap_it_is(self):
-        # #1105 warns: "Existing turn code is not proof of a finished asset catalogue."
+    def test_the_faction_asset_catalogue_exists_and_says_what_it_omits(self):
+        """#1105 warned "existing turn code is not proof of a finished asset catalogue" — so here is one.
+
+        The catalogue is now implemented and verified against the printed tables. The row must still not
+        read as "factions are finished": the ~60 individual special abilities are rules text that changes
+        what an action may be, and the note has to say so.
+        """
         row = self.by_id["F2"]
-        self.assertEqual(row["status"], "missing")
-        self.assertEqual(row["fidelity"], "unverified")
+        self.assertEqual(row["status"], "implemented")
+        self.assertEqual(row["fidelity"], "verified")
+        self.assertIn("src/rules/swn_faction_assets.py", row["python"])
+        self.assertIn("special abilit", row["notes"].lower())
 
     def test_sws_default_history_is_explicitly_not_applicable(self):
         row = self.by_id["H1"]

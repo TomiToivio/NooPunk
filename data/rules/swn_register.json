@@ -458,13 +458,17 @@
    "printed_page": 211,
    "priority": "high",
    "rights": "mechanics_only",
-   "status": "missing",
-   "fidelity": "unverified",
-   "python": [],
-   "tests": [],
-   "tabletop": "",
+   "status": "implemented",
+   "fidelity": "verified",
+   "python": [
+    "src/rules/swn_faction_assets.py"
+   ],
+   "tests": [
+    "tests/test_swn_faction_assets_1105.py"
+   ],
+   "tabletop": "docs/tabletop/SWN_FACTION_ASSETS.md",
    "owner": "#1105",
-   "notes": "The turn, action economy and FacCreds exist; the asset catalogues and combat tables are explicitly reference-only in the module. Unverified against pp.218-222 rather than blocked: the copy is readable and the pages are indexed."
+   "notes": "All 68 printed assets (24 Cunning, 22 Force, 22 Wealth) are in data/rules/swn_faction_assets.json, extracted from pp.219/221/223 by tools/swn_faction_assets.py and spot-checked against the printed rows in the tests. The ~60 individual special abilities are NOT implemented: each is rules text that changes what an action may be, and the sheet tells the GM to read the entry."
   },
   {
    "id": "F3",
@@ -475,16 +479,17 @@
    "priority": "high",
    "rights": "mechanics_only",
    "status": "partial",
-   "fidelity": "unverified",
+   "fidelity": "verified",
    "python": [
+    "src/rules/swn_faction_assets.py",
     "src/rules/swn_faction_turn.py"
    ],
    "tests": [
-    "tests/test_swn_faction_engine.py"
+    "tests/test_swn_faction_assets_1105.py"
    ],
-   "tabletop": "",
+   "tabletop": "docs/tabletop/SWN_FACTION_ASSETS.md",
    "owner": "#1043",
-   "notes": "Resolution exists for the modelled subset; the published combat tables do not."
+   "notes": "Attack exchange verified against p.214: 1d10 + the attacking rating vs 1d10 + the defended attribute, higher wins, a tie lands both, the counterattack uses the defender's own die. Movement, stealthed targeting and the Expand Influence contest are still unmodelled."
   },
   {
    "id": "F4",

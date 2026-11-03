@@ -9,13 +9,13 @@
 | Measure | Count |
 |---|---:|
 | Registered subsystems | **34** |
-| implemented | **5** |
+| implemented | **6** |
 | partial | **10** |
 | verified_reuse | **3** |
-| missing | **15** |
+| missing | **14** |
 | blocked | **0** |
 | not_applicable | **1** |
-| **rows with code and a test** | **8** |
+| **rows with code and a test** | **9** |
 
 ### How far the code has been checked against the book
 
@@ -23,8 +23,8 @@ A row can be implemented and still unverified. These two columns are separate cl
 
 | Fidelity | Rows |
 |---|---:|
-| verified | **0** |
-| unverified | **30** |
+| verified | **2** |
+| unverified | **28** |
 | blocked | **0** |
 | not_applicable | **4** |
 
@@ -67,8 +67,8 @@ A row can be implemented and still unverified. These two columns are separate cl
 | X1 | Alien stat blocks and species creation | 193 | **missing** | unverified | revised | — | — |  | #1105 |
 | X2 | Species social lenses and NPC packages | 193 | **missing** | unverified | revised | — | — |  | #1105 |
 | F1 | Force, Cunning, Wealth and FacCreds | 211 | **implemented** | unverified | revised | `swn_faction_turn.py` | `test_swn_faction_engine.py` | Faction statistics and income for a strategic turn. | #1043 |
-| F2 | Asset catalogue | 211 | **missing** | unverified | revised | — | — |  | #1105 |
-| F3 | Asset movement, attacks, defence and damage | 211 | **partial** | unverified | revised | `swn_faction_turn.py` | `test_swn_faction_engine.py` |  | #1043 |
+| F2 | Asset catalogue | 211 | **implemented** | verified | revised | `swn_faction_assets.py` | `test_swn_faction_assets_1105.py` | docs/tabletop/SWN_FACTION_ASSETS.md | #1105 |
+| F3 | Asset movement, attacks, defence and damage | 211 | **partial** | verified | revised | `swn_faction_assets.py`<br>`swn_faction_turn.py` | `test_swn_faction_assets_1105.py` | docs/tabletop/SWN_FACTION_ASSETS.md | #1043 |
 | F4 | Deterministic multi-faction turn engine | 211 | **implemented** | unverified | revised | `swn_faction_engine.py` | `test_swn_faction_engine.py` | Seeded faction turns for the strategic layer. | #1043 |
 | F5 | Faction operations | 211 | **implemented** | unverified | revised | `swn_faction_operations.py` | `test_swn_faction_operations.py` |  | #1043 |
 | F6 | Tabletop faction sheet and ledger | 211 | **missing** | unverified | revised | — | — |  | #1105 |
@@ -83,11 +83,12 @@ A row can be implemented and still unverified. These two columns are separate cl
 
 ## What is actually done, and what only looks done
 
-**implemented** (5)
+**implemented** (6)
 
 - **P1 Effort accounting, commitment durations and recovery** — The module reproduces resource arithmetic only - no power names, tables or prose - because SWN has no verified SRD licence. That is a deliberate boundary, not an oversight.
 - **P2 Torching and its consequences**
 - **F1 Force, Cunning, Wealth and FacCreds** — The original SWN-inspired turn exists. Its own docstring warns that asset catalogues and combat tables remain reference-only.
+- **F2 Asset catalogue** — All 68 printed assets (24 Cunning, 22 Force, 22 Wealth) are in data/rules/swn_faction_assets.json, extracted from pp.219/221/223 by tools/swn_faction_assets.py and spot-checked against the printed rows in the tests. The ~60 individual special abilities are NOT implemented: each is rules text that changes what an action may be, and the sheet tells the GM to read the entry.
 - **F4 Deterministic multi-faction turn engine**
 - **F5 Faction operations** — Deterministic operations layered on the turn; original NoöPunk implementation.
 
@@ -106,7 +107,7 @@ A row can be implemented and still unverified. These two columns are separate cl
 - **SH1 Hull, fittings and vessel construction** — The module describes itself as an SWN-inspired adapter, not a complete ship catalogue. It must not be presented as published hull or fitting data.
 - **SH2 Space combat, crew actions, damage and repair** — Attack resolution exists; full crew action economy and repair procedures do not.
 - **SC1 Routes and fuel budgets** — The module handles original route and fuel budgets and explicitly does not reproduce proprietary spike-drive rules. Its test lives in test_swn_space_factions.py, not under its own name — which is exactly the sort of thing a filename-based coverage claim gets wrong.
-- **F3 Asset movement, attacks, defence and damage** — Resolution exists for the modelled subset; the published combat tables do not.
+- **F3 Asset movement, attacks, defence and damage** — Attack exchange verified against p.214: 1d10 + the attacking rating vs 1d10 + the defended attribute, higher wins, a tie lands both, the counterattack uses the defender's own die. Movement, stealthed targeting and the Expand Influence contest are still unmodelled.
 - **T1 Identity, shells and imprinting** — Self-described as SWN-inspired, not verified faithful. Cortical stacks and resleeving economics are a NoöPunk setting layer and must not be presented as published SWN rules.
 - **AI1 Agency, hosts and containment** — Self-described as SWN-inspired. The tracker warns against rewriting core AI policy or reading sentience from rule labels.
 

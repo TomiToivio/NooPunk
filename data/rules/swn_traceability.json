@@ -979,7 +979,7 @@
     "tests/test_swn_faction_engine.py"
    ],
    "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
-   "note": "Turn structure, FacCreds and action economy exist. The module states the asset catalogues and combat tables are reference-only, so the printed asset stats (p.212) are not verified."
+   "note": "Turn structure, FacCreds and action economy exist, and the asset catalogue now exists too (see the three asset sections). Faction goals, XP and the remaining action types are still not implemented."
   },
   {
    "id": "faction-actions",
@@ -1008,11 +1008,27 @@
    "page": 216,
    "chapter": "Factions",
    "rights": "purchased_deluxe",
-   "status": "missing",
-   "modules": [],
-   "tests": [],
-   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
-   "note": "Asset purchase, movement and maintenance (p.216) are unimplemented beyond the modelled subset."
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/swn_faction_assets.py",
+     "procedures": [
+      "ASSETS",
+      "asset",
+      "by_category",
+      "attack_exchange",
+      "damage_roll",
+      "purchase",
+      "to_turn_asset",
+      "catalogue_size"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_swn_faction_assets_1105.py"
+   ],
+   "rulebook": "docs/tabletop/SWN_FACTION_ASSETS.md",
+   "note": "Buying is implemented (catalogue cost, one asset per turn, Base of Influence refused in favour of Expand Influence); asset movement and the Expand Influence contest are not."
   },
   {
    "id": "faction-goals",
@@ -1032,11 +1048,27 @@
    "page": 218,
    "chapter": "Factions",
    "rights": "purchased_deluxe",
-   "status": "missing",
-   "modules": [],
-   "tests": [],
-   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
-   "note": "Cunning asset catalogue (p.218) is reference-only in the engine, not modelled."
+   "status": "verified",
+   "modules": [
+    {
+     "path": "src/rules/swn_faction_assets.py",
+     "procedures": [
+      "ASSETS",
+      "asset",
+      "by_category",
+      "attack_exchange",
+      "damage_roll",
+      "purchase",
+      "to_turn_asset",
+      "catalogue_size"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_swn_faction_assets_1105.py"
+   ],
+   "rulebook": "docs/tabletop/SWN_FACTION_ASSETS.md",
+   "note": "Every printed asset of this category is in data/rules/swn_faction_assets.json with HP, cost, TL, type, attack and counter lines; purchase and the attack exchange are implemented and tested. The assets' special abilities are not automated."
   },
   {
    "id": "force-assets",
@@ -1044,11 +1076,27 @@
    "page": 220,
    "chapter": "Factions",
    "rights": "purchased_deluxe",
-   "status": "missing",
-   "modules": [],
-   "tests": [],
-   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
-   "note": "Force asset catalogue (p.220) is reference-only in the engine, not modelled."
+   "status": "verified",
+   "modules": [
+    {
+     "path": "src/rules/swn_faction_assets.py",
+     "procedures": [
+      "ASSETS",
+      "asset",
+      "by_category",
+      "attack_exchange",
+      "damage_roll",
+      "purchase",
+      "to_turn_asset",
+      "catalogue_size"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_swn_faction_assets_1105.py"
+   ],
+   "rulebook": "docs/tabletop/SWN_FACTION_ASSETS.md",
+   "note": "Every printed asset of this category is in data/rules/swn_faction_assets.json with HP, cost, TL, type, attack and counter lines; purchase and the attack exchange are implemented and tested. The assets' special abilities are not automated."
   },
   {
    "id": "wealth-assets",
@@ -1056,11 +1104,27 @@
    "page": 222,
    "chapter": "Factions",
    "rights": "purchased_deluxe",
-   "status": "missing",
-   "modules": [],
-   "tests": [],
-   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
-   "note": "Wealth asset catalogue (p.222) is reference-only in the engine, not modelled."
+   "status": "verified",
+   "modules": [
+    {
+     "path": "src/rules/swn_faction_assets.py",
+     "procedures": [
+      "ASSETS",
+      "asset",
+      "by_category",
+      "attack_exchange",
+      "damage_roll",
+      "purchase",
+      "to_turn_asset",
+      "catalogue_size"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_swn_faction_assets_1105.py"
+   ],
+   "rulebook": "docs/tabletop/SWN_FACTION_ASSETS.md",
+   "note": "Every printed asset of this category is in data/rules/swn_faction_assets.json with HP, cost, TL, type, attack and counter lines; purchase and the attack exchange are implemented and tested. The assets' special abilities are not automated."
   },
   {
    "id": "faction-tags",

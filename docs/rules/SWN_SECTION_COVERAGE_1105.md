@@ -12,8 +12,8 @@ disagree on purpose: the subsystem view asks "is this piece of the tracker done?
 running heads (`data/rules/swn_sections.json`). Every row cites a printed page that exists in that
 index; a row whose evidence fails is demoted to `unverified` rather than trusted.
 
-- verified **0** · verified reuse **3** · partial **17**
-- unverified **6** · missing **74** · not applicable **16**
+- verified **3** · verified reuse **3** · partial **18**
+- unverified **6** · missing **70** · not applicable **16**
 
 Read the statuses as answers to *"is this playable WWN rule implemented here?"*, not as a quality
 score: `missing` is the honest answer for most of the book today, and the register exists so nobody
@@ -49,6 +49,10 @@ can mistake a chapter heading for coverage.
 | sector-creation | p.130 | Sector Creation | partial | `src/rules/swn_sector.py` (Route, Ship) |
 | factions-assets-and-turns | p.212 | Factions, Assets, and Turns | partial | `src/rules/swn_faction_engine.py` (FactionEngine), `src/rules/swn_faction_turn.py` (Faction) |
 | faction-actions | p.214 | Faction Actions | partial | `src/rules/swn_faction_operations.py` (resolve_action) |
+| buying-and-using-assets | p.216 | Buying and Using Assets | partial | `src/rules/swn_faction_assets.py` (ASSETS, asset, by_category, attack_exchange, damage_roll, purchase, to_turn_asset, catalogue_size) |
+| cunning-assets | p.218 | Cunning Assets | verified | `src/rules/swn_faction_assets.py` (ASSETS, asset, by_category, attack_exchange, damage_roll, purchase, to_turn_asset, catalogue_size) |
+| force-assets | p.220 | Force Assets | verified | `src/rules/swn_faction_assets.py` (ASSETS, asset, by_category, attack_exchange, damage_roll, purchase, to_turn_asset, catalogue_size) |
+| wealth-assets | p.222 | Wealth Assets | verified | `src/rules/swn_faction_assets.py` (ASSETS, asset, by_category, attack_exchange, damage_roll, purchase, to_turn_asset, catalogue_size) |
 | transhuman-campaigns | p.248 | Transhuman Campaigns | partial | `src/rules/swn_transhuman.py` (Shell, Mind, ContinuityRegistry) |
 | shells-and-swapping-bodies | p.252 | Shells and Swapping Bodies | partial | `src/rules/swn_transhuman.py` (Shell, Imprint) |
 | true-artificial-intelligences | p.280 | True Artificial Intelligences | partial | `src/rules/swn_true_ai.py` (TrueAI, AIHost) |
@@ -105,11 +109,7 @@ can mistake a chapter heading for coverage.
 | beasts | p.200 | Beasts | missing | Xenobestiary beasts (p.200) are unimplemented. |
 | aliens | p.202 | Aliens | missing | Alien species creation and stat blocks (p.202) are unimplemented; NoöPunk species are authored separately. |
 | alien-player-characters | p.209 | Alien Player Characters | missing | Alien PC rules (p.209) are unimplemented. |
-| buying-and-using-assets | p.216 | Buying and Using Assets | missing | Asset purchase, movement and maintenance (p.216) are unimplemented beyond the modelled subset. |
 | faction-goals | p.217 | Faction Goals | missing | Faction goals and XP (p.217) are unimplemented. |
-| cunning-assets | p.218 | Cunning Assets | missing | Cunning asset catalogue (p.218) is reference-only in the engine, not modelled. |
-| force-assets | p.220 | Force Assets | missing | Force asset catalogue (p.220) is reference-only in the engine, not modelled. |
-| wealth-assets | p.222 | Wealth Assets | missing | Wealth asset catalogue (p.222) is reference-only in the engine, not modelled. |
 | faction-tags | p.224 | Faction Tags | missing | Faction tags (p.224) are unimplemented. |
 | factions-in-your-campaign | p.226 | Factions In Your Campaign | not_applicable | Guidance (p.226); no procedure. |
 | example-factions | p.227 | Example Factions | not_applicable | Worked example (p.227); not a rule. |
