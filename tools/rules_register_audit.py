@@ -192,6 +192,7 @@ def render(register: dict) -> str:
     # per row, #1105 records fidelity. Include a column only when that register carries it.
     has_edition = any("edition" in row for row in rows)
     has_risk = any("risk" in row for row in rows)
+    has_tabletop = any(row.get("tabletop") for row in rows)
     headers = ["ID", "Subsystem", "Page", "Status"]
     if faithful:
         headers.append("Fidelity")
@@ -199,7 +200,10 @@ def render(register: dict) -> str:
         headers.append("Edition")
     if has_risk:
         headers.append("Risk")
-    headers += ["Python", "Test", "Owner"]
+    headers += ["Python", "Test"]
+    if has_tabletop:
+        headers.append("Tabletop")
+    headers.append("Owner")
     lines += ["", "## The register", "", "| " + " | ".join(headers) + " |",
               "|" + "---|" * len(headers)]
     for row in rows:
@@ -213,7 +217,10 @@ def render(register: dict) -> str:
             cells.append(row.get("edition", "—"))
         if has_risk:
             cells.append(row.get("risk", "—"))
-        cells += [python, tests, row["owner"]]
+        cells += [python, tests]
+        if has_tabletop:
+            cells.append(str(row.get("tabletop", "—")).replace("|", "\\|"))
+        cells.append(row["owner"])
         lines.append("| " + " | ".join(cells) + " |")
 
     lines += ["", "## What is actually done, and what only looks done", ""]

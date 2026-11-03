@@ -30,42 +30,42 @@
 
 ## The register
 
-| ID | Subsystem | Page | Status | Edition | Risk | Python | Test | Owner |
-|---|---|---|---|---|---|---|---|---|
-| A1 | Six attributes and their modifiers | WWN SRD p. 4; tracker chapter A | **verified_reuse** | both | low | `wn_core.py` | `test_cwn_core.py` | #1006 |
-| A2 | Backgrounds, origin, training and starting equipment | WWN SRD p. 4 onward; tracker chapter A | **missing** | both | medium | — | — | #1101 |
-| A3 | Class packages: Warrior, Expert, Mage, Adventurer partial classes | WWN SRD p. 4 onward; tracker chapter A | **missing** | both | high | — | — | #1101 |
-| A4 | Foci, advancement and partial-class restrictions | WWN SRD p. 4 onward; tracker chapter A | **missing** | both | high | — | — | #1101 |
-| A5 | WWN character and NPC sheet aids | tracker chapter A | **missing** | both | low | — | — | #1101 |
-| B1 | Skill checks, saves, reactions and morale | WWN SRD p. 38; tracker chapter B | **partial** | both | medium | `wn_core.py` | `test_cwn_core.py` | #1101 |
-| B2 | Initiative, encumbrance, travel, healing, downtime and System Strain | WWN SRD p. 38; tracker chapter B | **partial** | both | medium | `cwn_initiative.py` | `test_cwn_initiative.py` | #1101 |
-| B3 | Combat action economy, Shock, armour, damage and hazards | WWN SRD p. 38; tracker chapter B | **partial** | both | high | `cwn_combat.py` | `test_cwn_combat.py` | #1101 |
-| B4 | Survival, exploration, crafting and magical-item use | WWN SRD p. 38; tracker chapter B | **missing** | both | medium | — | — | #1101 |
-| B5 | Mapping tests for reused versus supplemental rules | tracker chapter B | **missing** | both | high | — | — | #1101 |
-| C1 | High Mage class, Arts, casting, preparation and Effort | WWN SRD p. 60; tracker chapter C | **implemented** | both | low | `wwn_high_mage.py` | `test_wwn_high_mage.py` | #1044 |
-| C2 | Elementalist class procedures | WWN SRD p. 60; tracker chapter C | **missing** | both | medium | — | — | #1101 |
-| C3 | Necromancer class procedures | WWN SRD p. 60; tracker chapter C | **missing** | both | medium | — | — | #1101 |
-| C4 | Spell corpus and learning procedure | WWN SRD p. 60; tracker chapter C | **implemented** | both | low | `wwn_spells.py`<br>`wwn_spells.json` | `test_wwn_spells.py` | #1044 |
-| C5 | Spell effect resolution | WWN SRD p. 60; tracker chapter C | **partial** | both | high | `wwn_spell_effects.py`<br>`wwn_spell_effects.json` | `test_wwn_spell_effects_1085.py` | #1085 |
-| C6 | Spellbooks, research, prepared repertoire, magical duels and dispelling | WWN SRD p. 60; tracker chapter C | **missing** | both | medium | — | — | #1101 |
-| C7 | Effort pool separation between WWN Arts and SWN psychic powers | tracker chapter C | **missing** | both | high | — | — | #1101 |
-| D1 | Worldbuilding tables: places, polities, communities, terrain, history, ruins | WWN SRD pp. 94-279; tracker chapter D | **missing** | both | medium | — | — | #1101 |
-| D2 | Sandbox campaign creation, adventure seeds, dungeons, hexcrawl and encounters | WWN SRD pp. 94-279; tracker chapter D | **missing** | both | medium | — | — | #1101 |
-| D3 | Conversion of WWN outputs into anomalous sites and crisis zones | tracker chapter D | **missing** | both | medium | — | — | #1101 |
-| D4 | GM playability with dice and paper preserved | tracker chapter D | **missing** | both | low | — | — | #1101 |
-| E1 | Creature and NPC stat-block model | WWN SRD p. 280; tracker chapter E | **missing** | both | high | — | — | #1101 |
-| E2 | Creature templates, tags and generators | WWN SRD p. 280; tracker chapter E | **missing** | both | medium | — | — | #1101 |
-| E3 | Otherworldly entities reskinned as NHI and noetic constructs | tracker chapter E | **missing** | both | medium | — | — | #1101 |
-| F1 | Major Projects: renown, difficulty, opposition and completion | WWN SRD p. 322; tracker chapter F | **implemented** | both | low | `wwn_projects.py`<br>`wwn_projects.json` | `test_awn_wwn_campaign_procedures.py` | #1053 |
-| F2 | WWN faction creation, turns, stats, assets and conflicts | WWN SRD p. 322; tracker chapter F | **missing** | both | high | — | — | #1101 |
-| F3 | WWN/SWN faction engine complementarity and shared event interfaces | tracker chapter F | **missing** | both | high | — | — | #1101 |
-| F4 | Interfaces to the NoöPunk Ideology Mod | tracker chapter F | **missing** | both | high | — | — | #1042 |
-| F5 | Tabletop faction turn, ledger and project sheets | tracker chapter F | **missing** | both | low | — | — | #1101 |
-| G1 | Arts of the Gyre: options, variants, prerequisites and side effects | WWN Deluxe p. 344 (verified against the authorised copy's running head; section 'Arts of the gyre', see data/rules/wwn_sections.json) | **missing** | deluxe | high | — | — | #1101 |
-| H1 | Heroic classes, heroic PC creation and progression | WWN Deluxe p. 356 (verified against the authorised copy's running head; section 'Heroic classes', see data/rules/wwn_sections.json) | **missing** | deluxe | high | — | — | #1101 |
-| I1 | Legate eligibility, advancement, powers and limits | WWN Deluxe p. 358 (verified against the authorised copy's running head; section 'Legates', see data/rules/wwn_sections.json) | **missing** | deluxe | high | — | — | #1101 |
-| J1 | Iterum creation, traversal, dwellers and special environments | WWN Deluxe p. 370 (verified against the authorised copy's running head; section 'Iterums and their dwellers', see data/rules/wwn_sections.json) | **missing** | deluxe | high | — | — | #1101 |
-| K1 | Additional Deluxe generators and encounter tools | WWN Deluxe p. 376 (verified against the authorised copy's running head; section 'Gm tools', see data/rules/wwn_sections.json) | **missing** | deluxe | medium | — | — | #1101 |
+| ID | Subsystem | Page | Status | Edition | Risk | Python | Test | Tabletop | Owner |
+|---|---|---|---|---|---|---|---|---|---|
+| A1 | Six attributes and their modifiers | WWN SRD p. 4; tracker chapter A | **verified_reuse** | both | low | `wn_core.py` | `test_cwn_core.py` | CWN attribute band 3-18 with the same modifier table; no WWN second attribute system. | #1006 |
+| A2 | Backgrounds, origin, training and starting equipment | WWN SRD p. 4 onward; tracker chapter A | **missing** | both | medium | — | — |  | #1101 |
+| A3 | Class packages: Warrior, Expert, Mage, Adventurer partial classes | WWN SRD p. 4 onward; tracker chapter A | **missing** | both | high | — | — |  | #1101 |
+| A4 | Foci, advancement and partial-class restrictions | WWN SRD p. 4 onward; tracker chapter A | **missing** | both | high | — | — |  | #1101 |
+| A5 | WWN character and NPC sheet aids | tracker chapter A | **missing** | both | low | — | — |  | #1101 |
+| B1 | Skill checks, saves, reactions and morale | WWN SRD p. 38; tracker chapter B | **partial** | both | medium | `wn_core.py` | `test_cwn_core.py` | CWN skill check and save procedures; WWN reuses them. | #1101 |
+| B2 | Initiative, encumbrance, travel, healing, downtime and System Strain | WWN SRD p. 38; tracker chapter B | **partial** | both | medium | `cwn_initiative.py` | `test_cwn_initiative.py` | CWN group initiative; System Strain as published. | #1101 |
+| B3 | Combat action economy, Shock, armour, damage and hazards | WWN SRD p. 38; tracker chapter B | **partial** | both | high | `cwn_combat.py` | `test_cwn_combat.py` | CWN combat; WWN-specific behaviour applies only to WWN creatures and equipment. | #1101 |
+| B4 | Survival, exploration, crafting and magical-item use | WWN SRD p. 38; tracker chapter B | **missing** | both | medium | — | — |  | #1101 |
+| B5 | Mapping tests for reused versus supplemental rules | tracker chapter B | **missing** | both | high | — | — |  | #1101 |
+| C1 | High Mage class, Arts, casting, preparation and Effort | WWN SRD p. 60; tracker chapter C | **implemented** | both | low | `wwn_high_mage.py` | `test_wwn_high_mage.py` | High Mage class as published, reskinned as hermetic ritual PSI without changing numbers. | #1044 |
+| C2 | Elementalist class procedures | WWN SRD p. 60; tracker chapter C | **missing** | both | medium | — | — |  | #1101 |
+| C3 | Necromancer class procedures | WWN SRD p. 60; tracker chapter C | **missing** | both | medium | — | — |  | #1101 |
+| C4 | Spell corpus and learning procedure | WWN SRD p. 60; tracker chapter C | **implemented** | both | low | `wwn_spells.py`<br>`wwn_spells.json` | `test_wwn_spells.py` | Learning, rescribing and free spells per level, by spell level and tradition. | #1044 |
+| C5 | Spell effect resolution | WWN SRD p. 60; tracker chapter C | **partial** | both | high | `wwn_spell_effects.py`<br>`wwn_spell_effects.json` | `test_wwn_spell_effects_1085.py` | Range, duration, save, targets and damage per spell as printed. | #1085 |
+| C6 | Spellbooks, research, prepared repertoire, magical duels and dispelling | WWN SRD p. 60; tracker chapter C | **missing** | both | medium | — | — |  | #1101 |
+| C7 | Effort pool separation between WWN Arts and SWN psychic powers | tracker chapter C | **missing** | both | high | — | — |  | #1101 |
+| D1 | Worldbuilding tables: places, polities, communities, terrain, history, ruins | WWN SRD pp. 94-279; tracker chapter D | **missing** | both | medium | — | — |  | #1101 |
+| D2 | Sandbox campaign creation, adventure seeds, dungeons, hexcrawl and encounters | WWN SRD pp. 94-279; tracker chapter D | **missing** | both | medium | — | — |  | #1101 |
+| D3 | Conversion of WWN outputs into anomalous sites and crisis zones | tracker chapter D | **missing** | both | medium | — | — |  | #1101 |
+| D4 | GM playability with dice and paper preserved | tracker chapter D | **missing** | both | low | — | — |  | #1101 |
+| E1 | Creature and NPC stat-block model | WWN SRD p. 280; tracker chapter E | **missing** | both | high | — | — |  | #1101 |
+| E2 | Creature templates, tags and generators | WWN SRD p. 280; tracker chapter E | **missing** | both | medium | — | — |  | #1101 |
+| E3 | Otherworldly entities reskinned as NHI and noetic constructs | tracker chapter E | **missing** | both | medium | — | — |  | #1101 |
+| F1 | Major Projects: renown, difficulty, opposition and completion | WWN SRD p. 322; tracker chapter F | **implemented** | both | low | `wwn_projects.py`<br>`wwn_projects.json` | `test_awn_wwn_campaign_procedures.py` | Project difficulty, renown awards and completion rolls. | #1053 |
+| F2 | WWN faction creation, turns, stats, assets and conflicts | WWN SRD p. 322; tracker chapter F | **missing** | both | high | — | — |  | #1101 |
+| F3 | WWN/SWN faction engine complementarity and shared event interfaces | tracker chapter F | **missing** | both | high | — | — |  | #1101 |
+| F4 | Interfaces to the NoöPunk Ideology Mod | tracker chapter F | **missing** | both | high | — | — |  | #1042 |
+| F5 | Tabletop faction turn, ledger and project sheets | tracker chapter F | **missing** | both | low | — | — |  | #1101 |
+| G1 | Arts of the Gyre: options, variants, prerequisites and side effects | WWN Deluxe p. 344 (verified against the authorised copy's running head; section 'Arts of the gyre', see data/rules/wwn_sections.json) | **missing** | deluxe | high | — | — |  | #1101 |
+| H1 | Heroic classes, heroic PC creation and progression | WWN Deluxe p. 356 (verified against the authorised copy's running head; section 'Heroic classes', see data/rules/wwn_sections.json) | **missing** | deluxe | high | — | — |  | #1101 |
+| I1 | Legate eligibility, advancement, powers and limits | WWN Deluxe p. 358 (verified against the authorised copy's running head; section 'Legates', see data/rules/wwn_sections.json) | **missing** | deluxe | high | — | — |  | #1101 |
+| J1 | Iterum creation, traversal, dwellers and special environments | WWN Deluxe p. 370 (verified against the authorised copy's running head; section 'Iterums and their dwellers', see data/rules/wwn_sections.json) | **missing** | deluxe | high | — | — |  | #1101 |
+| K1 | Additional Deluxe generators and encounter tools | WWN Deluxe p. 376 (verified against the authorised copy's running head; section 'Gm tools', see data/rules/wwn_sections.json) | **missing** | deluxe | medium | — | — |  | #1101 |
 
 ## What is actually done, and what only looks done
 
