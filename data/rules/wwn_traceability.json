@@ -1,0 +1,1783 @@
+{
+ "format": "noopunk.rules.wwn_traceability",
+ "version": 1,
+ "issue": 1101,
+ "source": {
+  "wwn_deluxe": {
+   "title": "Worlds Without Number, Deluxe Edition",
+   "isbn": "978-1-950965-07-6",
+   "date": "2021-04-02",
+   "availability": "authorised copy supplied by the author; not redistributable, not in the repository",
+   "section_index": "data/rules/wwn_sections.json"
+  },
+  "wwn_srd": "https://wwn.quadrifons.com/ (cross-check only; the SRD omits the Deluxe sections)"
+ },
+ "statuses": {
+  "verified": "a WWN procedure implemented in src/rules with tests that pin the printed numbers",
+  "verified_reuse": "the identical procedure already exists for CWN; one resolver is shared and a test proves the WWN numbers",
+  "partial": "some of the section is implemented and the remainder is named",
+  "missing": "no implementation; the gap is recorded so it cannot be mistaken for coverage",
+  "unverified": "an equivalent CWN procedure exists but equivalence to the WWN numbers has not been proven",
+  "not_applicable": "setting text, an example, or a vocabulary the CWN-first design does not reimplement"
+ },
+ "rows": [
+  {
+   "id": "attributes",
+   "title": "Attributes",
+   "page": 8,
+   "chapter": "Character Creation",
+   "rights": "purchased-deluxe",
+   "status": "verified_reuse",
+   "modules": [
+    {
+     "path": "src/rules/wn_core.py",
+     "procedures": [
+      "attribute_modifier",
+      "ATTRIBUTE_MIN",
+      "ATTRIBUTE_MAX"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_wwn_shared_chassis.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Identical table to WWN p.8 (3 → -2, 4-7 → -1, 8-13 → 0, 14-17 → +1, 18 → +2). CWN's resolver is used unchanged; a test pins the WWN bands against it."
+  },
+  {
+   "id": "skills",
+   "title": "Skills",
+   "page": 9,
+   "chapter": "Character Creation",
+   "rights": "purchased-deluxe",
+   "status": "verified_reuse",
+   "modules": [
+    {
+     "path": "src/rules/wn_core.py",
+     "procedures": [
+      "skill_check",
+      "Check"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_wwn_shared_chassis.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "2d6 + skill level + attribute modifier, -1 when untrained, success on >= difficulty (WWN pp.9, 41). One resolver, shared with CWN."
+  },
+  {
+   "id": "skill-checks",
+   "title": "Skill checks",
+   "page": 41,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased-deluxe",
+   "status": "verified_reuse",
+   "modules": [
+    {
+     "path": "src/rules/wn_core.py",
+     "procedures": [
+      "skill_check",
+      "Check"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_wwn_shared_chassis.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Same procedure as the Skills section; the WWN chapter restates it. Verified against the CWN resolver, not reimplemented."
+  },
+  {
+   "id": "backgrounds",
+   "title": "Backgrounds",
+   "page": 11,
+   "chapter": "Character Creation",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "WWN backgrounds (pp.11-17) generate skill picks and Growth rolls. No code; CWN backgrounds are a different table and do not substitute."
+  },
+  {
+   "id": "choosing-a-class",
+   "title": "Choosing a class",
+   "page": 18,
+   "chapter": "Character Creation",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Warrior / Expert / Mage / Adventurer packages (pp.18-21) have no implementation. CWN's class list must not be overwritten to host them."
+  },
+  {
+   "id": "foci",
+   "title": "Foci",
+   "page": 22,
+   "chapter": "Character Creation",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "WWN Foci (p.22) are a character-option subsystem with no CWN equivalent; nothing is implemented."
+  },
+  {
+   "id": "final-touches",
+   "title": "Final touches",
+   "page": 28,
+   "chapter": "Character Creation",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Hit points by class die (p.28), free skill and starting languages. Depends on classes; not implemented."
+  },
+  {
+   "id": "equipment-packages",
+   "title": "Equipment packages",
+   "page": 29,
+   "chapter": "Character Creation",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "WWN starting packages (p.29) are content; no catalogue in data/."
+  },
+  {
+   "id": "encumbrance",
+   "title": "Encumbrance",
+   "page": 32,
+   "chapter": "Character Creation",
+   "rights": "purchased-deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "CWN implements encumbrance (src/rules/cwn_encumbrance.py); WWN's readyload/Stow values on p.32 have not been compared, so equivalence is unproven."
+  },
+  {
+   "id": "character-advancement",
+   "title": "Character advancement",
+   "page": 54,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased-deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "CWN advancement exists; WWN's XP table and partial-class progression (p.54) are not verified against it."
+  },
+  {
+   "id": "time-and-saving-throws",
+   "title": "Time and Saving Throws",
+   "page": 40,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased-deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Scenes/turns are shared vocabulary, but WWN's saving throws (p.40) are not proven identical to cwn_core.save_target, which is CWN SRD 2.2.0 with a 16 - level - attribute formula. Needs a comparison before either is claimed."
+  },
+  {
+   "id": "combat",
+   "title": "Combat",
+   "page": 42,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased-deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "CWN combat (src/rules/cwn_combat.py) is the resolver; WWN's Shock and combat tables (pp.42-47) have not been checked against it."
+  },
+  {
+   "id": "common-combat-actions",
+   "title": "Common combat actions",
+   "page": 44,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased-deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "WWN's action list (p.44) overlaps CWN's; neither equality nor divergence is recorded."
+  },
+  {
+   "id": "injury-healing-and-system-strain",
+   "title": "Injury, healing, and system strain",
+   "page": 48,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased-deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "System Strain exists in CWN (cwn_core.strain_maximum, Strain). WWN's healing and strain-recovery text (p.48) has not been compared."
+  },
+  {
+   "id": "falling-and-travel",
+   "title": "Falling and Travel",
+   "page": 49,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Falling damage and travel rates (p.49) unimplemented."
+  },
+  {
+   "id": "wilderness-exploration",
+   "title": "Wilderness exploration",
+   "page": 50,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Overland exploration procedure (p.50) unimplemented."
+  },
+  {
+   "id": "site-exploration",
+   "title": "Site exploration",
+   "page": 52,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Site/dungeon exploration procedure (p.52) unimplemented."
+  },
+  {
+   "id": "customizing-equipment",
+   "title": "Customizing equipment",
+   "page": 56,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Gear customisation (p.56) unimplemented."
+  },
+  {
+   "id": "building-and-crafting-gear",
+   "title": "Building and crafting gear",
+   "page": 58,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Crafting costs and time (p.58) unimplemented."
+  },
+  {
+   "id": "high-mages",
+   "title": "High mages",
+   "page": 66,
+   "chapter": "Magic and the Arcane Traditions",
+   "rights": "purchased-deluxe",
+   "status": "verified",
+   "modules": [
+    {
+     "path": "src/rules/wwn_high_mage.py",
+     "procedures": [
+      "HighMage",
+      "effort_max",
+      "Art",
+      "Spell",
+      "Duration"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_wwn_high_mage.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Full class procedure: Effort pool, preparation and recovery, Arts. Existing implementation audited, not rewritten (#1044)."
+  },
+  {
+   "id": "high-magic-spell-list",
+   "title": "High magic spell list",
+   "page": 64,
+   "chapter": "Magic and the Arcane Traditions",
+   "rights": "purchased-deluxe",
+   "status": "verified",
+   "modules": [
+    {
+     "path": "src/rules/wwn_spells.py",
+     "procedures": [
+      "load_catalogue",
+      "spells_of_level",
+      "counts_by_level",
+      "can_learn",
+      "learning_days"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_wwn_spells.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "83 spell identities in data/rules/wwn_spells.json (52 High Magic, 15 Elementalist, 16 Necromancer) with the learning procedure."
+  },
+  {
+   "id": "spells-of-the-high-mages",
+   "title": "Spells of the high mages",
+   "page": 68,
+   "chapter": "Magic and the Arcane Traditions",
+   "rights": "purchased-deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/wwn_spell_effects.py",
+     "procedures": [
+      "resolve",
+      "effect",
+      "transcribed",
+      "untranscribed"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_wwn_spell_effects_1085.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "13 of 83 effect rows resolve (High Magic level 1, PR #1095). The remaining 70 are #1085's increments; untranscribed() reports them rather than faking them."
+  },
+  {
+   "id": "elementalists",
+   "title": "Elementalists",
+   "page": 76,
+   "chapter": "Magic and the Arcane Traditions",
+   "rights": "purchased-deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/wwn_spells.py",
+     "procedures": [
+      "spells_of_level",
+      "find"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_wwn_spells.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The 15 Elementalist spell identities are catalogued and resolvable through the shared catalogue API, but the class procedure — Effort pool, Arts, preparation (p.76) — is not implemented."
+  },
+  {
+   "id": "necromancers",
+   "title": "Necromancers",
+   "page": 82,
+   "chapter": "Magic and the Arcane Traditions",
+   "rights": "purchased-deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/wwn_spells.py",
+     "procedures": [
+      "spells_of_level",
+      "find"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_wwn_spells.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Same shape as the Elementalist: the 16 Necromancer spell identities are catalogued, the class procedure (p.82) is missing."
+  },
+  {
+   "id": "healers",
+   "title": "Healers",
+   "page": 80,
+   "chapter": "Magic and the Arcane Traditions",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The Healer tradition (p.80) has neither a class procedure nor its Arts."
+  },
+  {
+   "id": "vowed",
+   "title": "Vowed",
+   "page": 86,
+   "chapter": "Magic and the Arcane Traditions",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The Vowed (p.86) has neither a class procedure nor its Arts."
+  },
+  {
+   "id": "developing-new-spells",
+   "title": "Developing new spells",
+   "page": 88,
+   "chapter": "Magic and the Arcane Traditions",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Spell research (p.88): the research cost and time procedure is not implemented."
+  },
+  {
+   "id": "building-magical-workings",
+   "title": "Building magical workings",
+   "page": 90,
+   "chapter": "Magic and the Arcane Traditions",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Magical workings (p.90): the cost/time procedure for permanent enchantments is not implemented."
+  },
+  {
+   "id": "creating-magic-items",
+   "title": "Creating magic items",
+   "page": 92,
+   "chapter": "Magic and the Arcane Traditions",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Magic item creation (p.92): the creation procedure and its cost tables are not implemented."
+  },
+  {
+   "id": "planning-your-work",
+   "title": "Planning your work",
+   "page": 116,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Campaign-planning guidance (p.116); prose, not a procedure."
+  },
+  {
+   "id": "backdrop",
+   "title": "Backdrop",
+   "page": 117,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Setting/generator guidance (p.117)."
+  },
+  {
+   "id": "geography",
+   "title": "Geography",
+   "page": 120,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Nation/geography generators (p.120) unimplemented."
+  },
+  {
+   "id": "nation",
+   "title": "Nation",
+   "page": 124,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Nation generator (p.124) unimplemented."
+  },
+  {
+   "id": "society",
+   "title": "Society",
+   "page": 128,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Society generator (p.128) unimplemented."
+  },
+  {
+   "id": "government",
+   "title": "Government",
+   "page": 132,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Government generator (p.132) unimplemented."
+  },
+  {
+   "id": "history",
+   "title": "History",
+   "page": 136,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "History generator (p.136) unimplemented."
+  },
+  {
+   "id": "religion",
+   "title": "Religion",
+   "page": 140,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Religion generator (p.140) unimplemented."
+  },
+  {
+   "id": "tags",
+   "title": "Tags",
+   "page": 147,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The tag systems (community/court/ruin/wilderness, pp.147-219) are a generator family; none implemented. NoöPunk's own tag vocabulary must not be conflated with these."
+  },
+  {
+   "id": "community-tags",
+   "title": "Community tags",
+   "page": 148,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Community tag tables (p.148) unimplemented."
+  },
+  {
+   "id": "court-tags",
+   "title": "Court tags",
+   "page": 166,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Court tag tables (p.166) unimplemented."
+  },
+  {
+   "id": "ruin-tags",
+   "title": "Ruin tags",
+   "page": 186,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Ruin tag tables (p.186) unimplemented."
+  },
+  {
+   "id": "wilderness-tags",
+   "title": "Wilderness tags",
+   "page": 204,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Wilderness tag tables (p.204) unimplemented."
+  },
+  {
+   "id": "other-settings",
+   "title": "Other settings",
+   "page": 220,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Guidance for non-Gyre settings (p.220); prose."
+  },
+  {
+   "id": "gms-and-players",
+   "title": "Gms and players",
+   "page": 224,
+   "chapter": "Creating Adventures",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "GM guidance (p.224); prose."
+  },
+  {
+   "id": "gm-issues",
+   "title": "Gm issues",
+   "page": 225,
+   "chapter": "Creating Adventures",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "GM guidance (p.225); prose."
+  },
+  {
+   "id": "planning-and-running-adventures",
+   "title": "Planning and running adventures",
+   "page": 228,
+   "chapter": "Creating Adventures",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Adventure structure guidance (p.228); prose plus procedure not implemented."
+  },
+  {
+   "id": "combat-challenges",
+   "title": "Combat challenges",
+   "page": 230,
+   "chapter": "Creating Adventures",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Challenge rating guidance (p.230) unimplemented."
+  },
+  {
+   "id": "exploration-challenges",
+   "title": "Exploration challenges",
+   "page": 234,
+   "chapter": "Creating Adventures",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Exploration challenge procedure (p.234) unimplemented."
+  },
+  {
+   "id": "wandering-encounters",
+   "title": "Wandering encounters",
+   "page": 246,
+   "chapter": "Creating Adventures",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Wandering encounter procedure (p.246) unimplemented."
+  },
+  {
+   "id": "investigation-challenges",
+   "title": "Investigation challenges",
+   "page": 248,
+   "chapter": "Creating Adventures",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Investigation procedure (p.248) unimplemented; NoöPunk's GUMSHOE mod owns investigations and must not be replaced."
+  },
+  {
+   "id": "social-challenges",
+   "title": "Social challenges",
+   "page": 252,
+   "chapter": "Creating Adventures",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Social challenge procedure (p.252) unimplemented."
+  },
+  {
+   "id": "rewards",
+   "title": "Rewards",
+   "page": 254,
+   "chapter": "Creating Adventures",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Treasure/reward guidance (p.254) unimplemented."
+  },
+  {
+   "id": "placing-treasures",
+   "title": "Placing treasures",
+   "page": 256,
+   "chapter": "Creating Adventures",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Treasure placement (p.256) unimplemented."
+  },
+  {
+   "id": "land-ownership",
+   "title": "Land ownership",
+   "page": 258,
+   "chapter": "Creating Adventures",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Land and domain economics (p.258) unimplemented."
+  },
+  {
+   "id": "handling-wealth",
+   "title": "Handling wealth",
+   "page": 260,
+   "chapter": "Creating Adventures",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Wealth handling (p.260) unimplemented."
+  },
+  {
+   "id": "magic-items",
+   "title": "Magic items",
+   "page": 261,
+   "chapter": "Creating Adventures",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Magic item rules (p.261) unimplemented."
+  },
+  {
+   "id": "magical-armor-and-shields",
+   "title": "Magical armor and shields",
+   "page": 262,
+   "chapter": "Creating Adventures",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Magical armour tables (p.262) unimplemented."
+  },
+  {
+   "id": "grimoires-exemplars-and-calyxes",
+   "title": "Grimoires, exemplars, and calyxes",
+   "page": 264,
+   "chapter": "Creating Adventures",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Grimoires and calyxes (p.264) unimplemented."
+  },
+  {
+   "id": "magical-weapons",
+   "title": "Magical weapons",
+   "page": 266,
+   "chapter": "Creating Adventures",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Magical weapons (p.266) unimplemented."
+  },
+  {
+   "id": "magical-devices",
+   "title": "Magical devices",
+   "page": 272,
+   "chapter": "Creating Adventures",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Magical devices (p.272) unimplemented."
+  },
+  {
+   "id": "enchanted-elixirs",
+   "title": "Enchanted elixirs",
+   "page": 276,
+   "chapter": "Creating Adventures",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Elixirs (p.276) unimplemented."
+  },
+  {
+   "id": "creating-monsters",
+   "title": "Creating monsters",
+   "page": 282,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Monster creation (p.282) unimplemented."
+  },
+  {
+   "id": "the-blight",
+   "title": "The blight",
+   "page": 284,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Blight setting material (p.284)."
+  },
+  {
+   "id": "monster-shapes",
+   "title": "Monster shapes",
+   "page": 285,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Monster shape tables (p.285) unimplemented."
+  },
+  {
+   "id": "monstrous-drives",
+   "title": "Monstrous drives",
+   "page": 286,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Monster drive tables (p.286) unimplemented."
+  },
+  {
+   "id": "uncanny-powers",
+   "title": "Uncanny powers",
+   "page": 288,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Uncanny power tables (p.288) unimplemented."
+  },
+  {
+   "id": "contextualizing-your-monsters",
+   "title": "Contextualizing your monsters",
+   "page": 292,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Guidance (p.292) plus tables; unimplemented."
+  },
+  {
+   "id": "adjusting-monster-statistics",
+   "title": "Adjusting monster statistics",
+   "page": 294,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Monster stat adjustment (p.294) unimplemented."
+  },
+  {
+   "id": "judging-combat-challenges",
+   "title": "Judging combat challenges",
+   "page": 295,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Combat challenge judging (p.295) unimplemented."
+  },
+  {
+   "id": "reaction-rolls",
+   "title": "Reaction rolls",
+   "page": 296,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Reaction rolls (p.296): CWN has an NPC reaction procedure; WWN's 2d6 bands are not compared."
+  },
+  {
+   "id": "morale-checks",
+   "title": "Morale checks",
+   "page": 297,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Morale checks (p.297): CWN has an NPC morale value; WWN's procedure is not compared."
+  },
+  {
+   "id": "instinct-checks",
+   "title": "Instinct checks",
+   "page": 298,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Instinct checks (p.298) unimplemented."
+  },
+  {
+   "id": "animals",
+   "title": "Animals",
+   "page": 300,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Animal stat blocks (p.300) unimplemented."
+  },
+  {
+   "id": "automatons-and-eidolons",
+   "title": "Automatons and eidolons",
+   "page": 302,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Automaton stat blocks (p.302) unimplemented."
+  },
+  {
+   "id": "blighted",
+   "title": "Blighted",
+   "page": 304,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Blighted stat blocks (p.304) unimplemented."
+  },
+  {
+   "id": "demihumans",
+   "title": "Demihumans",
+   "page": 310,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Demihuman stat blocks (p.310) unimplemented."
+  },
+  {
+   "id": "dwarves",
+   "title": "Dwarves",
+   "page": 312,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Dwarf stat blocks (p.312) unimplemented."
+  },
+  {
+   "id": "elves",
+   "title": "Elves",
+   "page": 314,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Elf stat blocks (p.314) unimplemented."
+  },
+  {
+   "id": "imperators",
+   "title": "Imperators",
+   "page": 316,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Imperator stat blocks (p.316) unimplemented."
+  },
+  {
+   "id": "outsiders",
+   "title": "Outsiders",
+   "page": 318,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Outsider stat blocks (p.318) unimplemented."
+  },
+  {
+   "id": "undead",
+   "title": "Undead",
+   "page": 320,
+   "chapter": "Creatures of A Far Age",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Undead stat blocks (p.320) unimplemented."
+  },
+  {
+   "id": "major-projects",
+   "title": "Major projects",
+   "page": 336,
+   "chapter": "Factions and Major Projects",
+   "rights": "purchased-deluxe",
+   "status": "verified",
+   "modules": [
+    {
+     "path": "src/rules/wwn_projects.py",
+     "procedures": [
+      "load_projects",
+      "project_difficulty",
+      "adventure_share",
+      "allied_faction_share",
+      "ProjectState"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_awn_wwn_campaign_procedures.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "WWN Major Projects (p.336) with the project difficulty, adventure and allied-faction shares. The SWN faction turn stays a separate engine and is not merged into this."
+  },
+  {
+   "id": "the-faction-turn",
+   "title": "The faction turn",
+   "page": 324,
+   "chapter": "Factions and Major Projects",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "WWN faction turn (p.324). SWN's faction engine exists and is a different system; WWN's turn is not implemented and must not be replaced by SWN's."
+  },
+  {
+   "id": "faction-tags",
+   "title": "Faction tags",
+   "page": 325,
+   "chapter": "Factions and Major Projects",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Faction tags (p.325) unimplemented."
+  },
+  {
+   "id": "faction-turn-actions",
+   "title": "Faction turn actions",
+   "page": 326,
+   "chapter": "Factions and Major Projects",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Faction actions (p.326) unimplemented."
+  },
+  {
+   "id": "creating-factions",
+   "title": "Creating factions",
+   "page": 327,
+   "chapter": "Factions and Major Projects",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Faction creation (p.327) unimplemented."
+  },
+  {
+   "id": "cunning-assets",
+   "title": "Cunning assets",
+   "page": 328,
+   "chapter": "Factions and Major Projects",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Cunning assets (p.328) unimplemented."
+  },
+  {
+   "id": "force-assets",
+   "title": "Force assets",
+   "page": 330,
+   "chapter": "Factions and Major Projects",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Force assets (p.330) unimplemented."
+  },
+  {
+   "id": "wealth-assets",
+   "title": "Wealth assets",
+   "page": 332,
+   "chapter": "Factions and Major Projects",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Wealth assets (p.332) unimplemented."
+  },
+  {
+   "id": "background-actors",
+   "title": "Background actors",
+   "page": 334,
+   "chapter": "Factions and Major Projects",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Background actors (p.334) unimplemented."
+  },
+  {
+   "id": "construction-costs",
+   "title": "Construction costs",
+   "page": 341,
+   "chapter": "Factions and Major Projects",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Construction costs (p.341) unimplemented."
+  },
+  {
+   "id": "hirelings-and-servitors",
+   "title": "Hirelings and servitors",
+   "page": 342,
+   "chapter": "Factions and Major Projects",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Hirelings and servitors (p.342) unimplemented."
+  },
+  {
+   "id": "soldiers-and-guards",
+   "title": "Soldiers and guards",
+   "page": 343,
+   "chapter": "Factions and Major Projects",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Soldiers and guards (p.343) unimplemented."
+  },
+  {
+   "id": "arts-of-the-gyre",
+   "title": "Arts of the gyre",
+   "page": 344,
+   "chapter": "Arts of the Gyre",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Deluxe p.344 is now verified to exist in the authorised copy and its section index is recorded (data/rules/wwn_sections.json). No procedure is implemented; the six tradition Arts below are the increment."
+  },
+  {
+   "id": "adunic-invoker",
+   "title": "Adunic invoker",
+   "page": 345,
+   "chapter": "Arts of the Gyre",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Adunic Invoker tradition (p.345) unimplemented."
+  },
+  {
+   "id": "darian-skinshifter",
+   "title": "Darian skinshifter",
+   "page": 346,
+   "chapter": "Arts of the Gyre",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Darian Skinshifter (p.346) unimplemented."
+  },
+  {
+   "id": "kistian-duelist",
+   "title": "Kistian duelist",
+   "page": 348,
+   "chapter": "Arts of the Gyre",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Kistian Duelist (p.348) unimplemented."
+  },
+  {
+   "id": "llaigisan-beastmaster",
+   "title": "Llaigisan beastmaster",
+   "page": 350,
+   "chapter": "Arts of the Gyre",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Llaigisan Beastmaster (p.350) unimplemented."
+  },
+  {
+   "id": "sarulite-blood-priest",
+   "title": "Sarulite blood priest",
+   "page": 352,
+   "chapter": "Arts of the Gyre",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Sarulite Blood Priest (p.352) unimplemented."
+  },
+  {
+   "id": "vothite-thought-noble",
+   "title": "Vothite thought noble",
+   "page": 354,
+   "chapter": "Arts of the Gyre",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Vothite Thought Noble (p.354) unimplemented."
+  },
+  {
+   "id": "heroic-classes",
+   "title": "Heroic classes",
+   "page": 356,
+   "chapter": "Heroic Classes and Characters",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Heroic classes (p.356) unimplemented; they must stay optional packages and not alter CWN balance."
+  },
+  {
+   "id": "legates",
+   "title": "Legates",
+   "page": 358,
+   "chapter": "Legates",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Legates (p.358) unimplemented."
+  },
+  {
+   "id": "writs",
+   "title": "Writs",
+   "page": 360,
+   "chapter": "Legates",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Writs in general (p.360) unimplemented."
+  },
+  {
+   "id": "martial-writs",
+   "title": "Martial writs",
+   "page": 362,
+   "chapter": "Legates",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Martial writs (p.362) unimplemented."
+  },
+  {
+   "id": "skillful-writs",
+   "title": "Skillful writs",
+   "page": 364,
+   "chapter": "Legates",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Skillful writs (p.364) unimplemented."
+  },
+  {
+   "id": "sorcerous-writs",
+   "title": "Sorcerous writs",
+   "page": 366,
+   "chapter": "Legates",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Sorcerous writs (p.366) unimplemented."
+  },
+  {
+   "id": "universal-writs",
+   "title": "Universal writs",
+   "page": 368,
+   "chapter": "Legates",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Universal writs (p.368) unimplemented."
+  },
+  {
+   "id": "using-legates",
+   "title": "Using legates",
+   "page": 369,
+   "chapter": "Legates",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Using legates in play (p.369) unimplemented."
+  },
+  {
+   "id": "iterums-and-their-dwellers",
+   "title": "Iterums and their dwellers",
+   "page": 370,
+   "chapter": "Iterums and their Dwellers",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Iterums (p.370) unimplemented; NoöPunk's interdimensional layer must adapt these, not restate them."
+  },
+  {
+   "id": "iterums-and-summoned-beings",
+   "title": "Iterums and summoned beings",
+   "page": 372,
+   "chapter": "Iterums and their Dwellers",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Summoned iterum beings (p.372) unimplemented."
+  },
+  {
+   "id": "summoned-iterum-creatures",
+   "title": "Summoned iterum creatures",
+   "page": 373,
+   "chapter": "Iterums and their Dwellers",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Summoned creature rules (p.373) unimplemented."
+  },
+  {
+   "id": "iterums-as-alternate-worlds",
+   "title": "Iterums as alternate worlds",
+   "page": 374,
+   "chapter": "Iterums and their Dwellers",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Iterums as alternate worlds (p.374) unimplemented."
+  },
+  {
+   "id": "deviations-of-reality",
+   "title": "Deviations of reality",
+   "page": 375,
+   "chapter": "Iterums and their Dwellers",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Reality deviations (p.375) unimplemented."
+  },
+  {
+   "id": "gm-tools",
+   "title": "Gm tools",
+   "page": 376,
+   "chapter": "Additional GM Tools",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Deluxe GM tools (p.376) unimplemented."
+  },
+  {
+   "id": "oracular-adventure-adjustments",
+   "title": "Oracular adventure adjustments",
+   "page": 377,
+   "chapter": "Additional GM Tools",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Oracular adjustments (p.377) unimplemented."
+  },
+  {
+   "id": "architectural-style-generators",
+   "title": "Architectural style generators",
+   "page": 378,
+   "chapter": "Additional GM Tools",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Architecture generators (p.378) unimplemented."
+  },
+  {
+   "id": "fractal-adventure-seeds",
+   "title": "Fractal adventure seeds",
+   "page": 380,
+   "chapter": "Additional GM Tools",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Fractal adventure seeds (p.380) unimplemented."
+  },
+  {
+   "id": "random-npc-types",
+   "title": "Random npc types",
+   "page": 384,
+   "chapter": "Additional GM Tools",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Random NPC types (p.384) unimplemented."
+  },
+  {
+   "id": "characterization-tables",
+   "title": "Characterization tables",
+   "page": 386,
+   "chapter": "Additional GM Tools",
+   "rights": "purchased-deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Characterisation tables (p.386) unimplemented."
+  },
+  {
+   "id": "the-latter-earth",
+   "title": "The latter earth",
+   "page": 96,
+   "chapter": "The World of the Latter Earth",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Setting chapter (p.96): lore for the Latter Earth, no procedure."
+  },
+  {
+   "id": "features-of-the-gyre",
+   "title": "Features of the gyre",
+   "page": 98,
+   "chapter": "The World of the Latter Earth",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Setting material (p.98)."
+  },
+  {
+   "id": "nations-of-the-gyre",
+   "title": "Nations of the gyre",
+   "page": 100,
+   "chapter": "The World of the Latter Earth",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Setting material (p.100)."
+  },
+  {
+   "id": "people-and-languages",
+   "title": "People and languages",
+   "page": 106,
+   "chapter": "The World of the Latter Earth",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Language lists and culture (p.106)."
+  },
+  {
+   "id": "faiths",
+   "title": "Faiths",
+   "page": 108,
+   "chapter": "The World of the Latter Earth",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Setting religions (p.108)."
+  },
+  {
+   "id": "outsiders-and-the-arratus",
+   "title": "Outsiders and the arratus",
+   "page": 110,
+   "chapter": "The World of the Latter Earth",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Setting material (p.110); the Outsiders are fiction to be re-skinned, not a rule."
+  },
+  {
+   "id": "iterums",
+   "title": "Iterums",
+   "page": 112,
+   "chapter": "The World of the Latter Earth",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Setting chapter on iterums (p.112); the Deluxe procedure is p.370."
+  },
+  {
+   "id": "placing-ruins",
+   "title": "Placing ruins",
+   "page": 146,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Guidance plus tables (p.146)."
+  },
+  {
+   "id": "summary-of-character-creation",
+   "title": "Summary of character creation",
+   "page": 6,
+   "chapter": "Character Creation",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Checklist page (p.6); the procedures it lists are the rows above."
+  },
+  {
+   "id": "example-character-creation",
+   "title": "Example character creation",
+   "page": 30,
+   "chapter": "Character Creation",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Worked example (p.30); not a rule."
+  },
+  {
+   "id": "skill-list",
+   "title": "Skill list",
+   "page": 10,
+   "chapter": "Character Creation",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The skill vocabulary (p.10). CWN's skill list is authoritative for CWN characters; WWN's list applies only to WWN-native characters."
+  },
+  {
+   "id": "adventuring-gear",
+   "title": "Adventuring gear",
+   "page": 33,
+   "chapter": "Character Creation",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Gear tables (p.33); content, not procedure."
+  },
+  {
+   "id": "armor",
+   "title": "Armor",
+   "page": 35,
+   "chapter": "Character Creation",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "WWN armour table (p.35); content."
+  },
+  {
+   "id": "weapons",
+   "title": "Weapons",
+   "page": 36,
+   "chapter": "Character Creation",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "WWN weapon table (p.36); content."
+  },
+  {
+   "id": "hirelings",
+   "title": "Hirelings",
+   "page": 34,
+   "chapter": "Character Creation",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Hireling rules (p.34): CWN implements hireling wages; WWN's costs are not compared."
+  },
+  {
+   "id": "background",
+   "title": "Background",
+   "page": 12,
+   "chapter": "Character Creation",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Background entry format (p.12); part of the Backgrounds row."
+  },
+  {
+   "id": "magic",
+   "title": "Magic",
+   "page": 62,
+   "chapter": "Magic and the Arcane Traditions",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Chapter introduction (p.62); prose."
+  },
+  {
+   "id": "elementalist-new-magic",
+   "title": "Elementalist new magic",
+   "page": 78,
+   "chapter": "Magic and the Arcane Traditions",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Spell entries (p.78); the identities are catalogued, effects are #1085's increments."
+  },
+  {
+   "id": "necromancer-new-magic",
+   "title": "Necromancer new magic",
+   "page": 84,
+   "chapter": "Magic and the Arcane Traditions",
+   "rights": "purchased-deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Spell entries (p.84); same as above."
+  }
+ ]
+}

@@ -1,0 +1,1700 @@
+{
+ "format": "noopunk.rules.wwn_section_index",
+ "version": 1,
+ "issue": 1101,
+ "source": {
+  "title": "Worlds Without Number, Deluxe Edition",
+  "author": "Kevin Crawford",
+  "publisher": "Sine Nomine Publishing",
+  "isbn": "978-1-950965-07-6",
+  "date": "2021-04-02",
+  "printed_pages": 399,
+  "method": "printed running heads (verso 'NN• Title', recto 'Title •NN'), extracted with pdftotext -layout",
+  "note": "Titles and page numbers only. No book text is reproduced; the PDF itself is not in the repository and is not redistributable."
+ },
+ "chapters": [
+  {
+   "first_page": 1,
+   "title": "Tales of the Latter Earth"
+  },
+  {
+   "first_page": 4,
+   "title": "Character Creation"
+  },
+  {
+   "first_page": 38,
+   "title": "The Rules of the Game"
+  },
+  {
+   "first_page": 60,
+   "title": "Magic and the Arcane Traditions"
+  },
+  {
+   "first_page": 94,
+   "title": "The World of the Latter Earth"
+  },
+  {
+   "first_page": 114,
+   "title": "Creating Your Campaign"
+  },
+  {
+   "first_page": 222,
+   "title": "Creating Adventures"
+  },
+  {
+   "first_page": 280,
+   "title": "Creatures of A Far Age"
+  },
+  {
+   "first_page": 322,
+   "title": "Factions and Major Projects"
+  },
+  {
+   "first_page": 344,
+   "title": "Arts of the Gyre"
+  },
+  {
+   "first_page": 356,
+   "title": "Heroic Classes and Characters"
+  },
+  {
+   "first_page": 358,
+   "title": "Legates"
+  },
+  {
+   "first_page": 370,
+   "title": "Iterums and their Dwellers"
+  },
+  {
+   "first_page": 376,
+   "title": "Additional GM Tools"
+  },
+  {
+   "first_page": 394,
+   "title": "Index"
+  }
+ ],
+ "sections": [
+  {
+   "id": "summary-of-character-creation",
+   "title": "Summary of character creation",
+   "chapter": "Character Creation",
+   "first_page": 6,
+   "last_page": 7,
+   "pages": [
+    6,
+    7
+   ]
+  },
+  {
+   "id": "attributes",
+   "title": "Attributes",
+   "chapter": "Character Creation",
+   "first_page": 8,
+   "last_page": 8,
+   "pages": [
+    8
+   ]
+  },
+  {
+   "id": "skills",
+   "title": "Skills",
+   "chapter": "Character Creation",
+   "first_page": 9,
+   "last_page": 9,
+   "pages": [
+    9
+   ]
+  },
+  {
+   "id": "skill-list",
+   "title": "Skill list",
+   "chapter": "Character Creation",
+   "first_page": 10,
+   "last_page": 10,
+   "pages": [
+    10
+   ]
+  },
+  {
+   "id": "backgrounds",
+   "title": "Backgrounds",
+   "chapter": "Character Creation",
+   "first_page": 11,
+   "last_page": 11,
+   "pages": [
+    11
+   ]
+  },
+  {
+   "id": "background",
+   "title": "Background",
+   "chapter": "Character Creation",
+   "first_page": 12,
+   "last_page": 17,
+   "pages": [
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+   ]
+  },
+  {
+   "id": "choosing-a-class",
+   "title": "Choosing a class",
+   "chapter": "Character Creation",
+   "first_page": 18,
+   "last_page": 21,
+   "pages": [
+    18,
+    19,
+    20,
+    21
+   ]
+  },
+  {
+   "id": "foci",
+   "title": "Foci",
+   "chapter": "Character Creation",
+   "first_page": 22,
+   "last_page": 27,
+   "pages": [
+    22,
+    23,
+    24,
+    25,
+    26,
+    27
+   ]
+  },
+  {
+   "id": "final-touches",
+   "title": "Final touches",
+   "chapter": "Character Creation",
+   "first_page": 28,
+   "last_page": 28,
+   "pages": [
+    28
+   ]
+  },
+  {
+   "id": "equipment-packages",
+   "title": "Equipment packages",
+   "chapter": "Character Creation",
+   "first_page": 29,
+   "last_page": 29,
+   "pages": [
+    29
+   ]
+  },
+  {
+   "id": "example-character-creation",
+   "title": "Example character creation",
+   "chapter": "Character Creation",
+   "first_page": 30,
+   "last_page": 30,
+   "pages": [
+    30
+   ]
+  },
+  {
+   "id": "encumbrance",
+   "title": "Encumbrance",
+   "chapter": "Character Creation",
+   "first_page": 32,
+   "last_page": 32,
+   "pages": [
+    32
+   ]
+  },
+  {
+   "id": "adventuring-gear",
+   "title": "Adventuring gear",
+   "chapter": "Character Creation",
+   "first_page": 33,
+   "last_page": 33,
+   "pages": [
+    33
+   ]
+  },
+  {
+   "id": "hirelings",
+   "title": "Hirelings",
+   "chapter": "Character Creation",
+   "first_page": 34,
+   "last_page": 34,
+   "pages": [
+    34
+   ]
+  },
+  {
+   "id": "armor",
+   "title": "Armor",
+   "chapter": "Character Creation",
+   "first_page": 35,
+   "last_page": 35,
+   "pages": [
+    35
+   ]
+  },
+  {
+   "id": "weapons",
+   "title": "Weapons",
+   "chapter": "Character Creation",
+   "first_page": 36,
+   "last_page": 37,
+   "pages": [
+    36,
+    37
+   ]
+  },
+  {
+   "id": "time-and-saving-throws",
+   "title": "Time and Saving Throws",
+   "chapter": "The Rules of the Game",
+   "first_page": 40,
+   "last_page": 40,
+   "pages": [
+    40
+   ]
+  },
+  {
+   "id": "skill-checks",
+   "title": "Skill checks",
+   "chapter": "The Rules of the Game",
+   "first_page": 41,
+   "last_page": 41,
+   "pages": [
+    41
+   ]
+  },
+  {
+   "id": "combat",
+   "title": "Combat",
+   "chapter": "The Rules of the Game",
+   "first_page": 42,
+   "last_page": 43,
+   "pages": [
+    42,
+    43
+   ]
+  },
+  {
+   "id": "common-combat-actions",
+   "title": "Common combat actions",
+   "chapter": "The Rules of the Game",
+   "first_page": 44,
+   "last_page": 45,
+   "pages": [
+    44,
+    45
+   ]
+  },
+  {
+   "id": "examples-of-combat",
+   "title": "Examples of combat",
+   "chapter": "The Rules of the Game",
+   "first_page": 46,
+   "last_page": 47,
+   "pages": [
+    46,
+    47
+   ]
+  },
+  {
+   "id": "injury-healing-and-system-strain",
+   "title": "Injury, healing, and system strain",
+   "chapter": "The Rules of the Game",
+   "first_page": 48,
+   "last_page": 48,
+   "pages": [
+    48
+   ]
+  },
+  {
+   "id": "falling-and-travel",
+   "title": "Falling and Travel",
+   "chapter": "The Rules of the Game",
+   "first_page": 49,
+   "last_page": 49,
+   "pages": [
+    49
+   ]
+  },
+  {
+   "id": "wilderness-exploration",
+   "title": "Wilderness exploration",
+   "chapter": "The Rules of the Game",
+   "first_page": 50,
+   "last_page": 51,
+   "pages": [
+    50,
+    51
+   ]
+  },
+  {
+   "id": "site-exploration",
+   "title": "Site exploration",
+   "chapter": "The Rules of the Game",
+   "first_page": 52,
+   "last_page": 53,
+   "pages": [
+    52,
+    53
+   ]
+  },
+  {
+   "id": "character-advancement",
+   "title": "Character advancement",
+   "chapter": "The Rules of the Game",
+   "first_page": 54,
+   "last_page": 55,
+   "pages": [
+    54,
+    55
+   ]
+  },
+  {
+   "id": "customizing-equipment",
+   "title": "Customizing equipment",
+   "chapter": "The Rules of the Game",
+   "first_page": 56,
+   "last_page": 57,
+   "pages": [
+    56,
+    57
+   ]
+  },
+  {
+   "id": "building-and-crafting-gear",
+   "title": "Building and crafting gear",
+   "chapter": "The Rules of the Game",
+   "first_page": 58,
+   "last_page": 58,
+   "pages": [
+    58
+   ]
+  },
+  {
+   "id": "magic",
+   "title": "Magic",
+   "chapter": "Magic and the Arcane Traditions",
+   "first_page": 62,
+   "last_page": 63,
+   "pages": [
+    62,
+    63
+   ]
+  },
+  {
+   "id": "high-magic-spell-list",
+   "title": "High magic spell list",
+   "chapter": "Magic and the Arcane Traditions",
+   "first_page": 64,
+   "last_page": 65,
+   "pages": [
+    64,
+    65
+   ]
+  },
+  {
+   "id": "high-mages",
+   "title": "High mages",
+   "chapter": "Magic and the Arcane Traditions",
+   "first_page": 66,
+   "last_page": 67,
+   "pages": [
+    66,
+    67
+   ]
+  },
+  {
+   "id": "spells-of-the-high-mages",
+   "title": "Spells of the high mages",
+   "chapter": "Magic and the Arcane Traditions",
+   "first_page": 68,
+   "last_page": 75,
+   "pages": [
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75
+   ]
+  },
+  {
+   "id": "elementalists",
+   "title": "Elementalists",
+   "chapter": "Magic and the Arcane Traditions",
+   "first_page": 76,
+   "last_page": 77,
+   "pages": [
+    76,
+    77
+   ]
+  },
+  {
+   "id": "elementalist-new-magic",
+   "title": "Elementalist new magic",
+   "chapter": "Magic and the Arcane Traditions",
+   "first_page": 78,
+   "last_page": 79,
+   "pages": [
+    78,
+    79
+   ]
+  },
+  {
+   "id": "healers",
+   "title": "Healers",
+   "chapter": "Magic and the Arcane Traditions",
+   "first_page": 80,
+   "last_page": 81,
+   "pages": [
+    80,
+    81
+   ]
+  },
+  {
+   "id": "necromancers",
+   "title": "Necromancers",
+   "chapter": "Magic and the Arcane Traditions",
+   "first_page": 82,
+   "last_page": 83,
+   "pages": [
+    82,
+    83
+   ]
+  },
+  {
+   "id": "necromancer-new-magic",
+   "title": "Necromancer new magic",
+   "chapter": "Magic and the Arcane Traditions",
+   "first_page": 84,
+   "last_page": 85,
+   "pages": [
+    84,
+    85
+   ]
+  },
+  {
+   "id": "vowed",
+   "title": "Vowed",
+   "chapter": "Magic and the Arcane Traditions",
+   "first_page": 86,
+   "last_page": 87,
+   "pages": [
+    86,
+    87
+   ]
+  },
+  {
+   "id": "developing-new-spells",
+   "title": "Developing new spells",
+   "chapter": "Magic and the Arcane Traditions",
+   "first_page": 88,
+   "last_page": 89,
+   "pages": [
+    88,
+    89
+   ]
+  },
+  {
+   "id": "building-magical-workings",
+   "title": "Building magical workings",
+   "chapter": "Magic and the Arcane Traditions",
+   "first_page": 90,
+   "last_page": 91,
+   "pages": [
+    90,
+    91
+   ]
+  },
+  {
+   "id": "creating-magic-items",
+   "title": "Creating magic items",
+   "chapter": "Magic and the Arcane Traditions",
+   "first_page": 92,
+   "last_page": 93,
+   "pages": [
+    92,
+    93
+   ]
+  },
+  {
+   "id": "the-latter-earth",
+   "title": "The latter earth",
+   "chapter": "The World of the Latter Earth",
+   "first_page": 96,
+   "last_page": 97,
+   "pages": [
+    96,
+    97
+   ]
+  },
+  {
+   "id": "features-of-the-gyre",
+   "title": "Features of the gyre",
+   "chapter": "The World of the Latter Earth",
+   "first_page": 98,
+   "last_page": 99,
+   "pages": [
+    98,
+    99
+   ]
+  },
+  {
+   "id": "nations-of-the-gyre",
+   "title": "Nations of the gyre",
+   "chapter": "The World of the Latter Earth",
+   "first_page": 100,
+   "last_page": 105,
+   "pages": [
+    100,
+    101,
+    102,
+    103,
+    104,
+    105
+   ]
+  },
+  {
+   "id": "people-and-languages",
+   "title": "People and languages",
+   "chapter": "The World of the Latter Earth",
+   "first_page": 106,
+   "last_page": 107,
+   "pages": [
+    106,
+    107
+   ]
+  },
+  {
+   "id": "faiths",
+   "title": "Faiths",
+   "chapter": "The World of the Latter Earth",
+   "first_page": 108,
+   "last_page": 109,
+   "pages": [
+    108,
+    109
+   ]
+  },
+  {
+   "id": "outsiders-and-the-arratus",
+   "title": "Outsiders and the arratus",
+   "chapter": "The World of the Latter Earth",
+   "first_page": 110,
+   "last_page": 111,
+   "pages": [
+    110,
+    111
+   ]
+  },
+  {
+   "id": "iterums",
+   "title": "Iterums",
+   "chapter": "The World of the Latter Earth",
+   "first_page": 112,
+   "last_page": 113,
+   "pages": [
+    112,
+    113
+   ]
+  },
+  {
+   "id": "planning-your-work",
+   "title": "Planning your work",
+   "chapter": "Creating Your Campaign",
+   "first_page": 116,
+   "last_page": 116,
+   "pages": [
+    116
+   ]
+  },
+  {
+   "id": "backdrop",
+   "title": "Backdrop",
+   "chapter": "Creating Your Campaign",
+   "first_page": 117,
+   "last_page": 119,
+   "pages": [
+    117,
+    118,
+    119
+   ]
+  },
+  {
+   "id": "geography",
+   "title": "Geography",
+   "chapter": "Creating Your Campaign",
+   "first_page": 120,
+   "last_page": 123,
+   "pages": [
+    120,
+    121,
+    122,
+    123
+   ]
+  },
+  {
+   "id": "nation",
+   "title": "Nation",
+   "chapter": "Creating Your Campaign",
+   "first_page": 124,
+   "last_page": 127,
+   "pages": [
+    124,
+    125,
+    126,
+    127
+   ]
+  },
+  {
+   "id": "society",
+   "title": "Society",
+   "chapter": "Creating Your Campaign",
+   "first_page": 128,
+   "last_page": 131,
+   "pages": [
+    128,
+    129,
+    130,
+    131
+   ]
+  },
+  {
+   "id": "government",
+   "title": "Government",
+   "chapter": "Creating Your Campaign",
+   "first_page": 132,
+   "last_page": 135,
+   "pages": [
+    132,
+    133,
+    134,
+    135
+   ]
+  },
+  {
+   "id": "history",
+   "title": "History",
+   "chapter": "Creating Your Campaign",
+   "first_page": 136,
+   "last_page": 139,
+   "pages": [
+    136,
+    137,
+    138,
+    139
+   ]
+  },
+  {
+   "id": "religion",
+   "title": "Religion",
+   "chapter": "Creating Your Campaign",
+   "first_page": 140,
+   "last_page": 145,
+   "pages": [
+    140,
+    141,
+    142,
+    143,
+    144,
+    145
+   ]
+  },
+  {
+   "id": "placing-ruins",
+   "title": "Placing ruins",
+   "chapter": "Creating Your Campaign",
+   "first_page": 146,
+   "last_page": 146,
+   "pages": [
+    146
+   ]
+  },
+  {
+   "id": "tags",
+   "title": "Tags",
+   "chapter": "Creating Your Campaign",
+   "first_page": 147,
+   "last_page": 147,
+   "pages": [
+    147
+   ]
+  },
+  {
+   "id": "community-tags",
+   "title": "Community tags",
+   "chapter": "Creating Your Campaign",
+   "first_page": 148,
+   "last_page": 165,
+   "pages": [
+    148,
+    149,
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165
+   ]
+  },
+  {
+   "id": "court-tags",
+   "title": "Court tags",
+   "chapter": "Creating Your Campaign",
+   "first_page": 166,
+   "last_page": 185,
+   "pages": [
+    166,
+    167,
+    168,
+    169,
+    170,
+    171,
+    172,
+    173,
+    174,
+    175,
+    176,
+    177,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185
+   ]
+  },
+  {
+   "id": "ruin-tags",
+   "title": "Ruin tags",
+   "chapter": "Creating Your Campaign",
+   "first_page": 186,
+   "last_page": 203,
+   "pages": [
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    198,
+    199,
+    200,
+    201,
+    202,
+    203
+   ]
+  },
+  {
+   "id": "wilderness-tags",
+   "title": "Wilderness tags",
+   "chapter": "Creating Your Campaign",
+   "first_page": 204,
+   "last_page": 219,
+   "pages": [
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219
+   ]
+  },
+  {
+   "id": "other-settings",
+   "title": "Other settings",
+   "chapter": "Creating Your Campaign",
+   "first_page": 220,
+   "last_page": 221,
+   "pages": [
+    220,
+    221
+   ]
+  },
+  {
+   "id": "gms-and-players",
+   "title": "Gms and players",
+   "chapter": "Creating Adventures",
+   "first_page": 224,
+   "last_page": 224,
+   "pages": [
+    224
+   ]
+  },
+  {
+   "id": "gm-issues",
+   "title": "Gm issues",
+   "chapter": "Creating Adventures",
+   "first_page": 225,
+   "last_page": 227,
+   "pages": [
+    225,
+    226,
+    227
+   ]
+  },
+  {
+   "id": "planning-and-running-adventures",
+   "title": "Planning and running adventures",
+   "chapter": "Creating Adventures",
+   "first_page": 228,
+   "last_page": 229,
+   "pages": [
+    228,
+    229
+   ]
+  },
+  {
+   "id": "combat-challenges",
+   "title": "Combat challenges",
+   "chapter": "Creating Adventures",
+   "first_page": 230,
+   "last_page": 233,
+   "pages": [
+    230,
+    231,
+    232,
+    233
+   ]
+  },
+  {
+   "id": "exploration-challenges",
+   "title": "Exploration challenges",
+   "chapter": "Creating Adventures",
+   "first_page": 234,
+   "last_page": 245,
+   "pages": [
+    234,
+    235,
+    236,
+    237,
+    238,
+    239,
+    240,
+    241,
+    242,
+    243,
+    244,
+    245
+   ]
+  },
+  {
+   "id": "wandering-encounters",
+   "title": "Wandering encounters",
+   "chapter": "Creating Adventures",
+   "first_page": 246,
+   "last_page": 247,
+   "pages": [
+    246,
+    247
+   ]
+  },
+  {
+   "id": "investigation-challenges",
+   "title": "Investigation challenges",
+   "chapter": "Creating Adventures",
+   "first_page": 248,
+   "last_page": 251,
+   "pages": [
+    248,
+    249,
+    250,
+    251
+   ]
+  },
+  {
+   "id": "social-challenges",
+   "title": "Social challenges",
+   "chapter": "Creating Adventures",
+   "first_page": 252,
+   "last_page": 253,
+   "pages": [
+    252,
+    253
+   ]
+  },
+  {
+   "id": "rewards",
+   "title": "Rewards",
+   "chapter": "Creating Adventures",
+   "first_page": 254,
+   "last_page": 255,
+   "pages": [
+    254,
+    255
+   ]
+  },
+  {
+   "id": "placing-treasures",
+   "title": "Placing treasures",
+   "chapter": "Creating Adventures",
+   "first_page": 256,
+   "last_page": 257,
+   "pages": [
+    256,
+    257
+   ]
+  },
+  {
+   "id": "land-ownership",
+   "title": "Land ownership",
+   "chapter": "Creating Adventures",
+   "first_page": 258,
+   "last_page": 259,
+   "pages": [
+    258,
+    259
+   ]
+  },
+  {
+   "id": "handling-wealth",
+   "title": "Handling wealth",
+   "chapter": "Creating Adventures",
+   "first_page": 260,
+   "last_page": 260,
+   "pages": [
+    260
+   ]
+  },
+  {
+   "id": "magic-items",
+   "title": "Magic items",
+   "chapter": "Creating Adventures",
+   "first_page": 261,
+   "last_page": 261,
+   "pages": [
+    261
+   ]
+  },
+  {
+   "id": "magical-armor-and-shields",
+   "title": "Magical armor and shields",
+   "chapter": "Creating Adventures",
+   "first_page": 262,
+   "last_page": 263,
+   "pages": [
+    262,
+    263
+   ]
+  },
+  {
+   "id": "grimoires-exemplars-and-calyxes",
+   "title": "Grimoires, exemplars, and calyxes",
+   "chapter": "Creating Adventures",
+   "first_page": 264,
+   "last_page": 265,
+   "pages": [
+    264,
+    265
+   ]
+  },
+  {
+   "id": "magical-weapons",
+   "title": "Magical weapons",
+   "chapter": "Creating Adventures",
+   "first_page": 266,
+   "last_page": 271,
+   "pages": [
+    266,
+    267,
+    268,
+    269,
+    270,
+    271
+   ]
+  },
+  {
+   "id": "magical-devices",
+   "title": "Magical devices",
+   "chapter": "Creating Adventures",
+   "first_page": 272,
+   "last_page": 275,
+   "pages": [
+    272,
+    273,
+    274,
+    275
+   ]
+  },
+  {
+   "id": "enchanted-elixirs",
+   "title": "Enchanted elixirs",
+   "chapter": "Creating Adventures",
+   "first_page": 276,
+   "last_page": 279,
+   "pages": [
+    276,
+    277,
+    278,
+    279
+   ]
+  },
+  {
+   "id": "creating-monsters",
+   "title": "Creating monsters",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 282,
+   "last_page": 283,
+   "pages": [
+    282,
+    283
+   ]
+  },
+  {
+   "id": "the-blight",
+   "title": "The blight",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 284,
+   "last_page": 284,
+   "pages": [
+    284
+   ]
+  },
+  {
+   "id": "monster-shapes",
+   "title": "Monster shapes",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 285,
+   "last_page": 285,
+   "pages": [
+    285
+   ]
+  },
+  {
+   "id": "monstrous-drives",
+   "title": "Monstrous drives",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 286,
+   "last_page": 287,
+   "pages": [
+    286,
+    287
+   ]
+  },
+  {
+   "id": "uncanny-powers",
+   "title": "Uncanny powers",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 288,
+   "last_page": 291,
+   "pages": [
+    288,
+    289,
+    290,
+    291
+   ]
+  },
+  {
+   "id": "contextualizing-your-monsters",
+   "title": "Contextualizing your monsters",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 292,
+   "last_page": 293,
+   "pages": [
+    292,
+    293
+   ]
+  },
+  {
+   "id": "adjusting-monster-statistics",
+   "title": "Adjusting monster statistics",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 294,
+   "last_page": 294,
+   "pages": [
+    294
+   ]
+  },
+  {
+   "id": "judging-combat-challenges",
+   "title": "Judging combat challenges",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 295,
+   "last_page": 295,
+   "pages": [
+    295
+   ]
+  },
+  {
+   "id": "reaction-rolls",
+   "title": "Reaction rolls",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 296,
+   "last_page": 296,
+   "pages": [
+    296
+   ]
+  },
+  {
+   "id": "morale-checks",
+   "title": "Morale checks",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 297,
+   "last_page": 297,
+   "pages": [
+    297
+   ]
+  },
+  {
+   "id": "instinct-checks",
+   "title": "Instinct checks",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 298,
+   "last_page": 299,
+   "pages": [
+    298,
+    299
+   ]
+  },
+  {
+   "id": "animals",
+   "title": "Animals",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 300,
+   "last_page": 301,
+   "pages": [
+    300,
+    301
+   ]
+  },
+  {
+   "id": "automatons-and-eidolons",
+   "title": "Automatons and eidolons",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 302,
+   "last_page": 303,
+   "pages": [
+    302,
+    303
+   ]
+  },
+  {
+   "id": "blighted",
+   "title": "Blighted",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 304,
+   "last_page": 309,
+   "pages": [
+    304,
+    305,
+    306,
+    307,
+    308,
+    309
+   ]
+  },
+  {
+   "id": "demihumans",
+   "title": "Demihumans",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 310,
+   "last_page": 311,
+   "pages": [
+    310,
+    311
+   ]
+  },
+  {
+   "id": "dwarves",
+   "title": "Dwarves",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 312,
+   "last_page": 313,
+   "pages": [
+    312,
+    313
+   ]
+  },
+  {
+   "id": "elves",
+   "title": "Elves",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 314,
+   "last_page": 315,
+   "pages": [
+    314,
+    315
+   ]
+  },
+  {
+   "id": "imperators",
+   "title": "Imperators",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 316,
+   "last_page": 317,
+   "pages": [
+    316,
+    317
+   ]
+  },
+  {
+   "id": "outsiders",
+   "title": "Outsiders",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 318,
+   "last_page": 319,
+   "pages": [
+    318,
+    319
+   ]
+  },
+  {
+   "id": "undead",
+   "title": "Undead",
+   "chapter": "Creatures of A Far Age",
+   "first_page": 320,
+   "last_page": 321,
+   "pages": [
+    320,
+    321
+   ]
+  },
+  {
+   "id": "the-faction-turn",
+   "title": "The faction turn",
+   "chapter": "Factions and Major Projects",
+   "first_page": 324,
+   "last_page": 324,
+   "pages": [
+    324
+   ]
+  },
+  {
+   "id": "faction-tags",
+   "title": "Faction tags",
+   "chapter": "Factions and Major Projects",
+   "first_page": 325,
+   "last_page": 325,
+   "pages": [
+    325
+   ]
+  },
+  {
+   "id": "faction-turn-actions",
+   "title": "Faction turn actions",
+   "chapter": "Factions and Major Projects",
+   "first_page": 326,
+   "last_page": 326,
+   "pages": [
+    326
+   ]
+  },
+  {
+   "id": "creating-factions",
+   "title": "Creating factions",
+   "chapter": "Factions and Major Projects",
+   "first_page": 327,
+   "last_page": 327,
+   "pages": [
+    327
+   ]
+  },
+  {
+   "id": "cunning-assets",
+   "title": "Cunning assets",
+   "chapter": "Factions and Major Projects",
+   "first_page": 328,
+   "last_page": 329,
+   "pages": [
+    328,
+    329
+   ]
+  },
+  {
+   "id": "force-assets",
+   "title": "Force assets",
+   "chapter": "Factions and Major Projects",
+   "first_page": 330,
+   "last_page": 331,
+   "pages": [
+    330,
+    331
+   ]
+  },
+  {
+   "id": "wealth-assets",
+   "title": "Wealth assets",
+   "chapter": "Factions and Major Projects",
+   "first_page": 332,
+   "last_page": 333,
+   "pages": [
+    332,
+    333
+   ]
+  },
+  {
+   "id": "background-actors",
+   "title": "Background actors",
+   "chapter": "Factions and Major Projects",
+   "first_page": 334,
+   "last_page": 335,
+   "pages": [
+    334,
+    335
+   ]
+  },
+  {
+   "id": "major-projects",
+   "title": "Major projects",
+   "chapter": "Factions and Major Projects",
+   "first_page": 336,
+   "last_page": 340,
+   "pages": [
+    336,
+    337,
+    338,
+    339,
+    340
+   ]
+  },
+  {
+   "id": "construction-costs",
+   "title": "Construction costs",
+   "chapter": "Factions and Major Projects",
+   "first_page": 341,
+   "last_page": 341,
+   "pages": [
+    341
+   ]
+  },
+  {
+   "id": "hirelings-and-servitors",
+   "title": "Hirelings and servitors",
+   "chapter": "Factions and Major Projects",
+   "first_page": 342,
+   "last_page": 342,
+   "pages": [
+    342
+   ]
+  },
+  {
+   "id": "soldiers-and-guards",
+   "title": "Soldiers and guards",
+   "chapter": "Factions and Major Projects",
+   "first_page": 343,
+   "last_page": 343,
+   "pages": [
+    343
+   ]
+  },
+  {
+   "id": "arts-of-the-gyre",
+   "title": "Arts of the gyre",
+   "chapter": "Arts of the Gyre",
+   "first_page": 344,
+   "last_page": 344,
+   "pages": [
+    344
+   ]
+  },
+  {
+   "id": "adunic-invoker",
+   "title": "Adunic invoker",
+   "chapter": "Arts of the Gyre",
+   "first_page": 345,
+   "last_page": 345,
+   "pages": [
+    345
+   ]
+  },
+  {
+   "id": "darian-skinshifter",
+   "title": "Darian skinshifter",
+   "chapter": "Arts of the Gyre",
+   "first_page": 346,
+   "last_page": 347,
+   "pages": [
+    346,
+    347
+   ]
+  },
+  {
+   "id": "kistian-duelist",
+   "title": "Kistian duelist",
+   "chapter": "Arts of the Gyre",
+   "first_page": 348,
+   "last_page": 349,
+   "pages": [
+    348,
+    349
+   ]
+  },
+  {
+   "id": "llaigisan-beastmaster",
+   "title": "Llaigisan beastmaster",
+   "chapter": "Arts of the Gyre",
+   "first_page": 350,
+   "last_page": 351,
+   "pages": [
+    350,
+    351
+   ]
+  },
+  {
+   "id": "sarulite-blood-priest",
+   "title": "Sarulite blood priest",
+   "chapter": "Arts of the Gyre",
+   "first_page": 352,
+   "last_page": 353,
+   "pages": [
+    352,
+    353
+   ]
+  },
+  {
+   "id": "vothite-thought-noble",
+   "title": "Vothite thought noble",
+   "chapter": "Arts of the Gyre",
+   "first_page": 354,
+   "last_page": 355,
+   "pages": [
+    354,
+    355
+   ]
+  },
+  {
+   "id": "heroic-classes",
+   "title": "Heroic classes",
+   "chapter": "Heroic Classes and Characters",
+   "first_page": 356,
+   "last_page": 357,
+   "pages": [
+    356,
+    357
+   ]
+  },
+  {
+   "id": "legates",
+   "title": "Legates",
+   "chapter": "Legates",
+   "first_page": 358,
+   "last_page": 359,
+   "pages": [
+    358,
+    359
+   ]
+  },
+  {
+   "id": "writs",
+   "title": "Writs",
+   "chapter": "Legates",
+   "first_page": 360,
+   "last_page": 361,
+   "pages": [
+    360,
+    361
+   ]
+  },
+  {
+   "id": "martial-writs",
+   "title": "Martial writs",
+   "chapter": "Legates",
+   "first_page": 362,
+   "last_page": 363,
+   "pages": [
+    362,
+    363
+   ]
+  },
+  {
+   "id": "skillful-writs",
+   "title": "Skillful writs",
+   "chapter": "Legates",
+   "first_page": 364,
+   "last_page": 365,
+   "pages": [
+    364,
+    365
+   ]
+  },
+  {
+   "id": "sorcerous-writs",
+   "title": "Sorcerous writs",
+   "chapter": "Legates",
+   "first_page": 366,
+   "last_page": 367,
+   "pages": [
+    366,
+    367
+   ]
+  },
+  {
+   "id": "universal-writs",
+   "title": "Universal writs",
+   "chapter": "Legates",
+   "first_page": 368,
+   "last_page": 368,
+   "pages": [
+    368
+   ]
+  },
+  {
+   "id": "using-legates",
+   "title": "Using legates",
+   "chapter": "Legates",
+   "first_page": 369,
+   "last_page": 369,
+   "pages": [
+    369
+   ]
+  },
+  {
+   "id": "iterums-and-their-dwellers",
+   "title": "Iterums and their dwellers",
+   "chapter": "Iterums and their Dwellers",
+   "first_page": 370,
+   "last_page": 371,
+   "pages": [
+    370,
+    371
+   ]
+  },
+  {
+   "id": "iterums-and-summoned-beings",
+   "title": "Iterums and summoned beings",
+   "chapter": "Iterums and their Dwellers",
+   "first_page": 372,
+   "last_page": 372,
+   "pages": [
+    372
+   ]
+  },
+  {
+   "id": "summoned-iterum-creatures",
+   "title": "Summoned iterum creatures",
+   "chapter": "Iterums and their Dwellers",
+   "first_page": 373,
+   "last_page": 373,
+   "pages": [
+    373
+   ]
+  },
+  {
+   "id": "iterums-as-alternate-worlds",
+   "title": "Iterums as alternate worlds",
+   "chapter": "Iterums and their Dwellers",
+   "first_page": 374,
+   "last_page": 374,
+   "pages": [
+    374
+   ]
+  },
+  {
+   "id": "deviations-of-reality",
+   "title": "Deviations of reality",
+   "chapter": "Iterums and their Dwellers",
+   "first_page": 375,
+   "last_page": 375,
+   "pages": [
+    375
+   ]
+  },
+  {
+   "id": "gm-tools",
+   "title": "Gm tools",
+   "chapter": "Additional GM Tools",
+   "first_page": 376,
+   "last_page": 376,
+   "pages": [
+    376
+   ]
+  },
+  {
+   "id": "oracular-adventure-adjustments",
+   "title": "Oracular adventure adjustments",
+   "chapter": "Additional GM Tools",
+   "first_page": 377,
+   "last_page": 377,
+   "pages": [
+    377
+   ]
+  },
+  {
+   "id": "architectural-style-generators",
+   "title": "Architectural style generators",
+   "chapter": "Additional GM Tools",
+   "first_page": 378,
+   "last_page": 379,
+   "pages": [
+    378,
+    379
+   ]
+  },
+  {
+   "id": "fractal-adventure-seeds",
+   "title": "Fractal adventure seeds",
+   "chapter": "Additional GM Tools",
+   "first_page": 380,
+   "last_page": 383,
+   "pages": [
+    380,
+    381,
+    382,
+    383
+   ]
+  },
+  {
+   "id": "random-npc-types",
+   "title": "Random npc types",
+   "chapter": "Additional GM Tools",
+   "first_page": 384,
+   "last_page": 385,
+   "pages": [
+    384,
+    385
+   ]
+  },
+  {
+   "id": "characterization-tables",
+   "title": "Characterization tables",
+   "chapter": "Additional GM Tools",
+   "first_page": 386,
+   "last_page": 391,
+   "pages": [
+    386,
+    387,
+    388,
+    389,
+    390,
+    391
+   ]
+  }
+ ]
+}

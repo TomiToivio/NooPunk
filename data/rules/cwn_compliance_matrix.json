@@ -529,7 +529,8 @@
         "tests/test_wn_core.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wn_saves_and_migration.py",
-        "tests/test_wwn_high_mage.py"
+        "tests/test_wwn_high_mage.py",
+        "tests/test_wwn_shared_chassis.py"
       ],
       "tested_against_book": false,
       "save_safe": false,
@@ -636,7 +637,8 @@
         "tests/test_rules_constitution_modules.py",
         "tests/test_wn_core.py",
         "tests/test_wn_core_contract.py",
-        "tests/test_wn_saves_and_migration.py"
+        "tests/test_wn_saves_and_migration.py",
+        "tests/test_wwn_shared_chassis.py"
       ],
       "tested_against_book": false,
       "save_safe": false,
@@ -713,7 +715,8 @@
         "tests/test_wn_core.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wn_saves_and_migration.py",
-        "tests/test_wwn_high_mage.py"
+        "tests/test_wwn_high_mage.py",
+        "tests/test_wwn_shared_chassis.py"
       ],
       "tested_against_book": false,
       "save_safe": false,
@@ -851,7 +854,8 @@
         "tests/test_wn_core.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wn_saves_and_migration.py",
-        "tests/test_wwn_high_mage.py"
+        "tests/test_wwn_high_mage.py",
+        "tests/test_wwn_shared_chassis.py"
       ],
       "tested_against_book": false,
       "save_safe": false,
@@ -1191,7 +1195,8 @@
         "tests/test_wn_core.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wn_saves_and_migration.py",
-        "tests/test_wwn_high_mage.py"
+        "tests/test_wwn_high_mage.py",
+        "tests/test_wwn_shared_chassis.py"
       ],
       "tested_against_book": false,
       "save_safe": false,
@@ -1354,7 +1359,8 @@
         "tests/test_wn_core.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wn_saves_and_migration.py",
-        "tests/test_wwn_high_mage.py"
+        "tests/test_wwn_high_mage.py",
+        "tests/test_wwn_shared_chassis.py"
       ],
       "tested_against_book": false,
       "save_safe": false,
@@ -1420,7 +1426,8 @@
         "tests/test_rules_constitution_modules.py",
         "tests/test_wn_core.py",
         "tests/test_wn_core_contract.py",
-        "tests/test_wn_saves_and_migration.py"
+        "tests/test_wn_saves_and_migration.py",
+        "tests/test_wwn_shared_chassis.py"
       ],
       "tested_against_book": false,
       "save_safe": false,
