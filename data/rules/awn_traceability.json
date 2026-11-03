@@ -1,0 +1,1794 @@
+{
+ "format": "noopunk.rules.awn_traceability",
+ "version": 1,
+ "issue": 1109,
+ "source": {
+  "awn_deluxe": {
+   "title": "Ashes Without Number, Deluxe Edition",
+   "availability": "authorised copy supplied by the author; read on 2026-11-03 and indexed from its own table of contents; not redistributable, not in the repository",
+   "section_index": "data/rules/awn_sections.json",
+   "rights": "no verified open-text licence; mechanics re-expressed independently, pages cited only"
+  },
+  "swn_url_note": "The URL listed in the tracker points at Stars Without Number Revised, not AWN; it is used for SWN compatibility only."
+ },
+ "statuses": {
+  "verified": "an AWN procedure implemented in src/rules with tests that pin the printed numbers",
+  "verified_reuse": "the identical procedure already exists for CWN; one resolver is shared and a test proves the AWN numbers",
+  "partial": "some of the section is implemented and the remainder is named",
+  "documented": "a tabletop procedure exists and is cited; the source asks for a procedure, not code",
+  "unverified": "an equivalent CWN procedure exists but equivalence to the AWN numbers has not been proven",
+  "missing": "no implementation; the gap is recorded so it cannot be mistaken for coverage",
+  "not_applicable": "setting text, an example, guidance, or content excluded by an explicit decision"
+ },
+ "rows": [
+  {
+   "id": "the-fires-that-consume",
+   "title": "The Fires that Consume",
+   "page": 1,
+   "chapter": "The Fires that Consume",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Opening fiction/history (p.1); setting, not a rule."
+  },
+  {
+   "id": "character-creation",
+   "title": "Character Creation",
+   "page": 4,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Chapter opening (p.4); its procedures are the rows below."
+  },
+  {
+   "id": "attributes",
+   "title": "Attributes",
+   "page": 5,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "verified_reuse",
+   "modules": [
+    {
+     "path": "src/rules/wn_core.py",
+     "procedures": [
+      "attribute_modifier"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_wwn_shared_chassis.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "AWN uses the Without Number attribute band (p.5), which wn_core already implements and a test pins against the printed table."
+  },
+  {
+   "id": "skills",
+   "title": "Skills",
+   "page": 5,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "verified_reuse",
+   "modules": [
+    {
+     "path": "src/rules/wn_core.py",
+     "procedures": [
+      "skill_check",
+      "Check"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_wwn_shared_chassis.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "2d6 + skill + attribute modifier with the -1 unskilled penalty (p.5); the shared resolver, not a second one."
+  },
+  {
+   "id": "choosing-a-background",
+   "title": "Choosing a Background",
+   "page": 7,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "AWN background tables (p.7) are not implemented; CWN backgrounds are a different table and are not a substitute."
+  },
+  {
+   "id": "edges",
+   "title": "Edges",
+   "page": 14,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "AWN Edges (p.14) are a character-option subsystem with no implementation."
+  },
+  {
+   "id": "mutations",
+   "title": "Mutations",
+   "page": 16,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Mutations (p.16) are unimplemented and are deferred as optional content by the tracker."
+  },
+  {
+   "id": "stigmas",
+   "title": "Stigmas",
+   "page": 17,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Stigmas (p.17) are unimplemented optional content."
+  },
+  {
+   "id": "negative-mutations",
+   "title": "Negative Mutations",
+   "page": 18,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Negative mutations (p.18) are unimplemented optional content."
+  },
+  {
+   "id": "positive-mutations",
+   "title": "Positive Mutations",
+   "page": 20,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Positive mutations (p.20) are unimplemented optional content."
+  },
+  {
+   "id": "foci",
+   "title": "Foci",
+   "page": 26,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "AWN Foci (p.26) are unimplemented; no CWN equivalent exists to delegate to."
+  },
+  {
+   "id": "hit-points-attack-bonus-and-saves",
+   "title": "Hit Points, Attack Bonus, and Saves",
+   "page": 32,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "CWN supplies HP, attack bonus and saves; equivalence with AWN's printed values (p.32) has not been compared, so this is unverified rather than reuse."
+  },
+  {
+   "id": "final-touches",
+   "title": "Final Touches",
+   "page": 33,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Starting choices and derived values (p.33) depend on backgrounds and Edges; nothing implemented."
+  },
+  {
+   "id": "starting-equipment",
+   "title": "Starting Equipment",
+   "page": 34,
+   "chapter": "Character Creation",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "AWN starting packages (p.34) are unimplemented and their content is not catalogued."
+  },
+  {
+   "id": "the-rules-of-the-game",
+   "title": "The Rules of the Game",
+   "page": 36,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Chapter opening (p.36); its procedures are the rows below."
+  },
+  {
+   "id": "system-quick-reference-sheet",
+   "title": "System Quick Reference Sheet",
+   "page": 37,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "A one-page summary of the chapter (p.37); no separate procedure to implement."
+  },
+  {
+   "id": "saving-throws",
+   "title": "Saving Throws",
+   "page": 38,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "CWN's save procedure exists (cwn_core.save_target); AWN's printed saves (p.38) have not been compared row by row, so equivalence is unproven."
+  },
+  {
+   "id": "scenes-rounds-and-mission-time",
+   "title": "Scenes, Rounds, and Mission Time",
+   "page": 38,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "CWN tracks scenes and rounds; AWN's mission-time clock (p.38) is a different vocabulary that has not been mapped."
+  },
+  {
+   "id": "skill-checks",
+   "title": "Skill Checks",
+   "page": 39,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "verified_reuse",
+   "modules": [
+    {
+     "path": "src/rules/wn_core.py",
+     "procedures": [
+      "skill_check"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_wwn_shared_chassis.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The skill-check procedure restated at p.39; the shared resolver covers it."
+  },
+  {
+   "id": "combat",
+   "title": "Combat",
+   "page": 40,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "CWN resolves combat; AWN's combat chapter (p.40) differs in places and none of those differences is compared or implemented."
+  },
+  {
+   "id": "the-combat-round",
+   "title": "The Combat Round",
+   "page": 41,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The round structure (p.41) is CWN's; the AWN text has not been compared."
+  },
+  {
+   "id": "actions-in-combat",
+   "title": "Actions in Combat",
+   "page": 42,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Actions (p.42) overlap CWN's; divergence is unrecorded, so nothing is claimed."
+  },
+  {
+   "id": "combat-maneuvers-and-definitions",
+   "title": "Combat Maneuvers and Definitions",
+   "page": 44,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Maneuvers (p.44) have no comparison against CWN's manoeuvre set."
+  },
+  {
+   "id": "optional-lethality-rules",
+   "title": "Optional Lethality Rules",
+   "page": 48,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "AWN's optional lethality rules (p.48) are unimplemented."
+  },
+  {
+   "id": "vehicle-combat",
+   "title": "Vehicle Combat",
+   "page": 49,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Vehicle combat (p.49) is unimplemented; CWN vehicles do not cover it."
+  },
+  {
+   "id": "mounted-combat",
+   "title": "Mounted Combat",
+   "page": 50,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Mounted combat (p.50) is unimplemented."
+  },
+  {
+   "id": "chases-and-pursuit",
+   "title": "Chases and Pursuit",
+   "page": 51,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Chases and pursuit (p.51) are unimplemented."
+  },
+  {
+   "id": "injury-healing-and-system-strain",
+   "title": "Injury, Healing, and System Strain",
+   "page": 52,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "CWN implements injury, healing and System Strain; AWN's version (p.52) is not compared, and the tracker forbids a second strain counter."
+  },
+  {
+   "id": "major-injuries",
+   "title": "Major Injuries",
+   "page": 53,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "CWN has major injuries; AWN's table (p.53) is uncompared."
+  },
+  {
+   "id": "disease",
+   "title": "Disease",
+   "page": 54,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Disease procedure (p.54) is unimplemented."
+  },
+  {
+   "id": "radiation",
+   "title": "Radiation",
+   "page": 55,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Radiation procedure (p.55) is unimplemented."
+  },
+  {
+   "id": "stress",
+   "title": "Stress",
+   "page": 56,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "verified",
+   "modules": [
+    {
+     "path": "src/rules/awn_stress_tracker.py",
+     "procedures": [
+      "new_tracker",
+      "stress",
+      "threshold",
+      "apply_event",
+      "recover",
+      "harden",
+      "next_day",
+      "is_enabled"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_awn_stress_python_1083.py"
+   ],
+   "rulebook": "docs/tabletop/AWN_STRESS_AND_SURVIVAL.md",
+   "note": "Stress, threshold, breakdown and hardening run on the one tracker over data/rules/awn_stress.json (#928 reconciled, #1088)."
+  },
+  {
+   "id": "addiction-and-recovery",
+   "title": "Addiction and Recovery",
+   "page": 58,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/awn_stress_tracker.py",
+     "procedures": [
+      "new_tracker",
+      "stress",
+      "threshold",
+      "apply_event",
+      "recover",
+      "harden",
+      "next_day",
+      "is_enabled"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_awn_stress_python_1083.py"
+   ],
+   "rulebook": "docs/tabletop/AWN_STRESS_AND_SURVIVAL.md",
+   "note": "Recovery and hardening steps exist in the tracker; AWN's addiction procedure and its printed recovery times (p.58) are not transcribed."
+  },
+  {
+   "id": "tracking",
+   "title": "Tracking",
+   "page": 59,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/awn_survival.py",
+     "procedures": [
+      "terrain",
+      "travel_hours",
+      "hexes_per_day",
+      "encounter_check",
+      "scouting_days",
+      "food_encumbrance",
+      "privation_strain",
+      "apply_privation",
+      "forage"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_awn_wwn_campaign_procedures.py"
+   ],
+   "rulebook": "docs/tabletop/AWN_STRESS_AND_SURVIVAL.md",
+   "note": "Travel/supply tracking exists for the modelled cases; the p.59 tracking procedure is not covered rule by rule."
+  },
+  {
+   "id": "overland-travel-and-scouting",
+   "title": "Overland Travel and Scouting",
+   "page": 60,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "verified",
+   "modules": [
+    {
+     "path": "src/rules/awn_survival.py",
+     "procedures": [
+      "terrain",
+      "travel_hours",
+      "hexes_per_day",
+      "encounter_check",
+      "scouting_days",
+      "food_encumbrance",
+      "privation_strain",
+      "apply_privation",
+      "forage"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_awn_wwn_campaign_procedures.py"
+   ],
+   "rulebook": "docs/tabletop/AWN_STRESS_AND_SURVIVAL.md",
+   "note": "Terrain, travel hours, hexes per day, encounter checks, scouting days and going astray (p.60) are implemented with seeded tests."
+  },
+  {
+   "id": "hunger-thirst-and-supplies",
+   "title": "Hunger, Thirst, and Supplies",
+   "page": 62,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "verified",
+   "modules": [
+    {
+     "path": "src/rules/awn_survival.py",
+     "procedures": [
+      "terrain",
+      "travel_hours",
+      "hexes_per_day",
+      "encounter_check",
+      "scouting_days",
+      "food_encumbrance",
+      "privation_strain",
+      "apply_privation",
+      "forage"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_awn_wwn_campaign_procedures.py"
+   ],
+   "rulebook": "docs/tabletop/AWN_STRESS_AND_SURVIVAL.md",
+   "note": "Food/water encumbrance, privation strain and starvation death saves (p.62) are implemented; foraging takes a caller-supplied difficulty rather than inventing a table."
+  },
+  {
+   "id": "character-advancement",
+   "title": "Character Advancement",
+   "page": 64,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "CWN advancement is authoritative; AWN's table (p.64) is not compared."
+  },
+  {
+   "id": "common-gm-complications",
+   "title": "Common GM Complications",
+   "page": 66,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "GM complication tables (p.66) are unimplemented."
+  },
+  {
+   "id": "mixing-sine-nomine-games-together",
+   "title": "Mixing Sine Nomine Games Together",
+   "page": 67,
+   "chapter": "The Rules of the Game",
+   "rights": "purchased_deluxe",
+   "status": "documented",
+   "modules": [],
+   "tests": [],
+   "rulebook": "docs/rules/AWN_CWN_COMPATIBILITY.md",
+   "note": "The four-game compatibility matrix records the precedence and the delegations this section defines (p.67). It is a documented procedure, not code, so it is 'documented' rather than 'verified'."
+  },
+  {
+   "id": "equipment",
+   "title": "Equipment",
+   "page": 70,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Chapter opening (p.70); its tables are the rows below."
+  },
+  {
+   "id": "encumbrance-and-gear-tracking",
+   "title": "Encumbrance and Gear Tracking",
+   "page": 71,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "CWN encumbrance exists; AWN's readyload/scrap carrying rules (p.71) are not compared."
+  },
+  {
+   "id": "tech-levels-and-scrap",
+   "title": "Tech Levels and Scrap",
+   "page": 72,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "AWN tech levels and scrap values (p.72) are unimplemented; this is the backbone of post-collapse gear and is the largest equipment gap."
+  },
+  {
+   "id": "damaging-and-repairing-gear",
+   "title": "Damaging and Repairing Gear",
+   "page": 73,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Damage and repair procedure (p.73) is unimplemented."
+  },
+  {
+   "id": "building-gear",
+   "title": "Building Gear",
+   "page": 74,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Improvised construction (p.74) is unimplemented."
+  },
+  {
+   "id": "modifying-gear",
+   "title": "Modifying Gear",
+   "page": 75,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Gear modification (p.75) is unimplemented."
+  },
+  {
+   "id": "armor",
+   "title": "Armor",
+   "page": 76,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "AWN armour table (p.76) is not catalogued; CWN armour is authoritative for CWN play."
+  },
+  {
+   "id": "ranged-weapons",
+   "title": "Ranged Weapons",
+   "page": 78,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "AWN ranged weapons (p.78) are not catalogued."
+  },
+  {
+   "id": "melee-and-thrown-weapons",
+   "title": "Melee and Thrown Weapons",
+   "page": 79,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "AWN melee and thrown weapons (p.79) are not catalogued."
+  },
+  {
+   "id": "high-tech-weapons",
+   "title": "High-Tech Weapons",
+   "page": 80,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "AWN high-tech weapons (p.80) are not catalogued."
+  },
+  {
+   "id": "heavy-weaponry",
+   "title": "Heavy Weaponry",
+   "page": 81,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "AWN heavy weapons (p.81) are not catalogued."
+  },
+  {
+   "id": "armor-mods",
+   "title": "Armor Mods",
+   "page": 82,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Armour mods (p.82) are unimplemented."
+  },
+  {
+   "id": "weapon-mods",
+   "title": "Weapon Mods",
+   "page": 83,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Weapon mods (p.83) are unimplemented."
+  },
+  {
+   "id": "survival-gear",
+   "title": "Survival Gear",
+   "page": 84,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Survival gear catalogue (p.84) is unimplemented."
+  },
+  {
+   "id": "pharmaceuticals",
+   "title": "Pharmaceuticals",
+   "page": 86,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "AWN pharmaceuticals (p.86) are not catalogued; the CWN pharmaceuticals module covers the CWN list only."
+  },
+  {
+   "id": "high-tech-stims",
+   "title": "High-Tech Stims",
+   "page": 87,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "High-tech stims (p.87) are unimplemented."
+  },
+  {
+   "id": "vehicles",
+   "title": "Vehicles",
+   "page": 88,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "AWN vehicle catalogue (p.88) is unimplemented."
+  },
+  {
+   "id": "vehicle-fittings",
+   "title": "Vehicle Fittings",
+   "page": 90,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Vehicle fittings (p.90) are unimplemented."
+  },
+  {
+   "id": "vehicle-mounted-weaponry",
+   "title": "Vehicle-Mounted Weaponry",
+   "page": 92,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Vehicle weapons (p.92) are unimplemented."
+  },
+  {
+   "id": "vehicle-mods",
+   "title": "Vehicle Mods",
+   "page": 93,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Vehicle mods (p.93) are unimplemented."
+  },
+  {
+   "id": "high-tech-tools-and-consumer-goods",
+   "title": "High-Tech Tools and Consumer Goods",
+   "page": 94,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Tools and consumer goods (p.94) are unimplemented."
+  },
+  {
+   "id": "identifying-mysterious-tech",
+   "title": "Identifying Mysterious Tech",
+   "page": 102,
+   "chapter": "Equipment",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Identifying anomalous technology (p.102) is unimplemented and is the natural home for the Mythos mod's provenance tags."
+  },
+  {
+   "id": "enclaves-and-settlements",
+   "title": "Enclaves and Settlements",
+   "page": 104,
+   "chapter": "Enclaves and Settlements",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Chapter opening (p.104); its procedures are the rows below."
+  },
+  {
+   "id": "enclave-statistics",
+   "title": "Enclave Statistics",
+   "page": 105,
+   "chapter": "Enclaves and Settlements",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "AWN enclave statistics - Power, Cohesion, Features, Problems (p.105) - are unimplemented; the NoöPunk ledger models enclaves as actors, not with these stats."
+  },
+  {
+   "id": "enclave-mechanics",
+   "title": "Enclave Mechanics",
+   "page": 106,
+   "chapter": "Enclaves and Settlements",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Enclave Dominion and Interest economics (p.106) are unimplemented."
+  },
+  {
+   "id": "dominion-and-changes",
+   "title": "Dominion and Changes",
+   "page": 107,
+   "chapter": "Enclaves and Settlements",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Dominion changes (p.107) are unimplemented."
+  },
+  {
+   "id": "enclave-actions",
+   "title": "Enclave Actions",
+   "page": 108,
+   "chapter": "Enclaves and Settlements",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Enclave actions and turn resolution (p.108) are unimplemented. This is #1083's declared gap."
+  },
+  {
+   "id": "creating-an-enclave",
+   "title": "Creating an Enclave",
+   "page": 110,
+   "chapter": "Enclaves and Settlements",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Enclave creation procedure (p.110) is unimplemented."
+  },
+  {
+   "id": "enclaves-and-pc-actions",
+   "title": "Enclaves and PC Actions",
+   "page": 110,
+   "chapter": "Enclaves and Settlements",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/awn_world.py",
+     "procedures": [
+      "Enclave",
+      "Site",
+      "Crisis",
+      "WorldLedger",
+      "WorldEvent"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_awn_world_1083.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The NoöPunk ledger records PC actions against enclaves, but AWN's own PC-action rules (p.110) are not modelled."
+  },
+  {
+   "id": "sample-enclaves",
+   "title": "Sample Enclaves",
+   "page": 111,
+   "chapter": "Enclaves and Settlements",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Worked examples (p.111); not a rule."
+  },
+  {
+   "id": "enclave-tags",
+   "title": "Enclave Tags",
+   "page": 112,
+   "chapter": "Enclaves and Settlements",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Enclave tags (p.112) are unimplemented."
+  },
+  {
+   "id": "enclave-tag-list",
+   "title": "Enclave Tag List",
+   "page": 113,
+   "chapter": "Enclaves and Settlements",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The enclave tag list (p.113) is unimplemented."
+  },
+  {
+   "id": "an-example-enclave-turn",
+   "title": "An Example Enclave Turn",
+   "page": 135,
+   "chapter": "Enclaves and Settlements",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Worked example (p.135); not a rule."
+  },
+  {
+   "id": "creating-your-campaign",
+   "title": "Creating Your Campaign",
+   "page": 136,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Chapter opening (p.136); its procedures are the rows below."
+  },
+  {
+   "id": "campaign-genres",
+   "title": "Campaign Genres",
+   "page": 140,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Genre guidance (p.140); no procedure."
+  },
+  {
+   "id": "structuring-your-campaign",
+   "title": "Structuring Your Campaign",
+   "page": 141,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Structure guidance (p.141); no procedure."
+  },
+  {
+   "id": "crisis-campaigns",
+   "title": "Crisis Campaigns",
+   "page": 142,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/awn_region.py",
+     "procedures": [
+      "RegionState",
+      "RegionEvent",
+      "RegionLedger",
+      "transition_allowed"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_awn_region.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Region states and collapse/recovery transitions exist; AWN's crisis-campaign pressure rules (p.142) are not transcribed."
+  },
+  {
+   "id": "exploration-campaigns",
+   "title": "Exploration Campaigns",
+   "page": 143,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Guidance for exploration campaigns (p.143); no procedure of its own."
+  },
+  {
+   "id": "creating-your-region",
+   "title": "Creating Your Region",
+   "page": 144,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased_deluxe",
+   "status": "verified",
+   "modules": [
+    {
+     "path": "src/rules/awn_region.py",
+     "procedures": [
+      "RegionState",
+      "RegionEvent",
+      "RegionLedger",
+      "transition_allowed"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_awn_region.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Regions, severity and legal transitions are implemented as a two-level world model (p.144) with seeded tests."
+  },
+  {
+   "id": "building-crises",
+   "title": "Building Crises",
+   "page": 146,
+   "chapter": "Creating Your Campaign",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/awn_region.py",
+     "procedures": [
+      "RegionState",
+      "RegionEvent",
+      "RegionLedger",
+      "transition_allowed"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_awn_region.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Crises exist as ledger events with dated transitions; the printed crisis-building procedure and its tables (p.146) are not transcribed."
+  },
+  {
+   "id": "building-encounter-sites",
+   "title": "Building Encounter Sites",
+   "page": 152,
+   "chapter": "Building Encounter Sites",
+   "rights": "purchased_deluxe",
+   "status": "partial",
+   "modules": [
+    {
+     "path": "src/rules/awn_world.py",
+     "procedures": [
+      "Enclave",
+      "Site",
+      "Crisis",
+      "WorldLedger",
+      "WorldEvent"
+     ]
+    }
+   ],
+   "tests": [
+    "tests/test_awn_world_1083.py"
+   ],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Sites exist as dated ledger entries; AWN's site-building procedure (p.152) is not transcribed."
+  },
+  {
+   "id": "encounter-site-tags",
+   "title": "Encounter Site Tags",
+   "page": 154,
+   "chapter": "Building Encounter Sites",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Encounter-site tags (p.154) are unimplemented."
+  },
+  {
+   "id": "one-roll-encounter-site-past",
+   "title": "One-Roll Encounter Site Past",
+   "page": 171,
+   "chapter": "Building Encounter Sites",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The one-roll site history table (p.171) is unimplemented."
+  },
+  {
+   "id": "encounter-site-features",
+   "title": "Encounter Site Features",
+   "page": 172,
+   "chapter": "Building Encounter Sites",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Site features (p.172) are unimplemented."
+  },
+  {
+   "id": "encounter-site-occupants",
+   "title": "Encounter Site Occupants",
+   "page": 174,
+   "chapter": "Building Encounter Sites",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Site occupants (p.174) are unimplemented."
+  },
+  {
+   "id": "one-roll-occupant-details",
+   "title": "One-Roll Occupant Details",
+   "page": 176,
+   "chapter": "Building Encounter Sites",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Occupant detail tables (p.176) are unimplemented."
+  },
+  {
+   "id": "one-roll-occupant-leadership",
+   "title": "One-Roll Occupant Leadership",
+   "page": 177,
+   "chapter": "Building Encounter Sites",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Occupant leadership tables (p.177) are unimplemented."
+  },
+  {
+   "id": "encounter-site-hazards",
+   "title": "Encounter Site Hazards",
+   "page": 178,
+   "chapter": "Building Encounter Sites",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Site hazards (p.178) are unimplemented."
+  },
+  {
+   "id": "placing-encounter-site-loot",
+   "title": "Placing Encounter Site Loot",
+   "page": 182,
+   "chapter": "Building Encounter Sites",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Loot placement (p.182) is unimplemented."
+  },
+  {
+   "id": "types-of-site-loot",
+   "title": "Types of Site Loot",
+   "page": 183,
+   "chapter": "Building Encounter Sites",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Loot types (p.183) are unimplemented."
+  },
+  {
+   "id": "encounter-site-loot-tables",
+   "title": "Encounter Site Loot Tables",
+   "page": 184,
+   "chapter": "Building Encounter Sites",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Loot tables (p.184) are unimplemented."
+  },
+  {
+   "id": "creating-adventures",
+   "title": "Creating Adventures",
+   "page": 190,
+   "chapter": "Creating Adventures",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Chapter opening (p.190); its procedures are the rows below."
+  },
+  {
+   "id": "crisis-adventures",
+   "title": "Crisis Adventures",
+   "page": 192,
+   "chapter": "Creating Adventures",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Crisis adventure procedure (p.192) is unimplemented."
+  },
+  {
+   "id": "exploration-adventures",
+   "title": "Exploration Adventures",
+   "page": 194,
+   "chapter": "Creating Adventures",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Exploration adventure procedure (p.194) is unimplemented."
+  },
+  {
+   "id": "social-adventures",
+   "title": "Social Adventures",
+   "page": 196,
+   "chapter": "Creating Adventures",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Social adventure procedure (p.196) is unimplemented."
+  },
+  {
+   "id": "adventure-rewards",
+   "title": "Adventure Rewards",
+   "page": 200,
+   "chapter": "Creating Adventures",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Adventure rewards (p.200) are unimplemented."
+  },
+  {
+   "id": "patron-rewards-and-payments",
+   "title": "Patron Rewards and Payments",
+   "page": 201,
+   "chapter": "Creating Adventures",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Patron rewards (p.201) are unimplemented."
+  },
+  {
+   "id": "creatures-of-the-wastes",
+   "title": "Creatures of the Wastes",
+   "page": 202,
+   "chapter": "Creatures of the Wastes",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Chapter opening (p.202); its procedures are the rows below."
+  },
+  {
+   "id": "judging-combat-difficulty",
+   "title": "Judging Combat Difficulty",
+   "page": 203,
+   "chapter": "Creatures of the Wastes",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Guidance for judging difficulty (p.203); no separate procedure."
+  },
+  {
+   "id": "reaction-rolls",
+   "title": "Reaction Rolls",
+   "page": 204,
+   "chapter": "Creatures of the Wastes",
+   "rights": "purchased_deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "CWN has reaction values; AWN's 2d6 reaction bands (p.204) are not compared."
+  },
+  {
+   "id": "morale-and-morale-checks",
+   "title": "Morale and Morale Checks",
+   "page": 205,
+   "chapter": "Creatures of the Wastes",
+   "rights": "purchased_deluxe",
+   "status": "unverified",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "CWN has an NPC morale value; AWN's morale procedure (p.205) is not compared."
+  },
+  {
+   "id": "reading-stat-lines",
+   "title": "Reading Stat Lines",
+   "page": 206,
+   "chapter": "Creatures of the Wastes",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Stat-line conventions (p.206) are not modelled; there is no creature data model yet."
+  },
+  {
+   "id": "animals",
+   "title": "Animals",
+   "page": 207,
+   "chapter": "Creatures of the Wastes",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Animal stat blocks (p.207) are unimplemented."
+  },
+  {
+   "id": "beastfolk",
+   "title": "Beastfolk",
+   "page": 208,
+   "chapter": "Creatures of the Wastes",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Beastfolk stat blocks (p.208) are unimplemented."
+  },
+  {
+   "id": "beastfolk-origin-foci",
+   "title": "Beastfolk Origin Foci",
+   "page": 210,
+   "chapter": "Creatures of the Wastes",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Beastfolk foci (p.210) are unimplemented."
+  },
+  {
+   "id": "one-roll-beastfolk-pack-generator",
+   "title": "One-Roll Beastfolk Pack Generator",
+   "page": 211,
+   "chapter": "Creatures of the Wastes",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The beastfolk pack generator (p.211) is unimplemented."
+  },
+  {
+   "id": "cyborgs",
+   "title": "Cyborgs",
+   "page": 212,
+   "chapter": "Creatures of the Wastes",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Cyborg stat blocks (p.212) are unimplemented."
+  },
+  {
+   "id": "humans",
+   "title": "Humans",
+   "page": 214,
+   "chapter": "Creatures of the Wastes",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Human stat blocks (p.214) are unimplemented."
+  },
+  {
+   "id": "mutant-animals",
+   "title": "Mutant Animals",
+   "page": 216,
+   "chapter": "Creatures of the Wastes",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Mutant animal stat blocks (p.216) are unimplemented."
+  },
+  {
+   "id": "mutant-humanoids",
+   "title": "Mutant Humanoids",
+   "page": 218,
+   "chapter": "Creatures of the Wastes",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Mutant humanoid stat blocks (p.218) are unimplemented."
+  },
+  {
+   "id": "robots",
+   "title": "Robots",
+   "page": 220,
+   "chapter": "Creatures of the Wastes",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Robot stat blocks (p.220) are unimplemented."
+  },
+  {
+   "id": "zombies",
+   "title": "Zombies",
+   "page": 222,
+   "chapter": "Creatures of the Wastes",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Zombie stat blocks (p.222) are unimplemented."
+  },
+  {
+   "id": "zombie-infections",
+   "title": "Zombie Infections",
+   "page": 225,
+   "chapter": "Creatures of the Wastes",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Zombie infection rules (p.225) are unimplemented."
+  },
+  {
+   "id": "one-roll-zombie-plague-generator",
+   "title": "One-Roll Zombie Plague Generator",
+   "page": 226,
+   "chapter": "Creatures of the Wastes",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The plague generator (p.226) is unimplemented."
+  },
+  {
+   "id": "zombie-encounter-quick-reference",
+   "title": "Zombie Encounter Quick Reference",
+   "page": 227,
+   "chapter": "Creatures of the Wastes",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The zombie quick reference (p.227) is unimplemented."
+  },
+  {
+   "id": "nemesis-traits",
+   "title": "Nemesis Traits",
+   "page": 228,
+   "chapter": "Creatures of the Wastes",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Nemesis traits (p.228) are unimplemented."
+  },
+  {
+   "id": "the-albuquerque-death-zone",
+   "title": "The Albuquerque Death Zone",
+   "page": 230,
+   "chapter": "The Albuquerque Death Zone",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The Albuquerque Death Zone (p.230) is proprietary setting; NoöPunk uses its own regions (CWN/Crisis), so this is excluded as canon."
+  },
+  {
+   "id": "the-geography-of-the-zone",
+   "title": "The Geography of the Zone",
+   "page": 236,
+   "chapter": "The Albuquerque Death Zone",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Setting geography (p.236); excluded with the Death Zone."
+  },
+  {
+   "id": "people-and-places-of-the-zone",
+   "title": "People and Places of the Zone",
+   "page": 238,
+   "chapter": "The Albuquerque Death Zone",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Setting gazetteer (p.238); excluded with the Death Zone."
+  },
+  {
+   "id": "trading-in-the-zone",
+   "title": "Trading in the Zone",
+   "page": 246,
+   "chapter": "The Albuquerque Death Zone",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Setting trade rules (p.246); excluded as canon, and the trade procedure would duplicate CWN/CWN-level economies."
+  },
+  {
+   "id": "weapons-of-the-west",
+   "title": "Weapons of the West",
+   "page": 247,
+   "chapter": "The Albuquerque Death Zone",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Setting weapon list (p.247); excluded with the Death Zone."
+  },
+  {
+   "id": "the-cowboy",
+   "title": "The Cowboy",
+   "page": 252,
+   "chapter": "The Albuquerque Death Zone",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Setting archetype (p.252); excluded with the Death Zone."
+  },
+  {
+   "id": "supplementary-material",
+   "title": "Supplementary Material",
+   "page": 254,
+   "chapter": "Supplementary Material (Deluxe)",
+   "rights": "purchased_deluxe",
+   "status": "not_applicable",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Deluxe supplement opening (p.254); its sections are the rows below."
+  },
+  {
+   "id": "evil-techno-wizards",
+   "title": "Evil Techno-wizards",
+   "page": 255,
+   "chapter": "Supplementary Material (Deluxe)",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The Evil Techno-wizard antagonist rules (p.255) are deferred optional content."
+  },
+  {
+   "id": "techno-wizard-scheme-generator",
+   "title": "Techno-wizard Scheme Generator",
+   "page": 257,
+   "chapter": "Supplementary Material (Deluxe)",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The scheme generator (p.257) is unimplemented and deferred."
+  },
+  {
+   "id": "the-ash-sorcerer",
+   "title": "The Ash Sorcerer",
+   "page": 258,
+   "chapter": "Supplementary Material (Deluxe)",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The Ash Sorcerer class (p.258) is deferred pending a decision against WWN magic and SWN psionics."
+  },
+  {
+   "id": "ash-sorcerer-disciplines",
+   "title": "Ash Sorcerer Disciplines",
+   "page": 260,
+   "chapter": "Supplementary Material (Deluxe)",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Ash Sorcerer disciplines (p.260) are unimplemented and deferred."
+  },
+  {
+   "id": "the-mentalist",
+   "title": "The Mentalist",
+   "page": 264,
+   "chapter": "Supplementary Material (Deluxe)",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "The Mentalist class (p.264) is deferred pending a decision against SWN psionics."
+  },
+  {
+   "id": "mentalist-disciplines",
+   "title": "Mentalist Disciplines",
+   "page": 266,
+   "chapter": "Supplementary Material (Deluxe)",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Mentalist disciplines (p.266) are unimplemented and deferred."
+  },
+  {
+   "id": "modular-power-armor",
+   "title": "Modular Power Armor",
+   "page": 270,
+   "chapter": "Modular Power Armor (Deluxe)",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Modular power armour (p.270) is deferred pending comparison with CWN armour and UNSA heavy gear."
+  },
+  {
+   "id": "modular-armor-frames",
+   "title": "Modular Armor Frames",
+   "page": 272,
+   "chapter": "Modular Power Armor (Deluxe)",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Armour frames (p.272) are unimplemented and deferred."
+  },
+  {
+   "id": "modular-armor-fittings",
+   "title": "Modular Armor Fittings",
+   "page": 273,
+   "chapter": "Modular Power Armor (Deluxe)",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Armour fittings (p.273) are unimplemented and deferred."
+  },
+  {
+   "id": "hub-settlement-rules",
+   "title": "Hub Settlement Rules",
+   "page": 278,
+   "chapter": "Hub Settlement Rules (Deluxe)",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Hub settlement rules (p.278) are deferred optional content."
+  },
+  {
+   "id": "settlements-and-mass-combat",
+   "title": "Settlements and Mass Combat",
+   "page": 286,
+   "chapter": "Settlements and Mass Combat (Deluxe)",
+   "rights": "purchased_deluxe",
+   "status": "missing",
+   "modules": [],
+   "tests": [],
+   "rulebook": "rulebook/WITHOUT_NUMBER_BASELINE.md",
+   "note": "Settlements and mass combat (p.286) are deferred; they would duplicate enclave and faction scale."
+  }
+ ]
+}
