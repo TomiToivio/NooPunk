@@ -1,4 +1,6 @@
 # MANDATORY ANTI-DUPLICATION GATE (2026-11-03)
+**Latest reconciliation (2026-11-03):** PR #1093 consolidated duplicate consoles and introduced `tests/test_no_duplicate_implementations.py`. PR #1094 merged the schema-3 mod activation contract; PR #1096 attempted the same contract and was **closed, not merged**. PR #1095 merged the first 13 WWN spell-effect records, a provider-neutral agent adapter and eight CWN fidelity checks, while explicitly dropping parallel AWN Stress/mod-contract edits that other PRs had already landed. **Before starting from #1081/#1083/#1084/#1085, reconcile their old unchecked bullets with these merged increments.** A historical unchecked box is not permission to implement an existing feature again. Read `docs/DUPLICATION_AUDIT.md` and search closed-unmerged PRs as well as merged PRs. When two branches implement the same contract, retain only one tested version and mark the other superseded; never merge both for completeness.
+
 
 **Every agent MUST perform this gate BEFORE creating a branch, opening an issue/PR, writing code, or claiming work remains undone.** This gate takes precedence over historical workflow descriptions below.
 
