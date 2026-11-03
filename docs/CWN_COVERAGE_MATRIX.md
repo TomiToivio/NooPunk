@@ -1,3 +1,8 @@
+> **Historical (2026-10-30), superseded.** The current coverage report is
+> [`docs/rules/CWN_COVERAGE_1068.md`](rules/CWN_COVERAGE_1068.md), generated from
+> `data/rules/cwn_traceability.json` by `tools/cwn_parity_audit.py`. This file is kept for its
+> measurement method and its #858 four-column audit; do not extend or regenerate it.
+
 > **See also:** [`CWN_SRD_PARITY_858.md`](CWN_SRD_PARITY_858.md) — the four-column audit (code / tested / playable / verified SRD parity) required by #858. This matrix lists what is implemented; that file asks whether it is *right* and *reachable*.
 
 # CWN / SWN rules coverage matrix (#749 work package A, refreshed for #848)

@@ -13,10 +13,10 @@ This is the **static** half of the audit: where the same rule is implemented mor
 
 | Measure | Count |
 |---|---:|
-| Rule names defined in more than one file | **28** |
-| …of those, **implemented differently** (behaviour unknown from source) | **26** |
-| Redundant copies to remove | **41** |
-| Rules implemented in both Python and GDScript | **100** |
+| Rule names defined in more than one file | **31** |
+| …of those, **implemented differently** (behaviour unknown from source) | **29** |
+| Redundant copies to remove | **47** |
+| Rules implemented in both Python and GDScript | **108** |
 
 ## Rules written differently in more than one place
 
@@ -29,16 +29,19 @@ This is the **static** half of the audit: where the same rule is implemented mor
 | `can_maintain` | 2 | `src/rules/cwn_cyberware.py:382`<br>`src/rules/cwn_gear_mods.py:159` |
 | `consensus_modifier` | 2 | `src/rules/natural_psi.py:140`<br>`strategy_game/rpg/psi.py:275` |
 | `document` | 2 | `mud/nopunk_mud/campaign/content.py:216`<br>`strategy_game/tests/test_tactical_mission.py:44` |
+| `dual_wield` | 2 | `src/rules/cwn_special_maneuvers.py:106`<br>`mud/nopunk_mud/cwn/combat_mods.py:94` |
+| `event_ids` | 2 | `src/rules/awn_stress_tracker.py:42`<br>`strategy_game/paradigm_readings.py:142` |
 | `first_aid` | 2 | `src/rules/cwn_core.py:447`<br>`src/rules/cwn_healing.py:170` |
 | `hit_points` | 2 | `mud/nopunk_mud/cwn/__init__.py:153`<br>`mud/nopunk_mud/cwn_core.py:51` |
-| `load_catalogue` | 2 | `src/rules/psionics.py:117`<br>`mud/nopunk_mud/i18n.py:25` |
+| `load_catalogue` | 3 | `src/rules/psionics.py:117`<br>`src/rules/wwn_spells.py:59`<br>`mud/nopunk_mud/i18n.py:25` |
 | `major_injury_risk` | 2 | `src/rules/cwn_core.py:292`<br>`src/rules/cwn_trauma.py:139` |
-| `reaction` | 2 | `mud/nopunk_mud/faction_tags.py:109`<br>`mud/nopunk_mud/social.py:113` |
+| `reaction` | 3 | `mud/nopunk_mud/faction_tags.py:109`<br>`mud/nopunk_mud/ideology.py:342`<br>`mud/nopunk_mud/social.py:113` |
 | `render_front` | 2 | `strategy_game/characters.py:685`<br>`strategy_game/faction_cards.py:628` |
 | `render_text` | 2 | `strategy_game/casework/demo.py:281`<br>`strategy_game/tactical/demo.py:152` |
 | `resolve_attack` | 2 | `src/rules/cwn_core.py:237`<br>`src/rules/swn_starships.py:132` |
 | `roll_attributes` | 3 | `src/rules/cwn_character.py:39`<br>`src/rules/field_agent.py:74`<br>`mud/nopunk_mud/cwn_core.py:37` |
-| `save_target` | 6 | `src/rules/cwn_advancement.py:123`<br>`src/rules/cwn_core.py:122`<br>`src/rules/wn_core.py:213`<br>`mud/nopunk_mud/cwn/__init__.py:122`<br>`mud/nopunk_mud/cwn_core.py:62`<br>`mud/systems/cwn.py:30` |
+| `run_program` | 2 | `src/rules/cwn_program_catalogue.py:169`<br>`mud/nopunk_mud/cwn/hacking.py:100` |
+| `save_target` | 7 | `src/rules/cwn_advancement.py:123`<br>`src/rules/cwn_core.py:122`<br>`src/rules/cwn_save_adapter.py:37`<br>`src/rules/wn_core.py:213`<br>`mud/nopunk_mud/cwn/__init__.py:122`<br>`mud/nopunk_mud/cwn_core.py:62`<br>`mud/systems/cwn.py:30` |
 | `saving_throw` | 3 | `src/rules/cwn_core.py:136`<br>`src/rules/without_number.py:116`<br>`mud/nopunk_mud/cwn/__init__.py:134` |
 | `shock_damage` | 2 | `src/rules/cwn_core.py:204`<br>`mud/nopunk_mud/cwn/combat.py:130` |
 | `shock_on_miss` | 2 | `src/rules/cwn_trauma.py:113`<br>`mud/nopunk_mud/cwn_core.py:207` |
@@ -73,10 +76,12 @@ Python and GDScript both implementing a rule is the engine coupling #1053 is abo
 | `attribute_modifier` | `src/rules/wn_core.py`<br>`mud/nopunk_mud/cwn/__init__.py`<br>`mud/nopunk_mud/cwn_core.py`<br>`mud/systems/cwn.py` | `godot/core/rules_adapter.gd` |
 | `authorized` | `src/rules/psionics.py` | `godot/core/psionics.gd` |
 | `available` | `mud/nopunk_mud/romppainen_fujita.py` | `godot/core/cwn_strain.gd` |
+| `bribe_cost` | `src/rules/cwn_lifestyles.py` | `godot/core/cwn_social_costs.gd` |
 | `bundled_points` | `src/rules/cwn_encumbrance.py` | `godot/core/cwn_encumbrance.gd` |
 | `can_be_harmed` | `src/rules/cwn_vehicles.py` | `godot/core/cwn_vehicles.gd` |
 | `can_build` | `src/rules/cwn_gear_mods.py` | `godot/core/cwn_gear_mods.gd` |
 | `can_haul` | `src/rules/cwn_encumbrance.py` | `godot/core/cwn_encumbrance.gd` |
+| `can_learn` | `src/rules/wwn_spells.py` | `godot/core/psychic_effort.gd` |
 | `can_maintain` | `src/rules/cwn_cyberware.py`<br>`src/rules/cwn_gear_mods.py` | `godot/core/cwn_gear_mods.gd` |
 | `can_take_level` | `src/rules/cwn_foci.py` | `godot/core/cwn_foci.gd` |
 | `charge_hours` | `src/rules/cwn_drones.py` | `godot/core/cwn_srd_vehicles.gd` |
@@ -96,10 +101,12 @@ Python and GDScript both implementing a rule is the engine coupling #1053 is abo
 | `encumbrance` | `mud/nopunk_mud/cwn_core.py` | `godot/core/rules_adapter.gd` |
 | `factory_price` | `src/rules/cwn_gear_mods.py` | `godot/core/cwn_gear_mods.gd` |
 | `first_aid` | `src/rules/cwn_core.py`<br>`src/rules/cwn_healing.py` | `godot/core/cwn_healing.gd` |
+| `foot_pace` | `mud/nopunk_mud/cwn/chase.py` | `godot/core/cwn_chases.gd` |
 | `frail_week` | `src/rules/cwn_healing.py` | `godot/core/cwn_healing.gd` |
 | `gear_budget` | `src/rules/cwn_foci.py` | `godot/core/cwn_foci.gd` |
 | `hacking_check` | `src/rules/cwn_hacking.py` | `godot/core/cwn_hacking.gd`<br>`godot/core/rules_adapter.gd` |
 | `hindrance_bonus` | `src/rules/cwn_vehicles.py` | `godot/core/cwn_vehicles.gd` |
+| `hire_cost` | `mud/nopunk_mud/cwn/economy.py` | `godot/core/cwn_wages.gd` |
 | `hit_points` | `mud/nopunk_mud/cwn/__init__.py`<br>`mud/nopunk_mud/cwn_core.py` | `godot/core/cwn_character.gd` |
 | `injury_for_roll` | `src/rules/cwn_major_injury.py` | `godot/core/cwn_injury.gd` |
 | `install_weeks` | `src/rules/cwn_gear_mods.py` | `godot/core/cwn_gear_mods.gd` |
@@ -110,9 +117,10 @@ Python and GDScript both implementing a rule is the engine coupling #1053 is abo
 | `is_traumatic_hit` | `src/rules/cwn_core.py` | `godot/core/cwn_combat_rules.gd` |
 | `kilograms_to_points` | `src/rules/cwn_encumbrance.py` | `godot/core/cwn_encumbrance.gd` |
 | `level_for_xp` | `src/rules/cwn_advancement.py` | `godot/core/cwn_progression.gd`<br>`godot/core/rules_adapter.gd` |
-| `load_catalogue` | `src/rules/psionics.py`<br>`mud/nopunk_mud/i18n.py` | `godot/core/cwn_srd_vehicles.gd` |
+| `load_catalogue` | `src/rules/psionics.py`<br>`src/rules/wwn_spells.py`<br>`mud/nopunk_mud/i18n.py` | `godot/core/cwn_srd_vehicles.gd` |
 | `maintenance_lapse` | `src/rules/cwn_gear_mods.py` | `godot/core/cwn_gear_mods.gd` |
 | `maintenance_score` | `src/rules/cwn_gear_mods.py` | `godot/core/cwn_gear_mods.gd` |
+| `major_injury` | `mud/nopunk_mud/cwn/injury.py` | `godot/core/rules_adapter.gd` |
 | `major_injury_risk` | `src/rules/cwn_core.py`<br>`src/rules/cwn_trauma.py` | `godot/core/cwn_injury.gd` |
 | `max_alienation` | `src/rules/cwn_cyberware.py` | `godot/core/cwn_cyberware_ops.gd` |
 | `max_level` | `src/rules/cwn_foci.py` | `godot/core/cwn_foci.gd` |
@@ -136,7 +144,7 @@ Python and GDScript both implementing a rule is the engine coupling #1053 is abo
 | `resolve_salvage` | `src/rules/cwn_cyberware.py` | `godot/core/cwn_cyberware_ops.gd` |
 | `resolve_zero_hit_points` | `src/rules/cwn_injury_procedure.py` | `godot/core/cwn_injury.gd` |
 | `roll_attributes` | `src/rules/cwn_character.py`<br>`src/rules/field_agent.py`<br>`mud/nopunk_mud/cwn_core.py` | `godot/core/cwn_character.gd`<br>`godot/core/rules_adapter.gd` |
-| `save_target` | `src/rules/cwn_advancement.py`<br>`src/rules/cwn_core.py`<br>`src/rules/wn_core.py`<br>`mud/nopunk_mud/cwn/__init__.py`<br>`mud/nopunk_mud/cwn_core.py`<br>`mud/systems/cwn.py` | `godot/core/cwn_character.gd`<br>`godot/core/rules_adapter.gd` |
+| `save_target` | `src/rules/cwn_advancement.py`<br>`src/rules/cwn_core.py`<br>`src/rules/cwn_save_adapter.py`<br>`src/rules/wn_core.py`<br>`mud/nopunk_mud/cwn/__init__.py`<br>`mud/nopunk_mud/cwn_core.py`<br>`mud/systems/cwn.py` | `godot/core/cwn_character.gd`<br>`godot/core/rules_adapter.gd` |
 | `security_difficulty` | `src/rules/cwn_hacking.py` | `godot/core/cwn_hacking.gd` |
 | `shock_applies` | `src/rules/cwn_core.py` | `godot/core/cwn_combat_rules.gd` |
 | `shock_can_cause_trauma` | `src/rules/cwn_core.py` | `godot/core/cwn_combat_rules.gd` |
@@ -153,11 +161,14 @@ Python and GDScript both implementing a rule is the engine coupling #1053 is abo
 | `stowed_capacity` | `src/rules/cwn_encumbrance.py` | `godot/core/cwn_encumbrance.gd` |
 | `strain_absorb` | `mud/nopunk_mud/cwn/__init__.py`<br>`mud/nopunk_mud/cwn_core.py` | `godot/core/rules_adapter.gd` |
 | `strain_max` | `mud/nopunk_mud/cwn_core.py` | `godot/core/rules_adapter.gd` |
+| `strain_modifier` | `src/rules/cwn_lifestyles.py` | `godot/core/cwn_lifestyles.gd` |
 | `substitute_fourteen` | `src/rules/cwn_character.py` | `godot/core/cwn_character.gd` |
+| `surgery_modifier` | `mud/nopunk_mud/cwn/cyberware.py` | `godot/core/cwn_cyberware_ops.gd` |
 | `swarm_bonus` | `src/rules/cwn_combat_actions.py` | `godot/core/cwn_combat_actions.gd` |
 | `take_level` | `src/rules/cwn_foci.py` | `godot/core/cwn_foci.gd` |
 | `therapy_week` | `src/rules/cwn_cyberware.py` | `godot/core/cwn_cyberware_ops.gd` |
 | `tier_for` | `src/rules/cwn_encumbrance.py` | `godot/core/cwn_encumbrance.gd` |
+| `total_cost` | `src/rules/cwn_spirit_powers.py` | `godot/core/cwn_cyberware.gd` |
 | `total_defense` | `src/rules/cwn_combat_actions.py` | `godot/core/cwn_combat_actions.gd` |
 | `total_picks` | `src/rules/cwn_foci.py` | `godot/core/cwn_foci.gd` |
 | `trauma_damage` | `src/rules/cwn_core.py` | `godot/core/cwn_combat_rules.gd` |

@@ -13,7 +13,8 @@ Decide which is canonical, delete or demote the other, and add a line here.
 | `mud/nopunk_mud/console.py` vs `src/console/session.py` (+ `src/console/play.py`) | Two playable text front ends for the same case | **My console ceded.** `src/console/` is canonical: it has the real case graph, a walkthrough and its own tests. `console.py` and its test were deleted. |
 | `BRAINSTORM_1007` pair: `DESIGN_CANON_1007.md` vs `ISSUE_1007_DESIGN_CANON.md` | Looked like two canon documents | **Both kept, cross-linked.** One preserves the author's text; the other is the decision record with `data/world/reveal_ladder.json`. Neither restates the other. |
 | `solo_campaign.py` vs `campaign/engine.py` | 58-line prologue and a 464-line engine, both called "the campaign" | **Engine is canonical.** `solo_campaign.py` carries a DEPRECATED header naming the replacement; it survives only because the Evennia command set imports it. Do not add features there. |
-| Coverage documents (`CWN_COVERAGE_MATRIX.md`, `CWN_COVERAGE_AUDIT_1068.md`, `cwn_coverage.json`) | Three overlapping audits | **`docs/rules/CWN_COVERAGE_AUDIT_1068.md` + `data/rules/cwn_coverage.json` are canonical.** My matrix was already deleted in favour of the per-rule audit; a guard now fails if two documents both claim to be canonical. |
+| Coverage documents (`CWN_COVERAGE_MATRIX.md`, `CWN_COVERAGE_AUDIT_1068.md`, `CWN_COMPLIANCE_MATRIX_950.md`, `cwn_coverage.json`) | Four overlapping audits and two generators in one day | **One generator, one report: `tools/cwn_parity_audit.py` → `docs/rules/CWN_COVERAGE_1068.md`** from `data/rules/cwn_traceability.json` + `cwn_compliance_matrix.json`. Deleted the second renderer (`check_cwn_compliance.py --render`, `CWN_COMPLIANCE_MATRIX_950.md`) and the third audit (`cwn_1068_coverage.py`, `cwn_tabletop_audit_1068.json`, `CWN_COVERAGE_AUDIT_1068.md`). `docs/CWN_COVERAGE_MATRIX.md` is historical and points at the canonical report. |
+| Two files named as a duplication audit (`DUPLICATION_AUDIT.md`, `DUPLICATION_AUDIT_1053.md`) | One is agent-work; the other is generated rule-level code duplication | Renamed the generated one to `docs/RULES_DUPLICATION_AUDIT_1053.md`; this file remains the work-level audit. |
 
 ## Known, not yet merged
 
@@ -37,6 +38,15 @@ then the docstrings must keep saying which is which.
 Different layers, not duplicates: the portable case session vs the Evennia adapter over `CampaignEngine`.
 The names are the problem, not the code.
 
+## Documentation conflicts found while consolidating
+
+The CWN audit pass measured the reader rulebook against the baseline: **15 chapters still teach a
+superseded mechanic** (§3.2 attributes, §4.1–4.2 skills/checks, §5.5 combat, §5.8–5.9 and §51 damage and
+injury, §7.4 hacking), **17** have related material only and **30** are absent. The authority block at the
+top of `RULEBOOK.md` now names CWN and the Without Number baseline, so the chapters are historical — but
+they are not rewritten. Do not add a second tabletop audit for this; extend the rulebook chapters or the
+traceability `rulebook` column.
+
 ## What the guard enforces
 
 `tests/test_no_duplicate_implementations.py`:
@@ -46,6 +56,10 @@ The names are the problem, not the code.
 3. At most **one** coverage document claims to be canonical.
 4. No module name appears under two code roots unless it is a documented collision.
 5. Every documented collision has a written reason **and** an entry in this file.
+
+The module is written as `unittest.TestCase` so the root CI (`python -m unittest discover -s tests`)
+actually executes it; a pytest-only guard would have been invisible. It now also fails when a second CWN
+coverage report, a second generator, or one of the retired audit files reappears.
 
 An audit that cannot fail is not an audit. Test 4 failed on its first run with three collisions; that is the
 behaviour that made it worth writing.

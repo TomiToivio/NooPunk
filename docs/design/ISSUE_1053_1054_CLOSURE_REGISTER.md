@@ -18,7 +18,7 @@ tracked as decisions or follow-up issues rather than as an open umbrella.
 | The existing Evennia frontend calls the shared core | `CmdSolo` routes through `CampaignSession`; `mud/tests/test_session_adapter_1053.py` compares state documents across engine, session and command |
 | Each rule/mod provides manual tabletop instructions and printable aids | **added by this pass**: `docs/tabletop/PRINTABLE_SHEET_1053.md` (character sheet, procedure card, paper equivalent of the save file, worked example) and `docs/tabletop/FIRST_CASE_TABLETOP.md` |
 | SWN faction strategy and advanced multiplayer are postponed | `src/rules/swn_faction_engine.py` exists but nothing depends on it; Milestone C remains deferred, now in #1084's scope note |
-| Documentation contains a coverage matrix, roadmap, licensing notes and migration plan | `docs/rules/CWN_RULE_INVENTORY.md` (book-level, 65 rows), `docs/rules/CWN_COVERAGE_1068.md`, `docs/duplication`/`docs/DUPLICATION_AUDIT_1053.md`, `docs/licenses/`, `docs/design/ARCHITECTURE_AUDIT_1053.md` |
+| Documentation contains a coverage matrix, roadmap, licensing notes and migration plan | `docs/rules/CWN_RULE_INVENTORY.md` (book-level, 65 rows), `docs/rules/CWN_COVERAGE_1068.md`, `docs/duplication`/`docs/RULES_DUPLICATION_AUDIT_1053.md`, `docs/licenses/`, `docs/design/ARCHITECTURE_AUDIT_1053.md` |
 | Every rule/mod has rulebook instructions, Python and tests, updated together | reviewer obligation plus the executable half: `tools/cwn_parity_audit.py --check`, `tools/cwn_coverage_manifest.py --check`, `tools/cwn_rule_inventory_audit.py --check`. Prose cannot be asserted (#271), and that limitation is stated in the coverage report |
 
 ### #1053
@@ -31,7 +31,7 @@ tracked as decisions or follow-up issues rather than as an open umbrella.
 | No forced rewrite to change front end | `portable_noopunk` is a façade over the one session; browser/Textual/NiceGUI adapters call it |
 | A complete console case runs, saves, loads, and is tested offline | as above |
 | Stale Godot-first documentation updated or marked superseded | `docs/GODOT*.md` carry the superseded banner pointing at the ADR |
-| Architecture survey of duplication and engine coupling | `docs/design/ARCHITECTURE_AUDIT_1053.md`, `docs/DUPLICATION_AUDIT_1053.md`, `docs/RULES_PARITY_1053.md` |
+| Architecture survey of duplication and engine coupling | `docs/design/ARCHITECTURE_AUDIT_1053.md`, `docs/RULES_DUPLICATION_AUDIT_1053.md`, `docs/RULES_PARITY_1053.md` |
 
 ## Two defects found while checking the parity claim
 

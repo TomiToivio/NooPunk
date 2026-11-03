@@ -15,7 +15,7 @@ distinction that matters is:
 The report is generated so it cannot drift from the tree the way a hand-written inventory would.
 
 Usage:
-    python3 tools/duplication_audit.py --render docs/DUPLICATION_AUDIT_1053.md
+    python3 tools/duplication_audit.py --render docs/RULES_DUPLICATION_AUDIT_1053.md
     python3 tools/duplication_audit.py            # print a summary
 """
 from __future__ import annotations

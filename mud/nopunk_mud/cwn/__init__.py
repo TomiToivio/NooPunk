@@ -10,7 +10,7 @@ runtime import of `src/rules` would couple two deployment units; a parity test k
 coupling them.
 
 Source of truth: the linked CWN SRD (https://cwn.quadrifons.com/). Coverage and gaps are recorded in
-`data/rules/cwn_compliance_matrix.json` and `docs/rules/CWN_COMPLIANCE_MATRIX_950.md`.
+`data/rules/cwn_compliance_matrix.json`, reported in `docs/rules/CWN_COVERAGE_1068.md`.
 """
 from __future__ import annotations
 
