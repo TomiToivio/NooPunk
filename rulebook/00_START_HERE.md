@@ -24,7 +24,7 @@ preservation work of [#243](https://github.com/TomiToivio/NooPunk/issues/243).
 
 NoöPunk is an original, **narrative-first** cyberpunk science-fantasy RPG about **investigation,
 relationships, ideology, psychology, and the interaction of three realities**. You play a newly
-graduated **UNSA** agent — recruited from an earlier career, an education, or an extraordinary
+assigned **Europol** field agent — recruited from an earlier career, an education, or an extraordinary
 experience — working cases that are as much about **people** as about evidence.
 
 The game is not a combat engine with a story attached. It is about what you notice, who you trust,
@@ -93,7 +93,7 @@ Nothing is renamed, reduced or pruned here.
 7. Investigation, evidence, decisions and clocks
 8. The three realities and access/embodiment constraints
 9. Simple conflict and consequences
-10. Running a UNSA case; the first Helsinki / Ö-Mappi adventure
+10. Running a Europol case; the first Helsinki / Ö-Mappi adventure
 11. Tabletop / Godot / Concordia parity and terminology
 12. Optional/deferred advanced-system roadmap and historical-source references
 
@@ -112,6 +112,6 @@ Several are non-commercial or unverified licences, so **no copied expression, te
 from any of them enters this book**. Attribution and licensing records are kept in the archive and in
 `docs/licenses/`.
 
-Character and world canon stays in force: UNSA, the Academy, Ö-Mappi, the NHI Cold War, the
+Character and world canon stays in force: Europol, the Academy, Ö-Mappi, the NHI Cold War, the
 Singularity Crisis and its partial reconstruction are unchanged by this book's structure. The setting
 is **2045**, and this is a fictional alternate history.

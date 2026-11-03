@@ -2,6 +2,12 @@
 
 > **Consolidated reference (#1005):** [`POST_NHI_WORLD_1005.md`](POST_NHI_WORLD_1005.md) — this file remains the phase-by-phase history; that one carries the current author direction on geopolitics and factions.
 
+> **Setting revision #1114 (2026-11-03):** this source text's "UNSA becomes a de facto world
+> government" stage is **superseded**. The UN/UNSA project to consolidate sovereign authority
+> failed; UNSA remains a coordinating agency with pooled, revocable access. UNSA is also not the
+> default player employer — that is Europol. The source text below is preserved unedited; the
+> binding chronology is [`ALTERNATE_HISTORY_1114.md`](ALTERNATE_HISTORY_1114.md).
+
 <!--
 PROVENANCE: transcribed from the author's own issue text, unedited in substance.
 This file is source material, not canon-by-accident: anything the source marks as disputed, rumoured or

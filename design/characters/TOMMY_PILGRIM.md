@@ -10,4 +10,24 @@ Tommy Pilgrim has a legion of fans and is now very rich. He worked as a bicycle 
 
 When UFOs and PSI became mainstream topics, Tommy Pilgrim started to be seen as a prophet rather than a science fiction author, and he started to attract attention of new age cultists, ufologists, parapsychologists and intelligence agencies. He disappeared from publicity and moved to an unknown location, only communicating online and in cryptic blog posts. UNHA would like to talk to him, but so would many others.
 
-Tommy Pilgrim is based on PKD and his books VALIS and The Man in the High Castle, as well as Andrija Puharich and Law of One. 
+Tommy Pilgrim is based on PKD and his books VALIS and The Man in the High Castle, as well as Andrija Puharich and Law of One.
+
+## The Soviet Mandela Effect
+
+Pilgrim's *NoöPunk* describes a world in which **the Soviet Union never collapsed**. Many fans
+insist they remember a different version, one in which the USSR is gone and Russia and Ukraine are
+at war. Both sides agree the discrepancy is a **Mandela Effect**. They disagree about its cause.
+
+Pilgrim rejects the mundane explanation that a 1970s author simply assumed the Soviet Union would
+last. His preferred theories are precognition, time travel and timeline alteration. He claims to
+remember multiple timelines himself, with an explicit *The Man in the High Castle* / Philip K. Dick
+sensibility.
+
+The setting preserves the uncertainty. Faulty precognition, an unreliable transmission, a
+rewritten timeline, false collective memory and genuine cross-timeline recollection all remain
+possible. Do not resolve the mystery in a sourcebook, a scenario or a wiki article. Variant
+editions, contested recollections, misprints, interviews and metafictional clues are all usable;
+none is the final answer.
+
+The full setting chronology and its rules are in
+[`docs/world/ALTERNATE_HISTORY_1114.md`](../../docs/world/ALTERNATE_HISTORY_1114.md).

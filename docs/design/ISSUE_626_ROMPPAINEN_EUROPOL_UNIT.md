@@ -1,12 +1,12 @@
 # Issue #626: Dr. Inspector Romppainen and the anomalous-behavior unit
 
-> **Status:** scenario planning with usable investigative procedure; preserves established settings. Existing playable default remains the Helsinki UNSA field investigator. The hospital-focused Europol era can be a **prequel** or an adjoining joint task force, not a retcon of UNSA.
+> **Status:** scenario planning with usable investigative procedure; preserves established settings. **As of #1114, the default playable frame is Europol at the Helsinki Field Office**; the UNSA-led version is historical. The hospital-focused Europol era can be a **prequel** or an adjoining joint task force, not a retcon of the Europol frame.
 
 ## Institutional history and playable frames
 
 1. **Suojelupoliisi / Europol Ö-Mappi:** legacy psychological-operations and anomalous-cases archive, as established in [First Day in Ö-Mappi](../scenarios/01_FIRST_DAY_IN_OMAPPI.md). Europol provides cross-border intelligence, coordination and analysis, not independent local arrest powers. National police officers execute searches/detentions under their own law.
 2. **Behavioral anomalies cell:** Romppainen coordinates cross-border clusters in psychiatry, cognition, neurotech and social influence, with Finnish investigators and clinical collaborators under lawful arrangements. Early cases are about safeguarding, misconduct and corroboration before NHI conclusions.
-3. **UNSA/Firewall transition:** as the NHI Crisis becomes undeniable, the local knowledge base and personnel may transfer, second or coordinate with UNSA. Existing [default investigation doctrine](DEFAULT_INVESTIGATION_FANTASY.md) still governs the UNSA era.
+3. **UNSA/Firewall transition:** as the NHI Crisis becomes undeniable, the local knowledge base and personnel may transfer, second or coordinate with UNSA. The existing [default investigation doctrine](DEFAULT_INVESTIGATION_FANTASY.md) governs the Europol era; the UNSA framing is historical.
 
 **Continuity:** 'Dr. Inspector Harri Romppainen' has academic/clinical-adjacent expertise but the precise degree, medical license and dual appointment are **unresolved**, not silently fixed here. In the *Ubiquitous Maniacs* continuity the fuller name **Emil** appears; retain rather than overwrite it. Existing material establishes **Lotta Kallio**, a longstanding SuPo–Europol–Firewall field partner whose tactical confidence balances Romppainen's reflection. The Ö-Mappi scenario also has **draft** NPCs; do not silently replace Lotta with those names. Other Helsinki UNSA roles belong to the later campaign unless explicitly cross-cast.
 

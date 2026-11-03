@@ -66,20 +66,21 @@ Affects are mutable state. Missions, betrayal, rescue, propaganda, ideological c
 
 See FACTIONS.md for the NoöPunk starter content library and docs/design/GAMEPLAY_LOOP.md for the text-RPG architecture.
 
-## UNSA campaign frame
+## Europol campaign frame
 
 The default NoöPunk campaign is centered on **Helsinki** and organized around the
-**United Nations Security Administration (UNSA)**. The PC works for UNSA while potentially
+**Europol Helsinki Field Office**. The PC works for Europol while potentially
 belonging to several other political, cultural, national, professional, ideological,
 religious, community or social factions.
 
-UNSA pools member-state law-enforcement, intelligence, counterintelligence, military,
-scientific and technical assets for NHI and other X-Risk response. In Helsinki, the
-practical institutional chain is **Suojelupoliisi → Europol → UNSA**.
+Europol pools cross-border investigative coordination, analysis and specialist support for its
+member states. In Helsinki, the practical institutional chain is **Suojelupoliisi → Europol**;
+national officers retain national police powers, and Europol works through mandates, joint teams
+and liaison.
 
-UNSA also has a major civilian side: science, diplomacy, civil defence, development,
-humanitarian response, disaster relief and reconstruction. It is a major engine of the
-UN's evolution toward a federal world government.
+UNSA still exists. It coordinates science, intelligence, diplomacy, civil defence and NHI
+response where states allow it, but it is **not a world government** and not the player's
+default employer.
 
 The default campaign should expose only a **small number of factions relevant to
 Helsinki-area play**. Add distant or global factions when a scenario actually makes them
@@ -87,7 +88,8 @@ matter.
 
 Disclosure drives two contradictory processes at once: ontological shock, fragmentation,
 cult formation, xenophobic/doomer backlash and PSI-enabled hybrid infiltration on one
-side; global unification and planetary institutions on the other. Both are canonical.
+side; partial integration and new forms of cooperation on the other. Both are canonical.
+No federal world government emerges from either.
 
 Character creation grants **10 positive Faction Reputation points** divided between **two
 or three factions** (for example **6/4** or **5/3/2**). See RULEBOOK.md Chapter 9 and

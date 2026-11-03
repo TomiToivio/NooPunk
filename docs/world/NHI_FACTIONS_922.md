@@ -12,7 +12,7 @@ unverified stays that way here. Do not add dates, causes or answers that the sou
 
 Establish the **NHI faction landscape** for NoöPunk using the attached “Major NHI Factions” lore as the source of truth for this planning issue.
 
-**Critical gameplay distinction:** UNSA investigators primarily encounter **human factions, collaborators, cults, megacorporations, intelligence networks, political movements, proxy organizations, and infiltrators**. The major NHIs are distant geopolitical/metaphysical powers, not a parade of alien combat encounters. Cases should unfold through ambiguous evidence, factional maneuvering, compromised institutions, human motivations, and the occasional uncanny encounter.
+**Critical gameplay distinction:** NoöPunk investigators primarily encounter **human factions, collaborators, cults, megacorporations, intelligence networks, political movements, proxy organizations, and infiltrators**. The major NHIs are distant geopolitical/metaphysical powers, not a parade of alien combat encounters. Cases should unfold through ambiguous evidence, factional maneuvering, compromised institutions, human motivations, and the occasional uncanny encounter.
 
 The relationship between the two major NHI blocs is an escalating **Cold War / hybrid war**, potentially becoming a human-fought proxy war. Avoid automatically treating every human sympathizer as an infiltrator, or every unusual person as hostile.
 
@@ -40,7 +40,7 @@ A competing interstellar bloc that penetrated quarantine and established terrest
 - **Greys:** outwardly pragmatic, transactional and diplomatic, but implicated in hybridization and institutional infiltration. A reported hierarchy contrasts small, low-agency worker Greys with large, more autonomous capitalist Greys. Their long history of cloning and the reason for human/Grey genetic compatibility remain unresolved.
 - **Reptilians:** militaristic, threatening conquest, and seemingly much readier to sacrifice planetary life for war. Their tension with Greys could be a genuine split or negotiated good-cop/bad-cop strategy.
 - **Mantids:** mysterious, possibly Noetic/interdimensional and apparently senior to both, perhaps transcending biological life.
-- **Hybrids and abducted humans:** may be outwardly indistinguishable from ordinary humans. Psychological or psionic indicators are controversial, **not conclusive identification**. EU rules in the setting prohibit UNSA agents from terminating an unregistered hybrid without an empathy test, paralleling android protections. Design investigative and ethical dilemmas, not license for arbitrary profiling or killings.
+- **Hybrids and abducted humans:** may be outwardly indistinguishable from ordinary humans. Psychological or psionic indicators are controversial, **not conclusive identification**. EU rules in the setting prohibit Europol agents from terminating an unregistered hybrid without an empathy test, paralleling android protections. Design investigative and ethical dilemmas, not license for arbitrary profiling or killings.
 - UNSA negotiations continue amid a worsening **Cold War / hybrid war**, with real risk of open conflict and humans used as proxies.
 
 **Likely human-facing groups:** corporate partners, biotech and cortical-stack ventures, investors, economic-zone advocates, contractors, abductee networks, infiltrated agencies, hybrid communities, anti-Orion resistance, and militarized counter-groups.

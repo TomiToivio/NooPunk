@@ -4,7 +4,7 @@
 
 ## Romppainen: authored protagonist, major NPC, occasional companion
 
-Harri S. Romppainen is a senior UNSA inspector and the protagonist of the humorous Etsivä Romppainen prose. His familiar personality is retained, although he is older, wiser and more balanced. **The game's default PC remains a tabula-rasa UNSA rookie.** Do not make Romppainen the permanent player avatar or let his expertise auto-solve cases.
+Harri S. Romppainen is a senior UNSA inspector and the protagonist of the humorous Etsivä Romppainen prose. His familiar personality is retained, although he is older, wiser and more balanced. **The game's default PC is a newly assigned Europol field agent; the UNSA-rookie framing is historical (#1114).** Do not make Romppainen the permanent player avatar or let his expertise auto-solve cases.
 
 Four coherent, contradictory motivations:
 

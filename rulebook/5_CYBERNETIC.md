@@ -1,6 +1,6 @@
 # Cybernetic Systems
 
-This chapter defines the player-facing cybernetic and psychotronic capabilities explicitly specified for the default Helsinki / UNSA campaign. It does **not** define numeric gear statistics. The cyberspace surface itself is specified below, in **Cyberspace: the four access modes** (issue #222).
+This chapter defines the player-facing cybernetic and psychotronic capabilities explicitly specified for the default Helsinki / Europol campaign. It does **not** define numeric gear statistics. The cyberspace surface itself is specified below, in **Cyberspace: the four access modes** (issue #222).
 
 ## Standard UNSA augmentation package
 

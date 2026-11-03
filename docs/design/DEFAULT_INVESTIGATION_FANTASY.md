@@ -2,13 +2,13 @@
 
 **Status:** canonical default-campaign doctrine for issues #162 and #158.
 
-NoöPunk's default Helsinki campaign is a **post-Singularity anomalous-threat investigation game**. The player is not a generic cyberpunk mercenary. The default protagonist is a trained UNSA investigator working where ordinary crime, intelligence operations, AI, cybernetics, psionics and NHI overlap.
+NoöPunk's default Helsinki campaign is a **post-Singularity anomalous-threat investigation game**. The player is not a generic cyberpunk mercenary. The default protagonist is a trained **Europol investigator** working where ordinary crime, intelligence operations, AI, cybernetics, psionics and NHI overlap.
 
 A compact pitch:
 
 > **A Blade Runner-style investigator with a field partner, remote controller and limited forensic AI investigates NHI, cybercrime and psychic threats across physical reality, cyberspace, social networks and Noöspace.**
 
-The default campaign stays Europe/Helsinki-centered unless a case requires a wider view. Existing Suojelupoliisi / Europol institutional history remains useful locally; the active campaign employer is UNSA.
+The default campaign stays Europe/Helsinki-centered unless a case requires a wider view. Existing Suojelupoliisi / Europol institutional history remains useful locally; the active campaign employer is the **Europol Helsinki Field Office**. UNSA remains a partner and a constraint, not the employer.
 
 ## 1. One crime scene, four analytical layers
 
@@ -78,7 +78,7 @@ The AI is an extraordinary instrument, not the detective. It may say "this patte
 
 ## 3. Integrated investigator sensorium
 
-Standard UNSA augmentation exposes three directly perceptible overlays on the same environment:
+Standard Europol field augmentation exposes three directly perceptible overlays on the same environment:
 
 - **Physical**: low-light, thermal/multispectral, depth, trace-evidence and biometric overlays.
 - **Cyber**: nearby networks, devices, cameras, drones, cyberware, authentication state and other machine-visible infrastructure.
@@ -111,7 +111,7 @@ The operational question is:
 
 ## 5. Anomalous Cognition Examination
 
-UNSA uses a formal multi-channel procedure informally nicknamed the **Voight-Kampff**. The canonical neutral name is **Anomalous Cognition Examination (ACE)**.
+Europol uses a formal multi-channel procedure informally nicknamed the **Voight-Kampff**. The canonical neutral name is **Anomalous Cognition Examination (ACE)**; where the protocol is UNSA-provided, the agency supplies the assessment, not the authority to act.
 
 ACE can combine:
 

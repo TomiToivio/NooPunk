@@ -6,7 +6,7 @@
 >
 > **The canonical framework lives in `RULEBOOK.md` §9** (issue #144: the Lifepath sequence,
 > multiple faction membership, the 10-point Faction Reputation pool, the default Helsinki
-> campaign, and the UNSA Police Academy package). **This chapter consumes it and does not
+> campaign, and the Europol Academy package). **This chapter consumes it and does not
 > restate or re-derive it.**
 >
 > **No new numbers are defined here.** Per `AGENTS.md` §4, the STAT/Skill generation
@@ -28,9 +28,9 @@ Character generation is therefore the procedure for describing *one such assembl
 person, their factions, their augmentation, their training and their place in a network.
 
 **The canonical procedure is a Lifepath** (`RULEBOOK.md` §9.1), and the canonical default
-campaign is **Helsinki / UNSA** (§9.3), whose graduates receive a defined universal Skill
+campaign is **Helsinki / Europol** (§9.3), whose graduates receive a defined universal Skill
 package, a capability-level augmentation package and a stat-free rookie field kit
-(`data/rules/unsa_academy.json`).
+(compatibility data: `data/rules/unsa_academy.json`).
 
 ---
 
@@ -52,8 +52,8 @@ supplies the setting content for each stage — **not** as a second copy of the 
 | 9. Rivals and enemies | `rulebook/4_SOCIAL.md`, `rulebook/12_BEINGS.md` §11.4 |
 | 10. Romance / relationships | `rulebook/4_SOCIAL.md` |
 | 11. Major life events and crises | `rulebook/10_SINGULARITY_CRISIS.md`; `rulebook/7_TIMELINE.md` |
-| 12. Recruitment into UNSA or alternative employer | `RULEBOOK.md` §38 (UNSA), §9.3 |
-| 13. Police Academy basic training | `data/rules/unsa_academy.json`; `rulebook/12_BEINGS.md` §11.9 |
+| 12. Recruitment into Europol or alternative employer | `RULEBOOK.md` §38 (Europol), §9.3 |
+| 13. Europol Academy basic training | `data/rules/unsa_academy.json` (compatibility name); `rulebook/12_BEINGS.md` §11.9 |
 | 14. Specialist academy / track | §13.5 |
 | 15. Starting assignment | `rulebook/12_BEINGS.md` §11.4's factions; `docs/design/GAMEPLAY_LOOP.md` |
 | 16. Starting Reputation allocation | `RULEBOOK.md` §9.2 (10 points, two or three factions) |
@@ -142,7 +142,7 @@ Skill vocabulary (`data/rules/skills.json`, `RULEBOOK.md` §4.1) and the four la
 > niche-protection rule.** The paths describe *what a character is for*; the canonical
 > Lifepath and Skill rules supply the numbers.
 
-### 13.5.1 The default: UNSA Police Academy graduate
+### 13.5.1 The default: Europol Academy graduate
 
 The canonical entry point (`RULEBOOK.md` §38; `data/rules/unsa_academy.json`): a universally
 trained investigator-officer with a forensic sensorium, psychotronic protection, an optional
@@ -163,13 +163,13 @@ augmentation package and a stat-free field kit. **The non-implant path is fully 
 | **OSINT / intelligence analyst** | The remote, network-side investigator |
 | **Negotiator / interviewer** | `Talk`, `Kinesics`, `Deceive`, `Provoke` (canonical task mapping) |
 
-### 13.5.3 Non-UNSA and non-investigator paths
+### 13.5.3 Non-Europol and non-investigator paths
 
-The default campaign is UNSA-centred, but the setting's politics require alternatives:
+The default campaign is Europol-centred, but the setting's politics require alternatives:
 
 | Path | Light description |
 | --- | --- |
-| **Corporate security / fixer** | The mirror image of UNSA, with a different master |
+| **Corporate security / fixer** | The mirror image of Europol, with a different master |
 | **Journalist / disclosure researcher** | The Disclosure beat (`RULEBOOK.md` §41) |
 | **Rhizome / movement organiser** | Anti-sovereign politics made professional (§9.14) |
 | **Psychedelic-church / contemplative practitioner** | PSI training inside a tradition (§6.10.1) |
@@ -202,7 +202,7 @@ canonical components.** Useful for the Lifepath's stage 18 summary.
 - **PSI** — the canonical PSY Skills, if any (`rulebook/6_PSYCHIC.md` §6.7.1).
 - **Belief position** — where the character stands on PSI, NHI and AGI
   (§6.10.4: **there is no consensus**).
-- **Legal and employment status** — UNSA affiliation, licences, warrants.
+- **Legal and employment status** — Europol affiliation, licences, warrants.
 - **The assemblage** — what the character is *coupled to*: agents, LLM copilot, exocortex,
   BCI, partner, collective (§9.10's spectrum).
 - **Open questions** — the identity and continuity questions the character embodies
@@ -230,14 +230,14 @@ Three setting rules bind character generation directly:
 ## 13.8 The default lifepath in five steps (issue #197)
 
 The canonical Lifepath (`RULEBOOK.md` §9.1, issue #144) is a long sequence. For the default
-UNSA campaign, issue #197 names its **five load-bearing steps** — the spine the setting
+Europol campaign, issue #197 names its **five load-bearing steps** — the spine the setting
 content hangs from:
 
 1. **Childhood, social origins and formative experience.** Where they came from and what
    happened to them (§13.4).
-2. **The experience that made UNSA recruit them.** Education, a first career, or an
+2. **The experience that made Europol recruit them.** Education, a first career, or an
    extraordinary event — the reason their file exists at all.
-3. **UNSA Academy common training.** The **equalizing step**: the universal
+3. **Europol Academy common training.** The **equalizing step**: the universal
    investigator-officer package every graduate receives (`data/rules/unsa_academy.json`,
    issue #158), regardless of where they came from. The Academy teaches baseline
    investigation, evidence handling, safety and fieldcraft, cyber hygiene, contact protocol
@@ -260,7 +260,7 @@ question that issue #197 does not settle**. Balance, eligibility and progression
 belong to the rules issues, and this chapter deliberately locks nothing.
 
 > **Related issues (coordinate, do not duplicate).** **#144** owns the Lifepath framework and
-> the Reputation pool; **#158** owns the UNSA Academy universal package, the standard
+> the Reputation pool; **#158** owns the Europol Academy universal package (compatibility data: `unsa_academy.json`), the standard
 > augmentations and the rookie field kit; **#159** owns the canonical Skill vocabulary, the
 > field-specialization model and the default STAT bindings. This chapter consumes all three
 > and restates none of them.
@@ -305,7 +305,7 @@ define no numbers, no Skill packages and no mechanical bonuses**; they illustrat
 **1 — The Geek who was already an expert.**
 *Origins:* a corporate research arcology; comfortably inside the machine (§13.4.2).
 *Recruited:* a published (and quietly suppressed) result in psychotronic signal analysis that
-should not have been possible with the equipment she had. UNSA read the paper; her employer
+should not have been possible with the equipment she had. Europol read the paper; her employer
 read the security log. *Route:* **Geek**.
 *Equalizer:* the Academy taught her to secure a scene, handle evidence and carry a warrant.
 *First assignment:* a forensic-support posting she finds humiliatingly junior and privately
@@ -342,7 +342,7 @@ accusation in the family (§11.5).
 *Recruited:* volunteered, which nobody expected, or was handed over, which is worse.
 *Route:* readable as any of the three — which is precisely why the slang fails at the edges,
 and why the Academy's equalizing rule exists.
-*Equalizer:* graduation makes her a UNSA officer; it does not make anyone trust her, and it
+*Equalizer:* graduation makes her a Europol officer; it does not make anyone trust her, and it
 does not settle what her background did to her.
 *First assignment:* counterintelligence, where her knowledge is the most useful thing in the
 room and her file is the most dangerous (§38's Cold War).
@@ -360,7 +360,7 @@ Binding, per `AGENTS.md` §4 and the author's "light description" instruction:
 
 - **the STAT/Skill generation procedure** beyond the canonical Lifepath framework
   (`RULEBOOK.md` §9) — no new point-buy, no rolling method;
-- **starting Skill counts or levels**, except the canonical UNSA package;
+- **starting Skill counts or levels**, except the canonical Europol package (compatibility data name);
 - **character classes or archetypes** — §13.5's paths are careers, **not classes**; they
   grant nothing mechanically;
 - **derived statistics**;

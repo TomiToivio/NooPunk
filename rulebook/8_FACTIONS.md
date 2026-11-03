@@ -291,7 +291,7 @@ The primary category is for rules and navigation, **not a rigid ontology**.
 
 A character may simultaneously belong to several factions, for different reasons:
 
-- the faction they **work for** (in the default campaign, UNSA — see §38)
+- the faction they **work for** (in the default campaign, Europol — see §38)
 - a faction they **personally support**
 - a faction based on **where they live**
 - a professional or academic faction
@@ -309,7 +309,7 @@ During character generation the player receives **10 positive Reputation points*
 between **two or three factions**, for example **6/4** or **5/3/2**.
 
 Employer membership is **granted separately** by the campaign template rather than bought
-from this pool: in the default campaign the character is a UNSA agent by default (§38) and
+from this pool: in the default campaign the character is a Europol field agent by default (§38) and
 spends the 10 points on the personal, local, professional or ideological ties that make them
 an individual rather than a uniform.
 

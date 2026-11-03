@@ -338,7 +338,7 @@ Implement the first playable character kernel around:
 - Density;
 - Polarization;
 - Contacts / Factions / Motivations;
-- UNSA agents.
+- Europol agents.
 
 Defer until this model is stable:
 
