@@ -15,7 +15,7 @@ SOURCE = ROOT / "data/rules/cwn_fe_toc.json"
 TABLETOP = ROOT / "RULEBOOK.md"
 PYTHON = ROOT / "src/rules"
 POLICY = ROOT / "docs/rules/CWN_IMMUTABLE_CORE_1068.md"
-MATRIX = ROOT / "docs/rules/CWN_PARITY_MATRIX.md"
+MATRIX = ROOT / "docs/rules/CWN_COVERAGE_1068.md"  # the single coverage document; the old matrix path is a pointer
 
 
 def audit() -> list[str]:

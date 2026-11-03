@@ -12,7 +12,7 @@ The free rulebook and hosted SRD are **not interchangeable evidence**: page cove
 ## Existing evidence and limitations
 
 - `data/rules/cwn_fe_toc.json` inventories headings and Free Edition PDF page numbers; headings are **not** proof of implemented mechanics.
-- `docs/rules/CWN_PARITY_MATRIX.md` and `tools/cwn_parity_audit.py` track 66 SRD navigation sections with heuristic file/test evidence; **implemented** in that matrix does **not** mean source-verified. See the generator's status definitions.
+- `docs/rules/CWN_COVERAGE_1068.md` and `tools/cwn_parity_audit.py` track 66 SRD navigation sections with heuristic file/test evidence (`docs/rules/CWN_PARITY_MATRIX.md` is now a generated pointer to that report, not a second copy); **implemented** in that matrix does **not** mean source-verified. See the generator's status definitions.
 - `data/rules/cwn_compliance_matrix.json`, `docs/rules/CWN_COMPLIANCE_MATRIX_950.md`, and `docs/mud/CWN_COMPLIANCE_MATRIX.md` contain other inventories with different scopes and dates. Do **not** aggregate their percentages or treat the earlier MUD gap list as an up-to-date exhaustive diagnosis.
 - `docs/RULES_PARITY_1053.md` records save-target adapter contract disagreements among Python and MUD entry points. This remains a **source-fidelity and shared-library integration blocker**, not an authorized reason to rewrite core CWN.
 - `RULEBOOK.md` and `docs/rulebook_segments/` are tabletop documentation. `src/rules/cwn_*.py` is one Python rules surface; `mud/` is an interface/integration surface. Prior Godot copies are not a normative source for future changes.
