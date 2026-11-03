@@ -187,16 +187,34 @@ def render(register: dict) -> str:
                      f"{'yes' if source.get('usable') else '**no**'} | {source.get('note', '')} |")
 
     faithful = register.get("requires_fidelity")
-    header = "| ID | Subsystem | Page | Status |" + (" Fidelity |" if faithful else "") + " Python | Test | Owner |"
-    rule = "|---|---|---|---|" + ("---|" if faithful else "") + "---|---|---|"
-    lines += ["", "## The register", "", header, rule]
-    for row in register["rows"]:
+    rows = register["rows"]
+    # A shared renderer must not erase a register's own columns: #1101 records edition and risk
+    # per row, #1105 records fidelity. Include a column only when that register carries it.
+    has_edition = any("edition" in row for row in rows)
+    has_risk = any("risk" in row for row in rows)
+    headers = ["ID", "Subsystem", "Page", "Status"]
+    if faithful:
+        headers.append("Fidelity")
+    if has_edition:
+        headers.append("Edition")
+    if has_risk:
+        headers.append("Risk")
+    headers += ["Python", "Test", "Owner"]
+    lines += ["", "## The register", "", "| " + " | ".join(headers) + " |",
+              "|" + "---|" * len(headers)]
+    for row in rows:
         python = "<br>".join(f"`{Path(p).name}`" for p in row["python"]) or "—"
         tests = "<br>".join(f"`{Path(t).name}`" for t in row["tests"]) or "—"
         page = row.get("printed_page") or row.get("source_ref") or "—"
-        mid = f" {row['fidelity']} |" if faithful else ""
-        lines.append(f"| {row['id']} | {row['subsystem']} | {page} | **{row['status']}** |{mid} "
-                     f"{python} | {tests} | {row['owner']} |")
+        cells = [row["id"], row["subsystem"], str(page), f"**{row['status']}**"]
+        if faithful:
+            cells.append(row["fidelity"])
+        if has_edition:
+            cells.append(row.get("edition", "—"))
+        if has_risk:
+            cells.append(row.get("risk", "—"))
+        cells += [python, tests, row["owner"]]
+        lines.append("| " + " | ".join(cells) + " |")
 
     lines += ["", "## What is actually done, and what only looks done", ""]
     for status in ("implemented", "verified_reuse", "partial", "blocked", "not_applicable"):

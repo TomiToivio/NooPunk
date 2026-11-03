@@ -44,42 +44,42 @@ A row can be implemented and still unverified. These two columns are separate cl
 
 ## The register
 
-| ID | Subsystem | Page | Status | Fidelity | Python | Test | Owner |
-|---|---|---|---|---|---|---|---|
-| CC1 | Baseline human character generation | 3 | **verified_reuse** | not_applicable | `cwn_character.py` | `test_cwn_core.py` | #1006 |
-| CC2 | Psychic and Partial Psychic class packages | 3 | **partial** | unverified | `swn_progression.py` | `test_swn_progression.py` | #1043 |
-| CC3 | Alien and True AI character options | 3 | **missing** | blocked | — | — | #1105 |
-| P1 | Effort accounting, commitment durations and recovery | 29 | **implemented** | unverified | `swn_psionics.py`<br>`swn_psionics.json` | `test_swn_psionics.py` | #1043 |
-| P2 | Torching and its consequences | 29 | **implemented** | unverified | `swn_psionics.py` | `test_swn_psionics_torching.py` | #1043 |
-| P3 | Psychic skills | 29 | **partial** | unverified | `swn_psionics.py` | `test_swn_psionics_contract.py` | #1043 |
-| P4 | Six disciplines: technique inventory and effects | 29 | **partial** | blocked | `psionics.py`<br>`psionics_techniques.json` | `test_psionics_catalogue.py` | #1043 |
-| P5 | Technique activation, targets, saves and scene state | 29 | **partial** | unverified | `psionics.py` | `test_natural_psi_effects_apply.py` | #1043 |
-| S1 | Core resolution, combat and saves | 45 | **verified_reuse** | not_applicable | `cwn_combat.py`<br>`wn_core.py` | `test_cwn_combat.py` | #1006 |
-| S2 | Environmental hazards: radiation, vacuum, exotic environments | 45 | **missing** | unverified | — | — | #1105 |
-| E1 | Technology levels and alien equipment | 61 | **missing** | unverified | — | — | #1105 |
-| E2 | Vehicles | 61 | **verified_reuse** | not_applicable | `cwn_vehicles.py` | `test_cwn_vehicles.py` | #1006 |
-| SH1 | Hull, fittings and vessel construction | 93 | **partial** | unverified | `swn_starships.py` | `test_swn_starships.py` | #1105 |
-| SH2 | Space combat, crew actions, damage and repair | 93 | **partial** | unverified | `swn_starships.py` | `test_swn_starships.py` | #1105 |
-| H1 | Setting history versus mechanical procedures | 121 | **not_applicable** | not_applicable | — | — | #1105 |
-| SC1 | Routes and fuel budgets | 129 | **partial** | unverified | `swn_sector.py` | `test_swn_space_factions.py` | #1105 |
-| SC2 | World, route and tag generation | 129 | **missing** | unverified | — | — | #1105 |
-| AC1 | Templates, patrons and generators | 173 | **missing** | unverified | — | — | #1105 |
-| X1 | Alien stat blocks and species creation | 193 | **missing** | unverified | — | — | #1105 |
-| X2 | Species social lenses and NPC packages | 193 | **missing** | unverified | — | — | #1105 |
-| F1 | Force, Cunning, Wealth and FacCreds | 211 | **implemented** | unverified | `swn_faction_turn.py` | `test_swn_faction_engine.py` | #1043 |
-| F2 | Asset catalogue | 211 | **missing** | blocked | — | — | #1105 |
-| F3 | Asset movement, attacks, defence and damage | 211 | **partial** | unverified | `swn_faction_turn.py` | `test_swn_faction_engine.py` | #1043 |
-| F4 | Deterministic multi-faction turn engine | 211 | **implemented** | unverified | `swn_faction_engine.py` | `test_swn_faction_engine.py` | #1043 |
-| F5 | Faction operations | 211 | **implemented** | unverified | `swn_faction_operations.py` | `test_swn_faction_operations.py` | #1043 |
-| F6 | Tabletop faction sheet and ledger | 211 | **missing** | unverified | — | — | #1105 |
-| GM1 | Generators, patrons and one-roll tools | 231 | **missing** | unverified | — | — | #1105 |
-| T1 | Identity, shells and imprinting | 248 | **partial** | unverified | `swn_transhuman.py` | `test_swn_transhuman_true_ai.py` | #1105 |
-| T2 | Cortical stacks and resleeving economy | 248 | **missing** | unverified | — | — | #1105 |
-| SM1 | Space Magic spell and occult variants | 266 | **missing** | unverified | — | — | #1105 |
-| HC1 | Heroic progression | 274 | **missing** | unverified | — | — | #1105 |
-| AI1 | Agency, hosts and containment | 280 | **partial** | unverified | `swn_true_ai.py` | `test_swn_transhuman_true_ai.py` | #1105 |
-| SO1 | Alien societies, governments and species politics | 290 | **missing** | unverified | — | — | #1105 |
-| M1 | Chassis, mech combat and construction | 300 | **missing** | unverified | — | — | #1105 |
+| ID | Subsystem | Page | Status | Fidelity | Edition | Python | Test | Owner |
+|---|---|---|---|---|---|---|---|---|
+| CC1 | Baseline human character generation | 3 | **verified_reuse** | not_applicable | revised | `cwn_character.py` | `test_cwn_core.py` | #1006 |
+| CC2 | Psychic and Partial Psychic class packages | 3 | **partial** | unverified | revised | `swn_progression.py` | `test_swn_progression.py` | #1043 |
+| CC3 | Alien and True AI character options | 3 | **missing** | blocked | deluxe | — | — | #1105 |
+| P1 | Effort accounting, commitment durations and recovery | 29 | **implemented** | unverified | revised | `swn_psionics.py`<br>`swn_psionics.json` | `test_swn_psionics.py` | #1043 |
+| P2 | Torching and its consequences | 29 | **implemented** | unverified | revised | `swn_psionics.py` | `test_swn_psionics_torching.py` | #1043 |
+| P3 | Psychic skills | 29 | **partial** | unverified | revised | `swn_psionics.py` | `test_swn_psionics_contract.py` | #1043 |
+| P4 | Six disciplines: technique inventory and effects | 29 | **partial** | blocked | revised | `psionics.py`<br>`psionics_techniques.json` | `test_psionics_catalogue.py` | #1043 |
+| P5 | Technique activation, targets, saves and scene state | 29 | **partial** | unverified | revised | `psionics.py` | `test_natural_psi_effects_apply.py` | #1043 |
+| S1 | Core resolution, combat and saves | 45 | **verified_reuse** | not_applicable | revised | `cwn_combat.py`<br>`wn_core.py` | `test_cwn_combat.py` | #1006 |
+| S2 | Environmental hazards: radiation, vacuum, exotic environments | 45 | **missing** | unverified | revised | — | — | #1105 |
+| E1 | Technology levels and alien equipment | 61 | **missing** | unverified | revised | — | — | #1105 |
+| E2 | Vehicles | 61 | **verified_reuse** | not_applicable | revised | `cwn_vehicles.py` | `test_cwn_vehicles.py` | #1006 |
+| SH1 | Hull, fittings and vessel construction | 93 | **partial** | unverified | revised | `swn_starships.py` | `test_swn_starships.py` | #1105 |
+| SH2 | Space combat, crew actions, damage and repair | 93 | **partial** | unverified | revised | `swn_starships.py` | `test_swn_starships.py` | #1105 |
+| H1 | Setting history versus mechanical procedures | 121 | **not_applicable** | not_applicable | revised | — | — | #1105 |
+| SC1 | Routes and fuel budgets | 129 | **partial** | unverified | revised | `swn_sector.py` | `test_swn_space_factions.py` | #1105 |
+| SC2 | World, route and tag generation | 129 | **missing** | unverified | revised | — | — | #1105 |
+| AC1 | Templates, patrons and generators | 173 | **missing** | unverified | revised | — | — | #1105 |
+| X1 | Alien stat blocks and species creation | 193 | **missing** | unverified | revised | — | — | #1105 |
+| X2 | Species social lenses and NPC packages | 193 | **missing** | unverified | revised | — | — | #1105 |
+| F1 | Force, Cunning, Wealth and FacCreds | 211 | **implemented** | unverified | revised | `swn_faction_turn.py` | `test_swn_faction_engine.py` | #1043 |
+| F2 | Asset catalogue | 211 | **missing** | blocked | revised | — | — | #1105 |
+| F3 | Asset movement, attacks, defence and damage | 211 | **partial** | unverified | revised | `swn_faction_turn.py` | `test_swn_faction_engine.py` | #1043 |
+| F4 | Deterministic multi-faction turn engine | 211 | **implemented** | unverified | revised | `swn_faction_engine.py` | `test_swn_faction_engine.py` | #1043 |
+| F5 | Faction operations | 211 | **implemented** | unverified | revised | `swn_faction_operations.py` | `test_swn_faction_operations.py` | #1043 |
+| F6 | Tabletop faction sheet and ledger | 211 | **missing** | unverified | revised | — | — | #1105 |
+| GM1 | Generators, patrons and one-roll tools | 231 | **missing** | unverified | revised | — | — | #1105 |
+| T1 | Identity, shells and imprinting | 248 | **partial** | unverified | deluxe | `swn_transhuman.py` | `test_swn_transhuman_true_ai.py` | #1105 |
+| T2 | Cortical stacks and resleeving economy | 248 | **missing** | unverified | deluxe | — | — | #1105 |
+| SM1 | Space Magic spell and occult variants | 266 | **missing** | unverified | deluxe | — | — | #1105 |
+| HC1 | Heroic progression | 274 | **missing** | unverified | deluxe | — | — | #1105 |
+| AI1 | Agency, hosts and containment | 280 | **partial** | unverified | deluxe | `swn_true_ai.py` | `test_swn_transhuman_true_ai.py` | #1105 |
+| SO1 | Alien societies, governments and species politics | 290 | **missing** | unverified | deluxe | — | — | #1105 |
+| M1 | Chassis, mech combat and construction | 300 | **missing** | unverified | deluxe | — | — | #1105 |
 
 ## What is actually done, and what only looks done
 
