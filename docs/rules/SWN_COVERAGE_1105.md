@@ -50,7 +50,7 @@ A row can be implemented and still unverified. These two columns are separate cl
 | CC2 | Psychic and Partial Psychic class packages | 3 | **partial** | unverified | revised | `swn_progression.py` | `test_swn_progression.py` | Psychic advancement as published, on top of CWN character creation. | #1043 |
 | CC3 | Alien and True AI character options | 3 | **missing** | blocked | deluxe | — | — |  | #1105 |
 | P1 | Effort accounting, commitment durations and recovery | 29 | **implemented** | unverified | revised | `swn_psionics.py`<br>`swn_psionics.json` | `test_swn_psionics.py` | Effort pools with active, scene and day commitments, and their recovery. | #1043 |
-| P2 | Torching and its consequences | 29 | **implemented** | unverified | revised | `swn_psionics.py` | `test_swn_psionics_torching.py` | Torching as a costly last resort with its System Strain consequence. | #1043 |
+| P2 | Torching and its consequences | 29 | **implemented** | unverified | revised | `swn_psionics.py` | `test_swn_psionics_torching.py` | Torching as a costly last resort: attributes burn and the granted point is scene-scoped. System Strain is not applied here. | #1043 |
 | P3 | Psychic skills | 29 | **partial** | unverified | revised | `swn_psionics.py` | `test_swn_psionics_contract.py` |  | #1043 |
 | P4 | Six disciplines: technique inventory and effects | 29 | **partial** | blocked | revised | `psionics.py`<br>`psionics_techniques.json` | `test_psionics_catalogue.py` | Provisional NoöPunk techniques over the Effort shape. | #1043 |
 | P5 | Technique activation, targets, saves and scene state | 29 | **partial** | unverified | revised | `psionics.py` | `test_natural_psi_effects_apply.py` |  | #1043 |
