@@ -852,6 +852,7 @@
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution.py",
         "tests/test_rules_constitution_modules.py",
+        "tests/test_swn_faction_assets_1105.py",
         "tests/test_swn_faction_engine.py",
         "tests/test_without_number_kernel.py",
         "tests/test_wn_core.py",

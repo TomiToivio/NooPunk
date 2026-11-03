@@ -1,0 +1,1640 @@
+{
+ "format": "noopunk.rules.swn_faction_assets",
+ "version": 1,
+ "issue": 1105,
+ "source": {
+  "title": "Stars Without Number: Revised Edition — Deluxe Edition",
+  "isbn": "978-1-936673-95-7",
+  "pages": {
+   "Cunning": 219,
+   "Force": 221,
+   "Wealth": 223
+  },
+  "note": "Numbers only: hit points, cost, tech level, type, the attack and counterattack lines. The book's ability descriptions and its lettered note legend (A/S/P) are NOT reproduced; the codes are recorded so a reader can look them up."
+ },
+ "assets": [
+  {
+   "name": "Base of Influence",
+   "hp": null,
+   "cost": null,
+   "tech_level": 0,
+   "type": "Special",
+   "notes": [
+    "S"
+   ],
+   "level": 1,
+   "page": 219,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "none",
+   "id": "base_of_influence",
+   "category": "Cunning",
+   "categories": [
+    "Cunning",
+    "Wealth"
+   ]
+  },
+  {
+   "name": "False Front",
+   "hp": 2,
+   "cost": 1,
+   "tech_level": 0,
+   "type": "Logistics Facility",
+   "notes": [
+    "S"
+   ],
+   "level": 1,
+   "page": 219,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "none",
+   "id": "false_front",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Informers",
+   "hp": 3,
+   "cost": 2,
+   "tech_level": 0,
+   "type": "Special Forces",
+   "notes": [
+    "A",
+    "S"
+   ],
+   "level": 1,
+   "page": 219,
+   "attack": {
+    "attribute": "Cunning",
+    "defence": "Cunning",
+    "damage": "",
+    "special": "special"
+   },
+   "counter": "none",
+   "id": "informers",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Smugglers",
+   "hp": 4,
+   "cost": 2,
+   "tech_level": 4,
+   "type": "Starship",
+   "notes": [
+    "A"
+   ],
+   "level": 1,
+   "page": 219,
+   "attack": {
+    "attribute": "Cunning",
+    "defence": "Wealth",
+    "damage": "1d4",
+    "special": ""
+   },
+   "counter": "none",
+   "id": "smugglers",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Blackmail",
+   "hp": 4,
+   "cost": 4,
+   "tech_level": 0,
+   "type": "Tactic",
+   "notes": [
+    "S"
+   ],
+   "level": 2,
+   "page": 219,
+   "attack": {
+    "attribute": "Cunning",
+    "defence": "Cunning",
+    "damage": "1d4+1",
+    "special": ""
+   },
+   "counter": "none",
+   "id": "blackmail",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Lobbyists",
+   "hp": 4,
+   "cost": 4,
+   "tech_level": 0,
+   "type": "Special Forces",
+   "notes": [
+    "S"
+   ],
+   "level": 2,
+   "page": 219,
+   "attack": {
+    "attribute": "Cunning",
+    "defence": "Cunning",
+    "damage": "",
+    "special": "special"
+   },
+   "counter": "none",
+   "id": "lobbyists",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Saboteurs",
+   "hp": 6,
+   "cost": 5,
+   "tech_level": 0,
+   "type": "Special Forces",
+   "notes": [
+    "S"
+   ],
+   "level": 2,
+   "page": 219,
+   "attack": {
+    "attribute": "Cunning",
+    "defence": "Cunning",
+    "damage": "2d4",
+    "special": ""
+   },
+   "counter": "none",
+   "id": "saboteurs",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Seductress",
+   "hp": 4,
+   "cost": 4,
+   "tech_level": 0,
+   "type": "Special Forces",
+   "notes": [
+    "A",
+    "S"
+   ],
+   "level": 2,
+   "page": 219,
+   "attack": {
+    "attribute": "Cunning",
+    "defence": "Cunning",
+    "damage": "",
+    "special": "special"
+   },
+   "counter": "none",
+   "id": "seductress",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Covert Shipping",
+   "hp": 4,
+   "cost": 8,
+   "tech_level": 4,
+   "type": "Logistics Facility",
+   "notes": [
+    "A",
+    "S"
+   ],
+   "level": 3,
+   "page": 219,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "none",
+   "id": "covert_shipping",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Cyberninjas",
+   "hp": 4,
+   "cost": 6,
+   "tech_level": 4,
+   "type": "Special Forces",
+   "notes": [],
+   "level": 3,
+   "page": 219,
+   "attack": {
+    "attribute": "Cunning",
+    "defence": "Cunning",
+    "damage": "2d6",
+    "special": ""
+   },
+   "counter": "none",
+   "id": "cyberninjas",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Stealth",
+   "hp": null,
+   "cost": 2,
+   "tech_level": 0,
+   "type": "Tactic",
+   "notes": [
+    "S"
+   ],
+   "level": 3,
+   "page": 219,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "none",
+   "id": "stealth",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Party Machine",
+   "hp": 10,
+   "cost": 8,
+   "tech_level": 0,
+   "type": "Logistics Facility",
+   "notes": [
+    "S"
+   ],
+   "level": 4,
+   "page": 219,
+   "attack": {
+    "attribute": "Cunning",
+    "defence": "Cunning",
+    "damage": "2d6",
+    "special": ""
+   },
+   "counter": "1d6",
+   "id": "party_machine",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Seditionists",
+   "hp": 8,
+   "cost": 12,
+   "tech_level": 0,
+   "type": "Special Forces",
+   "notes": [
+    "A"
+   ],
+   "level": 4,
+   "page": 219,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "none",
+   "id": "seditionists",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Tripwire Cells",
+   "hp": 8,
+   "cost": 12,
+   "tech_level": 4,
+   "type": "Special Forces",
+   "notes": [
+    "A",
+    "S"
+   ],
+   "level": 4,
+   "page": 219,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "1d4",
+   "id": "tripwire_cells",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Vanguard Cadres",
+   "hp": 12,
+   "cost": 8,
+   "tech_level": 3,
+   "type": "Military Unit",
+   "notes": [],
+   "level": 4,
+   "page": 219,
+   "attack": {
+    "attribute": "Cunning",
+    "defence": "Cunning",
+    "damage": "1d6",
+    "special": ""
+   },
+   "counter": "1d6",
+   "id": "vanguard_cadres",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Boltholes",
+   "hp": 6,
+   "cost": 12,
+   "tech_level": 4,
+   "type": "Logistics Facility",
+   "notes": [
+    "S"
+   ],
+   "level": 5,
+   "page": 219,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "2d6",
+   "id": "boltholes",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Cracked Comms",
+   "hp": 6,
+   "cost": 14,
+   "tech_level": 0,
+   "type": "Tactic",
+   "notes": [
+    "S"
+   ],
+   "level": 5,
+   "page": 219,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "special",
+   "id": "cracked_comms",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Covert Transit Net",
+   "hp": 15,
+   "cost": 18,
+   "tech_level": 4,
+   "type": "Logistics Facility",
+   "notes": [
+    "A"
+   ],
+   "level": 6,
+   "page": 219,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "none",
+   "id": "covert_transit_net",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Demagogue",
+   "hp": 10,
+   "cost": 20,
+   "tech_level": 0,
+   "type": "Special Forces",
+   "notes": [],
+   "level": 6,
+   "page": 219,
+   "attack": {
+    "attribute": "Cunning",
+    "defence": "Cunning",
+    "damage": "2d8",
+    "special": ""
+   },
+   "counter": "1d8",
+   "id": "demagogue",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Transport Lockdown",
+   "hp": 10,
+   "cost": 20,
+   "tech_level": 4,
+   "type": "Tactic",
+   "notes": [
+    "S"
+   ],
+   "level": 6,
+   "page": 219,
+   "attack": {
+    "attribute": "Cunning",
+    "defence": "Cunning",
+    "damage": "",
+    "special": "special"
+   },
+   "counter": "none",
+   "id": "transport_lockdown",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Book of Secrets",
+   "hp": 10,
+   "cost": 20,
+   "tech_level": 4,
+   "type": "Tactic",
+   "notes": [
+    "S"
+   ],
+   "level": 7,
+   "page": 219,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "2d8",
+   "id": "book_of_secrets",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Popular Movement",
+   "hp": 16,
+   "cost": 25,
+   "tech_level": 4,
+   "type": "Tactic",
+   "notes": [
+    "S"
+   ],
+   "level": 7,
+   "page": 219,
+   "attack": {
+    "attribute": "Cunning",
+    "defence": "Cunning",
+    "damage": "2d6",
+    "special": ""
+   },
+   "counter": "1d6",
+   "id": "popular_movement",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Treachery",
+   "hp": 5,
+   "cost": 10,
+   "tech_level": 0,
+   "type": "Tactic",
+   "notes": [
+    "S"
+   ],
+   "level": 7,
+   "page": 219,
+   "attack": {
+    "attribute": "Cunning",
+    "defence": "Cunning",
+    "damage": "",
+    "special": "special"
+   },
+   "counter": "none",
+   "id": "treachery",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Panopticon Matrix",
+   "hp": 20,
+   "cost": 30,
+   "tech_level": 5,
+   "type": "Logistics Facility",
+   "notes": [
+    "S"
+   ],
+   "level": 8,
+   "page": 219,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "1d6",
+   "id": "panopticon_matrix",
+   "category": "Cunning",
+   "categories": [
+    "Cunning"
+   ]
+  },
+  {
+   "name": "Hitmen",
+   "hp": 1,
+   "cost": 2,
+   "tech_level": 0,
+   "type": "Special Forces",
+   "notes": [],
+   "level": 1,
+   "page": 221,
+   "attack": {
+    "attribute": "Force",
+    "defence": "Cunning",
+    "damage": "1d6",
+    "special": ""
+   },
+   "counter": "none",
+   "id": "hitmen",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Militia Unit",
+   "hp": 4,
+   "cost": 4,
+   "tech_level": 3,
+   "type": "Military Unit",
+   "notes": [
+    "P"
+   ],
+   "level": 1,
+   "page": 221,
+   "attack": {
+    "attribute": "Force",
+    "defence": "Force",
+    "damage": "1d6",
+    "special": ""
+   },
+   "counter": "1d4+1",
+   "id": "militia_unit",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Security Personnel",
+   "hp": 3,
+   "cost": 2,
+   "tech_level": 0,
+   "type": "Military Unit",
+   "notes": [],
+   "level": 1,
+   "page": 221,
+   "attack": {
+    "attribute": "Force",
+    "defence": "Force",
+    "damage": "1d3+1",
+    "special": ""
+   },
+   "counter": "1d4",
+   "id": "security_personnel",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Elite Skirmishers",
+   "hp": 5,
+   "cost": 5,
+   "tech_level": 4,
+   "type": "Military Unit",
+   "notes": [
+    "P"
+   ],
+   "level": 2,
+   "page": 221,
+   "attack": {
+    "attribute": "Force",
+    "defence": "Force",
+    "damage": "2d4",
+    "special": ""
+   },
+   "counter": "1d4+1",
+   "id": "elite_skirmishers",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Guerrilla Populace",
+   "hp": 6,
+   "cost": 4,
+   "tech_level": 0,
+   "type": "Military Unit",
+   "notes": [],
+   "level": 2,
+   "page": 221,
+   "attack": {
+    "attribute": "Force",
+    "defence": "Cunning",
+    "damage": "1d4+1",
+    "special": ""
+   },
+   "counter": "none",
+   "id": "guerrilla_populace",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Hardened Personnel",
+   "hp": 4,
+   "cost": 4,
+   "tech_level": 3,
+   "type": "Special Forces",
+   "notes": [],
+   "level": 2,
+   "page": 221,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "1d4+1",
+   "id": "hardened_personnel",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Heavy Drop Assets",
+   "hp": 6,
+   "cost": 4,
+   "tech_level": 4,
+   "type": "Facility",
+   "notes": [
+    "A"
+   ],
+   "level": 2,
+   "page": 221,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "none",
+   "id": "heavy_drop_assets",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Counterintel Unit",
+   "hp": 4,
+   "cost": 6,
+   "tech_level": 4,
+   "type": "Special Forces",
+   "notes": [],
+   "level": 3,
+   "page": 221,
+   "attack": {
+    "attribute": "Cunning",
+    "defence": "Cunning",
+    "damage": "1d4+1",
+    "special": ""
+   },
+   "counter": "1d6",
+   "id": "counterintel_unit",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Cunning Trap",
+   "hp": 2,
+   "cost": 5,
+   "tech_level": 0,
+   "type": "Tactic",
+   "notes": [],
+   "level": 3,
+   "page": 221,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "1d6+3",
+   "id": "cunning_trap",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Zealots",
+   "hp": 4,
+   "cost": 6,
+   "tech_level": 0,
+   "type": "Special Forces",
+   "notes": [
+    "S"
+   ],
+   "level": 3,
+   "page": 221,
+   "attack": {
+    "attribute": "Force",
+    "defence": "Force",
+    "damage": "2d6",
+    "special": ""
+   },
+   "counter": "2d6",
+   "id": "zealots",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Beachhead Landers",
+   "hp": 10,
+   "cost": 10,
+   "tech_level": 4,
+   "type": "Facility",
+   "notes": [
+    "A"
+   ],
+   "level": 4,
+   "page": 221,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "none",
+   "id": "beachhead_landers",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Extended Theater",
+   "hp": 10,
+   "cost": 10,
+   "tech_level": 4,
+   "type": "Facility",
+   "notes": [
+    "A"
+   ],
+   "level": 4,
+   "page": 221,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "none",
+   "id": "extended_theater",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Postech Infantry",
+   "hp": 12,
+   "cost": 8,
+   "tech_level": 4,
+   "type": "Military Unit",
+   "notes": [
+    "P"
+   ],
+   "level": 4,
+   "page": 221,
+   "attack": {
+    "attribute": "Force",
+    "defence": "Force",
+    "damage": "1d8",
+    "special": ""
+   },
+   "counter": "1d8",
+   "id": "postech_infantry",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Strike Fleet",
+   "hp": 8,
+   "cost": 12,
+   "tech_level": 4,
+   "type": "Starship",
+   "notes": [
+    "A"
+   ],
+   "level": 4,
+   "page": 221,
+   "attack": {
+    "attribute": "Force",
+    "defence": "Force",
+    "damage": "2d6",
+    "special": ""
+   },
+   "counter": "1d8",
+   "id": "strike_fleet",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Blockade Fleet",
+   "hp": 8,
+   "cost": 10,
+   "tech_level": 4,
+   "type": "Starship",
+   "notes": [
+    "S"
+   ],
+   "level": 5,
+   "page": 221,
+   "attack": {
+    "attribute": "Force",
+    "defence": "Wealth",
+    "damage": "1d6",
+    "special": ""
+   },
+   "counter": "none",
+   "id": "blockade_fleet",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Pretech Logistics",
+   "hp": 6,
+   "cost": 14,
+   "tech_level": 0,
+   "type": "Facility",
+   "notes": [
+    "A"
+   ],
+   "level": 5,
+   "page": 221,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "none",
+   "id": "pretech_logistics",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Psychic Assassins",
+   "hp": 4,
+   "cost": 12,
+   "tech_level": 4,
+   "type": "Special Forces",
+   "notes": [
+    "S"
+   ],
+   "level": 5,
+   "page": 221,
+   "attack": {
+    "attribute": "Cunning",
+    "defence": "Cunning",
+    "damage": "2d6+2",
+    "special": ""
+   },
+   "counter": "none",
+   "id": "psychic_assassins",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Gravtank Formation",
+   "hp": 14,
+   "cost": 25,
+   "tech_level": 4,
+   "type": "Military Unit",
+   "notes": [
+    "P"
+   ],
+   "level": 6,
+   "page": 221,
+   "attack": {
+    "attribute": "Force",
+    "defence": "Force",
+    "damage": "2d10+4",
+    "special": ""
+   },
+   "counter": "1d10",
+   "id": "gravtank_formation",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Pretech Infantry",
+   "hp": 16,
+   "cost": 20,
+   "tech_level": 5,
+   "type": "Military Unit",
+   "notes": [
+    "P"
+   ],
+   "level": 6,
+   "page": 221,
+   "attack": {
+    "attribute": "Force",
+    "defence": "Force",
+    "damage": "2d8",
+    "special": ""
+   },
+   "counter": "2d8+2",
+   "id": "pretech_infantry",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Deep Strike Landers",
+   "hp": 10,
+   "cost": 25,
+   "tech_level": 4,
+   "type": "Facility",
+   "notes": [
+    "A"
+   ],
+   "level": 7,
+   "page": 221,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "none",
+   "id": "deep_strike_landers",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Space Marines",
+   "hp": 16,
+   "cost": 30,
+   "tech_level": 4,
+   "type": "Military Unit",
+   "notes": [
+    "A"
+   ],
+   "level": 7,
+   "page": 221,
+   "attack": {
+    "attribute": "Force",
+    "defence": "Force",
+    "damage": "2d8+2",
+    "special": ""
+   },
+   "counter": "2d8",
+   "id": "space_marines",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Capital Fleet",
+   "hp": 30,
+   "cost": 40,
+   "tech_level": 4,
+   "type": "Spaceship",
+   "notes": [
+    "A",
+    "S"
+   ],
+   "level": 8,
+   "page": 221,
+   "attack": {
+    "attribute": "Force",
+    "defence": "Force",
+    "damage": "3d10+4",
+    "special": ""
+   },
+   "counter": "3d8",
+   "id": "capital_fleet",
+   "category": "Force",
+   "categories": [
+    "Force"
+   ]
+  },
+  {
+   "name": "Franchise",
+   "hp": 3,
+   "cost": 2,
+   "tech_level": 2,
+   "type": "Facility",
+   "notes": [
+    "S"
+   ],
+   "level": 1,
+   "page": 223,
+   "attack": {
+    "attribute": "Wealth",
+    "defence": "Wealth",
+    "damage": "1d4",
+    "special": ""
+   },
+   "counter": "1d4-1",
+   "id": "franchise",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Harvesters",
+   "hp": 4,
+   "cost": 2,
+   "tech_level": 0,
+   "type": "Facility",
+   "notes": [
+    "A"
+   ],
+   "level": 1,
+   "page": 223,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "1d4",
+   "id": "harvesters",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Local Investments",
+   "hp": 2,
+   "cost": 1,
+   "tech_level": 2,
+   "type": "Facility",
+   "notes": [
+    "S"
+   ],
+   "level": 1,
+   "page": 223,
+   "attack": {
+    "attribute": "Wealth",
+    "defence": "Wealth",
+    "damage": "1d4-1",
+    "special": ""
+   },
+   "counter": "none",
+   "id": "local_investments",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Freighter Contract",
+   "hp": 4,
+   "cost": 5,
+   "tech_level": 4,
+   "type": "Starship",
+   "notes": [
+    "A"
+   ],
+   "level": 2,
+   "page": 223,
+   "attack": {
+    "attribute": "Wealth",
+    "defence": "Wealth",
+    "damage": "1d4",
+    "special": ""
+   },
+   "counter": "none",
+   "id": "freighter_contract",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Lawyers",
+   "hp": 4,
+   "cost": 6,
+   "tech_level": 0,
+   "type": "Special Forces",
+   "notes": [
+    "S"
+   ],
+   "level": 2,
+   "page": 223,
+   "attack": {
+    "attribute": "Cunning",
+    "defence": "Wealth",
+    "damage": "2d4",
+    "special": ""
+   },
+   "counter": "1d6",
+   "id": "lawyers",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Surveyors",
+   "hp": 4,
+   "cost": 4,
+   "tech_level": 4,
+   "type": "Special Forces",
+   "notes": [
+    "A",
+    "S"
+   ],
+   "level": 2,
+   "page": 223,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "1d4",
+   "id": "surveyors",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Laboratory",
+   "hp": 4,
+   "cost": 6,
+   "tech_level": 0,
+   "type": "Facility",
+   "notes": [
+    "S"
+   ],
+   "level": 3,
+   "page": 223,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "none",
+   "id": "laboratory",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Mercenaries",
+   "hp": 6,
+   "cost": 8,
+   "tech_level": 4,
+   "type": "Military Unit",
+   "notes": [
+    "A",
+    "P",
+    "S"
+   ],
+   "level": 3,
+   "page": 223,
+   "attack": {
+    "attribute": "Wealth",
+    "defence": "Force",
+    "damage": "2d4+2",
+    "special": ""
+   },
+   "counter": "1d6",
+   "id": "mercenaries",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Postech Industry",
+   "hp": 4,
+   "cost": 8,
+   "tech_level": 4,
+   "type": "Facility",
+   "notes": [
+    "A"
+   ],
+   "level": 3,
+   "page": 223,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "1d4",
+   "id": "postech_industry",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Bank",
+   "hp": 8,
+   "cost": 12,
+   "tech_level": 3,
+   "type": "Facility",
+   "notes": [
+    "S"
+   ],
+   "level": 4,
+   "page": 223,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "none",
+   "id": "bank",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Medical Center",
+   "hp": 8,
+   "cost": 12,
+   "tech_level": 4,
+   "type": "Facility",
+   "notes": [
+    "S"
+   ],
+   "level": 4,
+   "page": 223,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "none",
+   "id": "medical_center",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Monopoly",
+   "hp": 12,
+   "cost": 8,
+   "tech_level": 3,
+   "type": "Facility",
+   "notes": [
+    "S"
+   ],
+   "level": 4,
+   "page": 223,
+   "attack": {
+    "attribute": "Wealth",
+    "defence": "Wealth",
+    "damage": "1d6",
+    "special": ""
+   },
+   "counter": "1d6",
+   "id": "monopoly",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Shipping Combine",
+   "hp": 10,
+   "cost": 10,
+   "tech_level": 4,
+   "type": "Facility",
+   "notes": [
+    "A"
+   ],
+   "level": 4,
+   "page": 223,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "1d6",
+   "id": "shipping_combine",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Blockade Runners",
+   "hp": 6,
+   "cost": 12,
+   "tech_level": 4,
+   "type": "Starship",
+   "notes": [
+    "A"
+   ],
+   "level": 5,
+   "page": 223,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "2d4",
+   "id": "blockade_runners",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Marketers",
+   "hp": 8,
+   "cost": 10,
+   "tech_level": 0,
+   "type": "Tactic",
+   "notes": [
+    "A"
+   ],
+   "level": 5,
+   "page": 223,
+   "attack": {
+    "attribute": "Cunning",
+    "defence": "Wealth",
+    "damage": "1d6",
+    "special": ""
+   },
+   "counter": "none",
+   "id": "marketers",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Pretech Researchers",
+   "hp": 6,
+   "cost": 14,
+   "tech_level": 4,
+   "type": "Special Forces",
+   "notes": [
+    "S"
+   ],
+   "level": 5,
+   "page": 223,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "none",
+   "id": "pretech_researchers",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Commodities Broker",
+   "hp": 10,
+   "cost": 20,
+   "tech_level": 0,
+   "type": "Special Forces",
+   "notes": [
+    "A"
+   ],
+   "level": 6,
+   "page": 223,
+   "attack": {
+    "attribute": "Wealth",
+    "defence": "Wealth",
+    "damage": "2d8",
+    "special": ""
+   },
+   "counter": "1d8",
+   "id": "commodities_broker",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "R&D Department",
+   "hp": 15,
+   "cost": 18,
+   "tech_level": 4,
+   "type": "Facility",
+   "notes": [
+    "S"
+   ],
+   "level": 6,
+   "page": 223,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "none",
+   "id": "r_d_department",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Venture Capital",
+   "hp": 10,
+   "cost": 15,
+   "tech_level": 4,
+   "type": "Facility",
+   "notes": [
+    "A"
+   ],
+   "level": 6,
+   "page": 223,
+   "attack": {
+    "attribute": "Wealth",
+    "defence": "Wealth",
+    "damage": "2d6",
+    "special": ""
+   },
+   "counter": "1d6",
+   "id": "venture_capital",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Hostile Takeover",
+   "hp": 10,
+   "cost": 20,
+   "tech_level": 4,
+   "type": "Tactic",
+   "notes": [
+    "S"
+   ],
+   "level": 7,
+   "page": 223,
+   "attack": {
+    "attribute": "Wealth",
+    "defence": "Wealth",
+    "damage": "2d10",
+    "special": ""
+   },
+   "counter": "2d8",
+   "id": "hostile_takeover",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Pretech Manufactory",
+   "hp": 16,
+   "cost": 25,
+   "tech_level": 5,
+   "type": "Facility",
+   "notes": [
+    "S"
+   ],
+   "level": 7,
+   "page": 223,
+   "attack": {
+    "attribute": "",
+    "defence": "",
+    "damage": "",
+    "special": "none"
+   },
+   "counter": "none",
+   "id": "pretech_manufactory",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  },
+  {
+   "name": "Transit Web",
+   "hp": 5,
+   "cost": 15,
+   "tech_level": 5,
+   "type": "Facility",
+   "notes": [
+    "S"
+   ],
+   "level": 7,
+   "page": 223,
+   "attack": {
+    "attribute": "Cunning",
+    "defence": "Cunning",
+    "damage": "1d12",
+    "special": ""
+   },
+   "counter": "none",
+   "id": "transit_web",
+   "category": "Wealth",
+   "categories": [
+    "Wealth"
+   ]
+  }
+ ]
+}
