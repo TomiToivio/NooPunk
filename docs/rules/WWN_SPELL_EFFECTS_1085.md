@@ -8,6 +8,9 @@ Source: the **WWN SRD**, CC0 (`data/sources/game_system_rights.json`). The rows 
 they do not reproduce SRD prose. The remaining 39 High Magic, 15 Elementalist and 16 Necromancer
 spells have no effect row yet and are named as such — the resolver refuses them rather than guessing.
 
+Whole-system coverage (classes, factions, travel, Deluxe blocks) is tracked once in
+[`WWN_COVERAGE_1101.md`](WWN_COVERAGE_1101.md); this page owns only the spell-effect batch.
+
 ## The casting sequence at a table
 
 1. **Prepare and spend the slot.** The spell must be prepared and the casting still unspent for the

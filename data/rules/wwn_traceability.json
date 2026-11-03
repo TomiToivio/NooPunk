@@ -1,0 +1,2057 @@
+{
+  "$comment": "Worlds Without Number coverage register for #1101. Free SRD is CC0; Deluxe and free-book-only procedures are blocked where no lawful text is on this host.",
+  "format": "wwn-traceability-1",
+  "issue": "#1101",
+  "generated_by": "tools/wwn_coverage_audit_1101.py",
+  "source": {
+    "srd": "https://wwn.quadrifons.com/",
+    "rights_entry": "data/sources/game_system_rights.json#worlds-without-number-srd",
+    "rights": "CC0 1.0 \u2014 SRD text only, not the commercial book or protected setting.",
+    "deluxe": "Not available on this host; blocked, never synthesised.",
+    "free_book": "The free-book mirror cited by #1101 returned HTTP 403 on 2026-11-03."
+  },
+  "status_legend": {
+    "implemented": "WWN-specific module, procedure and test exist.",
+    "verified_reuse": "The procedure is the shared Without Number/CWN chassis and is tested there.",
+    "partial": "Some code or catalogue exists; the named procedure is incomplete.",
+    "missing": "No implementation.",
+    "blocked": "Source text unavailable/lawful text not on this host; must not be synthesised.",
+    "not_applicable": "Chapter index or setting-only material with no procedure."
+  },
+  "tabletop_legend": {
+    "cwn_delegated": "Tabletop uses the CWN procedure; WWN adds no tabletop rule.",
+    "reference_only": "WITHOUT_NUMBER_BASELINE.md names the source; the rulebook does not reproduce it.",
+    "blocked": "No lawful tabletop text available."
+  },
+  "rows": [
+    {
+      "id": "wwn-1.0.0",
+      "chapter": "Character Creation",
+      "section": "1.0.0",
+      "title": "Character Creation",
+      "kind": "chapter_index",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation.html",
+      "page": null,
+      "status": "not_applicable",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "Chapter index; counted in its sections, not as a procedure."
+    },
+    {
+      "id": "wwn-1.1.0",
+      "chapter": "Character Creation",
+      "section": "1.1.0",
+      "title": "Attributes",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.1.0%20Attributes.html",
+      "page": null,
+      "status": "verified_reuse",
+      "modules": [
+        {
+          "path": "src/rules/wn_core.py",
+          "procedures": [
+            "attribute_modifier",
+            "skill_check",
+            "opposed_check"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_wn_core_contract.py"
+      ],
+      "tabletop_status": "cwn_delegated",
+      "owner_issue": "#1101",
+      "note": "Same six attributes and modifier curve; CWN/Without Number chassis.",
+      "tabletop": "cwn_delegated"
+    },
+    {
+      "id": "wwn-1.2.0",
+      "chapter": "Character Creation",
+      "section": "1.2.0",
+      "title": "Skills",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.2.0%20Skills.html",
+      "page": null,
+      "status": "partial",
+      "modules": [
+        {
+          "path": "src/rules/wn_core.py",
+          "procedures": [
+            "attribute_modifier",
+            "skill_check",
+            "opposed_check"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_wn_core_contract.py"
+      ],
+      "tabletop_status": "cwn_delegated",
+      "owner_issue": "#1101",
+      "note": "The 2d6 check is shared; the WWN skill list is not mapped onto CWN skills.",
+      "tabletop": "cwn_delegated"
+    },
+    {
+      "id": "wwn-1.3.0",
+      "chapter": "Character Creation",
+      "section": "1.3.0",
+      "title": "Backgrounds",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.3.0%20Backgrounds.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "No WWN backgrounds; CWN backgrounds govern character creation.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-1.4.0",
+      "chapter": "Character Creation",
+      "section": "1.4.0",
+      "title": "Classes",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.4.0%20Classes.html",
+      "page": null,
+      "status": "partial",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "Class framework absent; only the High Mage has a class table."
+    },
+    {
+      "id": "wwn-1.5.0",
+      "chapter": "Character Creation",
+      "section": "1.5.0",
+      "title": "Class List",
+      "kind": "chapter_index",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.0%20Class%20List.html",
+      "page": null,
+      "status": "not_applicable",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "Chapter index; counted in its sections, not as a procedure."
+    },
+    {
+      "id": "wwn-1.5.1",
+      "chapter": "Character Creation",
+      "section": "1.5.1",
+      "title": "The Adventurer",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.1%20The%20Adventurer.html",
+      "page": null,
+      "status": "partial",
+      "modules": [
+        {
+          "path": "src/rules/wwn_high_mage.py",
+          "procedures": [
+            "HighMage",
+            "ARTS",
+            "HIGH_MAGE_TABLE",
+            "PARTIAL_HIGH_MAGE_TABLE"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_wwn_high_mage.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "Partial-caster table exists; no Adventurer combination engine.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-1.5.2",
+      "chapter": "Character Creation",
+      "section": "1.5.2",
+      "title": "The Accursed",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.2%20The%20Accursed.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": ""
+    },
+    {
+      "id": "wwn-1.5.3",
+      "chapter": "Character Creation",
+      "section": "1.5.3",
+      "title": "The Bard",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.3%20The%20Bard.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": ""
+    },
+    {
+      "id": "wwn-1.5.4",
+      "chapter": "Character Creation",
+      "section": "1.5.4",
+      "title": "The Beastmaster",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.4%20The%20Beastmaster.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": ""
+    },
+    {
+      "id": "wwn-1.5.5",
+      "chapter": "Character Creation",
+      "section": "1.5.5",
+      "title": "The Blood Priest",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.5%20The%20Blood%20Priest.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": ""
+    },
+    {
+      "id": "wwn-1.5.6",
+      "chapter": "Character Creation",
+      "section": "1.5.6",
+      "title": "The Duelist",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.6%20The%20Duelist.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": ""
+    },
+    {
+      "id": "wwn-1.5.7",
+      "chapter": "Character Creation",
+      "section": "1.5.7",
+      "title": "The Elementalist",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.7%20The%20Elementalist.html",
+      "page": null,
+      "status": "partial",
+      "modules": [
+        {
+          "path": "src/rules/wwn_spells.py",
+          "procedures": [
+            "SPELLS",
+            "learning_days",
+            "free_spells_per_level",
+            "counts_by_level"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_wwn_spells.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "15 spells catalogued; class Arts and progression absent.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-1.5.8",
+      "chapter": "Character Creation",
+      "section": "1.5.8",
+      "title": "The Expert",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.8%20The%20Expert.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": ""
+    },
+    {
+      "id": "wwn-1.5.9",
+      "chapter": "Character Creation",
+      "section": "1.5.9",
+      "title": "The Healer",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.9%20The%20Healer.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": ""
+    },
+    {
+      "id": "wwn-1.5.10",
+      "chapter": "Character Creation",
+      "section": "1.5.10",
+      "title": "The High Mage",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.10%20The%20High%20Mage.html",
+      "page": null,
+      "status": "implemented",
+      "modules": [
+        {
+          "path": "src/rules/wwn_high_mage.py",
+          "procedures": [
+            "HighMage",
+            "ARTS",
+            "HIGH_MAGE_TABLE",
+            "PARTIAL_HIGH_MAGE_TABLE"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_wwn_high_mage.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "Full and partial Arts/Spells tables, Effort, preparation, casting.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-1.5.11",
+      "chapter": "Character Creation",
+      "section": "1.5.11",
+      "title": "The Invoker",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.11%20The%20Invoker.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": ""
+    },
+    {
+      "id": "wwn-1.5.12",
+      "chapter": "Character Creation",
+      "section": "1.5.12",
+      "title": "The Mage",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.12%20The%20Mage.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": ""
+    },
+    {
+      "id": "wwn-1.5.13",
+      "chapter": "Character Creation",
+      "section": "1.5.13",
+      "title": "The Mageslayer",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.13%20The%20Mageslayer.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": ""
+    },
+    {
+      "id": "wwn-1.5.14",
+      "chapter": "Character Creation",
+      "section": "1.5.14",
+      "title": "The Necromancer",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.14%20The%20Necromancer.html",
+      "page": null,
+      "status": "partial",
+      "modules": [
+        {
+          "path": "src/rules/wwn_spells.py",
+          "procedures": [
+            "SPELLS",
+            "learning_days",
+            "free_spells_per_level",
+            "counts_by_level"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_wwn_spells.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "16 spells catalogued; class Arts and progression absent.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-1.5.15",
+      "chapter": "Character Creation",
+      "section": "1.5.15",
+      "title": "The Skinshifter",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.15%20The%20Skinshifter.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": ""
+    },
+    {
+      "id": "wwn-1.5.16",
+      "chapter": "Character Creation",
+      "section": "1.5.16",
+      "title": "The Thought Noble",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.16%20The%20Thought%20Noble.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": ""
+    },
+    {
+      "id": "wwn-1.5.17",
+      "chapter": "Character Creation",
+      "section": "1.5.17",
+      "title": "The Vowed",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.17%20The%20Vowed.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": ""
+    },
+    {
+      "id": "wwn-1.5.18",
+      "chapter": "Character Creation",
+      "section": "1.5.18",
+      "title": "The Warrior",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.18%20The%20Warrior.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": ""
+    },
+    {
+      "id": "wwn-1.5.19",
+      "chapter": "Character Creation",
+      "section": "1.5.19",
+      "title": "The Wise",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.5.0%20Class%20List/1.5.19%20The%20Wise.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": ""
+    },
+    {
+      "id": "wwn-1.6.0",
+      "chapter": "Character Creation",
+      "section": "1.6.0",
+      "title": "Foci",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.6.0%20Foci.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": ""
+    },
+    {
+      "id": "wwn-1.7.0",
+      "chapter": "Character Creation",
+      "section": "1.7.0",
+      "title": "Final Character Creation Steps",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/1.0%20Character%20Creation/1.7.0%20Final%20Character%20Creation%20Steps.html",
+      "page": null,
+      "status": "partial",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "CWN final steps available; WWN packages/Foci absent."
+    },
+    {
+      "id": "wwn-2.0.0",
+      "chapter": "Rules of the Game",
+      "section": "2.0.0",
+      "title": "The Rules of the Game",
+      "kind": "chapter_index",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/2.0%20The%20Rules%20of%20the%20Game.html",
+      "page": null,
+      "status": "not_applicable",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "Chapter index; counted in its sections, not as a procedure."
+    },
+    {
+      "id": "wwn-2.1.0",
+      "chapter": "Rules of the Game",
+      "section": "2.1.0",
+      "title": "Scenes, Rounds, and Mission Time",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/2.0%20The%20Rules%20of%20the%20Game/2.1.0%20Scenes%2C%20Roundes%2C%20and%20Mission%20Time.html",
+      "page": null,
+      "status": "verified_reuse",
+      "modules": [
+        {
+          "path": "src/rules/cwn_mission_time.py",
+          "procedures": [
+            "MissionClock",
+            "Tick"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_mission_time.py"
+      ],
+      "tabletop_status": "cwn_delegated",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "cwn_delegated"
+    },
+    {
+      "id": "wwn-2.2.0",
+      "chapter": "Rules of the Game",
+      "section": "2.2.0",
+      "title": "Saving Throws",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/2.0%20The%20Rules%20of%20the%20Game/2.2.0%20Saving%20Throws.html",
+      "page": null,
+      "status": "verified_reuse",
+      "modules": [
+        {
+          "path": "src/rules/cwn_core.py",
+          "procedures": [
+            "save_target",
+            "saving_throw",
+            "shock_applies"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_core.py"
+      ],
+      "tabletop_status": "cwn_delegated",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "cwn_delegated"
+    },
+    {
+      "id": "wwn-2.3.0",
+      "chapter": "Rules of the Game",
+      "section": "2.3.0",
+      "title": "Skill Checks",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/2.0%20The%20Rules%20of%20the%20Game/2.3.0%20Skill%20Checks.html",
+      "page": null,
+      "status": "verified_reuse",
+      "modules": [
+        {
+          "path": "src/rules/wn_core.py",
+          "procedures": [
+            "attribute_modifier",
+            "skill_check",
+            "opposed_check"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_wn_core_contract.py"
+      ],
+      "tabletop_status": "cwn_delegated",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "cwn_delegated"
+    },
+    {
+      "id": "wwn-2.4.0",
+      "chapter": "Rules of the Game",
+      "section": "2.4.0",
+      "title": "Combat",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/2.0%20The%20Rules%20of%20the%20Game/2.4.0%20Combat.html",
+      "page": null,
+      "status": "verified_reuse",
+      "modules": [
+        {
+          "path": "src/rules/cwn_core.py",
+          "procedures": [
+            "save_target",
+            "saving_throw",
+            "shock_applies"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_core.py"
+      ],
+      "tabletop_status": "cwn_delegated",
+      "owner_issue": "#1101",
+      "note": "CWN combat is the chassis; ignore CWN Trauma when running WWN.",
+      "tabletop": "cwn_delegated"
+    },
+    {
+      "id": "wwn-2.5.0",
+      "chapter": "Rules of the Game",
+      "section": "2.5.0",
+      "title": "Injury, Healing, and System Strain",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/2.0%20The%20Rules%20of%20the%20Game/2.5.0%20Injury%2C%20Healing%2C%20And%20System%20Strain.html",
+      "page": null,
+      "status": "verified_reuse",
+      "modules": [
+        {
+          "path": "src/rules/cwn_healing.py",
+          "procedures": [
+            "natural_healing",
+            "stabilized",
+            "Patient"
+          ]
+        },
+        {
+          "path": "src/rules/cwn_strain.py",
+          "procedures": [
+            "SystemStrain"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_healing.py",
+        "tests/test_cwn_strain.py"
+      ],
+      "tabletop_status": "cwn_delegated",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "cwn_delegated"
+    },
+    {
+      "id": "wwn-2.6.0",
+      "chapter": "Rules of the Game",
+      "section": "2.6.0",
+      "title": "Chases and Pursuit",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/2.0%20The%20Rules%20of%20the%20Game/2.6.0%20Chases%20and%20Pursuit.html",
+      "page": null,
+      "status": "verified_reuse",
+      "modules": [
+        {
+          "path": "src/rules/cwn_vehicles.py",
+          "procedures": [
+            "resolve_chase",
+            "ChaseOutcome"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_vehicles.py"
+      ],
+      "tabletop_status": "cwn_delegated",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "cwn_delegated"
+    },
+    {
+      "id": "wwn-2.7.0",
+      "chapter": "Rules of the Game",
+      "section": "2.7.0",
+      "title": "Character Advancement",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/2.0%20The%20Rules%20of%20the%20Game/2.7.0%20Character%20Advancement.html",
+      "page": null,
+      "status": "partial",
+      "modules": [
+        {
+          "path": "src/rules/cwn_advancement.py",
+          "procedures": [
+            "level_for_xp",
+            "attack_bonus"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_advancement.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "CWN XP/level tables only; WWN class advancement tables absent.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-2.8.0",
+      "chapter": "Rules of the Game",
+      "section": "2.8.0",
+      "title": "Crafting and Modifying Gear",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/2.0%20The%20Rules%20of%20the%20Game/2.8.0%20Crafting%20and%20Modifying%20Gear.html",
+      "page": null,
+      "status": "verified_reuse",
+      "modules": [
+        {
+          "path": "src/rules/cwn_gear_mods.py",
+          "procedures": [
+            "load_mods",
+            "weapon_mod"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_gear_mods.py"
+      ],
+      "tabletop_status": "cwn_delegated",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "cwn_delegated"
+    },
+    {
+      "id": "wwn-2.9.0",
+      "chapter": "Rules of the Game",
+      "section": "2.9.0",
+      "title": "Encumbrance",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/2.0%20The%20Rules%20of%20the%20Game/2.9.0%20Encumbrance.html",
+      "page": null,
+      "status": "verified_reuse",
+      "modules": [
+        {
+          "path": "src/rules/cwn_encumbrance.py",
+          "procedures": [
+            "stowed_capacity",
+            "readied_capacity",
+            "tier_for"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_encumbrance.py"
+      ],
+      "tabletop_status": "cwn_delegated",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "cwn_delegated"
+    },
+    {
+      "id": "wwn-2.10.0",
+      "chapter": "Rules of the Game",
+      "section": "2.10.0",
+      "title": "Falling and Other Hazards",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/2.0%20The%20Rules%20of%20the%20Game/2.10.0%20Falling%20and%20Other%20Hazards.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "Falling/hazard procedure not ported.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-2.11.0",
+      "chapter": "Rules of the Game",
+      "section": "2.11.0",
+      "title": "Overland Travel",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/2.0%20The%20Rules%20of%20the%20Game/2.11.0%20Overland%20Travel.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "Overland travel not ported.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-2.12.0",
+      "chapter": "Rules of the Game",
+      "section": "2.12.0",
+      "title": "Wilderness Exploration and Expeditions",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/2.0%20The%20Rules%20of%20the%20Game/2.12.0%20Wilderness%20Exploration%20and%20Expeditions.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "Wilderness expeditions not ported.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-2.13.0",
+      "chapter": "Rules of the Game",
+      "section": "2.13.0",
+      "title": "Dungeon Exploration",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/2.0%20The%20Rules%20of%20the%20Game/2.13.0%20Dungeon%20Exploration.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "Dungeon exploration not ported.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-3.0.0",
+      "chapter": "Equipment",
+      "section": "3.0.0",
+      "title": "Equipment, Armor, and Weapons",
+      "kind": "chapter_index",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/3.0%20Equipment%2C%20Armor%2C%20and%20Weapons.html",
+      "page": null,
+      "status": "not_applicable",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "Chapter index; counted in its sections, not as a procedure."
+    },
+    {
+      "id": "wwn-3.1.0",
+      "chapter": "Equipment",
+      "section": "3.1.0",
+      "title": "Money and Currency",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/3.0%20Equipment%2C%20Armor%2C%20and%20Weapons/3.1.0%20Money%20and%20Currency.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "CWN currency/economy governs.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-3.2.0",
+      "chapter": "Equipment",
+      "section": "3.2.0",
+      "title": "Adventuring Gear",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/3.0%20Equipment%2C%20Armor%2C%20and%20Weapons/3.2.0%20Adventuring%20Gear.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "No WWN gear catalogue.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-3.3.0",
+      "chapter": "Equipment",
+      "section": "3.3.0",
+      "title": "Hirelings and Services",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/3.0%20Equipment%2C%20Armor%2C%20and%20Weapons/3.3.0%20Hirelings%20and%20Services.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "No WWN hireling procedure.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-3.4.0",
+      "chapter": "Equipment",
+      "section": "3.4.0",
+      "title": "Armor",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/3.0%20Equipment%2C%20Armor%2C%20and%20Weapons/3.4.0%20Armor.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "CWN armour list governs; WWN list absent.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-3.5.0",
+      "chapter": "Equipment",
+      "section": "3.5.0",
+      "title": "Weapons",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/3.0%20Equipment%2C%20Armor%2C%20and%20Weapons/3.5.0%20Weapons.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "CWN weapons list governs; WWN list absent.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-4.0.0",
+      "chapter": "Magic",
+      "section": "4.0.0",
+      "title": "Magic and Spellcasting",
+      "kind": "chapter_index",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/4.0%20Magic%20and%20Spellcasting.html",
+      "page": null,
+      "status": "not_applicable",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "Chapter index; counted in its sections, not as a procedure."
+    },
+    {
+      "id": "wwn-4.1.0",
+      "chapter": "Magic",
+      "section": "4.1.0",
+      "title": "Spells and Arts",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/4.0%20Magic%20and%20Spellcasting/4.1.0%20Spells%20and%20Arts.html",
+      "page": null,
+      "status": "implemented",
+      "modules": [
+        {
+          "path": "src/rules/wwn_spells.py",
+          "procedures": [
+            "SPELLS",
+            "learning_days",
+            "free_spells_per_level",
+            "counts_by_level"
+          ]
+        },
+        {
+          "path": "src/rules/wwn_high_mage.py",
+          "procedures": [
+            "HighMage",
+            "ARTS",
+            "HIGH_MAGE_TABLE",
+            "PARTIAL_HIGH_MAGE_TABLE"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_wwn_spells.py",
+        "tests/test_wwn_high_mage.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "83 spells (52/15/16) and the High Mage Arts.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-4.2.0",
+      "chapter": "Magic",
+      "section": "4.2.0",
+      "title": "Preparing and Casting Spells",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/4.0%20Magic%20and%20Spellcasting/4.2.0%20Preparing%20and%20Casting%20Spells.html",
+      "page": null,
+      "status": "implemented",
+      "modules": [
+        {
+          "path": "src/rules/wwn_high_mage.py",
+          "procedures": [
+            "HighMage",
+            "ARTS",
+            "HIGH_MAGE_TABLE",
+            "PARTIAL_HIGH_MAGE_TABLE"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_wwn_high_mage.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-4.3.0",
+      "chapter": "Magic",
+      "section": "4.3.0",
+      "title": "Dual Partial Spellcasters",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/4.0%20Magic%20and%20Spellcasting/4.3.0%20Dual%20Partial%20Spellcasters.html",
+      "page": null,
+      "status": "partial",
+      "modules": [
+        {
+          "path": "src/rules/wwn_high_mage.py",
+          "procedures": [
+            "HighMage",
+            "ARTS",
+            "HIGH_MAGE_TABLE",
+            "PARTIAL_HIGH_MAGE_TABLE"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_wwn_high_mage.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "Partial High Mage table only; dual pools/combination absent.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-4.4.0",
+      "chapter": "Magic",
+      "section": "4.4.0",
+      "title": "High Magic Spells by Level",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/4.0%20Magic%20and%20Spellcasting/4.4.0%20High%20Magic%20Spells%20by%20Level.html",
+      "page": null,
+      "status": "implemented",
+      "modules": [
+        {
+          "path": "src/rules/wwn_spells.py",
+          "procedures": [
+            "SPELLS",
+            "learning_days",
+            "free_spells_per_level",
+            "counts_by_level"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_wwn_spells.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-4.4.1",
+      "chapter": "Magic",
+      "section": "4.4.1",
+      "title": "High Magic Spells by Name",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/4.0%20Magic%20and%20Spellcasting/4.4.0%20High%20Magic%20Spells%20by%20Name.html",
+      "page": null,
+      "status": "implemented",
+      "modules": [
+        {
+          "path": "src/rules/wwn_spells.py",
+          "procedures": [
+            "SPELLS",
+            "learning_days",
+            "free_spells_per_level",
+            "counts_by_level"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_wwn_spells.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-4.5.0",
+      "chapter": "Magic",
+      "section": "4.5.0",
+      "title": "Elementalist Spells",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/4.0%20Magic%20and%20Spellcasting/4.5.0%20Elementalist%20Spells.html",
+      "page": null,
+      "status": "partial",
+      "modules": [
+        {
+          "path": "src/rules/wwn_spells.py",
+          "procedures": [
+            "SPELLS",
+            "learning_days",
+            "free_spells_per_level",
+            "counts_by_level"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_wwn_spells.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "Catalogue only; effects 0/15 transcribed.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-4.6.0",
+      "chapter": "Magic",
+      "section": "4.6.0",
+      "title": "Necromancer Spells",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/4.0%20Magic%20and%20Spellcasting/4.6.0%20Necromancer%20Spells.html",
+      "page": null,
+      "status": "partial",
+      "modules": [
+        {
+          "path": "src/rules/wwn_spells.py",
+          "procedures": [
+            "SPELLS",
+            "learning_days",
+            "free_spells_per_level",
+            "counts_by_level"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_wwn_spells.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "Catalogue only; effects 0/16 transcribed.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-4.7.0",
+      "chapter": "Magic",
+      "section": "4.7.0",
+      "title": "Developing New Spells",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/4.0%20Magic%20and%20Spellcasting/4.7.0%20Developing%20New%20Spells.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-4.8.0",
+      "chapter": "Magic",
+      "section": "4.8.0",
+      "title": "Building Magical Workings",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/4.0%20Magic%20and%20Spellcasting/4.8.0%20Building%20Magical%20Workings.html",
+      "page": null,
+      "status": "partial",
+      "modules": [
+        {
+          "path": "src/rules/wwn_projects.py",
+          "procedures": [
+            "project_difficulty",
+            "renown_after_adventures",
+            "ProjectState",
+            "allied_faction_share"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_awn_wwn_campaign_procedures.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "Only the permanent-working Renown multiplier; no working procedure.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-4.9.0",
+      "chapter": "Magic",
+      "section": "4.9.0",
+      "title": "Magic Items and Enchanted Treasures",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/4.0%20Magic%20and%20Spellcasting/4.9.0%20Magic%20Items%20and%20Enchanted%20Treasures.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-4.10.0",
+      "chapter": "Magic",
+      "section": "4.10.0",
+      "title": "Creating Magic Items",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/4.0%20Magic%20and%20Spellcasting/4.10.0%20Creating%20Magic%20Items.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-5.0.0",
+      "chapter": "Monsters and Foes",
+      "section": "5.0.0",
+      "title": "Monsters and Foes",
+      "kind": "chapter_index",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/5.0%20Monsters%20and%20Foes.html",
+      "page": null,
+      "status": "not_applicable",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "Chapter index; counted in its sections, not as a procedure."
+    },
+    {
+      "id": "wwn-5.1.0",
+      "chapter": "Monsters and Foes",
+      "section": "5.1.0",
+      "title": "Monster and NPC Statistics",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/5.0%20Monsters%20and%20Foes/Monster%20and%20NPC%20Stats.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "No WWN stat-block model/bestiary.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-5.2.0",
+      "chapter": "Monsters and Foes",
+      "section": "5.2.0",
+      "title": "Reaction Rolls and Parleying",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/5.0%20Monsters%20and%20Foes/Reaction%20Rolls%20and%20Parlayeing.html",
+      "page": null,
+      "status": "verified_reuse",
+      "modules": [
+        {
+          "path": "src/rules/cwn_npcs.py",
+          "procedures": [
+            "reaction_roll",
+            "morale_check"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_npcs_heat.py"
+      ],
+      "tabletop_status": "cwn_delegated",
+      "owner_issue": "#1101",
+      "note": "2d6 reaction bands shared with CWN; parleying prose not ported.",
+      "tabletop": "cwn_delegated"
+    },
+    {
+      "id": "wwn-5.3.0",
+      "chapter": "Monsters and Foes",
+      "section": "5.3.0",
+      "title": "Morale Checks and Fleeing",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/5.0%20Monsters%20and%20Foes/Morale%20Checks%20and%20Fleeing.html",
+      "page": null,
+      "status": "verified_reuse",
+      "modules": [
+        {
+          "path": "src/rules/cwn_npcs.py",
+          "procedures": [
+            "reaction_roll",
+            "morale_check"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_cwn_npcs_heat.py"
+      ],
+      "tabletop_status": "cwn_delegated",
+      "owner_issue": "#1101",
+      "note": "2d6 morale check shared with CWN; fleeing prose not ported.",
+      "tabletop": "cwn_delegated"
+    },
+    {
+      "id": "wwn-5.4.0",
+      "chapter": "Monsters and Foes",
+      "section": "5.4.0",
+      "title": "Instinct Checks",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/5.0%20Monsters%20and%20Foes/Instinct%20Checks.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-6.0.0",
+      "chapter": "Factions",
+      "section": "6.0.0",
+      "title": "Factions",
+      "kind": "chapter_index",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/6.0%20Factions.html",
+      "page": null,
+      "status": "not_applicable",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "Chapter index; counted in its sections, not as a procedure."
+    },
+    {
+      "id": "wwn-6.1.0",
+      "chapter": "Factions",
+      "section": "6.1.0",
+      "title": "Faction Statistics",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/6.0%20Factions/Faction%20Statistics.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "WWN faction engine absent; SWN engine is a different system.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-6.2.0",
+      "chapter": "Factions",
+      "section": "6.2.0",
+      "title": "The Faction Turn",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/6.0%20Factions/The%20Faction%20Turn.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "WWN faction engine absent.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-6.3.0",
+      "chapter": "Factions",
+      "section": "6.3.0",
+      "title": "Asset Locations and Movement",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/6.0%20Factions/Asset%20Locations%20and%20Movement.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "WWN faction engine absent.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-6.4.0",
+      "chapter": "Factions",
+      "section": "6.4.0",
+      "title": "Attribute Checks",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/6.0%20Factions/Attribute%20Checks.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "WWN faction engine absent.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-6.5.0",
+      "chapter": "Factions",
+      "section": "6.5.0",
+      "title": "Faction Tags",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/6.0%20Factions/Faction%20Tags.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "WWN faction engine absent.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-6.6.0",
+      "chapter": "Factions",
+      "section": "6.6.0",
+      "title": "Faction Turn Actions",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/6.0%20Factions/Faction%20Turn%20Actions.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "WWN faction engine absent.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-6.7.0",
+      "chapter": "Factions",
+      "section": "6.7.0",
+      "title": "Creating Factions",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/6.0%20Factions/Creating%20Factions.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "WWN faction engine absent.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-6.8.0",
+      "chapter": "Factions",
+      "section": "6.8.0",
+      "title": "Cunning Assets",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/6.0%20Factions/Cunning%20Assets.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "WWN faction engine absent.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-6.9.0",
+      "chapter": "Factions",
+      "section": "6.9.0",
+      "title": "Force Assets",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/6.0%20Factions/Force%20Assets.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "WWN faction engine absent.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-6.10.0",
+      "chapter": "Factions",
+      "section": "6.10.0",
+      "title": "Wealth Assets",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/6.0%20Factions/Wealth%20Assets.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "WWN faction engine absent.",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-7.0.0",
+      "chapter": "Major Projects",
+      "section": "7.0.0",
+      "title": "Major Projects",
+      "kind": "chapter_index",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/7.0%20Major%20Projects.html",
+      "page": null,
+      "status": "not_applicable",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "Chapter index; counted in its sections, not as a procedure."
+    },
+    {
+      "id": "wwn-7.1.0",
+      "chapter": "Major Projects",
+      "section": "7.1.0",
+      "title": "Renown",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/7.0%20Major%20Projects/Renown.html",
+      "page": null,
+      "status": "implemented",
+      "modules": [
+        {
+          "path": "src/rules/wwn_projects.py",
+          "procedures": [
+            "project_difficulty",
+            "renown_after_adventures",
+            "ProjectState",
+            "allied_faction_share"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_awn_wwn_campaign_procedures.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-7.2.0",
+      "chapter": "Major Projects",
+      "section": "7.2.0",
+      "title": "Determining the Project Difficulty",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/7.0%20Major%20Projects/Determining%20the%20Project%20Difficulty.html",
+      "page": null,
+      "status": "implemented",
+      "modules": [
+        {
+          "path": "src/rules/wwn_projects.py",
+          "procedures": [
+            "project_difficulty",
+            "renown_after_adventures",
+            "ProjectState",
+            "allied_faction_share"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_awn_wwn_campaign_procedures.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-7.3.0",
+      "chapter": "Major Projects",
+      "section": "7.3.0",
+      "title": "Determining the Project Scope",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/7.0%20Major%20Projects/Determining%20the%20Project%20Scope.html",
+      "page": null,
+      "status": "implemented",
+      "modules": [
+        {
+          "path": "src/rules/wwn_projects.py",
+          "procedures": [
+            "project_difficulty",
+            "renown_after_adventures",
+            "ProjectState",
+            "allied_faction_share"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_awn_wwn_campaign_procedures.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-7.4.0",
+      "chapter": "Major Projects",
+      "section": "7.4.0",
+      "title": "Determining the Opposition",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/7.0%20Major%20Projects/Determining%20the%20Opposition.html",
+      "page": null,
+      "status": "implemented",
+      "modules": [
+        {
+          "path": "src/rules/wwn_projects.py",
+          "procedures": [
+            "project_difficulty",
+            "renown_after_adventures",
+            "ProjectState",
+            "allied_faction_share"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_awn_wwn_campaign_procedures.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-7.5.0",
+      "chapter": "Major Projects",
+      "section": "7.5.0",
+      "title": "Decreasing Difficulty",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/7.0%20Major%20Projects/Decreasing%20Difficulty.html",
+      "page": null,
+      "status": "implemented",
+      "modules": [
+        {
+          "path": "src/rules/wwn_projects.py",
+          "procedures": [
+            "project_difficulty",
+            "renown_after_adventures",
+            "ProjectState",
+            "allied_faction_share"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_awn_wwn_campaign_procedures.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-7.6.0",
+      "chapter": "Major Projects",
+      "section": "7.6.0",
+      "title": "Achieving the Goal",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/7.0%20Major%20Projects/Achieving%20the%20Goal.html",
+      "page": null,
+      "status": "implemented",
+      "modules": [
+        {
+          "path": "src/rules/wwn_projects.py",
+          "procedures": [
+            "project_difficulty",
+            "renown_after_adventures",
+            "ProjectState",
+            "allied_faction_share"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_awn_wwn_campaign_procedures.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-7.7.0",
+      "chapter": "Major Projects",
+      "section": "7.7.0",
+      "title": "Magical Projects",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/7.0%20Major%20Projects/Magical%20Projects.html",
+      "page": null,
+      "status": "partial",
+      "modules": [
+        {
+          "path": "src/rules/wwn_projects.py",
+          "procedures": [
+            "project_difficulty",
+            "renown_after_adventures",
+            "ProjectState",
+            "allied_faction_share"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_awn_wwn_campaign_procedures.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-7.8.0",
+      "chapter": "Major Projects",
+      "section": "7.8.0",
+      "title": "Major Projects and Existing Factions",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/7.0%20Major%20Projects/Major%20Projects%20and%20Existing%20Factions.html",
+      "page": null,
+      "status": "partial",
+      "modules": [
+        {
+          "path": "src/rules/wwn_projects.py",
+          "procedures": [
+            "project_difficulty",
+            "renown_after_adventures",
+            "ProjectState",
+            "allied_faction_share"
+          ]
+        }
+      ],
+      "tests": [
+        "tests/test_awn_wwn_campaign_procedures.py"
+      ],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-7.9.0",
+      "chapter": "Major Projects",
+      "section": "7.9.0",
+      "title": "Player Run Factions and Major Projects",
+      "kind": "mechanics",
+      "edition": "free_srd",
+      "srd": "https://wwn.quadrifons.com/7.0%20Major%20Projects/Player%20Run%20Factions%20and%20Major%20Projects.html",
+      "page": null,
+      "status": "missing",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "reference_only",
+      "owner_issue": "#1101",
+      "note": "",
+      "tabletop": "reference_only"
+    },
+    {
+      "id": "wwn-G.0.0",
+      "chapter": "Deluxe",
+      "section": "G.0.0",
+      "title": "The Legates",
+      "kind": "mechanics",
+      "edition": "deluxe",
+      "srd": null,
+      "page": 322,
+      "status": "blocked",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "blocked",
+      "owner_issue": "#1101",
+      "note": "Legate class framework, Words, and dominion play. Deluxe PDF not on this host; not synthesised."
+    },
+    {
+      "id": "wwn-H.0.0",
+      "chapter": "Deluxe",
+      "section": "H.0.0",
+      "title": "Iterums and the Gyre",
+      "kind": "mechanics",
+      "edition": "deluxe",
+      "srd": null,
+      "page": 344,
+      "status": "blocked",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "blocked",
+      "owner_issue": "#1101",
+      "note": "Iterum creation, paths, and the Gyre. Deluxe PDF not on this host; not synthesised."
+    },
+    {
+      "id": "wwn-I.0.0",
+      "chapter": "Deluxe",
+      "section": "I.0.0",
+      "title": "The Latter Earth",
+      "kind": "mechanics",
+      "edition": "deluxe",
+      "srd": null,
+      "page": 356,
+      "status": "blocked",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "blocked",
+      "owner_issue": "#1101",
+      "note": "Setting material; CC0 does not cover protected setting text. Deluxe PDF not on this host; not synthesised."
+    },
+    {
+      "id": "wwn-J.0.0",
+      "chapter": "Deluxe",
+      "section": "J.0.0",
+      "title": "Ruins and Relics",
+      "kind": "mechanics",
+      "edition": "deluxe",
+      "srd": null,
+      "page": 358,
+      "status": "blocked",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "blocked",
+      "owner_issue": "#1101",
+      "note": "Deluxe ruin/relic procedures. Deluxe PDF not on this host; not synthesised."
+    },
+    {
+      "id": "wwn-K.0.0",
+      "chapter": "Deluxe",
+      "section": "K.0.0",
+      "title": "The Sciences of the Latter Earth",
+      "kind": "mechanics",
+      "edition": "deluxe",
+      "srd": null,
+      "page": 370,
+      "status": "blocked",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "blocked",
+      "owner_issue": "#1101",
+      "note": "Deluxe science/technology rules. Deluxe PDF not on this host; not synthesised."
+    },
+    {
+      "id": "wwn-D.1.0",
+      "chapter": "World and Campaign",
+      "section": "D.1.0",
+      "title": "Worldbuilding",
+      "kind": "gm_procedure",
+      "edition": "free_book",
+      "srd": null,
+      "page": 94,
+      "status": "blocked",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "blocked",
+      "owner_issue": "#1101",
+      "note": "World creation and history tools. Not in the CC0 SRD; the free-book mirror returns HTTP 403; not synthesised."
+    },
+    {
+      "id": "wwn-D.2.0",
+      "chapter": "World and Campaign",
+      "section": "D.2.0",
+      "title": "Sandbox Play",
+      "kind": "gm_procedure",
+      "edition": "free_book",
+      "srd": null,
+      "page": 160,
+      "status": "blocked",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "blocked",
+      "owner_issue": "#1101",
+      "note": "Sandbox/campaign fronts. Not in the CC0 SRD; the free-book mirror returns HTTP 403; not synthesised."
+    },
+    {
+      "id": "wwn-D.3.0",
+      "chapter": "World and Campaign",
+      "section": "D.3.0",
+      "title": "Sites and Ruins",
+      "kind": "gm_procedure",
+      "edition": "free_book",
+      "srd": null,
+      "page": 210,
+      "status": "blocked",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "blocked",
+      "owner_issue": "#1101",
+      "note": "Location/ruin generators. Not in the CC0 SRD; the free-book mirror returns HTTP 403; not synthesised."
+    },
+    {
+      "id": "wwn-D.4.0",
+      "chapter": "World and Campaign",
+      "section": "D.4.0",
+      "title": "NPC and Faction Tools",
+      "kind": "gm_procedure",
+      "edition": "free_book",
+      "srd": null,
+      "page": 250,
+      "status": "blocked",
+      "modules": [],
+      "tests": [],
+      "tabletop_status": "blocked",
+      "owner_issue": "#1101",
+      "note": "Supporting-cast and faction tools. Not in the CC0 SRD; the free-book mirror returns HTTP 403; not synthesised."
+    }
+  ],
+  "compatibility": [
+    {
+      "id": "characteristics-saves-skills",
+      "area": "Characteristics, saves, skill checks",
+      "status": "verified_reuse",
+      "modules": [
+        "src/rules/wn_core.py",
+        "src/rules/cwn_core.py"
+      ],
+      "note": "Same 2d6/d20 chassis."
+    },
+    {
+      "id": "classes",
+      "area": "Classes and advancement",
+      "status": "partial",
+      "modules": [
+        "src/rules/wwn_high_mage.py"
+      ],
+      "note": "High Mage only; 15 classes absent and 3 partial. CWN classes remain the tabletop default."
+    },
+    {
+      "id": "magic",
+      "area": "Magic and spellcasting",
+      "status": "partial",
+      "modules": [
+        "src/rules/wwn_spells.py",
+        "src/rules/wwn_high_mage.py"
+      ],
+      "note": "Catalogue + High Mage; other traditions effects absent."
+    },
+    {
+      "id": "equipment",
+      "area": "Equipment and economy",
+      "status": "missing",
+      "modules": [],
+      "note": "CWN catalogue governs; no WWN conversion."
+    },
+    {
+      "id": "entities",
+      "area": "Creatures and NPCs",
+      "status": "partial",
+      "modules": [
+        "src/rules/cwn_npcs.py"
+      ],
+      "note": "Reaction/morale only; no bestiary."
+    },
+    {
+      "id": "factions",
+      "area": "Factions",
+      "status": "missing",
+      "modules": [
+        "src/rules/swn_faction_engine.py"
+      ],
+      "note": "SWN faction engine exists but is a different system; not reused."
+    },
+    {
+      "id": "projects",
+      "area": "Major projects",
+      "status": "implemented",
+      "modules": [
+        "src/rules/wwn_projects.py"
+      ],
+      "note": "Renown/difficulty/scope/opposition/advancement; magical workings partial."
+    },
+    {
+      "id": "survival",
+      "area": "Travel, wilderness, dungeon, hazards",
+      "status": "missing",
+      "modules": [],
+      "note": "AWN survival exists but WWN procedures are not mapped."
+    }
+  ]
+}
