@@ -1,0 +1,877 @@
+{
+ "format": "noopunk.rules.awn_section_index",
+ "version": 1,
+ "issue": 1109,
+ "source": {
+  "title": "Ashes Without Number, Deluxe Edition",
+  "author": "Kevin Crawford",
+  "publisher": "Sine Nomine Publishing",
+  "date": "2025-06-12",
+  "printed_pages": 295,
+  "method": "the book's own two-level table of contents (PDF pages 3-4), every entry verified against the page it names",
+  "note": "Titles and page numbers only. No book text is reproduced; the PDF is the author's authorised copy, is not in the repository, and is not redistributable."
+ },
+ "chapters": [
+  {
+   "first_page": 1,
+   "title": "The Fires that Consume"
+  },
+  {
+   "first_page": 4,
+   "title": "Character Creation"
+  },
+  {
+   "first_page": 36,
+   "title": "The Rules of the Game"
+  },
+  {
+   "first_page": 70,
+   "title": "Equipment"
+  },
+  {
+   "first_page": 104,
+   "title": "Enclaves and Settlements"
+  },
+  {
+   "first_page": 136,
+   "title": "Creating Your Campaign"
+  },
+  {
+   "first_page": 152,
+   "title": "Building Encounter Sites"
+  },
+  {
+   "first_page": 190,
+   "title": "Creating Adventures"
+  },
+  {
+   "first_page": 202,
+   "title": "Creatures of the Wastes"
+  },
+  {
+   "first_page": 230,
+   "title": "The Albuquerque Death Zone"
+  },
+  {
+   "first_page": 254,
+   "title": "Supplementary Material (Deluxe)"
+  },
+  {
+   "first_page": 270,
+   "title": "Modular Power Armor (Deluxe)"
+  },
+  {
+   "first_page": 278,
+   "title": "Hub Settlement Rules (Deluxe)"
+  },
+  {
+   "first_page": 286,
+   "title": "Settlements and Mass Combat (Deluxe)"
+  },
+  {
+   "first_page": 294,
+   "title": "Index"
+  }
+ ],
+ "sections": [
+  {
+   "id": "the-fires-that-consume",
+   "title": "The Fires that Consume",
+   "chapter": "The Fires that Consume",
+   "first_page": 1
+  },
+  {
+   "id": "character-creation",
+   "title": "Character Creation",
+   "chapter": "Character Creation",
+   "first_page": 4
+  },
+  {
+   "id": "attributes",
+   "title": "Attributes",
+   "chapter": "Character Creation",
+   "first_page": 5
+  },
+  {
+   "id": "skills",
+   "title": "Skills",
+   "chapter": "Character Creation",
+   "first_page": 5
+  },
+  {
+   "id": "choosing-a-background",
+   "title": "Choosing a Background",
+   "chapter": "Character Creation",
+   "first_page": 7
+  },
+  {
+   "id": "edges",
+   "title": "Edges",
+   "chapter": "Character Creation",
+   "first_page": 14
+  },
+  {
+   "id": "mutations",
+   "title": "Mutations",
+   "chapter": "Character Creation",
+   "first_page": 16
+  },
+  {
+   "id": "stigmas",
+   "title": "Stigmas",
+   "chapter": "Character Creation",
+   "first_page": 17
+  },
+  {
+   "id": "negative-mutations",
+   "title": "Negative Mutations",
+   "chapter": "Character Creation",
+   "first_page": 18
+  },
+  {
+   "id": "positive-mutations",
+   "title": "Positive Mutations",
+   "chapter": "Character Creation",
+   "first_page": 20
+  },
+  {
+   "id": "foci",
+   "title": "Foci",
+   "chapter": "Character Creation",
+   "first_page": 26
+  },
+  {
+   "id": "hit-points-attack-bonus-and-saves",
+   "title": "Hit Points, Attack Bonus, and Saves",
+   "chapter": "Character Creation",
+   "first_page": 32
+  },
+  {
+   "id": "final-touches",
+   "title": "Final Touches",
+   "chapter": "Character Creation",
+   "first_page": 33
+  },
+  {
+   "id": "starting-equipment",
+   "title": "Starting Equipment",
+   "chapter": "Character Creation",
+   "first_page": 34
+  },
+  {
+   "id": "the-rules-of-the-game",
+   "title": "The Rules of the Game",
+   "chapter": "The Rules of the Game",
+   "first_page": 36
+  },
+  {
+   "id": "system-quick-reference-sheet",
+   "title": "System Quick Reference Sheet",
+   "chapter": "The Rules of the Game",
+   "first_page": 37
+  },
+  {
+   "id": "saving-throws",
+   "title": "Saving Throws",
+   "chapter": "The Rules of the Game",
+   "first_page": 38
+  },
+  {
+   "id": "scenes-rounds-and-mission-time",
+   "title": "Scenes, Rounds, and Mission Time",
+   "chapter": "The Rules of the Game",
+   "first_page": 38
+  },
+  {
+   "id": "skill-checks",
+   "title": "Skill Checks",
+   "chapter": "The Rules of the Game",
+   "first_page": 39
+  },
+  {
+   "id": "combat",
+   "title": "Combat",
+   "chapter": "The Rules of the Game",
+   "first_page": 40
+  },
+  {
+   "id": "the-combat-round",
+   "title": "The Combat Round",
+   "chapter": "The Rules of the Game",
+   "first_page": 41
+  },
+  {
+   "id": "actions-in-combat",
+   "title": "Actions in Combat",
+   "chapter": "The Rules of the Game",
+   "first_page": 42
+  },
+  {
+   "id": "combat-maneuvers-and-definitions",
+   "title": "Combat Maneuvers and Definitions",
+   "chapter": "The Rules of the Game",
+   "first_page": 44
+  },
+  {
+   "id": "optional-lethality-rules",
+   "title": "Optional Lethality Rules",
+   "chapter": "The Rules of the Game",
+   "first_page": 48
+  },
+  {
+   "id": "vehicle-combat",
+   "title": "Vehicle Combat",
+   "chapter": "The Rules of the Game",
+   "first_page": 49
+  },
+  {
+   "id": "mounted-combat",
+   "title": "Mounted Combat",
+   "chapter": "The Rules of the Game",
+   "first_page": 50
+  },
+  {
+   "id": "chases-and-pursuit",
+   "title": "Chases and Pursuit",
+   "chapter": "The Rules of the Game",
+   "first_page": 51
+  },
+  {
+   "id": "injury-healing-and-system-strain",
+   "title": "Injury, Healing, and System Strain",
+   "chapter": "The Rules of the Game",
+   "first_page": 52
+  },
+  {
+   "id": "major-injuries",
+   "title": "Major Injuries",
+   "chapter": "The Rules of the Game",
+   "first_page": 53
+  },
+  {
+   "id": "disease",
+   "title": "Disease",
+   "chapter": "The Rules of the Game",
+   "first_page": 54
+  },
+  {
+   "id": "radiation",
+   "title": "Radiation",
+   "chapter": "The Rules of the Game",
+   "first_page": 55
+  },
+  {
+   "id": "stress",
+   "title": "Stress",
+   "chapter": "The Rules of the Game",
+   "first_page": 56
+  },
+  {
+   "id": "addiction-and-recovery",
+   "title": "Addiction and Recovery",
+   "chapter": "The Rules of the Game",
+   "first_page": 58
+  },
+  {
+   "id": "tracking",
+   "title": "Tracking",
+   "chapter": "The Rules of the Game",
+   "first_page": 59
+  },
+  {
+   "id": "overland-travel-and-scouting",
+   "title": "Overland Travel and Scouting",
+   "chapter": "The Rules of the Game",
+   "first_page": 60
+  },
+  {
+   "id": "hunger-thirst-and-supplies",
+   "title": "Hunger, Thirst, and Supplies",
+   "chapter": "The Rules of the Game",
+   "first_page": 62
+  },
+  {
+   "id": "character-advancement",
+   "title": "Character Advancement",
+   "chapter": "The Rules of the Game",
+   "first_page": 64
+  },
+  {
+   "id": "common-gm-complications",
+   "title": "Common GM Complications",
+   "chapter": "The Rules of the Game",
+   "first_page": 66
+  },
+  {
+   "id": "mixing-sine-nomine-games-together",
+   "title": "Mixing Sine Nomine Games Together",
+   "chapter": "The Rules of the Game",
+   "first_page": 67
+  },
+  {
+   "id": "equipment",
+   "title": "Equipment",
+   "chapter": "Equipment",
+   "first_page": 70
+  },
+  {
+   "id": "encumbrance-and-gear-tracking",
+   "title": "Encumbrance and Gear Tracking",
+   "chapter": "Equipment",
+   "first_page": 71
+  },
+  {
+   "id": "tech-levels-and-scrap",
+   "title": "Tech Levels and Scrap",
+   "chapter": "Equipment",
+   "first_page": 72
+  },
+  {
+   "id": "damaging-and-repairing-gear",
+   "title": "Damaging and Repairing Gear",
+   "chapter": "Equipment",
+   "first_page": 73
+  },
+  {
+   "id": "building-gear",
+   "title": "Building Gear",
+   "chapter": "Equipment",
+   "first_page": 74
+  },
+  {
+   "id": "modifying-gear",
+   "title": "Modifying Gear",
+   "chapter": "Equipment",
+   "first_page": 75
+  },
+  {
+   "id": "armor",
+   "title": "Armor",
+   "chapter": "Equipment",
+   "first_page": 76
+  },
+  {
+   "id": "ranged-weapons",
+   "title": "Ranged Weapons",
+   "chapter": "Equipment",
+   "first_page": 78
+  },
+  {
+   "id": "melee-and-thrown-weapons",
+   "title": "Melee and Thrown Weapons",
+   "chapter": "Equipment",
+   "first_page": 79
+  },
+  {
+   "id": "high-tech-weapons",
+   "title": "High-Tech Weapons",
+   "chapter": "Equipment",
+   "first_page": 80
+  },
+  {
+   "id": "heavy-weaponry",
+   "title": "Heavy Weaponry",
+   "chapter": "Equipment",
+   "first_page": 81
+  },
+  {
+   "id": "armor-mods",
+   "title": "Armor Mods",
+   "chapter": "Equipment",
+   "first_page": 82
+  },
+  {
+   "id": "weapon-mods",
+   "title": "Weapon Mods",
+   "chapter": "Equipment",
+   "first_page": 83
+  },
+  {
+   "id": "survival-gear",
+   "title": "Survival Gear",
+   "chapter": "Equipment",
+   "first_page": 84
+  },
+  {
+   "id": "pharmaceuticals",
+   "title": "Pharmaceuticals",
+   "chapter": "Equipment",
+   "first_page": 86
+  },
+  {
+   "id": "high-tech-stims",
+   "title": "High-Tech Stims",
+   "chapter": "Equipment",
+   "first_page": 87
+  },
+  {
+   "id": "vehicles",
+   "title": "Vehicles",
+   "chapter": "Equipment",
+   "first_page": 88
+  },
+  {
+   "id": "vehicle-fittings",
+   "title": "Vehicle Fittings",
+   "chapter": "Equipment",
+   "first_page": 90
+  },
+  {
+   "id": "vehicle-mounted-weaponry",
+   "title": "Vehicle-Mounted Weaponry",
+   "chapter": "Equipment",
+   "first_page": 92
+  },
+  {
+   "id": "vehicle-mods",
+   "title": "Vehicle Mods",
+   "chapter": "Equipment",
+   "first_page": 93
+  },
+  {
+   "id": "high-tech-tools-and-consumer-goods",
+   "title": "High-Tech Tools and Consumer Goods",
+   "chapter": "Equipment",
+   "first_page": 94
+  },
+  {
+   "id": "identifying-mysterious-tech",
+   "title": "Identifying Mysterious Tech",
+   "chapter": "Equipment",
+   "first_page": 102
+  },
+  {
+   "id": "enclaves-and-settlements",
+   "title": "Enclaves and Settlements",
+   "chapter": "Enclaves and Settlements",
+   "first_page": 104
+  },
+  {
+   "id": "enclave-statistics",
+   "title": "Enclave Statistics",
+   "chapter": "Enclaves and Settlements",
+   "first_page": 105
+  },
+  {
+   "id": "enclave-mechanics",
+   "title": "Enclave Mechanics",
+   "chapter": "Enclaves and Settlements",
+   "first_page": 106
+  },
+  {
+   "id": "dominion-and-changes",
+   "title": "Dominion and Changes",
+   "chapter": "Enclaves and Settlements",
+   "first_page": 107
+  },
+  {
+   "id": "enclave-actions",
+   "title": "Enclave Actions",
+   "chapter": "Enclaves and Settlements",
+   "first_page": 108
+  },
+  {
+   "id": "creating-an-enclave",
+   "title": "Creating an Enclave",
+   "chapter": "Enclaves and Settlements",
+   "first_page": 110
+  },
+  {
+   "id": "enclaves-and-pc-actions",
+   "title": "Enclaves and PC Actions",
+   "chapter": "Enclaves and Settlements",
+   "first_page": 110
+  },
+  {
+   "id": "sample-enclaves",
+   "title": "Sample Enclaves",
+   "chapter": "Enclaves and Settlements",
+   "first_page": 111
+  },
+  {
+   "id": "enclave-tags",
+   "title": "Enclave Tags",
+   "chapter": "Enclaves and Settlements",
+   "first_page": 112
+  },
+  {
+   "id": "enclave-tag-list",
+   "title": "Enclave Tag List",
+   "chapter": "Enclaves and Settlements",
+   "first_page": 113
+  },
+  {
+   "id": "an-example-enclave-turn",
+   "title": "An Example Enclave Turn",
+   "chapter": "Enclaves and Settlements",
+   "first_page": 135
+  },
+  {
+   "id": "creating-your-campaign",
+   "title": "Creating Your Campaign",
+   "chapter": "Creating Your Campaign",
+   "first_page": 136
+  },
+  {
+   "id": "campaign-genres",
+   "title": "Campaign Genres",
+   "chapter": "Creating Your Campaign",
+   "first_page": 140
+  },
+  {
+   "id": "structuring-your-campaign",
+   "title": "Structuring Your Campaign",
+   "chapter": "Creating Your Campaign",
+   "first_page": 141
+  },
+  {
+   "id": "crisis-campaigns",
+   "title": "Crisis Campaigns",
+   "chapter": "Creating Your Campaign",
+   "first_page": 142
+  },
+  {
+   "id": "exploration-campaigns",
+   "title": "Exploration Campaigns",
+   "chapter": "Creating Your Campaign",
+   "first_page": 143
+  },
+  {
+   "id": "creating-your-region",
+   "title": "Creating Your Region",
+   "chapter": "Creating Your Campaign",
+   "first_page": 144
+  },
+  {
+   "id": "building-crises",
+   "title": "Building Crises",
+   "chapter": "Creating Your Campaign",
+   "first_page": 146
+  },
+  {
+   "id": "building-encounter-sites",
+   "title": "Building Encounter Sites",
+   "chapter": "Building Encounter Sites",
+   "first_page": 152
+  },
+  {
+   "id": "encounter-site-tags",
+   "title": "Encounter Site Tags",
+   "chapter": "Building Encounter Sites",
+   "first_page": 154
+  },
+  {
+   "id": "one-roll-encounter-site-past",
+   "title": "One-Roll Encounter Site Past",
+   "chapter": "Building Encounter Sites",
+   "first_page": 171
+  },
+  {
+   "id": "encounter-site-features",
+   "title": "Encounter Site Features",
+   "chapter": "Building Encounter Sites",
+   "first_page": 172
+  },
+  {
+   "id": "encounter-site-occupants",
+   "title": "Encounter Site Occupants",
+   "chapter": "Building Encounter Sites",
+   "first_page": 174
+  },
+  {
+   "id": "one-roll-occupant-details",
+   "title": "One-Roll Occupant Details",
+   "chapter": "Building Encounter Sites",
+   "first_page": 176
+  },
+  {
+   "id": "one-roll-occupant-leadership",
+   "title": "One-Roll Occupant Leadership",
+   "chapter": "Building Encounter Sites",
+   "first_page": 177
+  },
+  {
+   "id": "encounter-site-hazards",
+   "title": "Encounter Site Hazards",
+   "chapter": "Building Encounter Sites",
+   "first_page": 178
+  },
+  {
+   "id": "placing-encounter-site-loot",
+   "title": "Placing Encounter Site Loot",
+   "chapter": "Building Encounter Sites",
+   "first_page": 182
+  },
+  {
+   "id": "types-of-site-loot",
+   "title": "Types of Site Loot",
+   "chapter": "Building Encounter Sites",
+   "first_page": 183
+  },
+  {
+   "id": "encounter-site-loot-tables",
+   "title": "Encounter Site Loot Tables",
+   "chapter": "Building Encounter Sites",
+   "first_page": 184
+  },
+  {
+   "id": "creating-adventures",
+   "title": "Creating Adventures",
+   "chapter": "Creating Adventures",
+   "first_page": 190
+  },
+  {
+   "id": "crisis-adventures",
+   "title": "Crisis Adventures",
+   "chapter": "Creating Adventures",
+   "first_page": 192
+  },
+  {
+   "id": "exploration-adventures",
+   "title": "Exploration Adventures",
+   "chapter": "Creating Adventures",
+   "first_page": 194
+  },
+  {
+   "id": "social-adventures",
+   "title": "Social Adventures",
+   "chapter": "Creating Adventures",
+   "first_page": 196
+  },
+  {
+   "id": "adventure-rewards",
+   "title": "Adventure Rewards",
+   "chapter": "Creating Adventures",
+   "first_page": 200
+  },
+  {
+   "id": "patron-rewards-and-payments",
+   "title": "Patron Rewards and Payments",
+   "chapter": "Creating Adventures",
+   "first_page": 201
+  },
+  {
+   "id": "creatures-of-the-wastes",
+   "title": "Creatures of the Wastes",
+   "chapter": "Creatures of the Wastes",
+   "first_page": 202
+  },
+  {
+   "id": "judging-combat-difficulty",
+   "title": "Judging Combat Difficulty",
+   "chapter": "Creatures of the Wastes",
+   "first_page": 203
+  },
+  {
+   "id": "reaction-rolls",
+   "title": "Reaction Rolls",
+   "chapter": "Creatures of the Wastes",
+   "first_page": 204
+  },
+  {
+   "id": "morale-and-morale-checks",
+   "title": "Morale and Morale Checks",
+   "chapter": "Creatures of the Wastes",
+   "first_page": 205
+  },
+  {
+   "id": "reading-stat-lines",
+   "title": "Reading Stat Lines",
+   "chapter": "Creatures of the Wastes",
+   "first_page": 206
+  },
+  {
+   "id": "animals",
+   "title": "Animals",
+   "chapter": "Creatures of the Wastes",
+   "first_page": 207
+  },
+  {
+   "id": "beastfolk",
+   "title": "Beastfolk",
+   "chapter": "Creatures of the Wastes",
+   "first_page": 208
+  },
+  {
+   "id": "beastfolk-origin-foci",
+   "title": "Beastfolk Origin Foci",
+   "chapter": "Creatures of the Wastes",
+   "first_page": 210
+  },
+  {
+   "id": "one-roll-beastfolk-pack-generator",
+   "title": "One-Roll Beastfolk Pack Generator",
+   "chapter": "Creatures of the Wastes",
+   "first_page": 211
+  },
+  {
+   "id": "cyborgs",
+   "title": "Cyborgs",
+   "chapter": "Creatures of the Wastes",
+   "first_page": 212
+  },
+  {
+   "id": "humans",
+   "title": "Humans",
+   "chapter": "Creatures of the Wastes",
+   "first_page": 214
+  },
+  {
+   "id": "mutant-animals",
+   "title": "Mutant Animals",
+   "chapter": "Creatures of the Wastes",
+   "first_page": 216
+  },
+  {
+   "id": "mutant-humanoids",
+   "title": "Mutant Humanoids",
+   "chapter": "Creatures of the Wastes",
+   "first_page": 218
+  },
+  {
+   "id": "robots",
+   "title": "Robots",
+   "chapter": "Creatures of the Wastes",
+   "first_page": 220
+  },
+  {
+   "id": "zombies",
+   "title": "Zombies",
+   "chapter": "Creatures of the Wastes",
+   "first_page": 222
+  },
+  {
+   "id": "zombie-infections",
+   "title": "Zombie Infections",
+   "chapter": "Creatures of the Wastes",
+   "first_page": 225
+  },
+  {
+   "id": "one-roll-zombie-plague-generator",
+   "title": "One-Roll Zombie Plague Generator",
+   "chapter": "Creatures of the Wastes",
+   "first_page": 226
+  },
+  {
+   "id": "zombie-encounter-quick-reference",
+   "title": "Zombie Encounter Quick Reference",
+   "chapter": "Creatures of the Wastes",
+   "first_page": 227
+  },
+  {
+   "id": "nemesis-traits",
+   "title": "Nemesis Traits",
+   "chapter": "Creatures of the Wastes",
+   "first_page": 228
+  },
+  {
+   "id": "the-albuquerque-death-zone",
+   "title": "The Albuquerque Death Zone",
+   "chapter": "The Albuquerque Death Zone",
+   "first_page": 230
+  },
+  {
+   "id": "the-geography-of-the-zone",
+   "title": "The Geography of the Zone",
+   "chapter": "The Albuquerque Death Zone",
+   "first_page": 236
+  },
+  {
+   "id": "people-and-places-of-the-zone",
+   "title": "People and Places of the Zone",
+   "chapter": "The Albuquerque Death Zone",
+   "first_page": 238
+  },
+  {
+   "id": "trading-in-the-zone",
+   "title": "Trading in the Zone",
+   "chapter": "The Albuquerque Death Zone",
+   "first_page": 246
+  },
+  {
+   "id": "weapons-of-the-west",
+   "title": "Weapons of the West",
+   "chapter": "The Albuquerque Death Zone",
+   "first_page": 247
+  },
+  {
+   "id": "the-cowboy",
+   "title": "The Cowboy",
+   "chapter": "The Albuquerque Death Zone",
+   "first_page": 252
+  },
+  {
+   "id": "supplementary-material",
+   "title": "Supplementary Material",
+   "chapter": "Supplementary Material (Deluxe)",
+   "first_page": 254
+  },
+  {
+   "id": "evil-techno-wizards",
+   "title": "Evil Techno-wizards",
+   "chapter": "Supplementary Material (Deluxe)",
+   "first_page": 255
+  },
+  {
+   "id": "techno-wizard-scheme-generator",
+   "title": "Techno-wizard Scheme Generator",
+   "chapter": "Supplementary Material (Deluxe)",
+   "first_page": 257
+  },
+  {
+   "id": "the-ash-sorcerer",
+   "title": "The Ash Sorcerer",
+   "chapter": "Supplementary Material (Deluxe)",
+   "first_page": 258
+  },
+  {
+   "id": "ash-sorcerer-disciplines",
+   "title": "Ash Sorcerer Disciplines",
+   "chapter": "Supplementary Material (Deluxe)",
+   "first_page": 260
+  },
+  {
+   "id": "the-mentalist",
+   "title": "The Mentalist",
+   "chapter": "Supplementary Material (Deluxe)",
+   "first_page": 264
+  },
+  {
+   "id": "mentalist-disciplines",
+   "title": "Mentalist Disciplines",
+   "chapter": "Supplementary Material (Deluxe)",
+   "first_page": 266
+  },
+  {
+   "id": "modular-power-armor",
+   "title": "Modular Power Armor",
+   "chapter": "Modular Power Armor (Deluxe)",
+   "first_page": 270
+  },
+  {
+   "id": "modular-armor-frames",
+   "title": "Modular Armor Frames",
+   "chapter": "Modular Power Armor (Deluxe)",
+   "first_page": 272
+  },
+  {
+   "id": "modular-armor-fittings",
+   "title": "Modular Armor Fittings",
+   "chapter": "Modular Power Armor (Deluxe)",
+   "first_page": 273
+  },
+  {
+   "id": "hub-settlement-rules",
+   "title": "Hub Settlement Rules",
+   "chapter": "Hub Settlement Rules (Deluxe)",
+   "first_page": 278
+  },
+  {
+   "id": "settlements-and-mass-combat",
+   "title": "Settlements and Mass Combat",
+   "chapter": "Settlements and Mass Combat (Deluxe)",
+   "first_page": 286
+  }
+ ],
+ "unverified_entries": []
+}
