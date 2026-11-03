@@ -61,12 +61,15 @@ def audit(register: dict) -> list[str]:
 
     # rights value -> may anything be built from it?
     usable_by_rights: dict[str, bool] = {}
-    text_available_by_rights: dict[str, bool] = {}
+    #: Two different questions, deliberately separate: may a procedure be *built* from the source
+    #: (`usable`), and can an agent *read* it to check fidelity (`readable`). The right to publish its
+    #: text (`text_available`) is a third question and does not gate verification.
+    readable_by_rights: dict[str, bool] = {}
     for source in register["sources"].values():
         rights = source.get("rights", "?")
         usable_by_rights[rights] = usable_by_rights.get(rights, False) or bool(source.get("usable"))
-        text_available_by_rights[rights] = (text_available_by_rights.get(rights, False)
-                                           or bool(source.get("text_available", False)))
+        readable_by_rights[rights] = (readable_by_rights.get(rights, False)
+                                      or bool(source.get("readable", source.get("text_available", False))))
 
     blocked_editions = set(register.get("blocked_editions", []))
     requires_fidelity = bool(register.get("requires_fidelity"))
@@ -113,7 +116,7 @@ def audit(register: dict) -> list[str]:
             fidelity = row.get("fidelity")
             if fidelity not in fidelities:
                 problems.append(f"{rid}: fidelity {fidelity!r} is not one of {sorted(fidelities)}")
-            elif fidelity == "verified" and not text_available_by_rights.get(row.get("rights"), False):
+            elif fidelity == "verified" and not readable_by_rights.get(row.get("rights"), False):
                 problems.append(
                     f"{rid}: claims verified fidelity, but no readable copy of its source is available")
 

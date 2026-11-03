@@ -17,8 +17,8 @@
  },
  "fidelities": {
   "verified": "Compared against a readable copy of the published procedure by a human.",
-  "unverified": "The code exists, but nobody has compared it line by line with the book. This is the honest default for every SWN row.",
-  "blocked": "Cannot be verified: the source text may not be reproduced or the copy is unavailable.",
+  "unverified": "Nobody has compared the code against the printed numbers yet. After the source index landed, this is a work statement, not a licensing obstacle.",
+  "blocked": "Cannot be verified because no readable copy exists (e.g. a book that is not in the repository and was never supplied). SWN is NOT blocked: its copy has been read and its sections recorded; rows that are not compared say 'unverified'.",
   "not_applicable": "No published procedure to compare against (setting guidance, or a row that only delegates to CWN)."
  },
  "$comment": "SWN's rights position is the opposite of CWN's and WWN's. CWN and WWN both publish CC0 System Reference Documents. Stars Without Number publishes a free EDITION OF THE BOOK, not an SRD, and docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md records that no applicable text licence has been established. data/sources/game_system_rights.json carries the verdict 'blocked-unverified'. What that permits is real but narrow: independently written procedural implementations of unprotected mechanics. What it forbids is verbatim names, tables, prose, art and setting. Every existing src/rules/swn_*.py module is self-described as 'SWN-inspired' or an 'Original NoöPunk implementation' for exactly this reason, and that is why every SWN-native row below carries fidelity 'unverified' rather than 'verified'.",
@@ -28,14 +28,20 @@
    "rights": "mechanics_only",
    "usable": true,
    "text_available": false,
-   "note": "No applicable text licence established (#569; rights ledger verdict 'blocked-unverified'). Permitted: independently written procedural implementations of unprotected mechanics. Forbidden: verbatim text, tables, art, setting, or any implied CC0 permission. The book itself is not in this repository, so no row can be compared against it."
+   "note": "Author-supplied copy of the book, read on 2026-11-03 and section-indexed into data/rules/swn_sections.json (titles and printed pages only). Reading and citing pages is permitted to repository agents; reproducing its text, tables, art or setting is not. No applicable text licence exists (#569).",
+   "read_by_agent": true,
+   "readable": true,
+   "readable_note": "Author-supplied copy read on 2026-11-03 and section-indexed into data/rules/swn_sections.json (titles and printed pages only). Pages may be cited; text, tables, art and setting may not be reproduced."
   },
   "swn_deluxe": {
    "document": "Stars Without Number: Revised Edition - Deluxe (commercial PDF)",
    "rights": "mechanics_only",
    "usable": true,
    "text_available": false,
-   "note": "Deluxe-only chapters are registered so they cannot be forgotten. The copy is not available to these agents, so the same boundary applies and no Deluxe-specific procedure has been read or verified. Do not commit PDF pages or long extracts."
+   "note": "Author-supplied copy of the book, read on 2026-11-03 and section-indexed into data/rules/swn_sections.json (titles and printed pages only). Reading and citing pages is permitted to repository agents; reproducing its text, tables, art or setting is not. No applicable text licence exists (#569).",
+   "read_by_agent": true,
+   "readable": true,
+   "readable_note": "Author-supplied copy read on 2026-11-03 and section-indexed into data/rules/swn_sections.json (titles and printed pages only). Pages may be cited; text, tables, art and setting may not be reproduced."
   },
   "swn_reference_code": {
    "document": "wintersleepAI/swnr (Foundry VTT implementation)",
@@ -102,12 +108,12 @@
    "priority": "low",
    "rights": "mechanics_only",
    "status": "missing",
-   "fidelity": "blocked",
+   "fidelity": "unverified",
    "python": [],
    "tests": [],
    "tabletop": "",
    "owner": "#1105",
-   "notes": "Registered so the Deluxe character options are not silently dropped. No text may be used."
+   "notes": "Deluxe character options are registered so they are not silently dropped; no text may be reproduced, but the pages are readable (p.248 onward) and the rows stay unverified until compared."
   },
   {
    "id": "P1",
@@ -179,7 +185,7 @@
    "priority": "high",
    "rights": "mechanics_only",
    "status": "partial",
-   "fidelity": "blocked",
+   "fidelity": "unverified",
    "python": [
     "src/rules/psionics.py",
     "data/rules/psionics_techniques.json"
@@ -189,7 +195,7 @@
    ],
    "tabletop": "Provisional NoöPunk techniques over the Effort shape.",
    "owner": "#1043",
-   "notes": "The six disciplines are named (Biopsionics, Metapsionics, Precognition, Telekinesis, Telepathy, Teleportation) and 20 techniques exist across them - but every technique name and every sentence of effect text is ORIGINAL NoöPunk content, flagged provisional and is_canonical false. #1105 asks for the published techniques, level by level. That cannot be done from this repository's sources: SWN permits mechanics, not text. This is the single largest blocked item in the tracker."
+   "notes": "The Effort engine is one implementation after this pass (capacity, reservations by duration, torching, snapshot persistence), and the six discipline sections are indexed at pp.32-43. What is NOT done is the book's full per-discipline technique list: the catalogue holds the six cores and 20 authored NoöPunk techniques. Unverified, not blocked - the copy is readable."
   },
   {
    "id": "P5",
@@ -453,12 +459,12 @@
    "priority": "high",
    "rights": "mechanics_only",
    "status": "missing",
-   "fidelity": "blocked",
+   "fidelity": "unverified",
    "python": [],
    "tests": [],
    "tabletop": "",
    "owner": "#1105",
-   "notes": "The single most important gap in the faction workstream, and the tracker says so: existing turn code is NOT proof of a finished asset catalogue. A published asset catalogue is a table; copying it is not permitted. Any NoöPunk asset list must be original and clearly labelled as such."
+   "notes": "The turn, action economy and FacCreds exist; the asset catalogues and combat tables are explicitly reference-only in the module. Unverified against pp.218-222 rather than blocked: the copy is readable and the pages are indexed."
   },
   {
    "id": "F3",

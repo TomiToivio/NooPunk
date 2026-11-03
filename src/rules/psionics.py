@@ -10,22 +10,46 @@ from collections.abc import Mapping
 from dataclasses import dataclass
 from pathlib import Path
 
-from .swn_psionics import DISCIPLINES, Duration, PsiRulesError
+from .swn_psionics import DISCIPLINES, RESTRICTED_PACKAGES, Duration, PsiRulesError
 from .swn_psionics import Psychic as _EffortPsychic
 
-PSYCHIC_PACKAGES = frozenset({"swn_psychic", "swn_partial_psychic"})
-TECHNIQUES = {
-    "surface_read": ("Telepathy", 0),
-    "empathic_trace": ("Telepathy", 1),
-    "premonition": ("Precognition", 0),
-}
+#: The packages that may commit Effort. Derived from the engine's restricted set, so a new package is
+#: declared in one place (it used to be two hard-coded sets that could disagree).
+UNRESTRICTED_PACKAGES = frozenset({"swn_psychic"})
+PSYCHIC_PACKAGES = UNRESTRICTED_PACKAGES | RESTRICTED_PACKAGES
 
-#: The catalogue's ``effort`` vocabulary mapped onto the Effort engine's durations.
+#: The catalogue's ``effort`` vocabulary mapped onto the Effort engine's durations. **One** map:
+#: :func:`effort_duration` reads it in the string direction instead of keeping a second copy.
 DURATION_BY_EFFORT = {
     "commit_scene": Duration.SCENE,
     "commit_day": Duration.DAY,
     "none": Duration.ACTIVE,
 }
+
+#: What this module calls each duration in its own public vocabulary, keyed by the catalogue's word.
+#: Its keys must equal `DURATION_BY_EFFORT`'s (asserted at import), so a new catalogue word fails loudly
+#: instead of silently defaulting to "none".
+_PUBLIC_DURATION = {
+    "commit_scene": "scene",
+    "commit_day": "day",
+    "none": "none",
+}
+assert set(_PUBLIC_DURATION) == set(DURATION_BY_EFFORT), "the duration vocabularies have drifted"
+
+
+def _technique_table() -> dict[str, tuple[str, int]]:
+    """Every playable technique as ``id -> (discipline, minimum rank)``, projected from the catalogue.
+
+    The hand-written map that lived here listed three ids while the catalogue held twenty, and
+    ``use_technique`` consulted the map before the catalogue — so a technique could be authorized by the
+    gate and still unresolvable, or resolvable with a stale rank. One source now: the catalogue.
+    """
+    return {key: (str(entry.get("discipline", "")), int(entry.get("min_skill", 0)))
+            for key, entry in load_catalogue().items()}
+
+
+#: Kept as a module-level view for callers that introspect it. It is filled at the bottom of this
+#: module, because it is projected from the catalogue (which is loaded by a function defined there).
 
 
 @dataclass(frozen=True)
@@ -59,17 +83,13 @@ class Psychic(_EffortPsychic):
         case's psionic beat unrunnable. The legacy ``TECHNIQUES`` map stays as a
         fallback for ids authored before the catalogue existed.
         """
-        try:
-            discipline, rank = TECHNIQUES[technique_id]
-        except KeyError:
-            entry = load_catalogue().get(technique_id)
-            if entry is None:
-                raise PsiRulesError(f"unknown NoöPunk technique: {technique_id}") from None
-            discipline = str(entry.get("discipline", ""))
-            rank = int(entry.get("min_skill", 0))
-            if duration is None:
-                duration = DURATION_BY_EFFORT.get(str(entry.get("effort", "none")),
-                                                  Duration.SCENE)
+        entry = load_catalogue().get(technique_id)
+        if entry is None:
+            raise PsiRulesError(f"unknown NoöPunk technique: {technique_id}")
+        discipline = str(entry.get("discipline", ""))
+        rank = int(entry.get("min_skill", 0))
+        if duration is None:
+            duration = DURATION_BY_EFFORT.get(str(entry.get("effort", "none")), Duration.SCENE)
         self.commit(key, discipline, minimum_rank=rank,
                     duration=duration or Duration.SCENE)
 
@@ -80,16 +100,23 @@ class Psychic(_EffortPsychic):
         legacy = _EffortPsychic.from_snapshot(state)
         if legacy.reservations and not authorized(legacy.permissions):
             raise PsiRulesError("unauthorized persisted Effort commitments")
+        # Copy every engine field. The first version rebuilt the object from four arguments and silently
+        # dropped `restricted_discipline`, `torch_bonus` and `torched_round`: a torched Partial Psychic
+        # came back with its Effort bonus gone and its discipline restriction lifted.
         psychic = cls(legacy.wisdom, legacy.constitution,
-                      dict(legacy.disciplines), set(legacy.permissions))
+                      dict(legacy.disciplines), set(legacy.permissions),
+                      scene=legacy.scene,
+                      restricted_discipline=legacy.restricted_discipline,
+                      torch_bonus=legacy.torch_bonus,
+                      torched_round=legacy.torched_round)
         psychic.reservations = dict(legacy.reservations)
-        psychic.scene = legacy.scene
         return psychic
 
 
 __all__ = [
     "DISCIPLINES",
     "PSYCHIC_PACKAGES",
+    "UNRESTRICTED_PACKAGES",
     "TECHNIQUES",
     "Duration",
     "PsiRulesError",
@@ -155,7 +182,13 @@ def effort_duration(technique_id: str, *, catalogue: dict[str, dict] | None = No
     """``none``, ``scene`` or ``day``: what using this technique does to the Effort pool."""
     entry = (catalogue or load_catalogue()).get(technique_id, {})
     cost = str(entry.get("effort", "none"))
-    return {"commit_scene": "scene", "commit_day": "day"}.get(cost, "none")
+    # The catalogue's word -> the engine's duration -> this function's own public word (`none` for
+    # ACTIVE). Derived from the one map, so the three vocabularies cannot drift apart.
+    return _PUBLIC_DURATION.get(cost, "none")
 
+
+#: `id -> (discipline, minimum rank)`, projected from the catalogue. Assigned here because the
+#: projection needs `load_catalogue`, which is defined above it.
+TECHNIQUES: dict[str, tuple[str, int]] = _technique_table()
 
 __all__ += ["CATALOGUE_PATH", "effort_duration", "load_catalogue", "may_use"]

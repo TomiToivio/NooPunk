@@ -24,21 +24,21 @@ A row can be implemented and still unverified. These two columns are separate cl
 | Fidelity | Rows |
 |---|---:|
 | verified | **0** |
-| unverified | **27** |
-| blocked | **3** |
+| unverified | **30** |
+| blocked | **0** |
 | not_applicable | **4** |
 
 - **verified** — Compared against a readable copy of the published procedure by a human.
-- **unverified** — The code exists, but nobody has compared it line by line with the book. This is the honest default for every SWN row.
-- **blocked** — Cannot be verified: the source text may not be reproduced or the copy is unavailable.
+- **unverified** — Nobody has compared the code against the printed numbers yet. After the source index landed, this is a work statement, not a licensing obstacle.
+- **blocked** — Cannot be verified because no readable copy exists (e.g. a book that is not in the repository and was never supplied). SWN is NOT blocked: its copy has been read and its sections recorded; rows that are not compared say 'unverified'.
 - **not_applicable** — No published procedure to compare against (setting guidance, or a row that only delegates to CWN).
 
 ## Sources and what may be used
 
 | Source | Rights | Usable here | Why |
 |---|---|---|---|
-| Stars Without Number: Revised Edition (Kevin Crawford / Sine Nomine) | `mechanics_only` | yes | No applicable text licence established (#569; rights ledger verdict 'blocked-unverified'). Permitted: independently written procedural implementations of unprotected mechanics. Forbidden: verbatim text, tables, art, setting, or any implied CC0 permission. The book itself is not in this repository, so no row can be compared against it. |
-| Stars Without Number: Revised Edition - Deluxe (commercial PDF) | `mechanics_only` | yes | Deluxe-only chapters are registered so they cannot be forgotten. The copy is not available to these agents, so the same boundary applies and no Deluxe-specific procedure has been read or verified. Do not commit PDF pages or long extracts. |
+| Stars Without Number: Revised Edition (Kevin Crawford / Sine Nomine) | `mechanics_only` | yes | Author-supplied copy of the book, read on 2026-11-03 and section-indexed into data/rules/swn_sections.json (titles and printed pages only). Reading and citing pages is permitted to repository agents; reproducing its text, tables, art or setting is not. No applicable text licence exists (#569). |
+| Stars Without Number: Revised Edition - Deluxe (commercial PDF) | `mechanics_only` | yes | Author-supplied copy of the book, read on 2026-11-03 and section-indexed into data/rules/swn_sections.json (titles and printed pages only). Reading and citing pages is permitted to repository agents; reproducing its text, tables, art or setting is not. No applicable text licence exists (#569). |
 | wintersleepAI/swnr (Foundry VTT implementation) | `unverified` | **no** | Not a drop-in Python library. Licence must be assessed per file before anything is ported, with attribution and verified parity. Nothing has been ported. |
 | Cities Without Number System Reference Document | `cc0_srd_only` | yes | Primary human-scale rules. SWN rows reuse it by delegation rather than reimplementing it. |
 
@@ -48,11 +48,11 @@ A row can be implemented and still unverified. These two columns are separate cl
 |---|---|---|---|---|---|---|---|---|---|
 | CC1 | Baseline human character generation | 3 | **verified_reuse** | not_applicable | revised | `cwn_character.py` | `test_cwn_core.py` | CWN character creation is the baseline; SWN does not replace it for ordinary humans. | #1006 |
 | CC2 | Psychic and Partial Psychic class packages | 3 | **partial** | unverified | revised | `swn_progression.py` | `test_swn_progression.py` | Psychic advancement as published, on top of CWN character creation. | #1043 |
-| CC3 | Alien and True AI character options | 3 | **missing** | blocked | deluxe | — | — |  | #1105 |
+| CC3 | Alien and True AI character options | 3 | **missing** | unverified | deluxe | — | — |  | #1105 |
 | P1 | Effort accounting, commitment durations and recovery | 29 | **implemented** | unverified | revised | `swn_psionics.py`<br>`swn_psionics.json` | `test_swn_psionics.py` | Effort pools with active, scene and day commitments, and their recovery. | #1043 |
 | P2 | Torching and its consequences | 29 | **implemented** | unverified | revised | `swn_psionics.py` | `test_swn_psionics_torching.py` | Torching as a costly last resort: attributes burn and the granted point is scene-scoped. System Strain is not applied here. | #1043 |
 | P3 | Psychic skills | 29 | **partial** | unverified | revised | `swn_psionics.py` | `test_swn_psionics_contract.py` |  | #1043 |
-| P4 | Six disciplines: technique inventory and effects | 29 | **partial** | blocked | revised | `psionics.py`<br>`psionics_techniques.json` | `test_psionics_catalogue.py` | Provisional NoöPunk techniques over the Effort shape. | #1043 |
+| P4 | Six disciplines: technique inventory and effects | 29 | **partial** | unverified | revised | `psionics.py`<br>`psionics_techniques.json` | `test_psionics_catalogue.py` | Provisional NoöPunk techniques over the Effort shape. | #1043 |
 | P5 | Technique activation, targets, saves and scene state | 29 | **partial** | unverified | revised | `psionics.py` | `test_natural_psi_effects_apply.py` |  | #1043 |
 | S1 | Core resolution, combat and saves | 45 | **verified_reuse** | not_applicable | revised | `cwn_combat.py`<br>`wn_core.py` | `test_cwn_combat.py` | CWN resolution for human-scale play. | #1006 |
 | S2 | Environmental hazards: radiation, vacuum, exotic environments | 45 | **missing** | unverified | revised | — | — |  | #1105 |
@@ -67,7 +67,7 @@ A row can be implemented and still unverified. These two columns are separate cl
 | X1 | Alien stat blocks and species creation | 193 | **missing** | unverified | revised | — | — |  | #1105 |
 | X2 | Species social lenses and NPC packages | 193 | **missing** | unverified | revised | — | — |  | #1105 |
 | F1 | Force, Cunning, Wealth and FacCreds | 211 | **implemented** | unverified | revised | `swn_faction_turn.py` | `test_swn_faction_engine.py` | Faction statistics and income for a strategic turn. | #1043 |
-| F2 | Asset catalogue | 211 | **missing** | blocked | revised | — | — |  | #1105 |
+| F2 | Asset catalogue | 211 | **missing** | unverified | revised | — | — |  | #1105 |
 | F3 | Asset movement, attacks, defence and damage | 211 | **partial** | unverified | revised | `swn_faction_turn.py` | `test_swn_faction_engine.py` |  | #1043 |
 | F4 | Deterministic multi-faction turn engine | 211 | **implemented** | unverified | revised | `swn_faction_engine.py` | `test_swn_faction_engine.py` | Seeded faction turns for the strategic layer. | #1043 |
 | F5 | Faction operations | 211 | **implemented** | unverified | revised | `swn_faction_operations.py` | `test_swn_faction_operations.py` |  | #1043 |
@@ -101,7 +101,7 @@ A row can be implemented and still unverified. These two columns are separate cl
 
 - **CC2 Psychic and Partial Psychic class packages** — Progression mechanics exist as an original implementation. The class package as a whole (eligibility, foci interaction, partial-psychic split) is not verified against the book.
 - **P3 Psychic skills** — Skill interaction is modelled where the Effort arithmetic needs it, without adding SWN skills to CWN's default list.
-- **P4 Six disciplines: technique inventory and effects** — The six disciplines are named (Biopsionics, Metapsionics, Precognition, Telekinesis, Telepathy, Teleportation) and 20 techniques exist across them - but every technique name and every sentence of effect text is ORIGINAL NoöPunk content, flagged provisional and is_canonical false. #1105 asks for the published techniques, level by level. That cannot be done from this repository's sources: SWN permits mechanics, not text. This is the single largest blocked item in the tracker.
+- **P4 Six disciplines: technique inventory and effects** — The Effort engine is one implementation after this pass (capacity, reservations by duration, torching, snapshot persistence), and the six discipline sections are indexed at pp.32-43. What is NOT done is the book's full per-discipline technique list: the catalogue holds the six cores and 20 authored NoöPunk techniques. Unverified, not blocked - the copy is readable.
 - **P5 Technique activation, targets, saves and scene state** — Activation and application exist for the provisional catalogue, not for the published technique list.
 - **SH1 Hull, fittings and vessel construction** — The module describes itself as an SWN-inspired adapter, not a complete ship catalogue. It must not be presented as published hull or fitting data.
 - **SH2 Space combat, crew actions, damage and repair** — Attack resolution exists; full crew action economy and repair procedures do not.

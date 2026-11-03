@@ -68,7 +68,17 @@ class RegisterIntegrityTests(unittest.TestCase):
         for key in ("swn_revised", "swn_deluxe"):
             with self.subTest(source=key):
                 self.assertEqual(self.register["sources"][key]["rights"], "mechanics_only")
-                self.assertFalse(self.register["sources"][key]["text_available"])
+                self.assertFalse(self.register["sources"][key]["text_available"],
+                                 "no text licence: the book may not be reproduced")
+
+    def test_the_copy_is_recorded_as_readable_without_being_publishable(self):
+        """Two questions, two fields. Reading a page to check a number is not the same as publishing it."""
+        for key in ("swn_revised", "swn_deluxe"):
+            with self.subTest(source=key):
+                source = self.register["sources"][key]
+                self.assertTrue(source.get("readable"))
+                self.assertTrue(source.get("readable_note"))
+                self.assertFalse(source["text_available"])
 
 
 class TrackerSpecificClaimsTests(unittest.TestCase):
@@ -79,17 +89,22 @@ class TrackerSpecificClaimsTests(unittest.TestCase):
         cls.register = audit_tool.load()
         cls.by_id = {row["id"]: row for row in cls.register["rows"]}
 
-    def test_the_psionics_technique_gap_is_recorded_as_blocked_fidelity(self):
+    def test_the_psionics_technique_gap_is_recorded_as_unverified(self):
+        """The copy is readable now, so "blocked" would be a licensing excuse for a work gap.
+
+        What is missing is the book's per-discipline technique list; the row must say `unverified` and name
+        the gap, because `blocked` is reserved for a source nobody can read.
+        """
         row = self.by_id["P4"]
         self.assertEqual(row["status"], "partial")
-        self.assertEqual(row["fidelity"], "blocked",
-                         "the published techniques cannot be transcribed; the row must say so")
+        self.assertEqual(row["fidelity"], "unverified")
+        self.assertIn("technique", row["notes"].lower())
 
     def test_the_faction_asset_catalogue_is_recorded_as_the_gap_it_is(self):
         # #1105 warns: "Existing turn code is not proof of a finished asset catalogue."
         row = self.by_id["F2"]
         self.assertEqual(row["status"], "missing")
-        self.assertEqual(row["fidelity"], "blocked")
+        self.assertEqual(row["fidelity"], "unverified")
 
     def test_sws_default_history_is_explicitly_not_applicable(self):
         row = self.by_id["H1"]
@@ -121,9 +136,20 @@ class TheAuditActuallyCatchesLiesTests(unittest.TestCase):
         self.assertTrue(audit_tool.audit(broken))
 
     def test_verified_fidelity_without_a_readable_source_is_caught(self):
+        """A `verified` claim needs something to have been verified against.
+
+        The SWN copy is readable now, so flipping one row to `verified` is no longer a lie by itself —
+        which is why the mutation has to remove the source as well. That is the actual invariant: no
+        readable copy, no verified fidelity.
+        """
         broken = copy.deepcopy(self.register)
         next(r for r in broken["rows"] if r["status"] == "implemented")["fidelity"] = "verified"
-        self.assertTrue(audit_tool.audit(broken))
+        for source in broken["sources"].values():
+            source["readable"] = False
+            source["text_available"] = False
+        problems = audit_tool.audit(broken)
+        self.assertTrue(problems)
+        self.assertTrue(any("readable" in problem for problem in problems), problems)
 
     def test_a_row_with_no_page_reference_is_caught(self):
         broken = copy.deepcopy(self.register)
