@@ -11,8 +11,8 @@
 | Registered subsystems | **34** |
 | Implemented or verified by reuse | **4** |
 | Partial | **4** |
-| Missing | **21** |
-| Blocked (source unavailable) | **5** |
+| Missing | **26** |
+| Blocked (source unavailable) | **0** |
 
 That is **4 of 34** rows with code and a test behind them. The tracker stays open.
 
@@ -60,11 +60,11 @@ That is **4 of 34** rows with code and a test behind them. The tracker stays ope
 | F3 | WWN/SWN faction engine complementarity and shared event interfaces | both | **missing** | — | — | #1101 | high |
 | F4 | Interfaces to the NoöPunk Ideology Mod | both | **missing** | — | — | #1042 | high |
 | F5 | Tabletop faction turn, ledger and project sheets | both | **missing** | — | — | #1101 | low |
-| G1 | Arts of the Gyre: options, variants, prerequisites and side effects | deluxe | **blocked** | — | — | #1101 | high |
-| H1 | Heroic classes, heroic PC creation and progression | deluxe | **blocked** | — | — | #1101 | high |
-| I1 | Legate eligibility, advancement, powers and limits | deluxe | **blocked** | — | — | #1101 | high |
-| J1 | Iterum creation, traversal, dwellers and special environments | deluxe | **blocked** | — | — | #1101 | high |
-| K1 | Additional Deluxe generators and encounter tools | deluxe | **blocked** | — | — | #1101 | medium |
+| G1 | Arts of the Gyre: options, variants, prerequisites and side effects | deluxe | **missing** | — | — | #1101 | high |
+| H1 | Heroic classes, heroic PC creation and progression | deluxe | **missing** | — | — | #1101 | high |
+| I1 | Legate eligibility, advancement, powers and limits | deluxe | **missing** | — | — | #1101 | high |
+| J1 | Iterum creation, traversal, dwellers and special environments | deluxe | **missing** | — | — | #1101 | high |
+| K1 | Additional Deluxe generators and encounter tools | deluxe | **missing** | — | — | #1101 | medium |
 
 ## What is actually done, and what only looks done
 
@@ -84,14 +84,6 @@ That is **4 of 34** rows with code and a test behind them. The tracker stays ope
 - **B2 Initiative, encumbrance, travel, healing, downtime and System Strain** (`WWN SRD p. 38; tracker chapter B`) — Initiative is implemented. Encumbrance, overland travel, healing and downtime procedures are not evidenced here.
 - **B3 Combat action economy, Shock, armour, damage and hazards** (`WWN SRD p. 38; tracker chapter B`) — CWN combat exists. WWN Shock and its interaction with WWN armour have not been separately verified, and must not be folded into CWN combat.
 - **C5 Spell effect resolution** (`WWN SRD p. 60; tracker chapter C`) — 13 of 83 effects are transcribed: the level-1 High Magic batch delivered by #1095. 70 remain and #1085 owns them. No rival resolver may be built.
-
-**blocked** (5)
-
-- **G1 Arts of the Gyre: options, variants, prerequisites and side effects** (`WWN Deluxe p. 344 (per tracker); source not available`) — Blocked until an authorized agent reads the purchased Deluxe copy. Do not invent mechanics from the chapter name.
-- **H1 Heroic classes, heroic PC creation and progression** (`WWN Deluxe p. 356 (per tracker); source not available`) — Blocked. Must never become an automatic change to CWN character balance even when available.
-- **I1 Legate eligibility, advancement, powers and limits** (`WWN Deluxe p. 358 (per tracker); source not available`) — Blocked. Opt-in late-campaign transformation only where authored and source-verified.
-- **J1 Iterum creation, traversal, dwellers and special environments** (`WWN Deluxe p. 370 (per tracker); source not available`) — Blocked. Adaptation into NoöPunk interdimensional encounters needs separate setting tags, not an identity claim between WWN metaphysics and the NoöPunk Mythos.
-- **K1 Additional Deluxe generators and encounter tools** (`WWN Deluxe p. 376 (per tracker); source not available`) — Blocked. Verify the Deluxe versus Free boundary before any redistribution.
 
 ## Cross-game compatibility (CWN ↔ WWN ↔ SWN ↔ AWN)
 

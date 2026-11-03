@@ -43,14 +43,30 @@ class RegisterIntegrityTests(unittest.TestCase):
         missing = set("ABCDEFGHIJK") - chapters
         self.assertFalse(missing, f"tracker chapters with no registered row: {sorted(missing)}")
 
-    def test_deluxe_rows_are_blocked_not_guessed(self):
+    def test_deluxe_rows_are_cited_not_guessed(self):
+        """The Deluxe copy was supplied and indexed on 2026-11-03, so 'blocked' is no longer the truth.
+
+        The rule it protected still holds — a Deluxe row may not claim an implementation it does not have,
+        and may not invent mechanics from a chapter name. What changed is that the pages are now citable:
+        every Deluxe row must name a section that exists in `data/rules/wwn_sections.json` with that page,
+        and its status must be something the evidence supports.
+        """
+        import json
+
+        index = {s["id"]: s for s in json.loads(
+            (ROOT / "data/rules/wwn_sections.json").read_text(encoding="utf-8"))["sections"]}
         deluxe = [row for row in self.register["rows"] if row["edition"] == "deluxe"]
         self.assertTrue(deluxe, "the tracker has five Deluxe chapters; none may be silently dropped")
         for row in deluxe:
             with self.subTest(row=row["id"]):
-                self.assertEqual(row["status"], "blocked",
-                                 "Deluxe text is not available to agents; a Deluxe row cannot be done")
-                self.assertEqual(row["python"], [], "a blocked row must not claim an implementation")
+                self.assertNotEqual(row["status"], "blocked",
+                                    "the Deluxe source has been read; blocking it again would be a regression")
+                self.assertIn(row["status"], {"missing", "partial", "implemented", "verified_reuse"})
+                if row["status"] in {"missing", "partial"} and not row["python"]:
+                    self.assertEqual(row["python"], [], "only a real implementation is cited")
+                cited = [s for s in index.values() if f"p. {s['first_page']} " in row["source_ref"]
+                         + " "]
+                self.assertTrue(cited, f"{row['id']}: no section of the index matches {row['source_ref']!r}")
 
     def test_unusable_sources_never_produce_a_done_row(self):
         usable = {}
