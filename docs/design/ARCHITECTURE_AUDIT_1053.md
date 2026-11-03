@@ -1,5 +1,10 @@
 # Architecture survey for #1053 (Priority 0, first bullet)
 
+> **Superseded:** [ISSUE_1053_ARCHITECTURE_SURVEY.md](/docs/architecture/ISSUE_1053_ARCHITECTURE_SURVEY.md) is the one document kept up to date for this
+> subject. This file is kept as history — it is a second answer to a question that already had one,
+> and the counts in it disagree with the audited ones. Do not update it; update the canonical file.
+
+
 Status: survey of `main` at the time of the console-slice pull request. Measured, not remembered —
 the counts below come from the tree, and the commands that produce them are quoted so the next agent
 can re-run them instead of trusting this file.

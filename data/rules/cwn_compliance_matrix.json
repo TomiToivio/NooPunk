@@ -148,6 +148,7 @@
         "tests/test_godot_single_implementation.py",
         "tests/test_legacy_character_cards.py",
         "tests/test_mud_cwn_parity_950.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_swn_progression.py",
         "tests/test_swn_progression_contract.py",
@@ -521,6 +522,7 @@
         "tests/test_issue615_mixed_genre_example.py",
         "tests/test_mud_cwn_parity_950.py",
         "tests/test_no_duplicate_implementations.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_swn_faction_engine.py",
@@ -582,6 +584,7 @@
         "tests/test_issue502_mission_outcomes.py",
         "tests/test_mud_cwn_parity_950.py",
         "tests/test_no_duplicate_implementations.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_swn_progression.py",
         "tests/test_swn_progression_contract.py",
@@ -629,6 +632,7 @@
         "tests/test_issue615_mixed_genre_example.py",
         "tests/test_mud_cwn_parity_950.py",
         "tests/test_no_duplicate_implementations.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_wn_core.py",
         "tests/test_wn_core_contract.py",
@@ -704,6 +708,7 @@
         "tests/test_issue615_mixed_genre_example.py",
         "tests/test_mud_cwn_parity_950.py",
         "tests/test_no_duplicate_implementations.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_wn_core.py",
         "tests/test_wn_core_contract.py",
@@ -838,6 +843,7 @@
         "tests/test_issue615_mixed_genre_example.py",
         "tests/test_mud_cwn_parity_950.py",
         "tests/test_no_duplicate_implementations.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_swn_faction_engine.py",
@@ -1003,6 +1009,7 @@
         "tests/test_issue699_paradigm_shock_case.py",
         "tests/test_mud_cwn_parity_950.py",
         "tests/test_no_duplicate_implementations.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_wn_core_contract.py"
       ],
@@ -1177,6 +1184,7 @@
         "tests/test_issue615_mixed_genre_example.py",
         "tests/test_mud_cwn_parity_950.py",
         "tests/test_no_duplicate_implementations.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_swn_faction_engine.py",
@@ -1339,6 +1347,7 @@
         "tests/test_issue615_mixed_genre_example.py",
         "tests/test_mud_cwn_parity_950.py",
         "tests/test_no_duplicate_implementations.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_swn_faction_engine.py",
@@ -1407,6 +1416,7 @@
         "tests/test_no_duplicate_implementations.py",
         "tests/test_noopunk_extensions.py",
         "tests/test_review_learning_accumulates.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_wn_core.py",
         "tests/test_wn_core_contract.py",
@@ -1565,6 +1575,7 @@
         "tests/test_cwn_vehicles.py",
         "tests/test_godot_single_implementation.py",
         "tests/test_issue51_tag_system.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wwn_high_mage.py"
@@ -1630,7 +1641,8 @@
         "tests/test_cwn_alienation.py",
         "tests/test_cwn_cyberware.py",
         "tests/test_cwn_mission_time.py",
-        "tests/test_issue502_mission_outcomes.py"
+        "tests/test_issue502_mission_outcomes.py",
+        "tests/test_rule_duplication_merged.py"
       ],
       "tested_against_book": false,
       "save_safe": false,
@@ -1690,6 +1702,7 @@
         "tests/test_cwn_vehicles.py",
         "tests/test_godot_single_implementation.py",
         "tests/test_issue51_tag_system.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wwn_high_mage.py"
@@ -1771,6 +1784,7 @@
         "tests/test_cwn_coverage_manifest.py",
         "tests/test_cwn_special_maneuvers_1068.py",
         "tests/test_cwn_trauma.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_wn_core_contract.py"
       ],
       "tested_against_book": false,
@@ -1944,6 +1958,7 @@
         "tests/test_issue219_physical_combat.py",
         "tests/test_issue51_tag_system.py",
         "tests/test_issue571_lethality_lab.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_swn_starships.py",
         "tests/test_wn_core_contract.py",
@@ -2021,6 +2036,7 @@
         "tests/test_issue571_lethality_lab.py",
         "tests/test_mud_cwn_parity_950.py",
         "tests/test_no_duplicate_implementations.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_swn_starships.py",
         "tests/test_wn_core_contract.py",
@@ -2091,6 +2107,7 @@
         "tests/test_issue219_physical_combat.py",
         "tests/test_issue51_tag_system.py",
         "tests/test_issue571_lethality_lab.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_swn_starships.py",
         "tests/test_wn_core_contract.py",
@@ -2162,6 +2179,7 @@
         "tests/test_issue219_physical_combat.py",
         "tests/test_issue51_tag_system.py",
         "tests/test_issue571_lethality_lab.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_swn_starships.py",
         "tests/test_wn_core_contract.py",
@@ -2256,6 +2274,7 @@
         "tests/test_cwn_vehicles.py",
         "tests/test_godot_single_implementation.py",
         "tests/test_issue51_tag_system.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wwn_high_mage.py"
@@ -2318,6 +2337,7 @@
         "tests/test_godot_single_implementation.py",
         "tests/test_issue51_tag_system.py",
         "tests/test_issue572_native_subsystems.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wwn_high_mage.py"
@@ -2427,6 +2447,7 @@
         "tests/test_cwn_trauma.py",
         "tests/test_mud_cwn_parity_950.py",
         "tests/test_no_duplicate_implementations.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_wn_core_contract.py"
       ],
@@ -2488,6 +2509,7 @@
         "tests/test_cwn_vehicles.py",
         "tests/test_godot_single_implementation.py",
         "tests/test_issue51_tag_system.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wwn_high_mage.py"
@@ -2531,6 +2553,7 @@
         "tests/test_cwn_trauma.py",
         "tests/test_mud_cwn_parity_950.py",
         "tests/test_no_duplicate_implementations.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_wn_core_contract.py"
       ],
@@ -2707,6 +2730,7 @@
         "tests/test_cwn_vehicles.py",
         "tests/test_godot_single_implementation.py",
         "tests/test_issue51_tag_system.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wwn_high_mage.py"
@@ -2794,7 +2818,8 @@
       "coverage": "implemented",
       "tests": [
         "tests/test_cwn_lifestyles.py",
-        "tests/test_cwn_traceability_1068.py"
+        "tests/test_cwn_traceability_1068.py",
+        "tests/test_rule_duplication_merged.py"
       ],
       "tested_against_book": false,
       "save_safe": false,
@@ -3081,6 +3106,7 @@
         "tests/test_cwn_rule_inventory.py",
         "tests/test_cwn_summoning_1068.py",
         "tests/test_issue51_tag_system.py",
+        "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution.py",
         "tests/test_rules_constitution_modules.py"
       ],

@@ -23,6 +23,7 @@ from __future__ import annotations
 import argparse
 import ast
 import hashlib
+import json
 import re
 import sys
 from collections import defaultdict
@@ -207,12 +208,129 @@ def render(data: dict) -> str:
     return "\n".join(lines)
 
 
+# --- table and document passes ------------------------------------------------------------------
+# The passes above group *definitions by name*. That misses the duplicates that cost the most: two modules
+# that renamed every function but kept the same table (`cwn_alienation` vs `cwn_cyberware` disagreed on one
+# row for a whole evening because of exactly that), and two documents answering one question in different
+# words. These passes compare the data inside those things instead of their names.
+
+def _dict_literal_keys(path: Path) -> dict[str, frozenset[str]]:
+    """Dict/set literals with five or more keys, labelled by their first key."""
+    try:
+        tree = ast.parse(path.read_text(encoding="utf-8", errors="replace"))
+    except SyntaxError:
+        return {}
+    found: dict[str, frozenset[str]] = {}
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Dict) and len(node.keys) >= 5:
+            keys = frozenset(k.value for k in node.keys
+                             if isinstance(k, ast.Constant) and isinstance(k.value, str))
+            if len(keys) >= 5:
+                first = next(iter(keys), "?")
+                found[f"{path.stem}:{{{first},...}}"] = keys
+        elif isinstance(node, ast.Set) and len(node.elts) >= 5:
+            values = frozenset(e.value for e in node.elts if isinstance(e, ast.Constant))
+            if len(values) >= 5:
+                found[f"{path.stem}:set{len(values)}"] = values
+    return found
+
+
+def _json_mapping_keys(payload, prefix: str = "") -> dict[str, frozenset[str]]:
+    found: dict[str, frozenset[str]] = {}
+    if isinstance(payload, dict):
+        if len(payload) >= 5:
+            found[f"{prefix or '<root>'}"] = frozenset(map(str, payload))
+        for key, value in payload.items():
+            found.update(_json_mapping_keys(value, f"{prefix}.{key}" if prefix else str(key)))
+    elif isinstance(payload, list):
+        for item in payload:
+            found.update(_json_mapping_keys(item, prefix))
+    return found
+
+
+def table_duplicates(threshold: float = 0.6) -> list[dict]:
+    """Tables that live in two places, in code or in data. A duplicated table is a duplicated rule."""
+    tables: dict[tuple[str, str], frozenset[str]] = {}
+    for base in ("src/rules", "src/text_game", "mud/nopunk_mud", "portable_noopunk"):
+        for path in sorted((ROOT / base).rglob("*.py")):
+            if path.name == "__init__.py":
+                continue
+            rel = str(path.relative_to(ROOT))
+            for label, keys in _dict_literal_keys(path).items():
+                tables[(rel, label)] = keys
+    for path in sorted((ROOT / "data").rglob("*.json")):
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            continue
+        rel = str(path.relative_to(ROOT))
+        for label, keys in _json_mapping_keys(payload).items():
+            tables[(rel, label)] = keys
+    out = []
+    items = sorted(tables.items())
+    for i, ((a, la), ka) in enumerate(items):
+        for (b, lb), kb in items[i + 1:]:
+            if a == b:
+                continue
+            shared = ka & kb
+            score = len(shared) / len(ka | kb)
+            if score < threshold:
+                continue
+            # Tables keyed only by numbers (`{"1": ..., "2": ...}`) share keys by arithmetic, not by rule:
+            # XP tables, probability rows and Fudge mappings all "overlap" at 1.00 without meaning anything.
+            if all(key.replace(".", "").isdigit() for key in ka | kb):
+                continue
+            out.append({"a": f"{a} {la}", "b": f"{b} {lb}", "overlap": round(score, 2),
+                        "example": sorted(shared)[0] if shared else ""})
+    return sorted(out, key=lambda row: -row["overlap"])
+
+
+def _headings(path: Path) -> tuple[str, set[str]]:
+    text = path.read_text(encoding="utf-8", errors="replace")
+    title = next((line[2:].strip() for line in text.splitlines() if line.startswith("# ")), "")
+    heads = {re.sub(r"[^a-z0-9 ]", "", h.lower()).strip()
+             for h in re.findall(r"(?m)^#{2,3}\s+(.*)$", text)}
+    return title, heads
+
+
+def document_duplicates(threshold: float = 0.4) -> list[dict]:
+    """Documents whose section headings overlap: two answers to one question, in different words."""
+    docs = {}
+    for path in sorted((ROOT / "docs").rglob("*.md")):
+        title, heads = _headings(path)
+        if heads:
+            docs[str(path.relative_to(ROOT))] = (title, heads)
+    out = []
+    items = sorted(docs.items())
+    for i, (a, (ta, ha)) in enumerate(items):
+        for b, (tb, hb) in items[i + 1:]:
+            score = len(ha & hb) / len(ha | hb)
+            if score >= threshold:
+                out.append({"a": a, "b": b, "overlap": round(score, 2), "titles": (ta, tb)})
+    return sorted(out, key=lambda row: -row["overlap"])
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--render", metavar="PATH")
     parser.add_argument("--check", action="store_true", help="exit 1 if any duplicate diverges")
+    parser.add_argument("--tables", action="store_true",
+                        help="also list tables (dict/set literals of five or more keys) that appear twice")
+    parser.add_argument("--docs", action="store_true", help="also list documents with overlapping sections")
+    parser.add_argument("--all", action="store_true", help="every pass")
     args = parser.parse_args(argv)
+
+    if args.tables or args.all:
+        rows = table_duplicates()
+        print(f"\n{len(rows)} table(s) that appear in two places")
+        for row in rows[:25]:
+            print(f"  {row['overlap']:.2f}  {row['a']}  <->  {row['b']}   (e.g. {row['example']!r})")
+    if args.docs or args.all:
+        rows = document_duplicates()
+        print(f"\n{len(rows)} document pair(s) with overlapping sections")
+        for row in rows[:15]:
+            print(f"  {row['overlap']:.2f}  {row['a']}  <->  {row['b']}")
 
     data = build()
     t = data["totals"]

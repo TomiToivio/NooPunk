@@ -15,12 +15,12 @@ SOURCE = ROOT / "data/rules/cwn_fe_toc.json"
 TABLETOP = ROOT / "RULEBOOK.md"
 PYTHON = ROOT / "src/rules"
 POLICY = ROOT / "docs/rules/CWN_IMMUTABLE_CORE_1068.md"
-MATRIX = ROOT / "docs/rules/CWN_PARITY_MATRIX.md"
+REPORT = ROOT / "docs/rules/CWN_COVERAGE_1068.md"
 
 
 def audit() -> list[str]:
     failures: list[str] = []
-    for file in (SOURCE, TABLETOP, POLICY, MATRIX):
+    for file in (SOURCE, TABLETOP, POLICY, REPORT):
         if not file.is_file() or not file.read_text(encoding="utf-8").strip():
             failures.append(f"Required nonempty file missing: {file.relative_to(ROOT)}")
     if not PYTHON.is_dir() or not list(PYTHON.glob("cwn_*.py")):

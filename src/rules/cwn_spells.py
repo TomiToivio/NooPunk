@@ -14,9 +14,21 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from src.rules.cwn_magic import OVERCAST_TABLE, overcast_result, overcast_total
 from src.rules.wn_core import attribute_modifier
 
 CATALOGUE = Path(__file__).resolve().parents[2] / "data/rules/cwn/spells.json"
+
+#: The table's consequences in the words a player reads, keyed by `cwn_magic.OVERCAST_TABLE`'s ids.
+#: Only the prose lives here; the bands and the strain are read off the one table in `cwn_magic`.
+OVERCAST_EFFECTS = {
+    "death": "instant and unavoidable death",
+    "mortal_wound": "mortally wounded and at zero HP",
+    "unconscious_minute_4_strain": "unconscious for one minute",
+    "stunned_2_strain": "stunned, cannot act next round",
+    "lost_main_action_1_strain": "lose next round's Main Action",
+    "1_strain": "none beyond the strain",
+}
 
 COMMITMENTS = ("Day", "Scene", "Scene/Day", "None")
 
@@ -53,28 +65,24 @@ def spells_committed(commitment: str) -> list[str]:
 
 
 def overcast_roll(*, die: int, cast_skill: int, constitution: int, commits_for_day: bool) -> int:
-    """The number looked up on the overcasting table."""
-    if not 1 <= die <= 20:
-        raise SpellError("overcasting rolls a d20")
-    total = die + cast_skill + attribute_modifier(constitution)
-    if commits_for_day:
-        total -= 2
-    return total
+    """The number looked up on the overcasting table.
+
+    Arithmetic comes from :func:`cwn_magic.overcast_total`; this signature takes the raw Constitution
+    score because a character sheet does, and converts it once. Two copies of this sum existed after
+    #1068 and would have drifted — `tests/test_rule_duplication_merged.py` pins them together.
+    """
+    return overcast_total(die=die, cast_skill=cast_skill,
+                          constitution_mod=attribute_modifier(constitution),
+                          day_commitment=commits_for_day)
 
 
 def overcast_outcome(total: int) -> dict:
-    """The published table, verbatim in its bands."""
-    if total <= 1:
-        return {"band": "1-", "effect": "instant and unavoidable death", "strain": None}
-    if total <= 4:
-        return {"band": "2-4", "effect": "mortally wounded and at zero HP", "strain": None}
-    if total <= 8:
-        return {"band": "5-8", "effect": "unconscious for one minute", "strain": 4}
-    if total <= 15:
-        return {"band": "9-15", "effect": "stunned, cannot act next round", "strain": 2}
-    if total <= 19:
-        return {"band": "16-19", "effect": "lose next round's Main Action", "strain": 1}
-    return {"band": "20+", "effect": "none beyond the strain", "strain": 1}
+    """The published overcasting table, read off `cwn_magic.OVERCAST_TABLE` rather than restated."""
+    result = overcast_result(total)
+    band = next(f"{low}-{high}" if high else f"{low}+"
+                for low, high, consequence in OVERCAST_TABLE if consequence == result["consequence"])
+    return {"band": band, "effect": OVERCAST_EFFECTS[result["consequence"]],
+            "strain": result["strain"]}
 
 
 def overcast(*, die: int, cast_skill: int, constitution: int, commits_for_day: bool,

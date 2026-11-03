@@ -16,19 +16,19 @@ duplicating the number.
 """
 from __future__ import annotations
 
+import json
 from collections.abc import Iterable
+from pathlib import Path
 
 #: SRD attack-roll modifier table. Negative numbers are penalties.
+#: Read from `data/rules/wn_core.json` (``combat.attack_modifiers.table``) rather than transcribed.
+#: The two copies were byte-identical when this was found, which is the most dangerous kind of duplicate:
+#: nothing fails until somebody corrects one of them. `tests/test_rule_duplication_merged.py` holds them equal.
 ATTACK_MODIFIER_TABLE: dict[str, int] = {
-    "target_prone_not_in_melee": -2,
-    "target_prone_adjacent": 2,
-    "beyond_normal_range": -2,
-    "attacker_prone_melee": -4,
-    "target_half_cover": -2,
-    "target_almost_full_cover": -4,
-    "thrown_while_in_melee": -4,
-    "one_handed_gun_in_melee": -4,
-    "target_unseen_position_known": -4,
+    str(circumstance): int(modifier)
+    for circumstance, modifier in json.loads(
+        (Path(__file__).resolve().parents[2] / "data" / "rules" / "wn_core.json").read_text(
+            encoding="utf-8"))["combat"]["attack_modifiers"]["table"].items()
 }
 
 #: Circumstances the SRD marks ``N/A``: no attack is possible, so there is no modifier to apply.

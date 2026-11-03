@@ -1,5 +1,10 @@
 # CWN SRD parity audit ledger (issue #858)
 
+> **Superseded:** [CWN_COVERAGE_1068.md](/docs/rules/CWN_COVERAGE_1068.md) is the one document kept up to date for this
+> subject. This file is kept as history — it is a second answer to a question that already had one,
+> and the counts in it disagree with the audited ones. Do not update it; update the canonical file.
+
+
 > **Unverified until procedure-level evidence exists.** This is the first audit slice, not a completion certificate. It compares the public [CWN SRD navigation](https://cwn.quadrifons.com/) with the repository's measured [coverage matrix](CWN_COVERAGE_MATRIX.md). A tested kernel does not imply a playable interface or verbatim rules parity.
 
 ## Evidence rubric

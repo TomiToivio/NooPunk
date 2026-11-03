@@ -1,21 +1,22 @@
-"""CWN: lifestyle costs, common wages and bribe costs (SRD 3.8).
+"""CWN: lifestyle costs, common wages and bribe costs (SRD "Lifestyles, Wages and Bribes").
 
-The System Strain side of a lifestyle already lives in :mod:`cwn_core` (``LIFESTYLE_STRAIN``), because
-it modifies ``strain_maximum``. This module adds the money side and **reuses** that table instead of
-keeping a second copy that could drift from it:
+**One table, one home.** The numbers live in `data/rules/cwn/{lifestyles,common_wages,bribe_costs}.json`
+— the same files the MUD adapter reads — and this module is the only procedure that turns them into
+answers. Three parallel copies of this SRD section existed after a burst of parallel agent work on #1068:
+an embedded table here, the JSON catalogues, and a separate reader in `mud/nopunk_mud/cwn/economy.py`.
+They now share one source, and `tests/test_rule_duplication_merged.py` fails if a fourth copy appears.
 
-* ``LIFESTYLE_COSTS``  — cost per month for each lifestyle (SRD "Lifestyle Costs");
-* ``COMMON_WAGES``     — average daily earnings per worker type (SRD "Common Wages");
-* ``BRIBE_MULTIPLES``  — bribe price as a multiple of the target's daily wage (SRD "Bribe Costs").
-
-Values are the Free Edition SRD's own numbers. Nothing here invents a rule: where the SRD gives a
-range or a "GM's discretion" clause, that is recorded in the note rather than turned into a formula.
+The System Strain side of a lifestyle already lives in :mod:`cwn_core` (``LIFESTYLE_STRAIN``, which feeds
+``strain_maximum``); this module reuses it and only maps the SRD's ``middle_class`` id onto the core's
+``ordinary`` key rather than restating the modifiers.
 
 Sources: https://cwn.quadrifons.com/gear-vehicles-cyberware/lifestyles-wages-and-bribes/
 """
 
 from __future__ import annotations
 
+import json
+from pathlib import Path
 from typing import Final
 
 from .cwn_core import LIFESTYLE_STRAIN, CwnError
@@ -23,70 +24,73 @@ from .cwn_core import LIFESTYLE_STRAIN, CwnError
 __all__ = [
     "BRIBE_MULTIPLES",
     "COMMON_WAGES",
+    "LIFESTYLE_ALIASES",
     "LIFESTYLE_COSTS",
     "LifestyleError",
     "bribe_cost",
+    "bribe_needs_more_than_cash",
     "living_cost",
     "strain_modifier",
     "wage",
 ]
 
+DATA = Path(__file__).resolve().parents[2] / "data" / "rules" / "cwn"
+
+#: The SRD names the middle tier ``middle_class``; ``cwn_core.LIFESTYLE_STRAIN`` calls it ``ordinary``.
+#: One tier, two vocabularies, mapped here so neither module restates the other's table.
+LIFESTYLE_ALIASES: Final[dict[str, str]] = {"middle_class": "ordinary"}
+
 
 class LifestyleError(CwnError):
-    """Unknown lifestyle, worker or favour."""
+    """Unknown lifestyle, worker or favour, or a table that cannot be read."""
 
 
-#: Cost per month, in credits, for each lifestyle the SRD lists. The keys are the same as
-#: ``cwn_core.LIFESTYLE_STRAIN``; a test asserts the two tables stay key-compatible.
+def _load(name: str) -> dict:
+    path = DATA / name
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except OSError as exc:  # pragma: no cover - a missing data file is a broken checkout
+        raise LifestyleError(f"cannot read {path}: {exc}") from exc
+    except json.JSONDecodeError as exc:
+        raise LifestyleError(f"{path} is not valid JSON: {exc}") from exc
+
+
+_LIFESTYLE_LEVELS = _load("lifestyles.json")["levels"]
+
+#: Cost per month, in credits, for each lifestyle the SRD lists.
 LIFESTYLE_COSTS: Final[dict[str, int]] = {
-    "squatter": 0,
-    "slum": 300,
-    "ordinary": 1_000,
-    "fine": 5_000,
-    "luxury": 20_000,
-}
+    str(level["id"]): int(level["monthly_cost"]) for level in _LIFESTYLE_LEVELS}
 
-#: Average daily earnings, in credits. Hireling loyalty is prose in the SRD, not a number; it is not
-#: modelled here.
+#: The same rows' maximum-System-Strain modifiers, kept only to check the SRD against cwn_core.
+_SRD_STRAIN: Final[dict[str, int]] = {
+    str(level["id"]): int(level["max_strain_modifier"]) for level in _LIFESTYLE_LEVELS}
+
+#: Average daily earnings by worker type.
 COMMON_WAGES: Final[dict[str, int]] = {
-    "unskilled_labourer": 10,
-    "low_level_ganger": 15,
-    "streetwalker": 20,
-    "street_stall_merchant": 25,
-    "entry_level_corp_worker": 30,
-    "low_level_corp_lifer": 40,
-    "street_tech_or_cyberdoc": 50,
-    "street_bodyguard": 50,
-    "street_cop_or_skilled_corp_worker": 100,
-    "professional_companion": 200,
-    "corp_hacker": 200,
-    "corp_middle_manager": 250,
-    "corp_cyberdoc": 250,
-    "elite_bodyguard": 500,
-    "gang_boss": 750,
-    "corp_branch_manager": 1_000,
-    "high_ranking_corp_exec": 5_000,
-    "oligarchic_elite": 10_000,
-}
+    str(role): int(value) for role, value in _load("common_wages.json")["wages"].items()}
 
-#: Bribe price as a multiple of the target's daily wage. ``serious`` marks the favours the SRD flags
-#: with an asterisk: many NPCs will want more than cash before agreeing.
+#: Favour -> (multiple of the target's daily wage, serious risk).
 BRIBE_MULTIPLES: Final[dict[str, tuple[int, bool]]] = {
-    "look_the_other_way_minor": (2, False),
-    "pass_out_information": (2, False),
-    "small_favour_within_authority": (5, False),
-    "blind_eye_when_it_might_trouble": (14, True),
-    "blind_eye_when_it_will_trouble": (60, True),
-    "favour_with_minor_backlash": (30, True),
-    "favour_that_might_get_them_punished": (90, True),
-    "favour_that_might_get_them_fired": (180, True),
-}
+    str(row["id"]): (int(row["multiple"]), bool(row["serious"]))
+    for row in _load("bribe_costs.json")["favours"]}
+
+
+def _data_key(lifestyle: str) -> str:
+    """Accept either vocabulary; the data files use the SRD's own ids."""
+    if lifestyle == "ordinary":
+        return "middle_class"
+    return lifestyle
+
+
+def _core_key(lifestyle: str) -> str:
+    return LIFESTYLE_ALIASES.get(lifestyle, lifestyle)
 
 
 def living_cost(lifestyle: str) -> int:
     """Monthly cost of a lifestyle, in credits."""
+    key = _data_key(lifestyle)
     try:
-        return LIFESTYLE_COSTS[lifestyle]
+        return LIFESTYLE_COSTS[key]
     except KeyError:
         raise LifestyleError(
             f"unknown lifestyle {lifestyle!r}; expected one of {sorted(LIFESTYLE_COSTS)}"
@@ -95,11 +99,12 @@ def living_cost(lifestyle: str) -> int:
 
 def strain_modifier(lifestyle: str) -> int:
     """The maximum-System-Strain modifier that applies while living that way."""
+    key = _core_key(lifestyle)
     try:
-        return LIFESTYLE_STRAIN[lifestyle]
+        return LIFESTYLE_STRAIN[key]
     except KeyError:
         raise LifestyleError(
-            f"unknown lifestyle {lifestyle!r}; expected one of {sorted(LIFESTYLE_STRAIN)}"
+            f"unknown lifestyle {lifestyle!r}; expected one of {sorted(LIFESTYLE_COSTS)}"
         ) from None
 
 

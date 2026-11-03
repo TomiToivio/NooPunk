@@ -1,5 +1,10 @@
 # Engine independence: where the rules actually live (#1053, #1054)
 
+> **Superseded:** [ISSUE_1053_ARCHITECTURE_SURVEY.md](/docs/architecture/ISSUE_1053_ARCHITECTURE_SURVEY.md) is the one document kept up to date for this
+> subject. This file is kept as history — it is a second answer to a question that already had one,
+> and the counts in it disagree with the audited ones. Do not update it; update the canonical file.
+
+
 **Status: measured survey, not a migration plan.** Everything below was counted or executed in this
 repository on 2026-11-02; nothing here moves a file.
 

@@ -12,6 +12,21 @@
 6. **Report honestly:** distinguish `already implemented`, `partially implemented`, `unverified`, `blocked`, and `not implemented`. A merged PR or passing test is not proof that the entire issue is completed. Never reopen finished work because a stale tracker says it is missing.
 7. **At handoff:** record canonical modules, documented rules, linked issues/PRs, actual test commands/results and remaining work. Explicitly tell future agents what **not** to reimplement.
 
+**Tools and registers this gate expects you to use** (2026-11-03, second pass):
+
+* `python3 tools/duplication_audit.py --all` — duplicated rule definitions (by name and body), duplicated
+  tables (dict/set literals of five or more keys, in code or in data) and duplicated document headings. A hit
+  is a question, not a verdict; run it before you write a module.
+* `docs/DOCUMENT_REGISTER.md` — the live document per subject, and every document that has been retired
+  with a `> **Superseded:**` banner. Do not write a sixth CWN coverage matrix.
+* `docs/DUPLICATION_AUDIT.md` — what has been merged, what is still two things, and the evidence the copies
+  had already diverged.
+* `docs/design/AGENT_COORDINATION.md` — the protocol: search first, claim the slice in a comment before the
+  first commit, delegate over delete, pin the merge with a cross-module equality test, retire documents
+  instead of rewriting them.
+* Guards that now fail on a new duplicate: `tests/test_rule_duplication_merged.py`,
+  `tests/test_no_duplicate_implementations.py`.
+
 **Failure mode already observed:** #1056/#1058/#1061 and #1057/#1059/#1060 competed on portable sessions/console/architecture; #1069–#1082 created overlapping CWN guards and required #1082 reconciliation. Treat these as regression examples, not feature requests. Current open work must be compared against the merged fixes first.
 
 ### Canonical artifact registry — one home per concern
@@ -138,7 +153,8 @@ A new module added under `src/rules/` is classified in the same commit.
 modules, the *named* procedures/classes/constants and the tests that implement it, plus the tabletop
 file that documents it. `python3 tools/cwn_parity_audit.py` verifies those claims against the code (a
 renamed function fails the build) and regenerates `data/rules/cwn_compliance_matrix.json`,
-`docs/rules/CWN_PARITY_MATRIX.md` and `docs/rules/CWN_COVERAGE_1068.md`;
+`docs/rules/CWN_COVERAGE_1068.md` (the only generated CWN report; the second one that used to be
+written alongside it is gone — two reports meant two counts);
 `tests/test_cwn_traceability_1068.py` fails when the committed matrix is stale.
 `data/rules/cwn_baseline_sha256.json` pins the SHA-256 of every `src/rules/cwn_*.py` file: **editing a
 CWN rule fails CI until someone re-pins the baseline in a PR that says it is changing CWN** — which this

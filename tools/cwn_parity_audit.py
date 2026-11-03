@@ -36,7 +36,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MATRIX = ROOT / "data" / "rules" / "cwn_compliance_matrix.json"
-DOC = ROOT / "docs" / "rules" / "CWN_PARITY_MATRIX.md"
 CURATED = ROOT / "data" / "rules" / "cwn_traceability.json"
 REPORT = ROOT / "docs" / "rules" / "CWN_COVERAGE_1068.md"
 
@@ -612,7 +611,6 @@ def main() -> int:
     args = ap.parse_args()
     matrix = build()
     text = json.dumps(matrix, indent=2, ensure_ascii=False) + "\n"
-    doc = render(matrix)
     if args.check:
         stale = (not MATRIX.exists() or MATRIX.read_text(encoding="utf-8") != text
                  or not REPORT.exists()
@@ -623,9 +621,7 @@ def main() -> int:
         print(f"cwn_parity_audit: up to date ({len(matrix['rows'])} sections)")
         return 0
     MATRIX.parent.mkdir(parents=True, exist_ok=True)
-    DOC.parent.mkdir(parents=True, exist_ok=True)
     MATRIX.write_text(text, encoding="utf-8")
-    DOC.write_text(doc, encoding="utf-8")
     REPORT.parent.mkdir(parents=True, exist_ok=True)
     REPORT.write_text(render_report(matrix), encoding="utf-8")
     counts = {s: sum(1 for r in matrix["rows"] if r["coverage"] == s) for s in STATUSES}
