@@ -1,6 +1,13 @@
 # NoöPunk: Pre-Fall Eclipse Phase Alternate Timeline
 
-## Canonical premise
+> **Superseded as the primary premise (#1113).** The preferred NoöPunk scenario is now
+> [Fortress Europe after the Fall](world/CANON_FORTRESS_EUROPE_1113.md): the NHI Crisis has already shattered most
+> of the world and a fortified EU has survived it. This document is **retained unchanged** as an explicit,
+> playable **optional alternate timeline** in which Earth stays intact and the Fall never happens. Nothing below
+> is deleted or rewritten, and nothing here is the default any more. Do not blend the two premises in one
+> campaign without saying so at the table.
+
+## Original premise (now the optional variant)
 
 NoöPunk is an **alternate Eclipse Phase timeline before the Fall**.
 
