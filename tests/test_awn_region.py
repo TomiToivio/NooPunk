@@ -231,3 +231,24 @@ class RegionLedgerIntegrity1109Tests(unittest.TestCase):
         self.assertEqual(restored.to_dict(), ledger.to_dict())
         self.assertEqual(restored.world_at("2045-04-02")["overlays"]["quarantine"],
                          ["privation_strain"])
+
+    def test_anomaly_and_shock_have_independent_ladders(self):
+        ledger = RegionLedger()
+        ledger.record(_state())
+        anomaly = ledger.transition(RegionEvent(
+            date="2045-04-01", region="helsinki", axis="anomaly",
+            to="persistent", cause="confirmed incursion"))
+        self.assertEqual(anomaly.anomaly, "persistent")
+        shock = ledger.transition(RegionEvent(
+            date="2045-04-02", region="helsinki", axis="ontological_shock",
+            to="global", cause="public disclosure"))
+        self.assertEqual(shock.ontological_shock, "global")
+        with self.assertRaises(RegionError):
+            ledger.transition(RegionEvent(
+                date="2045-04-03", region="helsinki", axis="anomaly",
+                to="none", cause="unsupported sudden all-clear"))
+        recovered = ledger.transition(RegionEvent(
+            date="2045-04-03", region="helsinki", axis="anomaly",
+            to="sporadic", cause="containment confirmed"))
+        self.assertEqual(recovered.anomaly, "sporadic")
+        self.assertEqual(len(ledger.events), 3)
