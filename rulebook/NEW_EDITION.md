@@ -59,7 +59,7 @@ The setting's earlier six attributes (**FIT / REF / INT / SOC / CYB / PSY**) are
 
 ## 2. What the game is about
 
-You are a newly graduated **UNSA agent** assigned to a Helsinki investigative team with a long and unusual history. Your background, skills, beliefs and chosen call-sign affect how you approach the job. The setting is a reconstructed world after the NHI and rogue-ASI crises. You investigate strange occurrences while navigating institutional demands, human relationships and uncertain evidence.
+You are a newly assigned **Europol field agent** attached to the Helsinki Field Office, working with an investigative team that has a long and unusual history. Your background, skills, beliefs and chosen call-sign affect how you approach the job. The setting is a reconstructed world after the NHI and rogue-ASI crises. You investigate strange occurrences while navigating institutional demands, human relationships and uncertain evidence.
 
 NoöPunk's first edition emphasizes **investigation, conversation, character Psyche, relationships, choices and consequences**. It draws design inspiration from *Citizen Sleeper* and *Disco Elysium* without copying their rules. It includes genuine decisions under risk (Gamism) and a consistent world with limits on action and knowledge (Simulationism). Tactical-grid combat is deferred to a later optional expansion inspired by *Shadowrun: Dragonfall*.
 
@@ -81,7 +81,7 @@ The protagonist has evolving social relationships with **every regular companion
 
 A relationship is **not just an approval number**. Characters have independent priorities and may disagree, withhold help, offer assistance, reconcile or act without the player's permission. Important conversations and actions should have continuity. Do not invent universal romance, loyalty or numerical relationship rules at this stage.
 
-Your initial team includes **Laura Falk (“Minerva”)**, **Dr. Harri Romppainen (“Dirty Harry”)**, **Sebastian Virtanen (“Ukuli”)** and **Laura Univaara (“Hecate”)**. The PC chooses their own call-sign. Falk and the PC are Academy newcomers; the other three are veterans of Ö-Mappi, the Supo-origin team transferred to UNSA. The full character brief is [#264](https://github.com/TomiToivio/NooPunk/issues/264).
+Your initial team includes **Laura Falk (“Minerva”)**, **Dr. Harri Romppainen (“Dirty Harry”)**, **Sebastian Virtanen (“Ukuli”)** and **Laura Univaara (“Hecate”)**. The PC chooses their own call-sign. Falk and the PC are Academy newcomers; the other three are veterans of Ö-Mappi, the Supo-origin team transferred to Europol. The full character brief is [#264](https://github.com/TomiToivio/NooPunk/issues/264).
 
 ## 5. Psyche is a central system
 
@@ -105,9 +105,9 @@ Access does not imply omnipotence. A remote Cyber contact needs a communication 
 
 Conflicts may be interpersonal, institutional, digital, psychic or physical. The first edition resolves them through clear stakes, choices, consequences and lightweight uncertainty procedures once approved. There is **no mandatory battle grid, extensive positioning or tactical encounter economy**. Violence is possible and consequential, but not the default solution.
 
-## 9. A first UNSA case
+## 9. A first Europol case
 
-Start with a briefing at the local UNSA HQ, investigate a witness account, follow at least one Cyber or Astral lead where access permits, and return for a debrief. Other agents may accompany you or provide plausible remote support. The outcome should change both **case knowledge** and **relationships/Psyche**. Use the existing *First Day in Ö-Mappi* source as a reference, reconciling its earlier introductory framing with the current UNSA Academy protagonist.
+Start with a briefing at the local Europol field office, investigate a witness account, follow at least one Cyber or Astral lead where access permits, and return for a debrief. Other agents may accompany you or provide plausible remote support. The outcome should change both **case knowledge** and **relationships/Psyche**. Use the existing *First Day in Ö-Mappi* source as a reference, reconciling its earlier introductory framing with the current Europol Academy protagonist.
 
 ## 10. Editions and source material
 

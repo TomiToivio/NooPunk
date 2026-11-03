@@ -120,7 +120,7 @@ in which the paradigm shifts themselves occur.
    collapse or severe degradation, **not total severance**.
 8. Alien **Cold War / Hybrid War**, occasional Confederacy–Orion clashes, and escalating
    Reptilian terror raids.
-9. **2045** playable start: functioning but destabilized institutions, the UNSA Helsinki
+9. **2045** playable start: functioning but destabilized institutions, the Europol Helsinki
    Field Office, and an uncertain future.
 
 **Dating.** The canonical setting year is **2045**. Only beat 9 (the playable start) carries a
@@ -153,14 +153,15 @@ technologies in radically different ways.
 States, federations, corporations, movements, religions, cities, and regions respond
 differently to AI, PSI, NHI, transhumanism, and networked power.
 
-A **limited / hybrid war between Russia and Europe** ends without Russia breaking apart.
-The crisis accelerates European integration: the **European Union becomes a federal
+A **limited / hybrid war between the Soviet Union and Europe** ends without the USSR breaking
+apart. The crisis accelerates European integration: the **European Union becomes a federal
 superpower and Ukraine joins the EU**.
 
-Russia then undergoes a **revolution followed by another period of democratization,
-institutional struggle, and disorder reminiscent of the post-Soviet transition**. Russia
-does **not** canonically descend into civil war or territorial breakup. Its later political
-settlement remains deliberately open.
+The USSR's later turn from a successful reform era toward a militarised, expansionist war is a
+**deliberate narrative gap**, not a settled sequence. The Soviet Union survives, reforms and
+modernises; how that state becomes the aggressor of the later war is reserved for the author. Do
+not fill it with a post-Soviet transition, a Russian Federation, or an invented coup. See
+[the alternate-history canon](../docs/world/ALTERNATE_HISTORY_1114.md#6-the-unresolved-causal-link).
 
 Some regions remain comparatively stable. Others experience war, authoritarian reaction,
 corporate sovereignty, institutional breakdown, radical federalization, commons-oriented

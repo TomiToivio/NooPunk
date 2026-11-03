@@ -49,7 +49,7 @@ The setting's equipment doctrine, consistent with every other subsystem:
 | **Personal agent / AI copilot** | Continuous local assistant; the setting's most-used technology (see §12.4) |
 | **AR glasses / contacts / retinal overlay** | The default non-invasive AR platform |
 | **Body armor, ballistic vest** | Protection, and a visible statement of role |
-| **Less-lethal tools** | Stun baton, restraint systems — the UNSA default posture (`rulebook/12_BEINGS.md` §11.9: you verify, you don't shoot) |
+| **Less-lethal tools** | Stun baton, restraint systems — the Europol default posture (`rulebook/12_BEINGS.md` §11.9: you verify, you don't shoot) |
 | **Service firearm** | Standard duty weapon |
 | **Medkit / trauma kit / antitox** | Field medicine; `First Aid` at work |
 | **Rations, shelter, thermal gear** | Survival baseline |

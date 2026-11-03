@@ -294,7 +294,7 @@ Per-domain detail chapters:
 
 > Moved to [`rulebook/parts/11_concordia_and_parity.md`](rulebook/parts/11_concordia_and_parity.md) — Reference: Concordia, Adaptation, Persistence and Parity.
 
-## 38. UNSA: default campaign institution
+## 38. UNSA: partner institution
 
 > Moved to [`rulebook/parts/10_campaign_unsa_factions.md`](rulebook/parts/10_campaign_unsa_factions.md) — Reference: Campaign, UNSA, Contact and Factions.
 

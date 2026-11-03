@@ -1,6 +1,6 @@
 # NoöPunk
 
-> **Primary game (#950):** the Python/Evennia [NoöPunk MUD](mud/README.md). Default engineering priority is CWN rules parity and a complete offline-independent single-player UNSA campaign; Godot is now maintenance-only, and multiplayer/LLM/Mesa features follow later. The [CWN Deluxe audit](docs/design/ISSUE_950_CWN_DELUXE_AUDIT.md) tracks the migration. Older Godot-first paragraphs below are historical.
+> **Primary game (#950):** the Python/Evennia [NoöPunk MUD](mud/README.md). Default engineering priority is CWN rules parity and a complete offline-independent single-player Europol campaign; Godot is now maintenance-only, and multiplayer/LLM/Mesa features follow later. The [CWN Deluxe audit](docs/design/ISSUE_950_CWN_DELUXE_AUDIT.md) tracks the migration. Older Godot-first paragraphs below are historical.
 
 Rules coverage is tracked honestly in
 [`docs/rules/CWN_COVERAGE_1068.md`](docs/rules/CWN_COVERAGE_1068.md) — `implemented` only where a
@@ -20,7 +20,7 @@ Rogue artificial minds pursue purposes nobody can translate into reassuring lang
 
 Cybernetics, genetic engineering and psionics are changing what a person can be. Human, cyborg, transhuman, posthuman: the categories multiply as the distinctions become less dependable. Somewhere in all this is somebody trying to remain themselves.
 
-Humanity has united under the **United Nations**. It has not agreed on what humanity is, or what it ought to become. Rival factions offer resistance, control or transformation. Each would prefer to settle the question before the others do.
+Humanity has not united under a world government. The **United Nations** still exists, and so does **UNSA**, but the project to turn them into a sovereign federal state failed. The EU and many nation-states continue to support them; sovereignty, competing institutions and national interest still decide what can actually be done. Rival factions offer resistance, control or transformation. Each would prefer to settle the question before the others do.
 
 And the biosphere still needs looking after. A revelation about consciousness does not repair a damaged ecosystem. Clean energy, ecological restoration and biotechnology offer the possibility of a better life. People still have to build it, share it and keep it alive.
 
@@ -45,6 +45,8 @@ NoöPunk also uses a **three-system lens**: living/biological systems (biopunk, 
 In **1974**, **Tommy Pilgrim**, a left-wing science-fiction writer, took LSD at a **Hawkwind concert** and experienced what he called a transmission from **VALIS**. It appeared to contain humanity's future. Artificial minds, alien encounters, psychic phenomena, political upheaval. An unreasonable amount of information for one evening.
 
 He wrote it down as ***NoöPunk***. He could not establish whether he had seen the future, misunderstood a symbol, or looked into a neighboring timeline. Some of the future's machinery looked suspiciously like 1974. The uncertainty did not prevent the book from becoming a cult classic. Neither did it prevent later events from beginning to resemble it.
+
+**NoöPunk is an alternate history, not a prediction.** The divergences — including a Soviet Union that never collapsed — are deliberate worldbuilding, not errors to be corrected into real history. The full chronology and its rules are in [`docs/world/ALTERNATE_HISTORY_1114.md`](docs/world/ALTERNATE_HISTORY_1114.md).
 
 Films, television, tabletop and computer games followed, along with a NoöPunk subculture. **Pilgrim is still alive in Helsinki**, a literary celebrity studied by scholars and courted by parapsychologists. There are several explanations for what happened to him. None has disposed of the others.
 
@@ -94,11 +96,10 @@ NoöPunk explores how institutions, ideologies, communications, economies, relig
 > NoöPunk is a New Weird RPG and political simulation about who gets believed,
 > who gets power, and what happens to everyone else.
 
-**Storefront pitch — the later UNSA investigation setting.**
+**Storefront pitch — the later Europol investigation setting.**
 
 > You have graduated. You have been augmented. You have been assigned a limited
-> forensic AI. The **United Nations Security Administration (UNSA)** considers
-> you ready.
+> forensic AI. The **Europol Helsinki Field Office** considers you ready.
 >
 > Earth has survived regional catastrophes. Two non-human powers helped rebuild
 > it, and neither fits comfortably under “ally” or “enemy.” Your work concerns
@@ -137,7 +138,7 @@ Two books published in 2026 are especially useful real-world intellectual inspir
 - **Alexander Wendt, [*The Last Humans: UFOs, Global Security, and the Threat to State Sovereignty*](https://academic.oup.com/book/63308)** (Oxford University Press, online 2026; print 2027). Wendt asks what the discovery of superior nonhuman intelligence could do to anthropocentric state legitimacy, ontological security, sovereignty, populism, and the international order. **NoöPunk lens:** the political and institutional crisis of NHI disclosure.
 - **Diana Walsh Pasulka, [*The Others: UFOs, AI, and the Secret Forces Guiding Human Destiny*](https://books.google.com/books/about/The_Others.html?id=wTyDEQAAQBAJ)** (St. Martin's Press, 2026). Pasulka examines extraordinary-encounter narratives through religion, AI, immortality, and transformations in ideas about consciousness. **NoöPunk lens:** the cultural, religious, and ontological collision of AI, NHI, and PSI.
 
-**Together:** Wendt explores what happens to *political order* when human exceptionalism is challenged; Pasulka explores what happens to *meaning, belief, and identity*. NoöPunk turns these questions into a struggle for hegemony: emerging factions try to define a rapidly changing reality, reshape institutions, and build communication power. Its political simulation draws on **Ernesto Laclau, Manuel Castells, and Niklas Luhmann**. The initial strategy scenario begins around **2027**, during accelerating change, **before** the later NHI Crisis and UNSA era.
+**Together:** Wendt explores what happens to *political order* when human exceptionalism is challenged; Pasulka explores what happens to *meaning, belief, and identity*. NoöPunk turns these questions into a struggle for hegemony: emerging factions try to define a rapidly changing reality, reshape institutions, and build communication power. Its political simulation draws on **Ernesto Laclau, Manuel Castells, and Niklas Luhmann**. The initial strategy scenario begins around **2027**, during accelerating change, **before** the later NHI Crisis and Europol era.
 
 These are **scenario inspirations and interpretations, not evidence** that disputed NHI or paranormal claims are established facts; the game's fictional world makes its own assumptions.
 

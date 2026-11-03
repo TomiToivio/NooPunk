@@ -103,9 +103,9 @@ spoiler bookkeeping, not an attestation claim.
 * ontological shock - crisis of assumptions about reality [gated]
 * BCI - brain-computer interface
 * psychotronics - psi-linked technological practice [gated]
-* UNSA - global human-security agency
+* UNSA - UN human-security agency; limited, pooled authority, not a world government
 * Supo - Finnish security intelligence service
-* Europol - European policing cooperation agency
+* Europol - European policing cooperation agency; the default employer at the Helsinki Field Office (#1114)
 * NHI - non-human intelligence [gated]
 * Pleiadian - NHI-related designation [gated]
 * Construct - synthetic or instantiated being in the setting [gated]

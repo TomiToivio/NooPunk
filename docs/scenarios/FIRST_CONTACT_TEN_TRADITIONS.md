@@ -252,7 +252,7 @@ as the present-tense political force (`15_XENOPOLITICS.md` §187.3.1, §187.8.1;
 The resulting cases reveal the overlap of direct military threats, compromised Grey trading
 networks, unexplained technology and potential hybrid infiltration.
 
-The pieces are existing canon: the default player character is a newly graduated **UNSA agent** at
+The pieces are existing canon: the default player character is a newly assigned **Europol field agent** at
 the **UNSA Police Academy** (`RULEBOOK.md` §9.3–§9.4, §38), the Helsinki campaign frame and its
 operational chain are the default (`RULEBOOK.md` §9.3;
 [`parts/10_campaign_unsa_factions.md`](../../rulebook/parts/10_campaign_unsa_factions.md),

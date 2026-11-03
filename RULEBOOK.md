@@ -1,5 +1,7 @@
 > **Rules superseded, 2026-10-26:** [Without Number baseline v1](rulebook/WITHOUT_NUMBER_BASELINE.md) is the current mechanical authority under the author’s explicit CWN/SWN/AWN/WWN instruction. Conflicting stats, skills, dice, custom rules and approval gates below are historical. Preserve the setting material. Existing software remains legacy until ported.
 
+> **Setting revision #1114 (2026-11-03):** NoöPunk is an **alternate history**, the default player characters are **Europol** agents at the **Europol Helsinki Field Office**, the UN/UNSA did **not** become a world government, and the **Soviet Union survived** the Cold War. Where this file says otherwise, [the alternate-history canon](docs/world/ALTERNATE_HISTORY_1114.md) governs. The mechanical rules are unchanged; see also the [Europol campaign frame](docs/world/EUROPOL_HELSINKI_1114.md).
+
 # NoöPunk Rulebook
 
 ## Humanity Is No Longer Alone
@@ -14,7 +16,7 @@ Hostile superintelligences, both extraterrestrial and artificial, threaten human
 
 Humanity is changing just as rapidly. Artificial intelligence, cybernetics, genetic engineering, and psionics are transforming our species into a multitude of humans, cyborgs, transhumans, and posthumans. The boundaries between human, machine, alien, and consciousness itself are dissolving.
 
-In the face of existential threats, humanity has united under the **United Nations**. But political unity does not mean ideological consensus. Rival factions struggle to determine humanity's deep future: resist the transformation, control it, or embrace the emergence of a new civilization.
+In the face of existential threats, humanity did **not** unite under a world government. The **United Nations** and **UNSA** still exist, and the EU and many states support them, but the project to turn them into a sovereign federal state failed. Sovereignty, competing institutions and national interest still decide what can actually be done. Rival factions struggle to determine humanity's deep future: resist the transformation, control it, or embrace the emergence of a new civilization.
 
 Three great paradigm shifts define the age:
 
@@ -798,7 +800,7 @@ to divide between **two or three factions**, for example **6/4** or **5/3/2**. N
 Reputation normally comes from Lifepath events, enemies, faction conflicts, campaign events,
 or an explicit character concept rather than from the positive pool.
 
-The default UNSA employer relationship may be represented separately from this pool when a
+The default Europol employment relationship may be represented separately from this pool when a
 campaign template grants employment automatically.
 
 ### 9.3 Default Helsinki campaign
@@ -811,13 +813,16 @@ Prioritize factions that employ, command, assist, investigate, oppose or otherwi
 meaningful relationships for the PCs in Helsinki. Do not populate the core rulebook with a
 global encyclopedia merely because the faction model can represent one.
 
-The default player character is a **UNSA agent** who has completed shared law-enforcement
-and counterintelligence training at the **UNSA Police Academy** before taking specialist
-training.
+The default player character is a **Europol field agent** assigned to the **Europol Helsinki
+Field Office**, who has completed shared law-enforcement and counterintelligence training at the
+**Europol Academy** before taking specialist training. UNSA remains a partner and a constraint,
+not the employer.
 
-### 9.4 UNSA Police Academy baseline
+### 9.4 Europol Academy baseline (working name)
 
-Issue #158 defines the common training package for the default Helsinki / UNSA campaign.
+Issue #158 defines the common training package for the default Helsinki / Europol campaign. The
+compatibility data file retains its historical name (`data/rules/unsa_academy.json`) and its tests;
+the in-setting institution is the Europol Academy, not a second rules package.
 Every graduate begins with rating **3** in the following canonical Skills:
 
 - Athletics, Guns, Melee, Unarmed;
@@ -846,7 +851,7 @@ action. NHI status alone is not grounds for lethal force.
 
 ### 9.5 Specialist training
 
-The default specialist tracks are:
+The default specialist tracks below are UNSA partner academies; the Europol field academy uses the shared foundation and secondments from them.
 
 - **UNSA SWAT Academy** — tactical operations, weapons, close protection, high-risk
   arrests, counterterrorism, and X-Risk/NHI tactical response.
@@ -864,7 +869,7 @@ scientific field work when the campaign needs them.
 
 Alternative campaigns may use independent investigators, corporations, gangs, political
 movements, universities, religious/esoteric groups, NHI-aligned groups or other employers.
-UNSA is the strong default template, not a restriction on the system.
+Europol is the strong default template, not a restriction on the system; UNSA-led campaigns remain valid.
 
 ---
 
@@ -1188,7 +1193,7 @@ Working mapping:
 | mesh | cyberspace / network layer / possible Noösphere interface |
 | psi | psionics / Noösphere interaction |
 | reputation network | social / network capital |
-| Firewall | **superseded in-world term; default campaign role is UNSA** — see below |
+| Firewall | **superseded in-world term; default campaign partner is Europol — see below** |
 | TITANs | **deliberately undecided** — see below |
 
 These are **working mappings**, not final terminology.
@@ -1200,8 +1205,8 @@ organisation, a history, or a mechanic.
 
 **Firewall.** NoöPunk no longer uses **Firewall** as the in-world name of the
 default player organization. The campaign function that once borrowed that Eclipse Phase
-term is now fulfilled by the **United Nations Security Administration (UNSA)**, an overt UN agency
-with classified operational networks. "Firewall" remains only a design/provenance reference
+term is now fulfilled by the **Europol Helsinki Field Office**, with UNSA as a partner
+agency and classified operational networks. "Firewall" remains only a design/provenance reference
 where comparison with Eclipse Phase is useful. The "Great Firewall" in §33.27 remains
 China's internet-control system and is unrelated.
 
@@ -1319,7 +1324,7 @@ The detailed canonical design is in
 
 The initial playable kernel prioritizes biological humans, optional cybernetics, the
 four-layer attributes, PSI, Density, Polarization, Contacts/Factions/Motivations, and
-UNSA agents.
+Europol agents.
 
 Cortical-stack continuity, full resleeving, morph catalogs, forks/backups, and infomorph
 edge cases remain deferred. Later transhuman mechanics must map onto this ontology rather
@@ -1619,7 +1624,7 @@ Factions are changing discursive formations represented as US^(positive/constitu
 
 Character Motivations use the same edge representation. Faction membership supplies starting Affects, not mind control. Multiple factions preserve different labels as ambivalence; matching target+label edges are combined; explicitly personal Motivations can override inherited matching edges while provenance is retained.
 
-Reputation is directional from the evaluating faction/actor toward the character. Contacts are person-to-person social edges, including friends, acquaintances, professional ties and enemies. The default UNSA affiliation is represented through the same system alongside the character's personal faction identity, and the score scale is **−10…+10** ([rulebook/8_FACTIONS.md](rulebook/8_FACTIONS.md)).
+Reputation is directional from the evaluating faction/actor toward the character. Contacts are person-to-person social edges, including friends, acquaintances, professional ties and enemies. The default Europol affiliation is represented through the same system alongside the character's personal faction identity, and the score scale is **−10…+10** ([rulebook/8_FACTIONS.md](rulebook/8_FACTIONS.md)).
 
 At the architecture level, face-to-face, text/chat, voice/video, Mesh and PSI communication are channels over the same social layer. The first playable interaction model is text-forward and hub-based, documented in [docs/design/GAMEPLAY_LOOP.md](docs/design/GAMEPLAY_LOOP.md), with a small Asteroid Belt/station slice as the preferred initial scope.
 
@@ -2156,29 +2161,34 @@ The setting therefore visibly contains:
 
 The coexistence of these groups is politically important.
 
-### 33.5 Emerging federal United Nations
+### 33.5 The world government that did not happen
 
-By 20XX the **United Nations is becoming a real federal world government**. The process
-is incomplete, politically contested, and uneven, but it has moved beyond a merely
-proto-federal aspiration. Every recognized Earth state is a UN member. Off-world human
-polities, including Luna, Mars, and sovereign Belt or habitat communities, may also
-become member states in their own right.
+The **United Nations did not become a federal world government**. The project was real, and it
+failed. The UN and **UNSA** still exist; the EU and many nation-states continue to support them;
+but no UN President, UN Prime Minister or global parliament governs Earth in 20XX.
 
-The emerging federal system has a **UN President, UN Prime Minister, and UN Parliament**.
-Global presidential and parliamentary elections occur every **four years**. The exact
-constitutional division of powers remains deliberately open for later design.
+Sovereignty and competing institutions still decide what can be done. The EU has integrated
+further than in our timeline, and some human polities off Earth may hold UN membership or
+observer status, but the UN's authority is pooled, conditional and revocable. UNSA is an agency
+with access, not a sovereign with rule. It coordinates science, intelligence, diplomacy,
+emergency response and NHI casework where states allow it; it cannot conscript, tax, arrest or
+override a member state.
 
-UNSA is one of the principal engines of this federalization because existential-risk
-governance forces the UN to acquire real sovereign capacities: resource mobilization,
-policing, intelligence, emergency authority, scientific infrastructure, military
-forces, space fleets, and global jurisdiction. It is widely regarded as the UN's most
-important institution, which makes it both indispensable and politically alarming.
+This failure is load-bearing for play. Institutional tensions, incomplete disclosure, national
+foot-dragging, compartmentalised factions and competing human positions remain live drivers. A
+UNSA officer often has more power to *investigate* than to *act*, and needs a member state — or a
+warrant, or a favour — to close the gap. The default player characters work for **Europol**, not
+UNSA, and face the same gap from the European side.
 
 Running beneath the institutional question is a **political-economic** one. The core
 contested axis of the NHI Crisis era is **neofeudal cybercapitalism versus the
 Multitude**: concentrated platform, corporate and habitat power that converts crisis into
 new forms of private sovereignty, against commons-based, cooperative and autonomist
 formations that organize from below. This is a live struggle, not a settled outcome.
+
+The older "federal United Nations" material may be used in play as a **failed political
+project**, a bureaucratic aspiration, or propaganda — not as the settled constitutional order.
+The authoritative chronology is [the alternate-history canon](docs/world/ALTERNATE_HISTORY_1114.md).
 
 ### 33.6 Psionics, QIP, awakening and the Noösphere
 
@@ -5095,11 +5105,11 @@ elements of its fictional world model, not as settled descriptions of the real w
 
 
 
-## 38. UNSA: default campaign institution
+## 38. UNSA: partner institution
 
 > **Issue #144 canon; supersedes the UNHSS / Firewall naming in issue #108.**
-> UNSA is the default player organization and a central institution of the emerging
-> federal United Nations.
+> UNSA is a partner agency and a central institution of the UN system. It is **not** the
+default player organization and not a world government; the default employer is Europol.
 
 #### Name and identity
 
@@ -5235,27 +5245,29 @@ Disclosure produces **ontological shock and fragmentation**:
 - hostile or compromised hybrids may use **PSI** for influence, manipulation and mind
   control.
 
-At the same time, the same crisis produces **global unification**:
+At the same time, the same crisis produces **partial integration, not a world state**:
+
 - NHI contact, rogue AGI/ASI, PSI security and planetary defence exceed the capacity of
   individual states;
 - the UN, EU, police, intelligence services, militaries, scientific institutions and
-  humanitarian agencies integrate at unprecedented speed;
-- UNSA becomes a practical mechanism for pooling sovereignty and one of the principal
-  engines of global federalization.
+  humanitarian agencies coordinate at unprecedented speed;
+- UNSA becomes a practical mechanism for pooling sovereignty and capability — but it does
+  not become a sovereign, and it does not turn the UN into a federal government.
 
-The emerging world government is therefore not the product of a smooth march toward
-unity. It is forged inside panic, institutional collapse, emergency coordination, war,
-Disclosure and reconstruction.
+**No federal world government emerges.** Coordination is real, often desperate and sometimes
+effective, but it is assembled from mandates, treaties, shared databases, joint teams and
+political bargains. It can be withdrawn. The older "federal United Nations" material is a failed
+political project, an aspiration, or propaganda, not the settled order.
 
-#### UNSA and the federal United Nations
+#### UNSA and the UN
 
-The UN is becoming the **federal government of Earth**, and UNSA is one of the central
-reasons this is happening. It supplies a working planetary institution for problems that
-cannot be governed nationally.
+The UN remains a forum, a legitimacy mechanism and a service provider, not the **federal
+government of Earth**. UNSA supplies a working agency for problems that cannot be governed
+nationally, but it works through member states rather than above them.
 
 UNSA must nevertheless remain internally contradictory rather than becoming a frictionless
 adventurers' guild. Persistent tensions include science vs secrecy, diplomacy vs policing,
-civil liberties vs existential security, national sovereignty vs global jurisdiction,
+civil liberties vs existential security, national sovereignty vs pooled authority,
 AI rights vs containment, NHI diplomacy vs planetary defence, and democratic
 accountability vs classified operations.
 
@@ -5263,20 +5275,19 @@ The institution contains idealists, careerists, bureaucratic rivalries, national
 competing doctrines, secrecy and occasional abuse. Its power is a political problem as well
 as a survival tool.
 
-#### UNSA is not a world government
+#### UNSA is an agency, not a sovereign
 
-The federalization above is real, but it must not be read as UNSA ruling Earth. **UNSA is an
-agency, not a sovereign.** States retain their sovereignty, their competing intelligence
-interests and control of most of the resources UNSA depends on. UNSA holds only the authority
-its members have pooled, and that authority is contested, conditional and in principle
-revocable. Its planetary reach is best described as *access* — to facilities, databases, units
+**UNSA is an agency, not a world government.** States retain their sovereignty, their competing
+intelligence interests and control of most of the resources UNSA depends on. UNSA holds only the
+authority its members have pooled, and that authority is contested, conditional and in principle
+revocable. Its reach is best described as *access* — to facilities, databases, units
 and airspace — rather than *rule*.
 
 This is deliberate and load-bearing for play. Institutional tensions, incomplete disclosure,
 national foot-dragging, compartmentalized factions inside UNSA itself, NHI diplomacy and
 competing human positions all remain live drivers. A UNSA officer often has more power to
 *investigate* than to *act*, and needs a member state — or a warrant, or a favour — to close
-the gap.
+the gap. Europol investigators face the same gap from the European side.
 
 #### From early diplomacy to the NHI cold war
 
@@ -5312,34 +5323,34 @@ ordinary human deception, PSYOPS or misattribution (§53.3;
 
 #### Default player relationship
 
-The default campaign assumes that the player character **belongs to and works for UNSA**.
-The character may simultaneously belong to several other factions and distribute starting
-Reputation among two or three of them under Chapter 9.
+The default campaign assumes that the player character **belongs to and works for Europol**, at
+the **Europol Helsinki Field Office**. The character may simultaneously belong to several other
+factions and distribute starting Reputation among two or three of them under Chapter 9.
 
-UNSA is the employer and institutional home, not the totality of the character's identity.
+Europol is the employer and institutional home, not the totality of the character's identity.
 
-**The default playable unit is a team of newly graduated UNSA agents on their first
-assignment** (character generation: `RULEBOOK.md` §9;
+**The default playable unit is a team of newly assigned Europol field agents on their first
+Helsinki assignment** (character generation: `RULEBOOK.md` §9;
 [`rulebook/14_CHARACTER_GENERATION.md`](rulebook/14_CHARACTER_GENERATION.md)). The Academy has
 just equalized them: whatever they were before recruitment — scholar, soldier, officer,
 hacker, or an anomalous recruit nobody can fully explain — they now share the universal
 Academy package and a first posting they did not choose. Their inexperience is the campaign's
 engine; their competence is real.
 
-**Veteran seconded agents remain central, but usually as instructors, commanding officers,
+**Veteran seconded officers remain central, but usually as instructors, commanding officers,
 handlers and mentors rather than as the default player characters.** They carry the older
 culture — national loyalties, pre-Disclosure habits, the "X-Risk Administration" era — and
-they are exactly the people who can tell the new graduates how the institution really works.
+they are exactly the people who can tell the new agents how the institution really works.
 They should be prominent NPCs, not a forbidden option.
 
 **Nothing here forbids other campaign models.** Veteran-led teams, mixed-generation teams,
-non-UNSA campaigns and alternative employers all remain valid; the Academy-graduate premise is
-the default, not the only door.
+UNSA-led task forces, national police campaigns and alternative employers all remain valid; the
+Europol-graduate premise is the default, not the only door.
 
 #### Wallfacers
 
 The existing UN **Wallfacer** program remains a high-level X-Risk strategy mechanism under
-the emerging federal order. Wallfacers may use unconventional, compartmentalized plans to
+the UN's emergency coordination framework. Wallfacers may use unconventional, compartmentalized plans to
 create strategies that hostile NHI, rogue intelligence or psychic espionage cannot easily
 predict. They remain subject to the setting's political tensions, legal constraints and
 anti-coup safeguards.
@@ -5356,9 +5367,9 @@ anti-coup safeguards.
 
 **Status: NOÖPUNK NATIVE CONTENT MODEL / CANONICAL SKILLS LOCKED BY ISSUE #159.**
 
-Issue #110 introduced the specialist-skill content needed by the initial Helsinki / UNSA campaign. Issues #111 and #159 supersede its provisional Eclipse Phase-derived mechanics and vocabulary. The canonical universal NoöPunk Skill list is now defined in **§4.1 Skill list** and mirrored in `data/rules/skills.json` and `data/rules/core.json`.
+Issue #110 introduced the specialist-skill content needed by the initial Helsinki / Europol campaign. Issues #111 and #159 supersede its provisional Eclipse Phase-derived mechanics and vocabulary. The canonical universal NoöPunk Skill list is now defined in **§4.1 Skill list** and mirrored in `data/rules/skills.json` and `data/rules/core.json`.
 
-This section is therefore a **campaign ledger and design history**, not a second universal Skill list. When this ledger conflicts with §4.1, **§4.1 wins**. The Helsinki / UNSA campaign narrows the universal vocabulary to fields and examples that are useful in play through `data/rules/campaign_skill_fields.json`.
+This section is therefore a **campaign ledger and design history**, not a second universal Skill list. When this ledger conflicts with §4.1, **§4.1 wins**. The Helsinki / Europol campaign narrows the universal vocabulary to fields and examples that are useful in play through `data/rules/campaign_skill_fields.json`.
 
 ### 39.1 Campaign-scoped field rule
 
@@ -5366,7 +5377,7 @@ The canonical fielded Skill families are **Exotic Skill, Hardware, Know, Medicin
 
 Do not preload giant specialty catalogs. Add a field when a character concept, scenario, location, profession, or piece of equipment creates a genuine need for it. Related fields may substitute at **–1** when the GM judges that the knowledge or technique genuinely transfers.
 
-For the initial Helsinki / UNSA campaign, the default profile includes:
+For the initial Helsinki / Europol campaign, the default profile includes:
 
 - **Pilot:** Ground Vehicles, Aircraft, Spacecraft, Drones
 - **Medicine:** Emergency Medicine, Surgery, Psychiatry, Neurology, Cybermedicine, Veterinary Medicine, Xenomedicine, Psychotronic Medicine
@@ -6217,7 +6228,7 @@ reservation, AGENTS.md §4).
 - Consumables: medical, performance and psychoactive drugs, booster regimens, power cells,
   ammunition, spare parts, and services (care, credentials, safehouses).
 
-**Availability.** In the default Helsinki/UNSA campaign, ordinary kit is issued; heavy weapons,
+**Availability.** In the default Helsinki/Europol campaign, ordinary kit is issued; heavy weapons,
 armor, vehicles and containment systems are **mission-issued**, not permanent personal
 inventory. Everything else is availability- and legality-gated in fiction.
 

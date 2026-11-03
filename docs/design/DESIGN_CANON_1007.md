@@ -1,3 +1,10 @@
+> **Setting revision #1114 (2026-11-03):** the UN/UNSA did **not** consolidate as a world
+> government and UNSA is not the default employer. The passages below that assume a
+> "de facto world government" arc are superseded design assumptions, preserved here as source
+> text; the binding chronology is
+> [`docs/world/ALTERNATE_HISTORY_1114.md`](../world/ALTERNATE_HISTORY_1114.md). This banner does not
+> alter the author's words.
+
 # Design canon: cyberpunk first, cosmic science fantasy underneath (source: #1007)
 
 > **This file is the source text.** The *decision record* — what is binding, with its machine-readable half

@@ -2,11 +2,11 @@
 
 > Generated, verbatim segment of [RULEBOOK.md](../../RULEBOOK.md) (the extended-canon run). The rulebook file is canonical; this part and its section numbers are unchanged so that cross-references keep resolving. Regenerate with `python3 tools/split_rulebook.py --apply`.
 
-## 38. UNSA: default campaign institution
+## 38. UNSA: partner institution
 
 > **Issue #144 canon; supersedes the UNHSS / Firewall naming in issue #108.**
-> UNSA is the default player organization and a central institution of the emerging
-> federal United Nations.
+> UNSA is a partner agency and a central institution of the UN system. It is **not** the
+default player organization and not a world government; the default employer is Europol.
 
 #### Name and identity
 
