@@ -213,7 +213,13 @@ class RegionLedger:
             allowed_values = ANOMALY_LADDER if event.axis == "anomaly" else SHOCK_LADDER
         if event.to not in tuple(allowed_values):
             raise RegionError(f"{event.axis} cannot be {event.to!r}")
-        if not transition_allowed(before, event.to):
+        if event.axis in ("anomaly", "ontological_shock"):
+            ladder = ANOMALY_LADDER if event.axis == "anomaly" else SHOCK_LADDER
+            previous, following = ladder.index(before), ladder.index(event.to)
+            permitted = following > previous or previous - following == 1
+        else:
+            permitted = transition_allowed(before, event.to)
+        if not permitted:
             raise RegionError(
                 f"{event.region}: {event.axis} cannot go from {before} to {event.to} in one event")
         fields = {axis: current.axis(axis)
