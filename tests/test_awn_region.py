@@ -163,3 +163,35 @@ class ValidationTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class OptionalAWNActivation1109Tests(unittest.TestCase):
+    """Off is a presentation/rules gate, never a destructive world migration."""
+
+    def test_disabled_awn_never_adds_regional_effects(self):
+        ruined = _state("western_us", "2045-04-01", supplies="after_the_fall", anomaly="persistent")
+        self.assertTrue(ruined.active_overlays())
+        self.assertEqual(ruined.active_overlays(awn_enabled=False), ())
+        self.assertEqual(ruined.axis("supplies"), "after_the_fall")
+
+    def test_mixed_regions_toggle_without_dropping_events_or_psi(self):
+        ledger = RegionLedger()
+        ledger.record(_state("helsinki", "2045-04-01", ontological_shock="global"))
+        ledger.record(_state("western_us", "2045-04-01", supplies="after_the_fall", anomaly="persistent"))
+        before = json.loads(json.dumps(ledger.to_dict()))
+        self.assertIn("western_us", ledger.world_at("2045-04-01")["overlays"])
+        self.assertEqual(ledger.world_at("2045-04-01", awn_enabled=False)["overlays"], {})
+        self.assertEqual(ledger.to_dict(), before)
+        self.assertEqual(RegionLedger.from_dict(before).world_at("2045-04-01")["overlays"],
+                         ledger.world_at("2045-04-01")["overlays"])
+
+    def test_recovery_is_recorded_even_when_awn_is_off(self):
+        ledger = RegionLedger()
+        ledger.record(_state("quarantine", "2045-04-01", supplies="after_the_fall"))
+        ledger.transition(RegionEvent(date="2045-04-02", region="quarantine", axis="supplies",
+                                      to="emergency", cause="UNSA aid convoy restored supply access",
+                                      source="UNSA dispatch 17"))
+        self.assertEqual(ledger.world_at("2045-04-02", awn_enabled=False)["overlays"], {})
+        self.assertEqual(ledger.latest("quarantine").supplies, "emergency")
+        self.assertEqual(ledger.world_at("2045-04-02")["overlays"]["quarantine"],
+                         ["privation_strain"])
