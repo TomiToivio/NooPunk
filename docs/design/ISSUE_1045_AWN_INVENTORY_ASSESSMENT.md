@@ -159,3 +159,37 @@ Any implementation that merges the three into one turn loop has failed the issue
 6. **Scrap/repair** only if a scenario needs it (P2, blocked on tables).
 
 Nothing in this backlog requires touching CWN, and none of it is started by this document.
+
+
+## Issue #1109: cross-game qualification and regional toggle (increment, 2026-11-03)
+
+**Primary source:** *Ashes Without Number Deluxe* (2025), printed pp. **67–69**, section
+“Mixing Sine Nomine Games Together.” This is a rule selection/compatibility audit, not a
+copy of publisher text. The book supports choosing **one base game** before importing
+individual specialist options. NoöPunk's binding constitution selects **CWN** regardless
+of whether a given region is physically ruined; AWN never becomes the character rules base.
+
+| AWN printed subrule / page | NoöPunk ruling | Status / owner / evidence |
+| --- | --- | --- |
+| Choose a base game, p. 67 | CWN always resolves ambiguous shared character/action mechanics | **existing**: `docs/rules/RULES_CONSTITUTION.md`; CWN modules, baseline; #1006 |
+| Foreign classes vs Edges, pp. 67–68 | Do not award an AWN Edge or foreign class to existing CWN operators automatically; SWN psychic package is an explicit character-creation choice | **deferred** elective conversion; CWN baseline, #1105; check future power balance |
+| Imported cyberware / money / scarce markets, p. 67 | CWN gear/cyberware rules retain authority; post-collapse access is fictional availability or a scenario goal, not forced price conversion | **partial**: CWN gear exists; no tested AWN salvage-market procedure; #1109 |
+| Creatures and traumatic hits, p. 67 | CWN combat and Trauma remain authoritative; alien/NHI monsters only when authored | **deferred**: no creature port or duplicate Trauma table; #1109 |
+| Mutation package, p. 67 | No automatic mutation subsystem or new base class | **deferred** option only; #1109 |
+| Outside classes as original classes or Edge-equivalents, p. 68 | Do not combine approaches in one character; no retroactive class Edge acquisition | **deferred** pending a written eligibility contract; #1105/#1101 |
+| Psychic, magic and cyberware conflicts, pp. 68–69 | SWN psionics, WWN magic and CWN cyberware remain separate, explicitly gated selections; do not assume a player may stack all three | **unverified** source-qualification audit needed for any proposed hybrid PC; #1105/#1101 |
+| Warrior/Expert imports, p. 68 | Keep the CWN operator chassis, import neither class automatically | **not applicable** to default player creation; optional future NPC/design review |
+| WWN mages and external OSR magic-users, p. 69 | No automatic imported spellcasting; WWN is optional and separately authorized | **deferred**, #1101 |
+| Optional regional AWN activation, NoöPunk addition (not from pp. 67–69) | Off disables AWN-only regional effects without deleting states/events or modifying independent SWN/WWN overlays | **implemented increment**: `src/rules/awn_region.py`, `tests/test_awn_region.py`, `docs/tabletop/AWN_WORLD_1083.md`; #1109 |
+
+**Important source qualifications:** AWN printed p. 68 warns of specific psychic access,
+teleportation and Nerve cyberware restrictions in AWN-based games, and p. 69 describes
+magic/psychic/cyberware incompatibilities. Those are **not silently imported as universal
+CWN errata**: any playable hybrid restriction needs an explicit author-approved cross-game
+contract and parallel tabletop/Python test. Status remains unverified until then.
+
+**Open gaps not closed by this increment:** full subsection/table inventory of all 299 PDF
+pages; actual AWN enclave statistics/action turns (#1083); source-specific salvage and
+technology identification; tracking, disease and radiation fidelity; save migration and
+Stress persistence beyond current tests; Crisis/Exploration/Social adventures; full scenario
+coverage. No source PDF or proprietary text was committed. #1109 stays **open**.
