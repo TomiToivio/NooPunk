@@ -1,0 +1,744 @@
+{
+ "format": "noopunk.rules.swn_register",
+ "version": 1,
+ "issue": "https://github.com/TomiToivio/NooPunk/issues/1105",
+ "title": "SWN rules register (#1105)",
+ "intro": "#1105 opens with a chapter table that says of itself: **\"Statuses are preliminary file-level observations, not verified fidelity or passing tests. Agents MUST replace each with source-verified, per-rule granular rows.\"** This register is that replacement. It is an audit, not a completion certificate, and SWN remains the one Without Number system whose *text* this repository may not use.",
+ "generated_by": "tools/rules_register_audit.py",
+ "requires_fidelity": true,
+ "blocked_editions": [],
+ "statuses": {
+  "implemented": "Code and a test that exercises it are both present in this repository.",
+  "partial": "Some of the procedure exists; the row states what is missing.",
+  "verified_reuse": "The published procedure is satisfied by delegating to an already-verified subsystem, usually CWN.",
+  "missing": "No implementation. The default, and it needs no justification.",
+  "blocked": "Cannot be done from the sources and rights available to agents.",
+  "not_applicable": "Explicitly ruled out, with the decision recorded."
+ },
+ "fidelities": {
+  "verified": "Compared against a readable copy of the published procedure by a human.",
+  "unverified": "Nobody has compared the code against the printed numbers yet. After the source index landed, this is a work statement, not a licensing obstacle.",
+  "blocked": "Cannot be verified because no readable copy exists (e.g. a book that is not in the repository and was never supplied). SWN is NOT blocked: its copy has been read and its sections recorded; rows that are not compared say 'unverified'.",
+  "not_applicable": "No published procedure to compare against (setting guidance, or a row that only delegates to CWN)."
+ },
+ "$comment": "SWN's rights position is the opposite of CWN's and WWN's. CWN and WWN both publish CC0 System Reference Documents. Stars Without Number publishes a free EDITION OF THE BOOK, not an SRD, and docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md records that no applicable text licence has been established. data/sources/game_system_rights.json carries the verdict 'blocked-unverified'. What that permits is real but narrow: independently written procedural implementations of unprotected mechanics. What it forbids is verbatim names, tables, prose, art and setting. Every existing src/rules/swn_*.py module is self-described as 'SWN-inspired' or an 'Original NoöPunk implementation' for exactly this reason, and that is why every SWN-native row below carries fidelity 'unverified' rather than 'verified'.",
+ "sources": {
+  "swn_revised": {
+   "document": "Stars Without Number: Revised Edition (Kevin Crawford / Sine Nomine)",
+   "rights": "mechanics_only",
+   "usable": true,
+   "text_available": false,
+   "note": "Author-supplied copy of the book, read on 2026-11-03 and section-indexed into data/rules/swn_sections.json (titles and printed pages only). Reading and citing pages is permitted to repository agents; reproducing its text, tables, art or setting is not. No applicable text licence exists (#569).",
+   "read_by_agent": true,
+   "readable": true,
+   "readable_note": "Author-supplied copy read on 2026-11-03 and section-indexed into data/rules/swn_sections.json (titles and printed pages only). Pages may be cited; text, tables, art and setting may not be reproduced."
+  },
+  "swn_deluxe": {
+   "document": "Stars Without Number: Revised Edition - Deluxe (commercial PDF)",
+   "rights": "mechanics_only",
+   "usable": true,
+   "text_available": false,
+   "note": "Author-supplied copy of the book, read on 2026-11-03 and section-indexed into data/rules/swn_sections.json (titles and printed pages only). Reading and citing pages is permitted to repository agents; reproducing its text, tables, art or setting is not. No applicable text licence exists (#569).",
+   "read_by_agent": true,
+   "readable": true,
+   "readable_note": "Author-supplied copy read on 2026-11-03 and section-indexed into data/rules/swn_sections.json (titles and printed pages only). Pages may be cited; text, tables, art and setting may not be reproduced."
+  },
+  "swn_reference_code": {
+   "document": "wintersleepAI/swnr (Foundry VTT implementation)",
+   "rights": "unverified",
+   "usable": false,
+   "text_available": false,
+   "note": "Not a drop-in Python library. Licence must be assessed per file before anything is ported, with attribution and verified parity. Nothing has been ported."
+  },
+  "cwn_srd": {
+   "document": "Cities Without Number System Reference Document",
+   "rights": "cc0_srd_only",
+   "usable": true,
+   "text_available": true,
+   "note": "Primary human-scale rules. SWN rows reuse it by delegation rather than reimplementing it."
+  }
+ },
+ "rows": [
+  {
+   "id": "CC1",
+   "chapter": "Character Creation",
+   "subsystem": "Baseline human character generation",
+   "edition": "revised",
+   "printed_page": 3,
+   "priority": "low",
+   "rights": "cc0_srd_only",
+   "status": "verified_reuse",
+   "fidelity": "not_applicable",
+   "python": [
+    "src/rules/cwn_character.py"
+   ],
+   "tests": [
+    "tests/test_cwn_core.py"
+   ],
+   "tabletop": "CWN character creation is the baseline; SWN does not replace it for ordinary humans.",
+   "owner": "#1006",
+   "notes": "The constitution sets CWN as the primary character-scale game for humans. This row delegates rather than duplicating."
+  },
+  {
+   "id": "CC2",
+   "chapter": "Character Creation",
+   "subsystem": "Psychic and Partial Psychic class packages",
+   "edition": "revised",
+   "printed_page": 3,
+   "priority": "high",
+   "rights": "mechanics_only",
+   "status": "partial",
+   "fidelity": "unverified",
+   "python": [
+    "src/rules/swn_progression.py"
+   ],
+   "tests": [
+    "tests/test_swn_progression.py"
+   ],
+   "tabletop": "Psychic advancement as published, on top of CWN character creation.",
+   "owner": "#1043",
+   "notes": "Progression mechanics exist as an original implementation. The class package as a whole (eligibility, foci interaction, partial-psychic split) is not verified against the book."
+  },
+  {
+   "id": "CC3",
+   "chapter": "Character Creation",
+   "subsystem": "Alien and True AI character options",
+   "edition": "deluxe",
+   "printed_page": 3,
+   "priority": "low",
+   "rights": "mechanics_only",
+   "status": "missing",
+   "fidelity": "unverified",
+   "python": [],
+   "tests": [],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": "Deluxe character options are registered so they are not silently dropped; no text may be reproduced, but the pages are readable (p.248 onward) and the rows stay unverified until compared."
+  },
+  {
+   "id": "P1",
+   "chapter": "Psionics",
+   "subsystem": "Effort accounting, commitment durations and recovery",
+   "edition": "revised",
+   "printed_page": 29,
+   "priority": "high",
+   "rights": "mechanics_only",
+   "status": "implemented",
+   "fidelity": "unverified",
+   "python": [
+    "src/rules/swn_psionics.py",
+    "data/rules/swn_psionics.json"
+   ],
+   "tests": [
+    "tests/test_swn_psionics.py"
+   ],
+   "tabletop": "Effort pools with active, scene and day commitments, and their recovery.",
+   "owner": "#1043",
+   "notes": "The module reproduces resource arithmetic only - no power names, tables or prose - because SWN has no verified SRD licence. That is a deliberate boundary, not an oversight."
+  },
+  {
+   "id": "P2",
+   "chapter": "Psionics",
+   "subsystem": "Torching and its consequences",
+   "edition": "revised",
+   "printed_page": 29,
+   "priority": "high",
+   "rights": "mechanics_only",
+   "status": "implemented",
+   "fidelity": "unverified",
+   "python": [
+    "src/rules/swn_psionics.py"
+   ],
+   "tests": [
+    "tests/test_swn_psionics_torching.py"
+   ],
+   "tabletop": "Torching as a costly last resort with its System Strain consequence.",
+   "owner": "#1043",
+   "notes": ""
+  },
+  {
+   "id": "P3",
+   "chapter": "Psionics",
+   "subsystem": "Psychic skills",
+   "edition": "revised",
+   "printed_page": 29,
+   "priority": "high",
+   "rights": "mechanics_only",
+   "status": "partial",
+   "fidelity": "unverified",
+   "python": [
+    "src/rules/swn_psionics.py"
+   ],
+   "tests": [
+    "tests/test_swn_psionics_contract.py"
+   ],
+   "tabletop": "",
+   "owner": "#1043",
+   "notes": "Skill interaction is modelled where the Effort arithmetic needs it, without adding SWN skills to CWN's default list."
+  },
+  {
+   "id": "P4",
+   "chapter": "Psionics",
+   "subsystem": "Six disciplines: technique inventory and effects",
+   "edition": "revised",
+   "printed_page": 29,
+   "priority": "high",
+   "rights": "mechanics_only",
+   "status": "partial",
+   "fidelity": "unverified",
+   "python": [
+    "src/rules/psionics.py",
+    "data/rules/psionics_techniques.json"
+   ],
+   "tests": [
+    "tests/test_psionics_catalogue.py"
+   ],
+   "tabletop": "Provisional NoöPunk techniques over the Effort shape.",
+   "owner": "#1043",
+   "notes": "The Effort engine is one implementation after this pass (capacity, reservations by duration, torching, snapshot persistence), and the six discipline sections are indexed at pp.32-43. What is NOT done is the book's full per-discipline technique list: the catalogue holds the six cores and 20 authored NoöPunk techniques. Unverified, not blocked - the copy is readable."
+  },
+  {
+   "id": "P5",
+   "chapter": "Psionics",
+   "subsystem": "Technique activation, targets, saves and scene state",
+   "edition": "revised",
+   "printed_page": 29,
+   "priority": "high",
+   "rights": "mechanics_only",
+   "status": "partial",
+   "fidelity": "unverified",
+   "python": [
+    "src/rules/psionics.py"
+   ],
+   "tests": [
+    "tests/test_natural_psi_effects_apply.py"
+   ],
+   "tabletop": "",
+   "owner": "#1043",
+   "notes": "Activation and application exist for the provisional catalogue, not for the published technique list."
+  },
+  {
+   "id": "S1",
+   "chapter": "Systems",
+   "subsystem": "Core resolution, combat and saves",
+   "edition": "revised",
+   "printed_page": 45,
+   "priority": "low",
+   "rights": "cc0_srd_only",
+   "status": "verified_reuse",
+   "fidelity": "not_applicable",
+   "python": [
+    "src/rules/cwn_combat.py",
+    "src/rules/wn_core.py"
+   ],
+   "tests": [
+    "tests/test_cwn_combat.py"
+   ],
+   "tabletop": "CWN resolution for human-scale play.",
+   "owner": "#1006",
+   "notes": "The tracker requires delegating duplicates to CWN rather than creating a second core."
+  },
+  {
+   "id": "S2",
+   "chapter": "Systems",
+   "subsystem": "Environmental hazards: radiation, vacuum, exotic environments",
+   "edition": "revised",
+   "printed_page": 45,
+   "priority": "low",
+   "rights": "mechanics_only",
+   "status": "missing",
+   "fidelity": "unverified",
+   "python": [],
+   "tests": [],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": "Needed only from Phase 3, when the campaign leaves Earth."
+  },
+  {
+   "id": "E1",
+   "chapter": "Equipment and Vehicles",
+   "subsystem": "Technology levels and alien equipment",
+   "edition": "revised",
+   "printed_page": 61,
+   "priority": "low",
+   "rights": "mechanics_only",
+   "status": "missing",
+   "fidelity": "unverified",
+   "python": [],
+   "tests": [],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": "Humans stay at CWN technology; SWN tiers belong to extraterrestrial owners. The access model is P1 work, not this row."
+  },
+  {
+   "id": "E2",
+   "chapter": "Equipment and Vehicles",
+   "subsystem": "Vehicles",
+   "edition": "revised",
+   "printed_page": 61,
+   "priority": "low",
+   "rights": "cc0_srd_only",
+   "status": "verified_reuse",
+   "fidelity": "not_applicable",
+   "python": [
+    "src/rules/cwn_vehicles.py"
+   ],
+   "tests": [
+    "tests/test_cwn_vehicles.py"
+   ],
+   "tabletop": "CWN vehicles for human play.",
+   "owner": "#1006",
+   "notes": ""
+  },
+  {
+   "id": "SH1",
+   "chapter": "Starships",
+   "subsystem": "Hull, fittings and vessel construction",
+   "edition": "revised",
+   "printed_page": 93,
+   "priority": "low",
+   "rights": "mechanics_only",
+   "status": "partial",
+   "fidelity": "unverified",
+   "python": [
+    "src/rules/swn_starships.py"
+   ],
+   "tests": [
+    "tests/test_swn_starships.py"
+   ],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": "The module describes itself as an SWN-inspired adapter, not a complete ship catalogue. It must not be presented as published hull or fitting data."
+  },
+  {
+   "id": "SH2",
+   "chapter": "Starships",
+   "subsystem": "Space combat, crew actions, damage and repair",
+   "edition": "revised",
+   "printed_page": 93,
+   "priority": "low",
+   "rights": "mechanics_only",
+   "status": "partial",
+   "fidelity": "unverified",
+   "python": [
+    "src/rules/swn_starships.py"
+   ],
+   "tests": [
+    "tests/test_swn_starships.py"
+   ],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": "Attack resolution exists; full crew action economy and repair procedures do not."
+  },
+  {
+   "id": "H1",
+   "chapter": "The History of Space",
+   "subsystem": "Setting history versus mechanical procedures",
+   "edition": "revised",
+   "printed_page": 121,
+   "priority": "low",
+   "rights": "mechanics_only",
+   "status": "not_applicable",
+   "fidelity": "not_applicable",
+   "python": [],
+   "tests": [],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": "Recorded decision: this is SWN's default setting, and NoöPunk has its own canon (Zoo Hypothesis, Zookeepers, Greater Orion Arm Co-Prosperity Sphere). The tracker forbids overwriting NoöPunk canon with SWN's future history. Rows here would be setting text, which is also not licensed for reuse."
+  },
+  {
+   "id": "SC1",
+   "chapter": "Sector Creation",
+   "subsystem": "Routes and fuel budgets",
+   "edition": "revised",
+   "printed_page": 129,
+   "priority": "low",
+   "rights": "mechanics_only",
+   "status": "partial",
+   "fidelity": "unverified",
+   "python": [
+    "src/rules/swn_sector.py"
+   ],
+   "tests": [
+    "tests/test_swn_space_factions.py"
+   ],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": "The module handles original route and fuel budgets and explicitly does not reproduce proprietary spike-drive rules. Its test lives in test_swn_space_factions.py, not under its own name — which is exactly the sort of thing a filename-based coverage claim gets wrong."
+  },
+  {
+   "id": "SC2",
+   "chapter": "Sector Creation",
+   "subsystem": "World, route and tag generation",
+   "edition": "revised",
+   "printed_page": 129,
+   "priority": "low",
+   "rights": "mechanics_only",
+   "status": "missing",
+   "fidelity": "unverified",
+   "python": [],
+   "tests": [],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": "Generators are tables, and tables are exactly what the rights position excludes."
+  },
+  {
+   "id": "AC1",
+   "chapter": "Adventure Creation",
+   "subsystem": "Templates, patrons and generators",
+   "edition": "revised",
+   "printed_page": 173,
+   "priority": "low",
+   "rights": "mechanics_only",
+   "status": "missing",
+   "fidelity": "unverified",
+   "python": [],
+   "tests": [],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": ""
+  },
+  {
+   "id": "X1",
+   "chapter": "Xenobestiary",
+   "subsystem": "Alien stat blocks and species creation",
+   "edition": "revised",
+   "printed_page": 193,
+   "priority": "low",
+   "rights": "mechanics_only",
+   "status": "missing",
+   "fidelity": "unverified",
+   "python": [],
+   "tests": [],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": "Required from Phase 2 (Disclosure). NoöPunk species are its own canon; published stat tables may not be copied."
+  },
+  {
+   "id": "X2",
+   "chapter": "Xenobestiary",
+   "subsystem": "Species social lenses and NPC packages",
+   "edition": "revised",
+   "printed_page": 193,
+   "priority": "low",
+   "rights": "mechanics_only",
+   "status": "missing",
+   "fidelity": "unverified",
+   "python": [],
+   "tests": [],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": "The tracker requires distinct Zookeeper, Grey, Mantid and Reptilian capabilities rather than one belligerent species."
+  },
+  {
+   "id": "F1",
+   "chapter": "Factions",
+   "subsystem": "Force, Cunning, Wealth and FacCreds",
+   "edition": "revised",
+   "printed_page": 211,
+   "priority": "high",
+   "rights": "mechanics_only",
+   "status": "implemented",
+   "fidelity": "unverified",
+   "python": [
+    "src/rules/swn_faction_turn.py"
+   ],
+   "tests": [
+    "tests/test_swn_faction_engine.py"
+   ],
+   "tabletop": "Faction statistics and income for a strategic turn.",
+   "owner": "#1043",
+   "notes": "The original SWN-inspired turn exists. Its own docstring warns that asset catalogues and combat tables remain reference-only."
+  },
+  {
+   "id": "F2",
+   "chapter": "Factions",
+   "subsystem": "Asset catalogue",
+   "edition": "revised",
+   "printed_page": 211,
+   "priority": "high",
+   "rights": "mechanics_only",
+   "status": "missing",
+   "fidelity": "unverified",
+   "python": [],
+   "tests": [],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": "The turn, action economy and FacCreds exist; the asset catalogues and combat tables are explicitly reference-only in the module. Unverified against pp.218-222 rather than blocked: the copy is readable and the pages are indexed."
+  },
+  {
+   "id": "F3",
+   "chapter": "Factions",
+   "subsystem": "Asset movement, attacks, defence and damage",
+   "edition": "revised",
+   "printed_page": 211,
+   "priority": "high",
+   "rights": "mechanics_only",
+   "status": "partial",
+   "fidelity": "unverified",
+   "python": [
+    "src/rules/swn_faction_turn.py"
+   ],
+   "tests": [
+    "tests/test_swn_faction_engine.py"
+   ],
+   "tabletop": "",
+   "owner": "#1043",
+   "notes": "Resolution exists for the modelled subset; the published combat tables do not."
+  },
+  {
+   "id": "F4",
+   "chapter": "Factions",
+   "subsystem": "Deterministic multi-faction turn engine",
+   "edition": "revised",
+   "printed_page": 211,
+   "priority": "high",
+   "rights": "mechanics_only",
+   "status": "implemented",
+   "fidelity": "unverified",
+   "python": [
+    "src/rules/swn_faction_engine.py"
+   ],
+   "tests": [
+    "tests/test_swn_faction_engine.py"
+   ],
+   "tabletop": "Seeded faction turns for the strategic layer.",
+   "owner": "#1043",
+   "notes": ""
+  },
+  {
+   "id": "F5",
+   "chapter": "Factions",
+   "subsystem": "Faction operations",
+   "edition": "revised",
+   "printed_page": 211,
+   "priority": "high",
+   "rights": "mechanics_only",
+   "status": "implemented",
+   "fidelity": "unverified",
+   "python": [
+    "src/rules/swn_faction_operations.py"
+   ],
+   "tests": [
+    "tests/test_swn_faction_operations.py"
+   ],
+   "tabletop": "",
+   "owner": "#1043",
+   "notes": "Deterministic operations layered on the turn; original NoöPunk implementation."
+  },
+  {
+   "id": "F6",
+   "chapter": "Factions",
+   "subsystem": "Tabletop faction sheet and ledger",
+   "edition": "revised",
+   "printed_page": 211,
+   "priority": "high",
+   "rights": "mechanics_only",
+   "status": "missing",
+   "fidelity": "unverified",
+   "python": [],
+   "tests": [],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": "The tracker asks for paper play. No parallel ledgers may be introduced alongside it."
+  },
+  {
+   "id": "GM1",
+   "chapter": "Game Master Resources",
+   "subsystem": "Generators, patrons and one-roll tools",
+   "edition": "revised",
+   "printed_page": 231,
+   "priority": "low",
+   "rights": "mechanics_only",
+   "status": "missing",
+   "fidelity": "unverified",
+   "python": [],
+   "tests": [],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": ""
+  },
+  {
+   "id": "T1",
+   "chapter": "Transhuman Campaigns",
+   "subsystem": "Identity, shells and imprinting",
+   "edition": "deluxe",
+   "printed_page": 248,
+   "priority": "low",
+   "rights": "mechanics_only",
+   "status": "partial",
+   "fidelity": "unverified",
+   "python": [
+    "src/rules/swn_transhuman.py"
+   ],
+   "tests": [
+    "tests/test_swn_transhuman_true_ai.py"
+   ],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": "Self-described as SWN-inspired, not verified faithful. Cortical stacks and resleeving economics are a NoöPunk setting layer and must not be presented as published SWN rules."
+  },
+  {
+   "id": "T2",
+   "chapter": "Transhuman Campaigns",
+   "subsystem": "Cortical stacks and resleeving economy",
+   "edition": "deluxe",
+   "printed_page": 248,
+   "priority": "low",
+   "rights": "mechanics_only",
+   "status": "missing",
+   "fidelity": "unverified",
+   "python": [],
+   "tests": [],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": "Pivotal to the Greater Orion Arm economy in NoöPunk canon, and deliberately a setting system rather than an unexplained new PC power."
+  },
+  {
+   "id": "SM1",
+   "chapter": "Space Magic",
+   "subsystem": "Space Magic spell and occult variants",
+   "edition": "deluxe",
+   "printed_page": 266,
+   "priority": "low",
+   "rights": "mechanics_only",
+   "status": "missing",
+   "fidelity": "unverified",
+   "python": [],
+   "tests": [],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": "Must be audited against WWN magic and SWN psi so no Effort pool is accidentally shared."
+  },
+  {
+   "id": "HC1",
+   "chapter": "Heroic Characters",
+   "subsystem": "Heroic progression",
+   "edition": "deluxe",
+   "printed_page": 274,
+   "priority": "low",
+   "rights": "mechanics_only",
+   "status": "missing",
+   "fidelity": "unverified",
+   "python": [],
+   "tests": [],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": "Optional, for unusually powerful beings, never standard CWN humans."
+  },
+  {
+   "id": "AI1",
+   "chapter": "True Artificial Intelligences",
+   "subsystem": "Agency, hosts and containment",
+   "edition": "deluxe",
+   "printed_page": 280,
+   "priority": "low",
+   "rights": "mechanics_only",
+   "status": "partial",
+   "fidelity": "unverified",
+   "python": [
+    "src/rules/swn_true_ai.py"
+   ],
+   "tests": [
+    "tests/test_swn_transhuman_true_ai.py"
+   ],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": "Self-described as SWN-inspired. The tracker warns against rewriting core AI policy or reading sentience from rule labels."
+  },
+  {
+   "id": "SO1",
+   "chapter": "Societies",
+   "subsystem": "Alien societies, governments and species politics",
+   "edition": "deluxe",
+   "printed_page": 290,
+   "priority": "low",
+   "rights": "mechanics_only",
+   "status": "missing",
+   "fidelity": "unverified",
+   "python": [],
+   "tests": [],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": "Must tie to faction and ideology identifiers without a second faction engine."
+  },
+  {
+   "id": "M1",
+   "chapter": "Mechs",
+   "subsystem": "Chassis, mech combat and construction",
+   "edition": "deluxe",
+   "printed_page": 300,
+   "priority": "low",
+   "rights": "mechanics_only",
+   "status": "missing",
+   "fidelity": "unverified",
+   "python": [],
+   "tests": [],
+   "tabletop": "",
+   "owner": "#1105",
+   "notes": "Only when a scenario needs it; CWN normal combat must stay unaffected."
+  }
+ ],
+ "compatibility": [
+  {
+   "topic": "Attributes and skills",
+   "cwn": "Attribute band and skill list are the human baseline.",
+   "wwn": "Backgrounds map onto CWN; no replacement vocabulary.",
+   "swn": "Psychic skills exist only for psychic characters and are not added to CWN's default list.",
+   "awn": "Unverified source; no import.",
+   "precedence": "CWN for ordinary humans; SWN skills appear only inside SWN-native packages.",
+   "citation": "#1105 constitution; docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md"
+  },
+  {
+   "topic": "Saves, attack and combat",
+   "cwn": "CWN resolution is authoritative at human scale.",
+   "wwn": "Reuses CWN resolution.",
+   "swn": "Starship and mech combat are SWN-native and must not alter CWN personal combat.",
+   "awn": "Unverified.",
+   "precedence": "CWN wins any genuine conflict at character scale; SWN owns its own vehicle scale.",
+   "citation": "#1105; CWN Free Edition p. 218 onward 'Mixing Sine Nomine Games Together'"
+  },
+  {
+   "topic": "Effort: psionics versus magic",
+   "cwn": "No Effort pool; System Strain is the CWN resource and is not modified.",
+   "wwn": "Tradition Effort per mage class.",
+   "swn": "Psychic Effort with active, scene and day commitments, plus Torching.",
+   "awn": "Unverified.",
+   "precedence": "The pools are separate by rule. Sharing one accidentally is a defect.",
+   "citation": "#1105 constitution; #1101 chapter C"
+  },
+  {
+   "topic": "Faction currencies and assets",
+   "cwn": "No faction turn engine.",
+   "wwn": "Faction turns, assets and Major Projects.",
+   "swn": "Force, Cunning, Wealth and FacCreds, with a published asset catalogue.",
+   "awn": "Enclaves, crisis and site ledger (#1083).",
+   "precedence": "Complementary, never subsumed. SWN and WWN faction systems keep their own native scale.",
+   "citation": "#1105 workstream B; #1101 chapter F"
+  },
+  {
+   "topic": "Technology and equipment access",
+   "cwn": "CWN technology for ordinary humans.",
+   "wwn": "Fantasy equipment is supplemental.",
+   "swn": "SWN tiers belong to extraterrestrial owners; MJ-12 and select agencies hold secret reverse-engineered assets.",
+   "awn": "Unverified.",
+   "precedence": "Human play stays CWN; SWN tiers are gated by scenario and reveal stage, not granted as starting equipment.",
+   "citation": "#1105 'Human access asymmetry'"
+  },
+  {
+   "topic": "Transhuman continuity",
+   "cwn": "No default immortality.",
+   "wwn": "No equivalent.",
+   "swn": "Deluxe transhuman rules, shells and identity continuity.",
+   "awn": "Unverified.",
+   "precedence": "A NoöPunk setting system built on SWN-inspired mechanics; not published SWN text.",
+   "citation": "#1105 P1; src/rules/swn_transhuman.py docstring"
+  }
+ ],
+ "gaps": [
+  "Fidelity is 'unverified' on every SWN-native row and that is not a formality: SWN publishes a free edition of the book, not a CC0 SRD, so no agent can compare the code to the text without violating the rights boundary. The tracker's demand for 'source-verified' rows cannot be met from this repository's sources, and this register says so instead of pretending.",
+  "The largest blocked item is P4: #1105 asks for every published technique, level by level, across six disciplines. The repository has 20 original, provisional techniques instead - no power names, no effect text, by design.",
+  "F2 is the largest gap in the faction workstream: a published asset catalogue is a table, and tables are excluded. Any NoöPunk asset list must be authored originally and labelled as such.",
+  "This register records that #1105's preliminary chapter table has been replaced, one row at a time. It has not been replaced by anything better than file existence plus an honest fidelity verdict."
+ ]
+}

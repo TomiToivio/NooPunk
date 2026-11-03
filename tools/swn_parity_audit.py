@@ -24,7 +24,7 @@ from cwn_parity_audit import verify_entry  # noqa: E402  (one evidence checker, 
 
 REGISTER = ROOT / "data" / "rules" / "swn_traceability.json"
 SECTIONS = ROOT / "data" / "rules" / "swn_sections.json"
-REPORT = ROOT / "docs" / "rules" / "SWN_COVERAGE_1105.md"
+REPORT = ROOT / "docs" / "rules" / "SWN_SECTION_COVERAGE_1105.md"
 
 STATUSES = ("verified", "verified_reuse", "partial", "unverified", "missing", "not_applicable")
 #: Statuses that claim code exists, and therefore require evidence.

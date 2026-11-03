@@ -154,7 +154,7 @@ class ReportFreshnessTests(unittest.TestCase):
     def test_the_report_is_the_tools_own_output(self) -> None:
         self.assertTrue(REPORT.is_file(), "run python3 tools/swn_parity_audit.py")
         self.assertEqual(REPORT.read_text(encoding="utf-8"), render(build()),
-                         "docs/rules/SWN_COVERAGE_1105.md is stale; run python3 tools/swn_parity_audit.py")
+                         "docs/rules/SWN_SECTION_COVERAGE_1105.md is stale; run python3 tools/swn_parity_audit.py")
 
     def test_the_check_mode_agrees_with_the_test(self) -> None:
         result = subprocess.run([sys.executable, "tools/swn_parity_audit.py", "--check"],

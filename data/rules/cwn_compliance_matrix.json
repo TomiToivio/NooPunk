@@ -593,6 +593,7 @@
         "tests/test_swn_psionics.py",
         "tests/test_swn_psionics_contract.py",
         "tests/test_swn_psionics_torching.py",
+        "tests/test_swn_register_1105.py",
         "tests/test_wn_core_contract.py"
       ],
       "tested_against_book": false,
