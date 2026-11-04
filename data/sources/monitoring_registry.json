@@ -1,0 +1,914 @@
+{
+  "format": "noopunk.monitoring.sources",
+  "version": 1,
+  "issue": "https://github.com/TomiToivio/NooPunk/issues/1144",
+  "canonical_watch_protocol": "rulebook/7_TIMELINE.md",
+  "note": "Discovery candidates, not subscribed feeds or established evidence. No source automatically changes canon.",
+  "sources": [
+    {
+      "id": "aarirajoilla",
+      "title": "Äärirajoilla",
+      "language": "fi",
+      "country": "FI",
+      "kind": "podcast",
+      "canonical_url": "https://aarirajoilla.fi/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P0",
+      "topics": [
+        "NHI",
+        "UAP",
+        "CONSCIOUSNESS",
+        "FINLAND_1946"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "vierailijat",
+      "title": "Vierailijat",
+      "language": "fi",
+      "country": "FI",
+      "kind": "podcast",
+      "canonical_url": "https://vierailijat.fi/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P0",
+      "topics": [
+        "NHI",
+        "UAP",
+        "DISCLOSURE"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "ja-ihminen-loi-alyn",
+      "title": "Ja ihminen loi älyn",
+      "language": "fi",
+      "country": "FI",
+      "kind": "podcast",
+      "canonical_url": "https://www.aalto.fi/en/podcasts/podcast-about-artificial-intelligence-ja-ihminen-loi-alyn",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P0",
+      "topics": [
+        "AGI",
+        "ASI",
+        "AI_SAFETY"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "tahtivaeltaja",
+      "title": "Tähtivaeltaja",
+      "language": "fi",
+      "country": "FI",
+      "kind": "podcast",
+      "canonical_url": "https://suomipodi.fi/podcastit/tahtivaeltaja",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P0",
+      "topics": [
+        "SF",
+        "NEW_WEIRD"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "ufo-asiaa",
+      "title": "Ufo-asiaa",
+      "language": "fi",
+      "country": "FI",
+      "kind": "podcast",
+      "canonical_url": "https://open.spotify.com/show/611M1vYwElmtoQPjoCXfJT",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "UAP",
+        "NHI"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "kaarmeiden-yo",
+      "title": "Käärmeiden yö",
+      "language": "fi",
+      "country": "FI",
+      "kind": "podcast",
+      "canonical_url": "https://podcasts.apple.com/fi/podcast/k%C3%A4%C3%A4rmeiden-y%C3%B6/id1560964729",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "PSI",
+        "NHI"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "muinaismieli",
+      "title": "Muinaismieli",
+      "language": "fi",
+      "country": "FI",
+      "kind": "video",
+      "canonical_url": "https://www.youtube.com/@Muinaismieli",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "PSI",
+        "CONSCIOUSNESS"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "futucast",
+      "title": "Futucast",
+      "language": "fi",
+      "country": "FI",
+      "kind": "podcast",
+      "canonical_url": "https://www.futucast.com/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "FUTURES",
+        "AGI",
+        "GEOPOLITICS"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "ennakointikupla",
+      "title": "Ennakointikupla",
+      "language": "fi",
+      "country": "FI",
+      "kind": "podcast",
+      "canonical_url": "https://tulevaisuus.fi/lisamateriaalit/podcast-videomateriaaleja/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "FUTURES"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "futufika",
+      "title": "Futufika",
+      "language": "fi",
+      "country": "FI",
+      "kind": "podcast",
+      "canonical_url": "https://tulevaisuus.fi/lisamateriaalit/podcast-videomateriaaleja/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "FUTURES"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "sitra-tulevaisuuspodcast",
+      "title": "Sitran Tulevaisuuspodcast",
+      "language": "fi",
+      "country": "FI",
+      "kind": "podcast",
+      "canonical_url": "https://arkisto.sitra.fi/aiheet/tulevaisuuspodcast/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "FUTURES",
+        "GEOPOLITICS"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "tiedetrippi",
+      "title": "Yle Tiedetrippi",
+      "language": "fi",
+      "country": "FI",
+      "kind": "podcast",
+      "canonical_url": "https://areena.yle.fi/podcastit",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "CONSCIOUSNESS",
+        "AGI"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "tiedeykkonen",
+      "title": "Yle Tiedeykkönen",
+      "language": "fi",
+      "country": "FI",
+      "kind": "podcast",
+      "canonical_url": "https://areena.yle.fi/podcastit",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "AGI",
+        "SPACE",
+        "BIOTECH"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "mystillista",
+      "title": "Mystillistä",
+      "language": "fi",
+      "country": "FI",
+      "kind": "podcast",
+      "canonical_url": "https://arenan.yle.fi/1-71176339",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P2",
+      "topics": [
+        "PSI",
+        "NHI"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "takakansi",
+      "title": "Takakansi",
+      "language": "fi",
+      "country": "FI",
+      "kind": "podcast",
+      "canonical_url": "https://takakansi.fi/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P2",
+      "topics": [
+        "SF"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "historian-salaisuudet",
+      "title": "Historian salaisuudet",
+      "language": "fi",
+      "country": "FI",
+      "kind": "podcast",
+      "canonical_url": "https://podcasts.apple.com/fi/podcast/historian-salaisuudet/id1896814507",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P2",
+      "topics": [
+        "FUTURES",
+        "SPACE"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "ufojuttuja",
+      "title": "UFOjuttuja",
+      "language": "fi",
+      "country": "FI",
+      "kind": "video",
+      "canonical_url": "https://www.youtube.com/@UFOjuttuja",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P2",
+      "topics": [
+        "NHI",
+        "UAP",
+        "CONSCIOUSNESS"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "aavepod",
+      "title": "AavePod",
+      "language": "fi",
+      "country": "FI",
+      "kind": "podcast",
+      "canonical_url": "https://podcasts.apple.com/us/podcast/aavepod/id1866840956",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P2",
+      "topics": [
+        "PSI"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "mystista",
+      "title": "Mystistä",
+      "language": "fi",
+      "country": "FI",
+      "kind": "podcast",
+      "canonical_url": "https://podcasts.apple.com/fi/podcast/mystist%C3%A4/id1710867099",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P2",
+      "topics": [
+        "PSI"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "paranormaali-ja-mysteeri",
+      "title": "Paranormaali ja mysteeri",
+      "language": "fi",
+      "country": "FI",
+      "kind": "podcast",
+      "canonical_url": null,
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P2",
+      "topics": [
+        "PSI"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "dwarkesh",
+      "title": "Dwarkesh Podcast",
+      "language": "en",
+      "country": "INT",
+      "kind": "podcast",
+      "canonical_url": "https://www.dwarkesh.com/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P0",
+      "topics": [
+        "AGI",
+        "ASI",
+        "FUTURES"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "80000hours",
+      "title": "80,000 Hours Podcast",
+      "language": "en",
+      "country": "INT",
+      "kind": "podcast",
+      "canonical_url": "https://80000hours.org/podcast/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "AI_SAFETY",
+        "AGI"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "mlst",
+      "title": "Machine Learning Street Talk",
+      "language": "en",
+      "country": "INT",
+      "kind": "video",
+      "canonical_url": "https://www.youtube.com/@MachineLearningStreetTalk",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "AGI",
+        "AI_SAFETY"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "hard-fork",
+      "title": "Hard Fork",
+      "language": "en",
+      "country": "INT",
+      "kind": "podcast",
+      "canonical_url": "https://www.nytimes.com/column/hard-fork",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "AGI",
+        "FUTURES"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "arxiv-ai",
+      "title": "arXiv cs.AI",
+      "language": "en",
+      "country": "INT",
+      "kind": "paper",
+      "canonical_url": "https://arxiv.org/list/cs.AI/recent",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P0",
+      "topics": [
+        "AGI",
+        "ASI"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "metr",
+      "title": "METR",
+      "language": "en",
+      "country": "INT",
+      "kind": "research",
+      "canonical_url": "https://metr.org/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P0",
+      "topics": [
+        "AI_SAFETY",
+        "AGI"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "epoch-ai",
+      "title": "Epoch AI",
+      "language": "en",
+      "country": "INT",
+      "kind": "research",
+      "canonical_url": "https://epoch.ai/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P0",
+      "topics": [
+        "AGI",
+        "FUTURES"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "cais",
+      "title": "Center for AI Safety",
+      "language": "en",
+      "country": "INT",
+      "kind": "research",
+      "canonical_url": "https://www.safe.ai/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "AI_SAFETY"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "alignment-forum",
+      "title": "Alignment Forum",
+      "language": "en",
+      "country": "INT",
+      "kind": "community",
+      "canonical_url": "https://www.alignmentforum.org/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "AI_SAFETY"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "fli",
+      "title": "Future of Life Institute",
+      "language": "en",
+      "country": "INT",
+      "kind": "research",
+      "canonical_url": "https://futureoflife.org/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "AI_SAFETY",
+        "FUTURES"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "iftf",
+      "title": "Institute for the Future",
+      "language": "en",
+      "country": "INT",
+      "kind": "research",
+      "canonical_url": "https://www.iftf.org/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "FUTURES"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "toe",
+      "title": "Theories of Everything",
+      "language": "en",
+      "country": "INT",
+      "kind": "video",
+      "canonical_url": "https://www.youtube.com/@TheoriesofEverything",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "CONSCIOUSNESS",
+        "PSI"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "aaro",
+      "title": "AARO official",
+      "language": "en",
+      "country": "US",
+      "kind": "official",
+      "canonical_url": "https://www.aaro.mil/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P0",
+      "topics": [
+        "UAP",
+        "DISCLOSURE"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "nasa-astrobiology",
+      "title": "NASA Astrobiology",
+      "language": "en",
+      "country": "US",
+      "kind": "official",
+      "canonical_url": "https://astrobiology.nasa.gov/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "SPACE",
+        "NHI"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "esa",
+      "title": "European Space Agency",
+      "language": "en",
+      "country": "EU",
+      "kind": "official",
+      "canonical_url": "https://www.esa.int/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "SPACE"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "seti",
+      "title": "SETI Institute",
+      "language": "en",
+      "country": "INT",
+      "kind": "research",
+      "canonical_url": "https://www.seti.org/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "SPACE",
+        "NHI"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "clarkesworld",
+      "title": "Clarkesworld",
+      "language": "en",
+      "country": "INT",
+      "kind": "publication",
+      "canonical_url": "https://clarkesworldmagazine.com/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "SF",
+        "NEW_WEIRD"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "locus",
+      "title": "Locus",
+      "language": "en",
+      "country": "INT",
+      "kind": "publication",
+      "canonical_url": "https://locusmag.com/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "SF"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "reactor",
+      "title": "Reactor",
+      "language": "en",
+      "country": "INT",
+      "kind": "publication",
+      "canonical_url": "https://reactormag.com/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "SF",
+        "NEW_WEIRD"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "strange-horizons",
+      "title": "Strange Horizons",
+      "language": "en",
+      "country": "INT",
+      "kind": "publication",
+      "canonical_url": "https://strangehorizons.com/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "SF",
+        "NEW_WEIRD"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "eu-commission",
+      "title": "European Commission",
+      "language": "en",
+      "country": "EU",
+      "kind": "official",
+      "canonical_url": "https://commission.europa.eu/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "GEOPOLITICS",
+        "EU"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "un",
+      "title": "United Nations",
+      "language": "en",
+      "country": "INT",
+      "kind": "official",
+      "canonical_url": "https://www.un.org/",
+      "feed_url": null,
+      "platform_ids": {},
+      "status": "unverified",
+      "priority": "P1",
+      "topics": [
+        "GEOPOLITICS"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
+      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+    },
+    {
+      "id": "video-qUc-uAlJU2k",
+      "title": null,
+      "language": "fi",
+      "country": "FI",
+      "kind": "video",
+      "canonical_url": "https://www.youtube.com/watch?v=qUc-uAlJU2k",
+      "feed_url": null,
+      "platform_ids": {
+        "youtube_video": "qUc-uAlJU2k"
+      },
+      "status": "unverified",
+      "metadata_status": "unverified",
+      "priority": "P0",
+      "topics": [
+        "NHI",
+        "HELSINKI"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "User-supplied link; title, authorship and license not verified.",
+      "provenance": "User-provided NoöPunk research link."
+    },
+    {
+      "id": "video-skOadFbPEPs",
+      "title": null,
+      "language": "fi",
+      "country": "FI",
+      "kind": "video",
+      "canonical_url": "https://www.youtube.com/watch?v=skOadFbPEPs",
+      "feed_url": null,
+      "platform_ids": {
+        "youtube_video": "skOadFbPEPs"
+      },
+      "status": "unverified",
+      "metadata_status": "unverified",
+      "priority": "P0",
+      "topics": [
+        "NHI",
+        "HELSINKI"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "User-supplied link; title, authorship and license not verified.",
+      "provenance": "User-provided NoöPunk research link."
+    },
+    {
+      "id": "video-b8UFh7BQZ2A",
+      "title": null,
+      "language": "fi",
+      "country": "FI",
+      "kind": "video",
+      "canonical_url": "https://www.youtube.com/watch?v=b8UFh7BQZ2A",
+      "feed_url": null,
+      "platform_ids": {
+        "youtube_video": "b8UFh7BQZ2A"
+      },
+      "status": "unverified",
+      "metadata_status": "unverified",
+      "priority": "P0",
+      "topics": [
+        "NHI",
+        "HELSINKI"
+      ],
+      "last_checked": null,
+      "last_seen_item": null,
+      "license_or_access_notes": "User-supplied link; title, authorship and license not verified.",
+      "provenance": "User-provided NoöPunk research link."
+    }
+  ]
+}
