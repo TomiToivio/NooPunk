@@ -45,3 +45,14 @@ These five *separate* draft documents are available for Tomi's edits and approva
 - [Personality, Goals and Reputation tags](../docs/design/DRAFT_NOOPUNK_CHARACTER_TAGS.md)
 
 [Tracking issue #1137](https://github.com/TomiToivio/NooPunk/issues/1137). The author's [BIONICS.md](BIONICS.md) remains intact and authoritative for author decisions; these are proposals only.
+
+## Issue #1141: Helsinki author-first city worksheets (NOT canon)
+
+**Phase 1 only.** Four agent-authored, non-canonical example templates await Tomi's writing and explicit approval. Do **not** implement these examples in the tabletop rulebook, the engine-neutral Python library, or Evennia before the separate Phase-3 authorization.
+
+- [The World: themes, setting context, district index, megacorps, gangs, NPCs](HELSINKI_WORLD.md)
+- [The City: history, authorities, district sheets, Physical/Cyber/Astral site layers](HELSINKI_CITY.md)
+- [Local Factions: SWN faction goals, Force/Cunning/Wealth assets and turn worksheet](HELSINKI_FACTIONS.md)
+- [Faces in the Street / Xenobestiary: ordinary people and four NHI encounter taxonomies](HELSINKI_FACES_XENOBESTIARY.md)
+
+These link to, and **never supersede**, Tomi's existing [Greater Helsinki government draft](GREATER_HELSINKI_2045.md) and [ZONES](ZONES.md). [Issue #1141](https://github.com/TomiToivio/NooPunk/issues/1141) tracks the gates.
