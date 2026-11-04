@@ -1,0 +1,938 @@
+{
+ "format": "noopunk.law_of_one.rules_inventory",
+ "version": 1,
+ "issue": 1124,
+ "phase": 1,
+ "status": "inventory_only_no_implementation",
+ "source": {
+  "primary": {
+   "title": "The Law of One (Ra Material), via lawofone.info",
+   "rights": "channeled text, copyright L/L Research 1982/1984/1998; paraphrased here, never reproduced at length; this repository is not redistributing it",
+   "note": "Citations are session.question numbers. The inventory paraphrases; short quotations are kept to the minimum needed to anchor a rule."
+  },
+  "secondary": [
+   "https://www.lawofone.info/synopsis.php",
+   "https://www.lawofone.info/glossary.php",
+   "https://www.lawofone.info/categories.php"
+  ]
+ },
+ "priorities": {
+  "core": "needed for the first playable version",
+  "optional": "useful, bounded, can ship later or not at all",
+  "narrative_only": "world understanding the game needs but must not mechanise",
+  "out_of_scope": "explicitly excluded from this rules module, with a reason"
+ },
+ "groups": {
+  "essential_core": "Catalyst/free will/integration, polarization, awareness, SMC, tags, NPC exit",
+  "fourth_density_activity": "Meditation, centres, healing, Time/Space, astral, MBSC, guidance, contact",
+  "optional_narrativist": "Archetypal contemplation, White Magic, group rites",
+  "setting_principle": "Cosmology and non-playable reference material"
+ },
+ "conventions": {
+  "density_vs_dimension": "Density is an evolutionary stage of the mind/body/spirit complex; dimension is a realm. Never interchangeable.",
+  "proposed_vs_source": "Every row's `faithful_meaning` is the source claim; every `minimal_procedure` is ours. The two must never be merged in play-testing reports.",
+  "scores_are_proposals": "0-10 scales and starting values are design proposals for playtest, not Ra numbers.",
+  "no_host_rules": "This module defines no attributes, skills, hit points, combat or equipment; those belong to a host game."
+ },
+ "rows": [
+  {
+   "id": "density-four-profile",
+   "concept": "Fourth-density character profile",
+   "group": "essential_core",
+   "priority": "core",
+   "source": [
+    "13.21",
+    "20.36",
+    "43.11",
+    "synopsis: Densities"
+   ],
+   "page": "https://www.lawofone.info/synopsis.php",
+   "faithful_meaning": "Fourth density is the density of love or understanding; its inhabitants come together with others of like mind in a social memory complex. Density is an evolutionary stage of the mind/body/spirit complex, not a place and not a dimension.",
+   "rules_needed": true,
+   "minimal_procedure": "A character sheet carries: density (fixed at 4 for PCs), Polarization 0-10 (start 5), Awareness 0-10 (start 1), SMC Connection 0-10 (start 0), Distortion tags, a Catalyst log, and seven energy-centre states. Density never rises during normal play.",
+   "state": "character: {density: 4, polarization: int 0..10, awareness: int 0..10, smc_connection: int 0..10, tags: [str], catalyst_log: [...], centers: {red..indigo: {...}}, violet: {register_only: true}}",
+   "interactions": "Polarization gates the NPC handoff; Awareness gates perception permissions; SMC Connection gates collective scenes; centres gate optional abilities.",
+   "non_goals": "No fifth-density progression, no multi-lifetime levelling, no density-as-dimension, no XP.",
+   "open_questions": "Are three 0-10 scores legible at a table, or should Awareness be a milestone list?"
+  },
+  {
+   "id": "catalyst-loop",
+   "concept": "Catalyst, free choice, consequence, integration",
+   "group": "essential_core",
+   "priority": "core",
+   "source": [
+    "glossary: Catalyst",
+    "15.12",
+    "40.10",
+    "synopsis: Distortion"
+   ],
+   "page": "https://www.lawofone.info/c/Balancing",
+   "faithful_meaning": "Catalyst is 'an agent that provokes change or action'. Ra describes balancing as using experience to the utmost and then applying the balancing exercises, with the key being the 'unstudied, spontaneous, and honest response' to experience.",
+   "rules_needed": true,
+   "minimal_procedure": "Scene procedure: (1) the Catalyst is named and its stakes stated; (2) the player chooses freely, and the choice is recorded; (3) consequences are narrated; (4) an optional reflection beat asks what was learned and what distortion it touched; (5) only then may a tag or score change, by table agreement.",
+   "state": "catalyst_entry: {scene, catalyst, stake, choice, consequence, reflected: bool, changed: [tag|score]}",
+   "interactions": "Integration writes into polarity/awareness/tags; the free-will rule constrains what another character may do to a PC.",
+   "non_goals": "No XP for good deeds, no morality farming, no score change on every roll, no random morality dice.",
+   "open_questions": "Should reflection be mandatory or opt-in when a scene was decisive?"
+  },
+  {
+   "id": "free-will-non-interference",
+   "concept": "Free Will / the Law of Confusion (first distortion)",
+   "group": "essential_core",
+   "priority": "core",
+   "source": [
+    "13.12",
+    "15.21",
+    "27.10",
+    "99.5",
+    "70.11",
+    "Service to Others category"
+   ],
+   "page": "https://www.lawofone.info/c/Service+to+Others",
+   "faithful_meaning": "The first distortion is free will, also called the Law of Confusion. Ra is explicit that the Higher Self does not manipulate its past selves: 'it protects when possible and guides when asked, but the force of free will is paramount'. A working that abridges another's free will loses its magical nature (the evangelist example).",
+   "rules_needed": true,
+   "minimal_procedure": "A standing table rule: no character, NPC or mechanic may decide another character's action, belief or feeling. Aid must be offered and accepted; a refused offer is a complete answer. The GM may present consequences but must not narrate a PC's choice.",
+   "state": "no new state; a table-rule flag on every social mechanic",
+   "interactions": "Bounds healing, SMC sharing, White Magic, Confederation contact, Higher Self guidance and every score change.",
+   "non_goals": "Not a dice modifier, not a 'consent stat', not a licence to ignore consequences.",
+   "open_questions": "How does the rule handle a player asking to be influenced — is prior consent enough?"
+  },
+  {
+   "id": "integration-reflection",
+   "concept": "Integration of catalyst",
+   "group": "essential_core",
+   "priority": "core",
+   "source": [
+    "15.12",
+    "40.10",
+    "synopsis: How to be of Service to Others"
+   ],
+   "page": "https://www.lawofone.info/c/Balancing",
+   "faithful_meaning": "Ra's balancing is retrospective: experience is used to the utmost and then balanced, and the violet-ray register is what an entity's totality looks like when it holds together.",
+   "rules_needed": true,
+   "minimal_procedure": "Between scenes, or at session end, a player may take an Integration beat: name the catalyst, name the distortion it exposed, and either accept it (tag stays) or work it (tag may soften). Only an Integration beat can move a score, and only by one step.",
+   "state": "integration: {session, catalyst_ref, distortion, accepted: bool, score_delta: {polarization|awareness|smc_connection: -1..+1}}",
+   "interactions": "The only writer to Polarization/Awareness except the depolarization track.",
+   "non_goals": "Not a journaling requirement; not a therapy exercise; not a reward for good prose.",
+   "open_questions": "Should the GM or the table ratify a score change, or the player alone?"
+  },
+  {
+   "id": "polarization-positive",
+   "concept": "Positive polarization (Service to Others)",
+   "group": "essential_core",
+   "priority": "core",
+   "source": [
+    "17.30",
+    "17.31",
+    "17.32",
+    "17.33",
+    "19.16",
+    "93.3",
+    "synopsis: The Two Paths"
+   ],
+   "page": "https://www.lawofone.info/c/Positive+Path",
+   "faithful_meaning": "Third density is where a path is chosen; at least 51% service to others suffices for the positive path, 95% self-service for the negative, and between them lies the sinkhole of indifference. Ra also says it is impossible and inappropriate to judge another being's polarity.",
+   "rules_needed": true,
+   "minimal_procedure": "Polarization 0-10 measures sustained StO orientation for the PC only. It rises through Integration beats when the choice was costly, informed and respectful of others' freedom; it does not rise from declared good intentions or from a single act.",
+   "state": "polarization: int 0..10 (start 5), with a short reasons log",
+   "interactions": "Feeds the negative-path handoff; never feeds a dice bonus.",
+   "non_goals": "Do not convert 51%/95% into a 0-10 formula; do not score NPCs' polarity; do not equate low polarization with mental illness.",
+   "open_questions": "Is 5 the right start for a newly awakened being, or should it be 3 to leave room to grow?"
+  },
+  {
+   "id": "depolarization-and-npc-handoff",
+   "concept": "Depolarization, warnings and the zero threshold",
+   "group": "essential_core",
+   "priority": "core",
+   "source": [
+    "17.33",
+    "19.19",
+    "issue #1124 (game abstraction)"
+   ],
+   "page": "https://www.lawofone.info/c/Negative+Path",
+   "faithful_meaning": "The 'sinkhole of indifference' names the region between the paths where an entity has not chosen. The 0-10 scale, the zero threshold and the NPC handoff are game abstractions, not numeric claims from the text.",
+   "rules_needed": true,
+   "minimal_procedure": "Three telegraphed stages: at 1-2 the GM must show a visible warning beat; at 1 the table holds a short review and the player may spend an Integration beat to recover; at 0 the character leaves PC control and becomes an NPC. The player keeps the right to retire the character instead.",
+   "state": "polarization, warning_stage: none|watch|review, handoff: {at, to_npc: bool}",
+   "interactions": "Any mechanic that can spend polarization must route through this ladder.",
+   "non_goals": "Not a surprise penalty, not a hidden track, not a mental-health state, not permadeath.",
+   "open_questions": "Should the review at 1 be automatic or opt-in by the player?"
+  },
+  {
+   "id": "distortion-tags",
+   "concept": "Distortion tags",
+   "group": "essential_core",
+   "priority": "core",
+   "source": [
+    "glossary: Distortion",
+    "15.9",
+    "15.12"
+   ],
+   "page": "https://www.lawofone.info/c/Balancing",
+   "faithful_meaning": "In Ra's terms a distortion is anything that moves away from undistorted unity, and can be toward love or toward ill health; 'distortion' does not mean bad or pathological.",
+   "rules_needed": true,
+   "minimal_procedure": "A character holds 3-6 plain-language tags (fear, attachment, humility, need for control, grief...). A tag is descriptive: it informs how the GM frames catalyst and may be invoked by either side for fictional positioning, never as a flat bonus.",
+   "state": "tags: [{name, note, since}], max 6; no numeric rating",
+   "interactions": "Catalyst names a tag; Integration may soften or resolve one; centres may explain a tag.",
+   "non_goals": "No sprawling skill tree, no tag-shopping, no tag that silently adds dice.",
+   "open_questions": "Is a tag rating (light/strong) worth the bookkeeping?"
+  },
+  {
+   "id": "awareness-scale",
+   "concept": "Fourth-density Awareness",
+   "group": "essential_core",
+   "priority": "core",
+   "source": [
+    "77.17",
+    "79.27",
+    "12.28",
+    "12.30",
+    "synopsis: The Veil"
+   ],
+   "page": "https://www.lawofone.info/c/Densities",
+   "faithful_meaning": "The veil separates conscious and subconscious mind in third density; fourth-density experience begins with an added awareness that third density cannot remember. Wanderers in particular carry forgetting and often a sense of alienation.",
+   "rules_needed": true,
+   "minimal_procedure": "Awareness 0-10 is recognition of a consciousness already present, not a power stat. Each band grants narrative permissions: 1-3 notice synchronicity; 4-6 perceive energy-centre states in others by invitation; 7-9 enter Time/Space deliberately; 10 opens the gateway to intelligent infinity, once, as a story climax.",
+   "state": "awareness: int 0..10 + milestone list",
+   "interactions": "Gates Time/Space and astral entry; never grants polarization and never prevents its loss.",
+   "non_goals": "Not a sanity score, not a power level, not a replacement for consent, no precognition.",
+   "open_questions": "Should high Awareness ever *raise* the cost of a choice, to keep it from being strictly good?"
+  },
+  {
+   "id": "smc-connection-individual",
+   "concept": "Individual SMC Connection",
+   "group": "essential_core",
+   "priority": "core",
+   "source": [
+    "20.36",
+    "48.6",
+    "Confederation of Planets category"
+   ],
+   "page": "https://www.lawofone.info/c/Confederation+of+Planets",
+   "faithful_meaning": "Fourth-density entities of like mind come together in a social memory complex; the Confederation describes its members as having each voluntarily placed their data in a central thought complex available to all.",
+   "rules_needed": true,
+   "minimal_procedure": "SMC Connection 0-10 measures one character's participation: 0 none, 1-3 receptive, 4-6 contributing, 7-9 co-resonant, 10 fully in the complex. Joining, sharing and leaving are explicit player choices, scene by scene, and leave a record.",
+   "state": "smc_connection: int 0..10, consents: {share_emotion, share_memory, coordinate_action, share_location}",
+   "interactions": "Feeds the collective sheet; telepathy is not membership, and membership is not consent to any given act.",
+   "non_goals": "Do not equate Connection with telepathy, loyalty, or group membership; no automatic mind-reading.",
+   "open_questions": "Is per-channel consent (emotion/memory/action) too fine-grained for play?"
+  },
+  {
+   "id": "smc-collective",
+   "concept": "Collective SMC development (group sheet)",
+   "group": "essential_core",
+   "priority": "core",
+   "source": [
+    "20.36",
+    "48.6",
+    "Confederation of Planets category"
+   ],
+   "page": "https://www.lawofone.info/c/Confederation+of+Planets",
+   "faithful_meaning": "A social memory complex is a group that shares a single memory and identity without erasing its members; Ra describes the Confederation forming exactly this way, voluntarily.",
+   "rules_needed": true,
+   "minimal_procedure": "A one-page group sheet: shared purpose, shared memory (facts the group holds as one), trust 0-5, boundaries list, and 4 stages — Gathering, Resonating, Remembering, One Voice. Rupture and reconciliation are explicit procedures, and any member may withdraw without losing their own connection score.",
+   "state": "smc_sheet: {name, purpose, members[], trust 0-5, shared_memory[], boundaries[], stage 0..3, ruptures[]}",
+   "interactions": "Distinct from individual Connection; feeds scenario outcomes, never replaces a character's own state.",
+   "non_goals": "No assimilation, no hive-mind override of a PC, no collective score that can spend an individual's polarization.",
+   "open_questions": "Can a group lose its stage? What does a failed One Voice attempt do?"
+  },
+  {
+   "id": "negative-path-as-npc",
+   "concept": "The negative path is not a PC track",
+   "group": "essential_core",
+   "priority": "core",
+   "source": [
+    "19.19",
+    "7.15",
+    "93.3"
+   ],
+   "page": "https://www.lawofone.info/c/Negative+Path",
+   "faithful_meaning": "The two poles of consciousness are service to others and service to self; Ra says judging another's polarity is neither possible nor appropriate.",
+   "rules_needed": true,
+   "minimal_procedure": "StS characters exist as GM-run NPCs with stated intentions. They are never modelled with a mirror score, and their actions are not scored by the game.",
+   "state": "npc: {intent, methods, leverage} only",
+   "interactions": "Provides antagonists, temptation and catalyst without tactical combat rules.",
+   "non_goals": "No mirror StS progression track, no 'evil points', no equating StS with illness or disability.",
+   "open_questions": "How much StS screen time does a positive-path campaign need before it stops being one?"
+  },
+  {
+   "id": "score-change-pacing",
+   "concept": "When a score may change",
+   "group": "essential_core",
+   "priority": "core",
+   "source": [
+    "40.10",
+    "15.12",
+    "issue #1124 §2"
+   ],
+   "page": "https://www.lawofone.info/c/Balancing",
+   "faithful_meaning": "Ra's emphasis is on sustained pattern and honest response rather than on discrete tallies of acts; balancing is a practice, not a transaction.",
+   "rules_needed": true,
+   "minimal_procedure": "One step per scene at most; the reasons are written down; a player may contest a change and the table decides; no mechanic may force a change without a preceding warning beat.",
+   "state": "score_log: [{scene, score, delta, reason, contested: bool}]",
+   "interactions": "Applies to Polarization, Awareness and SMC Connection alike.",
+   "non_goals": "No automatic change from a roll, no change to punish a rules question, no hidden adjustments.",
+   "open_questions": "Who ratifies: GM, table, or player-with-notice?"
+  },
+  {
+   "id": "energy-centres-seven",
+   "concept": "The seven energy centres as character state",
+   "group": "fourth_density_activity",
+   "priority": "core",
+   "source": [
+    "15.9",
+    "15.12",
+    "38.5",
+    "41.x (rotational speed and violet imbalance)",
+    "glossary: Malkuth, solar plexus"
+   ],
+   "page": "https://www.lawofone.info/c/Energy+Centers",
+   "faithful_meaning": "Ra describes the mind/body/spirit complex as a web of energy centres: red (Malkuth/earth), orange (emotional/self), yellow (ego/solar plexus), green (heart/universal love), blue (communication), indigo (pineal). Each may be blocked, and balancing is the work of understanding and accepting them. In a balanced entity 'each energy center is balanced and functioning brightly and fully'.",
+   "rules_needed": true,
+   "minimal_procedure": "Six usable centres (red, orange, yellow, green, blue, indigo), each a single state word — blocked / strained / open / bright — rather than a number, to avoid seven currencies. A centre is described in one line of fiction; only green (love/compassion) and blue (communication) may grant a bounded permission when bright.",
+   "state": "centres: {red|orange|yellow|green|blue|indigo: 'blocked'|'strained'|'open'|'bright'}",
+   "interactions": "Explains and can soften a Distortion tag; bright indigo gates Time/Space entry; bright green gates healing and ectoplasm.",
+   "non_goals": "Do not make centres numeric pools; do not let centre states grant density; do not model blockage as illness.",
+   "open_questions": "Is a four-state word enough, or does play want a 0-3 number that maps 1:1 to the words?"
+  },
+  {
+   "id": "violet-ray-register",
+   "concept": "Violet ray: a register, not a trainable stat",
+   "group": "fourth_density_activity",
+   "priority": "core",
+   "source": [
+    "38.5",
+    "40.x (brilliance not considered above violet-ray balance)",
+    "Harvest category (violet-ray emanation)"
+   ],
+   "page": "https://www.lawofone.info/c/Energy+Centers",
+   "faithful_meaning": "Ra describes the violet ray as the unique spectrograph of the whole entity and as the surrounding register of the entire system; brilliance of the centres is explicitly 'not considered above the balanced aspect or violet-ray manifestation' when judging harvestability. The violet ray is therefore not balanced or activated like the others.",
+   "rules_needed": true,
+   "minimal_procedure": "Violet is *derived*: one line computed from the six centres and the current tags, shown but never spent, raised or trained. It is the summary a healer reads and the register the harvest scene looks at.",
+   "state": "violet: {register: str, derived_from: [centres, tags]}, read-only",
+   "interactions": "Read by healing and harvest scenes; cannot be a prerequisite for any ability.",
+   "non_goals": "No violet stat, no violet XP, no 'unlock violet' step, no violet-based power tree.",
+   "open_questions": "Should the derived register ever be a *penalty* signal (a visible warning of depolarization)?"
+  },
+  {
+   "id": "blockage-and-restoration",
+   "concept": "Blockage, strain and restoration",
+   "group": "fourth_density_activity",
+   "priority": "core",
+   "source": [
+    "15.9",
+    "15.10",
+    "15.12"
+   ],
+   "page": "https://www.lawofone.info/c/Energy+Centers",
+   "faithful_meaning": "Ra names blockages per centre and their typical manifestations (eccentricity, power and manipulation, difficulty expressing universal love, difficulty accepting communication, unworthiness at the indigo centre), and says those blocked in the first three centres have continuing difficulty in further seeking.",
+   "rules_needed": true,
+   "minimal_procedure": "A centre becomes blocked or strained through play, with the manifestation named in fiction. Restoration is a scene of honest response or a meditation/balancing beat, not a purchase. A blocked low centre suppresses the *permission* of a higher bright one; it never removes a character's agency.",
+   "state": "centre state + one-line manifestation + cause",
+   "interactions": "Explains tags; gates permissions; never gates a player's choice.",
+   "non_goals": "No hit-point model, no medical claims, no random blockage, no permanent loss without a review beat.",
+   "open_questions": "Should a blockage cost anything mechanical at all, or only permissions?"
+  },
+  {
+   "id": "meditation",
+   "concept": "Meditation",
+   "group": "fourth_density_activity",
+   "priority": "optional",
+   "source": [
+    "17.40",
+    "49.7",
+    "43.31",
+    "42.13"
+   ],
+   "page": "https://www.lawofone.info/c/Meditation",
+   "faithful_meaning": "Asked for a best way or a recommended technique, Ra answers 'No' twice; asked about a special room, Ra calls a Faraday cage 'a gadget' and commends a place apart from distractions used for no other purpose.",
+   "rules_needed": true,
+   "minimal_procedure": "A meditation beat: the player states what they are seeking (not a technique), and the GM may offer a symbol, a quieting, or nothing at all. It can open an Integration beat or clear a strained centre. It never produces a reliable answer to a question.",
+   "state": "meditation: {scene, intent, outcome: silence|symbol|clearing}",
+   "interactions": "Feeds Integration and centre restoration; may precede Higher Self contact.",
+   "non_goals": "No optimal technique, no meditation dice, no resource regeneration on a timer.",
+   "open_questions": "Should an empty result be common enough to be the default, and how does the table take that?"
+  },
+  {
+   "id": "balancing-practice",
+   "concept": "Balancing exercises",
+   "group": "fourth_density_activity",
+   "priority": "optional",
+   "source": [
+    "15.9",
+    "15.12",
+    "40.10"
+   ],
+   "page": "https://www.lawofone.info/c/Balancing",
+   "faithful_meaning": "Balancing is the retrospective work of understanding and accepting each energy centre; the key is the 'unstudied, spontaneous, and honest response' to experience.",
+   "rules_needed": true,
+   "minimal_procedure": "After a catalyst the player may balance a centre by describing its opposite and accepting both sides; on the table's agreement the centre improves one step.",
+   "state": "balancing: {scene, centre, opposite_described: bool}",
+   "interactions": "Alternative to meditation for restoration; both feed Integration.",
+   "non_goals": "Not a repeatable daily buff; no balancing for someone else without consent.",
+   "open_questions": "Can another character guide a balancing, and does that violate free will if unasked?"
+  },
+  {
+   "id": "prana-energy",
+   "concept": "Prana / vital energy",
+   "group": "fourth_density_activity",
+   "priority": "optional",
+   "source": [
+    "glossary: Prana",
+    "glossary: Élan vital",
+    "issue #1124 §E"
+   ],
+   "page": "https://www.lawofone.info/glossary.php",
+   "faithful_meaning": "The glossary defines prana as 'the life force or vital energy' — a definition, not a point pool. Ra does not define an RPG-style Prana reserve.",
+   "rules_needed": true,
+   "minimal_procedure": "Three tags instead of a pool: ready / strained / depleted. Deliberate PSI, healing or a long projection strains prana; meditation or a night's rest restores it. Depleted prana forbids further workings until restored; it never harms the character.",
+   "state": "prana: 'ready'|'strained'|'depleted'",
+   "interactions": "Costs for healing, projection, White Magic and sustained SMC work.",
+   "non_goals": "Do not call it Ra's numbers; no numeric pool by default; no farming by waiting.",
+   "open_questions": "Do PSI and White Magic draw on the same prana, given Ra treats them as related but distinct practices?"
+  },
+  {
+   "id": "healing-invitation",
+   "concept": "Healing and energy transfer",
+   "group": "fourth_density_activity",
+   "priority": "optional",
+   "source": [
+    "Healing category",
+    "42.18",
+    "15.12 (green ray)"
+   ],
+   "page": "https://www.lawofone.info/c/Healing",
+   "faithful_meaning": "Ra: healing occurs when a mind/body/spirit complex realises, deep within itself, the Law of One — the healer offers a channel, and the recipient must open to it. Ra also notes a green-ray centre can be 'overly open' through an intensive desire to serve, at cost to the self.",
+   "rules_needed": true,
+   "minimal_procedure": "The healer states an intention and offers; the recipient may accept, decline or set terms. On acceptance the scene may clear a strained centre, ease a tag, or set conditions for recovery. No guaranteed cure, no roll that overrides the recipient's choice.",
+   "state": "healing: {healer, recipient, consent, intention, outcome}",
+   "interactions": "Bright green centre; spends prana; can restore a blocked centre; the self-spending risk is a real cost.",
+   "non_goals": "No hit points, no medicine, no clinical claims, no healing without consent.",
+   "open_questions": "How should the 'healer spends themself' risk be represented without punishing kindness?"
+  },
+  {
+   "id": "teach-learning",
+   "concept": "Teach / learning",
+   "group": "fourth_density_activity",
+   "priority": "optional",
+   "source": [
+    "Teach/Learning category",
+    "Archetypical Mind category (teaching via intuition)"
+   ],
+   "page": "https://www.lawofone.info/c/Teach/Learning",
+   "faithful_meaning": "Ra frames teaching as the same act as learning, and describes teaching as arriving through intuition rather than instruction.",
+   "rules_needed": true,
+   "minimal_procedure": "A teaching scene: the teacher states what they are trying to convey, the learner states what they are ready to hear, and the outcome is a new tag, a cleared distortion, or nothing. A lesson that is refused is still learned by the teacher.",
+   "state": "teaching: {teacher, learner, content, learner_ready: bool, outcome}",
+   "interactions": "Moves tags; may open an Awareness permission; symmetric in effect.",
+   "non_goals": "No XP transfer, no skill training table, no lecturing bonus.",
+   "open_questions": "Should a teacher gain Awareness when the learner refuses?"
+  },
+  {
+   "id": "higher-self-scripted",
+   "concept": "Higher Self guidance (scripted only)",
+   "group": "fourth_density_activity",
+   "priority": "core",
+   "source": [
+    "70.8",
+    "70.9",
+    "70.10",
+    "70.11",
+    "70.12"
+   ],
+   "page": "https://www.lawofone.info/c/Higher+Self",
+   "faithful_meaning": "The Higher Self is the entity of mid-sixth density offering this service to its own past self; it does not manipulate: 'it protects when possible and guides when asked, but the force of free will is paramount'.",
+   "rules_needed": true,
+   "minimal_procedure": "Guidance arrives only when the player asks (a meditation or a direct plea) or when the GM spends a prepared story beat. It is a symbol, a dream, a coincidence — never a fact, a map or a prediction. The GM must leave the interpretation to the player.",
+   "state": "guidance: {scene, sought_by_player: bool, form: symbol|dream|coincidence, interpreted_as}",
+   "interactions": "Follows the free-will rule; can open an Integration beat; cannot be invoked as a skill.",
+   "non_goals": "No summoned NPC, no oracle, no reliable future knowledge, no player-triggered ability roll.",
+   "open_questions": "May the GM use guidance to save a character from a choice the table regrets?"
+  },
+  {
+   "id": "precognition-scripted",
+   "concept": "Precognition (scripted only)",
+   "group": "fourth_density_activity",
+   "priority": "core",
+   "source": [
+    "70.11",
+    "issue #1124 §7"
+   ],
+   "page": "https://www.lawofone.info/c/Higher+Self",
+   "faithful_meaning": "Ra explicitly denies that the Higher Self manipulates its past selves; any future knowledge in the material is framed as guidance, not as a forecast a character can operate.",
+   "rules_needed": true,
+   "minimal_procedure": "Precognition exists only as a scripted story event: the GM shows a fragment, the player decides what it means, and the fragment must remain ambiguous until it resolves. No mechanic may roll for it, buy it or improve it.",
+   "state": "event: {scene, fragment, resolved_as} only",
+   "interactions": "Bounded by the free-will rule; cannot be used to bypass a scene.",
+   "non_goals": "No precognition skill, no certainty, no repeatable divination, no advantage in resolution.",
+   "open_questions": "How often can a scripted fragment appear before it becomes a mechanic in disguise?"
+  },
+  {
+   "id": "service-dilemmas",
+   "concept": "Service dilemmas and the limits of help",
+   "group": "fourth_density_activity",
+   "priority": "core",
+   "source": [
+    "17.30",
+    "Service to Others category (starving entity; evangelist working)"
+   ],
+   "page": "https://www.lawofone.info/c/Service+to+Others",
+   "faithful_meaning": "Ra: the best service is the constant attempt to share the love of the Creator as known to the inner self, requiring self-knowledge and opening to the other-self without hesitation; and to a starving entity 'the appropriate response is the feeding of the body'. A working that abridges free will is blocked.",
+   "rules_needed": true,
+   "minimal_procedure": "A dilemma frame with three explicit questions: what does this other-self actually need; whose choice is this; what does helping cost the helper. Interventions that override a free choice are permitted in play, but they cost polarization or a tag, and the table names why.",
+   "state": "dilemma: {other_self_need, whose_choice, helper_cost, chosen_intervention, table_note}",
+   "interactions": "The main writer to Polarization; tests the free-will rule against real urgency.",
+   "non_goals": "No 'good act' menu, no alignment points, no automatic reward for self-sacrifice.",
+   "open_questions": "How do you represent helping someone who cannot consent (unconscious, coerced, a child)?"
+  },
+  {
+   "id": "time-space-presence",
+   "concept": "Time/Space as a playable realm",
+   "group": "fourth_density_activity",
+   "priority": "core",
+   "source": [
+    "70.14",
+    "70.17",
+    "70.22",
+    "glossary: Time/space",
+    "glossary: Space/time"
+   ],
+   "page": "https://www.lawofone.info/c/Time/Space",
+   "faithful_meaning": "Ra says time/space is 'no more homogenous than space/time. It is as complex and complete a system of illusions, dances, and pattern as is space/time and has as structured a system of what you may call natural laws.' The glossary calls it the environment of the inner planes and unseen worlds, reciprocal to space/time.",
+   "rules_needed": true,
+   "minimal_procedure": "Time/Space is a second scene-mode with its own rules: entry by deep meditation or sleep (or astrally), perception that is symbolic rather than spatial, no physical action, communication by intent, and a return cost. Duration is measured in scenes, not distance, and returning is not automatic.",
+   "state": "mode: 'space_time'|'time_space', entry: {method, anchor, depth}, return: {difficulty, anchor_intact}",
+   "interactions": "Carries astral projection, healing review, higher-self contact and SMC scenes; distinct from density.",
+   "non_goals": "Not a void, not teleportation, not a second map, no travel-speed maths, no physics simulation.",
+   "open_questions": "Is 'depth' better as a tag than a number? What anchors a traveller?"
+  },
+  {
+   "id": "astral-projection",
+   "concept": "Astral projection and the astral body",
+   "group": "fourth_density_activity",
+   "priority": "core",
+   "source": [
+    "glossary: Ka",
+    "glossary: Ectoplasm",
+    "glossary: Devachanic",
+    "issue #1124 §C"
+   ],
+   "page": "https://www.lawofone.info/glossary.php",
+   "faithful_meaning": "The glossary ties the astral to the green-ray body (ectoplasm is 'a manifestation of the astral body or green-ray body') and names the ka as the form-maker or indigo-ray body; the devachanic is 'the plane above the astral, corresponding to blue ray'.",
+   "rules_needed": true,
+   "minimal_procedure": "Projection procedure: (1) settle and state intent, spending prana if forced; (2) leave a link to the body, which is the vulnerability; (3) travel in Time/Space by intent and symbol; (4) meet and speak, but not touch, unless manifesting; (5) return — a failed return is a scene of its own, not a death. Projection is public and institutional, part of ordinary life.",
+   "state": "projection: {body_location, link_integrity, form: astral|ectoplasmic, duration_scenes, prana}",
+   "interactions": "Requires Time/Space; bright blue/indigo centres; ectoplasm; SMC scenes; healing review.",
+   "non_goals": "No combat layer, no separate character sheet, no free scouting of the physical world, no 'Cyber' layer.",
+   "open_questions": "Should link integrity be a number or a countdown of scenes?"
+  },
+  {
+   "id": "ectoplasm-manifestation",
+   "concept": "Ectoplasm / astral manifestation",
+   "group": "fourth_density_activity",
+   "priority": "optional",
+   "source": [
+    "glossary: Ectoplasm",
+    "Healing category (green-ray over-openness)"
+   ],
+   "page": "https://www.lawofone.info/glossary.php",
+   "faithful_meaning": "Ectoplasm is a manifestation of the astral or green-ray body; Ra's healing material ties the green ray to the adept's channel.",
+   "rules_needed": true,
+   "minimal_procedure": "With a bright green centre and a settled link, an astral traveller may manifest enough to be seen or to speak, at a cost: the manifestation is legible to anyone present, and it spends prana. It cannot move objects or harm.",
+   "state": "manifestation: {visible: bool, audible: bool, prana_cost}",
+   "interactions": "A bridge between the astral and physical layers without merging them.",
+   "non_goals": "No telekinesis, no combat, no physical immunity, no free invisibility.",
+   "open_questions": "Who can perceive a manifestation without training — everyone, or the aware?"
+  },
+  {
+   "id": "mind-body-spirit-complex",
+   "concept": "Mind / Body / Spirit as one complex",
+   "group": "fourth_density_activity",
+   "priority": "core",
+   "source": [
+    "glossary: Mind/body/spirit complex",
+    "15.9",
+    "38.5",
+    "issue #1124 §D"
+   ],
+   "page": "https://www.lawofone.info/c/Definitions",
+   "faithful_meaning": "A mind/body/spirit complex is a self-aware incarnated being after the veiling; Ra treats the three as aspects of one complex, and speaks of coloured bodies distinguished from the ray centres.",
+   "rules_needed": true,
+   "minimal_procedure": "The sheet has three columns — mind, body, spirit — that hold *state*, not separate pools: mind carries tags and attention, body carries the physical situation and prana, spirit carries awareness and the violet register. Any mechanic names which column it touches.",
+   "state": "complex: {mind: {...}, body: {...}, spirit: {...}}",
+   "interactions": "Everything else on the sheet belongs to one column; this is the ontology, not a fourth score.",
+   "non_goals": "Not three classes, not three health pools, not a clinical model; the Luhmann analogy (psychic / living / social) is a design lens only.",
+   "open_questions": "Does the body column need anything beyond prana and fiction, given there are no hit points?"
+  },
+  {
+   "id": "veil-and-forgetting",
+   "concept": "Veil, forgetting and glimpses",
+   "group": "fourth_density_activity",
+   "priority": "optional",
+   "source": [
+    "glossary: Veil",
+    "77.17",
+    "79.27",
+    "12.28",
+    "12.30"
+   ],
+   "page": "https://www.lawofone.info/synopsis.php",
+   "faithful_meaning": "The veil is the permeable separation between conscious and subconscious mind, introduced by this Logos to intensify seeking; fourth-density experience begins with an awareness third density cannot remember, and Wanderers in particular forget.",
+   "rules_needed": true,
+   "minimal_procedure": "Occasional glimpses: a dream fragment, a symbol, a moment of recognition, a memory that is not yours. Each is a one-line scene permission granted by the GM or bought with a meditation beat. Nothing is guaranteed and nothing is explained.",
+   "state": "glimpse: {scene, kind: dream|symbol|memory, content, interpreted_as}",
+   "interactions": "Feeds Awareness and Wanderer backgrounds; never substitutes for a scene.",
+   "non_goals": "No memory-point economy, no player-authored past, no reliable recall of another life.",
+   "open_questions": "Should a Wanderer get more glimpses, or the same number with more resonance?"
+  },
+  {
+   "id": "wanderer-background",
+   "concept": "Wanderer background",
+   "group": "fourth_density_activity",
+   "priority": "optional",
+   "source": [
+    "12.26",
+    "12.27",
+    "12.28",
+    "12.30",
+    "12.31"
+   ],
+   "page": "https://www.lawofone.info/c/Wanderers",
+   "faithful_meaning": "Wanderers are 'Brothers and Sisters of Sorrow' from elsewhere, drawn by the call; most are sixth density; the challenge is that they forget the mission and become karmically involved, and they commonly carry alienation or bodily difficulty from the mismatch with third density.",
+   "rules_needed": true,
+   "minimal_procedure": "A Wanderer tag with three parts: a mission (stated by the player), a forgetting (what they no longer know), and a cost (an alienation or body detail that is fiction, not a stat penalty). It grants glimpses, not powers.",
+   "state": "wanderer: {mission, forgetting, cost_tag}",
+   "interactions": "Colours Veil glimpses and Higher Self contact; does not change density or scores.",
+   "non_goals": "No free powers, no superior density, no exemption from the free-will rule, no clinical framing of the cost.",
+   "open_questions": "Should the mission be player-chosen, GM-chosen, or discovered in play?"
+  },
+  {
+   "id": "confederation-contact",
+   "concept": "Confederation contact and calls for aid",
+   "group": "fourth_density_activity",
+   "priority": "optional",
+   "source": [
+    "21.15",
+    "21.16",
+    "21.17",
+    "Confederation of Planets category"
+   ],
+   "page": "https://www.lawofone.info/c/Confederation+of+Planets",
+   "faithful_meaning": "The Confederation is roughly fifty-three civilizations and five hundred planetary complexes, including beings from Earth who have passed beyond third density; its members send love and light to those who call, and they do not intervene uninvited.",
+   "rules_needed": true,
+   "minimal_procedure": "A call is a scene in which a character asks, sincerely, for aid. The response may be a presence, a symbol, a refusal, or silence — and the GM states which interpretation is the characters' and which is the world's. No summon, no bargaining table, no stat blocks.",
+   "state": "contact: {caller, sincerity, response_form, interpreted_by}",
+   "interactions": "Bounded by free will; overlaps Higher Self guidance and Time/Space; feeds SMC scenes.",
+   "non_goals": "No alien combat, no technology trade, no automatic rescue, no guaranteed answer.",
+   "open_questions": "What makes a call sincere in mechanical terms, if anything?"
+  },
+  {
+   "id": "archetypal-contemplation",
+   "concept": "Archetypical Mind as contemplation",
+   "group": "optional_narrativist",
+   "priority": "optional",
+   "source": [
+    "Archetypical Mind category",
+    "glossary: Matrix, Potentiator, Significator"
+   ],
+   "page": "https://www.lawofone.info/c/Archetypical+Mind",
+   "faithful_meaning": "The archetypes are presented as concept complexes that teach via intuition through a hierarchy of informers: subconscious, group or planetary mind, guides, higher self, archetypical mind, cosmic mind.",
+   "rules_needed": true,
+   "minimal_procedure": "Optional card or prompt draws: the player names a situation, draws an archetype (Matrix, Potentiator, Significator, or a named figure), and answers one question from that stance. The answer is fiction, never a check.",
+   "state": "contemplation: {situation, archetype, question, answer}",
+   "interactions": "Can open an Integration beat; can be used with a tarot-like deck; no combat or class use.",
+   "non_goals": "No class system, no divination mechanic, no stat bonuses, no 'archetype powers'.",
+   "open_questions": "Is a deck required, or is a prompt list enough?"
+  },
+  {
+   "id": "white-magic-ritual",
+   "concept": "White Magic: a bounded ritual procedure",
+   "group": "optional_narrativist",
+   "priority": "optional",
+   "source": [
+    "White Magic category",
+    "41.2",
+    "42.13",
+    "42.18",
+    "glossary: Lesser Banishing Ritual of the Pentagram"
+   ],
+   "page": "https://www.lawofone.info/c/White+Magic",
+   "faithful_meaning": "Ra approves a banishing ritual as preparation for a working, describes visualisation of an inspiring shape or colour as the heart of the religious path of visualisation, and says of positively polarised entities that 'it is not well ... to work singly'.",
+   "rules_needed": true,
+   "minimal_procedure": "A ritual has four stated elements — intention, preparation, focus, and consequence — and one outcome appropriate to its scale. Its reach is bounded by free will: it cannot compel a person, and a working that abridges choice simply does not take. Extraordinary effects are GM adjudication, not a spell list.",
+   "state": "ritual: {intention, preparation, focus, participants, prana_cost, outcome, free_will_respected}",
+   "interactions": "Spends prana; benefits from a bright blue/indigo centre; group rituals draw on SMC trust.",
+   "non_goals": "No spell catalogue, no damage spells, no magical duels, no guarantee, no solo god-mode.",
+   "open_questions": "Which rituals are worth writing as examples, and how many is too many?"
+  },
+  {
+   "id": "group-rite",
+   "concept": "Collective working",
+   "group": "optional_narrativist",
+   "priority": "optional",
+   "source": [
+    "42.18",
+    "Confederation of Planets category (central thought complex)"
+   ],
+   "page": "https://www.lawofone.info/c/White+Magic",
+   "faithful_meaning": "Ra's remark that positively polarised entities should not work singly, and the Confederation's voluntary shared thought complex, both point at collective practice as the norm.",
+   "rules_needed": true,
+   "minimal_procedure": "A group ritual requires each participant's stated consent and one shared intention; the group sheet's trust sets the ceiling on what may be attempted, and a member may withdraw mid-working.",
+   "state": "group_rite: {participants[], consent_each: bool, intention, trust_ceiling, outcome}",
+   "interactions": "Bridges White Magic and the SMC sheet without merging them.",
+   "non_goals": "No pooling of individual scores, no forced participation, no mass mind control.",
+   "open_questions": "Does a group rite need a failure mode that is more interesting than 'nothing happens'?"
+  },
+  {
+   "id": "one-infinite-creator",
+   "concept": "The One Infinite Creator / Intelligent Infinity",
+   "group": "setting_principle",
+   "priority": "narrative_only",
+   "source": [
+    "4.20",
+    "28.1",
+    "13.13",
+    "synopsis: The One Infinite Creator"
+   ],
+   "page": "https://www.lawofone.info/synopsis.php",
+   "faithful_meaning": "There is only one, and that one is the Infinite Creator, also called Infinite Intelligence; each portion of the creation paradoxically contains the whole.",
+   "rules_needed": false,
+   "minimal_procedure": "Narrative framing only: the axiom behind every character's seeking; never a power meter.",
+   "state": "",
+   "interactions": "Colours language; the gateway scene is the one bounded exception.",
+   "non_goals": "No 'Creator favour' stat, no divine intervention dice, no cosmology subsystem.",
+   "open_questions": "Should a one-off 'gateway to intelligent infinity' scene be written as a climax, or left to the table?"
+  },
+  {
+   "id": "illusion",
+   "concept": "Illusion and manifestation",
+   "group": "setting_principle",
+   "priority": "narrative_only",
+   "source": [
+    "1.6",
+    "106.23",
+    "27.17",
+    "synopsis: Illusion"
+   ],
+   "page": "https://www.lawofone.info/synopsis.php",
+   "faithful_meaning": "All manifestation, the appearance of many-ness, is an illusion engineered so the Creator may know Itself.",
+   "rules_needed": false,
+   "minimal_procedure": "Narrative permission for symbolic scenes; no illusion magic subsystem.",
+   "state": "",
+   "interactions": "Frames Time/Space and archetypal scenes.",
+   "non_goals": "No illusion spells, no reality-bending mechanics.",
+   "open_questions": ""
+  },
+  {
+   "id": "logos-second-distortion",
+   "concept": "Logos / Love (second distortion)",
+   "group": "setting_principle",
+   "priority": "narrative_only",
+   "source": [
+    "15.21",
+    "27.12",
+    "28.7",
+    "13.13"
+   ],
+   "page": "https://www.lawofone.info/synopsis.php",
+   "faithful_meaning": "The second distortion is Love or the Logos, the creative principle that forms intelligent energy from the potential of intelligent infinity; a Logos may create a star system or a galaxy, each with its own natural laws.",
+   "rules_needed": false,
+   "minimal_procedure": "Setting explanation only; Logos is not a character's compassion and not a polarization bonus.",
+   "state": "",
+   "interactions": "Explains why other Logoi's archetypes are 'murky'.",
+   "non_goals": "No 'Logos bonus', no cosmic-scale play.",
+   "open_questions": ""
+  },
+  {
+   "id": "light-third-distortion",
+   "concept": "Light (third distortion)",
+   "group": "setting_principle",
+   "priority": "narrative_only",
+   "source": [
+    "15.21",
+    "78.9",
+    "13.9",
+    "13.17"
+   ],
+   "page": "https://www.lawofone.info/synopsis.php",
+   "faithful_meaning": "The third distortion is light, the first manifestation visible to the eye, intelligent and the building block of matter, with an upward-spiralling characteristic that impels evolution.",
+   "rules_needed": false,
+   "minimal_procedure": "Narrative colour; no light-magic system.",
+   "state": "",
+   "interactions": "Background for healing's 'light' language.",
+   "non_goals": "No photon stats, no light-based powers.",
+   "open_questions": ""
+  },
+  {
+   "id": "sub-logoi",
+   "concept": "Sub-Logoi and sub-sub-Logoi",
+   "group": "setting_principle",
+   "priority": "narrative_only",
+   "source": [
+    "28.9",
+    "29.1",
+    "29.2",
+    "29.7",
+    "81.33",
+    "91.3"
+   ],
+   "page": "https://www.lawofone.info/synopsis.php",
+   "faithful_meaning": "Our galaxy was created by a single Logos; our sun is a sub-Logos that individualises the natural laws and refines the cosmic mind into an archetypical mind; humans are sub-sub-Logoi.",
+   "rules_needed": false,
+   "minimal_procedure": "Setting explanation for why this world's archetypes exist at all.",
+   "state": "",
+   "interactions": "Grounds the Archetypical Mind row.",
+   "non_goals": "No nested-creation generator.",
+   "open_questions": ""
+  },
+  {
+   "id": "densities-seven",
+   "concept": "The seven densities and the octave",
+   "group": "setting_principle",
+   "priority": "narrative_only",
+   "source": [
+    "16.51",
+    "28.15",
+    "28.16",
+    "78.15",
+    "13.16",
+    "9.13",
+    "76.13",
+    "76.16",
+    "6.15",
+    "43.11",
+    "25.11",
+    "43.14",
+    "33.20",
+    "16.22",
+    "52.12"
+   ],
+   "page": "https://www.lawofone.info/synopsis.php",
+   "faithful_meaning": "The creation has seven densities; the eighth is the first of the next octave. Third density is where the path is chosen; fourth is love/understanding; fifth is light/wisdom; sixth is unity; seventh is the gateway.",
+   "rules_needed": false,
+   "minimal_procedure": "Context for the campaign and for NPCs. PCs remain fourth density; progression beyond is not a rule.",
+   "state": "",
+   "interactions": "Explains the fixed PC density and the NPC ranges.",
+   "non_goals": "No density advancement track, no fifth-density rules, no density-as-dimension.",
+   "open_questions": ""
+  },
+  {
+   "id": "two-paths-cosmology",
+   "concept": "The two paths as cosmology",
+   "group": "setting_principle",
+   "priority": "narrative_only",
+   "source": [
+    "19.19",
+    "7.15",
+    "16.31"
+   ],
+   "page": "https://www.lawofone.info/c/The+Two+Paths",
+   "faithful_meaning": "Consciousness has two poles, service to others and service to self, and the goal of third density is to choose one; Ra notes a positive society finds collective work easier.",
+   "rules_needed": false,
+   "minimal_procedure": "Setting premise; the playable rules are the polarization rows.",
+   "state": "",
+   "interactions": "Frames the NPC-only StS cast.",
+   "non_goals": "No second playable path.",
+   "open_questions": ""
+  },
+  {
+   "id": "third-density-percentages",
+   "concept": "The 51% / 95% figures",
+   "group": "setting_principle",
+   "priority": "out_of_scope",
+   "source": [
+    "17.31",
+    "17.32",
+    "47.3"
+   ],
+   "page": "https://www.lawofone.info/synopsis.php",
+   "faithful_meaning": "Ra gives 51% service to others and 95% service to self as harvest thresholds for third density.",
+   "rules_needed": false,
+   "minimal_procedure": "Cited as context only; explicitly not converted into the 0-10 fourth-density scale.",
+   "state": "",
+   "interactions": "Colours Harvest scenes.",
+   "non_goals": "No arithmetic mapping from percentages to the PC scale; no harvest calculator.",
+   "open_questions": "If a table wants to model third-density NPCs' harvestability, does that need a rule at all?"
+  },
+  {
+   "id": "harvest-context",
+   "concept": "Harvest and cycles",
+   "group": "setting_principle",
+   "priority": "out_of_scope",
+   "source": [
+    "17.29",
+    "9.4",
+    "40.8",
+    "17.1",
+    "62.29",
+    "63.9",
+    "Harvest category"
+   ],
+   "page": "https://www.lawofone.info/c/Harvest",
+   "faithful_meaning": "Harvest is the graduation of entities whose lessons are complete; Ra gives 2011 as a probable nexus but declines confidence, and describes a 100-700 year transition it calls uncertain.",
+   "rules_needed": false,
+   "minimal_procedure": "Campaign backdrop and optional scene frames; no dates, no advancement for PCs already in fourth density.",
+   "state": "",
+   "interactions": "The violet register is what such a scene reads.",
+   "non_goals": "No real-world date, no harvest percentage for anyone, no forced plot.",
+   "open_questions": "What is the fourth-density equivalent of a harvest scene, if any?"
+  },
+  {
+   "id": "veiling-cosmology",
+   "concept": "Why the veil exists",
+   "group": "setting_principle",
+   "priority": "narrative_only",
+   "source": [
+    "77.17",
+    "79.27",
+    "93.4"
+   ],
+   "page": "https://www.lawofone.info/synopsis.php",
+   "faithful_meaning": "This Logos veiled the subconscious to intensify seeking, and the result was a more vivid and varied experience of the Creator by the Creator.",
+   "rules_needed": false,
+   "minimal_procedure": "Explains the design of the world; the playable rule is the glimpse mechanic.",
+   "state": "",
+   "interactions": "Grounds Awareness and Wanderer forgetting.",
+   "non_goals": "No veil meter.",
+   "open_questions": ""
+  },
+  {
+   "id": "practical-advice",
+   "concept": "Begin and end in the Creator, not in technique",
+   "group": "setting_principle",
+   "priority": "narrative_only",
+   "source": [
+    "52.11",
+    "17.30"
+   ],
+   "page": "https://www.lawofone.info/synopsis.php",
+   "faithful_meaning": "Ra's stated advice to the group: 'Always begin and end in the Creator, not in technique.'",
+   "rules_needed": false,
+   "minimal_procedure": "A design constraint on the whole game: intention and relationship outrank optimisation; no ritual or score is the point.",
+   "state": "",
+   "interactions": "A review criterion for every other row.",
+   "non_goals": "Not a mechanic; if a mechanic ever makes technique the path to progress, this row is the objection.",
+   "open_questions": ""
+  },
+  {
+   "id": "entity-catalogue",
+   "concept": "Catalogue of named species, civilizations and entities",
+   "group": "setting_principle",
+   "priority": "out_of_scope",
+   "source": [
+    "Confederation of Planets category",
+    "12.26-12.30",
+    "glossary: Maldek, Lemuria, Mu, Zeta Reticuli",
+    "Ra category"
+   ],
+   "page": "https://www.lawofone.info/categories.php",
+   "faithful_meaning": "Ra names a Confederation of roughly fifty-three civilizations and five hundred planetary complexes, Wanderers, Ra itself as sixth density, and various places and beings; the material does not present a taxonomy and does not equate a civilization with a species.",
+   "rules_needed": false,
+   "minimal_procedure": "A separate reference catalogue (data/law_of_one/entity_catalogue.json): name, source, type, reported origin, density, affiliation, ambiguity. Reference only: no playable non-human options.",
+   "state": "",
+   "interactions": "Setting reference for NPCs and scenario colour.",
+   "non_goals": "No alien player characters, no stat blocks, no filling gaps from wider UFO lore or NoöPunk canon.",
+   "open_questions": "Which named civilizations carry enough source detail to be more than a name?"
+  }
+ ]
+}
