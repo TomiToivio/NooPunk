@@ -33,3 +33,15 @@ There will be several types of documents:
 [`GLOSSARY.md`](../GLOSSARY.md) at the repository root is the canonical vocabulary for player-facing
 text. Design documents may use those terms freely; a design document that needs a **new** term should
 propose it there rather than assume it.
+
+## Issue #1137: Agent-authored rule proposal drafts (NOT author-approved)
+
+These five *separate* draft documents are available for Tomi's edits and approval. They are **not** the author's binding design files and **must not** be implemented in rulebook/Python without Tomi's explicit later instruction:
+
+- [Psionics: SWN / AWN Mentalist / WWN / CWN Hacking, Astral Projection](../docs/design/DRAFT_NOOPUNK_PSIONICS.md)
+- [Psychotronics: QIP, BCI and neurotech](../docs/design/DRAFT_NOOPUNK_PSYCHOTRONICS.md)
+- [Bionics: engineered AWN-style biological traits](../docs/design/DRAFT_NOOPUNK_BIONICS.md)
+- [Europol rookie character generation and issued kit](../docs/design/DRAFT_NOOPUNK_EUROPOL_CHARACTER_GENERATION.md)
+- [Personality, Goals and Reputation tags](../docs/design/DRAFT_NOOPUNK_CHARACTER_TAGS.md)
+
+[Tracking issue #1137](https://github.com/TomiToivio/NooPunk/issues/1137). The author's [BIONICS.md](BIONICS.md) remains intact and authoritative for author decisions; these are proposals only.
