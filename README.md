@@ -302,6 +302,11 @@ LLMs may decide what an agent attempts. They do not get to invent dice rolls or 
 
 ## Current status
 
+**The first single-player campaign has a draft outline:** [*Europol Rookie → Fourth-Density Awakening →
+Wanderer*](docs/design/DRAFT_FIRST_CAMPAIGN_1132.md) (#1132) — four acts, an Act I playable slice in
+Helsinki, a memory/revelation ladder, a rules-by-act dependency table, and the open author decisions. It
+is **DRAFT**, documentation only, and CWN stays the immutable core.
+
 NoöPunk is an experimental RPG and social-simulation project under active development. **The top-down Godot game and tabletop rulebook use vanilla CWN/SWN as the canonical baseline**. Rules parity is an ongoing task, not a claim of full implementation. Legacy text, Python and strategy prototypes remain in the repository as historical or experimental work, not alternative rule authorities.
 
 ### Playable slice: the hospital case in Godot 4

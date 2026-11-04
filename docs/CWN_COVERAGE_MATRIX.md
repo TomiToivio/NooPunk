@@ -1,3 +1,7 @@
+> **Superseded:** this document is historical (2026-10-30). The live CWN coverage report is
+> [`docs/rules/CWN_COVERAGE_1068.md`](rules/CWN_COVERAGE_1068.md), generated from
+> `data/rules/cwn_traceability.json` by `tools/cwn_parity_audit.py`.
+
 > **Historical (2026-10-30), superseded.** The current coverage report is
 > [`docs/rules/CWN_COVERAGE_1068.md`](rules/CWN_COVERAGE_1068.md), generated from
 > `data/rules/cwn_traceability.json` by `tools/cwn_parity_audit.py`. This file is kept for its
