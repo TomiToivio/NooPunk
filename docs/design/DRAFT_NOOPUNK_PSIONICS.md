@@ -2,6 +2,19 @@
 
 > **DRAFT — TOMI REVIEW REQUIRED — NOT AUTHOR APPROVED.** Issue [#1137](https://github.com/TomiToivio/NooPunk/issues/1137); researched 2026-11-04. Planning only; do not implement, modify the CWN core, or copy a published ruleset. **Evidence labels:** [E] empirical/approved; [X] experimental; [H] contested theory or parapsychology; [F] fictional 2045 premise; [P] draft mechanics. Tomi edits this proposal first, then separately authorizes matching tabletop and Python implementation.
 
+## Preflight: what already exists for this subsystem
+
+- **Author canon — binding:** [`design/BIONICS.md`](../../design/BIONICS.md) fixes **three** PSI sources (latent
+  human genetics, alien hybridisation, psychotronic technology), states that QIP psychotronics **always require a
+  conscious human operator**, that non-QIP (microwave) devices "are not real PSI either", and sets the registration
+  law and the Sörnäinen prison. Where this draft and that file could be read differently, that file wins; the
+  disagreement is a question for the author, not a rewrite.
+- **Engine — extend, do not rebuild:** `src/rules/swn_psionics.py` and `src/rules/psionics.py` already implement
+  Effort accounting, commitment durations and Torching, with 20 **original** provisional techniques. A new PSI
+  resolver would be a second engine.
+- **Hard boundary:** `docs/rules/PSI_INVESTIGATION_BOUNDARY_1105.md` — PSI must not deliver core clues; 11 tests
+  assert the investigation resolver has no psychic input.
+
 ## Design decision in one sentence
 **[P]** Treat **PSI and magick as one underlying fictional consciousness-mediated phenomenon** with different learned practices, while **CWN handles action resolution**. Start with **three pre-authored playable abilities: Astral Projection, bounded Telepathy, and Psychic Defence**. Never add a second general skill system; everything else is introduced only for a scene that can actually adjudicate it.
 

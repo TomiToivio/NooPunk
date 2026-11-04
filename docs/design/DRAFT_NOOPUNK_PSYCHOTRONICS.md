@@ -2,6 +2,16 @@
 
 > **DRAFT — TOMI REVIEW REQUIRED — NOT AUTHOR APPROVED.** Issue [#1137](https://github.com/TomiToivio/NooPunk/issues/1137); researched 2026-11-04. Planning only; do not implement, modify the CWN core, or copy a published ruleset. **Evidence labels:** [E] empirical/approved; [X] experimental; [H] contested theory or parapsychology; [F] fictional 2045 premise; [P] draft mechanics. Tomi edits this proposal first, then separately authorizes matching tabletop and Python implementation.
 
+## Preflight: what already exists for this subsystem
+
+- **Author canon — binding:** [`design/BIONICS.md`](../../design/BIONICS.md) — QIP devices require a human
+  operator; non-QIP devices cannot be installed as cyberware ("they would fry your meat"); uploading and resleeving
+  are the QIP-adjacent experimental technologies.
+- **Cyberware base:** `src/rules/cwn_cyberware.py` and `data/rules/cwn_*.json` — the implant economy this must
+  extend. CWN is immutable.
+- **Cost source:** `src/rules/swn_psionics.py` — a QIP device spends the **operator's** Effort. It never adds a
+  second resource, and a device with no operator produces no PSI at all.
+
 ## Author's dual definition, preserved
 **[F] Quantum Information Panpsychism (QIP) devices** amplify/interact with conscious-agent PSI and **always need a conscious operator**. In 2045 these can be external apparatus or miniature neurocybernetic implants. **Non-QIP psychotronics** refers in-setting to conventional neuroscience, electromagnetic/sensory stimulation, pharmaceuticals, media manipulation, conditioning and psychological operations. These need *not* involve a psychic operator and must **not** acquire the benefits of real PSI by name alone. The author's [BIONICS.md](../../design/BIONICS.md) additionally distinguishes some dangerous large electromagnetic apparatus from implantable safe QIP designs.
 
