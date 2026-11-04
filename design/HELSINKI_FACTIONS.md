@@ -39,6 +39,8 @@ because the campaign is not about the global corporation.
 > without it. A player character's own office is a faction the players never see take a turn, and that is a design
 > choice worth making deliberately rather than by accident.
 
+**Your version (Tomi writes here):**
+
 <!-- Tomi writes below -->
 
 ---
@@ -66,6 +68,8 @@ Describe the faction in prose; if a numeric score is needed later, take it from 
 > that to change. Its relationship with Europol is cold and correct: it will answer a request, and it will not
 > volunteer that the request is three months too late. It is visible to anyone who has ever waited for a repair
 > crew.
+
+**Your version (Tomi writes here):**
 
 <!-- Tomi writes below -->
 
@@ -98,6 +102,8 @@ asset, its cost and its effect from the book when the faction is approved.*
 > **EXAMPLE ONLY — NOT CANON**
 > "One unit in reserve, spent last turn on the emergency contract." Written as a sentence in the faction's notes.
 
+**Your version (Tomi writes here):**
+
 <!-- Tomi writes below -->
 
 ---
@@ -119,6 +125,8 @@ that the players can discover the consequences later.
 > the unit now has a foothold across the ridge, and a player character who later looks for the repair firm will
 > find that it was registered three weeks before anyone needed it.
 
+**Your version (Tomi writes here):**
+
 <!-- Tomi writes below -->
 
 ---
@@ -137,6 +145,8 @@ turn. This is a bookkeeping rule, not a prohibition: you may change an actor's m
 > planning office uses the WWN project rules because it is trying to finish one thing over months, not win a
 > contest. They are not the same kind of organization, and forcing them into one system would misrepresent both.
 
+**Your version (Tomi writes here):**
+
 <!-- Tomi writes below -->
 
 ---
@@ -150,6 +160,8 @@ and should be written in words rather than folded into a number.
 > **EXAMPLE ONLY — NOT CANON**
 > The infrastructure unit is strong and dislikes the protagonist. Those are two facts, not one. If the campaign
 > later adopts a reputation scale, the number describes the relationship and never the faction's capability.
+
+**Your version (Tomi writes here):**
 
 <!-- Tomi writes below -->
 

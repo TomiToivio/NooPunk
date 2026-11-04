@@ -40,6 +40,8 @@ Keep these separate in every entry, because mixing them is how a setting stops m
 
 **Write:** any corrections or additions to these distinctions for your setting.
 
+**Your version (Tomi writes here):**
+
 <!-- Tomi writes below -->
 
 ---
@@ -61,6 +63,8 @@ the evidence still has to be gathered the ordinary way.
 > Most encounters end when someone produces a document. The interesting question is not whether the officer can
 > win a fight but whether she can get a name onto paper before the other side gets it struck out.
 
+**Your version (Tomi writes here):**
+
 <!-- Tomi writes below -->
 
 ---
@@ -77,6 +81,8 @@ be resolved without violence, and what it is connected to.
 > that does not exist. Wants to keep the job and stay invisible. Communicates in Finnish and a trade dialect.
 > Dangerous only when cornered, and then briefly and completely. Can be resolved by treating him as a witness
 > rather than a specimen — which requires the officer to resist the institutional reflex to file him.
+
+**Your version (Tomi writes here):**
 
 <!-- Tomi writes below -->
 
@@ -96,6 +102,8 @@ of whether it is a person.
 > to. If asked something outside its remit it says so, politely, and logs the request. Whether that counts as
 > personhood is a question the campaign can leave open for a long time.
 
+**Your version (Tomi writes here):**
+
 <!-- Tomi writes below -->
 
 ---
@@ -112,6 +120,8 @@ costs to interact with it.
 > a name spelled properly, a page that was missing and now is not. No body has been confirmed. It says it is a
 > witness. It has never once told anyone what it witnessed. Interacting with it means interviewing people,
 > checking the archive, and accepting that the only evidence is a pattern of corrections nobody can explain.
+
+**Your version (Tomi writes here):**
 
 <!-- Tomi writes below -->
 
@@ -131,6 +141,8 @@ are.
 > meteorological effect, and something that responds to being watched. Neither has been tested, because nobody can
 > get close enough twice.
 
+**Your version (Tomi writes here):**
+
 <!-- Tomi writes below -->
 
 ---
@@ -145,6 +157,8 @@ in the same card format, without any of the taxonomy machinery.
 > notebook of everything that happened on his shift because he does not trust the system to remember it. Will
 > help an officer who asks properly and will not help one who waves a badge. Knows which vehicles were moved
 > without a work order, which is the sort of fact that solves a case three sessions later.
+
+**Your version (Tomi writes here):**
 
 <!-- Tomi writes below -->
 
@@ -168,6 +182,8 @@ Mark anything the players must not know with `GM SECRET`.
 > **EXAMPLE ONLY — NOT CANON**
 > A witness who is not what she says she is; the officer can verify her employment in an afternoon and find that it
 > ended two years ago; the file does not say why, and the reason is the campaign.
+
+**Your version (Tomi writes here):**
 
 <!-- Tomi writes below -->
 
