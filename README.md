@@ -8,7 +8,7 @@ test exists, and `missing` where the linked SRD omits the section. The MUD's own
 `mud/nopunk_mud/cwn/` and is parity-tested against `src/rules`; `cd mud && python -m nopunk_mud.cli --demo` runs
 the solo smoke with no LLM, no Mesa and no second player.
 
-**First single-player campaign draft:** [Europol Rookie → Wanderer, four-act outline](docs/design/CAMPAIGN_OUTLINE_1132.md) (#1132). Planning only; Act III and the final service revelation remain subject to author review.
+**First single-player campaign draft:** [Europol Rookie → Wanderer, four-act outline](docs/campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md) (#1132). Planning only; Act III and the final service revelation remain subject to author review.
 
 ## Reality has changed. You are still expected at work.
 
