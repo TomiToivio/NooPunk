@@ -1,8 +1,10 @@
 # NoöPunk Mythos
 The main theme of NoöPunk is paradigm shift and ontological shock. 
+NoöPunk is a portmanteau of Cyberpunk and Noösphere.
 Cyberpunk comes from the current technological acceleration. Noösphere comes from the other paradigm shifts: theories of consciousness, parapsychology and ufology.
 NoöPunk Mythos is a combination of real-world ufology, parapsychology and occultism. 
 The Law of One (https://www.lawofone.info/) is the most important source for NoöPunk Mythos, as it offers the best metaphysical framework containing everything. 
+NoöPunk could be called The Law of One RPG. It is 50% Cyberpunk and 50% Law of One.
 
 ## Glossary
 
