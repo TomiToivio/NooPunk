@@ -1,15 +1,12 @@
-> **Historical (2026-10-30), superseded.** The current coverage report is
-> [`docs/rules/CWN_COVERAGE_1068.md`](rules/CWN_COVERAGE_1068.md), generated from
-> `data/rules/cwn_traceability.json` by `tools/cwn_parity_audit.py`. This file is kept for its
-> measurement method and its #858 four-column audit; do not extend or regenerate it.
+> **Superseded:** [`docs/rules/CWN_COVERAGE_1068.md`](rules/CWN_COVERAGE_1068.md) is the one document kept up to
+> date for this subject, generated from `data/rules/cwn_traceability.json` by `tools/cwn_parity_audit.py`.
+> **Do not extend or regenerate this file.** It is kept only for its measurement method and its #858
+> four-column audit, and its counts disagree with the audited ones.
 
 > **See also:** [`CWN_SRD_PARITY_858.md`](CWN_SRD_PARITY_858.md) — the four-column audit (code / tested / playable / verified SRD parity) required by #858. This matrix lists what is implemented; that file asks whether it is *right* and *reachable*.
 
 # CWN / SWN rules coverage matrix (#749 work package A, refreshed for #848)
 
-> **Superseded:** [CWN_COVERAGE_1068.md](/docs/rules/CWN_COVERAGE_1068.md) is the one document kept up to date for this
-> subject. This file is kept as history — it is a second answer to a question that already had one,
-> and the counts in it disagree with the audited ones. Do not update it; update the canonical file.
 
 
 **Status:** measured audit, 2026-10-30, against baseline commit `d2992fc`. This is *measurement*, not

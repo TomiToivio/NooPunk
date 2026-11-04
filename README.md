@@ -185,6 +185,13 @@ stops with a message naming the version and the remedy instead of an `ImportErro
 troubleshooting and the end-to-end tests are in
 [docs/UBIQUITOUS_MANIACS_INTEGRATION.md](docs/UBIQUITOUS_MANIACS_INTEGRATION.md).
 
+## The first campaign
+
+The single-player campaign now has a draft outline: **[The Rookie, the Awakening and the Wanderer](docs/campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md)** —
+a young Europol rookie in 2045 Helsinki, four acts from a grounded police procedural to a Wanderer's
+revelation. It is a **draft**: Act III is a proposal awaiting the author's decision, and the document separates
+what is canon from what is merely suggested. All campaign documents live in [`docs/campaign/`](docs/campaign/).
+
 ## First-player cheat sheet
 
 At the prompt, try:
