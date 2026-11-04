@@ -19,15 +19,22 @@
   {"name": "Lemuria", "aliases": ["Mu"], "source": ["glossary: Lemuria", "glossary: Mu"], "type": "land mass and population", "origin": "Earth", "density": "third", "realm": "space/time", "affiliation": "none recorded", "relevance": "Earth-history setting material; no rule", "certainty": "medium"},
   {"name": "Zeta Reticuli", "aliases": [], "source": ["glossary: Zeta Reticuli"], "type": "star system", "origin": "Reticulum constellation", "density": "n/a", "realm": "space/time", "affiliation": "none recorded", "relevance": "a location named in the glossary; the glossary does not present it as a species", "certainty": "low"},
   {"name": "Guardians / angelic presences at harvest", "aliases": ["inner-plane guardians"], "source": ["Harvest category"], "type": "entities", "origin": "inner planes; includes an entity's own higher self", "density": "varied", "realm": "time/space", "affiliation": "service to others", "relevance": "harvest-scene colour; not a character option", "certainty": "medium"},
-  {"name": "Thought-forms", "aliases": [], "source": ["glossary: Thought-form"], "type": "manifestation", "origin": "created by thought", "density": "n/a", "realm": "varies", "affiliation": "none", "relevance": "a category of phenomenon, not a species", "certainty": "medium"}
+  {"name": "Thought-forms", "aliases": [], "source": ["glossary: Thought-form"], "type": "manifestation", "origin": "created by thought", "density": "n/a", "realm": "varies", "affiliation": "none", "relevance": "a category of phenomenon, not a species", "certainty": "medium"},
+  {"name": "Council of Saturn / Council of Nine", "aliases": ["the Council", "Nine"], "source": ["6.8", "7.8", "7.9"], "type": "governance body", "origin": "Saturn, in a non-third-dimensional sense", "density": "not given", "realm": "octave/eighth dimension (Ra's phrasing)", "affiliation": "quarantine/Confederation governance", "relevance": "background authority for contact and quarantine; not a player faction. The 'Nine' label is a later human reading.", "certainty": "high"},
+  {"name": "Men in Black", "aliases": [], "source": ["12.21"], "type": "thought-form entity", "origin": "not biological", "density": "not given", "realm": "materialises and dematerialises", "affiliation": "Orion-associated", "relevance": "a source-grounded encounter, not a species or generic agent; any biological reading is low-confidence.", "certainty": "high"},
+  {"name": "Venus planetary population", "aliases": ["Ra's native sphere"], "source": ["30.14", "6.23"], "type": "planetary civilization", "origin": "Venus", "density": "rapid evolution; later sixth density", "realm": "space/time", "affiliation": "Confederation (Ra's origin)", "relevance": "setting reference; not a playable civilization; details are partial.", "certainty": "high"},
+  {"name": "Mars planetary population", "aliases": ["Transfer from Mars"], "source": ["9.6", "Earth History: Transfer from Mars"], "type": "planetary population", "origin": "Mars", "density": "third density (implied)", "realm": "space/time", "affiliation": "not specified", "relevance": "background migration material; not a default PC origin; details are partial.", "certainty": "medium"},
+  {"name": "Atlantis", "aliases": [], "source": ["10.15"], "type": "Earth civilization", "origin": "Earth", "density": "third density", "realm": "space/time", "affiliation": "not a single faction", "relevance": "historical/legendary hook; not a playable culture package.", "certainty": "medium"},
+  {"name": "Elder Race", "aliases": [], "source": ["15.18"], "type": "named group / entity (ambiguous)", "origin": "context-dependent", "density": "not specified", "realm": "not specified", "affiliation": "not specified", "relevance": "reference only; do not make it a playable ancestry without author review; the identification is ambiguous.", "certainty": "low"},
+  {"name": "Bigfoot", "aliases": [], "source": ["9.18", "Earth History: Maldek/Bigfoot"], "type": "reported entity / thought-form (ambiguous)", "origin": "Earth", "density": "not specified", "realm": "physical/astral ambiguity", "affiliation": "not specified", "relevance": "optional anomalous encounter; not a species entry.", "certainty": "low"}
  ],
  "not_yet_inventoried": [
   "Earth History and Earth Present categories (18 and 8 subcategories) — setting chronology, not beings",
   "People (27 subcategories) — historical persons named in the material",
-  "Solar System History (5) — planets and their populations",
   "UFOs, Pyramids, Objects — places and artefacts",
   "Ra Contact, Miscellanea, Not Answered — meta and channel mechanics",
-  "The full per-session scan the issue asks for: this file is a seed, and says so"
+  "The full per-session scan the issue asks for: this file is a seed, and says so",
+  "Named Earth History civilizations beyond Atlantis/Lemuria/Mars/Maldek still need a dedicated pass; historical persons remain excluded by design."
  ],
  "rules_note": "No entry here may become a playable option without a separate decision. The inventory row `entity-catalogue` is marked out_of_scope for exactly this reason."
 }

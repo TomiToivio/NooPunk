@@ -32,6 +32,8 @@ Merging, reskinning and any NoöPunk integration are a **later, explicitly autho
 |---|---|
 | [`RULES_INVENTORY.md`](RULES_INVENTORY.md) | **the Phase 1 deliverable**: 45 concepts, each with its source citations, faithful meaning, disposition, minimal procedure, state fragment, interactions, non-goals and open questions. Generated — edit the data. |
 | [`COVERAGE_MAP.md`](COVERAGE_MAP.md) | every required source concept mapped to the rows that carry it, plus the pages deliberately left out and why. Generated. |
+| [`CATEGORY_AND_DEFINITION_COVERAGE.md`](CATEGORY_AND_DEFINITION_COVERAGE.md) | all 39 categories and all 20 definition subcategories, each with a disposition — closes the two source indexes the issue names. |
+| [`EXAMPLES_AND_MILESTONES.md`](EXAMPLES_AND_MILESTONES.md) | proposed Awareness bands and the four hard adjudication cases (autonomy, boundaries, good-intention failure, coercion). |
 | `../../data/law_of_one/rules_inventory.json` | the rows themselves |
 | `../../data/law_of_one/source_coverage.json` | the coverage contract the audit enforces |
 | `../../data/law_of_one/entity_catalogue.json` | a *seeded* catalogue of named beings and civilizations: source-attested only, with the uninventoried remainder listed as a gap |
