@@ -1,11 +1,14 @@
-"""The four Helsinki setting templates (#1141) stay templates and stay linked.
+"""Guards for the four Helsinki worksheets (#1141, Phase 1 rework).
 
-Phase 1 of #1141 is docs only: four draft outlines Tomi will author. This guard exists because the
-failure mode is not a syntax error — it is a template that quietly becomes canon ("the example is now
-the setting"), a placeholder that gets filled by an agent, or a cross-document link that rots when a
-file moves. The tests below are the cheap, deterministic part of that.
+Issue #1141 was reworked after the first drafts: the deliverables are now **prose-led documents Tomi writes in**,
+not schema templates. Its acceptance criteria say, in as many words:
 
-Written with `unittest`: CI discovers with `unittest` and does not install pytest.
+    "Remove YAML, JSON, Python, schema-first forms and internal IDs from Tomi-facing writing areas"
+    "A human can fill in all four documents by writing descriptive sentences ... No code, YAML, JSON,
+     schema keys or database literacy is required."
+
+So these tests enforce a *negative* property, which is the one that will actually decay: no machine syntax in the
+author's files. CI discovers tests with `unittest`; do not add a pytest dependency.
 """
 from __future__ import annotations
 
@@ -24,143 +27,118 @@ ALL = (WORLD, CITY, FACTIONS, FACES)
 
 RELATIVE_LINK = re.compile(r"\[[^\]]*\]\(([^)#\s]+)(?:#[^)]*)?\)")
 
+#: Anything that looks like a data record rather than a sentence.
+SCHEMA_LINE = re.compile(r"^\s{0,4}[a-z][a-z0-9_]{2,}\s*:\s*\S", re.MULTILINE)
+
 
 def text(path: Path) -> str:
     return path.read_text(encoding="utf-8")
 
 
-class TheFourTemplatesExistAndSayWhatTheyAre(unittest.TestCase):
+class TheWorksheetsAreReadableDocuments(unittest.TestCase):
     def test_all_four_documents_exist(self):
         for path in ALL:
             self.assertTrue(path.is_file(), f"missing template: {path.name}")
 
     def test_each_is_marked_a_template_not_canon(self):
         for path in ALL:
-            head = text(path)[:400]
+            head = text(path)[:500]
             self.assertIn("STATUS: TEMPLATE", head, path.name)
             self.assertIn("not canon", head.lower(), path.name)
 
-    def test_each_uses_the_shared_status_legend_and_placeholders(self):
+    def test_each_uses_the_shared_status_legend(self):
         for path in ALL:
             body = text(path)
             for marker in ("AUTHOR CANON", "REPOSITORY CANON", "EXAMPLE ONLY", "OPEN"):
                 self.assertIn(marker, body, f"{path.name} is missing the {marker} status")
-            self.assertIn("<!-- Tomi writes below -->", body, path.name)
 
-    def test_each_leaves_unresolved_decisions_for_the_author(self):
+    def test_each_has_a_table_of_contents(self):
+        for path in ALL:
+            self.assertIn("**Contents**", text(path), path.name)
+
+    def test_each_leaves_writing_space_and_decisions_for_the_author(self):
         for path in ALL:
             body = text(path)
-            self.assertIn("Unresolved decisions", body, f"{path.name} has no decision table")
+            self.assertIn("<!-- Tomi writes below -->", body, path.name)
+            self.assertGreaterEqual(body.count("<!-- Tomi writes below -->"), 5,
+                                    f"{path.name} does not leave room to write in every section")
+            self.assertIn("Unresolved decisions", body, path.name)
             self.assertIn("Record answers here", body, path.name)
 
-    def test_examples_are_labelled_and_never_claim_a_printed_number(self):
+
+class TheWorksheetsContainNoMachineSyntax(unittest.TestCase):
+    """The rework's core requirement: Tomi is the writer, not a parser."""
+
+    def test_no_fenced_code_blocks_of_any_kind(self):
+        for path in ALL:
+            self.assertNotIn("```", text(path), f"{path.name} contains a code fence")
+
+    def test_no_yaml_or_json_language(self):
         for path in ALL:
             body = text(path)
-            self.assertGreaterEqual(body.count("EXAMPLE ONLY"), 3, f"{path.name} lacks labelled examples")
-            self.assertIn("illustrative", body, path.name)
+            for word in ("yaml", "json", "serialization", "schema key"):
+                self.assertNotIn(word, body.lower(), f"{path.name} still talks about {word}")
+
+    def test_no_internal_identifiers(self):
+        for path in ALL:
+            body = text(path)
+            self.assertNotIn("hel_", body, f"{path.name} still carries internal IDs")
+            for key in ("site_id", "faction_id", "entity_id", "district_id", "density_access",
+                        "transition_rule", "scripted_reveal_gate"):
+                self.assertNotIn(key, body, f"{path.name} still carries the field name {key}")
+
+    def test_no_key_value_records(self):
+        for path in ALL:
+            body = text(path)
+            hits = [m.group(0).strip() for m in SCHEMA_LINE.finditer(body)
+                    if not m.group(0).strip().startswith(("*", "-", ">", "|"))]
+            self.assertEqual(hits, [], f"{path.name} still contains record-style lines: {hits[:4]}")
 
 
-class WorldTemplateCoversTheSevenSections(unittest.TestCase):
-    def test_the_world_has_every_requested_section(self):
-        body = text(WORLD)
-        for heading in ("Cyberpunk Themes", "The World", "The City (index only)",
-                        "Districts (index only)", "Megacorps", "Gangs", "NPCs"):
-            self.assertIn(heading, body, f"world template missing: {heading}")
+class TheWorksheetsCoverTheRequestedScope(unittest.TestCase):
+    def test_world_covers_its_seven_subjects(self):
+        body = text(WORLD).lower()
+        for subject in ("theme", "2045", "district", "megacorporation", "gangs", "npc"):
+            self.assertIn(subject, body, f"the World worksheet does not cover {subject}")
 
-    def test_the_world_defers_to_the_author_files_it_must_not_supersede(self):
-        body = text(WORLD)
-        self.assertIn("GREATER_HELSINKI_2045.md", body)
-        self.assertIn("ZONES.md", body)
-        self.assertIn("EUROPOL_HELSINKI_1114.md", body)
+    def test_city_covers_its_eight_subjects_and_the_three_layers(self):
+        body = text(CITY).lower()
+        for subject in ("timeline", "megacorporation", "organizations", "ethos", "government",
+                        "crime and punishment", "social relationships", "district"):
+            self.assertIn(subject, body, f"the City worksheet does not cover {subject}")
+        for layer in ("physical", "cyber", "astral"):
+            self.assertIn(layer, body, f"the City worksheet does not describe the {layer} layer")
 
+    def test_city_keeps_astral_out_of_the_first_act(self):
+        body = text(CITY).lower()
+        self.assertIn("first act", body)
+        self.assertIn("nothing", body, "the layered example should say plainly that Act I has no astral content")
 
-class CityTemplateCoversTheCityAndTheLayers(unittest.TestCase):
-    def test_every_cwn_city_section_is_present(self):
-        body = text(CITY)
-        for heading in ("A Timeline of Collapse", "The Megacorps", "Other Groups and Organizations",
-                        "The Ethos of the City", "The City Government", "Crime and Punishment",
-                        "Social Relationships in the City", "The Districts of the City"):
-            self.assertIn(heading, body, f"city template missing: {heading}")
-
-    def test_the_three_layers_are_modelled_separately(self):
-        body = text(CITY)
-        for layer in ("**Physical**", "**Cyber**", "**Astral**"):
-            self.assertIn(layer, body)
-
-    def test_the_metaphysical_axes_are_not_conflated(self):
-        body = text(CITY)
-        self.assertIn("Space/Time vs Time/Space", body)
-        self.assertIn("Third vs Fourth density", body)
-        self.assertIn("Interdimensional hypothesis", body)
-        self.assertIn("not a spatial", body.replace("**not** a spatial", "not a spatial"))
-
-    def test_the_layered_site_record_carries_the_required_keys(self):
-        body = text(CITY)
-        for key in ("site_id", "district_ref", "physical:", "cyber:", "astral:", "realm",
-                    "density_access", "transition_rule", "scripted_reveal_gate", "gm_secrets"):
-            self.assertIn(key, body, f"site record missing {key}")
-
-    def test_real_tunnels_are_not_declared_traversable(self):
-        body = " ".join(text(CITY).lower().split())     # markdown wraps lines; compare prose
-        self.assertIn("verify actual public access", body)
-        self.assertIn("mark every 2045 addition as fictional", body)
-
-    def test_act_one_stays_grounded(self):
-        body = text(CITY)
-        self.assertIn("Act I", body)
-        self.assertIn("locked", body)
-
-
-class FactionsTemplateUsesSwnAndDelegatesTheRest(unittest.TestCase):
-    def test_it_names_the_swn_faction_statistics_and_source_pages(self):
+    def test_factions_name_the_asset_categories_and_a_worked_turn(self):
         body = text(FACTIONS)
-        for token in ("Force", "Cunning", "Wealth", "FacCreds", "p. 211", "219", "221", "223"):
-            self.assertIn(token, body)
+        for word in ("Force", "Cunning", "Wealth", "FacCred", "faction turn"):
+            self.assertIn(word, body, f"the Factions worksheet is missing {word}")
+        self.assertIn("one action", body.lower())
 
-    def test_it_samples_every_asset_category_from_the_catalogue(self):
-        body = text(FACTIONS)
-        for asset in ("false_front", "hitmen", "franchise"):
-            self.assertIn(asset, body, f"no {asset} example")
+    def test_factions_keep_reputation_out_of_faction_statistics(self):
+        body = text(FACTIONS).lower()
+        self.assertIn("reputation is not a faction statistic", body)
+        self.assertIn("strength", body)
 
-    def test_wwn_and_awn_are_delegate_modes_not_extra_wallets(self):
-        body = text(FACTIONS)
-        for mode in ("swn_faction", "wwn_project", "awn_enclave"):
-            self.assertIn(mode, body)
-        self.assertIn("one actor, one mode", body.lower())
-        self.assertIn("not a faction statistic", body.lower())
-
-    def test_it_does_not_fabricate_scores(self):
-        body = text(FACTIONS)
-        self.assertIn("TBD", body)
-
-
-class FacesTemplateSpansTheTaxonomyAndOrdinaryPeople(unittest.TestCase):
-    def test_all_four_nhi_classes_have_a_card(self):
+    def test_faces_cover_four_classes_and_ordinary_people(self):
         body = text(FACES)
-        for klass in ("Biologics", "Constructs", "Noetics", "Plasmoids"):
-            self.assertIn(klass, body)
-            self.assertIn(f"taxonomy: \"{klass.removesuffix('s')}\"", body,
-                          f"no {klass} card")
+        for klass in ("Biologics", "Constructs", "Noetics", "Plasmoids", "Ordinary faces"):
+            self.assertIn(klass, body, f"the Faces worksheet is missing {klass}")
 
-    def test_there_is_an_ordinary_street_npc(self):
-        body = text(FACES)
-        self.assertIn("Ordinary faces", body)
-        self.assertIn("hel_npc_", body)
+    def test_faces_keep_the_five_axes_apart(self):
+        body = text(FACES).lower()
+        for axis in ("body", "ontology", "faction", "density", "layer"):
+            self.assertIn(axis, body, f"the Faces worksheet does not separate {axis}")
 
-    def test_classification_axes_are_kept_apart(self):
-        body = text(FACES)
-        for axis in ("species / body", "ontological type", "faction", "density", "realm / layer"):
-            self.assertIn(axis, body)
-
-    def test_psi_cannot_shortcut_an_investigation(self):
+    def test_psi_does_not_solve_investigations(self):
         body = text(FACES)
         self.assertIn("PSI_INVESTIGATION_BOUNDARY_1105.md", body)
-        self.assertIn("lead", body.lower())
-
-    def test_a_cyber_only_phenomenon_is_not_a_being(self):
-        body = text(FACES)
-        self.assertIn("Cyber-only phenomena", body)
-        self.assertIn("not", body)
+        self.assertIn("never a proof", body.lower(), "telepathy must produce a lead, not evidence")
 
 
 class EveryRelativeLinkResolves(unittest.TestCase):
@@ -182,6 +160,15 @@ class EveryRelativeLinkResolves(unittest.TestCase):
 
     def test_the_document_register_names_the_set(self):
         self.assertIn("HELSINKI_CITY.md", text(ROOT / "docs" / "DOCUMENT_REGISTER.md"))
+
+
+class TheIssueStaysOpen(unittest.TestCase):
+    def test_the_documents_never_claim_phase_two_or_three_is_done(self):
+        """#1141 closes only when all three phases are finished; Phase 1 must not read as completion."""
+        for path in ALL:
+            body = text(path).lower()
+            self.assertIn("phase 1", body, path.name)
+            self.assertIn("tomi owns all final prose", body, path.name)
 
 
 if __name__ == "__main__":

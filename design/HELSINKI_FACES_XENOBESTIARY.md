@@ -7,6 +7,21 @@ This is a place to **write characters, encounters and strange beings in normal p
 
 **Keep biographies in one place:** Fully established major characters remain in [design/characters](characters/) and existing campaign documents. Helsinki's [World](HELSINKI_WORLD.md) introduces people briefly; [City](HELSINKI_CITY.md) describes where encounters happen; [Factions](HELSINKI_FACTIONS.md) describes strategic organizations. Link rather than copy the definitive record.
 
+**Status labels used in this file.** `AUTHOR CANON` — written and approved by you. `REPOSITORY CANON` —
+already established elsewhere in this repository; follow the link rather than restating it. `EXAMPLE ONLY /
+NOT CANON` — scaffolding, to be overwritten. `OPEN` — an undecided question. `GM SECRET` — true in the GM's
+notes, withheld from the players.
+
+**Contents**
+
+1. How to write an encounter
+2. 1. Biologics: living or engineered bodies
+3. 2. Constructs: manufactured bodies
+4. 3. Noetics: encounters through consciousness
+5. 4. Plasmoids: luminous or energetic phenomena
+6. 5. Ordinary faces: CWN street NPCs
+7. 6. A reusable human-readable encounter sheet
+
 ## How to write an encounter
 
 An encounter can be a conversation, a witness interview, a threat, a mystery or a fight. Start with **what the player sees and what the person or being wants**. Describe what makes the interaction interesting. Add optional familiar RPG stats only when you decide they are needed.
@@ -15,6 +30,25 @@ You may mark a passage **GM secret**, **Open question**, or **Author canon**. Ev
 
 A being's **body or species**, **ontological type**, **political affiliation**, **density**, and **realm or layer of appearance** are five *different* questions. Do not infer one from another. A fourth-density physical being is not necessarily invisible. A biological creature may belong to any political faction. A cyber-only automated process is not automatically a conscious Construct or Noetic being.
 
+## Before the cards: five things that must not be collapsed
+
+Keep these separate in every entry. Mixing them is how a setting stops making sense:
+
+- **Body** — what it is made of, and whether it is present at all.
+- **Ontology** — whether it is a person, a process, a phenomenon, or something the categories do not cover.
+- **Faction** — who it works for, if anyone. A being's nature does not decide its politics.
+- **Density** — a designation of consciousness and development, not a spatial dimension. A fourth-density being is
+  not automatically invisible.
+- **Layer** — whether it is met physically, through a device or network, or without a body. One being may appear in
+  more than one layer without physically occupying all of them.
+
+**Psychic ability does not shortcut an investigation.** Telepathy produces a **lead**, never a proof: the fact still
+has to be established the ordinary way. The authority is the repository's
+[PSI/investigation boundary note](../docs/rules/PSI_INVESTIGATION_BOUNDARY_1105.md).
+
+<!-- Tomi writes below -->
+
+---
 ## 1. Biologics: living or engineered bodies
 
 *Organic extraterrestrials, hybrids, engineered organisms and related entities. Do not confuse biology with a person's faction, rights or intentions.*
@@ -44,6 +78,8 @@ A being's **body or species**, **ontological type**, **political affiliation**, 
 **Writing prompts:** How does the creature or character appear? Where does it come from, as far as anyone knows? What does it want? How does it communicate? What could players discover through ordinary investigation? What would make it threatening, sympathetic or simply alien?
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *Name or designation; encounter scene; body; motivations; behavior; relationships; powers if any; evidence; nonviolent options; danger; GM secrets.*
 
@@ -77,6 +113,8 @@ A being's **body or species**, **ontological type**, **political affiliation**, 
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *Designation; body; visible activities; origin claims; communication; motivations or programming; vulnerabilities; noncombat solutions; GM secrets.*
 
 ---
@@ -108,6 +146,8 @@ A being's **body or species**, **ontological type**, **political affiliation**, 
 **Writing prompts:** What experience convinces people this might be a being? How reliable are the witnesses? What is known, claimed or unexplained? What PSI abilities are required for intentional interaction? How does the encounter remain investigable?
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *Manifestation; communication; motivation; uncertainty; evidence; access gates; nonviolent resolution; late-act revelation.*
 
@@ -141,6 +181,8 @@ A being's **body or species**, **ontological type**, **political affiliation**, 
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *Observed appearance; location; witness accounts; measurements; possible motives; risks; investigation; GM interpretation.*
 
 ---
@@ -168,6 +210,8 @@ A being's **body or species**, **ontological type**, **political affiliation**, 
 **Writing prompts:** What does the person want today? What is memorable about their speech and habits? Who do they know? What are they protecting? What can the players learn through conversation?
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *Name; occupation; first impression; wants; relationships; useful knowledge; what will gain or lose their trust; optional CWN stats.*
 
@@ -219,3 +263,21 @@ Copy the following **questions**, not a computer schema, whenever you add anothe
 **Author's answers (Tomi writes here):**
 
 *The descriptions here are writing prompts until you approve them. Agents will later keep your authorship intact while transferring the final text to the tabletop rulebook, creating structured encounter data, and implementing it in Python.*
+
+---
+
+## Unresolved decisions
+
+Answer in this column, in ordinary language, then delete the row.
+
+| Question | Record answers here |
+|---|---|
+| Are NHI present in Helsinki openly, covertly, or only as rumour in Act I? | |
+| Which taxonomy class do the campaign's central entities belong to — and is the classification ever wrong in-world? | |
+| Does the protagonist's implant let her perceive non-human phenomena earlier than other characters? | |
+| How much can telepathy establish, and what must still be proved by ordinary evidence? | |
+| Are there non-human factions with local interests, or only individuals? | |
+| Which encounters belong to which act? | |
+
+**Answers are prose.** An agent can structure them later, in Phase 3, only if you ask — you never
+have to write a data format.

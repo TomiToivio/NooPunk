@@ -7,6 +7,26 @@ This document is for **writing a city**, not for editing a database. Replace the
 
 **Keep one home for each subject:** Global context belongs in [World](HELSINKI_WORLD.md), organizations' playable SWN statistics in [Factions](HELSINKI_FACTIONS.md), and creature/encounter profiles in [Faces & Xenobestiary](HELSINKI_FACES_XENOBESTIARY.md). This city's author-owned government source is [Greater Helsinki](GREATER_HELSINKI_2045.md); the established zones are in [ZONES.md](ZONES.md). Respect the existing [Europol jurisdiction frame](../docs/world/EUROPOL_HELSINKI_1114.md) and [campaign outline](../docs/campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md). Link them rather than replacing their canon.
 
+**Status labels used in this file.** `AUTHOR CANON` — written and approved by you. `REPOSITORY CANON` —
+already established elsewhere in this repository; follow the link rather than restating it. `EXAMPLE ONLY /
+NOT CANON` — scaffolding, to be overwritten. `OPEN` — an undecided question. `GM SECRET` — true in the GM's
+notes, withheld from the players.
+
+**Contents**
+
+1. How to use this worksheet
+2. 1. A timeline of collapse
+3. 2. The megacorporations in Helsinki
+4. 3. Other groups and organizations
+5. 4. The city's ethos
+6. 5. City government and jurisdiction
+7. 6. Crime and punishment
+8. 7. Social relationships and daily life
+9. 8. Districts of the city
+10. 9. Three views of one city: Physical, Cyber and Astral
+11. 10. A fully described location
+12. Open author decisions
+
 ## How to use this worksheet
 
 Each section shows an **Example only (NOT CANON)** followed by questions and **Your version**. Write descriptive paragraphs and, where helpful, small RPG-style tables. Treat all dates, institutions, abilities and access as proposals until you choose them. Some examples deliberately describe ordinary investigations: Act I starts as grounded cyberpunk, before the cosmic machinery is unveiled.
@@ -20,6 +40,8 @@ During the years following the NHI Crisis, the harbour's customs archive underwe
 **Writing prompts:** Which dated or undated events changed Helsinki? For each: what happened, how did residents experience it, what physical traces remain, and how reliable are the sources? Do not invent missing dates in the established timeline.
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *Event; date or relative sequence; consequences for Helsinki; evidence; public account versus uncertainties.*
 
@@ -35,6 +57,8 @@ Northern Continuity Logistics operates entry systems for the port and archive st
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *Name; Helsinki locations; services; community impact; tensions; case hooks.*
 
 ---
@@ -48,6 +72,8 @@ An infrastructure incident draws representatives of municipal emergency services
 **Writing prompts:** Which municipal agencies, police and security bodies, unions, cooperatives, citizen groups, alien institutions and informal networks matter in this city? What can each legally do? What do they want? What disputes arise between them? Preserve the authority established in the canonical Europol and Zones documents.
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *Organization; local purpose; people; jurisdiction; allies and conflicts.*
 
@@ -63,6 +89,8 @@ Helsinki advertises itself as a city that can adapt to anything. Public transpor
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *Two or three paragraphs on civic character, hopes, hypocrisies and daily humor.*
 
 ---
@@ -76,6 +104,8 @@ The municipality can cordon off a dangerous service building, Finnish police inv
 **Writing prompts:** Describe Greater Helsinki's elected leadership, districts and local services. Where do municipal, Finnish, EU and UNSA mandates meet or clash? How are extraterrestrial zones governed? Refer to [ZONES.md](ZONES.md) and [GREATER_HELSINKI_2045.md](GREATER_HELSINKI_2045.md) for author-written answers, without copying or correcting them here.
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *Government, political conflicts, agencies and the everyday consequences of overlapping authority.*
 
@@ -91,6 +121,8 @@ A courier insists their identity was used to access a restricted shipping termin
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *Street-level crime, enforcement, courts, detention, institutional failures and adventure hooks.*
 
 ---
@@ -104,6 +136,8 @@ The driver on the night route knows which café owner will let exhausted workers
 **Writing prompts:** Who knows whom in the rookie's neighborhood? What are the everyday meeting places, work cultures, languages, solidarities and conflicts? How do reputation, class and personal history affect a case?
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *Neighborhood institutions, social networks, recurring acquaintances and situations.*
 
@@ -135,6 +169,8 @@ The driver on the night route knows which café owner will let exhausted workers
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *District name, atmosphere, two defining pressures, places, inhabitants, relationships, encounters, connections, optional CWN tags.*
 
 ---
@@ -155,6 +191,8 @@ Standing at a stop, a character sees wet pavement, commuters and a maintenance b
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *What each layer looks and feels like; when characters learn about it; which layers are accessible.*
 
 ### Underground Helsinki
@@ -166,6 +204,8 @@ Helsinki has real infrastructure underground. **Do not imply that restricted rea
 A sealed door can be seen from a public station platform. The player cannot enter it merely because a corridor exists behind it. An authorized maintenance worker may eventually grant access, or a fictional future tunnel could provide a separate route.
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *Existing, publicly accessible locations; restricted areas; wholly fictional 2045 construction; any necessary safety or permission distinctions.*
 
@@ -180,6 +220,8 @@ A sealed door can be seen from a public station platform. The player cannot ente
 **Writing prompts:** What do people in Helsinki believe about each concept? What can characters verify? Which encounters are dreams, visions, physical events, or ambiguous reports? At what stage may the game reveal more?
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *The city's phenomenology, competing explanations and campaign reveal order.*
 
@@ -209,6 +251,8 @@ A sealed door can be seen from a public station platform. The player cannot ente
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *Location title, readable description, Physical/Cyber/Astral perceptions, access, people, clues, adventure hook and GM secrets.*
 
 ---
@@ -225,3 +269,21 @@ A sealed door can be seen from a public station platform. The player cannot ente
 **Author's answers (Tomi writes here):**
 
 *Agents will later incorporate the approved prose into the rulebook, convert it into structured data, and implement it in Python. Nothing in this worksheet is automatically canon.*
+
+---
+
+## Unresolved decisions
+
+Answer in this column, in ordinary language, then delete the row.
+
+| Question | Record answers here |
+|---|---|
+| Which districts exist as written cards, and which stay one-line background? | |
+| What is the city's real attitude to NHI presence — denial, accommodation, or something more specific? | |
+| How does PSI registration actually work, and who administers it? | |
+| Which of the three views is playable in Act I, and which are only described? | |
+| What are the genuinely restricted places in Helsinki, and which restrictions are fictional? | |
+| Where does Europol's authority end, in practice rather than in law? | |
+
+**Answers are prose.** An agent can structure them later, in Phase 3, only
+if you ask — you never have to write a data format.

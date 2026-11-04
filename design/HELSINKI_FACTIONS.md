@@ -7,6 +7,21 @@ This document is for writing about **local groups that shape the Helsinki campai
 
 **Scope:** Describe local participants in the first Europol rookie campaign. A gang, union, corporation or agency is **not automatically a mechanical faction**. If it does not manage assets and take strategic faction turns, give it a readable organization description in [The City](HELSINKI_CITY.md) instead. Galactic organizations get a Helsinki-facing presence here only if play needs one. Existing global factions remain in [NHI factions](../docs/world/NHI_FACTIONS_922.md).
 
+**Status labels used in this file.** `AUTHOR CANON` — written and approved by you. `REPOSITORY CANON` —
+already established elsewhere in this repository; follow the link rather than restating it. `EXAMPLE ONLY /
+NOT CANON` — scaffolding, to be overwritten. `OPEN` — an undecided question. `GM SECRET` — true in the GM's
+notes, withheld from the players.
+
+**Contents**
+
+1. How to use the worksheet
+2. 1. A faction's identity and situation
+3. 2. SWN faction characteristics
+4. 3. Cunning, Force and Wealth assets
+5. 4. A faction turn at the tabletop
+6. 5. Choosing SWN, WWN or AWN
+7. 6. Relationships, reputation and campaign visibility
+
 ## How to use the worksheet
 
 Each example is invented and **NOT CANON**. Replace it with your own prose. Where tabletop numbers help, a **simple RPG-style stat line or table** is fine. Agents verify printed mechanics and write the structured data later. Do not guess rulebook figures. The author can explicitly label material **Author canon**, **Open**, or **GM secret**.
@@ -35,13 +50,16 @@ Each example is invented and **NOT CANON**. Replace it with your own prose. Wher
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *Faction name, background, purpose, people, territory, allies, adversaries, public image, secret interests, current agenda and relationship to the investigators.*
 
 ---
 
 ## 2. SWN faction characteristics
 
-Use **Force, Cunning and Wealth**, the published SWN faction goals, tags, assets and FacCreds. These are game mechanics, not a substitute for the story. Only choose values after checking the appropriate SWN source. A reputation score on a character sheet is **not** a faction statistic.
+Use **Force, Cunning and Wealth**, the published SWN faction goals, tags, assets and FacCreds. These are game mechanics, not a substitute for the story. Only choose values after checking the appropriate SWN source. A reputation score on a character sheet is **not** a faction statistic: the faction's statistics
+describe its **strength**, while its opinion of a person is a separate note written in words.
 
 **Example only: The infrastructure unit as a game piece (NOT CANON)**
 
@@ -59,6 +77,8 @@ Use **Force, Cunning and Wealth**, the published SWN faction goals, tags, assets
 **Writing prompts:** How powerful is this group? What resources does it control? What can it plausibly achieve in one strategic turn? Does its influence differ between districts? Which exact published faction tags match it?
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *Describe the faction's practical strengths and weaknesses. Add a plain SWN stat line when you want to choose numbers. Agents will later validate and encode it.*
 
@@ -84,11 +104,15 @@ A fictional infrastructure organization worries that an unknown competitor has a
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *List the faction's resources in ordinary prose. Add printed asset names and costs only if you want them to matter in faction turns.*
 
 ---
 
 ## 4. A faction turn at the tabletop
+
+A turn takes **one action** — expand, attack, defend or use an asset — after income is collected.
 
 **Example only: One strategic decision (NOT CANON)**
 
@@ -102,6 +126,8 @@ A fictional infrastructure organization worries that an unknown competitor has a
 **Writing prompts:** Does the campaign use a faction turn from Act I or only later? Which actors move during downtime? How does a strategic event become a rumor, mission or change in district life? Do not give an organization extra actions by simultaneously running SWN and AWN or WWN as separate wallets.
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *Write a short example turn as a narrative and specify the intended SWN action, assets and rulebook references if chosen.*
 
@@ -125,11 +151,16 @@ A settlement near an exclusion area is chiefly concerned with medicine, energy, 
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *Name the group and explain which strategic system, if any, is useful.*
 
 ---
 
 ## 6. Relationships, reputation and campaign visibility
+
+**Reputation is not a faction statistic.** The faction's numbers describe its strength; how it feels about a
+particular person is a separate note, written in words.
 
 **Example only: A damaged relationship (NOT CANON)**
 
@@ -138,6 +169,8 @@ After an investigation embarrasses a municipal supervisor, the rookie is no long
 **Writing prompts:** What does the faction think of the player? What does the player know about its real aims? What is concealed until a later campaign act? What changes when the organization wins or loses?
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *Faction relationships, public and private reputations, reveal schedule, and GM secrets.*
 
@@ -154,3 +187,21 @@ After an investigation embarrasses a municipal supervisor, the rookie is no long
 **Author's answers (Tomi writes here):**
 
 *Once approved, your prose goes into the tabletop rulebook first. Agents then create machine-readable faction records and Python behavior, preserving the printed rules and your intended story.*
+
+---
+
+## Unresolved decisions
+
+Answer in this column, in ordinary language, then delete the row.
+
+| Question | Record answers here |
+|---|---|
+| Which local actors are factions, and which are scenery? | |
+| How many factions does the first campaign need? | |
+| Does the protagonist's own office take faction turns, and who decides? | |
+| Are there non-human actors with local interests, and do they act on the same clock? | |
+| Which actors use SWN factions, WWN projects or AWN enclaves? | |
+| How does a player character learn that a faction acted? | |
+
+**Answers are prose.** An agent can structure them later, in Phase 3, only if you ask — you never
+have to write a data format.
