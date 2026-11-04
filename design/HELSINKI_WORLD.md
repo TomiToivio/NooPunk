@@ -3,13 +3,26 @@
 
 This is a **human-readable writing document for Tomi**. Write paragraphs, lists, or dialogue directly under **Your version**. Delete, replace, or ignore any example. **Every example is fictional scaffolding, not an established fact about NoöPunk.** You do not need to know YAML, JSON, Python, database fields, or identifiers. Agents will handle those *after* your approval.
 
-**Contents:** 1 Cyberpunk themes · 2 The world outside Helsinki · 3 The city at a glance · 4 Districts · 5 Megacorporations · 6 Gangs and street organizations · 7 NPCs · Open author decisions
-
-**Statuses you can use:** *Author canon* (you decided it) · *Repository canon* (already settled in a linked file) · *Example only / not canon* (scaffolding, disposable) · *Open question* (undecided) · *GM secret* (yours, not the players'). Nothing is canon because it appears in a worksheet.
-
 **Rulebook inspiration:** *Cities Without Number* (CWN), *Creating Your Dystopia*, especially world themes, corporations, gangs, and NPC creation (approximately printed pp. 106–130, edition-dependent). CWN remains the basic game. This document describes setting and story; it does not introduce a new rule system.
 
 **Where other material belongs:** Detailed Helsinki districts and sites go in [The City](HELSINKI_CITY.md); mechanically active local factions in [Factions](HELSINKI_FACTIONS.md); encounter descriptions in [Faces & Xenobestiary](HELSINKI_FACES_XENOBESTIARY.md). Existing author-written [Zones](ZONES.md), the author-only [Greater Helsinki draft](GREATER_HELSINKI_2045.md), and the established [Europol frame](../docs/world/EUROPOL_HELSINKI_1114.md) are referenced, never overwritten here. Use [the document register](../docs/DOCUMENT_REGISTER.md) to avoid parallel lore.
+
+**Status labels used in this file.** `AUTHOR CANON` — written and approved by you. `REPOSITORY CANON` —
+already established elsewhere in this repository; follow the link rather than restating it. `EXAMPLE ONLY /
+NOT CANON` — scaffolding, to be overwritten. `OPEN` — an undecided question. `GM SECRET` — true in the GM's
+notes, withheld from the players.
+
+**Contents**
+
+1. How to write this document
+2. 1. Cyberpunk themes
+3. 2. The world outside Helsinki
+4. 3. The city at a glance
+5. 4. Districts: a reader's introduction
+6. 5. Megacorporations
+7. 6. Gangs and street organizations
+8. 7. NPCs: people who make the world feel inhabited
+9. Open author decisions
 
 ## How to write this document
 
@@ -27,6 +40,8 @@ Two administrative systems refuse to recognize the same person's identity. A Eur
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *Theme name, street-level manifestation, what it means to the characters, and a case hook.*
 
 ---
@@ -42,6 +57,8 @@ A shipment of supposedly obsolete technology is held at the harbour. Every autho
 **Writing prompts:** What has ordinary society learned to live with by 2045? What do people know, suspect, or misunderstand about the NHI Crisis? What are the EU, Soviet Union, remaining United States, UNSA, and extraterrestrial powers doing that materially affects Helsinki? Which answers are deliberately unknown? Cite or link existing canon instead of retelling it in full.
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *What an ordinary Helsinki resident believes; what is established; what is disputed; what changes the first campaign.*
 
@@ -59,6 +76,8 @@ The new Greater Helsinki feels like several cities pretending to share one timet
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *An elevator pitch and a first impression.*
 
 ---
@@ -74,6 +93,8 @@ Kurvi is a useful opening neighborhood because an investigator can encounter tra
 **Writing prompts:** Which districts should a player immediately recognize? What is each district known for? What is its first case hook? Link the corresponding City entry when written.
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *District name, one-paragraph impression, story function. Repeat for each chosen district.*
 
@@ -91,6 +112,8 @@ Northern Continuity Logistics keeps the harbour's biometric gates and several mu
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *Name; business and public image; people and power; conflicts; hooks.*
 
 ---
@@ -106,6 +129,8 @@ A loose Kurvi crew earns money by trading information that public databases clai
 **Writing prompts:** What territory or social network matters to this group? Why did its members join? How do they make money or pursue politics? Who do they protect and exploit? What would draw a Europol investigator into their affairs?
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *Group name; origins; territory; members; goals; allies and rivals; mission possibilities.*
 
@@ -133,6 +158,8 @@ A loose Kurvi crew earns money by trading information that public databases clai
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *Write a character sketch in prose. Add a few simple RPG stats if useful.*
 
 ---
@@ -147,3 +174,21 @@ A loose Kurvi crew earns money by trading information that public databases clai
 **Author's notes and decisions (Tomi writes here):**
 
 *Nothing in this worksheet becomes canonical until you edit and approve it. Agents later transfer your approved content into the tabletop rulebook, derive machine-readable data, and implement it in Python, in that order.*
+
+---
+
+## Unresolved decisions
+
+Answer in this column, in ordinary language, then delete the row.
+
+| Question | Record answers here |
+|---|---|
+| What is the campaign's central theme, in one sentence? | |
+| How much of the NHI Crisis is public knowledge in 2045, and how much is rumour? | |
+| Which districts are playable in Act I, and which stay background? | |
+| Does the protagonist's office sit inside the liaison office described in the Europol document, or in a separate unit? | |
+| Which corporations are local, and which are only names on paperwork? | |
+| Is any street organization a genuine faction, and if so which? | |
+
+**Answers are prose.** An agent can structure them later, in Phase 3, only
+if you ask — you never have to write a data format.

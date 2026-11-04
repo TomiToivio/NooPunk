@@ -3,13 +3,29 @@
 
 This document is for **writing a city**, not for editing a database. Replace the fictional examples with your own ordinary prose. You can add or remove sections, write in your own language, and leave questions unanswered. Agents handle IDs, schemas, coordinates and Python later, **after** your author approval.
 
-**Contents:** 1 A timeline of collapse · 2 The megacorporations · 3 Other groups · 4 The city's ethos · 5 City government and jurisdiction · 6 Crime and punishment · 7 Social relationships · 8 Districts · 9 Physical / Cyber / Astral · 10 A fully described location · Open author decisions
-
-**Statuses you can use:** *Author canon* (you decided it) · *Repository canon* (already settled in a linked file) · *Example only / not canon* (scaffolding, disposable) · *Open question* (undecided) · *GM secret* (yours, not the players'). Nothing is canon because it appears in a worksheet.
-
 **Rulebook inspiration:** *Cities Without Number* (CWN), *Creating Your Dystopia* and *The City* (approximately printed pp. 106–130 and 196–217, edition-dependent). CWN city/district procedures inform the topics, not the formatting of your prose.
 
 **Keep one home for each subject:** Global context belongs in [World](HELSINKI_WORLD.md), organizations' playable SWN statistics in [Factions](HELSINKI_FACTIONS.md), and creature/encounter profiles in [Faces & Xenobestiary](HELSINKI_FACES_XENOBESTIARY.md). This city's author-owned government source is [Greater Helsinki](GREATER_HELSINKI_2045.md); the established zones are in [ZONES.md](ZONES.md). Respect the existing [Europol jurisdiction frame](../docs/world/EUROPOL_HELSINKI_1114.md) and [campaign outline](../docs/campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md). Link them rather than replacing their canon.
+
+**Status labels used in this file.** `AUTHOR CANON` — written and approved by you. `REPOSITORY CANON` —
+already established elsewhere in this repository; follow the link rather than restating it. `EXAMPLE ONLY /
+NOT CANON` — scaffolding, to be overwritten. `OPEN` — an undecided question. `GM SECRET` — true in the GM's
+notes, withheld from the players.
+
+**Contents**
+
+1. How to use this worksheet
+2. 1. A timeline of collapse
+3. 2. The megacorporations in Helsinki
+4. 3. Other groups and organizations
+5. 4. The city's ethos
+6. 5. City government and jurisdiction
+7. 6. Crime and punishment
+8. 7. Social relationships and daily life
+9. 8. Districts of the city
+10. 9. Three views of one city: Physical, Cyber and Astral
+11. 10. A fully described location
+12. Open author decisions
 
 ## How to use this worksheet
 
@@ -25,6 +41,8 @@ During the years following the NHI Crisis, the harbour's customs archive underwe
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *Event; date or relative sequence; consequences for Helsinki; evidence; public account versus uncertainties.*
 
 ---
@@ -38,6 +56,8 @@ Northern Continuity Logistics operates entry systems for the port and archive st
 **Writing prompts:** Which corporate offices, factories, housing, shops or secure sites are actually here? What services do residents depend on? Which particular district or person feels the corporation's influence? Link a mechanical faction record only if the company takes faction turns.
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *Name; Helsinki locations; services; community impact; tensions; case hooks.*
 
@@ -53,6 +73,8 @@ An infrastructure incident draws representatives of municipal emergency services
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *Organization; local purpose; people; jurisdiction; allies and conflicts.*
 
 ---
@@ -66,6 +88,8 @@ Helsinki advertises itself as a city that can adapt to anything. Public transpor
 **Writing prompts:** What does the city believe about itself? What contradictions do its residents joke about? How do class, labour, ideology, accelerationism, fear and solidarity shape the streets? What makes the tone distinct from a generic dystopia?
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *Two or three paragraphs on civic character, hopes, hypocrisies and daily humor.*
 
@@ -81,6 +105,8 @@ The municipality can cordon off a dangerous service building, Finnish police inv
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *Government, political conflicts, agencies and the everyday consequences of overlapping authority.*
 
 ---
@@ -95,6 +121,8 @@ A courier insists their identity was used to access a restricted shipping termin
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *Street-level crime, enforcement, courts, detention, institutional failures and adventure hooks.*
 
 ---
@@ -108,6 +136,8 @@ The driver on the night route knows which café owner will let exhausted workers
 **Writing prompts:** Who knows whom in the rookie's neighborhood? What are the everyday meeting places, work cultures, languages, solidarities and conflicts? How do reputation, class and personal history affect a case?
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *Neighborhood institutions, social networks, recurring acquaintances and situations.*
 
@@ -139,6 +169,8 @@ The driver on the night route knows which café owner will let exhausted workers
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *District name, atmosphere, two defining pressures, places, inhabitants, relationships, encounters, connections, optional CWN tags.*
 
 ---
@@ -159,6 +191,8 @@ Standing at a stop, a character sees wet pavement, commuters and a maintenance b
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *What each layer looks and feels like; when characters learn about it; which layers are accessible.*
 
 ### Underground Helsinki
@@ -170,6 +204,8 @@ Helsinki has real infrastructure underground. **Do not imply that restricted rea
 A sealed door can be seen from a public station platform. The player cannot enter it merely because a corridor exists behind it. An authorized maintenance worker may eventually grant access, or a fictional future tunnel could provide a separate route.
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *Existing, publicly accessible locations; restricted areas; wholly fictional 2045 construction; any necessary safety or permission distinctions.*
 
@@ -184,6 +220,8 @@ A sealed door can be seen from a public station platform. The player cannot ente
 **Writing prompts:** What do people in Helsinki believe about each concept? What can characters verify? Which encounters are dreams, visions, physical events, or ambiguous reports? At what stage may the game reveal more?
 
 **Your version (Tomi writes here):**
+
+<!-- Tomi writes below -->
 
 *The city's phenomenology, competing explanations and campaign reveal order.*
 
@@ -213,6 +251,8 @@ A sealed door can be seen from a public station platform. The player cannot ente
 
 **Your version (Tomi writes here):**
 
+<!-- Tomi writes below -->
+
 *Location title, readable description, Physical/Cyber/Astral perceptions, access, people, clues, adventure hook and GM secrets.*
 
 ---
@@ -229,3 +269,21 @@ A sealed door can be seen from a public station platform. The player cannot ente
 **Author's answers (Tomi writes here):**
 
 *Agents will later incorporate the approved prose into the rulebook, convert it into structured data, and implement it in Python. Nothing in this worksheet is automatically canon.*
+
+---
+
+## Unresolved decisions
+
+Answer in this column, in ordinary language, then delete the row.
+
+| Question | Record answers here |
+|---|---|
+| Which districts exist as written cards, and which stay one-line background? | |
+| What is the city's real attitude to NHI presence — denial, accommodation, or something more specific? | |
+| How does PSI registration actually work, and who administers it? | |
+| Which of the three views is playable in Act I, and which are only described? | |
+| What are the genuinely restricted places in Helsinki, and which restrictions are fictional? | |
+| Where does Europol's authority end, in practice rather than in law? | |
+
+**Answers are prose.** An agent can structure them later, in Phase 3, only
+if you ask — you never have to write a data format.
