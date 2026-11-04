@@ -296,17 +296,17 @@
       "country": "FI",
       "kind": "podcast",
       "canonical_url": "https://takakansi.fi/",
-      "feed_url": null,
+      "feed_url": "https://takakansi.fi/feed/",
       "platform_ids": {},
-      "status": "unverified",
+      "status": "active",
       "priority": "P2",
       "topics": [
         "SF"
       ],
-      "last_checked": null,
+      "last_checked": "2026-11-04",
       "last_seen_item": null,
       "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
-      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+      "provenance": "Issue #1144 curated candidate; feed verified 2026-11-04 by fetching it (HTTP 200, application/rss+xml) before enabling ingestion."
     },
     {
       "id": "historian-salaisuudet",
@@ -413,19 +413,19 @@
       "country": "INT",
       "kind": "podcast",
       "canonical_url": "https://www.dwarkesh.com/",
-      "feed_url": null,
+      "feed_url": "https://www.dwarkesh.com/feed",
       "platform_ids": {},
-      "status": "unverified",
+      "status": "active",
       "priority": "P0",
       "topics": [
         "AGI",
         "ASI",
         "FUTURES"
       ],
-      "last_checked": null,
+      "last_checked": "2026-11-04",
       "last_seen_item": null,
       "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
-      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+      "provenance": "Issue #1144 curated candidate; feed verified 2026-11-04 by fetching it (HTTP 200, application/xml) before enabling ingestion."
     },
     {
       "id": "80000hours",
@@ -494,18 +494,18 @@
       "country": "INT",
       "kind": "paper",
       "canonical_url": "https://arxiv.org/list/cs.AI/recent",
-      "feed_url": null,
+      "feed_url": "https://arxiv.org/rss/cs.AI",
       "platform_ids": {},
-      "status": "unverified",
+      "status": "active",
       "priority": "P0",
       "topics": [
         "AGI",
         "ASI"
       ],
-      "last_checked": null,
+      "last_checked": "2026-11-04",
       "last_seen_item": null,
       "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
-      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+      "provenance": "Issue #1144 curated candidate; feed verified 2026-11-04 by fetching it (HTTP 200, application/rss+xml) before enabling ingestion."
     },
     {
       "id": "metr",
@@ -730,18 +730,18 @@
       "country": "INT",
       "kind": "publication",
       "canonical_url": "https://clarkesworldmagazine.com/",
-      "feed_url": null,
+      "feed_url": "https://clarkesworldmagazine.com/feed/",
       "platform_ids": {},
-      "status": "unverified",
+      "status": "active",
       "priority": "P1",
       "topics": [
         "SF",
         "NEW_WEIRD"
       ],
-      "last_checked": null,
+      "last_checked": "2026-11-04",
       "last_seen_item": null,
       "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
-      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+      "provenance": "Issue #1144 curated candidate; feed verified 2026-11-04 by fetching it (HTTP 200, application/rss+xml) before enabling ingestion."
     },
     {
       "id": "locus",
@@ -750,17 +750,17 @@
       "country": "INT",
       "kind": "publication",
       "canonical_url": "https://locusmag.com/",
-      "feed_url": null,
+      "feed_url": "https://locusmag.com/feed/",
       "platform_ids": {},
-      "status": "unverified",
+      "status": "active",
       "priority": "P1",
       "topics": [
         "SF"
       ],
-      "last_checked": null,
+      "last_checked": "2026-11-04",
       "last_seen_item": null,
       "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
-      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+      "provenance": "Issue #1144 curated candidate; feed verified 2026-11-04 by fetching it (HTTP 200, application/rss+xml) before enabling ingestion."
     },
     {
       "id": "reactor",
@@ -769,18 +769,18 @@
       "country": "INT",
       "kind": "publication",
       "canonical_url": "https://reactormag.com/",
-      "feed_url": null,
+      "feed_url": "https://reactormag.com/feed/",
       "platform_ids": {},
-      "status": "unverified",
+      "status": "active",
       "priority": "P1",
       "topics": [
         "SF",
         "NEW_WEIRD"
       ],
-      "last_checked": null,
+      "last_checked": "2026-11-04",
       "last_seen_item": null,
       "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
-      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+      "provenance": "Issue #1144 curated candidate; feed verified 2026-11-04 by fetching it (HTTP 200, application/rss+xml) before enabling ingestion."
     },
     {
       "id": "strange-horizons",
@@ -789,18 +789,18 @@
       "country": "INT",
       "kind": "publication",
       "canonical_url": "https://strangehorizons.com/",
-      "feed_url": null,
+      "feed_url": "https://strangehorizons.com/feed/",
       "platform_ids": {},
-      "status": "unverified",
+      "status": "active",
       "priority": "P1",
       "topics": [
         "SF",
         "NEW_WEIRD"
       ],
-      "last_checked": null,
+      "last_checked": "2026-11-04",
       "last_seen_item": null,
       "license_or_access_notes": "Use public metadata and authorized feeds only; no copyrighted transcript copying.",
-      "provenance": "Issue #1144 curated candidate; endpoint/feed and activity require verification."
+      "provenance": "Issue #1144 curated candidate; feed verified 2026-11-04 by fetching it (HTTP 200, application/rss+xml) before enabling ingestion."
     },
     {
       "id": "eu-commission",
@@ -910,5 +910,6 @@
       "license_or_access_notes": "User-supplied link; title, authorship and license not verified.",
       "provenance": "User-provided NoöPunk research link."
     }
-  ]
+  ],
+  "verification_note": "Verified on 2026-11-04 by fetching each feed and checking the HTTP status and content type. Seven of the curated sources publish a machine-readable feed; the other 38 remain unverified leads and must not be polled automatically until someone verifies them the same way."
 }
