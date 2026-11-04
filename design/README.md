@@ -46,7 +46,7 @@ These five *separate* draft documents are available for Tomi's edits and approva
 
 [Tracking issue #1137](https://github.com/TomiToivio/NooPunk/issues/1137). The author's [BIONICS.md](BIONICS.md) remains intact and authoritative for author decisions; these are proposals only.
 
-## Issue #1141: Human-readable Helsinki setting worksheets — Phase 1 complete, Phase 2 awaiting author
+## Issue #1141: Human-readable Helsinki setting worksheets — Phase 1 reworked, Phase 2 awaiting author
 
 **Four distinct documents, one canonical worksheet per concern.** These are agent-authored, **human-readable Markdown writing templates**, not setting canon. Each contains natural-language fictional examples, writing prompts and clearly marked **Your version (Tomi writes here)** sections. No YAML, JSON or Python editing is required. Replace example content only when Tomi authors it; examples are never approved lore.
 
@@ -59,4 +59,5 @@ These five *separate* draft documents are available for Tomi's edits and approva
 
 **Document deduplication:** The same subject must not be independently defined in multiple worksheets. Keep its full record in the owning document and use a link/stable ID in the others. Before creating another Helsinki document, check [the document register](../docs/DOCUMENT_REGISTER.md), existing `design/` and `docs/world/` documents and related open issues/PRs. Consolidate overlapping *agent-authored* content in its owner, preserving all unique material and attribution. Do not edit, relocate, delete, or overwrite author-written `design/ZONES.md`, `design/GREATER_HELSINKI_2045.md` or other author drafts without explicit authorization.
 
-**Phases and gates:** Phase 1 (readable prose templates, rewritten under #1141 on 2026-11-04) is complete. Phase 2 (Tomi writes and approves authored content) is pending. Phase 3 (tabletop rulebook, engine-neutral Python and Evennia integration) requires separate explicit authorization after Phase 2; **never implement example content as canon**. Existing [Greater Helsinki government draft](GREATER_HELSINKI_2045.md), [ZONES](ZONES.md) and [Europol campaign authority](../docs/world/EUROPOL_HELSINKI_1114.md) retain their established precedence. See [issue #1141](https://github.com/TomiToivio/NooPunk/issues/1141).
+**Phases and gates:** Phase 1 is complete as a set of prose worksheets: every section has a written
+example, a visible place to write your own version, and no YAML, JSON, field names or internal identifiers. Phase 2 (Tomi writes and approves authored content) is pending. Phase 3 (tabletop rulebook, engine-neutral Python and Evennia integration) requires separate explicit authorization after Phase 2; **never implement example content as canon**. Existing [Greater Helsinki government draft](GREATER_HELSINKI_2045.md), [ZONES](ZONES.md) and [Europol campaign authority](../docs/world/EUROPOL_HELSINKI_1114.md) retain their established precedence. See [issue #1141](https://github.com/TomiToivio/NooPunk/issues/1141).

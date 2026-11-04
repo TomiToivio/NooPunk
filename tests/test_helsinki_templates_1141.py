@@ -25,6 +25,9 @@ FACTIONS = DESIGN / "HELSINKI_FACTIONS.md"
 FACES = DESIGN / "HELSINKI_FACES_XENOBESTIARY.md"
 ALL = (WORLD, CITY, FACTIONS, FACES)
 
+#: Anything that looks like a data record rather than a sentence.
+SCHEMA_LINE = re.compile(r"^\s{0,4}[a-z][a-z0-9_]{2,}\s*:\s*\S", re.MULTILINE)
+
 RELATIVE_LINK = re.compile(r"\[[^\]]*\]\(([^)#\s]+)(?:#[^)]*)?\)")
 # the faction worksheet prints its samples as: | **Cunning** | False Front | role | Cost 1; HP 2 |
 ASSET_ROW = re.compile(r"\|\s*\*{0,2}(?P<kind>Cunning|Force|Wealth)\*{0,2}\s*\|\s*"
@@ -255,6 +258,53 @@ class LinksAndIndexes(unittest.TestCase):
 
     def test_the_document_register_names_the_set(self):
         self.assertIn("HELSINKI_CITY.md", text(ROOT / "docs" / "DOCUMENT_REGISTER.md"))
+
+
+
+
+class NoMachineSyntaxInTheAuthorsFiles(unittest.TestCase):
+    """The half of the guard that came from main's version of this file (#1151), kept in the merge.
+
+    These are the negative properties — the ones that decay silently when a document is edited by
+    someone who means well. My rewrite of the guard had the positive checks; dropping these would have
+    made the merge a regression dressed as a resolution.
+    """
+
+    def test_no_fenced_code_blocks_of_any_kind(self):
+        for path in ALL:
+            self.assertNotIn("```", text(path), f"{path.name} contains a code fence")
+
+    def test_no_schema_vocabulary_in_the_writing_areas(self):
+        """Naming YAML only to say "you will not need it" is fine; a field name is not."""
+        for path in ALL:
+            body = text(path).lower()
+            for word in ("serialization", "schema key", "primary key", "foreign key"):
+                self.assertNotIn(word, body, f"{path.name} still talks about {word}")
+
+    def test_no_internal_identifiers(self):
+        for path in ALL:
+            body = text(path)
+            self.assertNotIn("hel_", body, f"{path.name} still carries internal IDs")
+            for key in ("site_id", "faction_id", "entity_id", "district_id", "density_access",
+                        "transition_rule", "scripted_reveal_gate"):
+                self.assertNotIn(key, body, f"{path.name} still carries the field name {key}")
+
+    def test_no_key_value_records(self):
+        for path in ALL:
+            body = text(path)
+            hits = [m.group(0).strip() for m in SCHEMA_LINE.finditer(body)
+                    if not m.group(0).strip().startswith(("*", "-", ">", "|"))]
+            self.assertEqual(hits, [], f"{path.name} still contains record-style lines: {hits[:4]}")
+
+    def test_the_documents_never_claim_phase_two_or_three_is_done(self):
+        """#1141 closes only when all three phases are finished; Phase 1 must not read as completion."""
+        for path in ALL:
+            head = text(path)[:600].lower()
+            self.assertIn("phase 1", head, path.name)
+            body = text(path).lower()
+            for claim in ("phase 2 is complete", "phase 3 is complete", "phases 1-3",
+                          "implementation complete"):
+                self.assertNotIn(claim, body, f"{path.name} claims {claim}")
 
 
 if __name__ == "__main__":
