@@ -31,6 +31,7 @@ CWN is untouched. Nothing here rolls dice, changes an attribute or resolves a ch
 from __future__ import annotations
 
 from collections.abc import Iterable
+from datetime import date
 from dataclasses import asdict, dataclass, field
 from typing import Any
 
@@ -45,6 +46,7 @@ ANOMALY_LADDER = ("none", "sporadic", "persistent", "breached")
 SHOCK_LADDER = ("none", "local", "regional", "global")
 
 MATERIAL_AXES = ("physical_infrastructure", "public_safety", "supplies", "communications")
+TRANSITION_AXES = MATERIAL_AXES + ("governance", "anomaly", "ontological_shock")
 
 #: Overlays a region turns on when it is no longer functioning. Names match the P0 rows of the AWN
 #: inventory; each one is additive and none of them edits a CWN rule.
@@ -58,6 +60,14 @@ OVERLAYS = {
 
 class RegionError(ValueError):
     """A rule was about to be broken: unknown axis value, undated transition, skipped recovery."""
+
+
+def _valid_date(value: str) -> bool:
+    """Lexical ordering is only safe for canonical ISO calendar dates."""
+    try:
+        return isinstance(value, str) and date.fromisoformat(value).isoformat() == value
+    except ValueError:
+        return False
 
 
 @dataclass(frozen=True)
@@ -77,8 +87,8 @@ class RegionState:
     def __post_init__(self) -> None:
         if not self.region:
             raise RegionError("a region state needs a region id")
-        if not self.date:
-            raise RegionError("a region state needs the date it was recorded")
+        if not _valid_date(self.date):
+            raise RegionError("region state date must be ISO YYYY-MM-DD")
         for axis in MATERIAL_AXES:
             value = getattr(self, axis)
             if value not in LADDER:
@@ -92,7 +102,7 @@ class RegionState:
                 f"ontological_shock must be one of {SHOCK_LADDER}, not {self.ontological_shock!r}")
 
     def axis(self, name: str) -> str:
-        if not hasattr(self, name):
+        if name not in TRANSITION_AXES:
             raise RegionError(f"unknown axis {name!r}")
         return str(getattr(self, name))
 
@@ -151,9 +161,9 @@ class RegionEvent:
     source: str = ""
 
     def __post_init__(self) -> None:
-        if not self.date or not self.region:
-            raise RegionError("an event needs a date and a region")
-        if not self.cause.strip():
+        if not _valid_date(self.date) or not self.region:
+            raise RegionError("an event needs a region and ISO YYYY-MM-DD date")
+        if not isinstance(self.cause, str) or not self.cause.strip():
             raise RegionError("an event needs a cause: 'the clock advanced' is not one")
 
 
@@ -192,6 +202,8 @@ class RegionLedger:
             raise RegionError(f"{event.region}: {event.date} precedes {current.date}")
         if event.axis is None or event.to is None:
             raise RegionError("a transition must name the axis and its new value")
+        if event.axis not in TRANSITION_AXES:
+            raise RegionError(f"unknown transition axis {event.axis!r}")
         before = current.axis(event.axis)
         if event.axis == "governance":
             allowed_values: Iterable[str] = GOVERNANCE_VALUES
@@ -201,14 +213,20 @@ class RegionLedger:
             allowed_values = ANOMALY_LADDER if event.axis == "anomaly" else SHOCK_LADDER
         if event.to not in tuple(allowed_values):
             raise RegionError(f"{event.axis} cannot be {event.to!r}")
-        if not transition_allowed(before, event.to):
+        if event.axis in ("anomaly", "ontological_shock"):
+            ladder = ANOMALY_LADDER if event.axis == "anomaly" else SHOCK_LADDER
+            previous, following = ladder.index(before), ladder.index(event.to)
+            permitted = following > previous or previous - following == 1
+        else:
+            permitted = transition_allowed(before, event.to)
+        if not permitted:
             raise RegionError(
                 f"{event.region}: {event.axis} cannot go from {before} to {event.to} in one event")
-        self.events.append(event)
         fields = {axis: current.axis(axis)
                   for axis in MATERIAL_AXES + ("governance", "anomaly", "ontological_shock")}
         fields[event.axis] = event.to
         state = RegionState(region=event.region, date=event.date, **fields)
+        self.events.append(event)
         self.states.append(state)
         return state
 

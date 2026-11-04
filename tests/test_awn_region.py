@@ -195,3 +195,60 @@ class OptionalAWNActivation1109Tests(unittest.TestCase):
         self.assertEqual(ledger.latest("quarantine").supplies, "emergency")
         self.assertEqual(ledger.world_at("2045-04-02")["overlays"]["quarantine"],
                          ["privation_strain"])
+
+
+class RegionLedgerIntegrity1109Tests(unittest.TestCase):
+    """Invalid incident proposals must not corrupt the regional evidence history."""
+
+    def test_invalid_axis_does_not_append_a_false_event(self):
+        ledger = RegionLedger()
+        ledger.record(_state())
+        before = ledger.to_dict()
+        with self.assertRaises(RegionError):
+            ledger.transition(RegionEvent(date="2045-04-03", region="helsinki",
+                                          axis="date", to="global", cause="false report"))
+        self.assertEqual(ledger.to_dict(), before)
+
+    def test_invalid_event_date_does_not_enter_history(self):
+        ledger = RegionLedger()
+        ledger.record(_state())
+        for invalid in ("2045-02-30", "2045-4-3", "tomorrow"):
+            with self.subTest(invalid=invalid), self.assertRaises(RegionError):
+                ledger.transition(RegionEvent(date=invalid, region="helsinki",
+                                              axis="supplies", to="emergency", cause="convoy lost"))
+        self.assertEqual(len(ledger.events), 0)
+
+    def test_invalid_state_date_is_refused(self):
+        with self.assertRaises(RegionError):
+            _state(date="2045-02-30")
+
+    def test_valid_transition_roundtrip_and_recovery(self):
+        ledger = RegionLedger()
+        ledger.record(_state("quarantine", "2045-04-01", supplies="after_the_fall"))
+        ledger.transition(RegionEvent(date="2045-04-02", region="quarantine", axis="supplies",
+                                      to="emergency", cause="UNSA aid convoy", source="dispatch 17"))
+        restored = RegionLedger.from_dict(json.loads(json.dumps(ledger.to_dict())))
+        self.assertEqual(restored.to_dict(), ledger.to_dict())
+        self.assertEqual(restored.world_at("2045-04-02")["overlays"]["quarantine"],
+                         ["privation_strain"])
+
+    def test_anomaly_and_shock_have_independent_ladders(self):
+        ledger = RegionLedger()
+        ledger.record(_state())
+        anomaly = ledger.transition(RegionEvent(
+            date="2045-04-01", region="helsinki", axis="anomaly",
+            to="persistent", cause="confirmed incursion"))
+        self.assertEqual(anomaly.anomaly, "persistent")
+        shock = ledger.transition(RegionEvent(
+            date="2045-04-02", region="helsinki", axis="ontological_shock",
+            to="global", cause="public disclosure"))
+        self.assertEqual(shock.ontological_shock, "global")
+        with self.assertRaises(RegionError):
+            ledger.transition(RegionEvent(
+                date="2045-04-03", region="helsinki", axis="anomaly",
+                to="none", cause="unsupported sudden all-clear"))
+        recovered = ledger.transition(RegionEvent(
+            date="2045-04-03", region="helsinki", axis="anomaly",
+            to="sporadic", cause="containment confirmed"))
+        self.assertEqual(recovered.anomaly, "sporadic")
+        self.assertEqual(len(ledger.events), 3)
