@@ -1,5 +1,9 @@
 # Law of One lore notes — consolidated source sheet (issue #191)
 
+> **Standalone RPG note:** this sheet is NoöPunk's lore evidence, not the fourth-density RPG
+> inventory. The separate Phase 1 inventory is
+> [`law_of_one/INVENTORY_1124.md`](law_of_one/INVENTORY_1124.md).
+>
 > **Status: research reference, not canon.** This is the consolidated, session-cited evidence
 > base behind [`rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md`](../rulebook/16_CONFEDERACY_SOURCE_AND_CONTACT.md)
 > and [`rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md`](../rulebook/17_NOETIC_PRACTICE_AND_CRYSTAL_TECH.md).
