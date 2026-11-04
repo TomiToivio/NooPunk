@@ -3,8 +3,8 @@
   "source": "src/rules",
   "note": "Registry of implemented rule procedures. Presence here is code coverage, not SRD parity.",
   "totals": {
-    "modules": 47,
-    "procedures": 445
+    "modules": 48,
+    "procedures": 453
   },
   "modules": [
     {
@@ -1486,6 +1486,11 @@
           "doc": "One hand free, a voice, and no hit-point damage or grappling in the round (6.1.3.1)."
         },
         {
+          "name": "overcast_total",
+          "signature": "(*, die, cast_skill=..., constitution_mod=..., day_commitment=...)",
+          "doc": "The overcasting total: 1d20 + Cast skill + Con modifier, -2 for a day-long commitment (6.1.4)."
+        },
+        {
           "name": "overcast_result",
           "signature": "(total)",
           "doc": "Map 1d20 + Cast + Con (\u22122 for a day-commitment spell) onto the overcasting table."
@@ -1565,7 +1570,7 @@
           ]
         }
       ],
-      "count": 18
+      "count": 19
     },
     {
       "module": "cwn_magic_items.py",
@@ -1933,7 +1938,7 @@
         {
           "name": "overcast_outcome",
           "signature": "(total)",
-          "doc": "The published table, verbatim in its bands."
+          "doc": "The published overcasting table, read off `cwn_magic.OVERCAST_TABLE` rather than restated."
         },
         {
           "name": "overcast",
@@ -2367,6 +2372,47 @@
         }
       ],
       "count": 37
+    },
+    {
+      "module": "swn_faction_assets.py",
+      "procedures": [
+        {
+          "name": "catalogue_size",
+          "signature": "()",
+          "doc": ""
+        },
+        {
+          "name": "asset",
+          "signature": "(asset_id)",
+          "doc": ""
+        },
+        {
+          "name": "by_category",
+          "signature": "(category, *, level=...)",
+          "doc": ""
+        },
+        {
+          "name": "damage_roll",
+          "signature": "(spec, *, rng=...)",
+          "doc": "Roll a damage expression such as ``2d6+2``. Minimum 0, as a damage roll cannot heal."
+        },
+        {
+          "name": "attack_exchange",
+          "signature": "(attacker_id, defender_id, *, attacker_ratings, defender_ratings, rng=...)",
+          "doc": "One attacking asset against one defending asset (SWN p.214)."
+        },
+        {
+          "name": "to_turn_asset",
+          "signature": "(asset_id, *, identifier, faction, location)",
+          "doc": "Build the turn module's `Asset` from the catalogue, so the sheet and the engine agree on HP."
+        },
+        {
+          "name": "purchase",
+          "signature": "(faction, asset_id, *, identifier, location)",
+          "doc": "Buy one asset for a faction, charging the catalogue cost (SWN p.214, \"Buy Asset\")."
+        }
+      ],
+      "count": 7
     },
     {
       "module": "swn_faction_engine.py",
