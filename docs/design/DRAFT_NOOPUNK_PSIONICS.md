@@ -94,3 +94,62 @@ Research references: Lloyd https://arxiv.org/abs/1312.4455 ; Orch-OR https://pub
 7. Which claims in Radin/Faggin/Gallimore are *aesthetic* versus mechanical? Label before author acceptance.
 
 **Next gate:** Tomi edits and approves. Only then implement parallel tabletop + Python and gold-test three scenarios (consensual telepathy, psychic defence, astral entry/return).
+
+---
+
+## Merged review pass — what this section adds
+
+A second draft of this same subsystem was written in parallel on the same day; this file and that one were
+reconciled rather than shipped twice. The earlier text above stands as the base. The sections below are the
+material it did not contain: quantified procedures, the audit results, and the decisions that need a number
+rather than a principle.
+
+### The projection clock, quantified
+
+The six steps above need one track so that "the thread home" is a thing a table can see. Proposal:
+
+| element | draft value | why |
+|---|---|---|
+| **link boxes** | 3 | fits on a sheet as three tick boxes, and is short enough that a scene can fill two |
+| **filled by** | each interference (+1), each scene spent past the first (+1), any ectoplasmic manifestation (+2) | every way of staying longer costs the same currency |
+| **return difficulty** | 2 without an anchor, 0 with one, **+ boxes filled** | the anchor is the whole reason to prepare |
+| **loss** | three boxes = lost: a *scene* of finding the way back, not a death | the failure is interesting, not terminal |
+| **reset** | after a full sleep | no long-term resource to track |
+
+**Distinct from every other track.** It is not System Strain (that is the body), not Effort (that is a trained
+mind's reserve), and not hit points. A projected character's *physical* body is still where they left it and can
+be found, moved or hurt — that is a scene fact the GM narrates, not a second combat board.
+
+### One effect, three sources, one payer
+
+| route | eligibility | what it may pay | what it may never do |
+|---|---|---|---|
+| natural awakening | latent trait, wakes in Act II | a condition tag per use | grant a second implementation of Telepathy |
+| bionic eligibility | a trait that unlocks the latent capability | the bionic's own cost (supply, detection) | be a power in itself |
+| psychotronic device | an issued or external device with a conscious operator | the device's tag state | lower a requirement more than one step |
+
+Precedence, in order: **CWN first**; then one payer per scene (the player names it, and the fiction says why the
+others do not stack); then a device may only *enable*, never out-rank a natural ability; then scripted phenomena
+are never player actions and never consume anything.
+
+### Evidence that changes the design, not just the bibliography
+
+Kunz et al., *Cell* 188(17):4658–4673 (2025) reports inner-speech decoding **and** that simple mental strategies
+robustly prevent it. That is the strongest single support in the whole file for the setting's central claim: **a
+mind is not a machine that can be read, it is a person who can decline.** Every psychic procedure here should
+leave the target a way to refuse — and refusing should be a real option, not a formality.
+
+### Implementation constraints (Phase B, if approved)
+
+* **No new die.** Every contested check takes a total that the CWN resolver produced; the psi module never rolls.
+* **No import in either direction** between the psi module and `src/rules/investigation.py` — the AST guard that
+  already protects `swn_psionics` (see `tests/test_1105_psi_investigation_boundary.py`) must cover it too.
+* **Serialize.** `Projection` state round-trips to JSON, so a save/replay reproduces the same scene.
+* **`may_stack(payers) -> str`** returns the single legal payer, with a reason readable at a table.
+
+### Page anchors used above
+
+SWN Revised Deluxe: Psionics pp. 30–41, Telepathy 40–41, Biopsionics 32–33, Metapsionics 34–35. AWN Deluxe: The
+Mentalist p. 264, Mentalist Disciplines p. 266. WWN: Magic p. 62, Magical Workings p. 90, Arts of the Gyre p. 344.
+CWN: SRD §Hacking plus `src/rules/cwn_hacking.py`. All anchors come from `data/rules/*_sections.json`, not from
+memory.

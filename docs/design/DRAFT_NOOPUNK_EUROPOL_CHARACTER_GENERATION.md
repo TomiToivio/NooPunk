@@ -70,3 +70,42 @@ The rookie leaves the Kurvi apartment, checks BCI credentials, reports to Europo
 6. How equipment ownership and Kurvi housing change on job suspension or resignation.
 
 **Next gate:** Tomi edits; then implement approved rulebook and Python together, not here.
+
+---
+
+## Merged review pass — what this section adds
+
+A second draft of this same subsystem was written in parallel on the same day; this file and that one were
+reconciled rather than shipped twice. The earlier text above stands as the base. The sections below are the
+material it did not contain: quantified procedures, the audit results, and the decisions that need a number
+rather than a principle.
+
+### The reuse audit, actually completed
+
+The draft above says "compare exact CWN backgrounds/Edges/Foci … before approval". That comparison is done, and
+it narrows the proposal further than the draft assumed:
+
+| CWN piece | verified inventory | consequence for the rookie |
+|---|---|---|
+| backgrounds | **20**, in `data/rules/cwn/srd_tables.json`: Bum, Bureaucrat, Clergy, Coder, Corp Security, Corper, Criminal, Doctor, Drone Jockey, Ganger, Laborer, **Law Enforcement**, Manager, Outlander, Performer, Soldier, **Spy**, Trader, Streetwalker, Technician | *Law Enforcement* covers the field investigator; *Spy* and *Bureaucrat* cover liaison and analysis; *Coder* and *Doctor* cover cyberforensics and pathology. **At most one wrapper background is justified**, and only for the academy's cross-border case-file emphasis |
+| edges / foci | `src/rules/cwn_edges_foci.py`: `EDGES_AT_START = 2`, `FOCI_AT_START = 1`, `FOCUS_LEVEL_MAX = 2`; `cwn_foci.py`: `new_character_picks`, `take_level` | **zero new edges, zero new foci.** The pregen picks two edges and one focus from the canonical lists |
+| skills | **19**, `data/rules/cwn/skills.json` (Administer … Work) | **no new skill.** PSI uses the existing skill the action resembles |
+| gear | `data/rules/cwn_equipment.json`: weapons `light_pistol`, `heavy_pistol`, `rifle`, `submachine_gun`, …; armour `ordinary_clothing`, `reinforced_clothing`, `street_leathers`, `impact_jacket`, … | the kit draws **only** from these ids; no invented items, no invented prices |
+| cyberware | 17 entries in `data/rules/cwn_catalogue.json` (incl. `cybernetic_baseline`) | BCI and the defensive implant are cyberware with CWN's surgery, strain and complication rules |
+| generation | `src/rules/field_agent.py` — `generate_field_agent`, `swap_attributes` | the pregen can be **produced by code later**, not hand-written |
+
+So the character-generation addition is: **one optional background wrapper, a filled-in CWN sheet, two GM-only
+flags, and a kit of canonical ids.** Anything larger is a second character-creation system.
+
+### Ownership, made explicit
+
+| asset | category | owner | if it is lost or abused |
+|---|---|---|---|
+| BCI | issued, implanted | Europol; the body carries it | removal is a CWN procedure with complications; the agency notices |
+| defensive psychotronic implant | issued, implanted | Europol | calibrated to her, so useless to a thief; loss is a report |
+| sidearm, armour | issued equipment | Europol | CWN equipment rules; a lost weapon is a report, not a fine |
+| credentials, comms | **licensed access** | Europol | opens Europol's doors, not Finland's |
+| Kurvi apartment | **agency-owned housing** | Europol | not sellable, not collateral, inspectable by the employer |
+| personal kit | personal property | the character | ordinary CWN gear bought with ordinary money |
+
+The first lesson of the campaign is in this table: **she owns almost nothing she uses.**

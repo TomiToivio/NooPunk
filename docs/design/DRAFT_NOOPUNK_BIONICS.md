@@ -60,3 +60,52 @@ A clinical laboratory detects an unexpected inherited allele in the rookie. Mark
 - How much of SWN transhuman embodiment/resleeving should be separated into its own later module rather than overloaded into this human-bionics draft?
 
 **Next gate:** Tomi edits this draft; then future implementation adds tabletop and Python parity/tests in the same approved PR.
+
+---
+
+## Merged review pass — what this section adds
+
+A second draft of this same subsystem was written in parallel on the same day; this file and that one were
+reconciled rather than shipped twice. The earlier text above stands as the base. The sections below are the
+material it did not contain: quantified procedures, the audit results, and the decisions that need a number
+rather than a principle.
+
+### Three acquisition routes, because "how you got it" is the character
+
+| route | fiction | who can get it | cost | failure mode |
+|---|---|---|---|---|
+| **prescribed therapy** | a clinician, a diagnosis, a course of treatment | anyone with access and a reason | time, money, side effects, a permanent medical record | the condition returns; the record exists |
+| **elective procedure** | a clinic, a surgeon, an anaesthetic | anyone who can pay and consent | surgery difficulty, recovery, complications (CWN-shaped) | the same complication table as cyberware, with biological entries |
+| **prenatal design / hybridisation** | decided before birth by parents, a corporation or an alien programme | **nobody chooses this for themselves** | it is not a purchase; it is a backstory | illegal, undocumented, often unknown to the character |
+
+Plus a fourth that is not a route at all: **latent activation** — something always there that turns on under
+stress. It belongs to the GM until the character learns what it is.
+
+This is what keeps the author's brief honest. The brief says a character may not even know she has bionics; a
+purchase model cannot produce that, and a discovery model can.
+
+### Where the balance comes from when nothing is visible
+
+AWN's mutations are evident, and their price is stigma. NoöPunk's are concealed, so the price has to be three
+other things — all of them fictional, none of them a points deficit:
+
+1. **detection** — a scan, a blood test, a record; being found out is the cost;
+2. **supply** — a clinician, a prescription, a maintenance interval; supply is leverage;
+3. **obligation** — whoever provided it now has an interest in you.
+
+An elective bionic with no detection risk, no supply line and no obligation is simply a free advantage, and
+should be refused at the table.
+
+### Eligibility is a boolean, never a bonus
+
+`eligibility(bionic, effect) -> bool` answers only "may this character attempt it". The effect itself is priced
+by the psionics procedures. A test must assert that a bionic can never create a second Telepathy implementation,
+and that a hybrid's telepathy resolves through the same code path as an awakening's.
+
+### Implementation notes
+
+* Surgery routes **reuse** `cwn_cyberware`'s surgery/complication functions rather than copying them; a test
+  asserts the same function is called.
+* No invented prices: the procedure returns difficulty and time, and money comes from CWN or the author.
+* Every trait carries `source` (`engineered_human | hybrid | dormant_trait | exotic_nhi`), so a save file can
+  always answer "why can she do that".

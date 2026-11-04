@@ -60,3 +60,54 @@ Europol rookie's issued defensive implant warns of a suspected QIP contact durin
 - How to model cyberware System Strain under AWN disaster survival; do not introduce duplicate System Strain.
 
 **Next gate:** Tomi edits. Approved design later updates tabletop rules, Python and tests, not in this draft phase.
+
+---
+
+## Merged review pass — what this section adds
+
+A second draft of this same subsystem was written in parallel on the same day; this file and that one were
+reconciled rather than shipped twice. The earlier text above stands as the base. The sections below are the
+material it did not contain: quantified procedures, the audit results, and the decisions that need a number
+rather than a principle.
+
+### Four state words instead of an energy economy
+
+A charge counter turns the game into resource management. Four tags produce scenes instead, and each is a
+**status tag** with a duration and a source, exactly like every other NoöPunk tag:
+
+| tag | values | what it decides |
+|---|---|---|
+| **reliability** | `calibrated` / `drifting` / `failed` | whether the device does what it says. Drift is the interesting state: it still works and the GM decides *what* |
+| **calibration** | bound to one person or open | a device tuned to its operator does not work for a thief, and imposes a stated penalty on anyone else |
+| **privacy** | `no record` / `recorded` / `recorded-and-shared` | whether a use created evidence — and evidence has a chain of custody, an admissibility question and a rights problem |
+| **countermeasure** | none / shielded / disciplined | what the target can do about it. Per *Cell* (2025), private thought is defensible |
+
+**The single-payer rule, stated for devices:** if the effect charges the operator a condition, the device does not
+also charge strain; if the device charges, the operator pays nothing else. A test should assert it in both
+directions.
+
+### Device table, including the one that does nothing
+
+| device | category | enables | notes |
+|---|---|---|---|
+| defensive screen implant | QIP, issued | one bounded defence, on the operator's own PSI | the rookie's kit; cannot attack, cannot sense |
+| field amplifier | QIP, external | lowers one requirement by a step, once per scene | warm, obvious, needs setup |
+| clinical decoder suite | non-QIP | decodes a **cooperating** subject's attempted speech over hours | hospital, consent or warrant, subject-trained |
+| stimulation array | non-QIP | shifts arousal or valuation for a scene | a room, a technician, a legal basis |
+| **"insight helmet"** | pseudo-QIP, **fraud** | nothing at all | a prop used to frighten detainees. A game about institutions needs a fake device, because institutions buy fake devices |
+
+### Privacy is the mechanical heart
+
+A psychotronic recording is **not** automatically admissible. It is a data object with a provenance, and the
+investigation layer may refuse it. That refusal is the best scene in the subsystem: the technology worked, and
+the case still fails.
+
+### Real-world anchors for the device limits
+
+* **Deep-brain ultrasound** (256-element 555 kHz array, real-time fMRI guidance) modulates a *targeted circuit*
+  and needs individualised planning — *Nat. Commun.*, Sep 2025.
+* **Inner-speech BCI** decodes attempted speech and is defensible by the user — *Cell*, Aug 2025.
+* **fMRI semantic decoding** needs a cooperative subject, hours of training and a scanner — *Nat. Neurosci.*,
+  2023.
+
+None of these is a mind-reading helmet, and the 2045 setting should not pretend one exists.

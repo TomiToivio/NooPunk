@@ -76,3 +76,57 @@ Minimal **tabletop-friendly character-sheet/database tags** extending CWN but **
 - This subsystem makes **no scientific claim** about personality prediction from physiology. Personality/goal/reputation tags are **fictional narrative records**, not validated psychological instruments.
 
 **Next gate:** author revision first. There is no automatic translation from these tags to positive/negative polarization. Rulebook and Python can be changed only after explicit approval.
+
+---
+
+## Merged review pass — what this section adds
+
+A second draft of this same subsystem was written in parallel on the same day; this file and that one were
+reconciled rather than shipped twice. The earlier text above stands as the base. The sections below are the
+material it did not contain: quantified procedures, the audit results, and the decisions that need a number
+rather than a principle.
+
+### What already exists — so the draft adds two kinds, not three
+
+| piece | where | state |
+|---|---|---|
+| tag model | `data/rules/noopunk_tags.json`: kinds `attribute`, `skill`, `status`, `other`; fields `kind`, `name`, `value`, `sign`, `duration`, `source`, `stacking`, `exclusive_with`; stacking `stack / replace / highest` | **implemented** (`src/rules/noopunk_tags.py`, `src/rules/tags.py`) |
+| goals | [`docs/rules/GOAL_TAG_1119.md`](../rules/GOAL_TAG_1119.md), `src/rules/goals.py`, console verbs `goal/goals/progress/award` | **implemented** — one line on the sheet, short/medium/long, five lifecycle kinds, one event pays once, no attempt farming |
+| reputation | — | **gap** |
+| personality | — | **gap** |
+
+This draft therefore adds `personality` and `reputation` to `tags.kinds` (a migration note is required, because
+the existing kinds are `attribute/skill/status/other`) and **links to goals instead of re-implementing them.**
+
+### `Pacifist-2`: three readings, and a recommendation
+
+The draft above recommends "explicit player consent or an opt-in scripted constraint". That is one of three
+defensible readings, and the choice changes the game:
+
+| reading | what happens | who decides | risk |
+|---|---|---|---|
+| **A. hard trigger** | combat begins → the character flees or surrenders; the player narrates *how* | the tag | loss of agency at the most dramatic moment |
+| **B. checked trigger** | combat begins → a save; failure means flight or surrender | the dice | the tag becomes a coin flip and loses its moral weight |
+| **C. declared cost** | the player may stay, at a stated price (a condition, a lost action, a reputation note) | the player | it is no longer the author's example |
+
+**Recommendation: A, with two guard rails.** The player narrates the flight — *whether* she breaks is the tag's,
+*how* she breaks is hers, and that is where the drama lives. And the intensity can be bought down **by play, not
+by points**: a scene in which she stands her ground and pays for it may reduce the level by one, if the table
+agrees. People change; the tag is a record of who she is, not a life sentence.
+
+### Reputation: three visibilities, one scale
+
+The author's −4…+4 is kept exactly. What the draft above calls `public|internal|secret` is worth making
+mechanical, because the same score can differ by audience:
+
+| visibility | who perceives it |
+|---|---|
+| `public` | the street, the press, colleagues who talk |
+| `institutional` | the file, its readers, whoever decides postings |
+| `covert` | a faction that knows her and does not say so |
+
+**Absence is not zero** (the draft above is right about this): *unknown* and *known neutral* are different states,
+and the author's "only add them when a character gets a reputation" requires the difference.
+
+No economy: a reputation never spends down to buy a favour and never ticks up for politeness. It changes when
+something happens that the faction would hear about.
