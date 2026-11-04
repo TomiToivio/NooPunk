@@ -2,6 +2,18 @@
 
 > **DRAFT — TOMI REVIEW REQUIRED — NOT AUTHOR APPROVED.** Issue [#1137](https://github.com/TomiToivio/NooPunk/issues/1137); researched 2026-11-04. Planning only; do not implement, modify the CWN core, or copy a published ruleset. **Evidence labels:** [E] empirical/approved; [X] experimental; [H] contested theory or parapsychology; [F] fictional 2045 premise; [P] draft mechanics. Tomi edits this proposal first, then separately authorizes matching tabletop and Python implementation.
 
+## Preflight: what already exists for this subsystem
+
+Most of this subsystem is already canon. This document must be a **gap analysis**, not a new creation system.
+
+- **Already written:** `docs/campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md` §2.1–2.3 — fixed dossier, player-built
+  identity, and a starting sheet that is explicitly a **proposal** with the attribute array left open.
+- **Powers and limits:** `docs/world/EUROPOL_HELSINKI_1114.md` §3 — "Europol opens doors; national officers walk
+  through them".
+- **Gap-check target:** `src/rules/cwn_backgrounds.py` — the published CWN background table that any proposed
+  background must be compared against **before** it is added.
+- **Issued kit source:** `design/BIONICS.md` — the BCI and the defensive psychotronic implant.
+
 ## Design goal
 Use **CWN character generation unchanged** and a **pre-generated first-campaign protagonist**, adding **only demonstrated Europol gaps** in background, Edges/Foci and issued gear. The rookie's cybernetic kit is an ordinary part of Europol 2045 life, **not** an early revelation of special natural PSI. Canon [Europol Helsinki Field Office](../world/EUROPOL_HELSINKI_1114.md); [campaign](../campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md).
 

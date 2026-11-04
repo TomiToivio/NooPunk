@@ -2,6 +2,20 @@
 
 > **DRAFT — TOMI REVIEW REQUIRED — NOT AUTHOR APPROVED.** Issue [#1137](https://github.com/TomiToivio/NooPunk/issues/1137); researched 2026-11-04. Planning only; do not implement, modify the CWN core, or copy a published ruleset. **Evidence labels:** [E] empirical/approved; [X] experimental; [H] contested theory or parapsychology; [F] fictional 2045 premise; [P] draft mechanics. Tomi edits this proposal first, then separately authorizes matching tabletop and Python implementation.
 
+## Preflight: what already exists for this subsystem
+
+**The tag machinery is already implemented. This document must extend it, never duplicate it.**
+
+| Component | Where | What it already does |
+|---|---|---|
+| Unified tag model (#51) | `src/rules/tags.py` — `Tag`, `TagStack`, `build_stack`, `stat_rating` | Stacking, keys, stat ratings |
+| Tag-based attributes (#821) | `src/rules/noopunk_tags.py`, `data/rules/noopunk_tags.json` | Tag types, roll modifiers, conversion proposal |
+| **Goal tag (#1119)** | `src/rules/goals.py` — `Goal`, `Progress`, `Award`, `GoalLog`, `record_progress`, `award_xp`, `paper_line` | A complete goal lifecycle |
+
+The practical consequence: the open question for goals is **whether the existing `Goal` needs a horizon field**,
+not how to design a goal system. Author canon for the rest lives in [`design/BIONICS.md`](../../design/BIONICS.md)
+(the −4…+4 reputation range, and the `Pacifist-1` / `Pacifist-2` definitions).
+
 ## Goals
 Minimal **tabletop-friendly character-sheet/database tags** extending CWN but **not replacing attributes, saving throws, skills, foci, social checks or player choice**. Grounded in author's [BIONICS.md](../../design/BIONICS.md) and the incremental Goal-tag issue: inspect current implementation first, **never create a parallel goal manager**.
 

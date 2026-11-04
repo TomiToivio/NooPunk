@@ -2,6 +2,16 @@
 
 > **DRAFT — TOMI REVIEW REQUIRED — NOT AUTHOR APPROVED.** Issue [#1137](https://github.com/TomiToivio/NooPunk/issues/1137); researched 2026-11-04. Planning only; do not implement, modify the CWN core, or copy a published ruleset. **Evidence labels:** [E] empirical/approved; [X] experimental; [H] contested theory or parapsychology; [F] fictional 2045 premise; [P] draft mechanics. Tomi edits this proposal first, then separately authorizes matching tabletop and Python implementation.
 
+## Preflight: what already exists for this subsystem
+
+- **Author canon — binding:** [`design/BIONICS.md`](../../design/BIONICS.md) — bionics are biological, not
+  cybernetic ("does not make a character cyborg"), **usually not visible at all**, and one of the three PSI
+  sources (latent genetics / hybridisation / psychotronics).
+- **Not this:** `src/rules/cwn_cyberware.py` is machinery; Psychotronics is a device interface. Both are separate
+  subsystems and neither may be folded into bionics.
+- **Campaign anchor:** `docs/campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md` §2.1 fixes the rookie's issued kit, which is
+  where a latent bionic or hybrid marker would be discovered.
+
 ## Core idea
 **[P]** Reuse the **mechanical shape** of AWN Mutations for **deliberately engineered biological traits**, with source/visibility/treatment and availability tags, not the fiction of accidental radiogenic monsters. Same effects for human gene editing, alien hybridization and dormant human potential, but distinct provenance and legal/social consequences. Biological modification is **not cyberware** and does not by itself imply a conscious-machine implant. See author's [BIONICS.md](../../design/BIONICS.md).
 
