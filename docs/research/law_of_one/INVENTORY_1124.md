@@ -235,6 +235,19 @@ Harvest** are covered in §5.9–§5.11. Nothing in the synopsis is left without
 | Unmanifested Being | Narrative-only |
 | Vital Energy | Prana resource (§6.12) |
 
+### 4.3 Glossary terms that constrain the design
+
+| Term | Source | Constraint |
+| --- | --- | --- |
+| **distortion** | [Glossary](https://www.lawofone.info/glossary.php) | Anything moving from unity; can be toward love or ill health. Never a synonym for “bad” or “mentally ill”. |
+| **polarize** | [Glossary](https://www.lawofone.info/glossary.php) | Move toward StO or StS. The player path is StO; the score is direction, not virtue points. |
+| **prana** | [Glossary](https://www.lawofone.info/glossary.php) | Life force/vital energy. Source does not define an RPG point pool; default to a tag. |
+| **space/time** | [Glossary](https://www.lawofone.info/glossary.php) | Ordinary physical experience. |
+| **time/space** | [Glossary](https://www.lawofone.info/glossary.php) | Metaphysical experience; not a featureless void or free teleportation. |
+| **ectoplasm** | [Glossary](https://www.lawofone.info/glossary.php) | Linked to manifestation of the astral (green-ray) body; a bounded manifestation, not a second body. |
+| **social memory complex** | [Definitions](https://www.lawofone.info/c/Definitions) | A group-being. Individual connection and group development are separate; membership is not telepathy. |
+| **density** | [Definitions](https://www.lawofone.info/c/Definitions) | Evolutionary stage, not dimension. Fourth is the fixed PC condition. |
+
 ## 5. Setting principles (narrative-only unless noted)
 
 These are **not** mechanics. They answer what the game is about, and they forbid a mechanic that
