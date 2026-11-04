@@ -1,302 +1,227 @@
-# HELSINKI — CITY (template, #1141)
+# Helsinki 2045: The City
+**Human-readable writing template for Tomi | #1141 Phase 1 | EXAMPLES ARE NOT CANON**
 
-> **STATUS: TEMPLATE / DRAFT OUTLINE. Agent-written scaffolding, not canon.**
-> Companion documents: [WORLD](HELSINKI_WORLD.md) · **CITY** (this file) ·
-> [FACTIONS](HELSINKI_FACTIONS.md) · [FACES & XENOBESTIARY](HELSINKI_FACES_XENOBESTIARY.md).
->
-> **Source:** *Cities Without Number* (Deluxe), **The City** (printed pp. 196–217): *A Timeline of
-> Collapse* 198 · *The Megacorps* 200 · *Other Groups and Organizations* 203 · *The Ethos of the City*
-> 204 · *The City Government* 206 · *Crime and Punishment* 207 · *Social Relationships in the City*
-> 208 · *Gender and Identity* 209 · *The Districts of the City* 210 (sample districts 212–217).
-> Creation procedure: **Creating The City** 114, **Building Your Districts** 121. Field names follow
-> those sections; the printed tables are not reproduced. Check the edition you hold before citing a
-> page.
+This document is for **writing a city**, not for editing a database. Replace the fictional examples with your own ordinary prose. You can add or remove sections, write in your own language, and leave questions unanswered. Agents handle IDs, schemas, coordinates and Python later, **after** your author approval.
 
-## How to use this file
+**Rulebook inspiration:** *Cities Without Number* (CWN), *Creating Your Dystopia* and *The City* (approximately printed pp. 106–130 and 196–217, edition-dependent). CWN city/district procedures inform the topics, not the formatting of your prose.
 
-1. Each section below is a **heading + one fictional example + `<!-- Tomi writes below -->`**. Replace
-   the example; it exists to show the format.
-2. Statuses: **AUTHOR CANON**, **REPOSITORY CANON**, **EXAMPLE ONLY / NOT CANON**, **OPEN**,
-   **GM SECRET**.
-3. **One concern per document.** Districts are *cards* here; their factions live in
-   [FACTIONS](HELSINKI_FACTIONS.md), their people in [FACES](HELSINKI_FACES_XENOBESTIARY.md), their
-   world context in [WORLD](HELSINKI_WORLD.md). Link by ID; never restate a record.
-4. **Act I tone gate.** The three-layer material in §9–§10 is a **GM model**. Nothing astral, noetic
-   or density-related may appear in player-facing Act I text.
+**Keep one home for each subject:** Global context belongs in [World](HELSINKI_WORLD.md), organizations' playable SWN statistics in [Factions](HELSINKI_FACTIONS.md), and creature/encounter profiles in [Faces & Xenobestiary](HELSINKI_FACES_XENOBESTIARY.md). This city's author-owned government source is [Greater Helsinki](GREATER_HELSINKI_2045.md); the established zones are in [ZONES.md](ZONES.md). Respect the existing [Europol jurisdiction frame](../docs/world/EUROPOL_HELSINKI_1114.md) and [campaign outline](../docs/campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md). Link them rather than replacing their canon.
 
-## Canon this file must not contradict
+## How to use this worksheet
 
-* City governance, X-Risk jurisdiction levels, ESZs and embassies — **author's**
-  [`GREATER_HELSINKI_2045.md`](GREATER_HELSINKI_2045.md) and [`ZONES.md`](ZONES.md). Neither is filled
-  in by an agent; if a section needs a jurisdictional answer, it links there and stops.
-* Europol's powers and limits — [`docs/world/EUROPOL_HELSINKI_1114.md`](../docs/world/EUROPOL_HELSINKI_1114.md):
-  Europol coordinates and analyses; it does not arrest or search.
-* Chronology — [`docs/world/CANON_FORTRESS_EUROPE_1113.md`](../docs/world/CANON_FORTRESS_EUROPE_1113.md),
-  [`docs/world/ALTERNATE_HISTORY_1114.md`](../docs/world/ALTERNATE_HISTORY_1114.md).
-* Existing city data — [`data/world/helsinki_locations.json`](../data/world/helsinki_locations.json),
-  [`helsinki_map.json`](../data/world/helsinki_map.json), [`lexicon.json`](../data/world/lexicon.json).
+Each section shows an **Example only (NOT CANON)** followed by questions and **Your version**. Write descriptive paragraphs and, where helpful, small RPG-style tables. Treat all dates, institutions, abilities and access as proposals until you choose them. Some examples deliberately describe ordinary investigations: Act I starts as grounded cyberpunk, before the cosmic machinery is unveiled.
+
+## 1. A timeline of collapse
+
+**Example only: The day the records disagreed (NOT CANON)**
+
+During the years following the NHI Crisis, the harbour's customs archive underwent several emergency restorations. An investigator later finds that one day's manifests exist in three incompatible versions. The date and cause are unresolved. Nobody in the scene knows whether this is incompetence, sabotage, or evidence of something stranger.
+
+**Writing prompts:** Which dated or undated events changed Helsinki? For each: what happened, how did residents experience it, what physical traces remain, and how reliable are the sources? Do not invent missing dates in the established timeline.
+
+**Your version (Tomi writes here):**
+
+*Event; date or relative sequence; consequences for Helsinki; evidence; public account versus uncertainties.*
 
 ---
 
-## 1. A Timeline of Collapse
+## 2. The megacorporations in Helsinki
 
-*CWN p. 198. In-universe events the city still lives inside. **Do not invent dates that canon leaves
-open** — write "undated" or give an order instead.*
+**Example only: An unpleasantly useful contractor (NOT CANON)**
 
-**Fields.** `event_id`, `event`, `date_or_order`, `regional_impact`, `reliability`, `physical_evidence`
+Northern Continuity Logistics operates entry systems for the port and archive storage for the municipality. Its employees know more about emergency supply routes than most public officers. A lost contract might bankrupt it; a leaked record might bring down an entire coalition. The company's broad background is summarized in World, while this city section focuses on its port terminal, staff and local influence.
 
-```yaml
-# EXAMPLE ONLY — NOT CANON
-event_id: hel_city_collapse_001
-event: "The port reopens under extraterrestrial freight rules"
-date_or_order: "undated in canon; after the Quarantine's end"
-regional_impact: "Customs work triples; three municipal departments lose their reason to exist."
-reliability: "Official history; contested by the stevedores' union"
-physical_evidence: "Two sets of gate hardware bolted one over the other; a form in two alphabets"
-source: "illustrative"
-```
+**Writing prompts:** Which corporate offices, factories, housing, shops or secure sites are actually here? What services do residents depend on? Which particular district or person feels the corporation's influence? Link a mechanical faction record only if the company takes faction turns.
 
-<!-- Tomi writes below -->
+**Your version (Tomi writes here):**
 
-**OPEN:** which events are public knowledge, which are school-curriculum simplifications, and which are
-deliberately vague in-world.
+*Name; Helsinki locations; services; community impact; tensions; case hooks.*
 
 ---
 
-## 2. The Megacorps
+## 3. Other groups and organizations
 
-*CWN p. 200. Helsinki footprint and local leverage. The corporation's **archetype and hooks** belong in
-[WORLD](HELSINKI_WORLD.md) §5; only its **city presence** is written here.*
+**Example only: The meeting with too many uniforms (NOT CANON)**
 
-```yaml
-# EXAMPLE ONLY — NOT CANON
-corp_id: hel_corp_001
-city_footprint: "Port gates, two archives, the municipal payroll system."
-services: ["biometric access", "records custody", "payroll"]
-local_connections: ["hel_faction_001"]
-social_reach: "Its HR department is faster than the police."
-cyber_reach: "Gate logs are CWN hacking targets with ordinary defenses."
-astral_reach: "none established"
-source: "illustrative"
-```
+An infrastructure incident draws representatives of municipal emergency services, Finnish police, and Europol into a cramped briefing room. Nobody agrees about who gets the first copy of the evidence. Jurisdiction is an investigative obstacle, not permission for Europol to perform Finnish arrests or searches independently. A local union representative can supply the one witness everybody forgot to invite.
 
-<!-- Tomi writes below -->
+**Writing prompts:** Which municipal agencies, police and security bodies, unions, cooperatives, citizen groups, alien institutions and informal networks matter in this city? What can each legally do? What do they want? What disputes arise between them? Preserve the authority established in the canonical Europol and Zones documents.
+
+**Your version (Tomi writes here):**
+
+*Organization; local purpose; people; jurisdiction; allies and conflicts.*
 
 ---
 
-## 3. Other Groups and Organizations
+## 4. The city's ethos
 
-*CWN p. 203. Record **legal competence**, not just a name: who may arrest, search, compel, or refuse.*
+**Example only: Optimism with paperwork (NOT CANON)**
 
-| field | meaning |
-| --- | --- |
-| `org_id`, `name` | stable ID and the name used in play |
-| `kind` | police / agency / municipality / union / cooperative / diplomatic / religious / NGO |
-| `jurisdiction` | what it may lawfully do, and where |
-| `canon_ref` | the file that already defines it, if any |
+Helsinki advertises itself as a city that can adapt to anything. Public transport works, alien diplomats have reception desks, and residents mock an emergency preparedness campaign that has become a lifestyle brand. Underneath the comedy is real anxiety about dependence on technology nobody entirely understands.
 
-```yaml
-# EXAMPLE ONLY — NOT CANON
-org_id: hel_org_001
-name: "Helsingin Poliisi, Kurvi patrol unit"
-kind: "police"
-jurisdiction: "Arrest and search under Finnish law, within Helsinki; no EU mandate."
-canon_ref: "ZONES.md (jurisdiction levels)"
-source: "illustrative"
-```
+**Writing prompts:** What does the city believe about itself? What contradictions do its residents joke about? How do class, labour, ideology, accelerationism, fear and solidarity shape the streets? What makes the tone distinct from a generic dystopia?
 
-<!-- Tomi writes below -->
+**Your version (Tomi writes here):**
 
-**OPEN:** which organisations are canon (Europol, SuPo, UNSA, municipal bodies, unions) and which are
-invented for play; where their competences actually collide.
+*Two or three paragraphs on civic character, hopes, hypocrisies and daily humor.*
 
 ---
 
-## 4. The Ethos of the City
+## 5. City government and jurisdiction
 
-*CWN p. 204. Public values, the contradictions underneath them, and how it looks on the street.*
+**Example only: An investigation crosses three desks (NOT CANON)**
 
-**Fields.** `value`, `contradiction`, `street_manifestation`, `comedy_note`, `campaign_implication`
+The municipality can cordon off a dangerous service building, Finnish police investigate a suspected crime, and Europol helps coordinate an international lead. An emergency connected to global X-risk may bring UNSA into the discussion. The question of who can legally order entry still matters, even when everybody thinks the threat is extraordinary.
 
-```yaml
-# EXAMPLE ONLY — NOT CANON
-value: "Competence is a moral virtue"
-contradiction: "The systems that prove competence are the ones nobody can maintain"
-street_manifestation: "People apologise for their own forms."
-comedy_note: "The absurdity is sincere, never cruel: everyone is trying very hard."
-campaign_implication: "An incompetent order is obeyed more slowly, not refused."
-source: "illustrative"
-```
+**Writing prompts:** Describe Greater Helsinki's elected leadership, districts and local services. Where do municipal, Finnish, EU and UNSA mandates meet or clash? How are extraterrestrial zones governed? Refer to [ZONES.md](ZONES.md) and [GREATER_HELSINKI_2045.md](GREATER_HELSINKI_2045.md) for author-written answers, without copying or correcting them here.
 
-<!-- Tomi writes below -->
+**Your version (Tomi writes here):**
 
-**OPEN:** the city's self-image (accelerationist? social-democratic? both, badly?) and what the
-campaign wants to satirise without contempt.
+*Government, political conflicts, agencies and the everyday consequences of overlapping authority.*
 
 ---
 
-## 5. The City Government
+## 6. Crime and punishment
 
-*CWN p. 206, but **deferred to the author**.*
+**Example only: A stolen identity, but from which jurisdiction? (NOT CANON)**
 
-```yaml
-# EXAMPLE ONLY — NOT CANON
-authority_ref: "GREATER_HELSINKI_2045.md"
-zones_ref: "ZONES.md"
-note: "Municipal, national, EU and UN layers are defined there. This file links; it does not decide."
-```
+A courier insists their identity was used to access a restricted shipping terminal. The alleged crime involves a Finnish workplace, an EU database and a foreign employer. Europol can coordinate and analyze; local enforcement actions require the competent Finnish authority. A routine interview becomes awkward when the witness discovers that one database lists them as deceased.
 
-<!-- Tomi writes below -->
+**Writing prompts:** Which crimes are common? Who investigates, prosecutes, detains and punishes? What are local attitudes toward surveillance, cybercrime, PSI, BCI and hybrid biology? Which laws are established, and which must remain open author decisions?
 
-**OPEN (author):** the merger of Helsinki/Espoo/Vantaa, the ESZ administrations, and which body answers
-for an incident that is simultaneously a crime and an X-risk.
+**Your version (Tomi writes here):**
+
+*Street-level crime, enforcement, courts, detention, institutional failures and adventure hooks.*
 
 ---
 
-## 6. Crime and Punishment
+## 7. Social relationships and daily life
 
-*CWN p. 207. What is an offence, who enforces it, and what a competent officer can actually do.*
+**Example only: The tram driver's friends (NOT CANON)**
 
-| field | meaning |
-| --- | --- |
-| `offence`, `classification` | ordinary crime / cyber / PSI-related / X-risk / administrative |
-| `enforcement` | police, Europol, SuPo, UNSA, or nobody |
-| `evidence_standard` | what a report needs to survive review |
-| `consequence` | what the player risks |
+The driver on the night route knows which café owner will let exhausted workers sit without ordering. A tenants' association trades practical help for favours; a neighborhood musician distrusts every police badge but remembers every regular customer. Investigators gain more through patient relationships than by intimidating the whole street.
 
-```yaml
-# EXAMPLE ONLY — NOT CANON
-offence: "Unregistered psychotronic augmentation"
-classification: "administrative, escalating to criminal on harm"
-enforcement: "Finnish police; Europol may only advise"
-evidence_standard: "Device serial plus a licensed inspection; a scan alone is not proof."
-consequence: "The owner loses the implant, not the case."
-source: "illustrative"
-```
+**Writing prompts:** Who knows whom in the rookie's neighborhood? What are the everyday meeting places, work cultures, languages, solidarities and conflicts? How do reputation, class and personal history affect a case?
 
-<!-- Tomi writes below -->
+**Your version (Tomi writes here):**
 
-**OPEN:** whether PSI registration is a health record, a weapons licence, or both — this changes every
-Act II scene and belongs to the author.
+*Neighborhood institutions, social networks, recurring acquaintances and situations.*
 
 ---
 
-## 7. Social Relationships in the City
+## 8. Districts of the city
 
-*CWN p. 208 (and *Gender and Identity* p. 209). Where the rookie's life happens when no case is open.*
+*Use CWN's district character, needs, problems and adventure seeds. A district is a playable social place, not merely a polygon.*
 
-```yaml
-# EXAMPLE ONLY — NOT CANON
-relationship_id: hel_social_001
-who: "The neighbour across the stairwell"
-where: "Kurvi company housing"
-basis: "Shared laundry, mutual silence, one favour owed"
-what_they_want: "To not be asked about the night shift"
-how_it_changes: "Becomes an informant, a liability, or a friend — never all three at once."
-source: "illustrative"
-```
+**Example only: Kurvi (NOT CANON)**
 
-<!-- Tomi writes below -->
+**Atmosphere:** Dense transit interchange, small shops, older housing and constant pedestrian movement.
 
----
+**What people want:** Predictable transport, affordable homes and less disruption to daily life.
 
-## 8. The Districts of the City
+**Two pressures:** A dispute over maintenance contracts and increasing mistrust between agency staff and residents. These are fictional placeholders, not generated CWN results.
 
-*CWN pp. 210–217. A **full district card** for the starting district; a short index row for the rest.
-Do not invent canonical neighbourhoods, populations, or a complete atlas.*
+**Notable places:** A tram stop, a café used by drivers and a locked service door. These may become separate location descriptions when approved.
 
-```yaml
-# EXAMPLE ONLY — NOT CANON
-district_id: hel_district_kurvi
-name: "Kurvi"
-traits: ["TBD — two traits per CWN p. 122"]
-character: "Tram crossroads, nightlife, working-class memory, constant rebuilding."
-assets: ["TBD"]
-risks: ["TBD"]
-landmarks: ["The platforms", "A bar that has changed owners four times"]
-faction_presence: ["hel_faction_001"]     # link, do not describe
-npcs: ["hel_npc_001"]                     # link, do not describe
-encounters: ["TBD"]
-mission_hooks: ["TBD"]
-layer_refs: { physical: "hel_site_kurvi_transit", cyber: "hel_site_kurvi_transit_cyber", astral: "hel_site_kurvi_transit_astral" }
-source: "illustrative"
-```
+**People and groups:** Residents, shift workers, a fictional information-broker crew and a visiting Europol investigator. Link to the other worksheets instead of reproducing full biographies.
 
-<!-- Tomi writes below -->
+**Potential encounter:** A witness insists that the platform cameras were operating during a shutdown, while the official logs say otherwise.
 
-**OPEN:** which districts exist, and which of them are playable rather than named.
+**Physical / Cyber / Astral:** The streets and metro are physically observable; ordinary AR notices appear through a device; the astral dimension remains hidden in early play.
+
+**Tabletop notes:** Tomi can select CWN district tags and any required printed-rule numbers after checking the appropriate source.
+
+**Writing prompts:** What are the district's identity, strengths, problems, landmarks, groups, people and encounters? Which routes connect it to other districts? Which details are visible to the player at each campaign stage?
+
+**Your version (Tomi writes here):**
+
+*District name, atmosphere, two defining pressures, places, inhabitants, relationships, encounters, connections, optional CWN tags.*
 
 ---
 
-## 9. Three layers at every location (lore/data model, not new rules)
+## 9. Three views of one city: Physical, Cyber and Astral
 
-The city is modelled as **three player-visible layers plus two classification axes**. This is a
-**data model for scenes**, not a second exploration or combat engine: physical actions use CWN, cyber
-access uses CWN hacking, astral access requires an unlocked ability and a scripted gate.
+A place may be represented in **three different player-facing views**, but a view is not permission to access every part of the place. These are descriptions of the world. CWN still governs movement, investigation, combat and hacking; any deliberate astral or PSI action must wait for its approved rule permission.
 
-| layer | what it is | how it is resolved | Act I visibility |
-| --- | --- | --- | --- |
-| **Physical** | streets, transit, harbour, buildings, utilities, tunnels | CWN movement, Notice, combat, equipment | visible |
-| **Cyber** | the BCI/AR overlay, software and security spaces | **CWN hacking** (no parallel city-net system) | visible through a BCI |
-| **Astral** | shared/noetic overlays, symbolic landmarks, nonphysical entities | a PSI procedure, once unlocked; **never** automatic spying on a room you cannot enter | **locked** (GM only) |
+| View | What the player might perceive | Limits |
+| --- | --- | --- |
+| **Physical** | Streets, rooms, buildings, transit, harbour, underground infrastructure | Walls, access restrictions, actual routes and ordinary CWN rules apply |
+| **Cyber** | BCI/AR information, network systems and security interfaces | Hacking uses CWN; software overlays do not bypass physical security |
+| **Astral** | Noetic imagery, psychic traces or a nonphysical experience | Hidden or scripted at the beginning; later access requires approved PSI rules |
 
-Two axes that are **not** places on the map:
+**Example only: An ordinary tram stop (NOT CANON)**
 
-* **Space/Time vs Time/Space** — embodied material experience versus nonphysical temporal–spatial
-  experience. A scene must say which one it is in; a Time/Space scene is not "the same street at night".
-* **Third vs Fourth density** — a designation of consciousness/development, **not** a spatial
-  dimension and **not** invisibility. A fourth-density being on a Helsinki street is physically visible;
-  a third-density person may have involuntary dream or near-death astral experiences, while deliberate
-  projection needs its rules permission.
+Standing at a stop, a character sees wet pavement, commuters and a maintenance barrier. Their BCI displays a stale service alert, but not a magical view through the barrier. In an eventual later act, the GM may describe a symbolic echo of the location in an astral scene. That echo is not automatically a CCTV feed, a secret entrance or proof of what happened physically.
 
-**Interdimensional hypothesis** stays an **in-world explanation and research controversy** until the
-author approves a cosmology. It may be argued about, tested and disbelieved in play; it may not be used
-as a blanket explanation of every NHI encounter.
+**Your version (Tomi writes here):**
+
+*What each layer looks and feels like; when characters learn about it; which layers are accessible.*
 
 ### Underground Helsinki
 
-Real tunnels, service passages, metro and harbour infrastructure exist and are **not automatically
-traversable**: verify actual public access before making any real location enterable, and mark every
-2045 addition as fictional. A tunnel that exists is not a tunnel the player may walk into.
+Helsinki has real infrastructure underground. **Do not imply that restricted real tunnels are publicly traversable.** Research genuine tunnel geography and access permissions before authorizing a playable real route. Any 2045 addition must be explicitly identified as fictional.
+
+**Example only: A service corridor (NOT CANON)**
+
+A sealed door can be seen from a public station platform. The player cannot enter it merely because a corridor exists behind it. An authorized maintenance worker may eventually grant access, or a fictional future tunnel could provide a separate route.
+
+**Your version (Tomi writes here):**
+
+*Existing, publicly accessible locations; restricted areas; wholly fictional 2045 construction; any necessary safety or permission distinctions.*
+
+### Space/Time, Time/Space, density and interdimensional claims
+
+**Space/Time and Time/Space:** Treat embodied physical experience and nonphysical/metaphysical experience as conceptually distinct, not interchangeable map layers.
+
+**Third and fourth density:** Describe forms of consciousness/development, not map coordinates. A fourth-density physical being is not automatically invisible. A third-density person may have an involuntary dream or near-death experience; deliberate projection requires appropriate rules permission.
+
+**Interdimensional hypothesis:** This remains a disputed or investigable *in-world* account of certain phenomena unless Tomi chooses to establish more. Do not silently make it the universal explanation for NHI.
+
+**Writing prompts:** What do people in Helsinki believe about each concept? What can characters verify? Which encounters are dreams, visions, physical events, or ambiguous reports? At what stage may the game reveal more?
+
+**Your version (Tomi writes here):**
+
+*The city's phenomenology, competing explanations and campaign reveal order.*
 
 ---
 
-## 10. Layered site record
+## 10. A fully described location
 
-One record per place, referenced from the district card, the faction sheet and the encounter card.
+*This is the human-written seed for a later machine-readable location record. Describe the place naturally; do not create database keys.*
 
-```yaml
-# EXAMPLE ONLY — NOT CANON
-site_id: hel_site_kurvi_transit
-district_ref: hel_district_kurvi
-physical: { visible: true, scene: "platform and stairwell", routes: ["street", "metro"], access: "public" }
-cyber: { visible: "via BCI", access: "ordinary CWN hacking permissions", node_ref: null }
-astral: { player_visible: false, gm_only: true, entry: "scripted reveal, Act II or later" }
-realm: "space_time (embodied); time_space is a different scene"
-density_access: "not a map coordinate; fourth-density beings are visible here"
-transition_rule: "physical -> cyber needs a BCI; physical -> astral needs an unlocked ability and the scene gate"
-scripted_reveal_gate: "Act I: astral locked. Act II: one scripted glimpse. Act III: procedure available."
-known_tunnels: "none verified; do not assert service access"
-visibility: { player_knows: ["platform", "stairwell"], gm_only: ["what the maintenance door leads to"] }
-gm_secrets: "GM SECRET — author only"
-source: "illustrative"
-```
+**Example only: Kurvi transit entrance (NOT CANON)**
 
-**Stable keys.** `hel_site_*`, `hel_district_*`, `hel_faction_*`, `hel_npc_*`, `hel_nhi_*`,
-`hel_corp_*`, `hel_gang_*`, `hel_org_*`. A later Python adapter must be able to load **one record per
-entity** and resolve every cross-reference; no entity may be defined in two files.
+**Where:** A public transit entrance at Kurvi, within the district described above.
+
+**Physical appearance:** A stairwell, a shelter and a visible closed maintenance door. Characters can walk through ordinary public entrances, but no restricted tunnel access is presumed.
+
+**Cyber appearance:** A BCI view shows timetables, advertising and an access-controlled maintenance network. Attempts to access protected systems follow CWN hacking procedures.
+
+**Astral appearance:** The first act offers no accessible astral view. A later scripted revelation may reinterpret the site, but must not retroactively grant unrestricted surveillance.
+
+**Access and movement:** Public street and transit routes are open where normally permitted. Hidden or staff-only connections require a plausible in-world route and authorization.
+
+**People and scenes:** Commuters, workers and a witness to contradictory maintenance records.
+
+**GM-only question:** What is behind the locked door? Tomi decides; the example does not.
+
+**Writing prompts:** Where is the location? What does it look, smell and sound like? What is available in each layer? What can players enter? Who is present? What is hidden until later? How does it connect to neighboring locations?
+
+**Your version (Tomi writes here):**
+
+*Location title, readable description, Physical/Cyber/Astral perceptions, access, people, clues, adventure hook and GM secrets.*
 
 ---
 
-## Unresolved decisions in this document
+## Open author decisions
 
-| # | question | blocks |
-| --- | --- | --- |
-| C1 | Which real Helsinki districts are playable, and what are their two CWN traits? | every mission location |
-| C2 | What are the city's two main problems (CWN p. 114)? | the campaign's background pressure |
-| C3 | Is PSI registration a health record, a weapons licence, or both? | Act II's central conflict |
-| C4 | Which organisations are canon, and where do their competences actually collide? | every jurisdiction scene |
-| C5 | Which underground locations may the player enter, and which are merely referenced? | traversable map, safety of real-place claims |
-| C6 | Does the astral layer exist in this campaign's cosmology at all, or only in rumours? | the Act III gate |
+- Which districts matter for the opening campaign, and what are their CWN traits?
+- What are the city's two major ongoing problems?
+- How are PSI registration and cross-jurisdiction investigations handled?
+- Which organizations have competing competence, and over what?
+- What underground locations are realistically accessible?
+- What can a player actually experience of the Astral, Time/Space and other ontological questions?
 
-*Record answers here, in this file, with a date and the author's name.*
+**Author's answers (Tomi writes here):**
+
+*Agents will later incorporate the approved prose into the rulebook, convert it into structured data, and implement it in Python. Nothing in this worksheet is automatically canon.*
