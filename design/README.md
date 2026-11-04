@@ -28,6 +28,22 @@ There will be several types of documents:
 * You should implement the Python code for NoöPunk MUD. 
 * You should add implemented rules, campaign scenarios and lore to the NoöPunk tabletop RPG rulebook. 
 
+## Helsinki setting templates (#1141) — drafts awaiting authoring
+
+Four agent-written **templates**, not canon. Each has headings, one deliberately fictional example per
+category, `<-- Tomi writes below -->` placeholders, and its own open decisions. Fill them in, replace the
+examples, or delete them; the examples are scaffolding.
+
+| document | concern | rules basis |
+| --- | --- | --- |
+| [`HELSINKI_WORLD.md`](HELSINKI_WORLD.md) | setting-wide context the campaign needs | CWN *Creating Your Dystopia* (pp. 106–130) |
+| [`HELSINKI_CITY.md`](HELSINKI_CITY.md) | the city, its districts, and the Physical/Cyber/Astral model | CWN *The City* (pp. 196–217) |
+| [`HELSINKI_FACTIONS.md`](HELSINKI_FACTIONS.md) | local actors that take faction turns | SWN Revised *Factions* (p. 211; assets pp. 219/221/223) |
+| [`HELSINKI_FACES_XENOBESTIARY.md`](HELSINKI_FACES_XENOBESTIARY.md) | people in the street and non-human encounters | CWN *Faces On the Street* (p. 180); SWN *Xenobestiary* (p. 193) |
+
+They do not replace the author's [`GREATER_HELSINKI_2045.md`](GREATER_HELSINKI_2045.md) or
+[`ZONES.md`](ZONES.md), and they do not decide anything those files leave open.
+
 ## Vocabulary
 
 [`GLOSSARY.md`](../GLOSSARY.md) at the repository root is the canonical vocabulary for player-facing
