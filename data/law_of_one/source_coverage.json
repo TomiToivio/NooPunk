@@ -394,6 +394,66 @@
    "rows": [
     "entity-catalogue"
    ]
+  },
+  {
+   "id": "cosmology-density-visibility",
+   "kind": "cosmology_clarification",
+   "title": "Fourth-density embodiment and visibility (12.17, 43.16)",
+   "url": "https://www.lawofone.info/s/12#17",
+   "rows": [
+    "density-not-dimension",
+    "fourth-density-embodiment",
+    "visibility-to-third-density"
+   ]
+  },
+  {
+   "id": "cosmology-realms",
+   "kind": "cosmology_clarification",
+   "title": "Space/time versus time/space as separate realms (71.6, 70.14, 70.17, 43.12)",
+   "url": "https://www.lawofone.info/c/Time/Space",
+   "rows": [
+    "time-space-presence",
+    "density-not-dimension"
+   ]
+  },
+  {
+   "id": "cosmology-astral-bodies",
+   "kind": "cosmology_clarification",
+   "title": "Astral planes, subtle bodies and ectoplasm (43.7, 47.8, glossary)",
+   "url": "https://www.lawofone.info/glossary.php",
+   "rows": [
+    "inner-planes-subtle-bodies",
+    "embodiment-modes",
+    "astral-projection",
+    "ectoplasm-manifestation"
+   ]
+  },
+  {
+   "id": "cosmology-dimension",
+   "kind": "cosmology_clarification",
+   "title": "What 'dimension' means; fourth density is not a spatial coordinate (21.5, 6.24)",
+   "url": "https://www.lawofone.info/s/21",
+   "rows": [
+    "density-not-dimension"
+   ]
+  },
+  {
+   "id": "cosmology-state-proposal",
+   "kind": "cosmology_clarification",
+   "title": "Minimal character/scene state proposal from the issue (density, embodiment, visibility, realm)",
+   "url": "https://github.com/TomiToivio/NooPunk/issues/1124",
+   "rows": [
+    "density-four-profile",
+    "embodiment-modes",
+    "visibility-to-third-density",
+    "time-space-presence"
+   ]
   }
+ ],
+ "kinds_documented": [
+  "synopsis_heading",
+  "topic_page",
+  "added_priority",
+  "cosmology_clarification"
  ]
 }
