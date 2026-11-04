@@ -1,0 +1,399 @@
+{
+ "format": "noopunk.law_of_one.source_coverage",
+ "version": 1,
+ "issue": 1124,
+ "note": "Every source concept the issue requires, mapped to inventory rows. A concept may map to several rows (a cosmology concept usually has one narrative row and one rules row); every mapped id must exist.",
+ "required": [
+  {
+   "id": "synopsis-one-infinite-creator",
+   "kind": "synopsis_heading",
+   "title": "The One Infinite Creator / Intelligent Infinity / Infinite Intelligence",
+   "url": "https://www.lawofone.info/synopsis.php",
+   "rows": [
+    "one-infinite-creator"
+   ]
+  },
+  {
+   "id": "synopsis-illusion",
+   "kind": "synopsis_heading",
+   "title": "Illusion",
+   "url": "https://www.lawofone.info/synopsis.php",
+   "rows": [
+    "illusion"
+   ]
+  },
+  {
+   "id": "synopsis-distortion",
+   "kind": "synopsis_heading",
+   "title": "Distortion",
+   "url": "https://www.lawofone.info/synopsis.php",
+   "rows": [
+    "distortion-tags"
+   ]
+  },
+  {
+   "id": "synopsis-free-will",
+   "kind": "synopsis_heading",
+   "title": "Free Will / First Distortion / Law of Confusion",
+   "url": "https://www.lawofone.info/synopsis.php",
+   "rows": [
+    "free-will-non-interference"
+   ]
+  },
+  {
+   "id": "synopsis-logos",
+   "kind": "synopsis_heading",
+   "title": "Love / Logos / Second Distortion",
+   "url": "https://www.lawofone.info/synopsis.php",
+   "rows": [
+    "logos-second-distortion"
+   ]
+  },
+  {
+   "id": "synopsis-light",
+   "kind": "synopsis_heading",
+   "title": "Light / Third Distortion",
+   "url": "https://www.lawofone.info/synopsis.php",
+   "rows": [
+    "light-third-distortion"
+   ]
+  },
+  {
+   "id": "synopsis-logoi-nesting",
+   "kind": "synopsis_heading",
+   "title": "Logos, Sub-Logoi, Sub-sub-Logoi",
+   "url": "https://www.lawofone.info/synopsis.php",
+   "rows": [
+    "sub-logoi",
+    "logos-second-distortion"
+   ]
+  },
+  {
+   "id": "synopsis-densities",
+   "kind": "synopsis_heading",
+   "title": "Densities (all seven, octave/eighth)",
+   "url": "https://www.lawofone.info/synopsis.php",
+   "rows": [
+    "densities-seven",
+    "density-four-profile"
+   ]
+  },
+  {
+   "id": "synopsis-two-paths",
+   "kind": "synopsis_heading",
+   "title": "Two Paths / Positive and Negative Polarization / Sinkhole of Indifference",
+   "url": "https://www.lawofone.info/synopsis.php",
+   "rows": [
+    "two-paths-cosmology",
+    "polarization-positive",
+    "depolarization-and-npc-handoff",
+    "negative-path-as-npc"
+   ]
+  },
+  {
+   "id": "synopsis-percentages",
+   "kind": "synopsis_heading",
+   "title": "Third-density percentages (51% StO / 95% StS)",
+   "url": "https://www.lawofone.info/synopsis.php",
+   "rows": [
+    "third-density-percentages"
+   ]
+  },
+  {
+   "id": "synopsis-harvest",
+   "kind": "synopsis_heading",
+   "title": "Harvest / cycles / graduation / planetary transition",
+   "url": "https://www.lawofone.info/synopsis.php",
+   "rows": [
+    "harvest-context"
+   ]
+  },
+  {
+   "id": "synopsis-sto",
+   "kind": "synopsis_heading",
+   "title": "How to be of Service to Others",
+   "url": "https://www.lawofone.info/synopsis.php",
+   "rows": [
+    "service-dilemmas"
+   ]
+  },
+  {
+   "id": "synopsis-veil",
+   "kind": "synopsis_heading",
+   "title": "Veil / Veiling of Mind / forgetting and seeking",
+   "url": "https://www.lawofone.info/synopsis.php",
+   "rows": [
+    "veiling-cosmology",
+    "veil-and-forgetting"
+   ]
+  },
+  {
+   "id": "synopsis-advice",
+   "kind": "synopsis_heading",
+   "title": "Practical advice: begin and end in the Creator, not in technique",
+   "url": "https://www.lawofone.info/synopsis.php",
+   "rows": [
+    "practical-advice"
+   ]
+  },
+  {
+   "id": "page-higher-self",
+   "kind": "topic_page",
+   "title": "Higher Self",
+   "url": "https://www.lawofone.info/c/Higher+Self",
+   "rows": [
+    "higher-self-scripted",
+    "precognition-scripted"
+   ]
+  },
+  {
+   "id": "page-meditation",
+   "kind": "topic_page",
+   "title": "Meditation",
+   "url": "https://www.lawofone.info/c/Meditation",
+   "rows": [
+    "meditation"
+   ]
+  },
+  {
+   "id": "page-service-to-others",
+   "kind": "topic_page",
+   "title": "Service to Others",
+   "url": "https://www.lawofone.info/c/Service+to+Others",
+   "rows": [
+    "service-dilemmas",
+    "free-will-non-interference",
+    "polarization-positive"
+   ]
+  },
+  {
+   "id": "page-harvest",
+   "kind": "topic_page",
+   "title": "Harvest",
+   "url": "https://www.lawofone.info/c/Harvest",
+   "rows": [
+    "harvest-context",
+    "violet-ray-register"
+   ]
+  },
+  {
+   "id": "page-healing",
+   "kind": "topic_page",
+   "title": "Healing",
+   "url": "https://www.lawofone.info/c/Healing",
+   "rows": [
+    "healing-invitation",
+    "ectoplasm-manifestation"
+   ]
+  },
+  {
+   "id": "page-energy-centers",
+   "kind": "topic_page",
+   "title": "Energy Centers",
+   "url": "https://www.lawofone.info/c/Energy+Centers",
+   "rows": [
+    "energy-centres-seven",
+    "violet-ray-register",
+    "blockage-and-restoration"
+   ]
+  },
+  {
+   "id": "page-archetypical-mind",
+   "kind": "topic_page",
+   "title": "Archetypical Mind",
+   "url": "https://www.lawofone.info/c/Archetypical+Mind",
+   "rows": [
+    "archetypal-contemplation",
+    "teach-learning"
+   ]
+  },
+  {
+   "id": "page-confederation",
+   "kind": "topic_page",
+   "title": "Confederation of Planets",
+   "url": "https://www.lawofone.info/c/Confederation+of+Planets",
+   "rows": [
+    "confederation-contact",
+    "smc-collective",
+    "entity-catalogue"
+   ]
+  },
+  {
+   "id": "page-densities",
+   "kind": "topic_page",
+   "title": "Densities",
+   "url": "https://www.lawofone.info/c/Densities",
+   "rows": [
+    "densities-seven",
+    "density-four-profile",
+    "awareness-scale"
+   ]
+  },
+  {
+   "id": "page-wanderers",
+   "kind": "topic_page",
+   "title": "Wanderers",
+   "url": "https://www.lawofone.info/c/Wanderers",
+   "rows": [
+    "wanderer-background",
+    "veil-and-forgetting"
+   ]
+  },
+  {
+   "id": "page-white-magic",
+   "kind": "topic_page",
+   "title": "White Magic",
+   "url": "https://www.lawofone.info/c/White+Magic",
+   "rows": [
+    "white-magic-ritual",
+    "group-rite"
+   ]
+  },
+  {
+   "id": "page-time-space",
+   "kind": "topic_page",
+   "title": "Time/Space",
+   "url": "https://www.lawofone.info/c/Time/Space",
+   "rows": [
+    "time-space-presence",
+    "astral-projection"
+   ]
+  },
+  {
+   "id": "page-catalyst",
+   "kind": "topic_page",
+   "title": "Catalyst",
+   "url": "https://www.lawofone.info/c/Balancing",
+   "rows": [
+    "catalyst-loop",
+    "integration-reflection"
+   ]
+  },
+  {
+   "id": "page-balancing",
+   "kind": "topic_page",
+   "title": "Balancing",
+   "url": "https://www.lawofone.info/c/Balancing",
+   "rows": [
+    "balancing-practice",
+    "blockage-and-restoration",
+    "score-change-pacing"
+   ]
+  },
+  {
+   "id": "page-positive-path",
+   "kind": "topic_page",
+   "title": "Positive Path",
+   "url": "https://www.lawofone.info/c/Positive+Path",
+   "rows": [
+    "polarization-positive"
+   ]
+  },
+  {
+   "id": "page-negative-path",
+   "kind": "topic_page",
+   "title": "Negative Path",
+   "url": "https://www.lawofone.info/c/Negative+Path",
+   "rows": [
+    "negative-path-as-npc",
+    "depolarization-and-npc-handoff"
+   ]
+  },
+  {
+   "id": "page-two-paths",
+   "kind": "topic_page",
+   "title": "The Two Paths",
+   "url": "https://www.lawofone.info/c/The+Two+Paths",
+   "rows": [
+    "two-paths-cosmology"
+   ]
+  },
+  {
+   "id": "page-teach-learning",
+   "kind": "topic_page",
+   "title": "Teach/Learning",
+   "url": "https://www.lawofone.info/c/Teach/Learning",
+   "rows": [
+    "teach-learning"
+   ]
+  },
+  {
+   "id": "add-a-energy-centres",
+   "kind": "added_priority",
+   "title": "A. Seven Energy Centers as attributes",
+   "url": "https://www.lawofone.info/c/Energy+Centers",
+   "rows": [
+    "energy-centres-seven",
+    "violet-ray-register",
+    "blockage-and-restoration"
+   ]
+  },
+  {
+   "id": "add-b-time-space",
+   "kind": "added_priority",
+   "title": "B. Time/Space and Space/Time as rules",
+   "url": "https://www.lawofone.info/c/Time/Space",
+   "rows": [
+    "time-space-presence"
+   ]
+  },
+  {
+   "id": "add-c-astral",
+   "kind": "added_priority",
+   "title": "C. Astral projection and ectoplasm",
+   "url": "https://www.lawofone.info/glossary.php",
+   "rows": [
+    "astral-projection",
+    "ectoplasm-manifestation"
+   ]
+  },
+  {
+   "id": "add-d-mbsc",
+   "kind": "added_priority",
+   "title": "D. Mind/Body/Spirit Complex",
+   "url": "https://www.lawofone.info/c/Definitions",
+   "rows": [
+    "mind-body-spirit-complex"
+   ]
+  },
+  {
+   "id": "add-e-prana",
+   "kind": "added_priority",
+   "title": "E. Prana / psychic energy",
+   "url": "https://www.lawofone.info/glossary.php",
+   "rows": [
+    "prana-energy"
+   ]
+  },
+  {
+   "id": "add-f-veil",
+   "kind": "added_priority",
+   "title": "F. Veil, Higher Self, Wanderers as bounded memory mechanics",
+   "url": "https://www.lawofone.info/c/Higher+Self",
+   "rows": [
+    "veil-and-forgetting",
+    "wanderer-background",
+    "higher-self-scripted"
+   ]
+  },
+  {
+   "id": "add-g-smc",
+   "kind": "added_priority",
+   "title": "G. SMC individual and group mechanics",
+   "url": "https://www.lawofone.info/c/Confederation+of+Planets",
+   "rows": [
+    "smc-connection-individual",
+    "smc-collective"
+   ]
+  },
+  {
+   "id": "add-h-entities",
+   "kind": "added_priority",
+   "title": "H. Catalogue of species, civilizations and entities",
+   "url": "https://www.lawofone.info/categories.php",
+   "rows": [
+    "entity-catalogue"
+   ]
+  }
+ ]
+}
