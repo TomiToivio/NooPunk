@@ -433,6 +433,32 @@
    "rows": [
     "density-four-profile"
    ]
+  },
+  {
+   "id": "cosmology-embodiment-modes",
+   "kind": "cosmology_clarification",
+   "title": "Embodied by default; projection, manifestation and the disincarnate state",
+   "url": "https://www.lawofone.info/s/43",
+   "rows": [
+    "embodiment-modes",
+    "astral-projection",
+    "visibility-manifestation"
+   ]
+  },
+  {
+   "id": "cosmology-passage-checks",
+   "kind": "cosmology_clarification",
+   "title": "Which cited passages were read, which paraphrased, which unread or ambiguous",
+   "url": "https://github.com/TomiToivio/NooPunk/issues/1124",
+   "rows": [
+    "density-not-dimension",
+    "visibility-manifestation",
+    "embodiment-modes",
+    "inner-planes-and-bodies"
+   ]
   }
+ ],
+ "kinds_documented": [
+  "cosmology_clarification"
  ]
 }

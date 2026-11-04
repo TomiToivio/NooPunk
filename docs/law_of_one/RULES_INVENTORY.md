@@ -8,7 +8,7 @@ Every row separates **what the source says** (`Faithful meaning`) from **what th
 (`Minimal procedure`). The first is a claim about the Ra material and carries session citations; the
 second is ours, and is a proposal for playtest, not a claim that Ra wrote a rule.
 
-**48 concepts inventoried** — core **22**, optional **13**, narrative_only **10**, out_of_scope **3**.
+**49 concepts inventoried** — core **23**, optional **13**, narrative_only **10**, out_of_scope **3**.
 
 | priority | meaning |
 |---|---|
@@ -72,6 +72,8 @@ second is ours, and is a proposal for playtest, not a claim that Ra wrote a rule
 | Density is not dimension / not four-dimensional space (21.5, 6.24, 17.1) (cosmology_clarification) | `density-not-dimension`, `density-four-profile` |
 | Astral planes and subtle bodies are not the whole of Time/Space (43.7, 47.8) (cosmology_clarification) | `inner-planes-and-bodies`, `astral-projection`, `time-space-presence` |
 | Fourth density is embodied physical life, not a ghost or astral state (43.16, 43.12) (cosmology_clarification) | `density-four-profile` |
+| Embodied by default; projection, manifestation and the disincarnate state (cosmology_clarification) | `embodiment-modes`, `astral-projection`, `visibility-manifestation` |
+| Which cited passages were read, which paraphrased, which unread or ambiguous (cosmology_clarification) | `density-not-dimension`, `visibility-manifestation`, `embodiment-modes`, `inner-planes-and-bodies` |
 
 ## 1. Essential playable core
 
@@ -430,6 +432,17 @@ second is ours, and is a proposal for playtest, not a claim that Ra wrote a rule
 * **Non-goals:** No plane-hopping map, no second travel system, no subtle-body attribute scores.
 * **Open question:** Is any nested topology implied by the sources, or only a loose association? Unresolved.
 
+### `embodiment-modes` — Embodied, projected, manifesting, disincarnate
+
+* **Priority:** `core` · **rules needed:** yes · **page:** https://www.lawofone.info/glossary.php
+* **Source:** 43.16, 43.7, 12.17, glossary: Ka, glossary: Ectoplasm
+* **Faithful meaning (source claim):** Ra describes fourth-density beings as physically embodied — different chemical elements, similar appearance (43.16), eating (43.17) — while distinguishing astral-plane entities from physically embodied ones (43.7). The material names several bodies, not one: the green-ray or astral body, and the indigo-ray form-maker, the ka. Ectoplasm is the astral body's manifestation (glossary).
+* **Minimal procedure / treatment (ours):** One field, four values, and the default is the first: `embodied` (the physical vehicle is where the character is — the normal condition of play), `projected` (awareness is in an astral body; the physical body is elsewhere and its link is the vulnerability), `manifesting` (a projected character is spending to be seen or heard in the physical realm), `disincarnate` (NPC-only, between lives). Projection sets the field to `projected`; manifestation sets it to `manifesting` for a scene and back. Nothing in play sets `density`.
+* **State fragment:** `embodiment: 'embodied' (default) | 'projected' | 'manifesting' | 'disincarnate'; body: 'physical'|'astral'|'form_maker'; link: <anchor id>|null`
+* **Interactions:** This is where astral projection lives: `astral-projection` says how to project, this row says what state that puts a character in. `visibility-manifestation` reads the perceptibility of a manifesting character; `ectoplasm-manifestation` prices it; `inner-planes-and-bodies` names where a projected character arrives.
+* **Non-goals:** Not a second sheet, not a health model, not four parallel action systems, and no ghost PCs: `disincarnate` is not a playable option.
+* **Open question:** Is the indigo/form-maker body ever playable, or always the shape of a review or healing scene?
+
 
 ## 3. Optional narrativist tools
 
@@ -606,4 +619,4 @@ Phase 2 (the standalone playable rulebook) may start only after this inventory i
 audit fails while any implementation module exists, which is how that gate is enforced rather than
 remembered.
 
-_Generated from 48 rows; source: The Law of One (Ra Material), via lawofone.info._
+_Generated from 49 rows; source: The Law of One (Ra Material), via lawofone.info._

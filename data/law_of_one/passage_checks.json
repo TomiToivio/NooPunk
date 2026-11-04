@@ -1,0 +1,364 @@
+{
+ "format": "noopunk.law_of_one.passage_checks",
+ "version": 1,
+ "issue": 1124,
+ "note": "Passage-by-passage verification status for the citations the inventory relies on. The updated issue asks for the cited passages to be checked directly and for ambiguity to be annotated rather than smoothed over. A row here records what the passage actually said when it was read, and whether it carries the claim the inventory makes of it.",
+ "statuses": {
+  "supports": "read in full and states what the inventory says it states",
+  "partial": "read, and supports the claim only in part, or with qualifications the inventory must keep",
+  "ambiguous": "read, but does not clearly support the claim it was cited for",
+  "unchecked": "not yet read directly; the citation is inherited and must not be treated as verified"
+ },
+ "checks": [
+  {
+   "ref": "12.17",
+   "text": "The fourth density is, by choice, not visible to third density. It is possible for fourth density to be visible. However, it is not the choice of the fourth-density entity to be visible due to the necessity for concentration upon a rather difficult vibrational complex which is the third density you experience.",
+   "status": "supports",
+   "supports_claim": "visibility-to-third-density: visibility is a choice that costs effort, not a default power",
+   "used_by": [
+    "visibility-manifestation",
+    "density-not-dimension"
+   ]
+  },
+  {
+   "ref": "43.16",
+   "text": "The chemical elements used are not the same. However, the appearance is similar.",
+   "status": "supports",
+   "supports_claim": "fourth-density embodiment: a physical vehicle, different chemistry, similar appearance",
+   "used_by": [
+    "embodiment-modes",
+    "density-not-dimension"
+   ]
+  },
+  {
+   "ref": "43.17",
+   "text": "It is necessary to eat food in fourth density: This is correct.",
+   "status": "supports",
+   "supports_claim": "fourth-density embodiment implies bodily needs",
+   "used_by": [
+    "embodiment-modes"
+   ]
+  },
+  {
+   "ref": "43.18",
+   "text": "The fourth-density being desires to serve and the preparation of foodstuffs is extremely simple due to increased communion between entity and living foodstuff. Therefore this is not a significant catalyst but rather a service.",
+   "status": "partial",
+   "supports_claim": "food is bodily but not a major social catalyst; the inventory must not turn hunger into a subsystem",
+   "used_by": [
+    "embodiment-modes"
+   ]
+  },
+  {
+   "ref": "43.12",
+   "text": "There are multiple incarnations in fourth density with time/space experiences between incarnations: This is correct.",
+   "status": "supports",
+   "supports_claim": "a density can have experiences in both space/time and time/space; realm is not a density",
+   "used_by": [
+    "time-space-presence",
+    "density-not-dimension"
+   ]
+  },
+  {
+   "ref": "43.7",
+   "text": "These entities are creatures of the Orion group. They do not exist in astral planes as do the thought-forms but wait within the Earth's surface.",
+   "status": "supports",
+   "supports_claim": "astral-plane entities are distinguished from physically embodied ones",
+   "used_by": [
+    "inner-planes-and-bodies",
+    "embodiment-modes"
+   ]
+  },
+  {
+   "ref": "15.12",
+   "text": "The steps are only one; that is, an understanding of the energy centers which make up the mind/body/spirit complex ... The first balancing is of the red-ray complex ... orange ... yellow ... green (heart) ... blue ... indigo (pineal) ...",
+   "status": "supports",
+   "supports_claim": "the seven-centre model and the balancing-by-understanding procedure",
+   "used_by": [
+    "energy-centres-seven",
+    "blockage-and-restoration",
+    "balancing-practice",
+    "integration-reflection"
+   ]
+  },
+  {
+   "ref": "38.5",
+   "text": "In the violet ray we see this unique spectrograph ... and at the same time the pure violet surrounding the whole; this in turn, surrounded by that which mixes the red and violet ray, indicating the integration of mind, body, and spirit.",
+   "status": "supports",
+   "supports_claim": "violet is the register of the whole entity, not a centre like the others",
+   "used_by": [
+    "violet-ray-register"
+   ]
+  },
+  {
+   "ref": "40.10 (approx.)",
+   "text": "It is not necessary for the energy centers to be activated in order ... entities may have extremely brilliant energy centers while being quite unbalanced in their violet-ray aspect ... the brilliance or rotational speed of the energy centers is not considered above the balanced aspect or violet-ray manifestation of an entity in regarding harvestability.",
+   "status": "partial",
+   "supports_claim": "violet is judged as balance rather than brilliance; the exact question number was not pinned while reading, so the inventory cites it as 40.x",
+   "used_by": [
+    "violet-ray-register",
+    "score-change-pacing"
+   ]
+  },
+  {
+   "ref": "70.11",
+   "text": "The Higher Self does not manipulate its past selves. It protects when possible and guides when asked, but the force of free will is paramount.",
+   "status": "supports",
+   "supports_claim": "higher-self-scripted and precognition-scripted: guidance is asked for, never imposed, never certain",
+   "used_by": [
+    "higher-self-scripted",
+    "precognition-scripted",
+    "free-will-non-interference"
+   ]
+  },
+  {
+   "ref": "70.17",
+   "text": "Time/space is no more homogenous than space/time. It is as complex and complete a system of illusions, dances, and pattern as is space/time and has as structured a system of what you may call natural laws.",
+   "status": "supports",
+   "supports_claim": "time/space is a structured realm with regional conditions, not a void",
+   "used_by": [
+    "time-space-presence",
+    "inner-planes-and-bodies"
+   ]
+  },
+  {
+   "ref": "70.14",
+   "text": "Each time/space is an analog of a particular sort or vibration of space/time. When a negative time/space is entered by an entity the next experience will be that of the appropriate space/time.",
+   "status": "supports",
+   "supports_claim": "realm entry has consequences for return; the two realms correspond",
+   "used_by": [
+    "time-space-presence"
+   ]
+  },
+  {
+   "ref": "71.6",
+   "text": "(question read, answer not captured in the pass made for this inventory) — the question concerns what an entity experiences at death in third density and its relation to time/space.",
+   "status": "partial",
+   "supports_claim": "space/time vs time/space as embodied vs metaphysical experience; the answer must be read in full before the row is called verified",
+   "used_by": [
+    "time-space-presence"
+   ]
+  },
+  {
+   "ref": "47.8",
+   "text": "(not read directly: the session page returned 47.0-47.4 in the pass made for this inventory)",
+   "status": "unchecked",
+   "supports_claim": "the inventory cites it for the distinction between bodies (green-ray/astral, indigo/form-maker); this must be read before Phase 2",
+   "used_by": [
+    "embodiment-modes",
+    "inner-planes-and-bodies",
+    "mind-body-spirit-complex"
+   ]
+  },
+  {
+   "ref": "21.5",
+   "text": "The passage read is about the transfer of entities from Maldek and its dating, not about dimensions.",
+   "status": "ambiguous",
+   "supports_claim": "the issue cites 21.5 for Ra's metaphysical use of 'dimension'; the passage checked does not carry that. The design rule does not depend on it.",
+   "used_by": [
+    "density-not-dimension"
+   ]
+  },
+  {
+   "ref": "6.24",
+   "text": "(not read) — cited by the issue alongside 21.5 for 'dimension'.",
+   "status": "unchecked",
+   "supports_claim": "same as 21.5; treat as unverified",
+   "used_by": [
+    "density-not-dimension"
+   ]
+  },
+  {
+   "ref": "17.30",
+   "text": "The best way of service to others is the constant attempt to seek to share the love of the Creator as it is known to the inner self. This involves self knowledge and the ability to open the self to the other-self without hesitation.",
+   "status": "supports",
+   "supports_claim": "service-dilemmas: service is self-knowledge and openness, not a menu of good acts",
+   "used_by": [
+    "service-dilemmas",
+    "polarization-positive"
+   ]
+  },
+  {
+   "ref": "17.31 / 17.32 / 17.33",
+   "text": "At least 51 percent service to others for the positive path; 95 percent for the negative; between them lies the sinkhole of indifference.",
+   "status": "partial",
+   "supports_claim": "read via the synopsis, not the session pages; the figures are third-density and are not converted into the 0-10 scale",
+   "used_by": [
+    "third-density-percentages",
+    "polarization-positive"
+   ]
+  },
+  {
+   "ref": "17.40 / 49.7",
+   "text": "Asked whether there is a best way to meditate, and later for a recommended technique, Ra answers only: No.",
+   "status": "supports",
+   "supports_claim": "meditation: there is no optimal technique, so the rule must not invent one",
+   "used_by": [
+    "meditation"
+   ]
+  },
+  {
+   "ref": "12.26-12.30",
+   "text": "Wanderers are as countless as the grains of sand, drawn by the call; a large number are sixth density; the challenge is that a Wanderer forgets the mission, becomes karmically involved, and commonly carries alienation or bodily difficulty.",
+   "status": "partial",
+   "supports_claim": "wanderer-background: a mission, a forgetting and a cost, not a power",
+   "used_by": [
+    "wanderer-background",
+    "veil-and-forgetting"
+   ]
+  },
+  {
+   "ref": "Confederation of Planets category",
+   "text": "Roughly fifty-three civilizations, comprising approximately five hundred planetary consciousness complexes; the Confederation contains entities from Earth who have attained dimensions beyond the third.",
+   "status": "supports",
+   "supports_claim": "confederation-contact and the entity catalogue: a voluntary alliance including Earth-origin beings",
+   "used_by": [
+    "confederation-contact",
+    "entity-catalogue"
+   ]
+  },
+  {
+   "ref": "13.21",
+   "text": "(not read in the Phase 1 pass that produced this ledger)",
+   "status": "unchecked",
+   "supports_claim": "density-four-profile: Fourth-density character profile",
+   "used_by": [
+    "density-four-profile"
+   ]
+  },
+  {
+   "ref": "glossary: Catalyst",
+   "text": "the page was read in the Phase 1 pass and the definition is paraphrased in the inventory; the wording here is not a quotation, so the exact phrasing remains unverified",
+   "status": "partial",
+   "supports_claim": "catalyst-loop: Catalyst, free choice, consequence, integration",
+   "used_by": [
+    "catalyst-loop"
+   ]
+  },
+  {
+   "ref": "17.33",
+   "text": "(not read in the Phase 1 pass that produced this ledger)",
+   "status": "unchecked",
+   "supports_claim": "depolarization-and-npc-handoff: Depolarization, warnings and the zero threshold",
+   "used_by": [
+    "depolarization-and-npc-handoff"
+   ]
+  },
+  {
+   "ref": "glossary: Distortion",
+   "text": "the page was read in the Phase 1 pass and the definition is paraphrased in the inventory; the wording here is not a quotation, so the exact phrasing remains unverified",
+   "status": "partial",
+   "supports_claim": "distortion-tags: Distortion tags",
+   "used_by": [
+    "distortion-tags"
+   ]
+  },
+  {
+   "ref": "77.17",
+   "text": "(not read in the Phase 1 pass that produced this ledger)",
+   "status": "unchecked",
+   "supports_claim": "awareness-scale: Fourth-density Awareness",
+   "used_by": [
+    "awareness-scale"
+   ]
+  },
+  {
+   "ref": "20.36",
+   "text": "(not read in the Phase 1 pass that produced this ledger)",
+   "status": "unchecked",
+   "supports_claim": "smc-connection-individual: Individual SMC Connection",
+   "used_by": [
+    "smc-connection-individual"
+   ]
+  },
+  {
+   "ref": "20.36",
+   "text": "(not read in the Phase 1 pass that produced this ledger)",
+   "status": "unchecked",
+   "supports_claim": "smc-collective: Collective SMC development (group sheet)",
+   "used_by": [
+    "smc-collective"
+   ]
+  },
+  {
+   "ref": "19.19",
+   "text": "(not read in the Phase 1 pass that produced this ledger)",
+   "status": "unchecked",
+   "supports_claim": "negative-path-as-npc: The negative path is not a PC track",
+   "used_by": [
+    "negative-path-as-npc"
+   ]
+  },
+  {
+   "ref": "glossary: Prana",
+   "text": "the page was read in the Phase 1 pass and the definition is paraphrased in the inventory; the wording here is not a quotation, so the exact phrasing remains unverified",
+   "status": "partial",
+   "supports_claim": "prana-energy: Prana / vital energy",
+   "used_by": [
+    "prana-energy"
+   ]
+  },
+  {
+   "ref": "Healing category",
+   "text": "the page was read in the Phase 1 pass and the definition is paraphrased in the inventory; the wording here is not a quotation, so the exact phrasing remains unverified",
+   "status": "partial",
+   "supports_claim": "healing-invitation: Healing and energy transfer",
+   "used_by": [
+    "healing-invitation"
+   ]
+  },
+  {
+   "ref": "Teach/Learning category",
+   "text": "the page was read in the Phase 1 pass and the definition is paraphrased in the inventory; the wording here is not a quotation, so the exact phrasing remains unverified",
+   "status": "partial",
+   "supports_claim": "teach-learning: Teach / learning",
+   "used_by": [
+    "teach-learning"
+   ]
+  },
+  {
+   "ref": "glossary: Ka",
+   "text": "the page was read in the Phase 1 pass and the definition is paraphrased in the inventory; the wording here is not a quotation, so the exact phrasing remains unverified",
+   "status": "partial",
+   "supports_claim": "astral-projection: Astral projection and the astral body",
+   "used_by": [
+    "astral-projection"
+   ]
+  },
+  {
+   "ref": "glossary: Ectoplasm",
+   "text": "the page was read in the Phase 1 pass and the definition is paraphrased in the inventory; the wording here is not a quotation, so the exact phrasing remains unverified",
+   "status": "partial",
+   "supports_claim": "ectoplasm-manifestation: Ectoplasm / astral manifestation",
+   "used_by": [
+    "ectoplasm-manifestation"
+   ]
+  },
+  {
+   "ref": "Archetypical Mind category",
+   "text": "the page was read in the Phase 1 pass and the definition is paraphrased in the inventory; the wording here is not a quotation, so the exact phrasing remains unverified",
+   "status": "partial",
+   "supports_claim": "archetypal-contemplation: Archetypical Mind as contemplation",
+   "used_by": [
+    "archetypal-contemplation"
+   ]
+  },
+  {
+   "ref": "White Magic category",
+   "text": "the page was read in the Phase 1 pass and the definition is paraphrased in the inventory; the wording here is not a quotation, so the exact phrasing remains unverified",
+   "status": "partial",
+   "supports_claim": "white-magic-ritual: White Magic: a bounded ritual procedure",
+   "used_by": [
+    "white-magic-ritual"
+   ]
+  },
+  {
+   "ref": "42.18",
+   "text": "(not read in the Phase 1 pass that produced this ledger)",
+   "status": "unchecked",
+   "supports_claim": "group-rite: Collective working",
+   "used_by": [
+    "group-rite"
+   ]
+  }
+ ]
+}

@@ -190,5 +190,76 @@ class EntityCatalogueTests(unittest.TestCase):
             self.assertNotEqual(entry["type"].lower(), "species", entry["name"])
 
 
+class CosmologyClarificationTests(unittest.TestCase):
+    """The 2026-11-04 update to #1124: density, realm, body and visibility are different things.
+
+    Row ids are the canonical ones from the register that landed on `main` (#1128); this branch only adds the
+    embodiment modes and the passage-check ledger on top of it.
+    """
+
+    def setUp(self) -> None:
+        self.inventory = json.loads(INVENTORY.read_text(encoding="utf-8"))
+        self.rows = {row["id"]: row for row in self.inventory["rows"]}
+        self.checks = json.loads((ROOT / "data" / "law_of_one" / "passage_checks.json").read_text(encoding="utf-8"))
+
+    def test_density_is_a_typing_rule_not_a_statistic(self) -> None:
+        row = self.rows["density-not-dimension"]
+        self.assertEqual(row["group"], "setting_principle")
+        self.assertFalse(row["rules_needed"])
+        self.assertIn("separate fields", row["minimal_procedure"])
+        self.assertIn("No physics engine", row["non_goals"])
+
+    def test_the_pc_is_embodied_by_default(self) -> None:
+        row = self.rows["embodiment-modes"]
+        self.assertIn("'embodied' (default)", row["state"])
+        self.assertIn("default", row["minimal_procedure"].lower())
+        self.assertIn("not a playable option", row["non_goals"])
+
+    def test_visibility_is_its_own_state_and_not_free(self) -> None:
+        row = self.rows["visibility-manifestation"]
+        for word in ("concealed", "perceptible", "manifest"):
+            self.assertIn(word, row["state"])
+        self.assertIn("no free invisibility", row["non_goals"].lower())
+
+    def test_astral_projection_is_a_body_mode_not_a_density(self) -> None:
+        self.assertIn("projected", self.rows["embodiment-modes"]["state"])
+        astral = self.rows["astral-projection"]
+        self.assertIn("astral body", astral["faithful_meaning"])
+        # the projection row must not grant a density change
+        self.assertNotIn("density rises", json.dumps(astral).lower())
+
+    def test_scenes_carry_a_realm_and_a_return_condition(self) -> None:
+        state = self.rows["time-space-presence"]["state"]
+        for word in ("mode", "inner_plane", "return"):
+            self.assertIn(word, state)
+        self.assertIn("not teleportation", self.rows["time-space-presence"]["non_goals"].lower())
+
+    def test_inner_planes_are_regions_and_the_source_settles_no_topology(self) -> None:
+        row = self.rows["inner-planes-and-bodies"]
+        self.assertIn("inner_plane", row["state"] + row["minimal_procedure"])
+        self.assertIn("does not settle", row["minimal_procedure"])
+        self.assertIn("no plane-hopping map", row["non_goals"].lower())
+
+    def test_an_ambiguous_citation_is_recorded_as_ambiguous(self) -> None:
+        """21.5 was offered for Ra's use of 'dimension'; the passage checked is about Maldek."""
+        ambiguous = [c for c in self.checks["checks"] if c["status"] == "ambiguous"]
+        self.assertTrue(ambiguous)
+        self.assertIn("21.5", {c["ref"] for c in ambiguous})
+
+    def test_the_ledger_separates_what_was_read_from_what_was_inherited(self) -> None:
+        statuses = {c["status"] for c in self.checks["checks"]}
+        self.assertTrue({"supports", "unchecked"} <= statuses)
+        for check in self.checks["checks"]:
+            self.assertTrue(check["text"].strip(), check["ref"])
+            self.assertTrue(check["supports_claim"].strip(), check["ref"])
+
+    def test_the_cosmology_concepts_are_covered(self) -> None:
+        coverage = json.loads(COVERAGE.read_text(encoding="utf-8"))
+        ids = {c["id"] for c in coverage["required"] if c["kind"] == "cosmology_clarification"}
+        for expected in ("cosmology-visibility", "cosmology-density-dimension", "cosmology-inner-planes",
+                         "cosmology-embodiment-modes", "cosmology-passage-checks"):
+            self.assertIn(expected, ids)
+
+
 if __name__ == "__main__":
     unittest.main()

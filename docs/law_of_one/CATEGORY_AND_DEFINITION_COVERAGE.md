@@ -82,4 +82,4 @@ than a rule, that is stated; “out of scope” is a disposition, not an omissio
 
 It does not turn a category into a mechanic, a historical person into a species, or a glossary
 term into a stat. It exists so a reviewer can see that **nothing was silently dropped** when the
-inventory chose its 45 rows.
+inventory chose its 50 rows.

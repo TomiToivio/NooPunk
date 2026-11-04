@@ -30,7 +30,8 @@ Merging, reskinning and any NoöPunk integration are a **later, explicitly autho
 
 | file | what it is |
 |---|---|
-| [`RULES_INVENTORY.md`](RULES_INVENTORY.md) | **the Phase 1 deliverable**: 45 concepts, each with its source citations, faithful meaning, disposition, minimal procedure, state fragment, interactions, non-goals and open questions. Generated — edit the data. |
+| [`RULES_INVENTORY.md`](RULES_INVENTORY.md) | **the Phase 1 deliverable**: 50 concepts, each with its source citations, faithful meaning, disposition, minimal procedure, state fragment, interactions, non-goals and open questions. Generated — edit the data. |
+| [`PASSAGE_CHECKS.md`](PASSAGE_CHECKS.md) | the citation ledger: **13 verified, 14 paraphrased, 9 unread, 1 ambiguous**. A citation is not verified because it is cited. |
 | [`COVERAGE_MAP.md`](COVERAGE_MAP.md) | every required source concept mapped to the rows that carry it, plus the pages deliberately left out and why. Generated. |
 | [`CATEGORY_AND_DEFINITION_COVERAGE.md`](CATEGORY_AND_DEFINITION_COVERAGE.md) | all 39 categories and all 20 definition subcategories, each with a disposition — closes the two source indexes the issue names. |
 | [`EXAMPLES_AND_MILESTONES.md`](EXAMPLES_AND_MILESTONES.md) | proposed Awareness bands and the four hard adjudication cases (autonomy, boundaries, good-intention failure, coercion). |
@@ -62,3 +63,34 @@ Catalyst → free choice → consequence → Integration → evolution, with thr
 Awareness, SMC Connection), plain-language Distortion tags, six usable energy centres and a derived violet
 register, a physical/astral pair of realms, and a group sheet for the social memory complex. There is no XP, no
 combat system, no equipment list and no character class: those belong to a host game, if this ever has one.
+
+## Revision 2 (2026-11-04) — the cosmology clarification
+
+The issue gained a section on **density, visibility, Time/Space, astral planes and dimensions** after the first
+inventory, and it changes the shape of the state, not just the prose. The register carries four rows for it —
+`density-not-dimension`, `visibility-manifestation`, `inner-planes-and-bodies`, and (from this pass)
+`embodiment-modes` — plus revisions to `time-space-presence`, `astral-projection`,
+`ectoplasm-manifestation`, `mind-body-spirit-complex` and `density-four-profile`.
+
+| row | what the clarification required |
+|---|---|
+| `density-not-dimension` | density, realm, body, inner plane and visibility are separate fields; none may stand in for another |
+| `visibility-manifestation` | `concealed / perceptible / manifest`, "by choice" (12.17), with a cost stated before the roll |
+| `embodiment-modes` | `embodied` (the default) `/ projected / manifesting / disincarnate`, so projection is a body-mode and never a density |
+| `inner-planes-and-bodies` | astral and devachanic are particular environments; the source settles no nested topology, so the game asserts none |
+| `time-space-presence` | scenes carry a realm, regional conditions, entry and return conditions |
+
+Embodiment is stated where it matters: **a player character is physically embodied unless a scene changes the
+mode**, because 43.16–43.18 describes a physical vehicle with different chemistry, similar appearance, and
+eating — not a ghost state.
+
+## The citation ledger
+
+The update also asked for the cited passages to be checked directly and for ambiguity to be annotated. That is
+now a generated file, [`PASSAGE_CHECKS.md`](PASSAGE_CHECKS.md): every citation the inventory leans on carries a
+status — `supports`, `partial`, `ambiguous` or `unchecked` — and the audit fails if a rule-bearing row relies on
+no citation at all. The honest totals are **13 verified, 14 paraphrased from a page read in this pass, 9 unread,
+1 ambiguous**; the unread ones are named, so Phase 2 starts by reading them rather than by trusting them.
+
+One citation is recorded as **ambiguous rather than smoothed over**: 21.5, offered for Ra's use of "dimension",
+is — in the passage checked — about the transfer of entities from Maldek. The design rule does not depend on it.
