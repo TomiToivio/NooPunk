@@ -94,3 +94,7 @@ no citation at all. The honest totals are **13 verified, 14 paraphrased from a p
 
 One citation is recorded as **ambiguous rather than smoothed over**: 21.5, offered for Ra's use of "dimension",
 is — in the passage checked — about the transfer of entities from Maldek. The design rule does not depend on it.
+
+## Without Number integration comparison
+
+- [Phase 1 compatibility matrix: Law of One × CWN/SWN/WWN/AWN](WITHOUT_NUMBER_COMPATIBILITY_PHASE1.md) compares existing published procedures, missing consciousness rules, and proposed adapter boundaries. This is a design supplement, **not the generated source-of-truth inventory or playable rules**.
