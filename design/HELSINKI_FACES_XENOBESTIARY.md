@@ -3,6 +3,10 @@
 
 This is a place to **write characters, encounters and strange beings in normal prose**. You do not need to edit JSON, YAML, Python, identifiers or schemas. Agents will later turn your approved writing into tabletop rules, then structured data, then Python, **in that order**. Feel free to replace every example, write longer scenes, or leave unanswered mysteries.
 
+**Contents:** 1 Biologics · 2 Constructs · 3 Noetics · 4 Plasmoids · 5 Ordinary faces · 6 A reusable encounter sheet · Open author decisions
+
+**Statuses you can use:** *Author canon* (you decided it) · *Repository canon* (already settled in a linked file) · *Example only / not canon* (scaffolding, disposable) · *Open question* (undecided) · *GM secret* (yours, not the players'). Nothing is canon because it appears in a worksheet.
+
 **Rules inspiration:** *Cities Without Number* (CWN), *Faces On the Street* (approximately printed pp. 180–194) for people, reactions, combat encounters and familiar NPC roles; *Stars Without Number Revised* (SWN), *Xenobestiary* (approximately printed p. 193 onward) for nonhuman encounter presentation. Cite the exact edition before adopting numbers. CWN remains the core; there is no new universal combat or hacking mechanic here.
 
 **Keep biographies in one place:** Fully established major characters remain in [design/characters](characters/) and existing campaign documents. Helsinki's [World](HELSINKI_WORLD.md) introduces people briefly; [City](HELSINKI_CITY.md) describes where encounters happen; [Factions](HELSINKI_FACTIONS.md) describes strategic organizations. Link rather than copy the definitive record.

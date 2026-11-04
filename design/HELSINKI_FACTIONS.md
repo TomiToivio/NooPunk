@@ -3,6 +3,10 @@
 
 This document is for writing about **local groups that shape the Helsinki campaign**. Write the description as you would for a tabletop sourcebook. You do not need to write YAML, JSON, Python, IDs or machine-readable statistics. Agents will convert approved prose into data and code in **Phase 3**, after adding it to the rulebook.
 
+**Contents:** 1 Identity and situation · 2 SWN characteristics · 3 Cunning, Force and Wealth assets · 4 A faction turn at the tabletop · 5 Choosing SWN, WWN or AWN · 6 Relationships, reputation and visibility · Open author decisions
+
+**Statuses you can use:** *Author canon* (you decided it) · *Repository canon* (already settled in a linked file) · *Example only / not canon* (scaffolding, disposable) · *Open question* (undecided) · *GM secret* (yours, not the players'). Nothing is canon because it appears in a worksheet.
+
 **Rules inspiration:** *Stars Without Number Revised* (SWN), *Factions* (approximately printed pp. 211–227), especially faction goals, Force, Cunning, Wealth, FacCreds and assets. *Worlds Without Number* (WWN) major projects and *Ashes Without Number* (AWN) enclaves are alternatives where appropriate, not extra actions for the same organization. Use *Cities Without Number* (CWN) as the immutable character-level system.
 
 **Scope:** Describe local participants in the first Europol rookie campaign. A gang, union, corporation or agency is **not automatically a mechanical faction**. If it does not manage assets and take strategic faction turns, give it a readable organization description in [The City](HELSINKI_CITY.md) instead. Galactic organizations get a Helsinki-facing presence here only if play needs one. Existing global factions remain in [NHI factions](../docs/world/NHI_FACTIONS_922.md).

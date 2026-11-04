@@ -3,6 +3,10 @@
 
 This document is for **writing a city**, not for editing a database. Replace the fictional examples with your own ordinary prose. You can add or remove sections, write in your own language, and leave questions unanswered. Agents handle IDs, schemas, coordinates and Python later, **after** your author approval.
 
+**Contents:** 1 A timeline of collapse · 2 The megacorporations · 3 Other groups · 4 The city's ethos · 5 City government and jurisdiction · 6 Crime and punishment · 7 Social relationships · 8 Districts · 9 Physical / Cyber / Astral · 10 A fully described location · Open author decisions
+
+**Statuses you can use:** *Author canon* (you decided it) · *Repository canon* (already settled in a linked file) · *Example only / not canon* (scaffolding, disposable) · *Open question* (undecided) · *GM secret* (yours, not the players'). Nothing is canon because it appears in a worksheet.
+
 **Rulebook inspiration:** *Cities Without Number* (CWN), *Creating Your Dystopia* and *The City* (approximately printed pp. 106–130 and 196–217, edition-dependent). CWN city/district procedures inform the topics, not the formatting of your prose.
 
 **Keep one home for each subject:** Global context belongs in [World](HELSINKI_WORLD.md), organizations' playable SWN statistics in [Factions](HELSINKI_FACTIONS.md), and creature/encounter profiles in [Faces & Xenobestiary](HELSINKI_FACES_XENOBESTIARY.md). This city's author-owned government source is [Greater Helsinki](GREATER_HELSINKI_2045.md); the established zones are in [ZONES.md](ZONES.md). Respect the existing [Europol jurisdiction frame](../docs/world/EUROPOL_HELSINKI_1114.md) and [campaign outline](../docs/campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md). Link them rather than replacing their canon.

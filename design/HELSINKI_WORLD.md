@@ -3,6 +3,10 @@
 
 This is a **human-readable writing document for Tomi**. Write paragraphs, lists, or dialogue directly under **Your version**. Delete, replace, or ignore any example. **Every example is fictional scaffolding, not an established fact about NoöPunk.** You do not need to know YAML, JSON, Python, database fields, or identifiers. Agents will handle those *after* your approval.
 
+**Contents:** 1 Cyberpunk themes · 2 The world outside Helsinki · 3 The city at a glance · 4 Districts · 5 Megacorporations · 6 Gangs and street organizations · 7 NPCs · Open author decisions
+
+**Statuses you can use:** *Author canon* (you decided it) · *Repository canon* (already settled in a linked file) · *Example only / not canon* (scaffolding, disposable) · *Open question* (undecided) · *GM secret* (yours, not the players'). Nothing is canon because it appears in a worksheet.
+
 **Rulebook inspiration:** *Cities Without Number* (CWN), *Creating Your Dystopia*, especially world themes, corporations, gangs, and NPC creation (approximately printed pp. 106–130, edition-dependent). CWN remains the basic game. This document describes setting and story; it does not introduce a new rule system.
 
 **Where other material belongs:** Detailed Helsinki districts and sites go in [The City](HELSINKI_CITY.md); mechanically active local factions in [Factions](HELSINKI_FACTIONS.md); encounter descriptions in [Faces & Xenobestiary](HELSINKI_FACES_XENOBESTIARY.md). Existing author-written [Zones](ZONES.md), the author-only [Greater Helsinki draft](GREATER_HELSINKI_2045.md), and the established [Europol frame](../docs/world/EUROPOL_HELSINKI_1114.md) are referenced, never overwritten here. Use [the document register](../docs/DOCUMENT_REGISTER.md) to avoid parallel lore.
