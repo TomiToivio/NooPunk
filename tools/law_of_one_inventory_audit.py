@@ -31,8 +31,10 @@ ROOT = Path(__file__).resolve().parents[1]
 INVENTORY = ROOT / "data" / "law_of_one" / "rules_inventory.json"
 COVERAGE = ROOT / "data" / "law_of_one" / "source_coverage.json"
 CHECKS = ROOT / "data" / "law_of_one" / "passage_checks.json"
+CHECKS = ROOT / "data" / "law_of_one" / "passage_checks.json"
 DOC = ROOT / "docs" / "law_of_one" / "RULES_INVENTORY.md"
 MAP = ROOT / "docs" / "law_of_one" / "COVERAGE_MAP.md"
+CHECKS_DOC = ROOT / "docs" / "law_of_one" / "PASSAGE_CHECKS.md"
 CHECKS_DOC = ROOT / "docs" / "law_of_one" / "PASSAGE_CHECKS.md"
 
 PRIORITIES = ("core", "optional", "narrative_only", "out_of_scope")
@@ -180,6 +182,82 @@ def _cell(text: str) -> str:
     return str(text).replace("|", "/").replace("\n", " ").strip()
 
 
+
+def load_checks() -> dict:
+    return json.loads(CHECKS.read_text(encoding="utf-8"))
+
+
+def audit_checks(checks: dict, inventory: dict) -> list[str]:
+    """A citation is not verified because it is cited.
+
+    Every check row must state a status, what the passage said and which claim it carries, and every row that
+    needs rules must be reached by at least one check — otherwise "we cited something" would pass for "we read
+    it".
+    """
+    problems: list[str] = []
+    known = {row["id"] for row in inventory["rows"]}
+    statuses = set(checks["statuses"])
+    cited: set[str] = set()
+    for check in checks["checks"]:
+        ref = check.get("ref", "?")
+        if check.get("status") not in statuses:
+            problems.append(f"check {ref}: status {check.get('status')!r} is not one of {sorted(statuses)}")
+        if not str(check.get("text", "")).strip():
+            problems.append(f"check {ref}: no passage text recorded")
+        if not str(check.get("supports_claim", "")).strip():
+            problems.append(f"check {ref}: does not say which claim it supports")
+        for rid in check.get("used_by", []):
+            if rid not in known:
+                problems.append(f"check {ref}: unknown row {rid!r}")
+            cited.add(rid)
+    uncovered = {row["id"] for row in inventory["rows"] if row["rules_needed"]} - cited
+    if uncovered:
+        problems.append(f"rows that rely on no checked citation: {sorted(uncovered)}")
+    return problems
+
+
+def render_checks(checks: dict) -> str:
+    order = {"supports": 0, "partial": 1, "ambiguous": 2, "unchecked": 3}
+    rows = sorted(checks["checks"], key=lambda c: (order.get(c["status"], 9), c["ref"]))
+    lines = [
+        "# Law of One RPG — passage checks (issue #1124, Phase 1)",
+        "",
+        "The updated issue asks for the cited passages to be checked directly, and for ambiguity to be annotated",
+        "rather than smoothed over. This is that ledger. Generated from `data/law_of_one/passage_checks.json` by",
+        "`tools/law_of_one_inventory_audit.py` — do not edit it by hand.",
+        "",
+        "A citation is **not** verified because it is cited. Only `supports` means the passage was read and says",
+        "what the inventory claims; `partial`, `ambiguous` and `unchecked` are recorded so that Phase 2 knows",
+        "exactly what still needs reading.",
+        "",
+        "| ref | status | what the passage says | which claim it carries |",
+        "|---|---|---|---|",
+    ]
+    for check in rows:
+        text = str(check["text"]).replace("|", "/")
+        if len(text) > 220:
+            text = text[:217] + "..."
+        lines.append(f"| {check['ref']} | `{check['status']}` | {text} | "
+                     f"{str(check['supports_claim']).replace('|', '/')} |")
+    counts: dict[str, int] = {}
+    for check in checks["checks"]:
+        counts[check["status"]] = counts.get(check["status"], 0) + 1
+    lines += ["", "## Counts", ""]
+    for status, meaning in checks["statuses"].items():
+        lines.append(f"* **{status}** ({counts.get(status, 0)}) — {meaning}")
+    lines += [
+        "",
+        "## What remains before the research can be called exhaustive",
+        "",
+        "* the `unchecked` and `ambiguous` rows above must be read and either confirmed or replaced;",
+        "* the peripheral categories (Earth History, People, UFOs, Pyramids, Objects) are disposed of in the",
+        "  coverage map but not read passage by passage;",
+        "* the entity catalogue is a seed, not a concordance: the full named-entity scan is still open.",
+        "",
+    ]
+    return "\n".join(lines)
+
+
 def render(inventory: dict, coverage: dict) -> str:
     rows = inventory["rows"]
     counts = {priority: sum(1 for row in rows if row["priority"] == priority) for priority in PRIORITIES}
@@ -321,6 +399,8 @@ def main(argv: list[str] | None = None) -> int:
             stale.append("COVERAGE_MAP.md")
         if not CHECKS_DOC.is_file() or CHECKS_DOC.read_text(encoding="utf-8") != checks_doc:
             stale.append("PASSAGE_CHECKS.md")
+        if not CHECKS_DOC.is_file() or CHECKS_DOC.read_text(encoding="utf-8") != checks_doc:
+            stale.append("PASSAGE_CHECKS.md")
         if stale:
             print(f"law_of_one_inventory_audit: stale document(s): {', '.join(stale)}", file=sys.stderr)
             return 1
@@ -335,6 +415,7 @@ def main(argv: list[str] | None = None) -> int:
     DOC.parent.mkdir(parents=True, exist_ok=True)
     DOC.write_text(doc, encoding="utf-8")
     MAP.write_text(map_doc, encoding="utf-8")
+    CHECKS_DOC.write_text(checks_doc, encoding="utf-8")
     CHECKS_DOC.write_text(checks_doc, encoding="utf-8")
     print(f"law_of_one_inventory_audit: {len(inventory['rows'])} concepts -> "
           f"{DOC.relative_to(ROOT)}, {MAP.relative_to(ROOT)}")

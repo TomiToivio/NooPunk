@@ -67,28 +67,30 @@ combat system, no equipment list and no character class: those belong to a host 
 ## Revision 2 (2026-11-04) — the cosmology clarification
 
 The issue gained a section on **density, visibility, Time/Space, astral planes and dimensions** after the first
-inventory, and it changes the shape of the state, not just the prose. Five rows were added and five revised:
+inventory, and it changes the shape of the state, not just the prose. The register carries four rows for it —
+`density-not-dimension`, `visibility-manifestation`, `inner-planes-and-bodies`, and (from this pass)
+`embodiment-modes` — plus revisions to `time-space-presence`, `astral-projection`,
+`ectoplasm-manifestation`, `mind-body-spirit-complex` and `density-four-profile`.
 
-| new or revised row | what the clarification required |
+| row | what the clarification required |
 |---|---|
-| `density-not-dimension` | four typed fields — density, realm, body, perceptibility — and the words "fourth dimension" banned from the rules text |
-| `fourth-density-embodiment` | PCs are physically embodied by default (43.16–43.18: different chemistry, similar appearance, they eat) |
-| `visibility-to-third-density` | a separate `concealed / perceptible / manifest` state, "by choice" (12.17), with a cost — never free invisibility |
-| `embodiment-modes` | `embodied / projected / manifesting / disincarnate`, so astral projection is a body-mode, not a density |
-| `inner-planes-subtle-bodies` | astral and devachanic are particular environments, not the whole of Time/Space and not densities |
-| `time-space-presence` (revised) | scenes carry a realm, regional conditions, a temporal correspondence and return conditions |
-| `astral-projection` (revised) | defined independently of a character's density |
-| `ectoplasm-manifestation` (revised) | the astral body's manifestation, tied to the visibility state |
-| `mind-body-spirit-complex` (revised) | names the physical vehicle, astral body and indigo form-maker where they differ |
-| `density-four-profile` (revised) | the sheet carries embodiment and perceptibility beside the three scores |
+| `density-not-dimension` | density, realm, body, inner plane and visibility are separate fields; none may stand in for another |
+| `visibility-manifestation` | `concealed / perceptible / manifest`, "by choice" (12.17), with a cost stated before the roll |
+| `embodiment-modes` | `embodied` (the default) `/ projected / manifesting / disincarnate`, so projection is a body-mode and never a density |
+| `inner-planes-and-bodies` | astral and devachanic are particular environments; the source settles no nested topology, so the game asserts none |
+| `time-space-presence` | scenes carry a realm, regional conditions, entry and return conditions |
 
-The update also asked for the cited passages to be checked directly and ambiguity to be annotated. That is now a
-generated ledger, [`PASSAGE_CHECKS.md`](PASSAGE_CHECKS.md): every citation the inventory leans on carries a
+Embodiment is stated where it matters: **a player character is physically embodied unless a scene changes the
+mode**, because 43.16–43.18 describes a physical vehicle with different chemistry, similar appearance, and
+eating — not a ghost state.
+
+## The citation ledger
+
+The update also asked for the cited passages to be checked directly and for ambiguity to be annotated. That is
+now a generated file, [`PASSAGE_CHECKS.md`](PASSAGE_CHECKS.md): every citation the inventory leans on carries a
 status — `supports`, `partial`, `ambiguous` or `unchecked` — and the audit fails if a rule-bearing row relies on
 no citation at all. The honest totals are **13 verified, 14 paraphrased from a page read in this pass, 9 unread,
-1 ambiguous**; the unread ones (47.8, 6.24, 13.21, 19.19, 20.36, 42.18, 77.17 and two category pages) are named so
-Phase 2 starts by reading them rather than by trusting them.
+1 ambiguous**; the unread ones are named, so Phase 2 starts by reading them rather than by trusting them.
 
 One citation is recorded as **ambiguous rather than smoothed over**: 21.5, offered for Ra's use of "dimension",
-is — in the passage checked — about the transfer of entities from Maldek. The row says so, and the design rule
-does not depend on it.
+is — in the passage checked — about the transfer of entities from Maldek. The design rule does not depend on it.

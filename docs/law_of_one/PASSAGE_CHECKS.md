@@ -1,8 +1,8 @@
 # Law of One RPG — passage checks (issue #1124, Phase 1)
 
-The updated issue asks for the cited passages to be checked directly, and for ambiguity to be
-annotated rather than smoothed over. This is that ledger. Generated from
-`data/law_of_one/passage_checks.json` by `tools/law_of_one_inventory_audit.py`.
+The updated issue asks for the cited passages to be checked directly, and for ambiguity to be annotated
+rather than smoothed over. This is that ledger. Generated from `data/law_of_one/passage_checks.json` by
+`tools/law_of_one_inventory_audit.py` — do not edit it by hand.
 
 A citation is **not** verified because it is cited. Only `supports` means the passage was read and says
 what the inventory claims; `partial`, `ambiguous` and `unchecked` are recorded so that Phase 2 knows
@@ -57,11 +57,7 @@ exactly what still needs reading.
 
 ## What remains before the research can be called exhaustive
 
-The issue names three gaps; this ledger makes them concrete:
-
-* the **unchecked** and **ambiguous** rows above (`47.8`, `6.24`, `21.5`) must be read and either
-  confirmed or replaced;
+* the `unchecked` and `ambiguous` rows above must be read and either confirmed or replaced;
 * the peripheral categories (Earth History, People, UFOs, Pyramids, Objects) are disposed of in the
   coverage map but not read passage by passage;
-* the entity catalogue is a seed, not a concordance: the full named-entity scan across all sessions is
-  still open.
+* the entity catalogue is a seed, not a concordance: the full named-entity scan is still open.

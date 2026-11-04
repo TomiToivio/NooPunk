@@ -396,64 +396,69 @@
    ]
   },
   {
-   "id": "cosmology-density-visibility",
+   "id": "cosmology-visibility",
    "kind": "cosmology_clarification",
-   "title": "Fourth-density embodiment and visibility (12.17, 43.16)",
+   "title": "Fourth-density visibility and manifestation to third density (12.17)",
    "url": "https://www.lawofone.info/s/12#17",
    "rows": [
+    "visibility-manifestation"
+   ]
+  },
+  {
+   "id": "cosmology-density-dimension",
+   "kind": "cosmology_clarification",
+   "title": "Density is not dimension / not four-dimensional space (21.5, 6.24, 17.1)",
+   "url": "https://www.lawofone.info/s/21#5",
+   "rows": [
     "density-not-dimension",
-    "fourth-density-embodiment",
-    "visibility-to-third-density"
+    "density-four-profile"
    ]
   },
   {
-   "id": "cosmology-realms",
+   "id": "cosmology-inner-planes",
    "kind": "cosmology_clarification",
-   "title": "Space/time versus time/space as separate realms (71.6, 70.14, 70.17, 43.12)",
-   "url": "https://www.lawofone.info/c/Time/Space",
+   "title": "Astral planes and subtle bodies are not the whole of Time/Space (43.7, 47.8)",
+   "url": "https://www.lawofone.info/s/47#8",
    "rows": [
-    "time-space-presence",
-    "density-not-dimension"
+    "inner-planes-and-bodies",
+    "astral-projection",
+    "time-space-presence"
    ]
   },
   {
-   "id": "cosmology-astral-bodies",
+   "id": "cosmology-embodied-fourth",
    "kind": "cosmology_clarification",
-   "title": "Astral planes, subtle bodies and ectoplasm (43.7, 47.8, glossary)",
-   "url": "https://www.lawofone.info/glossary.php",
+   "title": "Fourth density is embodied physical life, not a ghost or astral state (43.16, 43.12)",
+   "url": "https://www.lawofone.info/s/43#16",
    "rows": [
-    "inner-planes-subtle-bodies",
+    "density-four-profile"
+   ]
+  },
+  {
+   "id": "cosmology-embodiment-modes",
+   "kind": "cosmology_clarification",
+   "title": "Embodied by default; projection, manifestation and the disincarnate state",
+   "url": "https://www.lawofone.info/s/43",
+   "rows": [
     "embodiment-modes",
     "astral-projection",
-    "ectoplasm-manifestation"
+    "visibility-manifestation"
    ]
   },
   {
-   "id": "cosmology-dimension",
+   "id": "cosmology-passage-checks",
    "kind": "cosmology_clarification",
-   "title": "What 'dimension' means; fourth density is not a spatial coordinate (21.5, 6.24)",
-   "url": "https://www.lawofone.info/s/21",
-   "rows": [
-    "density-not-dimension"
-   ]
-  },
-  {
-   "id": "cosmology-state-proposal",
-   "kind": "cosmology_clarification",
-   "title": "Minimal character/scene state proposal from the issue (density, embodiment, visibility, realm)",
+   "title": "Which cited passages were read, which paraphrased, which unread or ambiguous",
    "url": "https://github.com/TomiToivio/NooPunk/issues/1124",
    "rows": [
-    "density-four-profile",
+    "density-not-dimension",
+    "visibility-manifestation",
     "embodiment-modes",
-    "visibility-to-third-density",
-    "time-space-presence"
+    "inner-planes-and-bodies"
    ]
   }
  ],
  "kinds_documented": [
-  "synopsis_heading",
-  "topic_page",
-  "added_priority",
   "cosmology_clarification"
  ]
 }

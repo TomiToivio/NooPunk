@@ -16,7 +16,7 @@
    "status": "supports",
    "supports_claim": "visibility-to-third-density: visibility is a choice that costs effort, not a default power",
    "used_by": [
-    "visibility-to-third-density",
+    "visibility-manifestation",
     "density-not-dimension"
    ]
   },
@@ -26,7 +26,6 @@
    "status": "supports",
    "supports_claim": "fourth-density embodiment: a physical vehicle, different chemistry, similar appearance",
    "used_by": [
-    "fourth-density-embodiment",
     "embodiment-modes",
     "density-not-dimension"
    ]
@@ -37,7 +36,7 @@
    "status": "supports",
    "supports_claim": "fourth-density embodiment implies bodily needs",
    "used_by": [
-    "fourth-density-embodiment"
+    "embodiment-modes"
    ]
   },
   {
@@ -46,7 +45,7 @@
    "status": "partial",
    "supports_claim": "food is bodily but not a major social catalyst; the inventory must not turn hunger into a subsystem",
    "used_by": [
-    "fourth-density-embodiment"
+    "embodiment-modes"
    ]
   },
   {
@@ -65,7 +64,7 @@
    "status": "supports",
    "supports_claim": "astral-plane entities are distinguished from physically embodied ones",
    "used_by": [
-    "inner-planes-subtle-bodies",
+    "inner-planes-and-bodies",
     "embodiment-modes"
    ]
   },
@@ -118,7 +117,7 @@
    "supports_claim": "time/space is a structured realm with regional conditions, not a void",
    "used_by": [
     "time-space-presence",
-    "inner-planes-subtle-bodies"
+    "inner-planes-and-bodies"
    ]
   },
   {
@@ -146,7 +145,7 @@
    "supports_claim": "the inventory cites it for the distinction between bodies (green-ray/astral, indigo/form-maker); this must be read before Phase 2",
    "used_by": [
     "embodiment-modes",
-    "inner-planes-subtle-bodies",
+    "inner-planes-and-bodies",
     "mind-body-spirit-complex"
    ]
   },
