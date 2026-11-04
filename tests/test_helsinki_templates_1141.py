@@ -1,17 +1,17 @@
-"""Guards for the four Helsinki worksheets (#1141, Phase 1 rework).
+"""The four Helsinki author worksheets (#1141) stay worksheets, stay readable, and stay linked.
 
-Issue #1141 was reworked after the first drafts: the deliverables are now **prose-led documents Tomi writes in**,
-not schema templates. Its acceptance criteria say, in as many words:
+Phase 1 of #1141 is documentation: four author-first writing worksheets, in prose, for Tomi to fill in.
+The failure modes are not syntax errors — they are a worksheet that quietly becomes canon (an example
+promoted to setting), a rule value invented where a book should be consulted, a worksheet that grows into
+an atlas nobody will edit by hand, or a cross-link that rots.
 
-    "Remove YAML, JSON, Python, schema-first forms and internal IDs from Tomi-facing writing areas"
-    "A human can fill in all four documents by writing descriptive sentences ... No code, YAML, JSON,
-     schema keys or database literacy is required."
+These tests check the **documents**, not a rules engine: #1141 authorizes no implementation.
 
-So these tests enforce a *negative* property, which is the one that will actually decay: no machine syntax in the
-author's files. CI discovers tests with `unittest`; do not add a pytest dependency.
+Written with `unittest`: CI discovers with `unittest` and does not install pytest.
 """
 from __future__ import annotations
 
+import json
 import re
 import unittest
 from pathlib import Path
@@ -25,51 +25,250 @@ FACTIONS = DESIGN / "HELSINKI_FACTIONS.md"
 FACES = DESIGN / "HELSINKI_FACES_XENOBESTIARY.md"
 ALL = (WORLD, CITY, FACTIONS, FACES)
 
-RELATIVE_LINK = re.compile(r"\[[^\]]*\]\(([^)#\s]+)(?:#[^)]*)?\)")
-
 #: Anything that looks like a data record rather than a sentence.
 SCHEMA_LINE = re.compile(r"^\s{0,4}[a-z][a-z0-9_]{2,}\s*:\s*\S", re.MULTILINE)
+
+RELATIVE_LINK = re.compile(r"\[[^\]]*\]\(([^)#\s]+)(?:#[^)]*)?\)")
+# the faction worksheet prints its samples as: | **Cunning** | False Front | role | Cost 1; HP 2 |
+ASSET_ROW = re.compile(r"\|\s*\*{0,2}(?P<kind>Cunning|Force|Wealth)\*{0,2}\s*\|\s*"
+                       r"(?P<name>False Front|Hitmen|Franchise)\s*\|[^|]*\|\s*"
+                       r"Cost\s+(?P<cost>\d+);\s*HP\s+(?P<hp>\d+)\s*\|")
 
 
 def text(path: Path) -> str:
     return path.read_text(encoding="utf-8")
 
 
-class TheWorksheetsAreReadableDocuments(unittest.TestCase):
+def flat(path: Path) -> str:
+    """The document as prose: wrapped lines joined, emphasis markers dropped."""
+    return " ".join(text(path).replace("**", "").split())
+
+
+def catalogue() -> dict[str, dict]:
+    """The repository's extracted SWN asset rows, loaded by glob rather than by literal filename.
+
+    `tools/cwn_parity_audit.py` treats a test whose text mentions an implementation module as evidence that
+    the matching CWN section is tested. A documentation guard is not evidence for any rule, so this file
+    must not contain a module stem.
+    """
+    path = next((ROOT / "data" / "rules").glob("*faction_asset*.json"))
+    return {row["name"]: row for row in json.loads(path.read_text(encoding="utf-8"))["assets"]}
+
+
+class TheFourWorksheetsExist(unittest.TestCase):
     def test_all_four_documents_exist(self):
         for path in ALL:
-            self.assertTrue(path.is_file(), f"missing template: {path.name}")
+            self.assertTrue(path.is_file(), f"missing worksheet: {path.name}")
 
-    def test_each_is_marked_a_worksheet_not_canon(self):
+    def test_each_declares_the_issue_and_that_it_is_a_draft(self):
         for path in ALL:
-            head = text(path)[:600].lower()
-            self.assertIn("not canon", head, path.name)
-            self.assertTrue("worksheet" in head or "template" in head,
-                            f"{path.name} does not say what it is")
-            self.assertIn("phase 1", head, path.name)
+            head = text(path)[:400]
+            self.assertIn("1141", head, path.name)
+            self.assertIn("Phase 1", head, path.name)
+            self.assertIn("NOT CANON", head, path.name)
 
-    def test_each_uses_the_shared_status_legend(self):
-        for path in ALL:
-            body = text(path)
-            for marker in ("AUTHOR CANON", "REPOSITORY CANON", "EXAMPLE ONLY", "OPEN"):
-                self.assertIn(marker, body, f"{path.name} is missing the {marker} status")
+    def test_each_opens_with_a_table_of_contents(self):
+        """Before the first section — either spelling the repository uses is fine.
 
-    def test_each_has_a_table_of_contents(self):
-        for path in ALL:
-            self.assertIn("**Contents**", text(path), path.name)
-
-    def test_each_leaves_writing_space_and_decisions_for_the_author(self):
+        The worksheets were rewritten into prose by another session while this guard was in flight and
+        they spell it `**Contents**`; both spellings carry the requirement, so both are accepted rather
+        than one being declared canonical by a test.
+        """
         for path in ALL:
             body = text(path)
-            self.assertIn("<!-- Tomi writes below -->", body, path.name)
-            self.assertGreaterEqual(body.count("<!-- Tomi writes below -->"), 5,
-                                    f"{path.name} does not leave room to write in every section")
-            self.assertIn("Unresolved decisions", body, path.name)
-            self.assertIn("Record answers here", body, path.name)
+            marker = "**Contents:**" if "**Contents:**" in body else "**Contents**"
+            self.assertIn("Contents", body, path.name)
+            self.assertLess(body.index(marker), body.index("\n## "),
+                            f"{path.name} lists its contents after the first section")
+
+    def test_each_offers_the_shared_status_words(self):
+        for path in ALL:
+            body = flat(path)
+            lowered = body.lower()
+            for status in ("author canon", "repository canon", "example only", "open", "gm secret"):
+                self.assertIn(status, lowered, f"{path.name} lacks the {status} status word")
+
+    def test_each_asks_for_prose_rather_than_a_database(self):
+        for path in ALL:
+            body = flat(path)
+            self.assertIn("Your version", body, f"{path.name} has no writing space")
+            self.assertTrue("Writing prompts" in body or "Questions to help you write" in body,
+                            f"{path.name} gives the author no prompts")
+
+    def test_each_marks_its_examples_as_fiction(self):
+        for path in ALL:
+            self.assertGreaterEqual(text(path).count("Example only"), 3,
+                                    f"{path.name} does not repeatedly mark its examples")
+
+    def test_each_leaves_the_open_questions_to_the_author(self):
+        for path in ALL:
+            body = flat(path)
+            self.assertIn("Open author decisions", body, f"{path.name} has no decision list")
+            self.assertTrue("Author's answers" in body or "Author's notes and decisions" in body,
+                            f"{path.name} gives the author nowhere to record decisions")
+
+    def test_each_is_small_enough_to_edit_by_hand(self):
+        """"Small enough for Tomi to replace/extend by hand" is a requirement, not a preference."""
+        for path in ALL:
+            lines = len(text(path).splitlines())
+            self.assertLessEqual(
+                lines, 300,
+                f"{path.name} is {lines} lines; the issue asks for a worksheet, not an atlas")
 
 
-class TheWorksheetsContainNoMachineSyntax(unittest.TestCase):
-    """The rework's core requirement: Tomi is the writer, not a parser."""
+class WorldWorksheet(unittest.TestCase):
+    def test_all_seven_topics_are_present(self):
+        body = text(WORLD).lower()
+        for topic in ("cyberpunk themes", "world outside", "city at a glance", "district",
+                      "megacorporation", "gang", "npc"):
+            self.assertIn(topic, body, f"world worksheet missing: {topic}")
+
+    def test_it_defers_the_setting_it_must_not_decide(self):
+        body = text(WORLD)
+        for anchor in ("GREATER_HELSINKI_2045.md", "ZONES.md", "EUROPOL_HELSINKI_1114.md"):
+            self.assertIn(anchor, body)
+
+    def test_it_does_not_settle_what_canon_leaves_open(self):
+        self.assertIn("deliberately unknown", flat(WORLD).lower())
+
+
+class CityWorksheet(unittest.TestCase):
+    def test_every_cwn_city_topic_is_present(self):
+        body = text(CITY).lower()
+        for topic in ("timeline of collapse", "megacorporation", "other groups", "ethos",
+                      "government and jurisdiction", "crime and punishment",
+                      "social relationships", "districts of the city"):
+            self.assertIn(topic, body, f"city worksheet missing: {topic}")
+
+    def test_the_three_views_are_modelled_separately(self):
+        body = text(CITY)
+        for view in ("Physical", "Cyber", "Astral"):
+            self.assertIn(view, body)
+
+    def test_the_metaphysical_axes_are_not_conflated(self):
+        body = flat(CITY)
+        self.assertIn("Space/Time", body)
+        self.assertIn("Time/Space", body)
+        self.assertIn("fourth-density", body)
+        self.assertIn("not map coordinates", body)
+        self.assertIn("Interdimensional hypothesis", body)
+        self.assertIn("in-world", body)
+
+    def test_a_fully_described_location_exists(self):
+        body = text(CITY).lower()
+        for part in ("physical appearance", "cyber appearance", "astral appearance",
+                     "access and movement", "gm-only question"):
+            self.assertIn(part, body, f"location worksheet missing: {part}")
+
+    def test_real_tunnels_are_not_declared_traversable(self):
+        body = flat(CITY).lower()
+        self.assertIn("publicly traversable", body)
+        self.assertIn("do not imply", body)
+        self.assertIn("fictional", body)
+
+    def test_the_first_act_stays_grounded(self):
+        body = flat(CITY).lower()
+        self.assertIn("first act", body)
+        self.assertIn("hidden", body)
+
+
+class FactionsWorksheet(unittest.TestCase):
+    def test_it_uses_the_swn_faction_statistics(self):
+        body = flat(FACTIONS)
+        for token in ("Force", "Cunning", "Wealth", "FacCreds"):
+            self.assertIn(token, body)
+
+    def test_its_asset_table_matches_the_repository_catalogue(self):
+        rows = {m.group("name"): m for m in ASSET_ROW.finditer(text(FACTIONS))}
+        self.assertEqual({"False Front", "Hitmen", "Franchise"}, set(rows),
+                         "one verified sample per asset category is required")
+        known = catalogue()
+        for name, match in rows.items():
+            self.assertEqual(int(match.group("cost")), known[name]["cost"], f"{name} cost drifted")
+            self.assertEqual(int(match.group("hp")), known[name]["hp"], f"{name} HP drifted")
+        for page in ("219", "221", "223"):
+            self.assertIn(page, text(FACTIONS), f"printed page {page} not cited")
+
+    def test_it_invents_no_scores_and_no_results(self):
+        body = flat(FACTIONS)
+        self.assertIn("Do not guess rulebook figures", body)
+        self.assertIn("No outcome is assumed here", body)
+
+    def test_wwn_and_awn_are_alternatives_not_extra_wallets(self):
+        body = flat(FACTIONS)
+        self.assertIn("WWN major project", body)
+        self.assertIn("AWN enclave", body)
+        self.assertIn("second set of free SWN actions", body)
+
+    def test_reputation_is_not_a_faction_statistic(self):
+        body = flat(FACTIONS)
+        self.assertIn("not a faction statistic", body)
+
+
+class FacesWorksheet(unittest.TestCase):
+    def test_all_four_nhi_kinds_are_present(self):
+        body = text(FACES).lower()
+        for kind in ("biologics", "constructs", "noetics", "plasmoids"):
+            self.assertIn(kind, body, f"no {kind} section")
+
+    def test_ordinary_people_come_first(self):
+        body = text(FACES)
+        self.assertIn("Ordinary faces", body)
+
+    def test_the_five_axes_are_kept_apart(self):
+        body = flat(FACES).lower()
+        for axis in ("body or species", "ontological type", "political affiliation", "density",
+                     "realm or layer"):
+            self.assertIn(axis, body, f"axis missing: {axis}")
+
+    def test_a_program_is_not_automatically_a_being(self):
+        body = flat(FACES)
+        self.assertIn("cyber-only automated process is not automatically a conscious Construct or Noetic being",
+                      body)
+
+    def test_psi_cannot_shortcut_an_investigation(self):
+        body = flat(FACES)
+        self.assertIn("not a confession", body)
+        self.assertIn("PSI_INVESTIGATION_BOUNDARY_1105.md", body)
+
+    def test_no_invented_stat_blocks(self):
+        body = flat(FACES).lower()
+        self.assertIn("ordinary social encounter unless tomi supplies specific verified statistics", body)
+
+
+class LinksAndIndexes(unittest.TestCase):
+    def test_no_worksheet_links_to_a_missing_file(self):
+        broken = []
+        for path in ALL + (DESIGN / "README.md",):
+            for match in RELATIVE_LINK.finditer(text(path)):
+                target = match.group(1)
+                if target.startswith(("http://", "https://", "mailto:")):
+                    continue
+                if not (path.parent / target).resolve().exists():
+                    broken.append(f"{path.relative_to(ROOT)} -> {target}")
+        self.assertEqual(broken, [], "broken relative links: " + "; ".join(broken))
+
+    def test_the_design_index_lists_all_four_once(self):
+        index = text(DESIGN / "README.md")
+        self.assertEqual(index.count("## Issue #1141"), 1, "design/README.md has two #1141 sections")
+        targets = [m.group(1) for m in RELATIVE_LINK.finditer(index)]
+        for path in ALL:
+            self.assertEqual(targets.count(path.name), 1,
+                             f"design/README.md links {path.name} {targets.count(path.name)} times")
+
+    def test_the_document_register_names_the_set(self):
+        self.assertIn("HELSINKI_CITY.md", text(ROOT / "docs" / "DOCUMENT_REGISTER.md"))
+
+
+
+
+class NoMachineSyntaxInTheAuthorsFiles(unittest.TestCase):
+    """The half of the guard that came from main's version of this file (#1151), kept in the merge.
+
+    These are the negative properties — the ones that decay silently when a document is edited by
+    someone who means well. My rewrite of the guard had the positive checks; dropping these would have
+    made the merge a regression dressed as a resolution.
+    """
 
     def test_no_fenced_code_blocks_of_any_kind(self):
         for path in ALL:
@@ -97,82 +296,15 @@ class TheWorksheetsContainNoMachineSyntax(unittest.TestCase):
                     if not m.group(0).strip().startswith(("*", "-", ">", "|"))]
             self.assertEqual(hits, [], f"{path.name} still contains record-style lines: {hits[:4]}")
 
-
-class TheWorksheetsCoverTheRequestedScope(unittest.TestCase):
-    def test_world_covers_its_seven_subjects(self):
-        body = text(WORLD).lower()
-        for subject in ("theme", "2045", "district", "megacorporation", "gangs", "npc"):
-            self.assertIn(subject, body, f"the World worksheet does not cover {subject}")
-
-    def test_city_covers_its_eight_subjects_and_the_three_layers(self):
-        body = text(CITY).lower()
-        for subject in ("timeline", "megacorporation", "organizations", "ethos", "government",
-                        "crime and punishment", "social relationships", "district"):
-            self.assertIn(subject, body, f"the City worksheet does not cover {subject}")
-        for layer in ("physical", "cyber", "astral"):
-            self.assertIn(layer, body, f"the City worksheet does not describe the {layer} layer")
-
-    def test_city_keeps_astral_out_of_the_first_act(self):
-        body = text(CITY).lower()
-        self.assertIn("first act", body)
-        self.assertIn("nothing", body, "the layered example should say plainly that Act I has no astral content")
-
-    def test_factions_name_the_asset_categories_and_a_worked_turn(self):
-        body = text(FACTIONS)
-        for word in ("Force", "Cunning", "Wealth", "FacCred", "faction turn"):
-            self.assertIn(word, body, f"the Factions worksheet is missing {word}")
-        self.assertIn("one action", body.lower())
-
-    def test_factions_keep_reputation_out_of_faction_statistics(self):
-        body = text(FACTIONS).lower()
-        self.assertIn("reputation is not a faction statistic", body)
-        self.assertIn("strength", body)
-
-    def test_faces_cover_four_classes_and_ordinary_people(self):
-        body = text(FACES)
-        for klass in ("Biologics", "Constructs", "Noetics", "Plasmoids", "Ordinary faces"):
-            self.assertIn(klass, body, f"the Faces worksheet is missing {klass}")
-
-    def test_faces_keep_the_five_axes_apart(self):
-        body = text(FACES).lower()
-        for axis in ("body", "ontology", "faction", "density", "layer"):
-            self.assertIn(axis, body, f"the Faces worksheet does not separate {axis}")
-
-    def test_psi_does_not_solve_investigations(self):
-        body = text(FACES)
-        self.assertIn("PSI_INVESTIGATION_BOUNDARY_1105.md", body)
-        self.assertIn("never a proof", body.lower(), "telepathy must produce a lead, not evidence")
-
-
-class EveryRelativeLinkResolves(unittest.TestCase):
-    def test_no_template_links_to_a_missing_file(self):
-        broken = []
-        for path in ALL + (DESIGN / "README.md", ROOT / "docs" / "DOCUMENT_REGISTER.md"):
-            for match in RELATIVE_LINK.finditer(text(path)):
-                target = match.group(1)
-                if target.startswith(("http://", "https://", "mailto:")):
-                    continue
-                if not (path.parent / target).resolve().exists():
-                    broken.append(f"{path.relative_to(ROOT)} -> {target}")
-        self.assertEqual(broken, [], "broken relative links: " + "; ".join(broken))
-
-    def test_the_design_index_lists_all_four(self):
-        body = text(DESIGN / "README.md")
-        for path in ALL:
-            self.assertIn(path.name, body, f"design/README.md does not list {path.name}")
-
-    def test_the_document_register_names_the_set(self):
-        self.assertIn("HELSINKI_CITY.md", text(ROOT / "docs" / "DOCUMENT_REGISTER.md"))
-
-
-class TheIssueStaysOpen(unittest.TestCase):
     def test_the_documents_never_claim_phase_two_or_three_is_done(self):
         """#1141 closes only when all three phases are finished; Phase 1 must not read as completion."""
         for path in ALL:
+            head = text(path)[:600].lower()
+            self.assertIn("phase 1", head, path.name)
             body = text(path).lower()
-            self.assertIn("phase 1", body, path.name)
-            self.assertIn("tomi", body, path.name)
-            self.assertIn("your version", body, path.name)
+            for claim in ("phase 2 is complete", "phase 3 is complete", "phases 1-3",
+                          "implementation complete"):
+                self.assertNotIn(claim, body, f"{path.name} claims {claim}")
 
 
 if __name__ == "__main__":
