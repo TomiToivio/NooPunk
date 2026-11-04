@@ -65,7 +65,8 @@ civilians, and never as a quip after a death.
 
 | Field | Value |
 |---|---|
-| Age and standing | 24, first posting, still technically on probation for the campaign's first arc |
+| Age and standing | **Young, first posting.** No age is authored in #1132; 24 is this draft's working figure and a proposal, not canon |
+| Name and pronouns | **[OPEN]** — the author's to set. This draft uses "she" and leaves the character unnamed as a working convention; both are placeholders, not characterisation |
 | Employer | **Europol**, Helsinki office — the liaison/analysis office, not a national police force |
 | Housing | Company housing in **Kurvi**, Kallio. Small, paid for by the office, which is itself a leash |
 | Starting kit | Standard Europol officer equipment; basic Europol cybernetic set including **BCI** and a **defensive psychotronic implant** |
