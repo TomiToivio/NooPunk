@@ -1,194 +1,156 @@
-# HELSINKI — FACTIONS (template, #1141)
+# Helsinki 2045: Factions
+**Human-readable RPG worksheet for Tomi | #1141 Phase 1 | Examples are NOT CANON**
 
-> **STATUS: TEMPLATE / DRAFT OUTLINE. Agent-written scaffolding, not canon.**
-> Companion documents: [WORLD](HELSINKI_WORLD.md) · [CITY](HELSINKI_CITY.md) · **FACTIONS** (this file) ·
-> [FACES & XENOBESTIARY](HELSINKI_FACES_XENOBESTIARY.md).
->
-> **Source:** *Stars Without Number (Revised)*, **Factions** — faction statistics and the faction turn
-> from printed **p. 211**; the asset catalogue from printed **pp. 219 (Cunning), 221 (Force),
-> 223 (Wealth)**. The repository holds no copy of the book; asset rows quoted below come from
-> [`data/rules/swn_faction_assets.json`](../data/rules/swn_faction_assets.json), which records the
-> printed page for each row. **Verify the edition you hold before relying on a printed number.**
-> Coverage and licensing status: [`docs/rules/SWN_COVERAGE_1105.md`](../docs/rules/SWN_COVERAGE_1105.md).
+This document is for writing about **local groups that shape the Helsinki campaign**. Write the description as you would for a tabletop sourcebook. You do not need to write YAML, JSON, Python, IDs or machine-readable statistics. Agents will convert approved prose into data and code in **Phase 3**, after adding it to the rulebook.
 
-## Scope: local actors only
+**Rules inspiration:** *Stars Without Number Revised* (SWN), *Factions* (approximately printed pp. 211–227), especially faction goals, Force, Cunning, Wealth, FacCreds and assets. *Worlds Without Number* (WWN) major projects and *Ashes Without Number* (AWN) enclaves are alternatives where appropriate, not extra actions for the same organization. Use *Cities Without Number* (CWN) as the immutable character-level system.
 
-This file holds **Helsinki-area actors that affect the Europol rookie campaign**. It is not a galactic
-or global faction encyclopedia: the Confederacy, Orion, UNSA and megacorporations appear only as a
-**local cell or presence**, and only if play actually needs one. Global factions stay in
-[`docs/world/NHI_FACTIONS_922.md`](../docs/world/NHI_FACTIONS_922.md).
+**Scope:** Describe local participants in the first Europol rookie campaign. A gang, union, corporation or agency is **not automatically a mechanical faction**. If it does not manage assets and take strategic faction turns, give it a readable organization description in [The City](HELSINKI_CITY.md) instead. Galactic organizations get a Helsinki-facing presence here only if play needs one. Existing global factions remain in [NHI factions](../docs/world/NHI_FACTIONS_922.md).
 
-**Not every organisation is a mechanical faction.** A union, a police unit or a street gang becomes one
-only when it takes faction turns, holds assets and competes for influence. Everything else is an
-organisation with a name and a jurisdiction — [CITY](HELSINKI_CITY.md) §3.
+## How to use the worksheet
 
-**Rules boundary.** SWN Revised is the faction-turn model (**Force**, **Cunning**, **Wealth**,
-FacCreds, goals, assets). WWN's faction/major-project tooling and AWN's **Enclaves** are *alternatives
-for a different scale*, not extra wallets. CWN core rules are untouched, and CWN is not a faction
-system — SWN fills that gap here, explicitly.
+Each example is invented and **NOT CANON**. Replace it with your own prose. Where tabletop numbers help, a **simple RPG-style stat line or table** is fine. Agents verify printed mechanics and write the structured data later. Do not guess rulebook figures. The author can explicitly label material **Author canon**, **Open**, or **GM secret**.
 
-## How to use this file
+## 1. A faction's identity and situation
 
-1. Heading, **one labelled example**, `<!-- Tomi writes below -->`.
-2. Statuses: **AUTHOR CANON**, **REPOSITORY CANON**, **EXAMPLE ONLY / NOT CANON**, **OPEN**,
-   **GM SECRET**.
-3. **Never guess a printed statistic.** If a value is not verified against the source you hold, it is
-   `TBD`, not a plausible number.
-4. Stable IDs: `hel_faction_*`, `hel_asset_*`. Assets are defined **inside** their faction record; do
-   not create a second asset catalogue.
+**Example only: Helsinki Municipal Infrastructure Unit (NOT CANON)**
+
+**Who they are:** A fictional municipal group entrusted with keeping power, water and transit systems working during emergencies. Its employees believe they do thankless but essential work. Politicians treat the unit as both a public service and a convenient scapegoat.
+
+**What they want:** A reliable emergency network and fewer contractors with hidden obligations.
+
+**Where they operate:** Greater Helsinki infrastructure and public-service facilities.
+
+**Who they rely on:** Municipal officials, local technicians, labor unions and selected commercial contractors.
+
+**Who opposes them:** Rival suppliers and anyone profiting from disruption.
+
+**How people see them:** Unremarkable until something breaks. Then everybody suddenly becomes an expert on their work.
+
+**Current trouble:** The unit discovers that an obsolete access contract still authorizes a private organization to touch its systems.
+
+**Campaign hook:** A Europol liaison asks the player to trace the contract without turning a routine infrastructure dispute into a jurisdictional incident.
+
+**Possible SWN game role:** A strategic faction only if Tomi wants this actor to own assets, pursue faction goals and participate in the faction turn. Otherwise it remains a normal city organization.
+
+**Your version (Tomi writes here):**
+
+*Faction name, background, purpose, people, territory, allies, adversaries, public image, secret interests, current agenda and relationship to the investigators.*
 
 ---
 
-## 1. The faction record
+## 2. SWN faction characteristics
 
-| field | meaning | source |
+Use **Force, Cunning and Wealth**, the published SWN faction goals, tags, assets and FacCreds. These are game mechanics, not a substitute for the story. Only choose values after checking the appropriate SWN source. A reputation score on a character sheet is **not** a faction statistic.
+
+**Example only: The infrastructure unit as a game piece (NOT CANON)**
+
+| SWN item | Example of what Tomi would decide |
+| --- | --- |
+| **Goal** | Keep essential services functioning through a major crisis |
+| **Force** | To be chosen from the printed SWN rules |
+| **Cunning** | To be chosen from the printed SWN rules |
+| **Wealth** | To be chosen from the printed SWN rules |
+| **FacCreds** | To be assigned using SWN faction procedures |
+| **Faction tags** | Public mandate; dependent on contractors (fictional descriptors, not automatically published SWN tags) |
+| **Base of Influence** | To be chosen when the author decides where the group can act |
+| **Assets** | To be chosen from published lists if this becomes a mechanical faction |
+
+**Writing prompts:** How powerful is this group? What resources does it control? What can it plausibly achieve in one strategic turn? Does its influence differ between districts? Which exact published faction tags match it?
+
+**Your version (Tomi writes here):**
+
+*Describe the faction's practical strengths and weaknesses. Add a plain SWN stat line when you want to choose numbers. Agents will later validate and encode it.*
+
+---
+
+## 3. Cunning, Force and Wealth assets
+
+**Assets are not mere adjectives.** SWN treats them as game pieces with published abilities, costs and hit points. The following three are real named catalogue examples recorded in the repository's SWN asset reference; they are **not assigned to any Helsinki faction**. Consult the printed edition before making final purchases.
+
+| Type | Printed asset example | Illustrative role | Recorded cost / HP |
+| --- | --- | --- | --- |
+| **Cunning** | False Front | A concealed network or organization | Cost 1; HP 2 |
+| **Force** | Hitmen | An armed clandestine asset | Cost 2; HP 1 |
+| **Wealth** | Franchise | Economic presence or expansion | Cost 2; HP 3 |
+
+*Source note:* Local SWN asset extraction in [data/rules/swn_faction_assets.json](../data/rules/swn_faction_assets.json), with recorded printed pages 219, 221 and 223 respectively. Use the actual SWN text for abilities and conditions; do not infer them from this table.
+
+**Example only: Assets as a story (NOT CANON)**
+
+A fictional infrastructure organization worries that an unknown competitor has a hidden corporate front in Kurvi. At the table, a GM *might* represent the hidden front with a SWN **False Front** asset, if the published rules and the final faction setup permit it. Its location and ownership would be chosen by Tomi, not automatically assigned by this example.
+
+**Writing prompts:** What does this faction own or control? Which assets are political, covert, armed or economic? Where are they located? What do they look like in the story? Which are actually SWN assets and which are ordinary narrative resources?
+
+**Your version (Tomi writes here):**
+
+*List the faction's resources in ordinary prose. Add printed asset names and costs only if you want them to matter in faction turns.*
+
+---
+
+## 4. A faction turn at the tabletop
+
+**Example only: One strategic decision (NOT CANON)**
+
+1. **Situation:** The fictional infrastructure unit learns that its archive may be compromised.
+2. **Goal:** Protect the integrity of the system.
+3. **Resources:** The GM checks the group's actual SWN statistics, assets and available FacCreds.
+4. **Action:** The faction chooses one legal action under the published SWN turn procedure.
+5. **Resolution:** The table makes the required rolls and applies the appropriate printed asset and action rules. No outcome is assumed here.
+6. **Consequences:** Record what changed and how the event becomes a player-facing rumor, case lead or political development.
+
+**Writing prompts:** Does the campaign use a faction turn from Act I or only later? Which actors move during downtime? How does a strategic event become a rumor, mission or change in district life? Do not give an organization extra actions by simultaneously running SWN and AWN or WWN as separate wallets.
+
+**Your version (Tomi writes here):**
+
+*Write a short example turn as a narrative and specify the intended SWN action, assets and rulebook references if chosen.*
+
+---
+
+## 5. Choosing SWN, WWN or AWN
+
+Not every political or social activity should be forced into SWN faction warfare.
+
+| If the story is about… | Consider… | Why |
 | --- | --- | --- |
-| `faction_id` | stable key | — |
-| `name`, `scope` | who, and where they can act | — |
-| `source_system` | `swn_faction` \| `wwn_project` \| `awn_enclave` | see §4 |
-| `force`, `cunning`, `wealth` | the three faction statistics | SWN p. 211 |
-| `fac_creds` | faction currency | SWN p. 211 |
-| `goal` | the current faction goal | SWN p. 211 |
-| `tags` | faction tags | SWN p. 211 |
-| `base_of_influence` | the asset that anchors the faction | asset catalogue |
-| `force_assets`, `cunning_assets`, `wealth_assets` | asset rows with location and HP | pp. 219/221/223 |
-| `jurisdiction`, `relations` | local legality and who tolerates whom | this file |
-| `campaign_visibility` | Act in which the player can perceive them | campaign outline |
-| `player_interactions` | what a Europol officer can do to/with them | — |
+| Organizations competing for strategic influence, assets and goals | **SWN faction turn** | The principal local strategic model |
+| A long-term project such as building a bridge or securing a treaty | **WWN major project** | Tracks the endeavor rather than a second faction economy |
+| A struggling settlement in an area hit by the NHI Crisis | **AWN enclave** | Tracks survival, resources and community concerns |
 
-```yaml
-# EXAMPLE ONLY — NOT CANON
-faction_id: hel_faction_001
-name: "Helsinki municipal infrastructure unit"
-scope: "Greater Helsinki only"
-source_system: "swn_faction"
-force: "TBD — determine by SWN procedure"
-cunning: "TBD — determine by SWN procedure"
-wealth: "TBD — determine by SWN procedure"
-fac_creds: "TBD"
-goal: "Keep city services running through a crisis"
-tags: ["public mandate", "budget constrained"]
-base_of_influence: "TBD"
-force_assets: []
-cunning_assets: []
-wealth_assets: []
-jurisdiction: "Municipal; cannot arrest or search."
-relations: ["hel_org_001 (co-dependent)", "hel_corp_001 (contractor)"]
-campaign_visibility: "Act I"
-player_interactions: ["Request a utility record", "Trade a favour for a shutdown"]
-source: "illustrative"
-```
+**Example only: A crisis settlement (NOT CANON)**
 
-<!-- Tomi writes below -->
+A settlement near an exclusion area is chiefly concerned with medicine, energy, food and safety. It may make more sense to describe it as an AWN enclave than as a SWN faction competing for galactic influence. It cannot collect an entire second set of free SWN actions merely by changing labels.
+
+**Writing prompts:** Which scale of play best captures each organization? If two systems describe it, what distinct subjects do they model, and how will agents prevent double-counting?
+
+**Your version (Tomi writes here):**
+
+*Name the group and explain which strategic system, if any, is useful.*
 
 ---
 
-## 2. One sample of every asset category
+## 6. Relationships, reputation and campaign visibility
 
-These are **real catalogue rows** (name, cost, HP, printed page) taken from
-[`data/rules/swn_faction_assets.json`](../data/rules/swn_faction_assets.json) — not invented numbers.
-They illustrate the format only; the faction above does not own them until you say so.
+**Example only: A damaged relationship (NOT CANON)**
 
-```yaml
-# CATALOGUE EXAMPLES — real rows, illustrative ownership
-cunning_assets:
-  - source_asset_id: false_front        # "False Front", cost 1, HP 2, p. 219
-    location: hel_district_kurvi
-force_assets:
-  - source_asset_id: hitmen             # "Hitmen", cost 2, HP 1, p. 221
-    location: hel_district_kurvi
-wealth_assets:
-  - source_asset_id: franchise          # "Franchise", cost 2, HP 3, p. 223
-    location: hel_district_kurvi
-```
+After an investigation embarrasses a municipal supervisor, the rookie is no longer welcome at a particular office. This is a story consequence and could later be represented by a character reputation tag if that optional NoöPunk rule is approved. It does **not** reduce the municipal organization's SWN Force score.
 
-<!-- Tomi writes below -->
+**Writing prompts:** What does the faction think of the player? What does the player know about its real aims? What is concealed until a later campaign act? What changes when the organization wins or loses?
 
-**Rule:** an asset's special ability is **printed rules text**; the table reads the entry. The Python
-side (`src/rules/swn_faction_turn.py`, `swn_faction_assets.py`) implements bookkeeping only, never a
-paraphrase of an ability.
+**Your version (Tomi writes here):**
+
+*Faction relationships, public and private reputations, reveal schedule, and GM secrets.*
 
 ---
 
-## 3. One worked faction turn (bookkeeping only)
+## Open author decisions
 
-The engine validates legality — one action per turn, committed assets alive, credits sufficient. **The
-dice and the asset tables belong to the table.** This example is executable today:
+- Which Helsinki organizations are true mechanical SWN factions?
+- Which groups are ordinary local organizations rather than faction-turn actors?
+- At what point in the campaign do faction turns begin?
+- Which actors have links to Orion, the Confederacy, the Soviet Union or other larger powers?
+- Which WWN projects or AWN enclaves are needed, without double-counting resources?
 
-```python
-from rules.swn_faction_turn import Asset, Faction
+**Author's answers (Tomi writes here):**
 
-faction = Faction(identifier="hel_faction_001", credits=4)
-faction.add_asset(
-    Asset(identifier="hel_asset_false_front", faction="hel_faction_001",
-          location="hel_district_kurvi", hp=2, max_hp=2,
-          tags=("cunning", "false_front")),
-    cost=1,                      # printed cost of "False Front" (p. 219)
-)
-event = faction.act("expand", asset_ids=("hel_asset_false_front",),
-                    target="hel_district_kallio")
-faction.next_turn(income=1)      # income is the table's result, not an engine guess
-```
-
-```yaml
-# EXAMPLE ONLY — the same turn on paper
-# 1. Income: table result -> 1 FacCred (record it, do not compute it in the engine)
-# 2. Action: expand, using False Front (p. 219) into Kallio
-# 3. Resolve the printed roll at the table; apply the printed consequence
-# 4. Record the asset's new location and HP; one action spent
-```
-
-<!-- Tomi writes below -->
-
----
-
-## 4. Delegating to WWN or AWN (choose one mode per actor)
-
-| mode | use when | why |
-| --- | --- | --- |
-| `swn_faction` | the actor competes for influence with assets and goals | SWN's turn is the campaign's strategic clock |
-| `wwn_project` | the actor pursues a **single long endeavour** (a bridge, a treaty, a cure) | WWN models projects, not influence warfare |
-| `awn_enclave` | the actor is a **settlement** managing survival and growth | AWN models communities, not factions |
-
-**One actor, one mode.** Taking a faction action and an enclave action for the same organisation in the
-same turn is double-dipping: choose the frame that describes what it is trying to do, and record the
-delegate explicitly. WWN project and AWN enclave tooling live in
-[`src/rules/wwn_projects.py`](../src/rules/wwn_projects.py) and
-[`src/rules/awn_world.py`](../src/rules/awn_world.py); the enclave/crisis/site ledger is #1089.
-
----
-
-## 5. Reputation is not a faction statistic
-
-A character's standing with a local actor is a **character tag** — the proposed −4…+4 scale from
-[#1137](https://github.com/TomiToivio/NooPunk/issues/1137) — and it belongs on the character sheet, not
-in the faction's Force/Cunning/Wealth. Confusing the two produces the classic bug: a player's opinion
-score silently becoming an organisation's military strength.
-
-```yaml
-# EXAMPLE ONLY — NOT CANON
-reputation:
-  hel_faction_001: { value: -1, why: "Closed a case that embarrassed the unit", tag: "obstructive" }
-```
-
-<!-- Tomi writes below -->
-
----
-
-## 6. What this file will not do
-
-* No invented asset, cost, HP or ability value — unverified rows are `TBD`.
-* No global faction encyclopedia; local presence only.
-* No second economy: one faction wallet, one mode per actor.
-* No CWN change. Factions act in the strategy layer; the rookie still resolves a search with CWN.
-
-## Unresolved decisions in this document
-
-| # | question | blocks |
-| --- | --- | --- |
-| F1 | Which local actors are mechanical factions, and which are merely organisations? | the whole file's scope |
-| F2 | Are the fictional example ids (`hel_faction_001` etc.) replaced by real cast, or reused? | cross-references from CITY and FACES |
-| F3 | Does the campaign want a faction turn at all in Act I, or only from Act II? | pacing; whether SWN is needed early |
-| F4 | Which actors are Orion- or Confederacy-adjacent, and do they know it? | Act II antagonists |
-
-*Record answers here, in this file, with a date and the author's name.*
+*Once approved, your prose goes into the tabletop rulebook first. Agents then create machine-readable faction records and Python behavior, preserving the printed rules and your intended story.*
