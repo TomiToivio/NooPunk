@@ -42,6 +42,10 @@ VERBS: dict[str, tuple[int, int]] = {
     "risk": (1, 2),
     "status": (0, 0),
     "conclude": (1, 8),
+    "goal": (3, 40),
+    "goals": (0, 0),
+    "progress": (3, 40),
+    "award": (2, 2),
     "save": (0, 1),
     "help": (0, 0),
 }

@@ -3,6 +3,7 @@ import copy
 import json
 import unittest
 from pathlib import Path
+
 from src.rules.mod_boundary import BaselineViolation, validate_registry
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -19,8 +20,11 @@ class ActivationContractTests(unittest.TestCase):
         with self.assertRaises(BaselineViolation):
             validate_registry(records)
 
-    def test_all_six_real_modules_have_valid_metadata(self):
-        self.assertEqual(len(validate_registry(self.mods)), 6)
+    def test_every_real_module_has_valid_metadata(self):
+        """The count is the registry's, not a literal: a new mod must not need this test edited."""
+        accepted = validate_registry(self.mods)
+        self.assertEqual(sorted(accepted), sorted(mod["name"] for mod in self.mods))
+        self.assertGreaterEqual(len(accepted), 6)
 
     def test_missing_hooks_fail(self):
         self.reject(lambda mod: mod.pop("hooks"))

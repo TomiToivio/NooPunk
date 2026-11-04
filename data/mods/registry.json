@@ -1,260 +1,308 @@
 {
-  "_comment": "Canonical mod activation contract (#1091, ADR_1054). Schemas 1–2 are historical. Hooks name actual entry points; tabletop_gap explicitly blocks paper-playable claims; off_switch means omit overlay without altering CWN or persisted source data. Validation: src/rules/mod_boundary.py and tools/check_mod_activation.py.",
-  "schema": 3,
-  "baseline": {
-    "engine": "Cities Without Number",
-    "gap_fill": [
-      "Stars Without Number Revised: psionics, whole procedure"
-    ],
-    "may_be_changed_by_a_mod": false
-  },
-  "mods": [
+ "_comment": "Canonical mod activation contract (#1091, ADR_1054). Schemas 1–2 are historical. Hooks name actual entry points; tabletop_gap explicitly blocks paper-playable claims; off_switch means omit overlay without altering CWN or persisted source data. Validation: src/rules/mod_boundary.py and tools/check_mod_activation.py.",
+ "schema": 3,
+ "baseline": {
+  "engine": "Cities Without Number",
+  "gap_fill": [
+   "Stars Without Number Revised: psionics, whole procedure"
+  ],
+  "may_be_changed_by_a_mod": false
+ },
+ "mods": [
+  {
+   "name": "noosphere_psyche",
+   "summary": "Noosphere exposure, ontological shock, Psyche instability and recovery",
+   "changes_core_mechanics": false,
+   "reads": [
+    "character attributes",
+    "saves",
+    "system strain"
+   ],
+   "adds": "narrative state only",
+   "implementation": [
+    "mods/noopunk/noosphere.gd",
+    "mods/noopunk/psyche.gd"
+   ],
+   "tabletop_procedure": null,
+   "tabletop_gap": "no printed procedure for this overlay yet",
+   "hooks": [
     {
-      "name": "noosphere_psyche",
-      "summary": "Noosphere exposure, ontological shock, Psyche instability and recovery",
-      "changes_core_mechanics": false,
-      "reads": [
-        "character attributes",
-        "saves",
-        "system strain"
-      ],
-      "adds": "narrative state only",
-      "implementation": [
-        "mods/noopunk/noosphere.gd",
-        "mods/noopunk/psyche.gd"
-      ],
-      "tabletop_procedure": null,
-      "tabletop_gap": "no printed procedure for this overlay yet",
-      "hooks": [
-        {
-          "path": "mods/noopunk/noosphere.gd",
-          "symbol": "record_perception"
-        },
-        {
-          "path": "mods/noopunk/noosphere.gd",
-          "symbol": "change_clock"
-        },
-        {
-          "path": "mods/noopunk/psyche.gd",
-          "symbol": "expose"
-        },
-        {
-          "path": "mods/noopunk/psyche.gd",
-          "symbol": "recover"
-        }
-      ],
-      "state": [
-        "evidence",
-        "interpretations",
-        "clocks",
-        "events",
-        "emotional_state",
-        "identity_choices",
-        "exposure"
-      ],
-      "dependencies": [
-        "cwn-core"
-      ],
-      "off_switch": {
-        "default_enabled": false,
-        "behavior": "Do not invoke Noosphere or Psyche methods; preserve existing overlay save data without modifying CWN state."
-      }
+     "path": "mods/noopunk/noosphere.gd",
+     "symbol": "record_perception"
     },
     {
-      "name": "ideology_factions",
-      "summary": "Discursive identification, faction standings, antagonisms and political temptation",
-      "changes_core_mechanics": false,
-      "reads": [
-        "reaction rolls",
-        "skill check outcomes"
-      ],
-      "adds": "narrative state only",
-      "implementation": [
-        "mud/nopunk_mud/ideology.py",
-        "mud/nopunk_mud/discourse_network.py",
-        "mud/nopunk_mud/faction_overlay.py",
-        "data/world/ideology.json"
-      ],
-      "tabletop_procedure": null,
-      "tabletop_gap": "no printed procedure for this overlay yet",
-      "hooks": [
-        {
-          "path": "mud/nopunk_mud/ideology.py",
-          "symbol": "articulate"
-        },
-        {
-          "path": "mud/nopunk_mud/discourse_network.py",
-          "symbol": "statement"
-        },
-        {
-          "path": "mud/nopunk_mud/faction_overlay.py",
-          "symbol": "set_reputation"
-        }
-      ],
-      "state": [
-        "actors",
-        "statements",
-        "positions",
-        "relations",
-        "faction memberships",
-        "reputation ledger",
-        "dated events"
-      ],
-      "dependencies": [
-        "cwn-core"
-      ],
-      "off_switch": {
-        "default_enabled": false,
-        "behavior": "Bypass optional discourse, ideology and faction reputation presentation; leave CWN reaction and social checks untouched."
-      }
+     "path": "mods/noopunk/noosphere.gd",
+     "symbol": "change_clock"
     },
     {
-      "name": "relationships_reputation",
-      "summary": "NPC trust, obligations, social capital, institutional standing",
-      "changes_core_mechanics": false,
-      "reads": [
-        "social skill outcomes"
-      ],
-      "adds": "narrative state only",
-      "implementation": [
-        "mud/nopunk_mud/social.py"
-      ],
-      "tabletop_procedure": null,
-      "tabletop_gap": "no printed procedure for this overlay yet",
-      "hooks": [
-        {
-          "path": "mud/nopunk_mud/social.py",
-          "symbol": "reaction_modifier"
-        },
-        {
-          "path": "mud/nopunk_mud/social.py",
-          "symbol": "promote"
-        }
-      ],
-      "state": [
-        "memberships",
-        "reputations",
-        "goals"
-      ],
-      "dependencies": [
-        "cwn-core"
-      ],
-      "off_switch": {
-        "default_enabled": false,
-        "behavior": "Omit scoped social modifiers and authority overlay; preserve original CWN reaction resolution."
-      }
+     "path": "mods/noopunk/psyche.gd",
+     "symbol": "expose"
     },
     {
-      "name": "investigative_mode",
-      "summary": "Clue discovery and synthesis; essential clues are never gated behind one failed roll",
-      "changes_core_mechanics": false,
-      "reads": [
-        "skill check outcomes"
-      ],
-      "adds": "narrative state only",
-      "implementation": [
-        "mods/noopunk/gumshoe_investigation.gd"
-      ],
-      "tabletop_procedure": "docs/rules/GUMSHOE_INVESTIGATION_LAYER.md",
-      "tabletop_gap": null,
-      "hooks": [
-        {
-          "path": "mods/noopunk/gumshoe_investigation.gd",
-          "symbol": "gather"
-        },
-        {
-          "path": "mods/noopunk/gumshoe_investigation.gd",
-          "symbol": "buy_benefit"
-        },
-        {
-          "path": "mods/noopunk/gumshoe_investigation.gd",
-          "symbol": "refresh"
-        }
-      ],
-      "state": [
-        "abilities",
-        "order",
-        "benefits"
-      ],
-      "dependencies": [
-        "cwn-core"
-      ],
-      "off_switch": {
-        "default_enabled": false,
-        "behavior": "Do not invoke investigative pools; delegate uncertainty to CWN, without destroying existing investigative save data."
-      }
-    },
-    {
-      "name": "vices_temptations",
-      "summary": "Career ambition, status, trauma, corruption and solidarity as recurring pressures",
-      "changes_core_mechanics": false,
-      "reads": [
-        "character state"
-      ],
-      "adds": "narrative state only",
-      "implementation": [],
-      "tabletop_procedure": null,
-      "tabletop_gap": "no printed procedure for this overlay yet",
-      "hooks": [],
-      "state": [],
-      "dependencies": [
-        "cwn-core"
-      ],
-      "off_switch": {
-        "default_enabled": false,
-        "behavior": "No implementation exists; keep inactive and use unchanged CWN procedures."
-      }
-    },
-    {
-      "name": "awn_stress",
-      "summary": "Ashes Without Number Stress, Breakdowns, Hardening and the opt-in addiction submodule",
-      "changes_core_mechanics": false,
-      "reads": [
-        "WIS score",
-        "mental save outcome",
-        "skill check outcome",
-        "system strain"
-      ],
-      "adds": "character state only - a Stress meter, consequence codes and the modifiers the table applies; CWN attributes, checks, saves, combat and progression are untouched",
-      "implementation": [
-        "mods/noopunk/stress.gd",
-        "data/rules/awn_stress.json",
-        "src/rules/awn_stress_tracker.py"
-      ],
-      "tabletop_procedure": null,
-      "tabletop_gap": "no printed procedure for this overlay yet",
-      "hooks": [
-        {
-          "path": "mods/noopunk/stress.gd",
-          "symbol": "new_tracker"
-        },
-        {
-          "path": "mods/noopunk/stress.gd",
-          "symbol": "award"
-        },
-        {
-          "path": "mods/noopunk/stress.gd",
-          "symbol": "resolve_save"
-        },
-        {
-          "path": "mods/noopunk/stress.gd",
-          "symbol": "harden"
-        }
-      ],
-      "state": [
-        "stress tracker",
-        "scars",
-        "hardening",
-        "breakdown",
-        "audit"
-      ],
-      "dependencies": [
-        "cwn-core"
-      ],
-      "off_switch": {
-        "default_enabled": false,
-        "behavior": "Do not apply Stress events or penalties, and retain CWN WIS, saves and System Strain; do not erase existing Stress save data."
-      }
+     "path": "mods/noopunk/psyche.gd",
+     "symbol": "recover"
     }
-  ]
+   ],
+   "state": [
+    "evidence",
+    "interpretations",
+    "clocks",
+    "events",
+    "emotional_state",
+    "identity_choices",
+    "exposure"
+   ],
+   "dependencies": [
+    "cwn-core"
+   ],
+   "off_switch": {
+    "default_enabled": false,
+    "behavior": "Do not invoke Noosphere or Psyche methods; preserve existing overlay save data without modifying CWN state."
+   }
+  },
+  {
+   "name": "ideology_factions",
+   "summary": "Discursive identification, faction standings, antagonisms and political temptation",
+   "changes_core_mechanics": false,
+   "reads": [
+    "reaction rolls",
+    "skill check outcomes"
+   ],
+   "adds": "narrative state only",
+   "implementation": [
+    "mud/nopunk_mud/ideology.py",
+    "mud/nopunk_mud/discourse_network.py",
+    "mud/nopunk_mud/faction_overlay.py",
+    "data/world/ideology.json"
+   ],
+   "tabletop_procedure": null,
+   "tabletop_gap": "no printed procedure for this overlay yet",
+   "hooks": [
+    {
+     "path": "mud/nopunk_mud/ideology.py",
+     "symbol": "articulate"
+    },
+    {
+     "path": "mud/nopunk_mud/discourse_network.py",
+     "symbol": "statement"
+    },
+    {
+     "path": "mud/nopunk_mud/faction_overlay.py",
+     "symbol": "set_reputation"
+    }
+   ],
+   "state": [
+    "actors",
+    "statements",
+    "positions",
+    "relations",
+    "faction memberships",
+    "reputation ledger",
+    "dated events"
+   ],
+   "dependencies": [
+    "cwn-core"
+   ],
+   "off_switch": {
+    "default_enabled": false,
+    "behavior": "Bypass optional discourse, ideology and faction reputation presentation; leave CWN reaction and social checks untouched."
+   }
+  },
+  {
+   "name": "relationships_reputation",
+   "summary": "NPC trust, obligations, social capital, institutional standing",
+   "changes_core_mechanics": false,
+   "reads": [
+    "social skill outcomes"
+   ],
+   "adds": "narrative state only",
+   "implementation": [
+    "mud/nopunk_mud/social.py"
+   ],
+   "tabletop_procedure": null,
+   "tabletop_gap": "no printed procedure for this overlay yet",
+   "hooks": [
+    {
+     "path": "mud/nopunk_mud/social.py",
+     "symbol": "reaction_modifier"
+    },
+    {
+     "path": "mud/nopunk_mud/social.py",
+     "symbol": "promote"
+    }
+   ],
+   "state": [
+    "memberships",
+    "reputations",
+    "goals"
+   ],
+   "dependencies": [
+    "cwn-core"
+   ],
+   "off_switch": {
+    "default_enabled": false,
+    "behavior": "Omit scoped social modifiers and authority overlay; preserve original CWN reaction resolution."
+   }
+  },
+  {
+   "name": "investigative_mode",
+   "summary": "Clue discovery and synthesis; essential clues are never gated behind one failed roll",
+   "changes_core_mechanics": false,
+   "reads": [
+    "skill check outcomes"
+   ],
+   "adds": "narrative state only",
+   "implementation": [
+    "mods/noopunk/gumshoe_investigation.gd"
+   ],
+   "tabletop_procedure": "docs/rules/GUMSHOE_INVESTIGATION_LAYER.md",
+   "tabletop_gap": null,
+   "hooks": [
+    {
+     "path": "mods/noopunk/gumshoe_investigation.gd",
+     "symbol": "gather"
+    },
+    {
+     "path": "mods/noopunk/gumshoe_investigation.gd",
+     "symbol": "buy_benefit"
+    },
+    {
+     "path": "mods/noopunk/gumshoe_investigation.gd",
+     "symbol": "refresh"
+    }
+   ],
+   "state": [
+    "abilities",
+    "order",
+    "benefits"
+   ],
+   "dependencies": [
+    "cwn-core"
+   ],
+   "off_switch": {
+    "default_enabled": false,
+    "behavior": "Do not invoke investigative pools; delegate uncertainty to CWN, without destroying existing investigative save data."
+   }
+  },
+  {
+   "name": "vices_temptations",
+   "summary": "Career ambition, status, trauma, corruption and solidarity as recurring pressures",
+   "changes_core_mechanics": false,
+   "reads": [
+    "character state"
+   ],
+   "adds": "narrative state only",
+   "implementation": [],
+   "tabletop_procedure": null,
+   "tabletop_gap": "no printed procedure for this overlay yet",
+   "hooks": [],
+   "state": [],
+   "dependencies": [
+    "cwn-core"
+   ],
+   "off_switch": {
+    "default_enabled": false,
+    "behavior": "No implementation exists; keep inactive and use unchanged CWN procedures."
+   }
+  },
+  {
+   "name": "awn_stress",
+   "summary": "Ashes Without Number Stress, Breakdowns, Hardening and the opt-in addiction submodule",
+   "changes_core_mechanics": false,
+   "reads": [
+    "WIS score",
+    "mental save outcome",
+    "skill check outcome",
+    "system strain"
+   ],
+   "adds": "character state only - a Stress meter, consequence codes and the modifiers the table applies; CWN attributes, checks, saves, combat and progression are untouched",
+   "implementation": [
+    "mods/noopunk/stress.gd",
+    "data/rules/awn_stress.json",
+    "src/rules/awn_stress_tracker.py"
+   ],
+   "tabletop_procedure": null,
+   "tabletop_gap": "no printed procedure for this overlay yet",
+   "hooks": [
+    {
+     "path": "mods/noopunk/stress.gd",
+     "symbol": "new_tracker"
+    },
+    {
+     "path": "mods/noopunk/stress.gd",
+     "symbol": "award"
+    },
+    {
+     "path": "mods/noopunk/stress.gd",
+     "symbol": "resolve_save"
+    },
+    {
+     "path": "mods/noopunk/stress.gd",
+     "symbol": "harden"
+    }
+   ],
+   "state": [
+    "stress tracker",
+    "scars",
+    "hardening",
+    "breakdown",
+    "audit"
+   ],
+   "dependencies": [
+    "cwn-core"
+   ],
+   "off_switch": {
+    "default_enabled": false,
+    "behavior": "Do not apply Stress events or penalties, and retain CWN WIS, saves and System Strain; do not erase existing Stress save data."
+   }
+  },
+  {
+   "name": "goal_tags",
+   "summary": "One explicit Goal tag per character or faction, with a short/medium/long lifecycle and rewards paid through the existing CWN XP table",
+   "changes_core_mechanics": false,
+   "reads": [
+    "character identity",
+    "case and scene events",
+    "CWN experience total"
+   ],
+   "adds": "narrative state plus CWN experience the campaign chooses to award",
+   "implementation": [
+    "src/rules/goals.py",
+    "src/console/session.py"
+   ],
+   "tabletop_procedure": "docs/rules/GOAL_TAG_1119.md",
+   "tabletop_gap": null,
+   "hooks": [
+    {
+     "path": "src/rules/goals.py",
+     "symbol": "add_goal"
+    },
+    {
+     "path": "src/rules/goals.py",
+     "symbol": "record_progress"
+    },
+    {
+     "path": "src/rules/goals.py",
+     "symbol": "award_xp"
+    },
+    {
+     "path": "src/rules/goals.py",
+     "symbol": "paper_line"
+    }
+   ],
+   "state": [
+    "goals",
+    "progress",
+    "awards",
+    "perks"
+   ],
+   "dependencies": [
+    "cwn-core"
+   ],
+   "off_switch": {
+    "default_enabled": false,
+    "behavior": "Do not instantiate a GoalLog, or set enabled=false: the active list empties, no XP is awarded, and the stored history is preserved untouched. CWN state is never read or written by this mod except through cwn_advancement.level_for_xp()."
+   }
+  }
+ ]
 }

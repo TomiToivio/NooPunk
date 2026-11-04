@@ -21,6 +21,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+from rules.goals import Goal, GoalError, GoalLog
 from rules.investigation import (
     CaseGraph,
     Clue,
@@ -69,6 +70,8 @@ class CaseSession:
     concluded: bool = False
     conclusion: dict[str, Any] = field(default_factory=dict)
     events: list[dict[str, Any]] = field(default_factory=list)
+    #: Optional campaign goals (#1119). An older save has none; the tag is additive.
+    goals: GoalLog = field(default_factory=GoalLog)
     _rng: random.Random | None = field(default=None, repr=False)
 
     # ------------------------------------------------------------------ #
@@ -292,6 +295,54 @@ class CaseSession:
         return self.conclusion
 
     # ------------------------------------------------------------------ #
+    # Goals (#1119): the session owns the state, rules.goals owns the rule
+    # ------------------------------------------------------------------ #
+
+    def add_goal(self, owner: str, horizon: str, description: str) -> dict[str, Any]:
+        """Add one goal tag. ``faction:`` in front of the owner marks a faction goal."""
+        owner_kind = "faction" if owner.startswith("faction:") else "character"
+        clean_owner = owner.split(":", 1)[1] if owner_kind == "faction" else owner
+        identifier = f"goal-{len(self.goals.goals) + 1}"
+        try:
+            goal = self.goals.add(Goal(id=identifier, owner=clean_owner, owner_kind=owner_kind,
+                                       description=description, horizon=horizon))
+        except GoalError as exc:
+            raise SessionError(str(exc)) from exc
+        self.turns += 1
+        self._record("goal_added", goal=goal.id, owner=clean_owner, horizon=horizon)
+        return {"goal": goal.id, "owner": clean_owner, "owner_kind": owner_kind,
+                "horizon": horizon, "description": description}
+
+    def record_goal(self, goal_id: str, kind: str, event: str, note: str = "") -> dict[str, Any]:
+        try:
+            goal = self.goals.record(goal_id, kind, event, note=note)
+        except GoalError as exc:
+            raise SessionError(str(exc)) from exc
+        self.turns += 1
+        self._record("goal_progress", goal=goal_id, progress_kind=kind, event=event)
+        return {"goal": goal.id, "kind": kind, "status": goal.status, "event": event}
+
+    def award_goal(self, goal_id: str, event: str, xp: int = 1) -> dict[str, Any]:
+        try:
+            award = self.goals.award_xp(goal_id, event, xp=xp)
+        except GoalError as exc:
+            raise SessionError(str(exc)) from exc
+        self._record("goal_award", goal=goal_id, event=event, xp=award.xp, level=award.level)
+        return {"goal": goal_id, "event": event, "xp": award.xp, "level": award.level}
+
+    def goals_view(self) -> dict[str, Any]:
+        """What a player may see: the active tags, and the paper line for each."""
+        active = self.goals.active()
+        return {
+            "active": [{"id": goal.id, "owner": goal.owner, "horizon": goal.horizon,
+                        "status": goal.status, "paper": self.goals.paper(goal.id)}
+                       for goal in active],
+            "retired": [{"id": goal.id, "status": goal.status} for goal in self.goals.retired()],
+            "xp": {goal.owner: self.goals.xp_for(goal.owner) for goal in self.goals.goals},
+            "enabled": self.goals.enabled,
+        }
+
+    # ------------------------------------------------------------------ #
     # Persistence
     # ------------------------------------------------------------------ #
 
@@ -311,6 +362,7 @@ class CaseSession:
             "concluded": self.concluded,
             "conclusion": dict(self.conclusion),
             "events": list(self.events),
+            "goals": self.goals.to_dict(),
             "rng_state": list(self._rng.getstate()) if self._rng else [],
         }
 
@@ -348,6 +400,7 @@ class CaseSession:
             concluded=bool(data.get("concluded", False)),
             conclusion=dict(data.get("conclusion", {})),
             events=list(data.get("events", [])),
+            goals=GoalLog.from_dict(data.get("goals")),
             _rng=rng,
         )
         return session
