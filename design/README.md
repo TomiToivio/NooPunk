@@ -28,22 +28,6 @@ There will be several types of documents:
 * You should implement the Python code for NoöPunk MUD. 
 * You should add implemented rules, campaign scenarios and lore to the NoöPunk tabletop RPG rulebook. 
 
-## Helsinki setting templates (#1141) — drafts awaiting authoring
-
-Four agent-written **templates**, not canon. Each has headings, one deliberately fictional example per
-category, `<-- Tomi writes below -->` placeholders, and its own open decisions. Fill them in, replace the
-examples, or delete them; the examples are scaffolding.
-
-| document | concern | rules basis |
-| --- | --- | --- |
-| [`HELSINKI_WORLD.md`](HELSINKI_WORLD.md) | setting-wide context the campaign needs | CWN *Creating Your Dystopia* (pp. 106–130) |
-| [`HELSINKI_CITY.md`](HELSINKI_CITY.md) | the city, its districts, and the Physical/Cyber/Astral model | CWN *The City* (pp. 196–217) |
-| [`HELSINKI_FACTIONS.md`](HELSINKI_FACTIONS.md) | local actors that take faction turns | SWN Revised *Factions* (p. 211; assets pp. 219/221/223) |
-| [`HELSINKI_FACES_XENOBESTIARY.md`](HELSINKI_FACES_XENOBESTIARY.md) | people in the street and non-human encounters | CWN *Faces On the Street* (p. 180); SWN *Xenobestiary* (p. 193) |
-
-They do not replace the author's [`GREATER_HELSINKI_2045.md`](GREATER_HELSINKI_2045.md) or
-[`ZONES.md`](ZONES.md), and they do not decide anything those files leave open.
-
 ## Vocabulary
 
 [`GLOSSARY.md`](../GLOSSARY.md) at the repository root is the canonical vocabulary for player-facing
@@ -62,13 +46,17 @@ These five *separate* draft documents are available for Tomi's edits and approva
 
 [Tracking issue #1137](https://github.com/TomiToivio/NooPunk/issues/1137). The author's [BIONICS.md](BIONICS.md) remains intact and authoritative for author decisions; these are proposals only.
 
-## Issue #1141: Helsinki author-first city worksheets (NOT canon)
+## Issue #1141: Helsinki setting worksheets — Phase 1 completed, Phase 2 awaiting author
 
-**Phase 1 only.** Four agent-authored, non-canonical example templates await Tomi's writing and explicit approval. Do **not** implement these examples in the tabletop rulebook, the engine-neutral Python library, or Evennia before the separate Phase-3 authorization.
+**Four distinct documents, one canonical worksheet per concern.** These are agent-authored **templates**, not setting canon. Each contains a fictional example for its category, unresolved decisions and `<!-- Tomi writes below -->` spaces. Replace example content only when Tomi authors it; examples are never approved lore.
 
-- [The World: themes, setting context, district index, megacorps, gangs, NPCs](HELSINKI_WORLD.md)
-- [The City: history, authorities, district sheets, Physical/Cyber/Astral site layers](HELSINKI_CITY.md)
-- [Local Factions: SWN faction goals, Force/Cunning/Wealth assets and turn worksheet](HELSINKI_FACTIONS.md)
-- [Faces in the Street / Xenobestiary: ordinary people and four NHI encounter taxonomies](HELSINKI_FACES_XENOBESTIARY.md)
+| Author worksheet | Single owner of | Source basis |
+| --- | --- | --- |
+| [HELSINKI_WORLD.md](HELSINKI_WORLD.md) | Campaign-facing world context, themes and short indexes, without repeating city records | CWN *Creating Your Dystopia* |
+| [HELSINKI_CITY.md](HELSINKI_CITY.md) | Helsinki city, district sheets, Physical/Cyber/Astral layer and location records | CWN *The City* |
+| [HELSINKI_FACTIONS.md](HELSINKI_FACTIONS.md) | Local factions with SWN turn stats, goals and assets | SWN Revised *Factions* |
+| [HELSINKI_FACES_XENOBESTIARY.md](HELSINKI_FACES_XENOBESTIARY.md) | Encounter-facing people and NHI records, not duplicate character biographies | CWN *Faces On the Street*; SWN *Xenobestiary* |
 
-These link to, and **never supersede**, Tomi's existing [Greater Helsinki government draft](GREATER_HELSINKI_2045.md) and [ZONES](ZONES.md). [Issue #1141](https://github.com/TomiToivio/NooPunk/issues/1141) tracks the gates.
+**Document deduplication:** The same subject must not be independently defined in multiple worksheets. Keep its full record in the owning document and use a link/stable ID in the others. Before creating another Helsinki document, check [the document register](../docs/DOCUMENT_REGISTER.md), existing `design/` and `docs/world/` documents and related open issues/PRs. Consolidate overlapping *agent-authored* content in its owner, preserving all unique material and attribution. Do not edit, relocate, delete, or overwrite author-written `design/ZONES.md`, `design/GREATER_HELSINKI_2045.md` or other author drafts without explicit authorization.
+
+**Phases and gates:** Phase 1 (templates) is complete. Phase 2 (Tomi writes and approves authored content) is pending. Phase 3 (tabletop rulebook, engine-neutral Python and Evennia integration) requires separate explicit authorization after Phase 2; **never implement example content as canon**. Existing [Greater Helsinki government draft](GREATER_HELSINKI_2045.md), [ZONES](ZONES.md) and [Europol campaign authority](../docs/world/EUROPOL_HELSINKI_1114.md) retain their established precedence. See [issue #1141](https://github.com/TomiToivio/NooPunk/issues/1141).
