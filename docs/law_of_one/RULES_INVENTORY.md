@@ -8,7 +8,7 @@ Every row separates **what the source says** (`Faithful meaning`) from **what th
 (`Minimal procedure`). The first is a claim about the Ra material and carries session citations; the
 second is ours, and is a proposal for playtest, not a claim that Ra wrote a rule.
 
-**45 concepts inventoried** — core **21**, optional **12**, narrative_only **9**, out_of_scope **3**.
+**48 concepts inventoried** — core **22**, optional **13**, narrative_only **10**, out_of_scope **3**.
 
 | priority | meaning |
 |---|---|
@@ -68,19 +68,23 @@ second is ours, and is a proposal for playtest, not a claim that Ra wrote a rule
 | F. Veil, Higher Self, Wanderers as bounded memory mechanics (added_priority) | `veil-and-forgetting`, `wanderer-background`, `higher-self-scripted` |
 | G. SMC individual and group mechanics (added_priority) | `smc-connection-individual`, `smc-collective` |
 | H. Catalogue of species, civilizations and entities (added_priority) | `entity-catalogue` |
+| Fourth-density visibility and manifestation to third density (12.17) (cosmology_clarification) | `visibility-manifestation` |
+| Density is not dimension / not four-dimensional space (21.5, 6.24, 17.1) (cosmology_clarification) | `density-not-dimension`, `density-four-profile` |
+| Astral planes and subtle bodies are not the whole of Time/Space (43.7, 47.8) (cosmology_clarification) | `inner-planes-and-bodies`, `astral-projection`, `time-space-presence` |
+| Fourth density is embodied physical life, not a ghost or astral state (43.16, 43.12) (cosmology_clarification) | `density-four-profile` |
 
 ## 1. Essential playable core
 
 ### `density-four-profile` — Fourth-density character profile
 
 * **Priority:** `core` · **rules needed:** yes · **page:** https://www.lawofone.info/synopsis.php
-* **Source:** 13.21, 20.36, 43.11, synopsis: Densities
-* **Faithful meaning (source claim):** Fourth density is the density of love or understanding; its inhabitants come together with others of like mind in a social memory complex. Density is an evolutionary stage of the mind/body/spirit complex, not a place and not a dimension.
+* **Source:** 12.17, 13.21, 17.1, 20.36, 21.5, 43.11, 43.12, 43.16, 6.24, synopsis: Densities
+* **Faithful meaning (source claim):** Fourth density is the density of love or understanding; its inhabitants come together with others of like mind in a social memory complex (43.11). Density is an evolutionary stage of the mind/body/spirit complex, described by Ra in terms of vibrational conditions and spectrum (17.1) — not a place, not a dimension, and not an astral state: fourth-density beings live embodied physical lives (43.16). Fourth-density entities are, by choice, ordinarily invisible to third density and can manifest visibly, though holding third-density vibrational visibility takes effort (12.17). Ra also uses 'dimension' in metaphysical senses (21.5, 6.24); that is not a fourth geometrical coordinate. Verified verbatim: the fourth-density physical vehicle uses different chemical elements though the appearance is similar (43.16); fourth-density beings eat, as “a simple precondition of the space/time experience” rather than significant catalyst (43.17); and fourth density includes multiple incarnations with time/space experiences between them (43.12).
 * **Minimal procedure / treatment (ours):** A character sheet carries: density (fixed at 4 for PCs), Polarization 0-10 (start 5), Awareness 0-10 (start 1), SMC Connection 0-10 (start 0), Distortion tags, a Catalyst log, and seven energy-centre states. Density never rises during normal play.
-* **State fragment:** `character: {density: 4, polarization: int 0..10, awareness: int 0..10, smc_connection: int 0..10, tags: [str], catalyst_log: [...], centers: {red..indigo: {...}}, violet: {register_only: true}}`
+* **State fragment:** `character: {density: 4, embodiment: embodied|projected|manifesting|disincarnate, visibility_to_third_density: concealed|perceptible|manifest, polarization: int 0..10, awareness: int 0..10, smc_connection: int 0..10, tags: [str], catalyst_log: [...], centers: {red..indigo: {...}}, violet: {register_only: true}}`
 * **Interactions:** Polarization gates the NPC handoff; Awareness gates perception permissions; SMC Connection gates collective scenes; centres gate optional abilities.
-* **Non-goals:** No fifth-density progression, no multi-lifetime levelling, no density-as-dimension, no XP.
-* **Open question:** Are three 0-10 scores legible at a table, or should Awareness be a milestone list?
+* **Non-goals:** No fifth-density progression, no multi-lifetime levelling, no density-as-dimension and no density-as-geometry (fourth density is NOT four-dimensional space), no free invisibility, no unlimited manifestation, no XP.
+* **Open question:** Are three 0-10 scores legible at a table, or should Awareness be a milestone list? And should embodiment and visibility be tags rather than enumerated states?
 
 ### `catalyst-loop` — Catalyst, free choice, consequence, integration
 
@@ -202,6 +206,17 @@ second is ours, and is a proposal for playtest, not a claim that Ra wrote a rule
 * **Interactions:** Applies to Polarization, Awareness and SMC Connection alike.
 * **Non-goals:** No automatic change from a roll, no change to punish a rules question, no hidden adjustments.
 * **Open question:** Who ratifies: GM, table, or player-with-notice?
+
+### `visibility-manifestation` — Fourth-density visibility and manifestation to third density
+
+* **Priority:** `core` · **rules needed:** yes · **page:** https://www.lawofone.info/c/Densities
+* **Source:** 12.17, 17.1, 43.16
+* **Faithful meaning (source claim):** Ra, 12.17 (checked verbatim): “The fourth density is, by choice, not visible to third density. It is possible for fourth density to be visible. However, it is not the choice of the fourth-density entity to be visible due to the necessity for concentration upon a rather difficult vibrational complex which is the third density you experience.” Note what this is and is not: invisibility is a choice, visibility is possible, and the cost is concentration on a third-density vibrational complex — not a claim that fourth density is a separate spatial dimension. Ra adds (12.18) that no Confederation or Orion entities are currently walking among humans, and that Orion works through thought-forms and constructs.
+* **Minimal procedure / treatment (ours):** Three states, no numbers: concealed (the default), perceptible (third-density observers can sense something without full form), manifest (fully visible, chosen, and costly to sustain). Moving to a visible state is a deliberate act with a cost or condition the GM states before the roll; dropping back is free. Ordinary play never requires visibility, and scenes that do are exceptional.
+* **State fragment:** `character.visibility_to_third_density: concealed|perceptible|manifest (+ optional source_scene reference)`
+* **Interactions:** Scene-level perceptibility for NPCs and cameras; interacts with astral manifestation and with any scene about being seen; never grants an attack or movement advantage.
+* **Non-goals:** No free invisibility, no unlimited manifestation, no extra-dimension movement, no stealth subsystem, no combat use.
+* **Open question:** Is a three-state tag better than a number? Should manifestation cost prana, a centre condition, or only narrative effort?
 
 
 ## 2. Fourth-density activities
@@ -330,23 +345,23 @@ second is ours, and is a proposal for playtest, not a claim that Ra wrote a rule
 ### `time-space-presence` — Time/Space as a playable realm
 
 * **Priority:** `core` · **rules needed:** yes · **page:** https://www.lawofone.info/c/Time/Space
-* **Source:** 70.14, 70.17, 70.22, glossary: Time/space, glossary: Space/time
-* **Faithful meaning (source claim):** Ra says time/space is 'no more homogenous than space/time. It is as complex and complete a system of illusions, dances, and pattern as is space/time and has as structured a system of what you may call natural laws.' The glossary calls it the environment of the inner planes and unseen worlds, reciprocal to space/time.
+* **Source:** 43.12, 43.7, 47.8, 70.14, 70.17, 70.22, glossary: Space/time, glossary: Time/space, glossary: inner planes
+* **Faithful meaning (source claim):** Ra says time/space is 'no more homogenous than space/time. It is as complex and complete a system of illusions, dances, and pattern as is space/time and has as structured a system of what you may call natural laws.' The glossary calls it the environment of the inner planes and unseen worlds, reciprocal to space/time. The glossary also names inner planes (astral, devachanic); these are particular inner-plane environments associated with, but not necessarily identical to, the whole time/space domain (43.7, 47.8). 43.12 confirms the practical shape: a density may have ordinary space/time incarnation and time/space experience between incarnations, so realm and density are independent axes.
 * **Minimal procedure / treatment (ours):** Time/Space is a second scene-mode with its own rules: entry by deep meditation or sleep (or astrally), perception that is symbolic rather than spatial, no physical action, communication by intent, and a return cost. Duration is measured in scenes, not distance, and returning is not automatic.
-* **State fragment:** `mode: 'space_time'|'time_space', entry: {method, anchor, depth}, return: {difficulty, anchor_intact}`
+* **State fragment:** `mode: 'space_time'|'time_space', inner_plane: null|'astral'|'devachanic'|named, entry: {method, anchor, depth}, return: {difficulty, anchor_intact}, regional_conditions: [str]`
 * **Interactions:** Carries astral projection, healing review, higher-self contact and SMC scenes; distinct from density.
-* **Non-goals:** Not a void, not teleportation, not a second map, no travel-speed maths, no physics simulation.
+* **Non-goals:** Not a void, not teleportation, not a second map, no travel-speed maths, no physics simulation. No assumption that all time/space is astral, or that every metaphysical region is reachable.
 * **Open question:** Is 'depth' better as a tag than a number? What anchors a traveller?
 
 ### `astral-projection` — Astral projection and the astral body
 
 * **Priority:** `core` · **rules needed:** yes · **page:** https://www.lawofone.info/glossary.php
-* **Source:** glossary: Ka, glossary: Ectoplasm, glossary: Devachanic, issue #1124 §C
-* **Faithful meaning (source claim):** The glossary ties the astral to the green-ray body (ectoplasm is 'a manifestation of the astral body or green-ray body') and names the ka as the form-maker or indigo-ray body; the devachanic is 'the plane above the astral, corresponding to blue ray'.
+* **Source:** 43.7, 47.8, glossary: Devachanic, glossary: Ectoplasm, glossary: Ka, glossary: astral body, glossary: ectoplasm, issue #1124 §C
+* **Faithful meaning (source claim):** The glossary ties the astral to the green-ray body (ectoplasm is 'a manifestation of the astral body or green-ray body') and names the ka as the form-maker or indigo-ray body; the devachanic is 'the plane above the astral, corresponding to blue ray'. Ra distinguishes astral-plane thought-form entities from physically embodied subterranean entities (43.7), and the green-ray/astral body from the indigo form-maker body and other subtle bodies (47.8). The glossary links ectoplasm to the manifestation of the astral (green-ray) body.
 * **Minimal procedure / treatment (ours):** Projection procedure: (1) settle and state intent, spending prana if forced; (2) leave a link to the body, which is the vulnerability; (3) travel in Time/Space by intent and symbol; (4) meet and speak, but not touch, unless manifesting; (5) return — a failed return is a scene of its own, not a death. Projection is public and institutional, part of ordinary life.
-* **State fragment:** `projection: {body_location, link_integrity, form: astral|ectoplasmic, duration_scenes, prana}`
+* **State fragment:** `projection: {body_location, link_integrity, body: astral|ectoplasmic, duration_scenes, prana, inner_plane: null|named}`
 * **Interactions:** Requires Time/Space; bright blue/indigo centres; ectoplasm; SMC scenes; healing review.
-* **Non-goals:** No combat layer, no separate character sheet, no free scouting of the physical world, no 'Cyber' layer.
+* **Non-goals:** No combat layer, no separate character sheet, no free scouting of the physical world, no 'Cyber' layer. Astral projection is an activity and body-mode, NOT a density, and not another name for fourth density.
 * **Open question:** Should link integrity be a number or a countdown of scenes?
 
 ### `ectoplasm-manifestation` — Ectoplasm / astral manifestation
@@ -403,6 +418,17 @@ second is ours, and is a proposal for playtest, not a claim that Ra wrote a rule
 * **Interactions:** Bounded by free will; overlaps Higher Self guidance and Time/Space; feeds SMC scenes.
 * **Non-goals:** No alien combat, no technology trade, no automatic rescue, no guaranteed answer.
 * **Open question:** What makes a call sincere in mechanical terms, if anything?
+
+### `inner-planes-and-bodies` — Inner planes, astral and devachanic regions, and the subtle bodies
+
+* **Priority:** `optional` · **rules needed:** no · **page:** https://www.lawofone.info/glossary.php
+* **Source:** 43.7, 47.8, glossary: inner planes, glossary: astral body
+* **Faithful meaning (source claim):** Ra distinguishes astral-plane thought-form entities from physically embodied subterranean entities (43.7), and the green-ray astral body from the indigo form-maker body and other subtle bodies (47.8). The glossary names inner planes including astral and devachanic.
+* **Minimal procedure / treatment (ours):** Reference vocabulary, not a subsystem. Scenes that occur in time/space may name an `inner_plane`; the game never maps inner planes to a grid or asserts a rigid nested topology, because the source does not settle one. Astral travel uses the astral body; entering incarnation uses the indigo form-maker — a distinction the game preserves in naming, not in numbers.
+* **State fragment:** `(reference only; scene.inner_plane may name astral, devachanic, or another named region)`
+* **Interactions:** Informs the astral-projection and time-space rows; prevents 'all time/space is astral' and 'astral equals fourth density'.
+* **Non-goals:** No plane-hopping map, no second travel system, no subtle-body attribute scores.
+* **Open question:** Is any nested topology implied by the sources, or only a loose association? Unresolved.
 
 
 ## 3. Optional narrativist tools
@@ -555,6 +581,17 @@ second is ours, and is a proposal for playtest, not a claim that Ra wrote a rule
 * **Non-goals:** No alien player characters, no stat blocks, no filling gaps from wider UFO lore or NoöPunk canon.
 * **Open question:** Which named civilizations carry enough source detail to be more than a name?
 
+### `density-not-dimension` — Density is not dimension (typing rule)
+
+* **Priority:** `narrative_only` · **rules needed:** no · **page:** https://www.lawofone.info/synopsis.php
+* **Source:** 21.5, 6.24, 17.1, synopsis: Densities
+* **Faithful meaning (source claim):** Ra uses 'dimension' in metaphysical registers (21.5, 6.24) while density is discussed in terms of vibrational conditions and spectrum (17.1). The texts do not equate the fourth density with a fourth geometrical coordinate.
+* **Minimal procedure / treatment (ours):** Not mechanised. The treatment is a typing constraint on every other rule: `density`, `realm` (space/time vs time/space), `body`, `inner_plane` and `visibility` are separate fields and may not be substituted for one another. Any future rule that reads density as a spatial axis or a realm is wrong by construction.
+* **State fragment:** `(no state; a constraint on the schema)`
+* **Interactions:** Governs the vocabulary of every row above; prevents 'fourth density = an extra dimension' drift.
+* **Non-goals:** No physics engine, no dimensional travel rules, no geometry.
+* **Open question:** Which Ra usages of 'dimension' are metaphorical and which describe a realm? Needs a passage audit; until then the game types them separately and says so.
+
 ## What this inventory deliberately does not do
 
 * It defines **no attributes, skills, hit points, combat, equipment, classes or XP**. Those belong to a
@@ -569,4 +606,4 @@ Phase 2 (the standalone playable rulebook) may start only after this inventory i
 audit fails while any implementation module exists, which is how that gate is enforced rather than
 remembered.
 
-_Generated from 45 rows; source: The Law of One (Ra Material), via lawofone.info._
+_Generated from 48 rows; source: The Law of One (Ra Material), via lawofone.info._
