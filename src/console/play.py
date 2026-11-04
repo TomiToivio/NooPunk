@@ -34,6 +34,10 @@ Commands
   theory <hypothesis>      state which hypothesis you are working on
   hypotheses               list the hypotheses this case allows
   risk <difficulty> [skill]  a CWN 2d6 check under pressure (difficulty 8, 10 or 12)
+  goal <owner> <horizon> <text>   add a Goal tag (short|medium|long); faction:<name> for a faction
+  goals                    the active goal tags, as they read on paper
+  progress <goal> <kind> <event> [note]  progress|contribution|completed|failed|abandoned
+  award <goal> <event>     pay the CWN XP for a recorded completion or contribution
   status                   scene, theory, evidence counts, turns
   conclude <hypothesis> [note]  record your answer; the case ends
   save [path] | load <path>     portable JSON state
@@ -127,6 +131,43 @@ def run_command(session: CaseSession, line: str, *, save_path: str = "") -> tupl
         verdict = "success" if result["success"] else "failure"
         return True, (f"2d6 {result['dice'][0]}+{result['dice'][1]}{bonus}"
                       f" = {result['total']} vs {result['difficulty']} -> {verdict}")
+    if verb == "goal":
+        # goal <owner> <horizon> <description...>; prefix the owner with faction: for a faction goal
+        if len(args) < 3:
+            return True, "goal needs an owner, a horizon (short|medium|long) and a description"
+        try:
+            result = session.add_goal(args[0], args[1], " ".join(args[2:]))
+        except SessionError as exc:
+            return True, f"refused: {exc}"
+        return True, f"added {result['goal']} ({result['horizon']}) for {result['owner']}"
+    if verb == "goals":
+        view = session.goals_view()
+        if not view["enabled"]:
+            return True, "goals are switched off for this campaign"
+        if not view["active"]:
+            return True, "no active goals"
+        lines = [f"  {row['paper']}" for row in view["active"]]
+        if view["xp"]:
+            lines.append("  xp: " + ", ".join(f"{owner} {xp}" for owner, xp in view["xp"].items()))
+        return True, "\n".join(lines)
+    if verb == "progress":
+        # progress <goal-id> <progress|contribution|completed|failed|abandoned> <event> [note...]
+        if len(args) < 3:
+            return True, "progress needs a goal id, a kind and the event that evidences it"
+        try:
+            result = session.record_goal(args[0], args[1], args[2], " ".join(args[3:]))
+        except SessionError as exc:
+            return True, f"refused: {exc}"
+        return True, f"{result['goal']} -> {result['kind']} ({result['status']})"
+    if verb == "award":
+        if len(args) < 2:
+            return True, "award needs a goal id and the event that earned it"
+        try:
+            result = session.award_goal(args[0], args[1])
+        except SessionError as exc:
+            return True, f"refused: {exc}"
+        return True, (f"awarded {result['xp']} XP to {result['goal']} "
+                      f"(level {result['level']} by the CWN table)")
     if verb == "status":
         theory = session.theory_id or "(none)"
         readings = session.evidence.get(session.theory_id, {})
