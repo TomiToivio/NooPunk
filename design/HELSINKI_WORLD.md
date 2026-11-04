@@ -1,223 +1,166 @@
-# HELSINKI — WORLD (template, #1141)
+# HELSINKI — THE WORLD (author worksheet)
 
-> **STATUS: TEMPLATE / DRAFT OUTLINE. Agent-written scaffolding, not canon.**
-> Four documents exist for this setting: **WORLD** (this file), [CITY](HELSINKI_CITY.md),
-> [FACTIONS](HELSINKI_FACTIONS.md), [FACES & XENOBESTIARY](HELSINKI_FACES_XENOBESTIARY.md).
-> One concern per document: this one holds **global and setting-wide context that the Helsinki
-> campaign needs**, not the district atlas, not faction statistics, not creature stat blocks.
+> **STATUS: TEMPLATE — DRAFT OUTLINE / EXAMPLE ONLY / NOT CANON.** Issue [#1141](https://github.com/TomiToivio/NooPunk/issues/1141), Phase 1.
+> **Tomi owns all final prose.** Nothing here is approved. Examples are disposable illustrations of *format*, never
+> setting canon, and no rules or engine implementation is authorized in this phase.
+
+**How the labels work.** `AUTHOR CANON` means Tomi wrote it and approved it. `REPOSITORY CANON` means it is already
+established elsewhere in this repository — follow the link, do not restate it here. `EXAMPLE ONLY / NOT CANON` is
+scaffolding to be overwritten. `OPEN` is a question nobody has answered. `GM SECRET` is true in the GM's notes and
+withheld from players.
+
+**What this file is for.** Setting-wide context that the first campaign needs, and nothing wider. It is a worksheet:
+each section gives you the question, a short example of what a finished answer looks like, and blank space to write.
+Write in ordinary prose. You do not need to know any file format.
+
+**Contents**
+
+1. Cyberpunk themes
+2. The world in 2045
+3. The city, in one paragraph
+4. Districts at a glance
+5. Megacorporations
+6. Gangs and street organizations
+7. People: an ordinary NPC card
+8. Unresolved decisions
+
+---
+
+## 1. Cyberpunk themes
+
+*Rule basis: CWN, creating a cyberpunk setting (themes chapter). Check the printed edition before quoting page numbers.*
+
+**What to write:** the theme, where it is visible in Helsinki specifically, what it costs a player character in
+practice, and one case hook it generates.
+
+> **EXAMPLE ONLY — NOT CANON**
+> **Containment as a way of life.** Helsinki's post-Crisis settlement is administered through overlapping permits,
+> and the city's answer to anything unfamiliar is a form, a cordon and a waiting list. A player character feels this
+> as delay: the warrant is valid but the district office closes at four. The theme is not that the bureaucracy is
+> evil; it is that it works exactly as designed, and the design assumed a world that no longer exists.
+
+<!-- Tomi writes below -->
+
+---
+
+## 2. The world in 2045
+
+*Rule basis: CWN setting guidance. Link to repository canon rather than rewriting it: the NHI Crisis history, the
+post-Crisis Cold War status quo, and the European security order.*
+
+**What to write:** the external conditions that actually press on a Europol officer — what her institution can and
+cannot do, what her neighbours believe about the last twenty years, what is officially disputed, and one hook.
+
+> **EXAMPLE ONLY — NOT CANON**
+> Everyone in the office has a different story about the Quarantine years, and the differences are not political —
+> they are generational. A colleague who was a child in 2038 describes the same events as weather; a colleague who
+> was a constable describes them as shifts, rosters and bodies. Neither is lying. Europol's own archive is complete
+> for some months and missing for others, and no one has ever been asked to explain the gaps.
+
+<!-- Tomi writes below -->
+
+---
+
+## 3. The city, in one paragraph
+
+*Rule basis: CWN, city creation — overview only. The detailed treatment belongs in the City worksheet.*
+
+**What to write:** the elevator pitch for Greater Helsinki in 2045, plus a link to the City document. One paragraph,
+not a district essay.
+
+> **EXAMPLE ONLY — NOT CANON**
+> A cold, competent port city that has learned to keep functioning through things it does not discuss. The metro
+> runs, the trams run, the winter is still the winter. What changed is who is allowed to move through the city
+> without being asked to explain themselves — and the answer depends entirely on which badge is on the table.
+
+<!-- Tomi writes below -->
+
+---
+
+## 4. Districts at a glance
+
+*Rule basis: CWN district creation — index only. Full district cards belong in the City worksheet.*
+
+**What to write:** a plain list of the districts that matter to the campaign, one line each, saying what they are
+*for* in play. Do not invent populations or canonical neighbourhood names; mark anything new as your own invention.
+
+> **EXAMPLE ONLY — NOT CANON**
+> **Kurvi and the Kallio ridge** — where the protagonist lives, eats, drinks and walks home. Dense, working
+> infrastructure, cheap flats above loud streets, a tram interchange that is always under repair.
 >
-> **Source:** *Cities Without Number* (Deluxe), "Creating Your Dystopia" — **Cyberpunk Themes**
-> (printed p. 108), **Creating The World** (printed p. 110), **Creating The City** (p. 114),
-> **Building Your Districts** (p. 121), **Creating Megacorps** (p. 126), **Creating Gangs**
-> (p. 128), **Creating NPCs** (p. 130). Field names here follow those sections; the printed tables
-> are **not** reproduced. Verify the edition you hold before relying on a page number.
-
-## How to use this file
-
-1. Every section has a heading, **one deliberately fictional example**, and a
-   `<!-- Tomi writes below -->` placeholder. Replace or delete the example; it is scaffolding.
-2. Statuses: **AUTHOR CANON** (you ruled it), **REPOSITORY CANON** (already in a cited file),
-   **EXAMPLE ONLY / NOT CANON** (agent-written illustration), **OPEN** (needs your decision),
-   **GM SECRET** (exists for the GM, not the player).
-3. Do not fill author placeholders. An empty section is an invitation, not a gap to be closed.
-4. **Act I is grounded cyberpunk.** Nothing in this file may put astral, density or NHI-crisis
-   material into early player-facing scenes; the tone ramp is set in
-   [`docs/campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md`](../docs/campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md).
-
-## Canon this file must not contradict
-
-| subject | authority |
-| --- | --- |
-| 2045 setting, NHI Crisis, the Quarantine's end | [`rulebook/10_SINGULARITY_CRISIS.md`](../rulebook/10_SINGULARITY_CRISIS.md) |
-| Fortress Europe, chronology, what stays unresolved | [`docs/world/CANON_FORTRESS_EUROPE_1113.md`](../docs/world/CANON_FORTRESS_EUROPE_1113.md), [`docs/world/ALTERNATE_HISTORY_1114.md`](../docs/world/ALTERNATE_HISTORY_1114.md) |
-| Europol as the player's employer, and its limits | [`docs/world/EUROPOL_HELSINKI_1114.md`](../docs/world/EUROPOL_HELSINKI_1114.md) |
-| City government, X-Risk jurisdictions, ESZs, embassies | **author's**: [`GREATER_HELSINKI_2045.md`](GREATER_HELSINKI_2045.md), [`ZONES.md`](ZONES.md) |
-| Faction landscape | [`docs/world/NHI_FACTIONS_922.md`](../docs/world/NHI_FACTIONS_922.md) |
-| The rules chassis | [`rulebook/WITHOUT_NUMBER_BASELINE.md`](../rulebook/WITHOUT_NUMBER_BASELINE.md) |
-
-**Do not resolve** the Soviet timeline, the Mandela Effect, or Greater Helsinki's constitutional
-status here. They are open by design and belong to the files above.
-
----
-
-## 1. Cyberpunk Themes
-
-*CWN: "Cyberpunk Themes" (p. 108). One row per theme: what it is, where Helsinki expresses it, what it
-costs the player, and a case hook.*
-
-**Fields.** `theme_id`, `theme`, `city_expression`, `player_consequence`, `case_hook`, `rules_reference`, `source`
-
-```yaml
-# EXAMPLE ONLY — NOT CANON
-theme_id: hel_world_theme_001
-theme: "Bureaucratic cyberpunk"
-city_expression: "Two EU agencies hold valid credentials for the same archive, and neither can be revoked without the other's signature."
-player_consequence: "A lawful request needs a national-police liaison present, or it becomes inadmissible."
-case_hook: "A case is closed not because it is solved but because the paperwork expired."
-rules_reference: "CWN: INT+Administer / CHA+Connect; no new procedure"
-source: "illustrative"
-```
-
-<!-- Tomi writes below -->
-
-**Unresolved:** which themes are actually Helsinki's, and which are generic cyberpunk furniture to cut.
-
----
-
-## 2. The World
-
-*CWN: "Creating The World" (p. 110). The 2045 external conditions that a Europol officer in Helsinki
-actually feels — not a global history.*
-
-**Fields.** `world_id`, `condition`, `canon_source`, `what_residents_know`, `what_is_disputed`, `case_hook`
-
-```yaml
-# EXAMPLE ONLY — NOT CANON
-world_id: hel_world_condition_001
-condition: "Psionics is public, regulated and unevenly believed."
-canon_source: "rulebook/20_FIRST_CONTACT_AND_PSI_AWAKENING.md §4 (REPOSITORY CANON)"
-what_residents_know: "Registration exists; nobody agrees whether it is a health record or a weapons licence."
-what_is_disputed: "Whether registered sensitives are safer or merely easier to find."
-case_hook: "A witness's PSI testimony is real, admissible, and worth less than a door log."
-source: "illustrative"
-```
-
-<!-- Tomi writes below -->
-
-**Unresolved:** how much of the NHI Crisis a *rookie in 2045* takes for granted; which disasters are
-common knowledge, and which are still contested.
-
----
-
-## 3. The City (index only)
-
-*CWN: "Creating The City" (p. 114) picks the seed city and its two main problems; the detailed
-Helsinki material lives in [`HELSINKI_CITY.md`](HELSINKI_CITY.md). **This section is a pointer and an
-elevator pitch, never a second city essay.***
-
-```yaml
-# EXAMPLE ONLY — NOT CANON
-city_id: hel_city
-name: "Helsinki (Greater Helsinki)"
-pitch: "An accelerationist harbour city that sold itself to the extraterrestrial economy and now administers the consequences."
-main_problems: ["TBD — two, per CWN p. 114, authored by Tomi"]
-detail_document: "design/HELSINKI_CITY.md"
-source: "illustrative"
-```
+> **The harbour edge** — where things enter the country that the paperwork has not met yet.
 
 <!-- Tomi writes below -->
 
 ---
 
-## 4. Districts (index only)
+## 5. Megacorporations
 
-*CWN: "Building Your Districts" (p. 121). One row per district, pointing at the full district card in
-[`HELSINKI_CITY.md`](HELSINKI_CITY.md) §8. Do not describe a district twice.*
+*Rule basis: CWN corporate archetypes. Keep local: which corporation has a Helsinki presence, what it visibly does,
+what it says about itself, what leverage it actually holds, and a case hook.*
 
-```yaml
-# EXAMPLE ONLY — NOT CANON
-district_id: hel_district_kurvi
-name: "Kurvi"
-one_line: "Tram crossroads, nightlife, working-class memory, and the rookie's front door."
-card: "HELSINKI_CITY.md#8-the-districts-of-the-city"
-source: "illustrative"
-```
+**What to write:** one corporation per block — public face, real business, the local manager's problem, and what an
+investigator can actually prove.
 
-<!-- Tomi writes below -->
-
-**Unresolved:** the district list itself. CWN wants a handful of playable districts, not an atlas.
-
----
-
-## 5. Megacorps
-
-*CWN: "Creating Megacorps" (p. 126). An archetype plus its leverage. If a corporation becomes a
-mechanical actor, its sheet belongs in [`HELSINKI_FACTIONS.md`](HELSINKI_FACTIONS.md) — link it, do not
-restate it.*
-
-**Fields.** `corp_id`, `archetype`, `helsinki_operations`, `public_image`, `leverage`, `hooks`, `faction_ref`
-
-```yaml
-# EXAMPLE ONLY — NOT CANON
-corp_id: hel_corp_001
-archetype: "Logistics contractor with a state monopoly on continuity"
-helsinki_operations: "Runs the port's biometric gate system and three municipal archives."
-public_image: "Boring, reliable, Finnish."
-leverage: "Whoever holds the archive holds the evidence."
-hooks: ["A gate log that cannot be subpoenaed", "A strike the city cannot afford"]
-faction_ref: null   # link a HELSINKI_FACTIONS.md record only if it acts mechanically
-source: "illustrative"
-```
+> **EXAMPLE ONLY — NOT CANON**
+> **A logistics firm that owns the cold chain.** It moves medicine, food and — on paper, never in practice —
+> nothing else. Its public face is sponsorship of a children's hospital; its real asset is that it knows which
+> containers were opened and which were not. A Europol investigator can get a manifest in an afternoon and a
+> container in three weeks, and the difference between those two facts is where cases die.
 
 <!-- Tomi writes below -->
 
-**Unresolved:** which corporations are real Helsinki employers in 2045 and which are invented; whether
-any of them is an Orion proxy (that answer changes the campaign).
-
 ---
 
-## 6. Gangs
+## 6. Gangs and street organizations
 
-*CWN: "Creating Gangs" (p. 128). Street-level organisations. **Not every gang is a SWN faction** — a
-gang is a faction only when it takes faction turns, holds assets, and competes for influence.*
+*Rule basis: CWN street-level antagonists. Not every gang is a faction in the Stars Without Number sense — most are
+a handful of people with a shared problem. Say which it is.*
 
-**Fields.** `gang_id`, `archetype`, `turf`, `method`, `members_want`, `case_hook`, `is_faction`
+**What to write:** who they are, what ground they hold, how they operate, what members actually want, and a hook.
 
-```yaml
-# EXAMPLE ONLY — NOT CANON
-gang_id: hel_gang_001
-archetype: "Evidence brokers"
-turf: "Two blocks around the Kurvi platforms"
-method: "They do not steal data; they sell the *absence* of data."
-members_want: "To be treated as a service, not a threat."
-case_hook: "A witness's file was never deleted — it was rented out."
-is_faction: false
-source: "illustrative"
-```
+> **EXAMPLE ONLY — NOT CANON**
+> **A recovery crew working the stairwells.** They take back stolen implants from people who cannot go to the
+> police, for a fee, and they are good at it. They are not a gang in the territorial sense and they have no faction
+> statistics; they are nine people, three of whom are related, and the reason they matter to the campaign is that
+> they are the only local structure that will talk to a rookie Europol officer without a lawyer present.
 
 <!-- Tomi writes below -->
 
-**Unresolved:** which street organisations are local, which are Orion- or Confederacy-adjacent, and
-where the line between gang and political movement falls.
-
 ---
 
-## 7. NPCs
+## 7. People: an ordinary NPC card
 
-*CWN: "Creating NPCs" (p. 130) and "Faces On the Street" (p. 180). A character card, not a biography.
-Recurring named characters who already exist in the repository must be **linked**, never re-created:
-[`design/characters/`](characters/), [`docs/campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md`](../docs/campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md).*
+*Rule basis: CWN, Faces on the Street. Written as prose; if a statistic is needed, use the printed CWN NPC format and
+say which book and page it came from.*
 
-**Fields.** `npc_id`, `name`, `role`, `appearance`, `wants`, `relationships`, `cwn_stats`, `encounter_hooks`, `location_ref`
+**What to write:** role, how they look, what they want, who they are tied to, how they fight (or do not), and a
+hook. One person, not a cast list.
 
-```yaml
-# EXAMPLE ONLY — NOT CANON
-npc_id: hel_npc_001
-name: "A receptionist who has worked three agencies in one building"
-role: "Gatekeeper; institutional memory; the only person who knows which door is real."
-appearance: "Badge lanyard with three logos, reading glasses, a terminal older than her career."
-wants: "For somebody to fix the archive before she retires."
-relationships: "Knows every cleaner, resents every consultant."
-cwn_stats: "TBD — generate with CWN p. 130; do not invent numbers"
-encounter_hooks: ["She remembers a name that is not in the system", "She can be bribed with competence"]
-location_ref: "hel_site_office_ratakatu"
-source: "illustrative"
-```
+> **EXAMPLE ONLY — NOT CANON**
+> **Marja Koskela, 58, building manager.** Runs four stairwells and a boiler room that has never once failed on
+> her watch. Speaks in short sentences, keeps a handwritten list of every contractor who has ever lied to her, and
+> is the single most reliable witness in the building because nothing happens in it without her knowing. She does
+> not like the police, and she does not like Europol more. If a player character helps her with something small and
+> unpaid, she becomes an informant for years; if they flash a badge at her, she becomes a wall.
 
 <!-- Tomi writes below -->
 
-**Unresolved:** the actual Helsinki cast. The campaign outline already names a unit; this file must not
-quietly field a second one.
-
 ---
 
-## Unresolved decisions in this document
+## 8. Unresolved decisions
 
-| # | question | blocks |
-| --- | --- | --- |
-| W1 | Which three to five cyberpunk themes are *Helsinki's*, not generic? | every district and case hook |
-| W2 | What does a 2045 rookie take for granted about the NHI Crisis? | the tone ramp, every briefing scene |
-| W3 | Which corporations and gangs exist, and which are Orion/Confederacy fronts? | Act II's antagonists |
-| W4 | Which named NPCs are canon, and which are placeholders? | the cast, and the campaign outline's own list |
+Questions this file deliberately leaves to the author. Answer them here, in the right-hand column, in ordinary
+language — then delete the row.
 
-*Record answers here, in this file, with a date and the author's name — not in a commit message.*
+| Question | Record answers here |
+|---|---|
+| What is the campaign's central theme, in one sentence? | |
+| How much of the NHI Crisis is public knowledge in 2045, and how much is rumour? | |
+| Which districts are playable in Act I, and which stay background? | |
+| Does the protagonist's Europol office sit inside the liaison office described in `docs/world/EUROPOL_HELSINKI_1114.md`, or in a separate unit? | |
+| Which corporations are local, and which are only names on paperwork? | |
+| Is any street organization a genuine faction, and if so which? | |
+
+**When you have answered a question, an agent may convert it into structured data — later, in Phase 3, and only if
+you ask.** You never have to keep a record in any format other than this document.

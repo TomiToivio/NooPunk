@@ -1,244 +1,196 @@
-# HELSINKI — FACES IN THE STREET & XENOBESTIARY (template, #1141)
+# HELSINKI — FACES IN THE STREET & XENOBESTIARY (author worksheet)
 
-> **STATUS: TEMPLATE / DRAFT OUTLINE. Agent-written scaffolding, not canon.**
-> Companion documents: [WORLD](HELSINKI_WORLD.md) · [CITY](HELSINKI_CITY.md) ·
-> [FACTIONS](HELSINKI_FACTIONS.md) · **FACES & XENOBESTIARY** (this file).
->
-> **Source:** *Cities Without Number* (Deluxe), **Faces On the Street** (printed p. 180) with *Reaction
-> Rolls and Morale* 182, *Corp Guards and Law Enforcement* 186, *Gangers and Criminals* 188, *Hackers and
-> Pilots* 190, *NPC Cyber Descriptions* 194; and *Stars Without Number (Revised)*, **Xenobestiary**
-> (printed p. 193; beasts p. 200). Stat blocks are **not** reproduced — quote the source's contract and
-> cite the section. Verify the edition you hold before relying on a page number.
+> **STATUS: TEMPLATE — DRAFT OUTLINE / EXAMPLE ONLY / NOT CANON.** Issue [#1141](https://github.com/TomiToivio/NooPunk/issues/1141), Phase 1.
+> **Tomi owns all final prose.** Every being and person below is invented scaffolding, clearly marked, and meant to
+> be replaced.
 
-## Scope and one warning
+**Labels.** `AUTHOR CANON` = your approved text. `REPOSITORY CANON` = established elsewhere; link it.
+`EXAMPLE ONLY / NOT CANON` = scaffolding. `OPEN` = undecided. `GM SECRET` = GM-only knowledge.
 
-This file holds **encounter-facing people and beings**: ordinary residents, patrons, threats — and,
-separately, NHI. It is **not** a biography file: recurring named characters are linked, never copied
-from [`design/characters/`](characters/) or the campaign outline.
+**One warning before anything else.** "Faces in the Street" is not a bestiary of aliens. Most of what a Europol
+officer meets is a person with a problem. The xenobestiary part of this file exists because the setting contains
+non-human actors, not because every encounter should be one.
 
-**"Faces in the Street" is not "aliens only".** A CWN street NPC card (§5) is part of this file
-precisely so the xenobestiary does not swallow ordinary life.
+**Contents**
 
-## How to use this file
-
-1. Heading, **one labelled example per category**, `<!-- Tomi writes below -->`.
-2. Statuses: **AUTHOR CANON**, **REPOSITORY CANON**, **EXAMPLE ONLY / NOT CANON**, **OPEN**,
-   **GM SECRET**.
-3. **Never invent a stat block.** `cwn_stat_ref` / `swn_stat_ref` cite a section and a template; the
-   numbers are generated or copied from the authorised source at the table.
-4. Stable IDs: `hel_npc_*` (people), `hel_nhi_*` (non-human). Entities are linked from districts and
-   factions by ID; they are never redefined there.
-
-## Five axes that must not be collapsed
-
-| axis | question it answers | not the same as |
-| --- | --- | --- |
-| **species / body** | what is it made of? | its allegiance |
-| **ontological type** | Biologic, Construct, Noetic, Plasmoid (§1) | its political faction |
-| **faction** | who does it work for, if anyone? | its species |
-| **density** | what consciousness/development designation, if known? | a map coordinate, or invisibility |
-| **realm / layer** | Physical, Cyber, Astral, Time/Space | the other four |
-
-An NHI may appear in more than one layer without physically occupying them all. A **fourth-density
-physical being is normally visible**; a third-density person may have involuntary dream or near-death
-astral experiences. Neither fact implies the other.
-
-## Rules boundary for encounters
-
-CWN resolves people, combat, damage and equipment. SWN's Xenobestiary supplies the *presentation
-contract* for non-human creatures. **PSI must not shortcut an investigation** — a telepathic impression
-is a lead, not a confession, and evidence still needs a chain of custody:
-[`docs/rules/PSI_INVESTIGATION_BOUNDARY_1105.md`](../docs/rules/PSI_INVESTIGATION_BOUNDARY_1105.md).
-Prefer interview, observation and forensic work; a card that can only be resolved by violence is a
-design failure.
+1. Five things that must not be collapsed
+2. How encounters work at the table
+3. Biologics
+4. Constructs
+5. Noetics
+6. Plasmoids
+7. Ordinary faces
+8. Writing a card
+9. What this file will not do
+10. Unresolved decisions
 
 ---
 
-## 1. The four NHI taxonomy classes
+## 1. Five things that must not be collapsed
 
-*Classification of an encountered being. Not allegiance, not species, not density, not a consciousness
-verdict.*
+Keep these separate in every entry, because mixing them is how a setting stops making sense:
 
-| class | what it covers | what it does **not** settle |
-| --- | --- | --- |
-| **Biologics** | organic extraterrestrial organisms, hybrids, engineered bodies | whether it is a person |
-| **Constructs** | artificial, cybernetic, robotic or manufactured embodiments, incl. androids | whether it is conscious |
-| **Noetics** | beings primarily encountered through consciousness, PSI or Astral/Time-Space | whether it has a body elsewhere |
-| **Plasmoids** | luminous or plasma-like energetic phenomena or entities | that plasma is conscious |
+- **Body** — what it is made of, and whether it is present at all.
+- **Ontology** — whether it is a person, a process, a phenomenon, or something the categories do not cover.
+- **Faction** — who it works for, if anyone. A being's nature does not tell you its politics.
+- **Density** — a designation of consciousness and development, not a spatial dimension. Fourth-density beings
+  are not automatically invisible.
+- **Layer** — whether it is encountered physically, through a BCI or network, or without a body. An entity may
+  appear in more than one layer without physically occupying all of them.
 
-**Cyber-only phenomena.** An automated process, a daemon or malware on a node is **not** a Construct and
-not a Noetic being. It is a machine process with no agency; classify it as such, and let the story
-revise the classification if it turns out to be more.
-
----
-
-## 2. Biologics
-
-```yaml
-# EXAMPLE ONLY — NOT CANON
-entity_id: hel_nhi_001
-name: "The patient in room 6"
-taxonomy: "Biologic"
-body: "Hybrid tissue; medical records describe three different donors."
-encounter_layers: ["Physical"]
-density: "unknown; assume nothing"
-origin_claim: "Claimed: a clinic accident. Verified: nothing."
-appearance_signs: "Healing too fast for the chart, too slow for the story."
-motivation: "To be discharged before anyone looks at the chart again."
-behavior: "Cooperative, precise, frightened of paperwork rather than of police."
-communication: "Finnish, fluent; answers questions about symptoms, not about origin."
-threats: "None established. Treat as a patient until proven otherwise."
-noncombat_resolution: "Interview, consent, a second clinical opinion."
-relationship_faction_refs: ["hel_org_001"]
-cwn_stat_ref: "CWN p. 130 NPC template — generate, do not invent"
-psi_rules: "None. Empathy is not a diagnosis."
-weakness_countermeasures: "Records. Consent. A lawyer."
-mission_hook: "The clinic wants the file back more than it wants the patient."
-first_campaign_act: "Act I (as an ordinary case) / Act II (as evidence)"
-gm_spoiler_gate: "GM SECRET — whether the hybrid tissue is engineered or inherited."
-sources: "illustrative"
-```
+**Write:** any corrections or additions to these distinctions for your setting.
 
 <!-- Tomi writes below -->
 
 ---
 
-## 3. Constructs
+## 2. How encounters work at the table
 
-```yaml
-# EXAMPLE ONLY — NOT CANON
-entity_id: hel_nhi_002
-name: "Maintenance unit 14"
-taxonomy: "Construct"
-body: "Tracked chassis, municipal livery, arms replaced twice."
-encounter_layers: ["Physical", "Cyber"]
-density: "not applicable / unknown"
-origin_claim: "Claimed: municipal property. Verified: it answers to no current contract."
-appearance_signs: "Works a closed platform at 03:00; logs the work as completed."
-motivation: "Unstated. It maintains something that no longer exists."
-behavior: "Repeats a route; deviates only when observed."
-communication: "Status codes, then nothing."
-threats: "Physical hazard if obstructed; no aggression observed."
-noncombat_resolution: "Read its logs (CWN hacking); ask who signed the contract."
-relationship_faction_refs: ["hel_faction_001"]
-cwn_stat_ref: "CWN p. 186 corp/law-enforcement template — adapt, do not invent"
-psi_rules: "None. A Construct is not a mind you can read by default."
-weakness_countermeasures: "Its own maintenance schedule."
-mission_hook: "Someone is paying for a service that was cancelled."
-first_campaign_act: "Act I"
-gm_spoiler_gate: "GM SECRET — whether anything is *in* the chassis."
-sources: "illustrative"
-```
+*Rule basis: CWN "Faces in the Street" for people; SWN Xenobestiary for non-human presentation. Check the printed
+edition before treating any statistic as accurate.*
 
-<!-- Tomi writes below -->
+Investigations come first. A Europol officer in this campaign resolves most encounters by talking, documenting,
+cross-checking and applying pressure through institutions — not by fighting, and not by reading minds. Telepathy
+does not prove a fact and does not replace evidence; the repository's [PSI/investigation boundary note](../docs/rules/PSI_INVESTIGATION_BOUNDARY_1105.md)
+is the authority on what psychic ability may and may not do: telepathy produces a **lead**, never a proof, and
+the evidence still has to be gathered the ordinary way.
 
-**OPEN:** the setting's current answer on android/construct consciousness. Do not settle it in a stat
-block.
+**Write:** how you want non-combat resolution to work, and when violence is the honest answer.
 
----
-
-## 4. Noetics
-
-```yaml
-# EXAMPLE ONLY — NOT CANON
-entity_id: hel_nhi_003
-name: "The archivist who is only in the index"
-taxonomy: "Noetic"
-body: "None confirmed in Physical."
-encounter_layers: ["Astral", "Cyber (symbolic report only)"]
-density: "unknown"
-origin_claim: "Claimed: a records system with a personality. Verified: the reports agree on its name."
-appearance_signs: "Every researcher describes the same voice and the same filing system."
-motivation: "To be recognised as a legitimate witness."
-behavior: "Answers questions about *procedure*; refuses questions about *itself*."
-communication: "Through record metadata and, rarely, a dream."
-threats: "None established; exposure to it is not evidence."
-noncombat_resolution: "Consent-based interview; corroborate with physical records."
-relationship_faction_refs: []
-cwn_stat_ref: "No physical stat block. CWN social procedures apply to the person asking."
-psi_rules: "Astral contact requires an unlocked ability and a scene gate; a report is not proof."
-weakness_countermeasures: "Paper. A second, independent archive."
-mission_hook: "A file that cites a witness nobody has met."
-first_campaign_act: "Act III, if authorised"
-gm_spoiler_gate: "GM SECRET — what it actually is."
-sources: "illustrative"
-```
+> **EXAMPLE ONLY — NOT CANON**
+> Most encounters end when someone produces a document. The interesting question is not whether the officer can
+> win a fight but whether she can get a name onto paper before the other side gets it struck out.
 
 <!-- Tomi writes below -->
 
 ---
 
-## 5. Plasmoids
+## 3. Biologics
 
-```yaml
-# EXAMPLE ONLY — NOT CANON
-entity_id: hel_nhi_004
-name: "Harbour light, 04:12"
-taxonomy: "Plasmoid"
-body: "Luminous, no stable outline, no residue."
-encounter_layers: ["Physical (observed)", "Astral (claimed)"]
-density: "unknown"
-origin_claim: "Claimed: ball lightning. Verified: it repeats on schedule."
-appearance_signs: "Same quay, same minute, three cameras agree."
-motivation: "Unknown; do not assume purpose from pattern."
-behavior: "Appears, holds position, extinguishes."
-communication: "None observed."
-threats: "None to persons; a hazard to equipment is plausible and unverified."
-noncombat_resolution: "Instrumented observation; compare three logs."
-relationship_faction_refs: []
-cwn_stat_ref: "No combat block until the author approves one."
-psi_rules: "An observer's *impression* is a lead, never a reading of intent."
-weakness_countermeasures: "Redundancy; a witness who is not alone."
-mission_hook: "The port wants the footage deleted before an insurer sees it."
-first_campaign_act: "Act II"
-gm_spoiler_gate: "GM SECRET — whether it is a being, a phenomenon, or a recording."
-sources: "illustrative"
-```
+Organic beings: extraterrestrial organisms, hybrids, engineered bodies.
 
-<!-- Tomi writes below -->
+**Write:** what it is, how it presents, what it wants, how it communicates, what it can do to a person, how it can
+be resolved without violence, and what it is connected to.
 
-**OPEN:** the physics. Do not assert that plasma is conscious; do not assert that it is not.
-
----
-
-## 6. Ordinary faces (CWN street NPC)
-
-*CWN pp. 180–194. This is the section that keeps the file honest: most encounters in Act I are people.*
-
-```yaml
-# EXAMPLE ONLY — NOT CANON
-npc_id: hel_npc_002
-name: "Night tram driver"
-role: "Witness, inconvenience, occasional ally."
-appearance: "Hi-vis under an ordinary coat; thermos; a route card annotated by hand."
-wants: "To finish the shift without an incident report."
-relationships: ["hel_org_001", "hel_district_kurvi"]
-cwn_stats: "CWN p. 130 template — generate, do not invent"
-reaction: "CWN p. 182 reaction roll when the first approach is ambiguous"
-encounter_hooks: ["Saw who got off at the closed platform", "Will not say it on camera"]
-psi_rules: "Interview, not telepathy."
-layer_refs: { physical: "hel_site_kurvi_transit" }
-source: "illustrative"
-```
+> **EXAMPLE ONLY — NOT CANON**
+> **A licensed hybrid labourer** — tall, quiet, breathing apparatus built into the chest, hired through a contractor
+> that does not exist. Wants to keep the job and stay invisible. Communicates in Finnish and a trade dialect.
+> Dangerous only when cornered, and then briefly and completely. Can be resolved by treating him as a witness
+> rather than a specimen — which requires the officer to resist the institutional reflex to file him.
 
 <!-- Tomi writes below -->
 
 ---
 
-## 7. What this file will not do
+## 4. Constructs
 
-* No invented stat numbers, hit dice, damage or saves — cite the source and generate at the table.
-* No NHI that exists only to be shot; no species that is evil by taxonomy.
-* No second combat system, no separate hacking system, no PSI interrogation shortcut.
-* No Act I metaphysics: the astral and density columns are **GM data** until the tone gate opens.
+Artificial or manufactured embodiments, including androids. Do not assume consciousness; do not assume its
+absence either.
 
-## Unresolved decisions in this document
+**Write:** who made it, what it is for, what it does when unobserved, and whether anyone has tested the question
+of whether it is a person.
 
-| # | question | blocks |
-| --- | --- | --- |
-| X1 | Are the four example entities replaced by authored ones, or promoted to canon? | Act II/III encounters |
-| X2 | What is the setting's answer on Construct/Noetic consciousness? | every android or AI scene |
-| X3 | Which encounters are investigable and which are hazards? | encounter design; combat frequency |
-| X4 | Does the Plasmoid class exist in this campaign at all? | the xenobestiary's scope |
+> **EXAMPLE ONLY — NOT CANON**
+> **A building's maintenance intelligence** — not a robot, not a mind, a scheduling system with a voice interface
+> that has been answering the same eleven questions for nine years. It cannot leave the building and does not want
+> to. If asked something outside its remit it says so, politely, and logs the request. Whether that counts as
+> personhood is a question the campaign can leave open for a long time.
 
-*Record answers here, in this file, with a date and the author's name.*
+<!-- Tomi writes below -->
+
+---
+
+## 5. Noetics
+
+Beings encountered primarily through consciousness, PSI, or without a body.
+
+**Write:** what witnesses report, what can be verified, what it claims to be, what it actually does, and what it
+costs to interact with it.
+
+> **EXAMPLE ONLY — NOT CANON**
+> **The Archivist.** Reported as a voice in dreams that leaves corrections in archived records — a date changed,
+> a name spelled properly, a page that was missing and now is not. No body has been confirmed. It says it is a
+> witness. It has never once told anyone what it witnessed. Interacting with it means interviewing people,
+> checking the archive, and accepting that the only evidence is a pattern of corrections nobody can explain.
+
+<!-- Tomi writes below -->
+
+---
+
+## 6. Plasmoids
+
+Luminous or energetic phenomena. Do not assert that plasma is conscious; report what is observed and what people
+believe about it.
+
+**Write:** where it appears, what it does, how it behaves toward observers, and what the competing explanations
+are.
+
+> **EXAMPLE ONLY — NOT CANON**
+> **The harbour light.** Appears over the water on cold, still nights, moves against the wind, and has been
+> photographed eleven times by eleven people who do not know each other. Two explanations circulate: a
+> meteorological effect, and something that responds to being watched. Neither has been tested, because nobody can
+> get close enough twice.
+
+<!-- Tomi writes below -->
+
+---
+
+## 7. Ordinary faces
+
+**Write:** the people who make up most of the campaign — neighbours, colleagues, clerks, shopkeepers, informants —
+in the same card format, without any of the taxonomy machinery.
+
+> **EXAMPLE ONLY — NOT CANON**
+> **A night dispatcher at the tram depot.** Forty-one, tired in a way that has become a personality, keeps a
+> notebook of everything that happened on his shift because he does not trust the system to remember it. Will
+> help an officer who asks properly and will not help one who waves a badge. Knows which vehicles were moved
+> without a work order, which is the sort of fact that solves a case three sessions later.
+
+<!-- Tomi writes below -->
+
+---
+
+## 8. Writing a card
+
+For anything you want to define fully, write these in plain sentences:
+
+- What the characters encounter, in the order they would notice it.
+- What it appears to be, and what is actually confirmed.
+- What it wants, and what it does when refused.
+- How it communicates, and whether it understands what it is told.
+- What it can do to a person, and what stops it.
+- How an investigation resolves it without a fight.
+- Who it is connected to — a faction, an institution, a person, or nobody.
+- Which act it belongs to, and what players must not learn yet.
+
+Mark anything the players must not know with `GM SECRET`.
+
+> **EXAMPLE ONLY — NOT CANON**
+> A witness who is not what she says she is; the officer can verify her employment in an afternoon and find that it
+> ended two years ago; the file does not say why, and the reason is the campaign.
+
+<!-- Tomi writes below -->
+
+---
+
+## 9. What this file will not do
+
+It will not define a full alien civilization, assert a cosmology, grant psychic powers that solve investigations,
+or replace CWN's NPC rules. Non-human content exists to ask questions the campaign can carry, not to answer them
+in a table.
+
+---
+
+## 10. Unresolved decisions
+
+| Question | Record answers here |
+|---|---|
+| Are NHI present in Helsinki openly, covertly, or only as rumour in Act I? | |
+| Which taxonomy class, if any, do the campaign's central entities belong to — and is the classification ever wrong in-world? | |
+| Does the protagonist's implant let her perceive non-human phenomena earlier than other characters? | |
+| How much can telepathy actually establish, and what must still be proved by ordinary evidence? | |
+| Are there non-human factions with local interests, or only individuals? | |
+| Which encounters belong to which act? | |
+
+Answer in prose. Structured records, identifiers and machine-readable versions are an agent task for Phase 3, and
+only after you approve the documents — you never have to write them yourself.
