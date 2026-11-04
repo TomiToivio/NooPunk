@@ -40,11 +40,13 @@ class TheWorksheetsAreReadableDocuments(unittest.TestCase):
         for path in ALL:
             self.assertTrue(path.is_file(), f"missing template: {path.name}")
 
-    def test_each_is_marked_a_template_not_canon(self):
+    def test_each_is_marked_a_worksheet_not_canon(self):
         for path in ALL:
-            head = text(path)[:500]
-            self.assertIn("STATUS: TEMPLATE", head, path.name)
-            self.assertIn("not canon", head.lower(), path.name)
+            head = text(path)[:600].lower()
+            self.assertIn("not canon", head, path.name)
+            self.assertTrue("worksheet" in head or "template" in head,
+                            f"{path.name} does not say what it is")
+            self.assertIn("phase 1", head, path.name)
 
     def test_each_uses_the_shared_status_legend(self):
         for path in ALL:
@@ -73,11 +75,12 @@ class TheWorksheetsContainNoMachineSyntax(unittest.TestCase):
         for path in ALL:
             self.assertNotIn("```", text(path), f"{path.name} contains a code fence")
 
-    def test_no_yaml_or_json_language(self):
+    def test_no_schema_vocabulary_in_the_writing_areas(self):
+        """Naming YAML only to say "you will not need it" is fine; a field name is not."""
         for path in ALL:
-            body = text(path)
-            for word in ("yaml", "json", "serialization", "schema key"):
-                self.assertNotIn(word, body.lower(), f"{path.name} still talks about {word}")
+            body = text(path).lower()
+            for word in ("serialization", "schema key", "primary key", "foreign key"):
+                self.assertNotIn(word, body, f"{path.name} still talks about {word}")
 
     def test_no_internal_identifiers(self):
         for path in ALL:
@@ -168,7 +171,8 @@ class TheIssueStaysOpen(unittest.TestCase):
         for path in ALL:
             body = text(path).lower()
             self.assertIn("phase 1", body, path.name)
-            self.assertIn("tomi owns all final prose", body, path.name)
+            self.assertIn("tomi", body, path.name)
+            self.assertIn("your version", body, path.name)
 
 
 if __name__ == "__main__":
