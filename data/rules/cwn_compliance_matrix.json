@@ -857,6 +857,7 @@
         "tests/test_goals_1119.py",
         "tests/test_goals_console_1119.py",
         "tests/test_godot_single_implementation.py",
+        "tests/test_issue1184_architecture.py",
         "tests/test_issue219_physical_combat.py",
         "tests/test_issue220_social_procedures.py",
         "tests/test_issue224_noospace_projection.py",

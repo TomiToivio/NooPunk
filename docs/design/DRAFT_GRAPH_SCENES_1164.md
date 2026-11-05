@@ -23,7 +23,7 @@
 | **Social**, characters and campaign-local factions | directed relationship, trust/ideology/goal ties | CWN Talk/Connect/Lead/other verified checks + personality/goal/reputation tags | [PROPOSAL] adapter |
 | **Story**, Series→Episodes→Scenes | prerequisite/branch transitions | existing GoalLog and scene flags, no second XP engine | [PROPOSAL] adapter |
 
-**Six scene kinds:** Exploration, Cyber, Combat, Social, Investigation and Astral. `scene.types` can hold several. A Cyber scene is *not* the Cyber graph itself; a Combat scene may refer to all three spatial layers. **A graph is persistent topology; a scene is an episode of play referencing parts of topology.**
+**Six scene kinds:** Exploration, Cyber, **Action**, Social, Investigation and Astral. *(Renamed from "Combat" by [#1184](https://github.com/TomiToivio/NooPunk/issues/1184): the scene kind is Action — arrests, pursuits, containment — and CWN's combat rules are what an Action scene calls when force is used. See [the interface architecture](GAMEPLAY_INTERFACES_1184.md#4-action-scenes-not-combat-scenes).)* `scene.types` can hold several. A Cyber scene is *not* the Cyber graph itself; an Action scene may refer to all three spatial layers. **A graph is persistent topology; a scene is an episode of play referencing parts of topology.**
 
 **Recommended build order after separate approval:** physical & cyber views → story/goal link → social relationship view → investigation metadata adapter → bounded Astral + explicit cross-layer permissions. Do not implement all at once, or delay playable Act I until Astral is complete.
 
@@ -146,7 +146,7 @@ A Cyber camera can provide authorized footage of a physical corridor; it does no
 |---|---|---|---|
 | **Exploration** | Physical (+ optional Cyber view) | Move, locate, question, climb, examine, sneak using CWN | Map node access, scene gate, environmental tags |
 | **Cyber** | Cyber (may link Physical) | Published CWN Hacking prerequisites, actions/programs, consequences | Security node refs and credential scope, no new hack skill |
-| **Combat** | Physical; optional Cyber/Astral interactions | **Single CWN** initiative, attacks, saves, movement, injury, cover | Action-consuming typed cross-layer effects |
+| **Action** *(was Combat)* | Physical; optional Cyber/Astral interactions | **Single CWN** initiative, attacks, saves, movement, injury, cover — used when force cannot be avoided; arrests, pursuits, containment and restraint resolve through the same resolver | Action-consuming typed cross-layer effects |
 | **Social** | Social plus Physical co-presence | CWN social skills and negotiation; NPC agency retained | `relationship_delta`, personality, reputation, goal evidence |
 | **Investigation** | Any accessible location/sensor node | Existing `discover` competence + access + inquiry; roll for risky action only | Lead/Evidence/Capability **descriptors**, chain-of-custody and optional hypothesis |
 | **Astral** | Astral, possibly overlays Physical/Cyber | SWN-inspired Effort/permission + original bounded projection procedure | Anchor, route, verb, target, defenses, return gate |
@@ -313,7 +313,7 @@ When targeting a Cyber node, **CWN hacking stays authoritative**. A special PSI-
 
 ### Scene C: Act IV — `The Uninvited Visitor` (5th-density hostile PSI)
 
-**Scene** `scene.wanderer.noetic_assault`; types `[astral,social,exploration]`, possibly Combat **only if embodied combat actually occurs**. **Targets:** `actor.rookie`, `astral.orion.mantid_contact`, `physical.safehouse.anchor`, `cyber.europol.defence_implant`, ally/SMC node.
+**Scene** `scene.wanderer.noetic_assault`; types `[astral,social,exploration]`, possibly Action **only if embodied force actually occurs**. **Targets:** `actor.rookie`, `astral.orion.mantid_contact`, `physical.safehouse.anchor`, `cyber.europol.defence_implant`, ally/SMC node.
 
 - **Trigger:** StS faction learns the PC is a Wanderer; a meaningful prior link or contact route is recorded. A fifth-density StS actor does **not** obtain unbounded access merely because of density.
 - **Observe:** recurring pattern/pressure cues and an aura-like impression alert the PC; this is **not proof** of the attacker's true identity.
