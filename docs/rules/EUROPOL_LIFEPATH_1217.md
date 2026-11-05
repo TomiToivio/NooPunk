@@ -43,9 +43,22 @@ different one is an author decision, not a player option.
 | which Focuses exist? | `rules.cwn_foci.FOCI` — the published twenty-six |
 | which skills does the Background grant? | `rules.cwn_backgrounds` (free skill plus two Learning picks) |
 | is this a real personality tag? | `rules.scene_tags.PersonalityTag` |
+| may a PC take this *psi* Edge at all, and may it sit beside the other? | `rules.rookie_build.RookieBuild.add_edge` (CWN budget **and** `psi_access` policy) |
 
 There is no second copy of any of that arithmetic. A rule change lands in the rules module and this builder follows,
 which is the only way a builder and a rulebook can stay equal.
+
+## The composition, and its limit
+
+`rookie_build` (#1231) is the NoöPunk-level join of CWN's slot arithmetic and the access policy, so the builder
+routes the **four psi Edges** (`Mutant`, `Mentalist`, `Spellcaster`, `Summoner`) through it: a Mentalist beside a
+Spellcaster is refused, and Mutant carries its Europol-approval requirement.
+
+The limit is in `psi_access.edge_decision`, which answers *"not a known Edge; refusing rather than guessing"* for
+anything outside those four. A builder that sent **every** Edge through the policy would reject every ordinary CWN
+character — `Alert`, `Ghost`, `Focused` included — so generic Edges take CWN's slot arithmetic directly. Closing that
+gap needs the same thing as ¶ below: a verified, author-maintained Edge list. It is a policy-data gap, not a rule
+disagreement.
 
 ## The one deliberate refusal
 

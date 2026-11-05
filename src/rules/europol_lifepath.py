@@ -43,7 +43,13 @@ from .cwn_edges_foci import (
     underdog_eligible,
 )
 from .cwn_foci import FOCI as FOCUS_CATALOGUE
+from .psi_access import PC_EDGES
+from .rookie_build import BuildError as RookieBuildError
+from .rookie_build import RookieBuild
 from .scene_tags import PersonalityTag
+
+#: The canonical actor id the console slice, the actor registry and the graphs already agree on.
+ACTOR_ID = "tony.german"
 
 __all__ = [
     "FIXED",
@@ -230,8 +236,11 @@ def build_lifepath(
     except Exception as exc:
         violations.append(LifepathViolation("skills", str(exc)))
 
-    # -- Edges, against the real slot arithmetic --------------------------------
-    sheet = TalentSheet(level=level)
+    # -- Edges, through the composition that knows both budgets -----------------
+    # `rookie_build` is the NoöPunk-level join of CWN's slot arithmetic and the access policy; using it here means
+    # this builder cannot accept a combination that either of them refuses (#1231).
+    build = RookieBuild(actor_id=ACTOR_ID, background=background.id, sheet=TalentSheet(level=level))
+    sheet = build.sheet
     underdog = False
     if scores:
         underdog = underdog_eligible(scores)
@@ -240,8 +249,16 @@ def build_lifepath(
             violations.append(LifepathViolation("edges", f"{edge.id!r} is not in the supplied catalogue"))
             continue
         try:
-            pick_edge(sheet, edge, underdog_eligible=underdog)
-        except Exception as exc:
+            if edge.id in PC_EDGES:
+                # The four psi Edges are the only ones the access policy knows, so they are the only ones it can
+                # validate: Mutant needs Europol approval, Mentalist may not sit beside a Spellcaster or Summoner.
+                build.add_edge(edge, underdog_eligible=underdog)
+            else:
+                # A generic CWN Edge has no policy entry; `psi_access.edge_decision` would refuse it as unknown, which
+                # would make this builder reject every ordinary CWN character. Slots are still CWN's arithmetic.
+                pick_edge(sheet, edge, underdog_eligible=underdog)
+                build.sheet = sheet
+        except (RookieBuildError, Exception) as exc:
             violations.append(LifepathViolation("edges", str(exc)))
     if scores and len(edges) > EDGES_AT_START and not underdog and level < 5:
         violations.append(
