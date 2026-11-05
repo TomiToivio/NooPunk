@@ -460,3 +460,74 @@ author_status: draft
 **This file fulfills issue #1164's requested draft proposal only.** It should be linked from the design index and the issue without altering Tomi's original graphs README. Tomi edits/approves the proposal. **Only after explicit new instruction** should the author-edited version be implemented in tabletop NoöPunk rules **and** engine-neutral Python, tests and MUD adapters together. No source rulebooks are copied; all actual CWN/SWN timing and cost contracts must be source-verified in that future implementation.
 
 **Guiding principle:** graph topology organizes the story and the observable layers of a living Helsinki. It does not change the dice: **one CWN core, existing goal/investigation rules, and small gated Social/Astral mods when campaign scenes demand them.**
+
+---
+
+## 13. Reviewer addendum — starting-state profile and the verified skill inventory
+
+Added when this proposal was reconciled with an earlier parallel draft. Two requirements of
+[#1164](https://github.com/TomiToivio/NooPunk/issues/1164) are answered here because the body above leaves them
+open.
+
+### 13.1 Versioned starting state (the documented conflict, not silently resolved)
+
+The author's [`design/graphs/README.md`](../../design/graphs/README.md) says the campaign starts at **the player's
+home in Sörnäinen**, with **Europol HQ on Ratakatu**. Newer campaign canon
+([#1132](../campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md)) gives the rookie **company housing in Kurvi** and **Europol**
+employment. `data/world/helsinki_locations.json` v2 still carries `home_helsinginkatu` ("a modest UNSA-provided
+flat") and `unsa_hq_ratakatu`.
+
+Both are written as **profiles**, so the choice is data and no scene needs editing when the author decides:
+
+```yaml
+start_profile: campaign01@v2          # what the game loads
+profiles:
+  campaign01@v1:                      # the graph README's world, still playable
+    home: location.home_helsinginkatu     # Sörnäinen flat
+    employer: unsa
+    hq: location.unsa_hq_ratakatu
+  campaign01@v2:                      # campaign #1132 canon
+    home: location.kurvi.home             # agency-owned housing
+    employer: europol
+    hq: location.europol.helsinki         # ADDRESS: [OPEN] — Ratakatu is the author README's address
+    supersedes: campaign01@v1
+```
+
+**[OPEN] for the author:** is Europol Helsinki *at* Ratakatu (same building as the UNSA office, a floor, or next
+door)? The proposal does not answer it, and the node keeps `source_claim: "address unconfirmed"` until it is.
+
+Rule for whoever implements: a profile changes only **which records load**, never what a record means. A scene
+written for `@v1` must still run under `@v2` with no text edits — otherwise the profile is a fork, not a version.
+
+### 13.2 CWN skills — verified, not assumed
+
+The body says the exact skill list must be verified at implementation. It is verified now, from
+`data/rules/cwn/skills.json` (**19 skills**):
+
+> Administer · Connect · Drive · Exert · Fix · Heal · Know · Lead · Notice · Perform · Program · Punch · Shoot ·
+> Sneak · Stab · Survive · Talk · Trade · Work
+
+Consequences, stated plainly because three of the author's informal terms do not exist in the source:
+
+| informal term | published skill(s) | note |
+|---|---|---|
+| "Administration" | **Administer** | the name is `Administer`; do not invent a second skill |
+| "Convince" | **Talk**, **Lead**, **Connect** | *Talk* persuades a person, *Lead* directs a group, *Connect* finds who to ask. There is no general "Convince" |
+| "Investigation" as an ability | **Notice**, **Administer**, **Know**, **Work**, **Program**, **Connect** | investigation is a *procedure* in `src/rules/investigation.py`, not a skill |
+
+And the two specialities, with the arbitration rule the issue asks for:
+
+* **`Work (Europol Agent)`** — doing the job: procedure, custody, forms, field craft, interagency etiquette.
+* **`Know (Law & Intelligence)`** — knowing the ground: EU law and rights, criminal/intelligence theory, data
+  analysis, and the X-risk/AGI/NHI/PSI literature. (Alternatives: `Europol Studies`, `Security & X-Risk Studies`.)
+
+**Arbitration:** *"what does the law/institution/theory say?"* → **Know**; *"how do I do this here, now, without
+fouling it up?"* → **Work**. One mandatory fact may be granted through either — never two rolls for one clue.
+
+### 13.3 Two validator invariants to add to §12
+
+6. **No mandatory scene behind a single roll.** An inbound transition gated by one skill check is illegal if the
+   target scene is in the episode's `required_scenes`; it must have a second, competence-based path. A test in the
+   implementation phase must construct the illegal case and fail.
+7. **The GM-secret leak test.** A `gm_secret` node must be absent — not merely hidden — from every player
+   projection, action list, transition description and generated map. "Absent" is testable; "hidden" is a promise.
