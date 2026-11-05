@@ -8,6 +8,15 @@
 >
 > Setting history and the authority for this change: [Alternate history — the NoöPunk timeline](ALTERNATE_HISTORY_1114.md).
 
+## 0. What Europol operates (#1200)
+
+Europol has major operational responsibility for the EU's civilian cybernetic systems: **Project Plato / European
+Information Security System (EISS)** — the continental firewall and the defence, investigative-surveillance and
+psychotronic infrastructure behind it. That is institutional capability, not personal authority: every intrusive
+action sits on the authorisation ladder in [EU networks and Plato](EU_NETWORKS_AND_PLATO_1200.md) §4, and a field
+officer still needs a supervisor, a judge or a national authority depending on the rung. Europol coordinates,
+requests and supports; Finnish police arrest and search.
+
 ## 1. Why Europol
 
 NoöPunk's Europe is a fortified, integrationist EU that survived the Singularity and the first

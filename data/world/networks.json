@@ -1,0 +1,66 @@
+{
+  "format": "noopunk.networks",
+  "version": 1,
+  "issue": 1200,
+  "note": "Four classes of connectivity after the collapse of the old Internet. A network's class decides what a scene may attempt before CWN Hacking is even relevant: a closed network needs a body, a badge or a medium in the room.",
+  "perimeter": {
+    "name": "the Plato/EISS perimeter",
+    "informal_name": "the Great Firewall",
+    "subsystem_codename": null,
+    "subsystem_codename_note": "AEGIS was floated as the firewall subsystem designation; it is NOT canon until the author confirms it.",
+    "operated_by": "Europol, on behalf of the EU institutions that own, fund and audit it"
+  },
+  "networks": [
+    {
+      "id": "old_internet",
+      "name": "the old Internet",
+      "kind": "public_hostile",
+      "owner": "nobody",
+      "remotely_reachable": true,
+      "requires_physical_access": false,
+      "requires_credential": false,
+      "risk": "high",
+      "description": "Fragmented, semi-abandoned digital wilderness: autonomous agents, rogue processes, compromised infrastructure, dead services that still answer. Connecting is a risk, not a resource."
+    },
+    {
+      "id": "closed_organisation",
+      "name": "closed organisational networks",
+      "kind": "private",
+      "owner": "the organisation",
+      "remotely_reachable": false,
+      "requires_physical_access": true,
+      "requires_credential": true,
+      "risk": "moderate",
+      "description": "Agencies, corporations, laboratories and hospitals run isolated private networks, often air-gapped. A terminal, a badge, an implant or a removable medium has to be in the room before any intrusion is attempted."
+    },
+    {
+      "id": "euronet",
+      "name": "EuroNET",
+      "kind": "public_managed",
+      "owner": "the European Union",
+      "remotely_reachable": true,
+      "requires_physical_access": false,
+      "requires_credential": true,
+      "risk": "low",
+      "description": "The EU-maintained public network behind the perimeter: email, forums, blogs, OSINT. Deliberately constrained, slow and conservative — a security trade-off, not backwardness. No unconstrained autonomous agents."
+    },
+    {
+      "id": "courier",
+      "name": "data couriers",
+      "kind": "physical",
+      "owner": "whoever holds the media or the person",
+      "remotely_reachable": false,
+      "requires_physical_access": true,
+      "requires_credential": false,
+      "risk": "low",
+      "description": "Physical transport of storage media and of data held in people. Interception, handoff and authenticity are investigation beats, not hack attempts."
+    }
+  ],
+  "authorisation_rungs": [
+    {"rung": 0, "action": "routine OSINT", "authority": "case", "signer": "investigator"},
+    {"rung": 1, "action": "authorised database search", "authority": "case_authorisation", "signer": "supervisor"},
+    {"rung": 2, "action": "intrusive surveillance", "authority": "warrant", "signer": "judge_or_review_authority"},
+    {"rung": 3, "action": "offensive hacking", "authority": "warrant_and_technical_authorisation", "signer": "judge_and_europol_operations"},
+    {"rung": 4, "action": "emergency containment", "authority": "pre_authorised_protocol_or_senior_officer", "signer": "duty_officer_or_senior_officer"}
+  ]
+}

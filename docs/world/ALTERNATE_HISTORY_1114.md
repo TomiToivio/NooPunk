@@ -251,3 +251,20 @@ Never answered in text, by design:
 4. Which ПРОГРАММА facility (if any) becomes physically reachable in a scenario.
 5. The Europol Helsinki Field Office's legal powers, ranks and budget (open from the earlier
    revision).
+
+## Technology and networks after the Crisis (#1200)
+
+Europe survived partly because regulation kept it out of the AGI race that ended catastrophically elsewhere. The
+resulting technology is deliberately old-fashioned at the institutional layer — Lisp, Prolog, hand-written GOFAI,
+rule engines, expert systems — and genuinely advanced where Europe leads: quantum computing, quantum-consciousness
+research, psionics, psychotronics, biopunk. **Mistral** is the only company permitted to approach AGI inside the EU,
+under strict limits. European AGI is not superior to what the United States built; it is smaller and supervised.
+
+Connectivity is **post-Internet**, not a seamless grid: a hostile, semi-abandoned old Internet; closed organisational
+networks that need a body, a badge or a medium in the room; **EuroNET**, the EU's constrained public network behind
+the perimeter; and **data couriers**, who carry what the network cannot be trusted with.
+
+The system behind that perimeter is **Project Plato / European Information Security System (EISS)**, operated by
+Europol: not an ASI, heavily regulated, human-operated, and genuinely necessary. Its powers, the authorisation ladder
+and the naming rules (including why *Panopticon* is not its name) are in
+[EU networks and Plato](EU_NETWORKS_AND_PLATO_1200.md).
