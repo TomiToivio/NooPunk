@@ -20,13 +20,14 @@ import hashlib
 import json
 import subprocess
 import sys
+import json
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
-from cwn_parity_audit import MATRIX, REPORT, build, render_report  # noqa: E402
+from cwn_parity_audit import MATRIX, REPORT, build, render_report, stable_view  # noqa: E402
 
 CURATED = ROOT / "data" / "rules" / "cwn_traceability.json"
 BASELINE = ROOT / "data" / "rules" / "cwn_baseline_sha256.json"
@@ -39,11 +40,29 @@ def fresh_matrix() -> dict:
 
 class FreshnessTests(unittest.TestCase):
     def test_the_committed_matrix_matches_the_tool(self) -> None:
-        produced = json.dumps(fresh_matrix(), indent=2, ensure_ascii=False) + "\n"
+        """Compare the rule-bearing content, not the names of the test files that happened to exist.
+
+        The matrix records test filenames as evidence; including them in the equality made the lock depend on other
+        branches (a PR that changed no CWN rule went red because main gained a test file). `stable_view` reduces each
+        row's test list to its count, so a *new* test cannot fail a rule-unchanged branch, while a deleted or
+        re-pointed module still does.
+        """
         self.assertTrue(MATRIX.is_file(), "run python3 tools/cwn_parity_audit.py")
+        committed = json.loads(MATRIX.read_text(encoding="utf-8"))
         self.assertEqual(
-            MATRIX.read_text(encoding="utf-8"), produced,
+            stable_view(committed), stable_view(fresh_matrix()),
             "data/rules/cwn_compliance_matrix.json is stale; run python3 tools/cwn_parity_audit.py")
+
+    def test_every_named_test_file_exists(self) -> None:
+        """A row may cite tests, but every citation must be a real file in this tree."""
+        committed = json.loads(MATRIX.read_text(encoding="utf-8"))
+        missing = [
+            (row["system"], test)
+            for row in committed.get("rows", ())
+            for test in row.get("tests", ())
+            if not (ROOT / test).is_file()
+        ]
+        self.assertEqual(missing, [], "the matrix cites test files that no longer exist")
 
     def test_the_coverage_report_matches_the_tool(self) -> None:
         self.assertTrue(REPORT.is_file(), "run python3 tools/cwn_parity_audit.py")

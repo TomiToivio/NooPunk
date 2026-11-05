@@ -21,27 +21,27 @@ Of the 21 sections with curated evidence, **14** are verified `implemented`: eve
 
 | Section | Status | Python | Named procedures | Test | Rulebook |
 | --- | --- | --- | --- | --- | --- |
-| Skills | implemented | cwn_character.py, cwn_advancement.py | SkillPool, skill_points_for_level, skill_point_cost, skill_rank_allowed | test_cwn_character.py, test_cwn_advancement.py | 14_CHARACTER_GENERATION.md |
-| Final Steps | partial | cwn_character.py, cwn_advancement.py, cwn_backgrounds.py | roll_attributes, effective_modifier, hit_points_rolled, attack_bonus | test_cwn_character.py, test_cwn_advancement.py | 14_CHARACTER_GENERATION.md |
-| Attacks In Combat | implemented | cwn_core.py, cwn_combat.py, cwn_attack_modifiers.py | resolve_attack, attack_roll, attack_modifier, attack_modifier_for | test_cwn_core.py, test_cwn_combat.py | 3_PHYSICAL.md |
+| Skills | implemented | cwn_character.py, cwn_advancement.py | SkillPool, skill_points_for_level, skill_point_cost, skill_rank_allowed | 2 | 14_CHARACTER_GENERATION.md |
+| Final Steps | partial | cwn_character.py, cwn_advancement.py, cwn_backgrounds.py | roll_attributes, effective_modifier, hit_points_rolled, attack_bonus | 3 | 14_CHARACTER_GENERATION.md |
+| Attacks In Combat | implemented | cwn_core.py, cwn_combat.py, cwn_attack_modifiers.py | resolve_attack, attack_roll, attack_modifier, attack_modifier_for | 3 | 3_PHYSICAL.md |
 | Special Combat Maneuvers | missing | — | — | — | 3_PHYSICAL.md |
-| Mortal Injury Stabilization | implemented | cwn_healing.py, cwn_core.py | stabilize_difficulty, stabilized, first_aid, resolve_downed | test_cwn_healing.py, test_cwn_core.py | 3_PHYSICAL.md |
-| Major Injuries | implemented | cwn_major_injury.py | resolve_major_injury, injury_for_roll, clamp_injury_roll, requires_prosthetic | test_cwn_major_injury.py | 3_PHYSICAL.md |
-| Chases And Pursuit | implemented | cwn_vehicles.py | resolve_chase, chase_modifier_table, foot_chase_modifier, vehicle_chase_modifier | test_cwn_vehicles.py | 3_PHYSICAL.md |
-| Firearms | implemented | cwn_equipment.py | weapons, weapon, find_weapon, parse_damage | test_cwn_equipment.py | WITHOUT_NUMBER_BASELINE.md |
-| Armor Accessories | partial | cwn_equipment.py, cwn_gear_mods.py | armor, armor_piece, armor_mod, apply_armor_mods | test_cwn_equipment.py, test_cwn_gear_mods.py | WITHOUT_NUMBER_BASELINE.md |
-| Installing Cyberware | implemented | cwn_cyberware.py, cwn_core.py | surgery_check_modifier, surgery_difficulty, installation_cost, installation_attempt_penalty | test_cwn_cyberware.py, test_cwn_core.py | 5_CYBERNETIC.md |
-| Removing Cyberware | implemented | cwn_cyberware.py | removal_terms, resolve_removal, resolve_brutal_removal, resolve_salvage | test_cwn_cyberware.py | 5_CYBERNETIC.md |
-| Concealing Detecting Cyberware | implemented | cwn_cyberware.py | concealment_rank, detectable, profile_adjusted | test_cwn_cyberware.py | 5_CYBERNETIC.md |
-| Skillplugs | implemented | cwn_cyberware.py | skillplug_cost, skillplug_jack_allows, auto_failure_faces, is_auto_failure | test_cwn_cyberware.py | 5_CYBERNETIC.md |
-| Cyberdoc Tools | partial | cwn_cyberware.py | surgery_check_modifier, surgery_difficulty | test_cwn_cyberware.py | 5_CYBERNETIC.md |
-| Lifestyle Costs | implemented | cwn_lifestyles.py, cwn_core.py | living_cost, LIFESTYLE_COSTS, strain_modifier, strain_maximum | test_cwn_lifestyles.py, test_cwn_core.py | WITHOUT_NUMBER_BASELINE.md |
-| Common Wages | implemented | cwn_lifestyles.py | wage, COMMON_WAGES | test_cwn_lifestyles.py | WITHOUT_NUMBER_BASELINE.md |
-| Bribe Costs | implemented | cwn_lifestyles.py | bribe_cost, bribe_needs_more_than_cash, BRIBE_MULTIPLES | test_cwn_lifestyles.py | WITHOUT_NUMBER_BASELINE.md |
-| Programs | implemented | cwn_program_catalogue.py | validate_program, run_program, program_cost, subject_cost | test_cwn_program_catalogue.py | 22_CYBERSPACE_AFTER_THE_CRISIS.md |
-| Cyberdecks | partial | cwn_hacking.py, cwn_gear_mods.py | access_pool, deck_mod, apply_deck_mods | test_cwn_hacking.py, test_cwn_gear_mods.py | 22_CYBERSPACE_AFTER_THE_CRISIS.md |
-| Node Links | partial | cwn_hacking.py | security_difficulty, AlertClock | test_cwn_hacking.py | 22_CYBERSPACE_AFTER_THE_CRISIS.md |
-| Antagonists | partial | cwn_npcs.py | reaction_roll, morale_check, reaction_band | test_cwn_npcs_heat.py | WITHOUT_NUMBER_BASELINE.md |
+| Mortal Injury Stabilization | implemented | cwn_healing.py, cwn_core.py | stabilize_difficulty, stabilized, first_aid, resolve_downed | 2 | 3_PHYSICAL.md |
+| Major Injuries | implemented | cwn_major_injury.py | resolve_major_injury, injury_for_roll, clamp_injury_roll, requires_prosthetic | 1 | 3_PHYSICAL.md |
+| Chases And Pursuit | implemented | cwn_vehicles.py | resolve_chase, chase_modifier_table, foot_chase_modifier, vehicle_chase_modifier | 1 | 3_PHYSICAL.md |
+| Firearms | implemented | cwn_equipment.py | weapons, weapon, find_weapon, parse_damage | 1 | WITHOUT_NUMBER_BASELINE.md |
+| Armor Accessories | partial | cwn_equipment.py, cwn_gear_mods.py | armor, armor_piece, armor_mod, apply_armor_mods | 2 | WITHOUT_NUMBER_BASELINE.md |
+| Installing Cyberware | implemented | cwn_cyberware.py, cwn_core.py | surgery_check_modifier, surgery_difficulty, installation_cost, installation_attempt_penalty | 2 | 5_CYBERNETIC.md |
+| Removing Cyberware | implemented | cwn_cyberware.py | removal_terms, resolve_removal, resolve_brutal_removal, resolve_salvage | 1 | 5_CYBERNETIC.md |
+| Concealing Detecting Cyberware | implemented | cwn_cyberware.py | concealment_rank, detectable, profile_adjusted | 1 | 5_CYBERNETIC.md |
+| Skillplugs | implemented | cwn_cyberware.py | skillplug_cost, skillplug_jack_allows, auto_failure_faces, is_auto_failure | 1 | 5_CYBERNETIC.md |
+| Cyberdoc Tools | partial | cwn_cyberware.py | surgery_check_modifier, surgery_difficulty | 1 | 5_CYBERNETIC.md |
+| Lifestyle Costs | implemented | cwn_lifestyles.py, cwn_core.py | living_cost, LIFESTYLE_COSTS, strain_modifier, strain_maximum | 2 | WITHOUT_NUMBER_BASELINE.md |
+| Common Wages | implemented | cwn_lifestyles.py | wage, COMMON_WAGES | 1 | WITHOUT_NUMBER_BASELINE.md |
+| Bribe Costs | implemented | cwn_lifestyles.py | bribe_cost, bribe_needs_more_than_cash, BRIBE_MULTIPLES | 1 | WITHOUT_NUMBER_BASELINE.md |
+| Programs | implemented | cwn_program_catalogue.py | validate_program, run_program, program_cost, subject_cost | 1 | 22_CYBERSPACE_AFTER_THE_CRISIS.md |
+| Cyberdecks | partial | cwn_hacking.py, cwn_gear_mods.py | access_pool, deck_mod, apply_deck_mods | 2 | 22_CYBERSPACE_AFTER_THE_CRISIS.md |
+| Node Links | partial | cwn_hacking.py | security_difficulty, AlertClock | 1 | 22_CYBERSPACE_AFTER_THE_CRISIS.md |
+| Antagonists | partial | cwn_npcs.py | reaction_roll, morale_check, reaction_band | 1 | WITHOUT_NUMBER_BASELINE.md |
 
 ## Gaps, with the reason recorded next to each
 
