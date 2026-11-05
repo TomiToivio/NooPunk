@@ -2,11 +2,7 @@
 
 > **Consolidated reference (#1005):** [`POST_NHI_WORLD_1005.md`](POST_NHI_WORLD_1005.md) — this file remains the phase-by-phase history; that one carries the current author direction on geopolitics and factions.
 
-> **Setting revision #1114 (2026-11-03):** this source text's "UNSA becomes a de facto world
-> government" stage is **superseded**. The UN/UNSA project to consolidate sovereign authority
-> failed; UNSA remains a coordinating agency with pooled, revocable access. UNSA is also not the
-> default player employer — that is Europol. The source text below is preserved unedited; the
-> binding chronology is [`ALTERNATE_HISTORY_1114.md`](ALTERNATE_HISTORY_1114.md).
+> **Setting revision #1114 (2026-11-05):** this source text's sovereign UN/UNSA government is superseded; Europol is the starting employer. The playable chronology now includes **the Soviet collapse**, **Ukraine's EU membership**, a **brief EU–Russia war halted by UAP nuclear interception**, and Russia's failed-state aftermath. Contradictory Soviet survival accounts are **unresolved Mandela evidence**. This document remains historical source material; see [binding chronology](ALTERNATE_HISTORY_1114.md).
 
 <!--
 PROVENANCE: transcribed from the author's own issue text, unedited in substance.
