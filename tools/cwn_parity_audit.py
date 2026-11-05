@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import argparse
 import ast
+import copy
 import json
 import re
 from pathlib import Path
@@ -488,7 +489,7 @@ def render(matrix: dict) -> str:
         "verified against the book: `tested_against_book`, `save_safe` and `playtested` are "
         "separate columns because they are separate claims.",
         "",
-        "| Section | Chapter | Status | Python / MUD | Test | PDF page |",
+        "| Section | Chapter | Status | Python / MUD | Tests (n) | PDF page |",
         "| --- | --- | --- | --- | --- | --- |",
     ]
     for r in rows:
@@ -553,7 +554,7 @@ def render_report(matrix: dict) -> str:
     for row in curated:
         modules = ", ".join(Path(m).name for m in row["python"]) or "—"
         procedures = ", ".join(row.get("procedures", [])[:4]) or "—"
-        tests = ", ".join(Path(t).name for t in row["tests"][:2]) or "—"
+        tests = str(len(row["tests"])) if row["tests"] else "—"
         rulebook = Path(row.get("rulebook", "")).name or "—"
         lines.append(f"| {row['system']} | {row['coverage']} | {modules} | {procedures} | {tests} | "
                      f"{rulebook} |")
@@ -605,6 +606,23 @@ def render_report(matrix: dict) -> str:
     return "\n".join(lines)
 
 
+def stable_view(matrix: dict) -> dict:
+    """The matrix as compared for freshness: test filenames reduced to a count.
+
+    Test files are evidence, not the rule. A branch's matrix names the tests that existed when it was generated, so
+    including the names in the equality test makes the lock depend on every other branch merged since — a PR that
+    touched no CWN rule then fails CI because main gained a test file (#1228). Counting them keeps the useful signal
+    ("this row has two named tests") without that coupling. The rule-bearing parts — sections, statuses, modules,
+    procedures and the SHA baseline — are still compared exactly.
+    """
+    clone = copy.deepcopy(matrix)
+    for row in clone.get("rows", ()):
+        # Dropped, not counted: a count still moves when another branch adds or deletes one test file, and the point
+        # is that the lock must not depend on the tree's test inventory at all.
+        row.pop("tests", None)
+    return clone
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true")
@@ -612,7 +630,8 @@ def main() -> int:
     matrix = build()
     text = json.dumps(matrix, indent=2, ensure_ascii=False) + "\n"
     if args.check:
-        stale = (not MATRIX.exists() or MATRIX.read_text(encoding="utf-8") != text
+        committed = json.loads(MATRIX.read_text(encoding="utf-8")) if MATRIX.exists() else None
+        stale = (committed is None or stable_view(committed) != stable_view(matrix)
                  or not REPORT.exists()
                  or REPORT.read_text(encoding="utf-8") != render_report(matrix))
         if stale:

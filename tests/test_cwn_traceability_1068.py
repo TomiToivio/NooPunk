@@ -20,13 +20,14 @@ import hashlib
 import json
 import subprocess
 import sys
+import json
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
-from cwn_parity_audit import MATRIX, REPORT, build, render_report  # noqa: E402
+from cwn_parity_audit import MATRIX, REPORT, build, render_report, stable_view  # noqa: E402
 
 CURATED = ROOT / "data" / "rules" / "cwn_traceability.json"
 BASELINE = ROOT / "data" / "rules" / "cwn_baseline_sha256.json"
@@ -39,11 +40,34 @@ def fresh_matrix() -> dict:
 
 class FreshnessTests(unittest.TestCase):
     def test_the_committed_matrix_matches_the_tool(self) -> None:
-        produced = json.dumps(fresh_matrix(), indent=2, ensure_ascii=False) + "\n"
+        """Compare the rule-bearing content, not the names of the test files that happened to exist.
+
+        The matrix records test filenames as evidence; including them in the equality made the lock depend on other
+        branches (a PR that changed no CWN rule went red because main gained a test file). `stable_view` reduces each
+        row's test list to its count, so a *new* test cannot fail a rule-unchanged branch, while a deleted or
+        re-pointed module still does.
+        """
         self.assertTrue(MATRIX.is_file(), "run python3 tools/cwn_parity_audit.py")
+        committed = json.loads(MATRIX.read_text(encoding="utf-8"))
         self.assertEqual(
-            MATRIX.read_text(encoding="utf-8"), produced,
+            stable_view(committed), stable_view(fresh_matrix()),
             "data/rules/cwn_compliance_matrix.json is stale; run python3 tools/cwn_parity_audit.py")
+
+    def test_every_implemented_row_has_a_test_in_the_current_tree(self) -> None:
+        """The evidence rule is enforced on a fresh build, not on the committed file.
+
+        The committed matrix names test files, and those names move whenever any branch adds or deletes one. Checking
+        the *committed* file against the tree therefore makes the lock fail for reasons that have nothing to do with
+        CWN (#1228, #1229). The invariant that matters — an `implemented` row must have a real test behind it — is
+        checked against the build of the current tree instead.
+        """
+        rows = fresh_matrix()["rows"]
+        orphans = [
+            row["system"] for row in rows
+            if row["coverage"] == "implemented"
+            and not any((ROOT / test).is_file() for test in row.get("tests", ()))
+        ]
+        self.assertEqual(orphans, [], "implemented rows without an existing test")
 
     def test_the_coverage_report_matches_the_tool(self) -> None:
         self.assertTrue(REPORT.is_file(), "run python3 tools/cwn_parity_audit.py")
