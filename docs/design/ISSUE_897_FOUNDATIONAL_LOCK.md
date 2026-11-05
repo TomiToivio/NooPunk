@@ -7,7 +7,7 @@
 | Domain | Governing rules | New NoöPunk addition | Constraint |
 | --- | --- | --- | --- |
 | Character, skills, saves, attacks, growth | CWN | Academy background and moral arcs | Preserve six attributes, CWN resolution/advancement |
-| Cyberware, hacking, equipment, combat | CWN | Graph interface, dialogue-driven combat scenes | Same rules, different UI |
+| Cyberware, hacking, equipment, combat | CWN | Graph interface, dialogue-driven action scenes | Same rules, different UI |
 | Psionics/space/factions | SWN Revised where CWN silent | Noösphere story, UNSA politics | Document source and conversion |
 | Otherworld/occult exploration | selective WWN | Noetic locations and encounters | Adapter, not alternate core |
 | Survival/crisis | optional AWN | NHI incident survival | Adapter, not alternate core |
