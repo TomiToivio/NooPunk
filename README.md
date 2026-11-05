@@ -48,7 +48,7 @@ In **1974**, **Tommy Pilgrim**, a left-wing science-fiction writer, took LSD at 
 
 He wrote it down as ***NoöPunk***. He could not establish whether he had seen the future, misunderstood a symbol, or looked into a neighboring timeline. Some of the future's machinery looked suspiciously like 1974. The uncertainty did not prevent the book from becoming a cult classic. Neither did it prevent later events from beginning to resemble it.
 
-**NoöPunk is an alternate history, not a prediction.** The divergences — including a Soviet Union that never collapsed — are deliberate worldbuilding, not errors to be corrected into real history. The full chronology and its rules are in [`docs/world/ALTERNATE_HISTORY_1114.md`](docs/world/ALTERNATE_HISTORY_1114.md).
+**NoöPunk is an alternate history, not a prediction.** The playable history includes the Soviet collapse, a later brief EU–Russia war, UAP nuclear interception and a failed post-Crisis Russia. Yet everyone experiences contradictory evidence of an unbroken, Cosmist Soviet Union. This **universal Soviet Mandela Effect** is an unresolved ontological mystery, not a second stable canon timeline. MJ-12 and КГБ «ПРОГРАММА» are major unsolved Europol/UNSA investigations. See [`docs/world/ALTERNATE_HISTORY_1114.md`](docs/world/ALTERNATE_HISTORY_1114.md).
 
 Films, television, tabletop and computer games followed, along with a NoöPunk subculture. **Pilgrim is still alive in Helsinki**, a literary celebrity studied by scholars and courted by parapsychologists. There are several explanations for what happened to him. None has disposed of the others.
 
