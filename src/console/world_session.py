@@ -145,6 +145,45 @@ class WorldSession:
     def complete_goal(self, goal_id: str) -> None:
         self.completed_goals.add(self._text(goal_id, "goal"))
 
+    # -- portable save for the graph/session adapter -----------------------------------------
+    def to_snapshot(self) -> dict[str, Any]:
+        """Persist the *same* world/session, not a second campaign state machine."""
+        return {
+            "session_format": "noopunk.world.session",
+            "version": 1,
+            "graphs": self.graphs.to_dict(),
+            "sheets": dict(self.sheets),
+            "flags": sorted(self.flags),
+            "completed_goals": sorted(self.completed_goals),
+            "scene_id": self.scene_id,
+        }
+
+    @classmethod
+    def from_snapshot(cls, payload: Mapping[str, Any]) -> "WorldSession":
+        """Restore graph positions and first-day flags, rejecting forked actor sheets."""
+        if payload.get("session_format") != "noopunk.world.session" or payload.get("version") != 1:
+            raise WorldSessionError("unsupported world-session snapshot format or version")
+        try:
+            instance = cls(graphs=WorldGraphs.from_dict(payload["graphs"]))
+            for actor, sheet in payload["sheets"].items():
+                instance.register(actor, sheet)
+            for field_name in ("flags", "completed_goals"):
+                values = payload[field_name]
+                if not isinstance(values, list) or any(
+                    not isinstance(value, str) or not value.strip() for value in values
+                ):
+                    raise WorldSessionError(f"invalid {field_name} in snapshot")
+                setattr(instance, field_name, set(values))
+            scene_id = payload["scene_id"]
+            if not isinstance(scene_id, str) or (
+                scene_id and scene_id not in instance.graphs.story.nodes
+            ):
+                raise WorldSessionError("unknown scene in world-session snapshot")
+            instance.scene_id = scene_id
+            return instance
+        except (KeyError, TypeError, ValueError, GraphError) as exc:
+            raise WorldSessionError(f"invalid world-session snapshot: {exc}") from exc
+
     # -- helpers -----------------------------------------------------------------------------
     @staticmethod
     def _text(value: str, label: str) -> str:
