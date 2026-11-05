@@ -3,10 +3,7 @@
 **Status of this document.** A consolidation of the worldbuilding discussion, for the 2045 setting and the
 Europol Helsinki campaign. It does not implement systems.
 
-> **Setting revision #1114 (2026-11-03):** the passages below that make UNSA a **de facto world
-> government**, or that describe a post-Putin Russia joining UNSA, are superseded. The USSR survives
-> and reforms; the UN/UNSA did not become a world government; Europol is the default employer.
-> The binding chronology is [`ALTERNATE_HISTORY_1114.md`](ALTERNATE_HISTORY_1114.md).
+> **Setting revision #1114 (2026-11-05):** the former surviving-USSR and Soviet-reform material in this document is **superseded** as objective history. The playable world includes the USSR's 1991 collapse, Ukraine's later EU membership, a short EU–Russia war stopped by UAP nuclear interception, Russia's subsequent failure and a fortified Finnish border. Contradictory memories of a surviving Soviet state are **Mandela-effect evidence**, not a competing canonical timeline. The UN/UNSA world government failed; Europol is the starting employer. See [the binding chronology](ALTERNATE_HISTORY_1114.md).
 
 **Priority of statements, and how to read them.** Three markers are used throughout, and they matter more than
 any prose:
@@ -45,14 +42,9 @@ discoveries — vindicated *in part*, and not as a wholesale endorsement of any 
 structures and significant hostility to UNSA. Sympathetic American individuals and factions exist and must not
 be erased.
 
-**The Soviet Union.** Important, **especially for Finland**. The USSR survives the Cold War, reforms under
-Gorbachev and modernises; it does not become a liberal democracy or a capitalist market economy. How the
-successful reform era later becomes the militarised, expansionist Soviet state of the Fortress Europe sequence
-is an **open causal gap** — do not fill it with Putin, a post-Soviet transition or an invented coup. Keep the
-Soviet state distinct from rogue intelligence, military and criminal actors inside its territory.
-[OPEN: the exact trajectory; see #1114's D75.]
+**Russia and the Soviet Mandela Effect.** **[CANON]** The USSR collapsed, and post-Soviet Russia ultimately became a fragmented failed state after a short EU–Russia war halted by UAP nuclear interception. Ukraine joined the EU before that war. The Finnish border is closed and fortified. **[IN-WORLD CLAIM / MANDELA]** Some citizens and archives instead describe an unbroken Soviet state, successful reform, Russian Cosmism and a punk Troika. Nobody, including those who recall the ordinary post-Soviet sequence, is immune to the contradiction. The fate of the rogue **КГБ «ПРОГРАММА»** and American **MJ-12** are unsolved Europol/UNSA investigations.
 
-**Finland and Helsinki.** Local politics are dominated by the EU/Europol relationship and by the Soviet Union —
+**Finland and Helsinki.** Local politics are dominated by the EU/Europol relationship and the closed, fortified border with failed-state Russia —
 not by China or India, however large those powers loom globally. Investigations mix intelligence work, PSI, NHI
 diplomacy, refugee questions, ordinary politics and bureaucracy.
 
@@ -234,7 +226,7 @@ non-sentient swarms, peaceful refugee ecologists arriving in thousands of sublig
 Zookeeper StO ideology and its large human following; the 1946 Nordic recovery mystery; Finland's EU/Russia
 focus.
 
-**Open:** democratic Russia's specific trajectory; who launched the Ghost Rockets; whether MJ-12 ever existed
+**Open:** Russia's fragmented post-Crisis power structure; the origins and operational status of ПРОГРАММА; who launched the Ghost Rockets; whether MJ-12 ever existed
 under that name and what became of secret programmes; the truth and timetable of any density transition; why
 the Sirians were displaced; the origin and governance of the wormholes; the fate of most of humanity; the exact
 mechanics of consciousness ownership, resleeving and collective mind.
