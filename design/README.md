@@ -65,3 +65,7 @@ example, a visible place to write your own version, and no YAML, JSON, field nam
 ## Issue #1164: Graph rules and scene authoring proposal (NOT author-approved)
 
 [Read the five-graph CWN-first design proposal](../docs/design/DRAFT_GRAPH_SCENES_1164.md). It maps Physical/Cyber/Astral/Social/Story graph schemas, a Series→Episode→Scene authoring format, GUMSHOE-lite investigation adapters, GoalLog reuse and bounded PSI Verb×Target permissions to current code and rules. This is an agent draft for Tomi to edit. No implementation is authorized; the original [graphs README](graphs/README.md) remains the author's unchanged source.
+
+## Issue #1168: Crisis narrative method and Nordic secret history (reviewable memo, NOT canon)
+
+[Read the design memo](../docs/design/MEMO_CRISIS_NARRATIVE_NORDIC_1168.md). It records the three authorial modes, *consistent consequences / flexible seriousness*, the CWN+AWN activation boundary, the 50/25/25 reaction heuristic, three competing 1946 contact models and the checked real-world Ghost Rocket/Hessdalen record. The memo is a proposal for Tomi to edit, approve or reject; it does not change the timeline, rulebook, world documents or code. `rulebook/7_TIMELINE.md`, `rulebook/20_FIRST_CONTACT_AND_PSI_AWAKENING.md`, `docs/world/` and the author's [ZONES](ZONES.md) remain authoritative.
