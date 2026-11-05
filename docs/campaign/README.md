@@ -15,3 +15,26 @@ Related but separate:
 - [`../design/`](../design/) — design decisions, issue records
 - [`../world/`](../world/) — world canon (institutions, timeline, locations)
 - [`../law_of_one/`](../law_of_one/README.md) — a **separate game**, not a NoöPunk chapter
+
+## #1217: Tony German's first-day mechanical scaffold (not approved fiction)
+
+The canonical `src.console.world_session.WorldSession` and the thin
+`src.console.first_day` adapter implement the explicitly requested sequence:
+nightmare / wake in Sörnäinen, graduation uniform, inspection and abstract
+connection of the eight issued items, Dispatch check-in, Adlerwerke commute,
+arrival at Ratakatu 12 and reporting to Romppainen. The player can complete
+it without dice or an LLM. Flags and graph occupancy round-trip through
+`WorldSession.to_snapshot()/from_snapshot()`; there is no second session or
+separate combat or hacking engine. `tests/test_first_day_1217.py` checks it.
+
+**Not authored or approved yet:** Tony's choose-your-lifepath memory tree,
+CWN Edge/Focus assignments, the nightmare's prose, dialogue beyond the quoted
+Dispatch line, the first investigation, and any detailed city route. Tomi
+owns those in #1216/#1218. This adapter is not the full campaign scenario,
+does not change CWN rules, does not instantiate an AWN Mutant or Mentalist,
+and should not be presented as a finished Evennia/GUI integration.
+
+The existing campaign outline above still contains older provisional
+character details; for the opening, the latest **Tony German / Europol**
+brief in #1218 takes precedence. Do not rewrite Tomi's prose to match an
+agent-generated placeholder.
