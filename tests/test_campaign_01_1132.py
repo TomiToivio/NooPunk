@@ -48,8 +48,11 @@ def test_every_relative_link_in_the_outline_resolves():
 
 
 def test_there_is_exactly_one_campaign_outline():
-    outlines = [p for p in (ROOT / "docs/campaign").glob("*.md") if p.name != "README.md"]
+    """One *outline*. Companion worksheets (the dream writing sheet, #1152) are not competing outlines."""
+    companions = {"README.md", "DREAMS.md"}
+    outlines = [p for p in (ROOT / "docs/campaign").glob("*.md") if p.name not in companions]
     assert len(outlines) == 1, f"more than one campaign outline: {[p.name for p in outlines]}"
+    assert outlines[0].name == "CAMPAIGN_01_EUROPOL_ROOKIE.md"
     assert "CAMPAIGN_01_EUROPOL_ROOKIE.md" in INDEX.read_text(encoding="utf-8")
 
 

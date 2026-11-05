@@ -6,6 +6,7 @@ one or supersede it.
 | Campaign | Document | Status |
 |---|---|---|
 | **01 — The Rookie, the Awakening and the Wanderer** | [`CAMPAIGN_01_EUROPOL_ROOKIE.md`](CAMPAIGN_01_EUROPOL_ROOKIE.md) | **DRAFT** — Act III is a proposal pending the author (#1132) |
+| **Dreams — the writing worksheet** | [`DREAMS.md`](DREAMS.md) | **TEMPLATE** — the single canonical home for dream scenes (#1152); Phase 2 belongs to the author |
 
 Related but separate:
 
