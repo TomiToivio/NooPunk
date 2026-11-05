@@ -125,3 +125,25 @@ behaviour that made it worth writing.
 | CWN fidelity audit (#1081) | Historical unchecked chapters 1–5 task versus #1095 | **#1095 merged** eight sourced executable assertions in `tests/test_cwn_ch1_5_fidelity_1080.py`. | Treat those eight as missing again, or pretend they verify every remaining CWN chapter requirement. |
 
 **Operational rule for issue owners:** after every merged PR, update the parent/child issue's completed increments and remaining exact scope *before* another agent takes its unchecked boxes. Search open, merged **and closed-unmerged** PRs, inspect merged paths and code; distinguish whole-issue closure from a partial increment. #1081 is the cross-cutting evidence/integration gate; #1083 owns AWN, #1084 adapters/Tarot, #1085 WWN spells and commands, #1086 author decisions. Their overlap is intentional only when the integration gate **links** the owner, not when it starts a second implementation.
+
+## 2026-11-05: two live implementations of the four graph families (#1178)
+
+Both are merged and both have tests, so this is the "two engines" case rather than a stale copy:
+
+| module | what it is | who uses it |
+|---|---|---|
+| `src/world/graphs.py` (803 lines) | `LocationNode`/`PhysicalRoute`/`PhysicalGraph`, `DeviceNode`/`CyberGraph`, `SocialNode`/`SocialGraph`, `StoryNode`/`StoryGraph`, `WorldGraphs` bundle, `to_networkx()` | `tests/test_world_graphs_1178.py`; `src/world/helsinki.py` adapts the canonical location data into it |
+| `src/rules/four_graphs.py` (408 lines) | its own `Place`/`Route`/`SpatialGraph`/`SocialEntity`/`Relationship`/`StoryNode`/`StoryEdge`/`FourGraphs`, `networkx_view()` | `tools/graph_authoring.py` (the YAML front door) and `tests/test_four_graphs_1178.py`, `tests/test_graph_authoring_1178.py` |
+
+Neither imports the other, the class names differ for the same concepts, and the two validation rules have already
+diverged in detail (the world module models cyber as a separate graph from physical; the rules module folds both
+into one `SpatialGraph`).
+
+**Recommendation, not yet executed:** keep `src/world/graphs.py` as the runtime model and turn
+`src/rules/four_graphs.py` into the authoring/loading layer for it — the YAML front door needs a *parser*, not a
+second model. That is a behavioural merge, so it needs its own PR that ports
+`tools/graph_authoring.py` and the two authoring test modules onto the world classes and deletes the duplicate
+classes; it should not be done silently inside an unrelated change.
+
+**Do not:** add a third model, or copy validation rules between the two. Until the merge lands, new work should
+target `src/world/graphs.py` and treat `four_graphs` as the authoring adapter that is pending replacement.
