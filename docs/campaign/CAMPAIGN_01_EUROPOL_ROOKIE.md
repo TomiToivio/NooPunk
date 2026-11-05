@@ -303,6 +303,9 @@ person who will say it out loud.
 | Act IV | She is a Wanderer; she volunteered | **What she volunteered for** |
 | Ending | The service itself | — |
 
+**Where dream scenes are written:** [`DREAMS.md`](DREAMS.md). Dreams are the carriers described in §5.1, but they are
+written there, as scenes, and their provenance is never stated in play (#1152).
+
 ### 5.3 What never happens
 
 - A character states the twist before Act IV.
@@ -506,6 +509,7 @@ and evil.
 8. **Bionics timing:** Act II discovery or Act III choice?
 9. **UNSA's knowledge:** does UNSA know about Wanderers in 2045, and if so, since when?
 10. **The finale's location:** Helsinki, orbit, or somewhere with no jurisdiction at all?
+11. **Dreams:** how often, how long, and how much may they ever explain? See [`DREAMS.md`](DREAMS.md).
 
 **Rule for whoever answers these:** record the answer here, in this file, with a date and the author's name.
 Not in a commit message, not in a chat, not in a new document.
