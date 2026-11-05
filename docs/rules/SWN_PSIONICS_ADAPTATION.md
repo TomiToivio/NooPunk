@@ -25,6 +25,7 @@ NoöPunk uses Cities Without Number as its default chassis, supplemented by the 
 | Full/partial psychic advancement and learned technique prerequisites | `src/rules/swn_progression.py` | Added |
 | Python regression tests for progression | `tests/test_swn_progression.py` | Added |
 | Complete SWN technique catalogue and effect resolution | Not implemented | Requires licensed-source-derived mechanical specification and original wording |
+| Astral projection and PSI Verb × Target add-on | `src/rules/astral.py`; `docs/rules/ASTRAL_PSI_1164.md`; `tests/test_astral_1164.py` | Added (#1164); **proposal**, not tabletop-approved |
 | Torching, System Strain, training costs and character creation | Not implemented | Follow-up |
 | Godot progression parity, UI and end-to-end scenario wiring | Not implemented | Follow-up |
 
