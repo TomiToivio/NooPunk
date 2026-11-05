@@ -191,8 +191,95 @@ def run_command(session: CaseSession, line: str, *, save_path: str = "") -> tupl
     return True, f"unknown command {verb!r}; try help"
 
 
+def run_first_day_command(session, line: str, *, save_path: str = "") -> tuple[bool, str]:
+    """An alternate *mode* of the existing console, not a second game loop.
+
+    The WorldSession remains authoritative for graph position, state and actor ID.
+    """
+    import json
+    from .first_day import first_day_action, available_first_day_actions, FirstDayError
+
+    command = line.strip().lower()
+    if not command or command.startswith("#"):
+        return True, ""
+    if command in ("quit", "exit"):
+        return False, "bye"
+    if command in ("actions", "help"):
+        return True, "Available: " + ", ".join(available_first_day_actions(session)) + (
+            ", save [path], status, quit"
+        )
+    if command == "status":
+        return True, (f"{session.scene_id} | {session.where('tony.german')} | "
+                      f"equipment steps {sum(flag.startswith('first_day:inspect:') for flag in session.flags)}")
+    if command == "save" or command.startswith("save "):
+        target = command.split(" ", 1)[1].strip() if " " in command else (
+            save_path or "noopunk-first-day-save.json"
+        )
+        Path(target).write_text(
+            json.dumps(session.to_snapshot(), ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+        return True, f"saved {target}"
+    if command.startswith("load"):
+        return True, "load at startup: --first-day --load <path>"
+    try:
+        return True, first_day_action(session, command)
+    except (FirstDayError, SessionError) as exc:
+        return True, f"refused: {exc}"
+
+
+def run_first_day(args: argparse.Namespace) -> int:
+    """Use the canonical console's same scripted/interactive command loop."""
+    import json
+    from .first_day import create_first_day, available_first_day_actions
+    from .world_session import WorldSession, WorldSessionError
+
+    try:
+        session = (WorldSession.from_snapshot(
+            json.loads(Path(args.load).read_text(encoding="utf-8"))
+        ) if args.load else create_first_day())
+    except (OSError, ValueError, WorldSessionError) as exc:
+        print(f"cannot start first day: {exc}", file=sys.stderr)
+        return 2
+
+    print("NoöPunk · Tony German · first day (mechanical preview; prose pending Tomi)")
+    print("Available: " + ", ".join(available_first_day_actions(session)))
+    if args.script:
+        try:
+            commands = Path(args.script).read_text(encoding="utf-8").splitlines()
+        except OSError as exc:
+            print(f"cannot open script: {exc}", file=sys.stderr)
+            return 2
+        for command in commands:
+            keep_going, output = run_first_day_command(session, command, save_path=args.save)
+            if output:
+                print(output)
+            if not keep_going:
+                break
+        if args.save:
+            import json
+            Path(args.save).write_text(
+                json.dumps(session.to_snapshot(), ensure_ascii=False, indent=2),
+                encoding="utf-8",
+            )
+        return 0
+    while True:
+        try:
+            command = input("> ")
+        except EOFError:
+            print()
+            break
+        keep_going, output = run_first_day_command(session, command, save_path=args.save)
+        if output:
+            print(output)
+        if not keep_going:
+            break
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Play a NoöPunk investigation case in a terminal")
+    parser.add_argument("--first-day", action="store_true",
+                        help="play Tony German's mechanical first-day preview")
     parser.add_argument("--case", default=DEFAULT_CASE, help="case graph JSON")
     parser.add_argument("--name", default="Etsivä Romppainen", help="investigator name")
     parser.add_argument("--skill", action="append", default=[],
@@ -203,6 +290,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--save", default="", help="path used by the plain `save` command")
     parser.add_argument("--script", default="", help="run commands from a file instead of stdin")
     args = parser.parse_args(argv)
+
+    if args.first_day:
+        return run_first_day(args)
 
     try:
         session = build_session(args)
