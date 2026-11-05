@@ -35,8 +35,9 @@ of spellcasting, summoning and psionics **remain distinct**; knowing Telepathy g
 
 **One: Psychic Training Focus as a back door.** A Focus advances a discipline. If it could be pointed at
 Biopsionics, the restriction in §1 would be decorative. `validate_selection()` therefore checks
-`focus_disciplines` against the same player list and refuses a Focus that would open a second
-discipline.
+`focus_disciplines` against the same player list. A full Psychic may select both allowed
+disciplines; a Partial Psychic (`partial_psychic=True`) must stay within their one chosen
+discipline. Neither can use the Focus to open a prohibited discipline.
 
 **Two: a device grant quietly becoming an option.** A psychotronic implant may do something remarkable.
 It may not make a prohibited discipline selectable at advancement. `Grant.selectable` is **always

@@ -192,3 +192,7 @@ campaign hooks; and any later mechanic must keep the tabletop rulebook and the P
 
 Related: #1005 (post-Crisis reference), #1007 (reveal ladder), #921 (Crisis history), #922 (NHI factions),
 #1105 (SWN tracker and escalation policy), #1101 (WWN tracker).
+
+### Plato/EISS: why the Firewall held [CANON, #1200]
+
+The Great Firewall is the **Plato/EISS perimeter**, part of the **European Information Security System** originally developed as **Project Plato**. Europe survived in part because regulated, human-supervised AI and painstaking bureaucracy avoided the US-style uncontrolled AGI race. Plato combines hand-coded Lisp/Prolog GOFAI, limited regulated AI, human operators, experimental quantum systems and psychotronic defences, not a European super-ASI. Mistral alone is permitted near-AGI development, under stringent oversight. Europe leads in quantum-consciousness, psionics, psychotronics, biopunk and solarpunk, not autonomous AGI. Its public **EuroNET**, isolated organizational networks and hazardous old Internet are separate connectivity layers. Civilian Europol operates core defence infrastructure under institutional scrutiny; mission creep and civil-liberties conflicts remain genuine. For the authoritative terminology, operational division and investigative implications, see [Plato/EISS and EuroNET](PLATO_EISS_EURONET_1200.md). “Panopticon” is only an unofficial critical nickname.

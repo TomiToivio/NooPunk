@@ -83,9 +83,30 @@ class ScriptedEffectTests(unittest.TestCase):
 
 
 class SelectionValidationTests(unittest.TestCase):
-    def test_a_second_discipline_is_a_violation(self):
-        problems = validate_selection(disciplines=("Telepathy", "Telekinesis"))
-        self.assertTrue(any("only Telepathy or Telekinesis" in p for p in problems))
+    def test_full_psychic_may_select_both_allowed_disciplines(self):
+        self.assertEqual(validate_selection(disciplines=("Telepathy", "Telekinesis")), [])
+
+    def test_partial_psychic_must_choose_one_discipline(self):
+        problems = validate_selection(
+            disciplines=("Telepathy", "Telekinesis"), partial_psychic=True
+        )
+        self.assertTrue(any("Partial Psychic" in p for p in problems))
+
+    def test_full_psychic_focus_may_advance_other_allowed_discipline(self):
+        self.assertEqual(
+            validate_selection(
+                disciplines=("Telepathy", "Telekinesis"),
+                focus_disciplines=("Telekinesis",),
+            ), []
+        )
+
+    def test_partial_psychic_focus_cannot_open_second_discipline(self):
+        problems = validate_selection(
+            disciplines=("Telepathy",),
+            focus_disciplines=("Telekinesis",),
+            partial_psychic=True,
+        )
+        self.assertTrue(any("Psychic Training Focus" in p for p in problems))
 
     def test_a_single_allowed_discipline_is_clean(self):
         self.assertEqual(validate_selection(disciplines=("Telepathy",), edges=("Mentalist",)), [])

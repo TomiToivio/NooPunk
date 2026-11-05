@@ -1,0 +1,83 @@
+{
+  "schema": "noopunk.terminology/1",
+  "source_issues": [
+    "https://github.com/TomiToivio/NooPunk/issues/1200",
+    "https://github.com/TomiToivio/NooPunk/issues/517"
+  ],
+  "note": "Which word is the in-world name, which is a nickname, and which is retired. A term marked OPEN is a decision the author has not made; do not resolve it in prose.",
+  "terms": [
+    {
+      "term": "Project Plato",
+      "status": "canon_project_name",
+      "meaning": "the original project name of the European information-security programme",
+      "governed_by": "docs/world/PLATO_EISS_EURONET_1200.md"
+    },
+    {
+      "term": "European Information Security System",
+      "abbreviation": "EISS",
+      "status": "canon_official_name",
+      "meaning": "the official institutional name of the deployed system",
+      "governed_by": "docs/world/PLATO_EISS_EURONET_1200.md"
+    },
+    {
+      "term": "Plato",
+      "status": "canon_operational_shorthand",
+      "meaning": "how the system is named in daily work and operations",
+      "governed_by": "docs/world/PLATO_EISS_EURONET_1200.md"
+    },
+    {
+      "term": "Panopticon",
+      "status": "unofficial_nickname",
+      "meaning": "critical nickname used by journalists, dissidents and privacy campaigners",
+      "must_not": "be used as the system's name in an official document",
+      "governed_by": "docs/world/PLATO_EISS_EURONET_1200.md"
+    },
+    {
+      "term": "AEGIS",
+      "status": "not_canon",
+      "meaning": "a possible designation for a perimeter subsystem; not established, and no document uses it",
+      "governed_by": "docs/world/PLATO_EISS_EURONET_1200.md"
+    },
+    {
+      "term": "Plato/EISS perimeter",
+      "status": "canon_perimeter_name",
+      "meaning": "the official name of the continental perimeter in operational documents",
+      "governed_by": "docs/world/PLATO_EISS_EURONET_1200.md"
+    },
+    {
+      "term": "Great Firewall",
+      "status": "legacy_and_journalistic",
+      "meaning": "a phrase from before the Crisis and from journalism; not an in-world name",
+      "must_not": "be used as the in-world name of the European perimeter, or confused with China's internet-control system",
+      "governed_by": "rulebook/22_CYBERSPACE_AFTER_THE_CRISIS.md"
+    },
+    {
+      "term": "Firewall",
+      "status": "retired",
+      "meaning": "an Eclipse Phase-derived term retired by RULEBOOK.md section 34; a comparison, not a name",
+      "must_not": "be reintroduced as an in-world institutional name",
+      "governed_by": "RULEBOOK.md"
+    },
+    {
+      "term": "Blackwall",
+      "status": "canon",
+      "meaning": "the containment regime separating the quarantined old Internet from human infrastructure: severed backbones, air gaps, one-way exchanges, hardened facilities, manual authorisation, offline verification",
+      "governed_by": "rulebook/22_CYBERSPACE_AFTER_THE_CRISIS.md"
+    },
+    {
+      "term": "Safenet",
+      "alias": "Slownet",
+      "status": "canon",
+      "meaning": "the UN-backed global public network built after the Crisis; satellite-backed, rationed, deliberately bad",
+      "governed_by": "rulebook/22_CYBERSPACE_AFTER_THE_CRISIS.md"
+    },
+    {
+      "term": "EuroNET",
+      "status": "canon",
+      "meaning": "the EU-maintained public replacement network behind the perimeter, as specified by issue #1200",
+      "relationship_to_safenet": "OPEN",
+      "open_question": "Is EuroNET the European service on Safenet (reading 1), or an EU-only network behind the perimeter with Safenet as the global link beyond it (reading 2)?",
+      "governed_by": "docs/world/PLATO_EISS_EURONET_1200.md"
+    }
+  ]
+}
