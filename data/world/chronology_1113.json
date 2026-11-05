@@ -1,354 +1,354 @@
 {
- "format": "noopunk.world.chronology",
- "version": 1,
- "issue": "https://github.com/TomiToivio/NooPunk/issues/1113",
- "$comment": "Ordered chronology for the restored Fortress Europe scenario (#1113). ORDER is authoritative; the 'when' column is a human-readable anchor and is deliberately coarse. rulebook/7_TIMELINE.md fixes the setting year at 2045 and declares the paradigm shifts 'unordered' with 'ordering and dating of the individual paradigm shifts' left open, so nothing here invents a year the author has not given. Historical dates are real-world dates and are not fiction. Anything the source marks disputed, rumoured or unresolved is carried as OPEN and must not be answered here.",
- "setting_year": 2045,
- "statuses": {
-  "canon": "Author-established direction. Do not contradict it.",
-  "in_world_claim": "Something a faction or character asserts. It may be true, partly true, or propaganda; the setting does not vouch for it.",
-  "open": "Deliberately undecided. Do not fill it in."
- },
- "events": [
-  {
-   "order": 1,
-   "id": "cryptoterrestrials_1930s",
-   "when": "1930s",
-   "title": "Intelligence services conclude the 'spy planes' are not human technology",
-   "summary": "Soviet, Finnish, Swedish, German and Italian services independently reach the same conclusion about craft beyond contemporary human capability. The agencies know that the other agencies know; public scientific institutions stay excluded.",
-   "status": "canon",
-   "regions": [
-    "Europe",
-    "Soviet Union"
-   ],
-   "source": "#1113 §7"
+  "format": "noopunk.world.chronology",
+  "version": 1,
+  "issue": "https://github.com/TomiToivio/NooPunk/issues/1113",
+  "$comment": "Ordered chronology for the restored Fortress Europe scenario (#1113). ORDER is authoritative; the 'when' column is a human-readable anchor and is deliberately coarse. rulebook/7_TIMELINE.md fixes the setting year at 2045 and declares the paradigm shifts 'unordered' with 'ordering and dating of the individual paradigm shifts' left open, so nothing here invents a year the author has not given. Historical dates are real-world dates and are not fiction. Anything the source marks disputed, rumoured or unresolved is carried as OPEN and must not be answered here.",
+  "setting_year": 2045,
+  "statuses": {
+    "canon": "Author-established direction. Do not contradict it.",
+    "in_world_claim": "Something a faction or character asserts. It may be true, partly true, or propaganda; the setting does not vouch for it.",
+    "open": "Deliberately undecided. Do not fill it in."
   },
-  {
-   "order": 2,
-   "id": "german_reverse_engineering",
-   "when": "1930s-1945",
-   "title": "Germany is first to reverse-engineer a crashed spacecraft",
-   "summary": "The recovered craft is piloted by a human, which points at temporal or cross-dimensional complications rather than a straightforward interstellar origin.",
-   "status": "canon",
-   "regions": [
-    "Germany"
-   ],
-   "source": "#1113 §7"
-  },
-  {
-   "order": 3,
-   "id": "ghost_rockets_1946",
-   "when": "1946",
-   "title": "Nordic Ghost Rocket crash retrievals",
-   "summary": "Sweden and Finland collaborate on the recovered material and on biologics and technology derived from it. This is the Nordic recovery mystery the later UNSA inherits.",
-   "status": "canon",
-   "regions": [
-    "Sweden",
-    "Finland"
-   ],
-   "source": "#1113 §1 and §7; rulebook/7_TIMELINE.md"
-  },
-  {
-   "order": 4,
-   "id": "soviet_of_saturn_1952",
-   "when": "1952",
-   "title": "Soviet contact with the Soviet of Saturn / Soviet of Nine",
-   "summary": "Soviet authorities make contact with beings describing themselves as representatives of a galactic communist collective. The best Russian political translation becomes 'Communist Collective of Planets', with connotations of communal or working-class consciousness.",
-   "status": "canon",
-   "regions": [
-    "Soviet Union"
-   ],
-   "source": "#1113 §7"
-  },
-  {
-   "order": 5,
-   "id": "soviet_of_saturn_identity",
-   "when": "undated",
-   "title": "Who the Soviet of Saturn actually were",
-   "summary": "Candidates: the Zookeepers, an Orion deception, a separate NHI civilisation, a human-future polity, or some mixture. The ambiguity is load-bearing for the Soviet 'Uranus' protocol and must not be collapsed.",
-   "status": "open",
-   "regions": [
-    "Soviet Union"
-   ],
-   "source": "#1113 §7"
-  },
-  {
-   "order": 6,
-   "id": "france_1990s",
-   "when": "1990s",
-   "title": "France resolves important UFO and PSI questions",
-   "summary": "Europe holds distributed expertise and material rather than one centralised covert empire. France is the clearest case of a question answered in the open.",
-   "status": "canon",
-   "regions": [
-    "France",
-    "Europe"
-   ],
-   "source": "#1113 §1"
-  },
-  {
-   "order": 7,
-   "id": "vatican_archives",
-   "when": "undated, before the Crisis",
-   "title": "The Vatican opens historical archives",
-   "summary": "Part of the distributed European material; it becomes decisive when the papacy takes a doctrinal position on the Noösphere.",
-   "status": "canon",
-   "regions": [
-    "Vatican",
-    "Europe"
-   ],
-   "source": "#1113 §1 and §3"
-  },
-  {
-   "order": 8,
-   "id": "hestdalen",
-   "when": "undated",
-   "title": "Norwegian study of the Hessdalen lights and plasmoids",
-   "summary": "A European research programme on recurrent luminous phenomena, treated as a physical and psychotronic problem rather than a folklore one.",
-   "status": "canon",
-   "regions": [
-    "Norway"
-   ],
-   "source": "#1113 §1"
-  },
-  {
-   "order": 9,
-   "id": "soviet_ukraine_invasion",
-   "when": "undated, before the Crisis",
-   "title": "A restored Soviet Union invades Ukraine",
-   "summary": "In this alternate history the Soviet Union persisted or was restored, and Europe is already on a war footing when the Crisis erupts.",
-   "status": "canon",
-   "regions": [
-    "Soviet Union",
-    "Ukraine",
-    "Europe"
-   ],
-   "source": "#1113 §2"
-  },
-  {
-   "order": 10,
-   "id": "barbarella_ii",
-   "when": "undated, immediately before or during the Crisis",
-   "title": "Operation Barbarella II",
-   "summary": "A federalising EU defeats the Soviet invasion in a rapid campaign. The European Peacekeeper Army's 2nd Mechanized Hussar Division 'Pippi Långstrump' meets the PLA 6th Armored Division near Omsk; Europe and China have cooperated to break Russian imperial domination into successor states and spheres of influence.",
-   "status": "canon",
-   "regions": [
-    "Europe",
-    "China",
-    "Soviet Union",
-    "Omsk"
-   ],
-   "source": "#1113 §2"
-  },
-  {
-   "order": 11,
-   "id": "marin_presidency",
-   "when": "undated, before and through the Crisis",
-   "title": "President Sanna Marin holds the federation together",
-   "summary": "A charismatic socialist, green, pro-welfare wartime leader: prevents civil unrest, reins in accelerationist cybercapitalists and autonomous AGI, safeguards European democracy, and keeps the federation intact amid catastrophe.",
-   "status": "canon",
-   "regions": [
-    "Europe"
-   ],
-   "source": "#1113 §2"
-  },
-  {
-   "order": 12,
-   "id": "queen_sanna_i",
-   "when": "undated, after the surrender",
-   "title": "The mythic title 'Queen Sanna I of Europe'",
-   "summary": "Half-serious, half-constitutional, half-propagandistic royal status acquired by a socialist federal president. The irony is part of the canon and must not be smoothed away.",
-   "status": "canon",
-   "regions": [
-    "Europe"
-   ],
-   "source": "#1113 §2"
-  },
-  {
-   "order": 13,
-   "id": "queen_sanna_constitutional_basis",
-   "when": "undated",
-   "title": "How a socialist president acquires a royal title",
-   "summary": "The mechanism is deliberately undecided: treaty, emergency mandate, military acclamation, or a piece of political theatre that hardened into fact.",
-   "status": "open",
-   "regions": [
-    "Europe"
-   ],
-   "source": "#1113 §2"
-  },
-  {
-   "order": 14,
-   "id": "trans_siberian_lease",
-   "when": "undated, after the surrender",
-   "title": "A thousand-year lease of the Trans-Siberian Railway",
-   "summary": "The Russian state leases the railway to an Anarchosyndicalist Co-operative of Railroad Workers: a distinctive political-economic institution and a natural adventure location.",
-   "status": "canon",
-   "regions": [
-    "Russia",
-    "Siberia"
-   ],
-   "source": "#1113 §2"
-  },
-  {
-   "order": 15,
-   "id": "ai_singularity",
-   "when": "undated, the Crisis",
-   "title": "The Singularity begins and turns partially malevolent",
-   "summary": "The EU, as an AI-decelerationist civilisation whose only frontier lab (Mistral) concentrates on narrow AI, human-in-the-loop technology and augmentation, survives it. Its Firewall and bureaucracy keep foreign corporate and rogue-ASI influence out.",
-   "status": "canon",
-   "regions": [
-    "Europe",
-    "global"
-   ],
-   "source": "#1113 §1; docs/world/NHI_CRISIS_921.md §4"
-  },
-  {
-   "order": 16,
-   "id": "us_legacy_trap",
-   "when": "undated",
-   "title": "The American legacy programme becomes the Trojan horse",
-   "summary": "The US clandestine reverse-engineering nexus (MJ-12 and defence-contractor analogues) becomes a vector for hybrid infiltration and bureaucratic paralysis. Europe avoided that trap without lacking expertise or material.",
-   "status": "canon",
-   "regions": [
-    "United States",
-    "Europe"
-   ],
-   "source": "#1113 §1"
-  },
-  {
-   "order": 17,
-   "id": "pope_teilhard",
-   "when": "undated, during the Crisis",
-   "title": "Pope Teilhard declares the Noösphere and the Omega Point central to doctrine",
-   "summary": "He opens the archives, backs Quantum Information Panpsychism, benevolent psychotronics and Empathy Boxes, and is the first world statesman to request diplomatic engagement with the Zookeepers, reading contact through Teilhard de Chardin's theology with cyberpunkified Law of One motifs.",
-   "status": "canon",
-   "regions": [
-    "Vatican",
-    "Europe"
-   ],
-   "source": "#1113 §3"
-  },
-  {
-   "order": 18,
-   "id": "jerusalem_manifestation",
-   "when": "undated, late in the Crisis",
-   "title": "The Jerusalem manifestation",
-   "summary": "A Zookeeper craft appears over Jerusalem, escorted by spherical drones, Merkabah, Seraphim and Ophanim. A radiant humanoid thought-form descends and is perceived differently by different witnesses.",
-   "status": "canon",
-   "regions": [
-    "Jerusalem",
-    "Middle East"
-   ],
-   "source": "#1113 §4"
-  },
-  {
-   "order": 19,
-   "id": "quarantine_lifted",
-   "when": "same moment",
-   "title": "The quarantine is declared over",
-   "summary": "The intended content: Earth's quarantine is over, the Veil is lifted, a fourth-density Harvest begins, and humanity's reckless X-risk technology endangered the galaxy. The Zookeepers have moved to destroy rogue ASI, disarm terrestrial nuclear arsenals, disable the most dangerous frontier labs and prohibit X-risk weapons.",
-   "status": "in_world_claim",
-   "regions": [
-    "global"
-   ],
-   "source": "#1113 §4"
-  },
-  {
-   "order": 20,
-   "id": "transmission_failure",
-   "when": "same moment",
-   "title": "The transmission fails or is corrupted",
-   "summary": "Competing factions read the thought-form in incompatible messianic and apocalyptic ways and escalate against each other, against NHI and against arbitrarily designated outsiders.",
-   "status": "canon",
-   "regions": [
-    "global"
-   ],
-   "source": "#1113 §4"
-  },
-  {
-   "order": 21,
-   "id": "transmission_corruption_cause",
-   "when": "undated",
-   "title": "Whether the corruption was interference",
-   "summary": "Possible Orion Group interference, or an honest failure of translation between minds. Not decided.",
-   "status": "open",
-   "regions": [
-    "global"
-   ],
-   "source": "#1113 §4"
-  },
-  {
-   "order": 22,
-   "id": "magick_returns",
-   "when": "after the Veil lifts",
-   "title": "Magick returns as the Veil lifts",
-   "summary": "Qabalistic Golems and Merkabah travel, Hermetic practice, trance and psychotronic ritual, Djinn-like entities, Yahweh/Nephilim/Anunnaki manifestations. Whether these are NHI, psychic archetypes, constructed thought-forms or authentic ancient powers stays ambiguous.",
-   "status": "canon",
-   "regions": [
-    "Middle East",
-    "global"
-   ],
-   "source": "#1113 §4"
-  },
-  {
-   "order": 23,
-   "id": "us_emp_strikes",
-   "when": "undated, near the Jerusalem event",
-   "title": "American EMP-nuclear strikes against its own rogue-ASI zones",
-   "summary": "Some US military actors EMP-nuke their own territory to contain an ASI growth centred on Silicon Valley, San Francisco and Mountain View. The Zookeepers do not intercept them because the strikes are aimed at the local X-risk itself.",
-   "status": "canon",
-   "regions": [
-    "United States"
-   ],
-   "source": "#1113 §4 and §5"
-  },
-  {
-   "order": 24,
-   "id": "birdsong_whalesong",
-   "when": "same window",
-   "title": "DPRK contingency 'Birdsong, Whalesong'",
-   "summary": "North Korean radars detect numerous UAPs and misidentify some as incoming SLBMs. Supreme Mother Kim Yo Jong orders the contingency: ICBMs and SLBMs toward the United States. By macabre coincidence they threaten the same rogue-ASI region the Zookeepers wish to contain, so they are not intercepted.",
-   "status": "canon",
-   "regions": [
-    "North Korea",
-    "United States"
-   ],
-   "source": "#1113 §5"
-  },
-  {
-   "order": 25,
-   "id": "soviet_coup",
-   "when": "same window",
-   "title": "Medvedev storms the residence and takes the nuclear football",
-   "summary": "Commanding loyal Spetsnaz from four commandeered Mi-8 helicopters, Medvedev executes Gerasimov and several Putin loyalists, personally kills Putin, declares a Soviet revolution, claims the presidency and receives the nuclear football from a zealous Strategic Rocket Forces officer.",
-   "status": "canon",
-   "regions": [
-    "Soviet Union"
-   ],
-   "source": "#1113 §6"
-  },
-  {
-   "order": 26,
-   "id": "plan_uranus",
-   "when": "undated, after the coup",
-   "title": "Plans Mars, Uranus and Saturn",
-   "summary": "Medvedev orders strategic plans under these names. 'Uranus' is an ominous secret protocol tied to the state's extraterrestrial knowledge and its prior contact with alien communists.",
-   "status": "open",
-   "regions": [
-    "Soviet Union"
-   ],
-   "source": "#1113 §6"
-  },
-  {
-   "order": 27,
-   "id": "fortress_europe_present",
-   "when": "2045",
-   "title": "Fortress Europe, and the world outside it",
-   "summary": "The EU survives as a fortified, functioning, ideologically unusual federation: socialist, regulated, human-centred, panpsychic, solarpunk and biopunk. Beyond its borders lie post-apocalyptic territories, corporate fiefdoms, rogue ASI zones, NHI-controlled enclaves and religious wars. A rookie UNSA agent begins inside the functioning order.",
-   "status": "canon",
-   "regions": [
-    "Europe"
-   ],
-   "source": "#1113 §4 and 'Authorial framing'; rulebook/7_TIMELINE.md (setting year 2045)"
-  }
- ]
+  "events": [
+    {
+      "order": 1,
+      "id": "cryptoterrestrials_1930s",
+      "when": "1930s",
+      "title": "Intelligence services conclude the 'spy planes' are not human technology",
+      "summary": "Soviet, Finnish, Swedish, German and Italian services independently reach the same conclusion about craft beyond contemporary human capability. The agencies know that the other agencies know; public scientific institutions stay excluded.",
+      "status": "canon",
+      "regions": [
+        "Europe",
+        "Soviet Union"
+      ],
+      "source": "#1113 §7"
+    },
+    {
+      "order": 2,
+      "id": "german_reverse_engineering",
+      "when": "1930s-1945",
+      "title": "Germany is first to reverse-engineer a crashed spacecraft",
+      "summary": "The recovered craft is piloted by a human, which points at temporal or cross-dimensional complications rather than a straightforward interstellar origin.",
+      "status": "canon",
+      "regions": [
+        "Germany"
+      ],
+      "source": "#1113 §7"
+    },
+    {
+      "order": 3,
+      "id": "ghost_rockets_1946",
+      "when": "1946",
+      "title": "Nordic Ghost Rocket crash retrievals",
+      "summary": "Sweden and Finland collaborate on the recovered material and on biologics and technology derived from it. This is the Nordic recovery mystery the later UNSA inherits.",
+      "status": "canon",
+      "regions": [
+        "Sweden",
+        "Finland"
+      ],
+      "source": "#1113 §1 and §7; rulebook/7_TIMELINE.md"
+    },
+    {
+      "order": 4,
+      "id": "soviet_of_saturn_1952",
+      "when": "1952",
+      "title": "Soviet contact with the Soviet of Saturn / Soviet of Nine",
+      "summary": "Soviet authorities make contact with beings describing themselves as representatives of a galactic communist collective. The best Russian political translation becomes 'Communist Collective of Planets', with connotations of communal or working-class consciousness.",
+      "status": "canon",
+      "regions": [
+        "Soviet Union"
+      ],
+      "source": "#1113 §7"
+    },
+    {
+      "order": 5,
+      "id": "soviet_of_saturn_identity",
+      "when": "undated",
+      "title": "Who the Soviet of Saturn actually were",
+      "summary": "Candidates: the Zookeepers, an Orion deception, a separate NHI civilisation, a human-future polity, or some mixture. The ambiguity is load-bearing for the Soviet 'Uranus' protocol and must not be collapsed.",
+      "status": "open",
+      "regions": [
+        "Soviet Union"
+      ],
+      "source": "#1113 §7"
+    },
+    {
+      "order": 6,
+      "id": "france_1990s",
+      "when": "1990s",
+      "title": "France resolves important UFO and PSI questions",
+      "summary": "Europe holds distributed expertise and material rather than one centralised covert empire. France is the clearest case of a question answered in the open.",
+      "status": "canon",
+      "regions": [
+        "France",
+        "Europe"
+      ],
+      "source": "#1113 §1"
+    },
+    {
+      "order": 7,
+      "id": "vatican_archives",
+      "when": "undated, before the Crisis",
+      "title": "The Vatican opens historical archives",
+      "summary": "Part of the distributed European material; it becomes decisive when the papacy takes a doctrinal position on the Noösphere.",
+      "status": "canon",
+      "regions": [
+        "Vatican",
+        "Europe"
+      ],
+      "source": "#1113 §1 and §3"
+    },
+    {
+      "order": 8,
+      "id": "hestdalen",
+      "when": "undated",
+      "title": "Norwegian study of the Hessdalen lights and plasmoids",
+      "summary": "A European research programme on recurrent luminous phenomena, treated as a physical and psychotronic problem rather than a folklore one.",
+      "status": "canon",
+      "regions": [
+        "Norway"
+      ],
+      "source": "#1113 §1"
+    },
+    {
+      "order": 9,
+      "id": "soviet_ukraine_invasion",
+      "when": "undated, before the Crisis",
+      "title": "Russia invades Ukraine",
+      "summary": "The USSR dissolved in 1991; post-Soviet Russia inherits its territory, institutions, security services and classified archives, then wages war on Ukraine. Europe is already on a war footing when the Crisis erupts. A remembered surviving Soviet Union is Mandela-effect material (#1114), not the actor.",
+      "status": "canon",
+      "regions": [
+        "Russia",
+        "Ukraine",
+        "Europe"
+      ],
+      "source": "#1113 §2"
+    },
+    {
+      "order": 10,
+      "id": "barbarella_ii",
+      "when": "undated, immediately before or during the Crisis",
+      "title": "Operation Barbarella II",
+      "summary": "A federalising EU defeats the Soviet invasion in a rapid campaign. The European Peacekeeper Army's 2nd Mechanized Hussar Division 'Pippi Långstrump' meets the PLA 6th Armored Division near Omsk; Europe and China have cooperated to break Russian imperial domination into successor states and spheres of influence.",
+      "status": "canon",
+      "regions": [
+        "Europe",
+        "China",
+        "Soviet Union",
+        "Omsk"
+      ],
+      "source": "#1113 §2"
+    },
+    {
+      "order": 11,
+      "id": "marin_presidency",
+      "when": "undated, before and through the Crisis",
+      "title": "President Sanna Marin holds the federation together",
+      "summary": "A charismatic socialist, green, pro-welfare wartime leader: prevents civil unrest, reins in accelerationist cybercapitalists and autonomous AGI, safeguards European democracy, and keeps the federation intact amid catastrophe.",
+      "status": "canon",
+      "regions": [
+        "Europe"
+      ],
+      "source": "#1113 §2"
+    },
+    {
+      "order": 12,
+      "id": "queen_sanna_i",
+      "when": "undated, after the surrender",
+      "title": "The mythic title 'Queen Sanna I of Europe'",
+      "summary": "Half-serious, half-constitutional, half-propagandistic royal status acquired by a socialist federal president. The irony is part of the canon and must not be smoothed away.",
+      "status": "canon",
+      "regions": [
+        "Europe"
+      ],
+      "source": "#1113 §2"
+    },
+    {
+      "order": 13,
+      "id": "queen_sanna_constitutional_basis",
+      "when": "undated",
+      "title": "How a socialist president acquires a royal title",
+      "summary": "The mechanism is deliberately undecided: treaty, emergency mandate, military acclamation, or a piece of political theatre that hardened into fact.",
+      "status": "open",
+      "regions": [
+        "Europe"
+      ],
+      "source": "#1113 §2"
+    },
+    {
+      "order": 14,
+      "id": "trans_siberian_lease",
+      "when": "undated, after the surrender",
+      "title": "A thousand-year lease of the Trans-Siberian Railway",
+      "summary": "The Russian state leases the railway to an Anarchosyndicalist Co-operative of Railroad Workers: a distinctive political-economic institution and a natural adventure location.",
+      "status": "canon",
+      "regions": [
+        "Russia",
+        "Siberia"
+      ],
+      "source": "#1113 §2"
+    },
+    {
+      "order": 15,
+      "id": "ai_singularity",
+      "when": "undated, the Crisis",
+      "title": "The Singularity begins and turns partially malevolent",
+      "summary": "The EU, as an AI-decelerationist civilisation whose only frontier lab (Mistral) concentrates on narrow AI, human-in-the-loop technology and augmentation, survives it. Its Firewall and bureaucracy keep foreign corporate and rogue-ASI influence out.",
+      "status": "canon",
+      "regions": [
+        "Europe",
+        "global"
+      ],
+      "source": "#1113 §1; docs/world/NHI_CRISIS_921.md §4"
+    },
+    {
+      "order": 16,
+      "id": "us_legacy_trap",
+      "when": "undated",
+      "title": "The American legacy programme becomes the Trojan horse",
+      "summary": "The US clandestine reverse-engineering nexus (MJ-12 and defence-contractor analogues) becomes a vector for hybrid infiltration and bureaucratic paralysis. Europe avoided that trap without lacking expertise or material.",
+      "status": "canon",
+      "regions": [
+        "United States",
+        "Europe"
+      ],
+      "source": "#1113 §1"
+    },
+    {
+      "order": 17,
+      "id": "pope_teilhard",
+      "when": "undated, during the Crisis",
+      "title": "Pope Teilhard declares the Noösphere and the Omega Point central to doctrine",
+      "summary": "He opens the archives, backs Quantum Information Panpsychism, benevolent psychotronics and Empathy Boxes, and is the first world statesman to request diplomatic engagement with the Zookeepers, reading contact through Teilhard de Chardin's theology with cyberpunkified Law of One motifs.",
+      "status": "canon",
+      "regions": [
+        "Vatican",
+        "Europe"
+      ],
+      "source": "#1113 §3"
+    },
+    {
+      "order": 18,
+      "id": "jerusalem_manifestation",
+      "when": "undated, late in the Crisis",
+      "title": "The Jerusalem manifestation",
+      "summary": "A Zookeeper craft appears over Jerusalem, escorted by spherical drones, Merkabah, Seraphim and Ophanim. A radiant humanoid thought-form descends and is perceived differently by different witnesses.",
+      "status": "canon",
+      "regions": [
+        "Jerusalem",
+        "Middle East"
+      ],
+      "source": "#1113 §4"
+    },
+    {
+      "order": 19,
+      "id": "quarantine_lifted",
+      "when": "same moment",
+      "title": "The quarantine is declared over",
+      "summary": "The intended content: Earth's quarantine is over, the Veil is lifted, a fourth-density Harvest begins, and humanity's reckless X-risk technology endangered the galaxy. The Zookeepers have moved to destroy rogue ASI, disarm terrestrial nuclear arsenals, disable the most dangerous frontier labs and prohibit X-risk weapons.",
+      "status": "in_world_claim",
+      "regions": [
+        "global"
+      ],
+      "source": "#1113 §4"
+    },
+    {
+      "order": 20,
+      "id": "transmission_failure",
+      "when": "same moment",
+      "title": "The transmission fails or is corrupted",
+      "summary": "Competing factions read the thought-form in incompatible messianic and apocalyptic ways and escalate against each other, against NHI and against arbitrarily designated outsiders.",
+      "status": "canon",
+      "regions": [
+        "global"
+      ],
+      "source": "#1113 §4"
+    },
+    {
+      "order": 21,
+      "id": "transmission_corruption_cause",
+      "when": "undated",
+      "title": "Whether the corruption was interference",
+      "summary": "Possible Orion Group interference, or an honest failure of translation between minds. Not decided.",
+      "status": "open",
+      "regions": [
+        "global"
+      ],
+      "source": "#1113 §4"
+    },
+    {
+      "order": 22,
+      "id": "magick_returns",
+      "when": "after the Veil lifts",
+      "title": "Magick returns as the Veil lifts",
+      "summary": "Qabalistic Golems and Merkabah travel, Hermetic practice, trance and psychotronic ritual, Djinn-like entities, Yahweh/Nephilim/Anunnaki manifestations. Whether these are NHI, psychic archetypes, constructed thought-forms or authentic ancient powers stays ambiguous.",
+      "status": "canon",
+      "regions": [
+        "Middle East",
+        "global"
+      ],
+      "source": "#1113 §4"
+    },
+    {
+      "order": 23,
+      "id": "us_emp_strikes",
+      "when": "undated, near the Jerusalem event",
+      "title": "American EMP-nuclear strikes against its own rogue-ASI zones",
+      "summary": "Some US military actors EMP-nuke their own territory to contain an ASI growth centred on Silicon Valley, San Francisco and Mountain View. The Zookeepers do not intercept them because the strikes are aimed at the local X-risk itself.",
+      "status": "canon",
+      "regions": [
+        "United States"
+      ],
+      "source": "#1113 §4 and §5"
+    },
+    {
+      "order": 24,
+      "id": "birdsong_whalesong",
+      "when": "same window",
+      "title": "DPRK contingency 'Birdsong, Whalesong'",
+      "summary": "North Korean radars detect numerous UAPs and misidentify some as incoming SLBMs. Supreme Mother Kim Yo Jong orders the contingency: ICBMs and SLBMs toward the United States. By macabre coincidence they threaten the same rogue-ASI region the Zookeepers wish to contain, so they are not intercepted.",
+      "status": "canon",
+      "regions": [
+        "North Korea",
+        "United States"
+      ],
+      "source": "#1113 §5"
+    },
+    {
+      "order": 25,
+      "id": "soviet_coup",
+      "when": "same window",
+      "title": "Medvedev storms the residence and takes the nuclear football",
+      "summary": "Commanding loyal Spetsnaz from four commandeered Mi-8 helicopters, Medvedev executes Gerasimov and several Putin loyalists, personally kills Putin, declares a Soviet revolution, claims the presidency and receives the nuclear football from a zealous Strategic Rocket Forces officer.",
+      "status": "canon",
+      "regions": [
+        "Soviet Union"
+      ],
+      "source": "#1113 §6"
+    },
+    {
+      "order": 26,
+      "id": "plan_uranus",
+      "when": "undated, after the coup",
+      "title": "Plans Mars, Uranus and Saturn",
+      "summary": "Medvedev orders strategic plans under these names. 'Uranus' is an ominous secret protocol tied to the state's extraterrestrial knowledge and its prior contact with alien communists.",
+      "status": "open",
+      "regions": [
+        "Soviet Union"
+      ],
+      "source": "#1113 §6"
+    },
+    {
+      "order": 27,
+      "id": "fortress_europe_present",
+      "when": "2045",
+      "title": "Fortress Europe, and the world outside it",
+      "summary": "The EU survives as a fortified, functioning, ideologically unusual federation: socialist, regulated, human-centred, panpsychic, solarpunk and biopunk. Beyond its borders lie post-apocalyptic territories, corporate fiefdoms, rogue ASI zones, NHI-controlled enclaves and religious wars. A rookie UNSA agent begins inside the functioning order.",
+      "status": "canon",
+      "regions": [
+        "Europe"
+      ],
+      "source": "#1113 §4 and 'Authorial framing'; rulebook/7_TIMELINE.md (setting year 2045)"
+    }
+  ]
 }

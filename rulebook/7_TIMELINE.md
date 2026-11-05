@@ -153,15 +153,24 @@ technologies in radically different ways.
 States, federations, corporations, movements, religions, cities, and regions respond
 differently to AI, PSI, NHI, transhumanism, and networked power.
 
-A **limited / hybrid war between the Soviet Union and Europe** ends without the USSR breaking
-apart. The crisis accelerates European integration: the **European Union becomes a federal
-superpower and Ukraine joins the EU**.
+**The Soviet Union dissolves.** Post-Soviet Russia inherits its territory, institutions, imperial
+ambitions, security services and classified archives; Ukraine becomes independent. Russia later
+wages war on Ukraine, which eventually joins the EU (the accession date stays open).
 
-The USSR's later turn from a successful reform era toward a militarised, expansionist war is a
-**deliberate narrative gap**, not a settled sequence. The Soviet Union survives, reforms and
-modernises; how that state becomes the aggressor of the later war is reserved for the author. Do
-not fill it with a post-Soviet transition, a Russian Federation, or an invented coup. See
-[the alternate-history canon](../docs/world/ALTERNATE_HISTORY_1114.md#6-the-unresolved-causal-link).
+**Shortly before the NHI Crisis**, escalation produces a **short EU–Russia war** with Ukraine
+fighting as an EU member. It stops abruptly when UAPs intercept nuclear weapons, and conventional
+deterrence stops being a usable assumption. The crisis accelerates European integration; the EU
+becomes a federal superpower.
+
+After the NHI Crisis Russia is a **chaotic failed state** — fragmented, hazardous, with no reliable
+answer to who controls a given secret facility — and the Finnish–Russian border is closed and
+fortified.
+
+A contradictory memory that the USSR survived and reformed, ruled by a Soviet-punk Troika, is a
+**universal Mandela Effect**, not a second timeline: everyone holds some version of it and nobody
+can prove which is real. Do not settle the cause, and do not build a Soviet-survival setting
+alongside this one. See
+[the playable timeline](../docs/world/ALTERNATE_HISTORY_1114.md).
 
 Some regions remain comparatively stable. Others experience war, authoritarian reaction,
 corporate sovereignty, institutional breakdown, radical federalization, commons-oriented

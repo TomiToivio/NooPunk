@@ -23,6 +23,11 @@ last. His preferred theories are precognition, time travel and timeline alterati
 remember multiple timelines himself, with an explicit *The Man in the High Castle* / Philip K. Dick
 sensibility.
 
+**Which world is playable.** The present the characters inhabit is the collapsed one: the USSR
+dissolved, Russia fought Ukraine, and post-Crisis Russia is a failed state. Pilgrim's transmitted
+text insists on the opposite, and the readers who remember his text and the readers who remember
+the dissolution are both sincere. The playable baseline is fixed; the disagreement is not.
+
 The setting preserves the uncertainty. Faulty precognition, an unreliable transmission, a
 rewritten timeline, false collective memory and genuine cross-timeline recollection all remain
 possible. Do not resolve the mystery in a sourcebook, a scenario or a wiki article. Variant

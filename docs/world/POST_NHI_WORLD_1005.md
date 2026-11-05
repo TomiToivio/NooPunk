@@ -3,9 +3,11 @@
 **Status of this document.** A consolidation of the worldbuilding discussion, for the 2045 setting and the
 Europol Helsinki campaign. It does not implement systems.
 
-> **Setting revision #1114 (2026-11-03):** the passages below that make UNSA a **de facto world
-> government**, or that describe a post-Putin Russia joining UNSA, are superseded. The USSR survives
-> and reforms; the UN/UNSA did not become a world government; Europol is the default employer.
+> **Setting revision #1114 (2026-11-05):** the passages below that make UNSA a **de facto world
+> government**, that describe a post-Putin Russia joining UNSA, or that treat a surviving USSR as
+> settled fact are superseded. The Soviet Union dissolved; post-Crisis Russia is a failed state; a
+> universal Mandela Effect insists otherwise and is never resolved; the UN/UNSA did not become a
+> world government; Europol is the default employer.
 > The binding chronology is [`ALTERNATE_HISTORY_1114.md`](ALTERNATE_HISTORY_1114.md).
 
 **Priority of statements, and how to read them.** Three markers are used throughout, and they matter more than
@@ -45,12 +47,12 @@ discoveries — vindicated *in part*, and not as a wholesale endorsement of any 
 structures and significant hostility to UNSA. Sympathetic American individuals and factions exist and must not
 be erased.
 
-**The Soviet Union.** Important, **especially for Finland**. The USSR survives the Cold War, reforms under
-Gorbachev and modernises; it does not become a liberal democracy or a capitalist market economy. How the
-successful reform era later becomes the militarised, expansionist Soviet state of the Fortress Europe sequence
-is an **open causal gap** — do not fill it with Putin, a post-Soviet transition or an invented coup. Keep the
-Soviet state distinct from rogue intelligence, military and criminal actors inside its territory.
-[OPEN: the exact trajectory; see #1114's D75.]
+**Russia.** Important, **especially for Finland**. The Soviet Union dissolved; Russia inherited the state,
+the secrets and the imperial appetite, went to war with Ukraine, and met the EU in a short war that ended when
+UAPs intercepted nuclear weapons. After this Crisis Russia is a **chaotic failed state** — fragmented, hazardous,
+and no reliable answer to who controls which secret facility. The Finnish–Russian border is closed and fortified.
+A universal Mandela Effect insists the USSR survived and reformed; that memory is evidence in play, never a
+settled alternative. [OPEN: the war and accession dates; see #1114.]
 
 **Finland and Helsinki.** Local politics are dominated by the EU/Europol relationship and by the Soviet Union —
 not by China or India, however large those powers loom globally. Investigations mix intelligence work, PSI, NHI

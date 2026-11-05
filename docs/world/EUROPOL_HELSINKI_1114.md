@@ -34,6 +34,23 @@ capacity: NHI-adjacent crime, hybrid infiltration, psychotronic trafficking, cyb
 identity and memory fraud, anomalous deaths, and the ordinary organised crime that turns out to
 be connected to all of the above.
 
+## 2a. Across the eastern border
+
+The Finnish–Russian border is closed, fortified and a state matter. Beyond it lies post-Crisis
+Russia: a failed state whose remnants, factions and secret facilities nobody can map reliably.
+
+In Helsinki that produces a public mood — Russia as a hostile, violent, incomprehensible imperial
+ruin — held unevenly, sometimes self-servingly, and contradicted often enough by individual cases
+to be a running tension rather than a settled fact. **This is an in-universe EU public perception,
+not an objective judgement of every Russian person, community or faction.**
+
+Most rookies in the office know very little about Russia's interior. **Russia does not dominate the
+opening campaign**: it is a pressure, an absence, and a source of artefacts that arrive over the
+border and into evidence bags.
+
+Two Cold War inheritances keep arriving with those artefacts — MJ-12 and ПРОГРАММА — and neither is
+solvable. See [the playable timeline](ALTERNATE_HISTORY_1114.md), §5.
+
 ## 3. Powers and limits
 
 The following is the working model. Exact legal citations, ranks and budget are **open author
