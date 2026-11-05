@@ -31,11 +31,19 @@ class ScenePlayTests(unittest.TestCase):
         verbs = [x.verb for x in available_actions(self.scene("Social", "Investigation"))]
         self.assertEqual(len(verbs), len(set(verbs)))
 
+    def test_normalize_accepted_scene_type_variants(self):
+        actions = available_actions(self.scene("social", " Investigation ", "CYBER"))
+        self.assertEqual(route_action(self.scene("social"), "talk").scene_type, "Social")
+        self.assertEqual(route_action(self.scene(" Investigation "), "osint").scene_type, "Investigation")
+        self.assertIn("hack", {a.verb for a in actions})
+
     def test_legacy_combat_and_astral_not_playable(self):
         with self.assertRaises(GraphError):
             self.scene("Combat")
         with self.assertRaises(GraphError):
             available_actions(self.scene("Astral"))
+        with self.assertRaises(GraphError):
+            available_actions(self.scene(" astral "))
 
     def test_no_rolls_or_side_effects_and_invalid_actions_rejected(self):
         scene = self.scene("Action")
