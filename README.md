@@ -32,7 +32,7 @@ Three paradigm shifts make certainty difficult:
 - **NHI: Non-Human Intelligence.** We were not alone. This answered one question and made most of the others worse.
 - **PSI: Psionics and Consciousness.** Mind and reality proved more intimately connected than expected. The discovery did not make it easier to agree about either.
 
-**NoöPunk** is an experimental **New Weird / Social Science Fiction RPG and political strategy project**, growing into cyberpunk science fantasy as its world changes. Investigate the impossible at the scale of a person; contest the future at the scale of a faction. The canonical tabletop and Godot RPG permanently use CWN as their OSR rules chassis, with compatible SWN/WWN modules. The new primary Godot direction is location-based, social/investigative play rather than tactical top-down movement; older scenes remain for compatibility. See [foundational decision #897](docs/design/ISSUE_897_FOUNDATIONAL_LOCK.md).
+**NoöPunk is apocalyptic cyberpunk science fiction.** Its RPG and political/social simulation combine cyberpunk, science fiction and post-apocalyptic survival in the aftermath of the NHI Crisis. The active game uses a CWN-first rules core with compatible SWN Psionics and AWN material; no WWN fantasy subsystem is required. Magick is interpreted as PSI and psionics as manifestations of Fourth Density awakening; Law of One concepts are *lore, not game rules*. Investigate the impossible at the scale of a person; contest the future at the scale of a faction. See [architecture decision #1184](https://github.com/TomiToivio/NooPunk/issues/1184).
 
 A breakthrough can become a political crisis. A crisis can become somebody's career. Behind both is the awkward question of who needs help, and whether you can still do something for them.
 
@@ -62,7 +62,7 @@ The project is currently a **playable text-based prototype**. You can run the no
 
 ### Rules direction (issue #615)
 
-**New author decision (2026-10-26):** NoöPunk's target RPG begins with the **standard Without Number family** rules rather than a bespoke 1d10/Fate hybrid. **Cities Without Number** and **Stars Without Number** provide the shared attributes, skills and fundamental dice grammar; **Worlds Without Number** adds noetic/interdimensional science fantasy and **Ashes Without Number** adds local NHI Crisis survival and salvage. Start from existing procedures; customize after a functioning, single-sheet cross-genre RPG exists. The first independent Python chassis is `src/rules/without_number.py`. **Migration is incomplete:** existing legacy 1d10 and strategy crossover Fate code still runs separately while its callers, saves and scenarios are adapted. See the [#615 decision and progress record](docs/design/ISSUE_615_WITHOUT_NUMBER_RULES_DIRECTION.md) and [conversion epic #564](https://github.com/TomiToivio/NooPunk/issues/564) for remaining work, license restrictions and compatibility requirements.
+**Historical author decision (2026-10-26; superseded by #1184 regarding WWN and genre):** NoöPunk's target RPG begins with the **standard Without Number family** rules rather than a bespoke 1d10/Fate hybrid. **Cities Without Number** and **Stars Without Number** provide the shared attributes, skills and fundamental dice grammar; **Worlds Without Number** adds noetic/interdimensional science fantasy and **Ashes Without Number** adds local NHI Crisis survival and salvage. Start from existing procedures; customize after a functioning, single-sheet cross-genre RPG exists. The first independent Python chassis is `src/rules/without_number.py`. **Migration is incomplete:** existing legacy 1d10 and strategy crossover Fate code still runs separately while its callers, saves and scenarios are adapted. See the [#615 decision and progress record](docs/design/ISSUE_615_WITHOUT_NUMBER_RULES_DIRECTION.md) and [conversion epic #564](https://github.com/TomiToivio/NooPunk/issues/564) for remaining work, license restrictions and compatibility requirements.
 
 **Visual identity:** *A 1974 Hawkwind concert, an acid trip, and a VALIS transmission showing 2045.* Zardoz, Barbarella and The Rocky Horror Picture Show govern the aesthetic, not later glossy cyberpunk. [Art-direction bible](docs/design/ISSUE_897_VISUAL_BIBLE.md).
 
@@ -72,31 +72,33 @@ The project is currently a **playable text-based prototype**. You can run the no
 
 **My secondary motivation is to make science-fiction entertainment in my own style.** Characters, political satire, unsettling mysteries, philosophical questions, absurdity, and encounters with the genuinely strange give the models a playable and imaginative form.
 
-The resulting genre is best described as **Social Science Fiction × New Weird**. **Cyberpunk Science Fantasy emerges progressively** as the paradigm shifts become more visible and consequential within the fictional world. The scenario starts around **2027**, still close to recognizable contemporary society, rather than assuming a mature cyberpunk future from the outset. Social modeling remains the core motivation throughout; the aesthetics and possibilities of the world evolve with the crisis.
+**Current genre classification: apocalyptic cyberpunk science fiction.** Some historical prototypes and timeline material start around **2027**, before the full NHI Crisis; the Europol rookie campaign explores the post-crisis world. Social science modeling and strange ontological phenomena remain important narrative methods rather than separate fantasy genre classifications.
 
 ## Genre and positioning
 
-**Genre identity:** **Social Science Fiction × New Weird** is the defining blend: social-scientific modeling motivates the project and New Weird gives it its distinctive fictional expression. **Cyberpunk Science Fantasy** becomes increasingly prominent as the fictional paradigm shifts unfold. These are complementary lenses, not three separate games.
+**Primary genre: apocalyptic cyberpunk science fiction.** NoöPunk brings together cyberpunk surveillance, corporations, networked power and augmentation; science-fictional AI/ASI, alien intelligence and PSI; and post-apocalyptic societies dealing with the NHI Crisis. This is **not a fantasy RPG**.
 
-### 1. Social Science Fiction: society is the protagonist
+### Cyberpunk: technology, power and investigation
 
-NoöPunk explores how institutions, ideologies, communications, economies, religions, and political movements respond to extraordinary paradigm shifts. Players lead factions and characters in a compact grand-strategy/RPG simulation: they build networks, contest meanings, pursue hegemony, and influence social change. Ernesto Laclau's discourse theory, Manuel Castells's network/communication power, and Niklas Luhmann's systems theory inform its abstract political model. The starting scenario, around **2027**, focuses on accelerating conflict *before* the later NHI Crisis.
+Hacking, OSINT, cybernetics, intelligence agencies, corporate power, inequality and transhuman technologies frame the everyday Europol experience. Investigations and interrogations collect evidence and leads through graph-based interfaces, with CWN as the gameplay rules foundation.
 
-### 2. New Weird: reality refuses to fit the categories
+### Science fiction: paradigm shifts and ontological shock
 
-**The primary imaginative genre, alongside Social Science Fiction.** AI, alleged nonhuman intelligences, anomalous consciousness, PSI, unfamiliar religions, and strange institutions collide without reducing the mystery to conventional aliens, magic, or a single tidy explanation. The tone can shift between political satire, unsettling investigation, philosophical wonder, absurd comedy, and the profoundly alien. The paradigm shift is ontological as well as technological: who gets to decide what is real?
+AI, AGI/ASI, NHI contact, consciousness and psionics destabilize established explanations of reality. **PSI and Magick are different fictional framings of the same phenomena**; psionics represent **Fourth Density awakening**. **Law of One is lore, not mechanics.** Weirdness, satire, detective noir and philosophical speculation remain expressive methods, not a fantasy-genre classification.
 
-### 3. Cyberpunk Science Fantasy: the world and its tools
+### Post-apocalyptic fiction: consequences of the NHI Crisis
 
-**Secondary genre and influence, not the whole premise.** Hacking, surveillance, corporate power, cybernetics, BCI, AI, inequality, and transhuman technology provide grounded near-future material conflicts. Science-fantasy elements introduce NHI and PSI as consequential features of the **fictional setting**, with uncertain mechanisms and competing interpretations. Cyberpunk stays deliberately limited in the early 2027 scenario, rather than swallowing the social-science and New Weird themes or assuming a fully cyberpunk society already exists.
+Institutions, infrastructures and communities face severe disruption and unequal survival conditions following the Crisis. AWN provides relevant survival/mutant material. The story retains functioning pockets of civilization and political conflict rather than depicting uniform wasteland.
 
-**In one sentence:** Social Science Fiction asks **how society changes**; New Weird asks **what reality has become**; Cyberpunk Science Fantasy asks **what powers and technologies people use to survive and fight over it**.
+### RPG rules and interface boundary
+
+**CWN is the immutable core** (skills, hacking, combat and character rules), with **SWN Psionics and AWN** compatible source systems. AWN Mentalist is available subject to PC restrictions; AWN Mutant represents NPC Hybrids. Existing CWN Spellcaster/Summoner Edges may represent PSI/Magick. **WWN is not required**, and no fantasy mechanics are being added for genre symmetry. Players may select only **Telepathy and Telekinesis** as PSI abilities; Astral Projection, Teleportation and Precognition are scripted events. The graph-based interfaces, narrative Tags and evidence-led interrogations are summarized in [#1184](https://github.com/TomiToivio/NooPunk/issues/1184).
 
 **Elevator pitch.**
 
 > Reality has changed. The institutions responsible for explaining it are still open.
-> NoöPunk is a New Weird RPG and political simulation about who gets believed,
-> who gets power, and what happens to everyone else.
+> NoöPunk is an apocalyptic cyberpunk science-fiction RPG and political simulation
+> about who gets believed, who gets power, and how people survive what comes next.
 
 **Storefront pitch — the later Europol investigation setting.**
 
