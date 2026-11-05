@@ -165,7 +165,7 @@ can mistake a chapter heading for coverage.
 | techno-wizard-scheme-generator | p.257 | Techno-wizard Scheme Generator | missing | The scheme generator (p.257) is unimplemented and deferred. |
 | the-ash-sorcerer | p.258 | The Ash Sorcerer | missing | The Ash Sorcerer class (p.258) is deferred pending a decision against WWN magic and SWN psionics. |
 | ash-sorcerer-disciplines | p.260 | Ash Sorcerer Disciplines | missing | Ash Sorcerer disciplines (p.260) are unimplemented and deferred. |
-| the-mentalist | p.264 | The Mentalist | missing | The Mentalist class (p.264) is deferred pending a decision against SWN psionics. |
+| the-mentalist | p.264 | The Mentalist | missing | The Mentalist **Edge** is selectable for PCs and uses its own published mechanics (`src/rules/psi_access.py`); the Mentalist *class* mechanics (p.264) remain unimplemented. #1123 decides the question this row was waiting on: AWN Mentalist is the preferred conceptual reference for NoöPunk psychic phenomena rather than SWN Psychic, while the PC-selectable disciplines stay SWN Telepathy and Telekinesis (#1178). |
 | mentalist-disciplines | p.266 | Mentalist Disciplines | missing | Mentalist disciplines (p.266) are unimplemented and deferred. |
 | modular-power-armor | p.270 | Modular Power Armor | missing | Modular power armour (p.270) is deferred pending comparison with CWN armour and UNSA heavy gear. |
 | modular-armor-frames | p.272 | Modular Armor Frames | missing | Armour frames (p.272) are unimplemented and deferred. |
