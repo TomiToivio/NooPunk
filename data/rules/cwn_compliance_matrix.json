@@ -304,6 +304,7 @@
       "command": [],
       "coverage": "implemented",
       "tests": [
+        "tests/test_awn_campaign_start_1196.py",
         "tests/test_cwn_edges_foci.py",
         "tests/test_issue_1196_carryover.py"
       ],
@@ -818,6 +819,7 @@
         "mud/tests/test_mud_core.py",
         "mud/tests/test_portable_1053_1054.py",
         "mud/tests/test_world_time.py",
+        "tests/test_awn_campaign_start_1196.py",
         "tests/test_console_case_1053.py",
         "tests/test_core_rules.py",
         "tests/test_cwn_advancement.py",
@@ -1619,6 +1621,7 @@
       "command": [],
       "coverage": "not_applicable",
       "tests": [
+        "tests/test_awn_campaign_start_1196.py",
         "tests/test_console_case_1053.py",
         "tests/test_cwn_alienation.py",
         "tests/test_cwn_backgrounds.py",
@@ -1747,6 +1750,7 @@
       "command": [],
       "coverage": "implemented",
       "tests": [
+        "tests/test_awn_campaign_start_1196.py",
         "tests/test_console_case_1053.py",
         "tests/test_cwn_alienation.py",
         "tests/test_cwn_backgrounds.py",
@@ -2001,6 +2005,7 @@
       "command": [],
       "coverage": "implemented",
       "tests": [
+        "tests/test_awn_campaign_start_1196.py",
         "tests/test_console_case_1053.py",
         "tests/test_cwn_alienation.py",
         "tests/test_cwn_attack_modifiers.py",
@@ -2077,6 +2082,7 @@
       "tests": [
         "mud/tests/test_cwn_core.py",
         "mud/tests/test_portable_1053_1054.py",
+        "tests/test_awn_campaign_start_1196.py",
         "tests/test_console_case_1053.py",
         "tests/test_cwn_alienation.py",
         "tests/test_cwn_attack_modifiers.py",
@@ -2155,6 +2161,7 @@
       "command": [],
       "coverage": "implemented",
       "tests": [
+        "tests/test_awn_campaign_start_1196.py",
         "tests/test_console_case_1053.py",
         "tests/test_cwn_alienation.py",
         "tests/test_cwn_attack_modifiers.py",
@@ -2230,6 +2237,7 @@
       "command": [],
       "coverage": "implemented",
       "tests": [
+        "tests/test_awn_campaign_start_1196.py",
         "tests/test_console_case_1053.py",
         "tests/test_cwn_alienation.py",
         "tests/test_cwn_attack_modifiers.py",
@@ -2334,6 +2342,7 @@
       "command": [],
       "coverage": "implemented",
       "tests": [
+        "tests/test_awn_campaign_start_1196.py",
         "tests/test_console_case_1053.py",
         "tests/test_cwn_alienation.py",
         "tests/test_cwn_backgrounds.py",
@@ -2398,6 +2407,7 @@
       "command": [],
       "coverage": "implemented",
       "tests": [
+        "tests/test_awn_campaign_start_1196.py",
         "tests/test_console_case_1053.py",
         "tests/test_cwn_alienation.py",
         "tests/test_cwn_backgrounds.py",
@@ -2573,6 +2583,7 @@
       "command": [],
       "coverage": "implemented",
       "tests": [
+        "tests/test_awn_campaign_start_1196.py",
         "tests/test_console_case_1053.py",
         "tests/test_cwn_alienation.py",
         "tests/test_cwn_backgrounds.py",
@@ -2798,6 +2809,7 @@
       "command": [],
       "coverage": "implemented",
       "tests": [
+        "tests/test_awn_campaign_start_1196.py",
         "tests/test_console_case_1053.py",
         "tests/test_cwn_alienation.py",
         "tests/test_cwn_backgrounds.py",
