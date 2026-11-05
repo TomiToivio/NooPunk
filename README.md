@@ -92,7 +92,7 @@ Institutions, infrastructures and communities face severe disruption and unequal
 
 ### RPG rules and interface boundary
 
-**CWN is the immutable core** (skills, hacking, combat and character rules), with **SWN Psionics and AWN** compatible source systems. AWN Mentalist is available subject to PC restrictions; AWN Mutant represents NPC Hybrids. Existing CWN Spellcaster/Summoner Edges may represent PSI/Magick. **WWN is not required**, and no fantasy mechanics are being added for genre symmetry. Players may select only **Telepathy and Telekinesis** as PSI abilities; Astral Projection, Teleportation and Precognition are scripted events. The graph-based interfaces, narrative Tags and evidence-led interrogations are summarized in [#1184](https://github.com/TomiToivio/NooPunk/issues/1184).
+**CWN is the immutable core** (skills, hacking, combat and character rules), with **SWN Psionics and AWN** compatible source systems. AWN Mentalist is available subject to PC restrictions; AWN Mutant represents NPC Mutants of varied or unknown origin; many may be Hybrids, but their ancestry is not automatically known. Existing CWN Spellcaster/Summoner Edges may represent PSI/Magick. **WWN is not required**, and no fantasy mechanics are being added for genre symmetry. Players may select only **Telepathy and Telekinesis** as PSI abilities; Astral Projection, Teleportation and Precognition are scripted events. The graph-based interfaces, narrative Tags and evidence-led interrogations are summarized in [#1184](https://github.com/TomiToivio/NooPunk/issues/1184).
 
 **Elevator pitch.**
 
