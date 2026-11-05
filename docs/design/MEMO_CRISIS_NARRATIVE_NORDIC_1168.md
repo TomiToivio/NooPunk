@@ -131,7 +131,30 @@ reverse-engineering. The President's later disclosure of contact *since 1946* be
 Ghost Rocket recoveries" as one of several national reverse-engineering traditions. This memo therefore **extends**
 an existing line rather than introducing one.
 
-**Evidence discipline.** Real-world history and fiction are kept apart:
+**Evidence discipline.** Real-world history and fiction are kept apart. The verified real-world layer first:
+
+### 5.0 What the reporting record actually supports
+
+Checked 2026-11-05 against secondary compilations and one primary transcript, not against the
+Swedish, Finnish or Norwegian archives:
+
+| Event | What the record supports | What it does **not** establish |
+|---|---|---|
+| **1933–34 ghost fliers** | A Scandinavian press and military-attaché wave of night reports: large grey aircraft, searchlights, performance beyond the period's aircraft | Any hardware, any national programme, any NHI involvement |
+| **1946 ghost rockets** | First reports **26 February 1946 by Finnish observers**; roughly **2,000 sightings logged May–December 1946**, concentrated over Sweden and Finland; a Swedish military investigation; some radar returns and debris attributed to the wave; the best-known lake-impact search (Kölmjärv, 19 July 1946) recovered no craft | That the objects were alien, or that any state recovered one. Contemporary readings included Soviet tests of captured German rockets, meteors (the August peaks overlap the Perseids), and mass suggestion |
+| **Helsinki, 18 January (filed 10 February 1947)** | US Naval Attaché **Intelligence Report Serial R-5-8-47**, evaluation **C3** ("fairly reliable source, doubtful accuracy"): a yellow light seen for about ten seconds, five or six flashes, then a white/red glow and a parachute-like object; the attaché adds that the only information available was what appeared in newspapers | Anything about the object's identity. It proves the report existed and was filed, not what was seen |
+| **Hessdalen, Norway** | Lights reported from **December 1981**; **Project Hessdalen** founded 3 June 1983; field investigations January–February 1984 (53 light observations) and 1985; an automatic measurement station operating from **August 1998**; roughly **20 observations a year** after the 1981–84 peak | That the lights are craft, or that any single hypothesis (plasma, geology, atmospheric electricity) explains them. It is a real instrumented anomaly, not a solved case |
+| **Denmark** | Participation in the wider 1946 Scandinavian reporting wave and later research interest | Any recovery, any hardware, any programme. **No Danish hardware claim belongs in canon without a separate author decision** |
+
+**Sources used for the table:** `docs/research/UFO_DISCLOSURE_BACKGROUND_RESEARCH.md` §6–7 (which
+quotes the Gross FOIA transcript of R-5-8-47); [Project Hessdalen, official
+site](https://old.hessdalen.org/index_e.shtml) and its 1984 technical report; the Ghost Rocket
+overview at <https://en.wikipedia.org/wiki/Ghost_rockets>. **[UNVERIFIED]:** original Swedish
+*Spökraketer* committee files, Finnish military/press archives, Danish archives and Hessdalen's
+peer-reviewed literature were **not** read for this memo. Dates, sites, officials, budgets and unit
+names must be checked against originals before any of them enter canon.
+
+**Claim ledger.**
 
 | Claim | Status |
 |---|---|
@@ -319,8 +342,11 @@ with the consequences intact.
 `docs/world/ALTERNATE_HISTORY_1114.md`, `docs/world/EUROPOL_HELSINKI_1114.md`, `design/ZONES.md`,
 `src/rules/awn_stress_tracker.py`, `awn_survival.py`, `awn_region.py`, `awn_world.py`.
 
-**Real-world anchors [not re-verified in original archives by the author of this memo]:** the 1946 Ghost Rocket
-reporting wave (Sweden/Finland/Norway); the Hessdalen lights and the instrumented research programme.
+**Real-world anchors [secondary and official sources checked 2026-11-05, not original archives]:**
+`docs/research/UFO_DISCLOSURE_BACKGROUND_RESEARCH.md` §6–7; the Gross FOIA transcript of US Naval
+Attaché report R-5-8-47; [Project Hessdalen](https://old.hessdalen.org/index_e.shtml) and its 1984
+technical report; the [Ghost rockets](https://en.wikipedia.org/wiki/Ghost_rockets) overview. The
+memo's §5.0 separates what these support from what remains fiction or unverified.
 
 **Law of One (in-universe source, not evidence):** 8.6 (Confederation assistance to Russians), 38.7–13 and 51.2
 (Sirians with physical/slow travel) — cited by the issue as context; **none establishes a Finnish transfer**.
