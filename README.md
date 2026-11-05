@@ -90,7 +90,7 @@ AI, AGI/ASI, NHI contact, consciousness and psionics destabilize established exp
 
 Institutions, infrastructures and communities face severe disruption and unequal survival conditions following the Crisis. AWN provides relevant survival/mutant material. The story retains functioning pockets of civilization and political conflict rather than depicting uniform wasteland.
 
-### RPG rules and interface boundary
+**hackmud** as a text-only interface inspiration: [hackmud on Steam](https://store.steampowered.com/app/469920/hackmud/) demonstrates atmospheric, command-driven cyberpunk interaction. NoöPunk's terminal CLI and Evennia interface should make OSINT, hacking, messages and logs feel like in-world tools, while retaining its own aesthetic and CWN rules. See [#1184](https://github.com/TomiToivio/NooPunk/issues/1184).\n\n### RPG rules and interface boundary
 
 **CWN is the immutable core** (skills, hacking, combat and character rules), with **SWN Psionics and AWN** compatible source systems. AWN Mentalist is available subject to PC restrictions; AWN Mutant represents NPC Mutants of varied or unknown origin; many may be Hybrids, but their ancestry is not automatically known. Existing CWN Spellcaster/Summoner Edges may represent PSI/Magick. **WWN is not required**, and no fantasy mechanics are being added for genre symmetry. Players may select only **Telepathy and Telekinesis** as PSI abilities; Astral Projection, Teleportation and Precognition are scripted events. The graph-based interfaces, narrative Tags and evidence-led interrogations are summarized in [#1184](https://github.com/TomiToivio/NooPunk/issues/1184).
 
