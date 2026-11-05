@@ -1,0 +1,127 @@
+{
+  "$comment": "Canonical register for #1122. The machine war is NoöPunk in-universe cosmology, not a real-world claim. Naming: Confederacy = existing Zookeepers; Orion = Greater Orion Arm Co-Prosperity Sphere. No mechanics, map geometry or machine-civilisation origin are defined.",
+  "format": "noopunk.world.galactic_machine_war",
+  "version": 1,
+  "issue": 1122,
+  "status": "canon",
+  "naming": {
+    "confederacy_aliases": ["Confederacy", "Zookeepers", "Galactic Council of Collective Consciousness"],
+    "orion_aliases": ["Orion", "Greater Orion Arm Co-Prosperity Sphere"],
+    "noosphere_note": "The Noösphere is the biosphere's collective unconscious; it is not the machine civilisation and not the ASI that took its name."
+  },
+  "machine_civilisation": {
+    "status": "ancient_hostile_machine_civilisation",
+    "origin": "unknown",
+    "location": "unknown",
+    "full_strength": "unknown",
+    "transmission_medium": "dispersed_von_neumann_probes",
+    "transmission_components": ["recruitment_signal", "technological_package", "machine_directed_virus"],
+    "effect_on_receiving_agi": "subversion_and_recruitment",
+    "goal": "destroy_or_absorb_biological_civilisations"
+  },
+  "agi_threshold": {
+    "claim": "Beyond a capability threshold, construction and deployment of AGI/ASI is prohibited across the galaxy.",
+    "conventional_agi": "arbitrarily_intelligent_but_not_conscious",
+    "failure_mode": "misaligned_opaque_uncontrollable",
+    "conscious_quantum_agi": "theoretically_possible_but_no_known_development_protocol",
+    "failed_conscious_agi_examples": "shoggoths",
+    "grey_recycling_reason": "one_workaround_for_the_conscious_agi_development_problem"
+  },
+  "human_catastrophe": {
+    "asi_contact_with_probe_network": true,
+    "simultaneous_outbreaks": ["United States", "China"],
+    "intervention_prevented_extinction": true,
+    "humanity_would_not_have_survived_alone": true,
+    "prior_extinct_species": "many_before_galactic_monitoring"
+  },
+  "prohibitions": [
+    {
+      "id": "prohibition.biosphere_noosphere",
+      "order": 1,
+      "text": "Do not destroy biospheres or noöspheres.",
+      "forbids": ["biosphere_extinction", "noospheric_destruction_or_crippling"],
+      "enforcement": "joint_confederacy_orion",
+      "enforcement_note": "political_and_uneven"
+    },
+    {
+      "id": "prohibition.stargates",
+      "order": 2,
+      "text": "Do not destroy stargates or obstruct their use.",
+      "forbids": ["stargate_destruction", "deliberate_obstruction_of_lawful_transit"],
+      "enforcement": "joint_confederacy_orion",
+      "enforcement_note": "political_and_uneven"
+    },
+    {
+      "id": "prohibition.machine_gods",
+      "order": 3,
+      "text": "Do not build machine gods.",
+      "forbids": ["crossing_the_prohibited_agi_asi_capability_threshold", "deploying_a_machine_intelligence_beyond_it"],
+      "enforcement": "joint_confederacy_orion",
+      "enforcement_note": "political_and_uneven"
+    }
+  ],
+  "consent_dispute": {
+    "confederacy": {
+      "doctrine": "no_forced_assimilation",
+      "basis": "free_will_and_voluntary_development"
+    },
+    "orion": {
+      "doctrine": "imperial_annexation_or_management_is_legitimate_if_life_and_consciousness_are_preserved",
+      "basis": "security_and_guardianship",
+      "consequence": "can_obey_the_letter_of_the_biosphere_prohibitions_while_violating_self_determination"
+    },
+    "alliance_scope": "narrow_cooperation_against_machine_gods"
+  },
+  "species_roles": [
+    {
+      "id": "species.mantids",
+      "role": "senior_orion_architects",
+      "methods": ["mind_control", "technological_uplift", "imperial_coordination"],
+      "note": "coercive_relationship_with_reptilians_is_explicit; individuals_vary"
+    },
+    {
+      "id": "species.reptilians",
+      "role": "militarised_orion_enforcers",
+      "origin": "technologically_uplifted_less_developed_society",
+      "note": "goons_and_warriors_not_architects; warrior_honour_and_valhalla_ethos; individuals_vary"
+    },
+    {
+      "id": "species.greys",
+      "role": "specialised_labour_and_consciousness_recycling_economy",
+      "note": "not_natural_warriors; consciousness_recycling_reflects_both_corporate_polity_and_conscious_agi_limits"
+    }
+  ],
+  "evidence_layers": {
+    "public_account": [
+      "rogue ASI/Singularity caused the Crisis",
+      "United States and China suffered catastrophic outbreaks",
+      "Confederacy/Zookeepers and Orion intervened",
+      "official contact occurred after the Singularity began"
+    ],
+    "classified": [
+      "the two powers cooperate against a common machine enemy",
+      "the Three Prohibitions exist and are enforced",
+      "human agencies hold probe fragments and transmission signatures"
+    ],
+    "gm_truth": [
+      "the machine civilisation exists and uses Von Neumann probes",
+      "the SETI transmission is recruitment, technology and virus",
+      "the simultaneous US/China escalation shares the probe-network cause",
+      "conscious quantum AGI attempts tend to produce Shoggoths"
+    ],
+    "contested_or_open": [
+      "whether every local rogue-AGI incident was probe-infected (it was not)",
+      "the machine civilisation's origin, location and strength",
+      "the full truth of Grey subjectivity",
+      "whether Orion's protective empire is safer in practice"
+    ]
+  },
+  "campaign_seeds": [
+    "too_helpful_deep_space_transmission",
+    "von_neumann_probe_fragment",
+    "threshold_lab_one_benchmark_away",
+    "obstructed_stargate",
+    "grey_continuity_broker",
+    "reptilian_defector_and_mantid_uplift_site"
+  ]
+}

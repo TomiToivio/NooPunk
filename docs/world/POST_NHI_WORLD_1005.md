@@ -9,6 +9,9 @@ Europol Helsinki campaign. It does not implement systems.
 > universal Mandela Effect insists otherwise and is never resolved; the UN/UNSA did not become a
 > world government; Europol is the default employer.
 > The binding chronology is [`ALTERNATE_HISTORY_1114.md`](ALTERNATE_HISTORY_1114.md).
+> The machine-war frame behind the rogue-ASI catastrophe is in
+> [`../../design/GALACTIC_MACHINE_WAR.md`](../../design/GALACTIC_MACHINE_WAR.md) (#1122); it is
+> authorial/GM context, not public 2045 knowledge.
 
 **Priority of statements, and how to read them.** Three markers are used throughout, and they matter more than
 any prose:

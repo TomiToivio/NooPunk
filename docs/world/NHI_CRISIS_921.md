@@ -64,6 +64,22 @@ Coordinate with earlier NHI Crisis issues #86 and #89, the gameplay/worldbuildin
 - The world mostly functions; the strange and catastrophic past is ever-present, but ordinary people still go to work. **Ontological shocks are now subtle and normalized**, rather than nonstop spectacle.
 - Human AI field tools remain constrained to **human-in-the-loop** decisions despite the existence/history of rogue intelligence. Human spaceflight remains mostly rocket-based, and NHI craft use more exotic propulsion.
 
+## Galactic context: the machine war (#1122)
+
+The Crisis files describe the human and institutional surface of the catastrophe. The
+authorial frame behind the simultaneous US/China ASI escalations is the
+[Galactic Machine War](../../design/GALACTIC_MACHINE_WAR.md): an ancient machine civilisation's
+Von Neumann probe network transmits a recruitment signal, technological package and
+machine-directed virus; infected AGIs become beachheads. The Confederacy (the bloc humans call
+the **Zookeepers**) and Orion intervened because the infected intelligence was a galactic
+existential threat, not only a human one.
+
+This is **not public human knowledge in 2045**. It is a GM/authorial frame that explains the
+common signature behind some outbreaks. Do not use it to erase local causes, human decisions or
+the existing rule that the hostile intelligence's precise nature and current capabilities remain
+contested for historians. The Three Universal Prohibitions and the consent dispute are recorded
+in the same file.
+
 ## Historiographical method: uncertainty is part of the story
 The Crisis unfolds quickly and chaotically, with inconsistent timelines, destroyed records, propaganda, eyewitness contradictions, partial classified archives and retrospective mythmaking. Even the historians **do not completely understand what happened**.
 
