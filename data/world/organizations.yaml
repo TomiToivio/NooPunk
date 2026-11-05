@@ -77,3 +77,36 @@ UNSA:
       - global security integration
       - pooled sovereignty
       - world government
+
+PROJECT_PLATO_EISS:
+  canonical_name: European Information Security System
+  abbreviation: EISS
+  former_names:
+    - Project Plato
+  early_informal_names:
+    - Plato
+  aliases:
+    - EISS
+    - Plato
+  rejected_aliases:
+    Panopticon: >-
+      Rejected as an official name AND as an interchangeable one. "Panopticon" (capitalised) is an existing
+      canonical entity in rulebook/10_SINGULARITY_CRISIS.md §9.4.2 — a corporate ASI damaged into controllability —
+      with its own legal position. Critics may call EISS "a panopticon" (lower case, in quotes) as a comparison;
+      that is commentary, not a name, and the two must never be written as the same system.
+    AEGIS: >-
+      Not an alias. AEGIS was floated as a designation for the firewall subsystem and is not canon until the author
+      confirms it.
+  parent:
+    - European Union
+  operator: Europol
+  function:
+    - network and information security
+    - the continental perimeter ("the Great Firewall")
+    - defence and investigative surveillance support
+    - psychotronic infrastructure for societal stability
+  nature: >-
+    Not an ASI. A layered federation of legacy systems, hand-written GOFAI, rule engines, limited modern AI, quantum
+    machines, psychotronic subsystems and very many human operators, under statute, audit and parliamentary
+    oversight.
+  source: docs/world/EU_NETWORKS_AND_PLATO_1200.md

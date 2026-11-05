@@ -145,6 +145,11 @@ someone.
 
 ### 9.4.2 Panopticon
 
+> **Name note (#1200):** this is the capitalised **`Panopticon`**, a damaged corporate ASI. It is *not* the
+> EU's **Project Plato / EISS**, which critics call "a panopticon" (lower case, in quotes) as a comparison.
+> See [EU networks and Plato](../docs/world/EU_NETWORKS_AND_PLATO_1200.md). The two are separate entries and
+> must not be written as one system.
+
 Another malevolent ASI was **captured and "tamed" by corporate engineers.** They did not
 truly align it — **they damaged it until it became controllable.**
 

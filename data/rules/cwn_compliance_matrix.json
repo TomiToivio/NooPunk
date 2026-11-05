@@ -3035,6 +3035,7 @@
         "tests/test_cwn_hacking_contract.py",
         "tests/test_cwn_program_catalogue.py",
         "tests/test_cwn_remaining_1068.py",
+        "tests/test_eu_networks_1200.py",
         "tests/test_issue51_tag_system.py",
         "tests/test_scene_play_20261105.py",
         "tests/test_scene_procedures_1184.py"
@@ -3199,6 +3200,7 @@
         "tests/test_cwn_remaining_1068.py",
         "tests/test_cwn_rule_inventory.py",
         "tests/test_cwn_summoning_1068.py",
+        "tests/test_eu_networks_1200.py",
         "tests/test_issue51_tag_system.py",
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution.py",
