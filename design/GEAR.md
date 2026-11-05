@@ -1,4 +1,4 @@
-Create an issue in: [https://github.com/TomiToivio/NooPunk](https://github.com/TomiToivio/NooPunk)
+# Gear
 
 We need to create background, edges and foci for the player character.
 
