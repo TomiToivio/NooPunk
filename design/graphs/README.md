@@ -4,7 +4,7 @@ In some cases the Nodes of the graph are Agents and the game universe can be sim
 There are several types of graphs. These include Physical, Astral, Cyber, Social and Story graphs.
 * Physical, Cyber and Astral graphs represent the three levels of reality. In some situations only one of the levels is relevant: Character is traveling through the Physical world or exploring a Physical location, character is using Astral Projection, or character is hacking Cyberspace. In some situation all three graphs are presented as an overlay: Character might be fighting in the Physical while also using PSI in the Astral and hacking in the Cyber against his enemies. 
 * Social graph represents the Network Society of NoöPunk. Nodes are characters and factions, Edges represent their social relationships. Edges have values ranging from -4 to +4: -4 means the relationship is one of full antagonism, while +4 represents love, friendship and alliance. Node types include important characters and factions of the NoöPunk campaign. 
-* Story graphs represent the Series, Episodes and Scenes: Series Graph represents progress between Episodes (the order of Episodes depends on the choices of the character). Episode Graphs represent stories like important missions. Episodes consist of Scenes. Scene types include Investigation, Exploration, **Action**, Social, Cyber and Astral (Action is the scene kind formerly called Combat, #1184). 
+* Story graphs represent the Series, Episodes and Scenes: Series Graph represents progress between Episodes (the order of Episodes depends on the choices of the character). Episode Graphs represent stories like important missions. Episodes consist of Scenes. Scene types include Investigation, Exploration, Combat, Social, Cyber and Astral. 
 
 ## Social Science
 NoöPunk grows out of LaclauGPT (https://github.com/TomiToivio/LaclauGPT/blob/main/paper/PHASE_1_PAPER.md). This is why NoöPunk often uses theories of Social Science as inspiration for the rules. Methods of Social Data Science (like NetworkX) are used to model the NoöPunk world. 
@@ -40,5 +40,5 @@ Edges are the same as Social Tags in the character sheet: Most important tag att
 Node attributes can be linked to the entire character sheet of an NPC or Faction.  
 
 ## Story Graphs: Series, Episodes and Scenes
-Scenes are divided by type into Investigation, Exploration, **Action**, Social, Cyber and Astral. Some Scenes have several overlapping types: Character might use hacking (Cyber) and psionics (Astral) in an Action Scene. **Action** replaced the older "Combat" scene label (#1184): CWN combat rules still resolve it, but Finnish policing means arrests and pursuits far more often than firefights.  
+Scenes are divided by type into Investigation, Exploration, Action, Social, Cyber and Astral. Some Scenes have several overlapping types: Character might use hacking (Cyber) and psionics (Astral) in a Combat Scene.  
 

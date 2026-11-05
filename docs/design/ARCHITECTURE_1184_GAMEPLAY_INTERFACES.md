@@ -1,179 +1,174 @@
-# Gameplay interfaces and rules architecture (#1184)
+# Gameplay interfaces and rules architecture — the #1184 summary
 
-> **Status: architecture summary — design only, no rules change.** This consolidates decisions that are
-> already made across #1164, #1178, #1054, #704 and #728. It does not rewrite CWN, and it does not
-> introduce a subsystem.
+> **Status: design summary, not implementation.** This consolidates decisions that already exist in
+> several issues and drafts into one place, so the first mission can be built without inventing a rules
+> engine per activity. It changes no rule and no canon. Where it disagrees with an author document, the
+> author document wins.
 >
-> **Companion:** [`PYTHON_GUI_PLAN_1184.md`](PYTHON_GUI_PLAN_1184.md) — how the graphical front end is
-> actually built.
+> **Related:** #1164 (graph scenes, Physical/Cyber/Social/Investigation/Astral), #1178 (four graphs +
+> Edge simplification), #1054 (immutable core, multiple interfaces), #704 (CWN-first balance),
+> #728 (computer-game influences). Implementation plan for the graphical client:
+> [`GUI_PYTHON_1184_MINIMAL_GRAPH_UI.md`](GUI_PYTHON_1184_MINIMAL_GRAPH_UI.md).
 
----
+## 1. Genre, stated once
 
-## 1. Genre definition
+**NoöPunk is apocalyptic cyberpunk science fiction.** Constituent modes: cyberpunk, science fiction,
+post-apocalyptic. Satire, detective noir, horror, psychedelic weirdness and ontological shock are
+*tones*, not competing genre labels. It is **not** a fantasy RPG, and it does not acquire fantasy
+mechanics for symmetry with other Without Number games.
 
-**NoöPunk is apocalyptic cyberpunk science fiction.**
+CWN + SWN + AWN are the relevant source families. WWN is not required. CWN Spellcaster and Summoner
+Edges remain available in their agreed PSI/Magick role — as expressions of the setting's psychotronics
+and psychic phenomena, not as a fantasy magic system.
 
-- **Primary genre:** apocalyptic cyberpunk SF.
-- **Constituent modes:** cyberpunk, science fiction, post-apocalyptic fiction.
-- **Not a fantasy RPG.** Fantasy, science-fantasy and New Weird are *tones and techniques*, never
-  headline genre labels, and none of them justifies importing fantasy mechanics for symmetry with the
-  other Sine Nomine games.
-- **WWN is not required.** CWN + SWN + AWN are the relevant source families. Psychic and "magickal"
-  effects are science-fictional and ontological phenomena, not a reason to add a ritual system. The
-  existing CWN Spellcaster and Summoner Edges remain available in their agreed PSI/Magick role.
-- The 1970s psychedelic retrofuturist aesthetic, the satire and the eeriness all stay.
+## 2. One world state, six views, one resolver
 
----
+There is **one** world state. Interfaces are ways of seeing and acting on it; they are not separate
+games with separate rules.
 
-## 2. Design invariants
+| View | Graph family | What it shows | What the player does | What resolves it |
+| --- | --- | --- | --- | --- |
+| **Physical** | `physical` | Places, routes, who is where | Move, search, observe, interact, arrest | CWN (skills, saves, combat, movement) |
+| **Cyber** | `cyber` | Devices, links, access controls, avatars | Traverse, probe, exploit, defend | CWN hacking (verbs/subjects, programs, access) |
+| **Social** | `social` | People, factions, relationships (signed) | Talk, ask, press, ally, betray | CWN Talk/Connect/Command + Tags |
+| **Investigation** | *derived* | Evidence, sources, claims, contradictions | Collect, compare, hypothesise, confront | CWN checks for *cost, risk, detail* — never for whether the core clue exists |
+| **Story** | `story` | Series → episode → scene, prerequisites | Choose, act, transition | CWN + authored scene logic |
+| **Astral** *(scripted)* | scene graph only | Dream/astral/NDE spaces | Explore a scripted space | Authored scene logic — **no player-activated astral power** |
 
-1. **CWN-first.** Characters, skills, checks, hacking, combat and standard actions follow Cities
-   Without Number. Its core is not altered.
-2. **One world state, several interfaces.** Physical, Cyber, Social and Investigation views reference
-   the same entities and relations. Canonical world facts stay distinct from what the player has
-   *found*, *been told* and *suspects*.
-3. **Tags are small.** Social, Goal, Personality and situational tags carry fictional state and small
-   modifiers. They must fit on a tabletop sheet and in the computer game, and must not grow into a
-   second economy.
-4. **Interfaces are not rules engines.** They decide how a player sees and acts on the world. CWN
-   resolves consequential uncertainty.
-5. **Tabletop, text CLI and Evennia web client remain viable** against the same Python library. Rich
-   visualisation is optional, never required.
-6. **CWN's abstract combat works without a tactical map** for the MVP.
+**Canonical facts vs player knowledge is a hard boundary.** The world graph is truth. The investigation
+graph is a *player-facing view*: what the character has established, from whom, with what confidence.
+The interface must never render a fact the character has not acquired, including by making the absence
+of a node conspicuous.
 
----
+## 3. Interface catalogue — and the boundary each one must not cross
 
-## 3. The graphs
-
-| Graph | What it represents | Edges mean | Resolved by |
-| --- | --- | --- | --- |
-| **Physical** | world → city → district → location → room | routes, doors, containment | CWN movement, exploration, **action** |
-| **Cyber** | systems, services, access | network routes, rights, control | CWN Hacking |
-| **Social** | people and local factions | trust, obligation, ideology, goal | CWN Talk/Connect/Lead + tags |
-| **Investigation** | evidence, claims, sources, hypotheses | supports, contradicts, attributes | CWN Notice/Know/Admin + evidence model |
-| **Story** | series → episodes → scenes | prerequisites, branches | GoalLog and scene flags |
-
-**One graph, several projections.** The Investigation view is a *player-facing view of discovered
-evidence*, not a second copy of every canonical entity.
-
----
-
-## 4. Gameplay interfaces
-
-| Interface | Inspirations | What the player does | Rule boundary |
-| --- | --- | --- | --- |
-| **Online investigation / OSINT** | *Orwell*, *Song of Farca*, *Blade Runner* (1997) | Search records, messages, dossiers, media; collect evidence, compare claims, unlock leads | No investigation-point economy. Restricted systems use CWN Hacking |
-| **Dialogue / interrogation** | *Silicon Dreams*, narrative RPGs | Ask, present evidence, challenge contradictions, extract testimony | **Evidence-focused, not an emotion simulator.** No meters, no lie detector, no minigame |
-| **Cyber / hacking** | *Hacknet*, *DROP - System Breach*, *Midnight Protocol* | Navigate a graph of systems, links and access controls | **CWN Hacking rules only**; the reference games' mechanics are not imported |
-| **Physical exploration** | *Disco Elysium*, *Citizen Sleeper*, *Shadowrun: Dragonfall* | Locations, encounters, dialogue, decisions, tags | CWN character creation, advancement, action resolution |
-| **Action** | *Hill Street Blues* (see §5) | Arrest, pursue, contain, enter, de-escalate, call backup | CWN combat and opposed checks; abstract spatial relations; **no tactical grid** |
-| **Dream / Astral / anomalous** | *Observer*, NoöPunk fiction | Scripted encounters and scene graphs | Authored scenes only. No general-purpose player-operated astral simulation |
-
-**GUMSHOE is an influence, not a package.** Essential clues are not gated behind arbitrary failed
-rolls: appropriate actions find core clues; CWN rolls govern risk, cost, extra detail and consequence.
-
----
-
-## 5. Action scenes, not combat scenes
-
-**The rename is the point, not a synonym.** #1184 renames the scene kind; CWN combat rules still resolve
-it, but the fiction is Finnish policing in a functioning EU capital, not an American firefight.
-
-**What an action scene is:** an arrest that goes wrong; a pursuit through Kallio at 2 a.m.; a door that
-has to come off its hinges with a warrant in hand; a crowd that will not move; a man with a knife in a
-stairwell; a vehicle stop where the risk is a traffic lane, not a rifle.
-
-**What it is not:** armed civilians with assault rifles, mass-casualty set pieces, or gunfights as the
-default punctuation. Firearms exist, are carried, and are **exceptional and consequential** — drawing
-one changes the scene, the paperwork and the officer's career.
-
-**Design consequences:**
-
-- **Abstract positions, not a grid.** `engaged`, `near`, `far`, `cover`, `contained` — enough for CWN's
-  abstract combat, and no tactical map is required for the MVP.
-- **A pressure track, not just hit points.** Escalation, bystanders, time, and the arrival of backup
-  matter more than damage. Officers still have CWN hit points; the *scene's* tension is measured by
-  what is about to go wrong.
-- **Pursuits are graphs.** Road and tram nodes, closing distance, hazards, radio coverage. A chase is a
-  path problem under time pressure, not a driving minigame.
-- **Every action produces paperwork.** Arrests, use of force and pursuits generate institutional
-  consequences that persist into later scenes; that is a NoöPunk signature and a Hill Street Blues one.
-- **De-escalation is a legitimate winning move**, and the rules must make it worth attempting.
-
----
-
-## 6. Evidence and knowledge model
-
-Five things stay distinct, always:
-
-1. **World truth** — what actually happened.
-2. **Source claims** — what a document, witness or faction asserts.
-3. **Collected evidence** — what the player holds, with provenance.
-4. **Player knowledge** — what the player has actually understood.
-5. **Hypotheses** — what the player currently believes, explicitly provisional.
-
-Evidence may be incomplete, misleading, fabricated or mutually contradictory. **A source's claim is
-never promoted to truth by being collected.** Interrogations yield statements, documents, contradictions
-and leads — never an emotional score.
-
-Multiple investigative paths must exist; a failed discretionary check costs something and does not
-dead-end the case.
-
----
-
-## 7. PSI, Magick and player access
-
-**Magick is PSI and PSI is Magick** — different framings of related phenomena, never competing systems.
-
-| Source | Use | Player access |
+| Interface | Touchstones (#1184) | Boundary |
 | --- | --- | --- |
-| **SWN Psionics** | disciplines and Psychic Training | **Telepathy and Telekinesis only** |
-| **AWN Mentalist** | PSI-flavoured alternative, preferred inspiration | Only within the Telepathy/Telekinesis scope |
-| **AWN Mutant** | Mutants of varied or unknown origin | **NPC-only**; players may not take it |
-| **CWN Spellcaster** | Magick read as PSI | In the reference; not a route around PC limits |
-| **CWN Summoner** | Summoning read through PSI ontology | In the reference; not a route around PC limits |
+| Online investigation / OSINT | *Orwell*, *Song of Farca*, *Blade Runner* (1997) | Search public records, messages, dossiers, media, databases; collect and compare. **No investigation-point economy.** Restricted systems are entered through CWN hacking. |
+| Dialogue / interrogation | *Silicon Dreams*, narrative RPGs | Evidence-focused: ask, present, challenge contradiction, obtain testimony and documents. **No emotion meter, no lie-detector UI, no interrogation minigame.** |
+| Cyber / hacking | *DROP - System Breach*, *Midnight Protocol*, *Hacknet* | Navigate a graph of systems and access controls, using **CWN's** verbs, programs and constraints — not the reference games' mechanics. |
+| Physical exploration | *Disco Elysium*, *Citizen Sleeper*, *Shadowrun: Dragonfall* | Locations, encounters, dialogue, Tags, consequences; CWN character and resolution. |
+| **Action** *(was "Combat")* | CWN + police procedurals (see §5) | CWN combat and abstract spatial relations. **No tactical grid or map required for the MVP.** |
+| Dream / astral / anomalous | *Observer*, NoöPunk fiction | Scripted scene graphs. **No general-purpose player-operated astral, teleport or precognition simulation.** |
 
-**Scripted, never selectable:** Astral Projection (authored dreams, OOBEs, NDEs, psychotronic events),
-teleportation, precognition, and other high-impact disciplines.
+**GUMSHOE is a design principle, not a mechanics package.** Essential clues are never gated behind a
+failed roll; CWN rolls govern risk, cost, extra detail and consequences. The player assembles evidence
+through the interfaces instead of spending investigative points.
 
-**Psychotronic implants** are technological means of producing PSI effects and obey the same limits. A
-narrative exception is a scripted event, not a permanent grant.
+## 4. Evidence and knowledge model
 
-**Law of One is lore, not rules.** Densities, polarisation and Social Memory Complex may inform history,
-cosmology and interpretation. They do **not** produce a subsystem, a Density progression or a meter.
+Five registers, never collapsed:
 
-**Mutant vs Hybrid.** *Mutant* is the general term for AWN Mutant Edge NPCs; *Hybrid* is one possible —
-and unprovable — explanation. Mutation alone establishes neither PSI, NHI ancestry nor infiltration.
+1. **World truth** — what actually happened (the world graph, invisible).
+2. **Source claim** — what a document, witness or database asserts.
+3. **Collected evidence** — what the character has actually acquired, with provenance.
+4. **Player knowledge** — what the player has read, been told, or inferred (may exceed the character's).
+5. **Working hypothesis** — a link the player asserts; can be wrong, and the interface should let it be
+   wrong without punishing curiosity.
 
----
+```
+world ──claim──▶ source ──collect──▶ evidence ──infer──▶ hypothesis
+                      ▲                                    │
+                      └────────── confront / test ──────────┘
+```
 
-## 8. Implementation order
+**Rules that follow from it.** Evidence may be incomplete, misleading, fabricated or contradictory. A
+claim is never promoted to truth by being repeated. A hypothesis is a player artefact, not a fact, and
+must be retractable. Confronting a witness with a document is a *social action* with a CWN check, not a
+UI trick that always works.
 
-1. One Helsinki Europol rookie investigation end to end: OSINT → interview → physical lead → limited
-   CWN hacking → report to Romppainen.
-2. Shared evidence/claim/hypothesis representation and graph navigation.
-3. Evidence-first dialogue and interrogation.
-4. All scenes call the **same** CWN action resolver; tabletop and CLI parity retained.
-5. A small PSI/Edge availability matrix (above) in code and in the rulebook.
-6. Explicitly deferred: tactical maps, procedural dream systems, full social simulation, custom
-   investigation subsystems.
+**Progress must survive failure.** Failed discretionary checks impose consequences — time, suspicion,
+lost access, a relationship — rather than dead-ending the case. Multiple paths to every essential clue.
 
----
+## 5. Action scenes: why the name changed, and what they are
 
-## 9. Definition of done for this issue
+**Decision (#1184, author's direction): "Combat" becomes "Action".** The scene type names what the
+interface shows and what the player does, not a genre promise. In code:
+`src/rules/four_graphs.py::SCENE_TYPES` now contains `Action`; `Combat` is refused, so the old name
+cannot quietly return as a synonym (`tests/test_scene_types_1184.py`).
 
-- The design is documented and cross-linked from the issues it consolidates.
-- Interface and rule boundaries are explicit, including the Action rename.
-- The first mission can be implemented without a new rules engine per activity.
-- The Python graphical front end has a concrete plan and a buildable first milestone
-  ([`PYTHON_GUI_PLAN_1184.md`](PYTHON_GUI_PLAN_1184.md)).
+**The setting's action register is Finnish police work, not American gunfight cinema.** Finland is not
+the United States: patrol officers do not carry rifles, civilians do not, and a scene in which several
+people shoot at each other is a national emergency rather than a Tuesday. The touchstone is *Hill
+Street Blues*: an ensemble, procedure under pressure, moral ambiguity, decisions that follow you into
+the next episode.
 
----
+| Action scene | What the player is doing | CWN handles | The interesting failure |
+| --- | --- | --- | --- |
+| **Arrest** | Presence, verbal commands, positioning, restraint, deciding when to go hands-on | Punch/Exert/Talk/Notice, initiative, morale | Excessive force, wrong person, escalation on camera |
+| **Pursuit (foot)** | Route choice, obstacles, crowds, calling it off | Exert/Survive, notice, chase procedure | Losing them and lying about it; a bystander hurt |
+| **Pursuit (vehicle)** | Speed vs risk, traffic, roadblocks, jurisdiction | Drive, vehicle damage, chase rules | A crash that ends a career |
+| **Forced entry** | Warrant, timing, breaching, containment | Exert/Notice/Shoot as last resort | Wrong door; no warrant; someone inside who should not be |
+| **Standoff / containment** | Negotiation, time, perimeter, media | Talk/Connect/Command, reaction | Shooting when talking would have worked |
+| **Crowd / public order** | Lines, orders, proportionality, recording | Lead/Command, discipline | A baton that becomes a national story |
+| **Evidence preservation** | Securing a scene under pressure | Investigation layer | Contamination that loses the case |
 
-## 10. Cross-references
+**Use-of-force ladder (fiction policy, not a new subsystem).** Presence → verbal → physical control →
+less-lethal → firearm. Moving down the ladder is a decision with CWN resolution and institutional
+consequences; it is never an automatic upgrade. Firearm use is rare, investigated, and remembered.
 
-- [`DRAFT_GRAPH_SCENES_1164.md`](DRAFT_GRAPH_SCENES_1164.md) — scene kinds, including the Action rename
-- [`FOUR_GRAPH_IMPLEMENTATION_1178.md`](FOUR_GRAPH_IMPLEMENTATION_1178.md) — graph implementation
-- [`../../design/graphs/README.md`](../../design/graphs/README.md) — graph model
-- [`../../design/graphs/RULES.md`](../../design/graphs/RULES.md) — rules per graph
-- [`PYTHON_GUI_PLAN_1184.md`](PYTHON_GUI_PLAN_1184.md) — the front end
+**What action scenes must not become.** Not a grid, not a cover-shooter, not an escalation fantasy, and
+not a place where the rules reward killing. A scene that ends with nobody shot and the right person in
+custody is the *good* outcome, and the design should make that legible.
+
+## 6. PSI and Magick: access policy
+
+Setting principle: **Magick is PSI and PSI is Magick** — different framings of related phenomena, not
+independent power systems.
+
+| Source | NoöPunk use | Player access |
+| --- | --- | --- |
+| SWN Psionics | Psychic disciplines; Psychic Training Focus | **Only Telepathy and Telekinesis** |
+| AWN Mentalist Edge | PSI-flavoured alternative worth evaluating; preferred inspiration over SWN breadth | Only within the Telepathy/Telekinesis scope |
+| AWN Mutant Edge | **Mutants**, of varied and often unknown origin; many may be Hybrids, but that must be discovered | **NPC only — player characters may not take it** |
+| CWN Spellcaster Edge | Magick interpreted in-world as PSI | In the reference; must not become an evasion of PC limits |
+| CWN Summoner Edge | Summoning through PSI/Magick ontology | As above |
+
+**Scripted, never selectable:** Astral Projection (authored dreams, spontaneous OOBE, NDE, psychotronic
+sessions), teleportation, precognition, and other high-impact effects. Psychotronic implants are
+technological routes to PSI and obey the same access policy; a narrative exception is a scripted event,
+not a permanent character-sheet grant.
+
+**No Law of One subsystem.** Densities, polarization and Social Memory Complex are lore that explains
+the fiction; there is no density meter, no polarization counter, no mechanical progression derived from
+them. Psionics is the *fiction's* fourth-density awakening; the *rules* remain published CWN/SWN/AWN.
+
+## 7. Interface independence — the invariant that keeps four clients possible
+
+Tabletop, text CLI, Evennia and the graphical client are **four front doors to one library**.
+
+```
+                     ┌──────────────────────────────┐
+                     │  domain: rules + world state │
+                     │  src/rules, src/world        │
+                     └──────────────┬───────────────┘
+        ┌───────────────┬───────────┼───────────┬────────────────┐
+   tabletop sheet   CLI console   Evennia    graphical client
+     (paper)       (session.py)  (commands)   (src/ui)
+```
+
+Every front end submits a typed action and receives a typed result; none of them computes a rule. The
+enforceable checks already exist (`tests/test_engine_independence_1053.py`, the boundary tool) and the
+GUI must be added behind the same wall, not around it.
+
+## 8. Implementation order (from #1184, with checkpoints)
+
+1. **One case, end to end.** OSINT → interview → physical lead → limited CWN hacking → report to
+   Romppainen, using existing character and graph systems plus simple Tags.
+   *Checkpoint:* the case is playable in the CLI with no GUI.
+2. **Shared evidence/claim/hypothesis representation** and graph navigation that reveals only
+   player-known data. *Checkpoint:* a test proves an uncollected node cannot be rendered.
+3. **Evidence-first dialogue.** Present/find evidence, unlock statements, no emotion mechanics.
+   *Checkpoint:* an interrogation that succeeds and one that fails, both without a meter.
+4. **One resolver for all scenes**, including action scenes, preserving tabletop/CLI parity.
+5. **PSI access matrix documented and enforced** in character creation.
+6. **GUI** (separate plan) — optional throughout.
+
+**Definition of done for this issue:** the design is documented and cross-linked, the boundaries are
+explicit, and the first mission can be built without a new rules engine per activity.
+
+## 9. Out of scope, explicitly
+
+Tactical maps; procedural dream or astral action systems; full social simulation; a custom investigation
+subsystem; emotion or lie meters; an investigation-point economy; anything that changes a CWN procedure.
+Sophisticated spatial UI may be added later without touching the rules.
