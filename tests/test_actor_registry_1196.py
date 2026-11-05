@@ -261,5 +261,38 @@ class FirstDayTests(unittest.TestCase):
 
 
 
+class FirstDayConsoleTests(unittest.TestCase):
+    def test_existing_console_accepts_script_and_resume(self):
+        """No new console, interpreter, save format or independent rule loop."""
+        import contextlib
+        import io
+        import json
+        import tempfile
+        from src.console.play import main, run_first_day_command
+
+        session = create_first_day()
+        keep, output = run_first_day_command(session, "actions")
+        self.assertTrue(keep)
+        self.assertIn("wake", output)
+        with tempfile.TemporaryDirectory() as directory:
+            script = Path(directory) / "first_day.txt"
+            save = Path(directory) / "first_day_save.json"
+            steps = ["wake", "uniform"]
+            steps += ["inspect:" + item for item in KIT]
+            steps += ["connect:" + item for item in LINKED]
+            steps += ["dispatch", "ride", "arrive", "report"]
+            script.write_text("\n".join(steps) + "\n", encoding="utf-8")
+            output_stream = io.StringIO()
+            with contextlib.redirect_stdout(output_stream):
+                code = main(["--first-day", "--script", str(script), "--save", str(save)])
+            self.assertEqual(code, 0, output_stream.getvalue())
+            self.assertIn(DISPATCH_LINE, output_stream.getvalue())
+            restored = WorldSession.from_snapshot(json.loads(save.read_text(encoding="utf-8")))
+            self.assertEqual(restored.where(ACTOR), OFFICE)
+            self.assertEqual(available_first_day_actions(restored), ())
+            with contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(main(["--first-day", "--load", str(save), "--script", str(script)]), 0)
+
+
 if __name__ == "__main__":
     unittest.main()
