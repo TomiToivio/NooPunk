@@ -11,7 +11,7 @@ The author's decisions (#1178 §1–§4) that this encodes:
 * The other disciplines exist for NPCs and as **scripted events**, never as player options.
 * **Astral Projection is scripted** — an OOBE, an NDE, or a psychotronic event — not a selectable
   power, and not a running Astral subsystem.
-* **Mutant** is an NPC-only Edge. A player character may not take it.
+* **Mutant** is available at character creation to Europol-approved PCs. Mutation does not imply alien ancestry or PSI.
 * **Mentalist**, **Spellcaster** and **Summoner** are selectable Edges, each using its own published
   mechanics. Knowing Telepathy grants no free spellcasting: *Magick is PSI* is a statement about the
   fiction, not a conversion rule.
@@ -43,10 +43,10 @@ SCRIPTED_ONLY: tuple[str, ...] = (
 )
 
 #: Edges a player character may select, each with its own published mechanics.
-PC_EDGES: tuple[str, ...] = ("Mentalist", "Spellcaster", "Summoner")
+PC_EDGES: tuple[str, ...] = ("Mutant", "Mentalist", "Spellcaster", "Summoner")
 
 #: Edges reserved for NPCs.
-NPC_ONLY_EDGES: tuple[str, ...] = ("Mutant",)
+NPC_ONLY_EDGES: tuple[str, ...] = ()
 
 #: The Psychic Training Focus is only implemented once the printed text is available. Until then the
 #: policy refuses to *simulate* it rather than inventing level benefits.
@@ -122,6 +122,8 @@ def validate_selection(
     edges: Iterable[str] = (),
     focus_disciplines: Iterable[str] = (),
     partial_psychic: bool = False,
+    character_level: int = 1,
+    europol_approved: bool = True,
 ) -> list[str]:
     """Return every violation in one pass, so a character builder can show all of them at once.
 
@@ -140,7 +142,17 @@ def validate_selection(
         problems.append(
             "a Partial Psychic must stay in their one chosen discipline (#1178 §1)"
         )
-    for name in edges:
+    selected_edges = tuple(edges)
+    if "Mutant" in selected_edges and not europol_approved:
+        problems.append("NoöPunk rookie Mutant requires Europol approval")
+    if "Mentalist" in selected_edges:
+        if character_level != 1:
+            problems.append("AWN Mentalist Edge normally must be taken at first level (AWN Deluxe p.265)")
+        if chosen or partial_psychic:
+            problems.append("AWN Mentalist cannot combine with SWN Psychic or Partial Psychic (AWN Deluxe p.265)")
+        if "Spellcaster" in selected_edges or "Summoner" in selected_edges:
+            problems.append("AWN Mentalist cannot combine with CWN Mage/Spellcaster or Summoner (AWN Deluxe p.265)")
+    for name in selected_edges:
         decision = edge_decision(name)
         if not decision.allowed:
             problems.append(decision.reason)

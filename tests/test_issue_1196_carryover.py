@@ -183,12 +183,11 @@ class MutantTemplateTests(unittest.TestCase):
             MutantTemplate(npc="npc.x", mutations=("mut.anything",),
                            catalogue=MutationCatalogue())
 
-    def test_mutant_stays_npc_only(self):
+    def test_mutant_can_be_a_pc(self):
         template = MutantTemplate(npc="npc.x", mutations=("mut.extra_joint",),
                                   catalogue=self.catalogue)
         assert_mutant_is_npc(template, is_player=False)
-        with self.assertRaises(PsiEdgeError):
-            assert_mutant_is_npc(template, is_player=True)
+        assert_mutant_is_npc(template, is_player=True)
 
 
 class WorldSessionTests(unittest.TestCase):

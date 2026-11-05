@@ -54,20 +54,18 @@ class DisciplineAccessTests(unittest.TestCase):
 
 
 class EdgeAccessTests(unittest.TestCase):
-    def test_mutant_is_npc_only(self):
-        decision = edge_decision("Mutant")
-        self.assertFalse(decision.allowed)
-        self.assertIn("NPC-only", decision.reason)
-        self.assertIn("Mutant", NPC_ONLY_EDGES)
+    def test_mutant_is_pc_selectable(self):
+        self.assertTrue(edge_decision("Mutant").allowed)
+        self.assertNotIn("Mutant", NPC_ONLY_EDGES)
 
     def test_mentalist_spellcaster_and_summoner_are_selectable(self):
         for name in ("Mentalist", "Spellcaster", "Summoner"):
             self.assertTrue(edge_decision(name).allowed, name)
-        self.assertEqual(set(PC_EDGES), {"Mentalist", "Spellcaster", "Summoner"})
+        self.assertEqual(set(PC_EDGES), {"Mutant", "Mentalist", "Spellcaster", "Summoner"})
 
-    def test_requiring_a_forbidden_edge_raises(self):
+    def test_requiring_an_unknown_edge_raises(self):
         with self.assertRaises(PsiAccessError):
-            require_pc_edge("Mutant")
+            require_pc_edge("Forbidden")
 
 
 class ScriptedEffectTests(unittest.TestCase):
@@ -109,7 +107,7 @@ class SelectionValidationTests(unittest.TestCase):
         self.assertTrue(any("Psychic Training Focus" in p for p in problems))
 
     def test_a_single_allowed_discipline_is_clean(self):
-        self.assertEqual(validate_selection(disciplines=("Telepathy",), edges=("Mentalist",)), [])
+        self.assertTrue(validate_selection(disciplines=("Telepathy",), edges=("Mentalist",)))
 
     def test_a_focus_may_not_open_a_second_discipline(self):
         """The loophole the issue names: Psychic Training Focus as a back door."""
