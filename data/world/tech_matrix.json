@@ -211,21 +211,52 @@
         "robotics": "$example: extrapolated from 'cooperative automation', which the issue lists as a strength.",
         "space": "unassigned: the issue names no European space posture.",
         "manufacturing": "unassigned: the issue names no European manufacturing posture.",
-        "psionics": "unassigned.",
-        "noosphere": "unassigned."
+        "psionics": "Canonical #1200 addition: European leadership in psionics and psychotronics (qualitative). Existing unassigned profile cell retained to avoid fabricating a ladder value.",
+        "noosphere": "Canonical #1200 addition: quantum-consciousness research leadership; does not establish a Noösphere ladder value."
       },
       "gains": [
         "Politically coherent and socially stable; relatively egalitarian",
         "Universal public BCI infrastructure and privacy-preserving digital identity",
         "Public AI and democratic cybernetics",
-        "Ecological restoration, renewable energy and advanced healthcare"
+        "Ecological restoration, renewable energy and advanced healthcare",
+        "Plato/EISS civilian defence and intentionally constrained EuroNET survived the NHI Crisis",
+        "Quantum-consciousness, psionics, psychotronics, biopunk and solarpunk research leadership"
       ],
       "vulnerabilities": [
         "Apparent technological lag against US corporate zones is partly real and partly chosen",
         "Deliberately restricted AI autonomy may cost capability in sectors where autonomy is decisive",
-        "Depends on institutional coherence, so internal political stress is a systemic risk"
+        "Depends on institutional coherence, so internal political stress is a systemic risk",
+        "Legacy expert systems, manual oversight and institutional compartmentalization create delays, false positives and accountability disputes",
+        "Plato/EISS security monitoring expands toward intrusive surveillance and controversial psychotronic intervention"
       ],
-      "$setting_question": "The issue leaves this open and it stays open here: 'Is the EU actually technologically behind, or has it optimized for robustness, ecological sustainability, and human autonomy rather than raw capability?'"
+      "$setting_question": "The issue leaves this open and it stays open here: 'Is the EU actually technologically behind, or has it optimized for robustness, ecological sustainability, and human autonomy rather than raw capability?'",
+      "$plato_eiss_canon_1200": {
+        "official_system": "European Information Security System (EISS)",
+        "project_name": "Project Plato",
+        "unofficial_critical_nickname": "Panopticon",
+        "firewall": "Plato/EISS perimeter",
+        "public_network": "EuroNET",
+        "network_boundaries": [
+          "old internet: dangerous external wilderness",
+          "EuroNET: restricted public replacement",
+          "closed organizational networks: physically isolated",
+          "physical data couriers"
+        ],
+        "operating_authority": "Europol (civilian, under EU oversight and national-law constraints)",
+        "military_cyber_authority": "Eurodef",
+        "cross_border_xrisk": "UNSA under limited mandate",
+        "human_review": "consequential institutional AI decisions and extraordinary intervention require logged human authorization; preauthorized bounded defence may react autonomously",
+        "near_agi_provider": "Mistral only; restricted and human-supervised",
+        "comparative_strengths": [
+          "quantum computing",
+          "quantum-consciousness research",
+          "psionics",
+          "psychotronics",
+          "biopunk",
+          "solarpunk"
+        ],
+        "computing_character": "Legacy Lisp/Prolog GOFAI and expert systems alongside narrow AI, quantum technology and vast human workforce; no European runaway ASI"
+      }
     },
     {
       "id": "china",
