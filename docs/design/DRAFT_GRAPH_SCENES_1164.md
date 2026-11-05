@@ -1,5 +1,7 @@
 # NoöPunk Graph Rules and Scene Authoring: implementation proposal (#1164)
 
+> **#1184 update (2026-11-05):** The [current gameplay/interface architecture](../architecture/PORTABLE_INTERFACES_1053_1054.md#unified-gameplay-architecture-1184-2026-11-05) supersedes this historical proposal's interface, scene-name, investigation and PSI-access recommendations. The scene category is **Action**, encompassing arrests, pursuits, rescue and de-escalation; combat remains a CWN procedure. PC PSI choices are Telepathy/Telekinesis, Mutants are NPC-only, Law of One is lore, and projection/teleportation/precognition are scripted. Broader options below are historical, not implementation permission. The issue #1164 remains open.
+
 > **Partially superseded by [#1178](https://github.com/TomiToivio/NooPunk/issues/1178) (2026-11-05).**
 > Physical and Astral nodes are **locations**, not conscious agents; the Astral graph is deferred
 > until scripted Astral Projection needs it. The current implementation is

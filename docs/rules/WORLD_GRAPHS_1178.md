@@ -145,3 +145,7 @@ Tests: `tests/test_helsinki_graph_adapter_1178.py`.
 `sys.path`. Import the graph as `src.world.graphs` (as the acceptance tests do) or as `world.graphs` only from a
 module that is itself inside `src/world`. A bare `import world.graphs` from an unrelated test can resolve to the
 MUD package depending on collection order — that failure is order-dependent and looks like a flaky import.
+
+## Gameplay and presentation policy (#1184)
+
+See the [current gameplay/interface architecture](../architecture/PORTABLE_INTERFACES_1053_1054.md#unified-gameplay-architecture-1184-2026-11-05) for evidence/knowledge boundaries, PSI access and the minimalist Python GUI plan. The scene vocabulary is Investigation, Exploration, **Action**, Social, Cyber and Astral. Action includes arrests, pursuits, rescue and de-escalation; combat is a possible CWN procedure within it. Existing serialized `combat` labels require compatible migration when runtime support lands; this documentation does not change the serializer. Graph positions are presentation data, not new movement rules. Player visibility must be filtered before layout or search.

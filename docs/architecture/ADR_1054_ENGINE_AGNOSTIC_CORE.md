@@ -115,3 +115,7 @@ seeded cross-adapter test. Nothing in `src/rules` changes.
 - **Concordia/Pygame adapters**: deferred until the console campaign milestone is met, per #1054 §5
   Milestone B.
 - **SWN faction strategy**: deferred to Milestone C.
+
+## Gameplay interface plan (#1184)
+
+The [canonical interface document](PORTABLE_INTERFACES_1053_1054.md#unified-gameplay-architecture-1184-2026-11-05) now consolidates graph views, evidence-first investigation, Action scenes, constrained PSI/Magick access and the PySide6/NetworkX graphical plan. It extends this ADR's adapter boundary without changing CWN. Historical component inventories above are not a claim that the new GUI or end-to-end campaign integration exists. #1084 remains the adapter implementation tracker.
