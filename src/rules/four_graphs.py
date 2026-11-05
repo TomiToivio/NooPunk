@@ -12,7 +12,11 @@ from typing import Any, Mapping
 import json
 
 GRAPH_FAMILIES = ("physical", "cyber", "social", "story")
-SCENE_TYPES = frozenset(("Investigation", "Exploration", "Combat", "Social", "Cyber", "Astral"))
+#: Scene types are interface shapes, not rules: CWN still resolves the uncertainty inside them.
+#: "Action" replaced "Combat" (#1184): a Finnish police scene is an arrest, a pursuit, a forced
+#: entry or a standoff, not a firefight, and the name should not promise a genre the setting does
+#: not have.
+SCENE_TYPES = frozenset(("Investigation", "Exploration", "Action", "Social", "Cyber", "Astral"))
 SOCIAL_MIN, SOCIAL_MAX = -4, 4
 
 

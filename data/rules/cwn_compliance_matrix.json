@@ -871,6 +871,7 @@
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution.py",
         "tests/test_rules_constitution_modules.py",
+        "tests/test_scene_types_1184.py",
         "tests/test_swn_faction_assets_1105.py",
         "tests/test_swn_faction_engine.py",
         "tests/test_swn_register_1105.py",
@@ -2162,6 +2163,7 @@
         "tests/test_issue571_lethality_lab.py",
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
+        "tests/test_scene_types_1184.py",
         "tests/test_swn_starships.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wwn_high_mage.py"

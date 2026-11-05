@@ -40,5 +40,5 @@ Edges are the same as Social Tags in the character sheet: Most important tag att
 Node attributes can be linked to the entire character sheet of an NPC or Faction.  
 
 ## Story Graphs: Series, Episodes and Scenes
-Scenes are divided by type into Investigation, Exploration, Combat, Social, Cyber and Astral. Some Scenes have several overlapping types: Character might use hacking (Cyber) and psionics (Astral) in a Combat Scene.  
+Scenes are divided by type into Investigation, Exploration, Action, Social, Cyber and Astral. Some Scenes have several overlapping types: Character might use hacking (Cyber) and psionics (Astral) in a Combat Scene.  
 

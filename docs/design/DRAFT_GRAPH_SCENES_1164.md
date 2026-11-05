@@ -23,7 +23,7 @@
 | **Social**, characters and campaign-local factions | directed relationship, trust/ideology/goal ties | CWN Talk/Connect/Lead/other verified checks + personality/goal/reputation tags | [PROPOSAL] adapter |
 | **Story**, Series→Episodes→Scenes | prerequisite/branch transitions | existing GoalLog and scene flags, no second XP engine | [PROPOSAL] adapter |
 
-**Six scene kinds:** Exploration, Cyber, Combat, Social, Investigation and Astral. `scene.types` can hold several. A Cyber scene is *not* the Cyber graph itself; a Combat scene may refer to all three spatial layers. **A graph is persistent topology; a scene is an episode of play referencing parts of topology.**
+**Six scene kinds:** Exploration, Cyber, Action, Social, Investigation and Astral. ("Action" replaced "Combat" in #1184: a Finnish police scene is an arrest, a pursuit or a forced entry, and the name should not promise a firefight.) `scene.types` can hold several. A Cyber scene is *not* the Cyber graph itself; a Combat scene may refer to all three spatial layers. **A graph is persistent topology; a scene is an episode of play referencing parts of topology.**
 
 **Recommended build order after separate approval:** physical & cyber views → story/goal link → social relationship view → investigation metadata adapter → bounded Astral + explicit cross-layer permissions. Do not implement all at once, or delay playable Act I until Astral is complete.
 
