@@ -69,3 +69,17 @@ example, a visible place to write your own version, and no YAML, JSON, field nam
 ## Issue #1168: Crisis narrative method and Nordic secret history (reviewable memo, NOT canon)
 
 [Read the design memo](../docs/proposals/CATASTROPHIC_NORMALITY_AND_NORDIC_1946_MEMO_DRAFT.md). It records the three authorial modes, *consistent consequences / flexible seriousness*, the CWN+AWN activation boundary, the 50/25/25 reaction heuristic, three competing 1946 contact models and the checked real-world Ghost Rocket/Hessdalen record. The memo is a proposal for Tomi to edit, approve or reject; it does not change the timeline, rulebook, world documents or code. `rulebook/7_TIMELINE.md`, `rulebook/20_FIRST_CONTACT_AND_PSI_AWAKENING.md`, `docs/world/` and the author's [ZONES](ZONES.md) remain authoritative.
+
+## Issue #1174: Europol rookie PC — three legal builds, Academy Edge, awakening ladder, issued kit
+
+**Draft design specification, not an implementation ticket.** [Read the specification](../docs/design/DRAFT_EUROPOL_ROOKIE_BUILD_1174.md).
+
+It delivers the six requested pieces: **A** three CWN-legal builds (Grunt / Geek / Freak) sharing one Background
+count, two Edges and one Focus; **B** a Background/Edge/Focus catalogue that says for each new Edge why no existing
+CWN Edge can do the job; **C** a four-level awakening ladder mapped onto the three canonical narrative stages, with
+the PSI/investigation limit restated; **D** the itemised kit with ownership, custody, Dispatch's human authority and
+failure modes; **E** a vertical slice proving all three tracks reach the same core clues; **F** a data-model
+sketch plus seven tests for a later implementation.
+
+CWN stays unmodified. It is the campaign-level companion to #1137 and reconciles its "no new Edges" recommendation
+with #1174's Academy Edge in §1.1 instead of quietly ignoring one of them.
