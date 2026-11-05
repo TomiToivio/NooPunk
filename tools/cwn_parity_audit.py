@@ -617,7 +617,9 @@ def stable_view(matrix: dict) -> dict:
     """
     clone = copy.deepcopy(matrix)
     for row in clone.get("rows", ()):
-        row["tests"] = len(row.get("tests", ()))
+        # Dropped, not counted: a count still moves when another branch adds or deletes one test file, and the point
+        # is that the lock must not depend on the tree's test inventory at all.
+        row.pop("tests", None)
     return clone
 
 

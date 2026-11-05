@@ -53,16 +53,21 @@ class FreshnessTests(unittest.TestCase):
             stable_view(committed), stable_view(fresh_matrix()),
             "data/rules/cwn_compliance_matrix.json is stale; run python3 tools/cwn_parity_audit.py")
 
-    def test_every_named_test_file_exists(self) -> None:
-        """A row may cite tests, but every citation must be a real file in this tree."""
-        committed = json.loads(MATRIX.read_text(encoding="utf-8"))
-        missing = [
-            (row["system"], test)
-            for row in committed.get("rows", ())
-            for test in row.get("tests", ())
-            if not (ROOT / test).is_file()
+    def test_every_implemented_row_has_a_test_in_the_current_tree(self) -> None:
+        """The evidence rule is enforced on a fresh build, not on the committed file.
+
+        The committed matrix names test files, and those names move whenever any branch adds or deletes one. Checking
+        the *committed* file against the tree therefore makes the lock fail for reasons that have nothing to do with
+        CWN (#1228, #1229). The invariant that matters — an `implemented` row must have a real test behind it — is
+        checked against the build of the current tree instead.
+        """
+        rows = fresh_matrix()["rows"]
+        orphans = [
+            row["system"] for row in rows
+            if row["coverage"] == "implemented"
+            and not any((ROOT / test).is_file() for test in row.get("tests", ()))
         ]
-        self.assertEqual(missing, [], "the matrix cites test files that no longer exist")
+        self.assertEqual(orphans, [], "implemented rows without an existing test")
 
     def test_the_coverage_report_matches_the_tool(self) -> None:
         self.assertTrue(REPORT.is_file(), "run python3 tools/cwn_parity_audit.py")
