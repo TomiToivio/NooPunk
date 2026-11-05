@@ -20,8 +20,8 @@ because the alternative is a character builder that quietly offers Precognition.
 | **Telekinesis** | **selectable** | yes | SWN discipline; Focus rules when verified |
 | Biopsionics, Metapsionics, Precognition, Teleportation | **no** | yes | SWN; NPCs and authored scenes only |
 | **Astral Projection** | **scripted** — OOBE, NDE, psychotronic event | yes | authored scene, never a selectable power |
-| **Mutant** (AWN Edge) | **no** — NPC-only | yes | AWN Mutant Edge; *Hybrid* is one possible, unprovable origin |
-| **Mentalist** (AWN Edge) | **selectable** | yes | AWN Mentalist rules, not reconstructed as SWN techniques |
+| **Mutant** (AWN Edge) | **yes** — Europol-approved rookie at character creation | yes | AWN pp.16-25; mutation is not proof of Hybrid ancestry or PSI |
+| **Mentalist** (AWN Edge) | **selectable at level 1**, incompatible with SWN Psychic and CWN Mage/Summoner | yes | AWN Deluxe pp.264-269; no Nerve-type cyberware |
 | **Spellcaster** (CWN Edge) | **selectable** | yes | CWN Edge rules |
 | **Summoner** (CWN Edge) | **selectable** | yes | CWN Edge rules |
 | Psychotronic implant effects | **granted while used** | yes | equipment rules; a grant is never a selectable option |
@@ -52,7 +52,7 @@ It may not make a prohibited discipline selectable at advancement. `Grant.select
 | **Psychic Training Focus levels and Effort increases** | They are printed rules. This repository does not transcribe them from memory (`docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md`; #1043) | The authorised edition, quoted into the private rules reference; then a parity test |
 | **Discipline technique lists and costs** | Same reason | Same |
 | **Astral Graph and navigation** | Deferred by #1178 §2 until an authored projection scene needs its own navigable graph | A scripted projection scene that requires it |
-| **Mutant mutation tables** | AWN tables are published; inventing probabilities would be worse than leaving them out | The book, plus a specific NPC template to implement |
+| **Mutant mutation tables** | The purchase and roll procedure is implemented, but individual effect catalogues are not reproduced in this public repository | Look up the printed AWN Deluxe pp.17-25 entries during character creation |
 
 `PSYCHIC_TRAINING_FOCUS_AVAILABLE = False` exists so that the omission is **visible in code**, not just
 in a document. A caller that tries to simulate the Focus can check the flag and say why.
