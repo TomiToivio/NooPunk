@@ -294,6 +294,23 @@ reason. Real geography; 2045 detail is **[PROPOSAL]**.
 * **Porkkala and the archipelago.** Former Soviet naval base, now a half-military, half-mythic
   coastline. *Mission use:* a cache with two provenances and no way to tell which is real.
 
+### 4.3 Three paper sites **[PROPOSAL]**
+
+The city's best mission locations are not dramatic. They are rooms where a document is *almost*
+available.
+
+* **Tähtitorninmäki observatory.** The hill above Kaivopuisto, the 19th-century dome, the
+  astronomical association's archive. The 1947 report names an observer at the observatory that
+  night; the logbook for that date is missing, and three separate agencies have requested the same
+  box ([the ONI transcription](../research/UFO_DISCLOSURE_BACKGROUND_RESEARCH.md#73-1947--helsinki-and-the-document-that-survives)).
+  *Mission use:* an archive visit that becomes a custody dispute; the plate is real, the log is not.
+* **The National Archives, Rauhankatu.** Finnish state records, ministry files, and the foreign
+  copies of Finnish incidents that the Finnish file does not contain. *Mission use:* a document
+  filed under a ministry number that was never issued.
+* **The tunnel that is not on the plan.** Helsinki's underground is real and large. Use it with one
+  rule: every tunnel scene is either a place a character can name on a real map, or **explicitly
+  invented and said so at the table**. No silent fictional geography.
+
 ### 4.3 What the city feels like **[PROPOSAL]**
 
 Sensors everywhere and trust nowhere; a functioning welfare state with a security budget it does not
@@ -313,10 +330,14 @@ Beyond Helsinki, grouped by act and by what the mission is *for*. Geography real
 | --- | --- | --- | --- |
 | **Turku archipelago** | Ferry links, old shipyards, a smuggling corridor that predates the EU | I–II | A cargo that arrives twice; a manifest with two versions |
 | **Tampere** | Industrial city, strong tech sector, an inland hub with its own political weight | II | A contractor whose factory line produces something not on the order |
+| **Virolahti** | The south-eastern crossing point, the Vaalimaa corridor, the fortified line itself | II–III | Two border officers who remember different countries on the far side of the same fence |
 | **Lappeenranta / the eastern border** | The EU's edge; the war's memory is three weeks old here | II–III | A border post that logs an object and is told to un-log it |
 | **Rovaniemi and Lapland** | Sparse sensors, long nights, the best dark sky in the country | III | A sighting with no corroboration and a witness who is not believed |
 | **Olkiluoto** | Nuclear power, spent fuel, a security regime that answers to nobody local | III | An intrusion the plant denies and the grid proves |
 | **Åland** | Demilitarised, Swedish-speaking, legally peculiar | III | A jurisdiction where Europol has no standing and the local police do not want it |
+| **Onkalo, Eurajoki** | The world's first deep geological repository for spent fuel: a tunnel system built to outlast civilisations | III–IV | A vault that was never commissioned, and a manifest that lists its contents as "rock" |
+| **Loviisa** | A Soviet-built VVER plant from the 1970s, still running, still answering to a security regime the town does not control | III | A reactor incident logged as an "observation" and a shift supervisor who will not sign |
+| **Hanko** | The other Soviet naval lease (1944–56): a garrison town with a divided memory and a Russian graveyard | II–III | A pension record for a "programme" resident who died in 1991 and drew a salary until 2019 |
 | **Kainuu / Kuhmo** | Deep forest, bear country, old military depots | III–IV | A "wilderness encounter" that leaves physical traces and no body |
 
 ### 5.2 Nordic and Baltic
@@ -328,6 +349,20 @@ Beyond Helsinki, grouped by act and by what the mission is *for*. Geography real
 | **Gotland** | Militarised island in the middle of the Baltic | III | A radar recording that both states deny owning |
 | **Kiruna** | Spaceport, mining, relocation, indigenous rights | III | A launch that photographs something it should not |
 | **Svalbard** | Treaty sovereignty, dark sky, everyone's and no one's | IV | A seed vault for things that are not seeds |
+
+### 5.3 The failed state *(high risk, late campaign)*
+
+Across the closed border, Russia is not a setting but an expedition. These are places a Europol
+officer has no standing to enter and every reason to.
+
+| Location | Why | Act | Mission |
+| --- | --- | --- | --- |
+| **St Petersburg** | The old imperial capital and its archives; a ruined metropolis with competing remnants | IV | A ПРОГРАММА archive, if it is still there, and a faction already inside it |
+| **Kola / Murmansk** | Nuclear submarine graveyards, radioactive hulks, a scavenger economy on the EU's doorstep | IV | Something sold out of a naval yard is offered to a Helsinki broker |
+| **Kostamus / Kuhmo corridor** | Logging roads, the old Soviet border, forest that has not been policed in years | III–IV | A 1946 convoy that never arrived, and a lake with something under the ice |
+
+**Rule:** these are not power fantasies. A mission across the border begins with forged standing
+and ends with a decision about whether to bring evidence home or leave a person behind.
 
 ### 5.3 European institutions
 
