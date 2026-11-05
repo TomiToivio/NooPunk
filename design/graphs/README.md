@@ -18,3 +18,12 @@ Niklas Luhmann's cybernetic sociology of Social Systems (https://en.wikipedia.or
 
 ## Physical
 These graphs represent the physical spacetime on various levels: 
+
+## Astral
+NoöPunk's Astral graph is a Conscious Agent Network based on theories of Federico Faggin (Quantum Information Panpsychism) and Donald Hoffman (Conscious Realism). PSI can be seen as similar to Cyberspace hacking: It is just a Quantum Network of Quantum Computers (Conscious Agents).
+NoöPunk Psionics are realistic and based on real-world parapsychology, especially Dean Radin (https://en.wikipedia.org/wiki/Dean_Radin). Just like Radin says, PSI is Magick and Magick is PSI.
+Astral Projection is an important element of NoöPunk and is based on Robert Monroe's (https://en.wikipedia.org/wiki/Robert_Monroe). Psionics always work through Astral as various types of Conscious Agents interact: It makes no difference if the character is fully active in a Physical location or having an OOBE in the Astral, the Psionics works through the Conscious Agent Network. Andrew Gallimore (https://en.wikipedia.org/wiki/Andrew_Gallimore) brings the idea that DMT allows humans to perceive the Astral Conscious Agent Network directly, which means we want the Astral to look like a psychedelic DMT trip into a multidimensional Hilbert space of Self-Transforming Machine Elves (Conscious Agents). 
+Think about Astral as an AR overlay on top of the Physical, or as fully immersive VR when you are having an OOBE. 
+NoöPunk uses tweaked SWN Psionics rules for Astral, PSI includes Magick and elements of WWN Magick rules, PSI can also be seen as hacking the Conscious Agent Network, which is why Psionics rules are also similar to CWN Hacking rules. 
+
+
