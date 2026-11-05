@@ -4,6 +4,12 @@
 written to issue [#1132](https://github.com/TomiToivio/NooPunk/issues/1132). It is **not** rules code, not a
 finished scenario, and not a commitment that every mechanic described here will be built.
 
+**The first complete tabletop case is now [`CAMPAIGN_01_CASE_TUESDAY.md`](CAMPAIGN_01_CASE_TUESDAY.md); its
+GM-only epistemic ledger is [`CAMPAIGN_01_LEDGER.md`](CAMPAIGN_01_LEDGER.md), and the connected episode sequence
+is [`CAMPAIGN_01_ROADMAP.md`](CAMPAIGN_01_ROADMAP.md).** The #1120 writing brief is
+[`../../design/CAMPAIGN_WRITING_PIVOT.md`](../../design/CAMPAIGN_WRITING_PIVOT.md). Those files extend this
+outline; they do not replace its four acts.
+
 Read the labels literally:
 
 | Label | Meaning |

@@ -62,6 +62,10 @@ These five *separate* draft documents are available for Tomi's edits and approva
 **Phases and gates:** Phase 1 is complete as a set of prose worksheets: every section has a written
 example, a visible place to write your own version, and no YAML, JSON, field names or internal identifiers. Phase 2 (Tomi writes and approves authored content) is pending. Phase 3 (tabletop rulebook, engine-neutral Python and Evennia integration) requires separate explicit authorization after Phase 2; **never implement example content as canon**. Existing [Greater Helsinki government draft](GREATER_HELSINKI_2045.md), [ZONES](ZONES.md) and [Europol campaign authority](../docs/world/EUROPOL_HELSINKI_1114.md) retain their established precedence. See [issue #1141](https://github.com/TomiToivio/NooPunk/issues/1141).
 
+## Issue #1120: Campaign writing pivot (AUTHOR PRIORITY)
+
+[Read the creative brief](CAMPAIGN_WRITING_PIVOT.md). It sets the priority on playable cases rather than another universe bible, the 50/25/25 social field, the cascade model and the escalation discipline. The first complete tabletop case is [CAMPAIGN_01_CASE_TUESDAY.md](../docs/campaign/CAMPAIGN_01_CASE_TUESDAY.md), with its GM-only [epistemic ledger](../docs/campaign/CAMPAIGN_01_LEDGER.md) and [episode roadmap](../docs/campaign/CAMPAIGN_01_ROADMAP.md). Those extend the existing [campaign outline](../docs/campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md); they do not replace it.
+
 ## Issue #1121: Greater Helsinki canon (CANON)
 
 [Read the operational register](GREATER_HELSINKI_2045.md); the stable-ID / provenance lookup is `data/world/greater_helsinki_1121.json` and `src/world/greater_helsinki_1121.py`. It records the merged Helsingin Kaupunki, four X-Risk governance levels, two economic and two diplomatic extraterrestrial zones, three Sirian Special Protection Zones, and the Hyvinkää and Loviisa Temporary Military Exclusion Zones. The author's earlier [ZONES](ZONES.md) note is preserved and points here. Claims keep their `setting_fact` / `agency_report` / `rumor` / `agency_debate` / `unresolved` status; no boundaries, coordinates, officials or treaty terms are invented, and CWN rules are unchanged.
