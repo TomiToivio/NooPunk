@@ -161,6 +161,16 @@ A Cyber camera can provide authorized footage of a physical corridor; it does no
 
 **GUMSHOE contrast:** (A) special investigative skill tags duplicate current CWN skill and eligibility records; (B) academy `Work/Know/Notice/Administer/Connect` plus equipment/controller/lab access cover the same competency. **Recommend B**, and use Capability tags **only for delegated services or specialized tools** not already represented.
 
+**[EXISTING] The GUMSHOE mapping is already written — and nothing consumes it.** `data/rules/gumshoe_investigative.json` (#932) maps **16 GUMSHOE investigative abilities** onto CWN skills, sourced from the GUMSHOE SRD (OGL):
+
+| Kind | Abilities (CWN skill) |
+|---|---|
+| academic | Research (Know), Textual Analysis (Administer), History (Know), Law (Administer), Occultism (Know), Forensic Pathology (Heal), Biology (Heal) |
+| technical | Cryptography (Program), Data Retrieval (Program), Evidence Collection (Notice), Ballistics (Fix), Chemistry (Fix) |
+| interpersonal | Interrogation (Talk), Reassurance (Talk), Streetwise (Connect), Bureaucracy (Administer) |
+
+A repository search finds **no module, test or tool** referencing the file. That settles the A-versus-B question with more than an argument: model A would re-derive a taxonomy that is already authored and sitting unused, spelled correctly (`Administer`, not "Administration"), and already mapped to the published skill list. **The work is to wire this file, not to write another one.** If a later phase needs `InvestigationCapability`, it should resolve `skill_ref` through this mapping rather than introduce new ability labels.
+
 ### 6.2 Europol academic versus practical specialities
 
 | Task | Candidate CWN skill and context | Training/source |
