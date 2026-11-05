@@ -6,7 +6,7 @@
 
 **Project Plato** was the original project; **European Information Security System (EISS)** is the official name of the operational, continent-scale system. **Plato** is standard operational shorthand. **Panopticon** is a *critical unofficial nickname*, used by journalists, dissidents and privacy advocates, not the system's formal designation. Historical uses of “Panopticon” to mean an official European AI refer to Plato/EISS instead. Do not confuse it with a rogue ASI.
 
-EISS was built *before* the NHI Crisis to secure European information networks and maintain the continental Great Firewall. The official name of that perimeter in operational documents is the **Plato/EISS perimeter** (informally “the Great Firewall”). **AEGIS is not established canon**: no separate firewall AI or independently named subsystem is required.
+EISS was built *before* the NHI Crisis to secure European information networks and maintain the continental perimeter. The official name of that perimeter in operational documents is the **Plato/EISS perimeter**. **AEGIS is not established canon**: no separate firewall AI or independently named subsystem is required.
 
 Pre-Crisis cybersecurity telemetry, network access controls and defensive monitoring gradually became civil defence, intelligence correlation, investigatory surveillance and psychotronic support infrastructure. Its protective origin and the later expansion of surveillance are both true. It works well enough for Europe to have survived the Crisis, but that fact cannot settle the arguments about proportionality, privacy or coercion.
 
@@ -27,7 +27,41 @@ The European comparative advantage is **experimental quantum computing, quantum-
 | **Closed organizational networks** | Isolated agency, corporate and laboratory networks, sometimes entirely offline | A warrant and a remote address do not create connectivity; physical entry, local terminals, credentials, media or implants may be needed |
 | **Physical data couriers** | Trusted people transporting storage media, sometimes between entirely disconnected networks | Chain of custody, courier interception, tampered media, contradictory manifests and physical surveillance |
 
-EuroNET is *not* a single omnipotent police database. The restricted public network, EISS internal records, member-state registries and sealed private networks have separate access paths and authorization levels. The Great Firewall is an **EISS perimeter service**, not an extra autonomous super-AI. Avoid the global always-online architecture of *Cyberpunk 2077*; *Cyberpunk RED* and *Johnny Mnemonic* are closer analogies.
+EuroNET is *not* a single omnipotent police database. The restricted public network, EISS internal records, member-state registries and sealed private networks have separate access paths and authorization levels. The perimeter is an **EISS service**, not an extra autonomous super-AI. Avoid the global always-online architecture of *Cyberpunk 2077*; *Cyberpunk RED* and *Johnny Mnemonic* are closer analogies.
+
+## Relation to Safenet and the Blackwall — and one word this page must not use
+
+`rulebook/22_CYBERSPACE_AFTER_THE_CRISIS.md` (#517, transcribed from the author's #344 text) already
+names three things, and it names them before #1200:
+
+- **the Blackwall** — the containment regime that separates the quarantined old Internet from human
+  infrastructure. Not a magical software barrier: severed backbones, air gaps, one-way exchanges,
+  hardened facilities, manual authorisation, offline verification (§22.3).
+- **Safenet**, colloquially **Slownet** — the UN-backed **global** public network built after the Crisis,
+  satellite-backed, rationed and deliberately bad (§22.4).
+- **a terminology rule**: *"Firewall is not an in-world name"* — `RULEBOOK.md` §34 retired it as an
+  Eclipse Phase-derived term — and *"Great Firewall … is unrelated and must not be confused with it"*
+  (§22.3).
+
+So this page does not call the European perimeter the "Great Firewall". **The Plato/EISS perimeter is the
+European operational component of the Blackwall**, and "Great Firewall" survives only as a journalistic and
+legacy phrase, on the same shelf as "Panopticon". `data/world/terminology_1200.json` records the terms and
+their status so a later document cannot quietly promote one.
+
+**[OPEN — author decision] EuroNET and Safenet.** #1200 introduces **EuroNET** as the EU-maintained public
+replacement network; #344 already has **Safenet** as the global public network. Two readings are
+consistent with both texts:
+
+1. **EuroNET is the European service on Safenet** — same constellation and gateways, with the EU's own
+   portal, registration and content rules on top. Users experience "EuroNET"; the transport is Safenet.
+2. **EuroNET is an EU-only network behind the perimeter**, with Safenet as the slower global link beyond
+   it. Two hops, two jurisdictions, and a clean explanation for why European services feel faster than
+   the global network and stop at the border.
+
+Reading 1 is cheaper for continuity; reading 2 is sharper for the setting's politics and gives the
+perimeter something to *do*. This page does not choose. Until it is chosen, write "EuroNET" for what
+European users see and "Safenet" only when the global transport is the subject, and do not state in new
+text that they are the same network.
 
 ## Institutions and authority [CANON at policy level]
 
@@ -81,4 +115,6 @@ Use existing **Investigation, Social, Exploration, Cyber and Action scenes**. CW
 - Model investigative leads with **existing graphs/tags/scenes** only; do not create a second evidence model.
 - Existing canon and code remain the source for rules and scene behavior; this text provides content/interaction guidance.
 
-**Related:** #1200, #1113, #1114, #1178, #1184, #1194.
+**Terminology record:** [`data/world/terminology_1200.json`](../../data/world/terminology_1200.json) — which word is the name, which is a nickname, which is retired, and which question is still open.
+
+**Related:** #1200, #1113, #1114, #1178, #1184, #1194, #517.
