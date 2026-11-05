@@ -121,3 +121,27 @@ two actors meet only when co-located; movement follows one edge; a camera is a C
 with a Physical location; an avatar moves without moving the body; Social ties survive
 Physical travel; a scene transition depends on a flag; the bundle round-trips; no Astral key
 exists.
+
+## Loading the canonical Helsinki places
+
+`src/world/helsinki.py` adapts the existing `data/world/helsinki_locations.json` into a `PhysicalGraph`: the six
+places keep their canonical ids, each gets its district as a `parent_id`, and `start_location()` returns the
+opening node instead of a hard-coded string.
+
+The location file has **no routes** — travel was an action of the old map panel — so routes come from the caller:
+
+```python
+from src.world.helsinki import load_helsinki_physical, start_location
+
+graph = load_helsinki_physical(routes=[(start_location(), "kurvi")])
+graph.enter("rookie", start_location())
+graph.move("rookie", "kurvi")
+```
+
+Route endpoints are validated against the loaded places, so a typo in a route fails at load rather than at play.
+Tests: `tests/test_helsinki_graph_adapter_1178.py`.
+
+**Import trap:** this repository also has `mud/world`, importable as `world` when MUD tests put `mud/` on
+`sys.path`. Import the graph as `src.world.graphs` (as the acceptance tests do) or as `world.graphs` only from a
+module that is itself inside `src/world`. A bare `import world.graphs` from an unrelated test can resolve to the
+MUD package depending on collection order — that failure is order-dependent and looks like a flaky import.
