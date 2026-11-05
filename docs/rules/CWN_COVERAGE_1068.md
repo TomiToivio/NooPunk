@@ -63,7 +63,7 @@ These keep the filename/keyword heuristic from #1025. Promoting a row to the ver
 | Attributes | implemented | cwn_backgrounds.py, cwn_character.py |
 | Backgrounds | implemented | cwn_backgrounds.py |
 | Contacts | implemented | cwn_backgrounds.py |
-| Edges | implemented | cwn_edges_foci.py |
+| Edges | implemented | cwn_edges_foci.py, psi_edges.py |
 | Foci | implemented | cwn_edges_foci.py, cwn_foci.py |
 | Focus Gear Budget | implemented | cwn_advancement.py, cwn_character.py |
 | Rules Of The Game | not_applicable | cwn_advancement.py, cwn_alienation.py |
