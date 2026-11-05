@@ -2,12 +2,14 @@
   "format": "noopunk.networks",
   "version": 1,
   "issue": 1200,
-  "note": "Four classes of connectivity after the collapse of the old Internet. A network's class decides what a scene may attempt before CWN Hacking is even relevant: a closed network needs a body, a badge or a medium in the room.",
+  "note": "Four classes of connectivity after the collapse of the old Internet. A network's class decides what a scene may attempt before CWN Hacking is even relevant: a closed network needs a body, a badge or a medium in the room. Canonical prose: docs/world/PLATO_EISS_EURONET_1200.md.",
   "perimeter": {
     "name": "the Plato/EISS perimeter",
-    "informal_name": "the Great Firewall",
+    "informal_name": null,
+    "informal_name_note": "\"Great Firewall\" and bare \"Firewall\" are NOT in-world names: rulebook/22_CYBERSPACE_AFTER_THE_CRISIS.md §22.3 and RULEBOOK §34 retire them. \"Great Firewall\" survives only as a journalistic/legacy phrase, on the same shelf as \"Panopticon\".",
     "subsystem_codename": null,
     "subsystem_codename_note": "AEGIS was floated as the firewall subsystem designation; it is NOT canon until the author confirms it.",
+    "relation_to_blackwall": "the European operational component of the Blackwall, which is the containment regime itself",
     "operated_by": "Europol, on behalf of the EU institutions that own, fund and audit it"
   },
   "networks": [
@@ -57,10 +59,35 @@
     }
   ],
   "authorisation_rungs": [
-    {"rung": 0, "action": "routine OSINT", "authority": "case", "signer": "investigator"},
-    {"rung": 1, "action": "authorised database search", "authority": "case_authorisation", "signer": "supervisor"},
-    {"rung": 2, "action": "intrusive surveillance", "authority": "warrant", "signer": "judge_or_review_authority"},
-    {"rung": 3, "action": "offensive hacking", "authority": "warrant_and_technical_authorisation", "signer": "judge_and_europol_operations"},
-    {"rung": 4, "action": "emergency containment", "authority": "pre_authorised_protocol_or_senior_officer", "signer": "duty_officer_or_senior_officer"}
+    {
+      "rung": 0,
+      "action": "routine OSINT",
+      "authority": "case",
+      "signer": "investigator"
+    },
+    {
+      "rung": 1,
+      "action": "authorised database search",
+      "authority": "case_authorisation",
+      "signer": "supervisor"
+    },
+    {
+      "rung": 2,
+      "action": "intrusive surveillance",
+      "authority": "warrant",
+      "signer": "judge_or_review_authority"
+    },
+    {
+      "rung": 3,
+      "action": "offensive hacking",
+      "authority": "warrant_and_technical_authorisation",
+      "signer": "judge_and_europol_operations"
+    },
+    {
+      "rung": 4,
+      "action": "emergency containment",
+      "authority": "pre_authorised_protocol_or_senior_officer",
+      "signer": "duty_officer_or_senior_officer"
+    }
   ]
 }

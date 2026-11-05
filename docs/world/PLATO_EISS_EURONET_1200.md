@@ -118,3 +118,25 @@ Use existing **Investigation, Social, Exploration, Cyber and Action scenes**. CW
 **Terminology record:** [`data/world/terminology_1200.json`](../../data/world/terminology_1200.json) — which word is the name, which is a nickname, which is retired, and which question is still open.
 
 **Related:** #1200, #1113, #1114, #1178, #1184, #1194, #517.
+
+## The authorisation ladder [PROPOSED — the rungs are a proposal, the distinction is canon]
+
+The document above says *bounded, preauthorised defensive automation* reacts at machine speed while consequential
+action needs a human. This is one way to write that as a ladder a table can actually argue about:
+
+| rung | action | authority required | who signs |
+| --- | --- | --- | --- |
+| 0 | routine **OSINT** on public EuroNET material | none beyond the case | the investigator |
+| 1 | **authorised database search** (records, registries, EISS holdings) | case authorisation and a purpose test | the case officer's supervisor |
+| 2 | **intrusive surveillance** (live intercept, location tracking, BCI monitoring) | a warrant | a judge or the designated review authority |
+| 3 | **offensive hacking** against a third party's system | a warrant **and** a Europol technical authorisation | judge + Europol operations |
+| 4 | **emergency containment** (isolation, takedown, closing a perimeter segment) | a pre-authorised protocol for bounded actions; a human authorisation for consequential ones | duty officer inside the protocol; a senior officer above it |
+
+**The line that matters:** dropping a hostile packet, throttling a flood or isolating a segment can happen under a
+written protocol at machine speed. Taking down a hospital, raiding a private network, naming a person an enemy or
+authorising force cannot. That distinction — not the paperwork — is the safety mechanism; the paperwork is the scene.
+
+**Machine-readable:** `data/world/networks.json` carries these rungs plus the four connectivity classes;
+`src/world/networks.py` answers one **permission** question (`can_attempt(network, remote=…, on_site=…,
+has_credential=…)`) and `requires_warrant(action)`. It never rolls and never resolves an intrusion — CWN Hacking stays
+the resolver. Tests: `tests/test_eu_networks_1200.py`.
