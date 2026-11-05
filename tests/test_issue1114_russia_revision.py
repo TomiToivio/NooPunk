@@ -16,6 +16,7 @@ ANCHORS = ROOT / "docs" / "research" / "SOVIET_PSI_UFOLOGY_ANCHORS_1114.md"
 TIMELINE = ROOT / "rulebook" / "7_TIMELINE.md"
 POST_NHI = ROOT / "docs" / "world" / "POST_NHI_WORLD_1005.md"
 EUROPOL = ROOT / "docs" / "world" / "EUROPOL_HELSINKI_1114.md"
+DECISIONS = ROOT / "docs/design/AUTHOR_DECISION_QUEUE.md"
 REGISTER = ROOT / "docs" / "DOCUMENT_REGISTER.md"
 
 
@@ -151,3 +152,15 @@ def test_the_register_names_one_authority_for_the_russia_question() -> None:
     rows = [line for line in body.splitlines() if "ALTERNATE_HISTORY_1114.md" in line]
     assert len(rows) == 1, "the register must list exactly one canonical setting-history page"
     assert "SOVIET_PSI_UFOLOGY_ANCHORS_1114.md" in body
+
+
+def test_the_decision_queue_does_not_assert_soviet_survival() -> None:
+    """D75 described the *old* canon long after the canon changed.
+
+    A decision log that keeps a superseded premise is worse than no log: the next agent reads it as the
+    current state of the question and writes a scene where the USSR still exists.
+    """
+    body = flat(DECISIONS)
+    assert "The canon now fixes the USSR's survival" not in body
+    assert "collapse of the USSR in 1991" in body or "collapsed in 1991" in body
+    assert "Mandela-effect material" in body
