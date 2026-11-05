@@ -66,6 +66,10 @@ example, a visible place to write your own version, and no YAML, JSON, field nam
 
 [Read the cosmology register](GALACTIC_MACHINE_WAR.md); the stable-ID/provenance companion is `data/world/galactic_machine_war_1122.json`. It records the ancient machine civilisation and its Von Neumann probe infection, the simultaneous US/China ASI escalations, the Three Universal Prohibitions, the Confederacy/Orion consent dispute, and the Mantid–Reptilian–Grey roles. Confederacy = the bloc humans call the **Zookeepers**; Orion = the **Greater Orion Arm Co-Prosperity Sphere**. The machine war is authorial/GM context, not public 2045 knowledge; local rogue-AGI causes and contested-history uncertainty remain intact. No mechanics.
 
+## Issue #1216: Author writing queue (STATUS INDEX)
+
+[Read the audit](../docs/design/AUTHOR_WRITING_QUEUE_1216.md). It maps Tomi's manuscript/canon queue to the actual canonical files, marks each item `READY` / `EMPTY` / `COVERED` / `OPEN`, and records the no-duplicate decisions: Case 01 and its GM ledger stay in `docs/scenarios/CASE_01_THE_TUESDAY_COMPLAINT.md`, the Nordic memo stays in `docs/proposals/`, and the empty Tony drafts are Tomi's to fill. It is not a manuscript and does not authorize agent-written fiction.
+
 ## Issue #1121: Greater Helsinki canon (CANON)
 
 [Read the operational register](GREATER_HELSINKI_2045.md); the stable-ID / provenance lookup is `data/world/greater_helsinki_1121.json` and `src/world/greater_helsinki_1121.py`. It records the merged Helsingin Kaupunki, four X-Risk governance levels, two economic and two diplomatic extraterrestrial zones, three Sirian Special Protection Zones, and the Hyvinkää and Loviisa Temporary Military Exclusion Zones. The author's earlier [ZONES](ZONES.md) note is preserved and points here. Claims keep their `setting_fact` / `agency_report` / `rumor` / `agency_debate` / `unresolved` status; no boundaries, coordinates, officials or treaty terms are invented, and CWN rules are unchanged.
