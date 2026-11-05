@@ -23,6 +23,13 @@ Three reference points, each contributing one thing:
 | **Citizen Sleeper** | Static illustrated panels, a text column, a visible cycle/pressure rhythm, restrained animation | Its dice-allocation economy (NoöPunk has CWN) |
 | **Hacknet** | Node-link maps, terminals as objects, traces with timers | Its bespoke intrusion mechanics (CWN hacking already exists) |
 | **Cyber Manhunt** | Investigation board: evidence pins, string links, contradictions made visible | Its puzzle minigames and point economy |
+| **hackmud** | A command-driven terminal that feels like an in-world tool: OSINT, messages, logs and intrusion as things you *type at*, with no chrome around them | Its multiplayer structure and its own command grammar — NoöPunk's commands are the CLI's, resolved by CWN |
+
+**The text interface comes first, not last.** Following *hackmud* (README, #1184), the terminal is a
+diegetic in-world tool rather than a fallback for players without a GPU: the same command vocabulary
+drives the GUI's command line, the text CLI and the Evennia client, so a player who prefers the
+terminal loses no content and gains no advantage. The window is the illustrated form of the same
+verb set.
 
 **One rule above all:** the client renders **player-known** state. A node the character has not
 discovered is not drawn greyed-out — it is not there. "Greyed out" leaks the shape of the answer.

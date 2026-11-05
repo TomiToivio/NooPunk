@@ -37,5 +37,19 @@ class ActionSceneTypeTests(unittest.TestCase):
                       scene_types=("Combat",))
 
 
+
+class TextInterfaceFirstTests(unittest.TestCase):
+    """The terminal is a first-class interface, and the docs say so (#1184 + README)."""
+
+    def test_both_design_documents_name_hackmud(self):
+        for name in ("ARCHITECTURE_1184_GAMEPLAY_INTERFACES.md",
+                     "GUI_PYTHON_1184_MINIMAL_GRAPH_UI.md"):
+            body = (ROOT / "docs" / "design" / name).read_text(encoding="utf-8")
+            self.assertIn("hackmud", body, f"{name} must carry the README's text-interface reference")
+
+    def test_the_readme_has_no_escaped_newlines(self):
+        body = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertNotIn("\\n\\n", body, "a literal backslash-n was pasted instead of a paragraph break")
+
 if __name__ == "__main__":
     unittest.main()
