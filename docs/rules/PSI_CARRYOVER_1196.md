@@ -92,6 +92,30 @@ Three constraints from the issue are enforced rather than described:
 physical graph, the cyber graph and the social graph, with one sheet. Not being jacked in returns
 `None` rather than raising — a character without an avatar is normal.
 
+### When a handle differs from the canonical id
+
+`WorldSession.identity()` assumes the actor ID is the same string in every view, which is the normal
+case. When it is not — `act.rookie` on the sheet, `av.rookie` jacked into a camera, `rookie` in a
+contact list — the mapping must be *declared*, not inferred:
+
+```python
+from world.actor_registry import ActorRegistry, CanonicalActor, Handle
+
+book = ActorRegistry()
+book.register(CanonicalActor("act.rookie", "Rookie", (
+    Handle("physical", "act.rookie"),
+    Handle("cyber", "av.rookie"),     # the avatar is a session, not a person
+    Handle("social", "rookie"),
+)))
+book.canonical("cyber", "av.rookie")        # -> "act.rookie"
+book.check_graphs(graphs)                   # every occupant and avatar resolves
+book.one_sheet(sheets={"act.rookie": "sheet.rookie"})
+```
+
+Two rules are enforced there that a session cannot express: a handle belongs to exactly one actor, and
+**an avatar id that is also a registered actor is refused** — an avatar is a session, not a person
+(#1178 node semantics). `WorldSession` and `ActorRegistry` agree on the seventh check; neither rolls.
+
 ## What this does not do
 
 - It does not implement the Astral graph. Nothing needs one yet.
