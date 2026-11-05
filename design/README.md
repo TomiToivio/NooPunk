@@ -65,3 +65,7 @@ example, a visible place to write your own version, and no YAML, JSON, field nam
 ## Issue #1164: Graph rules and scene authoring proposal (NOT author-approved)
 
 [Read the five-graph CWN-first design proposal](../docs/design/DRAFT_GRAPH_SCENES_1164.md). It maps Physical/Cyber/Astral/Social/Story graph schemas, a Series→Episode→Scene authoring format, GUMSHOE-lite investigation adapters, GoalLog reuse and bounded PSI Verb×Target permissions to current code and rules. This is an agent draft for Tomi to edit. No implementation is authorized; the original [graphs README](graphs/README.md) remains the author's unchanged source.
+
+## Issue #1168: Catastrophic normality and Nordic secret-contact memo (unapproved)
+
+[Read the proposed AWN/CWN Crisis overlay, three-mode narrative style guide and 1946 Nordic contact models](../docs/proposals/DESIGN_MEMO_1168_CATASTROPHIC_NORMALITY_NORDIC_CONTACT.md). Tomi's review required: not canon, and no timeline/rulebook/Python changes authorized. Complements the #1156 research dossier and proposals; leaves existing author-authored documents untouched.
