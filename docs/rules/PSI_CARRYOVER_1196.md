@@ -19,9 +19,9 @@ and they stay unbuilt rather than guessed.
 
 ---
 
-## §2 Mutant — NPC-only, three independent facts
+## §2 Mutant — playable Europol-approved PC or NPC, three independent facts
 
-`MutantTemplate` refuses to exist without a quoted mutation. A `MutationCatalogue` starts **empty**
+`MutantTemplate` refuses to exist without a quoted mutation. The new `awn_mutant.MutantBuild` supports approved rookies, Stigmas, points and purchasing using printed AWN Deluxe p.16. A `MutationCatalogue` starts **empty**
 and every entry demands a `Citation` (source, page, quote). A template drawing on an empty catalogue
 raises rather than inventing a mutation — which is the honest state until somebody transcribes the
 published tables.
@@ -44,7 +44,7 @@ problem at once:
 - a Partial Psychic's `restricted_discipline` is respected — the Edge cannot widen it
 - two Edges may not both advance the same discipline
 - two Edges may not both own psionic technique progress (the *second progress track* the issue names)
-- `Mutant` is refused by the existing policy before any of this is reached
+- `Mutant` is allowed for Europol-approved PCs during character creation, without making them Hybrids or psychics
 
 `EDGE_SOURCES` records where each Edge comes from, so an unknown name is refused rather than assumed.
 
