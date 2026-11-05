@@ -65,13 +65,16 @@ def available_actions(scene: StoryNode) -> tuple[SceneAffordance, ...]:
     """Return allowed verbs without revealing hidden world facts or performing rolls."""
     if scene.kind != "scene":
         raise GraphError("actions belong to a Story scene")
-    if "Astral" in scene.scene_types:
+    if any(kind.strip().lower() == "astral" for kind in scene.scene_types):
         raise GraphError("Astral scenes are postponed; scripted dreams use authored narrative")
     if not scene.scene_types:
         raise GraphError("a playable scene needs a scene type")
     result: list[SceneAffordance] = []
     seen: set[str] = set()
-    for kind in scene.scene_types:
+    canonical = {kind.lower(): kind for kind in AFFORDANCES}
+    for raw_kind in scene.scene_types:
+        # StoryNode validation is case-insensitive; normalize at the interface boundary.
+        kind = canonical.get(raw_kind.strip().lower(), raw_kind)
         # Refuse unsupported extensions, even if they have a valid Story vocabulary.
         if kind not in AFFORDANCES:
             raise GraphError(f"scene type is not playable now: {kind}")
