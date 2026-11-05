@@ -174,3 +174,37 @@ explicit, and the first mission can be built without a new rules engine per acti
 Tactical maps; procedural dream or astral action systems; full social simulation; a custom investigation
 subsystem; emotion or lie meters; an investigation-point economy; anything that changes a CWN procedure.
 Sophisticated spatial UI may be added later without touching the rules.
+
+
+## 2026-11-05 simplification: canonical scene and tag implementation slice
+
+**Author's latest decision supersedes older complex mod/scene proposals.** CWN is immutable; SWN (notably psionics and factions) and AWN are optional compatible overlays. WWN is not planned for active gameplay. Law of One is lore only. The runtime graph families remain **Physical, Cyber, Social, Story**; Astral navigation and Astral Scenes are deferred. Older files may remain as archived references, not active design obligations.
+
+The four and only four *new tag categories* are:
+- **Social Tags:** existing `src/world/graphs.py::Relationship`, directional relationship scores −4…+4 with explicit evidence. Missing is unknown, not neutral. Social scenes can inspect these but cannot alter the scores without an actual authored consequence.
+- **Goal Tags:** existing `src/rules/goals.py::Goal`/`GoalLog`. Short, medium and long objectives may drive Episode/Series transition prerequisites. XP comes only from CWN.
+- **Clue Tags:** existing `src/rules/investigation.py::Clue` with provenance, inquiry/access/competency requirements and leads, distinguishing evidence from claims and hypothesis. Essential clues are never lost to a failed roll.
+- **Personality Tags:** `src/rules/scene_tags.py::PersonalityTag` is descriptive: owner and trait with optional evidence. It informs dialogue/roleplay but creates **no modifiers, emotion system, affinity algorithm or checks**.
+
+`src/rules/scene_tags.py` deliberately re-exports the three canonical record types rather than making a second tag engine. `src/rules/scene_play.py` is a thin catalogue of **five playable** scene kinds and action dispatch ownership (no second resolution engine):
+- **Social:** dialogue, questioning, persuasion, evidence presentation. CWN Talk/Connect/Lead and the existing investigation/social modules decide consequences. NPC personality and relationship are context, not automatic roll bonuses.
+- **Investigation:** search, interview, collect, OSINT, Panopticon access, informants, analysis and linking clues. GUMSHOE's automatic core-clue principle applies; CWN handles risk, access, legality, time and pressure. Author the source and provenance for each clue. Panopticon public/authorized lookup is investigation; illegal intrusion routes to Cyber and CWN hacking.
+- **Exploration:** observe and traverse Physical room/district graphs, interact with world objects. CWN governs movement/challenges, with no bespoke exploration economy.
+- **Cyber:** scan, connect, hack and device operation over a Cyber network. Devices are graph nodes, avatars occupy them, and `cwn_hacking` remains the resolver. Never equate seeing a network node with successfully accessing it.
+- **Action:** arrest, foot/vehicle pursuit, restraint, negotiation and exceptional fights. Ordinary CWN checks/chase/vehicle/combat procedures apply where appropriate. This replaces the scene name **Combat**; violence is rare, short, proportionate and consequential.
+
+### Scene proposals resolved: no proliferation of scene types
+
+**Interrogation:** a **Social + Investigation** scene with optional Cyber equipment and a scripted conversation/contradiction interface, taking *Silicon Dreams* as inspiration for careful questioning. The player may ask, present evidence, challenge inconsistency, seek consent and document testimony. No dedicated Interrogation Scene kind, no emotion meter, no guaranteed lie detector, and no evidence hidden behind a failed CWN roll. Coercion and procedural violations have authored consequences.
+
+**Data Collection:** an **Investigation scene mode** covering OSINT, authorized Panopticon queries (the *Orwell* aesthetic), HUMINT/informants, surveillance, lab requests and lawful records access. It creates Clue Tags with source/provenance, acquisition method, access control and uncertainty. Intrusion into a protected system invokes a **Cyber overlay** and existing CWN rules. Do not create a second data-collection resource economy.
+
+**Data Analysis:** an **Investigation scene mode** that presents the collected clues as a *player-visible* case graph. The player links sources to hypotheses, can contradict or retract hypotheses, compares testimony and proposes a theory. A wrong inference is permitted, and a repeated assertion is not proof. Never leak world-truth nodes through the interface. Existing `CaseSession.attach`, `choose_theory` and `conclude` provide the canonical first slice.
+
+**Astral:** postponed entirely as a navigable graph and selectable scene type; scripted dreams/OOBEs/NDEs can be authored story events without an Astral rule engine.
+
+**Story graph:** Series → Episode → Scene nodes and conditional scene transitions remain in `src/world/graphs.py`. A Scene may declare several of the five types. Action dispatch describes *which module is responsible*, but does not itself execute that module. The console/Evennia/GUI adapter must integrate these actions in a follow-up change, using the one canonical session and save format.
+
+### Verification boundary
+
+Tests introduced with this slice assert the five kind catalogue, preservation of existing CWN ownership, tag-record reuse, multiple-scene overlays, collection/analysis modes, and no playable Astral mode. **A dispatch catalogue is not the same thing as full playable scene integration.** Existing graph, investigation, social and CWN tests remain required before merge; a real mission needs to exercise each kind end-to-end. Do not close an integration issue as fully completed based on this slice alone.

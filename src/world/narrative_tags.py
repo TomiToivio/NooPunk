@@ -18,9 +18,9 @@ Three rules keep them from becoming a second rules engine:
 
 from __future__ import annotations
 
+from collections.abc import Iterable, Mapping
 from dataclasses import asdict, dataclass, field
 from enum import Enum
-from typing import Iterable, Mapping
 
 
 class NarrativeTagError(ValueError):
@@ -303,7 +303,7 @@ class TagBook:
         }
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Iterable[Mapping]]) -> "TagBook":
+    def from_dict(cls, data: Mapping[str, Iterable[Mapping]]) -> TagBook:
         book = cls()
         for raw in data.get("social", ()):
             item = dict(raw)

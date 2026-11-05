@@ -22,8 +22,9 @@ be loud, or someone will ship a scene that resolves to nothing.
 
 from __future__ import annotations
 
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass, field
-from typing import Any, Iterable, Mapping
+from typing import Any
 
 # The repository imports its own packages two ways: from the repository root as ``src.world``
 # (pytest's rootdir is on the path) and with ``src/`` itself on the path as ``world`` (the
@@ -161,8 +162,10 @@ def run_social_scene(
             scene_type=frame.scene_type,
             passed=False,
             notes=(
-                f"no lever on {holder}: nothing in the tag book bears on this ask, "
-                "so the conversation does not move and no check is made",
+                (
+                    f"no lever on {holder}: nothing in the tag book bears on this ask, "
+                    "so the conversation does not move and no check is made"
+                ),
             ),
         )
 
