@@ -297,13 +297,15 @@
       "pdf_page": null,
       "godot": [],
       "python": [
-        "src/rules/cwn_edges_foci.py"
+        "src/rules/cwn_edges_foci.py",
+        "src/rules/psi_edges.py"
       ],
       "mud": [],
       "command": [],
       "coverage": "implemented",
       "tests": [
-        "tests/test_cwn_edges_foci.py"
+        "tests/test_cwn_edges_foci.py",
+        "tests/test_issue_1196_carryover.py"
       ],
       "tested_against_book": false,
       "save_safe": false,
@@ -597,6 +599,7 @@
         "tests/test_goals_1119.py",
         "tests/test_investigation_terminal_scenes.py",
         "tests/test_issue502_mission_outcomes.py",
+        "tests/test_issue_1196_carryover.py",
         "tests/test_mud_cwn_parity_950.py",
         "tests/test_no_duplicate_implementations.py",
         "tests/test_psionics_single_engine.py",
