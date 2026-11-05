@@ -72,5 +72,5 @@ def compile_graphs(records: list[Mapping[str, Any]]) -> FourGraphs:
     return FourGraphs.from_dict({
         "format": "noopunk.four_graphs", "version": 1,
         **grouped,
-        "avatars": {},
+        "avatars": dict(grouped["cyber"].get("avatar_operators", {})),
     })
