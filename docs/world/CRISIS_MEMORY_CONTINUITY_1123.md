@@ -13,7 +13,7 @@
 [xenopolitics](../../rulebook/15_XENOPOLITICS.md) · [PSI systems](../../rulebook/6_PSYCHIC.md) ·
 [first contact](../../rulebook/20_FIRST_CONTACT_AND_PSI_AWAKENING.md) ·
 [campaign frame](../campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md) · [Crisis memo](../proposals/CATASTROPHIC_NORMALITY_AND_NORDIC_1946_MEMO_DRAFT.md)
-([proposals](../proposals/CATASTROPHIC_NORMALITY_AND_NORDIC_1946_MEMO_DRAFT.md)) · [#1178 PSI restriction](../design/DRAFT_NOOPUNK_PSIONICS.md)
+([proposals](../proposals/CATASTROPHIC_NORMALITY_AND_NORDIC_1946_MEMO_DRAFT.md)) · [#1178 PSI restriction](../design/DRAFT_NOOPUNK_PSIONICS.md) · [escalation ladder](ONTOLOGY_ESCALATION_1123.md)
 
 ---
 
@@ -68,23 +68,16 @@ answers its own biggest questions, and 5 and 7 are the two that can go badly wro
 
 ---
 
-## 3. The escalation ladder as a design table
+## 3. The escalation ladder belongs to another page
 
-Each step is *verified in-universe* eventually, and none is explained to the rookie when it arrives. What changes is
-**what can be demonstrated**, not what people believe.
+The four rungs — extraterrestrial → interdimensional → extratempestrial → cryptotempestrial, each verified in-world
+before the next is available — are recorded properly in
+[`ONTOLOGY_ESCALATION_1123.md`](ONTOLOGY_ESCALATION_1123.md), which owns that subject. This page only needs the rule
+that touches the memoir:
 
-| step | becomes demonstrable | what stays contested | the rookie's access |
-|---|---|---|---|
-| **1. Extraterrestrial** | nonhuman civilisations exist; the Confederacy contacts humanity | which faction is which, and what they want | the Disclosure broadcast; her own memories of the Crisis |
-| **2. Interdimensional** | the phenomenon is not ordinary space travel; noetic phenomena are real and measurable | what consciousness *is*, and which reports are genuine | later cases; specialist psykers; the academy's sanitised version |
-| **3. Extratempestrial** | FTL travel involves temporal displacement; the Pleiades may have been colonised by **future humans** | whether a given humanoid is a colonist, a descendant or a coincidence | a case, not a lecture — a document that predates its own author |
-| **4. Cryptotempestrial** | an Earth-hidden, temporally entangled population exists (the Tridactyls) | the mechanism, the population's extent, and whether "hidden" ever meant "absent" | late campaign; author-controlled |
-
-**The design rule for the memoir:** the four steps are the **world's** structure, not the character's. A teenager in
-2041 hears step 1 on television and step 2 as a rumour in a school corridor. Steps 3 and 4 are things she learns as
-an officer, and only if the campaign goes there.
-
----
+* **the ladder is the world's structure, not the character's.** A teenager in 2041 hears rung 1 on television and
+  rung 2 as a corridor rumour; rungs 3 and 4 are things she learns as an officer, and only if the campaign goes
+  there. The memoir stops at rung 1, as television and confusion.
 
 ## 4. The memoir boundary: what she could plausibly know, phase by phase
 
@@ -144,9 +137,12 @@ The two instructions are not actually in collision if read as **reference versus
 * **The SWN-compatible engine remains the mechanical carrier** (#1178): PC-selectable disciplines are **Telepathy and
   Telekinesis**, with Effort as the only pool, and the psychotronic implant as the starting kit.
 
-So: *model the list on AWN Mentalist's restraint; pay for it in the SWN-compatible accounting.* That reading is a
-**[PROPOSAL]** — if the author means "replace the carrier with AWN Mentalist", that is a different and much larger
-decision, and it would need its own issue.
+**And the repository already implements this split**, in
+[`src/rules/psi_access.py`](../../src/rules/psi_access.py): `PC_DISCIPLINES` is `("Telekinesis", "Telepathy")`, while
+`PC_EDGES` is `("Mutant", "Mentalist", "Spellcaster", "Summoner")`. Mentalist is therefore a **selectable Edge with
+its own published mechanics**, not a SWN discipline — which is exactly the "restraint without a second accounting
+system" reading. The open question is narrower than it first looked: whether the *Mentalist's own* Effort-like
+accounting is allowed to run beside the SWN Effort pool, or must be converted. That one is the author's.
 
 ### 5.3 The bounded PC list, and the specialists
 
