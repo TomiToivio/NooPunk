@@ -55,9 +55,10 @@ class TopologyTests(unittest.TestCase):
         self.assertFalse(allowed)
         self.assertFalse(self.topology.network("courier").remotely_reachable)
 
-    def test_the_perimeter_is_plato_eiss_and_has_no_canonical_subsystem_name(self) -> None:
+    def test_the_perimeter_is_plato_eiss_and_has_no_in_world_nickname(self) -> None:
         self.assertEqual(self.topology.perimeter_name, "the Plato/EISS perimeter")
-        self.assertEqual(self.topology.informal_perimeter_name, "the Great Firewall")
+        # "Great Firewall" and bare "Firewall" are retired in-world terms (22_CYBERSPACE §22.3, RULEBOOK §34).
+        self.assertIsNone(self.topology.informal_perimeter_name)
         self.assertIsNone(self.topology.subsystem_codename)   # AEGIS is not canon
         self.assertIn("Europol", self.topology.operated_by)
 

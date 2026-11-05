@@ -61,7 +61,7 @@ class AuthorisationRung:
 @dataclass(frozen=True, slots=True)
 class Topology:
     perimeter_name: str
-    informal_perimeter_name: str
+    informal_perimeter_name: str | None
     subsystem_codename: str | None
     operated_by: str
     networks: tuple[Network, ...]
@@ -126,7 +126,9 @@ def load_topology(path: str | Path | None = None) -> Topology:
     perimeter = raw.get("perimeter", {})
     return Topology(
         perimeter_name=str(perimeter.get("name", "")),
-        informal_perimeter_name=str(perimeter.get("informal_name", "")),
+        informal_perimeter_name=(
+            str(perimeter["informal_name"]) if perimeter.get("informal_name") is not None else None
+        ),
         subsystem_codename=perimeter.get("subsystem_codename"),
         operated_by=str(perimeter.get("operated_by", "")),
         networks=tuple(_network(entry) for entry in raw.get("networks", ())),

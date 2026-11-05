@@ -267,4 +267,4 @@ the perimeter; and **data couriers**, who carry what the network cannot be trust
 The system behind that perimeter is **Project Plato / European Information Security System (EISS)**, operated by
 Europol: not an ASI, heavily regulated, human-operated, and genuinely necessary. Its powers, the authorisation ladder
 and the naming rules (including why *Panopticon* is not its name) are in
-[EU networks and Plato](EU_NETWORKS_AND_PLATO_1200.md).
+[EU networks and Plato](PLATO_EISS_EURONET_1200.md).
