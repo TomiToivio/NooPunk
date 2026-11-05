@@ -153,15 +153,9 @@ technologies in radically different ways.
 States, federations, corporations, movements, religions, cities, and regions respond
 differently to AI, PSI, NHI, transhumanism, and networked power.
 
-A **limited / hybrid war between the Soviet Union and Europe** ends without the USSR breaking
-apart. The crisis accelerates European integration: the **European Union becomes a federal
-superpower and Ukraine joins the EU**.
+The **Soviet Union dissolves in 1991**. Ukraine becomes independent and later joins the **European Union**. Shortly before the **NHI Crisis**, a short **EU–Russia war** ends abruptly when UAPs intercept nuclear weapons. In the aftermath, **Russia fragments into a chaotic failed state** and Finland maintains a closed, fortified eastern border. Do not invent the exact EU accession date, war dates or interception details.
 
-The USSR's later turn from a successful reform era toward a militarised, expansionist war is a
-**deliberate narrative gap**, not a settled sequence. The Soviet Union survives, reforms and
-modernises; how that state becomes the aggressor of the later war is reserved for the author. Do
-not fill it with a post-Soviet transition, a Russian Federation, or an invented coup. See
-[the alternate-history canon](../docs/world/ALTERNATE_HISTORY_1114.md#6-the-unresolved-causal-link).
+Every person is affected by a **Soviet Mandela Effect**: apparently authentic evidence also suggests that the USSR survived, modernised and was led by the Cosmist punk Troika. Neither interpretation of the conflicting evidence is resolved. **КГБ «ПРОГРАММА»** and **MJ-12** are persistent unsolved Europol/UNSA intelligence mysteries, not a confirmed master conspiracy. See [the binding setting chronology](../docs/world/ALTERNATE_HISTORY_1114.md).
 
 Some regions remain comparatively stable. Others experience war, authoritarian reaction,
 corporate sovereignty, institutional breakdown, radical federalization, commons-oriented
