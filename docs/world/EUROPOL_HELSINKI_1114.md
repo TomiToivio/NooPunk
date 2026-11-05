@@ -156,3 +156,11 @@ NoöPunk.
 
 These are recorded as open questions in
 [Alternate history §9](ALTERNATE_HISTORY_1114.md#9-open-author-decisions).
+
+## 8. Plato/EISS operations and bounded police powers (#1200)
+
+Europol is a principal **civilian operational authority** for the continent's Project Plato / European Information Security System (EISS), including the **Plato/EISS Great Firewall perimeter**, forensic cyber defence, case-intelligence correlation and psychotronic detection/stabilization. The official network and institutional model is documented in [Plato/EISS and EuroNET](PLATO_EISS_EURONET_1200.md). **Panopticon** is a critical press nickname, not the system's official title. The public EuroNET must not be confused with restricted EISS records or isolated private networks.
+
+This operational responsibility **does not amend §3**: field staff cannot unilaterally arrest, intrusively search or hack private networks. Public OSINT, authorized internal record retrieval, warranted surveillance, scoped offensive intrusion and emergency containment have distinct approval and audit requirements. Local Finnish coercive acts need competent national authorities. Eurodef handles military cyber defence; UNSA may coordinate X-risk response within its contested mandate. Oversight, judicial challenge and national autonomy create narrative stakes despite EISS's immense technical power.
+
+For scenes, use existing Social/Cyber/Physical/Story graphs, CWN Cyber actions, and Clue, Social, Goal and Personality Tags. A Plato record is **evidence with provenance, not truth**. An air-gapped target still requires physical access. Start with mundane incidents, cross-border leads, flawed data and authorization bottlenecks before escalating to extraordinary threats.
