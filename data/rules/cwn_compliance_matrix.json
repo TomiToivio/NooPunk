@@ -878,6 +878,7 @@
         "tests/test_wn_core.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wn_saves_and_migration.py",
+        "tests/test_world_graphs_1178.py",
         "tests/test_wwn_high_mage.py",
         "tests/test_wwn_shared_chassis.py"
       ],
