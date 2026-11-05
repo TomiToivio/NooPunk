@@ -7,6 +7,8 @@
 > it is not the player's default employer.
 >
 > Setting history and the authority for this change: [Alternate history — the NoöPunk timeline](ALTERNATE_HISTORY_1114.md).
+> Jurisdictions, extraterrestrial zones and the two military exclusion areas are in the
+> [Greater Helsinki X-Risk register](../../design/GREATER_HELSINKI_2045.md) (#1121).
 
 ## 0. What Europol operates (#1200)
 

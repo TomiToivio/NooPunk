@@ -1,4 +1,10 @@
 # Extraterrestrial Special Economic Zones
+
+> **Canonical narrative register: [GREATER_HELSINKI_2045.md](GREATER_HELSINKI_2045.md)** (#1121).
+> This file remains Tomi's earlier source note; the register and
+> `data/world/greater_helsinki_1121.json` are the structured reference for jurisdictions,
+> zone categories, Sirian protection zones and exclusion areas.
+
 By 2045 Helsinki, Espoo and Vantaa have been merged into a single city.
 As stated previously, the current EU political system divides power into three levels, with UN as a semi-functional de-facto world government with little power in anything else than global X-Risk issues. The UN hasn't been a complete success, it exists but the only organization with real power is UNSA. While all countries are still members of the UNSA, many countries are now failed or rogue states, with UNSA able to take little action beyond monitoring the situation. EU is one of the superpowers keeping the UNSA standing and collaborates fully with UNSA, but the feeling is that Europol can deal with local issues and UNSA should focus on the failed and rogue states. 
 So in X-Risk issues the government levels and responsible agencies are: 
