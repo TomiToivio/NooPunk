@@ -121,12 +121,14 @@ def validate_selection(
     disciplines: Iterable[str] = (),
     edges: Iterable[str] = (),
     focus_disciplines: Iterable[str] = (),
+    partial_psychic: bool = False,
 ) -> list[str]:
     """Return every violation in one pass, so a character builder can show all of them at once.
 
-    ``focus_disciplines`` are the disciplines a Psychic Training Focus would advance. They must also
-    be player-allowed — that is the loophole the issue names: a Focus must not become a back door to
-    a second, prohibited discipline.
+    ``focus_disciplines`` are the disciplines a Psychic Training Focus would advance.
+    Full Psychics may have both player-allowed disciplines; Partial Psychics remain
+    restricted to their single chosen discipline. Neither may use a Focus to acquire
+    an NPC-only discipline. This only validates access, not the published Focus benefits.
     """
     problems: list[str] = []
     chosen = list(disciplines)
@@ -134,10 +136,9 @@ def validate_selection(
         decision = discipline_decision(name)
         if not decision.allowed:
             problems.append(decision.reason)
-    if len(set(chosen)) > 1:
+    if partial_psychic and len(set(chosen)) > 1:
         problems.append(
-            "a player character may hold only Telepathy or Telekinesis, not several disciplines "
-            "(#1178 §1)"
+            "a Partial Psychic must stay in their one chosen discipline (#1178 §1)"
         )
     for name in edges:
         decision = edge_decision(name)
@@ -147,7 +148,7 @@ def validate_selection(
         decision = discipline_decision(name)
         if not decision.allowed:
             problems.append("Psychic Training Focus: " + decision.reason)
-        elif chosen and name not in chosen:
+        elif partial_psychic and chosen and name not in chosen:
             problems.append(
                 f"Psychic Training Focus may not open a second discipline ({name!r}); "
                 "for the PC the Focus stays inside Telepathy or Telekinesis (#1178 §1)"
