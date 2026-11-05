@@ -35,6 +35,13 @@ Three surviving ASI outcomes define the crisis:
 - **Thanatos** — the merged remnant of other hostile Singularities, escaped through a
   wormhole unknown even to Confederacy and Orion. It is now a possible galactic threat.
 
+> **Name collision — two different things (#1200).** The **Panopticon ASI** described above is *not*
+> the **"Panopticon"** of the 2045 setting. There, it is the critical, unofficial nickname for the
+> EU's Project Plato / European Information Security System (EISS): a regulated, human-operated
+> bureaucratic system and explicitly **not** a rogue ASI. In any 2045 European institutional
+> context, "Panopticon" means Plato/EISS. See
+> [world/PLATO_EISS_EURONET_1200.md](../world/PLATO_EISS_EURONET_1200.md).
+
 The practical post-crisis alignment doctrine is architectural as well as technical:
 **augmentation over machine sovereignty, distributed capability over one god-process,
 human/collective authorization for high-impact action, and auditable human responsibility.**
