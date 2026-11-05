@@ -7,7 +7,7 @@
       "id": "home_helsinginkatu",
       "name": "Home · Helsinginkatu",
       "district": "Sörnäinen / Kallio",
-      "description": "Yesterday you moved into a modest UNSA-provided flat on Helsinginkatu. Unpacked boxes, passing trams, cheap bars and an uneasy meeting of old working-class and new bohemian Helsinki.",
+      "description": "Yesterday you moved into a modest Europol-provided flat on Helsinginkatu. Unpacked boxes, passing trams, cheap bars and an uneasy meeting of old working-class and new bohemian Helsinki.",
       "map_position": [
         0.69,
         0.31
@@ -28,9 +28,9 @@
     },
     {
       "id": "unsa_hq_ratakatu",
-      "name": "UNSA Helsinki Field Office · Ratakatu",
+      "name": "Europol Helsinki Field Office · Ratakatu",
       "district": "Punavuori",
-      "description": "Former Suojelupoliisi office. Above ground: bland, friendly Nordic UNSA branding and bewildering Supo/Europol/UNSA badge jurisdictions. Rookies alone must wear the absurd new uniform.",
+      "description": "Former Suojelupoliisi office. Above ground: the Europol Helsinki Field Office, bland Nordic branding and bewildering Supo/Europol/Finnish/UNSA badge jurisdictions. Rookies alone must wear the absurd new uniform.",
       "map_position": [
         0.38,
         0.76

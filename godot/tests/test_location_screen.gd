@@ -33,7 +33,7 @@ func run() -> Array:
 
 	# travel updates the screen, not just the model
 	screen._on_travel("unsa_hq_ratakatu")
-	rows.append(_eq("travel moves the title", screen._title.text, "UNSA Helsinki Field Office · Ratakatu"))
+	rows.append(_eq("travel moves the title", screen._title.text, "Europol Helsinki Field Office · Ratakatu"))
 	rows.append(_eq("travel is logged", screen._log.get_parsed_text().contains("arrived"), true))
 	rows.append(_eq("the current place is not offered as a destination",
 		_travel_disabled(screen, "unsa_hq_ratakatu"), true))

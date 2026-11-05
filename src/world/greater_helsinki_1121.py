@@ -1,7 +1,8 @@
 """Read-only operational index for issue #1121.
 
-Canonical prose remains in design/ZONES.md. No physical routes, CWN mechanics,
-permissions, zone coordinates, scripts or author draft contents are generated.
+Canonical prose is ``design/GREATER_HELSINKI_2045.md``; ``design/ZONES.md`` remains the
+author's earlier source note. No physical routes, CWN mechanics, permissions, zone coordinates,
+scripts or author draft contents are generated.
 """
 
 from __future__ import annotations
