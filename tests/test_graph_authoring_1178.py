@@ -33,7 +33,8 @@ class AuthoringTests(unittest.TestCase):
                       "nodes": [{"id": "cyber.camera", "label": "Camera",
                                  "kind": "camera", "physical_ref": "physical.home",
                                  "device_actions": ["record"]}],
-                      "edges": [], "positions": {"avatar": "cyber.camera"}},
+                      "edges": [], "positions": {"avatar": "cyber.camera"},
+                      "avatar_operators": {"avatar": "pc"}},
             "social": {"graph_type": "social", "version": 1,
                        "nodes": [{"id": "pc", "label": "PC", "kind": "character"}],
                        "edges": []},
@@ -49,6 +50,8 @@ class AuthoringTests(unittest.TestCase):
         self.assertEqual(result.cyber.nodes["cyber.camera"].physical_ref, "physical.home")
         self.assertEqual(result.story.nodes["scene.home"].scene_types, ("Investigation",))
         self.assertEqual(result.to_dict()["format"], "noopunk.four_graphs")
+        self.assertEqual(result.avatars, {"avatar": "pc"})
+        result.move_avatar  # traversal remains guarded by CWN accessibility flags
 
     def test_rejects_invalid_records_and_astral(self):
         with self.assertRaises(GraphContractError):
