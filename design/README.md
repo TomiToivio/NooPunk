@@ -62,18 +62,6 @@ These five *separate* draft documents are available for Tomi's edits and approva
 **Phases and gates:** Phase 1 is complete as a set of prose worksheets: every section has a written
 example, a visible place to write your own version, and no YAML, JSON, field names or internal identifiers. Phase 2 (Tomi writes and approves authored content) is pending. Phase 3 (tabletop rulebook, engine-neutral Python and Evennia integration) requires separate explicit authorization after Phase 2; **never implement example content as canon**. Existing [Greater Helsinki government draft](GREATER_HELSINKI_2045.md), [ZONES](ZONES.md) and [Europol campaign authority](../docs/world/EUROPOL_HELSINKI_1114.md) retain their established precedence. See [issue #1141](https://github.com/TomiToivio/NooPunk/issues/1141).
 
-## Issue #1164: Graph scenes — five graph families, Series/Episode/Scene, layer contracts
+## Issue #1164: Graph rules and scene authoring proposal (NOT author-approved)
 
-**One agent-authored proposal, not canon.** It implements nothing and leaves
-[`graphs/README.md`](graphs/README.md) and [`graphs/RULES.md`](graphs/RULES.md) exactly as Tomi wrote them.
-
-| Document | Owns |
-| --- | --- |
-| [DRAFT_GRAPH_SCENES_1164.md](../docs/design/DRAFT_GRAPH_SCENES_1164.md) | Five typed graph schemas, the cross-layer link contract, the Series/Episode/Scene schema, the CWN crosswalk, the PSI Verb × Target matrix, the density matrix, the QIP glossary and three worked scenes |
-| [docs/graphs/templates/](../docs/graphs/templates/) | The Markdown + YAML records Tomi writes: `SERIES`, `EPISODE`, `SCENE`, `GRAPH_DOMAIN` |
-| [docs/graphs/examples/act1_procurement/](../docs/graphs/examples/act1_procurement/) | A filled Act I case in that format, including the rule that a core clue is never behind a roll |
-
-**Status:** DRAFT — TOMI REVIEW REQUIRED — NOT AUTHOR APPROVED. No Python, no rulebook change, no CWN change.
-The proposal flags the documented conflicts it may not resolve alone: the home in **Sörnäinen** (graphs README and
-`data/world/helsinki_locations.json`) versus **Kurvi company housing** (campaign #1132), and the **Ratakatu** HQ
-address. See [issue #1164](https://github.com/TomiToivio/NooPunk/issues/1164).
+[Read the five-graph CWN-first design proposal](../docs/design/DRAFT_GRAPH_SCENES_1164.md). It maps Physical/Cyber/Astral/Social/Story graph schemas, a Series→Episode→Scene authoring format, GUMSHOE-lite investigation adapters, GoalLog reuse and bounded PSI Verb×Target permissions to current code and rules. This is an agent draft for Tomi to edit. No implementation is authorized; the original [graphs README](graphs/README.md) remains the author's unchanged source.

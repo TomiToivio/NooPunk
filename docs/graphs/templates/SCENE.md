@@ -1,57 +1,41 @@
 ---
-record: scene
-scene_id: sc01_04_interview
-title: The interview
-types: [social, investigation]      # Investigation | Exploration | Combat | Social | Cyber | Astral
-series: campaign01
-episode: ep01_the_tuesday_complaint
-participants: [character:rookie, npc:maki]
-nodes: [physical:kurvi_office_room2, social:npc_maki]
-spoiler_gate: act1
-available_actions:
-  - ask_about_invoices
-  - ask_about_shift_swap
-  - show_credentials
-clues:
-  - id: clue_invoice_gap
-    kind: core
-    competency: Administer
-    access: office
-    inquiry: search
-    fact: Two invoice numbers share one delivery
-  - id: clue_shift_swap
-    kind: core
-    competency: Talk
-    access: interview
-    inquiry: interview
-    fact: The dispatcher swapped the Tuesday shift
-    leads_to: [physical:vallila_depot]
-  - id: clue_motive_gossip
-    kind: optional
-    competency: Talk
-    access: interview
-    inquiry: interview
-    fact: He is protecting a cousin
-    benefit: he names the cousin
-    benefit_cost: a Talk check, and a favour owed
+id: scene.invoice.interview
+kind: scene
+episode_id: episode.invoice
+types: [social, investigation]
+graph_refs:
+  physical: [physical.kurvi.office.room2]
+  cyber: []
+  social: [social.actor.maki]
+  astral: []
+goal_ids: [goal.short.verify_invoices]
+lead_ids: [lead.invoice.depot_route]
+evidence_ids: [evidence.invoice.workshop_log]
+visibility: player
+entry_flags: [case.open]
 transitions:
-  - to: sc01_05_depot
-    when: flag:ledger_read
-outcomes: []
-flags: []
-links: []                            # cross-layer effects, one block each; see the proposal §4
+  - to: scene.invoice.depot
+    when: flag.ledger_read
+author_status: draft
 ---
 
-# The interview
+# Opening
+<!-- Tomi writes -->
 
-## Setting
-Where this happens, what it smells like, who is uncomfortable.
+# Player-visible situation
+<!-- Tomi writes -->
 
-## What the player can do
-Plain prose plus the CWN skill that governs each action. No new skills.
+# Core leads / evidence / access
+<!-- Tomi writes: name the competence, the access and the declared inquiry for each -->
 
-## The clues
-Which are mandatory, which are extra, and what each costs.
+# NPC intentions and relationship choices
+<!-- Tomi writes -->
 
-## What happens if it goes wrong
-Failure here changes time, trust and risk. It does not remove a mandatory scene.
+# CWN checks for risky actions (never for indispensable clue discovery)
+<!-- Tomi writes -->
+
+# Outcomes and next scenes
+<!-- Tomi writes -->
+
+# GM-only information
+<!-- Tomi writes -->
