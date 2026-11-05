@@ -1,5 +1,6 @@
-> **Setting revision #1114 (2026-11-03):** the UN/UNSA did **not** consolidate as a world
-> government and UNSA is not the default employer. The passages below that assume a
+> **Setting revision #1114 (2026-11-05):** the UN/UNSA did **not** consolidate as a world
+> government and UNSA is not the default employer. The USSR collapsed; Russia later failed
+> after the EU–Russia war and NHI Crisis. An unbroken USSR survives only as **Mandela evidence**. The passages below that assume a
 > "de facto world government" arc are superseded design assumptions, preserved here as source
 > text; the binding chronology is
 > [`docs/world/ALTERNATE_HISTORY_1114.md`](../world/ALTERNATE_HISTORY_1114.md). This banner does not
