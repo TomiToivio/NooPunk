@@ -129,6 +129,19 @@ class TheProposalCoversTheAsks(unittest.TestCase):
 
 
 class LinksResolve(unittest.TestCase):
+    def test_the_1947_helsinki_document_is_transcribed_with_its_grade(self):
+        """The only Finnish primary source in the dossier, and its own stated confidence."""
+        body = text(RESEARCH)
+        for needle in ("R-5-8-47", "10 February 1947", "M. Niamala", "evaluation C3"):
+            self.assertIn(needle, body, f"1947 Helsinki document detail missing: {needle}")
+        self.assertIn("almost certainly **Ursa**", body)
+
+    def test_the_proposal_names_sites_beyond_the_capital(self):
+        body = text(PROPOSAL)
+        for site in ("Onkalo", "Loviisa", "Hanko", "Virolahti", "St Petersburg", "Kola"):
+            self.assertIn(site, body, f"mission site missing: {site}")
+        self.assertIn("every tunnel scene is either a place a character can name", body)
+
     def test_every_relative_link_resolves(self):
         broken = []
         for path in (RESEARCH, PROPOSAL):

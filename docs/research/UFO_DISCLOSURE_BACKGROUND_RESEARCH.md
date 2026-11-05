@@ -229,15 +229,42 @@ object.
 rumours), meteorites, mass suggestion, and — the reading NoöPunk keeps alive — something that was not
 anyone's missile.
 
-### 7.3 1947 — Helsinki
+### 7.3 1947 — Helsinki, and the document that survives
 
 A US Naval Attaché in Finland forwarded a translation of a Helsinki press report describing a
-"rocket-like" phenomenon; the item survives in the Project Sign research files
-([Gross FOIA transcript](https://ufologie.patrickgross.org/htm/foia01.htm)). It is a small document of
-the kind that fills an archive: a press clipping, a translation, a forwarding note.
+"rocket-like" phenomenon. Read in transcription on 2026-11-05
+([Gross FOIA transcript](https://ufologie.patrickgross.org/htm/foia01.htm)), it is **Intelligence
+Report Serial R-5-8-47**, issued by the Intelligence Division, Office of Chief of Naval Operations,
+dated **10 February 1947**, from the Naval Attaché at Helsinki, source "Press and Official Liaison
+Officer", **evaluation C3** — meaning, in the period's own grading, "fairly reliable source,
+doubtful accuracy".
 
-**In-world use (B):** the paper trail that lets a 2045 investigator prove the archive was *curated* —
-the clipping exists, the original does not.
+The transcription's substance, quoted closely:
+
+> "Since 20 August 1946, no more 'ghost rockets' have been reported by the Finnish press." — after
+> which "numerous observations had been made, mostly by inexperienced observers, of objects
+> resembling rockets flashing across the sky."
+>
+> A further report on "the evening of 18 January at 21:30 … over Helsinki": an amateur observer,
+> **M. Niamala**, "who was working at the Urma observatory", saw "a clear yellow light which was
+> visible for almost 10 seconds, at three seconds intervals. It appeared and disappeared five or six
+> times, after which the flame (light) changed to a white glow and finally a dark red color." The
+> object "seemed to be on a curving course approaching from the north and at an altitude of about
+> 2,000 meters", and "just before the rocket disappeared … an object resembling a parachute was seen
+> to fall to earth", observed through a telescope.
+>
+> The attaché's own conclusion: "Numerous contacts have been checked but no additional information
+> could be secured. The only information available is that which appeared in the newspapers."
+
+**Two cautions.** The "Urma observatory" is almost certainly **Ursa**, the Finnish astronomical
+association, and the name should be verified against the Finnish original before canon use. And the
+document establishes only that *the report existed and was taken seriously enough to file* — not
+that the object was anything in particular.
+
+**In-world use (B):** the perfect NoöPunk artifact. Impeccable provenance, explicit confidence
+grade, and an explicit admission that the only source is a newspaper. It lets a 2045 investigator
+prove the archive was *curated* — the American copy exists, the observatory's logbook for that night
+does not.
 
 ### 7.4 Later Finnish material
 
