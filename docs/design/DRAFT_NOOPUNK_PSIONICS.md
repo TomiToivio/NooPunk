@@ -1,3 +1,11 @@
+> **Superseded-by [#1178](https://github.com/TomiToivio/NooPunk/issues/1178) on player access.**
+> A player character may select only **Telepathy** and **Telekinesis** from the SWN disciplines.
+> **Astral Projection is scripted** (OOBE, NDE, psychotronic event), not a playable technique.
+> **Psychic Defence is not a SWN discipline**: as a player-facing ability it belongs to the
+> psychotronic implant's equipment rules or to a scripted event, not to a discipline tree.
+> The rest of this file remains the historical research record for the PSI slice.
+> Current policy: [`docs/rules/PSI_ACCESS_1178.md`](../rules/PSI_ACCESS_1178.md).
+
 # NoöPunk Psionics: Conscious-Agent-Network and Astral Rules
 
 > **Partially superseded by [#1178](https://github.com/TomiToivio/NooPunk/issues/1178) (2026-11-05).**

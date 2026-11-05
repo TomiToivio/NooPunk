@@ -381,6 +381,10 @@
         "tier": "noopunk-mod"
       },
       {
+        "module": "src/rules/psi_access.py",
+        "tier": "noopunk-mod"
+      },
+      {
         "module": "src/rules/psionics.py",
         "tier": "swn-companion"
       },

@@ -180,7 +180,9 @@ sheet can carry a story, not so a player can buy powers.
 | level | narrative stage | what the character can do | what it costs | what it must not do |
 |---|---|---|---|---|
 | **0 — Latent** | Act I | dreams, unease, the implant's defensive twitch; nothing reliable | nothing mechanical | no active PSI, no "sense the anomaly" |
-| **1 — First awakening** | Act II | **psychic defence** and **bounded empathic reading** (surface emotion, consent or defence) | a condition tag per use; exposure | no secrets, no lie detection, no clue |
+| **1 — First awakening** | Act II | **bounded empathic reading** (surface emotion, consent or defence), plus the implant's defensive effect | a condition tag per use; exposure | no secrets, no lie detection, no clue |
+
+> **Superseded-by [#1178](https://github.com/TomiToivio/NooPunk/issues/1178) on this row.** A player character may select only **Telepathy** and **Telekinesis**; "psychic defence" is not one of them. A defensive effect the character has comes from the **psychotronic implant** (equipment) or from a **scripted event**, never from the awakening ladder as a selectable power. See [`docs/rules/PSI_ACCESS_1178.md`](../rules/PSI_ACCESS_1178.md).
 | **2 — Controlled practice** | Act III | **telepathy (receive)** within a scene; **short projection** with an anchor and a return rule | the condition + the projection's link boxes | no remote scouting of unseen places, no memory reading |
 | **3 — Integration** | Act IV | the **authored package**: Higher Self contact (scripted), a stronger defence, one named advanced capability | narrative cost, and the story's attention | no god-mode, no new resolution, no optional StS branch |
 
