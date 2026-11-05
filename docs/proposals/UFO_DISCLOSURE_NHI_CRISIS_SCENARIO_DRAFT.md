@@ -311,6 +311,11 @@ available.
   rule: every tunnel scene is either a place a character can name on a real map, or **explicitly
   invented and said so at the table**. No silent fictional geography.
 
+**Site-by-site reference.** The companion
+[Helsinki UAP mission gazetteer](HELSINKI_UAP_MISSION_GAZETTEER_DRAFT.md) turns the districts above
+into individual missions — entry point, legal lead, twist, difficulty, evidence ladder. This
+proposal keeps the argument; the gazetteer keeps the addresses.
+
 ### 4.3 What the city feels like **[PROPOSAL]**
 
 Sensors everywhere and trust nowhere; a functioning welfare state with a security budget it does not

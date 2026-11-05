@@ -15,6 +15,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 RESEARCH = ROOT / "docs/research/UFO_DISCLOSURE_BACKGROUND_RESEARCH.md"
 PROPOSAL = ROOT / "docs/proposals/UFO_DISCLOSURE_NHI_CRISIS_SCENARIO_DRAFT.md"
+GAZETTEER = ROOT / "docs/proposals/HELSINKI_UAP_MISSION_GAZETTEER_DRAFT.md"
+REGISTER = ROOT / "docs/DOCUMENT_REGISTER.md"
 
 LINK = re.compile(r"\[[^\]]*\]\(([^)#\s]+\.md)(?:#[^)]*)?\)")
 
@@ -141,6 +143,18 @@ class LinksResolve(unittest.TestCase):
         for site in ("Onkalo", "Loviisa", "Hanko", "Virolahti", "St Petersburg", "Kola"):
             self.assertIn(site, body, f"mission site missing: {site}")
         self.assertIn("every tunnel scene is either a place a character can name", body)
+
+    def test_the_gazetteer_exists_and_is_not_canon(self):
+        self.assertTrue(GAZETTEER.is_file(), "the gazetteer is the PR's one new document")
+        body = text(GAZETTEER)
+        self.assertIn("PROPOSALS ONLY / NOT CANON", body)
+        self.assertIn("No private or restricted access points are described", body)
+
+    def test_the_gazetteer_is_registered_and_linked(self):
+        register = text(REGISTER)
+        self.assertIn("HELSINKI_UAP_MISSION_GAZETTEER_DRAFT.md", register)
+        self.assertIn("non-canon", register)
+        self.assertIn("HELSINKI_UAP_MISSION_GAZETTEER_DRAFT.md", text(PROPOSAL))
 
     def test_every_relative_link_resolves(self):
         broken = []
