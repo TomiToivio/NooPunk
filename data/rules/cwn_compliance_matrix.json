@@ -532,6 +532,7 @@
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution.py",
         "tests/test_rules_constitution_modules.py",
+        "tests/test_scene_procedures_1184.py",
         "tests/test_swn_faction_assets_1105.py",
         "tests/test_swn_faction_engine.py",
         "tests/test_swn_register_1105.py",
@@ -731,6 +732,7 @@
         "tests/test_no_duplicate_implementations.py",
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
+        "tests/test_scene_procedures_1184.py",
         "tests/test_wn_core.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wn_saves_and_migration.py",
@@ -872,6 +874,7 @@
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution.py",
         "tests/test_rules_constitution_modules.py",
+        "tests/test_scene_procedures_1184.py",
         "tests/test_scene_types_1184.py",
         "tests/test_swn_faction_assets_1105.py",
         "tests/test_swn_faction_engine.py",
@@ -943,6 +946,7 @@
         "tests/test_cwn_hacking_contract.py",
         "tests/test_cwn_program_catalogue.py",
         "tests/test_issue60_ep2_interactions.py",
+        "tests/test_scene_procedures_1184.py",
         "tests/test_swn_space_factions.py",
         "tests/test_wn_core_contract.py"
       ],
@@ -1224,6 +1228,7 @@
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution.py",
         "tests/test_rules_constitution_modules.py",
+        "tests/test_scene_procedures_1184.py",
         "tests/test_swn_faction_assets_1105.py",
         "tests/test_swn_faction_engine.py",
         "tests/test_swn_register_1105.py",
@@ -1393,6 +1398,7 @@
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution.py",
         "tests/test_rules_constitution_modules.py",
+        "tests/test_scene_procedures_1184.py",
         "tests/test_swn_faction_assets_1105.py",
         "tests/test_swn_faction_engine.py",
         "tests/test_swn_register_1105.py",
@@ -1628,6 +1634,7 @@
         "tests/test_issue51_tag_system.py",
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
+        "tests/test_scene_procedures_1184.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wwn_high_mage.py"
       ],
@@ -1755,6 +1762,7 @@
         "tests/test_issue51_tag_system.py",
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
+        "tests/test_scene_procedures_1184.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wwn_high_mage.py"
       ],
@@ -2013,6 +2021,7 @@
         "tests/test_issue571_lethality_lab.py",
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
+        "tests/test_scene_procedures_1184.py",
         "tests/test_swn_starships.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wwn_high_mage.py"
@@ -2092,6 +2101,7 @@
         "tests/test_no_duplicate_implementations.py",
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
+        "tests/test_scene_procedures_1184.py",
         "tests/test_swn_starships.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wwn_high_mage.py"
@@ -2163,6 +2173,7 @@
         "tests/test_issue571_lethality_lab.py",
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
+        "tests/test_scene_procedures_1184.py",
         "tests/test_scene_types_1184.py",
         "tests/test_swn_starships.py",
         "tests/test_wn_core_contract.py",
@@ -2236,6 +2247,7 @@
         "tests/test_issue571_lethality_lab.py",
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
+        "tests/test_scene_procedures_1184.py",
         "tests/test_swn_starships.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wwn_high_mage.py"
@@ -2331,6 +2343,7 @@
         "tests/test_issue51_tag_system.py",
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
+        "tests/test_scene_procedures_1184.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wwn_high_mage.py"
       ],
@@ -2394,6 +2407,7 @@
         "tests/test_issue572_native_subsystems.py",
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
+        "tests/test_scene_procedures_1184.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wwn_high_mage.py"
       ],
@@ -2567,6 +2581,7 @@
         "tests/test_issue51_tag_system.py",
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
+        "tests/test_scene_procedures_1184.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wwn_high_mage.py"
       ],
@@ -2789,6 +2804,7 @@
         "tests/test_issue51_tag_system.py",
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution_modules.py",
+        "tests/test_scene_procedures_1184.py",
         "tests/test_wn_core_contract.py",
         "tests/test_wwn_high_mage.py"
       ],
@@ -3000,7 +3016,8 @@
         "tests/test_cwn_hacking_contract.py",
         "tests/test_cwn_program_catalogue.py",
         "tests/test_cwn_remaining_1068.py",
-        "tests/test_issue51_tag_system.py"
+        "tests/test_issue51_tag_system.py",
+        "tests/test_scene_procedures_1184.py"
       ],
       "tested_against_book": false,
       "save_safe": false,
@@ -3165,7 +3182,8 @@
         "tests/test_issue51_tag_system.py",
         "tests/test_rule_duplication_merged.py",
         "tests/test_rules_constitution.py",
-        "tests/test_rules_constitution_modules.py"
+        "tests/test_rules_constitution_modules.py",
+        "tests/test_scene_procedures_1184.py"
       ],
       "tested_against_book": false,
       "save_safe": false,
