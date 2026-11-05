@@ -1,0 +1,261 @@
+{
+  "$comment": "Implementation register for #1121. Source: design/ZONES.md and issue #1121; this is not a replacement design authority. No speculative coordinates, borders, routes, treaties, gameplay permissions or final scenarios. IDs are stable for later tabletop/Python lookup.",
+  "schema_version": 1,
+  "year": 2045,
+  "sources": [
+    "design/ZONES.md",
+    "https://github.com/TomiToivio/NooPunk/issues/1121"
+  ],
+  "municipality": {
+    "id": "helsinki_2045",
+    "official_name": "Helsingin Kaupunki",
+    "merged_former_municipalities": [
+      "Helsinki",
+      "Espoo",
+      "Vantaa"
+    ],
+    "former_names_are_district_labels": true,
+    "character": "functioning accelerationist metropolis"
+  },
+  "governance": [
+    {
+      "level": "municipal",
+      "polity": "Helsingin Kaupunki",
+      "agencies": [
+        {
+          "id": "helsingin_poliisi",
+          "role": "municipal law enforcement"
+        }
+      ]
+    },
+    {
+      "level": "national",
+      "polity": "Suomen Tasavalta",
+      "agencies": [
+        {
+          "id": "suomen_poliisi",
+          "role": "national law enforcement and civilian intelligence"
+        },
+        {
+          "id": "suomen_puolustusvoimat",
+          "role": "defence and military intelligence"
+        }
+      ]
+    },
+    {
+      "level": "eu",
+      "polity": "European Union",
+      "agencies": [
+        {
+          "id": "europol",
+          "role": "federal law enforcement and civilian intelligence"
+        },
+        {
+          "id": "eurodef",
+          "role": "federal defence and military intelligence"
+        }
+      ]
+    },
+    {
+      "level": "global_xrisk",
+      "polity": "United Nations",
+      "agencies": [
+        {
+          "id": "unsa",
+          "role": "exceptional X-Risk intelligence, law enforcement, (para)military operations, civilian programmes and scientific research"
+        }
+      ]
+    }
+  ],
+  "zones": [
+    {
+      "id": "espoo_oittaa_economic",
+      "name": "Espoo Extraterrestrial Special Economic Zone",
+      "category": "economic",
+      "location": "Oittaa, former Espoo",
+      "administration": "joint human/extraterrestrial",
+      "access": "mixed commercial activity",
+      "boundary_status": "unspecified",
+      "claim_status": "setting_fact"
+    },
+    {
+      "id": "helsinki_vantaa_economic",
+      "name": "Helsinki-Vantaa Extraterrestrial Special Economic Zone",
+      "category": "economic",
+      "location": "immediately north of Helsinki-Vantaa spaceport, former Vantaa",
+      "administration": "joint human/extraterrestrial",
+      "access": "mixed commercial activity and alien-vessel traffic hub",
+      "boundary_status": "unspecified",
+      "claim_status": "setting_fact"
+    },
+    {
+      "id": "villinki_orion_diplomatic",
+      "name": "Villinki Extraterrestrial Special Diplomatic Zone",
+      "category": "diplomatic",
+      "location": "Villinki island, Helsinki",
+      "administration": "Orion diplomatic operations",
+      "access": "primarily authorized official business",
+      "boundary_status": "unspecified",
+      "claim_status": "setting_fact"
+    },
+    {
+      "id": "vallisaari_confederacy_diplomatic",
+      "name": "Vallisaari Extraterrestrial Special Diplomatic Zone",
+      "category": "diplomatic",
+      "location": "Vallisaari island, Helsinki",
+      "administration": "Confederacy diplomatic operations",
+      "access": "primarily authorized official business",
+      "boundary_status": "unspecified",
+      "claim_status": "setting_fact"
+    },
+    {
+      "id": "kajaani_sirian_protection",
+      "name": "Kajaani Extraterrestrial Special Protection Zone",
+      "category": "protection",
+      "location": "Kajaani region, Finland",
+      "administration": "unspecified",
+      "access": "Sirian refugee protection and protected biome",
+      "boundary_status": "unspecified",
+      "claim_status": "setting_fact"
+    },
+    {
+      "id": "lappi_sirian_protection",
+      "name": "Lappi Extraterrestrial Special Protection Zone",
+      "category": "protection",
+      "location": "Lappi region, Finland",
+      "administration": "unspecified",
+      "access": "Sirian refugee protection and protected biome",
+      "boundary_status": "unspecified",
+      "claim_status": "setting_fact"
+    },
+    {
+      "id": "karjala_sirian_protection",
+      "name": "Karjala Extraterrestrial Special Protection Zone",
+      "category": "protection",
+      "location": "Karjala region",
+      "administration": "unspecified",
+      "access": "Sirian refugee protection and protected biome",
+      "boundary_status": "unspecified",
+      "claim_status": "setting_fact"
+    },
+    {
+      "id": "hyvinkaa_military_exclusion",
+      "name": "Hyvinkää Temporary Military Exclusion Zone",
+      "category": "military_exclusion",
+      "location": "entire Hyvinkää area",
+      "administration": "military exclusion, precise command unspecified",
+      "access": "restricted; connecting zone systems to internet is extremely illegal",
+      "boundary_status": "whole_area",
+      "claim_status": "setting_fact"
+    },
+    {
+      "id": "loviisa_military_exclusion",
+      "name": "Loviisa Military Exclusion Zone",
+      "category": "military_exclusion",
+      "location": "Loviisa nuclear power plant and contaminated surroundings",
+      "administration": "military exclusion, precise command unspecified",
+      "access": "restricted due to radiation",
+      "boundary_status": "plant_and_surroundings_only",
+      "claim_status": "setting_fact"
+    }
+  ],
+  "claims": [
+    {
+      "id": "sirian_biopunk",
+      "zone_ids": [
+        "kajaani_sirian_protection",
+        "lappi_sirian_protection",
+        "karjala_sirian_protection"
+      ],
+      "status": "setting_fact",
+      "text": "Sirian authentic technology is advanced biological engineering; cooperation supports biosphere repair, climate mitigation and Finnish biotech."
+    },
+    {
+      "id": "sirian_fusion",
+      "zone_ids": [
+        "kajaani_sirian_protection",
+        "lappi_sirian_protection",
+        "karjala_sirian_protection"
+      ],
+      "status": "setting_fact",
+      "text": "Sirian refugee escape craft came from another species; the Sirians surrendered their conventional fusion and cryogenic technology to Finland and requested scrapping of the craft."
+    },
+    {
+      "id": "sirian_intent",
+      "zone_ids": [
+        "kajaani_sirian_protection",
+        "lappi_sirian_protection",
+        "karjala_sirian_protection"
+      ],
+      "status": "unresolved",
+      "text": "Human observers infer strong biosphere-restoration motivation; Sirian language, cognition and intentions remain imperfectly understood."
+    },
+    {
+      "id": "soviet_border",
+      "zone_ids": [
+        "kajaani_sirian_protection",
+        "lappi_sirian_protection",
+        "karjala_sirian_protection"
+      ],
+      "status": "contested_history",
+      "text": "Source zone notes describe Soviet-border regions; retain conflicting timeline accounts and universal Mandela Effect per #1114, rather than treating surviving USSR as independently settled."
+    },
+    {
+      "id": "hyvinkaa_factory",
+      "zone_ids": [
+        "hyvinkaa_military_exclusion"
+      ],
+      "status": "setting_fact",
+      "text": "During the NHI Crisis rogue AI compromised a Kone factory and produced self-replicating machines; active lesser AIs and dangerous machines remain."
+    },
+    {
+      "id": "hyvinkaa_asi_silence",
+      "zone_ids": [
+        "hyvinkaa_military_exclusion"
+      ],
+      "status": "unresolved",
+      "text": "Central ASI went silent. Extraterrestrial malware is a widespread hypothesis, not confirmed explanation."
+    },
+    {
+      "id": "hyvinkaa_borgs",
+      "zone_ids": [
+        "hyvinkaa_military_exclusion"
+      ],
+      "status": "rumor",
+      "text": "Some accounts claim human residents survive as machine-controlled borgs; unverified."
+    },
+    {
+      "id": "hyvinkaa_emp",
+      "zone_ids": [
+        "hyvinkaa_military_exclusion"
+      ],
+      "status": "agency_debate",
+      "text": "An EMP nuclear strike is debated; not a settled necessity or campaign mission."
+    },
+    {
+      "id": "loviisa_meltdown",
+      "zone_ids": [
+        "loviisa_military_exclusion"
+      ],
+      "status": "agency_report",
+      "text": "Rogue ASI reportedly melted down Loviisa's old Soviet reactors; radiation was contained to the local exclusion area."
+    },
+    {
+      "id": "loviisa_twist",
+      "zone_ids": [
+        "loviisa_military_exclusion"
+      ],
+      "status": "unresolved",
+      "text": "No aliens, rogue ASI remnants or mutants are required by canon."
+    }
+  ],
+  "jurisdiction_policy": {
+    "no_blanket_extraterritoriality": true,
+    "no_automatic_arrest_or_search_power": true,
+    "no_invented_treaty": true,
+    "europol_local_authorizations_required": true
+  },
+  "scenario_status": "hooks_only_author_approval_required",
+  "routes": [],
+  "coordinates": []
+}
