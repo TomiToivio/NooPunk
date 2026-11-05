@@ -315,3 +315,109 @@ That is the superseded lore #1168 explicitly warns against. The zone list is usa
 | `docs/research/UFO_DISCLOSURE_BACKGROUND_RESEARCH.md` §7.2 and the R-5-8-47 transcript | read; not re-researched |
 | Danish 1946 material | **not verified**; the memo asserts nothing |
 | Hessdalen–Hyvinkää link | **[P] fiction**, not a finding |
+
+---
+
+## 12. Merged from the parallel memo
+
+A second memo for this issue was written in parallel and deleted when the duplicates were consolidated. Its
+distinct material is preserved here rather than lost, condensed to what this memo did not already say.
+
+### 12.1 Continuity firewall — four binding distinctions
+
+| authority | what the memo may not do to it |
+|---|---|
+| `rulebook/7_TIMELINE.md` | dates stay **deliberately unordered**; the paradigm shifts are conceptual, not a chronology |
+| `rulebook/20_FIRST_CONTACT_AND_PSI_AWAKENING.md` | **natural human PSI precedes and is independent of NHI disclosure** — never make PSI an alien gift; the Confederacy/Orion relative order is fixed |
+| `docs/world/ALTERNATE_HISTORY_1114.md` | post-Soviet Russia, the EU–Russia collapse, and the universal USSR Mandela Effect are canon; the surviving-USSR Troika/Cosmist material is **in-world contradiction**, not a second live polity; ПРОГРАММА and MJ-12 stay unsolved |
+| `docs/world/EUROPOL_HELSINKI_1114.md` | the rookie's employer is **Europol**, cooperating with Finnish agencies; no universal UNSA police empire, no unlimited Europol search power |
+
+A distinction worth using at the table: **what a file claims**, **what an agency accepts**, and **what actually
+happened** are three different things, and a scene can be about the gap between any two of them.
+
+### 12.2 Four national histories, not one Nordic department
+
+| country | historical anchor | in-world specialisation (hypothesis, unconfirmed) |
+|---|---|---|
+| **Finland** | 1946/1947 reporting; the later presidential disclosure | component reverse-engineering; cryogenics, fusion safety, hybrid biologics, psychotronics, emergency governance |
+| **Sweden** | the large 1946 inquiry; material and aircraft investigation | aerospace, sensors, alloys, propulsion, industrial production |
+| **Norway** | Hessdalen's instrumented era; older Ghost Flier reports | plasma-like light, environmental and transmedium sensing |
+| **Denmark** | 1946 reported lights; much later archive work | biological/medical or quantum interpretation; possibly **data and liaison only**, no craft |
+
+The organisation is **bilateral personnel, university–military–industry links, Nordic committees in isolated
+eras, and personal archive handoffs** — an investigator finds incomplete overlapping chains of custody, never a
+comprehensive directory called "Nordic MJ-12".
+
+### 12.3 A provenance ledger the author can fill in
+
+| claim | claimed period | public record that actually exists | possible secret source | status |
+|---|---|---|---|---|
+| Finnish observer saw a rocket-like object | 1946/1947 | contemporary US attaché reporting on the Finnish press | none necessarily | report established; phenomenon unknown |
+| Swedish military investigated spökraketer | 1946 | Swedish archival accounts | a fictional, separately classified workstream | investigation established; a recovered alien item **unverified** |
+| Nordic scientists held a strange component | [OPEN] | none offered | proposed Sirian object or misidentification | **entirely fictional** |
+| Hessdalen sensor recorded an unusual light | 1984 | Project Hessdalen field report | possibly nothing to do with 1946 | investigation documented; NHI link unverified |
+| A Danish group holds a 1946 hybrid dataset | [OPEN] | none supplied | fictional transfer or later reclassification | **proposal only** |
+
+A strong dossier mixes a real press clipping, an authentic cabinet minute, a forged later appendix and a
+witness's incompatible memories. **Authenticating a source is not establishing its interpretation.**
+
+### 12.4 Combined decision queue
+
+The ten questions in §9 stand. Four from the parallel memo are added because they are genuinely different
+questions:
+
+11. **Who owned the first Finnish artifact** — which ministry, unit, firm or university? Keep it compartmented
+    until decided.
+12. **Does the President's "contact since 1946" claim** mean a physical transfer, intermittent contact, or a
+    politically simplified public account?
+13. **Which specific documents in the 1946 file are fabricated inside the fiction**, and which are sincere but
+    mistaken? A player should be able to authenticate a document without ever resolving the world.
+14. **Is the 50/25/25 heuristic ever quantified** as an NPC distribution for simulation, or does it stay a
+    qualitative background? It must never be presented as empirical demography.
+
+### 12.5 Verified records, exact Ra passages, and two continuity corrections
+
+**The 1946 record.** First reports **26 February 1946, from Finnish observers**; ~2,000 sightings May–December,
+peaks **9 and 11 August** (Perseid season, which explains many but not all); ~200 radar returns; fragments
+attributed but no craft recovered; the Swedish inquiry with its press directive and the **Kölmjärv dives of 19
+July 1946** (craters and torn plants, nothing else); and an unresolved split between meteor explanations and
+reports of silent, exhaust-free, manoeuvring objects. **No settled explanation, then or now.**
+
+**Hessdalen.** Onset **December 1981**; up to ~20 sightings/week 1981–85; Project Hessdalen founded **1983**; the
+**1984 report's 53 instrumented observations**; the **1998 Blue Box**; ~20 reports/year today. Measurable;
+mechanism unknown; nothing links it to 1946.
+
+**The Ra passages, quoted** — because the wording is the design gift:
+
+* **8.6**, of the Russians: *"the technology was given from one of the Confederation … The entities giving this
+  information were in error."*
+* **38.7**: *"an entity from the star Sirius' planetary body has approached this planetary body twice."*
+* **38.13**: that craft was of **third-density physical material**, visible to third-density observers.
+* **51.2**: *"those for the most part coming from distant points … do not need craft as you know them."*
+
+**A physical Sirian arrival is therefore a different kind of event from a Confederation contact**, and the
+material itself supplies the distinction. **None of these passages mentions Finland, 1946 or any Nordic state.**
+The Finnish transfer is authorial fiction and should be labelled so once, in the setting bible.
+
+**Two continuity corrections.**
+
+1. `design/ZONES.md`'s opening still describes a semi-functional UN and a powerful UNSA — the world-government
+   framing #1168 warns against. Its **zone list** stands and is used here; its **framing** is superseded by
+   `ALTERNATE_HISTORY_1114.md`. The author's file is not edited.
+2. `design/ZONES.md` also already says the Sirians arrived in *"Seventies-style nuclear fusion-based spaceships …
+   given to them by some other species"* and handed their tech to the Finnish government — which leans toward the
+   **gift** model, not the accident model. The author must reconcile that before either is called history.
+
+### 12.6 The AWN audit the earlier draft asked for
+
+It is done, and the modules exist:
+
+| module | what it provides |
+|---|---|
+| `src/rules/awn_stress_tracker.py` | stress contract, thresholds, events/recovery, `new_tracker`, `is_enabled` — an explicit off switch exists |
+| `src/rules/awn_region.py` | region states, severity, `transition_allowed`, a region ledger |
+| `src/rules/awn_survival.py` | terrain, travel hours, exposure, encounter checks, scouting days |
+| `src/rules/awn_world.py` | enclaves, sites, crises, a world ledger |
+
+So the overlay is a **switch over existing modules**, testable one scene at a time. What remains undecided, and is
+the author's: whether stress **persists** across the switch boundary or resets at safe support.
