@@ -26,12 +26,12 @@
     },
     {
       "id": "unsa_hq_ratakatu",
-      "name": "UNSA Helsinki Field Office, Ratakatu",
+      "name": "Europol Helsinki Field Office, Ratakatu",
       "district": "Punavuori",
       "kind": "hq",
       "unlocked": true,
       "art": "locations/ratakatu_hq",
-      "summary": "The former Suojelupoliisi headquarters, now the UNSA field office. It cannot decide whether it is SuPo, Europol or UNSA.",
+      "summary": "The former Suojelupoliisi headquarters, now the Europol Helsinki Field Office. It cannot decide whether it is Supo, Europol or UNSA.",
       "anchors": [
         "briefings",
         "case assignment",

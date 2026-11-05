@@ -1,0 +1,162 @@
+{
+  "$comment": "Canonical operational register for #1121. Stable IDs, categories and author-stated facts only. No coordinates, boundaries, officials, budgets or treaty terms are invented here. Source: design/GREATER_HELSINKI_2045.md and issue #1121.",
+  "format": "noopunk.world.greater_helsinki",
+  "version": 1,
+  "issue": 1121,
+  "status": "canon",
+  "municipality": {
+    "name": "Helsingin Kaupunki",
+    "english_name": "City of Helsinki",
+    "merged_from": ["Helsinki", "Espoo", "Vantaa"],
+    "former_names_retained_as_districts": ["Espoo", "Helsinki-Vantaa"],
+    "character": "accelerationist_city"
+  },
+  "governance_levels": [
+    {
+      "id": "gov.municipal.helsinki",
+      "level": "municipal",
+      "polity": "Helsingin Kaupunki",
+      "agencies": [
+        {"id": "agency.helsinki_police", "name": "Helsingin Poliisi", "remit": "municipal law enforcement and local cases"}
+      ]
+    },
+    {
+      "id": "gov.national.finland",
+      "level": "national",
+      "polity": "Suomen Tasavalta",
+      "agencies": [
+        {"id": "agency.finnish_police", "name": "Suomen Poliisi", "remit": "national law enforcement and civilian intelligence"},
+        {"id": "agency.finnish_defence", "name": "Suomen Puolustusvoimat", "remit": "defence and military intelligence"}
+      ]
+    },
+    {
+      "id": "gov.federal.eu",
+      "level": "eu_federal",
+      "polity": "European Union",
+      "agencies": [
+        {"id": "agency.europol", "name": "Europol", "remit": "federal law enforcement and civilian intelligence"},
+        {"id": "agency.eurodef", "name": "Eurodef", "remit": "defence and military intelligence"}
+      ]
+    },
+    {
+      "id": "gov.global.un",
+      "level": "global_exceptional",
+      "polity": "United Nations",
+      "agencies": [
+        {"id": "agency.unsa", "name": "UNSA", "remit": "X-Risk intelligence, law enforcement, paramilitary operations, civilian programmes and scientific research"}
+      ]
+    }
+  ],
+  "extraterrestrial_zones": [
+    {
+      "id": "zone.espoo.oittaa.economic",
+      "name": "Espoo Extraterrestrial Special Economic Zone",
+      "category": "economic",
+      "location_name": "Oittaa",
+      "former_municipality": "Espoo",
+      "purpose": "mixed human-extraterrestrial economic activity, commerce, companies and research",
+      "administration": "joint_human_extraterrestrial",
+      "access": "mixed_commercial"
+    },
+    {
+      "id": "zone.helsinki_vantaa.spaceport.economic",
+      "name": "Helsinki-Vantaa Extraterrestrial Special Economic Zone",
+      "category": "economic",
+      "location_name": "immediately north of Helsinki-Vantaa spaceport",
+      "former_municipality": "Vantaa",
+      "purpose": "alien-vessel traffic hub and main spaceport for Finland's extraterrestrial zones",
+      "administration": "joint_human_extraterrestrial",
+      "access": "mixed_commercial"
+    },
+    {
+      "id": "zone.villinki.diplomatic",
+      "name": "Villinki Extraterrestrial Special Diplomatic Zone",
+      "category": "diplomatic",
+      "location_name": "Villinki island",
+      "former_municipality": "Helsinki",
+      "purpose": "Orion embassy and official Orion diplomatic operations",
+      "administration": "orion_diplomatic",
+      "access": "authorized_official_business"
+    },
+    {
+      "id": "zone.vallisaari.diplomatic",
+      "name": "Vallisaari Extraterrestrial Special Diplomatic Zone",
+      "category": "diplomatic",
+      "location_name": "Vallisaari island",
+      "former_municipality": "Helsinki",
+      "purpose": "Confederacy embassy and official Confederacy diplomatic operations",
+      "administration": "confederacy_diplomatic",
+      "access": "authorized_official_business"
+    }
+  ],
+  "sirian_protection_zones": [
+    {
+      "id": "zone.kajaani.protection",
+      "name": "Kajaani Extraterrestrial Special Protection Zone",
+      "category": "protection",
+      "region_name": "Kajaani",
+      "purpose": "Sirian refugee protection, nature reserve and ecological restoration",
+      "near_soviet_border": true
+    },
+    {
+      "id": "zone.lappi.protection",
+      "name": "Lappi Extraterrestrial Special Protection Zone",
+      "category": "protection",
+      "region_name": "Lappi",
+      "purpose": "Sirian refugee protection, nature reserve and ecological restoration",
+      "near_soviet_border": true
+    },
+    {
+      "id": "zone.karjala.protection",
+      "name": "Karjala Extraterrestrial Special Protection Zone",
+      "category": "protection",
+      "region_name": "Karjala",
+      "purpose": "Sirian refugee protection, nature reserve and ecological restoration",
+      "near_soviet_border": true
+    }
+  ],
+  "military_exclusion_zones": [
+    {
+      "id": "zone.hyvinkaa.temporary_military_exclusion",
+      "name": "Hyvinkää Temporary Military Exclusion Zone",
+      "category": "temporary_military_exclusion",
+      "location_name": "Hyvinkää",
+      "entire_area_excluded": true,
+      "hazards": ["self_replicating_machines", "rogue_asi_residue", "malfunctioning_lesser_ais"],
+      "internet_connection": "prohibited",
+      "central_asi_status": "unknown",
+      "shutdown_cause": "contested_extraterrestrial_malware_explanation",
+      "borg_population": "contested_rumour",
+      "emp_nuclear_strike": "proposed_not_settled"
+    },
+    {
+      "id": "zone.loviisa.temporary_military_exclusion",
+      "name": "Loviisa Military Exclusion Zone",
+      "category": "temporary_military_exclusion",
+      "location_name": "Loviisa nuclear power plant area and contaminated surroundings",
+      "entire_area_excluded": false,
+      "hazards": ["radiological_contamination", "collapsed_infrastructure"],
+      "reactor_description": "old Soviet reactors",
+      "reactor_status": "melted_down_during_nhi_crisis",
+      "radiation_contained": true,
+      "compulsory_supernatural_twist": false
+    }
+  ],
+  "sirian_notes": {
+    "refugee_host": "Finland_volunteered",
+    "biology": "profoundly_biological_biopunk",
+    "human_recognizable_technology": "1970s_retrofuturist_and_limited",
+    "escape_fleet_origin": "gift_from_another_species",
+    "fleet_handover": "given_to_finland_and_requested_scrapped",
+    "derived_industries": ["fusion_reactors", "fusion_drive_spacecraft", "cryogenics", "biosphere_repair", "ecological_restoration", "climate_change_mitigation"],
+    "language_and_psychology": "poorly_understood"
+  },
+  "open_items": [
+    "precise zone boundaries and coordinates",
+    "treaty and legal text",
+    "officials, ranks, budgets and unit names",
+    "exact authority relationships inside each zone",
+    "whether the Hyvinkää EMP proposal becomes policy",
+    "the first scenario that takes the player into a zone"
+  ]
+}
