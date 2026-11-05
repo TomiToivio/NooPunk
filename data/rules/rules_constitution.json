@@ -401,6 +401,10 @@
         "tier": "swn-companion"
       },
       {
+        "module": "src/rules/rookie_build.py",
+        "tier": "noopunk-mod"
+      },
+      {
         "module": "src/rules/scene_play.py",
         "tier": "infrastructure"
       },
