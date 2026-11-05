@@ -3,10 +3,13 @@
 **Status of this document.** A consolidation of the worldbuilding discussion, for the 2045 setting and the
 Europol Helsinki campaign. It does not implement systems.
 
-> **Setting revision #1114 (2026-11-03):** the passages below that make UNSA a **de facto world
-> government**, or that describe a post-Putin Russia joining UNSA, are superseded. The USSR survives
-> and reforms; the UN/UNSA did not become a world government; Europol is the default employer.
-> The binding chronology is [`ALTERNATE_HISTORY_1114.md`](ALTERNATE_HISTORY_1114.md).
+> **Setting revision #1114 (2026-11-04):** the passages below that make UNSA a **de facto world
+> government**, that describe a post-Putin Russia joining UNSA, or that state the **Soviet Union
+> survived**, are superseded. The USSR collapsed in 1991; the Russian state inherited its
+> institutions and archives, fought a short war with the EU, and was left a failed state by the NHI
+> Crisis. The reform-era Soviet Union survives only as **Mandela-effect material**. The UN/UNSA did
+> not become a world government; Europol is the default employer. The binding chronology is
+> [`ALTERNATE_HISTORY_1114.md`](ALTERNATE_HISTORY_1114.md).
 
 **Priority of statements, and how to read them.** Three markers are used throughout, and they matter more than
 any prose:
@@ -45,14 +48,21 @@ discoveries — vindicated *in part*, and not as a wholesale endorsement of any 
 structures and significant hostility to UNSA. Sympathetic American individuals and factions exist and must not
 be erased.
 
-**The Soviet Union.** Important, **especially for Finland**. The USSR survives the Cold War, reforms under
-Gorbachev and modernises; it does not become a liberal democracy or a capitalist market economy. How the
-successful reform era later becomes the militarised, expansionist Soviet state of the Fortress Europe sequence
-is an **open causal gap** — do not fill it with Putin, a post-Soviet transition or an invented coup. Keep the
-Soviet state distinct from rogue intelligence, military and criminal actors inside its territory.
-[OPEN: the exact trajectory; see #1114's D75.]
+**Russia, and the Soviet memory.** Important, **especially for Finland**. The Soviet Union **collapsed in
+1991**; the Russian state inherited its territory, institutions, security services and classified archives,
+turned militarised and expansionist, invaded Ukraine, and lost a short war with the EU that ended when
+unidentified craft intercepted nuclear weapons in flight. The NHI Crisis then left Russia a **chaotic failed
+state** whose secret facilities have unknown custodians. The Finnish–Russian border is closed and fortified.
 
-**Finland and Helsinki.** Local politics are dominated by the EU/Europol relationship and by the Soviet Union —
+What people *remember*, however, is not uniform. A great many people — including people with documents —
+remember a Soviet Union that survived, reformed under Gorbachev and modernised into an autonomist, cosmist
+superpower. **That memory is the Mandela Effect, not the playable baseline** (#1114 §3): vivid, internally
+consistent and contradicted by other equally vivid records. How the reform era *would* have become the
+militarised Soviet state of the Fortress Europe sequence is left open, because it may not have happened at all.
+Keep the Russian state distinct from rogue intelligence, military and criminal actors inside its territory.
+[OPEN: the exact trajectory; see #1114.]
+
+**Finland and Helsinki.** Local politics are dominated by the EU/Europol relationship and by the Russian ruin —
 not by China or India, however large those powers loom globally. Investigations mix intelligence work, PSI, NHI
 diplomacy, refugee questions, ordinary politics and bureaucracy.
 

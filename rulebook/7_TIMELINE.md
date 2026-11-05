@@ -153,15 +153,20 @@ technologies in radically different ways.
 States, federations, corporations, movements, religions, cities, and regions respond
 differently to AI, PSI, NHI, transhumanism, and networked power.
 
-A **limited / hybrid war between the Soviet Union and Europe** ends without the USSR breaking
+A **limited / hybrid war between Russia and Europe** ends without the Russian state breaking
 apart. The crisis accelerates European integration: the **European Union becomes a federal
-superpower and Ukraine joins the EU**.
+superpower and Ukraine joins the EU**. The war itself stops abruptly when unidentified craft
+intercept nuclear weapons in flight; conventional deterrence is understood, afterwards, to have
+stopped working (#1114 §2).
 
-The USSR's later turn from a successful reform era toward a militarised, expansionist war is a
-**deliberate narrative gap**, not a settled sequence. The Soviet Union survives, reforms and
-modernises; how that state becomes the aggressor of the later war is reserved for the author. Do
-not fill it with a post-Soviet transition, a Russian Federation, or an invented coup. See
-[the alternate-history canon](../docs/world/ALTERNATE_HISTORY_1114.md#6-the-unresolved-causal-link).
+The Soviet Union **collapsed in 1991**. The Russian state inherited its territory, institutions,
+security services and classified archives, and is the actor that later turns toward a militarised,
+expansionist war. The claim that the USSR survived and reformed is **Mandela-effect material**, not
+the playable baseline; do not present it as history, and do not invent a second timeline to
+accommodate it. What the NHI Crisis does to Russia — fragmentation into a chaotic failed state — is
+described there. See
+[the alternate-history canon](../docs/world/ALTERNATE_HISTORY_1114.md) and
+[the Mandela-effect rules](../docs/world/ALTERNATE_HISTORY_1114.md#3-the-universal-sovietrussian-mandela-effect).
 
 Some regions remain comparatively stable. Others experience war, authoritarian reaction,
 corporate sovereignty, institutional breakdown, radical federalization, commons-oriented

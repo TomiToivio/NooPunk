@@ -112,35 +112,49 @@
   },
   {
    "order": 9,
-   "id": "soviet_ukraine_invasion",
+   "id": "russia_ukraine_invasion",
    "when": "undated, before the Crisis",
-   "title": "A restored Soviet Union invades Ukraine",
-   "summary": "In this alternate history the Soviet Union persisted or was restored, and Europe is already on a war footing when the Crisis erupts.",
+   "title": "Russia invades Ukraine",
+   "summary": "The post-Soviet Russian state, not a restored Soviet Union, invades Ukraine. Ukraine fights as a member of the European Union. The version in which a restored USSR is the aggressor is a Mandela-effect claim, not the playable baseline (#1114 §2).",
    "status": "canon",
    "regions": [
-    "Soviet Union",
+    "Russia",
     "Ukraine",
     "Europe"
    ],
-   "source": "#1113 §2"
+   "source": "#1114 §2"
   },
   {
-   "order": 10,
+   "id": "eu_russia_war_uap_interception",
+   "when": "undated, shortly before the Crisis",
+   "title": "The short EU-Russia war ends when UAPs intercept nuclear weapons",
+   "summary": "Escalation produces a short war between the EU and Russia, with Ukraine fighting as an EU member. It stops abruptly when unidentified craft intercept nuclear weapons in flight. Conventional deterrence is understood, afterwards, to have stopped working. Exact date, duration and individual incidents are deliberately unspecified (#1114 §2).",
+   "status": "canon",
+   "regions": [
+    "Europe",
+    "Russia",
+    "Ukraine"
+   ],
+   "source": "#1114 §2",
+   "order": 10
+  },
+  {
+   "order": 11,
    "id": "barbarella_ii",
    "when": "undated, immediately before or during the Crisis",
    "title": "Operation Barbarella II",
-   "summary": "A federalising EU defeats the Soviet invasion in a rapid campaign. The European Peacekeeper Army's 2nd Mechanized Hussar Division 'Pippi Långstrump' meets the PLA 6th Armored Division near Omsk; Europe and China have cooperated to break Russian imperial domination into successor states and spheres of influence.",
+   "summary": "A federalising EU defeats the Russian invasion in a rapid campaign. The European Peacekeeper Army's 2nd Mechanized Hussar Division 'Pippi Långstrump' meets the PLA 6th Armored Division near Omsk; Europe and China cooperate to break Russian imperial domination into successor states and spheres of influence.",
    "status": "canon",
    "regions": [
     "Europe",
     "China",
-    "Soviet Union",
+    "Russia",
     "Omsk"
    ],
-   "source": "#1113 §2"
+   "source": "#1113 §2; actor corrected by #1114 §2"
   },
   {
-   "order": 11,
+   "order": 12,
    "id": "marin_presidency",
    "when": "undated, before and through the Crisis",
    "title": "President Sanna Marin holds the federation together",
@@ -152,7 +166,7 @@
    "source": "#1113 §2"
   },
   {
-   "order": 12,
+   "order": 13,
    "id": "queen_sanna_i",
    "when": "undated, after the surrender",
    "title": "The mythic title 'Queen Sanna I of Europe'",
@@ -164,7 +178,7 @@
    "source": "#1113 §2"
   },
   {
-   "order": 13,
+   "order": 14,
    "id": "queen_sanna_constitutional_basis",
    "when": "undated",
    "title": "How a socialist president acquires a royal title",
@@ -176,7 +190,7 @@
    "source": "#1113 §2"
   },
   {
-   "order": 14,
+   "order": 15,
    "id": "trans_siberian_lease",
    "when": "undated, after the surrender",
    "title": "A thousand-year lease of the Trans-Siberian Railway",
@@ -189,7 +203,7 @@
    "source": "#1113 §2"
   },
   {
-   "order": 15,
+   "order": 16,
    "id": "ai_singularity",
    "when": "undated, the Crisis",
    "title": "The Singularity begins and turns partially malevolent",
@@ -202,7 +216,7 @@
    "source": "#1113 §1; docs/world/NHI_CRISIS_921.md §4"
   },
   {
-   "order": 16,
+   "order": 17,
    "id": "us_legacy_trap",
    "when": "undated",
    "title": "The American legacy programme becomes the Trojan horse",
@@ -215,7 +229,7 @@
    "source": "#1113 §1"
   },
   {
-   "order": 17,
+   "order": 18,
    "id": "pope_teilhard",
    "when": "undated, during the Crisis",
    "title": "Pope Teilhard declares the Noösphere and the Omega Point central to doctrine",
@@ -228,7 +242,7 @@
    "source": "#1113 §3"
   },
   {
-   "order": 18,
+   "order": 19,
    "id": "jerusalem_manifestation",
    "when": "undated, late in the Crisis",
    "title": "The Jerusalem manifestation",
@@ -241,7 +255,7 @@
    "source": "#1113 §4"
   },
   {
-   "order": 19,
+   "order": 20,
    "id": "quarantine_lifted",
    "when": "same moment",
    "title": "The quarantine is declared over",
@@ -253,7 +267,7 @@
    "source": "#1113 §4"
   },
   {
-   "order": 20,
+   "order": 21,
    "id": "transmission_failure",
    "when": "same moment",
    "title": "The transmission fails or is corrupted",
@@ -265,7 +279,7 @@
    "source": "#1113 §4"
   },
   {
-   "order": 21,
+   "order": 22,
    "id": "transmission_corruption_cause",
    "when": "undated",
    "title": "Whether the corruption was interference",
@@ -277,7 +291,7 @@
    "source": "#1113 §4"
   },
   {
-   "order": 22,
+   "order": 23,
    "id": "magick_returns",
    "when": "after the Veil lifts",
    "title": "Magick returns as the Veil lifts",
@@ -290,7 +304,7 @@
    "source": "#1113 §4"
   },
   {
-   "order": 23,
+   "order": 24,
    "id": "us_emp_strikes",
    "when": "undated, near the Jerusalem event",
    "title": "American EMP-nuclear strikes against its own rogue-ASI zones",
@@ -302,7 +316,7 @@
    "source": "#1113 §4 and §5"
   },
   {
-   "order": 24,
+   "order": 25,
    "id": "birdsong_whalesong",
    "when": "same window",
    "title": "DPRK contingency 'Birdsong, Whalesong'",
@@ -315,23 +329,23 @@
    "source": "#1113 §5"
   },
   {
-   "order": 25,
+   "order": 26,
    "id": "soviet_coup",
    "when": "same window",
    "title": "Medvedev storms the residence and takes the nuclear football",
-   "summary": "Commanding loyal Spetsnaz from four commandeered Mi-8 helicopters, Medvedev executes Gerasimov and several Putin loyalists, personally kills Putin, declares a Soviet revolution, claims the presidency and receives the nuclear football from a zealous Strategic Rocket Forces officer.",
-   "status": "canon",
+   "summary": "Claimed by some witnesses and archives: Medvedev storms the residence, executes Gerasimov and several Putin loyalists, kills Putin, declares a Soviet revolution and takes the nuclear football. Contradicted by the baseline, in which no Soviet restoration occurs. Treat as Mandela-effect material or disinformation, not as settled history (#1114 §3).",
+   "status": "in_world_claim",
    "regions": [
     "Soviet Union"
    ],
-   "source": "#1113 §6"
+   "source": "#1113 §6, reclassified by #1114 §3"
   },
   {
-   "order": 26,
+   "order": 27,
    "id": "plan_uranus",
    "when": "undated, after the coup",
    "title": "Plans Mars, Uranus and Saturn",
-   "summary": "Medvedev orders strategic plans under these names. 'Uranus' is an ominous secret protocol tied to the state's extraterrestrial knowledge and its prior contact with alien communists.",
+   "summary": "Medvedev orders strategic plans under these names; 'Uranus' is an ominous secret protocol tied to the state's extraterrestrial knowledge. This sequence exists only if the claimed Soviet restoration was real, so it stays OPEN and undated.",
    "status": "open",
    "regions": [
     "Soviet Union"
@@ -339,7 +353,7 @@
    "source": "#1113 §6"
   },
   {
-   "order": 27,
+   "order": 28,
    "id": "fortress_europe_present",
    "when": "2045",
    "title": "Fortress Europe, and the world outside it",

@@ -50,7 +50,7 @@ These were found by reading the documents, not by assuming they agreed.
 | 3 | EU, China and India as pillars of a surviving order vs Fortress Europe alone among ruins | `POST_NHI_WORLD_1005.md` §A vs #1113 §4 | The pillar premise is superseded. China remains a **co-belligerent and partner**, not a surviving pillar of a functioning world order. |
 | 4 | UNSA described as "a UN agency" vs an EU-anchored body | `data/world/reveal_ladder.json` stage 0 vs #1113 | UNSA's origin is not settled by #1113. The reveal-ladder line describes what a *rookie believes*, which is compatible with a European-led agency that kept a UN name and mandate. Recorded as **[OPEN]**, not resolved by fiat. |
 | 5 | AWN catastrophe treated as a future stage ("Stage 4: localized After the Fall") vs already across the border | #1105 escalation policy vs #1113 | AWN is **already true outside the Firewall** at campaign start. The escalation ladder still governs what the **player** learns and what reaches Helsinki, not whether the wider world has fallen. |
-| 6 | Russia as a surviving great power vs a defeated, disintegrating Soviet Union | `POST_NHI_WORLD_1005.md` §A vs #1113 §2 | Superseded by #1113. The Soviet Union persisted or was restored, invaded Ukraine, lost to the EU in Operation Barbarella II, and is breaking into successor polities. |
+| 6 | Russia as a surviving great power vs a defeated, disintegrating Russian state | `POST_NHI_WORLD_1005.md` §A vs #1113 §2 | Superseded by #1113, and the actor corrected by #1114 §2. Russia — the post-Soviet state, not a restored Soviet Union — invaded Ukraine, lost to the EU in Operation Barbarella II, and is breaking into successor polities. The "restored USSR" version is Mandela-effect material. |
 | 7 | No mention of President Sanna Marin, Queen Sanna I, the Soviet of Saturn, or the Medvedev coup anywhere in canon | grep across `docs/`, `data/`, `rulebook/` | Absent, not contradicted. They enter canon here for the first time. |
 
 ## 3. Chronology [CANON]
@@ -70,7 +70,7 @@ open. The machine-readable source is `data/world/chronology_1113.json`; this tab
 | 6 | 1990s | France resolves important UFO and PSI questions | CANON |
 | 7 | undated, before the Crisis | The Vatican opens historical archives | CANON |
 | 8 | undated | Norwegian study of the Hessdalen lights and plasmoids | CANON |
-| 9 | undated, before the Crisis | A restored Soviet Union invades Ukraine | CANON |
+| 9 | undated, before the Crisis | Russia invades Ukraine; Ukraine fights as an EU member | CANON (#1114 §2) |
 | 10 | undated, immediately before or during the Crisis | Operation Barbarella II | CANON |
 | 11 | undated, before and through the Crisis | President Sanna Marin holds the federation together | CANON |
 | 12 | undated, after the surrender | The mythic title 'Queen Sanna I of Europe' | CANON |
@@ -119,12 +119,12 @@ The satire here has a target and it is not a religion or a people: it is **fanat
 and catastrophe**. Depict religious people and communities as diverse, including peacemakers and those who
 refuse violence.
 
-### The broken Soviet empire [CANON]
+### The broken Russian empire [CANON]
 Defeated and disintegrating into successor polities under European and Chinese pressure; active war zones,
 occult and alien research complexes, irradiated sites and competing regimes.
 
 ### Outside Europe, unresolved [OPEN]
-The wider World War III / NHI Crisis touches Russia, Iran, Cuba, Canada, Greenland, Mexico, Taiwan and Korea. How
+The wider World War III / NHI Crisis touches Russia, Iran, Cuba, Canada, Greenland, Mexico, Taiwan and Korea. Russia here is the post-Soviet state left by the 1991 collapse, not a surviving or restored Soviet Union (#1114 §2); the restored-USSR account is Mandela-effect material (#1114 §3). How
 each fares is undecided; do not fill it in to make a map look tidy.
 
 ## 5. The three things that make it NoöPunk rather than a disaster setting
