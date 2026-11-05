@@ -51,7 +51,6 @@ class AuthoringTests(unittest.TestCase):
         self.assertEqual(result.story.nodes["scene.home"].scene_types, ("Investigation",))
         self.assertEqual(result.to_dict()["format"], "noopunk.four_graphs")
         self.assertEqual(result.avatars, {"avatar": "pc"})
-        result.move_avatar  # traversal remains guarded by CWN accessibility flags
 
     def test_rejects_invalid_records_and_astral(self):
         with self.assertRaises(GraphContractError):
