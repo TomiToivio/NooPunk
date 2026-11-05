@@ -187,6 +187,25 @@ class IllegalPathTests(unittest.TestCase):
             )
         self.assertIn("Underdog", str(caught.exception))
 
+    def test_the_psi_edges_are_checked_against_the_access_policy(self):
+        """A Mentalist may not sit beside a Spellcaster, and the builder is the place that combination is refused."""
+        catalogue = dict(CATALOGUE)
+        catalogue["Mentalist"] = Edge("Mentalist")
+        catalogue["Spellcaster"] = Edge("Spellcaster", is_power=True)
+        with self.assertRaises(LifepathError) as caught:
+            build(
+                edges=(catalogue["Mentalist"], catalogue["Spellcaster"], catalogue["Alert"]),
+                edge_catalogue=catalogue,
+                attributes=None,
+                attribute_dice=(1,) * 18,
+            )
+        self.assertIn("edges", {v.field for v in caught.exception.violations})
+
+    def test_a_generic_cwn_edge_is_not_refused_as_unknown(self):
+        """Alert and Ghost are ordinary Edges; the access policy knows only the four psi ones, so it must not judge."""
+        path = build(edges=(CATALOGUE["Alert"], CATALOGUE["Ghost"]), foci=())
+        self.assertEqual(set(path.edges), {"Alert", "Ghost"})
+
 
 if __name__ == "__main__":
     unittest.main()
