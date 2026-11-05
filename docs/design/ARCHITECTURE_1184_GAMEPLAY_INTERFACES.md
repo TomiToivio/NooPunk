@@ -46,7 +46,7 @@ of a node conspicuous.
 | --- | --- | --- |
 | Online investigation / OSINT | *Orwell*, *Song of Farca*, *Blade Runner* (1997) | Search public records, messages, dossiers, media, databases; collect and compare. **No investigation-point economy.** Restricted systems are entered through CWN hacking. |
 | Dialogue / interrogation | *Silicon Dreams*, narrative RPGs | Evidence-focused: ask, present, challenge contradiction, obtain testimony and documents. **No emotion meter, no lie-detector UI, no interrogation minigame.** |
-| Cyber / hacking | *DROP - System Breach*, *Midnight Protocol*, *Hacknet* | Navigate a graph of systems and access controls, using **CWN's** verbs, programs and constraints — not the reference games' mechanics. |
+| Cyber / hacking | *DROP - System Breach*, *Midnight Protocol*, *Hacknet*, *hackmud* (text-only) | Navigate a graph of systems and access controls, using **CWN's** verbs, programs and constraints — not the reference games' mechanics. |
 | Physical exploration | *Disco Elysium*, *Citizen Sleeper*, *Shadowrun: Dragonfall* | Locations, encounters, dialogue, Tags, consequences; CWN character and resolution. |
 | **Action** *(was "Combat")* | CWN + police procedurals (see §5) | CWN combat and abstract spatial relations. **No tactical grid or map required for the MVP.** |
 | Dream / astral / anomalous | *Observer*, NoöPunk fiction | Scripted scene graphs. **No general-purpose player-operated astral, teleport or precognition simulation.** |
@@ -54,6 +54,8 @@ of a node conspicuous.
 **GUMSHOE is a design principle, not a mechanics package.** Essential clues are never gated behind a
 failed roll; CWN rolls govern risk, cost, extra detail and consequences. The player assembles evidence
 through the interfaces instead of spending investigative points.
+
+**The terminal is a first-class interface.** *hackmud* is the reference for how it should feel — messages, logs, OSINT and intrusion as in-world tools you type at — and the text CLI and Evennia client carry the same command vocabulary as the GUI's command line. The tabletop is the third form of the same verbs, not a lesser one.
 
 ## 4. Evidence and knowledge model
 
