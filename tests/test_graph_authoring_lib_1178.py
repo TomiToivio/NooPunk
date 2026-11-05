@@ -2,8 +2,8 @@
 import json
 import unittest
 
-from src.rules.graph_authoring import read_record, compile_graphs
-from src.rules.four_graphs import GraphContractError
+from src.rules.graph_authoring import compile_graphs, read_record
+from src.world.graphs import GraphError as GraphContractError
 
 
 def doc(family: str, data: dict) -> str:
@@ -26,31 +26,29 @@ class AuthoringTests(unittest.TestCase):
 
     def test_compile_four_records_without_astral(self):
         inputs = {
-            "physical": {"graph_type": "physical", "version": 1,
+            "physical": {"graph_type": "physical",
                          "nodes": [{"id": "physical.home", "label": "Home"}],
-                         "edges": [], "positions": {"pc": "physical.home"}},
-            "cyber": {"graph_type": "cyber", "version": 1,
+                         "edges": [], "occupants": {"pc": "physical.home"}},
+            "cyber": {"graph_type": "cyber",
                       "nodes": [{"id": "cyber.camera", "label": "Camera",
-                                 "kind": "camera", "physical_ref": "physical.home",
-                                 "device_actions": ["record"]}],
-                      "edges": [], "positions": {"avatar": "cyber.camera"},
-                      "avatar_operators": {"avatar": "pc"}},
-            "social": {"graph_type": "social", "version": 1,
+                                 "device_type": "camera", "physical_location": "physical.home",
+                                 "actions": ["record"]}],
+                      "edges": [], "avatars": {"avatar": "cyber.camera"}},
+            "social": {"graph_type": "social",
                        "nodes": [{"id": "pc", "label": "PC", "kind": "character"}],
                        "edges": []},
-            "story": {"graph_type": "story", "version": 1,
+            "story": {"graph_type": "story",
                       "nodes": [{"id": "scene.home", "label": "Home arrival",
-                                 "kind": "scene", "scene_types": ["Investigation"],
-                                 "references": ["physical.home", "cyber.camera"]}],
+                                 "kind": "scene", "scene_types": ["Investigation"]}],
                       "edges": []},
         }
         records = [read_record(doc(family, data)) for family, data in inputs.items()]
         result = compile_graphs(records)
-        self.assertEqual(result.physical.positions["pc"], "physical.home")
-        self.assertEqual(result.cyber.nodes["cyber.camera"].physical_ref, "physical.home")
+        self.assertEqual(result.physical.occupants["pc"], "physical.home")
+        self.assertEqual(result.cyber.nodes["cyber.camera"].physical_location, "physical.home")
         self.assertEqual(result.story.nodes["scene.home"].scene_types, ("Investigation",))
-        self.assertEqual(result.to_dict()["format"], "noopunk.four_graphs")
-        self.assertEqual(result.avatars, {"avatar": "pc"})
+        self.assertEqual(result.to_dict()["format"], "noopunk.world.graphs")
+        self.assertEqual(result.cyber.avatars, {"avatar": "cyber.camera"})
 
     def test_rejects_invalid_records_and_astral(self):
         with self.assertRaises(GraphContractError):

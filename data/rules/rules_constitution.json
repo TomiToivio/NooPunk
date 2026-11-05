@@ -289,10 +289,6 @@
         "tier": "noopunk-mod"
       },
       {
-        "module": "src/rules/four_graphs.py",
-        "tier": "noopunk-mod"
-      },
-      {
         "module": "src/rules/goals.py",
         "tier": "noopunk-mod"
       },

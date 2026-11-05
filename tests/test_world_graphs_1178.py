@@ -171,7 +171,7 @@ class StoryGraphTest(unittest.TestCase):
                     "Raid",
                     "scene",
                     "episode.one",
-                    ("investigation", "combat"),
+                    ("investigation", "Action"),
                     (),
                     ("flag.warrant",),
                 ),
