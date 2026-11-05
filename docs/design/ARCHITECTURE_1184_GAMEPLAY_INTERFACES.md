@@ -86,7 +86,7 @@ lost access, a relationship — rather than dead-ending the case. Multiple paths
 
 **Decision (#1184, author's direction): "Combat" becomes "Action".** The scene type names what the
 interface shows and what the player does, not a genre promise. In code:
-`src/rules/four_graphs.py::SCENE_TYPES` now contains `Action`; `Combat` is refused, so the old name
+`src/world/graphs.py::SCENE_TYPES` now contains `Action`; `Combat` is refused, so the old name
 cannot quietly return as a synonym (`tests/test_scene_types_1184.py`).
 
 **The setting's action register is Finnish police work, not American gunfight cinema.** Finland is not

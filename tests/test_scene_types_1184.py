@@ -15,7 +15,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from rules.four_graphs import SCENE_TYPES, GraphContractError, StoryNode  # noqa: E402
+from src.world.graphs import SCENE_TYPES, StoryNode
+from src.world.graphs import GraphError as GraphContractError
 
 
 class ActionSceneTypeTests(unittest.TestCase):

@@ -25,6 +25,14 @@ from dataclasses import dataclass, field
 from typing import Any
 
 
+#: The scene-kind vocabulary (#1184). **Action**, not "Combat": the scene kind is an arrest, a
+#: pursuit, a containment or a forced entry, and CWN's combat rules are what an Action scene calls
+#: when force cannot be avoided. The old word is refused rather than aliased, because a synonym that
+#: validates is a second undocumented vocabulary.
+SCENE_TYPES = frozenset(("Investigation", "Exploration", "Action", "Social", "Cyber", "Astral"))
+_SCENE_TYPES_CASELESS = frozenset(name.lower() for name in SCENE_TYPES)
+
+
 class GraphError(ValueError):
     """A graph invariant was about to be violated."""
 
@@ -104,6 +112,11 @@ class PhysicalGraph:
                 raise GraphError(f"dangling parent location: {node.parent_id}")
         _endpoints(self.routes, self.nodes)
         for actor, node_id in self.occupants.items():
+            if actor in self.nodes:
+                raise GraphError(
+                    f"{actor!r} is both an occupant and a location node; "
+                    "actors occupy places, they are not places (#1178)"
+                )
             if node_id not in self.nodes:
                 raise GraphError(
                     f"actor {actor!r} occupies unknown location {node_id!r}"
@@ -260,6 +273,11 @@ class CyberGraph:
                 raise GraphError(f"node key {node_id!r} does not match id {node.id!r}")
         _endpoints(self.links, self.nodes)
         for actor, node_id in self.avatars.items():
+            if actor in self.nodes:
+                raise GraphError(
+                    f"{actor!r} is both an avatar and a device node; "
+                    "avatars occupy devices, they are not devices (#1178)"
+                )
             if node_id not in self.nodes:
                 raise GraphError(
                     f"avatar {actor!r} occupies unknown device {node_id!r}"
@@ -538,6 +556,13 @@ class StoryNode:
             raise GraphError(f"story node kind must be one of {STORY_NODE_KINDS}")
         if self.parent_id and self.parent_id == self.id:
             raise GraphError("a story node cannot be its own parent")
+        if self.kind != "scene" and self.scene_types:
+            raise GraphError("scene types belong to scenes")
+        unknown = sorted({v for v in self.scene_types if v.strip().lower() not in _SCENE_TYPES_CASELESS})
+        if unknown:
+            raise GraphError(
+                f"unknown scene types {unknown}; Action is the scene kind, not Combat"
+            )
 
 
 @dataclass(frozen=True)

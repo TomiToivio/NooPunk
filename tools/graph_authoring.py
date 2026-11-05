@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Author-friendly YAML front door for the four graphs (#1178).
 
-`src/rules/four_graphs.py` implements the model and does no file I/O; it speaks
-`noopunk.four_graphs` snapshots. Authors should not hand-write that JSON, so this tool converts
+`src/world/graphs.py` implements the model and does no file I/O; it speaks
+`noopunk.world.graphs` snapshots. Authors should not hand-write that JSON, so this tool converts
 YAML to the same snapshot and validates it through the same code path:
 
     python3 tools/graph_authoring.py --check data/graphs/example.yaml
@@ -17,6 +17,7 @@ Astral is not accepted — that layer is deferred until scripted Astral Projecti
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -24,7 +25,8 @@ ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from src.rules.four_graphs import FourGraphs, GraphContractError
+from src.world.graphs import GraphError as GraphContractError
+from src.world.graphs import WorldGraphs
 
 #: Block style on purpose. A flow mapping (`{label: Home, Sörnäinen}`) splits on the comma inside the
 #: label, which is the first trap an author hits when naming places.
@@ -32,12 +34,11 @@ EXAMPLE = """\
 # Author-edited NoöPunk four graphs (#1178).
 # Physical and Cyber nodes are PLACES. Actors OCCUPY them; an actor is never a node.
 # Astral is deferred until scripted Astral Projection lands.
-format: noopunk.four_graphs
+format: noopunk.world.graphs
 version: 1
 
 physical:
   graph_type: physical
-  version: 1
   nodes:
     - id: loc.sornainen.home
       label: "Home, Sörnäinen"
@@ -48,26 +49,25 @@ physical:
   edges:
     - source: loc.sornainen.home
       target: loc.ratakatu.hq
-      id: route.home_hq
       directed: true
-  positions:
+      kind: door
+      label: "tram 7"
+  occupants:
     act.rookie: loc.ratakatu.hq
 
 cyber:
   graph_type: cyber
-  version: 1
   nodes:
     - id: cyber.hq.camera
       label: Lobby camera
-      kind: device
-      physical_ref: loc.ratakatu.hq
-      device_actions: [watch, record]
+      device_type: camera
+      physical_location: loc.ratakatu.hq
+      actions: [watch, record]
   edges: []
-  positions: {}
+  avatars: {}
 
 social:
   graph_type: social
-  version: 1
   nodes:
     - id: act.rookie
       kind: character
@@ -84,7 +84,6 @@ social:
 
 story:
   graph_type: story
-  version: 1
   nodes:
     - id: scene.intake
       kind: scene
@@ -94,18 +93,14 @@ story:
       kind: scene
       label: Records search
       scene_types: [Cyber, Investigation]
-      references: [loc.ratakatu.hq, cyber.hq.camera]
   edges:
     - source: scene.intake
       target: scene.records
       kind: transition
-      all_flags: [flag.badge_issued]
-
-avatars: {}
 """
 
 
-def load(path: Path) -> FourGraphs:
+def load(path: Path) -> WorldGraphs:
     """Parse YAML and validate it through the same path as a JSON snapshot."""
     import yaml  # local import: the rules layer must not depend on a parser
 
@@ -118,7 +113,7 @@ def load(path: Path) -> FourGraphs:
     for required in ("format", "version", "physical", "cyber", "social", "story"):
         if required not in data:
             raise GraphContractError(f"{path}: missing '{required}'")
-    return FourGraphs.from_dict(data)
+    return WorldGraphs.from_dict(data)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -149,7 +144,7 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 0
     if args.json:
-        print(graphs.to_json())
+        print(json.dumps(graphs.to_dict(), indent=2, ensure_ascii=False))
         return 0
 
     print(f"valid: {args.path}")

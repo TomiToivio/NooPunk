@@ -1,6 +1,6 @@
 # Graph implementation v1: four layers first (#1178)
 
-> **AUTHOR DECISION (2026-11-05):** [issue #1178](https://github.com/TomiToivio/NooPunk/issues/1178) supersedes the conflicting portions of draft [#1164](DRAFT_GRAPH_SCENES_1164.md) and [the earlier PSI proposal](DRAFT_ASTRAL_GRAPH_SWN_PSI_1164.md). The v1 Python adapter is in `src/rules/four_graphs.py`. The Astral Graph **is deferred**, and spontaneous sleeping OOBEs, NDEs and Monroe-inspired technology initiate **scripted Story scenes**, not player-selected Astral navigation.
+> **AUTHOR DECISION (2026-11-05):** [issue #1178](https://github.com/TomiToivio/NooPunk/issues/1178) supersedes the conflicting portions of draft [#1164](DRAFT_GRAPH_SCENES_1164.md) and [the earlier PSI proposal](DRAFT_ASTRAL_GRAPH_SWN_PSI_1164.md). The runtime model is `src/world/graphs.py`; the authoring front door is `tools/graph_authoring.py` (the earlier `src/rules/four_graphs.py` duplicate was deleted in the #1178 merge). The Astral Graph **is deferred**, and spontaneous sleeping OOBEs, NDEs and Monroe-inspired technology initiate **scripted Story scenes**, not player-selected Astral navigation.
 
 ## Canonical distinction
 
@@ -74,6 +74,6 @@ For the other three files replace `graph_type`/data with `cyber` (devices, links
 
 ## Verification
 
-`tests/test_four_graphs_1178.py` checks occupancy, gated route navigation, co-location, asymmetric Social scores, story gates, cross-reference validation, roundtrip persistence and optional NetworkX projection. `tests/test_graph_authoring_1178.py` checks Markdown record validation.
+`tests/test_world_graphs_1178.py` checks occupancy, gated route navigation, co-location, asymmetric Social scores, story gates, cross-reference validation, roundtrip persistence and optional NetworkX projection. `tests/test_graph_authoring_1178.py` checks Markdown record validation.
 
 **Status note:** the graph adapter is an executable first slice; full CWN/Evennia integration is not claimed. No Astral graph feature has been added as part of #1178.

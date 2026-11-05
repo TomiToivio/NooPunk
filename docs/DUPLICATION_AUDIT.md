@@ -126,6 +126,8 @@ behaviour that made it worth writing.
 
 **Operational rule for issue owners:** after every merged PR, update the parent/child issue's completed increments and remaining exact scope *before* another agent takes its unchecked boxes. Search open, merged **and closed-unmerged** PRs, inspect merged paths and code; distinguish whole-issue closure from a partial increment. #1081 is the cross-cutting evidence/integration gate; #1083 owns AWN, #1084 adapters/Tarot, #1085 WWN spells and commands, #1086 author decisions. Their overlap is intentional only when the integration gate **links** the owner, not when it starts a second implementation.
 
+> **RESOLVED (2026-11-05, #1178 follow-up).** The merge recommended below has been executed: `src/rules/four_graphs.py` and its duplicate classes are deleted, `src/rules/graph_authoring.py`, `src/rules/graph_text_bridge.py` and `tools/graph_authoring.py` now compile and project into `src/world/graphs.py`, and the authored snapshot format is `noopunk.world.graphs`, version 1. The scene-kind vocabulary (`SCENE_TYPES`, Action-not-Combat) moved into the runtime model, and the "an actor is never a node" invariant is now enforced there for both occupancies and avatars. New work targets `src/world/graphs.py`, which is now the only model.
+
 ## 2026-11-05: two live implementations of the four graph families (#1178)
 
 Both are merged and both have tests, so this is the "two engines" case rather than a stale copy:
