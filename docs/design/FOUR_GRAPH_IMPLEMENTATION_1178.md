@@ -55,6 +55,8 @@ Example of a **Physical domain record** with JSON-as-YAML frontmatter (the same 
 The rookie leaves the apartment. Normal CWN travel resolves arrival.
 ```
 
+To bind an authored Cyber avatar to a physical operator, add an `avatar_operators` mapping inside Cyber `data` (for example, `{"avatar.tony": "pc.tony"}`), and list the avatar in Cyber `positions` and the operator in Physical `positions`. The validator checks both.
+
 For the other three files replace `graph_type`/data with `cyber` (devices, links, avatar positions), `social` (character/faction entities, relationships) and `story` (Series/Episode/Scene nodes and `contains`/`transition` edges). The adapter currently compiles *one domain record per family*; future multi-record ingestion must explicitly merge and validate stable IDs before use. The existing [authoring templates](../graphs/templates/) remain usable inspiration, but they are not automatically compiled if their frontmatter lacks `data` and `record_id`.
 
 ### Existing systems remain authoritative
