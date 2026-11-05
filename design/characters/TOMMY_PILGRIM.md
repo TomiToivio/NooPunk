@@ -14,9 +14,7 @@ Tommy Pilgrim is based on PKD and his books VALIS and The Man in the High Castle
 
 ## The Soviet Mandela Effect
 
-Pilgrim's *NoöPunk* describes a world in which **the Soviet Union never collapsed**. Many fans
-insist they remember a different version, one in which the USSR is gone and Russia and Ukraine are
-at war. Both sides agree the discrepancy is a **Mandela Effect**. They disagree about its cause.
+In the playable world's ordinary records, the **Soviet Union collapsed in 1991** and Russia later fought the EU before the NHI Crisis. Yet copies of Pilgrim's *NoöPunk*, fan testimony and apparently authentic archives also describe a USSR that **never collapsed**. **Everyone experiences the Soviet Mandela Effect**, including those who confidently remember the post-Soviet account. The contradiction is not an invitation to maintain two competing canonical histories. Its cause remains unknown.
 
 Pilgrim rejects the mundane explanation that a 1970s author simply assumed the Soviet Union would
 last. His preferred theories are precognition, time travel and timeline alteration. He claims to
