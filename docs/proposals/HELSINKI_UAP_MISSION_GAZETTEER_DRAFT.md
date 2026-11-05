@@ -232,6 +232,14 @@ Treat **Helsinki as the protagonist**, not just a mission selection screen. A ro
 
 **First 'weird' reveal:** A scripted dream presents a university underground corridor from the nineteenth century, a wartime shelter and a future 2045 door simultaneously. A witness finds the corridor familiar, but no authoritative map confirms it. The player may follow one lead, reject it, or ask the academic about dream memory. Dream imagery is **never proof of a real tunnel**.
 
+## New PSI, occult and fourth-density city missions (author direction, proposal detail)
+
+The [Finnish Crisis addendum](FINLAND_NHI_CRISIS_HYVINKAA_FOURTH_DENSITY_ADDENDUM_DRAFT.md#9-the-occult-and-noetic-renaissance-society-after-fourth-density-awakening) now establishes the proposed mass PSI/occult revival, Pope Teilhard II's Catholic–Confederation diplomatic synthesis, professional psychic services, mandatory psychic registration and conversion of Sörnäinen's historic prison (modern Helsinki Prison in Hermanni) into a fictional special PSI facility.
+
+Seven mission IDs **PSI-01–PSI-07** are defined in that addendum: the prisoner apparently astral-projecting to a funeral (Hermanni), the mediums' registration data breach (Kallio/Sörnäinen), CE-5 summoned orbs and forged videos (Hakaniemi shoreline), Hermetic and shamanic reproducibility/appropriation dispute (University), the fictional Vatican Omega Point archive leak (Helsinki's Catholic community), a judicial challenge to the psychic registry (metropolitan court) and a noetic impersonation case in Astral Helsinki. Preserve the competing explanations and protect freedom of belief, bodily/mental privacy, cultural traditions and due process. No actual security procedure at a real prison is depicted.
+
+**Geographic cluster:** Helsinki Prison/Hermanni → Sörnäinen mediums and service market → Hakaniemi CE-5 waterfront → Kaisaniemi university ethics → city-centre courts and Catholic community. The visible-and-astral duality can connect these physical nodes through symbolic *Noöspace* associations, but not a literal astral street map.
+
 ## Mission design handoff schema (tabletop and Evennia)
 
 Use a data record / tag-sheet, not new CWN mechanics:
