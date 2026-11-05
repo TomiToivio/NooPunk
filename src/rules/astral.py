@@ -1,6 +1,10 @@
 """Astral graph and PSI permission layer for NoöPunk (#1164).
 
-This is the **approved add-on**, not a second rules engine: Effort accounting stays in
+**Deferred by #1178:** Astral Projection is scripted and the Astral graph is not part of the
+current four-graph slice. This module is a prototype, not runtime authority; do not wire it
+into play until the Astral work is separately approved.
+
+This is the **prototype add-on**, not a second rules engine: Effort accounting stays in
 :mod:`src.rules.swn_psionics`, ordinary action resolution stays in CWN, and investigation remains
 the resolver in :mod:`src.rules.investigation`. The module supplies only what the graph design
 needs:

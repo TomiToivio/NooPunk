@@ -1,5 +1,10 @@
 # SWN Psionics tweaks and Astral Graph: playable subsystem specification (#1164)
 
+> **Superseded on graph nodes and player-selectable projection by [#1178](https://github.com/TomiToivio/NooPunk/issues/1178).**
+> Astral nodes are locations/occupants, not conscious-agent nodes; Astral Projection is scripted
+> (sleeping OOBE, NDE, Monroe-style technology), and the Astral Graph is deferred. This file remains
+> the historical proposal for the PSI slice.
+
 > **DRAFT — TOMI REVIEW REQUIRED — NOT AUTHOR APPROVED (2026-11-05).** This is a focused, actionable complement to [the five-graph design](DRAFT_GRAPH_SCENES_1164.md), [the prior PSI proposal](DRAFT_NOOPUNK_PSIONICS.md), [Psychotronics](DRAFT_NOOPUNK_PSYCHOTRONICS.md), and the author's unchanged [Graph Rules](../../design/graphs/RULES.md). **Design only**: no changes to CWN, Python, live game rules, or the author documents. All numerical thresholds marked *provisional* need author approval and playtesting.
 
 ## 0. Where the proposal was

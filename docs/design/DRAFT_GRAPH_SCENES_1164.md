@@ -1,5 +1,11 @@
 # NoöPunk Graph Rules and Scene Authoring: implementation proposal (#1164)
 
+> **Partially superseded by [#1178](https://github.com/TomiToivio/NooPunk/issues/1178) (2026-11-05).**
+> Physical and Astral nodes are **locations**, not conscious agents; the Astral graph is deferred
+> until scripted Astral Projection needs it. The current implementation is
+> [`docs/rules/WORLD_GRAPHS_1178.md`](../rules/WORLD_GRAPHS_1178.md). This file remains the historical
+> design record and is not current schema authority.
+
 > **DRAFT — TOMI REVIEW REQUIRED — NOT AUTHOR APPROVED.** 2026-11-05.
 > **Scope:** architecture, five typed graph schemas, six scene types, three worked scenes and a Markdown/YAML authoring format. **This document changes no published CWN mechanics, game engine, tabletop rulebook, or user-authored graph README.** It does not authorize implementation.
 > **Authority:** [author's five-graph design](../../design/graphs/README.md) → [CWN baseline](../../rulebook/WITHOUT_NUMBER_BASELINE.md) → canonical [Europol campaign](../campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md). Related unapproved drafts: [Psionics](DRAFT_NOOPUNK_PSIONICS.md), [Character Tags](DRAFT_NOOPUNK_CHARACTER_TAGS.md), [Psychotronics](DRAFT_NOOPUNK_PSYCHOTRONICS.md).

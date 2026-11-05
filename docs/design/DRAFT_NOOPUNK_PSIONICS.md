@@ -1,5 +1,10 @@
 # NoöPunk Psionics: Conscious-Agent-Network and Astral Rules
 
+> **Partially superseded by [#1178](https://github.com/TomiToivio/NooPunk/issues/1178) (2026-11-05).**
+> Player-selectable SWN powers are **Telepathy and Telekinesis only**; Astral Projection is
+> **scripted** (sleeping OOBE, NDE, Monroe-style technology), and the Astral Graph is deferred.
+> The historical projection loop below is not current player-rule authority.
+
 > **DRAFT — TOMI REVIEW REQUIRED — NOT AUTHOR APPROVED.** Issue [#1137](https://github.com/TomiToivio/NooPunk/issues/1137); researched 2026-11-04. Planning only; do not implement, modify the CWN core, or copy a published ruleset. **Evidence labels:** [E] empirical/approved; [X] experimental; [H] contested theory or parapsychology; [F] fictional 2045 premise; [P] draft mechanics. Tomi edits this proposal first, then separately authorizes matching tabletop and Python implementation.
 
 ## Preflight: what already exists for this subsystem

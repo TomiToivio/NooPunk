@@ -1,6 +1,11 @@
 # Astral graph and PSI permissions (#1164)
 
-**Status: implementation of the approved design slice — issue #1164 remains open.**
+> **Deferred by [#1178](https://github.com/TomiToivio/NooPunk/issues/1178) (2026-11-05).**
+> Astral Projection is scripted (sleeping OOBE, NDE, Monroe-style technology); the Astral Graph is
+> not part of the current four-graph slice. This module remains a **prototype**, not runtime
+> authority, and must not be wired into play until the Astral work is separately approved.
+
+**Status: deferred prototype — issue #1164 remains open.**
 This is the Astral/PSI add-on proposed in
 [`docs/design/DRAFT_GRAPH_SCENES_1164.md`](../design/DRAFT_GRAPH_SCENES_1164.md) §7 and
 [`docs/design/DRAFT_NOOPUNK_PSIONICS.md`](../design/DRAFT_NOOPUNK_PSIONICS.md). It does **not**

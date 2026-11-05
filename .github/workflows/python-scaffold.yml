@@ -20,6 +20,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+      - name: Install authoring-tool dependencies
+        # tools/graph_authoring.py is the only YAML reader in the repository; the rules layer stays
+        # standard-library-only, so PyYAML is installed for the tests instead of as a runtime
+        # dependency. Without this step the #1178 authoring tests would skip, which is green by
+        # absence rather than proof.
+        run: pip install PyYAML==6.0.2
       - name: Test executable game code
         run: python -m unittest discover -s tests -p "test_*.py"
       - name: Test the separate strategy-game package
