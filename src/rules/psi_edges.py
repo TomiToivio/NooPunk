@@ -3,7 +3,7 @@
 Six items were deferred. Four can be built **without transcribing a rulebook**, because they are
 structural constraints rather than numbers:
 
-* the **Mutant** Edge is NPC-only, and mutation, ancestry and PSI are independent facts (#1196 §2)
+* the **Mutant** Edge is a PC option with Europol approval; mutation, ancestry and PSI remain independent
 * **Mentalist / Spellcaster / Summoner** may not smuggle in an unrestricted SWN discipline (#1196 §3)
 * a **device grant** lives and dies with the device that grants it (#1196 §4)
 * the **Psychic Training Focus** cannot exist in code until somebody has quoted the book (#1196 §5)
@@ -130,6 +130,7 @@ class PsychicTrainingFocus:
 
 #: Where each selectable Edge comes from. A name outside this map is refused rather than assumed.
 EDGE_SOURCES: dict[str, str] = {
+    "Mutant": "Ashes Without Number",
     "Mentalist": "Ashes Without Number",
     "Spellcaster": "Cities Without Number",
     "Summoner": "Cities Without Number",
@@ -174,6 +175,12 @@ def validate_edge(
     if not decision.allowed:
         problems.append(decision.reason)
 
+    if grants.edge == "Mentalist" and psychic is not None:
+        problems.append("AWN Mentalist cannot combine with SWN Psychic, full or partial (AWN Deluxe p.265)")
+    if grants.edge == "Mentalist" and any(e.edge in ("Spellcaster", "Summoner") for e in existing):
+        problems.append("AWN Mentalist cannot combine with CWN Mage/Spellcaster or Summoner (AWN Deluxe p.265)")
+    if grants.edge in ("Spellcaster", "Summoner") and any(e.edge == "Mentalist" for e in existing):
+        problems.append("CWN Mage/Summoner cannot combine with AWN Mentalist (AWN Deluxe p.265)")
     for discipline in grants.disciplines:
         allowed = discipline_decision(discipline)
         if not allowed.allowed:
@@ -234,7 +241,7 @@ def require_device(grants: Iterable[Grant], device: str) -> tuple[Grant, ...]:
 
 
 # --------------------------------------------------------------------------- #
-# §2 Mutant — NPC-only, and three independent facts
+# §2 Mutant — PC or NPC, and three independent facts
 # --------------------------------------------------------------------------- #
 
 @dataclass(frozen=True, slots=True)
@@ -286,7 +293,7 @@ class MutationCatalogue:
 
 @dataclass(frozen=True, slots=True)
 class MutantTemplate:
-    """An NPC who is a Mutant. Not a player option, and not a statement about ancestry.
+    """A character with mutations; not a statement about ancestry.
 
     Three facts stay apart, which is the whole point of §2: **mutation** (what the body does),
     **ancestry** (where it came from, if anyone knows) and **PSI** (whether the character is psychic).
@@ -302,9 +309,6 @@ class MutantTemplate:
     def __post_init__(self) -> None:
         if not self.npc.strip():
             raise PsiEdgeError("a Mutant template names an NPC")
-        decision = edge_decision("Mutant")
-        if decision.allowed:  # pragma: no cover - guards the policy itself
-            raise PsiEdgeError("the policy changed: Mutant must stay NPC-only")
         if not self.mutations:
             raise PsiEdgeError("a Mutant template needs at least one mutation")
         for mutation_id in self.mutations:
@@ -319,6 +323,5 @@ class MutantTemplate:
 
 
 def assert_mutant_is_npc(template: MutantTemplate, *, is_player: bool) -> None:
-    """The one call that must exist for the NPC-only rule to mean anything."""
-    if is_player:
-        raise PsiEdgeError("Mutant is NPC-only; a player character may not take the Edge")
+    """Legacy compatibility helper: Mutant is now legal for PCs too."""
+    return None
