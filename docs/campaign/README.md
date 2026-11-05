@@ -25,7 +25,7 @@ connection of the eight issued items, Dispatch check-in, Adlerwerke commute,
 arrival at Ratakatu 12 and reporting to Romppainen. The player can complete
 it without dice or an LLM. Flags and graph occupancy round-trip through
 `WorldSession.to_snapshot()/from_snapshot()`; there is no second session or
-separate combat or hacking engine. `tests/test_first_day_1217.py` checks it.
+separate combat or hacking engine. `tests/test_actor_registry_1196.py` includes the #1217 first-day checks.
 
 **Not authored or approved yet:** Tony's choose-your-lifepath memory tree,
 CWN Edge/Focus assignments, the nightmare's prose, dialogue beyond the quoted
