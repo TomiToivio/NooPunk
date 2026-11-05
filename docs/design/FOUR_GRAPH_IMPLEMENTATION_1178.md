@@ -68,9 +68,27 @@ For the other three files replace `graph_type`/data with `cyber` (devices, links
 - Player-selectable SWN disciplines are **Telepathy and Telekinesis only**, trained using the published **SWN Psychic Training Focus** (published edition verification required).
 - Other psychic effects belong to NPCs, scripted Story scenes, or named equipment (psychotronic cyberware and devices).
 - **Astral Projection is scripted** during dreams/OOBEs, NDEs and Monroe-like technical sessions. No freeform Astral Graph player traversal in v1.
-- The AWN Mutant Edge becomes a human–alien Hybrid Edge. Pseudo-Psychic Mutations are genuinely psychic in fiction. The author requires a selected positive mutation, a randomly rolled additional positive mutation, and alternative recognizable-hybrid Stigma/Negative Mutation options. **Do not implement tables until the selection/roll paths are clarified and editions checked.**
+- The AWN Mutant Edge describes **Mutants**, not a class of characters known to be alien Hybrids. **Hybrid is one possible origin**, not a synonym and not something the Edge reveals; the mandatory Hybrid-only mutation packages proposed earlier are superseded. Mutations do not by themselves prove ancestry or PSI. The Edge stays **NPC-only**, and the published positive/negative/Pseudo-Psychic/Stigma tables may be used as written for specific NPCs once the edition is checked — no invented probabilities.
 - AWN Mentalist and CWN Spellcaster/Summoner Edges are allowed as separate published options. **PSI = Magick** in ontology, not unrestricted cross-system access.
 - Existing drafts granting free selectable Psychic Defence or Astral Projection are **superseded**. Defensive equipment remains possible; NPC/scripted abilities remain possible. No silent seventh SWN discipline.
+
+## Node-semantics audit
+
+The correction in #1178 §5 is that **agents occupy location nodes; they are not location nodes**. What
+was actually found, so the check is not just an assertion:
+
+| Where | The assumption | What it is now |
+| --- | --- | --- |
+| `docs/design/DRAFT_ASTRAL_GRAPH_SWN_PSI_1164.md` | `node_type: agent` in the node enum — conscious agents were a spatial node kind | Superseded note at the head of the draft; Astral nodes are locations and projected agents are occupants. The draft is kept as history, not as schema. |
+| `design/graphs/README.md` | Narrative shorthand: "Character is traveling through the Physical world", "all three graphs are presented as an overlay" | Read through **occupancy**: a character has a position record in a location node; overlays are views of the same scene, not a character node appearing in three graphs. The author's text is unchanged; the implementation doc records the reading. |
+| `design/graphs/README.md` (social) | "Nodes are characters and factions" | Correct and kept: the social graph is the one family where entities *are* nodes, and its edges are never travelled as routes. |
+| `src/world/graphs.py` | — | `SpatialGraph` stores `positions` outside node records; `Character`/`Faction` node types exist only in `SocialGraph`; `StoryGraph` scenes reference entities instead of containing them. |
+| Runtime callers | — | None wired yet: the adapter is not connected to the console or Evennia, so no existing navigator assumes agents are nodes. |
+
+The test that makes this falsifiable rather than documentary is
+`tests/test_world_graphs_1178.py::test_social_nodes_are_not_spatial_routes` together with
+`test_characters_meet_only_when_they_occupy_the_same_location`: a social node cannot be traversed, and a
+character's presence is a position, not a node.
 
 ## Verification
 
