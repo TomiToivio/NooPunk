@@ -150,5 +150,24 @@ class Serialization(unittest.TestCase):
         self.assertNotIn("from .rules", source)
         self.assertNotIn("import rules", source)
 
+
+class AgreementWithTheSession(unittest.TestCase):
+    """The registry and the console session must not disagree about who owns a sheet."""
+
+    def test_registry_and_world_session_agree_on_one_sheet(self) -> None:
+        from src.console.world_session import WorldSession, WorldSessionError
+
+        book = registry()
+        session = WorldSession(graphs(), sheets={"act.rookie": "sheet.rookie"})
+        self.assertEqual(book.one_sheet(sheets=session.sheets), [])
+        with self.assertRaises(WorldSessionError):
+            session.register("npc.wendt", "sheet.rookie")
+        book.register(CanonicalActor("npc.wendt", "Wendt"))
+        self.assertTrue(
+            any("one actor, one sheet" in problem
+                for problem in book.one_sheet(sheets={"act.rookie": "sheet.rookie",
+                                                      "npc.wendt": "sheet.rookie"}))
+        )
+
 if __name__ == "__main__":
     unittest.main()
