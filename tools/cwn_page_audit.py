@@ -125,6 +125,13 @@ def render(matrix: dict, pages: dict) -> str:
     lines = [
         "# CWN linked-SRD page audit (#950)",
         "",
+        # The banner is part of the generated output on purpose: when it was added by hand, the next
+        # regeneration silently deleted it and the file started claiming to be current again.
+        ("> **Superseded:** [CWN_COVERAGE_1068.md](/docs/rules/CWN_COVERAGE_1068.md) is the one document "
+         "kept up to date for this subject. This file is kept as history — it is a second answer to a "
+         "question that already had one, and the counts in it disagree with the audited ones. Do not "
+         "update it; update the canonical file."),
+        "",
         ("Per page of the linked SRD. The system-level view - what a system is and how far it is ported - "
          "is `docs/rules/MUD_CWN_COMPLIANCE.md`; this file answers the different question of "
          "whether any page has been left out."),
