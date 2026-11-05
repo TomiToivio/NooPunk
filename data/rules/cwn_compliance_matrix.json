@@ -819,6 +819,7 @@
         "mud/tests/test_mud_core.py",
         "mud/tests/test_portable_1053_1054.py",
         "mud/tests/test_world_time.py",
+        "tests/test_actor_registry_1196.py",
         "tests/test_awn_campaign_start_1196.py",
         "tests/test_console_case_1053.py",
         "tests/test_core_rules.py",
