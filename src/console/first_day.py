@@ -7,11 +7,18 @@ prose are not fabricated by an agent.
 """
 from __future__ import annotations
 
-from src.console.world_session import WorldSession, WorldSessionError
-from src.world.graphs import (
-    CyberGraph, LocationNode, PhysicalGraph, PhysicalRoute, SocialGraph,
-    SocialNode, StoryGraph, StoryLink, StoryNode, WorldGraphs,
-)
+try:
+    from src.console.world_session import WorldSession
+    from src.world.graphs import (
+        CyberGraph, LocationNode, PhysicalGraph, PhysicalRoute, SocialGraph,
+        SocialNode, StoryGraph, StoryLink, StoryNode, WorldGraphs,
+    )
+except ModuleNotFoundError:  # installed with src/ on PYTHONPATH
+    from .world_session import WorldSession
+    from world.graphs import (
+        CyberGraph, LocationNode, PhysicalGraph, PhysicalRoute, SocialGraph,
+        SocialNode, StoryGraph, StoryLink, StoryNode, WorldGraphs,
+    )
 
 ACTOR = "tony.german"
 SHEET = "sheet.tony.german"
