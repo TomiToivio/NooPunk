@@ -2,6 +2,7 @@
 import unittest
 
 from src.rules.awn_mutant import MutantBuild, Mutation, MutationError
+from src.rules.awn_mentalist import Art, MentalistError, create_first_level_mentalist
 from src.rules.awn_campaign_start import (
     Addiction, AwnRulesError, Enclave, Pharmaceutical, foot_chase,
     moving_vehicle_attack_penalty, radiation_exposure, stress_engine,
@@ -86,6 +87,24 @@ class CampaignRulesTests(unittest.TestCase):
         base.gain_dominion(3)
         base.spend_dominion(2)
         self.assertEqual(base.dominion, 1)
+
+    def test_mentalist_first_level_and_effort(self):
+        m = create_first_level_mentalist("pc.rookie", (
+            Art("lesser-a", "Mindreading"), Art("lesser-b", "Mindreading")))
+        self.assertEqual(m.mentalism_skill, 0)
+        self.assertEqual(len(m.arts), 2)
+        self.assertEqual(m.effort_max, 1)
+        m.commit(duration="scene")
+        with self.assertRaises(MentalistError):
+            m.commit(duration="day")
+        m.end_scene()
+        m.commit(duration="day")
+        m.sleep(comfortable=False)
+        self.assertEqual(m.effort_day, 1)
+        m.sleep(comfortable=True)
+        self.assertEqual(m.effort_day, 0)
+        with self.assertRaises(MentalistError):
+            m.check_cyberware(nerve_type=True)
 
     def test_existing_stress_implementation_is_reused(self):
         self.assertIsNotNone(stress_engine())
