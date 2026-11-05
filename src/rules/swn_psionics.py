@@ -100,6 +100,40 @@ class Psychic:
             raise PsiRulesError("insufficient uncommitted Effort")
         self.reservations[key] = (amount, duration)
 
+    def commit_device_grant(
+        self,
+        key: str,
+        grant: "Grant",
+        *,
+        active_sources: set[str],
+        amount: int,
+        duration: Duration,
+    ) -> None:
+        """Reserve ordinary SWN Effort for an explicitly authorized equipment effect.
+
+        The equipment definition supplies the price and duration: this method never
+        invents a universal psychotronic cost. A device grant is not a learned
+        discipline, does not raise a rank, and never bypasses the same Effort pool.
+        A caller must pass the currently equipped/operational device identifiers.
+        """
+        from .psi_access import Grant, PsiAccessError
+
+        if not isinstance(grant, Grant):
+            raise PsiAccessError("device PSI requires an explicit equipment Grant")
+        if grant.source not in active_sources:
+            raise PsiAccessError("the granting device is not active or equipped")
+        if not grant.ability.strip() or not grant.source.strip():
+            raise PsiAccessError("device grant needs an ability and equipment source")
+        if not key or key in self.reservations:
+            raise PsiRulesError("commitment key must be unique and nonempty")
+        if not isinstance(duration, Duration):
+            raise PsiRulesError("invalid effort duration")
+        if not isinstance(amount, int) or isinstance(amount, bool) or amount <= 0:
+            raise PsiRulesError("equipment must specify a positive Effort cost")
+        if amount > self.free:
+            raise PsiRulesError("insufficient uncommitted Effort")
+        self.reservations[key] = (amount, duration)
+
     def release(self, key: str) -> bool:
         """Only active commitments can be voluntarily freed immediately."""
         if key not in self.reservations:
