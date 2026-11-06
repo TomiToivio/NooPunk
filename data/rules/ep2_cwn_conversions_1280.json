@@ -1,0 +1,153 @@
+{
+  "format": "noopunk.rules.ep2_conversion",
+  "version": 1,
+  "source_issue": "https://github.com/TomiToivio/NooPunk/issues/1280",
+  "canon_document": "docs/rules/EP2_CONVERSION_1280.md",
+  "licence_note": "Eclipse Phase Second Edition is CC BY-NC-SA 4.0 and is not importable into this project. Nothing from it is reproduced or imported; this file records which *concepts* are worth borrowing and what CWN already does instead. Page ranges are citations, not content.",
+  "rule": "No numerical conversion exists. EP percentile ratings, degrees of success and mesh damage have no CWN equivalent and must not be mapped onto one.",
+  "conversions": [
+    {
+      "id": "network_topology",
+      "ep_element": "PAN, mesh ID, isolated network",
+      "borrow_when": "the characters need to reach a specific device rather than a network in general",
+      "cwn_conversion": "Anchor the device to the Physical Graph. Wireless Jack In costs a Move and needs clear sight within the published wireless range; the avatar stays on that node. A wired route or another physical approach reaches the archive.",
+      "cwn_reference": "CWN node access and security, pp. 92-95; wireless penalty",
+      "consequence": "the team learns where the device physically is, and may have to go there",
+      "forbidden": [
+        "treating the mesh as a second map",
+        "inventing a PAN statistic"
+      ]
+    },
+    {
+      "id": "brute_force_vs_subtle",
+      "ep_element": "brute-force versus subtle intrusion",
+      "borrow_when": "a witness is leaving or a shift is ending",
+      "cwn_conversion": "Two approaches: act now with the loaded program, or spend fictional time securing a legitimate account, access port or device model. Either way the actual hack uses the published CWN action and cost.",
+      "cwn_reference": "CWN cyberspace actions, pp. 100-101",
+      "consequence": "preparation changes who is in the room and what the street does meanwhile, not the hacking math",
+      "forbidden": [
+        "a blanket stealth bonus from preparation",
+        "a second hacking roll for subtlety"
+      ]
+    },
+    {
+      "id": "privileges",
+      "ep_element": "user, security and admin privileges",
+      "borrow_when": "a login permits one operation but restricts another",
+      "cwn_conversion": "State what this account may do on this node. A permitted export uses the available interface; a protected operation needs the appropriate CWN procedure. One success grants only its stated effect.",
+      "cwn_reference": "CWN node access and security, pp. 92-95",
+      "consequence": "a valid credential explains why the action looked ordinary afterwards",
+      "forbidden": [
+        "treating Access as a permission level",
+        "permanent admin from one success"
+      ]
+    },
+    {
+      "id": "alert_state",
+      "ep_element": "intruder status, passive and active alerts, system defender",
+      "borrow_when": "who noticed will matter later",
+      "cwn_conversion": "Write one fact - for example 'the operator flagged the export; the intruder's identity is unknown'. Escalate with CWN's watchdog and Alert the Network action, whose own required actions still apply.",
+      "cwn_reference": "CWN program construction and effects, pp. 96-99",
+      "consequence": "an audit clue, not an automatic mechanical alert",
+      "forbidden": [
+        "a separate alert track",
+        "an alert that fires without the CWN action"
+      ]
+    },
+    {
+      "id": "subversion",
+      "ep_element": "subverting sensors or commands",
+      "borrow_when": "the desired outcome is to change what someone else sees or does",
+      "cwn_conversion": "Pick the exact published effect. Blind plus Camera suppresses input; a fabricated feed needs an applicable deception effect. A controlled device uses the separate Issue Command action.",
+      "cwn_reference": "CWN cyberspace actions, pp. 100-101",
+      "consequence": "the characters must know who can observe the result",
+      "forbidden": [
+        "a generic 'control the device' effect"
+      ]
+    },
+    {
+      "id": "logs",
+      "ep_element": "logs, tracking and cleanup",
+      "borrow_when": "tonight's hack becomes tomorrow's evidence",
+      "cwn_conversion": "Name the copy and its custodian: terminal log, independent gateway receipt, or human testimony. Use Copy File or an applicable file program on a reachable node. Altering one log leaves the others.",
+      "cwn_reference": "CWN cyberspace actions, pp. 100-101",
+      "consequence": "evidence with provenance, which is exactly what an investigation scene needs",
+      "forbidden": [
+        "a single invisible log",
+        "cleanup that erases every copy"
+      ]
+    },
+    {
+      "id": "backdoor",
+      "ep_element": "backdoor and later patch",
+      "borrow_when": "the team expects to revisit the site",
+      "cwn_conversion": "An authored stolen credential or planted maintenance account becomes a specific lead: a node, a permitted scope and a revocation condition. If no CWN effect or established authority permits creating it, defer the capability.",
+      "cwn_reference": "CWN node access and security, pp. 92-95",
+      "consequence": "the return visit is planned rather than assumed",
+      "forbidden": [
+        "permanent administrator access from one success",
+        "an unwritten backdoor"
+      ]
+    },
+    {
+      "id": "mindware",
+      "ep_element": "mindware, mesh combat and persistent software damage",
+      "borrow_when": "a BCI or autonomous system is the actual target",
+      "cwn_conversion": "Identify the digital component and a legal CWN Subject before acting, then use the published program or combat effect. Reading the wearer's experience needs a separate eligible PSI technique.",
+      "cwn_reference": "CWN program construction and effects, pp. 96-99",
+      "consequence": "a falsified prompt is a scene, not a wound track",
+      "forbidden": [
+        "EP's mesh wound track",
+        "PSI effects granted by a hack"
+      ]
+    }
+  ],
+  "psi_sleights": [
+    {
+      "id": "eco_empathy",
+      "ep_inspiration": "Eco-Empathy",
+      "bounded_use": "In a Sirian greenhouse, a receptive character senses that an unfamiliar organism thrives near moving water.",
+      "what_still_decides": "Laboratory work establishes composition and origin.",
+      "owner": "proposed; no discipline assigned"
+    },
+    {
+      "id": "grok",
+      "ep_inspiration": "Grok",
+      "bounded_use": "An ESP impression suggests how an unfamiliar psychotronic instrument is operated.",
+      "what_still_decides": "Program or Fix and the appropriate access still govern operating a secured instrument.",
+      "owner": "proposed; device or ESP"
+    },
+    {
+      "id": "thought_scopes",
+      "ep_inspiration": "Browse Thoughts versus deeper scanning",
+      "bounded_use": "Telepathy techniques get distinct scopes: a fleeting surface impression, a consensual exchange, and a deliberate search for a particular memory.",
+      "what_still_decides": "Different permissions and resistance for each; Astral Body alone grants none of them.",
+      "owner": "Telepathy"
+    },
+    {
+      "id": "psi_shield",
+      "ep_inspiration": "Psi Shield and influence when pushing",
+      "bounded_use": "Check existing Metapsionics and AntiPSI before adding a defence; a Grey-linked prototype may be overdriven at the cost of an identifiable signature.",
+      "what_still_decides": "Existing Effort, resistance and ward rules.",
+      "owner": "Metapsionics, with an equipment complication"
+    }
+  ],
+  "technique_record_fields": [
+    "owner",
+    "minimum training or device",
+    "eligible target",
+    "domain",
+    "range",
+    "action",
+    "effort",
+    "resistance or consent",
+    "duration",
+    "evidentiary limit"
+  ],
+  "playtest_criterion": "Run an ordinary camera hack with CWN alone, then replay it with one EP detail (a named auditor, or a second log). Keep the detail only if it changes the next field decision.",
+  "reject_if": [
+    "a second hacking roll",
+    "an alert track",
+    "a compulsory PSI subsystem"
+  ]
+}
