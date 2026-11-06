@@ -1,889 +1,1345 @@
 {
- "$comment": "Traceability inventory for every CWN Deluxe chapter and section (#1068). Each row names the printed page in the Deluxe rulebook, the Python modules that own the rule, the tests that prove it, and an evidence note. Statuses are honest: 'implemented' means code + tests exist for the rule as the book states it; 'partial' means a piece of the rule is missing; 'unverified' means code exists but this pass did not check the numbers against the printed table; 'missing' means no implementation; 'not_applicable' means the section is GM advice, generator tables or setting material with no mechanic to implement.",
- "format": "noopunk.rules.cwn_rule_inventory",
- "version": 1,
- "issue": "https://github.com/TomiToivio/NooPunk/issues/1068",
- "source": {
-  "book": "Cities Without Number, Deluxe Edition (lightweight PDF, 081123)",
-  "printed_pages": 265,
-  "pdf_page_offset": 3,
-  "note": "Printed page numbers as they appear in the book; PDF page = printed + 3."
- },
- "statuses": [
-  "implemented",
-  "partial",
-  "unverified",
-  "missing",
-  "not_applicable"
- ],
- "rows": [
-  {
-   "id": "character-creation:attributes",
-   "chapter": "Character Creation",
-   "section": "Attributes",
-   "printed_page": 9,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_character.py"
-   ],
-   "tests": [
-    "tests/test_cwn_character.py"
-   ],
-   "evidence": "attribute array, modifiers, substitution"
-  },
-  {
-   "id": "character-creation:skills",
-   "chapter": "Character Creation",
-   "section": "Skills",
-   "printed_page": 9,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_character.py"
-   ],
-   "tests": [
-    "tests/test_cwn_character.py"
-   ],
-   "evidence": "skill pools, caps at creation"
-  },
-  {
-   "id": "character-creation:backgrounds",
-   "chapter": "Character Creation",
-   "section": "Choosing a Background",
-   "printed_page": 11,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_backgrounds.py"
-   ],
-   "tests": [
-    "tests/test_cwn_backgrounds.py"
-   ],
-   "evidence": "background skill packages"
-  },
-  {
-   "id": "character-creation:contacts",
-   "chapter": "Character Creation",
-   "section": "Contacts",
-   "printed_page": 18,
-   "status": "partial",
-   "python": [
-    "src/rules/cwn_backgrounds.py",
-    "src/rules/social.py"
-   ],
-   "tests": [
-    "tests/test_cwn_backgrounds.py"
-   ],
-   "evidence": "contacts are granted by backgrounds and tracked in social.py; the contact network/reaction procedure has no dedicated test yet"
-  },
-  {
-   "id": "character-creation:edges",
-   "chapter": "Character Creation",
-   "section": "Edges",
-   "printed_page": 20,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_edges_foci.py"
-   ],
-   "tests": [
-    "tests/test_cwn_edges_foci.py"
-   ],
-   "evidence": "edges incl. Spellcaster/Summoner gating"
-  },
-  {
-   "id": "character-creation:foci",
-   "chapter": "Character Creation",
-   "section": "Foci",
-   "printed_page": 22,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_foci.py",
-    "src/rules/cwn_edges_foci.py"
-   ],
-   "tests": [
-    "tests/test_cwn_foci.py"
-   ],
-   "evidence": "focus levels 1-2"
-  },
-  {
-   "id": "character-creation:hit-points-attack-bonus-saves",
-   "chapter": "Character Creation",
-   "section": "Hit Points, Attack Bonus, and Saves",
-   "printed_page": 28,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_character.py"
-   ],
-   "tests": [
-    "tests/test_cwn_character.py"
-   ],
-   "evidence": "HP, attack bonus, saves table"
-  },
-  {
-   "id": "character-creation:starting-gear",
-   "chapter": "Character Creation",
-   "section": "Starting Gear",
-   "printed_page": 29,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_equipment.py"
-   ],
-   "tests": [
-    "tests/test_cwn_equipment.py"
-   ],
-   "evidence": "packages and purchasing"
-  },
-  {
-   "id": "character-creation:final-touches",
-   "chapter": "Character Creation",
-   "section": "Final Touches",
-   "printed_page": 30,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_character.py",
-    "src/rules/cwn_advancement.py"
-   ],
-   "tests": [
-    "tests/test_cwn_advancement.py"
-   ],
-   "evidence": "final derived values"
-  },
-  {
-   "id": "rules-of-the-game:scenes-rounds-mission-time",
-   "chapter": "The Rules of the Game",
-   "section": "Scenes, Rounds, and Mission Time",
-   "printed_page": 34,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_mission_time.py"
-   ],
-   "tests": [
-    "tests/test_cwn_mission_time.py"
-   ],
-   "evidence": "scene/round/mission clock"
-  },
-  {
-   "id": "rules-of-the-game:saving-throws",
-   "chapter": "The Rules of the Game",
-   "section": "Saving Throws",
-   "printed_page": 34,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_core.py"
-   ],
-   "tests": [
-    "tests/test_cwn_core.py"
-   ],
-   "evidence": "four saves, target numbers"
-  },
-  {
-   "id": "rules-of-the-game:skill-checks",
-   "chapter": "The Rules of the Game",
-   "section": "Skill Checks",
-   "printed_page": 35,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_core.py"
-   ],
-   "tests": [
-    "tests/test_cwn_core.py"
-   ],
-   "evidence": "2d6 + attribute + skill vs difficulty band"
-  },
-  {
-   "id": "rules-of-the-game:combat",
-   "chapter": "The Rules of the Game",
-   "section": "Combat",
-   "printed_page": 36,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_combat.py",
-    "src/rules/cwn_combat_actions.py",
-    "src/rules/cwn_special_maneuvers.py",
-    "src/rules/cwn_initiative.py",
-    "src/rules/cwn_attack_modifiers.py"
-   ],
-   "tests": [
-    "tests/test_cwn_combat.py",
-    "tests/test_cwn_combat_actions.py",
-    "tests/test_cwn_special_maneuvers_1068.py"
-   ],
-   "evidence": "attacks, actions, initiative, modifiers, shock/trauma and special manoeuvres"
-  },
-  {
-   "id": "rules-of-the-game:injury-healing-strain",
-   "chapter": "The Rules of the Game",
-   "section": "Injury, Healing, and System Strain",
-   "printed_page": 44,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_healing.py",
-    "src/rules/cwn_strain.py",
-    "src/rules/cwn_major_injury.py",
-    "src/rules/cwn_injury_procedure.py",
-    "src/rules/cwn_trauma.py"
-   ],
-   "tests": [
-    "tests/test_cwn_healing.py",
-    "tests/test_cwn_strain.py"
-   ],
-   "evidence": "mortal wounds, stabilisation, healing, strain"
-  },
-  {
-   "id": "rules-of-the-game:vehicle-combat",
-   "chapter": "The Rules of the Game",
-   "section": "Vehicle Combat",
-   "printed_page": 46,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_vehicles.py"
-   ],
-   "tests": [
-    "tests/test_cwn_vehicles.py"
-   ],
-   "evidence": "vehicle movement and damage"
-  },
-  {
-   "id": "rules-of-the-game:chases",
-   "chapter": "The Rules of the Game",
-   "section": "Chases and Pursuit",
-   "printed_page": 47,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_vehicles.py"
-   ],
-   "tests": [
-    "tests/test_cwn_vehicles.py"
-   ],
-   "evidence": "pursuit procedure lives beside vehicle combat in cwn_vehicles"
-  },
-  {
-   "id": "rules-of-the-game:advancement",
-   "chapter": "The Rules of the Game",
-   "section": "Character Advancement",
-   "printed_page": 48,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_advancement.py"
-   ],
-   "tests": [
-    "tests/test_cwn_advancement.py"
-   ],
-   "evidence": "XP, levels, skill points"
-  },
-  {
-   "id": "rules-of-the-game:crafting",
-   "chapter": "The Rules of the Game",
-   "section": "Crafting and Modifying Gear",
-   "printed_page": 50,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_gear_mods.py"
-   ],
-   "tests": [
-    "tests/test_cwn_gear_mods.py"
-   ],
-   "evidence": "mods, build/repair costs"
-  },
-  {
-   "id": "tools-of-the-trade:encumbrance",
-   "chapter": "The Tools of the Trade",
-   "section": "Encumbrance",
-   "printed_page": 52,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_encumbrance.py"
-   ],
-   "tests": [
-    "tests/test_cwn_encumbrance.py"
-   ],
-   "evidence": "readied/stowed limits"
-  },
-  {
-   "id": "tools-of-the-trade:acquiring-gear",
-   "chapter": "The Tools of the Trade",
-   "section": "Acquiring Gear",
-   "printed_page": 53,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_equipment.py"
-   ],
-   "tests": [
-    "tests/test_cwn_equipment.py"
-   ],
-   "evidence": "prices and legality"
-  },
-  {
-   "id": "tools-of-the-trade:gear-lifestyles-services",
-   "chapter": "The Tools of the Trade",
-   "section": "Gear, Lifestyles, and Services",
-   "printed_page": 54,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_equipment.py"
-   ],
-   "tests": [
-    "tests/test_cwn_equipment.py"
-   ],
-   "evidence": "lifestyles, wages, bribes"
-  },
-  {
-   "id": "tools-of-the-trade:armor",
-   "chapter": "The Tools of the Trade",
-   "section": "Armor",
-   "printed_page": 56,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_equipment.py"
-   ],
-   "tests": [
-    "tests/test_cwn_equipment.py"
-   ],
-   "evidence": "armour classes and accessories"
-  },
-  {
-   "id": "tools-of-the-trade:weapons",
-   "chapter": "The Tools of the Trade",
-   "section": "Weapons",
-   "printed_page": 58,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_equipment.py",
-    "src/rules/cwn_combat.py"
-   ],
-   "tests": [
-    "tests/test_cwn_equipment.py"
-   ],
-   "evidence": "weapons, shock, burst, firearms"
-  },
-  {
-   "id": "tools-of-the-trade:pharmaceuticals",
-   "chapter": "The Tools of the Trade",
-   "section": "Pharmaceuticals and Street Drugs",
-   "printed_page": 64,
-   "status": "partial",
-   "python": [
-    "data/rules/cwn_catalogue.json",
-    "src/rules/cwn_equipment.py"
-   ],
-   "tests": [
-    "tests/test_cwn_equipment.py"
-   ],
-   "evidence": "drug catalogue is data; addiction/recovery procedure not modelled"
-  },
-  {
-   "id": "tools-of-the-trade:cyberware",
-   "chapter": "The Tools of the Trade",
-   "section": "Cyberware",
-   "printed_page": 66,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_cyberware.py",
-    "data/rules/cwn_cyberware.json"
-   ],
-   "tests": [
-    "tests/test_cwn_cyberware.py"
-   ],
-   "evidence": "systems, strain, installation, removal"
-  },
-  {
-   "id": "tools-of-the-trade:cyberdecks",
-   "chapter": "The Tools of the Trade",
-   "section": "Cyberdecks",
-   "printed_page": 79,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_hacking.py",
-    "data/rules/cwn_hacking.json"
-   ],
-   "tests": [
-    "tests/test_cwn_hacking.py"
-   ],
-   "evidence": "deck models and costs"
-  },
-  {
-   "id": "tools-of-the-trade:drones",
-   "chapter": "The Tools of the Trade",
-   "section": "Drones",
-   "printed_page": 80,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_drones.py",
-    "data/rules/cwn_drones.json"
-   ],
-   "tests": [
-    "tests/test_cwn_drones.py"
-   ],
-   "evidence": "drone chassis and control"
-  },
-  {
-   "id": "tools-of-the-trade:vehicles",
-   "chapter": "The Tools of the Trade",
-   "section": "Vehicles",
-   "printed_page": 86,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_vehicles.py",
-    "data/rules/cwn_vehicles.json"
-   ],
-   "tests": [
-    "tests/test_cwn_vehicles.py"
-   ],
-   "evidence": "vehicle catalogue"
-  },
-  {
-   "id": "hacking:cyberspace-nodes-access",
-   "chapter": "Hacking",
-   "section": "Cyberspace, Nodes, and Access",
-   "printed_page": 96,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_hacking.py"
-   ],
-   "tests": [
-    "tests/test_cwn_hacking.py"
-   ],
-   "evidence": "nodes, access levels"
-  },
-  {
-   "id": "hacking:hacking-mechanics",
-   "chapter": "Hacking",
-   "section": "Hacking Mechanics",
-   "printed_page": 98,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_hacking.py"
-   ],
-   "tests": [
-    "tests/test_cwn_hacking.py"
-   ],
-   "evidence": "verb rolls, alert, tracing"
-  },
-  {
-   "id": "hacking:programs",
-   "chapter": "Hacking",
-   "section": "Programs",
-   "printed_page": 100,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_program_catalogue.py",
-    "data/rules/cwn_program_catalogue.json"
-   ],
-   "tests": [
-    "tests/test_cwn_program_catalogue.py"
-   ],
-   "evidence": "program verbs and costs"
-  },
-  {
-   "id": "hacking:demons-watchdogs",
-   "chapter": "Hacking",
-   "section": "Demons and Watchdogs",
-   "printed_page": 106,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_hacking.py"
-   ],
-   "tests": [
-    "tests/test_cwn_hacking.py"
-   ],
-   "evidence": "demon/watchdog opposition"
-  },
-  {
-   "id": "hacking:network-servers",
-   "chapter": "Hacking",
-   "section": "Network Servers and Architecture",
-   "printed_page": 108,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_hacking.py"
-   ],
-   "tests": [
-    "tests/test_cwn_hacking.py"
-   ],
-   "evidence": "server architecture"
-  },
-  {
-   "id": "creating-your-dystopia:themes",
-   "chapter": "Creating Your Dystopia",
-   "section": "Cyberpunk Themes",
-   "printed_page": 112,
-   "status": "not_applicable",
-   "python": [],
-   "tests": [],
-   "evidence": "GM advice, no mechanic"
-  },
-  {
-   "id": "creating-your-dystopia:world",
-   "chapter": "Creating Your Dystopia",
-   "section": "Creating The World",
-   "printed_page": 114,
-   "status": "not_applicable",
-   "python": [],
-   "tests": [],
-   "evidence": "world-building procedure, no mechanic"
-  },
-  {
-   "id": "creating-your-dystopia:city",
-   "chapter": "Creating Your Dystopia",
-   "section": "Creating The City",
-   "printed_page": 118,
-   "status": "not_applicable",
-   "python": [],
-   "tests": [],
-   "evidence": "city-building procedure"
-  },
-  {
-   "id": "creating-your-dystopia:districts",
-   "chapter": "Creating Your Dystopia",
-   "section": "Building Your Districts",
-   "printed_page": 125,
-   "status": "not_applicable",
-   "python": [],
-   "tests": [],
-   "evidence": "district generator is content"
-  },
-  {
-   "id": "creating-your-dystopia:megacorps",
-   "chapter": "Creating Your Dystopia",
-   "section": "Creating Megacorps",
-   "printed_page": 130,
-   "status": "partial",
-   "python": [
-    "src/rules/swn_faction_engine.py"
-   ],
-   "tests": [
-    "tests/test_swn_faction_engine.py"
-   ],
-   "evidence": "corp-scale organisations are optional SWN factions, not a CWN rule"
-  },
-  {
-   "id": "creating-your-dystopia:gangs",
-   "chapter": "Creating Your Dystopia",
-   "section": "Creating Gangs",
-   "printed_page": 132,
-   "status": "not_applicable",
-   "python": [],
-   "tests": [],
-   "evidence": "generator tables are content"
-  },
-  {
-   "id": "creating-your-dystopia:npcs",
-   "chapter": "Creating Your Dystopia",
-   "section": "Creating NPCs",
-   "printed_page": 134,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_npcs.py"
-   ],
-   "tests": [
-    "tests/test_cwn_npcs_heat.py"
-   ],
-   "evidence": "NPC statblocks and reaction"
-  },
-  {
-   "id": "missions:schemes",
-   "chapter": "Creating and Running Missions",
-   "section": "Creating Schemes",
-   "printed_page": 137,
-   "status": "not_applicable",
-   "python": [],
-   "tests": [],
-   "evidence": "GM procedure"
-  },
-  {
-   "id": "missions:mission-creation",
-   "chapter": "Creating and Running Missions",
-   "section": "How To Create a Mission",
-   "printed_page": 146,
-   "status": "not_applicable",
-   "python": [],
-   "tests": [],
-   "evidence": "GM procedure"
-  },
-  {
-   "id": "missions:mission-tags",
-   "chapter": "Creating and Running Missions",
-   "section": "Mission Tags",
-   "printed_page": 148,
-   "status": "partial",
-   "python": [
-    "data/scenarios"
-   ],
-   "tests": [],
-   "evidence": "scenario data, no rule engine"
-  },
-  {
-   "id": "missions:mission-types",
-   "chapter": "Creating and Running Missions",
-   "section": "Mission Types",
-   "printed_page": 162,
-   "status": "not_applicable",
-   "python": [],
-   "tests": [],
-   "evidence": "GM procedure"
-  },
-  {
-   "id": "missions:intrusion-mission",
-   "chapter": "Creating and Running Missions",
-   "section": "Creating an Intrusion Mission",
-   "printed_page": 173,
-   "status": "not_applicable",
-   "python": [],
-   "tests": [],
-   "evidence": "GM procedure over the hacking rules"
-  },
-  {
-   "id": "missions:playing-the-mission",
-   "chapter": "Creating and Running Missions",
-   "section": "Playing the Mission",
-   "printed_page": 176,
-   "status": "not_applicable",
-   "python": [],
-   "tests": [],
-   "evidence": "GM procedure"
-  },
-  {
-   "id": "missions:mission-rewards",
-   "chapter": "Creating and Running Missions",
-   "section": "Mission Rewards and Experience",
-   "printed_page": 180,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_advancement.py"
-   ],
-   "tests": [
-    "tests/test_cwn_advancement.py"
-   ],
-   "evidence": "mission XP awards"
-  },
-  {
-   "id": "missions:heat",
-   "chapter": "Creating and Running Missions",
-   "section": "Heat",
-   "printed_page": 182,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_heat.py"
-   ],
-   "tests": [
-    "tests/test_cwn_npcs_heat.py"
-   ],
-   "evidence": "heat accumulation and police response"
-  },
-  {
-   "id": "faces:reaction-morale",
-   "chapter": "Faces On the Street",
-   "section": "Reaction Rolls and Morale",
-   "printed_page": 186,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_npcs.py"
-   ],
-   "tests": [
-    "tests/test_cwn_npcs_heat.py"
-   ],
-   "evidence": "reaction rolls, morale"
-  },
-  {
-   "id": "faces:beasts",
-   "chapter": "Faces On the Street",
-   "section": "Beasts and Guard Animals",
-   "printed_page": 189,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_npcs.py",
-    "data/rules/cwn_catalogue.json"
-   ],
-   "tests": [
-    "tests/test_cwn_npcs_heat.py"
-   ],
-   "evidence": "animal statlines"
-  },
-  {
-   "id": "faces:corp-guards",
-   "chapter": "Faces On the Street",
-   "section": "Corp Guards and Law Enforcement",
-   "printed_page": 190,
-   "status": "partial",
-   "python": [
-    "data/rules/cwn_catalogue.json"
-   ],
-   "tests": [
-    "tests/test_cwn_equipment.py"
-   ],
-   "evidence": "statlines live in the gear catalogue; no dedicated statblock test"
-  },
-  {
-   "id": "faces:gangers",
-   "chapter": "Faces On the Street",
-   "section": "Gangers and Criminals",
-   "printed_page": 192,
-   "status": "partial",
-   "python": [
-    "data/rules/cwn_catalogue.json"
-   ],
-   "tests": [
-    "tests/test_cwn_equipment.py"
-   ],
-   "evidence": "statlines live in the gear catalogue; no dedicated statblock test"
-  },
-  {
-   "id": "faces:hackers-pilots",
-   "chapter": "Faces On the Street",
-   "section": "Hackers and Pilots",
-   "printed_page": 194,
-   "status": "partial",
-   "python": [
-    "data/rules/cwn_catalogue.json"
-   ],
-   "tests": [
-    "tests/test_cwn_equipment.py"
-   ],
-   "evidence": "statlines live in the gear catalogue; no dedicated statblock test"
-  },
-  {
-   "id": "city-setting",
-   "chapter": "The City",
-   "section": "The City",
-   "printed_page": 200,
-   "status": "not_applicable",
-   "python": [],
-   "tests": [],
-   "evidence": "setting material"
-  },
-  {
-   "id": "mixing-systems",
-   "chapter": "Mixing Sine Nomine Games Together",
-   "section": "Mixing Sine Nomine Games Together",
-   "printed_page": 222,
-   "status": "not_applicable",
-   "python": [],
-   "tests": [],
-   "evidence": "conversion guidance"
-  },
-  {
-   "id": "supplemental:product-line-quirks",
-   "chapter": "Supplemental Material",
-   "section": "Cyber Product Line Quirks",
-   "printed_page": 227,
-   "status": "missing",
-   "python": [],
-   "tests": [],
-   "evidence": "no module: quirks are content, but the rule that a quirk changes a system's behaviour is unimplemented"
-  },
-  {
-   "id": "supplemental:variant-humanity",
-   "chapter": "Supplemental Material",
-   "section": "Variant Humanity",
-   "printed_page": 228,
-   "status": "missing",
-   "python": [],
-   "tests": [],
-   "evidence": "no module"
-  },
-  {
-   "id": "supplemental:cyber-alienation",
-   "chapter": "Supplemental Material",
-   "section": "Cyber Alienation",
-   "printed_page": 230,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_alienation.py"
-   ],
-   "tests": [
-    "tests/test_cwn_alienation.py"
-   ],
-   "evidence": "verified against printed pp. 226-231 in this pass"
-  },
-  {
-   "id": "supplemental:cheap-cyber",
-   "chapter": "Supplemental Material",
-   "section": "Cheap Cyber",
-   "printed_page": 232,
-   "status": "missing",
-   "python": [],
-   "tests": [],
-   "evidence": "no module; price/maintenance tables are content, the maintenance rule is not modelled"
-  },
-  {
-   "id": "supplemental:magic-in-the-city",
-   "chapter": "Supplemental Material",
-   "section": "Magic in the City",
-   "printed_page": 234,
-   "status": "partial",
-   "python": [
-    "src/rules/cwn_magic.py"
-   ],
-   "tests": [
-    "tests/test_cwn_magic.py"
-   ],
-   "evidence": "the magic *economy* is implemented; campaign frame is prose"
-  },
-  {
-   "id": "supplemental:mages-spellcasting",
-   "chapter": "Supplemental Material",
-   "section": "Mages and Spellcasting",
-   "printed_page": 235,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_magic.py"
-   ],
-   "tests": [
-    "tests/test_cwn_magic.py"
-   ],
-   "evidence": "verified against printed pp. 231-233 in this pass"
-  },
-  {
-   "id": "supplemental:summoners-spirits",
-   "chapter": "Supplemental Material",
-   "section": "Summoners and Spirit Calling",
-   "printed_page": 240,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_summoning.py",
-    "src/rules/cwn_magic.py"
-   ],
-   "tests": [
-    "tests/test_cwn_summoning_1068.py",
-    "tests/test_cwn_magic.py"
-   ],
-   "evidence": "summoning module implements Effort cost, HD cap, form tiers and commanding; cwn_magic covers Summoner Effort and binding accounting"
-  },
-  {
-   "id": "supplemental:magic-user-foci",
-   "chapter": "Supplemental Material",
-   "section": "Magic-User Foci",
-   "printed_page": 247,
-   "status": "missing",
-   "python": [],
-   "tests": [],
-   "evidence": "no module: mage-only foci are not implemented"
-  },
-  {
-   "id": "supplemental:graced",
-   "chapter": "Supplemental Material",
-   "section": "The Graced",
-   "printed_page": 248,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_graced.py"
-   ],
-   "tests": [
-    "tests/test_cwn_graced_1068.py"
-   ],
-   "evidence": "Graced arts bought with art points; module landed with #1068 and carries its own tests"
-  },
-  {
-   "id": "supplemental:magic-items",
-   "chapter": "Supplemental Material",
-   "section": "Magic Items",
-   "printed_page": 250,
-   "status": "implemented",
-   "python": [
-    "src/rules/cwn_magic_items.py"
-   ],
-   "tests": [
-    "tests/test_cwn_graced_1068.py"
-   ],
-   "evidence": "item identification and linking implemented in cwn_magic_items"
-  }
- ]
+  "$comment": "Legacy implemented status means file and test references exist, not proof of execution, numeric parity, Evennia wiring or gameplay. Evidence dimensions are independently tracked.",
+  "format": "noopunk.rules.cwn_rule_inventory",
+  "version": 2,
+  "issue": "https://github.com/TomiToivio/NooPunk/issues/1249",
+  "source": {
+    "book": "Cities Without Number, Deluxe Edition (lightweight PDF, 081123)",
+    "printed_pages": 265,
+    "pdf_page_offset": 3,
+    "note": "Printed page numbers as they appear in the book; PDF page = printed + 3.",
+    "page_mapping_review": "Systematic +4 printed-page labeling error corrected per issue #1249. Source-by-source page validation and PDF offset remain pending."
+  },
+  "statuses": [
+    "implemented",
+    "partial",
+    "unverified",
+    "missing",
+    "not_applicable"
+  ],
+  "rows": [
+    {
+      "id": "character-creation:attributes",
+      "chapter": "Character Creation",
+      "section": "Attributes",
+      "printed_page": 5,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_character.py"
+      ],
+      "tests": [
+        "tests/test_cwn_character.py"
+      ],
+      "evidence": "attribute array, modifiers, substitution",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "character-creation:skills",
+      "chapter": "Character Creation",
+      "section": "Skills",
+      "printed_page": 5,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_character.py"
+      ],
+      "tests": [
+        "tests/test_cwn_character.py"
+      ],
+      "evidence": "skill pools, caps at creation",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "character-creation:backgrounds",
+      "chapter": "Character Creation",
+      "section": "Choosing a Background",
+      "printed_page": 7,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_backgrounds.py"
+      ],
+      "tests": [
+        "tests/test_cwn_backgrounds.py"
+      ],
+      "evidence": "background skill packages",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "character-creation:contacts",
+      "chapter": "Character Creation",
+      "section": "Contacts",
+      "printed_page": 14,
+      "status": "partial",
+      "python": [
+        "src/rules/cwn_backgrounds.py",
+        "src/rules/social.py"
+      ],
+      "tests": [
+        "tests/test_cwn_backgrounds.py"
+      ],
+      "evidence": "contacts are granted by backgrounds and tracked in social.py; the contact network/reaction procedure has no dedicated test yet",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "character-creation:edges",
+      "chapter": "Character Creation",
+      "section": "Edges",
+      "printed_page": 16,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_edges_foci.py"
+      ],
+      "tests": [
+        "tests/test_cwn_edges_foci.py"
+      ],
+      "evidence": "edges incl. Spellcaster/Summoner gating",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "character-creation:foci",
+      "chapter": "Character Creation",
+      "section": "Foci",
+      "printed_page": 18,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_foci.py",
+        "src/rules/cwn_edges_foci.py"
+      ],
+      "tests": [
+        "tests/test_cwn_foci.py"
+      ],
+      "evidence": "focus levels 1-2",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "character-creation:hit-points-attack-bonus-saves",
+      "chapter": "Character Creation",
+      "section": "Hit Points, Attack Bonus, and Saves",
+      "printed_page": 24,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_character.py"
+      ],
+      "tests": [
+        "tests/test_cwn_character.py"
+      ],
+      "evidence": "HP, attack bonus, saves table",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "character-creation:starting-gear",
+      "chapter": "Character Creation",
+      "section": "Starting Gear",
+      "printed_page": 25,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_equipment.py"
+      ],
+      "tests": [
+        "tests/test_cwn_equipment.py"
+      ],
+      "evidence": "packages and purchasing",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "character-creation:final-touches",
+      "chapter": "Character Creation",
+      "section": "Final Touches",
+      "printed_page": 26,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_character.py",
+        "src/rules/cwn_advancement.py"
+      ],
+      "tests": [
+        "tests/test_cwn_advancement.py"
+      ],
+      "evidence": "final derived values",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "rules-of-the-game:scenes-rounds-mission-time",
+      "chapter": "The Rules of the Game",
+      "section": "Scenes, Rounds, and Mission Time",
+      "printed_page": 30,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_mission_time.py"
+      ],
+      "tests": [
+        "tests/test_cwn_mission_time.py"
+      ],
+      "evidence": "scene/round/mission clock",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "rules-of-the-game:saving-throws",
+      "chapter": "The Rules of the Game",
+      "section": "Saving Throws",
+      "printed_page": 30,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_core.py"
+      ],
+      "tests": [
+        "tests/test_cwn_core.py"
+      ],
+      "evidence": "four saves, target numbers",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "rules-of-the-game:skill-checks",
+      "chapter": "The Rules of the Game",
+      "section": "Skill Checks",
+      "printed_page": 31,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_core.py"
+      ],
+      "tests": [
+        "tests/test_cwn_core.py"
+      ],
+      "evidence": "2d6 + attribute + skill vs difficulty band",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "rules-of-the-game:combat",
+      "chapter": "The Rules of the Game",
+      "section": "Combat",
+      "printed_page": 32,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_combat.py",
+        "src/rules/cwn_combat_actions.py",
+        "src/rules/cwn_special_maneuvers.py",
+        "src/rules/cwn_initiative.py",
+        "src/rules/cwn_attack_modifiers.py"
+      ],
+      "tests": [
+        "tests/test_cwn_combat.py",
+        "tests/test_cwn_combat_actions.py",
+        "tests/test_cwn_special_maneuvers_1068.py"
+      ],
+      "evidence": "attacks, actions, initiative, modifiers, shock/trauma and special manoeuvres",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "rules-of-the-game:injury-healing-strain",
+      "chapter": "The Rules of the Game",
+      "section": "Injury, Healing, and System Strain",
+      "printed_page": 40,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_healing.py",
+        "src/rules/cwn_strain.py",
+        "src/rules/cwn_major_injury.py",
+        "src/rules/cwn_injury_procedure.py",
+        "src/rules/cwn_trauma.py"
+      ],
+      "tests": [
+        "tests/test_cwn_healing.py",
+        "tests/test_cwn_strain.py"
+      ],
+      "evidence": "mortal wounds, stabilisation, healing, strain",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "rules-of-the-game:vehicle-combat",
+      "chapter": "The Rules of the Game",
+      "section": "Vehicle Combat",
+      "printed_page": 42,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_vehicles.py"
+      ],
+      "tests": [
+        "tests/test_cwn_vehicles.py"
+      ],
+      "evidence": "vehicle movement and damage",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "rules-of-the-game:chases",
+      "chapter": "The Rules of the Game",
+      "section": "Chases and Pursuit",
+      "printed_page": 43,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_vehicles.py"
+      ],
+      "tests": [
+        "tests/test_cwn_vehicles.py"
+      ],
+      "evidence": "pursuit procedure lives beside vehicle combat in cwn_vehicles",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "rules-of-the-game:advancement",
+      "chapter": "The Rules of the Game",
+      "section": "Character Advancement",
+      "printed_page": 44,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_advancement.py"
+      ],
+      "tests": [
+        "tests/test_cwn_advancement.py"
+      ],
+      "evidence": "XP, levels, skill points",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "rules-of-the-game:crafting",
+      "chapter": "The Rules of the Game",
+      "section": "Crafting and Modifying Gear",
+      "printed_page": 46,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_gear_mods.py"
+      ],
+      "tests": [
+        "tests/test_cwn_gear_mods.py"
+      ],
+      "evidence": "mods, build/repair costs",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "tools-of-the-trade:encumbrance",
+      "chapter": "The Tools of the Trade",
+      "section": "Encumbrance",
+      "printed_page": 48,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_encumbrance.py"
+      ],
+      "tests": [
+        "tests/test_cwn_encumbrance.py"
+      ],
+      "evidence": "readied/stowed limits",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "tools-of-the-trade:acquiring-gear",
+      "chapter": "The Tools of the Trade",
+      "section": "Acquiring Gear",
+      "printed_page": 49,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_equipment.py"
+      ],
+      "tests": [
+        "tests/test_cwn_equipment.py"
+      ],
+      "evidence": "prices and legality",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "tools-of-the-trade:gear-lifestyles-services",
+      "chapter": "The Tools of the Trade",
+      "section": "Gear, Lifestyles, and Services",
+      "printed_page": 50,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_equipment.py"
+      ],
+      "tests": [
+        "tests/test_cwn_equipment.py"
+      ],
+      "evidence": "lifestyles, wages, bribes",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "tools-of-the-trade:armor",
+      "chapter": "The Tools of the Trade",
+      "section": "Armor",
+      "printed_page": 52,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_equipment.py"
+      ],
+      "tests": [
+        "tests/test_cwn_equipment.py"
+      ],
+      "evidence": "armour classes and accessories",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "tools-of-the-trade:weapons",
+      "chapter": "The Tools of the Trade",
+      "section": "Weapons",
+      "printed_page": 54,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_equipment.py",
+        "src/rules/cwn_combat.py"
+      ],
+      "tests": [
+        "tests/test_cwn_equipment.py"
+      ],
+      "evidence": "weapons, shock, burst, firearms",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "tools-of-the-trade:pharmaceuticals",
+      "chapter": "The Tools of the Trade",
+      "section": "Pharmaceuticals and Street Drugs",
+      "printed_page": 60,
+      "status": "partial",
+      "python": [
+        "data/rules/cwn_catalogue.json",
+        "src/rules/cwn_equipment.py"
+      ],
+      "tests": [
+        "tests/test_cwn_equipment.py"
+      ],
+      "evidence": "drug catalogue is data; addiction/recovery procedure not modelled",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "tools-of-the-trade:cyberware",
+      "chapter": "The Tools of the Trade",
+      "section": "Cyberware",
+      "printed_page": 62,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_cyberware.py",
+        "data/rules/cwn_cyberware.json"
+      ],
+      "tests": [
+        "tests/test_cwn_cyberware.py"
+      ],
+      "evidence": "systems, strain, installation, removal",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "tools-of-the-trade:cyberdecks",
+      "chapter": "The Tools of the Trade",
+      "section": "Cyberdecks",
+      "printed_page": 75,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_hacking.py",
+        "data/rules/cwn_hacking.json"
+      ],
+      "tests": [
+        "tests/test_cwn_hacking.py"
+      ],
+      "evidence": "deck models and costs",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "tools-of-the-trade:drones",
+      "chapter": "The Tools of the Trade",
+      "section": "Drones",
+      "printed_page": 76,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_drones.py",
+        "data/rules/cwn_drones.json"
+      ],
+      "tests": [
+        "tests/test_cwn_drones.py"
+      ],
+      "evidence": "drone chassis and control",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "tools-of-the-trade:vehicles",
+      "chapter": "The Tools of the Trade",
+      "section": "Vehicles",
+      "printed_page": 82,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_vehicles.py",
+        "data/rules/cwn_vehicles.json"
+      ],
+      "tests": [
+        "tests/test_cwn_vehicles.py"
+      ],
+      "evidence": "vehicle catalogue",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "hacking:cyberspace-nodes-access",
+      "chapter": "Hacking",
+      "section": "Cyberspace, Nodes, and Access",
+      "printed_page": 92,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_hacking.py"
+      ],
+      "tests": [
+        "tests/test_cwn_hacking.py"
+      ],
+      "evidence": "nodes, access levels",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "hacking:hacking-mechanics",
+      "chapter": "Hacking",
+      "section": "Hacking Mechanics",
+      "printed_page": 94,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_hacking.py"
+      ],
+      "tests": [
+        "tests/test_cwn_hacking.py"
+      ],
+      "evidence": "verb rolls, alert, tracing",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "hacking:programs",
+      "chapter": "Hacking",
+      "section": "Programs",
+      "printed_page": 96,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_program_catalogue.py",
+        "data/rules/cwn_program_catalogue.json"
+      ],
+      "tests": [
+        "tests/test_cwn_program_catalogue.py"
+      ],
+      "evidence": "program verbs and costs",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "hacking:demons-watchdogs",
+      "chapter": "Hacking",
+      "section": "Demons and Watchdogs",
+      "printed_page": 102,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_hacking.py"
+      ],
+      "tests": [
+        "tests/test_cwn_hacking.py"
+      ],
+      "evidence": "demon/watchdog opposition",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "hacking:network-servers",
+      "chapter": "Hacking",
+      "section": "Network Servers and Architecture",
+      "printed_page": 104,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_hacking.py"
+      ],
+      "tests": [
+        "tests/test_cwn_hacking.py"
+      ],
+      "evidence": "server architecture",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "creating-your-dystopia:themes",
+      "chapter": "Creating Your Dystopia",
+      "section": "Cyberpunk Themes",
+      "printed_page": 108,
+      "status": "not_applicable",
+      "python": [],
+      "tests": [],
+      "evidence": "GM advice, no mechanic",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "creating-your-dystopia:world",
+      "chapter": "Creating Your Dystopia",
+      "section": "Creating The World",
+      "printed_page": 110,
+      "status": "not_applicable",
+      "python": [],
+      "tests": [],
+      "evidence": "world-building procedure, no mechanic",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "creating-your-dystopia:city",
+      "chapter": "Creating Your Dystopia",
+      "section": "Creating The City",
+      "printed_page": 114,
+      "status": "not_applicable",
+      "python": [],
+      "tests": [],
+      "evidence": "city-building procedure",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "creating-your-dystopia:districts",
+      "chapter": "Creating Your Dystopia",
+      "section": "Building Your Districts",
+      "printed_page": 121,
+      "status": "not_applicable",
+      "python": [],
+      "tests": [],
+      "evidence": "district generator is content",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "creating-your-dystopia:megacorps",
+      "chapter": "Creating Your Dystopia",
+      "section": "Creating Megacorps",
+      "printed_page": 126,
+      "status": "partial",
+      "python": [
+        "src/rules/swn_faction_engine.py"
+      ],
+      "tests": [
+        "tests/test_swn_faction_engine.py"
+      ],
+      "evidence": "corp-scale organisations are optional SWN factions, not a CWN rule",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "creating-your-dystopia:gangs",
+      "chapter": "Creating Your Dystopia",
+      "section": "Creating Gangs",
+      "printed_page": 128,
+      "status": "not_applicable",
+      "python": [],
+      "tests": [],
+      "evidence": "generator tables are content",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "creating-your-dystopia:npcs",
+      "chapter": "Creating Your Dystopia",
+      "section": "Creating NPCs",
+      "printed_page": 130,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_npcs.py"
+      ],
+      "tests": [
+        "tests/test_cwn_npcs_heat.py"
+      ],
+      "evidence": "NPC statblocks and reaction",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "missions:schemes",
+      "chapter": "Creating and Running Missions",
+      "section": "Creating Schemes",
+      "printed_page": 133,
+      "status": "not_applicable",
+      "python": [],
+      "tests": [],
+      "evidence": "GM procedure",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "missions:mission-creation",
+      "chapter": "Creating and Running Missions",
+      "section": "How To Create a Mission",
+      "printed_page": 142,
+      "status": "not_applicable",
+      "python": [],
+      "tests": [],
+      "evidence": "GM procedure",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "missions:mission-tags",
+      "chapter": "Creating and Running Missions",
+      "section": "Mission Tags",
+      "printed_page": 144,
+      "status": "partial",
+      "python": [
+        "data/scenarios"
+      ],
+      "tests": [],
+      "evidence": "scenario data, no rule engine",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "missions:mission-types",
+      "chapter": "Creating and Running Missions",
+      "section": "Mission Types",
+      "printed_page": 158,
+      "status": "not_applicable",
+      "python": [],
+      "tests": [],
+      "evidence": "GM procedure",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "missions:intrusion-mission",
+      "chapter": "Creating and Running Missions",
+      "section": "Creating an Intrusion Mission",
+      "printed_page": 169,
+      "status": "not_applicable",
+      "python": [],
+      "tests": [],
+      "evidence": "GM procedure over the hacking rules",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "missions:playing-the-mission",
+      "chapter": "Creating and Running Missions",
+      "section": "Playing the Mission",
+      "printed_page": 172,
+      "status": "not_applicable",
+      "python": [],
+      "tests": [],
+      "evidence": "GM procedure",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "missions:mission-rewards",
+      "chapter": "Creating and Running Missions",
+      "section": "Mission Rewards and Experience",
+      "printed_page": 176,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_advancement.py"
+      ],
+      "tests": [
+        "tests/test_cwn_advancement.py"
+      ],
+      "evidence": "mission XP awards",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "missions:heat",
+      "chapter": "Creating and Running Missions",
+      "section": "Heat",
+      "printed_page": 178,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_heat.py"
+      ],
+      "tests": [
+        "tests/test_cwn_npcs_heat.py"
+      ],
+      "evidence": "heat accumulation and police response",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "faces:reaction-morale",
+      "chapter": "Faces On the Street",
+      "section": "Reaction Rolls and Morale",
+      "printed_page": 182,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_npcs.py"
+      ],
+      "tests": [
+        "tests/test_cwn_npcs_heat.py"
+      ],
+      "evidence": "reaction rolls, morale",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "faces:beasts",
+      "chapter": "Faces On the Street",
+      "section": "Beasts and Guard Animals",
+      "printed_page": 185,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_npcs.py",
+        "data/rules/cwn_catalogue.json"
+      ],
+      "tests": [
+        "tests/test_cwn_npcs_heat.py"
+      ],
+      "evidence": "animal statlines",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "faces:corp-guards",
+      "chapter": "Faces On the Street",
+      "section": "Corp Guards and Law Enforcement",
+      "printed_page": 186,
+      "status": "partial",
+      "python": [
+        "data/rules/cwn_catalogue.json"
+      ],
+      "tests": [
+        "tests/test_cwn_equipment.py"
+      ],
+      "evidence": "statlines live in the gear catalogue; no dedicated statblock test",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "faces:gangers",
+      "chapter": "Faces On the Street",
+      "section": "Gangers and Criminals",
+      "printed_page": 188,
+      "status": "partial",
+      "python": [
+        "data/rules/cwn_catalogue.json"
+      ],
+      "tests": [
+        "tests/test_cwn_equipment.py"
+      ],
+      "evidence": "statlines live in the gear catalogue; no dedicated statblock test",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "faces:hackers-pilots",
+      "chapter": "Faces On the Street",
+      "section": "Hackers and Pilots",
+      "printed_page": 190,
+      "status": "partial",
+      "python": [
+        "data/rules/cwn_catalogue.json"
+      ],
+      "tests": [
+        "tests/test_cwn_equipment.py"
+      ],
+      "evidence": "statlines live in the gear catalogue; no dedicated statblock test",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "city-setting",
+      "chapter": "The City",
+      "section": "The City",
+      "printed_page": 196,
+      "status": "not_applicable",
+      "python": [],
+      "tests": [],
+      "evidence": "setting material",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "mixing-systems",
+      "chapter": "Mixing Sine Nomine Games Together",
+      "section": "Mixing Sine Nomine Games Together",
+      "printed_page": 218,
+      "status": "not_applicable",
+      "python": [],
+      "tests": [],
+      "evidence": "conversion guidance",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "supplemental:product-line-quirks",
+      "chapter": "Supplemental Material",
+      "section": "Cyber Product Line Quirks",
+      "printed_page": 223,
+      "status": "missing",
+      "python": [],
+      "tests": [],
+      "evidence": "no module: quirks are content, but the rule that a quirk changes a system's behaviour is unimplemented",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "supplemental:variant-humanity",
+      "chapter": "Supplemental Material",
+      "section": "Variant Humanity",
+      "printed_page": 224,
+      "status": "missing",
+      "python": [],
+      "tests": [],
+      "evidence": "no module",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "supplemental:cyber-alienation",
+      "chapter": "Supplemental Material",
+      "section": "Cyber Alienation",
+      "printed_page": 226,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_alienation.py"
+      ],
+      "tests": [
+        "tests/test_cwn_alienation.py"
+      ],
+      "evidence": "verified against printed pp. 226-231 in this pass",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "supplemental:cheap-cyber",
+      "chapter": "Supplemental Material",
+      "section": "Cheap Cyber",
+      "printed_page": 228,
+      "status": "missing",
+      "python": [],
+      "tests": [],
+      "evidence": "no module; price/maintenance tables are content, the maintenance rule is not modelled",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "supplemental:magic-in-the-city",
+      "chapter": "Supplemental Material",
+      "section": "Magic in the City",
+      "printed_page": 230,
+      "status": "partial",
+      "python": [
+        "src/rules/cwn_magic.py"
+      ],
+      "tests": [
+        "tests/test_cwn_magic.py"
+      ],
+      "evidence": "the magic *economy* is implemented; campaign frame is prose",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "supplemental:mages-spellcasting",
+      "chapter": "Supplemental Material",
+      "section": "Mages and Spellcasting",
+      "printed_page": 231,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_magic.py"
+      ],
+      "tests": [
+        "tests/test_cwn_magic.py"
+      ],
+      "evidence": "verified against printed pp. 231-233 in this pass",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "supplemental:summoners-spirits",
+      "chapter": "Supplemental Material",
+      "section": "Summoners and Spirit Calling",
+      "printed_page": 236,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_summoning.py",
+        "src/rules/cwn_magic.py"
+      ],
+      "tests": [
+        "tests/test_cwn_summoning_1068.py",
+        "tests/test_cwn_magic.py"
+      ],
+      "evidence": "summoning module implements Effort cost, HD cap, form tiers and commanding; cwn_magic covers Summoner Effort and binding accounting",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "supplemental:magic-user-foci",
+      "chapter": "Supplemental Material",
+      "section": "Magic-User Foci",
+      "printed_page": 243,
+      "status": "missing",
+      "python": [],
+      "tests": [],
+      "evidence": "no module: mage-only foci are not implemented",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "supplemental:graced",
+      "chapter": "Supplemental Material",
+      "section": "The Graced",
+      "printed_page": 244,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_graced.py"
+      ],
+      "tests": [
+        "tests/test_cwn_graced_1068.py"
+      ],
+      "evidence": "Graced arts bought with art points; module landed with #1068 and carries its own tests",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    },
+    {
+      "id": "supplemental:magic-items",
+      "chapter": "Supplemental Material",
+      "section": "Magic Items",
+      "printed_page": 246,
+      "status": "implemented",
+      "python": [
+        "src/rules/cwn_magic_items.py"
+      ],
+      "tests": [
+        "tests/test_cwn_graced_1068.py"
+      ],
+      "evidence": "item identification and linking implemented in cwn_magic_items",
+      "rule_source_check": "pending",
+      "python_test_execution": "not_run",
+      "numeric_fidelity": "unverified",
+      "evennia_adapter": "unverified",
+      "playable_integration": "unverified",
+      "tabletop_documentation": "unverified",
+      "enabled_in_noopunk": "unverified"
+    }
+  ]
 }
