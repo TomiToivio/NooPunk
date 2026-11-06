@@ -56,12 +56,34 @@ so in their docstring.
 A third, smaller gap: the Foci catalogue exists (`cwn_foci`, 26 published Foci) but the flow passes
 Focus picks through unchanged; choosing Foci is not yet a tested path for Tony.
 
+## Evennia adapter
+
+`mud/commands/default_cmdsets.py` now registers `CmdFirstDay`, a renderer over
+`mud/nopunk_mud/first_day_adapter.py`. It stores the canonical
+`WorldSession.to_snapshot()` on `caller.db.first_day_state`; it has no second map, sheet or
+resolver. Typed commands:
+
+```
+firstday                  status / what is available now
+firstday look             current place, scene and graph exits
+firstday kit              issued kit and its active/fault state
+firstday wake | uniform
+firstday inspect <item>
+firstday connect <item>
+firstday repair <item>
+firstday dispatch | ride | arrive | report
+firstday reset            new morning; no other character state touched
+```
+
+Connection failure is a message and a preserved save, not a reset. The GUI remains open; the
+interface-agnostic `Opening` object is what a GUI adapter should render.
+
 ## What this does not do
 
 - It does not write Tony's nightmare, his lifepath prose or his memories. Those are Tomi's.
 - It does not choose his Edges. An opening that picks its own character is a character nobody wrote.
-- It does not add Evennia or GUI commands. `Opening` is interface-agnostic; an adapter is a separate
-  change.
+- It does not add a minimal Python GUI. The Evennia adapter renders the same session; the GUI is
+  still a separate change.
 
 ## Running it (once the catalogues are transcribed)
 

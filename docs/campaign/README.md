@@ -30,6 +30,8 @@ arrival at Ratakatu 12 and reporting to Romppainen. The player can complete
 it without dice or an LLM. Flags and graph occupancy round-trip through
 `WorldSession.to_snapshot()/from_snapshot()`; there is no second session or
 separate combat or hacking engine. `tests/test_actor_registry_1196.py` includes the #1217 first-day checks.
+The Evennia `firstday` command renders the same canonical session through
+`mud/nopunk_mud/first_day_adapter.py`; the GUI remains open.
 
 **Not authored or approved yet:** Tony's choose-your-lifepath memory tree,
 CWN Edge/Focus assignments, the nightmare's prose, dialogue beyond the quoted

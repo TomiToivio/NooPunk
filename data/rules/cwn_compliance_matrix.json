@@ -1488,11 +1488,14 @@
         "src/rules/natural_psi.py",
         "src/rules/wn_core.py"
       ],
-      "mud": [],
+      "mud": [
+        "mud/nopunk_mud/first_day_adapter.py"
+      ],
       "command": [],
       "coverage": "implemented",
       "tests": [
         "mud/tests/test_cwn_core.py",
+        "mud/tests/test_first_day_evennia_1217.py",
         "mud/tests/test_portable_1053_1054.py",
         "tests/test_cwn_advancement.py",
         "tests/test_cwn_alienation.py",
@@ -1515,6 +1518,7 @@
         "tests/test_godot_single_implementation.py",
         "tests/test_issue572_native_subsystems.py",
         "tests/test_issue615_mixed_genre_example.py",
+        "tests/test_items_1217.py",
         "tests/test_mud_cwn_parity_950.py",
         "tests/test_natural_psi_effects_apply.py",
         "tests/test_natural_psi_recovery.py",
