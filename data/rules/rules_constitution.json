@@ -105,6 +105,10 @@
         "tier": "noopunk-mod"
       },
       {
+        "module": "src/rules/astral_body.py",
+        "tier": "noopunk-mod"
+      },
+      {
         "module": "src/rules/awn_campaign_start.py",
         "tier": "optional-source"
       },
