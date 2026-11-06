@@ -15,6 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+from src.world.scenes import SceneFrame, SceneError, run_astral_scene  # noqa: E402
 from src.rules.astral_body import (  # noqa: E402
     ASTRAL_DAMAGE_BRIDGE_APPROVED,
     AstralBodyError,
@@ -206,6 +207,61 @@ class NotYetImplementedTests(unittest.TestCase):
         p.return_to_body()
         with self.assertRaises(AstralBodyError):
             p.record("something else")
+
+
+class AstralSceneTests(unittest.TestCase):
+    """An astral scene runs without an Astral graph — the MVP #1261 asks for."""
+
+    def setUp(self) -> None:
+        self.frame = SceneFrame(id="scene.oobe", title="Out of body", scene_type="Astral")
+
+    def test_the_scene_runs_and_says_it_is_not_a_map(self):
+        result = run_astral_scene(self.frame, projection(), facts=("the room is both right and wrong",))
+        self.assertTrue(result.passed)
+        self.assertTrue(any("non-navigable" in note for note in result.notes))
+        self.assertIn("the room is both right and wrong", result.facts)
+
+    def test_a_returned_projector_has_no_astral_scene(self):
+        p = projection()
+        p.return_to_body()
+        with self.assertRaises(SceneError):
+            run_astral_scene(self.frame, p)
+
+    def test_time_space_refuses_a_physical_observation(self):
+        p = projection(astral_location="astral.symbolic_corridor")
+        p.shift_mode(PerceptionMode.TIME_SPACE, authored=True)
+        result = run_astral_scene(self.frame, p, observes_physical=True)
+        self.assertFalse(result.passed)
+        self.assertIn("physical observation is unavailable", result.notes[0])
+
+    def test_space_time_allows_a_fallible_observation(self):
+        result = run_astral_scene(self.frame, projection(), observes_physical=True)
+        self.assertTrue(result.passed)
+        self.assertTrue(any("fallible" in fact for fact in result.facts))
+
+    def test_a_dream_is_witnessed_without_its_source_being_revealed(self):
+        result = run_astral_scene(self.frame, projection(), dream_of="npc.harri")
+        self.assertTrue(any("source stays unstated" in note for note in result.notes))
+
+    def test_the_wrong_scene_type_is_refused(self):
+        social = SceneFrame(id="scene.chat", title="Chat", scene_type="Social")
+        with self.assertRaises(SceneError):
+            run_astral_scene(social, projection())
+
+
+class DocsTests(unittest.TestCase):
+    def test_the_astral_tabletop_procedure_exists(self):
+        doc = ROOT / "docs/tabletop/ASTRAL_1261.md"
+        text = doc.read_text(encoding="utf-8")
+        self.assertIn("perception contract", text.lower())
+        self.assertIn("NONCANONICAL", text)
+        self.assertIn("AWAITING APPROVAL", text)
+
+    def test_the_corporation_note_exists_and_marks_its_undecided_questions(self):
+        text = (ROOT / "docs/world/PSI_CORPORATIONS_1261.md").read_text(encoding="utf-8")
+        self.assertIn("Mannerheim–Yamamoto", text)
+        self.assertIn("author decision", text)
+        self.assertIn("TBD", text)
 
 
 if __name__ == "__main__":
