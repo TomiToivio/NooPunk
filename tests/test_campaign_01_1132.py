@@ -49,11 +49,15 @@ def test_every_relative_link_in_the_outline_resolves():
 
 def test_there_is_exactly_one_campaign_outline():
     """One *outline*. Companion worksheets (the dream writing sheet, #1152) are not competing outlines."""
-    companions = {"README.md", "DREAMS.md"}
-    outlines = [p for p in (ROOT / "docs/campaign").glob("*.md") if p.name not in companions]
-    assert len(outlines) == 1, f"more than one campaign outline: {[p.name for p in outlines]}"
-    assert outlines[0].name == "CAMPAIGN_01_EUROPOL_ROOKIE.md"
-    assert "CAMPAIGN_01_EUROPOL_ROOKIE.md" in INDEX.read_text(encoding="utf-8")
+    # One outline. Every other document in the folder must be **indexed** as a companion, so the
+    # folder cannot accumulate a second outline that nobody notices (#1152, #1217).
+    outline = "CAMPAIGN_01_EUROPOL_ROOKIE.md"
+    others = [p.name for p in (ROOT / "docs/campaign").glob("*.md")
+              if p.name not in ("README.md", outline)]
+    index = INDEX.read_text(encoding="utf-8")
+    unindexed = [name for name in others if name not in index]
+    assert not unindexed, f"companion documents missing from the index: {unindexed}"
+    assert outline in index
 
 
 def test_the_outline_is_discoverable_from_the_root_readme():
