@@ -488,6 +488,11 @@ class AstralNode:
     def __post_init__(self) -> None:
         if not self.node_id:
             raise AstralError("astral node needs an id")
+        if self.node_type == "agent":
+            raise AstralError(
+                "a conscious agent is an occupant of an astral node, never a node: modelling "
+                "Noöspace as a network of agents does not make an agent a place (#1261 §4)"
+            )
         if self.visibility not in ("public", "discovered", "gm_secret"):
             raise AstralError(f"invalid astral visibility: {self.visibility}")
         if self.unlock_act < 0:
@@ -573,6 +578,20 @@ class AstralGraph:
             if self.visible(other, act=act, discovered=discovered):
                 found.append(other)
         return tuple(dict.fromkeys(found))
+
+    def relation(self, source: str, destination: str) -> str:
+        """The relation label of the edge between two nodes, or ``""`` if they are not adjacent.
+
+        Time/Space navigation needs this: a route there is a resonance, a symbol or a memory, never a
+        corridor. The perception layer lives in :mod:`src.rules.astral_body`; this is the graph fact it
+        will need when an authored scene navigates symbolically (#1261 §2).
+        """
+        for edge in self.edges:
+            if edge.source == source and edge.target == destination:
+                return edge.relation
+            if not edge.directed and edge.source == destination and edge.target == source:
+                return edge.relation
+        return ""
 
     def traverse(
         self,
