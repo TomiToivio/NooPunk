@@ -18,6 +18,11 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Mapping
 
+try:
+    from src.world.items import Kit
+except ModuleNotFoundError:  # pragma: no cover
+    from world.items import Kit
+
 try:  # see src/world/scenes.py for why both import roots are supported
     from src.world.graphs import GraphError, WorldGraphs
 except ModuleNotFoundError:  # pragma: no cover
@@ -37,6 +42,7 @@ class WorldSession:
     flags: set[str] = field(default_factory=set)
     completed_goals: set[str] = field(default_factory=set)
     scene_id: str = ""
+    kit: Kit | None = None
 
     @classmethod
     def from_dict(cls, payload: Mapping[str, Any]) -> "WorldSession":
@@ -156,6 +162,7 @@ class WorldSession:
             "flags": sorted(self.flags),
             "completed_goals": sorted(self.completed_goals),
             "scene_id": self.scene_id,
+            **({"kit": self.kit.to_dict()} if self.kit is not None else {}),
         }
 
     @classmethod
@@ -180,6 +187,10 @@ class WorldSession:
             ):
                 raise WorldSessionError("unknown scene in world-session snapshot")
             instance.scene_id = scene_id
+            if "kit" in payload:
+                instance.kit = Kit.from_dict(payload["kit"])
+                if instance.kit.actor not in instance.sheets:
+                    raise WorldSessionError("kit actor has no canonical session sheet")
             return instance
         except (KeyError, TypeError, ValueError, GraphError) as exc:
             raise WorldSessionError(f"invalid world-session snapshot: {exc}") from exc
