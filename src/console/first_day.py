@@ -10,25 +10,42 @@ from __future__ import annotations
 try:
     from src.console.world_session import WorldSession
     from src.world.graphs import (
-        CyberGraph, LocationNode, PhysicalGraph, PhysicalRoute, SocialGraph,
-        SocialNode, StoryGraph, StoryLink, StoryNode, WorldGraphs,
+        CyberGraph,
+        LocationNode,
+        PhysicalGraph,
+        PhysicalRoute,
+        SocialGraph,
+        SocialNode,
+        StoryGraph,
+        StoryLink,
+        StoryNode,
+        WorldGraphs,
     )
+    from src.world.items import first_day_kit
 except ModuleNotFoundError:  # installed with src/ on PYTHONPATH
-    from .world_session import WorldSession
     from world.graphs import (
-        CyberGraph, LocationNode, PhysicalGraph, PhysicalRoute, SocialGraph,
-        SocialNode, StoryGraph, StoryLink, StoryNode, WorldGraphs,
+        CyberGraph,
+        LocationNode,
+        PhysicalGraph,
+        PhysicalRoute,
+        SocialGraph,
+        SocialNode,
+        StoryGraph,
+        StoryLink,
+        StoryNode,
+        WorldGraphs,
     )
+    from world.items import first_day_kit
+
+    from .world_session import WorldSession
 
 ACTOR = "tony.german"
 SHEET = "sheet.tony.german"
 NAME = "Tony German"
 DISPATCH_LINE = "Field Agent Tony German reporting for duty."
 
-KIT = (
-    "police_radio", "phone", "computer", "forensic_scanner",
-    "gun", "sword", "romppainen_fujita_device", "body_camera",
-)
+#: The issued kit is defined once, in `world.items`, so the intro cannot drift from the inventory.
+KIT = tuple(item.id for item in first_day_kit() if not item.worn)
 # Abstract user-interface connections only, not operational police protocols.
 LINKED = tuple(item for item in KIT if item not in ("police_radio", "phone"))
 
