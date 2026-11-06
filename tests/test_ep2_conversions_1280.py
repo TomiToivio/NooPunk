@@ -7,6 +7,7 @@ tests below check the data rows for the second, and the document for the licence
 import json
 import re
 import unittest
+from importlib import import_module
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -94,6 +95,78 @@ class DocumentTests(unittest.TestCase):
                     self.assertTrue(any(word in sentence for word in negations),
                                     f"a sentence uses {phrase!r} as a mapping: {sentence[:120]}")
         self.assertIsNone(re.search(r"\b\d{1,3}%\b", self.text), "a percentage looks like a converted rating")
+
+
+
+#: The arithmetic the page quotes. If a cost changes, the prose must change with it — otherwise the
+#: reference becomes a source of confident wrong numbers at the table.
+CITED_ARITHMETIC = {"Blind+Camera cost": 2500, "Access": 1, "wireless": -2}
+
+PROGRAM = "src.rules.cwn_program_catalogue"
+HACKING = "src.rules.cwn_hacking"
+
+
+def resolve(path: str):
+    """Import ``src.a.b.C`` and return the attribute, or raise with the path that failed."""
+    parts = path.split(".")
+    if parts[0] != "src":
+        raise AssertionError(f"not a src path: {path}")
+    module_name = ".".join(parts[:-1])
+    attribute = parts[-1]
+    module = import_module(module_name)
+    return getattr(module, attribute)
+
+
+class ImplementedByTests(unittest.TestCase):
+    """Every row says where it lives, and the saying is checkable (#1280 follow-up)."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.rows = json.loads(DATA.read_text(encoding="utf-8"))["conversions"]
+
+    def test_every_row_declares_implemented_by(self):
+        for row in self.rows:
+            self.assertIn("implemented_by", row, row["id"])
+
+    def test_every_named_path_resolves_to_real_code(self):
+        for row in self.rows:
+            for path in row["implemented_by"]:
+                with self.subTest(row=row["id"], path=path):
+                    self.assertIsNotNone(resolve(path))
+
+    def test_a_row_with_no_implementation_admits_it(self):
+        for row in self.rows:
+            if not row["implemented_by"]:
+                self.assertTrue(row.get("missing_note", "").strip(), row["id"])
+
+    def test_the_alert_row_does_not_claim_demons_or_watchdogs(self):
+        alert = next(row for row in self.rows if row["id"] == "alert_state")
+        text = (alert["cwn_conversion"] + " " + alert.get("missing_note", "")).lower()
+        self.assertIn("not implement", text)
+        self.assertIn("cwn_fe_parity_matrix", text)
+        self.assertNotIn("escalate with cwn's watchdog", text)
+
+
+class CitedArithmeticTests(unittest.TestCase):
+    def test_blind_plus_camera_costs_2500_with_access_1(self):
+        from src.rules.cwn_program_catalogue import program_cost, validate_program
+
+        verb, _subject = validate_program("Blind", "Camera")
+        self.assertEqual(program_cost("Blind", "Camera"), CITED_ARITHMETIC["Blind+Camera cost"])
+        self.assertEqual(verb.access_cost, CITED_ARITHMETIC["Access"])
+        self.assertEqual(verb.skill_modifier, 0)
+        self.assertFalse(verb.self_terminating)
+
+    def test_the_wireless_penalty_is_minus_two(self):
+        from src.rules.cwn_hacking import WIRELESS_PENALTY
+
+        self.assertEqual(WIRELESS_PENALTY, CITED_ARITHMETIC["wireless"])
+
+    def test_the_document_quotes_the_same_numbers(self):
+        text = DOC.read_text(encoding="utf-8")
+        self.assertIn("**2500**", text)
+        self.assertIn("**Access 1**", text)
+        self.assertIn("−2", text)
 
 
 if __name__ == "__main__":
