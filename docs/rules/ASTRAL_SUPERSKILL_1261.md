@@ -1,88 +1,134 @@
-# Astral Projection as an Astral-domain superskill (#1261)
+# Astral Projection as a superskill — ranks 0–4, MVP 0–1 (#1261)
 
-> **Status: the rank table and its gates, implemented; ranks 2–4 are design-only.** `src/rules/astral_ranks.py` adds the
-> author's 2026-11-06 revision — *understanding, perception, capability* — on top of the body rules in
-> [`astral_body.py`](../../src/rules/astral_body.py) and the graph invariants in `astral.py`. It does not replace
-> either, and it does not create a second body, sheet, HP pool or combat skill.
+> **Status: author-directed draft; the issue stays OPEN.** Astral Projection is an **astral-domain
+> superskill**: very little direct power in Physical or Cyber scenes, and the primary ability for
+> projection, movement, perception and — at higher ranks — understanding inside Noöspace.
 >
-> **Read alongside:** [tabletop/ASTRAL_1261.md](../tabletop/ASTRAL_1261.md) (perception filter, targeting, entry
-> triggers) · [rules/ASTRAL_PSI_1164.md](ASTRAL_PSI_1164.md) (the prototype record) · [#1178](../design/DRAFT_NOOPUNK_PSIONICS.md)
-> (why the PC may not take SWN Precognition or Teleportation).
+> **Ranks 2–4 are design-only.** The initial campaign allows rank **0 or 1** only. The runtime gates in
+> [`src/rules/astral_progression.py`](../../src/rules/astral_progression.py) refuse the rest by name.
+>
+> **This supersedes the earlier plane-access ladder** that put Devachanic/Etheric/Buddhic at rank 2.
+> Present-day physics does not establish consciousness-caused collapse, objective Akashic records, or
+> timelines that split and re-merge: those are the setting's research claims, inspired by the Law of One.
 
-## The design principle, as implemented
+## 1. What a rank states
 
-Astral Projection is a **superskill inside the Astral**. It gives very little direct power in Physical or Cyber
-scenes; inside Noöspace it is the primary ability for projecting, moving, perceiving and — at the top ranks — touching
-information. Each rank is three things at once, and the module stores all three:
+Three things at once, and a rank is not "more minutes outside the body":
 
-| rank | understanding | perception | actions |
-|---|---|---|---|
-| **0 Disorientation** | no QIP or Law of One model; assumes physics still applies; may not tell dream from projection | Near Astral only, physical world visible but warped and symbolic | separate, walk, basic encounters, return |
-| **1 Lucidity** | the astral does not obey ordinary geometry; QIP grasped in practice | dreams visibly constructed from quantum information, still unreliable | fast flight, Lower Astral, enter constructed dream worlds |
-| **2 Conscious Agent Network** | astral objects are quantum information exchanged between agents | agents as information-bearing structures | **ROTE** (transmit/receive organised thought); **learn Ident** |
-| **3 Authorised informational agency** | appearance distinguished from the information underneath | wave functions and collapse in NoöPunk's own idiom | **Use Ident**; edit quantum information *within an authorised scope* |
-| **4 Cosmological research** | Noöspace as a fictionally interpreted Hilbert space; dim timelines | higher-plane interpretations, uncertain and incomplete | Devachanic, Etheric, Buddhic; Akashic research |
+1. **The character's model of reality** — the QIP and Law of One framework she actually holds.
+2. **What she can perceive and interpret.**
+3. **What she is permitted to do.**
 
-Capabilities are **cumulative**: rank 3 keeps everything rank 2 had. `has(rank, Capability.X)` is the only supported way
-to ask, so no caller can invent a capability by reading the table directly.
+The table is data: [`data/rules/astral_progression_1261.json`](../../data/rules/astral_progression_1261.json).
 
-## Scope: rank 0–1 at creation, and only that
+## 2. The ladder
 
-`starting_rank()` **refuses** 2–4 rather than clamping. A character created at rank 3 is not a balance problem to be
-tuned; it is a scope violation, and the refusal says so:
+| Rank | Understanding | Reach and permissions |
+| --- | --- | --- |
+| **0 — Disorientation** | No Astral familiarity, no QIP, no Law of One. Assumes physical laws still apply; may not know whether she is dreaming. | Near Astral only, with the physical world visible but warped. Separation, walking, observing, basic encounter and return. **No flight, no Lower Astral.** |
+| **1 — Lucidity and dream navigation** | Realises that geometry and inertia do not govern Noöspace; begins to grasp QIP in practice; understands that dreams are built from quantum information. | Fast movement and flight without locomotion. Deliberate entry to the **Lower Astral**, constructed dreams and collective-unconscious places. No ROTE, no Ident work, no editing. |
+| **2 — Conscious Agent Network** | Recognises that solid-looking astral objects are rendered quantum information exchanged among Conscious Agents. | **Transmit Information (ROTE)** — send and receive organised conceptual packages, inside the Astral only. **Learn Ident** — acquire and recognise a known agent's persistent identity. Still cannot *use* it. |
+| **3 — Authorised informational agency** | Understands that the interface renders information, energy and matter differently; begins to perceive wave functions and collapse as the setting depicts them. | Read, write, edit and delete **quantum information within her own authorised scope** — normally her own, plus limbo worlds whose ownership the scene states. **Use Ident** — instant astral travel to a known agent's presence, not physical teleportation. |
+| **4 — Cosmological research** | Noöspace as a fictionally interpreted infinite-dimensional Hilbert space; Law of One higher planes; dim alternative timelines and dimensions. | **Devachanic, Etheric and Buddhic planes**, Akashic research, authored timeline observation — uncertain and incomplete. No time travel, no historical editing, no omniscience, no compulsory access to another agent's information. |
 
-> *the opening allows Astral Projection 1 or lower at creation; rank 3 is design-only until an authorised campaign
-> needs it*
+**Permission is the governing distinction.** Rank 3 may edit what it owns or what a scene explicitly says is
+malleable. It may not write to another agent, a protected mind, a physical system, a secured Cyber node or
+shared reality. Editable symbolic scenery is not an edited bank record.
 
-The test that pins this is deliberately blunt: if a later change raises `CAMPAIGN_MAX_STARTING_RANK`, the checklist in
-the issue has been reopened without anyone saying so.
+## 3. MVP: ranks 0 and 1
 
-## Durations are provisional, and marked
+**Rank 0 — unfamiliar Astral Body.**
 
-| rank | 0 | 1 | 2 | 3 | 4 |
-|---|---|---|---|---|---|
-| provisional cap | 10 min | 60 min | 10 h | 48 h | 7 days |
+- Entry is voluntary-with-ability or scripted (sleep, NDE, psychotronics, authored event). The body stays
+  where it was and stays vulnerable.
+- She sees the **Near Astral with its physical overlay**: right room, wrong light. Physical objects look
+  warped or symbolic; astral occupants appear according to the perception filters.
+- She may try walking, touching doors, talking and observing as if ordinary physics applied; the real
+  effects are resolved by the physical-versus-astral target restrictions that already exist in
+  [`astral_body.py`](../../src/rules/astral_body.py).
+- Disorientation is narration; **player agency is not removed**. Investigate a nearby anomaly or return.
+- Nothing unlocks flight, the Lower Astral or ROTE at rank 0.
 
-These are carried over from earlier comments because the author has not approved or replaced them, and the latest
-direction makes **understanding and perception** the governing axis. `DURATIONS_ARE_PROVISIONAL = True` exists so that
-a future reader can see the numbers are not balance. Do not tune against them.
+**Rank 1 — lucid navigator.**
 
-## Editing is permission, not power
+- Flight and fast movement without physical locomotion; **no SWN Teleportation, no physical flying**.
+- Deliberate entry to the **Lower Astral**, personal dream worlds and collective-unconscious places; she can
+  watch a sleeping agent construct a dream out of quantum information.
+- She perceives the *process* of dream construction but **cannot read or write arbitrary information and
+  cannot send a ROTE**.
+- The GM keeps three things apart in the data: an actual conscious agent, a generated dream avatar, and
+  symbolic imagery. Lower planes can be hostile; CWN unarmed astral interaction applies; retreat is a
+  choice.
+- **The two-scene test:** an awkward bedroom OOBE with the real room visible, then lucid flight over
+  near-Astral Helsinki into a dream landscape. Afterwards the body is still anchored and no investigation
+  shortcut has been produced.
 
-`InformationPattern(pattern_id, owner_id, mutable)` plus `may_edit()` encode the author's rule:
+## 4. Ranks 2 and 3: ROTE and Ident
 
-* **mutable = False → nobody edits it**, at any rank. Banks, identities and atoms do not move because a scene's scenery
-  was editable.
-* **rank 3, own pattern → allowed.**
-* **another agent's pattern → needs a mutable pattern *and* an authored mandate.** Rank 4's plane access does not
-  change this; the test asserts that explicitly, because "he is a cosmologist now" is exactly the reasoning that would
-  otherwise creep in.
-* `require_edit()` refuses with the reason: not editable / another agent's / this rank cannot edit.
+- **ROTE (rank 2)** is an **Astral Projection** technique, not Telepathy: a packet of condensed thought,
+  concept, image, feeling and memory. Experientially a download rather than a sentence. Packets can be
+  misread, and interpreting one into ordinary language takes time.
+- **Learn Ident (rank 2)** acquires a persistent noetic identity: not a name, a body or an address. Knowing
+  it reveals neither the target's physical position nor their consent.
+- **Use Ident (rank 3)** relocates the Astral Body instantly to a *known* agent's astral presence, within
+  approved plane access and subject to AntiPSI and agency constraints. It is not SWN Teleportation and it
+  does not move the body.
+- **Rank 3 edit rights** are permissions over quantum information the character is authorised to touch.
+  Every scene that offers them must say **who owns the pattern**.
 
-## What it does not do, and each is a test
+## 5. Durations
 
-* **No second body or sheet.** The module exports no `Projection`, no `Combatant`, no combat class; the body model stays
-  in `astral_body.py`, and `astral_body.ASTRAL_DAMAGE_BRIDGE_APPROVED` remains `False`, so astral damage is still not a
-  mechanic.
-* **No physical power at any rank.** A rank-4 projector still cannot take a physical action while projected — it is a
-  navigator, not a poltergeist.
-* **No SWN Teleportation, and no Telepathy smuggling.** ROTE and Ident are asserted *absent* from the SWN technique
-  catalogue: they are Astral techniques, not disciplines.
-* **No automatic time travel, no historical editing, no objective omniscience.** Rank 4 perceives timelines
-  "dimly and incompletely"; nothing in the module grants a mechanical effect on the past.
-* **No real-world physics claim.** QIP, consciousness-caused collapse and split-and-remerge timelines are NoöPunk's
-  fictional research programme, as the issue requires.
+The provisional ceilings are **retained as provisional only**: 10 minutes at rank 0, 60 at rank 1, 10 hours
+at 2, 48 at 3, 7 days at 4. The author has not approved them, and a longer projection must never be
+mistaken for more reliable knowledge. They live in the data file with an explicit
+`duration_status: "provisional caps"`, and the module returns them without implying finality.
 
-## Still design-only, and deliberately not implemented
+## 6. What the interface looks like as rank rises
 
-Ranks 2–4 have their **capabilities** listed because the issue's checklist names them, but no scene machinery exists
-for ROTE interpretation, Ident learning, timeline observation or Akashic research — and the issue says to keep them
-design-only until an authorised campaign needs them. When it does, each gets its own increment with its own tests.
+Rank 0 renders a near-physical headset with hallucinations. Rank 1 renders thought-responsive dream
+construction. Rank 2 renders self-transforming conscious-agent meshes and ROTEs. Rank 3 renders
+informational permissions and editable limbo. Rank 4 renders high-dimensional timelines and Akashic
+patterns. PSI stays primary; Magick is the secondary, culturally conditioned interpretation of the same
+phenomenon.
 
-Two questions remain the author's:
+## 7. Boundaries that do not move
 
-1. **Duration and Effort.** Does a projection cost SWN Effort, and how much, per rank? The caps are provisional and
-   nothing here charges Effort.
-2. **Entering a dream world vs switching Space/Time ↔ Time/Space.** Rank 1 grants the former; the issue warns not to
-   silently treat that as the latter. This module grants `DREAM_ENTRY` and does **not** grant a general mode switch —
-   `astral_body.Projection.shift_mode()` still requires an authored transition.
+- **No physical or Cyber power at any rank.** No hacking, no root access, no teleporting the body.
+- **No second Astral Combat skill and no astral hit-point pool.** Astral unarmed combat is CWN Punch; the
+  damage bridge to the CWN body is still unapproved (`ASTRAL_DAMAGE_BRIDGE_APPROVED = False`).
+- **No evidence shortcut**: an astral observation is a lead, never proof.
+- **No free write access** to another agent, a protected mind or a secured system.
+- **No automatic time travel, resurrection or omniscience** at rank 4.
+
+## 8. What is implemented, and what is not
+
+| Concern | Where | Status |
+| --- | --- | --- |
+| Rank table, names, understanding, permissions | `data/rules/astral_progression_1261.json` | data |
+| Gates: 0–4 range, MVP cap, starting rank, technique minimums, plane access, duration caps, domain check | `src/rules/astral_progression.py` | implemented |
+| Tests for every gate above | `tests/test_astral_progression_1261.py` (16) | implemented |
+| Body, perception filters, targeting, manifestation | `src/rules/astral_body.py` (#1262) | implemented |
+| ROTE, Learn Ident, Use Ident as playable techniques | — | **design-only, refused by gate** |
+| Ranks 2–4 scene content, planes, Akashic research | — | **design-only** |
+| Astral damage bridge | `astral_body.apply_astral_damage` refuses | awaiting author approval |
+
+## 9. Open decisions
+
+1. **Durations.** Keep the provisional ceilings, or replace them with a scene-based cost?
+2. **Effort.** Which SWN commitment mode does a projection use, and does a device-level rank 0 cost Effort at
+   all?
+3. **Rank 1 and Time/Space.** Rank 1 enters dream worlds that *resemble* Time/Space. Is deliberate switching
+   a rank 3 permission, or a rank 1 one with a narrower scope?
+4. **Ident consent.** What does a target feel when an Ident is learned, and does AntiPSI detect it?
+5. **Rank-3 edit ownership.** Who audits a character who edits their own information, and what does the
+   evidence look like afterwards?
+
+## 10. Sources
+
+- Issue #1261: the body and perception work (#1262), the graph invariants (#1263), the author comments of
+  2026-11-06 — provisional durations (15:42), **Transmit Information / ROTE** (15:47), **Use Ident** (15:57),
+  and the governing superskill update (16:35).
+- Robert Monroe — projection phenomenology used as narrative description, never as a rank ladder.
+- The Law of One — the metaphysical frame the setting's researchers hold; a claim in a source, not physics.
+- Faggin (quantum-information panpsychism) and Hoffman (conscious agents) — vocabulary for the in-world
+  model of perception and identity.

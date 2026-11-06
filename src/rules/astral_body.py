@@ -20,7 +20,8 @@ Three rules are load-bearing and are enforced here rather than described:
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from enum import Enum
+from enum import Enum, IntEnum
+
 
 class AstralBodyError(ValueError):
     """A projection, perception or targeting call that the rules do not allow."""
@@ -158,7 +159,7 @@ class Projection:
         return False
 
     # -- transitions ------------------------------------------------------------------------
-    def shift_mode(self, mode: PerceptionMode, *, authored: bool = False) -> "Projection":
+    def shift_mode(self, mode: PerceptionMode, *, authored: bool = False) -> Projection:
         """Switching from near-physical to inner Noöspace is an authored transition, not a toggle."""
         if not authored:
             raise AstralBodyError(
@@ -167,14 +168,14 @@ class Projection:
         self.mode = mode
         return self
 
-    def manifest(self, *, channel: str = "sight") -> "Projection":
+    def manifest(self, *, channel: str = "sight") -> Projection:
         """Become perceptible to physical witnesses without becoming tangible."""
         if channel not in ("sight", "sound", "sight_and_sound"):
             raise AstralBodyError(f"unknown manifestation channel {channel!r}")
         self.manifestation = "visible"
         return self
 
-    def return_to_body(self) -> "Projection":
+    def return_to_body(self) -> Projection:
         """End the projection. The actor is embodied again, at the same location, once."""
         if not self.active:
             return self
@@ -288,3 +289,198 @@ def unlocked_disciplines(_projection: Projection) -> tuple[str, ...]:
 def requires_authored_transition(from_mode: PerceptionMode, to_mode: PerceptionMode) -> bool:
     """Any mode change is authored. Within a mode, movement is scene business."""
     return from_mode is not to_mode
+
+
+# --------------------------------------------------------------------------- #
+# The superskill: ranks 0-4, and the MVP window of 0-1 (author update 2026-11-06)
+# --------------------------------------------------------------------------- #
+#: Astral Projection is an *Astral-domain* superskill, not a general-purpose power: it does almost
+#: nothing in a Physical or Cyber scene and everything inside Noöspace. Each rank is a model of
+#: reality, a perception and a capability at once, so a higher rank is not "more minutes outside".
+
+
+class AstralRank(IntEnum):
+    DISORIENTATION = 0        # unfamiliar; near Astral, may not tell dream from waking
+    LUCID = 1                 # lucid flight, Lower Astral, dreams seen being built
+    AGENT_NETWORK = 2         # conscious-agent network, ROTE, learn an Ident
+    AUTHORIZED_AGENCY = 3     # Use Ident, permission-gated quantum-information editing
+    COSMOLOGICAL = 4          # Devachanic/Etheric/Buddhic, Akashic research, timelines
+
+
+#: The initial campaign allows 0 or 1. 2-4 are design-only until a later campaign needs them.
+MVP_RANKS: tuple[AstralRank, ...] = (AstralRank.DISORIENTATION, AstralRank.LUCID)
+
+#: **Provisional** caps, retained only as ceilings until the author settles them. Not a promise that
+#: a long projection yields reliable knowledge.
+PROVISIONAL_MINUTES: dict[AstralRank, int] = {
+    AstralRank.DISORIENTATION: 10,
+    AstralRank.LUCID: 60,
+    AstralRank.AGENT_NETWORK: 600,
+    AstralRank.AUTHORIZED_AGENCY: 2880,
+    AstralRank.COSMOLOGICAL: 10080,
+}
+
+#: Planes, in the order the setting climbs them. The first three are reachable inside the MVP; the
+#: upper three are Level 4 by the author's ordering correction, not Level 2.
+PLANES: tuple[str, ...] = (
+    "near_astral",
+    "lower_astral",
+    "astral",
+    "devachanic",
+    "etheric",
+    "buddhic",
+)
+
+_PLANES_BY_RANK: dict[AstralRank, frozenset[str]] = {
+    AstralRank.DISORIENTATION: frozenset({"near_astral"}),
+    AstralRank.LUCID: frozenset({"near_astral", "lower_astral", "astral"}),
+    AstralRank.AGENT_NETWORK: frozenset({"near_astral", "lower_astral", "astral"}),
+    AstralRank.AUTHORIZED_AGENCY: frozenset({"near_astral", "lower_astral", "astral"}),
+    AstralRank.COSMOLOGICAL: frozenset(PLANES),
+}
+
+#: The only ways an Ident may be learned. A name, an address, a photograph or a body is none of them.
+IDENT_SOURCES: tuple[str, ...] = ("authored_encounter", "consensual_exchange", "recognition_technique")
+
+
+@dataclass(frozen=True, slots=True)
+class AstralSkill:
+    """One character's Astral Projection rank, with the gates the rank actually opens."""
+
+    rank: AstralRank = AstralRank.DISORIENTATION
+
+    @classmethod
+    def starting(cls, rank: AstralRank | int = 0) -> AstralSkill:
+        """Character creation: 0 or 1. Rank 2-4 is earned later, never picked at session one."""
+        value = rank if isinstance(rank, AstralRank) else AstralRank(int(rank))
+        if value not in MVP_RANKS:
+            raise AstralBodyError(
+                f"Astral Projection {int(value)} is not available at character creation; the initial "
+                f"campaign allows {tuple(int(r) for r in MVP_RANKS)}"
+            )
+        return cls(rank=value)
+
+    # -- model of reality --------------------------------------------------------------------
+    @property
+    def understands_quantum_information(self) -> bool:
+        return self.rank >= AstralRank.AGENT_NETWORK
+
+    @property
+    def understands_interface(self) -> bool:
+        """Rank 3+: an appearance is a rendering of information, not the information."""
+        return self.rank >= AstralRank.AUTHORIZED_AGENCY
+
+    # -- capability --------------------------------------------------------------------------
+    @property
+    def can_fly(self) -> bool:
+        return self.rank >= AstralRank.LUCID
+
+    @property
+    def can_enter_lower_astral(self) -> bool:
+        return self.rank >= AstralRank.LUCID
+
+    @property
+    def can_send_rote(self) -> bool:
+        return self.rank >= AstralRank.AGENT_NETWORK
+
+    @property
+    def can_learn_ident(self) -> bool:
+        return self.rank >= AstralRank.AGENT_NETWORK
+
+    @property
+    def can_use_ident(self) -> bool:
+        return self.rank >= AstralRank.AUTHORIZED_AGENCY
+
+    @property
+    def can_edit_quantum_information(self) -> bool:
+        """Permission, not raw power: the caller must still own the pattern (see `may_edit`)."""
+        return self.rank >= AstralRank.AUTHORIZED_AGENCY
+
+    @property
+    def can_research_cosmology(self) -> bool:
+        return self.rank >= AstralRank.COSMOLOGICAL
+
+    def planes(self) -> frozenset[str]:
+        return _PLANES_BY_RANK[self.rank]
+
+    def may_enter(self, plane: str) -> bool:
+        return plane in self.planes()
+
+    def duration_cap_minutes(self) -> int:
+        return PROVISIONAL_MINUTES[self.rank]
+
+    def may_edit(self, *, owner: str, editor: str) -> bool:
+        """Level-3 editing is scoped: your own information, or a limbo you are authorised to shape."""
+        if not self.can_edit_quantum_information:
+            return False
+        return owner in (editor, "limbo:unclaimed")
+
+
+@dataclass(frozen=True, slots=True)
+class Ident:
+    """A Conscious Agent's persistent noetic address — not a name, a body or a consent token.
+
+    Eternal only while **the same agent** exists: reincarnation, resleeving and uploading keep it,
+    a copy or fork does not inherit it. Permanent is not reachable: wards and the projector's rank
+    decide whether *this* jump arrives.
+    """
+
+    agent_id: str
+
+    def __post_init__(self) -> None:
+        if not self.agent_id.strip():
+            raise AstralBodyError("an Ident names an agent, not a body")
+
+    def survives(self, event: str) -> bool:
+        """Continuity events keep the Ident; duplication is exactly the case that does not."""
+        if event in ("death", "reincarnation", "resleeve", "upload"):
+            return True
+        if event in ("copy", "fork", "simulation"):
+            return False
+        raise AstralBodyError(f"unknown continuity event {event!r}")
+
+
+def learn_ident(skill: AstralSkill, agent_id: str, *, via: str) -> Ident:
+    """Learn an Ident at rank 2+. A name in a file is not a route: the *source* is required."""
+    if not skill.can_learn_ident:
+        raise AstralBodyError(
+            f"learning an Ident is Astral Projection {int(AstralRank.AGENT_NETWORK)}; "
+            f"this character is {int(skill.rank)}"
+        )
+    if via not in IDENT_SOURCES:
+        raise AstralBodyError(
+            f"{via!r} does not establish an Ident; expected one of {IDENT_SOURCES}"
+        )
+    return Ident(agent_id=agent_id)
+
+
+def use_ident(
+    projection: Projection,
+    skill: AstralSkill,
+    ident: Ident,
+    *,
+    ward: str = "",
+    plane: str = "astral",
+) -> Projection:
+    """Relocate the *Astral Body* to a known agent's present astral locus — instantly, once.
+
+    Never the physical body, never a second actor, and never a way around a ward: a blocked arrival
+    says so without naming where the agent is.
+    """
+    if not skill.can_use_ident:
+        raise AstralBodyError(
+            f"Use Ident is Astral Projection {int(AstralRank.AUTHORIZED_AGENCY)}; "
+            f"this character is {int(skill.rank)}"
+        )
+    if not projection.active:
+        raise AstralBodyError("only a projected Astral Body can use an Ident")
+    if not skill.may_enter(plane):
+        raise AstralBodyError(
+            f"Astral Projection {int(skill.rank)} does not reach the {plane} plane"
+        )
+    if ward:
+        raise AstralBodyError(
+            f"the arrival is refused by a ward ({ward}); the agent's location is not revealed"
+        )
+    projection.astral_location = f"presence:{ident.agent_id}"
+    return projection
