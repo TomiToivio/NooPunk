@@ -82,3 +82,10 @@ this model, and the one software is most likely to reproduce.
 * No tactical grid: ranges are narrated, CWN resolves them.
 * No emotion, lie or investigation-point trackers: evidence and testimony are written down as
   statements, and contradictions are pointed at with a pencil.
+
+### First-day Dispatch check
+
+Inspect each issued item and mark any faults on Tony's sheet. Connect the working kit.
+Either the radio or the phone can carry Tony's check-in. If both fail, Tony can restore
+either inspected device at the kit interface without a roll. Keep the fault on the other
+device when saving or passing the sheet to another player.

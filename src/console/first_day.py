@@ -184,6 +184,8 @@ def available_first_day_actions(session: WorldSession) -> tuple[str, ...]:
             and not _done(session, "connect:" + item)
             and not _fault(session, item)
         )
+    if not _done(session, "dispatch") and all(_fault(session, item) for item in COMMS):
+        actions.extend("repair:" + item for item in COMMS if _done(session, "inspect:" + item))
     ready = (
         _done(session, "uniform")
         and all(_done(session, "inspect:" + item) for item in KIT)
@@ -207,7 +209,7 @@ def first_day_action(session: WorldSession, action: str) -> str:
         if _fault(session, item_id):
             raise FirstDayError(
                 f"{item_id} cannot be connected: {_fault(session, item_id)}; "
-                "its function is covered by other issued kit"
+                "inspect the remaining issued kit"
             )
     if action not in available_first_day_actions(session):
         raise FirstDayError(f"unavailable first-day action: {action}")
@@ -222,6 +224,12 @@ def first_day_action(session: WorldSession, action: str) -> str:
     elif action.startswith("inspect:"):
         item = action.split(":", 1)[1]
         message = f"Inspected issued equipment: {item.replace('_', ' ')}."
+        if _fault(session, item):
+            message += " Fault detected."
+    elif action.startswith("repair:"):
+        item = action.split(":", 1)[1]
+        session.flags.remove("kit.fault:" + item)
+        message = f"Restored the {item.replace('_', ' ')} Dispatch connection."
     elif action.startswith("connect:"):
         item = action.split(":", 1)[1]
         message = f"Connected {item.replace('_', ' ')} through the abstract Europol kit interface."
