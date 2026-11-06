@@ -4,6 +4,7 @@ import re
 import unittest
 from pathlib import Path
 
+from src.rules import scene_tags  # noqa: E402
 from src.rules.scene_tags import (
     TAG_FAMILIES,
     AstralTag,
@@ -104,6 +105,74 @@ class FiveTagFamiliesTest(unittest.TestCase):
                 continue
             with self.subTest(link=link):
                 self.assertTrue((DOC.parent / link).resolve().exists(), link)
+
+
+class OpenFamilyListTests(unittest.TestCase):
+    """The five are a starting vocabulary, not a closed list (#1283): the sixth must be expressible in code."""
+
+    def test_every_starting_family_says_what_it_records(self):
+        for name in ("clue", "social", "goal", "psyche", "astral"):
+            self.assertTrue(scene_tags.TAG_FAMILY_MEANINGS[name].strip(), name)
+
+    def test_a_new_family_can_be_added_by_name(self):
+        before = scene_tags.TAG_FAMILIES
+        added = scene_tags.register_family("debt", "An obligation someone can call in.")
+        try:
+            self.assertIn(added, scene_tags.TAG_FAMILY_MEANINGS)
+            self.assertIn("Debt", scene_tags.TAG_FAMILIES)
+        finally:
+            scene_tags.TAG_FAMILY_MEANINGS.pop(added, None)
+            scene_tags.TAG_FAMILIES = before
+
+    def test_a_new_family_needs_a_name_and_a_meaning_and_a_free_slot(self):
+        with self.assertRaises(scene_tags.TagFamilyError):
+            scene_tags.register_family("   ", "something")
+        with self.assertRaises(scene_tags.TagFamilyError):
+            scene_tags.register_family("debt", "   ")
+        with self.assertRaises(scene_tags.TagFamilyError):
+            scene_tags.register_family("clue", "a second meaning for a taken name")
+
+
+class PsycheDurationTests(unittest.TestCase):
+    def test_an_enduring_trait_and_a_temporary_state_are_both_psyche_tags(self):
+        enduring = PsycheTag("laura.wendt", "protective of sources")
+        shaken = PsycheTag("tony.german", "shaken after the ambush", duration="temporary")
+        self.assertEqual(enduring.duration, "enduring")
+        self.assertEqual(shaken.duration, "temporary")
+
+    def test_a_psyche_tag_is_a_word_not_a_timer(self):
+        tag = PsycheTag("tony.german", "shaken", duration="temporary")
+        self.assertFalse(hasattr(tag, "expires"))
+        self.assertFalse(hasattr(tag, "roll"))
+
+    def test_an_unknown_duration_is_refused(self):
+        with self.assertRaises(ValueError):
+            PsycheTag("tony.german", "shaken", duration="until-next-scene")
+
+
+class AstralDomainTests(unittest.TestCase):
+    def test_a_tag_states_which_of_three_things_it_affects(self):
+        self.assertEqual(scene_tags.ASTRAL_DOMAINS, ("perceive", "attempt", "change"))
+        tag = AstralTag("tony.german", "picks up abandoned intentions", domain="perceive")
+        self.assertEqual(tag.domain, "perceive")
+
+    def test_a_fourth_domain_is_refused(self):
+        with self.assertRaises(ValueError):
+            AstralTag("tony.german", "sees the future", domain="predict")
+
+
+class StoreBridgeTests(unittest.TestCase):
+    def test_the_campaign_store_projects_onto_the_portable_tag(self):
+        stored = NpcPsycheTag(
+            id="laura-protective", npc="laura.wendt", trait="protective of sources",
+            lever="a witness she promised to protect", under_pressure="she will not trade a source",
+        )
+        portable = stored.to_family_tag()
+        # Two import roots exist (`src.…` and `rules.…` with `src` on the path), so compare the shape, not the object.
+        # `PsycheTag` is the #1283 name for a class that keeps `PersonalityTag` as its serialized name.
+        self.assertIn(type(portable).__name__, {"PsycheTag", "PersonalityTag"})
+        self.assertEqual(portable.owner_id, "laura.wendt")
+        self.assertEqual(portable.trait, "protective of sources")
 
 
 if __name__ == "__main__":

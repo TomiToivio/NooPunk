@@ -177,6 +177,14 @@ class PersonalityTag:
         _text(self.lever, "lever")
         _text(self.under_pressure, "under_pressure")
 
+    def to_family_tag(self):
+        """The portable Psyche tag for scene use: the owner, the trait, and where the record came from."""
+        try:
+            from src.rules.scene_tags import PsycheTag as portable
+        except ModuleNotFoundError:  # pragma: no cover - installed with src/ on PYTHONPATH
+            from rules.scene_tags import PsycheTag as portable  # type: ignore[no-redef]
+        return portable(owner_id=self.npc, trait=self.trait, evidence=self.id)
+
 
 @dataclass(frozen=True, slots=True)
 class AstralTag:

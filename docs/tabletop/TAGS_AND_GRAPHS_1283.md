@@ -219,3 +219,19 @@ No new resolver, no automatic tag effect, no Astral Graph.
 - It does not make Astral Tags true by fiat: they are facts the table agrees to, and their source
   still matters.
 - It does not decide the open playtest questions above.
+
+## What the code adds to this page
+
+`src/rules/scene_tags.py` carries the five families and two open questions the text above raises, as fields rather
+than as advice:
+
+* **`PsycheTag.duration`** — `enduring` or `temporary`. *Protective of sources* endures across cases; *shaken after the
+  ambush* passes. A word, not a timer: nothing expires a tag by itself and nothing rolls for it.
+* **`AstralTag.domain`** — `perceive`, `attempt` or `change`, the three the author named. A fourth kind of claim belongs
+  in a new family; the field is closed so it cannot be widened by accident.
+* **`register_family(name, meaning)`** — the list is open in practice, not only in prose: a sixth family can be added by
+  name, and it must come with a one-line meaning.
+
+`src/world/narrative_tags.py` keeps the richer per-character record (leverage, behaviour under pressure, taboo) and
+projects it onto the portable tag with `to_family_tag()`, so a scene carries the short form while the store keeps the
+detail. Tests: `tests/test_tag_families_1283.py`.
