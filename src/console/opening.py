@@ -135,6 +135,24 @@ class Opening:
                              if carried.usable),
         }
 
+    def view(self) -> dict[str, Any]:
+        """Player-known, JSON-safe presentation shared by terminal, MUD and a future GUI.
+
+        Read only the current actor's known location and the available verbs. In
+        particular, do not send the whole WorldGraphs object: that leaks unseen
+        locations and unreached story nodes to clients.
+        """
+        place = self.session.look(ACTOR)
+        return {
+            "actor": ACTOR,
+            "sheet": self.session.sheet_for(ACTOR),
+            "scene": self.session.scene_id,
+            "location": {"id": place["place"], "label": place["label"]},
+            "actions": list(self.actions()),
+            "equipment": self.equipment(),
+            "finished": not self.actions(),
+        }
+
     # -- playing -----------------------------------------------------------------------------
     def act(self, action: str) -> str:
         """One first-day action. The narrative flag and the equipment state advance together."""
