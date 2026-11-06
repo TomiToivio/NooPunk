@@ -1,5 +1,7 @@
 # Astral Body — tabletop procedure (#1261)
 
+> **Revision status.** The progression below describes the earlier runtime. For current technique ranks and plane access, use the [evening design revision](../rules/ASTRAL_SUPERSKILL_1261.md).
+
 > **Status: author-readable procedure for approval.** The structural part is implemented
 > (`src/rules/astral_body.py`, 30 tests). The parts that need a ruling are marked **AWAITING APPROVAL**
 > and are not implemented, so nothing here can quietly become a house rule.
