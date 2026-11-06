@@ -16,6 +16,10 @@
       "forbidden": [
         "treating the mesh as a second map",
         "inventing a PAN statistic"
+      ],
+      "implemented_by": [
+        "src.world.graphs.CyberGraph",
+        "src.rules.cwn_hacking.WIRELESS_PENALTY"
       ]
     },
     {
@@ -28,6 +32,9 @@
       "forbidden": [
         "a blanket stealth bonus from preparation",
         "a second hacking roll for subtlety"
+      ],
+      "implemented_by": [
+        "src.rules.cwn_hacking.hacking_check"
       ]
     },
     {
@@ -40,19 +47,26 @@
       "forbidden": [
         "treating Access as a permission level",
         "permanent admin from one success"
+      ],
+      "implemented_by": [
+        "src.rules.cwn_hacking.SECURITY_LEVELS"
       ]
     },
     {
       "id": "alert_state",
       "ep_element": "intruder status, passive and active alerts, system defender",
       "borrow_when": "who noticed will matter later",
-      "cwn_conversion": "Write one fact - for example 'the operator flagged the export; the intruder's identity is unknown'. Escalate with CWN's watchdog and Alert the Network action, whose own required actions still apply.",
+      "cwn_conversion": "Write one fact - for example 'the operator flagged the export; the intruder's identity is unknown'. Escalate with the network alert: two failed checks make one Alert the Network action and two actions alert the network (AlertClock). CWN's demons and watchdogs (p. 102) would defend a node on their own, but this repository does not implement them yet - until it does, the defender is the operator.",
       "cwn_reference": "CWN program construction and effects, pp. 96-99",
       "consequence": "an audit clue, not an automatic mechanical alert",
       "forbidden": [
         "a separate alert track",
         "an alert that fires without the CWN action"
-      ]
+      ],
+      "implemented_by": [
+        "src.rules.cwn_hacking.AlertClock"
+      ],
+      "missing_note": "demons and watchdogs are unimplemented; see docs/rules/CWN_FE_PARITY_MATRIX.md"
     },
     {
       "id": "subversion",
@@ -63,6 +77,9 @@
       "consequence": "the characters must know who can observe the result",
       "forbidden": [
         "a generic 'control the device' effect"
+      ],
+      "implemented_by": [
+        "src.rules.cwn_program_catalogue.run_program"
       ]
     },
     {
@@ -75,6 +92,9 @@
       "forbidden": [
         "a single invisible log",
         "cleanup that erases every copy"
+      ],
+      "implemented_by": [
+        "src.rules.cwn_program_catalogue"
       ]
     },
     {
@@ -87,7 +107,9 @@
       "forbidden": [
         "permanent administrator access from one success",
         "an unwritten backdoor"
-      ]
+      ],
+      "implemented_by": [],
+      "missing_note": "no CWN effect exists for this; it stays an authored lead, not a capability"
     },
     {
       "id": "mindware",
@@ -99,6 +121,9 @@
       "forbidden": [
         "EP's mesh wound track",
         "PSI effects granted by a hack"
+      ],
+      "implemented_by": [
+        "src.rules.cwn_program_catalogue"
       ]
     }
   ],
@@ -149,5 +174,6 @@
     "a second hacking roll",
     "an alert track",
     "a compulsory PSI subsystem"
-  ]
+  ],
+  "schema_note": "Every row carries implemented_by: dotted module.attribute paths that must resolve, or an empty list plus missing_note. A reference that names a mechanic the code does not have is a table argument waiting to happen."
 }

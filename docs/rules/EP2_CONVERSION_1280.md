@@ -46,7 +46,7 @@ permitted operations, and **CWN Access** is a spendable hacking resource.
 | PAN, mesh ID, isolated network | the characters need to reach a *device* | Anchor the device to the Physical Graph. Wireless Jack In costs a Move and needs clear sight within the published range; the avatar stays on that node. A wired route or a physical approach reaches the archive. |
 | Brute force vs subtle intrusion | a witness is leaving, a shift is ending | Two approaches: act now with the loaded program, or spend fictional time securing an account, port or device model. The actual hack still uses the CWN action and cost. Preparation changes the *street*, not the math. |
 | User / security / admin privileges | a login permits one thing and restricts another | Say what this account may do here. A permitted export uses the interface; a protected operation needs the published procedure. One success grants one stated effect. |
-| Intruder status, alerts, system defender | who noticed will matter later | Write one fact: "the operator flagged the export; the intruder's identity is unknown." Escalate with CWN's watchdog and Alert the Network action — its own required actions still apply. |
+| Intruder status, alerts, system defender | who noticed will matter later | Write one fact: "the operator flagged the export; the intruder's identity is unknown." Escalate with the network alert: two failed checks make one Alert the Network action, two actions alert the network (`AlertClock`). CWN's demons and watchdogs (p. 102) would defend a node by themselves, but **this repository does not implement them yet** — until it does, the defender is the operator. |
 | Subvert sensors or commands | the outcome is to change what someone sees or does | Pick the exact published effect: Blind + Camera suppresses input; a fabricated feed needs a deception effect; a controlled device uses Issue Command. Say who can observe the result. |
 | Logs, tracking, cleanup | tonight's hack becomes tomorrow's evidence | Name the copy and its custodian — terminal log, gateway receipt, human testimony. Copy File or an applicable file program needs a reachable node. Alter one log and the others remain. |
 | Backdoor and later patch | the team expects to return | An authored stolen credential or planted maintenance account is a lead with a node, a scope and a revocation condition. If nothing published permits creating it, defer it. |
@@ -54,6 +54,27 @@ permitted operations, and **CWN Access** is a spendable hacking resource.
 
 The machine-readable version, with the trap attached to each row, is
 [`data/rules/ep2_cwn_conversions_1280.json`](../../data/rules/ep2_cwn_conversions_1280.json).
+
+## Where each row lives
+
+| Row | Implemented by |
+| --- | --- |
+| network topology | `src.world.graphs.CyberGraph`, `src.rules.cwn_hacking.WIRELESS_PENALTY` |
+| brute force vs subtle | `src.rules.cwn_hacking.hacking_check` |
+| privileges | `src.rules.cwn_hacking.SECURITY_LEVELS` |
+| alert state | `src.rules.cwn_hacking.AlertClock` — **demons/watchdogs unimplemented** (`CWN_FE_PARITY_MATRIX.md`) |
+| subversion | `src.rules.cwn_program_catalogue.run_program` |
+| logs | `src.rules.cwn_program_catalogue` (`Erase`, `Append`, `Replace`, `Datafile`) |
+| backdoor | **nothing** — an authored lead, not a capability |
+| mindware | `src.rules.cwn_program_catalogue` (`Sabotage`, `Glitch`, `Hijack`, `Frisk`) |
+
+`data/rules/ep2_cwn_conversions_1280.json` carries the same mapping as `implemented_by`, and
+`tests/test_ep2_conversions_1280.py` resolves every path: a row may name a mechanic **or** admit it has
+none, and nothing in between.
+
+**The arithmetic the page now states**, because it is what a table actually argues about:
+`Blind + Camera` costs **2500** (Verb 2000 + Subject 500), requires **Access 1**, has skill modifier **0**,
+does not self-terminate, and pays the wireless **−2**.
 
 ## Two worked street cases
 
