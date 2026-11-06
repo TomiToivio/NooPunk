@@ -21,7 +21,7 @@ try:
         StoryNode,
         WorldGraphs,
     )
-    from src.world.items import first_day_kit
+    from src.world.items import FIRST_DAY_REQUIRED, Kit, first_day_kit
 except ModuleNotFoundError:  # installed with src/ on PYTHONPATH
     from world.graphs import (
         CyberGraph,
@@ -35,7 +35,7 @@ except ModuleNotFoundError:  # installed with src/ on PYTHONPATH
         StoryNode,
         WorldGraphs,
     )
-    from world.items import first_day_kit
+    from world.items import FIRST_DAY_REQUIRED, Kit, first_day_kit
 
     from .world_session import WorldSession
 
@@ -47,7 +47,9 @@ DISPATCH_LINE = "Field Agent Tony German reporting for duty."
 #: The issued kit is defined once, in `world.items`, so the intro cannot drift from the inventory.
 KIT = tuple(item.id for item in first_day_kit() if not item.worn)
 # Abstract user-interface connections only, not operational police protocols.
-LINKED = tuple(item for item in KIT if item not in ("police_radio", "phone"))
+#: The comms pair is switched on by inspecting it; every other device is *connected* at the interface.
+COMMS = ("police_radio", "phone")
+LINKED = tuple(item for item in KIT if item not in COMMS)
 
 HOME = "loc.sornainen_home"
 ROUTE = "loc.helsinki_route"
@@ -58,7 +60,17 @@ class FirstDayError(ValueError):
     """Invalid first-day operation, never an alternate dice rule."""
 
 
-def create_first_day(session: WorldSession | None = None) -> WorldSession:
+def mark_kit_fault(session: WorldSession, item_id: str) -> str:
+    """Report an issued item as faulty before play, so the diagnostic path is exercisable (#1217)."""
+    if item_id not in KIT:
+        raise FirstDayError(f"{item_id} is not part of the issued kit")
+    session.flags.add("kit.fault:" + item_id)
+    return item_id
+
+
+def create_first_day(
+    session: WorldSession | None = None, faults: tuple[str, ...] = ()
+) -> WorldSession:
     """Attach Tony's authored starting facts to the canonical WorldSession.
 
     The three location nodes are a deliberately coarse route, not a second
@@ -107,6 +119,8 @@ def create_first_day(session: WorldSession | None = None) -> WorldSession:
             raise FirstDayError("Tony must use his original canonical character sheet")
         if session.where(ACTOR) not in (HOME, ROUTE, OFFICE):
             raise FirstDayError("Tony is not on his first-day route")
+    for item_id in faults:
+        mark_kit_fault(session, item_id)
     return session
 
 
@@ -117,6 +131,38 @@ def _done(session: WorldSession, action: str) -> bool:
 def _require_first_day(session: WorldSession) -> None:
     if session.sheet_for(ACTOR) != SHEET:
         raise FirstDayError("Tony German is not bound to his canonical sheet")
+
+
+def kit_of(session: WorldSession) -> Kit:
+    """Rebuild the carried kit from the session's own flags: one source of state, no shadow copy."""
+    book = Kit(ACTOR)
+    for item in first_day_kit():
+        book.issue(item)
+        if _fault(session, item.id):
+            book.mark_faulty(item.id, _fault(session, item.id))
+        elif _done(session, "connect:" + item.id) or (
+            item.id in COMMS and _done(session, "inspect:" + item.id)
+        ):
+            book.activate(item.id)
+    return book
+
+
+def _fault(session: WorldSession, item_id: str) -> str:
+    for flag in session.flags:
+        if flag == "kit.fault:" + item_id:
+            return "reported faulty at the kit interface"
+    return ""
+
+
+def _linked_ready(session: WorldSession) -> bool:
+    """Every linked item is either connected or reported faulty, and the opening can still happen."""
+    book = kit_of(session)
+    for item_id in LINKED:
+        if _fault(session, item_id):
+            continue
+        if not book.get(item_id).active:
+            return False
+    return not book.missing(FIRST_DAY_REQUIRED)
 
 
 def available_first_day_actions(session: WorldSession) -> tuple[str, ...]:
@@ -134,11 +180,15 @@ def available_first_day_actions(session: WorldSession) -> tuple[str, ...]:
         actions.extend(
             "connect:" + item
             for item in LINKED
-            if _done(session, "inspect:" + item) and not _done(session, "connect:" + item)
+            if _done(session, "inspect:" + item)
+            and not _done(session, "connect:" + item)
+            and not _fault(session, item)
         )
-    ready = _done(session, "uniform") and all(
-        _done(session, "inspect:" + item) for item in KIT
-    ) and all(_done(session, "connect:" + item) for item in LINKED)
+    ready = (
+        _done(session, "uniform")
+        and all(_done(session, "inspect:" + item) for item in KIT)
+        and _linked_ready(session)
+    )
     if ready and not _done(session, "dispatch"):
         actions.append("dispatch")
     if _done(session, "dispatch") and not _done(session, "ride"):
@@ -152,6 +202,13 @@ def available_first_day_actions(session: WorldSession) -> tuple[str, ...]:
 
 def first_day_action(session: WorldSession, action: str) -> str:
     """Advance existing story/physical graphs. No rolls or alternate session."""
+    if action.startswith("connect:"):
+        item_id = action.split(":", 1)[1]
+        if _fault(session, item_id):
+            raise FirstDayError(
+                f"{item_id} cannot be connected: {_fault(session, item_id)}; "
+                "its function is covered by other issued kit"
+            )
     if action not in available_first_day_actions(session):
         raise FirstDayError(f"unavailable first-day action: {action}")
     if action == "wake":
