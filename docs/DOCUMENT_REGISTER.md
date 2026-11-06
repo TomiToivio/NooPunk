@@ -75,6 +75,8 @@ third. The protocol that goes with this register is [design/AGENT_COORDINATION.m
 
 | **Social-science simulator — kernel (#1286 WP1)** | [simulator/SIMULATOR_KERNEL_1286.md](simulator/SIMULATOR_KERNEL_1286.md) — `src/social_sim/`: step clock, seeded rules, actors and organizations, social/communication ties, events, snapshots and replay | the RPG's `src/simulation/` and `src/world/` are **not** reused, by the issue's scope rule; the duplication is recorded in the boundary page | standalone research code: no player, no CWN, no engine, no LLM call |
 
+| **Social-science simulator — AI26 adapter (#1286 WP2)** | [simulator/AI26_ADAPTER_1286.md](simulator/AI26_ADAPTER_1286.md) — `src/social_sim/ai26.py`: the read-only door from a canonical 1.2.0 record into the simulator, the structural validation and refusal rules, the `observed`-evidence / `inferred`-analysis split, and the carried-not-enforced review policy | the canonical contract itself is LaclauGPT-Data-Analysis'; this adapter reads it and never writes to it, and the boundary page remains the authority on the mapping | One bundle, no second analysis engine: nothing here infers a relation from co-occurrence, instantiates an actor or calls a model |
+
 ## What is generated, and therefore never hand-edited
 
 | file | generator | freshness check |
