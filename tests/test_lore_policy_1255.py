@@ -49,11 +49,12 @@ class TestAstralIsStillNotPlayable(unittest.TestCase):
         self.assertEqual(families, {"physical", "cyber", "social", "story"})
         self.assertFalse(hasattr(WorldGraphs, "astral"))
 
-    def test_an_astral_scene_type_is_refused_for_the_stated_reason(self) -> None:
-        self.assertEqual(POSTPONED_SCENE_TYPES, ("Astral",))
-        with self.assertRaises(PostponedScene) as caught:
-            SceneFrame("scene.projection", "Projection", "Astral")
-        self.assertIn("postponed by author decision", str(caught.exception))
+    def test_astral_scenes_are_playable_but_not_navigable(self) -> None:
+        """#1255 forbids an Astral *graph*; #1261 allows a non-navigable astral *scene*."""
+        self.assertEqual(POSTPONED_SCENE_TYPES, ())
+        frame = SceneFrame("scene.projection", "Projection", "Astral")
+        self.assertEqual(frame.scene_type, "Astral")
+        self.assertFalse(hasattr(WorldGraphs, "astral"))
 
     def test_the_gateway_page_admits_it_is_unbuilt_and_names_this_test(self) -> None:
         text = page("campaign", "GATEWAY_1255.md")

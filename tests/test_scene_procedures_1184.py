@@ -31,6 +31,7 @@ from src.world.narrative_tags import (  # noqa: E402
 )
 from src.world.scenes import (  # noqa: E402
     ACTION_PHASES,
+    POSTPONED_SCENE_TYPES,
     ActionScene,
     PostponedScene,
     SceneError,
@@ -57,13 +58,15 @@ def physical() -> PhysicalGraph:
 
 
 class SceneFrameTests(unittest.TestCase):
-    def test_the_five_live_types_are_accepted(self):
-        for kind in ("Social", "Investigation", "Exploration", "Action", "Cyber"):
+    def test_the_live_types_are_accepted(self):
+        for kind in ("Social", "Investigation", "Exploration", "Action", "Cyber", "Astral"):
             SceneFrame(id=f"scene.{kind}", title=kind, scene_type=kind)
 
-    def test_astral_is_postponed_loudly(self):
-        with self.assertRaises(PostponedScene):
-            SceneFrame(id="scene.astral", title="Astral", scene_type="Astral")
+    def test_astral_is_a_scene_without_being_a_map(self):
+        """#1261 accepts a non-navigable astral MVP; what stays postponed is the Astral *graph*."""
+        frame = SceneFrame(id="scene.astral", title="Astral", scene_type="Astral")
+        self.assertEqual(frame.scene_type, "Astral")
+        self.assertEqual(POSTPONED_SCENE_TYPES, ())
 
     def test_combat_is_not_a_scene_type(self):
         with self.assertRaises(SceneError):

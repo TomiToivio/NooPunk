@@ -31,6 +31,7 @@ from typing import Any
 # ``sys.path.insert`` style the older tests use). Supporting both here costs four lines and saves
 # every caller from knowing which one it is.
 try:  # pragma: no cover - the second branch is exercised by the other import style
+    from src.rules.astral_body import Projection, TargetKind
     from src.rules.cwn_hacking import AlertClock, HackError, hacking_check
     from src.rules.investigation import Case, InvestigationError, Investigator, discover
     from src.rules.social import UNMOVED, SocialError, resolve_social
@@ -42,6 +43,7 @@ try:  # pragma: no cover - the second branch is exercised by the other import st
         TagBook,
     )
 except ModuleNotFoundError:  # pragma: no cover
+    from rules.astral_body import Projection, TargetKind  # type: ignore[no-redef]
     from rules.cwn_hacking import AlertClock, HackError, hacking_check
     from rules.investigation import Case, InvestigationError, Investigator, discover
     from rules.social import UNMOVED, SocialError, resolve_social
@@ -54,10 +56,12 @@ except ModuleNotFoundError:  # pragma: no cover
     )
 
 #: What a scene may be. Astral is deliberately absent.
-SCENE_TYPES: tuple[str, ...] = ("Social", "Investigation", "Exploration", "Action", "Cyber")
+SCENE_TYPES: tuple[str, ...] = ("Social", "Investigation", "Exploration", "Action", "Cyber",
+                               "Astral")
 
-#: Named, not implemented. Kept visible so a caller can explain the omission to a player.
-POSTPONED_SCENE_TYPES: tuple[str, ...] = ("Astral",)
+#: Nothing is postponed at the scene level any more. An Astral scene runs; what does not exist is an
+#: **Astral graph**, so such a scene is non-navigable (#1261 Phase 2: non-navigable MVP acceptance).
+POSTPONED_SCENE_TYPES: tuple[str, ...] = ()
 
 
 class SceneError(ValueError):
@@ -93,7 +97,7 @@ class SceneFrame:
     def __post_init__(self) -> None:
         _text(self.id, "scene id")
         _text(self.title, "scene title")
-        if self.scene_type in POSTPONED_SCENE_TYPES:
+        if self.scene_type in POSTPONED_SCENE_TYPES:  # pragma: no cover - currently empty, kept for clarity
             raise PostponedScene(
                 f"{self.scene_type} scenes are postponed by author decision; "
                 "they are not an empty implementation"
@@ -540,3 +544,63 @@ class ActionScene:
             raise SceneError("the subject is not in reach; arrest follows containment or pursuit")
         self.phase = "aftermath"
         return f"arrested on the basis of {basis}"
+
+
+# --------------------------------------------------------------------------- #
+# Astral (non-navigable)
+# --------------------------------------------------------------------------- #
+
+def run_astral_scene(
+    frame: SceneFrame,
+    projection: "Projection",
+    *,
+    observes_physical: bool = False,
+    facts: Iterable[str] = (),
+    dream_of: str = "",
+) -> SceneResult:
+    """An authored projection scene, played without an Astral graph.
+
+    #1261 accepts the MVP without navigation: an OOBE, an NDE or a psychotronic session happens
+    **here**, wherever the body is, and the scene is a sequence of perceptions and choices rather than
+    a map. Asking this procedure for movement raises, because movement is the thing the deferred graph
+    would have provided and inventing it here would be a second navigation model.
+
+    Two author rules are enforced:
+
+    * in Time/Space the projector does **not** perceive physical entities, so a caller that asks for a
+      physical observation there gets a refusal rather than an empty description;
+    * a dream being constructed around a sleeper may be witnessed, but the scene never reveals what
+      generated it — ``dream_of`` records the ambiguity instead of resolving it.
+    """
+    if frame.scene_type != "Astral":
+        raise SceneError("this procedure runs Astral scenes")
+    if not projection.active:
+        raise SceneError("the projector has returned to the body; there is no astral scene to play")
+
+    if observes_physical:
+        seen = projection.sees(TargetKind.PHYSICAL)
+        if not seen.allowed:
+            return SceneResult(
+                scene_id=frame.id,
+                scene_type=frame.scene_type,
+                passed=False,
+                facts=tuple(facts),
+                notes=(f"physical observation is unavailable: {seen.reason}",),
+            )
+        facts = tuple(facts) + ("physical detail is perceptible but fallible here",)
+
+    notes: list[str] = [
+        "non-navigable astral scene: no Astral graph, no movement",
+        f"mode {projection.mode.value}; entry {projection.trigger.value}",
+    ]
+    if dream_of:
+        notes.append(
+            f"a dream is being constructed around {dream_of}; its source stays unstated"
+        )
+    return SceneResult(
+        scene_id=frame.id,
+        scene_type=frame.scene_type,
+        passed=True,
+        facts=tuple(facts),
+        notes=tuple(notes),
+    )
