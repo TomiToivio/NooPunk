@@ -268,3 +268,8 @@ The system behind that perimeter is **Project Plato / European Information Secur
 Europol: not an ASI, heavily regulated, human-operated, and genuinely necessary. Its powers, the authorisation ladder
 and the naming rules (including why *Panopticon* is not its name) are in
 [EU networks and Plato](PLATO_EISS_EURONET_1200.md).
+
+For the WW3-derived equipment culture, New European Idealism, Europol/Eurodef kit, Salla Sotavaara's field-control
+workflow and the RFOAS, see [EU technology, New European Idealism and Europol field operations](../lore/eu_technology_bureaucracy.md).
+That document keeps the coup details and the graphic claims about Putin's death in labelled in-universe testimony; the
+exact WW3 dates remain open above.
