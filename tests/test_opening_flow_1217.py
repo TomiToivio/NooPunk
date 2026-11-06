@@ -7,14 +7,18 @@ first-day session, with a real Kit, and a save that resumes mid-morning.
 
 from __future__ import annotations
 
+import json
 import sys
+import tempfile
 import unittest
+from argparse import Namespace
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from src.console.first_day import ACTOR, HOME, OFFICE  # noqa: E402
+from src.console.play import run_opening, run_opening_command  # noqa: E402
 from src.console.opening import (  # noqa: E402
     OPENING_FORMAT,
     Opening,
@@ -176,6 +180,45 @@ class FaultTests(unittest.TestCase):
         self.assertEqual(opening.session.where(ACTOR), OFFICE)
         self.assertIn("dispatch.call", opening.kit.coverage())
 
+
+
+class InterfaceTests(unittest.TestCase):
+    def test_view_reveals_only_current_place_not_hidden_story(self):
+        opening = build()
+        view = opening.view()
+        self.assertEqual(view["actor"], ACTOR)
+        self.assertEqual(view["location"]["id"], HOME)
+        self.assertEqual(view["actions"], ["wake"])
+        self.assertNotIn("graphs", view)
+        self.assertNotIn("loc.ratakatu_12", json.dumps(view))
+        self.assertEqual(json.loads(json.dumps(view)), view)
+
+    def test_shared_command_rejects_invalid_action_without_mutation(self):
+        opening = build()
+        before = opening.save()
+        keep_going, result = run_opening_command(opening, "ride")
+        self.assertTrue(keep_going)
+        self.assertIn("refused", result)
+        self.assertEqual(before, opening.save())
+
+    def test_console_resume_uses_same_opening_save(self):
+        opening = build()
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            saved = root / "before.json"
+            scripted = root / "commands.txt"
+            after = root / "after.json"
+            saved.write_text(json.dumps(opening.save()), encoding="utf-8")
+            scripted.write_text("wake\\nuniform\\nstatus\\n", encoding="utf-8")
+            args = Namespace(load=str(saved), script=str(scripted), save=str(after))
+            self.assertEqual(run_opening(args), 0)
+            resumed = Opening.load(json.loads(after.read_text(encoding="utf-8")))
+            self.assertIn("first_day:uniform", resumed.session.flags)
+            self.assertEqual(resumed.session.where(ACTOR), HOME)
+            self.assertEqual(resumed.kit.actor, ACTOR)
+
+    def test_console_refuses_to_invent_default_catalogues(self):
+        self.assertEqual(run_opening(Namespace(load="", script="", save="")), 2)
 
 if __name__ == "__main__":
     unittest.main()
