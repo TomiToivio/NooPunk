@@ -157,8 +157,13 @@ class ClueTag:
 
 
 @dataclass(frozen=True, slots=True)
-class PersonalityTag:
-    """What an NPC is like, what moves them, and what they will not do."""
+class PsycheTag:
+    """What a character is like, what moves them, and what they will not do.
+
+    This is the **campaign store's** richer record (#1283 names the family *Psyche*; it was *Personality* before).
+    :meth:`to_family_tag` projects it onto the portable record in :mod:`src.rules.scene_tags`, so a scene can carry the
+    short form while the store keeps the leverage, the behaviour under pressure and the taboo.
+    """
 
     id: str
     npc: str
@@ -174,6 +179,16 @@ class PersonalityTag:
         _text(self.lever, "lever")
         _text(self.under_pressure, "under_pressure")
 
+    def to_family_tag(self):
+        """The portable Psyche tag for scene use: owner, the trait, and its evidence."""
+        from src.rules.scene_tags import PsycheTag as PortablePsycheTag
+
+        return PortablePsycheTag(owner_id=self.npc, trait=self.trait, evidence=self.id)
+
+
+#: Deprecated alias, kept for callers written before #1283. New code says ``PsycheTag``.
+PersonalityTag = PsycheTag
+
 
 @dataclass
 class TagBook:
@@ -186,7 +201,7 @@ class TagBook:
     social: dict[str, SocialTag] = field(default_factory=dict)
     goals: dict[str, GoalTag] = field(default_factory=dict)
     clues: dict[str, ClueTag] = field(default_factory=dict)
-    personality: dict[str, PersonalityTag] = field(default_factory=dict)
+    psyche: dict[str, PsycheTag] = field(default_factory=dict)
 
     # -- adding ------------------------------------------------------------------------------
     def add_social(self, tag: SocialTag) -> SocialTag:
@@ -210,10 +225,15 @@ class TagBook:
         self.clues[tag.id] = tag
         return tag
 
-    def add_personality(self, tag: PersonalityTag) -> PersonalityTag:
-        if tag.id in self.personality:
-            raise NarrativeTagError(f"duplicate personality tag id {tag.id!r}")
-        self.personality[tag.id] = tag
+    @property
+    def personality(self) -> dict[str, PsycheTag]:
+        """Deprecated view of :attr:`psyche`, so older callers keep working after the #1283 rename."""
+        return self.psyche
+
+    def add_personality(self, tag: PsycheTag) -> PsycheTag:
+        if tag.id in self.psyche:
+            raise NarrativeTagError(f"duplicate psyche tag id {tag.id!r}")
+        self.psyche[tag.id] = tag
         return tag
 
     # -- reading -----------------------------------------------------------------------------
@@ -252,7 +272,7 @@ class TagBook:
         tags = self.clues_for(holder)
         return max((t.rung for t in tags), default=-1)
 
-    def personality_of(self, npc: str) -> PersonalityTag | None:
+    def personality_of(self, npc: str) -> PsycheTag | None:
         for tag in self.personality.values():
             if tag.npc == npc:
                 return tag

@@ -1,3 +1,7 @@
+
+> **Superseded naming:** #1283 renamed the family *Personality* to **Psyche** and added **Astral** as the fifth
+> family. The decisions and the code live in [rules/TAG_FAMILIES_1283.md](../rules/TAG_FAMILIES_1283.md); this
+> draft keeps its reasoning and its `Pacifist-2` discussion, and `PersonalityTag` remains a deprecated alias.
 # NoöPunk Character Tags: Personality, Goals and Reputation
 
 > **DRAFT — TOMI REVIEW REQUIRED — NOT AUTHOR APPROVED.** Issue [#1137](https://github.com/TomiToivio/NooPunk/issues/1137); researched 2026-11-04. Planning only; do not implement, modify the CWN core, or copy a published ruleset. **Evidence labels:** [E] empirical/approved; [X] experimental; [H] contested theory or parapsychology; [F] fictional 2045 premise; [P] draft mechanics. Tomi edits this proposal first, then separately authorizes matching tabletop and Python implementation.
