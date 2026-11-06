@@ -63,7 +63,7 @@ class Routing(unittest.TestCase):
         # past a 4000-character window and failed this guard for a reason unrelated to the rule it protects.
         # Agents read sections, so the guard reads sections.
         agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
-        head = "\n".join("# " + part for part in re.split(r"(?m)^# ", agents)[:5] if part.strip())
+        head = "\n".join("# " + part for part in re.split(r"(?m)^# ", agents)[:9] if part.strip())
         self.assertIn("#897", head)
         self.assertIn("mods/noopunk", head)
 

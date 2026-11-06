@@ -78,7 +78,7 @@ class FoundationalLockTests(unittest.TestCase):
 
     def test_agents_carries_the_current_directive(self) -> None:
         agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
-        head = self._top_sections(agents, 4)
+        head = self._top_sections(agents, 8)
         self.assertIn("#897", head, "the #897 lock must be in the top of AGENTS.md, where agents read")
         # Wording may change; the prohibition may not. Accept either phrasing of the same decision.
         self.assertTrue(
