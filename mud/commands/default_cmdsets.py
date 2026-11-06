@@ -285,6 +285,49 @@ class CmdDossier(Command):
             self.caller.msg(render_actor(discourse, text, scope=scope))
 
 
+class CmdFirstDay(Command):
+    """Tony German's first day, using the canonical WorldSession (#1217).
+
+    Usage:
+      firstday                  what can I do now
+      firstday look             where am I, and which scene is active
+      firstday kit              issued kit state
+      firstday wake
+      firstday uniform
+      firstday inspect <item>
+      firstday connect <item>
+      firstday repair <item>
+      firstday dispatch|ride|arrive|report
+
+    This is a *renderer* over `src.console.first_day`; it never rolls and never
+    keeps a second map or sheet. The canonical snapshot is stored on the caller.
+    """
+
+    key = "firstday"
+    aliases = ["first-day"]
+    locks = "cmd:all()"
+    help_category = "NoöPunk"
+
+    def func(self) -> None:
+        from nopunk_mud.first_day_adapter import FirstDayAdapter, FirstDayAdapterError
+
+        stored = self.caller.db.first_day_state
+        try:
+            adapter = FirstDayAdapter.from_snapshot(dict(stored)) if stored else FirstDayAdapter()
+            text = self.args.strip() or "status"
+            if text.lower() == "reset":
+                adapter = FirstDayAdapter()
+                self.caller.msg("First day reset; no other character state was touched.")
+                self.caller.db.first_day_state = adapter.snapshot()
+                return
+            self.caller.msg(adapter.act(text))
+            self.caller.db.first_day_state = adapter.snapshot()
+        except (FirstDayAdapterError, ValueError, KeyError, TypeError) as exc:
+            self.caller.msg(
+                f"First day: {exc}. The saved morning was not overwritten; use 'firstday status'."
+            )
+
+
 class NoopunkCharacterCmdSet(CharacterCmdSet):
     key = "NoopunkCharacterCmdSet"
     def at_cmdset_creation(self):
@@ -306,3 +349,4 @@ class NoopunkCharacterCmdSet(CharacterCmdSet):
         self.add(CmdGoals())
         self.add(CmdDossier())
         self.add(CmdTalk())
+        self.add(CmdFirstDay())
