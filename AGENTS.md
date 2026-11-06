@@ -1,3 +1,17 @@
+# ACTIVE DEVELOPMENT DIRECTIVE (2026-11-07): LACLAUGPT SOCIAL SCIENCE SIMULATOR ONLY
+
+**Highest-priority scope gate; overrides all older agent, issue, RPG-design and implementation instructions below until Tomi explicitly changes direction.**
+
+**Single active tracker:** [#1286](https://github.com/TomiToivio/NooPunk/issues/1286). Work **only** on a standalone social-science simulator grounded in the [LaclauGPT AI26 paper](https://github.com/TomiToivio/LaclauGPT/blob/main/paper/PHASE_1_PAPER.md), [THEORY.md](https://github.com/TomiToivio/LaclauGPT/blob/main/THEORY.md) and [LaclauGPT-Data-Analysis AI26](https://github.com/TomiToivio/LaclauGPT-Data-Analysis). Follow the issue's staged, testable simulator scope and empirical/synthetic separation.
+
+**HARD FREEZE:** Do **not** change or develop the NoöPunk RPG or its rules, CWN/SWN/AWN/WWN mechanics, RPG tags, rulebooks, psionics, character generation, gameplay, campaign, GM/NPC features, story scenes, or game adapters. Do not change game canon. Do not migrate, refactor or `fix` these files as incidental work. Preserve the existing CWN-based RPG intact for possible *future* optional integration above the simulator; **do not implement that integration now**. Any proposed code diff touching RPG paths is out of scope and must be rejected unless Tomi has explicitly authorized reactivation.
+
+**Issue queue reset:** Older open NoöPunk issues have been closed as *not planned / deferred*, **not completed or deleted**. Their historical requests are not authorization to restart RPG work. Agents must not reopen them, create replacement RPG issues, or chase old checklists. For simulator work, start with #1286 and create only narrowly scoped implementation PRs.
+
+**Research discipline:** AI26 paper and THEORY.md are authoritative for discourse analysis but **do not themselves establish causal simulation laws**. Behavioral mechanisms, synthetic agents and interventions must be transparent research assumptions, reproducible, testable and clearly distinct from observed empirical findings. Never modify or silently replace the locked LaclauGPT paper/methodology. LaclauGPT's operational demo remains the immediate priority outside this repository.
+
+---
+
 # MANDATORY ANTI-DUPLICATION GATE (2026-11-03)
 **Latest reconciliation (2026-11-03):** PR #1093 consolidated duplicate consoles and introduced `tests/test_no_duplicate_implementations.py`. PR #1094 merged the schema-3 mod activation contract; PR #1096 attempted the same contract and was **closed, not merged**. PR #1095 merged the first 13 WWN spell-effect records, a provider-neutral agent adapter and eight CWN fidelity checks, while explicitly dropping parallel AWN Stress/mod-contract edits that other PRs had already landed. **Before starting from #1081/#1083/#1084/#1085, reconcile their old unchecked bullets with these merged increments.** A historical unchecked box is not permission to implement an existing feature again. Read `docs/DUPLICATION_AUDIT.md` and search closed-unmerged PRs as well as merged PRs. When two branches implement the same contract, retain only one tested version and mark the other superseded; never merge both for completeness.
 
