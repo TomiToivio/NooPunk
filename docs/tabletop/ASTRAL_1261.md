@@ -241,3 +241,7 @@ or an unclaimed limbo, and refuses another agent's, a protected mind, a physical
 - [`PSI_CARRYOVER_1196.md`](../rules/PSI_CARRYOVER_1196.md) — why the Astral graph is still deferred
 - [`../campaign/DREAMS.md`](../campaign/DREAMS.md) — dream source ambiguity
 - `docs/rules/ASTRAL_PSI_1164.md` — the earlier design record, superseded where it conflicts
+
+## Additional fail-closed action gating (PR #1266)
+
+`src/rules/astral_progression_1261.py` is an additive **scene-action authorization** adapter, not a replacement for `AstralSkill` or `astral_body.py`. Rank 0 permits observation, walking, astral contact and return. Rank 1 additionally permits flight in Space/Time and entry to a Lower Astral dream world **only through an authored gateway**. Inactive projections, invalid rank values and unknown actions fail closed. Rank 2–4 actions are still design-only, regardless of capabilities described in the rank model. This gate alone never overrides consent, physical-targeting rules, mode transitions, SWN Effort or entry eligibility. Voluntary entry, Effort/duration, the damage bridge and the SWN whitelist still await author approval.
