@@ -209,7 +209,7 @@ class InterfaceTests(unittest.TestCase):
             scripted = root / "commands.txt"
             after = root / "after.json"
             saved.write_text(json.dumps(opening.save()), encoding="utf-8")
-            scripted.write_text("wake\\nuniform\\nstatus\\n", encoding="utf-8")
+            scripted.write_text("wake\nuniform\nstatus\n", encoding="utf-8")
             args = Namespace(load=str(saved), script=str(scripted), save=str(after))
             self.assertEqual(run_opening(args), 0)
             resumed = Opening.load(json.loads(after.read_text(encoding="utf-8")))
