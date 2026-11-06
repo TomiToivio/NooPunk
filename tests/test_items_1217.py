@@ -81,12 +81,14 @@ class TheDiagnosticPuzzle(unittest.TestCase):
         book.mark_faulty("gun", "the slide is seized")
         with self.assertRaises(ItemError):
             book.activate("gun")
-        self.assertIn("weapon", book.missing())
+        self.assertNotIn("weapon", book.coverage())
+        self.assertIn("weapon", book.missing(("weapon",)))
 
     def test_a_stowed_item_provides_nothing(self) -> None:
         book = ready(kit())
         book.stow("body_camera")
-        self.assertIn("recording", book.missing())
+        self.assertNotIn("recording", book.coverage())
+        self.assertIn("recording", book.missing(("recording",)))
 
     def test_repair_returns_the_function_without_reactivating_it(self) -> None:
         book = ready(kit())
@@ -146,7 +148,7 @@ class Wiring(unittest.TestCase):
         from src.console.first_day import KIT
 
         self.assertEqual(KIT, tuple(item.id for item in first_day_kit() if not item.worn))
-        self.assertEqual(len(FIRST_DAY_REQUIRED), 5)
+        self.assertEqual(FIRST_DAY_REQUIRED, ("uniform", "dispatch.call"))
 
     def test_roundtrip_preserves_carried_active_and_fault_state(self) -> None:
         book = ready(kit())
@@ -161,6 +163,74 @@ class Wiring(unittest.TestCase):
         with self.assertRaises(ItemError):
             Kit.from_dict(payload)
 
+
+
+class TheIntroReadsKitState(unittest.TestCase):
+    """The opening must consume the item layer, not a parallel set of flags (#1217)."""
+
+    @staticmethod
+    def to_dispatch(session) -> None:
+        from src.console.first_day import (
+            KIT,
+            LINKED,
+            available_first_day_actions,
+            first_day_action,
+        )
+
+        first_day_action(session, "wake")
+        first_day_action(session, "uniform")
+        for item_id in KIT:
+            first_day_action(session, "inspect:" + item_id)
+        for item_id in LINKED:
+            if "kit.fault:" + item_id not in session.flags:
+                first_day_action(session, "connect:" + item_id)
+        assert "dispatch" in available_first_day_actions(session)
+
+    def test_a_dead_radio_does_not_softlock_the_first_day(self) -> None:
+        from src.console.first_day import (
+            DISPATCH_LINE,
+            available_first_day_actions,
+            create_first_day,
+            first_day_action,
+        )
+
+        session = create_first_day(faults=("police_radio",))
+        self.to_dispatch(session)
+        self.assertNotIn("connect:police_radio", available_first_day_actions(session))
+        self.assertEqual(first_day_action(session, "dispatch"), DISPATCH_LINE)
+
+    def test_a_faulty_item_cannot_be_connected_and_says_why(self) -> None:
+        from src.console.first_day import (
+            KIT,
+            FirstDayError,
+            create_first_day,
+            first_day_action,
+        )
+
+        session = create_first_day(faults=("forensic_scanner",))
+        first_day_action(session, "wake")
+        for item_id in KIT:
+            first_day_action(session, "inspect:" + item_id)
+        with self.assertRaises(FirstDayError) as caught:
+            first_day_action(session, "connect:forensic_scanner")
+        self.assertIn("reported faulty", str(caught.exception))
+
+    def test_every_non_essential_item_can_be_broken_without_blocking(self) -> None:
+        from src.console.first_day import KIT, create_first_day
+
+        broken = tuple(item for item in KIT if item not in ("uniform", "phone"))
+        self.to_dispatch(create_first_day(faults=broken))
+
+    def test_a_fault_survives_a_save_and_restore(self) -> None:
+        from src.console.first_day import available_first_day_actions, create_first_day
+        from src.console.world_session import WorldSession
+
+        session = create_first_day(faults=("police_radio",))
+        self.to_dispatch(session)
+        restored = WorldSession.from_snapshot(session.to_snapshot())
+        self.assertIn("kit.fault:police_radio", restored.flags)
+        self.assertNotIn("connect:police_radio", available_first_day_actions(restored))
+        self.assertIn("dispatch", available_first_day_actions(restored))
 
 if __name__ == "__main__":
     unittest.main()

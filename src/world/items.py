@@ -47,14 +47,14 @@ FUNCTIONS: tuple[str, ...] = (
     "recording",
 )
 
-#: What the opening needs before Tony can report for duty. Deliberately function-based: *any* item that
-#: provides a function satisfies it, so losing the radio does not end the intro.
+#: What the opening needs before Tony can report for duty: get dressed, call Dispatch. Deliberately
+#: function-based and deliberately short — *any* item that provides a function satisfies it, so a dead
+#: radio, a seized sidearm or a broken scanner costs a decision, never the intro (#1217: "equipment
+#: failure must not softlock the intro"). Kit is still inspected and connected; it just is not a
+#: prerequisite for being able to report.
 FIRST_DAY_REQUIRED: tuple[str, ...] = (
     "uniform",
     "dispatch.call",
-    "records",
-    "weapon",
-    "recording",
 )
 
 
