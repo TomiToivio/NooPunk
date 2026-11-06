@@ -1,0 +1,243 @@
+{
+  "format": "noopunk.world.graphs",
+  "version": 1,
+  "_source": "docs/world/POLITICS_1252.md (#1252). Political relationship data only; no mechanics.",
+  "physical": {
+    "graph_type": "physical",
+    "nodes": [
+      {
+        "id": "loc.zone_karjala",
+        "label": "Sirian Special Protection Zone — Karjala",
+        "kind": "zone"
+      },
+      {
+        "id": "loc.zone_kainuu",
+        "label": "Sirian Special Protection Zone — Kainuu",
+        "kind": "zone"
+      },
+      {
+        "id": "loc.zone_lappi",
+        "label": "Sirian Special Protection Zone — Lapland",
+        "kind": "zone"
+      },
+      {
+        "id": "loc.eez_vantaa",
+        "label": "Extraterrestrial Special Economic Zone, north of Helsinki-Vantaa",
+        "kind": "zone"
+      },
+      {
+        "id": "loc.eez_espoo",
+        "label": "Extraterrestrial Special Economic Zone, Espoo maritime",
+        "kind": "zone"
+      },
+      {
+        "id": "loc.ratakatu_12",
+        "label": "Europol Field Office, Ratakatu 12",
+        "kind": "office"
+      },
+      {
+        "id": "loc.diplomatic_island",
+        "label": "Confederacy diplomatic island (unnamed — TBD)",
+        "kind": "zone"
+      }
+    ],
+    "edges": [],
+    "occupants": {}
+  },
+  "cyber": {
+    "graph_type": "cyber",
+    "nodes": [],
+    "edges": [],
+    "avatars": {}
+  },
+  "social": {
+    "graph_type": "social",
+    "nodes": [
+      {
+        "id": "gov.eu",
+        "label": "EU federal government",
+        "kind": "faction"
+      },
+      {
+        "id": "gov.finland",
+        "label": "Finnish state",
+        "kind": "faction"
+      },
+      {
+        "id": "gov.helsinki",
+        "label": "Greater Helsinki",
+        "kind": "faction"
+      },
+      {
+        "id": "org.sampo",
+        "label": "Projekti Sampo",
+        "kind": "faction"
+      },
+      {
+        "id": "org.church_uc",
+        "label": "Church of Universal Consciousness",
+        "kind": "faction"
+      },
+      {
+        "id": "org.europol",
+        "label": "Europol",
+        "kind": "faction"
+      },
+      {
+        "id": "corp.eldrich",
+        "label": "Eldrich Corporation",
+        "kind": "faction"
+      },
+      {
+        "id": "corp.hades",
+        "label": "Hades Corporation",
+        "kind": "faction"
+      },
+      {
+        "id": "nhi.sirians",
+        "label": "Sirians (refugees, forest communities)",
+        "kind": "faction"
+      },
+      {
+        "id": "nhi.confederacy",
+        "label": "Confederacy / Pleiadians",
+        "kind": "faction"
+      },
+      {
+        "id": "nhi.orion",
+        "label": "Orion (Greys and proxies)",
+        "kind": "faction"
+      },
+      {
+        "id": "nhi.machine",
+        "label": "Machine Civilization (Constructs)",
+        "kind": "faction"
+      },
+      {
+        "id": "nhi.noetics",
+        "label": "Cryptoterrestrial Noetics",
+        "kind": "faction"
+      },
+      {
+        "id": "nhi.biologics",
+        "label": "Cryptoterrestrial Biologics",
+        "kind": "faction"
+      }
+    ],
+    "edges": [
+      {
+        "source": "gov.eu",
+        "target": "gov.finland",
+        "score": 1,
+        "kind": "oversight"
+      },
+      {
+        "source": "gov.eu",
+        "target": "gov.helsinki",
+        "score": -2,
+        "kind": "dispute"
+      },
+      {
+        "source": "gov.finland",
+        "target": "gov.helsinki",
+        "score": -2,
+        "kind": "dispute"
+      },
+      {
+        "source": "gov.finland",
+        "target": "org.sampo",
+        "score": 4,
+        "kind": "oversight"
+      },
+      {
+        "source": "gov.finland",
+        "target": "nhi.sirians",
+        "score": 4,
+        "kind": "alliance"
+      },
+      {
+        "source": "gov.finland",
+        "target": "nhi.confederacy",
+        "score": 3,
+        "kind": "alliance"
+      },
+      {
+        "source": "gov.helsinki",
+        "target": "corp.eldrich",
+        "score": 3,
+        "kind": "alliance"
+      },
+      {
+        "source": "gov.helsinki",
+        "target": "nhi.orion",
+        "score": 2,
+        "kind": "alliance"
+      },
+      {
+        "source": "gov.helsinki",
+        "target": "nhi.machine",
+        "score": 1,
+        "kind": "dependency"
+      },
+      {
+        "source": "corp.eldrich",
+        "target": "corp.hades",
+        "score": -4,
+        "kind": "rivalry"
+      },
+      {
+        "source": "nhi.confederacy",
+        "target": "nhi.orion",
+        "score": -3,
+        "kind": "rivalry"
+      },
+      {
+        "source": "nhi.confederacy",
+        "target": "nhi.machine",
+        "score": -2,
+        "kind": "dispute"
+      },
+      {
+        "source": "org.europol",
+        "target": "gov.eu",
+        "score": 2,
+        "kind": "oversight"
+      },
+      {
+        "source": "org.europol",
+        "target": "gov.finland",
+        "score": 1,
+        "kind": "oversight"
+      },
+      {
+        "source": "org.europol",
+        "target": "gov.helsinki",
+        "score": 0,
+        "kind": "oversight"
+      },
+      {
+        "source": "org.church_uc",
+        "target": "org.sampo",
+        "score": 2,
+        "kind": "dependency"
+      },
+      {
+        "source": "nhi.noetics",
+        "target": "org.sampo",
+        "score": -1,
+        "kind": "dispute"
+      },
+      {
+        "source": "nhi.biologics",
+        "target": "nhi.sirians",
+        "score": 0,
+        "kind": "dispute"
+      }
+    ]
+  },
+  "story": {
+    "graph_type": "story",
+    "nodes": [],
+    "edges": []
+  }
+}
