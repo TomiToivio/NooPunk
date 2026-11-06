@@ -191,6 +191,94 @@ def run_command(session: CaseSession, line: str, *, save_path: str = "") -> tupl
     return True, f"unknown command {verb!r}; try help"
 
 
+def run_opening_command(opening, line: str, *, save_path: str = "") -> tuple[bool, str]:
+    """Drive the validated, built opening without making another command resolver.
+
+    This narrow adapter is reusable by an Evennia command or a GUI command box.
+    The Opening object alone validates available actions and mutates the session.
+    """
+    import json
+    from .opening import OpeningError
+
+    command = line.strip()
+    if not command or command.startswith("#"):
+        return True, ""
+    verb = command.lower()
+    if verb in ("quit", "exit"):
+        return False, "bye"
+    if verb in ("actions", "help"):
+        return True, "Available: " + ", ".join(opening.actions()) + ", status, save [path], quit"
+    if verb in ("status", "look"):
+        view = opening.view()
+        return True, (f"{view['scene']} | {view['location']['label']} | "
+                      f"actions: {', '.join(view['actions']) or 'none'} | "
+                      f"missing kit: {', '.join(view['equipment']['missing']) or 'none'}")
+    if verb == "save" or verb.startswith("save "):
+        target = command.split(None, 1)[1] if " " in command.strip() else (
+            save_path or "noopunk-opening-save.json"
+        )
+        Path(target).write_text(
+            json.dumps(opening.save(), ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+        return True, f"saved {target}"
+    if verb.startswith("load"):
+        return True, "load at startup: --opening --load <path>"
+    try:
+        return True, opening.act(verb)
+    except OpeningError as exc:
+        return True, f"refused: {exc}"
+
+
+def run_opening(args: argparse.Namespace) -> int:
+    """Resume a *built* officer. Never fabricate a background or Edge catalogue."""
+    import json
+    from .opening import Opening, OpeningError
+
+    if not args.load:
+        print("opening requires --load <validated opening save>; "
+              "published Background/Edge catalogues are not yet available", file=sys.stderr)
+        return 2
+    try:
+        opening = Opening.load(json.loads(Path(args.load).read_text(encoding="utf-8")))
+    except (OSError, ValueError, KeyError, TypeError, OpeningError) as exc:
+        print(f"cannot load opening: {exc}", file=sys.stderr)
+        return 2
+    print("NoöPunk · Tony German · built opening (mechanical preview)")
+    print("Available: " + ", ".join(opening.actions()))
+    if args.script:
+        try:
+            commands = Path(args.script).read_text(encoding="utf-8").splitlines()
+        except OSError as exc:
+            print(f"cannot open script: {exc}", file=sys.stderr)
+            return 2
+    else:
+        commands = None
+    if commands is not None:
+        for command in commands:
+            keep_going, output = run_opening_command(opening, command, save_path=args.save)
+            if output:
+                print(output)
+            if not keep_going:
+                break
+    else:
+        while True:
+            try:
+                command = input("> ")
+            except EOFError:
+                print()
+                break
+            keep_going, output = run_opening_command(opening, command, save_path=args.save)
+            if output:
+                print(output)
+            if not keep_going:
+                break
+    if args.save:
+        Path(args.save).write_text(
+            json.dumps(opening.save(), ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+    return 0
+
+
 def run_first_day_command(session, line: str, *, save_path: str = "") -> tuple[bool, str]:
     """An alternate *mode* of the existing console, not a second game loop.
 
@@ -278,6 +366,8 @@ def run_first_day(args: argparse.Namespace) -> int:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Play a NoöPunk investigation case in a terminal")
+    parser.add_argument("--opening", action="store_true",
+                        help="resume a validated built-character opening (requires --load)")
     parser.add_argument("--first-day", action="store_true",
                         help="play Tony German's mechanical first-day preview")
     parser.add_argument("--case", default=DEFAULT_CASE, help="case graph JSON")
@@ -291,6 +381,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--script", default="", help="run commands from a file instead of stdin")
     args = parser.parse_args(argv)
 
+    if args.opening and args.first_day:
+        parser.error('--opening and --first-day are mutually exclusive')
+    if args.opening:
+        return run_opening(args)
     if args.first_day:
         return run_first_day(args)
 
