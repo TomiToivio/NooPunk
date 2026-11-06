@@ -221,6 +221,26 @@ class TheIntroReadsKitState(unittest.TestCase):
         broken = tuple(item for item in KIT if item not in ("uniform", "phone"))
         self.to_dispatch(create_first_day(faults=broken))
 
+    def test_both_dispatch_devices_faulty_can_recover_after_resume(self) -> None:
+        from src.console.first_day import COMMS, KIT, LINKED, create_first_day, kit_of
+        from src.console.play import run_first_day_command
+        from src.console.world_session import WorldSession
+
+        for device in COMMS:
+            with self.subTest(device=device):
+                session = create_first_day(faults=COMMS)
+                for action in ["wake", "uniform", *("inspect:" + item for item in KIT),
+                               *("connect:" + item for item in LINKED)]:
+                    run_first_day_command(session, action)
+                session = WorldSession.from_snapshot(session.to_snapshot())
+                self.assertFalse(kit_of(session).coverage().get("dispatch.call"))
+                self.assertIn("repair:" + device, run_first_day_command(session, "actions")[1])
+                run_first_day_command(session, "repair:" + device)
+                self.assertEqual(kit_of(session).coverage()["dispatch.call"], (device,))
+                for action in ("dispatch", "ride", "arrive", "report"):
+                    run_first_day_command(session, action)
+                self.assertIn("first_day:report", session.flags)
+
     def test_a_fault_survives_a_save_and_restore(self) -> None:
         from src.console.first_day import available_first_day_actions, create_first_day
         from src.console.world_session import WorldSession
