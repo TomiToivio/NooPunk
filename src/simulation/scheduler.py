@@ -19,11 +19,14 @@ Determinism rules, each of which has a test:
 """
 from __future__ import annotations
 
+import hashlib
 import json
+import random
+from collections.abc import Callable, Iterable, Mapping
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Callable, Iterable, Mapping
+from typing import Any
 
 from .clock import ClockError, GameClock
 
@@ -64,7 +67,7 @@ class DueEvent:
                 "payload": dict(sorted(self.payload.items()))}
 
     @classmethod
-    def from_dict(cls, payload: Mapping[str, Any]) -> "DueEvent":
+    def from_dict(cls, payload: Mapping[str, Any]) -> DueEvent:
         try:
             return cls(
                 id=str(payload["id"]),
@@ -82,6 +85,9 @@ class Scheduler:
 
     pending: dict[str, DueEvent] = field(default_factory=dict)
     fired: list[str] = field(default_factory=list)
+
+    #: Seed for per-event randomness. Persisted so a replay produces the same numbers.
+    seed: int = 20451
 
     #: Every id that has fired, for O(1) idempotency checks. Derived from ``fired`` on load.
     _fired_ids: set[str] = field(default_factory=set, repr=False, compare=False)
@@ -149,15 +155,29 @@ class Scheduler:
             handler(event)
         return tuple(fired)
 
+    # -- deterministic randomness --------------------------------------------------------------- #
+    def rng_for(self, event_id: str) -> random.Random:
+        """A generator bound to one event, so a replay draws the same numbers.
+
+        The seed is derived with ``sha256`` rather than ``hash()``: the builtin is salted per
+        interpreter, so two runs of the same save would diverge and a replay would stop reproducing
+        the original — the one thing #1230 asks this module to guarantee. Passing the event id in
+        makes the stream independent of *when* the event is handled, so reordering an unrelated
+        handler cannot shift it.
+        """
+        digest = hashlib.sha256(event_id.encode("utf-8")).digest()[:8]
+        return random.Random(self.seed ^ int.from_bytes(digest, "big"))
+
     # -- persistence --------------------------------------------------------------------------- #
     def to_dict(self) -> dict[str, Any]:
         return {
             "pending": [event.to_dict() for event in sorted(self.pending.values(), key=DueEvent.sort_key)],
             "fired": list(self.fired),
+            "seed": self.seed,
         }
 
     @classmethod
-    def from_dict(cls, payload: Mapping[str, Any]) -> "Scheduler":
+    def from_dict(cls, payload: Mapping[str, Any]) -> Scheduler:
         pending: dict[str, DueEvent] = {}
         for raw in payload.get("pending") or ():
             event = DueEvent.from_dict(raw)
@@ -170,7 +190,7 @@ class Scheduler:
         overlap = set(pending) & set(fired)
         if overlap:
             raise SchedulerError(f"a save has {sorted(overlap)} both pending and fired")
-        return cls(pending=pending, fired=fired)
+        return cls(pending=pending, fired=fired, seed=int(payload.get("seed", 20451)))
 
     def save(self, path: Path, clock: GameClock) -> None:
         """Write clock and queue together — a save that restores one but not the other is not a save."""
@@ -181,7 +201,7 @@ class Scheduler:
         ) + "\n", encoding="utf-8")
 
     @classmethod
-    def load(cls, path: Path) -> tuple[GameClock, "Scheduler"]:
+    def load(cls, path: Path) -> tuple[GameClock, Scheduler]:
         """Read clock and queue back. Refuses an unknown format version rather than guessing."""
         payload = json.loads(path.read_text(encoding="utf-8"))
         if payload.get("version") != 1:
