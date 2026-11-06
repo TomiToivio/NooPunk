@@ -6,5 +6,13 @@ Additionally Europeans have excellent designers: New European Idealism is the ph
 Field Agent Tony German and Field Agent Laura Wendt are assisted by a real-time connection to their Field Controller Salla Sotavaara. 
 Real-time connection means the police car is equipped with a military-grade Nokia PoliisiRadioSanomaJärjestelmä M 45, which is an encrypted police radio communication system which connects to the Europol Field Office using a military field radio when the EuroNet is not available. 
 
-Other equipment: 
-* Service Weapon
+The police car has a Nokia PoliisiSanomalaite which connects to the HQ using an encrypted police radio when EuroNet or Mobile connection is not available.&#x20;
+Individual police have a standard set of BCI, cyberdeck, service weapon, interrogation device, body cam (always on, real-time transmission to HQ), psychotronic implant (at least defensive) etc.&#x20;
+They have a Forensics Multimode Scanner which can be used to submit evidence directly to analysis. They also have a body cam, with other sensors in the police car and drone. These can be replaced with cybernetic eyes in some cases.&#x20;
+EU prefers human intelligence augmentations to AGI, and some agents have different intelligence augmentations.&#x20;
+They always have an external cyberdeck for hacking, some might prefer a more convenient implanted cyberdeck. Some might think a tablet-like device is more convenient.
+Weaponry typically includes a personal service weapon and an assortment of non-lethal weapons.&#x20;
+Create a list of typical police equipment. &#x20;
+Romppainen-Fujita Objective Assessment System is a complicated device combining neural imaging and psychotronic technologies for interrogations. It also records video, audio and neural feed during the interrogation. It is used in a fashion similar to Voight-Kampff device, it is useful for normal interrogations as well as detection of unregistered Hybrids and Androids. Europol has to provide evidence that somebody is an NHI, it is often easy to recognize an NHI but there has to be evidence.
+The characters can use a cyberdeck or other computer device to connect to Plato and analyze evidence. They can also use Plato to access Europol database (this is like the internal public database) and collect OSINT evidence from open sources, access to surveillance data or anything else requires them to request a permission which is a bureaucratic procedure.<
+The police car and drone can be remote-controlled, but it has to be a human controller. EU doesn't allow AI to operate anything independently. Plato can monitor the situation and inform the characters if he notices something. 
