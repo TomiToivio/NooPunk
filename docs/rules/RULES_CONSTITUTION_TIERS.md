@@ -15,7 +15,7 @@
 | `cwn-core` | 38 |
 | `swn-companion` | 12 |
 | `optional-source` | 11 |
-| `noopunk-mod` | 31 |
+| `noopunk-mod` | 32 |
 | `infrastructure` | 7 |
 | `experimental` | 5 |
 | `legacy` | 3 |
@@ -108,6 +108,7 @@
 * `src/rules/astral_body.py`
 * `src/rules/astral_progression.py`
 * `src/rules/astral_progression_1261.py`
+* `src/rules/astral_ranks.py`
 * `src/rules/cross_domain_state.py`
 * `src/rules/europol_lifepath.py`
 * `src/rules/field_agent.py`

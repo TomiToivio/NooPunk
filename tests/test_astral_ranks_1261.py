@@ -53,7 +53,7 @@ class EditingPermissionTests(unittest.TestCase):
         self.assertIn("another agent", str(caught.exception))
         with self.assertRaises(ladder.AstralProgressionError) as caught:
             ladder.require_edit(1, "tony.german", pattern("tony.german"))
-        self.assertIn("Astral Projection 3", str(caught.exception))
+        self.assertIn("cannot edit", str(caught.exception))
         with self.assertRaises(ladder.AstralProgressionError) as caught:
             ladder.require_edit(4, "tony.german", pattern("tony.german", mutable=False))
         self.assertIn("not editable", str(caught.exception))
@@ -64,9 +64,15 @@ class EditingPermissionTests(unittest.TestCase):
 
 
 class NoDuplicateMechanismTests(unittest.TestCase):
-    def test_the_deleted_capability_table_is_not_importable(self):
-        with self.assertRaises(ModuleNotFoundError):
-            __import__("rules.astral_ranks")
+    def test_the_adapter_is_a_view_over_the_one_ladder(self):
+        """`astral_progression` must not own a second table; it must be the canonical module's view."""
+        from rules import astral_ranks
+
+        view = ladder.ranks()
+        self.assertEqual(sorted(view), sorted(astral_ranks.RANKS))
+        for rank, spec in astral_ranks.RANKS.items():
+            self.assertEqual(view[rank].name, spec.name)
+            self.assertEqual(view[rank].duration_cap_minutes, spec.provisional_max_minutes)
 
     def test_astral_damage_stays_gated(self):
         self.assertFalse(astral_body.ASTRAL_DAMAGE_BRIDGE_APPROVED)
