@@ -73,7 +73,7 @@ third. The protocol that goes with this register is [design/AGENT_COORDINATION.m
 
 | **Social-science simulator — boundary and contracts (#1286 WP0)** | [simulator/BOUNDARY_AND_CONTRACTS_1286.md](simulator/BOUNDARY_AND_CONTRACTS_1286.md) — the authority chain, what the AI26 canonical record and discourse contracts actually provide, the mapping to simulator inputs, the four origins, the ethical boundary and the unresolved modelling choices | the AI26 paper and `THEORY.md` remain the theory and the evidence contract; LaclauGPT-Data-Analysis remains the technical basis | a boundary document for a *frozen-RPG* phase: no rule, mechanic or campaign file is touched, and no theory is amended |
 
-| **Social-science simulator — kernel (#1286 WP1)** | [simulator/SIMULATOR_KERNEL_1286.md](simulator/SIMULATOR_KERNEL_1286.md) — `src/social_sim/`: step clock, seeded rules, actors and organizations, social/communication ties, events, snapshots and replay | the RPG's `src/simulation/` and `src/world/` are **not** reused, by the issue's scope rule; the duplication is recorded in the boundary page | standalone research code: no player, no CWN, no engine, no LLM call |
+| **Social-science simulator — kernel (#1286 WP1)** | [simulator/SIMULATOR_KERNEL_1286.md](simulator/SIMULATOR_KERNEL_1286.md) — `src/simulation/ai26_research.py` (the simulator) and `src/simulation/provenance.py` (the four-origin contract): seeded turns, synthetic actors and organizations, social/communication graphs, replay and export | it reuses the generic #40 event envelope and nothing RPG-specific; a parallel kernel was written and retired so one simulator remains | standalone research code: no player, no CWN, no engine, no LLM call |
 
 ## What is generated, and therefore never hand-edited
 

@@ -1,74 +1,65 @@
-# The simulator kernel (#1286, work package 1)
+# The AI26 research simulator (#1286, work package 1)
 
-> **Status: work package 1.** `src/social_sim/` is a standalone simulator: no player, no CWN, no game engine, no RPG
-> import. It runs from Python over synthetic fixtures, with a step clock, seeded rules, snapshots and replay. It
-> implements nothing from the AI26 adapter (work package 2) and no experiment (work package 4).
+> **Status: work package 1, one simulator.** `src/simulation/ai26_research.py` runs a synthetic population over a fixed
+> number of turns with a seed, and exports graphs, events and a replay digest. `src/simulation/provenance.py` carries the
+> four origins the issue requires. No player, no CWN, no engine, no LLM call, and no RPG rule module in the import graph.
 
 **Read with:** [boundary and contracts](BOUNDARY_AND_CONTRACTS_1286.md) · [#1286](https://github.com/TomiToivio/NooPunk/issues/1286)
 
-## What is in the kernel
+## What the simulator is
 
-| concept | class | what the kernel enforces |
-|---|---|---|
-| actor | `Actor` | an id; `ActorKind.INDIVIDUAL` or `ORGANIZATION`; `affiliation` must name an **organization**; resources may not be negative; attributes are simulation variables, never RPG tags |
-| social tie | `SocialEdge` | typed relation, `since_step`, provenance; both endpoints must exist |
-| communication | `CommunicationEdge` | who spoke to whom, at which step, on which channel, with provenance |
-| event | `Event` | step, sequence, kind, actor, target, **the rule that produced it**, the inputs it read, payload, provenance; a derived `event_id` |
-| provenance | `Provenance` | an `Origin` — `observed`, `inferred`, `synthesized`, `simulated` — plus source, method, uncertainty and review status |
-| run | `Simulation` | population validation, `run(steps, rule=…)`, `digest()`, `snapshot()`, `from_snapshot()` |
+A **null model**: one message per turn between two individuals, chosen by a seeded generator, over a roster of synthetic
+individuals and the organizations they affiliate to. Messages are neutral synthetic tokens —
+`synthetic-neutral-message-0007` — and **not** inferred discourse articulations. Nothing is persuaded, nothing is scored,
+and no concept from the AI26 paper is turned into a behavioural law.
 
-## Determinism, and why it is per step
+That is deliberately dull. It exists so the plumbing the issue asks for — seeded determinism, graph integrity, replay,
+provenance, exports — is tested before any claim is made about behaviour.
 
-Each step's pseudo-random generator is seeded from `(seed, step, rule)`. Two consequences matter:
+## What is enforced
 
-* a run of ten steps and two runs of five produce **the same** stream, so a resumed save equals an uninterrupted one;
-* the snapshot needs **no generator state**, so replay cannot drift when Python's RNG implementation changes across
-  versions.
-
-`digest()` hashes the event stream; `from_snapshot()` refuses a document whose version or digest does not match, rather
-than repairing it. A tampered snapshot is a bug, not an input.
-
-## The one transition rule, and its assumption
-
-`noop` does nothing. `broadcast` makes **one** message per step: the speaker is chosen uniformly among actors with at
-least one outgoing tie, and the listener uniformly among that speaker's targets.
-
-That is an *assumption for the kernel to have a transition at all*, stated in the code so a reader can disagree with it.
-It is not derived from Laclau and Mouffe, and it is not a claim about how discourse works. A scenario supplies its own
-rule and documents it; a rule name outside the registry is refused, so a run cannot cite behaviour that does not exist.
-
-## What the acceptance tests cover
-
-`tests/test_social_sim_kernel_1286.py` — **25 tests**, mapped to the issue's conditions:
-
-| condition | test |
+| condition | how |
 |---|---|
-| fixed seeds reproduce the stream and hash | same seed → same digest; different seed → different digest |
-| resumed run equals continuous run | 10 steps vs 5 + 5 |
-| snapshot round trip | restore, continue, compare digests |
-| a tampered or wrong-version snapshot is refused | digest mismatch; `kernel_version: 99` |
-| temporal ordering | `(step, sequence)` is sorted |
-| no fabricated evidence | every event cites its rule and an input; unknown rule refused; an event claiming `observed` origin is refused |
-| organization/member distinction | an affiliation must name an organization; the two actor kinds stay distinct |
-| isolated actors | allowed, kept, and never chosen as speakers |
-| empty input | an empty population runs and produces nothing |
-| four origins kept apart | each survives a JSON round trip; a record without an origin is refused |
-| modest-N benchmark | 200 actors × 100 steps under 5 s, no LLM call |
-| no RPG dependency | the kernel source contains no import from `rules`, `world`, `console`, `simulation`, Evennia or Godot |
+| actors are never real people | `actor_id` must start with `synthetic:` |
+| individuals and organizations stay distinct | `kind` is `individual` or `organization`; only individuals may hold an affiliation |
+| no dangling edges | every edge endpoint is checked against the roster; a mismatch raises |
+| no silently dropped actors | actors who never communicate appear in `summary.isolated_actors` |
+| replay is exact | content-derived `event_id`s and a `replay_digest`; `verify_replay()` recomputes and compares, and a tampered event fails it |
+| the export cannot pass as data | `scientific_status: hypothetical_null_model_not_empirical_finding`, and the run id is prefixed `ai26-synthetic:` |
+| provenance is typed | `provenance.origin`, `.source`, `.method`, `.uncertainty` — a record, not a string |
+
+## The four origins
+
+`src/simulation/provenance.py` defines `Origin` — `observed`, `inferred`, `synthesized`, `simulated` — and a `Provenance`
+record carrying source, method, uncertainty and the AI26 review status. It is small on purpose: it records and refuses,
+and interprets nothing.
+
+Every actor carries an origin, and **an actor may be `synthesized` or `inferred` but never `observed`**: an actor is a
+stand-in, and letting the label say "observed" is how a synthetic person would end up exported as if they were in the
+corpus. The export counts all four origins, so a reader sees at a glance that the roster is synthetic and the run is
+simulated.
+
+## Determinism
+
+Seeded `random.Random(seed)`, an ordered roster, and content-derived event ids: the same roster, seed and turn count
+produce byte-identical exports, and `verify_replay()` proves it after a round trip through JSON. Reversing the input
+roster does not change the run — the test that catches an accidental dependence on input order.
+
+## Tests
+
+`tests/test_ai26_research_simulation.py` — **12 tests**: seeded runs byte-identical, roster order irrelevant, a different
+seed changes the stream, negative turns refused, export/replay/provenance, tamper detection, origins distinguishable and
+counted, an inferred actor allowed and an observed one refused, provenance round trip, no game or LLM runtime imports, and
+the CLI.
+
+## Consolidation note
+
+Two kernels were written for this work package in the same hour: a standalone `src/social_sim/` package and this module
+on the generic event envelope. **The standalone one was retired.** Its unique piece — the four-origin provenance
+contract — was folded into `src/simulation/provenance.py` and is carried by this simulator, so there is one simulator and
+one event model rather than two of each. The boundary page records the decision and its cost.
 
 ## Deliberately absent
 
-* **The AI26 adapter** (work package 2): nothing here reads a canonical record. Mapping and rejection rules are in the
-  boundary document, not in the kernel.
-* **Behavioural rules beyond the baseline** (work package 3): influence, coalition and institutional response are
-  assumptions that need their own rationale and parameters.
-* **Experiments, exports, metrics, visualization** (work packages 4–6).
-* **The integration seam** (work package 7): a simulation event and an RPG turn are still unrelated, on purpose, and the
-  seam will be a documented translation rather than a shared module.
-
-## A note on the duplication this creates
-
-NoöPunk now holds two event models: `src/simulation/` for the RPG-adjacent world simulation, and `src/social_sim/` for
-this. That is the cost of the scope rule and it is recorded in the boundary page. The kernel keeps its own event record
-precisely so that research runs cannot acquire RPG semantics by accident; the seam, when it is written, is where the two
-are reconciled deliberately.
+The AI26 read-only adapter (WP2), behavioural rules beyond the null model (WP3), the contestation experiment (WP4),
+metrics and visualization (WP5–6), and the RPG integration seam (WP7). None is claimed here.

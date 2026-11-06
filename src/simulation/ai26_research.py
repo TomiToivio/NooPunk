@@ -19,6 +19,7 @@ from pathlib import Path
 from typing import Iterable
 
 from .events import Event, next_occurrence
+from .provenance import Origin, Provenance
 from .world_state import reduce_events, replay_digest
 
 _KINDS = {"individual", "organization"}
@@ -32,12 +33,18 @@ class ResearchActor:
     actor_id: str
     kind: str
     affiliation: str = ""
+    #: Where this actor came from. A simulated population is `synthesized` (invented) or, at most, `inferred` (derived
+    #: from analysis). It is never `observed`: an actor is not a corpus record, and allowing the label would let a
+    #: synthetic stand-in be exported as if it were a person in the data (#1286 acceptance conditions).
+    origin: Origin = Origin.SYNTHESIZED
 
     def __post_init__(self) -> None:
         if not self.actor_id.startswith("synthetic:"):
             raise ValueError("research actors must have a synthetic: id")
         if self.kind not in _KINDS:
             raise ValueError("kind must be individual or organization")
+        if self.origin not in (Origin.SYNTHESIZED, Origin.INFERRED):
+            raise ValueError(f"a research actor is synthesized or inferred, not {self.origin.value!r}")
         if self.affiliation and self.kind != "individual":
             raise ValueError("only individuals may have organization affiliations")
 
@@ -84,7 +91,7 @@ def simulate(
     actors = tuple(sorted(roster, key=lambda a: a.actor_id))
     _validate_roster(actors)
     config = {"actors": [
-        {"actor_id": a.actor_id, "kind": a.kind, "affiliation": a.affiliation}
+        {"actor_id": a.actor_id, "kind": a.kind, "affiliation": a.affiliation, "origin": a.origin.value}
         for a in actors
     ], "seed": seed, "turns": turns, "model": "random-encounter-null-v1"}
     run_id = "ai26-synthetic:" + hashlib.sha256(
@@ -126,8 +133,17 @@ def simulate(
             raise ValueError("dangling graph edge")
     state = reduce_events(events, simulation_id=run_id)
     result = {
-        "schema": "ai26-synthetic-experiment-v1",
-        "provenance": "simulated",
+        "schema": "ai26-synthetic-experiment-v2",
+        "provenance": Provenance(
+            Origin.SIMULATED,
+            source=run_id,
+            method="random-encounter-null-v1",
+            uncertainty="seeded null model; no empirical calibration",
+        ).to_dict(),
+        "origins": {
+            origin.value: sum(1 for actor in actors if actor.origin is origin)
+            for origin in (Origin.OBSERVED, Origin.INFERRED, Origin.SYNTHESIZED, Origin.SIMULATED)
+        },
         "scientific_status": "hypothetical_null_model_not_empirical_finding",
         "run_id": run_id,
         "configuration": config,

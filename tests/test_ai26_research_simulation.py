@@ -7,7 +7,8 @@ from pathlib import Path
 
 import pytest
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
 
 from simulation.ai26_research import (  # noqa: E402
     ResearchActor, demo_roster, main, simulate, verify_replay,
@@ -78,8 +79,11 @@ def test_export_replay_and_provenance(tmp_path):
     path = tmp_path / "synthetic.json"
     assert main(["--population", "4", "--turns", "6", "--seed", "15", "--output", str(path)]) == 0
     payload = json.loads(path.read_text(encoding="utf-8"))
-    assert payload["schema"] == "ai26-synthetic-experiment-v1"
-    assert payload["provenance"] == "simulated"
+    assert payload["schema"] == "ai26-synthetic-experiment-v2"
+    # Provenance is a record now, not a string: the run is simulated, and it says why (#1286 acceptance conditions).
+    assert payload["provenance"]["origin"] == "simulated"
+    assert payload["provenance"]["method"] == "random-encounter-null-v1"
+    assert payload["provenance"]["uncertainty"]
     assert payload["scientific_status"] == "hypothetical_null_model_not_empirical_finding"
     assert verify_replay(payload)
     payload["events"][-1]["content"] = "tampered"
@@ -93,3 +97,35 @@ def test_no_game_or_llm_runtime_imports():
     for forbidden in ("import rules", "import mud", "import godot", "import ollama",
                       "import strategy_game", "import concordia"):
         assert forbidden not in source
+
+def test_actor_origins_are_distinguishable_and_survive_export():
+    """The four origins exist as a type, and an export says which one each actor is."""
+    roster = demo_roster(6)
+    payload = simulate(roster, turns=3, seed=5)
+    # `demo_roster(n)` yields n individuals *plus* the organizations they affiliate to; count what it gave us.
+    assert payload["origins"]["synthesized"] == len(roster)
+    assert payload["origins"]["observed"] == 0, "a synthetic roster is never observed material"
+    assert all(actor["origin"] == "synthesized" for actor in payload["configuration"]["actors"])
+
+
+def test_an_actor_may_be_inferred_but_never_observed():
+    from simulation.provenance import Origin
+
+    inferred = ResearchActor("synthetic:inferred-one", "individual", origin=Origin.INFERRED)
+    payload = simulate((inferred, ResearchActor("synthetic:two", "individual")), turns=2, seed=1)
+    assert payload["origins"]["inferred"] == 1
+
+    with pytest.raises(ValueError):
+        ResearchActor("synthetic:corpus-record", "individual", origin=Origin.OBSERVED)
+
+
+def test_provenance_round_trips_through_json():
+    from simulation.provenance import Origin, Provenance
+
+    for origin in Origin:
+        record = Provenance(origin, source="s", method="m", uncertainty="high", review_status="provisional")
+        restored = Provenance.from_dict(json.loads(json.dumps(record.to_dict())))
+        assert restored == record
+
+    with pytest.raises(ValueError):
+        Provenance.from_dict({"source": "nowhere"})
