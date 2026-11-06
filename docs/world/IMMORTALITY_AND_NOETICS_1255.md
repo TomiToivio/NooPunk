@@ -56,6 +56,23 @@ before it is metaphysical:
 
 ---
 
+## 2b. Who sells continuity (#1261 §E)
+
+The technology has owners, and the ownership is the politics:
+
+- **Orion Greys and Mars Eldrich** held the cortical-stack, upload and resleeve monopoly — the supply
+  chain as well as the patent.
+- **Dr. Mannerheim and Dr. Yamamoto**, University of Helsinki, demonstrated QIP in-setting and set off
+  the Helsinki psychotronic boom. Their company, **Mannerheim–Yamamoto Ψ Psychotronic Industries**
+  (usually just **Ψ**), broke the monopoly with a competing stack/upload/sleeve platform.
+- **"Indefinite lifespan" means offered, not guaranteed** — not immunity to destruction, failure or
+  political coercion, and not a settled answer to the continuity question in §2.
+
+The five phenomena stay five. A Ψ upload is not the same act as an astral visit, and no one-click action
+covers all of them.
+
+---
+
 ## 3. What resleeving does to a life (the legal surface)
 
 Not a code — the questions a case turns on. Each is a scene, not a ruling:

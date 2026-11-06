@@ -1,3 +1,9 @@
+> **Updated by [#1261](https://github.com/TomiToivio/NooPunk/issues/1261).** The author update gave the
+> Astral Body substance (it can be fought), added the Space/Time vs Time/Space perception split and made
+> entry scripted-without-PSI. That layer lives in :mod:`src/rules/astral_body` with
+> `docs/tabletop/ASTRAL_1261.md`. **This page remains the record of the graph/PSI prototype**, and the
+> two modules must not grow the same feature twice: the graph answers "what is the relation between two
+> astral places", the body module answers "what can this projection perceive and who can hit it".
 # Astral graph and PSI permissions (#1164)
 
 > **Deferred by [#1178](https://github.com/TomiToivio/NooPunk/issues/1178) (2026-11-05).**
