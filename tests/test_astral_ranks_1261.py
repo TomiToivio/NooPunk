@@ -1,15 +1,9 @@
-"""Astral Projection as a ranked superskill, MVP levels 0-1 (#1261 author update 2026-11-06).
+"""#1261: the astral superskill's ranks, gates and permission model.
 
-The author's latest direction makes Astral Projection a *superskill inside the Astral*: each rank is a
-model of reality, a perception and a capability at once. The initial campaign allows 0 or 1; 2-4 are
-designed, gated and refused until a later campaign earns them.
-
-What is pinned here is only what the new direction states as testable behaviour. The provisional
-duration caps are exposed as ceilings, not as promises: a longer projection does not yield better
-knowledge, and the module says "provisional" in the only place it can — the constant's name.
-
-`unittest`, because the CI gate runs `python -m unittest discover` and does not install pytest.
+Written against the author's 2026-11-06 revision, whose test checklist is the list below. The tests refuse to let a
+later change quietly promote a design-only rank into the opening campaign.
 """
+
 from __future__ import annotations
 
 import sys
@@ -19,168 +13,167 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from src.rules import psi_access
-from src.rules.astral_body import (
-    IDENT_SOURCES,
-    MVP_RANKS,
-    PROVISIONAL_MINUTES,
-    AstralBodyError,
-    AstralRank,
-    AstralSkill,
-    begin_projection,
-    learn_ident,
-    use_ident,
+from rules import astral_body  # noqa: E402
+from rules.astral_ranks import (  # noqa: E402
+    CAMPAIGN_MAX_STARTING_RANK,
+    DURATIONS_ARE_PROVISIONAL,
+    RANKS,
+    AstralRankError,
+    Capability,
+    InformationPattern,
+    Projector,
+    capabilities_for,
+    duration_cap_minutes,
+    has,
+    may_edit,
+    rank_spec,
+    require_edit,
+    starting_rank,
 )
 
 
-def ranked(rank: int) -> AstralSkill:
-    return AstralSkill(rank=AstralRank(rank))
+class RankTableTests(unittest.TestCase):
+    def test_every_rank_states_all_three_axes(self):
+        for rank, spec in RANKS.items():
+            self.assertEqual(spec.rank, rank)
+            self.assertTrue(spec.name and spec.understanding and spec.perception and spec.actions, rank)
+
+    def test_capabilities_are_cumulative(self):
+        for rank in range(1, 5):
+            self.assertTrue(capabilities_for(rank - 1) <= capabilities_for(rank),
+                            f"rank {rank} must include everything rank {rank - 1} grants")
+
+    def test_ranks_outside_zero_to_four_are_refused(self):
+        for bad in (-1, 5, 2.5, True, "2"):
+            with self.assertRaises(AstralRankError):
+                rank_spec(bad)  # type: ignore[arg-type]
+
+    def test_durations_are_marked_provisional(self):
+        self.assertTrue(DURATIONS_ARE_PROVISIONAL)
+        self.assertEqual([duration_cap_minutes(rank) for rank in range(5)],
+                         [10, 60, 600, 2880, 10080])
 
 
-class TestCharacterCreationWindow(unittest.TestCase):
-    def test_the_initial_campaign_allows_zero_or_one(self) -> None:
-        self.assertEqual(tuple(int(rank) for rank in MVP_RANKS), (0, 1))
-        for rank in (0, 1):
-            self.assertEqual(int(AstralSkill.starting(rank).rank), rank)
-
-    def test_ranks_two_to_four_are_refused_at_creation(self) -> None:
+class CampaignScopeTests(unittest.TestCase):
+    def test_creation_allows_rank_zero_and_one_only(self):
+        self.assertEqual(CAMPAIGN_MAX_STARTING_RANK, 1)
+        self.assertEqual(starting_rank(0), 0)
+        self.assertEqual(starting_rank(1), 1)
         for rank in (2, 3, 4):
-            with self.assertRaises(AstralBodyError) as caught:
-                AstralSkill.starting(rank)
-            self.assertIn("not available at character creation", str(caught.exception))
+            with self.assertRaises(AstralRankError):
+                starting_rank(rank)
+
+    def test_the_refusal_says_why(self):
+        with self.assertRaises(AstralRankError) as caught:
+            starting_rank(3)
+        self.assertIn("design-only", str(caught.exception))
+
+    def test_a_projector_knows_whether_it_may_start(self):
+        self.assertTrue(Projector("tony.german", 1).may_start_campaign())
+        self.assertFalse(Projector("npc.specialist", 3).may_start_campaign())
 
 
-class TestRankZeroIsDisorientation(unittest.TestCase):
-    def test_no_flight_and_no_lower_astral(self) -> None:
-        skill = ranked(0)
-        self.assertFalse(skill.can_fly)
-        self.assertFalse(skill.can_enter_lower_astral)
-        self.assertEqual(skill.planes(), frozenset({"near_astral"}))
+class RankZeroTests(unittest.TestCase):
+    def test_rank_zero_separates_returns_and_walks(self):
+        for capability in (Capability.SEPARATE, Capability.RETURN, Capability.WALK, Capability.PHYSICAL_OVERLAY):
+            self.assertTrue(has(0, capability), capability)
 
-    def test_the_cap_is_ten_provisional_minutes(self) -> None:
-        self.assertEqual(ranked(0).duration_cap_minutes(), 10)
+    def test_rank_zero_cannot_fly_or_enter_the_lower_astral(self):
+        self.assertFalse(has(0, Capability.FLIGHT))
+        self.assertFalse(has(0, Capability.LOWER_ASTRAL))
+        self.assertFalse(has(0, Capability.DREAM_ENTRY))
+        self.assertFalse(has(0, Capability.LUCID))
 
-
-class TestRankOneIsLucidity(unittest.TestCase):
-    def test_flight_and_lower_astral_arrive_but_not_rote(self) -> None:
-        skill = ranked(1)
-        self.assertTrue(skill.can_fly)
-        self.assertTrue(skill.can_enter_lower_astral)
-        self.assertFalse(skill.can_send_rote)
-        self.assertFalse(skill.can_learn_ident)
-        self.assertEqual(skill.duration_cap_minutes(), 60)
-
-    def test_the_upper_planes_are_not_reachable_at_one(self) -> None:
-        for plane in ("devachanic", "etheric", "buddhic"):
-            self.assertFalse(ranked(1).may_enter(plane), plane)
+    def test_rank_zero_sees_the_physical_overlay_but_not_dreams(self):
+        self.assertTrue(has(0, Capability.PHYSICAL_OVERLAY))
+        self.assertFalse(has(0, Capability.DREAM_ENTRY))
 
 
-class TestRankTwoLearnsButCannotJump(unittest.TestCase):
-    def test_rote_and_ident_learning_together(self) -> None:
-        skill = ranked(2)
-        self.assertTrue(skill.can_send_rote)
-        self.assertTrue(skill.can_learn_ident)
-        self.assertFalse(skill.can_use_ident)
-        self.assertTrue(skill.understands_quantum_information)
+class RankOneTests(unittest.TestCase):
+    def test_rank_one_unlocks_flight_and_dream_navigation(self):
+        for capability in (Capability.LUCID, Capability.FLIGHT, Capability.LOWER_ASTRAL, Capability.DREAM_ENTRY):
+            self.assertTrue(has(1, capability), capability)
 
-    def test_learning_an_ident_at_two_cannot_yet_be_used(self) -> None:
-        skill = ranked(2)
-        ident = learn_ident(skill, "agent.wendt", via="authored_encounter")
-        projection = begin_projection("pc.tony", "loc.hki.bedroom", "sleep")
-        with self.assertRaises(AstralBodyError) as caught:
-            use_ident(projection, skill, ident)
-        self.assertIn("Use Ident is Astral Projection 3", str(caught.exception))
+    def test_rank_one_does_not_unlock_rote_or_ident(self):
+        for capability in (Capability.ROTE, Capability.LEARN_IDENT, Capability.USE_IDENT):
+            self.assertFalse(has(1, capability), capability)
+
+    def test_rank_one_does_not_edit_or_reach_higher_planes(self):
+        self.assertFalse(has(1, Capability.EDIT_OWN_INFORMATION))
+        self.assertFalse(has(1, Capability.HIGHER_PLANES))
+        self.assertFalse(has(1, Capability.AKASHIC))
 
 
-class TestRankThreeUseIdent(unittest.TestCase):
-    def test_arrival_is_instant_and_only_the_astral_body_moves(self) -> None:
-        skill = ranked(3)
-        ident = learn_ident(skill, "agent.wendt", via="consensual_exchange")
-        projection = begin_projection("pc.tony", "loc.hki.bedroom", "sleep")
-        use_ident(projection, skill, ident)
-        self.assertEqual(projection.astral_location, "presence:agent.wendt")
-        self.assertEqual(projection.body_location, "loc.hki.bedroom")
-        self.assertEqual(projection.actor_id, "pc.tony")
-        self.assertTrue(projection.active)
+class HigherRankTests(unittest.TestCase):
+    def test_rote_arrives_at_rank_two_ident_use_at_three(self):
+        self.assertTrue(has(2, Capability.ROTE))
+        self.assertTrue(has(2, Capability.LEARN_IDENT))
+        self.assertFalse(has(2, Capability.USE_IDENT))
+        self.assertTrue(has(3, Capability.USE_IDENT))
 
-    def test_a_ward_refuses_arrival_without_revealing_the_agent(self) -> None:
-        skill = ranked(3)
-        ident = learn_ident(skill, "agent.wendt", via="recognition_technique")
-        projection = begin_projection("pc.tony", "loc.hki.bedroom", "sleep")
-        with self.assertRaises(AstralBodyError) as caught:
-            use_ident(projection, skill, ident, ward="AntiPSI shell")
-        message = str(caught.exception)
-        self.assertIn("not revealed", message)
-        self.assertNotIn("agent.wendt", message)
-        self.assertEqual(projection.astral_location, "")
-
-    def test_a_plane_the_rank_does_not_reach_refuses_the_jump(self) -> None:
-        skill = ranked(3)
-        ident = learn_ident(skill, "agent.wendt", via="consensual_exchange")
-        projection = begin_projection("pc.tony", "loc.hki.bedroom", "sleep")
-        with self.assertRaises(AstralBodyError) as caught:
-            use_ident(projection, skill, ident, plane="devachanic")
-        self.assertIn("does not reach", str(caught.exception))
-
-    def test_an_embodied_character_cannot_use_an_ident(self) -> None:
-        skill = ranked(3)
-        ident = learn_ident(skill, "agent.wendt", via="consensual_exchange")
-        projection = begin_projection("pc.tony", "loc.hki.bedroom", "sleep").return_to_body()
-        with self.assertRaises(AstralBodyError):
-            use_ident(projection, skill, ident)
+    def test_higher_planes_and_akashic_are_rank_four_only(self):
+        for rank in range(4):
+            self.assertFalse(has(rank, Capability.HIGHER_PLANES), rank)
+            self.assertFalse(has(rank, Capability.AKASHIC), rank)
+        self.assertTrue(has(4, Capability.HIGHER_PLANES))
+        self.assertTrue(has(4, Capability.AKASHIC))
 
 
-class TestIdentIsNotAName(unittest.TestCase):
-    def test_a_photograph_or_a_name_does_not_establish_an_ident(self) -> None:
-        skill = ranked(2)
-        for via in ("a photograph", "her name", "her address", "the body in the morgue"):
-            with self.assertRaises(AstralBodyError) as caught:
-                learn_ident(skill, "agent.wendt", via=via)
-            self.assertIn("does not establish an Ident", str(caught.exception))
+class InformationEditTests(unittest.TestCase):
+    def test_rank_two_cannot_edit_anything(self):
+        own = InformationPattern("self-memory", "tony.german", mutable=True)
+        self.assertFalse(may_edit(2, "tony.german", own))
 
-    def test_the_three_legitimate_sources_are_the_whole_list(self) -> None:
-        self.assertEqual(
-            IDENT_SOURCES, ("authored_encounter", "consensual_exchange", "recognition_technique")
+    def test_rank_three_edits_its_own_mutable_information(self):
+        own = InformationPattern("self-memory", "tony.german", mutable=True)
+        self.assertTrue(may_edit(3, "tony.german", own))
+
+    def test_an_immutable_pattern_is_never_editable(self):
+        fixed = InformationPattern("bank-record", "tony.german", mutable=False)
+        for rank in range(5):
+            self.assertFalse(may_edit(rank, "tony.german", fixed), rank)
+
+    def test_another_agents_pattern_needs_a_mandate(self):
+        other = InformationPattern("someone-elses-memory", "npc.witness", mutable=True)
+        self.assertFalse(may_edit(3, "tony.german", other))
+        self.assertTrue(may_edit(3, "tony.german", other, mandate=True))
+
+    def test_rank_alone_never_grants_another_agents_information(self):
+        other = InformationPattern("identity", "npc.witness", mutable=True)
+        self.assertFalse(may_edit(4, "tony.german", other), "rank 4 is plane access, not a licence")
+
+    def test_a_refused_edit_says_which_reason_applies(self):
+        with self.assertRaises(AstralRankError) as caught:
+            require_edit(3, "tony.german", InformationPattern("x", "npc.other", mutable=True))
+        self.assertIn("another agent", str(caught.exception))
+        with self.assertRaises(AstralRankError) as caught:
+            require_edit(1, "tony.german", InformationPattern("x", "tony.german", mutable=True))
+        self.assertIn("rank 1", str(caught.exception))
+
+
+class NoDuplicateMechanismTests(unittest.TestCase):
+    def test_the_projection_model_is_still_the_only_one(self):
+        """The superskill adds capabilities, not a second body, sheet or combat system."""
+        for banned in ("Projection", "Combatant", "Combat"):
+            self.assertFalse(hasattr(sys.modules["rules.astral_ranks"], banned), banned)
+
+    def test_astral_damage_remains_gated(self):
+        self.assertFalse(astral_body.ASTRAL_DAMAGE_BRIDGE_APPROVED)
+
+    def test_a_high_rank_still_cannot_act_physically_while_projected(self):
+        projection = astral_body.begin_projection(
+            "tony.german", "loc.sornainen_home", astral_body.EntryTrigger.SLEEP,
         )
+        self.assertFalse(projection.may_take_physical_action())
+        self.assertTrue(has(4, Capability.FLIGHT), "rank 4 is a navigator, not a poltergeist")
 
-    def test_continuity_keeps_the_ident_and_duplication_does_not(self) -> None:
-        ident = learn_ident(ranked(2), "agent.wendt", via="authored_encounter")
-        for event in ("death", "reincarnation", "resleeve", "upload"):
-            self.assertTrue(ident.survives(event), event)
-        for event in ("copy", "fork", "simulation"):
-            self.assertFalse(ident.survives(event), event)
+    def test_rote_and_ident_are_not_swn_techniques(self):
+        """ROTE and Ident belong to Astral Projection, not to the SWN discipline catalogue."""
+        from rules.psionics import load_catalogue
 
-    def test_an_unknown_continuity_event_is_refused_rather_than_guessed(self) -> None:
-        ident = learn_ident(ranked(2), "agent.wendt", via="authored_encounter")
-        with self.assertRaises(AstralBodyError):
-            ident.survives("teleported by the plot")
-
-
-class TestEditingIsPermissionNotPower(unittest.TestCase):
-    def test_rank_three_edits_only_its_own_information_or_an_unclaimed_limbo(self) -> None:
-        skill = ranked(3)
-        self.assertTrue(skill.may_edit(owner="pc.tony", editor="pc.tony"))
-        self.assertTrue(skill.may_edit(owner="limbo:unclaimed", editor="pc.tony"))
-        self.assertFalse(skill.may_edit(owner="agent.wendt", editor="pc.tony"))
-
-    def test_below_rank_three_nothing_is_editable(self) -> None:
-        self.assertFalse(ranked(1).may_edit(owner="pc.tony", editor="pc.tony"))
-
-
-class TestNoSecondEngine(unittest.TestCase):
-    def test_projection_grants_no_swn_discipline_and_no_teleport_prerequisite(self) -> None:
-        before = set(psi_access.PC_DISCIPLINES)
-        skill = ranked(3)
-        ident = learn_ident(skill, "agent.wendt", via="consensual_exchange")
-        use_ident(begin_projection("pc.tony", "loc.hki.bedroom", "sleep"), skill, ident)
-        self.assertEqual(set(psi_access.PC_DISCIPLINES), before)
-        self.assertEqual({"Telekinesis", "Telepathy"}, set(psi_access.PC_DISCIPLINES))
-        self.assertFalse(hasattr(skill, "teleportation"))
-        self.assertFalse(hasattr(skill, "telepathy"))
-
-    def test_the_duration_caps_are_named_provisional(self) -> None:
-        self.assertIn("PROVISIONAL", "PROVISIONAL_MINUTES")
-        self.assertEqual(set(PROVISIONAL_MINUTES), set(AstralRank))
+        catalogue = load_catalogue()
+        for key in ("rote", "transmit_information", "learn_ident", "use_ident"):
+            self.assertNotIn(key, catalogue)
 
 
 if __name__ == "__main__":
