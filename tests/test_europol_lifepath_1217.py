@@ -143,6 +143,28 @@ class IllegalPathTests(unittest.TestCase):
         self.assertViolation("background", background=Background(
             id="Bum", free_skill="Survive", learning=("Connect",), growth=("Any Stat",)))
 
+    def test_substring_of_law_enforcement_is_not_a_valid_background(self):
+        self.assertViolation(
+            "background",
+            background=Background(
+                id="Law",
+                free_skill="Investigate",
+                learning=("Connect", "Shoot", "Drive"),
+                growth=("Any Stat", "+1 Physical"),
+            ),
+        )
+
+    def test_edge_cannot_spoof_verified_catalogue_mechanics(self):
+        # A caller must not turn a power Edge into an ordinary Edge by changing
+        # its flags while keeping the id from an otherwise trusted catalogue.
+        catalogue = dict(CATALOGUE)
+        catalogue["Power Fixture"] = Edge("Power Fixture", is_power=True)
+        self.assertViolation(
+            "edges",
+            edges=(Edge("Power Fixture", is_power=False), CATALOGUE["Alert"]),
+            edge_catalogue=catalogue,
+        )
+
     def test_a_wrong_attribute_set_is_refused(self):
         self.assertViolation("attributes", attributes=dict(list(ARRAY_MAP.items())[:5]))
 
