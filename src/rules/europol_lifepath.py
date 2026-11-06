@@ -219,7 +219,7 @@ def build_lifepath(
             violations.append(LifepathViolation("attributes", str(exc)))
 
     # -- background and its two Learning picks ---------------------------------
-    if background.id not in FIXED["background"][0] and background.id != "Law Enforcement":
+    if background.id != FIXED["background"][0]:
         violations.append(
             LifepathViolation(
                 "background",
@@ -245,9 +245,15 @@ def build_lifepath(
     if scores:
         underdog = underdog_eligible(scores)
     for edge in edges:
-        if catalogue is not None and edge.id not in catalogue:
-            violations.append(LifepathViolation("edges", f"{edge.id!r} is not in the supplied catalogue"))
-            continue
+        if catalogue is not None:
+            if edge.id not in catalogue:
+                violations.append(LifepathViolation("edges", f"{edge.id!r} is not in the supplied catalogue"))
+                continue
+            if edge != catalogue[edge.id]:
+                violations.append(
+                    LifepathViolation("edges", f"{edge.id!r} differs from its verified catalogue record")
+                )
+                continue
         try:
             if edge.id in PC_EDGES:
                 # The four psi Edges are the only ones the access policy knows, so they are the only ones it can
