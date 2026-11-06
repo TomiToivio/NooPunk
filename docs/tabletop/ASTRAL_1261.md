@@ -182,9 +182,66 @@ shapes. No high-dimensional renderer is required — the prose does the work.
    procedure with a cost?
 5. **Ψ / Mannerheim–Yamamoto:** does the resleeving economy belong in this line at all, or only in #1255?
 
+---
+
+# Rank ladder (author update 2026-11-06): Astral Projection as an Astral-domain superskill
+
+> **Supersedes the flat "scripted, not a skill" framing above.** Astral Projection now has **ranks
+> 0–4**, and each rank states three things at once: the character's *model of reality*, *what she can
+> perceive*, and *what she can actually do*. It stays narrow outside Noöspace — it does very little in a
+> Physical or Cyber scene — and it never becomes a CWN or hacking substitute.
+>
+> **The initial campaign allows 0 or 1.** Ranks 2–4 are implemented as gates and refused at character
+> creation until a later campaign earns them (`src/rules/astral_body.py`, 20 tests in
+> `tests/test_astral_ranks_1261.py`).
+
+| Rank | Model of reality | Perceives | Can do | Code |
+| --- | --- | --- | --- | --- |
+| **0 — Disorientation** | Astral is dreamlike; physical laws still assumed; may not tell sleep from waking | Near Astral plus a warped physical overlay | Separate, walk, basic encounter, return. **No flight, no Lower Astral** | `can_fly=False`, planes `{near_astral}` |
+| **1 — Lucidity** | Astral geometry is not metric; dreams are built from Quantum Information | The same, plus dreams being constructed | **Flight**, **Lower Astral** and dream-world entry | `can_fly=True`, planes `+lower_astral` |
+| **2 — Agent network** | Solid-seeming objects are rendered quantum information exchanged between agents | Agents as information structures | **ROTE** (transmit information) and **learn an Ident**; no jump yet | `can_send_rote`, `can_learn_ident` |
+| **3 — Authorized agency** | Appearance is a rendering; information lies beneath | Interface versus information | **Use Ident** (instant arrival at a known agent), permission-gated quantum-information editing | `can_use_ident`, `may_edit` |
+| **4 — Cosmological** | Noöspace as an infinite-dimensional Hilbert space; branching, reconverging timelines | Higher planes, dim alternative timelines | **Devachanic / Etheric / Buddhic** access, Akashic research | `planes() == PLANES` |
+
+## Ordering corrections this page now follows
+
+- **Devachanic/Etheric/Buddhic are Level 4**, not Level 2. The old accessibility text is superseded.
+- **Entering a dream world is not switching modes.** Level 1 reaches *inner dream worlds*; deliberate
+  Space/Time ↔ Time/Space switching is still an authored transition (`shift_mode(authored=True)`).
+- **Duration caps are provisional** — 10 / 60 / 600 / 2880 / 10080 minutes (`PROVISIONAL_MINUTES`). They
+  are ceilings, not promises: a longer projection does not buy better knowledge.
+
+## Ident, stated narrowly
+
+An **Ident** is a Conscious Agent's persistent noetic address. It is:
+
+- **eternal while the same agent exists** — it survives death, reincarnation, resleeve and upload;
+- **not inherited by a copy, fork or simulation** (`Ident.survives("fork") is False`);
+- **not a name, a body, a photograph, an address or a consent token** — `learn_ident()` demands one of
+  three sources (authored encounter, consensual exchange, recognition technique) and refuses everything
+  else;
+- **learnable at rank 2, usable only at rank 3**;
+- **never a way through a ward** — a blocked arrival says so without naming where the agent is.
+
+Level 3 editing is **permission, not power**: `may_edit(owner=…, editor=…)` allows your own information
+or an unclaimed limbo, and refuses another agent's, a protected mind, a physical system or a Cyber node.
+
+## What is still not code
+
+- the **damage bridge** (`ASTRAL_DAMAGE_BRIDGE_APPROVED = False`), the published-technique whitelist, and
+  manifestation channels — the three questions in §10 above, unchanged;
+- **ranks 2–4 behaviour** beyond their gates: ROTE payloads, quantum-information editing consequences and
+  Akashic research are design-only by author instruction;
+- the **provisional Effort and action costs** for a jump — settled against the published psionics
+  framework before any number is written.
+
 ## Cross-references
 
 - [`PSI_ACCESS_1178.md`](../rules/PSI_ACCESS_1178.md) — Astral Projection remains scripted, not a power
 - [`PSI_CARRYOVER_1196.md`](../rules/PSI_CARRYOVER_1196.md) — why the Astral graph is still deferred
 - [`../campaign/DREAMS.md`](../campaign/DREAMS.md) — dream source ambiguity
 - `docs/rules/ASTRAL_PSI_1164.md` — the earlier design record, superseded where it conflicts
+
+## Additional fail-closed action gating (PR #1266)
+
+`src/rules/astral_progression_1261.py` is an additive **scene-action authorization** adapter, not a replacement for `AstralSkill` or `astral_body.py`. Rank 0 permits observation, walking, astral contact and return. Rank 1 additionally permits flight in Space/Time and entry to a Lower Astral dream world **only through an authored gateway**. Inactive projections, invalid rank values and unknown actions fail closed. Rank 2–4 actions are still design-only, regardless of capabilities described in the rank model. This gate alone never overrides consent, physical-targeting rules, mode transitions, SWN Effort or entry eligibility. Voluntary entry, Effort/duration, the damage bridge and the SWN whitelist still await author approval.
