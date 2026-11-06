@@ -245,3 +245,35 @@ or an unclaimed limbo, and refuses another agent's, a protected mind, a physical
 ## Additional fail-closed action gating (PR #1266)
 
 `src/rules/astral_progression_1261.py` is an additive **scene-action authorization** adapter, not a replacement for `AstralSkill` or `astral_body.py`. Rank 0 permits observation, walking, astral contact and return. Rank 1 additionally permits flight in Space/Time and entry to a Lower Astral dream world **only through an authored gateway**. Inactive projections, invalid rank values and unknown actions fail closed. Rank 2–4 actions are still design-only, regardless of capabilities described in the rank model. This gate alone never overrides consent, physical-targeting rules, mode transitions, SWN Effort or entry eligibility. Voluntary entry, Effort/duration, the damage bridge and the SWN whitelist still await author approval.
+
+
+## Rank 0–1 action authorization (PR #1266; #1261)
+
+The rank table in `src/rules/astral_progression.py` is authoritative for
+superskill progression and optional duration data. The complementary
+`src/rules/astral_progression_1261.py` supplies **per-action, fail-closed
+rank gates**, not a second progression ladder. Projection state, perception
+and targeting remain owned by `src/rules/astral_body.py`.
+
+At rank **0**, while projected, observe, walk, permitted astral contact and
+return pass the rank gate. Rank **1** also permits **flight in the near Astral
+Space/Time mode**, and Lower Astral entry **only through an authored gateway**.
+Neither rank may use ROTE, Ident, information editing or higher-plane travel.
+These remain design-only even if a caller supplies rank 2–4. Rank permission
+never overrides physical targeting, consent, scene access or SWN Effort.
+
+**Tabletop loop:** establish an authorised projection event and fixed body
+anchor; render Space/Time according to rank; offer local observation, contact,
+movement or return, plus rank-1 flight and authored dream gateways; apply the
+existing Astral Body perception and CWN combat rules; return to the same body.
+The passage from a dream landscape to Time/Space still requires an **authored
+mode transition**, not just a rank check. Keep astral observations separate
+from admissible physical evidence. The rank gate **does not grant entry**
+without an appropriate scripted or approved voluntary trigger.
+
+**Unresolved:** native character creation eligibility, voluntary initiation,
+Effort and recovery, provisional duration activation, the astral damage bridge,
+and the SWN technique whitelist require separate author approval. This change
+does not activate any of them. Test coverage for these action gates is in
+`tests/test_astral_rank_actions_1261.py`; the original
+`tests/test_astral_progression_1261.py` remains on the superskill table.
