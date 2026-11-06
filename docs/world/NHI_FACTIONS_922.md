@@ -45,6 +45,8 @@ A competing interstellar bloc that penetrated quarantine and established terrest
 
 **Likely human-facing groups:** corporate partners, biotech and cortical-stack ventures, investors, economic-zone advocates, contractors, abductee networks, infiltrated agencies, hybrid communities, anti-Orion resistance, and militarized counter-groups.
 
+> **See also:** the Orion–MJ-12 alliance dossier ([`ORION_MJ12_1253.md`](ORION_MJ12_1253.md)) — its history, the source-tagged base register, the capture model and the Europol hooks. That dossier defers to this page on species: it does not add Orion species of its own.
+
 ## Other NHI actors and relevant classifications
 
 ### Sirians / Ents: sentient biopunk trees
