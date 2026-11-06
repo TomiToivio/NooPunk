@@ -188,3 +188,94 @@ shapes. No high-dimensional renderer is required — the prose does the work.
 - [`PSI_CARRYOVER_1196.md`](../rules/PSI_CARRYOVER_1196.md) — why the Astral graph is still deferred
 - [`../campaign/DREAMS.md`](../campaign/DREAMS.md) — dream source ambiguity
 - `docs/rules/ASTRAL_PSI_1164.md` — the earlier design record, superseded where it conflicts
+
+
+---
+
+## 11. Author revision: Astral Projection superskill progression (2026-11-06)
+
+**Latest authority:** issue #1261's latest author comment. This section supersedes §4's
+older blanket statement that Astral Projection can *only* be scripted and is *never*
+a learnable discipline. The precise character-creation eligibility, voluntary-entry
+cost, Psychic Effort cost and maximum duration are **pending author approval**.
+A scripted OOBE still works without trained skill. Do not interpret this draft as a
+free character-creation skill or a change to the published CWN/SWN core.
+
+### Rank reference
+
+| Rank | Understanding / perception | Reach and capabilities | Status |
+| --- | --- | --- | --- |
+| **0: Disorientation** | Near-physical headset, distorted material features, unsure whether dreaming; no QIP theory | Astral separation through eligible or scripted entry; observe, walk, meet astral occupants, return | **MVP rank policy** |
+| **1: Lucidity** | Understands ordinary geometry is not binding and dreams respond to attention | Astral flight / rapid movement; authored gates into Lower Astral, personal/collective dream worlds | **MVP rank policy** |
+| **2: Conscious Agent Network** | Recognizes quantum information and conscious-agent relations beneath rendered objects | Transmit Information (ROTE) as Astral-specific technique; learn and recognize Ident | **Design only** |
+| **3: Informational agency** | Differentiates projections, matter, information and access rights | Use Ident for astral-only relocation; permission-scoped quantum information read/write/edit/delete | **Design only** |
+| **4: Cosmological research** | Higher-dimensional Noöspace, Law of One interpretations, dim timelines | Devachanic/Etheric/Buddhic access and bounded Akashic research | **Design only** |
+
+**Supersessions:** The older version that placed higher planes at rank 2 is
+superseded by rank 4. ROTE is rank 2, **not** Telepathy. Learning an Ident is
+rank 2, **using** it for instant astral relocation rank 3. A persistent Ident
+is neither a physical address nor consent to contact. Higher-rank editing
+cannot modify another agent, the Physical Graph or Cyber data by implication.
+
+### Starting character and scene policy
+
+- Only rank **0 or 1** is eligible in the initial campaign. A scene may still
+  author a projection for an untrained actor; its abilities never exceed the
+  specific scene permission. Rank does **not** itself establish an entry trigger.
+- Rank 0 can observe, walk, attempt an astral encounter and return. The near
+  Physical overlay is always **fallible**, not admissible evidence. No automatic
+  flight, dream-gateway access or advanced conceptual exposition.
+- Rank 1 can fly **only in the Astral** and access the Lower Astral **only via an
+  authored gateway**. Dream avatars, independent agents and constructed symbols
+  remain different GM entity types, even if they look alike to the player.
+- A Lower Astral scene can use a Time/Space-like subjective interface, but an
+  *authored* mode transition remains required. The existing perception filter
+  must deny direct physical observation from Time/Space.
+- Rank 2–4 actions are **fail-closed design entries** until their mechanics,
+  prerequisites and costs are approved. They do not unlock merely because a
+  test or migration passes a larger integer.
+- CWN Punch handles eligible astral-to-astral unarmed attacks. The existing
+  Astral Body targeting contract still denies ordinary physical attacks by
+  projected agents. No separate Astral Combat skill, duplicate actor, HP pool
+  or Effort track is added.
+
+**Code boundary:** `src/rules/astral_progression_1261.py` gates rank-specific
+actions. `src/rules/astral_body.py` remains sole authority for projection
+state, perception and targeting. `src/rules/astral.py` owns navigable Astral
+Graph semantics only. Passing the rank gate is necessary but never sufficient
+to override a scene's access control, consent, target eligibility or SWN Effort.
+
+### One-page tabletop loop, ranks 0–1
+
+1. The GM establishes an approved entry event and whether the PC possesses
+   permitted Astral Projection skill. Record **one actor ID** and the fixed
+   Physical body location.
+2. Enter Near Astral **Space/Time**, initially rank-appropriate rendering.
+   For rank 0 describe a distorted familiar room and uncertain interpretation;
+   for rank 1, conscious navigation possibilities without granting perfect sight.
+3. Offer explicit scene choices: observe, interact with a permitted astral agent,
+   navigate locally or return. Rank 1 may also fly and take an **authored** dream
+   gateway; rank 0 may not.
+4. Apply the existing Astral Body perception and CWN targeting constraints.
+   Switching to Time/Space needs authored transition, not a movement roll.
+   SWN psychic techniques continue to require independently valid permission
+   and Effort; this rank policy creates neither.
+5. Return to the *same* Physical body. Keep observed memories and interpretations
+   separate. No automatic police evidence, remote surveillance or case closure.
+
+### Design decisions still open
+
+1. Does native Astral Projection require Psychic class and Psychic Training, a
+   permitted Focus/Edge, or a different explicit starting eligibility?
+2. What are entry action, Effort commitment and recovery rules? The provisional
+   **10 minute** (rank 0) and **60 minute** (rank 1) caps are **not activated**.
+3. Is voluntary initiation available to trained rank 0–1 PCs, in addition to
+   scripted OOBEs, and what interruption/return check applies?
+4. Are Lower Astral gates always authored, and which entry conditions permit
+   Time/Space-like dream traversal versus general mode switching?
+5. The astral damage bridge and SWN astral-target technique whitelist remain
+   separate unresolved author decisions (§5, §10).
+
+This is fictional NoöPunk metaphysics, not established quantum physics.
+Consciousness-induced wavefunction collapse, reconverging timelines and
+Akashic access are **setting hypotheses** rather than empirical conclusions.
