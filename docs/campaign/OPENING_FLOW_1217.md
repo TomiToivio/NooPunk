@@ -53,6 +53,19 @@ Both are transcription tasks with a citation, not design tasks. Until they exist
 callable only with a caller-supplied catalogue — which is what the tests do, with fixtures that say
 so in their docstring.
 
+## Portable presentation and console resume (increment #1217)
+
+The existing `Opening.view()` returns a JSON-safe read-only screen contract for the **current** actor: canonical actor and sheet IDs, current scene, current physical location, available first-day verbs, equipment coverage, and completion status. It deliberately does not expose the complete physical, social, cyber, or story graphs, because they may contain undiscovered nodes. The presentation can feed a text client, an Evennia command or a later Pygame-ce view without creating another resolver or session.
+
+The reference console can now resume an already validated character's opening:
+
+```bash
+PYTHONPATH=src python -m console --opening --load opening.json
+PYTHONPATH=src python -m console --opening --load opening.json --script actions.txt --save updated.json
+```
+
+Commands are `actions`/`help`, `status`/`look`, any verb in `Opening.actions()`, `save [path]`, and `quit`. The console delegates each mutation to `Opening.act()`. It does not create a default character, since verified CWN catalogues are still missing. This is **not** an Evennia command registration or a Pygame-ce display implementation; those remain open.
+
 A third, smaller gap: the Foci catalogue exists (`cwn_foci`, 26 published Foci) but the flow passes
 Focus picks through unchanged; choosing Foci is not yet a tested path for Tony.
 
