@@ -11,6 +11,7 @@ one or supersede it.
 | **Player briefing — first day** | [`PLAYER_BRIEFING.md`](PLAYER_BRIEFING.md) | **AUTHOR DRAFT / TEMPLATE** — author-owned first-session briefing (#1216) |
 | **Episode 0 — first day** | [`EPISODE_00_FIRST_DAY.md`](EPISODE_00_FIRST_DAY.md) | **AUTHOR DRAFT** — Tomi writes the opening script (#1218); agents implement only after approval |
 | **Opening flow — build then wake** | [`OPENING_FLOW_1217.md`](OPENING_FLOW_1217.md) | **IMPLEMENTED JOIN** — answers → Lifepath → first-day session + kit (#1217); blocked on two transcriptions |
+| **Gateway — the astral venue** | [`GATEWAY_1255.md`](GATEWAY_1255.md) | **DESIGN DRAFT (#1255)** — facility, seven-step procedure, and the conditions for a bounded Astral Graph; the graph is **not built**, the authored mission is Tomi's |
 
 Related but separate:
 
