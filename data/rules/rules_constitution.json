@@ -113,10 +113,6 @@
         "tier": "noopunk-mod"
       },
       {
-        "module": "src/rules/astral_ranks.py",
-        "tier": "experimental"
-      },
-      {
         "module": "src/rules/astral.py",
         "tier": "noopunk-mod"
       },

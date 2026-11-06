@@ -155,3 +155,58 @@ def assert_astral_domain_only() -> None:
 def duration_cap_minutes(value: int) -> int:
     """The provisional ceiling, returned with no pretence that the author has finalised it."""
     return rank_of(value).duration_cap_minutes
+
+
+# --------------------------------------------------------------------------- #
+# Rank 3: editing is permission, not power
+# --------------------------------------------------------------------------- #
+# The author's rule is that level 3 may "edit quantum information only within the agent's authorised scope" — in
+# near or higher astral that generally means one's own information, while deeper limbo may be malleable. That is a
+# property of the *pattern*, not of the rank, so it lives here as a separate gate rather than as a capability string.
+
+
+@dataclass(frozen=True)
+class InformationPattern:
+    """A quantum-information pattern in the astral interface, and whether the scene lets it change.
+
+    ``mutable`` is the scene's own statement. A scene's editable symbolic scenery never implies that atoms, records
+    or another agent's identity are editable.
+    """
+
+    pattern_id: str
+    owner_id: str
+    mutable: bool = False
+
+    def __post_init__(self) -> None:
+        if not self.pattern_id.strip() or not self.owner_id.strip():
+            raise AstralProgressionError("a pattern needs an id and an owner")
+
+
+def may_edit(value: int, actor_id: str, pattern: InformationPattern, *, mandate: bool = False) -> bool:
+    """Whether this rank may edit this pattern.
+
+    Rank 3 edits its **own** information. Another agent's pattern needs both a mutable pattern and an authored
+    mandate; rank alone never grants it, and rank 4's plane access does not change the rule.
+    """
+    rank = rank_of(value)
+    if not pattern.mutable or rank.rank < 3:
+        return False
+    if pattern.owner_id == actor_id:
+        return True
+    return mandate
+
+
+def require_edit(value: int, actor_id: str, pattern: InformationPattern, *, mandate: bool = False) -> None:
+    """Refuse an edit with the reason, rather than silently doing nothing."""
+    if may_edit(value, actor_id, pattern, mandate=mandate):
+        return None
+    rank = rank_of(value)
+    if not pattern.mutable:
+        raise AstralProgressionError(f"{pattern.pattern_id} is not editable in this scene")
+    if rank.rank < 3:
+        raise AstralProgressionError(
+            f"editing quantum information needs Astral Projection 3; the character has {rank.rank}"
+        )
+    raise AstralProgressionError(
+        f"{pattern.pattern_id} belongs to another agent; a mutable pattern plus an authored mandate is required"
+    )
