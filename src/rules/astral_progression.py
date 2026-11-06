@@ -148,3 +148,6 @@ def assert_astral_domain_only() -> None:
 
 def duration_cap_minutes(value: int) -> int:
     return _duration_cap_minutes(int(value))
+
+
+from .astral_ranks import InformationPattern, may_edit, require_edit  # noqa: E402  (re-export, not a second gate)

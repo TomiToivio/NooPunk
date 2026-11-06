@@ -101,11 +101,11 @@
         "tier": "noopunk-mod"
       },
       {
-        "module": "src/rules/astral_body.py",
+        "module": "src/rules/astral.py",
         "tier": "noopunk-mod"
       },
       {
-        "module": "src/rules/astral_progression_1261.py",
+        "module": "src/rules/astral_body.py",
         "tier": "noopunk-mod"
       },
       {
@@ -113,11 +113,11 @@
         "tier": "noopunk-mod"
       },
       {
-        "module": "src/rules/astral_ranks.py",
-        "tier": "experimental"
+        "module": "src/rules/astral_progression_1261.py",
+        "tier": "noopunk-mod"
       },
       {
-        "module": "src/rules/astral.py",
+        "module": "src/rules/astral_ranks.py",
         "tier": "noopunk-mod"
       },
       {
@@ -177,11 +177,11 @@
         "tier": "cwn-core"
       },
       {
-        "module": "src/rules/cwn_combat_actions.py",
+        "module": "src/rules/cwn_combat.py",
         "tier": "cwn-core"
       },
       {
-        "module": "src/rules/cwn_combat.py",
+        "module": "src/rules/cwn_combat_actions.py",
         "tier": "cwn-core"
       },
       {
@@ -245,11 +245,11 @@
         "tier": "cwn-core"
       },
       {
-        "module": "src/rules/cwn_magic_items.py",
+        "module": "src/rules/cwn_magic.py",
         "tier": "cwn-core"
       },
       {
-        "module": "src/rules/cwn_magic.py",
+        "module": "src/rules/cwn_magic_items.py",
         "tier": "cwn-core"
       },
       {
@@ -333,11 +333,11 @@
         "tier": "noopunk-mod"
       },
       {
-        "module": "src/rules/investigation_evidence.py",
+        "module": "src/rules/investigation.py",
         "tier": "noopunk-mod"
       },
       {
-        "module": "src/rules/investigation.py",
+        "module": "src/rules/investigation_evidence.py",
         "tier": "noopunk-mod"
       },
       {
