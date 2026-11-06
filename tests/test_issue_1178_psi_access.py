@@ -142,7 +142,8 @@ class DeviceGrantTests(unittest.TestCase):
 class DeferredWorkTests(unittest.TestCase):
     def test_the_psychic_training_focus_is_not_simulated_before_the_text_is_available(self):
         """Refusing to invent level benefits is the point; the flag documents the omission."""
-        self.assertFalse(PSYCHIC_TRAINING_FOCUS_AVAILABLE)
+        # Implemented from the author's quotation in #1178 §1; see src/rules/psychic_training.py (#1217 line 11).
+        self.assertTrue(PSYCHIC_TRAINING_FOCUS_AVAILABLE)
 
 
 if __name__ == "__main__":

@@ -405,6 +405,10 @@
         "tier": "swn-companion"
       },
       {
+        "module": "src/rules/psychic_training.py",
+        "tier": "swn-companion"
+      },
+      {
         "module": "src/rules/rookie_build.py",
         "tier": "noopunk-mod"
       },

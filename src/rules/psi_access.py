@@ -50,10 +50,15 @@ NPC_ONLY_EDGES: tuple[str, ...] = ()
 
 #: The Psychic Training Focus is only implemented once the printed text is available. Until then the
 #: policy refuses to *simulate* it rather than inventing level benefits.
-PSYCHIC_TRAINING_FOCUS_AVAILABLE = False
+#: The focus is implemented, from the author's own quotation of it in #1178 §1. The *prose* is not reproduced: the
+#: mechanics live in `src/rules/psychic_training.py`, and the locator there says where the rule came from and who
+#: supplied it. Kept here because this module is the one a policy check reads first.
+PSYCHIC_TRAINING_FOCUS_AVAILABLE = True
 PSYCHIC_TRAINING_FOCUS_BLOCKED_REASON = (
-    "Psychic Training Focus needs its published level benefits and Effort increases verbatim; "
-    "this repository does not transcribe rules from memory (#1043, #1178 §1)."
+    "Implemented in src/rules/psychic_training.py from the author's quotation in #1178 §1: bonus psychic skill, "
+    "free rank-1 technique, maximum Effort +1, and level-2 points banked and granted retroactively. The printed prose "
+    "is not reproduced here (docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md); the retroactive formula is a reading "
+    "of that text and is flagged as such."
 )
 
 
