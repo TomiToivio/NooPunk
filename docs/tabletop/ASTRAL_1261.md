@@ -1,5 +1,10 @@
 # Astral Body — tabletop procedure (#1261)
 
+> **Revision status.** The procedure below describes the earlier runtime. For the author's evening rank and
+> technique revision — which re-ranks ROTE, the planes and information editing — see
+> [§ Evening revision: cosmology and technique progression](#evening-revision-cosmology-and-technique-progression-2026-11-06)
+> at the end of this page. **The runtime still enforces the earlier ladder**; the deltas are listed there.
+
 > **Status: author-readable procedure for approval.** The structural part is implemented
 > (`src/rules/astral_body.py`, 30 tests). The parts that need a ruling are marked **AWAITING APPROVAL**
 > and are not implemented, so nothing here can quietly become a house rule.
@@ -277,3 +282,140 @@ and the SWN technique whitelist require separate author approval. This change
 does not activate any of them. Test coverage for these action gates is in
 `tests/test_astral_rank_actions_1261.py`; the original
 `tests/test_astral_progression_1261.py` remains on the superskill table.
+
+---
+
+# Evening revision: cosmology and technique progression (2026-11-06)
+
+> **Author direction, design-only.** This re-ranks four things against the runtime and adds techniques
+> the runtime does not have. Nothing below is implemented yet, and the page says so per item, because a
+> design page that reads like a feature list becomes a lie the moment it is merged.
+
+## One Noöspace, three perspectives
+
+- **I-space = Noöspace** — the potentially infinite-dimensional informational reality.
+- **P-space** — the embodied physical *perceptual headset*, a stable three-dimensional rendering.
+- **C-space** — intrinsically private conscious experience: qualia, meaning, the felt interior.
+
+The Astral Body is an informational vehicle that separates from the Physical Body and interfaces with
+nonphysical environments. **Every plane, including the higher ones, belongs to the Noöspace/I-space
+model** — there is no rival second Noöspace universe to keep in sync.
+
+**Faggin fidelity.** In *Consciousness Comes First*, "The Nature of P-Space" (pp. 303–305), the seity
+colours a body's symbolic representation of informational reality with native qualia; nested physical,
+astral and mental symbols are proposed, with the physical world as a lower-resolution virtual experience
+of a vaster information space, and OBEs/lucid dreams as possible encounters with an intermediate astral
+symbolic reality. Faggin does **not** literally identify all of I-space with the astral plane, and
+I-space and C-space are distinct in his framework. The game compresses them into one practical Noöspace
+layer while keeping objective symbols apart from private experience. Faggin's astral hypothesis is not
+experimentally established.
+
+## Four axes, not one ladder of seven maps
+
+1. **Density** — the native stage/vehicle of the conscious agent.
+2. **Plane** — the accessible phenomenal/information environment.
+3. **Space/Time vs Time/Space** — the mode of perception and causality.
+4. **Region** — geography, including literal **inside Earth**, independent of density.
+
+Polarisation StO/StS is an attribute of an agent, not a different physics engine.
+
+| Density | Native vehicle/stage | Plane | Dominant mode |
+| --- | --- | --- | --- |
+| 1 | Physical-native panpsychic matter; no *developed* personality or reflective agency | 1st Astral (liminal) | Space/Time |
+| 2 | Physical-native biological life, body/mind evolving | 2nd Astral (instinct/dream) | Space/Time |
+| 3 | Physical-native human-type mind/body/spirit, chooses StO/StS | 3rd Astral (human dream/collective unconscious) | Space/Time |
+| 4 | Astral-native polarised human-type, evolving love and Social Memory Complex; keeps nested legacy bodies in this canon | 4th Astral | Space/Time |
+| 5 | Wisdom-stage beings, last with legacy biological bodies | Devachanic | Space/Time |
+| 6 | High-order unifying/integrating beings | Etheric | Time/Space |
+| 7 | Beyond familiar individuation, near Source | Buddhic | Time/Space |
+
+**Lower Astral limbo:** densities 1–3 are native to Physical life, so their Astral counterparts are less
+stable and more dreamlike. "Not real" means *not native*, not *causally meaningless for astral
+encounters*. **Access ≠ native density ≠ understanding** — a fourth-density visitor may reach the fifth
+to seventh planes with severely limited comprehension.
+
+**Do not attribute the table to Ra.** Sessions 17.36–38 describe seven astral and seven devachanic broad
+primary levels, lower astral thoughtforms, higher teaching entities, infinitely many planes and
+non-chemical-bodied residents of Earth's inner planes. The one-to-one mapping *1st Astral = density 1, 5 =
+Devachanic, 6 = Etheric, 7 = Buddhic* is **NoöPunk author mapping**, and so is the native-vehicle
+distinction. Note also that Faggin's seities have irreducible identity and agency, so density 1 should be
+written as **"not yet developed personality or reflective agency"**, never as "no identity".
+
+**Inner planes are also literally under the Earth.** Any plane may have an earth-interior region; a
+fourth-density inner-Earth settlement and a sixth-density core interface are both admissible locales.
+Keep this distinct from Ra's nonphysical "inner planes" — both meanings may coexist.
+
+## Technique progression (supersedes the runtime ladder)
+
+| Level | Techniques | Change vs runtime |
+| --- | --- | --- |
+| **0 — Introduction** | Disoriented near-physical OOBE, separation, distorted physical overlay, basic perception and return. 10-minute cap provisional | unchanged |
+| **1 — Fluency** | Flight, Lower Astral, dream entry, **plus** Astral Analysis (aura/signature reading), Astral Tracking (follow a fading trace), Astral Combat (CWN Punch, not a new skill), **Transmit Information (ROTE)** | **ROTE moves 2 → 1** |
+| **2** | **Physical Manifestation** (ectoplasmic, visible not tangible), **Astral Barrier** (bounded ward, interoperable with AntiPSI), **Devachanic Projection** | **Devachanic moves 4 → 2** |
+| **3** | **Thought Form Manifestation** (the one physical-interaction breach, tightly bounded), **Collapse Wave Function**, **Set in Superposition**, **Interfere**, **Etheric Projection**, **Use Ident** | Etheric 4 → 3; wave techniques new |
+| **4** | **Create Conscious Agent**, **Edit Quantum Information** (general, permission-scoped), **Search the Akashic Records**, **Buddhic Projection** | full edit 3 → 4; Buddhic stays 4 |
+
+**Durations** stay 10 m / 60 m / 10 h / 48 h / 7 d, still **provisional**.
+
+**Astral Analysis ≠ Astral Tracking ≠ Ident.** Reading an aura is not following a fading trail, which is
+not recognising a permanent Ident, which is not Level-3 instant relocation. An Ident is eternal while the
+*same* Conscious Agent persists; a trace can fade, break or be spoofed.
+
+## What the runtime actually enforces today
+
+The single ladder lives in `src/rules/astral_ranks.py` and is read through `src/rules/astral_progression.py`.
+It still implements the **earlier** ranking:
+
+| Item | Runtime (`astral_ranks.py`) | Evening revision |
+| --- | --- | --- |
+| ROTE | rank 2 | **rank 1** |
+| Devachanic | rank 4 (as `HIGHER_PLANES`) | **rank 2** |
+| Etheric | rank 4 (as `HIGHER_PLANES`) | **rank 3** |
+| Buddhic | rank 4 | rank 4 |
+| General quantum-information edit | rank 3 (`EDIT_OWN_INFORMATION`) | **rank 4** |
+| Analysis / Tracking / Barrier / Thought Form / wave techniques | absent | rank 1–3 |
+| Starting ranks | 0–1 | 0–1 (unchanged) |
+
+Migrating those gates is a separate, reviewable increment against `#1261`; the tests that assert the old
+minima must be replaced in the same change, not quietly loosened.
+
+## Runtime reconciliation
+
+| Existing owner | Treatment when the mechanics are approved |
+| --- | --- |
+| `src/rules/astral_body.py`, `src/rules/astral.py` | Reuse the body anchor, the perception/target filters and graph edges. Agents stay occupants. |
+| `src/rules/astral_ranks.py` (with `astral_progression.py` as its compatibility face) | Migrate the gates together; one ladder, one file. |
+| `tests/test_astral_two_scenes_1261.py` and the rank suites | Keep the bedroom, flight and return regressions; replace superseded rank assertions in the migration commit, then add aura, interrupted trace, refused ROTE and CWN defence. |
+| Tabletop, CLI and Evennia | Same approved rules and fixtures; verify each interface before claiming playability. |
+
+## Running the opening scenes
+
+1. **Bedroom OOBE.** Record the actor's physical node and the scene's return trigger. Describe one
+   recognisable detail and one distortion. Let the player inspect an astral presence, try an ordinary
+   action, defend against an astral attacker, or return — physical contact resolves through the existing
+   body target filter.
+2. **Lucid flight over Helsinki.** Offer an authored Lower Astral dream entrance; in Time/Space replace
+   direct physical sight with the dream's associations. A visible aura gives an impression; following a
+   fading link costs the opportunity to pursue a competing lead and stops where the trace breaks. Neither
+   awards an Ident.
+3. **ROTE demonstration.** A willing astral agent offers a bounded image or feeling. Ask what the recipient
+   understood and record that as testimony. A blocked connection ends the exchange. Scripted until the
+   SWN costs are approved.
+4. **Return.** Resume the same actor at the original node; investigators verify the clue independently.
+   Until the injury bridge is approved, stage a sparring encounter that ends at the first successful CWN
+   Punch rather than assigning physical damage.
+
+## Still awaiting approval
+
+- Which **Level-1 techniques** are core versus opt-in, so four abilities are not free at rank 1.
+- **Action and Effort costs**, range, duration and resistance for each technique.
+- The **injury bridge**, manifestation channels, and which published SWN techniques may target an
+  Astral Body.
+- Whether **Level-1 ROTE** requires an active projection, and whether an Astral Barrier needs
+  concentration.
+- How visitors with restricted perception interact with lower-density natives.
+
+**Rules architecture: one mechanical authority.** SWN Revised psionics remains the discipline/technique/
+Effort engine; CWN remains the immutable authority on skills, combat, saves, injury and hacking; CWN
+Spellcaster/Summoner Magick is an authored ritual/ward/summoning presentation with its own published
+resource — **PSI = Magick in-world, but a technique has exactly one mechanical authority**.
