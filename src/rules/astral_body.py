@@ -22,6 +22,8 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from enum import Enum, IntEnum
 
+from .astral_progression import mvp_max_rank, rank_of
+
 
 class AstralBodyError(ValueError):
     """A projection, perception or targeting call that the rules do not allow."""
@@ -308,16 +310,13 @@ class AstralRank(IntEnum):
 
 
 #: The initial campaign allows 0 or 1. 2-4 are design-only until a later campaign needs them.
-MVP_RANKS: tuple[AstralRank, ...] = (AstralRank.DISORIENTATION, AstralRank.LUCID)
+#: Derived from the rank table rather than restated, so the two cannot drift apart (#1261).
+MVP_RANKS: tuple[AstralRank, ...] = tuple(AstralRank(rank) for rank in range(0, mvp_max_rank() + 1))
 
 #: **Provisional** caps, retained only as ceilings until the author settles them. Not a promise that
 #: a long projection yields reliable knowledge.
 PROVISIONAL_MINUTES: dict[AstralRank, int] = {
-    AstralRank.DISORIENTATION: 10,
-    AstralRank.LUCID: 60,
-    AstralRank.AGENT_NETWORK: 600,
-    AstralRank.AUTHORIZED_AGENCY: 2880,
-    AstralRank.COSMOLOGICAL: 10080,
+    AstralRank(rank): rank_of(rank).duration_cap_minutes for rank in range(5)
 }
 
 #: Planes, in the order the setting climbs them. The first three are reachable inside the MVP; the
@@ -332,11 +331,7 @@ PLANES: tuple[str, ...] = (
 )
 
 _PLANES_BY_RANK: dict[AstralRank, frozenset[str]] = {
-    AstralRank.DISORIENTATION: frozenset({"near_astral"}),
-    AstralRank.LUCID: frozenset({"near_astral", "lower_astral", "astral"}),
-    AstralRank.AGENT_NETWORK: frozenset({"near_astral", "lower_astral", "astral"}),
-    AstralRank.AUTHORIZED_AGENCY: frozenset({"near_astral", "lower_astral", "astral"}),
-    AstralRank.COSMOLOGICAL: frozenset(PLANES),
+    AstralRank(rank): frozenset(rank_of(rank).planes) for rank in range(5)
 }
 
 #: The only ways an Ident may be learned. A name, an address, a photograph or a body is none of them.

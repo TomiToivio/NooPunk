@@ -29,7 +29,9 @@
       "rote": false,
       "ident_learn": false,
       "ident_use": false,
-      "planes": [],
+      "planes": [
+        "near_astral"
+      ],
       "akashic": false,
       "duration_cap_minutes": 10
     },
@@ -54,7 +56,11 @@
       "rote": false,
       "ident_learn": false,
       "ident_use": false,
-      "planes": [],
+      "planes": [
+        "near_astral",
+        "lower_astral",
+        "astral"
+      ],
       "akashic": false,
       "duration_cap_minutes": 60
     },
@@ -78,7 +84,11 @@
       "rote": true,
       "ident_learn": true,
       "ident_use": false,
-      "planes": [],
+      "planes": [
+        "near_astral",
+        "lower_astral",
+        "astral"
+      ],
       "akashic": false,
       "duration_cap_minutes": 600
     },
@@ -102,7 +112,11 @@
       "rote": true,
       "ident_learn": true,
       "ident_use": true,
-      "planes": [],
+      "planes": [
+        "near_astral",
+        "lower_astral",
+        "astral"
+      ],
       "akashic": false,
       "duration_cap_minutes": 2880
     },
@@ -127,7 +141,14 @@
       "rote": true,
       "ident_learn": true,
       "ident_use": true,
-      "planes": ["devachanic", "etheric", "buddhic"],
+      "planes": [
+        "near_astral",
+        "lower_astral",
+        "astral",
+        "devachanic",
+        "etheric",
+        "buddhic"
+      ],
       "akashic": true,
       "duration_cap_minutes": 10080
     }
@@ -167,5 +188,6 @@
     "no free write access to another agent's information, a protected mind or a secured system",
     "no automatic time travel, resurrection or omniscience",
     "no claim that present-day physics establishes consciousness-caused collapse or timeline merging"
-  ]
+  ],
+  "planes_note": "The first three are reachable inside the MVP; Devachanic, Etheric and Buddhic are rank 4 by the author's ordering correction."
 }
