@@ -58,8 +58,10 @@ rule and documents it; a rule name outside the registry is refused, so a run can
 
 ## Deliberately absent
 
-* **The AI26 adapter** (work package 2): nothing here reads a canonical record. Mapping and rejection rules are in the
-  boundary document, not in the kernel.
+* **The AI26 adapter** (work package 2): this page's kernel reads no canonical record. The adapter that
+  does — `src/social_sim/ai26.py`, with its validation and refusal rules — is
+  [AI26_ADAPTER_1286.md](AI26_ADAPTER_1286.md). It projects claims and explicit articulations into a
+  bundle; it still creates no actor and runs no rule.
 * **Behavioural rules beyond the baseline** (work package 3): influence, coalition and institutional response are
   assumptions that need their own rationale and parameters.
 * **Experiments, exports, metrics, visualization** (work packages 4–6).
