@@ -211,6 +211,39 @@ class FirstDayTests(unittest.TestCase):
         with self.assertRaises(FirstDayError):
             first_day_action(session, "dispatch")
 
+    def test_faulty_radio_uses_phone_dispatch_without_softlock(self):
+        session = create_first_day()
+        session.kit.mark_faulty("police_radio", "Battery fault")
+        prepare_kit(session)
+        self.assertNotIn("radio", session.kit.coverage())
+        self.assertIn("dispatch.call", session.kit.coverage())
+        self.assertIn("dispatch", available_first_day_actions(session))
+        first_day_action(session, "dispatch")
+        first_day_action(session, "ride")
+        first_day_action(session, "arrive")
+        first_day_action(session, "report")
+
+    def test_missing_required_capability_blocks_dispatch(self):
+        session = create_first_day()
+        session.kit.mark_faulty("body_camera", "Sensor fault")
+        prepare_kit(session)
+        self.assertIn("recording", session.kit.missing())
+        self.assertNotIn("dispatch", available_first_day_actions(session))
+        session.kit.repair("body_camera")
+        self.assertIn("connect:body_camera", available_first_day_actions(session))
+        first_day_action(session, "connect:body_camera")
+        self.assertIn("dispatch", available_first_day_actions(session))
+
+    def test_kit_state_and_psychotronic_sources_survive_snapshot(self):
+        session = create_first_day()
+        prepare_kit(session)
+        self.assertIn("romppainen_fujita_device", session.kit.active_sources())
+        session.kit.mark_faulty("romppainen_fujita_device", "Calibration")
+        restored = WorldSession.from_snapshot(session.to_snapshot())
+        self.assertNotIn("romppainen_fujita_device", restored.kit.active_sources())
+        self.assertIn("psi.interface", restored.kit.missing(("psi.interface",)))
+        self.assertIn("dispatch", available_first_day_actions(restored))
+
     def test_route_reporting_no_combat_and_no_softlock(self):
         session = create_first_day()
         prepare_kit(session)
