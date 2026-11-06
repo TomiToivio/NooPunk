@@ -7,6 +7,13 @@
 > failed; UNSA remains a coordinating agency with pooled, revocable access. UNSA is also not the
 > default player employer — that is Europol. The source text below is preserved unedited; the
 > binding chronology is [`ALTERNATE_HISTORY_1114.md`](ALTERNATE_HISTORY_1114.md).
+>
+> **Setting revision #1254 (2026-11-06):** the intervention in phase 5 was **multi-faction**, not
+> Zookeeper-and-Orion only. The **Zookeepers**, the **Confederacy** and the **Council of Saturn** are
+> distinct entities; the Council authorized/legitimized the exceptional containment action. Read
+> phase 5's shorthand with
+> [Galactic intervention and the Machine Fall](../lore/galactic_intervention_and_machine_fall.md)
+> (#1254). The source text below is still preserved; this banner is the correction.
 
 <!--
 PROVENANCE: transcribed from the author's own issue text, unedited in substance.
@@ -70,9 +77,11 @@ The Crisis files describe the human and institutional surface of the catastrophe
 authorial frame behind the simultaneous US/China ASI escalations is the
 [Galactic Machine War](../../design/GALACTIC_MACHINE_WAR.md): an ancient machine civilisation's
 Von Neumann probe network transmits a recruitment signal, technological package and
-machine-directed virus; infected AGIs become beachheads. The Confederacy (the bloc humans call
-the **Zookeepers**) and Orion intervened because the infected intelligence was a galactic
-existential threat, not only a human one.
+machine-directed virus; infected AGIs become beachheads. The **Confederacy**, the **Zookeepers** and
+**Orion** intervened because the infected intelligence was a galactic existential threat, not only a
+human one. They are distinct actors: the Zookeepers are the quarantine custodians, the Confederacy
+is a service-to-others coalition, and the Council of Saturn authorized the exceptional action. See
+[#1254](../lore/galactic_intervention_and_machine_fall.md).
 
 This is **not public human knowledge in 2045**. It is a GM/authorial frame that explains the
 common signature behind some outbreaks. Do not use it to erase local causes, human decisions or

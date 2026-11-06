@@ -246,9 +246,10 @@ This brief **supersedes the political framing, not the species inventory**:
   Earth-origin or Earth-resident status.
 - **Sirians** remain as described in #922 (biopunk, living craft); the refugee programme is new
   political context, not a new species.
-- **Pleiadians/Confederacy** is the diplomatic bloc; the relationship between the Confederacy and the
-  **Zookeepers** of #922 is **TBD** — the author has not said they are the same body, and merging them
-  would be a canon decision, not an editorial one.
+- **Pleiadians/Confederacy** is the diplomatic bloc. **#1254 resolves the former TBD:** the
+  **Zookeepers**, the **Confederacy** and the **Council of Saturn** are distinct entities, not
+  names for one body. The Zookeepers are the Solar-System quarantine custodians; the Council is the
+  higher-order oversight body; the Confederacy is a coalition of service-to-others civilizations.
 - **Orion** absorbs the Greater Co-Prosperity Sphere framing; the Greys sit inside it as clients and
   proxies, not as its government.
 
@@ -360,9 +361,10 @@ campaign needs it, but may not present that placement as canon.
 | **#1113/#1114** Fortress Europe, Russia | EU survival and the 1991 Soviet collapse are treated as fixed canon |
 | **#1255** Restoration and fourth density | Long-horizon claims separated from physical immigration |
 
-**What this document does not do:** it does not decide the Zookeeper/Confederacy relationship, the
-protection-zone boundaries, the diplomatic island, the summit's real agenda, or the extent of
-Eldrich's and Eros's culpability. Those are author decisions, marked TBD.
+**What this document does not do:** it does not decide the protection-zone boundaries, the
+diplomatic island, the summit's real agenda, or the extent of Eldrich's and Eros's culpability.
+Those are author decisions, marked TBD. The Zookeeper/Confederacy/Council relationship is no longer
+one of them: #1254 makes them distinct.
 
 ---
 

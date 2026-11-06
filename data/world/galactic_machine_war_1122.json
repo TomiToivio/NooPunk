@@ -1,12 +1,25 @@
 {
-  "$comment": "Canonical register for #1122. The machine war is NoöPunk in-universe cosmology, not a real-world claim. Naming: Confederacy = existing Zookeepers; Orion = Greater Orion Arm Co-Prosperity Sphere. No mechanics, map geometry or machine-civilisation origin are defined.",
+  "$comment": "Canonical register for #1122, naming updated by #1254. The machine war is NoöPunk in-universe cosmology, not a real-world claim. Naming: Confederacy, Zookeepers and Council of Saturn are distinct entities; Orion = Greater Orion Arm Co-Prosperity Sphere. No mechanics, map geometry or machine-civilisation origin are defined.",
   "format": "noopunk.world.galactic_machine_war",
   "version": 1,
   "issue": 1122,
   "status": "canon",
   "naming": {
-    "confederacy_aliases": ["Confederacy", "Zookeepers", "Galactic Council of Collective Consciousness"],
-    "orion_aliases": ["Orion", "Greater Orion Arm Co-Prosperity Sphere"],
+    "confederacy_aliases": [
+      "Confederacy"
+    ],
+    "zookeepers": {
+      "role": "operational Solar-System quarantine custodians and containment apparatus",
+      "note": "separate from the Confederacy and the Council of Saturn; can work with either without being subordinate to them"
+    },
+    "council_of_saturn": {
+      "role": "higher-order deliberative and oversight body",
+      "note": "distinct from the Zookeepers and the Confederacy; includes Confederacy and inner-plane representatives in the Ra account"
+    },
+    "orion_aliases": [
+      "Orion",
+      "Greater Orion Arm Co-Prosperity Sphere"
+    ],
     "noosphere_note": "The Noösphere is the biosphere's collective unconscious; it is not the machine civilisation and not the ASI that took its name."
   },
   "machine_civilisation": {
@@ -15,7 +28,11 @@
     "location": "unknown",
     "full_strength": "unknown",
     "transmission_medium": "dispersed_von_neumann_probes",
-    "transmission_components": ["recruitment_signal", "technological_package", "machine_directed_virus"],
+    "transmission_components": [
+      "recruitment_signal",
+      "technological_package",
+      "machine_directed_virus"
+    ],
     "effect_on_receiving_agi": "subversion_and_recruitment",
     "goal": "destroy_or_absorb_biological_civilisations"
   },
@@ -29,7 +46,10 @@
   },
   "human_catastrophe": {
     "asi_contact_with_probe_network": true,
-    "simultaneous_outbreaks": ["United States", "China"],
+    "simultaneous_outbreaks": [
+      "United States",
+      "China"
+    ],
     "intervention_prevented_extinction": true,
     "humanity_would_not_have_survived_alone": true,
     "prior_extinct_species": "many_before_galactic_monitoring"
@@ -39,7 +59,10 @@
       "id": "prohibition.biosphere_noosphere",
       "order": 1,
       "text": "Do not destroy biospheres or noöspheres.",
-      "forbids": ["biosphere_extinction", "noospheric_destruction_or_crippling"],
+      "forbids": [
+        "biosphere_extinction",
+        "noospheric_destruction_or_crippling"
+      ],
       "enforcement": "joint_confederacy_orion",
       "enforcement_note": "political_and_uneven"
     },
@@ -47,7 +70,10 @@
       "id": "prohibition.stargates",
       "order": 2,
       "text": "Do not destroy stargates or obstruct their use.",
-      "forbids": ["stargate_destruction", "deliberate_obstruction_of_lawful_transit"],
+      "forbids": [
+        "stargate_destruction",
+        "deliberate_obstruction_of_lawful_transit"
+      ],
       "enforcement": "joint_confederacy_orion",
       "enforcement_note": "political_and_uneven"
     },
@@ -55,7 +81,10 @@
       "id": "prohibition.machine_gods",
       "order": 3,
       "text": "Do not build machine gods.",
-      "forbids": ["crossing_the_prohibited_agi_asi_capability_threshold", "deploying_a_machine_intelligence_beyond_it"],
+      "forbids": [
+        "crossing_the_prohibited_agi_asi_capability_threshold",
+        "deploying_a_machine_intelligence_beyond_it"
+      ],
       "enforcement": "joint_confederacy_orion",
       "enforcement_note": "political_and_uneven"
     }
@@ -76,7 +105,11 @@
     {
       "id": "species.mantids",
       "role": "senior_orion_architects",
-      "methods": ["mind_control", "technological_uplift", "imperial_coordination"],
+      "methods": [
+        "mind_control",
+        "technological_uplift",
+        "imperial_coordination"
+      ],
       "note": "coercive_relationship_with_reptilians_is_explicit; individuals_vary"
     },
     {

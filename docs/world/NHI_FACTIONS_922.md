@@ -4,8 +4,9 @@
 > source-derived inventory: Zookeepers, the Orion Arm sphere, Sirians/Ents, Plasmoids, Martians,
 > Constructs, Noetics, Biologics. The Europol campaign's political grouping — six clusters including
 > the Confederacy/Pleiadians and Machine Civilization — is in
-> [`POLITICS_1252.md`](POLITICS_1252.md) §5.1, which also records what remains **TBD** (notably the
-> relationship between the Confederacy and the Zookeepers). Do not merge them here.
+> [`POLITICS_1252.md`](POLITICS_1252.md) §5.1. **#1254 resolves the former TBD:** the
+> **Zookeepers**, the **Confederacy** and the **Council of Saturn** are distinct entities, not
+> names for one body. Do not merge them here.
 
 > **Consolidated reference (#1005):** [`POST_NHI_WORLD_1005.md`](POST_NHI_WORLD_1005.md) — this file remains the taxonomy and confidence model; that one carries the political economy (Mantids, Greys, Reptilians, Sirians) and the case seeds. The machine-war frame is in [GALACTIC_MACHINE_WAR.md](../../design/GALACTIC_MACHINE_WAR.md) (#1122).
 

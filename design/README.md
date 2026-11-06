@@ -64,7 +64,7 @@ example, a visible place to write your own version, and no YAML, JSON, field nam
 
 ## Issue #1122: Galactic Machine War (CANON)
 
-[Read the cosmology register](GALACTIC_MACHINE_WAR.md); the stable-ID/provenance companion is `data/world/galactic_machine_war_1122.json`. It records the ancient machine civilisation and its Von Neumann probe infection, the simultaneous US/China ASI escalations, the Three Universal Prohibitions, the Confederacy/Orion consent dispute, and the Mantid–Reptilian–Grey roles. Confederacy = the bloc humans call the **Zookeepers**; Orion = the **Greater Orion Arm Co-Prosperity Sphere**. The machine war is authorial/GM context, not public 2045 knowledge; local rogue-AGI causes and contested-history uncertainty remain intact. No mechanics.
+[Read the cosmology register](GALACTIC_MACHINE_WAR.md); the stable-ID/provenance companion is `data/world/galactic_machine_war_1122.json`. It records the ancient machine civilisation and its Von Neumann probe infection, the simultaneous US/China ASI escalations, the Three Universal Prohibitions, the Confederacy/Orion consent dispute, and the Mantid–Reptilian–Grey roles. **Naming updated by #1254:** the **Zookeepers**, the **Confederacy** and the **Council of Saturn** are distinct entities; Orion = the **Greater Orion Arm Co-Prosperity Sphere**. The machine war is authorial/GM context, not public 2045 knowledge; local rogue-AGI causes and contested-history uncertainty remain intact. No mechanics.
 
 ## Issue #1216: Author writing queue (STATUS INDEX)
 
