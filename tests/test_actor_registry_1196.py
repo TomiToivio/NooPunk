@@ -226,7 +226,13 @@ class FirstDayTests(unittest.TestCase):
     def test_missing_required_capability_blocks_dispatch(self):
         session = create_first_day()
         session.kit.mark_faulty("body_camera", "Sensor fault")
-        prepare_kit(session)
+        first_day_action(session, "wake")
+        first_day_action(session, "uniform")
+        for item in KIT:
+            first_day_action(session, "inspect:" + item)
+        for item in LINKED:
+            if item != "body_camera":
+                first_day_action(session, "connect:" + item)
         self.assertIn("recording", session.kit.missing())
         self.assertNotIn("dispatch", available_first_day_actions(session))
         session.kit.repair("body_camera")
