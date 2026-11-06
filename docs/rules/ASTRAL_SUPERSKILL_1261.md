@@ -132,3 +132,19 @@ phenomenon.
 - The Law of One — the metaphysical frame the setting's researchers hold; a claim in a source, not physics.
 - Faggin (quantum-information panpsychism) and Hoffman (conscious agents) — vocabulary for the in-world
   model of perception and identity.
+
+## Editing quantum information is permission, not power
+
+Rank 3's "authorised informational agency" is the one place where a rank could quietly become a licence, so it is a
+gate on the *pattern* rather than a capability on the rank (`astral_progression.InformationPattern`, `may_edit`,
+`require_edit`):
+
+* **an immutable pattern is editable by nobody**, at any rank — bank records, identities and atoms do not move because
+  a scene's scenery is malleable;
+* **rank 3 edits its own information**;
+* **another agent's pattern needs a mutable pattern *and* an authored mandate**; rank alone never grants it, and rank
+  4's plane access does not change the rule;
+* a refused edit says which of the three reasons applies, so a table can argue with the ruling instead of guessing.
+
+Tests: `tests/test_astral_ranks_1261.py` (the permission gate and the no-duplicate invariants — no second body, no
+second combat system, astral damage still gated, ROTE/Ident absent from the SWN catalogue).

@@ -17,7 +17,7 @@
 | `optional-source` | 11 |
 | `noopunk-mod` | 31 |
 | `infrastructure` | 7 |
-| `experimental` | 6 |
+| `experimental` | 5 |
 | `legacy` | 3 |
 
 ## What each tier is
@@ -146,7 +146,6 @@
 
 ### `experimental`
 
-* `src/rules/astral_ranks.py`
 * `src/rules/issue200_cross_system_converter.py`
 * `src/rules/issue200_resolution_lab.py`
 * `src/rules/issue200_scale_migration.py`
