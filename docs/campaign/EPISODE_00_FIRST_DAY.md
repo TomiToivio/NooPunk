@@ -1,72 +1,84 @@
-# Episode 0 — Tony German's first day
+# Episode 0: Tony German's first day
 
-> **Author draft — template only, no prose yet.** Source issue:
-> [#1218](https://github.com/TomiToivio/NooPunk/issues/1218), tracked in
-> [#1216](https://github.com/TomiToivio/NooPunk/issues/1216) and
-> [`AUTHOR_WRITING_QUEUE_1216.md`](../design/AUTHOR_WRITING_QUEUE_1216.md). The author's own notes for
-> this opening are in [../../design/CHARGEN.md](../../design/CHARGEN.md), and the campaign it opens is
-> [CAMPAIGN_01_EUROPOL_ROOKIE.md](CAMPAIGN_01_EUROPOL_ROOKIE.md).
-> **Tomi writes this document.** Agents must not fill it in, script the scenes, or treat an empty
-> section as permission to invent canon.
+> **AUTHOR-ONLY SCENE WORKSHEET.** This is a human-readable writing template, not finished dialogue or approved plot. Tomi supplies fiction. Agents may later translate approved scenes to existing game interfaces. Sources: #1216, #1218, #1217, #1236.
+>
+> See [lifepath](TONY_GERMAN_LIFEPATH.md), [dream worksheet](DREAMS.md), [campaign frame](CAMPAIGN_01_EUROPOL_ROOKIE.md), [new NPC proposals](../design/PROPOSAL_EUROPOL_NPC_DOSSIERS_1236.md) and [case 01](../scenarios/CASE_01_THE_TUESDAY_COMPLAINT.md). Older campaign documents may contain superseded PC gender/identity and UNSA-first opening material; use Tony's latest Europol brief for this episode.
 
-## How to use this file
+## 1. Episode promise
 
-> **Prompt — not prose.** One section per beat below, in order. Write the scene as it is experienced,
-> not as it is explained: what Tony sees, hears, does and decides. Where a beat carries a mechanical
-> step (the equipment inspection, the radio check-in), say what the player chooses and what the scene
-> withholds. The mechanical scaffold already exists (#1217); this file is the fiction that sits on it.
+**What should the player feel by the time Tony reports for duty?** [AUTHOR TO WRITE]  
+**The everyday problem that grounds the opening:** [AUTHOR TO WRITE]  
+**The one intriguing, unexplained detail:** [AUTHOR TO WRITE]  
+**What is deliberately NOT revealed yet:** [AUTHOR TO WRITE]  
+**Target length and pace:** [AUTHOR TO WRITE]
 
-## 1. The nightmare
+## 2. Scene order
 
-> **Prompt.** What does he dream, and in what order? Fractured chronology is allowed. Decide what he
-> does in the dream that he could not do awake, and decide nothing about what it means.
+| ID | Place | What the player experiences | Choice or action | NPC / institution | Exit condition |
+| --- | --- | --- | --- | --- | --- |
+| E00-S01 | Nightmare | [fill] | [fill] | [fill] | Wake |
+| E00-S02 | Sörnäinen flat | [fill] | [fill] | [fill] | Prepare |
+| E00-S03 | Equipment / dispatch | [fill] | [fill] | Salla / Europol as approved | Check-in |
+| E00-S04 | Journey to Ratakatu | [fill] | [fill] | [fill] | Arrive |
+| E00-S05 | First office meeting | [fill] | [fill] | Romppainen / Laura, if approved | Receive assignment |
+| E00-S06 | Case handoff | [fill] | [fill] | [fill] | Enter Case 01 |
 
-## 2. Waking in Sörnäinen
+## 3. Scene writing card (copy for each scene)
 
-> **Prompt.** The flat, the light, the first sound. What is ordinary about the morning, and what is
-> slightly wrong? Keep the wrongness deniable.
+**Scene ID / title:** [fill]  
+**Point of view / place / time:** [fill]  
+**Sensory opening in Tomi's voice:** [AUTHOR PROSE]  
+**What Tony knows at this exact moment:** [fill]  
+**NPC dialogue and behavior:** [AUTHOR PROSE]  
+**What the player can do:** [fill]  
+**Required clue, if any, and alternative way to find it:** [fill]  
+**CWN action only when relevant (no homebrew):** [fill]  
+**Choice consequences / optional response:** [fill]  
+**Comedy register, if appropriate:** [fill]  
+**Evidence tier: observation / hearsay / official / unresolved:** [fill]  
+**Exit, state carried forward, next scene ID:** [fill]
 
-## 3. The uniform
+## 4. The nightmare
 
-> **Prompt.** The uniform awarded at graduation: how does he put it on, and what does it feel like to
-> wear it at home? This is where the New European Idealism can be shown through a mirror rather than a
-> lecture.
+Use [DREAMS.md](DREAMS.md) for the detailed dream scene format; do **not** start a second dream rules system.
 
-## 4. The equipment ritual
+**Images or phrases Tomi wants to write:** [fill]  
+**What Tony feels when waking:** [fill]  
+**At least two plausible interpretations:** [fill]  
+**One subtle later callback:** [fill]  
+**What the GM must not confirm:** [fill]
 
-> **Prompt.** The eight issued items and the abstract connection of devices to the radio and phone.
-> What does he check twice, what does he skip, and what does the player choose to inspect? The
-> connection should feel like bureaucracy made physical, not like a puzzle with a right answer.
+## 5. Sörnäinen morning and issued kit
 
-## 5. Dispatch
+**Flat and its mundane inconvenience:** [fill]  
+**Tony's personal routine and first character-defining decision:** [fill]  
+**Uniform, cybernetics, bionics, psychotronics, bodycam and credentials:** [verify against approved equipment list]  
+**Which item is a personal issue item versus an institutional system?** [fill]  
+**Radio / dispatch dialogue:** [AUTHOR PROSE]  
+**Known opening check-in:** “Field Agent Tony German reporting for duty.” [confirm placement and final wording]
 
-> **Prompt.** The check-in and the first transmission, *"Field Agent Tony German reporting for duty."*
-> What does the dispatcher's voice tell him about the day, and what does it not?
+Do not silently treat the Romppainen–Fujita assessment system as handheld personal gear.
 
-## 6. The Adlerwerke
+## 6. Journey, office and first mission
 
-> **Prompt.** The ride to Ratakatu. What Helsinki does he pass, and what has changed since he last
-> looked? Keep the route concrete enough that a reader could follow it on a map.
+**Motorcycle / other transit and route:** [fill; no unverified map details]  
+**One short Helsinki street encounter:** [fill]  
+**First sight of Ratakatu and Europol bureaucracy:** [fill]  
+**Salla's role and first impression:** [fill]  
+**Laura Wendt's role and first impression:** [fill]  
+**Romppainen's introduction and immediate ask:** [fill]  
+**How Case 01 is delivered without an exposition dump:** [fill]  
+**One agency-preserving optional action before leaving:** [fill]
 
-## 7. Ratakatu 12
+## 7. Playability and narrative checks
 
-> **Prompt.** Arrival at the field office: the entrance, the desk, the person who notices him first.
-> First impressions of colleagues belong here, and they should be wrong in interesting ways.
+- [ ] Player can make at least one meaningful choice without changing the required first posting.
+- [ ] No blocked scene relies on one obscure clue or an omniscient narrator.
+- [ ] Action/Social/Investigation/Cyber scene types only where appropriate; immutable CWN actions.
+- [ ] No compulsory early PSI awakening or definitive NHI revelation.
+- [ ] Personnel, room names, gear, city routes and jurisdiction agree with approved material.
+- [ ] Clues and consequences handed to Case 01 are explicitly listed.
+- [ ] NPC prose, dream images and dialogue approved by Tomi.
+- [ ] Script has been tested as a human-readable tabletop scene before engine implementation.
 
-## 8. Doctor Harri Romppainen
-
-> **Prompt.** The first meeting. What does Romppainen ask, what does he already know, and what does
-> Tony decide not to say? End the episode on a question rather than an answer.
-
-## 9. What this episode must not do
-
-> **Prompt.** List the things the opening refuses to explain — the nightmare's meaning, the origin of
-> the phenomena, Tony's PSI status, what the office is really working on. Add anything else you want
-> kept back for later episodes.
-
-## 10. Scene-to-mechanics notes (for agents, after approval)
-
-> **Prompt.** For each beat, note which existing system carries it: graph occupancy, a Tag, a CWN
-> check, or nothing at all. Mark beats that must not have a roll. Do not design a new subsystem here.
-
-<!-- Tomi writes below. -->
+**Author approval / date:** [pending]

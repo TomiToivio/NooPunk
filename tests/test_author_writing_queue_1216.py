@@ -29,15 +29,20 @@ class AuthorQueueTest(unittest.TestCase):
         self.assertFalse(CASE_TARGET.exists(), "EPISODE_01_FIRST_CASE.md would duplicate the case")
         self.assertFalse(LEDGER_TARGET.exists(), "the ledger is §6 of the canonical case")
 
-    def test_author_drafts_are_empty_placeholders(self):
+    def test_author_drafts_are_worksheets_the_author_owns(self):
+        """Since #1236 these are filled-in worksheets, not blank pages: prompts, tables and placeholders.
+
+        The guard's purpose never changed — no agent-written fiction — but it now has to check for the
+        author's writing slots rather than for an empty file.
+        """
+        import re
+        placeholder = re.compile(r"\[fill|\[AUTHOR|\[write here\]|\[choose|\[verify|\[confirm|\[pending", re.I)
         for path in (LIFEPATH, FIRST_DAY):
             text = path.read_text(encoding="utf-8")
-            self.assertIn("Tomi writes", text)
-            self.assertIn("Agents must not", text)
-            body = [line for line in text.splitlines()
-                    if line.strip() and not line.startswith("#") and not line.startswith(">")
-                    and not line.startswith("<!--")]
-            self.assertEqual(body, [], f"{path.name} contains drafted prose")
+            self.assertTrue("Tomi writes" in text or "Tomi supplies" in text, path.name)
+            self.assertGreaterEqual(len(placeholder.findall(text)), 5,
+                                    f"{path.name} has no writing slots left for the author")
+            self.assertIn("[fill]", text)
 
     def test_queue_links_the_real_campaign_files(self):
         self.assertIn("docs/campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md", self.queue)
