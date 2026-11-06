@@ -21,7 +21,7 @@ try:
         StoryNode,
         WorldGraphs,
     )
-    from src.world.items import first_day_kit
+    from src.world.items import Kit, first_day_kit
 except ModuleNotFoundError:  # installed with src/ on PYTHONPATH
     from world.graphs import (
         CyberGraph,
@@ -35,7 +35,7 @@ except ModuleNotFoundError:  # installed with src/ on PYTHONPATH
         StoryNode,
         WorldGraphs,
     )
-    from world.items import first_day_kit
+    from world.items import Kit, first_day_kit
 
     from .world_session import WorldSession
 
@@ -101,6 +101,7 @@ def create_first_day(session: WorldSession | None = None) -> WorldSession:
             story=story,
         ))
         session.register(ACTOR, SHEET)
+        _kit(session)
         session.enter_scene("scene.nightmare")
     else:
         if session.sheet_for(ACTOR) != SHEET:
@@ -119,9 +120,27 @@ def _require_first_day(session: WorldSession) -> None:
         raise FirstDayError("Tony German is not bound to his canonical sheet")
 
 
+def _kit(session: WorldSession) -> Kit:
+    """Use the session's actual inventory; upgrade pre-inventory saves in place."""
+    if session.kit is None:
+        session.kit = Kit(actor=ACTOR)
+        for item in first_day_kit():
+            session.kit.issue(item)
+        # Old snapshots stored completed equipment actions as flags only.
+        for item in KIT:
+            if _done(session, "connect:" + item) or (
+                item in ("police_radio", "phone") and _done(session, "inspect:" + item)
+            ):
+                session.kit.activate(item)
+    if session.kit.actor != ACTOR:
+        raise FirstDayError("Tony's kit must belong to his canonical actor")
+    return session.kit
+
+
 def available_first_day_actions(session: WorldSession) -> tuple[str, ...]:
     """Actions only; no prose choices or unpublished character benefits."""
     _require_first_day(session)
+    kit = _kit(session)
     if _done(session, "report"):
         return ()
     if not _done(session, "wake"):
@@ -135,10 +154,14 @@ def available_first_day_actions(session: WorldSession) -> tuple[str, ...]:
             "connect:" + item
             for item in LINKED
             if _done(session, "inspect:" + item) and not _done(session, "connect:" + item)
+            and kit.get(item).usable
         )
     ready = _done(session, "uniform") and all(
         _done(session, "inspect:" + item) for item in KIT
-    ) and all(_done(session, "connect:" + item) for item in LINKED)
+    ) and all(
+        _done(session, "connect:" + item) or not kit.get(item).usable
+        for item in LINKED
+    ) and not kit.missing()
     if ready and not _done(session, "dispatch"):
         actions.append("dispatch")
     if _done(session, "dispatch") and not _done(session, "ride"):
@@ -164,9 +187,14 @@ def first_day_action(session: WorldSession, action: str) -> str:
         )
     elif action.startswith("inspect:"):
         item = action.split(":", 1)[1]
-        message = f"Inspected issued equipment: {item.replace('_', ' ')}."
+        carried = _kit(session).get(item)
+        if item in ("police_radio", "phone") and carried.usable:
+            _kit(session).activate(item)
+        diagnostic = f" Fault: {carried.fault}." if carried.fault else ""
+        message = f"Inspected issued equipment: {item.replace('_', ' ')}.{diagnostic}"
     elif action.startswith("connect:"):
         item = action.split(":", 1)[1]
+        _kit(session).activate(item)
         message = f"Connected {item.replace('_', ' ')} through the abstract Europol kit interface."
     elif action == "dispatch":
         message = DISPATCH_LINE
