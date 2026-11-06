@@ -127,3 +127,25 @@ The tank's **DMT infusion** is strictly fictional lore. There are **no real-worl
 - **A6:** who may activate Europol AntiPSI fields and tanks, and what are their legal and practical constraints?
 
 Do not close #1261 until author decisions are recorded and the approved subset passes tests, tabletop/code parity review, and the existing CWN constitution audit.
+
+## 6. Implemented: the device-first layer (Option A's equipment half)
+
+**`src/rules/psychotronic_kit.py`** · **`tests/test_psychotronic_kit_1261.py`** (16 tests)
+
+The rookie implant is now executable, and it is still equipment:
+
+- `ROOKIE_IMPLANT` grants exactly **`antipsi.0`** and **`esp.0`**, with `requires_psychic=False` — a character
+  with no Psychic record can wear it and use both effects.
+- Grants are built with `psi_access.device_grant` (never selectable) and filtered by
+  `psi_edges.active_grants` (a grant lasts while the device is worn); removing the implant ends it, and no
+  second accounting system exists for psychotronic gear.
+- **ESP-0** returns an `AnomalyCue`: scene-scoped, `certainty="low"`, and it *cannot be constructed* as
+  evidence or as a named person. It is a cue to investigate, never a finding.
+- **AntiPSI-0** returns an `AntiPsiResponse`: a warning plus permission to attempt a defence, with `immunity`
+  and `grants_effort` refused at construction.
+- `FIELD_ANTIPSI` is in the catalogue only to make the distinction testable: it offers `antipsi.1` and
+  `requires_psychic=True`, so a rookie kit cannot pass `assert_no_psychic_requirement`.
+
+**Still not approved, and still not implemented:** prices, System Strain, ranges, Effort costs, recharge,
+availability, the projection tank, the BCI bridge, the three hacking lanes as mechanics, any native
+Electrokinesis/ESP/AntiPSI discipline, the SWN technique whitelist, and the astral damage bridge.
