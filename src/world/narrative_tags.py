@@ -1,7 +1,7 @@
-"""The four fictional tag families (#1164, #1184): social, goal, clue, personality.
+"""The NPC-side tag families (#1164, #1184): social, goal, clue and psyche (formerly personality).
 
 CWN's own tag model already covers what a character *is* — attributes, skills, statuses and
-equipment. These four families describe something different: how the world stands toward the
+equipment. These families describe something different: how the world stands toward the
 character, what the character is trying to do, what the character has found out, and what an NPC will
 do under pressure.
 
@@ -76,12 +76,12 @@ class SocialTag:
     """A fact about how someone stands toward someone. Not a reputation score."""
 
     id: str
-    holder: str          # who holds the attitude
-    target: str          # about whom
-    fact: str            # "owes a favour", "suspects me of leaking", "under investigation"
+    holder: str  # who holds the attitude
+    target: str  # about whom
+    fact: str  # "owes a favour", "suspects me of leaking", "under investigation"
     polarity: Polarity
-    source: str = ""     # the scene or clue that created it
-    expires: str = ""    # episode or scene ref after which it is no longer true
+    source: str = ""  # the scene or clue that created it
+    expires: str = ""  # episode or scene ref after which it is no longer true
 
     def __post_init__(self) -> None:
         _text(self.id, "social tag id")
@@ -157,12 +157,10 @@ class ClueTag:
 
 
 @dataclass(frozen=True, slots=True)
-class PsycheTag:
-    """What a character is like, what moves them, and what they will not do.
+class PersonalityTag:
+    """A Psyche tag for an NPC: what they are like, what moves them, and what they will not do.
 
-    This is the **campaign store's** richer record (#1283 names the family *Psyche*; it was *Personality* before).
-    :meth:`to_family_tag` projects it onto the portable record in :mod:`src.rules.scene_tags`, so a scene can carry the
-    short form while the store keeps the leverage, the behaviour under pressure and the taboo.
+    ``PersonalityTag`` is kept as the serialized class name; ``PsycheTag`` is the #1283 name.
     """
 
     id: str
@@ -180,28 +178,47 @@ class PsycheTag:
         _text(self.under_pressure, "under_pressure")
 
     def to_family_tag(self):
-        """The portable Psyche tag for scene use: owner, the trait, and its evidence."""
-        from src.rules.scene_tags import PsycheTag as PortablePsycheTag
+        """The portable Psyche tag for scene use: the owner, the trait, and where the record came from."""
+        try:
+            from src.rules.scene_tags import PsycheTag as portable
+        except ModuleNotFoundError:  # pragma: no cover - installed with src/ on PYTHONPATH
+            from rules.scene_tags import PsycheTag as portable  # type: ignore[no-redef]
+        return portable(owner_id=self.npc, trait=self.trait, evidence=self.id)
 
-        return PortablePsycheTag(owner_id=self.npc, trait=self.trait, evidence=self.id)
+
+@dataclass(frozen=True, slots=True)
+class AstralTag:
+    """A fact about the Noösphere attached to an NPC, place, device or relationship (#1283)."""
+
+    id: str
+    owner: str
+    fact: str
+    subject: str = ""
+    evidence: str = ""
+
+    def __post_init__(self) -> None:
+        _text(self.id, "astral tag id")
+        _text(self.owner, "astral tag owner")
+        _text(self.fact, "astral tag fact")
 
 
-#: Deprecated alias, kept for callers written before #1283. New code says ``PsycheTag``.
-PersonalityTag = PsycheTag
+#: #1283 author-facing name; the serialized field and class name remain ``PersonalityTag``.
+PsycheTag = PersonalityTag
 
 
 @dataclass
 class TagBook:
-    """All four families for one campaign, with the cross-references checked together.
+    """The NPC-side tag families for one campaign, with cross-references checked together.
 
-    A ``TagBook`` is deliberately small: four dictionaries and the joins between them. It is not a
-    character sheet (CWN owns that) and not a knowledge base (the case file owns that).
+    A ``TagBook`` is deliberately small: one dictionary per family and the joins between them. It is
+    not a character sheet (CWN owns that) and not a knowledge base (the case file owns that).
     """
 
     social: dict[str, SocialTag] = field(default_factory=dict)
     goals: dict[str, GoalTag] = field(default_factory=dict)
     clues: dict[str, ClueTag] = field(default_factory=dict)
-    psyche: dict[str, PsycheTag] = field(default_factory=dict)
+    personality: dict[str, PersonalityTag] = field(default_factory=dict)
+    astral: dict[str, AstralTag] = field(default_factory=dict)
 
     # -- adding ------------------------------------------------------------------------------
     def add_social(self, tag: SocialTag) -> SocialTag:
@@ -215,7 +232,9 @@ class TagBook:
             raise NarrativeTagError(f"duplicate goal tag id {tag.id!r}")
         for blocker in tag.blocked_by:
             if blocker not in self.goals:
-                raise NarrativeTagError(f"goal {tag.id!r} blocked by unknown goal {blocker!r}")
+                raise NarrativeTagError(
+                    f"goal {tag.id!r} blocked by unknown goal {blocker!r}"
+                )
         self.goals[tag.id] = tag
         return tag
 
@@ -225,21 +244,27 @@ class TagBook:
         self.clues[tag.id] = tag
         return tag
 
-    @property
-    def personality(self) -> dict[str, PsycheTag]:
-        """Deprecated view of :attr:`psyche`, so older callers keep working after the #1283 rename."""
-        return self.psyche
-
-    def add_personality(self, tag: PsycheTag) -> PsycheTag:
-        if tag.id in self.psyche:
+    def add_personality(self, tag: PersonalityTag) -> PersonalityTag:
+        if tag.id in self.personality:
             raise NarrativeTagError(f"duplicate psyche tag id {tag.id!r}")
-        self.psyche[tag.id] = tag
+        self.personality[tag.id] = tag
+        return tag
+
+    def add_psyche(self, tag: PersonalityTag) -> PersonalityTag:
+        """#1283 name for the same family; no second dictionary or serialization key."""
+        return self.add_personality(tag)
+
+    def add_astral(self, tag: AstralTag) -> AstralTag:
+        if tag.id in self.astral:
+            raise NarrativeTagError(f"duplicate astral tag id {tag.id!r}")
+        self.astral[tag.id] = tag
         return tag
 
     # -- reading -----------------------------------------------------------------------------
     def stance(self, holder: str, target: str) -> tuple[SocialTag, ...]:
-        return tuple(t for t in self.social.values()
-                     if t.holder == holder and t.target == target)
+        return tuple(
+            t for t in self.social.values() if t.holder == holder and t.target == target
+        )
 
     def has_leverage(self, actor: str, subject: str) -> bool:
         """Whether ``actor`` has anything to move ``subject`` with.
@@ -272,15 +297,26 @@ class TagBook:
         tags = self.clues_for(holder)
         return max((t.rung for t in tags), default=-1)
 
-    def personality_of(self, npc: str) -> PsycheTag | None:
+    def psyche_of(self, npc: str) -> PersonalityTag | None:
+        return self.personality_of(npc)
+
+    def astral_of(self, owner: str) -> tuple[AstralTag, ...]:
+        return tuple(t for t in self.astral.values() if t.owner == owner)
+
+    def personality_of(self, npc: str) -> PersonalityTag | None:
         for tag in self.personality.values():
             if tag.npc == npc:
                 return tag
         return None
 
     # -- integrity ---------------------------------------------------------------------------
-    def validate(self, *, known_places: Iterable[str] = (), known_characters: Iterable[str] = (),
-                 known_scenes: Iterable[str] = ()) -> None:
+    def validate(
+        self,
+        *,
+        known_places: Iterable[str] = (),
+        known_characters: Iterable[str] = (),
+        known_scenes: Iterable[str] = (),
+    ) -> None:
         """Check the joins a caller can afford to check. Unknown sets are simply not enforced."""
         places = set(known_places)
         characters = set(known_characters)
@@ -288,38 +324,67 @@ class TagBook:
         for tag in self.social.values():
             for who in (tag.holder, tag.target):
                 if characters and who not in characters:
-                    raise NarrativeTagError(f"social tag {tag.id!r} names unknown party {who!r}")
+                    raise NarrativeTagError(
+                        f"social tag {tag.id!r} names unknown party {who!r}"
+                    )
             if tag.source and scenes and tag.source not in scenes:
-                raise NarrativeTagError(f"social tag {tag.id!r} cites unknown scene {tag.source!r}")
+                raise NarrativeTagError(
+                    f"social tag {tag.id!r} cites unknown scene {tag.source!r}"
+                )
         for tag in self.clues.values():
             if characters and tag.holder not in characters:
-                raise NarrativeTagError(f"clue tag {tag.id!r} held by unknown character")
+                raise NarrativeTagError(
+                    f"clue tag {tag.id!r} held by unknown character"
+                )
             if tag.scene_ref and scenes and tag.scene_ref not in scenes:
-                raise NarrativeTagError(f"clue tag {tag.id!r} cites unknown scene {tag.scene_ref!r}")
+                raise NarrativeTagError(
+                    f"clue tag {tag.id!r} cites unknown scene {tag.scene_ref!r}"
+                )
         for tag in self.personality.values():
             if characters and tag.npc not in characters:
-                raise NarrativeTagError(f"personality tag {tag.id!r} names unknown NPC {tag.npc!r}")
+                raise NarrativeTagError(
+                    f"psyche tag {tag.id!r} names unknown NPC {tag.npc!r}"
+                )
+        for tag in self.astral.values():
+            if characters and tag.owner not in characters:
+                raise NarrativeTagError(
+                    f"astral tag {tag.id!r} names unknown owner {tag.owner!r}"
+                )
         for tag in self.goals.values():
             if characters and tag.owner not in characters:
-                raise NarrativeTagError(f"goal tag {tag.id!r} owned by unknown character")
+                raise NarrativeTagError(
+                    f"goal tag {tag.id!r} owned by unknown character"
+                )
         if places:
             # Places are only meaningful for clues that were found *somewhere*.
             for tag in self.clues.values():
                 where = tag.scene_ref
                 if where and where.startswith("loc.") and where not in places:
-                    raise NarrativeTagError(f"clue tag {tag.id!r} found at unknown place {where!r}")
+                    raise NarrativeTagError(
+                        f"clue tag {tag.id!r} found at unknown place {where!r}"
+                    )
 
     def to_dict(self) -> dict[str, list[dict]]:
         return {
-            "social": [asdict(t) | {"polarity": t.polarity.value} for t in self.social.values()],
-            "goals": [asdict(t) | {"state": t.state.value,
-                                   "blocked_by": list(t.blocked_by),
-                                   "clue_refs": list(t.clue_refs)}
-                      for t in self.goals.values()],
-            "clues": [asdict(t) | {"contradicts": list(t.contradicts),
-                                   "bears_on": list(t.bears_on)}
-                      for t in self.clues.values()],
+            "social": [
+                asdict(t) | {"polarity": t.polarity.value} for t in self.social.values()
+            ],
+            "goals": [
+                asdict(t)
+                | {
+                    "state": t.state.value,
+                    "blocked_by": list(t.blocked_by),
+                    "clue_refs": list(t.clue_refs),
+                }
+                for t in self.goals.values()
+            ],
+            "clues": [
+                asdict(t)
+                | {"contradicts": list(t.contradicts), "bears_on": list(t.bears_on)}
+                for t in self.clues.values()
+            ],
             "personality": [asdict(t) for t in self.personality.values()],
+            "astral": [asdict(t) for t in self.astral.values()],
         }
 
     @classmethod
@@ -342,4 +407,6 @@ class TagBook:
             book.add_clue(ClueTag(**item))
         for raw in data.get("personality", ()):
             book.add_personality(PersonalityTag(**dict(raw)))
+        for raw in data.get("astral", ()):
+            book.add_astral(AstralTag(**dict(raw)))
         return book

@@ -1,17 +1,22 @@
-# The four fictional tag families (#1164, #1184)
+# The NPC-side tag families (#1164, #1184, #1283)
 
-> **Status: implemented.** `src/world/narrative_tags.py`, tested by `tests/test_narrative_tags.py`.
-> This is the complete tag layer: **Social, Goal, Clue and Personality**. CWN's own tags (attributes,
-> skills, statuses, equipment) are untouched and remain the character sheet.
+> **Status: implemented; author decision #1283 applied.** `src/world/narrative_tags.py`, tested by
+> `tests/test_narrative_tags.py`. This is the **NPC-side** tag layer: **Social, Goal, Clue and
+> Psyche** (formerly Personality), plus an Astral record. CWN's own tags (attributes, skills,
+> statuses, equipment) are untouched and remain the character sheet.
+>
+> The portable five-family table reference — including the Astral family and the player-facing
+> procedure — is [`docs/tabletop/TAGS_AND_GRAPHS_1283.md`](../tabletop/TAGS_AND_GRAPHS_1283.md).
+> `PersonalityTag` remains the serialized class name; `PsycheTag` is its #1283 alias.
 
-CWN already answers "what can this character do?" These four families answer different questions:
+CWN already answers "what can this character do?" These families answer different questions:
 
 | Family | Question | Not |
 | --- | --- | --- |
 | **Social** | how does this party stand toward that one? | a reputation score |
 | **Goal** | what is the character trying to do, and what is in the way? | XP, or a quest log |
 | **Clue** | what does this character actually know, and how do they know it? | proof |
-| **Personality** | what will this NPC do under pressure? | an alignment |
+| **Psyche** (formerly Personality) | what will this NPC do under pressure? | an alignment |
 
 ## The three rules
 
@@ -95,7 +100,7 @@ conflict is the point.
 
 ---
 
-## Personality tags
+## Psyche tags (formerly Personality)
 
 ```python
 PersonalityTag(id="personality.falk", npc="npc.falk", trait="procedural",
@@ -110,11 +115,17 @@ guessing, and an NPC who acts against it is a **decision**, not a rounding error
 
 ---
 
+## Astral tags
+
+`AstralTag` records a fact about the Noösphere attached to an NPC, place, device or relationship.
+It is descriptive: it can establish what someone notices or attempts, but it grants no PSI rank,
+Effort or automatic effect. See the portable table reference for the full five-family procedure.
+
 ## The tag book
 
-`TagBook` holds all four families and checks the joins a caller can afford to check: unknown
-characters, unknown scenes, goals blocked by goals that do not exist. It is deliberately small — four
-dictionaries and the joins between them. It is **not** a character sheet (CWN owns that) and **not** a
+`TagBook` holds the families and checks the joins a caller can afford to check: unknown characters,
+unknown scenes, goals blocked by goals that do not exist. It is deliberately small — one dictionary
+per family and the joins between them. It is **not** a character sheet (CWN owns that) and **not** a
 knowledge base (the case file owns that).
 
 `to_dict()` / `from_dict()` round-trip, so a campaign can be serialised without a database.

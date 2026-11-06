@@ -1,31 +1,13 @@
-"""The portable tag families, as decided in #1283.
+"""The five NoöPunk tag families, without a second character sheet or rules engine.
 
-NoöPunk's default tabletop system is **Cities Without Number**: CWN resolves skills, action, combat, equipment and
-hacking, and nothing here replaces any of it. On top of that sits a *portable* layer of tags describing the people,
-places and situations that matter, so the same authored scene can be run under CWN or under another cyberpunk RPG.
-
-Five families are in play from the start (#1283, author decision 2026-11-07):
-
-| family | records |
-|---|---|
-| **Clue** | something the investigators can follow up, with its source |
-| **Social** | a relationship fact that affects an interaction — trust, obligation, access |
-| **Goal** | an outcome a character or faction is pursuing |
-| **Psyche** | a character's inner life: enduring traits, values, fears, habits, temporary states |
-| **Astral** | a Noösphere fact that affects what someone can perceive, attempt or change |
-
-**The list is open.** :data:`TAG_FAMILIES` holds the five starting families and :func:`register_family` adds another by
-name: a family is a name and a one-line meaning, not an enum that forbids the sixth. What must *not* grow is the number
-of models — this module defines the portable records, and :mod:`src.world.narrative_tags` keeps the richer per-NPC
-record with a bridge back into these.
-
-**Psyche** replaces the earlier name *Personality*. ``PersonalityTag`` stays as a deprecated alias so older code and
-documents keep working; new code says ``PsycheTag``.
-
-No tag is a stat, a roll, a meter or a mind-control switch. A tag says something true in the fiction; when an outcome is
-uncertain, the host RPG's procedure resolves it.
+Clue, Social and Goal are the existing canonical records. **Psyche** (formerly
+Personality) is a descriptive, non-mechanical tag: it records a character's
+inner life — traits, values, fears, habits and temporary states. **Astral** is a
+descriptive fact about the Noösphere: what someone can perceive, attempt or
+change through PSI, Magick, psychotronics, panpsychism or Law of One phenomena.
+Neither adds a modifier, an emotion meter or a new dice procedure. The host RPG
+(CWN by default, another cyberpunk RPG by agreement) still resolves action.
 """
-from __future__ import annotations
 
 from dataclasses import dataclass
 
@@ -33,78 +15,35 @@ from src.rules.goals import Goal as GoalTag
 from src.rules.investigation import Clue as ClueTag
 from src.world.graphs import Relationship as SocialTag
 
-__all__ = [
-    "ASTRAL_DOMAINS",
-    "AstralTag",
-    "ClueTag",
-    "GoalTag",
-    "PersonalityTag",
-    "PsycheTag",
-    "SocialTag",
-    "TAG_FAMILIES",
-    "TagFamilyError",
-    "register_family",
-]
-
-
-class TagFamilyError(ValueError):
-    """A family that cannot be added: no name, no meaning, or already present."""
-
 
 @dataclass(frozen=True, slots=True)
-class PsycheTag:
-    """A character's inner life: an enduring trait, or a state that will pass.
+class PersonalityTag:
+    """A Psyche tag: a stable or temporary inner-life fact, not a stat or mind-control switch.
 
-    ``duration`` is the distinction the author drew in #1283: *protective of sources* shapes an agent across cases;
-    *shaken after the ambush* fades as events unfold. It is a word, not a timer — nothing here expires a tag on its own,
-    and nothing rolls for it.
+    The class keeps its historical name for save compatibility. New text should
+    call the family **Psyche** and use :data:`PsycheTag`.
     """
 
     owner_id: str
     trait: str
     evidence: str = ""
+    #: The distinction #1283 draws: *protective of sources* endures across cases; *shaken after the ambush* passes.
+    #: A word, not a timer — nothing here expires a tag, and nothing rolls for it.
     duration: str = "enduring"   # enduring | temporary
 
     def __post_init__(self) -> None:
         if not self.owner_id.strip() or not self.trait.strip():
-            raise ValueError("a psyche tag needs an owner and a readable trait")
+            raise ValueError("psyche tags require an owner and a readable trait")
         if self.duration not in ("enduring", "temporary"):
             raise ValueError("a psyche tag is 'enduring' or 'temporary'")
 
 
-#: Deprecated alias, kept so code and documents written before #1283 keep working. New code says ``PsycheTag``.
-PersonalityTag = PsycheTag
-
-
-#: What an Astral tag may act on. The author's sentence — "affects what someone can perceive, attempt or change" —
-#: names exactly three, so the field is closed on purpose: a fourth kind of claim belongs in a new family, not in a
-#: quiet amendment to this one.
+#: What an Astral tag may act on — the three the author named in #1283.
 ASTRAL_DOMAINS = ("perceive", "attempt", "change")
 
-
-@dataclass(frozen=True, slots=True)
-class AstralTag:
-    """A fact about the Noösphere, and what it lets its holder notice, try or alter.
-
-    ``source`` matters as much as the fact: an entity's testimony and an independently verified observation are
-    different evidence, and #1283 asks that a clue's source be recorded once so a later scene can tell them apart. The
-    tag never proves its own truth; it states what the fiction holds to be so.
-    """
-
-    owner_id: str
-    fact: str
-    domain: str = "perceive"
-    source: str = ""
-
-    def __post_init__(self) -> None:
-        if not self.owner_id.strip() or not self.fact.strip():
-            raise ValueError("an astral tag needs an owner and a readable fact")
-        if self.domain not in ASTRAL_DOMAINS:
-            raise ValueError(f"an astral tag acts on perceive, attempt or change, not {self.domain!r}")
-
-
-#: The five starting families (#1283). Open: :func:`register_family` adds more.
-TAG_FAMILIES: dict[str, str] = {
+#: What each starting family records, keyed by the lowercase family name. ``TAG_FAMILIES`` above is the author-facing
+#: list; this is the same five, written out, so ``register_family`` can add a sixth without editing a table here.
+TAG_FAMILY_MEANINGS: dict[str, str] = {
     "clue": "Something the investigators can follow up, with its source.",
     "social": "A relationship fact that affects an interaction: trust, obligation or access.",
     "goal": "An outcome a character or faction is pursuing.",
@@ -113,18 +52,70 @@ TAG_FAMILIES: dict[str, str] = {
 }
 
 
+class TagFamilyError(ValueError):
+    """A family that cannot be added: no name, no meaning, or already present."""
+
+
 def register_family(name: str, meaning: str) -> str:
     """Add a tag family to the open list, refusing an empty name, an empty meaning or a duplicate.
 
-    The author said the list is open, so growth is a supported operation rather than an edit to this file. It is still
-    named and described: an unnamed family is a bug, and a re-used name would silently mean two things.
+    The author said the five are a starting vocabulary, not a closed list (#1283). Growth is therefore a supported
+    operation: the display name joins :data:`TAG_FAMILIES` and the meaning joins :data:`TAG_FAMILY_MEANINGS`, so a later
+    reader can still tell what the family records. An unnamed family is a bug; a re-used name would mean two things.
     """
+    global TAG_FAMILIES
     key = name.strip().lower()
     if not key:
         raise TagFamilyError("a tag family needs a name")
     if not meaning.strip():
         raise TagFamilyError(f"the {key!r} family needs a one-line meaning")
-    if key in TAG_FAMILIES:
+    if key in TAG_FAMILY_MEANINGS:
         raise TagFamilyError(f"the {key!r} family already exists")
-    TAG_FAMILIES[key] = meaning.strip()
+    TAG_FAMILY_MEANINGS[key] = meaning.strip()
+    TAG_FAMILIES = TAG_FAMILIES + (name.strip().title(),)
     return key
+
+
+#: The author-facing name from #1283. ``PersonalityTag`` remains the serialized class name so
+#: existing lifepath saves and dossiers do not fork.
+PsycheTag = PersonalityTag
+
+
+@dataclass(frozen=True, slots=True)
+class AstralTag:
+    """A fact about the Noösphere attached to a person, place, device or relationship.
+
+    ``fact`` is what is true in the fiction (for example “someone is still waiting here”).
+    ``subject`` optionally names what the fact is about; ``evidence`` records how the character
+    learned it. The tag creates no rank, point pool, power list or automatic effect: a table reads
+    it to establish what is possible, then uses the host RPG's procedure if the outcome is uncertain.
+    """
+
+    owner_id: str
+    fact: str
+    subject: str = ""
+    evidence: str = ""
+    #: What the fact lets someone do, from the three the author named. Closed on purpose: a fourth kind of claim
+    #: belongs in a new family, not in a quiet amendment to this one.
+    domain: str = "perceive"   # perceive | attempt | change
+
+    def __post_init__(self) -> None:
+        if not self.owner_id.strip() or not self.fact.strip():
+            raise ValueError("astral tags require an owner and a readable fact")
+        if self.domain not in ASTRAL_DOMAINS:
+            raise ValueError(f"an astral tag acts on perceive, attempt or change, not {self.domain!r}")
+
+
+#: The starting families from the author decision (#1283). The list is open: new families are
+#: named when a campaign needs them, not invented in advance.
+TAG_FAMILIES: tuple[str, ...] = ("Clue", "Social", "Goal", "Psyche", "Astral")
+
+__all__ = [
+    "TAG_FAMILIES",
+    "AstralTag",
+    "ClueTag",
+    "GoalTag",
+    "PersonalityTag",
+    "PsycheTag",
+    "SocialTag",
+]
