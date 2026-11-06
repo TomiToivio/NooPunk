@@ -8,9 +8,12 @@ one or supersede it.
 | **01 — The Rookie, the Awakening and the Wanderer** | [`CAMPAIGN_01_EUROPOL_ROOKIE.md`](CAMPAIGN_01_EUROPOL_ROOKIE.md) | **DRAFT** — Act III is a proposal pending the author (#1132) |
 | **Dreams — the writing worksheet** | [`DREAMS.md`](DREAMS.md) | **TEMPLATE** — the single canonical home for dream scenes (#1152); Phase 2 belongs to the author |
 | **Tony German — lifepath** | [`TONY_GERMAN_LIFEPATH.md`](TONY_GERMAN_LIFEPATH.md) | **AUTHOR DRAFT** — Tomi writes the branchable history (#1218); agents implement only after approval |
+| **Player briefing — first day** | [`PLAYER_BRIEFING.md`](PLAYER_BRIEFING.md) | **AUTHOR DRAFT / TEMPLATE** — author-owned first-session briefing (#1216) |
 | **Episode 0 — first day** | [`EPISODE_00_FIRST_DAY.md`](EPISODE_00_FIRST_DAY.md) | **AUTHOR DRAFT** — Tomi writes the opening script (#1218); agents implement only after approval |
 
 Related but separate:
+
+- [`../design/AUTHOR_WRITING_QUEUE_1216.md`](../design/AUTHOR_WRITING_QUEUE_1216.md) — author queue; [`../design/AUTHOR_APPROVALS_1216.md`](../design/AUTHOR_APPROVALS_1216.md) — explicit decision register
 
 - [`../design/`](../design/) — design decisions, issue records
 - [`../world/`](../world/) — world canon (institutions, timeline, locations)

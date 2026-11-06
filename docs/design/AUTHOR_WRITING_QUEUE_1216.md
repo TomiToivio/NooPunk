@@ -30,6 +30,9 @@
 | 10 | Tone / voice and cross-media scene reference conventions | #1086, #1168 | `docs/design/LITERARY_CROSS_MEDIA_1037.md` + `docs/design/ISSUE_1037_DOCUMENT_REGISTER.md` | **READY** | Existing documents. Update only after the narrative modes are approved; keep the document register in sync. |
 | 11 | Dream fragments and scripted awakening ambiguity | #1168 / #1152 | `docs/campaign/DREAMS.md` | **READY** | Existing worksheet; personal unconscious vs PSI/noetic/time-space interpretations remain deliberately unresolved. |
 
+| 12 | Player briefing — first-day player-facing minimum | #1216 | `docs/campaign/PLAYER_BRIEFING.md` | **TEMPLATE** | Author-owned nine-section worksheet; first-hour knowledge only, not an encyclopedia. |
+| 13 | Author approval sign-off register | #1216 | `docs/design/AUTHOR_APPROVALS_1216.md` | **READY** | Record explicit approvals, requests for changes and unresolved decisions; never infer approval from a PR merge. |
+
 ## Order
 
 1. **Tony's lifepath and opening scene** — use the two structured author templates to write original prose and decide the lifepath choices.
@@ -57,11 +60,14 @@
 - Existing case: [`docs/scenarios/CASE_01_THE_TUESDAY_COMPLAINT.md`](../scenarios/CASE_01_THE_TUESDAY_COMPLAINT.md).
 - Roadmap: [`docs/scenarios/CAMPAIGN_ROADMAP_1120.md`](../scenarios/CAMPAIGN_ROADMAP_1120.md).
 - Author drafts: [`TONY_GERMAN_LIFEPATH.md`](../campaign/TONY_GERMAN_LIFEPATH.md), [`EPISODE_00_FIRST_DAY.md`](../campaign/EPISODE_00_FIRST_DAY.md).
+- Player briefing: [`PLAYER_BRIEFING.md`](../campaign/PLAYER_BRIEFING.md). Approval register: [`AUTHOR_APPROVALS_1216.md`](AUTHOR_APPROVALS_1216.md).
 - Review prompts for the other nine entries: [`AUTHOR_REVIEW_WORKSHEETS_1216.md`](AUTHOR_REVIEW_WORKSHEETS_1216.md).
 
 ## 2026-11-06 audit: coverage and template readiness
 
 All **11 original queue items** map to existing canonical writing destinations. The proposed separate first-case, epistemic-ledger and Nordic memo files are **not missing**: they would duplicate canonical material. The two author draft files (rows 4–5) now contain human-readable scene/choice templates; the other nine have dedicated review prompts in `AUTHOR_REVIEW_WORKSHEETS_1216.md`, using links to their owning documents. **No final manuscript or author approval is implied.**
+
+Two supplemental governance/reader documents (rows 12–13) now have canonical paths: a one-page player briefing worksheet and a sign-off register. Neither implies completed prose or canon approval.
 
 **Additional cross-document review needs (not duplicate manuscripts):** Tony/Europol continuity against outdated unnamed/female/UNSA-first framing; legal Grunt/Geek/Freak build choices; Salla/Laura/Romppainen dossiers and D71 autonomy; precise Case 01 handoff; fiction versus official/disputed/secret source tiers. Keep these as author decisions until approved.
 
