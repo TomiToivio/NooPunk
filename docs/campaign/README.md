@@ -10,6 +10,7 @@ one or supersede it.
 | **Tony German — lifepath** | [`TONY_GERMAN_LIFEPATH.md`](TONY_GERMAN_LIFEPATH.md) | **AUTHOR DRAFT** — Tomi writes the branchable history (#1218); agents implement only after approval |
 | **Player briefing — first day** | [`PLAYER_BRIEFING.md`](PLAYER_BRIEFING.md) | **AUTHOR DRAFT / TEMPLATE** — author-owned first-session briefing (#1216) |
 | **Episode 0 — first day** | [`EPISODE_00_FIRST_DAY.md`](EPISODE_00_FIRST_DAY.md) | **AUTHOR DRAFT** — Tomi writes the opening script (#1218); agents implement only after approval |
+| **Opening flow — build then wake** | [`OPENING_FLOW_1217.md`](OPENING_FLOW_1217.md) | **IMPLEMENTED JOIN** — answers → Lifepath → first-day session + kit (#1217); blocked on two transcriptions |
 
 Related but separate:
 

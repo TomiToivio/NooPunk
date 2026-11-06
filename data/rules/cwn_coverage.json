@@ -4,7 +4,7 @@
   "note": "Registry of implemented rule procedures. Presence here is code coverage, not SRD parity.",
   "totals": {
     "modules": 48,
-    "procedures": 453
+    "procedures": 454
   },
   "modules": [
     {
@@ -2654,6 +2654,11 @@
               "doc": ""
             },
             {
+              "name": "Psychic.commit_device_grant",
+              "signature": "(key, grant, *, active_sources, amount, duration)",
+              "doc": "Reserve ordinary SWN Effort for an explicitly authorized equipment effect."
+            },
+            {
               "name": "Psychic.release",
               "signature": "(key)",
               "doc": "Only active commitments can be voluntarily freed immediately."
@@ -2691,7 +2696,7 @@
           ]
         }
       ],
-      "count": 11
+      "count": 12
     },
     {
       "module": "swn_sector.py",
