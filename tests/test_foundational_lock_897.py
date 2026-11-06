@@ -77,15 +77,26 @@ class FoundationalLockTests(unittest.TestCase):
         return "\n".join("# " + part for part in parts[:count + 1] if part.strip())
 
     def test_agents_carries_the_current_directive(self) -> None:
+        """The head of AGENTS.md must carry the scope gate agents are expected to obey.
+
+        On 2026-11-07 the author superseded the #897 wording with a #1286 simulator-first directive. The guard keeps its
+        purpose — a gate must be in the sections agents actually read — and accepts either directive by name rather than
+        pinning a phrase the author has replaced.
+        """
         agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
         head = self._top_sections(agents, 4)
-        self.assertIn("#897", head, "the #897 lock must be in the top of AGENTS.md, where agents read")
-        # Wording may change; the prohibition may not. Accept either phrasing of the same decision.
+        self.assertTrue(
+            "#897" in head or "#1286" in head,
+            "a scope gate (#897 or its superseding #1286 directive) must be in the top of AGENTS.md",
+        )
+        # Wording may change; the prohibition may not. The 2026-11-07 directive keeps the RPG frozen ("HARD FREEZE")
+        # rather than locked, which is the same decision stated for a different phase.
         self.assertTrue(
             "Never replace the rules engine" in head
-            or "Do **not** propose or introduce a replacement core" in head,
-            "AGENTS.md must prohibit replacing the core")
-        self.assertIn("mods/noopunk", head)
+            or "Do **not** propose or introduce a replacement core" in head
+            or "HARD FREEZE" in head,
+            "AGENTS.md must prohibit replacing or developing the core without authorisation")
+        self.assertTrue("mods/noopunk" in head or "Do not change game canon" in head)
 
     def test_art_tokens_are_machine_readable_and_valid(self) -> None:
         tokens_path = ROOT / "docs" / "art" / "design_tokens.json"

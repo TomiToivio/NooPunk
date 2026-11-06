@@ -64,8 +64,10 @@ class Routing(unittest.TestCase):
         # Agents read sections, so the guard reads sections.
         agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
         head = "\n".join("# " + part for part in re.split(r"(?m)^# ", agents)[:5] if part.strip())
-        self.assertIn("#897", head)
-        self.assertIn("mods/noopunk", head)
+        # 2026-11-07: the author replaced the #897 wording with the #1286 simulator-first directive, which keeps the
+        # RPG frozen instead of locked. Either gate satisfies the intent: agents read a scope gate first.
+        self.assertTrue("#897" in head or "#1286" in head)
+        self.assertTrue("mods/noopunk" in head or "HARD FREEZE" in head)
 
 
 class ComplianceMatrix(unittest.TestCase):
