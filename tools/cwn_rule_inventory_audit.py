@@ -25,6 +25,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 INVENTORY = ROOT / "data" / "rules" / "cwn_rule_inventory.json"
 STATUSES = ("implemented", "partial", "unverified", "missing", "not_applicable")
+EVIDENCE_FIELDS = ("rule_source_check", "python_test_execution", "numeric_fidelity", "evennia_adapter", "playable_integration", "tabletop_documentation", "enabled_in_noopunk")
+EVIDENCE_VALUES = {"pending", "not_run", "unverified", "verified", "passed", "failed", "implemented", "partial", "missing", "enabled", "disabled", "not_applicable"}
 
 
 def load(path: Path = INVENTORY) -> dict:
@@ -60,6 +62,10 @@ def audit(data: dict) -> list[str]:
         if identifier in seen:
             problems.append(f"{identifier}: duplicate row")
         seen.add(identifier)
+        if data.get("version", 1) >= 2:
+            for field in EVIDENCE_FIELDS:
+                if row.get(field) not in EVIDENCE_VALUES:
+                    problems.append(f"{identifier}: missing or invalid {field}")
         if row["status"] not in STATUSES:
             problems.append(f"{identifier}: unknown status {row['status']!r}")
         if not isinstance(row.get("printed_page"), int) or row["printed_page"] < 1:
@@ -99,14 +105,21 @@ def markdown(data: dict) -> str:
         "",
         f"**{total} rows** — " + ", ".join(f"{counts[s]} {s}" for s in STATUSES if counts[s]),
         "",
-        "| printed p. | section | status | python | tests | evidence |",
-        "| --- | --- | --- | --- | --- | --- |",
+        "| printed p. | section | status | python | tests | evidence | source | tests run | numeric fidelity | Evennia | gameplay | tabletop | enabled |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for row in data["rows"]:
         modules = "<br>".join(f"`{m}`" for m in row["python"]) or "—"
         tests = "<br>".join(f"`{t}`" for t in row["tests"]) or "—"
         lines.append(f"| {row['printed_page']} | {row['chapter']} — {row['section']} | "
-                     f"{row['status']} | {modules} | {tests} | {row['evidence']} |")
+                     f"{row['status']} | {modules} | {tests} | {row['evidence']} | "
+                     f"{row.get('rule_source_check', 'unverified')} | "
+                     f"{row.get('python_test_execution', 'not_run')} | "
+                     f"{row.get('numeric_fidelity', 'unverified')} | "
+                     f"{row.get('evennia_adapter', 'unverified')} | "
+                     f"{row.get('playable_integration', 'unverified')} | "
+                     f"{row.get('tabletop_documentation', 'unverified')} | "
+                     f"{row.get('enabled_in_noopunk', 'unverified')} |")
     return "\n".join(lines) + "\n"
 
 
