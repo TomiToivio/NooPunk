@@ -1,0 +1,336 @@
+{
+  "format": "noopunk.world.orion_mj12_bases",
+  "version": 1,
+  "source_issue": "https://github.com/TomiToivio/NooPunk/issues/1253",
+  "canon_document": "docs/world/ORION_MJ12_1253.md",
+  "provenance_tags": [
+    "RA",
+    "MJ12_LORE",
+    "NOOPUNK",
+    "OPEN",
+    "HISTORICAL"
+  ],
+  "note": "Owner, era, type, function, cover, public knowledge, jurisdiction, status and hooks per installation. No exact coordinates are recorded, deliberately: the source gives regions, not points, and an invented grid reference would be a claim the material does not support.",
+  "coordinates": "refused",
+  "entries": [
+    {
+      "id": "bahamas-caribbean",
+      "label": "Bahamas / Caribbean seabed complex",
+      "region": "Southern waters near the Bahamas; Caribbean approaches",
+      "physical_type": "undersea and sub-crustal",
+      "operators": [
+        "human national-security programmes",
+        "Orion"
+      ],
+      "era": "pre-1981 to post-Crisis",
+      "function": "docks, logistics, biological work, Orion ingress",
+      "cover": "oceanographic survey, cable maintenance, drug-interdiction cooperation",
+      "public_knowledge": "rumour and maritime folklore",
+      "jurisdiction": "contested: national waters, several flags, no single authority",
+      "status_2045": "the alliance's material origin and its most dangerous site; reached late in a campaign",
+      "sources": [
+        "RA 8.3",
+        "RA 8.13",
+        "NOOPUNK"
+      ],
+      "hooks": [
+        "a chartered vessel's manifest disagrees with its AIS track",
+        "a survey contractor's insurance claim describes a hull breach at a depth that should have crushed it"
+      ],
+      "coordinates": null
+    },
+    {
+      "id": "pacific-chile",
+      "label": "Pacific installations near the Chilean maritime border",
+      "region": "eastern Pacific, Chilean coast",
+      "physical_type": "undersea",
+      "operators": [
+        "human national-security programmes"
+      ],
+      "era": "pre-1981",
+      "function": "basing for remotely controlled craft",
+      "cover": "hydrographic research",
+      "public_knowledge": "none in the source period",
+      "jurisdiction": "Chilean maritime zone",
+      "status_2045": "human-operated; an Orion connection is suggested by the wider South American region but is not confirmed by the source",
+      "sources": [
+        "RA 8.3"
+      ],
+      "hooks": [
+        "a Chilean navy exercise is cancelled without explanation and nobody in the region will say why"
+      ],
+      "coordinates": null
+    },
+    {
+      "id": "south-america-orion-approaches",
+      "label": "Orion submerged approaches, South America",
+      "region": "South American and Caribbean areas",
+      "physical_type": "underground, entered from water",
+      "operators": [
+        "Orion"
+      ],
+      "era": "pre-1981",
+      "function": "Orion bases; landing and departure routes",
+      "cover": "none: the source describes concealment, not a human cover story",
+      "public_knowledge": "local rumour and abduction testimony",
+      "jurisdiction": "plural; the region is where the alliance's paperwork fails",
+      "status_2045": "Orion network, linked to the Bahamas by in-world intelligence rather than by source certainty",
+      "sources": [
+        "RA 8.13"
+      ],
+      "hooks": [
+        "a fishing community reports a light beneath the water on the same date every year",
+        "an abductee's account contains a route detail that matches a shipping lane"
+      ],
+      "coordinates": null
+    },
+    {
+      "id": "northern-polar",
+      "label": "Orion facilities near the northern pole",
+      "region": "far northern polar region",
+      "physical_type": "underground",
+      "operators": [
+        "Orion"
+      ],
+      "era": "pre-1981",
+      "function": "Orion stronghold and historical intrusion corridor",
+      "cover": "none",
+      "public_knowledge": "none",
+      "jurisdiction": "outside or contested by every Arctic state",
+      "status_2045": "separate from the Caribbean complex; a corridor, not a headquarters",
+      "sources": [
+        "RA 8.13"
+      ],
+      "hooks": [
+        "an Arctic research station's ice-core data shows a cavity where the bedrock should be"
+      ],
+      "coordinates": null
+    },
+    {
+      "id": "lunar",
+      "label": "Lunar installations",
+      "region": "the Moon",
+      "physical_type": "surface and subsurface",
+      "operators": [
+        "human national-security programmes"
+      ],
+      "era": "under rework in 1981; status after the Crisis open",
+      "function": "legacy military infrastructure",
+      "cover": "civil space programmes",
+      "public_knowledge": "public programmes are known; the military layer is not",
+      "jurisdiction": "no sovereign claim survives the Crisis intact",
+      "status_2045": "OPEN: which installations fell to Orion after the Crisis, and whether anyone on Earth knows",
+      "sources": [
+        "RA 8.3",
+        "OPEN"
+      ],
+      "hooks": [
+        "a commercial lunar relay goes silent for eleven minutes and returns with a different clock"
+      ],
+      "coordinates": null
+    },
+    {
+      "id": "mobile-land",
+      "label": "Mobile ground bases",
+      "region": "multiple",
+      "physical_type": "mobile",
+      "operators": [
+        "human national-security programmes"
+      ],
+      "era": "pre-1981",
+      "function": "staging nodes that are never where the file says",
+      "cover": "rail, road freight, military exercise",
+      "public_knowledge": "none",
+      "jurisdiction": "whatever country the convoy is crossing",
+      "status_2045": "useful as moving staging nodes; do not treat them as fixed map points",
+      "sources": [
+        "RA 8.3"
+      ],
+      "hooks": [
+        "a customs anomaly: a convoy that declares more axles than it has"
+      ],
+      "coordinates": null
+    },
+    {
+      "id": "airborne",
+      "label": "Airborne bases",
+      "region": "multiple",
+      "physical_type": "airborne",
+      "operators": [
+        "human national-security programmes"
+      ],
+      "era": "pre-1981",
+      "function": "command, relay and launch platforms",
+      "cover": "airborne early warning, weather research",
+      "public_knowledge": "occasional sightings read as aircraft",
+      "jurisdiction": "airspace, which is where jurisdiction gets interesting",
+      "status_2045": "a plausible source of the UAP reports a Europol officer must explain without invoking aliens",
+      "sources": [
+        "RA 8.3"
+      ],
+      "hooks": [
+        "a transponder code appears in two flight plans at once"
+      ],
+      "coordinates": null
+    },
+    {
+      "id": "new-mexico",
+      "label": "Underground manufacture, New Mexico",
+      "region": "arid New Mexico, USA",
+      "physical_type": "underground",
+      "operators": [
+        "human national-security programmes"
+      ],
+      "era": "pre-1981",
+      "function": "craft manufacture, one at a time",
+      "cover": "research installation",
+      "public_knowledge": "decades of folklore that the source does not corroborate",
+      "jurisdiction": "US federal, and after the Crisis whatever the shattered American sphere became",
+      "status_2045": "black-program manufacturing, later hybrid corporate research",
+      "sources": [
+        "RA 8.24",
+        "RA 8.28"
+      ],
+      "hooks": [
+        "a defence contractor's environmental filing lists a solvent used only in aerospace composites"
+      ],
+      "coordinates": null
+    },
+    {
+      "id": "arid-mexico",
+      "label": "Underground manufacture, arid Mexico",
+      "region": "arid Mexico",
+      "physical_type": "underground",
+      "operators": [
+        "human national-security programmes"
+      ],
+      "era": "pre-1981",
+      "function": "craft manufacture, one at a time",
+      "cover": "a bacteriological-warfare research installation, which the host government believed it was",
+      "public_knowledge": "none",
+      "jurisdiction": "Mexican sovereignty, with a bilateral arrangement the source describes as misrepresented",
+      "status_2045": "cross-border compartment; not identical to New Mexico, and not to be merged with it",
+      "sources": [
+        "RA 8.24",
+        "RA 8.29"
+      ],
+      "hooks": [
+        "a 1970s bilateral agreement surfaces in a declassification batch with its annex missing"
+      ],
+      "coordinates": null
+    },
+    {
+      "id": "area-51",
+      "label": "Area 51 / Groom Lake",
+      "region": "Nevada, USA",
+      "physical_type": "surface airfield with underground elements (fictional option)",
+      "operators": [
+        "human national-security programmes"
+      ],
+      "era": "post-1955 (real test site); NoöPunk role OPEN",
+      "function": "aviation test and recovery, if the author adopts it",
+      "cover": "the real cover: a test facility",
+      "public_knowledge": "widely known as a secret facility",
+      "jurisdiction": "US federal",
+      "status_2045": "OPEN: not named by Ra in the cited passages and not established as an Orion base",
+      "sources": [
+        "HISTORICAL",
+        "OPEN"
+      ],
+      "hooks": [
+        "a declassified budget line for a facility that officially did not exist"
+      ],
+      "coordinates": null
+    },
+    {
+      "id": "dulce",
+      "label": "Dulce, New Mexico",
+      "region": "northern New Mexico, USA",
+      "physical_type": "underground (legendary)",
+      "operators": [
+        "OPEN"
+      ],
+      "era": "later ufology, not the source",
+      "function": "OPEN: hidden facility, folklore, or disinformation the faction encourages",
+      "cover": "OPEN",
+      "public_knowledge": "a well-known legend",
+      "jurisdiction": "US federal, and tribal jurisdiction over the land itself",
+      "status_2045": "OPEN: decide before canonising; the legend is useful either way",
+      "sources": [
+        "MJ12_LORE",
+        "OPEN"
+      ],
+      "hooks": [
+        "a tribal land dispute turns on a survey that does not match the federal map"
+      ],
+      "coordinates": null
+    },
+    {
+      "id": "wright-patterson",
+      "label": "Wright-Patterson AFB",
+      "region": "Ohio, USA",
+      "physical_type": "airbase and archives",
+      "operators": [
+        "human national-security programmes"
+      ],
+      "era": "1947-1969 for the real UFO investigation; NoöPunk role optional",
+      "function": "archival and intelligence node, if the author adopts it",
+      "cover": "an air force base and its research laboratories",
+      "public_knowledge": "known as the home of Project Blue Book",
+      "jurisdiction": "US federal",
+      "status_2045": "optional archival node, not an automatic Orion combat base",
+      "sources": [
+        "HISTORICAL",
+        "OPEN"
+      ],
+      "hooks": [
+        "a records request returns a box that was transferred to a command that no longer exists"
+      ],
+      "coordinates": null
+    },
+    {
+      "id": "hyvinkaa",
+      "label": "Hyvinkää Zone, Finland",
+      "region": "Finland",
+      "physical_type": "urban and industrial zone",
+      "operators": [
+        "Machine Civilization Constructs"
+      ],
+      "era": "post-Crisis",
+      "function": "existing NoöPunk Construct jurisdiction",
+      "cover": "not applicable: this is public, governed and contested",
+      "public_knowledge": "public",
+      "jurisdiction": "Finnish state and City of Helsinki arrangements",
+      "status_2045": "NOT an Orion or MJ-12 site. Corporate or SETI intersections are possible; control is not established and must not be implied",
+      "sources": [
+        "NOOPUNK"
+      ],
+      "hooks": [
+        "an Orion-linked supplier wins a zone contract and the investigation is about procurement, not aliens"
+      ],
+      "coordinates": null
+    },
+    {
+      "id": "mars-eldrich",
+      "label": "Mars and the asteroid belt — Eldrich holdings",
+      "region": "off-world",
+      "physical_type": "corporate installations",
+      "operators": [
+        "Eldrich Corporation"
+      ],
+      "era": "post-Crisis",
+      "function": "Orion's largest commercial interface",
+      "cover": "ordinary corporate extraterritoriality",
+      "public_knowledge": "public as commerce, opaque as ownership",
+      "jurisdiction": "corporate charter, EU trade law, and a great deal of distance",
+      "status_2045": "proxy-era infrastructure; distinct from the 1981 base map",
+      "sources": [
+        "NOOPUNK"
+      ],
+      "hooks": [
+        "a Mars-bound cargo manifest lists a component whose only manufacturer is a 1978 US programme"
+      ],
+      "coordinates": null
+    }
+  ]
+}
