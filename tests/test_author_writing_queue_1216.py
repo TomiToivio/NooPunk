@@ -20,7 +20,7 @@ class AuthorQueueTest(unittest.TestCase):
         self.assertIn("Author-owned queue", self.queue)
         self.assertIn("not a manuscript", self.queue)
         self.assertIn("Do not ghostwrite", self.queue)
-        for mark in ("READY", "EMPTY", "COVERED", "OPEN"):
+        for mark in ("READY", "TEMPLATE", "COVERED", "OPEN"):
             self.assertIn(mark, self.queue)
 
     def test_existing_case_and_ledger_are_not_duplicated(self):
