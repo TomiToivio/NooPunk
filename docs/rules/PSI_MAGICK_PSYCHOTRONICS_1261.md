@@ -2,7 +2,9 @@
 
 > **Status: DESIGN ONLY, awaiting Tomi's approval.** This document addresses the expanded PSI/Magick/device work in #1261 without silently installing new skills, prices, damage rules, Effort pools or abilities. The immutable Cities Without Number (CWN) core remains unchanged. NoöPunk quantum-consciousness mechanics are **fictional setting technology**, not established physics or medicine.
 >
-> **Precedence:** the newest author superskill specification and `docs/rules/ASTRAL_SUPERSKILL_1261.md` override earlier incompatible Astral Projection ladders. Only ranks 0–1 are playable; ranks 2–4 remain design-only.
+> **Precedence:** the newest author superskill specification — now the evening revision section of
+> [`docs/tabletop/ASTRAL_1261.md`](../tabletop/ASTRAL_1261.md) — overrides earlier incompatible Astral
+> Projection ladders. Only ranks 0–1 are playable; ranks 2–4 remain design-only.
 
 ## 1. Existing implementation versus proposed expansion
 
