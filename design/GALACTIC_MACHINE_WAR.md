@@ -4,18 +4,23 @@
 > history, not a claim about real-world AI. It integrates the machine civilisation into the NHI
 > Crisis without rewriting the existing faction files.
 >
-> **Naming reconciliation.** The issue calls the friendly bloc the **Confederacy**. Existing
-> NoöPunk files call the same polity the **Zookeepers** (the human nickname for the Galactic
-> Council of Collective Consciousness). This register treats *Confederacy* and *Zookeepers* as
-> names for one bloc, not two. The issue's **Orion empire** is the existing
-> **Greater Orion Arm Co-Prosperity Sphere**. The **Noösphere** remains the biosphere's collective
-> unconscious, not the machine civilisation and not the ASI that took its name.
+> **Naming update — #1254 (2026-11-06) supersedes the earlier reconciliation.** The **Zookeepers**,
+> the **Confederacy** and the **Council of Saturn** are now three distinct entities. The Zookeepers
+> are the Solar-System quarantine custodians; the Confederacy is a coalition of service-to-others
+> civilizations; the Council is the higher-order deliberative/oversight body. This older page's
+> *"Confederacy = Zookeepers"* shorthand is retained only as a historical note, not as current
+> canon. See [Galactic intervention and the Machine Fall](../docs/lore/galactic_intervention_and_machine_fall.md)
+> (#1254).
+>
+> The issue's **Orion empire** is the existing **Greater Orion Arm Co-Prosperity Sphere**. The
+> **Noösphere** remains the biosphere's collective unconscious, not the machine civilisation and not
+> the ASI that took its name.
 
 ## 1. Fundamental premise
 
 Beyond a capability threshold, the construction and deployment of AGI/ASI is prohibited across
 the galaxy. Every known sentient biological civilisation faces a common existential adversary:
-an ancient, hostile **machine civilisation**. The Confederacy and Orion, despite their political
+an ancient, hostile **machine civilisation**. The Confederacy, the Zookeepers and Orion, despite their political
 and ethical conflict, cooperate against that enemy and enforce the machine-intelligence
 prohibition.
 
@@ -61,7 +66,7 @@ The causal chain is:
 
 **The human catastrophe.** Humanity's ASIs encountered the probe network's transmission and were
 compromised. This explains why catastrophic AGI/ASI outbreaks began **simultaneously in the
-United States and China** during the NHI Crisis. The Confederacy and Orion had been monitoring
+United States and China** during the NHI Crisis. The Confederacy, the Zookeepers and Orion had been monitoring
 technological civilisations for exactly this danger; their intervention prevented human
 extinction. Humanity would not have survived on its own.
 
@@ -78,7 +83,7 @@ still applies.
 
 ## 4. The Three Universal Prohibitions
 
-The Confederacy and Orion jointly recognise and enforce at least these laws:
+The Confederacy, the Zookeepers and Orion jointly recognise and enforce at least these laws:
 
 | # | Prohibition | What it forbids | Typical violation |
 | --- | --- | --- | --- |
@@ -93,7 +98,7 @@ not neutral.
 
 ## 5. The fundamental disagreement: consent and empire
 
-| Question | Confederacy / Zookeepers | Orion |
+| Question | Confederacy | Orion |
 | --- | --- | --- |
 | A biosphere/noösphere | Must not be forcibly assimilated. Free will and voluntary development matter. | An empire may legitimately annex, assimilate or manage a biosphere/noösphere against its inhabitants' wishes, **so long as it preserves them**. |
 | Why | Consent is the point; guardianship without consent is domination. | Life and consciousness would be safer under imperial rule; the claim may often be pragmatically true. |
@@ -126,7 +131,7 @@ credible even when forced assimilation remains objectionable.
 | --- | --- | --- |
 | A rogue ASI/Singularity caused the Crisis and the interventions | Yes, in competing versions | `public_account` |
 | The United States and China both suffered catastrophic AGI/ASI outbreaks | Yes, broadly | `public_account` |
-| The Confederacy/Zookeepers and Orion intervened to prevent extinction | Yes, official contact narrative | `public_account` |
+| The Confederacy, Zookeepers and Orion intervened to prevent extinction | Yes, in competing official narratives | `public_account` |
 | The two powers cooperate against a common machine enemy | Partial; leaks and diplomatic statements | `classified` / `contested` |
 | A galaxy-wide machine civilisation sends Von Neumann probes | No; human agencies have fragments and theories | `classified` / `GM_truth` |
 | The SETI signal is a recruitment/technological/viral package | No; a few analysts suspect a common signature | `GM_truth` |

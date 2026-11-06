@@ -11,7 +11,9 @@ Europol Helsinki campaign. It does not implement systems.
 > The binding chronology is [`ALTERNATE_HISTORY_1114.md`](ALTERNATE_HISTORY_1114.md).
 > The machine-war frame behind the rogue-ASI catastrophe is in
 > [`../../design/GALACTIC_MACHINE_WAR.md`](../../design/GALACTIC_MACHINE_WAR.md) (#1122); it is
-> authorial/GM context, not public 2045 knowledge.
+> authorial/GM context, not public 2045 knowledge. **#1254** makes the **Zookeepers**, the
+> **Confederacy** and the **Council of Saturn** distinct entities; see
+> [`../lore/galactic_intervention_and_machine_fall.md`](../lore/galactic_intervention_and_machine_fall.md).
 
 **Priority of statements, and how to read them.** Three markers are used throughout, and they matter more than
 any prose:

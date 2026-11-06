@@ -122,10 +122,11 @@ class ReconciliationTests(unittest.TestCase):
         self.assertIn("#1252", old)
         self.assertIn("Zookeepers", old)
 
-    def test_the_zookeeper_question_stays_open(self):
+    def test_the_zookeeper_question_is_resolved_by_1254(self):
         text = DOC.read_text(encoding="utf-8")
         self.assertIn("Zookeepers", text)
-        self.assertIn("TBD", text.split("Zookeepers")[-1][:400])
+        self.assertIn("#1254 resolves the former TBD", text)
+        self.assertIn("are distinct entities", text)
 
 
 if __name__ == "__main__":
