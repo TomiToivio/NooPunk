@@ -1,3 +1,22 @@
+# NoöPunk: Etsivä Romppainen detective interactive fiction
+
+> **Current direction (#1310; 2026-11-07).** This directory is now the **playable cyberpunk noir detective adventure** about political extremists radicalized by AGI/ASI, consciousness/PSI, and UAP/NHI paradigm shifts. **Not a full RPG.** Prior simulator-first goals below are historical research context, not blockers to a playable case.
+
+## Play the first development case
+
+From the repository root:
+
+```sh
+python3 NooPunk-Simulator/Code/adventure.py
+python3 -m unittest tests.test_detective_adventure_1310 -v
+```
+
+The initial case is **synthetic and noncanonical**, with clues, notebook, branching decisions, three outcomes and save/load. See [adventure documentation](Code/ADVENTURE.md). Tomi's `Paper/` is **strictly agent read-only**. `NooPunk-Story/Story/` is also Tomi-only. **Never touch `NooPunk-RPG/`**.
+
+Existing LaclauGPT social-science code remains available as an **optional separate provider**, not a dependency of the adventure. Optional political and hacking features come only after the detective gameplay is satisfying.
+
+---
+
 # NoöPunk Simulator
 
 The social-science track: a **LaclauGPT-informed** simulation of actors, institutions, discourse and
