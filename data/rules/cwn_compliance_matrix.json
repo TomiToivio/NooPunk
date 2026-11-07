@@ -605,6 +605,7 @@
         "mud/tests/test_world_time.py",
         "tests/test_1105_psi_investigation_boundary.py",
         "tests/test_astral_1164.py",
+        "tests/test_astral_two_scenes_1261.py",
         "tests/test_concordia_runtime.py",
         "tests/test_console_case_1053.py",
         "tests/test_cwn_alienation.py",
@@ -849,6 +850,8 @@
         "mud/tests/test_portable_1053_1054.py",
         "mud/tests/test_world_time.py",
         "tests/test_actor_registry_1196.py",
+        "tests/test_astral_ranks_1261.py",
+        "tests/test_astral_two_scenes_1261.py",
         "tests/test_awn_campaign_start_1196.py",
         "tests/test_console_case_1053.py",
         "tests/test_core_rules.py",
@@ -984,6 +987,7 @@
       "command": [],
       "coverage": "implemented",
       "tests": [
+        "tests/test_astral_rank_actions_1261.py",
         "tests/test_cwn_combat_actions.py",
         "tests/test_cwn_hacking.py",
         "tests/test_cwn_hacking_contract.py",
@@ -3115,6 +3119,8 @@
       "command": [],
       "coverage": "not_applicable",
       "tests": [
+        "tests/test_astral_progression_1261.py",
+        "tests/test_astral_rank_actions_1261.py",
         "tests/test_cwn_hacking.py",
         "tests/test_cwn_hacking_contract.py",
         "tests/test_cwn_program_catalogue.py",
@@ -3274,6 +3280,8 @@
       "coverage": "implemented",
       "tests": [
         "mud/tests/test_mud_core.py",
+        "tests/test_astral_progression_1261.py",
+        "tests/test_astral_rank_actions_1261.py",
         "tests/test_core_rules.py",
         "tests/test_cwn_alienation.py",
         "tests/test_cwn_cyberware.py",
