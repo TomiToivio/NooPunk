@@ -203,6 +203,18 @@
       ],
       "licence": "author-decision",
       "note": "Catch-all for Markdown that no earlier class claims (currently BASIC.md and similar root notes). Placed last so specific classes win. It exists because new root documents arrive faster than the policy is updated, and an unclassified file fails the whole suite for every open PR."
+    },
+    {
+      "id": "subprojects-and-contracts",
+      "globs": [
+        "NooPunk-Story/**",
+        "NooPunk-Simulator/**",
+        "NooPunk-RPG/**",
+        "data/schema/**",
+        "src/contracts/**"
+      ],
+      "licence": "author-decision",
+      "note": "First-party subproject structure and the contracts between them (#1295). No third-party material: the Story manuscript is the author's, the examples are synthetic, and the schemas are our own."
     }
   ],
   "release_modes": {

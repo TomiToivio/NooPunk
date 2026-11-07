@@ -1,0 +1,51 @@
+{
+  "schema": "noopunk.story_graph/1",
+  "note": "SYNTHETIC EXAMPLE - not Tomi's manuscript, not canon. It exists to prove the contract and the RPG adapter. Every source_ref points at this directory's own sample manuscript file.",
+  "nodes": [
+    {
+      "id": "series.demo",
+      "kind": "series",
+      "label": "Example series",
+      "source_ref": "examples/sample_scene.md",
+      "summary": "A synthetic series used by the contract tests."
+    },
+    {
+      "id": "episode.demo.01",
+      "kind": "episode",
+      "parent_id": "series.demo",
+      "label": "Example episode",
+      "source_ref": "examples/sample_scene.md"
+    },
+    {
+      "id": "scene.demo.corridor",
+      "kind": "scene",
+      "parent_id": "episode.demo.01",
+      "label": "The corridor",
+      "source_ref": "examples/sample_scene.md",
+      "scene_types": ["Investigation", "Social"],
+      "summary": "A synthetic scene in which nothing canonical happens."
+    },
+    {
+      "id": "scene.demo.office",
+      "kind": "scene",
+      "parent_id": "episode.demo.01",
+      "label": "The office",
+      "source_ref": "examples/sample_scene.md",
+      "scene_types": ["Social"],
+      "prerequisites": ["corridor_door_opened"]
+    }
+  ],
+  "edges": [
+    {
+      "source": "scene.demo.corridor",
+      "target": "scene.demo.office",
+      "kind": "choice",
+      "label": "Open the door and go in"
+    },
+    {
+      "source": "series.demo",
+      "target": "episode.demo.01",
+      "kind": "transition"
+    }
+  ]
+}
