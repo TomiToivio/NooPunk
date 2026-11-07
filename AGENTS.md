@@ -1,3 +1,11 @@
+# CURRENT PRODUCT DIRECTION: ETSIVÄ ROMPPAINEN DETECTIVE ADVENTURE (#1310; 2026-11-07)
+
+**This directive supersedes conflicting old full-RPG, simulator-first, and sole-tracker instructions in this file.** The **playable NoöPunk game is a small cyberpunk detective interactive-fiction adventure**, not a full RPG. `NooPunk-Simulator/` hosts the game, while the LaclauGPT social model is optional background research. `NooPunk-Story/` is Tomi's interactive script and possible novel.
+
+**HARD NO-TOUCH:** Agents MUST NOT write, refactor, delete, rename, move or format **any file** under `NooPunk-RPG/`, `NooPunk-Story/Story/` or `NooPunk-Simulator/Paper/`. Tomi alone writes the latter two source directories. Do not restart CWN mechanics or require RPG compatibility. Work in small playable-investigation increments; no bulk LaclauGPT imports, universal game rules, mandatory political simulator or hacking engine. See [#1310](https://github.com/TomiToivio/NooPunk/issues/1310). Preserve old assets untouched as historical references.
+
+---
+
 # Prompt archive: mandatory intake rule (2026-11-07)
 
 **For every substantial author-written NoöPunk Story, Simulator or RPG design/development prompt, proactively save the original text in `Prompts/DD_MM_YYYY_TOPIC_NAME.md`.** Log only long, thoughtful prompts containing original background, theory, narrative, rules or design ideas; **never** log short routine requests (“do this”, “fix this”, merge requests, casual questions). Treat Story/Simulator/RPG together in one `Prompts/` directory. Before saving, check for duplicates and pre-existing files under different names; normalize names without losing text. Preserve the author's wording, even if ideas are later abandoned; archives are **not canon or implementation authorization**. Follow [`Prompts/README.md`](Prompts/README.md) and [issue #1302](https://github.com/TomiToivio/NooPunk/issues/1302). This documentation-only obligation does not change current active development scopes.

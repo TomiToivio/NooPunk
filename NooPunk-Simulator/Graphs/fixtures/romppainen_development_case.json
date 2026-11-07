@@ -1,0 +1,179 @@
+{
+  "id": "romppainen_case_development_01",
+  "title": "Etsivä Romppainen: The Missing Organizer",
+  "source": {
+    "kind": "synthetic_development_fixture",
+    "author": "agent",
+    "canon": false,
+    "story_manuscript": null,
+    "issue": 1310
+  },
+  "start": "briefing",
+  "clues": {
+    "missing": "A community organizer has disappeared after an argument about public disclosure.",
+    "roster": "A public event register links two rival political groups to the same evening meeting.",
+    "witness": "A witness heard a heated argument but cannot identify who was responsible.",
+    "message": "A recovered voluntary message asks for privacy, but its sender cannot be authenticated."
+  },
+  "hypotheses": [
+    {
+      "text": "Two rival organizations may be connected by the same event, not necessarily by conspiracy.",
+      "requires": [
+        "roster"
+      ]
+    },
+    {
+      "text": "The alleged disappearance could be voluntary, coercive, or staged. Evidence is incomplete.",
+      "requires": [
+        "witness",
+        "message"
+      ]
+    }
+  ],
+  "scenes": {
+    "briefing": {
+      "title": "Helsinki, 2045 | Europol briefing",
+      "text": "Etsivä Romppainen receives a case involving a missing organizer and competing political groups. The initial report is mundane; grand theories can wait. This is a NONCANONICAL development case.",
+      "choices": [
+        {
+          "label": "Read the missing-person report and public event register",
+          "to": "records",
+          "adds": [
+            "missing",
+            "roster"
+          ]
+        },
+        {
+          "label": "Interview a witness from the meeting",
+          "to": "witness",
+          "adds": [
+            "missing",
+            "witness"
+          ]
+        }
+      ]
+    },
+    "records": {
+      "title": "Records desk",
+      "text": "The event register confirms attendance, not guilt. Both groups publicly disagree about AI oversight and disputed disclosure claims.",
+      "choices": [
+        {
+          "label": "Speak with the witness",
+          "to": "witness",
+          "adds": [
+            "witness"
+          ]
+        },
+        {
+          "label": "Review the voluntarily provided message",
+          "to": "message",
+          "adds": [
+            "message"
+          ]
+        },
+        {
+          "label": "Return to the briefing",
+          "to": "briefing"
+        }
+      ]
+    },
+    "witness": {
+      "title": "Witness interview",
+      "text": "The witness remembers raised voices. They cannot say whether the missing organizer left willingly.",
+      "choices": [
+        {
+          "label": "Check the event register",
+          "to": "records",
+          "adds": [
+            "roster"
+          ]
+        },
+        {
+          "label": "Review the voluntarily provided message",
+          "to": "message",
+          "adds": [
+            "message"
+          ]
+        },
+        {
+          "label": "Return to the briefing",
+          "to": "briefing"
+        }
+      ]
+    },
+    "message": {
+      "title": "The message",
+      "text": "The message requests that the sender's location remain private. Its authenticity is unresolved; making it public could endanger someone.",
+      "choices": [
+        {
+          "label": "Review all leads and decide how to proceed",
+          "to": "decision",
+          "requires": [
+            "roster",
+            "witness",
+            "message"
+          ]
+        },
+        {
+          "label": "Revisit the witness",
+          "to": "witness",
+          "adds": [
+            "witness"
+          ]
+        },
+        {
+          "label": "Recheck records",
+          "to": "records",
+          "adds": [
+            "roster"
+          ]
+        }
+      ]
+    },
+    "decision": {
+      "title": "Case assessment",
+      "text": "The missing-person report, event register, witness testimony and disputed message are now in the notebook. You have evidence of disagreement, not proof of a crime.",
+      "choices": [
+        {
+          "label": "Protect the person's privacy and refer for safeguarding verification",
+          "to": "private_end",
+          "flags": {
+            "disposition": "privacy"
+          }
+        },
+        {
+          "label": "Seek formal review and preserve the evidence without public accusations",
+          "to": "review_end",
+          "flags": {
+            "disposition": "formal_review"
+          }
+        },
+        {
+          "label": "Publish the uncertain links and risk damaging innocent people",
+          "to": "public_end",
+          "flags": {
+            "disposition": "publication"
+          }
+        }
+      ]
+    },
+    "private_end": {
+      "title": "Provisional closure: privacy first",
+      "text": "Romppainen records the unresolved questions and requests a confidential welfare check. The public case remains unproven.",
+      "ending": true,
+      "choices": []
+    },
+    "review_end": {
+      "title": "Provisional closure: formal review",
+      "text": "Romppainen preserves the evidence and sends it for independent verification. No one has been convicted by an association graph.",
+      "ending": true,
+      "choices": []
+    },
+    "public_end": {
+      "title": "Provisional closure: premature disclosure",
+      "text": "The public release escalates the conflict. A possible lead is gained at the cost of trust. The case remains factually unresolved.",
+      "ending": true,
+      "choices": []
+    }
+  }
+}

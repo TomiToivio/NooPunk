@@ -1,3 +1,5 @@
+> **Current gameplay direction (#1310, 2026-11-07):** `NooPunk-Story/` holds Tomi's interactive detective-fiction script starring Etsivä Romppainen, potentially later a novel. The playable adventure lives in `NooPunk-Simulator/`. **All agent access to `Story/` remains read-only**; agent derivatives belong in `Graph/`. No full RPG is required. Preserve the manuscript unchanged.
+
 # NoöPunk Story
 
 The creative track: **Tomi's manuscript**, and the Story Graph derived from it.
