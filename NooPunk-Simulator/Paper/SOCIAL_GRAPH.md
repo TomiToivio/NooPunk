@@ -9,4 +9,16 @@ Edges represent all meaningful social connections: It doesn't matter if the conn
 
 ## Nodes
 Nodes represent a Person, an Organization, a Faction etc. Nodes represent social entities with an identity and agency. Node can be an organization like a corporation, it cannot be a loose group of people without shared identity or agency. 
-Nodes have 
+Nodes have several attributes: 
+* Name: Name of the Node like "Mars Eldrich".
+* Type: Type of the Node like "Person" or "Organization".
+* ID: ID of the entity that the Node refers to. Constructed by adding the type and name of the Node in lowercase separated by underscores: Person Mars Eldrich would be "person_mars_eldrich". 
+Many more attributes are available in the data of the entity.
+
+## Edges
+Bidirectional Edges mean mutual connections like friendship or alliance. 
+Unidirectional Edges mean that the Target Node is not aware of the opinion of the Source Node or has a different opinion of the Source Node.
+They have many attributes: 
+* Source: ID of the Source Node.
+* Target: ID of the Target Node.
+* Value: Ranges from -4 to +4. -4 means hatred, +4 means friendship, love or alliance.
