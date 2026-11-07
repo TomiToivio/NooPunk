@@ -2,6 +2,11 @@
 
 # NoöPunk Story
 
+> **`Story/` is Tomi-authored and agent READ-ONLY (#1310).** Agents may build graphs, indexes and adapters
+> **from actual author-written text**. Do not fabricate manuscript prose, dialogue or scene text in this
+> directory. Where the script does not exist yet, use clearly labelled development fixtures — never
+> pseudo-canon. See [../docs/architecture/PIVOT_1310_DETECTIVE_IF.md](../docs/architecture/PIVOT_1310_DETECTIVE_IF.md).
+
 The creative track: **Tomi's manuscript**, and the Story Graph derived from it.
 
 ```
