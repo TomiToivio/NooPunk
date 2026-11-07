@@ -87,6 +87,8 @@ third. The protocol that goes with this register is [design/AGENT_COORDINATION.m
 
 | **Pivot: Romppainen detective interactive fiction (#1310)** | [adventure/PIVOT_1310.md](adventure/PIVOT_1310.md) — the three tracks as they now stand, the read-only boundaries, and the inventory of what is already reusable (the console case, the clue model, the graphs) versus what is optional or frozen | [campaign/SCENARIO_2045_1301.md](campaign/SCENARIO_2045_1301.md) stays story context with Romppainen as the detective; `NooPunk-RPG/` is untouched and `NooPunk-Story/Story/` and `NooPunk-Simulator/Paper/` stay author-owned | a pivot record, not a rewrite: no RPG file changed, no second engine, no prose invented |
 
+| **Simulator graph layer: Social, Ideology, Physical (#1309)** | [../NooPunk-Simulator/Graphs/GRAPHS_OVERVIEW.md](../NooPunk-Simulator/Graphs/GRAPHS_OVERVIEW.md) — the three views, their ids, formats and versioning, and how they relate to the RPG's four-family contract without adding a fifth | [../NooPunk-Simulator/Rulebook/GRAPHS_1309.md](../NooPunk-Simulator/Rulebook/GRAPHS_1309.md) holds the operational rules; `Paper/SOCIAL_GRAPH.md` and `Paper/PHYSICAL_GRAPH.md` stay the author's and unedited | implemented in `src/social_sim/graphs.py` with 29 tests; no faction mechanics, no UI, no nested room graphs |
+
 ## What is generated, and therefore never hand-edited
 
 | file | generator | freshness check |
