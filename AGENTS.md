@@ -12,6 +12,34 @@
 
 ---
 
+# ACTIVE DEVELOPMENT DIRECTIVE (#1310, 2026-11-07): ROMPPAINEN DETECTIVE ADVENTURE
+
+**This supersedes the simulator-first directive below wherever the two disagree.** Read
+[`docs/adventure/PIVOT_1310.md`](docs/adventure/PIVOT_1310.md) before starting any game work.
+
+**The product:** an old-fashioned **detective interactive-fiction adventure** in cyberpunk Helsinki, with **Etsivä Harri
+Romppainen** investigating political extremists radicalised by three mainstream paradigm shifts. Small, sequential,
+writing-and-playing first; the best mechanic is the one that can be omitted without harming the investigation.
+
+**Hard scope guards, in this order:**
+
+1. **`NooPunk-RPG/` is untouched.** Do not edit, move, rename, delete, refactor, migrate or "tidy" anything in it. Do not
+   revive CWN character generation, combat, psionics, economy, stat blocks or leveling. It is a preserved, inactive archive.
+2. **`NooPunk-Story/Story/` and `NooPunk-Simulator/Paper/` are Tomi's and agent read-only.** Agents may read them and
+   derive graphs or adapters; they may not write prose, restructure them, or "improve" them.
+3. **No second engine.** The adventure extends the existing console (`src/console/`, `scripts/noopunk_case.py`) and clue
+   model (`src/rules/investigation.py`). Do not write a parallel runtime, clue model or save format.
+4. **Optional means optional.** The LaclauGPT social simulation (#1286) and any hacking minigame are skippable modules
+   that may be built *after* a playable case exists; neither may gate story progress or become a build prerequisite.
+5. **No pseudo-canon.** Where the script does not exist, use a clearly labelled development fixture or leave the scene
+   out. Never invent Tomi's prose.
+
+**Still binding below:** the anti-duplication gate, the canonical rules locations, the design workflow, and the prompt
+archive rule at the very top of this file. The simulator-only directive that follows is **historical**; the simulator
+remains valid *optional* infrastructure, not the product.
+
+---
+
 # ACTIVE DEVELOPMENT DIRECTIVE (2026-11-07): LACLAUGPT SOCIAL SCIENCE SIMULATOR ONLY
 
 **Highest-priority scope gate; overrides all older agent, issue, RPG-design and implementation instructions below until Tomi explicitly changes direction.**

@@ -45,3 +45,15 @@ The next work is #1286's WP3–WP7 (behavioural assumptions, paired experiment, 
 end-to-end demonstration, integration seam), done **in place**. Stage P3/P4 moves the package into this
 directory behind a `social_sim` compatibility package so an existing `from social_sim.kernel import …`
 keeps working.
+## What this track is for now (#1310, 2026-11-07)
+
+**The playable detective adventure is the deliverable.** Romppainen investigates political extremists radicalised by the
+three paradigm shifts; the player explores a few Helsinki locations, interviews people, reads documents, records clues
+and reaches an outcome grounded in what they established.
+
+The LaclauGPT-derived social simulation described above is **optional infrastructure**: a possible provider of synthetic
+faction state for a case, never a runtime dependency of the story and never a prerequisite for playing. Do not build a
+pipeline before a case is fun.
+
+`Paper/` remains **Tomi's, agent read-only**. `Rulebook/` belongs to the paused RPG track and is not extended here.
+See [`../docs/adventure/PIVOT_1310.md`](../docs/adventure/PIVOT_1310.md) for the inventory of what already exists.

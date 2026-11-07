@@ -84,6 +84,8 @@ third. The protocol that goes with this register is [design/AGENT_COORDINATION.m
 
 | **Three starter cases: AGI, PSI, NHI (#1301)** | [scenarios/CASE_BRIEFS_1301.md](scenarios/CASE_BRIEFS_1301.md) — one Helsinki-scale opening per shift, each with a non-PSI clue path and a non-criminal outcome, plus the objective conflict each one creates | [scenarios/CASE_01_THE_TUESDAY_COMPLAINT.md](scenarios/CASE_01_THE_TUESDAY_COMPLAINT.md) remains a compatible fourth case; [scenarios/CAMPAIGN_ROADMAP_1120.md](scenarios/CAMPAIGN_ROADMAP_1120.md) holds the roadmap | briefs for author review, not scripted fiction: no dialogue, no canon |
 
+| **Pivot: Romppainen detective interactive fiction (#1310)** | [adventure/PIVOT_1310.md](adventure/PIVOT_1310.md) — the three tracks as they now stand, the read-only boundaries, and the inventory of what is already reusable (the console case, the clue model, the graphs) versus what is optional or frozen | [campaign/SCENARIO_2045_1301.md](campaign/SCENARIO_2045_1301.md) stays story context with Romppainen as the detective; `NooPunk-RPG/` is untouched and `NooPunk-Story/Story/` and `NooPunk-Simulator/Paper/` stay author-owned | a pivot record, not a rewrite: no RPG file changed, no second engine, no prose invented |
+
 ## What is generated, and therefore never hand-edited
 
 | file | generator | freshness check |
