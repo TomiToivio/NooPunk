@@ -16,3 +16,17 @@ This directory preserves **Tomi's substantial original NoöPunk design and devel
 ## Example
 
 - [07_11_2026_PROMPT_LOGGING.md](07_11_2026_PROMPT_LOGGING.md): the original request that established this archive, tracked in [issue #1302](https://github.com/TomiToivio/NooPunk/issues/1302).
+## Archive index
+
+Newest first. Each entry is the author's own text, verbatim; metadata is archival, not canon.
+
+| file | issue | subject |
+|---|---|---|
+| [07_11_2026_SIMULATOR_FIRST_STRATEGIC_RESET.md](07_11_2026_SIMULATOR_FIRST_STRATEGIC_RESET.md) | #1286 | Strategic reset: the LaclauGPT simulator first, the RPG frozen |
+| [07_11_2026_HELSINKI_2045_SCENARIO.md](07_11_2026_HELSINKI_2045_SCENARIO.md) | #1301 | 2045 Helsinki: Europol noir, three mainstream paradigm shifts, player freedom |
+| [07_11_2026_TAG_FAMILIES_AND_GRAPHS.md](07_11_2026_TAG_FAMILIES_AND_GRAPHS.md) | #1283 | The five tag families, the four graphs and the CWN chassis |
+| [06_11_2026_EU_TECHNOLOGY_AND_BUREAUCRACY.md](06_11_2026_EU_TECHNOLOGY_AND_BUREAUCRACY.md) | #1236 | EU technology, New European Idealism, Plato and Europol field operations |
+| [06_11_2026_ASTRAL_DENSITIES_AND_SUPERSKILL.md](06_11_2026_ASTRAL_DENSITIES_AND_SUPERSKILL.md) | #1261 | Astral densities, I-space and P-space, and the superskill revision |
+| [05_11_2026_PSI_ASTRAL_AND_GRAPH_DECISION.md](05_11_2026_PSI_ASTRAL_AND_GRAPH_DECISION.md) | #1178 | PSI scope, scripted Astral Projection, and the four graph families |
+
+Backfill of the prompts already in play, added when the archive first existed in the repository (#1302).
