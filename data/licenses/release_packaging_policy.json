@@ -214,7 +214,7 @@
         "src/contracts/**"
       ],
       "licence": "author-decision",
-      "note": "First-party subproject structure and the contracts between them (#1295). No third-party material: the Story manuscript is the author's, the examples are synthetic, and the schemas are our own."
+      "note": "First-party subproject content and the contracts between them (#1295). No third-party material: the manuscript is the author's, the examples are synthetic, the schemas are ours."
     }
   ],
   "release_modes": {

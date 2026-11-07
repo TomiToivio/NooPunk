@@ -149,3 +149,19 @@ classes; it should not be done silently inside an unrelated change.
 
 **Do not:** add a third model, or copy validation rules between the two. Until the merge lands, new work should
 target `src/world/graphs.py` and treat `four_graphs` as the authoring adapter that is pending replacement.
+
+## Two AI26 simulator slices, one canonical (#1286, 2026-11-07)
+
+Two agents implemented work package 1 within the same hour:
+
+| implementation | substrate | state |
+|---|---|---|
+| `src/social_sim/kernel.py` + `src/social_sim/ai26.py` | its own minimal event record, four-origin provenance, snapshot/replay, plus the read-only AI26 adapter (WP2) | **canonical** |
+| `src/simulation/ai26_research.py` | the #40 event envelope (`Event.create`, `reduce_events`, `replay_digest`) | **superseded**, kept only as history with a banner in `docs/research/AI26_SIMULATOR.md` |
+
+Why the standalone kernel won: work package 2 needs a provenance contract that distinguishes `observed`, `inferred`,
+`synthesized` and `simulated` per record, and an adapter that can refuse an import; the adapter and its 41 tests are
+built on it. The older slice is a null-model demo with a single `provenance` string and no adapter.
+
+**Do not add features to both.** Any further simulator work extends `src/social_sim/`; when the canonical path covers the
+null-model demo, delete `src/simulation/ai26_research.py` and its test rather than maintaining two simulators.

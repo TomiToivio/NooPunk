@@ -1,5 +1,10 @@
 # NoöPunk
 
+> **Three subprojects (#1295):** [Story](NooPunk-Story/README.md) — Tomi's writing, with
+> `NooPunk-Story/Story/` read-only for agents — · [Simulator](NooPunk-Simulator/README.md) ·
+> [RPG](NooPunk-RPG/README.md). Story comes first. The migration map and the shared tag/graph contract
+> are in [`docs/architecture/`](docs/architecture/PIVOT_1295_MIGRATION_MAP.md).
+
 > **Primary game (#950):** the Python/Evennia [NoöPunk MUD](mud/README.md). Default engineering priority is CWN rules parity and a complete offline-independent single-player Europol campaign; Godot is now maintenance-only, and multiplayer/LLM/Mesa features follow later. The [CWN Deluxe audit](docs/design/ISSUE_950_CWN_DELUXE_AUDIT.md) tracks the migration. Older Godot-first paragraphs below are historical.
 
 Rules coverage is tracked honestly in

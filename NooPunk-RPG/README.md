@@ -1,33 +1,20 @@
-# NoöPunk RPG — the mechanics track
+# NoöPunk RPG
 
-> **The CWN core is immutable.** This subproject consumes a story graph and a social-world state; it does not
-> own either, and it does not own the rules it runs on.
+The game track: **Cities Without Number as an immutable core**, plus a NoöPunk overlay that adds tags,
+graphs and scenes without touching the core.
 
-## What is here now, and where it will move
+## The boundary
 
-This directory is a **pointer** until the staged migration in
-[`docs/architecture/MIGRATION_MAP_1295.md`](../../docs/architecture/MIGRATION_MAP_1295.md) reaches the RPG. Nothing
-has been moved, because moving a rules tree in one commit is how a project loses a week.
+- `src/rules/` carries CWN, imported SWN/AWN material and NoöPunk overlays. **CWN is not modified,
+  rebalanced, forked or replaced here.** The rule is enforced by `tools/rules_constitution_audit.py`
+  and the immutable-core gates in CI.
+- NoöPunk gameplay lives in the overlay: social / goal / clue / personality tags, the four graph
+  families, the six scene types.
+- The RPG **consumes** Story Graph content and Simulator social state through adapters. It is not the
+  source of truth for either.
 
-| Concern | Lives today | Destination |
-| --- | --- | --- |
-| Cities Without Number rules | `src/rules/cwn_*.py`, `mud/nopunk_mud/cwn/` | unchanged; **never** edited for a NoöPunk feature |
-| NoöPunk overlays (tags, graphs, mods) | `src/rules/*overlay*`, `src/world/graphs.py`, `data/mods/` | `NooPunk-RPG/` |
-| Tabletop text | `rulebook/`, `docs/tabletop/` | `NooPunk-RPG/` |
-| Campaign and scenarios | `docs/campaign/`, `docs/scenarios/` | `NooPunk-RPG/` |
-| Engines (CLI, Evennia, Godot) | `src/console/`, `mud/`, `godot/` | adapters, unchanged |
+## Status
 
-## The boundary, stated once
-
-- **CWN is not forked, rebalanced or rewritten.** A NoöPunk feature that needs a new CWN number is a NoöPunk
-  overlay with its own justification, or it does not ship.
-- **The RPG does not author the story.** Scenes come from the graph; if a scene is missing, the graph is
-  incomplete, not the RPG.
-- **The RPG does not simulate society.** Social state arrives from the Simulator through the shared tag/graph
-  contract.
-
-## Adapters
-
-`src/contracts/story_graph_contract.py` validates a story-graph document; the RPG-side consumer is
-`src/contracts/rpg_scene_adapter.py`, which turns a validated scene into the shape the existing
-`src.world.graphs.StoryNode`/`StoryGraph` already uses. Both are covered by contract tests.
+P0 skeleton. Today the RPG code is still at the repository root (`src/`, `mud/`, `campaign/`,
+`strategy_game/`, `godot/`, `mods/`, `portable_noopunk/`). Stage P4 moves it here, one area per PR,
+with compatibility shims. **Nothing has been moved yet; every existing path still works.**

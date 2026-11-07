@@ -187,6 +187,42 @@ and never roll for it.
 
 ---
 
+# THREE SUBPROJECTS — READ BEFORE ANY STRUCTURAL CHANGE (#1295)
+
+The repository is being split into three independent tracks, with **one NoöPunk universe**:
+
+| Subproject | Path | You may |
+| --- | --- | --- |
+| **Story** | `NooPunk-Story/` | read `Story/`; **write only** in `Graph/` |
+| **Simulator** | `NooPunk-Simulator/` | work freely; it must not import CWN or the Story runtime |
+| **RPG** | `NooPunk-RPG/` | work freely; CWN core is immutable and not part of this pivot |
+
+## HARD RULE — `NooPunk-Story/Story/` is human-only
+
+**Agents may READ `NooPunk-Story/Story/` and must NEVER write, rewrite, edit, format, move, delete or
+auto-generate content inside it** — not as a refactor, not as a side effect of conversion, not "just a
+typo". If Tomi's text looks wrong, say so **outside** that directory (issue, review comment, a note in
+`NooPunk-Story/Graph/reviews/`).
+
+The Story Graph in `NooPunk-Story/Graph/` is a **derivative**: it cites its source, records ambiguity as
+a question, and never edits the manuscript.
+
+## Direction of truth
+
+```
+Tomi's Story → Story Graph → RPG narrative
+Simulator ↔ shared Tag/Graph state → RPG social world
+```
+
+Nothing flows backwards. A change to the shared contract needs a cross-project review: see
+`docs/architecture/SHARED_TAG_GRAPH_CONTRACTS_1295.md`.
+
+## Migration status
+
+P0 (skeleton and policy) is done; **no code has moved**. Existing paths still work. Staged plan and
+inventory: `docs/architecture/PIVOT_1295_MIGRATION_MAP.md`. Do not move a directory without that
+stage's PR.
+
 # MUD LANGUAGE AUTHORITY (#996: ONE FINGLISH, NO LOCALIZATIONS)
 
 **NoöPunk Finglish is the one canonical player-facing language; no Finnish, English or other localized game editions will be made.** Agents write mostly English with sparse contextual Finnish, Stadin slangi and suitable Swedish, Russian, Chinese or other words in player-visible MUD content and future Concordia NPC/GM responses. Tomi-authored prose is preserved **verbatim**, never translated, corrected or overwritten. All development material and tabletop rules remain plain English. The MUD has a spoiler-safe `dictionary` command instead of translations. Read `docs/FINNISH.md`. The **canonical vocabulary is the repository-root [`GLOSSARY.md`](GLOSSARY.md)** (#1000); `docs/world/HELSINKI_SLANG_GLOSSARY.md` is retained for provenance only and is not a second authority. Reuse that vocabulary in contexts that fit, never coin a term into shipped text as though it were established, and never assign a category or etymology you cannot evidence. Legacy `fi`/`en` storage is compatibility data, not locale editions. Keep #950 solo-first and #989 author-led workflow.

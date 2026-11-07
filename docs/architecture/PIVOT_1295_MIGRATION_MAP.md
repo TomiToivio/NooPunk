@@ -1,0 +1,141 @@
+# Migration map: three independent subprojects (#1295)
+
+> **Status: audit and skeleton. Nothing has been moved.** This document inventories the repository as
+> it stands, maps each area to one of the three subprojects, and lays out the staged migration. Code
+> moves happen in later PRs, one area at a time, with the tree green after each.
+
+Why not move everything now: the repository carries **2,298 tracked files** and a Python suite of **3,348
+tests** (measured on `main` at `f0617dd`, `python -m unittest discover -s tests`), plus the Godot, MUD,
+strategy-game and generated compliance gates. A wholesale move would break import paths, generated
+manifests and the CWN immutability gates in a single commit that nobody could review.
+
+---
+
+## 1. The three subprojects
+
+| Human-facing name | Filesystem path | Owns |
+| --- | --- | --- |
+| **NoöPunk Story** | `NooPunk-Story/` | the manuscript (`Story/`) and its derivative graph (`Graph/`) |
+| **NoöPunk Simulator** | `NooPunk-Simulator/` | LaclauGPT-informed social simulation |
+| **NoöPunk RPG** | `NooPunk-RPG/` | immutable CWN plus the NoöPunk overlay |
+
+The issue allows the spaced names. Filesystem-safe paths are used, and this table is the mapping.
+
+## 2. Inventory of what exists today
+
+| Current path | Files | What it is | Target |
+| --- | --- | --- | --- |
+| `design/` | 28 | **Tomi's author drafts**: lifepath, campaign pivot, Greater Helsinki, Galactic Machine War, memories | `NooPunk-Story/Story/` (read-only for agents) |
+| `docs/campaign/` | 6+ | campaign outline, dreams worksheet, Tony's lifepath brief, opening flow | split: prose → `Story/`; worksheet indexes → `Graph/` |
+| `rulebook/`, `rulebook_parts/` | 51+ | the rulebook: procedures, timeline, character generation | prose → `Story/` (setting text); procedures → `NooPunk-RPG/` |
+| `FACTIONS.md`, `GLOSSARY.md`, `START_HERE.md`, `RULEBOOK.md`, `COMPARISON.md` | 5 | top-level orientation and lore | `Story/` (lore) or root (orientation) |
+| `docs/graphs/templates/`, `docs/graphs/examples/` | ~12 | SCENE/EPISODE/SERIES/SITE templates and a worked example | `NooPunk-Story/Graph/` |
+| `src/world/graphs.py`, `src/world/scenes.py` | 2 core modules | the four graph families and the scene procedures | **shared contract**, later `NooPunk-RPG/` |
+| `data/scenarios/lakkahaltia/case_graph.json`, `data/world/politics_1252_graph.json` | 2 | authored graph data | `NooPunk-Story/Graph/data/` once the contract is versioned |
+| `src/rules/` | 110 | CWN core, SWN/AWN imports, NoöPunk overlays | `NooPunk-RPG/` (CWN **unchanged**) |
+| `src/console/` | 6 | reference CLI adapter, first day, opening join | `NooPunk-RPG/` |
+| `mud/`, `campaign/`, `strategy_game/`, `godot/`, `mods/`, `portable_noopunk/` | 400+ | MUD, campaign engine, strategy game, Godot client | `NooPunk-RPG/` |
+| `docs/design/`, `docs/rules/` | large | design decisions and rule notes | mostly `NooPunk-RPG/`; canon prose → `Story/` |
+| `src/social_sim/` | 3 code + 2 tests + 3 docs | **the simulator**: `kernel.py` (WP1), `ai26.py` (the read-only AI26 adapter, WP2), `tests/test_social_sim_*` (66 tests) and `docs/simulator/*` — merged in #1292/#1294 | `NooPunk-Simulator/` at P3/P4, behind a `social_sim` compatibility package |
+| `docs/simulator/` | 3 | boundary and contracts (WP0), kernel (WP1), AI26 adapter (WP2) | `NooPunk-Simulator/docs/` |
+| `docs/design/ISSUE_1008_PHASE2_LACLAU.md`, `docs/research/` | ~20 | Laclau methodology notes and research | `NooPunk-Simulator/docs/` |
+
+
+### Shared and infrastructure paths
+
+| Current path | Target |
+| --- | --- |
+| `src/` | `NooPunk-RPG/src/` at P4; the shared contract modules move last |
+| `tests/` | `NooPunk-RPG/tests/` for RPG suites; Simulator and Story Graph get their own suites from P2/P3 |
+| `docs/` | split: `docs/architecture/` stays shared; rules docs → RPG; lore and prose → Story |
+| `data/` | split: rules data → RPG; authored graph data → Story Graph; simulator fixtures → Simulator |
+| `scripts/`, `tools/` | shared; `tools/rules_constitution_audit.py` stays the CWN gate wherever the core lives |
+
+**The honest finding:** all three subprojects already have code in this repository. Story's runtime is the
+four-graph model (`src/world/graphs.py`, `StoryGraph`) and the authoring front door
+(`tools/graph_authoring.py`); the RPG is `src/rules/` plus its runtimes; and the Simulator is
+`src/social_sim/` — a standalone kernel, the read-only AI26 adapter and 66 tests, which import nothing from
+the RPG (asserted by a test). The LaclauGPT pipeline that *feeds* the simulator lives in its own
+repositories, and Phase 1 supplies methodology, not an engine. So this pivot is a change of **location and
+ownership**, not a build from nothing: the Simulator's next work is WP3–WP7 on #1286, in place, until P3/P4
+moves it.
+
+### 2.1 What a move actually breaks, measured
+
+Path-addressed guards hold the RPG code in place today, which is why P4 is one area per PR:
+
+| coupling | measured |
+| --- | --- |
+| test files naming `src/rules` | 24 |
+| test files naming `rulebook/` / `RULEBOOK.md` | 5 / 3 |
+| test files naming `mud/` / `godot/` | 4 / 6 |
+| test files and CI steps naming `strategy_game` | 7 files, 2 workflow steps (`python -m strategy_game`, seeded playthroughs) |
+| collection roots | `pytest.ini` `norecursedirs` (mud, archive, legacy) and the `unittest discover -s tests` CI invocation |
+| release guard | `data/licenses/release_packaging_policy.json` artifact classes must cover every tracked path |
+| documentation register | `docs/DOCUMENT_REGISTER.md` links are relative and break silently |
+
+A move that misses one of these produces a green-looking PR and a red `main`.
+
+## 3. Staged plan
+
+| Stage | Content | Tree state |
+| --- | --- | --- |
+| **P0 (this PR)** | three folders, READMEs, agent policy, CODEOWNERS, shared-contract note, this map | nothing moved; suite green |
+| **P1** | Story boundary enforced: `Story/` holds Tomi's drafts, an index, and a guard; agents get read-only instructions | still no code moves |
+| **P2** | Story → Graph workflow: template, conversion procedure, source references, validation | `Graph/` gains its first converted scene |
+| **P3** | Simulator skeleton: module boundary, Phase 1 attribution, Tag/Graph adapter, independent tests | standalone, no CWN import |
+| **P4** | RPG isolation: move `src/rules`, `src/world`, console, MUD, Godot behind `NooPunk-RPG/` with compatibility shims | largest and riskiest; separate PRs per area |
+| **P5** | Vertical slice: author-written scene → Graph → RPG scene, with Simulator-supplied social context | integration proven end to end |
+
+Each stage keeps the suite green and lands separately. P4 is deliberately last: it is the only stage
+that can break imports.
+
+## 4. What must not happen
+
+- **No agent writes inside `NooPunk-Story/Story/`.** Not as a refactor, not as a "formatting pass", not
+  as a side effect of generating a graph.
+- **No change to CWN.** The RPG side moves; its rules do not.
+- **No redesign of the LaclauGPT Phase 1 theory.** The Simulator consumes it.
+- **No big-bang move.** If a stage cannot be made green, it stops there.
+
+## 5. Ownership and enforcement
+
+| Mechanism | What it does | Limit |
+| --- | --- | --- |
+| `AGENTS.md` rule | states the boundary in the file every agent reads first | a rule, not a lock |
+| `.github/CODEOWNERS` | requires Tomi's review for `NooPunk-Story/Story/` | effective only if branch protection uses it |
+| `tests/test_issue_1295_structure.py` | fails if the boundary text, folders or CODEOWNERS entry disappear; fails if executable content appears under `Story/` | cannot see a commit that bypasses CI |
+| `.github/workflows/story-boundary.yml` → `tools/story_boundary.py` | **fails the pull request** when any changed path is inside `NooPunk-Story/Story/` except its boundary note; the `story-authored-by-tomi` label, applied by a human on the PR, is the only release | sees what the branch changed, not who typed it, and a direct push to `main` bypasses the branch check |
+| Git history | the manuscript's authorship stays visible per line | agents commit under Tomi's identity, so author alone is not a proof |
+
+**Stated plainly:** with agents committing as the repository owner, no git-level check can prove who
+typed a line. The enforceable promise is *review*, not authorship — CODEOWNERS plus the instruction
+plus a guard that fails loudly when the boundary is edited away, plus a diff check that makes an agent's
+edit to the manuscript fail the pull request rather than pass review unnoticed.
+
+## 6. Shared contract
+
+See [`SHARED_TAG_GRAPH_CONTRACTS_1295.md`](SHARED_TAG_GRAPH_CONTRACTS_1295.md). One format, three
+consumers, and changes to it need a cross-project review — not a silent edit in whichever subproject
+happened to need it first.
+
+## 7. Open decisions — the author's, not an agent's
+
+The stages below can start without these, but P2 needs D1 and D2, and P4 needs D4. Each one changes what an
+adapter must do, so an agent that "just picks one" quietly decides the project's semantics.
+
+| id | question | why it must not be answered by an agent |
+| --- | --- | --- |
+| **D1** | Is the manuscript written at `NooPunk-Story/Story/` in this repository, or does it stay in `Panpsychic-Cyborg-Multitude/noopunk/` with this repository holding the script versions and the graph derivative? It is **not here today**, so `Story/` currently holds only its boundary note. | where a writer writes is the writer's choice, and moving a draft silently splits the source of truth |
+| **D2** | Filesystem-safe folder names (as built) or the literal `NoöPunk Story` / `NoöPunk Simulator` / `NoöPunk RPG` the issue allows? | the trade-off is tooling quoting in CI, Python, Evennia and shell versus the author's naming; the name appears in every later path |
+| **D3** | Does the Simulator stay a folder in this repository, or become its own repository that this one vendors? | it decides whether the shared contract is an in-repo import or a versioned dependency |
+| **D4** | What is the exact envelope of the RPG overlay — which tags, graph records and procedures a NoöPunk mod may add, and what stays reserved to CWN? | CWN is immutable, so the envelope is a rules decision; guessing it either blocks legitimate mods or quietly rebalances the core |
+| **D5** | Do Story Graph records reach the RPG as committed, compiled JSON under `data/`, or are they read from `NooPunk-Story/Graph/` at runtime? | it fixes the dependency direction between two subprojects that are supposed to be independent |
+
+## 8. Success criterion, restated as a test
+
+> Tomi can write an original branching scene; an agent converts it to Story Graph; the RPG plays it
+> with Simulator-supplied social context; neither the manuscript nor CWN is touched.
+
+P0 proves none of that. It only makes the direction unambiguous enough that the next four stages can
+be reviewed on their merits.

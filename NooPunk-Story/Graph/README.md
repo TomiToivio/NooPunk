@@ -1,34 +1,20 @@
-# Graph — the Story Graph adaptation
+# Graph — the agent-maintained adaptation
 
-Agent-owned, human-audited. The graph is a **derivative** of [`../Story/`](../Story/): every node and edge cites
-the manuscript passage it came from, and anything the manuscript does not say becomes a review note rather than
-invented canon.
+A derivative of `../Story/`, in the existing Story Graph model: **Series → Episodes → Scenes**, with
+choices, prerequisites, consequences and references back to the manuscript.
 
-## Contents
+## Rules
 
-| Path | What it is |
-| --- | --- |
-| `templates/BRANCHING_SCENE.md` | An empty scene template Tomi can copy into `Story/`. Prompts only, no prose. |
-| `templates/NOVEL_CHAPTER.md` | The same for a conventional chapter. |
-| `examples/` | Synthetic demonstrations of the conversion contract. **Never** manuscript content. |
-| `REVIEW_NOTES.md` | Gaps, ambiguities and contradictions found while adapting, each with a source reference. |
+1. **Every graph record cites its source.** A scene without a `source` reference (file and heading, or
+   line range) is not accepted.
+2. **Ambiguity becomes a review note, not a decision.** If the manuscript does not say whether Tony
+   takes the tram, the graph records the question in `reviews/` and leaves the branch open.
+3. **The graph never edits the manuscript.** Conversion is one-way.
+4. **The contract is shared.** Node and edge shapes come from
+   [`docs/architecture/SHARED_TAG_GRAPH_CONTRACTS_1295.md`](../../docs/architecture/SHARED_TAG_GRAPH_CONTRACTS_1295.md);
+   changing them needs a cross-project review.
 
-## The contract
+## Status
 
-The machine-readable form is
-[`data/schema/subproject_contracts_1295.json`](../../data/schema/subproject_contracts_1295.json), and the validator
-is [`src/contracts/story_graph_contract.py`](../../src/contracts/story_graph_contract.py). A graph document must:
-
-1. declare `schema: noopunk.story_graph/1`;
-2. give every node a stable `id`, a `kind` from `series | episode | scene`, and a `source_ref` pointing into
-   `Story/`;
-3. declare `choices` as edges between scenes, with a `label` the player would recognise;
-4. never contain a node whose `source_ref` does not resolve to an existing manuscript path — unless the node is
-   explicitly marked `authored: true`, meaning Tomi approved it outside the current draft.
-
-The last rule is the important one: an adaptation cannot quietly acquire a scene the author never wrote.
-
-## What the RPG consumes
-
-`NooPunk-RPG` reads the validated graph: scenes, choices, prerequisites and consequences. It does not read
-`Story/` directly, and it never writes back.
+P0 skeleton. The templates live in [`docs/graphs/templates/`](../../docs/graphs/templates/) until P2,
+which adds the first converted scene and the validation procedure.
