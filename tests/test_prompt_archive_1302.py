@@ -26,13 +26,12 @@ class PromptArchiveTests(unittest.TestCase):
     def test_readme_is_the_canonical_compact_policy(self):
         for term in (
             "substantial original NoöPunk design and development prompts",
-            "What qualifies",
-            "What does not qualify",
-            "DD_MM_YYYY_TOPIC_NAME.md",
-            "Duplicate and normalization rules",
-            "privacy",
-            "not approved canon",
-            "does not authorize",
+            "Mandatory procedure for every agent",
+            "Prompts/DD_MM_YYYY_TOPIC_NAME.md",
+            "Do not duplicate",
+            "secrets, credentials",
+            "established canon",
+            "documentation-only procedure",
         ):
             with self.subTest(term=term):
                 self.assertIn(term.lower(), self.readme.lower())
@@ -48,9 +47,9 @@ class PromptArchiveTests(unittest.TestCase):
         self.assertIn("Do this only when my prompt is clearly related", self.first)
 
     def test_short_requests_are_explicitly_exempt(self):
-        self.assertIn('"do this"', self.readme)
-        self.assertIn('"fix this"', self.readme)
-        self.assertIn("status questions", self.readme)
+        self.assertIn("do this", self.readme.lower())
+        self.assertIn("fix this", self.readme.lower())
+        self.assertIn("status checks", self.readme.lower())
 
     def test_filenames_follow_the_date_topic_convention(self):
         pattern = re.compile(r"^\d{2}_\d{2}_\d{4}_[A-Z0-9_]+\.md$")
@@ -73,8 +72,8 @@ class PromptArchiveTests(unittest.TestCase):
             bodies[digest] = path.name
 
     def test_archive_is_documentation_only(self):
-        self.assertIn("documentation only", self.readme.lower())
-        self.assertIn("does not authorize new rpg, story or simulator feature development", self.readme.lower())
+        self.assertIn("documentation-only procedure", self.readme.lower())
+        self.assertIn("does not override any development scope freeze", self.readme.lower())
 
 
 if __name__ == "__main__":
