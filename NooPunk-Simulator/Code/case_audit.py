@@ -54,6 +54,42 @@ def reachable(case):
     return scenes, clues
 
 
+def ending_reachable_without(case, ending, clue, limit=20000):
+    """Is there a route to ``ending`` that never picks up ``clue``?
+
+    This is the softlock question, and it has to be answered path by path. The reachability fixed point above
+    answers the opposite question — "can this clue ever be collected" — and would let a shortcut pass: a case
+    where *some* route collects the evidence and *another* route skips it looks sound to a union, and strands
+    the player in a story they cannot honestly finish.
+    """
+    scenes = case.get("scenes", {})
+    start = case.get("start", "")
+    if start not in scenes or ending not in scenes:
+        return False
+    seen = set()
+    frontier = [(start, frozenset(scenes[start].get("adds", [])))]
+    visited = 0
+    while frontier:
+        scene_id, carried = frontier.pop()
+        visited += 1
+        if visited > limit:  # pragma: no cover - a case this large is its own design problem
+            return False
+        state = (scene_id, carried)
+        if state in seen:
+            continue
+        seen.add(state)
+        if scene_id == ending and clue not in carried:
+            return True
+        for choice in scenes[scene_id].get("choices", []):
+            target = choice.get("to")
+            if target not in scenes:
+                continue
+            if not set(choice.get("requires", [])).issubset(carried):
+                continue
+            frontier.append((target, frozenset(carried | set(choice.get("adds", [])))))
+    return False
+
+
 def audit(case):
     """Findings that would strand a player. An empty list means the case is finishable as written."""
     findings = []
@@ -95,6 +131,19 @@ def audit(case):
             findings.append(
                 f"contradiction {contradiction_id!r} can never surface: its evidence is unobtainable"
             )
+
+    for clue in case.get("essential_clues", []):
+        if clue not in case.get("clues", {}):
+            findings.append(f"essential_clues names unknown clue {clue!r}")
+            continue
+        for ending in endings:
+            if ending not in scenes:
+                continue
+            if ending_reachable_without(case, ending, clue):
+                findings.append(
+                    f"ending {ending!r} can be reached without essential clue {clue!r}: "
+                    "that route ends the case with the player unable to justify it"
+                )
 
     return findings
 
