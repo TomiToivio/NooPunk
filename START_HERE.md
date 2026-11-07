@@ -1,3 +1,16 @@
+# START HERE: NoöPunk detective interactive fiction (2026-11-07, #1310)
+
+**CURRENT DIRECTION:** NoöPunk is an **Etsivä Romppainen detective adventure**, NOT an active full RPG. Older CWN/Godot instructions below are archived historical context, not implementation priority.
+
+- **Play development fixture:** `python3 NooPunk-Simulator/Code/adventure.py`
+- **Run focused checks:** `python3 -m unittest tests.test_detective_adventure_1310 -v`
+- **Story:** `NooPunk-Story/Story/`, authored only by Tomi, agent READ ONLY.
+- **Simulator Paper:** `NooPunk-Simulator/Paper/`, authored only by Tomi, agent READ ONLY.
+- **`NooPunk-RPG/` is PAUSED AND UNTOUCHABLE** for agents. No CWN systems are required for detective gameplay.
+- The first case is a **noncanonical developer fixture**, not Tomi's published script. See [#1310](https://github.com/TomiToivio/NooPunk/issues/1310).
+
+---
+
 # START HERE — NoöPunk vanilla CWN/SWN baseline (issue #848)
 
 > **CURRENT CANONICAL PATHS (#1068, 2026-11-03):** Shared Python rules: [`src/rules/`](src/rules/) (`cwn_*.py` for locked CWN). Tabletop RPG: [`RULEBOOK.md`](RULEBOOK.md) and [`rulebook/00_INDEX.md`](rulebook/00_INDEX.md), with [`rulebook/WITHOUT_NUMBER_BASELINE.md`](rulebook/WITHOUT_NUMBER_BASELINE.md) for published mechanics. Traceability: `data/rules/cwn_traceability.json`, report `docs/rules/CWN_COVERAGE_1068.md`. **All Godot-as-source-of-truth pointers below are historical and superseded.** Read [`AGENTS.md`](AGENTS.md) and [`docs/DESIGN_PRINCIPLES.md`](docs/DESIGN_PRINCIPLES.md) before changing rules.
