@@ -1,3 +1,14 @@
+# AUTHOR-ONLY PAPER: NON-NEGOTIABLE READ-ONLY RULE (#1309)
+
+**`NooPunk-Simulator/Paper/` belongs exclusively to Tomi. ALL AI agents MUST treat it as READ ONLY.** Agents may read and cite Tomi's serious Social Science, fictional world and Game Design drafts, but **must never add, create, edit, rewrite, format, rename, move, delete, sync, replace, or generate files anywhere under `NooPunk-Simulator/Paper/`**. This includes README files, accidental lint/format fixes, scripts, automations, PR merges and refactors. No autonomous write is authorized. Only Tomi directly authors these drafts.
+
+- **Agents write derived interpretations, design notes and human-readable simulation rules in `NooPunk-Simulator/Rulebook/`**, not in Paper.
+- Implement the Rulebook in **`NooPunk-Simulator/Code/`**, reusing the existing canonical `src/social_sim/` implementation until migration is explicitly planned/tested. **`NooPunk-Simulator/Graphs/`** is the home for the three Simulator graph definitions and fixtures.
+- The three Simulator graph views are **Social, Ideology and Physical**. Ideology is a Simulator discourse projection, not automatically a new family in the existing shared RPG graph contract. Follow [#1309](https://github.com/TomiToivio/NooPunk/issues/1309), [#1308](https://github.com/TomiToivio/NooPunk/issues/1308), and [shared contract](../docs/architecture/SHARED_TAG_GRAPH_CONTRACTS_1295.md).
+- When Tomi's Paper disagrees with agent-written Rulebook/code, record the discrepancy and ask Tomi to resolve authorship decisions; **never modify Paper to reconcile them**. No bulk LaclauGPT imports or duplicate simulator kernels.
+
+---
+
 # Agent rules for NoöPunk Simulator
 
 The root [`AGENTS.md`](../AGENTS.md) applies; this file is the local contract for simulator work.
