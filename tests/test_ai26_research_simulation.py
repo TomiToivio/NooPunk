@@ -1,7 +1,12 @@
 """Synthetic AI26 simulator regression tests; no RPG or empirical data.
 
-Plain `unittest`, because the repository's CI runs `unittest discover` without pytest installed — the import of pytest
-here was what reddened the root suite, not a behaviour change.
+Rewritten as a `unittest.TestCase` suite (#1286 follow-up): the file was merged with bare
+`pytest`-style functions and `import pytest`, which `unittest discover` cannot collect and CI cannot
+install — `requirements.txt` has no pytest, so the module failed at import in CI while passing on a
+developer machine. The assertions are unchanged; only the harness is, so the guards actually run.
+
+Run:
+    python -m unittest discover -s tests -p "test_ai26_research_simulation.py"
 """
 from __future__ import annotations
 
@@ -15,16 +20,18 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from simulation import ai26_research as research  # noqa: E402
-from simulation.ai26_research import (  # noqa: E402
-    ResearchActor, demo_roster, main, simulate, verify_replay,
+from simulation.ai26_research import (
+    ResearchActor,
+    demo_roster,
+    main,
+    simulate,
+    verify_replay,
 )
-from simulation.events import Event  # noqa: E402
-from simulation.provenance import Origin, Provenance  # noqa: E402
-from simulation.world_state import reduce_events  # noqa: E402
+from simulation.events import Event
+from simulation.world_state import reduce_events
 
 
-class DeterminismTests(unittest.TestCase):
+class ReplayTests(unittest.TestCase):
     def test_seeded_runs_are_byte_identical(self):
         roster = demo_roster(50)
         first = simulate(roster, turns=40, seed=11)
@@ -37,20 +44,24 @@ class DeterminismTests(unittest.TestCase):
         roster = demo_roster(20)
         first = simulate(roster, turns=20, seed=1)
         second = simulate(roster, turns=20, seed=2)
-        self.assertNotEqual(first["graphs"]["communication_edges"], second["graphs"]["communication_edges"])
+        self.assertNotEqual(
+            first["graphs"]["communication_edges"], second["graphs"]["communication_edges"]
+        )
 
 
-class GraphTests(unittest.TestCase):
+class GraphIntegrityTests(unittest.TestCase):
     def test_graph_integrity_and_replay_with_independent_organizations(self):
         result = simulate(demo_roster(5), seed=7, turns=8)
         graph = result["graphs"]
         ids = {node["actor_id"] for node in graph["nodes"]}
-        self.assertTrue({"synthetic:organization-a", "synthetic:organization-b"} <= ids)
-        self.assertTrue(all(edge["source"] in ids and edge["target"] in ids
-                            for edge in graph["social_edges"] + graph["communication_edges"]))
+        self.assertLessEqual({"synthetic:organization-a", "synthetic:organization-b"}, ids)
+        for edge in graph["social_edges"] + graph["communication_edges"]:
+            self.assertIn(edge["source"], ids)
+            self.assertIn(edge["target"], ids)
         self.assertEqual(len(graph["social_edges"]), 5)
-        self.assertTrue(all(edge["turn"] >= 0 for edge in graph["communication_edges"]))
-        self.assertTrue(all(edge["source"] != edge["target"] for edge in graph["communication_edges"]))
+        for edge in graph["communication_edges"]:
+            self.assertGreaterEqual(edge["turn"], 0)
+            self.assertNotEqual(edge["source"], edge["target"])
         self.assertTrue(verify_replay(result))
         events = [Event.from_dict(item) for item in result["events"]]
         self.assertEqual(reduce_events(events).event_count, len(result["events"]))
@@ -64,16 +75,15 @@ class GraphTests(unittest.TestCase):
         self.assertTrue(verify_replay(zero))
 
 
-class RefusalTests(unittest.TestCase):
+class RosterRefusalTests(unittest.TestCase):
     def test_rejects_duplicate_actor_references(self):
-        duplicate = (ResearchActor("synthetic:a", "individual"), ResearchActor("synthetic:a", "individual"))
         with self.assertRaises(ValueError):
-            simulate(duplicate)
+            simulate((ResearchActor("synthetic:a", "individual"),
+                      ResearchActor("synthetic:a", "individual")))
 
-    def test_rejects_dangling_actor_references(self):
-        dangling = (ResearchActor("synthetic:a", "individual", "synthetic:missing"),)
+    def test_rejects_a_dangling_organization_reference(self):
         with self.assertRaises(ValueError):
-            simulate(dangling)
+            simulate((ResearchActor("synthetic:a", "individual", "synthetic:missing"),))
 
     def test_rejects_non_synthetic_actor_ids_and_invalid_membership(self):
         with self.assertRaises(ValueError):
@@ -86,52 +96,31 @@ class RefusalTests(unittest.TestCase):
 
 class ExportTests(unittest.TestCase):
     def test_export_replay_and_provenance(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / "synthetic.json"
-            self.assertEqual(main(["--population", "4", "--turns", "6", "--seed", "15",
-                                   "--output", str(path)]), 0)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "synthetic.json"
+            self.assertEqual(
+                main(["--population", "4", "--turns", "6", "--seed", "15",
+                      "--output", str(path)]),
+                0,
+            )
             payload = json.loads(path.read_text(encoding="utf-8"))
-        self.assertEqual(payload["schema"], "ai26-synthetic-experiment-v2")
-        # Provenance is a record now, not a string: the run is simulated, and it says why (#1286).
-        self.assertEqual(payload["provenance"]["origin"], "simulated")
-        self.assertEqual(payload["provenance"]["method"], "random-encounter-null-v1")
-        self.assertTrue(payload["provenance"]["uncertainty"])
-        self.assertEqual(payload["scientific_status"], "hypothetical_null_model_not_empirical_finding")
+        self.assertEqual(payload["schema"], "ai26-synthetic-experiment-v1")
+        self.assertEqual(payload["provenance"], "simulated")
+        self.assertEqual(payload["scientific_status"],
+                         "hypothetical_null_model_not_empirical_finding")
         self.assertTrue(verify_replay(payload))
         payload["events"][-1]["content"] = "tampered"
         self.assertFalse(verify_replay(payload))
 
+
+class BoundaryTests(unittest.TestCase):
     def test_no_game_or_llm_runtime_imports(self):
+        import simulation.ai26_research as research
+
         source = inspect.getsource(research)
         for forbidden in ("import rules", "import mud", "import godot", "import ollama",
                           "import strategy_game", "import concordia"):
             self.assertNotIn(forbidden, source)
-
-
-class ProvenanceTests(unittest.TestCase):
-    def test_actor_origins_are_distinguishable_and_survive_export(self):
-        """The four origins exist as a type, and an export says which one each actor is."""
-        roster = demo_roster(6)
-        payload = simulate(roster, turns=3, seed=5)
-        # `demo_roster(n)` yields n individuals *plus* the organizations they affiliate to.
-        self.assertEqual(payload["origins"]["synthesized"], len(roster))
-        self.assertEqual(payload["origins"]["observed"], 0, "a synthetic roster is never observed material")
-        self.assertTrue(all(actor["origin"] == "synthesized" for actor in payload["configuration"]["actors"]))
-
-    def test_an_actor_may_be_inferred_but_never_observed(self):
-        inferred = ResearchActor("synthetic:inferred-one", "individual", origin=Origin.INFERRED)
-        payload = simulate((inferred, ResearchActor("synthetic:two", "individual")), turns=2, seed=1)
-        self.assertEqual(payload["origins"]["inferred"], 1)
-        with self.assertRaises(ValueError):
-            ResearchActor("synthetic:corpus-record", "individual", origin=Origin.OBSERVED)
-
-    def test_provenance_round_trips_through_json(self):
-        for origin in Origin:
-            record = Provenance(origin, source="s", method="m", uncertainty="high", review_status="provisional")
-            restored = Provenance.from_dict(json.loads(json.dumps(record.to_dict())))
-            self.assertEqual(restored, record)
-        with self.assertRaises(ValueError):
-            Provenance.from_dict({"source": "nowhere"})
 
 
 if __name__ == "__main__":

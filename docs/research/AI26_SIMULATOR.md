@@ -1,3 +1,10 @@
+> **Superseded (2026-11-07):** the canonical simulator is now `src/social_sim/` — the kernel in
+> [`../simulator/SIMULATOR_KERNEL_1286.md`](../simulator/SIMULATOR_KERNEL_1286.md) and the read-only AI26 adapter in
+> [`../simulator/AI26_ADAPTER_1286.md`](../simulator/AI26_ADAPTER_1286.md). This page and `src/simulation/ai26_research.py`
+> describe the earlier null-model slice built on the shared event envelope; it still runs and is still tested, but it is
+> **not** the simulator to extend, and the two must not both acquire features. Delete this module once the canonical
+> path covers its demo, so that NoöPunk holds one simulator rather than two.
+
 # AI26 research simulator: first implementation slice (#1286)
 
 **Status:** synthetic null-model prototype. Not an RPG. Not empirical AI26 research results. Not a validated model of persuasion, populism, hegemony or social change.

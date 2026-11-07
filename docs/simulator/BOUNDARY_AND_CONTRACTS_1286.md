@@ -47,17 +47,17 @@ Two consequences the simulator must honour:
 
 | existing code | what it is | reuse decision |
 |---|---|---|
-| `src/simulation/events.py`, `engine.py`, `world_state.py` | #40 deterministic event envelope (turn-ordered, content-hashed ids) and a reducer, built for the world simulation | **reused** by the AI26 research simulator (`src/simulation/ai26_research.py`): the envelope is generic, its ids are content-derived, and a second event model would be duplication for no benefit. What the simulator must *not* inherit is RPG vocabulary — and it does not: its actors are `synthetic:` ids with no rule module in sight. |
+| `src/simulation/events.py`, `engine.py`, `world_state.py` | #40 deterministic event envelope (turn-ordered, content-hashed ids) and a reducer, built for the RPG-adjacent world simulation | **read for patterns, not imported**: its entity/relation vocabulary and turn semantics belong to the NoöPunk fiction, and #1286 forbids RPG dependencies. The simulator keeps its own minimal event record so that a later adapter can translate between them deliberately. |
 | `src/world/graphs.py` (physical/cyber/social/story) | the RPG's four graph families | **not reused.** #1286 explicitly separates simulation variables from RPG tags, and the RPG is frozen. |
 | `src/simulation/clock.py`, `scheduler.py` | the campaign clock and due-event queue (#1230) | **not reused** for the same reason; the simulator's clock is integer steps, which is what reproducibility needs and what a wall clock cannot give. |
 | `src/rules/**` | CWN/SWN/AWN mechanics | **out of scope, untouched.** |
-| `src/simulation/ai26_research.py`, `src/simulation/provenance.py` | the simulator (WP1) and its origin contract | **new**, on top of the generic event envelope. |
+| `src/social_sim/**` (this phase) | the standalone simulator kernel | **new**, with no imports from any of the above. |
 
-**Duplication ledger.** Two kernels were written for WP1 within the same hour: a standalone `src/social_sim/` package and
-`src/simulation/ai26_research.py` on the existing event envelope. **The standalone kernel was retired** — its unique
-contribution, the four-origin provenance contract, lives in `src/simulation/provenance.py` and is carried by the survivor
-— so NoöPunk has one simulator, not two. The remaining seam (work package 7) is where simulator events and RPG turns
-meet, and it stays a documented translation rather than a shared module.
+**Duplication ledger.** The honest cost of the decision: NoöPunk will briefly hold two event models — the RPG-adjacent
+one in `src/simulation/` and the simulator's — and two notions of a social tie. That is deliberate rather than
+accidental: the alternative is a simulator that cannot run without the RPG, which is the thing #1286 forbids. The
+integration seam (work package 7) is where the two meet, and it must be a documented translation, not a shared module
+that drags RPG semantics into research runs.
 
 ## 4. Mapping: AI26 output → simulator input
 
