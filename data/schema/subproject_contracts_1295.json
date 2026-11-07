@@ -1,0 +1,61 @@
+{
+  "schema": "noopunk.subproject_contracts/1",
+  "source_issue": "https://github.com/TomiToivio/NooPunk/issues/1295",
+  "note": "The smallest contract that lets three subprojects develop separately. It is versioned; a consumer that needs a richer vocabulary bumps the version rather than inventing a private format.",
+  "subprojects": [
+    {
+      "id": "story",
+      "path": "NooPunk-Story",
+      "owner": "human",
+      "story_root": "NooPunk-Story/Story",
+      "graph_root": "NooPunk-Story/Graph",
+      "agent_write": ["NooPunk-Story/Graph"],
+      "agent_read_only": ["NooPunk-Story/Story"]
+    },
+    {
+      "id": "simulator",
+      "path": "NooPunk-Simulator",
+      "owner": "agents",
+      "current_code": "src/social_sim",
+      "method_reference": "https://github.com/TomiToivio/LaclauGPT/blob/main/paper/PHASE_1_PAPER.md",
+      "agent_write": ["NooPunk-Simulator", "src/social_sim"]
+    },
+    {
+      "id": "rpg",
+      "path": "NooPunk-RPG",
+      "owner": "agents",
+      "immutable_core": ["src/rules/cwn_*.py", "mud/nopunk_mud/cwn", "rulebook/"],
+      "agent_write": ["NooPunk-RPG", "src/rules", "src/world", "src/console", "docs/tabletop"]
+    }
+  ],
+  "directions": [
+    {"from": "story", "to": "story_graph", "kind": "read_only", "meaning": "the graph is adapted from the manuscript"},
+    {"from": "story_graph", "to": "rpg", "kind": "consume", "meaning": "scenes, choices and prerequisites"},
+    {"from": "simulator", "to": "rpg", "kind": "consume", "meaning": "social-world state through the tag/graph contract"}
+  ],
+  "story_graph": {
+    "schema": "noopunk.story_graph/1",
+    "node_kinds": ["series", "episode", "scene"],
+    "required_node_fields": ["id", "kind", "label", "source_ref"],
+    "optional_node_fields": ["parent_id", "scene_types", "prerequisites", "goal_ids", "authored", "summary"],
+    "edge_kinds": ["choice", "transition"],
+    "required_edge_fields": ["source", "target", "kind"],
+    "optional_edge_fields": ["label", "condition"],
+    "source_ref_rule": "source_ref is a path relative to the story root; it must resolve unless authored is true",
+    "scene_type_vocabulary": ["Investigation", "Exploration", "Action", "Social", "Cyber", "Astral"]
+  },
+  "tag_graph": {
+    "schema": "noopunk.tag_graph/1",
+    "node_kinds": ["actor", "faction", "institution", "place", "device", "discourse", "event"],
+    "edge_kinds": ["relation", "membership", "reference", "influence", "ownership"],
+    "required_fields": ["id", "kind", "label"],
+    "provenance_field": "source",
+    "note": "The simulator's output and the RPG's social world share this shape; neither owns it."
+  },
+  "forbidden": [
+    "a subproject writing into another subproject's directory",
+    "an agent writing under NooPunk-Story/Story",
+    "any change to the immutable CWN core for a NooPunk feature",
+    "a private format where the shared contract would do"
+  ]
+}
