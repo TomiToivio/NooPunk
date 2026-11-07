@@ -8,10 +8,13 @@ From the repository root:
 
 ```sh
 python3 NooPunk-Simulator/Code/adventure.py
-python3 -m unittest discover -s tests -p 'test_detective_adventure_1310.py' -v
+python3 NooPunk-Simulator/Code/case_audit.py        # can this case strand the player? 0 sound, 1 findings
+python3 -m unittest discover -s tests -p "test_*_1310.py" -v
 ```
 
-The initial case is **synthetic and noncanonical**, with clues, notebook, branching decisions, three outcomes and save/load. See [adventure documentation](Code/ADVENTURE.md). Tomi's `Paper/` is **strictly agent read-only**. `NooPunk-Story/Story/` is also Tomi-only. **Never touch `NooPunk-RPG/`**.
+The initial case is **synthetic and noncanonical**, with clues, a detective notebook that records the
+hypotheses *you* hold and the records that conflict, open leads, branching decisions, three outcomes and
+save/load. See [adventure documentation](Code/ADVENTURE.md). Tomi's `Paper/` is **strictly agent read-only**. `NooPunk-Story/Story/` is also Tomi-only. **Never touch `NooPunk-RPG/`**.
 
 Existing LaclauGPT social-science code remains available as an **optional separate provider**, not a dependency of the adventure. Optional political and hacking features come only after the detective gameplay is satisfying.
 

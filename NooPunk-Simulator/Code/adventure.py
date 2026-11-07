@@ -12,6 +12,10 @@ from pathlib import Path
 DEFAULT_CASE = Path(__file__).resolve().parent.parent / "Graphs" / "fixtures" / "romppainen_development_case.json"
 SAVE_VERSION = 1
 
+#: The player's standing on a hypothesis. A hypothesis is the detective's reasoning, never a fact.
+CONSIDERED = "considered"
+DISMISSED = "dismissed"
+
 
 def load_case(path=DEFAULT_CASE):
     case = json.loads(Path(path).read_text(encoding="utf-8"))
@@ -28,7 +32,23 @@ def load_case(path=DEFAULT_CASE):
             for clue in choice.get("requires", []) + choice.get("adds", []):
                 if clue not in case.get("clues", {}):
                     raise ValueError("Unknown clue: " + clue)
+    for hypothesis in case.get("hypotheses", []):
+        for clue in hypothesis.get("requires", []):
+            if clue not in case.get("clues", {}):
+                raise ValueError("Unknown clue in hypothesis: " + clue)
+    for contradiction in case.get("contradictions", []):
+        if len(contradiction.get("between", [])) < 2:
+            raise ValueError("A contradiction needs two clues")
+        for clue in contradiction["between"]:
+            if clue not in case.get("clues", {}):
+                raise ValueError("Unknown clue in contradiction: " + clue)
     return case
+
+
+def hypothesis_ids(case):
+    """Stable ids for the case's hypotheses: the author's own id, or ``h1``, ``h2``, … by order."""
+    return [str(item.get("id") or "h" + str(index + 1))
+            for index, item in enumerate(case.get("hypotheses", []))]
 
 
 class Adventure:
@@ -38,8 +58,9 @@ class Adventure:
         self.case = case
         self.state = state if state is not None else {
             "version": SAVE_VERSION, "case_id": case["id"], "scene": case["start"],
-            "clues": [], "flags": {}, "history": [], "finished": False
+            "clues": [], "flags": {}, "history": [], "finished": False, "hypotheses": {}
         }
+        self.state.setdefault("hypotheses", {})
         self._validate_state()
 
     def _validate_state(self):
@@ -54,6 +75,13 @@ class Adventure:
             raise ValueError("Invalid flags/ending state")
         if any(clue not in self.case.get("clues", {}) for clue in state["clues"]):
             raise ValueError("Save refers to unknown clue")
+        standing = state.get("hypotheses")
+        if not isinstance(standing, dict):
+            raise ValueError("Invalid hypothesis state")
+        known = set(hypothesis_ids(self.case))
+        for hypothesis_id, value in standing.items():
+            if hypothesis_id not in known or value not in (CONSIDERED, DISMISSED):
+                raise ValueError("Save refers to unknown or invalid hypothesis")
 
     @property
     def scene(self):
@@ -82,19 +110,96 @@ class Adventure:
         self.state["finished"] = bool(self.scene.get("ending"))
         return self.scene
 
+    # -- the detective's reasoning ------------------------------------------------------------- #
+    def available_hypotheses(self):
+        """Hypotheses the collected evidence now makes it possible to hold, as ``(id, text)``."""
+        available = []
+        for hypothesis_id, hypothesis in zip(hypothesis_ids(self.case),
+                                             self.case.get("hypotheses", [])):
+            if set(hypothesis.get("requires", [])).issubset(self.state["clues"]):
+                available.append((hypothesis_id, hypothesis["text"]))
+        return available
+
+    def consider(self, hypothesis_id):
+        """Record that the detective is working with this hypothesis. Availability is evidence-gated."""
+        if hypothesis_id not in dict(self.available_hypotheses()):
+            raise ValueError("No such hypothesis available on this evidence: " + str(hypothesis_id))
+        self.state["hypotheses"][hypothesis_id] = CONSIDERED
+
+    def dismiss(self, hypothesis_id):
+        """Mark a hypothesis as set aside. It stays visible in the notebook as a rejected line."""
+        if hypothesis_id not in dict(self.available_hypotheses()):
+            raise ValueError("No such hypothesis available on this evidence: " + str(hypothesis_id))
+        self.state["hypotheses"][hypothesis_id] = DISMISSED
+
+    def contradictions(self):
+        """Conflicting records the evidence in hand exposes, as ``(id, text)``. Not a verdict."""
+        found = []
+        for index, contradiction in enumerate(self.case.get("contradictions", [])):
+            if set(contradiction.get("between", [])).issubset(self.state["clues"]):
+                found.append((str(contradiction.get("id") or "c" + str(index + 1)),
+                              contradiction["text"]))
+        return found
+
+    def visited(self):
+        scenes = {entry["from"] for entry in self.state["history"]}
+        scenes.add(self.state["scene"])
+        return scenes
+
+    def leads(self):
+        """Lines of inquiry the detective already knows about but has not followed, as ``(id, title)``."""
+        seen = self.visited()
+        open_leads = {}
+        for scene_id in sorted(seen):
+            for choice in self.case["scenes"][scene_id]["choices"]:
+                target = choice["to"]
+                if target in seen or not choice.get("label"):
+                    continue
+                if set(choice.get("requires", [])).issubset(self.state["clues"]):
+                    open_leads.setdefault(target, self.case["scenes"][target]["title"])
+        return sorted(open_leads.items())
+
     def notebook(self):
         lines = ["CASE NOTEBOOK", "-------------"]
         if not self.state["clues"]:
-            lines.append("No evidence recorded yet.")
+            lines.append("Evidence recorded: none yet.")
         else:
+            lines.append("Evidence (collected, not proven):")
             for clue in self.state["clues"]:
                 lines.append("* " + self.case["clues"][clue])
-        lines.append("Hypotheses (not established facts):")
-        for hypothesis in self.case.get("hypotheses", []):
-            if set(hypothesis.get("requires", [])).issubset(self.state["clues"]):
-                lines.append("* " + hypothesis["text"])
+        conflicts = self.contradictions()
+        if conflicts:
+            lines.append("Records that conflict:")
+            for _, text in conflicts:
+                lines.append("* " + text)
+        open_leads = self.leads()
+        if open_leads:
+            lines.append("Open leads:")
+            for scene_id, title in open_leads:
+                lines.append("* " + title + " (" + scene_id + ")")
+        available = self.available_hypotheses()
+        if available:
+            lines.append("Hypotheses you could hold (not established facts):")
+            for hypothesis_id, text in available:
+                lines.append("* [" + hypothesis_id + "] " + text)
+        held = self._standing(CONSIDERED)
+        if held:
+            lines.append("Recorded by you:")
+            for text in held:
+                lines.append("* " + text)
+        rejected = self._standing(DISMISSED)
+        if rejected:
+            lines.append("Set aside:")
+            for text in rejected:
+                lines.append("* " + text)
         lines.append("Decisions logged: " + str(len(self.state["history"])))
+        if self.state["flags"].get("disposition"):
+            lines.append("Disposition: " + str(self.state["flags"]["disposition"]))
         return "\n".join(lines)
+
+    def _standing(self, wanted):
+        return [text for hypothesis_id, text in self.available_hypotheses()
+                if self.state["hypotheses"].get(hypothesis_id) == wanted]
 
     def save(self, path):
         Path(path).write_text(json.dumps(self.state, indent=2, ensure_ascii=False) + "\n",
@@ -109,7 +214,7 @@ def play(case_path=DEFAULT_CASE):
     case = load_case(case_path)
     game = Adventure(case)
     print(case["title"] + " [DEVELOPMENT FIXTURE, NOT TOMI'S CANON]")
-    print("Commands: number, notebook, save PATH, load PATH, quit")
+    print("Commands: number, notebook, consider ID, dismiss ID, save PATH, load PATH, quit")
     while True:
         print("\n" + game.scene["title"] + "\n" + game.scene["text"])
         if game.state["finished"]:
@@ -126,6 +231,13 @@ def play(case_path=DEFAULT_CASE):
             break
         if command == "notebook":
             print(game.notebook())
+        elif command.startswith(("consider ", "dismiss ")):
+            action, _, hypothesis_id = command.partition(" ")
+            try:
+                (game.consider if action == "consider" else game.dismiss)(hypothesis_id.strip())
+                print("Noted.")
+            except ValueError as exc:
+                print(exc)
         elif command.startswith("save "):
             try:
                 game.save(command[5:].strip())
@@ -142,7 +254,7 @@ def play(case_path=DEFAULT_CASE):
             try:
                 game.choose(int(command))
             except (ValueError, TypeError):
-                print("Choose a listed number, notebook, save PATH, load PATH or quit.")
+                print("Choose a listed number, notebook, consider ID, dismiss ID, save PATH, load PATH or quit.")
 
 
 if __name__ == "__main__":

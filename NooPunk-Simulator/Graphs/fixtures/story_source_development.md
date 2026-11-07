@@ -60,3 +60,7 @@ The review finds a procedural failure. The organizer is still missing, but the c
 
 - The groups may be connected by the same event, not necessarily by conspiracy. | requires=roster
 - The disappearance could be voluntary, coercive, or staged. | requires=witness,message
+
+## Contradictions
+
+- roster + witness: The register lists both groups at the meeting; the witness remembers only one present. One record is wrong, or an attendance is being hidden.
