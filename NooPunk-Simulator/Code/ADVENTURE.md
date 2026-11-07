@@ -19,7 +19,7 @@ The runner consumes a JSON object with `id`, `title`, `start`, `clues`, `scenes`
 
 ## Source and authorship
 
-`../Graphs/fixtures/romppainen_development_case.json` is a **noncanonical, agent-authored synthetic development fixture**, not Tomi's story. The current author-written `../../NooPunk-Story/Story/` contains notes but no imported executable case script. **Do not generate scenes or alter that protected directory.** When Tomi writes a case script, an adapter may convert reviewed author-authored material into equivalent scene JSON, preserving source file/anchor provenance. Treat adapted scene JSON as derivative data, never as a replacement manuscript. The game never writes into `Paper/` or `Story/`.
+`../Graphs/fixtures/romppainen_development_case.json` is a **noncanonical, agent-authored synthetic development fixture**, not Tomi's story. The current author-written `../../NooPunk-Story/Story/` contains notes but no imported executable case script. **Do not generate scenes or alter that protected directory.** When Tomi writes a case script, [`story_adapter.py`](story_adapter.py) converts the documented Markdown format into equivalent scene JSON, preserving the source path, hash and author attribution; see [`STORY_ADAPTER.md`](STORY_ADAPTER.md). Treat adapted scene JSON as derivative data, never as a replacement manuscript. The game never writes into `Paper/` or `Story/`.
 
 This is one deterministic finite case with alternate investigation orders, important clues always obtainable, and three provisional outcomes. Political and hacking mini-simulations are deliberately not implemented; add them only as independent optional investigative modules after the primary case works.
 
