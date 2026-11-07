@@ -1,0 +1,179 @@
+{
+  "format": "noopunk.simulator.social",
+  "version": 1,
+  "note": "Small labelled synthetic fixture for #1309. Not Helsinki social data; ids follow Paper/SOCIAL_GRAPH.md.",
+  "nodes": [
+    {
+      "id": "person_harri_romppainen",
+      "name": "Harri Romppainen",
+      "kind": "person",
+      "tags": [
+        "detective"
+      ],
+      "provenance": {
+        "origin": "synthesized",
+        "source": "fixture"
+      }
+    },
+    {
+      "id": "person_mars_eldrich",
+      "name": "Mars Eldrich",
+      "kind": "person",
+      "tags": [
+        "suspect"
+      ],
+      "provenance": {
+        "origin": "synthesized",
+        "source": "fixture"
+      }
+    },
+    {
+      "id": "person_aino_virtanen",
+      "name": "Aino Virtanen",
+      "kind": "person",
+      "tags": [
+        "witness"
+      ],
+      "provenance": {
+        "origin": "synthesized",
+        "source": "fixture"
+      }
+    },
+    {
+      "id": "organization_quiet_correspondence",
+      "name": "The Quiet Correspondence",
+      "kind": "organization",
+      "tags": [
+        "movement"
+      ],
+      "provenance": {
+        "origin": "synthesized",
+        "source": "fixture"
+      }
+    },
+    {
+      "id": "institution_europol_field_office",
+      "name": "Europol Field Office",
+      "kind": "institution",
+      "tags": [
+        "police"
+      ],
+      "provenance": {
+        "origin": "synthesized",
+        "source": "fixture"
+      }
+    },
+    {
+      "id": "faction_accelerationist_circle",
+      "name": "Accelerationist circle",
+      "kind": "faction",
+      "tags": [
+        "agi"
+      ],
+      "provenance": {
+        "origin": "synthesized",
+        "source": "fixture"
+      }
+    }
+  ],
+  "ties": [
+    {
+      "source": "person_harri_romppainen",
+      "target": "institution_europol_field_office",
+      "value": 3,
+      "kind": "member",
+      "reciprocal": true,
+      "tags": [
+        "employment"
+      ],
+      "provenance": {
+        "origin": "synthesized",
+        "source": "fixture"
+      }
+    },
+    {
+      "source": "institution_europol_field_office",
+      "target": "person_harri_romppainen",
+      "value": 3,
+      "kind": "member",
+      "reciprocal": true,
+      "tags": [
+        "employment"
+      ],
+      "provenance": {
+        "origin": "synthesized",
+        "source": "fixture"
+      }
+    },
+    {
+      "source": "person_harri_romppainen",
+      "target": "person_mars_eldrich",
+      "value": -2,
+      "kind": "opinion",
+      "reciprocal": false,
+      "tags": [
+        "suspicion"
+      ],
+      "provenance": {
+        "origin": "synthesized",
+        "source": "fixture"
+      }
+    },
+    {
+      "source": "person_mars_eldrich",
+      "target": "organization_quiet_correspondence",
+      "value": 4,
+      "kind": "member",
+      "reciprocal": true,
+      "tags": [
+        "membership"
+      ],
+      "provenance": {
+        "origin": "synthesized",
+        "source": "fixture"
+      }
+    },
+    {
+      "source": "organization_quiet_correspondence",
+      "target": "person_mars_eldrich",
+      "value": 4,
+      "kind": "member",
+      "reciprocal": true,
+      "tags": [
+        "membership"
+      ],
+      "provenance": {
+        "origin": "synthesized",
+        "source": "fixture"
+      }
+    },
+    {
+      "source": "person_aino_virtanen",
+      "target": "organization_quiet_correspondence",
+      "value": -3,
+      "kind": "opinion",
+      "reciprocal": false,
+      "tags": [
+        "fear"
+      ],
+      "provenance": {
+        "origin": "synthesized",
+        "source": "fixture"
+      }
+    },
+    {
+      "source": "faction_accelerationist_circle",
+      "target": "organization_quiet_correspondence",
+      "value": 1,
+      "kind": "sympathy",
+      "reciprocal": false,
+      "tags": [
+        "ideology"
+      ],
+      "provenance": {
+        "origin": "synthesized",
+        "source": "fixture"
+      }
+    }
+  ]
+}

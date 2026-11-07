@@ -1,0 +1,86 @@
+{
+  "format": "noopunk.simulator.physical",
+  "version": 1,
+  "note": "Small labelled synthetic city fixture for #1309. Coordinates are omitted rather than invented; addresses only where the repository already states them; not a map of Helsinki.",
+  "places": [
+    {
+      "id": "location_ratakatu_12",
+      "name": "Europol Field Office, Ratakatu 12",
+      "kind": "graph",
+      "address": "Ratakatu 12, Helsinki",
+      "coordinates": null,
+      "graph_ref": "location_europol_field_office",
+      "tags": [
+        "police",
+        "workplace"
+      ]
+    },
+    {
+      "id": "location_europol_field_office",
+      "name": "Europol Field Office interior",
+      "kind": "active",
+      "address": "",
+      "coordinates": null,
+      "graph_ref": "",
+      "tags": [
+        "interior"
+      ]
+    },
+    {
+      "id": "location_sornainen_home",
+      "name": "Sörnäinen home",
+      "kind": "active",
+      "address": "",
+      "coordinates": null,
+      "graph_ref": "",
+      "tags": [
+        "home"
+      ]
+    },
+    {
+      "id": "location_kallio_square",
+      "name": "Kallio square",
+      "kind": "passive",
+      "address": "",
+      "coordinates": null,
+      "graph_ref": "",
+      "tags": [
+        "transit"
+      ]
+    },
+    {
+      "id": "location_kurvi_stairwell",
+      "name": "Kurvi stairwell",
+      "kind": "active",
+      "address": "",
+      "coordinates": null,
+      "graph_ref": "",
+      "tags": [
+        "scene"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "source": "location_sornainen_home",
+      "target": "location_kallio_square",
+      "kind": "tram",
+      "directed": false,
+      "traversable": true
+    },
+    {
+      "source": "location_kallio_square",
+      "target": "location_ratakatu_12",
+      "kind": "street",
+      "directed": false,
+      "traversable": true
+    },
+    {
+      "source": "location_ratakatu_12",
+      "target": "location_kurvi_stairwell",
+      "kind": "street",
+      "directed": true,
+      "traversable": true
+    }
+  ]
+}

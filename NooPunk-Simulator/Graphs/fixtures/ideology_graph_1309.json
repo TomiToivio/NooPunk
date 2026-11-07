@@ -1,0 +1,108 @@
+{
+  "format": "noopunk.simulator.ideology",
+  "version": 1,
+  "note": "Small labelled synthetic actor-concept-position fixture for #1309. Positions are interpretations with a statement id, never inferences from co-occurrence.",
+  "concepts": [
+    {
+      "id": "signifier_disclosure",
+      "label": "Disclosure",
+      "kind": "signifier"
+    },
+    {
+      "id": "demand_machine_restraint",
+      "label": "Restraint on machine intelligence",
+      "kind": "demand"
+    },
+    {
+      "id": "frame_human_continuity",
+      "label": "Human continuity",
+      "kind": "frame"
+    }
+  ],
+  "stances": [
+    {
+      "actor": "person_harri_romppainen",
+      "concept": "signifier_disclosure",
+      "position": "support",
+      "statement_id": "stmt-001",
+      "evidence_id": "ev-001",
+      "review_status": "reviewed",
+      "provenance": {
+        "origin": "inferred",
+        "source": "coded interview",
+        "method": "manual coding",
+        "uncertainty": "single statement"
+      }
+    },
+    {
+      "actor": "person_harri_romppainen",
+      "concept": "demand_machine_restraint",
+      "position": "support",
+      "statement_id": "stmt-002",
+      "evidence_id": "ev-002",
+      "review_status": "reviewed",
+      "provenance": {
+        "origin": "inferred",
+        "source": "coded interview",
+        "method": "manual coding",
+        "uncertainty": "single statement"
+      }
+    },
+    {
+      "actor": "person_mars_eldrich",
+      "concept": "signifier_disclosure",
+      "position": "oppose",
+      "statement_id": "stmt-003",
+      "evidence_id": "ev-003",
+      "review_status": "provisional",
+      "provenance": {
+        "origin": "inferred",
+        "source": "coded pamphlet",
+        "method": "manual coding",
+        "uncertainty": "propaganda"
+      }
+    },
+    {
+      "actor": "person_mars_eldrich",
+      "concept": "demand_machine_restraint",
+      "position": "oppose",
+      "statement_id": "stmt-004",
+      "evidence_id": "ev-004",
+      "review_status": "provisional",
+      "provenance": {
+        "origin": "inferred",
+        "source": "coded pamphlet",
+        "method": "manual coding",
+        "uncertainty": "propaganda"
+      }
+    },
+    {
+      "actor": "person_aino_virtanen",
+      "concept": "signifier_disclosure",
+      "position": "mixed",
+      "statement_id": "stmt-005",
+      "evidence_id": "ev-005",
+      "review_status": "needs_review",
+      "provenance": {
+        "origin": "inferred",
+        "source": "witness statement",
+        "method": "manual coding",
+        "uncertainty": "trauma"
+      }
+    },
+    {
+      "actor": "person_aino_virtanen",
+      "concept": "frame_human_continuity",
+      "position": "support",
+      "statement_id": "stmt-006",
+      "evidence_id": "ev-006",
+      "review_status": "needs_review",
+      "provenance": {
+        "origin": "inferred",
+        "source": "witness statement",
+        "method": "manual coding",
+        "uncertainty": "trauma"
+      }
+    }
+  ]
+}
