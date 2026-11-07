@@ -8,7 +8,7 @@ From the repository root:
 
 ```sh
 python3 NooPunk-Simulator/Code/adventure.py
-python3 -m unittest tests.test_detective_adventure_1310 -v
+python3 -m unittest discover -s tests -p 'test_detective_adventure_1310.py' -v
 ```
 
 The initial case is **synthetic and noncanonical**, with clues, notebook, branching decisions, three outcomes and save/load. See [adventure documentation](Code/ADVENTURE.md). Tomi's `Paper/` is **strictly agent read-only**. `NooPunk-Story/Story/` is also Tomi-only. **Never touch `NooPunk-RPG/`**.
