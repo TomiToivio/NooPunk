@@ -1,0 +1,11 @@
+# Default owner for everything not listed below.
+* @TomiToivio
+
+# NoöPunk Story — HUMAN-ONLY MANUSCRIPT (#1295).
+# Agents may read these files; no agent may write, rewrite, format or generate into them.
+/NooPunk-Story/Story/ @TomiToivio
+/NooPunk-Story/Story/** @TomiToivio
+
+/NooPunk-Story/Graph/ @TomiToivio
+/NooPunk-Simulator/ @TomiToivio
+/NooPunk-RPG/ @TomiToivio
