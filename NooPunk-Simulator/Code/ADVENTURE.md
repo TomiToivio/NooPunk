@@ -8,7 +8,7 @@ From repository root:
 
 ```sh
 python3 NooPunk-Simulator/Code/adventure.py
-python3 -m unittest tests.test_detective_adventure_1310 -v
+python3 -m unittest discover -s tests -p 'test_detective_adventure_1310.py' -v
 ```
 
 Select a numbered option; `notebook` shows collected evidence and provisional hypotheses; `save /path/to/save.json` and `load /path/to/save.json` persist the session; `quit` exits. A finished case ends the loop, and the state keeps every choice and resulting ending.
