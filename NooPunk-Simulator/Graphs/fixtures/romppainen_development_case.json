@@ -193,5 +193,9 @@
       ],
       "text": "The event register lists both rival groups at that meeting; the witness remembers only one group present. A record is wrong, or an attendance is being hidden."
     }
+  ],
+  "essential_clues": [
+    "missing",
+    "witness"
   ]
 }
