@@ -86,6 +86,18 @@ class DetectiveAdventureTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 adventure.load_case(path)
 
+    def test_provenance_banner_distinguishes_author_and_fixture(self):
+        self.assertIn("DEVELOPMENT FIXTURE", adventure.case_status(self.case))
+        authored = json.loads(json.dumps(self.case))
+        authored["source"] = {"kind": "author_story", "author_reviewed": False, "canon": False}
+        self.assertIn("NOT YET REVIEWED", adventure.case_status(authored))
+        authored["source"]["author_reviewed"] = True
+        self.assertIn("AWAITING CANON APPROVAL", adventure.case_status(authored))
+        authored["source"]["canon"] = True
+        self.assertIn("AWAITING CANON APPROVAL", adventure.case_status(authored))
+        authored["source"] = {"kind": "unknown"}
+        self.assertIn("UNVERIFIED CASE", adventure.case_status(authored))
+
     def test_no_rpg_imports(self):
         contents = PATH.read_text(encoding="utf-8")
         for forbidden in ("src.rules", "src.text_game", "from rules", "from world", "evennia"):
