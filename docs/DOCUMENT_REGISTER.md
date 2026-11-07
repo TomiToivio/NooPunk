@@ -77,6 +77,8 @@ third. The protocol that goes with this register is [design/AGENT_COORDINATION.m
 
 | **Social-science simulator — AI26 adapter (#1286 WP2)** | [simulator/AI26_ADAPTER_1286.md](simulator/AI26_ADAPTER_1286.md) — `src/social_sim/ai26.py`: the read-only door from a canonical 1.2.0 record into the simulator, the structural validation and refusal rules, the `observed`-evidence / `inferred`-analysis split, and the carried-not-enforced review policy | the canonical contract itself is LaclauGPT-Data-Analysis'; this adapter reads it and never writes to it, and the boundary page remains the authority on the mapping | One bundle, no second analysis engine: nothing here infers a relation from co-occurrence, instantiates an actor or calls a model |
 
+| **Three subprojects: the pivot (#1295)** | [architecture/PIVOT_1295_MIGRATION_MAP.md](architecture/PIVOT_1295_MIGRATION_MAP.md) — the audit, the staged P0–P5 plan, the measured cost of moving code, and who enforces the manuscript boundary; the interop layer is [architecture/SHARED_TAG_GRAPH_CONTRACTS_1295.md](architecture/SHARED_TAG_GRAPH_CONTRACTS_1295.md) | the code stays where it is until P3/P4: `src/social_sim/` remains the canonical simulator (#1286) and `src/rules/`, `rulebook/`, `mud/`, `godot/` remain the RPG (CWN authority is still [rules/CWN_IMMUTABLE_CORE_1068.md](rules/CWN_IMMUTABLE_CORE_1068.md)) | One map and one contract, not three per subproject: the subproject READMEs and `AGENTS.md` files state purpose and ownership and link here, so a `git mv` proposal has one place to be checked against |
+
 ## What is generated, and therefore never hand-edited
 
 | file | generator | freshness check |
