@@ -1,11 +1,20 @@
 # NoöPunk
 
-> **Three subprojects (#1295):** [Story](NooPunk-Story/README.md) — Tomi's writing, with
-> `NooPunk-Story/Story/` read-only for agents — · [Simulator](NooPunk-Simulator/README.md) ·
-> [RPG](NooPunk-RPG/README.md). Story comes first. The migration map and the shared tag/graph contract
-> are in [`docs/architecture/`](docs/architecture/PIVOT_1295_MIGRATION_MAP.md).
+> **The game is Etsivä Romppainen's detective interactive fiction — not a full RPG (#1310).** The
+> playable deliverable is a small, complete **detective investigation** in cyberpunk Helsinki: scenes,
+> dialogue, clues, choices and consequences. The full tabletop/computer RPG is **paused and archived in
+> place**, and `NooPunk-RPG/` must not be edited, moved or refactored. Read
+> [`docs/architecture/PIVOT_1310_DETECTIVE_IF.md`](docs/architecture/PIVOT_1310_DETECTIVE_IF.md) before
+> starting work; older full-RPG directions below are historical.
 
-> **Primary game (#950):** the Python/Evennia [NoöPunk MUD](mud/README.md). Default engineering priority is CWN rules parity and a complete offline-independent single-player Europol campaign; Godot is now maintenance-only, and multiplayer/LLM/Mesa features follow later. The [CWN Deluxe audit](docs/design/ISSUE_950_CWN_DELUXE_AUDIT.md) tracks the migration. Older Godot-first paragraphs below are historical.
+> **Three tracks (#1295, reinterpreted by #1310):** [Story](NooPunk-Story/README.md) — Tomi's script, with
+> `NooPunk-Story/Story/` **read-only for agents** — · [Simulator](NooPunk-Simulator/README.md) — **the
+> playable adventure**, with any faction/hacking simulation strictly optional — · [RPG](NooPunk-RPG/README.md)
+> — **paused**. The migration map is in [`docs/architecture/`](docs/architecture/PIVOT_1295_MIGRATION_MAP.md).
+
+> **No CWN requirement.** The adventure must not depend on CWN character generation, combat, psionics or
+> universal rules. The best mechanic is the one that can be omitted without harming the investigation.
+> Essential case progress is never gated behind an arbitrary failed roll.
 
 Rules coverage is tracked honestly in
 [`docs/rules/CWN_COVERAGE_1068.md`](docs/rules/CWN_COVERAGE_1068.md) — `implemented` only where a

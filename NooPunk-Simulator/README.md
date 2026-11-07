@@ -1,5 +1,11 @@
 # NoöPunk Simulator
 
+> **This is the game now (#1310).** The deliverable is a small, complete **detective interactive-fiction
+> adventure** about Etsivä Harri Romppainen investigating political extremists radicalized by the paradigm
+> shifts — scenes, dialogue, clues, choices, consequences, save/load, an inspectable notebook. Any faction
+> or hacking simulation is **optional and skippable**, never a runtime dependency of the story.
+> **`Paper/` is Tomi-only and agent READ-ONLY.** See [../docs/architecture/PIVOT_1310_DETECTIVE_IF.md](../docs/architecture/PIVOT_1310_DETECTIVE_IF.md).
+
 The social-science track: a **LaclauGPT-informed** simulation of actors, institutions, discourse and
 social processes, using the project's shared Tag/Graph model.
 
