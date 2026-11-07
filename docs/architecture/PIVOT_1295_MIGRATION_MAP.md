@@ -4,9 +4,10 @@
 > it stands, maps each area to one of the three subprojects, and lays out the staged migration. Code
 > moves happen in later PRs, one area at a time, with the tree green after each.
 
-Why not move everything now: the repository carries **1,700+ tracked files** and a CI suite of ~3,150
-tests across Python, Godot, MUD and generated compliance artefacts. A wholesale move would break import
-paths, generated manifests and the CWN immutability gates in a single commit that nobody could review.
+Why not move everything now: the repository carries **2,298 tracked files** and a Python suite of **3,348
+tests** (measured on `main` at `f0617dd`, `python -m unittest discover -s tests`), plus the Godot, MUD,
+strategy-game and generated compliance gates. A wholesale move would break import paths, generated
+manifests and the CWN immutability gates in a single commit that nobody could review.
 
 ---
 
@@ -31,11 +32,12 @@ The issue allows the spaced names. Filesystem-safe paths are used, and this tabl
 | `docs/graphs/templates/`, `docs/graphs/examples/` | ~12 | SCENE/EPISODE/SERIES/SITE templates and a worked example | `NooPunk-Story/Graph/` |
 | `src/world/graphs.py`, `src/world/scenes.py` | 2 core modules | the four graph families and the scene procedures | **shared contract**, later `NooPunk-RPG/` |
 | `data/scenarios/lakkahaltia/case_graph.json`, `data/world/politics_1252_graph.json` | 2 | authored graph data | `NooPunk-Story/Graph/data/` once the contract is versioned |
-| `src/rules/` | 193 | CWN core, SWN/AWN imports, NoöPunk overlays | `NooPunk-RPG/` (CWN **unchanged**) |
+| `src/rules/` | 110 | CWN core, SWN/AWN imports, NoöPunk overlays | `NooPunk-RPG/` (CWN **unchanged**) |
 | `src/console/` | 6 | reference CLI adapter, first day, opening join | `NooPunk-RPG/` |
 | `mud/`, `campaign/`, `strategy_game/`, `godot/`, `mods/`, `portable_noopunk/` | 400+ | MUD, campaign engine, strategy game, Godot client | `NooPunk-RPG/` |
 | `docs/design/`, `docs/rules/` | large | design decisions and rule notes | mostly `NooPunk-RPG/`; canon prose → `Story/` |
-| — | 0 | **no Simulator code exists in this repository** | `NooPunk-Simulator/` is new |
+| `src/social_sim/` | 3 code + 2 tests + 3 docs | **the simulator**: `kernel.py` (WP1), `ai26.py` (the read-only AI26 adapter, WP2), `tests/test_social_sim_*` (66 tests) and `docs/simulator/*` — merged in #1292/#1294 | `NooPunk-Simulator/` at P3/P4, behind a `social_sim` compatibility package |
+| `docs/simulator/` | 3 | boundary and contracts (WP0), kernel (WP1), AI26 adapter (WP2) | `NooPunk-Simulator/docs/` |
 | `docs/design/ISSUE_1008_PHASE2_LACLAU.md`, `docs/research/` | ~20 | Laclau methodology notes and research | `NooPunk-Simulator/docs/` |
 
 
@@ -49,9 +51,30 @@ The issue allows the spaced names. Filesystem-safe paths are used, and this tabl
 | `data/` | split: rules data → RPG; authored graph data → Story Graph; simulator fixtures → Simulator |
 | `scripts/`, `tools/` | shared; `tools/rules_constitution_audit.py` stays the CWN gate wherever the core lives |
 
-**The honest finding:** two of the three subprojects already exist under other names. The Simulator
-does not exist here at all — the LaclauGPT pipeline lives in its own repositories, and this repository
-holds only notes about it. That makes the Simulator the only genuinely new build in this pivot.
+**The honest finding:** all three subprojects already have code in this repository. Story's runtime is the
+four-graph model (`src/world/graphs.py`, `StoryGraph`) and the authoring front door
+(`tools/graph_authoring.py`); the RPG is `src/rules/` plus its runtimes; and the Simulator is
+`src/social_sim/` — a standalone kernel, the read-only AI26 adapter and 66 tests, which import nothing from
+the RPG (asserted by a test). The LaclauGPT pipeline that *feeds* the simulator lives in its own
+repositories, and Phase 1 supplies methodology, not an engine. So this pivot is a change of **location and
+ownership**, not a build from nothing: the Simulator's next work is WP3–WP7 on #1286, in place, until P3/P4
+moves it.
+
+### 2.1 What a move actually breaks, measured
+
+Path-addressed guards hold the RPG code in place today, which is why P4 is one area per PR:
+
+| coupling | measured |
+| --- | --- |
+| test files naming `src/rules` | 24 |
+| test files naming `rulebook/` / `RULEBOOK.md` | 5 / 3 |
+| test files naming `mud/` / `godot/` | 4 / 6 |
+| test files and CI steps naming `strategy_game` | 7 files, 2 workflow steps (`python -m strategy_game`, seeded playthroughs) |
+| collection roots | `pytest.ini` `norecursedirs` (mud, archive, legacy) and the `unittest discover -s tests` CI invocation |
+| release guard | `data/licenses/release_packaging_policy.json` artifact classes must cover every tracked path |
+| documentation register | `docs/DOCUMENT_REGISTER.md` links are relative and break silently |
+
+A move that misses one of these produces a green-looking PR and a red `main`.
 
 ## 3. Staged plan
 
@@ -82,11 +105,13 @@ that can break imports.
 | `AGENTS.md` rule | states the boundary in the file every agent reads first | a rule, not a lock |
 | `.github/CODEOWNERS` | requires Tomi's review for `NooPunk-Story/Story/` | effective only if branch protection uses it |
 | `tests/test_issue_1295_structure.py` | fails if the boundary text, folders or CODEOWNERS entry disappear; fails if executable content appears under `Story/` | cannot see a commit that bypasses CI |
+| `.github/workflows/story-boundary.yml` → `tools/story_boundary.py` | **fails the pull request** when any changed path is inside `NooPunk-Story/Story/` except its boundary note; the `story-authored-by-tomi` label, applied by a human on the PR, is the only release | sees what the branch changed, not who typed it, and a direct push to `main` bypasses the branch check |
 | Git history | the manuscript's authorship stays visible per line | agents commit under Tomi's identity, so author alone is not a proof |
 
 **Stated plainly:** with agents committing as the repository owner, no git-level check can prove who
 typed a line. The enforceable promise is *review*, not authorship — CODEOWNERS plus the instruction
-plus a guard that fails loudly when the boundary is edited away.
+plus a guard that fails loudly when the boundary is edited away, plus a diff check that makes an agent's
+edit to the manuscript fail the pull request rather than pass review unnoticed.
 
 ## 6. Shared contract
 

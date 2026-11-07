@@ -16,6 +16,13 @@ social processes, using the project's shared Tag/Graph model.
 
 ## Status
 
-P0 skeleton. **No simulator code exists in this repository yet** — the LaclauGPT pipeline lives in its
-own repositories, and here there are only design notes (`docs/design/ISSUE_1008_PHASE2_LACLAU.md`,
-`docs/research/`). Stage P3 creates the module boundary and the shared adapter.
+P0 skeleton of the directory; **the simulator itself is already on `main`** — it is just not here yet.
+`src/social_sim/` carries `kernel.py` (WP1: actors, organizations, typed social/communication ties,
+events, seeded rules, snapshots and replay) and `ai26.py` (WP2: the read-only canonical-record adapter),
+with `docs/simulator/` and 66 tests. Nothing in it imports CWN, Evennia or the Story runtime, which is
+what "independent" means here.
+
+The next work is #1286's WP3–WP7 (behavioural assumptions, paired experiment, exports and metrics,
+end-to-end demonstration, integration seam), done **in place**. Stage P3/P4 moves the package into this
+directory behind a `social_sim` compatibility package so an existing `from social_sim.kernel import …`
+keeps working.

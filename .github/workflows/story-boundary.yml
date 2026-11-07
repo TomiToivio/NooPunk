@@ -1,0 +1,28 @@
+name: Story boundary
+
+# #1295: `NooPunk-Story/Story/` is Tomi's prose. Agents read it; nobody else writes it.
+#
+# AGENTS.md states the rule, CODEOWNERS asks for Tomi's review and tests/test_issue_1295_structure.py
+# keeps the statement in place. None of those can see a committed edit — agents commit under the
+# repository owner's identity — so this job diffs the branch and refuses any path inside the manuscript.
+#
+# The only escape is the `story-authored-by-tomi` label, applied by a human on the pull request itself.
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  story-boundary:
+    if: ${{ !contains(github.event.pull_request.labels.*.name, 'story-authored-by-tomi') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch the base branch
+        run: git fetch --no-tags origin "${{ github.base_ref }}"
+      - name: Refuse any change to the human-only story directory
+        run: python3 tools/story_boundary.py --base "origin/${{ github.base_ref }}"

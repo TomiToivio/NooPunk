@@ -16,9 +16,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 SUBPROJECTS = {
-    "NooPunk-Story": ["README.md", "Story/README.md", "Graph/README.md"],
-    "NooPunk-Simulator": ["README.md"],
-    "NooPunk-RPG": ["README.md"],
+    "NooPunk-Story": ["README.md", "AGENTS.md", "Story/README.md", "Graph/README.md"],
+    "NooPunk-Simulator": ["README.md", "AGENTS.md"],
+    "NooPunk-RPG": ["README.md", "AGENTS.md"],
 }
 
 #: Directories that P0 must map before anything is moved. If one appears and is not in the map, the
@@ -106,8 +106,11 @@ class MigrationMapTests(unittest.TestCase):
         missing = [name for name in INVENTORIED if f"`{name}/`" not in self.text]
         self.assertFalse(missing, f"unmapped directories: {missing}")
 
-    def test_the_map_states_the_simulator_does_not_exist_yet(self):
-        self.assertIn("no Simulator code exists in this repository", self.text)
+    def test_the_map_names_the_simulator_that_already_exists(self):
+        """#1292/#1294 landed the simulator in `src/social_sim/`; the map must point at it, not describe
+        a build from nothing."""
+        self.assertIn("`src/social_sim/`", self.text)
+        self.assertIn("`docs/simulator/`", self.text)
 
     def test_the_map_names_the_hard_prohibitions(self):
         for phrase in ("No agent writes inside `NooPunk-Story/Story/`", "No change to CWN",
