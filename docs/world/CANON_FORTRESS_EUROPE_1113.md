@@ -1,5 +1,10 @@
 # Canon: Fortress Europe after the Fall (#1113)
 
+> **Opening premise superseded (#1301).** The player-facing 2045 scenario starts **before** the NHI Crisis;
+> see [HELSINKI_2045_PLAYER_SCENARIO_1301.md](HELSINKI_2045_PLAYER_SCENARIO_1301.md). This document is kept
+> as **background and future material** — its lore is intact, but it no longer describes the world the
+> player starts in, and a later agent must not reintroduce the Crisis into the opening.
+
 > **Status:** preferred primary scenario, restored by author decision in #1113. This document designates which
 > existing documents it supersedes, which it leaves standing, and which questions stay open. It does not
 > implement systems and it does not alter any published rules.

@@ -1,5 +1,9 @@
 # Campaign 01 — *The Rookie, the Awakening and the Wanderer*
 
+> **Opening premise superseded (#1301).** The player-facing scenario begins **before** the NHI Crisis and
+> does **not** require an awakening; see [../world/HELSINKI_2045_PLAYER_SCENARIO_1301.md](../world/HELSINKI_2045_PLAYER_SCENARIO_1301.md).
+> This arc remains an **optional path**, retained in full.
+
 **Status: DRAFT — open to revision.** This is a design document for the first NoöPunk single-player campaign,
 written to issue [#1132](https://github.com/TomiToivio/NooPunk/issues/1132). It is **not** rules code, not a
 finished scenario, and not a commitment that every mechanic described here will be built.

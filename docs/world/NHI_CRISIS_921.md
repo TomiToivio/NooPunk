@@ -1,5 +1,10 @@
 # The NHI Crisis — canonical history (source: #921)
 
+> **Opening premise superseded (#1301).** The player-facing 2045 scenario starts **before** the NHI Crisis;
+> see [HELSINKI_2045_PLAYER_SCENARIO_1301.md](HELSINKI_2045_PLAYER_SCENARIO_1301.md). This document is kept
+> as **background and future material** — its lore is intact, but it no longer describes the world the
+> player starts in, and a later agent must not reintroduce the Crisis into the opening.
+
 > **Consolidated reference (#1005):** [`POST_NHI_WORLD_1005.md`](POST_NHI_WORLD_1005.md) — this file remains the phase-by-phase history; that one carries the current author direction on geopolitics and factions.
 
 > **Setting revision #1114 (2026-11-03):** this source text's "UNSA becomes a de facto world
