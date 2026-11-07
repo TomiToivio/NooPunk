@@ -1,5 +1,12 @@
 # NoöPunk
 
+> **The game is a detective adventure, not a full RPG (#1310, 2026-11-07).** NoöPunk's playable product is an
+> old-fashioned **interactive-fiction investigation** in cyberpunk Helsinki, with **Etsivä Harri Romppainen** as the
+> detective. A working text adventure already exists: `PYTHONPATH=src python scripts/noopunk_case.py`. The CWN-based
+> full RPG is **paused and preserved untouched** in [`NooPunk-RPG/`](NooPunk-RPG/README.md); do not revive or extend it.
+> Read [`docs/adventure/PIVOT_1310.md`](docs/adventure/PIVOT_1310.md) before starting any game work.
+
+
 > **Three subprojects (#1295):** [Story](NooPunk-Story/README.md) — Tomi's writing, with
 > `NooPunk-Story/Story/` read-only for agents — · [Simulator](NooPunk-Simulator/README.md) ·
 > [RPG](NooPunk-RPG/README.md). Story comes first. The migration map and the shared tag/graph contract

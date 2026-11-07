@@ -14,3 +14,12 @@ source that rewrites it. Where the graph needs something the manuscript does not
 - Authorship policy: [`AGENTS.md`](../AGENTS.md) — hard rule, no exceptions.
 - Migration map: [`docs/architecture/PIVOT_1295_MIGRATION_MAP.md`](../docs/architecture/PIVOT_1295_MIGRATION_MAP.md)
 - Graph templates: [`docs/graphs/templates/`](../docs/graphs/templates/) (until P2 moves them here)
+## What this track is for now (#1310, 2026-11-07)
+
+`Story/` is the **interactive-fiction script the adventure plays** — scenes, dialogue, clues, choices, branches and case
+arcs — and may later become a conventional novel. `Graph/` stays the agent-maintained derivative, and the direction of
+truth is unchanged: **`Story/` → `Graph/`**, never the reverse.
+
+Agents do not write manuscript prose into `Story/`, do not restructure it, and do not treat a missing scene as an
+invitation to invent canon. If the script does not yet contain what a scene needs, that is a note for Tomi or a clearly
+labelled development fixture.
