@@ -3,7 +3,7 @@
 **CURRENT DIRECTION:** NoöPunk is an **Etsivä Romppainen detective adventure**, NOT an active full RPG. Older CWN/Godot instructions below are archived historical context, not implementation priority.
 
 - **Play development fixture:** `python3 NooPunk-Simulator/Code/adventure.py`
-- **Run focused checks:** `python3 -m unittest tests.test_detective_adventure_1310 -v`
+- **Run focused checks:** `python3 -m unittest discover -s tests -p 'test_detective_adventure_1310.py' -v`
 - **Story:** `NooPunk-Story/Story/`, authored only by Tomi, agent READ ONLY.
 - **Simulator Paper:** `NooPunk-Simulator/Paper/`, authored only by Tomi, agent READ ONLY.
 - **`NooPunk-RPG/` is PAUSED AND UNTOUCHABLE** for agents. No CWN systems are required for detective gameplay.
