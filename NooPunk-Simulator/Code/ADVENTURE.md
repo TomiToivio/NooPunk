@@ -30,3 +30,40 @@ This is one deterministic finite case with alternate investigation orders, impor
 ## Test scope
 
 `tests/test_detective_adventure_1310.py` checks three endings, alternate investigative order, gate accessibility, state round trip, incorrect saves, malformed scene references and independence from RPG imports. Further author-content conversion and integration are separate work.
+
+## Case audit: the softlock check (#1310)
+
+`python3 NooPunk-Simulator/Code/case_audit.py --check [--case PATH]`
+
+A detective case fails quietly. Nobody dies and the game does not crash: the player simply reaches an ending
+without the evidence that makes the ending honest, because one route skipped a clue.
+
+The audit walks the case as a graph and reports:
+
+| Error | Meaning |
+| --- | --- |
+| `ending-without-essential-evidence` | a route reaches an ending while never picking up a clue listed in `essential_clues` |
+| `unobtainable-clue` | a clue is declared but no scene or choice ever adds it |
+| `dangling-choice` | a choice points at a scene that does not exist |
+| `unknown-requirement` / `unknown-clue` | a gate or an `adds` entry names a clue that is not declared |
+| `no-ending` / `unreachable-ending` | the case cannot be finished, or an ending has no way in |
+| `bad-contradiction` / `bad-deduction` | a notebook entry names a clue that does not exist |
+
+Warnings do not fail a case unless `--check` sees an error: an unreachable optional scene, a single ending, or a
+case with no `essential_clues` at all (which means the audit cannot tell what must survive — say so explicitly
+rather than letting it pass silently).
+
+The path question is answered **route by route**, not by the union of clues available in a scene: a union would
+let a shortcut pass, which is the failure the audit exists to catch.
+
+### Case fields added for the notebook
+
+```jsonc
+"essential_clues": ["missing", "witness"],
+"deductions": [{"requires": ["missing", "roster"], "text": "What the evidence supports, stated as inference."}],
+"contradictions": [{"between": ["witness", "message"], "text": "Two accounts that cannot both be complete."}]
+```
+
+The notebook prints deductions only when their clues are held, and shows contradictions as **disagreement**,
+never as proof. The development fixture is still synthetic: these fields are the shape a case needs, not a
+claim about the case.

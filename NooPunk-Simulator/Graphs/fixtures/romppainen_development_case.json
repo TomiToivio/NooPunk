@@ -175,5 +175,34 @@
       "ending": true,
       "choices": []
     }
-  }
+  },
+  "essential_clues": [
+    "missing",
+    "witness"
+  ],
+  "contradictions": [
+    {
+      "between": [
+        "witness",
+        "message"
+      ],
+      "text": "The witness remembers raised voices; the message reads calm and procedural. One of the two accounts is incomplete."
+    }
+  ],
+  "deductions": [
+    {
+      "requires": [
+        "missing",
+        "roster"
+      ],
+      "text": "The organizer is absent from an event they organised. Absence is a fact; its reason is not."
+    },
+    {
+      "requires": [
+        "witness",
+        "message"
+      ],
+      "text": "The tone of the message does not match the witness's memory. Either the message is not from that evening, or the witness is recalling a different meeting."
+    }
+  ]
 }

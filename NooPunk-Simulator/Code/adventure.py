@@ -93,6 +93,22 @@ class Adventure:
         for hypothesis in self.case.get("hypotheses", []):
             if set(hypothesis.get("requires", [])).issubset(self.state["clues"]):
                 lines.append("* " + hypothesis["text"])
+        deductions = [
+            deduction for deduction in self.case.get("deductions", [])
+            if set(deduction.get("requires", [])).issubset(self.state["clues"])
+        ]
+        if deductions:
+            lines.append("What the evidence supports:")
+            for deduction in deductions:
+                lines.append("* " + deduction["text"])
+        contradictions = [
+            contradiction for contradiction in self.case.get("contradictions", [])
+            if set(contradiction.get("between", [])).issubset(self.state["clues"])
+        ]
+        if contradictions:
+            lines.append("Accounts that do not agree:")
+            for contradiction in contradictions:
+                lines.append("* " + contradiction["text"])
         lines.append("Decisions logged: " + str(len(self.state["history"])))
         return "\n".join(lines)
 
