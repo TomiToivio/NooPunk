@@ -29,4 +29,6 @@ Newest first. Each entry is the author's own text, verbatim; metadata is archiva
 | [06_11_2026_ASTRAL_DENSITIES_AND_SUPERSKILL.md](06_11_2026_ASTRAL_DENSITIES_AND_SUPERSKILL.md) | #1261 | Astral densities, I-space and P-space, and the superskill revision |
 | [05_11_2026_PSI_ASTRAL_AND_GRAPH_DECISION.md](05_11_2026_PSI_ASTRAL_AND_GRAPH_DECISION.md) | #1178 | PSI scope, scripted Astral Projection, and the four graph families |
 
+| [07_11_2026_ROMPPAINEN_DETECTIVE_PIVOT.md](07_11_2026_ROMPPAINEN_DETECTIVE_PIVOT.md) | #1310 | Pivot: detective interactive fiction instead of a full RPG; the RPG paused |
+
 Backfill of the prompts already in play, added when the archive first existed in the repository (#1302).
