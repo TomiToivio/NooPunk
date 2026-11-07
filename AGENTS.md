@@ -10,6 +10,16 @@
 
 **Research discipline:** AI26 paper and THEORY.md are authoritative for discourse analysis but **do not themselves establish causal simulation laws**. Behavioral mechanisms, synthetic agents and interventions must be transparent research assumptions, reproducible, testable and clearly distinct from observed empirical findings. Never modify or silently replace the locked LaclauGPT paper/methodology. LaclauGPT's operational demo remains the immediate priority outside this repository.
 
+## Author prompt archive (#1302)
+
+Tomi's substantial NoöPunk design/development prompts are archived in [`Prompts/`](Prompts/) so background, rules, theory and abandoned ideas can be recovered later. This is **selective author-prompt archiving, not chat logging**.
+
+- **Log** a prompt when it is clearly about NoöPunk Story, Simulator or RPG, contains substantial original background/design/rules/theory/development ideas, and visibly took effort to write. Use judgment, not a rigid word count.
+- **Do not log** short/routine requests ("do this", "fix this", PR merges, status questions), casual recommendations, unrelated projects, or agent answers.
+- Save Tomi's **verbatim prompt text** and preserve wording, examples, links and abandoned ideas; a short header/metadata is fine. Never promote an archived prompt to canon.
+- Use the single root directory `Prompts/`, filename `DD_MM_YYYY_TOPIC_NAME.md`; check for duplicates and normalize an existing file before adding another.
+- The full policy, exemptions, duplicate rules and privacy boundary are in [`Prompts/README.md`](Prompts/README.md).
+
 ---
 
 # MANDATORY ANTI-DUPLICATION GATE (2026-11-03)

@@ -3,6 +3,7 @@
 - **Date:** 2026-11-07
 - **Topic:** Prompt logging
 - **Source:** Tomi's NoöPunk design/development request in ChatGPT
+- **Issue:** [#1302](https://github.com/TomiToivio/NooPunk/issues/1302)
 - **Archive status:** Original author prompt, retained for future reuse; not an approved canon or implementation specification by itself.
 
 ## Original prompt (verbatim text, Markdown formatting normalized)
