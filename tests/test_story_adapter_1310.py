@@ -59,6 +59,44 @@ class StoryAdapterTests(unittest.TestCase):
             self.assertTrue(game.state["finished"])
             self.assertIn("event register", game.notebook())
 
+    def test_optional_contradictions_section_is_parsed(self):
+        """Contradictory testimony is something the author writes, not something an agent hand-edits."""
+        case = self.adapter.parse_story(FIXTURE)
+        self.assertEqual(len(case["contradictions"]), 1)
+        contradiction = case["contradictions"][0]
+        self.assertEqual(contradiction["between"], ["roster", "witness"])
+        self.assertIn("only one present", contradiction["text"])
+
+    def test_a_contradiction_between_unknown_clues_is_rejected(self):
+        text = FIXTURE.read_text(encoding="utf-8").replace(
+            "- roster + witness:", "- roster + ghost:"
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "broken.md"
+            source.write_text(text, encoding="utf-8")
+            with self.assertRaises(self.adapter.StoryFormatError):
+                self.adapter.parse_story(source)
+
+    def test_a_contradiction_needs_two_clues(self):
+        text = FIXTURE.read_text(encoding="utf-8").replace(
+            "- roster + witness:", "- roster:"
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "broken.md"
+            source.write_text(text, encoding="utf-8")
+            with self.assertRaises(self.adapter.StoryFormatError):
+                self.adapter.parse_story(source)
+
+    def test_an_unknown_section_is_still_rejected(self):
+        text = FIXTURE.read_text(encoding="utf-8").replace(
+            "## Contradictions", "## Speculations"
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "broken.md"
+            source.write_text(text, encoding="utf-8")
+            with self.assertRaises(self.adapter.StoryFormatError):
+                self.adapter.parse_story(source)
+
     def test_semicolon_separated_attributes_are_accepted(self):
         text = FIXTURE.read_text(encoding="utf-8").replace(
             "](records) adds=missing,roster",

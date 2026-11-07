@@ -55,6 +55,10 @@ The terminal scene text.
 ## Hypotheses
 
 - A tentative explanation. | requires=clue.one,clue.two
+
+## Contradictions
+
+- clue.one + clue.two: What the two records cannot both be right about, and what that implies.
 ```
 
 ### Rules
@@ -69,6 +73,10 @@ The terminal scene text.
   Attributes may be separated by `;`.
 - `## Clues` maps `id: description`.
 - `## Hypotheses` uses `- text | requires=id,id`; the requirement is optional.
+- `## Contradictions` uses `- clue.a + clue.b: what conflicts`. Both clues must exist; a
+  contradiction is a recorded conflict in the evidence, never a verdict, and never a substitute for
+  one. The runner surfaces it in the notebook only once the detective holds both clues. The section is
+  optional: a script without it parses exactly as before.
 - Every choice target and clue id must exist. A malformed file is rejected, not repaired.
 
 ## Provenance
