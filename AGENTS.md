@@ -1,3 +1,9 @@
+# Prompt archive: mandatory intake rule (2026-11-07)
+
+**For every substantial author-written NoöPunk Story, Simulator or RPG design/development prompt, proactively save the original text in `Prompts/DD_MM_YYYY_TOPIC_NAME.md`.** Log only long, thoughtful prompts containing original background, theory, narrative, rules or design ideas; **never** log short routine requests (“do this”, “fix this”, merge requests, casual questions). Treat Story/Simulator/RPG together in one `Prompts/` directory. Before saving, check for duplicates and pre-existing files under different names; normalize names without losing text. Preserve the author's wording, even if ideas are later abandoned; archives are **not canon or implementation authorization**. Follow [`Prompts/README.md`](Prompts/README.md) and [issue #1302](https://github.com/TomiToivio/NooPunk/issues/1302). This documentation-only obligation does not change current active development scopes.
+
+---
+
 # ACTIVE DEVELOPMENT DIRECTIVE (2026-11-07): LACLAUGPT SOCIAL SCIENCE SIMULATOR ONLY
 
 **Highest-priority scope gate; overrides all older agent, issue, RPG-design and implementation instructions below until Tomi explicitly changes direction.**

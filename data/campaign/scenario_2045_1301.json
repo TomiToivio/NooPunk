@@ -1,0 +1,113 @@
+{
+  "schema": "noopunk-scenario-1301-v1",
+  "issue": 1301,
+  "setting": {
+    "city": "Helsinki",
+    "year": 2045,
+    "nhi_crisis_occurred": false,
+    "note": "The full NHI Crisis has not happened in this player-facing timeline. Disclosures, leaks, incidents and smaller crises have; global collapse, a visible alien society and an interstellar standoff have not."
+  },
+  "shifts": [
+    {
+      "id": "agi",
+      "name": "AGI / ASI",
+      "status": "mainstream",
+      "public_position": "Advanced and potentially superintelligent AI, androids, rogue systems and cybernetic augmentation are regulated fields of engineering and law.",
+      "contested": "Capability ceilings, licensing boundaries, and what a rogue system actually is.",
+      "segments": {"normies": 50, "accelerationists": 25, "doomers": 25}
+    },
+    {
+      "id": "psi",
+      "name": "PSI",
+      "status": "mainstream",
+      "public_position": "Psychic phenomena and consciousness science are studied by serious institutions and regulated as licensed practice.",
+      "contested": "Replication, interpretation, and how much of it is psi rather than fraud, attention or coercion.",
+      "segments": {"normies": 50, "accelerationists": 25, "doomers": 25}
+    },
+    {
+      "id": "nhi",
+      "name": "NHI",
+      "status": "mainstream",
+      "public_position": "Non-human intelligence is a recognised category in law, science and security policy after disclosures and incidents.",
+      "contested": "What the category actually contains; most people have never met an NHI, and genuine activity is distant or mediated.",
+      "segments": {"normies": 50, "accelerationists": 25, "doomers": 25}
+    }
+  ],
+  "objectives": [
+    {
+      "id": "stability",
+      "name": "Stability",
+      "mandate": "Keep destabilising manifestations out of ordinary streets, media cycles and everyday experience where possible.",
+      "tension": "Secrecy and censorship against civil liberties and democratic oversight.",
+      "critics_call_it": ""
+    },
+    {
+      "id": "sustainability",
+      "name": "Sustainability",
+      "mandate": "Maximise the benefits of the three shifts while minimising existential risk.",
+      "tension": "Risk governance against industrial capture.",
+      "critics_call_it": "Profit"
+    },
+    {
+      "id": "security",
+      "name": "Security",
+      "mandate": "Detect, contain, investigate and prevent X-Risks from becoming catastrophes.",
+      "tension": "Prevention against proportionality, evidence standards and the presumption of innocence.",
+      "critics_call_it": ""
+    },
+    {
+      "id": "survival",
+      "name": "Survival",
+      "mandate": "Prepare contingency plans to preserve Homo sapiens populations if prevention fails.",
+      "tension": "Continuity planning against the politics of who is included, and against normalising catastrophe.",
+      "critics_call_it": ""
+    }
+  ],
+  "cases": [
+    {
+      "id": "case-agi",
+      "shift": "agi",
+      "title": "The asset that asked for a lawyer",
+      "question": "Is this an unregistered autonomous system, a licensed tool being misused, or a person's livelihood being criminalised?",
+      "non_psi_path": true,
+      "outcomes": ["lawful seizure and registration", "operator charged, system preserved as evidence", "no crime: a licensing failure resolved administratively", "cover-up by the operator's institutional client"],
+      "overlays": ["physical", "cyber"]
+    },
+    {
+      "id": "case-psi",
+      "shift": "psi",
+      "title": "The unlicensed reading",
+      "question": "Did an unlicensed practitioner cause the incident, or did the incident cause the practice to be noticed?",
+      "non_psi_path": true,
+      "outcomes": ["charge for unlicensed practice", "charges dropped, complainant exposed", "a licensed colleague's negligence surfaces", "a fraud, with real harm and no psi at all"],
+      "overlays": ["physical", "cyber", "astral"]
+    },
+    {
+      "id": "case-nhi",
+      "shift": "nhi",
+      "title": "The proxies of nobody in particular",
+      "question": "Is this group acting for a non-human patron, for a human sponsor, for itself, or for no one?",
+      "non_psi_path": true,
+      "outcomes": ["fraud and fundraising charges", "protected belief with no offence", "human espionage unrelated to NHI", "an indirect, deniable non-human connection that cannot be proved in court"],
+      "overlays": ["physical", "cyber", "astral"]
+    }
+  ],
+  "knowledge_ladder": ["public", "rumour", "classified", "gm_truth"],
+  "player_character": {
+    "id": "tony.german",
+    "origin": "Europol Academy graduate",
+    "state": "tabula rasa",
+    "cyber_competence": "regularly used, not optional",
+    "psi_required": false,
+    "psi_available_later": "optional story branch only",
+    "forced_alignment": false
+  },
+  "trajectories": [
+    "dirty/hedonistic cop",
+    "idealistic/empathetic cop",
+    "ruthless hunter",
+    "awakened PSI asset",
+    "secret NHI-cult member",
+    "professional outsider"
+  ]
+}
