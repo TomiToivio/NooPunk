@@ -119,7 +119,20 @@ See [`SHARED_TAG_GRAPH_CONTRACTS_1295.md`](SHARED_TAG_GRAPH_CONTRACTS_1295.md). 
 consumers, and changes to it need a cross-project review — not a silent edit in whichever subproject
 happened to need it first.
 
-## 7. Success criterion, restated as a test
+## 7. Open decisions — the author's, not an agent's
+
+The stages below can start without these, but P2 needs D1 and D2, and P4 needs D4. Each one changes what an
+adapter must do, so an agent that "just picks one" quietly decides the project's semantics.
+
+| id | question | why it must not be answered by an agent |
+| --- | --- | --- |
+| **D1** | Is the manuscript written at `NooPunk-Story/Story/` in this repository, or does it stay in `Panpsychic-Cyborg-Multitude/noopunk/` with this repository holding the script versions and the graph derivative? It is **not here today**, so `Story/` currently holds only its boundary note. | where a writer writes is the writer's choice, and moving a draft silently splits the source of truth |
+| **D2** | Filesystem-safe folder names (as built) or the literal `NoöPunk Story` / `NoöPunk Simulator` / `NoöPunk RPG` the issue allows? | the trade-off is tooling quoting in CI, Python, Evennia and shell versus the author's naming; the name appears in every later path |
+| **D3** | Does the Simulator stay a folder in this repository, or become its own repository that this one vendors? | it decides whether the shared contract is an in-repo import or a versioned dependency |
+| **D4** | What is the exact envelope of the RPG overlay — which tags, graph records and procedures a NoöPunk mod may add, and what stays reserved to CWN? | CWN is immutable, so the envelope is a rules decision; guessing it either blocks legitimate mods or quietly rebalances the core |
+| **D5** | Do Story Graph records reach the RPG as committed, compiled JSON under `data/`, or are they read from `NooPunk-Story/Graph/` at runtime? | it fixes the dependency direction between two subprojects that are supposed to be independent |
+
+## 8. Success criterion, restated as a test
 
 > Tomi can write an original branching scene; an agent converts it to Story Graph; the RPG plays it
 > with Simulator-supplied social context; neither the manuscript nor CWN is touched.
