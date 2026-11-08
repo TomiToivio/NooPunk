@@ -7,6 +7,27 @@
   <meta name="description" content="NoöPunk: Etsivä Romppainen ja Uusi Paradigma — a cyberpunk noir detective interactive fiction set in Helsinki, 2045. A small story-first adventure, not a full RPG.">
   <title>NoöPunk · Etsivä Romppainen ja Uusi Paradigma</title>
   <link rel="stylesheet" href="assets/style.css">
+  <style>
+    /* The shared hero sizing was built for a two-word title; this one is a Finnish byline and needs its own scale. */
+    .hero h1 { font-size: clamp(2.1rem, 5.6vw, 4.4rem); line-height: 1.04; letter-spacing: -0.01em; }
+    .hero h1 em { display: block; font-size: 0.62em; margin-top: 0.28em; }
+    .hero .lede { max-width: 46rem; }
+    pre { background: #0b1020; border-left: 3px solid #2ee6c5; padding: 0.85rem 1.05rem; overflow-x: auto; margin: 0.6rem 0 1.1rem; }
+    pre code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.95rem; color: #d9f7f1; background: none; }
+    @media (max-width: 720px) {
+      .hero h1 { font-size: clamp(1.7rem, 8.4vw, 2.4rem); }
+      .hero .lede { font-size: 1rem; }
+      .orb { display: none; }                     /* it sits behind the byline at narrow widths and only adds muddle */
+      .nav { flex-wrap: wrap; row-gap: 0.35rem; }
+      .nav nav { flex-wrap: wrap; gap: 0.25rem 0.8rem; font-size: 0.74rem; }
+      .actions { flex-direction: column; align-items: stretch; }
+      .actions .button { text-align: center; }
+      .equation { font-size: 0.9rem !important; letter-spacing: 0.06em; }
+    }
+    /* The shared stylesheet hides nav links 1 and 3 below 640px; on this page those are "Why" and "What is what",
+       which are the two a new reader most needs, so they stay visible and simply wrap. */
+    @media (max-width: 640px) { .nav nav a:nth-child(1), .nav nav a:nth-child(3) { display: inline-block; } }
+  </style>
 </head>
 <body>
   <div class="noise"></div>
@@ -28,7 +49,7 @@
     <section class="hero">
       <div class="eyebrow">CYBERPUNK NOIR · DETECTIVE INTERACTIVE FICTION · HELSINKI 2045</div>
       <h1>ETSIVÄ ROMPPAINEN<br><em>JA UUSI PARADIGMA</em></h1>
-      <div class="equation" style="margin:1rem 0 1.25rem;font-size:clamp(1rem,2.4vw,1.7rem)">ONE DETECTIVE · ONE CASE AT A TIME · THREE QUESTIONS NOBODY AGREES ON</div>
+      <div class="equation" style="margin:1rem 0 1.25rem;font-size:clamp(1rem,2.4vw,1.7rem)">ONE DETECTIVE · ONE CASE AT A TIME</div>
       <p class="lede">A small, hand-written investigation you play in a terminal. You are <strong>Etsivä Harri Romppainen</strong>, working police cases in a Helsinki where three paradigm shifts have already happened to science and law — and not yet to everyone's peace of mind. Not a tabletop RPG. Not a computer RPG. Not a simulation of a world.</p>
       <div class="actions">
         <a class="button primary" href="#play">Play the prototype</a>
