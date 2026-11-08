@@ -129,6 +129,14 @@ class PagesFramingTests(unittest.TestCase):
         timeline = TIMELINE.read_text(encoding="utf-8")
         self.assertIn("HISTORICAL MATERIAL", timeline)
 
+    def test_the_page_scales_its_own_hero_and_code_blocks(self):
+        """The shared stylesheet sizes the hero for a two-word title; this one is a Finnish byline. The page carries its
+        own scale, and keeps the two navigation links the shared stylesheet hides below 640px."""
+        self.assertIn(".hero h1 {", self.text)
+        self.assertIn("@media (max-width: 640px)", self.text)
+        self.assertIn(".nav nav a:nth-child(1)", self.text)
+        self.assertIn("pre code {", self.text)
+
     def test_every_local_link_and_anchor_resolves(self):
         anchors = set(re.findall(r'id="([^"]+)"', self.text))
         for href in re.findall(r'href="([^"]+)"', self.text):
