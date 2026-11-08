@@ -1,10 +1,10 @@
-# Pivot: the game is Romppainen's detective interactive fiction (#1310)
+# Pivot: NoöPunk: Etsivä Romppainen ja Uusi Paradigma (#1310; revised by #1322)
 
-> **Status: author decision, 2026-11-07.** NoöPunk's playable product is an **old-fashioned detective
+> **Status: original author decision 2026-11-07; updated project title and framing 2026-11-08 by #1322.** NoöPunk's playable product is an **old-fashioned detective
 > interactive-fiction adventure** in cyberpunk Helsinki, with **Etsivä Harri Romppainen** as the detective. The
 > full tabletop/computer RPG is **paused and preserved**, not deleted and not to be developed.
 
-This page is the reconciliation P0 of [#1310](https://github.com/TomiToivio/NooPunk/issues/1310). It says what each track
+The full RPG remains paused. This page documents the original implementation pivot and is subordinate to the current [README](../../README.md) and [#1322](https://github.com/TomiToivio/NooPunk/issues/1322) for public title, motivation and pre-crisis scenario. The author-only manuscript is not yet an approved playable episode.\n\nThis page is the reconciliation P0 of [#1310](https://github.com/TomiToivio/NooPunk/issues/1310). It says what each track
 is now for, what an agent may touch, and — because the repository already contains a playable case — **what is reuse and
 what is not**.
 
