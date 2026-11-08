@@ -1,459 +1,86 @@
-# NoöPunk
+# NoöPunk: Etsivä Romppainen ja Uusi Paradigma
 
-> **The game is a detective adventure, not a full RPG (#1310, 2026-11-07).** NoöPunk's playable product is an
-> old-fashioned **interactive-fiction investigation** in cyberpunk Helsinki, with **Etsivä Harri Romppainen** as the
-> detective. A working text adventure already exists: `PYTHONPATH=src python scripts/noopunk_case.py`. The CWN-based
-> full RPG is **paused and preserved untouched** in [`NooPunk-RPG/`](NooPunk-RPG/README.md); do not revive or extend it.
-> Read [`docs/adventure/PIVOT_1310.md`](docs/adventure/PIVOT_1310.md) before starting any game work.
+**A cyberpunk noir detective interactive-fiction story set in Helsinki, 2045 — not a full role-playing game.**
 
+NoöPunk is my way of thinking through three changes that may converge by 2045: artificial general intelligence, non-human intelligence, and a new account of consciousness. The game is small on purpose. You are **Etsivä Harri Romppainen**, a grounded investigator working cases shaped by those changes. You collect evidence, interview people, follow contradictory leads and decide what to do. The metaphysics stays in the background until a case earns it.
 
-> **Three subprojects (#1295):** [Story](NooPunk-Story/README.md) — Tomi's writing, with
-> `NooPunk-Story/Story/` read-only for agents — · [Simulator](NooPunk-Simulator/README.md) ·
-> [RPG](NooPunk-RPG/README.md). Story comes first. The migration map and the shared tag/graph contract
-> are in [`docs/architecture/`](docs/architecture/PIVOT_1295_MIGRATION_MAP.md).
+[Play the prototype](#play-the-prototype) · [Read the story](NooPunk-Story/README.md) · [Why this changed](docs/adventure/PIVOT_1310.md) · [Historical RPG archive](NooPunk-RPG/README.md) · [Current development tracker (#1310)](https://github.com/TomiToivio/NooPunk/issues/1310)
 
-> **Primary game (#950):** the Python/Evennia [NoöPunk MUD](mud/README.md). Default engineering priority is CWN rules parity and a complete offline-independent single-player Europol campaign; Godot is now maintenance-only, and multiplayer/LLM/Mesa features follow later. The [CWN Deluxe audit](docs/design/ISSUE_950_CWN_DELUXE_AUDIT.md) tracks the migration. Older Godot-first paragraphs below are historical.
+> **Why the change?** The old full-RPG ambition became almost absurd in scope. A complete RPG would have to carry ordinary cyberpunk, the whole Noösphere side of the setting, and three overlapping Physical/Cyber/Astral layers — before anyone got to play a story. The RPG is now a paused archive. The adventure is the project.
 
-Rules coverage is tracked honestly in
-[`docs/rules/CWN_COVERAGE_1068.md`](docs/rules/CWN_COVERAGE_1068.md) — `implemented` only where a
-test exists, and `missing` where the linked SRD omits the section. The MUD's own CWN core lives in
-`mud/nopunk_mud/cwn/` and is parity-tested against `src/rules`; `cd mud && python -m nopunk_mud.cli --demo` runs
-the solo smoke with no LLM, no Mesa and no second player.
+## Why NoöPunk exists
 
-**First single-player campaign draft:** [Europol Rookie → Wanderer, four-act outline](docs/campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md) (#1132). Planning only; Act III and the final service revelation remain subject to author review.
+This is a personal and philosophical project before it is a product. I am trying to make sense of my own paradigm shift: a turn toward idealism and **quantum-information panpsychism**, and the suspicion that intelligence, non-human agency and consciousness are all being re-described at once. Fiction, play, humour and detective work are how I explore that uncertainty — not a way to prove a metaphysics.
 
-## Reality has changed. You are still expected at work.
+The three shifts are real public debates, not one settled story:
 
-*The future of humanity is no longer exclusively a human concern.*
+| Shift | The question | What the game takes seriously |
+| --- | --- | --- |
+| **AGI / ASI** | What is intelligence, and who controls it? | Acceleration, existential risk, augmentation, labour, corporate and state power. |
+| **UFO / UAP / NHI** | Are we alone, and what counts as non-human intelligence? | Disclosure politics, human intermediaries, competing explanations, **Jacques Vallée's** less narrowly extraterrestrial reading. |
+| **Consciousness / PSI** | What is consciousness? | Idealist and panpsychist philosophy — especially **Bernardo Kastrup**, **Donald Hoffman** and **Federico Faggin** — and PSI as a speculative application inside the fiction. |
 
-**2045. Humanity survived the NHI Crisis. It is having trouble explaining what survived.**
+The **Telepathy Tapes** are part of the current popular conversation, not scientific confirmation of telepathy. My expectation that all three will develop substantially by 2045 is a **personal forecast and creative premise**, not a claim of scientific consensus. The fiction keeps four things apart: established technologies, live research, contested claims and outright extrapolation.
 
-Earth is still here. So are governments, employers, political parties and the people who tell you that everything is under control. There are more kinds of intelligence now. Control is harder to locate.
+**The central proposition:** three simultaneous challenges to the prevailing picture of intelligence, non-human agency and consciousness — experienced by institutions and ordinary people who still have to go to work. NoöPunk is about the social and political consequences: ideological struggle, radicalisation, competing narratives, and the ways governments, science, media, corporations, religions and neighbours respond.
 
-Rogue artificial minds pursue purposes nobody can translate into reassuring language. Alien infiltrators look like people. The apparently benevolent **Zookeepers** offer protection and a better future. You would like to be grateful. You would also like to know what a zookeeper means by “better.”
+LaclauGPT-informed discourse and ideology analysis is a **storytelling lens**, not a mandatory computational engine. The detective can be sceptical, indifferent or wrong; the case can end without a cosmic answer.
 
-Cybernetics, genetic engineering and psionics are changing what a person can be. Human, cyborg, transhuman, posthuman: the categories multiply as the distinctions become less dependable. Somewhere in all this is somebody trying to remain themselves.
+## The adventure
 
-Humanity has not united under a world government. The **United Nations** still exists, and so does **UNSA**, but the project to turn them into a sovereign federal state failed. The EU and many nation-states continue to support them; sovereignty, competing institutions and national interest still decide what can actually be done. Rival factions offer resistance, control or transformation. Each would prefer to settle the question before the others do.
+- **Title:** *NoöPunk: Etsivä Romppainen ja Uusi Paradigma*.
+- **Format:** a short, old-fashioned text-based detective interactive fiction; a possible later science-fiction novel.
+- **Setting:** Helsinki, 2045, after repeated AGI, PSI/consciousness and UAP/NHI controversies. **The catastrophic NHI Crisis of older lore has not happened.** Extraordinary phenomena reach the player through witnesses, intermediaries, institutions, ideologies and evidence.
+- **Protagonist:** Etsivä Harri Romppainen. Police/Europol-style investigation, OSINT, interviews, dossiers, clues and meaningful choices — not a chosen-one arc.
+- **Play loop:** receive a case; review leads; visit a few Helsinki locations; interview people; inspect records and objects; record testimony, hypotheses, contradictions and leads; choose what to do; live with the outcome.
+- **Tone:** cyberpunk noir with a little absurdist humour. Start with one small investigation; let the three shifts emerge through character conflict and contradictory evidence.
 
-And the biosphere still needs looking after. A revelation about consciousness does not repair a damaged ecosystem. Clean energy, ecological restoration and biotechnology offer the possibility of a better life. People still have to build it, share it and keep it alive.
+The prototype is deliberately small: a Story/Scene graph, an Investigation/Clue graph, simple social tags, locations, case state, choices, save/load and an inspectable history. There are no skill trees, tactical combat, universal PSI/cyberspace rules or mandatory simulation pipeline. Optional small faction/social or hacking modules can come later; neither is required to finish a case.
 
-Three paradigm shifts make certainty difficult:
+## Why the full RPG is paused
 
-- **AGI: Artificial General Intelligence.** We made minds that could exceed our own. Abundance and extinction both entered the discussion. So did ownership.
-- **NHI: Non-Human Intelligence.** We were not alone. This answered one question and made most of the others worse.
-- **PSI: Psionics and Consciousness.** Mind and reality proved more intimately connected than expected. The discovery did not make it easier to agree about either.
+The old ambition was not one game. It was several:
 
-**NoöPunk is apocalyptic cyberpunk science fiction.** Its RPG and political/social simulation combine cyberpunk, science fiction and post-apocalyptic survival in the aftermath of the NHI Crisis. The active game uses a CWN-first rules core with compatible SWN Psionics and AWN material; no WWN fantasy subsystem is required. Magick is interpreted as PSI and psionics as manifestations of Fourth Density awakening; Law of One concepts are *lore, not game rules*. Investigate the impossible at the scale of a person; contest the future at the scale of a faction. See [architecture decision #1184](https://github.com/TomiToivio/NooPunk/issues/1184).
+- the ordinary **cyberpunk** side could run on any competent cyberpunk RPG;
+- the **Noösphere** side — UFO/NHI, PSI, idealist and panpsychist metaphysics — would need extensive new rules;
+- **Physical, Cyber and Astral** layers overlap; identities, agents, evidence and consequences cross between them;
+- the global setting, factions and ideologies add another universal simulation.
 
-A breakthrough can become a political crisis. A crisis can become somebody's career. Behind both is the awkward question of who needs help, and whether you can still do something for them.
+Building all of that before telling one detective story displaced the actual creative goal: writing and playing. **`NooPunk-RPG/` is preserved as a paused archive and is not being developed.** CWN, Evennia/MUD, cross-plane rules and a fully integrated LaclauGPT simulation are not the current game or a mandatory roadmap. Historical material remains available through clearly marked archive links.
 
-**The next world is still up for grabs. You have to live in this one while you argue about it.**
+## The three tracks
 
-NoöPunk also uses a **three-system lens**: living/biological systems (biopunk, solarpunk and planetary ecology), social systems (communication and politics amid AGI/NHI contact), and psychic systems (consciousness, PSI and the fictional Noösphere). These are distinct but interdependent; neither a climate apocalypse nor an effortless ASI utopia is inevitable. See the [biosphere paradigm design](docs/design/ISSUE_510_BIOSPHERE_PARADIGM.md) (#510).
+| Track | Role | Authorship |
+| --- | --- | --- |
+| **`NooPunk-Story/`** | The interactive-fiction script: scenes, dialogue, clues, choices, branching outcomes and case arcs. May later become a novel. | `Story/` is **Tomi's**, agent read-only. Agents may build adapters from author text; they do not write the manuscript. |
+| **`NooPunk-Simulator/`** | The playable adventure plus optional small world/faction simulation support. | `Paper/` is **Tomi's**, agent read-only. |
+| **`NooPunk-RPG/`** | Paused full-RPG archive. | Untouched by agents unless Tomi explicitly reactivates it. |
 
-*Setting note: 2045 depicts the developed NHI Crisis era. The earlier strategy campaign begins around 2027, before these outcomes are settled, allowing players to shape the future rather than treating it as inevitable.*
+The pivot is recorded in [`docs/adventure/PIVOT_1310.md`](docs/adventure/PIVOT_1310.md). The current story-first tracker is [#1310](https://github.com/TomiToivio/NooPunk/issues/1310).
 
-## Before NoöPunk: a transmission, possibly
+## Play the prototype
 
-In **1974**, **Tommy Pilgrim**, a left-wing science-fiction writer, took LSD at a **Hawkwind concert** and experienced what he called a transmission from **VALIS**. It appeared to contain humanity's future. Artificial minds, alien encounters, psychic phenomena, political upheaval. An unreasonable amount of information for one evening.
+From the repository root:
 
-He wrote it down as ***NoöPunk***. He could not establish whether he had seen the future, misunderstood a symbol, or looked into a neighboring timeline. Some of the future's machinery looked suspiciously like 1974. The uncertainty did not prevent the book from becoming a cult classic. Neither did it prevent later events from beginning to resemble it.
-
-**NoöPunk is an alternate history, not a prediction.** The divergences are deliberate worldbuilding, not errors to be corrected into real history — and the Soviet Union's fate is the clearest example: it collapsed, while a universal Mandela Effect insists it survived. The full chronology and its rules are in [`docs/world/ALTERNATE_HISTORY_1114.md`](docs/world/ALTERNATE_HISTORY_1114.md).
-
-Films, television, tabletop and computer games followed, along with a NoöPunk subculture. **Pilgrim is still alive in Helsinki**, a literary celebrity studied by scholars and courted by parapsychologists. There are several explanations for what happened to him. None has disposed of the others.
-
-**And this is where the book ends and the scenario begins.** The real-world NoöPunk project uses Pilgrim's imaginary 1974 future history as a **presentation and narrative frame**, not as evidence of actual precognition and not as permission to rewrite its underlying simulation or canon. The opening account summarizes the established premise; Tommy Pilgrim's full literary story remains reserved for the project's author. [Design background: issue #447](https://github.com/TomiToivio/NooPunk/issues/447).
-
-**NoöPunk = Noösphere + Cyberpunk.**
-
-NoöPunk is an experimental **computer RPG and social simulation** set in **20XX**, using a **CWN-first rules foundation with optional NoöPunk narrative modules**, a deterministic Python RPG kernel, and **Google DeepMind Concordia** for optional LLM-driven agents and narration. Earth still exists. Transhuman technology is already here. AGI, cyborgification, NHI contact, psionics, panpsychism, and the emerging Noösphere are destabilizing the old world at the same time.
-
-The project is currently a **playable text-based prototype**. You can run the normal game entirely without Ollama or an LLM.
-
-### Rules direction (issue #615)
-
-**Historical author decision (2026-10-26; superseded by #1184 regarding WWN and genre):** NoöPunk's target RPG begins with the **standard Without Number family** rules rather than a bespoke 1d10/Fate hybrid. **Cities Without Number** and **Stars Without Number** provide the shared attributes, skills and fundamental dice grammar; **Worlds Without Number** adds noetic/interdimensional science fantasy and **Ashes Without Number** adds local NHI Crisis survival and salvage. Start from existing procedures; customize after a functioning, single-sheet cross-genre RPG exists. The first independent Python chassis is `src/rules/without_number.py`. **Migration is incomplete:** existing legacy 1d10 and strategy crossover Fate code still runs separately while its callers, saves and scenarios are adapted. See the [#615 decision and progress record](docs/design/ISSUE_615_WITHOUT_NUMBER_RULES_DIRECTION.md) and [conversion epic #564](https://github.com/TomiToivio/NooPunk/issues/564) for remaining work, license restrictions and compatibility requirements.
-
-**Visual identity:** *A 1974 Hawkwind concert, an acid trip, and a VALIS transmission showing 2045.* Zardoz, Barbarella and The Rocky Horror Picture Show govern the aesthetic, not later glossy cyberpunk. [Art-direction bible](docs/design/ISSUE_897_VISUAL_BIBLE.md).
-
-## Motivation: social science first, science fiction second
-
-**My primary motivation is sociological modeling of possible near-future paradigm-shift scenarios.** NoöPunk is an experiment at the intersection of **social science, social data science, and social science fiction**. The game is a way to build and explore simple, explicit models of how societies, institutions, networks, ideologies, and political factions might respond to interacting transformations in AI, nonhuman intelligence (NHI), and consciousness/PSI. These are exploratory scenarios, not predictions or empirical claims that contested phenomena are real.
-
-**My secondary motivation is to make science-fiction entertainment in my own style.** Characters, political satire, unsettling mysteries, philosophical questions, absurdity, and encounters with the genuinely strange give the models a playable and imaginative form.
-
-**Current genre classification: apocalyptic cyberpunk science fiction.** Some historical prototypes and timeline material start around **2027**, before the full NHI Crisis; the Europol rookie campaign explores the post-crisis world. Social science modeling and strange ontological phenomena remain important narrative methods rather than separate fantasy genre classifications.
-
-## Genre and positioning
-
-**Primary genre: apocalyptic cyberpunk science fiction.** NoöPunk brings together cyberpunk surveillance, corporations, networked power and augmentation; science-fictional AI/ASI, alien intelligence and PSI; and post-apocalyptic societies dealing with the NHI Crisis. This is **not a fantasy RPG**.
-
-### Cyberpunk: technology, power and investigation
-
-Hacking, OSINT, cybernetics, intelligence agencies, corporate power, inequality and transhuman technologies frame the everyday Europol experience. Investigations and interrogations collect evidence and leads through graph-based interfaces, with CWN as the gameplay rules foundation.
-
-### Science fiction: paradigm shifts and ontological shock
-
-AI, AGI/ASI, NHI contact, consciousness and psionics destabilize established explanations of reality. **PSI and Magick are different fictional framings of the same phenomena**; psionics represent **Fourth Density awakening**. **Law of One is lore, not mechanics.** Weirdness, satire, detective noir and philosophical speculation remain expressive methods, not a fantasy-genre classification.
-
-### Post-apocalyptic fiction: consequences of the NHI Crisis
-
-Institutions, infrastructures and communities face severe disruption and unequal survival conditions following the Crisis. AWN provides relevant survival/mutant material. The story retains functioning pockets of civilization and political conflict rather than depicting uniform wasteland.
-
-**hackmud** as a text-only interface inspiration: [hackmud on Steam](https://store.steampowered.com/app/469920/hackmud/) demonstrates atmospheric, command-driven cyberpunk interaction. NoöPunk's terminal CLI and Evennia interface should make OSINT, hacking, messages and logs feel like in-world tools, while retaining its own aesthetic and CWN rules. See [#1184](https://github.com/TomiToivio/NooPunk/issues/1184).
-
-### RPG rules and interface boundary
-
-**CWN is the immutable core** (skills, hacking, combat and character rules), with **SWN Psionics and AWN** compatible source systems. AWN Mentalist is available subject to PC restrictions; AWN Mutant represents NPC Mutants of varied or unknown origin; many may be Hybrids, but their ancestry is not automatically known. Existing CWN Spellcaster/Summoner Edges may represent PSI/Magick. **WWN is not required**, and no fantasy mechanics are being added for genre symmetry. Players may select only **Telepathy and Telekinesis** as PSI abilities; Astral Projection, Teleportation and Precognition are scripted events. The graph-based interfaces, narrative Tags and evidence-led interrogations are summarized in [#1184](https://github.com/TomiToivio/NooPunk/issues/1184).
-
-**Elevator pitch.**
-
-> Reality has changed. The institutions responsible for explaining it are still open.
-> NoöPunk is an apocalyptic cyberpunk science-fiction RPG and political simulation
-> about who gets believed, who gets power, and how people survive what comes next.
-
-**Storefront pitch — the later Europol investigation setting.**
-
-> You have graduated. You have been augmented. You have been assigned a limited
-> forensic AI. The **Europol Helsinki Field Office** considers you ready.
->
-> Earth has survived regional catastrophes. Two non-human powers helped rebuild
-> it, and neither fits comfortably under “ally” or “enemy.” Your work concerns
-> abductions, infiltrations and impossible physics. Mind-control, hybridization,
-> corporate psy-ops and ordinary human lying can leave much the same evidence.
->
-> Someone is in trouble. You need to decide what happened, who to trust,
-> and what you can do before a convincing explanation takes the place of an answer.
-
-**Comparisons.** NoöPunk sits between three touchstones and borrows from each:
-
-- **Shadowrun** — cyberpunk plus extraordinary powers, and a world where the paranormal is
-  real. NoöPunk draws on UFO/PSI/interdimensional lore rather than elves, dragons or spells.
-- **Eclipse Phase** — ASI catastrophe, transhumanism, existential risk and survival.
-- **The X-Files** — investigations, agencies, and conspiracy mythology.
-
-A useful shorthand is **"pre-Eclipse Phase" in degree of societal transformation** — not a
-prequel and not shared continuity. Cybernetics, PSI, disclosure and transhumanism are still
-comparatively new, and Earth-based states and social institutions largely continue to function
-despite regional catastrophes, post-ASI damage and reconstruction.
-
-**Tone.** This is not a full postapocalypse and not Lovecraftian cosmic horror. The universe
-is not fundamentally hostile: some NHI are benevolent, others hostile, ambiguous, or merely
-politically opposed to one another. **Cosmic wonder and Fortean/ontological mystery** are the
-default register, with horror as an occasional note rather than the premise.
-
-> **Positioning note.** The audience-fit comparisons above are a **positioning hypothesis**,
-> not proven market data. NoöPunk claims no affiliation with, or endorsement by, any game,
-> show or publisher named here — they are comparisons, not licenses. See the licensing section
-> below for licensing and attribution requirements for adapted rules.
-
-## NoöPunk in two books: the paradigm shift
-
-Two books published in 2026 are especially useful real-world intellectual inspirations for NoöPunk's near-future **New Weird political simulation**:
-
-- **Alexander Wendt, [*The Last Humans: UFOs, Global Security, and the Threat to State Sovereignty*](https://academic.oup.com/book/63308)** (Oxford University Press, online 2026; print 2027). Wendt asks what the discovery of superior nonhuman intelligence could do to anthropocentric state legitimacy, ontological security, sovereignty, populism, and the international order. **NoöPunk lens:** the political and institutional crisis of NHI disclosure.
-- **Diana Walsh Pasulka, [*The Others: UFOs, AI, and the Secret Forces Guiding Human Destiny*](https://books.google.com/books/about/The_Others.html?id=wTyDEQAAQBAJ)** (St. Martin's Press, 2026). Pasulka examines extraordinary-encounter narratives through religion, AI, immortality, and transformations in ideas about consciousness. **NoöPunk lens:** the cultural, religious, and ontological collision of AI, NHI, and PSI.
-
-**Together:** Wendt explores what happens to *political order* when human exceptionalism is challenged; Pasulka explores what happens to *meaning, belief, and identity*. NoöPunk turns these questions into a struggle for hegemony: emerging factions try to define a rapidly changing reality, reshape institutions, and build communication power. Its political simulation draws on **Ernesto Laclau, Manuel Castells, and Niklas Luhmann**. The initial strategy scenario begins around **2027**, during accelerating change, **before** the later NHI Crisis and Europol era.
-
-These are **scenario inspirations and interpretations, not evidence** that disputed NHI or paranormal claims are established facts; the game's fictional world makes its own assumptions.
-
-## Quick start
-
-Requires **Python 3.12** (the version tested in CI).
-
-```bash
-git clone https://github.com/TomiToivio/NooPunk.git
-cd NooPunk
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-python scripts/noopunk_text.py
+```sh
+python3 NooPunk-Simulator/Code/adventure.py
 ```
 
-On Windows PowerShell, activate the environment with:
+Use numbered choices; `notebook` shows evidence and provisional hypotheses; `save PATH` and `load PATH` persist a run; `quit` exits. The shipped case is a **synthetic development fixture**, not Tomi's story and not canon. When an author-written script exists, [`story_adapter.py`](NooPunk-Simulator/Code/story_adapter.py) converts its documented Markdown format into case JSON while preserving source attribution.
 
-```powershell
-.venv\Scripts\Activate.ps1
-```
+Read the current adventure notes in [`NooPunk-Simulator/Code/ADVENTURE.md`](NooPunk-Simulator/Code/ADVENTURE.md).
 
-The normal start command launches the default **pre-Fall 20XX** NoöPunk scenario:
+## Reality, claims and fiction
 
-```bash
-python scripts/noopunk_text.py
-```
+NoöPunk does not ask you to accept its metaphysics. It asks what people do when their institutions, evidence and categories stop agreeing. The fiction treats AGI, NHI and PSI as mainstream scientific and regulatory realities **inside the story**; that does not make any real-world claim true. Contested phenomena stay contested; personal philosophy stays personal; the detective can investigate without converting.
 
-Ollama is optional for basic play.
+## Repository map
 
-### The optional Ubiquitous Maniacs case
+- [Story](NooPunk-Story/README.md) — author-owned manuscript and adaptation boundary.
+- [Simulator](NooPunk-Simulator/README.md) — the playable adventure and optional small simulation modules.
+- [Paused RPG archive](NooPunk-RPG/README.md) — preserved, not a current roadmap.
+- [Design pivot](docs/adventure/PIVOT_1310.md) — why the project changed.
+- [Campaign planning draft](docs/campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md) — historical/background material, not the first playable story.
+- [Prompt archive](Prompts/README.md) — substantial author design prompts, kept for reuse.
 
-*The Listening Ward* is a self-contained, non-canonical investigation that runs on the current
-RPG engine and needs **nothing but the standard library** — none of the packages above are
-required for it:
-
-```bash
-python -m strategy_game.rpg --scenario ubiquitous-maniacs --save ward.json --new
-```
-
-Resume by leaving off `--new`. It needs **Python 3.11 or newer**; on an older interpreter it
-stops with a message naming the version and the remedy instead of an `ImportError`. Scope,
-troubleshooting and the end-to-end tests are in
-[docs/UBIQUITOUS_MANIACS_INTEGRATION.md](docs/UBIQUITOUS_MANIACS_INTEGRATION.md).
-
-## The first campaign
-
-The single-player campaign now has a draft outline: **[The Rookie, the Awakening and the Wanderer](docs/campaign/CAMPAIGN_01_EUROPOL_ROOKIE.md)** —
-a young Europol rookie in 2045 Helsinki, four acts from a grounded police procedural to a Wanderer's
-revelation. It is a **draft**: Act III is a proposal awaiting the author's decision, and the document separates
-what is canon from what is merely suggested. All campaign documents live in [`docs/campaign/`](docs/campaign/).
-
-## First-player cheat sheet
-
-At the prompt, try:
-
-```text
-look
-n / s / e / w
-go <direction>
-inventory
-take <item>
-drop <item>
-talk <character> <message>
-say <message>
-stats
-sheet
-save
-quit
-```
-
-Useful rules/debugging commands also include:
-
-```text
-test skill ...
-test social ...
-test mesh ...
-test combat ...
-```
-
-See [`RULEBOOK.md`](RULEBOOK.md) for the actual rules instead of treating the README as a second rulebook.
-
-## Installation
-
-### Linux / macOS
-
-```bash
-git clone https://github.com/TomiToivio/NooPunk.git
-cd NooPunk
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-```
-
-### Windows PowerShell
-
-```powershell
-git clone https://github.com/TomiToivio/NooPunk.git
-cd NooPunk
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-```
-
-The deterministic text game itself uses only the Python standard library. The top-level `requirements.txt` also installs the pinned Concordia dependency needed by the current Concordia integration and optional Ollama-backed runtime.
-
-## Start the game
-
-### Default NoöPunk scenario
-
-```bash
-python scripts/noopunk_text.py
-```
-
-This starts the canonical **20XX, Earth-intact** NoöPunk scenario.
-
-### Small Concordia / EP2 proof of concept
-
-```bash
-python scripts/noopunk_text.py --scenario issue74
-```
-
-Issue #74 is a deliberately tiny vertical slice for testing the current architecture. It remains fully playable **without an LLM**, using deterministic mechanics and scripted NPC behaviour.
-
-Scenario notes: [`docs/scenarios/ISSUE74_CONCORDIA_EP2_POC.md`](docs/scenarios/ISSUE74_CONCORDIA_EP2_POC.md).
-
-### CLI help
-
-```bash
-python scripts/noopunk_text.py --help
-```
-
-## Optional Ollama / LLM mode
-
-Ollama is an **external runtime/service**, not a Python dependency. Install and start Ollama separately, then make sure the model you want to use is available in Ollama.
-
-The current NoöPunk adapter reads these environment variables:
-
-- `NOOPUNK_OLLAMA_MODEL` — **required** model identifier.
-- `NOOPUNK_OLLAMA_BASE_URL` — optional; defaults to `http://127.0.0.1:11434`.
-- `NOOPUNK_OLLAMA_TEMPERATURE` — optional; defaults to `0.5`.
-- `NOOPUNK_OLLAMA_TOP_P` — optional; defaults to `1.0`.
-- `NOOPUNK_OLLAMA_TOP_K` — optional; defaults to `40`.
-
-For example:
-
-```bash
-export NOOPUNK_OLLAMA_MODEL="your-installed-model"
-python scripts/noopunk_text.py --ollama
-```
-
-To run the small issue #74 scenario with an LLM-controlled contact and optional GM narration:
-
-```bash
-export NOOPUNK_OLLAMA_MODEL="your-installed-model"
-python scripts/noopunk_text.py --scenario issue74 --ollama --llm-gm
-```
-
-The division of labour is intentional:
-
-- **LLM / Concordia:** dialogue, agent choice, natural-language intent translation, interpretation, and optional GM narration.
-- **Python:** legal actions, game state, dice and rules resolution, character statistics, inventory, harm/stress, world-state changes, and consequences.
-
-LLMs may decide what an agent attempts. They do not get to invent dice rolls or silently rewrite the rules.
-
-## Current status
-
-NoöPunk is an experimental RPG and social-simulation project under active development. **The top-down Godot game and tabletop rulebook use vanilla CWN/SWN as the canonical baseline**. Rules parity is an ongoing task, not a claim of full implementation. Legacy text, Python and strategy prototypes remain in the repository as historical or experimental work, not alternative rule authorities.
-
-### Playable slice: the hospital case in Godot 4
-
-A ten-minute vertical slice of the detective RPG runs now, offline and without an LLM: one hospital,
-three conversations, six pieces of evidence, a sealed research file and two endings that both stay
-ambiguous. Godot **4.7.2** is pinned; run and test commands, controls, the save format, the rules
-adapter and the known limitations are in [`docs/godot/README.md`](docs/godot/README.md).
-
-The rules come from the approved Without Number kernel through a single adapter
-(`godot/core/rules_adapter.gd` reads `data/rules/wn_core.json`); no mechanic is invented in engine code,
-and #564's unresolved 3d6 question is a data-level override that the game reports, not a silent choice.
-
-The current core work is [issue #111](https://github.com/TomiToivio/NooPunk/issues/111).
-
-## What NoöPunk is about
-
-The **Cyberpunk** question is who owns the machinery: the AI, the surveillance network, the augmented body, the means of making a life. Automation, biotechnology and post-scarcity possibilities arrive in a world that already knows how to distribute things unequally.
-
-The **Noösphere** question is who, or what, is having the experience. NHI contact, psionics and panpsychism disturb the boundaries between minds, machines, cultures and networks. Understanding the equipment may not settle the question of who is using it.
-
-Enthusiasts, skeptics, regulators, believers and opportunists inhabit the same world. So do people who would like to finish an ordinary day without revising their entire account of existence. Several incompatible futures have arrived. They all need somewhere to live.
-
-## How the game works
-
-NoöPunk is being developed as **one computer RPG and social simulation**, not as separate tabletop and computer games.
-
-The rules are tabletop-like because they need to be:
-
-- readable by humans;
-- inspectable and testable;
-- executable deterministically in Python;
-- usable by Concordia/LLM agents without giving the model authority to invent outcomes.
-
-The preferred loop is:
-
-```python
-intent = agent.choose_action(...)
-result = rules.resolve(intent, actor, target, world)
-world.apply(result)
-agent.observe(result)
-```
-
-Important characters, factions, and institutions may use LLM cognition. Simpler background NPCs can use deterministic or lightweight scripted behaviour where rich language interaction is unnecessary.
-
-## Current rules baseline: Cities Without Number / Stars Without Number
-
-**The current canonical rules are vanilla *Cities Without Number* (CWN), supplemented by *Stars Without Number Revised* (SWN) where CWN does not cover a subsystem, especially psionics.** The canonical computer-game implementation is the top-down Godot project at `project.godot`; the canonical tabletop rules live in [`rulebook/`](rulebook/00_INDEX.md). We begin by reproducing the original rules faithfully. **Modifying, reskinning and homebrewing CWN/SWN is a future, section-by-section phase**, after the vanilla baseline has been implemented and checked. No other RPG system is part of the current rules baseline.
-
-The [vanilla baseline decision](docs/NOOPUNK_BASELINE_848.md) and [CWN coverage matrix](docs/CWN_COVERAGE_MATRIX.md) define the implementation scope and outstanding gaps. Older prototypes, archived documents and experiments do not override this baseline.
-
-## Licensing and attribution
-
-*Cites and rights are specific to each source and file; this repository does not grant a blanket license to third-party material.*
-
-- **Cities Without Number (CWN)**, by Kevin Crawford / Sine Nomine Publishing: the specifically published **CWN Systems Reference Document (SRD)** is dedicated to **CC0**. This applies to the identified SRD material, not automatically to the complete commercial books, artwork, or protected setting material. [CWN SRD browser](https://cwn.quadrifons.com/).
-- **Stars Without Number Revised (SWN)**, by Kevin Crawford / Sine Nomine Publishing: **no independently verified publicly reusable SRD text license** has been established in the repository rights audit. No claim is made that SWN book prose, tables, art or setting are CC0 or otherwise freely redistributable. Implement mechanics independently and write explanations in original wording; do not copy protected SWN expression without permission.
-- **NoöPunk-original source code and creative content:** no project-wide software or content license has yet been selected. Do not assume that public GitHub access means permission to reuse all code, writing, assets or third-party materials. Any future license must be chosen and documented separately.
-- **Independence:** NoöPunk is an unofficial, independent project and is not affiliated with, licensed by, or endorsed by Kevin Crawford or Sine Nomine Publishing.
-
-See the [source rights audit](docs/licenses/ISSUE_569_WITHOUT_NUMBER_RIGHTS.md), [attribution policy](docs/ATTRIBUTION_POLICY.md), and [publication policy](docs/licenses/ATTRIBUTION_AND_PUBLICATION_POLICY.md) for provenance and release checks.
-
-## Rules and world documentation
-
-Active canonical documents:
-
-- **Rules:** [`RULEBOOK.md`](RULEBOOK.md)
-- **Continuity boundary:** [`docs/PRE_FALL_ALTERNATE_TIMELINE.md`](docs/PRE_FALL_ALTERNATE_TIMELINE.md)
-- **Umbrella implementation work:** [issue #60](https://github.com/TomiToivio/NooPunk/issues/60)
-- **Small Concordia/EP2 scenario:** [`docs/scenarios/ISSUE74_CONCORDIA_EP2_POC.md`](docs/scenarios/ISSUE74_CONCORDIA_EP2_POC.md)
-- **First Contact lore:** [`docs/scenarios/FIRST_CONTACT_TEN_TRADITIONS.md`](docs/scenarios/FIRST_CONTACT_TEN_TRADITIONS.md) — the ten-tradition contact matrix, the Orion deception sequence and the 2045 alien cold war (issue #497).
-
-Documents under [`docs/archive/`](docs/archive/) are historical design records. They are useful provenance, but they are **not automatically active canon** and do not override the current rulebook or explicit current author direction.
-
-### Design references
-
-These archived documents remain important design and architecture references even when they are not active canon:
-
-- [`docs/archive/DESIGN_PRINCIPLES.md`](docs/archive/DESIGN_PRINCIPLES.md) — project-level design balances and invariants.
-- [`docs/archive/SIMULATION_ARCHITECTURE_SPEC.md`](docs/archive/SIMULATION_ARCHITECTURE_SPEC.md) — simulation state, event-log and resolver architecture.
-- [`docs/archive/NOOPUNK_AS_ONE_GAME.md`](docs/archive/NOOPUNK_AS_ONE_GAME.md) — the single-game / single-rule-model direction.
-
-## Development and architecture
-
-The runtime is split deliberately:
-
-### Deterministic rules kernel
-
-Python owns state and mechanical truth wherever practical:
-
-- action legality;
-- skill and opposed tests;
-- dice;
-- modifiers;
-- damage and stress;
-- inventories;
-- resources;
-- persistence;
-- scenario objectives;
-- explicit world-state mutations.
-
-### Concordia / LLM layer
-
-Google DeepMind Concordia is the agent/narrative layer. LLM agents can:
-
-- choose goals and actions;
-- converse;
-- negotiate;
-- interpret situations;
-- translate natural-language player intent;
-- narrate already-resolved outcomes.
-
-The current Concordia dependency is pinned to a specific upstream Git revision because NoöPunk uses prefab/contrib APIs that were verified against that revision.
-
-### Smoke checks
-
-These commands should remain valid:
-
-```bash
-python scripts/noopunk_text.py --help
-printf 'quit\n' | python scripts/noopunk_text.py --scenario issue74
-python scripts/concordia_smoke.py
-```
-
-With the dependencies from `requirements.txt` installed, also check the real Concordia import/config bridge:
-
-```bash
-python scripts/concordia_smoke.py --build-concordia-config
-```
-
+**NoöPunk = Noösphere + Cyberpunk.** The name remains; the scale changed. The next world is still up for grabs. You have to live in this one while you argue about it.
