@@ -210,6 +210,18 @@ class Adventure:
         return cls(case, json.loads(Path(path).read_text(encoding="utf-8")))
 
 
+def case_status(case):
+    """Display provenance without implying synthetic or unapproved cases are canon."""
+    source = case.get("source", {})
+    if source.get("kind") == "synthetic_development_fixture":
+        return "DEVELOPMENT FIXTURE, NOT TOMI\'S CANON"
+    if source.get("kind") == "author_story":
+        return ("AUTHOR-WRITTEN ADAPTATION, AWAITING CANON APPROVAL"
+                if source.get("author_reviewed") else
+                "AUTHOR-WRITTEN ADAPTATION, NOT YET REVIEWED")
+    return "UNVERIFIED CASE, NOT CANON"
+
+
 def play(case_path=DEFAULT_CASE):
     case = load_case(case_path)
     game = Adventure(case)
