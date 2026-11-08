@@ -4,7 +4,7 @@
 
 **Reality has changed. You are still expected at work.**
 
-[**Project website**](https://tomitoivio.github.io/NooPunk/) · [**Play the existing prototype**](#play-the-prototype) · [**Story / authoring track**](NooPunk-Story/README.md) · [**Adventure development**](NooPunk-Simulator/README.md) · [**Historical RPG archive**](NooPunk-RPG/README.md)
+[**Project website**](https://tomitoivio.github.io/NooPunk/) · [**Play the existing prototype**](#play-the-prototype) · [**Story / authoring track**](NooPunk-Story/README.md) · [**Adventure development**](NooPunk-Simulator/README.md) · [**Design pivot**](docs/adventure/PIVOT_1310.md) · [**Historical RPG archive**](NooPunk-RPG/README.md)
 
 ## Why I am making NoöPunk
 
