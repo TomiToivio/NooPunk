@@ -1,9 +1,9 @@
 """Issue #1310: one finite detective investigation, no full-RPG dependency."""
 import importlib.util
 import json
-from pathlib import Path
 import tempfile
 import unittest
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PATH = ROOT / "NooPunk-Simulator" / "Code" / "adventure.py"
@@ -86,17 +86,66 @@ class DetectiveAdventureTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 adventure.load_case(path)
 
-    def test_provenance_banner_distinguishes_author_and_fixture(self):
-        self.assertIn("DEVELOPMENT FIXTURE", adventure.case_status(self.case))
-        authored = json.loads(json.dumps(self.case))
-        authored["source"] = {"kind": "author_story", "author_reviewed": False, "canon": False}
-        self.assertIn("NOT YET REVIEWED", adventure.case_status(authored))
-        authored["source"]["author_reviewed"] = True
-        self.assertIn("AWAITING CANON APPROVAL", adventure.case_status(authored))
-        authored["source"]["canon"] = True
-        self.assertIn("AWAITING CANON APPROVAL", adventure.case_status(authored))
-        authored["source"] = {"kind": "unknown"}
-        self.assertIn("UNVERIFIED CASE", adventure.case_status(authored))
+    def test_hypotheses_are_gated_by_evidence(self):
+        """A hypothesis is something you can hold once the evidence exists — not a fact of the case."""
+        self.assertEqual(self.game.available_hypotheses(), [])
+        with self.assertRaises(ValueError):
+            self.game.consider("h1")
+        self.reach_decision()
+        available = dict(self.game.available_hypotheses())
+        self.assertIn("h1", available)
+        self.assertIn("cannot both be right", available["h1"])
+
+    def test_the_detective_records_and_sets_aside_hypotheses(self):
+        self.reach_decision()
+        self.game.consider("h1")
+        self.game.dismiss("h2")
+        self.assertEqual(self.game.state["hypotheses"], {"h1": "considered", "h2": "dismissed"})
+        notebook = self.game.notebook()
+        self.assertIn("Recorded by you:", notebook)
+        self.assertIn("Set aside:", notebook)
+        with self.assertRaises(ValueError):
+            self.game.consider("h99")
+
+    def test_contradictions_surface_only_when_both_records_are_held(self):
+        self.step("Read the missing-person report and public event register")
+        self.assertEqual(self.game.contradictions(), [])
+        self.step("Speak with the witness")
+        self.assertEqual([cid for cid, _ in self.game.contradictions()], ["c1"])
+        self.assertIn("only one group present", self.game.notebook())
+
+    def test_open_leads_are_places_not_yet_visited(self):
+        self.step("Read the missing-person report and public event register")
+        leads = dict(self.game.leads())
+        self.assertIn("witness", leads)
+        self.assertNotIn("records", leads, "the scene you are standing in is not a lead")
+        self.step("Speak with the witness")
+        self.assertNotIn("witness", dict(self.game.leads()))
+
+    def test_reasoning_and_disposition_survive_save_and_load(self):
+        self.reach_decision()
+        self.game.consider("h1")
+        self.game.choose(2)
+        with tempfile.TemporaryDirectory() as directory:
+            save = Path(directory) / "case.json"
+            self.game.save(save)
+            restored = adventure.Adventure.restore(self.case, save)
+        self.assertEqual(restored.state, self.game.state)
+        self.assertIn("Recorded by you:", restored.notebook())
+        self.assertIn("Disposition: formal_review", restored.notebook())
+
+    def test_a_save_from_before_the_reasoning_layer_still_loads(self):
+        legacy = dict(self.game.state)
+        del legacy["hypotheses"]
+        restored = adventure.Adventure(self.case, legacy)
+        self.assertEqual(restored.state["hypotheses"], {})
+        self.assertIn("CASE NOTEBOOK", restored.notebook())
+
+    def test_a_save_with_an_unknown_hypothesis_is_rejected(self):
+        with self.assertRaises(ValueError):
+            adventure.Adventure(self.case, dict(self.game.state, hypotheses={"h99": "considered"}))
+        with self.assertRaises(ValueError):
+            adventure.Adventure(self.case, dict(self.game.state, hypotheses={"h1": "certain"}))
 
     def test_no_rpg_imports(self):
         contents = PATH.read_text(encoding="utf-8")

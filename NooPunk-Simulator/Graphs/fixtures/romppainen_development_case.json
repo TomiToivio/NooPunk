@@ -12,10 +12,18 @@
   "clues": {
     "missing": "A community organizer has disappeared after an argument about public disclosure.",
     "roster": "A public event register links two rival political groups to the same evening meeting.",
-    "witness": "A witness heard a heated argument but cannot identify who was responsible.",
+    "witness": "A witness heard a heated argument but cannot identify who was responsible. They are sure only one of the two groups was in the room.",
     "message": "A recovered voluntary message asks for privacy, but its sender cannot be authenticated."
   },
   "hypotheses": [
+    {
+      "id": "h1",
+      "text": "The register and the witness cannot both be right about who attended; one record is wrong or someone is lying.",
+      "requires": [
+        "roster",
+        "witness"
+      ]
+    },
     {
       "text": "Two rival organizations may be connected by the same event, not necessarily by conspiracy.",
       "requires": [
@@ -175,5 +183,19 @@
       "ending": true,
       "choices": []
     }
-  }
+  },
+  "contradictions": [
+    {
+      "id": "c1",
+      "between": [
+        "roster",
+        "witness"
+      ],
+      "text": "The event register lists both rival groups at that meeting; the witness remembers only one group present. A record is wrong, or an attendance is being hidden."
+    }
+  ],
+  "essential_clues": [
+    "missing",
+    "witness"
+  ]
 }

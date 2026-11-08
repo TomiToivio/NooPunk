@@ -32,6 +32,7 @@ CHOICE = re.compile(
     r"(?:\s+requires=(?P<requires>[^;]+))?\s*$"
 )
 HYPOTHESIS = re.compile(r"^-\s*(?P<text>.+?)(?:\s*\|\s*requires=(?P<requires>.+))?$")
+CONTRADICTION = re.compile(r"^-\s*(?P<between>[^:]+):\s*(?P<text>.+)$")
 
 
 class StoryFormatError(ValueError):
@@ -74,6 +75,7 @@ def parse_story(path: str | Path) -> dict:
     scenes: dict[str, dict] = {}
     clues: dict[str, str] = {}
     hypotheses: list[dict] = []
+    contradictions: list[dict] = []
     current: str = ""
     scene_body: list[str] = []
     scene_title = ""
@@ -130,7 +132,7 @@ def parse_story(path: str | Path) -> dict:
             section = line[3:].strip().lower()
             if section == "clues":
                 continue
-            if section == "hypotheses":
+            if section in ("hypotheses", "contradictions"):
                 continue
             raise StoryFormatError(f"unknown section {line.strip()!r}")
         if current:
@@ -157,6 +159,15 @@ def parse_story(path: str | Path) -> dict:
                         "requires": _split_list(match.group("requires")),
                     }
                 )
+        elif section == "contradictions":
+            match = CONTRADICTION.match(line.strip())
+            if match:
+                contradictions.append(
+                    {
+                        "between": _split_list(match.group("between").replace("+", ",")),
+                        "text": match.group("text").strip(),
+                    }
+                )
 
     if not scenes:
         raise StoryFormatError("story contains no scenes")
@@ -171,6 +182,15 @@ def parse_story(path: str | Path) -> dict:
                     raise StoryFormatError(f"unknown clue {clue_id!r} in {scene_id!r}")
     if start not in scenes:
         raise StoryFormatError(f"start scene {start!r} does not exist")
+    for index, contradiction in enumerate(contradictions, 1):
+        between = contradiction["between"]
+        if len(between) < 2:
+            raise StoryFormatError(
+                f"contradiction {index} needs at least two clues separated by '+'"
+            )
+        for clue_id in between:
+            if clue_id not in clues:
+                raise StoryFormatError(f"unknown clue {clue_id!r} in contradiction {index}")
 
     digest = hashlib.sha256(source_path.read_bytes()).hexdigest()
     return {
@@ -190,6 +210,7 @@ def parse_story(path: str | Path) -> dict:
         },
         "clues": clues,
         "hypotheses": hypotheses,
+        "contradictions": contradictions,
         "scenes": scenes,
     }
 
