@@ -1,6 +1,6 @@
 # NoöPunk: Etsivä Romppainen ja Uusi Paradigma
 
-> **The current NoöPunk project is a small, story-first cyberpunk detective interactive-fiction adventure, not a full RPG.** In Helsinki in 2045, detective Harri Romppainen investigates the human and political consequences of three paradigm shifts: AI, UAP/NHI and consciousness/PSI. See the [story-first decision (#1310)](https://github.com/TomiToivio/NooPunk/issues/1310) and the [documentation brief (#1322)](https://github.com/TomiToivio/NooPunk/issues/1322).
+> **The current NoöPunk project is a small, story-first cyberpunk detective interactive-fiction adventure, not a full RPG.** In Helsinki in 2045, detective Harri Romppainen investigates the human and political consequences of three paradigm shifts: AI, UAP/NHI and consciousness/PSI. See the [story-first implementation guide](docs/adventure/PIVOT_1310.md), the [story-first decision (#1310)](https://github.com/TomiToivio/NooPunk/issues/1310) and the [documentation brief (#1322)](https://github.com/TomiToivio/NooPunk/issues/1322).
 
 **Reality has changed. You are still expected at work.**
 
