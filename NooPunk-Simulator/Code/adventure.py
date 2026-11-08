@@ -225,7 +225,7 @@ def case_status(case):
 def play(case_path=DEFAULT_CASE):
     case = load_case(case_path)
     game = Adventure(case)
-    print(case["title"] + " [DEVELOPMENT FIXTURE, NOT TOMI'S CANON]")
+    print(case["title"] + " [" + case_status(case) + "]")
     print("Commands: number, notebook, consider ID, dismiss ID, save PATH, load PATH, quit")
     while True:
         print("\n" + game.scene["title"] + "\n" + game.scene["text"])

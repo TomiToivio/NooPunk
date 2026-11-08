@@ -147,6 +147,23 @@ class DetectiveAdventureTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             adventure.Adventure(self.case, dict(self.game.state, hypotheses={"h1": "certain"}))
 
+    def test_play_uses_actual_case_provenance_not_hardcoded_fixture_label(self):
+        from unittest.mock import patch
+        import builtins
+        self.assertIn("DEVELOPMENT FIXTURE", adventure.case_status(self.case))
+        author_case = json.loads(json.dumps(self.case))
+        author_case["source"] = {"kind": "author_story", "author_reviewed": False, "canon": False}
+        self.assertIn("NOT YET REVIEWED", adventure.case_status(author_case))
+        author_case["source"]["author_reviewed"] = True
+        self.assertIn("AWAITING CANON APPROVAL", adventure.case_status(author_case))
+        with patch.object(adventure, "load_case", return_value=author_case):
+            with patch.object(builtins, "input", side_effect=EOFError):
+                from io import StringIO
+                with patch("sys.stdout", new_callable=StringIO) as output:
+                    adventure.play()
+                self.assertIn("AWAITING CANON APPROVAL", output.getvalue())
+                self.assertNotIn("DEVELOPMENT FIXTURE", output.getvalue())
+
     def test_no_rpg_imports(self):
         contents = PATH.read_text(encoding="utf-8")
         for forbidden in ("src.rules", "src.text_game", "from rules", "from world", "evennia"):

@@ -1,4 +1,4 @@
-# NoöPunk: Etsivä Romppainen detective interactive fiction
+# NoöPunk: Etsivä Romppainen ja Uusi Paradigma — detective interactive fiction
 
 > **Current direction (#1310; 2026-11-07).** This directory is now the **playable cyberpunk noir detective adventure** about political extremists radicalized by AGI/ASI, consciousness/PSI, and UAP/NHI paradigm shifts. **Not a full RPG.** Prior simulator-first goals below are historical research context, not blockers to a playable case.
 
