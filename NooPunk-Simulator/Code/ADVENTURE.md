@@ -1,4 +1,4 @@
-# Etsivä Romppainen: first adventure vertical slice (#1310)
+# NoöPunk: Etsivä Romppainen ja Uusi Paradigma — development adventure (#1310, #1322)
 
 **Current product direction:** cyberpunk detective interactive fiction, **not** a full RPG. This is a minimal self-contained text adventure. No CWN, levels, tactical combat, psionics implementation, LaclauGPT pipeline or full social simulation is required.
 
@@ -11,7 +11,7 @@ python3 NooPunk-Simulator/Code/adventure.py
 python3 -m unittest discover -s tests -p 'test_detective_adventure_1310.py' -v
 ```
 
-Select a numbered option; `notebook` shows collected evidence, conflicting records, open leads and the
+At startup the runner shows the case's real provenance (synthetic fixture or unapproved author adaptation), rather than always labeling every case synthetic. Conversion never grants canon status.\n\nSelect a numbered option; `notebook` shows collected evidence, conflicting records, open leads and the
 hypotheses you could hold; `consider ID` / `dismiss ID` record or set aside one of them; `save
 /path/to/save.json` and `load /path/to/save.json` persist the session; `quit` exits. A finished case ends
 the loop, and the state keeps every choice, every hypothesis you held and the resulting ending.
