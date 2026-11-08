@@ -90,6 +90,8 @@ third. The protocol that goes with this register is [design/AGENT_COORDINATION.m
 
 | **Simulator graph layer: Social, Ideology, Physical (#1309)** | [../NooPunk-Simulator/Graphs/GRAPHS_OVERVIEW.md](../NooPunk-Simulator/Graphs/GRAPHS_OVERVIEW.md) — the three views, their ids, formats and versioning, and how they relate to the RPG's four-family contract without adding a fifth | [../NooPunk-Simulator/Rulebook/GRAPHS_1309.md](../NooPunk-Simulator/Rulebook/GRAPHS_1309.md) holds the operational rules; `Paper/SOCIAL_GRAPH.md` and `Paper/PHYSICAL_GRAPH.md` stay the author's and unedited | implemented in `src/social_sim/graphs.py` with 29 tests; no faction mechanics, no UI, no nested room graphs |
 
+| **Public framing: Etsivä Romppainen ja Uusi Paradigma (#1322)** | [index.html](index.html) is the Pages landing page: three ontological shocks, the author's motivation and influences, the four-way real/researched/contested/fiction distinction, why the full RPG is paused, and both prototype commands | [../README.md](../README.md) carries the same framing; [timeline.html](timeline.html) is labelled historical | public copy only: no rules, no story prose, no canon; guarded by `tests/test_public_framing_1322.py` |
+
 ## What is generated, and therefore never hand-edited
 
 | file | generator | freshness check |

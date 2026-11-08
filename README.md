@@ -20,6 +20,21 @@ This is **social science fiction**. My research interests in discourse, politica
 
 **Distinguish the levels:** AI progress is observable; theories of consciousness are active and contested; claims about UAP/NHI and PSI vary widely in evidentiary strength; and NoöPunk's 2045 discoveries, including functional PSI, are **fictional extrapolations**. The story is neither evidence for paranormal claims nor a forecast presented as fact.
 
+## What is real, what is researched, what is contested, what is fiction
+
+The boundary is stated instead of assumed, because the difference between a real development, my own interpretation, a
+contested claim and a story premise is the whole point:
+
+- **Established** — current machine learning, energy and hardware constraints, existing surveillance law. Background, not
+  a plot twist.
+- **Live research and plausible extrapolation** — AI capabilities, quantum computing, consciousness science, UAP
+  instrumentation and analysis. Used as extrapolation, and labelled as extrapolation.
+- **Contested claims and popular movements** — telepathy, disclosure narratives, specific NHI interpretations, and *The
+  Telepathy Tapes* as part of a current popular conversation about consciousness. Entered as claims with sources, never as
+  settled fact.
+- **Fiction** — Helsinki 2045, Romppainen, quantum-information panpsychism as working science, PSI as a licensed
+  technology, and the politics of an ontological shock. The detective is allowed to be skeptical, indifferent or wrong.
+
 ## The story: Helsinki, 2045
 
 **NoöPunk: Etsivä Romppainen ja Uusi Paradigma** is a short, old-fashioned **text-based cyberpunk noir detective adventure**, potentially also the starting point for a science-fiction novel.
@@ -49,6 +64,15 @@ python scripts/noopunk_case.py
 ```
 
 The script's own command-line documentation also supports `--script walkthrough.txt --seed 7` and `--load case-save.json`. The existing case is development material; **do not mistake it for a completed canonical story**. See [the documented adventure pivot](docs/adventure/PIVOT_1310.md) for current architecture, testing and authorial boundaries.
+
+A second, newer runner plays the Romppainen development case directly:
+
+```bash
+python3 NooPunk-Simulator/Code/adventure.py
+```
+
+Both cases are development fixtures. Neither is Tomi's own first episode; the manuscript in
+[`NooPunk-Story/Story/`](NooPunk-Story/Story/) is.
 
 ## Development boundaries
 
