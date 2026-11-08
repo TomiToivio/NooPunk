@@ -31,4 +31,6 @@ Newest first. Each entry is the author's own text, verbatim; metadata is archiva
 
 | [07_11_2026_ROMPPAINEN_DETECTIVE_PIVOT.md](07_11_2026_ROMPPAINEN_DETECTIVE_PIVOT.md) | #1310 | Pivot: detective interactive fiction instead of a full RPG; the RPG paused |
 
+| [08_11_2026_ROMPPAINEN_PUBLIC_REFRAME.md](08_11_2026_ROMPPAINEN_PUBLIC_REFRAME.md) | #1322 | Public reframe: three ontological shocks, the new title, why the full RPG is paused |
+
 Backfill of the prompts already in play, added when the archive first existed in the repository (#1302).
